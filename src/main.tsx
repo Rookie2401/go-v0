@@ -4,17 +4,22 @@ import './index.css';
 import { bootstrap } from './app/bootstrap';
 import type { BootstrapResult } from './app/bootstrap';
 import { App } from './ui/App';
-import { AppProvider } from './ui/context';
+import { Gate } from './ui/Onboarding';
+import { applyTheme } from './ui/prefs';
+
+// Set the saved theme before the first paint so a dark-mode reader never flashes light paper.
+applyTheme();
 
 const root = createRoot(document.getElementById('root')!);
 
 function Fatal({ error }: { error: unknown }) {
   const message = error instanceof Error ? error.message : String(error);
   return (
-    <main className="page">
-      <h1>Go could not start</h1>
-      <p role="alert">{message}</p>
-      <p className="muted small">Your data is stored on this device. Reloading usually helps; if not, the error above says what failed.</p>
+    <main className="page page--narrow">
+      <h1 className="home__title">Go could not start</h1>
+      <div className="home__rule" />
+      <p role="alert" className="error">{message}</p>
+      <p className="card__note">Your data is stored on this device. Reloading usually helps; if not, the error above says what failed.</p>
     </main>
   );
 }
@@ -25,9 +30,9 @@ bootstrap().then(
   ({ services, user, course }: BootstrapResult) => {
     root.render(
       <StrictMode>
-        <AppProvider services={services} user={user} course={course}>
+        <Gate services={services} user={user} course={course}>
           <App />
-        </AppProvider>
+        </Gate>
       </StrictMode>,
     );
   },

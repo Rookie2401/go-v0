@@ -21,7 +21,7 @@ import { FixtureTtsProvider, createGoListen } from '../golisten';
 import { createGoTell } from '../gotell';
 import { ingestAll, loadBundledCorpus } from '../ingest';
 import type { AppServices } from '../ui/context';
-import { recallActiveUser } from '../ui/prefs';
+import { DEFAULT_USER_ID, recallActiveUser, recallChosenCourse, rememberChosenCourse } from '../ui/prefs';
 
 export interface BootstrapOptions {
   /** Default: Dexie (IndexedDB). Tests pass createMemoryStore(). */
@@ -31,22 +31,30 @@ export interface BootstrapOptions {
   skipCorpus?: boolean;
   /** Last active learner id (persisted by the caller). */
   userId?: string;
+  /** Learn this course without the onboarding screen (tests, deep links). Otherwise the learner is created once a team has been chosen. */
+  courseId?: string;
   clock?: () => string;
 }
 
 export interface BootstrapResult {
   services: AppServices;
-  user: User;
-  course: Course;
+  /** null on a first run: the UI shows the "Which team are you on?" screen and creates the learner. */
+  user: User | null;
+  course: Course | null;
 }
 
-export const DEFAULT_USER_ID = 'u-local';
-/** Seed languages, courses and a first learner (idempotent). */
-export async function seedFirstRun(store: AppStore, now: string): Promise<void> {
+export { DEFAULT_USER_ID };
+/**
+ * Seed languages and courses (idempotent), and the first learner once a course has been chosen —
+ * `courseId` here, or the one remembered from onboarding. With no choice and no learner, nobody is created.
+ */
+export async function seedFirstRun(store: AppStore, now: string, courseId?: string): Promise<void> {
   await store.languages.bulkPut(LANGUAGE_ROWS);
   await store.courses.bulkPut(COURSES);
-  if ((await store.users.count()) === 0) {
-    await store.users.put({ id: DEFAULT_USER_ID, displayName: 'Learner', courseId: COURSES[0].id, createdAt: now });
+  const chosen = courseId ?? recallChosenCourse();
+  if ((await store.users.count()) === 0 && chosen && COURSES.some((c) => c.id === chosen)) {
+    await store.users.put({ id: DEFAULT_USER_ID, displayName: 'Learner', courseId: chosen, createdAt: now });
+    rememberChosenCourse(chosen);
   }
 }
 
@@ -56,7 +64,7 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   const bus: EventBus = new StoreEventBus(store, clock);
   const adapters = createAdapterRegistry();
 
-  await seedFirstRun(store, clock());
+  await seedFirstRun(store, clock(), opts.courseId);
 
   const golearn = createGoLearn({ store, bus, adapters, clock });
   golearn.attach();
@@ -71,8 +79,8 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
 
   const users = await store.users.all();
   const wanted = opts.userId ?? recallActiveUser();
-  const user = users.find((u) => u.id === wanted) ?? users.sort((a, b) => a.createdAt.localeCompare(b.createdAt))[0];
-  const course = (await store.courses.get(user.courseId)) ?? COURSES[0];
+  const user = users.find((u) => u.id === wanted) ?? users.sort((a, b) => a.createdAt.localeCompare(b.createdAt))[0] ?? null;
+  const course = user ? (await store.courses.get(user.courseId)) ?? COURSES[0] : null;
 
   return { services: { store, bus, adapters, golearn, golisten, gotell }, user, course };
 }

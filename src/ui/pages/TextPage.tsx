@@ -7,12 +7,14 @@ import { BAND_LABEL, isTestimonyText, pct, textPath } from '../format';
 import { Player } from '../player/Player';
 import type { PlayerChange } from '../player/Player';
 import { Reader } from '../reader/Reader';
+import { BackLink, Topbar } from '../ui';
 
 export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
   const { textId = '' } = useParams();
   const [info, setInfo] = useState<PlayerChange | undefined>();
   const onChange = useCallback((i: PlayerChange) => setInfo(i), []);
   const back = mode === 'scripture' ? '/scripture' : '/read';
+  const backLabel = mode === 'scripture' ? 'Scripture' : 'Library';
   const { store } = useApp();
   const [allowed, setAllowed] = useState<boolean | null>(null);
   useEffect(() => {
@@ -26,24 +28,26 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
     return () => { live = false; };
   }, [store, textId]);
 
-  if (allowed === null) return <div className="page"><p className="muted" role="status">Loading…</p></div>;
+  if (allowed === null) return <div><Topbar title={backLabel} left={<BackLink to={back} label={backLabel} />} /><div className="page"><p className="muted" role="status">Loading…</p></div></div>;
   if (allowed === false) {
-    return <div className="page"><p className="crumbs"><Link to={back}>← Back</Link></p><p role="alert">This text is not in your library.</p></div>;
+    return (
+      <div>
+        <Topbar title={backLabel} left={<BackLink to={back} label={backLabel} />} />
+        <div className="page"><p role="alert">This text is not in your library.</p></div>
+      </div>
+    );
   }
 
   return (
-    <div className="page page-text">
-      <p className="crumbs"><Link to={back}>← {mode === 'scripture' ? 'Scripture' : 'Library'}</Link></p>
-      {mode === 'scripture' && <PreparePanel textId={textId} />}
-      <Player key={`player:${textId}`} textId={textId} onChange={onChange} />
-      <Reader
-        key={`reader:${textId}`}
-        textId={textId}
-        mode={mode}
-        activeSentenceId={info?.state.playing ? info.segment?.sentenceIds[0] : undefined}
-        concealed={info?.concealed}
-      />
-    </div>
+    <Reader
+      key={`reader:${textId}`}
+      textId={textId}
+      mode={mode}
+      activeSentenceId={info?.state.playing ? info.segment?.sentenceIds[0] : undefined}
+      concealed={info?.concealed}
+      before={mode === 'scripture' ? <PreparePanel textId={textId} /> : undefined}
+      bar={<Player key={`player:${textId}`} textId={textId} onChange={onChange} />}
+    />
   );
 }
 
@@ -75,44 +79,44 @@ export function PreparePanel({ textId }: { textId: string }) {
 
   return (
     <section className="prepare" aria-label="Prepare this passage">
-      <button type="button" className="btn-quiet" aria-expanded={open} onClick={() => { void toggle(); }}>Prepare this passage</button>
-      {open && error && <p role="alert">Could not prepare: {error}</p>}
+      <button type="button" className="btn btn--small btn--quiet" aria-expanded={open} onClick={() => { void toggle(); }}>Prepare this passage</button>
+      {open && error && <p role="alert" className="error">Could not prepare: {error}</p>}
       {open && !readiness && !error && <p className="muted" role="status">Checking what you already know…</p>}
       {open && readiness && (
         <div className="prepare-body">
-          <p>
-            <span className={`badge band-${readiness.coverage.band}`}>{BAND_LABEL[readiness.coverage.band]}</span>{' '}
+          <p className="card__text">
+            <span className={`label band-${readiness.coverage.band}`}>{BAND_LABEL[readiness.coverage.band]}</span>{' '}
             You already recognise {pct(readiness.coverage.knownLexicalCoverage)} of the words here; {pct(readiness.coverage.partialCoverage)} you have met but do not yet know; {pct(readiness.coverage.unseenCoverage)} are new to you.
           </p>
           {readiness.prerequisites.length > 0 && (
-            <>
-              <h3>Worth learning first</h3>
+            <div className="card__section">
+              <h3 className="label">Worth learning first</h3>
               <ul className="chips">
                 {readiness.prerequisites.slice(0, 12).map((p) => <li key={p.itemId} className="chip">{p.surface}</li>)}
               </ul>
-            </>
+            </div>
           )}
           {readiness.preparatoryTexts.length > 0 ? (
-            <>
-              <h3>Texts that will prepare you</h3>
-              <ul className="list">
+            <div className="card__section">
+              <h3 className="label">Texts that will prepare you</h3>
+              <ul className="list entrylist">
                 {readiness.preparatoryTexts.map((p) => {
                   const t = prepTexts.get(p.textId);
                   return (
                     <li key={p.textId}>
-                      <Link className="row" to={t ? textPath(t) : `/read/${encodeURIComponent(p.textId)}`}>
-                        <span className="row-title">{t?.title ?? p.textId}</span>
-                        <span className="row-meta">
-                          <span className={`badge band-${p.band}`}>{BAND_LABEL[p.band]}</span>
-                          {(p.generated || t?.generated) && <span className="badge badge-warn">generated</span>}
-                          <span className="muted small">covers {p.covers.length}</span>
+                      <Link className="entry entry--text" to={t ? textPath(t) : `/read/${encodeURIComponent(p.textId)}`}>
+                        <span className="entry__title" lang={t?.lang}>{t?.title ?? p.textId}</span>
+                        <span className="entry__tags">
+                          {(p.generated || t?.generated) && <span className="chip chip--wine">generated</span>}
+                          <span className="lib__meta">covers {p.covers.length}</span>
                         </span>
+                        <span className={`entry__preview band-${p.band}`}>{BAND_LABEL[p.band]}</span>
                       </Link>
                     </li>
                   );
                 })}
               </ul>
-            </>
+            </div>
           ) : (
             <p className="muted">No preparatory text in your library covers these yet.</p>
           )}

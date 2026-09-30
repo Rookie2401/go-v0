@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import { afterEach, describe, expect, it } from 'vitest';
-import type { DimensionState, ItemMarked, LearnerItemState, LearnerLevel, Recommendation } from '../../src/core';
+import type { DimensionState, ItemMarked, TextViewed, LearnerItemState, LearnerLevel, Recommendation } from '../../src/core';
 import { ids } from '../../src/core';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { button, byLabel, choose, click, createTestimonyText, installMediaStubs, makeHarness, q, qa, seedAudio, type as typeInto } from './harness';
@@ -33,7 +33,7 @@ describe('Library and routes', () => {
     expect(mounted.container.textContent).toContain('ci-es'); // shelf named by corpus
 
     // tags act as pathways
-    const tags = qa(mounted.container, 'button.chip').map((b) => b.textContent);
+    const tags = qa(mounted.container, '.lib__tags button').map((b) => b.textContent);
     expect(tags).toEqual(['all', 'daily-life', 'mission']);
     await click(button(mounted.container, 'mission'));
     expect(qa(mounted.container, 'ul.list a')).toHaveLength(1);
@@ -91,7 +91,10 @@ describe('Library and routes', () => {
     expect(rows[0].textContent).toContain('97% familiar');
     expect(rows[0].textContent).toContain('Mostly words you already know.');
     expect(rows[1].getAttribute('href')).toBe('/testimony');
-    expect(qa(mounted.container, 'nav[aria-label="Main"] a').map((a) => a.textContent)).toEqual(['Home', 'Read', 'Scripture', 'My Testimony', 'Settings']);
+    // no persistent nav strip: the doorway entries, then the quiet links
+    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Read', 'Scripture', 'My Testimony']);
+    expect(qa(mounted.container, '.home__links a').map((a) => a.textContent)).toEqual(['Settings', 'Vocabulary']);
+    expect(q(mounted.container, 'nav[aria-label="Main"]')).toBeNull();
   });
 });
 
@@ -217,9 +220,9 @@ describe('Settings', () => {
 
     await choose(byLabel<HTMLSelectElement>(mounted.container, 'Learner'), 'u2');
     expect(q(mounted.container, '.who')!.textContent).toContain('Second · TH');
-    expect(byLabel<HTMLSelectElement>(mounted.container, 'Course').value).toBe('thailand-th');
+    expect(byLabel<HTMLSelectElement>(mounted.container, 'Team').value).toBe('thailand-th');
 
-    await choose(byLabel<HTMLSelectElement>(mounted.container, 'Course'), 'india-hi');
+    await choose(byLabel<HTMLSelectElement>(mounted.container, 'Team'), 'india-hi');
     expect((await h.store.users.get('u2'))!.courseId).toBe('india-hi');
     expect(q(mounted.container, '.who')!.textContent).toContain('Second · HI');
 
@@ -229,5 +232,47 @@ describe('Settings', () => {
     const added = (await h.store.users.all()).find((u) => u.displayName === 'Third')!;
     expect(added.courseId).toBe('germany-de');
     expect(q(mounted.container, '.who')!.textContent).toContain('Third · DE'); // switched to the new learner
+  });
+});
+
+describe('Home — continue card', () => {
+  it('offers the last text read, and never a private testimony text', async () => {
+    const h = await makeHarness();
+    await seedStory(h.store);
+    const privateId = await createTestimonyText(h.store, h.voice, {
+      id: 'tst:u1:es/r1', testimonyId: 'tst:u1:es', userId: 'u1', lang: 'es', number: 1, createdAt: '', fullText: 'Yo creo en Dios.',
+      sentences: [{ index: 0, text: 'Yo creo en Dios.', textHash: 'h' }], acceptedSuggestionIds: [],
+    });
+    const view = (textId: string, at: string) => h.bus.emit<TextViewed>({ type: 'TextViewed', userId: 'u1', lang: 'es', surface: 'corpus', session: 'ses-test', dedupeKey: `tv:${textId}`, textId, at });
+    await view(STORY_ID, '2026-02-01T10:00:00.000Z');
+    await view(privateId, '2026-02-02T10:00:00.000Z'); // more recent, but private
+    mounted = await h.mount(app(), { router: '/' });
+    const card = q<HTMLAnchorElement>(mounted.container, 'a.home__continue')!;
+    expect(card.textContent).toContain('Continue reading');
+    expect(card.textContent).toContain('Story 1');
+    expect(card.textContent).not.toContain('Testimony v1');
+    expect(card.getAttribute('href')).toBe(`/read/${encodeURIComponent(STORY_ID)}`);
+  });
+
+  it('has no continue card before anything has been read', async () => {
+    const h = await makeHarness();
+    mounted = await h.mount(app(), { router: '/' });
+    expect(q(mounted.container, 'a.home__continue')).toBeNull();
+  });
+});
+
+describe('Reader — previous / next text', () => {
+  it('links to the neighbouring texts of the same corpus, by title', async () => {
+    const h = await makeHarness();
+    await seedStory(h.store);
+    const story = (await h.store.texts.get(STORY_ID))!;
+    await h.store.texts.put({ ...story, id: 'text:es:story-02', title: 'Story 2' });
+    mounted = await h.mount(app(), { router: `/read/${encodeURIComponent(STORY_ID)}` });
+    const nav = q(mounted.container, 'nav.reader__nav[aria-label="Texts"]')!;
+    const links = qa<HTMLAnchorElement>(nav, 'a');
+    expect(links).toHaveLength(1); // first in its corpus: nothing before it
+    expect(links[0].textContent).toContain('Next');
+    expect(links[0].textContent).toContain('Story 2');
+    expect(links[0].getAttribute('href')).toBe('/read/text%3Aes%3Astory-02');
   });
 });

@@ -1,9 +1,14 @@
-/** Read (comprehensible input) and Scripture lists: texts by corpus, tags as pathways, personalised band badge. */
+/**
+ * Read (comprehensible input) and Scripture lists, in Biblia's entry-list format: texts grouped by
+ * corpus under tracked headings, pathway tags as segmented pills, the personalised band and coverage
+ * as an italic preview line, "generated" as a chip.
+ */
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Corpus, PersonalizedCoverage, Text } from '../../core';
 import { useApp } from '../context';
 import { BAND_LABEL, isTestimonyText, pct, textPath } from '../format';
+import { BackLink, Topbar } from '../ui';
 
 export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
   const { store, golearn, userId, lang } = useApp();
@@ -11,6 +16,7 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
   const [corpora, setCorpora] = useState<Map<string, Corpus>>(new Map());
   const [coverage, setCoverage] = useState<Map<string, PersonalizedCoverage>>(new Map());
   const [tag, setTag] = useState<string | null>(null);
+  const title = mode === 'scripture' ? 'Scripture' : 'Read';
 
   useEffect(() => {
     let live = true;
@@ -41,43 +47,55 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
     return [...m.entries()];
   }, [visible]);
 
-  if (texts === null) return <p className="muted" role="status">Loading…</p>;
+  const bar = <Topbar title={title} left={<BackLink to="/" label="Home" />} />;
+  if (texts === null) return <div>{bar}<div className="page"><p className="muted" role="status">Loading…</p></div></div>;
 
   return (
-    <div className="page">
-      <h1>{mode === 'scripture' ? 'Scripture' : 'Read'}</h1>
-      {texts.length === 0 && <p className="muted">Nothing in your library for this language yet.</p>}
-      {tags.length > 0 && (
-        <div className="chips" role="group" aria-label="Pathways">
-          <button type="button" className="chip" aria-pressed={tag === null} onClick={() => setTag(null)}>all</button>
-          {tags.map((t) => (
-            <button key={t} type="button" className="chip" aria-pressed={tag === t} onClick={() => setTag(tag === t ? null : t)}>{t}</button>
+    <div>
+      {bar}
+      <div className="page page--narrow route-fade">
+        {texts.length === 0 && <p className="muted">Nothing in your library for this language yet.</p>}
+        {tags.length > 0 && (
+          <div className="segmented lib__tags" role="group" aria-label="Pathways">
+            <button type="button" aria-pressed={tag === null} onClick={() => setTag(null)}>all</button>
+            {tags.map((t) => (
+              <button key={t} type="button" aria-pressed={tag === t} onClick={() => setTag(tag === t ? null : t)}>{t}</button>
+            ))}
+          </div>
+        )}
+        <div className="lib">
+          {byCorpus.map(([corpusId, list]) => (
+            <section key={corpusId} className="lib__group lib__group--1">
+              <h2 className="lib__head">
+                <span className="lib__title">{corpora.get(corpusId)?.title ?? corpusId}</span>
+                <span className="lib__meta">{list.length} {list.length === 1 ? 'text' : 'texts'}</span>
+              </h2>
+              <ul className="list entrylist">
+                {list.map((t) => {
+                  const c = coverage.get(t.id);
+                  return (
+                    <li key={t.id}>
+                      <Link to={textPath(t)} className="entry entry--text">
+                        <span className="entry__title" lang={t.lang}>{t.title}</span>
+                        <span className="entry__tags">
+                          {t.staticLevel && <span className="lib__meta">{t.staticLevel}</span>}
+                          {t.version && <span className="chip">{t.version}</span>}
+                          {t.generated && <span className="chip chip--wine">generated</span>}
+                        </span>
+                        {c && (
+                          <span className={`entry__preview band-${c.band}`} title={`${pct(c.knownLexicalCoverage)} of the words are already familiar`}>
+                            {BAND_LABEL[c.band]} · {pct(c.knownLexicalCoverage)}
+                          </span>
+                        )}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
           ))}
         </div>
-      )}
-      {byCorpus.map(([corpusId, list]) => (
-        <section key={corpusId} className="shelf">
-          <h2>{corpora.get(corpusId)?.title ?? corpusId}</h2>
-          <ul className="list">
-            {list.map((t) => {
-              const c = coverage.get(t.id);
-              return (
-                <li key={t.id}>
-                  <Link to={textPath(t)} className="row" lang={t.lang}>
-                    <span className="row-title">{t.title}</span>
-                    <span className="row-meta">
-                      {t.staticLevel && <span className="badge">{t.staticLevel}</span>}
-                      {t.generated && <span className="badge badge-warn">generated</span>}
-                      {t.version && <span className="badge">{t.version}</span>}
-                      {c && <span className={`badge band-${c.band}`} title={`${pct(c.knownLexicalCoverage)} of the words are already familiar`}>{BAND_LABEL[c.band]} · {pct(c.knownLexicalCoverage)}</span>}
-                    </span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ul>
-        </section>
-      ))}
+      </div>
     </div>
   );
 }

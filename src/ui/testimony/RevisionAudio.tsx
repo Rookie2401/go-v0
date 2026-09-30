@@ -19,6 +19,7 @@ import { listeningEmitter } from '../../golisten';
 import type { ListeningEmitter } from '../../golisten';
 import { useApp } from '../context';
 import { usePref } from '../prefs';
+import { I, IconBtn } from '../ui';
 import { Player } from '../player/Player';
 import type { PlayerControls } from '../player/Player';
 import { recordingSupported, startRecording } from './recorder';
@@ -146,8 +147,8 @@ export function RevisionAudio({ revision }: { revision: TestimonyRevision }) {
   if (!textId) {
     return (
       <section className="rehearse" aria-label="Listen and rehearse">
-        <h3>Listen and rehearse — version {revision.number}</h3>
-        <p className="muted small">Audio is not available for this version.</p>
+        <h3 className="label">Listen and rehearse — version {revision.number}</h3>
+        <p className="card__note">Audio is not available for this version.</p>
       </section>
     );
   }
@@ -155,37 +156,38 @@ export function RevisionAudio({ revision }: { revision: TestimonyRevision }) {
   return (
     <section className="rehearse" aria-label="Listen and rehearse">
       <div className="rehearse-head">
-        <h3>Listen and rehearse — version {revision.number}</h3>
+        <h3 className="label">Listen and rehearse — version {revision.number}</h3>
       </div>
       <Player key={textId} textId={textId} controlRef={controls} />
-      <div className="actions">
-        <button type="button" className="btn-primary" onClick={playAll}>Play whole testimony</button>
+      <div className="card__actions">
+        <button type="button" className="btn btn--primary" onClick={playAll}>Play whole testimony</button>
       </div>
-      <p className="muted small">Play a sentence, say it along with the voice, then count the attempt or record yourself and listen back.</p>
-      {message && <p role="status" className="small">{message}</p>}
-      <ol className="rehearse-list">
+      <p className="card__note">Play a sentence, say it along with the voice, then count the attempt or record yourself and listen back.</p>
+      {message && <p role="status" className="note">{message}</p>}
+      <ol className="list rehearse-list">
         {revision.sentences.map((s) => (
-          <li key={s.index}>
+          <li key={s.index} className="list__row rehearse__row">
             <span className="rehearse-text" lang={lang}>{s.text}</span>
             <span className="rehearse-actions">
-              <button type="button" className="mini" aria-label={`Play sentence ${s.index + 1}`} onClick={() => playSentence(s.index)}>▶</button>
-              <button type="button" className="mini" aria-label={`Count a shadowing attempt for sentence ${s.index + 1}`} onClick={() => { void countShadow(s.index); }}>shadowed</button>
-              <span className="small muted" aria-label={`Shadowed ${shadow[s.index] ?? 0} times`} data-testid={`shadow-${s.index}`}>{shadow[s.index] ?? 0}×</span>
+              <IconBtn label={`Play sentence ${s.index + 1}`} onClick={() => playSentence(s.index)}>{I.play}</IconBtn>
+              <button type="button" className="btn btn--small btn--quiet" aria-label={`Count a shadowing attempt for sentence ${s.index + 1}`} onClick={() => { void countShadow(s.index); }}>shadowed</button>
+              <span className="list__meta" aria-label={`Shadowed ${shadow[s.index] ?? 0} times`} data-testid={`shadow-${s.index}`}>{shadow[s.index] ?? 0}×</span>
               {supported ? (
-                <button type="button" className="mini" aria-pressed={recordingIndex === s.index} aria-label={recordingIndex === s.index ? `Stop recording sentence ${s.index + 1}` : `Record sentence ${s.index + 1}`} onClick={() => { void toggleRecord(s.index); }}>
-                  {recordingIndex === s.index ? '■ stop' : '● record'}
+                <button type="button" className="btn btn--small btn--quiet" aria-pressed={recordingIndex === s.index} aria-label={recordingIndex === s.index ? `Stop recording sentence ${s.index + 1}` : `Record sentence ${s.index + 1}`} onClick={() => { void toggleRecord(s.index); }}>
+                  {recordingIndex === s.index ? I.stop : I.dot}
+                  {recordingIndex === s.index ? 'stop' : 'record'}
                 </button>
               ) : null}
             </span>
             {(recordings[s.index] ?? []).map(({ rec, url }) => (
-              <span key={rec.id} className="take small muted">
+              <span key={rec.id} className="take card__prov">
                 take {rec.attempt} {url && <audio controls preload="none" src={url} aria-label={`Your recording, take ${rec.attempt}`} />}
               </span>
             ))}
           </li>
         ))}
       </ol>
-      {!supported && <p className="muted small">Recording is not available in this browser; playback and counting still work.</p>}
+      {!supported && <p className="card__note">Recording is not available in this browser; playback and counting still work.</p>}
     </section>
   );
 }

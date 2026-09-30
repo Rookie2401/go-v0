@@ -1,5 +1,6 @@
 /** Small presentation helpers shared by the pages. */
-import type { ComfortBand, Text } from '../core';
+import { LANGUAGE_ROWS } from '../core';
+import type { ComfortBand, Course, Text } from '../core';
 
 export const BAND_LABEL: Record<ComfortBand, string> = {
   comfortable: 'comfortable',
@@ -44,3 +45,8 @@ export function formatDate(iso: string): string {
 export function isTestimonyText(text: Pick<Text, 'kind' | 'corpusId'>, corpora?: Map<string, { kind: string }>): boolean {
   return text.kind === 'testimony' || corpora?.get(text.corpusId)?.kind === 'testimony';
 }
+
+/** "Spanish" for a course whose language is es. */
+export const languageName = (course: Pick<Course, 'lang'>): string => LANGUAGE_ROWS.find((l) => l.id === course.lang)?.name ?? course.lang;
+/** "Thailand team · Thai" */
+export const teamLabel = (course: Pick<Course, 'lang' | 'country'>): string => `${course.country} team · ${languageName(course)}`;

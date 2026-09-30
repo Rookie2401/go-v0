@@ -1,24 +1,50 @@
 /** Settings: course + learner switch, reading preferences, voice info, vocabulary list, GoListen diagnostics. */
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useId, useMemo, useState } from 'react';
 import { LEVEL_ORDER } from '../../core';
 import type { Course, GoListenDiagnostics, ItemKind, ItemMarked, LearnerItemState, LearnerLevel, User, VoiceConfig } from '../../core';
 import { useApp } from '../context';
-import { itemSurface } from '../format';
-import { usePref } from '../prefs';
-import type { HighlightPref } from '../prefs';
+import { itemSurface, languageName } from '../format';
+import { TeamSelect } from '../Onboarding';
+import { FONT_SIZE_RANGE, rememberChosenCourse, usePref } from '../prefs';
+import type { HighlightPref, ThemePref } from '../prefs';
+import { BackLink, I, IconBtn, Topbar } from '../ui';
 
 const levelLabel = (l: LearnerLevel) => l.replace(/_/g, ' ');
 const levelRank = (l: LearnerLevel) => LEVEL_ORDER.indexOf(l);
+/** Learner level → the dot colour Biblia uses for vocabulary status (met → recognised → familiar → known). */
+const dotClass = (l: LearnerLevel) => {
+  const r = levelRank(l);
+  return r >= 7 ? 'known' : r >= 4 ? 'familiar' : r >= 2 ? 'recognized' : 'new';
+};
 
 export function Settings() {
+  const { user, course } = useApp();
   return (
-    <div className="page settings">
-      <h1>Settings</h1>
-      <LearnerSection />
-      <ReadingSection />
-      <VoiceSection />
-      <VocabularySection />
-      <DiagnosticsSection />
+    <div>
+      <Topbar
+        title="Settings"
+        left={<BackLink to="/" label="Home" />}
+        right={<IconBtn label="Vocabulary" to="/vocabulary">{I.vocab}</IconBtn>}
+      />
+      <div className="page page--narrow settings route-fade">
+        <p className="who label" title={course.title}>{user.displayName} · {course.lang.toUpperCase()}</p>
+        <LearnerSection />
+        <ReadingSection />
+        <VoiceSection />
+        <VocabularySection />
+        <DiagnosticsSection />
+      </div>
+    </div>
+  );
+}
+
+export function VocabularyPage() {
+  return (
+    <div>
+      <Topbar title="Vocabulary" left={<BackLink to="/" label="Home" />} right={<IconBtn label="Settings" to="/settings">{I.settings}</IconBtn>} />
+      <div className="page page--narrow settings route-fade">
+        <VocabularySection />
+      </div>
     </div>
   );
 }
@@ -43,27 +69,24 @@ function LearnerSection() {
 
   return (
     <section aria-label="Learner and course">
-      <h2>Learner and course</h2>
-      {error && <p role="alert">{error}</p>}
-      <div className="form-grid">
-        <label>
-          <span className="muted small">Learner</span>
-          <select value={user.id} aria-label="Learner" onChange={(e) => run(() => selectUser(e.target.value))}>
-            {users.map((u) => <option key={u.id} value={u.id}>{u.displayName}</option>)}
-          </select>
-        </label>
-        <label>
-          <span className="muted small">Course for this learner</span>
-          <select
-            value={course.id} aria-label="Course"
-            onChange={(e) => run(async () => { await store.users.put({ ...user, courseId: e.target.value }); await refreshUser(); })}
-          >
-            {courses.map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}
-          </select>
-        </label>
-      </div>
+      <h2 className="section-head">Learner and course</h2>
+      {error && <p role="alert" className="error">{error}</p>}
+      <label className="field">
+        <span className="label">Learner</span>
+        <select value={user.id} aria-label="Learner" onChange={(e) => run(() => selectUser(e.target.value))}>
+          {users.map((u) => <option key={u.id} value={u.id}>{u.displayName}</option>)}
+        </select>
+      </label>
+      <label className="field">
+        <span className="label">Team</span>
+        <TeamSelect
+          value={course.id}
+          onChange={(courseId) => run(async () => { await store.users.put({ ...user, courseId }); rememberChosenCourse(courseId); await refreshUser(); })}
+        />
+        <span className="card__note">You are learning {languageName(course)}. Your progress is kept per language, so switching teams loses nothing.</span>
+      </label>
       <form
-        className="form-grid"
+        className="settings__new"
         onSubmit={(e) => {
           e.preventDefault();
           if (!name.trim() || !newCourse) return;
@@ -76,36 +99,57 @@ function LearnerSection() {
           });
         }}
       >
-        <label>
-          <span className="muted small">New learner</span>
+        <label className="field">
+          <span className="label">New learner</span>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} aria-label="New learner name" />
         </label>
-        <label>
-          <span className="muted small">Course</span>
+        <label className="field">
+          <span className="label">Course</span>
           <select value={newCourse} onChange={(e) => setNewCourse(e.target.value)} aria-label="New learner course">
-            {courses.map((c) => <option key={c.id} value={c.id}>{c.title}</option>)}
+            {courses.map((c) => <option key={c.id} value={c.id}>{c.country}</option>)}
           </select>
         </label>
-        <button type="submit" className="btn-quiet" disabled={!name.trim()}>Add learner</button>
+        <button type="submit" className="btn btn--small" disabled={!name.trim()}>Add learner</button>
       </form>
-      <p className="muted small">Each learner has their own reading history, vocabulary and testimonies on this device.</p>
+      <p className="card__note">Each learner has their own reading history, vocabulary and testimonies on this device.</p>
     </section>
   );
 }
 
+const HIGHLIGHTS: HighlightPref[] = ['off', 'subtle', 'strong'];
+const THEMES: ThemePref[] = ['auto', 'light', 'dark'];
+
 function ReadingSection() {
   const [highlight, setHighlight] = usePref('highlight');
+  const [fontSize, setFontSize] = usePref('fontSize');
+  const [theme, setTheme] = usePref('theme');
+  const sizeId = useId();
   return (
     <section aria-label="Reading">
-      <h2>Reading</h2>
-      <label>
-        <span className="muted small">Highlight unfamiliar words</span>{' '}
-        <select value={highlight} aria-label="Highlighting" onChange={(e) => setHighlight(e.target.value as HighlightPref)}>
-          <option value="off">off</option>
-          <option value="subtle">subtle</option>
-          <option value="strong">strong</option>
-        </select>
-      </label>
+      <h2 className="section-head">Reading</h2>
+      <div className="field">
+        <span className="label">Highlight unfamiliar words</span>
+        <div className="segmented" role="group" aria-label="Highlighting">
+          {HIGHLIGHTS.map((h) => (
+            <button key={h} type="button" aria-pressed={highlight === h} onClick={() => setHighlight(h)}>{h}</button>
+          ))}
+        </div>
+      </div>
+      <div className="field field--row">
+        <label htmlFor={sizeId}>Text size</label>
+        <input
+          id={sizeId} type="range" min={FONT_SIZE_RANGE.min} max={FONT_SIZE_RANGE.max} step={1} value={fontSize}
+          aria-valuetext={`${fontSize} pixels`} onChange={(e) => setFontSize(Number(e.target.value))}
+        />
+      </div>
+      <div className="field">
+        <span className="label" id={`${sizeId}-theme`}>Theme</span>
+        <div className="segmented" role="group" aria-labelledby={`${sizeId}-theme`}>
+          {THEMES.map((t) => (
+            <button key={t} type="button" aria-pressed={theme === t} onClick={() => setTheme(t)}>{t}</button>
+          ))}
+        </div>
+      </div>
     </section>
   );
 }
@@ -123,15 +167,15 @@ function VoiceSection() {
 
   return (
     <section aria-label="Voice">
-      <h2>Voice</h2>
-      {error && <p role="alert">{error}</p>}
+      <h2 className="section-head">Voice</h2>
+      {error && <p role="alert" className="error">{error}</p>}
       {!voice && !error && <p className="muted" role="status">Looking up the voice…</p>}
       {voice && (
         <dl className="kv" data-testid="voice-card">
-          <dt>Provider</dt><dd>{voice.providerId}{voice.providerId === 'fixture' && <> <span className="badge badge-warn">fixture audio — not speech</span></>}</dd>
+          <dt>Provider</dt><dd>{voice.providerId}{voice.providerId === 'fixture' && <> <span className="chip chip--wine">fixture audio — not speech</span></>}</dd>
           <dt>Voice</dt><dd>{voice.voiceId}{voice.engine ? ` (${voice.engine})` : ''}</dd>
           <dt>Locale asked for</dt><dd>{voice.requestedLocale}</dd>
-          <dt>Locale delivered</dt><dd>{voice.actualLocale}{voice.actualLocale !== voice.requestedLocale && <> <span className="badge">fallback accent</span></>}</dd>
+          <dt>Locale delivered</dt><dd>{voice.actualLocale}{voice.actualLocale !== voice.requestedLocale && <> <span className="chip">fallback accent</span></>}</dd>
           <dt>Reviewed by a person</dt><dd>{voice.approved ? 'yes' : 'not yet'}{voice.qaNote ? ` — ${voice.qaNote}` : ''}</dd>
         </dl>
       )}
@@ -166,23 +210,21 @@ function VocabularySection() {
   };
 
   return (
-    <section aria-label="Vocabulary">
-      <h2>Vocabulary</h2>
-      <p className="muted small">Built from what you have actually read, heard and written. Marking a word only adjusts how it is displayed to you; it never erases the evidence.</p>
-      <div className="form-grid">
-        <label>
-          <span className="muted small">Show</span>
-          <select value={kind} aria-label="Item kind" onChange={(e) => { setKind(e.target.value as KindFilter); setLimit(100); }}>
-            <option value="form">word forms</option>
-            <option value="lemma">dictionary words</option>
-            <option value="phrase">phrases</option>
-          </select>
-        </label>
-        <label>
-          <span className="muted small">Search</span>
-          <input type="search" value={query} onChange={(e) => { setQuery(e.target.value); setLimit(100); }} aria-label="Search vocabulary" />
-        </label>
-      </div>
+    <section aria-label="Vocabulary" id="vocabulary">
+      <h2 className="section-head">Vocabulary</h2>
+      <p className="card__note">Built from what you have actually read, heard and written. Marking a word only adjusts how it is displayed to you; it never erases the evidence.</p>
+      <label className="field">
+        <span className="label">Show</span>
+        <select value={kind} aria-label="Item kind" onChange={(e) => { setKind(e.target.value as KindFilter); setLimit(100); }}>
+          <option value="form">word forms</option>
+          <option value="lemma">dictionary words</option>
+          <option value="phrase">phrases</option>
+        </select>
+      </label>
+      <label className="field">
+        <span className="label">Search</span>
+        <input type="search" value={query} onChange={(e) => { setQuery(e.target.value); setLimit(100); }} aria-label="Search vocabulary" />
+      </label>
       {rows === null ? <p className="muted" role="status">Loading…</p> : visible.length === 0 ? (
         <p className="muted">Nothing here yet. Read a story and your words will collect here.</p>
       ) : (
@@ -191,12 +233,12 @@ function VocabularySection() {
             <thead><tr><th>Word</th><th>Reading</th><th>Listening</th><th>Writing</th><th>Met</th><th>Mark</th></tr></thead>
             <tbody>
               {visible.slice(0, limit).map((r) => (
-                <tr key={r.id}>
-                  <th scope="row" lang={r.lang}>{itemSurface(r.itemId)}</th>
-                  <td>{levelLabel(r.reading.level)}</td>
-                  <td>{levelLabel(r.listening.level)}</td>
-                  <td>{levelLabel(r.writing.level)}</td>
-                  <td>{r.encounterCount}</td>
+                <tr key={r.id} className="vocab__row">
+                  <th scope="row" lang={r.lang}><span className={`vocab__dot vocab__dot--${dotClass(r.reading.level)}`} aria-hidden="true" />{itemSurface(r.itemId)}</th>
+                  <td data-label="Reading">{levelLabel(r.reading.level)}</td>
+                  <td data-label="Listening">{levelLabel(r.listening.level)}</td>
+                  <td data-label="Writing">{levelLabel(r.writing.level)}</td>
+                  <td data-label="Met">{r.encounterCount}</td>
                   <td>
                     <select value={r.manualMark ?? 'clear'} aria-label={`Mark ${itemSurface(r.itemId)}`} onChange={(e) => { void mark(r, e.target.value as 'known' | 'unknown' | 'clear'); }}>
                       <option value="clear">—</option>
@@ -210,7 +252,7 @@ function VocabularySection() {
           </table>
         </div>
       )}
-      {visible.length > limit && <button type="button" className="btn-quiet" onClick={() => setLimit(limit + 100)}>Show more ({visible.length - limit} left)</button>}
+      {visible.length > limit && <button type="button" className="btn btn--small btn--quiet" onClick={() => setLimit(limit + 100)}>Show more ({visible.length - limit} left)</button>}
     </section>
   );
 }
@@ -231,29 +273,29 @@ function DiagnosticsSection() {
 
   return (
     <section aria-label="GoListen diagnostics">
-      <h2>Audio diagnostics</h2>
-      {error && <p role="alert">{error}</p>}
-      {message && <p role="status" className="small">{message}</p>}
+      <h2 className="section-head">Audio diagnostics</h2>
+      {error && <p role="alert" className="error">{error}</p>}
+      {message && <p role="status" className="note">{message}</p>}
       <div className="actions">
-        <button type="button" className="btn-quiet" onClick={() => run('Running audio jobs', async () => `Processed ${await golisten.runJobs()} job(s).`)}>Run pending audio jobs</button>
-        <button type="button" className="btn-quiet" onClick={() => run('Rebuilding', async () => { await golearn.rebuild(userId); return 'Learning state rebuilt from your history.'; })}>Rebuild learning state</button>
+        <button type="button" className="btn btn--small" onClick={() => run('Running audio jobs', async () => `Processed ${await golisten.runJobs()} job(s).`)}>Run pending audio jobs</button>
+        <button type="button" className="btn btn--small" onClick={() => run('Rebuilding', async () => { await golearn.rebuild(userId); return 'Learning state rebuilt from your history.'; })}>Rebuild learning state</button>
       </div>
       {!diag ? <p className="muted" role="status">Loading…</p> : (
         <>
-          <p className="small" data-testid="job-counts">{diag.segments.length} segment(s) · {diag.failedJobs} failed job(s) · {diag.deadJobs} dead job(s)</p>
+          <p className="card__note" data-testid="job-counts">{diag.segments.length} segment(s) · {diag.failedJobs} failed job(s) · {diag.deadJobs} dead job(s)</p>
           {diag.segments.length > 0 && (
-            <div className="table-wrap">
+            <div className="table-wrap prose">
               <table className="vocab diag">
                 <thead><tr><th>Segment</th><th>Status</th><th>Provider / voice</th><th>Locale (asked → got)</th><th>Alignment</th><th>Validation</th></tr></thead>
                 <tbody>
                   {diag.segments.map((s) => (
                     <tr key={s.segmentId} data-status={s.status}>
-                      <th scope="row" className="small">{s.segmentId.slice(-14)}</th>
-                      <td>{s.status}{s.lastError ? ` — ${s.lastError}` : ''}</td>
-                      <td>{s.providerId ?? '—'} / {s.voiceId ?? '—'}</td>
-                      <td>{s.requestedLocale ?? '—'} → {s.actualLocale ?? '—'}</td>
-                      <td>{s.alignmentMethods.length ? s.alignmentMethods.join(', ') : 'none'}{s.minAlignmentConfidence !== undefined ? ` (≥ ${s.minAlignmentConfidence.toFixed(2)})` : ''}</td>
-                      <td>{s.validation ? (s.validation.ok ? 'ok' : s.validation.problems.join('; ')) : '—'}</td>
+                      <th scope="row">{s.segmentId.slice(-14)}</th>
+                      <td data-label="Status">{s.status}{s.lastError ? ` — ${s.lastError}` : ''}</td>
+                      <td data-label="Provider / voice">{s.providerId ?? '—'} / {s.voiceId ?? '—'}</td>
+                      <td data-label="Locale">{s.requestedLocale ?? '—'} → {s.actualLocale ?? '—'}</td>
+                      <td data-label="Alignment">{s.alignmentMethods.length ? s.alignmentMethods.join(', ') : 'none'}{s.minAlignmentConfidence !== undefined ? ` (≥ ${s.minAlignmentConfidence.toFixed(2)})` : ''}</td>
+                      <td data-label="Validation">{s.validation ? (s.validation.ok ? 'ok' : s.validation.problems.join('; ')) : '—'}</td>
                     </tr>
                   ))}
                 </tbody>

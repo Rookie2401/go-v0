@@ -1,5 +1,6 @@
 /**
- * One GoTell suggestion: what you wrote, what is suggested, why, where the language comes from
+ * One GoTell suggestion, as a raised card: a tracked kind label, what you wrote and what is
+ * suggested (original literal, suggestion natural), why, where the language comes from
  * (provenance: "encountered N times in …"), and accept / reject / edit.
  */
 import { useState } from 'react';
@@ -30,24 +31,24 @@ export function SuggestionCard({ suggestion: s, lang, titles, onAccept, onReject
   return (
     <li className={`sugg sugg-${s.kind}`} data-status={s.status} data-suggestion-id={s.id} aria-label={`${KIND_LABEL[s.kind]} for sentence ${s.sentenceIndex + 1}`}>
       <div className="sugg-head">
-        <span className={`badge kind-${s.kind}`}>{KIND_LABEL[s.kind]}</span>
-        {s.status !== 'shown' && <span className="muted small">{s.status}</span>}
+        <span className={`card__ref kind-${s.kind}`}>{KIND_LABEL[s.kind]}</span>
+        {s.status !== 'shown' && <span className="chip">{s.status}</span>}
       </div>
 
       <dl className="sugg-diff">
-        <dt className="muted small">You wrote</dt>
-        <dd lang={lang} className="sugg-original">{s.original}</dd>
-        <dt className="muted small">Suggested</dt>
-        <dd lang={lang} className="sugg-suggested">{s.suggested}</dd>
+        <dt className="label">You wrote</dt>
+        <dd lang={lang} className="sugg-original literal">{s.original}</dd>
+        <dt className="label">Suggested</dt>
+        <dd lang={lang} className="sugg-suggested natural">{s.suggested}</dd>
       </dl>
 
       {s.meaningChange && (
-        <p className="sugg-warn" role="note"><strong>This changes the meaning.</strong> {s.meaningChange} Keep your own wording unless you are sure.</p>
+        <p className="note note--warn sugg-warn" role="note"><strong>This changes the meaning.</strong> {s.meaningChange} Keep your own wording unless you are sure.</p>
       )}
-      <p className="sugg-why">{s.explanation}</p>
+      <p className="card__text sugg-why">{s.explanation}</p>
 
       {s.familiar.length > 0 && (
-        <ul className="sugg-prov small muted" aria-label="Where this language comes from">
+        <ul className="sugg-prov card__prov" aria-label="Where this language comes from">
           {s.familiar.map((f) => {
             const where = f.textIds.map((id) => titles.get(id) ?? id).slice(0, 3).join(', ');
             return (
@@ -60,27 +61,27 @@ export function SuggestionCard({ suggestion: s, lang, titles, onAccept, onReject
         </ul>
       )}
       {s.newItems.length > 0 && (
-        <p className="small muted" aria-label="New language">
+        <p className="card__prov" aria-label="New language">
           New to you: {s.newItems.map((n) => `${itemSurface(n.itemId)}${n.gloss ? ` (${n.gloss})` : ''}`).join(', ')}
         </p>
       )}
 
       {editing ? (
         <div className="sugg-edit">
-          <label>
-            <span className="muted small">Your version of this sentence</span>
+          <label className="field">
+            <span className="label">Your version of this sentence</span>
             <textarea lang={lang} value={text} rows={2} onChange={(e) => setText(e.target.value)} aria-label="Edit suggestion" />
           </label>
-          <div className="actions">
-            <button type="button" className="btn-primary" disabled={text.trim() === ''} onClick={() => { onEdit(s, text); setEditing(false); }}>Use my edit</button>
-            <button type="button" className="btn-quiet" onClick={() => { setText(s.suggested); setEditing(false); }}>Cancel</button>
+          <div className="card__actions">
+            <button type="button" className="btn btn--small btn--primary" disabled={text.trim() === ''} onClick={() => { onEdit(s, text); setEditing(false); }}>Use my edit</button>
+            <button type="button" className="btn btn--small btn--quiet" onClick={() => { setText(s.suggested); setEditing(false); }}>Cancel</button>
           </div>
         </div>
       ) : (
-        <div className="actions">
-          <button type="button" className="btn-primary" disabled={!open} onClick={() => onAccept(s)}>Accept</button>
-          <button type="button" className="btn-quiet" disabled={!open} onClick={() => onReject(s)}>Reject</button>
-          <button type="button" className="btn-quiet" disabled={!open} onClick={() => setEditing(true)}>Edit</button>
+        <div className="card__actions">
+          <button type="button" className="btn btn--small btn--primary" disabled={!open} onClick={() => onAccept(s)}>Accept</button>
+          <button type="button" className="btn btn--small btn--quiet" disabled={!open} onClick={() => onReject(s)}>Reject</button>
+          <button type="button" className="btn btn--small btn--quiet" disabled={!open} onClick={() => setEditing(true)}>Edit</button>
         </div>
       )}
     </li>

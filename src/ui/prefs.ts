@@ -7,13 +7,19 @@ import { useCallback, useSyncExternalStore } from 'react';
 export type HighlightPref = 'off' | 'subtle' | 'strong';
 export type TranscriptPref = 'visible' | 'hidden' | 'reveal-current' | 'reveal-after';
 
+export type ThemePref = 'auto' | 'light' | 'dark';
+
 export interface Prefs {
   highlight: HighlightPref;
   speed: number;
   transcript: TranscriptPref;
+  /** Reading text size in px (sets --reading-font-size on the reader). */
+  fontSize: number;
+  theme: ThemePref;
 }
 
-export const DEFAULT_PREFS: Prefs = { highlight: 'subtle', speed: 1, transcript: 'visible' };
+export const FONT_SIZE_RANGE = { min: 16, max: 34 } as const;
+export const DEFAULT_PREFS: Prefs = { highlight: 'subtle', speed: 1, transcript: 'visible', fontSize: 22, theme: 'auto' };
 
 const KEY = 'go-v0:prefs';
 let memory: Prefs | null = null;
@@ -28,6 +34,13 @@ function read(): Prefs {
   } catch { /* storage blocked or corrupt: fall back to defaults */ }
   memory = { ...DEFAULT_PREFS, ...loaded };
   return memory;
+}
+
+/** Mirror the theme preference onto <html data-theme>; "auto" leaves the system preference in charge. */
+export function applyTheme(theme: ThemePref = read().theme): void {
+  if (typeof document === 'undefined') return;
+  if (theme === 'auto') delete document.documentElement.dataset.theme;
+  else document.documentElement.dataset.theme = theme;
 }
 
 export function setPref<K extends keyof Prefs>(key: K, value: Prefs[K]): void {
@@ -63,3 +76,17 @@ export function rememberActiveUser(userId: string): void {
 export function recallActiveUser(): string | undefined {
   try { return (typeof localStorage !== 'undefined' ? localStorage.getItem(ACTIVE_USER_KEY) : null) ?? undefined; } catch { return undefined; }
 }
+
+const CHOSEN_COURSE_KEY = 'go-v0:chosen-course';
+
+/** The team (course) the learner picked at onboarding or in Settings; bootstrap only creates a learner once this exists. */
+export function rememberChosenCourse(courseId: string): void {
+  try { if (typeof localStorage !== 'undefined') localStorage.setItem(CHOSEN_COURSE_KEY, courseId); } catch { /* per-viewer convenience only */ }
+}
+
+export function recallChosenCourse(): string | undefined {
+  try { return (typeof localStorage !== 'undefined' ? localStorage.getItem(CHOSEN_COURSE_KEY) : null) ?? undefined; } catch { return undefined; }
+}
+
+/** Id of the learner bootstrap creates once a team has been chosen. */
+export const DEFAULT_USER_ID = 'u-local';

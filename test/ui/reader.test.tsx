@@ -5,7 +5,7 @@ import type { EnglishRescueRevealed, SentenceViewed, TokenHelpOpened } from '../
 import { ids } from '../../src/core';
 import { Reader } from '../../src/ui/reader/Reader';
 import { ManualViewDetector } from '../../src/ui/reader/viewDetection';
-import { button, byLabel, choose, click, flush, makeHarness, q, qa } from './harness';
+import { button, byLabel, choose, click, flush, makeHarness, pressKey, q, qa } from './harness';
 import type { Harness, Mounted } from './harness';
 import { JOHN_ID, STORY_ID, seedHindi, seedJohn, seedStory, seedThai } from './fixtures';
 
@@ -214,7 +214,7 @@ describe('Reader — scripture mode', () => {
     const t = (await h.store.texts.get(JOHN_ID))!;
     await h.store.texts.put({ ...t, generated: true });
     mounted = await h.mount(<Reader textId={JOHN_ID} mode="scripture" />);
-    const badges = qa(mounted.container, '.badge').map((b) => b.textContent);
+    const badges = qa(mounted.container, '.chip').map((b) => b.textContent);
     expect(badges).toContain('generated');
     expect(badges).toContain('Reina-Valera 1909');
     expect(badges.some((b) => b?.includes('rights unverified'))).toBe(true); // the fixture source is 'unverified'
@@ -223,5 +223,50 @@ describe('Reader — scripture mode', () => {
   it('says so when the text is not in the library', async () => {
     mounted = await h.mount(<Reader textId="text:es:nope" mode="corpus" />);
     expect(mounted.container.textContent).toContain('not in your library');
+  });
+});
+
+describe('Reader — word card as a bottom sheet', () => {
+  const wait = (ms: number) => act(async () => { await new Promise((r) => setTimeout(r, ms)); });
+
+  it('rises on the first tap and keeps the same sheet, crossfading its content, when another word is tapped', async () => {
+    await seedStory(h.store);
+    mounted = await h.mount(<Reader textId={STORY_ID} mode="corpus" />);
+    await click(tokenButton(mounted.container, 'creo'));
+    const sheet = q(mounted.container, '.panel')!;
+    expect(sheet.classList.contains('panel--rise')).toBe(true);
+    expect(q(sheet, '.panel__grip')).not.toBeNull();
+    expect(tokenButton(mounted.container, 'creo').classList.contains('sel')).toBe(true);
+    const body = q(sheet, '.panel__body')!;
+
+    await click(tokenButton(mounted.container, 'Dios'));
+    expect(q(mounted.container, '.panel')).toBe(sheet); // same element: no second rise
+    expect(sheet.classList.contains('panel--rise')).toBe(true);
+    expect(q(sheet, '.panel__body')).not.toBe(body); // the content is what swaps (and fades in)
+    expect(sheet.getAttribute('aria-label')).toBe('Help for Dios');
+    expect(tokenButton(mounted.container, 'Dios').classList.contains('sel')).toBe(true);
+    expect(tokenButton(mounted.container, 'creo').classList.contains('sel')).toBe(false);
+  });
+
+  it('falls and is removed on Escape, and on the close button; tapping the open word closes it too', async () => {
+    await seedStory(h.store);
+    mounted = await h.mount(<Reader textId={STORY_ID} mode="corpus" />);
+    await click(tokenButton(mounted.container, 'creo'));
+    await pressKey('Escape');
+    expect(q(mounted.container, '.panel')!.classList.contains('panel--fall')).toBe(true); // still mounted while it leaves
+    expect(tokenButton(mounted.container, 'creo').classList.contains('sel')).toBe(false);
+    await wait(450);
+    expect(q(mounted.container, '.panel')).toBeNull();
+
+    await click(tokenButton(mounted.container, 'creo'));
+    expect(q(mounted.container, '.panel')!.classList.contains('panel--rise')).toBe(true);
+    await click(button(mounted.container, 'Close word help'));
+    expect(q(mounted.container, '.panel')!.classList.contains('panel--fall')).toBe(true);
+    await wait(450);
+    expect(q(mounted.container, '.panel')).toBeNull();
+
+    await click(tokenButton(mounted.container, 'creo'));
+    await click(tokenButton(mounted.container, 'creo'));
+    expect(q(mounted.container, '.panel')!.classList.contains('panel--fall')).toBe(true);
   });
 });

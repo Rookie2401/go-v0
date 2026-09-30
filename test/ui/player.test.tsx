@@ -5,7 +5,7 @@ import type { AudioReplayed, AudioSeeked, PlaybackSpeedChanged } from '../../src
 import { ids } from '../../src/core';
 import { Player } from '../../src/ui/player/Player';
 import type { PlayerChange } from '../../src/ui/player/Player';
-import { button, byLabel, choose, click, flush, installMediaStubs, makeHarness, pressKey, q, qa } from './harness';
+import { button, byLabel, click, flush, installMediaStubs, makeHarness, pressKey, q, qa } from './harness';
 import type { Harness, Mounted } from './harness';
 import { seedAudio } from './harness';
 import { STORY_ID, seedStory } from './fixtures';
@@ -139,7 +139,7 @@ describe('Player', () => {
     expect(q(mounted.container, '.transcript')!.textContent).toContain('Yo creo en Dios.'); // default: visible
     expect(seen.at(-1)!.concealed(ids.sentence(STORY_ID, 0))).toBe(false);
 
-    await choose(byLabel<HTMLSelectElement>(mounted.container, 'Transcript mode'), 'hidden');
+    await click(button(mounted.container, 'Listen only (hide text)'));
     expect(q(mounted.container, '.transcript')!.textContent).not.toContain('Yo creo en Dios.');
     expect(seen.at(-1)!.concealed(ids.sentence(STORY_ID, 0))).toBe(true);
 

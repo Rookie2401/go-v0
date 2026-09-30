@@ -1,13 +1,14 @@
 /** Loads everything the Reader needs for one text from the store (+ per-sentence support from GoLearn). */
 import { useEffect, useState } from 'react';
 import type {
-  ContentSource, EnglishRescue, Paragraph, Phrase, PhraseOccurrence, Sentence, SentenceSupport, Text, TextSection, Token,
+  ContentSource, Corpus, EnglishRescue, Paragraph, Phrase, PhraseOccurrence, Sentence, SentenceSupport, Text, TextSection, Token,
 } from '../../core';
 import { useApp } from '../context';
 
 export interface TextData {
   text: Text;
   source?: ContentSource;
+  corpus?: Corpus;
   sections: TextSection[];
   paragraphs: Paragraph[];
   sentences: Sentence[];
@@ -30,8 +31,9 @@ export function useTextData(textId: string): TextDataState {
     (async () => {
       const text = await store.texts.get(textId);
       if (!text) { if (live) setState({ status: 'missing' }); return; }
-      const [source, sections, paragraphs, sentencesRaw, tokens, rescueRows, occs] = await Promise.all([
+      const [source, corpus, sections, paragraphs, sentencesRaw, tokens, rescueRows, occs] = await Promise.all([
         store.sources.get(text.sourceId),
+        store.corpora.get(text.corpusId),
         store.sections.where('textId', textId),
         store.paragraphs.where('textId', textId),
         store.sentences.where('textId', textId),
@@ -58,7 +60,7 @@ export function useTextData(textId: string): TextDataState {
       setState({
         status: 'ready',
         data: {
-          text, source,
+          text, source, corpus,
           sections: sections.sort((a, b) => a.index - b.index),
           paragraphs: paragraphs.sort((a, b) => a.index - b.index),
           sentences,

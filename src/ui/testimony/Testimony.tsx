@@ -11,6 +11,7 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { GoTellSuggestion, IntentProposal, ProductionAnalysis, Testimony as TestimonyRow, TestimonyRevision } from '../../core';
 import { useApp } from '../context';
 import { formatDate, itemSurface } from '../format';
+import { BackLink, Collapsible, Topbar } from '../ui';
 import { RevisionAudio } from './RevisionAudio';
 import { SuggestionCard } from './SuggestionCard';
 
@@ -121,109 +122,115 @@ export function Testimony() {
   const latest = revisions[0];
 
   return (
-    <div className="page testimony">
-      <h1>My Testimony</h1>
-      <p className="muted">Write in {course.title.split('→')[1]?.trim() ?? 'the language you are learning'}, in your own words. Suggestions are offered, never applied for you.</p>
+    <div>
+      <Topbar title="My Testimony" left={<BackLink to="/" label="Home" />} />
+      <div className="page page--narrow testimony route-fade">
+        <p className="soft">Write in {course.title.split('→')[1]?.trim() ?? 'the language you are learning'}, in your own words. Suggestions are offered, never applied for you.</p>
 
-      {error && <p role="alert" className="error">{error}</p>}
+        {error && <p role="alert" className="error">{error}</p>}
 
-      <label className="field">
-        <span className="field-label">Your testimony</span>
-        <textarea
-          className="editor" lang={lang} rows={8} value={draft} spellCheck={false}
-          aria-label="Your testimony"
-          placeholder=""
-          onChange={(e) => setDraft(e.target.value)}
-        />
-      </label>
-
-      <div className="actions">
-        <button type="button" className="btn-primary" disabled={!testimony || draft.trim() === '' || busy !== null} onClick={() => { void check(); }}>
-          {busy === 'check' ? 'Checking…' : 'Check my writing'}
-        </button>
-        <button type="button" className="btn-quiet" disabled={!testimony || draft.trim() === '' || busy !== null} onClick={() => { void save(); }}>Save this version</button>
-      </div>
-      {notice && <p role="status" className="small">{notice}</p>}
-
-      <details className="intent">
-        <summary>What are you trying to say?</summary>
         <label className="field">
-          <span className="muted small">Say it in English. You will get wording built from language you already know, and anything new is labelled.</span>
-          <input type="text" value={english} onChange={(e) => setEnglish(e.target.value)} aria-label="What are you trying to say?" />
+          <span className="label">Your testimony</span>
+          <textarea
+            className="editor" lang={lang} rows={8} value={draft} spellCheck={false}
+            aria-label="Your testimony"
+            placeholder=""
+            onChange={(e) => setDraft(e.target.value)}
+          />
         </label>
-        <button type="button" className="btn-quiet" disabled={busy !== null || english.trim() === ''} onClick={() => { void askIntent(); }}>Help me say it</button>
-        {proposal && (
-          <div className="proposal" aria-label="Suggested wording">
-            <p lang={lang} className="proposal-text">{proposal.proposal}</p>
-            {proposal.meaningNote && <p className="sugg-warn" role="note">{proposal.meaningNote}</p>}
-            {proposal.newItems.length > 0 && (
-              <ul className="small" aria-label="New language in this wording">
-                {proposal.newItems.map((n) => <li key={n.itemId}><span lang={lang}>{n.surface || itemSurface(n.itemId)}</span>{n.gloss ? ` (${n.gloss})` : ''} — {n.whyNeeded}</li>)}
-              </ul>
-            )}
-            {proposal.fallbackWithoutNew && (
-              <p className="small muted">Without any new language: <span lang={lang}>{proposal.fallbackWithoutNew.text}</span> — {proposal.fallbackWithoutNew.lossNote}</p>
-            )}
-            <button type="button" className="btn-quiet" onClick={() => setDraft((d) => (d ? `${d}${lang === 'th' ? '' : ' '}${proposal.proposal}` : proposal.proposal))}>Add to my draft</button>
-          </div>
-        )}
-      </details>
 
-      {analysis && (
-        <section className="suggestions" aria-label="Suggestions">
-          <h2>Suggestions</h2>
-          {suggestions.length === 0 ? (
-            <p className="muted">Nothing to suggest. That does not guarantee every sentence is correct; read it aloud once more.</p>
-          ) : (
-            bySentence.map(([index, list]) => (
-              <div key={index} className="sugg-group">
-                <h3 className="muted small">Sentence {index + 1}</h3>
-                <ul className="list plain">
-                  {list.map((s) => (
-                    <SuggestionCard key={s.id} suggestion={s} lang={lang} titles={titles}
-                      onAccept={(x) => { void accept(x); }} onReject={(x) => { void reject(x); }} onEdit={(x, t) => { void edit(x, t); }} />
-                  ))}
+        <div className="actions">
+          <button type="button" className="btn btn--primary" disabled={!testimony || draft.trim() === '' || busy !== null} onClick={() => { void check(); }}>
+            {busy === 'check' ? 'Checking…' : 'Check my writing'}
+          </button>
+          <button type="button" className="btn" disabled={!testimony || draft.trim() === '' || busy !== null} onClick={() => { void save(); }}>Save this version</button>
+        </div>
+        {notice && <p role="status" className="note">{notice}</p>}
+
+        <details className="intent">
+          <summary>What are you trying to say?</summary>
+          <label className="field">
+            <span className="card__note">Say it in English. You will get wording built from language you already know, and anything new is labelled.</span>
+            <input type="text" value={english} onChange={(e) => setEnglish(e.target.value)} aria-label="What are you trying to say?" />
+          </label>
+          <button type="button" className="btn btn--small" disabled={busy !== null || english.trim() === ''} onClick={() => { void askIntent(); }}>Help me say it</button>
+          {proposal && (
+            <div className="proposal sugg" aria-label="Suggested wording">
+              <p lang={lang} className="proposal-text natural">{proposal.proposal}</p>
+              {proposal.meaningNote && <p className="note note--warn" role="note">{proposal.meaningNote}</p>}
+              {proposal.newItems.length > 0 && (
+                <ul className="card__text" aria-label="New language in this wording">
+                  {proposal.newItems.map((n) => <li key={n.itemId}><span lang={lang}>{n.surface || itemSurface(n.itemId)}</span>{n.gloss ? ` (${n.gloss})` : ''} — {n.whyNeeded}</li>)}
                 </ul>
+              )}
+              {proposal.fallbackWithoutNew && (
+                <p className="card__prov">Without any new language: <span lang={lang}>{proposal.fallbackWithoutNew.text}</span> — {proposal.fallbackWithoutNew.lossNote}</p>
+              )}
+              <div className="card__actions">
+                <button type="button" className="btn btn--small btn--quiet" onClick={() => setDraft((d) => (d ? `${d}${lang === 'th' ? '' : ' '}${proposal.proposal}` : proposal.proposal))}>Add to my draft</button>
               </div>
-            ))
+            </div>
           )}
-        </section>
-      )}
+        </details>
 
-      {latest && <RevisionAudio key={latest.id} revision={latest} />}
-
-      <section className="history" aria-label="Version history">
-        <h2>Versions</h2>
-        {revisions.length === 0 ? <p className="muted">No saved versions yet.</p> : (
-          <ol className="list plain history-list" reversed>
-            {revisions.map((r) => (
-              <li key={r.id} data-revision-id={r.id}>
-                <div className="history-head">
-                  <strong>Version {r.number}</strong>
-                  <span className="muted small">{formatDate(r.createdAt)} · {r.sentences.length} sentence{r.sentences.length === 1 ? '' : 's'}</span>
-                </div>
-                <p lang={lang} className="history-text">{r.fullText}</p>
-                <div className="actions">
-                  <button type="button" className="btn-quiet" onClick={() => setDraft(r.fullText)}>Use as draft</button>
-                  {r.number > 1 && <button type="button" className="btn-quiet" onClick={() => { void compare(r); }}>Show changes from version {r.number - 1}</button>}
-                </div>
-                {diff?.revisionId === r.id && (
-                  <ul className="diff" aria-label={`Changes in version ${r.number}`}>
-                    {diff.rows.map((row, i) => (
-                      <li key={i} data-kind={row.kind} lang={lang}>
-                        {row.kind === 'same' && <span>{row.a ?? row.b}</span>}
-                        {row.kind === 'added' && <><span className="diff-tag">added</span> <ins>{row.b}</ins></>}
-                        {row.kind === 'removed' && <><span className="diff-tag">removed</span> <del>{row.a}</del></>}
-                        {row.kind === 'changed' && <><span className="diff-tag">changed</span> <del>{row.a}</del> → <ins>{row.b}</ins></>}
-                      </li>
+        {analysis && (
+          <section className="suggestions" aria-label="Suggestions">
+            <h2 className="section-head">Suggestions</h2>
+            {suggestions.length === 0 ? (
+              <p className="muted">Nothing to suggest. That does not guarantee every sentence is correct; read it aloud once more.</p>
+            ) : (
+              bySentence.map(([index, list]) => (
+                <div key={index} className="sugg-group">
+                  <h3 className="label">Sentence {index + 1}</h3>
+                  <ul className="list plain">
+                    {list.map((s) => (
+                      <SuggestionCard key={s.id} suggestion={s} lang={lang} titles={titles}
+                        onAccept={(x) => { void accept(x); }} onReject={(x) => { void reject(x); }} onEdit={(x, t) => { void edit(x, t); }} />
                     ))}
                   </ul>
-                )}
-              </li>
-            ))}
-          </ol>
+                </div>
+              ))
+            )}
+          </section>
         )}
-      </section>
+
+        {latest && <RevisionAudio key={latest.id} revision={latest} />}
+
+        <section className="history" aria-label="Version history">
+          <h2 className="section-head">Versions</h2>
+          {revisions.length === 0 ? <p className="muted">No saved versions yet.</p> : (
+            <ol className="entrylist history-list" reversed>
+              {revisions.map((r) => (
+                <li key={r.id} className="entry entry--static" data-revision-id={r.id}>
+                  <div className="history-head">
+                    <strong className="entry__num">Version {r.number}</strong>
+                    <span className="entry__preview">{formatDate(r.createdAt)} · {r.sentences.length} sentence{r.sentences.length === 1 ? '' : 's'}</span>
+                  </div>
+                  <p lang={lang} className="history-text">{r.fullText}</p>
+                  <div className="card__actions">
+                    <button type="button" className="btn btn--small btn--quiet" onClick={() => setDraft(r.fullText)}>Use as draft</button>
+                    {r.number > 1 && <button type="button" className="btn btn--small btn--quiet" onClick={() => { void compare(r); }}>Show changes from version {r.number - 1}</button>}
+                  </div>
+                  <Collapsible open={diff?.revisionId === r.id}>
+                    {diff?.revisionId === r.id && (
+                      <ul className="diff" aria-label={`Changes in version ${r.number}`}>
+                        {diff.rows.map((row, i) => (
+                          <li key={i} data-kind={row.kind} lang={lang}>
+                            {row.kind === 'same' && <span>{row.a ?? row.b}</span>}
+                            {row.kind === 'added' && <><span className="diff-tag">added</span> <ins>{row.b}</ins></>}
+                            {row.kind === 'removed' && <><span className="diff-tag">removed</span> <del>{row.a}</del></>}
+                            {row.kind === 'changed' && <><span className="diff-tag">changed</span> <del>{row.a}</del> → <ins>{row.b}</ins></>}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </Collapsible>
+                </li>
+              ))}
+            </ol>
+          )}
+        </section>
+      </div>
     </div>
   );
 }

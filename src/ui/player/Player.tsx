@@ -11,7 +11,7 @@
  *    "fixture audio — not speech" badge is always rendered.
  *  - Playing audio never touches reading evidence (GoLearn decides what listening events mean).
  */
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { KeyboardEvent as ReactKeyboardEvent, MutableRefObject } from 'react';
 import type { AudioManifest, AudioSegment, PlayerState, VoiceConfig } from '../../core';
 import {
@@ -20,6 +20,7 @@ import {
 import type { PlayerEffect, PlayerManifestInput, PlayerModel, TranscriptMode } from '../../golisten';
 import { useApp } from '../context';
 import { setPref, usePref } from '../prefs';
+import { I, IconBtn } from '../ui';
 import { configureAudio, isEditableTarget } from './audio';
 
 export interface PlayerChange {
@@ -57,6 +58,7 @@ const viewKey = (m: PlayerModel) =>
 
 export function Player({ textId, onChange, controlRef }: PlayerProps) {
   const { store, bus, golisten, userId, lang, session } = useApp();
+  const speedId = useId();
   const emitter = useMemo(() => listeningEmitter(bus, { userId, lang, session, textId }), [bus, userId, lang, session, textId]);
 
   const [status, setStatus] = useState<Status>('loading');
@@ -260,19 +262,19 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
   const isFixture = voice?.providerId === 'fixture' || (!voice && fixtureAsset);
   const fallbackAccent = voice && voice.actualLocale !== voice.requestedLocale;
 
-  if (status === 'loading') return <section className="player" aria-label="Audio player"><p className="muted" role="status">Loading audio…</p></section>;
+  if (status === 'loading') return <section className="player" aria-label="Audio player"><p className="card__note" role="status">Loading audio…</p></section>;
   if (status === 'error') return (
     <section className="player" aria-label="Audio player">
-      <p role="alert">Audio problem: {error}</p>
-      <button type="button" className="btn-quiet" onClick={() => { void prepare(); }}>Try again</button>
+      <p role="alert" className="error">Audio problem: {error}</p>
+      <button type="button" className="btn btn--small btn--quiet" onClick={() => { void prepare(); }}>Try again</button>
     </section>
   );
   if (status === 'none' || status === 'preparing' || !model) return (
     <section className="player" aria-label="Audio player">
-      <button type="button" className="btn-quiet" disabled={status === 'preparing'} onClick={() => { void prepare(); }}>
+      <button type="button" className="btn btn--small" disabled={status === 'preparing'} onClick={() => { void prepare(); }}>
         {status === 'preparing' ? 'Preparing audio…' : 'Prepare audio for this text'}
       </button>
-      <p className="muted small">Audio is generated on this device and cached; nothing is uploaded.</p>
+      <p className="card__note">Audio is generated on this device and cached; nothing is uploaded.</p>
     </section>
   );
 
@@ -289,58 +291,62 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
         onEnded={() => dispatch({ type: 'ended' })}
         onTimeUpdate={(e) => dispatch({ type: 'position', ms: e.currentTarget.currentTime * 1000 })}
       />
-      <div className="player-meta">
-        {isFixture && <span className="badge badge-warn" data-testid="fixture-badge">fixture audio — not speech</span>}
-        {voice && (
-          <span className="muted small" data-testid="voice-info">
-            {voice.providerId} · {voice.voiceId} · {voice.actualLocale}
-            {fallbackAccent ? ` (fallback accent; wanted ${voice.requestedLocale})` : ''}
-            {voice.approved ? '' : ' · voice not yet reviewed'}
-          </span>
-        )}
-      </div>
-
-      <div className="player-controls" role="group" aria-label="Playback controls">
-        <button type="button" onClick={() => dispatch({ type: 'prev' })} aria-label="Previous sentence">⏮</button>
-        <button type="button" className="btn-primary play" onClick={() => dispatch({ type: 'toggle' })} aria-label={model.playing ? 'Pause' : 'Play'} aria-pressed={model.playing}>
-          {model.playing ? '⏸' : '▶'}
-        </button>
-        <button type="button" onClick={() => dispatch({ type: 'next' })} aria-label="Next sentence">⏭</button>
-        <button type="button" onClick={() => dispatch({ type: 'replay' })} aria-label="Replay sentence (R)" title="Replay sentence (R)">↺ <span className="kbd">R</span></button>
-        <button type="button" aria-pressed={model.loop.unit === 'sentence'} aria-label="Loop sentence" onClick={() => dispatch({ type: 'setLoop', unit: model.loop.unit === 'sentence' ? 'none' : 'sentence' })}>⟲</button>
+      <div className="player__bar" role="group" aria-label="Playback controls">
+        <IconBtn label="Previous sentence" onClick={() => dispatch({ type: 'prev' })}>{I.prev}</IconBtn>
+        <IconBtn label={model.playing ? 'Pause' : 'Play'} active={model.playing} className="iconbtn--primary play" onClick={() => dispatch({ type: 'toggle' })}>
+          {model.playing ? I.pause : I.play}
+        </IconBtn>
+        <IconBtn label="Next sentence" onClick={() => dispatch({ type: 'next' })}>{I.next}</IconBtn>
+        <IconBtn label="Replay sentence (R)" className="player__replay" onClick={() => dispatch({ type: 'replay' })}>
+          {I.replay}<span className="kbd" aria-hidden="true">R</span>
+        </IconBtn>
+        <IconBtn label="Loop sentence" active={model.loop.unit === 'sentence'} onClick={() => dispatch({ type: 'setLoop', unit: model.loop.unit === 'sentence' ? 'none' : 'sentence' })}>{I.loop}</IconBtn>
         {hasParagraphs && (
           <>
-            <button type="button" onClick={() => dispatch({ type: 'seekParagraph', delta: -1 })} aria-label="Previous paragraph">¶⏮</button>
-            <button type="button" onClick={() => dispatch({ type: 'seekParagraph', delta: 1 })} aria-label="Next paragraph">¶⏭</button>
+            <IconBtn label="Previous paragraph" onClick={() => dispatch({ type: 'seekParagraph', delta: -1 })}>{I.prevPara}</IconBtn>
+            <IconBtn label="Next paragraph" onClick={() => dispatch({ type: 'seekParagraph', delta: 1 })}>{I.nextPara}</IconBtn>
           </>
         )}
+        <span className="player__status" aria-live="polite">
+          Sentence {model.segmentIndex + 1} of {segs.length}
+          {readyCount < segs.length && ` · ${segs.length - readyCount} without audio`}
+          {model.loop.unit === 'sentence' && ' · looping'}
+        </span>
+        {isFixture && <span className="chip chip--wine" data-testid="fixture-badge">fixture audio — not speech</span>}
       </div>
 
-      <div className="player-row">
-        <label className="tool">
-          <span className="muted small">Speed {model.speed.toFixed(2)}×</span>{' '}
+      <details className="player__more">
+        <summary className="btn btn--small btn--quiet">Speed &amp; transcript</summary>
+        <div className="sheet__row">
+          <label htmlFor={speedId}>Speed {model.speed.toFixed(2)}×</label>
           <input
+            id={speedId}
             type="range" min={MIN_SPEED} max={MAX_SPEED} step={0.05} value={model.speed}
             aria-label="Playback speed" aria-valuetext={`${model.speed.toFixed(2)} times`}
             onChange={(e) => dispatch({ type: 'setSpeed', speed: clampSpeed(Number(e.target.value)) })}
           />
-        </label>
-        <label className="tool">
-          <span className="muted small">Transcript</span>{' '}
-          <select value={model.transcriptMode} aria-label="Transcript mode" onChange={(e) => dispatch({ type: 'setTranscriptMode', mode: e.target.value as TranscriptMode })}>
-            {(Object.keys(TRANSCRIPT_LABELS) as TranscriptMode[]).map((m) => <option key={m} value={m}>{TRANSCRIPT_LABELS[m]}</option>)}
-          </select>
-        </label>
-      </div>
+        </div>
+        <div className="sheet__row sheet__row--top">
+          <span className="label">Transcript</span>
+          <div className="segmented" role="group" aria-label="Transcript mode">
+            {(Object.keys(TRANSCRIPT_LABELS) as TranscriptMode[]).map((m) => (
+              <button key={m} type="button" aria-pressed={model.transcriptMode === m} onClick={() => dispatch({ type: 'setTranscriptMode', mode: m })}>{TRANSCRIPT_LABELS[m]}</button>
+            ))}
+          </div>
+        </div>
+        {isFixture && <p className="note note--warn">This voice is placeholder audio, not speech. It is here so the player can be tried before a real voice is set up.</p>}
+        {voice && (
+          <p className="card__note" data-testid="voice-info">
+            {voice.providerId} · {voice.voiceId} · {voice.actualLocale}
+            {fallbackAccent ? ` (fallback accent; wanted ${voice.requestedLocale})` : ''}
+            {voice.approved ? '' : ' · voice not yet reviewed'}
+          </p>
+        )}
+      </details>
 
-      <p className="player-status small" aria-live="polite">
-        Sentence {model.segmentIndex + 1} of {segs.length}
-        {readyCount < segs.length && ` · ${segs.length - readyCount} without audio`}
-        {model.loop.unit === 'sentence' && ' · looping'}
-      </p>
-      {unplayable && <p className="muted small" role="status">Audio for this sentence is not ready.</p>}
+      {unplayable && <p className="note note--warn" role="status">Audio for this sentence is not ready.</p>}
       {manifest && !manifest.complete && (
-        <button type="button" className="btn-quiet" onClick={() => { void prepare(); }}>Prepare the missing audio</button>
+        <button type="button" className="btn btn--small btn--quiet" onClick={() => { void prepare(); }}>Prepare the missing audio</button>
       )}
 
       {current && (
@@ -349,8 +355,8 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
             <p lang={current.lang}>{current.displayText}</p>
           ) : model.transcriptMode === 'visible' ? null : (
             <>
-              <button type="button" className="btn-quiet" onClick={() => dispatch({ type: 'revealTranscript' })}>Show this sentence</button>
-              <p className="muted small">
+              <button type="button" className="btn btn--small btn--quiet" onClick={() => dispatch({ type: 'revealTranscript' })}>Show this sentence</button>
+              <p className="card__note">
                 {model.transcriptMode === 'reveal-after' ? 'It also appears once it has played.' : model.transcriptMode === 'reveal-current' ? 'It appears once you start it.' : 'Transcript hidden.'}
               </p>
             </>

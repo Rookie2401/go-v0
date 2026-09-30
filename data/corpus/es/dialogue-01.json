@@ -1,0 +1,99 @@
+{
+  "formatVersion": 1,
+  "lang": "es",
+  "slug": "dialogue-01",
+  "title": "Una conversación",
+  "kind": "dialogue",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:dialogue-01",
+    "title": "Spanish beginner dialogue 1 (course-authored)",
+    "author": "Go course authors (first draft by an AI assistant at the authors’ request)",
+    "rights": "owner-authored",
+    "authorship": "human",
+    "licenseNote": "Owned by the course authors."
+  },
+  "sourceNote": "Written for the course authors as a beginner seed text. The drafter was an AI assistant (Claude), not a native speaker: the text is simple and deliberately repetitive but has NOT been reviewed by a native speaker and may contain unnatural phrasing. The English glosses are the drafter's own. Have a native speaker review it before release.",
+  "staticLevel": "A1",
+  "tags": [
+    "daily-life",
+    "mission",
+    "needs-native-review"
+  ],
+  "englishSource": "Drafter-written English gloss (course authors)",
+  "sections": [
+    {
+      "title": "Una conversación",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hola, Ana, ¿cómo estás?",
+              "english": "Hello, Ana, how are you?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Estoy bien, Pedro, pero no entiendo una cosa.",
+              "english": "I am fine, Pedro, but I do not understand one thing."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Qué no entiendes?",
+              "english": "What do you not understand?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "No entiendo por qué Dios perdona el pecado.",
+              "english": "I do not understand why God forgives sin."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Yo también empecé a entender.",
+              "english": "I also began to understand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Y tú crees en Dios?",
+              "english": "And do you believe in God?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sí, creo en Dios con todo mi corazón.",
+              "english": "Yes, I believe in God with all my heart."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gracias, Pedro, yo también quiero creer en Dios.",
+              "english": "Thank you, Pedro, I also want to believe in God."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

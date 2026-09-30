@@ -1,0 +1,262 @@
+/**
+ * GoTell concept tables — small, explicit, per-language.
+ *
+ * One table drives four features (all metadata / safety, never content generation):
+ *   1. meaningChange: key terms (know / believe / trust / repent / regret / guilt / conviction /
+ *      salvation / forgiveness / grace / sin / faith) must never be swapped silently.
+ *   2. semantic section tagging of testimony sentences (metadata only, confidence recorded).
+ *   3. `theological` flag — used by tests / UI to recognise doctrinal items.
+ *   4. intent(): English keyword -> concept -> the wording the learner already knows.
+ *
+ * TODO(review): the per-language stems/forms/lexemes below are a starter set written for the
+ * fixture corpora. Every language's table needs a native-speaker pass before release. Matching is
+ * deliberately conservative (prefix stems; exact forms; Thai uses substring because it has no spaces).
+ */
+import type { LanguageCode, SemanticSection } from '../core';
+
+export type ConceptId =
+  | 'young' | 'family' | 'jesus' | 'know' | 'understand' | 'sin' | 'guilt' | 'conviction' | 'repent'
+  | 'regret' | 'forgive' | 'grace' | 'salvation' | 'believe' | 'faith' | 'trust' | 'change' | 'now' | 'share';
+
+export interface ConceptMeta {
+  id: ConceptId;
+  /** Exact lowercase English words that signal the concept in an intent request. */
+  english: string[];
+  /** Key terms: a suggestion that adds/removes/swaps one carries a meaningChange flag. */
+  keyTerm: boolean;
+  /** Doctrinal vocabulary (used to audit that beginners are not handed unencountered theology). */
+  theological: boolean;
+  /** Section hits [section, weight] used by the semantic tagger. */
+  sections: Array<[SemanticSection, number]>;
+}
+
+export const CONCEPTS: Record<ConceptId, ConceptMeta> = {
+  young: { id: 'young', english: ['young', 'child', 'childhood', 'kid', 'little'], keyTerm: false, theological: false, sections: [['childhood', 2]] },
+  family: { id: 'family', english: ['family', 'parents', 'mother', 'father', 'born'], keyTerm: false, theological: false, sections: [['background', 1]] },
+  jesus: { id: 'jesus', english: ['jesus', 'christ', 'god', 'church', 'bible', 'gospel'], keyTerm: false, theological: false, sections: [['knowledge-of-christianity', 1]] },
+  know: { id: 'know', english: ['know', 'knew', 'known'], keyTerm: true, theological: false, sections: [] },
+  understand: { id: 'understand', english: ['understand', 'understood', 'understanding'], keyTerm: false, theological: false, sections: [['understanding-of-sin', 0.5]] },
+  sin: { id: 'sin', english: ['sin', 'sins', 'sinned', 'sinful', 'sinner'], keyTerm: true, theological: true, sections: [['understanding-of-sin', 2]] },
+  guilt: { id: 'guilt', english: ['guilt', 'guilty'], keyTerm: true, theological: true, sections: [['conviction', 2]] },
+  conviction: { id: 'conviction', english: ['convicted', 'conviction', 'convinced'], keyTerm: true, theological: true, sections: [['conviction', 2]] },
+  repent: { id: 'repent', english: ['repent', 'repented', 'repentance'], keyTerm: true, theological: true, sections: [['repentance', 2]] },
+  regret: { id: 'regret', english: ['regret', 'regretted', 'sorry'], keyTerm: true, theological: true, sections: [['repentance', 1]] },
+  forgive: { id: 'forgive', english: ['forgive', 'forgave', 'forgiven', 'forgiveness'], keyTerm: true, theological: true, sections: [['forgiveness', 2]] },
+  grace: { id: 'grace', english: ['grace', 'gracious', 'mercy'], keyTerm: true, theological: true, sections: [['grace', 2]] },
+  salvation: { id: 'salvation', english: ['salvation', 'saved', 'save', 'savior', 'saviour'], keyTerm: true, theological: true, sections: [['grace', 1], ['faith', 1]] },
+  believe: { id: 'believe', english: ['believe', 'believed', 'believing'], keyTerm: true, theological: true, sections: [['faith', 2]] },
+  faith: { id: 'faith', english: ['faith'], keyTerm: true, theological: true, sections: [['faith', 1], ['present-faith', 1]] },
+  trust: { id: 'trust', english: ['trust', 'trusted'], keyTerm: true, theological: true, sections: [['faith', 1]] },
+  change: { id: 'change', english: ['change', 'changed', 'new'], keyTerm: false, theological: false, sections: [['transformation', 2]] },
+  now: { id: 'now', english: ['now', 'today', 'daily'], keyTerm: false, theological: false, sections: [['present-faith', 1]] },
+  share: { id: 'share', english: ['share', 'tell', 'testimony'], keyTerm: false, theological: false, sections: [['why-sharing', 2]] },
+};
+
+export const CONCEPT_IDS = Object.keys(CONCEPTS) as ConceptId[];
+
+interface LangEntry {
+  /** Prefix stems on the normalized form / lemma (Thai: substring). */
+  stems?: string[];
+  /** Exact normalized forms. */
+  forms?: string[];
+  /** Preferred wordings used by intent(), most neutral first. Single tokens. */
+  lexemes: string[];
+}
+
+type LangTable = Partial<Record<ConceptId, LangEntry>>;
+
+const TABLES: Record<LanguageCode, LangTable> = {
+  es: {
+    young: { stems: ['joven', 'niñ', 'pequeñ', 'infanci'], lexemes: ['joven'] },
+    family: { stems: ['famili', 'padres', 'madre', 'hermano'], lexemes: ['familia'] },
+    jesus: { forms: ['jesús', 'jesus', 'cristo', 'dios', 'iglesia', 'biblia'], lexemes: ['Jesús'] },
+    know: { forms: ['sé', 'supe'], stems: ['sabe', 'sabí', 'conoc', 'conozc'], lexemes: ['conocer', 'saber'] },
+    understand: { stems: ['entend', 'entiend', 'comprend', 'comprens'], lexemes: ['entender', 'comprender'] },
+    sin: { stems: ['pecad', 'pecar', 'pecab'], forms: ['peco', 'pequé'], lexemes: ['pecado'] },
+    guilt: { stems: ['culp'], lexemes: ['culpa'] },
+    conviction: { stems: ['convicc', 'convenc'], lexemes: ['convicción'] },
+    repent: { stems: ['arrepent', 'arrepint'], lexemes: ['arrepentirse'] },
+    regret: { stems: ['lament', 'remordim'], lexemes: ['lamentar'] },
+    forgive: { stems: ['perdon', 'perdón'], lexemes: ['perdonar', 'perdón'] },
+    grace: { forms: ['gracia'], lexemes: ['gracia'] },
+    salvation: { stems: ['salvaci', 'salvar', 'salvó', 'salvad', 'salvador'], lexemes: ['salvación'] },
+    believe: { forms: ['creer', 'creo', 'crees', 'cree', 'creemos', 'creen', 'creía', 'creías', 'creíamos', 'creían', 'creí', 'creyó', 'creyeron'], stems: ['creyen'], lexemes: ['creer'] },
+    faith: { forms: ['fe'], lexemes: ['fe'] },
+    trust: { stems: ['confia', 'confío'], lexemes: ['confiar'] },
+    change: { stems: ['cambi', 'nuev'], lexemes: ['cambiar'] },
+    now: { forms: ['ahora', 'hoy', 'actualmente'], lexemes: ['ahora'] },
+    share: { stems: ['compart'], lexemes: ['compartir'] },
+  },
+  sq: {
+    young: { stems: ['vogël', 'vogel', 'fëmij', 'femij', 'rini'], lexemes: ['vogël'] },
+    family: { stems: ['familj', 'prind'], lexemes: ['familje'] },
+    jesus: { stems: ['jezu', 'krisht', 'perëndi', 'perendi', 'bibël', 'bibel'], forms: ['zot', 'zoti'], lexemes: ['Jezusi'] },
+    know: { forms: ['di', 'dija', 'dinte'], stems: ['njoh', 'njih'], lexemes: ['njoh', 'di'] },
+    understand: { stems: ['kupt'], lexemes: ['kuptoj'] },
+    sin: { stems: ['mëkat', 'mekat'], lexemes: ['mëkat'] },
+    guilt: { stems: ['faj'], lexemes: ['faj'] },
+    conviction: { stems: ['bindj', 'bindur'], lexemes: ['bindje'] },
+    repent: { stems: ['pendo', 'pendim', 'pendua'], lexemes: ['pendohem'] },
+    regret: { stems: ['keqardh'], lexemes: ['keqardhje'] },
+    forgive: { stems: ['falj', 'falur', 'faluar'], forms: ['fal', 'fali'], lexemes: ['falje'] },
+    grace: { forms: ['hir', 'hiri', 'hirin', 'hirit'], lexemes: ['hir'] },
+    salvation: { stems: ['shpëtim', 'shpetim', 'shpëto', 'shpeto', 'shpëtu', 'shpetu'], lexemes: ['shpëtim'] },
+    believe: { stems: ['besoj', 'besov', 'besonte', 'besues'], lexemes: ['besoj'] },
+    faith: { stems: ['besim'], lexemes: ['besim'] },
+    trust: { stems: ['mbështet', 'mbeshtet'], lexemes: ['mbështetem'] },
+    change: { stems: ['ndrysh'], lexemes: ['ndryshoj'] },
+    now: { forms: ['tani', 'sot'], lexemes: ['tani'] },
+    share: { stems: ['ndarj'], forms: ['ndaj'], lexemes: ['ndaj'] },
+  },
+  th: {
+    young: { stems: ['เด็ก'], lexemes: ['เด็ก'] },
+    family: { stems: ['ครอบครัว', 'พ่อแม่'], lexemes: ['ครอบครัว'] },
+    jesus: { stems: ['เยซู', 'พระคริสต์', 'พระเจ้า', 'คริสตจักร', 'โบสถ์', 'พระคัมภีร์'], lexemes: ['พระเยซู'] },
+    know: { forms: ['รู้', 'รู้จัก'], lexemes: ['รู้จัก'] },
+    understand: { stems: ['เข้าใจ'], lexemes: ['เข้าใจ'] },
+    sin: { stems: ['บาป'], lexemes: ['บาป'] },
+    guilt: { stems: ['ผิด'], lexemes: ['ความผิด'] },
+    conviction: { stems: ['สำนึก'], lexemes: ['สำนึก'] },
+    repent: { stems: ['กลับใจ'], lexemes: ['กลับใจ'] },
+    regret: { stems: ['เสียใจ', 'เสียดาย'], lexemes: ['เสียใจ'] },
+    forgive: { stems: ['อภัย', 'ยกโทษ'], lexemes: ['อภัย'] },
+    grace: { stems: ['พระคุณ'], lexemes: ['พระคุณ'] },
+    salvation: { stems: ['รอด'], lexemes: ['ความรอด'] },
+    believe: { stems: ['เชื่อ'], lexemes: ['เชื่อ'] },
+    faith: { stems: ['ความเชื่อ', 'ศรัทธา'], lexemes: ['ศรัทธา'] },
+    trust: { stems: ['วางใจ', 'ไว้ใจ'], lexemes: ['ไว้ใจ'] },
+    change: { stems: ['เปลี่ยน', 'ใหม่'], lexemes: ['เปลี่ยน'] },
+    now: { forms: ['ตอนนี้', 'ปัจจุบัน', 'ทุกวัน'], lexemes: ['ตอนนี้'] },
+    share: { stems: ['แบ่งปัน', 'เล่า'], lexemes: ['แบ่งปัน'] },
+  },
+  hi: {
+    young: { stems: ['छोट', 'बचपन', 'बच्च', 'युवा', 'जवान'], lexemes: ['छोटा'] },
+    family: { stems: ['परिवार', 'माता', 'पिता'], lexemes: ['परिवार'] },
+    jesus: { stems: ['यीशु', 'मसीह', 'परमेश्वर', 'ईश्वर', 'कलीसिया', 'बाइबल'], forms: ['चर्च'], lexemes: ['यीशु'] },
+    know: { forms: ['जानता', 'जानती', 'जानते', 'जानना', 'जानने'], lexemes: ['जानना'] },
+    understand: { stems: ['समझ'], lexemes: ['समझना'] },
+    sin: { stems: ['पाप'], lexemes: ['पाप'] },
+    guilt: { stems: ['दोष', 'अपराध'], lexemes: ['दोष'] },
+    conviction: { stems: ['कायल'], lexemes: ['कायल'] },
+    repent: { stems: ['पश्चाताप', 'पछता', 'तौबा'], lexemes: ['पश्चाताप'] },
+    regret: { stems: ['अफसोस', 'खेद'], lexemes: ['अफसोस'] },
+    forgive: { stems: ['क्षमा', 'माफ'], lexemes: ['क्षमा'] },
+    grace: { stems: ['अनुग्रह', 'कृपा'], lexemes: ['अनुग्रह'] },
+    salvation: { stems: ['उद्धार', 'मुक्ति'], lexemes: ['उद्धार'] },
+    believe: { stems: ['विश्वास'], lexemes: ['विश्वास'] },
+    faith: { stems: ['विश्वास', 'आस्था'], lexemes: ['आस्था'] },
+    trust: { stems: ['भरोसा'], lexemes: ['भरोसा'] },
+    change: { stems: ['बदल', 'नया', 'नई', 'नये'], lexemes: ['बदलना'] },
+    now: { forms: ['अब', 'आज'], lexemes: ['अब'] },
+    share: { stems: ['बाँट', 'बांट', 'साझा'], lexemes: ['साझा'] },
+  },
+  de: {
+    young: { stems: ['jung', 'kindheit', 'kind'], lexemes: ['jung'] },
+    family: { stems: ['famili', 'eltern', 'mutter', 'vater'], lexemes: ['familie'] },
+    jesus: { stems: ['jesus', 'christus', 'gott', 'kirche', 'bibel', 'gemeinde'], lexemes: ['Jesus'] },
+    know: { forms: ['weiß', 'weiss', 'wusste', 'wusstest', 'wussten', 'wissen'], stems: ['kenn', 'kannte'], lexemes: ['kennen', 'wissen'] },
+    understand: { stems: ['versteh', 'verstand'], lexemes: ['verstehen'] },
+    sin: { stems: ['sünd', 'suend'], lexemes: ['Sünde'] },
+    guilt: { stems: ['schuld'], lexemes: ['Schuld'] },
+    conviction: { stems: ['überzeug', 'ueberzeug', 'überführ'], lexemes: ['Überzeugung'] },
+    repent: { stems: ['reue', 'bereu', 'buße', 'buss', 'umkehr'], lexemes: ['bereuen'] },
+    regret: { stems: ['bedauer'], forms: ['leid'], lexemes: ['bedauern'] },
+    forgive: { stems: ['vergeb', 'vergab'], lexemes: ['vergeben'] },
+    grace: { stems: ['gnade', 'gnäd'], lexemes: ['Gnade'] },
+    salvation: { stems: ['erlös', 'rettung', 'gerettet', 'retten', 'erretten'], lexemes: ['Erlösung'] },
+    believe: { stems: ['glaub'], lexemes: ['glauben'] },
+    faith: { forms: ['glaube'], lexemes: ['Glaube'] },
+    trust: { stems: ['vertrau'], lexemes: ['vertrauen'] },
+    change: { stems: ['änder', 'aender', 'verändert', 'neu'], lexemes: ['ändern'] },
+    now: { forms: ['jetzt', 'heute', 'nun'], lexemes: ['jetzt'] },
+    share: { stems: ['erzähl', 'mitteil', 'weitersag'], lexemes: ['erzählen'] },
+  },
+};
+
+/** Negation markers (per language). Used to keep negation outside a recombined phrase and flag it. */
+export const NEGATORS: Record<LanguageCode, string[]> = {
+  es: ['no', 'nunca', 'jamás', 'jamas', 'ni'],
+  sq: ['nuk', 's', 'mos', 'jo'],
+  th: ['ไม่', 'ไม่ได้', 'มิ'],
+  hi: ['नहीं', 'न', 'मत'],
+  de: ['nicht', 'kein', 'keine', 'keinen', 'keinem', 'keiner', 'nie', 'niemals'],
+};
+
+/** Subject pronouns: a slot filler that extends backwards stops here (the subject is not part of a phrase slot). */
+export const SUBJECT_PRONOUNS: Record<LanguageCode, string[]> = {
+  es: ['yo', 'tú', 'él', 'ella', 'nosotros', 'nosotras', 'usted', 'ustedes', 'ellos', 'ellas'],
+  sq: ['unë', 'une', 'ti', 'ai', 'ajo', 'ne', 'ju', 'ata', 'ato'],
+  th: ['ฉัน', 'ผม', 'ดิฉัน', 'เขา', 'เธอ', 'เรา', 'คุณ'],
+  hi: ['मैं', 'तू', 'तुम', 'वह', 'वो', 'हम', 'आप', 'ये', 'वे'],
+  de: ['ich', 'du', 'er', 'sie', 'es', 'wir', 'ihr'],
+};
+
+// ───────────────────────── compiled matchers ─────────────────────────
+
+interface Compiled { concept: ConceptId; stems: string[]; forms: Set<string> }
+const nfc = (s: string) => s.normalize('NFC').toLowerCase();
+const compiled = new Map<LanguageCode, Compiled[]>();
+
+function compile(lang: LanguageCode): Compiled[] {
+  let c = compiled.get(lang);
+  if (!c) {
+    c = [];
+    const table = TABLES[lang];
+    for (const id of CONCEPT_IDS) {
+      const e = table[id];
+      if (!e) continue;
+      c.push({ concept: id, stems: (e.stems ?? []).map(nfc), forms: new Set((e.forms ?? []).map(nfc)) });
+    }
+    compiled.set(lang, c);
+  }
+  return c;
+}
+
+/** Concepts a token (normalized form + optional lemma) belongs to. */
+export function conceptsForToken(lang: LanguageCode, normalized: string, lemma?: string): ConceptId[] {
+  const cands = [nfc(normalized)];
+  if (lemma) cands.push(nfc(lemma));
+  const out: ConceptId[] = [];
+  for (const e of compile(lang)) {
+    const hit = cands.some((c) => e.forms.has(c) || e.stems.some((s) => (lang === 'th' ? c.includes(s) : c.startsWith(s))));
+    if (hit) out.push(e.concept);
+  }
+  return out;
+}
+
+export function lexemesFor(lang: LanguageCode, concept: ConceptId): string[] {
+  return TABLES[lang][concept]?.lexemes ?? [];
+}
+
+/** English words in a "what are you trying to say?" request → concepts, ordered by first appearance. */
+export function englishConcepts(english: string): Array<{ concept: ConceptId; word: string }> {
+  const out: Array<{ concept: ConceptId; word: string }> = [];
+  const seen = new Set<ConceptId>();
+  for (const m of english.toLowerCase().matchAll(/[a-z']+/g)) {
+    const word = m[0];
+    for (const id of CONCEPT_IDS) {
+      if (!seen.has(id) && CONCEPTS[id].english.includes(word)) {
+        seen.add(id);
+        out.push({ concept: id, word });
+      }
+    }
+  }
+  return out;
+}
+
+/** Semantic section tag for a sentence from its concept hits. Confidence = (best/total weight) × min(1, best/2). */
+export function tagSection(lang: LanguageCode, tokens: Array<{ normalized: string; lemma?: string }>): { section: SemanticSection; confidence: number } | undefined {
+  const concepts = new Set<ConceptId>();
+  for (const t of tokens) for (const c of conceptsForToken(lang, t.normalized, t.lemma)) concepts.add(c);
+  const score = new Map<SemanticSection, number>();
+  for (const c of concepts) for (const [section, w] of CONCEPTS[c].sections) score.set(section, (score.get(section) ?? 0) + w);
+  let best: SemanticSection | undefined;
+  let bestW = 0;
+  let total = 0;
+  for (const [s, w] of score) {
+    total += w;
+    if (w > bestW) { best = s; bestW = w; }
+  }
+  if (!best || bestW < 1) return undefined;
+  return { section: best, confidence: Math.round((bestW / total) * Math.min(1, bestW / 2) * 100) / 100 };
+}

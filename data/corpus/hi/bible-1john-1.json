@@ -1,0 +1,76 @@
+{
+  "formatVersion": 1,
+  "lang": "hi",
+  "slug": "bible-1john-1",
+  "title": "1 यूहन्ना 1:8–9; यूहन्ना 3:16",
+  "kind": "scripture",
+  "corpus": {
+    "id": "bible-hi-unverified",
+    "kind": "scripture",
+    "title": "Hindi Bible (unverified sample)"
+  },
+  "source": {
+    "id": "src:hi:bible-1john-1",
+    "title": "Hindi Bible passage (translation not identified)",
+    "edition": "unverified sample",
+    "rights": "unverified",
+    "authorship": "human",
+    "licenseNote": "Licence unknown. Do not ship."
+  },
+  "sourceNote": "Wording the drafter (an AI assistant) recalls as the traditional published Hindi rendering, written from memory. The translation/edition could not be identified, the wording may deviate from it, and the licence is unknown (rights: unverified). This is a test sample: it MUST be replaced by a licensed, verified text before any release.",
+  "version": "unverified sample",
+  "tags": [
+    "scripture",
+    "1john-1",
+    "john-3"
+  ],
+  "generated": false,
+  "scripture": {
+    "book": "1JN",
+    "chapter": 1
+  },
+  "englishSource": "World English Bible (public domain)",
+  "sections": [
+    {
+      "title": "1 यूहन्ना 1",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "यदि हम कहें, कि हम में कुछ पाप नहीं, तो अपने आप को धोखा देते हैं, और हम में सत्य नहीं।",
+              "english": "If we say that we have no sin, we deceive ourselves, and the truth isn’t in us.",
+              "verseRefs": [
+                "1JN.1.8"
+              ]
+            },
+            {
+              "text": "यदि हम अपने पापों को मान लें, तो वह हमारे पापों को क्षमा करने और हमें सब अधर्म से शुद्ध करने में विश्वासयोग्य और धर्मी है।",
+              "english": "If we confess our sins, he is faithful and righteous to forgive us the sins, and to cleanse us from all unrighteousness.",
+              "verseRefs": [
+                "1JN.1.9"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "यूहन्ना 3",
+      "chapter": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "क्योंकि परमेश्वर ने जगत से ऐसा प्रेम रखा कि उसने अपना एकलौता पुत्र दे दिया, ताकि जो कोई उस पर विश्वास करे वह नाश न हो, परन्तु अनन्त जीवन पाए।",
+              "english": "For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
+              "verseRefs": [
+                "JHN.3.16"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

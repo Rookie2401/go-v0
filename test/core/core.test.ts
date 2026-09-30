@@ -26,7 +26,7 @@ describe('StoreEventBus', () => {
     const bus = new StoreEventBus(store, () => '2026-02-01T00:00:00.000Z');
     const seen: string[] = [];
     bus.subscribe(async (e) => { seen.push(e.type); }, { types: ['SentenceViewed'] });
-    const input = { type: 'SentenceViewed', userId: 'u1', lang: 'es', surface: 'corpus', session: 's1', dedupeKey: 'view:u1:s1:x', textId: 'text:es:x', sentenceId: 'text:es:x/s0', tokenIds: [] } as const;
+    const input = { type: 'SentenceViewed', userId: 'u1', lang: 'es', surface: 'corpus', session: 's1', dedupeKey: 'view:u1:s1:x', textId: 'text:es:x', sentenceId: 'text:es:x/s0', tokenIds: [] as string[] } as const;
     const first = await bus.emit<SentenceViewed>({ ...input });
     const second = await bus.emit<SentenceViewed>({ ...input });
     expect(first?.at).toBe('2026-02-01T00:00:00.000Z');

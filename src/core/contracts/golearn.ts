@@ -51,7 +51,7 @@ export interface ScriptureReadiness {
   /** Items whose acquisition would most raise coverage, best first. */
   prerequisites: Array<{ itemId: string; itemKind: ItemKind; surface: string; gain: number }>;
   /** Existing corpus texts (never generated here) that contain the most prerequisites, best first. */
-  preparatoryTexts: Array<{ textId: string; covers: string[]; band: ComfortBand }>;
+  preparatoryTexts: Array<{ textId: string; covers: string[]; band: ComfortBand; generated: boolean }>;
 }
 
 export type RecommendationReason =

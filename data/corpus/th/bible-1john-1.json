@@ -1,0 +1,76 @@
+{
+  "formatVersion": 1,
+  "lang": "th",
+  "slug": "bible-1john-1",
+  "title": "1 ยอห์น 1:8–9; ยอห์น 3:16",
+  "kind": "scripture",
+  "corpus": {
+    "id": "bible-th-unverified",
+    "kind": "scripture",
+    "title": "Thai Bible (unverified sample)"
+  },
+  "source": {
+    "id": "src:th:bible-1john-1",
+    "title": "Thai Bible passage (translation not identified)",
+    "edition": "unverified sample",
+    "rights": "unverified",
+    "authorship": "human",
+    "licenseNote": "Licence unknown. Do not ship."
+  },
+  "sourceNote": "Wording the drafter (an AI assistant) recalls as a published modern Thai rendering, written from memory. The translation/edition could not be identified, the wording may deviate from it (John 3:16 in particular is a blend of common phrasings), and the licence is unknown (rights: unverified). This is a test sample: it MUST be replaced by a licensed, verified text before any release.",
+  "version": "unverified sample",
+  "tags": [
+    "scripture",
+    "1john-1",
+    "john-3"
+  ],
+  "generated": false,
+  "scripture": {
+    "book": "1JN",
+    "chapter": 1
+  },
+  "englishSource": "World English Bible (public domain)",
+  "sections": [
+    {
+      "title": "1 ยอห์น 1",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ถ้าเราพูดว่าเราไม่มีบาป เราก็หลอกลวงตัวเราเอง และความจริงไม่ได้อยู่ในเรา",
+              "english": "If we say that we have no sin, we deceive ourselves, and the truth isn’t in us.",
+              "verseRefs": [
+                "1JN.1.8"
+              ]
+            },
+            {
+              "text": "ถ้าเราสารภาพบาปของเรา พระองค์ทรงสัตย์ซื่อและทรงยุติธรรมที่จะโปรดยกบาปของเรา และชำระเราให้พ้นจากความอธรรมทั้งสิ้น",
+              "english": "If we confess our sins, he is faithful and righteous to forgive us the sins, and to cleanse us from all unrighteousness.",
+              "verseRefs": [
+                "1JN.1.9"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ยอห์น 3",
+      "chapter": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "เพราะว่าพระเจ้าทรงรักโลก จนได้ประทานพระบุตรองค์เดียวของพระองค์ เพื่อทุกคนที่เชื่อในพระบุตรนั้นจะไม่พินาศ แต่มีชีวิตนิรันดร์",
+              "english": "For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
+              "verseRefs": [
+                "JHN.3.16"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+/**
+ * Small adapter-backed text helpers shared by the provider and the service.
+ * Everything goes through LanguageAdapter.tokenize/analyze — never split(' ').
+ */
+import type { AnalysisCandidate, AnalyzedToken, LanguageAdapter, PartOfSpeech, RawToken } from '../core';
+
+/** Analyses below this confidence are treated as "unknown" (uncertainty is not a guess). */
+export const MIN_ANALYSIS_CONFIDENCE = 0.5;
+/** ErrorCandidates below this confidence are ignored entirely (conservative by design). */
+export const MIN_ERROR_CONFIDENCE = 0.6;
+
+/** Closed-class parts of speech. Replacing/adding these never adds "content". NUM is content (dates). */
+export const FUNCTION_POS: ReadonlySet<PartOfSpeech> = new Set<PartOfSpeech>(['DET', 'ADP', 'PRON', 'CONJ', 'SCONJ', 'AUX', 'PART', 'CLF', 'PUNCT']);
+/** A slot filler never runs across these. */
+export const BOUNDARY_POS: ReadonlySet<PartOfSpeech> = new Set<PartOfSpeech>(['CONJ', 'SCONJ', 'VERB', 'AUX']);
+
+export interface Parsed {
+  text: string;
+  tokens: RawToken[];
+  analyses: AnalyzedToken[];
+}
+
+export function parse(adapter: LanguageAdapter, text: string): Parsed {
+  const tokens = adapter.tokenize(text);
+  return { text, tokens, analyses: adapter.analyze(tokens) };
+}
+
+export function bestCandidate(a: AnalyzedToken | undefined): AnalysisCandidate | undefined {
+  const c = a?.candidates[0];
+  return c && c.confidence >= MIN_ANALYSIS_CONFIDENCE ? c : undefined;
+}
+
+export function posAt(p: Parsed, i: number): PartOfSpeech | undefined {
+  return bestCandidate(p.analyses[i])?.pos;
+}
+
+/** Function word only when the analysis says so; unknown POS is treated as content (conservative). */
+export function isFunctionAt(p: Parsed, i: number): boolean {
+  const pos = posAt(p, i);
+  return pos !== undefined && FUNCTION_POS.has(pos);
+}
+
+export function wordIndexes(p: Parsed): number[] {
+  const out: number[] = [];
+  p.tokens.forEach((t, i) => { if (t.isWord) out.push(i); });
+  return out;
+}
+
+export function normSet(p: Parsed): Set<string> {
+  return new Set(wordIndexes(p).map((i) => p.tokens[i].normalized));
+}
+
+export function jaccard(a: Set<string>, b: Set<string>): number {
+  if (a.size === 0 && b.size === 0) return 1;
+  let inter = 0;
+  for (const x of a) if (b.has(x)) inter++;
+  return inter / (a.size + b.size - inter);
+}
+
+/** Two normalized forms are "the same word" when equal or one of the adapter's relations holds. */
+export function related(adapter: LanguageAdapter, a: string, b: string): boolean {
+  return a === b || adapter.relate(a, b) !== 'none';
+}
+
+/** Word-token indexes in `suggested` whose normalized form is not covered by the original (multiset diff). */
+export function introducedIndexes(original: Parsed, suggested: Parsed): number[] {
+  const pool = new Map<string, number>();
+  for (const i of wordIndexes(original)) pool.set(original.tokens[i].normalized, (pool.get(original.tokens[i].normalized) ?? 0) + 1);
+  const out: number[] = [];
+  for (const i of wordIndexes(suggested)) {
+    const n = suggested.tokens[i].normalized;
+    const c = pool.get(n) ?? 0;
+    if (c > 0) pool.set(n, c - 1);
+    else out.push(i);
+  }
+  return out;
+}
+
+/** Word-token indexes in `original` that the suggested text no longer contains (multiset diff). */
+export function removedIndexes(original: Parsed, suggested: Parsed): number[] {
+  return introducedIndexes(suggested, original);
+}
+
+/**
+ * "Never add content" check. Content words the suggestion adds (not related to anything the learner
+ * wrote, not from an allowed known phrase) may not outnumber the content words it removes — i.e. a
+ * suggestion may reorder, inflect or *replace* the learner's tokens, never append new nouns/verbs.
+ */
+export function addsContent(adapter: LanguageAdapter, original: Parsed, suggested: Parsed, allowedWords: ReadonlySet<string>): boolean {
+  const origWords = wordIndexes(original).map((i) => original.tokens[i].normalized);
+  const sugWords = wordIndexes(suggested).map((i) => suggested.tokens[i].normalized);
+  const added = wordIndexes(suggested).filter((i) => {
+    if (isFunctionAt(suggested, i)) return false;
+    const n = suggested.tokens[i].normalized;
+    if (allowedWords.has(n)) return false;
+    return !origWords.some((o) => related(adapter, n, o));
+  });
+  const removed = wordIndexes(original).filter((i) => {
+    if (isFunctionAt(original, i)) return false;
+    const n = original.tokens[i].normalized;
+    return !sugWords.some((s) => related(adapter, n, s));
+  });
+  return added.length > removed.length;
+}
+
+/** Sørensen–Dice overlap of two token sets (0..1) — used to find which suggestion a saved sentence descends from. */
+export function dice(a: Set<string>, b: Set<string>): number {
+  if (a.size === 0 && b.size === 0) return 1;
+  let inter = 0;
+  for (const x of a) if (b.has(x)) inter++;
+  return (2 * inter) / (a.size + b.size);
+}

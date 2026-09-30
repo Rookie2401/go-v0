@@ -1,0 +1,89 @@
+{
+  "formatVersion": 1,
+  "lang": "hi",
+  "slug": "story-01",
+  "title": "मेरी कहानी",
+  "kind": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:story-01",
+    "title": "Hindi beginner story 1 (course-authored)",
+    "author": "Go course authors (first draft by an AI assistant at the authors’ request)",
+    "rights": "owner-authored",
+    "authorship": "human",
+    "licenseNote": "Owned by the course authors."
+  },
+  "sourceNote": "Written for the course authors as a beginner seed text. The drafter was an AI assistant (Claude), not a native speaker: the text is simple and deliberately repetitive but has NOT been reviewed by a native speaker and may contain unnatural phrasing. The English glosses are the drafter's own. Have a native speaker review it before release.",
+  "staticLevel": "A1",
+  "tags": [
+    "mission",
+    "testimony",
+    "prep:john-3",
+    "prep:1john-1",
+    "needs-native-review"
+  ],
+  "englishSource": "Drafter-written English gloss (course authors)",
+  "sections": [
+    {
+      "title": "मेरी कहानी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "जब मैं छोटा था, मैं अपने दिल को नहीं समझता था।",
+              "english": "When I was young, I did not understand my own heart."
+            },
+            {
+              "text": "जब मैं छोटा था, मेरे दिल में पाप था।",
+              "english": "When I was young, there was sin in my heart."
+            },
+            {
+              "text": "मैं परमेश्वर पर विश्वास नहीं करता था।",
+              "english": "I did not believe in God."
+            },
+            {
+              "text": "एक दिन मैं अपना पाप समझने लगा।",
+              "english": "One day I began to understand my sin."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "परमेश्वर ने मेरा पाप क्षमा कर दिया।",
+              "english": "God forgave my sin."
+            },
+            {
+              "text": "अब मैंने परमेश्वर पर विश्वास कर लिया है।",
+              "english": "Now I have put my faith in God."
+            },
+            {
+              "text": "अब मेरे दिल में शांति है।",
+              "english": "Now there is peace in my heart."
+            },
+            {
+              "text": "मेरा दिल शांत हो गया।",
+              "english": "My heart became calm."
+            },
+            {
+              "text": "परमेश्वर दुनिया से प्रेम करता है।",
+              "english": "God loves the world."
+            },
+            {
+              "text": "मैं भी परमेश्वर से प्रेम करता हूँ।",
+              "english": "I love God too."
+            },
+            {
+              "text": "अब मैं समझता हूँ कि परमेश्वर सबको क्षमा करता है।",
+              "english": "Now I understand that God forgives everyone."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

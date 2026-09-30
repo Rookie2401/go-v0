@@ -1,0 +1,99 @@
+{
+  "formatVersion": 1,
+  "lang": "sq",
+  "slug": "dialogue-01",
+  "title": "Një bisedë",
+  "kind": "dialogue",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:dialogue-01",
+    "title": "Albanian beginner dialogue 1 (course-authored)",
+    "author": "Go course authors (first draft by an AI assistant at the authors’ request)",
+    "rights": "owner-authored",
+    "authorship": "human",
+    "licenseNote": "Owned by the course authors."
+  },
+  "sourceNote": "Written for the course authors as a beginner seed text. The drafter was an AI assistant (Claude), not a native speaker: the text is simple and deliberately repetitive but has NOT been reviewed by a native speaker and may contain unnatural phrasing. The English glosses are the drafter's own. Have a native speaker review it before release.",
+  "staticLevel": "A1",
+  "tags": [
+    "daily-life",
+    "mission",
+    "needs-native-review"
+  ],
+  "englishSource": "Drafter-written English gloss (course authors)",
+  "sections": [
+    {
+      "title": "Një bisedë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Përshëndetje, Ana, si je?",
+              "english": "Hello, Ana, how are you?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jam mirë, Pavli, por nuk e kuptoj një gjë.",
+              "english": "I am fine, Pavli, but I do not understand one thing."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Çfarë nuk kupton?",
+              "english": "What do you not understand?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nuk e kuptoj pse Perëndia e fal mëkatin.",
+              "english": "I do not understand why God forgives sin."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Edhe unë fillova të kuptoj.",
+              "english": "I also began to understand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "A beson te Perëndia?",
+              "english": "Do you believe in God?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Po, besoj te Perëndia me gjithë zemër.",
+              "english": "Yes, I believe in God with all my heart."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Faleminderit, Pavli, edhe unë dua të besoj te Perëndia.",
+              "english": "Thank you, Pavli, I also want to believe in God."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

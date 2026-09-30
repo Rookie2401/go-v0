@@ -321,6 +321,8 @@ export interface Encounter {
   /** Evidence weight this encounter contributed. */
   weight: number;
   playbackSpeed?: number; // listening only
+  /** Production encounters only: how the production came about. */
+  productionKind?: ProductionKind;
 }
 
 /** The layered support ladder. Higher = more help = weaker evidence of comprehension. */

@@ -1,0 +1,76 @@
+{
+  "formatVersion": 1,
+  "lang": "de",
+  "slug": "bible-1john-1",
+  "title": "1. Johannes 1,8–9; Johannes 3,16",
+  "kind": "scripture",
+  "corpus": {
+    "id": "bible-de-luther1912",
+    "kind": "scripture",
+    "title": "Lutherbibel 1912"
+  },
+  "source": {
+    "id": "src:de:bible-1john-1",
+    "title": "Die Bibel nach Martin Luther, Ausgabe 1912",
+    "edition": "Luther 1912",
+    "rights": "public-domain",
+    "authorship": "public-domain",
+    "licenseNote": "The 1912 revision of Luther’s translation is in the public domain."
+  },
+  "sourceNote": "Luther 1912 (public domain). The verses were transcribed by the drafter (an AI assistant) from memory of the 1912 text, keeping its period orthography (daß, unsre). NOT yet proof-checked against a scan or an eBible/Wikisource copy: verify word-for-word before release.",
+  "version": "Luther 1912",
+  "tags": [
+    "scripture",
+    "1john-1",
+    "john-3"
+  ],
+  "generated": false,
+  "scripture": {
+    "book": "1JN",
+    "chapter": 1
+  },
+  "englishSource": "World English Bible (public domain)",
+  "sections": [
+    {
+      "title": "1. Johannes 1",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "So wir sagen, wir haben keine Sünde, so verführen wir uns selbst, und die Wahrheit ist nicht in uns.",
+              "english": "If we say that we have no sin, we deceive ourselves, and the truth isn’t in us.",
+              "verseRefs": [
+                "1JN.1.8"
+              ]
+            },
+            {
+              "text": "So wir aber unsre Sünden bekennen, so ist er treu und gerecht, daß er uns die Sünden vergibt und reinigt uns von aller Untugend.",
+              "english": "If we confess our sins, he is faithful and righteous to forgive us the sins, and to cleanse us from all unrighteousness.",
+              "verseRefs": [
+                "1JN.1.9"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Johannes 3",
+      "chapter": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Also hat Gott die Welt geliebt, daß er seinen eingeborenen Sohn gab, auf daß alle, die an ihn glauben, nicht verloren werden, sondern das ewige Leben haben.",
+              "english": "For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
+              "verseRefs": [
+                "JHN.3.16"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

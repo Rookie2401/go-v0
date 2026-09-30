@@ -1,0 +1,99 @@
+{
+  "formatVersion": 1,
+  "lang": "th",
+  "slug": "dialogue-01",
+  "title": "บทสนทนา",
+  "kind": "dialogue",
+  "corpus": {
+    "id": "ci-th",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Thai"
+  },
+  "source": {
+    "id": "src:th:dialogue-01",
+    "title": "Thai beginner dialogue 1 (course-authored)",
+    "author": "Go course authors (first draft by an AI assistant at the authors’ request)",
+    "rights": "owner-authored",
+    "authorship": "human",
+    "licenseNote": "Owned by the course authors."
+  },
+  "sourceNote": "Written for the course authors as a beginner seed text. The drafter was an AI assistant (Claude), not a native speaker: the text is simple and deliberately repetitive but has NOT been reviewed by a native speaker and may contain unnatural phrasing. The English glosses are the drafter's own. Have a native speaker review it before release.",
+  "staticLevel": "A1",
+  "tags": [
+    "daily-life",
+    "mission",
+    "needs-native-review"
+  ],
+  "englishSource": "Drafter-written English gloss (course authors)",
+  "sections": [
+    {
+      "title": "บทสนทนา",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "สวัสดีค่ะ สบายดีไหมคะ",
+              "english": "Hello, how are you?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "สบายดีครับ แต่ผมไม่เข้าใจเรื่องหนึ่ง",
+              "english": "I am fine, but there is one thing I do not understand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ไม่เข้าใจเรื่องอะไรคะ",
+              "english": "What is it you do not understand?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ผมไม่เข้าใจว่าทำไมพระเจ้าทรงยกโทษบาปครับ",
+              "english": "I do not understand why God forgives sin."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันก็เริ่มเข้าใจแล้วค่ะ",
+              "english": "I have begun to understand too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "คุณเชื่อในพระเจ้าไหมครับ",
+              "english": "Do you believe in God?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ฉันเชื่อในพระเจ้าด้วยหัวใจทั้งหมดค่ะ",
+              "english": "I believe in God with all my heart."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ขอบคุณครับ ผมอยากเชื่อในพระเจ้าด้วย",
+              "english": "Thank you. I want to believe in God too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

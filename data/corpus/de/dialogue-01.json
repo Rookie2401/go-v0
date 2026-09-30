@@ -1,0 +1,99 @@
+{
+  "formatVersion": 1,
+  "lang": "de",
+  "slug": "dialogue-01",
+  "title": "Ein Gespräch",
+  "kind": "dialogue",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:dialogue-01",
+    "title": "German beginner dialogue 1 (course-authored)",
+    "author": "Go course authors (first draft by an AI assistant at the authors’ request)",
+    "rights": "owner-authored",
+    "authorship": "human",
+    "licenseNote": "Owned by the course authors."
+  },
+  "sourceNote": "Written for the course authors as a beginner seed text. The drafter was an AI assistant (Claude), not a native speaker: the text is simple and deliberately repetitive but has NOT been reviewed by a native speaker and may contain unnatural phrasing. The English glosses are the drafter's own. Have a native speaker review it before release.",
+  "staticLevel": "A1",
+  "tags": [
+    "daily-life",
+    "mission",
+    "needs-native-review"
+  ],
+  "englishSource": "Drafter-written English gloss (course authors)",
+  "sections": [
+    {
+      "title": "Ein Gespräch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hallo, Anna, wie geht es dir?",
+              "english": "Hello, Anna, how are you?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mir geht es gut, Paul, aber ich verstehe etwas nicht.",
+              "english": "I am fine, Paul, but I do not understand something."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Was verstehst du nicht?",
+              "english": "What do you not understand?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ich verstehe nicht, warum Gott die Sünde vergibt.",
+              "english": "I do not understand why God forgives sin."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ich fing auch an, es zu verstehen.",
+              "english": "I also began to understand it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Glaubst du an Gott?",
+              "english": "Do you believe in God?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ja, ich glaube von ganzem Herzen an Gott.",
+              "english": "Yes, I believe in God with all my heart."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Danke, Paul, ich will auch an Gott glauben.",
+              "english": "Thank you, Paul, I also want to believe in God."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

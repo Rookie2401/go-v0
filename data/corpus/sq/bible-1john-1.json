@@ -1,0 +1,76 @@
+{
+  "formatVersion": 1,
+  "lang": "sq",
+  "slug": "bible-1john-1",
+  "title": "1 Gjoni 1:8–9; Gjoni 3:16",
+  "kind": "scripture",
+  "corpus": {
+    "id": "bible-sq-unverified",
+    "kind": "scripture",
+    "title": "Albanian Bible (unverified sample)"
+  },
+  "source": {
+    "id": "src:sq:bible-1john-1",
+    "title": "Albanian Bible passage (translation not identified)",
+    "edition": "unverified sample",
+    "rights": "unverified",
+    "authorship": "human",
+    "licenseNote": "Licence unknown. Do not ship."
+  },
+  "sourceNote": "Wording the drafter (an AI assistant) recalls as a published Albanian rendering, written from memory. The translation/edition could not be identified, the wording may deviate from it, and the licence is unknown (rights: unverified). This is a test sample: it MUST be replaced by a licensed, verified text before any release.",
+  "version": "unverified sample",
+  "tags": [
+    "scripture",
+    "1john-1",
+    "john-3"
+  ],
+  "generated": false,
+  "scripture": {
+    "book": "1JN",
+    "chapter": 1
+  },
+  "englishSource": "World English Bible (public domain)",
+  "sections": [
+    {
+      "title": "1 Gjoni 1",
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Në qoftë se themi se nuk kemi mëkat, e mashtrojmë veten tonë dhe e vërteta nuk është në ne.",
+              "english": "If we say that we have no sin, we deceive ourselves, and the truth isn’t in us.",
+              "verseRefs": [
+                "1JN.1.8"
+              ]
+            },
+            {
+              "text": "Në qoftë se i rrëfejmë mëkatet tona, Ai është besnik dhe i drejtë që të na i falë mëkatet dhe të na pastrojë nga çdo padrejtësi.",
+              "english": "If we confess our sins, he is faithful and righteous to forgive us the sins, and to cleanse us from all unrighteousness.",
+              "verseRefs": [
+                "1JN.1.9"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Gjoni 3",
+      "chapter": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sepse Perëndia e deshi aq shumë botën, sa dha Birin e tij të vetëmlindur, që kushdo që beson tek ai të mos humbasë, por të ketë jetë të përjetshme.",
+              "english": "For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
+              "verseRefs": [
+                "JHN.3.16"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

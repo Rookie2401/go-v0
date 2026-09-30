@@ -2,20 +2,22 @@
  * RuleBasedSuggestionProvider — the suggestion source that ships now.
  *
  *  - repair:         from ErrorCandidate.suggestion (adapter.checkProduction), applied to the learner's sentence.
- *  - recombination:  a known phrase (reading >= recognized) whose fixed content word appears in the sentence;
+ *                    Every detected issue has a replacement => ONE combined repair; otherwise one repair per replacement.
+ *  - recombination:  a phrase the learner has ENCOUNTERED whose fixed content word appears in the sentence;
  *                    the learner's own words are slotted into the phrase's slot. Nothing the learner did not
  *                    write is added except the words of the phrase he already knows.
  *  - expansion:      never proposed directly. The service reclassifies any proposal that needs items the learner
  *                    has never met as `expansion` and fills `newItems` (see service.ts `finalize`).
  *
  * The provider only reads the AnalyzedSentence it is given (plus the adapter for tokenization); it keeps no
- * learner state. Custom providers (e.g. an LLM) implement the same interface and go through the same
+ * learner state. Scope / remainingIssues / checkerCoverage / sources in its proposals are placeholders: the
+ * service measures and fills them for every provider (see service.ts `finalize`). Custom providers (e.g. an LLM) implement the same interface and go through the same
  * finalisation (never-add-content check, provenance, meaningChange).
  */
 import { ids } from '../core';
 import type { AdapterRegistry, AnalyzedSentence, ErrorCategory, LanguageAdapter, LanguageCode, RawToken, SuggestionProvider } from '../core';
 import { NEGATORS, SUBJECT_PRONOUNS } from './concepts';
-import { BOUNDARY_POS, FUNCTION_POS, bestCandidate, introducedIndexes, isFunctionAt, parse, posAt, related } from './text';
+import { BOUNDARY_POS, FUNCTION_POS, applyEdits, bestCandidate, introducedIndexes, isFunctionAt, parse, posAt, related } from './text';
 import type { Parsed } from './text';
 
 export type ProposedSuggestion = Awaited<ReturnType<SuggestionProvider['propose']>>[number];
@@ -60,27 +62,47 @@ export class RuleBasedSuggestionProvider implements SuggestionProvider {
     return [...this.repairs(adapter, args.lang, args.sentence), ...this.recombinations(adapter, args.lang, args.sentence, args.knownPhrases)];
   }
 
+  /**
+   * Repairs from the checker's own replacements. When EVERY detected issue in the sentence has a non-overlapping
+   * replacement, ONE combined suggestion is offered (the service then labels its scope 'fixes-all-detected'
+   * after re-running the checker on the result). Otherwise each replacement is offered on its own and the
+   * service labels it 'partial', listing what still stands. Scope, remaining issues, coverage and sources are
+   * placeholders here: the service computes the honest values for every provider.
+   */
   private repairs(adapter: LanguageAdapter, lang: LanguageCode, sentence: AnalyzedSentence): ProposedSuggestion[] {
     const out: ProposedSuggestion[] = [];
     const text = sentence.text;
+    const errors = sentence.errors as AnalyzedError[];
     const original = parse(adapter, text);
-    for (const e of sentence.errors as AnalyzedError[]) {
-      const fix = e.suggestion;
-      if (!fix || fix.start < 0 || fix.end > text.length || fix.start > fix.end) continue;
-      const suggested = text.slice(0, fix.start) + fix.replacement + text.slice(fix.end);
-      if (suggested === text) continue;
+    const valid = errors.filter((e) => e.suggestion && e.suggestion.start >= 0 && e.suggestion.end <= text.length && e.suggestion.start <= e.suggestion.end);
+    const propose = (suggested: string, es: AnalyzedError[]): ProposedSuggestion | undefined => {
+      if (suggested === text) return undefined;
       const sug = parse(adapter, suggested);
       const itemIds = unique(introducedIndexes(original, sug).map((i) => ids.form(lang, sug.tokens[i].normalized)));
-      out.push({
+      return {
         sentenceIndex: sentence.index,
         kind: 'repair',
         original: text,
         suggested,
-        explanation: `${e.message} Suggested: "${fix.replacement}".`,
-        categories: [e.category],
-        priority: basePriority(e.category, e.affectsMeaning),
+        explanation: es.map((e) => `${e.message} Suggested: "${e.suggestion!.replacement}".`).join(' '),
+        categories: unique(es.map((e) => e.category)),
+        priority: Math.min(...es.map((e) => basePriority(e.category, e.affectsMeaning))) as 1 | 2 | 3 | 4,
         itemIds,
-      });
+        scope: 'partial',
+        remainingIssues: [],
+        checkerCoverage: '',
+        sources: [],
+      };
+    };
+    if (errors.length > 1 && valid.length === errors.length) {
+      const all = applyEdits(text, valid.map((e) => e.suggestion!));
+      const combined = all === undefined ? undefined : propose(all, valid);
+      if (combined) return [combined];
+    }
+    for (const e of valid) {
+      const single = applyEdits(text, [e.suggestion!]);
+      const p = single === undefined ? undefined : propose(single, [e]);
+      if (p) out.push(p);
     }
     return out;
   }
@@ -199,10 +221,14 @@ export function recombine(adapter: LanguageAdapter, lang: LanguageCode, sentence
     kind: 'recombination',
     original: text,
     suggested,
-    explanation: `You wrote "${regionText}". You already know the phrase "${phrase.display}" - here it is with your own words in it: "${instantiated}".`,
+    explanation: `You wrote "${regionText}". You have met the phrase "${phrase.display}" - here it is with your own words in it: "${instantiated}".`,
     categories: ['collocation'],
     priority: 3,
     meaningChange,
     itemIds: unique([phrase.phraseId, ...intro.map((i) => ids.form(lang, sp.tokens[i].normalized))]),
+    scope: 'partial',
+    remainingIssues: [],
+    checkerCoverage: '',
+    sources: [],
   };
 }

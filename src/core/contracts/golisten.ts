@@ -128,7 +128,14 @@ export interface GoListen {
   /** Whether any real-speech provider is configured and usable. */
   availability(): Promise<ProviderAvailability>;
   /** Honest, learner-facing state of a text's audio (never throws; 'unavailable' when no real provider). */
-  audioStatus(textId: string, opts?: { preview?: boolean }): Promise<AudioStatus>;
+  audioStatus(textId: string, opts?: { preview?: boolean; voiceConfigId?: string }): Promise<AudioStatus>;
+  /** Forget a registered provider (e.g. the learner removed his speech key). */
+  unregisterProvider(id: string): void;
+  /** Development/preview only: allow non-speech fixture providers. Never on in normal learner use. */
+  setAllowFixture(allow: boolean): void;
+  allowFixture(): boolean;
+  /** Requeue dead jobs (after fixing credentials / provider). Returns how many were requeued. */
+  retryDead(jobId?: string): Promise<number>;
   /** Record a human audition decision for a voice. Only 'reviewed'/'approved' voices are evidence-eligible. */
   setVoiceReview(voiceConfigId: string, status: 'unreviewed' | 'in-review' | 'reviewed' | 'approved' | 'rejected', note?: string): Promise<VoiceConfig>;
   /** Diagnostics for the admin panel. */

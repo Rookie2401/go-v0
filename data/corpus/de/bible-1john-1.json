@@ -1,9 +1,9 @@
 {
-  "formatVersion": 1,
+  "schemaVersion": 2,
+  "id": "bible-1john-1",
   "lang": "de",
-  "slug": "bible-1john-1",
   "title": "1. Johannes 1,8–9; Johannes 3,16",
-  "kind": "scripture",
+  "contentType": "scripture",
   "corpus": {
     "id": "bible-de-luther1912",
     "kind": "scripture",
@@ -13,23 +13,43 @@
     "id": "src:de:bible-1john-1",
     "title": "Die Bibel nach Martin Luther, Ausgabe 1912",
     "edition": "Luther 1912",
+    "attribution": "Lutherbibel 1912, public domain (eBible.org)",
+    "provenance": "Lutherbibel 1912 (public domain). The bundled sample was first transcribed by an AI assistant from memory; its wording was then compared byte for byte with the eBible.org copy (https://ebible.org/deu1912) on 2026-09-30 by scripts/verify-scripture.mjs (record: data/verified/scripture.json), any differing wording was replaced by the source wording, and the text is now identical to that source.",
     "rights": "public-domain",
-    "authorship": "public-domain",
-    "licenseNote": "The 1912 revision of Luther’s translation is in the public domain."
+    "licenseNote": "The 1912 revision of Luther’s translation is in the public domain.",
+    "authorship": "public-domain"
   },
-  "sourceNote": "Luther 1912 (public domain). The verses were transcribed by the drafter (an AI assistant) from memory of the 1912 text, keeping its period orthography (daß, unsre). NOT yet proof-checked against a scan or an eBible/Wikisource copy: verify word-for-word before release.",
-  "version": "Luther 1912",
-  "tags": [
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "scripts/verify-scripture.mjs",
+    "reviewedAt": "2026-09-30",
+    "notes": "Wording verified by byte-comparison against eBible.org deu1912."
+  },
+  "topics": [
     "scripture",
     "1john-1",
     "john-3"
   ],
+  "editorialTags": [],
+  "prepTargets": [],
   "generated": false,
   "scripture": {
+    "translationId": "deu1912",
+    "translationName": "Lutherbibel 1912",
+    "edition": "Luther 1912",
     "book": "1JN",
-    "chapter": 1
+    "chapter": 1,
+    "verification": {
+      "against": "eBible.org deu1912",
+      "url": "https://ebible.org/deu1912",
+      "checkedAt": "2026-09-30",
+      "method": "byte-comparison",
+      "by": "scripts/verify-scripture.mjs"
+    }
   },
-  "englishSource": "World English Bible (public domain)",
+  "english": {
+    "source": "World English Bible (public domain)"
+  },
   "sections": [
     {
       "title": "1. Johannes 1",

@@ -1,9 +1,9 @@
 {
-  "formatVersion": 1,
+  "schemaVersion": 2,
+  "id": "bible-1john-1",
   "lang": "th",
-  "slug": "bible-1john-1",
   "title": "1 ยอห์น 1:8–9; ยอห์น 3:16",
-  "kind": "scripture",
+  "contentType": "scripture",
   "corpus": {
     "id": "bible-th-unverified",
     "kind": "scripture",
@@ -13,23 +13,37 @@
     "id": "src:th:bible-1john-1",
     "title": "Thai Bible passage (translation not identified)",
     "edition": "unverified sample",
+    "attribution": "Unverified sample (translation not identified) - not for release",
+    "provenance": "Wording the drafter (an AI assistant) recalls as a published modern Thai rendering, written from memory. The translation/edition could not be identified, the wording may deviate from it (John 3:16 in particular is a blend of common phrasings), and the licence is unknown (rights: unverified). This is a test sample: it MUST be replaced by a licensed, verified text before any release.",
     "rights": "unverified",
-    "authorship": "human",
-    "licenseNote": "Licence unknown. Do not ship."
+    "licenseNote": "Licence unknown. Do not ship.",
+    "authorship": "human"
   },
-  "sourceNote": "Wording the drafter (an AI assistant) recalls as a published modern Thai rendering, written from memory. The translation/edition could not be identified, the wording may deviate from it (John 3:16 in particular is a blend of common phrasings), and the licence is unknown (rights: unverified). This is a test sample: it MUST be replaced by a licensed, verified text before any release.",
-  "version": "unverified sample",
-  "tags": [
+  "review": {
+    "status": "unreviewed",
+    "notes": "Unverified sample: the wording is not checked against any published source."
+  },
+  "topics": [
     "scripture",
     "1john-1",
     "john-3"
   ],
+  "editorialTags": [
+    "unverified-sample",
+    "typed-from-memory"
+  ],
+  "prepTargets": [],
   "generated": false,
   "scripture": {
+    "translationId": "unidentified",
+    "translationName": "unverified sample",
+    "edition": "unverified sample",
     "book": "1JN",
     "chapter": 1
   },
-  "englishSource": "World English Bible (public domain)",
+  "english": {
+    "source": "World English Bible (public domain)"
+  },
   "sections": [
     {
       "title": "1 ยอห์น 1",

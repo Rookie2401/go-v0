@@ -1,0 +1,55 @@
+{
+  "_comment": "Scripture template (schema version 2). The verse text below is a PLACEHOLDER: replace it, byte for byte, with the wording of a translation whose rights you have established, then verify it (scripts/verify-scripture.mjs, see docs/IMPORT.md) and record the verification. Never type verse text from memory. Verse numbers are metadata (verseRefs), never part of the text.",
+  "schemaVersion": 2,
+  "id": "bible-example",
+  "lang": "es",
+  "title": "Juan 3:16 (template)",
+  "contentType": "scripture",
+  "corpus": { "id": "bible-es-example", "kind": "scripture", "title": "Example translation" },
+  "source": {
+    "id": "src:es:bible-example",
+    "title": "Example translation (template)",
+    "edition": "unverified sample",
+    "attribution": "Unverified placeholder - not for release",
+    "provenance": "Placeholder text from the import template: unverified, must be replaced by the exact wording of an identified translation before release.",
+    "rights": "unverified",
+    "authorship": "human",
+    "licenseNote": "Licence unknown. Do not ship.",
+    "_comment": "For a real translation: rights 'public-domain' or 'licensed' with a licenseNote naming the statement you relied on, authorship 'public-domain' or 'licensed', and a provenance saying exactly how the wording was checked against the source."
+  },
+  "review": {
+    "status": "unreviewed",
+    "_comment": "When the wording has been verified by scripts/verify-scripture.mjs: {\"status\": \"reviewed\", \"reviewedBy\": \"scripts/verify-scripture.mjs\", \"reviewedAt\": \"<checkedAt from data/verified/scripture.json>\"}. A person who proofread it against the source may sign instead."
+  },
+  "topics": ["scripture"],
+  "editorialTags": ["unverified-sample"],
+  "prepTargets": [],
+  "generated": false,
+  "scripture": {
+    "translationId": "unidentified",
+    "translationName": "unverified sample",
+    "edition": "unverified sample",
+    "book": "JHN",
+    "chapter": 3,
+    "_comment": "translationId/translationName/edition identify the exact translation (e.g. spaRV1909 / Reina-Valera 1909 / 1909 revision). Add a verification block once the wording is checked: \"verification\": {\"against\": \"eBible.org spaRV1909\", \"url\": \"https://ebible.org/spaRV1909\", \"checkedAt\": \"2026-09-30\", \"method\": \"byte-comparison\", \"by\": \"scripts/verify-scripture.mjs\"}. book is a USFM code; chapter is the first chapter of the text."
+  },
+  "english": { "source": "World English Bible (public domain)" },
+  "sections": [
+    {
+      "title": "Juan 3",
+      "chapter": 3,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "[Replace with the exact wording of verse 16 from your verified source.]",
+              "english": "For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
+              "verseRefs": ["JHN.3.16"],
+              "_comment": "verseRefs: one sentence may carry several verses (['JHN.3.16', 'JHN.3.17']) and several sentences may share one verse; within a book they must follow chapter and verse order."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

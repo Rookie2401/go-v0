@@ -1,0 +1,40 @@
+{
+  "_comment": "Dialogue template (schema version 2). Every line is one paragraph with one sentence; speakers are declared once and referenced by id. Validate with: npm run corpus:validate -- path/to/your-file.json. See docs/IMPORT.md.",
+  "schemaVersion": 2,
+  "id": "my-dialogue-01",
+  "lang": "es",
+  "title": "Una conversacion",
+  "contentType": "dialogue",
+  "corpus": { "id": "ci-es", "kind": "comprehensible-input", "title": "Comprehensible input - Spanish" },
+  "source": {
+    "id": "src:es:my-dialogue-01",
+    "title": "My dialogue (course-authored)",
+    "author": "Your name",
+    "attribution": "Written by Your name for the Go course.",
+    "provenance": "Written by Your name, a native speaker, for this course. First draft only: not yet reviewed by a second speaker.",
+    "rights": "owner-authored",
+    "authorship": "human"
+  },
+  "review": { "status": "unreviewed" },
+  "difficulty": "A1",
+  "topics": ["daily-life"],
+  "editorialTags": ["needs-native-review"],
+  "prepTargets": [],
+  "speakers": {
+    "_comment": "speaker id -> display name. The display name is stored as the sentence's speaker label; it is never part of the sentence text.",
+    "A": "Ana",
+    "B": "Pedro"
+  },
+  "generated": false,
+  "english": { "source": "Written by the author of the text" },
+  "sections": [
+    {
+      "title": "Una conversacion",
+      "paragraphs": [
+        { "sentences": [{ "speaker": "A", "text": "Hola, Pedro.", "english": "Hello, Pedro." }] },
+        { "sentences": [{ "speaker": "B", "text": "Hola, Ana. Cómo estás?", "english": "Hello, Ana. How are you?" }] },
+        { "sentences": [{ "speaker": "A", "text": "Estoy bien, gracias.", "english": "I am well, thank you." }] }
+      ]
+    }
+  ]
+}

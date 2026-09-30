@@ -1,13 +1,21 @@
-/** Settings: course + learner switch, reading preferences, voice info, vocabulary list, GoListen diagnostics. */
+/**
+ * Settings: course + learner switch, reading preferences, Content (preview, importer, text list), Speech (provider,
+ * Azure key, voices and their review), Language support, vocabulary list, Evidence, Backup, GoListen diagnostics.
+ */
 import { useCallback, useEffect, useId, useMemo, useState } from 'react';
 import { LEVEL_ORDER } from '../../core';
-import type { Course, GoListenDiagnostics, ItemKind, ItemMarked, LearnerItemState, LearnerLevel, User, VoiceConfig } from '../../core';
+import type { Course, GoListenDiagnostics, ItemKind, ItemMarked, LearnerItemState, LearnerLevel, User } from '../../core';
 import { useApp } from '../context';
 import { itemSurface, languageName } from '../format';
 import { TeamSelect } from '../Onboarding';
 import { FONT_SIZE_RANGE, rememberChosenCourse, usePref } from '../prefs';
 import type { HighlightPref, ThemePref } from '../prefs';
 import { BackLink, I, IconBtn, Topbar } from '../ui';
+import { BackupSection } from './settings/BackupSection';
+import { ContentSection } from './settings/ContentSection';
+import { EvidenceSection } from './settings/EvidenceSection';
+import { LanguageSupportSection } from './settings/LanguageSupportSection';
+import { SpeechSection } from './settings/SpeechSection';
 
 const levelLabel = (l: LearnerLevel) => l.replace(/_/g, ' ');
 const levelRank = (l: LearnerLevel) => LEVEL_ORDER.indexOf(l);
@@ -30,8 +38,12 @@ export function Settings() {
         <p className="who label" title={course.title}>{user.displayName} · {course.lang.toUpperCase()}</p>
         <LearnerSection />
         <ReadingSection />
-        <VoiceSection />
+        <ContentSection />
+        <SpeechSection />
+        <LanguageSupportSection />
         <VocabularySection />
+        <EvidenceSection />
+        <BackupSection />
         <DiagnosticsSection />
       </div>
     </div>
@@ -154,39 +166,10 @@ function ReadingSection() {
   );
 }
 
-function VoiceSection() {
-  const { golisten, lang, course } = useApp();
-  const [voice, setVoice] = useState<VoiceConfig | null>(null);
-  const [error, setError] = useState<string | null>(null);
-  useEffect(() => {
-    let live = true;
-    setVoice(null); setError(null);
-    golisten.resolveVoice(lang, course.id).then((v) => { if (live) setVoice(v); }).catch((e: unknown) => { if (live) setError(e instanceof Error ? e.message : String(e)); });
-    return () => { live = false; };
-  }, [golisten, lang, course.id]);
-
-  return (
-    <section aria-label="Voice">
-      <h2 className="section-head">Voice</h2>
-      {error && <p role="alert" className="error">{error}</p>}
-      {!voice && !error && <p className="muted" role="status">Looking up the voice…</p>}
-      {voice && (
-        <dl className="kv" data-testid="voice-card">
-          <dt>Provider</dt><dd>{voice.providerId}{voice.providerId === 'fixture' && <> <span className="chip chip--wine">fixture audio — not speech</span></>}</dd>
-          <dt>Voice</dt><dd>{voice.voiceId}{voice.engine ? ` (${voice.engine})` : ''}</dd>
-          <dt>Locale asked for</dt><dd>{voice.requestedLocale}</dd>
-          <dt>Locale delivered</dt><dd>{voice.actualLocale}{voice.actualLocale !== voice.requestedLocale && <> <span className="chip">fallback accent</span></>}</dd>
-          <dt>Reviewed by a person</dt><dd>{voice.approved ? 'yes' : 'not yet'}{voice.qaNote ? ` — ${voice.qaNote}` : ''}</dd>
-        </dl>
-      )}
-    </section>
-  );
-}
-
 type KindFilter = Extract<ItemKind, 'form' | 'lemma' | 'phrase'>;
 
 function VocabularySection() {
-  const { store, bus, userId, lang, session } = useApp();
+  const { store, bus, golearn, userId, lang, session } = useApp();
   const [rows, setRows] = useState<LearnerItemState[] | null>(null);
   const [kind, setKind] = useState<KindFilter>('form');
   const [query, setQuery] = useState('');
@@ -207,6 +190,13 @@ function VocabularySection() {
   const mark = async (r: LearnerItemState, value: 'known' | 'unknown' | 'clear') => {
     await bus.emit<ItemMarked>({ type: 'ItemMarked', userId, lang, surface: 'home', session, dedupeKey: `mark:${r.itemId}:${Date.now().toString(36)}`, itemId: r.itemId, itemKind: r.itemKind, mark: value });
     await load();
+  };
+
+  // "Why?": every state shown here can be explained from the history.
+  const [why, setWhy] = useState<Record<string, string>>({});
+  const explain = async (itemId: string) => {
+    try { setWhy((w) => ({ ...w, [itemId]: '…' })); const e = await golearn.explainItem(userId, itemId); setWhy((w) => ({ ...w, [itemId]: e.summary })); }
+    catch (err) { setWhy((w) => ({ ...w, [itemId]: err instanceof Error ? err.message : String(err) })); }
   };
 
   return (
@@ -230,23 +220,10 @@ function VocabularySection() {
       ) : (
         <div className="table-wrap">
           <table className="vocab">
-            <thead><tr><th>Word</th><th>Reading</th><th>Listening</th><th>Writing</th><th>Met</th><th>Mark</th></tr></thead>
+            <thead><tr><th>Word</th><th>Reading</th><th>Listening</th><th>Writing</th><th>Met</th><th>Mark</th><th>Why</th></tr></thead>
             <tbody>
               {visible.slice(0, limit).map((r) => (
-                <tr key={r.id} className="vocab__row">
-                  <th scope="row" lang={r.lang}><span className={`vocab__dot vocab__dot--${dotClass(r.reading.level)}`} aria-hidden="true" />{itemSurface(r.itemId)}</th>
-                  <td data-label="Reading">{levelLabel(r.reading.level)}</td>
-                  <td data-label="Listening">{levelLabel(r.listening.level)}</td>
-                  <td data-label="Writing">{levelLabel(r.writing.level)}</td>
-                  <td data-label="Met">{r.encounterCount}</td>
-                  <td>
-                    <select value={r.manualMark ?? 'clear'} aria-label={`Mark ${itemSurface(r.itemId)}`} onChange={(e) => { void mark(r, e.target.value as 'known' | 'unknown' | 'clear'); }}>
-                      <option value="clear">—</option>
-                      <option value="known">I know it</option>
-                      <option value="unknown">Still learning</option>
-                    </select>
-                  </td>
-                </tr>
+                <VocabRow key={r.id} r={r} why={why[r.itemId]} onWhy={() => { void explain(r.itemId); }} onMark={(v) => { void mark(r, v); }} />
               ))}
             </tbody>
           </table>
@@ -257,8 +234,33 @@ function VocabularySection() {
   );
 }
 
+/** One vocabulary row; "likely familiar (estimate)" is an estimate and is never shown as known. */
+function VocabRow({ r, why, onWhy, onMark }: { r: LearnerItemState; why?: string; onWhy(): void; onMark(v: 'known' | 'unknown' | 'clear'): void }) {
+  const estimate = r.reading.estimatedFamiliar && levelRank(r.reading.level) < levelRank('recognized');
+  return (
+    <>
+      <tr className="vocab__row">
+        <th scope="row" lang={r.lang}><span className={`vocab__dot vocab__dot--${dotClass(r.reading.level)}`} aria-hidden="true" />{itemSurface(r.itemId)}</th>
+        <td data-label="Reading">{levelLabel(r.reading.level)}{estimate && <span className="faint"> · likely familiar (estimate)</span>}</td>
+        <td data-label="Listening">{levelLabel(r.listening.level)}</td>
+        <td data-label="Writing">{levelLabel(r.writing.level)}</td>
+        <td data-label="Met">{r.encounterCount}</td>
+        <td>
+          <select value={r.manualMark ?? 'clear'} aria-label={`Mark ${itemSurface(r.itemId)}`} onChange={(e) => onMark(e.target.value as 'known' | 'unknown' | 'clear')}>
+            <option value="clear">—</option>
+            <option value="known">I know it</option>
+            <option value="unknown">Still learning</option>
+          </select>
+        </td>
+        <td><button type="button" className="btn btn--small btn--quiet" aria-label={`Why ${itemSurface(r.itemId)}?`} onClick={onWhy}>Why?</button></td>
+      </tr>
+      {why && <tr className="vocab__why"><td colSpan={7} className="card__prov" data-testid="vocab-why">{why}</td></tr>}
+    </>
+  );
+}
+
 function DiagnosticsSection() {
-  const { golisten, golearn, userId } = useApp();
+  const { golisten } = useApp();
   const [diag, setDiag] = useState<GoListenDiagnostics | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -278,7 +280,6 @@ function DiagnosticsSection() {
       {message && <p role="status" className="note">{message}</p>}
       <div className="actions">
         <button type="button" className="btn btn--small" onClick={() => run('Running audio jobs', async () => `Processed ${await golisten.runJobs()} job(s).`)}>Run pending audio jobs</button>
-        <button type="button" className="btn btn--small" onClick={() => run('Rebuilding', async () => { await golearn.rebuild(userId); return 'Learning state rebuilt from your history.'; })}>Rebuild learning state</button>
       </div>
       {!diag ? <p className="muted" role="status">Loading…</p> : (
         <>

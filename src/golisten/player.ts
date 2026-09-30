@@ -74,6 +74,8 @@ export type PlayerAction =
   | { type: 'revealTranscript' }
   | { type: 'position'; ms: number }
   | { type: 'ended' }
+  /** The media element failed or was aborted (decode error, asset missing): the pass is abandoned, never completed. */
+  | { type: 'playbackError' }
   | { type: 'manifestUpdated'; manifest: PlayerManifestInput };
 
 export interface EmitView { speed: number; transcriptVisible: boolean }
@@ -308,6 +310,13 @@ export function reducePlayer(m: PlayerModel, a: PlayerAction): { model: PlayerMo
       }
       const moved = moveTo(done, n, { play: true });
       return { model: moved.model, effects: [...completedEffects, ...moved.effects] };
+    }
+    case 'playbackError': {
+      if (!m.started || m.completed) return none;
+      return {
+        model: { ...m, playing: false, started: false, positionMs: 0 },
+        effects: [{ type: 'pause' }, emit({ event: 'abandoned', segmentIndex: m.segmentIndex, view: view(m), positionMs: m.positionMs })],
+      };
     }
     case 'manifestUpdated': {
       const same = a.manifest.manifestId === m.manifest.manifestId;

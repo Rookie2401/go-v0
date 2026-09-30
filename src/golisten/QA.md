@@ -1,61 +1,114 @@
 # GoListen QA
 
 GoListen turns sentences into validated audio assets. This file says what is actually verified, what
-is not, and how a human reviews a real voice before a learner hears it.
+is not, and how a person reviews a real voice before a learner's listening can count as evidence.
 
 ## Honest status
 
-**No real speech has been generated or heard by anyone.** The only provider in the repository is
-`FixtureTtsProvider` (`id: "fixture"`): it renders short sine-tone bursts, one per word-like chunk, as
-a real PCM16 mono 22050 Hz WAV. It is labelled `not speech` everywhere (voice name, engine
-`fixture-tone-v1`, `VoiceConfig.qaNote`), never returns word marks, and the UI must badge it
-("fixture audio - not speech"). Every `VoiceConfig` is created with `approved: false`; only a human QA
-pass flips that, never the pipeline.
+**No real speech has been generated or heard by anyone, and nothing has been sent to a real speech service.**
 
-### Verified (automated, fixture audio only)
+- `FixtureTtsProvider` (`id: "fixture"`, `isSpeech: false`) renders sine-tone bursts as a PCM16 mono 22050 Hz
+  WAV. It is not speech. It exists only for tests and preview: GoListen does **not even register it** unless
+  `createGoListen({ ..., allowFixture: true })` (or `setAllowFixture(true)` at runtime). Everything it makes is
+  marked `isSpeech: false` on the asset and the voice, and can never earn learner evidence, reviewed or not.
+- `AzureSpeechProvider` (`id: "azure-speech"`, `isSpeech: true`) is implemented and tested **against a mocked
+  `fetch` only**. It has never been called against the live Azure service. No Azure voice has been heard.
+- With no usable real provider (none registered, or no key/region, or offline), `availability()` is
+  `{ available: false, reason }`, `audioStatus().state` is `'unavailable'` with a human reason, and
+  `ensureAudio` / `ensureSentenceAudio` / `resolveVoice` throw an `Error` named `AudioUnavailable` **before writing
+  anything**. Reading and every text feature keep working without audio.
+- Every new `VoiceConfig` is `reviewStatus: 'unreviewed'`. Only `setVoiceReview(..., 'reviewed' | 'approved')`,
+  called because a person auditioned the voice, changes that. The pipeline never does.
+
+### What counts as evidence (evidence policy v2, rule 5)
+
+Playback earns listening evidence only when **all** hold: the asset is real speech (`AudioAsset.isSpeech`), its voice
+is real speech and `reviewStatus ∈ {reviewed, approved}`, and playback of a *ready* asset really finished. GoListen
+reports this on every event (`assetId`, `speech`, `voiceReviewed`) and on `audioStatus().evidenceEligible`; GoLearn
+decides what the evidence is worth.
+
+### Verified (automated)
+
+Fixture pipeline (tone audio) and the Azure adapter against a mocked `fetch`. "es sq th hi de" = run for each language.
 
 | Area | What the tests establish |
 |---|---|
 | WAV encode / validate | Canonical header; measured duration, peak, RMS, leading/trailing silence, silence ratio, clipping; rejects empty, garbage, header-only, truncated, near-silent, all-zero, non-PCM16, too-short, clipped, long edge silence, sample-rate mismatch; never throws. |
-| Validation gate | Silent / empty / garbage / MP3 (cannot be validated) / lying-duration provider output is never stored, never becomes an `AudioAsset`, and its segment never becomes `ready`. A ready segment always has existing bytes and `validation.ok`. |
-| Cache keys | Display-text hash, speech text, lang, actual locale, provider, engine, voice, settings, normalizer version, lexicon version (plus provider version) each change the key; settings order does not; field boundaries are unambiguous. |
+| Validation gate | Silent / empty / garbage / MP3 (cannot be validated) / lying-duration provider output is never stored, never becomes an `AudioAsset`, and its segment never becomes `ready`. A ready segment always has existing bytes and `validation.ok`. A silent WAV "from Azure" is rejected the same way. |
+| No fixture by default (es sq th hi de) | No provider registered without `allowFixture`; `availability()` = `no-provider`; `audioStatus` = `unavailable` with the "no speech provider is configured" reason; `ensureAudio`, `ensureSentenceAudio`, `resolveVoice` throw `AudioUnavailable`; voices, assets, segments, alignments, manifests and jobs tables stay empty. A real provider with no credentials reports `missing-credentials`. Non-speech providers are unusable without `allowFixture`. Runtime `setAllowFixture` / `unregisterProvider` change availability. |
+| Fixture confinement (es sq th hi de) | Fixture voices and assets are `isSpeech: false`, `reviewStatus: unreviewed`; status is `preview-only` forever; marking a fixture voice `reviewed` leaves `approved: false`, `evidenceEligible: false`; listening events carry `speech: false`. Fixture audio left in the store while fixtures are off reports `unavailable` (nothing is deleted). |
+| Azure request (es sq th hi de) | URL `https://{region}.tts.speech.microsoft.com/cognitiveservices/v1`, POST, `Ocp-Apim-Subscription-Key`, `Content-Type: application/ssml+xml`, `X-Microsoft-OutputFormat: riff-24khz-16bit-mono-pcm`, SSML `<speak><voice name=…>` with XML-escaped text, caller SSML (pronunciation `lang-tag`) wrapped inside the voice element, response inspected as a 24 kHz WAV and `validateWav` applies, no word marks are ever claimed. |
+| Azure outcomes (mocked) | 401/403 => `missing-credentials`, job dead at once (a retry cannot help), provider flips to unavailable, remaining jobs wait without consuming attempts, a newly registered provider + `retryDead` recovers. 429 => `rate-limited`, retried, `Retry-After` honoured (else 1 s, 2 s, ... backoff). 5xx => job `failed`, retried, `dead` after `maxAttempts`, segment `failed`, reason shown, `retryDead` recovers. Network error / timeout => retryable `network`. 400/404 => `bad-request`, dead at once. Empty or non-WAV body => `bad-response`. |
+| Secrets | The key lives in a private field; `JSON.stringify(provider)`, enumerable fields, error messages (incl. echoed bodies and network errors), asset/voice/job/manifest/event rows, job logs and `console` output never contain it. |
+| Voice honesty (es sq th hi de) | `requestedLocale` (course preference, `es-HN`) vs `actualLocale` (static Azure table has no es-HN, so `es-MX`) and "Fallback accent" note are stored; provider + provider version, `isSpeech`, `reviewStatus` are stored on the voice; the delivered locale, provider id/version and `isSpeech` on the asset. A provider that delivers another locale corrects the voice config. A provider version change re-keys the audio and resets an earlier review to `unreviewed`. |
+| `audioStatus` (es sq th hi de) | `unavailable`, `not-generated`, `generating` (with retries and their last error), `ready`, `stale`, `failed` (with the job error), `preview-only`; `evidenceEligible` only for reviewed real speech; status never writes and never throws; a missing provider keeps already-stored reviewed real-speech audio `ready`; queued jobs wait (`unavailable`) while the provider cannot run; failed beats waiting. |
+| Stale detection (es sq th hi de) | Stale when `manifest.contentVersion < text.contentVersion`, or when a live sentence has no ready segment (recomputed cache key). Regenerating after a version bump with unchanged sentences synthesizes nothing. |
+| Invalidation (es sq th hi de) | An edited sentence (new sentence key, old one `retiredInVersion`) invalidates only itself; retired sentences are never voiced and never count toward completeness; reverting reuses the old audio; a pronunciation-entry version bump re-keys only the sentences that used it; a voice/provider change regenerates and switching back reuses. |
+| `setVoiceReview` | Persists the status with a dated note in `qaNote`, mirrors `approved` (never true for non-speech), survives `resolveVoice`, unknown voice throws. Gates `evidenceEligible`. |
+| Listening events (es sq th hi de) | Every event carries `assetId`, `speech`, `voiceReviewed` resolved segment -> asset -> voice; completion only for a *ready* asset whose bytes exist, otherwise `AudioAbandoned`; `failed()` and the player's `playbackError` action abandon the pass; without a store the emitter fails closed (`speech: false`). |
+| Cache keys | Display-text hash, speech text, lang, actual locale, provider, engine, voice, settings, normalizer version, lexicon version, provider version each change the key; settings order does not; field boundaries are unambiguous. |
 | Idempotency | A second `ensureAudio` reuses every segment, synthesizes nothing, creates no job or asset; concurrent calls synthesize once per job. |
-| Invalidation | Editing one sentence re-keys only that sentence; reverting the edit reuses the old audio; a pronunciation-entry version bump re-keys only the sentences that used it. |
-| Verse markers | Scripture speech text has no digits; `[16]` in a display text is stripped from speech (adapter path and the pipeline's own safety net, both recorded as transformations); the canonical display text is untouched. |
-| Locale honesty | `requestedLocale` (course preference, e.g. `es-HN`) vs `actualLocale` (what the voice list offers, `es-419`) are both stored; a provider that delivers another locale is recorded on the asset and corrects the voice config; `approved` survives re-resolution. |
-| Jobs | Exponential backoff (`nextAttemptAt`), `maxAttempts` 4 then `dead`, segment `failed`, dead jobs are not silently resurrected (`retryDead` is explicit), retries never create a second asset, stale `running` jobs recover. |
-| Alignment | Sentence alignment is by construction (0..duration, confidence 1). Word alignment exists only from provider marks, only if the provider declares word boundaries, only for marks that exactly cover one adapter token, and only after the marks pass sanity checks (inside text and audio, time-ordered, finite). Thai maps onto its segmented tokens. Confidence is 0.9 when the speech text equals the token sequence, 0.7 when mapped through a transformed speech text. The fixture never yields word alignments. |
-| Testimony sentences | Text-less segments (`sentenceIds: []`), content-addressed, empty and punctuation-only text refused / failed. |
-| Player | Pure state machine: next/prev/seek (segment, sentence, paragraph), replay, sentence and phrase loop (phrase needs a real aligned range), speed clamped 0.7-1.25 with `preservesPitch` on every rate effect, four transcript modes, prefetch window, abandonment, finish/restart. |
-| Listening events | Correct dedupe keys (completion once per segment per pass, replay opens a new pass), speed and transcript state carried on every event, end-to-end over a generated manifest. |
-
-All of the above run for es, sq, th, hi and de where the behaviour is language dependent.
+| Verse markers | Scripture speech text has no digits; `[16]` in a display text is stripped from speech (adapter path and the pipeline's own safety net, both recorded); the canonical display text is untouched. |
+| Jobs | Exponential backoff (`nextAttemptAt`), `maxAttempts` 4 then `dead`, segment `failed`, dead jobs are not silently resurrected (`retryDead` is explicit), retries never create a second asset, stale `running` jobs recover, unusable provider => job skipped, no attempt consumed. |
+| Alignment | Sentence alignment is by construction (0..duration, confidence 1). Word alignment exists only from provider marks, only if the provider declares word boundaries, only for marks that exactly cover one adapter token, after sanity checks. Confidence 0.9 (exact) / 0.7 (mapped). Neither the fixture nor Azure yields word alignments. Approximate alignment is never labelled exact. |
+| Testimony | Audio for a revision is generated for the exact text of `revision.textId` and reported like any text; text-less sentence segments are content-addressed; empty / punctuation-only text is refused / failed. |
+| Player | Pure state machine: next/prev/seek, replay, sentence and phrase loop, speed clamped 0.7-1.25 with `preservesPitch`, four transcript modes, prefetch window, abandonment, `playbackError`, finish/restart. |
 
 ### Unverified (needs a real provider and a human)
 
 | Area | Status |
 |---|---|
-| Every real voice (Azure / Google / ElevenLabs / ...) | **Not built, not heard.** Nothing here says any voice sounds correct, natural, or even intelligible. |
-| Pronunciation correctness of any word | Unverified. Overrides are applied mechanically; whether the fix is right is a human judgement. |
-| `ssml-phoneme` / `lang-tag` against a real engine | SSML is generated (tested against a fake provider's request), never sent to a real engine. `lexicon` overrides are not applied at all. |
-| Word boundary marks from a real provider | Mapping proven only with a test-only provider whose marks are true by construction. Real marks (Thai segmentation differences, SSML offsets shifting text positions) are untested; span-level or sub-token marks are deliberately dropped, not split. |
-| Locale availability | Only the fixture's voice list is known. Whether a provider offers `es-HN`, `sq-AL` or `hi-IN` is unknown. |
-| MP3 / OGG | Cannot be validated; such a provider's audio will be refused until a validator exists (`TODO(contract)`). |
+| **Every live voice** (Azure, Google, ElevenLabs, ...) | **Not heard.** Nothing here says any voice sounds correct, natural, or even intelligible. |
+| **The Azure adapter against the real service** | **Implemented, never called.** Unverified: that the endpoint/headers/SSML are accepted as written; that the voice names in `AZURE_VOICES` exist (names were written from Azure's public voice gallery, not from `voices/list`); that `riff-24khz-16bit-mono-pcm` arrives with a header `inspectWav` reads for every voice; real rate-limit and error bodies; whether a browser may call the endpoint cross-origin (CORS / preflight with the custom headers) from the static site. |
+| es-HN | The static table offers es-MX / es-US / es-ES for Spanish, so the Honduras course is voiced with an es-MX voice and labelled "fallback accent". Azure may offer es-HN voices; confirm with `voices/list`, then add them to `AZURE_VOICES` (or pass `voices` to the constructor) and audition. |
+| Pronunciation correctness of any word | Unverified. Overrides are applied mechanically. `substitution` works on any provider. `ssml-phoneme` is not claimed for Azure (`phonemeOverrides: false`). `lang-tag` is sent as `<lang xml:lang>` but Azure honours it only for some voices: an entry may be recorded as "used" while the voice ignores it. Treat as unverified until auditioned. |
+| Word boundary marks from a real provider | Mapping is proven only with a test provider whose marks are true by construction. Azure REST returns none here. |
+| Locale availability | Whether Azure offers `sq-AL`, `hi-IN`, `th-TH` voices under the names in the table for a given subscription/region. |
+| MP3 / OGG | Cannot be validated; such audio is refused until a validator exists (`TODO(contract)`). |
 | Loudness, noise, clicks, truncated words, voice consistency across a text | No measurement beyond peak / RMS / silence / clipping. |
-| Real playback | The player state machine is DOM-free; `HTMLAudioElement` behaviour (`preservesPitch`, gapless advance, prefetch timing, autoplay policy) is for the UI package and a browser. |
+| Real playback | The player state machine is DOM-free; `HTMLAudioElement` behaviour (`preservesPitch`, gapless advance, prefetch timing, autoplay policy, `error` events calling `playbackError`) belongs to the UI package and a browser. |
 | Whether listening helps acquisition | Not evaluated. GoListen reports events only; GoLearn decides evidence. |
 
-## Release gate for a real voice
+## Constructing and registering the Azure provider (UI)
 
-A provider/voice may be marked `approved: true` only after a human reviewer has listened to the set
-below for the language, recorded the result in `VoiceConfig.qaNote`, and logged any fix as a
-`PronunciationEntry` (reviewed: true). Unapproved voices must be visibly marked in the UI.
+```ts
+import { AzureSpeechProvider } from '../golisten';
+
+// key + region come from the Settings form at runtime; nothing here stores them.
+golisten.registerProvider(new AzureSpeechProvider({ key, region }));   // replaces an earlier one with the same id
+// "Forget key": golisten.unregisterProvider('azure-speech');
+// Wrong key later? audioStatus shows 'failed' (missing-credentials); register a new provider, then `retryDead()`.
+```
+
+`availability()` for Azure means "a key and region are configured and the last request was not rejected", never
+"verified against the live service". Persisting the key (the "remember on this device" option) is the UI package's
+decision and outside this package.
+
+## Audition procedure: how a voice becomes `reviewed`
+
+A voice is evidence-eligible only after a person has listened to it, for that language, and recorded the result.
+Do this in preview mode (the preview-only audio is playable there; it earns no evidence until you finish).
+
+1. Register the provider (Settings => Speech), then generate the QA texts: `ensureAudio(textId, { runNow: true })`
+   for one text per category below. `audioStatus(textId)` will say `preview-only` with "has not been auditioned yet".
+2. Open `diagnostics(textId)`: every segment `ready`, `validation.ok`, `isSpeech: true`, `providerVersion` as
+   expected, `requestedLocale` / `actualLocale` as expected (note any fallback accent: for es-HN it is es-MX),
+   alignment methods as expected.
+3. Listen to every sentence at speed 1.0 and 0.7 (speed change must preserve pitch). Use the category table below;
+   be strict about first/last words clipped, verse numbers spoken, names, numbers, the wrong language's rhythm.
+4. For each defect: add a reviewed `PronunciationEntry` (`substitution` works on every provider), regenerate (only the
+   affected sentences re-key), listen again. Unfixable defects mean the voice is **not** reviewed.
+5. Record the decision: `setVoiceReview(voiceConfigId, 'in-review')` while working, then
+   `setVoiceReview(voiceConfigId, 'reviewed', '<who>, <what you listened to>, <open issues>')` to pass, or
+   `'rejected'` with the reason. The note is appended to `VoiceConfig.qaNote` with the date.
+6. Confirm: `audioStatus(textId)` is `ready`, `evidenceEligible: true`. Changing the provider version (`azure-rest@N`
+   bump) or swapping the voice re-keys the audio and sets the voice back to `unreviewed`: audition again.
+7. A fixture (non-speech) voice cannot be made evidence-eligible by any review.
 
 ## Representative QA set (per language)
 
-Each language gets one item per category. Texts are drawn from the bundled corpus wherever possible so
-the same strings are reviewed every time; additions are appended, never replaced, so regressions are
-audible. Category, what to listen for, and the language-specific traps:
+Each language gets one item per category. Texts are drawn from the bundled corpus wherever possible so the same
+strings are reviewed every time; additions are appended, never replaced, so regressions are audible.
 
 | Category | What to check |
 |---|---|
@@ -71,33 +124,34 @@ audible. Category, what to listen for, and the language-specific traps:
 
 ### Phonological challenges to include
 
-- **es**: trilled `rr` vs tap `r`, `ñ`, `b`/`v`, `j` and `g` before `e/i`, written stress (`perdonó`, `creó`), diphthong/hiatus (`Dios`, `mío`), es-HN fallback accent (es-419 is delivered until es-HN exists; note the audible difference).
+- **es**: trilled `rr` vs tap `r`, `ñ`, `b`/`v`, `j` and `g` before `e/i`, written stress (`perdonó`, `creó`), diphthong/hiatus (`Dios`, `mío`), the es-HN fallback accent (es-MX is delivered until an es-HN voice exists; note the audible difference).
 - **sq**: `ë` (schwa) vs `e`, `ç`, `xh`, `gj`, `q`, `sh`, `zh`, `dh` /ð/, `th` /θ/, definite suffixes (`libri`, `zemrën`), clitic-heavy verbs.
 - **th**: five tones and vowel length (minimal pairs), aspirated vs unaspirated initials, final stops, no spaces (the TTS must place pauses), polite particles (`ครับ`, `ค่ะ`, `นะ`), repeated-word marker `ๆ`, numerals.
 - **hi**: dental vs retroflex stops, aspirated stops, nasalization (`हूँ`), schwa deletion (`समझता`), nukta sounds (`ज़`, `फ़`), conjuncts (`क्षमा`, `ज्ञान`), postposition clitics (`ने`, `को`), danda pause.
 - **de**: umlauts `ä ö ü`, ich-/ach-Laut, final devoicing (`Tag`), long vs short vowels, `ß`, `sp`/`st`/`sch`, compound stress, separable-verb stress (`fing ... an`).
 
-### Review procedure
-
-1. `ensureAudio` the QA texts with the candidate voice; open `diagnostics()` and confirm every segment
-   is `ready`, validation `ok`, `requestedLocale` / `actualLocale` as expected, alignment methods as expected.
-2. Listen at speed 1.0 and at 0.7; speed change must preserve pitch (player uses `preservesPitch`).
-3. For each defect: fix via a reviewed `PronunciationEntry` (substitution works on every provider;
-   `ssml-phoneme` only where `capabilities().phonemeOverrides`), regenerate (only affected sentences re-key), re-listen.
-4. Record reviewer, date, voice, and unresolved issues in `VoiceConfig.qaNote`; only then set `approved: true`.
-
 ## Design notes that affect QA
 
-- Cache keys exclude `contentVersion` by design: one edited sentence must not invalidate its neighbours,
-  and an unchanged sentence is reused across revisions and texts. Consequence: a segment's `textId` is
-  the first context that created it; look segments up through the manifest (`segmentIds`), not by `textId`.
-- If a provider delivers a different locale than the voice config promised, the voice config is corrected
-  and cache keys (which include the actual locale) change once, regenerating that voice's audio a single time.
+- Cache keys exclude `contentVersion` by design: one edited sentence must not invalidate its neighbours, and an
+  unchanged sentence is reused across revisions and texts. Consequence: a segment's `textId` is the first context
+  that created it; look segments up through the manifest (`segmentIds`), not by `textId`.
+- Manifests are per (text, voice, content version). `audioStatus` compares the newest manifest of the current voice
+  with the text's `contentVersion`, and recomputes each live sentence's cache key to find sentences without audio.
+- Sentence order is `Sentence.index` and live sentences are those without `retiredInVersion`; GoListen never parses
+  an id for order.
+- If a provider delivers a different locale than the voice config promised, the voice config is corrected and cache
+  keys (which include the actual locale) change once, regenerating that voice's audio a single time.
 - Repeated sentences in one text share one segment; the manifest lists the same segment id at each position.
+- A job whose provider is unusable right now is skipped, not failed: no attempt is consumed and `audioStatus` says
+  it is waiting.
 
 ## Open items
 
 - `TODO(contract)`: `AudioSegment` has no `ownerId`; ownership of testimony audio is enforced by the caller (GoTell `assertOwner`).
 - `TODO(contract)`: validators for `audio/mpeg` and `audio/ogg`.
+- `TODO(contract)`: `AudioAsset.generation` has no `providerVersion`; it is recorded in `generation.softwareVersion` as `"<golisten>; <provider>@<version>"` and on the `VoiceConfig`.
+- `TODO(contract)`: `retryDead`, `setAllowFixture`, `unregisterProvider` and `audioStatus({ voiceConfigId })` exist on `GoListenService` only, not on the `GoListen` interface; the UI needs them for "retry" and runtime provider changes.
 - `TODO(integration)`: real adapters' `speechNormalize` must already strip verse markers and expand digits; GoListen only adds a bracket/superscript safety net.
-- `TODO(integration)`: the UI owns `HTMLAudioElement` wiring (`preservesPitch = true`), object-URL lifecycle, and showing the fixture badge.
+- `TODO(integration)`: the UI owns `HTMLAudioElement` wiring (`preservesPitch = true`, object-URL lifecycle, calling `playbackError` on media errors and `ended` only for a real end), showing the fixture/preview badge, and passing `store` to `listeningEmitter` (without it the emitter fails closed and completions become abandonments).
+- `TODO(integration)`: bootstrap must not register a `FixtureTtsProvider` by hand; use `createGoListen({ allowFixture })` (or `setAllowFixture`) driven by the preview preference. A hand-registered fixture stays unusable while `allowFixture` is off.
+- `TODO(integration)`: browser CORS for the Azure REST endpoint is unverified; if blocked, calls need a same-origin proxy (outside this package).

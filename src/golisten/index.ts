@@ -1,19 +1,30 @@
 /**
  * GoListen - audio pipeline + provider abstraction + listening events + DOM-free player logic.
- * See QA.md for what is verified (fixture audio only) and what is not (every real voice).
+ * See QA.md for what is verified (fixture pipeline; Azure adapter against a mocked fetch) and what is not
+ * (every real voice; the Azure adapter against the live service).
+ *
+ * No fixture by default: without a usable real provider, availability() is unavailable, audioStatus() is
+ * 'unavailable', and ensureAudio throws AudioUnavailable before writing anything.
  */
-import type { AudioAlignment, AudioAsset, AudioJob, AudioManifest, AudioSegment, LanguageCode, VoiceConfig } from '../core/model';
-import type { GoListen, GoListenDiagnostics, TtsProvider } from '../core/contracts/golisten';
+import { REVIEW_OK } from '../core/model';
+import type { AudioAlignment, AudioAsset, AudioJob, AudioManifest, AudioSegment, LanguageCode, ReviewStatus, VoiceConfig } from '../core/model';
+import type { AudioStatus, GoListen, GoListenDiagnostics, ProviderAvailability, TtsProvider } from '../core/contracts/golisten';
 import { FIXTURE_PROVIDER_ID, FixtureTtsProvider } from './fixtureProvider';
 import { runEligibleJobs } from './jobs';
 import { ensureAudioForText, ensureSentenceAudioFor } from './pipeline';
+import { aggregateAvailability } from './providers';
+import { audioStatusFor, type AudioStatusOptions } from './status';
 import { GOLISTEN_VERSION, type GoListenDeps, type Runtime } from './types';
 import { resolveVoiceConfig } from './voices';
 
 export { computeCacheKey, type CacheKeyParts } from './cacheKey';
 export { encodeWav, validateWav, inspectWav, type EncodeWavOptions, type ValidateWavOptions, type WavInspection, DEFAULT_SAMPLE_RATE } from './wav';
 export { FixtureTtsProvider, FIXTURE_PROVIDER_ID, FIXTURE_ENGINE, FIXTURE_DISCLAIMER, fixtureChunks, renderFixtureChunks, type FixtureChunk } from './fixtureProvider';
-export { listeningEmitter, emitPlayerEffects, type ListeningEmitter, type ListeningContext, type SegmentRef } from './events';
+export { AzureSpeechProvider, AZURE_PROVIDER_ID, AZURE_PROVIDER_VERSION, AZURE_ENGINE, AZURE_OUTPUT_FORMAT, AZURE_VOICES, type AzureSpeechOptions, type AzureVoiceEntry } from './azureProvider';
+export { AudioUnavailableError, TtsProviderError, isAudioUnavailable, unavailableMessage, describeError, type ProviderErrorKind, type UnavailableReason } from './errors';
+export { isVoiceReviewed } from './voices';
+export type { AudioStatusOptions } from './status';
+export { listeningEmitter, emitPlayerEffects, resolvePlaybackFacts, type ListeningEmitter, type ListeningContext, type SegmentRef, type PlaybackFacts } from './events';
 export {
   PlayerMachine, createPlayerModel, reducePlayer, clampSpeed, isTranscriptVisible, playableIndexes, MIN_SPEED, MAX_SPEED, SPEED_STEP,
   type PlayerAction, type PlayerEffect, type PlayerEmit, type PlayerModel, type PlayerManifestInput, type PlayerSegmentInfo, type PlayerOptions, type TranscriptMode, type EmitView,
@@ -22,17 +33,38 @@ export { buildPlayerManifest } from './playerManifest';
 export { planSpeech, stripVerseMarkers, type SpeechPlan } from './pipeline';
 export { GOLISTEN_VERSION, type GoListenDeps } from './types';
 
+/** Per-segment diagnostics plus the job state behind it (retries, next attempt, review status). */
+export interface GoListenDiagnosticsV2 extends GoListenDiagnostics {
+  segments: Array<GoListenDiagnostics['segments'][number] & {
+    jobStatus?: AudioJob['status'];
+    attempts?: number;
+    maxAttempts?: number;
+    nextAttemptAt?: string;
+    isSpeech?: boolean;
+    voiceReview?: VoiceConfig['reviewStatus'];
+    providerVersion?: string;
+  }>;
+}
+
 export interface GoListenService extends GoListen {
   /** Choose which registered provider resolveVoice uses for new voice configs. */
   setDefaultProvider(providerId: string): void;
+  /** Remove a provider (e.g. the learner forgot the Azure key). Stored audio stays. */
+  unregisterProvider(providerId: string): void;
+  /** Turn development fixture audio on/off at runtime (the preview / "development fixture audio" preference). */
+  setAllowFixture(allow: boolean): void;
+  allowFixture(): boolean;
   /** Re-queue dead jobs (all, or the given job id) for another round of attempts. */
   retryDead(jobId?: string): Promise<number>;
+  audioStatus(textId: string, opts?: AudioStatusOptions): Promise<AudioStatus>;
+  diagnostics(textId?: string): Promise<GoListenDiagnosticsV2>;
 }
 
 export function createGoListen(deps: GoListenDeps): GoListenService {
   const providers = new Map<string, TtsProvider>();
-  const fixture = new FixtureTtsProvider();
-  providers.set(fixture.id, fixture);
+  const allowFixture = deps.allowFixture === true;
+  // The fixture exists only when explicitly allowed (tests, preview). Otherwise it is not even registered.
+  if (allowFixture) { const fixture = new FixtureTtsProvider(); providers.set(fixture.id, fixture); }
   for (const p of deps.providers ?? []) providers.set(p.id, p);
   const rt: Runtime = {
     store: deps.store, bus: deps.bus, adapters: deps.adapters,
@@ -40,7 +72,7 @@ export function createGoListen(deps: GoListenDeps): GoListenService {
     softwareVersion: deps.softwareVersion ?? GOLISTEN_VERSION,
     providers, settings: { ...(deps.settings ?? {}) },
     maxAttempts: deps.maxAttempts ?? 4, backoffBaseMs: deps.backoffBaseMs ?? 1000, backoffMaxMs: deps.backoffMaxMs ?? 300_000,
-    inFlight: new Set(), defaultProviderId: deps.defaultProviderId ?? FIXTURE_PROVIDER_ID,
+    inFlight: new Set(), defaultProviderId: deps.defaultProviderId, allowFixture,
   };
   const { store } = rt;
 
@@ -59,6 +91,36 @@ export function createGoListen(deps: GoListenDeps): GoListenService {
       if (!rt.providers.has(providerId)) throw new Error(`GoListen: provider "${providerId}" is not registered`);
       rt.defaultProviderId = providerId;
     },
+    unregisterProvider(providerId: string) {
+      rt.providers.delete(providerId);
+      if (rt.defaultProviderId === providerId) rt.defaultProviderId = undefined;
+    },
+    setAllowFixture(allow: boolean) {
+      rt.allowFixture = allow;
+      if (allow && !rt.providers.has(FIXTURE_PROVIDER_ID)) {
+        const rest = [...rt.providers.entries()];
+        rt.providers.clear();
+        rt.providers.set(FIXTURE_PROVIDER_ID, new FixtureTtsProvider()); // keep the fixture first, as at construction
+        for (const [k, v] of rest) rt.providers.set(k, v);
+      }
+      if (!allow && rt.defaultProviderId === FIXTURE_PROVIDER_ID) rt.defaultProviderId = undefined;
+    },
+    allowFixture() { return rt.allowFixture; },
+    availability(): Promise<ProviderAvailability> { return aggregateAvailability(rt); },
+    audioStatus: (textId: string, opts?: AudioStatusOptions) => audioStatusFor(rt, textId, opts),
+    async setVoiceReview(voiceConfigId: string, status: ReviewStatus, note?: string): Promise<VoiceConfig> {
+      const row = await store.voices.get(voiceConfigId);
+      if (!row) throw new Error(`GoListen: voice config ${voiceConfigId} not found`);
+      const line = `Review ${status} on ${rt.clock().slice(0, 10)}${note ? `: ${note}` : ''}.`;
+      const next: VoiceConfig = {
+        ...row, reviewStatus: status, isSpeech: row.isSpeech ?? false,
+        // A person may record any decision, but a non-speech (fixture) voice is never "approved": it is not speech.
+        approved: REVIEW_OK.includes(status) && row.isSpeech === true,
+        qaNote: [row.qaNote, line].filter(Boolean).join(' '),
+      };
+      await store.voices.put(next);
+      return next;
+    },
     resolveVoice(lang: LanguageCode, courseId?: string): Promise<VoiceConfig> { return resolveVoiceConfig(rt, lang, courseId); },
     ensureAudio: (textId, opts) => ensureAudioForText(rt, textId, opts),
     ensureSentenceAudio: (args) => ensureSentenceAudioFor(rt, args),
@@ -73,10 +135,10 @@ export function createGoListen(deps: GoListenDeps): GoListenService {
     assetUrl: (id) => store.assets.url(id),
     alignments: (segmentId): Promise<AudioAlignment[]> => store.alignments.where('segmentId', segmentId),
 
-    async diagnostics(textId?: string): Promise<GoListenDiagnostics> {
+    async diagnostics(textId?: string): Promise<GoListenDiagnosticsV2> {
       const segments = textId ? await segmentsForText(textId) : await store.audioSegments.all();
       const jobRows = new Map((await store.audioJobs.all()).map((j) => [j.id, j]));
-      const rows: GoListenDiagnostics['segments'] = [];
+      const rows: GoListenDiagnosticsV2['segments'] = [];
       let failedJobs = 0, deadJobs = 0;
       for (const seg of segments) {
         const voice = await store.voices.get(seg.voiceConfigId);
@@ -91,6 +153,8 @@ export function createGoListen(deps: GoListenDeps): GoListenService {
           overridesUsed: seg.pronunciationOverridesUsed, alignmentMethods: [...new Set(als.map((a) => a.method))].sort(),
           minAlignmentConfidence: als.length ? Math.min(...als.map((a) => a.confidence)) : undefined,
           validation: asset?.validation, lastError: job?.lastError, contentVersion: seg.contentVersion,
+          jobStatus: job?.status, attempts: job?.attempts, maxAttempts: job?.maxAttempts, nextAttemptAt: job?.nextAttemptAt,
+          isSpeech: asset?.isSpeech ?? voice?.isSpeech, voiceReview: voice?.reviewStatus, providerVersion: voice?.providerVersion,
         });
       }
       return { segments: rows, failedJobs, deadJobs };

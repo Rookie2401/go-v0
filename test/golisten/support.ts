@@ -6,7 +6,7 @@
 import {
   StoreEventBus, buildFixtureText, createMemoryStore, seedBasics,
   type AdapterRegistry, type AppStore, type EventBus, type FixtureSentence, type LanguageAdapter, type LanguageCode, type RawToken,
-  type SynthesisRequest, type SynthesisResult, type TtsProvider, type WordMark,
+  type ProviderAvailability, type SynthesisRequest, type SynthesisResult, type TtsProvider, type WordMark,
 } from '../../src/core';
 import { createGoListen, FixtureTtsProvider, encodeWav, fixtureChunks, renderFixtureChunks, type GoListenDeps, type GoListenService } from '../../src/golisten';
 
@@ -62,6 +62,7 @@ function makeTestAdapter(lang: LanguageCode, thaiWords: string[], identitySpeech
     },
     display: { wordSeparator: lang === 'th' ? '' : ' ', showBoundariesOnHighlight: lang === 'th' },
     checkProduction: () => [], relate: (a, b) => (a === b ? 'same' : 'none'),
+    support: { tokenization: 'limited', sentenceSegmentation: 'limited', lemmatization: 'none', morphology: 'none', phraseDetection: 'none', productionChecks: 'none', limitations: ['test adapter'] },
   };
 }
 
@@ -131,6 +132,18 @@ export const SCRIPTURE: Record<LanguageCode, FixtureSentence[]> = {
   ],
 };
 
+/** Rewrites one sentence like the v2 importer: the old sentence is retired, a new one (new key) takes its place; bumps contentVersion. */
+export async function replaceSentence(store: AppStore, textId: string, index: number, newText: string) {
+  const { hash, ids } = await import('../../src/core');
+  const t = (await store.texts.get(textId))!;
+  const version = t.contentVersion + 1;
+  const old = (await store.sentences.where('textId', textId)).find((x) => x.index === index && x.retiredInVersion === undefined)!;
+  await store.sentences.put({ ...old, retiredInVersion: version });
+  const key = ids.sentenceKey(newText);
+  await store.sentences.put({ ...old, id: ids.sentence(textId, key), key, text: newText, normalizedText: newText.toLowerCase(), textHash: hash(newText), versionAdded: version, retiredInVersion: undefined });
+  await store.texts.put({ ...t, contentVersion: version });
+}
+
 export async function addStory(store: AppStore, lang: LanguageCode, slug = 'story-01', sentences: FixtureSentence[] = STORY[lang]) {
   return buildFixtureText(store, { lang, slug, kind: 'story', sentences });
 }
@@ -163,6 +176,7 @@ export interface Env {
   registry: AdapterRegistry;
 }
 
+/** allowFixture defaults to TRUE here (most tests need audio); pass `allowFixture: false` to test the default, fixture-free behaviour. */
 export async function makeEnv(opts: Partial<GoListenDeps> & { identitySpeech?: boolean; providerFactory?: (registry: AdapterRegistry) => TtsProvider[] } = {}): Promise<Env> {
   const store = createMemoryStore();
   await seedBasics(store);
@@ -170,7 +184,9 @@ export async function makeEnv(opts: Partial<GoListenDeps> & { identitySpeech?: b
   const bus = new StoreEventBus(store, clock.clock);
   const registry = createTestRegistry({ identitySpeech: opts.identitySpeech });
   const providers = opts.providerFactory ? opts.providerFactory(registry) : opts.providers;
-  const gl = createGoListen({ store, bus, adapters: registry, clock: clock.clock, ...opts, providers });
+  const { identitySpeech: _i, providerFactory: _p, ...deps } = opts;
+  void _i; void _p;
+  const gl = createGoListen({ store, bus, adapters: registry, clock: clock.clock, allowFixture: true, ...deps, providers });
   return { store, bus, gl, clock, registry };
 }
 
@@ -192,6 +208,8 @@ export class MarksTestProvider implements TtsProvider {
   readonly id = 'marks-test';
   readonly version = 'test-1';
   readonly testOnly = true;
+  readonly isSpeech = false; // tones, not speech: usable only with allowFixture
+  availability(): Promise<ProviderAvailability> { return Promise.resolve({ available: true, reason: 'development-fixture' }); }
   readonly calls: SynthesisRequest[] = [];
   constructor(
     private readonly registry: AdapterRegistry,
@@ -216,6 +234,8 @@ export class FlakyProvider implements TtsProvider {
   readonly id = 'flaky';
   readonly version = 'test-1';
   readonly testOnly = true;
+  readonly isSpeech = false; // tones, not speech: usable only with allowFixture
+  availability(): Promise<ProviderAvailability> { return Promise.resolve({ available: true, reason: 'development-fixture' }); }
   readonly calls: SynthesisRequest[] = [];
   private readonly attempts = new Map<string, number>();
   private readonly inner = new FixtureTtsProvider();
@@ -236,6 +256,8 @@ export class BadAudioProvider implements TtsProvider {
   readonly id = 'bad-audio';
   readonly version = 'test-1';
   readonly testOnly = true;
+  readonly isSpeech = false; // tones, not speech: usable only with allowFixture
+  availability(): Promise<ProviderAvailability> { return Promise.resolve({ available: true, reason: 'development-fixture' }); }
   constructor(private readonly mode: 'silent' | 'empty' | 'garbage' | 'mp3' | 'lying-duration') {}
   capabilities() { return { ...new FixtureTtsProvider().capabilities(), outputFormats: this.mode === 'mp3' ? ['audio/mpeg'] : ['audio/wav'] }; }
   listVoices(lang: LanguageCode) { return fixtureVoices.listVoices(lang); }
@@ -260,9 +282,34 @@ export class FallbackLocaleProvider implements TtsProvider {
   readonly id = 'fallback-locale';
   readonly version = 'test-1';
   readonly testOnly = true;
+  readonly isSpeech = false; // tones, not speech: usable only with allowFixture
+  availability(): Promise<ProviderAvailability> { return Promise.resolve({ available: true, reason: 'development-fixture' }); }
   private readonly inner = new FixtureTtsProvider();
   constructor(private readonly delivered: string) {}
   capabilities() { return this.inner.capabilities(); }
   listVoices(lang: LanguageCode) { return this.inner.listVoices(lang); }
   async synthesize(req: SynthesisRequest): Promise<SynthesisResult> { return { ...(await this.inner.synthesize(req)), actualLocale: this.delivered }; }
+}
+
+/**
+ * TEST-ONLY. Stands in for a real speech provider: it CLAIMS `isSpeech: true` while rendering the fixture's tone
+ * bursts, purely so evidence-eligibility, review gating and status transitions can be tested without a network.
+ * Nothing it makes is speech; it must never leave the test tree.
+ */
+export class FakeSpeechProvider implements TtsProvider {
+  readonly id: string;
+  readonly version: string;
+  readonly testOnly = true;
+  readonly isSpeech = true;
+  readonly calls: SynthesisRequest[] = [];
+  state: ProviderAvailability = { available: true };
+  private readonly inner = new FixtureTtsProvider();
+  constructor(opts: { id?: string; version?: string } = {}) { this.id = opts.id ?? 'fake-speech'; this.version = opts.version ?? '1'; }
+  async availability(): Promise<ProviderAvailability> { return this.state; }
+  capabilities() { return this.inner.capabilities(); }
+  listVoices(lang: LanguageCode) { return this.inner.listVoices(lang); }
+  async synthesize(req: SynthesisRequest): Promise<SynthesisResult> {
+    this.calls.push(req);
+    return { ...(await this.inner.synthesize(req)), engine: 'fake-speech-tone' };
+  }
 }

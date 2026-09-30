@@ -6,7 +6,7 @@
  * imperfective participles, compound verbs (कर दिया, हो गया), conjunct verbs (क्षमा करना).
  * Uncertain: पर is ADP or CONJ (decided by a preceding comma); vector-verb meaning; unknown words stay empty.
  */
-import type { AnalysisCandidate, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport, RawToken } from '../core';
+import type { AnalysisCandidate, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport, RawToken, AdapterSupport } from '../core';
 import {
   E, Lexicon, hasPos, lexiconAnalyze, makeWordTokenizer, matchPhraseRules, nfc, speechNormalizeGeneric,
   splitSentences, type PhraseRule,
@@ -143,11 +143,28 @@ function adjectiveForm(lemma: string, gender: string, number: string): string | 
   return (pick.find((f) => f.morph.Case !== 'Obl') ?? pick[0])?.form;
 }
 
+const SUPPORT: AdapterSupport = {
+  tokenization: 'dependable', // Intl.Segmenter('hi'); matras, nukta, chandrabindu and virama stay inside tokens (grapheme-checked in tests)
+  sentenceSegmentation: 'limited', // danda, double danda and Latin terminators; no abbreviation handling
+  lemmatization: 'seed-only', // the lexicon covers the seed corpus only; other words are left unanalysed
+  morphology: 'seed-only', // gender/number/case and aspect for listed forms; oblique forms only where listed
+  phraseDetection: 'seed-only', // compound verbs, conjunct verbs and three course phrases
+  productionChecks: 'limited',
+  limitations: [
+    'Lemmatization is seed-only: the lexicon covers the bundled corpus, so supplied texts will have unanalysed words.',
+    'पर is ADP or CONJ, decided only by a preceding comma.',
+    'Vector-verb meaning is not interpreted; only listed compound verbs are detected.',
+    'Number words are spoken for 0-20 only; larger numbers stay as digits in speech text.',
+    'Production checks: ने with an imperfective verb, adjective–noun gender agreement — only for lexicon words.',
+  ],
+};
+
 export const hiAdapter: LanguageAdapter = {
   lang: LANG,
   name: 'Hindi',
   script: 'Deva',
   version: VERSION,
+  support: SUPPORT,
 
   segmentSentences: (text) => splitSentences(text, { terminators: '।॥.!?…', abbreviations: [] }),
   tokenize: makeWordTokenizer({ locale: 'hi', normalize }),

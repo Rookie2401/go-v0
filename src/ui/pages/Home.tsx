@@ -3,12 +3,18 @@
  * "Continue" card when there is something to pick up (the last text read, or the testimony), the
  * entries (Read · Scripture · My Testimony), then GoLearn's recommendations with personalised
  * coverage as further entries, and quiet links at the bottom.
+ *
+ * Recommendations follow the learner's actual state (first text; next input / reread / listen after a
+ * completion); input always comes before testimony rehearsal, and the page never says "Open a story to begin"
+ * to someone who has already finished a text.
  */
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { PersonalizedCoverage, Recommendation, Text, TextViewed } from '../../core';
 import { useApp } from '../context';
-import { BAND_LABEL, REASON_LABEL, isTestimonyText, pct, teamLabel, textPath } from '../format';
+import { BAND_LABEL, REASON_LABEL, awaitedStatement, isTestimonyText, isVisibleText, languageName, pct, teamLabel, textPath } from '../format';
+import { useLangTexts } from '../library';
+import { usePreview } from '../prefs';
 import { I } from '../ui';
 
 
@@ -21,21 +27,28 @@ const ENTRIES: Array<{ to: string; name: string; sub: string }> = [
   { to: '/testimony', name: 'My Testimony', sub: 'Write it in your own words' },
 ];
 
+/** Input first, the testimony rehearsal last, whatever order the engine returned (defence in depth). */
+const isRehearsal = (r: Recommendation) => r.reason === 'rehearse-testimony';
+
 export function Home() {
   const { store, bus, golearn, userId, lang, user, course } = useApp();
+  const preview = usePreview();
+  const { texts: allTexts } = useLangTexts();
   const [items, setItems] = useState<Item[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [resume, setResume] = useState<Resume | null>(null);
+  const [completed, setCompleted] = useState(false);
 
   useEffect(() => {
     let live = true;
-    setItems(null);
+    setItems(null); setError(null);
     void (async () => {
-      const recs = await golearn.recommend(userId, { limit: 5 });
+      const recs = await golearn.recommend(userId, { limit: 5, includeUnpublished: preview, lang });
       const [rows, corpora] = await Promise.all([store.texts.getMany(recs.map((r) => r.textId ?? '')), store.corpora.all()]);
       const corpusMap = new Map(corpora.map((c) => [c.id, c]));
       // A recommendation that points at a private testimony text never shows that text: the rehearsal
-      // suggestion keeps its generic card linking to /testimony; any other reason is dropped.
+      // suggestion keeps its generic card linking to /testimony; any other reason is dropped. Unpublished texts
+      // are dropped outside preview even if the engine offered them.
       const kept: Item[] = [];
       for (let i = 0; i < recs.length; i++) {
         const text = rows[i];
@@ -43,13 +56,23 @@ export function Home() {
           if (recs[i].reason === 'rehearse-testimony') kept.push({ rec: recs[i] });
           continue;
         }
+        if (text && !isVisibleText(text, preview)) continue;
         kept.push({ rec: recs[i], text });
       }
-      const covs = await Promise.all(kept.map((k) => (k.text ? golearn.coverage(userId, k.text.id).catch(() => undefined) : undefined)));
-      if (live) setItems(kept.map((k, i) => ({ ...k, coverage: covs[i] })));
+      const ordered = [...kept.filter((k) => !isRehearsal(k.rec)), ...kept.filter((k) => isRehearsal(k.rec))];
+      const covs = await Promise.all(ordered.map((k) => (k.text ? golearn.coverage(userId, k.text.id).catch(() => undefined) : undefined)));
+      if (live) setItems(ordered.map((k, i) => ({ ...k, coverage: covs[i] })));
     })().catch((e: unknown) => { if (live) setError(e instanceof Error ? e.message : String(e)); });
     return () => { live = false; };
-  }, [store, golearn, userId]);
+  }, [store, golearn, userId, lang, preview]);
+
+  // Has this learner finished a text in this language? (Decides the empty-state wording.)
+  useEffect(() => {
+    let live = true;
+    setCompleted(false);
+    void bus.history({ userId, types: ['TextCompleted'] }).then((ev) => { if (live) setCompleted(ev.some((e) => e.lang === lang)); }).catch(() => undefined);
+    return () => { live = false; };
+  }, [bus, userId, lang]);
 
   // What to continue: the most recent of the last text opened and the latest saved testimony version.
   useEffect(() => {
@@ -66,7 +89,7 @@ export function Home() {
       for (let i = views.length - 1; i >= 0; i--) {
         const view = views[i] as TextViewed;
         const text = await store.texts.get(view.textId);
-        if (!text || text.lang !== lang || isTestimonyText(text, corpusMap)) continue;
+        if (!text || text.lang !== lang || isTestimonyText(text, corpusMap) || !isVisibleText(text, preview)) continue;
         best = { kind: 'text', text, corpus: corpusMap.get(text.corpusId)?.title, at: view.at };
         break;
       }
@@ -75,7 +98,20 @@ export function Home() {
       if (live) setResume(best);
     })().catch(() => { /* a missing history only means no Continue card */ });
     return () => { live = false; };
-  }, [store, bus, userId, lang]);
+  }, [store, bus, userId, lang, preview]);
+
+  const heldBack = (allTexts ?? []).some((t) => t.published !== true);
+  const emptyNote = useMemo(() => {
+    if (items === null || items.length > 0) return null;
+    const corpusTexts = (allTexts ?? []).filter((t) => t.kind !== 'scripture');
+    const visibleCorpus = corpusTexts.filter((t) => isVisibleText(t, preview));
+    if (allTexts !== null && visibleCorpus.length === 0) {
+      const a = awaitedStatement(corpusTexts, 'corpus', languageName(course));
+      return { text: a.headline, reasons: a.reasons };
+    }
+    if (completed) return { text: `You have read everything currently available in ${languageName(course)}. New texts appear here as soon as they are published.`, reasons: [] };
+    return { text: 'Nothing to suggest yet. Open a story to begin.', reasons: [] };
+  }, [items, allTexts, preview, completed, course]);
 
   return (
     <div className="page home route-fade">
@@ -107,7 +143,13 @@ export function Home() {
       <h2 className="home__list-divider">For you today</h2>
       {error && <p role="alert" className="error">Could not load recommendations: {error}</p>}
       {items === null && !error && <p className="muted" role="status">Looking at what you have read…</p>}
-      {items && items.length === 0 && <p className="muted">Nothing to suggest yet. Open a story to begin.</p>}
+      {emptyNote && (
+        <div className="home__empty" data-testid="home-empty">
+          <p className="muted">{emptyNote.text}</p>
+          {emptyNote.reasons.length > 0 && <ul className="reasons">{emptyNote.reasons.map((r) => <li key={r}>{r}</li>)}</ul>}
+          {heldBack && !preview && <p className="card__note">Development samples exist but are not reviewed yet. <Link to="/settings">Preview mode in Settings</Link> shows them, clearly marked.</p>}
+        </div>
+      )}
       <ul className="list home__list">
         {items?.map(({ rec, text, coverage }, i) => {
           const to = rec.reason === 'rehearse-testimony' ? '/testimony' : text ? textPath(text) : undefined;
@@ -117,15 +159,16 @@ export function Home() {
                 <span className="home__entry-name" lang={text?.lang}>{text?.title ?? REASON_LABEL[rec.reason] ?? rec.reason}</span>
                 <span className="home__entry-sub">
                   {REASON_LABEL[rec.reason] ?? rec.reason}
-                  {coverage && <> · <span className={`band-${coverage.band}`}>{BAND_LABEL[coverage.band]} · {pct(coverage.knownLexicalCoverage)} familiar</span></>}
+                  {coverage && <> · <span className={`band-${coverage.band}`}>{BAND_LABEL[coverage.band]} · shown {pct(coverage.knownLexicalCoverage)}</span></>}
                 </span>
                 <span className="entry__preview">{rec.explanation}</span>
               </span>
               {text?.generated && <span className="chip chip--wine">generated</span>}
+              {text && text.published !== true && <span className="chip chip--wine">unpublished</span>}
             </>
           );
           return (
-            <li key={`${rec.reason}-${rec.textId ?? rec.testimonyId ?? i}`}>
+            <li key={`${rec.reason}-${rec.textId ?? rec.testimonyId ?? i}`} data-reason={rec.reason}>
               {to ? <Link to={to} className="home__entry">{body}</Link> : <div className="home__entry">{body}</div>}
             </li>
           );

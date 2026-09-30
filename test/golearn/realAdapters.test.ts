@@ -29,6 +29,11 @@ async function readAll(ctx: Awaited<ReturnType<typeof setup>>, lang: LanguageCod
       textId, sentenceId: s.id, tokenIds: [],
     } as never);
   }
+  // Viewing is only exposure; the learner then says he understood all of it (this is what demonstrates comprehension).
+  await ctx.bus.emit({
+    type: 'ComprehensionReported', userId: U, lang, surface: 'corpus', session, dedupeKey: `report:${U}:${session}:${textId}`,
+    textId, sentenceIds: sentences.map((s) => s.id), modality: 'reading', scope: 'text', degree: 'all',
+  } as never);
   return sentences;
 }
 
@@ -59,7 +64,15 @@ describe.each(CASES)('real adapters — $lang', ({ lang, word }) => {
     expect(k.reading.level).not.toBe('unseen');
   });
 
-  it('coverage of the Bible passage is > 0 after reading the story', async () => {
+  it('coverage of the Bible passage is > 0 once the story was shown understood; merely viewing it gives a new learner nothing "known"', async () => {
+    const sentences = await ctx.store.sentences.where('textId', story);
+    for (const s of sentences) {
+      await ctx.bus.emit({ type: 'SentenceViewed', userId: 'viewer', lang, surface: 'corpus', session: 'v1', dedupeKey: `view:viewer:${s.id}`, textId: story, sentenceId: s.id, tokenIds: [] } as never);
+    }
+    const viewed = await ctx.golearn.coverage('viewer', bible);
+    expect(viewed.knownLexicalCoverage).toBe(0);
+    expect(viewed.partialCoverage).toBeGreaterThan(0);
+    await readAll(ctx, lang, story, 'sess-1b');
     const cov = await ctx.golearn.coverage(U, bible);
     expect(cov.wordTokens).toBeGreaterThan(0);
     expect(cov.knownLexicalCoverage + cov.partialCoverage).toBeGreaterThan(0);

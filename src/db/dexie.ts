@@ -29,6 +29,70 @@ export function schemaFor(): Record<string, string> {
   return schema;
 }
 
+/**
+ * The schema as shipped in version 1 (contract v1): no `drafts` / `meta` tables, no `texts.reviewStatus`
+ * and no `sentences.key` index. Written out literally (not derived from INDEXES) because INDEXES moved on;
+ * an upgrade test opens a real database at this version and upgrades it.
+ */
+export const SCHEMA_V1: Record<string, string> = {
+  users: 'id,courseId', languages: 'id', courses: 'id,lang', sources: 'id,rights', corpora: 'id,lang,kind',
+  texts: 'id,corpusId,lang,kind,sourceId', sections: 'id,textId', paragraphs: 'id,textId,sectionId',
+  sentences: 'id,textId,paragraphId,lang,textHash', tokens: 'id,sentenceId,textId,formId,normalized',
+  lemmas: 'id,lang,lemma', analyses: 'id,tokenId,lemmaId,provenance', phrases: 'id,lang',
+  phraseOccurrences: 'id,phraseId,sentenceId,textId', patterns: 'id,lang,key', patternOccurrences: 'id,patternId,sentenceId,textId',
+  rescues: 'id,sentenceId,textId', events: 'id,userId,type,dedupeKey,session', encounters: 'id,userId,itemId,sentenceId,textId',
+  learnerItems: 'id,userId,itemId,lang,itemKind', voices: 'id,lang,courseId,providerId', audioAssets: 'id,sourceType,lang',
+  audioSegments: 'id,textId,cacheKey,voiceConfigId,status,assetId', alignments: 'id,segmentId,unitId,assetId',
+  manifests: 'id,textId,voiceConfigId', audioJobs: 'id,segmentId,status', pronunciations: 'id,lang,match',
+  recordings: 'id,userId,assetId', testimonies: 'id,userId,lang', revisions: 'id,testimonyId,userId',
+  suggestions: 'id,testimonyId,userId,draftHash,status', [BLOBS_TABLE]: 'id',
+};
+
+export const MIGRATION_V2_META_ID = 'migration:dexie-v2';
+
+/** Loose row type for the upgrade: rows written by contract v1 lack the v2 fields. */
+type LegacyRow = Record<string, unknown>;
+
+/**
+ * Version 1 to 2, without losing or rewriting anything that mattered.
+ *  - New tables `drafts` and `meta` and the new indexes are created by Dexie from the v2 schema.
+ *  - Text rows gain the fields contract v2 requires, with the CONSERVATIVE truth: nothing imported under v1 was
+ *    ever reviewed or verified, so `reviewStatus: 'unreviewed'`, `published: false` and a reason that says why.
+ *    (Re-importing the text through the v2 importer replaces these with the real values.)
+ *  - Voices and audio assets: everything audio v1 could produce was fixture tone, so `isSpeech: false` and
+ *    `reviewStatus: 'unreviewed'`. That keeps old fixture plays from ever counting as listening evidence.
+ *  - Sentence rows are left exactly as they were (no `key`): the importer recognises and retires legacy rows.
+ *  - Events, encounters, learner state, testimonies, revisions, recordings and blobs are untouched.
+ * A `meta` row records when the upgrade ran and how many rows were touched.
+ */
+export async function upgradeToV2(tx: { table(name: string): DexieTable<LegacyRow, string> }, now = new Date().toISOString()): Promise<void> {
+  const touched = { texts: 0, voices: 0, audioAssets: 0 };
+  await tx.table('texts').toCollection().modify((row: LegacyRow) => {
+    let changed = false;
+    const fill = (key: string, value: unknown) => { if (row[key] === undefined) { row[key] = value; changed = true; } };
+    fill('reviewStatus', 'unreviewed');
+    fill('editorialTags', []);
+    fill('prepTargets', []);
+    fill('schemaVersion', 1);
+    if (row.published === undefined) {
+      row.published = false;
+      row.unpublishedReasons = ['Imported before review tracking existed (import schema 1): re-import it with the current importer and record a review.'];
+      changed = true;
+    } else fill('unpublishedReasons', []);
+    if (changed) touched.texts += 1;
+  });
+  await tx.table('voices').toCollection().modify((row: LegacyRow) => {
+    let changed = false;
+    if (row.reviewStatus === undefined) { row.reviewStatus = 'unreviewed'; changed = true; }
+    if (row.isSpeech === undefined) { row.isSpeech = false; changed = true; }
+    if (changed) touched.voices += 1;
+  });
+  await tx.table('audioAssets').toCollection().modify((row: LegacyRow) => {
+    if (row.isSpeech === undefined) { row.isSpeech = false; touched.audioAssets += 1; }
+  });
+  await tx.table('meta').put({ id: MIGRATION_V2_META_ID, value: JSON.stringify({ from: 1, to: 2, touched }), updatedAt: now });
+}
+
 /** Keys IndexedDB can index. Booleans / undefined / objects are not valid keys → filter instead. */
 function isIndexableKey(v: unknown): v is string | number | Date {
   return typeof v === 'string' || (typeof v === 'number' && !Number.isNaN(v)) || v instanceof Date;
@@ -142,7 +206,8 @@ export interface DexieAppStore extends AppStore {
 
 export function createDexieStore(name = 'go-v0'): DexieAppStore {
   const db = new Dexie(name);
-  db.version(1).stores(schemaFor());
+  db.version(1).stores(SCHEMA_V1);
+  db.version(2).stores(schemaFor()).upgrade((tx) => upgradeToV2(tx as unknown as Parameters<typeof upgradeToV2>[0]));
 
   const store = {} as DexieAppStore;
   for (const tableName of Object.keys(INDEXES) as TableName[]) {

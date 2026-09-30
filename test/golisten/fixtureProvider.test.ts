@@ -20,6 +20,11 @@ describe('FixtureTtsProvider', () => {
     expect(p.disclaimer).toMatch(/not speech/i);
   });
 
+  it('is not speech, and its availability says it is a development fixture', async () => {
+    expect(p.isSpeech).toBe(false);
+    expect(await p.availability()).toMatchObject({ available: true, reason: 'development-fixture' });
+  });
+
   it.each(LANGS)('%s: returns a real, decodable PCM16 mono 22050 Hz WAV and NEVER word marks', async (lang) => {
     const voices = await p.listVoices(lang);
     expect(voices.length).toBeGreaterThan(0);

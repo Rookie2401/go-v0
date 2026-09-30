@@ -8,14 +8,16 @@ import { AnalysisCache, morphologyLine, pickAnalysis } from './analysis';
 import { classifyTokens } from './coverage';
 import { UNCERTAIN_BELOW, levelAtLeast, productionKindOf } from './policy';
 import type { Ctx } from './state';
-import { byAtThenId, effectiveReadingLevel, emptyDimension } from './state';
+import { byAtThenId, effectiveEstimate, effectiveReadingLevel, emptyDimension } from './state';
 
 export type ItemRef = { itemId?: string; surface?: string; lang: LanguageCode };
 
-/** A row as seen by readers: the reading dimension reflects manual-mark floor/cap. */
+/** A row as seen by readers: the reading dimension reflects the manual-mark floor/cap (and an unknown mark silences the estimate). */
 function displayRow(row: LearnerItemState): LearnerItemState {
   const level = effectiveReadingLevel(row);
-  return level === row.reading.level ? row : { ...row, reading: { ...row.reading, level } };
+  const estimatedFamiliar = effectiveEstimate(row);
+  return level === row.reading.level && estimatedFamiliar === row.reading.estimatedFamiliar
+    ? row : { ...row, reading: { ...row.reading, level, estimatedFamiliar } };
 }
 
 export async function queryItems(ctx: Ctx, userId: string, refs: ItemRef[]): Promise<ItemKnowledge[]> {
@@ -66,12 +68,18 @@ async function queryOne(
     }
   }
 
+  // Counts by evidence kind over reading + listening. An unassisted encounter is an exposure or a demonstration.
+  const rd = row?.reading, ls = row?.listening;
+  const exposureCount = (rd?.exposures ?? 0) + (ls?.exposures ?? 0);
+  const assistedCount = (rd?.assisted ?? 0) + (ls?.assisted ?? 0);
+  const demonstratedCount = (rd ? rd.unassisted - rd.exposures : 0) + (ls ? ls.unassisted - ls.exposures : 0);
+
   return {
     itemId, itemKind, exists: !!row, encounterCount: row?.encounterCount ?? 0, textIds: row?.textIds ?? [],
     ...(row?.lastSeenAt ? { lastSeenAt: row.lastSeenAt } : {}),
     reading: row?.reading ?? emptyDimension(), listening: row?.listening ?? emptyDimension(),
     writing: row?.writing ?? emptyDimension(), speaking: row?.speaking ?? emptyDimension(),
-    exactFormSeen, relatedSeen, productionEvidence,
+    exactFormSeen, relatedSeen, exposureCount, assistedCount, demonstratedCount, productionEvidence,
   };
 }
 
@@ -227,7 +235,8 @@ export async function sentenceSupport(ctx: Ctx, userId: string, sentenceId: stri
   const tokens = (await ctx.store.tokens.where('sentenceId', sentenceId)).sort((a, b) => a.index - b.index);
   const classified = await classifyTokens(ctx, userId, tokens.filter((t) => t.isWord), new AnalysisCache(ctx.store));
   const highlight: SentenceSupport['highlight'] = {};
-  for (const c of classified) highlight[c.token.id] = c.cls;
+  // The contract's highlight has three states; a "likely familiar" estimate is shown as partial, never as known.
+  for (const c of classified) highlight[c.token.id] = c.cls === 'estimated' ? 'partial' : c.cls;
   const out: SentenceSupport = { sentence, tokens, highlight };
   // TODO(contract): there is no table for authored sentence explanations, so `explanation` is never set.
   if (opts?.withRescue) {

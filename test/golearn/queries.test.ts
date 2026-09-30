@@ -22,6 +22,23 @@ describe('queryItem / queryItems', () => {
     expect(k.reading.level).toBe('encountered');
     expect(k.lastSeenAt).toBeTruthy();
     expect(k.productionEvidence).toEqual({ independent: 0, selfRepaired: 0, assisted: 0, copied: 0 });
+    expect(k).toMatchObject({ exposureCount: 1, assistedCount: 0, demonstratedCount: 0 });
+  });
+
+  it('counts exposure, help and demonstration separately (reading + listening)', async () => {
+    const h = createHarness();
+    await buildSpanish(h.store);
+    await h.view(U, 'es', ES_STORY, 0, 's1'); // exposure
+    await h.view(U, 'es', ES_STORY, 0, 's2');
+    await h.help(U, 'es', ES_STORY, 0, 1, F('creo'), 1, 's2'); // assisted
+    await h.understood(U, 'es', ES_STORY, [0], 's3'); // demonstrated
+    await h.listen(U, 'es', ES_STORY, [0], { session: 'l1' }); // heard once: exposure
+    const k = await h.golearn.queryItem(U, { surface: 'creo', lang: 'es' });
+    expect(k).toMatchObject({ exposureCount: 2, assistedCount: 1, demonstratedCount: 1, encounterCount: 4 });
+    const dios = await h.golearn.queryItem(U, { surface: 'dios', lang: 'es' });
+    expect(dios).toMatchObject({ exposureCount: 3, assistedCount: 0, demonstratedCount: 1 }); // also exact + cheap: exists / textIds
+    expect(dios.exists).toBe(true);
+    expect(dios.textIds).toEqual([ES_STORY]);
   });
 
   it('an unseen unknown word is {exists:false, exactFormSeen:false, relatedSeen:false}', async () => {
@@ -87,13 +104,13 @@ describe('listKnown', () => {
   it('lists items at or above a level in a modality, strongest first', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
-    for (const s of ['s1', 's2', 's3']) await h.view(U, 'es', ES_STORY, 0, s);
+    for (const s of ['s1', 's2', 's3']) await h.understood(U, 'es', ES_STORY, [0], s);
     await h.view(U, 'es', ES_STORY, 3, 's1');
     const recognized = await h.golearn.listKnown(U, 'es', 'reading', 'recognized');
     const ids1 = recognized.map((r) => r.itemId);
     expect(ids1).toContain(F('creo'));
     expect(ids1).toContain(F('dios')); // in s0 (3×) and s3
-    expect(ids1).not.toContain(F('perdona')); // only encountered once
+    expect(ids1).not.toContain(F('perdona')); // only met once, never shown understood
     const enc = await h.golearn.listKnown(U, 'es', 'reading', 'encountered');
     expect(enc.length).toBeGreaterThan(recognized.length);
     expect(await h.golearn.listKnown(U, 'es', 'listening', 'encountered')).toEqual([]);

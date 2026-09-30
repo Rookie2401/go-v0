@@ -10,11 +10,10 @@
  *
  * TODO(integration): recordings are stored via `store.assets` + a `recordings` row (the GoListen contract
  * has no recording method). Sentence ids are matched to revision sentences through the manifest's
- * `sentenceIds` (ids.sentence(textId, index)), falling back to position.
+ * `sentenceIds` (the Text's live sentences in order), falling back to position.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { AudioSegment, EventBus, LanguageCode, TestimonyRevision, UserRecording } from '../../core';
-import { ids } from '../../core';
+import type { AppStore, AudioSegment, EventBus, LanguageCode, TestimonyRevision, UserRecording } from '../../core';
 import { listeningEmitter } from '../../golisten';
 import type { ListeningEmitter } from '../../golisten';
 import { useApp } from '../context';
@@ -28,7 +27,7 @@ import type { ActiveRecording } from './recorder';
 // One emitter per (bus, user, session, text): its pass/attempt counters must survive remounts within a
 // session, or a repeated attempt would be deduped away.
 const emitters = new WeakMap<EventBus, Map<string, ListeningEmitter>>();
-function emitterFor(bus: EventBus, ctx: { userId: string; lang: LanguageCode; session: string; textId: string }): ListeningEmitter {
+function emitterFor(bus: EventBus, ctx: { userId: string; lang: LanguageCode; session: string; textId: string; store: AppStore }): ListeningEmitter {
   let byKey = emitters.get(bus);
   if (!byKey) { byKey = new Map(); emitters.set(bus, byKey); }
   const key = `${ctx.userId}|${ctx.session}|${ctx.textId}`;
@@ -37,7 +36,11 @@ function emitterFor(bus: EventBus, ctx: { userId: string; lang: LanguageCode; se
   return e;
 }
 
-export function RevisionAudio({ revision }: { revision: TestimonyRevision }) {
+/**
+ * `currentDraft`: what is in the editor right now. The audio is always for the saved version's own text; when the
+ * draft has moved on, say so plainly so nobody rehearses words they are no longer going to say.
+ */
+export function RevisionAudio({ revision, currentDraft }: { revision: TestimonyRevision; currentDraft?: string }) {
   const { store, bus, golisten, userId, lang, session } = useApp();
   const textId = revision.textId;
   const [speed] = usePref('speed');
@@ -50,8 +53,19 @@ export function RevisionAudio({ revision }: { revision: TestimonyRevision }) {
   const [recordings, setRecordings] = useState<Record<number, Array<{ rec: UserRecording; url?: string }>>>({});
   const [recordingIndex, setRecordingIndex] = useState<number | null>(null);
 
-  const emitter = useMemo(() => (textId ? emitterFor(bus, { userId, lang, session, textId }) : null), [bus, userId, lang, session, textId]);
-  const sentenceIdFor = useCallback((index: number) => (textId ? ids.sentence(textId, index) : undefined), [textId]);
+  const emitter = useMemo(() => (textId ? emitterFor(bus, { userId, lang, session, textId, store }) : null), [bus, userId, lang, session, textId, store]);
+  // Real sentence ids of the private testimony Text, in the order of its current content version. (Ingested sentences
+  // are keyed by content, so an id is never derived from a position.)
+  const [sentenceIds, setSentenceIds] = useState<string[]>([]);
+  useEffect(() => {
+    if (!textId) return;
+    let live = true;
+    void store.sentences.where('textId', textId).then((rows) => {
+      if (live) setSentenceIds(rows.filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index).map((s) => s.id));
+    });
+    return () => { live = false; };
+  }, [store, textId]);
+  const sentenceIdFor = useCallback((index: number) => sentenceIds[index], [sentenceIds]);
 
   /** The manifest segment for one revision sentence (fresh lookup: the manifest may have just been prepared). */
   const segmentFor = useCallback(async (index: number): Promise<AudioSegment | undefined> => {
@@ -59,8 +73,8 @@ export function RevisionAudio({ revision }: { revision: TestimonyRevision }) {
     const manifest = await golisten.getManifest(textId);
     if (!manifest) return undefined;
     const segs = (await Promise.all(manifest.segmentIds.map((id) => golisten.getSegment(id)))).filter((s): s is AudioSegment => !!s);
-    const wanted = sentenceIdFor(index)!;
-    return segs.find((s) => s.sentenceIds.includes(wanted)) ?? segs[index];
+    const wanted = sentenceIdFor(index);
+    return (wanted ? segs.find((s) => s.sentenceIds.includes(wanted)) : undefined) ?? segs[index];
   }, [golisten, textId, sentenceIdFor]);
 
   // Shadowing counts (from the event log, by segment) and existing recordings for this version.
@@ -147,7 +161,7 @@ export function RevisionAudio({ revision }: { revision: TestimonyRevision }) {
   if (!textId) {
     return (
       <section className="rehearse" aria-label="Listen and rehearse">
-        <h3 className="label">Listen and rehearse — version {revision.number}</h3>
+        <h3 className="label">Audio for version {revision.number}</h3>
         <p className="card__note">Audio is not available for this version.</p>
       </section>
     );
@@ -156,8 +170,13 @@ export function RevisionAudio({ revision }: { revision: TestimonyRevision }) {
   return (
     <section className="rehearse" aria-label="Listen and rehearse">
       <div className="rehearse-head">
-        <h3 className="label">Listen and rehearse — version {revision.number}</h3>
+        <h3 className="label">Audio for version {revision.number}</h3>
       </div>
+      {currentDraft !== undefined && currentDraft.trim() !== revision.fullText.trim() && (
+        <p className="note note--warn" role="note" data-testid="draft-differs">
+          This audio is for version {revision.number}, not for the text in your editor now. Save the editor text as a new version to hear it.
+        </p>
+      )}
       <Player key={textId} textId={textId} controlRef={controls} />
       <div className="card__actions">
         <button type="button" className="btn btn--primary" onClick={playAll}>Play whole testimony</button>

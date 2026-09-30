@@ -22,6 +22,8 @@ export interface TokenCardProps {
   supports: Partial<Record<number, TokenSupport>>;
   explanation?: string;
   english?: string;
+  /** GoLearn's one-sentence account of what it knows about this word ("Seen 7 times in 2 texts; needed help twice…"). */
+  why?: string;
   /** Language of the tapped form, so the surface is set in the text's own font. */
   lang?: LanguageCode;
   /** The sheet is up. When false it plays its exit, then calls onExited. */
@@ -43,9 +45,10 @@ function pick<K extends keyof TokenSupport>(supports: Partial<Record<number, Tok
   return undefined;
 }
 
-export function TokenCard({ token, level, supports, explanation, english, lang, open, onMore, onClose, onExited }: TokenCardProps) {
+export function TokenCard({ token, level, supports, explanation, english, why, lang, open, onMore, onClose, onExited }: TokenCardProps) {
   const { store } = useApp();
   const gloss = pick(supports, 'gloss');
+  const analysis = pick(supports, 'analysis');
   const phrases = pick(supports, 'phrases') ?? [];
   const patterns = pick(supports, 'patterns') ?? [];
   const lemma = pick(supports, 'lemma');
@@ -55,6 +58,8 @@ export function TokenCard({ token, level, supports, explanation, english, lang, 
   const uncertain = supports[level]?.uncertain ?? pick(supports, 'uncertain') ?? false;
   const loaded = supports[level] !== undefined;
   const anyLoaded = Object.keys(supports).length > 0;
+  /** Nothing is known about this word yet: say so, never guess. */
+  const unanalysed = anyLoaded && !gloss && !lemma && !analysis && !morphologyLine;
 
   const [examples, setExamples] = useState<Sentence[]>([]);
   const exampleKey = exampleIds.slice(0, 3).join('|');
@@ -121,13 +126,16 @@ export function TokenCard({ token, level, supports, explanation, english, lang, 
         ) : gloss ? (
           <p className="card__gloss">{uncertain ? 'possibly ' : ''}{gloss}</p>
         ) : (
-          <p className="card__note">No gloss for this word yet.</p>
+          unanalysed
+            ? <p className="card__note" data-testid="not-analysed">Not analysed yet. Go has no dictionary entry for this word, and it will not guess.</p>
+            : <p className="card__note">No gloss for this word yet.</p>
         )}
         {uncertain && anyLoaded && <p className="card__note">The analysis here is uncertain.</p>}
         {lemma && lemma.lemma !== token.surface.toLowerCase() && (
           <div className="card__line"><span className="k">Lemma</span><span lang={lang}>{lemma.lemma}</span></div>
         )}
         {lemma?.pos && <div className="card__line"><span className="k">Part of speech</span><span>{lemma.pos.toLowerCase()}</span></div>}
+        {why && <p className="card__prov" aria-label="What Go knows about this word" data-testid="word-why">{why}</p>}
       </section>
 
       {level >= 2 && (
@@ -154,7 +162,7 @@ export function TokenCard({ token, level, supports, explanation, english, lang, 
           {morphologyLine ? (
             <div className="card__line"><span className="k">Morphology</span><span>{morphologyLine}</span></div>
           ) : (
-            <p className="card__text">No grammar analysis available.</p>
+            <p className="card__text">{unanalysed ? 'Not analysed yet.' : 'No grammar analysis available.'}</p>
           )}
           {patterns.map((p) => (
             <p key={p.id} className="card__text"><b>{p.title}.</b> {p.explanation}</p>

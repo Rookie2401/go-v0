@@ -7,8 +7,7 @@
  */
 import type {
   AnalysisCandidate, AnalyzedToken, ErrorCandidate, LanguageAdapter, PatternCandidate, PhraseCandidate,
-  PronunciationSupport, RawToken,
-} from '../core';
+  PronunciationSupport, RawToken, AdapterSupport } from '../core';
 import {
   E, Lexicon, hasLemma, hasPos, lexiconAnalyze, makeWordTokenizer, matchCase, matchPhraseRules,
   nfc, speechNormalizeGeneric, splitSentences, stripMarks, type PhraseRule,
@@ -35,7 +34,7 @@ const ENTRIES = [
   E('querer', 'VERB', 'to want', ['querer:inf', 'quiero:1s pres', 'quiere:3s pres']),
   E('decir', 'VERB', 'to say', ['decir:inf', 'dijéremos:1p fsub']),
   E('engañar', 'VERB', 'to deceive', ['engañar:inf', 'engañamos:1p pres']),
-  E('confesar', 'VERB', 'to confess', ['confesar:inf', 'confesáremos:1p fsub']),
+  E('confesar', 'VERB', 'to confess', ['confesar:inf', 'confesamos:1p pres', 'confesáremos:1p fsub']),
   E('limpiar', 'VERB', 'to cleanse', ['limpiar:inf', 'limpie:3s subj']),
   E('perder', 'VERB', 'to lose, perish', ['perder:inf', 'pierda:3s subj', 'pierde:3s pres']),
   E('dar', 'VERB', 'to give', ['dar:inf', 'da:3s pres', 'dado:ptcp m sg']),
@@ -44,6 +43,7 @@ const ENTRIES = [
   E('corazón', 'NOUN', 'heart', ['corazón:m sg', 'corazones:m pl']),
   E('Dios', 'PROPN', 'God', ['Dios:m sg']),
   E('día', 'NOUN', 'day', ['día:m sg', 'días:m pl']),
+  E('año', 'NOUN', 'year', ['año:m sg', 'años:m pl']),
   E('mundo', 'NOUN', 'world', ['mundo:m sg']),
   E('paz', 'NOUN', 'peace', ['paz:f sg']),
   E('cosa', 'NOUN', 'thing', ['cosa:f sg', 'cosas:f pl']),
@@ -110,7 +110,15 @@ const ENTRIES = [
   E('cuando', 'SCONJ', 'when'),
   E('uno', 'NUM', 'one', ['uno:m sg']),
   E('dos', 'NUM', 'two'),
+  E('tres', 'NUM', 'three'), E('cuatro', 'NUM', 'four'), E('cinco', 'NUM', 'five'), E('seis', 'NUM', 'six'),
+  E('siete', 'NUM', 'seven'), E('ocho', 'NUM', 'eight'), E('nueve', 'NUM', 'nine'), E('diez', 'NUM', 'ten'),
+  E('doce', 'NUM', 'twelve'), E('veinte', 'NUM', 'twenty'), E('treinta', 'NUM', 'thirty'),
 ];
+
+/** Value of the lexicon numerals (for "number above one takes a plural noun"). */
+const NUMERAL_VALUE: Record<string, number> = {
+  uno: 1, dos: 2, tres: 3, cuatro: 4, cinco: 5, seis: 6, siete: 7, ocho: 8, nueve: 9, diez: 10, doce: 12, veinte: 20, treinta: 30,
+};
 export const esLexicon = new Lexicon(ENTRIES, normalize);
 
 const CLITICS = ['me', 'te', 'lo', 'la', 'los', 'las', 'le', 'les', 'nos', 'se'];
@@ -161,11 +169,28 @@ function articleFor(defn: string, gender: string, number: string): string | unde
   return undefined;
 }
 
+const SUPPORT: AdapterSupport = {
+  tokenization: 'dependable', // Intl.Segmenter('es'); every token slices the input exactly
+  sentenceSegmentation: 'limited', // terminators + a short abbreviation list; an unlisted abbreviation ("Av.") can split a sentence
+  lemmatization: 'seed-only', // the lexicon covers the seed corpus only; any other word is left unanalysed (empty candidates), never guessed
+  morphology: 'seed-only', // person/number/tense only for the paradigms listed in the lexicon
+  phraseDetection: 'seed-only', // three course phrases (cuando era joven, empezar a entender, creer en …)
+  productionChecks: 'limited',
+  limitations: [
+    'Lemmatization is seed-only: the lexicon covers the bundled corpus, so supplied texts will have unanalysed words.',
+    'Historical Scripture forms outside the lexicon (á for a, dijéremos, engañamos are listed; others are not) stay unanalysed.',
+    'Clitics are split only on lexicon infinitives (entenderlo); gerund and imperative clitics (dámelo) are not analysed.',
+    'Production checks: article–noun agreement, de/a + el contraction, yo + conjugation (third-person verb or infinitive), and number above one + singular noun — only for lexicon words.',
+    'Sentence splitting does not know every abbreviation.',
+  ],
+};
+
 export const esAdapter: LanguageAdapter = {
   lang: LANG,
   name: 'Spanish',
   script: 'Latn',
   version: VERSION,
+  support: SUPPORT,
 
   segmentSentences: (text) =>
     splitSentences(text, { terminators: '.!?…', abbreviations: ['sr', 'sra', 'srta', 'dr', 'dra', 'etc', 'pág', 'pp', 'ud', 'uds', 'vs'] }),
@@ -274,12 +299,14 @@ export const esAdapter: LanguageAdapter = {
         }
       }
 
-      // yo + third-person verb
+      // yo + verb that is not first person
       if (tokens[i].normalized === 'yo') {
-        const j = analyses[i + 1] && tokens[i + 1].normalized === 'no' ? i + 2 : i + 1;
+        const j = tokens[i + 1].normalized === 'no' ? i + 2 : i + 1;
         const v = analyses[j]?.candidates[0];
-        if (v && (v.pos === 'VERB' || v.pos === 'AUX') && v.morph.Person && !v.morph.Person.split(',').includes('1') && v.morph.Number === 'Sing') {
-          const entry = v.lemma ? esLexicon.find(v.lemma) : undefined;
+        const entry = v?.lemma ? esLexicon.find(v.lemma) : undefined;
+        const isVerb = !!v && (v.pos === 'VERB' || v.pos === 'AUX') && !!tokens[j]?.isWord;
+        if (isVerb && v.morph.Person && !v.morph.Person.split(',').includes('1') && v.morph.Number === 'Sing') {
+          // "yo tiene" → "yo tengo": third-person verb after yo
           const want: Record<string, string> = { Person: '1', Number: 'Sing' };
           for (const k of ['Tense', 'Mood'] as const) if (v.morph[k] && !v.morph[k].includes(',')) want[k] = v.morph[k];
           const fix = entry ? esLexicon.formWith(entry, want) : undefined;
@@ -288,8 +315,33 @@ export const esAdapter: LanguageAdapter = {
             message: '"yo" takes the first-person verb form.',
             suggestion: fix ? { start: tokens[j].start, end: tokens[j].end, replacement: matchCase(tokens[j].surface, fix.form) } : undefined,
           });
+        } else if (isVerb && v.morph.VerbForm === 'Inf' && !v.notes?.clitics) {
+          // "Yo creer" → "Yo creo": a bare infinitive after yo (only when the verb is in the lexicon)
+          const fix = entry ? esLexicon.formWith(entry, { Person: '1', Number: 'Sing', Tense: 'Pres', Mood: 'Ind' }) : undefined;
+          out.push({
+            category: 'conjugation', tokenIndexes: [i, j], confidence: fix ? 0.8 : 0.65, affectsMeaning: false,
+            message: '"yo" needs a conjugated verb, not the infinitive: "yo creo", not "yo creer".',
+            suggestion: fix ? { start: tokens[j].start, end: tokens[j].end, replacement: matchCase(tokens[j].surface, fix.form) } : undefined,
+          });
         }
       }
+    }
+
+    // number above one + singular noun → plural ("cinco año" → "cinco años"); only when the lexicon has the plural
+    for (let i = 0; i < tokens.length - 1; i++) {
+      const digits = !tokens[i].isWord && /^\p{Nd}+$/u.test(tokens[i].surface);
+      const n = digits ? Number(tokens[i].surface) : tokens[i].isWord && analyses[i]?.candidates[0]?.pos === 'NUM' ? NUMERAL_VALUE[tokens[i].normalized] : undefined;
+      if (n === undefined || !(n > 1)) continue;
+      const b = analyses[i + 1]?.candidates[0];
+      if (!tokens[i + 1].isWord || b?.pos !== 'NOUN' || b.morph.Number !== 'Sing' || !b.lemma) continue;
+      const entry = esLexicon.find(b.lemma, 'NOUN');
+      const plural = entry ? esLexicon.formWith(entry, { Number: 'Plur' }) : undefined;
+      if (!plural) continue;
+      out.push({
+        category: 'agreement', tokenIndexes: [i, i + 1], confidence: 0.85, affectsMeaning: false,
+        message: `After a number above one the noun is plural: "${plural.form}".`,
+        suggestion: { start: tokens[i + 1].start, end: tokens[i + 1].end, replacement: matchCase(tokens[i + 1].surface, plural.form) },
+      });
     }
     return out;
   },

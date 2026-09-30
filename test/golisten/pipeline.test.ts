@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { buildFixtureText, hash, ids, COURSES, type AppStore, type LanguageCode } from '../../src/core';
-import { FixtureTtsProvider, stripVerseMarkers } from '../../src/golisten';
+import { FixtureTtsProvider, GOLISTEN_VERSION, stripVerseMarkers } from '../../src/golisten';
 import { LANGS, MarksTestProvider, STORY, SCRIPTURE, addScripture, addStory, editSentence, makeEnv } from './support';
 
 const textId = (lang: LanguageCode, slug = 'story-01') => ids.text(lang, slug);
@@ -136,7 +136,7 @@ expect(new Set(r.manifest.segmentIds).size).toBe(3);
     const r = await gl.ensureAudio(textId(lang, 'john-leaky'), { runNow: true });
     const seg = (await gl.getSegment(r.manifest.segmentIds[0]))!;
     expect(seg.speechText).toBe(plain);
-    expect(seg.speechNormalization.some((t) => t.tool === 'golisten@1' && /verse marker/.test(t.description))).toBe(true);
+    expect(seg.speechNormalization.some((t) => t.tool === GOLISTEN_VERSION && /verse marker/.test(t.description))).toBe(true);
     const asset = (await gl.getAsset(seg.assetId!))!;
     expect(asset.generation!.normalizerVersion).toMatch(/golisten-strip@1$/);
   });
@@ -162,8 +162,9 @@ expect(new Set(r.manifest.segmentIds).size).toBe(3);
     expect(await store.voices.get(voice.id)).toMatchObject({ requestedLocale: voice.requestedLocale, actualLocale: voice.actualLocale });
     // resolving again returns the same stored row (a human's approval would survive)
     expect((await gl.resolveVoice(lang)).id).toBe(voice.id);
-    await store.voices.put({ ...voice, approved: true });
-    expect((await gl.resolveVoice(lang)).approved).toBe(true);
+    expect(voice).toMatchObject({ reviewStatus: 'unreviewed', isSpeech: false, providerVersion: '1' });
+    await store.voices.put({ ...voice, reviewStatus: 'in-review' });
+    expect((await gl.resolveVoice(lang)).reviewStatus).toBe('in-review'); // a stored review decision survives re-resolution
 
     const r = await gl.ensureAudio(textId(lang), { runNow: true });
     const d = await gl.diagnostics(textId(lang));

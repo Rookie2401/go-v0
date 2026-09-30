@@ -25,6 +25,11 @@ async function play(h: Harness, u: string) {
   await h.view(u, 'es', ES_STORY, 0, 's2');
   await h.listen(u, 'es', ES_STORY, [0, 1], { speed: 0.85, transcript: true, session: 'l1' });
   await h.listen(u, 'es', ES_STORY, [0], { session: 'l1' });
+  await h.report(u, 'es', ES_STORY, [0, 1, 3], { session: 's1' }); // "all" — but help / rescue already touched some items
+  await h.report(u, 'es', ES_STORY, [0], { session: 'l1', modality: 'listening' });
+  await h.report(u, 'es', ES_STORY, [0, 1, 2, 3], { session: 's2', degree: 'some', scope: 'text' }); // not item evidence
+  await h.listen(u, 'es', ES_STORY, [2], { session: 'l2', speech: false }); // fixture audio: excluded, stays in the log
+  await h.complete(u, 'es', ES_STORY, 's2');
   await h.produce(u, 'es', F('creo'), 'independent');
   await h.produce(u, 'es', F('dios'), 'assisted', { modality: 'speaking' });
   await h.mark(u, 'es', F('corazón'), 'known');
@@ -41,6 +46,10 @@ describe('rebuild(userId)', () => {
     const before = await snapshot(h, 'u1');
     const otherBefore = await snapshot(h, 'u2');
     expect(before.items.length).toBeGreaterThan(10);
+    expect(before.encounters.some((e) => e.evidenceKind === 'demonstrated')).toBe(true);
+    expect(before.encounters.some((e) => e.evidenceKind === 'assisted')).toBe(true);
+    expect(before.encounters.some((e) => e.evidenceKind === 'exposure')).toBe(true);
+    expect(before.encounters.some((e) => e.evidenceKind === 'production')).toBe(true);
     expect(before.encounters.length).toBeGreaterThan(20);
     const phraseEvents = (await h.bus.history({ userId: 'u1', types: ['PhraseEncountered'] })).length;
 
@@ -73,9 +82,18 @@ describe('rebuild(userId)', () => {
     await h.golearn.rebuild('u1');
     await h.view('u1', 'es', ES_STORY, 0, 's2');
     expect((await h.golearn.getItemState('u1', F('creo')))?.encounterCount).toBe(2);
-    await h.rescue('u1', 'es', ES_STORY, [0], 's2');
-    const weights = (await h.store.encounters.where('itemId', F('creo'))).map((e) => e.weight).sort();
-    expect(weights).toEqual([0.15, 1]);
+    await h.report('u1', 'es', ES_STORY, [0], { session: 's2' });
+    await h.rescue('u1', 'es', ES_STORY, [0], 's2'); // help after the report still wins
+    const kinds = (await h.store.encounters.where('itemId', F('creo'))).map((e) => e.evidenceKind).sort();
+    expect(kinds).toEqual(['assisted', 'exposure']);
+  });
+
+  it('stamps the policy version in meta', async () => {
+    const h = createHarness();
+    await buildSpanish(h.store);
+    await h.view('u1', 'es', ES_STORY, 0);
+    await h.golearn.rebuild('u1');
+    expect((await h.store.meta.all()).map((m) => m.value)).toEqual(['evidence@2']);
   });
 
   it('rebuilds a user with no events to an empty state', async () => {

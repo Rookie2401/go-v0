@@ -1,0 +1,92 @@
+{
+  "_comment": "Comprehensible-input story template (schema version 2). Copy this file, change every value, then run: npm run corpus:validate -- path/to/your-file.json. Fields starting with an underscore are ignored by the validator. See docs/IMPORT.md.",
+  "schemaVersion": 2,
+  "id": "my-story-01",
+  "lang": "es",
+  "locale": "es-HN",
+  "title": "Mi historia",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input - Spanish",
+    "_comment": "Texts that share a corpus id appear together. Use ci-<lang> for ordinary reading texts."
+  },
+  "source": {
+    "id": "src:es:my-story-01",
+    "title": "My story (course-authored)",
+    "author": "Your name",
+    "attribution": "Written by Your name for the Go course.",
+    "provenance": "Written by Your name, a native speaker, for this course on 2026-01-01. Nothing is copied from another source.",
+    "rights": "owner-authored",
+    "authorship": "human",
+    "_comment": "rights: public-domain | licensed | owner-authored | generated | user-private | unverified. authorship: human | public-domain | licensed | generated | learner. provenance is an honest statement of where the words came from and what has NOT been checked; rights 'unverified' requires it to say the text must be replaced or verified before release."
+  },
+  "review": {
+    "status": "unreviewed",
+    "_comment": "Leave 'unreviewed' until a named person has checked the text. Then set status to 'reviewed' and add reviewedBy (a name) and reviewedAt (a date), e.g. {\"status\": \"reviewed\", \"reviewedBy\": \"Ana Ruiz (native speaker)\", \"reviewedAt\": \"2026-02-01\", \"notes\": \"checked wording and glosses\"}. Only a reviewed text with established rights is published."
+  },
+  "difficulty": "A1",
+  "topics": ["mission", "testimony"],
+  "editorialTags": ["needs-native-review"],
+  "prepTargets": ["JHN.3.16"],
+  "generated": false,
+  "english": {
+    "source": "Written by the author of the text",
+    "_comment": "Required whenever any English is supplied: where the English rescue lines came from."
+  },
+  "sections": [
+    {
+      "title": "Mi historia",
+      "paragraphs": [
+        {
+          "_comment": "Declared sentences: each entry is exactly one sentence. text is stored exactly as written (no trimming, no Unicode normalisation). id is optional: give one to keep a sentence's identity stable when you later edit its wording.",
+          "sentences": [
+            {
+              "id": "s1",
+              "text": "Dios ama al mundo.",
+              "english": "God loves the world.",
+              "spans": [
+                {
+                  "start": 0,
+                  "end": 4,
+                  "lemma": "Dios",
+                  "pos": "PROPN",
+                  "gloss": "God",
+                  "_comment": "Optional author analysis of ONE word: start/end are UTF-16 offsets into this sentence's text (text.slice(start, end) is the word). Omit confidence if you are certain."
+                }
+              ]
+            },
+            {
+              "id": "s2",
+              "text": "Yo creo en Dios.",
+              "english": "I believe in God."
+            },
+            {
+              "id": "s3",
+              "text": "Ahora tengo paz.",
+              "english": "Now I have peace.",
+              "corrections": [
+                {
+                  "start": 6,
+                  "end": 11,
+                  "lemma": "tener",
+                  "pos": "VERB",
+                  "gloss": "I have",
+                  "by": "Ana Ruiz",
+                  "at": "2026-02-01",
+                  "_comment": "A reviewed human correction of one word's analysis. It is stored as a human analysis that supersedes the machine row and is never deleted by a later import."
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "_comment": "Raw paragraph: the language adapter splits the text into sentences. english must then have exactly one entry per sentence the adapter finds (the validator tells you how many). Spacing is stored exactly as written.",
+          "text": "Hola. Gracias.",
+          "english": ["Hello.", "Thank you."]
+        }
+      ]
+    }
+  ]
+}

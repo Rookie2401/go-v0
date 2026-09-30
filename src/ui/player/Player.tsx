@@ -10,18 +10,31 @@
  *  - Shows provider/voice; when the voice's provider is "fixture" a visible
  *    "fixture audio — not speech" badge is always rendered.
  *  - Playing audio never touches reading evidence (GoLearn decides what listening events mean).
+ *  - What is shown is driven by `golisten.audioStatus(textId)`, for every state: unavailable (no provider — you can
+ *    still read), not generated, generating, ready, stale (earlier version), failed (reason + retry) and
+ *    preview-only (placeholder or unreviewed voice: playable, badged, no evidence).
  */
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { KeyboardEvent as ReactKeyboardEvent, MutableRefObject } from 'react';
-import type { AudioManifest, AudioSegment, PlayerState, VoiceConfig } from '../../core';
+import type { AudioManifest, AudioSegment, AudioStatus, PlayerState, VoiceConfig } from '../../core';
 import {
   MAX_SPEED, MIN_SPEED, PlayerMachine, buildPlayerManifest, clampSpeed, emitPlayerEffects, isTranscriptVisible, listeningEmitter,
 } from '../../golisten';
 import type { PlayerEffect, PlayerManifestInput, PlayerModel, TranscriptMode } from '../../golisten';
 import { useApp } from '../context';
-import { setPref, usePref } from '../prefs';
+import { setPref, usePref, usePreview } from '../prefs';
 import { I, IconBtn } from '../ui';
 import { configureAudio, isEditableTarget } from './audio';
+
+/**
+ * GoListen's status reasons are already learner-facing sentences ("Audio is not available — no speech provider is
+ * configured. You can still read."). Show them as they are; only wrap a bare fragment.
+ */
+const unavailableLine = (reason?: string) =>
+  reason && /audio is not available|you can still read/i.test(reason)
+    ? reason.trim()
+    : `Audio is not available — ${reason ? reason.trim().replace(/[.]$/, '') : 'no speech provider is configured'}. You can still read.`;
+
 
 export interface PlayerChange {
   segment?: AudioSegment;
@@ -43,7 +56,7 @@ export interface PlayerProps {
   controlRef?: MutableRefObject<PlayerControls | null>;
 }
 
-type Status = 'loading' | 'none' | 'preparing' | 'ready' | 'error';
+type Status = 'loading' | 'unavailable' | 'none' | 'generating' | 'preparing' | 'stale' | 'failed' | 'ready' | 'error';
 
 const TRANSCRIPT_LABELS: Record<TranscriptMode, string> = {
   visible: 'Show text',
@@ -58,8 +71,11 @@ const viewKey = (m: PlayerModel) =>
 
 export function Player({ textId, onChange, controlRef }: PlayerProps) {
   const { store, bus, golisten, userId, lang, session } = useApp();
+  const preview = usePreview();
+  const [audio, setAudio] = useState<AudioStatus | undefined>();
   const speedId = useId();
-  const emitter = useMemo(() => listeningEmitter(bus, { userId, lang, session, textId }), [bus, userId, lang, session, textId]);
+  // The store lets the emitter resolve segment -> asset -> voice, so events say whether this was reviewed real speech.
+  const emitter = useMemo(() => listeningEmitter(bus, { userId, lang, session, textId, store }), [bus, userId, lang, session, textId, store]);
 
   const [status, setStatus] = useState<Status>('loading');
   const [error, setError] = useState<string | null>(null);
@@ -148,6 +164,14 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
   }, [perform]);
 
   const reload = useCallback(async () => {
+    // The honest state of this text's audio decides everything below.
+    const st = await golisten.audioStatus(textId, { preview });
+    setAudio(st);
+    if (st.state === 'unavailable' || st.state === 'not-generated' || st.state === 'generating' || st.state === 'failed' || st.state === 'stale') {
+      machineRef.current = null; setModel(null); setManifest(undefined);
+      setStatus(st.state === 'not-generated' ? 'none' : st.state);
+      return;
+    }
     const m = await golisten.getManifest(textId);
     setManifest(m);
     if (!m || m.segmentIds.length === 0) { machineRef.current = null; setModel(null); setStatus('none'); return; }
@@ -167,7 +191,7 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
       setFixtureAsset(a?.generation?.providerId === 'fixture');
     }
     setStatus('ready');
-  }, [golisten, store, textId, attach]);
+  }, [golisten, store, textId, attach, preview]);
 
   useEffect(() => {
     let live = true;
@@ -176,6 +200,14 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
     return () => { live = false; };
   }, [reload]);
 
+  // While audio is being made, keep asking how far it has got.
+  const generating = audio?.state === 'generating';
+  useEffect(() => {
+    if (!generating) return;
+    const t = setTimeout(() => { reload().catch(() => undefined); }, 1500);
+    return () => clearTimeout(t);
+  }, [generating, audio, reload]);
+
   const prepare = useCallback(async () => {
     setStatus('preparing');
     setError(null);
@@ -183,6 +215,11 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
       await golisten.ensureAudio(textId, { runNow: true });
       await reload();
     } catch (e) {
+      if (e instanceof Error && e.name === 'AudioUnavailable') {
+        // No provider after all (credentials removed, say): show the honest unavailable state, not an error.
+        await reload().catch(() => undefined);
+        return;
+      }
       setError(e instanceof Error ? e.message : String(e));
       setStatus('error');
     }
@@ -262,19 +299,53 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
   const isFixture = voice?.providerId === 'fixture' || (!voice && fixtureAsset);
   const fallbackAccent = voice && voice.actualLocale !== voice.requestedLocale;
 
+  const stateProp = audio?.state ?? status;
   if (status === 'loading') return <section className="player" aria-label="Audio player"><p className="card__note" role="status">Loading audio…</p></section>;
   if (status === 'error') return (
-    <section className="player" aria-label="Audio player">
+    <section className="player" aria-label="Audio player" data-audio-state="error">
       <p role="alert" className="error">Audio problem: {error}</p>
       <button type="button" className="btn btn--small btn--quiet" onClick={() => { void prepare(); }}>Try again</button>
     </section>
   );
+  if (status === 'unavailable') return (
+    <section className="player" aria-label="Audio player" data-audio-state="unavailable">
+      <p className="note" role="status" data-testid="audio-unavailable">{unavailableLine(audio?.reason)}</p>
+    </section>
+  );
+  if (status === 'generating') return (
+    <section className="player" aria-label="Audio player" data-audio-state="generating">
+      <p className="card__note" role="status" data-testid="audio-generating">
+        Preparing audio… {audio?.readySegments ?? 0} of {audio?.totalSegments ?? 0} sentences ready.
+      </p>
+      {audio?.reason && /retried|error/i.test(audio.reason) && <p className="card__note">{audio.reason}</p>}
+    </section>
+  );
+  if (status === 'failed') return (
+    <section className="player" aria-label="Audio player" data-audio-state="failed">
+      <p role="alert" className="error" data-testid="audio-failed">
+        Audio could not be made. {audio?.reason ?? ''}
+      </p>
+      <button type="button" className="btn btn--small btn--quiet" onClick={() => { void prepare(); }}>Try again</button>
+    </section>
+  );
+  if (status === 'stale') return (
+    <section className="player" aria-label="Audio player" data-audio-state="stale">
+      <p className="note note--warn" role="status" data-testid="audio-stale">
+        This audio is for an earlier version of the text, so it is not played. {audio?.reason ?? 'Regenerate it to hear what is written now.'}
+      </p>
+      <button type="button" className="btn btn--small" onClick={() => { void prepare(); }}>Regenerate audio</button>
+    </section>
+  );
   if (status === 'none' || status === 'preparing' || !model) return (
-    <section className="player" aria-label="Audio player">
+    <section className="player" aria-label="Audio player" data-audio-state={stateProp}>
       <button type="button" className="btn btn--small" disabled={status === 'preparing'} onClick={() => { void prepare(); }}>
         {status === 'preparing' ? 'Preparing audio…' : 'Prepare audio for this text'}
       </button>
-      <p className="card__note">Audio is generated on this device and cached; nothing is uploaded.</p>
+      <p className="card__note" data-testid="audio-privacy">
+        {audio?.isSpeech
+          ? `The sentences of this text are sent to the speech provider (${audio.providerId ?? 'your speech provider'}) to make the audio; the audio is then kept on this device.`
+          : 'This placeholder audio is generated on this device; nothing is uploaded.'}
+      </p>
     </section>
   );
 
@@ -284,11 +355,12 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
   const showTranscript = current ? isTranscriptVisible(model, model.segmentIndex) : false;
 
   return (
-    <section className="player" aria-label="Audio player" onKeyDown={onPlayerKey}>
+    <section className="player" aria-label="Audio player" data-audio-state={stateProp} onKeyDown={onPlayerKey}>
       <audio
         ref={audioRef}
         preload="auto"
         onEnded={() => dispatch({ type: 'ended' })}
+        onError={() => dispatch({ type: 'playbackError' })}
         onTimeUpdate={(e) => dispatch({ type: 'position', ms: e.currentTarget.currentTime * 1000 })}
       />
       <div className="player__bar" role="group" aria-label="Playback controls">
@@ -313,7 +385,13 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
           {model.loop.unit === 'sentence' && ' · looping'}
         </span>
         {isFixture && <span className="chip chip--wine" data-testid="fixture-badge">fixture audio — not speech</span>}
+        {audio?.state === 'preview-only' && <span className="chip chip--wine" data-testid="preview-audio-badge">preview audio — not counted</span>}
       </div>
+      {audio?.state === 'preview-only' && (
+        <p className="note note--warn" role="note" data-testid="preview-audio-note">
+          Listening to this does not count toward your progress.{audio.reason ? ` ${audio.reason}` : ''}
+        </p>
+      )}
 
       <details className="player__more">
         <summary className="btn btn--small btn--quiet">Speed &amp; transcript</summary>

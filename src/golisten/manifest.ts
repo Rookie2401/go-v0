@@ -1,15 +1,25 @@
 import { ids } from '../core/ids';
 import type { AudioManifest, Sentence, Text } from '../core/model';
+import type { AppStore } from '../core/store';
 import type { Runtime } from './types';
 
-/** complete = every sentence of the text has a segment in the manifest and every one of them is ready. */
+/**
+ * The sentences of the CURRENT content version, in reading order. Sentences retired by a later import
+ * (`retiredInVersion`) are history only: they never get audio and never count toward completeness.
+ * Order is `Sentence.index`, never derived from an id.
+ */
+export async function liveSentences(store: AppStore, textId: string): Promise<Sentence[]> {
+  return (await store.sentences.where('textId', textId)).filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
+}
+
+/** complete = every live sentence of the text has a segment in the manifest and every one of them is ready. */
 export async function manifestComplete(rt: Runtime, manifest: AudioManifest, sentenceCount: number): Promise<boolean> {
   if (manifest.segmentIds.length !== sentenceCount || sentenceCount === 0) return false;
   const segs = await rt.store.audioSegments.getMany([...new Set(manifest.segmentIds)]);
   return segs.every((s) => !!s && s.status === 'ready' && !!s.assetId);
 }
 
-/** Whole-text manifest: one entry per sentence, in order, for every sentence whose segment exists (pending or ready). */
+/** Whole-text manifest: one entry per live sentence, in order, for every sentence whose segment exists (pending or ready). */
 export async function writeManifest(rt: Runtime, text: Text, sentences: Sentence[], keyOf: Map<string, string>, voiceConfigId: string): Promise<AudioManifest> {
   const segmentIds: string[] = [];
   for (const s of sentences) {
@@ -34,7 +44,9 @@ export async function writeManifest(rt: Runtime, text: Text, sentences: Sentence
 export async function refreshManifestsFor(rt: Runtime, segmentId: string): Promise<void> {
   for (const m of await rt.store.manifests.all()) {
     if (!m.segmentIds.includes(segmentId)) continue;
-    const count = (await rt.store.sentences.where('textId', m.textId)).length;
+    const text = await rt.store.texts.get(m.textId);
+    if (!text || m.contentVersion !== text.contentVersion) continue; // an older version's manifest is history, not recomputed
+    const count = (await liveSentences(rt.store, m.textId)).length;
     const complete = await manifestComplete(rt, m, count);
     if (complete !== m.complete) await rt.store.manifests.put({ ...m, complete, updatedAt: rt.clock() });
   }

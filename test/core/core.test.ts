@@ -10,8 +10,16 @@ describe('ids', () => {
   });
   it('parse token and sentence ids', () => {
     const t = ids.token(ids.sentence(ids.text('th', 'story-01'), 3), 7);
-    expect(parseTokenId(t)).toEqual({ textId: 'text:th:story-01', sentenceId: 'text:th:story-01/s3', sentenceIndex: 3, tokenIndex: 7 });
-    expect(parseSentenceId('text:hi:x/s0')).toEqual({ textId: 'text:hi:x', sentenceIndex: 0 });
+    expect(parseTokenId(t)).toEqual({ textId: 'text:th:story-01', sentenceId: 'text:th:story-01/s3', sentenceKey: '3', sentenceIndex: 3, tokenIndex: 7 });
+    expect(parseSentenceId('text:hi:x/s0')).toEqual({ textId: 'text:hi:x', sentenceKey: '0', sentenceIndex: 0 });
+    // Ingested texts use stable content keys: the id still parses, but order must come from Sentence.index.
+    const key = ids.sentenceKey('Dios perdonó mi pecado.');
+    expect(key).toBe(ids.sentenceKey('Dios perdonó mi pecado.'));
+    expect(ids.sentenceKey('Dios perdonó mi pecado.', 1)).toBe(key + '~1');
+    expect(ids.sentenceKey('Dios perdonó mi pecado')).not.toBe(key);
+    const sid = ids.sentence('text:es:story-01', key);
+    expect(parseSentenceId(sid)).toMatchObject({ textId: 'text:es:story-01', sentenceKey: key });
+    expect(parseTokenId(ids.token(sid, 2))).toMatchObject({ sentenceId: sid, sentenceKey: key, tokenIndex: 2 });
     expect(itemKindOf('phrase:es:a_b')).toBe('phrase');
   });
   it('hash is deterministic over UTF-8', () => {

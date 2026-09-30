@@ -15,6 +15,7 @@ export function createTestAdapter(lang: LanguageCode, lemmaOf: Record<string, st
   const normalize = (s: string) => (latin ? s.normalize('NFC').toLowerCase() : s.normalize('NFC'));
   return {
     lang, name: `test-${lang}`, script: SCRIPT[lang], version: 'test@1',
+    support: { tokenization: 'limited', sentenceSegmentation: 'limited', lemmatization: 'none', morphology: 'none', phraseDetection: 'none', productionChecks: 'none', limitations: ['test adapter'] },
     segmentSentences: (text) => [{ start: 0, end: text.length, text }],
     tokenize(sentence): RawToken[] {
       if (!latin) throw new Error(`test adapter refuses to tokenize ${lang}: use buildFixtureText with explicit tokens`);

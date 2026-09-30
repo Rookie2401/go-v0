@@ -10,7 +10,10 @@
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "test": "vitest run",
-    "gate": "tsc -b && vitest run"
+    "gate": "tsc -b && vitest run",
+    "corpus:validate": "vite-node scripts/corpus-validate.mts",
+    "corpus:check": "vite-node scripts/corpus-check.mts",
+    "corpus:migrate": "vite-node scripts/corpus-migrate.mts"
   },
   "dependencies": {
     "dexie": "^4",

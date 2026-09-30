@@ -41,7 +41,9 @@ export function useTextData(textId: string): TextDataState {
         store.rescues.where('textId', textId),
         store.phraseOccurrences.where('textId', textId),
       ]);
-      const sentences = sentencesRaw.sort((a, b) => a.index - b.index);
+      // Live sentences only, in the order of the current content version (retired sentences are history: they keep
+      // their ids for encounters and audio, but are not part of the text any more). Never derive order from an id.
+      const sentences = sentencesRaw.filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
       const tokensBySentence = new Map<string, Token[]>();
       for (const t of tokens.sort((a, b) => a.index - b.index)) {
         const list = tokensBySentence.get(t.sentenceId) ?? [];

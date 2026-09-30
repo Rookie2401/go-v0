@@ -17,7 +17,8 @@ describe('revision -> private Text', () => {
     const text = (await w.store.texts.get(rev.textId!))!;
     expect(text.kind).toBe('testimony');
     expect(text.generated).toBe(false);
-    expect(text.tags).toEqual(['private', 'testimony']);
+    expect(text.editorialTags).toContain('private');
+    expect(text.tags).toEqual([]); // private writing is never a learner-facing pathway
     expect(isTestimonyText(text)).toBe(true);
     expect(isTestimonyText((await w.store.texts.get('text:es:story-a'))!)).toBe(false);
     expect((await w.store.corpora.get('testimony:A'))!.kind).toBe('testimony');

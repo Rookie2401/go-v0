@@ -3,7 +3,8 @@ import { ids, type AudioPlayed, type AudioSegmentCompleted, type AudioReplayed, 
 import { PlayerMachine, buildPlayerManifest, emitPlayerEffects, listeningEmitter } from '../../src/golisten';
 import { addStory, makeEnv } from './support';
 
-const seg = { segmentId: 'seg:a', sentenceIds: ['text:es:x/s0'] };
+// No store in these contexts: the caller vouches for the asset (assetId + ready) and nothing else, so speech/voiceReviewed stay false.
+const seg = { segmentId: 'seg:a', sentenceIds: ['text:es:x/s0'], assetId: 'asset:a', ready: true };
 const view = { speed: 1, transcriptVisible: false };
 const ctx = { userId: 'u1', lang: 'es' as const, session: 'sess1', textId: 'text:es:x' };
 
@@ -39,7 +40,7 @@ describe('listeningEmitter', () => {
     expect(completions).toHaveLength(2);
     expect(await ofType(bus, 'AudioReplayed')).toHaveLength(2);
     // a different segment and a different session are independent
-    expect(await em.completed({ segmentId: 'seg:b', sentenceIds: [] }, view)).not.toBeNull();
+    expect(await em.completed({ segmentId: 'seg:b', sentenceIds: [], assetId: 'asset:b', ready: true }, view)).not.toBeNull();
     expect(await listeningEmitter(bus, { ...ctx, session: 'sess2' }).completed(seg, view)).not.toBeNull();
   });
 
@@ -98,7 +99,7 @@ describe('player + emitter integration over a real manifest', () => {
     const pm = new PlayerMachine(await buildPlayerManifest(store, r.manifest), { transcriptMode: 'hidden' });
     expect(pm.state.manifest.segments).toHaveLength(3);
     expect(pm.state.manifest.segments.every((s) => s.ready && s.assetId && s.durationMs! > 0 && s.sentenceIds.length === 1)).toBe(true);
-    const em = listeningEmitter(bus, { userId: 'u1', lang: 'de', session: 's-int', textId: r.manifest.textId });
+    const em = listeningEmitter(bus, { userId: 'u1', lang: 'de', session: 's-int', textId: r.manifest.textId, store });
     const step = async (a: Parameters<PlayerMachine['dispatch']>[0]) => emitPlayerEffects(em, pm.state, pm.dispatch(a));
 
     await step({ type: 'setSpeed', speed: 0.8 });
@@ -139,7 +140,7 @@ describe('player + emitter integration over a real manifest', () => {
     await addStory(store, 'sq');
     const r = await gl.ensureAudio(ids.text('sq', 'story-01'), { runNow: true });
     const pm = new PlayerMachine(await buildPlayerManifest(store, r.manifest));
-    const em = listeningEmitter(bus, { userId: 'u1', lang: 'sq', session: 's-ab', textId: r.manifest.textId });
+    const em = listeningEmitter(bus, { userId: 'u1', lang: 'sq', session: 's-ab', textId: r.manifest.textId, store });
     const step = async (a: Parameters<PlayerMachine['dispatch']>[0]) => emitPlayerEffects(em, pm.state, pm.dispatch(a));
     await step({ type: 'play' });
     await step({ type: 'position', ms: 420 });

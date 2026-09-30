@@ -64,7 +64,7 @@ describe('My Testimony editor', () => {
     expect(cards[0].textContent).toContain('Yo cree en Dios');
     expect(cards[0].textContent).toContain('Yo creo en Dios');
     expect(cards[0].textContent).toContain('Use creo after yo.');
-    expect(cards[1].textContent).toContain('Uses language you know');
+    expect(cards[1].textContent).toContain('Uses language you have met');
     expect(cards[1].textContent).toContain('encountered 3 times in Story 1');
     expect(cards[2].textContent).toContain('New expression');
     expect(cards[2].textContent).toContain('Lord');
@@ -123,12 +123,13 @@ describe('My Testimony editor', () => {
     expect(rows[1].textContent).toContain('Dios me perdonó.');
     expect(rows[1].textContent).toContain('Dios me ha perdonado.');
 
-    await click(button(items[1], 'Use as draft'));
+    await click(button(items[1], 'Restore as draft'));
+    expect(h.tell.restoreRevisionAsDraft).toHaveBeenCalledWith('tst:u1:es/r1');
     expect(editor().value).toBe('Yo creo en Dios. Dios me perdonó.');
   });
 
   it('asks GoTell for an intent proposal and only adds it to the draft on request', async () => {
-    h = await makeHarness({ tell: { proposal: { proposal: 'Dios me perdonó.', familiar: [], newItems: [{ itemId: 'form:es:perdonó', surface: 'perdonó', gloss: 'forgave', whyNeeded: 'No word you know means this.' }], fallbackWithoutNew: { text: 'Dios me ayudó.', lossNote: 'Says help, not forgive.' } } } });
+    h = await makeHarness({ tell: { proposal: { supported: true, insertable: true, sources: [], unexpressed: [], proposal: 'Dios me perdonó.', familiar: [], newItems: [{ itemId: 'form:es:perdonó', surface: 'perdonó', gloss: 'forgave', whyNeeded: 'No word you know means this.' }], fallbackWithoutNew: { text: 'Dios me ayudó.', lossNote: 'Says help, not forgive.' } } } });
     mounted = await h.mount(<Testimony />);
     await typeInto(byLabel<HTMLInputElement>(mounted.container, 'What are you trying to say?'), 'God forgave me');
     await click(button(mounted.container, 'Help me say it'));

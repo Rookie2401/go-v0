@@ -7,6 +7,9 @@ import { buildFixtureText, makeFakeAdapter } from './fakes';
 import type { FakeLex, World } from './fakes';
 import type { FixtureSentence, LanguageCode } from '../../src/core';
 
+/** What a custom SuggestionProvider must still fill in; the service replaces these with measured values. */
+export const PLACEHOLDER_HONESTY = { scope: 'partial' as const, remainingIssues: [] as string[], checkerCoverage: '', sources: [] as never[] };
+
 const L = (lemma: string, pos: FakeLex['pos'], gloss?: string, morph?: Record<string, string>): FakeLex => ({ lemma, pos, gloss, morph });
 
 // ───────────────────────── Spanish ─────────────────────────
@@ -20,6 +23,9 @@ export const ES_LEXICON: Record<string, FakeLex> = {
   'empecé': L('empezar', 'VERB', 'began'), a: L('a', 'ADP'), verdad: L('verdad', 'NOUN', 'truth'),
   culpa: L('culpa', 'NOUN', 'guilt'), 'convicción': L('convicción', 'NOUN', 'conviction'), 'perdón': L('perdón', 'NOUN', 'forgiveness'),
   'arrepentí': L('arrepentir', 'VERB', 'repented'), dios: L('dios', 'PROPN', 'God'), dio: L('dar', 'VERB', 'gave'), 'sentí': L('sentir', 'VERB', 'felt'),
+  creer: L('creer', 'VERB', 'believe'), tiene: L('tener', 'VERB', 'has'), tengo: L('tener', 'VERB', 'have'), cinco: L('cinco', 'NUM', 'five'),
+  'año': L('año', 'NOUN', 'year'), 'años': L('año', 'NOUN', 'years'), 'un': L('uno', 'DET'), 'día': L('día', 'NOUN', 'day'),
+  sobre: L('sobre', 'ADP', 'about'),
 };
 
 export const ES_RULES = [
@@ -31,6 +37,19 @@ export const ES_RULES = [
 export const ES_PHRASE = ['empecé', 'a', 'entender', '_'];
 
 export const esAdapter = () => makeFakeAdapter({ lang: 'es', lexicon: ES_LEXICON, rules: ES_RULES, phrases: [ES_PHRASE] });
+
+/**
+ * The three Spanish checker rules A2 added to the real adapter (yo + infinitive, yo tiene -> tengo, numeral +
+ * singular noun), as a fake - for the cases that need a detected-but-unfixable rule (partial scope), which the real
+ * adapter cannot be made to produce. The acceptance sentence is ALSO tested against the real adapter (scope.test.ts).
+ */
+export const ES_ACCEPT_RULES = [
+  { match: ['yo', 'creer'], replace: ['yo', 'creo'], category: 'conjugation' as const, message: 'After "yo" use the conjugated verb ("creo"), not the infinitive.' },
+  { match: ['yo', 'tiene'], replace: ['yo', 'tengo'], category: 'conjugation' as const, message: '"yo" goes with "tengo", not "tiene".' },
+  { match: ['cinco', 'año'], replace: ['cinco', 'años'], category: 'agreement' as const, message: 'After a number above one the noun is plural ("años").' },
+];
+export const esAcceptAdapter = (rules = ES_ACCEPT_RULES) => makeFakeAdapter({ lang: 'es', lexicon: ES_LEXICON, rules: [...ES_RULES, ...rules], phrases: [ES_PHRASE] });
+export const ES_ACCEPT_DRAFT = 'Yo creer en Dios. Yo tiene cinco año.';
 
 /** "Cuando yo era joven yo conocía de Jesús pero yo no entender mi pecado." (learner's rough draft) */
 export const ES_ROUGH = 'Cuando yo era joven yo conocía de Jesús pero yo no entender mi pecado.';
@@ -76,6 +95,33 @@ export const sentence = (lexicon: Record<string, FakeLex>, words: string, extra:
   tokens: words.split(' ').map((w): Tk => tokFrom(lexicon, w)),
   ...extra,
 });
+
+/** The learner has met "Yo creo en Dios." and "Yo tengo cinco años." (Story C) - so creo / tengo / años are encountered. */
+export async function esStoryC(w: World, userId: string, level: Parameters<World['golearn']['learnText']>[2] = 'recognized') {
+  const t = await buildFixtureText(w.store, {
+    lang: 'es', slug: 'story-c', title: 'Story C', kind: 'story', sentences: [
+      sentence(ES_LEXICON, 'Yo creo en Dios .', { english: 'I believe in God.' }),
+      sentence(ES_LEXICON, 'Yo tengo cinco años .', { english: 'I am five years old.' }),
+    ],
+  });
+  await w.golearn.learnText(userId, t.id, level);
+  return t;
+}
+
+/** Scripture B2: "Un día empecé a entender mi pecado." with the phrase "empecé a entender _" and an English line. */
+export async function esScriptureIntent(w: World, userId: string) {
+  const t = await buildFixtureText(w.store, {
+    lang: 'es', slug: 'scripture-i', title: 'Scripture I', kind: 'scripture', scripture: { book: 'ROM', chapter: 7 }, sentences: [
+      sentence(ES_LEXICON, 'Un día empecé a entender mi pecado .', {
+        english: 'One day I began to understand my sin.',
+        phrases: [{ pattern: ['empecé', 'a', 'entender', '_'], display: 'empecé a entender …', tokenIndexes: [2, 3, 4] }],
+      }),
+      sentence(ES_LEXICON, 'Yo no entendía mi pecado .', { english: 'I did not understand my sin.' }),
+    ],
+  });
+  await w.golearn.learnText(userId, t.id);
+  return t;
+}
 
 export async function esStoryA(w: World, userId: string) {
   const t = await buildFixtureText(w.store, {

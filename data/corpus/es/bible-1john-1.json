@@ -1,9 +1,9 @@
 {
-  "formatVersion": 1,
+  "schemaVersion": 2,
+  "id": "bible-1john-1",
   "lang": "es",
-  "slug": "bible-1john-1",
   "title": "1 Juan 1:8–9; Juan 3:16",
-  "kind": "scripture",
+  "contentType": "scripture",
   "corpus": {
     "id": "bible-es-rv1909",
     "kind": "scripture",
@@ -13,23 +13,43 @@
     "id": "src:es:bible-1john-1",
     "title": "Santa Biblia, Reina-Valera 1909",
     "edition": "Reina-Valera 1909",
+    "attribution": "Reina-Valera 1909, public domain (eBible.org)",
+    "provenance": "Reina-Valera 1909 (public domain). The bundled sample was first transcribed by an AI assistant from memory; its wording was then compared byte for byte with the eBible.org copy (https://ebible.org/spaRV1909) on 2026-09-30 by scripts/verify-scripture.mjs (record: data/verified/scripture.json), any differing wording was replaced by the source wording, and the text is now identical to that source.",
     "rights": "public-domain",
-    "authorship": "public-domain",
-    "licenseNote": "The 1909 Reina-Valera revision is in the public domain."
+    "licenseNote": "The 1909 Reina-Valera revision is in the public domain.",
+    "authorship": "public-domain"
   },
-  "sourceNote": "Reina-Valera 1909 (public domain). The verses were transcribed by the drafter (an AI assistant) from memory of the 1909 text, keeping its period orthography (á for a). NOT yet proof-checked against a scan or an eBible/Wikisource copy: verify word-for-word before release.",
-  "version": "Reina-Valera 1909",
-  "tags": [
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "scripts/verify-scripture.mjs",
+    "reviewedAt": "2026-09-30",
+    "notes": "Wording verified by byte-comparison against eBible.org spaRV1909."
+  },
+  "topics": [
     "scripture",
     "1john-1",
     "john-3"
   ],
+  "editorialTags": [],
+  "prepTargets": [],
   "generated": false,
   "scripture": {
+    "translationId": "spaRV1909",
+    "translationName": "Reina-Valera 1909",
+    "edition": "Reina-Valera 1909",
     "book": "1JN",
-    "chapter": 1
+    "chapter": 1,
+    "verification": {
+      "against": "eBible.org spaRV1909",
+      "url": "https://ebible.org/spaRV1909",
+      "checkedAt": "2026-09-30",
+      "method": "byte-comparison",
+      "by": "scripts/verify-scripture.mjs"
+    }
   },
-  "englishSource": "World English Bible (public domain)",
+  "english": {
+    "source": "World English Bible (public domain)"
+  },
   "sections": [
     {
       "title": "1 Juan 1",

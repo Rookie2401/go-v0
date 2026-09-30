@@ -2,13 +2,15 @@
  * Learner-state maintenance. Encounters are the durable evidence rows; a LearnerItemState is always
  * *recomputed* from its item's encounters (sorted by time, id), never incrementally patched. That makes
  * re-weighting idempotent and makes `rebuild` trivially reproducible.
+ *
+ * Encounters carry `session` and `replays` (contract fields; old rows may lack them and are read as session '').
  */
 import type {
-  AdapterRegistry, AppStore, AssistanceLevel, DimensionState, Encounter, EventBus, EvidencePolicy, ItemKind, ProductionKind,
-  LanguageCode, LearnerItemState, LearnerLevel, Modality,
+  AdapterRegistry, AppStore, AssistanceLevel, DimensionState, Encounter, EventBus, EvidenceKind, EvidencePolicy, ItemKind,
+  LanguageCode, LearnerItemState, LearnerLevel, Modality, ProductionKind,
 } from '../core';
 import { ids } from '../core';
-import { confidenceFor, levelIndex, toLevel } from './policy';
+import { ESTIMATE, confidenceFor, levelIndex, toLevel } from './policy';
 
 export interface Ctx {
   store: AppStore;
@@ -16,12 +18,20 @@ export interface Ctx {
   adapters: AdapterRegistry;
   policy: EvidencePolicy;
   clock: () => string;
+  /** True when reviewed, real-speech audio exists for the text (supplied by GoListen). Absent ⇒ never recommend listening. */
+  audioEligible?: (textId: string) => Promise<boolean>;
 }
+
+/** Kept as an alias: the contract `Encounter` now carries `session` / `replays` (both optional on old rows). */
+export type StoredEncounter = Encounter;
 
 export const MODALITIES: readonly Modality[] = ['reading', 'listening', 'writing', 'speaking'];
 const RECEPTIVE: readonly Modality[] = ['reading', 'listening'];
+export const isReceptive = (m: Modality) => RECEPTIVE.includes(m);
 
-export const emptyDimension = (): DimensionState => ({ level: 'unseen', confidence: 0, evidence: 0, unassisted: 0, assisted: 0 });
+export const emptyDimension = (): DimensionState => ({
+  level: 'unseen', confidence: 0, evidence: 0, exposures: 0, estimatedFamiliar: false, unassisted: 0, assisted: 0,
+});
 
 /**
  * Reading / listening: unassisted = no assistance at all. Writing / speaking: independent (0) and
@@ -46,42 +56,95 @@ export interface NewEncounter {
   modality: Modality;
   session: string;
   at: string;
+  evidenceKind: EvidenceKind;
   assistance: AssistanceLevel;
   weight: number;
   playbackSpeed?: number;
+  replays?: number;
   productionKind?: ProductionKind;
 }
 
 /**
  * Creates the encounter unless (user, item, sentence, modality, session) already has one.
- * `upgrade` (listening): an existing encounter is replaced by the better evidence (higher weight), which is
- * idempotent and order-independent.
+ * `replaceIf` (listening): an existing encounter is replaced by the candidate when the caller says the candidate is
+ * better evidence; this is idempotent and order-independent. The original `at` is kept.
  */
 export async function addEncounter(
-  ctx: Ctx, n: NewEncounter, upgrade = false,
-): Promise<{ changed: boolean; created: boolean; encounter: Encounter }> {
+  ctx: Ctx, n: NewEncounter, replaceIf?: (existing: StoredEncounter) => boolean,
+): Promise<{ changed: boolean; created: boolean; encounter: StoredEncounter }> {
   const id = ids.encounter(n.userId, n.itemId, n.sentenceId, n.modality, n.session);
-  const existing = await ctx.store.encounters.get(id);
+  const existing = (await ctx.store.encounters.get(id)) as StoredEncounter | undefined;
   if (existing) {
-    if (upgrade && n.weight > existing.weight) {
-      const up: Encounter = { ...existing, weight: n.weight, assistance: n.assistance, playbackSpeed: n.playbackSpeed ?? existing.playbackSpeed };
+    if (replaceIf?.(existing)) {
+      const up: StoredEncounter = {
+        ...existing, evidenceKind: n.evidenceKind, weight: n.weight, assistance: n.assistance,
+        ...(n.playbackSpeed !== undefined ? { playbackSpeed: n.playbackSpeed } : {}),
+        ...(n.replays !== undefined ? { replays: n.replays } : {}),
+      };
       await ctx.store.encounters.put(up);
       return { changed: true, created: false, encounter: up };
     }
     return { changed: false, created: false, encounter: existing };
   }
-  const enc: Encounter = {
+  const enc: StoredEncounter = {
     id, userId: n.userId, lang: n.lang, itemId: n.itemId, itemKind: n.itemKind, sentenceId: n.sentenceId,
-    textId: n.textId, surface: n.surface, modality: n.modality, at: n.at, assistance: n.assistance,
-    priorLevel: 'unseen', weight: n.weight,
+    textId: n.textId, surface: n.surface, modality: n.modality, at: n.at, evidenceKind: n.evidenceKind,
+    assistance: n.assistance, priorLevel: 'unseen', weight: n.weight, session: n.session,
   };
   if (n.playbackSpeed !== undefined) enc.playbackSpeed = n.playbackSpeed;
+  if (n.replays !== undefined) enc.replays = n.replays;
   if (n.productionKind) enc.productionKind = n.productionKind;
   await ctx.store.encounters.put(enc);
   return { changed: true, created: true, encounter: enc };
 }
 
-interface Acc { evidence: number; unassisted: number; assisted: number; last?: string }
+/** Running totals for one (item, modality) while walking its encounters in time order. */
+class Acc {
+  n = 0;
+  evidence = 0;
+  exposures = 0;
+  unassisted = 0;
+  assisted = 0;
+  /** distinct demonstrated (sentence, session) units */
+  readonly demonstrated = new Set<string>();
+  /** encounters with no help at all (exposure or demonstrated): the estimate's raw material */
+  plain = 0;
+  readonly plainSessions = new Set<string>();
+  /** help flags of the last two encounters */
+  tail: boolean[] = [];
+  last?: string;
+
+  constructor(private readonly modality: Modality) {}
+
+  add(enc: StoredEncounter) {
+    this.n += 1;
+    this.evidence += enc.weight;
+    if (enc.evidenceKind === 'exposure') this.exposures += 1;
+    if (isUnassisted(this.modality, enc.assistance)) this.unassisted += 1; else this.assisted += 1;
+    if (isReceptive(this.modality)) {
+      if (enc.evidenceKind === 'demonstrated') this.demonstrated.add(`${enc.sentenceId}\u0000${enc.session ?? ''}`);
+      if (enc.assistance === 0) { this.plain += 1; this.plainSessions.add(enc.session ?? ''); }
+      this.tail.push(enc.assistance > 0);
+      if (this.tail.length > ESTIMATE.cleanTail) this.tail.shift();
+    }
+    if (!this.last || enc.at > this.last) this.last = enc.at;
+  }
+
+  level(ctx: Ctx): LearnerLevel {
+    if (this.n === 0) return 'unseen';
+    const second = isReceptive(this.modality) ? this.demonstrated.size : this.unassisted;
+    const level = toLevel(ctx.policy.level(this.modality, round6(this.evidence), second, this.assisted));
+    return level === 'unseen' ? 'encountered' : level;
+  }
+
+  estimated(level: LearnerLevel): boolean {
+    return isReceptive(this.modality)
+      && this.plain >= ESTIMATE.minUnassisted
+      && this.plainSessions.size >= ESTIMATE.minSessions
+      && this.tail.length >= ESTIMATE.cleanTail && this.tail.every((h) => !h)
+      && levelIndex(level) < levelIndex('recognized');
+  }
+}
 
 /** Recompute one LearnerItemState (and the priorLevel of each of its encounters) from the encounters. */
 export async function recomputeItem(
@@ -89,43 +152,42 @@ export async function recomputeItem(
 ): Promise<LearnerItemState | undefined> {
   const rowId = ids.learnerItem(userId, itemId);
   const existing = await ctx.store.learnerItems.get(rowId);
-  const encs = (await ctx.store.encounters.where('itemId', itemId)).filter((e) => e.userId === userId).sort(byAtThenId);
+  const encs = ((await ctx.store.encounters.where('itemId', itemId)) as StoredEncounter[])
+    .filter((e) => e.userId === userId).sort(byAtThenId);
   if (encs.length === 0 && !existing?.manualMark) {
     if (existing) await ctx.store.learnerItems.delete(rowId);
     return undefined;
   }
 
   const acc: Record<Modality, Acc> = {
-    reading: { evidence: 0, unassisted: 0, assisted: 0 },
-    listening: { evidence: 0, unassisted: 0, assisted: 0 },
-    writing: { evidence: 0, unassisted: 0, assisted: 0 },
-    speaking: { evidence: 0, unassisted: 0, assisted: 0 },
+    reading: new Acc('reading'), listening: new Acc('listening'), writing: new Acc('writing'), speaking: new Acc('speaking'),
   };
   for (const enc of encs) {
     const a = acc[enc.modality];
-    const prior: LearnerLevel = toLevel(ctx.policy.level(enc.modality, a.evidence, a.unassisted, a.assisted));
+    const prior = a.level(ctx);
     if (enc.priorLevel !== prior) {
       enc.priorLevel = prior;
       await ctx.store.encounters.put(enc);
     }
-    a.evidence += enc.weight;
-    if (isUnassisted(enc.modality, enc.assistance)) a.unassisted += 1; else a.assisted += 1;
-    if (!a.last || enc.at > a.last) a.last = enc.at;
+    a.add(enc);
   }
 
   const dim = (m: Modality): DimensionState => {
     const a = acc[m];
-    if (a.unassisted + a.assisted === 0) return emptyDimension();
+    if (a.n === 0) return emptyDimension();
     const evidence = round6(a.evidence);
+    const level = a.level(ctx);
+    const estimatedFamiliar = a.estimated(level);
     const d: DimensionState = {
-      level: toLevel(ctx.policy.level(m, evidence, a.unassisted, a.assisted)),
-      confidence: confidenceFor(evidence), evidence, unassisted: a.unassisted, assisted: a.assisted,
+      level,
+      confidence: estimatedFamiliar ? Math.max(ESTIMATE.confidence, confidenceFor(evidence)) : confidenceFor(evidence),
+      evidence, exposures: a.exposures, estimatedFamiliar, unassisted: a.unassisted, assisted: a.assisted,
     };
     if (a.last) d.lastEvidenceAt = a.last;
     return d;
   };
 
-  const seen = encs.filter((e) => RECEPTIVE.includes(e.modality));
+  const seen = encs.filter((e) => isReceptive(e.modality));
   const textIds: string[] = [];
   for (const e of seen) if (!textIds.includes(e.textId)) textIds.push(e.textId);
   const row: LearnerItemState = {
@@ -146,8 +208,8 @@ export async function recomputeMany(
 }
 
 /**
- * Manual marks only cap / floor the *displayed* reading level: `known` floors it at `recognized`,
- * `unknown` caps it at `recognized_with_help`. Stored evidence is untouched.
+ * Manual marks only cap / floor the *displayed* reading level: `known` floors it at `recognized` (an explicit mark is a
+ * demonstration of that item), `unknown` caps it at `recognized_with_help`. Stored evidence is untouched.
  */
 export function effectiveReadingLevel(state: LearnerItemState | undefined): LearnerLevel {
   if (!state) return 'unseen';
@@ -155,4 +217,11 @@ export function effectiveReadingLevel(state: LearnerItemState | undefined): Lear
   if (state.manualMark === 'known' && levelIndex(level) < levelIndex('recognized')) return 'recognized';
   if (state.manualMark === 'unknown' && levelIndex(level) > levelIndex('recognized_with_help')) return 'recognized_with_help';
   return level;
+}
+
+/** "Likely familiar (estimate)": the stored estimate, unless the learner marked the item unknown or it is already recognized. */
+export function effectiveEstimate(state: LearnerItemState | undefined): boolean {
+  if (!state || !state.reading.estimatedFamiliar) return false;
+  if (state.manualMark === 'unknown') return false;
+  return levelIndex(effectiveReadingLevel(state)) < levelIndex('recognized');
 }

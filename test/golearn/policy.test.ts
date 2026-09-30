@@ -1,11 +1,15 @@
 import { describe, expect, it } from 'vitest';
 import type { AssistanceLevel } from '../../src/core';
-import { defaultPolicy } from '../../src/golearn';
+import { ESTIMATE, LEVEL_THRESHOLDS, POLICY_VERSION, defaultPolicy } from '../../src/golearn';
 
 const levels: AssistanceLevel[] = [0, 1, 2, 3, 4, 5];
 
 describe('defaultPolicy', () => {
-  it('reading weight falls with assistance (1.0 → 0.15) and is never zero or negative', () => {
+  it('names its version', () => {
+    expect(POLICY_VERSION).toBe('evidence@2');
+  });
+
+  it('reading weight (of a demonstrated encounter) falls with assistance (1.0 → 0.15) and is never zero or negative', () => {
     const w = levels.map((l) => defaultPolicy.readingWeight(l));
     expect(w[0]).toBe(1);
     expect(w[5]).toBe(0.15);
@@ -35,17 +39,26 @@ describe('defaultPolicy', () => {
     expect(p('copied')).toBeGreaterThan(0);
   });
 
-  it('receptive levels follow the documented thresholds', () => {
-    const L = (e: number, u: number, a: number) => defaultPolicy.level('reading', e, u, a);
-    expect(L(0, 0, 0)).toBe('unseen');
-    expect(L(1, 1, 0)).toBe('encountered');
-    expect(L(0.15, 0, 1)).toBe('encountered');
-    expect(L(1.5, 0, 3)).toBe('recognized_with_help');
-    expect(L(3, 1, 2)).toBe('recognized_with_help'); // enough evidence but not enough unassisted encounters
-    expect(L(3, 2, 0)).toBe('recognized');
-    expect(L(8, 4, 5)).toBe('recognized');
-    expect(L(8, 5, 0)).toBe('rapid');
-    expect(defaultPolicy.level('listening', 3, 2, 0)).toBe('recognized');
+  it('receptive levels follow the documented thresholds: (demonstrated evidence, demonstrated units, assisted encounters)', () => {
+    const L = (e: number, units: number, assisted: number) => defaultPolicy.level('reading', e, units, assisted);
+    expect(L(0, 0, 0)).toBe('unseen'); // the fold lifts this to `encountered` once any encounter exists
+    expect(L(0, 0, 1)).toBe('encountered'); // one assisted encounter
+    expect(L(0, 0, 1)).not.toBe('recognized_with_help');
+    expect(L(0, 0, 2)).toBe('recognized_with_help'); // assisted twice
+    expect(L(0, 0, 50)).toBe('recognized_with_help'); // help alone never passes recognized_with_help
+    expect(L(1, 1, 0)).toBe('recognized_with_help'); // one demonstration
+    expect(L(1.5, 1, 0)).toBe('recognized_with_help'); // enough evidence, one unit only
+    expect(L(1, 2, 0)).toBe('recognized_with_help'); // two units but too little evidence
+    expect(L(1.5, 2, 0)).toBe('recognized'); // two distinct sentences/sessions
+    expect(L(3.9, 9, 0)).toBe('recognized');
+    expect(L(4, 4, 0)).toBe('recognized');
+    expect(L(4, 5, 0)).toBe('rapid');
+    expect(defaultPolicy.level('listening', 1.5, 2, 0)).toBe('recognized');
+    expect(LEVEL_THRESHOLDS.receptive.recognized.demonstratedUnits).toBe(2);
+  });
+
+  it('the estimate rule is ≥ 4 help-free exposures over ≥ 2 sessions with a clean tail of 2', () => {
+    expect(ESTIMATE).toMatchObject({ minUnassisted: 4, minSessions: 2, cleanTail: 2 });
   });
 
   it('productive levels: assisted-only never reaches used_independently', () => {

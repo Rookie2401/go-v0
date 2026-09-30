@@ -7,7 +7,7 @@
  * come out as parts); sentence boundaries (Thai has no full stop — see segmentSentences); tone (only the
  * initial-consonant class is reported, never a tone guess).
  */
-import type { AnalysisCandidate, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport, RawToken, Span } from '../core';
+import type { AnalysisCandidate, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport, RawToken, Span, AdapterSupport } from '../core';
 import {
   E, Lexicon, hasPos, lexiconAnalyze, makeWordTokenizer, matchPhraseRules, nfc, speechNormalizeGeneric, type PhraseRule,
 } from './shared';
@@ -227,11 +227,29 @@ export function segmentThaiSentences(text: string): Span[] {
   return spans;
 }
 
+const SUPPORT: AdapterSupport = {
+  tokenization: 'limited', // ICU dictionary segmentation: an unlisted compound can split differently from a learner's expectation
+  sentenceSegmentation: 'limited', // Thai has no full stop: breaks need a newline, two spaces, ฯ, a final particle plus a space, or terminal punctuation
+  lemmatization: 'seed-only', // the lexicon covers the seed corpus only; other words are left unanalysed
+  morphology: 'seed-only', // Thai has no inflection; only part of speech, classifiers and particles are recorded
+  phraseDetection: 'seed-only',
+  productionChecks: 'limited',
+  limitations: [
+    'Thai sentence breaks need a newline (or two spaces) between sentences; a single space is treated as a clause pause and never splits.',
+    'Canonical text is never given spaces: segmentation reads the text as written and adds none.',
+    'Word segmentation uses the ICU dictionary plus a short list of course compounds; other compounds may come out as parts.',
+    'Tone is not guessed: only the initial consonant class is reported.',
+    'Lemmatization is seed-only: the lexicon covers the bundled corpus, so supplied texts will have unanalysed words.',
+    'Production checks: missing classifier after a number, polite-particle order — only for lexicon words.',
+  ],
+};
+
 export const thAdapter: LanguageAdapter = {
   lang: LANG,
   name: 'Thai',
   script: 'Thai',
   version: VERSION,
+  support: SUPPORT,
 
   segmentSentences: segmentThaiSentences,
   tokenize: makeWordTokenizer({ locale: 'th', normalize, compounds: THAI_COMPOUNDS }),

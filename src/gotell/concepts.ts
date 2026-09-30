@@ -182,6 +182,19 @@ export const NEGATORS: Record<LanguageCode, string[]> = {
   de: ['nicht', 'kein', 'keine', 'keinen', 'keinem', 'keiner', 'nie', 'niemals'],
 };
 
+/**
+ * Chronology words (per language): "when / before / after / now / never ...". A suggestion that drops, adds or
+ * swaps one changes WHEN something happened, which is meaning. Exact normalized forms (Thai tokens are already
+ * segmented). TODO(review): starter set; every language needs a native-speaker pass.
+ */
+export const CHRONOLOGY: Record<LanguageCode, string[]> = {
+  es: ['cuando', 'antes', 'después', 'despues', 'luego', 'entonces', 'ahora', 'hoy', 'ayer', 'mañana', 'ya', 'todavía', 'todavia', 'aún', 'aun', 'siempre', 'nunca', 'jamás', 'jamas', 'primero', 'finalmente', 'mientras', 'desde', 'hasta', 'pronto', 'anoche'],
+  sq: ['kur', 'para', 'pas', 'pastaj', 'tani', 'sot', 'dje', 'nesër', 'neser', 'tashmë', 'tashme', 'ende', 'gjithmonë', 'gjithmone', 'kurrë', 'kurre', 'fillimisht', 'derisa', 'atëherë', 'atehere'],
+  th: ['เมื่อ', 'ตอน', 'ก่อน', 'หลัง', 'แล้ว', 'ตอนนี้', 'วันนี้', 'เมื่อวาน', 'พรุ่งนี้', 'เคย', 'ยัง', 'เสมอ', 'ตลอด', 'ในที่สุด', 'ขณะที่', 'จน', 'ตั้งแต่'],
+  hi: ['जब', 'पहले', 'बाद', 'फिर', 'तब', 'अब', 'आज', 'कल', 'अभी', 'हमेशा', 'कभी', 'आखिरकार', 'जबकि', 'तक'],
+  de: ['als', 'wenn', 'bevor', 'nachdem', 'dann', 'danach', 'vorher', 'später', 'spaeter', 'jetzt', 'heute', 'gestern', 'morgen', 'schon', 'noch', 'immer', 'nie', 'niemals', 'zuerst', 'schließlich', 'schliesslich', 'während', 'waehrend', 'seit', 'bis', 'damals'],
+};
+
 /** Subject pronouns: a slot filler that extends backwards stops here (the subject is not part of a phrase slot). */
 export const SUBJECT_PRONOUNS: Record<LanguageCode, string[]> = {
   es: ['yo', 'tú', 'él', 'ella', 'nosotros', 'nosotras', 'usted', 'ustedes', 'ellos', 'ellas'],

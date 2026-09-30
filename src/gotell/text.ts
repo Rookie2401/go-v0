@@ -110,3 +110,27 @@ export function dice(a: Set<string>, b: Set<string>): number {
   for (const x of a) if (b.has(x)) inter++;
   return (2 * inter) / (a.size + b.size);
 }
+
+/**
+ * Apply several replacements to one sentence. Deleting a span also removes one neighbouring space (never leaves
+ * a double space). Returns undefined when any two edits overlap - callers then fall back to single edits.
+ */
+export function applyEdits(text: string, edits: Array<{ start: number; end: number; replacement: string }>): string | undefined {
+  const adj = edits.map((e) => {
+    let { start, end } = e;
+    if (e.replacement === '') {
+      if (start > 0 && /\s/u.test(text[start - 1])) start--;
+      else if (end < text.length && /\s/u.test(text[end])) end++;
+    }
+    return { start, end, replacement: e.replacement };
+  }).sort((a, b) => a.start - b.start || a.end - b.end);
+  for (let i = 1; i < adj.length; i++) if (adj[i].start < adj[i - 1].end) return undefined;
+  let out = '';
+  let cursor = 0;
+  for (const e of adj) {
+    if (e.start < 0 || e.end > text.length || e.start > e.end) return undefined;
+    out += text.slice(cursor, e.start) + e.replacement;
+    cursor = e.end;
+  }
+  return out + text.slice(cursor);
+}

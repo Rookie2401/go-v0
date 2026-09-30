@@ -3,7 +3,7 @@ import { hash, ids } from '../../src/core';
 import type { SuggestionProvider } from '../../src/core';
 import { MAX_SUGGESTIONS_PER_DRAFT, MAX_SUGGESTIONS_PER_SENTENCE } from '../../src/gotell';
 import { buildFixtureText, makeFakeAdapter, makeWorld } from './fakes';
-import { ES_LEXICON, ES_ROUGH, esAdapter, esLearnerB, esStoryA, hiAdapter, hiLearner, sentence, thAdapter, thStoryA, TH_ROUGH, TH_ROUGH_TOKENS } from './fixtures';
+import { ES_LEXICON, ES_ROUGH, PLACEHOLDER_HONESTY, esAdapter, esLearnerB, esStoryA, hiAdapter, hiLearner, sentence, thAdapter, thStoryA, TH_ROUGH, TH_ROUGH_TOKENS } from './fixtures';
 
 async function agreeLearner(w: Awaited<ReturnType<typeof makeWorld>>, userId: string) {
   const t = await buildFixtureText(w.store, { lang: 'es', slug: `agree-${userId}`, sentences: [sentence(ES_LEXICON, 'El y la casa .')] });
@@ -142,6 +142,8 @@ describe('suggestion caps and priority order', () => {
         { match: ['a3'], replace: ['b3'], category: 'word-order', message: 'order' },
         { match: ['a4'], replace: ['b4'], category: 'agreement', message: 'meaning', affectsMeaning: true },
         { match: ['a5'], replace: ['b5'], category: 'register', message: 'register' },
+        // the checker sees this problem but has no replacement for it: no combined fix is possible, so fixes are partial
+        { match: ['a6'], replace: [], category: 'syntax', message: 'a6 cannot be fixed automatically', detectOnly: true },
       ],
     });
   };
@@ -149,24 +151,53 @@ describe('suggestion caps and priority order', () => {
   it('max 3 per sentence, meaning first, minor categories dropped first', async () => {
     const w = await makeWorld([capAdapter()]);
     const t = await w.gotell.getOrCreateTestimony('A', 'es');
-    const a = await w.gotell.submitDraft(t.id, 'a1 a2 a3 a4 a5.');
+    const a = await w.gotell.submitDraft(t.id, 'a1 a2 a3 a4 a5 a6.');
     expect(MAX_SUGGESTIONS_PER_SENTENCE).toBe(3);
     expect(a.suggestions).toHaveLength(3);
     expect(a.suggestions.map((s) => s.priority)).toEqual([1, 2, 2]);
-    expect(a.suggestions[0].suggested).toBe('a1 a2 a3 b4 a5.');
+    expect(a.suggestions[0].suggested).toBe('a1 a2 a3 b4 a5 a6.');
+    // every one is partial: the unfixable a6 (and the other fixes) still stand
+    expect(a.suggestions.every((s) => s.scope === 'partial')).toBe(true);
+    expect(a.suggestions[0].remainingIssues).toContain('a6 cannot be fixed automatically');
     expect(a.suggestions.some((s) => s.categories[0] === 'spelling' || s.categories[0] === 'register')).toBe(false);
   });
 
   it('max 6 per draft; priority order is global', async () => {
     const w = await makeWorld([capAdapter()]);
     const t = await w.gotell.getOrCreateTestimony('A', 'es');
-    const a = await w.gotell.submitDraft(t.id, 'a1 a2 a3 a4 a5. a1 a2 a3 a4 a5. a1 a2 a3 a4 a5. a1 a2 a3 a4 a5.');
+    const a = await w.gotell.submitDraft(t.id, 'a1 a2 a3 a4 a5 a6. a1 a2 a3 a4 a5 a6. a1 a2 a3 a4 a5 a6. a1 a2 a3 a4 a5 a6.');
     expect(MAX_SUGGESTIONS_PER_DRAFT).toBe(6);
     expect(a.suggestions).toHaveLength(6);
     const p = a.suggestions.map((s) => s.priority);
     expect([...p].sort()).toEqual(p);
     expect(p.filter((x) => x === 1)).toHaveLength(4);
     expect(new Set(a.suggestions.map((s) => s.id)).size).toBe(6);
+  });
+});
+
+describe('scope: one combined suggestion when every detected issue has a replacement', () => {
+  const adapter = () => makeFakeAdapter({
+    lang: 'es', lexicon: {}, rules: [
+      { match: ['a1'], replace: ['b1'], category: 'spelling', message: 'spelling' },
+      { match: ['a2'], replace: ['b2'], category: 'agreement', message: 'agreement' },
+      { match: ['a4'], replace: ['b4'], category: 'agreement', message: 'meaning', affectsMeaning: true },
+    ],
+  });
+
+  it('three fixable issues => ONE suggestion, scope fixes-all-detected, priority of the most serious', async () => {
+    const w = await makeWorld([adapter()]);
+    const t = await w.gotell.getOrCreateTestimony('A', 'es');
+    const a = await w.gotell.submitDraft(t.id, 'a1 a2 a3 a4.');
+    expect(a.suggestions).toHaveLength(1);
+    const s = a.suggestions[0];
+    expect(s.suggested).toBe('b1 b2 a3 b4.');
+    expect(s.scope).toBe('fixes-all-detected');
+    expect(s.remainingIssues).toEqual([]);
+    expect(s.priority).toBe(1);
+    expect([...s.categories].sort()).toEqual(['agreement', 'spelling']);
+    expect(s.explanation).toContain('spelling');
+    expect(s.explanation).toContain('meaning');
+    expect(s.checkerCoverage).toMatch(/does not mean the sentence is now correct/);
   });
 });
 
@@ -201,7 +232,7 @@ describe('never add content', () => {
     const adds: SuggestionProvider = {
       id: 'llm-ish',
       async propose({ sentence }) {
-        const base = { sentenceIndex: sentence.index, original: sentence.text, categories: ['clarity' as const], priority: 3 as const, itemIds: [] as string[] };
+        const base = { sentenceIndex: sentence.index, original: sentence.text, categories: ['clarity' as const], priority: 3 as const, itemIds: [] as string[], ...PLACEHOLDER_HONESTY };
         return [
           { ...base, kind: 'repair', suggested: `${sentence.text} Ayer fui a la iglesia y vi a mi madre.`, explanation: 'adds an event' },
           { ...base, kind: 'repair', suggested: 'Yo no sé casa.', explanation: 'adds a noun' },
@@ -221,7 +252,7 @@ describe('never add content', () => {
     const swap: SuggestionProvider = {
       id: 'swapper',
       async propose({ sentence }) {
-        return [{ sentenceIndex: sentence.index, kind: 'repair', original: sentence.text, suggested: 'Yo no creo.', explanation: 'swap', categories: ['lexical-choice'], priority: 2, itemIds: [] }];
+        return [{ sentenceIndex: sentence.index, kind: 'repair', original: sentence.text, suggested: 'Yo no creo.', explanation: 'swap', categories: ['lexical-choice'], priority: 2, itemIds: [], ...PLACEHOLDER_HONESTY }];
       },
     };
     const w = await makeWorld([esAdapter()], { providers: [swap] });

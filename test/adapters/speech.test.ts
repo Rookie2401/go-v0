@@ -44,7 +44,7 @@ describe('speechNormalize (all languages)', () => {
 
     it(`${lang}: never transliterates: script of the words is unchanged`, () => {
       const script = { es: /^[\p{Script=Latin}\s.,!?¿¡'-]+$/u, sq: /^[\p{Script=Latin}\s.,!?'-]+$/u, de: /^[\p{Script=Latin}\s.,!?'-]+$/u, th: /^[\p{Script=Thai}\s]+$/u, hi: /^[\p{Script=Devanagari}\s।,.?!]+$/u }[lang];
-      for (const doc of loadBundledCorpus().filter((d) => d.lang === lang && d.kind !== 'scripture')) {
+      for (const doc of loadBundledCorpus().filter((d) => d.lang === lang && d.contentType !== 'scripture')) {
         for (const sec of doc.sections) for (const par of sec.paragraphs) {
           if (!('sentences' in par)) continue;
           for (const s of par.sentences) {
@@ -56,7 +56,7 @@ describe('speechNormalize (all languages)', () => {
     });
 
     it(`${lang}: plain corpus sentences pass through unchanged (nothing to normalise)`, () => {
-      for (const doc of loadBundledCorpus().filter((d) => d.lang === lang && d.kind === 'story')) {
+      for (const doc of loadBundledCorpus().filter((d) => d.lang === lang && d.contentType === 'story')) {
         for (const sec of doc.sections) for (const par of sec.paragraphs) {
           if (!('sentences' in par)) continue;
           for (const s of par.sentences) {

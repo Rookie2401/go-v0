@@ -7,11 +7,20 @@
  * on every replay. Completion is deduped per segment per pass. Listening evidence itself (what the
  * event means for the learner) is decided by GoLearn, not here.
  *
+ * Evidence honesty (evidence policy v2, rule 5). Every listening event carries `assetId`, `speech` (the played
+ * asset is real speech) and `voiceReviewed` (its voice was auditioned by a person), resolved from the stored
+ * segment -> asset -> voice when the context has a `store`. Without a store the emitter trusts only what the caller
+ * puts on the SegmentRef and otherwise fails closed (`speech: false`, `voiceReviewed: false`): unknown audio earns
+ * no evidence. `AudioSegmentCompleted` is emitted only when playback of a READY asset really finished; completing a
+ * segment that is not ready, or a failed / aborted play (`failed()`), emits `AudioAbandoned` instead.
+ *
  * Keep ONE emitter per listening session (e.g. in a useRef): its pass counters live in the emitter, so
  * a second emitter for the same session would restart at pass 0 and have its repeats deduped away.
  */
 import type { AudioAbandoned, AudioPlayed, AudioReplayed, AudioSegmentCompleted, AudioSeeked, EventBus, PhraseReplayed, PlaybackSpeedChanged, ShadowingAttempt, Surface, TranscriptRevealed, UserRecordingCreated } from '../core/events';
 import type { LanguageCode } from '../core/model';
+import { REVIEW_OK } from '../core/model';
+import type { AppStore } from '../core/store';
 import type { EmitView, PlayerEffect, PlayerModel } from './player';
 
 export interface ListeningContext {
@@ -22,21 +31,55 @@ export interface ListeningContext {
   textId: string;
   surface?: Surface; // default 'listen'
   clock?: () => string;
+  /**
+   * Lets the emitter resolve segment -> asset -> voice so events always carry `assetId` / `speech` / `voiceReviewed`
+   * and completion is verified against a ready asset. Pass the app store. Without it the emitter fails closed.
+   */
+  store?: AppStore;
 }
 
-export interface SegmentRef { segmentId: string; sentenceIds: string[] }
+export interface SegmentRef {
+  segmentId: string;
+  sentenceIds: string[];
+  /** Hints used only when the context has no store (the store, when present, is authoritative). */
+  assetId?: string;
+  ready?: boolean;
+  speech?: boolean;
+  voiceReviewed?: boolean;
+}
+
+/** What is known about the audio behind a segment at the moment an event is emitted. */
+export interface PlaybackFacts { assetId?: string; ready: boolean; speech: boolean; voiceReviewed: boolean }
+
+export async function resolvePlaybackFacts(store: AppStore | undefined, seg: SegmentRef): Promise<PlaybackFacts> {
+  if (!store) return { assetId: seg.assetId, ready: !!seg.assetId && seg.ready !== false, speech: seg.speech === true, voiceReviewed: seg.voiceReviewed === true };
+  const segment = await store.audioSegments.get(seg.segmentId);
+  if (!segment) return { ready: false, speech: false, voiceReviewed: false };
+  const asset = segment.assetId ? await store.audioAssets.get(segment.assetId) : undefined;
+  const bytes = segment.assetId ? await store.assets.has(segment.assetId) : false;
+  const voice = await store.voices.get(segment.voiceConfigId);
+  return {
+    assetId: segment.assetId,
+    ready: segment.status === 'ready' && !!segment.assetId && !!asset && bytes,
+    speech: asset?.isSpeech === true && voice?.isSpeech === true,
+    voiceReviewed: !!voice && voice.isSpeech === true && !!voice.reviewStatus && REVIEW_OK.includes(voice.reviewStatus),
+  };
+}
 
 interface SegState { pass: number; replays: number; revealedTranscript: boolean; revealedTranslation: boolean; shadowing: number }
 
 export interface ListeningEmitter {
   played(seg: SegmentRef, view: EmitView): Promise<AudioPlayed | null>;
-  completed(seg: SegmentRef, view: EmitView, extra?: { revealedTranscript?: boolean; revealedTranslation?: boolean; replayCount?: number }): Promise<AudioSegmentCompleted | null>;
+  /** Emits AudioSegmentCompleted only for a ready asset; otherwise emits AudioAbandoned and returns null. */
+  completed(seg: SegmentRef, view: EmitView, extra?: { revealedTranscript?: boolean; revealedTranslation?: boolean; replayCount?: number; positionMs?: number }): Promise<AudioSegmentCompleted | null>;
   replayed(seg: SegmentRef, view: EmitView): Promise<AudioReplayed | null>;
   phraseReplayed(seg: SegmentRef, view: EmitView, p: { alignmentId: string; unitId: string }): Promise<PhraseReplayed | null>;
   seeked(p: { fromSegmentId?: string; toSegmentId: string }): Promise<AudioSeeked | null>;
   speedChanged(p: { from: number; to: number }): Promise<PlaybackSpeedChanged | null>;
   transcriptRevealed(seg: SegmentRef, view: EmitView): Promise<TranscriptRevealed | null>;
   abandoned(seg: SegmentRef, view: EmitView, positionMs: number): Promise<AudioAbandoned | null>;
+  /** Playback of the segment failed or was aborted (media error, asset missing): AudioAbandoned, never a completion. */
+  failed(seg: SegmentRef, view: EmitView, positionMs?: number): Promise<AudioAbandoned | null>;
   shadowingAttempt(seg: SegmentRef, view: EmitView): Promise<ShadowingAttempt | null>;
   recordingCreated(p: { recordingId: string; targetText: string; sentenceId?: string; testimonyRevisionId?: string }): Promise<UserRecordingCreated | null>;
   /** The learner peeked at the English translation for this segment (recorded on its completion). */
@@ -58,37 +101,45 @@ export function listeningEmitter(bus: EventBus, ctx: ListeningContext): Listenin
   let action = 0;
   const unique = () => `${nonce}.${action++}`;
   const base = (dedupeKey: string) => ({ userId: ctx.userId, lang: ctx.lang, surface, session: ctx.session, dedupeKey, ...(ctx.clock ? { at: ctx.clock() } : {}) });
-  const listen = (seg: SegmentRef, view: EmitView) => ({ textId: ctx.textId, segmentId: seg.segmentId, sentenceIds: seg.sentenceIds, speed: view.speed, transcriptVisible: view.transcriptVisible });
+  const listen = async (seg: SegmentRef, view: EmitView) => {
+    const f = await resolvePlaybackFacts(ctx.store, seg);
+    return { textId: ctx.textId, segmentId: seg.segmentId, sentenceIds: seg.sentenceIds, speed: view.speed, transcriptVisible: view.transcriptVisible, assetId: f.assetId, speech: f.speech, voiceReviewed: f.voiceReviewed };
+  };
   const key = (type: string, segmentId: string, tail: string | number) => `${type}|${ctx.session}|${segmentId}|${tail}`;
+  const abandon = async (seg: SegmentRef, view: EmitView, positionMs: number) =>
+    bus.emit<AudioAbandoned>({ type: 'AudioAbandoned', ...base(key('AudioAbandoned', seg.segmentId, st(seg.segmentId).pass)), ...(await listen(seg, view)), positionMs });
 
   return {
-    played: (seg, view) => bus.emit<AudioPlayed>({ type: 'AudioPlayed', ...base(key('AudioPlayed', seg.segmentId, st(seg.segmentId).pass)), ...listen(seg, view) }),
-    completed: (seg, view, extra) => {
+    played: async (seg, view) => bus.emit<AudioPlayed>({ type: 'AudioPlayed', ...base(key('AudioPlayed', seg.segmentId, st(seg.segmentId).pass)), ...(await listen(seg, view)) }),
+    completed: async (seg, view, extra) => {
       const s = st(seg.segmentId);
+      const facts = await resolvePlaybackFacts(ctx.store, seg);
+      if (!facts.ready) { await abandon(seg, view, extra?.positionMs ?? 0); return null; } // nothing ready was heard to the end
       return bus.emit<AudioSegmentCompleted>({
-        type: 'AudioSegmentCompleted', ...base(key('AudioSegmentCompleted', seg.segmentId, s.pass)), ...listen(seg, view),
+        type: 'AudioSegmentCompleted', ...base(key('AudioSegmentCompleted', seg.segmentId, s.pass)), ...(await listen(seg, view)),
         replayCount: extra?.replayCount ?? s.replays,
         revealedTranscript: extra?.revealedTranscript ?? (s.revealedTranscript || view.transcriptVisible),
         revealedTranslation: extra?.revealedTranslation ?? s.revealedTranslation,
       });
     },
-    replayed: (seg, view) => {
+    replayed: async (seg, view) => {
       const s = st(seg.segmentId);
       s.replays += 1; s.pass += 1;
-      return bus.emit<AudioReplayed>({ type: 'AudioReplayed', ...base(key('AudioReplayed', seg.segmentId, s.replays)), ...listen(seg, view), count: s.replays });
+      return bus.emit<AudioReplayed>({ type: 'AudioReplayed', ...base(key('AudioReplayed', seg.segmentId, s.replays)), ...(await listen(seg, view)), count: s.replays });
     },
-    phraseReplayed: (seg, view, p) => bus.emit<PhraseReplayed>({ type: 'PhraseReplayed', ...base(`PhraseReplayed|${ctx.session}|${seg.segmentId}|${p.alignmentId}|${unique()}`), ...listen(seg, view), alignmentId: p.alignmentId, unitId: p.unitId }),
+    phraseReplayed: async (seg, view, p) => bus.emit<PhraseReplayed>({ type: 'PhraseReplayed', ...base(`PhraseReplayed|${ctx.session}|${seg.segmentId}|${p.alignmentId}|${unique()}`), ...(await listen(seg, view)), alignmentId: p.alignmentId, unitId: p.unitId }),
     seeked: (p) => bus.emit<AudioSeeked>({ type: 'AudioSeeked', ...base(`AudioSeeked|${ctx.session}|${unique()}`), textId: ctx.textId, fromSegmentId: p.fromSegmentId, toSegmentId: p.toSegmentId }),
     speedChanged: (p) => bus.emit<PlaybackSpeedChanged>({ type: 'PlaybackSpeedChanged', ...base(`PlaybackSpeedChanged|${ctx.session}|${unique()}`), textId: ctx.textId, from: p.from, to: p.to }),
-    transcriptRevealed: (seg, view) => {
+    transcriptRevealed: async (seg, view) => {
       st(seg.segmentId).revealedTranscript = true;
-      return bus.emit<TranscriptRevealed>({ type: 'TranscriptRevealed', ...base(key('TranscriptRevealed', seg.segmentId, st(seg.segmentId).pass)), ...listen(seg, view) });
+      return bus.emit<TranscriptRevealed>({ type: 'TranscriptRevealed', ...base(key('TranscriptRevealed', seg.segmentId, st(seg.segmentId).pass)), ...(await listen(seg, view)) });
     },
-    abandoned: (seg, view, positionMs) => bus.emit<AudioAbandoned>({ type: 'AudioAbandoned', ...base(key('AudioAbandoned', seg.segmentId, st(seg.segmentId).pass)), ...listen(seg, view), positionMs }),
-    shadowingAttempt: (seg, view) => {
+    abandoned: (seg, view, positionMs) => abandon(seg, view, positionMs),
+    failed: (seg, view, positionMs = 0) => abandon(seg, view, positionMs),
+    shadowingAttempt: async (seg, view) => {
       const s = st(seg.segmentId);
       s.shadowing += 1;
-      return bus.emit<ShadowingAttempt>({ type: 'ShadowingAttempt', ...base(key('ShadowingAttempt', seg.segmentId, s.shadowing)), ...listen(seg, view), attempt: s.shadowing });
+      return bus.emit<ShadowingAttempt>({ type: 'ShadowingAttempt', ...base(key('ShadowingAttempt', seg.segmentId, s.shadowing)), ...(await listen(seg, view)), attempt: s.shadowing });
     },
     recordingCreated: (p) => bus.emit<UserRecordingCreated>({ type: 'UserRecordingCreated', ...base(`UserRecordingCreated|${p.recordingId}`), recordingId: p.recordingId, targetText: p.targetText, sentenceId: p.sentenceId, testimonyRevisionId: p.testimonyRevisionId }),
     translationRevealed: (segmentId) => { st(segmentId).revealedTranslation = true; },
@@ -102,7 +153,7 @@ export function listeningEmitter(bus: EventBus, ctx: ListeningContext): Listenin
  * by the state machine at the moment of the action.
  */
 export async function emitPlayerEffects(emitter: ListeningEmitter, model: Pick<PlayerModel, 'manifest'>, effects: PlayerEffect[]): Promise<void> {
-  const seg = (i: number): SegmentRef => { const s = model.manifest.segments[i]; return { segmentId: s.segmentId, sentenceIds: s.sentenceIds }; };
+  const seg = (i: number): SegmentRef => { const s = model.manifest.segments[i]; return { segmentId: s.segmentId, sentenceIds: s.sentenceIds, assetId: s.assetId, ready: s.ready }; };
   for (const fx of effects) {
     if (fx.type !== 'emit') continue;
     const e = fx.emit;

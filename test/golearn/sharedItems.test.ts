@@ -12,8 +12,8 @@ describe('DEMO 1 — one lemma, one LearnerItemState, across story and scripture
     const h = createHarness();
     await buildSpanish(h.store);
     await buildSpanishScripture(h.store);
-    await h.view(U, 'es', ES_STORY, 0, 's1'); // "Yo creo en Dios."
-    await h.view(U, 'es', ES_JOHN, 0, 's2', 'scripture'); // "Todo aquel que cree en él"
+    await h.understood(U, 'es', ES_STORY, [0], 's1'); // "Yo creo en Dios."
+    await h.understood(U, 'es', ES_JOHN, [0], 's2', 'scripture'); // "Todo aquel que cree en él"
 
     const rows = (await h.store.learnerItems.where('itemId', LEMMA_CREER)).filter((r) => r.userId === U);
     expect(rows).toHaveLength(1); // exactly one LearnerItemState for the lemma
@@ -21,7 +21,8 @@ describe('DEMO 1 — one lemma, one LearnerItemState, across story and scripture
     expect(lemma.itemKind).toBe('lemma');
     expect(lemma.textIds.sort()).toEqual([ES_JOHN, ES_STORY].sort());
     expect(lemma.encounterCount).toBe(2);
-    expect(lemma.reading.evidence).toBe(2);
+    expect(lemma.reading.evidence).toBe(2); // two demonstrated encounters, one in each text
+    expect(lemma.reading.level).toBe('recognized'); // two distinct sentences
 
     // the two surface forms are distinct items, each from its own text
     const creo = (await h.golearn.getItemState(U, F('es', 'creo')))!;
@@ -42,7 +43,7 @@ describe('DEMO 1 — one lemma, one LearnerItemState, across story and scripture
     const h = createHarness();
     await buildSpanish(h.store);
     await buildSpanishScripture(h.store);
-    for (const s of ['s1', 's2', 's3']) await h.view(U, 'es', ES_STORY, 0, s);
+    for (const s of ['s1', 's2', 's3']) await h.understood(U, 'es', ES_STORY, [0], s);
     const cov = await h.golearn.coverage(U, ES_JOHN, [`${ES_JOHN}/s0`]);
     // tokens: todo aquel que cree en él → "cree" known through its lemma, "en" known as a form; others unseen
     expect(cov.wordTokens).toBe(6);
@@ -97,7 +98,7 @@ describe('DEMO 4 — Thai without whitespace', () => {
     const cov = await h.golearn.coverage(U, TH_STORY);
     expect(cov.wordTokens).toBe(7);
     expect(cov.unseenCoverage).toBe(1);
-    for (const s of ['a', 'b', 'c']) { await h.view(U, 'th', TH_STORY, 0, s); await h.view(U, 'th', TH_STORY, 1, s); }
+    for (const s of ['a', 'b', 'c']) await h.understood(U, 'th', TH_STORY, [0, 1], s);
     const after = await h.golearn.coverage(U, TH_STORY);
     expect(after.knownLexicalCoverage).toBe(1);
     expect(after.band).toBe('comfortable');

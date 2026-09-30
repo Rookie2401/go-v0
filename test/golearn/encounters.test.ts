@@ -9,8 +9,8 @@ const U = 'u1';
 const LEMMA_CREER = ids.lemma('es', 'creer', 'VERB');
 const PHRASE_CREO_EN = ids.phrase('es', ['creo', 'en', '_']);
 
-describe('SentenceViewed → encounters', () => {
-  it('creates form, lemma, phrase and pattern encounters (and none for punctuation)', async () => {
+describe('SentenceViewed → exposure encounters', () => {
+  it('creates form, lemma, phrase and pattern encounters (and none for punctuation), all as plain exposure', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
     await h.view(U, 'es', ES_STORY, 0);
@@ -33,12 +33,15 @@ describe('SentenceViewed → encounters', () => {
       expect(e.modality).toBe('reading');
       expect(e.surface).toBe('corpus');
       expect(e.assistance).toBe(0);
-      expect(e.weight).toBe(1);
+      expect(e.evidenceKind).toBe('exposure'); // on screen is not comprehension
+      expect(e.weight).toBe(0);
     }
 
     const creo = await h.golearn.getItemState(U, ids.form('es', 'creo'));
     expect(creo?.encounterCount).toBe(1);
     expect(creo?.reading.level).toBe('encountered');
+    expect(creo?.reading.evidence).toBe(0);
+    expect(creo?.reading.exposures).toBe(1);
     expect(creo?.reading.unassisted).toBe(1);
     expect(creo?.textIds).toEqual([ES_STORY]);
     expect(creo?.listening.level).toBe('unseen');
@@ -57,7 +60,7 @@ describe('SentenceViewed → encounters', () => {
     expect(again).toBeNull();
     const form = await h.golearn.getItemState(U, ids.form('es', 'sí'));
     expect(form?.encounterCount).toBe(1);
-    expect(form?.reading.evidence).toBe(1);
+    expect(form?.reading.exposures).toBe(1);
 
     // even if the same event object is handed to handle() again, nothing changes
     const ev = (await h.bus.history({ userId: U, types: ['SentenceViewed'] }))[0];
@@ -67,16 +70,30 @@ describe('SentenceViewed → encounters', () => {
     expect(await h.store.encounters.count()).toBe(2); // one form + one lemma
   });
 
-  it('a new session is a new encounter; evidence accumulates and level climbs', async () => {
+  it('a new session is a new encounter; exposure alone never climbs past "encountered"', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
     for (const s of ['s1', 's2', 's3']) await h.view(U, 'es', ES_STORY, 0, s);
     const creo = await h.golearn.getItemState(U, ids.form('es', 'creo'));
     expect(creo?.encounterCount).toBe(3);
+    expect(creo?.reading.exposures).toBe(3);
+    expect(creo?.reading.evidence).toBe(0);
+    expect(creo?.reading.level).toBe('encountered');
+    const encs = (await h.store.encounters.where('itemId', ids.form('es', 'creo'))).sort((a, b) => (a.at < b.at ? -1 : 1));
+    expect(encs.map((e) => e.priorLevel)).toEqual(['unseen', 'encountered', 'encountered']);
+  });
+
+  it('demonstration is what climbs the levels (priorLevel records the climb)', async () => {
+    const h = createHarness();
+    await buildSpanish(h.store);
+    for (const s of ['s1', 's2', 's3']) await h.understood(U, 'es', ES_STORY, [0], s);
+    const creo = await h.golearn.getItemState(U, ids.form('es', 'creo'));
     expect(creo?.reading.evidence).toBe(3);
+    expect(creo?.reading.exposures).toBe(0);
     expect(creo?.reading.level).toBe('recognized');
     const encs = (await h.store.encounters.where('itemId', ids.form('es', 'creo'))).sort((a, b) => (a.at < b.at ? -1 : 1));
-    expect(encs.map((e) => e.priorLevel)).toEqual(['unseen', 'encountered', 'recognized_with_help']);
+    expect(encs.map((e) => e.evidenceKind)).toEqual(['demonstrated', 'demonstrated', 'demonstrated']);
+    expect(encs.map((e) => e.priorLevel)).toEqual(['unseen', 'recognized_with_help', 'recognized']);
   });
 
   it('emits PhraseEncountered once per new phrase encounter and not for duplicates', async () => {
@@ -93,12 +110,14 @@ describe('SentenceViewed → encounters', () => {
     expect((await h.golearn.getItemState(U, PHRASE_CREO_EN))?.encounterCount).toBe(1);
   });
 
-  it('ignores events for unknown sentences and non-evidence events', async () => {
+  it('ignores events for unknown sentences and non-evidence events (plays, searches, views and completions of a text)', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
     await h.view(U, 'es', ES_STORY, 99);
-    await h.bus.emit({ type: 'AudioPlayed', userId: U, lang: 'es', surface: 'listen', session: 'l', dedupeKey: 'p1', textId: ES_STORY, segmentId: 'x', sentenceIds: [`${ES_STORY}/s0`], speed: 1, transcriptVisible: false } as never);
+    await h.bus.emit({ type: 'AudioPlayed', userId: U, lang: 'es', surface: 'listen', session: 'l', dedupeKey: 'p1', textId: ES_STORY, segmentId: 'x', sentenceIds: [`${ES_STORY}/s0`], speed: 1, transcriptVisible: false, speech: true, voiceReviewed: true } as never);
     await h.bus.emit({ type: 'FormSearched', userId: U, lang: 'es', surface: 'corpus', session: 's', dedupeKey: 'fs1', query: 'creo' } as never);
+    await h.bus.emit({ type: 'TextViewed', userId: U, lang: 'es', surface: 'corpus', session: 's', dedupeKey: 'tv1', textId: ES_STORY } as never);
+    await h.complete(U, 'es', ES_STORY);
     expect(await h.store.encounters.count()).toBe(0);
     expect(await h.store.learnerItems.count()).toBe(0);
   });

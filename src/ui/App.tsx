@@ -10,6 +10,7 @@ import { Home } from './pages/Home';
 import { Library } from './pages/Library';
 import { Settings, VocabularyPage } from './pages/Settings';
 import { TextPage } from './pages/TextPage';
+import { PreviewBanner } from './PreviewBanner';
 import { applyTheme, usePref } from './prefs';
 import { Testimony } from './testimony/Testimony';
 
@@ -18,6 +19,7 @@ export function Shell({ children }: { children: ReactNode }) {
   useEffect(() => { applyTheme(theme); }, [theme]);
   return (
     <div className="shell">
+      <PreviewBanner />
       <main>{children}</main>
     </div>
   );

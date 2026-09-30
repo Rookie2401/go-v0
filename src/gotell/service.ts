@@ -1,28 +1,40 @@
 /**
  * GoTell service — constrained production (My Testimony).
  *
- * Reads learner state ONLY through GoLearn queries (queryItem/queryItems/listKnown/getItemState) and
- * writes productive evidence ONLY as ProductionRecorded / IndependentProductionDetected events.
- * Keeps no vocabulary or mastery model of its own.
+ * Reads learner state ONLY through GoLearn queries (queryItem/queryItems/listKnown) plus the encounter log in the
+ * store (for sources), and writes productive evidence ONLY as ProductionRecorded / IndependentProductionDetected
+ * events. Keeps no vocabulary or mastery model of its own.
+ *
+ * Honesty rules implemented here (PLAN2 D2):
+ *  - "familiar" means ENCOUNTERED (ItemKnowledge.exists, encounterCount >= 1) AND has a source sentence; no source => new.
+ *  - a suggestion's scope is measured, not claimed: the checker is re-run on the suggested sentence; whatever it
+ *    still reports is listed in `remainingIssues`; `checkerCoverage` states the checker's limits.
+ *  - negation / time words / key terms / tense changes are flagged in `meaningChange`, never silent.
+ *  - drafts are autosaved separately from versions and never produce evidence.
+ *  - production evidence follows rule 6: nothing on check, once per (item, sentenceHash) ever, `independent` only
+ *    for wording the learner had before any suggestion for that sentence was shown.
  */
-import { hash, ids, LEVEL_ORDER } from '../core';
-import { CORPUS_FORMAT_VERSION, ingestDocument } from '../ingest';
-import type { CorpusDocument } from '../ingest';
+import { hash, ids } from '../core';
+import { ingestDocument, testimonyDocument, testimonyDocumentId } from '../ingest';
 import type {
-  AdapterRegistry, AnalyzedSentence, EventBus, GoLearn, GoListen, GoTell, GoTellSuggestion, GoTellSuggestionAccepted,
+  AdapterRegistry, AnalyzedSentence, AppStore, EventBus, GoLearn, GoListen, GoTell, GoTellSuggestion, GoTellSuggestionAccepted,
   GoTellSuggestionEdited, GoTellSuggestionRejected, GoTellSuggestionShown, IndependentProductionDetected, IntentProposal,
-  IntentRequest, ItemKnowledge, LanguageAdapter, LanguageCode, ProductionAnalysis, ProductionKind, ProductionRecorded,
-  ProductionTask, ProvenanceRef, SuggestionProvider, Testimony, TestimonyRevision, TestimonyRevisionAccepted,
-  TestimonySentence, TestimonyTextSubmitted, Text, AppStore, SuggestionKind, ItemKind, PartOfSpeech,
+  IntentRequest, ItemKind, ItemKnowledge, LanguageAdapter, LanguageCode, ProductionAnalysis, ProductionKind, ProductionRecorded,
+  ProductionTask, ProvenanceRef, SuggestionKind, SuggestionProvider, SuggestionSource, Testimony, TestimonyDraft, TestimonyRevision,
+  TestimonyRevisionAccepted, TestimonySentence, TestimonyTextSubmitted, Text,
 } from '../core';
-import { CONCEPTS, conceptsForToken, englishConcepts, lexemesFor, tagSection } from './concepts';
-import type { ConceptId } from './concepts';
+import { checkerCoverage } from './coverage';
+import { CONCEPTS, conceptsForToken, tagSection } from './concepts';
 import { diffSentences } from './diff';
+import { meaningChanges, negatorsIn } from './meaning';
 import { RuleBasedSuggestionProvider } from './provider';
 import type { AnalyzedError, ProposedSuggestion } from './provider';
+import { contentStems, describeGap, intentTerms, retrieveWording } from './retrieval';
+import type { IntentTerm } from './retrieval';
+import { createSourceFinder, mergeSources } from './sources';
+import type { SourceFinder } from './sources';
 import {
-  MIN_ERROR_CONFIDENCE, addsContent, bestCandidate, dice, introducedIndexes, isFunctionAt, normSet, parse, related,
-  removedIndexes, wordIndexes,
+  MIN_ERROR_CONFIDENCE, addsContent, bestCandidate, dice, introducedIndexes, isFunctionAt, normSet, parse, removedIndexes, wordIndexes,
 } from './text';
 import type { Parsed } from './text';
 
@@ -39,7 +51,7 @@ export interface GoTellDeps {
   clock?: () => string;
   /**
    * The acting user (set by the app from its session). When present, every accessor asserts that the
-   * actor owns the testimony / suggestion / revision it touches.
+   * actor owns the testimony / suggestion / revision / draft it touches.
    * TODO(contract): GoTell's accessors take no userId (only assertOwner does), so privacy is bound to
    * an actor here. `forUser(userId)` returns a GoTell bound to one user.
    */
@@ -51,17 +63,21 @@ export interface GoTellService extends GoTell {
   forUser(userId: string): GoTell;
 }
 
-/** TODO(contract): GoTellSuggestion has no `finalText`; edited suggestions keep it as an extra stored field. */
-type StoredSuggestion = GoTellSuggestion & { finalText?: string };
+/** Thrown (name 'DraftConflict') by saveDraft when `expectedSeq` no longer matches the stored draft. */
+export class DraftConflictError extends Error {
+  override name = 'DraftConflict';
+  constructor(readonly current: TestimonyDraft | undefined, readonly expectedSeq: number) {
+    super(`Draft changed elsewhere (you have version ${expectedSeq}, the saved draft is version ${current?.seq ?? 0}). Reload it before saving.`);
+  }
+}
+
 type SentenceCtx = { sentence: AnalyzedSentence & { sectionConfidence?: number }; parsed: Parsed; errorTokens: Set<number> };
 type Candidate = Omit<GoTellSuggestion, 'id' | 'userId' | 'lang' | 'testimonyId' | 'draftHash' | 'status' | 'createdAt'> & { order: number };
 type KnownPhrase = { phraseId: string; display: string; pattern: string[] };
 
 /** Slug (and so textId = ids.text(lang, slug)) of the private Text materialized from revision n. Slug-safe per src/ingest format. */
 export function testimonySlug(userId: string, number: number): string {
-  const safe = userId.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
-  const user = safe && safe === userId ? safe : `${safe || 'u'}-${hash(userId).slice(0, 6)}`;
-  return `testimony-${user}-r${number}`;
+  return testimonyDocumentId(userId, number); // one definition, owned by src/ingest
 }
 
 /** Testimony Texts live in the shared texts table; UI/GoLearn filter with this. */
@@ -69,33 +85,15 @@ export function isTestimonyText(text: Text): boolean {
   return text.kind === 'testimony';
 }
 
-function testimonyDocument(userId: string, lang: LanguageCode, number: number, sentences: string[]): CorpusDocument {
-  return {
-    formatVersion: CORPUS_FORMAT_VERSION,
-    lang,
-    slug: testimonySlug(userId, number),
-    title: `My testimony (revision ${number})`,
-    kind: 'testimony',
-    corpus: { id: `testimony:${userId}`, kind: 'testimony', title: 'My Testimony' },
-    source: { id: `src:testimony:${userId}`, title: 'Learner testimony', rights: 'user-private', authorship: 'learner' },
-    sourceNote: `The learner's own private writing, accepted as revision ${number} in GoTell. Never shared or used as course content.`,
-    tags: ['private', 'testimony'],
-    generated: false,
-    sections: [{ paragraphs: [{ sentences: sentences.map((text) => ({ text })) }] }],
-  };
-}
-
 export const MAX_SUGGESTIONS_PER_SENTENCE = 3;
 export const MAX_SUGGESTIONS_PER_DRAFT = 6;
 
 const STRENGTH: Record<ProductionKind, number> = { independent: 3, 'self-repaired': 2, assisted: 1, copied: 0 };
 const unique = <T,>(xs: T[]): T[] => [...new Set(xs)];
-const levelIdx = (l: string) => LEVEL_ORDER.indexOf(l as (typeof LEVEL_ORDER)[number]);
 
-/** Encountered in any way (reading/listening/writing/speaking evidence or an encounter count). */
+/** Encountered = GoLearn has the item for this learner with at least one encounter (any modality, any help level). */
 export function isEncountered(k: ItemKnowledge | undefined): boolean {
-  if (!k || !k.exists) return false;
-  return k.encounterCount > 0 || [k.reading, k.listening, k.writing, k.speaking].some((d) => levelIdx(d.level) > 0);
+  return !!k && k.exists && k.encounterCount >= 1;
 }
 
 function refOf(k: ItemKnowledge): ProvenanceRef {
@@ -105,6 +103,17 @@ function refOf(k: ItemKnowledge): ProvenanceRef {
   };
 }
 
+/*
+ * TODO(contract):
+ *  - AnalyzedSentence.familiarity is documented as ">= recognized (reading)"; under policy v2 that is demonstration, so
+ *    it is computed as the fraction of word tokens whose form or lemma is ENCOUNTERED (the gate GoTell uses everywhere).
+ *  - SuggestionProvider.propose must return scope / remainingIssues / checkerCoverage / sources although only the service
+ *    can measure them; providers return placeholders and `finalize` overwrites them.
+ *  - GoTellSuggestion.scope has no value for "changes nothing the checker objects to" (a recombination on a sentence with
+ *    no detected issue): it is labelled 'fixes-all-detected' with remainingIssues [] (vacuously true). UIs should key
+ *    the wording on `kind` as well.
+ *  - ids.suggestion(draftHash, sentenceIndex, n) carries no user scope of its own (the draft hash does).
+ */
 export function createGoTell(deps: GoTellDeps): GoTellService {
   const { store, bus, adapters, golearn, golisten } = deps;
   const clock = deps.clock ?? (() => new Date().toISOString());
@@ -116,11 +125,18 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
 
   // ───────────────────────── learner-state queries ─────────────────────────
 
+  /** Phrases the learner has ENCOUNTERED in any modality (not only ones he has demonstrated). */
   async function knownPhrases(userId: string, lang: LanguageCode): Promise<KnownPhrase[]> {
-    const rows = await golearn.listKnown(userId, lang, 'reading', 'recognized');
+    const rows = [
+      ...(await golearn.listKnown(userId, lang, 'reading', 'encountered')),
+      ...(await golearn.listKnown(userId, lang, 'listening', 'encountered')),
+      ...(await golearn.listKnown(userId, lang, 'writing', 'encountered')),
+    ];
+    const seen = new Set<string>();
     const out: KnownPhrase[] = [];
     for (const r of rows) {
-      if (r.itemKind !== 'phrase') continue;
+      if (r.itemKind !== 'phrase' || seen.has(r.itemId)) continue;
+      seen.add(r.itemId);
       const ph = await store.phrases.get(r.itemId);
       if (ph && ph.lang === lang && ph.pattern.length > 0) out.push({ phraseId: ph.id, display: ph.display, pattern: ph.pattern });
     }
@@ -132,6 +148,11 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
     if (uniq.length === 0) return new Map();
     const ks = await golearn.queryItems(userId, uniq.map((itemId) => ({ itemId, lang })));
     return new Map(ks.map((k) => [k.itemId, k]));
+  }
+
+  function detect(adapter: LanguageAdapter, text: string): ReturnType<LanguageAdapter['checkProduction']> {
+    const p = parse(adapter, text);
+    return adapter.checkProduction(p.tokens, p.analyses, text).filter((e) => e.confidence >= MIN_ERROR_CONFIDENCE);
   }
 
   // ───────────────────────── analysis ─────────────────────────
@@ -153,8 +174,7 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
       const form = kmap.get(ids.form(lang, p.tokens[i].normalized));
       const c = bestCandidate(p.analyses[i]);
       const lemma = c?.lemma ? kmap.get(ids.lemma(lang, c.lemma, c.pos)) : undefined;
-      const rec = (k?: ItemKnowledge) => !!k && levelIdx(k.reading.level) >= levelIdx('recognized');
-      if (rec(form) || rec(lemma)) familiarTokens++;
+      if (isEncountered(form) || isEncountered(lemma)) familiarTokens++;
     }
 
     const errorTokens = new Set<number>();
@@ -185,7 +205,9 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
   }
 
   /** Turn a provider proposal into a final candidate — or drop it (never-add-content rule). */
-  async function finalize(userId: string, lang: LanguageCode, adapter: LanguageAdapter, known: KnownPhrase[], proposal: ProposedSuggestion, order: number): Promise<Candidate | undefined> {
+  async function finalize(
+    userId: string, lang: LanguageCode, adapter: LanguageAdapter, known: KnownPhrase[], proposal: ProposedSuggestion, order: number, sources: SourceFinder,
+  ): Promise<Candidate | undefined> {
     if (!proposal.suggested.trim() || proposal.suggested === proposal.original) return undefined;
     const orig = parse(adapter, proposal.original);
     const sug = parse(adapter, proposal.suggested);
@@ -206,20 +228,26 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
     const familiar: ProvenanceRef[] = [];
     const newItems: GoTellSuggestion['newItems'] = [];
     const newSurfaces: string[] = [];
+    const sourceGroups: SuggestionSource[][] = [];
+    // met = encountered AND there is a sentence to point at; no source => new
+    const met = async (id: string): Promise<boolean> => {
+      const k = kmap.get(id);
+      if (!isEncountered(k)) return false;
+      const src = await sources.forItem(userId, id);
+      if (src.length === 0) return false;
+      familiar.push(refOf(k!));
+      sourceGroups.push(src);
+      return true;
+    };
     for (const pid of usedPhraseIds) {
-      const k = kmap.get(pid);
-      if (isEncountered(k)) familiar.push(refOf(k!));
-      else newItems.push({ itemId: pid, itemKind: 'phrase' });
+      if (!(await met(pid))) newItems.push({ itemId: pid, itemKind: 'phrase' });
     }
     for (const id of introduced) {
       const i = firstIndex.get(id)!;
       const norm = sug.tokens[i].normalized;
-      const k = kmap.get(id);
-      if (isEncountered(k)) { familiar.push(refOf(k!)); continue; }
+      if (await met(id)) continue;
       const lid = lemmaOf(i);
-      const lk = lid ? kmap.get(lid) : undefined;
-      if (isEncountered(lk)) { familiar.push(refOf(lk!)); continue; }
-      if (k?.relatedSeen) continue; // an inflection of something the learner has met
+      if (lid && (await met(lid))) continue;
       if (allowed.has(norm)) continue; // covered by the known phrase
       if (isFunctionAt(sug, i)) continue; // closed-class words are exempt (agreement/particle fixes)
       const gloss = bestCandidate(sug.analyses[i])?.gloss;
@@ -232,8 +260,11 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
     if (newItems.length > 0 && newSurfaces.length > 0) explanation += ` This uses language you have not met yet: ${newSurfaces.join(', ')}.`;
     else if (newItems.length > 0) explanation += ' This uses language you have not met yet.';
 
-    const computed = keyTermChange(lang, orig, sug);
-    const meaningChange = [proposal.meaningChange, computed].filter((x): x is string => !!x).join(' ') || undefined;
+    // meaning: negation, time words, key terms, tense — flagged, never silent
+    const meaningChange = [proposal.meaningChange, ...meaningChanges(lang, orig, sug)].filter((x): x is string => !!x).join(' ') || undefined;
+
+    // honest scope: re-run the checker on what we are proposing
+    const remaining = unique(detect(adapter, proposal.suggested).map((e) => e.message));
     return {
       sentenceIndex: proposal.sentenceIndex,
       kind,
@@ -245,29 +276,12 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
       familiar,
       newItems,
       ...(meaningChange ? { meaningChange } : {}),
+      scope: remaining.length === 0 ? 'fixes-all-detected' : 'partial',
+      remainingIssues: remaining,
+      checkerCoverage: checkerCoverage(adapter),
+      sources: mergeSources(sourceGroups),
       order,
     };
-  }
-
-  function keyTermMap(lang: LanguageCode, p: Parsed): Map<ConceptId, string> {
-    const m = new Map<ConceptId, string>();
-    for (const i of wordIndexes(p)) {
-      const lemma = bestCandidate(p.analyses[i])?.lemma;
-      for (const c of conceptsForToken(lang, p.tokens[i].normalized, lemma)) if (CONCEPTS[c].keyTerm && !m.has(c)) m.set(c, p.tokens[i].surface);
-    }
-    return m;
-  }
-
-  function keyTermChange(lang: LanguageCode, orig: Parsed, sug: Parsed): string | undefined {
-    const a = keyTermMap(lang, orig);
-    const b = keyTermMap(lang, sug);
-    const removed = [...a.keys()].filter((c) => !b.has(c));
-    const added = [...b.keys()].filter((c) => !a.has(c));
-    const fmt = (m: Map<ConceptId, string>, cs: ConceptId[]) => cs.map((c) => `"${m.get(c)}" (${c})`).join(', ');
-    if (removed.length && added.length) return `Changes a key term: ${fmt(a, removed)} becomes ${fmt(b, added)}. These are not interchangeable - accept only if it says what you mean.`;
-    if (removed.length) return `Removes the key term ${fmt(a, removed)}. Accept only if you meant to leave it out.`;
-    if (added.length) return `Introduces the key term ${fmt(b, added)}. Accept only if you meant to say it.`;
-    return undefined;
   }
 
   async function analyzeCore(args: { userId: string; lang: LanguageCode; text: string; task: ProductionTask; contextId: string }, persist: boolean): Promise<ProductionAnalysis> {
@@ -277,6 +291,7 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
     // TODO(contract): ids.suggestion(draftHash, sentenceIndex, n) has no user scope of its own.
     const draftHash = hash(`${userId}|${contextId}|${text}`);
     const known = await knownPhrases(userId, lang);
+    const sources = createSourceFinder(store);
     const spans = adapter.segmentSentences(text).filter((s) => s.text.trim().length > 0);
     const ctxs: SentenceCtx[] = [];
     for (let i = 0; i < spans.length; i++) ctxs.push(await analyzeSentence(userId, lang, adapter, i, spans[i].text));
@@ -291,7 +306,7 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
           proposals = await provider.propose({ userId, lang, sentence: c.sentence, knownPhrases: known, task });
         } catch { continue; } // a failing provider never breaks the draft
         for (const prop of proposals) {
-          const fin = await finalize(userId, lang, adapter, known, prop, order++);
+          const fin = await finalize(userId, lang, adapter, known, prop, order++, sources);
           if (!fin || seen.has(fin.suggested)) continue;
           seen.add(fin.suggested);
           candidates.push(fin);
@@ -320,9 +335,11 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
       if (!persist) { suggestions.push(s); continue; }
       const existing = await store.suggestions.get(s.id);
       if (existing && existing.status !== 'shown') { suggestions.push(existing); continue; } // keep the learner's decision
-      await store.suggestions.put(s);
-      suggestions.push(s);
-      await bus.emit<GoTellSuggestionShown>({ type: 'GoTellSuggestionShown', ...common(userId, lang, `gotell:${contextId}`, `gts-shown:${s.id}`), suggestionId: s.id, kind: s.kind });
+      // a re-check keeps the moment the suggestion was FIRST shown (provenance depends on it)
+      const row: GoTellSuggestion = existing ? { ...s, createdAt: existing.createdAt } : s;
+      await store.suggestions.put(row);
+      suggestions.push(row);
+      await bus.emit<GoTellSuggestionShown>({ type: 'GoTellSuggestionShown', ...common(userId, lang, `gotell:${contextId}`, `gts-shown:${row.id}`), suggestionId: row.id, kind: row.kind });
     }
 
     // independent: correct items no suggestion touched
@@ -342,44 +359,46 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
     return { draftHash, lang, sentences: ctxs.map((c) => c.sentence), suggestions, independentItemIds: unique(independent) };
   }
 
-  // ───────────────────────── revisions: classification ─────────────────────────
+  // ───────────────────────── revisions: provenance (rule 6) ─────────────────────────
 
   interface ItemEvidence { itemId: string; itemKind: ItemKind; kind: ProductionKind; suggestionId?: string }
 
-  function classifySentence(adapter: LanguageAdapter, lang: LanguageCode, text: string, sugs: StoredSuggestion[]): { items: ItemEvidence[]; used: Set<string> } {
+  /**
+   * Classify the items of one saved sentence.
+   *  - No suggestion was ever shown for (a sentence descended from) this one      => independent.
+   *  - The item was in the learner's own wording BEFORE the first suggestion for it was shown => independent.
+   *  - Otherwise: present in an accepted / edited suggestion => assisted; present only in a suggestion that was
+   *    shown but not accepted (he typed it himself after seeing it) => copied; in neither => self-repaired.
+   * Items inside a token the checker still flags get no evidence at all.
+   */
+  function classifySentence(adapter: LanguageAdapter, lang: LanguageCode, text: string, sugs: GoTellSuggestion[]): { items: ItemEvidence[]; used: Set<string> } {
     const p = parse(adapter, text);
     const errTokens = new Set<number>();
     for (const e of adapter.checkProduction(p.tokens, p.analyses, text)) if (e.confidence >= MIN_ERROR_CONFIDENCE) e.tokenIndexes.forEach((i) => errTokens.add(i));
     const tSet = normSet(p);
-    const applied = (s: StoredSuggestion) => (s.status === 'edited' ? s.finalText ?? s.suggested : s.suggested);
+    const applied = (s: GoTellSuggestion) => (s.status === 'edited' ? s.finalText ?? s.suggested : s.suggested);
 
-    // the suggestion family this sentence descends from (best token overlap with any original/applied text)
-    let best: StoredSuggestion | undefined;
-    let bestSim = 0;
-    for (const s of sugs) {
-      for (const cand of [s.original, applied(s)]) {
-        const sim = dice(tSet, normSet(parse(adapter, cand)));
-        if (sim > bestSim) { bestSim = sim; best = s; }
-      }
-    }
-    const family = best && bestSim >= 0.5 ? sugs.filter((s) => s.original === best!.original) : [];
-    const origSet = family.length ? normSet(parse(adapter, family[0].original)) : new Set<string>();
-    const introducedBy = (s: StoredSuggestion) => { const sg = normSet(parse(adapter, s.suggested)); return new Set([...sg].filter((n) => !origSet.has(n))); };
-    const touchedBy = (s: StoredSuggestion) => { const sg = normSet(parse(adapter, s.suggested)); return new Set([...origSet].filter((n) => !sg.has(n))); };
-    const introduced = new Map(family.map((s) => [s.id, introducedBy(s)]));
-    const alteredSpot = family.some((s) => [...touchedBy(s)].some((n) => !tSet.has(n)));
+    // every suggestion whose original or applied text this sentence descends from
+    const family = sugs.filter((s) => [s.original, applied(s), s.suggested].some((cand) => dice(tSet, normSet(parse(adapter, cand))) >= 0.5));
+    // the earliest moment a suggestion for this sentence was shown: his wording up to then is "his own"
+    const first = [...family].sort((a, b) => (a.createdAt < b.createdAt ? -1 : a.createdAt > b.createdAt ? 1 : a.id < b.id ? -1 : 1))[0];
+    const ownSet = first ? normSet(parse(adapter, first.original)) : new Set<string>();
+    const introduced = new Map(family.map((s) => {
+      const base = normSet(parse(adapter, s.original));
+      return [s.id, new Set([...normSet(parse(adapter, s.suggested))].filter((n) => !base.has(n)))] as const;
+    }));
 
     const used = new Set<string>();
     const tokenKind = new Map<number, { kind: ProductionKind; suggestionId?: string }>();
     for (const i of wordIndexes(p)) {
       if (errTokens.has(i)) continue;
       const n = p.tokens[i].normalized;
-      if (family.length === 0 || origSet.has(n)) { tokenKind.set(i, { kind: 'independent' }); continue; }
+      if (family.length === 0 || ownSet.has(n)) { tokenKind.set(i, { kind: 'independent' }); continue; }
       const accepted = family.find((s) => (s.status === 'accepted' || s.status === 'edited') && introduced.get(s.id)!.has(n));
       if (accepted) { used.add(accepted.id); tokenKind.set(i, { kind: 'assisted', suggestionId: accepted.id }); continue; }
       const shown = family.find((s) => introduced.get(s.id)!.has(n));
       if (shown) { tokenKind.set(i, { kind: 'copied', suggestionId: shown.id }); continue; }
-      tokenKind.set(i, { kind: alteredSpot ? 'self-repaired' : 'independent' });
+      tokenKind.set(i, { kind: 'self-repaired' });
     }
 
     const items = new Map<string, ItemEvidence>();
@@ -414,12 +433,25 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
       assertActor(t.userId);
       return t;
     };
-    const ownedSuggestion = async (id: string): Promise<StoredSuggestion> => {
-      const s = (await store.suggestions.get(id)) as StoredSuggestion | undefined;
+    const ownedSuggestion = async (id: string): Promise<GoTellSuggestion> => {
+      const s = await store.suggestions.get(id);
       if (!s) throw new Error('GoTell: suggestion not found or not owned by this user');
       assertActor(s.userId);
       return s;
     };
+
+    /** Upsert the working draft. seq is monotonic per learner + language and survives clearDraft. */
+    const writeDraft = (userId: string, lang: LanguageCode, text: string, opts: { expectedSeq?: number; basedOnRevisionId?: string } = {}): Promise<TestimonyDraft> =>
+      store.transaction(['drafts'], async () => {
+        const id = ids.draft(userId, lang);
+        const existing = await store.drafts.get(id);
+        // a stale tab must not overwrite newer writing; a cleared draft (empty) holds no writing, so it never conflicts
+        if (opts.expectedSeq !== undefined && existing && existing.text !== '' && opts.expectedSeq !== existing.seq) throw new DraftConflictError(existing, opts.expectedSeq);
+        const based = opts.basedOnRevisionId ?? existing?.basedOnRevisionId;
+        const draft: TestimonyDraft = { id, userId, lang, text, updatedAt: clock(), seq: (existing?.seq ?? 0) + 1, ...(based ? { basedOnRevisionId: based } : {}) };
+        await store.drafts.put(draft);
+        return draft;
+      });
 
     const gt: GoTell = {
       async getOrCreateTestimony(userId, lang) {
@@ -437,8 +469,40 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
         if (!t || t.userId !== userId) throw new Error('GoTell: testimony not found or not owned by this user');
       },
 
+      // ── drafts: autosaved, private, never evidence and never a version ──
+      async getDraft(userId, lang) {
+        assertActor(userId);
+        const d = await store.drafts.get(ids.draft(userId, lang));
+        return d && d.text !== '' ? d : undefined; // a cleared draft keeps its seq but is not a draft
+      },
+
+      async saveDraft(userId, lang, text, opts) {
+        assertActor(userId);
+        if (opts?.basedOnRevisionId) {
+          const rev = await store.revisions.get(opts.basedOnRevisionId);
+          if (!rev || rev.userId !== userId || rev.lang !== lang) throw new Error('GoTell: revision not found or not owned by this user');
+        }
+        return writeDraft(userId, lang, text, opts);
+      },
+
+      async clearDraft(userId, lang) {
+        assertActor(userId);
+        const existing = await store.drafts.get(ids.draft(userId, lang));
+        if (!existing || existing.text === '') return;
+        // the row stays (empty, seq advanced) so a stale tab's expectedSeq can never overwrite a later draft
+        await store.drafts.put({ id: existing.id, userId, lang, text: '', updatedAt: clock(), seq: existing.seq + 1 });
+      },
+
+      async restoreRevisionAsDraft(revisionId) {
+        const rev = await store.revisions.get(revisionId);
+        if (!rev) throw new Error('GoTell: revision not found or not owned by this user');
+        assertActor(rev.userId);
+        return writeDraft(rev.userId, rev.lang, rev.fullText, { basedOnRevisionId: rev.id });
+      },
+
       async submitDraft(testimonyId, text) {
         const t = await ownedTestimony(testimonyId);
+        // checking records NO production evidence: suggestions are shown, nothing is credited
         const analysis = await analyzeCore({ userId: t.userId, lang: t.lang, text, task: 'testimony', contextId: testimonyId }, true);
         await bus.emit<TestimonyTextSubmitted>({
           type: 'TestimonyTextSubmitted', ...common(t.userId, t.lang, `gotell:${testimonyId}`, `tts:${analysis.draftHash}`),
@@ -473,7 +537,7 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
 
       async editSuggestion(suggestionId, finalText) {
         const s = await ownedSuggestion(suggestionId);
-        await store.suggestions.put({ ...s, status: 'edited', finalText } as StoredSuggestion);
+        await store.suggestions.put({ ...s, status: 'edited', finalText });
         await bus.emit<GoTellSuggestionEdited>({
           type: 'GoTellSuggestionEdited', ...common(s.userId, s.lang, `gotell:${s.testimonyId}`, `gts-edit:${s.id}:${hash(finalText)}`),
           suggestionId: s.id, finalText,
@@ -490,7 +554,7 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
         const number = (existing[existing.length - 1]?.number ?? 0) + 1;
         const revisionId = ids.revision(testimonyId, number);
         const spans = adapter.segmentSentences(text).filter((s) => s.text.trim().length > 0);
-        const sugs = ((await store.suggestions.where('testimonyId', testimonyId)) as StoredSuggestion[]).filter((s) => s.userId === t.userId);
+        const sugs = (await store.suggestions.where('testimonyId', testimonyId)).filter((s) => s.userId === t.userId);
 
         const sentences: TestimonySentence[] = [];
         const evidence: Array<{ sentence: TestimonySentence; items: ItemEvidence[] }> = [];
@@ -511,7 +575,7 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
         // the accepted revision becomes a real private Text (addressable sentences/tokens for GoListen + GoLearn)
         let textId: string | undefined;
         if (sentences.length > 0) {
-          const doc = testimonyDocument(t.userId, t.lang, number, sentences.map((x) => x.text));
+          const doc = testimonyDocument({ userId: t.userId, lang: t.lang, n: number, sentences: sentences.map((x) => x.text), acceptedAt: clock() });
           textId = (await ingestDocument(store, adapters, doc, { clock })).id;
         }
 
@@ -523,16 +587,20 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
         };
         await store.revisions.put(revision);
         await store.testimonies.put({ ...t, currentRevisionId: revisionId });
+        // the working draft is kept; it now descends from this version (no seq bump: the writer's tab is not stale)
+        const draft = await store.drafts.get(ids.draft(t.userId, t.lang));
+        if (draft && draft.text !== '') await store.drafts.put({ ...draft, basedOnRevisionId: revisionId });
 
         const session = `gotell:${testimonyId}`;
         await bus.emit<TestimonyRevisionAccepted>({ type: 'TestimonyRevisionAccepted', ...common(t.userId, t.lang, session, `rev:${revisionId}`), testimonyId, revisionId, number });
         const independent: string[] = [];
         for (const { sentence, items } of evidence) {
           for (const it of items) {
+            // rule 6: one record per (item, sentenceHash), ever - across revisions, re-saves and re-checks
             const ev = await bus.emit<ProductionRecorded>({
               type: 'ProductionRecorded',
-              ...common(t.userId, t.lang, session, `prod:${testimonyId}:${sentence.textHash}:${it.kind}:${it.itemId}`),
-              itemId: it.itemId, itemKind: it.itemKind, kind: it.kind, modality: 'writing', revisionId, sentenceText: sentence.text,
+              ...common(t.userId, t.lang, session, `prod:${t.userId}:${sentence.textHash}:${it.itemId}`),
+              itemId: it.itemId, itemKind: it.itemKind, kind: it.kind, modality: 'writing', revisionId, sentenceText: sentence.text, sentenceHash: sentence.textHash,
               ...(it.suggestionId ? { suggestionId: it.suggestionId } : {}),
             });
             if (ev && it.kind === 'independent') independent.push(it.itemId);
@@ -576,123 +644,109 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
 
   // ───────────────────────── intent ─────────────────────────
 
-  function surfaceFor(adapter: LanguageAdapter, lang: LanguageCode, text: string, itemId: string): string | undefined {
-    const p = parse(adapter, text);
-    for (const i of wordIndexes(p)) if (ids.form(lang, p.tokens[i].normalized) === itemId) return p.tokens[i].surface;
-    return undefined;
+  const unsupported = (limitation: string, unexpressed: string[]): IntentProposal => ({
+    supported: false, insertable: false, limitation, sources: [], unexpressed, familiar: [], newItems: [],
+  });
+
+  /** Which meaning terms an attempt already expresses (precise concept or a gloss of one of its words). */
+  function attemptCoverage(adapter: LanguageAdapter, lang: LanguageCode, attempt: string, terms: IntentTerm[]): { covered: Set<string>; negators: number } {
+    const p = parse(adapter, attempt);
+    const covered = new Set<string>();
+    for (const i of wordIndexes(p)) {
+      const c = bestCandidate(p.analyses[i]);
+      const concepts = conceptsForToken(lang, p.tokens[i].normalized, c?.lemma);
+      const gloss = c?.gloss ? contentStems(c.gloss) : new Set<string>();
+      for (const t of terms) if (gloss.has(t.key) || t.concepts.some((k) => concepts.includes(k))) covered.add(t.key);
+    }
+    return { covered, negators: negatorsIn(lang, p).length };
   }
 
   async function intentProposal(req: IntentRequest): Promise<IntentProposal> {
     const { userId, lang } = req;
     const adapter = adapters.get(lang);
-    const sep = adapter.display.wordSeparator;
-    const requested = englishConcepts(req.english);
-    const keyTerms = requested.filter((r) => CONCEPTS[r.concept].keyTerm).map((r) => r.word);
+    const { terms, negated } = intentTerms(req.english);
+    if (terms.length === 0) return unsupported(describeGap({ terms, negated, missing: [], metSeparately: [], blocked: [] }).limitation, []);
+    const keyTerms = terms.filter((t) => t.concepts.some((c) => CONCEPTS[c].keyTerm)).map((t) => t.word);
     const keyNote = keyTerms.length ? `Key terms in what you said (${keyTerms.join(', ')}) are not interchangeable; GoTell will not swap one for another - choose the word you mean.` : undefined;
+    const attempt = req.attempt?.trim() ? req.attempt : undefined;
 
-    // ── with an attempt: repair it from his own language ──
-    if (req.attempt && req.attempt.trim()) {
-      const analysis = await analyzeCore({ userId, lang, text: req.attempt, task: req.task ?? 'free', contextId: 'intent' }, false);
-      const pick = (allowExpansion: boolean) => analysis.sentences.map((s) => {
-        const sug = analysis.suggestions.find((x) => x.sentenceIndex === s.index && !x.meaningChange && (allowExpansion || x.kind !== 'expansion'));
-        return sug ? { text: sug.suggested, sug } : { text: s.text, sug: undefined };
-      });
-      const withNew = pick(true);
-      const without = pick(false);
-      const proposal = withNew.map((x) => x.text).join(' ');
-      const familiar = unique(withNew.flatMap((x) => x.sug?.familiar ?? []).map((f) => f.itemId)).map((id) => withNew.flatMap((x) => x.sug?.familiar ?? []).find((f) => f.itemId === id)!);
-      const newItems: IntentProposal['newItems'] = [];
-      for (const x of withNew) {
-        for (const n of x.sug?.newItems ?? []) {
-          newItems.push({ itemId: n.itemId, surface: surfaceFor(adapter, lang, x.text, n.itemId) ?? n.itemId, ...(n.gloss ? { gloss: n.gloss } : {}), whyNeeded: 'Needed for the fix to your attempt; you have not met this word yet.' });
-        }
-      }
-      const attemptParsed = analysis.sentences.map((s) => parse(adapter, s.text));
-      const present = new Set<ConceptId>();
-      for (const pp of attemptParsed) for (const i of wordIndexes(pp)) conceptsForToken(lang, pp.tokens[i].normalized, bestCandidate(pp.analyses[i])?.lemma).forEach((c) => present.add(c));
-      const missing = requested.filter((r) => !present.has(r.concept)).map((r) => r.word);
-      const notes = [keyNote, missing.length ? `Your attempt does not yet include: ${missing.join(', ')}.` : undefined].filter(Boolean).join(' ');
-      const fallbackText = without.map((x) => x.text).join(' ');
-      return {
-        proposal,
-        familiar,
-        newItems,
-        ...(newItems.length > 0 && fallbackText !== proposal ? { fallbackWithoutNew: { text: fallbackText, lossNote: 'Leaves out fixes that need language you have not met yet; may be less correct.' } } : {}),
-        ...(notes ? { meaningNote: notes } : {}),
-      };
+    // ── an attempt that already says everything: repair it, nothing else ──
+    let attemptNote: string | undefined;
+    if (attempt) {
+      const cov = attemptCoverage(adapter, lang, attempt, terms);
+      const lacks = terms.filter((t) => !cov.covered.has(t.key));
+      const polarityOk = (cov.negators > 0) === negated;
+      if (lacks.length === 0 && polarityOk) return repairAttempt(req, attempt, adapter, keyNote);
+      attemptNote = lacks.length
+        ? `Your attempt does not yet say: ${lacks.map((t) => t.word).join(', ')}.`
+        : negated ? 'Your attempt is not negative but what you said is.' : 'Your attempt is negative but what you said is not.';
     }
 
-    // ── without an attempt: a word bank for his ideas, chosen from what he knows ──
-    const concepts = requested.map((r) => ({ ...r, lexemes: lexemesFor(lang, r.concept) }));
-    const supported = concepts.filter((c) => c.lexemes.length > 0);
-    const unsupported = concepts.filter((c) => c.lexemes.length === 0).map((c) => c.word);
-    const formIdOf = (lx: string) => ids.form(lang, adapter.normalize(lx));
-    // a lexeme is "known" if its form or its lemma (lemma ids carry a POS when the analysis had one) was met
-    const LEMMA_POS: Array<PartOfSpeech | undefined> = [undefined, 'VERB', 'NOUN', 'ADJ', 'ADV', 'PROPN'];
-    const idsFor = (lx: string) => [formIdOf(lx), ...LEMMA_POS.map((pos) => ids.lemma(lang, adapter.normalize(lx), pos))];
-    const kmap = await query(userId, lang, supported.flatMap((c) => c.lexemes.flatMap(idsFor)));
-    const bestKnowledge = (lx: string): ItemKnowledge | undefined => idsFor(lx)
-      .map((id) => kmap.get(id))
-      .filter((k): k is ItemKnowledge => isEncountered(k))
-      .sort((a, b) => levelIdx(b.reading.level) - levelIdx(a.reading.level) || b.encounterCount - a.encounterCount)[0];
-    const chosen = supported.map((c) => {
-      const knownLx = c.lexemes
-        .filter((lx) => bestKnowledge(lx))
-        .sort((a, b) => levelIdx(bestKnowledge(b)!.reading.level) - levelIdx(bestKnowledge(a)!.reading.level) || bestKnowledge(b)!.encounterCount - bestKnowledge(a)!.encounterCount)[0];
-      return { concept: c.concept, english: c.word, lexemes: c.lexemes, word: knownLx ?? c.lexemes[0], known: !!knownLx, knowledge: knownLx ? bestKnowledge(knownLx) : undefined };
-    });
-
-    const phrases = await knownPhrases(userId, lang);
-    const phraseUse = (() => {
-      for (const ph of phrases) {
-        if (ph.pattern.filter((w) => w === '_').length > 1) continue;
-        for (const c of chosen) {
-          const hit = ph.pattern.some((w) => w !== '_' && c.lexemes.some((lx) => related(adapter, w, adapter.normalize(lx))));
-          if (hit) return { phrase: ph, covers: c.concept };
-        }
-      }
-      return undefined;
-    })();
-    const pk = phraseUse ? (await query(userId, lang, [phraseUse.phrase.phraseId])).get(phraseUse.phrase.phraseId) : undefined;
-    const coversIdx = phraseUse ? chosen.findIndex((c) => c.concept === phraseUse.covers) : -1;
-    const slotAfter = !!phraseUse && phraseUse.phrase.pattern[phraseUse.phrase.pattern.length - 1] === '_';
-    const hasSlot = !!phraseUse && phraseUse.phrase.pattern.includes('_');
-    const slotConcept = phraseUse && hasSlot ? chosen[slotAfter ? coversIdx + 1 : coversIdx - 1] : undefined;
-
-    const assemble = (include: (c: (typeof chosen)[number]) => boolean) => {
-      const slotC = slotConcept && include(slotConcept) ? slotConcept : undefined;
-      const parts: string[] = [];
-      for (const c of chosen) {
-        if (phraseUse && c.concept === phraseUse.covers) {
-          parts.push(phraseUse.phrase.pattern.filter((w) => w !== '_' || slotC).map((w) => (w === '_' ? slotC!.word : w)).join(sep));
-        } else if (c === slotC) continue;
-        else if (include(c)) parts.push(c.word);
-      }
-      return parts.join(sep);
+    // ── otherwise: wording the learner has already met ──
+    const r = await retrieveWording({ store, adapters }, userId, lang, req.english);
+    if (!r.best) {
+      const gap = describeGap(r);
+      return unsupported([attemptNote, gap.limitation].filter(Boolean).join(' '), gap.unexpressed);
+    }
+    const best = r.best;
+    const k = await query(userId, lang, best.itemIds);
+    const familiar = best.itemIds.map((id) => k.get(id)).filter((x): x is ItemKnowledge => isEncountered(x)).map(refOf);
+    const source: SuggestionSource = {
+      itemId: best.itemIds[0] ?? best.sentence.id, textId: best.textRow.id, textTitle: best.textRow.title,
+      sentenceId: best.sentence.id, excerpt: best.sentence.text, surface: best.surface,
     };
-
-    const proposal = assemble(() => true);
-    const familiar: ProvenanceRef[] = [];
-    if (phraseUse && pk && isEncountered(pk)) familiar.push(refOf(pk));
-    const newItems: IntentProposal['newItems'] = [];
-    for (const c of chosen) {
-      if (phraseUse && c.concept === phraseUse.covers) continue;
-      if (c.known && c.knowledge) familiar.push(refOf(c.knowledge));
-      else newItems.push({ itemId: formIdOf(c.word), surface: c.word, gloss: c.english, whyNeeded: `Needed to say "${c.english}"; you have not met a word for it yet.` });
-    }
-    const knownCount = chosen.filter((c) => c.known || (phraseUse && c.concept === phraseUse.covers)).length;
-    const fallbackText = assemble((c) => c.known);
-    const missing = chosen.filter((c) => !c.known && !(phraseUse && c.concept === phraseUse.covers)).map((c) => c.english);
     const notes = [
-      'This is a set of words for the ideas in your English, not a finished sentence - put them together yourself.',
+      attemptNote,
+      `Taken word for word from "${best.textRow.title}": "${best.sentence.text}".`,
+      best.extraWords.length ? `It also contains ${best.extraWords.map((w) => `"${w}"`).join(', ')}, which you did not ask for - keep only what you mean.` : undefined,
+      'Person and tense are those of that sentence: check they fit what you mean.',
       keyNote,
-      unsupported.length ? `No wording available yet for: ${unsupported.join(', ')}.` : undefined,
+    ].filter(Boolean).join(' ');
+    return { supported: true, insertable: true, proposal: best.text, sources: [source], unexpressed: [], familiar, newItems: [], meaningNote: notes };
+  }
+
+  /** The attempt covers the whole meaning: offer it repaired by the checker, with the same honesty as submitDraft. */
+  async function repairAttempt(req: IntentRequest, attempt: string, adapter: LanguageAdapter, keyNote: string | undefined): Promise<IntentProposal> {
+    const { userId, lang } = req;
+    const analysis = await analyzeCore({ userId, lang, text: attempt, task: req.task ?? 'free', contextId: 'intent' }, false);
+    const pick = (allowExpansion: boolean) => analysis.sentences.map((s) => {
+      const sug = analysis.suggestions.find((x) => x.sentenceIndex === s.index && !x.meaningChange && (allowExpansion || x.kind !== 'expansion'));
+      return sug ? { text: sug.suggested, sug } : { text: s.text, sug: undefined };
+    });
+    const sep = adapter.display.wordSeparator;
+    const withNew = pick(true);
+    const without = pick(false);
+    const join = (xs: Array<{ text: string }>) => xs.map((x) => x.text).join(sep === '' ? '' : ' ');
+    const proposal = join(withNew);
+    const sugs = withNew.map((x) => x.sug).filter((x): x is GoTellSuggestion => !!x);
+    const familiar = [...new Map(sugs.flatMap((s) => s.familiar).map((f) => [f.itemId, f])).values()];
+    const newItems: IntentProposal['newItems'] = [];
+    for (const x of withNew) {
+      for (const n of x.sug?.newItems ?? []) {
+        const p = parse(adapter, x.text);
+        const surface = wordIndexes(p).map((i) => p.tokens[i]).find((t) => ids.form(lang, t.normalized) === n.itemId)?.surface ?? n.itemId;
+        newItems.push({ itemId: n.itemId, surface, ...(n.gloss ? { gloss: n.gloss } : {}), whyNeeded: 'Needed for the fix to your attempt; you have not met this word yet.' });
+      }
+    }
+    const held = analysis.suggestions.filter((s) => s.meaningChange);
+    const remaining = unique(sugs.flatMap((s) => s.remainingIssues));
+    const fallbackText = join(without);
+    const notes = [
+      'This is your own attempt, corrected only where the checker found something.',
+      held.length ? `Not applied, because it would change your meaning: ${held.map((s) => s.meaningChange).join(' ')}` : undefined,
+      remaining.length ? `Still to check: ${remaining.join(' ')}` : undefined,
+      analysis.suggestions[0]?.checkerCoverage ?? checkerCoverage(adapter),
+      keyNote,
     ].filter(Boolean).join(' ');
     return {
+      supported: true,
+      insertable: true,
       proposal,
+      sources: mergeSources(sugs.map((s) => s.sources)),
+      unexpressed: [],
       familiar,
       newItems,
-      ...(newItems.length > 0 && knownCount > 0 ? { fallbackWithoutNew: { text: fallbackText, lossNote: `Leaves out: ${missing.join(', ')} - you have not met words for ${missing.length > 1 ? 'them' : 'it'} yet, so this says less than you meant.` } } : {}),
+      ...(newItems.length > 0 && fallbackText !== proposal ? { fallbackWithoutNew: { text: fallbackText, lossNote: 'Leaves out fixes that need language you have not met yet; may be less correct.' } } : {}),
       meaningNote: notes,
     };
   }
@@ -700,4 +754,3 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
   const service = build(deps.actor ?? (() => undefined));
   return { ...service, forUser: (userId: string) => build(() => userId) };
 }
-

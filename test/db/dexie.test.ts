@@ -64,8 +64,8 @@ describe('Dexie store', () => {
   });
 
   it('where() falls back to filtering for non-indexed and non-keyable values', async () => {
-    await store.texts.put({ id: 't1', corpusId: 'c', lang: 'es', kind: 'story', title: 'x', sourceId: 's', importedAt: '', tags: [], generated: true, transformations: [], contentVersion: 1 });
-    await store.texts.put({ id: 't2', corpusId: 'c', lang: 'es', kind: 'story', title: 'y', sourceId: 's', importedAt: '', tags: [], generated: false, transformations: [], contentVersion: 1 });
+    await store.texts.put({ id: 't1', corpusId: 'c', lang: 'es', kind: 'story', title: 'x', sourceId: 's', importedAt: '', tags: [], editorialTags: [], prepTargets: [], reviewStatus: 'unreviewed', published: false, unpublishedReasons: [], schemaVersion: 2, generated: true, transformations: [], contentVersion: 1 });
+    await store.texts.put({ id: 't2', corpusId: 'c', lang: 'es', kind: 'story', title: 'y', sourceId: 's', importedAt: '', tags: [], editorialTags: [], prepTargets: [], reviewStatus: 'unreviewed', published: false, unpublishedReasons: [], schemaVersion: 2, generated: false, transformations: [], contentVersion: 1 });
     expect((await store.texts.where('generated', true)).map((t) => t.id)).toEqual(['t1']);
     expect((await store.texts.where('title', 'y')).map((t) => t.id)).toEqual(['t2']);
     expect(await store.texts.where('corpusId', 'c')).toHaveLength(2);

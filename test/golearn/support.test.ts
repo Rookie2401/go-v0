@@ -92,14 +92,14 @@ describe('sentenceSupport', () => {
   it('returns tokens, learner highlights, and the English rescue only when asked', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
-    for (const s of ['s1', 's2', 's3']) await h.view(U, 'es', ES_STORY, 0, s);
+    for (const s of ['s1', 's2', 's3']) await h.understood(U, 'es', ES_STORY, [0], s);
     await h.view(U, 'es', ES_STORY, 3, 's1'); // "Dios perdona el pecado." — seen once
     const plain = await h.golearn.sentenceSupport(U, `${ES_STORY}/s3`);
     expect(plain.rescue).toBeUndefined();
     expect(plain.explanation).toBeUndefined();
     expect(plain.sentence.text).toBe('Dios perdona el pecado.');
     expect(plain.tokens).toHaveLength(5);
-    expect(plain.highlight[`${ES_STORY}/s3/t0`]).toBe('known'); // Dios — 3+ encounters (+ this one)
+    expect(plain.highlight[`${ES_STORY}/s3/t0`]).toBe('known'); // Dios — shown understood in three sessions
     expect(plain.highlight[`${ES_STORY}/s3/t1`]).toBe('partial'); // perdona — once
     expect(plain.highlight[`${ES_STORY}/s3/t4`]).toBeUndefined(); // punctuation is not highlighted
 

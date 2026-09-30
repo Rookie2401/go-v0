@@ -9,7 +9,7 @@ import { itemSurface } from '../format';
 
 export const KIND_LABEL: Record<SuggestionKind, string> = {
   repair: 'Correction',
-  recombination: 'Uses language you know',
+  recombination: 'Uses language you have met',
   expansion: 'New expression',
 };
 
@@ -46,6 +46,29 @@ export function SuggestionCard({ suggestion: s, lang, titles, onAccept, onReject
         <p className="note note--warn sugg-warn" role="note"><strong>This changes the meaning.</strong> {s.meaningChange} Keep your own wording unless you are sure.</p>
       )}
       <p className="card__text sugg-why">{s.explanation}</p>
+
+      {s.kind === 'repair' && (
+        <p className="sugg-scope" data-scope={s.scope} data-testid="suggestion-scope">
+          <strong>
+            {s.scope === 'fixes-all-detected'
+              ? 'Fixes everything this checker found.'
+              : `Fixes one thing — still to check: ${s.remainingIssues.length > 0 ? s.remainingIssues.join('; ') : 'other problems the checker found are not fixed by this'}.`}
+          </strong>
+        </p>
+      )}
+      {s.checkerCoverage && <p className="card__prov sugg-coverage" data-testid="checker-coverage">What this checker can and cannot see: {s.checkerCoverage}</p>}
+
+      {(s.sources ?? []).length > 0 ? (
+        <ul className="sugg-sources card__prov" aria-label="Where you met this wording">
+          {s.sources.map((src) => (
+            <li key={`${src.sentenceId}|${src.itemId}`}>
+              <span className="faint">{src.textTitle}:</span> <span lang={lang} className="literal">{src.excerpt}</span>
+            </li>
+          ))}
+        </ul>
+      ) : s.kind === 'expansion' ? (
+        <p className="card__prov" data-testid="no-sources">You have not met this wording in a text yet, so it is new to you.</p>
+      ) : null}
 
       {s.familiar.length > 0 && (
         <ul className="sugg-prov card__prov" aria-label="Where this language comes from">

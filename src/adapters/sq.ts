@@ -5,7 +5,7 @@
  * next word (verb ⇒ clitic/particle, adjective ⇒ linking article); when context is thin they stay ambiguous
  * with low confidence. Unknown words: no candidates.
  */
-import type { AnalysisCandidate, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport, RawToken } from '../core';
+import type { AnalysisCandidate, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport, RawToken, AdapterSupport } from '../core';
 import {
   E, Lexicon, hasPos, lexiconAnalyze, makeWordTokenizer, matchPhraseRules, nfc, speechNormalizeGeneric,
   splitSentences, type PhraseRule,
@@ -152,11 +152,27 @@ function definiteForm(lemma: string, want: Record<string, string>): string | und
   return entry ? sqLexicon.formWith(entry, want)?.form : undefined;
 }
 
+const SUPPORT: AdapterSupport = {
+  tokenization: 'dependable', // Intl.Segmenter('sq'); ë and ç stay inside tokens
+  sentenceSegmentation: 'limited',
+  lemmatization: 'seed-only', // the lexicon covers the seed corpus only; other words are left unanalysed
+  morphology: 'seed-only', // definiteness (the noun-final article) and case for lexicon nouns only
+  phraseDetection: 'seed-only',
+  productionChecks: 'limited',
+  limitations: [
+    'Lemmatization is seed-only: the lexicon covers the bundled corpus, so supplied texts will have unanalysed words.',
+    'The clitic / article words e, i, të, më are resolved only from the next word; with thin context they stay ambiguous at low confidence.',
+    'Verbs are listed under their first-person-present lemma; only the listed forms are recognised.',
+    'Production checks: definite noun after te/tek, definite noun before a possessive — only for lexicon nouns.',
+  ],
+};
+
 export const sqAdapter: LanguageAdapter = {
   lang: LANG,
   name: 'Albanian',
   script: 'Latn',
   version: VERSION,
+  support: SUPPORT,
 
   segmentSentences: (text) => splitSentences(text, { terminators: '.!?…', abbreviations: ['dr', 'p', 'sh', 'etj', 'z', 'znj', 'prof'] }),
   tokenize: makeWordTokenizer({ locale: 'sq', normalize }),

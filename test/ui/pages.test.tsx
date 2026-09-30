@@ -10,7 +10,7 @@ import { JOHN_ID, STORY_ID, seedJohn, seedStory } from './fixtures';
 let mounted: Mounted | undefined;
 afterEach(async () => { await mounted?.unmount(); mounted = undefined; });
 
-const dim = (level: LearnerLevel, evidence = 1): DimensionState => ({ level, confidence: 0.5, evidence, unassisted: 1, assisted: 0 });
+const dim = (level: LearnerLevel, evidence = 1): DimensionState => ({ level, confidence: 0.5, evidence, exposures: 1, estimatedFamiliar: false, unassisted: 1, assisted: 0 });
 const item = (surface: string, reading: LearnerLevel, over: Partial<LearnerItemState> = {}): LearnerItemState => ({
   id: `u1|form:es:${surface}`, userId: 'u1', lang: 'es', itemId: `form:es:${surface}`, itemKind: 'form',
   reading: dim(reading), listening: dim('unseen', 0), writing: dim('unseen', 0), speaking: dim('unseen', 0),
@@ -28,7 +28,8 @@ describe('Library and routes', () => {
     const links = qa<HTMLAnchorElement>(mounted.container, 'ul.list a');
     expect(links).toHaveLength(1); // the scripture text is not in the Read list
     expect(links[0].textContent).toContain('Story 1');
-    expect(links[0].textContent).toContain('good challenge · 91%');
+    expect(links[0].textContent).toContain('good challenge · shown 91%'); // demonstrated, not merely seen
+    expect(links[0].textContent).toContain('Read 0 of 3'); // completion is its own statement
     expect(links[0].getAttribute('href')).toBe(`/read/${encodeURIComponent(STORY_ID)}`);
     expect(mounted.container.textContent).toContain('ci-es'); // shelf named by corpus
 
@@ -88,7 +89,7 @@ describe('Library and routes', () => {
     const rows = qa<HTMLAnchorElement>(mounted.container, 'ul.list a');
     expect(rows).toHaveLength(2);
     expect(rows[0].textContent).toContain('Story 1');
-    expect(rows[0].textContent).toContain('97% familiar');
+    expect(rows[0].textContent).toContain('shown 97%');
     expect(rows[0].textContent).toContain('Mostly words you already know.');
     expect(rows[1].getAttribute('href')).toBe('/testimony');
     // no persistent nav strip: the doorway entries, then the quiet links
@@ -140,15 +141,16 @@ describe('Testimony privacy', () => {
       { reason: 'rehearse-testimony', textId: privateId, testimonyId: 'tst:u1:es', reinforces: [], score: 0.8, explanation: 'Read your latest version aloud.' },
       { reason: 'easy-story', textId: STORY_ID, reinforces: [], score: 0.5, explanation: 'Mostly known words.' },
     ];
-    h.learn.recommend = async () => recs;
+    h.learn.recommend.mockImplementation(async () => recs);
     mounted = await h.mount(app(), { router: '/' });
     const rows = qa(mounted.container, 'ul.list li');
     expect(rows).toHaveLength(2);
     expect(mounted.container.textContent).not.toContain('Testimony v1');
     expect(mounted.container.textContent).not.toContain('private leak?');
-    expect(rows[0].querySelector('a')!.getAttribute('href')).toBe('/testimony');
-    expect(rows[0].textContent).toContain('Rehearse your testimony');
-    expect(rows[1].textContent).toContain('Story 1');
+    // input comes before the testimony rehearsal, whatever order the engine returned
+    expect(rows[0].textContent).toContain('Story 1');
+    expect(rows[1].querySelector('a')!.getAttribute('href')).toBe('/testimony');
+    expect(rows[1].textContent).toContain('Rehearse your testimony');
     expect(h.learn.coverage).not.toHaveBeenCalledWith('u1', privateId);
   });
 
@@ -161,10 +163,11 @@ describe('Testimony privacy', () => {
     expect(await h.events('TextViewed')).toHaveLength(0);
     await mounted.unmount();
 
-    h.learn.scriptureReadiness = async (_u: string, textId: string) => ({
+    h.learn.scriptureReadiness.mockImplementation(async (_u: string, textId: string) => ({
       textId, sentenceIds: [], coverage: await h.learn.coverage('u1', textId), familiarItems: [], unfamiliarForms: [], knownPhrases: [], difficultPatterns: [], prerequisites: [],
       preparatoryTexts: [{ textId: privateId, covers: ['x'], band: 'comfortable', generated: false }, { textId: STORY_ID, covers: ['y'], band: 'comfortable', generated: false }],
-    });
+      gaps: [], corpusCanPrepare: true,
+    }));
     mounted = await h.mount(app(), { router: `/scripture/${encodeURIComponent(JOHN_ID)}` });
     await click(button(mounted.container, 'Prepare this passage'));
     const links = qa<HTMLAnchorElement>(q(mounted.container, '.prepare-body')!, 'a');
@@ -201,7 +204,7 @@ describe('Settings', () => {
     expect(voice.textContent).toContain('es-419');
     expect(voice.textContent).toContain('fallback accent');
     expect(voice.textContent).toContain('fixture audio — not speech');
-    expect(voice.textContent).toContain('not yet');
+    expect(voice.textContent).toContain('not reviewed'); // nobody has auditioned this voice
 
     expect(q(mounted.container, '[data-testid="job-counts"]')!.textContent).toContain('1 segment(s) · 1 failed job(s) · 0 dead job(s)');
     expect(q(mounted.container, 'table.diag tbody')!.textContent).toContain('by-construction');

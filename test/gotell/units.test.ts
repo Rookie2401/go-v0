@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
-import { CONCEPTS, conceptsForToken, diffSentences, englishConcepts, lexemesFor, tagSection } from '../../src/gotell';
+import { CHRONOLOGY, CONCEPTS, chronologyChange, conceptsForToken, createSourceFinder, diffSentences, englishConcepts, lexemesFor, meaningChanges, negationChange, tagSection, tenseChange } from '../../src/gotell';
 import { LANGUAGES } from '../../src/core';
 import type { LanguageCode } from '../../src/core';
+import { mergeSources } from '../../src/gotell/sources';
+import { applyEdits, parse } from '../../src/gotell/text';
+import { FakeGoLearn, buildFixtureText, makeFakeAdapter } from './fakes';
 
 describe('concept tables', () => {
   it('match key terms by stem/form per language (Latin, Thai substring, Devanagari)', () => {
@@ -53,5 +56,85 @@ describe('diffSentences', () => {
     expect(diffSentences(['a'], ['a', 'b', 'c'])).toEqual([{ kind: 'same', a: 'a', b: 'a' }, { kind: 'added', b: 'b' }, { kind: 'added', b: 'c' }]);
     expect(diffSentences(['a', 'b'], [])).toEqual([{ kind: 'removed', a: 'a' }, { kind: 'removed', a: 'b' }]);
     expect(diffSentences([], [])).toEqual([]);
+  });
+});
+
+// ───────────────────────── D2 units ─────────────────────────
+
+describe('meaning checks', () => {
+  const adapter = makeFakeAdapter({
+    lang: 'es',
+    lexicon: {
+      hablo: { lemma: 'hablar', pos: 'VERB', morph: { Tense: 'Pres' } }, hable: { lemma: 'hablar', pos: 'VERB', morph: { Tense: 'Past' } },
+      comer: { lemma: 'comer', pos: 'VERB' },
+    },
+  });
+  const p = (s: string) => parse(adapter, s);
+
+  it('negation: removed, added, swapped, unchanged', () => {
+    expect(negationChange('es', p('Yo no hablo.'), p('Yo hablo.'))).toMatch(/Removes the negation "no"/);
+    expect(negationChange('es', p('Yo hablo.'), p('Yo no hablo.'))).toMatch(/Adds a negation "no"/);
+    expect(negationChange('es', p('Yo no hablo.'), p('Yo nunca hablo.'))).toMatch(/Changes the negation: "no" becomes "nunca"/);
+    expect(negationChange('es', p('Yo no hablo.'), p('Yo no hablo mucho.'))).toBeUndefined();
+  });
+
+  it('chronology: dropping / swapping / adding a time word, and the life-stage word "joven"', () => {
+    expect(chronologyChange('es', p('Cuando era joven hablo.'), p('Hablo.'))).toMatch(/Drops the time word "cuando", "joven"/);
+    expect(chronologyChange('es', p('Antes hablo.'), p('Ahora hablo.'))).toMatch(/"antes" becomes "ahora"/);
+    expect(chronologyChange('es', p('Hablo.'), p('Hablo ayer.'))).toMatch(/Adds the time word "ayer"/);
+    expect(chronologyChange('es', p('Hablo ayer.'), p('Hablo ayer mucho.'))).toBeUndefined();
+  });
+
+  it('tense: only when both sides carry a tense and they differ', () => {
+    expect(tenseChange(p('Hablo.'), p('Hable.'))).toMatch(/Pres becomes Past/);
+    expect(tenseChange(p('Comer.'), p('Hable.'))).toBeUndefined(); // an infinitive has no tense to lose
+    expect(tenseChange(p('Hablo.'), p('Hablo.'))).toBeUndefined();
+  });
+
+  it('meaningChanges lists every difference, nothing when the meaning is intact', () => {
+    expect(meaningChanges('es', p('Yo no hablo.'), p('Yo hablo ahora.')).length).toBe(2);
+    expect(meaningChanges('es', p('Yo hablo.'), p('Yo hablo.'))).toEqual([]);
+  });
+
+  it('every language has chronology words and negators (Thai / Hindi as exact tokens)', () => {
+    for (const lang of LANGUAGES as readonly LanguageCode[]) {
+      expect(CHRONOLOGY[lang].length, lang).toBeGreaterThan(5);
+    }
+  });
+});
+
+describe('applyEdits', () => {
+  it('applies several replacements and removes the space around a deletion', () => {
+    expect(applyEdits('a b c', [{ start: 0, end: 1, replacement: 'x' }, { start: 4, end: 5, replacement: 'z' }])).toBe('x b z');
+    expect(applyEdits('no sé', [{ start: 0, end: 2, replacement: '' }])).toBe('sé');
+    expect(applyEdits('yo no sé', [{ start: 3, end: 5, replacement: '' }])).toBe('yo sé');
+  });
+  it('overlapping edits are refused', () => {
+    expect(applyEdits('abcdef', [{ start: 0, end: 4, replacement: 'x' }, { start: 2, end: 5, replacement: 'y' }])).toBeUndefined();
+  });
+});
+
+describe('source finder', () => {
+  it('distinct sentences, corpus before the learner\'s own testimony, only this learner, capped', async () => {
+    const { createMemoryStore, seedBasics } = await import('../../src/core');
+    const store = createMemoryStore();
+    await seedBasics(store);
+    const gl = new FakeGoLearn(store);
+    await buildFixtureText(store, { lang: 'es', slug: 's1', title: 'Story 1', sentences: [{ tokens: [{ surface: 'Yo' }, { surface: 'creo' }] }, { tokens: [{ surface: 'Creo' }, { surface: 'mucho' }] }] });
+    await buildFixtureText(store, { lang: 'es', slug: 't1', title: 'Mine', kind: 'testimony', sentences: [{ tokens: [{ surface: 'creo' }] }] });
+    const item = 'form:es:creo';
+    await gl.encounter('A', 'es', item, 'text:es:t1/s0', 'text:es:t1', 'testimony');
+    await gl.encounter('A', 'es', item, 'text:es:s1/s0', 'text:es:s1', 'corpus');
+    await gl.encounter('A', 'es', item, 'text:es:s1/s1', 'text:es:s1', 'corpus');
+    await gl.encounter('B', 'es', item, 'text:es:s1/s1', 'text:es:s1', 'corpus');
+    const finder = createSourceFinder(store);
+    const two = await finder.forItem('A', item);
+    expect(two.map((s) => s.textTitle)).toEqual(['Story 1', 'Story 1']);
+    expect(two.map((s) => s.surface)).toEqual(['corpus', 'corpus']);
+    const three = await finder.forItem('A', item, 3);
+    expect(three.map((s) => s.textTitle)).toEqual(['Story 1', 'Story 1', 'Mine']);
+    expect(three[2].surface).toBe('testimony');
+    expect(await finder.forItem('C', item)).toEqual([]);
+    expect(mergeSources([two, three]).map((s) => s.sentenceId)).toHaveLength(3);
   });
 });

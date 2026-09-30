@@ -11,18 +11,24 @@
  *
  * Events: TextViewed (once), SentenceViewed (once per sentence per session), TokenHelpOpened (level),
  * PhraseHelpOpened, GrammarHelpOpened, SentenceExplanationRevealed, EnglishRescueRevealed (scope),
- * TextCompleted.
+ * TextCompleted, ComprehensionReported.
+ *
+ * Viewing is EXPOSURE only. What the learner says about understanding is a separate, deliberate, quiet act:
+ * "Understood" on a sentence, and "How much did you understand? All · Most · Some · Little" at the end. Only
+ * those reports (never views, never finishing) can demonstrate comprehension.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { LANGUAGE_ROWS } from '../../core';
 import type {
-  AssistanceLevel, EnglishRescueRevealed, GrammarHelpOpened, PhraseHelpOpened, Sentence, SentenceExplanationRevealed,
+  AssistanceLevel, ComprehensionReported, EnglishRescueRevealed, GrammarHelpOpened, PhraseHelpOpened, Sentence, SentenceExplanationRevealed,
   SentenceViewed, Text, TextCompleted, TextViewed, Token, TokenHelpOpened, TokenSupport,
 } from '../../core';
 import { useApp } from '../context';
+import { TextProgress } from '../coverage';
 import { makeEmitter } from '../events';
+import { TextBadges, UnpublishedReasons } from '../library';
 import { isTestimonyText, textPath } from '../format';
 import { usePref } from '../prefs';
 import type { HighlightPref } from '../prefs';
@@ -125,6 +131,9 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
   const [viewed, setViewed] = useState<ReadonlySet<string>>(new Set());
   const [auto, setAuto] = useState<boolean | null>(null);
   const [finished, setFinished] = useState(false);
+  const [understood, setUnderstood] = useState<ReadonlySet<string>>(new Set());
+  const [textDegree, setTextDegree] = useState<ComprehensionReported['degree'] | null>(null);
+  const [reportTick, setReportTick] = useState(0);
 
   // ── English rescue state ──
   const [shown, setShown] = useState<ReadonlySet<string>>(new Set());
@@ -132,7 +141,7 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
   const emittedRescue = useRef(new Set<string>());
 
   // ── token card state ──
-  const [card, setCard] = useState<{ token: Token; level: AssistanceLevel; supports: Partial<Record<number, TokenSupport>> } | null>(null);
+  const [card, setCard] = useState<{ token: Token; level: AssistanceLevel; supports: Partial<Record<number, TokenSupport>>; why?: string } | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
 
   const verses = useMemo(() => (mode === 'scripture' ? buildVerses(data.sentences) : new Map<string, VerseInfo>()), [mode, data.sentences]);
@@ -226,8 +235,13 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
     setCard({ token, level: 1, supports: {} });
     setSheetOpen(true);
     await emitter.emit<TokenHelpOpened>(surface, { type: 'TokenHelpOpened', sentenceId: token.sentenceId, tokenId: token.id, itemId: token.formId, level: 1 });
+    // Why GoLearn believes what it believes about this word ("Seen 7 times in 2 texts; needed help twice…").
+    void golearn.explainItem(userId, token.formId).then(
+      (why) => setCard((c) => (c && c.token.id === token.id ? { ...c, why: why.summary } : c)),
+      () => undefined, // the summary is a nicety; the gloss never waits on it
+    );
     await fetchSupport(token, 1);
-  }, [card, sheetOpen, emitter, surface, fetchSupport]);
+  }, [card, sheetOpen, emitter, surface, fetchSupport, golearn, userId]);
 
   const moreHelp = useCallback(async () => {
     if (!card || card.level >= 5) return;
@@ -254,7 +268,30 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
   const finish = useCallback(async () => {
     setFinished(true);
     await emitter.emit<TextCompleted>(surface, { type: 'TextCompleted', textId: text.id, dedupeKey: `textcompleted:${session}:${text.id}` });
+    setReportTick((n) => n + 1);
   }, [emitter, surface, session, text.id]);
+
+  /** "Understood" on one sentence: a deliberate report (a sentence the learner says they understood was on screen). */
+  const reportUnderstood = useCallback(async (sentenceId: string) => {
+    if (understood.has(sentenceId)) return;
+    setUnderstood((prev) => new Set([...prev, sentenceId]));
+    onViewedRef.current(sentenceId, 0); // reporting implies the sentence was seen (deduped if it already was)
+    await emitter.emit<ComprehensionReported>(surface, {
+      type: 'ComprehensionReported', textId: text.id, sentenceIds: [sentenceId], modality: 'reading', scope: 'sentence', degree: 'all',
+      dedupeKey: `understood:${session}:${sentenceId}`,
+    });
+    setReportTick((n) => n + 1);
+  }, [understood, emitter, surface, session, text.id]);
+
+  /** "How much did you understand?" for the whole text. */
+  const reportText = useCallback(async (degree: ComprehensionReported['degree']) => {
+    setTextDegree(degree);
+    await emitter.emit<ComprehensionReported>(surface, {
+      type: 'ComprehensionReported', textId: text.id, sentenceIds: data.sentences.map((s) => s.id), modality: 'reading', scope: 'text', degree,
+      dedupeKey: `understood-text:${session}:${text.id}:${degree}`,
+    });
+    setReportTick((n) => n + 1);
+  }, [emitter, surface, session, text.id, data.sentences]);
 
   // ── rendering ──
   // Learner state → Biblia's mark classes: unseen = new, partial = recognized, known = familiar.
@@ -318,6 +355,11 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
           {auto === false && !viewed.has(s.id) && (
             <IconBtn className="iconbtn--mini sent__btn" label={`Mark sentence ${s.index + 1} as read`} onClick={() => onViewed(s.id, 0)}>{I.check}</IconBtn>
           )}
+          <button
+            type="button" className="sent__understood sent__btn" aria-pressed={understood.has(s.id)}
+            aria-label={`Understood sentence ${s.index + 1}`} title="I understood this sentence without help"
+            onClick={() => { void reportUnderstood(s.id); }}
+          >{understood.has(s.id) ? 'Understood ✓' : 'Understood'}</button>
         </span>
         {isShown && rescue && <span className="rescue smode__layer" lang="en"><span className="label">English</span> {rescue.english}</span>}{' '}
       </span>
@@ -373,6 +415,7 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
           open={sheetOpen}
           explanation={data.support.get(cardSentence.id)?.explanation}
           english={data.rescues.get(cardSentence.id)?.english}
+          why={card.why}
           lang={text.lang}
           onMore={() => { void moreHelp(); }}
           onClose={() => setSheetOpen(false)}
@@ -398,7 +441,7 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
         <div className={`reader__prose${marks}`}>
           <div className="reader__meta">
             <div className="chips">
-              {text.generated && <span className="chip chip--wine" title="Machine-generated text">generated</span>}
+              <TextBadges text={text} />
               {text.version && <span className="chip">{text.version}</span>}
               {data.source?.rights === 'unverified' && <span className="chip chip--wine" title="Rights not established — replace before release">sample · rights unverified</span>}
             </div>
@@ -417,6 +460,9 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
             </div>
           </div>
 
+          <UnpublishedReasons text={text} />
+          <TextProgress textId={text.id} refreshKey={`${viewed.size}|${reportTick}`} />
+
           {before}
 
           <div className="reader-body">{sectionBlocks}</div>
@@ -426,6 +472,17 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
               <p className="muted" role="status">Marked as finished.</p>
             ) : (
               <button type="button" className={`btn${allViewed ? ' btn--primary' : ''}`} onClick={() => { void finish(); }}>I have finished reading</button>
+            )}
+            {(finished || allViewed) && (
+              <div className="reader__howmuch" role="group" aria-label="How much did you understand?">
+                <p className="muted">How much did you understand?</p>
+                <div className="segmented">
+                  {([['all', 'All'], ['most', 'Most'], ['some', 'Some'], ['little', 'Little']] as const).map(([degree, label]) => (
+                    <button key={degree} type="button" aria-pressed={textDegree === degree} onClick={() => { void reportText(degree); }}>{label}</button>
+                  ))}
+                </div>
+                <p className="card__note">This is your own word on it. Nothing here is graded.</p>
+              </div>
             )}
           </footer>
         </div>

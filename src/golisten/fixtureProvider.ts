@@ -8,7 +8,7 @@
  */
 import { hash } from '../core/ids';
 import type { LanguageCode } from '../core/model';
-import type { ProviderCapabilities, SynthesisRequest, SynthesisResult, TtsProvider, Voice, WordMark } from '../core/contracts/golisten';
+import type { ProviderAvailability, ProviderCapabilities, SynthesisRequest, SynthesisResult, TtsProvider, Voice, WordMark } from '../core/contracts/golisten';
 import { DEFAULT_SAMPLE_RATE, encodeWav } from './wav';
 
 export const FIXTURE_PROVIDER_ID = 'fixture';
@@ -85,10 +85,16 @@ export function renderFixtureChunks(chunks: FixtureChunk[], opts: RenderOptions 
 export class FixtureTtsProvider implements TtsProvider {
   readonly id = FIXTURE_PROVIDER_ID;
   readonly version = FIXTURE_PROVIDER_VERSION;
+  /** Sine-tone bursts are NOT speech: assets and voices made by this provider can never earn listening evidence. */
+  readonly isSpeech = false;
   readonly isFixture = true;
   readonly disclaimer = FIXTURE_DISCLAIMER;
   /** Every synthesize() call, for tests asserting on idempotency. */
   readonly calls: SynthesisRequest[] = [];
+
+  async availability(): Promise<ProviderAvailability> {
+    return { available: true, reason: 'development-fixture', detail: FIXTURE_DISCLAIMER };
+  }
 
   capabilities(): ProviderCapabilities {
     return { ssml: false, wordBoundaries: false, phonemeOverrides: false, streaming: false, maxChars: 5000, outputFormats: ['audio/wav'] };

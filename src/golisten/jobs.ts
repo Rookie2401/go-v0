@@ -7,7 +7,10 @@
  *    a ready segment without one.
  *  - Bytes that fail validation are never stored.
  *  - Retries re-derive the same request and content-address the bytes, so a retry can never produce a second asset.
- *  - Exponential backoff (`nextAttemptAt`), `maxAttempts` then `dead`.
+ *  - Exponential backoff (`nextAttemptAt`; a provider's Retry-After is honoured), `maxAttempts` then `dead`.
+ *    A failure that a retry cannot fix (rejected key, malformed request: `retryable === false`) goes dead at once.
+ *  - A job whose provider is not usable right now (no credentials this session, offline, fixture disabled) is
+ *    SKIPPED: it consumes no attempt and stays queued; `audioStatus` explains the wait.
  */
 import { hash } from '../core/ids';
 import type { AudioAsset, AudioJob, AudioSegment, PronunciationEntry } from '../core/model';
@@ -15,13 +18,16 @@ import type { SynthesisRequest, SynthesisResult } from '../core/contracts/golist
 import { writeMarkAlignments, writeSentenceAlignments } from './alignment';
 import { refreshManifestsFor } from './manifest';
 import { buildSsml, lexiconVersionOf } from './pronunciation';
+import { describeError } from './errors';
+import { usability } from './providers';
 import { PIPELINE_NORMALIZER_SUFFIX, addMs, type Runtime } from './types';
-import { providerOf } from './voices';
 import { inspectWav } from './wav';
 
 const STALE_RUNNING_MS = 60_000;
 const DURATION_TOLERANCE_MS = 100;
 const MAX_LOG = 40;
+
+const MAX_RETRY_AFTER_MS = 3_600_000;
 
 export type JobOutcome = 'succeeded' | 'failed' | 'dead' | 'skipped';
 
@@ -60,6 +66,11 @@ export async function runEligibleJobs(rt: Runtime, opts: { max?: number; now?: s
 
 async function execute(rt: Runtime, startJob: AudioJob, now: string): Promise<JobOutcome> {
   const segment = await rt.store.audioSegments.get(startJob.segmentId);
+  if (segment) {
+    const v = await rt.store.voices.get(segment.voiceConfigId);
+    const p = v ? rt.providers.get(v.providerId) : undefined;
+    if (p && !(await usability(rt, p)).usable) return 'skipped'; // wait for the provider; no attempt is consumed
+  }
   const attempt = startJob.attempts + 1;
   let job: AudioJob = { ...startJob, status: 'running', attempts: attempt, updatedAt: now, log: pushLog(startJob, now, `attempt ${attempt}/${startJob.maxAttempts} started`) };
   await rt.store.audioJobs.put(job);
@@ -74,12 +85,14 @@ async function execute(rt: Runtime, startJob: AudioJob, now: string): Promise<Jo
     return 'succeeded';
   } catch (e) {
     const message = e instanceof Error ? e.message : String(e);
-    const dead = attempt >= job.maxAttempts;
-    const delay = Math.min(rt.backoffBaseMs * 2 ** (attempt - 1), rt.backoffMaxMs);
+    const info = describeError(e);
+    const dead = !info.retryable || attempt >= job.maxAttempts;
+    const backoff = Math.min(rt.backoffBaseMs * 2 ** (attempt - 1), rt.backoffMaxMs);
+    const delay = Math.min(Math.max(backoff, info.retryAfterMs ?? 0), Math.max(rt.backoffMaxMs, MAX_RETRY_AFTER_MS));
     job = {
       ...job, status: dead ? 'dead' : 'failed', lastError: message,
       nextAttemptAt: dead ? undefined : addMs(now, delay), updatedAt: rt.clock(),
-      log: pushLog(job, now, dead ? `dead after ${attempt} attempts: ${message}` : `failed (${message}); retry after ${delay} ms`),
+      log: pushLog(job, now, dead ? (info.retryable ? `dead after ${attempt} attempts: ${message}` : `dead at attempt ${attempt} (not retryable): ${message}`) : `failed (${message}); retry after ${delay} ms`),
     };
     await rt.store.audioJobs.put(job);
     if (segment && dead) {
@@ -94,7 +107,8 @@ async function synthesizeAndStore(rt: Runtime, segment: AudioSegment): Promise<{
   const notes: string[] = [];
   const voice = await rt.store.voices.get(segment.voiceConfigId);
   if (!voice) throw new Error(`voice config ${segment.voiceConfigId} is missing`);
-  const provider = providerOf(rt, voice.providerId);
+  const provider = rt.providers.get(voice.providerId);
+  if (!provider) throw new Error(`provider ${voice.providerId} is not registered`);
   const caps = provider.capabilities();
   const adapter = rt.adapters.get(segment.lang);
   const wordBoundaries = adapter.display.wordSeparator !== '';
@@ -138,17 +152,21 @@ async function synthesizeAndStore(rt: Runtime, segment: AudioSegment): Promise<{
   if (!asset) {
     asset = {
       id: assetId, sourceType: 'generated-tts', lang: segment.lang, locale: result.actualLocale, mime: result.mime,
+      isSpeech: provider.isSpeech === true, // a non-speech provider's audio can never earn listening evidence
       sampleRate: measured.sampleRate, channels: measured.channels, durationMs: Math.round(measured.durationMs), bytes: result.bytes.length,
       checksum: assetId, createdAt: rt.clock(),
       generation: {
         providerId: provider.id, engine: result.engine ?? voice.engine, voiceId: voice.voiceId, settings: { ...rt.settings },
         sourceTextHash: hash(segment.displayText), speechTextHash: hash(segment.speechText),
         normalizerVersion: `${adapter.speechNormalize(segment.displayText).normalizerVersion}+${PIPELINE_NORMALIZER_SUFFIX}`,
-        pronunciationLexiconVersion: lexiconVersionOf(entries), softwareVersion: rt.softwareVersion,
+        pronunciationLexiconVersion: lexiconVersionOf(entries), softwareVersion: `${rt.softwareVersion}; ${provider.id}@${provider.version}`,
       },
       validation: finalValidation,
     };
     await rt.store.audioAssets.put(asset);
+  } else if (asset.isSpeech !== true || provider.isSpeech !== true) {
+    // Same bytes claimed by a non-speech producer: fail closed, the asset is non-speech.
+    if (asset.isSpeech !== false) { asset = { ...asset, isSpeech: false }; await rt.store.audioAssets.put(asset); }
   }
   notes.push(`asset ${assetId} validated (peak ${validation.peak?.toFixed(2)}, ${Math.round(measured.durationMs)} ms)`);
 

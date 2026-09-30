@@ -38,7 +38,7 @@ describe('testimony texts', () => {
     expect(rows.length).toBeGreaterThan(0);
     for (const r of rows) {
       expect(r.listening.level).not.toBe('unseen');
-      for (const d of [r.writing, r.speaking]) expect(d).toEqual({ level: 'unseen', confidence: 0, evidence: 0, unassisted: 0, assisted: 0 });
+      for (const d of [r.writing, r.speaking]) expect(d).toEqual({ level: 'unseen', confidence: 0, evidence: 0, exposures: 0, estimatedFamiliar: false, unassisted: 0, assisted: 0 });
     }
     for (const e of await h.store.encounters.where('userId', U)) {
       expect(e.modality).toBe('listening');

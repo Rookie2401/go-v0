@@ -1,36 +1,47 @@
 /**
  * Coverage, scripture readiness. Nothing here generates text: it only reads the store.
  *
- * A word token is
- *   known   — its form OR its credited lemma has (manual-mark-adjusted) reading level ≥ `recognized`
- *   partial — not known, but the form or lemma has been met (reading or listening)
- *   unseen  — otherwise
- * Bands (soft, lexical only): ≥0.95 comfortable · ≥0.88 productive-challenge · ≥0.75 difficult · else stretch.
- * expectedDifficulty (0..1) blends: 0.60 × lexical gap (scaled so 75 % known = 1.0), 0.15 × unknown phrases,
+ * A word token of the CURRENT version of a text (sentences with `retiredInVersion` are skipped, order is
+ * `Sentence.index`, never an id) is
+ *   known      — its form OR its credited lemma has (manual-mark-adjusted) reading level ≥ `recognized`: DEMONSTRATED
+ *   estimated  — not known, but its form or lemma is "likely familiar" (≥ 4 help-free exposures over ≥ 2 sessions,
+ *                no help lately). An ESTIMATE: reported separately, never merged into `knownLexicalCoverage`
+ *   partial    — met (read, heard or needed help) but neither known nor estimated
+ *   unseen     — otherwise
+ * known + estimated + partial + unseen = 1.
+ * Bands (soft, lexical only) use known + estimated and say so in `explanation`:
+ *   ≥0.95 comfortable · ≥0.88 productive-challenge · ≥0.75 difficult · else stretch.
+ * expectedDifficulty (0..1) blends: 0.60 × lexical gap (scaled so 75 % known+estimated = 1.0), 0.15 × unknown phrases,
  * 0.10 × unfamiliar-pattern ratio, 0.15 × sentence length (6 words = 0, 20+ words = 1). It is advisory only.
+ *
+ * Scripture readiness `gaps` = CONTENT words (not function words: ADP DET CONJ SCONJ AUX PART PRON CLF PUNCT; tokens the
+ * adapter could not analyse count as content) of the passage that are not demonstrated, grouped by lemma (else form), with
+ * status unseen / exposed (met, maybe estimated, never needed help) / needed-help. Preparatory texts must actually contain
+ * gap items in live sentences, never the target, never scripture or testimony, published only unless includeUnpublished.
  */
 import type {
-  ComfortBand, ItemKind, LearnerItemState, PatternOccurrence, PersonalizedCoverage, PhraseOccurrence, ScriptureReadiness,
-  Sentence, Token,
+  ComfortBand, ItemKind, LearnerItemState, PartOfSpeech, PatternOccurrence, PersonalizedCoverage, PhraseOccurrence,
+  ScriptureReadiness, Sentence, Token,
 } from '../core';
 import { ids } from '../core';
 import { AnalysisCache } from './analysis';
 import { RECOGNIZED_EVIDENCE_REF, bandFor, levelAtLeast } from './policy';
 import type { Ctx } from './state';
-import { effectiveReadingLevel } from './state';
+import { effectiveEstimate, effectiveReadingLevel } from './state';
 
-export type Cls = 'known' | 'partial' | 'unseen';
+export type Cls = 'known' | 'estimated' | 'partial' | 'unseen';
 
 export interface Classified {
   token: Token;
   cls: Cls;
+  pos?: PartOfSpeech;
   lemmaId?: string;
   formState?: LearnerItemState;
   lemmaState?: LearnerItemState;
   listeningKnown: boolean;
 }
 
-const seen = (s?: LearnerItemState) => !!s && (s.reading.level !== 'unseen' || s.listening.level !== 'unseen');
+const met = (s?: LearnerItemState) => !!s && (s.reading.level !== 'unseen' || s.listening.level !== 'unseen');
 
 export async function classifyTokens(ctx: Ctx, userId: string, tokens: Token[], cache: AnalysisCache): Promise<Classified[]> {
   await cache.prefetch(tokens.map((t) => t.id));
@@ -42,15 +53,18 @@ export async function classifyTokens(ctx: Ctx, userId: string, tokens: Token[], 
   const states = new Map<string, LearnerItemState>();
   list.forEach((id, i) => { const r = rows[i]; if (r) states.set(id, r); });
 
-  return tokens.map((token, i) => {
+  return Promise.all(tokens.map(async (token, i) => {
     const lemmaId = lemmaIds[i];
     const formState = states.get(token.formId);
     const lemmaState = lemmaId ? states.get(lemmaId) : undefined;
     const known = levelAtLeast(effectiveReadingLevel(formState), 'recognized') || levelAtLeast(effectiveReadingLevel(lemmaState), 'recognized');
-    const cls: Cls = known ? 'known' : seen(formState) || seen(lemmaState) ? 'partial' : 'unseen';
+    const cls: Cls = known ? 'known'
+      : effectiveEstimate(formState) || effectiveEstimate(lemmaState) ? 'estimated'
+        : met(formState) || met(lemmaState) ? 'partial' : 'unseen';
     const listeningKnown = levelAtLeast(formState?.listening.level ?? 'unseen', 'recognized') || levelAtLeast(lemmaState?.listening.level ?? 'unseen', 'recognized');
-    return { token, cls, lemmaId, formState, lemmaState, listeningKnown };
-  });
+    const pos = (await cache.resolve(token.id))?.pos;
+    return { token, cls, ...(pos ? { pos } : {}), lemmaId, formState, lemmaState, listeningKnown };
+  }));
 }
 
 export interface TextAnalysis {
@@ -62,12 +76,25 @@ export interface TextAnalysis {
 }
 
 const clamp01 = (n: number) => Math.min(1, Math.max(0, n));
+const pct = (x: number) => Math.round(x * 100);
+
+/** The live (not retired) sentences of a text in reading order. */
+export async function liveSentences(ctx: Ctx, textId: string): Promise<Sentence[]> {
+  return (await ctx.store.sentences.where('textId', textId)).filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
+}
+
+function explain(n: number, k: number, e: number, p: number, u: number): string {
+  if (n === 0) return 'This text has no words to count.';
+  return `Of ${n} words, ${pct(k)} % were shown understood (reported understood without help), ${pct(e)} % are likely familiar `
+    + `(an estimate from repeated help-free exposure), ${pct(p)} % were only met once or with help and ${pct(u)} % are new; `
+    + `seeing or hearing a word is never counted as understanding it, and the comfort band uses the first two together.`;
+}
 
 export async function analyzeText(ctx: Ctx, userId: string, textId: string, sentenceIds?: string[]): Promise<TextAnalysis> {
   const text = await ctx.store.texts.get(textId);
   if (!text) throw new Error(`unknown text: ${textId}`);
   const only = sentenceIds ? new Set(sentenceIds) : undefined;
-  const sentences = (await ctx.store.sentences.where('textId', textId)).filter((s) => !only || only.has(s.id)).sort((a, b) => a.index - b.index);
+  const sentences = (await liveSentences(ctx, textId)).filter((s) => !only || only.has(s.id));
   const order = new Map(sentences.map((s, i) => [s.id, i]));
   const tokens = (await ctx.store.tokens.where('textId', textId))
     .filter((t) => t.isWord && order.has(t.sentenceId))
@@ -94,8 +121,10 @@ export async function analyzeText(ctx: Ctx, userId: string, textId: string, sent
   const n = classified.length;
   const count = (c: Cls) => classified.filter((x) => x.cls === c).length;
   const known = n ? count('known') / n : 1;
+  const estimated = n ? count('estimated') / n : 0;
   const partial = n ? count('partial') / n : 0;
   const unseen = n ? count('unseen') / n : 0;
+  const effective = Math.min(1, known + estimated);
 
   const fresh = new Map<string, { surface: string; count: number }>();
   for (const c of classified) {
@@ -113,7 +142,7 @@ export async function analyzeText(ctx: Ctx, userId: string, textId: string, sent
   const avgSentenceLength = sentences.length ? n / sentences.length : 0;
 
   const expectedDifficulty = Math.round(clamp01(
-    0.6 * clamp01((1 - known) / 0.25)
+    0.6 * clamp01((1 - effective) / 0.25)
     + 0.15 * (1 - knownPhraseCoverage)
     + 0.1 * (distinctPatterns ? unfamiliarPatterns.length / distinctPatterns : 0)
     + 0.15 * clamp01((avgSentenceLength - 6) / 14),
@@ -121,24 +150,28 @@ export async function analyzeText(ctx: Ctx, userId: string, textId: string, sent
 
   const coverage: PersonalizedCoverage = {
     userId, textId, sentenceIds: sentences.map((s) => s.id), wordTokens: n,
-    knownLexicalCoverage: known, partialCoverage: partial, unseenCoverage: unseen, newItems,
+    knownLexicalCoverage: known, estimatedFamiliarCoverage: estimated, partialCoverage: partial, unseenCoverage: unseen,
+    explanation: explain(n, known, estimated, partial, unseen), newItems,
     knownPhraseCoverage, unfamiliarPatterns, avgSentenceLength,
     listeningCoverage: n ? classified.filter((c) => c.listeningKnown).length / n : 1,
-    band: bandFor(known), expectedDifficulty,
+    band: bandFor(effective), expectedDifficulty,
   };
   return { coverage, sentences, classified, phrases, patterns };
 }
 
 const BAND_FACTOR: Record<ComfortBand, number> = { comfortable: 1, 'productive-challenge': 1, difficult: 0.6, stretch: 0.3 };
+const FUNCTION_POS: ReadonlySet<PartOfSpeech> = new Set<PartOfSpeech>(['ADP', 'DET', 'CONJ', 'SCONJ', 'AUX', 'PART', 'PRON', 'CLF', 'PUNCT']);
+const MAX_GAPS_SEARCHED = 60;
 
 function parseLemmaSurface(lemmaId: string): string {
   const m = /^lemma:[^:]+:(.*?)(?::[A-Z]+)?$/.exec(lemmaId);
   return m ? m[1] : lemmaId;
 }
 
-const textOfToken = (tokenId: string) => tokenId.replace(/\/s\d+\/t\d+$/, '');
-
-export async function scriptureReadiness(ctx: Ctx, userId: string, textId: string, sentenceIds?: string[]): Promise<ScriptureReadiness> {
+export async function scriptureReadiness(
+  ctx: Ctx, userId: string, textId: string, sentenceIds?: string[], opts?: { includeUnpublished?: boolean },
+): Promise<ScriptureReadiness> {
+  const includeUnpublished = opts?.includeUnpublished ?? false;
   const a = await analyzeText(ctx, userId, textId, sentenceIds);
   const { classified } = a;
   const lvl = (s: LearnerItemState | undefined, dim: 'reading' | 'listening') =>
@@ -169,23 +202,35 @@ export async function scriptureReadiness(ctx: Ctx, userId: string, textId: strin
 
   const knownPhrases = [...new Set(a.phrases.filter((p) => p.known).map((p) => p.occ.phraseId))].sort();
 
-  // Prerequisites: lemma (or form when no lemma) items whose acquisition raises coverage most.
-  // gain = tokens in passage × (1 − progress), progress = min(1, reading evidence / RECOGNIZED_EVIDENCE_REF).
-  const groups = new Map<string, { itemKind: ItemKind; surface: string; count: number; evidence: number }>();
+  // Non-demonstrated tokens grouped by lemma (else form): the unit both prerequisites and gaps are built on.
+  interface Group {
+    itemKind: ItemKind; surface: string; normalized: string; count: number; evidence: number; estimated: boolean; content: boolean;
+    lemmaState?: LearnerItemState; formStates: Map<string, LearnerItemState>;
+  }
+  const groups = new Map<string, Group>();
   for (const c of classified) {
     if (c.cls === 'known') continue;
     const id = c.lemmaId ?? c.token.formId;
     const state = c.lemmaId ? c.lemmaState : c.formState;
-    const cur = groups.get(id);
-    if (cur) cur.count += 1;
-    else groups.set(id, {
-      itemKind: c.lemmaId ? 'lemma' : 'form', count: 1, evidence: state?.reading.evidence ?? 0,
-      surface: c.lemmaId ? parseLemmaSurface(c.lemmaId) : c.token.normalized,
-    });
+    let g = groups.get(id);
+    if (!g) {
+      g = {
+        itemKind: c.lemmaId ? 'lemma' : 'form', count: 0, evidence: state?.reading.evidence ?? 0, estimated: effectiveEstimate(state),
+        surface: c.lemmaId ? parseLemmaSurface(c.lemmaId) : c.token.surface, normalized: c.lemmaId ? parseLemmaSurface(c.lemmaId) : c.token.normalized, content: false, lemmaState: c.lemmaState, formStates: new Map(),
+      };
+      groups.set(id, g);
+    }
+    g.count += 1;
+    if (c.formState) g.formStates.set(c.token.formId, c.formState);
+    if (!c.pos || !FUNCTION_POS.has(c.pos)) g.content = true;
   }
+
+  // Prerequisites: items whose acquisition raises coverage most.
+  // gain = tokens in passage × (1 − progress), progress = min(1, demonstrated evidence / RECOGNIZED_EVIDENCE_REF), at least 0.6 for an estimate.
   const prereqs: ScriptureReadiness['prerequisites'] = [];
   for (const [itemId, g] of groups) {
-    prereqs.push({ itemId, itemKind: g.itemKind, surface: g.surface, gain: g.count * (1 - Math.min(1, g.evidence / RECOGNIZED_EVIDENCE_REF)) });
+    const progress = Math.max(g.estimated ? 0.6 : 0, Math.min(1, g.evidence / RECOGNIZED_EVIDENCE_REF));
+    prereqs.push({ itemId, itemKind: g.itemKind, surface: g.normalized, gain: g.count * (1 - progress) });
   }
   // Unknown phrases count at half weight: their tokens are already credited to their words.
   const phraseGroups = new Map<string, { tokens: number; evidence: number }>();
@@ -202,21 +247,53 @@ export async function scriptureReadiness(ctx: Ctx, userId: string, textId: strin
   prereqs.sort((x, y) => y.gain - x.gain || (x.itemId < y.itemId ? -1 : 1));
   const prerequisites = prereqs.slice(0, 25);
 
-  // Preparatory texts: existing non-scripture texts of this language containing prerequisites. Generated
-  // texts are allowed but flagged.
-  const covers = new Map<string, Set<string>>();
-  const add = (tid: string, itemId: string) => { let s = covers.get(tid); if (!s) covers.set(tid, (s = new Set())); s.add(itemId); };
-  for (const p of prerequisites) {
-    if (p.itemKind === 'lemma') for (const r of await ctx.store.analyses.where('lemmaId', p.itemId)) add(textOfToken(r.tokenId), p.itemId);
-    else if (p.itemKind === 'form') for (const t of await ctx.store.tokens.where('formId', p.itemId)) add(t.textId, p.itemId);
-    else for (const o of await ctx.store.phraseOccurrences.where('phraseId', p.itemId)) add(o.textId, p.itemId);
+  // Gaps: content words not demonstrated.
+  const gaps: ScriptureReadiness['gaps'] = [];
+  for (const [itemId, g] of groups) {
+    if (!g.content) continue;
+    const states = [...(g.lemmaState ? [g.lemmaState] : []), ...g.formStates.values()];
+    const needed = states.some((s) => s.reading.assisted > 0 || s.listening.assisted > 0);
+    const exposed = states.some(met);
+    gaps.push({ itemId, itemKind: g.itemKind, surface: g.surface, count: g.count, status: needed ? 'needed-help' : exposed ? 'exposed' : 'unseen' });
   }
-  covers.delete(textId);
+  gaps.sort((x, y) => y.count - x.count || (x.surface < y.surface ? -1 : x.surface > y.surface ? 1 : 0) || (x.itemId < y.itemId ? -1 : 1));
+
+  // Preparatory texts: texts that actually contain gap items in their live sentences.
   const target = await ctx.store.texts.get(textId);
-  const cands: Array<{ textId: string; covers: string[]; generated: boolean }> = [];
-  for (const [tid, set] of covers) {
+  const searched = gaps.slice(0, MAX_GAPS_SEARCHED);
+  const cache = new AnalysisCache(ctx.store);
+  const tokenHits = new Map<string, Array<{ token: Token; gapId: string }>>(); // textId → hits
+  const addHit = (token: Token | undefined, gapId: string) => {
+    if (!token || !token.isWord || token.textId === textId) return;
+    let l = tokenHits.get(token.textId);
+    if (!l) tokenHits.set(token.textId, (l = []));
+    l.push({ token, gapId });
+  };
+  for (const gap of searched) {
+    if (gap.itemKind === 'lemma') {
+      const rows = await ctx.store.analyses.where('lemmaId', gap.itemId);
+      const toks = await ctx.store.tokens.getMany([...new Set(rows.map((r) => r.tokenId))]);
+      await cache.prefetch(toks.filter((t): t is Token => !!t).map((t) => t.id));
+      for (const t of toks) if (t && (await cache.lemmaIdOf(t.id)) === gap.itemId) addHit(t, gap.itemId);
+    } else {
+      for (const t of await ctx.store.tokens.where('formId', gap.itemId)) addHit(t, gap.itemId);
+    }
+  }
+  const covers = new Map<string, Set<string>>();
+  const unpublishedCovers = new Map<string, Set<string>>();
+  for (const [tid, hits] of tokenHits) {
     const t = await ctx.store.texts.get(tid);
     if (!t || t.lang !== target?.lang || t.kind === 'scripture' || t.kind === 'testimony') continue;
+    const sentences = await ctx.store.sentences.getMany([...new Set(hits.map((h) => h.token.sentenceId))]);
+    const live = new Set(sentences.filter((s): s is Sentence => !!s && s.retiredInVersion === undefined).map((s) => s.id));
+    const set = new Set(hits.filter((h) => live.has(h.token.sentenceId)).map((h) => h.gapId));
+    if (set.size === 0) continue;
+    if (t.published || includeUnpublished) covers.set(tid, set);
+    else unpublishedCovers.set(tid, set);
+  }
+  const cands: Array<{ textId: string; covers: string[]; generated: boolean }> = [];
+  for (const [tid, set] of covers) {
+    const t = (await ctx.store.texts.get(tid))!;
     cands.push({ textId: tid, covers: [...set].sort(), generated: t.generated || t.kind === 'generated-prep' });
   }
   cands.sort((x, y) => y.covers.length - x.covers.length || (x.textId < y.textId ? -1 : 1));
@@ -226,6 +303,18 @@ export async function scriptureReadiness(ctx: Ctx, userId: string, textId: strin
     scored.push({ ...c, band, score: c.covers.length * BAND_FACTOR[band] });
   }
   scored.sort((x, y) => y.score - x.score || Number(x.generated) - Number(y.generated) || (x.textId < y.textId ? -1 : 1));
+  const preparatoryTexts = scored.slice(0, 10).map(({ textId: tid, covers: cv, band, generated }) => ({ textId: tid, covers: cv, band, generated }));
+
+  const coveredGaps = new Set<string>();
+  for (const set of covers.values()) for (const g of set) coveredGaps.add(g);
+  const uncovered = searched.filter((g) => !coveredGaps.has(g.itemId));
+  let limitation: string | undefined;
+  if (uncovered.length > 0) {
+    const names = uncovered.slice(0, 8).map((g) => g.surface).join(', ') + (uncovered.length > 8 ? `, and ${uncovered.length - 8} more` : '');
+    const awaiting = [...unpublishedCovers.keys()].filter((tid) => [...unpublishedCovers.get(tid)!].some((g) => uncovered.some((u) => u.itemId === g)));
+    limitation = `No ${includeUnpublished ? '' : 'published '}text in the library contains: ${names}.`
+      + (awaiting.length > 0 ? ` ${awaiting.length} unpublished text(s) do, and are waiting for review.` : '');
+  }
 
   return {
     textId, sentenceIds: a.coverage.sentenceIds, coverage: a.coverage,
@@ -233,7 +322,8 @@ export async function scriptureReadiness(ctx: Ctx, userId: string, textId: strin
     unfamiliarForms: [...unfam.values()].sort(byCount),
     knownPhrases,
     difficultPatterns: a.coverage.unfamiliarPatterns,
-    prerequisites,
-    preparatoryTexts: scored.slice(0, 10).map(({ textId: tid, covers: cv, band, generated }) => ({ textId: tid, covers: cv, band, generated })),
+    prerequisites, preparatoryTexts,
+    gaps, corpusCanPrepare: gaps.length === 0 || preparatoryTexts.length > 0,
+    ...(limitation ? { limitation } : {}),
   };
 }

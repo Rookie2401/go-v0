@@ -392,6 +392,10 @@ export interface Encounter {
   /** Evidence weight this encounter contributed. */
   weight: number;
   playbackSpeed?: number; // listening only
+  /** Reading/listening sitting this encounter belongs to (estimates need distinct sessions). */
+  session?: string;
+  /** Listening only: replays within the pass. */
+  replays?: number;
   /** Production encounters only: how the production came about. */
   productionKind?: ProductionKind;
 }

@@ -5,7 +5,7 @@
  * Uncertain: compound decomposition (rule-based, low confidence, only when every part is a lexicon noun);
  * case of ambiguous article forms is reported as a union (Case=Dat,Gen,Nom), not guessed.
  */
-import type { AnalysisCandidate, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport, RawToken } from '../core';
+import type { AnalysisCandidate, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport, RawToken, AdapterSupport } from '../core';
 import {
   E, Lexicon, hasPos, lexiconAnalyze, makeWordTokenizer, matchCase, matchPhraseRules, nfc, speechNormalizeGeneric,
   splitSentences, type PhraseRule,
@@ -210,11 +210,28 @@ function dativeArticle(lemma: string, gender: string, number: string): string | 
   return entry.forms.find((f) => (f.morph.Case ?? '').split(',').includes('Dat') && f.morph.Gender === gender && f.morph.Number === number)?.form;
 }
 
+const SUPPORT: AdapterSupport = {
+  tokenization: 'dependable', // Intl.Segmenter('de'); whole words (compounds stay one token)
+  sentenceSegmentation: 'limited', // terminators, ordinal dot (3. Mai) and a short abbreviation list
+  lemmatization: 'seed-only', // the lexicon covers the seed corpus only; other words are unanalysed unless a capitalised compound of lexicon nouns
+  morphology: 'seed-only', // case/gender for the listed articles, possessives, nouns; ambiguous forms report a union, not a guess
+  phraseDetection: 'seed-only',
+  productionChecks: 'limited',
+  limitations: [
+    'Lemmatization is seed-only: the lexicon covers the bundled corpus, so supplied texts will have unanalysed words.',
+    'Compound decomposition is a low-confidence rule that only fires when every part is a lexicon noun.',
+    'Separable-prefix detection covers anfangen (an); other separable verbs are not analysed.',
+    'Adjective endings and verb paradigms outside the lexicon are not analysed.',
+    'Production checks: noun capitalisation, dative article after a dative preposition, verb-second after a fronted adverb — only for lexicon words.',
+  ],
+};
+
 export const deAdapter: LanguageAdapter = {
   lang: LANG,
   name: 'German',
   script: 'Latn',
   version: VERSION,
+  support: SUPPORT,
 
   segmentSentences: (text) =>
     splitSentences(text, { terminators: '.!?…', ordinalDot: true, abbreviations: ['dr', 'nr', 'usw', 'bzw', 'ca', 'vgl', 'etc', 'str', 'prof', 'ggf', 'evtl'] }),

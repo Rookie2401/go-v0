@@ -472,3 +472,34 @@ export function matchCase(sample: string, replacement: string): string {
 
 /** Letters only, for search folding. */
 export const stripMarks = (s: string): string => s.normalize('NFD').replace(/\p{M}+/gu, '').normalize('NFC');
+
+// ───────────────────────────── analysis coverage ─────────────────────────────
+
+export interface AnalysisCoverage {
+  /** Word-like tokens (punctuation and numerals are not counted). */
+  words: number;
+  /** Word tokens with at least one candidate analysis. */
+  analysed: number;
+  /** analysed / words (1 when there are no words). */
+  coverage: number;
+  /** Distinct normalized forms of the word tokens with no analysis, in order of first appearance. */
+  unanalysed: string[];
+}
+
+/**
+ * How much of a tokenized text the adapter could analyse. A word the lexicon does not know has NO candidate
+ * (uncertainty is stored, never guessed), so `coverage` is an honest measure of how well the adapter knows a
+ * supplied text — and the lever for deciding what the course lexicon still needs.
+ */
+export function analysisCoverage(tokens: RawToken[], analyses: AnalyzedToken[]): AnalysisCoverage {
+  let words = 0;
+  let analysed = 0;
+  const unknown = new Set<string>();
+  tokens.forEach((t, i) => {
+    if (!t.isWord) return;
+    words++;
+    if (analyses[i]?.candidates.length) analysed++;
+    else unknown.add(t.normalized);
+  });
+  return { words, analysed, coverage: words ? analysed / words : 1, unanalysed: [...unknown] };
+}

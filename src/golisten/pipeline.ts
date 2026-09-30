@@ -11,11 +11,11 @@ import type { AudioJob, AudioSegment, LanguageCode, PronunciationEntry, Sentence
 import type { EnsureAudioOptions, EnsureAudioResult, TtsProvider } from '../core/contracts/golisten';
 import { computeCacheKey } from './cacheKey';
 import { runJob } from './jobs';
-import { writeManifest } from './manifest';
+import { liveSentences, writeManifest } from './manifest';
 import { writeSentenceAlignments } from './alignment';
 import { applicableEntries, applyPronunciation } from './pronunciation';
 import { GOLISTEN_VERSION, PIPELINE_NORMALIZER_SUFFIX, type Runtime } from './types';
-import { providerOf, resolveVoiceConfig } from './voices';
+import { gateVoice, planVoice } from './voices';
 
 // ───────────────────────── speech text ─────────────────────────
 
@@ -134,10 +134,16 @@ async function ensureJob(rt: Runtime, segment: AudioSegment, plan: SpeechPlan): 
 // ───────────────────────── voice selection ─────────────────────────
 
 async function voiceFor(rt: Runtime, lang: LanguageCode, voiceConfigId?: string): Promise<{ voice: VoiceConfig; provider: TtsProvider }> {
-  const voice = voiceConfigId ? await rt.store.voices.get(voiceConfigId) : await resolveVoiceConfig(rt, lang);
-  if (!voice) throw new Error(`GoListen: voice config ${voiceConfigId} not found`);
-  if (voice.lang !== lang) throw new Error(`GoListen: voice config ${voice.id} is ${voice.lang}, text is ${lang}`);
-  return { voice, provider: providerOf(rt, voice.providerId) };
+  if (!voiceConfigId) {
+    // Default voice. Throws AudioUnavailable (nothing written) when there is no usable provider.
+    const plan = await planVoice(rt, lang);
+    if (!plan.persisted) await rt.store.voices.put(plan.voice);
+    return { voice: plan.voice, provider: plan.provider };
+  }
+  const row = await rt.store.voices.get(voiceConfigId);
+  if (!row) throw new Error(`GoListen: voice config ${voiceConfigId} not found`);
+  if (row.lang !== lang) throw new Error(`GoListen: voice config ${row.id} is ${row.lang}, text is ${lang}`);
+  return gateVoice(rt, row);
 }
 
 // ───────────────────────── ensureAudio ─────────────────────────
@@ -145,9 +151,9 @@ async function voiceFor(rt: Runtime, lang: LanguageCode, voiceConfigId?: string)
 export async function ensureAudioForText(rt: Runtime, textId: string, opts: EnsureAudioOptions = {}): Promise<EnsureAudioResult> {
   const text: Text | undefined = await rt.store.texts.get(textId);
   if (!text) throw new Error(`GoListen: text ${textId} not found`);
-  const all: Sentence[] = (await rt.store.sentences.where('textId', textId)).sort((a, b) => a.index - b.index);
+  const { voice, provider } = await voiceFor(rt, text.lang, opts.voiceConfigId); // the availability gate: throws before anything is written
+  const all: Sentence[] = await liveSentences(rt.store, textId); // retired sentences never get audio
   const selected = opts.sentenceIds ? new Set(opts.sentenceIds) : undefined;
-  const { voice, provider } = await voiceFor(rt, text.lang, opts.voiceConfigId);
   const overrides = await rt.store.pronunciations.where('lang', text.lang);
 
   // Plan every sentence (cheap, no synthesis) so the manifest always describes the whole text.

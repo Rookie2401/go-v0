@@ -34,6 +34,19 @@ export interface GrammarHelpOpened extends Base { type: 'GrammarHelpOpened'; sen
 export interface SentenceExplanationRevealed extends Base { type: 'SentenceExplanationRevealed'; sentenceId: string }
 export interface EnglishRescueRevealed extends Base { type: 'EnglishRescueRevealed'; textId: string; sentenceIds: string[]; scope: 'sentence' | 'verse' | 'parallel' }
 export interface SentenceReread extends Base { type: 'SentenceReread'; sentenceId: string }
+/**
+ * The learner says how much he understood. This — not viewing, completing or playing — is what demonstrates
+ * comprehension. Only degree 'all' is item-level evidence, and only for listed sentences where no sentence
+ * explanation / English rescue was used; 'most' | 'some' | 'little' inform recommendations (reread) only.
+ */
+export interface ComprehensionReported extends Base {
+  type: 'ComprehensionReported';
+  textId: string;
+  sentenceIds: string[];
+  modality: 'reading' | 'listening';
+  scope: 'sentence' | 'text';
+  degree: 'all' | 'most' | 'some' | 'little';
+}
 export interface TextCompleted extends Base { type: 'TextCompleted'; textId: string }
 export interface PassageCompleted extends Base { type: 'PassageCompleted'; textId: string; sentenceIds: string[]; mode: Modality }
 export interface ItemMarked extends Base { type: 'ItemMarked'; itemId: string; itemKind: ItemKind; mark: 'known' | 'unknown' | 'clear' }
@@ -42,7 +55,14 @@ export interface FormSearched extends Base { type: 'FormSearched'; query: string
 export interface PhraseEncountered extends Base { type: 'PhraseEncountered'; sentenceId: string; phraseId: string; phraseOccurrenceId: string; modality: Modality; assistance: AssistanceLevel }
 
 // ── listening (GoListen emits) ──
-interface Listen extends Base { textId: string; segmentId: string; sentenceIds: string[]; speed: number; transcriptVisible: boolean }
+interface Listen extends Base {
+  textId: string; segmentId: string; sentenceIds: string[]; speed: number; transcriptVisible: boolean;
+  /** The asset actually played and whether it is reviewed real speech. Absent on legacy events (then GoLearn
+   *  resolves segment → asset). Non-speech (fixture) or unreviewed audio NEVER yields learner evidence. */
+  assetId?: string;
+  speech?: boolean;
+  voiceReviewed?: boolean;
+}
 export interface AudioPlayed extends Listen { type: 'AudioPlayed' }
 export interface AudioSegmentCompleted extends Listen { type: 'AudioSegmentCompleted'; replayCount: number; revealedTranscript: boolean; revealedTranslation: boolean }
 export interface AudioReplayed extends Listen { type: 'AudioReplayed'; count: number }
@@ -73,6 +93,8 @@ export interface ProductionRecorded extends Base {
   modality: 'writing' | 'speaking';
   revisionId?: string;
   sentenceText: string;
+  /** Hash of the sentence text: evidence for (item, sentenceHash) is recorded at most once, ever. */
+  sentenceHash?: string;
   suggestionId?: string;
 }
 /** Convenience alias emitted for each independently produced item. */
@@ -80,7 +102,7 @@ export interface IndependentProductionDetected extends Base { type: 'Independent
 
 export type DomainEvent =
   | TextViewed | SentenceViewed | TokenHelpOpened | PhraseHelpOpened | GrammarHelpOpened
-  | SentenceExplanationRevealed | EnglishRescueRevealed | SentenceReread | TextCompleted | PassageCompleted
+  | SentenceExplanationRevealed | EnglishRescueRevealed | SentenceReread | ComprehensionReported | TextCompleted | PassageCompleted
   | ItemMarked | FormSearched | PhraseEncountered
   | AudioPlayed | AudioSegmentCompleted | AudioReplayed | PhraseReplayed | AudioSeeked | PlaybackSpeedChanged
   | TranscriptRevealed | AudioAbandoned | ShadowingAttempt | UserRecordingCreated

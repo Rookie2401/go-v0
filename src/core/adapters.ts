@@ -89,11 +89,27 @@ export interface ErrorCandidate {
   affectsMeaning: boolean;
 }
 
+export type SupportLevel = 'dependable' | 'limited' | 'seed-only' | 'none';
+
+/** What this adapter can honestly do. Shown in Settings and in the readiness table; never overstated. */
+export interface AdapterSupport {
+  tokenization: SupportLevel;
+  sentenceSegmentation: SupportLevel;
+  /** 'seed-only' = a small hand lexicon covering the seed corpus; supplied texts will have unanalysed words. */
+  lemmatization: SupportLevel;
+  morphology: SupportLevel;
+  phraseDetection: SupportLevel;
+  productionChecks: SupportLevel;
+  /** Plain statements of limits ("Thai sentence breaks need a newline between sentences"). */
+  limitations: string[];
+}
+
 export interface LanguageAdapter {
   readonly lang: LanguageCode;
   readonly name: string;
   readonly script: Script;
   readonly version: string; // bump when analysis changes (analysis provenance)
+  readonly support: AdapterSupport;
 
   segmentSentences(text: string): Span[];
   tokenize(sentence: string): RawToken[];

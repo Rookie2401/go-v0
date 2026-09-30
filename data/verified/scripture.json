@@ -1,0 +1,53 @@
+{
+  "checkedAt": "2026-09-30",
+  "method": "byte-comparison",
+  "by": "scripts/verify-scripture.mjs",
+  "translations": [
+    {
+      "lang": "es",
+      "translationId": "spaRV1909",
+      "name": "Reina-Valera 1909",
+      "source": "eBible.org",
+      "base": "https://ebible.org/spaRV1909",
+      "rightsStatement": "Public Domain (as stated on the source copyright page)",
+      "verses": {
+        "1JN.1.8": {
+          "text": "Si dijéremos que no tenemos pecado, nos engañamos á nosotros mismos, y no hay verdad en nosotros.",
+          "url": "https://ebible.org/spaRV1909/1JN01.htm"
+        },
+        "1JN.1.9": {
+          "text": "Si confesamos nuestros pecados, él es fiel y justo para que nos perdone nuestros pecados, y nos limpie de toda maldad.",
+          "url": "https://ebible.org/spaRV1909/1JN01.htm"
+        },
+        "JHN.3.16": {
+          "text": "Porque de tal manera amó Dios al mundo, que ha dado á su Hijo unigénito, para que todo aquel que en él cree, no se pierda, mas tenga vida eterna.",
+          "url": "https://ebible.org/spaRV1909/JHN03.htm"
+        }
+      },
+      "mismatches": []
+    },
+    {
+      "lang": "de",
+      "translationId": "deu1912",
+      "name": "Lutherbibel 1912",
+      "source": "eBible.org",
+      "base": "https://ebible.org/deu1912",
+      "rightsStatement": "Public Domain (as stated on the source copyright page)",
+      "verses": {
+        "1JN.1.8": {
+          "text": "So wir sagen, wir haben keine Sünde, so verführen wir uns selbst, und die Wahrheit ist nicht in uns.",
+          "url": "https://ebible.org/deu1912/1JN01.htm"
+        },
+        "1JN.1.9": {
+          "text": "So wir aber unsre Sünden bekennen, so ist er treu und gerecht, daß er uns die Sünden vergibt und reinigt uns von aller Untugend.",
+          "url": "https://ebible.org/deu1912/1JN01.htm"
+        },
+        "JHN.3.16": {
+          "text": "Also hat Gott die Welt geliebt, daß er seinen eingeborenen Sohn gab, auf daß alle, die an ihn glauben, nicht verloren werden, sondern das ewige Leben haben.",
+          "url": "https://ebible.org/deu1912/JHN03.htm"
+        }
+      },
+      "mismatches": []
+    }
+  ]
+}

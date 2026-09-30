@@ -21,7 +21,11 @@ export const ids = {
   text: (lang: LanguageCode, slug: string) => `text:${lang}:${slug}`,
   section: (textId: string, index: number) => `${textId}/sec${index}`,
   paragraph: (textId: string, index: number) => `${textId}/p${index}`,
-  sentence: (textId: string, index: number) => `${textId}/s${index}`,
+  /** `key` is the stable sentence key (author id or content hash); fixtures use the index. */
+  sentence: (textId: string, key: number | string) => `${textId}/s${key}`,
+  /** Stable key for a sentence: hash of its exact text, with "~n" for the n-th repeat inside one text. */
+  sentenceKey: (exactText: string, repeat = 0) => hash(exactText).slice(0, 12) + (repeat ? `~${repeat}` : ''),
+  draft: (userId: string, lang: LanguageCode) => `draft:${userId}:${lang}`,
   token: (sentenceId: string, index: number) => `${sentenceId}/t${index}`,
   form: (lang: LanguageCode, normalized: string) => `form:${lang}:${normalized}`,
   lemma: (lang: LanguageCode, lemma: string, pos?: PartOfSpeech) => `lemma:${lang}:${lemma}${pos ? ':' + pos : ''}`,
@@ -45,17 +49,21 @@ export const ids = {
   })(),
 };
 
-/** Parse "text:es:story-01/s3/t7" into its parts. */
-export function parseTokenId(tokenId: string): { textId: string; sentenceId: string; sentenceIndex: number; tokenIndex: number } {
-  const m = /^(.*)\/s(\d+)\/t(\d+)$/.exec(tokenId);
+/**
+ * Parse "text:es:story-01/s3/t7" (fixture) or "text:es:story-01/s9f3c…/t7" (ingested) into its parts.
+ * `sentenceKey` is the stable key; `sentenceIndex` is only meaningful for index-keyed fixtures (NaN otherwise) —
+ * production code must read `Sentence.index` from the store, never derive order from an id.
+ */
+export function parseTokenId(tokenId: string): { textId: string; sentenceId: string; sentenceKey: string; sentenceIndex: number; tokenIndex: number } {
+  const m = /^(.*)\/s([^/]+)\/t(\d+)$/.exec(tokenId);
   if (!m) throw new Error(`bad token id: ${tokenId}`);
-  return { textId: m[1], sentenceId: `${m[1]}/s${m[2]}`, sentenceIndex: Number(m[2]), tokenIndex: Number(m[3]) };
+  return { textId: m[1], sentenceId: `${m[1]}/s${m[2]}`, sentenceKey: m[2], sentenceIndex: Number(m[2]), tokenIndex: Number(m[3]) };
 }
 
-export function parseSentenceId(sentenceId: string): { textId: string; sentenceIndex: number } {
-  const m = /^(.*)\/s(\d+)$/.exec(sentenceId);
+export function parseSentenceId(sentenceId: string): { textId: string; sentenceKey: string; sentenceIndex: number } {
+  const m = /^(.*)\/s([^/]+)$/.exec(sentenceId);
   if (!m) throw new Error(`bad sentence id: ${sentenceId}`);
-  return { textId: m[1], sentenceIndex: Number(m[2]) };
+  return { textId: m[1], sentenceKey: m[2], sentenceIndex: Number(m[2]) };
 }
 
 export function itemKindOf(itemId: string): 'form' | 'lemma' | 'phrase' | 'pattern' {

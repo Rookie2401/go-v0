@@ -57,9 +57,27 @@ export type RightsStatus =
 
 export type Authorship = 'human' | 'public-domain' | 'licensed' | 'generated' | 'learner';
 
+/** Editorial review of a text or a voice. Only 'reviewed' / 'approved' content reaches normal learner use. */
+export type ReviewStatus = 'unreviewed' | 'in-review' | 'reviewed' | 'approved' | 'rejected';
+export const REVIEW_OK: readonly ReviewStatus[] = ['reviewed', 'approved'] as const;
+
+/** How the exact wording of a scripture text was established. Absent ⇒ not verified ⇒ never published. */
+export interface SourceVerification {
+  /** e.g. "eBible.org spaRV1909" */
+  against: string;
+  url?: string;
+  checkedAt: string; // ISO date
+  method: 'byte-comparison' | 'human-proofread' | 'publisher-file';
+  by: string;
+}
+
 export interface ContentSource {
   id: string;
   title: string;
+  /** Learner-visible attribution line ("Reina-Valera 1909, public domain"). */
+  attribution?: string;
+  /** Honest statement of where the words came from and what has been checked. */
+  provenance?: string;
   author?: string;
   publisher?: string;
   url?: string;
@@ -96,15 +114,32 @@ export interface Text {
   importedAt: string;
   /** Static, editorial difficulty label. Personalised difficulty comes from GoLearn, not from here. */
   staticLevel?: 'A0' | 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'native';
-  /** Free tags: "mission", "daily-life", "prep:john-3", … Reading pathways are tag queries. */
+  /** BCP-47 locale of the text when known (es-HN, de-DE…). */
+  locale?: string;
+  /** Learner-facing topics / pathways ("mission", "daily-life"). Never editorial state. */
   tags: string[];
+  /** Editorial tags ("needs-native-review", "typed-from-memory"). Never shown as learner pathways. */
+  editorialTags: string[];
+  /** Preparation targets: scripture refs ("1JN.1.9") or text ids this text helps prepare. */
+  prepTargets: string[];
+  reviewStatus: ReviewStatus;
+  /**
+   * The publication gate, computed at import (see ingest `computePublished`): review ok AND rights established;
+   * scripture additionally needs translation identity + a SourceVerification. Unpublished texts are visible only
+   * in the explicitly marked preview mode and are never recommended in normal use.
+   */
+  published: boolean;
+  /** Why a text is not published (actionable, shown in preview mode and by the validator). */
+  unpublishedReasons: string[];
+  /** Import schema version the text was ingested with. */
+  schemaVersion: number;
   /** Generated texts must say so; the reader shows a badge. Never true for scripture. */
   generated: boolean;
   transformations: TransformationRecord[];
   /** Content version, bumped whenever any sentence text changes (audio cache keys include it). */
   contentVersion: number;
-  /** For scripture: canonical book code (e.g. "JHN") + chapter range. */
-  scripture?: { book: string; chapter: number };
+  /** For scripture: canonical book code (e.g. "JHN") + first chapter, translation identity and verification. */
+  scripture?: { book: string; chapter: number; translationId?: string; edition?: string; verification?: SourceVerification };
 }
 
 export interface TextSection {
@@ -121,14 +156,31 @@ export interface Paragraph {
   textId: string;
   sectionId: string;
   index: number; // within text
+  /** The exact original paragraph string as supplied (Unicode, punctuation and whitespace untouched). */
+  originalText?: string;
 }
 
 export interface Sentence {
-  id: string; // ids.sentenceId(textId, index)
+  /**
+   * ids.sentence(textId, key). `key` is STABLE across content versions: the author-supplied sentence id, else a
+   * hash of the exact text (+ "~n" for repeats). Editing a sentence therefore creates a new Sentence (new id) and
+   * retires the old one; encounters and audio that point at the old id stay valid history.
+   */
+  id: string;
+  key: string;
   textId: string;
   paragraphId: string;
   lang: LanguageCode;
-  index: number; // global order within the text
+  /** Order within the CURRENT content version (retired sentences keep their last index). */
+  index: number;
+  /** contentVersion in which this sentence first appeared / was retired (absent = live). */
+  versionAdded: number;
+  retiredInVersion?: number;
+  /** Dialogue speaker label, when the source declares one. Not part of `text`. */
+  speaker?: string;
+  /** Offsets of this sentence inside Paragraph.originalText: originalText.slice(paraStart, paraEnd) === text. */
+  paraStart?: number;
+  paraEnd?: number;
   /** Canonical display text. NEVER modified by processing. */
   text: string;
   /** Derived, adapter-normalized processing text (NFC, casefold rules etc.). */
@@ -186,6 +238,8 @@ export interface TokenAnalysis {
   morph: Record<string, string>;
   /** Language-specific extras the adapter wants to surface (e.g. separable prefix, compound parts, tone). */
   notes?: Record<string, string | string[]>;
+  /** Contextual meaning of this token here (distinct from the lemma's dictionary gloss). */
+  gloss?: string;
   confidence: number; // 0..1 — uncertainty is stored, never hidden
   provenance: AnalysisProvenance;
   analyzer: string; // "adapter-de@1", "human:cj"
@@ -270,12 +324,21 @@ export const LEVEL_ORDER: readonly LearnerLevel[] = [
   'used_with_assistance', 'used_independently', 'automatic',
 ] as const;
 
-/** Evidence in one modality. Confidence is a belief, not a grade. */
+/**
+ * Evidence in one modality. Confidence is a belief, not a grade.
+ * EXPOSURE IS NOT COMPREHENSION: seeing or hearing an item only increments `exposures` (level ≤ 'encountered').
+ * `evidence` accumulates DEMONSTRATED comprehension / production only (self-reported understanding without
+ * help, an explicit mark, production) — discounted by the assistance used.
+ */
 export interface DimensionState {
   level: LearnerLevel;
   confidence: number; // 0..1
-  /** Accumulated evidence weight (assistance-discounted). */
+  /** Demonstrated-evidence weight (assistance-discounted). Exposure contributes nothing here. */
   evidence: number;
+  /** Count of plain exposures (sentence on screen / real speech played) with no demonstration. */
+  exposures: number;
+  /** Cautious estimate from repeated unassisted exposure: "probably familiar". Never treated as known. */
+  estimatedFamiliar: boolean;
   unassisted: number; // count of unassisted encounters/productions
   assisted: number; // count of assisted ones
   lastEvidenceAt?: string;
@@ -315,6 +378,14 @@ export interface Encounter {
   surface: 'corpus' | 'scripture' | 'testimony' | 'listen';
   modality: Modality;
   at: string;
+  /**
+   * What this encounter is evidence OF:
+   *  exposure     – the item was on screen / played in real speech; nothing demonstrated
+   *  assisted     – the learner needed help with it (help level in `assistance`)
+   *  demonstrated – comprehension shown (self-report without help, explicit mark)
+   *  production   – the learner wrote / said it (see productionKind)
+   */
+  evidenceKind: EvidenceKind;
   /** Highest assistance used in this encounter (0 none … 5 english rescue). */
   assistance: AssistanceLevel;
   priorLevel: LearnerLevel;
@@ -324,6 +395,8 @@ export interface Encounter {
   /** Production encounters only: how the production came about. */
   productionKind?: ProductionKind;
 }
+
+export type EvidenceKind = 'exposure' | 'assisted' | 'demonstrated' | 'production';
 
 /** The layered support ladder. Higher = more help = weaker evidence of comprehension. */
 export type AssistanceLevel = 0 | 1 | 2 | 3 | 4 | 5;
@@ -352,6 +425,11 @@ export interface VoiceConfig {
   actualLocale: string;
   approved: boolean;
   qaNote?: string;
+  /** Human audition status of this voice. Unreviewed voices are preview-only and earn no listening evidence. */
+  reviewStatus: ReviewStatus;
+  providerVersion?: string;
+  /** False for fixtures / tones / any non-speech provider. */
+  isSpeech: boolean;
 }
 
 export interface AudioAsset {
@@ -366,6 +444,8 @@ export interface AudioAsset {
   bytes: number;
   checksum: string; // same as id for content-addressed assets
   createdAt: string;
+  /** False for fixture tones or any non-speech audio: such assets can never produce learner evidence. */
+  isSpeech: boolean;
   generation?: {
     providerId: string;
     engine?: string;
@@ -523,6 +603,22 @@ export interface TestimonyRevision {
 
 export type SuggestionKind = 'repair' | 'recombination' | 'expansion';
 
+/** A private, autosaved working draft. Separate from saved versions (TestimonyRevision); never evidence. */
+export interface TestimonyDraft {
+  id: string; // ids.draft(userId, lang)
+  userId: string;
+  lang: LanguageCode;
+  text: string;
+  updatedAt: string;
+  /** Monotonic save counter (a stale tab cannot overwrite a newer draft). */
+  seq: number;
+  /** The saved version this draft started from, if any. */
+  basedOnRevisionId?: string;
+}
+
+/** Small key/value rows: policy versions, migrations run, settings that must travel with a backup. */
+export interface MetaRow { id: string; value: string; updatedAt: string }
+
 export type ErrorCategory =
   | 'spelling' | 'morphology' | 'conjugation' | 'agreement' | 'case' | 'syntax' | 'word-order'
   | 'lexical-choice' | 'missing-function-word' | 'collocation' | 'ambiguity' | 'clarity' | 'register'
@@ -558,8 +654,30 @@ export interface GoTellSuggestion {
   newItems: Array<{ itemId: string; itemKind: ItemKind; gloss?: string }>;
   /** Set when the correction alters meaning or theological nuance — surfaced, never silent. */
   meaningChange?: string;
+  /**
+   * Honest scope. 'fixes-all-detected' = every issue the checker found in this sentence is fixed by `suggested`;
+   * 'partial' = other detected issues remain (listed in remainingIssues). Neither ever means "the sentence is
+   * now correct": `checkerCoverage` says what the checker can and cannot verify for this language.
+   */
+  scope: 'fixes-all-detected' | 'partial';
+  remainingIssues: string[];
+  checkerCoverage: string;
+  /** Where the suggested language actually came from in the learner's history. */
+  sources: SuggestionSource[];
+  /** Final text when the learner edited the suggestion before using it. */
+  finalText?: string;
   status: 'shown' | 'accepted' | 'rejected' | 'edited';
   createdAt: string;
+}
+
+export interface SuggestionSource {
+  itemId: string;
+  textId: string;
+  textTitle: string;
+  sentenceId: string;
+  /** The exact sentence where the learner met it. */
+  excerpt: string;
+  surface: 'corpus' | 'scripture' | 'testimony' | 'listen';
 }
 
 export type ProductionKind = 'independent' | 'self-repaired' | 'assisted' | 'copied';
@@ -581,6 +699,10 @@ export interface ItemKnowledge {
   exactFormSeen: boolean;
   /** Some related item (same lemma, other form) has been seen. */
   relatedSeen: boolean;
+  /** Counts by evidence kind (reading + listening), for explanations: "seen 7 times, needed help twice". */
+  exposureCount: number;
+  assistedCount: number;
+  demonstratedCount: number;
   productionEvidence: { independent: number; selfRepaired: number; assisted: number; copied: number };
 }
 
@@ -591,9 +713,15 @@ export interface PersonalizedCoverage {
   textId: string;
   sentenceIds: string[];
   wordTokens: number;
-  knownLexicalCoverage: number; // 0..1 of word tokens whose form or lemma is ≥ recognized
-  partialCoverage: number; // encountered but < recognized
+  /** DEMONSTRATED: fraction of word tokens whose form or lemma is ≥ recognized (shown comprehension). */
+  knownLexicalCoverage: number;
+  /** ESTIMATE: met repeatedly without help but never demonstrated. Reported separately, labelled as an estimate. */
+  estimatedFamiliarCoverage: number;
+  /** Met at least once (exposure or with help) but neither demonstrated nor estimated familiar. */
+  partialCoverage: number;
   unseenCoverage: number;
+  /** One plain sentence saying what the numbers are based on. */
+  explanation: string;
   newItems: Array<{ itemId: string; itemKind: ItemKind; surface: string; count: number }>;
   knownPhraseCoverage: number; // fraction of phrase occurrences known
   unfamiliarPatterns: string[]; // patternIds

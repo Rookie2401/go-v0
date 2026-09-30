@@ -5,7 +5,7 @@
 import type {
   AudioAlignment, AudioAsset, AudioJob, AudioManifest, AudioSegment, ContentSource, Corpus, Course,
   Encounter, EnglishRescue, GoTellSuggestion, GrammarPattern, Language, LearnerItemState, Lemma, Paragraph,
-  PatternOccurrence, Phrase, PhraseOccurrence, PronunciationEntry, Sentence, Testimony, TestimonyRevision, Text,
+  MetaRow, PatternOccurrence, Phrase, PhraseOccurrence, PronunciationEntry, Sentence, Testimony, TestimonyDraft, TestimonyRevision, Text,
   TextSection, Token, TokenAnalysis, User, UserRecording, VoiceConfig,
 } from './model';
 import type { DomainEvent } from './events';
@@ -54,6 +54,10 @@ export interface AppStore {
   testimonies: Table<Testimony>;
   revisions: Table<TestimonyRevision>;
   suggestions: Table<GoTellSuggestion>;
+  /** Autosaved testimony drafts, one per learner + language. */
+  drafts: Table<TestimonyDraft>;
+  /** Policy versions, migrations, flags. */
+  meta: Table<MetaRow>;
   /** Run `fn` atomically where the backend supports it (Dexie rw transaction); MemoryStore just runs it. */
   transaction<R>(tables: (keyof AppStore)[], fn: () => Promise<R>): Promise<R>;
   /** Binary asset storage (audio bytes), content-addressed. Not a database blob column in spirit: a separate object store. */
@@ -76,10 +80,10 @@ export const INDEXES: Record<keyof Omit<AppStore, 'transaction' | 'assets'>, str
   courses: ['lang'],
   sources: ['rights'],
   corpora: ['lang', 'kind'],
-  texts: ['corpusId', 'lang', 'kind', 'sourceId'],
+  texts: ['corpusId', 'lang', 'kind', 'sourceId', 'reviewStatus'],
   sections: ['textId'],
   paragraphs: ['textId', 'sectionId'],
-  sentences: ['textId', 'paragraphId', 'lang', 'textHash'],
+  sentences: ['textId', 'paragraphId', 'lang', 'textHash', 'key'],
   tokens: ['sentenceId', 'textId', 'formId', 'normalized'],
   lemmas: ['lang', 'lemma'],
   analyses: ['tokenId', 'lemmaId', 'provenance'],
@@ -102,4 +106,6 @@ export const INDEXES: Record<keyof Omit<AppStore, 'transaction' | 'assets'>, str
   testimonies: ['userId', 'lang'],
   revisions: ['testimonyId', 'userId'],
   suggestions: ['testimonyId', 'userId', 'draftHash', 'status'],
+  drafts: ['userId', 'lang'],
+  meta: [],
 };

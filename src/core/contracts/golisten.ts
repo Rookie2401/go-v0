@@ -52,9 +52,42 @@ export interface SynthesisResult {
   actualLocale: string;
 }
 
+export interface ProviderAvailability {
+  available: boolean;
+  reason?: 'no-provider' | 'missing-credentials' | 'provider-error' | 'offline' | 'development-fixture';
+  detail?: string;
+}
+
+/** What the learner-facing UI shows for a text's audio. Text learning is always possible without audio. */
+export interface AudioStatus {
+  textId: string;
+  state: 'unavailable' | 'not-generated' | 'generating' | 'ready' | 'stale' | 'failed' | 'preview-only';
+  /** Human-readable reason for every non-ready state. */
+  reason?: string;
+  providerId?: string;
+  providerVersion?: string;
+  voiceId?: string;
+  requestedLocale?: string;
+  deliveredLocale?: string;
+  voiceReview?: 'unreviewed' | 'in-review' | 'reviewed' | 'approved' | 'rejected';
+  isSpeech: boolean;
+  /** Content version the audio was made for vs the text's current version (stale when they differ). */
+  audioContentVersion?: number;
+  textContentVersion: number;
+  readySegments: number;
+  totalSegments: number;
+  failedSegments: number;
+  /** True only for reviewed real speech: the sole case in which playback may earn listening evidence. */
+  evidenceEligible: boolean;
+}
+
 export interface TtsProvider {
   readonly id: string;
   readonly version: string;
+  /** False for fixtures and any non-speech generator. */
+  readonly isSpeech: boolean;
+  /** Can this provider synthesize right now (credentials present, reachable)? Never throws. */
+  availability(): Promise<ProviderAvailability>;
   capabilities(): ProviderCapabilities;
   listVoices(lang: LanguageCode): Promise<Voice[]>;
   synthesize(req: SynthesisRequest): Promise<SynthesisResult>;
@@ -92,6 +125,12 @@ export interface GoListen {
   getAsset(assetId: string): Promise<AudioAsset | undefined>;
   assetUrl(assetId: string): Promise<string | undefined>;
   alignments(segmentId: string): Promise<AudioAlignment[]>;
+  /** Whether any real-speech provider is configured and usable. */
+  availability(): Promise<ProviderAvailability>;
+  /** Honest, learner-facing state of a text's audio (never throws; 'unavailable' when no real provider). */
+  audioStatus(textId: string, opts?: { preview?: boolean }): Promise<AudioStatus>;
+  /** Record a human audition decision for a voice. Only 'reviewed'/'approved' voices are evidence-eligible. */
+  setVoiceReview(voiceConfigId: string, status: 'unreviewed' | 'in-review' | 'reviewed' | 'approved' | 'rejected', note?: string): Promise<VoiceConfig>;
   /** Diagnostics for the admin panel. */
   diagnostics(textId?: string): Promise<GoListenDiagnostics>;
   jobs(status?: AudioJob['status']): Promise<AudioJob[]>;

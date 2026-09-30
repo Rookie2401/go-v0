@@ -52,10 +52,49 @@ export interface ScriptureReadiness {
   prerequisites: Array<{ itemId: string; itemKind: ItemKind; surface: string; gain: number }>;
   /** Existing corpus texts (never generated here) that contain the most prerequisites, best first. */
   preparatoryTexts: Array<{ textId: string; covers: string[]; band: ComfortBand; generated: boolean }>;
+  /** Meaningful gaps: content items (not function words) in the passage the learner has not demonstrated. */
+  gaps: Array<{ itemId: string; itemKind: ItemKind; surface: string; count: number; status: 'unseen' | 'exposed' | 'needed-help' }>;
+  /** False when no available (published, or preview if allowed) text addresses the gaps. */
+  corpusCanPrepare: boolean;
+  /** Plain explanation when the corpus cannot prepare the learner (which gaps no text covers). */
+  limitation?: string;
+}
+
+/** Why GoLearn believes what it believes about one item — every number shown to a learner must be explainable. */
+export interface ItemExplanation {
+  itemId: string;
+  summary: string; // "Seen 7 times in 2 texts; needed help twice; understood without help once."
+  exposures: number;
+  assisted: number;
+  demonstrated: number;
+  productions: { independent: number; selfRepaired: number; assisted: number; copied: number };
+  excludedEvents: number; // e.g. fixture audio plays that were ignored
+  texts: Array<{ textId: string; title: string; count: number }>;
+}
+
+/** Reading COMPLETION (what was on screen / finished) — deliberately separate from vocabulary coverage. */
+export interface ReadingProgress {
+  textId: string;
+  sentencesTotal: number;
+  sentencesViewed: number;
+  completedAt?: string;
+  /** Last self-report for the text, if any. */
+  reportedComprehension?: 'all' | 'most' | 'some' | 'little';
+  listenedSentences: number; // real, reviewed speech only
+}
+
+/** Result of scanning the log for events that must not count (fixture / non-speech / unreviewed audio). */
+export interface EvidenceAudit {
+  userId: string;
+  policyVersion: string;
+  totalEvents: number;
+  excluded: Array<{ eventId: string; type: string; reason: 'non-speech-audio' | 'unreviewed-voice' | 'unknown-asset' }>;
+  rebuilt: boolean;
 }
 
 export type RecommendationReason =
-  | 'easy-story' | 'reinforces-weak-items' | 'listen-to-read-text' | 'prepares-scripture' | 'revisit-scripture' | 'rehearse-testimony';
+  | 'first-text' | 'next-input' | 'reread' | 'easy-story' | 'reinforces-weak-items' | 'listen-to-read-text'
+  | 'prepares-scripture' | 'revisit-scripture' | 'rehearse-testimony';
 
 export interface Recommendation {
   reason: RecommendationReason;
@@ -91,8 +130,22 @@ export interface GoLearn {
   tokenSupport(userId: string, tokenId: string, level: AssistanceLevel): Promise<TokenSupport>;
 
   coverage(userId: string, textId: string, sentenceIds?: string[]): Promise<PersonalizedCoverage>;
-  scriptureReadiness(userId: string, textId: string, sentenceIds?: string[]): Promise<ScriptureReadiness>;
-  recommend(userId: string, opts?: { limit?: number; targetTextId?: string; interests?: string[] }): Promise<Recommendation[]>;
+  scriptureReadiness(userId: string, textId: string, sentenceIds?: string[], opts?: { includeUnpublished?: boolean }): Promise<ScriptureReadiness>;
+  /**
+   * Responds to actual state: a first text for a new learner; after a completion, next input / reread / (real)
+   * listening; input stays first even after testimony work. Unpublished texts only with includeUnpublished.
+   * Never recommends listening when no reviewed real-speech audio exists for the text.
+   */
+  recommend(userId: string, opts?: { limit?: number; targetTextId?: string; interests?: string[]; includeUnpublished?: boolean; lang?: LanguageCode }): Promise<Recommendation[]>;
+
+  /** Version of the evidence rules. Stored per user in `meta`; a mismatch triggers a rebuild from the log. */
+  readonly policyVersion: string;
+  /** Rebuild this user's derived state if it was computed under another policy version. Returns true if rebuilt. */
+  ensureCurrent(userId: string): Promise<boolean>;
+  /** Find events that must not count (fixture / non-speech / unreviewed audio); optionally rebuild without them. */
+  auditEvidence(userId: string, opts?: { rebuild?: boolean }): Promise<EvidenceAudit>;
+  explainItem(userId: string, itemId: string): Promise<ItemExplanation>;
+  readingProgress(userId: string, textId: string): Promise<ReadingProgress>;
 }
 
 /** Evidence weights — the single place where assistance discounts and modality rules live. */

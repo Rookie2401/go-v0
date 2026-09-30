@@ -42,6 +42,11 @@ export interface FixtureTextSpec {
   tags?: string[];
   generated?: boolean;
   scripture?: { book: string; chapter: number };
+  /** Default: an approved, published fixture. Set published:false to test the publication gate. */
+  reviewStatus?: Text['reviewStatus'];
+  published?: boolean;
+  editorialTags?: string[];
+  prepTargets?: string[];
 }
 
 export const FIXTURE_ANALYZER = 'fixture@1';
@@ -63,6 +68,8 @@ export async function buildFixtureText(store: AppStore, spec: FixtureTextSpec): 
   const text: Text = {
     id: textId, corpusId, lang, kind, title: spec.title ?? spec.slug, sourceId, version: spec.version, importedAt: now,
     tags: spec.tags ?? [], generated: spec.generated ?? false, transformations: [], contentVersion: 1, scripture: spec.scripture,
+    editorialTags: spec.editorialTags ?? [], prepTargets: spec.prepTargets ?? [], reviewStatus: spec.reviewStatus ?? 'approved',
+    published: spec.published ?? true, unpublishedReasons: spec.published === false ? ['fixture: marked unpublished'] : [], schemaVersion: 2,
   };
   await store.texts.put(text);
   const sectionId = ids.section(textId, 0);
@@ -93,7 +100,7 @@ export async function buildFixtureText(store: AppStore, spec: FixtureTextSpec): 
       });
     }
     const normalizedText = lang === 'th' || lang === 'hi' ? text.normalize('NFC') : text.normalize('NFC').toLowerCase();
-    await store.sentences.put({ id: sentenceId, textId, paragraphId, lang, index: si, text, normalizedText, verseRefs: fs.verseRefs, textHash: hash(text) });
+    await store.sentences.put({ id: sentenceId, key: String(si), textId, paragraphId, lang, index: si, versionAdded: 1, text, normalizedText, verseRefs: fs.verseRefs, textHash: hash(text) });
     if (fs.english) await store.rescues.put({ id: ids.rescue(sentenceId), sentenceId, textId, english: fs.english, provenance: 'human' });
 
     for (let ti = 0; ti < fs.tokens.length; ti++) {

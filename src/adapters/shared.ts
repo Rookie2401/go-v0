@@ -11,7 +11,10 @@ import type {
   SpeechNormalizationResult, TransformationRecord,
 } from '../core';
 
-/** Speech-normalization records carry no wall-clock time so the result is deterministic. */
+/**
+ * Speech-normalization records carry no wall-clock time so the result is deterministic.
+ * TODO(integration): GoListen may restamp `at` when it persists these into AudioSegment.speechNormalization.
+ */
 export const DETERMINISTIC_AT = '1970-01-01T00:00:00.000Z';
 
 export const nfc = (s: string): string => s.normalize('NFC');
@@ -297,18 +300,8 @@ export function lexiconAnalyze(tokens: RawToken[], lex: Lexicon, analyzer: strin
   });
 }
 
-export const firstPos = (a: AnalyzedToken | undefined): PartOfSpeech | undefined => a?.candidates[0]?.pos;
 export const hasPos = (a: AnalyzedToken | undefined, ...pos: PartOfSpeech[]): boolean => !!a && a.candidates.some((c) => c.pos !== undefined && pos.includes(c.pos));
 export const hasLemma = (a: AnalyzedToken | undefined, ...lemmas: string[]): boolean => !!a && a.candidates.some((c) => c.lemma !== undefined && lemmas.includes(c.lemma));
-/** Feature value set of the best candidate, e.g. featureOf(a,'Gender') → ["Masc"]. */
-export function featureOf(a: AnalyzedToken | undefined, key: string): string[] {
-  const v = a?.candidates[0]?.morph[key];
-  return v ? v.split(',') : [];
-}
-export function withConfidence(c: AnalysisCandidate, confidence: number, extra?: Record<string, string | string[]>): AnalysisCandidate {
-  return { ...c, confidence, notes: { ...(c.notes ?? {}), ...(extra ?? {}) } };
-}
-
 // ───────────────────────────── phrase / pattern rules ─────────────────────────────
 
 export type PhraseItem =
@@ -476,9 +469,6 @@ export function matchCase(sample: string, replacement: string): string {
   }
   return replacement;
 }
-
-/** True when tokens i and i+1 sit next to each other (no punctuation token in between is possible since tokens are consecutive). */
-export const adjacentWords = (tokens: RawToken[], i: number): boolean => !!tokens[i]?.isWord && !!tokens[i + 1]?.isWord;
 
 /** Letters only, for search folding. */
 export const stripMarks = (s: string): string => s.normalize('NFD').replace(/\p{M}+/gu, '').normalize('NFC');

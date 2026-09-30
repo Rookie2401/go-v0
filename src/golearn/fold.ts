@@ -238,7 +238,7 @@ export class Folder {
     const { changed } = await addEncounter(ctx, {
       userId: e.userId, lang: e.lang, itemId: e.itemId, itemKind: e.itemKind, sentenceId,
       textId: e.revisionId ?? 'testimony:adhoc', surface: 'testimony', modality: e.modality, session: e.session, at: e.at,
-      assistance: PRODUCTION_ASSISTANCE[e.kind], weight: ctx.policy.productionWeight(e.kind),
+      assistance: PRODUCTION_ASSISTANCE[e.kind], weight: ctx.policy.productionWeight(e.kind), productionKind: e.kind,
     });
     if (changed) await recomputeItem(ctx, e.userId, e.itemId, { lang: e.lang, itemKind: e.itemKind });
   }

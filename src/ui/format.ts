@@ -35,3 +35,12 @@ export function formatDate(iso: string): string {
   const d = new Date(iso);
   return Number.isNaN(d.getTime()) ? iso : d.toLocaleString(undefined, { dateStyle: 'medium', timeStyle: 'short' });
 }
+
+/**
+ * Testimony revisions are private Texts (kind "testimony", corpus kind "testimony"). They must never be
+ * listed, recommended, badged or opened through the public Read / Scripture surfaces.
+ * TODO(integration): GoTell exports `isTestimonyText(text)`; this local check is equivalent.
+ */
+export function isTestimonyText(text: Pick<Text, 'kind' | 'corpusId'>, corpora?: Map<string, { kind: string }>): boolean {
+  return text.kind === 'testimony' || corpora?.get(text.corpusId)?.kind === 'testimony';
+}

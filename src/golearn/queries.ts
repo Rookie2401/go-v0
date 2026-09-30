@@ -58,7 +58,7 @@ async function queryOne(
     const encs = (await ctx.store.encounters.where('itemId', itemId))
       .filter((e) => e.userId === userId && (e.modality === 'writing' || e.modality === 'speaking'));
     for (const e of encs) {
-      const k = productionKindOf(e.assistance);
+      const k = e.productionKind ?? productionKindOf(e.assistance);
       if (k === 'independent') productionEvidence.independent++;
       else if (k === 'self-repaired') productionEvidence.selfRepaired++;
       else if (k === 'assisted') productionEvidence.assisted++;

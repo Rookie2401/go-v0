@@ -203,7 +203,7 @@ export async function scriptureReadiness(ctx: Ctx, userId: string, textId: strin
   const prerequisites = prereqs.slice(0, 25);
 
   // Preparatory texts: existing non-scripture texts of this language containing prerequisites. Generated
-  // texts are allowed but flagged (extra `generated` field — TODO(contract): add it to preparatoryTexts).
+  // texts are allowed but flagged.
   const covers = new Map<string, Set<string>>();
   const add = (tid: string, itemId: string) => { let s = covers.get(tid); if (!s) covers.set(tid, (s = new Set())); s.add(itemId); };
   for (const p of prerequisites) {

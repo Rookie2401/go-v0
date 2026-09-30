@@ -1,144 +1,110 @@
 /**
- * Rehearsal for a saved testimony version: per-sentence audio, whole-testimony playback, a shadowing
- * counter, and microphone recording (when MediaRecorder exists). No pronunciation scoring — you record,
- * you listen back, you decide.
+ * Rehearsal for a saved testimony version.
  *
- * TODO(integration): recordings are stored through `store.assets` + a `recordings` row (the GoListen
- * contract has no recording method). GoTell's sentence audio contextId is assumed to be
- * `<revisionId>#<sentenceIndex>`; ensureSentenceAudio is idempotent by cache key, so a different
- * convention only costs one extra segment.
+ * Each accepted revision is a private Text (`revision.textId`, kind "testimony"), so its audio is an
+ * ordinary manifest: the same `Player` used for every other text gives whole-testimony playback,
+ * per-sentence replay (R), loop, speed and transcript modes. Shadowing attempts and recordings are
+ * listening events that carry the real `segmentId` / `sentenceIds` from that manifest (through
+ * `listeningEmitter`), so GoLearn can fold listening evidence for the learner's own sentences.
+ * No pronunciation scoring: you record, you listen back, you decide.
+ *
+ * TODO(integration): recordings are stored via `store.assets` + a `recordings` row (the GoListen contract
+ * has no recording method). Sentence ids are matched to revision sentences through the manifest's
+ * `sentenceIds` (ids.sentence(textId, index)), falling back to position.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type {
-  AudioPlayed, AudioSegment, AudioSegmentCompleted, ShadowingAttempt, TestimonyRevision, UserRecording, UserRecordingCreated,
-} from '../../core';
+import type { AudioSegment, EventBus, LanguageCode, TestimonyRevision, UserRecording } from '../../core';
 import { ids } from '../../core';
+import { listeningEmitter } from '../../golisten';
+import type { ListeningEmitter } from '../../golisten';
 import { useApp } from '../context';
-import { makeEmitter, uniqueKey } from '../events';
 import { usePref } from '../prefs';
-import { createAudio } from '../player/audio';
+import { Player } from '../player/Player';
+import type { PlayerControls } from '../player/Player';
 import { recordingSupported, startRecording } from './recorder';
 import type { ActiveRecording } from './recorder';
 
-const contextIdFor = (revisionId: string, index: number) => `${revisionId}#${index}`;
+// One emitter per (bus, user, session, text): its pass/attempt counters must survive remounts within a
+// session, or a repeated attempt would be deduped away.
+const emitters = new WeakMap<EventBus, Map<string, ListeningEmitter>>();
+function emitterFor(bus: EventBus, ctx: { userId: string; lang: LanguageCode; session: string; textId: string }): ListeningEmitter {
+  let byKey = emitters.get(bus);
+  if (!byKey) { byKey = new Map(); emitters.set(bus, byKey); }
+  const key = `${ctx.userId}|${ctx.session}|${ctx.textId}`;
+  let e = byKey.get(key);
+  if (!e) { e = listeningEmitter(bus, { ...ctx, surface: 'testimony' }); byKey.set(key, e); }
+  return e;
+}
 
 export function RevisionAudio({ revision }: { revision: TestimonyRevision }) {
   const { store, bus, golisten, userId, lang, session } = useApp();
-  const emitter = useMemo(() => makeEmitter({ bus, userId, lang, session }), [bus, userId, lang, session]);
+  const textId = revision.textId;
   const [speed] = usePref('speed');
+  const controls = useRef<PlayerControls | null>(null);
+  const activeRecording = useRef<ActiveRecording | null>(null);
+  const supported = recordingSupported();
 
   const [message, setMessage] = useState<string | null>(null);
-  const [playingIndex, setPlayingIndex] = useState<number | null>(null);
-  const [wholePlaying, setWholePlaying] = useState(false);
-  const [fixture, setFixture] = useState(false);
   const [shadow, setShadow] = useState<Record<number, number>>({});
   const [recordings, setRecordings] = useState<Record<number, Array<{ rec: UserRecording; url?: string }>>>({});
   const [recordingIndex, setRecordingIndex] = useState<number | null>(null);
 
-  const segmentsRef = useRef(new Map<number, AudioSegment>());
-  const audioRef = useRef<HTMLAudioElement | null>(null);
-  const resolveRef = useRef<((completed: boolean) => void) | null>(null);
-  const wholeToken = useRef(0);
-  const activeRecording = useRef<ActiveRecording | null>(null);
-  const supported = recordingSupported();
+  const emitter = useMemo(() => (textId ? emitterFor(bus, { userId, lang, session, textId }) : null), [bus, userId, lang, session, textId]);
+  const sentenceIdFor = useCallback((index: number) => (textId ? ids.sentence(textId, index) : undefined), [textId]);
 
-  // Existing shadowing counts (from the event log) and recordings for this version.
+  /** The manifest segment for one revision sentence (fresh lookup: the manifest may have just been prepared). */
+  const segmentFor = useCallback(async (index: number): Promise<AudioSegment | undefined> => {
+    if (!textId) return undefined;
+    const manifest = await golisten.getManifest(textId);
+    if (!manifest) return undefined;
+    const segs = (await Promise.all(manifest.segmentIds.map((id) => golisten.getSegment(id)))).filter((s): s is AudioSegment => !!s);
+    const wanted = sentenceIdFor(index)!;
+    return segs.find((s) => s.sentenceIds.includes(wanted)) ?? segs[index];
+  }, [golisten, textId, sentenceIdFor]);
+
+  // Shadowing counts (from the event log, by segment) and existing recordings for this version.
   useEffect(() => {
+    if (!textId) return;
     let live = true;
     void (async () => {
       const events = await bus.history({ userId, types: ['ShadowingAttempt'] });
       const counts: Record<number, number> = {};
-      revision.sentences.forEach((s) => {
-        const ctx = contextIdFor(revision.id, s.index);
-        counts[s.index] = events.filter((e) => e.type === 'ShadowingAttempt' && e.textId === ctx).length;
-      });
+      for (const s of revision.sentences) {
+        const seg = await segmentFor(s.index);
+        counts[s.index] = seg ? events.filter((e) => e.type === 'ShadowingAttempt' && e.segmentId === seg.id).length : 0;
+      }
       const recs = (await store.recordings.where('userId', userId)).filter((r) => r.target.testimonyRevisionId === revision.id);
       const grouped: Record<number, Array<{ rec: UserRecording; url?: string }>> = {};
       for (const rec of recs.sort((a, b) => a.attempt - b.attempt)) {
-        const idx = rec.target.testimonySentenceIndex ?? 0;
-        (grouped[idx] ??= []).push({ rec, url: await store.assets.url(rec.assetId) });
+        (grouped[rec.target.testimonySentenceIndex ?? 0] ??= []).push({ rec, url: await store.assets.url(rec.assetId) });
       }
       if (live) { setShadow(counts); setRecordings(grouped); }
     })();
     return () => { live = false; };
-  }, [bus, store, userId, revision]);
+  }, [bus, store, userId, revision, textId, segmentFor]);
 
-  const stopAudio = useCallback(() => {
-    wholeToken.current += 1;
-    audioRef.current?.pause();
-    audioRef.current = null;
-    resolveRef.current?.(false);
-    resolveRef.current = null;
-    setPlayingIndex(null);
-    setWholePlaying(false);
-  }, []);
-  useEffect(() => stopAudio, [stopAudio]);
   useEffect(() => () => { activeRecording.current?.stop().catch(() => undefined); }, []);
 
-  const ensureSegment = useCallback(async (index: number): Promise<AudioSegment | undefined> => {
-    const cached = segmentsRef.current.get(index);
-    if (cached?.assetId) return cached;
-    const sentence = revision.sentences.find((s) => s.index === index);
-    if (!sentence) return undefined;
-    const seg = await golisten.ensureSentenceAudio({ lang, text: sentence.text, ownerId: userId, contextId: contextIdFor(revision.id, index), runNow: true });
-    segmentsRef.current.set(index, seg);
-    if (seg.assetId) {
-      const asset = await golisten.getAsset(seg.assetId);
-      if (asset?.generation?.providerId === 'fixture') setFixture(true);
-    }
-    return seg;
-  }, [golisten, lang, userId, revision]);
+  const playSentence = useCallback((index: number) => {
+    const sentenceId = sentenceIdFor(index);
+    if (!sentenceId) return;
+    controls.current?.seekSentence(sentenceId);
+    controls.current?.play();
+  }, [sentenceIdFor]);
 
-  const listen = (seg: AudioSegment) => ({
-    textId: seg.textId, segmentId: seg.id, sentenceIds: seg.sentenceIds, speed, transcriptVisible: true,
-  });
+  const playAll = useCallback(() => {
+    const first = revision.sentences[0];
+    if (first) playSentence(first.index);
+  }, [revision, playSentence]);
 
-  /** Plays one sentence; resolves true when it played to the end. */
-  const playIndex = useCallback(async (index: number): Promise<boolean> => {
-    audioRef.current?.pause();
-    resolveRef.current?.(false);
-    setMessage(null);
-    const seg = await ensureSegment(index);
-    if (!seg?.assetId) { setMessage('Audio for this sentence is not ready yet.'); return false; }
-    const url = await golisten.assetUrl(seg.assetId);
-    if (!url) { setMessage('Audio for this sentence is not available.'); return false; }
-    const audio = createAudio(url, speed);
-    audioRef.current = audio;
-    setPlayingIndex(index);
-    void emitter.emit<AudioPlayed>('testimony', { type: 'AudioPlayed', ...listen(seg), dedupeKey: uniqueKey('audioplayed') });
-    return new Promise<boolean>((resolve) => {
-      resolveRef.current = resolve;
-      audio.onended = () => {
-        void emitter.emit<AudioSegmentCompleted>('testimony', { type: 'AudioSegmentCompleted', ...listen(seg), replayCount: 0, revealedTranscript: true, revealedTranslation: false, dedupeKey: uniqueKey('audiocompleted') });
-        resolveRef.current = null;
-        setPlayingIndex((p) => (p === index ? null : p));
-        resolve(true);
-      };
-      const p = audio.play() as Promise<void> | undefined;
-      p?.catch(() => { resolveRef.current = null; setPlayingIndex(null); setMessage('The browser blocked playback. Press play again.'); resolve(false); });
-    });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ensureSegment, golisten, emitter, speed]);
-
-  const playWhole = useCallback(async () => {
-    const token = ++wholeToken.current;
-    setWholePlaying(true);
-    for (const s of revision.sentences) {
-      if (wholeToken.current !== token) return;
-      const completed = await playIndex(s.index);
-      if (!completed || wholeToken.current !== token) break;
-    }
-    if (wholeToken.current === token) { setWholePlaying(false); setPlayingIndex(null); }
-  }, [revision, playIndex]);
-
-  const countShadow = useCallback(async (index: number) => {
-    const seg = await ensureSegment(index);
-    if (!seg) return;
-    const attempt = (shadow[index] ?? 0) + 1;
-    setShadow((prev) => ({ ...prev, [index]: attempt }));
-    await emitter.emit<ShadowingAttempt>('testimony', { type: 'ShadowingAttempt', ...listen(seg), attempt, dedupeKey: uniqueKey('shadow') });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [ensureSegment, emitter, shadow, speed]);
+  const countShadow = useCallback(async (index: number): Promise<boolean> => {
+    if (!emitter) return false;
+    const seg = await segmentFor(index);
+    if (!seg) { setMessage('Prepare the audio first; attempts are recorded against the audio of that sentence.'); return false; }
+    setShadow((prev) => ({ ...prev, [index]: (prev[index] ?? 0) + 1 }));
+    await emitter.shadowingAttempt({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, { speed, transcriptVisible: true });
+    return true;
+  }, [emitter, segmentFor, speed]);
 
   const toggleRecord = useCallback(async (index: number) => {
     setMessage(null);
@@ -150,51 +116,59 @@ export function RevisionAudio({ revision }: { revision: TestimonyRevision }) {
         const { bytes, mime } = await active.stop();
         const assetId = await store.assets.put(bytes, mime);
         const sentence = revision.sentences.find((s) => s.index === index)!;
+        const seg = await segmentFor(index);
+        const sentenceId = seg?.sentenceIds[0] ?? sentenceIdFor(index);
         const attempt = (recordings[index]?.length ?? 0) + 1;
         const rec: UserRecording = {
-          id: `rec:${ids.learnerItem(userId, `${revision.id}#${index}`)}:${attempt}`,
+          id: `rec:${userId}:${revision.id}#${index}:${attempt}`,
           userId, lang, assetId, attempt, createdAt: new Date().toISOString(),
-          target: { testimonyRevisionId: revision.id, testimonySentenceIndex: index, text: sentence.text },
+          target: { sentenceId, testimonyRevisionId: revision.id, testimonySentenceIndex: index, text: sentence.text },
         };
         await store.recordings.put(rec);
         const url = await store.assets.url(assetId);
         setRecordings((prev) => ({ ...prev, [index]: [...(prev[index] ?? []), { rec, url }] }));
-        await emitter.emit<UserRecordingCreated>('testimony', { type: 'UserRecordingCreated', recordingId: rec.id, targetText: sentence.text, testimonyRevisionId: revision.id, dedupeKey: `recording:${rec.id}` });
-        await countShadow(index);
+        await emitter?.recordingCreated({ recordingId: rec.id, targetText: sentence.text, sentenceId, testimonyRevisionId: revision.id });
+        await countShadow(index); // a recorded take is one shadowing attempt
       } catch (e) {
         setMessage(`Could not save the recording: ${e instanceof Error ? e.message : String(e)}`);
       }
       return;
     }
     if (activeRecording.current) return; // one at a time
-    stopAudio();
     try {
       activeRecording.current = await startRecording();
       setRecordingIndex(index);
     } catch (e) {
       setMessage(`Microphone unavailable: ${e instanceof Error ? e.message : String(e)}`);
     }
-  }, [recordingIndex, recordings, store, revision, userId, lang, emitter, countShadow, stopAudio]);
+  }, [recordingIndex, recordings, store, revision, userId, lang, emitter, segmentFor, sentenceIdFor, countShadow]);
+
+  if (!textId) {
+    return (
+      <section className="rehearse" aria-label="Listen and rehearse">
+        <h3>Listen and rehearse — version {revision.number}</h3>
+        <p className="muted small">Audio is not available for this version.</p>
+      </section>
+    );
+  }
 
   return (
     <section className="rehearse" aria-label="Listen and rehearse">
       <div className="rehearse-head">
         <h3>Listen and rehearse — version {revision.number}</h3>
-        {fixture && <span className="badge badge-warn" data-testid="fixture-badge">fixture audio — not speech</span>}
       </div>
+      <Player key={textId} textId={textId} controlRef={controls} />
       <div className="actions">
-        {wholePlaying
-          ? <button type="button" className="btn-quiet" onClick={stopAudio}>Stop</button>
-          : <button type="button" className="btn-primary" onClick={() => { void playWhole(); }}>Play whole testimony</button>}
+        <button type="button" className="btn-primary" onClick={playAll}>Play whole testimony</button>
       </div>
       <p className="muted small">Play a sentence, say it along with the voice, then count the attempt or record yourself and listen back.</p>
       {message && <p role="status" className="small">{message}</p>}
       <ol className="rehearse-list">
         {revision.sentences.map((s) => (
-          <li key={s.index} className={playingIndex === s.index ? 'is-active' : undefined}>
+          <li key={s.index}>
             <span className="rehearse-text" lang={lang}>{s.text}</span>
             <span className="rehearse-actions">
-              <button type="button" className="mini" aria-label={`Play sentence ${s.index + 1}`} onClick={() => { void playIndex(s.index); }}>▶</button>
+              <button type="button" className="mini" aria-label={`Play sentence ${s.index + 1}`} onClick={() => playSentence(s.index)}>▶</button>
               <button type="button" className="mini" aria-label={`Count a shadowing attempt for sentence ${s.index + 1}`} onClick={() => { void countShadow(s.index); }}>shadowed</button>
               <span className="small muted" aria-label={`Shadowed ${shadow[s.index] ?? 0} times`} data-testid={`shadow-${s.index}`}>{shadow[s.index] ?? 0}×</span>
               {supported ? (

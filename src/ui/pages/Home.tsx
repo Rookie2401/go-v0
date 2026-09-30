@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { PersonalizedCoverage, Recommendation, Text } from '../../core';
 import { useApp } from '../context';
-import { BAND_LABEL, REASON_LABEL, pct, textPath } from '../format';
+import { BAND_LABEL, REASON_LABEL, isTestimonyText, pct, textPath } from '../format';
 
 interface Item { rec: Recommendation; text?: Text; coverage?: PersonalizedCoverage }
 
@@ -17,9 +17,21 @@ export function Home() {
     setItems(null);
     void (async () => {
       const recs = await golearn.recommend(userId, { limit: 5 });
-      const rows = await store.texts.getMany(recs.map((r) => r.textId ?? ''));
-      const covs = await Promise.all(recs.map((r) => (r.textId ? golearn.coverage(userId, r.textId).catch(() => undefined) : undefined)));
-      if (live) setItems(recs.map((rec, i) => ({ rec, text: rows[i], coverage: covs[i] })));
+      const [rows, corpora] = await Promise.all([store.texts.getMany(recs.map((r) => r.textId ?? '')), store.corpora.all()]);
+      const corpusMap = new Map(corpora.map((c) => [c.id, c]));
+      // A recommendation that points at a private testimony text never shows that text: the rehearsal
+      // suggestion keeps its generic card linking to /testimony; any other reason is dropped.
+      const kept: Item[] = [];
+      for (let i = 0; i < recs.length; i++) {
+        const text = rows[i];
+        if (text && isTestimonyText(text, corpusMap)) {
+          if (recs[i].reason === 'rehearse-testimony') kept.push({ rec: recs[i] });
+          continue;
+        }
+        kept.push({ rec: recs[i], text });
+      }
+      const covs = await Promise.all(kept.map((k) => (k.text ? golearn.coverage(userId, k.text.id).catch(() => undefined) : undefined)));
+      if (live) setItems(kept.map((k, i) => ({ ...k, coverage: covs[i] })));
     })().catch((e: unknown) => { if (live) setError(e instanceof Error ? e.message : String(e)); });
     return () => { live = false; };
   }, [store, golearn, userId]);

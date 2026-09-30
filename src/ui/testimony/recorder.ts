@@ -13,6 +13,17 @@ export interface ActiveRecording {
   stop(): Promise<{ bytes: Uint8Array; mime: string; durationMs: number }>;
 }
 
+/** Blob → bytes, with a FileReader fallback for engines without Blob.arrayBuffer. */
+function blobBytes(blob: Blob): Promise<Uint8Array> {
+  if (typeof blob.arrayBuffer === 'function') return blob.arrayBuffer().then((b) => new Uint8Array(b));
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
+    reader.onerror = () => reject(reader.error ?? new Error('could not read the recording'));
+    reader.readAsArrayBuffer(blob);
+  });
+}
+
 export async function startRecording(): Promise<ActiveRecording> {
   const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
   const recorder = new MediaRecorder(stream);
@@ -26,7 +37,7 @@ export async function startRecording(): Promise<ActiveRecording> {
       recorder.onstop = () => {
         stream.getTracks().forEach((t) => t.stop());
         const mime = recorder.mimeType || chunks[0]?.type || 'audio/webm';
-        void new Blob(chunks, { type: mime }).arrayBuffer().then((buf) => resolve({ bytes: new Uint8Array(buf), mime, durationMs: Date.now() - startedAt }), reject);
+        void blobBytes(new Blob(chunks, { type: mime })).then((bytes) => resolve({ bytes, mime, durationMs: Date.now() - startedAt }), reject);
       };
       if (recorder.state !== 'inactive') recorder.stop(); else recorder.onstop?.(new Event('stop'));
     }),

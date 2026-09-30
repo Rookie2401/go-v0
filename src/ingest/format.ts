@@ -66,7 +66,11 @@ export interface CorpusDocument {
   tags: string[];
   /** Machine-generated text must say so (the reader badges it). Never true for scripture. */
   generated?: boolean;
-  /** Scripture: canonical book code (USFM) and first chapter; further chapters are per-section `chapter`. */
+  /**
+   * Scripture: canonical book code (USFM) and first chapter; further chapters are per-section `chapter`.
+   * TODO(contract): Text.scripture can name only one book+chapter, so a passage document spanning 1 John 1 and
+   * John 3 records the first; every sentence's `verseRefs` ("JHN.3.16") carries the real reference.
+   */
   scripture?: { book: string; chapter: number };
   /** Provenance of the English rescue lines, stored on every EnglishRescue.sourceNote. */
   englishSource?: string;

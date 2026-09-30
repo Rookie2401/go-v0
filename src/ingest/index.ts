@@ -182,6 +182,9 @@ export async function ingestDocument(store: AppStore, registry: AdapterRegistry,
         for (const r of rest) {
           alternatives.push({ lemmaId: r.lemma ? await ensureLemma(r.lemma, r.pos, r.gloss) : undefined, pos: r.pos, morph: r.morph, confidence: r.confidence });
         }
+        // TODO(contract): AnalysisCandidate has no provenance field. Rule-derived candidates (clitic split, compound
+        // guess, separable particle) are flagged with notes.source === 'rule' and stored as provenance 'machine';
+        // lexicon-backed candidates are stored as 'lexicon'. A real field on AnalysisCandidate would replace this convention.
         const notes = best.notes ? { ...best.notes } : undefined;
         const fromRule = notes?.source === 'rule';
         if (notes) delete notes.source;

@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { hash, ids } from '../../src/core';
-import type { AudioSegment, IndependentProductionDetected, ProductionRecorded } from '../../src/core';
+import type { EnsureAudioResult, IndependentProductionDetected, ProductionRecorded } from '../../src/core';
+import { testimonySlug } from '../../src/gotell';
 import { makeWorld } from './fakes';
 import type { World } from './fakes';
 import { esAdapter, esStoryA } from './fixtures';
@@ -179,23 +180,25 @@ describe('diffRevisions', () => {
 });
 
 describe('GoListen hook', () => {
-  it('calls ensureSentenceAudio for every sentence of a new revision (runNow false) and survives failures', async () => {
-    const calls: Array<{ lang: string; text: string; ownerId: string; contextId: string; runNow?: boolean }> = [];
+  it('calls ensureAudio(revision.textId, { runNow: false }) once per new revision and survives failures', async () => {
+    const calls: Array<[string, unknown]> = [];
+    let fail = false;
     const golisten = {
-      async ensureSentenceAudio(args: (typeof calls)[number]) {
-        calls.push(args);
-        if (args.text === 'La casa.') throw new Error('tts down');
-        return {} as AudioSegment;
+      async ensureAudio(textId: string, opts?: unknown) {
+        calls.push([textId, opts]);
+        if (fail) throw new Error('tts down');
+        return {} as EnsureAudioResult;
       },
     };
     const { w, t } = await setup({ golisten });
     const rev = await w.gotell.acceptRevision(t.id, 'Yo no sé. La casa.');
-    expect(calls.map((c) => [c.contextId, c.text, c.ownerId, c.lang, c.runNow])).toEqual([
-      [`${rev.id}#0`, 'Yo no sé.', 'A', 'es', false],
-      [`${rev.id}#1`, 'La casa.', 'A', 'es', false],
-    ]);
-    expect((await w.gotell.listRevisions(t.id))).toHaveLength(1); // revision stored even though one call failed
-    await w.gotell.acceptRevision(t.id, 'Yo no sé. La casa.'); // identical -> no new audio calls
+    expect(rev.textId).toBe(ids.text('es', testimonySlug('A', 1)));
+    expect(calls).toEqual([[rev.textId, { runNow: false }]]);
+    fail = true;
+    const rev2 = await w.gotell.acceptRevision(t.id, 'Yo no sé. La casa grande.');
+    expect(rev2.textId).toBeDefined();
+    expect(await w.gotell.listRevisions(t.id)).toHaveLength(2); // stored even though audio failed
+    await w.gotell.acceptRevision(t.id, 'Yo no sé. La casa grande.'); // identical -> no new audio call
     expect(calls).toHaveLength(2);
   });
 });

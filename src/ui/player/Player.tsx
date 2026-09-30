@@ -12,7 +12,7 @@
  *  - Playing audio never touches reading evidence (GoLearn decides what listening events mean).
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import type { KeyboardEvent as ReactKeyboardEvent } from 'react';
+import type { KeyboardEvent as ReactKeyboardEvent, MutableRefObject } from 'react';
 import type { AudioManifest, AudioSegment, PlayerState, VoiceConfig } from '../../core';
 import {
   MAX_SPEED, MIN_SPEED, PlayerMachine, buildPlayerManifest, clampSpeed, emitPlayerEffects, isTranscriptVisible, listeningEmitter,
@@ -29,9 +29,17 @@ export interface PlayerChange {
   concealed: (sentenceId: string) => boolean;
 }
 
+/** Imperative handle for a host page (testimony rehearsal): jump to a sentence, play, replay. */
+export interface PlayerControls {
+  seekSentence(sentenceId: string): void;
+  play(): void;
+  replay(): void;
+}
+
 export interface PlayerProps {
   textId: string;
   onChange?: (info: PlayerChange) => void;
+  controlRef?: MutableRefObject<PlayerControls | null>;
 }
 
 type Status = 'loading' | 'none' | 'preparing' | 'ready' | 'error';
@@ -47,7 +55,7 @@ const TRANSCRIPT_LABELS: Record<TranscriptMode, string> = {
 const viewKey = (m: PlayerModel) =>
   [m.segmentIndex, m.playing, m.speed, m.transcriptMode, m.revealed.join(','), m.started, m.completed, m.finished, m.loop.unit, m.manifest.segments.length].join('|');
 
-export function Player({ textId, onChange }: PlayerProps) {
+export function Player({ textId, onChange, controlRef }: PlayerProps) {
   const { store, bus, golisten, userId, lang, session } = useApp();
   const emitter = useMemo(() => listeningEmitter(bus, { userId, lang, session, textId }), [bus, userId, lang, session, textId]);
 
@@ -185,6 +193,16 @@ export function Player({ textId, onChange }: PlayerProps) {
     if (a.type === 'setSpeed' || a.type === 'stepSpeed') setPref('speed', machine.state.speed);
     if (a.type === 'setTranscriptMode') setPref('transcript', machine.state.transcriptMode);
   }, []);
+
+  useEffect(() => {
+    if (!controlRef) return;
+    controlRef.current = {
+      seekSentence: (sentenceId) => dispatch({ type: 'seekSentence', sentenceId }),
+      play: () => dispatch({ type: 'play' }),
+      replay: () => dispatch({ type: 'replay' }),
+    };
+    return () => { controlRef.current = null; };
+  }, [controlRef, dispatch]);
 
   // Leaving mid-sentence is an abandonment; always stop the audio.
   useEffect(() => () => {

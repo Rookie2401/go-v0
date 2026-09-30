@@ -139,3 +139,35 @@ level, `EnglishRescueRevealed` with scope. Navigation: Home · Read · Scripture
    scripture in `data/corpus` that is not confirmed public domain is flagged `rights: "unverified"` and
    must be replaced before any release.
 8. **No GoSpeak.** Recording + replay only; no pronunciation scores.
+
+## 10. Integration decisions (added after the packages landed)
+
+9. **A testimony revision is a private Text.** `GoTell.acceptRevision` ingests the accepted sentences
+   through the normal pipeline (`kind: 'testimony'`, corpus kind `testimony`, rights `user-private`,
+   authorship `learner`) and sets `TestimonyRevision.textId`. Consequences: GoListen makes its audio with
+   the ordinary `ensureAudio(textId)` (manifest, sentence alignment, player), listening/shadowing events
+   carry real sentence ids so GoLearn folds them into the *listening* dimension only, and the Library,
+   Scripture list, recommendations and preparatory-text search all exclude `kind === 'testimony'`.
+   Ownership is enforced by `GoTell.forUser(userId)` / `assertOwner` on every accessor.
+10. **AI-drafted sample stories are `generated`.** The stories and dialogues in `data/corpus` were
+    drafted by an AI assistant for the course authors and have not been native-reviewed, so they carry
+    `authorship: 'generated'`, `generated: true` and the tag `needs-native-review`; the reader badges
+    them. Scripture is never generated. Flip the flags only after a human review.
+11. **Thai drafts are one sentence per line.** Thai uses a space both between clauses and between
+    sentences; the adapter splits sentences only on newline / double space / terminal punctuation, so the
+    testimony editor treats a line break as the sentence boundary for Thai.
+12. **Form vs lemma evidence is real.** Albanian `mëkat` / `mëkatin` are distinct forms of one lemma; the
+    integration test tracks productive evidence at the lemma level for step 7 precisely because the
+    form-level record legitimately does not move.
+
+## 11. The proven loop (`test/integration/loop.test.ts`)
+
+For each of es / sq / th / hi / de against the real adapters and bundled corpora: read the story (tap two
+words) → GoListen sentence audio, replay ×3 with transcript → listening evidence only → Scripture
+readiness shows story items as familiar, Bible text byte-identical, English hidden until asked →
+testimony draft analysed against learner state, accepted repair = `assisted`, own wording =
+`independent`, scored differently → revision becomes personal audio, shadowing strengthens listening,
+never speaking → later independent use raises lemma-level productive evidence → `rebuild()` reproduces
+the state from the event log → another learner cannot read the testimony. Plus the scripture loop:
+readiness → preparatory texts (never scripture, never testimony) → read them → coverage rises → Bible
+unchanged.

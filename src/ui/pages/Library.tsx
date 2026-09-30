@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Corpus, PersonalizedCoverage, Text } from '../../core';
 import { useApp } from '../context';
-import { BAND_LABEL, pct, textPath } from '../format';
+import { BAND_LABEL, isTestimonyText, pct, textPath } from '../format';
 
 export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
   const { store, golearn, userId, lang } = useApp();
@@ -16,12 +16,14 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
     let live = true;
     void (async () => {
       const [rows, cs] = await Promise.all([store.texts.where('lang', lang), store.corpora.all()]);
+      const corpusMap = new Map(cs.map((c) => [c.id, c]));
       const wanted = rows
-        .filter((t) => (mode === 'scripture' ? t.kind === 'scripture' : t.kind !== 'scripture' && t.kind !== 'testimony'))
+        .filter((t) => !isTestimonyText(t, corpusMap)) // private testimony texts never appear here
+        .filter((t) => (mode === 'scripture' ? t.kind === 'scripture' : t.kind !== 'scripture'))
         .sort((a, b) => a.title.localeCompare(b.title));
       if (!live) return;
       setTexts(wanted);
-      setCorpora(new Map(cs.map((c) => [c.id, c])));
+      setCorpora(corpusMap);
       const covs = await Promise.all(wanted.map((t) => golearn.coverage(userId, t.id).catch(() => undefined)));
       if (!live) return;
       const m = new Map<string, PersonalizedCoverage>();

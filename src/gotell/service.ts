@@ -6,12 +6,14 @@
  * Keeps no vocabulary or mastery model of its own.
  */
 import { hash, ids, LEVEL_ORDER } from '../core';
+import { CORPUS_FORMAT_VERSION, ingestDocument } from '../ingest';
+import type { CorpusDocument } from '../ingest';
 import type {
   AdapterRegistry, AnalyzedSentence, EventBus, GoLearn, GoListen, GoTell, GoTellSuggestion, GoTellSuggestionAccepted,
   GoTellSuggestionEdited, GoTellSuggestionRejected, GoTellSuggestionShown, IndependentProductionDetected, IntentProposal,
   IntentRequest, ItemKnowledge, LanguageAdapter, LanguageCode, ProductionAnalysis, ProductionKind, ProductionRecorded,
   ProductionTask, ProvenanceRef, SuggestionProvider, Testimony, TestimonyRevision, TestimonyRevisionAccepted,
-  TestimonySentence, TestimonyTextSubmitted, AppStore, SuggestionKind, ItemKind, PartOfSpeech,
+  TestimonySentence, TestimonyTextSubmitted, Text, AppStore, SuggestionKind, ItemKind, PartOfSpeech,
 } from '../core';
 import { CONCEPTS, conceptsForToken, englishConcepts, lexemesFor, tagSection } from './concepts';
 import type { ConceptId } from './concepts';
@@ -31,7 +33,7 @@ export interface GoTellDeps {
   bus: EventBus;
   adapters: AdapterRegistry;
   golearn: GoLearnReader;
-  golisten?: Pick<GoListen, 'ensureSentenceAudio'>;
+  golisten?: Pick<GoListen, 'ensureAudio'>;
   /** Extra providers, consulted in addition to the built-in RuleBasedSuggestionProvider. */
   providers?: SuggestionProvider[];
   clock?: () => string;
@@ -54,6 +56,34 @@ type StoredSuggestion = GoTellSuggestion & { finalText?: string };
 type SentenceCtx = { sentence: AnalyzedSentence & { sectionConfidence?: number }; parsed: Parsed; errorTokens: Set<number> };
 type Candidate = Omit<GoTellSuggestion, 'id' | 'userId' | 'lang' | 'testimonyId' | 'draftHash' | 'status' | 'createdAt'> & { order: number };
 type KnownPhrase = { phraseId: string; display: string; pattern: string[] };
+
+/** Slug (and so textId = ids.text(lang, slug)) of the private Text materialized from revision n. Slug-safe per src/ingest format. */
+export function testimonySlug(userId: string, number: number): string {
+  const safe = userId.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  const user = safe && safe === userId ? safe : `${safe || 'u'}-${hash(userId).slice(0, 6)}`;
+  return `testimony-${user}-r${number}`;
+}
+
+/** Testimony Texts live in the shared texts table; UI/GoLearn filter with this. */
+export function isTestimonyText(text: Text): boolean {
+  return text.kind === 'testimony';
+}
+
+function testimonyDocument(userId: string, lang: LanguageCode, number: number, sentences: string[]): CorpusDocument {
+  return {
+    formatVersion: CORPUS_FORMAT_VERSION,
+    lang,
+    slug: testimonySlug(userId, number),
+    title: `My testimony (revision ${number})`,
+    kind: 'testimony',
+    corpus: { id: `testimony:${userId}`, kind: 'testimony', title: 'My Testimony' },
+    source: { id: `src:testimony:${userId}`, title: 'Learner testimony', rights: 'user-private', authorship: 'learner' },
+    sourceNote: `The learner's own private writing, accepted as revision ${number} in GoTell. Never shared or used as course content.`,
+    tags: ['private', 'testimony'],
+    generated: false,
+    sections: [{ paragraphs: [{ sentences: sentences.map((text) => ({ text })) }] }],
+  };
+}
 
 export const MAX_SUGGESTIONS_PER_SENTENCE = 3;
 export const MAX_SUGGESTIONS_PER_DRAFT = 6;
@@ -478,8 +508,16 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
           evidence.push({ sentence, items: cls.items });
         }
 
+        // the accepted revision becomes a real private Text (addressable sentences/tokens for GoListen + GoLearn)
+        let textId: string | undefined;
+        if (sentences.length > 0) {
+          const doc = testimonyDocument(t.userId, t.lang, number, sentences.map((x) => x.text));
+          textId = (await ingestDocument(store, adapters, doc, { clock })).id;
+        }
+
         const revision: TestimonyRevision = {
           id: revisionId, testimonyId, userId: t.userId, lang: t.lang, number, createdAt: clock(), fullText: text, sentences,
+          ...(textId ? { textId } : {}),
           acceptedSuggestionIds: [...acceptedIds],
           ...(current ? { parentRevisionId: current.id } : {}),
         };
@@ -506,12 +544,10 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
           });
         }
 
-        if (golisten) {
-          for (const s of sentences) {
-            try {
-              await golisten.ensureSentenceAudio({ lang: t.lang, text: s.text, ownerId: t.userId, contextId: `${revisionId}#${s.index}`, runNow: false });
-            } catch { /* audio is best-effort; the revision is already safely stored */ }
-          }
+        if (golisten && revision.textId) {
+          try {
+            await golisten.ensureAudio(revision.textId, { runNow: false });
+          } catch { /* audio is best-effort; the revision is already safely stored */ }
         }
         return revision;
       },

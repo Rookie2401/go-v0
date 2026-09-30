@@ -65,8 +65,8 @@ export const UNCERTAIN_BELOW = 0.6;
 
 /**
  * Production encounters are stored as `Encounter`s whose `assistance` field encodes the production kind
- * (the contract has no `productionKind` column): independent 0 · self-repaired 1 · assisted 3 · copied 5.
- * TODO(contract): add `productionKind?: ProductionKind` to Encounter and drop this encoding.
+ * (also stored as `productionKind`): independent 0 · self-repaired 1 · assisted 3 · copied 5.
+ * `Encounter.productionKind` is the authoritative kind; `assistance` is kept populated for weighting and as a fallback.
  */
 export const PRODUCTION_ASSISTANCE: Record<ProductionKind, AssistanceLevel> = {
   independent: 0,

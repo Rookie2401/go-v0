@@ -514,6 +514,8 @@ export interface TestimonyRevision {
   createdAt: string;
   fullText: string;
   sentences: TestimonySentence[];
+  /** The private Text (kind "testimony", corpus kind "testimony") that holds this revision's sentences/tokens, so GoLearn and GoListen address it like any other text. */
+  textId?: string;
   /** Suggestion ids accepted in producing this revision. */
   acceptedSuggestionIds: string[];
   parentRevisionId?: string;

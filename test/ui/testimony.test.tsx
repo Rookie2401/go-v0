@@ -1,6 +1,7 @@
 // @vitest-environment jsdom
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import type { ShadowingAttempt } from '../../src/core';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+import { ids } from '../../src/core';
+import type { AudioPlayed, ShadowingAttempt, UserRecordingCreated } from '../../src/core';
 import { Testimony } from '../../src/ui/testimony/Testimony';
 import { button, byLabel, click, flush, installMediaStubs, makeHarness, q, qa, suggestion, type as typeInto } from './harness';
 import type { Harness, Mounted } from './harness';
@@ -10,10 +11,11 @@ let h: Harness;
 let mounted: Mounted | undefined;
 let media: ReturnType<typeof installMediaStubs>;
 
+const TEXT_ID = 'text:es:testimony-r1';
 const DRAFT = 'Yo cree en Dios. Dios me perdonó.';
 
 beforeEach(() => { media = installMediaStubs(); });
-afterEach(async () => { await mounted?.unmount(); mounted = undefined; });
+afterEach(async () => { await mounted?.unmount(); mounted = undefined; vi.unstubAllGlobals(); });
 
 const editor = () => byLabel<HTMLTextAreaElement>(mounted!.container, 'Your testimony');
 
@@ -149,13 +151,32 @@ describe('My Testimony rehearsal', () => {
     await click(button(mounted.container, 'Save this version'));
   }
 
-  it('plays a sentence through GoListen, with the fixture badge and a pitch-preserving audio element', async () => {
+  it('rehearses from the private testimony Text manifest with the shared Player (real segment ids, fixture badge, pitch kept)', async () => {
     await saved();
-    await click(button(mounted!.container, 'Play sentence 2'));
-    expect(h.listen.ensureSentenceAudio).toHaveBeenCalledWith(expect.objectContaining({ lang: 'es', text: 'Dios me perdonó.', ownerId: 'u1', contextId: 'tst:u1:es/r1#1', runNow: true }));
+    const rev = (await h.tell.listRevisions('tst:u1:es'))[0];
+    expect(rev.textId).toBe(TEXT_ID);
+    expect((await h.store.texts.get(TEXT_ID))!.kind).toBe('testimony');
+    const box = byLabel(mounted!.container, 'Listen and rehearse');
+    expect(q(box, '.player')).not.toBeNull(); // the same Player used for every other text
+    expect(q(box, '[data-testid="fixture-badge"]')!.textContent).toBe('fixture audio — not speech');
+    expect(q(box, '[aria-live="polite"]')!.textContent).toContain('Sentence 1 of 2');
+
+    await click(button(box, 'Play sentence 2'));
     expect(media.play).toHaveBeenCalled();
-    expect(q(mounted!.container, '[data-testid="fixture-badge"]')!.textContent).toBe('fixture audio — not speech');
-    expect((await h.events('AudioPlayed'))).toHaveLength(1);
+    expect(q<HTMLAudioElement>(box, 'audio')!.src).toBe('blob:test/asset:1-1');
+    expect(q<HTMLAudioElement>(box, 'audio')!.preservesPitch).toBe(true);
+    const played = ((await h.events('AudioPlayed')) as AudioPlayed[]).at(-1)!;
+    expect(played).toMatchObject({ textId: TEXT_ID, segmentId: 'seg:1-1', sentenceIds: [ids.sentence(TEXT_ID, 1)] });
+    expect(h.listen.ensureAudio).not.toHaveBeenCalled(); // GoTell already prepared the manifest
+  });
+
+  it('plays the whole testimony from the first sentence', async () => {
+    await saved();
+    const box = byLabel(mounted!.container, 'Listen and rehearse');
+    await click(button(box, 'Play sentence 2'));
+    await click(button(box, 'Play whole testimony'));
+    expect(q<HTMLAudioElement>(box, 'audio')!.src).toBe('blob:test/asset:1-0');
+    expect(button(box, 'Pause')).toBeTruthy();
   });
 
   it('counts shadowing attempts and records them as events', async () => {
@@ -167,7 +188,8 @@ describe('My Testimony rehearsal', () => {
     expect(q(mounted!.container, '[data-testid="shadow-1"]')!.textContent).toBe('0×');
     const attempts = (await h.events('ShadowingAttempt')) as ShadowingAttempt[];
     expect(attempts.map((a) => a.attempt)).toEqual([1, 2]);
-    expect(attempts[0].textId).toBe('tst:u1:es/r1#0');
+    // events carry the real manifest segment and sentence ids, so GoLearn can fold listening evidence
+    expect(attempts[0]).toMatchObject({ textId: TEXT_ID, segmentId: 'seg:1-0', sentenceIds: [ids.sentence(TEXT_ID, 0)], surface: 'testimony' });
 
     // the count survives a remount (it is read back from the event log)
     await mounted!.unmount();
@@ -182,5 +204,32 @@ describe('My Testimony rehearsal', () => {
     expect(mounted!.container.textContent).toContain('Recording is not available in this browser');
     expect(qa(mounted!.container, 'button').some((b) => /^Record sentence/.test(b.getAttribute('aria-label') ?? ''))).toBe(false);
     expect(button(mounted!.container, 'Play whole testimony')).toBeTruthy();
+  });
+
+  it('records a take when MediaRecorder exists: stored as an asset, targeted at the sentence, counted as an attempt', async () => {
+    class FakeRecorder {
+      state = 'inactive'; mimeType = 'audio/webm';
+      ondataavailable: ((e: { data: Blob }) => void) | null = null; onstop: (() => void) | null = null; onerror: (() => void) | null = null;
+      start() { this.state = 'recording'; }
+      stop() { this.state = 'inactive'; this.ondataavailable?.({ data: new Blob([new Uint8Array([1, 2, 3])], { type: 'audio/webm' }) }); this.onstop?.(); }
+    }
+    vi.stubGlobal('MediaRecorder', FakeRecorder);
+    Object.defineProperty(navigator, 'mediaDevices', { configurable: true, value: { getUserMedia: async () => ({ getTracks: () => [] }) } });
+    await saved();
+    await click(button(mounted!.container, 'Record sentence 2'));
+    expect(button(mounted!.container, 'Stop recording sentence 2').getAttribute('aria-pressed')).toBe('true');
+    await click(button(mounted!.container, 'Stop recording sentence 2'));
+    await flush();
+    const recs = await h.store.recordings.all();
+    expect(recs).toHaveLength(1);
+    expect(recs[0].target).toEqual({ sentenceId: ids.sentence(TEXT_ID, 1), testimonyRevisionId: 'tst:u1:es/r1', testimonySentenceIndex: 1, text: 'Dios me perdonó.' });
+    expect(await h.store.assets.has(recs[0].assetId)).toBe(true);
+    const created = (await h.events('UserRecordingCreated')) as UserRecordingCreated[];
+    expect(created).toHaveLength(1);
+    expect(created[0]).toMatchObject({ recordingId: recs[0].id, testimonyRevisionId: 'tst:u1:es/r1', targetText: 'Dios me perdonó.' });
+    expect(q(mounted!.container, '[data-testid="shadow-1"]')!.textContent).toBe('1×');
+    expect(qa(mounted!.container, '.take')).toHaveLength(1);
+    const attempt = ((await h.events('ShadowingAttempt')) as ShadowingAttempt[])[0];
+    expect(attempt).toMatchObject({ segmentId: 'seg:1-1', sentenceIds: [ids.sentence(TEXT_ID, 1)] });
   });
 });

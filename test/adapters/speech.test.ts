@@ -43,7 +43,7 @@ describe('speechNormalize (all languages)', () => {
     });
 
     it(`${lang}: never transliterates: script of the words is unchanged`, () => {
-      const script = { es: /^[\p{Script=Latin}\s.,!?¿¡'-]+$/u, sq: /^[\p{Script=Latin}\s.,!?'-]+$/u, de: /^[\p{Script=Latin}\s.,!?'-]+$/u, th: /^[\p{Script=Thai}\s]+$/u, hi: /^[\p{Script=Devanagari}\s।,.]+$/u }[lang];
+      const script = { es: /^[\p{Script=Latin}\s.,!?¿¡'-]+$/u, sq: /^[\p{Script=Latin}\s.,!?'-]+$/u, de: /^[\p{Script=Latin}\s.,!?'-]+$/u, th: /^[\p{Script=Thai}\s]+$/u, hi: /^[\p{Script=Devanagari}\s।,.?!]+$/u }[lang];
       for (const doc of loadBundledCorpus().filter((d) => d.lang === lang && d.kind !== 'scripture')) {
         for (const sec of doc.sections) for (const par of sec.paragraphs) {
           if (!('sentences' in par)) continue;

@@ -3,7 +3,7 @@ import { afterEach, describe, expect, it } from 'vitest';
 import type { DimensionState, ItemMarked, LearnerItemState, LearnerLevel, Recommendation } from '../../src/core';
 import { ids } from '../../src/core';
 import { AppRoutes, Shell } from '../../src/ui/App';
-import { button, byLabel, choose, click, installMediaStubs, makeHarness, q, qa, seedAudio, type as typeInto } from './harness';
+import { button, byLabel, choose, click, createTestimonyText, installMediaStubs, makeHarness, q, qa, seedAudio, type as typeInto } from './harness';
 import type { Mounted } from './harness';
 import { JOHN_ID, STORY_ID, seedJohn, seedStory } from './fixtures';
 
@@ -92,6 +92,81 @@ describe('Library and routes', () => {
     expect(rows[0].textContent).toContain('Mostly words you already know.');
     expect(rows[1].getAttribute('href')).toBe('/testimony');
     expect(qa(mounted.container, 'nav[aria-label="Main"] a').map((a) => a.textContent)).toEqual(['Home', 'Read', 'Scripture', 'My Testimony', 'Settings']);
+  });
+});
+
+describe('Testimony privacy', () => {
+  async function withPrivateText(h: Awaited<ReturnType<typeof makeHarness>>) {
+    await seedStory(h.store);
+    await seedJohn(h.store);
+    const id = await createTestimonyText(h.store, h.voice, {
+      id: 'tst:u1:es/r1', testimonyId: 'tst:u1:es', userId: 'u1', lang: 'es', number: 1, createdAt: '', fullText: 'Yo creo en Dios.',
+      sentences: [{ index: 0, text: 'Yo creo en Dios.', textHash: 'h' }], acceptedSuggestionIds: [],
+    });
+    return id;
+  }
+
+  it('never lists testimony texts in Read or Scripture, and never badges them', async () => {
+    const h = await makeHarness();
+    const privateId = await withPrivateText(h);
+    mounted = await h.mount(app(), { router: '/read' });
+    expect(qa(mounted.container, 'ul.list a').map((a) => a.textContent)).toEqual([expect.stringContaining('Story 1')]);
+    expect(mounted.container.textContent).not.toContain('Testimony v1');
+    expect(h.learn.coverage).not.toHaveBeenCalledWith('u1', privateId);
+    await mounted.unmount();
+    mounted = await h.mount(app(), { router: '/scripture' });
+    expect(qa(mounted.container, 'ul.list a')).toHaveLength(1);
+    expect(mounted.container.textContent).not.toContain('Testimony v1');
+  });
+
+  it('filters by corpus kind too, even if a text claims another kind', async () => {
+    const h = await makeHarness();
+    await seedStory(h.store);
+    await h.store.corpora.put({ id: 'testimony-es', lang: 'es', kind: 'testimony', title: 'Testimonies' });
+    const t = (await h.store.texts.get(STORY_ID))!;
+    await h.store.texts.put({ ...t, id: 'text:es:sneaky', title: 'Sneaky', corpusId: 'testimony-es', kind: 'story' });
+    mounted = await h.mount(app(), { router: '/read' });
+    expect(mounted.container.textContent).not.toContain('Sneaky');
+  });
+
+  it('drops recommendations that point at a testimony text, keeping the generic rehearsal card', async () => {
+    const h = await makeHarness({ learn: { recommendations: [] } });
+    const privateId = await withPrivateText(h);
+    const recs: Recommendation[] = [
+      { reason: 'easy-story', textId: privateId, reinforces: [], score: 1, explanation: 'private leak?' },
+      { reason: 'rehearse-testimony', textId: privateId, testimonyId: 'tst:u1:es', reinforces: [], score: 0.8, explanation: 'Read your latest version aloud.' },
+      { reason: 'easy-story', textId: STORY_ID, reinforces: [], score: 0.5, explanation: 'Mostly known words.' },
+    ];
+    h.learn.recommend = async () => recs;
+    mounted = await h.mount(app(), { router: '/' });
+    const rows = qa(mounted.container, 'ul.list li');
+    expect(rows).toHaveLength(2);
+    expect(mounted.container.textContent).not.toContain('Testimony v1');
+    expect(mounted.container.textContent).not.toContain('private leak?');
+    expect(rows[0].querySelector('a')!.getAttribute('href')).toBe('/testimony');
+    expect(rows[0].textContent).toContain('Rehearse your testimony');
+    expect(rows[1].textContent).toContain('Story 1');
+    expect(h.learn.coverage).not.toHaveBeenCalledWith('u1', privateId);
+  });
+
+  it('will not open a testimony text through the Read route, and hides it from passage preparation', async () => {
+    const h = await makeHarness({ learn: { readiness: { preparatoryTexts: [] } } });
+    const privateId = await withPrivateText(h);
+    mounted = await h.mount(app(), { router: `/read/${encodeURIComponent(privateId)}` });
+    expect(mounted.container.textContent).toContain('not in your library');
+    expect(q(mounted.container, 'article.reader')).toBeNull();
+    expect(await h.events('TextViewed')).toHaveLength(0);
+    await mounted.unmount();
+
+    h.learn.scriptureReadiness = async (_u: string, textId: string) => ({
+      textId, sentenceIds: [], coverage: await h.learn.coverage('u1', textId), familiarItems: [], unfamiliarForms: [], knownPhrases: [], difficultPatterns: [], prerequisites: [],
+      preparatoryTexts: [{ textId: privateId, covers: ['x'], band: 'comfortable', generated: false }, { textId: STORY_ID, covers: ['y'], band: 'comfortable', generated: false }],
+    });
+    mounted = await h.mount(app(), { router: `/scripture/${encodeURIComponent(JOHN_ID)}` });
+    await click(button(mounted.container, 'Prepare this passage'));
+    const links = qa<HTMLAnchorElement>(q(mounted.container, '.prepare-body')!, 'a');
+    expect(links).toHaveLength(1);
+    expect(links[0].textContent).toContain('Story 1');
   });
 });
 

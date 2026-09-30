@@ -3,7 +3,7 @@
  *   createGoTell(deps): GoTellService     // GoTell + forUser(userId)
  *   RuleBasedSuggestionProvider           // repair / recombination (expansion assigned by the service)
  */
-export { createGoTell, isEncountered, MAX_SUGGESTIONS_PER_DRAFT, MAX_SUGGESTIONS_PER_SENTENCE } from './service';
+export { createGoTell, isEncountered, isTestimonyText, testimonySlug, MAX_SUGGESTIONS_PER_DRAFT, MAX_SUGGESTIONS_PER_SENTENCE } from './service';
 export type { GoTellDeps, GoTellService, GoLearnReader } from './service';
 export { RuleBasedSuggestionProvider, basePriority, recombine } from './provider';
 export type { AnalyzedError, ProposedSuggestion, RuleBasedProviderDeps } from './provider';

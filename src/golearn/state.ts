@@ -4,7 +4,7 @@
  * re-weighting idempotent and makes `rebuild` trivially reproducible.
  */
 import type {
-  AdapterRegistry, AppStore, AssistanceLevel, DimensionState, Encounter, EventBus, EvidencePolicy, ItemKind,
+  AdapterRegistry, AppStore, AssistanceLevel, DimensionState, Encounter, EventBus, EvidencePolicy, ItemKind, ProductionKind,
   LanguageCode, LearnerItemState, LearnerLevel, Modality,
 } from '../core';
 import { ids } from '../core';
@@ -49,6 +49,7 @@ export interface NewEncounter {
   assistance: AssistanceLevel;
   weight: number;
   playbackSpeed?: number;
+  productionKind?: ProductionKind;
 }
 
 /**
@@ -75,6 +76,7 @@ export async function addEncounter(
     priorLevel: 'unseen', weight: n.weight,
   };
   if (n.playbackSpeed !== undefined) enc.playbackSpeed = n.playbackSpeed;
+  if (n.productionKind) enc.productionKind = n.productionKind;
   await ctx.store.encounters.put(enc);
   return { changed: true, created: true, encounter: enc };
 }

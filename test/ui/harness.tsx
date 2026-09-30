@@ -8,7 +8,7 @@ import { createRoot } from 'react-dom/client';
 import type { Root } from 'react-dom/client';
 import { MemoryRouter } from 'react-router-dom';
 import { vi } from 'vitest';
-import { COURSES, StoreEventBus, createMemoryStore, ids, seedBasics } from '../../src/core';
+import { COURSES, StoreEventBus, buildFixtureText, createMemoryStore, ids, seedBasics } from '../../src/core';
 import type {
   AppStore, AssistanceLevel, AudioAsset, AudioManifest, AudioSegment, ComfortBand, DomainEvent, GoLearn, GoListen, GoTell,
   GoTellSuggestion, IntentProposal, PersonalizedCoverage, ProductionAnalysis, Recommendation, ScriptureReadiness,
@@ -34,10 +34,10 @@ export interface FakeLearnOptions {
 }
 
 export function makeFakeGoLearn(store: AppStore, opts: FakeLearnOptions = {}) {
-  const coverage = async (userId: string, textId: string): Promise<PersonalizedCoverage> => ({
+  const coverage = vi.fn(async (userId: string, textId: string): Promise<PersonalizedCoverage> => ({
     userId, textId, sentenceIds: [], wordTokens: 10, knownLexicalCoverage: opts.known ?? 0.62, partialCoverage: 0.2, unseenCoverage: 0.18,
     newItems: [], knownPhraseCoverage: 0, unfamiliarPatterns: [], avgSentenceLength: 5, band: opts.band ?? 'productive-challenge', expectedDifficulty: 0.4,
-  });
+  }));
   const fake = {
     attach: () => () => undefined,
     handle: async () => undefined,
@@ -101,20 +101,6 @@ export function makeFakeGoListen(store: AppStore, opts: FakeListenOptions = {}) 
       const manifest = (await store.manifests.where('textId', textId))[0];
       return { manifest: manifest!, created: 0, reused: 0, failed: 0 };
     }),
-    ensureSentenceAudio: vi.fn(async (args: { lang: 'es'; text: string; ownerId: string; contextId: string }): Promise<AudioSegment> => {
-      const asset: AudioAsset = {
-        id: `asset:${args.contextId}`, sourceType: 'generated-tts', lang: args.lang, locale: 'es-419', mime: 'audio/wav', sampleRate: 22050, channels: 1,
-        durationMs: 500, bytes: 10, checksum: 'x', createdAt: '2026-01-01T00:00:00.000Z',
-        generation: { providerId: opts.providerId ?? 'fixture', voiceId: 'fixture-voice', settings: {}, sourceTextHash: 'h', speechTextHash: 'h', normalizerVersion: '1', pronunciationLexiconVersion: '1', softwareVersion: '1' },
-      };
-      await store.audioAssets.put(asset);
-      const seg: AudioSegment = {
-        id: `seg:${args.contextId}`, cacheKey: args.contextId, lang: args.lang, sentenceIds: [], textId: args.contextId, displayText: args.text, speechText: args.text,
-        speechNormalization: [], pronunciationOverridesUsed: [], voiceConfigId: voice.id, assetId: asset.id, status: 'ready', sequence: 0, contentVersion: 1,
-      };
-      await store.audioSegments.put(seg);
-      return seg;
-    }),
     runJobs: vi.fn(async () => 2),
     getManifest: async (textId: string) => (await store.manifests.where('textId', textId))[0],
     getSegment: (id: string) => store.audioSegments.get(id),
@@ -140,7 +126,7 @@ export interface FakeTellOptions {
   proposal?: IntentProposal;
 }
 
-export function makeFakeGoTell(opts: FakeTellOptions = {}) {
+export function makeFakeGoTell(opts: FakeTellOptions = {}, onRevision?: (rev: TestimonyRevision) => Promise<string | undefined>) {
   const testimony: Testimony = { id: 'tst:u1:es', userId: USER, lang: 'es', title: 'My testimony', createdAt: '2026-01-01T00:00:00.000Z' };
   const revisions: TestimonyRevision[] = [];
   const fake = {
@@ -159,6 +145,7 @@ export function makeFakeGoTell(opts: FakeTellOptions = {}) {
         id: ids.revision(testimonyId, number), testimonyId, userId: USER, lang: 'es', number, createdAt: `2026-01-0${number}T10:00:00.000Z`,
         fullText: text, sentences, acceptedSuggestionIds: [], parentRevisionId: revisions.at(-1)?.id,
       };
+      rev.textId = await onRevision?.(rev); // GoTell ingests each accepted revision as a private Text
       revisions.push(rev);
       return rev;
     }),
@@ -205,7 +192,7 @@ export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: Fak
   const bus = new StoreEventBus(store);
   const learn = makeFakeGoLearn(store, opts.learn);
   const { fake: listen, voice } = makeFakeGoListen(store, opts.listen);
-  const tell = makeFakeGoTell(opts.tell);
+  const tell = makeFakeGoTell(opts.tell, (rev) => createTestimonyText(store, voice, rev));
   const services: AppServices = {
     store, bus,
     adapters: { get: () => { throw new Error('adapters are not used by the UI tests'); }, all: () => [] },
@@ -305,18 +292,18 @@ export function installMediaStubs() {
 }
 
 /** Seed a ready, fixture-provider manifest of N sentences for `textId` (two paragraphs are not needed). */
-export async function seedAudio(store: AppStore, voice: VoiceConfig, textId: string, sentenceIds: string[]): Promise<AudioManifest> {
+export async function seedAudio(store: AppStore, voice: VoiceConfig, textId: string, sentenceIds: string[], tag = ''): Promise<AudioManifest> {
   await store.voices.put(voice);
   const segmentIds: string[] = [];
   for (let i = 0; i < sentenceIds.length; i++) {
     const sentence = (await store.sentences.get(sentenceIds[i]))!;
     const asset: AudioAsset = {
-      id: `asset:${i}`, sourceType: 'generated-tts', lang: 'es', locale: voice.actualLocale, mime: 'audio/wav', sampleRate: 22050, channels: 1, durationMs: 800, bytes: 10,
+      id: `asset:${tag}${i}`, sourceType: 'generated-tts', lang: 'es', locale: voice.actualLocale, mime: 'audio/wav', sampleRate: 22050, channels: 1, durationMs: 800, bytes: 10,
       checksum: 'x', createdAt: '2026-01-01T00:00:00.000Z',
     };
     await store.audioAssets.put(asset);
     const seg: AudioSegment = {
-      id: `seg:${i}`, cacheKey: `ck${i}`, lang: 'es', sentenceIds: [sentenceIds[i]], textId, displayText: sentence.text, speechText: sentence.text, speechNormalization: [],
+      id: `seg:${tag}${i}`, cacheKey: `ck${tag}${i}`, lang: 'es', sentenceIds: [sentenceIds[i]], textId, displayText: sentence.text, speechText: sentence.text, speechNormalization: [],
       pronunciationOverridesUsed: [], voiceConfigId: voice.id, assetId: asset.id, status: 'ready', sequence: i, contentVersion: 1,
     };
     await store.audioSegments.put(seg);
@@ -328,4 +315,18 @@ export async function seedAudio(store: AppStore, voice: VoiceConfig, textId: str
   };
   await store.manifests.put(manifest);
   return manifest;
+}
+
+/** What GoTell.acceptRevision now does: ingest the accepted text as a private Text (kind testimony) and prepare its audio. */
+export async function createTestimonyText(store: AppStore, voice: VoiceConfig, rev: TestimonyRevision): Promise<string> {
+  await store.corpora.put({ id: 'testimony-es', lang: 'es', kind: 'testimony', title: 'Testimonies' });
+  const text = await buildFixtureText(store, {
+    lang: 'es', slug: `testimony-r${rev.number}`, title: `Testimony v${rev.number}`, kind: 'testimony', corpusId: 'testimony-es',
+    sentences: rev.sentences.map((s) => ({
+      text: s.text,
+      tokens: (s.text.match(/\p{L}+|[^\s\p{L}]/gu) ?? []).map((surface) => ({ surface, isWord: /\p{L}/u.test(surface) })),
+    })),
+  });
+  await seedAudio(store, voice, text.id, rev.sentences.map((s) => ids.sentence(text.id, s.index)), `${rev.number}-`);
+  return text.id;
 }

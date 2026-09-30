@@ -3,7 +3,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import type { ScriptureReadiness, Text } from '../../core';
 import { useApp } from '../context';
-import { BAND_LABEL, pct, textPath } from '../format';
+import { BAND_LABEL, isTestimonyText, pct, textPath } from '../format';
 import { Player } from '../player/Player';
 import type { PlayerChange } from '../player/Player';
 import { Reader } from '../reader/Reader';
@@ -13,6 +13,23 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
   const [info, setInfo] = useState<PlayerChange | undefined>();
   const onChange = useCallback((i: PlayerChange) => setInfo(i), []);
   const back = mode === 'scripture' ? '/scripture' : '/read';
+  const { store } = useApp();
+  const [allowed, setAllowed] = useState<boolean | null>(null);
+  useEffect(() => {
+    let live = true;
+    setAllowed(null);
+    void (async () => {
+      const text = await store.texts.get(textId);
+      const corpus = text ? await store.corpora.get(text.corpusId) : undefined;
+      if (live) setAllowed(!text || !isTestimonyText(text, corpus ? new Map([[corpus.id, corpus]]) : undefined));
+    })();
+    return () => { live = false; };
+  }, [store, textId]);
+
+  if (allowed === null) return <div className="page"><p className="muted" role="status">Loading…</p></div>;
+  if (allowed === false) {
+    return <div className="page"><p className="crumbs"><Link to={back}>← Back</Link></p><p role="alert">This text is not in your library.</p></div>;
+  }
 
   return (
     <div className="page page-text">
@@ -47,8 +64,10 @@ export function PreparePanel({ textId }: { textId: string }) {
     try {
       const r = await golearn.scriptureReadiness(userId, textId);
       const rows = await store.texts.getMany(r.preparatoryTexts.map((p) => p.textId));
-      setPrepTexts(new Map(rows.filter((t): t is Text => !!t).map((t) => [t.id, t])));
-      setReadiness(r);
+      const found = rows.filter((t): t is Text => !!t);
+      setPrepTexts(new Map(found.map((t) => [t.id, t])));
+      const hidden = new Set(found.filter((t) => isTestimonyText(t)).map((t) => t.id)); // never offer private testimony texts
+      setReadiness({ ...r, preparatoryTexts: r.preparatoryTexts.filter((p) => !hidden.has(p.textId)) });
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));
     }

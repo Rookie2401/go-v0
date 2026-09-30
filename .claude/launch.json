@@ -1,0 +1,7 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    { "name": "go-dev", "runtimeExecutable": "npx", "runtimeArgs": ["vite", "--port", "5196", "--strictPort", "--host", "127.0.0.1"], "port": 5196 },
+    { "name": "go-preview", "runtimeExecutable": "npx", "runtimeArgs": ["vite", "preview", "--port", "4196", "--strictPort", "--host", "127.0.0.1"], "port": 4196 }
+  ]
+}

@@ -53,7 +53,7 @@ const TRANSCRIPT_LABELS: Record<TranscriptMode, string> = {
 
 /** The parts of the model that change what is on screen (position ticks alone do not). */
 const viewKey = (m: PlayerModel) =>
-  [m.segmentIndex, m.playing, m.speed, m.transcriptMode, m.revealed.join(','), m.started, m.completed, m.finished, m.loop.unit, m.manifest.segments.length].join('|');
+  [m.segmentIndex, m.playing, m.speed, m.transcriptMode, m.revealed.join(','), m.started, m.completed, m.finished, m.loop.unit, m.manifest.segments.length, m.manifest.segments.filter((s) => s.ready).length].join('|');
 
 export function Player({ textId, onChange, controlRef }: PlayerProps) {
   const { store, bus, golisten, userId, lang, session } = useApp();

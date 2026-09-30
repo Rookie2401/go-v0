@@ -82,7 +82,7 @@ export function PreparePanel({ textId }: { textId: string }) {
         <div className="prepare-body">
           <p>
             <span className={`badge band-${readiness.coverage.band}`}>{BAND_LABEL[readiness.coverage.band]}</span>{' '}
-            You already recognise {pct(readiness.coverage.knownLexicalCoverage)} of the words here; {pct(readiness.coverage.unseenCoverage)} are new to you.
+            You already recognise {pct(readiness.coverage.knownLexicalCoverage)} of the words here; {pct(readiness.coverage.partialCoverage)} you have met but do not yet know; {pct(readiness.coverage.unseenCoverage)} are new to you.
           </p>
           {readiness.prerequisites.length > 0 && (
             <>

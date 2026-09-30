@@ -28,7 +28,7 @@ src/gotell      testimony drafts/revisions, error analysis, repair/recombination
 src/db          Dexie (IndexedDB) AppStore + asset store
 src/ui, src/app React surfaces, shared reader, player, testimony editor, bootstrap
 data/corpus     tiny test corpora (story, dialogue, 1 John 1:8–9 + John 3:16) per language — structural test data only
-test/           per-package tests + test/integration (the end-to-end loop)
+test/           per-package tests + test/integration (the end-to-end loop) — 582 tests in 47 files
 ```
 
 ## Honest status

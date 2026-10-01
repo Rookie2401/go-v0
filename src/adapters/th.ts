@@ -13,7 +13,7 @@
  * where the spelling is ambiguous (the decoder says so with a low confidence instead of guessing).
  */
 import type {
-  AdapterSupport, AnalysisCandidate, AnalyzedToken, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport,
+  AdapterSupport, AnalysisCandidate, AnalysisSourceInfo, AnalyzedToken, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport,
   RawToken, SyllableAnalysis,
 } from '../core';
 import { decodeFor } from '../core';
@@ -35,6 +35,23 @@ import {
 const LANG = 'th' as const;
 const VERSION = '2';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
+
+/** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
+export const TH_SOURCE_IDS = {
+  hand: `${ANALYZER}:hand`,
+  phrases: `${ANALYZER}:phrases`,
+  constructions: `${ANALYZER}:constructions`,
+  orthExceptions: `${ANALYZER}:orth-exceptions`,
+  rules: `${ANALYZER}:rules`,
+} as const;
+
+const TH_SOURCES: Record<string, AnalysisSourceInfo> = {
+  [TH_SOURCE_IDS.hand]: { id: TH_SOURCE_IDS.hand, label: 'Course word list', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [TH_SOURCE_IDS.phrases]: { id: TH_SOURCE_IDS.phrases, label: 'Course phrase list', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [TH_SOURCE_IDS.constructions]: { id: TH_SOURCE_IDS.constructions, label: 'Course grammar patterns', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [TH_SOURCE_IDS.orthExceptions]: { id: TH_SOURCE_IDS.orthExceptions, label: "Course list of irregular words", origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [TH_SOURCE_IDS.rules]: { id: TH_SOURCE_IDS.rules, label: 'Thai spelling rules', origin: 'rule', reviewStatus: 'machine-drafted', version: VERSION },
+};
 
 const normalize = normalizeThai;
 
@@ -199,9 +216,10 @@ function contextual(i: number, tokens: RawToken[], base: AnalysisCandidate[][]):
 function annotate(a: AnalyzedToken): AnalyzedToken {
   if (!a.candidates.length) return a;
   const candidates = a.candidates.map((c) => {
+    // every candidate here came from the hand lexicon (no rule produces a candidate)
+    const next: AnalysisCandidate = { ...c, origin: 'hand', sourceId: TH_SOURCE_IDS.hand };
     const ann = c.lemma && c.pos ? ANNOTATIONS.get(annotationKey(c.lemma, c.pos)) : undefined;
-    if (!ann) return c;
-    const next: AnalysisCandidate = { ...c };
+    if (!ann) return next;
     if (ann.role) next.role = ann.role;
     if (ann.register) next.register = [...ann.register];
     if (ann.counts) next.notes = { ...(c.notes ?? {}), counts: ann.counts };
@@ -236,6 +254,8 @@ const SUPPORT: AdapterSupport = {
   productionChecks: 'limited',
   limitations: [
     'Thai sentence breaks need a newline (or two spaces) between sentences; a single space is treated as a clause pause and never splits, except inside a unit of more than 28 words.',
+    'A line break inside a sentence (a book wrapped at a fixed width) always starts a new unit: Go cannot tell a wrapped line from a paragraph end. The same holds for a dialogue turn separated from the next only by a single space, two sentences with no mark between them, and the cut between a quotation and its reporting clause: these are not decided by rule yet.',
+    'A full stop does not end a unit inside an abbreviation (พ.ศ. ดร. น. Dr. a.m.), a number or time (10.30), a list marker at the start of a unit (1.), or an ellipsis in the middle of a text; ฯ never ends a unit by itself. A short word of two or three letters followed by a full stop is read as a sentence end.',
     'Canonical text is never given spaces: segmentation reads the text as written and adds none.',
     'Word segmentation uses the ICU dictionary plus a short list of course compounds; other compounds may come out as parts. It has not been measured on running prose.',
     'Tone comes from the spelling rules (consonant class, vowel length, final, tone mark) and, when a dictionary is installed, from its pronunciation. A spelling the rules cannot settle is reported with low confidence and no tone, never a guess.',
@@ -246,30 +266,38 @@ const SUPPORT: AdapterSupport = {
   ],
 };
 
+/** decodeThaiRespelling with its provenance option (the engine's fourth argument). */
+const respell = decodeThaiRespelling as (
+  surface: string, respelling: string, ipa?: string, opts?: { source?: 'dictionary' | 'exception-list' | 'author'; sourceId?: string },
+) => SyllableAnalysis[];
+
 const decodeTh = (surface: string): SyllableAnalysis[] => decodeThai(normalize(surface));
 
 /**
  * The dictionary's phonemic respelling is the better guide where the spelling is irregular; with IPA alone, the
  * tone letters decide the tone (and a disagreement with the spelling rule is flagged and capped at 0.7).
  */
-function decodeThWithPronunciation(surface: string, pron: { respelling?: string; ipa?: string }): SyllableAnalysis[] {
+function decodeThWithPronunciation(surface: string, pron: { respelling?: string; ipa?: string }, sourceId?: string): SyllableAnalysis[] {
   const s = normalize(surface);
+  const opts = sourceId ? { source: 'dictionary' as const, sourceId } : { source: 'dictionary' as const };
   if (pron.respelling) {
-    const out = decodeThaiRespelling(s, pron.respelling, pron.ipa);
+    const out = respell(s, pron.respelling, pron.ipa, opts);
     if (out.length) return out;
   }
   const base = decodeThai(s);
   if (!pron.ipa || !base.length) return base;
   const tones = tonesFromIpa(pron.ipa);
   if (tones.length !== base.length) return base;
+  const fromDictionary = { source: 'dictionary' as const, ...(sourceId ? { sourceId } : {}) };
   return base.map((syl, k) => {
     const t = tones[k];
     if (!t || t === syl.tone) return syl;
     if (syl.tone === undefined) {
-      return { ...syl, tone: t, rule: 'tone taken from the dictionary pronunciation', confidence: Math.max(syl.confidence, 0.75) };
+      return { ...syl, tone: t, rule: 'tone taken from the dictionary pronunciation', confidence: Math.max(syl.confidence, 0.75), ...fromDictionary };
     }
     return {
-      ...syl, tone: t, irregular: true, confidence: Math.min(syl.confidence, 0.7),
+      ...syl, tone: t, irregular: true, confidence: Math.min(syl.confidence, 0.7), ...fromDictionary,
+      ...(syl.confidence >= 0.8 ? { ruleTone: syl.tone } : {}),
       rule: `tone taken from the dictionary pronunciation (the spelling rule gives ${syl.tone})`,
     };
   });
@@ -283,6 +311,7 @@ export const thAdapter: LanguageAdapter = {
   script: 'Thai',
   version: VERSION,
   support: SUPPORT,
+  sources: TH_SOURCES,
 
   segmentSentences: segmentThaiProse,
   tokenize: thaiTokenize,

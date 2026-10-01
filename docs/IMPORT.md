@@ -290,6 +290,15 @@ plus `corpus.kind: "scripture"`, `generated: false`, rights actually established
 `verseRefs` on every sentence, and a `provenance` saying exactly how the wording was checked. **Never type verse
 text from memory** — the bundled samples that were typed from memory turned out to be wrong in every Spanish verse.
 
+### A draft translation: technical fixture only
+
+A draft translation may be imported **only** as a labelled technical fixture, to exercise the Scripture pipeline:
+`"scripture": { …, "role": "technical-fixture", "fixtureNote": "draft translation" }` (`role` defaults to `"course"`;
+`fixtureNote` is required, error `scripture-fixture-note`; the role is only valid on `contentType: "scripture"`). A fixture is
+**never published**, even with established rights and verified wording: its `unpublishedReasons` start with "technical fixture
+for testing the Scripture pipeline — not the course Bible (<fixtureNote>)", followed by whatever else is missing, so the other
+checks stay visible. The stored Text carries the editorial tag `technical-fixture` so preview mode can label it.
+
 ### Verifying the wording
 
 `node scripts/verify-scripture.mjs` fetches the published source (eBible.org pages for the translations listed in
@@ -530,8 +539,22 @@ entries:
   and **0.45** when it has several — a dictionary lists what a form can mean, not what it means here;
 * analyzer `dict:<dictionary id>`, provenance `lexicon`.
 
+**Beside the hand lexicon.** The pre-pass looks up every word form, also those the adapter analyses. For such a word the
+stored analysis keeps the adapter's candidate first and unchanged and the dictionary's entries are added as `alternatives`
+(`origin: "dictionary"`, `sourceId` = the dictionary id, their own `gloss`, `pos`, confidence as above). Only when the
+adapter's candidate has no pronunciation notes (`respelling`, `ipa`, `translit`, `romanization`) does the first dictionary
+reading's `notes.respelling` / `notes.ipa` appear, with `notes.pronunciationSource` = the dictionary id. When the entries of
+a form list more than one reading, `notes.readings` holds the respellings (first first; beside a hand analysis with
+`notes.readingsSource`). Nothing of the hand analysis is replaced, the dictionary never fills a hand lemma's gloss, and
+phrase / pattern detection sees the adapter's analysis only.
+
+**Origins.** Every stored `TokenAnalysis` (and alternative) has `origin` and `sourceId`: an adapter candidate its own
+(fallback `hand` — or `rule` when `notes.source` is `rule` — of `adapter-<lang>@<version>`); a dictionary candidate
+`dictionary` + the dictionary id; an author span `corpus` + `import@2`; a correction `reviewed` + `human:<by>` (it
+supersedes the row below it, which is kept). The coarse `provenance` and its ranking are unchanged.
+
 **Precedence:** the adapter's own lexicon, author `spans` and human `corrections` always win; the dictionary only fills
-gaps. `register`, `role` and `definition` are carried onto the stored `TokenAnalysis` from any candidate (adapter or
+gaps and stands beside the rest. `register`, `role` and `definition` are carried onto the stored `TokenAnalysis` from any candidate (adapter or
 dictionary); syllables are never stored (decoded on demand). Validation stays dictionary-free; the import report's
 `analysisCoverage` includes what the dictionary supplied. The dictionary id is part of the plan signature, so installing,
 changing or removing a dictionary re-analyses a text on its next import (and adds a log record); the same dictionary again is

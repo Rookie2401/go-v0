@@ -55,6 +55,13 @@ export interface DocScripture {
   chapter: number;
   /** How the exact wording was established (see data/verified/scripture.json). Absent ⇒ never published. */
   verification?: SourceVerification;
+  /**
+   * 'course' (default): the course Bible. 'technical-fixture': a draft translation used ONLY to test the Scripture pipeline;
+   * it is never published and never presented as the course Bible (needs `fixtureNote`).
+   */
+  role?: 'course' | 'technical-fixture';
+  /** Why it is only a fixture ("draft translation"). Required for a technical fixture; shown in the reasons it is not published. */
+  fixtureNote?: string;
 }
 
 export interface DocSpan {
@@ -190,7 +197,7 @@ export type ValidationCode =
   | 'span-empty' | 'span-out-of-bounds' | 'span-overlap' | 'span-not-grapheme-boundary' | 'span-not-on-token'
   | 'invalid-verse-ref' | 'verse-order' | 'verse-chapter-mismatch' | 'missing-verse-refs' | 'verse-marker-in-text'
   | 'scripture-translation-missing' | 'scripture-edition-missing' | 'scripture-book-invalid' | 'scripture-chapter-invalid'
-  | 'scripture-corpus' | 'scripture-generated' | 'invalid-verification'
+  | 'scripture-corpus' | 'scripture-generated' | 'invalid-verification' | 'scripture-fixture-note'
   | 'missing-provenance' | 'unverified-without-note' | 'review-missing-reviewer'
   | 'review-signature-mismatch' | 'not-nfc' | 'edge-whitespace' | 'adapter-would-split' | 'low-analysis-coverage'
   | 'unknown-work' | 'note-anchor-missing' | 'note-not-on-token'
@@ -464,6 +471,9 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
       if (!isStr(sc.edition)) err('scripture.edition', 'scripture-edition-missing', 'scripture.edition is required', 'Name the edition (e.g. "1909 revision").');
       if (!isStr(sc.book) || !USFM_BOOKS.includes(sc.book)) err('scripture.book', 'scripture-book-invalid', `scripture.book "${String(sc.book)}" is not a USFM book code`, 'Use a USFM code such as "JHN" or "1JN".');
       if (!isInt(sc.chapter) || sc.chapter < 1) err('scripture.chapter', 'scripture-chapter-invalid', 'scripture.chapter must be a positive integer', 'Give the first chapter number of the text.');
+      if (sc.role !== undefined && sc.role !== 'course' && sc.role !== 'technical-fixture') err('scripture.role', 'invalid-value', 'scripture.role must be "course" or "technical-fixture"', 'Omit it for the course Bible; use "technical-fixture" only for a draft translation used to test the pipeline.');
+      if (sc.role === 'technical-fixture' && !isStr(sc.fixtureNote)) err('scripture.fixtureNote', 'scripture-fixture-note', 'a technical fixture needs scripture.fixtureNote saying why it is only a fixture', 'Add e.g. "fixtureNote": "draft translation"; a technical fixture is never published and never the course Bible.');
+      if (sc.fixtureNote !== undefined && typeof sc.fixtureNote !== 'string') err('scripture.fixtureNote', 'invalid-value', 'scripture.fixtureNote must be a string', 'Say why the text is only a fixture, or omit it.');
       if (sc.verification !== undefined) {
         const v = sc.verification;
         if (!isObj(v) || !isStr(v.against) || !isStr(v.checkedAt) || !isStr(v.by) || !VERIFY_METHODS.includes(v.method as string)) {
@@ -472,6 +482,7 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
       }
     }
   } else if (d.scripture !== undefined) {
+    if (isObj(d.scripture) && d.scripture.role === 'technical-fixture') err('scripture.role', 'invalid-value', 'a technical fixture is only valid on contentType "scripture"', 'Set contentType to "scripture", or remove the role.');
     warn('scripture', 'unknown-field', 'scripture block on a non-scripture text is ignored', 'Remove it or set contentType to "scripture".');
   }
 

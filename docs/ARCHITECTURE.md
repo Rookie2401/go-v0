@@ -278,3 +278,26 @@ Design: `docs/THAI_COURSE.md`. Briefs: `docs/PLAN5.md`. Status: `docs/READINESS.
     (`READINESS` in `src/golearn/policy.ts`) and finishing texts never suffices.
 42. **Scripture is a parallel corpus.** Outside the ladder, on the same learner model, with the profile of the
     stage the learner works at.
+
+## 16. Thai substrate validation (contract v6)
+
+Briefs: `docs/PLAN6.md`. Results: `docs/READINESS.md`, `docs/thai/DICTIONARY_REPORT.md`, `docs/thai/BENCHMARKS.md`.
+
+43. **Every analysis has an origin.** `TokenAnalysis.origin` (`rule` · `hand` · `dictionary` · `corpus` · `reviewed`)
+    and `sourceId`; an adapter names its own sources and their review state (`LanguageAdapter.sources`). The reader
+    shows a provenance line only for adapters that declare sources, so the other courses are unchanged.
+44. **A dictionary is a separate layer, asked at display time.** Its entries are never copied onto token
+    occurrences (measured: that doubled stored analysis); a hand-analysed word carries only a marker and, when the
+    adapter has none of its own, the pronunciation the learner model needs. Senses, pronunciations and their labels
+    are kept as imported; the manifest records source URL, date, checksum and licence.
+45. **Disagreements are records, not decisions.** `SourceDisagreement` rows are generated (`npm run dict:compare`)
+    and stay open until a named person writes a resolution; nothing is chosen silently.
+46. **A reading names its source.** `SyllableAnalysis.source` / `sourceId`, and `ruleTone` keeps the rules' own
+    confident answer beside a dictionary reading that differs.
+47. **Measured conservatism.** The tone engine is tuned on one half of the dictionary's words and judged on the
+    other (`npm run tones:eval -- --split dev|test`); confidence is capped wherever the spelling does not settle
+    the reading.
+48. **Segmentation is a release gate with its own instruments.** Gold formats, boundary metrics with every error
+    retained, pluggable systems (including an external tokenizer's output), a derived rights-safe set, and the
+    tooling for a manually checked, held-out course gold set (`src/bench`, never part of the app bundle).
+49. **A technical fixture is not Scripture.** `scripture.role: 'technical-fixture'` can never be published.

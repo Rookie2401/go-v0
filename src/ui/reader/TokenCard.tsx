@@ -11,10 +11,11 @@
  * Nothing here emits events or fetches evidence: the Reader opens layers and emits (see Reader.tsx).
  */
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { ContentNote, HelpLayer, LanguageCode, Sentence, SyllableAnalysis, Token, TokenSupport } from '../../core';
+import type { DictionaryView } from './assistance';
+import type { AnalysisSourceInfo, ContentNote, DictionaryInfo, HelpLayer, LanguageCode, Sentence, SyllableAnalysis, Token, TokenSupport } from '../../core';
 import { useApp } from '../context';
 import { I, IconBtn } from '../ui';
-import { MORE_LABEL, NOTE_KIND_LABEL, clauseSegments, hasClauseSpans, maxLevel, noteIsReviewed, pick, roleText, varietyLine } from './assistance';
+import { MORE_LABEL, NOTE_KIND_LABEL, analysisSourceLine, clauseSegments, decodingSourceLine, dictionaryName, dictionaryOthers, hasClauseSpans, listsDiffer, maxLevel, noteIsReviewed, pick, roleText, varietyLine } from './assistance';
 
 /** Below this the engine says "uncertain" (the same line GoLearn draws for an analysis). */
 const UNCERTAIN_BELOW = 0.6;
@@ -30,6 +31,8 @@ export interface DecodingView {
   canRescue: boolean;
   /** The learner pressed the rescue button. */
   rescued: boolean;
+  /** `notes.readings` lists more than one reading of the word. */
+  severalReadings?: boolean;
   /** The romanization to show once rescued; undefined = the word has none. */
   romanization?: string;
 }
@@ -59,6 +62,12 @@ export interface TokenCardProps {
   /** Whether the profile shows clause-structure notes as a labelled view. */
   clauseView: boolean;
   decoding: DecodingView;
+  /** The adapter's own sources (`adapter.sources`), to name where a hand-written analysis comes from. */
+  sources?: Readonly<Record<string, AnalysisSourceInfo>>;
+  /** The dictionary beside the hand lexicon, when the analysis or its alternatives came from it. */
+  dictionary?: DictionaryInfo;
+  /** What the installed dictionary lists for this form (looked up when the sheet opened); absent while pending or when it has nothing. */
+  dictionaryView?: DictionaryView;
   /** Lines from the learner's own record with this word (`golearn.itemHistory`). */
   history: string[];
   /** The sheet is up. When false it plays its exit, then calls onExited. */
@@ -71,7 +80,7 @@ export interface TokenCardProps {
 }
 
 export function TokenCard(props: TokenCardProps) {
-  const { subject, legacy, opened, next, supports, loaded, explanation, english, why, lang, sentence, notes, clauseView, decoding, history, open, onMore, onRescue, onClose, onExited } = props;
+  const { subject, legacy, opened, next, supports, loaded, explanation, english, why, lang, sentence, notes, clauseView, decoding, sources, dictionary, dictionaryView, history, open, onMore, onRescue, onClose, onExited } = props;
   const { store } = useApp();
   const token = subject.kind === 'word' ? subject.token : undefined;
   const level = maxLevel(opened);
@@ -142,6 +151,11 @@ export function TokenCard(props: TokenCardProps) {
   const dialogLabel = subject.kind === 'word' ? `Help for ${subject.token.surface}` : `Notes for sentence ${subject.sentence.index + 1}`;
   const senses = !legacy ? sensesOf(analysis?.notes?.senses) : [];
   const variety = !legacy ? varietyLine(analysis?.register) : undefined;
+  const sourceLine = analysisSourceLine(analysis, sources, dictionary);
+  const others = dictionaryOthers(analysis, dictionaryView);
+  const differ = listsDiffer(analysis, gloss, dictionaryView);
+  const [altOpen, setAltOpen] = useState(false);
+  useEffect(() => { setAltOpen(false); }, [token?.id]);
   const fromDictionary = !legacy && !!analysis?.analyzer?.startsWith('dict:');
 
   return (
@@ -176,6 +190,7 @@ export function TokenCard(props: TokenCardProps) {
                 : <p className="card__note">No gloss for this word yet.</p>
             )}
             {fromDictionary && gloss && <p className="card__note" data-testid="dictionary-gloss">dictionary meaning, not checked for this sentence</p>}
+            {sourceLine && <p className="card__note sheet__source" data-testid="analysis-source">{sourceLine}</p>}
             {variety && <p className="card__note sheet__variety" data-testid="variety">{variety}</p>}
             {uncertain && anyLoaded && <p className="card__note">The analysis here is uncertain.</p>}
             {!legacy && analysis?.role && (
@@ -191,6 +206,21 @@ export function TokenCard(props: TokenCardProps) {
                 {otherMeanings && <ul className="sheet__list" aria-label="Other meanings">{senses.map((s) => <li key={s}>{s}</li>)}</ul>}
               </div>
             )}
+            {others.glosses.length > 0 && (
+              <div className="sheet__alts">
+                <button type="button" className="btn btn--small btn--quiet" aria-expanded={altOpen} onClick={() => setAltOpen((v) => !v)}>{dictionaryName(dictionary) ?? 'The dictionary'} also lists</button>
+                {altOpen && (
+                  <>
+                    <ul className="sheet__list" aria-label="Dictionary alternatives">
+                      {others.items.map((alt, i) => <li key={`${i}:${alt.gloss}`}>{alt.gloss}{alt.pos ? <span className="faint"> ({alt.pos.toLowerCase()})</span> : null}</li>)}
+                    </ul>
+                    {!others.stored && others.pos.length > 0 && <p className="card__note">In the dictionary: {others.pos.map((x) => x.toLowerCase()).join(', ')}</p>}
+                    {dictionary?.attribution && <p className="card__note">{dictionary.attribution}</p>}
+                  </>
+                )}
+              </div>
+            )}
+            {differ && <p className="card__note" data-testid="lists-differ">The course word list and the dictionary differ here.</p>}
             {why && <p className="card__prov" aria-label="What Go knows about this word" data-testid="word-why">{why}</p>}
           </section>
 
@@ -333,6 +363,8 @@ function DecodingSection({ decoding, loaded, lang, onRescue }: { decoding: Decod
         <p className="card__text" data-testid="cannot-decode">Go cannot decode this spelling reliably.</p>
       ) : (
         <>
+          {decodingSourceLine(syllables) && <p className="card__note" data-testid="decoding-source">{decodingSourceLine(syllables)}</p>}
+          {decoding.severalReadings && <p className="card__text" data-testid="several-readings">This word has more than one reading.</p>}
           {syllables.some((s) => s.respelled) && <p className="card__text" data-testid="not-as-spelled">This word is not read exactly as it is spelled.</p>}
           <ol className="decode" aria-label="Syllables">
             {syllables.map((s, i) => <SyllableRow key={`${s.start}-${i}`} s={s} lang={lang} />)}
@@ -389,6 +421,7 @@ function SyllableRow({ s, lang }: { s: SyllableAnalysis; lang?: LanguageCode }) 
       <div className="card__line"><span className="k">Tone mark</span><span lang={s.toneMark ? lang : undefined}>{s.toneMark ?? 'none'}</span></div>
       <div className="card__line"><span className="k">Tone</span><span>{s.tone ?? 'not decided — Go will not guess'}</span></div>
       {s.rule && <p className="card__text decode__rule">{s.rule}</p>}
+      {s.ruleTone && <p className="card__note" data-testid="rule-tone">The spelling rules alone would give {s.ruleTone}.</p>}
     </li>
   );
 }

@@ -4,7 +4,7 @@
  */
 import { describe, expect, it } from 'vitest';
 import { COURSES } from '../../src/core';
-import { THAI_ASSISTANCE, THAI_COURSE_ID, THAI_OUTSIDE_LADDER, THAI_STAGES, THAI_WORKS } from '../../src/course/thai';
+import { THAI_ASSISTANCE, THAI_AUDIO_POLICY, THAI_COURSE_ID, THAI_OUTSIDE_LADDER, THAI_SCRIPTURE_POLICY, THAI_STAGES, THAI_WORKS } from '../../src/course/thai';
 
 describe('Thai ladder manifest', () => {
   it('belongs to the Thailand course and runs Stage 0, Grades 1–9, then open reading', () => {
@@ -71,5 +71,17 @@ describe('Thai ladder manifest', () => {
   it('keeps Scripture and testimony outside the numbered ladder', () => {
     expect(THAI_OUTSIDE_LADDER).toContain('scripture');
     expect(THAI_WORKS.some((w) => w.role === 'scripture')).toBe(false);
+  });
+
+  it('records the Scripture and audio policy without unblocking anything', () => {
+    expect(THAI_SCRIPTURE_POLICY.declined).toMatchObject({ id: 'THSV11', status: 'permission-declined', canBundleText: false, canBundleAudio: false, externalLinkOnly: true });
+    // the named replacement is a candidate only: nothing is bundled until its release metadata is verified
+    expect(THAI_SCRIPTURE_POLICY.candidate).toMatchObject({ status: 'candidate-unverified', canBundleText: false, canBundleAudio: false });
+    expect(THAI_SCRIPTURE_POLICY.candidate.releaseId).toBeUndefined();
+    expect(THAI_SCRIPTURE_POLICY.technicalFixture).toMatchObject({ status: 'technical-fixture-only', draftTranslation: true });
+    expect(THAI_SCRIPTURE_POLICY.notApproved).toEqual(expect.arrayContaining(['Thai KJV', 'TH1940']));
+    expect(THAI_AUDIO_POLICY.bundledRecordings).toBe('none');
+    // no work of the ladder claims audio that may be bundled
+    for (const w of THAI_WORKS) expect(w.rights.canBundle, w.title).toBe(false);
   });
 });

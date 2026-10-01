@@ -18,6 +18,9 @@ import { decodeFor } from '../../src/core';
 import { thAdapter } from '../../src/adapters/th';
 import { run } from './helpers';
 
+// the adapter's optional third argument (the dictionary id), beyond the two-argument contract
+const withId = thAdapter.decodeWithPronunciation as (s: string, p: { respelling?: string; ipa?: string }, sourceId?: string) => SyllableAnalysis[];
+
 const syl = (over: Partial<SyllableAnalysis> = {}): SyllableAnalysis => ({
   text: 'ขา', start: 0, end: 2, ending: 'open', tone: 'rising', confidence: 0.95, romanization: 'kha', ipa: 'kʰǎː', ...over,
 });
@@ -43,7 +46,7 @@ describe('Thai adapter: decoding hooks', () => {
     const out = [syl({ irregular: true })];
     engine.decodeThaiRespelling.mockReturnValue(out);
     expect(thAdapter.decodeWithPronunciation!('ขนม', { respelling: 'ขะ-หฺนม', ipa: '/kʰa˨˩.nom˩˩˦/' })).toBe(out);
-    expect(engine.decodeThaiRespelling).toHaveBeenCalledWith('ขนม', 'ขะ-หฺนม', '/kʰa˨˩.nom˩˩˦/');
+    expect(engine.decodeThaiRespelling).toHaveBeenCalledWith('ขนม', 'ขะ-หฺนม', '/kʰa˨˩.nom˩˩˦/', { source: 'dictionary' });
     expect(engine.decodeThai).not.toHaveBeenCalled();
   });
 
@@ -88,9 +91,36 @@ describe('Thai adapter: decoding hooks', () => {
     engine.decodeThaiRespelling.mockReturnValue([syl({ irregular: true })]);
     const out = decodeFor(thAdapter, 'ขนม', { notes: { respelling: 'ขะ-หฺนม', ipa: '/y/' } });
     expect(out).toHaveLength(1);
-    expect(engine.decodeThaiRespelling).toHaveBeenCalledWith('ขนม', 'ขะ-หฺนม', '/y/');
+    expect(engine.decodeThaiRespelling).toHaveBeenCalledWith('ขนม', 'ขะ-หฺนม', '/y/', { source: 'dictionary' });
     // an author-supplied decoding wins over everything
     expect(decodeFor(thAdapter, 'ขนม', { syllables: [syl({ text: 'ก' })] })[0].text).toBe('ก');
+  });
+
+  it('passes the dictionary id to the engine as the source of the reading and returns the engine provenance untouched', () => {
+    const out = [syl({ source: 'dictionary', sourceId: 'kaikki-th@2026-09-28', ruleTone: 'low' })];
+    engine.decodeThaiRespelling.mockReturnValue(out);
+    const got = withId('ขนม', { respelling: 'ขะ-หฺนม', ipa: '/x/' }, 'kaikki-th@2026-09-28');
+    expect(got).toBe(out);
+    expect(engine.decodeThaiRespelling).toHaveBeenCalledWith('ขนม', 'ขะ-หฺนม', '/x/', { source: 'dictionary', sourceId: 'kaikki-th@2026-09-28' });
+  });
+
+  it('decode returns the engine source untouched', () => {
+    const out = [syl({ source: 'exception-list', sourceId: 'adapter-th:orth-exceptions' })];
+    engine.decodeThai.mockReturnValue(out);
+    expect(thAdapter.decode!('น้ำ')).toBe(out);
+    expect(thAdapter.decode!('น้ำ')[0].source).toBe('exception-list');
+  });
+
+  it('IPA alone: a tone taken from the dictionary is marked dictionary, with the rule tone kept when it was confident', () => {
+    engine.decodeThai.mockReturnValue([syl({ tone: 'rising', confidence: 0.9 }), syl({ tone: 'high', confidence: 0.6 }), syl({ tone: undefined, confidence: 0.4 }), syl({ tone: 'mid', confidence: 0.9 })]);
+    engine.tonesFromIpa.mockReturnValue(['mid', 'low', 'falling', 'mid']);
+    const out = withId('กกกก', { ipa: '/x/' }, 'kaikki-th@d');
+    expect(out[0]).toMatchObject({ tone: 'mid', source: 'dictionary', sourceId: 'kaikki-th@d', ruleTone: 'rising', irregular: true });
+    expect(out[1]).toMatchObject({ tone: 'low', source: 'dictionary', sourceId: 'kaikki-th@d' });
+    expect(out[1].ruleTone).toBeUndefined(); // the rule was not confident enough to be quoted
+    expect(out[2]).toMatchObject({ tone: 'falling', source: 'dictionary' });
+    expect(out[2].ruleTone).toBeUndefined();
+    expect(out[3].source).toBeUndefined(); // the dictionary only agreed: the syllable is left as the rules gave it
   });
 
   it('orthFeatures and describeOrthFeature are the engine\'s', () => {

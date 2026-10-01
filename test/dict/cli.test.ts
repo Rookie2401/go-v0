@@ -17,16 +17,21 @@ afterAll(() => { fs.rmSync(root, { recursive: true, force: true }); });
 describe('npm run dict:build (scripts/dict-build.mts)', () => {
   it('builds the fixture, prints the counts, and the result is readable by the file source', async () => {
     const outDir = path.join(root, 'ok');
-    const r = run('--', '--in', FIXTURE, '--lang', 'th', '--out', outDir, '--date', DATE);
+    const r = run('--', '--in', FIXTURE, '--lang', 'th', '--out', outDir, '--date', DATE,
+      '--source-url', 'https://example.test/f.jsonl', '--last-modified', '2026-09-28', '--retrieved', '2026-09-30');
     expect(r.status).toBe(0);
-    expect(r.out).toMatch(new RegExp(`dict:build - kaikki-th@${DATE}`));
-    expect(r.out).toMatch(/input lines:\s+51/);
+    expect(r.out).toMatch(/dict:build - kaikki-th@2026-09-28 \(schema 2\)/);
+    expect(r.out).toMatch(/input lines:\s+71/);
     expect(r.out).toMatch(/malformed lines:\s+2/);
-    expect(r.out).toMatch(/not-an-object 2, no-word 1, wrong-language 1, no-gloss 3/);
-    expect(r.out).toMatch(/42 lines -> 40 entries/);
+    expect(r.out).toMatch(/not-an-object 2, no-word 1, wrong-language 1, no-gloss 3, non-word 3 \(non-word: character 1, symbol 1, punct 1\)/);
+    expect(r.out).toMatch(/59 lines -> 58 entries \(50 forms\)/);
+    expect(r.out).toMatch(/1 entries with unpaired pronunciation rows/);
+    expect(r.out).toMatch(/sha256 [0-9a-f]{64}/);
     expect(r.out).toMatch(/CC BY-SA 4\.0/);
     const src = createFileLexiconSource(outDir, 'th');
-    expect((await src.info())?.entries).toBe(40);
+    const info = await src.info();
+    expect(info?.entries).toBe(58);
+    expect(info?.source).toMatchObject({ url: 'https://example.test/f.jsonl', file: 'kaikki-th-sample.jsonl', lastModified: '2026-09-28', retrievedAt: '2026-09-30', lines: 72 });
     expect((await src.lookup(['ขนม'])).get('ขนม')?.[0].pos).toBe('NOUN');
   }, 120_000);
 
@@ -50,6 +55,8 @@ describe('npm run dict:build (scripts/dict-build.mts)', () => {
       ['--in', FIXTURE, '--lang', 'th', '--out', outDir, '--date', '30/09/2026'],
       ['--in', path.join(root, 'does-not-exist.jsonl'), '--lang', 'th', '--out', outDir],
       ['--in', FIXTURE, '--lang', 'th', '--out', outDir, '--bogus', 'x'],
+      ['--in', FIXTURE, '--lang', 'th', '--out', outDir, '--last-modified', 'yesterday'],
+      ['--in', FIXTURE, '--lang', 'th', '--out', outDir, '--retrieved', '2026/09/30'],
     ];
     for (const args of cases) {
       const r = run(...args);

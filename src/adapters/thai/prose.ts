@@ -15,7 +15,7 @@
  * grammarian's sentence: this is a way to keep a paragraph from being one unreadable block.
  */
 import type { Span } from '../../core';
-import { segmentThaiSentences, thaiTokenize } from './text';
+import { pairedRanges, segmentThaiSentences, thaiTokenize } from './text';
 
 export const PROSE_MAX_WORDS = 28;
 const MIN_BEFORE = 6;
@@ -25,29 +25,7 @@ const PREFERRED_BEFORE = 10;
 export const PROSE_CONNECTIVES: readonly string[] = ['แต่', 'แล้ว', 'และ', 'เพราะ', 'จึง', 'ถ้า', 'เมื่อ', 'ส่วน', 'ดังนั้น', 'ก็'];
 const CONNECTIVE_SET = new Set(PROSE_CONNECTIVES);
 
-const OPEN_TO_CLOSE: Record<string, string> = { '(': ')', '[': ']', '{': '}', '«': '»', '“': '”', '‘': '’', '「': '」', '『': '』', '《': '》' };
-const CLOSERS = new Set(Object.values(OPEN_TO_CLOSE));
 const FORBIDDEN_NEIGHBOUR = /[\p{Nd}\p{Script=Latin}ๆฯ]/u;
-
-/** Index ranges [open, close] of quotes and brackets that open and close inside the text. */
-function protectedRanges(text: string): Array<[number, number]> {
-  const ranges: Array<[number, number]> = [];
-  const stack: Array<{ close: string; at: number }> = [];
-  let quoteOpen = -1;
-  for (let i = 0; i < text.length; i++) {
-    const ch = text[i];
-    if (ch === '"') {
-      if (quoteOpen < 0) quoteOpen = i; else { ranges.push([quoteOpen, i]); quoteOpen = -1; }
-    } else if (OPEN_TO_CLOSE[ch]) {
-      stack.push({ close: OPEN_TO_CLOSE[ch], at: i });
-    } else if (CLOSERS.has(ch)) {
-      for (let k = stack.length - 1; k >= 0; k--) {
-        if (stack[k].close === ch) { ranges.push([stack[k].at, i]); stack.length = k; break; }
-      }
-    }
-  }
-  return ranges;
-}
 
 function divide(span: Span): Span[] {
   const text = span.text;
@@ -55,7 +33,7 @@ function divide(span: Span): Span[] {
   const words = tokens.filter((t) => t.isWord);
   if (words.length <= PROSE_MAX_WORDS) return [span];
 
-  const ranges = protectedRanges(text);
+  const ranges = pairedRanges(text);
   const startsAt = new Map<number, string>();
   for (const t of tokens) startsAt.set(t.start, t.normalized);
   const wordsBetween = (a: number, b: number): number => words.filter((w) => w.start >= a && w.end <= b).length;

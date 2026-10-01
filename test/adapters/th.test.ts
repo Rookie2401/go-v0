@@ -113,7 +113,10 @@ describe('Thai adapter', () => {
       expect(th.segmentSentences('ฉันรักพระเจ้า  ฉันเชื่อ').map((s) => s.text)).toEqual(['ฉันรักพระเจ้า', 'ฉันเชื่อ']);
       expect(th.segmentSentences('บรรทัดหนึ่ง\nบรรทัดสอง').map((s) => s.text)).toEqual(['บรรทัดหนึ่ง', 'บรรทัดสอง']);
       expect(th.segmentSentences('คุณเชื่อไหม? ฉันเชื่อ').map((s) => s.text)).toEqual(['คุณเชื่อไหม?', 'ฉันเชื่อ']);
-      expect(th.segmentSentences('กรุงเทพฯ ใหญ่').length).toBe(2);
+      // ฯ is an abbreviation mark, not a full stop: it ends a unit only before two spaces or a line break
+      expect(th.segmentSentences('กรุงเทพฯ ใหญ่').length).toBe(1);
+      expect(th.segmentSentences('กรุงเทพฯ  ใหญ่').length).toBe(2);
+      expect(th.segmentSentences('กรุงเทพฯ\nใหญ่').length).toBe(2);
       expect(th.segmentSentences('ดีมาก ฯลฯ และอื่นๆ').length).toBe(1);
     });
     it('spans slice the input exactly', () => {

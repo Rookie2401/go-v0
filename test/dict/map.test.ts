@@ -53,8 +53,8 @@ describe('entryFromKaikki: fields', () => {
     expect(pos('num')).toBe('NUM');
     expect(pos('intj')).toBe('INTJ');
     expect(pos('classifier')).toBe('CLF');
-    expect(pos('phrase')).toBeUndefined();
-    expect(pos('character')).toBeUndefined();
+    expect(pos('phrase')).toBe('X'); // with a role: see the "units" test
+    expect(pos('pronoun-ish')).toBeUndefined();
     expect(pos(7)).toBeUndefined();
     expect(pos(undefined)).toBeUndefined();
   });
@@ -95,6 +95,124 @@ describe('entryFromKaikki: fields', () => {
     expect(e.respelling).toBe('pho-nem');
     expect(e.ipa).toBe('/x/');
     expect(map(base({ sounds: [{ other: 'orth', raw_tags: ['Orthographic'] }] }))[0].respelling).toBeUndefined();
+  });
+});
+
+describe('entryFromKaikki: the real shapes (PLAN6)', () => {
+  const sound = (raw_tags: string[], extra: Record<string, unknown> = {}) => ({ raw_tags, ...extra });
+
+  it('units get part of speech X and a role; characters, symbols and punctuation are skipped as non-words', () => {
+    for (const [pos, role] of [['phrase', 'phrase'], ['proverb', 'proverb'], ['prep_phrase', 'prepositional phrase'], ['prefix', 'prefix'], ['suffix', 'suffix'], ['infix', 'infix']]) {
+      expect(map(base({ pos }))[0]).toMatchObject({ pos: 'X', role });
+    }
+    for (const pos of ['character', 'symbol', 'punct']) {
+      expect(mapKaikkiLine(base({ pos }), id)).toEqual({ skipped: 'non-word', nonWordPos: pos });
+    }
+    expect(map(base({ pos: 'name' }))[0].pos).toBe('PROPN');
+    expect(map(base({ pos: 'noun' }))[0].role).toBeUndefined();
+  });
+
+  it('keeps every sense with verbatim tags (tags then raw_tags), topics and the example count; glosses stays short', () => {
+    const e = map(base({ senses: [
+      { glosses: ['one'], tags: ['Formal', 'transitive'], raw_tags: ['of a god'], topics: ['religion', 'religion', 'law'], examples: [{ text: 'x' }, { text: 'y' }, 5] },
+      { glosses: ['two'] },
+      { glosses: ['spelling of z'], tags: ['alt-of'], alt_of: [{ word: 'z' }] },
+    ] }))[0];
+    expect(e.glosses).toEqual(['one', 'two']);
+    expect(e.senses).toEqual([
+      { gloss: 'one', tags: ['Formal', 'transitive', 'of a god'], topics: ['religion', 'law'], examples: 3 },
+      { gloss: 'two' },
+      { gloss: 'spelling of z', tags: ['alt-of'] },
+    ]);
+    expect(e.register).toEqual(['formal']);
+    expect(e.altOf).toEqual(['z']);
+  });
+
+  it('the full gloss chain is kept in the sense; the short view uses the first, or first + second after a label', () => {
+    const e = map(base({ senses: [{ glosses: ['broad', 'narrow'] }, { glosses: ['Lao:', 'the language'] }] }))[0];
+    expect(e.glosses).toEqual(['broad', 'Lao: the language']);
+    expect(e.senses!.map((s) => s.gloss)).toEqual(['broad — narrow', 'Lao: — the language']);
+  });
+
+  it('classifiers are read from the head template expansion when it states them, not otherwise', () => {
+    const head = (expansion: string) => ({ head_templates: [{ name: 'th-noun', args: {}, expansion }] });
+    expect(map(base(head('จาน • (jaan) (classifier ใบ or ลูก)')))[0].classifiers).toEqual(['ใบ', 'ลูก']);
+    expect(map(base(head('รูป • (rûup) (classifier รูป)')))[0].classifiers).toEqual(['รูป']);
+    expect(map(base(head('ไหม • (mǎi)')))[0].classifiers).toBeUndefined();
+    expect(map(base({ head_templates: 'x' }))[0].classifiers).toBeUndefined();
+    expect(map(base({ head_templates: [null, { expansion: 5 }] }))[0].classifiers).toBeUndefined();
+  });
+
+  it('etymology number and alt-of headwords', () => {
+    expect(map(base({ etymology_number: 2 }))[0].etymology).toBe(2);
+    expect(map(base({ etymology_number: 0 }))[0].etymology).toBeUndefined();
+    expect(map(base({ etymology_number: '2' }))[0].etymology).toBeUndefined();
+    expect(map(base())[0].etymology).toBeUndefined();
+    const alt = map(base({ senses: [{ glosses: ['a'], tags: ['alt-of'], alt_of: [{ word: 'p' }, { word: 'p' }, { word: 'q', extra: 'e' }, 3, {}] }] }))[0];
+    expect(alt.altOf).toEqual(['p', 'q']);
+    expect(map(base())[0].altOf).toBeUndefined();
+  });
+
+  it('Orthographic/Phonemic is one tag: read as written, the respelling is the word', () => {
+    const e = map(base({ word: 'ขอบคุณ', sounds: [sound(['Orthographic/Phonemic'], { other: 'ขอบคุณ', roman: 'r' }), sound(['Paiboon'], { roman: 'kɔ̀ɔp-kun' }), { ipa: '/i/' }] }))[0];
+    expect(e.pronunciations).toEqual([{ respelling: 'ขอบคุณ', ipa: '/i/', romanization: 'kɔ̀ɔp-kun', asWritten: true }]);
+    expect(e.respelling).toBe('ขอบคุณ');
+    expect(e.pronunciations![0].tags).toBeUndefined();
+  });
+
+  it('variant readings keep their labels verbatim and the short view prefers the plain reading', () => {
+    const e = map(base({ sounds: [
+      sound(['Phonemic', 'Unorthographical', 'Short'], { other: 'v1' }),
+      sound(['bound form', 'Phonemic'], { other: 'v2', tags: ['reduplication'] }),
+      sound(['Phonemic'], { other: 'plain' }),
+      sound(['Paiboon'], { roman: 'r1' }), sound(['Paiboon'], { roman: 'r2' }), sound(['Paiboon'], { roman: 'r3' }),
+      { ipa: '/i1/' }, { ipa: '/i2/' }, { ipa: '/i3/' },
+    ] }))[0];
+    expect(e.pronunciations).toEqual([
+      { respelling: 'v1', ipa: '/i1/', romanization: 'r1', tags: ['Unorthographical', 'Short'] },
+      { respelling: 'v2', ipa: '/i2/', romanization: 'r2', tags: ['reduplication', 'bound form'] },
+      { respelling: 'plain', ipa: '/i3/', romanization: 'r3' },
+    ]);
+    expect([e.respelling, e.ipa, e.romanization]).toEqual(['plain', '/i3/', 'r3']); // never a mix of different readings
+  });
+
+  it('with no plain reading the short view comes from the first reading', () => {
+    const e = map(base({ sounds: [sound(['Phonemic', 'Short'], { other: 'a' }), sound(['Phonemic', 'Short'], { other: 'b' }), { ipa: '/1/' }, { ipa: '/2/' }] }))[0];
+    expect([e.respelling, e.ipa]).toEqual(['a', '/1/']);
+  });
+
+  it('counts that do not match are kept unpaired and flagged, not guessed', () => {
+    const m = mapKaikkiLine(base({ sounds: [sound(['Phonemic'], { other: 'a' }), sound(['Phonemic'], { other: 'b' }), { ipa: '/1/' }, { ipa: '/2/' }, { ipa: '/3/' }, sound(['Paiboon'], { roman: 'r' })] }), id);
+    expect(m.unpairedPronunciations).toBe(true);
+    expect(m.entry!.pronunciations).toEqual([
+      { respelling: 'a' }, { respelling: 'b' }, { ipa: '/1/' }, { ipa: '/2/' }, { ipa: '/3/' }, { romanization: 'r' },
+    ]);
+    expect(mapKaikkiLine(base({ sounds: [sound(['Phonemic'], { other: 'a' }), { ipa: '/1/' }] }), id).unpairedPronunciations).toBeUndefined();
+  });
+
+  it('IPA and Paiboon rows without a phonemic respelling pair with each other, or stay apart', () => {
+    expect(map(base({ sounds: [{ ipa: '/1/' }, sound(['Paiboon'], { roman: 'r' })] }))[0].pronunciations).toEqual([{ ipa: '/1/', romanization: 'r' }]);
+    const apart = mapKaikkiLine(base({ sounds: [{ ipa: '/1/' }, { ipa: '/2/' }, sound(['Paiboon'], { roman: 'r' })] }), id);
+    expect(apart.unpairedPronunciations).toBe(true);
+    expect(apart.entry!.pronunciations).toHaveLength(3);
+    expect(map(base())[0].pronunciations).toBeUndefined();
+  });
+
+  it('Orthographic, Royal Institute, homophone and audio rows are not pronunciations', () => {
+    const e = map(base({ sounds: [sound(['Orthographic'], { other: 'o', roman: 'x' }), sound(['Royal Institute'], { roman: 'ri' }), { homophone: 'h' }, { audio: 'a.ogg' }] }))[0];
+    expect(e.pronunciations).toBeUndefined();
+    expect(e.respelling).toBeUndefined();
+  });
+
+  it('register: the listed tags map, vague ones do not, a region only from a label that names one', () => {
+    const reg = (...tags: string[]) => map(base({ senses: [{ glosses: ['a'], tags }] }))[0].register;
+    expect(reg('Northeastern')).toEqual(['regional-isan']);
+    expect(reg('obsolete')).toEqual(['archaic']);
+    expect(reg('poetic', 'historical')).toEqual(['literary', 'historical']);
+    expect(reg('childish')).toEqual(['child-directed']);
+    for (const vague of ['dialectal', 'dated', 'humble', 'polite', 'vulgar', 'derogatory', 'offensive', 'humorous', 'idiomatic', 'figuratively', 'Thailand']) {
+      expect(reg(vague), vague).toBeUndefined();
+    }
   });
 });
 
@@ -167,9 +285,12 @@ describe('format helpers', () => {
     const e: DictionaryEntry = {
       form: 'ฟ', lang: 'th', pos: 'NOUN', glosses: ['a', 'b'], respelling: 'r', ipa: '/i/', romanization: 't', register: ['formal'],
       classifiers: ['ตัว'], role: 'o', definition: 'd', frequencyRank: 5,
+      senses: [{ gloss: 'a', tags: ['t'], topics: ['o'], examples: 2 }, { gloss: 'b' }],
+      pronunciations: [{ respelling: 'r', ipa: '/i/', romanization: 't', tags: ['Short'], asWritten: true }, { ipa: '/j/' }],
+      etymology: 2, altOf: ['x', 'y'],
     };
     const c = compactEntry(e);
-    expect(Object.keys(c)).toEqual(['p', 'g', 'r', 'i', 't', 'c', 'l', 'o', 'd', 'f']);
+    expect(Object.keys(c)).toEqual(['p', 'g', 'r', 'i', 't', 'c', 'l', 'o', 'd', 'f', 's', 'n', 'y', 'a']);
     expect(expandEntry('ฟ', 'th', JSON.parse(JSON.stringify(c)))).toEqual(e);
   });
 
@@ -178,5 +299,7 @@ describe('format helpers', () => {
     expect(expandEntry('x', 'th', { g: [] })).toBeUndefined();
     expect(expandEntry('x', 'th', { g: [3] })).toBeUndefined();
     expect(expandEntry('x', 'th', { g: ['a'], p: 'BOGUS', c: ['formal', 'nonsense'], f: 0, l: [1, 'ก'] })).toEqual({ form: 'x', lang: 'th', glosses: ['a'], register: ['formal'], classifiers: ['ก'] });
+    expect(expandEntry('x', 'th', { g: ['a'], s: [{ g: '' }, 3, { g: 'ok', x: 0, t: [1] }], n: [{}, 'x', { r: 'r', w: 'yes' }], y: 0, a: [5] }))
+      .toEqual({ form: 'x', lang: 'th', glosses: ['a'], senses: [{ gloss: 'ok' }], pronunciations: [{ respelling: 'r' }] });
   });
 });

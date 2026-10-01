@@ -59,8 +59,11 @@ import { createViewDetector } from './viewDetection';
 import type { ViewDetector, ViewDetectorFactory } from './viewDetection';
 import { useTextData } from './useTextData';
 import type { TextData } from './useTextData';
-import { englishBehindMenu, hasClauseSpans, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, visibleNotes } from './assistance';
+import { englishBehindMenu, hasClauseSpans, hasSeveralReadings, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, visibleNotes } from './assistance';
 import type { LayerFacts } from './assistance';
+import type { DictionaryInfo, LexiconSource } from '../../core';
+import { dictionaryView } from '../../ingest';
+import type { DictionaryView } from './assistance';
 import { useAssistance } from './useAssistance';
 import './thai.css';
 
@@ -125,6 +128,7 @@ function useSiblings(text: Text): { prev?: Text; next?: Text } {
 /** The decoding of one token from the best source (an analysis's own, the dictionary's pronunciation, the spelling rules). */
 function decodeToken(adapter: LanguageAdapter | undefined, token: Token, analysis?: TokenAnalysis): SyllableAnalysis[] {
   if (!adapter) return analysis?.syllables ?? [];
+  // decodeFor passes the dictionary id (`notes.pronunciationSource`) on to decodeWithPronunciation.
   try { return decodeFor(adapter, token.surface, analysis); } catch { return []; }
 }
 
@@ -163,7 +167,7 @@ interface CardState {
 }
 
 function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, concealed, bar, before }: ReaderProps & { data: TextData; profile: AssistanceProfile }) {
-  const { bus, golearn, adapters, userId, currentSession } = useApp();
+  const { bus, golearn, adapters, lexicon, userId, currentSession } = useApp() as ReturnType<typeof useApp> & { lexicon?: unknown };
   const preview = usePreview();
   const { text } = data;
   const legacy = useMemo(() => isLegacyProfile(profile), [profile]);
@@ -218,6 +222,10 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
   const [sheetOpen, setSheetOpen] = useState(false);
   /** The in-flight "everything level 3 knows" fetch of the open word (ladder stages): the layers wait for it, the gloss does not. */
   const detailRef = useRef<Promise<TokenSupport | undefined>>(Promise.resolve(undefined));
+  /** The installed dictionary's attribution, and what it lists per form (asked once per form per page; a failed or empty ask is kept as nothing). */
+  const [dictionary, setDictionary] = useState<DictionaryInfo | undefined>();
+  const [dictViews, setDictViews] = useState<ReadonlyMap<string, DictionaryView>>(new Map());
+  const dictAsked = useRef(new Set<string>());
 
   const verses = useMemo(() => (mode === 'scripture' ? buildVerses(data.sentences) : new Map<string, VerseInfo>()), [mode, data.sentences]);
   const sentenceById = useMemo(() => new Map(data.sentences.map((s) => [s.id, s])), [data.sentences]);
@@ -345,10 +353,25 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
     });
   }, [emitter, surface, text.id, userId]);
 
+  /** Ask the dictionary what it lists for this form. Never blocks the sheet: the disclosure appears when (and if) the answer comes. */
+  const askDictionary = useCallback((token: Token) => {
+    if (legacy || typeof lexicon !== 'function' || dictAsked.current.has(token.normalized)) return;
+    dictAsked.current.add(token.normalized);
+    void (async () => {
+      const source = (lexicon as (lang: string) => LexiconSource | undefined)(text.lang);
+      const info = await source?.info();
+      if (!source || !info) return; // no dictionary installed for this language: no lookup
+      setDictionary(info);
+      const entries = (await source.lookup([token.normalized])).get(token.normalized) ?? [];
+      if (entries.length) setDictViews((m) => new Map(m).set(token.normalized, dictionaryView(entries)));
+    })().catch(() => undefined);
+  }, [legacy, lexicon, text.lang]);
+
   const openToken = useCallback(async (token: Token) => {
     if (card && sheetOpen && card.subject.kind === 'word' && card.subject.token.id === token.id) { setSheetOpen(false); return; }
     setCard({ subject: { kind: 'word', token }, opened: plan.base, supports: {}, rescued: false, history: [], detailDone: legacy });
     setSheetOpen(true);
+    askDictionary(token);
     await emitter.emit<TokenHelpOpened>(surface, { type: 'TokenHelpOpened', sentenceId: token.sentenceId, tokenId: token.id, itemId: token.formId, level: 1 });
     // Why GoLearn believes what it believes about this word ("Seen 7 times in 2 texts; needed help twice…").
     void golearn.explainItem(userId, token.formId).then(
@@ -368,7 +391,7 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
     }
     const [, support] = await Promise.all([fetchSupport(token, 1), detail]);
     if (plan.base.includes('decoding')) await emitDecoding(token, support?.analysis, false);
-  }, [card, sheetOpen, plan, legacy, profile.layers, emitter, surface, fetchSupport, emitDecoding, golearn, userId]);
+  }, [card, sheetOpen, plan, legacy, profile.layers, emitter, surface, fetchSupport, emitDecoding, askDictionary, golearn, userId]);
 
   /** Open one more layer of the word sheet and emit what that layer means for evidence. */
   const openLayer = useCallback(async (layer: HelpLayer) => {
@@ -591,7 +614,19 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
     : undefined;
   const decodingView: DecodingView = {
     syllables, canRescue: !legacy && profile.romanization === 'rescue', rescued: !!card?.rescued, romanization,
+    severalReadings: hasSeveralReadings(cardAnalysis?.notes),
   };
+  // The dictionary's attribution, read only when the analysis on show (or its alternatives) came from it.
+  const needsDictionary = !!cardAnalysis && (cardAnalysis.origin === 'dictionary' || cardAnalysis.alternatives?.some((a) => a.origin === 'dictionary'));
+  useEffect(() => {
+    if (!needsDictionary || typeof lexicon !== 'function') return;
+    let live = true;
+    void Promise.resolve().then(() => (lexicon as (lang: string) => LexiconSource | undefined)(text.lang)?.info()).then(
+      (info) => { if (live) setDictionary(info); },
+      () => undefined, // the attribution is a courtesy; the gloss never waits on it
+    );
+    return () => { live = false; };
+  }, [needsDictionary, lexicon, text.lang]);
   const nextStep = useMemo<HelpLayer | undefined>(() => {
     if (!wordCard || !loaded) return undefined;
     if (legacy) return plan.steps.find((l) => !wordCard.opened.includes(l)); // today's sheet climbs every rung
@@ -674,6 +709,9 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
           notes={cardNotes}
           clauseView={clauseView}
           decoding={decodingView}
+          sources={adapter?.sources}
+          dictionary={dictionary}
+          dictionaryView={cardToken ? dictViews.get(cardToken.normalized) : undefined}
           history={card.history}
           open={sheetOpen}
           onMore={() => { if (nextStep) void openLayer(nextStep); }}

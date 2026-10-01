@@ -18,7 +18,7 @@ import type { AnalysisCoverage } from '../adapters/shared';
 import { describeVersionBump } from './history';
 import { hasErrors, validateBatch, type CorpusDocument, type ValidationIssue } from './format';
 import {
-  INGEST_TOOL, buildNoteRows, collectUnanalysedForms, materializeSentence, newCatalog, planDocument, type DocumentPlan, type PlannedSentence,
+  INGEST_TOOL, buildNoteRows, collectWordForms, materializeSentence, newCatalog, planDocument, type DocumentPlan, type PlannedSentence,
   type SentenceRows,
 } from './plan';
 
@@ -113,7 +113,7 @@ const compact = <T extends object>(o: T): T => {
 // ── planning with the installed dictionary ──
 
 /**
- * Plan valid documents, looking up in the installed dictionary (if any) the forms the adapter cannot analyse — once
+ * Plan valid documents, looking up in the installed dictionary (if any) every word form of the text — once
  * per form. Async and outside any transaction. A dictionary that cannot be read never blocks: the document is planned
  * without it and `notes` says why.
  */
@@ -135,7 +135,7 @@ export async function planWithDictionary(
         dictionaries.set(doc.lang, dict);
       }
       if (!dict) { plans.push(planDocument(doc, registry)); continue; }
-      const want = [...collectUnanalysedForms(doc, registry)].filter((f) => !dict!.asked.has(f));
+      const want = [...collectWordForms(doc, registry)].filter((f) => !dict!.asked.has(f));
       if (want.length) {
         const found = await dict.src.lookup(want);
         for (const f of want) dict.asked.add(f);
@@ -494,7 +494,7 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
       transformations.push({
         at: now, tool: wantDictTool,
         description: plan.dictionary
-          ? `${plan.dictionary.tokens} word token(s) the adapter could not analyse were analysed from the dictionary (provenance lexicon, confidence below certainty; the adapter's own analyses, author spans and corrections take precedence)`
+          ? `${plan.dictionary.tokens} word token(s) the adapter could not analyse were analysed from the dictionary (origin dictionary, confidence below certainty); ${plan.dictionary.alongside} analysed word(s) were marked as also in the dictionary (their analysis is the adapter's, unchanged; the entries stay in the dictionary); author spans and corrections take precedence`
           : 'no dictionary installed: words the adapter cannot analyse are left without an analysis',
       });
     }
@@ -528,7 +528,7 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
   const text: Text = compact({
     id: textId, corpusId: doc.corpus.id, lang, kind: doc.contentType, title: doc.title, sourceId: doc.source.id,
     version: doc.scripture?.translationName, importedAt: existing?.importedAt ?? now, staticLevel: doc.difficulty, locale: doc.locale,
-    tags: [...doc.topics], editorialTags: [...doc.editorialTags], prepTargets: [...doc.prepTargets], reviewStatus: doc.review.status,
+    tags: [...doc.topics], editorialTags: doc.scripture?.role === 'technical-fixture' && !doc.editorialTags.includes('technical-fixture') ? [...doc.editorialTags, 'technical-fixture'] : [...doc.editorialTags], prepTargets: [...doc.prepTargets], reviewStatus: doc.review.status,
     published: plan.decision.published, unpublishedReasons: [...plan.decision.unpublishedReasons], schemaVersion: 2, generated: doc.generated,
     transformations, contentVersion,
     workId: plan.workId, chapter: doc.work?.chapter ? compact({ index: doc.work.chapter.index, title: doc.work.chapter.title }) : undefined,

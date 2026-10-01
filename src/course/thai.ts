@@ -177,3 +177,42 @@ export const THAI_WORKS: Work[] = [
 
 /** Texts that never belong to the ladder: Scripture is its own continuous corpus, available from the beginning. */
 export const THAI_OUTSIDE_LADDER = ['scripture', 'testimony'] as const;
+
+/**
+ * Scripture for the Thai course, as policy data (the course owner's decision of 2026-10-01). Nothing here is bundled,
+ * and nothing here unblocks Thai Scripture: the Scripture gate (identified translation, verified wording, established
+ * rights) applies unchanged.
+ */
+export const THAI_SCRIPTURE_POLICY = {
+  /**
+   * Was the intended production translation. Per the course owner's reference of 2026-10-01 the rights holder
+   * declined both the text functions and third-party audio use. It is therefore not stored, displayed, analysed,
+   * packaged or played inside the app; a learner's local import is not a substitute for that permission. The most the
+   * app may do is link out to the publisher's own service, and such a link is never listening evidence.
+   */
+  declined: {
+    id: 'THSV11', name: 'Thai Standard Version 2011', rightsHolder: 'Thailand Bible Society',
+    status: 'permission-declined', canBundleText: false, canBundleAudio: false, externalLinkOnly: true,
+  },
+  /**
+   * The replacement named in the course owner's reference. NOT adopted and NOT ingested: the licence is as stated by
+   * the publisher's notice and still has to be verified from the metadata of the exact release that is downloaded
+   * (translation id + immutable release id), with attribution and ShareAlike handling in place, before any text enters
+   * the app. English rescue stays the public-domain World English Bible.
+   */
+  candidate: {
+    name: 'Biblica Open Thai Common Version 2025', publisher: 'Biblica', statedLicence: 'CC BY-SA 4.0',
+    status: 'candidate-unverified', releaseId: undefined as string | undefined, canBundleText: false, canBundleAudio: false,
+  },
+  /**
+   * May be used ONLY as an explicitly labelled technical fixture for testing the Scripture pipeline: it is a draft
+   * translation. It is never presented as the course Bible and never published in the normal library. Its
+   * public-domain status is as stated by the course owner and must be recorded with its source when it is fetched.
+   */
+  technicalFixture: { name: 'Thai Freedom Bible', status: 'technical-fixture-only', draftTranslation: true },
+  /** Not to be used as a workaround unless their licensing is separately approved for this use. */
+  notApproved: ['Thai KJV', 'TH1940'],
+} as const;
+
+/** Audio rights are independent of text rights: a recording is attached only with its own rights and provenance on record. */
+export const THAI_AUDIO_POLICY = { bundledRecordings: 'none', requires: ['explicit rights for the recording', 'provenance of the recording'] } as const;

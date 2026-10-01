@@ -7,7 +7,7 @@
  * DEFAULT_ASSISTANCE, and the reader then keeps its original behaviour exactly (see `isLegacyProfile`).
  */
 import { DEFAULT_ASSISTANCE, LAYER_ASSISTANCE_LEVEL, REVIEW_OK } from '../../core';
-import type { AssistanceLevel, AssistanceProfile, ContentNote, HelpLayer, RegisterTag, TokenAnalysis, TokenSupport } from '../../core';
+import type { AnalysisSourceInfo, AssistanceLevel, AssistanceProfile, ContentNote, DictionaryInfo, HelpLayer, PartOfSpeech, RegisterTag, SyllableAnalysis, TokenAnalysis, TokenSupport } from '../../core';
 
 /** The profile of a course without a ladder: the reader looks and behaves exactly as it always did. */
 export function isLegacyProfile(profile: AssistanceProfile): boolean {
@@ -196,3 +196,97 @@ export const hasClauseSpans = (text: string, spans: ContentNote['spans']): boole
 /** The highest assistance level among the opened layers (at least 1: the gloss is always open). */
 export const maxLevel = (opened: readonly HelpLayer[]): AssistanceLevel =>
   Math.max(1, ...opened.map((l) => LAYER_ASSISTANCE_LEVEL[l])) as AssistanceLevel;
+
+// ───────────────────────────── where an analysis comes from ─────────────────────────────
+
+/** The short name of a dictionary from its attribution ("Wiktionary via kaikki.org, CC BY-SA 4.0" → "Wiktionary"). */
+export function dictionaryName(info?: Pick<DictionaryInfo, 'attribution'>): string | undefined {
+  const name = info?.attribution?.split(/\s+via\s+|,|;|—/)[0]?.trim();
+  return name || undefined;
+}
+
+/**
+ * One quiet line naming the source of the analysis on show. Absent origin ⇒ nothing (rows written before origins were
+ * recorded, and the other languages, display exactly as they always did). A source we cannot name says nothing rather
+ * than guessing its review state.
+ */
+export function analysisSourceLine(
+  a: Pick<TokenAnalysis, 'origin' | 'sourceId'> | undefined,
+  sources?: Readonly<Record<string, AnalysisSourceInfo>>,
+  dictionary?: Pick<DictionaryInfo, 'attribution'>,
+): string | undefined {
+  if (!a?.origin) return undefined;
+  // An adapter that declares no sources has not opted in to showing provenance: its reader stays exactly as it was.
+  if (!sources) return undefined;
+  switch (a.origin) {
+    case 'hand': {
+      const src = a.sourceId ? sources?.[a.sourceId] : undefined;
+      if (!src) return undefined;
+      const state = src.reviewStatus === 'machine-drafted' ? ', machine-drafted — not checked by a native speaker'
+        : src.reviewStatus === 'native-reviewed' ? ', checked by a native speaker' : '';
+      return `${src.label}${state}`;
+    }
+    case 'dictionary': return dictionary?.attribution ?? (a.sourceId ? `Dictionary ${a.sourceId}` : 'From a dictionary');
+    case 'rule': return 'worked out by rule';
+    case 'corpus': return 'supplied with this text';
+    case 'reviewed': {
+      const who = a.sourceId?.replace(/^human:/, '').trim();
+      return who ? `checked by ${who}` : 'checked by a person';
+    }
+  }
+}
+
+type Alternative = NonNullable<TokenAnalysis['alternatives']>[number];
+
+/** The dictionary's other readings of this word that carry a gloss. */
+export const dictionaryAlternatives = (a?: Pick<TokenAnalysis, 'alternatives'>): Alternative[] =>
+  (a?.alternatives ?? []).filter((alt) => alt.origin === 'dictionary' && !!alt.gloss);
+
+const STOP = new Set(['a', 'an', 'the', 'to', 'of', 'in', 'and', 'or', 'be', 'for', 'on', 'is']);
+const wordsOf = (s: string): Set<string> => new Set((s.toLowerCase().match(/\p{L}+/gu) ?? []).filter((w) => !STOP.has(w)));
+
+/** What the installed dictionary says about a word (`dictionaryView` in src/ingest), asked when the sheet opens. */
+export interface DictionaryView { glosses: string[]; pos: PartOfSpeech[]; readings: string[] }
+
+/**
+ * What the dictionary lists besides the analysis on show: stored alternatives of origin 'dictionary' (dictionary-only
+ * words, older rows) when there are any, else the dictionary's own entries looked up for this form.
+ */
+export function dictionaryOthers(a: Pick<TokenAnalysis, 'alternatives'> | undefined, view?: DictionaryView): { glosses: string[]; pos: PartOfSpeech[]; stored: boolean; items: Array<{ gloss: string; pos?: PartOfSpeech }> } {
+  const stored = dictionaryAlternatives(a);
+  if (stored.length) return { glosses: stored.map((alt) => alt.gloss!), pos: stored.map((alt) => alt.pos).filter((p): p is PartOfSpeech => !!p), stored: true, items: stored.map((alt) => ({ gloss: alt.gloss!, pos: alt.pos })) };
+  return { glosses: view?.glosses ?? [], pos: view?.pos ?? [], stored: false, items: (view?.glosses ?? []).map((gloss) => ({ gloss })) };
+}
+
+/**
+ * Whether the course word list and the dictionary visibly part ways on this word: the dictionary's first part of speech
+ * differs, or its glosses share no word with the gloss on show. Says nothing about which is right.
+ */
+export function listsDiffer(a: Pick<TokenAnalysis, 'origin' | 'pos' | 'alternatives'> | undefined, shownGloss: string | undefined, view?: DictionaryView): boolean {
+  if (!a || a.origin === 'dictionary') return false; // the line speaks of two sources: it needs the other one
+  const other = dictionaryOthers(a, view);
+  if (other.glosses.length === 0) return false;
+  if (a.pos && other.pos[0] && a.pos !== other.pos[0]) return true;
+  if (shownGloss) {
+    const mine = wordsOf(shownGloss);
+    // stored alternatives: the first one's gloss; a looked-up entry: any of its glosses
+    const theirs = wordsOf(other.stored ? other.glosses[0] : other.glosses.join(' '));
+    return ![...theirs].some((w) => mine.has(w));
+  }
+  return false;
+}
+
+/** The line naming where a decoding came from; undefined when it came from the spelling rules (as it always did). */
+export function decodingSourceLine(syllables: readonly SyllableAnalysis[]): string | undefined {
+  const has = (s: NonNullable<SyllableAnalysis['source']>) => syllables.some((x) => x.source === s);
+  if (has('dictionary')) return "from the dictionary's pronunciation";
+  if (has('exception-list')) return "from the course's list of irregular words (machine-drafted)";
+  if (has('author')) return 'supplied with this text';
+  return undefined;
+}
+
+/** `notes.readings` lists more than one reading of the word. */
+export const hasSeveralReadings = (notes: TokenAnalysis['notes']): boolean => {
+  const r = notes?.readings;
+  return Array.isArray(r) && r.length > 1;
+};

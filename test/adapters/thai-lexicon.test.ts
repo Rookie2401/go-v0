@@ -242,3 +242,37 @@ describe('Thai lexicon: the bundled seed analyses are unchanged', () => {
     expect(r.analyses[0].candidates).toEqual([]);
   });
 });
+
+describe('Thai adapter: sources and provenance', () => {
+  const v = thAdapter.version;
+
+  it('names its five sources, all machine-drafted, with the rules as the only rule origin', () => {
+    const s = thAdapter.sources!;
+    expect(Object.keys(s).sort()).toEqual(
+      ['hand', 'phrases', 'constructions', 'orth-exceptions', 'rules'].map((k) => `adapter-th@${v}:${k}`).sort(),
+    );
+    for (const [id, info] of Object.entries(s)) {
+      expect(info.id).toBe(id);
+      expect(info.reviewStatus, id).toBe('machine-drafted');
+      expect(info.label.length, id).toBeGreaterThan(3);
+      expect(info.origin, id).toBe(id.endsWith(':rules') ? 'rule' : 'hand');
+    }
+    expect(s[`adapter-th@${v}:hand`].label).toBe('Course word list');
+  });
+
+  it('every candidate from the hand lexicon carries origin hand and the hand source id (which the adapter lists)', () => {
+    for (const [form] of ALL_ROWS) {
+      for (const c of candidatesOf(form)) {
+        expect(c.origin, form).toBe('hand');
+        expect(c.sourceId, form).toBe(`adapter-th@${v}:hand`);
+        expect(thAdapter.sources![c.sourceId!], form).toBeDefined();
+      }
+    }
+    const r = run('th', 'พระเจ้าทรงรักโลก');
+    r.analyses.filter((a) => a.token.isWord).forEach((a) => a.candidates.forEach((c) => expect(c.origin).toBe('hand')));
+  });
+
+  it('an unknown word has no candidate, so no invented origin', () => {
+    expect(run('th', 'ภูมิศาสตร์').analyses[0].candidates).toEqual([]);
+  });
+});

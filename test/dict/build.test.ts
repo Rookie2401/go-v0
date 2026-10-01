@@ -21,19 +21,36 @@ describe('dictionary build over the fixture', () => {
 
   it('counts every line and every reason', () => {
     const s = out.stats;
-    expect(s.lines).toBe(51);
+    expect(s.lines).toBe(71);
     expect(s.blank).toBe(1);
     expect(s.malformed).toBe(2);
-    expect(s.skipped).toEqual({ 'not-an-object': 2, 'no-word': 1, 'wrong-language': 1, 'no-gloss': 3 });
-    expect(s.kept).toBe(42);
-    expect(s.entries).toBe(40);
+    expect(s.skipped).toEqual({ 'not-an-object': 2, 'no-word': 1, 'wrong-language': 1, 'no-gloss': 3, 'non-word': 3 });
+    expect(s.nonWord).toEqual({ character: 1, symbol: 1, punct: 1 });
+    expect(s.kept).toBe(59);
+    expect(s.entries).toBe(58);
+    expect(s.forms).toBe(50);
     expect(s.kept + s.malformed + Object.values(s.skipped).reduce((a, b) => a + b, 0)).toBe(s.lines);
   });
 
-  it('writes a manifest with the contract fields, schema 1 and the honest attribution', () => {
+  it('counts what was preserved: senses, pronunciations, entries with each reading, unpaired groups, shard bytes', () => {
+    const s = out.stats;
+    const flat = [...all.values()].flat();
+    expect(s.senses).toBe(flat.reduce((n, e) => n + (e.senses?.length ?? 0), 0));
+    expect(s.pronunciations).toBe(flat.reduce((n, e) => n + (e.pronunciations?.length ?? 0), 0));
+    expect(s.withRespelling).toBe(flat.filter((e) => e.respelling).length);
+    expect(s.withIpa).toBe(flat.filter((e) => e.ipa).length);
+    expect(s.withRomanization).toBe(flat.filter((e) => e.romanization).length);
+    expect(s.withRegister).toBe(flat.filter((e) => e.register?.length).length);
+    expect(s.unpairedGroups).toBe(1); // ทดสอบ: two respellings, three IPA readings
+    const sizes = [...out.files].filter(([n]) => n !== 'manifest.json').map(([, t]) => Buffer.byteLength(t, 'utf8'));
+    expect(s.shardBytes).toBe(sizes.reduce((a, b) => a + b, 0));
+    expect(s.largestShardBytes).toBe(Math.max(...sizes));
+  });
+
+  it('writes a manifest with the contract fields, schema 2 and the honest attribution', () => {
     const m = JSON.parse(out.files.get('manifest.json')!) as Record<string, unknown>;
     expect(m).toMatchObject({
-      schema: 1, id: `kaikki-th@${DATE}`, lang: 'th', entries: 40, builtAt: DATE, hasFrequency: false,
+      schema: 2, id: `kaikki-th@${DATE}`, lang: 'th', entries: 58, builtAt: DATE, hasFrequency: false,
       attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0',
     });
     expect(String(m.licence)).toContain('CC BY-SA 4.0');
@@ -42,6 +59,19 @@ describe('dictionary build over the fixture', () => {
     expect(parsed!.shards).toBe(out.files.size - 1);
     expect(parsed!.shardFiles).toEqual([...out.files.keys()].filter((n) => n !== 'manifest.json'));
     expect(parseManifest(m, 'es')).toBeUndefined();
+    expect(parseManifest({ ...m, schema: 1 }, 'th')).toBeUndefined(); // a schema-1 dictionary reads as not installed
+    expect(m.source).toBeUndefined(); // no source stated, none invented
+  });
+
+  it('records the source in the manifest and names the id after its last-modified date', () => {
+    const source = { url: 'https://example.test/x.jsonl', file: 'x.jsonl', lastModified: '2026-09-28', sha256: 'ab'.repeat(32), retrievedAt: '2026-09-30', lines: 71 };
+    const o = buildDictionary(fixtureLines(), { lang: 'th', normalize: thNormalize, date: DATE, source });
+    expect(o.manifest.id).toBe('kaikki-th@2026-09-28');
+    expect(o.manifest.builtAt).toBe(DATE);
+    const m = parseManifest(JSON.parse(o.files.get('manifest.json')!), 'th')!;
+    expect(m.source).toEqual(source);
+    // a source record of the wrong shape is dropped, not guessed at
+    expect(parseManifest({ ...JSON.parse(o.files.get('manifest.json')!), source: { url: 5 } }, 'th')?.source).toBeUndefined();
   });
 
   it('puts each form in the shard named by its bucket, forms sorted, entries compact', () => {
@@ -60,14 +90,90 @@ describe('dictionary build over the fixture', () => {
 
   it('merges the same form + part of speech and keeps different parts of speech apart', () => {
     const gin = all.get('กิน')!;
-    expect(gin).toHaveLength(1);
+    // lines 1 and 3 have the same form, part of speech and pronunciation: one entry; the line with another reading stays apart
+    expect(gin).toHaveLength(2);
     expect(gin[0].glosses).toEqual(['to eat', 'to consume', 'to take (a medicine)']);
-    expect(gin[0].ipa).toBe('/kin˧/'); // the first line's pronunciation wins
+    expect(gin[0].ipa).toBe('/kin˧/');
     expect(gin[0].romanization).toBe('gin');
+    expect(gin[0].senses?.map((s) => s.gloss)).toEqual(['to eat', 'to consume — to use up', 'to take (a medicine)']);
+    expect(gin[1].ipa).toBe('/a-different-reading-keeps-its-own-entry/');
     expect(all.get('ที่')!.map((e) => e.pos)).toEqual(['NOUN', 'CONJ', 'CLF']);
     expect(all.get('ใหม่')!.map((e) => e.pos)).toEqual(['ADJ', 'ADV']);
-    expect(all.get('ไหม')!.map((e) => e.pos)).toEqual(['PART', 'NOUN']);
+    expect(all.get('ไหม')!.map((e) => e.pos)).toEqual(['PART', 'NOUN', 'PART']);
     expect(all.get('ทรง')!.map((e) => e.pos)).toEqual(['VERB', 'NOUN']);
+  });
+
+  it('does not merge entries that differ in etymology number or in pronunciation', () => {
+    const na = all.get('นา')!;
+    expect(na.map((e) => e.etymology)).toEqual([1, 2]);
+    expect(na.map((e) => e.glosses[0])).toEqual(['rice field (fixture)', 'second meaning (fixture)']);
+    const mai = all.get('ไหม')!.filter((e) => e.pos === 'PART');
+    expect(mai).toHaveLength(2);
+    expect(mai[0].ipa).toBeUndefined();
+    expect(mai[1].ipa).toBe('/maj˩˩˦/');
+  });
+
+  it('keeps every sense with the source labels, topics and the number of examples', () => {
+    const thai = all.get('ไทย')![0];
+    expect(thai.pos).toBe('PROPN');
+    expect(thai.glosses).toEqual(['Thailand (fixture)', 'Thai (person, fixture)']);
+    expect(thai.senses).toEqual([
+      { gloss: 'Thailand (fixture)', topics: ['geography'], examples: 2 },
+      { gloss: 'Thai (person, fixture)', tags: ['of a person'] },
+    ]);
+    expect(all.get('กิน')![0].senses![2]).toEqual({ gloss: 'to take (a medicine)', tags: ['transitive'], topics: ['medicine'] });
+    expect(all.get('ลาว')![0].glosses).toEqual(['Lao: the language of Laos (fixture)']); // a label-only first gloss is joined to the next
+    expect(all.get('ลาว')![0].senses![0].gloss).toBe('Lao: — the language of Laos (fixture)');
+  });
+
+  it('keeps every pronunciation group with its labels, paired by order, and the short view from the plain reading', () => {
+    const neon = all.get('นีออน')![0];
+    expect(neon.pronunciations).toEqual([
+      { respelling: 'นี-ออน', ipa: '/niː˧.ʔɔːn˧/', romanization: 'nii-ɔɔn' },
+      { respelling: 'นี-อ็อน', ipa: '/niː˧.ʔɔn˧/', romanization: 'nii-ɔn', tags: ['Unorthographical', 'Short'] },
+    ]);
+    expect(neon).toMatchObject({ respelling: 'นี-ออน', ipa: '/niː˧.ʔɔːn˧/', romanization: 'nii-ɔɔn' });
+    const thai = all.get('ไทย')![0];
+    expect(thai.pronunciations).toEqual([{ respelling: 'ไท', ipa: '/tʰaj˧/', romanization: 'tai' }]); // Orthographic, RI, homophone, audio rows are not readings
+  });
+
+  it('Orthographic/Phonemic: read as written, respelling is the word', () => {
+    const e = all.get('ขอบคุณ')![0];
+    expect(e.pronunciations).toEqual([{ respelling: 'ขอบคุณ', ipa: '/kʰɔːp̚˨˩.kʰun˧/', romanization: 'kɔ̀ɔp-kun', asWritten: true }]);
+    expect(e.respelling).toBe('ขอบคุณ');
+  });
+
+  it('pronunciation rows whose counts do not match stay unpaired (and are counted), never guessed', () => {
+    const e = all.get('ทดสอบ')![0];
+    expect(e.pronunciations).toEqual([
+      { respelling: 'ทด-สอบ', romanization: 'tót-sɔ̀ɔp' }, // two respellings, two Paiboon: paired by order
+      { respelling: 'ทด-สอบ-สอบ', romanization: 'tót-sɔ̀ɔp-sɔ̀ɔp', tags: ['Short'] },
+      { ipa: '/tʰot̚˦˥.sɔːp̚˨˩/' }, // three IPA readings against two respellings: kept apart
+      { ipa: '/tʰot̚˦˥.sɔːp̚˨˩.sɔːp̚˨˩/' },
+      { ipa: '/third-ipa-fixture/' },
+    ]);
+    expect(e.respelling).toBe('ทด-สอบ');
+    expect(out.stats.unpairedGroups).toBe(1);
+  });
+
+  it('alt-of headwords, classifiers from the head template, units and non-words', () => {
+    const alt = all.get('ตุ๊กตุ๊ก')![0];
+    expect(alt.altOf).toEqual(['ตุ๊ก ๆ', 'ตุ๊กตุ๊ก2']);
+    expect(alt.senses![0].tags).toEqual(['alt-of', 'misspelling']);
+    expect(all.get('จาน')![0].classifiers).toEqual(['ใบ', 'ลูก']);
+    const unit = (f: string) => all.get(f)![0];
+    expect(unit('ไม่เป็นไร')).toMatchObject({ pos: 'X', role: 'phrase' });
+    expect(unit('น้ำขึ้นให้รีบตัก')).toMatchObject({ pos: 'X', role: 'proverb' });
+    expect(unit('ในขณะที่')).toMatchObject({ pos: 'X', role: 'prepositional phrase' });
+    expect(unit('ผู้')).toMatchObject({ pos: 'X', role: 'prefix' });
+    for (const f of ['ก', '฿', 'ๆ']) expect(all.has(f)).toBe(false); // character, symbol, punct: counted, not analysed
+  });
+
+  it('extended register tags; a vague label never makes a region or a register', () => {
+    expect(all.get('บักหุ่ง')![0].register).toEqual(['regional-isan']);
+    expect(all.get('เนตร')![0].register).toEqual(['literary', 'archaic']);
+    expect(all.get('ถิ่น')![0].register).toBeUndefined();
+    expect(all.get('ถิ่น')![0].senses![0].tags).toEqual(['dialectal', 'polite', 'dated', 'humble']); // still kept verbatim
   });
 
   it('maps the interesting fixture entries', () => {
@@ -100,10 +206,10 @@ describe('dictionary build over the fixture', () => {
     for (const f of ['ขาย', 'ซื้อ', 'เก่า', 'water', 'ขาด']) expect(all.has(f)).toBe(false);
   });
 
-  it('invents no frequency and no role anywhere', () => {
+  it('invents no frequency, definition or role (a role only on phrase / proverb / prefix units)', () => {
     for (const list of all.values()) for (const e of list) {
       expect(e.frequencyRank).toBeUndefined();
-      expect(e.role).toBeUndefined();
+      if (e.role !== undefined) expect(e.pos).toBe('X');
       expect(e.definition).toBeUndefined();
       expect(e.glosses.length).toBeGreaterThan(0);
       expect(e.glosses.length).toBeLessThanOrEqual(6);

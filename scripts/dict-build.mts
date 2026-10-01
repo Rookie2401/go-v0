@@ -1,8 +1,11 @@
 /// <reference types="node" />
 /**
  * npm run dict:build -- --in <file.jsonl> --lang th [--out public/dict] [--date YYYY-MM-DD]
+ *   [--source-url <url>] [--last-modified YYYY-MM-DD] [--retrieved YYYY-MM-DD]
  * Builds the dictionary shards from a kaikki.org Wiktionary JSON-Lines extract (never downloaded by this script).
- * Writes <out>/<lang>/manifest.json and s-<hh>.json shards, prints counts, exit 1 on bad arguments or unusable input.
+ * Writes <out>/<lang>/manifest.json (schema 2, with the source record: file name, sha256, line count, and the url /
+ * last-modified / retrieved dates you state) and s-<hh>.json shards, prints counts, exit 1 on bad arguments or
+ * unusable input. The dictionary id is kaikki-<lang>@<last-modified date> (the build date when none is given).
  * Thin CLI over src/dict/build.ts and src/dict/build-node.ts.
  */
 import fs from 'node:fs';
@@ -10,7 +13,7 @@ import { LANGUAGES, type LanguageCode } from '../src/core';
 import { buildDictionaryFile } from '../src/dict/build-node';
 import { KAIKKI_SKIPS } from '../src/dict/map';
 
-const USAGE = 'usage: npm run dict:build -- --in <file.jsonl> --lang th [--out public/dict] [--date YYYY-MM-DD]';
+const USAGE = 'usage: npm run dict:build -- --in <file.jsonl> --lang th [--out public/dict] [--date YYYY-MM-DD] [--source-url <url>] [--last-modified YYYY-MM-DD] [--retrieved YYYY-MM-DD]';
 const fail = (msg: string): never => { console.error(`${msg}\n${USAGE}`); process.exit(1); };
 
 const args = process.argv.slice(2).filter((a) => a !== '--');
@@ -21,25 +24,36 @@ for (let i = 0; i < args.length; i += 2) {
   if (!k.startsWith('--') || v === undefined || v.startsWith('--')) fail(`bad argument: ${k}`);
   opt[k.slice(2)] = v;
 }
-for (const k of Object.keys(opt)) if (!['in', 'lang', 'out', 'date'].includes(k)) fail(`unknown option --${k}`);
+for (const k of Object.keys(opt)) if (!['in', 'lang', 'out', 'date', 'source-url', 'last-modified', 'retrieved'].includes(k)) fail(`unknown option --${k}`);
 
+const isDate = (s: string) => /^\d{4}-\d{2}-\d{2}$/.test(s);
 if (!opt.in) fail('--in is required');
 if (!opt.lang) fail('--lang is required');
 if (!(LANGUAGES as readonly string[]).includes(opt.lang)) fail(`unknown language "${opt.lang}" (one of ${LANGUAGES.join(', ')})`);
 const date = opt.date ?? new Date().toISOString().slice(0, 10);
-if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) fail(`--date must be YYYY-MM-DD, got "${date}"`);
+if (!isDate(date)) fail(`--date must be YYYY-MM-DD, got "${date}"`);
+for (const k of ['last-modified', 'retrieved']) if (opt[k] !== undefined && !isDate(opt[k])) fail(`--${k} must be YYYY-MM-DD, got "${opt[k]}"`);
 if (!fs.existsSync(opt.in)) fail(`cannot read input: ${opt.in}`);
 
 try {
-  const r = await buildDictionaryFile({ input: opt.in, lang: opt.lang as LanguageCode, outDir: opt.out ?? 'public/dict', date });
+  const t0 = Date.now();
+  const r = await buildDictionaryFile({
+    input: opt.in, lang: opt.lang as LanguageCode, outDir: opt.out ?? 'public/dict', date,
+    source: { url: opt['source-url'], lastModified: opt['last-modified'], retrievedAt: opt.retrieved },
+  });
   const s = r.stats;
-  console.log(`dict:build - ${r.manifest.id}`);
+  const nonWord = Object.entries(s.nonWord).map(([k, v]) => `${k} ${v}`).join(', ');
+  console.log(`dict:build - ${r.manifest.id} (schema ${r.manifest.schema})`);
   console.log(`  input lines:      ${s.lines} (+ ${s.blank} blank)`);
   console.log(`  malformed lines:  ${s.malformed}`);
-  console.log(`  skipped:          ${KAIKKI_SKIPS.map((k) => `${k} ${s.skipped[k]}`).join(', ')}`);
-  console.log(`  entries kept:     ${s.kept} lines -> ${s.entries} entries after merging same form + part of speech`);
-  console.log(`  shards written:   ${s.shards} -> ${r.dir}`);
+  console.log(`  skipped:          ${KAIKKI_SKIPS.map((k) => `${k} ${s.skipped[k]}`).join(', ')}${nonWord ? ` (non-word: ${nonWord})` : ''}`);
+  console.log(`  entries kept:     ${s.kept} lines -> ${s.entries} entries (${s.forms} forms) after merging same form + part of speech + etymology + pronunciations`);
+  console.log(`  with respelling:  ${s.withRespelling}; ipa ${s.withIpa}; romanization ${s.withRomanization}; register ${s.withRegister}`);
+  console.log(`  preserved:        ${s.senses} senses, ${s.pronunciations} pronunciations (${s.withPronunciations} entries); ${s.unpairedGroups} entries with unpaired pronunciation rows`);
+  console.log(`  shards written:   ${s.shards} (${s.shardBytes} bytes total, largest ${s.largestShardBytes}) -> ${r.dir}`);
+  console.log(`  source:           ${r.manifest.source?.file}, ${r.manifest.source?.lines} lines, sha256 ${r.manifest.source?.sha256}`);
   console.log(`  attribution:      ${r.manifest.attribution}`);
+  console.log(`  build time:       ${Date.now() - t0} ms`);
 } catch (e) {
   console.error(`dict:build failed: ${e instanceof Error ? e.message : String(e)}`);
   process.exit(1);

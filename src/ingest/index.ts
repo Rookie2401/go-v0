@@ -17,7 +17,7 @@ import { importDocuments, type ImportOptions } from './import';
 
 export * from './format';
 export { computePublished, contentSignatureOf, type PublicationDecision } from './publish';
-export { INGEST_TOOL, IMPORT_ANALYZER, planDocument, dictionaryCandidates, dictionaryTool, type PlanOptions, type DocumentPlan } from './plan';
+export { INGEST_TOOL, IMPORT_ANALYZER, planDocument, collectWordForms, collectUnanalysedForms, dictionaryCandidates, dictionaryView, dictionaryTool, type PlanOptions, type DocumentPlan } from './plan';
 export * from './import';
 export { plainTextToDocuments, type PlainTextOptions, type PlainTextResult } from './plaintext';
 export { contentHistory, describeVersionBump, VERSION_RECORD_PREFIX, type ContentHistoryEntry, type VersionBump } from './history';

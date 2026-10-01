@@ -103,5 +103,10 @@ export function computePublished(doc: Pick<CorpusDocument, 'contentType' | 'revi
     }
   }
 
+  // A technical fixture (a draft translation used to test the Scripture pipeline) is never published; the other checks above still run and show.
+  if (d.contentType === 'scripture' && d.scripture?.role === 'technical-fixture') {
+    reasons.unshift(`technical fixture for testing the Scripture pipeline — not the course Bible (${nonEmpty(d.scripture.fixtureNote) ? d.scripture.fixtureNote : 'no fixtureNote given'})`);
+  }
+
   return { published: reasons.length === 0, unpublishedReasons: reasons };
 }

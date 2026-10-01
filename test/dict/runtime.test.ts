@@ -1,3 +1,4 @@
+import crypto from 'node:crypto';
 import fs from 'node:fs';
 import path from 'node:path';
 import { afterAll, describe, expect, it } from 'vitest';
@@ -29,16 +30,23 @@ describe('memory source', () => {
 describe('file source (shards written by the real writer)', () => {
   it('builds to disk and reads back through info() and lookup()', async () => {
     const outDir = path.join(root, 'file-src');
-    const r = await buildDictionaryFile({ input: FIXTURE, lang: 'th', outDir, date: DATE });
-    expect(r.stats.entries).toBe(40);
+    const r = await buildDictionaryFile({
+      input: FIXTURE, lang: 'th', outDir, date: DATE,
+      source: { url: 'https://example.test/fixture.jsonl', lastModified: '2026-09-28', retrievedAt: '2026-09-30' },
+    });
+    expect(r.stats.entries).toBe(58);
     expect(fs.existsSync(path.join(outDir, 'th', 'manifest.json'))).toBe(true);
 
     const src = createFileLexiconSource(outDir, 'th');
     expect(src.lang).toBe('th');
     const info = await src.info();
     expect(info).toEqual({
-      id: `kaikki-th@${DATE}`, lang: 'th', attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0', licence: expect.stringContaining('CC BY-SA 4.0'),
-      entries: 40, builtAt: DATE, hasFrequency: false,
+      id: 'kaikki-th@2026-09-28', lang: 'th', attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0', licence: expect.stringContaining('CC BY-SA 4.0'),
+      entries: 58, builtAt: DATE, hasFrequency: false,
+      source: {
+        url: 'https://example.test/fixture.jsonl', file: 'kaikki-th-sample.jsonl', lastModified: '2026-09-28', retrievedAt: '2026-09-30',
+        sha256: crypto.createHash('sha256').update(fs.readFileSync(FIXTURE)).digest('hex'), lines: 72, // 71 non-blank + 1 blank
+      },
     });
 
     const got = await src.lookup(['ขนม', 'ที่', 'กิน', 'ไม่มีคำนี้']);
@@ -48,13 +56,36 @@ describe('file source (shards written by the real writer)', () => {
     expect(byPos(got.get('ที่'), 'CLF')?.glosses).toEqual(['classifier for places and orders']);
   });
 
+  it('the preserved senses, pronunciations, etymology and alt-of survive the shard round trip', async () => {
+    const outDir = path.join(root, 'preserved');
+    writeBuild(outDir, out);
+    const got = await createFileLexiconSource(outDir, 'th').lookup(['นีออน', 'ขอบคุณ', 'นา', 'ตุ๊กตุ๊ก', 'ทดสอบ']);
+    expect(got.get('นีออน')![0].pronunciations).toHaveLength(2);
+    expect(got.get('นีออน')![0].pronunciations![1].tags).toEqual(['Unorthographical', 'Short']);
+    expect(got.get('ขอบคุณ')![0].pronunciations![0].asWritten).toBe(true);
+    expect(got.get('นา')!.map((e) => e.etymology)).toEqual([1, 2]);
+    expect(got.get('ตุ๊กตุ๊ก')![0].altOf).toEqual(['ตุ๊ก ๆ', 'ตุ๊กตุ๊ก2']);
+    expect(got.get('ทดสอบ')![0].pronunciations).toHaveLength(5);
+    expect(got.get('นีออน')![0].senses).toEqual([{ gloss: 'neon (fixture)' }]);
+  });
+
+  it('a schema-1 dictionary on disk reads as not installed', async () => {
+    const outDir = path.join(root, 'old-schema');
+    const dir = writeBuild(outDir, out);
+    const m = JSON.parse(fs.readFileSync(path.join(dir, 'manifest.json'), 'utf8')) as Record<string, unknown>;
+    fs.writeFileSync(path.join(dir, 'manifest.json'), JSON.stringify({ ...m, schema: 1 }));
+    const src = createFileLexiconSource(outDir, 'th');
+    expect(await src.info()).toBeUndefined();
+    expect((await src.lookup(['ขนม'])).size).toBe(0);
+  });
+
   it('round-trips every fixture entry exactly', async () => {
     const outDir = path.join(root, 'roundtrip');
     writeBuild(outDir, out);
     const src = createFileLexiconSource(outDir, 'th');
     const all: string[] = [];
     for (const f of out.manifest.shardFiles) all.push(...Object.keys(JSON.parse(out.files.get(f)!) as object));
-    expect(all).toHaveLength(out.manifest.entries - 5); // ที่ has 3 parts of speech, ใหม่ ไหม ทรง have 2
+    expect(all).toHaveLength(out.stats.forms);
     const got = await src.lookup(all);
     expect(got.size).toBe(all.length);
     expect([...got.values()].flat()).toHaveLength(out.manifest.entries);
@@ -211,7 +242,7 @@ describe('fetch source (fake fetch)', () => {
     const good = JSON.parse(out.files.get('manifest.json')!) as Record<string, unknown>;
     const cases: string[] = [
       '{not json', '<!doctype html><html></html>', 'null', '[]',
-      JSON.stringify({ ...good, schema: 2 }), JSON.stringify({ ...good, lang: 'es' }), JSON.stringify({ ...good, entries: 'many' }),
+      JSON.stringify({ ...good, schema: 1 }), JSON.stringify({ ...good, schema: 3 }), JSON.stringify({ ...good, lang: 'es' }), JSON.stringify({ ...good, entries: 'many' }),
       JSON.stringify({ ...good, hasFrequency: undefined }), JSON.stringify({ ...good, attribution: '' }),
     ];
     for (const body of cases) {
@@ -255,7 +286,7 @@ describe('fetch source (fake fetch)', () => {
     expect(await src.info()).toBeUndefined();
     expect((await src.lookup(['ขนม'])).size).toBe(0);
     down = false;
-    expect((await src.info())?.entries).toBe(40);
+    expect((await src.info())?.entries).toBe(58);
     expect((await src.lookup(['ขนม'])).size).toBe(1);
   });
 

@@ -1,6 +1,6 @@
 import { describe, expect, it, vi } from 'vitest';
 import { createMemoryStore, ids, type AdapterRegistry, type DictionaryEntry, type LexiconSource } from '../../src/core';
-import { dictionaryCandidates, importDocuments, planDocument, type CorpusDocument } from '../../src/ingest';
+import { collectWordForms, dictionaryCandidates, dictionaryView, importDocuments, planDocument, type CorpusDocument } from '../../src/ingest';
 import { clock, countWrites } from './helpers';
 // the bare Thai adapter knows exactly one word (ฉัน), so these tests do not depend on how large the real lexicon is
 import { CAT, SCHOOL, bareAdapter as thAdapter, bareRegistry as registry, bookDoc, lexiconOf, memoryLexicon, unknownWords } from './book';
@@ -36,9 +36,9 @@ describe('the test premise', () => {
 
 describe('dictionaryCandidates', () => {
   it('maps an entry to a candidate: first two glosses joined, the rest as senses, pronunciation and classifiers in notes', () => {
-    const [c] = dictionaryCandidates(SCHOOL_WORD, [ENTRIES[0]]);
+    const [c] = dictionaryCandidates(SCHOOL_WORD, [ENTRIES[0]], 'kaikki-th@x');
     expect(c).toEqual({
-      lemma: SCHOOL_WORD, pos: 'NOUN', morph: {}, confidence: 0.6, gloss: 'school; educational institution',
+      lemma: SCHOOL_WORD, pos: 'NOUN', morph: {}, confidence: 0.6, origin: 'dictionary', sourceId: 'kaikki-th@x', gloss: 'school; educational institution',
       register: ['standard'], role: 'place', definition: 'a place where pupils learn',
       notes: { respelling: 'rohng-rian', ipa: 'roːŋ˧ riːan˧', romanization: 'rong rian', senses: ['schoolhouse', 'academy'], classifiers: ['แห่ง'] },
     });
@@ -52,7 +52,7 @@ describe('dictionaryCandidates', () => {
   });
 
   it('adds only what the entry has (no gloss, no notes, nothing invented)', () => {
-    expect(dictionaryCandidates(GO, [entry(GO, { glosses: [] })])).toEqual([{ lemma: GO, pos: undefined, morph: {}, confidence: 0.6 }]);
+    expect(dictionaryCandidates(GO, [entry(GO, { glosses: [] })])).toEqual([{ lemma: GO, pos: undefined, morph: {}, confidence: 0.6, origin: 'dictionary' }]);
     const [one] = dictionaryCandidates(GO, [entry(GO, { glosses: ['a', 'b'] })]);
     expect(one.notes).toBeUndefined();
   });
@@ -61,13 +61,16 @@ describe('dictionaryCandidates', () => {
 describe('planDocument with a dictionary (pure, synchronous)', () => {
   const dictionary = new Map<string, DictionaryEntry[]>([[SCHOOL_WORD, [ENTRIES[0]]], [GO, [ENTRIES[1], ENTRIES[2]]], [I_WORD, [ENTRIES[3]]]]);
 
-  it('fills only the words the adapter cannot analyse', () => {
+  it('analyses the words the adapter cannot analyse and only marks the adapter-analysed ones', () => {
     const plain = planDocument(bookDoc(), registry);
     const plan = planDocument(bookDoc(), registry, { dictionary, dictionaryId: 'd1' });
     expect(plain.dictionary).toBeUndefined();
-    expect(plan.dictionary).toEqual({ tool: 'dict:d1', tokens: 2 });
+    expect(plan.dictionary).toEqual({ tool: 'dict:d1', tokens: 2, alongside: 1 });
     const [i, go, school] = plan.sentences[0].analyzed;
-    expect(i).toEqual(plain.sentences[0].analyzed[0]); // adapter lexicon wins
+    expect(i.analyzer).toBe(plain.sentences[0].analyzed[0].analyzer);
+    expect({ ...i.candidates[0], notes: undefined }).toEqual({ ...plain.sentences[0].analyzed[0].candidates[0], notes: undefined }); // the adapter's candidate, unchanged
+    expect(i.candidates).toHaveLength(1); // no dictionary entries copied onto the token
+    expect(i.candidates[0].notes).toEqual({ dictionary: 'd1' }); // only a marker: the dictionary also has this form
     expect(go.analyzer).toBe('dict:d1');
     expect(go.candidates.map((c) => c.pos)).toEqual(['VERB', 'ADV']);
     expect(school.analyzer).toBe('dict:d1');
@@ -102,17 +105,20 @@ describe('importDocuments with ImportOptions.lexicon', () => {
 
     const [go] = await analysesOf(store, GO);
     expect(go).toMatchObject({ pos: 'VERB', confidence: 0.45, provenance: 'lexicon', analyzer: 'dict:kaikki-th@test' });
-    expect(go.alternatives).toEqual([{ lemmaId: ids.lemma('th', GO, 'ADV'), pos: 'ADV', morph: {}, confidence: 0.45 }]);
+    expect(go.alternatives).toEqual([{ lemmaId: ids.lemma('th', GO, 'ADV'), pos: 'ADV', morph: {}, confidence: 0.45, origin: 'dictionary', sourceId: 'kaikki-th@test' }]);
 
     for (const a of await store.analyses.all()) expect(a.syllables).toBeUndefined();
   });
 
-  it('the adapter lexicon wins over the dictionary for a word both know', async () => {
+  it('the adapter lexicon stays the analysis for a word both know; the dictionary is only marked', async () => {
     const store = createMemoryStore();
     await importDocuments(store, registry, [bookDoc()], { clock, lexicon: lexiconOf(memoryLexicon(ENTRIES, 'd1')) });
     const rows = await analysesOf(store, I_WORD);
     expect(rows).toHaveLength(1);
     expect(rows[0].analyzer.startsWith('adapter-th@')).toBe(true);
+    expect(rows[0]).toMatchObject({ origin: 'hand', pos: 'PRON', confidence: 1 });
+    expect(rows[0].alternatives).toBeUndefined();
+    expect(rows[0].notes).toEqual({ dictionary: 'd1' });
     expect((await store.lemmas.all()).some((l) => l.gloss?.includes('MUST LOSE'))).toBe(false);
   });
 
@@ -136,7 +142,7 @@ describe('importDocuments with ImportOptions.lexicon', () => {
     expect(human.supersedes).toBe(dict.id); // the correction supersedes the dictionary row (which stays as history)
   });
 
-  it('the report coverage reflects the dictionary; lookups ask once per document for unknown forms only', async () => {
+  it('the report coverage reflects the dictionary; lookups ask once per document for each word form', async () => {
     const without = await importDocuments(createMemoryStore(), registry, [bookDoc()], { clock });
     const src = memoryLexicon(ENTRIES, 'd1');
     const lookup = vi.spyOn(src, 'lookup');
@@ -145,9 +151,12 @@ describe('importDocuments with ImportOptions.lexicon', () => {
     expect(withDict.documents[0].analysisCoverage.analysed).toBe(without.documents[0].analysisCoverage.analysed + 2);
     expect(lookup).toHaveBeenCalledTimes(1);
     const asked = lookup.mock.calls[0][0] as string[];
-    expect(asked).not.toContain(I_WORD); // known to the adapter: never looked up
+    // every word form is asked about once (the dictionary also stands beside the adapter's analyses)
+    expect(asked).toContain(I_WORD);
     expect(asked).toEqual(expect.arrayContaining([GO, SCHOOL_WORD]));
-    expect(asked).toEqual(unknownWords(SCHOOL).concat(unknownWords(CAT)).filter((f, i, all) => all.indexOf(f) === i));
+    expect(new Set(asked).size).toBe(asked.length);
+    expect(asked).toEqual([...collectWordForms(bookDoc(), registry)]);
+    expect(asked.length).toBeGreaterThan(unknownWords(SCHOOL).length + unknownWords(CAT).length);
   });
 
   it('installing, changing and removing a dictionary re-analyses on the next import; the same dictionary is a no-op', async () => {
@@ -246,5 +255,58 @@ describe('register, role and definition from any candidate; decoding is never st
     expect(go.map((a) => a.analyzer)).toEqual(['dict:d1']);
     const [i] = await analysesOf(store, I_WORD);
     expect(i.analyzer.startsWith('adapter-th@')).toBe(true);
+  });
+});
+
+describe('dictionaryView: what the reader asks the installed dictionary (the same rules as the import)', () => {
+  it('short glosses, parts of speech and distinct readings, in entry order', () => {
+    const entries = [
+      entry(GO, { pos: 'VERB', glosses: ['go', 'leave', ' '], respelling: 'pai', pronunciations: [{ respelling: 'pai' }, { respelling: 'bpai' }] }),
+      entry(GO, { pos: 'ADV', glosses: ['away', 'go'], respelling: 'pai' }),
+      entry(GO, { glosses: [] }),
+    ];
+    expect(dictionaryView(entries)).toEqual({ glosses: ['go', 'leave', 'away'], pos: ['VERB', 'ADV'], readings: ['pai', 'bpai'] });
+    expect(dictionaryView([])).toEqual({ glosses: [], pos: [], readings: [] });
+    // the readings are exactly what the import stores
+    expect(dictionaryCandidates(GO, entries)[0].notes?.readings).toEqual(dictionaryView(entries).readings);
+    expect(dictionaryCandidates(GO, entries).map((c) => c.gloss)).toEqual(['go; leave', 'away; go', undefined]);
+  });
+});
+
+describe('the dictionary is not copied per token', () => {
+  it('importing with a dictionary that has every word grows the stored analyses by less than 25 %', async () => {
+    const forms = [...collectWordForms(bookDoc(), registry)];
+    // a realistic entry per word: several senses, two parts of speech, pronunciations
+    const full = forms.flatMap((f) => [
+      entry(f, { pos: 'NOUN', glosses: ['first meaning of the word', 'second meaning of the word', 'third meaning', 'fourth meaning'], respelling: 'a-b', ipa: 'a˧.b˧', romanization: 'a b', definition: 'an easy definition of the word', register: ['standard'], pronunciations: [{ respelling: 'a-b' }, { respelling: 'a-bb', tags: ['colloquial'] }] }),
+      entry(f, { pos: 'VERB', glosses: ['to do the thing', 'to do another thing', 'to do a third thing'], respelling: 'a-b', ipa: 'a˧.b˧' }),
+    ]);
+    // a text that repeats the same words, as real texts do
+    const doc = { ...bookDoc(), sections: [{ paragraphs: Array.from({ length: 40 }, (_, k) => ({ text: k % 2 ? CAT : SCHOOL })) }] } as CorpusDocument;
+    // an adapter whose hand lexicon knows every word (the case that grew: a hand-analysed word met 80,000 times in a book)
+    const knowsAll: AdapterRegistry = {
+      get: (lang) => (lang === 'th' ? {
+        ...thAdapter,
+        analyze: (tokens) => tokens.map((token) => ({
+          token, analyzer: 'adapter-th@t',
+          candidates: token.isWord ? [{ lemma: token.normalized, pos: 'NOUN' as const, morph: {}, gloss: 'a hand gloss', confidence: 1, notes: { translit: 'xx' }, origin: 'hand' as const, sourceId: 'adapter-th@t:hand' }] : [],
+        })),
+      } : registry.get(lang)),
+      all: () => registry.all(),
+    };
+    const size = async (lexicon?: ReturnType<typeof lexiconOf>) => {
+      const store = createMemoryStore();
+      await importDocuments(store, knowsAll, [doc], { clock, lexicon });
+      return JSON.stringify(await store.analyses.all()).length;
+    };
+    const without = await size();
+    const withDict = await size(lexiconOf(memoryLexicon(full, 'kaikki-th@t')));
+    expect(withDict).toBeLessThan(without * 1.25);
+    // and the word the adapter does analyse carries only the marker (plus a pronunciation it lacked)
+    const store = createMemoryStore();
+    await importDocuments(store, knowsAll, [doc], { clock, lexicon: lexiconOf(memoryLexicon(full, 'kaikki-th@t')) });
+    const rows = await store.analyses.all();
+    expect(rows.length).toBeGreaterThan(100);
+    for (const a of rows) { expect(a.alternatives).toBeUndefined(); expect(a.notes).toEqual({ translit: 'xx', readings: ['a-b', 'a-bb'], dictionary: 'kaikki-th@t' }); }
   });
 });

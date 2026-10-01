@@ -236,3 +236,70 @@ describe('Scripture is a parallel corpus on the same learner model', () => {
     expect(h.byText.map((b) => b.textId)).toEqual(expect.arrayContaining([chapters[1].id, scripture.id]));
   });
 });
+
+describe('provenance: every analysis says where it came from', () => {
+  it('the hand word list stays first and is named as hand-written; the dictionary stands beside it, never over it', async () => {
+    const toks = (await Promise.all(s2.map((s) => tokensOf(app.store, s.id)))).flat();
+    const khanom = toks.find((t) => t.surface === 'ขนม')!;
+    const a = (await app.golearn.resolveAnalysis(khanom.id))!;
+    expect(a.origin).toBe('hand');
+    expect(a.sourceId).toMatch(/^adapter-th@\d+:hand$/);
+    const adapter = app.adapters.get('th');
+    expect(adapter.sources?.[a.sourceId!]).toMatchObject({ origin: 'hand', reviewStatus: 'machine-drafted' });
+    // the dictionary is not copied onto every occurrence: the analysis only notes that the dictionary has this word,
+    // and the reader asks the installed dictionary when the sheet opens
+    expect(a.notes?.dictionary).toBe('test-dict@1');
+    expect((a.alternatives ?? []).some((x) => x.origin === 'dictionary')).toBe(false);
+    expect(a.gloss ?? '').not.toMatch(/dessert/); // nothing of the dictionary's wording has replaced the hand entry
+  });
+
+  it('a word only the dictionary knows is dictionary-derived, below certainty; its reading names its source', async () => {
+    const adapter = app.adapters.get('th');
+    const text = 'ฉันเห็นกิ้งก่าบนต้นไม้';
+    const tokens = adapter.tokenize(text);
+    const analysed = adapter.analyze(tokens);
+    const unknown = tokens.filter((t, i) => t.isWord && analysed[i].candidates.length === 0);
+    expect(unknown.length, 'the test needs a word outside the hand list').toBeGreaterThan(0);
+    const entries: DictionaryEntry[] = unknown.map((t) => ({ form: t.normalized, lang: 'th', pos: 'NOUN', glosses: ['test gloss'] }));
+    const { documents } = plainTextToDocuments(text, { lang: 'th', title: 'Provenance test (synthetic)', idPrefix: 'provenance-test' });
+    const report = await importDocuments(app.store, app.adapters, documents, {
+      clock: app.clock.now, lexicon: () => createMemoryLexiconSource('th', entries, { id: 'test-dict@2' }),
+    });
+    expect(report.ok).toBe(true);
+    const sentences = await liveSentences(app.store, ids.text('th', documents[0].id));
+    const toks = (await Promise.all(sentences.map((s) => tokensOf(app.store, s.id)))).flat();
+    const tok = toks.find((t) => t.normalized === unknown[0].normalized)!;
+    const a = (await app.golearn.resolveAnalysis(tok.id))!;
+    expect(a).toMatchObject({ origin: 'dictionary', sourceId: 'test-dict@2', provenance: 'lexicon' });
+    expect(a.confidence).toBeLessThan(1);
+
+    // a named person's correction supersedes it and the dictionary row is kept as history
+    const fixed = await app.golearn.overrideAnalysis(tok.id, { pos: 'NOUN', notes: { reviewed: 'yes' } }, 'Test Reviewer');
+    expect(fixed).toMatchObject({ origin: 'reviewed', sourceId: 'human:Test Reviewer' });
+    const rows = await app.store.analyses.where('tokenId', tok.id);
+    expect(rows.length).toBeGreaterThanOrEqual(2);
+    expect(rows.some((r) => r.origin === 'dictionary')).toBe(true);
+    expect((await app.golearn.resolveAnalysis(tok.id))!.id).toBe(fixed.id);
+  });
+
+  it('a decoded reading carries its source, and a dictionary reading keeps the rule\'s own answer when they differ', () => {
+    const adapter = app.adapters.get('th');
+    const byRule = adapter.decode!('บ้าน');
+    expect(byRule.every((s) => s.source === 'rule')).toBe(true);
+    const fromDict = adapter.decodeWithPronunciation!('ขนม', { respelling: 'ขะ-หฺนม', ipa: '/kʰa˨˩.nom˩˩˦/' }, 'test-dict@1');
+    expect(fromDict.map((s) => s.tone)).toEqual(['low', 'rising']);
+    expect(fromDict.every((s) => s.source === 'dictionary' && s.sourceId === 'test-dict@1')).toBe(true);
+    // a deliberately false "dictionary" reading against a word the rules read confidently: the rule's tone is kept beside it
+    const contested = adapter.decodeWithPronunciation!('มา', { respelling: 'ม้า', ipa: '/maː˦˥/' }, 'test-dict@1');
+    expect(contested.map((s) => s.tone)).toEqual(['high']);
+    expect(contested[0].ruleTone).toBe('mid');
+  });
+
+  it('the other four languages declare no sources, so their reader shows no provenance line and nothing else changes', () => {
+    for (const lang of ['es', 'de', 'sq', 'hi'] as const) {
+      const adapter = app.adapters.get(lang);
+      expect(adapter.sources, lang).toBeUndefined();
+      expect(adapter.decode, lang).toBeUndefined();
+    }
+  });
+});

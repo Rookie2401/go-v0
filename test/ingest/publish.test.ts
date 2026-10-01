@@ -257,3 +257,55 @@ describe('personal copies: published without a review, and nothing else', () => 
     expect(await store.texts.all()).toEqual([]);
   });
 });
+
+describe('Scripture that is only a technical fixture', () => {
+  const fixture = (over: Partial<NonNullable<CorpusDocument['scripture']>> = {}): CorpusDocument => {
+    const d = scriptureDoc();
+    d.scripture = { ...d.scripture!, role: 'technical-fixture', fixtureNote: 'draft translation', ...over };
+    return d;
+  };
+  const REASON = 'technical fixture for testing the Scripture pipeline — not the course Bible (draft translation)';
+
+  it('is never published, even fully verified with established rights; the fixture reason comes first', () => {
+    expect(computePublished(scriptureDoc()).published).toBe(true); // the same document as a course Bible
+    expect(computePublished(fixture())).toEqual({ published: false, unpublishedReasons: [REASON] });
+    expect(computePublished(fixture({ role: 'course' })).published).toBe(true);
+  });
+
+  it('the other checks still run and show after it', () => {
+    const d = fixture();
+    delete d.scripture!.verification;
+    d.source.rights = 'unverified';
+    const r = computePublished(d);
+    expect(r.unpublishedReasons[0]).toBe(REASON);
+    expect(r.unpublishedReasons.join(' ')).toMatch(/rights are unverified/);
+    expect(r.unpublishedReasons.join(' ')).toMatch(/not verified against a published source/);
+    expect(r.unpublishedReasons).toHaveLength(3);
+  });
+
+  it('imports as a Text tagged technical-fixture, unpublished, with the reason; a course Scripture text has no tag', async () => {
+    const store = createMemoryStore();
+    const course = { ...scriptureDoc(), id: 'course-sc', source: { ...scriptureDoc().source, id: 'src:course' } };
+    const tagged = { ...fixture(), editorialTags: ['draft'] };
+    const r = await importDocuments(store, registry, [tagged, course], { clock });
+    expect(r.ok).toBe(true);
+    const t = (await store.texts.get('text:es:sc'))!;
+    expect(t).toMatchObject({ published: false, editorialTags: ['draft', 'technical-fixture'] });
+    expect(t.unpublishedReasons).toEqual([REASON]);
+    const c = (await store.texts.get('text:es:course-sc'))!;
+    expect(c.published).toBe(true);
+    expect(c.editorialTags).toEqual([]);
+    expect((await importDocuments(store, registry, [tagged, course], { clock })).documents.map((x) => x.action)).toEqual(['unchanged', 'unchanged']);
+  });
+
+  it('a fixture without a note is refused; the role is only valid on Scripture and must be known', () => {
+    for (const note of [undefined, '', '  ']) {
+      expect(issuesOf(fixture({ fixtureNote: note })).filter((i) => i.severity === 'error').map((i) => i.code)).toEqual(['scripture-fixture-note']);
+    }
+    const story = { ...baseDoc(), scripture: { ...scriptureDoc().scripture!, role: 'technical-fixture' as const, fixtureNote: 'x' } };
+    expect(issuesOf(story).filter((i) => i.severity === 'error').map((i) => i.path)).toEqual(['scripture.role']);
+    expect(issuesOf(fixture({ role: 'bible' as never })).filter((i) => i.severity === 'error').map((i) => i.code)).toEqual(['invalid-value']);
+    expect(issuesOf(fixture()).filter((i) => i.severity === 'error')).toEqual([]);
+    expect(issuesOf(scriptureDoc()).filter((i) => i.severity === 'error')).toEqual([]);
+  });
+});

@@ -159,7 +159,7 @@ export async function overrideAnalysis(
   const n = rows.filter((r) => r.analyzer === analyzer).length;
   const row: TokenAnalysis = {
     id: ids.analysis(tokenId, analyzer, n), tokenId, lang: token.lang,
-    morph: patch.morph ?? resolved?.morph ?? {}, confidence: 1, provenance: 'human', analyzer, createdAt: ctx.clock(),
+    morph: patch.morph ?? resolved?.morph ?? {}, confidence: 1, provenance: 'human', origin: 'reviewed', sourceId: analyzer, analyzer, createdAt: ctx.clock(),
   };
   const lemmaId = patch.lemmaId ?? resolved?.lemmaId;
   const pos = patch.pos ?? resolved?.pos;
@@ -171,6 +171,15 @@ export async function overrideAnalysis(
   if (lemmaId && !(await ctx.store.lemmas.get(lemmaId))) await ctx.store.lemmas.put(parseLemmaId(token.lang, lemmaId));
   await ctx.store.analyses.put(row);
   return row;
+}
+
+/** Every stored analysis of a token, newest first, each marked current (what `resolveAnalysis` returns) or superseded. Deletes nothing. */
+export async function analysisHistory(ctx: Ctx, tokenId: string): Promise<Array<{ analysis: TokenAnalysis; status: 'current' | 'superseded' }>> {
+  const rows = await ctx.store.analyses.where('tokenId', tokenId);
+  const current = pickAnalysis(rows)?.id;
+  return rows
+    .sort((a, b) => (a.createdAt < b.createdAt ? 1 : a.createdAt > b.createdAt ? -1 : a.id < b.id ? 1 : -1))
+    .map((analysis) => ({ analysis, status: analysis.id === current ? 'current' as const : 'superseded' as const }));
 }
 
 export async function tokenSupport(ctx: Ctx, userId: string, tokenId: string, level: AssistanceLevel): Promise<TokenSupport> {

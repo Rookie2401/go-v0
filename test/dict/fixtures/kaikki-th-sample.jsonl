@@ -1,8 +1,8 @@
 {"word":"ขนม","pos":"noun","lang_code":"th","lang":"Thai","forms":[{"form":"kà-nǒm","tags":["romanization"]}],"sounds":[{"other":"ขนม","raw_tags":["Orthographic"],"roman":"kʰ n m"},{"other":"ขะ-หฺนม","raw_tags":["Phonemic"],"roman":"kʰ a – h ̥ n m"},{"raw_tags":["Paiboon"],"roman":"kà-nǒm","tags":["romanization"]},{"raw_tags":["Royal Institute"],"roman":"kha-nom","tags":["romanization"]},{"ipa":"/kʰa˨˩.nom˩˩˦/"}],"senses":[{"glosses":["sweets; dessert"],"links":[["sweets","sweets"]]},{"glosses":["snack"],"synonyms":[{"tags":["childish","colloquial"],"word":"หนม"}]}],"etymology_text":"hand-made fixture"}
 {"word":"หนม","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["colloquial form of ขนม"],"tags":["form-of","colloquial"]}]}
 {"word":"กิน","pos":"verb","lang_code":"th","lang":"Thai","sounds":[{"other":"กิน","raw_tags":["Phonemic"]},{"raw_tags":["Paiboon"],"roman":"gin","tags":["romanization"]},{"ipa":"/kin˧/"}],"senses":[{"glosses":["to eat"]},{"glosses":["to consume","to use up"]}]}
-{"word":"กิน","pos":"verb","lang_code":"th","lang":"Thai","sounds":[{"ipa":"/second-ipa-must-not-win/"}],"senses":[{"glosses":["to eat"]},{"glosses":["to take (a medicine)"]}]}
-{"word":"กิน","pos":"verb","lang_code":"th","lang":"Thai","sounds":[{"ipa":"/second-ipa-must-not-win/"}],"senses":[{"glosses":["to eat"]},{"glosses":["to take (a medicine)"]}]}
+{"word":"กิน","pos":"verb","lang_code":"th","lang":"Thai","sounds":[{"ipa":"/a-different-reading-keeps-its-own-entry/"}],"senses":[{"glosses":["to eat (other reading)"]}]}
+{"word":"กิน","pos":"verb","lang_code":"th","lang":"Thai","sounds":[{"other":"กิน","raw_tags":["Phonemic"]},{"raw_tags":["Paiboon"],"roman":"gin","tags":["romanization"]},{"ipa":"/kin˧/"}],"senses":[{"glosses":["to eat"]},{"glosses":["to take (a medicine)"],"tags":["transitive"],"topics":["medicine"]}]}
 {"word":"น้ำ","pos":"noun","lang_code":"th","lang":"Thai","sounds":[{"other":"น้าม","raw_tags":["Phonemic"]},{"ipa":"/naːm˦˥/"}],"senses":[{"glosses":["water"]},{"glosses":["liquid","fluid"]},{"glosses":["juice"]}]}
 {"word":"บ้าน","pos":"noun","lang_code":"th","lang":"Thai","classifiers":["หลัง"],"senses":[{"glosses":["house"]},{"glosses":["home"]},{"glosses":["village"]}]}
 {"word":"หมา","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["dog"],"classifiers":[{"classifier":"ตัว"}]}]}
@@ -40,6 +40,26 @@
 {"word":"ทำ","pos":"verb","lang_code":"th","lang":"Thai","senses":[{"glosses":["to do"]},{"glosses":["to make"]},{"glosses":["to do"]},{"glosses":["to work"]},{"glosses":["to perform"]},{"glosses":["to cause"]},{"glosses":["to build"]},{"glosses":["to prepare"]}]}
 {"word":"รัก","pos":"verb","lang_code":"th","lang":"Thai","forms":[{"form":"rák","tags":["romanization"]}],"senses":[{"raw_glosses":["to love"]}]}
 {"word":"ว่า","pos":"conj","lang_code":"th","lang":"Thai","senses":[{"glosses":["that (introducing a clause)"]}]}
+{"word":"ไทย","pos":"name","lang_code":"th","lang":"Thai","head_templates":[{"name":"th-noun","args":{},"expansion":"ไทย • (tai)"}],"sounds":[{"raw_tags":["Orthographic"],"other":"ไทย","roman":"letters"},{"raw_tags":["Phonemic"],"other":"ไท","roman":"letters"},{"tags":["romanization"],"raw_tags":["Paiboon"],"roman":"tai"},{"tags":["romanization"],"raw_tags":["Royal Institute"],"roman":"thai"},{"ipa":"/tʰaj˧/"},{"homophone":"ไท"},{"audio":"Th-Thai.ogg","ogg_url":"fixture"}],"senses":[{"glosses":["Thailand (fixture)"],"topics":["geography"],"examples":[{"text":"one","type":"example"},{"text":"two","type":"example"}]},{"glosses":["Thai (person, fixture)"],"raw_tags":["of a person"]}]}
+{"word":"จาน","pos":"noun","lang_code":"th","lang":"Thai","head_templates":[{"name":"th-noun","args":{"1":"ใบ","2":"ลูก"},"expansion":"จาน • (jaan) (classifier ใบ or ลูก)"}],"senses":[{"glosses":["plate"]}]}
+{"word":"ขอบคุณ","pos":"verb","lang_code":"th","lang":"Thai","sounds":[{"raw_tags":["Orthographic/Phonemic"],"other":"ขอบคุณ","roman":"letters"},{"tags":["romanization"],"raw_tags":["Paiboon"],"roman":"kɔ̀ɔp-kun"},{"ipa":"/kʰɔːp̚˨˩.kʰun˧/"}],"senses":[{"glosses":["to thank"]}]}
+{"word":"นีออน","pos":"noun","lang_code":"th","lang":"Thai","sounds":[{"raw_tags":["Orthographic"],"other":"นีออน","roman":"letters"},{"raw_tags":["Phonemic"],"other":"นี-ออน","roman":"letters"},{"raw_tags":["Phonemic","Unorthographical","Short"],"other":"นี-อ็อน","roman":"letters"},{"tags":["romanization"],"raw_tags":["Paiboon"],"roman":"nii-ɔɔn"},{"tags":["romanization"],"raw_tags":["Paiboon"],"roman":"nii-ɔn"},{"tags":["romanization"],"raw_tags":["Royal Institute"],"roman":"ni-on"},{"tags":["romanization"],"raw_tags":["Royal Institute"],"roman":"ni-on"},{"ipa":"/niː˧.ʔɔːn˧/"},{"ipa":"/niː˧.ʔɔn˧/"}],"senses":[{"glosses":["neon (fixture)"]}]}
+{"word":"ทดสอบ","pos":"verb","lang_code":"th","lang":"Thai","sounds":[{"raw_tags":["Phonemic"],"other":"ทด-สอบ","roman":"letters"},{"raw_tags":["Phonemic","Short"],"other":"ทด-สอบ-สอบ","roman":"letters"},{"tags":["romanization"],"raw_tags":["Paiboon"],"roman":"tót-sɔ̀ɔp"},{"tags":["romanization"],"raw_tags":["Paiboon"],"roman":"tót-sɔ̀ɔp-sɔ̀ɔp"},{"ipa":"/tʰot̚˦˥.sɔːp̚˨˩/"},{"ipa":"/tʰot̚˦˥.sɔːp̚˨˩.sɔːp̚˨˩/"},{"ipa":"/third-ipa-fixture/"}],"senses":[{"glosses":["to test (fixture)"]}]}
+{"word":"ตุ๊กตุ๊ก","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["misspelling of ตุ๊ก ๆ"],"tags":["alt-of","misspelling"],"alt_of":[{"word":"ตุ๊ก ๆ","extra":"dtúk-dtúk"},{"word":"ตุ๊กตุ๊ก2"},{"word":"ตุ๊ก ๆ"}]}]}
+{"word":"นา","pos":"noun","etymology_number":1,"lang_code":"th","lang":"Thai","senses":[{"glosses":["rice field (fixture)"]}]}
+{"word":"นา","pos":"noun","etymology_number":2,"lang_code":"th","lang":"Thai","senses":[{"glosses":["second meaning (fixture)"]}]}
+{"word":"ไหม","pos":"particle","lang_code":"th","lang":"Thai","sounds":[{"ipa":"/maj˩˩˦/"}],"senses":[{"glosses":["question particle, variant reading (fixture)"]}]}
+{"word":"ไม่เป็นไร","pos":"phrase","lang_code":"th","lang":"Thai","senses":[{"glosses":["never mind; it is nothing"]}]}
+{"word":"น้ำขึ้นให้รีบตัก","pos":"proverb","lang_code":"th","lang":"Thai","senses":[{"glosses":["proverb text (fixture)"]}]}
+{"word":"ในขณะที่","pos":"prep_phrase","lang_code":"th","lang":"Thai","senses":[{"glosses":["while"]}]}
+{"word":"ผู้","pos":"prefix","lang_code":"th","lang":"Thai","senses":[{"glosses":["person who (fixture)"],"tags":["morpheme"]}]}
+{"word":"ก","pos":"character","lang_code":"th","lang":"Thai","senses":[{"glosses":["the first consonant letter (fixture)"]}]}
+{"word":"฿","pos":"symbol","lang_code":"th","lang":"Thai","senses":[{"glosses":["baht sign (fixture)"]}]}
+{"word":"ๆ","pos":"punct","lang_code":"th","lang":"Thai","senses":[{"glosses":["repetition mark (fixture)"]}]}
+{"word":"บักหุ่ง","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["papaya (fixture)"],"tags":["Northeastern"]}]}
+{"word":"ถิ่น","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["a vague dialect word (fixture)"],"tags":["dialectal","polite","dated","humble"]}]}
+{"word":"เนตร","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["eye (fixture)"],"tags":["poetic","obsolete"]}]}
+{"word":"ลาว","pos":"name","lang_code":"th","lang":"Thai","senses":[{"glosses":["Lao:","the language of Laos (fixture)"]}]}
 {"word":"ขาย","pos":"verb","lang_code":"th","lang":"Thai","senses":[]}
 {"word":"ซื้อ","pos":"verb","lang_code":"th","lang":"Thai"}
 {"word":"เก่า","pos":"adj","lang_code":"th","lang":"Thai","senses":[{"links":[["old","old"]]},{"glosses":[]}]}

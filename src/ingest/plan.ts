@@ -5,7 +5,7 @@
  * are produced later by `materializeSentence`, once the importer has decided which existing sentences survive.
  */
 import type {
-  AdapterRegistry, AnalysisCandidate, AnalyzedToken, ContentNote, DictionaryEntry, EnglishRescue, GrammarPattern, LanguageAdapter, Lemma,
+  AdapterRegistry, AnalysisCandidate, AnalysisOrigin, AnalyzedToken, ContentNote, DictionaryEntry, EnglishRescue, GrammarPattern, LanguageAdapter, Lemma,
   PartOfSpeech, PatternCandidate, PatternOccurrence, Phrase, PhraseCandidate, PhraseOccurrence, RawToken, ReviewStatus, Token, TokenAnalysis,
 } from '../core';
 import { hash, ids } from '../core';
@@ -70,13 +70,16 @@ export interface DocumentPlan {
   tokenCount: number;
   /** `Text.workId` (from `doc.work`), when the document names a work. */
   workId?: string;
-  /** Tokens the adapter could not analyse that were analysed from the dictionary, and the analyzer name that wrote them. */
-  dictionary?: { tool: string; tokens: number };
+  /**
+   * The analyzer name of the installed dictionary; `tokens` = words only the dictionary knew (analysed from it),
+   * `alongside` = words the adapter analyses that also got the dictionary's entries as alternatives beside its own.
+   */
+  dictionary?: { tool: string; tokens: number; alongside: number };
   noteCount: number;
 }
 
 export interface PlanOptions {
-  /** Dictionary entries by adapter-normalized form (only forms the adapter could not analyse need to be present). */
+  /** Dictionary entries by adapter-normalized form (any word of the text; one the adapter analyses gets them beside its own analysis). */
   dictionary?: ReadonlyMap<string, readonly DictionaryEntry[]>;
   /** `DictionaryInfo.id` of the dictionary the entries came from: part of the analyzer name and of the signature. */
   dictionaryId?: string;
@@ -84,8 +87,9 @@ export interface PlanOptions {
 
 const defaultSeparator = ' ';
 
+/** An author's span: origin `corpus` (the text's own supplier), source `import@2`. */
 function toCandidate(sp: DocSpan): AnalysisCandidate {
-  return { lemma: sp.lemma, pos: sp.pos, morph: sp.morph ? { ...sp.morph } : {}, gloss: sp.gloss, confidence: sp.confidence ?? 1 };
+  return { lemma: sp.lemma, pos: sp.pos, morph: sp.morph ? { ...sp.morph } : {}, gloss: sp.gloss, confidence: sp.confidence ?? 1, origin: 'corpus', sourceId: IMPORT_ANALYZER };
 }
 
 /** The sentence texts of a document in reading order, exactly as `planDocument` will segment them. */
@@ -104,7 +108,7 @@ export function sentenceTextsOf(doc: CorpusDocument, adapter: LanguageAdapter): 
 const says = (c: AnalysisCandidate): boolean => !!(c.lemma || c.pos || c.gloss || c.role || c.definition || c.register?.length);
 const unanalysed = (a: AnalyzedToken): boolean => a.token.isWord && !a.candidates.some(says);
 
-/** The normalized forms of word tokens the adapter cannot analyse: what the dictionary pre-pass looks up. */
+/** The normalized forms of word tokens the adapter cannot analyse. */
 export function collectUnanalysedForms(doc: CorpusDocument, registry: AdapterRegistry): Set<string> {
   const adapter = registry.get(doc.lang);
   const forms = new Set<string>();
@@ -115,14 +119,48 @@ export function collectUnanalysedForms(doc: CorpusDocument, registry: AdapterReg
   return forms;
 }
 
+/** The normalized forms of EVERY word token: what the dictionary pre-pass looks up (it also stands beside the adapter's analyses). */
+export function collectWordForms(doc: CorpusDocument, registry: AdapterRegistry): Set<string> {
+  const adapter = registry.get(doc.lang);
+  const forms = new Set<string>();
+  for (const text of sentenceTextsOf(doc, adapter)) for (const t of adapter.tokenize(text)) if (t.isWord) forms.add(t.normalized);
+  return forms;
+}
+
 /**
- * Dictionary entries of one form → analysis candidates. A dictionary lists what a written form can mean, so confidence
- * is below certainty (0.6 when the form has one part of speech, 0.45 when it has several); entry order is kept, the
- * first is the best candidate and the rest become alternatives.
+ * What the dictionary says about a form, for display: the short glosses, the parts of speech and the distinct readings,
+ * built with the same rules as `dictionaryCandidates` so the reader's view and the imported analysis cannot drift.
  */
-export function dictionaryCandidates(form: string, entries: readonly DictionaryEntry[]): AnalysisCandidate[] {
+export function dictionaryView(entries: readonly DictionaryEntry[]): { glosses: string[]; pos: PartOfSpeech[]; readings: string[] } {
+  const glosses: string[] = [];
+  const pos: PartOfSpeech[] = [];
+  for (const e of entries) {
+    for (const g of e.glosses) if (g.trim().length > 0 && !glosses.includes(g)) glosses.push(g);
+    if (e.pos && !pos.includes(e.pos)) pos.push(e.pos);
+  }
+  return { glosses, pos, readings: readingsOf(entries) };
+}
+
+/** The distinct readings (respellings, else IPA) the entries of one form list, first one first. */
+function readingsOf(entries: readonly DictionaryEntry[]): string[] {
+  const out: string[] = [];
+  for (const e of entries) {
+    const list = e.pronunciations?.length ? e.pronunciations.map((p) => p.respelling ?? p.ipa) : [e.respelling ?? e.ipa];
+    for (const r of list) if (r && !out.includes(r)) out.push(r);
+  }
+  return out;
+}
+
+/**
+ * Dictionary entries of one form → analysis candidates (origin `dictionary`, source = `sourceId`, the dictionary id).
+ * A dictionary lists what a written form can mean, so confidence is below certainty (0.6 when the form has one part of
+ * speech, 0.45 when it has several); entry order is kept, the first is the best candidate and the rest become
+ * alternatives. When the entries list more than one reading, the first candidate carries them all in `notes.readings`.
+ */
+export function dictionaryCandidates(form: string, entries: readonly DictionaryEntry[], sourceId?: string): AnalysisCandidate[] {
   const confidence = new Set(entries.map((e) => e.pos ?? '')).size > 1 ? 0.45 : 0.6;
-  return entries.map((e) => {
+  const readings = readingsOf(entries);
+  return entries.map((e, k) => {
     const glosses = e.glosses.filter((g) => g.trim().length > 0);
     const notes: Record<string, string | string[]> = {};
     if (e.respelling) notes.respelling = e.respelling;
@@ -130,8 +168,9 @@ export function dictionaryCandidates(form: string, entries: readonly DictionaryE
     if (e.romanization) notes.romanization = e.romanization;
     if (glosses.length > 2) notes.senses = glosses.slice(2);
     if (e.classifiers?.length) notes.classifiers = [...e.classifiers];
+    if (k === 0 && readings.length > 1) notes.readings = readings;
     return {
-      lemma: form, pos: e.pos, morph: {}, confidence,
+      lemma: form, pos: e.pos, morph: {}, confidence, origin: 'dictionary' as const, ...(sourceId ? { sourceId } : {}),
       ...(glosses.length ? { gloss: glosses.slice(0, 2).join('; ') } : {}),
       ...(e.register?.length ? { register: [...e.register] } : {}),
       ...(e.role ? { role: e.role } : {}),
@@ -147,8 +186,10 @@ export const dictionaryTool = (dictionaryId: string): string => `dict:${dictiona
 /** Plan one (already validated) document. Throws on any broken round-trip invariant: nothing is written by then. */
 export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opts: PlanOptions = {}): DocumentPlan {
   const adapter = registry.get(doc.lang);
-  const dictTool = opts.dictionary ? dictionaryTool(opts.dictionaryId ?? 'dictionary') : undefined;
+  const dictId = opts.dictionaryId ?? 'dictionary';
+  const dictTool = opts.dictionary ? dictionaryTool(dictId) : undefined;
   let dictTokens = 0;
+  let dictAlongside = 0;
   const textId = ids.text(doc.lang, doc.id);
   const analyzerName = `adapter-${doc.lang}@${adapter.version}`;
   const speakerName = (id: string | undefined) => (id !== undefined ? doc.speakers?.[id] ?? id : undefined);
@@ -171,13 +212,16 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
     const base = adapter.analyze(tokens);
     if (base.length !== tokens.length) throw new Error(`adapter ${doc.lang}: analyze() returned ${base.length} for ${tokens.length} tokens`);
     const analyzed: AnalyzedToken[] = base.map((a) => ({ ...a, candidates: a.candidates.map((c) => ({ ...c })) }));
-    // dictionary: only for a word the adapter says nothing about; the adapter's lexicon, author spans and corrections win
+    // dictionary: a word the adapter says nothing about is analysed from it; a word the adapter analyses keeps its analysis
+    // unchanged and only gets a marker (and a pronunciation when it has none) - the entries are never copied onto the token
+    const beside = new Map<number, AnalysisCandidate[]>();
     if (opts.dictionary && dictTool) {
       analyzed.forEach((a, ti) => {
-        const entries = unanalysed(a) ? opts.dictionary!.get(tokens[ti].normalized) : undefined;
+        const entries = a.token.isWord ? opts.dictionary!.get(tokens[ti].normalized) : undefined;
         if (!entries?.length) return;
-        analyzed[ti] = { token: tokens[ti], candidates: dictionaryCandidates(tokens[ti].normalized, entries), analyzer: dictTool };
-        dictTokens++;
+        const cands = dictionaryCandidates(tokens[ti].normalized, entries, dictId);
+        if (unanalysed(a)) { analyzed[ti] = { token: tokens[ti], candidates: cands, analyzer: dictTool }; dictTokens++; }
+        else beside.set(ti, cands);
       });
     }
     const spanTokens = new Set<number>();
@@ -187,16 +231,37 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
       const cand = toCandidate(sp);
       analyzed[ti] = {
         token: tokens[ti],
-        candidates: [cand, ...(sp.alternatives ?? []).map((a) => ({ lemma: a.lemma, pos: a.pos, morph: a.morph ? { ...a.morph } : {}, confidence: a.confidence }))],
+        candidates: [cand, ...(sp.alternatives ?? []).map((a) => ({
+          lemma: a.lemma, pos: a.pos, morph: a.morph ? { ...a.morph } : {}, confidence: a.confidence, origin: 'corpus' as const, sourceId: IMPORT_ANALYZER,
+        }))],
         analyzer: IMPORT_ANALYZER,
       };
       spanTokens.add(ti);
     }
+    // phrases and patterns are detected on the adapter's own analysis, before the dictionary marker is added
+    const phrases = adapter.detectPhrases(tokens, analyzed);
+    const patterns = adapter.detectPatterns(tokens, analyzed);
+    for (const [ti, cands] of beside) {
+      if (spanTokens.has(ti)) continue; // an author's span wins outright
+      const [first, ...rest] = analyzed[ti].candidates.map((c) => ({ ...c }));
+      const hasPronunciation = !!(first.notes && (first.notes.respelling || first.notes.ipa || first.notes.translit || first.notes.romanization));
+      const withPron = hasPronunciation ? undefined : cands.find((c) => c.notes?.respelling || c.notes?.ipa);
+      const readings = cands[0].notes?.readings;
+      const added: Record<string, string | string[]> = {
+        ...(withPron?.notes?.respelling ? { respelling: withPron.notes.respelling } : {}), ...(withPron?.notes?.ipa ? { ipa: withPron.notes.ipa } : {}),
+        ...(withPron ? { pronunciationSource: dictId } : {}),
+        ...(readings ? { readings } : {}),
+        // a marker only: the entries stay in the installed dictionary and are asked for at display time, never copied per token
+        dictionary: dictId,
+      };
+      first.notes = { ...(first.notes ?? {}), ...added };
+      analyzed[ti] = { ...analyzed[ti], candidates: [first, ...rest] };
+      dictAlongside++;
+    }
     sentences.push({
       authorId: extra.authorId, hashKey: ids.sentenceKey(text, repeat), text, english: extra.english, verseRefs: extra.verseRefs ? [...extra.verseRefs] : undefined,
       speaker: extra.speaker, paragraphIndex, paraStart, paraEnd, tokens, analyzed, spanTokens, corrections: extra.corrections ?? [],
-      phrases: adapter.detectPhrases(tokens, analyzed), patterns: adapter.detectPatterns(tokens, analyzed),
-      notes: (extra.notes ?? []).map((n) => planNote(n, tokens)),
+      phrases, patterns, notes: (extra.notes ?? []).map((n) => planNote(n, tokens)),
     });
   };
 
@@ -265,7 +330,7 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
 
   return {
     doc, textId, adapter, analyzerName, paragraphs, sentences, coverage, decision, signature, nonNfcBlocks, tokenCount: allTokens.length,
-    ...(workIdOf(doc) ? { workId: workIdOf(doc) } : {}), ...(dictTool ? { dictionary: { tool: dictTool, tokens: dictTokens } } : {}), noteCount,
+    ...(workIdOf(doc) ? { workId: workIdOf(doc) } : {}), ...(dictTool ? { dictionary: { tool: dictTool, tokens: dictTokens, alongside: dictAlongside } } : {}), noteCount,
   };
 }
 
@@ -341,10 +406,23 @@ export function materializeSentence(plan: DocumentPlan, ps: PlannedSentence, sen
     const [best, ...rest] = a.candidates;
     // an author span's gloss is contextual (TokenAnalysis.gloss), not the lemma's dictionary gloss
     const fromSpan = ps.spanTokens.has(ti);
+    // Where each candidate comes from: its own origin / source when it states them (the Thai adapter, the dictionary,
+    // an author's span); otherwise a rule-derived candidate (notes.source === 'rule') is `rule` and any other adapter
+    // candidate is a lexicon hit, `hand`, of `adapter-<lang>@<version>`.
+    const originOf = (c: AnalysisCandidate): { origin: AnalysisOrigin; sourceId: string } => ({
+      origin: c.origin ?? (c.notes?.source === 'rule' ? 'rule' : 'hand'), sourceId: c.sourceId ?? `adapter-${lang}@${plan.adapter.version}`,
+    });
+    const bestOrigin = originOf(best);
     const lemmaId = best.lemma ? ensureLemma(best.lemma, best.pos, fromSpan ? undefined : best.gloss) : undefined;
-    const alternatives: NonNullable<TokenAnalysis['alternatives']> = rest.map((r) => ({
-      lemmaId: r.lemma ? ensureLemma(r.lemma, r.pos, fromSpan ? undefined : r.gloss) : undefined, pos: r.pos, morph: r.morph, confidence: r.confidence,
-    }));
+    const alternatives: NonNullable<TokenAnalysis['alternatives']> = rest.map((r) => {
+      const o = originOf(r);
+      // a dictionary entry beside a hand analysis never fills in the hand lemma's gloss; it carries its own gloss
+      const besideHand = o.origin === 'dictionary' && bestOrigin.origin !== 'dictionary';
+      return {
+        lemmaId: r.lemma ? ensureLemma(r.lemma, r.pos, fromSpan || besideHand ? undefined : r.gloss) : undefined, pos: r.pos, morph: r.morph, confidence: r.confidence,
+        ...(besideHand && r.gloss ? { gloss: r.gloss } : {}), origin: o.origin, sourceId: o.sourceId,
+      };
+    });
     // TODO(contract): AnalysisCandidate has no provenance field. Rule-derived candidates (clitic split, compound guess,
     // separable particle) carry notes.source === 'rule' and are stored as 'machine'; lexicon-backed ones as 'lexicon'.
     const notes = best.notes ? { ...best.notes } : undefined;
@@ -355,7 +433,7 @@ export function materializeSentence(plan: DocumentPlan, ps: PlannedSentence, sen
       ...(notes && Object.keys(notes).length ? { notes } : {}), ...(best.gloss && fromSpan ? { gloss: best.gloss } : {}),
       // variety, function and an easy target-language definition travel with the analysis (syllables are decoded on demand, never stored)
       ...(best.register?.length ? { register: [...best.register] } : {}), ...(best.role ? { role: best.role } : {}), ...(best.definition ? { definition: best.definition } : {}),
-      confidence: best.confidence, provenance: fromRule ? 'machine' : 'lexicon', analyzer: a.analyzer, createdAt: now,
+      confidence: best.confidence, provenance: fromRule ? 'machine' : 'lexicon', origin: bestOrigin.origin, sourceId: bestOrigin.sourceId, analyzer: a.analyzer, createdAt: now,
       ...(alternatives.length ? { alternatives } : {}),
     });
   });
@@ -372,7 +450,7 @@ export function materializeSentence(plan: DocumentPlan, ps: PlannedSentence, sen
     analyses.push({
       id: ids.analysis(tokens[ti].id, analyzer, n), tokenId: tokens[ti].id, lang,
       lemmaId: c.lemma ? ensureLemma(c.lemma, c.pos, undefined) : undefined, pos: c.pos, morph: c.morph ? { ...c.morph } : {}, ...(c.gloss ? { gloss: c.gloss } : {}),
-      confidence: 1, provenance: 'human', analyzer, createdAt: c.at, ...(machine ? { supersedes: machine.id } : {}),
+      confidence: 1, provenance: 'human', origin: 'reviewed', sourceId: analyzer, analyzer, createdAt: c.at, ...(machine ? { supersedes: machine.id } : {}),
     });
   }
 

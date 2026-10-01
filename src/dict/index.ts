@@ -9,8 +9,8 @@ import type { DictionaryEntry, DictionaryInfo, LanguageCode, LexiconSource } fro
 import { createShardedSource } from './sharded';
 
 export { bucketOf, shardName, compactEntry, expandEntry, parseManifest, parseShard, DICT_SCHEMA, BUCKETS, MAX_GLOSSES } from './format';
-export type { CompactEntry, DictionaryManifest } from './format';
-export { entryFromKaikki, mapKaikkiLine } from './map';
+export type { CompactEntry, CompactSense, CompactPronunciation, DictionaryManifest } from './format';
+export { entryFromKaikki, mapKaikkiLine, KAIKKI_SKIPS } from './map';
 export type { KaikkiMapping, KaikkiSkip } from './map';
 export { buildDictionary, createDictionaryBuilder, mergeEntries, KAIKKI_ATTRIBUTION, KAIKKI_LICENCE } from './build';
 export type { BuildOutput, BuildStats, BuilderOptions, DictionaryBuilder } from './build';

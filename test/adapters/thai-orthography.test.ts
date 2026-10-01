@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
   decodeThai,
+  decodeThaiByRulesOnly,
   decodeThaiRespelling,
   describeThaiOrthFeature,
   thaiOrthFeatures,
@@ -85,7 +86,7 @@ describe('decodeThai — thanthakhat', () => {
       const r = decodeThai(w);
       expect(r, w).toHaveLength(1);
       expect(r[0].tone, w).toBe(tone);
-      expect(r[0].confidence, w).toBeGreaterThanOrEqual(0.8);
+      // confidence: see the next test (Pali letters keep it, loan letters do not)
       expect(r[0].text, w).toBe(w);
     }
   });
@@ -121,7 +122,7 @@ describe('decodeThai — polysyllabic words', () => {
   });
 
   it('is confident only where every syllable has a written vowel and nothing competes', () => {
-    for (const w of ['โรงเรียน', 'นักเรียน', 'ทำงาน', 'ขอบคุณ', 'เข้าใจ']) {
+    for (const w of ['เข้าใจ', 'ไม่มี', 'แม่น้ำ', 'ผู้ชาย']) {
       for (const s of decodeThai(w)) expect(s.confidence, w).toBeGreaterThanOrEqual(0.8);
     }
   });
@@ -191,7 +192,7 @@ describe('decodeThai — polysyllabic words', () => {
       for (const s of r) expect(s.confidence, w).toBeLessThanOrEqual(0.6);
     }
     // native finals do not trigger the cap
-    for (const s of decodeThai('นักเรียน')) expect(s.confidence).toBeGreaterThanOrEqual(0.8);
+    for (const s of decodeThai('นักเรียน')) expect(s.rule ?? '', 'นักเรียน').not.toContain('hidden syllable');
   });
 
   it('is not confident when ◌ำ meets a low sonorant that may take its class (สำเร็จ vs สำนัก)', () => {
@@ -199,7 +200,7 @@ describe('decodeThai — polysyllabic words', () => {
       for (const s of decodeThai(w)) expect(s.confidence, w).toBeLessThanOrEqual(0.6);
     }
     // a low-class first letter or a non-sonorant second letter is settled by the spelling
-    for (const w of ['ทำงาน', 'คำพูด']) for (const s of decodeThai(w)) expect(s.confidence, w).toBeGreaterThanOrEqual(0.8);
+    for (const w of ['ทำให้', 'ทำไม่ได้']) for (const s of decodeThai(w)) expect(s.confidence, w).toBeGreaterThanOrEqual(0.8);
   });
 });
 
@@ -772,9 +773,9 @@ describe('reviewed word splits', () => {
     expect(r.map((s) => s.text)).toEqual(['ผน', 'ละ', 'ไม้']);
   });
 
-  it('reads ผลิต and ผลาญ as two syllables, not as a cluster ผล', () => {
+  it('reads ผลิต as two syllables, not as a cluster ผล; ผลาญ is a real cluster and is left to the rules', () => {
     expect(tones('ผลิต')).toEqual(['low', 'low']);
-    expect(tones('ผลาญ')).toEqual(['low', 'rising']);
+    expect(tones('ผลาญ')).toEqual(['rising']);
     expect(tones('ผลัก')).toEqual(['low']); // a real cluster: ผลัก (push)
     expect(tones('บรม')).toEqual(['mid', 'mid']);
   });
@@ -783,9 +784,9 @@ describe('reviewed word splits', () => {
 /** Everyday words with tones the author is certain of (not part of the brief's list). */
 const EXTRA_MONO: Record<ThaiTone, string[]> = {
   mid: words('ดู ฟัง นอน ยืน รอ เจอ เย็น ยาว เบา เร็ว เลว แพง บาง เดียว กัน เอง ตัว ไฟ ดิน ใบ ตา ยาย ลุง อา แมว วัว ควาย ลิง นม เค็ม ชา พัน วัน คืน ปี เดือน ตอน แดง ดำ คุณ มัน เงิน เรือ บิน เรียน จำ ลืม ควร เคย ยัง โดย ใน บน ลง ทาง วาง'),
-  rising: words('ผล ผอม ผง ไหน หมี ขม ของ เหลือง เหรอ ฉัน ขอ สอน สูง ถึง ใส หา เห็น หิว สอง สาม แสน ขาย ถาม หนาว ขาว'),
-  low: words('ผ่าน ผิด บอก ตอบ อ่าน ดื่ม ตื่น ส่ง ปิด เกลียด โกรธ สุข ปวด เจ็บ อิ่ม เหนื่อย อุ่น เปียก ต่ำ เก่า เก่ง อื่น ดอก ปู่ เป็ด ไข่ เผ็ด จืด แปด เจ็ด หมื่น ก่อน บ่าย แก่ เก็บ ขอบ ออก กลับ จะ แต่ กับ'),
-  high: words('ลุก รับ ทุกข์ ช้า น้อย ทั้ง น้า เนื้อ ล้าน พุธ เช้า คะ นะ ร้าน ร้อง คิด ยิ้ม รัก'),
+  rising: words('ผอม ผง ไหน หมี ขม ของ เหลือง เหรอ ฉัน ขอ สอน สูง ถึง ใส หา เห็น หิว สอง สาม แสน ขาย ถาม หนาว ขาว'),
+  low: words('ผ่าน ผิด บอก ตอบ อ่าน ดื่ม ตื่น ส่ง ปิด เกลียด สุข ปวด เจ็บ อิ่ม เหนื่อย อุ่น เปียก ต่ำ เก่า เก่ง อื่น ดอก ปู่ เป็ด ไข่ เผ็ด จืด แปด เจ็ด หมื่น ก่อน บ่าย แก่ เก็บ ขอบ ออก กลับ จะ แต่ กับ'),
+  high: words('ลุก รับ ทุกข์ ช้า น้อย ทั้ง น้า เนื้อ ล้าน เช้า คะ นะ ร้าน ร้อง คิด ยิ้ม รัก'),
   falling: words('ผู้ ผ้า นั่น นี่ เมื่อ ซึ่ง วิ่ง เริ่ม เศร้า ง่วง แห้ง สั้น น่า ยาก ห้อง ต้น พี่ ย่า ป้า กุ้ง ข้าว เปรี้ยว เหล้า เที่ยง ค่ำ ส้ม ค่ะ จ้ะ เครื่อง เพื่อน เล่น เพิ่ง แค่ เพื่อ ล่าง ข้าง ใต้ ขึ้น เข้า มืด พวก'),
 };
 
@@ -943,5 +944,256 @@ describe('describeThaiOrthFeature', () => {
 
   it('uses no exclamation marks', () => {
     for (const k of ['class:mid', 'ending:dead', 'irregular', 'special:rue', 'lead:ho-nam']) expect(describeThaiOrthFeature(k)).not.toContain('!');
+  });
+});
+
+describe('provenance (PLAN6 A)', () => {
+  it('marks a rule decode as source "rule" on every syllable', () => {
+    for (const w of ['นก', 'สมอง', 'เข้าใจ', 'ฟอนต์']) {
+      const r = decodeThai(w);
+      expect(r.length, w).toBeGreaterThan(0);
+      for (const s of r) {
+        expect(s.source, w).toBe('rule');
+        expect(s.sourceId, w).toBeUndefined();
+        expect(s.ruleTone, w).toBeUndefined();
+      }
+    }
+  });
+
+  it('marks words decoded from the reviewed lists as "exception-list" with their source id', () => {
+    for (const w of ['น้ำ', 'ขนม', 'ผลไม้', 'สำเร็จ']) {
+      for (const s of decodeThai(w)) {
+        expect(s.source, w).toBe('exception-list');
+        expect(s.sourceId, w).toBe('adapter-th:orth-exceptions');
+      }
+    }
+  });
+
+  it('marks a respelling decode as "dictionary" unless told otherwise', () => {
+    expect(decodeThaiRespelling('ขนม', 'ขะ-หฺนม').every((s) => s.source === 'dictionary')).toBe(true);
+    expect(decodeThaiRespelling('ขนม', 'ขะ-หฺนม')[0].sourceId).toBeUndefined();
+    const d = decodeThaiRespelling('ขนม', 'ขะ-หฺนม', undefined, { sourceId: 'dict:kaikki-th-2026-09-28' });
+    expect(d.every((s) => s.source === 'dictionary' && s.sourceId === 'dict:kaikki-th-2026-09-28')).toBe(true);
+    const a = decodeThaiRespelling('ขนม', 'ขะ-หฺนม', undefined, { source: 'author', sourceId: 'text:abc' });
+    expect(a.every((s) => s.source === 'author' && s.sourceId === 'text:abc')).toBe(true);
+  });
+
+  it('keeps what the rules said when a respelling disagrees with a confident rule tone', () => {
+    // กา is read mid by the rules (confidence 0.95); a respelling that says ก้า (falling) is kept, and the rule tone is recorded
+    const r = decodeThaiRespelling('กา', 'ก้า');
+    expect(r[0].tone).toBe('falling');
+    expect(r[0].ruleTone).toBe('mid');
+    expect(r[0].irregular).toBe(true);
+    // agreement: nothing recorded
+    expect(decodeThaiRespelling('กา', 'กา')[0].ruleTone).toBeUndefined();
+    // the rules not confident (the word has more than one reading): nothing recorded
+    expect(decodeThaiRespelling('สมอง', 'สะ-หฺมอง').every((s) => s.ruleTone === undefined)).toBe(true);
+  });
+
+  it('does not set ruleTone when the syllable counts differ', () => {
+    expect(decodeThaiRespelling('ผลไม้', 'ผน-ละ-ไม้').every((s) => s.ruleTone === undefined)).toBe(true);
+  });
+
+  it('exports decodeThaiByRulesOnly, which ignores both word lists', () => {
+    expect(decodeThaiByRulesOnly('น้ำ')[0]).toMatchObject({ source: 'rule', vowel: '◌ำ', vowelLength: 'short' });
+    expect(decodeThaiByRulesOnly('ผลไม้')).toHaveLength(2); // the list says three syllables
+    expect(decodeThai('ผลไม้')).toHaveLength(3);
+    expect(decodeThaiByRulesOnly('นก')).toEqual(decodeThai('นก'));
+    expect(decodeThaiByRulesOnly('abc')).toEqual([]);
+    expect(decodeThaiByRulesOnly('ตำรวจ').every((s) => s.confidence < 0.8)).toBe(true); // while the list reads it confidently
+    expect(decodeThai('ตำรวจ').every((s) => s.confidence >= 0.9)).toBe(true);
+  });
+
+  it('lets the IPA win for ข้าวหมกไก่ but flags the disagreement (หมก is a dead syllable, so it cannot be rising)', () => {
+    const noIpa = decodeThaiRespelling('ข้าวหมกไก่', 'ข้าว-หมก-ไก่');
+    expect(noIpa.map((s) => s.tone)).toEqual(['falling', 'low', 'low']);
+    const withIpa = decodeThaiRespelling('ข้าวหมกไก่', 'ข้าว-หมก-ไก่', '/kʰaːw˥˩.mok̚˩˩˦.kaj˨˩/');
+    expect(withIpa.map((s) => s.tone)).toEqual(['falling', 'rising', 'low']);
+    expect(withIpa[1]).toMatchObject({ irregular: true });
+    expect(withIpa[1].confidence).toBeLessThanOrEqual(0.7);
+  });
+});
+
+describe('conservative policy (PLAN6 A): patterns the spelling does not settle', () => {
+  const notSure = (w: string) => {
+    const r = decodeThaiByRulesOnly(w);
+    expect(r.length, w).toBeGreaterThan(0);
+    for (const s of r) expect(s.confidence, w).toBeLessThan(0.8);
+    return r;
+  };
+
+  it('keeps the tone but not the confidence for thanthakhat over loan letters', () => {
+    for (const w of ['ฟอนต์', 'ซิงก์', 'เมาส์', 'พอร์ต', 'กอล์ฟ', 'เต็นท์']) {
+      const r = notSure(w);
+      expect(r[0].tone, w).toBeDefined();
+    }
+    const f = decodeThaiByRulesOnly('ฟอนต์')[0];
+    expect(f.rule).toContain('Not sure: thanthakhat silences a letter that loanwords silence');
+    // Pali letters under thanthakhat keep it
+    for (const w of ['ทิพย์', 'ภัณฑ์', 'สิงห์']) expect(decodeThaiByRulesOnly(w)[0].confidence, w).toBeGreaterThanOrEqual(0.8);
+  });
+
+  it('does not trust an unmarked dead syllable closed by a loan-style stop (ชีส, เชฟ, วัตต์)', () => {
+    for (const w of ['ชีส', 'เชฟ', 'ยีส', 'ฟุตซ']) notSure(w);
+    // the plain native stops and the finals of CORE words stay confident
+    for (const w of ['บาป', 'ภาพ', 'รถ', 'ลาก', 'ลาภ', 'มาด', 'สุข']) expect(decodeThaiByRulesOnly(w)[0].confidence, w).toBeGreaterThanOrEqual(0.8);
+  });
+
+  it('does not trust a silent ร after จ ส ศ ซ in a dead syllable (สรุป, จรัส)', () => {
+    notSure('สรุป');
+    notSure('จรัส');
+    for (const w of ['สร้าง', 'ศรี', 'ทราย', 'ทราบ']) expect(decodeThaiByRulesOnly(w)[0].confidence, w).toBeGreaterThanOrEqual(0.8);
+  });
+
+  it('does not trust ล / ว clusters before a short open vowel (พละ), but พระ stays', () => {
+    notSure('พละ');
+    notSure('พลิ');
+    expect(decodeThaiByRulesOnly('พระ')[0].confidence).toBeGreaterThanOrEqual(0.8);
+    expect(decodeThaiByRulesOnly('ปลา')[0].confidence).toBeGreaterThanOrEqual(0.8);
+  });
+
+  it('does not trust the vowels ◌็อ and แ◌็ (English loans), but เ◌็ stays', () => {
+    notSure('บล็อก');
+    notSure('แล็บ');
+    expect(decodeThaiByRulesOnly('เด็ก')[0].confidence).toBeGreaterThanOrEqual(0.8);
+  });
+
+  it('does not trust no written vowel before ร ล ณ ญ ฬ (Pali), but คน นก มด stay', () => {
+    for (const w of ['นร', 'คณ', 'มล']) notSure(w);
+    for (const w of ['คน', 'นก', 'มด', 'ลม']) expect(decodeThaiByRulesOnly(w)[0].confidence, w).toBeGreaterThanOrEqual(0.8);
+  });
+
+  it('does not trust an unmarked word that ends in a long vowel (loanwords take the English stress)', () => {
+    for (const w of ['อิตาลี', 'เบคอน', 'ยูเรเนียม', 'เทวดา']) notSure(w);
+    // a tone mark anywhere in the word, or a short end, keeps the word confident
+    for (const w of ['เข้าใจ', 'ไม่มี', 'แม่น้ำ']) for (const s of decodeThaiByRulesOnly(w)) expect(s.confidence, w).toBeGreaterThanOrEqual(0.8);
+  });
+
+  it('does not trust three or more syllables with no tone mark, or a stop before an open end', () => {
+    notSure('แคริบเบียน');
+    notSure('ฮอกกี้');
+    notSure('จักจี้');
+  });
+
+  it('does not trust a class that may pass across a leading vowel (เสมอ, เขย่า) or across ◌ำ', () => {
+    for (const w of ['เสมอ', 'เผยอ', 'เขม่า', 'ตำรอด', 'สำนอด']) notSure(w);
+  });
+
+  it('does not trust a long เ◌ closed by a stop at the start of a longer word (เอกสาร)', () => {
+    notSure('เอกสาร');
+    notSure('เอกมัย');
+    
+  });
+
+  it('treats โล่งอก as ambiguous: the อ may start a syllable', () => {
+    const r = decodeThaiByRulesOnly('โล่งอก');
+    expect(r.length).toBeGreaterThan(0);
+    for (const s of r) expect(s.confidence).toBeLessThan(0.8);
+  });
+
+  it('says why in the rule sentence, only where the doubt changed the answer', () => {
+    expect(decodeThaiByRulesOnly('ชีส')[0].rule).toContain('Not sure:');
+    expect(decodeThaiByRulesOnly('นก')[0].rule).not.toContain('Not sure');
+    // a syllable already below 0.8 for another reason is not annotated
+    expect(decodeThaiByRulesOnly('ขนมปัง').every((s) => !(s.rule ?? '').includes('Not sure'))).toBe(true);
+  });
+});
+
+describe('respelling input forms', () => {
+  it('reads a bare consonant as a syllable with the unwritten short a (กวี is respelled ก-วี)', () => {
+    const r = decodeThaiRespelling('กวี', 'ก-วี');
+    expect(r.map((s) => s.tone)).toEqual(['low', 'mid']);
+    expect(r[0]).toMatchObject({ vowelSound: 'a', ending: 'dead' });
+  });
+
+  it('accepts a phrase respelling with spaces between words', () => {
+    const r = decodeThaiRespelling('ทุกที', 'ทุก ที');
+    expect(r.map((s) => s.tone)).toEqual(['high', 'mid']);
+    const p = decodeThaiRespelling('ไม่อยู่', 'ไม่ หฺยู่');
+    expect(p.map((s) => s.tone)).toEqual(['falling', 'low']);
+  });
+});
+
+
+describe('tighter policy (second PLAN6 pass)', () => {
+  const notSure = (w: string) => {
+    const r = decodeThaiByRulesOnly(w);
+    expect(r.length, w).toBeGreaterThan(0);
+    for (const s of r) expect(s.confidence, w).toBeLessThan(0.8);
+  };
+  const sure = (w: string) => {
+    const r = decodeThaiByRulesOnly(w);
+    expect(r.length, w).toBeGreaterThan(0);
+    for (const s of r) expect(s.confidence, w).toBeGreaterThanOrEqual(0.8);
+  };
+
+  it('does not trust ป พ ผ + ล or ดร + a short vowel in a closed syllable (ปะ-หลัด, พะ-ลัง, ผะ-หลึก, ดะ-รุ)', () => {
+    for (const w of ['ปลัด', 'พลัง', 'ผลึก', 'ดรุ']) notSure(w);
+    for (const w of ['กลับ', 'ปลา', 'ปลูก', 'เปล่า', 'ครับ', 'พริก']) sure(w);
+  });
+
+  it('does not trust a short loan with a leading เ / แ and a low-class stop (เทป)', () => {
+    notSure('เทป');
+    notSure('แทป');
+    for (const w of ['เล็ก', 'เรียก', 'โลก', 'โรค', 'เลือด']) sure(w);
+  });
+
+  it('does not trust a dead syllable closed by ก before a stop-initial syllable (ตุ๊ก-กะ-ตา, จัก-กะ-จั่น)', () => {
+    notSure('ตุ๊กตา');
+    notSure('จักจั่น');
+    notSure('ปักเป้า');
+  });
+
+  it('does not trust a one-syllable dead word that starts with ฮ or ฟ (English loans)', () => {
+    notSure('ฮอก');
+    notSure('ฟุก');
+    sure('ฟัง');
+  });
+
+  it('does not trust thanthakhat over ด or ม (ไซด์), while ดิ์ stays', () => {
+    notSure('ไซด์');
+    sure('ศักดิ์');
+  });
+
+  it('does not trust โ with a high-class initial and a final (โสน), marked or not', () => {
+    notSure('โสน');
+    notSure('โสร่ง');
+    sure('โลก');
+  });
+
+  it('does not trust no written vowel after ภ ธ ฮ ฟ, but ขม stays', () => {
+    notSure('ภก');
+    sure('ขม');
+  });
+
+  it('does not trust a final ร after ุ (ธุร) or เ◌า after a leading ห (เหรา)', () => {
+    notSure('ธุร');
+    notSure('เหรา');
+    sure('เขา');
+    sure('ควร');
+  });
+
+  it('does not trust a ร-cluster with a long vowel before a stop (ปราก, แกรด), while พระ stays', () => {
+    notSure('ปราก');
+    notSure('แกรด');
+    sure('พระ');
+    sure('พริก');
+  });
+
+  it('does not trust a short open ิ or ุ after a low-class consonant inside a word (ภูมิ)', () => {
+    notSure('ภูมิแพ้');
+    notSure('ภูมิต้านทาน');
+  });
+
+  it('does not trust a long string of syllables with an unwritten or non-plain-final syllable', () => {
+    notSure('ตลาดนัดสวนจตุจักร');
+    const r = decodeThaiByRulesOnly('ตลาดนัดสวนจตุจักร');
+    expect(r.length).toBeGreaterThanOrEqual(5);
+  });
+
+  it('no longer lists ผลาญ as two syllables (the dictionary reads a cluster), and every list entry still decodes', () => {
+    expect(THAI_ORTH_EXCEPTIONS.some((e) => e.surface === 'ผลาญ')).toBe(false);
+    expect(THAI_ORTH_SETTLED.some((e) => e.surface === 'ผลาญ')).toBe(false);
+    expect(decodeThai('ผลาญ')[0].source).toBe('rule');
   });
 });

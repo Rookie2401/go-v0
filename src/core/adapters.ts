@@ -149,7 +149,7 @@ export interface LanguageAdapter {
    * Decoding with a dictionary's pronunciation data as the authority (phonemic respelling and/or IPA): used for
    * words whose spelling does not follow the rules. Falls back to decode() when the data cannot be used.
    */
-  decodeWithPronunciation?(surface: string, pron: { respelling?: string; ipa?: string }): SyllableAnalysis[];
+  decodeWithPronunciation?(surface: string, pron: { respelling?: string; ipa?: string }, sourceId?: string): SyllableAnalysis[];
   /** The writing-system items ('orth') a decoded word exercises, e.g. ["class:mid", "vowel:า", "mark:mai-tho", "rule:mid+mai-tho=falling"]. */
   orthFeatures?(syllables: SyllableAnalysis[]): string[];
   /** Plain-words label of one orth feature key, for the word sheet and the audit views. */
@@ -173,7 +173,9 @@ export function decodeFor(
   const respelling = typeof analysis?.notes?.respelling === 'string' ? analysis.notes.respelling : undefined;
   const ipa = typeof analysis?.notes?.ipa === 'string' ? analysis.notes.ipa : undefined;
   if ((respelling || ipa) && adapter.decodeWithPronunciation) {
-    const out = adapter.decodeWithPronunciation(surface, { respelling, ipa });
+    // the source of the pronunciation travels with it (analysis notes: `pronunciationSource`), so a reading is never anonymous
+    const sourceId = typeof analysis?.notes?.pronunciationSource === 'string' ? analysis.notes.pronunciationSource : undefined;
+    const out = adapter.decodeWithPronunciation(surface, { respelling, ipa }, sourceId);
     if (out.length) return out;
   }
   return adapter.decode ? adapter.decode(surface) : [];

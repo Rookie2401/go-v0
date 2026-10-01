@@ -44,7 +44,11 @@ Scripture is a second, continuous corpus outside the numbered ladder (`THAI_OUTS
 beginning, sharing the same learner model and item ids, so a word met in Scripture counts in a novel and the
 reverse. It takes the assistance profile of the stage the learner is working at. It is single-language (Thai
 with English rescue), exact, verified against its source, never generated — the existing Scripture gate applies
-unchanged. **Awaiting:** the choice of a Thai translation with established rights.
+unchanged. **Policy (2026-10-01, `THAI_SCRIPTURE_POLICY`):** THSV11 was declined by its rights holder and is never
+stored, shown, analysed, packaged or played in the app (external link only, never listening evidence); the Biblica
+Open Thai Common Version 2025 is a candidate whose licence must be verified from the release metadata before
+anything is ingested; a draft translation may enter only as a labelled technical fixture that the gate never
+publishes; English rescue is the World English Bible.
 
 ## 4. Thai analysis
 
@@ -53,7 +57,7 @@ unchanged. **Awaiting:** the choice of a Thai translation with established right
 | Word segmentation | ICU dictionary (`Intl.Segmenter('th')`) + course compound list | not measured on real prose yet; unlisted compounds may split |
 | Reading units ("sentences") | newline, double space, terminal punctuation, final particle + space; long prose spans are divided at clause spaces by rule | Thai has no sentence mark: a unit is a reading unit, not a grammarian's sentence |
 | Syllable + tone decoding | rule engine (`src/adapters/thai/orthography.ts`): consonant class, vowel, length, final, live/dead, tone mark → tone, with the rule stated | never guesses silently: ambiguous spellings get low confidence or no tone; irregular words need the exception list or a dictionary pronunciation |
-| Dictionary | built offline from a licensed source into shards (`npm run dict:build`), read through `LexiconSource` | not installed until the source file is supplied; senses are not disambiguated by context |
+| Dictionary | built offline from a licensed source into shards (`npm run dict:build`), read through `LexiconSource`; a separately sourced, attributed layer that stands beside the hand lexicon and never replaces it; disagreements are recorded for review (`npm run dict:compare`) | senses are not disambiguated by context; no frequency data |
 | Function words, particles, classifiers, discourse markers | hand lexicon with a `role` each | machine-drafted, not native-reviewed |
 | Phrase units (ไปหา …) and constructions (กำลัง + VERB …) | adapter phrase rules and pattern detectors | listed patterns only |
 | Register / variety | `RegisterTag` on analyses and works; non-standard forms are shown as such | tags come from the hand lexicon, the dictionary's labels and reviewer notes |

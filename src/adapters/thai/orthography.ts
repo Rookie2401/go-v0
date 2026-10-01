@@ -408,8 +408,8 @@ function afterInitial(s: string, i: number, lead: string, init: Init, out: Cand[
       if (init.kind === 'pseudo' || init.kind === 'o') return;
       if (init.kind === 'tho' && f.final !== 'ง') return;
       if ((init.kind === 'cluster' || init.kind === 'forced') && c2 === 'ว') return;
-      // อ or ว as the start of a later syllable never carries an unwritten vowel
-      if (init.kind === 'single' && i > 0 && (init.letters === 'อ' || init.letters === 'ว')) return;
+      // ว as the start of a later syllable never carries an unwritten vowel (an อ may: โล่งอก, so it only costs more)
+      if (init.kind === 'single' && i > 0 && init.letters === 'ว') return;
     }
     if (key === '◌ว◌' && (f.finalSound === 'w' || c2 === 'ว')) return;
     out.push({
@@ -437,7 +437,7 @@ function afterInitial(s: string, i: number, lead: string, init: Init, out: Cand[
   }
   if (lead === '' && mv === '') {
     // no vowel written: o between two consonants (คน, นก), or a short a on a lone consonant (the ส of สบาย)
-    for (const f of finalOptions(s, q, 'required')) make('implicit-o', false, f, undefined, 0.5);
+    for (const f of finalOptions(s, q, 'required')) make('implicit-o', false, f, undefined, i > 0 && init.letters === 'อ' ? 2.6 : 0.5);
     const nx = s.charAt(q);
     if (tone === '' && init.kind === 'single' && (isConsonant(nx) || has(LEADING_VOWELS, nx) || nx === 'ฤ' || nx === 'ฦ')) {
       make('implicit-a', false, { end: q, silent: '' }, undefined, splitsPair(s, i) ? 2 : 3);
@@ -713,6 +713,165 @@ function pickBest(parses: Parse[]): Parse {
   return best;
 }
 
+/**
+ * Patterns where the spelling does not settle the reading. Each returns a plain reason; one is enough to keep every
+ * syllable of the word below 0.8. They were found by measuring the engine against Wiktionary's pronunciations
+ * (scripts/eval-tones-kaikki.mts, dev half), and each is a general statement about the writing system, not a word list.
+ */
+const LOAN_SILENT = /[กคชซตทปฟลสร]์/;
+const STOP_FINAL_OK = 'กขคฆดบปพภถ';
+function unsettledReadings(core: string, cands: Cand[], drafts: Draft[]): string[] {
+  const out: string[] = [];
+  const last = cands.length - 1;
+  // Indic loans: a syllable-final letter other than the plain native finals may also start a hidden linking syllable
+  // (ราชการ = ราด-ชะ-กาน, สารภาพ = สา-ระ-พาบ).
+  if (cands.slice(0, -1).some((c) => c.final !== undefined && !has('กดบงนมยว', c.final))) {
+    out.push('a final letter may also start a hidden syllable (as in ราชการ)');
+  }
+  // ◌ำ followed by a low sonorant: the class is passed on in ตำรวจ, สำเร็จ, but not in สำนัก, อำนาจ.
+  if (
+    cands.some((c, k) => {
+      const nx = cands[k + 1];
+      if (!nx || c.key !== '◌ำ' || c.initialCls === 'low') return false;
+      if (nx.initialKind !== 'single' || !has(SONORANTS, nx.initial)) return false;
+      return drafts[k + 1].ending === 'dead' || c.initialCls === 'high';
+    })
+  ) {
+    out.push('the class of ◌ำ may pass to the next letter (ตำรวจ) or not (สำนัก)');
+  }
+  // thanthakhat over the letters English loans silence (ฟอนต์, ซิงก์, เมาส์); Pali words silence the same letters
+  if (LOAN_SILENT.test(core.replace(/ตร์/g, ''))) out.push('thanthakhat silences a letter that loanwords silence, and the tone may follow the English word');
+  // an unmarked dead syllable closed by a letter that loanwords use as a stop (ชีส, เทป, เชฟ, วัตต์): loans often take a high tone
+  if (drafts.some((d) => d.ending === 'dead' && d.final !== undefined && !d.toneMark && !has(STOP_FINAL_OK, d.final))) {
+    out.push('a loanword with this final stop may take a high tone whatever the spelling says');
+  }
+  // -ium names (ยูเรเนียม): loan stress puts a falling tone on the end
+  if (cands.length > 1 && /เ.ียม$/.test(core)) out.push('element names ending in -เ◌ียม follow the English stress');
+  // a class that may pass across a syllable with a leading vowel (เสมอ = สะ-เหมอ, เขย่า = ขะ-เหย่า)
+  if (
+    cands.some((c, k) => {
+      const nx = cands[k + 1];
+      if (k >= last || !nx || c.lead === '' || c.initialKind !== 'single' || c.initialCls === 'low') return false;
+      if (c.final !== undefined || c.toneMark !== undefined || c.endSound !== undefined) return false;
+      return nx.initialKind === 'single' && has(SONORANTS, nx.initial);
+    })
+  ) {
+    out.push('a class may pass across a vowel written before the consonant (เสมอ)');
+  }
+  const marked = drafts.some((d) => d.toneMark !== undefined);
+  const ld = drafts[last];
+  // no tone mark anywhere and a long vowel at the end: native compounds nearly always carry a mark, loans do not, and a
+  // loanword takes the tone of its stressed end (อิตาลี, เบคอน) whatever the spelling says
+  if (last > 0 && !marked && ld.vowelLength === 'long' && ld.tone === 'mid') {
+    out.push('an unmarked word with a long vowel at the end is often a loanword, whose end takes the English stress');
+  }
+  // an unmarked word closed by a low-class dead syllable: loanwords of this shape take a high tone (ฮ็อกกี้, ริพับลิกัน) where the
+  // rule says falling or high from the vowel length
+  if (last > 0 && !marked && ld.ending === 'dead' && ld.initialClass === 'low' && ld.final !== undefined) {
+    out.push('an unmarked word closed by a stop is often a loanword, whose end takes the English stress');
+  }
+  // the vowels ◌็อ and แ◌็ are written for English short o and a (บล็อก, แล็บ): a loan's tone is not the spelling's
+  if (drafts.some((d) => d.vowel === '◌็อ' || d.vowel === 'แ◌็')) out.push('the vowels ◌็อ and แ◌็ mark English loans, whose tone may not follow the spelling');
+  // ร silent after จ ส ศ ซ in a dead syllable is usually the start of a second syllable (สรุป = สะ-หรุบ, จรัส = จะ-รัด)
+  if (cands.some((c, k) => c.initialKind === 'pseudo' && drafts[k].ending === 'dead')) {
+    out.push('a silent ร after จ ส ศ ซ in a dead syllable may instead begin a second syllable (สรุป)');
+  }
+  // กล ปล พล ผล กว คว before a short open vowel is often two syllables (พละ = พะ-ละ, พลิ = พะ-ลิ); กร ปร พร with ะ are not (พระ)
+  if (cands.some((c, k) => c.initialKind === 'cluster' && has('ลว', c.initial.charAt(1)) && !c.long && c.final === undefined && drafts[k].ending === 'dead')) {
+    out.push('a cluster with ล or ว before a short open vowel may be two syllables (พละ)');
+  }
+  // a stop-final syllable followed by more syllables may hide a linking one (ตั๊กแตน = ตั๊ก-กะ-แตน, จักจี้ = จัก-กะ-จี้); an open
+  // end with no final of its own gives the spelling nothing more to check it against
+  if (last > 0 && ld.ending === 'open' && drafts.slice(0, -1).some((d) => d.ending === 'dead' && d.final !== undefined)) {
+    out.push('a stop-final syllable before an open end may hide a linking syllable (ตั๊กแตน)');
+  }
+  // three or more syllables and no tone mark: nothing but class and length anchors any of them
+  if (last > 1 && !marked) out.push('three or more syllables with no tone mark to anchor them');
+  // no vowel written before a final ร ล ณ ญ ฬ: Pali words read it as ɔɔn (นร) or as a-n with a hidden vowel (คณ, มล)
+  if (cands.some((c) => c.key === 'implicit-o' && c.final !== undefined && has('รลณญฬ', c.final))) {
+    out.push('no vowel is written before a final ร ล ณ ญ ฬ, and Pali words read that gap in more than one way');
+  }
+  // a long เ◌ closed by a stop at the start of a longer word is the Pali pattern เอก- เวท- เหตุ-, which links to the next syllable
+  if (last > 0 && cands[0].key === 'เ◌' && drafts[0].ending === 'dead' && cands[0].toneMark === undefined) {
+    out.push('a long เ◌ closed by a stop at the start of a longer word is usually Pali (เอก-), which adds a linking syllable');
+  }
+  tightDoubts(core, cands, drafts, out);
+  return out;
+}
+
+const PLAIN_FINALS = 'กดบงนมยว';
+const STOP_INITIALS = 'กจดตปบฎฏคชทพ';
+
+function tightDoubts(core: string, cands: Cand[], drafts: Draft[], out: string[]): void {
+  const last = cands.length - 1;
+  const marked = drafts.some((d) => d.toneMark !== undefined);
+  // a cluster that is really two syllables: ป พ ผ + ล before a short vowel (ปะ-หลัด, พะ-ลัง, ผะ-หลึก); ส จ ศ ซ ด + ร before a short vowel
+  if (
+    cands.some((c, k) => {
+      if (c.long || c.key === 'implicit-o' || (drafts[k].ending !== 'dead' && c.final === undefined)) return false;
+      if (c.initialKind === 'cluster' && 'ปพผ'.includes(c.initial.charAt(0)) && c.initial.charAt(1) === 'ล') return true;
+      if (c.initialKind === 'cluster' && c.initial === 'ดร') return true;
+      return false;
+    })
+  ) {
+    out.push('a cluster before a short vowel is often two syllables (ปะ-หลัด, สะ-หรุบ, ดะ-รุ)');
+  }
+  // a short loan with a leading vowel: the stress of the English word sets the tone, not the vowel length
+  if (
+    last === 0 && !marked && drafts[0].ending === 'dead' && drafts[0].final !== undefined &&
+    drafts[0].initialClass === 'low' && (cands[0].key === 'เ◌' || cands[0].key === 'แ◌' || (cands[0].key === 'โ◌' && 'ปบตด'.includes(drafts[0].final ?? '')))
+  ) {
+    out.push('a short loan with a leading vowel and a low-class dead syllable may take the other of falling and high (เทป, โยบ)');
+  }
+  // five or more syllables: one unwritten linking syllable anywhere makes the whole reading wrong
+  if (
+    cands.length >= 5 &&
+    !cands.every((c) => c.key !== 'implicit-o' && c.key !== 'implicit-a' && (c.final === undefined || PLAIN_FINALS.includes(c.final)))
+  ) {
+    out.push('a long string of syllables is probably a phrase, and any unwritten linking syllable breaks the reading');
+  }
+  // a dead syllable ending in ก followed by a stop-initial syllable inside one word (ตุ๊ก-กะ-ตา, จัก-กะ-จั่น, ปัก-กะ-เป้า)
+  if (
+    cands.some((c, k) => k < last && c.final === 'ก' && drafts[k].ending === 'dead' && STOP_INITIALS.includes(cands[k + 1].initial.charAt(0)))
+  ) {
+    out.push('a syllable ending in ก before a stop-initial syllable may hide a linking syllable (ตุ๊ก-กะ-ตา)');
+  }
+  // ฮ and ฟ at the start of a one-syllable word: almost always an English loan
+  if (last === 0 && !marked && 'ฮฟ'.includes(cands[0].initial.charAt(0)) && drafts[0].ending === 'dead') {
+    out.push('a dead syllable that starts with ฮ or ฟ is nearly always an English loan');
+  }
+  // thanthakhat over ด or ม at the end (ไ◌ด์): loan
+  if (/[ดม]์/.test(core)) out.push('thanthakhat over ด or ม marks an English loan');
+  // โ with a high-class initial and a final in a one-syllable word: the โส- family (โสน, โสณ) has a hidden vowel
+  if (last === 0 && cands[0].lead === 'โ' && drafts[0].initialClass === 'high' && cands[0].final !== undefined) {
+    out.push('โ with a high-class initial and a final may hide a vowel (โสน)');
+  }
+  // no vowel written after an Indic-only or loan initial (ภก)
+  if (last === 0 && cands[0].key === 'implicit-o' && 'ภธฮฟ'.includes(cands[0].initial.charAt(0))) {
+    out.push('no vowel is written after ภ ธ ฮ ฟ; such a spelling is usually an abbreviation or a Pali stem');
+  }
+  // a ร-cluster with a long vowel before a stop in one syllable is usually an English loan (ปราก, แกรด)
+  if (last === 0 && !marked && cands[0].initialKind === 'cluster' && cands[0].initial.charAt(1) === 'ร' && cands[0].long && drafts[0].ending === 'dead') {
+    out.push('a ร-cluster with a long vowel before a stop is usually an English loan (ปราก)');
+  }
+  // a short open ิ or ุ after a low-class consonant inside a word is often Pali and said with a final (ภูมิ = พูม, not ภู-มิ)
+  if (cands.some((c, k) => k < last && (c.key === '◌ิ' || c.key === '◌ุ') && c.final === undefined && c.initialCls === 'low')) {
+    out.push('a short open ิ or ุ inside a word may be a Pali syllable said with a final (ภูมิ)');
+  }
+  // ร as a final after ุ in one syllable (ธุร): Pali stems read with a hidden vowel
+  if (last === 0 && cands[0].final === 'ร' && cands[0].key === '◌ุ') {
+    out.push('a final ร after ุ is a Pali stem with a hidden vowel (ธุร)');
+  }
+  // เ◌า with a high-class initial that is not a plain word (เหรา)
+  if (last === 0 && cands[0].key === 'เ◌า' && cands[0].initialKind === 'ho' && !marked) {
+    out.push('เ◌า after a leading ห and a low consonant may be two syllables (เหรา)');
+  }
+  // a final syllable that ends in an unwritten vowel after ร or ว (วี-ระ, ดะ-รุ): bound Indic stems
+  if (last > 0 && 'รว'.includes(cands[last].initial.charAt(0)) && !cands[last].long && cands[last].final === undefined && cands[last].endSound === undefined) {
+    out.push('a bound Indic stem ending in a short vowel after ร or ว (วี-ระ)');
+  }
+}
+
 function decodeByRules(surface: string): SyllableAnalysis[] {
   if (!isPlainThai(surface)) return [];
   const { parses, overflow } = enumerateParses(surface, {});
@@ -730,16 +889,7 @@ function decodeByRules(surface: string): SyllableAnalysis[] {
   const last = best.cands[best.cands.length - 1];
   const shortOpenEnd = !mono && !last.final && !last.endSound && !last.long && last.key !== 'rue';
   const bookish = !mono && BOOKISH.test(core);
-  // Indic loans: a syllable-final letter other than the plain native finals may also start a hidden linking syllable
-  // (ราชการ = ราด-ชะ-กาน, สารภาพ = สา-ระ-พาบ). The spelling cannot say, so the whole word is not confident.
-  const hiddenLink = best.cands.slice(0, -1).some((c) => c.final !== undefined && !has('กดบงนมยว', c.final));
-  // ◌ำ followed by a low sonorant: the class is passed on in ตำรวจ, สำเร็จ, but not in สำนัก, อำนาจ.
-  const amClass = best.cands.some((c, k) => {
-    const nx = best.cands[k + 1];
-    if (!nx || c.key !== '◌ำ' || c.initialCls === 'low') return false;
-    if (nx.initialKind !== 'single' || !has(SONORANTS, nx.initial)) return false;
-    return drafts[k + 1].ending === 'dead' || c.initialCls === 'high';
-  });
+  const doubts = unsettledReadings(core, best.cands, drafts);
 
   return drafts.map((d) => {
     const c = d._cand;
@@ -752,7 +902,8 @@ function decodeByRules(surface: string): SyllableAnalysis[] {
     if (c.pseudoFinal) conf = Math.min(conf, 0.72);
     if (d._carried) conf = Math.min(conf, 0.75);
     if (implicitInside || bookish || shortOpenEnd) conf = Math.min(conf, 0.72);
-    if (hiddenLink || amClass) conf = Math.min(conf, 0.6);
+    const settled = conf;
+    if (doubts.length > 0) conf = Math.min(conf, 0.6);
     if (mono) {
       // another one-syllable reading of the same letters with a different tone
       if (altDrafts.some((a) => a.length === 1 && a[0].tone !== d.tone)) conf = Math.min(conf, 0.55);
@@ -760,7 +911,10 @@ function decodeByRules(surface: string): SyllableAnalysis[] {
       conf = Math.min(conf, 0.55);
     }
     if (overflow) conf = Math.min(conf, 0.5);
-    return finish(d, conf);
+    const out: SyllableAnalysis = { ...finish(d, conf), source: 'rule' };
+    // say why a tone that the rules gave is not offered with confidence (only where the doubt changed the answer)
+    if (doubts.length > 0 && settled >= 0.8 && out.rule) out.rule += `. Not sure: ${doubts[0]}`;
+    return out;
   });
 }
 
@@ -775,7 +929,13 @@ for (const e of THAI_ORTH_EXCEPTIONS) LISTED.set(e.surface, { respelling: e.resp
 export function decodeThai(surface: string): SyllableAnalysis[] {
   const ex = LISTED.get(surface);
   if (ex) {
-    const r = respell(surface, ex.respelling, undefined, { listed: true, note: ex.note, split: ex.split });
+    const r = respell(surface, ex.respelling, undefined, {
+      listed: true,
+      note: ex.note,
+      split: ex.split,
+      source: 'exception-list',
+      sourceId: 'adapter-th:orth-exceptions',
+    });
     if (r.length > 0) return r;
   }
   return decodeByRules(surface);
@@ -792,6 +952,14 @@ function parseRespellingPart(part: string): { cand: Cand; str: string } | undefi
     forcedPair = idx - 1;
   }
   if (!isPlainThai(str)) return undefined;
+  if (str.length === 1 && isConsonant(str)) {
+    // a bare consonant is a syllable with the short a that Thai leaves unwritten (กวี is respelled ก-วี)
+    const cand: Cand = {
+      start: 0, end: 1, lead: '', initial: str, initialKind: 'single', initialCls: classOf(str), key: 'implicit-a',
+      long: false, silent: '', penalty: 3, roHan: false, pseudoFinal: false,
+    };
+    return { cand, str };
+  }
   const found = candidatesAt(str, 0, { forcedPair })
     .filter((c) => c.key !== 'implicit-a' && (c.end === str.length || endsWord(str, c.end)))
     .sort((a, b) => a.penalty - b.penalty);
@@ -818,8 +986,18 @@ function splitIpa(ipa: string): string[] {
  * Syllables are laid over `surface` when the rule decode has the same syllable count (or the respelling is one
  * syllable); otherwise every syllable spans the whole word and its `text` is the respelling part.
  */
-export function decodeThaiRespelling(surface: string, respelling: string, ipa?: string): SyllableAnalysis[] {
-  return respell(surface, respelling, ipa, {});
+export function decodeThaiRespelling(
+  surface: string,
+  respelling: string,
+  ipa?: string,
+  opts?: { source?: 'dictionary' | 'exception-list' | 'author'; sourceId?: string },
+): SyllableAnalysis[] {
+  return respell(surface, respelling, ipa, { source: opts?.source ?? 'dictionary', sourceId: opts?.sourceId });
+}
+
+/** The spelling rules alone, without the reviewed word lists (for audits, and to find where a dictionary and the rules part ways). */
+export function decodeThaiByRulesOnly(surface: string): SyllableAnalysis[] {
+  return decodeByRules(surface);
 }
 
 type Written = Pick<SyllableAnalysis, 'initial' | 'cluster' | 'final' | 'vowel' | 'vowelLength' | 'rule'>;
@@ -838,10 +1016,10 @@ function respell(
   surface: string,
   respelling: string,
   ipa: string | undefined,
-  listed: { listed?: boolean; note?: string; split?: string },
+  listed: { listed?: boolean; note?: string; split?: string; source?: 'exception-list' | 'dictionary' | 'author'; sourceId?: string },
 ): SyllableAnalysis[] {
   const parts = respelling
-    .split(/[-–—]/)
+    .split(/[-–—\s]+/)
     .map((p) => p.trim())
     .filter((p) => p.length > 0);
   if (parts.length === 0 || surface.length === 0) return [];
@@ -922,6 +1100,8 @@ function respell(
     else if (listed.listed && isIrregular) rule += '. Spoken form from the reviewed word list';
     const out = finish(d, confidence);
     const syl: SyllableAnalysis = { ...out, rule };
+    if (listed.source) syl.source = listed.source;
+    if (listed.sourceId) syl.sourceId = listed.sourceId;
     if (tone) syl.tone = tone;
     if (dictIpa !== undefined) syl.ipa = dictIpa;
     if (isIrregular) syl.irregular = true;
@@ -944,6 +1124,8 @@ function respell(
       else delete syl.final;
       if (w.vowel !== undefined && w.vowelLength === syl.vowelLength) syl.vowel = w.vowel;
     }
+    const rs = ruleSyl.length === drafts.length ? ruleSyl[k] : undefined;
+    if (rs && rs.tone && rs.confidence >= 0.8 && syl.tone && rs.tone !== syl.tone) syl.ruleTone = rs.tone;
     if (syl.text !== parsed[k].str) syl.respelled = parsed[k].str;
     else delete syl.respelled;
     return syl;

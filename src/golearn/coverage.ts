@@ -5,12 +5,15 @@
  * `Sentence.index`, never an id) is
  *   known      — its form OR its credited lemma has (manual-mark-adjusted) reading level ≥ `recognized`: DEMONSTRATED
  *   estimated  — not known, but its form or lemma is "likely familiar" (≥ 4 help-free exposures over ≥ 2 sittings,
- *                no help lately). An ESTIMATE: reported separately, never merged into `knownLexicalCoverage`
+ *                no help with THAT item lately; the English shown for a sentence does not veto it — policy.ts, evidence@4).
+ *                An ESTIMATE: reported separately, never merged into `knownLexicalCoverage`
  *   partial    — met (read, heard or needed help) but neither known nor estimated
  *   unseen     — otherwise
  * known + estimated + partial + unseen = 1.
  * Bands (soft, lexical only) use known + estimated and say so in `explanation`:
  *   ≥0.95 comfortable · ≥0.88 productive-challenge · ≥0.75 difficult · else stretch.
+ * `asOf` = time of the latest evidence event folded for the learner in the text's language; the numbers are a pure function of the log up to it
+ * (same evidence ⇒ byte-identical coverage, on every call and after `rebuild`).
  * expectedDifficulty (0..1) blends: 0.60 × lexical gap (scaled so 75 % known+estimated = 1.0), 0.15 × unknown phrases,
  * 0.10 × unfamiliar-pattern ratio, 0.15 × sentence length (6 words = 0, 20+ words = 1). It is advisory only.
  *
@@ -86,7 +89,8 @@ export async function liveSentences(ctx: Ctx, textId: string): Promise<Sentence[
 function explain(n: number, k: number, e: number, p: number, u: number): string {
   if (n === 0) return 'This text has no words to count.';
   return `Of ${n} words, ${pct(k)} % were shown understood (reported understood without help), ${pct(e)} % are likely familiar `
-    + `(an estimate from repeated help-free exposure), ${pct(p)} % were only met once or with help and ${pct(u)} % are new; `
+    + `(an estimate from help-free reading over several sittings; help with the word itself withdraws it, the English shown for a sentence does not), `
+    + `${pct(p)} % were only met a few times or with help and ${pct(u)} % are new; `
     + `seeing or hearing a word is never counted as understanding it, and the comfort band uses the first two together.`;
 }
 
@@ -148,6 +152,7 @@ export async function analyzeText(ctx: Ctx, userId: string, textId: string, sent
     + 0.15 * clamp01((avgSentenceLength - 6) / 14),
   ) * 1e4) / 1e4;
 
+  const asOf = await ctx.evidenceAsOf?.(userId, text.lang);
   const coverage: PersonalizedCoverage = {
     userId, textId, sentenceIds: sentences.map((s) => s.id), wordTokens: n,
     knownLexicalCoverage: known, estimatedFamiliarCoverage: estimated, partialCoverage: partial, unseenCoverage: unseen,
@@ -155,6 +160,7 @@ export async function analyzeText(ctx: Ctx, userId: string, textId: string, sent
     knownPhraseCoverage, unfamiliarPatterns, avgSentenceLength,
     listeningCoverage: n ? classified.filter((c) => c.listeningKnown).length / n : 1,
     band: bandFor(effective), expectedDifficulty,
+    ...(asOf ? { asOf } : {}),
   };
   return { coverage, sentences, classified, phrases, patterns };
 }

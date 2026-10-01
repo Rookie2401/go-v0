@@ -1,0 +1,21 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: required fields are missing (review, topics, generated, source.attribution).",
+  "schemaVersion": 2,
+  "id": "synthetic-es-missing-fields",
+  "lang": "es",
+  "title": "SYNTHETIC: required fields missing",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-es", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Spanish) — not learner content" },
+  "source": {
+    "id": "synthetic-src-es-missing-fields",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content.",
+    "rights": "generated",
+    "authorship": "generated"
+  },
+  "editorialTags": ["synthetic"],
+  "prepTargets": [],
+  "sections": [
+    { "paragraphs": [ { "sentences": [ { "text": "Hola, Ana." } ] } ] }
+  ]
+}

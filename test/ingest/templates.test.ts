@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { createMemoryStore } from '../../src/core';
-import { computePublished, importDocuments, validateBatch, type CorpusDocument } from '../../src/ingest';
+import { applyReview, computePublished, importDocuments, validateBatch, type CorpusDocument } from '../../src/ingest';
 import { clock, registry } from './helpers';
 
 const read = (name: string) => JSON.parse(fs.readFileSync(`docs/import/templates/${name}.v2.json`, 'utf8')) as CorpusDocument;
@@ -26,7 +26,10 @@ describe('docs/import/templates', () => {
   it('following the review comment publishes the story template (and the scripture one stays blocked without verification)', () => {
     const story = read('ci-story');
     story.review = { status: 'reviewed', reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01' };
-    expect(computePublished(story)).toEqual({ published: true, unpublishedReasons: [] });
+    // writing the block by hand does not say which wording it covers; npm run corpus:review (applyReview) records that
+    expect(computePublished(story).unpublishedReasons).toEqual(['the review does not say which wording it covers — record it with npm run corpus:review']);
+    const done = applyReview(read('ci-story'), { by: 'Ana Ruiz (native speaker)', date: '2026-02-01' });
+    expect(done.ok && done.decision).toEqual({ published: true, unpublishedReasons: [] });
     const sc = read('scripture');
     sc.review = { status: 'reviewed', reviewedBy: 'someone', reviewedAt: '2026-02-01' };
     expect(computePublished(sc).published).toBe(false);

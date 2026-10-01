@@ -24,7 +24,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "_comment": "Leave 'unreviewed' until a named person has checked the text. Then set status to 'reviewed' and add reviewedBy (a name) and reviewedAt (a date), e.g. {\"status\": \"reviewed\", \"reviewedBy\": \"Ana Ruiz (native speaker)\", \"reviewedAt\": \"2026-02-01\", \"notes\": \"checked wording and glosses\"}. Only a reviewed text with established rights is published."
+    "_comment": "Leave 'unreviewed' until a named person has checked the text. Then set status to 'reviewed' and add reviewedBy (a name) and reviewedAt (a date), e.g. {\"status\": \"reviewed\", \"reviewedBy\": \"Ana Ruiz (native speaker)\", \"reviewedAt\": \"2026-02-01\", \"notes\": \"checked wording and glosses\"}. Do not write the block by hand: run npm run corpus:review -- <file> --by \"<name>\" — it also records contentSignature (which wording the review covers). Only a reviewed text with established rights and an unchanged wording since the review is published; after you edit a sentence, review it again."
   },
   "difficulty": "A1",
   "topics": ["mission", "testimony"],

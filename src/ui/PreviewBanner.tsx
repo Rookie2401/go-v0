@@ -3,8 +3,9 @@
  * Preview mode lists texts that have not been reviewed or verified and allows placeholder (non-speech) audio.
  * It is off by default and persisted on this device; turning it off here or in Settings returns to normal use.
  *
- * The banner sticks to the top of the viewport; its height is published as `--banner-h` so the sticky page
- * headers sit just below it instead of sliding underneath.
+ * The banner sticks to the top of the viewport (below the sandbox banner, when there is one); its height is published as
+ * `--preview-h`, which index.css adds to `--sandbox-h` as `--banner-h`, so the sticky page headers sit just below the banners
+ * instead of sliding underneath.
  */
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
@@ -18,12 +19,12 @@ export function PreviewBanner() {
     const root = typeof document !== 'undefined' ? document.documentElement : undefined;
     const el = ref.current;
     if (!preview || !el || !root) return;
-    const publish = () => root.style.setProperty('--banner-h', `${el.offsetHeight}px`);
+    const publish = () => root.style.setProperty('--preview-h', `${el.offsetHeight}px`);
     publish();
     const ro = typeof ResizeObserver !== 'undefined' ? new ResizeObserver(publish) : undefined;
     ro?.observe(el);
     window.addEventListener('resize', publish);
-    return () => { ro?.disconnect(); window.removeEventListener('resize', publish); root.style.removeProperty('--banner-h'); };
+    return () => { ro?.disconnect(); window.removeEventListener('resize', publish); root.style.removeProperty('--preview-h'); };
   }, [preview]);
 
   if (!preview) return null;

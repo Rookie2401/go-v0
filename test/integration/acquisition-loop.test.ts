@@ -290,8 +290,15 @@ describe('one complete acquisition loop — Spanish', () => {
 
     const revised = structuredClone(reviewed);
     for (const sec of revised.sections) for (const p of sec.paragraphs) if ('sentences' in p) for (const s of p.sentences) if (s.text === target.text) { s.text = 'Dios ama a todo el mundo.'; s.english = 'God loves the whole world.'; }
-    const rep = await importDocuments(live.store, live.adapters, [revised]);
-    expect(rep.documents[0]).toMatchObject({ action: 'updated', contentVersion: 2, sentencesAdded: 1, sentencesRetired: 1, published: true });
+    // A review covers the wording it was given. The revised wording is imported, versioned — and HELD until it is reviewed.
+    const held = await importDocuments(live.store, live.adapters, [revised]);
+    expect(held.documents[0]).toMatchObject({ action: 'updated', contentVersion: 2, sentencesAdded: 1, sentencesRetired: 1, published: false });
+    expect(held.documents[0].unpublishedReasons.join(' ')).toMatch(/changed after it was reviewed/);
+    expect((await live.golearn.recommend(USER, { lang: LANG })).some((x) => x.textId === storyId)).toBe(false);
+    const rereview = applyReview(revised, { by: 'Acceptance run (synthetic review, not a native-speaker review)', status: 'reviewed', date: '2026-10-02' });
+    if (!rereview.ok) throw new Error(JSON.stringify(rereview.refusals));
+    const rep = await importDocuments(live.store, live.adapters, [rereview.doc]);
+    expect(rep.documents[0]).toMatchObject({ contentVersion: 2, published: true }); // a review is not a content change
     const text2 = (await live.store.texts.get(storyId))!;
     expect(contentHistory(text2).map((h) => h.version)).toEqual([1, 2]);
 

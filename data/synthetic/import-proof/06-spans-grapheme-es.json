@@ -1,0 +1,29 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: the sentence stores 'a' + U+0301 (combining acute, written as the escape \\u0301); the span [5,6) ends between the letter and its accent, i.e. inside one character cluster.",
+  "schemaVersion": 2,
+  "id": "synthetic-es-span-grapheme",
+  "lang": "es",
+  "title": "SYNTHETIC: span splits a letter and its accent",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-es", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Spanish) — not learner content" },
+  "source": {
+    "id": "synthetic-src-es-span-grapheme",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Machine-generated; never bundled.",
+    "rights": "generated",
+    "authorship": "generated"
+  },
+  "review": { "status": "unreviewed" },
+  "topics": [],
+  "editorialTags": ["synthetic", "needs-native-review"],
+  "prepTargets": [],
+  "generated": true,
+  "sections": [
+    {
+      "paragraphs": [
+        { "sentences": [ { "text": "Dios áma el mundo.", "spans": [ { "start": 5, "end": 6, "lemma": "amar", "pos": "VERB" } ] } ] }
+      ]
+    }
+  ]
+}

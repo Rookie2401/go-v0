@@ -5,11 +5,11 @@
  * of another language than the learner's current course does not open (progress is kept per language); an
  * unpublished text opens only in preview mode.
  */
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import type { LanguageCode, ReadingProgress, ScriptureReadiness, Text, TextViewed } from '../../core';
+import type { LanguageCode, ScriptureReadiness, Text, TextViewed } from '../../core';
 import { useApp } from '../context';
-import { ReadingLine, VocabularyLine } from '../coverage';
+import { ProgressLine, VocabularyLine, useCoverage, useReadingProgress } from '../coverage';
 import { useEmitter } from '../events';
 import { BAND_LABEL, isTestimonyText, nameOfLang, plainReasons, textPath } from '../format';
 import { Player } from '../player/Player';
@@ -85,6 +85,20 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
   );
 }
 
+/** The panel's band, progress line and vocabulary line: the same hooks and the same line as the reader's own block, so the two never disagree. */
+function PrepareProgress({ textId, readiness }: { textId: string; readiness: ScriptureReadiness }) {
+  const progress = useReadingProgress(useMemo(() => [textId], [textId])).get(textId);
+  const live = useCoverage(textId);
+  const coverage = live ?? readiness.coverage;
+  return (
+    <>
+      <p className="card__text"><span className={`label band-${coverage.band}`}>{BAND_LABEL[coverage.band]}</span></p>
+      {progress && <div className="coverage__read"><ProgressLine progress={progress} explain="disclosure" testId="prepare-progress" /></div>}
+      <VocabularyLine coverage={coverage} withExplanation={false} />
+    </>
+  );
+}
+
 const GAP_LABEL = { unseen: 'new', exposed: 'met, not shown', 'needed-help': 'needed help' } as const;
 
 /**
@@ -99,11 +113,10 @@ export function PreparePanel({ textId }: { textId: string }) {
   const preview = usePreview();
   const [open, setOpen] = useState(false);
   const [readiness, setReadiness] = useState<ScriptureReadiness | null>(null);
-  const [progress, setProgress] = useState<ReadingProgress | null>(null);
   const [prepTexts, setPrepTexts] = useState<Map<string, Text>>(new Map());
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => { setOpen(false); setReadiness(null); setProgress(null); setError(null); }, [textId, userId, preview]);
+  useEffect(() => { setOpen(false); setReadiness(null); setError(null); }, [textId, userId, preview]);
   useReadingOverlay('prepare', open);
 
   const toggle = async () => {
@@ -113,9 +126,9 @@ export function PreparePanel({ textId }: { textId: string }) {
     void store.texts.get(textId).then((t) => emitter.emit<TextViewed>(t?.kind === 'scripture' ? 'scripture' : 'corpus', {
       type: 'TextViewed', textId, mode: 'preview', contentVersion: t?.contentVersion, dedupeKey: (session) => `textviewed-preview:${userId}:${session}:${textId}`,
     }), () => undefined).catch(() => undefined);
-    void golearn.readingProgress(userId, textId).then(setProgress, () => undefined);
     if (readiness) return;
     try {
+      await golearn.settled(); // the numbers shown are read after every emitted event has been folded in
       const r = await golearn.scriptureReadiness(userId, textId, undefined, { includeUnpublished: preview });
       const rows = await store.texts.getMany(r.preparatoryTexts.map((p) => p.textId));
       const found = rows.filter((t): t is Text => !!t);
@@ -135,9 +148,7 @@ export function PreparePanel({ textId }: { textId: string }) {
       {open && !readiness && !error && <p className="muted" role="status">Checking what you already know…</p>}
       {open && readiness && (
         <div className="prepare-body">
-          <p className="card__text"><span className={`label band-${readiness.coverage.band}`}>{BAND_LABEL[readiness.coverage.band]}</span></p>
-          {progress && <ReadingLine progress={progress} testId="prepare-progress" />}
-          <VocabularyLine coverage={readiness.coverage} withExplanation={false} />
+          <PrepareProgress textId={textId} readiness={readiness} />
           {(readiness.gaps ?? []).length > 0 && (
             <div className="card__section">
               <h3 className="label">Not yet shown</h3>

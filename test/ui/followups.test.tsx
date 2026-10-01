@@ -9,7 +9,7 @@ import { AppRoutes, Shell } from '../../src/ui/App';
 import { Player } from '../../src/ui/player/Player';
 import { Reader } from '../../src/ui/reader/Reader';
 import { Testimony } from '../../src/ui/testimony/Testimony';
-import { button, byLabel, click, installMediaStubs, makeHarness, q, qa, sleep, suggestion, type as typeInto } from './harness';
+import { button, byLabel, click, flush, installMediaStubs, makeHarness, q, qa, sleep, suggestion, type as typeInto } from './harness';
 import type { Harness, Mounted } from './harness';
 import { JOHN_ID, STORY_ID, seedJohn, seedStory } from './fixtures';
 
@@ -246,21 +246,23 @@ describe('vocabulary numbers: compact line always, the explanation behind a disc
     await seedStory(h.store);
     mounted = await h.mount(<Reader textId={STORY_ID} mode="corpus" />);
     expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 0 of 3 sentences');
-    // an event that reaches the log after the render (as GoLearn sees it): the block follows within a moment
+    // an event that reaches the log after the render (as GoLearn sees it): the block follows as soon as the folds have settled
     await h.bus.emit<SentenceViewed>({
       type: 'SentenceViewed', userId: 'u1', lang: 'es', surface: 'corpus', session: 'ses-other', dedupeKey: 'sv:late',
       textId: STORY_ID, sentenceId: ids.sentence(STORY_ID, 0), tokenIds: [],
     });
-    await sleep(450);
+    await flush();
     expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 1 of 3 sentences');
-    const calls = h.learn.readingProgress.mock.calls.length;
+    expect(h.learn.settled).toHaveBeenCalled(); // every read was issued after settled()
+    const calls = h.learn.readingProgressMany.mock.calls.length;
     // an event about another text does not cause a refetch
     await h.bus.emit<SentenceViewed>({
       type: 'SentenceViewed', userId: 'u1', lang: 'es', surface: 'corpus', session: 'ses-other', dedupeKey: 'sv:other',
       textId: 'text:es:elsewhere', sentenceId: 'x', tokenIds: [],
     });
-    await sleep(450);
-    expect(h.learn.readingProgress.mock.calls.length).toBe(calls);
+    await flush();
+    expect(h.learn.readingProgressMany.mock.calls.length).toBe(calls);
+    expect(h.learn.readingProgress).not.toHaveBeenCalled(); // one hook, one bulk read: no per-text fetch of progress anywhere
   });
 });
 

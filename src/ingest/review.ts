@@ -7,7 +7,7 @@
 import type { ReviewStatus } from '../core';
 import { REVIEW_OK } from '../core';
 import type { CorpusDocument, DocReview } from './format';
-import { computePublished, type PublicationDecision } from './publish';
+import { computePublished, contentSignatureOf, type PublicationDecision } from './publish';
 
 export const REVIEW_STATUSES: readonly ReviewStatus[] = ['reviewed', 'approved', 'in-review', 'rejected'];
 export const NEEDS_REVIEW_TAG = 'needs-native-review';
@@ -87,7 +87,7 @@ export function applyReview(doc: unknown, opts: ReviewOptions): ReviewResult {
 
   const next = structuredClone(doc) as unknown as CorpusDocument;
   const previous = isObj(doc.review) ? (structuredClone(doc.review) as unknown as DocReview) : undefined;
-  const review: DocReview = { status, reviewedBy: by, reviewedAt: date };
+  const review: DocReview = { status, reviewedBy: by, reviewedAt: date, contentSignature: contentSignatureOf(doc) };
   if (nonEmpty(opts.notes)) review.notes = opts.notes.trim();
   next.review = review; // assigned in place: an existing `review` key keeps its position in the file
 

@@ -1,0 +1,29 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: an author span that ends far outside the sentence (the sentence has 13 UTF-16 units; the span ends at 40).",
+  "schemaVersion": 2,
+  "id": "synthetic-es-span-out-of-bounds",
+  "lang": "es",
+  "title": "SYNTHETIC: span out of bounds",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-es", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Spanish) — not learner content" },
+  "source": {
+    "id": "synthetic-src-es-span-out-of-bounds",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Machine-generated; never bundled.",
+    "rights": "generated",
+    "authorship": "generated"
+  },
+  "review": { "status": "unreviewed" },
+  "topics": [],
+  "editorialTags": ["synthetic", "needs-native-review"],
+  "prepTargets": [],
+  "generated": true,
+  "sections": [
+    {
+      "paragraphs": [
+        { "sentences": [ { "text": "Ana come pan.", "spans": [ { "start": 4, "end": 40, "lemma": "comer", "pos": "VERB" } ] } ] }
+      ]
+    }
+  ]
+}

@@ -1,6 +1,8 @@
 /**
  * Bootstrap: store → bus → adapters → engines → bundled content → policy migration.
  *
+ * A page opened with `?sandbox=<name>` opens database `go-v0-sandbox-<name>` and namespaces every localStorage key (ui/sandbox.ts).
+ *
  * Order matters:
  *   1. seed languages / courses (and the first learner once a team has been chosen);
  *   2. GoListen is created WITHOUT the fixture unless preview mode or the development preference is on; a remembered
@@ -32,6 +34,7 @@ import { INGEST_TOOL, computePublished, contentHistory, importDocuments, loadBun
 import type { CorpusDocument } from '../ingest';
 import type { DocumentReport } from '../ingest';
 import type { AppServices, BackupApi, ImportDocView, IngestApi, SpeechApi, StartupInfo } from '../ui/context';
+import { resolveDbName, sandboxProblem } from '../ui/sandbox';
 import {
   DEFAULT_USER_ID, forgetAzure, getPref, recallActiveUser, recallAzure, recallChosenCourse, rememberAzure, rememberChosenCourse, subscribePrefs,
 } from '../ui/prefs';
@@ -39,6 +42,7 @@ import {
 export interface BootstrapOptions {
   /** Default: Dexie (IndexedDB). Tests pass createMemoryStore(). */
   store?: AppStore;
+  /** Database name (default `go-v0`). A page opened with `?sandbox=<name>` always uses `go-v0-sandbox-<name>` instead (see ui/sandbox.ts). */
   dbName?: string;
   /** Skip importing the bundled corpus (tests). */
   skipCorpus?: boolean;
@@ -178,7 +182,11 @@ export function createBackupApi(store: AppStore): BackupApi {
 
 export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapResult> {
   const clock = opts.clock ?? (() => new Date().toISOString());
-  const store = opts.store ?? createDexieStore(opts.dbName);
+  // `?sandbox=<name>`: a separate database (and, through ui/prefs + ui/sitting + ui/testimony/draft, separate localStorage keys), so
+  // acceptance and import tests never touch the learner's library. An invalid name refuses to start rather than fall back to it.
+  const problem = sandboxProblem();
+  if (problem) throw new Error(problem);
+  const store = opts.store ?? createDexieStore(resolveDbName(opts.dbName));
   const bus: EventBus = new StoreEventBus(store, clock);
   const adapters = createAdapterRegistry();
   const startup: StartupInfo = {};

@@ -10,9 +10,12 @@
  *
  * Storage may be blocked or absent: then every call falls back to an id held in memory for this page load.
  */
+import { scopedKey } from './sandbox';
+
 export const SITTING_GAP_MS = 30 * 60 * 1000;
 
-const keyOf = (userId: string) => `go-v0:sitting:${userId}`;
+/** Namespaced in sandbox mode (sandbox.ts); the in-memory copies are keyed the same way so the two namespaces never share a sitting. */
+const keyOf = (userId: string) => scopedKey(`go-v0:sitting:${userId}`);
 
 interface SittingRecord { id: string; lastActivityAt: number }
 
@@ -36,11 +39,11 @@ function load(userId: string): SittingRecord | undefined {
     }
   } catch { /* blocked or corrupt */ }
   // Storage is the source of truth whenever it can be read; memory only stands in when it cannot.
-  return readable ? undefined : memory.get(userId);
+  return readable ? undefined : memory.get(keyOf(userId));
 }
 
 function save(userId: string, rec: SittingRecord): void {
-  memory.set(userId, rec);
+  memory.set(keyOf(userId), rec);
   try { if (typeof localStorage !== 'undefined') localStorage.setItem(keyOf(userId), JSON.stringify(rec)); } catch { /* memory only */ }
 }
 

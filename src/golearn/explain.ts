@@ -5,6 +5,7 @@ import { excludedListens } from './audit';
 import { sentenceItems } from './items';
 import { queryItems } from './queries';
 import type { Ctx, StoredEncounter } from './state';
+import { itemHelpOf } from './state';
 
 const times = (n: number) => (n === 1 ? 'once' : n === 2 ? 'twice' : `${n} times`);
 const plural = (n: number, w: string) => `${n} ${w}${n === 1 ? '' : 's'}`;
@@ -23,6 +24,14 @@ export async function explainItem(ctx: Ctx, userId: string, itemId: string): Pro
   for (const [textId, count] of byText) texts.push({ textId, title: (await ctx.store.texts.get(textId))?.title ?? textId, count });
   texts.sort((a, b) => b.count - a.count || (a.textId < b.textId ? -1 : 1));
 
+  // Two different kinds of help (policy.ts, evidence@4): help ABOUT this item vs the English / explanation shown for a sentence.
+  const reading = encs.filter((e) => e.modality === 'reading');
+  const needed = reading.filter((e) => itemHelpOf(e) > 0).length;
+  const englishShown = reading.filter((e) => e.assistance >= 5).length;
+  const explained = reading.filter((e) => e.assistance === 4).length;
+  const heardWithHelp = encs.filter((e) => e.modality === 'listening' && e.assistance > 0).length;
+  const noun = k.itemKind === 'phrase' ? 'phrase' : k.itemKind === 'pattern' ? 'pattern' : 'word';
+
   let excludedEvents = 0;
   for (const { event } of await excludedListens(ctx, userId)) {
     for (const sid of event.sentenceIds) {
@@ -36,7 +45,10 @@ export async function explainItem(ctx: Ctx, userId: string, itemId: string): Pro
   const parts: string[] = [];
   if (k.encounterCount > 0) {
     parts.push(`Met ${times(k.encounterCount)} in ${plural(texts.length, 'text')}`);
-    if (k.assistedCount > 0) parts.push(`needed help ${times(k.assistedCount)}`);
+    if (needed > 0) parts.push(`needed help with this ${noun} ${times(needed)}`);
+    if (englishShown > 0) parts.push(`read ${times(englishShown)} with the English shown`);
+    if (explained > 0) parts.push(`read ${times(explained)} with the sentence explained`);
+    if (heardWithHelp > 0) parts.push(`heard ${times(heardWithHelp)} with the transcript or translation shown`);
     if (k.demonstratedCount > 0) parts.push(`understood without help ${times(k.demonstratedCount)}`);
   }
   if (produced > 0) {

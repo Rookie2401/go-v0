@@ -1,0 +1,31 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: PUBLICATION HOLD. The review block says 'reviewed' (by a clearly synthetic fixture reviewer, NOT a person), but the rights are 'unverified', so the text must stay unpublished whatever the review says.",
+  "schemaVersion": 2,
+  "id": "synthetic-es-hold-rights",
+  "lang": "es",
+  "title": "SYNTHETIC: publication hold (rights unverified)",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-es", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Spanish) — not learner content" },
+  "source": {
+    "id": "synthetic-src-es-hold-rights",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. The rights of this placeholder are deliberately unverified; replace or verify before any release. Never bundled.",
+    "rights": "unverified",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "SYNTHETIC fixture reviewer (not a person)",
+    "reviewedAt": "2026-09-30",
+    "contentSignature": "aedac48f51f87530",
+    "notes": "SYNTHETIC DEVELOPMENT MATERIAL: this is a test fixture, not a real review."
+  },
+  "topics": [],
+  "editorialTags": ["synthetic"],
+  "prepTargets": [],
+  "generated": true,
+  "sections": [
+    { "paragraphs": [ { "sentences": [ { "text": "El cielo es azul." }, { "text": "La nube es blanca." } ] } ] }
+  ]
+}

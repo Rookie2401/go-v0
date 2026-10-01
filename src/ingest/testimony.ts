@@ -12,6 +12,7 @@
 import type { LanguageCode } from '../core';
 import { hash } from '../core';
 import { CORPUS_SCHEMA_VERSION, type CorpusDocument } from './format';
+import { contentSignatureOf } from './publish';
 
 /** Document id (→ text id `text:<lang>:<id>`) of the private Text of revision `n`. Slug-safe. */
 export function testimonyDocumentId(userId: string, n: number): string {
@@ -32,6 +33,7 @@ export interface TestimonyDocumentInput {
 }
 
 export function testimonyDocument({ userId, lang, n, sentences, acceptedAt }: TestimonyDocumentInput): CorpusDocument {
+  const sections = [{ paragraphs: [{ sentences: sentences.map((text) => ({ text })) }] }];
   return {
     schemaVersion: CORPUS_SCHEMA_VERSION,
     id: testimonyDocumentId(userId, n),
@@ -51,12 +53,14 @@ export function testimonyDocument({ userId, lang, n, sentences, acceptedAt }: Te
       status: 'approved',
       reviewedBy: 'learner (author)',
       ...(acceptedAt ? { reviewedAt: acceptedAt } : {}),
+      // the learner's acceptance covers exactly these sentences (review binding)
+      contentSignature: contentSignatureOf({ sections }),
       notes: 'Accepted by the learner as their own revision in GoTell; no editorial review applies to private writing.',
     },
     topics: [],
     editorialTags: ['private'],
     prepTargets: [],
     generated: false,
-    sections: [{ paragraphs: [{ sentences: sentences.map((text) => ({ text })) }] }],
+    sections,
   };
 }

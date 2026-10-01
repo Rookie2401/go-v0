@@ -1,0 +1,25 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: the INVALID half of a mixed batch (the second sentence is blank).",
+  "schemaVersion": 2,
+  "id": "synthetic-es-batch-invalid",
+  "lang": "es",
+  "title": "SYNTHETIC: batch, invalid file",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-es", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Spanish) — not learner content" },
+  "source": {
+    "id": "synthetic-src-es-batch-invalid",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Machine-generated; never bundled.",
+    "rights": "generated",
+    "authorship": "generated"
+  },
+  "review": { "status": "unreviewed" },
+  "topics": [],
+  "editorialTags": ["synthetic", "needs-native-review"],
+  "prepTargets": [],
+  "generated": true,
+  "sections": [
+    { "paragraphs": [ { "sentences": [ { "text": "María canta una canción." }, { "text": "   " } ] } ] }
+  ]
+}

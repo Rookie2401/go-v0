@@ -1,0 +1,35 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: byte-exact storage of Hindi sentences that end in a danda (U+0964); s3 contains U+0958 (KA WITH NUKTA, a composition-excluded code point: NFC would rewrite it as KA + NUKTA), so it is NOT in NFC and must be stored unchanged. Non-ASCII is written as JSON escapes.",
+  "schemaVersion": 2,
+  "id": "synthetic-hi-exact",
+  "lang": "hi",
+  "title": "SYNTHETIC: exactness (Hindi, danda)",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-hi", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Hindi) — not learner content" },
+  "source": {
+    "id": "synthetic-src-hi-exact",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Machine-generated; never bundled.",
+    "rights": "generated",
+    "authorship": "generated"
+  },
+  "review": { "status": "unreviewed" },
+  "topics": [],
+  "editorialTags": ["synthetic", "needs-native-review"],
+  "prepTargets": [],
+  "generated": true,
+  "sections": [
+    {
+      "paragraphs": [
+        {
+          "sentences": [
+            { "text": "मैं घर जाता हूँ।" },
+            { "text": "वह पानी पीती है।" },
+            { "text": "यह क़ीमत ठीक है।" }
+          ]
+        }
+      ]
+    }
+  ]
+}

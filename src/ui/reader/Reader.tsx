@@ -15,6 +15,12 @@
  * EnglishRescueRevealed (scope), TextCompleted (explicit), ComprehensionReported. All carry the text's contentVersion
  * where the contract has the field.
  *
+ * Progress is never fetched or formatted here: the block reads the canonical record through `useReadingProgress` (after
+ * `golearn.settled()`, again on every event of this learner) and renders it with the shared `ProgressLine`.
+ * EnglishRescueRevealed is deduped by (learner, SITTING, text, scope[, sentence set]) at the bus, not by a ref that lives
+ * only as long as this component: remounting the reader, or toggling Parallel English off and on again, in the same
+ * sitting emits nothing new. Turning it off emits nothing.
+ *
  * Viewing is EXPOSURE only ("Seen"). What the learner says about understanding is a separate, deliberate, quiet act:
  * "Understood" on a sentence, and "How much did you understand? All · Most · Some · Little" at the end. Only
  * those reports (never views, never finishing) can demonstrate comprehension, and a report never fabricates a view.
@@ -28,7 +34,7 @@ import type {
   SentenceViewed, Text, TextCompleted, TextViewed, Token, TokenHelpOpened, TokenSupport,
 } from '../../core';
 import { useApp } from '../context';
-import { TextProgress } from '../coverage';
+import { TextProgress, useReadingProgress } from '../coverage';
 import { makeEmitter } from '../events';
 import { TextBadges, UnpublishedReasons } from '../library';
 import { isTestimonyText, textPath } from '../format';
@@ -136,7 +142,8 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
   const viewedRef = useRef<{ session: string; ids: Set<string> }>({ session: '', ids: new Set() });
   const [viewed, setViewed] = useState<ReadonlySet<string>>(new Set());
   const [auto, setAuto] = useState<boolean | null>(null);
-  const [finished, setFinished] = useState(false);
+  const [finishedHere, setFinishedHere] = useState(false);
+  const record = useReadingProgress(useMemo(() => [text.id], [text.id])).get(text.id);
   const detectorRef = useRef<ViewDetector | null>(null);
   const overlays = useRef(new Set<string>());
   const gate = useMemo<ReadingGate>(() => ({
@@ -147,12 +154,10 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
   }), []);
   const [understood, setUnderstood] = useState<ReadonlySet<string>>(new Set());
   const [textDegree, setTextDegree] = useState<ComprehensionReported['degree'] | null>(null);
-  const [reportTick, setReportTick] = useState(0);
 
   // ── English rescue state ──
   const [shown, setShown] = useState<ReadonlySet<string>>(new Set());
   const [parallel, setParallel] = useState(false);
-  const emittedRescue = useRef(new Set<string>());
 
   // ── token card state ──
   const [card, setCard] = useState<{ token: Token; level: AssistanceLevel; supports: Partial<Record<number, TokenSupport>>; why?: string } | null>(null);
@@ -175,12 +180,9 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
     return () => ro.disconnect();
   }, []);
 
-  // Already finished (explicitly, earlier)? Say so instead of offering the button again. Only an explicit TextCompleted sets this.
-  useEffect(() => {
-    let live = true;
-    void golearn.readingProgress(userId, text.id).then((p) => { if (live && p.finishedAt) setFinished(true); }, () => undefined);
-    return () => { live = false; };
-  }, [golearn, userId, text.id]);
+  // Finished THIS version (explicitly)? Say so instead of offering the button again. Only an explicit TextCompleted of this
+  // content version sets `finishedAt`; having finished an earlier version still offers the button.
+  const finished = finishedHere || !!record?.finishedAt;
 
   // TextViewed (displayed, not exposure) once per sitting.
   useEffect(() => {
@@ -232,11 +234,15 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
     const ids = sentenceIds.filter((id) => data.rescues.has(id));
     if (ids.length === 0) return;
     setShown((prev) => new Set([...prev, ...ids]));
-    const key = `${scope}:${ids.join(',')}`;
-    if (emittedRescue.current.has(key)) return;
-    emittedRescue.current.add(key);
-    void emitter.emit<EnglishRescueRevealed>(surface, { type: 'EnglishRescueRevealed', textId: text.id, sentenceIds: ids, scope });
-  }, [data.rescues, emitter, surface, text.id]);
+    // One event per sitting + text + scope (the whole-passage reveal) or + sentence set (a sentence or a verse). The key is built
+    // from the sitting-stable session id, so a remount, a toggle off and on, or a second tap in the same sitting is deduped by the
+    // bus; a later sitting is a new exposure and is recorded.
+    const set = scope === 'parallel' ? '' : `:${ids.join(',')}`;
+    void emitter.emit<EnglishRescueRevealed>(surface, {
+      type: 'EnglishRescueRevealed', textId: text.id, sentenceIds: ids, scope,
+      dedupeKey: (session) => `rescue:${userId}:${session}:${text.id}:${scope}${set}`,
+    });
+  }, [data.rescues, emitter, surface, text.id, userId]);
 
   const toggleRescue = useCallback((sentenceIds: string[], scope: 'sentence' | 'verse') => {
     const allShown = sentenceIds.every((id) => shown.has(id));
@@ -296,9 +302,9 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
   }, [card, emitter, surface, fetchSupport, revealRescue]);
 
   const finish = useCallback(async () => {
-    setFinished(true);
-    await emitter.emit<TextCompleted>(surface, { type: 'TextCompleted', textId: text.id, contentVersion: text.contentVersion, dedupeKey: (session) => `textcompleted:${userId}:${session}:${text.id}` });
-    setReportTick((n) => n + 1);
+    setFinishedHere(true);
+    // The key carries the content version: finishing a REVISED text in the same sitting as an earlier finish is a new, explicit act.
+    await emitter.emit<TextCompleted>(surface, { type: 'TextCompleted', textId: text.id, contentVersion: text.contentVersion, dedupeKey: (session) => `textcompleted:${userId}:${session}:${text.id}:v${text.contentVersion}` });
   }, [emitter, surface, userId, text.id, text.contentVersion]);
 
   /** "Understood" on one sentence: a deliberate report. It is not a view: it emits no SentenceViewed. */
@@ -310,7 +316,6 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
       contentVersion: text.contentVersion,
       dedupeKey: (session) => `understood:${userId}:${session}:${sentenceId}`,
     });
-    setReportTick((n) => n + 1);
   }, [understood, emitter, surface, userId, text.id, text.contentVersion]);
 
   /** "How much did you understand?" for the whole text. */
@@ -321,7 +326,6 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
       contentVersion: text.contentVersion,
       dedupeKey: (session) => `understood-text:${userId}:${session}:${text.id}:${degree}`,
     });
-    setReportTick((n) => n + 1);
   }, [emitter, surface, userId, text.id, text.contentVersion, data.sentences]);
 
   // ── rendering ──
@@ -492,7 +496,7 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
           </div>
 
           <UnpublishedReasons text={text} />
-          <TextProgress textId={text.id} refreshKey={`${viewed.size}|${reportTick}`} />
+          <TextProgress textId={text.id} progress={record} />
 
           <ReadingGateContext.Provider value={gate}>{before}</ReadingGateContext.Provider>
 

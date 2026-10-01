@@ -1,5 +1,6 @@
 /**
- * GoLearn evidence policy — `evidence@3` (adds time-derived sittings, version-pinned encounters, explicit completion). The single place where assistance discounts, modality rules and
+ * GoLearn evidence policy — `evidence@4` (adds the SCOPE of help: item-targeted vs sentence-level; builds on evidence@3's
+ * time-derived sittings, version-pinned encounters, explicit completion). The single place where assistance discounts, modality rules and
  * level thresholds live (ARCHITECTURE §8, PLAN2 "Evidence policy v2"). Nothing here is a grade: help never
  * subtracts, it only limits how far an item can be credited.
  *
@@ -39,10 +40,24 @@
  *   transcript shown ×0.6 · translation revealed ×0.25 (such an encounter is `assisted`, so these only matter for the
  *   potential weight used to choose the better of two completions in one sitting)
  *
+ * ── The scope of help (evidence@4) ──
+ *   Help is evidence about WHAT the learner needed, so it only counts against what it was about:
+ *   item-targeted   word gloss / phrase / grammar help (assistance 1–3): "he needed help with THIS item".
+ *   sentence-level  sentence explanation / English rescue — including the whole-passage "Parallel English" (assistance 4–5):
+ *                   "the English was shown for this sentence". It says nothing about any one word.
+ *   Both make the encounter `assisted` (it can never demonstrate, weight 0, and it is not a help-free exposure), and both
+ *   stay inside the (sentence, sitting) they were used in: they never touch encounters of other sentences or other sittings.
+ *   They differ in one thing only — the estimate veto below. `Encounter.itemHelp` keeps the item-targeted part apart from
+ *   `Encounter.assistance` (which is the max of both). A listening encounter with the transcript shown (assistance 2) counts as
+ *   item-targeted (conservative); a translation reveal (5) is sentence-level.
+ *
  * ── Estimate ("likely familiar", never "known") ──
- *   estimatedFamiliar = ≥ 4 unassisted encounters in the dimension, across ≥ 2 distinct SITTINGS (derived from event time, see sitting.ts; never the UI's session id), AND none of the
- *   last 2 encounters used help, AND the item is not already `recognized`. Receptive dimensions only.
+ *   estimatedFamiliar = ≥ 4 help-free encounters (assistance 0; sentence-level-helped encounters are NOT help-free) in the
+ *   dimension, across ≥ 2 distinct SITTINGS (derived from event time, see sitting.ts; never the UI's session id), AND no
+ *   item-targeted help among the item's last 2 encounters (a sentence-level-helped encounter in that tail does NOT veto:
+ *   it never withdraws an estimate earned help-free elsewhere), AND the item is not already `recognized`. Receptive dimensions only.
  *   Confidence for an estimate-only item is 0.30 (a cautious belief); otherwise e / (e + 2) of demonstrated evidence.
+ *   Same evidence ⇒ same estimate: it is a pure function of the encounters, which are a pure function of the log.
  *
  * ── Coverage bands (soft, lexical only; computed from demonstrated + estimated coverage) ──
  *   ≥ 0.95 comfortable · ≥ 0.88 productive-challenge · ≥ 0.75 difficult · else stretch
@@ -51,7 +66,7 @@ import type { AssistanceLevel, ComfortBand, EvidencePolicy, LearnerLevel, Produc
 import { LEVEL_ORDER } from '../core';
 
 /** Version of the evidence rules; stored per user in `meta`. Bump whenever a rule above changes. */
-export const POLICY_VERSION = 'evidence@3';
+export const POLICY_VERSION = 'evidence@4';
 
 export const READING_WEIGHTS: readonly number[] = [1.0, 0.85, 0.65, 0.45, 0.3, 0.15];
 

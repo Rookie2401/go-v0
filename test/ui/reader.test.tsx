@@ -211,6 +211,53 @@ describe('Reader — scripture mode', () => {
     expect(scopes).toEqual(['verse', 'parallel']);
   });
 
+  it('Parallel English: ONE EnglishRescueRevealed per sitting + text; toggling again or remounting in the same sitting emits nothing; turning it off emits nothing', async () => {
+    await seedJohn(h.store);
+    const parallel = async () => ((await h.events('EnglishRescueRevealed')) as EnglishRescueRevealed[]).filter((e) => e.scope === 'parallel');
+    mounted = await h.mount(<Reader textId={JOHN_ID} mode="scripture" />);
+    await click(button(mounted.container, 'Parallel English'));
+    expect(mounted.container.textContent).toContain('That the world might live.');
+    expect(await parallel()).toHaveLength(1);
+    expect((await parallel())[0]).toMatchObject({ textId: JOHN_ID, surface: 'scripture', sentenceIds: [0, 1, 2].map((i) => ids.sentence(JOHN_ID, i)) });
+
+    await click(button(mounted.container, 'Parallel English')); // off: English hidden, nothing emitted
+    expect(mounted.container.textContent).not.toContain('That the world might live.');
+    expect(await h.events('EnglishRescueRevealed')).toHaveLength(1);
+    await click(button(mounted.container, 'Parallel English')); // on again, same sitting
+    expect(mounted.container.textContent).toContain('That the world might live.');
+    expect(await parallel()).toHaveLength(1);
+
+    // a remount (route revisit, reader re-keyed) is not a new exposure: the key comes from the sitting, not from the component's lifetime
+    await mounted.unmount();
+    mounted = await h.mount(<Reader textId={JOHN_ID} mode="scripture" />);
+    await click(button(mounted.container, 'Parallel English'));
+    expect(mounted.container.textContent).toContain('That the world might live.'); // it still works for the learner...
+    expect(await parallel()).toHaveLength(1); // ...and adds no evidence
+    await mounted.unmount();
+
+    // a LATER sitting (another session id) is a genuine new exposure
+    mounted = await h.mount(<Reader textId={JOHN_ID} mode="scripture" />, { session: 'ses-later' });
+    await click(button(mounted.container, 'Parallel English'));
+    expect(await parallel()).toHaveLength(2);
+    expect((await parallel()).map((e) => e.session)).toEqual(['ses-test', 'ses-later']);
+  });
+
+  it('per-sentence and per-verse English: one event per sitting + sentence set, also across a remount', async () => {
+    await seedJohn(h.store);
+    const events = async () => (await h.events('EnglishRescueRevealed')) as EnglishRescueRevealed[];
+    mounted = await h.mount(<Reader textId={JOHN_ID} mode="scripture" />);
+    await click(button(mounted.container, 'Show English for verse 16'));
+    await click(button(mounted.container, 'Show English for sentence 3')); // a different sentence set: its own event
+    expect((await events()).map((e) => [e.scope, e.sentenceIds.length])).toEqual([['verse', 2], ['sentence', 1]]);
+    await mounted.unmount();
+    mounted = await h.mount(<Reader textId={JOHN_ID} mode="scripture" />);
+    await click(button(mounted.container, 'Show English for verse 16'));
+    await click(button(mounted.container, 'Show English for sentence 3'));
+    expect(await events()).toHaveLength(2); // same sitting, same sets: nothing new
+    await click(button(mounted.container, 'Hide English for sentence 3')); // hiding emits nothing
+    expect(await events()).toHaveLength(2);
+  });
+
   it('badges generated texts and sample (rights-unverified) sources', async () => {
     await seedJohn(h.store);
     const t = (await h.store.texts.get(JOHN_ID))!;

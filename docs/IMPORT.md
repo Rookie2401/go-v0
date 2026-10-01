@@ -1,17 +1,19 @@
 # Importing texts into Go
 
-How a text gets from a file into the app: **write → validate → import → review → publish → (edit and re-import) →
-verify Scripture**. Everything here is enforced by code in `src/ingest/`; the commands are `npm run corpus:*`.
+How a text gets from a file into the app: **write → validate → (verify Scripture) → review → import → publish → revise**.
+Everything here is enforced by code in `src/ingest/`; the commands are `npm run corpus:*`. The behaviour is not only
+described: `npm run corpus:prove` imports clearly marked synthetic files and checks every claim below (see
+[Proof](#proof-the-importer-is-exercised-not-just-described)).
 
 | Step | What you do | Command / place |
 |---|---|---|
 | 1. Write | Start from a template and fill it in | `docs/import/templates/{ci-story,dialogue,scripture}.v2.json` |
 | 2. Validate | Find every problem with its path and a hint | `npm run corpus:validate -- <file-or-dir>…` |
-| 3. Import | Put the file in the bundled folder, or use the in-app importer | `data/corpus/<lang>/*.json` · Settings → Content |
-| 4. Review | A named person checks the text and records it in `review` | the `review` block |
-| 5. Publish | Nothing to do — the gate computes it from rights, review and (Scripture) verification | `published` + `unpublishedReasons` |
-| 6. Re-import | Edit the file and import it again; versions, audio and learner history are handled | same as step 3 |
-| 7. Verify Scripture | Compare the wording byte-for-byte with a published source | `node scripts/verify-scripture.mjs` |
+| 3. Verify Scripture | Scripture only: compare the wording byte-for-byte with a published source | `node scripts/verify-scripture.mjs` |
+| 4. Review | A named person checks the text and records it in `review` | `npm run corpus:review -- <file> --by "<name>"` |
+| 5. Import | Put the file in the bundled folder, or use the in-app importer | `data/corpus/<lang>/*.json` · Settings → Content |
+| 6. Publish | Nothing to do — the gate computes it from rights, review and (Scripture) verification | `published` + `unpublishedReasons` |
+| 7. Revise | Edit the file and import it again; versions, audio and learner history are handled | same as step 5 |
 
 A learner only ever sees **published** texts. Anything else is visible only in the explicitly marked *Preview
 unreviewed content* mode, together with the reasons it is not published.
@@ -34,8 +36,9 @@ root. `<file>` is your document (any folder; keep experiments out of `data/corpu
    `scripture.verification` the review command refuses the document.
 4. **Review.** A named reviewer checks the text (§4), then
    `npm run corpus:review -- <file> --by "<name>" [--status reviewed|approved|in-review|rejected] [--date YYYY-MM-DD] [--notes "…"]`.
-   It writes the `review` block, removes `needs-native-review` for `reviewed` / `approved`, changes no text, and
-   prints `would publish: yes|no` with any remaining reasons. Without `--by` it refuses (exit `1`). Re-run
+   It writes the `review` block (including `contentSignature`, which wording the review covers), removes
+   `needs-native-review` for `reviewed` / `approved`, changes no text, prints `review covers wording <sig8>` and
+   `would publish: yes|no` with any remaining reasons. Without `--by` it refuses (exit `1`). Re-run
    `npm run corpus:validate -- <file>`: it must now say `would publish: yes`.
 5. **Import.** In the app, **Settings → Content → Import texts**: choose the `.json` file(s), read the validation
    report, press **Import N document(s)**. (Or place the file in `data/corpus/<lang>/` — only for texts that are
@@ -44,11 +47,45 @@ root. `<file>` is your document (any folder; keep experiments out of `data/corpu
 6. **Publish.** Nothing to press: the gate sets `published` at import from the review, the rights and (Scripture)
    the verification. **Settings → Content → Texts on this device** shows Review, Published and, when not published,
    the reasons. Learners see the text as soon as it says Published `yes`.
-7. **Revise.** Edit the same file (same `id`, same `source.id`), repeat step 2 (and step 4 if the wording changed
-   — the importer keeps the review block as written, so new wording needs a new look and a new review record), then import it again as in
-   step 5. The result says `updated`, the content version goes up, the edited sentence gets a new id and the old
-   one is retired, unchanged sentences keep their ids, audio and learner history. **Settings → Content** lists
-   the version history of each text (`contentHistory`). Importing the same file again is a no-op.
+7. **Revise.** Edit the same file (same `id`, same `source.id`) and repeat step 2: `corpus:validate` now warns
+   `review-signature-mismatch` and says `would publish: no` — **a review covers the wording it was given for**, so
+   a changed sentence needs a new review (step 4: `npm run corpus:review -- <file> --by "<name>"`, which records the
+   new signature). Then import it again as in step 5. The result says `updated` and the content version goes up; the
+   edited sentence gets a new id and the old one is retired, unchanged sentences keep their ids, audio and learner
+   history. Until the new review is recorded the text is **unpublished** with the reason "the text changed after it was
+   reviewed — record a new review"; learners lose it rather than read wording nobody checked. Edits that do not touch a
+   sentence text (title, topics, English lines, spans, tags) keep the review valid. **Settings → Content** lists the
+   version history of each text (`contentHistory`). Importing the same file again is a no-op.
+
+---
+
+## Proof: the importer is exercised, not just described
+
+`npm run corpus:prove` runs every behaviour in this document on **synthetic development files**
+([`data/synthetic/import-proof/`](../data/synthetic/import-proof/README.md): every id starts with `synthetic-`, every
+`source.provenance` says "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content", nothing is ever
+bundled) through the real importer (`importDocuments`, `validateBatch`, `applyReview`, `contentHistory`) and the real
+`corpus:validate` / `corpus:review` commands, against an **isolated in-memory store**: never `data/corpus`, never
+IndexedDB. A synthetic learner with real encounters (real GoLearn) and prepared audio (real GoListen, development
+fixture) lives in that store, so the revision case shows what a revision keeps. It prints an expected-vs-actual table
+and exits `1` on any mismatch; `npm run corpus:prove -- --write` regenerates
+[`docs/import/PROOF.md`](import/PROOF.md) from the actual run (never hand-written). The same cases run in the test gate
+(`test/ingest/prove.test.ts`).
+
+What the table proves: malformed JSON, missing fields, duplicate ids, a mixed batch, bad spans (out of bounds,
+overlapping, splitting a letter+accent or a Hindi conjunct) and a broken translation alignment are rejected with the
+documented codes and an actionable hint, and a rejected batch writes **zero rows to any table**; an unchanged re-import
+changes nothing; non-NFC text, NBSP, padded and double spaces, `« » — … ¿ ¡`, a Hindi danda and unspaced Thai are stored
+byte for byte; a revision gives content version 2, retires exactly the changed sentence, keeps the unchanged sentences'
+ids, tokens and analyses, leaves every learner encounter (version 1) in place, reports the current version in
+`readingProgress`, marks the audio stale and regenerates only the new sentences; review and rights holds stay
+unpublished with their reasons, `applyReview` publishes only the review hold, a reviewed text that is revised without a
+new review is unpublished ("changed after it was reviewed") and publishes again after `applyReview`, and unverified or generated "Scripture"
+(placeholder wording only) never publishes.
+
+Found and fixed by the proof: a raw paragraph (`{"text": …}`) with leading or trailing whitespace imported without the
+`edge-whitespace` warning that a padded declared sentence gets (the text was always stored exactly). It now warns at the
+paragraph's `text` path.
 
 ---
 
@@ -126,7 +163,7 @@ pause and never splits. For Thai, put one sentence per line (or declare sentence
 trimming, no whitespace changes, no added spaces (Thai included). Matching uses the derived `normalizedText` and
 `Token.normalized`. Two invariants are asserted at import: `originalText.slice(paraStart, paraEnd) === sentence.text`
 and `sentence.text.slice(token.start, token.end) === token.surface`. Text that is not NFC or has edge whitespace
-imports with a warning (`not-nfc`, `edge-whitespace`); it is not altered.
+(a declared sentence or a raw paragraph) imports with a warning (`not-nfc`, `edge-whitespace`); it is not altered.
 
 ### Sentence ids and keys
 
@@ -216,6 +253,7 @@ runs in the app's importer (`validateDocument` / `validateBatch` in `src/ingest`
 | `missing-provenance` | error | `source.provenance` is empty. |
 | `unverified-without-note` | error | Rights `unverified` but no note saying the text must be replaced / verified. |
 | `review-missing-reviewer` | error | `review.status` is `reviewed`/`approved` with no `reviewedBy`. Reviews are never anonymous. |
+| `review-signature-mismatch` | warning | `review.contentSignature` differs from the current wording: the text is unpublished until it is reviewed again (`npm run corpus:review`). |
 | `not-nfc` · `edge-whitespace` | warning | The text is stored exactly as supplied anyway. |
 | `adapter-would-split` | warning | The adapter would split a declared sentence; your declaration wins. |
 | `low-analysis-coverage` | warning | Under 60 % of words can be analysed: the text reads fine, but word help will be missing. Add `spans` or extend the lexicon. |
@@ -264,12 +302,24 @@ A text is reviewed by a **named person** (or a verification tool) and the review
 
 ```json
 "review": { "status": "reviewed", "reviewedBy": "Ana Ruiz (native speaker)", "reviewedAt": "2026-02-01",
+            "contentSignature": "e04a9e3c545c99f8",
             "notes": "Checked wording, glosses and sentence breaks; fixed two phrasings." }
 ```
 
 `status`: `unreviewed` (default), `in-review`, `reviewed`, `approved`, `rejected`. Only `reviewed` / `approved`
 with a `reviewedBy` count. The importer never invents a review; a reviewed status with no reviewer is a
 validation error.
+
+**A review covers the wording it was given for.** `contentSignature` (optional field of schema version 2, written by
+`applyReview` / `npm run corpus:review`, never by hand) is a hash of the document's ordered exact sentence texts (a
+declared sentence's `text`; a raw paragraph's `text`; `contentSignatureOf(doc)`). Title, topics, tags, English lines,
+spans, corrections and the review block itself are not part of it; any change to a sentence text, the order, an
+addition or a removal is. For a non-Scripture text the review counts only if the signature is present and equals the
+current wording; otherwise the text is unpublished ("the text changed after it was reviewed — record a new review" /
+"the review does not say which wording it covers — record it with npm run corpus:review"), and the validator warns
+`review-signature-mismatch` when a recorded signature differs. **Scripture is exempt**: its wording is bound by
+`scripture.verification` and the byte-for-byte check (`verify-scripture.mjs`, `corpus:check`), not by the signature.
+Learner testimonies (`testimonyDocument`) set the signature of the sentences the learner accepted.
 
 What a reviewer checks:
 
@@ -308,6 +358,7 @@ Then import the file (§6).
 
 ```
 published  ⇔  review.status ∈ {reviewed, approved} with a named reviewedBy
+           ∧  non-Scripture: review.contentSignature equals the signature of the current wording
            ∧  rights established (not "unverified")
            ∧  Scripture only: translationId + edition + a complete verification, and never generated
 ```

@@ -3,28 +3,26 @@
  * corpus under tracked headings, pathway tags as segmented pills, the personalised band and coverage
  * as an italic preview line, badges as chips.
  *
- * Progress per row says what it is: "Seen x of y sentences" (exposure), "Understood x of y (your report)" when reported, "Finished" only after the
- * explicit button. Never "Read" for a count.
+ * Progress per row is the shared `ProgressLine` over the canonical records from `useReadingProgress` (and coverage from
+ * `useCoverageMany`): the same wording and the same numbers as Home and the reader. Never "Read" for a count.
  *
  * Publication gate: only published texts are listed. In preview mode unpublished texts are listed too, each with
  * its reasons. When nothing is visible the page says exactly what is awaited instead of showing an empty list.
  */
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { PersonalizedCoverage, ReadingProgress, Text } from '../../core';
+import type { Text } from '../../core';
 import { useApp } from '../context';
 import { BAND_LABEL, awaitedStatement, plainReasons, isVisibleText, languageName, pct, textPath } from '../format';
-import { progressSummary } from '../coverage';
+import { ProgressLine, useCoverageMany, useReadingProgress } from '../coverage';
 import { TextBadges, UnpublishedReasons, useLangTexts } from '../library';
 import { usePreview } from '../prefs';
 import { BackLink, Topbar } from '../ui';
 
 export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
-  const { golearn, userId, lang, course } = useApp();
+  const { course } = useApp();
   const preview = usePreview();
   const { texts: allTexts, corpora } = useLangTexts();
-  const [coverage, setCoverage] = useState<Map<string, PersonalizedCoverage>>(new Map());
-  const [progress, setProgress] = useState<Map<string, ReadingProgress>>(new Map());
   const [tag, setTag] = useState<string | null>(null);
   const title = mode === 'scripture' ? 'Scripture' : 'Read';
 
@@ -34,23 +32,9 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
   );
   const texts = useMemo(() => ofKind.filter((t) => isVisibleText(t, preview)), [ofKind, preview]);
 
-  useEffect(() => {
-    let live = true;
-    setCoverage(new Map()); setProgress(new Map());
-    void (async () => {
-      const [covs, progs] = await Promise.all([
-        Promise.all(texts.map((t) => golearn.coverage(userId, t.id).catch(() => undefined))),
-        Promise.all(texts.map((t) => golearn.readingProgress(userId, t.id).catch(() => undefined))),
-      ]);
-      if (!live) return;
-      const cm = new Map<string, PersonalizedCoverage>();
-      covs.forEach((c, i) => { if (c) cm.set(texts[i].id, c); });
-      const pm = new Map<string, ReadingProgress>();
-      progs.forEach((p, i) => { if (p) pm.set(texts[i].id, p); });
-      setCoverage(cm); setProgress(pm);
-    })();
-    return () => { live = false; };
-  }, [golearn, userId, lang, texts]);
+  const textIds = useMemo(() => texts.map((t) => t.id), [texts]);
+  const progress = useReadingProgress(textIds);
+  const coverage = useCoverageMany(textIds);
 
   const tags = useMemo(() => [...new Set(texts.flatMap((t) => t.tags ?? []))].sort(), [texts]);
   const visible = useMemo(() => texts.filter((t) => !tag || (t.tags ?? []).includes(tag)), [texts, tag]);
@@ -106,7 +90,7 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
                         </span>
                         {(c || p) && (
                           <span className={`entry__preview${c ? ` band-${c.band}` : ''}`} title={c?.explanation}>
-                            {p && progressSummary(p)}
+                            {p && <ProgressLine progress={p} testId="library-progress" />}
                             {p && c && ' · '}
                             {c && <>{BAND_LABEL[c.band]} · shown {pct(c.knownLexicalCoverage)}{(c.estimatedFamiliarCoverage ?? 0) > 0 ? ` · likely familiar ${pct(c.estimatedFamiliarCoverage)} (estimate)` : ''}</>}
                           </span>

@@ -2,7 +2,7 @@
 import type { AppStore, ComprehensionReported, EnglishRescueRevealed, LanguageCode, ProviderAvailability, Sentence, SentenceViewed, SynthesisRequest, SynthesisResult, Text, TextCompleted, Token, TokenHelpOpened, TtsProvider } from '../../src/core';
 import { StoreEventBus, createMemoryStore, seedBasics } from '../../src/core';
 import { createAdapterRegistry } from '../../src/adapters';
-import { loadBundledCorpus } from '../../src/ingest';
+import { applyReview, loadBundledCorpus } from '../../src/ingest';
 import type { CorpusDocument } from '../../src/ingest';
 import { createGoLearn } from '../../src/golearn';
 import { FixtureTtsProvider, createGoListen } from '../../src/golisten';
@@ -66,10 +66,10 @@ export function bundledDoc(lang: LanguageCode, id: string): CorpusDocument {
  * synthetic review for tests only; the bundled text itself stays unreviewed and unpublished.
  */
 export function syntheticallyReviewed(doc: CorpusDocument): CorpusDocument {
-  const d = structuredClone(doc);
-  d.review = { status: 'reviewed', reviewedBy: 'integration test (synthetic review, not a native-speaker review)', reviewedAt: '2026-10-01' };
-  d.editorialTags = d.editorialTags.filter((t) => t !== 'needs-native-review');
-  return d;
+  // The real review function: it records who reviewed and WHICH wording the review covers (content signature).
+  const r = applyReview(doc, { by: 'integration test (synthetic review, not a native-speaker review)', status: 'reviewed', date: '2026-10-01' });
+  if (!r.ok) throw new Error('synthetic review refused: ' + JSON.stringify(r.refusals));
+  return r.doc as CorpusDocument;
 }
 
 export async function liveSentences(store: AppStore, textId: string): Promise<Sentence[]> {

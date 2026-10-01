@@ -1,0 +1,25 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: the VALID half of a mixed batch (the invalid half is 05-batch-invalid.json). A batch imports all or nothing.",
+  "schemaVersion": 2,
+  "id": "synthetic-es-batch-valid",
+  "lang": "es",
+  "title": "SYNTHETIC: batch, valid file",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-es", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Spanish) — not learner content" },
+  "source": {
+    "id": "synthetic-src-es-batch-valid",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Machine-generated; never bundled.",
+    "rights": "generated",
+    "authorship": "generated"
+  },
+  "review": { "status": "unreviewed" },
+  "topics": [],
+  "editorialTags": ["synthetic", "needs-native-review"],
+  "prepTargets": [],
+  "generated": true,
+  "sections": [
+    { "paragraphs": [ { "sentences": [ { "text": "Pedro lee un libro." }, { "text": "El libro es corto." } ] } ] }
+  ]
+}

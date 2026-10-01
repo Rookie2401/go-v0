@@ -110,7 +110,8 @@ describe('Reader — coverage wording', () => {
     expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 2 of 3 sentences');
     await click(button(mounted.container, /finished reading/));
     await click(button(byLabel(mounted.container, 'How much did you understand?'), 'Most'));
-    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 2 of 3 sentences · Finished · you said you understood most of it');
+    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 2 of 3 sentences · Finished (your mark)'); // the shared line: identical on every surface
+    expect(q(mounted.container, '[data-testid="reading-extras"]')!.textContent).toBe(' · you said you understood most of it'); // the reader's own addition, beside it
     expect(q(mounted.container, '[data-testid="vocabulary-coverage"]')!.textContent).toContain('shown 62%');
   });
 });

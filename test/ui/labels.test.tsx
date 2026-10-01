@@ -9,7 +9,7 @@ import { ids } from '../../src/core';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { Reader } from '../../src/ui/reader/Reader';
 import { progressSummary, seenText, understoodText } from '../../src/ui/coverage';
-import { makeHarness, q, qa, sleep } from './harness';
+import { flush, makeHarness, q, qa, sleep } from './harness';
 import type { Harness, Mounted } from './harness';
 import { JOHN_ID, STORY_ID, seedJohn, seedStory } from './fixtures';
 
@@ -26,12 +26,12 @@ const finished = (h: Harness) => h.bus.emit<TextCompleted>({ ...base, type: 'Tex
 const rec = (over: Partial<Recommendation>): Recommendation => ({ reason: 'next-input', reinforces: [], score: 1, explanation: 'because', ...over });
 
 describe('the wording helpers', () => {
-  const p = { textId: 't', contentVersion: 1, sentencesTotal: 4, sentencesSeen: 3, sentencesUnderstood: 0, sittings: 1, listenedSentences: 0 };
+  const p = { userId: 'u1', lang: 'es' as const, textId: 't', contentVersion: 1, sentencesTotal: 4, sentencesSeen: 3, sentencesUnderstood: 0, sittings: 1, listenedSentences: 0 };
   it('say Seen / Understood (your report) / Finished, and nothing says Read', () => {
     expect(seenText(p)).toBe('Seen 3 of 4 sentences');
     expect(understoodText({ ...p, sentencesUnderstood: 2 })).toBe('Understood 2 of 4 (your report)');
     expect(progressSummary(p)).toBe('Seen 3 of 4 sentences'); // all seen is not finished
-    expect(progressSummary({ ...p, sentencesUnderstood: 2, finishedAt: '2026-09-30T10:00:00.000Z' })).toBe('Seen 3 of 4 sentences · Understood 2 of 4 (your report) · Finished');
+    expect(progressSummary({ ...p, sentencesUnderstood: 2, finishedAt: '2026-09-30T10:00:00.000Z' })).toBe('Seen 3 of 4 sentences · Understood 2 of 4 (your report) · Finished (your mark)');
     expect(progressSummary({ ...p, sentencesSeen: 4, sentencesUnderstood: 0 })).not.toContain('Finished');
   });
 });
@@ -47,7 +47,7 @@ describe('Reader progress block', () => {
     expect(line()).toBe('Seen 3 of 3 sentences · Understood 1 of 3 (your report)'); // ...but not finished: nobody pressed the button
     expect(line()).not.toContain('Finished');
     await finished(h);
-    await sleep(450);
+    await flush();
     expect(line()).toBe('Seen 3 of 3 sentences · Understood 1 of 3 (your report) · Finished');
     expect(q(mounted.container, '[data-testid="vocabulary-coverage"]')!.textContent).toContain('shown 62% · likely familiar 5% (estimate) · met 15% · new 18%');
     expect(mounted.container.textContent).not.toMatch(NO_READ_COUNT);

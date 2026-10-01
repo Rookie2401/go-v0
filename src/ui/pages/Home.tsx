@@ -4,22 +4,25 @@
  * entries (Read · Scripture · My Testimony), then GoLearn's recommendations with personalised
  * coverage as further entries, and quiet links at the bottom.
  *
+ * Progress (the Continue card AND every recommendation row) is read through `useReadingProgress` and drawn by the shared
+ * `ProgressLine`: the same record, wording and numbers as the library and the reader. Nothing here fetches or formats progress.
+ *
  * Recommendations follow the learner's actual state (first text; next input / reread / listen after a
  * completion); input always comes before testimony rehearsal, and the page never says "Open a story to begin"
  * to someone who has already finished a text.
  */
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { PersonalizedCoverage, ReadingProgress, Recommendation, Text, TextViewed } from '../../core';
+import type { Recommendation, Text, TextViewed } from '../../core';
 import { useApp } from '../context';
-import { progressSummary } from '../coverage';
+import { ProgressLine, useCoverageMany, useReadingProgress } from '../coverage';
 import { BAND_LABEL, INPUT_REASONS, REASON_LABEL, awaitedStatement, isTestimonyText, isVisibleText, languageName, pct, plainReason, plainReasons, teamLabel, textPath } from '../format';
 import { useLangTexts } from '../library';
 import { usePreview } from '../prefs';
 import { I } from '../ui';
 
 
-interface Item { rec: Recommendation; text?: Text; coverage?: PersonalizedCoverage; progress?: ReadingProgress }
+interface Item { rec: Recommendation; text?: Text }
 type Resume = { kind: 'text'; text: Text; corpus?: string; label: string } | { kind: 'testimony'; number: number };
 interface LastRead { text: Text; corpus?: string }
 
@@ -42,12 +45,12 @@ export function Home() {
   const [latestVersion, setLatestVersion] = useState<number | null>(null);
   const [corpusTitles, setCorpusTitles] = useState<Map<string, string>>(new Map());
   const [completed, setCompleted] = useState(false);
-  const [resumeProgress, setResumeProgress] = useState<ReadingProgress | null>(null);
 
   useEffect(() => {
     let live = true;
     setItems(null); setError(null);
     void (async () => {
+      await golearn.settled(); // recommendations are computed from settled state
       const recs = await golearn.recommend(userId, { limit: 5, includeUnpublished: preview, lang });
       const [rows, corpora] = await Promise.all([store.texts.getMany(recs.map((r) => r.textId ?? '')), store.corpora.all()]);
       const corpusMap = new Map(corpora.map((c) => [c.id, c]));
@@ -65,11 +68,7 @@ export function Home() {
         kept.push({ rec: recs[i], text });
       }
       const ordered = [...kept.filter((k) => !isRehearsal(k.rec)), ...kept.filter((k) => isRehearsal(k.rec))];
-      const [covs, progs] = await Promise.all([
-        Promise.all(ordered.map((k) => (k.text ? golearn.coverage(userId, k.text.id).catch(() => undefined) : undefined))),
-        Promise.all(ordered.map((k) => (k.text ? golearn.readingProgress(userId, k.text.id).catch(() => undefined) : undefined))),
-      ]);
-      if (live) setItems(ordered.map((k, i) => ({ ...k, coverage: covs[i], progress: progs[i] })));
+      if (live) setItems(ordered);
     })().catch((e: unknown) => { if (live) setError(e instanceof Error ? e.message : String(e)); });
     return () => { live = false; };
   }, [store, golearn, userId, lang, preview]);
@@ -125,14 +124,14 @@ export function Home() {
     return null;
   }, [items, lastRead, latestVersion, corpusTitles]);
 
-  // Where the learner is in the Continue card's text: "Seen x of y sentences", never "Read".
+  // Where the learner is in the Continue card's text and in every recommended text: the canonical records and the coverage,
+  // read once the folds have settled and re-read after the learner's events (one hook for the whole page).
   const resumeTextId = resume?.kind === 'text' ? resume.text.id : null;
-  useEffect(() => {
-    let live = true;
-    setResumeProgress(null);
-    if (resumeTextId) void golearn.readingProgress(userId, resumeTextId).then((p) => { if (live) setResumeProgress(p); }, () => undefined);
-    return () => { live = false; };
-  }, [golearn, userId, resumeTextId]);
+  const itemTextIds = useMemo(() => (items ?? []).flatMap((i) => (i.text ? [i.text.id] : [])), [items]);
+  const progressIds = useMemo(() => (resumeTextId ? [...itemTextIds, resumeTextId] : itemTextIds), [itemTextIds, resumeTextId]);
+  const progress = useReadingProgress(progressIds);
+  const coverage = useCoverageMany(itemTextIds);
+  const resumeProgress = resumeTextId ? progress.get(resumeTextId) : undefined;
 
   const heldBack = (allTexts ?? []).some((t) => t.published !== true);
   const emptyNote = useMemo(() => {
@@ -159,7 +158,7 @@ export function Home() {
           <span className="home__continue-label">{resume.kind === 'text' ? resume.label : 'Continue your testimony'}</span>
           <div className="home__continue-ref" lang={resume.kind === 'text' ? resume.text.lang : undefined}>{resume.kind === 'text' ? resume.text.title : `Version ${resume.number}`}</div>
           <div className="home__continue-sub">{resume.kind === 'text' ? resume.corpus ?? (resume.text.kind === 'scripture' ? 'Scripture' : 'Read') : 'Rehearse it, or write the next version'}</div>
-          {resume.kind === 'text' && resumeProgress && <div className="home__continue-sub" data-testid="continue-progress">{progressSummary(resumeProgress)}</div>}
+          {resume.kind === 'text' && resumeProgress && <div className="home__continue-sub"><ProgressLine progress={resumeProgress} testId="continue-progress" /></div>}
         </Link>
       )}
 
@@ -186,7 +185,9 @@ export function Home() {
         </div>
       )}
       <ul className="list home__list">
-        {items?.map(({ rec, text, coverage, progress }, i) => {
+        {items?.map(({ rec, text }, i) => {
+          const itemProgress = text ? progress.get(text.id) : undefined;
+          const itemCoverage = text ? coverage.get(text.id) : undefined;
           const key = `${rec.reason}-${rec.textId ?? rec.testimonyId ?? i}`;
           const rehearse = rec.reason === 'rehearse-testimony';
           // No text to open and not the testimony: this is a note (nothing published yet, everything read), not a
@@ -208,8 +209,8 @@ export function Home() {
                 {text && (
                   <span className="home__entry-sub">
                     {label}
-                    {progress && <> · <span data-testid="item-progress">{progressSummary(progress)}</span></>}
-                    {coverage && <> · <span className={`band-${coverage.band}`}>{BAND_LABEL[coverage.band]} · shown {pct(coverage.knownLexicalCoverage)}</span></>}
+                    {itemProgress && <> · <ProgressLine progress={itemProgress} testId="item-progress" /></>}
+                    {itemCoverage && <> · <span className={`band-${itemCoverage.band}`}>{BAND_LABEL[itemCoverage.band]} · shown {pct(itemCoverage.knownLexicalCoverage)}</span></>}
                   </span>
                 )}
                 <span className="entry__preview">{plainReason(rec.explanation)}</span>

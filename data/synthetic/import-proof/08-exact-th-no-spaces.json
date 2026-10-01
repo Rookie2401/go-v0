@@ -1,0 +1,36 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: Thai has no spaces between words and no full stop. Paragraph 1 declares two sentences joined by a newline separator; paragraph 2 is a raw paragraph with one sentence per line. Nothing may be inserted between Thai characters. Non-ASCII is written as JSON escapes.",
+  "schemaVersion": 2,
+  "id": "synthetic-th-exact",
+  "lang": "th",
+  "title": "SYNTHETIC: exactness (Thai, no spaces)",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-th", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Thai) — not learner content" },
+  "source": {
+    "id": "synthetic-src-th-exact",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Machine-generated; never bundled.",
+    "rights": "generated",
+    "authorship": "generated"
+  },
+  "review": { "status": "unreviewed" },
+  "topics": [],
+  "editorialTags": ["synthetic", "needs-native-review"],
+  "prepTargets": [],
+  "generated": true,
+  "sections": [
+    {
+      "paragraphs": [
+        {
+          "separator": "\n",
+          "sentences": [
+            { "text": "ฉันไปตลาดวันนี้" },
+            { "text": "แม่ทำอาหารที่บ้าน" }
+          ]
+        },
+        { "text": "เรากินข้าวด้วยกัน\nพ่ออ่านหนังสือ" }
+      ]
+    }
+  ]
+}

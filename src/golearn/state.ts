@@ -21,10 +21,28 @@ export interface Ctx {
   clock: () => string;
   /** True when reviewed, real-speech audio exists for the text (supplied by GoListen). Absent ⇒ never recommend listening. */
   audioEligible?: (textId: string) => Promise<boolean>;
+  /**
+   * Time of the latest evidence event of this learner (in that language) that has been folded (the `asOf` of coverage). Wired by
+   * `createGoLearn`; reads the folder's in-memory index and therefore never waits on the fold queue.
+   */
+  evidenceAsOf?: (userId: string, lang: LanguageCode) => Promise<string | undefined>;
 }
 
-/** Kept as an alias: the contract `Encounter` now carries `session` / `replays` (both optional on old rows). */
-export type StoredEncounter = Encounter;
+/**
+ * The contract `Encounter` plus what `evidence@4` needs: the highest ITEM-TARGETED help (word, phrase, grammar: 1–3) used
+ * on this item in this encounter's sitting + sentence, kept apart from sentence-level help (explanation, English: 4–5),
+ * which `assistance` also reflects. Absent ⇒ no item-targeted help. Derived data (rebuilt from the log).
+ */
+export type StoredEncounter = Encounter & { itemHelp?: AssistanceLevel };
+
+/**
+ * Item-targeted help of an encounter: a reading encounter records it in `itemHelp`; any other encounter (listening: transcript
+ * shown = 2) falls back to its assistance when that is in 1–3. Sentence-level help (4–5) is never item-targeted.
+ */
+export function itemHelpOf(e: { assistance: AssistanceLevel; itemHelp?: AssistanceLevel }): AssistanceLevel {
+  if (e.itemHelp !== undefined) return e.itemHelp;
+  return (e.assistance >= 1 && e.assistance <= 3 ? e.assistance : 0) as AssistanceLevel;
+}
 
 export const MODALITIES: readonly Modality[] = ['reading', 'listening', 'writing', 'speaking'];
 const RECEPTIVE: readonly Modality[] = ['reading', 'listening'];
@@ -66,6 +84,8 @@ export interface NewEncounter {
   at: string;
   evidenceKind: EvidenceKind;
   assistance: AssistanceLevel;
+  /** Reading only: the item-targeted part of `assistance` (see StoredEncounter). Omitted when 0. */
+  itemHelp?: AssistanceLevel;
   weight: number;
   playbackSpeed?: number;
   replays?: number;
@@ -99,6 +119,7 @@ export async function addEncounter(
     textId: n.textId, surface: n.surface, modality: n.modality, at: n.at, evidenceKind: n.evidenceKind,
     assistance: n.assistance, priorLevel: 'unseen', weight: n.weight, session: n.session,
   };
+  if (n.itemHelp) enc.itemHelp = n.itemHelp;
   if (n.sitting !== undefined) enc.sitting = n.sitting;
   if (n.contentVersion !== undefined) enc.contentVersion = n.contentVersion;
   if (n.playbackSpeed !== undefined) enc.playbackSpeed = n.playbackSpeed;
@@ -120,10 +141,10 @@ class Acc {
   assisted = 0;
   /** distinct demonstrated (sentence, sitting) units */
   readonly demonstrated = new Set<string>();
-  /** encounters with no help at all (exposure or demonstrated): the estimate's raw material */
+  /** encounters with no help at all (exposure or demonstrated): the estimate's raw material. Sentence-level help is not one. */
   plain = 0;
   readonly plainSittings = new Set<string>();
-  /** help flags of the last two encounters */
+  /** item-targeted-help flags of the last two encounters (sentence-level help never sets one) */
   tail: boolean[] = [];
   last?: string;
 
@@ -137,7 +158,7 @@ class Acc {
     if (isReceptive(this.modality)) {
       if (enc.evidenceKind === 'demonstrated') this.demonstrated.add(`${enc.sentenceId}\u0000${sittingOf(enc)}`);
       if (enc.assistance === 0) { this.plain += 1; this.plainSittings.add(sittingOf(enc)); }
-      this.tail.push(enc.assistance > 0);
+      this.tail.push(itemHelpOf(enc) > 0);
       if (this.tail.length > ESTIMATE.cleanTail) this.tail.shift();
     }
     if (!this.last || enc.at > this.last) this.last = enc.at;

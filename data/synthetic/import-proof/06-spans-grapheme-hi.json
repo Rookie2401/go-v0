@@ -1,0 +1,29 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: the sentence starts with the Devanagari conjunct kSa (KA + VIRAMA + SSA, written as escapes); the span [0,1) ends inside that conjunct.",
+  "schemaVersion": 2,
+  "id": "synthetic-hi-span-grapheme",
+  "lang": "hi",
+  "title": "SYNTHETIC: span splits a conjunct",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-hi", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Hindi) — not learner content" },
+  "source": {
+    "id": "synthetic-src-hi-span-grapheme",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Machine-generated; never bundled.",
+    "rights": "generated",
+    "authorship": "generated"
+  },
+  "review": { "status": "unreviewed" },
+  "topics": [],
+  "editorialTags": ["synthetic", "needs-native-review"],
+  "prepTargets": [],
+  "generated": true,
+  "sections": [
+    {
+      "paragraphs": [
+        { "sentences": [ { "text": "क्षमा कीजिए।", "spans": [ { "start": 0, "end": 1, "lemma": "x" } ] } ] }
+      ]
+    }
+  ]
+}

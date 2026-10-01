@@ -51,22 +51,47 @@ export function makeFakeGoLearn(store: AppStore, opts: FakeLearnOptions = {}, bu
     explanation: 'Shown means you said you understood it without help; likely familiar is an estimate from meeting a word often without help.',
     newItems: [], knownPhraseCoverage: 0, unfamiliarPatterns: [], avgSentenceLength: 5, band: opts.band ?? 'productive-challenge', expectedDifficulty: 0.4,
   }));
-  const readingProgress = vi.fn(async (userId: string, textId: string): Promise<ReadingProgress> => {
-    const live = (await store.sentences.where('textId', textId)).filter((s) => s.retiredInVersion === undefined);
-    const events = bus ? await bus.history({ userId }) : [];
+  /**
+   * The canonical record (contract v4), derived from the event log: Seen = SentenceViewed on LIVE sentences (a report never
+   * fabricates one); exposure against retired sentences is reported as `earlierVersions`, never counted; `finishedAt` only for a
+   * TextCompleted of THIS content version (an event without a version counts only while the text is at version 1), otherwise
+   * `finishedEarlierVersion`.
+   */
+  const progressOf = async (userId: string, textId: string): Promise<ReadingProgress> => {
+    const all = await store.sentences.where('textId', textId);
+    const live = all.filter((s) => s.retiredInVersion === undefined);
     const liveIds = new Set(live.map((s) => s.id));
+    const retiredIds = new Set(all.filter((s) => s.retiredInVersion !== undefined).map((s) => s.id));
+    const events = (bus ? await bus.history({ userId }) : []).filter((e) => (e as { textId?: string }).textId === textId);
     const text = await store.texts.get(textId);
-    // Notion 2: a SentenceViewed (a report never fabricates one). Notion 3: an explicit TextCompleted only. Notion 4: a sentence-level "all" report.
-    const seen = new Set(events.filter((e) => e.type === 'SentenceViewed' && e.textId === textId).map((e) => (e as { sentenceId: string }).sentenceId).filter((id) => liveIds.has(id)));
-    const completed = events.filter((e) => e.type === 'TextCompleted' && e.textId === textId).at(-1);
-    const reports = events.filter((e): e is ComprehensionReported => e.type === 'ComprehensionReported' && e.textId === textId);
+    const version = text?.contentVersion ?? 1;
+    const views = events.filter((e) => e.type === 'SentenceViewed') as Array<DomainEvent & { sentenceId: string }>;
+    const seen = new Set(views.map((e) => e.sentenceId).filter((id) => liveIds.has(id)));
+    const earlierSeen = new Set(views.map((e) => e.sentenceId).filter((id) => retiredIds.has(id)));
+    const completed = events.filter((e) => e.type === 'TextCompleted').map((e) => e as DomainEvent & { contentVersion?: number });
+    const current = completed.filter((e) => (e.contentVersion === undefined ? version === 1 : e.contentVersion === version)).at(-1);
+    const earlier = completed.filter((e) => e !== current && !(e.contentVersion === undefined ? version === 1 : e.contentVersion === version)).at(-1);
+    const reports = events.filter((e): e is ComprehensionReported => e.type === 'ComprehensionReported');
     const understood = new Set(reports.filter((r) => r.scope === 'sentence' && r.degree === 'all').flatMap((r) => r.sentenceIds).filter((id) => liveIds.has(id)));
-    const sittings = new Set(events.filter((e) => e.type === 'SentenceViewed' && e.textId === textId).map((e) => e.session));
+    const earlierUnderstood = new Set(reports.filter((r) => r.scope === 'sentence' && r.degree === 'all').flatMap((r) => r.sentenceIds).filter((id) => retiredIds.has(id)));
+    const sittings = new Set(views.map((e) => e.session));
     return {
-      textId, contentVersion: text?.contentVersion ?? 1, sentencesTotal: live.length, sentencesSeen: seen.size, sentencesUnderstood: understood.size,
-      ...(completed ? { finishedAt: completed.at } : {}), reportedComprehension: reports.filter((r) => r.scope === 'text').at(-1)?.degree, sittings: sittings.size, listenedSentences: 0,
+      userId, lang: text?.lang ?? 'es', textId, contentVersion: version, sentencesTotal: live.length, sentencesSeen: seen.size, sentencesUnderstood: understood.size,
+      ...(current ? { finishedAt: current.at } : earlier ? { finishedEarlierVersion: { ...(earlier.contentVersion !== undefined ? { version: earlier.contentVersion } : {}), at: earlier.at } } : {}),
+      ...(earlierSeen.size > 0 || earlierUnderstood.size > 0 ? { earlierVersions: { sentencesSeen: earlierSeen.size, sentencesUnderstood: earlierUnderstood.size } } : {}),
+      reportedComprehension: reports.filter((r) => r.scope === 'text').at(-1)?.degree, sittings: sittings.size, listenedSentences: 0,
+      ...(events.length > 0 ? { asOf: events[events.length - 1].at } : {}),
     };
+  };
+  const readingProgress = vi.fn(progressOf);
+  /** One read for several texts; the Map equals per-text calls (as the contract requires). */
+  const readingProgressMany = vi.fn(async (userId: string, textIds: string[]): Promise<Map<string, ReadingProgress>> => {
+    const out = new Map<string, ReadingProgress>();
+    for (const id of new Set(textIds)) out.set(id, await progressOf(userId, id));
+    return out;
   });
+  /** Every event emitted so far is already in the store the fake reads; tests that need a slow fold override this. */
+  const settled = vi.fn(async (): Promise<void> => undefined);
   const fake = {
     attach: () => () => undefined,
     handle: async () => undefined,
@@ -87,6 +112,8 @@ export function makeFakeGoLearn(store: AppStore, opts: FakeLearnOptions = {}, bu
       productions: { independent: 0, selfRepaired: 0, assisted: 0, copied: 0 }, excludedEvents: 0, texts: [],
     })),
     readingProgress,
+    readingProgressMany,
+    settled,
     coverage,
     recommend: vi.fn(async (_userId: string, _o?: { limit?: number; includeUnpublished?: boolean; lang?: string }) => opts.recommendations ?? []),
     scriptureReadiness: vi.fn(async (userId: string, textId: string, _s?: string[], _o?: { includeUnpublished?: boolean }): Promise<ScriptureReadiness> => ({

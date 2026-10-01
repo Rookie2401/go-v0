@@ -95,7 +95,7 @@ export function VocabularyPage() {
     <div>
       <Topbar title="Vocabulary" left={<BackLink to="/" label="Home" />} right={<IconBtn label="Settings" to="/settings">{I.settings}</IconBtn>} />
       <div className="page page--narrow settings route-fade">
-        <VocabularySection />
+        <VocabularySection collapsed={false} />
       </div>
     </div>
   );
@@ -208,7 +208,11 @@ function ReadingSection() {
 
 type KindFilter = Extract<ItemKind, 'form' | 'lemma' | 'phrase'>;
 
-function VocabularySection() {
+/**
+ * The vocabulary table. In Settings it sits in a collapsed disclosure whose summary carries the count ("Vocabulary table (212 words)");
+ * on its own page (/vocabulary) it is shown open.
+ */
+function VocabularySection({ collapsed = true }: { collapsed?: boolean } = {}) {
   const { store, bus, golearn, userId, lang, session } = useApp();
   const [rows, setRows] = useState<LearnerItemState[] | null>(null);
   const [kind, setKind] = useState<KindFilter>('form');
@@ -239,10 +243,10 @@ function VocabularySection() {
     catch (err) { setWhy((w) => ({ ...w, [itemId]: err instanceof Error ? err.message : String(err) })); }
   };
 
-  return (
-    <section aria-label="Vocabulary" id="vocabulary" data-settings-section="vocabulary">
-      <h2 className="section-head" tabIndex={-1}>Vocabulary</h2>
-      <p className="card__note">Built from what you have actually read, heard and written. Marking a word only adjusts how it is displayed to you; it never erases the evidence.</p>
+  const wordCount = useMemo(() => (rows ?? []).filter((r) => r.lang === lang && r.itemKind === 'form').length, [rows, lang]);
+
+  const table = (
+    <>
       <label className="field">
         <span className="label">Show</span>
         <select value={kind} aria-label="Item kind" onChange={(e) => { setKind(e.target.value as KindFilter); setLimit(100); }}>
@@ -270,6 +274,16 @@ function VocabularySection() {
         </div>
       )}
       {visible.length > limit && <button type="button" className="btn btn--small btn--quiet" onClick={() => setLimit(limit + 100)}>Show more ({visible.length - limit} left)</button>}
+    </>
+  );
+
+  return (
+    <section aria-label="Vocabulary" id="vocabulary" data-settings-section="vocabulary">
+      <h2 className="section-head" tabIndex={-1}>Vocabulary</h2>
+      <p className="card__note">Built from what you have actually read, heard and written. Marking a word only adjusts how it is displayed to you; it never erases the evidence.</p>
+      {collapsed
+        ? <Disclosure headingLevel={3} className="vocab__disclosure" label={rows === null ? 'Vocabulary table' : `Vocabulary table (${wordCount} ${wordCount === 1 ? 'word' : 'words'})`}>{table}</Disclosure>
+        : table}
     </section>
   );
 }

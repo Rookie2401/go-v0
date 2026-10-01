@@ -262,7 +262,8 @@ describe('a deliberate report or completion is not a view', () => {
     const reports = (await h.events('ComprehensionReported')) as ComprehensionReported[];
     expect(reports[0]).toMatchObject({ scope: 'text', degree: 'all', contentVersion: 1 });
     // the label says Finished only because the button was pressed, and Seen stays 0
-    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 0 of 3 sentences · Finished · you said you understood all of it');
+    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 0 of 3 sentences · Finished (your mark)');
+    expect(q(mounted.container, '[data-testid="reading-extras"]')!.textContent).toBe(' · you said you understood all of it');
   });
 
   it('keeps the manual fallback where there is no IntersectionObserver: an explicit "seen" mark, with no invented timing', async () => {

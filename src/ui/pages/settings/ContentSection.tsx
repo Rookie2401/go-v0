@@ -1,11 +1,13 @@
 /**
- * Settings → Content: preview mode, the in-app importer (choose .json files → validation report with paths and
- * hints → import) and the list of texts with their review status, publication state, plain reasons and content-version
- * history (`ingest.history`, bound to `contentHistory` in src/ingest; without it the current version is all that is shown).
+ * Settings → Content: preview mode and the in-app importer (choose .json files → validation report with paths and hints →
+ * import) stay visible; the long list of texts (review status, publication state, plain reasons, content-version history from
+ * `ingest.history`, bound to `contentHistory` in src/ingest; without it the current version is all that is shown) sits in a
+ * collapsed disclosure whose summary carries the count: "Texts on this device (16)".
  */
 import { useCallback, useEffect, useId, useState } from 'react';
 import type { Corpus, Text } from '../../../core';
 import { useApp } from '../../context';
+import { Disclosure } from '../../ui';
 import type { ImportDocView, IngestIssueView } from '../../context';
 import { errorText } from './shared';
 import { REVIEW_LABEL, formatDate, isTestimonyText, nameOfLang, plainReasons } from '../../format';
@@ -193,7 +195,8 @@ function WhyNot({ text }: { text: Text }) {
   );
 }
 
-export function TextList({ refreshKey }: { refreshKey: unknown }) {
+/** Every non-private text on this device, with its corpora; null while loading. */
+function useTextRows(refreshKey: unknown): { rows: Text[] | null; corpora: Map<string, Corpus> } {
   const { store } = useApp();
   const [rows, setRows] = useState<Text[] | null>(null);
   const [corpora, setCorpora] = useState<Map<string, Corpus>>(new Map());
@@ -207,6 +210,10 @@ export function TextList({ refreshKey }: { refreshKey: unknown }) {
     });
     return () => { live = false; };
   }, [store, refreshKey]);
+  return { rows, corpora };
+}
+
+function TextTable({ rows, corpora }: { rows: Text[] | null; corpora: Map<string, Corpus> }) {
   if (rows === null) return <p className="muted" role="status">Loading…</p>;
   if (rows.length === 0) return <p className="muted">No texts have been imported yet.</p>;
   return (
@@ -227,6 +234,16 @@ export function TextList({ refreshKey }: { refreshKey: unknown }) {
         </tbody>
       </table>
     </div>
+  );
+}
+
+/** "Texts on this device (16)": the long table, collapsed. */
+export function TextList({ refreshKey }: { refreshKey: unknown }) {
+  const { rows, corpora } = useTextRows(refreshKey);
+  return (
+    <Disclosure headingLevel={3} className="textlist__disclosure" label={rows === null ? 'Texts on this device' : `Texts on this device (${rows.length})`}>
+      <TextTable rows={rows} corpora={corpora} />
+    </Disclosure>
   );
 }
 
@@ -255,7 +272,6 @@ export function ContentSection() {
         </div>
       )}
       {(startup?.warnings ?? []).length > 0 && <ul className="reasons">{startup!.warnings!.map((w) => <li key={w}>{w}</li>)}</ul>}
-      <h3 className="label">Texts on this device</h3>
       <TextList refreshKey={tick} />
     </section>
   );

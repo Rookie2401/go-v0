@@ -12,6 +12,7 @@ import type {
 } from '../core';
 import { LANGUAGES, LANGUAGE_ROWS } from '../core';
 import { analysisCoverage, type AnalysisCoverage } from '../adapters/shared';
+import { contentSignatureOf } from './publish';
 
 export const CORPUS_SCHEMA_VERSION = 2 as const;
 
@@ -39,6 +40,8 @@ export interface DocReview {
   reviewedBy?: string;
   reviewedAt?: string;
   notes?: string;
+  /** Which wording the review covers (`contentSignatureOf`); written by `applyReview` / `npm run corpus:review`. Optional. */
+  contentSignature?: string;
 }
 
 export interface DocScripture {
@@ -149,7 +152,7 @@ export type ValidationCode =
   | 'scripture-translation-missing' | 'scripture-edition-missing' | 'scripture-book-invalid' | 'scripture-chapter-invalid'
   | 'scripture-corpus' | 'scripture-generated' | 'invalid-verification'
   | 'missing-provenance' | 'unverified-without-note' | 'review-missing-reviewer'
-  | 'not-nfc' | 'edge-whitespace' | 'adapter-would-split' | 'low-analysis-coverage';
+  | 'review-signature-mismatch' | 'not-nfc' | 'edge-whitespace' | 'adapter-would-split' | 'low-analysis-coverage';
 
 export interface ValidationIssue {
   /** JSON path of the offending value, e.g. `sections[0].paragraphs[1].sentences[2].spans[0]`. */
@@ -320,7 +323,12 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
     else if ((review.status === 'reviewed' || review.status === 'approved') && !isStr(review.reviewedBy)) {
       err('review.reviewedBy', 'review-missing-reviewer', `review.status "${review.status}" needs review.reviewedBy`, 'Name the person (or verification tool) that reviewed the text, plus reviewedAt; reviews are never anonymous.');
     }
-    for (const k of ['reviewedBy', 'reviewedAt', 'notes'] as const) if (review[k] !== undefined && typeof review[k] !== 'string') err(`review.${k}`, 'invalid-value', `review.${k} must be a string`, 'Use plain text.');
+    for (const k of ['reviewedBy', 'reviewedAt', 'notes', 'contentSignature'] as const) if (review[k] !== undefined && typeof review[k] !== 'string') err(`review.${k}`, 'invalid-value', `review.${k} must be a string`, 'Use plain text.');
+  }
+
+  if (isObj(review) && typeof review.contentSignature === 'string' && d.contentType !== 'scripture' && Array.isArray(d.sections) && review.contentSignature !== contentSignatureOf(d)) {
+    warn('review.contentSignature', 'review-signature-mismatch', 'the text changed after it was reviewed: review.contentSignature does not match the current wording',
+      'The text will not publish until it is reviewed again: run npm run corpus:review -- <file> --by "<name>" (it records the new signature).');
   }
 
   // speakers
@@ -495,6 +503,7 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
       } else if (typeof par.text === 'string') {
         if (par.text.trim().length === 0) { err(`${pp}.text`, 'empty-sentence', 'paragraph text is blank', 'Remove it.'); return; }
         if (par.text !== par.text.normalize('NFC')) warn(`${pp}.text`, 'not-nfc', 'text is not in Unicode NFC (stored exactly as supplied)', 'Usually harmless.');
+        if (par.text !== par.text.trim()) warn(`${pp}.text`, 'edge-whitespace', 'text has leading or trailing whitespace (stored exactly as supplied)', 'Trim it unless the whitespace is deliberate.');
         const spans = adapter ? adapter.segmentSentences(par.text) : [];
         if (scripture && VERSE_MARKER.test(par.text)) err(`${pp}.text`, 'verse-marker-in-text', 'the text contains a verse marker', 'Verse numbers are metadata: remove them and use verseRefs.');
         if (adapter) {

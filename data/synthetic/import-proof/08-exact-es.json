@@ -1,0 +1,37 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: byte-exact storage. Paragraph 1 declares sentences with: s1 a decomposed n + U+0303 (non-NFC); s2 two NO-BREAK SPACES (U+00A0); s3 two leading spaces, two trailing spaces and double spaces inside; s4 mixed punctuation (guillemets, em dash, ellipsis, inverted ? and !). Paragraph 2 is a raw paragraph with leading/trailing spaces and a double space between sentences. All non-ASCII characters are written as JSON escapes so that the exact code points are unambiguous.",
+  "schemaVersion": 2,
+  "id": "synthetic-es-exact",
+  "lang": "es",
+  "title": "SYNTHETIC: exactness (Spanish)",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-es", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Spanish) — not learner content" },
+  "source": {
+    "id": "synthetic-src-es-exact",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Machine-generated; never bundled.",
+    "rights": "generated",
+    "authorship": "generated"
+  },
+  "review": { "status": "unreviewed" },
+  "topics": [],
+  "editorialTags": ["synthetic", "needs-native-review"],
+  "prepTargets": [],
+  "generated": true,
+  "sections": [
+    {
+      "paragraphs": [
+        {
+          "sentences": [
+            { "text": "El niño come pan." },
+            { "text": "Ana vive aquí." },
+            { "text": "  Ana  come   pan.  " },
+            { "text": "«Hola» — dijo Ana… ¿Vienes? ¡Sí!" }
+          ]
+        },
+        { "text": "  ¿Dónde vives?  ¡Vivo aquí!  " }
+      ]
+    }
+  ]
+}

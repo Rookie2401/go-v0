@@ -19,7 +19,7 @@
   },
   "review": {
     "status": "unreviewed",
-    "_comment": "When the wording has been verified by scripts/verify-scripture.mjs: {\"status\": \"reviewed\", \"reviewedBy\": \"scripts/verify-scripture.mjs\", \"reviewedAt\": \"<checkedAt from data/verified/scripture.json>\"}. A person who proofread it against the source may sign instead."
+    "_comment": "When the wording has been verified by scripts/verify-scripture.mjs: {\"status\": \"reviewed\", \"reviewedBy\": \"scripts/verify-scripture.mjs\", \"reviewedAt\": \"<checkedAt from data/verified/scripture.json>\"}. A person who proofread it against the source may sign instead. Scripture is bound by scripture.verification, not by review.contentSignature."
   },
   "topics": ["scripture"],
   "editorialTags": ["unverified-sample"],

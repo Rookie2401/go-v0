@@ -3,6 +3,7 @@
  * localStorage when available; the app renders correctly without it (every access is guarded).
  */
 import { useCallback, useSyncExternalStore } from 'react';
+import { scopedKey } from './sandbox';
 
 export type HighlightPref = 'off' | 'subtle' | 'strong';
 export type TranscriptPref = 'visible' | 'hidden' | 'reveal-current' | 'reveal-after';
@@ -28,18 +29,26 @@ export interface Prefs {
 export const FONT_SIZE_RANGE = { min: 16, max: 34 } as const;
 export const DEFAULT_PREFS: Prefs = { highlight: 'subtle', speed: 1, transcript: 'visible', fontSize: 22, theme: 'auto', preview: false, devFixtureAudio: false };
 
+/**
+ * Every key below goes through `scopedKey`: in sandbox mode (`?sandbox=<name>`, see sandbox.ts) it is namespaced under
+ * `sandbox:<name>:`, so a sandbox never reads or writes the learner's own preferences, active learner, chosen team or speech key.
+ */
 const KEY = 'go-v0:prefs';
 let memory: Prefs | null = null;
+/** The storage key `memory` was loaded from (a page can only be in one namespace, but tests switch). */
+let memoryKey = '';
 const listeners = new Set<() => void>();
 
 function read(): Prefs {
-  if (memory) return memory;
+  const key = scopedKey(KEY);
+  if (memory && memoryKey === key) return memory;
   let loaded: Partial<Prefs> = {};
   try {
-    const raw = typeof localStorage !== 'undefined' ? localStorage.getItem(KEY) : null;
+    const raw = typeof localStorage !== 'undefined' ? localStorage.getItem(key) : null;
     if (raw) loaded = JSON.parse(raw) as Partial<Prefs>;
   } catch { /* storage blocked or corrupt: fall back to defaults */ }
   memory = { ...DEFAULT_PREFS, ...loaded };
+  memoryKey = key;
   return memory;
 }
 
@@ -52,14 +61,14 @@ export function applyTheme(theme: ThemePref = read().theme): void {
 
 export function setPref<K extends keyof Prefs>(key: K, value: Prefs[K]): void {
   memory = { ...read(), [key]: value };
-  try { if (typeof localStorage !== 'undefined') localStorage.setItem(KEY, JSON.stringify(memory)); } catch { /* ignore */ }
+  try { if (typeof localStorage !== 'undefined') localStorage.setItem(scopedKey(KEY), JSON.stringify(memory)); } catch { /* ignore */ }
   for (const l of listeners) l();
 }
 
 /** Test helper: forget cached prefs so the next read hits storage/defaults again. */
 export function resetPrefsForTests(): void {
   memory = null;
-  try { if (typeof localStorage !== 'undefined') localStorage.removeItem(KEY); } catch { /* ignore */ }
+  try { if (typeof localStorage !== 'undefined') localStorage.removeItem(scopedKey(KEY)); } catch { /* ignore */ }
   for (const l of listeners) l();
 }
 
@@ -97,39 +106,39 @@ export interface RememberedAzure { key: string; region: string }
  * configured. Forgetting removes them.
  */
 export function rememberAzure(v: RememberedAzure): void {
-  try { if (typeof localStorage !== 'undefined') localStorage.setItem(AZURE_KEY, JSON.stringify(v)); } catch { /* not remembered */ }
+  try { if (typeof localStorage !== 'undefined') localStorage.setItem(scopedKey(AZURE_KEY), JSON.stringify(v)); } catch { /* not remembered */ }
 }
 export function recallAzure(): RememberedAzure | undefined {
   try {
-    const raw = typeof localStorage !== 'undefined' ? localStorage.getItem(AZURE_KEY) : null;
+    const raw = typeof localStorage !== 'undefined' ? localStorage.getItem(scopedKey(AZURE_KEY)) : null;
     if (!raw) return undefined;
     const v = JSON.parse(raw) as Partial<RememberedAzure>;
     return typeof v.key === 'string' && typeof v.region === 'string' && v.key && v.region ? { key: v.key, region: v.region } : undefined;
   } catch { return undefined; }
 }
 export function forgetAzure(): void {
-  try { if (typeof localStorage !== 'undefined') localStorage.removeItem(AZURE_KEY); } catch { /* ignore */ }
+  try { if (typeof localStorage !== 'undefined') localStorage.removeItem(scopedKey(AZURE_KEY)); } catch { /* ignore */ }
 }
 
 const ACTIVE_USER_KEY = 'go-v0:active-user';
 
 export function rememberActiveUser(userId: string): void {
-  try { if (typeof localStorage !== 'undefined') localStorage.setItem(ACTIVE_USER_KEY, userId); } catch { /* per-viewer convenience only */ }
+  try { if (typeof localStorage !== 'undefined') localStorage.setItem(scopedKey(ACTIVE_USER_KEY), userId); } catch { /* per-viewer convenience only */ }
 }
 
 export function recallActiveUser(): string | undefined {
-  try { return (typeof localStorage !== 'undefined' ? localStorage.getItem(ACTIVE_USER_KEY) : null) ?? undefined; } catch { return undefined; }
+  try { return (typeof localStorage !== 'undefined' ? localStorage.getItem(scopedKey(ACTIVE_USER_KEY)) : null) ?? undefined; } catch { return undefined; }
 }
 
 const CHOSEN_COURSE_KEY = 'go-v0:chosen-course';
 
 /** The team (course) the learner picked at onboarding or in Settings; bootstrap only creates a learner once this exists. */
 export function rememberChosenCourse(courseId: string): void {
-  try { if (typeof localStorage !== 'undefined') localStorage.setItem(CHOSEN_COURSE_KEY, courseId); } catch { /* per-viewer convenience only */ }
+  try { if (typeof localStorage !== 'undefined') localStorage.setItem(scopedKey(CHOSEN_COURSE_KEY), courseId); } catch { /* per-viewer convenience only */ }
 }
 
 export function recallChosenCourse(): string | undefined {
-  try { return (typeof localStorage !== 'undefined' ? localStorage.getItem(CHOSEN_COURSE_KEY) : null) ?? undefined; } catch { return undefined; }
+  try { return (typeof localStorage !== 'undefined' ? localStorage.getItem(scopedKey(CHOSEN_COURSE_KEY)) : null) ?? undefined; } catch { return undefined; }
 }
 
 /** Id of the learner bootstrap creates once a team has been chosen. */

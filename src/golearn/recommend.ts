@@ -25,7 +25,7 @@
 import type { LanguageCode, PersonalizedCoverage, Recommendation, RecommendationReason, Text } from '../core';
 import { analyzeText, liveSentences, scriptureReadiness } from './coverage';
 import { HEAVY_HELP_FRACTION } from './policy';
-import { activityByText, progressOf } from './progress';
+import { readingProgressMany } from './progress';
 import type { Degree } from './progress';
 import type { Ctx, StoredEncounter } from './state';
 import { sittingOf } from './state';
@@ -69,21 +69,20 @@ export async function recommend(
   const input = inputAll.filter(visible);
   const withheld = inputAll.filter((t) => !visible(t));
 
-  const activity = await activityByText(ctx, userId, { lang });
+  const records = await readingProgressMany(ctx, userId, texts.map((t) => t.id)); // ONE read of the log
   const liveByText = new Map<string, Awaited<ReturnType<typeof liveSentences>>>();
   const live = async (textId: string) => {
     let l = liveByText.get(textId);
     if (!l) liveByText.set(textId, (l = await liveSentences(ctx, textId)));
     return l;
   };
+  // "Completed" is an explicit TextCompleted OF THE CURRENT content version (`finishedAt`); a text revised since is in progress again.
   const progress = new Map<string, { total: number; seen: number; understood: number; finishedAt?: string }>();
   for (const t of texts) {
-    const act = activity.get(t.id);
-    const l = await live(t.id);
-    const p = progressOf(act, l);
-    progress.set(t.id, { total: l.length, seen: p.seen, understood: p.understood, finishedAt: p.finishedAt });
+    const r = records.get(t.id)!;
+    progress.set(t.id, { total: r.sentencesTotal, seen: r.sentencesSeen, understood: r.sentencesUnderstood, finishedAt: r.finishedAt });
   }
-  const hasReading = [...activity.values()].some((a) => a.viewed.size > 0 || a.understood.size > 0 || a.finishedAt);
+  const hasReading = [...records.values()].some((r) => r.sentencesSeen > 0 || r.sentencesUnderstood > 0 || r.finishedAt || r.finishedEarlierVersion || r.earlierVersions);
 
   const myEncounters = ((await ctx.store.encounters.where('userId', userId)) as StoredEncounter[]).filter((e) => e.lang === lang);
   const byText = new Map<string, StoredEncounter[]>();
@@ -132,12 +131,12 @@ export async function recommend(
   } else {
     for (const t of input) {
       const p = progress.get(t.id)!;
-      const act = activity.get(t.id);
+      const rec = records.get(t.id)!;
       const bonus = t.tags.some((x) => interests.has(x)) ? 0.1 : 0;
       if (p.finishedAt) {
         const cov = await analyzeText(ctx, userId, t.id);
-        const report = act?.report;
-        const below = report && report.degree !== 'all' ? report : undefined;
+        const reported = rec.reportedComprehension;
+        const below = reported && reported !== 'all' ? { degree: reported } : undefined;
         const heavy = await heavyHelp(byText.get(t.id) ?? []);
         if (below || heavy) {
           offer({

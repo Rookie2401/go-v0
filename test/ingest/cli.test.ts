@@ -3,6 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
+import { contentSignatureOf } from '../../src/ingest';
 import { baseDoc, scriptureDoc } from './helpers';
 
 const cli = path.resolve('node_modules/vite-node/dist/cli.mjs');
@@ -28,7 +29,7 @@ describe('corpus CLI (npm run corpus:validate / corpus:check / corpus:migrate)',
 
   it('corpus:validate states the publication requirements: would publish yes for a reviewed document, each missing requirement otherwise', () => {
     const reviewed = baseDoc();
-    reviewed.review = { status: 'reviewed', reviewedBy: 'Ana Ruiz', reviewedAt: '2026-02-01' };
+    reviewed.review = { status: 'reviewed', reviewedBy: 'Ana Ruiz', reviewedAt: '2026-02-01', contentSignature: contentSignatureOf(reviewed) };
     const yes = run('scripts/corpus-validate.mts', write('reviewed.json', reviewed));
     expect(yes.status).toBe(0);
     expect(yes.out).toMatch(/would publish: yes/);
@@ -62,7 +63,8 @@ describe('corpus CLI (npm run corpus:validate / corpus:check / corpus:migrate)',
       expect(r.out).toMatch(/removed editorial tag: needs-native-review/);
       expect(r.out).toMatch(/would publish: yes/);
       const doc = JSON.parse(fs.readFileSync(p, 'utf8')) as { review: unknown; editorialTags: string[] };
-      expect(doc.review).toEqual({ status: 'reviewed', reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01', notes: 'Checked wording and glosses.' });
+      expect(doc.review).toEqual({ status: 'reviewed', reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01', contentSignature: expect.stringMatching(/^[0-9a-f]{16}$/), notes: 'Checked wording and glosses.' });
+      expect(r.out).toMatch(new RegExp(`review covers wording ${(doc.review as { contentSignature: string }).contentSignature.slice(0, 8)}`));
       expect(doc.editorialTags).toEqual(['machine-drafted']);
       expect(sentenceTexts(p)).toEqual(before);
       // the bundled corpus itself is never touched, and the reviewed copy validates as publishable

@@ -1,5 +1,5 @@
 /**
- * evidence@3: time-derived sittings, one exposure per sitting, explicit completion, "Seen / Understood / Finished" kept
+ * evidence@4: time-derived sittings, one exposure per sitting, explicit completion, "Seen / Understood / Finished" kept
  * apart, and evidence pinned to the content version. Every test here controls time itself (`sittingPerSession: false`).
  */
 import { describe, expect, it } from 'vitest';
@@ -209,8 +209,8 @@ describe('TextViewed is not evidence and not activity', () => {
     expect(await h.store.encounters.where('userId', U)).toEqual([]);
     expect(await h.store.learnerItems.where('userId', U)).toEqual([]);
     expect(await h.golearn.readingProgress(U, ES_STORY)).toEqual({
-      textId: ES_STORY, contentVersion: 1, sentencesTotal: 4, sentencesSeen: 0, sentencesUnderstood: 0, sittings: 0, listenedSentences: 0,
-    });
+      userId: U, lang: 'es', textId: ES_STORY, contentVersion: 1, sentencesTotal: 4, sentencesSeen: 0, sentencesUnderstood: 0, sittings: 0, listenedSentences: 0,
+    }); // a TextViewed is not activity: no asOf either
     expect(await h.golearn.recommend(U)).not.toEqual([]); // still a new learner
     expect((await h.golearn.recommend(U))[0].reason).toBe('first-text');
     // a preview 20 minutes after a view does not keep the sitting alive: the next view 40 minutes later is a new sitting
@@ -303,7 +303,7 @@ describe('"Understood" on a sentence never dwelt on', () => {
   });
 });
 
-describe('derived state is rebuildable under evidence@3', () => {
+describe('derived state is rebuildable under evidence@4', () => {
   async function play(h: Harness) {
     await h.view(U, 'es', ES_STORY, 0, 's1');
     await h.help(U, 'es', ES_STORY, 0, 1, F('creo'), 2, 's2'); // reload inside the sitting
@@ -365,7 +365,7 @@ describe('derived state is rebuildable under evidence@3', () => {
     const events = (await h.store.events.where('userId', U)).length;
     expect(await h.golearn.ensureCurrent(U)).toBe(true);
     expect((await h.store.events.where('userId', U)).length).toBe(events); // nothing deleted from the log
-    expect((await h.store.meta.get('golearn.policy:u1'))?.value).toBe('evidence@3');
+    expect((await h.store.meta.get('golearn.policy:u1'))?.value).toBe('evidence@4');
     expect(await encs(h)).toEqual(live);
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
   });

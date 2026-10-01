@@ -1,0 +1,25 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: two DIFFERENT files with the same document id (this is file A; file B is 04-duplicate-id-b.json).",
+  "schemaVersion": 2,
+  "id": "synthetic-es-duplicate",
+  "lang": "es",
+  "title": "SYNTHETIC: duplicate id, file A",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-es", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Spanish) — not learner content" },
+  "source": {
+    "id": "synthetic-src-es-duplicate-a",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof, file A)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Machine-generated; never bundled.",
+    "rights": "generated",
+    "authorship": "generated"
+  },
+  "review": { "status": "unreviewed" },
+  "topics": [],
+  "editorialTags": ["synthetic", "needs-native-review"],
+  "prepTargets": [],
+  "generated": true,
+  "sections": [
+    { "paragraphs": [ { "sentences": [ { "text": "La luna sale de noche." }, { "text": "El mar está tranquilo." } ] } ] }
+  ]
+}

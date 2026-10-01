@@ -10,6 +10,7 @@ import type { AppStore, Course, User } from '../core';
 import { DEFAULT_USER_ID } from './prefs';
 import { AppProvider } from './context';
 import { languageName } from './format';
+import { SandboxBanner } from './SandboxBanner';
 import type { AppServices } from './context';
 import { recallActiveUser, rememberActiveUser, rememberChosenCourse } from './prefs';
 
@@ -50,20 +51,23 @@ export function Onboarding({ store, onChosen }: { store: AppStore; onChosen(user
   };
 
   return (
-    <main className="page page--narrow home onboarding route-fade">
-      <h1 className="home__title">Go</h1>
-      <p className="home__subtitle">Which team are you on?</p>
-      <div className="home__rule" />
-      <div className="onboarding__form">
-        <label className="field">
-          <span className="label">Team</span>
-          <TeamSelect value={courseId} onChange={setCourseId} label="Team" />
-        </label>
-        <p className="onboarding__lang" role="status">You will be learning {languageName(course)}</p>
-        {error && <p role="alert" className="error">{error}</p>}
-        <button type="button" className="btn btn--primary" disabled={busy} onClick={begin}>Begin</button>
-      </div>
-    </main>
+    <>
+      <SandboxBanner />
+      <main className="page page--narrow home onboarding route-fade">
+        <h1 className="home__title">Go</h1>
+        <p className="home__subtitle">Which team are you on?</p>
+        <div className="home__rule" />
+        <div className="onboarding__form">
+          <label className="field">
+            <span className="label">Team</span>
+            <TeamSelect value={courseId} onChange={setCourseId} label="Team" />
+          </label>
+          <p className="onboarding__lang" role="status">You will be learning {languageName(course)}</p>
+          {error && <p role="alert" className="error">{error}</p>}
+          <button type="button" className="btn btn--primary" disabled={busy} onClick={begin}>Begin</button>
+        </div>
+      </main>
+    </>
   );
 }
 

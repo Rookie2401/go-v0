@@ -6,7 +6,7 @@ const levels: AssistanceLevel[] = [0, 1, 2, 3, 4, 5];
 
 describe('defaultPolicy', () => {
   it('names its version', () => {
-    expect(POLICY_VERSION).toBe('evidence@3');
+    expect(POLICY_VERSION).toBe('evidence@4');
   });
 
   it('reading weight (of a demonstrated encounter) falls with assistance (1.0 → 0.15) and is never zero or negative', () => {

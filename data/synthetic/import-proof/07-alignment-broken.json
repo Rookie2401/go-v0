@@ -1,0 +1,30 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: a raw paragraph that the adapter splits into THREE sentences, but whose english array has only TWO entries.",
+  "schemaVersion": 2,
+  "id": "synthetic-es-alignment",
+  "lang": "es",
+  "title": "SYNTHETIC: broken translation alignment",
+  "contentType": "story",
+  "corpus": { "id": "synthetic-ci-es", "kind": "comprehensible-input", "title": "SYNTHETIC import-proof corpus (Spanish) — not learner content" },
+  "source": {
+    "id": "synthetic-src-es-alignment",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Machine-generated; never bundled.",
+    "rights": "generated",
+    "authorship": "generated"
+  },
+  "review": { "status": "unreviewed" },
+  "topics": [],
+  "editorialTags": ["synthetic", "needs-native-review"],
+  "prepTargets": [],
+  "generated": true,
+  "english": { "source": "Machine-generated alongside the synthetic Spanish (import proof)" },
+  "sections": [
+    {
+      "paragraphs": [
+        { "text": "El sol sale. Ana se levanta. Ella come pan.", "english": ["The sun rises.", "Ana gets up."] }
+      ]
+    }
+  ]
+}

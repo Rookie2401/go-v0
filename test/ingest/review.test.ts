@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createMemoryStore, ids } from '../../src/core';
 import {
-  applyReview, contentHistory, importDocuments, loadBundledCorpus, validateDocument, type CorpusDocument, type ReviewResult,
+  applyReview, contentHistory, contentSignatureOf, importDocuments, loadBundledCorpus, validateDocument, type CorpusDocument, type ReviewResult,
 } from '../../src/ingest';
 import { baseDoc, clock, registry, scriptureDoc } from './helpers';
 
@@ -19,7 +19,7 @@ describe('applyReview', () => {
     const frozen = clone(before);
     const r = ok(applyReview(before, { by: 'Ana Ruiz (native speaker)', date: '2026-02-01', notes: 'Checked wording.' }));
     expect(before).toEqual(frozen); // the input is not mutated
-    expect(r.review).toEqual({ status: 'reviewed', reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01', notes: 'Checked wording.' });
+    expect(r.review).toEqual({ status: 'reviewed', reviewedBy: 'Ana Ruiz (native speaker)', reviewedAt: '2026-02-01', contentSignature: contentSignatureOf(before), notes: 'Checked wording.' });
     expect(r.doc.review).toEqual(r.review);
     expect(r.doc.editorialTags).toEqual(['machine-drafted']);
     expect(r.removedTags).toEqual(['needs-native-review']);

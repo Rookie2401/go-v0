@@ -1,5 +1,5 @@
 /**
- * Event folding — events are the ONLY write path into learner state. Policy `evidence@3`.
+ * Event folding — events are the ONLY write path into learner state. Policy `evidence@4`.
  *
  *  SITTINGS: every evidence event is assigned a sitting derived from event TIME per learner (sitting.ts), never from the
  *  UI's `session` string. Within one sitting there is at most ONE encounter per (user, item, sentence, modality), whatever
@@ -11,8 +11,9 @@
  *                          view alone is never comprehension: the encounter is `exposure`, weight 0.
  *  TokenHelpOpened …     → never create encounters. They raise the assistance of the existing reading encounters of the
  *                          same sentence + sitting (or are remembered for a view that arrives later): the encounter
- *                          becomes `assisted`. Token / phrase / grammar help is scoped to the items it explains;
- *                          sentence explanation and English rescue apply to the whole sentence.
+ *                          becomes `assisted`. Token / phrase / grammar help is scoped to the items it explains (ITEM-TARGETED:
+ *                          kept in `Encounter.itemHelp`, it vetoes the estimate); sentence explanation and English rescue apply
+ *                          to the whole sentence (SENTENCE-LEVEL: assisted, never an estimate veto). See policy.ts.
  *  ComprehensionReported → degree 'all': the sentence's items become `demonstrated` (evidence) unless help was used on
  *                          that item in that sitting (then they stay `assisted`). A report for a sentence the learner
  *                          never dwelt on still demonstrates its items (rule 3) — it materialises the reading
@@ -30,7 +31,7 @@
  * The per-sitting memo of help / reports is hydrated from the event log the first time a (user, sitting) is touched, so a
  * restart, a late view and `rebuild` all reach the same encounters.
  */
-import type { AssistanceLevel, DomainEvent, EvidenceKind, ItemKind, LanguageCode, Modality, PhraseEncountered, PhraseOccurrence } from '../core';
+import type { AssistanceLevel, DomainEvent, EventInput, EvidenceKind, ItemKind, LanguageCode, Modality, PhraseEncountered, PhraseOccurrence } from '../core';
 import { hash, ids } from '../core';
 import { AnalysisCache } from './analysis';
 import { listenVerdict } from './eligibility';
@@ -51,7 +52,8 @@ interface SentenceMemo {
 }
 interface SittingMemo { hydrated: boolean; sentences: Map<string, SentenceMemo> }
 /** One learner's time-derived sittings plus the help / report events of each (the memo's raw material). */
-interface UserSittings { index: SittingIndex; memoEvents: Map<string, DomainEvent[]>; memoIds: Set<string> }
+interface UserSittings { index: SittingIndex; memoEvents: Map<string, DomainEvent[]>; memoIds: Set<string>; lastAtByLang: Map<LanguageCode, string> }
+type Emission = EventInput<PhraseEncountered>;
 
 /** Events that change learner state (what `attach()` subscribes to and what `rebuild` replays). Also the events that make up a sitting. */
 export const FOLD_TYPES = [
@@ -71,6 +73,8 @@ export class Folder {
   /** userId → sitting key → memo */
   private readonly memos = new Map<string, Map<string, SittingMemo>>();
   private readonly users = new Map<string, UserSittings>();
+  /** PhraseEncountered events a fold wants to emit. The caller emits them AFTER the fold left the queue (a subscriber may read GoLearn). */
+  private outbox: Emission[] = [];
 
   constructor(private readonly ctx: Ctx) {}
 
@@ -85,7 +89,7 @@ export class Folder {
   private async userSittings(userId: string): Promise<UserSittings> {
     let u = this.users.get(userId);
     if (u) return u;
-    u = { index: new SittingIndex(), memoEvents: new Map(), memoIds: new Set() };
+    u = { index: new SittingIndex(), memoEvents: new Map(), memoIds: new Set(), lastAtByLang: new Map() };
     this.users.set(userId, u);
     const history = (await this.ctx.bus.history({ userId, types: [...FOLD_TYPES] })).sort(byAtId);
     for (const e of history) this.note(u, e);
@@ -94,6 +98,8 @@ export class Folder {
 
   private note(u: UserSittings, e: DomainEvent): string {
     const sitting = u.index.add(e);
+    const last = u.lastAtByLang.get(e.lang);
+    if (last === undefined || e.at > last) u.lastAtByLang.set(e.lang, e.at);
     if (MEMO_TYPES.has(e.type) && !u.memoIds.has(e.id)) {
       u.memoIds.add(e.id);
       let l = u.memoEvents.get(sitting);
@@ -101,6 +107,21 @@ export class Folder {
       l.push(e);
     }
     return sitting;
+  }
+
+  /**
+   * `at` of the latest evidence event of this learner IN THIS LANGUAGE in the folded history (the coverage `asOf`: item state is
+   * per language, so another language's events cannot change a text's coverage). Never waits on the queue.
+   */
+  async lastEvidenceAt(userId: string, lang: LanguageCode): Promise<string | undefined> {
+    return (await this.userSittings(userId)).lastAtByLang.get(lang);
+  }
+
+  /** Events the folds asked to emit (drained by the caller once its queue entry is over). */
+  takeOutbox(): Emission[] {
+    const out = this.outbox;
+    this.outbox = [];
+    return out;
   }
 
   /** The sitting key of an event (the ISO time of the first event of its sitting). */
@@ -175,13 +196,22 @@ export class Folder {
     }
   }
 
+  /** All help on one item in this (sentence, sitting): item-targeted (1–3) and sentence-level (4–5), whichever is higher. */
   private helpOf(m: SentenceMemo, itemId: string): AssistanceLevel {
     return max(m.all, m.items.get(itemId) ?? 0);
+  }
+
+  /** Only the help that was ABOUT this item (word / phrase / grammar). Sentence-level help is not in it. */
+  private itemHelpOfMemo(m: SentenceMemo, itemId: string): AssistanceLevel {
+    return m.items.get(itemId) ?? 0;
   }
 
   // ───────────────────────── dispatch ─────────────────────────
 
   async fold(event: DomainEvent, replay = false): Promise<void> {
+    // Every folded evidence event extends its learner's sitting index and `lastAt`, whether or not it changes an item
+    // (a 'most' report, a fixture play): live folding then derives exactly what a rebuild from the log derives.
+    if (FOLD_TYPE_SET.has(event.type)) await this.sittingOf(event);
     switch (event.type) {
       case 'SentenceViewed': return this.onSentenceViewed(event, replay);
       case 'TokenHelpOpened':
@@ -251,11 +281,13 @@ export class Folder {
       .filter((x) => x.userId === userId && x.modality === modality && encounterSitting(x) === sitting);
     for (const enc of encs) {
       const assistance = modality === 'reading' ? this.helpOf(memo, enc.itemId) : enc.assistance;
+      const itemHelp = modality === 'reading' ? this.itemHelpOfMemo(memo, enc.itemId) : 0;
       const j = this.judge(modality, assistance, memo.demo.has(modality as ReceptiveModality), enc.playbackSpeed, enc.replays);
-      if (enc.assistance === assistance && enc.evidenceKind === j.evidenceKind && enc.weight === j.weight) continue;
+      if (enc.assistance === assistance && enc.evidenceKind === j.evidenceKind && enc.weight === j.weight && (enc.itemHelp ?? 0) === itemHelp) continue;
       enc.assistance = assistance;
       enc.evidenceKind = j.evidenceKind;
       enc.weight = j.weight;
+      if (modality === 'reading') { if (itemHelp > 0) enc.itemHelp = itemHelp; else delete enc.itemHelp; }
       await ctx.store.encounters.put(enc);
       touched.set(enc.itemId, { lang, itemKind: enc.itemKind });
     }
@@ -333,6 +365,7 @@ export class Folder {
         userId: a.userId, lang: a.lang, itemId, itemKind, sentenceId: a.sentenceId, textId: sentence.textId, surface,
         modality: a.modality, session: a.session, sitting: a.sitting, contentVersion, at: a.at,
         evidenceKind: j.evidenceKind, assistance, weight: j.weight,
+        ...(a.listen ? {} : { itemHelp: this.itemHelpOfMemo(memo, itemId) }),
         playbackSpeed: a.listen?.speed, replays: a.listen?.replays,
       }, replaceIf);
       if (!changed) continue;
@@ -346,7 +379,7 @@ export class Folder {
 
     if (!a.replay) {
       for (const { occ, assistance } of createdPhrases) {
-        await ctx.bus.emit<PhraseEncountered>({
+        this.outbox.push({
           type: 'PhraseEncountered', userId: a.userId, lang: a.lang, surface: surfaceOf(a.surface),
           session: a.session, dedupeKey: `phrase-enc:${a.dedupeBase}:${occ.id}`, at: a.at,
           sentenceId: a.sentenceId, phraseId: occ.phraseId, phraseOccurrenceId: occ.id, modality: a.modality, assistance,

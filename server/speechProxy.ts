@@ -40,19 +40,31 @@ export interface SpeechProxyOptions {
   log?: (line: string) => void;
 }
 
-function collectBody(req: IncomingMessage, limit: number): Promise<Uint8Array | 'too-large'> {
+/** Beyond this the request is not even drained: the connection is closed. */
+const DRAIN_CAP_BYTES = 1_000_000;
+
+/**
+ * Reads the body up to `limit`. An oversized body is DRAINED (discarded, never buffered) before the caller answers
+ * 413: answering while the client is still sending makes the client see a connection reset instead of the
+ * response (observed on Windows as an intermittent ECONNRESET). Past DRAIN_CAP_BYTES the caller closes the socket.
+ */
+function collectBody(req: IncomingMessage, limit: number): Promise<Uint8Array | 'too-large' | 'too-large-abort'> {
   return new Promise((resolve, reject) => {
     const declared = Number(req.headers['content-length']);
-    if (Number.isFinite(declared) && declared > limit) { resolve('too-large'); return; }
+    let over = Number.isFinite(declared) && declared > limit;
+    if (Number.isFinite(declared) && declared > DRAIN_CAP_BYTES) { resolve('too-large-abort'); return; }
     const chunks: Buffer[] = [];
     let size = 0;
+    let settled = false;
+    const done = (v: Uint8Array | 'too-large' | 'too-large-abort') => { if (!settled) { settled = true; resolve(v); } };
     req.on('data', (c: Buffer) => {
       size += c.length;
-      if (size > limit) { chunks.length = 0; resolve('too-large'); return; }
-      chunks.push(c);
+      if (size > limit) { over = true; chunks.length = 0; }
+      if (size > DRAIN_CAP_BYTES) { done('too-large-abort'); return; }
+      if (!over) chunks.push(c);
     });
-    req.on('end', () => resolve(new Uint8Array(Buffer.concat(chunks))));
-    req.on('error', reject);
+    req.on('end', () => done(over ? 'too-large' : new Uint8Array(Buffer.concat(chunks))));
+    req.on('error', (e) => { if (!settled) { settled = true; reject(e); } });
   });
 }
 
@@ -80,8 +92,9 @@ export function speechProxy(options: SpeechProxyOptions = {}): Plugin {
       let body: Uint8Array | undefined;
       if (req.method === 'POST') {
         const read = await collectBody(req, MAX_BODY_BYTES);
-        if (read === 'too-large') {
-          res.setHeader('Connection', 'close');
+        if (read === 'too-large' || read === 'too-large-abort') {
+          // A drained request can be answered normally; an abusive one is answered and the socket closed.
+          if (read === 'too-large-abort') res.setHeader('Connection', 'close');
           send(res, { status: 413, headers: { 'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-store' }, body: JSON.stringify({ error: 'payload-too-large', message: `The request body is limited to ${MAX_BODY_BYTES} bytes.` }) });
           return;
         }

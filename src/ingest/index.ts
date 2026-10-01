@@ -15,7 +15,7 @@ import { CorpusValidationError, type CorpusDocument } from './format';
 import { importDocuments, type ImportOptions } from './import';
 
 export * from './format';
-export { computePublished, type PublicationDecision } from './publish';
+export { computePublished, contentSignatureOf, type PublicationDecision } from './publish';
 export { INGEST_TOOL, IMPORT_ANALYZER } from './plan';
 export * from './import';
 export { contentHistory, describeVersionBump, VERSION_RECORD_PREFIX, type ContentHistoryEntry, type VersionBump } from './history';

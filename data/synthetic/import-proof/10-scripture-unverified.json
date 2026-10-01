@@ -1,0 +1,42 @@
+{
+  "_comment": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. Case: a document that CLAIMS to be Scripture but is not verified. The wording is an obvious placeholder, NOT Scripture; the verse references only satisfy the schema (they are structural placeholders and say nothing about what those verses contain). There is no scripture.verification, the translation is 'unidentified' and the rights are unverified, so it must never publish.",
+  "schemaVersion": 2,
+  "id": "synthetic-es-scripture-unverified",
+  "lang": "es",
+  "title": "SYNTHETIC: placeholder claiming to be Scripture (unverified)",
+  "contentType": "scripture",
+  "corpus": { "id": "synthetic-bible-es", "kind": "scripture", "title": "SYNTHETIC import-proof Scripture corpus — placeholder, not Scripture" },
+  "source": {
+    "id": "synthetic-src-es-scripture-unverified",
+    "title": "SYNTHETIC DEVELOPMENT MATERIAL (import proof)",
+    "attribution": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content; PLACEHOLDER — not Scripture",
+    "provenance": "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content. PLACEHOLDER — not Scripture: invented marker text, no translation, unverified; replace before any release. Never bundled.",
+    "rights": "unverified",
+    "authorship": "human"
+  },
+  "review": { "status": "unreviewed" },
+  "topics": [],
+  "editorialTags": ["synthetic", "needs-native-review"],
+  "prepTargets": [],
+  "generated": false,
+  "scripture": {
+    "translationId": "unidentified",
+    "translationName": "PLACEHOLDER — not a translation",
+    "edition": "unidentified placeholder",
+    "book": "3JN",
+    "chapter": 1
+  },
+  "sections": [
+    {
+      "chapter": 1,
+      "paragraphs": [
+        {
+          "sentences": [
+            { "text": "PLACEHOLDER — not Scripture: Synthetic sentence one.", "verseRefs": ["3JN.1.1"] },
+            { "text": "PLACEHOLDER — not Scripture: Synthetic sentence two.", "verseRefs": ["3JN.1.2"] }
+          ]
+        }
+      ]
+    }
+  ]
+}

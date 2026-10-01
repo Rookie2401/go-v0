@@ -104,7 +104,10 @@ describe('the UI over the real engines', () => {
     // finish + "How much did you understand?"
     await click(button(reader, /finished reading/));
     await click(button(byLabel(reader, 'How much did you understand?'), 'Most'));
-    expect(q(reader, '[data-testid="reading-progress"]')!.textContent).toContain('Finished · you said you understood most of it');
+    expect(q(reader, '[data-testid="reading-progress"]')!.textContent).toBe(`Seen 0 of ${live.length} sentences · Understood 1 of ${live.length} (your report) · Finished (your mark)`);
+    expect(q(reader, '[data-testid="reading-extras"]')!.textContent).toContain('you said you understood most of it');
+    // finished with nothing seen: the reader explains why the two facts differ
+    expect(q(reader, '[data-testid="reading-progress-why"]')!.textContent).toContain('so the two can differ');
   });
 
   it('Settings over the real adapters, importer report, and evidence audit', async () => {

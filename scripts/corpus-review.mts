@@ -74,6 +74,7 @@ if (changed) fs.writeFileSync(file, out, 'utf8');
 const sentences = next.sections.reduce((n, s) => n + s.paragraphs.reduce((m, p) => m + ('sentences' in p ? p.sentences.length : 1), 0), 0);
 console.log(`corpus:review - ${file}  [${next.id}]`);
 console.log(`  review: ${previous?.status ?? '(none)'} -> ${review.status} by ${review.reviewedBy} on ${review.reviewedAt}${review.notes ? ` - ${review.notes}` : ''}`);
+console.log(`  review covers wording ${review.contentSignature?.slice(0, 8)}`);
 if (removedTags.length) console.log(`  removed editorial tag: ${removedTags.join(', ')}`);
 console.log(`  text untouched: sections, sentences and every character of text are byte-identical (${sentences} sentence block(s)); ${changed ? 'file updated' : 'file already recorded this review'}`);
 if ((next.editorialTags ?? []).includes('machine-drafted') || next.generated) console.log('  note: the text stays marked machine-drafted / generated; the reader keeps badging it');

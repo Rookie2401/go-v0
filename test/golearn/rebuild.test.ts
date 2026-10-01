@@ -88,12 +88,33 @@ describe('rebuild(userId)', () => {
     expect(kinds).toEqual(['assisted', 'exposure']);
   });
 
+  it('is the identity under evidence@4: help scopes (word tap, English, explanation, tap-before-view) rebuild to the same encounters and estimates', async () => {
+    const h = createHarness();
+    await buildSpanish(h.store);
+    await buildSpanishScripture(h.store);
+    for (const s of ['s1', 's2', 's3']) await h.viewAll('u1', 'es', ES_STORY, 4, s);
+    await h.help('u1', 'es', ES_JOHN, 0, 3, F('cree'), 2, 's4'); // a tap BEFORE the view of its sentence
+    await h.view('u1', 'es', ES_JOHN, 0, 's4', 'scripture');
+    await h.view('u1', 'es', ES_JOHN, 1, 's4', 'scripture');
+    await h.rescue('u1', 'es', ES_JOHN, [0, 1], 's4');
+    await h.view('u1', 'es', ES_STORY, 0, 's5');
+    await h.help('u1', 'es', ES_STORY, 0, 1, F('creo'), 1, 's5');
+    await h.bus.emit({ type: 'SentenceExplanationRevealed', userId: 'u1', lang: 'es', surface: 'corpus', session: 's5', dedupeKey: 'expl', sentenceId: `${ES_STORY}/s0` } as never);
+    const before = await snapshot(h, 'u1');
+    const coverage = JSON.stringify(await h.golearn.coverage('u1', ES_JOHN));
+    expect(before.encounters.some((e) => (e as { itemHelp?: number }).itemHelp !== undefined)).toBe(true);
+    expect(before.encounters.some((e) => e.assistance === 5 && (e as { itemHelp?: number }).itemHelp === undefined)).toBe(true);
+    await h.golearn.rebuild('u1');
+    expect(await snapshot(h, 'u1')).toEqual(before);
+    expect(JSON.stringify(await h.golearn.coverage('u1', ES_JOHN))).toBe(coverage);
+  });
+
   it('stamps the policy version in meta', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
     await h.view('u1', 'es', ES_STORY, 0);
     await h.golearn.rebuild('u1');
-    expect((await h.store.meta.all()).map((m) => m.value)).toEqual(['evidence@3']);
+    expect((await h.store.meta.all()).map((m) => m.value)).toEqual(['evidence@4']);
   });
 
   it('rebuilds a user with no events to an empty state', async () => {

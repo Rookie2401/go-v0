@@ -88,6 +88,67 @@ describe('Settings: sections, in-page nav, Advanced collapsed', () => {
   });
 });
 
+describe('Settings: the long tables are collapsed, with their counts in the summary', () => {
+  const base = { corpusId: 'ci-es', lang: 'es' as const, kind: 'story' as const, sourceId: 's', importedAt: 'x', tags: [], editorialTags: [], prepTargets: [], schemaVersion: 2, generated: false, transformations: [], reviewStatus: 'approved' as const, published: true, unpublishedReasons: [], contentVersion: 1 };
+  const form = (surface: string) => ({
+    id: `u1|form:es:${surface}`, userId: 'u1', lang: 'es' as const, itemId: `form:es:${surface}`, itemKind: 'form' as const,
+    reading: { level: 'encountered' as const, confidence: 0.5, evidence: 0, exposures: 1, estimatedFamiliar: false, unassisted: 1, assisted: 0 },
+    listening: { level: 'unseen' as const, confidence: 0, evidence: 0, exposures: 0, estimatedFamiliar: false, unassisted: 0, assisted: 0 },
+    writing: { level: 'unseen' as const, confidence: 0, evidence: 0, exposures: 0, estimatedFamiliar: false, unassisted: 0, assisted: 0 },
+    speaking: { level: 'unseen' as const, confidence: 0, evidence: 0, exposures: 0, estimatedFamiliar: false, unassisted: 0, assisted: 0 },
+    encounterCount: 1, textIds: [],
+  });
+
+  it('"Texts on this device (N)" and "Vocabulary table (N words)" are closed disclosures; the importer, preview toggle, learner, reading and backup stay visible', async () => {
+    await h.store.texts.bulkPut([1, 2, 3].map((i) => ({ ...base, id: `text:es:t${i}`, title: `Text ${i}` })));
+    await h.store.texts.put({ ...base, id: 'text:es:private', kind: 'testimony', corpusId: 'testimony-es', title: 'Private' }); // never counted: private writing is not listed
+    await h.store.learnerItems.bulkPut([form('creo'), form('pecado')]);
+    await open();
+
+    const texts = button(section('Content'), 'Texts on this device (3)');
+    expect(texts.getAttribute('aria-expanded')).toBe('false');
+    const textsPanel = document.getElementById(texts.getAttribute('aria-controls')!)!;
+    expect(textsPanel.hidden).toBe(true);
+    expect(textsPanel.querySelector('table[aria-label="Texts"]')).not.toBeNull(); // the table is INSIDE the collapsed panel
+
+    const vocab = button(q(mounted!.container, 'section[aria-label="Vocabulary"]')!, 'Vocabulary table (2 words)');
+    expect(vocab.getAttribute('aria-expanded')).toBe('false');
+    const vocabPanel = document.getElementById(vocab.getAttribute('aria-controls')!)!;
+    expect(vocabPanel.hidden).toBe(true);
+    expect(vocabPanel.querySelector('table.vocab')).not.toBeNull();
+
+    // everything the learner needs day to day is outside any collapsed panel
+    const hidden = (el: Element | null) => { expect(el).not.toBeNull(); return !!el!.closest('[hidden]'); };
+    expect(hidden(byLabel(mounted!.container, 'Preview unreviewed content'))).toBe(false);
+    expect(hidden(byLabel(mounted!.container, 'Choose text files to import'))).toBe(false);
+    expect(hidden(byLabel(mounted!.container, 'Learner'))).toBe(false);
+    expect(hidden(byLabel(mounted!.container, 'Team'))).toBe(false);
+    expect(hidden(byLabel(mounted!.container, 'Highlighting'))).toBe(false);
+    expect(hidden(button(section('Backup and recovery'), 'Export my data'))).toBe(false);
+
+    await click(texts);
+    expect(texts.getAttribute('aria-expanded')).toBe('true');
+    expect(textsPanel.hidden).toBe(false);
+    expect(qa(textsPanel, 'tbody tr')).toHaveLength(3);
+    await click(vocab);
+    expect(vocabPanel.hidden).toBe(false);
+  });
+
+  it('an empty device says 0, not nothing', async () => {
+    await open();
+    expect(button(section('Content'), 'Texts on this device (0)')).toBeTruthy();
+    expect(button(q(mounted!.container, 'section[aria-label="Vocabulary"]')!, 'Vocabulary table (0 words)')).toBeTruthy();
+  });
+
+  it('the dedicated vocabulary page shows its table open (no disclosure to find first)', async () => {
+    await h.store.learnerItems.bulkPut([form('creo')]);
+    mounted = await h.mount(<Shell><AppRoutes /></Shell>, { router: '/vocabulary' });
+    expect(qa(mounted.container, 'tbody tr.vocab__row')).toHaveLength(1);
+    expect(q(mounted.container, '[hidden] table.vocab')).toBeNull();
+    expect(qa(mounted.container, 'button').some((b) => /^Vocabulary table/.test(b.textContent ?? ''))).toBe(false);
+  });
+});
+
 describe('Settings → Content: version history', () => {
   const base = { corpusId: 'ci-es', lang: 'es' as const, kind: 'story' as const, sourceId: 's', importedAt: 'x', tags: [], editorialTags: [], prepTargets: [], schemaVersion: 2, generated: false, transformations: [], reviewStatus: 'approved' as const, published: true, unpublishedReasons: [] };
   const row = (id: string) => q(byLabel(mounted!.container, 'Texts'), `tr[data-text-id="${id}"]`)!;

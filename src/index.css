@@ -477,9 +477,18 @@ table.vocab select, table.datatable select { padding: 0.2rem 0.4rem; font-size: 
 .onboarding__lang { color: var(--ink-soft); font-style: italic; margin: -0.3rem 0 1.6rem; }
 .onboarding__form .btn { width: 100%; }
 
-/* ------------------------------------------------------ preview mode, honesty, drafts, importer */
+/* ------------------------------------------------------ sandbox + preview banners (stacked), honesty, drafts, importer */
+/* Sticky headers sit below whichever banners are showing: --banner-h is the sum of the sandbox and preview banner heights. */
+:root { --banner-h: calc(var(--sandbox-h, 0px) + var(--preview-h, 0px)); }
+.sandbox-banner {
+  position: sticky; top: 0; z-index: 60; display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 1rem;
+  padding: 0.5rem 0.9rem; padding-top: calc(0.5rem + var(--safe-top)); background: #1f3a5f; color: #f4f8fc; font-size: 0.92rem; font-weight: 600; line-height: 1.4;
+  border-bottom: 3px solid #0d1f38;
+}
+.sandbox-banner__text { flex: 1 1 18rem; }
+.sandbox-banner__link { color: #f4f8fc; text-decoration: underline; font-weight: 500; }
 .preview-banner {
-  position: sticky; top: 0; z-index: 50; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem;
+  position: sticky; top: var(--sandbox-h, 0px); z-index: 50; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem;
   padding: 0.55rem 0.9rem; padding-top: calc(0.55rem + var(--safe-top)); background: var(--wine); color: #fdfaf3; font-size: 0.92rem; line-height: 1.4;
   border-bottom: 3px solid color-mix(in srgb, var(--wine) 55%, #000);
 }
@@ -557,3 +566,11 @@ tr.is-current { background: color-mix(in srgb, var(--accent) 7%, transparent); }
 .versions__list { list-style: none; margin: 0.4rem 0 0; }
 .versions__list li { margin: 0.3rem 0; }
 @media (max-width: 640px) { .settings__nav-btn { min-height: 2.75rem; } }
+
+/* One progress line on every surface (Home, library, reader): the text, plus the explanation when a finished text has Seen < total. */
+.progress { display: inline; }
+.progress__why { margin-left: 0.4rem; font-size: 0.85em; text-decoration: underline dotted; cursor: help; color: var(--ink-soft); font-style: normal; }
+.progress__more { display: block; margin: 0.15rem 0 0; }
+.progress__more > summary { cursor: pointer; display: inline; font-size: 0.85em; color: var(--ink-soft); }
+.progress__more > p { margin: 0.25rem 0 0; }
+.coverage__read { margin: 0.15rem 0; }

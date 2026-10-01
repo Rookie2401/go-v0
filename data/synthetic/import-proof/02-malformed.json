@@ -1,0 +1,7 @@
+{
+  "SYNTHETIC DEVELOPMENT MATERIAL for import testing — not learner content": "This file is deliberately NOT valid JSON (the object is never closed and a comma is missing).",
+  "schemaVersion": 2,
+  "id": "synthetic-es-malformed"
+  "lang": "es",
+  "title": "SYNTHETIC: malformed JSON",
+  "sections": [ { "paragraphs": [ { "sentences": [ { "text": "Hola."

@@ -4,7 +4,8 @@
 the same-origin proxy and the direct adapter — is verified against **mocked HTTP only**. No request has ever been
 sent to the live Azure service, no voice has been heard, and nothing in the audio pipeline claims otherwise. Until a
 person has configured a key, generated audio, listened to it and marked the voice reviewed, the app reads without
-audio and no playback counts as listening evidence. See `src/golisten/QA.md` for the verified / unverified table.
+audio and no playback counts as listening evidence. See `src/golisten/QA.md` for the verified / unverified table. `npm run speech:check` (section 8) re-runs the
+provider-independent chain on demand and says, in its last line, whether any real synthesis was attempted.
 
 ## 1. Configure it (proxy first)
 
@@ -141,3 +142,74 @@ Nothing in this repository has contacted the live Azure service or the live prox
 that Azure accepts the SSML, headers and `riff-24khz-16bit-mono-pcm` as sent; that the voice names in the static
 fallback table exist; the live `voices/list` shape the proxy filters; real 401/429/5xx bodies; browser CORS for the
 direct adapter; the proxy's timeout and rate-limit numbers under real load; and every voice's sound and pronunciation.
+
+## 8. The readiness check: `npm run speech:check`
+
+One command, three parts (`scripts/speech-check.mts`; the check functions are in `scripts/speechChecks.ts` and are tested in
+`test/server/speechChecks.test.ts`). It reads the environment exactly as the proxy does (`readSpeechEnv`: process
+environment, then `.env.local` / `.env`) and never prints, logs or stores the key.
+
+1. **Configuration.** `configured: yes (region <region>)`, or `configured: no — set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in
+   .env.local and restart the server` plus which variable is missing. "Configured" is the proxy's own answer (both
+   variables present, a well-formed region).
+2. **The provider-independent chain**, in process, no network: the real GoListen, the real `ProxySpeechProvider`, whose
+   `fetch` is routed to the real `handleSpeechRequest` with a throw-away test key, and a MOCKED upstream that answers with a
+   valid PCM16 WAV. Client, proxy handler and pipeline are therefore all the real code; only Azure is pretended. The table
+   covers: cache-key composition; requested (`es-HN`) vs delivered (`es-MX`) locale on voice and asset; voice metadata and
+   review status (unreviewed => `preview-only`, reviewed => `ready` and evidence-eligible); content-version invalidation
+   through the real importer (one edited sentence => `stale`, re-ensure regenerates exactly one segment); retry with backoff
+   after 429 / 5xx then success with no duplicate asset; dead after four attempts with the reason in `audioStatus` and
+   `diagnostics`; partial generation ("2 of 3 sentences ready; 1 failed", ready sentences playable); the unconfigured
+   state with the exact instruction; fixture audio and failed / abandoned playback never evidence-eligible; reviewed real-speech
+   playback emitting completion with `speech: true` (exposure only: learner state belongs to GoLearn); and the key appearing
+   in no captured output, stored row, event, job log or thrown message (the mocked upstream even echoes it in an error body).
+3. **One real synthesis, only when both variables are configured.** The first sentence of the verified Spanish Scripture
+   document (`data/corpus/es/bible-1john-1.json`, read from the loaded corpus, never retyped; the same id exists in other
+   languages, so the language is part of the selection) is synthesized once through `handleSpeechRequest` against the live
+   service, validated with `validateWav`, and its duration, sample rate and delivered locale are printed with the statement
+   that a human audition is still required before the voice counts. Without both variables it prints
+   `REAL SPEECH: NOT VERIFIED — set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in .env.local`.
+
+The exit code is decided by part 2 only, plus part 3 when it was attempted and failed. A passing part 2 proves the code path;
+it says nothing about the live service or about how any voice sounds. A passing part 3 proves that valid audio arrived once;
+it is **not** an audition and does not mark any voice reviewed.
+
+**Status of this repository, unchanged: no real speech has been produced or auditioned here unless part 3 above actually ran,
+with credentials, on someone's machine.** The sample below is from a run without credentials, so part 3 did not run
+(each row also prints a measured detail line, omitted here).
+
+```text
+== 1. Configuration ==
+configured: no — set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in .env.local and restart the server
+missing: AZURE_SPEECH_KEY, AZURE_SPEECH_REGION
+
+== 2. Provider-independent chain (real GoListen + ProxySpeechProvider + proxy handler, MOCKED upstream; no network) ==
+status  check             detail
+PASS    cache-key         cache key composition: changes with text, voice, locale, provider version, settings; stable otherwise
+PASS    setup             real chain: import, resolve voice, generate three sentences through the proxy handler
+PASS    locale            requested vs delivered locale recorded on voice and asset (course asks es-HN)
+PASS    voice-review      voice metadata + review status recorded: unreviewed => preview-only; reviewed => ready and evidence-eligible
+PASS    invalidation      content-version invalidation: one edited sentence => stale; re-ensure regenerates exactly one segment
+PASS    retry             retry with backoff after 429 then 5xx, then success; no duplicate asset
+PASS    dead              dead after max attempts (4) with the reason visible in audioStatus and diagnostics
+PASS    partial           partial generation visible ("x of y sentences ready; n failed") and the ready segments playable
+PASS    unconfigured      unconfigured proxy => unavailable with the exact instruction; nothing written, nothing sent
+PASS    fixture-playback  fixture audio and failed / abandoned playback are never evidence-eligible
+PASS    real-playback     reviewed real-speech playback emits completion with speech:true (exposure only; GoLearn decides what it is worth)
+PASS    key-secrecy       the key never appears in any output, stored row, event, log line or thrown message
+
+12/12 provider-independent checks passed.
+These prove the code path only. They say nothing about the live service or how any voice sounds.
+
+== 3. Real speech ==
+REAL SPEECH: NOT VERIFIED — set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in .env.local
+```
+
+With credentials, part 3 prints instead (values vary):
+
+```text
+REAL SPEECH: one synthesis through the proxy handler succeeded
+  voice <voice>; requested locale es-HN; delivered locale <locale>
+  duration <ms> ms; sample rate 24000 Hz; <n> bytes; validateWav ok
+  A human audition is still required before this voice counts: ...
+```

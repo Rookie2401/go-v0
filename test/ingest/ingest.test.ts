@@ -3,7 +3,7 @@ import {
   createMemoryStore, hash, ids, LANGUAGES, type AppStore, type LanguageCode, type Sentence, type TokenAnalysis,
 } from '../../src/core';
 import {
-  CorpusValidationError, importDocuments, ingestAll, ingestDocument, loadBundledCorpus, testimonyDocument, testimonyDocumentId,
+  CorpusValidationError, applyReview, computePublished, contentSignatureOf, importDocuments, validateDocument, ingestAll, ingestDocument, loadBundledCorpus, testimonyDocument, testimonyDocumentId,
   type CorpusDocument,
 } from '../../src/ingest';
 import { baseDoc, clock, countWrites, registry, scriptureDoc, snapshot } from './helpers';
@@ -278,7 +278,12 @@ describe('exact text preservation (no NFC, no trimming, no whitespace changes)',
     const store = createMemoryStore();
     const r = await importDocuments(store, registry, [exact()], { clock });
     expect(r.ok).toBe(true);
-    expect(r.documents[0].issues.map((i) => i.code).sort()).toEqual(['edge-whitespace', 'not-nfc']);
+    // one warning for the padded declared sentence, one for the padded raw paragraph (found by corpus:prove), one for the non-NFC sentence
+    expect(r.documents[0].issues.map((i) => `${i.code}@${i.path}`).sort()).toEqual([
+      'edge-whitespace@sections[0].paragraphs[0].sentences[1].text',
+      'edge-whitespace@sections[0].paragraphs[1].text',
+      'not-nfc@sections[0].paragraphs[0].sentences[0].text',
+    ]);
     const textId = ids.text('es', 'exact');
     const s = await liveSentences(store, textId);
     expect(s.map((x) => x.text)).toEqual(['Dios ama á todos.', '  Hola.  ', 'Uno dos   tres.', 'Gracias.', 'Hola.', 'No  pasa nada.']);
@@ -407,13 +412,47 @@ describe('repeatable import', () => {
     const d = story(['Dios ama al mundo.', 'Yo creo en Dios.']);
     await importDocuments(store, registry, [d], { clock });
     const sentences = await liveSentences(store, ids.text('es', 'ver'));
-    const meta = clone(d); meta.title = 'Renamed'; meta.topics = ['mission']; meta.review = { status: 'reviewed', reviewedBy: 'Ana Ruiz', reviewedAt: '2026-03-01' };
+    const meta = clone(d); meta.title = 'Renamed'; meta.topics = ['mission']; meta.review = { status: 'reviewed', reviewedBy: 'Ana Ruiz', reviewedAt: '2026-03-01', contentSignature: contentSignatureOf(d) };
     const r = await importDocuments(store, registry, [meta], { clock: () => '2026-03-02T00:00:00.000Z' });
     expect(r.documents[0]).toMatchObject({ action: 'updated', contentVersion: 1, sentencesAdded: 0, sentencesRetired: 0, published: true });
     const t = (await store.texts.get(ids.text('es', 'ver')))!;
     expect(t).toMatchObject({ title: 'Renamed', tags: ['mission'], reviewStatus: 'reviewed', published: true, contentVersion: 1 });
     expect(t.transformations.filter((x) => x.tool === 'review')).toHaveLength(2);
     expect(await liveSentences(store, t.id)).toEqual(sentences);
+  });
+});
+
+describe('review binding at import', () => {
+  it('a revision of a reviewed text is unpublished until it is reviewed again', async () => {
+    const store = createMemoryStore();
+    const d = story(['Dios ama al mundo.', 'Yo creo en Dios.']);
+    const reviewed = applyReview(d, { by: 'Ana Ruiz', date: '2026-03-01' });
+    if (!reviewed.ok) throw new Error('refused');
+    expect((await importDocuments(store, registry, [reviewed.doc], { clock })).documents[0]).toMatchObject({ action: 'created', published: true });
+
+    const revised = clone(reviewed.doc);
+    (revised.sections[0].paragraphs[0] as { sentences: Array<{ text: string }> }).sentences[1].text = 'Yo creo en Jesús.';
+    const warn = validateDocument(revised, { registry }).find((i) => i.code === 'review-signature-mismatch');
+    expect(warn).toMatchObject({ severity: 'warning', path: 'review.contentSignature' });
+    expect(warn!.hint).toMatch(/corpus:review/);
+    const r2 = (await importDocuments(store, registry, [revised], { clock })).documents[0];
+    expect(r2).toMatchObject({ action: 'updated', contentVersion: 2, published: false });
+    expect(r2.unpublishedReasons).toEqual(['the text changed after it was reviewed — record a new review (npm run corpus:review)']);
+    expect((await store.texts.get(ids.text('es', 'ver')))!.published).toBe(false);
+
+    const again = applyReview(revised, { by: 'Ana Ruiz', date: '2026-03-02' });
+    if (!again.ok) throw new Error('refused');
+    expect(validateDocument(again.doc, { registry }).some((i) => i.code === 'review-signature-mismatch')).toBe(false);
+    expect((await importDocuments(store, registry, [again.doc], { clock })).documents[0]).toMatchObject({ action: 'updated', contentVersion: 2, published: true });
+  });
+
+  it('a metadata-only edit (title, English, topics) keeps the review valid', () => {
+    const d = story(['Dios ama al mundo.']);
+    const reviewed = applyReview(d, { by: 'Ana Ruiz', date: '2026-03-01' });
+    if (!reviewed.ok) throw new Error('refused');
+    const meta = clone(reviewed.doc); meta.title = 'Another title'; meta.topics = ['mission'];
+    expect(computePublished(meta).published).toBe(true);
+    expect(validateDocument(meta, { registry }).some((i) => i.code === 'review-signature-mismatch')).toBe(false);
   });
 });
 

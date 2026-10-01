@@ -4,16 +4,41 @@
  *
  *   published  ⇔  review.status ∈ {reviewed, approved} with a named reviewer
  *              ∧  rights established (not "unverified")
+ *              ∧  non-Scripture: review.contentSignature equals the signature of the current wording (review binding)
  *              ∧  for Scripture: translation identity + edition + a complete SourceVerification, never generated
  *
  * Every failed condition contributes one actionable sentence to `unpublishedReasons`.
  */
-import { REVIEW_OK } from '../core';
+import { REVIEW_OK, hash } from '../core';
 import type { CorpusDocument } from './format';
 
 export interface PublicationDecision {
   published: boolean;
   unpublishedReasons: string[];
+}
+
+/**
+ * Review binding: the signature of the WORDING a review covers. A hash over the ordered exact sentence texts of the
+ * document (a declared sentence's `text`; a raw paragraph's `text` as one unit). Metadata, English lines, spans,
+ * corrections, tags and review fields do not enter it; any change to a sentence text, the order, an addition or a
+ * removal does. Tolerant of partially valid documents.
+ */
+export function contentSignatureOf(doc: unknown): string {
+  const texts: string[] = [];
+  const sections = (doc as { sections?: unknown } | null)?.sections;
+  if (Array.isArray(sections)) {
+    for (const sec of sections) {
+      const paragraphs = (sec as { paragraphs?: unknown } | null)?.paragraphs;
+      if (!Array.isArray(paragraphs)) continue;
+      for (const p of paragraphs) {
+        const par = p as { sentences?: unknown; text?: unknown } | null;
+        if (par && Array.isArray(par.sentences)) {
+          for (const s of par.sentences) texts.push(typeof (s as { text?: unknown } | null)?.text === 'string' ? (s as { text: string }).text : '');
+        } else if (par && typeof par.text === 'string') texts.push(par.text);
+      }
+    }
+  }
+  return hash(JSON.stringify(texts));
 }
 
 const nonEmpty = (v: unknown): v is string => typeof v === 'string' && v.trim().length > 0;
@@ -34,6 +59,12 @@ export function computePublished(doc: Pick<CorpusDocument, 'contentType' | 'revi
     );
   } else if (!nonEmpty(d.review?.reviewedBy)) {
     reasons.push('the review names no reviewer — set review.reviewedBy');
+  } else if (d.contentType !== 'scripture') {
+    // A review must cover the content it publishes. Scripture is exempt: its wording is bound by
+    // scripture.verification and the byte-for-byte check against data/verified (scripts/verify-scripture.mjs).
+    const sig = d.review?.contentSignature;
+    if (!nonEmpty(sig)) reasons.push('the review does not say which wording it covers — record it with npm run corpus:review');
+    else if (sig !== contentSignatureOf(doc)) reasons.push('the text changed after it was reviewed — record a new review (npm run corpus:review)');
   }
 
   const rights = d.source?.rights;

@@ -15,7 +15,7 @@
     "rights": "owner-authored",
     "authorship": "human"
   },
-  "review": { "status": "unreviewed" },
+  "review": { "status": "unreviewed", "_comment": "Record the review with npm run corpus:review -- <file> --by \"<name>\" (it also writes contentSignature, the wording the review covers; edit a sentence and you must review again)." },
   "difficulty": "A1",
   "topics": ["daily-life"],
   "editorialTags": ["needs-native-review"],

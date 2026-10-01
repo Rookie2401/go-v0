@@ -20,6 +20,7 @@
  * Drafts are never evidence and never versions; "Save this version" is a separate, explicit action.
  */
 import type { GoTell, LanguageCode, TestimonyDraft } from '../../core';
+import { scopedKey } from '../sandbox';
 
 export const draftTiming = { debounceMs: 800, retryMs: 5000 };
 
@@ -41,7 +42,8 @@ export const browserDraftStorage: DraftStorage = {
 export interface DraftOwner { userId: string; lang: LanguageCode }
 export interface FallbackCopy { text: string; savedAt: string; seq: number }
 
-export const fallbackKey = (o: DraftOwner) => `go-v0:draft-copy:${o.userId}:${o.lang}`;
+/** Namespaced in sandbox mode (see ../sandbox.ts): a sandbox never sees, offers or removes the learner's own draft copy. */
+export const fallbackKey = (o: DraftOwner) => scopedKey(`go-v0:draft-copy:${o.userId}:${o.lang}`);
 
 export type DraftStatus =
   | { kind: 'loading' }

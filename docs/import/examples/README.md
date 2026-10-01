@@ -59,6 +59,7 @@ npm run corpus:review -- "$EX/story-01.json" --by "Ana Ruiz (native speaker)" --
 ```
 corpus:review - …/story-01.json  [example-story]
   review: unreviewed -> reviewed by Ana Ruiz (native speaker) on 2026-10-01 - Checked wording, glosses and sentence breaks.
+  review covers wording e04a9e3c
   removed editorial tag: needs-native-review
   text untouched: sections, sentences and every character of text are byte-identical (10 sentence block(s)); file updated
   note: the text stays marked machine-drafted / generated; the reader keeps badging it
@@ -66,8 +67,9 @@ corpus:review - …/story-01.json  [example-story]
 next: npm run corpus:validate -- …/story-01.json   then import it (see docs/IMPORT.md)
 ```
 
-Exit code `0`. Apart from the two ids you changed in step 0, the file's only differences from the bundled story are the
-`review` block and the removed `needs-native-review` tag:
+Exit code `0`. `review covers wording e04a9e3c` is the first 8 characters of `review.contentSignature`, the hash of the
+exact sentence texts the reviewer was given. Apart from the two ids you changed in step 0, the file's only differences
+from the bundled story are the `review` block and the removed `needs-native-review` tag:
 
 ```
 diff data/corpus/es/story-01.json "$EX/story-01.json"
@@ -82,15 +84,16 @@ diff data/corpus/es/story-01.json "$EX/story-01.json"
 <     "id": "src:es:story-01",
 ---
 >     "id": "src:es:example-story",
-23,24c23,26
+23,24c23,27
 <     "status": "unreviewed",
 <     "notes": "Drafted by an AI assistant; awaiting native-speaker review."
 ---
 >     "status": "reviewed",
 >     "reviewedBy": "Ana Ruiz (native speaker)",
 >     "reviewedAt": "2026-10-01",
+>     "contentSignature": "e04a9e3c545c99f8",
 >     "notes": "Checked wording, glosses and sentence breaks."
-32d33
+32d34
 <     "needs-native-review",
 ```
 
@@ -123,11 +126,22 @@ off to see what a learner sees: the text is in the library.
 
 ## 5. Revise: edit one sentence and import again
 
-Edit any sentence's `text` in `$EX/story-01.json`, run `npm run corpus:validate` on it, and import it again from
-**Settings → Content**. The result says `updated`, version 2, `1 sentence(s) added, 1 retired`. The edited sentence has a
+Edit any sentence's `text` in `$EX/story-01.json` and run `npm run corpus:validate` on it:
+
+```
+…/edited.json  [example-story]  0 error(s), 1 warning(s); analysis coverage 98.3% (59/60 words)
+  warn  review.contentSignature: the text changed after it was reviewed: review.contentSignature does not match the current wording [review-signature-mismatch]
+        hint: The text will not publish until it is reviewed again: run npm run corpus:review -- <file> --by "<name>" (it records the new signature).
+        would publish: no
+        missing: the text changed after it was reviewed — record a new review (npm run corpus:review)
+```
+
+A review covers the wording it was given for, so the old review no longer counts. Review the edited file again (step 2)
+and import it from **Settings → Content**. (Importing it *without* the new review also works, but the text is then
+unpublished with that reason.) The result says `updated`, version 2, `1 sentence(s) added, 1 retired`. The edited sentence has a
 new key and id; the old one is retired (kept with its tokens and analyses); unchanged sentences keep their ids, their
 audio and every learner encounter. Changing only metadata (title, topics, review, English lines) updates the text but
-does not bump the version. Reverting the edit and importing once more revives the original sentence under its original
+does not bump the version and keeps the review valid. Reverting the edit and importing once more revives the original sentence under its original
 id (version 3).
 
 The same three imports without the app, as a throwaway script saved next to the copy (replace the project path with
@@ -138,35 +152,40 @@ your checkout's absolute path):
 import fs from 'node:fs';
 import { createMemoryStore } from 'C:/Users/CJWal/dev/go-v0/src/core';
 import { createAdapterRegistry } from 'C:/Users/CJWal/dev/go-v0/src/adapters';
-import { contentHistory, importDocuments } from 'C:/Users/CJWal/dev/go-v0/src/ingest';
+import { applyReview, contentHistory, importDocuments } from 'C:/Users/CJWal/dev/go-v0/src/ingest';
 
 const registry = createAdapterRegistry();
 const store = createMemoryStore();
 const doc = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
 const show = (label: string, r: Awaited<ReturnType<typeof importDocuments>>) => {
   const d = r.documents[0];
-  console.log(`${label}: ${d.action}, contentVersion ${d.contentVersion}, +${d.sentencesAdded}/-${d.sentencesRetired} sentence(s), published: ${d.published}`);
+  console.log(`${label}: ${d.action}, contentVersion ${d.contentVersion}, +${d.sentencesAdded}/-${d.sentencesRetired} sentence(s), published: ${d.published}${d.unpublishedReasons.length ? ` (${d.unpublishedReasons[0]})` : ''}`);
 };
 show('import   ', await importDocuments(store, registry, [doc]));
 const edited = structuredClone(doc);
 const first = edited.sections[0].paragraphs[0].sentences[0];
 first.text = first.text.replace(/\.$/, '') + ' hoy.';
-show('re-import', await importDocuments(store, registry, [edited]));
+show('re-import', await importDocuments(store, registry, [edited]));   // the old review does not cover the new wording
+const again = applyReview(edited, { by: 'Ana Ruiz (native speaker)', date: '2026-10-02' });   // = npm run corpus:review
+if (!again.ok) throw new Error('review refused');
+show('re-review', await importDocuments(store, registry, [again.doc]));
 show('revert   ', await importDocuments(store, registry, [doc]));
 for (const h of contentHistory((await store.texts.get(`text:${doc.lang}:${doc.id}`))!)) console.log(`v${h.version}  ${h.at}  ${h.summary}`);
 ```
 
 ```
 import   : created, contentVersion 1, +10/-0 sentence(s), published: true
-re-import: updated, contentVersion 2, +1/-1 sentence(s), published: true
+re-import: updated, contentVersion 2, +1/-1 sentence(s), published: false (the text changed after it was reviewed — record a new review (npm run corpus:review))
+re-review: updated, contentVersion 2, +0/-0 sentence(s), published: true
 revert   : updated, contentVersion 3, +1/-1 sentence(s), published: true
-v1  2026-10-01T02:14:07.746Z  content version 1 (created): 10 sentence(s) [eda7c04aa8b7, c6bfb015988b, …]; 59 analysis row(s) written
-v2  2026-10-01T02:14:07.755Z  content version 1 → 2: added [6edcc340ec00], retired [eda7c04aa8b7]; 8 analysis row(s) written
-v3  2026-10-01T02:14:07.759Z  content version 2 → 3: revived [eda7c04aa8b7], retired [6edcc340ec00]; 0 analysis row(s) written
+v1  2026-10-01T03:27:21.591Z  content version 1 (created): 10 sentence(s) [eda7c04aa8b7, c6bfb015988b, …]; 59 analysis row(s) written
+v2  2026-10-01T03:27:21.602Z  content version 1 → 2: added [6edcc340ec00], retired [eda7c04aa8b7]; 8 analysis row(s) written
+v3  2026-10-01T03:27:21.614Z  content version 2 → 3: revived [eda7c04aa8b7], retired [6edcc340ec00]; 0 analysis row(s) written
 ```
 
-`v3` shows the original sentence key `eda7c04aa8b7` coming back (`revived`): no new sentence id was minted by the
-third import. The timestamps will differ on your machine. The same history is what **Settings → Content** shows per text
+`re-import` is unpublished until `re-review` records a review of the new wording; `revert` shows the original sentence
+key `eda7c04aa8b7` coming back (`revived`) under the original review, which covers that wording again: no new sentence id
+was minted by the third import. The timestamps will differ on your machine. The same history is what **Settings → Content** shows per text
 (`contentHistory(text)`).
 
 ## 6. Clean up

@@ -242,7 +242,10 @@ export interface Stream {
  */
 export type RegisterTag =
   | 'standard' | 'colloquial' | 'formal' | 'literary' | 'archaic' | 'historical' | 'royal' | 'religious'
-  | 'regional-isan' | 'regional-north' | 'regional-south' | 'teochew' | 'child-directed' | 'slang';
+  | 'regional-isan' | 'regional-north' | 'regional-south' | 'teochew' | 'child-directed' | 'slang'
+  // lexical layers of one language (Hindi: everyday Hindustani, Sanskrit-derived formal words, Persian / Arabic-derived words,
+  // English loans) and the vocabulary of Scripture and church. A layer is a fact about the word, never a verdict on it.
+  | 'everyday' | 'sanskritic' | 'perso-arabic' | 'english-loan' | 'biblical';
 
 // ───────────────────────────── script decoding ─────────────────────────────
 
@@ -266,7 +269,8 @@ export interface SyllableAnalysis {
   respelled?: string;
   final?: string; // final consonant letter(s) as written
   finalSound?: string; // k p t m n ŋ j w
-  ending: 'open' | 'live' | 'dead';
+  /** Thai: how the syllable ends, which decides its tone. Absent for a script where the notion does not apply. */
+  ending?: 'open' | 'live' | 'dead';
   toneMark?: string;
   tone?: 'mid' | 'low' | 'falling' | 'high' | 'rising';
   /** Which rule produced the tone, in plain words ("mid-class consonant + mai tho → falling"). */
@@ -275,6 +279,14 @@ export interface SyllableAnalysis {
   /** Emergency rescue only (see AssistanceProfile.romanization). */
   romanization?: string;
   irregular?: boolean; // sound and spelling part ways (exception list or dictionary pronunciation)
+  /**
+   * Scripts whose consonant letters carry an unwritten vowel (Devanagari): whether that vowel is said in this unit.
+   * Writing and speech part ways here (कमल is written ka-ma-la and said ka-mal), so it is stated per unit, with the
+   * unit's own `confidence`; 'uncertain' when the rules cannot tell. Absent when the unit has a written vowel.
+   */
+  inherentVowel?: 'pronounced' | 'dropped' | 'uncertain';
+  /** Signs written on the unit, by name ('nukta', 'anusvara', 'chandrabindu', 'visarga', 'virama', 'reph', 'rakar'). */
+  signs?: string[];
   /**
    * Where this reading came from: the spelling rules, the engine's hand-written exception list (machine-drafted),
    * a dictionary's pronunciation data (`sourceId`), or a decoding supplied with the text.

@@ -136,6 +136,10 @@ const VARIETY_LINE: Partial<Record<RegisterTag, string>> = {
   teochew: 'Teochew word — not ordinary Central Thai',
   'child-directed': 'Word used when speaking to children',
   slang: 'Slang',
+  sanskritic: 'Formal word of Sanskrit origin',
+  'perso-arabic': 'Word of Persian or Arabic origin',
+  'english-loan': 'English loanword',
+  biblical: 'Word of Scripture and church',
 };
 
 /** One line naming the variety of a word, or undefined when it is ordinary standard usage (or says nothing). */

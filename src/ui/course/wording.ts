@@ -55,6 +55,7 @@ const REGISTER_LABEL: Record<RegisterTag, string> = {
   standard: 'standard', colloquial: 'colloquial', formal: 'formal', literary: 'literary', archaic: 'older language',
   historical: 'historical', royal: 'royal vocabulary', religious: 'religious', 'regional-isan': 'Isan regional',
   'regional-north': 'northern regional', 'regional-south': 'southern regional', teochew: 'Teochew', 'child-directed': 'for children', slang: 'slang',
+  everyday: 'everyday', sanskritic: 'Sanskrit-derived', 'perso-arabic': 'Persian / Arabic-derived', 'english-loan': 'English loan', biblical: 'biblical',
 };
 export const registerChips = (w: Pick<Work, 'registers'>): string[] => (w.registers ?? []).filter((r) => r !== 'standard').map((r) => REGISTER_LABEL[r] ?? r);
 

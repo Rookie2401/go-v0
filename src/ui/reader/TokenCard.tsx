@@ -414,6 +414,7 @@ function DecodingSection({ decoding, loaded, lang, onRescue }: { decoding: Decod
 }
 
 const ENDING_WORD = { open: 'open (no final consonant)', live: 'live', dead: 'dead' } as const;
+const INHERENT_VOWEL_WORD = { pronounced: 'said (a)', dropped: 'not said here', uncertain: 'may or may not be said — Go will not guess' } as const;
 
 function SyllableRow({ s, lang, sourceLabel }: { s: SyllableAnalysis; lang?: LanguageCode; sourceLabel?: string }) {
   // Source and certainty are two statements: where the reading came from (`source`), and how sure the engine is (`confidence`).
@@ -445,9 +446,18 @@ function SyllableRow({ s, lang, sourceLabel }: { s: SyllableAnalysis; lang?: Lan
           )}
         </div>
       )}
-      <div className="card__line"><span className="k">Ending</span><span>{ENDING_WORD[s.ending]}</span></div>
-      <div className="card__line"><span className="k">Tone mark</span><span lang={s.toneMark ? lang : undefined}>{s.toneMark ?? 'none'}</span></div>
-      <div className="card__line"><span className="k">Tone</span><span>{s.tone ?? 'not decided — Go will not guess'}</span></div>
+      {s.inherentVowel && (
+        <div className="card__line" data-testid="inherent-vowel"><span className="k">Unwritten vowel</span><span>{INHERENT_VOWEL_WORD[s.inherentVowel]}</span></div>
+      )}
+      {s.signs && s.signs.length > 0 && <div className="card__line"><span className="k">Signs</span><span>{s.signs.join(', ')}</span></div>}
+      {/* ending and tone belong to a tonal script (Thai): a unit that states no ending shows none of the three lines */}
+      {s.ending !== undefined && (
+        <>
+          <div className="card__line"><span className="k">Ending</span><span>{ENDING_WORD[s.ending]}</span></div>
+          <div className="card__line"><span className="k">Tone mark</span><span lang={s.toneMark ? lang : undefined}>{s.toneMark ?? 'none'}</span></div>
+          <div className="card__line"><span className="k">Tone</span><span>{s.tone ?? 'not decided — Go will not guess'}</span></div>
+        </>
+      )}
       {s.rule && <p className="card__text decode__rule">{s.rule}</p>}
       {toneLine && <p className="card__note" data-testid="rule-tone">{toneLine}</p>}
     </li>

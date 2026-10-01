@@ -1,126 +1,156 @@
 # Readiness — what the system can do with supplied texts today
 
-Three words are used strictly in this document:
+Three words are used strictly:
 
 - **Implemented** — the code exists and its own tests pass.
-- **Verified** — additionally proven end to end: the integration suite on the real adapters, importer and
-  engines, and/or a browser flow against the running app.
-- **Awaiting external input** — cannot be completed from inside the repository: approved texts, established
-  rights, a native-speaker review, or a speech-provider account.
+- **Verified** — additionally proven end to end: integration tests on the real adapters, importer and engines,
+  the generated import proof, and/or a browser flow against the running app.
+- **Awaiting external input** — cannot be completed from inside the repository.
 
 This is **not** a production-readiness claim.
 
 ## Readiness by language
 
-| | Ingestion | Analysis | Scripture | Real speech |
-|---|---|---|---|---|
-| **Spanish** | Verified (format v2, exact text, review → publish, revision history) | Tokenization dependable; sentence splitting limited; lemma / morphology / phrases **seed lexicon only**; historical forms `á`, `dijéremos`, `engañamos` analysed, others left unanalysed | **Published**: Reina-Valera 1909, 3 verses, byte-verified against eBible.org, public domain | **Not verified.** No provider account, no speech ever produced. Course asks es-HN; the voice table would fall back to es-MX and record it |
-| **German** | Verified | Tokenization dependable; inflection related by `relate`; separable verbs only `anfangen`; compounds low-confidence; **seed lexicon only** | **Published**: Lutherbibel 1912, 3 verses, byte-verified, public domain | Not verified |
-| **Albanian** | Verified | Tokenization dependable; ë / ç preserved; inflected forms related; clitics ambiguous with thin context; **seed lexicon only** | **Blocked**: unidentified, unverified sample. Awaiting an approved translation with established rights | Not verified |
-| **Hindi** | Verified (grapheme-safe spans, danda kept) | Tokenization dependable; compound verbs only when listed; **seed lexicon only** | **Blocked**: unidentified, unverified sample | Not verified |
-| **Thai** | Verified (no spaces added; sentence break = newline / double space) | Tokenization **limited** (ICU dictionary + a short compound list); **seed lexicon only** | **Blocked**: unidentified, unverified sample | Not verified |
+| | Ingestion | Progress tracking | Linguistic analysis | Scripture | Real speech |
+|---|---|---|---|---|---|
+| **Spanish** | Verified (proof + browser importer) | Verified (one record on Home, library, reader; version-scoped) | Tokenization dependable; sentence splitting limited; lemma / morphology / phrases **seed lexicon only**; `á`, `dijéremos`, `engañamos` analysed, other historical forms left unanalysed | **Published**: Reina-Valera 1909, 3 verses, byte-verified against eBible.org | **Not verified** — no credentials; nothing synthesized |
+| **German** | Verified | Verified (engine); browser checked for Spanish only | Dependable tokenization; separable verbs only `anfangen`; compounds low-confidence; **seed lexicon only** | **Published**: Lutherbibel 1912, 3 verses, byte-verified | Not verified |
+| **Albanian** | Verified | as German | ë / ç preserved; inflected forms related; clitics ambiguous in thin context; **seed lexicon only** | **Blocked** — awaiting an approved translation | Not verified |
+| **Hindi** | Verified (grapheme-safe spans, danda kept, non-NFC preserved) | as German | Compound verbs only when listed; **seed lexicon only** | **Blocked** | Not verified |
+| **Thai** | Verified (no spaces added; sentence break = newline / double space) | as German | Word segmentation **limited** (ICU dictionary + short compound list); **seed lexicon only** | **Blocked** | Not verified |
 
-A course appearing in the team list is not evidence of readiness: the table above is.
+A course in the team list, or a seeded example, is not evidence of support: this table is. "Seed lexicon only"
+means every word of a supplied text is tokenized and tracked, but a word outside the adapter's small lexicon
+has no lemma or gloss ("not analysed yet"); analysis can be supplied with the text (`spans`), corrected by a
+reviewer (`corrections`), or added to a lexicon. The importer reports analysis coverage per document, and the
+preview and the import result now report the same figure.
 
-"Seed lexicon only" is the main limit for supplied texts. Every word of a supplied text is tokenized, tracked
-and readable (form-level learner state needs no lexicon), but a word outside the adapter's small lexicon has no
-lemma or gloss: the word card says "not analysed yet" and English rescue stays available per sentence. The
-validator and the in-app importer report each document's analysis coverage. Analysis can be supplied with the
-text (`spans`), corrected by a reviewer (`corrections`, stored as human rows that survive re-import), or added to
-an adapter's lexicon. Analyzer name, version and confidence are stored on every analysis row.
+## The two audited defects
 
-## Reading progress: five things that are never merged
+### A. "Seen 0 of 10 · Finished" (reader, library) vs "Seen 4 of 10 · Finished" (Home)
 
-| Notion | What triggers it | Where it shows | What it proves |
-|---|---|---|---|
-| Displayed / previewed | Opening a text; the preparation panel | nowhere as progress (`TextViewed`) | nothing |
-| Reading exposure | A sentence stays ≥ 60 % in view, tab visible, window focused, no preparation panel open, for `max(1.5 s, 0.22 s × words)` | "Seen x of y sentences" | he was exposed to it |
-| Explicit completion | The "I have finished reading" button | "Finished" | he says he finished |
-| Reported understanding | "Understood" on a sentence, or "All" at the end, without help | "Understood x of y (your report)"; vocabulary "shown" | demonstrated comprehension (self-report) |
-| Estimated familiarity | ≥ 4 help-free exposures in ≥ 2 sittings | "likely familiar (estimate)" | an estimate only; never "known" |
+Reproduction: all three surfaces already called the same `readingProgress(userId, textId)` and formatted it with
+one function. With identical stored events they agree — reproduced in the running app with a new learner at
+every step. I could not make the three disagree for the same state at the same moment, and found no duplicate
+events. What produced the audited picture:
 
-Cause of the audited "Read: 0 of 3 → 2 of 3": a sentence used to count after 600 ms on screen whatever its
-length, the label said "Read", completion was inferred once everything had been seen, and each page load started
-a new session. All four are changed. Duplicates are also stopped a second way: GoLearn derives sittings from
-event time (30-minute gap) and keeps one exposure per item + sentence per sitting whatever session id the UI
-sends.
+1. **No version scope in the record.** Progress counted only live sentences of the current content version and
+   silently dropped exposure recorded against retired ones (a revision, or the index-id sentences of a database
+   created before stable sentence keys), while "Finished" carried over from any version. That yields
+   "Seen 0 of 10 · Finished" with no explanation.
+2. **Independent snapshots.** Each surface read once on mount; the reader re-read on a 300 ms timer, the library
+   and Home never. A surface opened before a dwell completed showed fewer sentences than one opened afterwards.
+3. **A dropped completion** (found while fixing): finishing a revised text in the same sitting as an earlier
+   finish was discarded by the dedupe key.
 
-## The acquisition loop — verified
+Fix: one canonical record — scope `{learner, language, text, content version}`; `sentencesSeen` and
+`sentencesUnderstood` over this version; `finishedAt` only for a completion of this version;
+`finishedEarlierVersion`; `earlierVersions` (exposure against retired sentences: kept and reported, never
+counted). One hook and one component render it on Home (card and rows), the library and the reader, re-reading
+after `golearn.settled()` on every learner event. Wording is identical everywhere: `Seen x of y sentences`,
+`Understood x of y (your report)`, `Finished`, `Finished (your mark)` when fewer sentences were seen than the
+text has (with the explanation one tap away), `Finished an earlier version — the text has changed since`,
+`n more seen in an earlier version`.
 
-`test/integration/acquisition-loop.test.ts` (real adapters, importer, engines) and a browser run on the dev
-server with a fresh learner. "Review" in both is a **synthetic review** recorded with the real review function
-for the acceptance run; the bundled seed texts themselves remain unreviewed.
+### B. "likely familiar" 24 % → 46 % → 3 % when Parallel English was toggled
 
-| # | Step | Integration test | Browser |
-|---|---|---|---|
-| 1 | Import and validate a CI text | ✔ | ✔ in-app importer: valid, 100 % analysed, imported, not published, reason shown |
-| 2 | Publish only after review | ✔ `applyReview`; text bytes and sentence ids unchanged | ✔ re-import with the review ⇒ published, offered as first text |
-| 3 | Read with word / phrase / grammar / English help | ✔ | ✔ "corazón — heart"; "empezar a entender"; preterite note; English line |
-| 4 | Accurate, non-duplicated evidence | ✔ rerender, scroll, route revisit, reload, re-import add nothing; second sitting = +1 exposure, still not knowledge | ✔ 82 exposure + 22 assisted encounters with the exact help levels; reload reused the sitting; counts unchanged |
-| 5 | Verified Scripture with overlap | ✔ | ✔ RV1909 exact |
-| 6 | Shared history → assistance and preparation | ✔ | ✔ "pecado · met, not shown", "Dios · needed help"; preparation open for 6 s ⇒ "Seen 0 of 3", only opened/previewed events |
-| 7 | Synthetic testimony | ✔ | ✔ |
-| 8 | Restrained, grounded suggestion | ✔ own sentence (negation, chronology) untouched; one repair with its source | ✔ same; meaning help returned "Empecé a entender mi pecado." with its source, and refused an unsupported request with nothing to insert |
-| 9 | Assisted ≠ independent | ✔ | ✔ `al` used_with_assistance, `pecado` used_independently |
-| 10 | Save, leave, reload, switch language, recover | ✔ | ✔ draft and Version 1 back after reload and a German round trip |
-| 11 | Reviewed speech for the accepted version | ✔ unavailable state; with a **test-only stand-in** provider the exact version is synthesized and playback is exposure only | ✔ honest "not available" with the exact configuration instruction. **No real speech was played.** |
-| 12 | Revise the imported text | ✔ version 2 and 3, history, retired sentence keeps evidence at version 1, unchanged analysis rows kept, only the changed sentence's audio regenerated, original ids revived on revert | ✔ "updated, 1 sentence retired", version history in Settings, reader "Seen 7 of 10" for the new version |
+Reproduced on the real engines (`scripts/probe-parallel-english.mts`): one `EnglishRescueRevealed`, no new views,
+no reports. Two causes:
 
-Rendering was checked in the browser for Thai, Hindi, German and Albanian (every canonical sentence rendered
-exactly, tappable words, per-script font stack and line height, no horizontal overflow).
+1. **Rule too blunt (the settled 3 %).** The estimate required "no help in the last two encounters", and a
+   whole-passage English reveal counted as help for every word of every sentence, so one toggle vetoed the
+   estimate of words met help-free dozens of times. Story encounters were never touched.
+2. **Reads not serialized with folds (the transient 46 %).** Coverage was read while the fold was still writing,
+   on a blind timer. Toggling English off emitted nothing; the next read showed the settled state.
+
+Fix (`evidence@4`): help has a scope. Help with a word, phrase or grammar point vetoes that item's estimate.
+English or an explanation for a sentence makes that encounter "read with the English shown" — it can never
+demonstrate, and it is not a help-free exposure — but it does not veto an estimate earned elsewhere and never
+touches other sentences or sittings. Every read waits for the fold queue. Probe after the fix:
+`40 %` before; `28 %` while the fold runs, after it settles, and after a rebuild from the log. The remaining
+drop is two words ("que", "y") that had reached the threshold only through the two verses now read with English.
+Exposure is still never shown as understanding ("shown 0 %" throughout).
+
+## Import tests actually run
+
+`npm run corpus:prove` — clearly labelled synthetic files in `data/synthetic/import-proof/`, the real importer,
+an isolated in-memory store: **14 case groups, 162 checks, 0 mismatches** (`docs/import/PROOF.md` is generated
+from the run). The same files through the **in-app importer in a sandbox database**:
+
+| Case | Outcome in the browser |
+|---|---|
+| Valid text | imported (new), not published (unreviewed); 15 → 16 texts, 106 → 112 sentences |
+| Malformed JSON | refused with the parse position and a fix; counts unchanged |
+| Unchanged re-import | "unchanged"; counts identical |
+| Two files with one id | no import offered; counts unchanged |
+| Valid + invalid in one batch | nothing imported; counts unchanged |
+| Span outside the sentence | refused with path and fix |
+| Broken translation alignment | refused; the hint lists the sentences the adapter found |
+| Revised text | "updated, 1 sentence retired"; version 2; 7 live sentences, 2 added |
+| Review hold / rights hold | imported, held with the reason |
+| Placeholder "Scripture", unverified | imported, held with every missing requirement |
+| Placeholder "Scripture", generated | refused |
+| Exactness (Spanish, Hindi danda, Thai without spaces) | stored text byte-identical by code point; normalized form differs where it should |
+| Review, then revise without review, then review again | published → held ("the text changed after it was reviewed") → published |
+
+Two defects found by these runs and fixed: a raw paragraph with edge whitespace produced no warning; validation
+ignored analysis supplied with the file when counting coverage, so preview and result disagreed. One gap closed:
+a review now records which wording it covers, and a revised text is held until it is reviewed again
+(Scripture is bound by its verification instead). No synthetic text is published or present in the normal library.
+
+## Speech
+
+`npm run speech:check`: `configured: no`; **12 of 12 provider-independent checks pass** (cache keys, requested vs
+delivered locale, voice metadata and review gate, content-version invalidation, retry, dead state with visible
+reason, partial generation, unconfigured state, fixture and failed playback never eligible, real-speech events
+flagged as speech, key never leaked). `REAL SPEECH: NOT VERIFIED`. One defect fixed: the proxy answered an
+oversized request before reading it, which could surface as a connection reset instead of the 413.
+
+## The acquisition loop
+
+`test/integration/acquisition-loop.test.ts` passes all twelve steps on the real adapters, importer and engines,
+now including "a revised text is held until re-reviewed". In the browser this round (sandbox): import and
+validation, review → publish, revise → hold → re-review, reading with real dwell, explicit finish, identical
+progress on the three surfaces, Parallel English stability, honest audio state. The remaining steps (word /
+phrase / grammar / English help levels, Scripture preparation, testimony draft, suggestion, assisted vs
+independent, reload and language switch) were verified in the browser in the previous round and are covered by
+the integration test in this one; they were not re-walked in the browser after this round's changes.
 
 ## Not verified
 
-- **Real speech.** Nothing in this repository has ever called a speech service or been listened to. The
-  proxy and both Azure adapters are tested against mocked HTTP; the proxy endpoints were also exercised on the
-  running dev server in their unconfigured state (status, 401). Voice names, es-HN availability, real error
-  bodies and audio quality are unknown.
-- **Dwell after closing the preparation panel, in a live browser.** Covered by a jsdom test; the browser pane
-  lost visibility during that check, so it was not observed live. (Dwell itself was observed live: 0 → 7 of 10.)
-- **In-app backup download / restore and a provoked storage failure** — automated tests only.
-- **Linguistic quality** of the seed texts, GoTell's term tables and the adapters' rules: starter sets, not
-  native-reviewed.
+- **Real speech**: nothing has ever been synthesized or heard.
+- **Progress in the browser for languages other than Spanish** (engine tests cover all five).
+- **The estimate rule in a live browser**: the sandbox learner had one sitting, so no estimates existed; the
+  rule is proven by the probe and the engine tests, the browser check proves one event and no transient values.
+- **In-app backup download and restore, and a provoked storage failure**: automated tests only.
+- **Linguistic quality** of the seed texts, GoTell's term tables and the adapters' rules: not native-reviewed.
 
 ## Awaiting external input
 
-1. **Native-speaker review of comprehensible-input texts.** None of the ten bundled texts is reviewed, so in
-   normal mode the Read list is empty until reviewed texts are supplied. Procedure below.
-2. **Approved Scripture for Albanian, Hindi and Thai** (translation identity, edition, established rights), then
-   verification with `scripts/verify-scripture.mjs`.
-3. **A speech provider**: set `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` in `.env.local` and restart the
-   server (`docs/SPEECH.md`). Then a **voice audition per language** (`src/golisten/QA.md`); until a voice is
-   marked reviewed its audio is preview-only and earns nothing.
+1. **Native-speaker review** of comprehensible-input texts (none is reviewed; the normal Read list is empty).
+2. **Approved Scripture** for Albanian, Hindi and Thai, then `node scripts/verify-scripture.mjs`.
+3. **Speech**: `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` in `.env.local`, restart, `npm run speech:check`, then
+   a human audition of each voice (`src/golisten/QA.md`).
 4. **Native review** of GoTell's per-language tables and the adapters' writing rules.
-5. **Lexicon growth or supplied analysis** for vocabulary beyond the seed corpus.
+5. **Lexicon growth or supplied analysis** beyond the seed vocabulary.
 
-## Supplying a text: exact steps
+## Operating instructions
 
-Full specification: `docs/IMPORT.md`. Templates: `docs/import/templates/`. Worked example:
-`docs/import/examples/README.md`.
-
-```bash
-npm run corpus:validate -- path/to/my-text.json
-```
-Prints errors with a path and a fix, the analysis coverage, and `would publish: yes|no` with each missing
-requirement.
+Specification and numbered walkthrough: `docs/IMPORT.md`. Templates: `docs/import/templates/`. Worked example:
+`docs/import/examples/README.md`. Proof: `docs/import/PROOF.md`.
 
 ```bash
-npm run corpus:review -- path/to/my-text.json --by "Reviewer Name (native speaker)" --notes "checked 2026-10-02"
+npm run corpus:validate -- path/to/text.json
 ```
-Records the review in the file. Never changes the text. Refuses without a named reviewer, and refuses Scripture
-that has no verification record.
-
 ```bash
-node scripts/verify-scripture.mjs
+npm run corpus:review -- path/to/text.json --by "Reviewer Name"
 ```
-For Scripture: add the translation to `SOURCES`, then run. It compares byte for byte and writes the record.
+```bash
+npm run corpus:prove
+```
+```bash
+npm run speech:check
+```
 
-Then import: place the file under `data/corpus/<lang>/` and run `npm run corpus:check`, or use
-Settings → Content in the app (the preview states whether the file will publish before you import). To revise
-a text, edit the file and import it again: unchanged sentences keep their ids, analysis, audio and learner
-history; changed sentences are retired and the version history records it.
-
-## Evidence
-
-- `npm run gate` — the whole suite.
-- `test/integration/acquisition-loop.test.ts`, `spanish-loop.test.ts`, `compat.test.ts`, `importer-preview.test.ts`.
+Import through Settings → Content, or place the file under `data/corpus/<lang>/`. To try anything without
+touching your library, open the app with `?sandbox=<name>` (separate database, bannered).

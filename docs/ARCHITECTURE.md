@@ -227,3 +227,24 @@ Brief: `docs/PLAN3.md`. Status of record: `docs/READINESS.md`.
     `AZURE_SPEECH_KEY` / `AZURE_SPEECH_REGION` from `.env.local`; the browser talks to `/api/speech/*` through
     `ProxySpeechProvider`. The direct, key-in-the-browser adapter remains only as an advanced fallback for
     static hosting. Unconfigured ⇒ an honest unavailable state naming the two variables.
+
+## 14. Round 4 (consistent progress, explainable familiarity, proven imports)
+
+Brief and root causes: `docs/PLAN4.md`. Status of record: `docs/READINESS.md`.
+
+28. **One canonical progress record.** `ReadingProgress` is scoped to learner, language, text and content version;
+    it separates this version's exposure and reports from `earlierVersions` (kept, reported, never counted) and
+    this version's completion from `finishedEarlierVersion`. Home, the library and the reader render it through
+    one hook and one component; no surface computes or formats progress itself.
+29. **Reads wait for folds.** Every GoLearn read runs after the fold queue (and after emits still in flight);
+    `settled()` is the UI's signal to re-read. Same evidence gives the same numbers on every read, mid-fold and
+    after a rebuild.
+30. **Help has a scope (`evidence@4`).** Help with an item vetoes that item's estimate; English or an explanation
+    for a sentence marks that encounter as read with help, without vetoing estimates earned elsewhere and
+    without touching other sentences or sittings.
+31. **A review covers specific wording.** `review.contentSignature` binds a review to the sentence texts it
+    reviewed; a revised text is held until reviewed again. Scripture is bound by its verification record.
+32. **Import behaviour is proven, not asserted.** `npm run corpus:prove` runs labelled synthetic files through the
+    real importer and generates `docs/import/PROOF.md`.
+33. **Sandbox database.** `?sandbox=<name>` opens a separate, bannered database with namespaced local storage for
+    acceptance and import tests, so nothing synthetic reaches the normal library.

@@ -43,3 +43,17 @@ describe('importer preview states the publication outcome', () => {
     expect(view.published).toBeUndefined();
   });
 });
+
+describe('validation and import report the same analysis coverage', () => {
+  it('counts analysis supplied with the file (spans) in the preview exactly as the importer does', async () => {
+    const { readFileSync } = await import('node:fs');
+    const { importDocuments, validateBatch } = await import('../../src/ingest');
+    const doc = JSON.parse(readFileSync('data/synthetic/import-proof/01-valid-es.json', 'utf8'));
+    const registry = createAdapterRegistry();
+    const preview = validateBatch([doc], { registry }).documents[0].coverage!;
+    const result = (await importDocuments(createMemoryStore(), registry, [doc])).documents[0].analysisCoverage;
+    expect(doc.sections.flatMap((s: { paragraphs: Array<{ sentences?: Array<{ spans?: unknown[] }> }> }) => s.paragraphs.flatMap((p) => (p.sentences ?? []).flatMap((x) => x.spans ?? []))).length).toBeGreaterThan(0);
+    expect({ words: preview.words, analysed: preview.analysed }).toEqual({ words: result.words, analysed: result.analysed });
+    expect(preview.coverage).toBe(result.coverage);
+  });
+});

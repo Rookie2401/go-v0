@@ -470,10 +470,19 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
     if (scriptRe) for (const ch of text) { if (/\p{L}/u.test(ch)) { letters++; if (scriptRe.test(ch)) inScript++; } }
   };
 
-  const tally = (text: string) => {
+  // Coverage must equal what the importer will report for the same document: a word counts as analysed when the
+  // adapter analyses it OR the author supplied an analysis for exactly that token (`spans` / `corrections`).
+  const tally = (text: string, supplied: unknown[] = []) => {
     if (!adapter) return;
     const toks = adapter.tokenize(text);
-    const cov = analysisCoverage(toks, adapter.analyze(toks));
+    const covered = new Set<string>();
+    for (const sp of supplied) if (isObj(sp) && isInt(sp.start) && isInt(sp.end)) covered.add(`${sp.start}:${sp.end}`);
+    const analysed = adapter.analyze(toks).map((a, i) => (
+      a.candidates.length === 0 && covered.has(`${toks[i].start}:${toks[i].end}`)
+        ? { ...a, candidates: [{ morph: {}, confidence: 1 }] }
+        : a
+    ));
+    const cov = analysisCoverage(toks, analysed);
     wordsTotal += cov.words;
     analysedTotal += cov.analysed;
     for (const u of cov.unanalysed) unknownForms.add(u);
@@ -496,7 +505,7 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
           for (const key of Object.keys(s)) if (!SENTENCE_KEYS.includes(key) && !key.startsWith('_')) warn(`${w}.${key}`, 'unknown-field', `unknown sentence field "${key}" is ignored`, 'Check the spelling against docs/IMPORT.md.');
           checkSentence(s, s.text, w, sectionChapter);
           if (typeof s.text === 'string' && s.text.trim()) {
-            tally(s.text);
+            tally(s.text, [...(Array.isArray(s.spans) ? s.spans : []), ...(Array.isArray(s.corrections) ? s.corrections : [])]);
             if (adapter && adapter.segmentSentences(s.text).length > 1) warn(`${w}.text`, 'adapter-would-split', 'the language adapter would split this declared sentence into several', 'Your declaration wins, but check that this is one sentence (abbreviations, quotations, verse-length sentences are fine).');
           }
         });

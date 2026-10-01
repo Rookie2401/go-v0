@@ -19,8 +19,11 @@ npm run gate             # tsc -b && vitest run
 npm run corpus:check     # bundled corpus: validation, re-import, Scripture byte check
 npm run corpus:validate -- path/to/text.json
 npm run corpus:review -- path/to/text.json --by "Reviewer Name"   # record a review (never changes text)
+npm run corpus:prove     # import proof on synthetic files (docs/import/PROOF.md)
+npm run speech:check     # speech configuration + provider-independent checks
 node scripts/verify-scripture.mjs
 npm run build && npm run preview   # http://127.0.0.1:4196
+# http://127.0.0.1:5196/?sandbox=demo  → a separate, bannered test database
 ```
 
 ## Documents
@@ -29,10 +32,11 @@ npm run build && npm run preview   # http://127.0.0.1:4196
 |---|---|
 | `docs/READINESS.md` | Per-language readiness (ingestion, analysis, Scripture, speech); implemented vs verified vs awaiting external input |
 | `docs/IMPORT.md` + `docs/import/templates/` | The versioned text-import specification, templates, and how to validate, import, review and publish |
+| `docs/import/PROOF.md` | Generated record of the import tests (valid, malformed, duplicates, batches, spans, revisions, holds) |
 | `docs/STORAGE.md` | Storage model, backup and restore |
 | `docs/SPEECH.md` | Speech configuration (server-side key), what is recorded, failure states, review |
 | `docs/ARCHITECTURE.md` | Architecture and decisions (§12 = the readiness round) |
-| `docs/PLAN.md`, `docs/PLAN2.md`, `docs/PLAN3.md` | Package ownership and the briefs the code was built against |
+| `docs/PLAN.md` … `docs/PLAN4.md` | Package ownership and the briefs the code was built against |
 | `src/golisten/QA.md` | Speech QA set and the voice audition procedure |
 
 ## Layout

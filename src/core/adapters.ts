@@ -9,7 +9,8 @@
  *    alternatives, never a confident guess.
  *  - Adapters own no learner state and no storage.
  */
-import type { AnalysisOrigin, AnalysisSourceInfo, ErrorCategory, LanguageCode, PartOfSpeech, Script, TransformationRecord } from './model';
+import type { AnalysisOrigin, AnalysisSourceInfo, ErrorCategory, LanguageCode, PartOfSpeech, Script, TransformationRecord, WordPart } from './model';
+import type { Variety } from './variety';
 import type { RegisterTag, SyllableAnalysis } from './course';
 
 export interface Span { start: number; end: number; text: string }
@@ -36,6 +37,10 @@ export interface AnalysisCandidate {
   register?: RegisterTag[];
   role?: string;
   definition?: string;
+  /** Varieties the form or meaning belongs to when it is not general usage (see core/variety.ts). */
+  varieties?: string[];
+  /** Units inside the written word (verb + attached pronouns, contraction parts). */
+  parts?: WordPart[];
   /** Where this candidate came from; the importer stores it on the analysis. Absent ⇒ 'hand' for a lexicon hit, 'rule' when notes.source === 'rule'. */
   origin?: AnalysisOrigin;
   sourceId?: string;
@@ -154,6 +159,15 @@ export interface LanguageAdapter {
   orthFeatures?(syllables: SyllableAnalysis[]): string[];
   /** Plain-words label of one orth feature key, for the word sheet and the audit views. */
   describeOrthFeature?(feature: string): string;
+  /**
+   * Turn a dictionary's own grammatical labels for an inflected form ("first-person", "plural", "imperfect",
+   * "subjunctive") into this adapter's morphological features. Unknown labels are ignored, never guessed.
+   */
+  morphFromTags?(tags: readonly string[]): Record<string, string>;
+  /** A plain-words line for a feature bundle ("first person plural, imperfect subjunctive"), for the word sheet. */
+  describeMorph?(morph: Record<string, string>, pos?: PartOfSpeech): string;
+  /** The varieties this adapter can label, keyed by code. */
+  readonly varieties?: Readonly<Record<string, Variety>>;
   /** The adapter's own sources (hand word list, rule sets) with their honest review state, keyed by sourceId. */
   readonly sources?: Readonly<Record<string, AnalysisSourceInfo>>;
 }

@@ -1,5 +1,6 @@
 export * from './model';
 export * from './course';
+export * from './variety';
 export * from './ids';
 export * from './events';
 export * from './adapters';
@@ -13,3 +14,4 @@ export type * from './contracts/golisten';
 export type * from './contracts/gotell';
 export type * from './contracts/course';
 export type * from './contracts/lexicon';
+export type * from './contracts/library';

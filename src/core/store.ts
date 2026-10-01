@@ -10,6 +10,7 @@ import type {
 } from './model';
 import type { DomainEvent } from './events';
 import type { ContentNote, Stage, Work } from './course';
+import type { CatalogText } from './contracts/library';
 
 export interface Table<T extends { id: string }> {
   get(id: string): Promise<T | undefined>;
@@ -64,6 +65,8 @@ export interface AppStore {
   works: Table<Work>;
   /** Cultural / regional / register / literary / clause-structure notes attached to texts. */
   notes: Table<ContentNote>;
+  /** The library index: one small row per catalogued text (bundled, built library, personal). Paged, never listed whole. */
+  catalog: Table<CatalogText>;
   /** Run `fn` atomically where the backend supports it (Dexie rw transaction); MemoryStore just runs it. */
   transaction<R>(tables: (keyof AppStore)[], fn: () => Promise<R>): Promise<R>;
   /** Binary asset storage (audio bytes), content-addressed. Not a database blob column in spirit: a separate object store. */
@@ -117,4 +120,5 @@ export const INDEXES: Record<keyof Omit<AppStore, 'transaction' | 'assets'>, str
   stages: ['courseId', 'lang'],
   works: ['courseId', 'stageId', 'lang', 'role'],
   notes: ['textId', 'sentenceId', 'kind'],
+  catalog: ['lang', 'stream', 'workId', 'location', 'stageId'],
 };

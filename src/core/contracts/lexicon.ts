@@ -38,6 +38,8 @@ export interface DictionaryEntry {
   etymology?: number;
   /** Headwords this entry is an alternative form / spelling of. */
   altOf?: string[];
+  /** This form is an inflected form of these lemmas, with the source's own grammatical labels ("first-person", "plural", "imperfect", "subjunctive" …). */
+  formOf?: Array<{ lemma: string; tags: string[] }>;
 }
 
 export interface DictionarySense {

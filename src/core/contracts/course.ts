@@ -2,13 +2,17 @@
  * Course catalogue contract: the ladder of a course and what each stage asks of the reader interface.
  * Implemented in src/course (data + lookup); consumed by the UI and by GoLearn's stage readiness.
  */
-import type { AssistanceProfile, Stage, Work } from '../course';
+import type { AssistanceProfile, Stage, Stream, Work } from '../course';
 import type { Text } from '../model';
 
 export interface CourseCatalog {
   /** Seed the store with the ladder (idempotent; never overwrites rights fields a person has since verified). */
   install(courseId: string): Promise<void>;
   stages(courseId: string): Promise<Stage[]>; // ordered by index
+  /** The content streams of a course, in order (empty for a course without them). */
+  streams(courseId: string): Promise<Stream[]>;
+  /** A page of the works of a course, filtered; for catalogues too large to list whole. */
+  findWorks(q: { courseId: string; stream?: string; stageId?: string; text?: string; domain?: string; variety?: string; rights?: string; offset?: number; limit?: number }): Promise<{ total: number; items: Work[] }>;
   works(courseId: string, stageId?: string): Promise<Work[]>; // ordered: spine first, then order
   work(workId: string): Promise<Work | undefined>;
   /** The imported texts (chapters) of a work, in chapter order. Empty until the learner imports his copy. */

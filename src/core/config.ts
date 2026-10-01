@@ -14,7 +14,12 @@ export const LANGUAGE_ROWS: Language[] = [
 ];
 
 export const COURSES: Course[] = [
-  { id: 'honduras-es', lang: 'es', country: 'Honduras', title: 'Honduras → Spanish', preferredLocales: ['es-HN', 'es-419', 'es-MX', 'es-US', 'es-ES'] },
+  {
+    id: 'honduras-es', lang: 'es', country: 'Honduras', title: 'Honduras → Spanish', preferredLocales: ['es-HN', 'es-419', 'es-MX', 'es-US', 'es-ES'],
+    // Active target: modern Honduran / Central American Spanish within general Latin American Spanish. Voseo is part of
+    // it; vosotros (Spain) and the historical language are for recognition only.
+    variety: { target: 'es-HN', within: ['es-CA', 'es-419'], activeFeatures: ['voseo'] },
+  },
   { id: 'albania-sq', lang: 'sq', country: 'Albania', title: 'Albania → Albanian', preferredLocales: ['sq-AL'] },
   { id: 'thailand-th', lang: 'th', country: 'Thailand', title: 'Thailand → Thai', preferredLocales: ['th-TH'] },
   { id: 'india-hi', lang: 'hi', country: 'India', title: 'India → Hindi', preferredLocales: ['hi-IN'] },

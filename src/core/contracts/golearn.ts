@@ -7,6 +7,7 @@ import type {
   LearnerItemState, Lemma, PersonalizedCoverage, Phrase, PhraseOccurrence, Sentence, Token, TokenAnalysis,
 } from '../model';
 import type { DomainEvent } from '../events';
+import type { TextFeatures, TextProfile } from './library';
 
 /** Layered support for one token — the reader asks for one level at a time. */
 export interface TokenSupport {
@@ -205,6 +206,19 @@ export interface GoLearn {
   readingPace(userId: string, opts?: { textId?: string; stageId?: string; lang?: LanguageCode }): Promise<ReadingPace>;
   /** The learner's whole history with one item, across every text and surface. */
   itemHistory(userId: string, itemId: string): Promise<ItemHistory>;
+  /**
+   * Personal difficulty of a text that is NOT in the store, from its profile alone (forms, lemmas, phrases,
+   * constructions with counts). Cost is proportional to the profile, never to the library or to the learner's history.
+   */
+  scoreProfile(userId: string, profile: TextProfile, opts?: { domains?: string[]; variety?: string }): Promise<ProfileScore>;
+  /**
+   * Rank candidate texts for this learner: comprehensibility first, then interest, natural reinforcement of weak
+   * words / phrases / constructions (contextual repetition), regional relevance, novelty and desired challenge.
+   * Controlled course texts lose weight as authentic texts become comprehensible. Every score carries its reasons.
+   */
+  rankLibrary(userId: string, candidates: RankCandidate[], opts?: RankOptions): Promise<RankedText[]>;
+  /** Sentences in the store (live, visible ones) containing a lemma, a form, a phrase or a construction: search and natural examples. */
+  findOccurrences(q: { lang: LanguageCode; itemId: string; textIds?: string[]; includeUnpublished?: boolean; limit?: number }): Promise<Array<{ sentenceId: string; textId: string; tokenIds: string[] }>>;
 
   /**
    * Resolves when every event emitted so far has been folded into derived state. All read methods of GoLearn
@@ -256,6 +270,76 @@ export interface DifficultyForecast {
   unanalysedWords: number;
   limits: string[];
   summary: string;
+  /** Generic features of the text (when computed) and the personal estimate built from them and the learner's record. */
+  features?: TextFeatures;
+  personal?: PersonalDifficulty;
+}
+
+/**
+ * A personal difficulty estimate in words, with the factors behind it. Deliberately coarse: the label and each
+ * factor's level are all it claims; `caveats` says what the data cannot support (little history, unanalysed words,
+ * no frequency data …).
+ */
+export interface PersonalDifficulty {
+  label: 'comfortable' | 'manageable' | 'challenging' | 'hard' | 'unknown';
+  /** shown-understood + likely-familiar share of word tokens, when it could be estimated. */
+  lexicalCoverage?: number;
+  factors: Array<{
+    key: 'lexical-coverage' | 'new-words' | 'phrases' | 'constructions' | 'sentence-length' | 'clause-depth' | 'subjunctive' | 'clitics'
+      | 'regional' | 'historical' | 'proper-names' | 'domain' | 'author' | 'unanalysed';
+    level: 'low' | 'moderate' | 'high';
+    note: string;
+  }>;
+  caveats: string[];
+}
+
+export interface ProfileScore {
+  textId: string;
+  /** Shares of word tokens: demonstrated, estimated familiar, met, never met. They sum to 1. */
+  knownShare: number;
+  familiarShare: number;
+  metShare: number;
+  newShare: number;
+  newForms: number;
+  /** Items of the profile the learner has met and still needs help with (the natural-reinforcement value of the text). */
+  weakItems: string[];
+  /** Constructions and phrases in the profile the learner has never met. */
+  newPatterns: string[];
+  newPhrases: string[];
+  /** How much of the profile's domain vocabulary he already knows, when the text has domains and he has history in them. */
+  domainFamiliarity?: number;
+  personal: PersonalDifficulty;
+}
+
+export interface RankCandidate {
+  profile: TextProfile;
+  /** Catalogue facts the ranking uses. */
+  stream?: string;
+  domains?: string[];
+  variety?: string;
+  author?: string;
+  controlled?: boolean; // written for the course (acquisition spine) rather than authentic
+  published?: boolean;
+  rights?: string;
+  alreadyRead?: boolean;
+}
+
+export interface RankOptions {
+  interests?: string[];
+  /** The course's variety policy (regional relevance). */
+  targetVariety?: string;
+  /** 'easy' favours high coverage, 'stretch' accepts more new language. Default 'steady'. */
+  challenge?: 'easy' | 'steady' | 'stretch';
+  limit?: number;
+}
+
+export interface RankedText {
+  textId: string;
+  score: number; // 0..1, comparable only within one ranking
+  parts: Record<'comprehensibility' | 'interest' | 'reinforcement' | 'regional' | 'novelty' | 'challenge' | 'quality', number>;
+  /** One short sentence per reason that actually mattered, most important first. */
+  reasons: string[];
+  profile: ProfileScore;
 }
 
 export type ReadinessSignalKey =

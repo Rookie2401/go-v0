@@ -78,7 +78,8 @@ export interface Stage {
   index: number; // order in the ladder
   key: string; // "0" | "g1" … "g9" | "open"
   label: string; // "Stage 0 — Pre-reader", "Grade 4"
-  kind: 'pre-reader' | 'grade' | 'open';
+  /** 'shelf' = a browsing shelf of a large library (Spanish): an orientation, never a lock and never a gate. */
+  kind: 'pre-reader' | 'grade' | 'open' | 'shelf';
   /** What the stage is for (decoding, first sustained narrative, discourse particles…). */
   purpose: string[];
   /** Approximate CEFR band, when the course owner states one. An orientation, never an entry requirement. */
@@ -95,7 +96,31 @@ export type WorkRole = 'spine' | 'subsidiary' | 'nonfiction' | 'extensive' | 'au
  * established (public domain with a stated basis, or a licence/permission on file); otherwise the work is a
  * curriculum recommendation that the learner imports from a copy he is entitled to use.
  */
+/**
+ * The single rights state shown to the learner and enforced by tooling. "rights-unverified" is never presented as
+ * public domain; only the two "verified" states (set by a named person, with the basis and source recorded) allow
+ * a work's text to be bundled.
+ */
+export type RightsState =
+  | 'verified-public-domain'
+  | 'verified-open-licence'
+  | 'course-authored' // written for the course by its authors (machine-drafted text says so separately and still needs review)
+  | 'recommended-only' // listed for the learner to find; the app holds no text
+  | 'user-supplied' // the learner's own lawful copy, on this device only
+  | 'rights-unverified'
+  | 'prohibited-from-bundling';
+
 export interface WorkRights {
+  /** Preferred over the older fields below when present. */
+  state?: RightsState;
+  /** Where the rule applies, when it matters ("public domain in the United States; other countries differ"). */
+  jurisdiction?: string;
+  canModify?: boolean;
+  canStoreOffline?: boolean;
+  canBundleAudio?: boolean;
+  /** Who verified the rights and when (required for the two verified states). */
+  verifiedBy?: string;
+  verifiedAt?: string;
   copyrightStatus: 'in-copyright' | 'public-domain' | 'licensed' | 'unknown';
   /** Why we believe the status (author's death year + term, licence text, publisher statement…) and how sure. */
   basis?: string;
@@ -137,6 +162,41 @@ export interface Work {
   /** May be skipped / is optional at this stage. */
   optional?: boolean;
   notes?: string;
+  // ── catalogue fields for a large library (all optional; unknown stays absent, never guessed) ──
+  /** Content streams this work belongs to (keys of the course's streams: 'acquisition', 'library', 'honduras', …). */
+  streams?: string[];
+  /** Variety of the language the work is written in ('es-HN', 'es-ES', 'es-hist', …; see core/variety.ts). */
+  variety?: string;
+  /** Country or region the work comes from / is about, in plain words. */
+  region?: string;
+  era?: string; // "19th century", "medieval", "contemporary"
+  genre?: string;
+  audience?: string; // "children", "general", "scholarly"
+  /** Subject domains ('history', 'engineering', 'theology' …): feeds domain familiarity. */
+  domains?: string[];
+  /** A generic difficulty orientation for a reader with no history. Personal difficulty is computed, not stored. */
+  genericLevel?: 'controlled' | 'easy' | 'intermediate' | 'advanced' | 'literary' | 'classical' | 'historical';
+  wordCount?: number;
+  publicationYear?: number;
+  /** Year of the author's death, when known: a lead for rights research, never a conclusion. */
+  authorDied?: number;
+  sourceUrl?: string;
+  /** How far the text has come: only catalogued, ingested by a tool into the library, or bundled with the app. */
+  ingestion?: 'catalogued' | 'ingested' | 'bundled';
+}
+
+/** A major content stream of a course. Streams share one learner model; they are shelves of one library, not courses. */
+export interface Stream {
+  id: string; // ids.stream(courseId, key)
+  courseId: string;
+  lang: LanguageCode;
+  key: string;
+  label: string;
+  description: string;
+  kind: 'acquisition' | 'library' | 'regional' | 'knowledge' | 'scripture' | 'mission' | 'personal' | 'listening';
+  order: number;
+  /** Shown in navigation. A stream whose engine is switched off (listening while GoListen is deferred) is kept as data. */
+  available: boolean;
 }
 
 // ───────────────────────────── language varieties ─────────────────────────────

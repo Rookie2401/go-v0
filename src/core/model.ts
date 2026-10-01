@@ -36,6 +36,8 @@ export interface Course {
   preferredLocales: string[]; // e.g. ["es-HN", "es-419", "es-MX"]
   /** Preferred Bible version id for this course (a Text with kind 'scripture'). */
   bibleVersionId?: string;
+  /** Which variety of the language the learner aims to USE, and which he should only recognise (see core/variety.ts). */
+  variety?: VarietyPolicy;
 }
 
 export interface User {
@@ -43,6 +45,8 @@ export interface User {
   displayName: string;
   courseId: string;
   createdAt: string; // ISO
+  /** Subjects and streams the learner chose to see more of ('honduras', 'engineering', 'theology' …). Never narrows what he may read. */
+  interests?: string[];
 }
 
 // ───────────────────────────── content / provenance ─────────────────────────────
@@ -104,6 +108,26 @@ export interface Corpus {
   title: string;
 }
 
+/** One kind of damage or noise found in a source text, with how often and an example. */
+export interface QualityFlag {
+  code:
+    | 'mojibake' | 'replacement-characters' | 'broken-accents' | 'ocr-confusions' | 'hard-wrapped-lines' | 'hyphenated-line-breaks'
+    | 'page-numbers' | 'running-heads' | 'footnote-markers' | 'duplicated-paragraphs' | 'boilerplate' | 'title-page-noise'
+    | 'language-mismatch' | 'mixed-scripts' | 'mangled-punctuation' | 'no-chapters-found' | 'very-long-paragraphs' | 'control-characters';
+  severity: 'info' | 'warning' | 'serious';
+  count: number;
+  /** A short example (at most 120 characters) so a person can see what was meant. */
+  sample?: string;
+  message: string;
+}
+
+export interface QualityReport {
+  checkedWith: string; // "quality@1"
+  flags: QualityFlag[];
+  /** 'clean' = nothing found; 'usable' = only info / warnings; 'damaged' = at least one serious flag: import only after a person has looked. */
+  verdict: 'clean' | 'usable' | 'damaged';
+}
+
 export interface Text {
   id: string; // see ids.textId
   corpusId: string;
@@ -146,6 +170,13 @@ export interface Text {
   workId?: string;
   /** The learner's own copy of a published work (source.rights 'personal-copy'): readable on this device, labelled, never bundled. */
   personalCopy?: boolean;
+  /** What the importer's quality check found in the source (OCR damage, wrapped lines, boilerplate …). Flags, never silent fixes. */
+  quality?: QualityReport;
+  /** Catalogue facts carried from the work or the document, for browsing and scoring: content streams and subject domains. */
+  streams?: string[];
+  domains?: string[];
+  /** Variety of the language the text is written in ('es-HN', 'es-ES', 'es-hist' …). */
+  variety?: string;
   chapter?: { index: number; title?: string };
 }
 
@@ -225,6 +256,7 @@ export interface Lemma {
 }
 
 import type { RegisterTag, SyllableAnalysis } from './course';
+import type { VarietyPolicy } from './variety';
 
 export type PartOfSpeech =
   | 'NOUN' | 'PROPN' | 'VERB' | 'AUX' | 'ADJ' | 'ADV' | 'PRON' | 'DET' | 'ADP' | 'CONJ' | 'SCONJ'
@@ -259,6 +291,18 @@ export interface AnalysisSourceInfo {
   version?: string;
 }
 
+/** One unit inside a written word (a verb and its attached pronouns, the two halves of a contraction). */
+export interface WordPart {
+  text: string;
+  start: number;
+  end: number;
+  lemma?: string;
+  pos?: PartOfSpeech;
+  morph?: Record<string, string>;
+  /** In plain words: "indirect object pronoun", "direct object pronoun", "reflexive". */
+  role?: string;
+}
+
 export interface TokenAnalysis {
   id: string;
   tokenId: string;
@@ -275,6 +319,10 @@ export interface TokenAnalysis {
   syllables?: SyllableAnalysis[];
   /** Variety / register when it is not ordinary standard usage. Absent = no claim. */
   register?: RegisterTag[];
+  /** Varieties this form or meaning belongs to when it is not general ('es-ES', 'voseo', 'es-HN', 'es-hist' …). Absent = general. */
+  varieties?: string[];
+  /** The parts of one written word that is several units (decírselo = decir + se + lo). Offsets within the token surface. */
+  parts?: WordPart[];
   /** What the word is doing, when that matters more than a gloss: 'classifier', 'particle', 'discourse-marker', 'aspect', 'serial-verb', 'pronoun', 'negator', 'question'. */
   role?: string;
   /** An easy definition in the target language itself, when one is available. */

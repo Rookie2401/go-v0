@@ -35,6 +35,7 @@ export const ids = {
   orth: (lang: LanguageCode, feature: string) => `orth:${lang}:${feature}`,
   stage: (courseId: string, key: string) => `stage:${courseId}:${key}`,
   work: (courseId: string, slug: string) => `work:${courseId}:${slug}`,
+  stream: (courseId: string, key: string) => `stream:${courseId}:${key}`,
   note: (textId: string, key: string) => `note:${textId}:${key}`,
   rescue: (sentenceId: string) => `rescue:${sentenceId}`,
   analysis: (tokenId: string, analyzer: string, n = 0) => `an:${tokenId}:${analyzer}:${n}`,

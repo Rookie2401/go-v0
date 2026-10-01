@@ -94,7 +94,8 @@ describe('"What are you trying to say?"', () => {
     h = await makeHarness({ tell: { proposal } });
     mounted = await h.mount(<Testimony />);
     if (draft) await typeInto(editor(), draft);
-    await typeInto(byLabel<HTMLInputElement>(mounted.container, 'What are you trying to say?'), 'I began to understand my sin');
+    await click(button(mounted.container, 'What are you trying to say?')); // a collapsed disclosure: open it first
+    await typeInto(byLabel<HTMLInputElement>(mounted.container, 'What you want to say, in English'), 'I began to understand my sin');
     await click(button(mounted.container, 'Help me say it'));
     return byLabel(mounted.container, 'Suggested wording');
   }

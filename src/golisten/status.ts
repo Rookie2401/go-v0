@@ -13,6 +13,12 @@
  *   every live sentence ready, voice not reviewed real speech  preview-only
  *   every live sentence ready, reviewed real speech ......... ready      (the only state with evidenceEligible)
  *
+ * Partial generation: when some live sentences are ready and others failed, the reason reads
+ * "x of y sentences ready; n failed: <first error>" (plus "; k still generating" / "; k more wait for the provider"),
+ * the state follows the rules above (generating while anything is pending and runnable, otherwise failed), and the
+ * ready segments stay playable: the manifest lists every segment and the player skips the ones that are not ready.
+ * `audioStatusDetail` also returns the failed sentences (id, index, text, error) for diagnostics.
+ *
  * "Live" = not retired by a later import. A sentence is matched to its segment by recomputing the cache key
  * (display text + speech text + voice + provider version + lexicon ...), so an edited sentence is missing while its
  * neighbours stay ready; when the provider is not registered this session it falls back to the manifest's membership.
@@ -38,11 +44,20 @@ export interface AudioStatusOptions {
 type Group = { segmentId: string; seg?: AudioSegment; sentences: Sentence[] };
 type Cls = 'ready' | 'pending' | 'failed' | 'missing';
 
+/** One live sentence whose audio could not be produced (dead job / failed segment), with the reason. */
+export interface FailedSentence { sentenceId: string; index: number; text: string; segmentId: string; error: string; attempts?: number }
+
 export async function audioStatusFor(rt: Runtime, textId: string, opts: AudioStatusOptions = {}): Promise<AudioStatus> {
+  return (await audioStatusDetail(rt, textId, opts)).status;
+}
+
+/** The status plus the live sentences that failed (for diagnostics: which sentences failed and why). Never throws. */
+export async function audioStatusDetail(rt: Runtime, textId: string, opts: AudioStatusOptions = {}): Promise<{ status: AudioStatus; failedSentences: FailedSentence[] }> {
+  const failedSentences: FailedSentence[] = [];
   try {
-    return await compute(rt, textId, opts);
+    return { status: await compute(rt, textId, opts, failedSentences), failedSentences };
   } catch (e) {
-    return blank(textId, 0, 'failed', `Audio status could not be determined: ${e instanceof Error ? e.message : String(e)}`);
+    return { status: blank(textId, 0, 'failed', `Audio status could not be determined: ${e instanceof Error ? e.message : String(e)}`), failedSentences: [] };
   }
 }
 
@@ -55,7 +70,7 @@ const voiceFields = (v: VoiceConfig | undefined) => v ? {
   deliveredLocale: v.actualLocale, voiceReview: v.reviewStatus ?? 'unreviewed',
 } : {};
 
-async function compute(rt: Runtime, textId: string, opts: AudioStatusOptions): Promise<AudioStatus> {
+async function compute(rt: Runtime, textId: string, opts: AudioStatusOptions, failedOut: FailedSentence[]): Promise<AudioStatus> {
   const { store } = rt;
   const text: Text | undefined = await store.texts.get(textId);
   if (!text) return blank(textId, 0, 'unavailable', `Text ${textId} was not found, so it has no audio.`);
@@ -116,7 +131,14 @@ async function compute(rt: Runtime, textId: string, opts: AudioStatusOptions): P
   const jobs = new Map<string, AudioJob>();
   const readyAssets: AudioAsset[] = [];
   let readyN = 0, failedN = 0, pendingN = 0, missingN = 0, retrying = 0;
-  const errors: string[] = [];
+  const errors: string[] = []; // errors of jobs that are being retried (not dead yet)
+  const deadErrors: string[] = []; // errors of sentences that failed for good
+  const markFailed = (g: Group, seg: AudioSegment, job: AudioJob | undefined): Cls => {
+    const error = job?.lastError ?? 'no error was recorded';
+    deadErrors.push(error);
+    for (const s of g.sentences) failedOut.push({ sentenceId: s.id, index: s.index, text: s.text.length > 80 ? `${s.text.slice(0, 79)}…` : s.text, segmentId: seg.id, error, attempts: job?.attempts });
+    return 'failed';
+  };
   const cls = async (g: Group): Promise<Cls> => {
     const seg = g.seg;
     if (!seg) return 'missing';
@@ -125,9 +147,9 @@ async function compute(rt: Runtime, textId: string, opts: AudioStatusOptions): P
     if (seg.status === 'ready' && seg.assetId) {
       const asset = await store.audioAssets.get(seg.assetId);
       if (asset && (await store.assets.has(seg.assetId))) { readyAssets.push(asset); return 'ready'; }
-      return job && job.status === 'dead' ? 'failed' : 'pending'; // bytes evicted: will be regenerated
+      return job && job.status === 'dead' ? markFailed(g, seg, job) : 'pending'; // bytes evicted: will be regenerated
     }
-    if (seg.status === 'failed' || job?.status === 'dead') { if (job?.lastError) errors.push(job.lastError); return 'failed'; }
+    if (seg.status === 'failed' || job?.status === 'dead') return markFailed(g, seg, job);
     if (job?.status === 'failed' && job.lastError) { errors.push(job.lastError); retrying++; }
     return 'pending';
   };
@@ -150,17 +172,25 @@ async function compute(rt: Runtime, textId: string, opts: AudioStatusOptions): P
   if (manifest.contentVersion < tcv) {
     return out('stale', `This audio was made for version ${manifest.contentVersion} of the text; the text is now version ${tcv}. Regenerate the audio.`);
   }
+  // Partial generation is stated as such: "x of y sentences ready; n failed: <first error>". The ready sentences stay
+  // playable (the manifest lists every segment and the player skips the ones that are not ready).
+  const firstDead = deadErrors[0];
+  const partial = readyN > 0 && failedN > 0 ? `${readyN} of ${total} sentences ready; ${failedN} failed: ${firstDead}` : undefined;
+  const couldNot = `${failedN} of ${total} sentence${total === 1 ? '' : 's'} could not be voiced: ${firstDead}`;
   if (pendingN > 0) {
     if (provider) {
       const u = await usability(rt, provider);
       if (!u.usable && failedN === 0) return out('unavailable', `Audio generation is waiting for the speech provider. ${availabilityMessage(u.why)}`);
-      if (!u.usable) return out('failed', `${failedN} of ${total} sentence${total === 1 ? '' : 's'} could not be voiced${errors[0] ? `: ${errors[0]}` : ''}; ${pendingN} more wait for the speech provider. ${availabilityMessage(u.why)}`);
+      if (!u.usable) return out('failed', `${partial ?? couldNot}; ${pendingN} more wait for the speech provider. ${availabilityMessage(u.why)}`);
     }
     const retry = retrying > 0 ? ` ${retrying} ${retrying === 1 ? 'sentence is' : 'sentences are'} being retried after an error (${errors[0]}).` : '';
+    if (partial) return out('generating', `${partial}; ${pendingN} still generating.${retry}`);
     return out('generating', `Generating audio: ${readyN} of ${total} ready.${retry}`);
   }
   if (failedN > 0) {
-    return out('failed', `${failedN} of ${total} sentence${total === 1 ? '' : 's'} could not be voiced${errors[0] ? `: ${errors[0]}` : ''}. Fix the cause, then retry.`);
+    const missing = missingN > 0 ? ` ${missingN} more ${missingN === 1 ? 'has' : 'have'} no audio yet.` : '';
+    if (partial) return out('failed', `${partial}.${missing} The ready sentences can still be played. Fix the cause, then retry.`);
+    return out('failed', `${couldNot}.${missing} Fix the cause, then retry.`);
   }
   if (missingN > 0) {
     if (readyN === 0) return out('not-generated', `No sentence of the current text has audio yet (voice ${voice.voiceId}).`);

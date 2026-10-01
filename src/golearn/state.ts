@@ -3,7 +3,8 @@
  * *recomputed* from its item's encounters (sorted by time, id), never incrementally patched. That makes
  * re-weighting idempotent and makes `rebuild` trivially reproducible.
  *
- * Encounters carry `session` and `replays` (contract fields; old rows may lack them and are read as session '').
+ * Encounters carry `sitting` (derived from event time, see sitting.ts), `contentVersion`, `session` (the UI's id of the
+ * creating event, informational only) and `replays`. Old rows may lack them; they are rebuilt on the policy bump.
  */
 import type {
   AdapterRegistry, AppStore, AssistanceLevel, DimensionState, Encounter, EventBus, EvidenceKind, EvidencePolicy, ItemKind,
@@ -54,7 +55,14 @@ export interface NewEncounter {
   textId: string;
   surface: Encounter['surface'];
   modality: Modality;
+  /** The UI's session id of the event that created the encounter (informational; never used for dedupe or estimates). */
   session: string;
+  /** Time-derived sitting key: the dedupe slot of reading / listening encounters. */
+  sitting?: string;
+  /** Content version the evidence was gathered against. */
+  contentVersion?: number;
+  /** Overrides the id slot (production encounters are keyed once-ever, whatever the sitting). */
+  idKey?: string;
   at: string;
   evidenceKind: EvidenceKind;
   assistance: AssistanceLevel;
@@ -65,14 +73,14 @@ export interface NewEncounter {
 }
 
 /**
- * Creates the encounter unless (user, item, sentence, modality, session) already has one.
+ * Creates the encounter unless (user, item, sentence, modality, sitting) already has one.
  * `replaceIf` (listening): an existing encounter is replaced by the candidate when the caller says the candidate is
  * better evidence; this is idempotent and order-independent. The original `at` is kept.
  */
 export async function addEncounter(
   ctx: Ctx, n: NewEncounter, replaceIf?: (existing: StoredEncounter) => boolean,
 ): Promise<{ changed: boolean; created: boolean; encounter: StoredEncounter }> {
-  const id = ids.encounter(n.userId, n.itemId, n.sentenceId, n.modality, n.session);
+  const id = ids.encounter(n.userId, n.itemId, n.sentenceId, n.modality, n.idKey ?? n.sitting ?? n.session);
   const existing = (await ctx.store.encounters.get(id)) as StoredEncounter | undefined;
   if (existing) {
     if (replaceIf?.(existing)) {
@@ -91,12 +99,17 @@ export async function addEncounter(
     textId: n.textId, surface: n.surface, modality: n.modality, at: n.at, evidenceKind: n.evidenceKind,
     assistance: n.assistance, priorLevel: 'unseen', weight: n.weight, session: n.session,
   };
+  if (n.sitting !== undefined) enc.sitting = n.sitting;
+  if (n.contentVersion !== undefined) enc.contentVersion = n.contentVersion;
   if (n.playbackSpeed !== undefined) enc.playbackSpeed = n.playbackSpeed;
   if (n.replays !== undefined) enc.replays = n.replays;
   if (n.productionKind) enc.productionKind = n.productionKind;
   await ctx.store.encounters.put(enc);
   return { changed: true, created: true, encounter: enc };
 }
+
+/** The sitting an encounter belongs to (rows from before evidence@3 fall back to their session until rebuilt). */
+export const sittingOf = (e: { sitting?: string; session?: string }) => e.sitting ?? e.session ?? '';
 
 /** Running totals for one (item, modality) while walking its encounters in time order. */
 class Acc {
@@ -105,11 +118,11 @@ class Acc {
   exposures = 0;
   unassisted = 0;
   assisted = 0;
-  /** distinct demonstrated (sentence, session) units */
+  /** distinct demonstrated (sentence, sitting) units */
   readonly demonstrated = new Set<string>();
   /** encounters with no help at all (exposure or demonstrated): the estimate's raw material */
   plain = 0;
-  readonly plainSessions = new Set<string>();
+  readonly plainSittings = new Set<string>();
   /** help flags of the last two encounters */
   tail: boolean[] = [];
   last?: string;
@@ -122,8 +135,8 @@ class Acc {
     if (enc.evidenceKind === 'exposure') this.exposures += 1;
     if (isUnassisted(this.modality, enc.assistance)) this.unassisted += 1; else this.assisted += 1;
     if (isReceptive(this.modality)) {
-      if (enc.evidenceKind === 'demonstrated') this.demonstrated.add(`${enc.sentenceId}\u0000${enc.session ?? ''}`);
-      if (enc.assistance === 0) { this.plain += 1; this.plainSessions.add(enc.session ?? ''); }
+      if (enc.evidenceKind === 'demonstrated') this.demonstrated.add(`${enc.sentenceId}\u0000${sittingOf(enc)}`);
+      if (enc.assistance === 0) { this.plain += 1; this.plainSittings.add(sittingOf(enc)); }
       this.tail.push(enc.assistance > 0);
       if (this.tail.length > ESTIMATE.cleanTail) this.tail.shift();
     }
@@ -140,7 +153,7 @@ class Acc {
   estimated(level: LearnerLevel): boolean {
     return isReceptive(this.modality)
       && this.plain >= ESTIMATE.minUnassisted
-      && this.plainSessions.size >= ESTIMATE.minSessions
+      && this.plainSittings.size >= ESTIMATE.minSittings
       && this.tail.length >= ESTIMATE.cleanTail && this.tail.every((h) => !h)
       && levelIndex(level) < levelIndex('recognized');
   }

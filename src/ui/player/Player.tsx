@@ -167,7 +167,9 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
     // The honest state of this text's audio decides everything below.
     const st = await golisten.audioStatus(textId, { preview });
     setAudio(st);
-    if (st.state === 'unavailable' || st.state === 'not-generated' || st.state === 'generating' || st.state === 'failed' || st.state === 'stale') {
+    // PARTIAL generation (some sentences ready, some failed for good): the ready ones stay playable, and the reason says which failed.
+    const partial = st.state === 'failed' && st.readySegments > 0;
+    if (st.state === 'unavailable' || st.state === 'not-generated' || st.state === 'generating' || (st.state === 'failed' && !partial) || st.state === 'stale') {
       machineRef.current = null; setModel(null); setManifest(undefined);
       setStatus(st.state === 'not-generated' ? 'none' : st.state);
       return;
@@ -401,6 +403,12 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
         {isFixture && <span className="chip chip--wine" data-testid="fixture-badge">fixture audio — not speech</span>}
         {audio?.state === 'preview-only' && <span className="chip chip--wine" data-testid="preview-audio-badge">preview audio — not counted</span>}
       </div>
+      {audio?.state === 'failed' && (
+        <div className="note note--warn" role="status" data-testid="audio-partial">
+          <p>{audio.reason ?? `${audio.readySegments} of ${audio.totalSegments} sentences ready; ${audio.failedSegments} failed.`}</p>
+          <button type="button" className="btn btn--small btn--quiet" onClick={() => { void prepare(); }}>Try the missing sentences again</button>
+        </div>
+      )}
       {audio?.state === 'preview-only' && (
         <p className="note note--warn" role="note" data-testid="preview-audio-note">
           Listening to this does not count toward your progress.{audio.reason ? ` ${audio.reason}` : ''}

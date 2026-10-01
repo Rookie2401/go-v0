@@ -1,7 +1,7 @@
 /**
  * GoListen - audio pipeline + provider abstraction + listening events + DOM-free player logic.
- * See QA.md for what is verified (fixture pipeline; Azure adapter against a mocked fetch) and what is not
- * (every real voice; the Azure adapter against the live service).
+ * See QA.md and docs/SPEECH.md for what is verified (fixture pipeline; the Azure adapter and the same-origin proxy
+ * provider against a mocked fetch) and what is not (every real voice; the live Azure service; the live proxy).
  *
  * No fixture by default: without a usable real provider, availability() is unavailable, audioStatus() is
  * 'unavailable', and ensureAudio throws AudioUnavailable before writing anything.
@@ -13,7 +13,7 @@ import { FIXTURE_PROVIDER_ID, FixtureTtsProvider } from './fixtureProvider';
 import { runEligibleJobs } from './jobs';
 import { ensureAudioForText, ensureSentenceAudioFor } from './pipeline';
 import { aggregateAvailability } from './providers';
-import { audioStatusFor, type AudioStatusOptions } from './status';
+import { audioStatusDetail, audioStatusFor, type AudioStatusOptions, type FailedSentence } from './status';
 import { GOLISTEN_VERSION, type GoListenDeps, type Runtime } from './types';
 import { resolveVoiceConfig } from './voices';
 
@@ -23,7 +23,8 @@ export { FixtureTtsProvider, FIXTURE_PROVIDER_ID, FIXTURE_ENGINE, FIXTURE_DISCLA
 export { AzureSpeechProvider, AZURE_PROVIDER_ID, AZURE_PROVIDER_VERSION, AZURE_ENGINE, AZURE_OUTPUT_FORMAT, AZURE_VOICES, type AzureSpeechOptions, type AzureVoiceEntry } from './azureProvider';
 export { AudioUnavailableError, TtsProviderError, isAudioUnavailable, unavailableMessage, describeError, type ProviderErrorKind, type UnavailableReason } from './errors';
 export { isVoiceReviewed } from './voices';
-export type { AudioStatusOptions } from './status';
+export type { AudioStatusOptions, FailedSentence } from './status';
+export { ProxySpeechProvider, PROXY_PROVIDER_ID, PROXY_PROVIDER_VERSION_UNRESOLVED, PROXY_STATUS_PATH, type ProxySpeechOptions, type ProxyStatus } from './proxyProvider';
 export { listeningEmitter, emitPlayerEffects, resolvePlaybackFacts, type ListeningEmitter, type ListeningContext, type SegmentRef, type PlaybackFacts } from './events';
 export {
   PlayerMachine, createPlayerModel, reducePlayer, clampSpeed, isTranscriptVisible, playableIndexes, MIN_SPEED, MAX_SPEED, SPEED_STEP,
@@ -44,6 +45,8 @@ export interface GoListenDiagnosticsV2 extends GoListenDiagnostics {
     voiceReview?: VoiceConfig['reviewStatus'];
     providerVersion?: string;
   }>;
+  /** Only when diagnostics(textId) is asked: the live sentences of that text whose audio failed for good, with the reason. */
+  failedSentences?: FailedSentence[];
 }
 
 export interface GoListenService extends GoListen {
@@ -157,7 +160,9 @@ export function createGoListen(deps: GoListenDeps): GoListenService {
           isSpeech: asset?.isSpeech ?? voice?.isSpeech, voiceReview: voice?.reviewStatus, providerVersion: voice?.providerVersion,
         });
       }
-      return { segments: rows, failedJobs, deadJobs };
+      const out: GoListenDiagnosticsV2 = { segments: rows, failedJobs, deadJobs };
+      if (textId) out.failedSentences = (await audioStatusDetail(rt, textId)).failedSentences;
+      return out;
     },
     async jobs(status?: AudioJob['status']): Promise<AudioJob[]> {
       const rows = status ? await store.audioJobs.where('status', status) : await store.audioJobs.all();

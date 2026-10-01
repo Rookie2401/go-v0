@@ -18,6 +18,40 @@ unreviewed content* mode, together with the reasons it is not published.
 
 ---
 
+## Walkthrough: import → validate → review → publish → revise
+
+The exact order, with the commands. A worked example on a copy of the bundled Spanish story, with the real output
+of each command, is in [`docs/import/examples/README.md`](import/examples/README.md). Run commands from the project
+root. `<file>` is your document (any folder; keep experiments out of `data/corpus`).
+
+1. **Write the document.** Copy a template from `docs/import/templates/` (`ci-story`, `dialogue` or `scripture`),
+   fill it in, and keep the defaults `"review": { "status": "unreviewed" }` and `"needs-native-review"` in
+   `editorialTags` if anyone other than a native-speaker reviewer wrote it. Never type Scripture from memory.
+2. **Validate.** `npm run corpus:validate -- <file>` (a folder works too). Fix every `ERROR` using its `hint:` until
+   the exit code is `0`. For each document the output ends with `would publish: yes|no` and one `missing:` line per
+   unmet publication requirement; `no` is expected until step 4 (and, for Scripture, step 3).
+3. **Scripture only: verify the wording.** `node scripts/verify-scripture.mjs` (see §3). Without a complete
+   `scripture.verification` the review command refuses the document.
+4. **Review.** A named reviewer checks the text (§4), then
+   `npm run corpus:review -- <file> --by "<name>" [--status reviewed|approved|in-review|rejected] [--date YYYY-MM-DD] [--notes "…"]`.
+   It writes the `review` block, removes `needs-native-review` for `reviewed` / `approved`, changes no text, and
+   prints `would publish: yes|no` with any remaining reasons. Without `--by` it refuses (exit `1`). Re-run
+   `npm run corpus:validate -- <file>`: it must now say `would publish: yes`.
+5. **Import.** In the app, **Settings → Content → Import texts**: choose the `.json` file(s), read the validation
+   report, press **Import N document(s)**. (Or place the file in `data/corpus/<lang>/` — only for texts that are
+   meant to ship with the app — and run `npm run corpus:check`.) The result per document is `created`, `updated`,
+   `unchanged` or `rejected`; a batch with one error imports nothing.
+6. **Publish.** Nothing to press: the gate sets `published` at import from the review, the rights and (Scripture)
+   the verification. **Settings → Content → Texts on this device** shows Review, Published and, when not published,
+   the reasons. Learners see the text as soon as it says Published `yes`.
+7. **Revise.** Edit the same file (same `id`, same `source.id`), repeat step 2 (and step 4 if the wording changed
+   — the importer keeps the review block as written, so new wording needs a new look and a new review record), then import it again as in
+   step 5. The result says `updated`, the content version goes up, the edited sentence gets a new id and the old
+   one is retired, unchanged sentences keep their ids, audio and learner history. **Settings → Content** lists
+   the version history of each text (`contentHistory`). Importing the same file again is a no-op.
+
+---
+
 ## 1. The document (schema version 2)
 
 One JSON file is one text. `schemaVersion` must be `2`; any other version is rejected with a message that tells
@@ -133,8 +167,18 @@ npm run corpus:validate -- data/corpus          # a directory is walked recursiv
 ```
 
 Prints, per document, every issue as `path: message [code]` plus a `hint:` saying what to do, the analysis
-coverage (share of words the adapter can analyse, and which forms it cannot) and whether the text **would be
-published**. Exit code `1` if any error is found (or nothing was given), `0` otherwise. Warnings never fail.
+coverage (share of words the adapter can analyse, and which forms it cannot) and the **publication requirements**:
+
+```
+…/story-01.json  [story-01]  0 error(s), 0 warning(s); analysis coverage 100.0% (59/59 words)
+        would publish: no
+        missing: review status is "unreviewed" — machine-drafted text needs a native-speaker review (…)
+```
+
+`would publish: yes` when nothing is missing, otherwise `no` with one `missing:` line per unmet requirement (the same
+sentences as `Text.unpublishedReasons`; a document with validation errors also says it would not be imported).
+Exit code `1` if any error is found (or nothing was given), `0` otherwise. Warnings and `would publish: no` never
+fail the command.
 
 Each issue has `{path, code, message, hint, severity}` (`severity` is `error` or `warning`). The same function
 runs in the app's importer (`validateDocument` / `validateBatch` in `src/ingest`).
@@ -237,8 +281,24 @@ What a reviewer checks:
 * **Provenance and rights**: `source.provenance`, `rights`, `attribution` are true; `generated` is set honestly.
 * **Scripture**: the wording matches the verified source (run the verifier) and the translation/edition are right.
 
-After the review, edit the file (set `review`, and `editorialTags` / `generated` as appropriate — remove
-`needs-native-review` and `machine-drafted` once they are no longer true) and re-import it (§6).
+Record the review with the command (it edits only `review` and `editorialTags`, never a text):
+
+```
+npm run corpus:review -- <file> --by "Ana Ruiz (native speaker)" [--status reviewed|approved|in-review|rejected] [--date YYYY-MM-DD] [--notes "…"]
+```
+
+* `--by` is required (exit `1` without it). `--status` defaults to `reviewed`, `--date` to today.
+* `reviewed` / `approved` remove `needs-native-review` from `editorialTags`; `in-review` / `rejected` record who
+  and when but keep the tag, and the text stays unpublished.
+* Scripture without a complete `scripture.verification` is refused (verification is a separate step, §3).
+* The command refuses to write a file that would not validate afterwards (it prints the errors).
+* It prints `would publish: yes|no` and, if no, each remaining reason (for example unestablished rights).
+* `machine-drafted` and `generated` are **not** touched: edit them by hand once they are no longer true. A generated
+  text stays badged in the reader even when published.
+* In code: `applyReview(doc, { by, status?, date?, notes? })` from `src/ingest` — pure, returns the new document
+  (or the refusals) and the publication decision; the CLI is a thin wrapper.
+
+Then import the file (§6).
 
 ---
 
@@ -291,6 +351,13 @@ Guarantees:
   ordered). Reverting an edit revives the retired sentence under its original id. A sentence with an author `id`
   keeps that id family: the edited wording becomes `<id>@<contentVersion>`. Rows written under contract v1 (no
   `key`) are retired and replaced on their first re-import. Live sentences are those without `retiredInVersion`.
+* **Revision history.** Every import that creates a text or bumps its content version appends one
+  `TransformationRecord` (`tool: 'ingest@2'`) to `Text.transformations`, e.g.
+  `content version 1 → 2: added [6edcc340ec00], retired [eda7c04aa8b7]; 8 analysis row(s) written`
+  (`revived [...]` for retired sentences that came back; long key lists are cut at 20). `contentHistory(text)`
+  (from `src/ingest`) returns `Array<{ version, at, summary }>`, oldest first, for the UI. Retired sentences keep
+  their tokens and analyses; encounters and events are never touched; re-importing the original after a revision
+  revives the original sentence ids (no new ids) while the version still advances.
 * **Metadata-only edits** (title, topics, review, rights, English text, verse refs, spans) update the rows but do
   not bump the content version.
 * **Other sources are protected.** An id that exists under another `source.id` is `text-id-conflict`.
@@ -318,5 +385,5 @@ nothing is written unless every converted document validates). It reads the Scri
   `{ words, analysed, coverage, unanalysed }`. Adapters' `support` declarations (shown in Settings → Language
   support) say what each language can honestly do; lemmatization is `seed-only` everywhere — the lexicons cover the
   seed corpus only, so supplied texts will have unanalysed words until `spans` or lexicon entries are added.
-* **Files.** `src/ingest/{format,publish,plan,import,migrate,testimony,index}.ts` · `scripts/corpus-*.mts` ·
+* **Files.** `src/ingest/{format,publish,plan,import,review,history,migrate,testimony,index}.ts` · `scripts/corpus-*.mts` ·
   `test/ingest/`.

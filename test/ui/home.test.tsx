@@ -65,7 +65,7 @@ describe('Home recommendations follow the learner\'s state', () => {
     h.learn.recommend.mockImplementation(async () => []);
     mounted = await h.mount(app());
     const empty = q(mounted.container, '[data-testid="home-empty"]')!.textContent!;
-    expect(empty).toContain('You have read everything currently available in Spanish');
+    expect(empty).toContain('You have finished everything currently available in Spanish');
     expect(mounted.container.textContent).not.toContain('Open a story to begin');
   });
 

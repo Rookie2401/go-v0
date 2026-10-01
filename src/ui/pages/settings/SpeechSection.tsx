@@ -1,7 +1,13 @@
 /**
- * Settings → Speech: is real speech available, the Azure key + region form (nothing is stored unless the learner
- * ticks "remember on this device"), the voices with their review status and the "I have auditioned this voice"
- * control (only reviewed real speech counts toward listening progress), and the development fixture-audio switch.
+ * Settings → Speech: is real speech available (and why not), the app's own speech service status, the voices with their
+ * review status and the "I have auditioned this voice" control (only reviewed real speech counts toward listening
+ * progress).
+ *
+ * The things only a developer or a no-server deployment needs live under Settings → Advanced (see
+ * `AdvancedSpeechControls`): entering your own Azure key directly, and the development fixture-audio switch.
+ *
+ * No key is ever stored or bundled for the app's own speech service: it reads AZURE_SPEECH_KEY / AZURE_SPEECH_REGION
+ * on the server. This screen only shows what that service reports.
  */
 import { useCallback, useEffect, useState } from 'react';
 import type { ProviderAvailability, VoiceConfig } from '../../../core';
@@ -18,26 +24,34 @@ const REASON_TEXT: Record<string, string> = {
   'development-fixture': 'only the development fixture (placeholder sound) is registered',
 };
 
-export function SpeechSection() {
+/** The instruction shown when the app's speech service has no key and the service gave none of its own. */
+export const SPEECH_SETUP_HINT = 'Set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in .env.local and restart the server.';
+
+export function SpeechSection({ refreshKey }: { refreshKey?: unknown }) {
   const { golisten, store, lang, course, speech } = useApp();
   const [availability, setAvailability] = useState<ProviderAvailability | null>(null);
+  const [service, setService] = useState<ProviderAvailability | undefined | null>(null); // null = still checking
   const [voice, setVoice] = useState<VoiceConfig | null>(null);
   const [voices, setVoices] = useState<VoiceConfig[]>([]);
   const [error, setError] = useState<string | null>(null);
-  const [message, setMessage] = useState<string | null>(null);
-  const [region, setRegion] = useState('');
-  const [key, setKey] = useState('');
-  const [remember, setRemember] = useState(false);
-  const [fixture] = usePref('devFixtureAudio');
   const [tick, setTick] = useState(0);
+  const [checking, setChecking] = useState(false);
+  const checkAgain = async () => {
+    setChecking(true); setError(null);
+    try { await speech.recheck?.(); setTick((n) => n + 1); } catch (e) { setError(errorText(e)); } finally { setChecking(false); }
+  };
 
   useEffect(() => {
     let live = true;
     setVoice(null); setError(null);
     void (async () => {
-      const a = await golisten.availability();
+      const [a, s] = await Promise.all([
+        golisten.availability(),
+        speech.proxy ? speech.proxy().catch(() => undefined) : Promise.resolve(undefined),
+      ]);
       if (!live) return;
       setAvailability(a);
+      setService(s);
       setVoices((await store.voices.where('lang', lang)).sort((x, y) => x.id.localeCompare(y.id)));
       // Show the voice for this course when one can be resolved (real speech, or the fixture in preview).
       // No provider at all is not an error here: the availability line above already says so.
@@ -45,19 +59,7 @@ export function SpeechSection() {
       catch (e) { if (live && !(e instanceof Error && e.name === 'AudioUnavailable')) setError(errorText(e)); }
     })().catch((e: unknown) => { if (live) setError(errorText(e)); });
     return () => { live = false; };
-  }, [golisten, store, lang, course.id, tick]);
-
-  const azure = speech.azure();
-
-  const useKey = async () => {
-    setError(null); setMessage(null);
-    try {
-      await speech.configureAzure({ key: key.trim(), region: region.trim(), remember });
-      setKey(''); // the key field is cleared as soon as it has been handed over
-      setMessage(remember ? 'Azure speech is set up and remembered on this device.' : 'Azure speech is set up for this session only. You will be asked again after a reload.');
-      setTick((n) => n + 1);
-    } catch (e) { setError(errorText(e)); }
-  };
+  }, [golisten, store, lang, course.id, speech, tick, refreshKey]);
 
   const setReview = useCallback(async (v: VoiceConfig, status: VoiceConfig['reviewStatus']) => {
     setError(null);
@@ -67,10 +69,9 @@ export function SpeechSection() {
   const reason = availability?.reason ? REASON_TEXT[availability.reason] ?? availability.reason : undefined;
 
   return (
-    <section aria-label="Speech">
-      <h2 className="section-head">Speech</h2>
+    <section aria-label="Speech" id="settings-speech" data-settings-section="speech">
+      <h2 className="section-head" tabIndex={-1}>Speech</h2>
       {error && <p role="alert" className="error">{error}</p>}
-      {message && <p role="status" className="note">{message}</p>}
       {!availability ? <p className="muted" role="status">Checking speech…</p> : (
         <p data-testid="speech-availability" data-available={availability.available ? 'yes' : 'no'}>
           {availability.available
@@ -78,28 +79,22 @@ export function SpeechSection() {
             : `Real speech is not available: ${reason ?? 'no reason given'}${availability.detail ? ` (${availability.detail})` : ''}. You can still read; audio stays off until a provider is set up.`}
         </p>
       )}
-
-      <form className="settings__new" onSubmit={(e) => { e.preventDefault(); void useKey(); }} aria-label="Azure speech">
-        <h3 className="label">Azure speech</h3>
-        <p className="card__note">
-          Enter your own Azure Speech key and region. The key is used from this device only. It is <strong>not stored</strong> unless you tick the box below;
-          without it, it lives in memory until you reload.
-          {azure.configured && <> Azure speech is set up{azure.region ? ` (${azure.region})` : ''}{azure.remembered ? ', and remembered on this device' : ''}.</>}
+      {service && (
+        <p
+          className={service.available ? 'note' : 'note note--warn'} data-testid="speech-service"
+          data-available={service.available ? 'yes' : 'no'} data-reason={service.reason ?? ''}
+        >
+          <strong>This app&rsquo;s speech service:</strong>{' '}
+          {service.available
+            ? 'connected. Its key lives on the server and never reaches this page.'
+            : service.reason === 'missing-credentials'
+              ? (service.detail ?? SPEECH_SETUP_HINT)
+              : `${service.detail ?? REASON_TEXT[service.reason ?? ''] ?? service.reason ?? 'not available'}.`}
+          {!service.available && speech.recheck && (
+            <>{' '}<button type="button" className="btn btn--small btn--quiet" disabled={checking} onClick={() => { void checkAgain(); }}>{checking ? 'Checking…' : 'Check again'}</button></>
+          )}
         </p>
-        <label className="field"><span className="label">Region</span>
-          <input type="text" value={region} onChange={(e) => setRegion(e.target.value)} aria-label="Azure region" placeholder="for example westeurope" autoComplete="off" />
-        </label>
-        <label className="field"><span className="label">Key</span>
-          <input type="password" value={key} onChange={(e) => setKey(e.target.value)} aria-label="Azure key" autoComplete="off" />
-        </label>
-        <label className="field field--row"><span>Remember on this device</span>
-          <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} aria-label="Remember on this device" />
-        </label>
-        <div className="actions">
-          <button type="submit" className="btn btn--small" disabled={!key.trim() || !region.trim()}>Use this key</button>
-          {azure.remembered && <button type="button" className="btn btn--small btn--quiet" onClick={() => { speech.forgetAzure(); setMessage('Forgotten, and Azure speech is switched off.'); setTick((n) => n + 1); }}>Forget the remembered key</button>}
-        </div>
-      </form>
+      )}
 
       <h3 className="label">Voices for {course.title}</h3>
       {voice && (
@@ -138,15 +133,73 @@ export function SpeechSection() {
         </div>
       )}
       <p className="card__note">Listen to the voice first, then say you have auditioned it. Only reviewed real speech counts toward your listening progress; placeholder sound and unreviewed voices never do.</p>
+      <p className="card__note">Entering your own Azure key directly, and the development fixture-audio switch, are under Advanced below.</p>
+    </section>
+  );
+}
 
-      <h3 className="label">Development</h3>
+/**
+ * Advanced → Speech controls: the direct Azure key form (nothing is stored unless the learner ticks "remember on this
+ * device") and the development fixture-audio switch (placeholder sound, never evidence).
+ */
+export function AdvancedSpeechControls({ onChanged }: { onChanged?: () => void }) {
+  const { speech } = useApp();
+  const [error, setError] = useState<string | null>(null);
+  const [message, setMessage] = useState<string | null>(null);
+  const [region, setRegion] = useState('');
+  const [key, setKey] = useState('');
+  const [remember, setRemember] = useState(false);
+  const [fixture] = usePref('devFixtureAudio');
+  const [, setTick] = useState(0);
+  const azure = speech.azure();
+  const changed = () => { setTick((n) => n + 1); onChanged?.(); };
+
+  const useKey = async () => {
+    setError(null); setMessage(null);
+    try {
+      await speech.configureAzure({ key: key.trim(), region: region.trim(), remember });
+      setKey(''); // the key field is cleared as soon as it has been handed over
+      setMessage(remember ? 'Azure speech is set up and remembered on this device.' : 'Azure speech is set up for this session only. You will be asked again after a reload.');
+      changed();
+    } catch (e) { setError(errorText(e)); }
+  };
+
+  return (
+    <div className="advanced-speech">
+      {error && <p role="alert" className="error">{error}</p>}
+      {message && <p role="status" className="note">{message}</p>}
+
+      <form className="settings__new" onSubmit={(e) => { e.preventDefault(); void useKey(); }} aria-label="Azure speech">
+        <h4 className="label">Azure speech (direct key)</h4>
+        <p className="card__note">
+          For a deployment without a server. Normally the app&rsquo;s own speech service (see Speech above) does this and no key is typed here.
+          Enter your own Azure Speech key and region. The key is used from this device only. It is <strong>not stored</strong> unless you tick the box below;
+          without it, it lives in memory until you reload.
+          {azure.configured && <> Azure speech is set up{azure.region ? ` (${azure.region})` : ''}{azure.remembered ? ', and remembered on this device' : ''}.</>}
+        </p>
+        <label className="field"><span className="label">Region</span>
+          <input type="text" value={region} onChange={(e) => setRegion(e.target.value)} aria-label="Azure region" placeholder="for example westeurope" autoComplete="off" />
+        </label>
+        <label className="field"><span className="label">Key</span>
+          <input type="password" value={key} onChange={(e) => setKey(e.target.value)} aria-label="Azure key" autoComplete="off" />
+        </label>
+        <label className="field field--row"><span>Remember on this device</span>
+          <input type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)} aria-label="Remember on this device" />
+        </label>
+        <div className="actions">
+          <button type="submit" className="btn btn--small" disabled={!key.trim() || !region.trim()}>Use this key</button>
+          {azure.remembered && <button type="button" className="btn btn--small btn--quiet" onClick={() => { speech.forgetAzure(); setMessage('Forgotten, and Azure speech is switched off.'); changed(); }}>Forget the remembered key</button>}
+        </div>
+      </form>
+
+      <h4 className="label">Development</h4>
       <label className="field field--row">
         <span>Development fixture audio (placeholder sound, not speech)</span>
         <input
           type="checkbox" checked={fixture} aria-label="Development fixture audio"
-          onChange={(e) => { setPref('devFixtureAudio', e.target.checked); setMessage(e.target.checked ? 'Fixture audio is registered. It is badged and never counts as progress.' : 'Fixture audio is off (unless preview mode is on).'); setTick((n) => n + 1); }}
+          onChange={(e) => { setPref('devFixtureAudio', e.target.checked); setMessage(e.target.checked ? 'Fixture audio is registered. It is badged and never counts as progress.' : 'Fixture audio is off (unless preview mode is on).'); changed(); }}
         />
       </label>
-    </section>
+    </div>
   );
 }

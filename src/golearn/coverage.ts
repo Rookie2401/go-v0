@@ -4,7 +4,7 @@
  * A word token of the CURRENT version of a text (sentences with `retiredInVersion` are skipped, order is
  * `Sentence.index`, never an id) is
  *   known      — its form OR its credited lemma has (manual-mark-adjusted) reading level ≥ `recognized`: DEMONSTRATED
- *   estimated  — not known, but its form or lemma is "likely familiar" (≥ 4 help-free exposures over ≥ 2 sessions,
+ *   estimated  — not known, but its form or lemma is "likely familiar" (≥ 4 help-free exposures over ≥ 2 sittings,
  *                no help lately). An ESTIMATE: reported separately, never merged into `knownLexicalCoverage`
  *   partial    — met (read, heard or needed help) but neither known nor estimated
  *   unseen     — otherwise

@@ -11,11 +11,11 @@
  * rejected or edited by the learner. The optional English "What are you trying to say?" box asks GoTell for wording
  * built only from language the learner has met; when it cannot, it says what is missing and offers nothing to insert.
  */
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { GoTellSuggestion, IntentProposal, ProductionAnalysis, Testimony as TestimonyRow, TestimonyRevision } from '../../core';
 import { useApp } from '../context';
 import { formatDate, itemSurface } from '../format';
-import { BackLink, Collapsible, Topbar } from '../ui';
+import { BackLink, Collapsible, Disclosure, Topbar } from '../ui';
 import { statusText } from './draft';
 import { RevisionAudio } from './RevisionAudio';
 import { SuggestionCard } from './SuggestionCard';
@@ -42,6 +42,7 @@ export function Testimony() {
   const [notice, setNotice] = useState<string | null>(null);
   const [diff, setDiff] = useState<{ revisionId: string; rows: DiffRow[] } | null>(null);
   const [english, setEnglish] = useState('');
+  const intentField = useRef<HTMLInputElement>(null);
   const [proposal, setProposal] = useState<IntentProposal | null>(null);
   const [undo, setUndo] = useState<{ text: string; number: number } | null>(null);
 
@@ -234,15 +235,14 @@ export function Testimony() {
         </div>
         {notice && <p role="status" className="note">{notice}{undo && <> <button type="button" className="btn btn--small btn--quiet" onClick={undoRestore}>Undo</button></>}</p>}
 
-        <details className="intent">
-          <summary>What are you trying to say?</summary>
+        <Disclosure className="intent" label="What are you trying to say?" focusRef={intentField}>
           <label className="field">
             <span className="card__note">Say it in English. You will get wording built from language you have already met; if that is not possible you will be told what is missing.</span>
-            <input type="text" value={english} onChange={(e) => setEnglish(e.target.value)} aria-label="What are you trying to say?" />
+            <input ref={intentField} type="text" value={english} onChange={(e) => setEnglish(e.target.value)} aria-label="What you want to say, in English" />
           </label>
           <button type="button" className="btn btn--small" disabled={busy !== null || english.trim() === ''} onClick={() => { void askIntent(); }}>Help me say it</button>
           {proposal && <IntentBox proposal={proposal} lang={lang} onInsert={(text) => setDraft(draft ? `${draft}${lang === 'th' ? '' : ' '}${text}` : text)} />}
-        </details>
+        </Disclosure>
 
         {analysis && (
           <section className="suggestions" aria-label="Suggestions">

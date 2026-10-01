@@ -3,6 +3,9 @@
  * corpus under tracked headings, pathway tags as segmented pills, the personalised band and coverage
  * as an italic preview line, badges as chips.
  *
+ * Progress per row says what it is: "Seen x of y sentences" (exposure), "Understood x of y (your report)" when reported, "Finished" only after the
+ * explicit button. Never "Read" for a count.
+ *
  * Publication gate: only published texts are listed. In preview mode unpublished texts are listed too, each with
  * its reasons. When nothing is visible the page says exactly what is awaited instead of showing an empty list.
  */
@@ -11,6 +14,7 @@ import { Link } from 'react-router-dom';
 import type { PersonalizedCoverage, ReadingProgress, Text } from '../../core';
 import { useApp } from '../context';
 import { BAND_LABEL, awaitedStatement, plainReasons, isVisibleText, languageName, pct, textPath } from '../format';
+import { progressSummary } from '../coverage';
 import { TextBadges, UnpublishedReasons, useLangTexts } from '../library';
 import { usePreview } from '../prefs';
 import { BackLink, Topbar } from '../ui';
@@ -102,7 +106,7 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
                         </span>
                         {(c || p) && (
                           <span className={`entry__preview${c ? ` band-${c.band}` : ''}`} title={c?.explanation}>
-                            {p && <>Read {p.sentencesViewed} of {p.sentencesTotal}</>}
+                            {p && progressSummary(p)}
                             {p && c && ' · '}
                             {c && <>{BAND_LABEL[c.band]} · shown {pct(c.knownLexicalCoverage)}{(c.estimatedFamiliarCoverage ?? 0) > 0 ? ` · likely familiar ${pct(c.estimatedFamiliarCoverage)} (estimate)` : ''}</>}
                           </span>

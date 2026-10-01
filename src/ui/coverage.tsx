@@ -1,8 +1,11 @@
 /**
- * Coverage wording. Reading COMPLETION ("Read: 10 of 10 sentences") and vocabulary are deliberately separate
- * statements, and the vocabulary numbers say what they are: shown (you demonstrated it), likely familiar (an
- * estimate from repeated unassisted meetings), met (seen, not shown), new. One explanation line says what the
- * numbers are based on, behind a small disclosure ("What do these numbers mean?") rather than in the page itself.
+ * Coverage wording. Four notions are kept apart and each says what it is:
+ *   "Seen x of y sentences"          reading EXPOSURE (the sentence stayed in view long enough); never "Read"
+ *   "Finished"                       only after the learner pressed "I have finished reading" (finishedAt)
+ *   "Understood x of y (your report)" what the learner reported understanding without help
+ *   vocabulary: shown (you demonstrated it) / likely familiar (an estimate) / met (seen, not shown) / new
+ * One explanation line says what the vocabulary numbers are based on, behind a small disclosure
+ * ("What do these numbers mean?") rather than in the page itself.
  */
 import { useEffect, useRef, useState } from 'react';
 import type { PersonalizedCoverage, ReadingProgress } from '../core';
@@ -14,11 +17,25 @@ const REFRESH_DEBOUNCE_MS = 300;
 
 const DEGREE_WORD = { all: 'all of it', most: 'most of it', some: 'some of it', little: 'little of it' } as const;
 
-export function ReadingLine({ progress }: { progress: ReadingProgress }) {
+/** "Seen 2 of 3 sentences" — exposure. The word "Read" is never used for this count. */
+export const seenText = (p: Pick<ReadingProgress, 'sentencesSeen' | 'sentencesTotal'>): string => `Seen ${p.sentencesSeen} of ${p.sentencesTotal} sentences`;
+/** "Understood 1 of 3 (your report)" — the learner's own report. */
+export const understoodText = (p: Pick<ReadingProgress, 'sentencesUnderstood' | 'sentencesTotal'>): string => `Understood ${p.sentencesUnderstood} of ${p.sentencesTotal} (your report)`;
+
+/** The compact progress line used in lists and cards: Seen · Understood (when reported) · Finished (only when explicit). */
+export function progressSummary(p: ReadingProgress): string {
+  const parts = [seenText(p)];
+  if (p.sentencesUnderstood > 0) parts.push(understoodText(p));
+  if (p.finishedAt) parts.push('Finished');
+  return parts.join(' · ');
+}
+
+export function ReadingLine({ progress, testId = 'reading-progress' }: { progress: ReadingProgress; testId?: string }) {
   return (
-    <p className="coverage__read" data-testid="reading-progress">
-      <span>{`Read: ${progress.sentencesViewed} of ${progress.sentencesTotal} sentences`}</span>
-      {progress.completedAt && <span> · finished</span>}
+    <p className="coverage__read" data-testid={testId}>
+      <span>{seenText(progress)}</span>
+      {progress.sentencesUnderstood > 0 && <span>{` · ${understoodText(progress)}`}</span>}
+      {progress.finishedAt && <span> · Finished</span>}
       {progress.reportedComprehension && <span> · you said you understood {DEGREE_WORD[progress.reportedComprehension]}</span>}
       {progress.listenedSentences > 0 && <span> · listened to {progress.listenedSentences} {progress.listenedSentences === 1 ? 'sentence' : 'sentences'}</span>}
     </p>

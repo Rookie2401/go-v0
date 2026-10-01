@@ -13,6 +13,10 @@ is not, and how a person reviews a real voice before a learner's listening can c
   marked `isSpeech: false` on the asset and the voice, and can never earn learner evidence, reviewed or not.
 - `AzureSpeechProvider` (`id: "azure-speech"`, `isSpeech: true`) is implemented and tested **against a mocked
   `fetch` only**. It has never been called against the live Azure service. No Azure voice has been heard.
+- `ProxySpeechProvider` (`id: "speech-proxy"`, `isSpeech: true`) talks to the same-origin proxy `server/speechProxy.ts`
+  (dev + preview servers; key and region from `AZURE_SPEECH_KEY` / `AZURE_SPEECH_REGION` on the server, never in the
+  browser). It and the proxy handler are tested **against mocked HTTP only**; neither has been run against the live
+  Azure service, and the proxy has never been exercised by a real browser session. See `docs/SPEECH.md`.
 - With no usable real provider (none registered, or no key/region, or offline), `availability()` is
   `{ available: false, reason }`, `audioStatus().state` is `'unavailable'` with a human reason, and
   `ensureAudio` / `ensureSentenceAudio` / `resolveVoice` throw an `Error` named `AudioUnavailable` **before writing
@@ -29,7 +33,7 @@ decides what the evidence is worth.
 
 ### Verified (automated)
 
-Fixture pipeline (tone audio) and the Azure adapter against a mocked `fetch`. "es sq th hi de" = run for each language.
+Fixture pipeline (tone audio), the Azure adapter, the proxy provider and the proxy handler against a mocked `fetch`. "es sq th hi de" = run for each language.
 
 | Area | What the tests establish |
 |---|---|
@@ -39,6 +43,10 @@ Fixture pipeline (tone audio) and the Azure adapter against a mocked `fetch`. "e
 | Fixture confinement (es sq th hi de) | Fixture voices and assets are `isSpeech: false`, `reviewStatus: unreviewed`; status is `preview-only` forever; marking a fixture voice `reviewed` leaves `approved: false`, `evidenceEligible: false`; listening events carry `speech: false`. Fixture audio left in the store while fixtures are off reports `unavailable` (nothing is deleted). |
 | Azure request (es sq th hi de) | URL `https://{region}.tts.speech.microsoft.com/cognitiveservices/v1`, POST, `Ocp-Apim-Subscription-Key`, `Content-Type: application/ssml+xml`, `X-Microsoft-OutputFormat: riff-24khz-16bit-mono-pcm`, SSML `<speak><voice name=…>` with XML-escaped text, caller SSML (pronunciation `lang-tag`) wrapped inside the voice element, response inspected as a 24 kHz WAV and `validateWav` applies, no word marks are ever claimed. |
 | Azure outcomes (mocked) | 401/403 => `missing-credentials`, job dead at once (a retry cannot help), provider flips to unavailable, remaining jobs wait without consuming attempts, a newly registered provider + `retryDead` recovers. 429 => `rate-limited`, retried, `Retry-After` honoured (else 1 s, 2 s, ... backoff). 5xx => job `failed`, retried, `dead` after `maxAttempts`, segment `failed`, reason shown, `retryDead` recovers. Network error / timeout => retryable `network`. 400/404 => `bad-request`, dead at once. Empty or non-WAV body => `bad-response`. |
+| Speech proxy handler (`test/server`) | `status` (configured / unconfigured, never the key, region only when configured); `synthesize` posts SSML with the key header to `https://{region}.tts.speech.microsoft.com/cognitiveservices/v1` asking for `riff-24khz-16bit-mono-pcm`, returns the WAV with delivered-locale headers; Azure 401/403 => 401 `missing-credentials`, 429 => 429 with `Retry-After`, 5xx => 502, other 4xx => 400, timeout / network => 504, non-WAV 200 => 502; unconfigured => 401 without any upstream call; invalid / oversized (413) bodies rejected before upstream; cross-origin (`Origin` != `Host`, `Sec-Fetch-Site` cross-site / same-site) => 403; per-minute rate limit with `Retry-After` and a sliding window; `voices` filtered by language; the key and upstream bodies never appear in any response, header, thrown message, log line or console output, even when the mocked upstream echoes the key; the Node adapter (dev and preview hooks) streams bodies with the size limit, falls through for non-speech paths, reads `.env.local` through `loadEnv` keeping only the two names, and has no `config` / `define` hook. |
+| Proxy provider (`ProxySpeechProvider`) | `availability()` from `/api/speech/status` (unconfigured => `missing-credentials` with the exact instruction; no proxy / static host / HTML answer => `no-provider`; network failure => `provider-error` or `offline`); provider version taken from the status response; voices from the proxy with the static table as fallback; synthesize classification identical to the Azure adapter (`missing-credentials` sticky, `rate-limited` + `Retry-After`, `server`, `network` incl. timeouts, `bad-request`, `bad-response`); no credential of any kind in any request; requested vs delivered locale recorded (a live es-HN voice makes the Honduras course exact). Through GoListen with the real handler wired in as the network: five-language generation, 401 => dead at once and recoverable, 429 retry, 5xx => failed => dead => `retryDead`, network error retry. |
+| Partial generation | With some sentences ready and others dead: state `failed`, reason `x of y sentences ready; n failed: <first error>`; still-retrying sentences are not counted as failed (`generating`); ready + failed + pending stays `generating` and says all three; `diagnostics(textId).failedSentences` lists id / index / text / error; the manifest stays playable for the ready segments (`playableIndexes`, the player starts at the first ready sentence and never loads a failed one); `retryDead` recovers. |
+| Backups | `exportLearner` of a store used with the direct or proxy provider contains no credential string. |
 | Secrets | The key lives in a private field; `JSON.stringify(provider)`, enumerable fields, error messages (incl. echoed bodies and network errors), asset/voice/job/manifest/event rows, job logs and `console` output never contain it. |
 | Voice honesty (es sq th hi de) | `requestedLocale` (course preference, `es-HN`) vs `actualLocale` (static Azure table has no es-HN, so `es-MX`) and "Fallback accent" note are stored; provider + provider version, `isSpeech`, `reviewStatus` are stored on the voice; the delivered locale, provider id/version and `isSpeech` on the asset. A provider that delivers another locale corrects the voice config. A provider version change re-keys the audio and resets an earlier review to `unreviewed`. |
 | `audioStatus` (es sq th hi de) | `unavailable`, `not-generated`, `generating` (with retries and their last error), `ready`, `stale`, `failed` (with the job error), `preview-only`; `evidenceEligible` only for reviewed real speech; status never writes and never throws; a missing provider keeps already-stored reviewed real-speech audio `ready`; queued jobs wait (`unavailable`) while the provider cannot run; failed beats waiting. |
@@ -59,7 +67,8 @@ Fixture pipeline (tone audio) and the Azure adapter against a mocked `fetch`. "e
 | Area | Status |
 |---|---|
 | **Every live voice** (Azure, Google, ElevenLabs, ...) | **Not heard.** Nothing here says any voice sounds correct, natural, or even intelligible. |
-| **The Azure adapter against the real service** | **Implemented, never called.** Unverified: that the endpoint/headers/SSML are accepted as written; that the voice names in `AZURE_VOICES` exist (names were written from Azure's public voice gallery, not from `voices/list`); that `riff-24khz-16bit-mono-pcm` arrives with a header `inspectWav` reads for every voice; real rate-limit and error bodies; whether a browser may call the endpoint cross-origin (CORS / preflight with the custom headers) from the static site. |
+| **The proxy against the real service, and in a real browser session** | **Implemented, never called.** Everything listed in the next row applies to the proxy's upstream call too, plus: the live `voices/list` shape, the proxy's 20 s timeout and 30/min limit under real use, and that Vite's dev / preview servers deliver the middleware ahead of their static handling in a real session (verified with a bare Node http server only). |
+| **The Azure adapter against the real service** | **Implemented, never called.** Unverified: that the endpoint/headers/SSML are accepted as written; that the voice names in `AZURE_VOICES` exist (names were written from Azure's public voice gallery, not from `voices/list`); that `riff-24khz-16bit-mono-pcm` arrives with a header `inspectWav` reads for every voice; real rate-limit and error bodies; whether a browser may call the endpoint cross-origin (CORS / preflight with the custom headers) from the static site (the proxy path sidesteps this, the direct adapter does not). |
 | es-HN | The static table offers es-MX / es-US / es-ES for Spanish, so the Honduras course is voiced with an es-MX voice and labelled "fallback accent". Azure may offer es-HN voices; confirm with `voices/list`, then add them to `AZURE_VOICES` (or pass `voices` to the constructor) and audition. |
 | Pronunciation correctness of any word | Unverified. Overrides are applied mechanically. `substitution` works on any provider. `ssml-phoneme` is not claimed for Azure (`phonemeOverrides: false`). `lang-tag` is sent as `<lang xml:lang>` but Azure honours it only for some voices: an entry may be recorded as "used" while the voice ignores it. Treat as unverified until auditioned. |
 | Word boundary marks from a real provider | Mapping is proven only with a test provider whose marks are true by construction. Azure REST returns none here. |
@@ -83,6 +92,22 @@ golisten.registerProvider(new AzureSpeechProvider({ key, region }));   // replac
 `availability()` for Azure means "a key and region are configured and the last request was not rejected", never
 "verified against the live service". Persisting the key (the "remember on this device" option) is the UI package's
 decision and outside this package.
+
+## Registering the proxy provider (UI / bootstrap)
+
+```ts
+import { ProxySpeechProvider } from '../golisten';
+
+// Same-origin; no key in the browser. Ask the status endpoint first: register only when the server is configured.
+const proxy = new ProxySpeechProvider();             // { baseUrl?, fetch? } for tests / another origin
+const a = await proxy.availability();                // also learns the provider version from the status answer
+if (a.available || a.reason === 'missing-credentials') golisten.registerProvider(proxy);
+// a.reason === 'missing-credentials' => show a.detail ("Set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in .env.local and restart the server.")
+// a.reason === 'no-provider'         => no proxy on this host (static site): offer the direct key form under Advanced
+// After the learner fixes .env.local and restarts: proxy.resetAuthFailure(); then gl.retryDead().
+```
+
+Call `availability()` before registering so `provider.version` is the real one (it feeds cache keys and review resets).
 
 ## Audition procedure: how a voice becomes `reviewed`
 
@@ -154,4 +179,4 @@ strings are reviewed every time; additions are appended, never replaced, so regr
 - `TODO(integration)`: real adapters' `speechNormalize` must already strip verse markers and expand digits; GoListen only adds a bracket/superscript safety net.
 - `TODO(integration)`: the UI owns `HTMLAudioElement` wiring (`preservesPitch = true`, object-URL lifecycle, calling `playbackError` on media errors and `ended` only for a real end), showing the fixture/preview badge, and passing `store` to `listeningEmitter` (without it the emitter fails closed and completions become abandonments).
 - `TODO(integration)`: bootstrap must not register a `FixtureTtsProvider` by hand; use `createGoListen({ allowFixture })` (or `setAllowFixture`) driven by the preview preference. A hand-registered fixture stays unusable while `allowFixture` is off.
-- `TODO(integration)`: browser CORS for the Azure REST endpoint is unverified; if blocked, calls need a same-origin proxy (outside this package).
+- Browser CORS for the direct Azure REST endpoint remains unverified; the same-origin proxy (`server/`, `docs/SPEECH.md`) is the path that does not depend on it.

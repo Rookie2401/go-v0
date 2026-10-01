@@ -7,13 +7,15 @@
  */
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import type { LanguageCode, ScriptureReadiness, Text } from '../../core';
+import type { LanguageCode, ReadingProgress, ScriptureReadiness, Text, TextViewed } from '../../core';
 import { useApp } from '../context';
-import { VocabularyLine } from '../coverage';
+import { ReadingLine, VocabularyLine } from '../coverage';
+import { useEmitter } from '../events';
 import { BAND_LABEL, isTestimonyText, nameOfLang, plainReasons, textPath } from '../format';
 import { Player } from '../player/Player';
 import type { PlayerChange } from '../player/Player';
 import { usePreview } from '../prefs';
+import { useReadingOverlay } from '../reader/readingGate';
 import { Reader } from '../reader/Reader';
 import { BackLink, Topbar } from '../ui';
 
@@ -85,20 +87,33 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
 
 const GAP_LABEL = { unseen: 'new', exposed: 'met, not shown', 'needed-help': 'needed help' } as const;
 
-/** "Prepare this passage": what GoLearn says you need before this passage, and which texts supply it. */
+/**
+ * "Prepare this passage": what GoLearn says you need before this passage, and which texts supply it.
+ *
+ * Opening it is a PREVIEW, not reading: it emits at most one TextViewed (mode 'preview') per sitting, counts nothing, and
+ * pauses sentence-view detection in the Reader for as long as it is open (the passage behind it is not being read).
+ */
 export function PreparePanel({ textId }: { textId: string }) {
   const { store, golearn, userId } = useApp();
+  const emitter = useEmitter();
   const preview = usePreview();
   const [open, setOpen] = useState(false);
   const [readiness, setReadiness] = useState<ScriptureReadiness | null>(null);
+  const [progress, setProgress] = useState<ReadingProgress | null>(null);
   const [prepTexts, setPrepTexts] = useState<Map<string, Text>>(new Map());
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => { setOpen(false); setReadiness(null); setError(null); }, [textId, userId, preview]);
+  useEffect(() => { setOpen(false); setReadiness(null); setProgress(null); setError(null); }, [textId, userId, preview]);
+  useReadingOverlay('prepare', open);
 
   const toggle = async () => {
     if (open) { setOpen(false); return; }
     setOpen(true);
+    // Displayed, not read: one preview record per sitting, never an exposure.
+    void store.texts.get(textId).then((t) => emitter.emit<TextViewed>(t?.kind === 'scripture' ? 'scripture' : 'corpus', {
+      type: 'TextViewed', textId, mode: 'preview', contentVersion: t?.contentVersion, dedupeKey: (session) => `textviewed-preview:${userId}:${session}:${textId}`,
+    }), () => undefined).catch(() => undefined);
+    void golearn.readingProgress(userId, textId).then(setProgress, () => undefined);
     if (readiness) return;
     try {
       const r = await golearn.scriptureReadiness(userId, textId, undefined, { includeUnpublished: preview });
@@ -121,6 +136,7 @@ export function PreparePanel({ textId }: { textId: string }) {
       {open && readiness && (
         <div className="prepare-body">
           <p className="card__text"><span className={`label band-${readiness.coverage.band}`}>{BAND_LABEL[readiness.coverage.band]}</span></p>
+          {progress && <ReadingLine progress={progress} testId="prepare-progress" />}
           <VocabularyLine coverage={readiness.coverage} withExplanation={false} />
           {(readiness.gaps ?? []).length > 0 && (
             <div className="card__section">

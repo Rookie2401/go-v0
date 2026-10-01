@@ -6,9 +6,10 @@
  *  new learner (no reading in this language)
  *     first-text            the easiest published input text (lowest staticLevel, then lowest expected difficulty): score 1.0.
  *                           If nothing is published: one note (no textId) saying what is awaited.
- *  learner with reading history
+ *  learner with reading history ("completed" means an EXPLICIT TextCompleted — `finishedAt`; a text whose sentences were all
+ *                           seen but not finished is IN PROGRESS, never completed)
  *     reread                a completed text whose last text-level self-report was below `all` (little 0.92 · some 0.88 ·
- *                           most 0.72) or whose latest reading session needed heavy help (≥ 40 % of word encounters, 0.70)
+ *                           most 0.72) or whose latest reading sitting needed heavy help (≥ 40 % of word encounters, 0.70)
  *     next-input            a text in progress 0.90, or an unread published input text: productive-challenge 0.85 ·
  *                           comfortable 0.80 · difficult 0.65 · stretch 0.50 (band uses demonstrated + estimated coverage);
  *                           +0.10 per matching interest. Never empty while an unread published input text exists.
@@ -27,6 +28,7 @@ import { HEAVY_HELP_FRACTION } from './policy';
 import { activityByText, progressOf } from './progress';
 import type { Degree } from './progress';
 import type { Ctx, StoredEncounter } from './state';
+import { sittingOf } from './state';
 
 const REASON_ORDER: RecommendationReason[] = [
   'first-text', 'reread', 'next-input', 'prepares-scripture', 'revisit-scripture', 'easy-story', 'reinforces-weak-items',
@@ -74,14 +76,14 @@ export async function recommend(
     if (!l) liveByText.set(textId, (l = await liveSentences(ctx, textId)));
     return l;
   };
-  const progress = new Map<string, { total: number; viewed: number; completedAt?: string }>();
+  const progress = new Map<string, { total: number; seen: number; understood: number; finishedAt?: string }>();
   for (const t of texts) {
     const act = activity.get(t.id);
     const l = await live(t.id);
     const p = progressOf(act, l);
-    progress.set(t.id, { total: l.length, ...p });
+    progress.set(t.id, { total: l.length, seen: p.seen, understood: p.understood, finishedAt: p.finishedAt });
   }
-  const hasReading = [...activity.values()].some((a) => a.viewed.size > 0 || a.completedAt);
+  const hasReading = [...activity.values()].some((a) => a.viewed.size > 0 || a.understood.size > 0 || a.finishedAt);
 
   const myEncounters = ((await ctx.store.encounters.where('userId', userId)) as StoredEncounter[]).filter((e) => e.lang === lang);
   const byText = new Map<string, StoredEncounter[]>();
@@ -132,7 +134,7 @@ export async function recommend(
       const p = progress.get(t.id)!;
       const act = activity.get(t.id);
       const bonus = t.tags.some((x) => interests.has(x)) ? 0.1 : 0;
-      if (p.completedAt) {
+      if (p.finishedAt) {
         const cov = await analyzeText(ctx, userId, t.id);
         const report = act?.report;
         const below = report && report.degree !== 'all' ? report : undefined;
@@ -164,18 +166,20 @@ export async function recommend(
             });
           }
         }
-      } else if (p.viewed > 0) {
+      } else if (p.seen > 0 || p.understood > 0) {
         const cov = await analyzeText(ctx, userId, t.id);
         offer({
           reason: 'next-input', textId: t.id, band: cov.coverage.band, reinforces: partialIds(cov, 8), score: cap(0.9 + bonus / 2),
-          explanation: `You are partway through "${t.title}" (${p.viewed} of ${p.total} sentences seen).`,
+          explanation: p.seen >= p.total && p.total > 0
+            ? `You have seen every sentence of "${t.title}" but have not marked it finished.`
+            : `You are partway through "${t.title}" (${p.seen} of ${p.total} sentences seen).`,
         });
       } else {
         const cov = await analyzeText(ctx, userId, t.id);
         offer({
           reason: 'next-input', textId: t.id, band: cov.coverage.band, reinforces: partialIds(cov, 8),
           score: cap(BAND_SCORE[cov.coverage.band] + bonus),
-          explanation: `Not read yet; about ${pctOf(cov.coverage.knownLexicalCoverage + cov.coverage.estimatedFamiliarCoverage)} % of its words are already shown or likely familiar.`,
+          explanation: `Not started yet; about ${pctOf(cov.coverage.knownLexicalCoverage + cov.coverage.estimatedFamiliarCoverage)} % of its words are already shown or likely familiar.`,
         });
       }
     }
@@ -251,13 +255,13 @@ function noneExplanation(langName: string, withheld: Text[], includeUnpublished:
     + (reasons.length ? ` (${reasons.join('; ')})` : '') + '. You can still use preview mode to see them.';
 }
 
-/** Help was heavy when ≥ HEAVY_HELP_FRACTION of the word encounters of the LATEST reading session needed help. */
+/** Help was heavy when ≥ HEAVY_HELP_FRACTION of the word encounters of the LATEST reading sitting needed help. */
 async function heavyHelp(encounters: StoredEncounter[]): Promise<boolean> {
   const words = encounters.filter((e) => e.modality === 'reading' && e.itemKind === 'form');
   if (words.length === 0) return false;
   const latest = new Map<string, string>();
-  for (const e of words) { const s = e.session ?? ''; if (!latest.has(s) || e.at > latest.get(s)!) latest.set(s, e.at); }
-  const session = [...latest.entries()].sort((a, b) => (a[1] < b[1] ? 1 : a[1] > b[1] ? -1 : 0))[0][0];
-  const inSession = words.filter((e) => (e.session ?? '') === session);
-  return inSession.length >= 3 && inSession.filter((e) => e.assistance > 0).length / inSession.length >= HEAVY_HELP_FRACTION;
+  for (const e of words) { const s = sittingOf(e); if (!latest.has(s) || e.at > latest.get(s)!) latest.set(s, e.at); }
+  const sitting = [...latest.entries()].sort((a, b) => (a[1] < b[1] ? 1 : a[1] > b[1] ? -1 : 0))[0][0];
+  const inSitting = words.filter((e) => sittingOf(e) === sitting);
+  return inSitting.length >= 3 && inSitting.filter((e) => e.assistance > 0).length / inSitting.length >= HEAVY_HELP_FRACTION;
 }

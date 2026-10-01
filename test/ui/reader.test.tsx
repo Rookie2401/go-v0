@@ -44,6 +44,7 @@ describe('Reader — viewing', () => {
     // token ids cover the word tokens only (punctuation excluded)
     expect(views[0].tokenIds).toEqual([0, 1, 2, 3].map((i) => ids.token(ids.sentence(STORY_ID, 0), i)));
     expect(views[2].dwellMs).toBe(1500);
+    expect(views.every((v) => v.contentVersion === 1)).toBe(true); // evidence is pinned to the version on screen
 
     // remount in the same session: the bus dedupes by session-scoped key
     await mounted.unmount();
@@ -56,7 +57,7 @@ describe('Reader — viewing', () => {
     expect((await h.events('TextViewed'))).toHaveLength(1);
   });
 
-  it('falls back to a "mark as read" button when there is no IntersectionObserver', async () => {
+  it('falls back to a "mark as seen" button when there is no IntersectionObserver', async () => {
     await seedStory(h.store);
     expect(typeof IntersectionObserver).toBe('undefined'); // jsdom
     mounted = await h.mount(<Reader textId={STORY_ID} mode="corpus" />);
@@ -65,7 +66,8 @@ describe('Reader — viewing', () => {
     await click(marks[1]);
     const views = (await h.events('SentenceViewed')) as SentenceViewed[];
     expect(views.map((v) => v.sentenceId)).toEqual([ids.sentence(STORY_ID, 1)]);
-    expect(qa(mounted.container, 'button[aria-label^="Mark sentence"]')).toHaveLength(2); // the read one is gone
+    expect(qa(mounted.container, 'button[aria-label^="Mark sentence"]')).toHaveLength(2); // the marked one is gone
+    expect(views[0].dwellMs).toBeUndefined(); // an explicit mark has no timing to report
   });
 
   it('emits TextCompleted once per session from the finish button', async () => {

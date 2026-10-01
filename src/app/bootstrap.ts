@@ -5,6 +5,11 @@
  *   1. seed languages / courses (and the first learner once a team has been chosen);
  *   2. GoListen is created WITHOUT the fixture unless preview mode or the development preference is on; a remembered
  *      Azure key (only ever stored when the learner ticked "remember on this device") is turned into a provider;
+ *      the app's own speech service (`ProxySpeechProvider`, same-origin /api/speech/*, key held server-side from
+ *      AZURE_SPEECH_KEY / AZURE_SPEECH_REGION) is asked for its status in the background and registered when it reports
+ *      available, or reports missing credentials (it exists but has no key: GoListen then says so and audio stays honestly
+ *      unavailable; Settings → Speech shows its instruction and a "Check again" button). Not reachable / no proxy on this
+ *      host: not registered. No key is ever stored or bundled for that path;
  *   3. GoLearn (+ `audioEligible`: reviewed real speech exists for a text) and GoTell;
  *   4. the bundled corpus goes through the importer (validated as one batch, atomic, repeatable; skipped when the
  *      bundle is unchanged since the last successful import);
@@ -15,15 +20,15 @@
  * small interfaces in `AppServices` (ingest / backup / speech), bound to the real modules here.
  */
 import { COURSES, LANGUAGE_ROWS, StoreEventBus, hash } from '../core';
-import type { AppStore, Course, EventBus, GoListen, TtsProvider, User } from '../core';
+import type { AppStore, Course, EventBus, GoListen, ProviderAvailability, TtsProvider, User } from '../core';
 import { createDexieStore } from '../db/dexie';
 import { createAdapterRegistry } from '../adapters';
 import { exportLearner, restoreLearner, validateBackup } from '../backup';
 import type { BackupFile } from '../backup';
 import { createGoLearn } from '../golearn';
-import { AZURE_PROVIDER_ID, AzureSpeechProvider, createGoListen } from '../golisten';
+import { AZURE_PROVIDER_ID, AzureSpeechProvider, ProxySpeechProvider, createGoListen } from '../golisten';
 import { createGoTell } from '../gotell';
-import { INGEST_TOOL, importDocuments, loadBundledCorpus, validateBatch } from '../ingest';
+import { INGEST_TOOL, contentHistory, importDocuments, loadBundledCorpus, validateBatch } from '../ingest';
 import type { DocumentReport } from '../ingest';
 import type { AppServices, BackupApi, ImportDocView, IngestApi, SpeechApi, StartupInfo } from '../ui/context';
 import {
@@ -45,6 +50,21 @@ export interface BootstrapOptions {
   allowFixture?: boolean;
   /** Extra TTS providers (tests). */
   providers?: TtsProvider[];
+  /**
+   * The app's own speech service. Default: a `ProxySpeechProvider` on the same origin. `false` skips the check (no
+   * server on this deployment, or a test that wants no request). `provider` substitutes the provider (tests);
+   * `baseUrl` / `fetch` are passed to the real one.
+   */
+  speechProxy?: false | { baseUrl?: string; fetch?: typeof fetch; provider?: TtsProvider };
+}
+
+/** The speech-service check runs in the background; if it has not answered by now the service is treated as unknown. */
+const PROXY_CHECK_TIMEOUT_MS = 4000;
+
+function withTimeout<T>(p: Promise<T>, ms: number): Promise<T | undefined> {
+  let handle: ReturnType<typeof setTimeout> | undefined;
+  const timeout = new Promise<undefined>((resolve) => { handle = setTimeout(() => resolve(undefined), ms); });
+  return Promise.race([p, timeout]).finally(() => clearTimeout(handle));
 }
 
 export interface BootstrapResult {
@@ -110,6 +130,7 @@ export function createIngestApi(store: AppStore, adapters: AppServices['adapters
       const report = await importDocuments(store, adapters, docs, { clock });
       return report.documents.map((d, i) => toView(d, titleOf(docs[i])));
     },
+    history: (text) => contentHistory(text),
   };
 }
 
@@ -167,6 +188,28 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   // Preview mode and the development preference flip the fixture switch at runtime; a real provider is unaffected.
   if (opts.allowFixture === undefined) subscribePrefs(() => golisten.setAllowFixture(wantsFixture()));
 
+  // ── the app's own speech service: registered only when it says it is configured and reachable ──
+  // Never blocks startup. No key is read, stored or bundled here: the server holds it. When the service reports missing
+  // credentials, the provider stays unregistered (audio is honestly unavailable) and Settings → Speech shows its instruction.
+  let proxyCheck: Promise<ProviderAvailability | undefined> = Promise.resolve(undefined);
+  let proxy: (TtsProvider & { resetAuthFailure?: () => void }) | undefined;
+  const checkProxy = (): Promise<ProviderAvailability | undefined> => withTimeout(proxy!.availability(), PROXY_CHECK_TIMEOUT_MS).then(
+    (a) => {
+      // A proxy that exists but has no key is registered too, so GoListen reports the real reason (missing-credentials).
+      if (a?.available || a?.reason === 'missing-credentials') golisten.registerProvider(proxy!);
+      return a;
+    },
+    () => undefined,
+  );
+  if (opts.speechProxy !== false) {
+    const cfg = opts.speechProxy ?? {};
+    proxy = cfg.provider ?? new ProxySpeechProvider({
+      ...(cfg.baseUrl !== undefined ? { baseUrl: cfg.baseUrl } : {}),
+      ...(cfg.fetch !== undefined ? { fetch: cfg.fetch } : {}),
+    });
+    proxyCheck = checkProxy();
+  }
+
   // ── GoLearn (listening is recommended only where reviewed real speech exists) and GoTell ──
   const golearn = createGoLearn({
     store, bus, adapters, clock,
@@ -203,6 +246,16 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   // ── speech-provider controls for Settings → Speech ──
   const speech: SpeechApi = {
     azure: () => ({ configured: !!azure, remembered: !!recallAzure(), region: azure?.region ?? recallAzure()?.region }),
+    proxy: () => proxyCheck,
+    async recheck() {
+      if (!proxy) return undefined;
+      // After the learner fixed .env.local and restarted the server: forget the remembered 401, ask again, retry dead audio jobs.
+      proxy.resetAuthFailure?.();
+      proxyCheck = checkProxy();
+      const a = await proxyCheck;
+      if (a?.available) await golisten.retryDead().catch(() => 0);
+      return a;
+    },
     async configureAzure({ key, region, remember }) {
       if (!key.trim() || !region.trim()) throw new Error('Both a key and a region are needed.');
       azure = new AzureSpeechProvider({ key, region });
@@ -226,7 +279,7 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   };
   // Jobs queued earlier (a saved testimony version only queues its audio) or left retryable are picked up now,
   // in the background, when a usable provider exists. Never blocks startup; never runs without a provider.
-  void resumeQueuedAudio(store, golisten);
+  void proxyCheck.then(() => resumeQueuedAudio(store, golisten));
   return { services, user, course };
 }
 

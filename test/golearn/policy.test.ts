@@ -6,7 +6,7 @@ const levels: AssistanceLevel[] = [0, 1, 2, 3, 4, 5];
 
 describe('defaultPolicy', () => {
   it('names its version', () => {
-    expect(POLICY_VERSION).toBe('evidence@2');
+    expect(POLICY_VERSION).toBe('evidence@3');
   });
 
   it('reading weight (of a demonstrated encounter) falls with assistance (1.0 → 0.15) and is never zero or negative', () => {
@@ -58,7 +58,7 @@ describe('defaultPolicy', () => {
   });
 
   it('the estimate rule is ≥ 4 help-free exposures over ≥ 2 sessions with a clean tail of 2', () => {
-    expect(ESTIMATE).toMatchObject({ minUnassisted: 4, minSessions: 2, cleanTail: 2 });
+    expect(ESTIMATE).toMatchObject({ minUnassisted: 4, minSittings: 2, cleanTail: 2 });
   });
 
   it('productive levels: assisted-only never reaches used_independently', () => {

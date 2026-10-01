@@ -15,6 +15,7 @@ import type {
 } from '../core';
 import { hash, ids } from '../core';
 import type { AnalysisCoverage } from '../adapters/shared';
+import { describeVersionBump } from './history';
 import { hasErrors, validateBatch, type CorpusDocument, type ValidationIssue } from './format';
 import {
   INGEST_TOOL, materializeSentence, newCatalog, planDocument, type DocumentPlan, type PlannedSentence, type SentenceRows,
@@ -302,6 +303,7 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
   await putChanged(store.paragraphs, paragraphRows);
   await putChanged(store.sentences, sentenceRows);
 
+  let analysisRowsWritten = 0;
   const staleAnalyses: string[] = [];
   const staleTokens: string[] = [];
   const staleOccs: { phrase: string[]; pattern: string[]; rescue: string[] } = { phrase: [], pattern: [], rescue: [] };
@@ -332,7 +334,7 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
       if (!rows.rescue) staleOccs.rescue.push(ids.rescue(m.id));
     }
     await putChanged<Token>(store.tokens, rows.tokens);
-    await putChanged<TokenAnalysis>(store.analyses, rows.analyses);
+    analysisRowsWritten += await putChanged<TokenAnalysis>(store.analyses, rows.analyses);
     await putChanged<PhraseOccurrence>(store.phraseOccurrences, rows.phraseOccurrences);
     await putChanged<PatternOccurrence>(store.patternOccurrences, rows.patternOccurrences);
     if (rows.rescue) await putChanged<EnglishRescue>(store.rescues, [rows.rescue]);
@@ -385,6 +387,19 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
       at: now, tool: analyzerName,
       description: `tokenized and analyzed: ${a.analysed}/${a.words} word tokens have a lexicon/rule/author analysis (rest uncertain, left empty); ` +
         `${derived.reduce((n, x) => n + x.rows.phraseOccurrences.length, 0)} phrase and ${derived.reduce((n, x) => n + x.rows.patternOccurrences.length, 0)} pattern occurrences`,
+    });
+  }
+  if (!existing || contentVersion > baseVersion) {
+    // revision history: one record per content version (read back by `contentHistory`)
+    transformations.push({
+      at: now, tool: INGEST_TOOL,
+      description: describeVersionBump({
+        from: existing ? baseVersion : 0, to: contentVersion,
+        addedKeys: matches.filter((m) => m.status === 'added').map((m) => m.key),
+        revivedKeys: matches.filter((m) => m.status === 'revived').map((m) => m.key),
+        retiredKeys: retire.map((s) => s.key ?? s.id),
+        analysisRowsWritten, sentenceCount: plan.sentences.length,
+      }),
     });
   }
   if (lastReview?.description !== reviewNote) transformations.push({ at: doc.review.reviewedAt ?? now, tool: 'review', description: reviewNote });

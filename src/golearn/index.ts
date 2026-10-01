@@ -1,7 +1,7 @@
 /**
  * GoLearn — learner state, coverage and recommendations on top of the shared AppStore and EventBus.
  * Events are the only write path: `attach()` subscribes to the bus, `handle()` folds one event, `rebuild()`
- * replays the log. See policy.ts for every weight/threshold (`evidence@2`) and fold.ts for what each event does.
+ * replays the log. See policy.ts for every weight/threshold (`evidence@3`) and fold.ts for what each event does.
  */
 import type {
   AdapterRegistry, AppStore, AssistanceLevel, DomainEvent, EventBus, EvidencePolicy, GoLearn, LanguageCode,

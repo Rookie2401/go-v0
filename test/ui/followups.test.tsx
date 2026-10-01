@@ -245,14 +245,14 @@ describe('vocabulary numbers: compact line always, the explanation behind a disc
     h = await makeHarness();
     await seedStory(h.store);
     mounted = await h.mount(<Reader textId={STORY_ID} mode="corpus" />);
-    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Read: 0 of 3 sentences');
+    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 0 of 3 sentences');
     // an event that reaches the log after the render (as GoLearn sees it): the block follows within a moment
     await h.bus.emit<SentenceViewed>({
       type: 'SentenceViewed', userId: 'u1', lang: 'es', surface: 'corpus', session: 'ses-other', dedupeKey: 'sv:late',
       textId: STORY_ID, sentenceId: ids.sentence(STORY_ID, 0), tokenIds: [],
     });
     await sleep(450);
-    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Read: 1 of 3 sentences');
+    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 1 of 3 sentences');
     const calls = h.learn.readingProgress.mock.calls.length;
     // an event about another text does not cause a refetch
     await h.bus.emit<SentenceViewed>({

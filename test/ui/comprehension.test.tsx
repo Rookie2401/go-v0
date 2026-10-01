@@ -1,7 +1,7 @@
 // @vitest-environment jsdom
 import { act } from 'react';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import type { ComprehensionReported, SentenceViewed } from '../../src/core';
+import type { ComprehensionReported } from '../../src/core';
 import { buildFixtureText, ids } from '../../src/core';
 import { Reader } from '../../src/ui/reader/Reader';
 import { ManualViewDetector } from '../../src/ui/reader/viewDetection';
@@ -31,7 +31,7 @@ describe('Reader — viewing is exposure only', () => {
 });
 
 describe('Reader — "Understood" on a sentence', () => {
-  it('reports degree "all" for that sentence, in the same session as its view, once', async () => {
+  it('reports degree "all" for that sentence, once, without fabricating a view', async () => {
     await seedStory(h.store);
     mounted = await h.mount(<Reader textId={STORY_ID} mode="corpus" />);
     expect(qa(mounted.container, 'button[aria-label^="Understood sentence"]')).toHaveLength(3); // quiet, one per sentence
@@ -41,10 +41,8 @@ describe('Reader — "Understood" on a sentence', () => {
     const reports = (await h.events('ComprehensionReported')) as ComprehensionReported[];
     expect(reports).toHaveLength(1);
     expect(reports[0]).toMatchObject({ textId: STORY_ID, sentenceIds: [S(1)], modality: 'reading', scope: 'sentence', degree: 'all', surface: 'corpus', session: 'ses-test', userId: 'u1', lang: 'es' });
-    // saying "I understood it" implies it was on screen: the view is recorded too, in the same session
-    const views = (await h.events('SentenceViewed')) as SentenceViewed[];
-    expect(views.map((v) => v.sentenceId)).toEqual([S(1)]);
-    expect(views[0].session).toBe(reports[0].session);
+    // a report is not a view: saying "I understood it" never fabricates a SentenceViewed
+    expect(await h.events('SentenceViewed')).toHaveLength(0);
     expect(byLabel(mounted.container, 'Understood sentence 2').getAttribute('aria-pressed')).toBe('true');
     expect(byLabel(mounted.container, 'Understood sentence 1').getAttribute('aria-pressed')).toBe('false');
   });
@@ -98,21 +96,21 @@ describe('Reader — coverage wording', () => {
     await seedStory(h.store);
     mounted = await h.mount(<Reader textId={STORY_ID} mode="corpus" />);
     const box = byLabel(mounted.container, 'Your progress with this text');
-    expect(q(box, '[data-testid="reading-progress"]')!.textContent).toBe('Read: 0 of 3 sentences');
+    expect(q(box, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 0 of 3 sentences');
     const vocab = q(box, '[data-testid="vocabulary-coverage"]')!;
     expect(vocab.textContent).toContain('shown 62% · likely familiar 5% (estimate) · met 15% · new 18%');
     expect(q(vocab, '[data-testid="coverage-explanation"]')!.textContent).toContain('likely familiar is an estimate');
   });
 
-  it('completion moves with what was read; the vocabulary line is a different statement that does not', async () => {
+  it('"Seen" moves with what was seen and "Finished" only with the button; the vocabulary line is a different statement that does not', async () => {
     await seedStory(h.store);
     mounted = await h.mount(<Reader textId={STORY_ID} mode="corpus" />);
-    await click(button(mounted.container, 'Mark sentence 1 as read'));
-    await click(button(mounted.container, 'Mark sentence 2 as read'));
-    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Read: 2 of 3 sentences');
+    await click(button(mounted.container, 'Mark sentence 1 as seen'));
+    await click(button(mounted.container, 'Mark sentence 2 as seen'));
+    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 2 of 3 sentences');
     await click(button(mounted.container, /finished reading/));
     await click(button(byLabel(mounted.container, 'How much did you understand?'), 'Most'));
-    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Read: 2 of 3 sentences · finished · you said you understood most of it');
+    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 2 of 3 sentences · Finished · you said you understood most of it');
     expect(q(mounted.container, '[data-testid="vocabulary-coverage"]')!.textContent).toContain('shown 62%');
   });
 });
@@ -156,6 +154,6 @@ describe('Reader — the live sentences of the current content version', () => {
     mounted = await h.mount(<Reader textId={STORY_ID} mode="corpus" />);
     const shown = qa(mounted.container, '.sent-text').map((e) => e.textContent);
     expect(shown).toEqual(['Yo creo en Dios.', 'Entendí mi pecado.']);
-    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Read: 0 of 2 sentences');
+    expect(q(mounted.container, '[data-testid="reading-progress"]')!.textContent).toBe('Seen 0 of 2 sentences');
   });
 });

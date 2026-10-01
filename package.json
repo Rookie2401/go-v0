@@ -13,7 +13,8 @@
     "gate": "tsc -b && vitest run",
     "corpus:validate": "vite-node scripts/corpus-validate.mts",
     "corpus:check": "vite-node scripts/corpus-check.mts",
-    "corpus:migrate": "vite-node scripts/corpus-migrate.mts"
+    "corpus:migrate": "vite-node scripts/corpus-migrate.mts",
+    "corpus:review": "vite-node scripts/corpus-review.mts"
   },
   "dependencies": {
     "dexie": "^4",

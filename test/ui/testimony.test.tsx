@@ -131,7 +131,8 @@ describe('My Testimony editor', () => {
   it('asks GoTell for an intent proposal and only adds it to the draft on request', async () => {
     h = await makeHarness({ tell: { proposal: { supported: true, insertable: true, sources: [], unexpressed: [], proposal: 'Dios me perdonó.', familiar: [], newItems: [{ itemId: 'form:es:perdonó', surface: 'perdonó', gloss: 'forgave', whyNeeded: 'No word you know means this.' }], fallbackWithoutNew: { text: 'Dios me ayudó.', lossNote: 'Says help, not forgive.' } } } });
     mounted = await h.mount(<Testimony />);
-    await typeInto(byLabel<HTMLInputElement>(mounted.container, 'What are you trying to say?'), 'God forgave me');
+    await click(button(mounted.container, 'What are you trying to say?')); // a collapsed disclosure: open it first
+    await typeInto(byLabel<HTMLInputElement>(mounted.container, 'What you want to say, in English'), 'God forgave me');
     await click(button(mounted.container, 'Help me say it'));
     expect(h.tell.intent).toHaveBeenCalledWith(expect.objectContaining({ userId: 'u1', lang: 'es', english: 'God forgave me' }));
     const box = byLabel(mounted.container, 'Suggested wording');

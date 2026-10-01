@@ -1,5 +1,5 @@
 /**
- * Settings → Language support: what each language adapter can honestly do, straight from `adapter.support`,
+ * Settings → Advanced → Language support: what each language adapter can honestly do, straight from `adapter.support`,
  * with its stated limitations. "Seed words only" means the dictionary covers the built-in texts; supplied texts
  * will have words that show "not analysed yet".
  */
@@ -28,7 +28,7 @@ export function LanguageSupportSection() {
   const all = adapters.all();
   return (
     <section aria-label="Language support">
-      <h2 className="section-head">Language support</h2>
+      <h3 className="subsection-head">Language support</h3>
       <p className="card__note">What Go can and cannot do for each language today. Where a column says “seed words only”, the dictionary covers the built-in texts, so texts you supply will have words that are not analysed yet.</p>
       <div className="table-wrap">
         <table className="datatable support" aria-label="Language support table">

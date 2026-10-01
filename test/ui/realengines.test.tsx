@@ -84,7 +84,7 @@ describe('the UI over the real engines', () => {
     // exact sentence text on screen, from the real importer's sentences
     const live = (await boot.services.store.sentences.where('textId', story.id)).filter((s) => !s.retiredInVersion).sort((a, b) => a.index - b.index);
     expect(qa(reader, '.sent-text').map((e) => e.textContent)).toEqual(live.map((s) => s.text));
-    expect(q(reader, '[data-testid="reading-progress"]')!.textContent).toBe(`Read: 0 of ${live.length} sentences`);
+    expect(q(reader, '[data-testid="reading-progress"]')!.textContent).toBe(`Seen 0 of ${live.length} sentences`);
     expect(q(reader, '[data-testid="vocabulary-coverage"]')!.textContent).toMatch(/shown \d+% · likely familiar \d+% \(estimate\) · met \d+% · new \d+%/);
 
     // tap a word: real GoLearn support + explanation
@@ -98,16 +98,18 @@ describe('the UI over the real engines', () => {
     const events = await boot.services.bus.history({ userId: boot.user!.id, types: ['ComprehensionReported'] });
     expect(events).toHaveLength(1);
     expect((events[0] as ComprehensionReported).degree).toBe('all');
-    expect(q(reader, '[data-testid="reading-progress"]')!.textContent).toBe(`Read: 1 of ${live.length} sentences`);
+    // a report is not a view: Seen stays 0, and "Understood" is the learner's own report
+    expect(q(reader, '[data-testid="reading-progress"]')!.textContent).toBe(`Seen 0 of ${live.length} sentences · Understood 1 of ${live.length} (your report)`);
 
     // finish + "How much did you understand?"
     await click(button(reader, /finished reading/));
     await click(button(byLabel(reader, 'How much did you understand?'), 'Most'));
-    expect(q(reader, '[data-testid="reading-progress"]')!.textContent).toContain('finished · you said you understood most of it');
+    expect(q(reader, '[data-testid="reading-progress"]')!.textContent).toContain('Finished · you said you understood most of it');
   });
 
   it('Settings over the real adapters, importer report, and evidence audit', async () => {
     const page = await render('/settings');
+    await click(button(byLabel(page, 'Advanced'), 'Advanced')); // the language-support table and the evidence audit are under Advanced
     const table = byLabel(page, 'Language support table');
     expect(qa(table, 'tbody tr')).toHaveLength(5);
     expect(table.textContent).toContain('seed words only'); // the adapters say lemmatization is seed-only
@@ -117,7 +119,7 @@ describe('the UI over the real engines', () => {
     expect(qa(list, 'tbody tr').length).toBeGreaterThanOrEqual((await boot.services.store.texts.count()) - 0);
     expect(list.textContent).toContain('not reviewed');
     await click(button(byLabel(page, 'Evidence'), 'Check evidence'));
-    expect(q(page, '[data-testid="evidence-audit"]')!.textContent).toContain('Rules evidence@2');
+    expect(q(page, '[data-testid="evidence-audit"]')!.textContent).toContain(`Rules ${boot.services.golearn.policyVersion}`);
     // speech: no provider, so the page says so
     expect(q(page, '[data-testid="speech-availability"]')!.getAttribute('data-available')).toBe('no');
     await check(byLabel<HTMLInputElement>(page, 'Preview unreviewed content'));

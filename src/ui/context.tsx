@@ -5,10 +5,13 @@
  *
  * Components never import engines directly; tests render them inside <AppProvider> with fakes.
  */
-import { createContext, useCallback, useContext, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { rememberActiveUser } from './prefs';
-import type { AdapterRegistry, AppStore, Course, EventBus, GoLearn, GoListen, GoTell, LanguageCode, User } from '../core';
+import { newSession, sittingSession, touchSitting } from './sitting';
+import type { AdapterRegistry, AppStore, Course, EventBus, GoLearn, GoListen, GoTell, LanguageCode, ProviderAvailability, Text, User } from '../core';
+
+export { newSession };
 
 /** One validation finding, as the importer UI shows it (path + what is wrong + how to fix it). */
 export interface IngestIssueView {
@@ -43,7 +46,11 @@ export interface IngestApi {
   validate(docs: unknown[]): Promise<ImportDocView[]>;
   /** Validate everything, then import all-or-nothing. A batch with one bad document imports nothing. */
   import(docs: unknown[]): Promise<ImportDocView[]>;
+  /** Content-version history of a stored text (bootstrap binds it to `contentHistory` in src/ingest). Absent ⇒ only the current version is shown. */
+  history?(text: Text): ContentHistoryView[];
 }
+
+export interface ContentHistoryView { version: number; at: string; summary: string }
 
 export interface BackupCheckView { ok: boolean; errors: string[]; /** Reported but they do not block a restore. */ warnings?: string[]; summary?: string }
 export interface RestoreView { needsRebuild: boolean; summary: string[] }
@@ -63,6 +70,14 @@ export interface SpeechApi {
   configureAzure(input: { key: string; region: string; remember: boolean }): Promise<void>;
   /** Removes remembered credentials and switches the Azure provider off. */
   forgetAzure(): void;
+  /**
+   * Status of this app's own speech service (the same-origin proxy backed by server-side environment variables; no
+   * key ever reaches the browser). undefined = no such service on this deployment. `missing-credentials` carries the
+   * instruction to show. Resolves once the startup check has finished.
+   */
+  proxy?(): Promise<ProviderAvailability | undefined>;
+  /** "Check again": after the server's .env.local was fixed and it was restarted. Forgets a remembered auth failure, re-asks, and retries audio jobs that died. */
+  recheck?(): Promise<ProviderAvailability | undefined>;
 }
 
 export interface StartupInfo {
@@ -89,8 +104,14 @@ export interface AppServices {
 
 export interface AppContextValue extends AppServices {
   userId: string;
-  /** One per reading sitting / app load / user switch; scopes SentenceViewed dedupe. */
+  /** One per reading SITTING (kept across reloads for 30 minutes of inactivity, see sitting.ts); scopes SentenceViewed dedupe. */
   session: string;
+  /**
+   * The session id to use for an event emitted NOW: the learner's sitting-stable id, or — if more than 30 minutes have
+   * passed since their last activity — a new one (the `session` field above then follows). Emitters of view events call
+   * this at emission so a second sitting in a page that stayed open is never deduped into the first.
+   */
+  currentSession(): string;
   user: User;
   course: Course;
   lang: LanguageCode;
@@ -102,22 +123,20 @@ export interface AppContextValue extends AppServices {
 
 const AppContext = createContext<AppContextValue | null>(null);
 
-export function newSession(): string {
-  return `ses:${Date.now().toString(36)}:${Math.random().toString(36).slice(2, 8)}`;
-}
-
 export interface AppProviderProps {
   services: AppServices;
   user: User;
   course: Course;
-  /** Fixed session id (tests); default: a fresh one. */
+  /** Fixed session id (tests); default: the learner's sitting-stable id. */
   session?: string;
   children: ReactNode;
 }
 
 export function AppProvider({ services, user: initialUser, course: initialCourse, session: fixedSession, children }: AppProviderProps) {
   const [who, setWho] = useState<{ user: User; course: Course }>({ user: initialUser, course: initialCourse });
-  const [session, setSession] = useState(fixedSession ?? newSession());
+  const [session, setSession] = useState(() => fixedSession ?? sittingSession(initialUser.id));
+  const sessionRef = useRef(session);
+  sessionRef.current = session;
   const { store } = services;
 
   const load = useCallback(async (userId: string) => {
@@ -134,12 +153,23 @@ export function AppProvider({ services, user: initialUser, course: initialCourse
     await services.golearn.ensureCurrent(userId);
     setWho(next);
     rememberActiveUser(userId);
-    setSession(newSession());
-  }, [load, services.golearn]);
+    setSession(fixedSession ?? sittingSession(userId));
+  }, [load, services.golearn, fixedSession]);
 
   const refreshUser = useCallback(async () => {
     setWho(await load(who.user.id));
   }, [load, who.user.id]);
+
+  const activeUserId = who.user.id;
+  const currentSession = useCallback((): string => {
+    if (fixedSession) return fixedSession;
+    const id = sittingSession(activeUserId); // the stored id while the last activity is < 30 min old, else a new one
+    if (id !== sessionRef.current) { sessionRef.current = id; setSession(id); }
+    return id;
+  }, [fixedSession, activeUserId]);
+
+  // Every event appended for this learner is activity: it keeps the sitting (and its session id) alive.
+  useEffect(() => services.bus.subscribe((e) => { if (e.userId === activeUserId) touchSitting(activeUserId, currentSession()); }), [services.bus, activeUserId, currentSession]);
 
   // GoTell can bind itself to one learner (every accessor then asserts ownership): testimony is private.
   const gotell = useMemo<GoTell>(() => {
@@ -152,12 +182,13 @@ export function AppProvider({ services, user: initialUser, course: initialCourse
     gotell,
     userId: who.user.id,
     session,
+    currentSession,
     user: who.user,
     course: who.course,
     lang: who.course.lang,
     selectUser,
     refreshUser,
-  }), [services, gotell, who, session, selectUser, refreshUser]);
+  }), [services, gotell, who, session, currentSession, selectUser, refreshUser]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

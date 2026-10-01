@@ -1,5 +1,5 @@
 /**
- * Settings → Backup: export this learner's own data to a file (testimonies, versions, drafts, history, optionally
+ * Settings → Backup and recovery: export this learner's own data to a file (testimonies, versions, drafts, history, optionally
  * recordings) and restore it from a file. Nothing leaves the device except by this explicit export. Restore is
  * merge by default (it never overwrites newer writing); derived progress is rebuilt from the restored history.
  */
@@ -55,8 +55,8 @@ export function BackupSection() {
   };
 
   return (
-    <section aria-label="Backup">
-      <h2 className="section-head">Backup</h2>
+    <section aria-label="Backup and recovery" id="settings-backup" data-settings-section="backup">
+      <h2 className="section-head" tabIndex={-1}>Backup and recovery</h2>
       <p className="card__note">Your writing, versions, drafts and history live only on this device. A backup file is how you move them to another device or keep a safe copy. It covers {user.displayName} only.</p>
       {error && <p role="alert" className="error">{error}</p>}
       {message && <p role="status" className="note">{message}</p>}

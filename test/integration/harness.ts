@@ -10,7 +10,7 @@ import { createGoTell } from '../../src/gotell';
 
 export function makeClock(start = '2026-10-01T08:00:00.000Z') {
   let t = Date.parse(start);
-  return { now: () => new Date((t += 1000)).toISOString(), jumpDays: (d: number) => { t += d * 86_400_000; } };
+  return { now: () => new Date((t += 1000)).toISOString(), jumpDays: (d: number) => { t += d * 86_400_000; }, jumpMinutes: (m: number) => { t += m * 60_000; } };
 }
 
 /**
@@ -87,7 +87,7 @@ export function reader(app: App, userId: string, lang: LanguageCode, session: st
     async view(text: Text, sentences: Sentence[]) {
       for (const s of sentences) {
         const toks = await tokensOf(store, s.id);
-        await bus.emit<SentenceViewed>({ type: 'SentenceViewed', userId, lang, surface: surfaceOf(text), session, dedupeKey: `view:${userId}:${session}:${s.id}`, textId: text.id, sentenceId: s.id, tokenIds: toks.map((t) => t.id) });
+        await bus.emit<SentenceViewed>({ type: 'SentenceViewed', userId, lang, surface: surfaceOf(text), session, dedupeKey: `view:${userId}:${session}:${s.id}`, textId: text.id, sentenceId: s.id, tokenIds: toks.map((t) => t.id), dwellMs: 2000, contentVersion: text.contentVersion });
       }
     },
     async tap(text: Text, sentence: Sentence, token: Token, level: 1 | 2 | 3 = 1) {
@@ -97,10 +97,10 @@ export function reader(app: App, userId: string, lang: LanguageCode, session: st
       await bus.emit<EnglishRescueRevealed>({ type: 'EnglishRescueRevealed', userId, lang, surface: surfaceOf(text), session, dedupeKey: `rescue:${userId}:${session}:${sentence.id}`, textId: text.id, sentenceIds: [sentence.id], scope: 'sentence' });
     },
     async complete(text: Text) {
-      await bus.emit<TextCompleted>({ type: 'TextCompleted', userId, lang, surface: surfaceOf(text), session, dedupeKey: `done:${userId}:${session}:${text.id}`, textId: text.id });
+      await bus.emit<TextCompleted>({ type: 'TextCompleted', userId, lang, surface: surfaceOf(text), session, dedupeKey: `done:${userId}:${session}:${text.id}`, textId: text.id, contentVersion: text.contentVersion });
     },
     async report(text: Text, sentences: Sentence[], degree: 'all' | 'most' | 'some' | 'little' = 'all', scope: 'sentence' | 'text' = 'text') {
-      await bus.emit<ComprehensionReported>({ type: 'ComprehensionReported', userId, lang, surface: surfaceOf(text), session, dedupeKey: `report:${userId}:${session}:${text.id}:${scope}:${sentences.map((s) => s.key).join(',')}`, textId: text.id, sentenceIds: sentences.map((s) => s.id), modality: 'reading', scope, degree });
+      await bus.emit<ComprehensionReported>({ type: 'ComprehensionReported', userId, lang, surface: surfaceOf(text), session, dedupeKey: `report:${userId}:${session}:${text.id}:${scope}:${sentences.map((s) => s.key).join(',')}`, textId: text.id, sentenceIds: sentences.map((s) => s.id), modality: 'reading', scope, degree, contentVersion: text.contentVersion });
     },
   };
 }

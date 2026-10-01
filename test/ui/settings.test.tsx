@@ -14,6 +14,8 @@ const app = () => <Shell><AppRoutes /></Shell>;
 const open = async () => { mounted = await h.mount(app(), { router: '/settings' }); return mounted; };
 const section = (name: string) => byLabel(mounted!.container, name);
 const json = (o: unknown, name: string) => new File([JSON.stringify(o)], name, { type: 'application/json' });
+/** Advanced is collapsed by default (and mounts its content on first open): open it. */
+const openAdvanced = async () => { await click(button(section('Advanced'), 'Advanced')); };
 const fileInput = () => byLabel<HTMLInputElement>(section('Content'), 'Choose text files to import');
 
 describe('Settings → Content: the in-app importer', () => {
@@ -138,6 +140,7 @@ describe('Settings → Speech', () => {
 
   it('the Azure form hands the key over once, clears the field, and stores nothing unless "remember" is ticked', async () => {
     await open();
+    await openAdvanced();
     const useKey = () => button(section('Azure speech'), 'Use this key');
     expect(useKey().disabled).toBe(true); // needs both a key and a region
     await typeInto(byLabel<HTMLInputElement>(mounted!.container, 'Azure region'), 'westeurope');
@@ -180,6 +183,7 @@ describe('Settings → Speech', () => {
 
   it('the development fixture-audio switch is a stored preference, off by default', async () => {
     await open();
+    await openAdvanced();
     const box = byLabel<HTMLInputElement>(mounted!.container, 'Development fixture audio');
     expect(box.checked).toBe(false);
     await check(box);
@@ -187,7 +191,7 @@ describe('Settings → Speech', () => {
   });
 });
 
-describe('Settings → Language support', () => {
+describe('Settings → Advanced → Language support', () => {
   const adapter = (lang: 'es' | 'th', support: Partial<LanguageAdapter['support']>) => ({
     lang, name: lang, support: { tokenization: 'dependable', sentenceSegmentation: 'dependable', lemmatization: 'seed-only', morphology: 'limited', phraseDetection: 'limited', productionChecks: 'limited', limitations: [], ...support },
   }) as unknown as LanguageAdapter;
@@ -201,6 +205,7 @@ describe('Settings → Language support', () => {
       ],
     };
     await open();
+    await openAdvanced();
     const table = byLabel(mounted!.container, 'Language support table');
     const es = q(table, 'tr[data-lang="es"]')!;
     expect(es.querySelector('th')!.textContent).toBe('Spanish (your team)');
@@ -215,7 +220,7 @@ describe('Settings → Language support', () => {
   });
 });
 
-describe('Settings → Backup', () => {
+describe('Settings → Backup and recovery', () => {
   let downloads: Array<{ name: string; href: string }>;
   beforeEach(() => {
     downloads = [];
@@ -224,16 +229,16 @@ describe('Settings → Backup', () => {
 
   it('exports this learner as a downloaded file, optionally with recordings', async () => {
     await open();
-    await click(button(section('Backup'), 'Export my data'));
+    await click(button(section('Backup and recovery'), 'Export my data'));
     expect(h.controls.backup.exportLearner).toHaveBeenCalledWith('u1', { includeRecordings: false });
     expect(downloads).toHaveLength(1);
     expect(downloads[0].name).toMatch(/^go-backup-u1-\d{4}-\d{2}-\d{2}\.json$/);
     const body = JSON.parse(decodeURIComponent(downloads[0].href.split(',').slice(1).join(',')));
     expect(body).toMatchObject({ format: 'go-backup', userId: 'u1' });
-    expect(section('Backup').textContent).toContain('it contains your writing');
+    expect(section('Backup and recovery').textContent).toContain('it contains your writing');
 
     await check(byLabel<HTMLInputElement>(mounted!.container, 'Include my recordings'));
-    await click(button(section('Backup'), 'Export my data'));
+    await click(button(section('Backup and recovery'), 'Export my data'));
     expect(h.controls.backup.exportLearner).toHaveBeenLastCalledWith('u1', { includeRecordings: true });
   });
 
@@ -269,7 +274,7 @@ describe('Settings → Backup', () => {
     const bad = q(mounted!.container, '[data-testid="backup-invalid"]')!;
     expect(bad.textContent).toContain('other.json cannot be restored');
     expect(bad.textContent).toContain('This is not a Go backup file.');
-    expect(qa(section('Backup'), 'button').some((b) => b.textContent === 'Restore')).toBe(false);
+    expect(qa(section('Backup and recovery'), 'button').some((b) => b.textContent === 'Restore')).toBe(false);
     expect(h.controls.backup.restore).not.toHaveBeenCalled();
 
     await pickFiles(byLabel<HTMLInputElement>(mounted!.container, 'Choose a backup file'), [new File(['{ nope'], 'broken.json')]);
@@ -293,14 +298,15 @@ describe('Settings → Backup', () => {
     await open();
     await pickFiles(byLabel<HTMLInputElement>(mounted!.container, 'Choose a backup file'), [json({ format: 'go-backup' }, 'mine.json')]);
     await click(button(q(mounted!.container, '[data-testid="backup-valid"]')!, 'Restore'));
-    expect(section('Backup').querySelector('[role="alert"]')!.textContent).toBe('This backup belongs to another learner.');
+    expect(section('Backup and recovery').querySelector('[role="alert"]')!.textContent).toBe('This backup belongs to another learner.');
     expect(h.learn.rebuild).not.toHaveBeenCalled();
   });
 });
 
-describe('Settings → Evidence', () => {
+describe('Settings → Advanced → Evidence', () => {
   it('runs the audit, groups the excluded events by reason, and never offers to delete them', async () => {
     await open();
+    await openAdvanced();
     await click(button(section('Evidence'), 'Check evidence'));
     expect(h.learn.auditEvidence).toHaveBeenCalledWith('u1');
     const box = q(mounted!.container, '[data-testid="evidence-audit"]')!;
@@ -316,6 +322,7 @@ describe('Settings → Evidence', () => {
   it('says so when nothing is excluded, and rebuilds on request', async () => {
     h.learn.auditEvidence.mockImplementation(async (userId: string) => ({ userId, policyVersion: 'evidence@2', totalEvents: 4, excluded: [], rebuilt: false }));
     await open();
+    await openAdvanced();
     await click(button(section('Evidence'), 'Check evidence'));
     expect(q(mounted!.container, '[data-testid="evidence-audit"]')!.textContent).toContain('none are excluded');
     await click(button(section('Evidence'), 'Rebuild learning state'));

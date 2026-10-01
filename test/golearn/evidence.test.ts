@@ -21,8 +21,8 @@ async function buildLuz(h: Harness) {
 const reading = async (h: Harness, itemId: string, user = U) => (await h.golearn.getItemState(user, itemId))!.reading;
 
 describe('policyVersion', () => {
-  it('is evidence@2', async () => {
-    expect(createHarness().golearn.policyVersion).toBe('evidence@2');
+  it('is evidence@3', async () => {
+    expect(createHarness().golearn.policyVersion).toBe('evidence@3');
   });
 });
 
@@ -96,12 +96,12 @@ describe('demonstration', () => {
     expect(await pick(b)).toEqual(await pick(a));
   });
 
-  it('a report names its own session: demonstrating in s1 says nothing about s2', async () => {
+  it('a report belongs to its own sitting: demonstrating in sitting 1 says nothing about sitting 2', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
     await h.view(U, 'es', ES_STORY, 0, 's1');
-    await h.view(U, 'es', ES_STORY, 0, 's2');
     await h.report(U, 'es', ES_STORY, [0], { session: 's1' });
+    await h.view(U, 'es', ES_STORY, 0, 's2'); // 31 minutes later
     const kinds = (await h.store.encounters.where('itemId', F('creo'))).sort((x, y) => (x.at < y.at ? -1 : 1)).map((e) => e.evidenceKind);
     expect(kinds).toEqual(['demonstrated', 'exposure']);
   });
@@ -239,7 +239,7 @@ describe('only reviewed real speech counts for listening (rule 5)', () => {
     await h.listen(U, 'es', ES_STORY, [3], { session: 'l5', legacy: true, segmentId: 'seg:nope' });
     const events = await h.store.events.where('userId', U);
     const audit = await h.golearn.auditEvidence(U);
-    expect(audit).toMatchObject({ userId: U, policyVersion: 'evidence@2', totalEvents: events.length, rebuilt: false });
+    expect(audit).toMatchObject({ userId: U, policyVersion: 'evidence@3', totalEvents: events.length, rebuilt: false });
     expect(audit.excluded.map((x) => x.reason).sort()).toEqual(['non-speech-audio', 'non-speech-audio', 'unknown-asset', 'unreviewed-voice']);
     expect(audit.excluded.every((x) => x.type === 'AudioSegmentCompleted')).toBe(true);
     const before = (await h.store.encounters.where('userId', U)).length;
@@ -283,7 +283,7 @@ describe('ensureCurrent — migration from an older policy without deleting anyt
     expect(creo.reading.level).toBe('encountered'); // exposure only
     expect(creo.reading.evidence).toBe(0);
     expect((await h.store.events.where('userId', U)).length).toBe(events);
-    expect((await h.store.meta.get(`golearn.policy:${U}`))?.value).toBe('evidence@2');
+    expect((await h.store.meta.get(`golearn.policy:${U}`))?.value).toBe('evidence@3');
     expect(await h.golearn.ensureCurrent(U)).toBe(false); // idempotent
   });
 
@@ -298,14 +298,14 @@ describe('ensureCurrent — migration from an older policy without deleting anyt
     await h.view('a', 'es', ES_STORY, 0); // a: state predates any stamp
     const b = (await h.store.encounters.where('userId', 'b')).length;
     expect(await h.golearn.ensureCurrent('a')).toBe(true);
-    expect((await h.store.meta.get('golearn.policy:b'))?.value).toBe('evidence@2');
+    expect((await h.store.meta.get('golearn.policy:b'))?.value).toBe('evidence@3');
     expect((await h.store.encounters.where('userId', 'b')).length).toBe(b);
   });
 
   it('a brand-new learner is just stamped', async () => {
     const h = createHarness();
     expect(await h.golearn.ensureCurrent('fresh')).toBe(false);
-    expect((await h.store.meta.get('golearn.policy:fresh'))?.value).toBe('evidence@2');
+    expect((await h.store.meta.get('golearn.policy:fresh'))?.value).toBe('evidence@3');
   });
 });
 
@@ -322,26 +322,26 @@ describe('duplicate evidence guards', () => {
     await buildSpanish(h.store); // re-import: same sentence ids, same tokens
     await h.golearn.rebuild(U);
     expect(await snap()).toBe(before);
-    expect((await h.golearn.readingProgress(U, ES_STORY)).sentencesViewed).toBe(2);
+    expect((await h.golearn.readingProgress(U, ES_STORY)).sentencesSeen).toBe(2);
   });
 });
 
-describe('readingProgress — completion is about sentences seen', () => {
-  it('counts viewed live sentences, completion, the last text report and really-heard sentences', async () => {
+describe('readingProgress — Seen / Understood / Finished are three different things', () => {
+  it('counts seen live sentences, the last text report and really-heard sentences; finishing is never inferred', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
     let p = await h.golearn.readingProgress(U, ES_STORY);
-    expect(p).toEqual({ textId: ES_STORY, sentencesTotal: 4, sentencesViewed: 0, listenedSentences: 0 });
+    expect(p).toEqual({ textId: ES_STORY, contentVersion: 1, sentencesTotal: 4, sentencesSeen: 0, sentencesUnderstood: 0, sittings: 0, listenedSentences: 0 });
     await h.view(U, 'es', ES_STORY, 0);
     await h.view(U, 'es', ES_STORY, 1);
     p = await h.golearn.readingProgress(U, ES_STORY);
-    expect(p).toMatchObject({ sentencesViewed: 2 });
-    expect(p.completedAt).toBeUndefined();
+    expect(p).toMatchObject({ sentencesSeen: 2, sittings: 1 });
+    expect(p.finishedAt).toBeUndefined();
     await h.view(U, 'es', ES_STORY, 2);
     await h.view(U, 'es', ES_STORY, 3);
     p = await h.golearn.readingProgress(U, ES_STORY);
-    expect(p.sentencesViewed).toBe(4);
-    expect(p.completedAt).toBeTruthy(); // every live sentence seen
+    expect(p.sentencesSeen).toBe(4);
+    expect(p.finishedAt).toBeUndefined(); // every live sentence seen is NOT "finished"
     expect(p.reportedComprehension).toBeUndefined();
     await h.report(U, 'es', ES_STORY, [0, 1, 2, 3], { scope: 'text', degree: 'some' });
     await h.report(U, 'es', ES_STORY, [0, 1, 2, 3], { scope: 'text', degree: 'most' });
@@ -349,18 +349,18 @@ describe('readingProgress — completion is about sentences seen', () => {
     await h.listen(U, 'es', ES_STORY, [0, 1], { session: 'l1' });
     await h.listen(U, 'es', ES_STORY, [2], { session: 'l1', speech: false });
     expect((await h.golearn.readingProgress(U, ES_STORY)).listenedSentences).toBe(2); // the fixture play is not "heard"
-    expect((await h.golearn.readingProgress('someone-else', ES_STORY)).sentencesViewed).toBe(0);
+    expect((await h.golearn.readingProgress('someone-else', ES_STORY)).sentencesSeen).toBe(0);
     await expect(h.golearn.readingProgress(U, 'text:es:nope')).rejects.toThrow();
   });
 
-  it('an explicit TextCompleted marks completion even before every sentence was seen', async () => {
+  it('an explicit TextCompleted sets finishedAt, even before every sentence was seen', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
     await h.view(U, 'es', ES_STORY, 0);
     await h.complete(U, 'es', ES_STORY);
     const p = await h.golearn.readingProgress(U, ES_STORY);
-    expect(p.sentencesViewed).toBe(1);
-    expect(p.completedAt).toBeTruthy();
+    expect(p.sentencesSeen).toBe(1);
+    expect(p.finishedAt).toBeTruthy();
   });
 });
 
@@ -425,7 +425,7 @@ describe('policy stamp on first write', () => {
     await buildSpanish(h.store);
     expect(await stampOf(h, U)).toBeUndefined();
     await h.view(U, 'es', ES_STORY, 0);
-    expect(await stampOf(h, U)).toBe('evidence@2');
+    expect(await stampOf(h, U)).toBe('evidence@3');
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
     expect(await stampOf(h, 'nobody')).toBeUndefined(); // other learners are not stamped
   });
@@ -441,7 +441,7 @@ describe('policy stamp on first write', () => {
     expect(await stampOf(h, U)).toBeUndefined();
     expect(await h.golearn.ensureCurrent(U)).toBe(true);
     expect((await h.store.encounters.get('legacy-enc'))).toBeUndefined(); // rebuilt from the log
-    expect(await stampOf(h, U)).toBe('evidence@2');
+    expect(await stampOf(h, U)).toBe('evidence@3');
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
   });
 

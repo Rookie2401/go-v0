@@ -1,5 +1,5 @@
 /**
- * GoLearn evidence policy — `evidence@2`. The single place where assistance discounts, modality rules and
+ * GoLearn evidence policy — `evidence@3` (adds time-derived sittings, version-pinned encounters, explicit completion). The single place where assistance discounts, modality rules and
  * level thresholds live (ARCHITECTURE §8, PLAN2 "Evidence policy v2"). Nothing here is a grade: help never
  * subtracts, it only limits how far an item can be credited.
  *
@@ -10,16 +10,16 @@
  *                 rescue; for listening: transcript or translation shown) → counts in `assisted`; contributes 0
  *                 evidence; level capped at `recognized_with_help`.
  *   demonstrated  the learner reported understanding ALL of the sentence (ComprehensionReported degree 'all') and
- *                 no help was used on that item in that session → evidence = readingWeight(0) = 1 (reading) or
+ *                 no help was used on that item in that sitting → evidence = readingWeight(0) = 1 (reading) or
  *                 listeningWeight(speed, replays) (listening; replays/slow speed discount it).
  *   (an explicit ItemMarked `known` is a demonstration of that one item and lives in `manualMark`, see state.ts)
  *   Production (writing / speaking) is always demonstration; weights below.
  *
- * ── Receptive levels (evidence = Σ demonstrated weights; units = distinct demonstrated (sentence, session)) ──
+ * ── Receptive levels (evidence = Σ demonstrated weights; units = distinct demonstrated (sentence, sitting)) ──
  *   unseen               no encounter at all
  *   encountered          any encounter (exposure or assisted) — the ceiling for exposure-only items
  *   recognized_with_help ≥ 2 assisted encounters, OR ≥ 1 demonstrated unit — the ceiling for assisted-only items
- *   recognized           demonstrated units ≥ 2 AND evidence ≥ 1.5   (two separate sentences or sessions)
+ *   recognized           demonstrated units ≥ 2 AND evidence ≥ 1.5   (two separate sentences or sittings)
  *   rapid                demonstrated units ≥ 5 AND evidence ≥ 4.0
  *  `defaultPolicy.level(dimension, evidence, units, assisted)` takes exactly those numbers; `units` for receptive
  *  dimensions is the count of demonstrated units, NOT the count of unassisted encounters (that one is only
@@ -37,10 +37,10 @@
  *   speed   : <1.0 scales linearly from 0.6 (at ≤0.7x) to 1.0 (at 1.0x); >1.0 gains up to +10 % (cap 1.1)
  *   replays : 1 - 0.15 per replay, floor 0.5
  *   transcript shown ×0.6 · translation revealed ×0.25 (such an encounter is `assisted`, so these only matter for the
- *   potential weight used to choose the better of two completions in one session)
+ *   potential weight used to choose the better of two completions in one sitting)
  *
  * ── Estimate ("likely familiar", never "known") ──
- *   estimatedFamiliar = ≥ 4 unassisted encounters in the dimension, across ≥ 2 distinct sessions, AND none of the
+ *   estimatedFamiliar = ≥ 4 unassisted encounters in the dimension, across ≥ 2 distinct SITTINGS (derived from event time, see sitting.ts; never the UI's session id), AND none of the
  *   last 2 encounters used help, AND the item is not already `recognized`. Receptive dimensions only.
  *   Confidence for an estimate-only item is 0.30 (a cautious belief); otherwise e / (e + 2) of demonstrated evidence.
  *
@@ -51,7 +51,7 @@ import type { AssistanceLevel, ComfortBand, EvidencePolicy, LearnerLevel, Produc
 import { LEVEL_ORDER } from '../core';
 
 /** Version of the evidence rules; stored per user in `meta`. Bump whenever a rule above changes. */
-export const POLICY_VERSION = 'evidence@2';
+export const POLICY_VERSION = 'evidence@3';
 
 export const READING_WEIGHTS: readonly number[] = [1.0, 0.85, 0.65, 0.45, 0.3, 0.15];
 
@@ -76,7 +76,7 @@ export const LEVEL_THRESHOLDS = {
 } as const;
 
 /** Estimate rule (receptive dimensions). */
-export const ESTIMATE = { minUnassisted: 4, minSessions: 2, cleanTail: 2, confidence: 0.3 } as const;
+export const ESTIMATE = { minUnassisted: 4, minSittings: 2, cleanTail: 2, confidence: 0.3 } as const;
 
 export const BAND_THRESHOLDS = { comfortable: 0.95, productiveChallenge: 0.88, difficult: 0.75 } as const;
 
@@ -88,7 +88,7 @@ export const LEMMA_MIN_CONFIDENCE = 0.5;
 /** tokenSupport flags an analysis as `uncertain` below this confidence (or when alternatives exist). */
 export const UNCERTAIN_BELOW = 0.6;
 
-/** Recommendation: a text is a `reread` candidate when at least this share of the word encounters of its latest reading session needed help. */
+/** Recommendation: a text is a `reread` candidate when at least this share of the word encounters of its latest reading sitting needed help. */
 export const HEAVY_HELP_FRACTION = 0.4;
 
 /**

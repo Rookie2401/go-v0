@@ -1,5 +1,5 @@
 /**
- * Settings → Evidence: what counts toward your progress and what was left out. Runs GoLearn's evidence audit,
+ * Settings → Advanced → Evidence: what counts toward your progress and what was left out. Runs GoLearn's evidence audit,
  * lists the excluded events (never deleted from your history) and lets you rebuild derived progress from history.
  */
 import { useState } from 'react';
@@ -30,7 +30,7 @@ export function EvidenceSection() {
 
   return (
     <section aria-label="Evidence">
-      <h2 className="section-head">Evidence</h2>
+      <h3 className="subsection-head">Evidence</h3>
       <p className="card__note">
         Progress is worked out from your history by fixed rules: opening or hearing something is exposure, not understanding; help is recorded as help;
         only reviewed real speech counts for listening. Nothing is ever deleted from your history; events that do not count are listed here.

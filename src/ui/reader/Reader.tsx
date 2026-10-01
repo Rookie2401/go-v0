@@ -9,13 +9,15 @@
  * Layout is Biblia's: a sticky crumb header with a progress hairline, the prose column, a fixed
  * Previous / Next text bar, and the word card as a bottom sheet that rises on every screen width.
  *
- * Events: TextViewed (once), SentenceViewed (once per sentence per session), TokenHelpOpened (level),
- * PhraseHelpOpened, GrammarHelpOpened, SentenceExplanationRevealed, EnglishRescueRevealed (scope),
- * TextCompleted, ComprehensionReported.
+ * Events: TextViewed (mode 'open', once per sitting), SentenceViewed (a sentence that stayed in view long enough, in
+ * the reader itself, in a visible focused tab, with no preparation panel open; once per sentence per sitting),
+ * TokenHelpOpened (level), PhraseHelpOpened, GrammarHelpOpened, SentenceExplanationRevealed,
+ * EnglishRescueRevealed (scope), TextCompleted (explicit), ComprehensionReported. All carry the text's contentVersion
+ * where the contract has the field.
  *
- * Viewing is EXPOSURE only. What the learner says about understanding is a separate, deliberate, quiet act:
+ * Viewing is EXPOSURE only ("Seen"). What the learner says about understanding is a separate, deliberate, quiet act:
  * "Understood" on a sentence, and "How much did you understand? All · Most · Some · Little" at the end. Only
- * those reports (never views, never finishing) can demonstrate comprehension.
+ * those reports (never views, never finishing) can demonstrate comprehension, and a report never fabricates a view.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
@@ -33,16 +35,18 @@ import { isTestimonyText, textPath } from '../format';
 import { usePref } from '../prefs';
 import type { HighlightPref } from '../prefs';
 import { BackLink, I, IconBtn, Topbar } from '../ui';
+import { ReadingGateContext } from './readingGate';
+import type { ReadingGate } from './readingGate';
 import { TokenCard } from './TokenCard';
 import { createViewDetector } from './viewDetection';
-import type { ViewDetectorFactory } from './viewDetection';
+import type { ViewDetector, ViewDetectorFactory } from './viewDetection';
 import { useTextData } from './useTextData';
 import type { TextData } from './useTextData';
 
 export interface ReaderProps {
   textId: string;
   mode: 'corpus' | 'scripture';
-  /** Injectable for tests; default is IntersectionObserver-based, null ⇒ manual "mark as read" buttons. */
+  /** Injectable for tests; default is IntersectionObserver-based, null ⇒ manual "mark as seen" buttons. */
   createDetector?: ViewDetectorFactory;
   /** Sentence currently playing (Player), highlighted and scrolled into view. */
   activeSentenceId?: string;
@@ -98,7 +102,7 @@ function useSiblings(text: Text): { prev?: Text; next?: Text } {
 }
 
 export function Reader(props: ReaderProps) {
-  const { session, userId } = useApp();
+  const { userId } = useApp();
   const state = useTextData(props.textId);
   const back = props.mode === 'scripture' ? '/scripture' : '/read';
   const backLabel = props.mode === 'scripture' ? 'Scripture' : 'Library';
@@ -111,14 +115,15 @@ export function Reader(props: ReaderProps) {
   if (state.status === 'loading') return bare(<p className="muted" role="status">Loading…</p>);
   if (state.status === 'missing') return bare(<p role="alert">This text is not in your library.</p>);
   if (state.status === 'error') return bare(<p role="alert" className="error">Could not open this text: {state.message}</p>);
-  return <ReaderBody key={`${props.textId}|${userId}|${session}`} data={state.data} {...props} />;
+  // Not keyed by session: a new sitting in a page that stayed open must not remount the reader (events resolve the sitting at emission).
+  return <ReaderBody key={`${props.textId}|${userId}`} data={state.data} {...props} />;
 }
 
 function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, bar, before }: ReaderProps & { data: TextData }) {
-  const { bus, golearn, userId, session } = useApp();
+  const { bus, golearn, userId, currentSession } = useApp();
   const { text } = data;
   const surface = mode === 'scripture' ? 'scripture' : 'corpus';
-  const emitter = useMemo(() => makeEmitter({ bus, userId, lang: text.lang, session }), [bus, userId, text.lang, session]);
+  const emitter = useMemo(() => makeEmitter({ bus, userId, lang: text.lang, session: currentSession }), [bus, userId, text.lang, currentSession]);
   const script = LANGUAGE_ROWS.find((l) => l.id === text.lang)?.script ?? 'Latn';
   const [highlight, setHighlight] = usePref('highlight');
   const [fontSize] = usePref('fontSize');
@@ -127,10 +132,19 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
 
   const rootRef = useRef<HTMLElement>(null);
   const headRef = useRef<HTMLElement>(null);
-  const viewedRef = useRef(new Set<string>());
+  /** Sentences already reported in the CURRENT sitting (reset when the sitting changes: a later sitting's view is a new exposure). */
+  const viewedRef = useRef<{ session: string; ids: Set<string> }>({ session: '', ids: new Set() });
   const [viewed, setViewed] = useState<ReadonlySet<string>>(new Set());
   const [auto, setAuto] = useState<boolean | null>(null);
   const [finished, setFinished] = useState(false);
+  const detectorRef = useRef<ViewDetector | null>(null);
+  const overlays = useRef(new Set<string>());
+  const gate = useMemo<ReadingGate>(() => ({
+    setOverlay(id, open) {
+      if (open) overlays.current.add(id); else overlays.current.delete(id);
+      detectorRef.current?.setPaused(overlays.current.size > 0);
+    },
+  }), []);
   const [understood, setUnderstood] = useState<ReadonlySet<string>>(new Set());
   const [textDegree, setTextDegree] = useState<ComprehensionReported['degree'] | null>(null);
   const [reportTick, setReportTick] = useState(0);
@@ -161,33 +175,49 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
     return () => ro.disconnect();
   }, []);
 
-  // TextViewed once per session.
+  // Already finished (explicitly, earlier)? Say so instead of offering the button again. Only an explicit TextCompleted sets this.
   useEffect(() => {
-    void emitter.emit<TextViewed>(surface, { type: 'TextViewed', textId: text.id, dedupeKey: `textviewed:${session}:${text.id}` });
-  }, [emitter, surface, session, text.id]);
+    let live = true;
+    void golearn.readingProgress(userId, text.id).then((p) => { if (live && p.finishedAt) setFinished(true); }, () => undefined);
+    return () => { live = false; };
+  }, [golearn, userId, text.id]);
 
-  // ── SentenceViewed ──
-  const onViewed = useCallback((sentenceId: string, dwellMs: number) => {
-    if (viewedRef.current.has(sentenceId)) return;
-    viewedRef.current.add(sentenceId);
-    setViewed(new Set(viewedRef.current));
+  // TextViewed (displayed, not exposure) once per sitting.
+  useEffect(() => {
+    void emitter.emit<TextViewed>(surface, {
+      type: 'TextViewed', textId: text.id, mode: 'open', contentVersion: text.contentVersion,
+      dedupeKey: (session) => `textviewed:${userId}:${session}:${text.id}`,
+    });
+  }, [emitter, surface, userId, text.id, text.contentVersion]);
+
+  // ── SentenceViewed: reading exposure only (the detector decides when a sentence was in front of the learner long enough) ──
+  const onViewed = useCallback((sentenceId: string, dwellMs?: number) => {
+    const sitting = currentSession();
+    if (viewedRef.current.session !== sitting) viewedRef.current = { session: sitting, ids: new Set() };
+    if (viewedRef.current.ids.has(sentenceId)) return;
+    viewedRef.current.ids.add(sentenceId);
+    setViewed(new Set(viewedRef.current.ids));
     const tokenIds = (data.tokensBySentence.get(sentenceId) ?? []).filter((t) => t.isWord).map((t) => t.id);
     void emitter.emit<SentenceViewed>(surface, {
-      type: 'SentenceViewed', textId: text.id, sentenceId, tokenIds, dwellMs,
-      dedupeKey: `view:${session}:${sentenceId}`,
+      type: 'SentenceViewed', textId: text.id, sentenceId, tokenIds, contentVersion: text.contentVersion,
+      ...(dwellMs !== undefined ? { dwellMs } : {}),
+      dedupeKey: (session) => `view:${userId}:${session}:${sentenceId}`,
     });
-  }, [data.tokensBySentence, emitter, surface, session, text.id]);
+  }, [data.tokensBySentence, emitter, surface, currentSession, userId, text.id, text.contentVersion]);
   const onViewedRef = useRef(onViewed);
   onViewedRef.current = onViewed;
 
   useEffect(() => {
     const detector = (createDetector ?? createViewDetector)((id, dwell) => onViewedRef.current(id, dwell));
+    detectorRef.current = detector;
     setAuto(detector !== null);
     if (!detector || !rootRef.current) return;
+    detector.setPaused(overlays.current.size > 0);
     rootRef.current.querySelectorAll('[data-sentence-id]').forEach((el) => {
-      detector.observe(el, el.getAttribute('data-sentence-id')!);
+      const id = el.getAttribute('data-sentence-id')!;
+      detector.observe(el, id, (data.tokensBySentence.get(id) ?? []).filter((t) => t.isWord).length);
     });
-    return () => detector.disconnect();
+    return () => { detector.disconnect(); if (detectorRef.current === detector) detectorRef.current = null; };
   }, [data, createDetector]);
 
   // Keep the playing sentence in view.
@@ -267,31 +297,32 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
 
   const finish = useCallback(async () => {
     setFinished(true);
-    await emitter.emit<TextCompleted>(surface, { type: 'TextCompleted', textId: text.id, dedupeKey: `textcompleted:${session}:${text.id}` });
+    await emitter.emit<TextCompleted>(surface, { type: 'TextCompleted', textId: text.id, contentVersion: text.contentVersion, dedupeKey: (session) => `textcompleted:${userId}:${session}:${text.id}` });
     setReportTick((n) => n + 1);
-  }, [emitter, surface, session, text.id]);
+  }, [emitter, surface, userId, text.id, text.contentVersion]);
 
-  /** "Understood" on one sentence: a deliberate report (a sentence the learner says they understood was on screen). */
+  /** "Understood" on one sentence: a deliberate report. It is not a view: it emits no SentenceViewed. */
   const reportUnderstood = useCallback(async (sentenceId: string) => {
     if (understood.has(sentenceId)) return;
     setUnderstood((prev) => new Set([...prev, sentenceId]));
-    onViewedRef.current(sentenceId, 0); // reporting implies the sentence was seen (deduped if it already was)
     await emitter.emit<ComprehensionReported>(surface, {
       type: 'ComprehensionReported', textId: text.id, sentenceIds: [sentenceId], modality: 'reading', scope: 'sentence', degree: 'all',
-      dedupeKey: `understood:${session}:${sentenceId}`,
+      contentVersion: text.contentVersion,
+      dedupeKey: (session) => `understood:${userId}:${session}:${sentenceId}`,
     });
     setReportTick((n) => n + 1);
-  }, [understood, emitter, surface, session, text.id]);
+  }, [understood, emitter, surface, userId, text.id, text.contentVersion]);
 
   /** "How much did you understand?" for the whole text. */
   const reportText = useCallback(async (degree: ComprehensionReported['degree']) => {
     setTextDegree(degree);
     await emitter.emit<ComprehensionReported>(surface, {
       type: 'ComprehensionReported', textId: text.id, sentenceIds: data.sentences.map((s) => s.id), modality: 'reading', scope: 'text', degree,
-      dedupeKey: `understood-text:${session}:${text.id}:${degree}`,
+      contentVersion: text.contentVersion,
+      dedupeKey: (session) => `understood-text:${userId}:${session}:${text.id}:${degree}`,
     });
     setReportTick((n) => n + 1);
-  }, [emitter, surface, session, text.id, data.sentences]);
+  }, [emitter, surface, userId, text.id, text.contentVersion, data.sentences]);
 
   // ── rendering ──
   // Learner state → Biblia's mark classes: unseen = new, partial = recognized, known = familiar.
@@ -353,7 +384,7 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
             >{I.english}</IconBtn>
           )}
           {auto === false && !viewed.has(s.id) && (
-            <IconBtn className="iconbtn--mini sent__btn" label={`Mark sentence ${s.index + 1} as read`} onClick={() => onViewed(s.id, 0)}>{I.check}</IconBtn>
+            <IconBtn className="iconbtn--mini sent__btn" label={`Mark sentence ${s.index + 1} as seen`} onClick={() => onViewed(s.id)}>{I.check}</IconBtn>
           )}
           <button
             type="button" className="sent__understood sent__btn" aria-pressed={understood.has(s.id)}
@@ -463,7 +494,7 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
           <UnpublishedReasons text={text} />
           <TextProgress textId={text.id} refreshKey={`${viewed.size}|${reportTick}`} />
 
-          {before}
+          <ReadingGateContext.Provider value={gate}>{before}</ReadingGateContext.Provider>
 
           <div className="reader-body">{sectionBlocks}</div>
 

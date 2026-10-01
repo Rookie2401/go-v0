@@ -4,6 +4,8 @@
  *   validateDocument / validateBatch   -> ValidationIssue[] ({path, code, message, hint, severity})
  *   importDocuments                    -> atomic, repeatable, versioned import; one ImportReport per document
  *   computePublished                   -> the publication gate (published + unpublishedReasons)
+ *   applyReview                        -> record a review in a document (pure; the corpus:review CLI wraps it)
+ *   contentHistory                     -> the content-version history of a stored Text (from its transformation log)
  *   ingestDocument / ingestAll         -> thin wrappers over importDocuments (throw CorpusValidationError)
  *   loadBundledCorpus                  -> the bundled documents (`data/corpus/<lang>/*.json`)
  *   testimonyDocument                  -> the private-Text document GoTell materializes for a revision
@@ -16,6 +18,11 @@ export * from './format';
 export { computePublished, type PublicationDecision } from './publish';
 export { INGEST_TOOL, IMPORT_ANALYZER } from './plan';
 export * from './import';
+export { contentHistory, describeVersionBump, VERSION_RECORD_PREFIX, type ContentHistoryEntry, type VersionBump } from './history';
+export {
+  applyReview, isIsoDate, REVIEW_STATUSES, NEEDS_REVIEW_TAG,
+  type ReviewOptions, type ReviewRefusal, type ReviewRefusalCode, type ReviewResult,
+} from './review';
 export * from './testimony';
 export * from './migrate';
 export { analysisCoverage, type AnalysisCoverage } from '../adapters/shared';

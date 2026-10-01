@@ -1,13 +1,14 @@
 /**
  * Settings → Content: preview mode, the in-app importer (choose .json files → validation report with paths and
- * hints → import) and the list of texts with their review status, publication state and reasons.
+ * hints → import) and the list of texts with their review status, publication state, plain reasons and content-version
+ * history (`ingest.history`, bound to `contentHistory` in src/ingest; without it the current version is all that is shown).
  */
 import { useCallback, useEffect, useId, useState } from 'react';
 import type { Corpus, Text } from '../../../core';
 import { useApp } from '../../context';
 import type { ImportDocView, IngestIssueView } from '../../context';
 import { errorText } from './shared';
-import { REVIEW_LABEL, isTestimonyText, nameOfLang } from '../../format';
+import { REVIEW_LABEL, formatDate, isTestimonyText, nameOfLang, plainReasons } from '../../format';
 import { readFileText } from '../../files';
 import { usePref } from '../../prefs';
 
@@ -151,6 +152,42 @@ function Importer({ onImported }: { onImported(): void }) {
 /** Who reviewed it and when, from the text's own 'review' record (never invented). */
 const reviewNote = (t: Text): string | undefined => (t.transformations ?? []).filter((x) => x.tool === 'review').at(-1)?.description;
 
+/** The versions of one text: "Version 3" and, when the importer recorded them, what each import changed. */
+export function VersionHistory({ text }: { text: Text }) {
+  const { ingest } = useApp();
+  let entries: Array<{ version: number; at: string; summary: string }> = [];
+  try { entries = ingest.history?.(text) ?? []; } catch { entries = []; }
+  if (entries.length === 0) return <span data-testid="version-current">Version {text.contentVersion}</span>;
+  return (
+    <details className="versions" data-testid="version-history">
+      <summary>Version {text.contentVersion} · {entries.length} {entries.length === 1 ? 'entry' : 'entries'}</summary>
+      <ol className="versions__list" aria-label={`Version history of ${text.title}`}>
+        {entries.map((e) => (
+          <li key={`${e.version}|${e.at}`} data-version={e.version}>
+            <strong>Version {e.version}</strong> <span className="faint">{formatDate(e.at)}</span>
+            <span className="card__note"> {e.summary}</span>
+          </li>
+        ))}
+      </ol>
+    </details>
+  );
+}
+
+/** Why a text is held back, in plain words; the importer's full wording (with how to fix it) one click away. */
+function WhyNot({ text }: { text: Text }) {
+  if (text.published === true) return <>—</>;
+  const raw = text.unpublishedReasons ?? [];
+  if (raw.length === 0) return <>Not published.</>;
+  const plain = plainReasons(raw);
+  const full = raw.join(' ');
+  return (
+    <>
+      {plain.join(' ')}
+      {full !== plain.join(' ') && <details className="reasons-full"><summary>How to fix</summary><span className="card__note">{full}</span></details>}
+    </>
+  );
+}
+
 export function TextList({ refreshKey }: { refreshKey: unknown }) {
   const { store } = useApp();
   const [rows, setRows] = useState<Text[] | null>(null);
@@ -170,7 +207,7 @@ export function TextList({ refreshKey }: { refreshKey: unknown }) {
   return (
     <div className="table-wrap">
       <table className="datatable textlist" aria-label="Texts">
-        <thead><tr><th>Text</th><th>Language</th><th>Review</th><th>Published</th><th>Why not</th></tr></thead>
+        <thead><tr><th>Text</th><th>Language</th><th>Review</th><th>Published</th><th>Why not</th><th>Version</th></tr></thead>
         <tbody>
           {rows.map((t) => (
             <tr key={t.id} data-text-id={t.id} data-published={t.published === true ? 'yes' : 'no'}>
@@ -178,7 +215,8 @@ export function TextList({ refreshKey }: { refreshKey: unknown }) {
               <td data-label="Language">{nameOfLang(t.lang)}</td>
               <td data-label="Review">{REVIEW_LABEL[t.reviewStatus ?? 'unreviewed'] ?? t.reviewStatus}{reviewNote(t) && <span className="faint"> · {reviewNote(t)}</span>}</td>
               <td data-label="Published">{t.published === true ? 'yes' : 'no'}</td>
-              <td data-label="Why not">{t.published === true ? '—' : (t.unpublishedReasons ?? []).join(' ') || 'Not published.'}</td>
+              <td data-label="Why not"><WhyNot text={t} /></td>
+              <td data-label="Version"><VersionHistory text={t} /></td>
             </tr>
           ))}
         </tbody>
@@ -194,8 +232,8 @@ export function ContentSection() {
   const onImported = useCallback(() => setTick((n) => n + 1), []);
   const rejected = (startup?.bundledReport ?? []).filter((d) => d.action === 'rejected');
   return (
-    <section aria-label="Content">
-      <h2 className="section-head">Content</h2>
+    <section aria-label="Content" id="settings-content" data-settings-section="content">
+      <h2 className="section-head" tabIndex={-1}>Content</h2>
       <label className="field field--row">
         <span>Preview unreviewed content</span>
         <input type="checkbox" checked={preview} aria-label="Preview unreviewed content" onChange={(e) => setPreview(e.target.checked)} />

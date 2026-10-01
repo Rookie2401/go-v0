@@ -25,6 +25,8 @@ async function replaceSentence(h: Harness, textId: string, oldIndex: number, new
   const oldId = ids.sentence(textId, oldIndex);
   const old = (await h.store.sentences.get(oldId))!;
   await h.store.sentences.put({ ...old, retiredInVersion: 2 });
+  const text0 = (await h.store.texts.get(textId))!;
+  if (text0.contentVersion < 2) await h.store.texts.put({ ...text0, contentVersion: 2 });
   const newId = ids.sentence(textId, newKey);
   const text = surfaces.join(' ');
   await h.store.sentences.put({ ...old, id: newId, key: newKey, versionAdded: 2, retiredInVersion: undefined, text, normalizedText: text.toLowerCase() });
@@ -166,7 +168,11 @@ describe('coverage()', () => {
     for (const s of ['l1', 'l2', 'l3']) await h.listen(U, 'es', ES_STORY, [0], { session: s }); // heard only
     cov = await h.golearn.coverage(U, ES_STORY, [`${ES_STORY}/s0`]);
     expect(cov.listeningCoverage).toBe(0);
-    for (const s of ['l1', 'l2', 'l3']) await h.report(U, 'es', ES_STORY, [0], { session: s, modality: 'listening' });
+    // a report belongs to the sitting it is made in: hear, then report, in three further sittings
+    for (const s of ['l4', 'l5', 'l6']) {
+      await h.listen(U, 'es', ES_STORY, [0], { session: s });
+      await h.report(U, 'es', ES_STORY, [0], { session: s, modality: 'listening' });
+    }
     cov = await h.golearn.coverage(U, ES_STORY, [`${ES_STORY}/s0`]);
     expect(cov.listeningCoverage).toBe(1);
   });
@@ -393,12 +399,12 @@ describe('retired sentences: their tokens stay in the store as history but never
 
     // viewing only the retired sentence is not progress; the live ones are what count
     let p = await h.golearn.readingProgress(U, target);
-    expect(p).toMatchObject({ sentencesTotal: 2, sentencesViewed: 0 });
-    expect(p.completedAt).toBeUndefined();
+    expect(p).toMatchObject({ sentencesTotal: 2, sentencesSeen: 0, contentVersion: 2 });
+    expect(p.finishedAt).toBeUndefined();
     await h.view(U, 'es', target, 0, 'new');
     await h.view(U, 'es', target, 0, 'new2'); // a second view of s0 changes nothing
     p = await h.golearn.readingProgress(U, target);
-    expect(p).toMatchObject({ sentencesTotal: 2, sentencesViewed: 1 });
+    expect(p).toMatchObject({ sentencesTotal: 2, sentencesSeen: 1 });
 
     // the scorer sees a comfortable, in-progress text — the retired "zz" words do not make it a stretch
     const recs = await h.golearn.recommend(U, { limit: 10 });

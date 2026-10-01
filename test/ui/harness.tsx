@@ -17,11 +17,12 @@ import { COURSES, REVIEW_OK, StoreEventBus, buildFixtureText, createMemoryStore,
 import type {
   AppStore, AssistanceLevel, AudioAsset, AudioManifest, AudioSegment, AudioStatus, ComfortBand, ComprehensionReported, DomainEvent,
   EvidenceAudit, GoLearn, GoListen, GoTell, GoTellSuggestion, IntentProposal, PersonalizedCoverage, ProductionAnalysis, ProviderAvailability,
-  ReadingProgress, Recommendation, ScriptureReadiness, SentenceSupport, Testimony, TestimonyDraft, TestimonyRevision, TokenSupport, VoiceConfig,
+  ReadingProgress, Recommendation, ScriptureReadiness, SentenceSupport, Testimony, TestimonyDraft, TestimonyRevision, Text, TokenSupport, VoiceConfig,
 } from '../../src/core';
 import { AppProvider } from '../../src/ui/context';
-import type { AppServices, BackupApi, BackupCheckView, ImportDocView, IngestApi, SpeechApi } from '../../src/ui/context';
+import type { AppServices, BackupApi, BackupCheckView, ContentHistoryView, ImportDocView, IngestApi, SpeechApi } from '../../src/ui/context';
 import { resetPrefsForTests } from '../../src/ui/prefs';
+import { resetSittingsForTests } from '../../src/ui/sitting';
 
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
 
@@ -53,10 +54,18 @@ export function makeFakeGoLearn(store: AppStore, opts: FakeLearnOptions = {}, bu
   const readingProgress = vi.fn(async (userId: string, textId: string): Promise<ReadingProgress> => {
     const live = (await store.sentences.where('textId', textId)).filter((s) => s.retiredInVersion === undefined);
     const events = bus ? await bus.history({ userId }) : [];
-    const viewed = new Set(events.filter((e) => e.type === 'SentenceViewed' && e.textId === textId).map((e) => (e as { sentenceId: string }).sentenceId));
-    const completed = events.find((e) => e.type === 'TextCompleted' && e.textId === textId);
-    const reports = events.filter((e): e is ComprehensionReported => e.type === 'ComprehensionReported' && e.textId === textId && e.scope === 'text');
-    return { textId, sentencesTotal: live.length, sentencesViewed: viewed.size, completedAt: completed?.at, reportedComprehension: reports.at(-1)?.degree, listenedSentences: 0 };
+    const liveIds = new Set(live.map((s) => s.id));
+    const text = await store.texts.get(textId);
+    // Notion 2: a SentenceViewed (a report never fabricates one). Notion 3: an explicit TextCompleted only. Notion 4: a sentence-level "all" report.
+    const seen = new Set(events.filter((e) => e.type === 'SentenceViewed' && e.textId === textId).map((e) => (e as { sentenceId: string }).sentenceId).filter((id) => liveIds.has(id)));
+    const completed = events.filter((e) => e.type === 'TextCompleted' && e.textId === textId).at(-1);
+    const reports = events.filter((e): e is ComprehensionReported => e.type === 'ComprehensionReported' && e.textId === textId);
+    const understood = new Set(reports.filter((r) => r.scope === 'sentence' && r.degree === 'all').flatMap((r) => r.sentenceIds).filter((id) => liveIds.has(id)));
+    const sittings = new Set(events.filter((e) => e.type === 'SentenceViewed' && e.textId === textId).map((e) => e.session));
+    return {
+      textId, contentVersion: text?.contentVersion ?? 1, sentencesTotal: live.length, sentencesSeen: seen.size, sentencesUnderstood: understood.size,
+      ...(completed ? { finishedAt: completed.at } : {}), reportedComprehension: reports.filter((r) => r.scope === 'text').at(-1)?.degree, sittings: sittings.size, listenedSentences: 0,
+    };
   });
   const fake = {
     attach: () => () => undefined,
@@ -290,6 +299,7 @@ export function suggestion(over: Partial<GoTellSuggestion> = {}): GoTellSuggesti
 
 /** The importer / backup / speech controls, scripted. The importer really writes a Text row so lists refresh. */
 export function makeFakeControls(store: AppStore) {
+  const speechProxyStatus: { current: ProviderAvailability | undefined } = { current: undefined };
   const issue = (path: string) => ({ path, code: 'missing-field', message: 'title is required', hint: 'Add a non-empty "title".', severity: 'error' as const });
   const ingest = {
     validate: vi.fn(async (docs: unknown[]): Promise<ImportDocView[]> => docs.map((d) => {
@@ -309,6 +319,7 @@ export function makeFakeControls(store: AppStore) {
       }
       return out;
     }),
+    history: vi.fn((_text: Text): ContentHistoryView[] => []),
   } satisfies IngestApi;
   const backup = {
     exportLearner: vi.fn(async (userId: string, o?: { includeRecordings?: boolean }) => ({ format: 'go-backup', version: 1, userId, includesRecordings: !!o?.includeRecordings })),
@@ -322,8 +333,11 @@ export function makeFakeControls(store: AppStore) {
     azure: vi.fn(() => azure),
     configureAzure: vi.fn(async (i: { key: string; region: string; remember: boolean }) => { azure = { configured: true, remembered: i.remember, region: i.region }; }),
     forgetAzure: vi.fn(() => { azure = { configured: false, remembered: false, region: undefined }; }),
+    /** The app's own speech service: absent by default (a static deployment). Tests assign `proxyStatus`. */
+    proxy: vi.fn(async (): Promise<ProviderAvailability | undefined> => speechProxyStatus.current),
+    recheck: vi.fn(async (): Promise<ProviderAvailability | undefined> => speechProxyStatus.current),
   } satisfies SpeechApi;
-  return { ingest, backup, speech };
+  return { ingest, backup, speech, speechProxyStatus };
 }
 
 // ───────────────────────── harness ─────────────────────────
@@ -338,7 +352,8 @@ export interface Harness {
   tell: ReturnType<typeof makeFakeGoTell>;
   controls: ReturnType<typeof makeFakeControls>;
   events(type?: DomainEvent['type']): Promise<DomainEvent[]>;
-  mount(element: ReactElement, opts?: { router?: string }): Promise<Mounted>;
+  /** `session: null` mounts WITHOUT a fixed session id, so the provider uses the learner's sitting-stable id (sitting.ts). */
+  mount(element: ReactElement, opts?: { router?: string; session?: string | null }): Promise<Mounted>;
 }
 
 export interface Mounted {
@@ -349,6 +364,7 @@ export interface Mounted {
 
 export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: FakeListenOptions; tell?: FakeTellOptions } = {}): Promise<Harness> {
   resetPrefsForTests();
+  resetSittingsForTests();
   try { localStorage.clear(); } catch { /* jsdom only */ }
   const store = createMemoryStore();
   await seedBasics(store, USER, 'honduras-es');
@@ -382,7 +398,7 @@ export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: Fak
       const root = createRoot(container);
       await act(async () => {
         root.render(
-          <AppProvider services={services} user={user} course={course} session={SESSION}>
+          <AppProvider services={services} user={user} course={course} session={o?.session === null ? undefined : (o?.session ?? SESSION)}>
             <MemoryRouter initialEntries={[o?.router ?? '/']}>{element}</MemoryRouter>
           </AppProvider>,
         );

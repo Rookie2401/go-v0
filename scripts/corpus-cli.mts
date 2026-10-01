@@ -1,6 +1,6 @@
 /// <reference types="node" />
 /**
- * Shared helpers for the corpus CLI scripts (corpus-validate, corpus-check, corpus-migrate).
+ * Shared helpers for the corpus CLI scripts (corpus-validate, corpus-check, corpus-migrate, corpus-review).
  * Run with vite-node: `npm run corpus:validate -- <file-or-dir>...`, `npm run corpus:check`, `npm run corpus:migrate`.
  */
 import fs from 'node:fs';
@@ -42,6 +42,18 @@ export function printIssues(issues: ValidationIssue[], indent = '  '): void {
   }
 }
 
+/**
+ * The publication requirements, stated explicitly: `would publish: yes|no` and one `missing:` line per unmet
+ * requirement (same wording as Text.unpublishedReasons). A document with validation errors is never imported, so it
+ * cannot publish whatever its review says.
+ */
+export function printPublication(reasons: string[], errors = 0, indent = '        '): void {
+  const would = reasons.length === 0 && errors === 0;
+  console.log(`${indent}would publish: ${would ? 'yes' : 'no'}`);
+  if (errors) console.log(`${indent}missing: the document has ${errors} validation error(s) and would not be imported — fix them first`);
+  for (const reason of reasons) console.log(`${indent}missing: ${reason}`);
+}
+
 export interface ValidationRun { errors: number; warnings: number; documents: number; batch: BatchValidation | undefined }
 
 /** Validate loaded files as one batch and print path + hint for every issue plus the analysis coverage. */
@@ -58,10 +70,11 @@ export function validateAndPrint(loaded: LoadedFile[]): ValidationRun {
     const w = r.issues.length - e;
     errors += e;
     warnings += w;
-    const gate = e === 0 && typeof parsed[i].doc === 'object' && parsed[i].doc !== null ? computePublished(parsed[i].doc as Record<string, unknown>) : undefined;
-    console.log(`${parsed[i].file}  [${r.id}]  ${e} error(s), ${w} warning(s); analysis coverage ${pct(r.coverage)}${gate ? `; ${gate.published ? 'would be PUBLISHED' : 'unpublished'}` : ''}`);
+    const d = parsed[i].doc;
+    const gate = typeof d === 'object' && d !== null && !Array.isArray(d) ? computePublished(d as Record<string, unknown>) : undefined;
+    console.log(`${parsed[i].file}  [${r.id}]  ${e} error(s), ${w} warning(s); analysis coverage ${pct(r.coverage)}`);
     printIssues(r.issues);
-    if (gate && !gate.published) for (const reason of gate.unpublishedReasons) console.log(`        unpublished: ${reason}`);
+    if (gate) printPublication(gate.unpublishedReasons, e);
     if (r.coverage && r.coverage.unanalysed.length) console.log(`        unanalysed forms: ${r.coverage.unanalysed.slice(0, 12).join(', ')}${r.coverage.unanalysed.length > 12 ? ', ...' : ''}`);
   });
   return { errors, warnings, documents: loaded.length, batch };

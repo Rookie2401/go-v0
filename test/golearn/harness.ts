@@ -1,5 +1,5 @@
 /** Shared test harness: memory store, bus with a deterministic clock, test adapters, attached GoLearn. */
-import { StoreEventBus, createMemoryStore, seedBasics } from '../../src/core';
+import { SITTING_GAP_MS, StoreEventBus, createMemoryStore, seedBasics } from '../../src/core';
 import type {
   AssistanceLevel, DomainEvent, EventInput, LanguageCode, ProductionKind, ItemKind, ReviewStatus,
 } from '../../src/core';
@@ -7,9 +7,13 @@ import { createGoLearn } from '../../src/golearn';
 import type { GoLearnDeps } from '../../src/golearn';
 import { createTestRegistry } from './testAdapters';
 
+/** Deterministic clock: every call is one second after the previous one; `advance(ms)` jumps forward. */
 export function makeClock(startMs = Date.UTC(2026, 0, 1)) {
   let n = 0;
-  return () => new Date(startMs + 1000 * n++).toISOString();
+  let offset = 0;
+  const clock = () => new Date(startMs + offset + 1000 * n++).toISOString();
+  clock.advance = (ms: number) => { offset += ms; };
+  return clock;
 }
 
 export type Degree = 'all' | 'most' | 'some' | 'little';
@@ -26,6 +30,12 @@ export interface ListenOpts {
 export function createHarness(opts: {
   lemmaOf?: Parameters<typeof createTestRegistry>[0]; policy?: GoLearnDeps['policy']; attach?: boolean;
   audioEligible?: GoLearnDeps['audioEligible'];
+  /**
+   * Default true: a reading / listening helper called with a DIFFERENT session string than the previous helper call starts
+   * a new sitting (the clock jumps past SITTING_GAP_MS first), so tests written as "session s2" read as "a later sitting".
+   * Pass false to control time yourself with `advance()` (a new session id inside one sitting, reloads, route revisits).
+   */
+  sittingPerSession?: boolean;
 } = {}) {
   const store = createMemoryStore();
   const clock = makeClock();
@@ -35,16 +45,25 @@ export function createHarness(opts: {
   if (opts.attach !== false) golearn.attach();
   let counter = 0;
   const uniq = () => `k${counter++}`;
+  let lastSession: string | undefined;
+  /** Called by every reading / listening helper before it emits. */
+  const touch = (session: string) => {
+    if (opts.sittingPerSession !== false && lastSession !== undefined && session !== lastSession) clock.advance(SITTING_GAP_MS + 1000);
+    lastSession = session;
+  };
 
   const base = (userId: string, lang: LanguageCode, session: string, surface: 'corpus' | 'scripture' | 'listen' | 'testimony' = 'corpus') =>
     ({ userId, lang, session, surface });
 
   const api = {
     store, bus, adapters, golearn, clock,
+    /** Jump the clock forward (default: just past one sitting gap). */
+    advance: (ms: number = SITTING_GAP_MS + 1000) => clock.advance(ms),
     seed: (userId = 'u1', courseId = 'honduras-es') => seedBasics(store, userId, courseId),
     /** SentenceViewed — dedupeKey is per (user, session, sentence) like the real reader. */
     view: (userId: string, lang: LanguageCode, textId: string, index: number, session = 's1', surface: 'corpus' | 'scripture' = 'corpus') => {
       const sentenceId = `${textId}/s${index}`;
+      touch(session);
       return bus.emit({
         type: 'SentenceViewed', ...base(userId, lang, session, surface), dedupeKey: `view:${userId}:${session}:${sentenceId}`,
         textId, sentenceId, tokenIds: [],
@@ -55,38 +74,47 @@ export function createHarness(opts: {
       for (let i = 0; i < count; i++) await api.view(userId, lang, textId, i, session, surface);
     },
     /** ComprehensionReported (default: "I understood all of it", sentence scope, reading). */
-    report: (userId: string, lang: LanguageCode, textId: string, indexes: number[], o: { session?: string; degree?: Degree; modality?: 'reading' | 'listening'; scope?: 'sentence' | 'text' } = {}) =>
-      bus.emit({
+    report: (userId: string, lang: LanguageCode, textId: string, indexes: number[], o: { session?: string; degree?: Degree; modality?: 'reading' | 'listening'; scope?: 'sentence' | 'text' } = {}) => {
+      touch(o.session ?? 's1');
+      return bus.emit({
         type: 'ComprehensionReported', ...base(userId, lang, o.session ?? 's1', o.modality === 'listening' ? 'listen' : 'corpus'),
         dedupeKey: `report:${uniq()}`, textId, sentenceIds: indexes.map((i) => `${textId}/s${i}`),
         modality: o.modality ?? 'reading', scope: o.scope ?? 'sentence', degree: o.degree ?? 'all',
-      } as EventInput<DomainEvent>),
+      } as EventInput<DomainEvent>);
+    },
     /** View then report "all" for the given sentence indexes in one session — a demonstrated reading. */
     understood: async (userId: string, lang: LanguageCode, textId: string, indexes: number[], session = 's1', surface: 'corpus' | 'scripture' = 'corpus') => {
       for (const i of indexes) await api.view(userId, lang, textId, i, session, surface);
       await api.report(userId, lang, textId, indexes, { session });
     },
-    complete: (userId: string, lang: LanguageCode, textId: string, session = 's1') =>
-      bus.emit({ type: 'TextCompleted', ...base(userId, lang, session), dedupeKey: `done:${userId}:${session}:${textId}:${uniq()}`, textId } as EventInput<DomainEvent>),
+    complete: (userId: string, lang: LanguageCode, textId: string, session = 's1') => {
+      touch(session);
+      return bus.emit({ type: 'TextCompleted', ...base(userId, lang, session), dedupeKey: `done:${userId}:${session}:${textId}:${uniq()}`, textId } as EventInput<DomainEvent>);
+    },
     help: (userId: string, lang: LanguageCode, textId: string, index: number, tokenIndex: number, itemId: string, level: AssistanceLevel, session = 's1') => {
       const sentenceId = `${textId}/s${index}`;
+      touch(session);
       return bus.emit({
         type: 'TokenHelpOpened', ...base(userId, lang, session), dedupeKey: `help:${uniq()}`,
         sentenceId, tokenId: `${sentenceId}/t${tokenIndex}`, itemId, level,
       } as EventInput<DomainEvent>);
     },
-    rescue: (userId: string, lang: LanguageCode, textId: string, indexes: number[], session = 's1') =>
-      bus.emit({
+    rescue: (userId: string, lang: LanguageCode, textId: string, indexes: number[], session = 's1') => {
+      touch(session);
+      return bus.emit({
         type: 'EnglishRescueRevealed', ...base(userId, lang, session), dedupeKey: `rescue:${uniq()}`,
         textId, sentenceIds: indexes.map((i) => `${textId}/s${i}`), scope: 'sentence',
-      } as EventInput<DomainEvent>),
-    listen: (userId: string, lang: LanguageCode, textId: string, indexes: number[], o: ListenOpts = {}) =>
-      bus.emit({
+      } as EventInput<DomainEvent>);
+    },
+    listen: (userId: string, lang: LanguageCode, textId: string, indexes: number[], o: ListenOpts = {}) => {
+      touch(o.session ?? 'l1');
+      return bus.emit({
         type: 'AudioSegmentCompleted', ...base(userId, lang, o.session ?? 'l1', 'listen'), dedupeKey: `done:${uniq()}`,
         textId, segmentId: o.segmentId ?? `seg:${uniq()}`, sentenceIds: indexes.map((i) => `${textId}/s${i}`), speed: o.speed ?? 1,
         transcriptVisible: false, replayCount: o.replays ?? 0, revealedTranscript: o.transcript ?? false, revealedTranslation: o.translation ?? false,
         ...(o.legacy ? {} : { assetId: o.assetId ?? 'sha256:real', speech: o.speech ?? true, voiceReviewed: o.voiceReviewed ?? true }),
-      } as EventInput<DomainEvent>),
+      } as EventInput<DomainEvent>);
+    },
     /** Rows a LEGACY listening event resolves through: voice → segment → asset. Returns the segment id. */
     seedAudio: async (segmentId: string, o: { speech: boolean; provider?: string; reviewStatus?: ReviewStatus; textId?: string; lang?: LanguageCode; flag?: boolean } = { speech: true }) => {
       const lang = o.lang ?? 'es';

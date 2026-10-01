@@ -87,8 +87,8 @@ describe('Spanish end-to-end loop', () => {
     expect(seen.reading.exposures).toBeGreaterThanOrEqual(3); // "pecado" occurs in three sentences
     expect((await app.golearn.coverage(USER, story.id)).knownLexicalCoverage).toBe(0);
     const progress = await app.golearn.readingProgress(USER, story.id);
-    expect(progress).toMatchObject({ sentencesTotal: storySentences.length, sentencesViewed: storySentences.length });
-    expect(progress.completedAt).toBeDefined(); // completion ≠ vocabulary coverage
+    expect(progress).toMatchObject({ sentencesTotal: storySentences.length, sentencesSeen: storySentences.length });
+    expect(progress.finishedAt).toBeDefined(); // explicit completion, separate from vocabulary coverage
 
     // A rerender (same dedupe keys) adds nothing.
     const before = (await app.store.encounters.where('userId', USER)).length;

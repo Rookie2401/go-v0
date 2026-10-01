@@ -2,8 +2,8 @@
  * Shared chrome, ported from Biblia: the stroke icon set, Topbar / BackLink / IconBtn, and the
  * height-animated Collapsible. Quiet chrome — the text is the thing on the page.
  */
-import { useEffect, useState } from 'react';
-import type { ReactNode } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
+import type { ReactNode, RefObject } from 'react';
 import { Link } from 'react-router-dom';
 
 const stroke = { fill: 'none', stroke: 'currentColor', strokeWidth: 1.6, strokeLinecap: 'round', strokeLinejoin: 'round' } as const;
@@ -83,6 +83,55 @@ export function Collapsible({ open, children }: { open: boolean; children: React
       <div className="collapsible__inner" inert={!open}>
         {children}
       </div>
+    </div>
+  );
+}
+
+export interface DisclosureProps {
+  /** The button's text: it names what opens. */
+  label: ReactNode;
+  children: ReactNode;
+  /** Collapsed unless said otherwise. */
+  defaultOpen?: boolean;
+  /** When the learner opens it, keyboard focus moves to this element (an input inside the panel). */
+  focusRef?: RefObject<HTMLElement | null>;
+  onToggle?(open: boolean): void;
+  /** Mount the panel's content only once it has been opened (heavy or data-loading content). It stays mounted afterwards. */
+  lazy?: boolean;
+  className?: string;
+  /** Heading level to wrap the button in, so the disclosure shows up in the page outline. */
+  headingLevel?: 2 | 3;
+}
+
+/**
+ * A real disclosure: a native <button> (so Enter and Space work for free) carrying aria-expanded and aria-controls, a
+ * chevron that rotates, a visible focus ring (see .disclosure__btn), and a panel that is `hidden` while collapsed
+ * (out of the tab order and the accessibility tree) but stays mounted so aria-controls always has a target. When the
+ * learner opens it, focus moves into the panel (`focusRef`) so a keyboard or screen-reader user lands on the field.
+ */
+export function Disclosure({ label, children, defaultOpen = false, focusRef, onToggle, lazy = false, className, headingLevel }: DisclosureProps) {
+  const uid = useId();
+  const panelId = `${uid}-panel`;
+  const [open, setOpen] = useState(defaultOpen);
+  const [everOpened, setEverOpened] = useState(defaultOpen);
+  const focusNext = useRef(false);
+  useEffect(() => {
+    if (open && focusNext.current) { focusNext.current = false; focusRef?.current?.focus(); }
+  }, [open, focusRef]);
+  const button = (
+    <button
+      type="button" className="disclosure__btn" aria-expanded={open} aria-controls={panelId}
+      onClick={() => { const next = !open; focusNext.current = next; setOpen(next); if (next) setEverOpened(true); onToggle?.(next); }}
+    >
+      <span className="disclosure__label">{label}</span>
+      <span className="disclosure__chevron" aria-hidden="true">{I.chevron}</span>
+    </button>
+  );
+  const Heading = headingLevel === 2 ? 'h2' : headingLevel === 3 ? 'h3' : null;
+  return (
+    <div className={`disclosure${open ? ' is-open' : ''}${className ? ` ${className}` : ''}`}>
+      {Heading ? <Heading className="disclosure__heading">{button}</Heading> : button}
+      <div id={panelId} className="disclosure__panel" hidden={!open}>{lazy && !everOpened ? null : children}</div>
     </div>
   );
 }

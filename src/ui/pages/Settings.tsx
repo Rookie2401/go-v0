@@ -1,6 +1,10 @@
 /**
- * Settings: course + learner switch, reading preferences, Content (preview, importer, text list), Speech (provider,
- * Azure key, voices and their review), Language support, vocabulary list, Evidence, Backup, GoListen diagnostics.
+ * Settings, in clear sections with an in-page section nav at the top:
+ *   You (learner, team) · Reading (highlight, text size, theme) · Backup and recovery · Content (preview toggle, importer,
+ *   texts with review status / published / reasons / version history) · Speech (availability first) · Vocabulary ·
+ *   Advanced (COLLAPSED: evidence audit and rebuild, audio diagnostics, direct Azure key, development fixture switch,
+ *   language-support table).
+ * Everything the learner needs day to day — preferences, team, backup — is reachable without opening Advanced.
  */
 import { useCallback, useEffect, useId, useMemo, useState } from 'react';
 import { LEVEL_ORDER } from '../../core';
@@ -10,12 +14,15 @@ import { itemSurface, languageName } from '../format';
 import { TeamSelect } from '../Onboarding';
 import { FONT_SIZE_RANGE, rememberChosenCourse, usePref } from '../prefs';
 import type { HighlightPref, ThemePref } from '../prefs';
-import { BackLink, I, IconBtn, Topbar } from '../ui';
+import { BackLink, Disclosure, I, IconBtn, Topbar } from '../ui';
 import { BackupSection } from './settings/BackupSection';
 import { ContentSection } from './settings/ContentSection';
 import { EvidenceSection } from './settings/EvidenceSection';
 import { LanguageSupportSection } from './settings/LanguageSupportSection';
-import { SpeechSection } from './settings/SpeechSection';
+import { AdvancedSpeechControls, SpeechSection } from './settings/SpeechSection';
+
+/** One sentence whose audio failed for good (GoListen's diagnostics(textId).failedSentences). */
+interface FailedSentenceView { sentenceId: string; index: number; text: string; error: string; attempts?: number }
 
 const levelLabel = (l: LearnerLevel) => l.replace(/_/g, ' ');
 const levelRank = (l: LearnerLevel) => LEVEL_ORDER.indexOf(l);
@@ -25,8 +32,42 @@ const dotClass = (l: LearnerLevel) => {
   return r >= 7 ? 'known' : r >= 4 ? 'familiar' : r >= 2 ? 'recognized' : 'new';
 };
 
+/** The sections, in page order. `id` matches the section's data-settings-section attribute. */
+export const SETTINGS_SECTIONS = [
+  { id: 'you', label: 'You' },
+  { id: 'reading', label: 'Reading' },
+  { id: 'backup', label: 'Backup and recovery' },
+  { id: 'content', label: 'Content' },
+  { id: 'speech', label: 'Speech' },
+  { id: 'vocabulary', label: 'Vocabulary' },
+  { id: 'advanced', label: 'Advanced' },
+] as const;
+
+/** Scroll a section into view and move keyboard focus to its heading. (The page uses hash routing, so plain #anchors would navigate away.) */
+function jumpTo(id: string): void {
+  const el = document.querySelector<HTMLElement>(`[data-settings-section="${id}"]`);
+  if (!el) return;
+  el.scrollIntoView?.({ block: 'start', behavior: 'smooth' });
+  (el.querySelector<HTMLElement>('[tabindex="-1"]') ?? el.querySelector<HTMLElement>('.disclosure__btn'))?.focus({ preventScroll: true });
+}
+
+function SectionNav() {
+  return (
+    <nav className="settings__nav" aria-label="Settings sections">
+      <ul>
+        {SETTINGS_SECTIONS.map((s) => (
+          <li key={s.id}>
+            <button type="button" className="settings__nav-btn" data-section={s.id} onClick={() => jumpTo(s.id)}>{s.label}</button>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  );
+}
+
 export function Settings() {
   const { user, course } = useApp();
+  const [speechTick, setSpeechTick] = useState(0);
   return (
     <div>
       <Topbar
@@ -36,15 +77,14 @@ export function Settings() {
       />
       <div className="page page--narrow settings route-fade">
         <p className="who label" title={course.title}>{user.displayName} · {course.lang.toUpperCase()}</p>
+        <SectionNav />
         <LearnerSection />
         <ReadingSection />
-        <ContentSection />
-        <SpeechSection />
-        <LanguageSupportSection />
-        <VocabularySection />
-        <EvidenceSection />
         <BackupSection />
-        <DiagnosticsSection />
+        <ContentSection />
+        <SpeechSection refreshKey={speechTick} />
+        <VocabularySection />
+        <AdvancedSection onSpeechChanged={() => setSpeechTick((n) => n + 1)} />
       </div>
     </div>
   );
@@ -80,8 +120,8 @@ function LearnerSection() {
   const run = (fn: () => Promise<void>) => { setError(null); fn().catch((e: unknown) => setError(e instanceof Error ? e.message : String(e))); };
 
   return (
-    <section aria-label="Learner and course">
-      <h2 className="section-head">Learner and course</h2>
+    <section aria-label="You" id="settings-you" data-settings-section="you">
+      <h2 className="section-head" tabIndex={-1}>You</h2>
       {error && <p role="alert" className="error">{error}</p>}
       <label className="field">
         <span className="label">Learner</span>
@@ -137,8 +177,8 @@ function ReadingSection() {
   const [theme, setTheme] = usePref('theme');
   const sizeId = useId();
   return (
-    <section aria-label="Reading">
-      <h2 className="section-head">Reading</h2>
+    <section aria-label="Reading" id="settings-reading" data-settings-section="reading">
+      <h2 className="section-head" tabIndex={-1}>Reading</h2>
       <div className="field">
         <span className="label">Highlight unfamiliar words</span>
         <div className="segmented" role="group" aria-label="Highlighting">
@@ -200,8 +240,8 @@ function VocabularySection() {
   };
 
   return (
-    <section aria-label="Vocabulary" id="vocabulary">
-      <h2 className="section-head">Vocabulary</h2>
+    <section aria-label="Vocabulary" id="vocabulary" data-settings-section="vocabulary">
+      <h2 className="section-head" tabIndex={-1}>Vocabulary</h2>
       <p className="card__note">Built from what you have actually read, heard and written. Marking a word only adjusts how it is displayed to you; it never erases the evidence.</p>
       <label className="field">
         <span className="label">Show</span>
@@ -259,13 +299,46 @@ function VocabRow({ r, why, onWhy, onMark }: { r: LearnerItemState; why?: string
   );
 }
 
+/**
+ * Advanced: collapsed by default, mounted on first open. For checking and repairing, not for everyday use. Nothing here
+ * is needed to read, listen or write; everything that used to be on this page is still here.
+ */
+function AdvancedSection({ onSpeechChanged }: { onSpeechChanged(): void }) {
+  return (
+    <section aria-label="Advanced" id="settings-advanced" data-settings-section="advanced" className="advanced">
+      <Disclosure headingLevel={2} lazy label="Advanced" className="advanced__disclosure">
+        <p className="card__note">For checking and repairing, not for everyday use: what counts as evidence, audio jobs, a directly entered speech key, and what each language can honestly do.</p>
+        <EvidenceSection />
+        <DiagnosticsSection />
+        <section aria-label="Speech: direct key and development">
+          <h3 className="subsection-head">Speech: direct key and development</h3>
+          <AdvancedSpeechControls onChanged={onSpeechChanged} />
+        </section>
+        <LanguageSupportSection />
+      </Disclosure>
+    </section>
+  );
+}
+
 function DiagnosticsSection() {
-  const { golisten } = useApp();
+  const { golisten, store } = useApp();
   const [diag, setDiag] = useState<GoListenDiagnostics | null>(null);
+  const [failed, setFailed] = useState<Array<{ textTitle: string; sentences: FailedSentenceView[] }>>([]);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
 
-  const load = useCallback(async () => { setDiag(await golisten.diagnostics()); }, [golisten]);
+  const load = useCallback(async () => {
+    setDiag(await golisten.diagnostics());
+    // Which sentences failed and why (partial generation): ask per text that has a failed segment.
+    const segs = (await store.audioSegments.all()).filter((s) => s.status === 'failed');
+    const textIds = [...new Set(segs.map((s) => s.textId))].slice(0, 8);
+    const out: Array<{ textTitle: string; sentences: FailedSentenceView[] }> = [];
+    for (const textId of textIds) {
+      const d = (await golisten.diagnostics(textId)) as GoListenDiagnostics & { failedSentences?: FailedSentenceView[] };
+      if (d.failedSentences?.length) out.push({ textTitle: (await store.texts.get(textId))?.title ?? textId, sentences: d.failedSentences });
+    }
+    setFailed(out);
+  }, [golisten, store]);
   useEffect(() => { load().catch((e: unknown) => setError(e instanceof Error ? e.message : String(e))); }, [load]);
 
   const run = (label: string, fn: () => Promise<string>) => {
@@ -275,7 +348,7 @@ function DiagnosticsSection() {
 
   return (
     <section aria-label="GoListen diagnostics">
-      <h2 className="section-head">Audio diagnostics</h2>
+      <h3 className="subsection-head">Audio diagnostics</h3>
       {error && <p role="alert" className="error">{error}</p>}
       {message && <p role="status" className="note">{message}</p>}
       <div className="actions">
@@ -284,6 +357,15 @@ function DiagnosticsSection() {
       {!diag ? <p className="muted" role="status">Loading…</p> : (
         <>
           <p className="card__note" data-testid="job-counts">{diag.segments.length} segment(s) · {diag.failedJobs} failed job(s) · {diag.deadJobs} dead job(s)</p>
+          {failed.map((f) => (
+            <div key={f.textTitle} data-testid="failed-sentences">
+              <h4 className="label">Sentences whose audio failed: {f.textTitle}</h4>
+              <ul className="reasons" aria-label={`Failed sentences in ${f.textTitle}`}>
+                {f.sentences.map((s) => <li key={s.sentenceId}>Sentence {s.index + 1}: <span lang="und">{s.text}</span> — {s.error}{s.attempts ? ` (${s.attempts} attempts)` : ''}</li>)}
+              </ul>
+              <p className="card__note">The sentences that did get audio can still be played.</p>
+            </div>
+          ))}
           {diag.segments.length > 0 && (
             <div className="table-wrap prose">
               <table className="vocab diag">

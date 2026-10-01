@@ -70,7 +70,7 @@ describe('SentenceViewed → exposure encounters', () => {
     expect(await h.store.encounters.count()).toBe(2); // one form + one lemma
   });
 
-  it('a new session is a new encounter; exposure alone never climbs past "encountered"', async () => {
+  it('a new SITTING is a new encounter (in the harness each new session id is a later sitting); exposure alone never climbs past "encountered"', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
     for (const s of ['s1', 's2', 's3']) await h.view(U, 'es', ES_STORY, 0, s);

@@ -10,15 +10,16 @@
  */
 import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { PersonalizedCoverage, Recommendation, Text, TextViewed } from '../../core';
+import type { PersonalizedCoverage, ReadingProgress, Recommendation, Text, TextViewed } from '../../core';
 import { useApp } from '../context';
+import { progressSummary } from '../coverage';
 import { BAND_LABEL, INPUT_REASONS, REASON_LABEL, awaitedStatement, isTestimonyText, isVisibleText, languageName, pct, plainReason, plainReasons, teamLabel, textPath } from '../format';
 import { useLangTexts } from '../library';
 import { usePreview } from '../prefs';
 import { I } from '../ui';
 
 
-interface Item { rec: Recommendation; text?: Text; coverage?: PersonalizedCoverage }
+interface Item { rec: Recommendation; text?: Text; coverage?: PersonalizedCoverage; progress?: ReadingProgress }
 type Resume = { kind: 'text'; text: Text; corpus?: string; label: string } | { kind: 'testimony'; number: number };
 interface LastRead { text: Text; corpus?: string }
 
@@ -41,6 +42,7 @@ export function Home() {
   const [latestVersion, setLatestVersion] = useState<number | null>(null);
   const [corpusTitles, setCorpusTitles] = useState<Map<string, string>>(new Map());
   const [completed, setCompleted] = useState(false);
+  const [resumeProgress, setResumeProgress] = useState<ReadingProgress | null>(null);
 
   useEffect(() => {
     let live = true;
@@ -63,8 +65,11 @@ export function Home() {
         kept.push({ rec: recs[i], text });
       }
       const ordered = [...kept.filter((k) => !isRehearsal(k.rec)), ...kept.filter((k) => isRehearsal(k.rec))];
-      const covs = await Promise.all(ordered.map((k) => (k.text ? golearn.coverage(userId, k.text.id).catch(() => undefined) : undefined)));
-      if (live) setItems(ordered.map((k, i) => ({ ...k, coverage: covs[i] })));
+      const [covs, progs] = await Promise.all([
+        Promise.all(ordered.map((k) => (k.text ? golearn.coverage(userId, k.text.id).catch(() => undefined) : undefined))),
+        Promise.all(ordered.map((k) => (k.text ? golearn.readingProgress(userId, k.text.id).catch(() => undefined) : undefined))),
+      ]);
+      if (live) setItems(ordered.map((k, i) => ({ ...k, coverage: covs[i], progress: progs[i] })));
     })().catch((e: unknown) => { if (live) setError(e instanceof Error ? e.message : String(e)); });
     return () => { live = false; };
   }, [store, golearn, userId, lang, preview]);
@@ -120,6 +125,15 @@ export function Home() {
     return null;
   }, [items, lastRead, latestVersion, corpusTitles]);
 
+  // Where the learner is in the Continue card's text: "Seen x of y sentences", never "Read".
+  const resumeTextId = resume?.kind === 'text' ? resume.text.id : null;
+  useEffect(() => {
+    let live = true;
+    setResumeProgress(null);
+    if (resumeTextId) void golearn.readingProgress(userId, resumeTextId).then((p) => { if (live) setResumeProgress(p); }, () => undefined);
+    return () => { live = false; };
+  }, [golearn, userId, resumeTextId]);
+
   const heldBack = (allTexts ?? []).some((t) => t.published !== true);
   const emptyNote = useMemo(() => {
     if (items === null || items.length > 0) return null;
@@ -129,7 +143,7 @@ export function Home() {
       const a = awaitedStatement(corpusTexts, 'corpus', languageName(course));
       return { text: plainReason(a.headline), reasons: plainReasons(a.reasons) };
     }
-    if (completed) return { text: `You have read everything currently available in ${languageName(course)}. New texts appear here as soon as they are published.`, reasons: [] };
+    if (completed) return { text: `You have finished everything currently available in ${languageName(course)}. New texts appear here as soon as they are published.`, reasons: [] };
     return { text: 'Nothing to suggest yet. Open a story to begin.', reasons: [] };
   }, [items, allTexts, preview, completed, course]);
 
@@ -145,6 +159,7 @@ export function Home() {
           <span className="home__continue-label">{resume.kind === 'text' ? resume.label : 'Continue your testimony'}</span>
           <div className="home__continue-ref" lang={resume.kind === 'text' ? resume.text.lang : undefined}>{resume.kind === 'text' ? resume.text.title : `Version ${resume.number}`}</div>
           <div className="home__continue-sub">{resume.kind === 'text' ? resume.corpus ?? (resume.text.kind === 'scripture' ? 'Scripture' : 'Read') : 'Rehearse it, or write the next version'}</div>
+          {resume.kind === 'text' && resumeProgress && <div className="home__continue-sub" data-testid="continue-progress">{progressSummary(resumeProgress)}</div>}
         </Link>
       )}
 
@@ -162,7 +177,7 @@ export function Home() {
 
       <h2 className="home__list-divider">For you today</h2>
       {error && <p role="alert" className="error">Could not load recommendations: {error}</p>}
-      {items === null && !error && <p className="muted" role="status">Looking at what you have read…</p>}
+      {items === null && !error && <p className="muted" role="status">Looking at where you are…</p>}
       {emptyNote && (
         <div className="home__empty" data-testid="home-empty">
           <p className="muted">{emptyNote.text}</p>
@@ -171,7 +186,7 @@ export function Home() {
         </div>
       )}
       <ul className="list home__list">
-        {items?.map(({ rec, text, coverage }, i) => {
+        {items?.map(({ rec, text, coverage, progress }, i) => {
           const key = `${rec.reason}-${rec.textId ?? rec.testimonyId ?? i}`;
           const rehearse = rec.reason === 'rehearse-testimony';
           // No text to open and not the testimony: this is a note (nothing published yet, everything read), not a
@@ -193,6 +208,7 @@ export function Home() {
                 {text && (
                   <span className="home__entry-sub">
                     {label}
+                    {progress && <> · <span data-testid="item-progress">{progressSummary(progress)}</span></>}
                     {coverage && <> · <span className={`band-${coverage.band}`}>{BAND_LABEL[coverage.band]} · shown {pct(coverage.knownLexicalCoverage)}</span></>}
                   </span>
                 )}

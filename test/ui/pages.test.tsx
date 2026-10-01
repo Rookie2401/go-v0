@@ -29,7 +29,8 @@ describe('Library and routes', () => {
     expect(links).toHaveLength(1); // the scripture text is not in the Read list
     expect(links[0].textContent).toContain('Story 1');
     expect(links[0].textContent).toContain('good challenge · shown 91%'); // demonstrated, not merely seen
-    expect(links[0].textContent).toContain('Read 0 of 3'); // completion is its own statement
+    expect(links[0].textContent).toContain('Seen 0 of 3 sentences'); // exposure is its own statement (never "Read")
+    expect(links[0].textContent).not.toMatch(/Read d/);
     expect(links[0].getAttribute('href')).toBe(`/read/${encodeURIComponent(STORY_ID)}`);
     expect(mounted.container.textContent).toContain('ci-es'); // shelf named by corpus
 
@@ -206,6 +207,9 @@ describe('Settings', () => {
     expect(voice.textContent).toContain('fixture audio — not speech');
     expect(voice.textContent).toContain('not reviewed'); // nobody has auditioned this voice
 
+    // the audio diagnostics and the rebuild control live under Advanced (collapsed by default)
+    expect(q(mounted.container, '[data-testid="job-counts"]')).toBeNull();
+    await click(button(byLabel(mounted.container, 'Advanced'), 'Advanced'));
     expect(q(mounted.container, '[data-testid="job-counts"]')!.textContent).toContain('1 segment(s) · 1 failed job(s) · 0 dead job(s)');
     expect(q(mounted.container, 'table.diag tbody')!.textContent).toContain('by-construction');
     await click(button(mounted.container, 'Run pending audio jobs'));

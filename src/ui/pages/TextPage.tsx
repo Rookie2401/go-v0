@@ -10,7 +10,7 @@ import { Link, useParams } from 'react-router-dom';
 import type { LanguageCode, ScriptureReadiness, Text } from '../../core';
 import { useApp } from '../context';
 import { VocabularyLine } from '../coverage';
-import { BAND_LABEL, isTestimonyText, nameOfLang, textPath } from '../format';
+import { BAND_LABEL, isTestimonyText, nameOfLang, plainReasons, textPath } from '../format';
 import { Player } from '../player/Player';
 import type { PlayerChange } from '../player/Player';
 import { usePreview } from '../prefs';
@@ -37,7 +37,7 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
       let next: Gate;
       if (!text || isTestimonyText(text, corpus ? new Map([[corpus.id, corpus]]) : undefined)) next = { state: 'missing' };
       else if (text.lang !== lang) next = { state: 'language', textLang: text.lang };
-      else if (text.published !== true && !preview) next = { state: 'unpublished', reasons: text.unpublishedReasons ?? [] };
+      else if (text.published !== true && !preview) next = { state: 'unpublished', reasons: plainReasons(text.unpublishedReasons ?? []) };
       else next = { state: 'ok' };
       if (live) setGate(next);
     })();
@@ -121,7 +121,7 @@ export function PreparePanel({ textId }: { textId: string }) {
       {open && readiness && (
         <div className="prepare-body">
           <p className="card__text"><span className={`label band-${readiness.coverage.band}`}>{BAND_LABEL[readiness.coverage.band]}</span></p>
-          <VocabularyLine coverage={readiness.coverage} />
+          <VocabularyLine coverage={readiness.coverage} withExplanation={false} />
           {(readiness.gaps ?? []).length > 0 && (
             <div className="card__section">
               <h3 className="label">Not yet shown</h3>

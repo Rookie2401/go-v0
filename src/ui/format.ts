@@ -107,3 +107,51 @@ export function awaitedStatement(texts: Text[], kind: 'corpus' | 'scripture', la
     reasons,
   };
 }
+
+/**
+ * Learner-facing wording for "why is this not available". The importer's reasons carry developer hints
+ * ("(set review.status …)", "run scripts/…"); only Settings → Content shows them in full. This maps the known
+ * reasons to short plain forms and strips any remaining trailing parenthetical that starts "(set ", "(run " or
+ * "(or ". Works on one reason or on a longer sentence that embeds reasons (GoLearn's note text).
+ */
+const PLAIN_REASONS: Array<[RegExp, string]> = [
+  [/review status is "[^"]*" — machine-drafted text needs a native-speaker review(?: \((?:set|run|or) [^()]*\))?/g, 'awaiting native-speaker review'],
+  [/review status is "[^"]*" — needs a review(?: \((?:set|run|or) [^()]*\))?/g, 'awaiting review'],
+  [/review was rejected — fix the text and record a new review/g, 'the review was rejected, so the text needs fixing'],
+  [/the review names no reviewer — set review\.reviewedBy/g, 'the review does not name a reviewer'],
+  [/rights are unverified — replace the text with a licensed or public-domain one, or establish the rights and update source\.rights/g, 'rights not yet established'],
+  [/the translation is not identified — set scripture\.translationId to the exact translation/g, 'translation not yet identified'],
+  [/the edition is not established — set scripture\.edition/g, 'edition not yet established'],
+  [/the wording is not verified against a published source — run scripts\/verify-scripture\.mjs(?: \((?:set|run|or) [^()]*\))?/g, 'wording not yet verified against a published source'],
+];
+
+export function plainReason(reason: string): string {
+  let out = reason;
+  for (const [re, plain] of PLAIN_REASONS) out = out.replace(re, plain);
+  out = out.replace(/\s*\((?:set|run|or) [^()]*\)/g, '');
+  return out.replace(/\s{2,}/g, ' ').trim();
+}
+
+/** Plain forms of a list of reasons, with duplicates removed. */
+export const plainReasons = (reasons: readonly string[]): string[] => [...new Set(reasons.map(plainReason).filter(Boolean))];
+
+/** Sentences of a paragraph (a full stop followed by a space ends one). */
+export const sentencesOf = (text: string): string[] => text.trim().split(/(?<=[.!?])\s+/).filter(Boolean);
+
+/**
+ * A long checker-coverage paragraph as an inline lead plus a remainder for a disclosure. The lead is the first
+ * sentence — extended through the first sentence that says what accepting does not prove ("…does not mean the sentence
+ * is now correct") when that is not the first.
+ */
+export function splitCoverage(text: string): { lead: string; rest: string } {
+  const ss = sentencesOf(text);
+  if (ss.length <= 1) return { lead: text.trim(), rest: '' };
+  const idx = ss.findIndex((x) => /correct/i.test(x));
+  const cut = idx > 0 && idx <= 2 ? idx + 1 : 1;
+  return { lead: ss.slice(0, cut).join(' '), rest: ss.slice(cut).join(' ') };
+}
+
+/** The top Home recommendation list's notion of "input": the reasons that point at a text to read or listen to. */
+export const INPUT_REASONS: ReadonlySet<string> = new Set([
+  'first-text', 'next-input', 'reread', 'listen-to-read-text', 'reinforces-weak-items', 'prepares-scripture', 'revisit-scripture',
+]);

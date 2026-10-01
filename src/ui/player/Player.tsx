@@ -201,12 +201,26 @@ export function Player({ textId, onChange, controlRef }: PlayerProps) {
   }, [reload]);
 
   // While audio is being made, keep asking how far it has got.
+  // Queued jobs only run when something runs them (saving a version only queues them), so every tick also kicks the
+  // queue — but never while no usable provider exists, and never two kicks at once.
   const generating = audio?.state === 'generating';
+  const kicking = useRef(false);
   useEffect(() => {
     if (!generating) return;
-    const t = setTimeout(() => { reload().catch(() => undefined); }, 1500);
-    return () => clearTimeout(t);
-  }, [generating, audio, reload]);
+    let live = true;
+    const t = setTimeout(() => {
+      void (async () => {
+        if (!kicking.current) {
+          kicking.current = true;
+          try {
+            if ((await golisten.availability()).available) await golisten.runJobs();
+          } catch { /* a failed kick shows up as a failed status on the reload below */ } finally { kicking.current = false; }
+        }
+        if (live) await reload();
+      })().catch(() => undefined);
+    }, 1500);
+    return () => { live = false; clearTimeout(t); };
+  }, [generating, audio, reload, golisten]);
 
   const prepare = useCallback(async () => {
     setStatus('preparing');

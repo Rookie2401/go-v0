@@ -15,7 +15,7 @@
  * small interfaces in `AppServices` (ingest / backup / speech), bound to the real modules here.
  */
 import { COURSES, LANGUAGE_ROWS, StoreEventBus, hash } from '../core';
-import type { AppStore, Course, EventBus, TtsProvider, User } from '../core';
+import type { AppStore, Course, EventBus, GoListen, TtsProvider, User } from '../core';
 import { createDexieStore } from '../db/dexie';
 import { createAdapterRegistry } from '../adapters';
 import { exportLearner, restoreLearner, validateBackup } from '../backup';
@@ -224,5 +224,20 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
     speech,
     startup,
   };
+  // Jobs queued earlier (a saved testimony version only queues its audio) or left retryable are picked up now,
+  // in the background, when a usable provider exists. Never blocks startup; never runs without a provider.
+  void resumeQueuedAudio(store, golisten);
   return { services, user, course };
+}
+
+/** Run queued / retryable audio jobs once, if there are any and a usable provider is available. Never throws. */
+export async function resumeQueuedAudio(store: AppStore, golisten: Pick<GoListen, 'availability' | 'runJobs'>): Promise<number> {
+  try {
+    const pending = (await store.audioJobs.all()).some((j) => j.status === 'queued' || j.status === 'failed');
+    if (!pending) return 0;
+    if (!(await golisten.availability()).available) return 0;
+    return await golisten.runJobs();
+  } catch {
+    return 0;
+  }
 }

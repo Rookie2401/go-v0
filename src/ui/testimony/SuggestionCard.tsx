@@ -5,7 +5,7 @@
  */
 import { useState } from 'react';
 import type { GoTellSuggestion, LanguageCode, SuggestionKind } from '../../core';
-import { itemSurface } from '../format';
+import { itemSurface, splitCoverage } from '../format';
 
 export const KIND_LABEL: Record<SuggestionKind, string> = {
   repair: 'Correction',
@@ -56,7 +56,7 @@ export function SuggestionCard({ suggestion: s, lang, titles, onAccept, onReject
           </strong>
         </p>
       )}
-      {s.checkerCoverage && <p className="card__prov sugg-coverage" data-testid="checker-coverage">What this checker can and cannot see: {s.checkerCoverage}</p>}
+      {s.checkerCoverage && <CheckerCoverage text={s.checkerCoverage} />}
 
       {(s.sources ?? []).length > 0 ? (
         <ul className="sugg-sources card__prov" aria-label="Where you met this wording">
@@ -108,5 +108,21 @@ export function SuggestionCard({ suggestion: s, lang, titles, onAccept, onReject
         </div>
       )}
     </li>
+  );
+}
+
+/** The first sentence inline (it says accepting does not prove the sentence correct); the full list of limits behind a disclosure. */
+function CheckerCoverage({ text }: { text: string }) {
+  const { lead, rest } = splitCoverage(text);
+  return (
+    <div className="card__prov sugg-coverage" data-testid="checker-coverage">
+      <p>{lead}</p>
+      {rest && (
+        <details className="sugg-coverage__more">
+          <summary>What this checker can and cannot see</summary>
+          <p data-testid="checker-coverage-more">{rest}</p>
+        </details>
+      )}
+    </div>
   );
 }

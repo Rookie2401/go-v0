@@ -72,6 +72,14 @@ for (const src of SOURCES) {
   for (const m of entry.mismatches) console.log('   ', JSON.stringify(m));
 }
 fs.mkdirSync('data/verified', { recursive: true });
-fs.writeFileSync('data/verified/scripture.json', JSON.stringify(record, null, 2) + '\n');
-console.log('wrote data/verified/scripture.json');
+// The corpus documents embed `checkedAt`. Re-running the check must not make that date drift: when the result is
+// identical to the stored record, the record is left untouched and the confirmation is only reported.
+const OUT = 'data/verified/scripture.json';
+const prev = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : undefined;
+if (prev && JSON.stringify(prev.translations) === JSON.stringify(record.translations)) {
+  console.log(`unchanged since ${prev.checkedAt}: ${OUT} left as is (confirmed again ${record.checkedAt})`);
+} else {
+  fs.writeFileSync(OUT, JSON.stringify(record, null, 2) + '\n');
+  console.log(`wrote ${OUT}`);
+}
 if (failed) { console.error('VERIFICATION FAILED (run with --fix to adopt the source wording, then re-run).'); process.exit(1); }

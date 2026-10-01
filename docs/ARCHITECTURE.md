@@ -171,3 +171,40 @@ never speaking → later independent use raises lemma-level productive evidence 
 the state from the event log → another learner cannot read the testimony. Plus the scripture loop:
 readiness → preparatory texts (never scripture, never testimony) → read them → coverage rises → Bible
 unchanged.
+
+## 12. Readiness round (contract v2, October 2026)
+
+The full brief is `docs/PLAN2.md`; the outcome and what still needs outside input is `docs/READINESS.md`.
+
+13. **Exposure is not comprehension (evidence policy `evidence@2`).** `Encounter.evidenceKind` is one of
+    `exposure | assisted | demonstrated | production`. Viewing, completing or playing only increments
+    `DimensionState.exposures`. Recognition needs `ComprehensionReported` (degree `all`, no help in that
+    sitting), an explicit mark, or production. `estimatedFamiliar` is a labelled estimate from repeated
+    help-free exposure and is never treated as known. Coverage reports shown / estimated / met / new, and
+    reading completion is reported separately (`readingProgress`).
+14. **Only reviewed real speech can be listening evidence.** `AudioAsset.isSpeech` and
+    `VoiceConfig.reviewStatus` gate eligibility; fixture tones are confined to development preview; legacy
+    events are resolved segment → asset and excluded. `auditEvidence` lists what was excluded; `ensureCurrent`
+    rebuilds derived state when the stored policy version differs. The log is never edited.
+15. **Stable sentence identity.** `Sentence.key` is the author's id or a hash of the exact text, so an edit
+    creates a new sentence and retires the old one (`retiredInVersion`) instead of shifting ids. Encounters,
+    human corrections and audio for unchanged sentences survive a content version bump.
+16. **Exact text, explicit normalization.** The importer stores `Sentence.text` and `Paragraph.originalText`
+    exactly as supplied; all matching goes through `normalizedText` / `Token.normalized`.
+17. **Publication gate.** `Text.published` is computed at import: a named review plus established rights, and
+    for Scripture also translation identity, edition and a `SourceVerification`. Unpublished content is
+    reachable only in the explicitly bannered preview mode and is never recommended.
+18. **Scripture is verified, not recalled.** `scripts/verify-scripture.mjs` compares bundled wording with a
+    published source byte for byte and writes `data/verified/scripture.json`. The first run found the
+    model-recalled Spanish sample wrong in all three verses.
+19. **Drafts are not versions and not evidence.** `TestimonyDraft` (one per learner + language, monotonic
+    `seq`, conflict on stale writes) is autosaved; `TestimonyRevision` stays immutable and explicit. Production
+    evidence is recorded once per item + sentence, ever, and never by checking.
+20. **Honest assistance.** Suggestions carry `scope`, `remainingIssues`, `checkerCoverage` and real `sources`;
+    meaning help is built only from the stated meaning and encountered sentences, and is refused when
+    unsupported.
+21. **Speech is a replaceable provider and may be absent.** With no usable real provider the audio state is
+    `unavailable` and text learning continues. `AzureSpeechProvider` exists behind `TtsProvider`, tested
+    against a mocked service only.
+22. **Backup is source of truth only.** `src/backup` exports events, testimonies, versions, drafts and
+    (optionally) recordings; derived state is rebuilt after restore (`docs/STORAGE.md`).

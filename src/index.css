@@ -519,3 +519,9 @@ table.vocab select, table.datatable select { padding: 0.2rem 0.4rem; font-size: 
 .support__limits > summary { cursor: pointer; color: var(--ink-soft); }
 tr.is-current { background: color-mix(in srgb, var(--accent) 7%, transparent); }
 .vocab__why td { color: var(--ink-soft); }
+
+/* Home: a note (no text to open) is plain text; disclosures for the long explanations stay quiet. */
+.home__note { max-width: 26rem; margin: 0.4rem auto; text-align: left; }
+.coverage__more, .sugg-coverage__more { margin-top: 0.25rem; }
+.coverage__more > summary, .sugg-coverage__more > summary { cursor: pointer; font-size: 0.85em; color: var(--muted, inherit); }
+.coverage__more > p, .sugg-coverage__more > p { margin: 0.25rem 0 0; }

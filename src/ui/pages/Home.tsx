@@ -12,14 +12,15 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { PersonalizedCoverage, Recommendation, Text, TextViewed } from '../../core';
 import { useApp } from '../context';
-import { BAND_LABEL, REASON_LABEL, awaitedStatement, isTestimonyText, isVisibleText, languageName, pct, teamLabel, textPath } from '../format';
+import { BAND_LABEL, INPUT_REASONS, REASON_LABEL, awaitedStatement, isTestimonyText, isVisibleText, languageName, pct, plainReason, plainReasons, teamLabel, textPath } from '../format';
 import { useLangTexts } from '../library';
 import { usePreview } from '../prefs';
 import { I } from '../ui';
 
 
 interface Item { rec: Recommendation; text?: Text; coverage?: PersonalizedCoverage }
-type Resume = { kind: 'text'; text: Text; corpus?: string; at: string } | { kind: 'testimony'; number: number; at: string };
+type Resume = { kind: 'text'; text: Text; corpus?: string; label: string } | { kind: 'testimony'; number: number };
+interface LastRead { text: Text; corpus?: string }
 
 const ENTRIES: Array<{ to: string; name: string; sub: string }> = [
   { to: '/read', name: 'Read', sub: 'Stories and dialogues' },
@@ -36,7 +37,9 @@ export function Home() {
   const { texts: allTexts } = useLangTexts();
   const [items, setItems] = useState<Item[] | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [resume, setResume] = useState<Resume | null>(null);
+  const [lastRead, setLastRead] = useState<LastRead | null>(null);
+  const [latestVersion, setLatestVersion] = useState<number | null>(null);
+  const [corpusTitles, setCorpusTitles] = useState<Map<string, string>>(new Map());
   const [completed, setCompleted] = useState(false);
 
   useEffect(() => {
@@ -74,10 +77,10 @@ export function Home() {
     return () => { live = false; };
   }, [bus, userId, lang]);
 
-  // What to continue: the most recent of the last text opened and the latest saved testimony version.
+  // What the learner last read, and the latest saved testimony version (the Continue card chooses between them below).
   useEffect(() => {
     let live = true;
-    setResume(null);
+    setLastRead(null); setLatestVersion(null);
     void (async () => {
       const [views, corpora, revisions] = await Promise.all([
         bus.history({ userId, types: ['TextViewed'] }),
@@ -85,20 +88,37 @@ export function Home() {
         store.revisions.where('userId', userId),
       ]);
       const corpusMap = new Map(corpora.map((c) => [c.id, c]));
-      let best: Resume | null = null;
+      setCorpusTitles(new Map(corpora.map((c) => [c.id, c.title])));
+      let best: LastRead | null = null;
       for (let i = views.length - 1; i >= 0; i--) {
         const view = views[i] as TextViewed;
         const text = await store.texts.get(view.textId);
         if (!text || text.lang !== lang || isTestimonyText(text, corpusMap) || !isVisibleText(text, preview)) continue;
-        best = { kind: 'text', text, corpus: corpusMap.get(text.corpusId)?.title, at: view.at };
+        best = { text, corpus: corpusMap.get(text.corpusId)?.title };
         break;
       }
       const latest = revisions.filter((r) => r.lang === lang).sort((a, b) => b.createdAt.localeCompare(a.createdAt))[0];
-      if (latest && (!best || latest.createdAt > best.at)) best = { kind: 'testimony', number: latest.number, at: latest.createdAt };
-      if (live) setResume(best);
+      if (live) { setLastRead(best); setLatestVersion(latest ? latest.number : null); }
     })().catch(() => { /* a missing history only means no Continue card */ });
     return () => { live = false; };
   }, [store, bus, userId, lang, preview]);
+
+  // Input stays prominent: the first recommended text to read or listen to, else the last text read, and the
+  // testimony only when there is no input at all. (The testimony keeps its entry and its rehearsal suggestion.)
+  const resume = useMemo<Resume | null>(() => {
+    if (items === null) return null;
+    const pick = items.find((i) => i.text && i.rec.textId && INPUT_REASONS.has(i.rec.reason));
+    if (pick?.text) {
+      const isLast = lastRead?.text.id === pick.text.id;
+      return {
+        kind: 'text', text: pick.text, corpus: corpusTitles.get(pick.text.corpusId),
+        label: isLast ? 'Continue reading' : pick.rec.reason === 'first-text' ? 'Start reading' : 'Read next',
+      };
+    }
+    if (lastRead) return { kind: 'text', text: lastRead.text, corpus: lastRead.corpus, label: 'Continue reading' };
+    if (latestVersion !== null) return { kind: 'testimony', number: latestVersion };
+    return null;
+  }, [items, lastRead, latestVersion, corpusTitles]);
 
   const heldBack = (allTexts ?? []).some((t) => t.published !== true);
   const emptyNote = useMemo(() => {
@@ -107,7 +127,7 @@ export function Home() {
     const visibleCorpus = corpusTexts.filter((t) => isVisibleText(t, preview));
     if (allTexts !== null && visibleCorpus.length === 0) {
       const a = awaitedStatement(corpusTexts, 'corpus', languageName(course));
-      return { text: a.headline, reasons: a.reasons };
+      return { text: plainReason(a.headline), reasons: plainReasons(a.reasons) };
     }
     if (completed) return { text: `You have read everything currently available in ${languageName(course)}. New texts appear here as soon as they are published.`, reasons: [] };
     return { text: 'Nothing to suggest yet. Open a story to begin.', reasons: [] };
@@ -122,7 +142,7 @@ export function Home() {
 
       {resume && (
         <Link className="home__continue" to={resume.kind === 'text' ? textPath(resume.text) : '/testimony'}>
-          <span className="home__continue-label">{resume.kind === 'text' ? 'Continue reading' : 'Continue your testimony'}</span>
+          <span className="home__continue-label">{resume.kind === 'text' ? resume.label : 'Continue your testimony'}</span>
           <div className="home__continue-ref" lang={resume.kind === 'text' ? resume.text.lang : undefined}>{resume.kind === 'text' ? resume.text.title : `Version ${resume.number}`}</div>
           <div className="home__continue-sub">{resume.kind === 'text' ? resume.corpus ?? (resume.text.kind === 'scripture' ? 'Scripture' : 'Read') : 'Rehearse it, or write the next version'}</div>
         </Link>
@@ -152,23 +172,38 @@ export function Home() {
       )}
       <ul className="list home__list">
         {items?.map(({ rec, text, coverage }, i) => {
-          const to = rec.reason === 'rehearse-testimony' ? '/testimony' : text ? textPath(text) : undefined;
+          const key = `${rec.reason}-${rec.textId ?? rec.testimonyId ?? i}`;
+          const rehearse = rec.reason === 'rehearse-testimony';
+          // No text to open and not the testimony: this is a note (nothing published yet, everything read), not a
+          // recommendation — only its explanation, as plain text.
+          if (!rehearse && !rec.textId) {
+            return (
+              <li key={key} data-reason={rec.reason}>
+                <p className="home__note muted" data-testid="home-note">{plainReason(rec.explanation)}</p>
+              </li>
+            );
+          }
+          const to = rehearse ? '/testimony' : text ? textPath(text) : undefined;
+          const label = REASON_LABEL[rec.reason] ?? rec.reason;
           const body = (
             <>
               <span className="home__entry-body">
-                <span className="home__entry-name" lang={text?.lang}>{text?.title ?? REASON_LABEL[rec.reason] ?? rec.reason}</span>
-                <span className="home__entry-sub">
-                  {REASON_LABEL[rec.reason] ?? rec.reason}
-                  {coverage && <> · <span className={`band-${coverage.band}`}>{BAND_LABEL[coverage.band]} · shown {pct(coverage.knownLexicalCoverage)}</span></>}
-                </span>
-                <span className="entry__preview">{rec.explanation}</span>
+                {/* One title: the text's own title with the reason under it, or (no text) the reason as the title. */}
+                <span className="home__entry-name" lang={text?.lang}>{text?.title ?? label}</span>
+                {text && (
+                  <span className="home__entry-sub">
+                    {label}
+                    {coverage && <> · <span className={`band-${coverage.band}`}>{BAND_LABEL[coverage.band]} · shown {pct(coverage.knownLexicalCoverage)}</span></>}
+                  </span>
+                )}
+                <span className="entry__preview">{plainReason(rec.explanation)}</span>
               </span>
               {text?.generated && <span className="chip chip--wine">generated</span>}
               {text && text.published !== true && <span className="chip chip--wine">unpublished</span>}
             </>
           );
           return (
-            <li key={`${rec.reason}-${rec.textId ?? rec.testimonyId ?? i}`} data-reason={rec.reason}>
+            <li key={key} data-reason={rec.reason}>
               {to ? <Link to={to} className="home__entry">{body}</Link> : <div className="home__entry">{body}</div>}
             </li>
           );

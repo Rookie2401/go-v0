@@ -5,7 +5,7 @@
 import { useEffect, useState } from 'react';
 import type { Corpus, Text } from '../core';
 import { useApp } from './context';
-import { REVIEW_LABEL, isTestimonyText } from './format';
+import { REVIEW_LABEL, isTestimonyText, plainReasons } from './format';
 
 export interface LangTexts {
   /** null while loading. Every non-private text of the active language, published or not. */
@@ -37,7 +37,7 @@ export function TextBadges({ text }: { text: Text }) {
     <>
       {text.generated && <span className="chip chip--wine" title="Machine-generated text">generated</span>}
       {text.published !== true && (
-        <span className="chip chip--wine" title={(text.unpublishedReasons ?? []).join(' ')}>
+        <span className="chip chip--wine" title={plainReasons(text.unpublishedReasons ?? []).join('; ')}>
           unpublished · {REVIEW_LABEL[text.reviewStatus ?? 'unreviewed'] ?? text.reviewStatus}
         </span>
       )}
@@ -48,7 +48,7 @@ export function TextBadges({ text }: { text: Text }) {
 /** Why a text is not published, as a short list (shown in preview mode and in Settings). */
 export function UnpublishedReasons({ text }: { text: Text }) {
   if (text.published === true) return null;
-  const reasons = text.unpublishedReasons?.length ? text.unpublishedReasons : ['Not published.'];
+  const reasons = text.unpublishedReasons?.length ? plainReasons(text.unpublishedReasons) : ['Not published.'];
   return (
     <ul className="reasons" aria-label={`Why ${text.title} is not published`}>
       {reasons.map((r) => <li key={r}>{r}</li>)}

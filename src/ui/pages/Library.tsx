@@ -10,7 +10,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { PersonalizedCoverage, ReadingProgress, Text } from '../../core';
 import { useApp } from '../context';
-import { BAND_LABEL, awaitedStatement, isVisibleText, languageName, pct, textPath } from '../format';
+import { BAND_LABEL, awaitedStatement, plainReasons, isVisibleText, languageName, pct, textPath } from '../format';
 import { TextBadges, UnpublishedReasons, useLangTexts } from '../library';
 import { usePreview } from '../prefs';
 import { BackLink, Topbar } from '../ui';
@@ -68,7 +68,7 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
         {awaited && (
           <div className="awaited" role="status" data-testid="awaited">
             <p className="muted">{awaited.headline}</p>
-            {awaited.reasons.length > 0 && <ul className="reasons">{awaited.reasons.map((r) => <li key={r}>{r}</li>)}</ul>}
+            {awaited.reasons.length > 0 && <ul className="reasons">{plainReasons(awaited.reasons).map((r) => <li key={r}>{r}</li>)}</ul>}
             {ofKind.length > 0 && !preview && <p className="card__note"><Link to="/settings">Preview mode in Settings</Link> lists them, clearly marked, so they can be reviewed.</p>}
           </div>
         )}

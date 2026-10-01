@@ -268,8 +268,8 @@ export function disambiguateSpanish(i: number, tokens: RawToken[], base: C[][]):
     }
   }
 
-  // ── nothing decided: a noun or adjective the word list knows goes before a "tú" form or a command (tiendas, calles, plantas) ──
-  const known = (c: C) => !isVerbal(c) && (c.origin === 'hand' || c.notes?.lemmaStatus === 'in the word list');
+  // ── nothing decided: a noun or adjective the word list (or an installed dictionary) knows goes before a "tú" form or a command (tiendas, calles, plantas) ──
+  const known = (c: C) => !isVerbal(c) && (c.origin === 'hand' || c.origin === 'dictionary' || c.notes?.lemmaStatus === 'in the word list');
   if (isVerbal(cands[0]) && (hasPerson(cands[0], '2') || isImperative(cands[0])) && verbal.every((c) => hasPerson(c, '2') || isImperative(c)) && other.some(known)) {
     const yes = cands.filter(known);
     return [...yes, ...cands.filter((c) => !known(c))];

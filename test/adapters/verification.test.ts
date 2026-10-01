@@ -279,7 +279,7 @@ describe('Spanish: accents, inflection and historical Scripture forms', () => {
       if (!engineLive) expect(c, w).toEqual([]);
       for (const x of c) {
         expect(x.origin, w).toBe('rule');
-        expect(x.sourceId, w).toBe('adapter-es@3:rules');
+        expect(x.sourceId, w).toBe('adapter-es@4:rules');
         expect(x.confidence, w).toBeLessThanOrEqual(0.6);
         expect(x.gloss, w).toBeUndefined();
         expect(x.notes?.lemmaStatus, w).toBe('inferred by the rules');

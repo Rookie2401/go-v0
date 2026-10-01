@@ -72,9 +72,11 @@ export interface DocumentPlan {
   workId?: string;
   /**
    * The analyzer name of the installed dictionary; `tokens` = words only the dictionary knew (analysed from it),
+   * `decided` = words the adapter only guessed at (every reading `unconfirmed`) whose readings the dictionary decided,
+   * `lemmaOnly` = guessed words the dictionary has no entry for whose rule-derived lemma it does list (kept as the rule's reading),
    * `alongside` = words the adapter analyses that also got the dictionary's entries as alternatives beside its own.
    */
-  dictionary?: { tool: string; tokens: number; alongside: number };
+  dictionary?: { tool: string; tokens: number; decided: number; lemmaOnly: number; alongside: number };
   noteCount: number;
 }
 
@@ -107,6 +109,12 @@ export function sentenceTextsOf(doc: CorpusDocument, adapter: LanguageAdapter): 
 /** A candidate that says nothing about the word (for instance a decoding-only candidate) does not count as an analysis. */
 const says = (c: AnalysisCandidate): boolean => !!(c.lemma || c.pos || c.gloss || c.role || c.definition || c.register?.length);
 const unanalysed = (a: AnalyzedToken): boolean => a.token.isWord && !a.candidates.some(says);
+/** A word the dictionary may decide: the adapter says something about it, and every reading it gives is an unconfirmed guess. */
+const decidable = (a: AnalyzedToken): boolean => {
+  if (!a.token.isWord) return false;
+  const saying = a.candidates.filter(says);
+  return saying.length > 0 && saying.every((c) => c.unconfirmed === true);
+};
 
 /** The normalized forms of word tokens the adapter cannot analyse. */
 export function collectUnanalysedForms(doc: CorpusDocument, registry: AdapterRegistry): Set<string> {
@@ -151,15 +159,50 @@ function readingsOf(entries: readonly DictionaryEntry[]): string[] {
   return out;
 }
 
+/** The part-of-speech pairs that count as the same word class when a dictionary and a rule set are compared (a verb is an auxiliary in some uses). */
+const VERBAL = new Set<PartOfSpeech>(['VERB', 'AUX']);
+
+/**
+ * The lemma's own dictionary entry for a reading of part of speech `pos`: the first entry that has glosses of its own (a
+ * form-of entry does not: its label is no meaning) and whose part of speech fits - equal, both verbal, or the reading has none.
+ * No entry of the right word class means no entry: a verb form is never glossed with the noun's meaning.
+ */
+function lemmaEntryFor(lemmaEntries: readonly DictionaryEntry[] | undefined, pos: PartOfSpeech | undefined): DictionaryEntry | undefined {
+  const fits = (e: DictionaryEntry) => pos === undefined || e.pos === pos || (e.pos !== undefined && VERBAL.has(pos) && VERBAL.has(e.pos));
+  return (lemmaEntries ?? []).find((e) => !e.formOf?.length && e.glosses.some((g) => g.trim().length > 0) && fits(e));
+}
+
+/** The first two glosses of an entry, joined. */
+const shortGloss = (e: DictionaryEntry): string => e.glosses.filter((g) => g.trim().length > 0).slice(0, 2).join('; ');
+
+/** The source's labels that hold for every sense of an entry (an entry without `senses` has none): one regional sense among general ones marks nothing. */
+function labelsOfEverySense(e: DictionaryEntry): string[] {
+  const senses = e.senses ?? [];
+  if (!senses.length) return [];
+  return (senses[0].tags ?? []).filter((t) => senses.every((s) => s.tags?.includes(t)));
+}
+
+/** The confidence of a reading by rule whose lemma the dictionary lists (the dictionary lacks the form itself). */
+export const LEMMA_IN_DICTIONARY = 0.6;
+
 /**
  * Dictionary entries of one form → analysis candidates (origin `dictionary`, source = `sourceId`, the dictionary id).
  * A dictionary lists what a written form can mean, so confidence is below certainty (0.6 when the form has one part of
  * speech, 0.45 when it has several); entry order is kept, the first is the best candidate and the rest become
  * alternatives. When the entries list more than one reading, the first candidate carries them all in `notes.readings`.
+ * An inflected form has no gloss of its own worth showing ("first-person singular of …"): when `lemmaEntries` can say what
+ * the lemma means, the candidate's gloss is the lemma's (`notes.glossFrom = 'lemma'`). Region labels become varieties through
+ * `varietiesFromTags` only where they hold for the whole reading: every sense of a headword entry, the form-of relation's own
+ * tags, and (when the gloss came from it) every sense of the lemma entry.
  */
 export function dictionaryCandidates(
   form: string, entries: readonly DictionaryEntry[], sourceId?: string, morphFromTags?: (tags: readonly string[]) => Record<string, string>,
+  lemmaEntries?: (lemma: string) => readonly DictionaryEntry[] | undefined, varietiesFromTags?: (tags: readonly string[]) => string[],
 ): AnalysisCandidate[] {
+  const varietiesOf = (...tagLists: string[][]): { varieties: string[] } | Record<string, never> => {
+    const out = [...new Set(tagLists.flatMap((t) => (varietiesFromTags && t.length ? varietiesFromTags(t) : [])))];
+    return out.length ? { varieties: out } : {};
+  };
   const confidence = new Set(entries.map((e) => e.pos ?? '')).size > 1 ? 0.45 : 0.6;
   const readings = readingsOf(entries);
   return entries.flatMap((e, k) => {
@@ -184,15 +227,117 @@ export function dictionaryCandidates(
       return e.formOf.map((f, j) => {
         const own: Record<string, string | string[]> = { ...notes, formOfTags: [...f.tags] };
         if (j > 0) delete own.readings;
-        return { ...common, lemma: f.lemma, morph: morphFromTags ? { ...morphFromTags(f.tags) } : {}, notes: own };
+        const lemmaEntry = lemmaEntryFor(lemmaEntries?.(f.lemma), e.pos);
+        if (lemmaEntry) own.glossFrom = 'lemma';
+        return {
+          ...common, ...(lemmaEntry ? { gloss: shortGloss(lemmaEntry) } : {}), lemma: f.lemma, morph: morphFromTags ? { ...morphFromTags(f.tags) } : {}, notes: own,
+          ...varietiesOf(f.tags, lemmaEntry ? labelsOfEverySense(lemmaEntry) : []),
+        };
       });
     }
-    return [{ ...common, lemma: form, morph: {}, ...(Object.keys(notes).length ? { notes } : {}) }];
+    return [{ ...common, lemma: form, morph: {}, ...(Object.keys(notes).length ? { notes } : {}), ...varietiesOf(labelsOfEverySense(e)) }];
   });
 }
 
 /** The analyzer name of a dictionary's analyses. */
 export const dictionaryTool = (dictionaryId: string): string => `dict:${dictionaryId}`;
+
+/** The confidence of a reading the dictionary and a rule reading agree on: two independent sources, still not a hand-checked analysis. */
+export const CONFIRMED_BY_DICTIONARY = 0.7;
+
+/** Two feature sets agree when every feature both state has a value in common (a value may be a comma list: "1,3"). */
+function morphAgrees(a: Record<string, string>, b: Record<string, string>): boolean {
+  for (const k of Object.keys(a)) {
+    if (!(k in b)) continue;
+    const mine = a[k].split(',');
+    if (!b[k].split(',').some((v) => mine.includes(v))) return false;
+  }
+  return true;
+}
+
+const morphKey = (m: Record<string, string>): string => JSON.stringify(Object.keys(m).sort().map((k) => [k, m[k]]));
+
+/**
+ * The dictionary decides a word the rules only guessed at: each dictionary reading that a rule reading agrees with (same
+ * lemma, a part of speech that fits, and no contradicting feature) becomes one reading with the rule's features and
+ * word parts, stored as confirmed by the dictionary; a dictionary reading no rule matched stands alone with its own
+ * confidence; guesses the dictionary does not list are dropped.
+ */
+function decideByDictionary(adapter: LanguageAdapter, dictionary: readonly AnalysisCandidate[], guesses: readonly AnalysisCandidate[]): AnalysisCandidate[] {
+  const out: AnalysisCandidate[] = [];
+  const seen = new Set<string>();
+  const add = (c: AnalysisCandidate) => {
+    const key = `${c.lemma}|${c.pos ?? ''}|${morphKey(c.morph)}`;
+    if (seen.has(key)) return;
+    seen.add(key);
+    out.push(c);
+  };
+  for (const d of dictionary) {
+    const lemma = d.lemma !== undefined ? adapter.normalize(d.lemma) : undefined;
+    const fromFormOf = !!d.notes?.formOfTags && Object.keys(d.morph).length > 0;
+    const matches = lemma === undefined ? [] : guesses.filter((r) => {
+      if (r.lemma === undefined || adapter.normalize(r.lemma) !== lemma) return false;
+      if (!(d.pos === undefined || d.pos === r.pos || (d.pos && r.pos && VERBAL.has(d.pos) && VERBAL.has(r.pos)))) return false;
+      return !fromFormOf || morphAgrees(d.morph, r.morph);
+    });
+    if (!matches.length) { add(d); continue; }
+    for (const r of matches) {
+      const varieties = [...new Set([...(d.varieties ?? []), ...(r.varieties ?? [])])];
+      const rule = r.notes?.rule;
+      const notes = { ...(d.notes ?? {}), ...(rule !== undefined ? { rule } : {}) };
+      add({
+        lemma: d.lemma, pos: d.pos ?? r.pos, morph: { ...r.morph }, ...(r.parts?.length ? { parts: r.parts.map((p) => ({ ...p, ...(p.morph ? { morph: { ...p.morph } } : {}) })) } : {}),
+        ...(varieties.length ? { varieties } : {}),
+        ...(d.register?.length ? { register: [...d.register] } : {}), ...(d.role ? { role: d.role } : {}), ...(d.definition ? { definition: d.definition } : {}),
+        ...(d.gloss ? { gloss: d.gloss } : {}),
+        origin: 'dictionary', ...(d.sourceId ? { sourceId: d.sourceId } : {}), confidence: CONFIRMED_BY_DICTIONARY,
+        ...(Object.keys(notes).length ? { notes } : {}),
+      });
+    }
+  }
+  return out;
+}
+
+/**
+ * The dictionary lacks the form but may list the lemma a rule derived it from (a verb with attached pronouns, a diminutive, a
+ * superlative): the guesses whose lemma it lists - an entry of its own with glosses and a fitting part of speech - are kept,
+ * as the rule's own readings (origin and source unchanged) with the lemma's gloss, its status stated in the notes; the rest are
+ * dropped. `undefined` when no guess has its lemma in the dictionary: nothing changes for the token then.
+ */
+function readByLemma(
+  guesses: readonly AnalysisCandidate[], lemmaEntries: (lemma: string) => readonly DictionaryEntry[] | undefined, dictionaryId: string,
+): AnalysisCandidate[] | undefined {
+  const kept: AnalysisCandidate[] = [];
+  for (const r of guesses) {
+    const entry = r.lemma !== undefined ? lemmaEntryFor(lemmaEntries(r.lemma), r.pos) : undefined;
+    if (!entry) continue;
+    const { unconfirmed: _unconfirmed, ...rest } = r;
+    kept.push({
+      ...rest, morph: { ...r.morph }, gloss: shortGloss(entry), confidence: r.confidence <= LEMMA_IN_DICTIONARY ? LEMMA_IN_DICTIONARY : r.confidence,
+      notes: { ...(r.notes ?? {}), lemmaStatus: 'in the dictionary', lemmaSource: dictionaryId },
+    });
+  }
+  return kept.length ? kept : undefined;
+}
+
+/**
+ * The normalized lemmas of the guesses (unconfirmed readings) of word tokens the dictionary has no entry for: what a second
+ * lookup round asks for so that `readByLemma` can find them. `known` = the entries found so far, by form.
+ */
+export function collectGuessedLemmas(doc: CorpusDocument, registry: AdapterRegistry, known: ReadonlyMap<string, readonly DictionaryEntry[]>): Set<string> {
+  const adapter = registry.get(doc.lang);
+  const lemmas = new Set<string>();
+  for (const text of sentenceTextsOf(doc, adapter)) {
+    for (const a of adapter.analyze(adapter.tokenize(text))) {
+      if (!decidable(a) || known.get(a.token.normalized)?.length) continue;
+      for (const c of a.candidates) if (says(c) && c.lemma !== undefined) lemmas.add(adapter.normalize(c.lemma));
+    }
+  }
+  return lemmas;
+}
+
+/** The (lemma, part of speech) pairs of one token's readings, sorted: what `refine` may reorder but never change. */
+const readingPairs = (a: AnalyzedToken): string[] => a.candidates.map((c) => JSON.stringify([c.lemma ?? null, c.pos ?? null])).sort();
 
 /** Plan one (already validated) document. Throws on any broken round-trip invariant: nothing is written by then. */
 export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opts: PlanOptions = {}): DocumentPlan {
@@ -200,10 +345,14 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
   const dictId = opts.dictionaryId ?? 'dictionary';
   const dictTool = opts.dictionary ? dictionaryTool(dictId) : undefined;
   let dictTokens = 0;
+  let dictDecided = 0;
+  let dictLemmaOnly = 0;
   let dictAlongside = 0;
   const textId = ids.text(doc.lang, doc.id);
   const analyzerName = `adapter-${doc.lang}@${adapter.version}`;
   const speakerName = (id: string | undefined) => (id !== undefined ? doc.speakers?.[id] ?? id : undefined);
+  // what the dictionary says a lemma means (a form-of entry's gloss is its lemma's)
+  const lemmaEntries = (l: string) => opts.dictionary?.get(adapter.normalize(l));
 
   const paragraphs: PlannedParagraph[] = [];
   const sentences: PlannedSentence[] = [];
@@ -223,17 +372,41 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
     const base = adapter.analyze(tokens);
     if (base.length !== tokens.length) throw new Error(`adapter ${doc.lang}: analyze() returned ${base.length} for ${tokens.length} tokens`);
     const analyzed: AnalyzedToken[] = base.map((a) => ({ ...a, candidates: a.candidates.map((c) => ({ ...c })) }));
-    // dictionary: a word the adapter says nothing about is analysed from it; a word the adapter analyses keeps its analysis
-    // unchanged and only gets a marker (and a pronunciation when it has none) - the entries are never copied onto the token
+    // dictionary: a word the adapter says nothing about is analysed from it; a word whose every reading the adapter only
+    // guesses at (`unconfirmed`) is decided by it; a word the adapter's own data vouches for keeps its analysis unchanged and
+    // only gets a marker (and a pronunciation when it has none) - the entries are never copied onto the token
     const beside = new Map<number, AnalysisCandidate[]>();
     if (opts.dictionary && dictTool) {
+      const given = new Set<number>(); // tokens that were given dictionary readings in this pass
       analyzed.forEach((a, ti) => {
         const entries = a.token.isWord ? opts.dictionary!.get(tokens[ti].normalized) : undefined;
-        if (!entries?.length) return;
-        const cands = dictionaryCandidates(tokens[ti].normalized, entries, dictId, adapter.morphFromTags?.bind(adapter));
-        if (unanalysed(a)) { analyzed[ti] = { token: tokens[ti], candidates: cands, analyzer: dictTool }; dictTokens++; }
-        else beside.set(ti, cands);
+        if (!entries?.length) {
+          // the dictionary lacks the form: guesses whose lemma it lists stay as the rule's readings, with the lemma's gloss
+          const byLemma = decidable(a) ? readByLemma(a.candidates.filter((c) => says(c)), lemmaEntries, dictId) : undefined;
+          if (byLemma) { analyzed[ti] = { token: tokens[ti], candidates: byLemma, analyzer: dictTool }; dictLemmaOnly++; given.add(ti); }
+          return;
+        }
+        const cands = dictionaryCandidates(
+          tokens[ti].normalized, entries, dictId, adapter.morphFromTags?.bind(adapter), lemmaEntries, adapter.varietiesFromTags?.bind(adapter),
+        );
+        if (unanalysed(a)) { analyzed[ti] = { token: tokens[ti], candidates: cands, analyzer: dictTool }; dictTokens++; given.add(ti); }
+        else if (decidable(a)) {
+          const guesses = a.candidates.filter((c) => says(c) && c.unconfirmed === true);
+          analyzed[ti] = { token: tokens[ti], candidates: decideByDictionary(adapter, cands, guesses), analyzer: dictTool };
+          dictDecided++;
+          given.add(ti);
+        } else beside.set(ti, cands);
       });
+      // the readings the dictionary supplied are ordered by context again, by the adapter's own neighbour rules
+      if (adapter.refine && given.size) {
+        const before = analyzed.map(readingPairs);
+        const refined = adapter.refine(tokens, analyzed, new Set([analyzerName, dictTool]));
+        if (refined.length !== tokens.length) throw new Error(`adapter ${doc.lang}: refine() returned ${refined.length} for ${tokens.length} tokens`);
+        refined.forEach((r, ti) => {
+          if (JSON.stringify(readingPairs(r)) !== JSON.stringify(before[ti])) throw new Error(`adapter ${doc.lang}: refine() changed the readings of token ${ti} in "${text}"`);
+          analyzed[ti] = r;
+        });
+      }
     }
     const spanTokens = new Set<number>();
     for (const sp of extra.spans ?? []) {
@@ -341,7 +514,7 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
 
   return {
     doc, textId, adapter, analyzerName, paragraphs, sentences, coverage, decision, signature, nonNfcBlocks, tokenCount: allTokens.length,
-    ...(workIdOf(doc) ? { workId: workIdOf(doc) } : {}), ...(dictTool ? { dictionary: { tool: dictTool, tokens: dictTokens, alongside: dictAlongside } } : {}), noteCount,
+    ...(workIdOf(doc) ? { workId: workIdOf(doc) } : {}), ...(dictTool ? { dictionary: { tool: dictTool, tokens: dictTokens, decided: dictDecided, lemmaOnly: dictLemmaOnly, alongside: dictAlongside } } : {}), noteCount,
   };
 }
 
@@ -471,8 +644,9 @@ export function materializeSentence(plan: DocumentPlan, ps: PlannedSentence, sen
       origin: c.origin ?? (c.notes?.source === 'rule' ? 'rule' : 'hand'), sourceId: c.sourceId ?? `adapter-${lang}@${plan.adapter.version}`,
     });
     const bestOrigin = originOf(best);
-    // the gloss of an inflected form ("first-person plural of …") describes the form, not the lemma: it never becomes the lemma's gloss
-    const describesForm = (c: AnalysisCandidate) => !!c.notes?.formOfTags;
+    // the gloss of an inflected form ("first-person plural of …") describes the form, not the lemma: it never becomes the lemma's
+    // gloss - unless it was taken from the lemma's own dictionary entry in the first place (`glossFrom`)
+    const describesForm = (c: AnalysisCandidate) => !!c.notes?.formOfTags && c.notes.glossFrom !== 'lemma';
     const lemmaId = best.lemma ? ensureLemma(best.lemma, best.pos, fromSpan || describesForm(best) ? undefined : best.gloss) : undefined;
     const alternatives: NonNullable<TokenAnalysis['alternatives']> = rest.map((r) => {
       const o = originOf(r);

@@ -14,6 +14,31 @@ export const ES_VARIETIES: Readonly<Record<string, Variety>> = {
   'es-AND': { code: 'es-AND', label: 'Andean', kind: 'regional', parent: 'es-419', note: 'The Spanish of the Andes and the Pacific coast of South America.' },
   'es-AR': { code: 'es-AR', label: 'Río de la Plata', kind: 'regional', parent: 'es-419', note: 'The Spanish of Argentina and Uruguay.' },
   'es-ES': { code: 'es-ES', label: 'Spain', kind: 'national', note: 'The Spanish of Spain: worth recognising, not your default.' },
+  // regions of Spain a dictionary labels on their own
+  'es-ES-CN': { code: 'es-ES-CN', label: 'Canary Islands', kind: 'regional', parent: 'es-ES' },
+  'es-ES-AN': { code: 'es-ES-AN', label: 'Andalusia', kind: 'regional', parent: 'es-ES' },
+  // national varieties: a dictionary label for one country is never widened to the region around it
+  'es-SV': { code: 'es-SV', label: 'El Salvador', kind: 'national', parent: 'es-CA' },
+  'es-NI': { code: 'es-NI', label: 'Nicaragua', kind: 'national', parent: 'es-CA' },
+  'es-GT': { code: 'es-GT', label: 'Guatemala', kind: 'national', parent: 'es-CA' },
+  'es-CR': { code: 'es-CR', label: 'Costa Rica', kind: 'national', parent: 'es-CA' },
+  'es-PA': { code: 'es-PA', label: 'Panama', kind: 'national', parent: 'es-CA' },
+  'es-CU': { code: 'es-CU', label: 'Cuba', kind: 'national', parent: 'es-CAR' },
+  'es-PR': { code: 'es-PR', label: 'Puerto Rico', kind: 'national', parent: 'es-CAR' },
+  'es-DO': { code: 'es-DO', label: 'Dominican Republic', kind: 'national', parent: 'es-CAR' },
+  'es-CO': { code: 'es-CO', label: 'Colombia', kind: 'national', parent: 'es-419' },
+  'es-VE': { code: 'es-VE', label: 'Venezuela', kind: 'national', parent: 'es-419' },
+  'es-CL': { code: 'es-CL', label: 'Chile', kind: 'national', parent: 'es-419' },
+  'es-PY': { code: 'es-PY', label: 'Paraguay', kind: 'national', parent: 'es-419' },
+  'es-PE': { code: 'es-PE', label: 'Peru', kind: 'national', parent: 'es-AND' },
+  'es-BO': { code: 'es-BO', label: 'Bolivia', kind: 'national', parent: 'es-AND' },
+  'es-EC': { code: 'es-EC', label: 'Ecuador', kind: 'national', parent: 'es-AND' },
+  // es-AR above is the whole Río de la Plata region; Argentina and Uruguay alone get their own codes inside it
+  'es-ARG': { code: 'es-ARG', label: 'Argentina', kind: 'national', parent: 'es-AR' },
+  'es-UY': { code: 'es-UY', label: 'Uruguay', kind: 'national', parent: 'es-AR' },
+  'es-SA': { code: 'es-SA', label: 'South America', kind: 'regional', parent: 'es-419', note: 'Usage a dictionary labels as South American without naming a country.' },
+  'es-PH': { code: 'es-PH', label: 'Philippines', kind: 'national' },
+  'es-US': { code: 'es-US', label: 'United States', kind: 'national' },
   'es-hist': { code: 'es-hist', label: 'older Spanish', kind: 'historical', note: 'Spelling or grammar from before the modern standard; the text is kept as written.' },
   voseo: { code: 'voseo', label: 'voseo (vos)', kind: 'feature', note: 'Vos with its own verb forms (vos tenés, vos hablás): everyday speech in Honduras and much of Central America.' },
   vosotros: { code: 'vosotros', label: 'vosotros (Spain)', kind: 'feature', note: 'The informal plural of Spain (vosotros tenéis); in Latin America ustedes is used instead.' },
@@ -21,6 +46,21 @@ export const ES_VARIETIES: Readonly<Record<string, Variety>> = {
 
 /** Codes the adapter tags words with, for tests and tools that must not accept an unknown tag. */
 export const ES_VARIETY_CODES: readonly string[] = Object.keys(ES_VARIETIES);
+
+/**
+ * A dictionary's region and usage labels → the variety code each one says, no wider (lower-case keys; look a label up
+ * lower-cased). A label not listed here (a usage label such as "obsolete", an unknown region) is not a variety: nothing is guessed.
+ */
+export const ES_LABEL_VARIETIES: Readonly<Record<string, string>> = {
+  honduras: 'es-HN', 'central-america': 'es-CA', 'latin-america': 'es-419', spain: 'es-ES', mexico: 'es-MX', caribbean: 'es-CAR',
+  'with-voseo': 'voseo',
+  'el-salvador': 'es-SV', nicaragua: 'es-NI', guatemala: 'es-GT', 'costa-rica': 'es-CR', panama: 'es-PA',
+  cuba: 'es-CU', 'puerto-rico': 'es-PR', 'dominican-republic': 'es-DO',
+  colombia: 'es-CO', venezuela: 'es-VE', chile: 'es-CL', paraguay: 'es-PY',
+  peru: 'es-PE', bolivia: 'es-BO', ecuador: 'es-EC',
+  rioplatense: 'es-AR', argentina: 'es-ARG', uruguay: 'es-UY',
+  'canary-islands': 'es-ES-CN', andalusia: 'es-ES-AN', 'south-america': 'es-SA', philippines: 'es-PH', us: 'es-US',
+};
 
 /** One meaning and the words that say it in different places; a form without a variety is general Spanish (documentation, and the "both ways" tests). */
 export interface RegionalPair { concept: string; forms: ReadonlyArray<{ lemma: string; variety?: string }> }

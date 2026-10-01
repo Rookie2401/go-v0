@@ -40,6 +40,9 @@ const KIND_TITLE: Record<DisagreementKind, string> = {
   'syllables': 'syllables (exception and settled lists)',
   'pronunciation': 'pronunciation (respelling and hand romanization)',
   'segmentation': 'segmentation',
+  'gender': 'gender',
+  'variety': 'variety',
+  'inflection': 'inflection',
 };
 
 const CAN_SHOW: Record<DisagreementKind, string> = {
@@ -52,6 +55,9 @@ const CAN_SHOW: Record<DisagreementKind, string> = {
   'syllables': 'Can show: the syllable count of a course respelling matches no listed reading. Cannot show which division is right.',
   'pronunciation': 'Can show: a course respelling or romanization that is written differently from every listed one. Different systems and conventions produce such differences with identical sound; a romanization is compared only through a coarse skeleton that ignores tone.',
   'segmentation': 'Not produced by this comparison (see docs/thai/BENCHMARKS.md).',
+  'gender': 'Not produced by the Thai comparison.',
+  'variety': 'Not produced by the Thai comparison.',
+  'inflection': 'Not produced by the Thai comparison.',
 };
 
 function table(head: string[], rows: string[][], textColumns = 1): string {

@@ -18,7 +18,7 @@ import type { AnalysisCoverage } from '../adapters/shared';
 import { describeVersionBump } from './history';
 import { hasErrors, validateBatch, type CorpusDocument, type ValidationIssue } from './format';
 import {
-  INGEST_TOOL, buildNoteRows, collectWordForms, coverageWarning, materializeSentence, newCatalog, planDocument, type DocumentPlan, type PlannedSentence,
+  INGEST_TOOL, buildNoteRows, collectGuessedLemmas, collectWordForms, coverageWarning, materializeSentence, newCatalog, planDocument, type DocumentPlan, type PlannedSentence,
   type SentenceRows,
 } from './plan';
 
@@ -138,10 +138,23 @@ export async function planWithDictionary(
       }
       if (!dict) { plans.push(planDocument(doc, registry)); continue; }
       const want = [...collectWordForms(doc, registry)].filter((f) => !dict!.asked.has(f));
+      const found = new Map<string, DictionaryEntry[]>();
       if (want.length) {
-        const found = await dict.src.lookup(want);
+        for (const [form, entries] of await dict.src.lookup(want)) found.set(form, entries);
         for (const f of want) dict.asked.add(f);
         for (const [form, entries] of found) if (entries.length) dict.known.set(form, entries);
+      }
+      // an inflected form's gloss is its lemma's, and a guess about a form the dictionary lacks is judged by its lemma: one more
+      // round for the lemmas of the entries just found and of those guesses (no further rounds)
+      const adapter = registry.get(doc.lang);
+      const lemmas = new Set<string>();
+      for (const entries of found.values()) for (const e of entries) for (const f of e.formOf ?? []) lemmas.add(adapter.normalize(f.lemma));
+      for (const l of collectGuessedLemmas(doc, registry, dict.known)) lemmas.add(l);
+      const wantLemmas = [...lemmas].filter((l) => !dict!.asked.has(l));
+      if (wantLemmas.length) {
+        const foundLemmas = await dict.src.lookup(wantLemmas);
+        for (const l of wantLemmas) dict.asked.add(l);
+        for (const [form, entries] of foundLemmas) if (entries.length) dict.known.set(form, entries);
       }
       plans.push(planDocument(doc, registry, { dictionary: dict.known, dictionaryId: dict.info.id }));
     } catch (e) {
@@ -508,7 +521,7 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
       transformations.push({
         at: now, tool: wantDictTool,
         description: plan.dictionary
-          ? `${plan.dictionary.tokens} word token(s) the adapter could not analyse were analysed from the dictionary (origin dictionary, confidence below certainty); ${plan.dictionary.alongside} analysed word(s) were marked as also in the dictionary (their analysis is the adapter's, unchanged; the entries stay in the dictionary); author spans and corrections take precedence`
+          ? `${plan.dictionary.tokens} word token(s) the adapter could not analyse were analysed from the dictionary (origin dictionary, confidence below certainty); ${plan.dictionary.decided} word token(s) the rules only guessed at were decided by the dictionary (the rules' features kept where the two agree); ${plan.dictionary.lemmaOnly} word token(s) the dictionary does not list were read by rule from a lemma it does list; ${plan.dictionary.alongside} analysed word(s) were marked as also in the dictionary (their analysis is the adapter's, unchanged; the entries stay in the dictionary); author spans and corrections take precedence`
           : 'no dictionary installed: words the adapter cannot analyse are left without an analysis',
       });
     }

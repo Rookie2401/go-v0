@@ -206,7 +206,7 @@ describe('Spanish adapter: provenance', () => {
     expect(Object.values(esAdapter.sources!).every((s) => s.reviewStatus === 'machine-drafted')).toBe(true);
     expect(esAdapter.sources![ES_SOURCE_IDS.hand].origin).toBe('hand');
     expect(esAdapter.sources![ES_SOURCE_IDS.rules].origin).toBe('rule');
-    expect(ES_SOURCE_IDS.hand).toBe('adapter-es@3:hand');
+    expect(ES_SOURCE_IDS.hand).toBe('adapter-es@4:hand');
   });
 
   it('the support record is honest: seed-only lemmatization, nothing dependable beyond tokenization, limits stated', () => {

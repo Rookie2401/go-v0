@@ -65,7 +65,7 @@ describe('planDocument with a dictionary (pure, synchronous)', () => {
     const plain = planDocument(bookDoc(), registry);
     const plan = planDocument(bookDoc(), registry, { dictionary, dictionaryId: 'd1' });
     expect(plain.dictionary).toBeUndefined();
-    expect(plan.dictionary).toEqual({ tool: 'dict:d1', tokens: 2, alongside: 1 });
+    expect(plan.dictionary).toEqual({ tool: 'dict:d1', tokens: 2, decided: 0, lemmaOnly: 0, alongside: 1 });
     const [i, go, school] = plan.sentences[0].analyzed;
     expect(i.analyzer).toBe(plain.sentences[0].analyzed[0].analyzer);
     expect({ ...i.candidates[0], notes: undefined }).toEqual({ ...plain.sentences[0].analyzed[0].candidates[0], notes: undefined }); // the adapter's candidate, unchanged

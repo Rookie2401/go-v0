@@ -37,7 +37,7 @@ describe('Spanish adapter wiring: hand lexicon → engine → nothing', () => {
     expect(c.notes).toMatchObject({ lemmaStatus: 'inferred by the rules' });
     expect(c.gloss).toBeUndefined();
     expect(c).toMatchObject({ origin: 'rule', sourceId: ES_SOURCE_IDS.rules });
-    expect(c.sourceId).toBe('adapter-es@3:rules');
+    expect(c.sourceId).toBe('adapter-es@4:rules');
   });
 
   it('nothing the engine and the lexicon both lack is guessed; non-words and punctuation have no candidates', () => {
@@ -205,10 +205,10 @@ describe('Spanish adapter wiring: older spelling is recognised, never normalised
 
 describe('Spanish adapter wiring: morphFromTags and describeMorph', () => {
   it('dictionary tags become features; unknown tags are ignored, not guessed', () => {
-    expect(esAdapter.morphFromTags!(['first-person', 'plural', 'imperfect', 'subjunctive'])).toEqual({ Person: '1', Number: 'Plur', Tense: 'Imp', Mood: 'Sub' });
+    expect(esAdapter.morphFromTags!(['first-person', 'plural', 'imperfect', 'subjunctive'])).toEqual({ VerbForm: 'Fin', Person: '1', Number: 'Plur', Tense: 'Imp', Mood: 'Sub' });
     expect(esAdapter.morphFromTags!(['feminine', 'singular'])).toEqual({ Gender: 'Fem', Number: 'Sing' });
-    expect(esAdapter.morphFromTags!(['past', 'participle', 'masculine'])).toEqual({ Tense: 'Past', VerbForm: 'Part', Gender: 'Masc' });
-    expect(esAdapter.morphFromTags!(['preterite', 'third-person', 'singular'])).toEqual({ Tense: 'Past', Aspect: 'Perf', Person: '3', Number: 'Sing' });
+    expect(esAdapter.morphFromTags!(['past', 'participle', 'masculine'])).toEqual({ VerbForm: 'Part', Gender: 'Masc' }); // "past" belongs to the participle: not a finite tense
+    expect(esAdapter.morphFromTags!(['preterite', 'third-person', 'singular'])).toEqual({ Tense: 'Past', Person: '3', Number: 'Sing' });
     expect(esAdapter.morphFromTags!(['obsolete', 'dialectal'])).toEqual({});
     expect(esAdapter.morphFromTags!([])).toEqual({});
   });

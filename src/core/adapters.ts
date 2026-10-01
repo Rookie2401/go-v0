@@ -172,6 +172,13 @@ export interface LanguageAdapter {
    */
   morphFromTags?(tags: readonly string[]): Record<string, string>;
   /**
+   * Turn a dictionary's own region and usage labels ("Honduras", "Central-America", "Spain", "with-voseo") into the
+   * variety codes this adapter can label (`varieties`). Unknown labels are ignored, never guessed. The importer puts the
+   * result on a dictionary reading only when the labels hold for the whole reading (every sense of the entry carries
+   * them, or the form-of relation itself does), so that one regional sense does not mark a general word as regional.
+   */
+  varietiesFromTags?(tags: readonly string[]): string[];
+  /**
    * Order the readings of each token by its neighbours again, after the importer replaced the readings of some tokens
    * with a dictionary's. The importer calls it once per sentence; the replaced lists arrive as the dictionary gives them
    * (not yet ordered by context). The adapter does what `analyze` does, taking those lists as given: for its own tokens

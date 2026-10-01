@@ -83,7 +83,7 @@ export interface SourceDisagreement {
   id: string;
   lang: LanguageCode;
   form: string;
-  field: 'part-of-speech' | 'meaning' | 'pronunciation' | 'tone' | 'syllables' | 'classifier' | 'register' | 'segmentation' | 'missing';
+  field: 'part-of-speech' | 'meaning' | 'pronunciation' | 'tone' | 'syllables' | 'classifier' | 'register' | 'segmentation' | 'missing' | 'gender' | 'variety' | 'inflection';
   ours: { sourceId: string; value: string };
   theirs: { sourceId: string; value: string };
   note?: string;

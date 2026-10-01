@@ -29,7 +29,7 @@ import { ADJECTIVE_ROWS, PROPER_ROWS } from './spanish/lexicon-modifiers';
 import { FUNCTION_ROWS } from './spanish/function-words';
 import { REGIONAL_ROWS } from './spanish/regional';
 import { COURSE_ROWS } from './spanish/lexicon-course';
-import { ES_VARIETIES } from './spanish/varieties';
+import { ES_LABEL_VARIETIES, ES_VARIETIES } from './spanish/varieties';
 import { HISTORICAL_EXACT, OLD_CONTRACTIONS, historicalSpellings } from './spanish/historical';
 import { VERB_SLOT_PATTERNS, buildPhraseRules } from './spanish/phrases';
 import { detectSpanishConstructions } from './spanish/constructions';
@@ -37,7 +37,7 @@ import { segmentSpanishSentences } from './spanish/sentences';
 import { disambiguateSpanish } from './spanish/disambiguate';
 
 const LANG = 'es' as const;
-const VERSION = '3';
+const VERSION = '4';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
@@ -235,7 +235,8 @@ function spokenDialogue(text: string): string {
 
 /**
  * An engine reading. A lemma the word list vouches for is glossed from it; a lemma it does not hold is a rule guess:
- * origin 'rule', confidence 0.6 at most, no gloss, and never marked as a lexicon hit.
+ * origin 'rule', confidence 0.6 at most, no gloss, never marked as a lexicon hit, and `unconfirmed` (a dictionary may
+ * decide such a word; see AnalysisCandidate.unconfirmed).
  */
 function fromEngine(a: SpanishAnalysis): AnalysisCandidate {
   const entry = a.lemmaKnown ? esLexicon.find(a.lemma, a.pos) ?? esLexicon.find(a.lemma) : undefined;
@@ -245,6 +246,7 @@ function fromEngine(a: SpanishAnalysis): AnalysisCandidate {
     origin: 'rule', sourceId: ES_SOURCE_IDS.rules,
   };
   if (entry) c.gloss = entry.gloss;
+  if (!a.lemmaKnown) c.unconfirmed = true;
   if (a.parts?.length) c.parts = a.parts.map((p) => ({ ...p }));
   if (a.varieties?.length) c.varieties = [...a.varieties];
   return annotate(c);
@@ -334,7 +336,7 @@ function historical(form: string): AnalysisCandidate[] {
 }
 
 const cloneCandidate = (c: AnalysisCandidate): AnalysisCandidate => {
-  const n: AnalysisCandidate = { ...c, morph: { ...c.morph } };
+  const n: AnalysisCandidate = { ...c, morph: { ...c.morph } }; // the spread keeps `unconfirmed`
   if (c.notes) { n.notes = {}; for (const k in c.notes) { const v = c.notes[k]; n.notes[k] = Array.isArray(v) ? [...v] : v; } }
   if (c.parts) n.parts = c.parts.map((p) => ({ ...p, ...(p.morph ? { morph: { ...p.morph } } : {}) }));
   if (c.varieties) n.varieties = [...c.varieties];
@@ -449,19 +451,62 @@ const SUPPORT: AdapterSupport = {
   ],
 };
 
-/** Dictionary form tags ("first-person", "plural", "imperfect") → features. */
-const TAG_MORPH: Record<string, Record<string, string>> = {
-  'first-person': { Person: '1' }, 'second-person': { Person: '2' }, 'third-person': { Person: '3' },
-  singular: { Number: 'Sing' }, plural: { Number: 'Plur' }, masculine: { Gender: 'Masc' }, feminine: { Gender: 'Fem' },
-  present: { Tense: 'Pres' }, imperfect: { Tense: 'Imp' }, preterite: { Tense: 'Past', Aspect: 'Perf' }, past: { Tense: 'Past' }, future: { Tense: 'Fut' },
-  conditional: { Mood: 'Cnd' }, indicative: { Mood: 'Ind' }, subjunctive: { Mood: 'Sub' }, imperative: { Mood: 'Imp' },
-  infinitive: { VerbForm: 'Inf' }, gerund: { VerbForm: 'Ger' }, participle: { VerbForm: 'Part' },
-  comparative: { Degree: 'Cmp' }, superlative: { Degree: 'Sup' }, diminutive: { Degree: 'Dim' }, augmentative: { Degree: 'Aug' },
+/**
+ * Dictionary labels of an inflected form → the features the engine and the hand paradigms use for the same form
+ * (same keys, same values), so that a rule reading and a dictionary reading of one form never contradict each other.
+ * A label set is unordered. Several values of one feature become a comma list in a fixed order (persons ascending,
+ * tenses Pres, Imp, Past, Fut): "first-person third-person singular present subjunctive" → Person '1,3'.
+ * Anything else (usage, structure, region, "form-of") says nothing about the form and is ignored.
+ */
+const TAG_PERSON: Record<string, string> = { 'first-person': '1', 'second-person': '2', 'third-person': '3' };
+const TAG_NUMBER: Record<string, string> = { singular: 'Sing', plural: 'Plur' };
+const TAG_GENDER: Record<string, string> = { masculine: 'Masc', feminine: 'Fem' };
+const TAG_MOOD: Record<string, string> = { indicative: 'Ind', subjunctive: 'Sub', imperative: 'Imp', conditional: 'Cnd' };
+const TAG_TENSE: Record<string, string> = { present: 'Pres', imperfect: 'Imp', preterite: 'Past', future: 'Fut' };
+const TAG_NONFINITE: Record<string, string> = { infinitive: 'Inf', gerund: 'Ger', participle: 'Part' };
+/** -ísimo is "Abs" in the engine; Cmp has no engine counterpart yet. */
+const TAG_DEGREE: Record<string, string> = { diminutive: 'Dim', augmentative: 'Aug', superlative: 'Abs', comparative: 'Cmp' };
+const FEATURE_ORDER: Record<string, readonly string[]> = {
+  Person: ['1', '2', '3'], Number: ['Sing', 'Plur'], Gender: ['Masc', 'Fem'], Mood: ['Ind', 'Sub', 'Imp', 'Cnd'], Tense: ['Pres', 'Imp', 'Past', 'Fut'],
 };
 
 function morphFromTags(tags: readonly string[]): Record<string, string> {
+  const have = new Set(tags.map((t) => t.toLowerCase()));
+  /** The values of one feature the labels give, in the feature's own order, as a comma list. */
+  const pick = (feature: keyof typeof FEATURE_ORDER, table: Record<string, string>): string | undefined => {
+    const values = new Set([...have].map((t) => table[t]).filter((v): v is string => v !== undefined));
+    const list = FEATURE_ORDER[feature].filter((v) => values.has(v));
+    return list.length ? list.join(',') : undefined;
+  };
   const out: Record<string, string> = {};
-  for (const t of tags) Object.assign(out, TAG_MORPH[t.toLowerCase()] ?? {});
+  const set = (k: string, v: string | undefined) => { if (v !== undefined) out[k] = v; };
+  const nonFinite = [...have].map((t) => TAG_NONFINITE[t]).find((v) => v !== undefined);
+  const mood = pick('Mood', TAG_MOOD);
+  if (nonFinite) {
+    // an infinitive, gerund or participle has no person, mood or tense ("past" belongs to the participle); a participle agrees
+    out.VerbForm = nonFinite;
+    if (nonFinite === 'Part') { set('Gender', pick('Gender', TAG_GENDER)); set('Number', pick('Number', TAG_NUMBER)); }
+    return out;
+  }
+  if (mood) out.VerbForm = 'Fin';
+  set('Mood', mood);
+  set('Tense', pick('Tense', TAG_TENSE));
+  set('Person', pick('Person', TAG_PERSON));
+  set('Number', pick('Number', TAG_NUMBER));
+  set('Gender', pick('Gender', TAG_GENDER));
+  // the engine marks the usted / ustedes command (hable, hablen) as formal: Mood Imp with the third person
+  if (out.Mood === 'Imp' && out.Person === '3') out.Polite = 'Form';
+  for (const t of have) if (TAG_DEGREE[t]) { out.Degree = TAG_DEGREE[t]; break; }
+  return out;
+}
+
+/** Dictionary region and usage labels → variety codes (spanish/varieties.ts), de-duplicated, in the order given. */
+function varietiesFromTags(tags: readonly string[]): string[] {
+  const out: string[] = [];
+  for (const t of tags) {
+    const code = ES_LABEL_VARIETIES[t.toLowerCase()];
+    if (code && !out.includes(code)) out.push(code);
+  }
   return out;
 }
 
@@ -486,6 +531,19 @@ export const esAdapter: LanguageAdapter = {
   analyze: (tokens): AnalyzedToken[] => {
     const base = tokens.map((t) => (t.isWord ? analyzeForm(t.normalized) : []));
     return tokens.map((t, i) => ({ token: t, candidates: t.isWord ? disambiguate(i, tokens, base) : [], analyzer: ANALYZER }));
+  },
+
+  /**
+   * The same ordering as `analyze`, after the importer put a dictionary's readings on some tokens. A token of this
+   * adapter starts again from its context-free readings (what an earlier ordering did to them does not matter); any
+   * other token brings its readings as they are, and its neighbours read them like ours. Only order, a lowered
+   * confidence and `notes.context` can change; a token whose analyzer is not in `analyzers` is left exactly alone.
+   */
+  refine: (tokens, analyzed, analyzers): AnalyzedToken[] => {
+    const base = tokens.map((t, i) => (analyzed[i].analyzer === ANALYZER ? (t.isWord ? analyzeForm(t.normalized) : []) : analyzed[i].candidates));
+    return tokens.map((t, i) => (t.isWord && analyzers.has(analyzed[i].analyzer)
+      ? { ...analyzed[i], candidates: [...disambiguate(i, tokens, base)] }
+      : analyzed[i]));
   },
 
   detectPhrases(tokens, analyses): PhraseCandidate[] {
@@ -629,6 +687,7 @@ export const esAdapter: LanguageAdapter = {
   },
 
   morphFromTags,
+  varietiesFromTags,
   describeMorph: (morph) => describeSpanishMorph(morph),
 };
 

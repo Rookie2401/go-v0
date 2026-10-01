@@ -10,7 +10,10 @@ import { applyTheme } from './ui/prefs';
 // Set the saved theme before the first paint so a dark-mode reader never flashes light paper.
 applyTheme();
 
-const root = createRoot(document.getElementById('root')!);
+// One React root per page, even when the dev server hot-reloads this entry module: creating a second root on the same
+// container throws inside React ("removeChild … not a child") and can blank the page mid-session.
+const container = document.getElementById('root') as HTMLElement & { __goRoot?: ReturnType<typeof createRoot> };
+const root = (container.__goRoot ??= createRoot(container));
 
 function Fatal({ error }: { error: unknown }) {
   const message = error instanceof Error ? error.message : String(error);

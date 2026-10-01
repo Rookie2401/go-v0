@@ -3,7 +3,7 @@
  * npm run dict:build -- --in <file.jsonl> --lang th [--out public/dict] [--date YYYY-MM-DD]
  *   [--source-url <url>] [--last-modified YYYY-MM-DD] [--retrieved YYYY-MM-DD]
  * Builds the dictionary shards from a kaikki.org Wiktionary JSON-Lines extract (never downloaded by this script).
- * Writes <out>/<lang>/manifest.json (schema 2, with the source record: file name, sha256, line count, and the url /
+ * Writes <out>/<lang>/manifest.json (schema 3, with the label sets of the form-of relations and the source record: file name, sha256, line count, and the url /
  * last-modified / retrieved dates you state) and s-<hh>.json shards, prints counts, exit 1 on bad arguments or
  * unusable input. The dictionary id is kaikki-<lang>@<last-modified date> (the build date when none is given).
  * The input is streamed and memory stays bounded (entries are spilled to the temp directory by form hash, then merged
@@ -12,6 +12,7 @@
  */
 import fs from 'node:fs';
 import { LANGUAGES, type LanguageCode } from '../src/core';
+import { DROP_FORM_PRONUNCIATIONS } from '../src/dict/build';
 import { buildDictionaryFile } from '../src/dict/build-node';
 import { KAIKKI_SKIPS } from '../src/dict/map';
 
@@ -53,6 +54,8 @@ try {
   console.log(`  with respelling:  ${s.withRespelling}; ipa ${s.withIpa}; romanization ${s.withRomanization}; register ${s.withRegister}`);
   console.log(`  inflected forms:  ${s.withFormOf} entries are forms of a lemma (${s.formOfRelations} form-of relations, no gloss of their own)`);
   console.log(`  preserved:        ${s.senses} senses, ${s.pronunciations} pronunciations (${s.withPronunciations} entries); ${s.unpairedGroups} entries with unpaired pronunciation rows`);
+  console.log(`  label sets:       ${s.labelSets} distinct label lists of the form-of relations (in the manifest; a relation names one by number)`);
+  console.log(`  pronunciations dropped: ${s.pronunciationsDropped} (off ${s.pronunciationEntriesDropped} inflected-form lines; ${DROP_FORM_PRONUNCIATIONS[r.manifest.lang] ? 'this language drops them' : 'this language keeps them'})`);
   console.log(`  shards written:   ${s.shards} of ${s.buckets} buckets (${s.shardBytes} bytes total, largest ${s.largestShardBytes}) -> ${r.dir}`);
   if (s.largestShardBytes > 250_000) console.log('  warning:          the largest shard is over 250 kB (a few very heavy forms); consider a raise of the bucket target');
   console.log(`  source:           ${r.manifest.source?.file}, ${r.manifest.source?.lines} lines, sha256 ${r.manifest.source?.sha256}`);

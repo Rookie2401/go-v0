@@ -6,9 +6,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import type { LanguageCode, LexiconSource } from '../core';
-import { createShardedSource } from './sharded';
+import { createShardedSource, type ShardCacheOptions } from './sharded';
 
-export function createFileLexiconSource(dir: string, lang: LanguageCode): LexiconSource {
+/** `options` bounds the parsed-shard cache (default: 24 shards, 4 read at a time); see ShardCacheOptions. */
+export function createFileLexiconSource(dir: string, lang: LanguageCode, options?: ShardCacheOptions): LexiconSource {
   return createShardedSource(lang, async (relative) => {
     try { return await fs.promises.readFile(path.join(dir, lang, relative), 'utf8'); }
     catch (e) {
@@ -16,5 +17,5 @@ export function createFileLexiconSource(dir: string, lang: LanguageCode): Lexico
       if (code === 'ENOENT' || code === 'ENOTDIR') return undefined; // not installed: the normal state
       throw e; // anything else (permissions, I/O) is transient: not cached, retried on the next lookup
     }
-  });
+  }, options);
 }

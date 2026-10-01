@@ -20,7 +20,10 @@ describe('npm run dict:build (scripts/dict-build.mts)', () => {
     const r = await run('--', '--in', FIXTURE, '--lang', 'th', '--out', outDir, '--date', DATE,
       '--source-url', 'https://example.test/f.jsonl', '--last-modified', '2026-09-28', '--retrieved', '2026-09-30');
     expect(r.status).toBe(0);
-    expect(r.out).toMatch(/dict:build - kaikki-th@2026-09-28 \(schema 2\)/);
+    expect(r.out).toMatch(/dict:build - kaikki-th@2026-09-28 \(schema 3\)/);
+    expect(r.out).toMatch(/label sets:\s+0 distinct/);
+    expect(r.out).toMatch(/pronunciations dropped: 0 .*keeps them/); // Thai keeps the pronunciation of every entry
+    expect(r.out).toMatch(/of 256 buckets \(\d+ bytes total, largest \d+\)/);
     expect(r.out).toMatch(/input lines:\s+71/);
     expect(r.out).toMatch(/malformed lines:\s+2/);
     expect(r.out).toMatch(/not-an-object 2, no-word 1, wrong-language 1, no-gloss 3, non-word 3 \(non-word: character 1, symbol 1, punct 1\)/);

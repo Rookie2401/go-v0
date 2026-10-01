@@ -27,3 +27,10 @@ What it covers (the tests count on these exact lines; 71 non-blank lines plus on
 - Skipped: three entries without glosses (ขาย, ซื้อ, เก่า), one English line (`lang_code` en), one line without `word`.
 - Not an entry: one truncated JSON line, one line of plain text (malformed), `[1,2]` and `42` (valid JSON, not objects),
   and a blank line.
+
+## schema2-frozen.json
+
+A schema-2 dictionary (manifest and shard text, Thai and Spanish) written from the two fixtures above by the schema-2
+writer, before schema 3 existed, together with what the schema-2 reader returned for every form. It is frozen:
+generated once from that code, never regenerated. `format3.test.ts` checks that the current reader still returns exactly
+those entries, so a dictionary built before schema 3 (the Thai one on disk) keeps working without a rebuild.

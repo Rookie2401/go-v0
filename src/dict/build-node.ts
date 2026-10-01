@@ -4,10 +4,12 @@
  * streamed line by line and never held whole, and memory stays bounded however large it is:
  *
  *   pass 1  each line is mapped and appended to one of 256 spill files in the temp directory, chosen by the form's
- *           hash (so every entry of one form lands in the same file); only small write buffers are held.
+ *           hash (so every entry of one form lands in the same file); only small write buffers are held. The label
+ *           lists of the form-of relations are counted here, so the manifest's label-set numbering is known before
+ *           any shard is written.
  *   pass 2  the spill files are read one at a time, entries of the same form + part of speech + etymology +
  *           pronunciations are merged, and the shards of that partition are written. The bucket count (a multiple of
- *           256, chosen from the total size so that shards average ~120 kB) makes bucket mod 256 the partition.
+ *           256, chosen from the total size so that shards average ~100 kB) makes bucket mod 256 the partition.
  *
  * The output is byte-identical to the in-memory builder's (src/dict/build.ts) for the same input. Records where the
  * data came from (file name, sha256, line count and whatever the caller states about it) in the manifest.
@@ -21,10 +23,10 @@ import readline from 'node:readline';
 import type { DictionaryEntry, DictionaryInfo, LanguageCode } from '../core';
 import { createAdapterRegistry } from '../adapters';
 import {
-  chooseBuckets, createLineIngestor, entryJson, estimateBytes, makeManifest, manifestText, mergeEntries, mergeKey, newBuildStats,
-  shardText, tallyEntry, tallyShard, type BuildStats,
+  chooseBuckets, createLabelSetRegistry, createLineIngestor, dropsFormPronunciations, entryJson, estimateBytes, makeManifest, manifestText,
+  mergeEntries, mergeKey, newBuildStats, settleEntries, shardShape, shardText, tallyEntry, tallyShard, type BuildStats,
 } from './build';
-import { SHARD_FILE, bucketOf, compactEntry, expandEntry, shardName, type DictionaryManifest } from './format';
+import { SHARD_FILE, bucketOf, shardName, type DictionaryManifest } from './format';
 
 export const SPILL_PARTITIONS = 256;
 
@@ -35,6 +37,8 @@ export interface BuildFileOptions {
   /** YYYY-MM-DD; the only clock the build uses. */
   date: string;
   normalize?: (surface: string) => string;
+  /** Leave the pronunciation off inflected-form entries (default: the language's setting, DROP_FORM_PRONUNCIATIONS in build.ts). */
+  dropFormPronunciations?: boolean;
   /** What the caller knows about the file; the file name, sha256 and line count are computed here. */
   source?: { url?: string; lastModified?: string; retrievedAt?: string };
   /** Where the temporary spill directory is made (default: the system temp directory). It is removed when the build ends. */
@@ -94,7 +98,9 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
   const adapter = opts.normalize ? undefined : createAdapterRegistry().get(opts.lang);
   const normalize = opts.normalize ?? ((s: string) => adapter!.normalize(s));
   const stats = newBuildStats();
-  const ingest = createLineIngestor({ lang: opts.lang, normalize }, stats);
+  const labelSets = createLabelSetRegistry();
+  const drop = dropsFormPronunciations({ lang: opts.lang, dropFormPronunciations: opts.dropFormPronunciations });
+  const ingest = createLineIngestor({ lang: opts.lang, normalize, dropFormPronunciations: opts.dropFormPronunciations }, stats, labelSets);
   const spillDir = fs.mkdtempSync(path.join(opts.tmpDir ?? os.tmpdir(), 'go-dict-spill-'));
   const spill = createSpill(spillDir);
   try {
@@ -108,9 +114,9 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
       lines++;
       const entry = ingest(line);
       if (!entry) continue;
-      const compact = compactEntry(entry);
-      estimate += estimateBytes(entry, JSON.stringify(compact));
-      spill.add(bucketOf(entry.form, SPILL_PARTITIONS), JSON.stringify([entry.form, compact]));
+      estimate += estimateBytes(entry, entryJson(shardShape(entry, drop), labelSets.provisional));
+      // The spill is this process's own temporary file: the mapped entry as it is, read back with JSON.parse.
+      spill.add(bucketOf(entry.form, SPILL_PARTITIONS), JSON.stringify(entry));
     }
     spill.close();
     const source: NonNullable<DictionaryInfo['source']> = {
@@ -126,6 +132,8 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
     // Pass 2: merge and write one partition at a time.
     const buckets = chooseBuckets(estimate);
     stats.buckets = buckets;
+    const table = labelSets.finalize(); // every relation's labels were counted in pass 1, so the numbering is final
+    stats.labelSets = table.sets.length;
     const dir = path.join(opts.outDir, opts.lang);
     fs.mkdirSync(dir, { recursive: true });
     clearPreviousBuild(dir);
@@ -135,21 +143,19 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
       if (!records.length) continue;
       const merged = new Map<string, DictionaryEntry>();
       for (const rec of records) {
-        const [form, compact] = JSON.parse(rec) as [string, unknown];
-        const entry = expandEntry(form, opts.lang, compact);
-        if (!entry) continue;
+        const entry = JSON.parse(rec) as DictionaryEntry;
         const key = mergeKey(entry);
         const prev = merged.get(key);
         merged.set(key, prev ? mergeEntries(prev, entry) : entry);
       }
       const grouped = new Map<number, Map<string, string[]>>();
       const forms = new Set<string>();
-      for (const e of merged.values()) { // insertion order = input order within the partition
+      for (const e of settleEntries(merged.values(), drop, stats)) { // insertion order = input order within the partition
         tallyEntry(stats, e);
         forms.add(e.form);
         const b = bucketOf(e.form, buckets);
         const shard = grouped.get(b) ?? new Map<string, string[]>();
-        shard.set(e.form, [...(shard.get(e.form) ?? []), entryJson(e)]);
+        shard.set(e.form, [...(shard.get(e.form) ?? []), entryJson(e, table.indexOf)]);
         grouped.set(b, shard);
       }
       stats.forms += forms.size;
@@ -162,7 +168,7 @@ export async function buildDictionaryFile(opts: BuildFileOptions): Promise<Build
       }
     }
     shardFiles.sort();
-    const manifest = makeManifest(opts.lang, opts.date, source, stats, shardFiles);
+    const manifest = makeManifest(opts.lang, opts.date, source, stats, shardFiles, table.sets);
     fs.writeFileSync(path.join(dir, 'manifest.json'), manifestText(manifest), 'utf8');
     return { manifest, stats, dir };
   } finally {

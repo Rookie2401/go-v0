@@ -242,7 +242,7 @@ describe('fetch source (fake fetch)', () => {
     const good = JSON.parse(out.files.get('manifest.json')!) as Record<string, unknown>;
     const cases: string[] = [
       '{not json', '<!doctype html><html></html>', 'null', '[]',
-      JSON.stringify({ ...good, schema: 1 }), JSON.stringify({ ...good, schema: 3 }), JSON.stringify({ ...good, lang: 'es' }), JSON.stringify({ ...good, entries: 'many' }),
+      JSON.stringify({ ...good, schema: 1 }), JSON.stringify({ ...good, schema: 4 }), JSON.stringify({ ...good, lang: 'es' }), JSON.stringify({ ...good, entries: 'many' }),
       JSON.stringify({ ...good, hasFrequency: undefined }), JSON.stringify({ ...good, attribution: '' }),
     ];
     for (const body of cases) {

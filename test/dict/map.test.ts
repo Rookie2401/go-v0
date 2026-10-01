@@ -289,9 +289,17 @@ describe('format helpers', () => {
       pronunciations: [{ respelling: 'r', ipa: '/i/', romanization: 't', tags: ['Short'], asWritten: true }, { ipa: '/j/' }],
       etymology: 2, altOf: ['x', 'y'],
     };
-    const c = compactEntry(e);
-    expect(Object.keys(c)).toEqual(['p', 'g', 'r', 'i', 't', 'c', 'l', 'o', 'd', 'f', 's', 'n', 'y', 'a']);
-    expect(expandEntry('ฟ', 'th', JSON.parse(JSON.stringify(c)))).toEqual(e);
+    const sets = [['x'], ['form-of', 'plural']];
+    const labelSetOf = (tags: readonly string[]) => sets.findIndex((s) => s.join() === tags.join());
+    // schema 3: the glosses are what the senses say, so `g` is left out; the form-of relation is [lemma, label set number]
+    const c = compactEntry({ ...e, formOf: [{ lemma: 'ฟา', tags: ['form-of', 'plural'] }, { lemma: 'ฟู', tags: [] }] }, labelSetOf);
+    expect(Object.keys(c)).toEqual(['p', 'r', 'i', 't', 'c', 'l', 'o', 'd', 'f', 's', 'n', 'y', 'a', 'm']);
+    expect(c.m).toEqual([['ฟา', 1], ['ฟู']]);
+    expect(expandEntry('ฟ', 'th', JSON.parse(JSON.stringify(c)), sets)).toEqual({ ...e, formOf: [{ lemma: 'ฟา', tags: ['form-of', 'plural'] }, { lemma: 'ฟู', tags: [] }] });
+    // glosses that the senses do not say stay in the shard, in the key position they always had
+    const odd = { ...e, glosses: ['a', 'other'] };
+    expect(Object.keys(compactEntry(odd, labelSetOf)).slice(0, 2)).toEqual(['p', 'g']);
+    expect(expandEntry('ฟ', 'th', JSON.parse(JSON.stringify(compactEntry(odd, labelSetOf))), sets)).toEqual(odd);
   });
 
   it('expandEntry drops what it cannot trust', () => {

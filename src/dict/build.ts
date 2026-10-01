@@ -5,14 +5,25 @@
  * of the two is byte-identical.
  */
 import type { DictionaryEntry, DictionaryInfo, LanguageCode } from '../core';
-import { BUCKETS, DICT_SCHEMA, MAX_BUCKETS, MAX_GLOSSES, bucketOf, compactEntry, shardName, type DictionaryManifest } from './format';
+import {
+  BUCKETS, DICT_SCHEMA, MAX_BUCKETS, MAX_GLOSSES, bucketOf, compactEntry, shardName, type DictionaryManifest, type LabelSetIndex,
+} from './format';
 import { KAIKKI_SKIPS, mapKaikkiLine, type KaikkiSkip } from './map';
 
 export const KAIKKI_ATTRIBUTION = 'Wiktionary, via kaikki.org — CC BY-SA 4.0';
 export const KAIKKI_LICENCE = 'CC BY-SA 4.0 (Wiktionary contributors, via kaikki.org)';
 
-/** Aim for shards of about this many bytes on average, so that the largest stays well under ~250 kB. */
-export const TARGET_SHARD_BYTES = 120_000;
+/** Aim for shards of about this many bytes on average (the size estimate is of the mapped lines before merging). */
+export const TARGET_SHARD_BYTES = 100_000;
+
+/**
+ * Per language: does spelling tell the pronunciation well enough that an inflected-form entry (one with no gloss of
+ * its own, only a form-of relation) need not carry a pronunciation? Then the builder drops it from those entries (a
+ * headword entry always keeps everything) and says how many it dropped. Spanish: yes (its spelling is regular, and
+ * the pronunciation of a form follows from the lemma's). Thai: no (its spelling does not tell the tones or the
+ * vowel length, so every entry keeps its own). A language not listed keeps everything.
+ */
+export const DROP_FORM_PRONUNCIATIONS: Readonly<Partial<Record<LanguageCode, boolean>>> = { es: true, th: false };
 
 /**
  * The bucket count for a dictionary whose shard data comes to `totalBytes`: 256 (the Thai size) or the next power of
@@ -53,6 +64,11 @@ export interface BuildStats {
   pronunciations: number;
   /** Entries whose pronunciation rows could not all be paired by order (kept unpaired, not guessed). */
   unpairedGroups: number;
+  /** Inflected-form lines whose pronunciation was left out (DROP_FORM_PRONUNCIATIONS), and the pronunciation groups on them. */
+  pronunciationEntriesDropped: number;
+  pronunciationsDropped: number;
+  /** Distinct label lists of the form-of relations (the manifest's `labelSets`). */
+  labelSets: number;
   /** Hash buckets the forms are spread over (in the manifest). */
   buckets: number;
   shards: number;
@@ -70,7 +86,8 @@ export interface BuildOutput {
 
 export const newBuildStats = (): BuildStats => ({
   lines: 0, blank: 0, malformed: 0, kept: 0, entries: 0, forms: 0, withRespelling: 0, withIpa: 0, withRomanization: 0, withRegister: 0,
-  withPronunciations: 0, withFormOf: 0, formOfRelations: 0, senses: 0, pronunciations: 0, unpairedGroups: 0, buckets: BUCKETS,
+  withPronunciations: 0, withFormOf: 0, formOfRelations: 0, senses: 0, pronunciations: 0, unpairedGroups: 0,
+  pronunciationEntriesDropped: 0, pronunciationsDropped: 0, labelSets: 0, buckets: BUCKETS,
   shards: 0, shardBytes: 0, largestShardBytes: 0,
   skipped: Object.fromEntries(KAIKKI_SKIPS.map((k) => [k, 0])) as Record<KaikkiSkip, number>,
   nonWord: {},
@@ -110,17 +127,101 @@ export function mergeEntries(a: DictionaryEntry, b: DictionaryEntry): Dictionary
   return m;
 }
 
-/** Same form + part of speech + etymology + pronunciations may merge; anything else stays a separate entry. */
+/**
+ * Same form + part of speech + etymology + pronunciations may merge; anything else stays a separate entry. The
+ * pronunciations count by what they say, not by the order their fields were set in.
+ */
 export const mergeKey = (e: DictionaryEntry): string =>
-  `${e.form}\u0000${e.pos ?? ''}\u0000${e.etymology ?? ''}\u0000${JSON.stringify(e.pronunciations ?? [])}`;
+  `${e.form}\u0000${e.pos ?? ''}\u0000${e.etymology ?? ''}\u0000${
+    JSON.stringify((e.pronunciations ?? []).map((p) => [p.respelling ?? '', p.ipa ?? '', p.romanization ?? '', p.tags ?? [], p.asWritten === true]))}`;
 
 export interface BuilderOptions {
   lang: LanguageCode;
   normalize: (surface: string) => string;
+  /** Leave the pronunciation off inflected-form entries (default: DROP_FORM_PRONUNCIATIONS for the language). */
+  dropFormPronunciations?: boolean;
 }
 
-/** One raw input line in, the entry it maps to (or undefined) out; counts every line, never throws. */
-export function createLineIngestor(opts: BuilderOptions, stats: BuildStats): (raw: string) => DictionaryEntry | undefined {
+/** The label lists of all form-of relations seen, counted, so that the manifest can name each distinct list once. */
+export interface LabelSetRegistry {
+  /** Count one relation's labels (a list without labels is not a set). */
+  note(tags: readonly string[]): void;
+  /** A stand-in index (first-seen order) for size estimates before the final order is known; -1 for an unseen list. */
+  provisional(tags: readonly string[]): number;
+  /** The table, most frequent list first (ties by code unit): `sets` for the manifest, `indexOf` for the shards. */
+  finalize(): { sets: string[][]; indexOf: LabelSetIndex };
+}
+
+export function createLabelSetRegistry(): LabelSetRegistry {
+  const seen = new Map<string, { tags: string[]; count: number; first: number }>();
+  const key = (tags: readonly string[]) => JSON.stringify(tags);
+  return {
+    note(tags) {
+      if (!tags.length) return;
+      const k = key(tags);
+      const hit = seen.get(k);
+      if (hit) hit.count++;
+      else seen.set(k, { tags: [...tags], count: 1, first: seen.size });
+    },
+    provisional: (tags) => seen.get(key(tags))?.first ?? -1,
+    finalize() {
+      const order = [...seen].sort(([ka, a], [kb, b]) => b.count - a.count || byCodeUnit(ka, kb));
+      const index = new Map(order.map(([k], i) => [k, i]));
+      return {
+        sets: order.map(([, v]) => v.tags),
+        indexOf: (tags) => {
+          const i = index.get(key(tags));
+          if (i === undefined) throw new Error(`label set not registered: ${key(tags)}`);
+          return i;
+        },
+      };
+    },
+  };
+}
+
+/** Whether this build leaves the pronunciation off inflected-form entries (the option, else the language's setting). */
+export const dropsFormPronunciations = (opts: Pick<BuilderOptions, 'lang' | 'dropFormPronunciations'>): boolean =>
+  opts.dropFormPronunciations ?? DROP_FORM_PRONUNCIATIONS[opts.lang] ?? false;
+
+/** An entry that is only an inflected form: no gloss of its own, just the relation to its lemma. */
+const isFormOnly = (e: DictionaryEntry): boolean => !e.glosses.length && (e.formOf?.length ?? 0) > 0;
+const hasPronunciation = (e: DictionaryEntry): boolean => !!(e.pronunciations?.length || e.respelling || e.ipa || e.romanization);
+function withoutPronunciation(e: DictionaryEntry): DictionaryEntry {
+  const { pronunciations: _p, respelling: _r, ipa: _i, romanization: _t, ...rest } = e;
+  return rest;
+}
+
+/** What a shard will hold for a mapped line (before merging): the line without its pronunciation when this build drops those from inflected forms. */
+export const shardShape = (e: DictionaryEntry, drop: boolean): DictionaryEntry => (drop && isFormOnly(e) && hasPronunciation(e) ? withoutPronunciation(e) : e);
+
+/**
+ * The merged entries of a dictionary (or of one partition of it), ready to write. When `drop` is set, an entry that is
+ * only an inflected form (no gloss of its own) loses its pronunciation, counted in `stats`; this is done after the
+ * merge, so a headword and its form-of line of the same word still merge as before (they have the same pronunciation),
+ * and form-only entries that differed only in pronunciation now merge too. A headword keeps everything.
+ */
+export function settleEntries(merged: Iterable<DictionaryEntry>, drop: boolean, stats: BuildStats): DictionaryEntry[] {
+  if (!drop) return [...merged];
+  const out = new Map<string, DictionaryEntry>();
+  for (const e of merged) {
+    let x = e;
+    if (isFormOnly(e) && hasPronunciation(e)) {
+      stats.pronunciationEntriesDropped++;
+      stats.pronunciationsDropped += e.pronunciations?.length ?? 0;
+      x = withoutPronunciation(e);
+    }
+    const key = mergeKey(x);
+    const prev = out.get(key);
+    out.set(key, prev ? mergeEntries(prev, x) : x);
+  }
+  return [...out.values()];
+}
+
+/**
+ * One raw input line in, the entry it maps to (or undefined) out; counts every line, never throws. The label lists of
+ * the entry's form-of relations are counted in `labelSets`.
+ */
+export function createLineIngestor(opts: BuilderOptions, stats: BuildStats, labelSets: LabelSetRegistry): (raw: string) => DictionaryEntry | undefined {
   let first = true;
   return (raw) => {
     let text = raw;
@@ -138,6 +239,7 @@ export function createLineIngestor(opts: BuilderOptions, stats: BuildStats): (ra
     }
     stats.kept++;
     if (unpairedPronunciations) stats.unpairedGroups++;
+    for (const f of entry.formOf ?? []) labelSets.note(f.tags);
     return entry;
   };
 }
@@ -158,14 +260,14 @@ export function tallyEntry(stats: BuildStats, e: DictionaryEntry): void {
 const utf8 = new TextEncoder();
 export const byteLength = (s: string): number => utf8.encode(s).length;
 
-/** The compact JSON text of one entry (what a shard stores). */
-export const entryJson = (e: DictionaryEntry): string => JSON.stringify(compactEntry(e));
+/** The compact JSON text of one entry (what a shard stores); `labelSetOf` is the final index, or a stand-in for estimates. */
+export const entryJson = (e: DictionaryEntry, labelSetOf: LabelSetIndex): string => JSON.stringify(compactEntry(e, labelSetOf));
 
 /**
  * Bytes one mapped line contributes to the bucket-count estimate (its compact JSON, its form and a little framing),
  * counted before merging so that the streaming writer, which cannot know the merged size, reaches the same number.
  */
-export const estimateBytes = (e: DictionaryEntry, json = entryJson(e)): number => byteLength(json) + byteLength(e.form) + 6;
+export const estimateBytes = (e: DictionaryEntry, json: string): number => byteLength(json) + byteLength(e.form) + 6;
 
 const byCodeUnit = (x: string, y: string) => (x < y ? -1 : x > y ? 1 : 0); // locale-independent
 
@@ -184,7 +286,7 @@ export function tallyShard(stats: BuildStats, text: string): void {
 }
 
 export function makeManifest(
-  lang: LanguageCode, date: string, source: DictionaryInfo['source'] | undefined, stats: BuildStats, shardFiles: string[],
+  lang: LanguageCode, date: string, source: DictionaryInfo['source'] | undefined, stats: BuildStats, shardFiles: string[], labelSets: string[][],
 ): DictionaryManifest {
   const idDate = source?.lastModified?.slice(0, 10) || date;
   return {
@@ -199,11 +301,17 @@ export function makeManifest(
     ...(source ? { source } : {}),
     buckets: stats.buckets,
     shards: shardFiles.length,
+    labelSets,
     shardFiles,
   };
 }
 
-export const manifestText = (m: DictionaryManifest): string => JSON.stringify(m, null, 2) + '\n';
+/** Pretty-printed manifest, except that each label set is one line (a set per line stays readable and short). */
+export const manifestText = (m: DictionaryManifest): string => {
+  const text = JSON.stringify({ ...m, labelSets: [] }, null, 2);
+  const sets = m.labelSets.length ? `[\n${m.labelSets.map((s) => `    ${JSON.stringify(s)}`).join(',\n')}\n  ]` : '[]';
+  return text.replace('"labelSets": []', () => `"labelSets": ${sets}`) + '\n';
+};
 
 export interface DictionaryBuilder {
   /** Feed one raw input line (JSON text). Never throws; a bad line is counted. */
@@ -218,14 +326,16 @@ export interface DictionaryBuilder {
 /** In-memory builder (tests, small inputs). The CLI's streaming writer in build-node.ts produces the same bytes. */
 export function createDictionaryBuilder(opts: BuilderOptions & { buckets?: number }): DictionaryBuilder {
   const stats = newBuildStats();
-  const ingest = createLineIngestor(opts, stats);
+  const labelSets = createLabelSetRegistry();
+  const drop = dropsFormPronunciations(opts);
+  const ingest = createLineIngestor(opts, stats, labelSets);
   const merged = new Map<string, DictionaryEntry>();
   let estimate = 0;
   return {
     addLine(raw) {
       const entry = ingest(raw);
       if (!entry) return;
-      estimate += estimateBytes(entry);
+      estimate += estimateBytes(entry, entryJson(shardShape(entry, drop), labelSets.provisional));
       const key = mergeKey(entry);
       const prev = merged.get(key);
       merged.set(key, prev ? mergeEntries(prev, entry) : entry);
@@ -233,10 +343,12 @@ export function createDictionaryBuilder(opts: BuilderOptions & { buckets?: numbe
     finish(date, source) {
       const forms = new Set<string>();
       const items: Array<{ form: string; json: string }> = [];
-      for (const e of merged.values()) { // insertion order = input order, so entries of one form keep a stable order
+      const table = labelSets.finalize();
+      stats.labelSets = table.sets.length;
+      for (const e of settleEntries(merged.values(), drop, stats)) { // insertion order = input order, so entries of one form keep a stable order
         forms.add(e.form);
         tallyEntry(stats, e);
-        const json = entryJson(e);
+        const json = entryJson(e, table.indexOf);
         items.push({ form: e.form, json });
       }
       stats.forms = forms.size;
@@ -257,7 +369,7 @@ export function createDictionaryBuilder(opts: BuilderOptions & { buckets?: numbe
         files.set(shardName(b, buckets), text);
         tallyShard(stats, text);
       }
-      const manifest = makeManifest(opts.lang, date, source, stats, [...files.keys()]);
+      const manifest = makeManifest(opts.lang, date, source, stats, [...files.keys()], table.sets);
       return { manifest, files: new Map([['manifest.json', manifestText(manifest)], ...files]), stats };
     },
   };

@@ -10,7 +10,7 @@ function entriesOf(out: ReturnType<typeof buildFixture>): Map<string, Dictionary
   const all = new Map<string, DictionaryEntry[]>();
   for (const [name, text] of out.files) {
     if (name === 'manifest.json') continue;
-    for (const [form, list] of parseShard(JSON.parse(text), 'th')) all.set(form, list);
+    for (const [form, list] of parseShard(JSON.parse(text), 'th', out.manifest)) all.set(form, list);
   }
   return all;
 }
@@ -47,10 +47,10 @@ describe('dictionary build over the fixture', () => {
     expect(s.largestShardBytes).toBe(Math.max(...sizes));
   });
 
-  it('writes a manifest with the contract fields, schema 2 and the honest attribution', () => {
+  it('writes a manifest with the contract fields, schema 3 and the honest attribution', () => {
     const m = JSON.parse(out.files.get('manifest.json')!) as Record<string, unknown>;
     expect(m).toMatchObject({
-      schema: 2, id: `kaikki-th@${DATE}`, lang: 'th', entries: 58, builtAt: DATE, hasFrequency: false,
+      schema: 3, id: `kaikki-th@${DATE}`, lang: 'th', entries: 58, builtAt: DATE, hasFrequency: false,
       attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0',
     });
     expect(String(m.licence)).toContain('CC BY-SA 4.0');
@@ -60,6 +60,8 @@ describe('dictionary build over the fixture', () => {
     expect(parsed!.shardFiles).toEqual([...out.files.keys()].filter((n) => n !== 'manifest.json'));
     expect(parseManifest(m, 'es')).toBeUndefined();
     expect(parseManifest({ ...m, schema: 1 }, 'th')).toBeUndefined(); // a schema-1 dictionary reads as not installed
+    expect(parseManifest({ ...m, schema: 4 }, 'th')).toBeUndefined(); // one from the future too
+    expect(m.labelSets).toEqual([]); // Thai has no form-of relations
     expect(m.source).toBeUndefined(); // no source stated, none invented
   });
 
@@ -82,7 +84,11 @@ describe('dictionary build over the fixture', () => {
       expect(forms).toEqual([...forms].sort());
       for (const f of forms) {
         expect(shardName(bucketOf(f))).toBe(name);
-        for (const e of shard[f] as Array<Record<string, unknown>>) expect(Array.isArray(e.g)).toBe(true);
+        // schema 3: `g` is there when it says something the senses `s` do not, never empty, and an entry says something
+        for (const e of shard[f] as Array<Record<string, unknown>>) {
+          if (e.g !== undefined) { expect(Array.isArray(e.g)).toBe(true); expect((e.g as unknown[]).length).toBeGreaterThan(0); }
+          else expect(Array.isArray(e.s) || Array.isArray(e.m)).toBe(true);
+        }
       }
     }
     expect(out.manifest.shards).toBe(new Set([...all.keys()].map((f) => bucketOf(f))).size);

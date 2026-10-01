@@ -57,7 +57,9 @@ const examples: Example[] = [];
 const seen = new Set<string>();
 let lines = 0, all = 0, usable = 0;
 
+let truncated = '';
 const input = file.endsWith('.gz') ? createReadStream(file).pipe(createGunzip()) : createReadStream(file, 'utf8');
+try {
 for await (const line of createInterface({ input })) {
   if (!line.trim()) continue;
   lines++;
@@ -88,6 +90,10 @@ for await (const line of createInterface({ input })) {
     }
   }
 }
+} catch (err) {
+  if (!args.includes('--allow-truncated')) { console.error(`the dictionary file could not be read to its end: ${err instanceof Error ? err.message : String(err)}`); process.exit(1); }
+  truncated = ' — THE FILE ENDED EARLY: figures are for the part read';
+}
 
 /** The adapter without any use of the neighbours: each word analysed alone, nothing refined. */
 const alone: LanguageAdapter = { ...es, analyze: (tokens) => tokens.map((t) => es.analyze([t])[0]), refine: undefined };
@@ -108,6 +114,8 @@ const KINDS: Kind[] = ['no context', 'pipeline', 'adapter only'];
 const stat = Object.fromEntries(KINDS.map((k) => [k, { n: 0, among: 0, first: 0, ambiguous: 0, ambiguousFirst: 0 }])) as Record<Kind, { n: number; among: number; first: number; ambiguous: number; ambiguousFirst: number }>;
 const coverage = { words: 0, wordList: 0, ruleWordList: 0, dictionary: 0, dictionaryWithRule: 0, ruleDictionaryLemma: 0, guess: 0, none: 0 };
 const failures: string[] = [];
+const absent: string[] = [];
+const absentKinds = new Map<string, number>();
 let skipped = 0;
 
 const isGold = (c: AnalysisCandidate | undefined, x: Example): boolean => !!c && c.lemma !== undefined && x.lemmas.includes(norm(c.lemma)) && !!c.pos && x.pos.includes(c.pos);
@@ -136,6 +144,14 @@ for (let b = 0; b * BATCH < examples.length; b++) {
       const first = isGold(cands[0], x);
       if (first) s.first++;
       if (among && kindsOf(cands) > 1) { s.ambiguous++; if (first) s.ambiguousFirst++; }
+      if (k === 'pipeline' && !among) {
+        // why the headword's reading is not there at all: nothing known, a guess only, or other readings
+        const top = cands[0];
+        const why = !top ? 'no reading' : top.unconfirmed ? 'rule guess only' : top.lemma !== undefined && x.lemmas.includes(norm(top.lemma)) ? `same lemma, another part of speech (${top.pos} for ${x.pos.join('/')})` : `another lemma (${top.origin ?? 'hand'})`;
+        const bucket = why.startsWith('same lemma') ? 'same lemma, another part of speech' : why;
+        absentKinds.set(bucket, (absentKinds.get(bucket) ?? 0) + 1);
+        if (absent.length < show) absent.push(`[${x.heading}] ${x.text.slice(Math.max(0, x.start - 40), x.start)}«${x.text.slice(x.start, x.end)}»${x.text.slice(x.end, x.end + 30)}   → ${why}: ${cands.slice(0, 3).map((o) => `${o.lemma}/${o.pos}`).join(', ') || '—'}`);
+      }
       if (k === 'pipeline' && among && !first && failures.length < show) {
         const c = cands[0];
         failures.push(`[${x.heading}] ${x.text.slice(Math.max(0, x.start - 45), x.start)}«${x.text.slice(x.start, x.end)}»${x.text.slice(x.end, x.end + 35)}   → ${c?.lemma}/${c?.pos} ${c?.notes?.context ? `(${String(c.notes.context)})` : '(no neighbour decided)'}; others: ${cands.slice(1, 4).map((o) => `${o.lemma}/${o.pos}`).join(', ')}`);
@@ -157,7 +173,7 @@ for (let b = 0; b * BATCH < examples.length; b++) {
 }
 
 const pct = (a: number, b: number) => (b ? `${((100 * a) / b).toFixed(2)} %` : 'n/a');
-console.log(`es:eval-context - split ${split}${sample > 1 ? `, 1 in ${sample}` : ''}; ${file} (${lines} lines); dictionary ${info.id}; adapter ${es.version}`);
+console.log(`es:eval-context - split ${split}${sample > 1 ? `, 1 in ${sample}` : ''}; ${file} (${lines} lines${truncated}); dictionary ${info.id}; adapter ${es.version}`);
 console.log(`examples in the file: ${all}; usable (one bold span, single line, one headword word): ${usable}; in this split: ${examples.length}; bold span not exactly one word: ${skipped}`);
 for (const k of KINDS) {
   const s = stat[k];
@@ -166,4 +182,6 @@ for (const k of KINDS) {
 }
 const c = coverage;
 console.log(`coverage of all ${c.words} words of these sentences (pipeline): word list ${pct(c.wordList, c.words)}; rule on a word-list lemma ${pct(c.ruleWordList, c.words)}; dictionary and rule agree ${pct(c.dictionaryWithRule, c.words)}; dictionary alone ${pct(c.dictionary, c.words)}; rule on a dictionary lemma ${pct(c.ruleDictionaryLemma, c.words)}; rule guess only ${pct(c.guess, c.words)}; nothing ${pct(c.none, c.words)}`);
+console.log(`pipeline, headword's reading absent: ${[...absentKinds.entries()].sort((a, b) => b[1] - a[1]).map(([k, v]) => `${k} ${v}`).join('; ')}`);
+if (absent.length) { console.log('\npipeline: the headword\'s reading was not among the readings'); for (const f of absent) console.log(`  ${f}`); }
 if (failures.length) { console.log('\npipeline: the headword\'s reading was there but not first'); for (const f of failures) console.log(`  ${f}`); }

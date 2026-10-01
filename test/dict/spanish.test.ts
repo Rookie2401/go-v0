@@ -25,7 +25,7 @@ function entriesOf(out: ReturnType<typeof buildEs>, lang: 'es' | 'th' = 'es'): M
   const b = out.manifest.buckets;
   for (const [name, text] of out.files) {
     if (name === 'manifest.json') continue;
-    for (const [form, list] of parseShard(JSON.parse(text), lang)) {
+    for (const [form, list] of parseShard(JSON.parse(text), lang, out.manifest)) {
       expect(shardName(bucketOf(form, b), b)).toBe(name);
       all.set(form, list);
     }
@@ -60,7 +60,8 @@ describe('Spanish fixture: inflected forms', () => {
     expect(hablo.glosses).toEqual([]);
     expect(hablo.senses).toBeUndefined();
     expect(hablo.pos).toBe('VERB');
-    expect(hablo.ipa).toBe('/ˈablo/');
+    expect(hablo.ipa).toBeUndefined(); // an inflected form carries no pronunciation of its own for Spanish (the spelling tells it); the source had /ˈablo/
+    expect(hablo.pronunciations).toBeUndefined();
     expect(one('grandes').formOf).toEqual([{ lemma: 'grande', tags: ['form-of', 'plural'] }]);
     expect(one('dame').formOf).toEqual([{ lemma: 'dar', tags: ['combined-form', 'form-of', 'imperative', 'second-person', 'singular'] }]);
   });
@@ -323,11 +324,11 @@ describe('size: a synthetic 300,000-line Spanish-shaped file', () => {
     expect(peakMb).toBeGreaterThan(0);
     expect(peakMb).toBeLessThan(700); // vite-node itself is ~250 MB; the data is not held in memory
     expect(largest).toBeLessThan(250_000);
-    expect(buckets).toBeGreaterThan(256);
+    expect(buckets).toBeGreaterThanOrEqual(256); // schema 3 is small enough that this file needs no more than the 256 of the Thai size
     const manifest = parseManifest(JSON.parse(fs.readFileSync(path.join(outDir, 'es', 'manifest.json'), 'utf8')), 'es')!;
     expect(manifest.buckets).toBe(buckets);
     expect(manifest.entries).toBe(300_000);
-    expect(manifest.shards).toBeGreaterThan(256);
+    expect(manifest.shards).toBeGreaterThan(200);
     return createFileLexiconSource(outDir, 'es').lookup([`${wordOf(0)}0`, wordOf(3), `${wordOf(1000)}2`, 'inexistente']).then((got) => {
       expect(got.get(`${wordOf(0)}0`)![0].formOf).toEqual([{ lemma: wordOf(0), tags: ['first-person', 'form-of', 'indicative', 'present', 'singular'] }]);
       expect(got.get(wordOf(3))![0].glosses[0]).toBe(`to ${wordOf(3)}`);

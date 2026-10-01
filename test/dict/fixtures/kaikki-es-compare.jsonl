@@ -1,0 +1,52 @@
+{"word":"madre","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"senses":[{"glosses":["mother"],"tags":["feminine"]}]}
+{"word":"casa","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"forms":[{"form":"casas","tags":["plural"]}],"senses":[{"glosses":["house"],"tags":["feminine"]}]}
+{"word":"día","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["day"],"tags":["masculine"]}]}
+{"word":"mapa","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["map"]}]}
+{"word":"mano","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"senses":[{"glosses":["hand"]}]}
+{"word":"artista","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"mf"}}],"senses":[{"glosses":["artist"],"tags":["by-personal-gender"]}]}
+{"word":"turista","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"mfbysense"}}],"senses":[{"glosses":["tourist"]}]}
+{"word":"cura","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["priest"],"tags":["masculine"]}]}
+{"word":"cura","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"senses":[{"glosses":["cure"],"tags":["feminine"]}]}
+{"word":"agua","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"head","args":{"1":"es","2":"noun"}}],"senses":[{"glosses":["water"]}]}
+{"word":"perro","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["a type of bird"],"tags":["masculine"]}]}
+{"word":"libro","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["book"],"tags":["masculine"]}]}
+{"word":"bonito","pos":"adj","lang_code":"es","lang":"Spanish","senses":[{"glosses":["pretty"]}]}
+{"word":"cantar","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["song"],"tags":["masculine"]}]}
+{"word":"el","pos":"article","lang_code":"es","lang":"Spanish","senses":[{"glosses":["the"]}]}
+{"word":"este","pos":"det","lang_code":"es","lang":"Spanish","senses":[{"glosses":["this"]}]}
+{"word":"ser","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["to be"]}]}
+{"word":"que","pos":"conj","lang_code":"es","lang":"Spanish","senses":[{"glosses":["that"]}]}
+{"word":"del","pos":"contraction","lang_code":"es","lang":"Spanish","senses":[{"glosses":["of the"]}]}
+{"word":"dados","pos":"noun","lang_code":"es","lang":"Spanish","senses":[{"glosses":["plural of dado"],"tags":["form-of","plural"],"form_of":[{"word":"dado"}]}]}
+{"word":"Pedro","pos":"name","lang_code":"es","lang":"Spanish","senses":[{"glosses":["a male given name"]}]}
+{"word":"Marta","pos":"noun","lang_code":"es","lang":"Spanish","senses":[{"glosses":["a thing"]}]}
+{"word":"cipote","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["youngster, kid, child, boy"],"tags":["El-Salvador","Honduras","Nicaragua","masculine"]},{"glosses":["penis"],"tags":["Spain","vulgar"]}]}
+{"word":"carro","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["car"],"tags":["Latin-America","masculine"]}]}
+{"word":"pisto","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["stew"],"tags":["Spain","masculine"]}]}
+{"word":"chele","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["fair-skinned person"],"tags":["masculine"]}]}
+{"word":"ordenador","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["computer"],"tags":["masculine"]}]}
+{"word":"catracho","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["Honduran"],"tags":["Central-America","masculine"]}]}
+{"word":"baleada","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"senses":[{"glosses":["a snack"],"tags":["Mexico","feminine"]}]}
+{"word":"vos","pos":"pron","lang_code":"es","lang":"Spanish","senses":[{"glosses":["you"]}]}
+{"word":"tener","pos":"verb","lang_code":"es","lang":"Spanish","forms":[{"form":"tienes","tags":["indicative","present","second-person","singular"]},{"form":"tener","tags":["infinitive"]}],"senses":[{"glosses":["to have"]},{"glosses":["to hold"]}]}
+{"word":"tengo","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["first-person singular present indicative of tener"],"tags":["first-person","form-of","indicative","present","singular"],"form_of":[{"word":"tener"}]}]}
+{"word":"tenga","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["third-person singular present subjunctive of tengar"],"tags":["form-of","subjunctive"],"form_of":[{"word":"tengar"}]}]}
+{"word":"zzz","pos":"noun","lang_code":"es","lang":"Spanish","senses":[{"glosses":["not in the word list, so never kept"]}]}
+{"word":"madre","pos":"noun","lang_code":"en","lang":"English","senses":[{"glosses":["an English line with the same spelling; ignored"]}]}
+{"word":"truncated","pos":"noun","lang_code":"es","senses":[{"glosses":["a broken line follows
+{"word":"mesa","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"senses":[{"glosses":["table"],"tags":["feminine"]}]}
+{"word":"cuatro","pos":"num","lang_code":"es","lang":"Spanish","senses":[{"glosses":["four"]}]}
+{"word":"alguno","pos":"det","lang_code":"es","lang":"Spanish","senses":[{"glosses":["some"]}]}
+{"word":"algún","pos":"det","lang_code":"es","lang":"Spanish","senses":[{"glosses":["apocopic form of alguno"],"tags":["alt-of","apocopic"],"alt_of":[{"word":"alguno"}]}]}
+{"word":"cipota","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"senses":[{"glosses":["female equivalent of cipote"],"tags":["El-Salvador","Honduras","Nicaragua","feminine","form-of"],"form_of":[{"word":"cipote"}]}]}
+{"word":"catracha","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"senses":[{"glosses":["female equivalent of catracho"],"tags":["feminine","form-of"],"form_of":[{"word":"catracho"}]}]}
+{"word":"moto","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"senses":[{"glosses":["clipping of motocicleta"],"tags":["abbreviation","alt-of","clipping","feminine"],"alt_of":[{"word":"motocicleta"}]}]}
+{"word":"moto","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["milestone"],"tags":["masculine"]}]}
+{"word":"foto","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"senses":[{"glosses":["clipping of fotografía (“photograph”)"],"tags":["abbreviation","alt-of","clipping","feminine"],"alt_of":[{"word":"fotografía"}]},{"glosses":["picture"],"tags":["feminine"]}]}
+{"word":"sinsentido","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"tags":["masculine","no-gloss"]}]}
+{"word":"centro","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["center"],"tags":["masculine"]}]}
+{"word":"además","pos":"adv","lang_code":"es","lang":"Spanish","senses":[{"glosses":["in addition, moreover; also"]}]}
+{"word":"mi","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"m"}}],"senses":[{"glosses":["mi (musical note)"],"tags":["masculine"]}]}
+{"word":"mi","pos":"det","lang_code":"es","lang":"Spanish","senses":[{"glosses":["apocopic form of mío"],"tags":["alt-of","apocopic"],"alt_of":[{"word":"mío"}]}]}
+{"word":"tía","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"senses":[{"glosses":["female equivalent of tío"],"tags":["feminine","form-of"],"form_of":[{"word":"tío"}]},{"glosses":["girl, chick"],"tags":["Spain","colloquial","feminine"]}]}
+{"word":"frutilla","pos":"noun","lang_code":"es","lang":"Spanish","head_templates":[{"name":"es-noun","args":{"1":"f"}}],"senses":[{"glosses":["trichina"],"tags":["Costa-Rica","feminine","Internet"]},{"glosses":["strawberry"],"tags":["feminine"]}]}

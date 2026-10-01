@@ -14,6 +14,9 @@
  *   B. Other lemmas — for forms of lemmas outside the word list: is the dictionary's lemma among the rule's guesses?
  *      (That decides whether a dictionary-decided word keeps the rule's detailed features.)
  *   C. First reading — where the dictionary lists exactly one lemma for a form, is it the adapter's first reading?
+ *   D. Verbs with attached pronouns (dámelo, zurcírselo) — the dictionary lists these in each verb's table of forms
+ *      ("combined-form") but gives most of them no entry of their own, so the importer can only keep the rule's
+ *      reading when the rule finds the verb: is the verb among the adapter's readings, with the pronouns as parts?
  *
  * Held-out discipline: lemmas are split in two by a hash; `dev` may be looked at and tuned on, `test` is reported as
  * it comes. `--show` (examples of failures) is refused for `test`.
@@ -46,17 +49,21 @@ const hash = (s: string): number => { let h = 0x811c9dc5; for (let i = 0; i < s.
 const inSplit = (lemma: string): boolean => (hash(lemma) % 2 === 0) === (split === 'dev');
 
 interface Relation { form: string; lemma: string; pos: PartOfSpeech; tags: string[] }
+/** Verb + attached pronoun(s), from the verb's own table of forms. */
+const combined: Array<{ form: string; lemma: string; tags: string[] }> = [];
 const relations: Relation[] = [];
 /** form → the (lemma|pos) pairs the dictionary lists for it, inflected or as a headword. */
 const listed = new Map<string, Set<string>>();
 const addListed = (form: string, lemma: string, pos: PartOfSpeech) => { const s = listed.get(form) ?? new Set<string>(); s.add(`${lemma}|${pos}`); listed.set(form, s); };
 let lines = 0;
 
+let truncated = '';
 const input = file.endsWith('.gz') ? createReadStream(file).pipe(createGunzip()) : createReadStream(file, 'utf8');
+try {
 for await (const line of createInterface({ input })) {
   if (!line.trim()) continue;
   lines++;
-  let e: { word?: unknown; pos?: unknown; lang_code?: unknown; senses?: unknown };
+  let e: { word?: unknown; pos?: unknown; lang_code?: unknown; senses?: unknown; forms?: unknown };
   try { e = JSON.parse(line); } catch { continue; }
   if (e.lang_code !== 'es' || typeof e.word !== 'string' || /\s/.test(e.word)) continue;
   const pos = POS[String(e.pos)];
@@ -76,6 +83,18 @@ for await (const line of createInterface({ input })) {
     } else if (Array.isArray(s.glosses) && s.glosses.length) headword = true;
   }
   if (headword) addListed(form, form, pos);
+  if (headword && pos === 'VERB' && Array.isArray(e.forms)) {
+    for (const f of e.forms as Array<{ form?: unknown; tags?: unknown }>) {
+      const tags = Array.isArray(f.tags) ? (f.tags as unknown[]).filter((t): t is string => typeof t === 'string') : [];
+      if (typeof f.form !== 'string' || /s/.test(f.form) || !tags.includes('combined-form')) continue;
+      if (hash(`${form}|${f.form}`) % 16 === 0) combined.push({ form: norm(f.form), lemma: form, tags }); // 1 in 16: the tables are very large
+    }
+  }
+}
+} catch (err) {
+  // a file that ends early is an error unless the caller says a part of it is wanted (a download still running)
+  if (!args.includes('--allow-truncated')) { console.error(`the dictionary file could not be read to its end: ${err instanceof Error ? err.message : String(err)}`); process.exit(1); }
+  truncated = ' (THE FILE ENDED EARLY: figures are for the part read)';
 }
 
 const analyse = (form: string): AnalysisCandidate[] => {
@@ -143,8 +162,23 @@ for (const [form, set] of listed) {
   if (cands.some((c) => c.lemma !== undefined && norm(c.lemma) === lemma && compatible(c.pos, pos))) C.among++;
 }
 
+// D: verbs with attached pronouns
+const D = { n: 0, lemma: 0, parts: 0, nWordList: 0, lemmaWordList: 0, hasEntry: 0 };
+const missD: string[] = [];
+for (const c of combined) {
+  if (!inSplit(c.lemma) || hash(`${c.form}|${c.lemma}|d`) % sample !== 0) continue;
+  const cands = readings(c.form);
+  const same = cands.filter((x) => x.lemma !== undefined && norm(x.lemma) === c.lemma && compatible(x.pos, 'VERB'));
+  const listedWord = inWordList(c.lemma, 'VERB');
+  D.n++;
+  if (listedWord) D.nWordList++;
+  if (listed.has(c.form)) D.hasEntry++;
+  if (same.length) { D.lemma++; if (listedWord) D.lemmaWordList++; if (same.some((x) => (x.parts?.length ?? 0) >= 2)) D.parts++; }
+  else keep(missD, `${c.form} → ${c.lemma} [${c.tags.filter((t) => t !== 'combined-form').join(' ')}]   got: ${cands.slice(0, 3).map((x) => `${x.lemma}/${x.pos}${x.parts ? ` (${x.parts.map((p) => p.text).join('+')})` : ''}`).join(', ') || 'nothing'}`);
+}
+
 const pct = (a: number, b: number) => (b ? `${((100 * a) / b).toFixed(2)} %` : 'n/a');
-console.log(`es:eval-morph - split ${split}${sample > 1 ? `, 1 in ${sample}` : ''}; ${file}; ${lines} lines, ${relations.length} form-of relations (verb, noun, adjective; single words), adapter ${es.version}`);
+console.log(`es:eval-morph - split ${split}${sample > 1 ? `, 1 in ${sample}` : ''}; ${file}${truncated}; ${lines} lines, ${relations.length} form-of relations (verb, noun, adjective; single words), adapter ${es.version}`);
 console.log(`A. forms of word-list lemmas: ${A.relations} relations`);
 console.log(`   the dictionary's lemma is among the adapter's readings:    ${A.lemma} (${pct(A.lemma, A.relations)})`);
 console.log(`   features do not contradict the dictionary's labels:        ${A.features} of ${A.withFeatures} with readable labels (${pct(A.features, A.withFeatures)})`);
@@ -155,6 +189,9 @@ console.log(`   the dictionary's lemma is among the rule's guesses:        ${B.g
 console.log(`   features do not contradict, where the lemma was guessed:   ${B.features} of ${B.withFeatures} (${pct(B.features, B.withFeatures)})`);
 console.log(`C. forms with one dictionary reading (word-list lemma): ${C.forms}`);
 console.log(`   it is the adapter's first reading:                         ${C.first} (${pct(C.first, C.forms)}); among its readings: ${C.among} (${pct(C.among, C.forms)})`);
+console.log(`D. verbs with attached pronouns (1 in 16 of the tables): ${D.n} forms; ${D.hasEntry} of them have a dictionary entry of their own (${pct(D.hasEntry, D.n)})`);
+console.log(`   the verb is among the adapter's readings:                  ${D.lemma} (${pct(D.lemma, D.n)}); with the pronouns as parts: ${D.parts} (${pct(D.parts, D.n)})`);
+console.log(`   of which verbs in the word list:                           ${D.lemmaWordList} of ${D.nWordList} (${pct(D.lemmaWordList, D.nWordList)})`);
 if (show > 0) {
   const block = (title: string, list: string[]) => { if (list.length) { console.log(`\n${title}`); for (const s of list) console.log(`  ${s}`); } };
   block('A: lemma not found', missA);
@@ -162,4 +199,5 @@ if (show > 0) {
   block('A: confident readings the dictionary does not list', unsupA);
   block('B: lemma not among the guesses', missB);
   block('C: not the first reading', firstC);
+  block('D: verb with attached pronouns not found', missD);
 }

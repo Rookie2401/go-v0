@@ -7,6 +7,9 @@
  *              ∧  non-Scripture: review.contentSignature equals the signature of the current wording (review binding)
  *              ∧  for Scripture: translation identity + edition + a complete SourceVerification, never generated
  *
+ * Exception — a personal copy (source.rights 'personal-copy', authorship 'published', not generated, not Scripture, with a
+ * provenance) is published without a review and marked `personalCopy`; any other use of 'personal-copy' is refused.
+ *
  * Every failed condition contributes one actionable sentence to `unpublishedReasons`.
  */
 import { REVIEW_OK, hash } from '../core';
@@ -15,6 +18,8 @@ import type { CorpusDocument } from './format';
 export interface PublicationDecision {
   published: boolean;
   unpublishedReasons: string[];
+  /** True (and only then present) when the text is published as the learner's own copy of a published work: `Text.personalCopy`. */
+  personalCopy?: true;
 }
 
 /**
@@ -47,6 +52,17 @@ const nonEmpty = (v: unknown): v is string => typeof v === 'string' && v.trim().
 export function computePublished(doc: Pick<CorpusDocument, 'contentType' | 'review' | 'source' | 'generated' | 'scripture'> | Record<string, unknown>): PublicationDecision {
   const d = doc as Partial<CorpusDocument>;
   const reasons: string[] = [];
+
+  // A personal copy is the learner's own copy of a published native work: readable on this device without a review
+  // (the transcription stays labelled unchecked), never Scripture, never generated. Any other combination is refused.
+  if (d.source?.rights === 'personal-copy') {
+    if (d.contentType === 'scripture') reasons.push('Scripture is never a personal copy: it must be an identified, verified translation');
+    if (d.generated === true || d.source.authorship === 'generated') reasons.push('generated text is not a published work, so it cannot be a personal copy');
+    else if (d.source.authorship !== 'published') reasons.push('a personal copy must have authorship "published" (a book by a native author)');
+    if (!nonEmpty(d.source.provenance)) reasons.push('a personal copy needs source.provenance saying where the copy came from');
+    if (d.review?.status === 'rejected') reasons.push('review was rejected — fix the text and record a new review');
+    return reasons.length ? { published: false, unpublishedReasons: reasons } : { published: true, unpublishedReasons: [], personalCopy: true };
+  }
 
   const status = d.review?.status;
   if (!status || !(REVIEW_OK as readonly string[]).includes(status)) {

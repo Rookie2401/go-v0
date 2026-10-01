@@ -1,7 +1,6 @@
 /**
- * Learner-state maintenance. Encounters are the durable evidence rows; a LearnerItemState is always
- * *recomputed* from its item's encounters (sorted by time, id), never incrementally patched. That makes
- * re-weighting idempotent and makes `rebuild` trivially reproducible.
+ * Learner-state types and helpers. Encounters are the durable per-sentence evidence rows; a LearnerItemState is a pure
+ * function of its aggregate (agg.ts), updated incrementally by the fold and re-derived from the event log by `rebuild`.
  *
  * Encounters carry `sitting` (derived from event time, see sitting.ts), `contentVersion`, `session` (the UI's id of the
  * creating event, informational only) and `replays`. Old rows may lack them; they are rebuilt on the policy bump.
@@ -26,14 +25,27 @@ export interface Ctx {
    * `createGoLearn`; reads the folder's in-memory index and therefore never waits on the fold queue.
    */
   evidenceAsOf?: (userId: string, lang: LanguageCode) => Promise<string | undefined>;
+  /**
+   * The learner's evidence events kept in memory by the folder (see userlog.ts): reads that need the log (progress, pace,
+   * readiness) take it from here instead of reading the whole event table. Wired by `createGoLearn`.
+   */
+  userLog: (userId: string) => Promise<import('./userlog').UserLog>;
 }
 
 /**
- * The contract `Encounter` plus what `evidence@4` needs: the highest ITEM-TARGETED help (word, phrase, grammar: 1–3) used
+ * The contract `Encounter` plus what `evidence@6` needs: the highest ITEM-TARGETED help (word, phrase, grammar: 1–3) used
  * on this item in this encounter's sitting + sentence, kept apart from sentence-level help (explanation, English: 4–5),
  * which `assistance` also reflects. Absent ⇒ no item-targeted help. Derived data (rebuilt from the log).
  */
-export type StoredEncounter = Encounter & { itemHelp?: AssistanceLevel };
+export type StoredEncounter = Encounter & {
+  itemHelp?: AssistanceLevel;
+  /**
+   * Reading only: the romanization rescue was used on this item in this sitting + sentence (a `DecodingRevealed` with
+   * `romanization: true`). The contract `Encounter` has no free-form field, so it lives here beside `itemHelp`; the audit and
+   * the stage-readiness `decoding` signal read it. Absent ⇒ no romanization. Derived data (rebuilt from the log).
+   */
+  romanized?: true;
+};
 
 /**
  * Item-targeted help of an encounter: a reading encounter records it in `itemHelp`; any other encounter (listening: transcript
@@ -86,47 +98,33 @@ export interface NewEncounter {
   assistance: AssistanceLevel;
   /** Reading only: the item-targeted part of `assistance` (see StoredEncounter). Omitted when 0. */
   itemHelp?: AssistanceLevel;
+  /** Reading only: the romanization rescue was used on this item (see StoredEncounter). */
+  romanized?: boolean;
   weight: number;
   playbackSpeed?: number;
   replays?: number;
   productionKind?: ProductionKind;
 }
 
-/**
- * Creates the encounter unless (user, item, sentence, modality, sitting) already has one.
- * `replaceIf` (listening): an existing encounter is replaced by the candidate when the caller says the candidate is
- * better evidence; this is idempotent and order-independent. The original `at` is kept.
- */
-export async function addEncounter(
-  ctx: Ctx, n: NewEncounter, replaceIf?: (existing: StoredEncounter) => boolean,
-): Promise<{ changed: boolean; created: boolean; encounter: StoredEncounter }> {
-  const id = ids.encounter(n.userId, n.itemId, n.sentenceId, n.modality, n.idKey ?? n.sitting ?? n.session);
-  const existing = (await ctx.store.encounters.get(id)) as StoredEncounter | undefined;
-  if (existing) {
-    if (replaceIf?.(existing)) {
-      const up: StoredEncounter = {
-        ...existing, evidenceKind: n.evidenceKind, weight: n.weight, assistance: n.assistance,
-        ...(n.playbackSpeed !== undefined ? { playbackSpeed: n.playbackSpeed } : {}),
-        ...(n.replays !== undefined ? { replays: n.replays } : {}),
-      };
-      await ctx.store.encounters.put(up);
-      return { changed: true, created: false, encounter: up };
-    }
-    return { changed: false, created: false, encounter: existing };
-  }
+/** The id of an encounter: (user, item, sentence, modality, sitting) — or the once-ever slot of a production. */
+export const encounterIdOf = (n: Pick<NewEncounter, 'userId' | 'itemId' | 'sentenceId' | 'modality' | 'idKey' | 'sitting' | 'session'>) =>
+  ids.encounter(n.userId, n.itemId, n.sentenceId, n.modality, n.idKey ?? n.sitting ?? n.session);
+
+/** The encounter row for a NEW encounter (its `priorLevel` is set by the item book once the item's aggregate is known). */
+export function buildEncounter(n: NewEncounter): StoredEncounter {
   const enc: StoredEncounter = {
-    id, userId: n.userId, lang: n.lang, itemId: n.itemId, itemKind: n.itemKind, sentenceId: n.sentenceId,
+    id: encounterIdOf(n), userId: n.userId, lang: n.lang, itemId: n.itemId, itemKind: n.itemKind, sentenceId: n.sentenceId,
     textId: n.textId, surface: n.surface, modality: n.modality, at: n.at, evidenceKind: n.evidenceKind,
     assistance: n.assistance, priorLevel: 'unseen', weight: n.weight, session: n.session,
   };
   if (n.itemHelp) enc.itemHelp = n.itemHelp;
+  if (n.romanized) enc.romanized = true;
   if (n.sitting !== undefined) enc.sitting = n.sitting;
   if (n.contentVersion !== undefined) enc.contentVersion = n.contentVersion;
   if (n.playbackSpeed !== undefined) enc.playbackSpeed = n.playbackSpeed;
   if (n.replays !== undefined) enc.replays = n.replays;
   if (n.productionKind) enc.productionKind = n.productionKind;
-  await ctx.store.encounters.put(enc);
-  return { changed: true, created: true, encounter: enc };
+  return enc;
 }
 
 /** The sitting an encounter belongs to (rows from before evidence@3 fall back to their session until rebuilt). */
@@ -180,31 +178,25 @@ class Acc {
   }
 }
 
-/** Recompute one LearnerItemState (and the priorLevel of each of its encounters) from the encounters. */
-export async function recomputeItem(
+/**
+ * REFERENCE derivation: a learner item's state recomputed from ALL of its encounter rows, the way evidence@5 did it on
+ * every fold. The fold no longer uses it (see agg.ts); it is kept as the independent definition the incremental result is
+ * tested against, and for audits. Encounters of one time are ordered by `order` (default: id) — the fold orders them by
+ * creation, which for equal times is the order of the event's sentences.
+ */
+export async function referenceItemState(
   ctx: Ctx, userId: string, itemId: string, meta: { lang: LanguageCode; itemKind: ItemKind },
+  order: (a: StoredEncounter, b: StoredEncounter) => number = byAtThenId,
 ): Promise<LearnerItemState | undefined> {
-  const rowId = ids.learnerItem(userId, itemId);
-  const existing = await ctx.store.learnerItems.get(rowId);
+  const existing = await ctx.store.learnerItems.get(ids.learnerItem(userId, itemId));
   const encs = ((await ctx.store.encounters.where('itemId', itemId)) as StoredEncounter[])
-    .filter((e) => e.userId === userId).sort(byAtThenId);
-  if (encs.length === 0 && !existing?.manualMark) {
-    if (existing) await ctx.store.learnerItems.delete(rowId);
-    return undefined;
-  }
+    .filter((e) => e.userId === userId).sort((a, b) => (a.at < b.at ? -1 : a.at > b.at ? 1 : order(a, b)));
+  if (encs.length === 0 && !existing?.manualMark) return undefined;
 
   const acc: Record<Modality, Acc> = {
     reading: new Acc('reading'), listening: new Acc('listening'), writing: new Acc('writing'), speaking: new Acc('speaking'),
   };
-  for (const enc of encs) {
-    const a = acc[enc.modality];
-    const prior = a.level(ctx);
-    if (enc.priorLevel !== prior) {
-      enc.priorLevel = prior;
-      await ctx.store.encounters.put(enc);
-    }
-    a.add(enc);
-  }
+  for (const enc of encs) acc[enc.modality].add(enc);
 
   const dim = (m: Modality): DimensionState => {
     const a = acc[m];
@@ -225,20 +217,13 @@ export async function recomputeItem(
   const textIds: string[] = [];
   for (const e of seen) if (!textIds.includes(e.textId)) textIds.push(e.textId);
   const row: LearnerItemState = {
-    id: rowId, userId, lang: meta.lang, itemId, itemKind: meta.itemKind,
+    id: ids.learnerItem(userId, itemId), userId, lang: meta.lang, itemId, itemKind: meta.itemKind,
     reading: dim('reading'), listening: dim('listening'), writing: dim('writing'), speaking: dim('speaking'),
     encounterCount: seen.length, textIds,
   };
   if (seen.length > 0) { row.firstSeenAt = seen[0].at; row.lastSeenAt = seen[seen.length - 1].at; }
   if (existing?.manualMark) row.manualMark = existing.manualMark;
-  await ctx.store.learnerItems.put(row);
   return row;
-}
-
-export async function recomputeMany(
-  ctx: Ctx, userId: string, items: Map<string, { lang: LanguageCode; itemKind: ItemKind }>,
-): Promise<void> {
-  for (const [itemId, meta] of items) await recomputeItem(ctx, userId, itemId, meta);
 }
 
 /**

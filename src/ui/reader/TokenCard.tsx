@@ -1,52 +1,81 @@
 /**
  * TokenCard — the layered tap-word support sheet (Biblia's word card, as a bottom sheet on every width).
- * Level 1 gloss → 2 phrases → 3 morphology / grammar / prior encounters → 4 sentence explanation →
- * 5 English rescue. The card only ever shows what has been asked for; "More help" goes one level up.
+ *
+ * The sheet shows the gloss, then only the layers the learner has opened, in the order the stage's assistance profile
+ * offers them (see assistance.ts). A course without a ladder offers gloss → phrases → grammar → sentence explanation →
+ * English, and looks exactly as it always did. "More help" opens the next layer the word has something for.
+ *
+ * The same sheet also carries the notes of a sentence (opened from the mark at the end of the sentence): the subject is
+ * then a sentence, not a word.
+ *
+ * Nothing here emits events or fetches evidence: the Reader opens layers and emits (see Reader.tsx).
  */
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { AssistanceLevel, LanguageCode, Sentence, Token, TokenSupport } from '../../core';
+import type { ContentNote, HelpLayer, LanguageCode, Sentence, SyllableAnalysis, Token, TokenSupport } from '../../core';
 import { useApp } from '../context';
 import { I, IconBtn } from '../ui';
+import { MORE_LABEL, NOTE_KIND_LABEL, clauseSegments, hasClauseSpans, maxLevel, noteIsReviewed, pick, roleText, varietyLine } from './assistance';
 
-export const LEVEL_NEXT_LABEL: Record<number, string> = {
-  1: 'Show phrases',
-  2: 'Show grammar',
-  3: 'Explain this sentence',
-  4: 'Show English',
-};
+/** Below this the engine says "uncertain" (the same line GoLearn draws for an analysis). */
+const UNCERTAIN_BELOW = 0.6;
+/** From there up a decoding is plain; between the two it comes from the spelling rules alone. */
+const RULES_ONLY_BELOW = 0.8;
+
+export type SheetSubject = { kind: 'word'; token: Token } | { kind: 'sentence'; sentence: Sentence };
+
+export interface DecodingView {
+  /** `null` while it is being worked out. An empty list = nothing decodable. */
+  syllables: SyllableAnalysis[] | null;
+  /** The profile allows the romanization rescue (Stage 0 only) and the word has a decoding to rescue. */
+  canRescue: boolean;
+  /** The learner pressed the rescue button. */
+  rescued: boolean;
+  /** The romanization to show once rescued; undefined = the word has none. */
+  romanization?: string;
+}
 
 export interface TokenCardProps {
-  token: Token;
-  level: AssistanceLevel;
+  subject: SheetSubject;
+  /** A course without a ladder: no variety line, no roles, no "other meanings" — today's sheet. */
+  legacy: boolean;
+  /** The layers opened so far, in order ('gloss' first). */
+  opened: HelpLayer[];
+  /** The layer "more help" would open (a layer the word has something for); undefined = top of the ladder. */
+  next?: HelpLayer;
   /** Supports fetched so far, keyed by the level they were requested at. */
   supports: Partial<Record<number, TokenSupport>>;
+  /** Everything "more help" needs has been fetched. */
+  loaded: boolean;
   explanation?: string;
   english?: string;
   /** GoLearn's one-sentence account of what it knows about this word ("Seen 7 times in 2 texts; needed help twice…"). */
   why?: string;
   /** Language of the tapped form, so the surface is set in the text's own font. */
   lang?: LanguageCode;
+  /** The sentence the word is in (its own text, for the clause-structure view). */
+  sentence: Sentence;
+  /** Notes visible for this sentence. */
+  notes: ContentNote[];
+  /** Whether the profile shows clause-structure notes as a labelled view. */
+  clauseView: boolean;
+  decoding: DecodingView;
+  /** Lines from the learner's own record with this word (`golearn.itemHistory`). */
+  history: string[];
   /** The sheet is up. When false it plays its exit, then calls onExited. */
   open: boolean;
   onMore(): void;
+  onRescue(): void;
   onClose(): void;
   /** The exit animation has finished: the parent may drop the card. */
   onExited(): void;
 }
 
-/** Latest defined value for a field, searching from the highest level down (levels return only what they need). */
-function pick<K extends keyof TokenSupport>(supports: Partial<Record<number, TokenSupport>>, key: K): TokenSupport[K] | undefined {
-  for (let l = 5; l >= 1; l--) {
-    const v = supports[l]?.[key];
-    if (v === undefined) continue;
-    if (Array.isArray(v) && v.length === 0) continue;
-    return v;
-  }
-  return undefined;
-}
-
-export function TokenCard({ token, level, supports, explanation, english, why, lang, open, onMore, onClose, onExited }: TokenCardProps) {
+export function TokenCard(props: TokenCardProps) {
+  const { subject, legacy, opened, next, supports, loaded, explanation, english, why, lang, sentence, notes, clauseView, decoding, history, open, onMore, onRescue, onClose, onExited } = props;
   const { store } = useApp();
+  const token = subject.kind === 'word' ? subject.token : undefined;
+  const level = maxLevel(opened);
+
   const gloss = pick(supports, 'gloss');
   const analysis = pick(supports, 'analysis');
   const phrases = pick(supports, 'phrases') ?? [];
@@ -55,34 +84,38 @@ export function TokenCard({ token, level, supports, explanation, english, why, l
   const morphologyLine = pick(supports, 'morphologyLine');
   const prior = pick(supports, 'priorEncounters') ?? [];
   const exampleIds = pick(supports, 'knownExamples') ?? [];
-  const uncertain = supports[level]?.uncertain ?? pick(supports, 'uncertain') ?? false;
-  const loaded = supports[level] !== undefined;
+  const uncertain = pick(supports, 'uncertain') ?? false;
   const anyLoaded = Object.keys(supports).length > 0;
   /** Nothing is known about this word yet: say so, never guess. */
   const unanalysed = anyLoaded && !gloss && !lemma && !analysis && !morphologyLine;
+  const has = (l: HelpLayer) => opened.includes(l);
 
   const [examples, setExamples] = useState<Sentence[]>([]);
   const exampleKey = exampleIds.slice(0, 3).join('|');
+  const showExamples = legacy && has('grammar');
   useEffect(() => {
     let live = true;
-    if (level < 3 || !exampleKey) { setExamples([]); return; }
+    if (!showExamples || !exampleKey) { setExamples([]); return; }
     void store.sentences.getMany(exampleKey.split('|')).then((rows) => {
       if (live) setExamples(rows.filter((r): r is Sentence => !!r));
     });
     return () => { live = false; };
-  }, [store, level, exampleKey]);
+  }, [store, showExamples, exampleKey]);
 
   // Titles of the texts where the learner has met this word ("Seen 7 times in Story 1, Story 2").
   const [titles, setTitles] = useState<string[]>([]);
   const priorKey = [...new Set(prior.map((p) => p.textId))].slice(0, 3).join('|');
   useEffect(() => {
     let live = true;
-    if (level < 3 || !priorKey) { setTitles([]); return; }
+    if (!showExamples || !priorKey) { setTitles([]); return; }
     void store.texts.getMany(priorKey.split('|')).then((rows) => {
       if (live) setTitles(rows.filter((t): t is NonNullable<typeof t> => !!t).map((t) => t.title));
     });
     return () => { live = false; };
-  }, [store, level, priorKey]);
+  }, [store, showExamples, priorKey]);
+
+  const [otherMeanings, setOtherMeanings] = useState(false);
+  useEffect(() => { setOtherMeanings(false); }, [token?.id]);
 
   // ── the sheet: rises on mount, falls on close (kept mounted until the exit has played) ──
   const openRef = useRef(open);
@@ -106,100 +139,301 @@ export function TokenCard({ token, level, supports, explanation, english, why, l
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
+  const dialogLabel = subject.kind === 'word' ? `Help for ${subject.token.surface}` : `Notes for sentence ${subject.sentence.index + 1}`;
+  const senses = !legacy ? sensesOf(analysis?.notes?.senses) : [];
+  const variety = !legacy ? varietyLine(analysis?.register) : undefined;
+  const fromDictionary = !legacy && !!analysis?.analyzer?.startsWith('dict:');
+
   return (
     <aside
-      className={`panel ${open ? 'panel--rise' : 'panel--fall'}`} role="dialog" aria-label={`Help for ${token.surface}`} data-level={level}
+      className={`panel ${open ? 'panel--rise' : 'panel--fall'}`} role="dialog" aria-label={dialogLabel} data-level={subject.kind === 'word' ? level : undefined}
       onAnimationEnd={(e) => { if (e.target === e.currentTarget && !open) finish(); }}
     >
       <div className="panel__grip" aria-hidden="true" />
-      <div className="panel__body" key={token.id}>
+      <div className="panel__body" key={token?.id ?? sentence.id}>
       <div className="panel__head">
-        <span className="label">Word</span>
-        <IconBtn label="Close word help" onClick={onClose}>{I.close}</IconBtn>
+        <span className="label">{subject.kind === 'word' ? 'Word' : 'Notes'}</span>
+        <IconBtn label={subject.kind === 'word' ? 'Close word help' : 'Close notes'} onClick={onClose}>{I.close}</IconBtn>
       </div>
 
-      <div className="card__surface" lang={lang}>{token.surface}</div>
+      {subject.kind === 'sentence' ? (
+        <>
+          <p className="card__text sheet__sentence" lang={lang}>{sentence.text}</p>
+          <NotesList notes={notes} sentenceText={sentence.text} lang={lang} clauseView={clauseView} />
+        </>
+      ) : (
+        <>
+          <div className="card__surface" lang={lang}>{subject.token.surface}</div>
 
-      <section aria-label="Gloss">
-        {!anyLoaded ? (
-          <p className="card__note">Looking up…</p>
-        ) : gloss ? (
-          <p className="card__gloss">{uncertain ? 'possibly ' : ''}{gloss}</p>
-        ) : (
-          unanalysed
-            ? <p className="card__note" data-testid="not-analysed">Not analysed yet. Go has no dictionary entry for this word, and it will not guess.</p>
-            : <p className="card__note">No gloss for this word yet.</p>
-        )}
-        {uncertain && anyLoaded && <p className="card__note">The analysis here is uncertain.</p>}
-        {lemma && lemma.lemma !== token.surface.toLowerCase() && (
-          <div className="card__line"><span className="k">Lemma</span><span lang={lang}>{lemma.lemma}</span></div>
-        )}
-        {lemma?.pos && <div className="card__line"><span className="k">Part of speech</span><span>{lemma.pos.toLowerCase()}</span></div>}
-        {why && <p className="card__prov" aria-label="What Go knows about this word" data-testid="word-why">{why}</p>}
-      </section>
+          <section aria-label="Gloss">
+            {!anyLoaded ? (
+              <p className="card__note">Looking up…</p>
+            ) : gloss ? (
+              <p className="card__gloss">{uncertain ? 'possibly ' : ''}{gloss}</p>
+            ) : (
+              unanalysed
+                ? <p className="card__note" data-testid="not-analysed">Not analysed yet. Go has no dictionary entry for this word, and it will not guess.</p>
+                : <p className="card__note">No gloss for this word yet.</p>
+            )}
+            {fromDictionary && gloss && <p className="card__note" data-testid="dictionary-gloss">dictionary meaning, not checked for this sentence</p>}
+            {variety && <p className="card__note sheet__variety" data-testid="variety">{variety}</p>}
+            {uncertain && anyLoaded && <p className="card__note">The analysis here is uncertain.</p>}
+            {!legacy && analysis?.role && (
+              <div className="card__line"><span className="k">What it does here</span><span data-testid="word-role">{roleText(analysis.role)}</span></div>
+            )}
+            {lemma && lemma.lemma !== subject.token.surface.toLowerCase() && (
+              <div className="card__line"><span className="k">Lemma</span><span lang={lang}>{lemma.lemma}</span></div>
+            )}
+            {lemma?.pos && <div className="card__line"><span className="k">Part of speech</span><span>{lemma.pos.toLowerCase()}</span></div>}
+            {senses.length > 0 && (
+              <div className="sheet__senses">
+                <button type="button" className="btn btn--small btn--quiet" aria-expanded={otherMeanings} onClick={() => setOtherMeanings((v) => !v)}>Other meanings</button>
+                {otherMeanings && <ul className="sheet__list" aria-label="Other meanings">{senses.map((s) => <li key={s}>{s}</li>)}</ul>}
+              </div>
+            )}
+            {why && <p className="card__prov" aria-label="What Go knows about this word" data-testid="word-why">{why}</p>}
+          </section>
 
-      {level >= 2 && (
-        <section className="card__section" aria-label="Phrases">
-          <h3 className="label">Phrases</h3>
-          {phrases.length === 0 ? (
-            <p className="card__text">This word is not part of a known phrase here.</p>
-          ) : (
-            <ul className="chips">
-              {phrases.map(({ phrase, occurrence }) => (
-                <li key={occurrence.id} className="chip" title={phrase.gloss ?? phrase.kind}>
-                  <span className="chip-text" lang={lang}>{phrase.display}</span>
-                  {phrase.gloss && <span className="chip-gloss"> — {phrase.gloss}</span>}
-                </li>
-              ))}
-            </ul>
+          {opened.filter((l) => l !== 'gloss').map((layer) => {
+            switch (layer) {
+              case 'decoding':
+                return <DecodingSection key={layer} decoding={decoding} loaded={loaded} lang={lang} onRescue={onRescue} />;
+              case 'phrase':
+                return (
+                  <section key={layer} className="card__section" aria-label="Phrases">
+                    <h3 className="label">Phrases</h3>
+                    {phrases.length === 0 ? (
+                      <p className="card__text">This word is not part of a known phrase here.</p>
+                    ) : (
+                      <ul className="chips">
+                        {phrases.map(({ phrase, occurrence }) => (
+                          <li key={occurrence.id} className="chip" title={phrase.gloss ?? phrase.kind}>
+                            <span className="chip-text" lang={lang}>{phrase.display}</span>
+                            {phrase.gloss && <span className="chip-gloss"> — {phrase.gloss}</span>}
+                          </li>
+                        ))}
+                      </ul>
+                    )}
+                  </section>
+                );
+              case 'grammar':
+                return (
+                  <section key={layer} className="card__section" aria-label="Grammar">
+                    <h3 className="label">Grammar</h3>
+                    {morphologyLine ? (
+                      <div className="card__line"><span className="k">Morphology</span><span>{morphologyLine}</span></div>
+                    ) : (
+                      <p className="card__text">{unanalysed ? 'Not analysed yet.' : 'No grammar analysis available.'}</p>
+                    )}
+                    {patterns.map((p) => (
+                      <p key={p.id} className="card__text"><b>{p.title}.</b> {p.explanation}</p>
+                    ))}
+                    {legacy && (
+                      <p className="card__prov" aria-label="Prior encounters">
+                        {prior.length === 0
+                          ? 'You have not met this word before.'
+                          : `Seen ${prior.length} time${prior.length === 1 ? '' : 's'}${titles.length ? ` in ${titles.join(', ')}` : ''}.`}
+                      </p>
+                    )}
+                    {legacy && examples.length > 0 && (
+                      <ul className="examples" aria-label="Where you met it">
+                        {examples.map((s) => <li key={s.id} lang={s.lang} className="literal">{s.text}</li>)}
+                      </ul>
+                    )}
+                  </section>
+                );
+              case 'definition':
+                return (
+                  <section key={layer} className="card__section" aria-label="Definition">
+                    <h3 className="label">Definition</h3>
+                    <p className="card__text" lang={lang} data-testid="word-definition">{analysis?.definition ?? <span className="faint">No definition in the language of the text for this word.</span>}</p>
+                  </section>
+                );
+              case 'discourse':
+                return (
+                  <section key={layer} className="card__section" aria-label="What this word does">
+                    <h3 className="label">What it does here</h3>
+                    <p className="card__text"><b>{analysis?.role ? capitalise(roleText(analysis.role)) : 'No role recorded'}.</b></p>
+                    {patterns.map((p) => (
+                      <p key={p.id} className="card__text"><b>{p.title}.</b> {p.explanation}</p>
+                    ))}
+                  </section>
+                );
+              case 'note':
+                return (
+                  <section key={layer} className="card__section" aria-label="Notes">
+                    <h3 className="label">Notes on this sentence</h3>
+                    <NotesList notes={notes.filter((n) => !(clauseView && n.kind === 'clause-structure'))} sentenceText={sentence.text} lang={lang} clauseView={false} />
+                  </section>
+                );
+              case 'clause-structure':
+                return (
+                  <section key={layer} className="card__section" aria-label="Sentence structure">
+                    <h3 className="label">Sentence structure</h3>
+                    {notes.filter((n) => n.kind === 'clause-structure' && hasClauseSpans(sentence.text, n.spans)).map((n) => (
+                      <ClauseView key={n.id} note={n} sentenceText={sentence.text} lang={lang} />
+                    ))}
+                  </section>
+                );
+              case 'sentence':
+                return (
+                  <section key={layer} className="card__section" aria-label="Sentence explanation">
+                    <h3 className="label">This sentence</h3>
+                    <p className="card__text">{explanation ?? <span className="faint">No written explanation for this sentence.</span>}</p>
+                  </section>
+                );
+              case 'english':
+                return (
+                  <section key={layer} className="card__section" aria-label="English">
+                    <h3 className="label">English</h3>
+                    <p className="natural">{english ?? <span className="faint">No English available for this sentence.</span>}</p>
+                  </section>
+                );
+              case 'history':
+                return (
+                  <section key={layer} className="card__section" aria-label="Your history with this word">
+                    <h3 className="label">Your history with this word</h3>
+                    <ul className="sheet__list">{history.map((line) => <li key={line} className="card__text">{line}</li>)}</ul>
+                  </section>
+                );
+              default:
+                return null;
+            }
+          })}
+
+          {next && loaded && (
+            <div className="card__actions">
+              <button type="button" className="btn btn--small btn--quiet" onClick={onMore}>{MORE_LABEL[next]}</button>
+            </div>
           )}
-        </section>
-      )}
-
-      {level >= 3 && (
-        <section className="card__section" aria-label="Grammar">
-          <h3 className="label">Grammar</h3>
-          {morphologyLine ? (
-            <div className="card__line"><span className="k">Morphology</span><span>{morphologyLine}</span></div>
-          ) : (
-            <p className="card__text">{unanalysed ? 'Not analysed yet.' : 'No grammar analysis available.'}</p>
-          )}
-          {patterns.map((p) => (
-            <p key={p.id} className="card__text"><b>{p.title}.</b> {p.explanation}</p>
-          ))}
-          <p className="card__prov" aria-label="Prior encounters">
-            {prior.length === 0
-              ? 'You have not met this word before.'
-              : `Seen ${prior.length} time${prior.length === 1 ? '' : 's'}${titles.length ? ` in ${titles.join(', ')}` : ''}.`}
-          </p>
-          {examples.length > 0 && (
-            <ul className="examples" aria-label="Where you met it">
-              {examples.map((s) => <li key={s.id} lang={s.lang} className="literal">{s.text}</li>)}
-            </ul>
-          )}
-        </section>
-      )}
-
-      {level >= 4 && (
-        <section className="card__section" aria-label="Sentence explanation">
-          <h3 className="label">This sentence</h3>
-          <p className="card__text">{explanation ?? <span className="faint">No written explanation for this sentence.</span>}</p>
-        </section>
-      )}
-
-      {level >= 5 && (
-        <section className="card__section" aria-label="English">
-          <h3 className="label">English</h3>
-          <p className="natural">{english ?? <span className="faint">No English available for this sentence.</span>}</p>
-        </section>
-      )}
-
-      {level < 5 && loaded && (
-        <div className="card__actions">
-          <button type="button" className="btn btn--small btn--quiet" onClick={onMore}>{LEVEL_NEXT_LABEL[level]}</button>
-        </div>
+        </>
       )}
       </div>
     </aside>
+  );
+}
+
+const capitalise = (s: string) => (s ? s[0].toUpperCase() + s.slice(1) : s);
+
+function sensesOf(v: string | string[] | undefined): string[] {
+  const list = Array.isArray(v) ? v : typeof v === 'string' ? [v] : [];
+  return [...new Set(list.map((s) => s.trim()).filter(Boolean))];
+}
+
+// ───────────────────────────── decoding ─────────────────────────────
+
+function DecodingSection({ decoding, loaded, lang, onRescue }: { decoding: DecodingView; loaded: boolean; lang?: LanguageCode; onRescue(): void }) {
+  const { syllables } = decoding;
+  return (
+    <section className="card__section" aria-label="Decoding">
+      <h3 className="label">How it is read</h3>
+      {!loaded || syllables === null ? (
+        <p className="card__note">Looking up…</p>
+      ) : syllables.length === 0 ? (
+        <p className="card__text" data-testid="cannot-decode">Go cannot decode this spelling reliably.</p>
+      ) : (
+        <>
+          {syllables.some((s) => s.respelled) && <p className="card__text" data-testid="not-as-spelled">This word is not read exactly as it is spelled.</p>}
+          <ol className="decode" aria-label="Syllables">
+            {syllables.map((s, i) => <SyllableRow key={`${s.start}-${i}`} s={s} lang={lang} />)}
+          </ol>
+        </>
+      )}
+      {loaded && syllables !== null && decoding.canRescue && (
+        decoding.rescued ? (
+          <p className="card__text decode__rescue" data-testid="romanization">
+            <span className="k">Romanization (rescue)</span>{' '}
+            {decoding.romanization ? <span>{decoding.romanization}</span> : <span className="faint">Go has no romanization for this word.</span>}
+          </p>
+        ) : (
+          <div className="card__actions">
+            <button type="button" className="btn btn--small btn--quiet" onClick={onRescue}>Show romanization (rescue)</button>
+          </div>
+        )
+      )}
+    </section>
+  );
+}
+
+const ENDING_WORD = { open: 'open (no final consonant)', live: 'live', dead: 'dead' } as const;
+
+function SyllableRow({ s, lang }: { s: SyllableAnalysis; lang?: LanguageCode }) {
+  // Three tiers: plain; by the rules only (a quiet note); uncertain.
+  const low = s.confidence < UNCERTAIN_BELOW;
+  const byRules = !low && s.confidence < RULES_ONLY_BELOW;
+  const unwritten = s.vowel === '◌';
+  return (
+    <li className="decode__syl" data-uncertain={low ? 'true' : undefined}>
+      <div className="decode__head">
+        <span className="decode__text" lang={lang}>{s.text}</span>
+        {low && <span className="chip chip--wine">uncertain</span>}
+        {s.irregular && <span className="chip">irregular spelling</span>}
+      </div>
+      {byRules && <p className="card__note" data-testid="by-rules">by the spelling rules; not checked against a dictionary</p>}
+      {s.respelled && <p className="card__text decode__respelled">Read as <span lang={lang}>{s.respelled}</span></p>}
+      {s.initial && (
+        <div className="card__line"><span className="k">Letters</span><span lang={lang}>{[s.cluster && s.cluster !== s.initial ? `${s.initial} (${s.cluster})` : s.initial, s.final ? `final ${s.final}` : ''].filter(Boolean).join(' · ')}</span></div>
+      )}
+      {s.initialClass && <div className="card__line"><span className="k">Consonant class</span><span>{s.initialClass}</span></div>}
+      {s.vowel && (
+        <div className="card__line">
+          <span className="k">Vowel</span>
+          {unwritten ? (
+            <span data-testid="vowel-unwritten">{['not written', [s.vowelLength, s.vowelSound].filter(Boolean).join(' ')].filter(Boolean).join(' — ')}</span>
+          ) : (
+            <span><span lang={lang}>{s.vowel}</span>{s.vowelLength ? `, ${s.vowelLength}` : ''}{s.vowelSound ? ` — ${s.vowelSound}` : ''}</span>
+          )}
+        </div>
+      )}
+      <div className="card__line"><span className="k">Ending</span><span>{ENDING_WORD[s.ending]}</span></div>
+      <div className="card__line"><span className="k">Tone mark</span><span lang={s.toneMark ? lang : undefined}>{s.toneMark ?? 'none'}</span></div>
+      <div className="card__line"><span className="k">Tone</span><span>{s.tone ?? 'not decided — Go will not guess'}</span></div>
+      {s.rule && <p className="card__text decode__rule">{s.rule}</p>}
+    </li>
+  );
+}
+
+// ───────────────────────────── notes ─────────────────────────────
+
+function NotesList({ notes, sentenceText, lang, clauseView }: { notes: ContentNote[]; sentenceText: string; lang?: LanguageCode; clauseView: boolean }) {
+  if (notes.length === 0) return <p className="card__text">No notes for this sentence.</p>;
+  return (
+    <ul className="notes" aria-label="Notes">
+      {notes.map((n) => (
+        <li key={n.id} className="note" data-kind={n.kind}>
+          <span className="label">{NOTE_KIND_LABEL[n.kind]}</span>
+          {!noteIsReviewed(n) && (
+            <span className="chip chip--wine note__status">{n.provenance === 'machine' ? 'machine draft, not reviewed' : 'not reviewed yet'}</span>
+          )}
+          <p className="card__text">{n.body}</p>
+          {clauseView && n.kind === 'clause-structure' && hasClauseSpans(sentenceText, n.spans) && <ClauseView note={n} sentenceText={sentenceText} lang={lang} />}
+          {n.topics && n.topics.length > 0 && (
+            <ul className="chips note__topics" aria-label="Topics">{n.topics.map((t) => <li key={t} className="chip">{t}</li>)}</ul>
+          )}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
+/**
+ * The sentence's own text with a note's labelled spans underlined. The text itself is never rewritten: the labels are
+ * drawn by CSS from `data-label` (so the element's text is exactly the sentence) and listed below for assistive technology.
+ */
+function ClauseView({ note, sentenceText, lang }: { note: ContentNote; sentenceText: string; lang?: LanguageCode }) {
+  const segments = clauseSegments(sentenceText, note.spans);
+  return (
+    <div className="clause">
+      <p className="clause__text" lang={lang} data-testid="clause-text">
+        {segments.map((s, i) => (s.label
+          ? <span key={i} className="clause__span" data-label={s.label}>{s.text}</span>
+          : <span key={i}>{s.text}</span>))}
+      </p>
+      <ul className="clause__legend" aria-label="Parts of this sentence">
+        {segments.filter((s) => s.label).map((s, i) => (
+          <li key={i}><span className="clause__label">{s.label}</span> <span lang={lang}>{s.text}</span></li>
+        ))}
+      </ul>
+    </div>
   );
 }

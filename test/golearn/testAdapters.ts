@@ -4,13 +4,30 @@
  *  - tokenize: explicit whitespace runs for es / de / sq ONLY. It THROWS for th / hi, so any production code
  *    path that tries to tokenize Thai or Hindi text fails loudly (GoLearn must never tokenize at all).
  *  - relate: driven by an explicit lemma table passed in by the test.
+ *  - decode / orthFeatures: OFF unless the test asks for a language (`decode: ['th']`). Then every word decodes to ONE
+ *    deterministic fake syllable (class from the first code point, tone and vowel from the length), so tests can predict the
+ *    writing-system items of any token without a real orthography engine. A dictionary respelling in the analysis notes
+ *    changes the tone, so "decoding follows the pronunciation data" is observable.
  * The real adapters live in src/adapters (package A).
  */
-import type { AdapterRegistry, LanguageAdapter, LanguageCode, RawToken, Script } from '../../src/core';
+import type { AdapterRegistry, LanguageAdapter, LanguageCode, RawToken, Script, SyllableAnalysis } from '../../src/core';
 
 const SCRIPT: Record<LanguageCode, Script> = { es: 'Latn', sq: 'Latn', de: 'Latn', th: 'Thai', hi: 'Deva' };
+const CLASSES = ['mid', 'high', 'low'] as const;
+const TONES = ['mid', 'low', 'falling', 'high', 'rising'] as const;
 
-export function createTestAdapter(lang: LanguageCode, lemmaOf: Record<string, string> = {}): LanguageAdapter {
+export function fakeDecode(surface: string): SyllableAnalysis[] {
+  if (!surface) return [];
+  const cp = surface.codePointAt(0)!;
+  return [{
+    text: surface, start: 0, end: surface.length, initialClass: CLASSES[cp % 3], vowel: `v${surface.length}`, ending: 'open',
+    tone: TONES[surface.length % 5], rule: 'test rule', confidence: 0.9,
+  }];
+}
+export const fakeFeatures = (syllables: SyllableAnalysis[]): string[] =>
+  syllables.filter((s) => s.confidence >= 0.6).flatMap((s) => [`class:${s.initialClass}`, `tone:${s.tone}`, `vowel:${s.vowel}`]);
+
+export function createTestAdapter(lang: LanguageCode, lemmaOf: Record<string, string> = {}, opts: { decode?: boolean } = {}): LanguageAdapter {
   const latin = SCRIPT[lang] === 'Latn';
   const normalize = (s: string) => (latin ? s.normalize('NFC').toLowerCase() : s.normalize('NFC'));
   return {
@@ -42,11 +59,20 @@ export function createTestAdapter(lang: LanguageCode, lemmaOf: Record<string, st
       if (lx && lx === y || ly && ly === x) return 'inflection';
       return 'none';
     },
+    ...(opts.decode ? {
+      decode: fakeDecode,
+      decodeWithPronunciation: (surface: string, pron: { respelling?: string; ipa?: string }) =>
+        pron.respelling ? fakeDecode(surface).map((s) => ({ ...s, tone: 'rising' as const, rule: 'from the respelling' })) : [],
+      orthFeatures: fakeFeatures,
+      describeOrthFeature: (f: string) => `test feature ${f}`,
+    } : {}),
   };
 }
 
-export function createTestRegistry(lemmaOf: Partial<Record<LanguageCode, Record<string, string>>> = {}): AdapterRegistry {
+export function createTestRegistry(
+  lemmaOf: Partial<Record<LanguageCode, Record<string, string>>> = {}, opts: { decode?: LanguageCode[] } = {},
+): AdapterRegistry {
   const langs: LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de'];
-  const adapters = new Map(langs.map((l) => [l, createTestAdapter(l, lemmaOf[l] ?? {})] as const));
+  const adapters = new Map(langs.map((l) => [l, createTestAdapter(l, lemmaOf[l] ?? {}, { decode: opts.decode?.includes(l) })] as const));
   return { get: (lang) => adapters.get(lang)!, all: () => [...adapters.values()] };
 }

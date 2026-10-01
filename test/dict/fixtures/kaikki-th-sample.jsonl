@@ -1,0 +1,52 @@
+{"word":"ขนม","pos":"noun","lang_code":"th","lang":"Thai","forms":[{"form":"kà-nǒm","tags":["romanization"]}],"sounds":[{"other":"ขนม","raw_tags":["Orthographic"],"roman":"kʰ n m"},{"other":"ขะ-หฺนม","raw_tags":["Phonemic"],"roman":"kʰ a – h ̥ n m"},{"raw_tags":["Paiboon"],"roman":"kà-nǒm","tags":["romanization"]},{"raw_tags":["Royal Institute"],"roman":"kha-nom","tags":["romanization"]},{"ipa":"/kʰa˨˩.nom˩˩˦/"}],"senses":[{"glosses":["sweets; dessert"],"links":[["sweets","sweets"]]},{"glosses":["snack"],"synonyms":[{"tags":["childish","colloquial"],"word":"หนม"}]}],"etymology_text":"hand-made fixture"}
+{"word":"หนม","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["colloquial form of ขนม"],"tags":["form-of","colloquial"]}]}
+{"word":"กิน","pos":"verb","lang_code":"th","lang":"Thai","sounds":[{"other":"กิน","raw_tags":["Phonemic"]},{"raw_tags":["Paiboon"],"roman":"gin","tags":["romanization"]},{"ipa":"/kin˧/"}],"senses":[{"glosses":["to eat"]},{"glosses":["to consume","to use up"]}]}
+{"word":"กิน","pos":"verb","lang_code":"th","lang":"Thai","sounds":[{"ipa":"/second-ipa-must-not-win/"}],"senses":[{"glosses":["to eat"]},{"glosses":["to take (a medicine)"]}]}
+{"word":"กิน","pos":"verb","lang_code":"th","lang":"Thai","sounds":[{"ipa":"/second-ipa-must-not-win/"}],"senses":[{"glosses":["to eat"]},{"glosses":["to take (a medicine)"]}]}
+{"word":"น้ำ","pos":"noun","lang_code":"th","lang":"Thai","sounds":[{"other":"น้าม","raw_tags":["Phonemic"]},{"ipa":"/naːm˦˥/"}],"senses":[{"glosses":["water"]},{"glosses":["liquid","fluid"]},{"glosses":["juice"]}]}
+{"word":"บ้าน","pos":"noun","lang_code":"th","lang":"Thai","classifiers":["หลัง"],"senses":[{"glosses":["house"]},{"glosses":["home"]},{"glosses":["village"]}]}
+{"word":"หมา","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["dog"],"classifiers":[{"classifier":"ตัว"}]}]}
+{"word":"แมว","pos":"noun","lang_code":"th","lang":"Thai","classifiers":[{"word":"ตัว"}],"senses":[{"glosses":["cat"]},{"glosses":["alternative form of แมว (fixture only)"],"tags":["alt-of","archaic"]}]}
+{"word":"หนังสือ","pos":"noun","lang_code":"th","lang":"Thai","classifiers":["เล่ม","ฉบับ"],"senses":[{"glosses":["book"]},{"glosses":["document","letter"]},{"glosses":["written work"]}]}
+{"word":"ใหม่","pos":"adj","lang_code":"th","lang":"Thai","senses":[{"glosses":["new"]}]}
+{"word":"ใหม่","pos":"adv","lang_code":"th","lang":"Thai","senses":[{"glosses":["again","anew"]}]}
+{"word":"ดี","pos":"adj","lang_code":"th","lang":"Thai","forms":[{"form":"dii","tags":["romanization"]}],"senses":[{"glosses":["good"]},{"glosses":["well"]}]}
+{"word":"ที่","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["place"]}]}
+{"word":"ที่","pos":"conj","lang_code":"th","lang":"Thai","senses":[{"glosses":["that; which; who (relative)"]}]}
+{"word":"ที่","pos":"classifier","lang_code":"th","lang":"Thai","senses":[{"glosses":["classifier for places and orders"]}]}
+{"word":"ครับ","pos":"particle","lang_code":"th","lang":"Thai","senses":[{"glosses":["polite particle (male speaker)"],"tags":["polite"]}]}
+{"word":"ค่ะ","pos":"particle","lang_code":"th","lang":"Thai","senses":[{"glosses":["polite particle (female speaker, statements)"],"tags":["polite"]}]}
+{"word":"คะ","pos":"particle","lang_code":"th","lang":"Thai","senses":[{"glosses":["polite particle (female speaker, questions)"],"tags":["polite"]}]}
+{"word":"นะ","pos":"particle","lang_code":"th","lang":"Thai","senses":[{"glosses":["softening particle"]},{"glosses":["tag particle, right?"]}]}
+{"word":"ไหม","pos":"particle","lang_code":"th","lang":"Thai","senses":[{"glosses":["question particle"]}]}
+{"word":"ไหม","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["silk"]}]}
+{"word":"ไม่","pos":"adv","lang_code":"th","lang":"Thai","senses":[{"glosses":["not"]}]}
+{"word":"และ","pos":"conj","lang_code":"th","lang":"Thai","senses":[{"glosses":["and"]}]}
+{"word":"แต่","pos":"conj","lang_code":"th","lang":"Thai","senses":[{"glosses":["but"]}]}
+{"word":"เพราะ","pos":"conj","lang_code":"th","lang":"Thai","senses":[{"glosses":["because"]}]}
+{"word":"ข้าพเจ้า","pos":"pron","lang_code":"th","lang":"Thai","senses":[{"glosses":["I (formal)"],"tags":["formal"]}]}
+{"word":"กู","pos":"pron","lang_code":"th","lang":"Thai","senses":[{"glosses":["I (rude, among close friends)"],"tags":["slang","vulgar"]}]}
+{"word":"ทรง","pos":"verb","lang_code":"th","lang":"Thai","senses":[{"glosses":["royal verb marker: to do, to be"],"tags":["royal"]}]}
+{"word":"ทรง","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["shape","form"]}]}
+{"word":"พระ","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["Buddhist monk"],"tags":["religious"]},{"glosses":["royal or holy prefix"],"tags":["royal"]}]}
+{"word":"แซบ","pos":"adj","lang_code":"th","lang":"Thai","senses":[{"glosses":["delicious"],"tags":["Isan"]}]}
+{"word":"หรอย","pos":"adj","lang_code":"th","lang":"Thai","senses":[{"glosses":["delicious"],"tags":["Southern"]}]}
+{"word":"ม่วน","pos":"adj","lang_code":"th","lang":"Thai","senses":[{"glosses":["fun","enjoyable"],"raw_tags":["Northern","dialectal"]}]}
+{"word":"อร่อย","pos":"adj","lang_code":"th","lang":"Thai","senses":[{"glosses":["delicious"]},{"glosses":["tasty"]}]}
+{"word":"ตลาด","pos":"noun","lang_code":"th","lang":"Thai","forms":[{"form":"dtà-làat","tags":["romanization"]}],"sounds":[{"other":"ตะ-หฺลาด","raw_tags":["Phonemic"],"roman":"t a – h ̥ l aa t"},{"ipa":"/ta˨˩.laːt̚˨˩/"}],"senses":[{"glosses":["market"]}]}
+{"word":"โรงเรียน","pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["school"],"classifiers":["แห่ง","โรง"]}]}
+{"word":"ไป","pos":"verb","lang_code":"th","lang":"Thai","senses":[{"glosses":["to go"]},{"glosses":["to leave"]}]}
+{"word":"มา","pos":"verb","lang_code":"th","lang":"Thai","senses":[{"glosses":["to come"]}]}
+{"word":"ทำ","pos":"verb","lang_code":"th","lang":"Thai","senses":[{"glosses":["to do"]},{"glosses":["to make"]},{"glosses":["to do"]},{"glosses":["to work"]},{"glosses":["to perform"]},{"glosses":["to cause"]},{"glosses":["to build"]},{"glosses":["to prepare"]}]}
+{"word":"รัก","pos":"verb","lang_code":"th","lang":"Thai","forms":[{"form":"rák","tags":["romanization"]}],"senses":[{"raw_glosses":["to love"]}]}
+{"word":"ว่า","pos":"conj","lang_code":"th","lang":"Thai","senses":[{"glosses":["that (introducing a clause)"]}]}
+{"word":"ขาย","pos":"verb","lang_code":"th","lang":"Thai","senses":[]}
+{"word":"ซื้อ","pos":"verb","lang_code":"th","lang":"Thai"}
+{"word":"เก่า","pos":"adj","lang_code":"th","lang":"Thai","senses":[{"links":[["old","old"]]},{"glosses":[]}]}
+{"word":"water","pos":"noun","lang_code":"en","lang":"English","senses":[{"glosses":["a clear liquid"]}]}
+{"pos":"noun","lang_code":"th","lang":"Thai","senses":[{"glosses":["entry without a headword"]}]}
+{"word":"ขาด","pos":"verb","lang_code":"th","lang":"Thai","senses":[
+not json at all
+[1,2]
+42
+

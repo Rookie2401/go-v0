@@ -7,7 +7,7 @@ described: `npm run corpus:prove` imports clearly marked synthetic files and che
 
 | Step | What you do | Command / place |
 |---|---|---|
-| 1. Write | Start from a template and fill it in | `docs/import/templates/{ci-story,dialogue,scripture}.v2.json` |
+| 1. Write | Start from a template and fill it in | `docs/import/templates/{ci-story,dialogue,scripture,personal-copy}.v2.json` (a book you own: `npm run corpus:convert`, §9) |
 | 2. Validate | Find every problem with its path and a hint | `npm run corpus:validate -- <file-or-dir>…` |
 | 3. Verify Scripture | Scripture only: compare the wording byte-for-byte with a published source | `node scripts/verify-scripture.mjs` |
 | 4. Review | A named person checks the text and records it in `review` | `npm run corpus:review -- <file> --by "<name>"` |
@@ -109,9 +109,9 @@ is ignored by the validator — the templates use it for inline explanations.
     "title": "…", "author": "…", "publisher": "…", "url": "…", "edition": "…",   // author…edition optional
     "attribution": "Written by … for the Go course.",   // the learner-visible credit line
     "provenance": "Where the words came from and what has NOT been checked.",
-    "rights": "owner-authored",     // public-domain | licensed | owner-authored | generated | user-private | unverified
+    "rights": "owner-authored",     // public-domain | licensed | owner-authored | generated | user-private | personal-copy | unverified
     "licenseNote": "…",             // optional
-    "authorship": "human"           // human | public-domain | licensed | generated | learner
+    "authorship": "human"           // human | public-domain | licensed | generated | learner | published
   },
   "review": { "status": "unreviewed" },   // see §4
   "difficulty": "A1",               // optional: A0 A1 A2 B1 B2 C1 native
@@ -122,6 +122,8 @@ is ignored by the validator — the templates use it for inline explanations.
   "generated": false,               // true for machine-generated text (badged in the reader); never for Scripture
   "scripture": { … },               // only for contentType "scripture", see §3
   "english": { "source": "…" },     // required when any English is supplied: where the English came from
+  "work": { "slug": "mana-mani-1", "chapter": { "index": 3 } },   // optional: the curriculum work and chapter, see §7
+  "notes": [ { "match": "…", "kind": "cultural", "body": "…" } ], // optional: notes anchored by sentence text, see §8
   "sections": [ { "title": "…", "chapter": 3, "paragraphs": [ … ] } ]
 }
 ```
@@ -257,6 +259,12 @@ runs in the app's importer (`validateDocument` / `validateBatch` in `src/ingest`
 | `not-nfc` · `edge-whitespace` | warning | The text is stored exactly as supplied anyway. |
 | `adapter-would-split` | warning | The adapter would split a declared sentence; your declaration wins. |
 | `low-analysis-coverage` | warning | Under 60 % of words can be analysed: the text reads fine, but word help will be missing. Add `spans` or extend the lexicon. |
+| `unknown-work` | warning | `work.slug` is not among the works the app holds for that course (§7). The text imports; it just does not appear under a work. |
+| `note-anchor-missing` | error | A document-level note's `match` (with `occurrence`) is in no sentence (§8). |
+| `note-not-on-token` | error | A note's `start`/`end` do not begin and end on word boundaries of its sentence. |
+| `personal-copy-scripture` | error | "Scripture is never a personal copy: it must be an identified, verified translation" (§9). |
+| `personal-copy-generated` | error | "generated text is not a published work, so it cannot be a personal copy" (§9). |
+| `personal-copy-authorship` | error | A personal copy needs `source.authorship: "published"` (§9). |
 
 ---
 
@@ -363,6 +371,9 @@ published  ⇔  review.status ∈ {reviewed, approved} with a named reviewedBy
            ∧  Scripture only: translationId + edition + a complete verification, and never generated
 ```
 
+One exception: a **personal copy** (`source.rights: "personal-copy"`, §9) is published without a review when it is a
+published, non-generated, non-Scripture work with a provenance; the Text then carries `personalCopy: true`.
+
 Every failed condition adds one actionable sentence to `unpublishedReasons`, shown by `corpus:validate`, by
 `corpus:check` and (in preview mode) by the app. A `generated` text is publishable once reviewed; the reader keeps
 badging it. The bundled corpus today: es and de Scripture are verified and published; every story and dialogue is
@@ -380,7 +391,7 @@ prints every text's publication status and checks the verified Scripture.
 **In-app importer.** Settings → Content: choose one or more `.json` files → the validation report (paths and hints)
 → import. The same validator and importer run.
 
-**In code.** `importDocuments(store, registry, docs, { clock? }) → ImportReport`:
+**In code.** `importDocuments(store, registry, docs, { clock?, lexicon? }) → ImportReport` (`lexicon` is §10):
 per document `{ id, action: 'created' | 'updated' | 'unchanged' | 'rejected', contentVersion, published,
 unpublishedReasons, issues, analysisCoverage, sentencesAdded, sentencesRetired }`.
 `ingestDocument` / `ingestAll` are thin wrappers that throw `CorpusValidationError` (with `.issues`) when invalid.
@@ -421,7 +432,114 @@ nothing is written unless every converted document validates). It reads the Scri
 
 ---
 
-## 7. For developers
+## 7. Works and chapters
+
+A course ladder (`src/course`, e.g. `THAI_WORKS`) lists the **works** the course recommends; a work becomes readable
+when texts for it are imported, one `Text` per chapter. Say where a document belongs with the optional `work` block:
+
+```jsonc
+"work": { "slug": "mana-mani-1", "courseId": "thailand-th", "chapter": { "index": 3, "title": "A visit" } }
+```
+
+* `slug` — `[a-z0-9-]+`, the work's slug in the ladder. `courseId` is optional: the default is the first course in
+  `COURSES` with the document's language, and it must be a course of that language.
+* The Text gets `workId = ids.work(courseId ?? that course, slug)` and `chapter = { index, title? }`. `index` is a whole
+  number from 1; **0 is front matter**. (`sections[].chapter` is a different thing: the Scripture chapter number.)
+* Validation: a malformed block is an error (`invalid-id`, `invalid-value`). When the app's `works` table has works for that
+  course and the slug is not one of them, the warning `unknown-work` appears (the text still imports). The importer fills
+  `ValidateContext.knownWorks` from the store; without it the check is skipped.
+* Changing `work` later is a metadata edit: the rows update, the content version does not move.
+
+---
+
+## 8. Notes
+
+A **note** is a short remark attached to a place in a text: `cultural`, `regional`, `register`, `literary`, `historical`
+or `clause-structure` (labelled spans over the sentence's own words). A note never changes or replaces text.
+
+```jsonc
+// on a declared sentence
+{ "text": "…", "notes": [ { "kind": "cultural", "body": "…", "start": 0, "end": 12, "topics": ["kinship"] } ] }
+// on the document: anchored by matching the sentence text (works for raw paragraphs too)
+"notes": [ { "match": "words in the sentence", "occurrence": 2, "kind": "regional", "body": "…" } ]
+```
+
+* `start`/`end` (both or neither) are UTF-16 offsets inside the sentence and must be the start of a word and the end of a
+  word (`note-not-on-token`); `spans` are `{start, end, label}` stretches that only need to lie inside the sentence on
+  character boundaries. A note with neither is about the whole sentence.
+* A document-level note belongs to the first sentence whose **exact** text contains `match` (no normalisation), or the
+  `occurrence`-th (1-based) such sentence. No such sentence is the error `note-anchor-missing`.
+* `provenance` is `human` (default) or `machine`; `reviewStatus` defaults to `approved` for a human note and
+  `unreviewed` for a machine note, which is stored but flagged — the UI decides what to show. A machine note given
+  `reviewed`/`approved` must also say who reviewed it (`by`). `by` is recorded in the text's transformation log.
+* Stored as `ContentNote` rows in the `notes` table (`ids.note(textId, key)`, key = hash of the sentence key + kind + body),
+  **replaced as a set with the text**: an edited sentence takes its notes with its new key, removed notes are deleted, an
+  unchanged re-import writes nothing.
+
+---
+
+## 9. Your own copy of a book
+
+A learner who holds a copy of a published book can read it in Go. The text goes in as a **personal copy**:
+`source.rights: "personal-copy"`, `authorship: "published"`, a non-empty `provenance`. It is readable on this device,
+labelled "Your copy", and **published without a native review** (it is a published native work) — the transcription is
+labelled unchecked until someone checks it. Refused with a clear fix: Scripture (`personal-copy-scripture`), generated text
+(`personal-copy-generated`), any other authorship (`personal-copy-authorship`), no provenance (`missing-provenance`).
+A review explicitly marked `rejected` still holds the text back. Personal copies are never bundled: nothing is ever
+written under `data/corpus/`; the converter writes to `data/private/` (git-ignored).
+
+```
+npm run corpus:convert -- book.txt --lang th --work mana-mani-1 [--title "…"] [--chapters auto|none|<regex>] \
+    [--copy-note "my paperback, 12th printing"] [--out data/private/th/mana-mani-1]
+```
+
+It looks the work up in the ladder, writes one JSON document per chapter (`<slug>-ch01.json`, …), validates each with the
+real validator and prints what it found, then asks you to import the files (Settings → Content → Import texts). It refuses
+an `--out` inside `data/corpus/` and writes nothing when a document has an error (usually a wrong `--lang`).
+
+What the conversion does (`plainTextToDocuments(text, options)` in `src/ingest`):
+
+* **The text is not altered.** One raw paragraph `{ "text": … }` per non-empty line; blank lines are skipped. The only edit is
+  trimming spaces and tabs at the two ends of a line (indentation), and the notes say how many lines it touched. No
+  Unicode normalisation, no spaces added to Thai. A byte order mark and CRLF line endings are handled.
+* **Chapters** (`--chapters auto`, the default): a line that is only a heading — `บทที่ ๑`, `บทที่ 12`, `ตอนที่ ๓`,
+  `ภาคที่ ๒`, `Chapter 4` (Thai or Western digits), optionally followed by a title on the same line — starts a chapter. The
+  heading line becomes the title of the chapter's section and of the document ("<work title> — <heading>"). `none` makes one
+  document; any other value is a regular expression matched against whole lines (a named group `title` supplies the
+  chapter title). Chapters are numbered in the order they appear; a heading with no text after it is skipped (and said so).
+  Text before the first heading becomes chapter 0, "Front matter", only if it has content.
+* **Each document**: id `<prefix>-ch<NN>` (prefix = work slug), `contentType` story unless told otherwise, corpus
+  `personal-<lang>` "Your books" (`comprehensible-input`), source built from the work (title, author, publisher), attribution
+  "<title> — <author>. Your own copy; not distributed.", provenance "Supplied by the learner from a personal copy (<copy
+  note>); transcription not checked.", `review: unreviewed`, `generated: false`, and the `work` block of §7.
+
+---
+
+## 10. Dictionary analysis
+
+When a dictionary is installed for the text's language (`ImportOptions.lexicon`, a function from language to
+`LexiconSource`; the app passes the one it loaded), `importDocuments` makes a pre-pass per document: it tokenizes with the
+adapter, collects the normalized forms of word tokens the adapter **cannot** analyse (a candidate that says nothing but a
+decoding does not count), looks them up once, and `planDocument(doc, registry, { dictionary, dictionaryId })` uses the
+entries:
+
+* the candidates are the entries in order: `lemma` = the form, `pos`, `gloss` = the first two glosses joined with "; ",
+  `register`, `role`, `definition`, `notes.respelling` / `ipa` / `romanization` when present, `notes.senses` = the remaining
+  glosses, `notes.classifiers`;
+* the first is the best candidate and the rest are alternatives; confidence is **0.6** when the form has one part of speech
+  and **0.45** when it has several — a dictionary lists what a form can mean, not what it means here;
+* analyzer `dict:<dictionary id>`, provenance `lexicon`.
+
+**Precedence:** the adapter's own lexicon, author `spans` and human `corrections` always win; the dictionary only fills
+gaps. `register`, `role` and `definition` are carried onto the stored `TokenAnalysis` from any candidate (adapter or
+dictionary); syllables are never stored (decoded on demand). Validation stays dictionary-free; the import report's
+`analysisCoverage` includes what the dictionary supplied. The dictionary id is part of the plan signature, so installing,
+changing or removing a dictionary re-analyses a text on its next import (and adds a log record); the same dictionary again is
+a no-op. If the dictionary cannot be read, the text imports without it and the report says so in `note`.
+
+---
+
+## 11. For developers
 
 * **Testimony revisions.** GoTell materializes each accepted revision as a private Text:
   ```ts
@@ -436,5 +554,5 @@ nothing is written unless every converted document validates). It reads the Scri
   `{ words, analysed, coverage, unanalysed }`. Adapters' `support` declarations (shown in Settings → Language
   support) say what each language can honestly do; lemmatization is `seed-only` everywhere — the lexicons cover the
   seed corpus only, so supplied texts will have unanalysed words until `spans` or lexicon entries are added.
-* **Files.** `src/ingest/{format,publish,plan,import,review,history,migrate,testimony,index}.ts` · `scripts/corpus-*.mts` ·
+* **Files.** `src/ingest/{format,publish,plan,import,review,history,migrate,testimony,plaintext,index}.ts` · `scripts/corpus-*.mts` ·
   `test/ingest/`.

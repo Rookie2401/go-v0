@@ -165,6 +165,10 @@ export interface SyllableAnalysis {
   cluster?: string; // true cluster (กร, ปล…) or leading-consonant pattern (ห นำ, อ นำ)
   vowel?: string; // the vowel as written, with ◌ for the consonant position
   vowelLength?: 'short' | 'long';
+  /** The vowel's sound in plain romanized form ("a", "o", "ue"…); what the learner needs when the vowel is unwritten (vowel "◌"). */
+  vowelSound?: string;
+  /** This syllable as a regular respelling, only when sound and spelling part ways (ขนม → second syllable "หนม"). */
+  respelled?: string;
   final?: string; // final consonant letter(s) as written
   finalSound?: string; // k p t m n ŋ j w
   ending: 'open' | 'live' | 'dead';
@@ -194,5 +198,7 @@ export interface ContentNote {
   body: string;
   topics?: string[]; // kinship, Buddhism, food, Teochew…
   provenance: 'human' | 'machine' | 'lexicon';
+  /** Who wrote the note, when the import says so. */
+  by?: string;
   reviewStatus: ReviewStatus;
 }

@@ -22,17 +22,20 @@
  * small interfaces in `AppServices` (ingest / backup / speech), bound to the real modules here.
  */
 import { COURSES, LANGUAGE_ROWS, StoreEventBus, hash } from '../core';
-import type { AppStore, Course, EventBus, GoListen, ProviderAvailability, TtsProvider, User } from '../core';
+import type { AppStore, Course, EventBus, GoListen, LanguageCode, LexiconSource, ProviderAvailability, TtsProvider, User } from '../core';
+import { createCourseCatalog } from '../course';
 import { createDexieStore } from '../db/dexie';
+import { createFetchLexiconSource } from '../dict';
 import { createAdapterRegistry } from '../adapters';
 import { exportLearner, restoreLearner, validateBackup } from '../backup';
 import type { BackupFile } from '../backup';
 import { createGoLearn } from '../golearn';
 import { AZURE_PROVIDER_ID, AzureSpeechProvider, ProxySpeechProvider, createGoListen } from '../golisten';
 import { createGoTell } from '../gotell';
-import { INGEST_TOOL, computePublished, contentHistory, importDocuments, loadBundledCorpus, validateBatch } from '../ingest';
-import type { CorpusDocument } from '../ingest';
+import { INGEST_TOOL, contentHistory, importDocuments, loadBundledCorpus, previewDocuments } from '../ingest';
+import type { ImportOptions } from '../ingest';
 import type { DocumentReport } from '../ingest';
+import { plainTextToDocuments } from '../ingest/plaintext';
 import type { AppServices, BackupApi, ImportDocView, IngestApi, SpeechApi, StartupInfo } from '../ui/context';
 import { resolveDbName, sandboxProblem } from '../ui/sandbox';
 import {
@@ -112,33 +115,26 @@ function toView(d: DocumentReport, title?: string): ImportDocView {
   };
 }
 
-/** The importer bound to this store and these adapters (the in-app importer in Settings → Content). */
-export function createIngestApi(store: AppStore, adapters: AppServices['adapters'], clock?: () => string): IngestApi {
+/** The importer bound to this store and these adapters (the in-app importer in Settings → Content and the course pages). */
+export function createIngestApi(store: AppStore, adapters: AppServices['adapters'], clock?: () => string, lexicon?: AppServices['lexicon']): IngestApi {
+  const importOpts: ImportOptions = { clock, ...(lexicon ? { lexicon } : {}) };
   return {
+    convertPlainText: (text, opts) => plainTextToDocuments(text, opts),
     async validate(docs) {
-      const existingTexts: Array<{ id: string; sourceId: string }> = [];
-      for (const d of docs) {
-        const o = d as { id?: unknown; lang?: unknown } | null;
-        if (o && typeof o.id === 'string' && typeof o.lang === 'string') {
-          const t = await store.texts.get(`text:${o.lang}:${o.id}`);
-          if (t) existingTexts.push({ id: t.id, sourceId: t.sourceId });
-        }
-      }
-      const batch = validateBatch(docs, { registry: adapters, existingTexts });
-      return batch.documents.map((r, i): ImportDocView => {
-        // Say BEFORE importing whether the document would be published, and what is still missing if not.
-        const valid = !r.issues.some((x) => x.severity === 'error');
-        const decision = valid ? computePublished(docs[i] as CorpusDocument) : undefined;
-        return {
-          id: r.id, title: titleOf(docs[i]), action: 'valid',
-          issues: r.issues.map((x) => ({ path: x.path, code: x.code, message: x.message, hint: x.hint, severity: x.severity })),
-          analysisCoverage: r.coverage && r.coverage.words > 0 ? r.coverage.coverage : undefined,
-          ...(decision ? { published: decision.published, unpublishedReasons: decision.unpublishedReasons } : {}),
-        };
-      });
+      // A dry run of the import itself: the same validation (known works included), the same planning with the
+      // installed dictionary. So the preview says BEFORE importing what the result will say after: the analysis
+      // coverage and whether the document would be readable, with what is still missing if not.
+      const previews = await previewDocuments(store, adapters, docs, importOpts);
+      return previews.map((r, i): ImportDocView => ({
+        id: r.id, title: titleOf(docs[i]), action: 'valid',
+        issues: r.issues.map((x) => ({ path: x.path, code: x.code, message: x.message, hint: x.hint, severity: x.severity })),
+        analysisCoverage: r.analysisCoverage && r.analysisCoverage.words > 0 ? r.analysisCoverage.coverage : undefined,
+        ...(r.published !== undefined ? { published: r.published, unpublishedReasons: r.unpublishedReasons } : {}),
+        ...(r.note ? { note: r.note } : {}),
+      }));
     },
     async import(docs) {
-      const report = await importDocuments(store, adapters, docs, { clock });
+      const report = await importDocuments(store, adapters, docs, importOpts);
       return report.documents.map((d, i) => toView(d, titleOf(docs[i])));
     },
     history: (text) => contentHistory(text),
@@ -235,6 +231,16 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   golearn.attach();
   const gotell = createGoTell({ store, bus, adapters, golearn, golisten, clock });
 
+  // ── the reading ladder and the dictionaries ──
+  // One lazy source per language: createFetchLexiconSource makes no request until it is first asked something.
+  const catalog = createCourseCatalog({ store, golearn });
+  const sources = new Map<LanguageCode, LexiconSource>();
+  const lexicon: AppServices['lexicon'] = (lang) => {
+    let s = sources.get(lang);
+    if (!s) { s = createFetchLexiconSource(lang); sources.set(lang, s); }
+    return s;
+  };
+
   // ── bundled content through the importer ──
   if (!opts.skipCorpus) {
     const docs = loadBundledCorpus();
@@ -257,6 +263,12 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   // A restored learner row may exist without the device-local team choice (it is not part of a backup): adopt it.
   if (user && !recallChosenCourse()) rememberChosenCourse(user.courseId);
   if (user) startup.policyRebuilt = await golearn.ensureCurrent(user.id);
+  // The ladder of the active course goes into the store (a no-op for a course without one). A failure never stops the app.
+  if (course) {
+    try { await catalog.install(course.id); } catch (e) {
+      startup.warnings = [...(startup.warnings ?? []), `The reading ladder could not be set up: ${e instanceof Error ? e.message : String(e)}`];
+    }
+  }
 
   // ── speech-provider controls for Settings → Speech ──
   const speech: SpeechApi = {
@@ -287,7 +299,8 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
 
   const services: AppServices = {
     store, bus, adapters, golearn, golisten, gotell,
-    ingest: createIngestApi(store, adapters, clock),
+    ingest: createIngestApi(store, adapters, clock, lexicon),
+    catalog, lexicon,
     backup: createBackupApi(store),
     speech,
     startup,

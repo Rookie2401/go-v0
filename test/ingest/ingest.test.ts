@@ -238,7 +238,7 @@ describe('import of the bundled corpus', () => {
     const rows = await store.analyses.all();
     expect(rows.length).toBeGreaterThan(500);
     for (const a of rows) {
-      expect(a.analyzer).toMatch(/^adapter-(es|sq|th|hi|de)@1$/);
+      expect(a.analyzer).toMatch(/^adapter-(es|sq|th|hi|de)@\d+$/);
       expect(['lexicon', 'machine']).toContain(a.provenance);
       expect(a.confidence).toBeGreaterThan(0);
       expect(a.confidence).toBeLessThanOrEqual(1);
@@ -252,7 +252,7 @@ describe('import of the bundled corpus', () => {
     for (const t of await store.texts.all()) {
       const tools = t.transformations.map((x) => x.tool);
       expect(tools).toContain('ingest@2');
-      expect(tools).toContain(`adapter-${t.lang}@1`);
+      expect(tools).toContain(`adapter-${t.lang}@${registry.get(t.lang).version}`);
       expect(tools).toContain('review');
       expect(t.contentVersion).toBe(1);
       expect(t.importedAt).toBe(clock());

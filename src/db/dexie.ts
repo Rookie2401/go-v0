@@ -48,6 +48,19 @@ export const SCHEMA_V1: Record<string, string> = {
   suggestions: 'id,testimonyId,userId,draftHash,status', [BLOBS_TABLE]: 'id',
 };
 
+/**
+ * The schema as shipped in version 2 (contract v2): `drafts`, `meta`, `texts.reviewStatus`, `sentences.key`, but no
+ * curriculum tables (`stages`, `works`, `notes`) and no `texts.workId` index. Written out literally for the same reason as
+ * SCHEMA_V1: an upgrade test opens a real database at this version and upgrades it to version 3.
+ */
+export const SCHEMA_V2: Record<string, string> = {
+  ...SCHEMA_V1,
+  texts: 'id,corpusId,lang,kind,sourceId,reviewStatus',
+  sentences: 'id,textId,paragraphId,lang,textHash,key',
+  drafts: 'id,userId,lang',
+  meta: 'id',
+};
+
 export const MIGRATION_V2_META_ID = 'migration:dexie-v2';
 
 /** Loose row type for the upgrade: rows written by contract v1 lack the v2 fields. */
@@ -207,7 +220,10 @@ export interface DexieAppStore extends AppStore {
 export function createDexieStore(name = 'go-v0'): DexieAppStore {
   const db = new Dexie(name);
   db.version(1).stores(SCHEMA_V1);
-  db.version(2).stores(schemaFor()).upgrade((tx) => upgradeToV2(tx as unknown as Parameters<typeof upgradeToV2>[0]));
+  db.version(2).stores(SCHEMA_V2).upgrade((tx) => upgradeToV2(tx as unknown as Parameters<typeof upgradeToV2>[0]));
+  // Version 3 (Thai course foundation) only ADDS: the `stages`, `works` and `notes` tables and the `texts.workId` index.
+  // Existing rows need no rewriting (a text without `workId` is simply not part of a ladder), so there is no upgrade step.
+  db.version(3).stores(schemaFor());
 
   const store = {} as DexieAppStore;
   for (const tableName of Object.keys(INDEXES) as TableName[]) {

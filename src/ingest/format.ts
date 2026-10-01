@@ -7,10 +7,10 @@
  * The full specification, with examples, is `docs/IMPORT.md`; valid templates are in `docs/import/templates`.
  */
 import type {
-  Authorship, AdapterRegistry, Corpus, LanguageCode, PartOfSpeech, RightsStatus, ReviewStatus, SourceVerification,
+  Authorship, AdapterRegistry, ContentNote, Corpus, LanguageCode, PartOfSpeech, RightsStatus, ReviewStatus, SourceVerification,
   Text, TextKind,
 } from '../core';
-import { LANGUAGES, LANGUAGE_ROWS } from '../core';
+import { COURSES, LANGUAGES, LANGUAGE_ROWS, courseForLang, ids } from '../core';
 import { analysisCoverage, type AnalysisCoverage } from '../adapters/shared';
 import { contentSignatureOf } from './publish';
 
@@ -82,6 +82,41 @@ export interface DocCorrection {
   at: string;
 }
 
+export type NoteKind = ContentNote['kind'];
+
+/**
+ * A note attached to a sentence (cultural, regional, register, literary, historical, clause-structure). It never changes
+ * the text. `start`/`end` (both or neither) mark the words it is about and must lie on token boundaries of the sentence;
+ * `spans` are labelled stretches of the sentence (clause structure) and only need to lie inside it.
+ */
+export interface DocNote {
+  kind: NoteKind;
+  body: string;
+  start?: number;
+  end?: number;
+  spans?: Array<{ start: number; end: number; label: string }>;
+  topics?: string[];
+  /** Default 'human'. A machine note is stored but stays 'unreviewed' until a named person reviews it. */
+  provenance?: 'human' | 'machine';
+  /** Default 'approved' for a human note, 'unreviewed' for a machine note. A reviewed/approved machine note needs `by`. */
+  reviewStatus?: ReviewStatus;
+  /** Who wrote or reviewed the note (recorded in the text's transformation log). */
+  by?: string;
+}
+
+/** A document-level note, anchored to the `occurrence`-th (1-based, default 1) sentence whose exact text contains `match`. */
+export type DocDocumentNote = DocNote & { match: string; occurrence?: number };
+
+/** Where this text sits in the curriculum: `Text.workId` and `Text.chapter`. */
+export interface DocWork {
+  /** `[a-z0-9-]+`; the slug of a work in the course ladder (`src/course`). */
+  slug: string;
+  /** Default: the first course in COURSES for this language. */
+  courseId?: string;
+  /** Position of this text in the work; 0 is front matter. */
+  chapter?: { index: number; title?: string };
+}
+
 export interface DocSentence {
   /** Optional author id (stable sentence key). Without it the key is a hash of the exact text. */
   id?: string;
@@ -94,6 +129,7 @@ export interface DocSentence {
   speaker?: string;
   spans?: DocSpan[];
   corrections?: DocCorrection[];
+  notes?: DocNote[];
 }
 
 /** A paragraph whose sentences are declared one by one. `separator` joins them into Paragraph.originalText (default " "). */
@@ -134,6 +170,10 @@ export interface CorpusDocument {
   /** Provenance of the English rescue lines; required when any English is supplied. */
   english?: { source: string };
   sections: DocSection[];
+  /** The curriculum work (and chapter) this text belongs to. */
+  work?: DocWork;
+  /** Notes anchored by matching sentence text (see `DocDocumentNote`); notes on a declared sentence go in its `notes`. */
+  notes?: DocDocumentNote[];
   /** Ignored by the validator (templates use it for inline comments). */
   _comment?: unknown;
 }
@@ -152,7 +192,9 @@ export type ValidationCode =
   | 'scripture-translation-missing' | 'scripture-edition-missing' | 'scripture-book-invalid' | 'scripture-chapter-invalid'
   | 'scripture-corpus' | 'scripture-generated' | 'invalid-verification'
   | 'missing-provenance' | 'unverified-without-note' | 'review-missing-reviewer'
-  | 'review-signature-mismatch' | 'not-nfc' | 'edge-whitespace' | 'adapter-would-split' | 'low-analysis-coverage';
+  | 'review-signature-mismatch' | 'not-nfc' | 'edge-whitespace' | 'adapter-would-split' | 'low-analysis-coverage'
+  | 'unknown-work' | 'note-anchor-missing' | 'note-not-on-token'
+  | 'personal-copy-scripture' | 'personal-copy-generated' | 'personal-copy-authorship';
 
 export interface ValidationIssue {
   /** JSON path of the offending value, e.g. `sections[0].paragraphs[1].sentences[2].spans[0]`. */
@@ -168,6 +210,8 @@ export interface ValidateContext {
   registry: AdapterRegistry;
   /** Texts already in the store: a document whose text id exists under ANOTHER source id is a conflict. */
   existingTexts?: ReadonlyArray<{ id: string; sourceId: string }>;
+  /** Ids of the works in the store's `works` table. A document naming a work of a course that has works, but not this one, gets `unknown-work`. */
+  knownWorks?: ReadonlySet<string>;
 }
 
 export class CorpusValidationError extends Error {
@@ -182,8 +226,9 @@ export class CorpusValidationError extends Error {
 
 // ───────────────────────────── constants ─────────────────────────────
 
-const RIGHTS: readonly RightsStatus[] = ['public-domain', 'licensed', 'owner-authored', 'generated', 'user-private', 'unverified'];
-const AUTHORSHIP: readonly Authorship[] = ['human', 'public-domain', 'licensed', 'generated', 'learner'];
+const RIGHTS: readonly RightsStatus[] = ['public-domain', 'licensed', 'owner-authored', 'generated', 'user-private', 'personal-copy', 'unverified'];
+const AUTHORSHIP: readonly Authorship[] = ['human', 'public-domain', 'licensed', 'generated', 'learner', 'published'];
+const NOTE_KINDS: readonly NoteKind[] = ['cultural', 'regional', 'register', 'literary', 'historical', 'clause-structure'];
 const KINDS: readonly TextKind[] = ['story', 'dialogue', 'nonfiction', 'scripture', 'transcript', 'testimony', 'generated-prep'];
 const CORPUS_KINDS: readonly Corpus['kind'][] = ['comprehensible-input', 'scripture', 'testimony'];
 const REVIEWS: readonly ReviewStatus[] = ['unreviewed', 'in-review', 'reviewed', 'approved', 'rejected'];
@@ -207,9 +252,11 @@ const DOC_ID = /^[a-z0-9][a-z0-9-]*$/;
 const SENTENCE_ID = /^[A-Za-z0-9][A-Za-z0-9._-]*$/;
 const LOCALE = /^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$/;
 
-const DOC_KEYS = ['schemaVersion', 'id', 'lang', 'locale', 'title', 'contentType', 'corpus', 'source', 'review', 'difficulty', 'topics', 'editorialTags', 'prepTargets', 'speakers', 'generated', 'scripture', 'english', 'sections'];
+const DOC_KEYS = ['schemaVersion', 'id', 'lang', 'locale', 'title', 'contentType', 'corpus', 'source', 'review', 'difficulty', 'topics', 'editorialTags', 'prepTargets', 'speakers', 'generated', 'scripture', 'english', 'sections', 'work', 'notes'];
 const SOURCE_KEYS = ['id', 'title', 'author', 'publisher', 'url', 'edition', 'attribution', 'provenance', 'rights', 'licenseNote', 'authorship'];
-const SENTENCE_KEYS = ['id', 'text', 'english', 'verseRefs', 'speaker', 'spans', 'corrections'];
+const SENTENCE_KEYS = ['id', 'text', 'english', 'verseRefs', 'speaker', 'spans', 'corrections', 'notes'];
+const WORK_SLUG = /^[a-z0-9-]+$/;
+const NOTE_KEYS = ['kind', 'body', 'start', 'end', 'spans', 'topics', 'provenance', 'reviewStatus', 'by'];
 
 const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
 const isStr = (v: unknown): v is string => typeof v === 'string' && v.trim().length > 0;
@@ -219,6 +266,25 @@ export const parseVerseRef = (ref: string): { book: string; chapter: number; ver
   const m = VERSE_REF.exec(ref);
   return m ? { book: m[1], chapter: Number(m[2]), verse: Number(m[3]) } : undefined;
 };
+
+/** `Text.workId` of a document: `ids.work(courseId ?? the first course for its language, slug)`; undefined without a `work`. */
+export const workIdOf = (doc: { lang: LanguageCode; work?: { slug: string; courseId?: string } }): string | undefined =>
+  doc.work && typeof doc.work.slug === 'string' ? ids.work(doc.work.courseId ?? courseForLang(doc.lang).id, doc.work.slug) : undefined;
+
+/**
+ * Anchor document-level notes: for each note, the index (into `sentenceTexts`, document order) of the `occurrence`-th
+ * (1-based, default 1) sentence whose exact text contains `match`, or undefined when there is none.
+ */
+export function anchorDocumentNotes(notes: ReadonlyArray<{ match: string; occurrence?: number }>, sentenceTexts: readonly string[]): Array<number | undefined> {
+  return notes.map((n) => {
+    if (typeof n.match !== 'string' || n.match.length === 0) return undefined;
+    let want = n.occurrence ?? 1;
+    for (let i = 0; i < sentenceTexts.length; i++) {
+      if (sentenceTexts[i].includes(n.match) && --want === 0) return i;
+    }
+    return undefined;
+  });
+}
 
 // ───────────────────────────── validation ─────────────────────────────
 
@@ -295,6 +361,39 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
     err('corpus', 'invalid-value', 'corpus must be {id, kind, title}', `kind is one of ${CORPUS_KINDS.join(', ')}.`);
   }
 
+  // work: where this text sits in the curriculum (Text.workId / Text.chapter)
+  if (d.work !== undefined) {
+    const w = d.work;
+    if (!isObj(w)) err('work', 'invalid-value', 'work must be an object {slug, courseId?, chapter?}', 'e.g. "work": {"slug": "mana-mani-1", "chapter": {"index": 3, "title": "…"}}');
+    else {
+      for (const k of Object.keys(w)) if (!['slug', 'courseId', 'chapter'].includes(k) && !k.startsWith('_')) warn(`work.${k}`, 'unknown-field', `unknown work field "${k}" is ignored`, 'Check the spelling against docs/IMPORT.md.');
+      if (typeof w.slug !== 'string' || w.slug.length === 0) required('work.slug', 'work.slug', 'Give the slug of the work in the course ladder, e.g. "mana-mani-1".');
+      else if (!WORK_SLUG.test(w.slug)) err('work.slug', 'invalid-id', `work slug "${w.slug}" is not valid`, 'Use lower-case letters, digits and hyphens (the slug in src/course).');
+      let courseId: string | undefined;
+      if (w.courseId !== undefined) {
+        const c = typeof w.courseId === 'string' ? COURSES.find((x) => x.id === w.courseId) : undefined;
+        if (!c) err('work.courseId', 'invalid-value', `work.courseId ${JSON.stringify(w.courseId)} is not a course`, `Use one of ${COURSES.map((x) => x.id).join(', ')}, or omit it to use the course of the document's language.`);
+        else if (lang && c.lang !== lang) err('work.courseId', 'invalid-value', `course "${c.id}" teaches "${c.lang}" but the document is "${lang}"`, 'Use a course of the same language, or correct lang.');
+        else courseId = c.id;
+      } else if (lang) courseId = courseForLang(lang).id;
+      if (w.chapter !== undefined) {
+        const ch = w.chapter;
+        if (!isObj(ch) || !isInt(ch.index) || ch.index < 0 || (ch.title !== undefined && !isStr(ch.title))) {
+          err('work.chapter', 'invalid-value', 'work.chapter must be {index, title?} with a whole-number index (1 or more; 0 is front matter)', 'e.g. {"index": 3, "title": "A visit"}');
+        }
+      }
+      if (courseId && typeof w.slug === 'string' && WORK_SLUG.test(w.slug) && ctx.knownWorks) {
+        const prefix = `work:${courseId}:`;
+        let courseHasWorks = false;
+        for (const id of ctx.knownWorks) if (id.startsWith(prefix)) { courseHasWorks = true; break; }
+        if (courseHasWorks && !ctx.knownWorks.has(ids.work(courseId, w.slug))) {
+          warn('work.slug', 'unknown-work', `"${w.slug}" is not a work of course ${courseId}`,
+            'The text imports, but it will not appear under a work of the ladder. Check the slug against the works in src/course (docs/IMPORT.md, "Works and chapters").');
+        }
+      }
+    }
+  }
+
   // source
   const src = d.source;
   let provenanceText = '';
@@ -309,6 +408,19 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
     else provenanceText = src.provenance;
     if (!(RIGHTS as readonly unknown[]).includes(src.rights)) err('source.rights', 'invalid-value', `source.rights must be one of ${RIGHTS.join(', ')}`, 'Say what you know about the rights; use "unverified" if you do not know.');
     if (!(AUTHORSHIP as readonly unknown[]).includes(src.authorship)) err('source.authorship', 'invalid-value', `source.authorship must be one of ${AUTHORSHIP.join(', ')}`, 'Say who wrote the words.');
+    if (src.rights === 'personal-copy') {
+      if (d.contentType === 'scripture') {
+        err('source.rights', 'personal-copy-scripture', 'Scripture is never a personal copy: it must be an identified, verified translation',
+          'Use rights "public-domain" or "licensed" with a scripture block and verification (docs/IMPORT.md §3), or import it as a story/nonfiction text if it is not Scripture.');
+      }
+      if (d.generated === true || src.authorship === 'generated') {
+        err('source.authorship', 'personal-copy-generated', 'generated text is not a published work, so it cannot be a personal copy',
+          'Set rights "generated" (and keep generated: true) for machine-written text; a personal copy is the text of a book somebody published.');
+      } else if (src.authorship !== 'published') {
+        err('source.authorship', 'personal-copy-authorship', 'a personal copy must have authorship "published"',
+          'Set source.authorship to "published" (a book by a native author); for your own writing use rights "user-private" and authorship "learner".');
+      }
+    }
     if (src.rights === 'unverified' && !/unverified|replace|verify/i.test(`${provenanceText} ${typeof src.licenseNote === 'string' ? src.licenseNote : ''}`)) {
       err('source.rights', 'unverified-without-note', 'rights "unverified" needs a note saying the text must be replaced or verified before release',
         'Add a sentence to source.provenance (or licenseNote) such as "unverified sample — replace with a licensed text before release".');
@@ -379,6 +491,7 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
   let analysedTotal = 0;
   const unknownForms = new Set<string>();
   const verseLast = new Map<string, [number, number]>(); // book → last (chapter, verse)
+  const allTexts: string[] = []; // every sentence text in document order (document-level note anchors)
 
   const checkVerseRefs = (refs: unknown, path: string, sectionChapter: number | undefined) => {
     if (!Array.isArray(refs) || refs.length === 0) {
@@ -449,6 +562,55 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
     }
   };
 
+  /** One note (sentence-level or document-level). `text` is the sentence it is anchored to, when known. */
+  const checkNote = (n: unknown, p: string, text: string | undefined, docLevel: boolean) => {
+    if (!isObj(n)) { err(p, 'invalid-value', 'a note must be an object', 'Use {"kind": "cultural", "body": "…"}.'); return; }
+    for (const k of Object.keys(n)) {
+      if (!NOTE_KEYS.includes(k) && !(docLevel && (k === 'match' || k === 'occurrence')) && !k.startsWith('_')) warn(`${p}.${k}`, 'unknown-field', `unknown note field "${k}" is ignored`, 'Check the spelling against docs/IMPORT.md.');
+    }
+    if (!(NOTE_KINDS as readonly unknown[]).includes(n.kind)) err(`${p}.kind`, 'invalid-value', `note kind must be one of ${NOTE_KINDS.join(', ')}`, 'Say what sort of note this is.');
+    if (!isStr(n.body)) required(`${p}.body`, 'body (the text of the note)', 'Write the note: concise, plain, about this place in the text.');
+    if (n.provenance !== undefined && n.provenance !== 'human' && n.provenance !== 'machine') err(`${p}.provenance`, 'invalid-value', 'note provenance must be "human" or "machine"', 'Say whether a person or a machine wrote the note (default "human").');
+    if (n.reviewStatus !== undefined && !(REVIEWS as readonly unknown[]).includes(n.reviewStatus)) err(`${p}.reviewStatus`, 'invalid-value', `note reviewStatus must be one of ${REVIEWS.join(', ')}`, 'Use "unreviewed" until a named person has checked the note.');
+    else if ((n.reviewStatus === 'reviewed' || n.reviewStatus === 'approved') && n.provenance === 'machine' && !isStr(n.by)) {
+      err(`${p}.by`, 'review-missing-reviewer', `a machine note with reviewStatus "${String(n.reviewStatus)}" needs "by" (who reviewed it)`, 'Name the person who checked the note; reviews are never anonymous.');
+    }
+    if (n.by !== undefined && !isStr(n.by)) err(`${p}.by`, 'invalid-value', 'by must be a non-empty string', 'Name the person who wrote or reviewed the note.');
+    if (n.topics !== undefined && (!Array.isArray(n.topics) || n.topics.some((t) => typeof t !== 'string'))) err(`${p}.topics`, 'invalid-value', 'topics must be an array of strings', 'e.g. ["kinship", "Buddhism"]');
+
+    if ((n.start === undefined) !== (n.end === undefined)) err(p, 'invalid-value', 'start and end go together', 'Give both offsets (the words the note is about) or neither (a note on the whole sentence).');
+    else if (n.start !== undefined) {
+      if (!isInt(n.start) || !isInt(n.end)) err(p, 'invalid-value', 'start and end must be integers (UTF-16 offsets into the sentence text)', 'Offsets count UTF-16 code units: text.slice(start, end) are the words.');
+      else if (n.end <= n.start) err(p, 'span-empty', `note range [${n.start}, ${n.end}) is empty`, 'end must be greater than start.');
+      else if (text !== undefined) {
+        if (n.start < 0 || n.end > text.length) err(p, 'span-out-of-bounds', `note range [${n.start}, ${n.end}) is outside the sentence (length ${text.length})`, 'Offsets must lie within the sentence text.');
+        else {
+          const toks = adapter ? adapter.tokenize(text) : [];
+          const from = n.start;
+          const to = n.end;
+          if (toks.length && (!toks.some((t) => t.start === from) || !toks.some((t) => t.end === to))) {
+            err(p, 'note-not-on-token', `note range [${from}, ${to}) "${text.slice(from, to)}" does not start and end on word boundaries`,
+              `Start at the beginning of a word and end at the end of one. Words here: ${toks.filter((t) => t.isWord).slice(0, 12).map((t) => `[${t.start},${t.end}) ${t.surface}`).join(', ')}${toks.length > 12 ? ', …' : ''}`);
+          }
+        }
+      }
+    }
+    if (n.spans !== undefined) {
+      if (!Array.isArray(n.spans)) err(`${p}.spans`, 'invalid-value', 'spans must be an array of {start, end, label}', 'Labelled stretches of the sentence, e.g. {"start": 0, "end": 9, "label": "main clause"}.');
+      else {
+        const bounds = text !== undefined ? graphemeBoundaries(text) : undefined;
+        n.spans.forEach((sp: unknown, k: number) => {
+          const q = `${p}.spans[${k}]`;
+          if (!isObj(sp) || !isInt(sp.start) || !isInt(sp.end) || !isStr(sp.label)) { err(q, 'invalid-value', 'a span needs integer start and end and a label', 'e.g. {"start": 0, "end": 9, "label": "main clause"}'); return; }
+          if (sp.end <= sp.start) { err(q, 'span-empty', `span [${sp.start}, ${sp.end}) is empty`, 'end must be greater than start.'); return; }
+          if (text === undefined || !bounds) return;
+          if (sp.start < 0 || sp.end > text.length) err(q, 'span-out-of-bounds', `span [${sp.start}, ${sp.end}) is outside the sentence (length ${text.length})`, 'Offsets must lie within the sentence text.');
+          else if (!bounds.has(sp.start) || !bounds.has(sp.end)) err(q, 'span-not-grapheme-boundary', `span [${sp.start}, ${sp.end}) splits a character cluster`, 'Start and end between user-perceived characters.');
+        });
+      }
+    }
+  };
+
   const checkSentence = (s: Record<string, unknown>, text: unknown, path: string, sectionChapter: number | undefined) => {
     sentenceCount++;
     if (typeof text !== 'string' || text.trim().length === 0) { err(`${path}.text`, 'empty-sentence', 'sentence text is missing or blank', 'Every sentence needs text; remove empty entries.'); return; }
@@ -467,6 +629,10 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
     if (scripture || s.verseRefs !== undefined) checkVerseRefs(s.verseRefs, `${path}.verseRefs`, sectionChapter);
     if (s.spans !== undefined) checkSpans(s.spans, `${path}.spans`, text, 'spans');
     if (s.corrections !== undefined) checkSpans(s.corrections, `${path}.corrections`, text, 'corrections');
+    if (s.notes !== undefined) {
+      if (!Array.isArray(s.notes)) err(`${path}.notes`, 'invalid-value', 'notes must be an array', 'Use "notes": [{"kind": "cultural", "body": "…"}].');
+      else s.notes.forEach((n: unknown, k: number) => checkNote(n, `${path}.notes[${k}]`, text, false));
+    }
     if (scriptRe) for (const ch of text) { if (/\p{L}/u.test(ch)) { letters++; if (scriptRe.test(ch)) inScript++; } }
   };
 
@@ -504,6 +670,7 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
           if (!isObj(s)) { err(w, 'invalid-value', 'sentence is not an object', 'Use {"text": "…", "english": "…"}.'); return; }
           for (const key of Object.keys(s)) if (!SENTENCE_KEYS.includes(key) && !key.startsWith('_')) warn(`${w}.${key}`, 'unknown-field', `unknown sentence field "${key}" is ignored`, 'Check the spelling against docs/IMPORT.md.');
           checkSentence(s, s.text, w, sectionChapter);
+          allTexts.push(typeof s.text === 'string' ? s.text : '');
           if (typeof s.text === 'string' && s.text.trim()) {
             tally(s.text, [...(Array.isArray(s.spans) ? s.spans : []), ...(Array.isArray(s.corrections) ? s.corrections : [])]);
             if (adapter && adapter.segmentSentences(s.text).length > 1) warn(`${w}.text`, 'adapter-would-split', 'the language adapter would split this declared sentence into several', 'Your declaration wins, but check that this is one sentence (abbreviations, quotations, verse-length sentences are fine).');
@@ -522,7 +689,7 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
             else if (par.english.length !== spans.length) err(`${pp}.english`, 'english-count-mismatch', `the adapter split the text into ${spans.length} sentence(s) but english has ${par.english.length}`,
               `Supply exactly ${spans.length} English line(s), or declare the sentences one by one with "sentences". The adapter found: ${spans.map((x) => JSON.stringify(x.text)).join(' | ').slice(0, 300)}`);
           }
-          spans.forEach((x) => tally(x.text));
+          spans.forEach((x) => { tally(x.text); allTexts.push(x.text); });
           for (const x of spans) if (scriptRe) for (const ch of x.text) if (/\p{L}/u.test(ch)) { letters++; if (scriptRe.test(ch)) inScript++; }
         } else sentenceCount++;
         if (scripture || par.verseRefs !== undefined) checkVerseRefs(par.verseRefs, `${pp}.verseRefs`, sectionChapter);
@@ -530,6 +697,28 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
     });
   });
   if (sentenceCount === 0) err('sections', 'no-sentences', 'the document has no sentences', 'Add sentences to at least one paragraph.');
+
+  // document-level notes: each is anchored to the sentence whose exact text contains `match`
+  if (d.notes !== undefined) {
+    if (!Array.isArray(d.notes)) err('notes', 'invalid-value', 'notes must be an array', 'Use "notes": [{"match": "words in the sentence", "kind": "cultural", "body": "…"}].');
+    else {
+      const list = d.notes as unknown[];
+      const valid = list.map((n) => (isObj(n) && isStr(n.match) && (n.occurrence === undefined || (isInt(n.occurrence) && n.occurrence >= 1)) ? { match: n.match as string, occurrence: n.occurrence as number | undefined } : undefined));
+      const anchors = anchorDocumentNotes(valid.map((v) => v ?? { match: '' }), allTexts);
+      list.forEach((n, k) => {
+        const p = `notes[${k}]`;
+        if (!isObj(n)) { checkNote(n, p, undefined, true); return; }
+        if (!isStr(n.match)) required(`${p}.match`, 'match (words of the sentence the note belongs to)', 'Copy a word or phrase from the sentence exactly as it is written in the text.');
+        if (n.occurrence !== undefined && !(isInt(n.occurrence) && n.occurrence >= 1)) err(`${p}.occurrence`, 'invalid-value', 'occurrence must be a whole number from 1', 'The 1st, 2nd … sentence that contains the words (default 1).');
+        const at = anchors[k];
+        if (valid[k] && at === undefined) {
+          err(`${p}.match`, 'note-anchor-missing', `no sentence${n.occurrence ? ` (occurrence ${String(n.occurrence)})` : ''} contains ${JSON.stringify(n.match)}`,
+            'The words are matched exactly as written (no normalisation). Copy them from the text, check the occurrence number, or put the note in the sentence\'s own "notes".');
+        }
+        checkNote(n, p, at !== undefined ? allTexts[at] : undefined, true);
+      });
+    }
+  }
 
   if (lang && letters > 0 && inScript / letters < 0.5) {
     // a learner's private writing may legitimately mix languages: report, never block

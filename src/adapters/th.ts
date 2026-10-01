@@ -1,25 +1,44 @@
 /**
  * Thai adapter. Words come from Intl.Segmenter('th', word) — ICU dictionary segmentation, no spaces in the
- * text. Segmenter quirks are repaired in one place (THAI_COMPOUNDS): words the course treats as one unit
- * (นิรันดร์, พระบุตร, ตอนนี้ …) are re-joined when ICU splits them; offsets stay exact.
- * Confident: lexicon words, classifiers (CLF) and sentence-final particles (PART), ทรง before verbs.
- * Uncertain: anything the ICU dictionary splits differently than a learner would expect (unlisted compounds
- * come out as parts); sentence boundaries (Thai has no full stop — see segmentSentences); tone (only the
- * initial-consonant class is reported, never a tone guess).
+ * text. Segmenter quirks are repaired in one place (THAI_COMPOUNDS, thai/text.ts): words the course treats as one
+ * unit (นิรันดร์, พระบุตร, ตอนนี้ …) are re-joined when ICU splits them; offsets stay exact.
+ *
+ * Layers: a hand lexicon (this file's seed list + thai/lexicon-core, function-words, classifiers — machine-drafted,
+ * not native-reviewed), each word with a gloss and, for function words, a `role` and, outside ordinary Central Thai,
+ * a `register`; phrase units (thai/phrases); constructions (thai/constructions); script decoding (thai/orthography:
+ * syllables, class, vowel, tone and the rule that gave it). Long prose is divided into reading units by
+ * thai/prose.ts.
+ * Confident: lexicon words, classifiers (CLF), particles, listed phrases and constructions. Uncertain: anything the
+ * ICU dictionary splits differently than a learner would expect; sentence boundaries (Thai has no full stop); tone
+ * where the spelling is ambiguous (the decoder says so with a low confidence instead of guessing).
  */
-import type { AnalysisCandidate, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport, RawToken, Span, AdapterSupport } from '../core';
+import type {
+  AdapterSupport, AnalysisCandidate, AnalyzedToken, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport,
+  RawToken, SyllableAnalysis,
+} from '../core';
+import { decodeFor } from '../core';
+import { E, Lexicon, hasPos, lexiconAnalyze, matchPhraseRules, speechNormalizeGeneric } from './shared';
+import { annotationKey, mergeAnnotations } from './thai/entries';
+import { CORE_ANNOTATIONS, CORE_ENTRIES } from './thai/lexicon-core';
+import { FUNCTION_ANNOTATIONS, FUNCTION_ENTRIES } from './thai/function-words';
+import { CLASSIFIER_ANNOTATIONS, CLASSIFIER_ENTRIES } from './thai/classifiers';
+import { buildPhraseRules } from './thai/phrases';
+import { detectThaiConstructions } from './thai/constructions';
+import { segmentThaiProse } from './thai/prose';
 import {
-  E, Lexicon, hasPos, lexiconAnalyze, makeWordTokenizer, matchPhraseRules, nfc, speechNormalizeGeneric, type PhraseRule,
-} from './shared';
+  SENTENCE_FINAL_PARTICLES, THAI_COMPOUNDS, normalizeThai, segmentThaiSentences, thaiTokenize,
+} from './thai/text';
+import {
+  decodeThai, decodeThaiRespelling, describeThaiOrthFeature, thaiOrthFeatures, tonesFromIpa,
+} from './thai/orthography';
 
 const LANG = 'th' as const;
-const VERSION = '1';
+const VERSION = '2';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
-const normalize = (s: string) => nfc(s).replace(/ํา/gu, 'ำ').replace(/[​﻿]/gu, '');
+const normalize = normalizeThai;
 
-/** Words ICU splits but the course treats as one lexical unit. */
-export const THAI_COMPOUNDS = ['นิรันดร์', 'พระบุตร', 'ตอนนี้', 'ทุกคน', 'วันหนึ่ง', 'หลอกลวง', 'สัตย์ซื่อ', 'ทั้งสิ้น'];
+export { THAI_COMPOUNDS, segmentThaiSentences };
 
 const UNIT = { unit: 'yes' };
 
@@ -67,7 +86,7 @@ const ENTRIES = [
   E('พระบุตร', 'NOUN', 'the Son (royal/divine)', undefined, { translit: 'phrabut' }),
   E('เรื่อง', 'NOUN', 'matter, story', undefined, { translit: 'rueang', notes: UNIT }),
   E('เรื่อง', 'CLF', '(classifier for stories, matters)', undefined, { translit: 'rueang' }),
-  E('อธรรม', 'NOUN', 'unrighteousness', undefined, { translit: 'athamma' }),
+  E('อธรรม', 'NOUN', 'unrighteousness'), // hand romanization dropped: it disagreed with the decoder
   E('ความ', 'NOUN', '(prefix forming abstract nouns)', undefined, { translit: 'khwam', notes: { nominalizer: 'yes' } }),
   E('วัน', 'NOUN', 'day', undefined, { translit: 'wan', notes: UNIT }),
   E('ครั้ง', 'NOUN', 'time, occasion', undefined, { translit: 'khrang', notes: UNIT }),
@@ -94,8 +113,8 @@ const ENTRIES = [
   E('สบาย', 'ADJ', 'comfortable, well', undefined, { translit: 'sabai' }),
   E('ดี', 'ADJ', 'good', undefined, { translit: 'di' }),
   E('จริง', 'ADJ', 'true, real', undefined, { translit: 'ching' }),
-  E('สัตย์ซื่อ', 'ADJ', 'faithful', undefined, { translit: 'sattsue' }),
-  E('ยุติธรรม', 'ADJ', 'just, fair', undefined, { translit: 'yuttitham' }),
+  E('สัตย์ซื่อ', 'ADJ', 'faithful'),
+  E('ยุติธรรม', 'ADJ', 'just, fair'),
   E('นิรันดร์', 'ADJ', 'eternal', undefined, { translit: 'niran' }),
   E('เดียว', 'ADJ', 'single, only', undefined, { translit: 'diao' }),
   E('ทั้งหมด', 'ADJ', 'all, entire', undefined, { translit: 'thangmot' }),
@@ -119,7 +138,7 @@ const ENTRIES = [
   E('ไหม', 'PART', '(yes/no question particle)', undefined, { translit: 'mai' }),
   E('นะ', 'PART', '(softening particle)', undefined, { translit: 'na' }),
   E('สิ', 'PART', '(urging particle)', undefined, { translit: 'si' }),
-  E('เหรอ', 'PART', '(tag question particle)', undefined, { translit: 'loe' }),
+  E('เหรอ', 'PART', '(tag question particle)'),
   // prepositions, conjunctions
   E('ของ', 'ADP', 'of', undefined, { translit: 'khong' }),
   E('ใน', 'ADP', 'in', undefined, { translit: 'nai' }),
@@ -135,7 +154,17 @@ const ENTRIES = [
   // interjections
   E('สวัสดี', 'INTJ', 'hello', undefined, { translit: 'sawatdi' }),
 ];
-export const thLexicon = new Lexicon(ENTRIES, normalize);
+/**
+ * Order matters: when a surface is ambiguous the earlier entry is listed first. The seed list above keeps its
+ * place so analyses of the bundled texts do not change; the later lists only add words and second readings.
+ */
+export const thLexicon = new Lexicon([...ENTRIES, ...CORE_ENTRIES, ...FUNCTION_ENTRIES, ...CLASSIFIER_ENTRIES], normalize);
+
+/** Role / register / what-a-classifier-counts for lexicon entries, keyed lemma|pos (copied onto the candidates). */
+const ANNOTATIONS = mergeAnnotations(CORE_ANNOTATIONS, FUNCTION_ANNOTATIONS, CLASSIFIER_ANNOTATIONS);
+
+const DEMONSTRATIVES = new Set(['นี้', 'นั้น', 'โน้น']);
+const DIGITS = /^[\d๐-๙]+$/u;
 
 function contextual(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[] {
   const cands = base[i];
@@ -150,21 +179,40 @@ function contextual(i: number, tokens: RawToken[], base: AnalysisCandidate[][]):
   if (w === 'ตัว') return base[i + 1]?.some((c) => c.pos === 'PRON') ? pick('NOUN', 0.7) : prev?.pos === 'NUM' ? pick('CLF', 0.85) : cands;
   if (w === 'คน') return prev?.pos === 'NUM' || prev?.pos === 'DET' ? pick('CLF', 0.85) : pick('NOUN', 0.7);
   if (w === 'ให้') return prev?.pos === 'NOUN' || prev?.pos === 'PRON' || prev?.pos === 'VERB' ? pick('ADP', 0.6) : cands;
+  if (w === 'ถูก') {
+    // passive marker before a verb (optionally after the doer), otherwise "cheap; correct"
+    const passive = base[i + 1]?.some((c) => c.pos === 'VERB') || (base[i + 1]?.some((c) => c.pos === 'NOUN' || c.pos === 'PRON') && base[i + 2]?.some((c) => c.pos === 'VERB'));
+    return passive ? pick('AUX', 0.75) : pick('ADJ', 0.7);
+  }
+  // a word that is both a classifier and something else (ใบ leaf, ห้อง room, หลัง after …)
+  const nonClf = cands.find((c) => c.pos !== 'CLF');
+  if (nonClf && cands.some((c) => c.pos === 'CLF') && w !== 'เรื่อง') { // เรื่อง keeps its seed analysis
+    const afterNumber = prev?.pos === 'NUM' || DIGITS.test(tokens[i - 1]?.surface ?? '');
+    if (afterNumber) return pick('CLF', 0.85);
+    if (prev?.pos === 'NOUN' && DEMONSTRATIVES.has(tokens[i + 1]?.normalized ?? '')) return pick('CLF', 0.75);
+    return pick(nonClf.pos as string, 0.6);
+  }
   return cands;
 }
 
-const PHRASES: PhraseRule[] = [
-  { pattern: ['ตอน', 'เด็ก'], display: 'ตอน…เด็ก', gloss: 'when (I was) young', kind: 'formula',
-    variants: [['ตอน', { gap: 3, only: ['SCONJ', 'PRON', 'ADV', 'PART'] }, 'เด็ก']] },
-  { pattern: ['เริ่ม', 'เข้าใจ'], display: 'เริ่มเข้าใจ', gloss: 'begin to understand', kind: 'construction',
-    variants: [['เริ่ม', 'เข้าใจ']] },
-  { pattern: ['เชื่อ', 'ใน', '_'], display: 'เชื่อใน…', gloss: 'to believe in', kind: 'frame',
-    variants: [['เชื่อ', 'ใน', { slot: true }]] },
-  { pattern: ['ยก', 'โทษ'], display: 'ยกโทษ', gloss: 'to forgive', kind: 'collocation', variants: [['ยก', 'โทษ']] },
-  { pattern: ['ยก', 'บาป'], display: 'ยกบาป', gloss: 'to forgive sins (take sin away)', kind: 'collocation', variants: [['ยก', 'บาป']] },
-];
+/** Copy role, register and the classifier's "counts" from the annotation table onto the candidates. */
+function annotate(a: AnalyzedToken): AnalyzedToken {
+  if (!a.candidates.length) return a;
+  const candidates = a.candidates.map((c) => {
+    const ann = c.lemma && c.pos ? ANNOTATIONS.get(annotationKey(c.lemma, c.pos)) : undefined;
+    if (!ann) return c;
+    const next: AnalysisCandidate = { ...c };
+    if (ann.role) next.role = ann.role;
+    if (ann.register) next.register = [...ann.register];
+    if (ann.counts) next.notes = { ...(c.notes ?? {}), counts: ann.counts };
+    return next;
+  });
+  return { ...a, candidates };
+}
 
-const PARTICLES = ['ครับ', 'ค่ะ', 'คะ', 'นะ', 'จ้ะ', 'จ๊ะ', 'ฮะ', 'เหรอ', 'ล่ะ'];
+const PHRASES = buildPhraseRules(thaiTokenize);
+
+const PARTICLES: readonly string[] = SENTENCE_FINAL_PARTICLES;
 const POLITE = new Set(['ครับ', 'ค่ะ', 'คะ']);
 
 /** Thai consonant class of the first consonant (leading vowels เ แ โ ใ ไ skipped). Approximate: ห/อ leading letters are not analysed. */
@@ -179,70 +227,55 @@ export function thaiInitialClass(surface: string): 'mid' | 'high' | 'low' | unde
   return undefined;
 }
 
-/**
- * Thai sentence breaks (heuristic, conservative — a wrong split is worse than a long sentence):
- * newline; . ? ! … followed by space/end; ฯ followed by space (not ฯลฯ); two or more spaces; or a single
- * space right after a sentence-final particle (ครับ ค่ะ คะ นะ …). A lone space elsewhere is a clause pause
- * and does NOT split.
- */
-export function segmentThaiSentences(text: string): Span[] {
-  const spans: Span[] = [];
-  let start = 0;
-  const push = (a: number, b: number) => {
-    while (a < b && /\s/u.test(text[a])) a++;
-    while (b > a && /\s/u.test(text[b - 1])) b--;
-    if (b > a) spans.push({ start: a, end: b, text: text.slice(a, b) });
-  };
-  let i = 0;
-  while (i < text.length) {
-    const ch = text[i];
-    if (ch === '\n' || ch === '\r') {
-      let j = i;
-      while (j < text.length && (text[j] === '\n' || text[j] === '\r')) j++;
-      push(start, i); start = j; i = j; continue;
-    }
-    if ('.?!…'.includes(ch)) {
-      let j = i;
-      while (j < text.length && '.?!…'.includes(text[j])) j++;
-      let k = j;
-      while (k < text.length && '"\'”’)»'.includes(text[k])) k++;
-      if (k >= text.length || /\s/u.test(text[k])) { push(start, k); start = k; }
-      i = k; continue;
-    }
-    if (ch === 'ฯ') {
-      if (text.startsWith('ฯลฯ', i)) { i += 3; continue; }
-      if (i + 1 >= text.length || /\s/u.test(text[i + 1])) { push(start, i + 1); start = i + 1; }
-      i++; continue;
-    }
-    if (ch === ' ' || ch === ' ' || ch === '\t') {
-      let j = i;
-      while (j < text.length && (text[j] === ' ' || text[j] === ' ' || text[j] === '\t')) j++;
-      const before = text.slice(start, i);
-      if (j - i >= 2 || PARTICLES.some((p) => before.endsWith(p))) { push(start, i); start = j; }
-      i = j; continue;
-    }
-    i++;
-  }
-  push(start, text.length);
-  return spans;
-}
-
 const SUPPORT: AdapterSupport = {
-  tokenization: 'limited', // ICU dictionary segmentation: an unlisted compound can split differently from a learner's expectation
-  sentenceSegmentation: 'limited', // Thai has no full stop: breaks need a newline, two spaces, ฯ, a final particle plus a space, or terminal punctuation
-  lemmatization: 'seed-only', // the lexicon covers the seed corpus only; other words are left unanalysed
-  morphology: 'seed-only', // Thai has no inflection; only part of speech, classifiers and particles are recorded
-  phraseDetection: 'seed-only',
+  tokenization: 'limited', // ICU dictionary segmentation plus a short course compound list: an unlisted compound can split differently from a learner's expectation; not measured on real prose yet
+  sentenceSegmentation: 'limited', // Thai has no full stop: breaks need a newline, two spaces, ฯ, a final particle plus a space, or terminal punctuation; spans of more than 28 words are divided at clause spaces by rule
+  lemmatization: 'seed-only', // a hand lexicon (about 600 entries: the bundled texts, common content words, function words, classifiers); machine-drafted, not native-reviewed; other words are left unanalysed (a dictionary can be installed)
+  morphology: 'seed-only', // Thai has no inflection; part of speech, classifiers, particles, roles and register tags are recorded for lexicon words only
+  phraseDetection: 'seed-only', // listed phrase units only (about 60); nothing is discovered
   productionChecks: 'limited',
   limitations: [
-    'Thai sentence breaks need a newline (or two spaces) between sentences; a single space is treated as a clause pause and never splits.',
+    'Thai sentence breaks need a newline (or two spaces) between sentences; a single space is treated as a clause pause and never splits, except inside a unit of more than 28 words.',
     'Canonical text is never given spaces: segmentation reads the text as written and adds none.',
-    'Word segmentation uses the ICU dictionary plus a short list of course compounds; other compounds may come out as parts.',
-    'Tone is not guessed: only the initial consonant class is reported.',
-    'Lemmatization is seed-only: the lexicon covers the bundled corpus, so supplied texts will have unanalysed words.',
+    'Word segmentation uses the ICU dictionary plus a short list of course compounds; other compounds may come out as parts. It has not been measured on running prose.',
+    'Tone comes from the spelling rules (consonant class, vowel length, final, tone mark) and, when a dictionary is installed, from its pronunciation. A spelling the rules cannot settle is reported with low confidence and no tone, never a guess.',
+    'Lemmatization is seed-only: the built-in word list is a machine-drafted seed (about 600 entries: content words, function words and classifiers) that has not been checked by a native speaker, and words outside it show as not analysed.',
+    'Constructions and phrase units are listed patterns, found only where the neighbouring words are in the word list; they are not a grammar check.',
+    'Regional words (Isan, northern, southern), slang and royal vocabulary are tagged where known; only a handful of each is listed.',
     'Production checks: missing classifier after a number, polite-particle order — only for lexicon words.',
   ],
 };
+
+const decodeTh = (surface: string): SyllableAnalysis[] => decodeThai(normalize(surface));
+
+/**
+ * The dictionary's phonemic respelling is the better guide where the spelling is irregular; with IPA alone, the
+ * tone letters decide the tone (and a disagreement with the spelling rule is flagged and capped at 0.7).
+ */
+function decodeThWithPronunciation(surface: string, pron: { respelling?: string; ipa?: string }): SyllableAnalysis[] {
+  const s = normalize(surface);
+  if (pron.respelling) {
+    const out = decodeThaiRespelling(s, pron.respelling, pron.ipa);
+    if (out.length) return out;
+  }
+  const base = decodeThai(s);
+  if (!pron.ipa || !base.length) return base;
+  const tones = tonesFromIpa(pron.ipa);
+  if (tones.length !== base.length) return base;
+  return base.map((syl, k) => {
+    const t = tones[k];
+    if (!t || t === syl.tone) return syl;
+    if (syl.tone === undefined) {
+      return { ...syl, tone: t, rule: 'tone taken from the dictionary pronunciation', confidence: Math.max(syl.confidence, 0.75) };
+    }
+    return {
+      ...syl, tone: t, irregular: true, confidence: Math.min(syl.confidence, 0.7),
+      rule: `tone taken from the dictionary pronunciation (the spelling rule gives ${syl.tone})`,
+    };
+  });
+}
+
+const thDecoder = { decode: decodeTh, decodeWithPronunciation: decodeThWithPronunciation };
 
 export const thAdapter: LanguageAdapter = {
   lang: LANG,
@@ -251,54 +284,45 @@ export const thAdapter: LanguageAdapter = {
   version: VERSION,
   support: SUPPORT,
 
-  segmentSentences: segmentThaiSentences,
-  tokenize: makeWordTokenizer({ locale: 'th', normalize, compounds: THAI_COMPOUNDS }),
+  segmentSentences: segmentThaiProse,
+  tokenize: thaiTokenize,
   normalize,
   searchNormalize: (q) => normalize(q).trim(),
 
-  analyze: (tokens) => lexiconAnalyze(tokens, thLexicon, ANALYZER, { contextual }),
+  analyze: (tokens) => lexiconAnalyze(tokens, thLexicon, ANALYZER, { contextual }).map(annotate),
 
   detectPhrases: (tokens, analyses) => matchPhraseRules(tokens, analyses, PHRASES, normalize),
 
-  detectPatterns(tokens, analyses): PatternCandidate[] {
-    const out: PatternCandidate[] = [];
-    const lastWord = (() => { for (let k = tokens.length - 1; k >= 0; k--) if (tokens[k].isWord) return k; return -1; })();
-    analyses.forEach((a, i) => {
-      const c = a.candidates[0];
-      if (!c) return;
-      const w = tokens[i].normalized;
-      if (w === 'ทรง' && hasPos(analyses[i + 1], 'VERB')) {
-        out.push({ key: 'royal-verb', title: 'ทรง + verb (royal/divine register)', confidence: 0.85, tokenIndexes: [i, i + 1],
-          explanation: 'ทรง goes before a verb when the doer is God or royalty: พระเจ้าทรงรักโลก "God loves the world".' });
-      }
-      if (w === 'ไม่' && i + 1 < tokens.length && hasPos(analyses[i + 1], 'VERB', 'AUX', 'ADJ')) {
-        out.push({ key: 'negation-mai', title: 'ไม่ + verb/adjective', confidence: 0.85, tokenIndexes: [i, i + 1],
-          explanation: 'ไม่ goes directly before the word it negates: ไม่เข้าใจ "do not understand".' });
-      }
-      if (c.pos === 'CLF' && ((i > 0 && analyses[i - 1]?.candidates[0]?.pos === 'NUM') || tokens[i + 1]?.normalized === 'เดียว' || (i > 0 && hasPos(analyses[i - 1], 'NUM')))) {
-        out.push({ key: 'classifier-phrase', title: 'Number + classifier', confidence: Math.min(0.8, c.confidence), tokenIndexes: [i > 0 && hasPos(analyses[i - 1], 'NUM') ? i - 1 : i, i],
-          explanation: 'Counting uses noun + number + classifier: หนังสือสองเล่ม "two books"; องค์เดียว "one (divine) person".' });
-      }
-      if (i === lastWord && c.pos === 'PART' && PARTICLES.includes(w)) {
-        out.push({ key: 'final-particle', title: 'Sentence-final particle', confidence: c.confidence, tokenIndexes: [i],
-          explanation: 'ครับ / ค่ะ / คะ / นะ / ไหม close a sentence: they add politeness or mark a question.' });
-      }
-      if (w === 'ความ' && i + 1 < tokens.length && tokens[i + 1].isWord) {
-        out.push({ key: 'nominalizer-khwam', title: 'ความ + word (abstract noun)', confidence: 0.7, tokenIndexes: [i, i + 1],
-          explanation: 'ความ turns a verb or adjective into an abstract noun: ความจริง "truth" (from จริง "true").' });
-      }
-    });
-    return out;
-  },
+  detectPatterns: (tokens, analyses): PatternCandidate[] => detectThaiConstructions(tokens, analyses, PARTICLES),
+
+  decode: decodeTh,
+  decodeWithPronunciation: decodeThWithPronunciation,
+  orthFeatures: (syllables) => thaiOrthFeatures(syllables),
+  describeOrthFeature: (feature) => describeThaiOrthFeature(feature),
 
   pronunciation(token, analysis): PronunciationSupport {
-    const translit = analysis?.candidates[0]?.notes?.translit;
+    const cand = analysis?.candidates[0];
+    const lexTranslit = cand?.notes?.translit;
+    const syl = decodeFor(thDecoder, token.surface, cand);
+    // when the course romanization and the decoder disagree, one of them is wrong: say nothing about tone
+    const squash = (s: string) => s.toLowerCase().replace(/[^a-z]/gu, '');
+    const contradicted = typeof lexTranslit === 'string' && syl.length > 0 && syl.every((s) => s.romanization)
+      && squash(syl.map((s) => s.romanization).join('')) !== squash(lexTranslit);
+    const sure = syl.length > 0 && syl.every((s) => s.confidence >= 0.6) && !contradicted;
     const cls = thaiInitialClass(token.surface);
     const notes: string[] = [];
     if (cls) notes.push(`Initial consonant class: ${cls} (tone also depends on vowel length, final consonant and tone mark).`);
     if (/[่-๋]/u.test(token.surface)) notes.push('Contains a tone mark; it changes the tone with the consonant class.');
+    if (sure && syl.every((s) => s.tone)) {
+      notes.push(`Tone by syllable: ${syl.map((s) => `${s.text} ${s.tone}`).join(', ')}.`);
+    } else if (syl.length) {
+      notes.push('The tone of this spelling is not certain; Go does not guess it.');
+    }
     notes.push('Thai is tonal: five tones distinguish words.');
-    return { transliteration: typeof translit === 'string' ? translit : undefined, notes };
+    // a romanization only from the lexicon or from the decoder when every syllable is certain — never invented
+    const decoded = sure && syl.every((s) => s.confidence >= 0.85 && s.romanization) ? syl.map((s) => s.romanization).join('-') : undefined;
+    const ipa = sure && syl.every((s) => s.ipa) ? syl.map((s) => s.ipa).join('.') : undefined;
+    return { transliteration: typeof lexTranslit === 'string' ? lexTranslit : decoded, ipa, notes };
   },
 
   speechNormalize: (text) =>

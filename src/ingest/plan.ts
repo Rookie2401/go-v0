@@ -5,16 +5,29 @@
  * are produced later by `materializeSentence`, once the importer has decided which existing sentences survive.
  */
 import type {
-  AdapterRegistry, AnalysisCandidate, AnalyzedToken, EnglishRescue, GrammarPattern, LanguageAdapter, Lemma, PartOfSpeech,
-  PatternCandidate, PatternOccurrence, Phrase, PhraseCandidate, PhraseOccurrence, RawToken, Token, TokenAnalysis,
+  AdapterRegistry, AnalysisCandidate, AnalyzedToken, ContentNote, DictionaryEntry, EnglishRescue, GrammarPattern, LanguageAdapter, Lemma,
+  PartOfSpeech, PatternCandidate, PatternOccurrence, Phrase, PhraseCandidate, PhraseOccurrence, RawToken, ReviewStatus, Token, TokenAnalysis,
 } from '../core';
 import { hash, ids } from '../core';
 import { analysisCoverage, type AnalysisCoverage } from '../adapters/shared';
-import type { CorpusDocument, DocCorrection, DocSpan } from './format';
+import { anchorDocumentNotes, workIdOf, type CorpusDocument, type DocCorrection, type DocNote, type DocSpan } from './format';
 import { computePublished, type PublicationDecision } from './publish';
 
 export const INGEST_TOOL = 'ingest@2';
 export const IMPORT_ANALYZER = 'import@2';
+
+/** A note ready to be stored once the sentence's final key is known. */
+export interface PlannedNote {
+  kind: ContentNote['kind'];
+  body: string;
+  /** Indexes (into the sentence's tokens) of the tokens the note's start/end cover; absent for a whole-sentence note. */
+  tokenIndexes?: number[];
+  spans?: Array<{ start: number; end: number; label: string }>;
+  topics?: string[];
+  provenance: 'human' | 'machine';
+  reviewStatus: ReviewStatus;
+  by?: string;
+}
 
 export interface PlannedSentence {
   /** Author-supplied id (stable key), when given. */
@@ -37,6 +50,7 @@ export interface PlannedSentence {
   corrections: DocCorrection[];
   phrases: PhraseCandidate[];
   patterns: PatternCandidate[];
+  notes: PlannedNote[];
 }
 
 export interface PlannedParagraph { sectionIndex: number; originalText: string }
@@ -54,6 +68,18 @@ export interface DocumentPlan {
   signature: string;
   nonNfcBlocks: number;
   tokenCount: number;
+  /** `Text.workId` (from `doc.work`), when the document names a work. */
+  workId?: string;
+  /** Tokens the adapter could not analyse that were analysed from the dictionary, and the analyzer name that wrote them. */
+  dictionary?: { tool: string; tokens: number };
+  noteCount: number;
+}
+
+export interface PlanOptions {
+  /** Dictionary entries by adapter-normalized form (only forms the adapter could not analyse need to be present). */
+  dictionary?: ReadonlyMap<string, readonly DictionaryEntry[]>;
+  /** `DictionaryInfo.id` of the dictionary the entries came from: part of the analyzer name and of the signature. */
+  dictionaryId?: string;
 }
 
 const defaultSeparator = ' ';
@@ -62,9 +88,67 @@ function toCandidate(sp: DocSpan): AnalysisCandidate {
   return { lemma: sp.lemma, pos: sp.pos, morph: sp.morph ? { ...sp.morph } : {}, gloss: sp.gloss, confidence: sp.confidence ?? 1 };
 }
 
-/** Plan one (already validated) document. Throws on any broken round-trip invariant: nothing is written by then. */
-export function planDocument(doc: CorpusDocument, registry: AdapterRegistry): DocumentPlan {
+/** The sentence texts of a document in reading order, exactly as `planDocument` will segment them. */
+export function sentenceTextsOf(doc: CorpusDocument, adapter: LanguageAdapter): string[] {
+  const out: string[] = [];
+  for (const sec of doc.sections) {
+    for (const par of sec.paragraphs) {
+      if ('sentences' in par) for (const s of par.sentences) out.push(s.text);
+      else for (const sp of adapter.segmentSentences(par.text)) out.push(sp.text);
+    }
+  }
+  return out;
+}
+
+/** A candidate that says nothing about the word (for instance a decoding-only candidate) does not count as an analysis. */
+const says = (c: AnalysisCandidate): boolean => !!(c.lemma || c.pos || c.gloss || c.role || c.definition || c.register?.length);
+const unanalysed = (a: AnalyzedToken): boolean => a.token.isWord && !a.candidates.some(says);
+
+/** The normalized forms of word tokens the adapter cannot analyse: what the dictionary pre-pass looks up. */
+export function collectUnanalysedForms(doc: CorpusDocument, registry: AdapterRegistry): Set<string> {
   const adapter = registry.get(doc.lang);
+  const forms = new Set<string>();
+  for (const text of sentenceTextsOf(doc, adapter)) {
+    const tokens = adapter.tokenize(text);
+    for (const a of adapter.analyze(tokens)) if (unanalysed(a)) forms.add(a.token.normalized);
+  }
+  return forms;
+}
+
+/**
+ * Dictionary entries of one form → analysis candidates. A dictionary lists what a written form can mean, so confidence
+ * is below certainty (0.6 when the form has one part of speech, 0.45 when it has several); entry order is kept, the
+ * first is the best candidate and the rest become alternatives.
+ */
+export function dictionaryCandidates(form: string, entries: readonly DictionaryEntry[]): AnalysisCandidate[] {
+  const confidence = new Set(entries.map((e) => e.pos ?? '')).size > 1 ? 0.45 : 0.6;
+  return entries.map((e) => {
+    const glosses = e.glosses.filter((g) => g.trim().length > 0);
+    const notes: Record<string, string | string[]> = {};
+    if (e.respelling) notes.respelling = e.respelling;
+    if (e.ipa) notes.ipa = e.ipa;
+    if (e.romanization) notes.romanization = e.romanization;
+    if (glosses.length > 2) notes.senses = glosses.slice(2);
+    if (e.classifiers?.length) notes.classifiers = [...e.classifiers];
+    return {
+      lemma: form, pos: e.pos, morph: {}, confidence,
+      ...(glosses.length ? { gloss: glosses.slice(0, 2).join('; ') } : {}),
+      ...(e.register?.length ? { register: [...e.register] } : {}),
+      ...(e.role ? { role: e.role } : {}),
+      ...(e.definition ? { definition: e.definition } : {}),
+      ...(Object.keys(notes).length ? { notes } : {}),
+    };
+  });
+}
+
+/** The analyzer name of a dictionary's analyses. */
+export const dictionaryTool = (dictionaryId: string): string => `dict:${dictionaryId}`;
+
+/** Plan one (already validated) document. Throws on any broken round-trip invariant: nothing is written by then. */
+export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opts: PlanOptions = {}): DocumentPlan {
+  const adapter = registry.get(doc.lang);
+  const dictTool = opts.dictionary ? dictionaryTool(opts.dictionaryId ?? 'dictionary') : undefined;
+  let dictTokens = 0;
   const textId = ids.text(doc.lang, doc.id);
   const analyzerName = `adapter-${doc.lang}@${adapter.version}`;
   const speakerName = (id: string | undefined) => (id !== undefined ? doc.speakers?.[id] ?? id : undefined);
@@ -76,7 +160,7 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry): Do
 
   const push = (
     text: string, paragraphIndex: number, paraStart: number, paraEnd: number,
-    extra: { authorId?: string; english?: string; verseRefs?: string[]; speaker?: string; spans?: DocSpan[]; corrections?: DocCorrection[] },
+    extra: { authorId?: string; english?: string; verseRefs?: string[]; speaker?: string; spans?: DocSpan[]; corrections?: DocCorrection[]; notes?: DocNote[] },
   ) => {
     const repeat = repeats.get(text) ?? 0;
     repeats.set(text, repeat + 1);
@@ -87,6 +171,15 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry): Do
     const base = adapter.analyze(tokens);
     if (base.length !== tokens.length) throw new Error(`adapter ${doc.lang}: analyze() returned ${base.length} for ${tokens.length} tokens`);
     const analyzed: AnalyzedToken[] = base.map((a) => ({ ...a, candidates: a.candidates.map((c) => ({ ...c })) }));
+    // dictionary: only for a word the adapter says nothing about; the adapter's lexicon, author spans and corrections win
+    if (opts.dictionary && dictTool) {
+      analyzed.forEach((a, ti) => {
+        const entries = unanalysed(a) ? opts.dictionary!.get(tokens[ti].normalized) : undefined;
+        if (!entries?.length) return;
+        analyzed[ti] = { token: tokens[ti], candidates: dictionaryCandidates(tokens[ti].normalized, entries), analyzer: dictTool };
+        dictTokens++;
+      });
+    }
     const spanTokens = new Set<number>();
     for (const sp of extra.spans ?? []) {
       const ti = tokens.findIndex((t) => t.start === sp.start && t.end === sp.end);
@@ -103,6 +196,7 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry): Do
       authorId: extra.authorId, hashKey: ids.sentenceKey(text, repeat), text, english: extra.english, verseRefs: extra.verseRefs ? [...extra.verseRefs] : undefined,
       speaker: extra.speaker, paragraphIndex, paraStart, paraEnd, tokens, analyzed, spanTokens, corrections: extra.corrections ?? [],
       phrases: adapter.detectPhrases(tokens, analyzed), patterns: adapter.detectPatterns(tokens, analyzed),
+      notes: (extra.notes ?? []).map((n) => planNote(n, tokens)),
     });
   };
 
@@ -123,7 +217,7 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry): Do
         par.sentences.forEach((s, k) => {
           if (original.slice(offsets[k][0], offsets[k][1]) !== s.text) throw new Error(`paragraph offsets do not round-trip for "${s.text}"`);
           push(s.text, paragraphIndex, offsets[k][0], offsets[k][1], {
-            authorId: s.id, english: s.english, verseRefs: s.verseRefs, speaker: speakerName(s.speaker), spans: s.spans, corrections: s.corrections,
+            authorId: s.id, english: s.english, verseRefs: s.verseRefs, speaker: speakerName(s.speaker), spans: s.spans, corrections: s.corrections, notes: s.notes,
           });
         });
       } else {
@@ -138,26 +232,73 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry): Do
     }
   });
 
+  // document-level notes go to the sentence whose exact text contains `match` (validation guarantees it exists)
+  if (doc.notes?.length) {
+    const anchors = anchorDocumentNotes(doc.notes, sentences.map((s) => s.text));
+    doc.notes.forEach((n, k) => {
+      const at = anchors[k];
+      if (at === undefined) throw new Error(`note ${k}: no sentence contains ${JSON.stringify(n.match)}`);
+      sentences[at].notes.push(planNote(n, sentences[at].tokens));
+    });
+  }
+
   const allTokens = sentences.flatMap((s) => s.tokens);
   const allAnalyzed = sentences.flatMap((s) => s.analyzed);
   const coverage = analysisCoverage(allTokens, allAnalyzed);
   const decision = computePublished(doc);
+  const noteCount = sentences.reduce((n, s) => n + s.notes.length, 0);
 
   const signature = hash(JSON.stringify({
-    v: 2, analyzerName,
+    v: 2, analyzerName, dict: dictTool,
     doc: {
       id: doc.id, lang: doc.lang, locale: doc.locale, title: doc.title, contentType: doc.contentType, corpus: doc.corpus, source: doc.source, review: doc.review,
       difficulty: doc.difficulty, topics: doc.topics, editorialTags: doc.editorialTags, prepTargets: doc.prepTargets, generated: doc.generated,
-      scripture: doc.scripture, english: doc.english, sections: doc.sections.map((s) => ({ title: s.title, chapter: s.chapter })),
+      scripture: doc.scripture, english: doc.english, sections: doc.sections.map((s) => ({ title: s.title, chapter: s.chapter })), work: doc.work,
     },
     paragraphs,
     sentences: sentences.map((s) => ({
       a: s.authorId, k: s.hashKey, t: s.text, e: s.english, v: s.verseRefs, sp: s.speaker, p: s.paragraphIndex, ps: s.paraStart, pe: s.paraEnd,
       an: s.analyzed.map((x) => x.candidates), ant: [...s.spanTokens], c: s.corrections, ph: s.phrases, pa: s.patterns,
+      nt: s.notes.length ? s.notes : undefined,
     })),
   }));
 
-  return { doc, textId, adapter, analyzerName, paragraphs, sentences, coverage, decision, signature, nonNfcBlocks, tokenCount: allTokens.length };
+  return {
+    doc, textId, adapter, analyzerName, paragraphs, sentences, coverage, decision, signature, nonNfcBlocks, tokenCount: allTokens.length,
+    ...(workIdOf(doc) ? { workId: workIdOf(doc) } : {}), ...(dictTool ? { dictionary: { tool: dictTool, tokens: dictTokens } } : {}), noteCount,
+  };
+}
+
+/** A document note → a planned note: defaults applied (human ⇒ approved; machine ⇒ unreviewed) and token indexes resolved. */
+function planNote(n: DocNote, tokens: RawToken[]): PlannedNote {
+  const provenance = n.provenance ?? 'human';
+  const tokenIndexes = n.start !== undefined && n.end !== undefined
+    ? tokens.map((t, i) => (t.start >= n.start! && t.end <= n.end! ? i : -1)).filter((i) => i >= 0)
+    : undefined;
+  return {
+    kind: n.kind, body: n.body, ...(tokenIndexes?.length ? { tokenIndexes } : {}), ...(n.spans?.length ? { spans: n.spans.map((s) => ({ ...s })) } : {}),
+    ...(n.topics?.length ? { topics: [...n.topics] } : {}), provenance, reviewStatus: n.reviewStatus ?? (provenance === 'human' ? 'approved' : 'unreviewed'),
+    ...(n.by ? { by: n.by } : {}),
+  };
+}
+
+/**
+ * The `ContentNote` rows of one sentence. The note key is a stable hash of the sentence key, the kind and the body
+ * (two identical notes on one sentence get a `~n` suffix), so an unchanged note keeps its id across imports; editing a
+ * sentence moves its notes with it because the sentence key changes.
+ */
+export function buildNoteRows(plan: DocumentPlan, ps: PlannedSentence, sentenceKey: string, sentenceId: string, tokens: Token[], seen: Map<string, number>): ContentNote[] {
+  return ps.notes.map((n) => {
+    const base = hash(`${sentenceKey}|${n.kind}|${n.body}`);
+    const repeat = seen.get(base) ?? 0;
+    seen.set(base, repeat + 1);
+    return {
+      id: ids.note(plan.textId, repeat ? `${base}~${repeat}` : base), textId: plan.textId, lang: plan.doc.lang, sentenceId,
+      ...(n.tokenIndexes?.length ? { tokenIds: n.tokenIndexes.map((i) => tokens[i].id) } : {}),
+      kind: n.kind, ...(n.spans ? { spans: n.spans } : {}), body: n.body, ...(n.topics ? { topics: n.topics } : {}),
+      provenance: n.provenance, reviewStatus: n.reviewStatus,
+    };
+  });
 }
 
 // ───────────────────────────── materialization ─────────────────────────────
@@ -212,6 +353,8 @@ export function materializeSentence(plan: DocumentPlan, ps: PlannedSentence, sen
     analyses.push({
       id: ids.analysis(tokens[ti].id, a.analyzer, 0), tokenId: tokens[ti].id, lang, lemmaId, pos: best.pos, morph: best.morph,
       ...(notes && Object.keys(notes).length ? { notes } : {}), ...(best.gloss && fromSpan ? { gloss: best.gloss } : {}),
+      // variety, function and an easy target-language definition travel with the analysis (syllables are decoded on demand, never stored)
+      ...(best.register?.length ? { register: [...best.register] } : {}), ...(best.role ? { role: best.role } : {}), ...(best.definition ? { definition: best.definition } : {}),
       confidence: best.confidence, provenance: fromRule ? 'machine' : 'lexicon', analyzer: a.analyzer, createdAt: now,
       ...(alternatives.length ? { alternatives } : {}),
     });

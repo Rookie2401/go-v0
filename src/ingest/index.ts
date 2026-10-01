@@ -9,6 +9,7 @@
  *   ingestDocument / ingestAll         -> thin wrappers over importDocuments (throw CorpusValidationError)
  *   loadBundledCorpus                  -> the bundled documents (`data/corpus/<lang>/*.json`)
  *   testimonyDocument                  -> the private-Text document GoTell materializes for a revision
+ *   plainTextToDocuments               -> the exact text of a book -> one personal-copy document per chapter
  */
 import type { AdapterRegistry, AppStore, Text } from '../core';
 import { CorpusValidationError, type CorpusDocument } from './format';
@@ -16,8 +17,9 @@ import { importDocuments, type ImportOptions } from './import';
 
 export * from './format';
 export { computePublished, contentSignatureOf, type PublicationDecision } from './publish';
-export { INGEST_TOOL, IMPORT_ANALYZER } from './plan';
+export { INGEST_TOOL, IMPORT_ANALYZER, planDocument, dictionaryCandidates, dictionaryTool, type PlanOptions, type DocumentPlan } from './plan';
 export * from './import';
+export { plainTextToDocuments, type PlainTextOptions, type PlainTextResult } from './plaintext';
 export { contentHistory, describeVersionBump, VERSION_RECORD_PREFIX, type ContentHistoryEntry, type VersionBump } from './history';
 export {
   applyReview, isIsoDate, REVIEW_STATUSES, NEEDS_REVIEW_TAG,

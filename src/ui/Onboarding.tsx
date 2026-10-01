@@ -86,8 +86,13 @@ export function Gate({ services, user, course, children }: GateProps) {
       <Onboarding
         store={services.store}
         onChosen={(u, c) => {
-          setWho({ user: u, course: c });
-          if (typeof window !== 'undefined' && window.location.hash) window.location.hash = '#/'; // the app opens on Home
+          const enter = () => {
+            setWho({ user: u, course: c });
+            if (typeof window !== 'undefined' && window.location.hash) window.location.hash = '#/'; // the app opens on Home
+          };
+          // The course was chosen only now, after startup: its reading ladder (if it has one) goes into the store
+          // before Home is shown, so the ladder door is there on the first screen. A failure never blocks the app.
+          void services.catalog.install(c.id).then(enter, enter);
         }}
       />
     );

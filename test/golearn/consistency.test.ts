@@ -113,7 +113,7 @@ describe('a read issued right after an un-awaited emit returns the settled value
     for (const s of seen) expect(s).toBe(settled);
   });
 
-  it('every read method waits: item state, queries, progress, explanation, support, recommendations, known list', async () => {
+  it('every read method waits: item state, queries, progress, explanation, support, recommendations, known list, forecast, pace, history, readiness', async () => {
     const { raw, adapters, rescue } = await seeded();
     const { bus, golearn, knob } = slowGoLearn(raw, adapters, 2);
     golearn.attach();
@@ -131,6 +131,10 @@ describe('a read issued right after an un-awaited emit returns the settled value
       await golearn.scriptureReadiness(U, BIBLE),
       await golearn.recommend(U),
       await golearn.coverage(U, BIBLE),
+      await golearn.predictDifficulty(U, BIBLE),
+      await golearn.readingPace(U),
+      await golearn.itemHistory(U, dios),
+      await golearn.stageReadiness(U, 'honduras-es'),
     ]);
     const pending = bus.emit(rescue('rescue:1'));
     const immediate = await everything();

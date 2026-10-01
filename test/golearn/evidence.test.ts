@@ -21,8 +21,8 @@ async function buildLuz(h: Harness) {
 const reading = async (h: Harness, itemId: string, user = U) => (await h.golearn.getItemState(user, itemId))!.reading;
 
 describe('policyVersion', () => {
-  it('is evidence@4', async () => {
-    expect(createHarness().golearn.policyVersion).toBe('evidence@4');
+  it('is evidence@6', async () => {
+    expect(createHarness().golearn.policyVersion).toBe('evidence@6');
   });
 });
 
@@ -239,7 +239,7 @@ describe('only reviewed real speech counts for listening (rule 5)', () => {
     await h.listen(U, 'es', ES_STORY, [3], { session: 'l5', legacy: true, segmentId: 'seg:nope' });
     const events = await h.store.events.where('userId', U);
     const audit = await h.golearn.auditEvidence(U);
-    expect(audit).toMatchObject({ userId: U, policyVersion: 'evidence@4', totalEvents: events.length, rebuilt: false });
+    expect(audit).toMatchObject({ userId: U, policyVersion: 'evidence@6', totalEvents: events.length, rebuilt: false });
     expect(audit.excluded.map((x) => x.reason).sort()).toEqual(['non-speech-audio', 'non-speech-audio', 'unknown-asset', 'unreviewed-voice']);
     expect(audit.excluded.every((x) => x.type === 'AudioSegmentCompleted')).toBe(true);
     const before = (await h.store.encounters.where('userId', U)).length;
@@ -283,7 +283,7 @@ describe('ensureCurrent — migration from an older policy without deleting anyt
     expect(creo.reading.level).toBe('encountered'); // exposure only
     expect(creo.reading.evidence).toBe(0);
     expect((await h.store.events.where('userId', U)).length).toBe(events);
-    expect((await h.store.meta.get(`golearn.policy:${U}`))?.value).toBe('evidence@4');
+    expect((await h.store.meta.get(`golearn.policy:${U}`))?.value).toBe('evidence@6');
     expect(await h.golearn.ensureCurrent(U)).toBe(false); // idempotent
   });
 
@@ -298,14 +298,14 @@ describe('ensureCurrent — migration from an older policy without deleting anyt
     await h.view('a', 'es', ES_STORY, 0); // a: state predates any stamp
     const b = (await h.store.encounters.where('userId', 'b')).length;
     expect(await h.golearn.ensureCurrent('a')).toBe(true);
-    expect((await h.store.meta.get('golearn.policy:b'))?.value).toBe('evidence@4');
+    expect((await h.store.meta.get('golearn.policy:b'))?.value).toBe('evidence@6');
     expect((await h.store.encounters.where('userId', 'b')).length).toBe(b);
   });
 
   it('a brand-new learner is just stamped', async () => {
     const h = createHarness();
     expect(await h.golearn.ensureCurrent('fresh')).toBe(false);
-    expect((await h.store.meta.get('golearn.policy:fresh'))?.value).toBe('evidence@4');
+    expect((await h.store.meta.get('golearn.policy:fresh'))?.value).toBe('evidence@6');
   });
 });
 
@@ -425,7 +425,7 @@ describe('policy stamp on first write', () => {
     await buildSpanish(h.store);
     expect(await stampOf(h, U)).toBeUndefined();
     await h.view(U, 'es', ES_STORY, 0);
-    expect(await stampOf(h, U)).toBe('evidence@4');
+    expect(await stampOf(h, U)).toBe('evidence@6');
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
     expect(await stampOf(h, 'nobody')).toBeUndefined(); // other learners are not stamped
   });
@@ -441,7 +441,7 @@ describe('policy stamp on first write', () => {
     expect(await stampOf(h, U)).toBeUndefined();
     expect(await h.golearn.ensureCurrent(U)).toBe(true);
     expect((await h.store.encounters.get('legacy-enc'))).toBeUndefined(); // rebuilt from the log
-    expect(await stampOf(h, U)).toBe('evidence@4');
+    expect(await stampOf(h, U)).toBe('evidence@6');
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
   });
 

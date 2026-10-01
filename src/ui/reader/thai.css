@@ -1,0 +1,64 @@
+/*
+ * Reader additions for courses with a reading ladder: decoding, notes, clause structure, the difficulty preview and the
+ * quiet chrome of the later stages. Colours, fonts and spacing come from the tokens in index.css; nothing here is new
+ * design. A course without a ladder never renders any of these elements.
+ */
+
+/* ── word sheet: variety, other meanings, history ── */
+.sheet__variety { font-style: normal; color: var(--accent); }
+.sheet__senses { margin-top: 0.4rem; }
+.sheet__senses > .btn { margin-left: -0.6rem; }
+.sheet__list { margin: 0.3rem 0 0; padding-left: 1.1rem; font-size: 0.95rem; line-height: 1.5; color: var(--ink-soft); }
+.sheet__sentence { font-family: var(--thai); line-height: 1.9; margin-bottom: 0.4rem; }
+
+/* ── decoding ── */
+.decode { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.8rem; }
+.decode__syl { border-left: 2px solid var(--rule-strong); padding-left: 0.8rem; }
+.decode__syl[data-uncertain='true'] { border-left-color: var(--wine); }
+.decode__head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; }
+.decode__text { font-size: 1.5rem; line-height: 1.6; color: var(--ink); }
+.decode__text[lang='th'] { font-family: var(--thai); }
+.decode__rule { margin-top: 0.35rem; }
+.decode__rescue .k { letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-faint); font-size: 0.68rem; font-weight: 600; }
+
+/* ── notes and clause structure ── */
+.notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.9rem; }
+.note + .note { border-top: 1px solid var(--rule); padding-top: 0.8rem; }
+.note__status { margin-left: 0.5rem; }
+.note__topics { display: flex; flex-wrap: wrap; gap: 0.3rem; margin: 0.4rem 0 0; padding: 0; list-style: none; }
+.note-mark {
+  display: inline-flex; align-items: center; justify-content: center; vertical-align: baseline;
+  width: 1.15em; height: 1.15em; margin-left: 0.3em; padding: 0; border: 1px solid var(--rule-strong); border-radius: 50%;
+  background: transparent; color: var(--ink-faint); font: italic 0.7em/1 var(--serif); cursor: pointer;
+}
+.note-mark:hover, .note-mark.is-open { color: var(--accent); border-color: var(--accent); opacity: 1; }
+.note-mark:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; opacity: 1; }
+.clause { margin-top: 0.5rem; }
+.clause__text { font-size: 1.25rem; line-height: 2.9; margin: 0; overflow-wrap: anywhere; }
+.clause__text[lang='th'] { font-family: var(--thai); }
+.clause__span {
+  position: relative; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em; padding-bottom: 0.1em; margin-inline: 1px;
+}
+.clause__span::after {
+  content: attr(data-label); position: absolute; left: 0; top: 100%; margin-top: 0.15em; white-space: nowrap;
+  font: 600 0.62rem/1 var(--serif); letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); text-decoration: none;
+}
+.clause__legend { list-style: none; margin: 0.5rem 0 0; padding: 0; font-size: 0.9rem; color: var(--ink-soft); display: grid; gap: 0.15rem; }
+.clause__label { letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-size: 0.68rem; font-weight: 600; margin-right: 0.4rem; }
+
+/* ── quiet chrome ── */
+.reading-details { margin: 0.4rem 0 0.8rem; }
+.reading-details .coverage { margin-top: 0.4rem; }
+.reader__menu {
+  max-width: 44rem; margin: 0 auto; display: grid; gap: 0.6rem; padding: 0.6rem 0.9rem 0.8rem;
+  border-top: 1px solid var(--rule); background: var(--paper-raised);
+}
+.reader__menu .btn { justify-self: start; }
+
+/* ── difficulty preview ── */
+.difficulty { margin-bottom: 1.2rem; font-size: 1rem; line-height: 1.5; }
+.difficulty-body { margin-top: 0.6rem; padding: 1rem 1.1rem; background: var(--paper-raised); border: 1px solid var(--rule-strong); border-radius: 10px; box-shadow: var(--shadow-raised); }
+.difficulty__summary { color: var(--ink); margin: 0 0 0.4rem; }
+.difficulty__list { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.35rem; }
+.difficulty__limits { margin: 0.2rem 0 0; padding-left: 1.1rem; font-size: 0.9rem; color: var(--ink-soft); }

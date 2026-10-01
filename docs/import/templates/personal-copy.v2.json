@@ -1,0 +1,58 @@
+{
+  "_comment": "Personal-copy template (schema version 2): one chapter of a published book that you own a copy of. Normally you do not write this by hand: save the book as a UTF-8 .txt and run npm run corpus:convert -- book.txt --lang th --work <slug> (docs/IMPORT.md, 'Your own copy of a book'). Copy this file only to see every field. Fields starting with an underscore are ignored by the validator.",
+  "schemaVersion": 2,
+  "id": "my-book-ch01",
+  "lang": "th",
+  "title": "Title of the book — Chapter 1",
+  "contentType": "story",
+  "corpus": {
+    "id": "personal-th",
+    "kind": "comprehensible-input",
+    "title": "Your books",
+    "_comment": "One 'Your books' corpus per language: every personal copy goes here."
+  },
+  "source": {
+    "id": "src:th:my-book",
+    "title": "Title of the book",
+    "author": "Author of the book",
+    "publisher": "Publisher",
+    "attribution": "Title of the book — Author of the book. Your own copy; not distributed.",
+    "provenance": "Supplied by the learner from a personal copy (my paperback, 12th printing); transcription not checked.",
+    "rights": "personal-copy",
+    "authorship": "published",
+    "_comment": "rights 'personal-copy' + authorship 'published' + a provenance: the text is readable on this device without a review, labelled 'Your copy'. It is refused for Scripture ('Scripture is never a personal copy: it must be an identified, verified translation') and for generated text ('generated text is not a published work'). Personal copies are never bundled: keep the files under data/private/, not data/corpus/."
+  },
+  "review": {
+    "status": "unreviewed",
+    "_comment": "No review is needed for a personal copy. Leave it 'unreviewed' until a person has checked your transcription against the book."
+  },
+  "topics": [],
+  "editorialTags": [],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "mana-mani-1",
+    "chapter": { "index": 1, "title": "Chapter one" },
+    "_comment": "Where this text sits in the course ladder: the slug of a work in src/course, and the chapter. courseId is optional (default: the first course for this language). Chapter 0 is front matter."
+  },
+  "notes": [
+    {
+      "match": "หนังสือ",
+      "kind": "cultural",
+      "body": "Replace this with a short note of your own about the word or the sentence.",
+      "topics": ["example"],
+      "_comment": "A document-level note belongs to the first sentence whose exact text contains 'match' (add \"occurrence\": 2 for the second such sentence). A note never changes the text. kind: cultural | regional | register | literary | historical | clause-structure. A note written by a person needs nothing more; a machine note ('provenance': 'machine') stays unreviewed until a named person reviews it ('reviewStatus' and 'by')."
+    }
+  ],
+  "sections": [
+    {
+      "title": "Chapter one",
+      "paragraphs": [
+        {
+          "_comment": "One raw paragraph per line of the book, exactly as printed. Thai has no full stop: the importer finds the sentences. Do not add spaces.",
+          "text": "ใส่ข้อความจากหนังสือของคุณที่นี่"
+        }
+      ]
+    }
+  ]
+}

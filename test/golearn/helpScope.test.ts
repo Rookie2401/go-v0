@@ -1,5 +1,5 @@
 /**
- * evidence@4 — help has a SCOPE. Item-targeted help (word / phrase / grammar: assistance 1–3) vetoes an item's estimate while it
+ * evidence@6 — help has a SCOPE. Item-targeted help (word / phrase / grammar: assistance 1–3) vetoes an item's estimate while it
  * is among its last two reading encounters. Sentence-level help (explanation / English: 4–5) makes that encounter assisted
  * (never demonstrates, not a help-free exposure) but does not veto an estimate earned help-free elsewhere, and it never touches
  * the encounters of other sentences or other sittings. This is the audited "Parallel English" scenario, on the real fold.

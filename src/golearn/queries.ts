@@ -4,6 +4,7 @@ import type {
   TokenAnalysis, TokenSupport,
 } from '../core';
 import { itemKindOf, ids } from '../core';
+import { publicRow } from './agg';
 import { AnalysisCache, morphologyLine, pickAnalysis } from './analysis';
 import { classifyTokens } from './coverage';
 import { UNCERTAIN_BELOW, levelAtLeast, productionKindOf } from './policy';
@@ -91,7 +92,7 @@ async function isRelatedSeen(
   ctx: Ctx, userId: string, lang: LanguageCode, itemId: string, itemKind: string,
   memo: { forms?: Map<LanguageCode, Array<{ id: string; normalized: string }>> },
 ): Promise<boolean> {
-  if (itemKind === 'phrase' || itemKind === 'pattern') return false;
+  if (itemKind === 'phrase' || itemKind === 'pattern' || itemKind === 'orth') return false;
   const cache = new AnalysisCache(ctx.store);
   const lemmaIds = new Set<string>();
   if (itemKind === 'lemma') lemmaIds.add(itemId);
@@ -125,9 +126,10 @@ export async function listKnown(
   ctx: Ctx, userId: string, lang: LanguageCode, modality: 'reading' | 'listening' | 'writing', minLevel: string,
 ): Promise<LearnerItemState[]> {
   levelAtLeast('unseen', minLevel); // throws on an unknown level
-  const rows = (await ctx.store.learnerItems.where('userId', userId)).filter((r) => r.lang === lang);
+  // Writing-system (`orth`) items are not vocabulary: a consonant class is not a known word.
+  const rows = (await ctx.store.learnerItems.where('userId', userId)).filter((r) => r.lang === lang && r.itemKind !== 'orth');
   return rows
-    .map(displayRow)
+    .map((r) => publicRow(displayRow(r)))
     .filter((r) => levelAtLeast(r[modality].level, minLevel) && r[modality].level !== 'unseen')
     .sort((a, b) => b[modality].evidence - a[modality].evidence || (a.itemId < b.itemId ? -1 : 1));
 }

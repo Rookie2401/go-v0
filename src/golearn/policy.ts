@@ -1,6 +1,8 @@
 /**
- * GoLearn evidence policy — `evidence@4` (adds the SCOPE of help: item-targeted vs sentence-level; builds on evidence@3's
- * time-derived sittings, version-pinned encounters, explicit completion). The single place where assistance discounts, modality rules and
+ * GoLearn evidence policy — `evidence@6` (stored item state is an incrementally updated AGGREGATE, agg.ts, instead of being re-derived from
+ * every encounter on every fold; the numbers and rules below are unchanged from evidence@5, which added writing-system `orth` items and
+ * decoding help (`DecodingRevealed`) on top of evidence@4's SCOPE of help, item-targeted vs sentence-level, and evidence@3's time-derived
+ * sittings, version-pinned encounters, explicit completion). The single place where assistance discounts, modality rules and
  * level thresholds live (ARCHITECTURE §8, PLAN2 "Evidence policy v2"). Nothing here is a grade: help never
  * subtracts, it only limits how far an item can be credited.
  *
@@ -40,7 +42,15 @@
  *   transcript shown ×0.6 · translation revealed ×0.25 (such an encounter is `assisted`, so these only matter for the
  *   potential weight used to choose the better of two completions in one sitting)
  *
- * ── The scope of help (evidence@4) ──
+ * ── Writing-system items (evidence@6) ──
+ *   A word token of a reading encounter also yields `orth` items (ids.orth(lang, feature): consonant class, vowel pattern, tone mark,
+ *   tone rule …) from the adapter's decoding of the written form. They are folded exactly like other items (exposure on a view,
+ *   assisted by help, demonstrated by a report) but only for READING encounters, and they never enter word coverage, vocabulary
+ *   lists, recommendations or the word estimates. Opening the decoding of a word (`DecodingRevealed`) is item-targeted help (level 1)
+ *   for the word's form and for each orth item of the decoding; the romanization rescue is kept on the encounter (`romanized`).
+ *   `NoteOpened` is context and has no effect on evidence.
+ *
+ * ── The scope of help (since evidence@4) ──
  *   Help is evidence about WHAT the learner needed, so it only counts against what it was about:
  *   item-targeted   word gloss / phrase / grammar help (assistance 1–3): "he needed help with THIS item".
  *   sentence-level  sentence explanation / English rescue — including the whole-passage "Parallel English" (assistance 4–5):
@@ -66,7 +76,7 @@ import type { AssistanceLevel, ComfortBand, EvidencePolicy, LearnerLevel, Produc
 import { LEVEL_ORDER } from '../core';
 
 /** Version of the evidence rules; stored per user in `meta`. Bump whenever a rule above changes. */
-export const POLICY_VERSION = 'evidence@4';
+export const POLICY_VERSION = 'evidence@6';
 
 export const READING_WEIGHTS: readonly number[] = [1.0, 0.85, 0.65, 0.45, 0.3, 0.15];
 
@@ -201,3 +211,49 @@ export const levelAtLeast = (level: string, min: string) => levelIndex(level) >=
 export function toLevel(level: string): LearnerLevel {
   return LEVEL_ORDER[levelIndex(level)];
 }
+
+/**
+ * Stage readiness, reading pace and difficulty forecast: every threshold in one place. PROVISIONAL — chosen by the course
+ * owner's brief (docs/PLAN5.md), not calibrated on learners. They produce advice and labelled estimates, never a gate.
+ */
+export const READINESS = {
+  /** Below this many distinct sentences seen in the stage, or with fewer than `minSignalsWithData` signals holding data, the verdict is insufficient-data. */
+  minSentencesSeen: 150,
+  minSignalsWithData: 4,
+  /** lexical-coverage: shown-understood + likely-familiar share of the stage's imported texts. */
+  lexicalCoverage: 0.95,
+  /** The window of recent sentences (by time) that lookup-rate, sentence-rescue-rate and decoding look at. */
+  windowSentences: 300,
+  /** The fewest sentences in that window for lookup-rate, sentence-rescue-rate and decoding to say anything. */
+  minWindowSentences: 30,
+  /** lookup-rate: lookups (word, phrase, grammar, decoding) per 100 words in the window, at most. */
+  lookupsPer100Words: 4,
+  /** sentence-rescue-rate: explanations / English shown per 100 sentences in the window, at most. */
+  rescuesPer100Sentences: 5,
+  /** reported-comprehension: share of reports 'all' or 'most', and the fewest reports that count. */
+  reportedComprehension: { share: 0.8, minReports: 3 },
+  /** unfamiliar-material: predicted coverage needed on unopened texts of the next stage, else of this stage. */
+  unfamiliarNextStage: 0.9,
+  unfamiliarSameStage: 0.95,
+  /** retention: items first met at least `days` ago and met again within the last `days`; share without item-targeted help; fewest items. */
+  retention: { days: 7, share: 0.85, minItems: 30 },
+  /** decoding (pre-reader stage only): DecodingRevealed per 100 words in the window, at most; romanization rescues allowed in the last `romanizationWindow` sentences. */
+  decoding: { revealedPer100Words: 10, romanizationRescues: 0, romanizationWindow: 100 },
+  /** listening: only with reviewed real-speech evidence. Fewest heard sentences, and the listening coverage of the heard sentences needed. */
+  listening: { minSentences: 30, coverage: 0.8 },
+  /** reading pace: a words-per-minute figure needs this many timed sentences; the trend compares the last `sittings` sittings with the `sittings` before. */
+  pace: { minTimedSentences: 30, minTimedPerSitting: 5, sittings: 3, change: 0.1 },
+} as const;
+
+/** Difficulty forecast: provisional constants. */
+export const FORECAST = {
+  /** A new word is "useful" when it occurs this often in the text plus the other texts of its work, or this often across every stored text. */
+  usefulInWork: 2,
+  usefulInLibrary: 3,
+  /** Unanalysed words above this share of the text get their own line in `limits`. */
+  unanalysedShare: 0.05,
+  /** Fewer distinct word forms met than this ⇒ the estimate of what the learner knows rests on very little. */
+  minHistoryForms: 50,
+  /** A phrase is "weak" when its last this-many encounters needed item-targeted help. */
+  weakPhraseTail: 2,
+} as const;

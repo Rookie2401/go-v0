@@ -9,7 +9,8 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import type { ReactNode } from 'react';
 import { rememberActiveUser } from './prefs';
 import { newSession, sittingSession, touchSitting } from './sitting';
-import type { AdapterRegistry, AppStore, Course, EventBus, GoLearn, GoListen, GoTell, LanguageCode, ProviderAvailability, Text, User } from '../core';
+import type { AdapterRegistry, AppStore, Course, CourseCatalog, EventBus, GoLearn, GoListen, GoTell, LanguageCode, LexiconSource, ProviderAvailability, Text, User } from '../core';
+import type { PlainTextOptions, PlainTextResult } from '../ingest/plaintext';
 
 export { newSession };
 
@@ -48,6 +49,8 @@ export interface IngestApi {
   import(docs: unknown[]): Promise<ImportDocView[]>;
   /** Content-version history of a stored text (bootstrap binds it to `contentHistory` in src/ingest). Absent ⇒ only the current version is shown. */
   history?(text: Text): ContentHistoryView[];
+  /** The exact text of a book as import documents (a personal copy). Never alters the text; bootstrap binds it to `plainTextToDocuments`. */
+  convertPlainText(text: string, opts: PlainTextOptions): PlainTextResult;
 }
 
 export interface ContentHistoryView { version: number; at: string; summary: string }
@@ -97,6 +100,10 @@ export interface AppServices {
   golisten: GoListen;
   gotell: GoTell;
   ingest: IngestApi;
+  /** The reading ladder of a course (stages, works, the learner's own copies). A course without a ladder has no stages. */
+  catalog: CourseCatalog;
+  /** The installed dictionary of a language, or undefined when there is none. Lazy: no request until it is first asked something. */
+  lexicon(lang: LanguageCode): LexiconSource | undefined;
   backup: BackupApi;
   speech: SpeechApi;
   startup?: StartupInfo;
@@ -144,8 +151,11 @@ export function AppProvider({ services, user: initialUser, course: initialCourse
     if (!user) throw new Error(`unknown user ${userId}`);
     const course = await store.courses.get(user.courseId);
     if (!course) throw new Error(`unknown course ${user.courseId}`);
+    // A learner on another course (or a changed team): its ladder goes into the store before the UI shows it. Idempotent;
+    // a course without a ladder is a no-op, and a failure here never stops the switch.
+    try { await services.catalog.install(course.id); } catch { /* the ladder pages say what is missing */ }
     return { user, course };
-  }, [store]);
+  }, [store, services.catalog]);
 
   const selectUser = useCallback(async (userId: string) => {
     const next = await load(userId);

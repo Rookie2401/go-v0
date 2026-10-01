@@ -17,6 +17,7 @@ import type { Recommendation, Text, TextViewed } from '../../core';
 import { useApp } from '../context';
 import { ProgressLine, useCoverageMany, useReadingProgress } from '../coverage';
 import { BAND_LABEL, INPUT_REASONS, REASON_LABEL, awaitedStatement, isTestimonyText, isVisibleText, languageName, pct, plainReason, plainReasons, teamLabel, textPath } from '../format';
+import { useCurrentStage } from '../course/useLadder';
 import { useLangTexts } from '../library';
 import { usePreview } from '../prefs';
 import { I } from '../ui';
@@ -39,6 +40,12 @@ export function Home() {
   const { store, bus, golearn, userId, lang, user, course } = useApp();
   const preview = usePreview();
   const { texts: allTexts } = useLangTexts();
+  // A course with a reading ladder gets one more door, above the others; a course without one looks exactly as before.
+  const { stages, current: currentStage } = useCurrentStage();
+  const entries = useMemo(
+    () => (stages && stages.length > 0 && currentStage ? [{ to: '/course', name: 'Reading ladder', sub: currentStage.label }, ...ENTRIES] : ENTRIES),
+    [stages, currentStage],
+  );
   const [items, setItems] = useState<Item[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [lastRead, setLastRead] = useState<LastRead | null>(null);
@@ -163,7 +170,7 @@ export function Home() {
       )}
 
       <nav className="home__list" aria-label="Start here">
-        {ENTRIES.map((e) => (
+        {entries.map((e) => (
           <Link key={e.to} to={e.to} className="home__entry">
             <span className="home__entry-body">
               <span className="home__entry-name">{e.name}</span>

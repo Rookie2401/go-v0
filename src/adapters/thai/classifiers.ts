@@ -1,0 +1,80 @@
+/**
+ * Classifiers: the common ones, with what each counts. Many are also ordinary nouns (ใบ "leaf", ห้อง "room");
+ * those get a noun row first so the word is still analysed as a noun outside a counting phrase. The classifiers
+ * the base lexicon already holds (คน ตัว อัน เล่ม องค์ หลัง เรื่อง) get their `counts` in function-words.ts.
+ * Machine-drafted, not native-reviewed.
+ */
+import { buildRows, type ThaiRow } from './entries';
+
+const ROWS: ThaiRow[] = [
+  ['ใบ', 'NOUN', 'leaf; sheet'],
+  ['ใบ', 'CLF', '(classifier for flat or hollow things)', { counts: 'leaves, bags, cards, hats, certificates' }],
+  ['ลูก', 'CLF', '(classifier for round things)', { counts: 'fruit, balls, mountains, round things' }],
+  ['คัน', 'CLF', '(classifier for vehicles, umbrellas)', { counts: 'cars, buses, bicycles, umbrellas' }],
+  ['ห้อง', 'CLF', '(classifier for rooms)', { counts: 'rooms' }],
+  ['แผ่น', 'NOUN', 'sheet, flat piece'],
+  ['แผ่น', 'CLF', '(classifier for flat sheets)', { counts: 'paper, boards, discs, slices' }],
+  ['เส้น', 'NOUN', 'line; strand; thread'],
+  ['เส้น', 'CLF', '(classifier for lines and strands)', { counts: 'roads, hairs, noodles, ropes' }],
+  ['ดอก', 'NOUN', 'flower, blossom'],
+  ['ดอก', 'CLF', '(classifier for flowers)', { counts: 'flowers' }],
+  ['ต้น', 'NOUN', 'trunk; plant; beginning'],
+  ['ต้น', 'CLF', '(classifier for plants)', { counts: 'trees, plants' }],
+  ['ผืน', 'CLF', '(classifier for spread-out things)', { counts: 'cloth, mats, flags, plots of land' }],
+  ['คู่', 'NOUN', 'pair; partner'],
+  ['คู่', 'CLF', '(classifier for pairs)', { counts: 'pairs' }],
+  ['ชิ้น', 'NOUN', 'piece'],
+  ['ชิ้น', 'CLF', '(classifier for pieces)', { counts: 'pieces, slices, works' }],
+  ['ก้อน', 'NOUN', 'lump'],
+  ['ก้อน', 'CLF', '(classifier for lumps)', { counts: 'stones, lumps, clouds' }],
+  ['เม็ด', 'NOUN', 'seed, grain'],
+  ['เม็ด', 'CLF', '(classifier for small round things)', { counts: 'seeds, grains, pills, beads' }],
+  ['ขวด', 'NOUN', 'bottle'],
+  ['ขวด', 'CLF', '(classifier for bottles)', { counts: 'bottles, and what is in them' }],
+  ['แก้ว', 'NOUN', 'glass (for drinking)'],
+  ['แก้ว', 'CLF', '(classifier for glasses of drink)', { counts: 'glasses of drink' }],
+  ['ถ้วย', 'NOUN', 'cup'],
+  ['ถ้วย', 'CLF', '(classifier for cups)', { counts: 'cups, small bowls' }],
+  ['จาน', 'NOUN', 'plate, dish'],
+  ['จาน', 'CLF', '(classifier for plates)', { counts: 'plates of food' }],
+  ['ชาม', 'NOUN', 'bowl'],
+  ['ชาม', 'CLF', '(classifier for bowls)', { counts: 'bowls of food' }],
+  ['ฉบับ', 'NOUN', 'copy; edition'],
+  ['ฉบับ', 'CLF', '(classifier for papers)', { counts: 'newspapers, letters, documents' }],
+  ['หน', 'CLF', '(classifier for times)', { counts: 'times, occasions' }],
+  ['รูป', 'CLF', '(classifier for monks, pictures)', { counts: 'monks, pictures' }],
+  ['ท่าน', 'CLF', '(classifier for respected people)', { counts: 'respected people, monks' }],
+  ['สาย', 'NOUN', 'line, string'],
+  ['สาย', 'CLF', '(classifier for lines)', { counts: 'roads, rivers, bus routes, ropes' }],
+  ['ด้าม', 'CLF', '(classifier for things with a handle)', { counts: 'pens, pencils, tools with a handle' }],
+  ['เครื่อง', 'NOUN', 'machine; equipment'],
+  ['เครื่อง', 'CLF', '(classifier for machines)', { counts: 'machines, devices' }],
+  ['ลำ', 'CLF', '(classifier for boats, aircraft)', { counts: 'boats, aircraft' }],
+  ['ขบวน', 'NOUN', 'procession'],
+  ['ขบวน', 'CLF', '(classifier for processions, trains)', { counts: 'processions, trains' }],
+  ['ซอง', 'NOUN', 'envelope'],
+  ['ซอง', 'CLF', '(classifier for envelopes)', { counts: 'envelopes, packets' }],
+  ['กล่อง', 'NOUN', 'box'],
+  ['กล่อง', 'CLF', '(classifier for boxes)', { counts: 'boxes' }],
+  ['ถุง', 'NOUN', 'bag'],
+  ['ถุง', 'CLF', '(classifier for bags)', { counts: 'bags' }],
+  ['ช่อ', 'CLF', '(classifier for bunches of flowers)', { counts: 'bouquets, bunches of flowers' }],
+  ['พวง', 'CLF', '(classifier for bunches)', { counts: 'bunches, strings, clusters' }],
+  ['ฝูง', 'CLF', '(classifier for herds, flocks)', { counts: 'herds, flocks, crowds' }],
+  ['อย่าง', 'NOUN', 'kind, way'],
+  ['อย่าง', 'CLF', '(classifier for kinds)', { counts: 'kinds, types of things' }],
+  ['แห่ง', 'CLF', '(classifier for places)', { counts: 'places' }],
+  ['ชุด', 'NOUN', 'set; outfit'],
+  ['ชุด', 'CLF', '(classifier for sets)', { counts: 'sets, outfits' }],
+  ['บท', 'NOUN', 'chapter; lesson'],
+  ['บท', 'CLF', '(classifier for chapters, lessons)', { counts: 'chapters, lessons, poems' }],
+  ['ข้อ', 'NOUN', 'item; clause'],
+  ['ข้อ', 'CLF', '(classifier for items)', { counts: 'items, points, questions' }],
+  ['หน้า', 'CLF', '(classifier for pages)', { counts: 'pages' }],
+  ['คำ', 'CLF', '(classifier for words)', { counts: 'words; mouthfuls' }],
+];
+
+const built = buildRows(ROWS);
+export const CLASSIFIER_ROWS: readonly ThaiRow[] = ROWS;
+export const CLASSIFIER_ENTRIES = built.entries;
+export const CLASSIFIER_ANNOTATIONS = built.annotations;

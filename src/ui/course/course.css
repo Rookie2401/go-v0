@@ -1,0 +1,59 @@
+/* The reading ladder and the personal-copy importer. Plain on purpose: warm paper, quiet labels, no colour that grades anything. */
+
+.course__intro { color: var(--ink-soft); font-style: italic; line-height: 1.55; margin: 0.5rem 0 1.25rem; }
+
+/* current stage + "How is this going?" */
+.stage-status { border-bottom: 1px solid var(--rule); padding-bottom: 0.75rem; margin-bottom: 0.5rem; }
+.stage-status__line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.35rem; margin: 0 0 0.35rem; }
+.stage-status__line strong { font-weight: 600; }
+.stage-status__change { margin-left: 0.4rem; }
+.stage-status__pick { display: flex; flex-direction: column; gap: 0.35rem; margin: 0.4rem 0 0.6rem; }
+.stage-status__pick[hidden] { display: none; }
+.stage-status__pick select { max-width: 100%; }
+.going__explain { color: var(--ink-soft); line-height: 1.5; margin: 0.3rem 0 0.6rem; }
+.going__signals { list-style: none; margin: 0; padding: 0; }
+.going__signals li { display: grid; grid-template-columns: 1fr auto; column-gap: 0.75rem; padding: 0.5rem 0; border-bottom: 1px solid var(--rule); }
+.going__signals li .card__note { grid-column: 1 / -1; margin-top: 0.15rem; }
+.going__name { color: var(--ink); }
+.going__status { color: var(--ink-faint); font-variant: small-caps; letter-spacing: 0.06em; white-space: nowrap; }
+.going__pace { margin-top: 0.6rem; }
+
+/* stages */
+.stage { border-bottom: 1px solid var(--rule); }
+.stage .disclosure__heading { font-size: 1.1rem; }
+.stage .disclosure__btn { color: var(--ink); min-height: 2.9rem; }
+.stage__band { color: var(--ink-faint); font-size: 0.9rem; font-style: italic; }
+.stage__purpose { margin-top: 0.2rem; }
+.stage__group { margin: 1rem 0 0.4rem; }
+.stage__group-head { margin: 0 0 0.35rem; }
+
+/* works */
+.work-list { display: flex; flex-direction: column; }
+.work { padding: 0.8rem 0.1rem; border-top: 1px solid var(--rule); }
+.work:first-child { border-top: 0; }
+.work__title { font-size: 1.12rem; font-weight: 500; line-height: 1.35; margin: 0; }
+.work__author { color: var(--ink-soft); font-weight: 400; }
+.work__optional { color: var(--ink-faint); font-size: 0.8rem; font-weight: 400; font-style: italic; }
+.work__purpose { color: var(--ink-soft); font-size: 0.92rem; margin: 0.2rem 0 0; }
+.work__chips { margin-top: 0.35rem; }
+.work__rights { margin-top: 0.4rem; }
+.work__copy { margin: 0.5rem 0 0.2rem; }
+.work__copy-link { font-weight: 500; }
+.work__next { margin-left: 0.2rem; }
+.work__chapter-list { list-style: none; margin: 0.2rem 0 0; padding: 0; }
+.work__chapter-list li { padding: 0.35rem 0; border-bottom: 1px dotted var(--rule); }
+.work__chapter { color: var(--ink); }
+.work .disclosure__btn { font-size: 0.92rem; min-height: 2.25rem; }
+
+/* the importer and its preview */
+.copy { margin-top: 0.4rem; }
+.copy__facts { margin: 0.5rem 0; }
+.copy__facts > div { display: flex; flex-wrap: wrap; gap: 0.2rem 0.75rem; padding: 0.3rem 0; border-bottom: 1px solid var(--rule); }
+.copy__facts dt { color: var(--ink-faint); min-width: 11rem; font-variant: small-caps; letter-spacing: 0.06em; }
+.copy__facts dd { margin: 0; flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.copy__report { margin: 0.4rem 0; }
+.copy__disclosure { margin-top: 0.6rem; }
+
+@media (max-width: 30rem) {
+  .copy__facts dt { min-width: 0; flex-basis: 100%; }
+}

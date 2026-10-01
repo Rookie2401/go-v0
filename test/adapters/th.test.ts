@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { adapter, applySuggestion, best, errors, patterns, phrases, run, words } from './helpers';
-import { thNumberToWords, thaiInitialClass } from '../../src/adapters/th';
+import { THAI_COMPOUNDS, thLexicon, thNumberToWords, thaiInitialClass } from '../../src/adapters/th';
 
 const th = adapter('th');
 
@@ -48,9 +48,40 @@ describe('Thai adapter', () => {
     expect(thaiInitialClass('ขา')).toBe('high');
     expect(thaiInitialClass('คา')).toBe('low');
     expect(thaiInitialClass('เกา')).toBe('mid'); // leading vowel skipped
-    // a word without lexicon romanization has none — nothing is invented
+    // a word without lexicon romanization has none of its own — nothing is invented: it is the decoder's (when
+    // every syllable is certain) or absent
     const u = run('th', 'ภูมิศาสตร์');
-    expect(th.pronunciation(u.tokens[0], u.analyses[0]).transliteration).toBeUndefined();
+    const tr = th.pronunciation(u.tokens[0], u.analyses[0]).transliteration;
+    if (tr !== undefined) expect(tr).toBe(th.decode!(u.tokens[0].surface).map((s) => s.romanization).join('-'));
+    // a romanization the decoder contradicts is not kept: these hand values were dropped
+    for (const w of ['สัตย์ซื่อ', 'ยุติธรรม', 'อธรรม', 'เหรอ']) {
+      expect(thLexicon.lookup(w)[0].entry.translit, w).toBeUndefined();
+    }
+  });
+
+  it('segments the new compounds as one unit (วันนี้, ผลไม้, ผู้หญิง, พระเยซู, น่าจะ …) without touching the old ones', () => {
+    expect(words(run('th', 'วันนี้พรุ่งนี้เมื่อวาน'))).toEqual(['วันนี้', 'พรุ่งนี้', 'เมื่อวาน']);
+    expect(words(run('th', 'ผู้หญิงกินผลไม้'))).toEqual(['ผู้หญิง', 'กิน', 'ผลไม้']);
+    expect(words(run('th', 'พระเยซูทรงรัก'))).toEqual(['พระเยซู', 'ทรง', 'รัก']);
+    expect(words(run('th', 'เขาน่าจะไปโรงพยาบาล'))).toEqual(['เขา', 'น่าจะ', 'ไป', 'โรงพยาบาล']);
+    for (const c of THAI_COMPOUNDS) {
+      const r = run('th', c);
+      expect(r.tokens.map((t) => t.surface), c).toEqual([c]);
+    }
+  });
+
+  it('the analysis version was raised when the lexicon grew (stored analyses are re-made)', () => {
+    expect(Number(th.version)).toBeGreaterThanOrEqual(2);
+    expect(run('th', 'ฉันกิน').analyses[0].analyzer).toBe(`adapter-th@${th.version}`);
+  });
+
+  it('says honestly what it is: a seed lexicon, not native-reviewed, with a tone statement', () => {
+    const lim = th.support.limitations.join(' ');
+    expect(th.support.lemmatization).toBe('seed-only');
+    expect(lim).toMatch(/not been checked by a native speaker/);
+    expect(lim).toMatch(/never a guess|does not guess|not a guess/i);
+    expect(lim).not.toMatch(/Tone is not guessed: only the initial consonant class/); // the old statement is gone
+    expect(th.support.phraseDetection).toBe('seed-only');
   });
 
   it('unknown words give empty candidates', () => {

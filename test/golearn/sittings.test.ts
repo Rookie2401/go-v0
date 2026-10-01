@@ -1,5 +1,5 @@
 /**
- * evidence@4: time-derived sittings, one exposure per sitting, explicit completion, "Seen / Understood / Finished" kept
+ * evidence@6: time-derived sittings, one exposure per sitting, explicit completion, "Seen / Understood / Finished" kept
  * apart, and evidence pinned to the content version. Every test here controls time itself (`sittingPerSession: false`).
  */
 import { describe, expect, it } from 'vitest';
@@ -303,7 +303,7 @@ describe('"Understood" on a sentence never dwelt on', () => {
   });
 });
 
-describe('derived state is rebuildable under evidence@4', () => {
+describe('derived state is rebuildable under evidence@6', () => {
   async function play(h: Harness) {
     await h.view(U, 'es', ES_STORY, 0, 's1');
     await h.help(U, 'es', ES_STORY, 0, 1, F('creo'), 2, 's2'); // reload inside the sitting
@@ -365,7 +365,7 @@ describe('derived state is rebuildable under evidence@4', () => {
     const events = (await h.store.events.where('userId', U)).length;
     expect(await h.golearn.ensureCurrent(U)).toBe(true);
     expect((await h.store.events.where('userId', U)).length).toBe(events); // nothing deleted from the log
-    expect((await h.store.meta.get('golearn.policy:u1'))?.value).toBe('evidence@4');
+    expect((await h.store.meta.get('golearn.policy:u1'))?.value).toBe('evidence@6');
     expect(await encs(h)).toEqual(live);
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
   });

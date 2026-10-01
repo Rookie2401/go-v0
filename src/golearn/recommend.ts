@@ -84,7 +84,8 @@ export async function recommend(
   }
   const hasReading = [...records.values()].some((r) => r.sentencesSeen > 0 || r.sentencesUnderstood > 0 || r.finishedAt || r.finishedEarlierVersion || r.earlierVersions);
 
-  const myEncounters = ((await ctx.store.encounters.where('userId', userId)) as StoredEncounter[]).filter((e) => e.lang === lang);
+  // Writing-system (`orth`) encounters say nothing about which text to read next: they would only dilute the word-level shares below.
+  const myEncounters = ((await ctx.store.encounters.where('userId', userId)) as StoredEncounter[]).filter((e) => e.lang === lang && e.itemKind !== 'orth');
   const byText = new Map<string, StoredEncounter[]>();
   for (const e of myEncounters) {
     let l = byText.get(e.textId);

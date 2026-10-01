@@ -94,3 +94,18 @@ export async function seedHindi(store: AppStore): Promise<Text> {
     sentences: [{ tokens: [{ surface: 'उसने', lemma: 'वह', gloss: 'he' }, { surface: 'विश्वास', lemma: 'विश्वास', gloss: 'faith' }, { surface: 'किया', lemma: 'करना', gloss: 'did' }, { surface: '।', isWord: false }] }],
   });
 }
+
+/**
+ * One chapter of a ladder work, as the learner's own copy: a fixture Thai text with `workId`, `chapter` and `personalCopy`
+ * (published, so the library and the ladder show it). `chapterIndex` is 1-based.
+ */
+export async function seedChapter(store: AppStore, workId: string, chapterIndex: number, opts: { title?: string; published?: boolean } = {}): Promise<Text> {
+  const slug = `${workId.split(':').pop()}-ch${chapterIndex}`;
+  const text = await buildFixtureText(store, {
+    lang: 'th', slug, title: opts.title ?? `ตอนที่ ${chapterIndex}`, published: opts.published,
+    sentences: [{ tokens: [{ surface: 'ฉัน', lemma: 'ฉัน', gloss: 'I' }, { surface: 'รัก', lemma: 'รัก', gloss: 'love' }, { surface: 'แม่', lemma: 'แม่', gloss: 'mother' }] }],
+  });
+  const next: Text = { ...text, workId, chapter: { index: chapterIndex, title: opts.title ?? `ตอนที่ ${chapterIndex}` }, personalCopy: true };
+  await store.texts.put(next);
+  return next;
+}

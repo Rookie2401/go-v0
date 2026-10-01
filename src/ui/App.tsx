@@ -1,11 +1,12 @@
 /**
  * App shell and HashRouter routes. There is no persistent navigation strip: Home is the doorway
- * (Read · Scripture · My Testimony · Settings · Vocabulary) and every inner page carries its own
+ * (Read · Scripture · My Testimony · Settings · Vocabulary, and the Reading ladder for a course that has one) and every inner page carries its own
  * quiet Topbar with a way back.
  */
 import { useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { CoursePage } from './pages/Course';
 import { Home } from './pages/Home';
 import { Library } from './pages/Library';
 import { Settings, VocabularyPage } from './pages/Settings';
@@ -33,6 +34,7 @@ export function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/read" element={<Library mode="corpus" />} />
       <Route path="/read/:textId" element={<TextPage mode="corpus" />} />
+      <Route path="/course" element={<CoursePage />} />
       <Route path="/scripture" element={<Library mode="scripture" />} />
       <Route path="/scripture/:textId" element={<TextPage mode="scripture" />} />
       <Route path="/testimony" element={<Testimony />} />

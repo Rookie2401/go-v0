@@ -10,20 +10,27 @@
  *    are cleaned before the import proceeds.
  */
 import type {
-  AdapterRegistry, AppStore, ContentSource, EnglishRescue, PhraseOccurrence, PatternOccurrence, Sentence, Text, Token, TokenAnalysis,
-  TransformationRecord,
+  AdapterRegistry, AppStore, ContentNote, ContentSource, DictionaryEntry, DictionaryInfo, EnglishRescue, LanguageCode, LexiconSource,
+  PhraseOccurrence, PatternOccurrence, Sentence, Text, Token, TokenAnalysis, TransformationRecord,
 } from '../core';
 import { hash, ids } from '../core';
 import type { AnalysisCoverage } from '../adapters/shared';
 import { describeVersionBump } from './history';
 import { hasErrors, validateBatch, type CorpusDocument, type ValidationIssue } from './format';
 import {
-  INGEST_TOOL, materializeSentence, newCatalog, planDocument, type DocumentPlan, type PlannedSentence, type SentenceRows,
+  INGEST_TOOL, buildNoteRows, collectUnanalysedForms, materializeSentence, newCatalog, planDocument, type DocumentPlan, type PlannedSentence,
+  type SentenceRows,
 } from './plan';
 
 export interface ImportOptions {
   /** ISO timestamp source; defaults to the wall clock. Tests pass a fixed clock for exact repeatability checks. */
   clock?: () => string;
+  /**
+   * The installed dictionary of a language, if any. Words the language adapter cannot analyse are looked up in it and
+   * analysed from it (provenance `lexicon`, analyzer `dict:<id>`, confidence below certainty). Installing or changing a
+   * dictionary re-analyses a text on its next import. Without it (or with no dictionary installed) nothing changes.
+   */
+  lexicon?: (lang: LanguageCode) => LexiconSource | undefined;
 }
 
 export type ImportAction = 'created' | 'updated' | 'unchanged' | 'rejected';
@@ -51,7 +58,7 @@ export interface ImportReport {
 
 const TABLES = [
   'sources', 'corpora', 'texts', 'sections', 'paragraphs', 'sentences', 'tokens', 'lemmas', 'analyses',
-  'phrases', 'phraseOccurrences', 'patterns', 'patternOccurrences', 'rescues', 'meta',
+  'phrases', 'phraseOccurrences', 'patterns', 'patternOccurrences', 'rescues', 'notes', 'meta',
 ] as const;
 
 export const signatureKey = (textId: string) => `ingest-sig:${textId}`;
@@ -103,6 +110,86 @@ const compact = <T extends object>(o: T): T => {
   return out as T;
 };
 
+// ── planning with the installed dictionary ──
+
+/**
+ * Plan valid documents, looking up in the installed dictionary (if any) the forms the adapter cannot analyse — once
+ * per form. Async and outside any transaction. A dictionary that cannot be read never blocks: the document is planned
+ * without it and `notes` says why.
+ */
+export async function planWithDictionary(
+  docs: readonly CorpusDocument[], registry: AdapterRegistry, lexicon?: ImportOptions['lexicon'],
+): Promise<{ plans: DocumentPlan[]; notes: Map<number, string> }> {
+  const dictionaries = new Map<LanguageCode, { src: LexiconSource; info: DictionaryInfo; known: Map<string, DictionaryEntry[]>; asked: Set<string> } | null>();
+  const notes = new Map<number, string>();
+  const plans: DocumentPlan[] = [];
+  for (let i = 0; i < docs.length; i++) {
+    const doc = docs[i];
+    const src = lexicon?.(doc.lang);
+    if (!src) { plans.push(planDocument(doc, registry)); continue; }
+    try {
+      let dict = dictionaries.get(doc.lang);
+      if (dict === undefined) {
+        const info = await src.info();
+        dict = info ? { src, info, known: new Map(), asked: new Set() } : null;
+        dictionaries.set(doc.lang, dict);
+      }
+      if (!dict) { plans.push(planDocument(doc, registry)); continue; }
+      const want = [...collectUnanalysedForms(doc, registry)].filter((f) => !dict!.asked.has(f));
+      if (want.length) {
+        const found = await dict.src.lookup(want);
+        for (const f of want) dict.asked.add(f);
+        for (const [form, entries] of found) if (entries.length) dict.known.set(form, entries);
+      }
+      plans.push(planDocument(doc, registry, { dictionary: dict.known, dictionaryId: dict.info.id }));
+    } catch (e) {
+      // a dictionary that cannot be read must not block the import of the text: say so and import without it
+      notes.set(i, `dictionary not used: ${e instanceof Error ? e.message : String(e)}`);
+      plans.push(planDocument(doc, registry));
+    }
+  }
+  return { plans, notes };
+}
+
+export interface DocumentPreview {
+  id: string;
+  issues: ValidationIssue[];
+  /** Present for a document without errors: what the import would store, with the installed dictionary applied. */
+  analysisCoverage?: AnalysisCoverage;
+  published?: boolean;
+  unpublishedReasons?: string[];
+  note?: string;
+}
+
+/**
+ * Dry run: validate the batch exactly as the import would and, for documents without errors, plan them (dictionary
+ * included) to say what the import WOULD store — analysis coverage and the publication outcome. Writes nothing.
+ */
+export async function previewDocuments(store: AppStore, registry: AdapterRegistry, docs: readonly unknown[], opts: ImportOptions = {}): Promise<DocumentPreview[]> {
+  const existingTexts: Array<{ id: string; sourceId: string }> = [];
+  for (const d of docs) {
+    const o = d as { id?: unknown; lang?: unknown } | null;
+    if (o && typeof o === 'object' && typeof o.id === 'string' && typeof o.lang === 'string') {
+      const t = await store.texts.get(`text:${o.lang}:${o.id}`);
+      if (t) existingTexts.push({ id: t.id, sourceId: t.sourceId });
+    }
+  }
+  const knownWorks = new Set((await store.works.all()).map((w) => w.id));
+  const batch = validateBatch(docs, { registry, existingTexts, knownWorks });
+  const out: DocumentPreview[] = [];
+  for (let i = 0; i < docs.length; i++) {
+    const r = batch.documents[i];
+    if (hasErrors(r.issues)) { out.push({ id: r.id, issues: r.issues }); continue; }
+    const { plans, notes } = await planWithDictionary([docs[i] as CorpusDocument], registry, opts.lexicon);
+    const plan = plans[0];
+    out.push({
+      id: r.id, issues: r.issues, analysisCoverage: plan.coverage, published: plan.decision.published,
+      unpublishedReasons: plan.decision.unpublishedReasons, ...(notes.has(0) ? { note: notes.get(0) } : {}),
+    });
+  }
+  return out;
+}
+
 // ── the import ──
 
 /**
@@ -122,7 +209,8 @@ export async function importDocuments(store: AppStore, registry: AdapterRegistry
       if (t) existingTexts.push({ id: t.id, sourceId: t.sourceId });
     }
   }
-  const batch = validateBatch(docs, { registry, existingTexts });
+  const knownWorks = new Set((await store.works.all()).map((w) => w.id));
+  const batch = validateBatch(docs, { registry, existingTexts, knownWorks });
 
   if (!batch.ok) {
     return {
@@ -140,12 +228,13 @@ export async function importDocuments(store: AppStore, registry: AdapterRegistry
     };
   }
 
-  const plans = docs.map((d) => planDocument(d as CorpusDocument, registry));
+  const { plans, notes: dictNotes } = await planWithDictionary(docs as readonly CorpusDocument[], registry, opts.lexicon);
   const reports: DocumentReport[] = [];
 
   await store.transaction([...TABLES], async () => {
     for (let i = 0; i < plans.length; i++) {
-      reports.push(await importOne(store, plans[i], batch.documents[i].issues, now));
+      const r = await importOne(store, plans[i], batch.documents[i].issues, now);
+      reports.push(dictNotes.has(i) ? { ...r, note: dictNotes.get(i) } : r);
     }
   });
   return { ok: true, documents: reports };
@@ -264,6 +353,10 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
 
   const lastAdapterTool = existing ? [...existing.transformations].reverse().find((t) => t.tool.startsWith('adapter-'))?.tool : undefined;
   const analyzerChanged = !!existing && lastAdapterTool !== analyzerName;
+  // the dictionary that analysed this text last time (none ⇒ undefined); installing, changing or removing one re-analyses
+  const lastDictTool = existing ? [...existing.transformations].reverse().find((t) => t.tool.startsWith('dict:'))?.tool : undefined;
+  const wantDictTool = plan.dictionary?.tool ?? 'dict:none';
+  const dictChanged = !!existing && (lastDictTool ?? 'dict:none') !== wantDictTool;
 
   // ── build rows ──
   const catalog = newCatalog();
@@ -287,6 +380,10 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
     for (const t of rows.tokens) if (ps.text.slice(t.start, t.end) !== t.surface) throw new Error(`token offsets do not round-trip in ${m.id}: "${t.surface}"`);
     derived.push({ m, rows });
   });
+
+  // notes: one row per note, anchored to the surviving/new sentence id; replaced as a set with the text
+  const noteSeen = new Map<string, number>();
+  const noteRows: ContentNote[] = matches.flatMap((m, i) => buildNoteRows(plan, m.ps, m.key, m.id, derived[i].rows.tokens, noteSeen));
 
   const retiredRows: Sentence[] = retire.map((s) => ({ ...s, versionAdded: s.versionAdded ?? 1, retiredInVersion: contentVersion }));
 
@@ -371,15 +468,20 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
   const keepParas = new Set(paragraphRows.map((p) => p.id));
   for (const p of existing ? await store.paragraphs.where('textId', textId) : []) if (!keepParas.has(p.id)) await store.paragraphs.delete(p.id);
 
+  const notesWritten = await putChanged<ContentNote>(store.notes, noteRows);
+  const keepNotes = new Set(noteRows.map((n) => n.id));
+  let notesRemoved = 0;
+  for (const n of await store.notes.where('textId', textId)) if (!keepNotes.has(n.id)) { await store.notes.delete(n.id); notesRemoved++; }
+
   // ── the Text row: transformation log, then signature, then the Text itself ──
   const transformations: TransformationRecord[] = existing ? [...existing.transformations] : [];
   const reviewNote = describeReview(doc);
   const lastReview = [...transformations].reverse().find((t) => t.tool === 'review');
-  if (!existing || contentChanged || analyzerChanged) {
+  if (!existing || contentChanged || analyzerChanged || dictChanged) {
     const a = plan.coverage;
     transformations.push({
       at: now, tool: INGEST_TOOL,
-      description: `${!existing ? 'imported' : contentChanged ? 're-imported (sentence text changed)' : 're-imported (analyzer changed)'} ${doc.id}: ${plan.sentences.length} sentences, ${plan.tokenCount} tokens, contentVersion ${contentVersion}; ` +
+      description: `${!existing ? 'imported' : contentChanged ? 're-imported (sentence text changed)' : analyzerChanged ? 're-imported (analyzer changed)' : 're-imported (dictionary changed)'} ${doc.id}: ${plan.sentences.length} sentences, ${plan.tokenCount} tokens, contentVersion ${contentVersion}; ` +
         `text stored exactly as supplied${plan.nonNfcBlocks ? ` (${plan.nonNfcBlocks} block(s) not in NFC)` : ''}` +
         (existing && (added || retire.length) ? `; ${added} sentence(s) added, ${retire.length} retired` : ''),
     });
@@ -387,6 +489,25 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
       at: now, tool: analyzerName,
       description: `tokenized and analyzed: ${a.analysed}/${a.words} word tokens have a lexicon/rule/author analysis (rest uncertain, left empty); ` +
         `${derived.reduce((n, x) => n + x.rows.phraseOccurrences.length, 0)} phrase and ${derived.reduce((n, x) => n + x.rows.patternOccurrences.length, 0)} pattern occurrences`,
+    });
+    if (plan.dictionary || dictChanged) {
+      transformations.push({
+        at: now, tool: wantDictTool,
+        description: plan.dictionary
+          ? `${plan.dictionary.tokens} word token(s) the adapter could not analyse were analysed from the dictionary (provenance lexicon, confidence below certainty; the adapter's own analyses, author spans and corrections take precedence)`
+          : 'no dictionary installed: words the adapter cannot analyse are left without an analysis',
+      });
+    }
+  }
+  if (notesWritten || notesRemoved) {
+    const by = [...new Set(plan.sentences.flatMap((s) => s.notes.map((n) => n.by)).filter((x): x is string => !!x))];
+    const machine = noteRows.filter((n) => n.provenance === 'machine');
+    transformations.push({
+      at: now, tool: 'notes',
+      description: noteRows.length
+        ? `${noteRows.length} note(s) stored (${noteRows.length - machine.length} human, ${machine.length} machine, ${noteRows.filter((n) => n.reviewStatus === 'unreviewed').length} unreviewed)` +
+          `${by.length ? `; by ${by.join(', ')}` : ''}${notesRemoved ? `; ${notesRemoved} earlier note(s) replaced` : ''}`
+        : `${notesRemoved} note(s) removed`,
     });
   }
   if (!existing || contentVersion > baseVersion) {
@@ -410,6 +531,8 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
     tags: [...doc.topics], editorialTags: [...doc.editorialTags], prepTargets: [...doc.prepTargets], reviewStatus: doc.review.status,
     published: plan.decision.published, unpublishedReasons: [...plan.decision.unpublishedReasons], schemaVersion: 2, generated: doc.generated,
     transformations, contentVersion,
+    workId: plan.workId, chapter: doc.work?.chapter ? compact({ index: doc.work.chapter.index, title: doc.work.chapter.title }) : undefined,
+    personalCopy: plan.decision.personalCopy,
     scripture: doc.scripture
       ? compact({ book: doc.scripture.book, chapter: doc.scripture.chapter, translationId: doc.scripture.translationId, edition: doc.scripture.edition, verification: doc.scripture.verification })
       : undefined,

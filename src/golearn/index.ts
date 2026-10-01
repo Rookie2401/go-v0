@@ -1,7 +1,7 @@
 /**
  * GoLearn — learner state, coverage and recommendations on top of the shared AppStore and EventBus.
  * Events are the only write path: `attach()` subscribes to the bus, `handle()` folds one event, `rebuild()`
- * replays the log. See policy.ts for every weight/threshold (`evidence@4`) and fold.ts for what each event does.
+ * replays the log. See policy.ts for every weight/threshold (`evidence@6`) and fold.ts for what each event does.
  *
  * CONSISTENT READS. Folds are serialized in one queue. Every public READ is a queue entry too: it runs after every
  * fold queued before it and before any fold queued after it, so it can never observe a half-applied fold, whatever
@@ -20,20 +20,25 @@ import type {
   AdapterRegistry, AppStore, AssistanceLevel, DomainEvent, EventBus, EventInput, EvidencePolicy, GoLearn, LanguageCode,
 } from '../core';
 import { ids } from '../core';
+import { publicRow } from './agg';
 import { auditEvidence, ensureCurrent, policyMetaId, stampIfFresh } from './audit';
 import { analyzeText, scriptureReadiness } from './coverage';
 import { explainItem } from './explain';
 import { FOLD_TYPES, FOLD_TYPE_SET, Folder } from './fold';
+import { predictDifficulty } from './forecast';
+import { itemHistory } from './history';
+import { readingPace } from './pace';
 import { POLICY_VERSION, defaultPolicy } from './policy';
 import { readingProgress, readingProgressMany } from './progress';
 import * as q from './queries';
+import { stageReadiness } from './readiness';
 import { recommend } from './recommend';
 import type { Ctx } from './state';
 
 export { defaultPolicy, POLICY_VERSION } from './policy';
 export {
-  BAND_THRESHOLDS, ESTIMATE, HEAVY_HELP_FRACTION, LEVEL_THRESHOLDS, LISTEN_ASSISTANCE, PRODUCTION_ASSISTANCE, PRODUCTION_WEIGHTS,
-  READING_WEIGHTS,
+  BAND_THRESHOLDS, ESTIMATE, FORECAST, HEAVY_HELP_FRACTION, LEVEL_THRESHOLDS, LISTEN_ASSISTANCE, PRODUCTION_ASSISTANCE, PRODUCTION_WEIGHTS,
+  READING_WEIGHTS, READINESS,
 } from './policy';
 export { morphologyLine, pickAnalysis } from './analysis';
 
@@ -64,6 +69,7 @@ export function createGoLearn(deps: GoLearnDeps): GoLearn {
     policy: deps.policy ?? defaultPolicy, clock: deps.clock ?? (() => new Date().toISOString()),
     audioEligible: deps.audioEligible,
     evidenceAsOf: (userId, lang) => folder.lastEvidenceAt(userId, lang), // called only after `folder` exists
+    userLog: (userId) => folder.userLog(userId),
   };
   const folder = new Folder(ctx);
   const inflightWaitMs = deps.inflightWaitMs ?? 3000;
@@ -177,7 +183,7 @@ export function createGoLearn(deps: GoLearnDeps): GoLearn {
     readingProgress: (userId, textId) => read(() => readingProgress(ctx, userId, textId)),
     readingProgressMany: (userId, textIds) => read(() => readingProgressMany(ctx, userId, textIds)),
 
-    getItemState: (userId, itemId) => read(() => ctx.store.learnerItems.get(ids.learnerItem(userId, itemId))),
+    getItemState: (userId, itemId) => read(async () => { const r = await ctx.store.learnerItems.get(ids.learnerItem(userId, itemId)); return r ? publicRow(r) : undefined; }),
     queryItem: (userId, ref) => read(async () => (await q.queryItems(ctx, userId, [ref]))[0]),
     queryItems: (userId, refs) => read(() => q.queryItems(ctx, userId, refs)),
     listKnown: (userId: string, lang: LanguageCode, modality, minLevel) => read(() => q.listKnown(ctx, userId, lang, modality, minLevel)),
@@ -191,6 +197,12 @@ export function createGoLearn(deps: GoLearnDeps): GoLearn {
     coverage: (userId, textId, sentenceIds) => read(async () => (await analyzeText(ctx, userId, textId, sentenceIds)).coverage),
     scriptureReadiness: (userId, textId, sentenceIds, opts) => read(() => scriptureReadiness(ctx, userId, textId, sentenceIds, opts)),
     recommend: (userId, opts) => read(() => recommend(ctx, userId, opts)),
+
+    // ── course-level reading model: plain functions over the store, each one a queue entry like every other read ──
+    predictDifficulty: (userId, textId, opts) => read(() => predictDifficulty(ctx, userId, textId, opts)),
+    stageReadiness: (userId, courseId, stageId) => read(() => stageReadiness(ctx, userId, courseId, stageId)),
+    readingPace: (userId, opts) => read(() => readingPace(ctx, userId, opts)),
+    itemHistory: (userId, itemId) => read(() => itemHistory(ctx, userId, itemId)),
   };
   return golearn;
 }

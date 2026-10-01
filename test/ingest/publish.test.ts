@@ -1,6 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { applyReview, computePublished, contentSignatureOf, testimonyDocument, type CorpusDocument } from '../../src/ingest';
-import { baseDoc, scriptureDoc } from './helpers';
+import { createMemoryStore } from '../../src/core';
+import { applyReview, computePublished, contentSignatureOf, importDocuments, testimonyDocument, type CorpusDocument } from '../../src/ingest';
+import { baseDoc, clock, issuesOf, registry, scriptureDoc } from './helpers';
+import { bookDoc } from './book';
 
 const story = (over: Partial<CorpusDocument> = {}, review?: CorpusDocument['review'], rights?: CorpusDocument['source']['rights']): CorpusDocument => {
   const d = { ...baseDoc(), ...over };
@@ -166,5 +168,92 @@ describe('computePublished — the publication gate', () => {
       expect(t.review.contentSignature).toBe(contentSignatureOf(t));
       expect(computePublished(t).published).toBe(true);
     });
+  });
+});
+
+describe('personal copies: published without a review, and nothing else', () => {
+  const copy = (over: Partial<CorpusDocument['source']> = {}, top: Partial<CorpusDocument> = {}): CorpusDocument => {
+    const d = bookDoc(top);
+    d.source = { ...d.source, ...over };
+    return d;
+  };
+  const codes = (d: CorpusDocument, severity: 'error' | 'warning' = 'error') => issuesOf(d).filter((i) => i.severity === severity).map((i) => i.code);
+
+  it('a published, non-generated, non-Scripture work with a provenance is published with no review, and is marked a personal copy', () => {
+    const d = copy();
+    expect(d.review.status).toBe('unreviewed');
+    expect(computePublished(d)).toEqual({ published: true, unpublishedReasons: [], personalCopy: true });
+    expect(codes(d)).toEqual([]);
+    // a review, if someone adds one, changes nothing
+    expect(computePublished({ ...d, review: { status: 'reviewed', reviewedBy: 'x', contentSignature: 'stale' } }).published).toBe(true);
+  });
+
+  it('Scripture is never a personal copy', () => {
+    const d = copy({}, { contentType: 'scripture' });
+    const r = computePublished(d);
+    expect(r.published).toBe(false);
+    expect(r.personalCopy).toBeUndefined();
+    expect(r.unpublishedReasons).toContain('Scripture is never a personal copy: it must be an identified, verified translation');
+    expect(codes(d)).toContain('personal-copy-scripture');
+    expect(issuesOf(d).find((i) => i.code === 'personal-copy-scripture')!.message).toBe('Scripture is never a personal copy: it must be an identified, verified translation');
+  });
+
+  it('generated text is not a published work', () => {
+    for (const d of [copy({}, { generated: true }), copy({ authorship: 'generated' })]) {
+      const r = computePublished(d);
+      expect(r.published).toBe(false);
+      expect(r.unpublishedReasons.join(' ')).toMatch(/generated text is not a published work/);
+      expect(codes(d)).toContain('personal-copy-generated');
+    }
+  });
+
+  it('any other authorship, or no provenance, is refused with a fix', () => {
+    for (const authorship of ['human', 'public-domain', 'licensed', 'learner'] as const) {
+      const d = copy({ authorship });
+      expect(computePublished(d).published, authorship).toBe(false);
+      expect(codes(d), authorship).toEqual(['personal-copy-authorship']);
+      expect(issuesOf(d)[0].hint).toMatch(/published/);
+    }
+    const bare = copy({ provenance: '  ' });
+    expect(computePublished(bare).published).toBe(false);
+    expect(codes(bare)).toContain('missing-provenance');
+  });
+
+  it('a rejected review still holds a personal copy back', () => {
+    const d = bookDoc({ review: { status: 'rejected', reviewedBy: 'x' } });
+    expect(computePublished(d).published).toBe(false);
+    expect(computePublished(d).unpublishedReasons.join(' ')).toMatch(/rejected/);
+  });
+
+  it('every other rights value behaves exactly as before: authorship "published" does not skip the review', () => {
+    for (const rights of ['licensed', 'owner-authored', 'public-domain'] as const) {
+      const d = copy({ rights });
+      const r = computePublished(d);
+      expect(r.published, rights).toBe(false);
+      expect(r.personalCopy, rights).toBeUndefined();
+      expect(r.unpublishedReasons.join(' '), rights).toMatch(/review status is "unreviewed"/);
+      expect(codes(d), rights).toEqual([]);
+    }
+    expect(computePublished(copy({ rights: 'unverified' })).unpublishedReasons.join(' ')).toMatch(/rights are unverified/);
+  });
+
+  it('is imported as a personal copy: Text.personalCopy true and published; a non-copy never gets the flag', async () => {
+    const store = createMemoryStore();
+    const r = await importDocuments(store, registry, [bookDoc(), baseDoc()], { clock });
+    expect(r.ok).toBe(true);
+    const book = (await store.texts.get('text:th:book-ch01'))!;
+    expect(book).toMatchObject({ published: true, unpublishedReasons: [], personalCopy: true, reviewStatus: 'unreviewed' });
+    const other = (await store.texts.get('text:es:test-doc'))!;
+    expect(other.personalCopy).toBeUndefined();
+    expect(other.published).toBe(false);
+    expect((await store.sources.get('src:th:book'))!).toMatchObject({ rights: 'personal-copy', authorship: 'published' });
+  });
+
+  it('the importer rejects the bad combinations (nothing written)', async () => {
+    const store = createMemoryStore();
+    const r = await importDocuments(store, registry, [copy({}, { contentType: 'scripture' })], { clock });
+    expect(r.ok).toBe(false);
+    expect(r.documents[0].issues.map((i) => i.code)).toContain('personal-copy-scripture');
+    expect(await store.texts.all()).toEqual([]);
   });
 });

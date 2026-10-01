@@ -91,6 +91,15 @@ export function usePreview(): boolean {
   return usePref('preview')[0];
 }
 
+/** Whether the learner has ever set this preference (a stored value, not the default). */
+export function hasPref(key: keyof Prefs): boolean {
+  try {
+    const raw = typeof localStorage !== 'undefined' ? localStorage.getItem(scopedKey(KEY)) : null;
+    const v: unknown = raw ? JSON.parse(raw) : null;
+    return typeof v === 'object' && v !== null && key in v;
+  } catch { return false; }
+}
+
 /** Non-hook read (bootstrap, services). */
 export function getPref<K extends keyof Prefs>(key: K): Prefs[K] {
   return read()[key];

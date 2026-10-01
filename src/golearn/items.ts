@@ -1,6 +1,7 @@
-/** The learner items one sentence carries: word forms, credited lemmas, phrases and patterns. */
+/** The learner items one sentence carries: word forms, credited lemmas, phrases, patterns and (reading) writing-system items. */
 import type { ItemKind, PatternOccurrence, PhraseOccurrence, Sentence, Text } from '../core';
 import { AnalysisCache } from './analysis';
+import type { OrthCache } from './orth';
 import type { Ctx } from './state';
 
 export interface SentenceItems {
@@ -11,8 +12,11 @@ export interface SentenceItems {
   firstPhraseOcc: Map<string, PhraseOccurrence>;
 }
 
-/** Undefined when the sentence is unknown. `tokenFilter` restricts the word tokens considered. */
-export async function sentenceItems(ctx: Ctx, sentenceId: string, tokenFilter?: Set<string>): Promise<SentenceItems | undefined> {
+/**
+ * Undefined when the sentence is unknown. `tokenFilter` restricts the word tokens considered. With `orth`, the writing-system
+ * items of the considered word tokens are added (after every other kind; a language whose adapter cannot decode yields none).
+ */
+export async function sentenceItems(ctx: Ctx, sentenceId: string, tokenFilter?: Set<string>, orth?: OrthCache): Promise<SentenceItems | undefined> {
   const sentence = await ctx.store.sentences.get(sentenceId);
   if (!sentence) return undefined;
   const text = await ctx.store.texts.get(sentence.textId);
@@ -35,5 +39,11 @@ export async function sentenceItems(ctx: Ctx, sentenceId: string, tokenFilter?: 
     if (!firstPhraseOcc.has(o.phraseId)) firstPhraseOcc.set(o.phraseId, o);
   }
   for (const o of patternOccs) if (!items.has(o.patternId)) items.set(o.patternId, 'pattern');
+  if (orth) {
+    const adapter = ctx.adapters.get(sentence.lang);
+    for (const t of tokens) {
+      for (const id of orth.itemIds(adapter, sentence.lang, t.surface, await cache.resolve(t.id))) if (!items.has(id)) items.set(id, 'orth');
+    }
+  }
   return { sentence, text, items, firstPhraseOcc };
 }

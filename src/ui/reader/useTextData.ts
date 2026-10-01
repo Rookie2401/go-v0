@@ -1,7 +1,7 @@
 /** Loads everything the Reader needs for one text from the store (+ per-sentence support from GoLearn). */
 import { useEffect, useState } from 'react';
 import type {
-  ContentSource, Corpus, EnglishRescue, Paragraph, Phrase, PhraseOccurrence, Sentence, SentenceSupport, Text, TextSection, Token,
+  ContentNote, ContentSource, Corpus, EnglishRescue, Paragraph, Phrase, PhraseOccurrence, Sentence, SentenceSupport, Text, TextSection, Token,
 } from '../../core';
 import { useApp } from '../context';
 
@@ -17,6 +17,8 @@ export interface TextData {
   phraseOccurrences: PhraseOccurrence[];
   phrases: Map<string, Phrase>;
   support: Map<string, SentenceSupport>;
+  /** Notes attached to this text (all kinds, any review state: the reader decides which to show). */
+  notes: ContentNote[];
 }
 
 export type TextDataState = { status: 'loading' } | { status: 'missing' } | { status: 'error'; message: string } | { status: 'ready'; data: TextData };
@@ -31,7 +33,7 @@ export function useTextData(textId: string): TextDataState {
     (async () => {
       const text = await store.texts.get(textId);
       if (!text) { if (live) setState({ status: 'missing' }); return; }
-      const [source, corpus, sections, paragraphs, sentencesRaw, tokens, rescueRows, occs] = await Promise.all([
+      const [source, corpus, sections, paragraphs, sentencesRaw, tokens, rescueRows, occs, noteRows] = await Promise.all([
         store.sources.get(text.sourceId),
         store.corpora.get(text.corpusId),
         store.sections.where('textId', textId),
@@ -40,6 +42,8 @@ export function useTextData(textId: string): TextDataState {
         store.tokens.where('textId', textId),
         store.rescues.where('textId', textId),
         store.phraseOccurrences.where('textId', textId),
+        // Notes are optional context: a store without the table, or a failing read, leaves the text readable.
+        Promise.resolve().then(() => store.notes.where('textId', textId)).catch((): ContentNote[] => []),
       ]);
       // Live sentences only, in the order of the current content version (retired sentences are history: they keep
       // their ids for encounters and audio, but are not part of the text any more). Never derive order from an id.
@@ -71,6 +75,7 @@ export function useTextData(textId: string): TextDataState {
           phraseOccurrences: occs,
           phrases: new Map(phraseRows.map((p) => [p.id, p])),
           support,
+          notes: noteRows,
         },
       });
     })().catch((e: unknown) => { if (live) setState({ status: 'error', message: e instanceof Error ? e.message : String(e) }); });

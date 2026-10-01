@@ -20,6 +20,8 @@ npm run corpus:check     # bundled corpus: validation, re-import, Scripture byte
 npm run corpus:validate -- path/to/text.json
 npm run corpus:review -- path/to/text.json --by "Reviewer Name"   # record a review (never changes text)
 npm run corpus:prove     # import proof on synthetic files (docs/import/PROOF.md)
+npm run corpus:convert -- book.txt --lang th --work <slug>   # your own copy of a book → chapters under data/private/ (never bundled)
+npm run dict:build -- --in <file.jsonl> --lang th           # build dictionary shards from a licensed source file
 npm run speech:check     # speech configuration + provider-independent checks
 node scripts/verify-scripture.mjs
 npm run build && npm run preview   # http://127.0.0.1:4196
@@ -33,10 +35,11 @@ npm run build && npm run preview   # http://127.0.0.1:4196
 | `docs/READINESS.md` | Per-language readiness (ingestion, analysis, Scripture, speech); implemented vs verified vs awaiting external input |
 | `docs/IMPORT.md` + `docs/import/templates/` | The versioned text-import specification, templates, and how to validate, import, review and publish |
 | `docs/import/PROOF.md` | Generated record of the import tests (valid, malformed, duplicates, batches, spans, revisions, holds) |
+| `docs/THAI_COURSE.md` | The Thai course: reading ladder, rights, Thai analysis, assistance that removes itself, learner model |
 | `docs/STORAGE.md` | Storage model, backup and restore |
 | `docs/SPEECH.md` | Speech configuration (server-side key), what is recorded, failure states, review |
 | `docs/ARCHITECTURE.md` | Architecture and decisions (§12 = the readiness round) |
-| `docs/PLAN.md` … `docs/PLAN4.md` | Package ownership and the briefs the code was built against |
+| `docs/PLAN.md` … `docs/PLAN5.md` | Package ownership and the briefs the code was built against |
 | `src/golisten/QA.md` | Speech QA set and the voice audition procedure |
 
 ## Layout
@@ -44,7 +47,9 @@ npm run build && npm run preview   # http://127.0.0.1:4196
 ```
 src/core        contract: model, ids, events, adapter/store/engine interfaces, memory store, bus, fixtures
 src/adapters    es / sq / th / hi / de LanguageAdapter implementations, seed lexicons, declared support
-src/ingest      import format v2, validation, atomic repeatable importer, publication gate
+src/ingest      import format v2, validation, atomic repeatable importer, publication gate, plain-text books
+src/course      reading ladders (stages, works, rights, assistance profiles) and the catalogue
+src/dict        dictionary build pipeline and runtime source
 src/golearn     evidence policy, encounters, coverage, readiness, recommendations, audit/rebuild
 src/golisten    speech provider interface (Azure adapter, development fixture), jobs, assets, status, player
 src/gotell      drafts, versions, honest suggestions, meaning help, production provenance
@@ -68,6 +73,10 @@ test/           per-package tests + test/integration (Spanish end-to-end loop, f
 - **Audio is unavailable until a speech provider is configured**: set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in
   `.env.local` (never committed) and restart; the key stays on the server. Tested against a mocked service only —
   no real speech has been produced. Fixture tones are development-only and can never count as listening.
+- **The Thai course has its structure and none of its books.** The reading ladder (Stage 0, Grades 1–9, open
+  reading), stage-specific assistance, Thai script decoding, the learner model for a ladder and the import of a
+  learner's own copy of a book are built and tested; every work is a recommendation with rights unverified, and
+  no dictionary, Thai Bible or audio is included. See `docs/READINESS.md`, "Thai course".
 - **Analysis is seed-lexicon only.** Every word of a supplied text is tokenized and tracked; lemma and gloss
   exist only for seed vocabulary or for analysis supplied with the text.
 - **GoTell is rule-based** and states what it cannot check. No GoSpeak, no pronunciation scores, no

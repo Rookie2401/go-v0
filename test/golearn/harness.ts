@@ -28,7 +28,7 @@ export interface ListenOpts {
 }
 
 export function createHarness(opts: {
-  lemmaOf?: Parameters<typeof createTestRegistry>[0]; policy?: GoLearnDeps['policy']; attach?: boolean;
+  lemmaOf?: Parameters<typeof createTestRegistry>[0]; decode?: LanguageCode[]; policy?: GoLearnDeps['policy']; attach?: boolean;
   audioEligible?: GoLearnDeps['audioEligible'];
   /**
    * Default true: a reading / listening helper called with a DIFFERENT session string than the previous helper call starts
@@ -40,7 +40,7 @@ export function createHarness(opts: {
   const store = createMemoryStore();
   const clock = makeClock();
   const bus = new StoreEventBus(store, clock);
-  const adapters = createTestRegistry(opts.lemmaOf);
+  const adapters = createTestRegistry(opts.lemmaOf, { decode: opts.decode });
   const golearn = createGoLearn({ store, bus, adapters, policy: opts.policy, clock, audioEligible: opts.audioEligible });
   if (opts.attach !== false) golearn.attach();
   let counter = 0;
@@ -67,6 +67,32 @@ export function createHarness(opts: {
       return bus.emit({
         type: 'SentenceViewed', ...base(userId, lang, session, surface), dedupeKey: `view:${userId}:${session}:${sentenceId}`,
         textId, sentenceId, tokenIds: [],
+      } as EventInput<DomainEvent>);
+    },
+    /** SentenceViewed carrying a dwell time (what the real reader records). */
+    viewTimed: (userId: string, lang: LanguageCode, textId: string, index: number, dwellMs: number, session = 's1') => {
+      const sentenceId = `${textId}/s${index}`;
+      touch(session);
+      return bus.emit({
+        type: 'SentenceViewed', ...base(userId, lang, session), dedupeKey: `view:${userId}:${session}:${sentenceId}`,
+        textId, sentenceId, tokenIds: [], dwellMs,
+      } as EventInput<DomainEvent>);
+    },
+    /** DecodingRevealed — the learner opened the decoding of one word (or its romanization rescue). */
+    decoding: (userId: string, lang: LanguageCode, textId: string, index: number, tokenIndex: number, itemId: string, features: string[], o: { romanization?: boolean; session?: string } = {}) => {
+      const sentenceId = `${textId}/s${index}`;
+      const session = o.session ?? 's1';
+      touch(session);
+      return bus.emit({
+        type: 'DecodingRevealed', ...base(userId, lang, session), dedupeKey: `decode:${uniq()}`,
+        sentenceId, tokenId: `${sentenceId}/t${tokenIndex}`, itemId, features, romanization: o.romanization ?? false,
+      } as EventInput<DomainEvent>);
+    },
+    /** NoteOpened — context only, never evidence. */
+    noteOpened: (userId: string, lang: LanguageCode, textId: string, index: number, session = 's1') => {
+      touch(session);
+      return bus.emit({
+        type: 'NoteOpened', ...base(userId, lang, session), dedupeKey: `note:${uniq()}`, textId, noteId: `note:${textId}:n1`, sentenceId: `${textId}/s${index}`, kind: 'cultural',
       } as EventInput<DomainEvent>);
     },
     /** View every sentence index of a text in one session. */

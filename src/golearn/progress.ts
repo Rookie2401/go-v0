@@ -26,13 +26,11 @@
  * `readingProgressMany` reads the log ONCE for any number of texts; `readingProgress` delegates to it.
  */
 import type { DomainEvent, ReadingProgress, Sentence, Text } from '../core';
-import { FOLD_TYPES } from './fold';
-import { assignSittings } from './sitting';
+import { byAtId } from './sitting';
 import type { Ctx, StoredEncounter } from './state';
+import { eventsOfTexts } from './userlog';
 
 export type Degree = 'all' | 'most' | 'some' | 'little';
-
-const EVENT_TYPES = [...FOLD_TYPES, 'TextCompleted'] as const;
 
 /** What the log says about one text (before it is read against the text's sentences and version). */
 interface TextLog {
@@ -62,9 +60,14 @@ export async function readingProgressMany(ctx: Ctx, userId: string, textIds: str
     for (const s of rows) textOfSentence.set(s.id, id);
   }
 
-  // ONE read of the log. Sittings are derived from ALL of the learner's evidence events (never from a subset).
-  const events: DomainEvent[] = await ctx.bus.history({ userId, types: [...EVENT_TYPES] });
-  const sittings = assignSittings(events.filter((e) => e.type !== 'TextCompleted'));
+  // The events of the asked-for texts, from the folder's in-memory log of the learner (no read of the event table; the cost is
+  // the history of THESE texts, not of everything he ever did). Sittings are those the folds derived from ALL of his evidence
+  // events. Completions are not evidence events: they come from the event table's type index (rare).
+  const log = await ctx.userLog(userId);
+  const wantedSet = new Set(wanted);
+  const completions = (await ctx.store.events.where('type', 'TextCompleted')).filter((e) => e.userId === userId && e.type === 'TextCompleted' && wantedSet.has(e.textId));
+  const events: DomainEvent[] = [...eventsOfTexts(log, wanted), ...completions].sort(byAtId);
+  const sittings = log.sittings;
 
   // Sentence-level help per (sitting, sentence): a report made after / in such a sitting is not "understood without help".
   const rescued = new Set<string>();

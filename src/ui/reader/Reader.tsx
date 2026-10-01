@@ -24,30 +24,45 @@
  * Viewing is EXPOSURE only ("Seen"). What the learner says about understanding is a separate, deliberate, quiet act:
  * "Understood" on a sentence, and "How much did you understand? All · Most · Some · Little" at the end. Only
  * those reports (never views, never finishing) can demonstrate comprehension, and a report never fabricates a view.
+ *
+ * Assistance by stage: the course catalogue gives an AssistanceProfile (which help layers the word sheet offers and in
+ * what order, how close English is, how much chrome shows). A course without a ladder gets DEFAULT_ASSISTANCE and the
+ * reader is then exactly what it always was. Opening a layer emits the event LAYER_ASSISTANCE_LEVEL names for it:
+ *   gloss → TokenHelpOpened 1 · decoding → DecodingRevealed (romanization: true only from the Stage 0 rescue button) ·
+ *   phrase → TokenHelpOpened 2 + PhraseHelpOpened · grammar, discourse → TokenHelpOpened 3 + GrammarHelpOpened ·
+ *   definition → TokenHelpOpened 3 · sentence → TokenHelpOpened 4 + SentenceExplanationRevealed ·
+ *   clause-structure → TokenHelpOpened 4 + SentenceExplanationRevealed + NoteOpened · english → TokenHelpOpened 5 +
+ *   EnglishRescueRevealed · note → NoteOpened (context, no evidence) · history → nothing (a look at one's own record).
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import type { CSSProperties, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
-import { LANGUAGE_ROWS } from '../../core';
+import { LANGUAGE_ROWS, LAYER_ASSISTANCE_LEVEL, decodeFor } from '../../core';
 import type {
-  AssistanceLevel, ComprehensionReported, EnglishRescueRevealed, GrammarHelpOpened, PhraseHelpOpened, Sentence, SentenceExplanationRevealed,
-  SentenceViewed, Text, TextCompleted, TextViewed, Token, TokenHelpOpened, TokenSupport,
+  AssistanceLevel, AssistanceProfile, ComprehensionReported, ContentNote, DecodingRevealed, EnglishRescueRevealed, GrammarHelpOpened, HelpLayer, LanguageAdapter,
+  NoteOpened, PhraseHelpOpened, Sentence, SentenceExplanationRevealed, SentenceViewed, SyllableAnalysis, Text, TextCompleted, TextViewed, Token,
+  TokenAnalysis, TokenHelpOpened, TokenSupport,
 } from '../../core';
 import { useApp } from '../context';
 import { TextProgress, useReadingProgress } from '../coverage';
 import { makeEmitter } from '../events';
 import { TextBadges, UnpublishedReasons } from '../library';
 import { isTestimonyText, textPath } from '../format';
-import { usePref } from '../prefs';
+import { hasPref, usePref, usePreview } from '../prefs';
 import type { HighlightPref } from '../prefs';
 import { BackLink, I, IconBtn, Topbar } from '../ui';
 import { ReadingGateContext } from './readingGate';
 import type { ReadingGate } from './readingGate';
 import { TokenCard } from './TokenCard';
+import type { DecodingView } from './TokenCard';
 import { createViewDetector } from './viewDetection';
 import type { ViewDetector, ViewDetectorFactory } from './viewDetection';
 import { useTextData } from './useTextData';
 import type { TextData } from './useTextData';
+import { englishBehindMenu, hasClauseSpans, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, visibleNotes } from './assistance';
+import type { LayerFacts } from './assistance';
+import { useAssistance } from './useAssistance';
+import './thai.css';
 
 export interface ReaderProps {
   textId: string;
@@ -107,9 +122,16 @@ function useSiblings(text: Text): { prev?: Text; next?: Text } {
   return sib;
 }
 
+/** The decoding of one token from the best source (an analysis's own, the dictionary's pronunciation, the spelling rules). */
+function decodeToken(adapter: LanguageAdapter | undefined, token: Token, analysis?: TokenAnalysis): SyllableAnalysis[] {
+  if (!adapter) return analysis?.syllables ?? [];
+  try { return decodeFor(adapter, token.surface, analysis); } catch { return []; }
+}
+
 export function Reader(props: ReaderProps) {
   const { userId } = useApp();
   const state = useTextData(props.textId);
+  const profile = useAssistance(props.textId);
   const back = props.mode === 'scripture' ? '/scripture' : '/read';
   const backLabel = props.mode === 'scripture' ? 'Scripture' : 'Library';
   const bare = (body: ReactNode) => (
@@ -121,18 +143,50 @@ export function Reader(props: ReaderProps) {
   if (state.status === 'loading') return bare(<p className="muted" role="status">Loading…</p>);
   if (state.status === 'missing') return bare(<p role="alert">This text is not in your library.</p>);
   if (state.status === 'error') return bare(<p role="alert" className="error">Could not open this text: {state.message}</p>);
+  if (profile === null) return bare(<p className="muted" role="status">Loading…</p>);
   // Not keyed by session: a new sitting in a page that stayed open must not remount the reader (events resolve the sitting at emission).
-  return <ReaderBody key={`${props.textId}|${userId}`} data={state.data} {...props} />;
+  return <ReaderBody key={`${props.textId}|${userId}`} data={state.data} profile={profile} {...props} />;
 }
 
-function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, bar, before }: ReaderProps & { data: TextData }) {
-  const { bus, golearn, userId, currentSession } = useApp();
+/** What the sheet is open on: a word (with the layers opened so far) or the notes of a sentence. */
+interface CardState {
+  subject: { kind: 'word'; token: Token } | { kind: 'sentence'; sentenceId: string };
+  opened: HelpLayer[];
+  supports: Partial<Record<number, TokenSupport>>;
+  why?: string;
+  /** The Stage 0 rescue: the learner asked for the romanization of this word. */
+  rescued: boolean;
+  /** Lines from the learner's own record with this word. */
+  history: string[];
+  /** The fetch of everything the layers need has finished (ladder stages; always true where the sheet fetches level by level). */
+  detailDone: boolean;
+}
+
+function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, concealed, bar, before }: ReaderProps & { data: TextData; profile: AssistanceProfile }) {
+  const { bus, golearn, adapters, userId, currentSession } = useApp();
+  const preview = usePreview();
   const { text } = data;
+  const legacy = useMemo(() => isLegacyProfile(profile), [profile]);
+  const plan = useMemo(() => planLayers(profile), [profile]);
+  const chrome = legacy ? 'full' : profile.chrome;
+  const adapter = useMemo<LanguageAdapter | undefined>(() => {
+    if (legacy) return undefined;
+    try { return adapters.get(text.lang); } catch { return undefined; }
+  }, [adapters, legacy, text.lang]);
   const surface = mode === 'scripture' ? 'scripture' : 'corpus';
   const emitter = useMemo(() => makeEmitter({ bus, userId, lang: text.lang, session: currentSession }), [bus, userId, text.lang, currentSession]);
   const script = LANGUAGE_ROWS.find((l) => l.id === text.lang)?.script ?? 'Latn';
-  const [highlight, setHighlight] = usePref('highlight');
+  const [highlightPref, setHighlightPref] = usePref('highlight');
+  // The stage's default highlighting applies until the learner has chosen one himself; his choice then wins.
+  const [chosenHighlight, setChosenHighlight] = useState(() => hasPref('highlight'));
+  const highlight: HighlightPref = legacy || chosenHighlight ? highlightPref : profile.defaultHighlight;
+  const setHighlight = useCallback((v: HighlightPref) => { setChosenHighlight(true); setHighlightPref(v); }, [setHighlightPref]);
   const [fontSize] = usePref('fontSize');
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [detailsOpen, setDetailsOpen] = useState(false);
+  /** deep / on-request English: the per-sentence English buttons stay out of the text until the learner asks for them. */
+  const [englishButtons, setEnglishButtons] = useState(false);
+  const behindMenu = englishBehindMenu(profile);
   const { prev, next } = useSiblings(text);
   const back = mode === 'scripture' ? '/scripture' : '/read';
 
@@ -160,8 +214,10 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
   const [parallel, setParallel] = useState(false);
 
   // ── token card state ──
-  const [card, setCard] = useState<{ token: Token; level: AssistanceLevel; supports: Partial<Record<number, TokenSupport>>; why?: string } | null>(null);
+  const [card, setCard] = useState<CardState | null>(null);
   const [sheetOpen, setSheetOpen] = useState(false);
+  /** The in-flight "everything level 3 knows" fetch of the open word (ladder stages): the layers wait for it, the gloss does not. */
+  const detailRef = useRef<Promise<TokenSupport | undefined>>(Promise.resolve(undefined));
 
   const verses = useMemo(() => (mode === 'scripture' ? buildVerses(data.sentences) : new Map<string, VerseInfo>()), [mode, data.sentences]);
   const sentenceById = useMemo(() => new Map(data.sentences.map((s) => [s.id, s])), [data.sentences]);
@@ -260,46 +316,117 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
   }, [parallel, revealRescue, data.sentences]);
 
   // ── token card ──
+  const cardToken = card?.subject.kind === 'word' ? card.subject.token : undefined;
+  const cardSentenceId = card ? (card.subject.kind === 'word' ? card.subject.token.sentenceId : card.subject.sentenceId) : undefined;
+  const clauseView = !legacy && profile.layers.includes('clause-structure');
+
   const fetchSupport = useCallback(async (token: Token, level: AssistanceLevel) => {
     const support = await golearn.tokenSupport(userId, token.id, level);
-    setCard((c) => (c && c.token.id === token.id ? { ...c, supports: { ...c.supports, [level]: support } } : c));
+    setCard((c) => (c && c.subject.kind === 'word' && c.subject.token.id === token.id ? { ...c, supports: { ...c.supports, [level]: support } } : c));
     return support;
   }, [golearn, userId]);
 
+  /** Opening the decoding is help with the written form: it names the writing-system items the word exercises. */
+  const emitDecoding = useCallback(async (token: Token, analysis: TokenAnalysis | undefined, romanization: boolean) => {
+    let features: string[] = [];
+    try { features = adapter?.orthFeatures?.(decodeToken(adapter, token, analysis)) ?? []; } catch { features = []; }
+    await emitter.emit<DecodingRevealed>(surface, {
+      type: 'DecodingRevealed', sentenceId: token.sentenceId, tokenId: token.id, itemId: token.formId, features, romanization,
+      // Once per learner, sitting, word and kind: re-opening the same word in the same sitting adds no second record.
+      dedupeKey: (session) => `decoding:${userId}:${session}:${token.id}:${romanization ? 'rom' : 'dec'}`,
+    });
+  }, [adapter, emitter, surface, userId]);
+
+  /** A note was shown: context, recorded once per sitting and note. A clause-structure note is also a sentence explanation. */
+  const emitNote = useCallback(async (n: ContentNote) => {
+    await emitter.emit<NoteOpened>(surface, {
+      type: 'NoteOpened', textId: text.id, noteId: n.id, kind: n.kind, ...(n.sentenceId ? { sentenceId: n.sentenceId } : {}),
+      dedupeKey: (session) => `noteopened:${userId}:${session}:${n.id}`,
+    });
+  }, [emitter, surface, text.id, userId]);
+
   const openToken = useCallback(async (token: Token) => {
-    if (card && sheetOpen && card.token.id === token.id) { setSheetOpen(false); return; }
-    setCard({ token, level: 1, supports: {} });
+    if (card && sheetOpen && card.subject.kind === 'word' && card.subject.token.id === token.id) { setSheetOpen(false); return; }
+    setCard({ subject: { kind: 'word', token }, opened: plan.base, supports: {}, rescued: false, history: [], detailDone: legacy });
     setSheetOpen(true);
     await emitter.emit<TokenHelpOpened>(surface, { type: 'TokenHelpOpened', sentenceId: token.sentenceId, tokenId: token.id, itemId: token.formId, level: 1 });
     // Why GoLearn believes what it believes about this word ("Seen 7 times in 2 texts; needed help twice…").
     void golearn.explainItem(userId, token.formId).then(
-      (why) => setCard((c) => (c && c.token.id === token.id ? { ...c, why: why.summary } : c)),
+      (why) => setCard((c) => (c && c.subject.kind === 'word' && c.subject.token.id === token.id ? { ...c, why: why.summary } : c)),
       () => undefined, // the summary is a nicety; the gloss never waits on it
     );
-    await fetchSupport(token, 1);
-  }, [card, sheetOpen, emitter, surface, fetchSupport, golearn, userId]);
+    if (legacy) { await fetchSupport(token, 1); return; }
+    // A ladder stage: the gloss shows as soon as it is there; what the other layers need (analysis, phrases, patterns) is fetched once, now.
+    const detail = fetchSupport(token, 3).catch(() => undefined);
+    detailRef.current = detail;
+    void detail.then(() => setCard((c) => (c && c.subject.kind === 'word' && c.subject.token.id === token.id ? { ...c, detailDone: true } : c)));
+    if (profile.layers.includes('history')) {
+      void Promise.resolve().then(() => golearn.itemHistory?.(userId, token.formId)).then(
+        (h) => setCard((c) => (c && c.subject.kind === 'word' && c.subject.token.id === token.id ? { ...c, history: h?.lines ?? [] } : c)),
+        () => undefined, // the history is a nicety too
+      );
+    }
+    const [, support] = await Promise.all([fetchSupport(token, 1), detail]);
+    if (plan.base.includes('decoding')) await emitDecoding(token, support?.analysis, false);
+  }, [card, sheetOpen, plan, legacy, profile.layers, emitter, surface, fetchSupport, emitDecoding, golearn, userId]);
 
-  const moreHelp = useCallback(async () => {
-    if (!card || card.level >= 5) return;
-    const { token } = card;
-    const level = (card.level + 1) as AssistanceLevel;
-    setCard({ ...card, level });
-    await emitter.emit<TokenHelpOpened>(surface, { type: 'TokenHelpOpened', sentenceId: token.sentenceId, tokenId: token.id, itemId: token.formId, level });
-    const support = await fetchSupport(token, level);
-    if (level === 2) {
-      for (const { phrase, occurrence } of support.phrases) {
+  /** Open one more layer of the word sheet and emit what that layer means for evidence. */
+  const openLayer = useCallback(async (layer: HelpLayer) => {
+    if (!card || card.subject.kind !== 'word' || card.opened.includes(layer)) return;
+    const { token } = card.subject;
+    const level = LAYER_ASSISTANCE_LEVEL[layer];
+    setCard((c) => (c && c.subject.kind === 'word' && c.subject.token.id === token.id ? { ...c, opened: [...c.opened, layer] } : c));
+    // Decoding is help with the written form (its own event); notes and the learner's own history are not help with the word.
+    if (level > 0 && layer !== 'decoding') {
+      await emitter.emit<TokenHelpOpened>(surface, { type: 'TokenHelpOpened', sentenceId: token.sentenceId, tokenId: token.id, itemId: token.formId, level });
+    }
+    const support = legacy ? (level > 0 ? await fetchSupport(token, level as AssistanceLevel) : undefined) : await detailRef.current;
+    if (layer === 'phrase') {
+      for (const { phrase, occurrence } of support?.phrases ?? []) {
         await emitter.emit<PhraseHelpOpened>(surface, { type: 'PhraseHelpOpened', sentenceId: token.sentenceId, phraseOccurrenceId: occurrence.id, phraseId: phrase.id });
       }
-    } else if (level === 3) {
-      for (const pattern of support.patterns) {
+    } else if (layer === 'grammar' || layer === 'discourse') {
+      for (const pattern of support?.patterns ?? []) {
         await emitter.emit<GrammarHelpOpened>(surface, { type: 'GrammarHelpOpened', sentenceId: token.sentenceId, patternId: pattern.id, tokenIds: [token.id] });
       }
-    } else if (level === 4) {
+    } else if (layer === 'sentence') {
       await emitter.emit<SentenceExplanationRevealed>(surface, { type: 'SentenceExplanationRevealed', sentenceId: token.sentenceId });
-    } else if (level === 5) {
+    } else if (layer === 'clause-structure') {
+      await emitter.emit<SentenceExplanationRevealed>(surface, { type: 'SentenceExplanationRevealed', sentenceId: token.sentenceId });
+      const sentence = sentenceById.get(token.sentenceId);
+      for (const n of visibleNotes(data.notes, token.sentenceId, preview)) {
+        if (n.kind === 'clause-structure' && sentence && hasClauseSpans(sentence.text, n.spans)) await emitNote(n);
+      }
+    } else if (layer === 'english') {
       revealRescue([token.sentenceId], 'sentence');
+    } else if (layer === 'note') {
+      for (const n of visibleNotes(data.notes, token.sentenceId, preview)) {
+        if (!(clauseView && n.kind === 'clause-structure')) await emitNote(n);
+      }
+    } else if (layer === 'decoding') {
+      await emitDecoding(token, support?.analysis ?? pick(card.supports, 'analysis'), false);
     }
-  }, [card, emitter, surface, fetchSupport, revealRescue]);
+  }, [card, legacy, emitter, surface, fetchSupport, revealRescue, emitDecoding, emitNote, sentenceById, data.notes, preview, clauseView]);
+
+  /** The Stage 0 rescue: the learner asked to see the romanization. Recorded, so that dependence on it is visible. */
+  const romanizationRescue = useCallback(async (romanization: string | undefined) => {
+    if (!card || card.subject.kind !== 'word' || card.rescued || legacy || profile.romanization !== 'rescue') return;
+    const { token } = card.subject;
+    setCard((c) => (c ? { ...c, rescued: true } : c));
+    if (romanization) await emitDecoding(token, pick(card.supports, 'analysis'), true);
+  }, [card, legacy, profile.romanization, emitDecoding]);
+
+  /** The notes of one sentence, from the mark at its end. */
+  const openNotes = useCallback(async (sentence: Sentence) => {
+    if (card && sheetOpen && card.subject.kind === 'sentence' && card.subject.sentenceId === sentence.id) { setSheetOpen(false); return; }
+    setCard({ subject: { kind: 'sentence', sentenceId: sentence.id }, opened: ['note'], supports: {}, rescued: false, history: [], detailDone: true });
+    setSheetOpen(true);
+    const notes = visibleNotes(data.notes, sentence.id, preview);
+    for (const n of notes) await emitNote(n);
+    if (notes.some((n) => n.kind === 'clause-structure')) {
+      await emitter.emit<SentenceExplanationRevealed>(surface, { type: 'SentenceExplanationRevealed', sentenceId: sentence.id });
+    }
+  }, [card, sheetOpen, data.notes, preview, emitNote, emitter, surface]);
 
   const finish = useCallback(async () => {
     setFinishedHere(true);
@@ -329,6 +456,17 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
   }, [emitter, surface, userId, text.id, text.contentVersion, data.sentences]);
 
   // ── rendering ──
+  // A sentence with a note the learner may see gets one quiet mark at its end (only where the stage offers notes).
+  const noteMarks = useMemo(() => {
+    const m = new Map<string, ContentNote[]>();
+    if (legacy || !(profile.layers.includes('note') || profile.layers.includes('clause-structure'))) return m;
+    for (const s of data.sentences) {
+      const list = visibleNotes(data.notes, s.id, preview);
+      if (list.length) m.set(s.id, list);
+    }
+    return m;
+  }, [legacy, profile.layers, data.sentences, data.notes, preview]);
+
   // Learner state → Biblia's mark classes: unseen = new, partial = recognized, known = familiar.
   const MARK: Record<string, string> = { unseen: 'st-new', partial: 'st-recognized', known: 'st-familiar' };
 
@@ -346,9 +484,9 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
           <button
             key={t.id}
             type="button"
-            className={`w tok hl-${state}${MARK[state] ? ` ${MARK[state]}` : ''}${sheetOpen && card?.token.id === t.id ? ' sel is-open' : ''}`}
+            className={`w tok hl-${state}${MARK[state] ? ` ${MARK[state]}` : ''}${sheetOpen && cardToken?.id === t.id ? ' sel is-open' : ''}`}
             data-token-id={t.id}
-            aria-expanded={sheetOpen && card?.token.id === t.id}
+            aria-expanded={sheetOpen && cardToken?.id === t.id}
             onClick={() => { void openToken(t); }}
           >{t.surface}</button>,
         );
@@ -380,7 +518,14 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
         )}
         <span className="sent-text">{renderSentenceText(s)}</span>
         <span className="sent-actions">
-          {rescue && (
+          {(noteMarks.get(s.id)?.length ?? 0) > 0 && (
+            <button
+              type="button" className={`note-mark sent__btn${sheetOpen && card?.subject.kind === 'sentence' && card.subject.sentenceId === s.id ? ' is-open' : ''}`}
+              aria-label={`Note on sentence ${s.index + 1}`} aria-expanded={sheetOpen && card?.subject.kind === 'sentence' && card.subject.sentenceId === s.id}
+              onClick={() => { void openNotes(s); }}
+            ><span aria-hidden="true">i</span></button>
+          )}
+          {rescue && (!behindMenu || englishButtons) && (
             <IconBtn
               className="iconbtn--mini sent__btn" active={isShown}
               label={`${isShown ? 'Hide' : 'Show'} English for sentence ${s.index + 1}`}
@@ -425,11 +570,82 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
     );
   });
 
-  const cardSentence = card ? sentenceById.get(card.token.sentenceId) : undefined;
+  const cardSentence = cardSentenceId ? sentenceById.get(cardSentenceId) : undefined;
   const allViewed = data.sentences.length > 0 && viewed.size >= data.sentences.length;
   const progress = data.sentences.length > 0 ? (viewed.size / data.sentences.length) * 100 : 0;
   const hasPanel = !!(card && cardSentence && sheetOpen);
   const marks = highlight === 'off' ? '' : highlight === 'strong' ? ' marks marks--strong' : ' marks';
+
+  // ── what the open sheet shows ──
+  const cardNotes = useMemo(() => (cardSentenceId ? visibleNotes(data.notes, cardSentenceId, preview) : []), [data.notes, cardSentenceId, preview]);
+  const cardAnalysis = card ? pick(card.supports, 'analysis') : undefined;
+  const wordCard = card?.subject.kind === 'word' ? card : undefined;
+  /** Everything "more help" needs is here: the level fetched (today's sheet) or the gloss plus the one detail fetch (ladder stages). */
+  const loaded = !!wordCard && (legacy ? wordCard.supports[maxLevel(wordCard.opened)] !== undefined : wordCard.supports[1] !== undefined && wordCard.detailDone);
+  const syllables = useMemo<SyllableAnalysis[] | null>(
+    () => (cardToken && wordCard?.opened.includes('decoding') && loaded ? decodeToken(adapter, cardToken, cardAnalysis) : null),
+    [adapter, cardToken, wordCard?.opened, loaded, cardAnalysis],
+  );
+  const romanization = syllables
+    ? (syllables.map((s) => s.romanization).filter((r): r is string => !!r).join('-') || (typeof cardAnalysis?.notes?.romanization === 'string' ? cardAnalysis.notes.romanization : undefined))
+    : undefined;
+  const decodingView: DecodingView = {
+    syllables, canRescue: !legacy && profile.romanization === 'rescue', rescued: !!card?.rescued, romanization,
+  };
+  const nextStep = useMemo<HelpLayer | undefined>(() => {
+    if (!wordCard || !loaded) return undefined;
+    if (legacy) return plan.steps.find((l) => !wordCard.opened.includes(l)); // today's sheet climbs every rung
+    const notes = cardNotes.filter((n) => !(clauseView && n.kind === 'clause-structure'));
+    const sentence = cardSentence;
+    const facts: LayerFacts = {
+      analysis: cardAnalysis,
+      phrases: (pick(wordCard.supports, 'phrases') ?? []).length,
+      patterns: (pick(wordCard.supports, 'patterns') ?? []).length,
+      morphologyLine: pick(wordCard.supports, 'morphologyLine'),
+      canDecode: !!adapter?.decode || !!adapter?.decodeWithPronunciation || !!cardAnalysis?.syllables?.length,
+      explanation: sentence ? data.support.get(sentence.id)?.explanation : undefined,
+      notes,
+      clauseNotes: sentence ? cardNotes.filter((n) => n.kind === 'clause-structure' && hasClauseSpans(sentence.text, n.spans)) : [],
+      history: wordCard.history,
+    };
+    return nextLayer(plan.steps, wordCard.opened, facts);
+  }, [wordCard, loaded, legacy, plan, cardNotes, clauseView, cardSentence, cardAnalysis, adapter, data.support]);
+
+  // Where the reader's own controls live: in the text's header area (full, reduced) or behind one quiet menu (minimal).
+  const highlightTool = (
+    <label className="tool">
+      <span className="label">Highlight</span>
+      <select value={highlight} onChange={(e) => setHighlight(e.target.value as HighlightPref)} aria-label="Highlighting">
+        <option value="off">off</option>
+        <option value="subtle">subtle</option>
+        <option value="strong">strong</option>
+      </select>
+    </label>
+  );
+  const toolbar = (
+    <>
+      {highlightTool}
+      {behindMenu && anyRescue && mode !== 'scripture' && (
+        <button type="button" className="btn btn--small btn--quiet" aria-pressed={englishButtons} onClick={() => setEnglishButtons((v) => !v)}>English buttons</button>
+      )}
+      {mode === 'scripture' && anyRescue && (
+        <button type="button" className="btn btn--small btn--quiet" aria-pressed={parallel} onClick={toggleParallel}>Parallel English</button>
+      )}
+    </>
+  );
+  const badges = (
+    <div className="chips">
+      <TextBadges text={text} />
+      {text.version && <span className="chip">{text.version}</span>}
+      {data.source?.rights === 'unverified' && <span className="chip chip--wine" title="Rights not established — replace before release">sample · rights unverified</span>}
+    </div>
+  );
+  const details = (
+    <section className="reading-details" aria-label="Reading details">
+      <button type="button" className="btn btn--small btn--quiet" aria-expanded={detailsOpen} onClick={() => setDetailsOpen((v) => !v)}>Reading details</button>
+      {detailsOpen && <TextProgress textId={text.id} progress={record} />}
+    </section>
+  );
 
   return (
     <article
@@ -444,15 +660,24 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
     >
       {card && cardSentence && (
         <TokenCard
-          token={card.token}
-          level={card.level}
+          subject={card.subject.kind === 'word' ? { kind: 'word', token: card.subject.token } : { kind: 'sentence', sentence: cardSentence }}
+          legacy={legacy}
+          opened={card.opened}
+          next={nextStep}
           supports={card.supports}
-          open={sheetOpen}
+          loaded={loaded}
           explanation={data.support.get(cardSentence.id)?.explanation}
           english={data.rescues.get(cardSentence.id)?.english}
           why={card.why}
           lang={text.lang}
-          onMore={() => { void moreHelp(); }}
+          sentence={cardSentence}
+          notes={cardNotes}
+          clauseView={clauseView}
+          decoding={decodingView}
+          history={card.history}
+          open={sheetOpen}
+          onMore={() => { if (nextStep) void openLayer(nextStep); }}
+          onRescue={() => { void romanizationRescue(romanization); }}
           onClose={() => setSheetOpen(false)}
           onExited={() => setCard(null)}
         />
@@ -463,40 +688,37 @@ function ReaderBody({ data, mode, createDetector, activeSentenceId, concealed, b
           <div className="reader__header-inner">
             <BackLink to={back} label={mode === 'scripture' ? 'Scripture' : 'Library'} />
             <div className="reader__headbtn">
-              <span className="reader__crumb">{data.corpus?.title ?? (mode === 'scripture' ? 'Scripture' : 'Read')}</span>
+              {chrome !== 'minimal' && <span className="reader__crumb">{data.corpus?.title ?? (mode === 'scripture' ? 'Scripture' : 'Read')}</span>}
               <h1 className="reader__chapter" lang={text.lang}>{text.title}</h1>
             </div>
-            <IconBtn label="Settings" to="/settings">{I.settings}</IconBtn>
+            {chrome === 'minimal'
+              ? <IconBtn label="Reading menu" active={menuOpen} onClick={() => setMenuOpen((v) => !v)}>{I.settings}</IconBtn>
+              : <IconBtn label="Settings" to="/settings">{I.settings}</IconBtn>}
           </div>
-          <div className="reader__progress"><span style={{ width: `${progress}%` }} /></div>
+          {chrome !== 'minimal' && <div className="reader__progress"><span style={{ width: `${progress}%` }} /></div>}
+          {chrome === 'minimal' && menuOpen && (
+            <div className="reader__menu" role="group" aria-label="Reading menu">
+              {badges}
+              <div className="reader__tools">{toolbar}</div>
+              {details}
+              <Link to="/settings" className="btn btn--small btn--quiet">Settings</Link>
+            </div>
+          )}
         </header>
 
         {bar}
 
         <div className={`reader__prose${marks}`}>
-          <div className="reader__meta">
-            <div className="chips">
-              <TextBadges text={text} />
-              {text.version && <span className="chip">{text.version}</span>}
-              {data.source?.rights === 'unverified' && <span className="chip chip--wine" title="Rights not established — replace before release">sample · rights unverified</span>}
+          {chrome !== 'minimal' && (
+            <div className="reader__meta">
+              {badges}
+              <div className="reader__tools">{toolbar}</div>
             </div>
-            <div className="reader__tools">
-              <label className="tool">
-                <span className="label">Highlight</span>
-                <select value={highlight} onChange={(e) => setHighlight(e.target.value as HighlightPref)} aria-label="Highlighting">
-                  <option value="off">off</option>
-                  <option value="subtle">subtle</option>
-                  <option value="strong">strong</option>
-                </select>
-              </label>
-              {mode === 'scripture' && anyRescue && (
-                <button type="button" className="btn btn--small btn--quiet" aria-pressed={parallel} onClick={toggleParallel}>Parallel English</button>
-              )}
-            </div>
-          </div>
+          )}
 
           <UnpublishedReasons text={text} />
-          <TextProgress textId={text.id} progress={record} />
+          {chrome === 'full' && <TextProgress textId={text.id} progress={record} />}
+          {chrome === 'reduced' && details}
 
           <ReadingGateContext.Provider value={gate}>{before}</ReadingGateContext.Provider>
 

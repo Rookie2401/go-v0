@@ -148,7 +148,7 @@ describe('scope fields, asOf, readingProgressMany', () => {
     expect((await h.golearn.readingProgress('someone-else', ES_STORY)).asOf).toBeUndefined();
   });
 
-  it('readingProgressMany equals the per-text calls, and reads the log once', async () => {
+  it('readingProgressMany equals the per-text calls, and reads no event table (it uses the in-memory log of the folder)', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
     await buildSpanishScripture(h.store);
@@ -162,7 +162,7 @@ describe('scope fields, asOf, readingProgressMany', () => {
     const history = h.bus.history.bind(h.bus);
     h.bus.history = (async (f) => { historyReads += 1; return history(f); }) as typeof h.bus.history;
     const many = await h.golearn.readingProgressMany(U, [ES_STORY, ES_JOHN, ES_STORY]);
-    expect(historyReads).toBe(1);
+    expect(historyReads).toBe(0);
     expect([...many.keys()]).toEqual([ES_STORY, ES_JOHN]);
     h.bus.history = history;
     for (const id of [ES_STORY, ES_JOHN]) expect(many.get(id)).toEqual(await h.golearn.readingProgress(U, id));

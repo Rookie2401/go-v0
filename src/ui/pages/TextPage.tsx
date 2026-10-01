@@ -15,6 +15,7 @@ import { BAND_LABEL, isTestimonyText, nameOfLang, plainReasons, textPath } from 
 import { Player } from '../player/Player';
 import type { PlayerChange } from '../player/Player';
 import { usePreview } from '../prefs';
+import { DifficultyPreview } from '../reader/DifficultyPreview';
 import { useReadingOverlay } from '../reader/readingGate';
 import { Reader } from '../reader/Reader';
 import { BackLink, Topbar } from '../ui';
@@ -79,7 +80,7 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
       mode={mode}
       activeSentenceId={info?.state.playing ? info.segment?.sentenceIds[0] : undefined}
       concealed={info?.concealed}
-      before={mode === 'scripture' ? <PreparePanel textId={textId} /> : undefined}
+      before={<>{mode === 'scripture' && <PreparePanel textId={textId} />}<DifficultyPreview textId={textId} /></>}
       bar={<Player key={`player:${textId}`} textId={textId} onChange={onChange} />}
     />
   );

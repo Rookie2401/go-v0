@@ -9,10 +9,11 @@
  * Publication gate: only published texts are listed. In preview mode unpublished texts are listed too, each with
  * its reasons. When nothing is visible the page says exactly what is awaited instead of showing an empty list.
  */
-import { useMemo, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import type { Text } from '../../core';
+import type { Text, Work } from '../../core';
 import { useApp } from '../context';
+import { chapterLabel } from '../course/WorkCard';
 import { BAND_LABEL, awaitedStatement, plainReasons, isVisibleText, languageName, pct, textPath } from '../format';
 import { ProgressLine, useCoverageMany, useReadingProgress } from '../coverage';
 import { TextBadges, UnpublishedReasons, useLangTexts } from '../library';
@@ -20,7 +21,7 @@ import { usePreview } from '../prefs';
 import { BackLink, Topbar } from '../ui';
 
 export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
-  const { course } = useApp();
+  const { course, catalog } = useApp();
   const preview = usePreview();
   const { texts: allTexts, corpora } = useLangTexts();
   const [tag, setTag] = useState<string | null>(null);
@@ -38,11 +39,54 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
 
   const tags = useMemo(() => [...new Set(texts.flatMap((t) => t.tags ?? []))].sort(), [texts]);
   const visible = useMemo(() => texts.filter((t) => !tag || (t.tags ?? []).includes(tag)), [texts, tag]);
+  // Chapters of a work (the learner's own copies of the ladder's books) are grouped by work, in chapter order; everything else by corpus as before.
+  const { plain, byWork } = useMemo(() => {
+    const w = new Map<string, Text[]>();
+    const rest: Text[] = [];
+    for (const t of visible) { if (t.workId) w.set(t.workId, [...(w.get(t.workId) ?? []), t]); else rest.push(t); }
+    for (const list of w.values()) list.sort((a, b) => (a.chapter?.index ?? 0) - (b.chapter?.index ?? 0) || a.title.localeCompare(b.title));
+    return { plain: rest, byWork: [...w.entries()] };
+  }, [visible]);
+  const workIds = useMemo(() => byWork.map(([id]) => id), [byWork]);
+  const [works, setWorks] = useState<Map<string, Work>>(new Map());
+  useEffect(() => {
+    let live = true;
+    if (workIds.length === 0) return;
+    void Promise.all(workIds.map((id) => catalog.work(id))).then((rows) => {
+      if (live) setWorks(new Map(rows.flatMap((w) => (w ? [[w.id, w] as const] : []))));
+    }).catch(() => undefined);
+    return () => { live = false; };
+  }, [catalog, workIds]);
   const byCorpus = useMemo(() => {
     const m = new Map<string, Text[]>();
-    for (const t of visible) { const l = m.get(t.corpusId) ?? []; l.push(t); m.set(t.corpusId, l); }
+    for (const t of plain) { const l = m.get(t.corpusId) ?? []; l.push(t); m.set(t.corpusId, l); }
     return [...m.entries()];
-  }, [visible]);
+  }, [plain]);
+
+  const renderRow = (t: Text, titleOf: (t: Text) => string = (x) => x.title) => {
+    const c = coverage.get(t.id);
+    const p = progress.get(t.id);
+    return (
+      <li key={t.id}>
+        <Link to={textPath(t)} className="entry entry--text">
+          <span className="entry__title" lang={t.lang}>{titleOf(t)}</span>
+          <span className="entry__tags">
+            {t.staticLevel && <span className="lib__meta">{t.staticLevel}</span>}
+            {t.version && <span className="chip">{t.version}</span>}
+            <TextBadges text={t} />
+          </span>
+          {(c || p) && (
+            <span className={`entry__preview${c ? ` band-${c.band}` : ''}`} title={c?.explanation}>
+              {p && <ProgressLine progress={p} testId="library-progress" />}
+              {p && c && ' · '}
+              {c && <>{BAND_LABEL[c.band]} · shown {pct(c.knownLexicalCoverage)}{(c.estimatedFamiliarCoverage ?? 0) > 0 ? ` · likely familiar ${pct(c.estimatedFamiliarCoverage)} (estimate)` : ''}</>}
+            </span>
+          )}
+        </Link>
+        <UnpublishedReasons text={t} />
+      </li>
+    );
+  };
 
   const bar = <Topbar title={title} left={<BackLink to="/" label="Home" />} />;
   if (allTexts === null) return <div>{bar}<div className="page"><p className="muted" role="status">Loading…</p></div></div>;
@@ -76,30 +120,18 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
                 <span className="lib__meta">{list.length} {list.length === 1 ? 'text' : 'texts'}</span>
               </h2>
               <ul className="list entrylist">
-                {list.map((t) => {
-                  const c = coverage.get(t.id);
-                  const p = progress.get(t.id);
-                  return (
-                    <li key={t.id}>
-                      <Link to={textPath(t)} className="entry entry--text">
-                        <span className="entry__title" lang={t.lang}>{t.title}</span>
-                        <span className="entry__tags">
-                          {t.staticLevel && <span className="lib__meta">{t.staticLevel}</span>}
-                          {t.version && <span className="chip">{t.version}</span>}
-                          <TextBadges text={t} />
-                        </span>
-                        {(c || p) && (
-                          <span className={`entry__preview${c ? ` band-${c.band}` : ''}`} title={c?.explanation}>
-                            {p && <ProgressLine progress={p} testId="library-progress" />}
-                            {p && c && ' · '}
-                            {c && <>{BAND_LABEL[c.band]} · shown {pct(c.knownLexicalCoverage)}{(c.estimatedFamiliarCoverage ?? 0) > 0 ? ` · likely familiar ${pct(c.estimatedFamiliarCoverage)} (estimate)` : ''}</>}
-                          </span>
-                        )}
-                      </Link>
-                      <UnpublishedReasons text={t} />
-                    </li>
-                  );
-                })}
+                {list.map((t) => renderRow(t))}
+              </ul>
+            </section>
+          ))}
+          {byWork.map(([workId, list]) => (
+            <section key={workId} className="lib__group lib__group--1" data-work={workId}>
+              <h2 className="lib__head">
+                <span className="lib__title" lang={works.get(workId)?.lang}>{works.get(workId)?.title ?? 'Your copy'}</span>
+                <span className="lib__meta">{list.every((t) => t.personalCopy) ? 'Your copy · ' : ''}{list.length} {list.length === 1 ? 'chapter' : 'chapters'}</span>
+              </h2>
+              <ul className="list entrylist">
+                {list.map((t) => renderRow(t, chapterLabel))}
               </ul>
             </section>
           ))}

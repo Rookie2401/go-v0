@@ -17,13 +17,67 @@ This is **not** a production-readiness claim.
 | **German** | Verified | Verified (engine); browser checked for Spanish only | Dependable tokenization; separable verbs only `anfangen`; compounds low-confidence; **seed lexicon only** | **Published**: Lutherbibel 1912, 3 verses, byte-verified | Not verified |
 | **Albanian** | Verified | as German | ë / ç preserved; inflected forms related; clitics ambiguous in thin context; **seed lexicon only** | **Blocked** — awaiting an approved translation | Not verified |
 | **Hindi** | Verified (grapheme-safe spans, danda kept, non-NFC preserved) | as German | Compound verbs only when listed; **seed lexicon only** | **Blocked** | Not verified |
-| **Thai** | Verified (no spaces added; sentence break = newline / double space) | as German | Word segmentation **limited** (ICU dictionary + short compound list); **seed lexicon only** | **Blocked** | Not verified |
+| **Thai** | Verified (no spaces added; a learner's own copy of a book imports chapter by chapter — see "Thai course") | Verified (engine and browser, sandbox) | Word segmentation **limited and not measured on real prose** (ICU dictionary + course compounds); hand lexicon of 597 entries, **machine-drafted, not native-reviewed**; script decoding by rule, measured below; no dictionary installed | **Blocked** | Not verified |
 
 A course in the team list, or a seeded example, is not evidence of support: this table is. "Seed lexicon only"
 means every word of a supplied text is tokenized and tracked, but a word outside the adapter's small lexicon
 has no lemma or gloss ("not analysed yet"); analysis can be supplied with the text (`spans`), corrected by a
 reviewer (`corrections`), or added to a lexicon. The importer reports analysis coverage per document, and the
 preview and the import result now report the same figure.
+
+## Thai course (foundation, contract v5)
+
+Design: `docs/THAI_COURSE.md`. This is the structure of the course, **without any of its books**: no text of the
+ladder, no Thai Bible, no dictionary and no audio is in the repository.
+
+### Implemented and verified
+
+| Part | What was verified, and how |
+|---|---|
+| Ladder: Stage 0, Grades 1–9, open reading; 62 works with role and rights record | Manifest invariants (`test/integration/thai-ladder.test.ts`): nothing bundled, nothing marked public domain, nothing marked verified; spine order; varieties on the works that carry them. Ladder page in the browser (sandbox) |
+| A learner's own copy of a book | Plain text → one document per chapter, text byte-identical, filed under its work, readable without a review, labelled "Your copy", refused under `data/corpus/`. Integration test, CLI run, and the in-app flow in the browser (convert → preview → confirm → chapters under the work) with a **synthetic** two-chapter text |
+| Script decoding (syllables, consonant class, vowel, live/dead, tone mark, tone, the rule in words) | Coordinator's own tables (`test/integration/thai-tones.test.ts`): 304 regular one-syllable words all decoded confidently and correctly. **Held-out table of 185 words the engine's author never saw: 139 decoded confidently and all correct, 46 left marked uncertain, 0 confidently wrong.** Word sheet in the browser, including an irregular word ("not read exactly as it is spelled… read as หนม") |
+| Stage-specific assistance | Profiles are data; Stage 0 shows decoding with the first tap and romanization only behind a rescue button (its use is recorded); Grade 9 shows minimal chrome and still reaches English; courses without a ladder are unchanged (existing reader tests untouched). Stage 0 verified in the browser; later stages by tests only |
+| Writing-system items (`orth`) | Folded by the evidence policy, never counted as words; decoding help recorded; state rebuilds identically from the log (integration test and a 420-event randomized comparison against a reference derivation) |
+| Difficulty forecast, word history, reading pace, stage readiness | Integration test on the real engines: forecast is deterministic, emits nothing and states its limits; history names the first text, work and chapter and says "Pronunciation: not measured"; **finishing every text never produces "ready to advance"**. Readiness panel and forecast in the browser |
+| Dictionary pipeline | `npm run dict:build` and the runtime source, against a hand-made fixture in the real file's shape (62 tests). Importer uses a dictionary only for words the adapter cannot analyse, below certainty, other senses kept |
+| Scripture as a parallel corpus | Outside the ladder, same learner model (a word met in a chapter and in a verse shares one history), takes the profile of the stage the learner works at. The Thai sample itself stays **blocked** |
+| Scale | Folding one sentence view cost 3 ms at first and 40–87 ms after 1,200 views (measured, `scripts/probe-scale.mts`); after the rework it is flat at about 0.8 ms and encounter rows fell from 37,680 to 13,560 |
+
+Policy is now `evidence@6` (existing databases rebuild from the event log on first open; verified on a sandbox
+database created under the previous version).
+
+### Limits that are stated, not solved
+
+- **The tone engine is rule-based.** One word in four of the held-out table is left "uncertain" rather than
+  guessed (mostly compounds and Indic loans). About 110 words rest on two lists written by the engine's author,
+  not reviewed by a native speaker; the author flagged บรม, ผลาญ, ผลไม้, อาจารย์ and the ศึกษา entries as least
+  certain. A dictionary's pronunciation data is the intended authority.
+- **The hand lexicon, phrase units (64) and constructions (33) are machine-drafted.** The drafter flagged as
+  unsure: หน as a classifier, the regional tags on บ่ / กิ๋น / แอ่ว / จ๊าด, register tags on มิ / ครั้น / ฤๅ / เจ้า /
+  สุนัข, glosses of เกี่ยว and ค่อย, and the wording for จ้ะ / จ๊ะ.
+- **Reading units.** Thai has no sentence mark; long prose spans are divided at clause spaces by rule. Not
+  measured on real prose.
+- **Readiness thresholds are provisional policy** (`READINESS` in `src/golearn/policy.ts`), not validated against
+  learners.
+- **No Thai definitions, no frequency data, no sense disambiguation, no automatic detection of omitted subjects
+  or literary devices.** The forecast says so in its own output.
+- **Some reads still grow with history** (unscoped reading pace, `recommend`, per-text progress): measured flat
+  for folding, not yet measured for these at novel scale.
+- **Personal copies are not part of a backup**: re-import the file; evidence re-attaches through stable sentence keys.
+- **Not checked in the browser:** assistance profiles beyond Stage 0, notes and clause-structure display,
+  dictionary-backed analysis (no dictionary is installed), Settings → Language support.
+
+### Awaiting external input (Thai)
+
+1. **The books.** Every work is a recommendation with rights unverified; the learner supplies each text from a
+   copy he is entitled to use. Bibliographic details (authors, publishers, editions) are from general knowledge
+   and are marked unverified.
+2. **A dictionary file** (candidate: the kaikki.org Thai extract of Wiktionary, CC BY-SA, about 50 MB) — needs the
+   owner's permission to download, then `npm run dict:build`.
+3. **A Thai Bible translation** with established rights, then verification as for Spanish and German.
+4. **Native review** of the lexicon, the tone exception lists, phrase units and constructions.
+5. **Real speech** (unchanged: no provider credentials).
 
 ## The two audited defects
 

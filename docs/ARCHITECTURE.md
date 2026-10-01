@@ -248,3 +248,33 @@ Brief and root causes: `docs/PLAN4.md`. Status of record: `docs/READINESS.md`.
     real importer and generates `docs/import/PROOF.md`.
 33. **Sandbox database.** `?sandbox=<name>` opens a separate, bannered database with namespaced local storage for
     acceptance and import tests, so nothing synthetic reaches the normal library.
+
+## 15. The Thai course (reading ladder, contract v5)
+
+Design: `docs/THAI_COURSE.md`. Briefs: `docs/PLAN5.md`. Status: `docs/READINESS.md`.
+
+34. **A ladder is data.** Course → Stage → Work → Chapter (a `Text` with `workId` + `chapter`). Stages and works live
+    in `src/course/<course>.ts`, are installed into the store by `CourseCatalog.install` (at startup, on a course
+    switch and when a team is first chosen), and a course without a ladder is untouched.
+35. **Rights are recorded, never assumed.** Every work carries `WorkRights`; nothing is bundled or marked public
+    domain without a stated basis and a person's verification, which `install` then preserves.
+36. **Personal copies.** `source.rights: "personal-copy"` + `authorship: "published"` makes a learner-supplied
+    published work readable on that device without a review, labelled, and never bundled (the converter refuses
+    to write under `data/corpus/`). Scripture and generated text can never be personal copies.
+37. **Assistance is a stage property.** `AssistanceProfile` (layers and their order, how close English is,
+    romanization, chrome) is data on the stage; the reader asks the catalogue. `DEFAULT_ASSISTANCE` reproduces
+    the pre-ladder reader exactly. English rescue is in every profile.
+38. **Script decoding is computed, not stored.** `decodeFor` takes an author-supplied decoding, else the
+    dictionary pronunciation kept in the analysis notes, else the spelling rules. The rule engine never returns a
+    confident answer where the spelling does not settle the reading.
+39. **Writing-system items.** `orth` items are folded by the same evidence policy as words and never enter word
+    coverage, vocabulary, recommendations or word estimates. Decoding is help with the written form
+    (`DecodingRevealed`); the romanization rescue is recorded.
+40. **A dictionary is a source, not an analysis.** `LexiconSource` fills only words the adapter cannot analyse,
+    at a confidence below certainty, with the other senses kept; author spans and human corrections win. It is
+    built offline (`npm run dict:build`) from a licensed file and is absent until then.
+41. **Forecast, pace and readiness are advice.** `predictDifficulty` never gates reading and states its limits;
+    `readingPace` is a quiet measure; `stageReadiness` combines several signals with provisional thresholds
+    (`READINESS` in `src/golearn/policy.ts`) and finishing texts never suffices.
+42. **Scripture is a parallel corpus.** Outside the ladder, on the same learner model, with the profile of the
+    stage the learner works at.

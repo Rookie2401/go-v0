@@ -6,13 +6,26 @@ import { clock, registry } from './helpers';
 
 const read = (name: string) => JSON.parse(fs.readFileSync(`docs/import/templates/${name}.v2.json`, 'utf8')) as CorpusDocument;
 const NAMES = ['ci-story', 'dialogue', 'scripture'];
+const ALL = [...NAMES, 'personal-copy'];
 
 describe('docs/import/templates', () => {
-  it('ship three templates, each a valid version 2 document (no errors)', () => {
-    expect(fs.readdirSync('docs/import/templates').sort()).toEqual(NAMES.map((n) => `${n}.v2.json`));
-    const batch = validateBatch(NAMES.map(read), { registry });
+  it('ship four templates, each a valid version 2 document (no errors)', () => {
+    expect(fs.readdirSync('docs/import/templates').sort()).toEqual([...ALL].sort().map((n) => `${n}.v2.json`));
+    const batch = validateBatch(ALL.map(read), { registry });
     expect(batch.ok).toBe(true);
     for (const d of batch.documents) expect(d.issues.filter((i) => i.severity === 'error'), d.id).toEqual([]);
+  });
+
+  it('the personal-copy template is a Thai personal copy with a work, a chapter and a note; it imports as a published personal copy', async () => {
+    const doc = read('personal-copy');
+    expect(doc).toMatchObject({ lang: 'th', source: { rights: 'personal-copy', authorship: 'published' }, work: { slug: 'mana-mani-1', chapter: { index: 1 } } });
+    const store = createMemoryStore();
+    const r = await importDocuments(store, registry, [doc], { clock });
+    expect(r.ok).toBe(true);
+    expect(r.documents[0]).toMatchObject({ action: 'created', published: true, unpublishedReasons: [] });
+    const text = (await store.texts.get(`text:th:${doc.id}`))!;
+    expect(text).toMatchObject({ personalCopy: true, workId: 'work:thailand-th:mana-mani-1', chapter: { index: 1, title: 'Chapter one' } });
+    expect(await store.notes.where('textId', text.id)).toHaveLength(1);
   });
 
   it('import, and are unpublished until reviewed / verified (the placeholders cannot reach a learner)', async () => {

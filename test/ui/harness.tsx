@@ -6,6 +6,11 @@
  * The fakes follow the contract: drafts live in `store.drafts` with a monotonic `seq` and a `DraftConflict` error;
  * `audioStatus` is derived from what is in the store (manifest + voice review); `readingProgress` is derived from
  * the event log, so a test that clicks "Understood" sees the wording change.
+ *
+ * Reading ladder (PLAN5 F1): `services.catalog` is the REAL `createCourseCatalog` on the memory store; while that module is
+ * still the coordinator's stub it falls back to `makeFakeCatalog` (same contract, built from THAI_STAGES / THAI_WORKS).
+ * `h.catalogIsReal` says which one a test got. `controls.ingest.convertPlainText` is a fake unless USE_REAL_CONVERTER is
+ * switched on (one line, below); `services.lexicon` is a memory source with no entries.
  */
 import { act } from 'react';
 import type { ReactElement } from 'react';
@@ -16,15 +21,22 @@ import { vi } from 'vitest';
 import { COURSES, REVIEW_OK, StoreEventBus, buildFixtureText, createMemoryStore, ids, seedBasics } from '../../src/core';
 import type {
   AppStore, AssistanceLevel, AudioAsset, AudioManifest, AudioSegment, AudioStatus, ComfortBand, ComprehensionReported, DomainEvent,
-  EvidenceAudit, GoLearn, GoListen, GoTell, GoTellSuggestion, IntentProposal, PersonalizedCoverage, ProductionAnalysis, ProviderAvailability,
-  ReadingProgress, Recommendation, ScriptureReadiness, SentenceSupport, Testimony, TestimonyDraft, TestimonyRevision, Text, TokenSupport, VoiceConfig,
+  AssistanceProfile, CourseCatalog, EvidenceAudit, GoLearn, GoListen, GoTell, GoTellSuggestion, IntentProposal, PersonalizedCoverage, ProductionAnalysis, ProviderAvailability,
+  ReadingPace, ReadingProgress, Recommendation, ScriptureReadiness, Stage, StageReadiness, SentenceSupport, Testimony, TestimonyDraft, TestimonyRevision, Text, TokenSupport, VoiceConfig,
 } from '../../src/core';
+import { THAI_COURSE_ID, THAI_STAGES, THAI_WORKS, createCourseCatalog } from '../../src/course';
+import { createMemoryLexiconSource } from '../../src/dict';
+import { plainTextToDocuments } from '../../src/ingest/plaintext';
+import type { PlainTextOptions, PlainTextResult } from '../../src/ingest/plaintext';
 import { AppProvider } from '../../src/ui/context';
 import type { AppServices, BackupApi, BackupCheckView, ContentHistoryView, ImportDocView, IngestApi, SpeechApi } from '../../src/ui/context';
 import { resetPrefsForTests } from '../../src/ui/prefs';
 import { resetSittingsForTests } from '../../src/ui/sitting';
 
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
+
+/** True: the course tests' .txt conversion runs through the real package-D converter. False: the small fake below (same document shape). */
+export const USE_REAL_CONVERTER = true;
 
 export const USER = 'u1';
 export const SESSION = 'ses-test';
@@ -42,6 +54,10 @@ export interface FakeLearnOptions {
   /** What explainItem says, by item id. */
   explain?: Record<string, string>;
   audit?: Partial<EvidenceAudit>;
+  /** What `stageReadiness` returns (merged over a "not enough reading yet" default). */
+  stageReadiness?: Partial<StageReadiness>;
+  /** What `readingPace` returns (merged over an empty default). */
+  pace?: Partial<ReadingPace>;
 }
 
 export function makeFakeGoLearn(store: AppStore, opts: FakeLearnOptions = {}, bus?: StoreEventBus) {
@@ -110,6 +126,19 @@ export function makeFakeGoLearn(store: AppStore, opts: FakeLearnOptions = {}, bu
     explainItem: vi.fn(async (_userId: string, itemId: string) => ({
       itemId, summary: opts.explain?.[itemId] ?? 'Seen 3 times in 1 text; needed help once; not yet shown without help.', exposures: 3, assisted: 1, demonstrated: 0,
       productions: { independent: 0, selfRepaired: 0, assisted: 0, copied: 0 }, excludedEvents: 0, texts: [],
+    })),
+    stageReadiness: vi.fn(async (userId: string, courseId: string, stageId?: string): Promise<StageReadiness> => ({
+      userId, courseId, stageId: stageId ?? `stage:${courseId}:0`, verdict: 'insufficient-data',
+      explanation: 'Not enough reading here yet to say anything about moving on.',
+      signals: [
+        { key: 'lexical-coverage', target: 'comfortable coverage of 95 % or more across the texts you added', status: 'insufficient-data', explanation: 'No texts of this stage have been read yet.' },
+        { key: 'lookup-rate', target: '4 or fewer lookups per 100 words', status: 'insufficient-data', explanation: 'Fewer than 100 words seen so far.' },
+        { key: 'listening', target: 'reviewed real speech', status: 'not-available', explanation: 'There is no reviewed real speech for this course yet.' },
+      ],
+      ...opts.stageReadiness,
+    })),
+    readingPace: vi.fn(async (_userId: string, _o?: { textId?: string; stageId?: string; lang?: string }): Promise<ReadingPace> => ({
+      basis: 'sentence-dwell', sentences: 0, lookupsPer100Words: 0, rescuesPer100Sentences: 0, rereadSittings: 0, trend: 'insufficient-data', ...opts.pace,
     })),
     readingProgress,
     readingProgressMany,
@@ -330,13 +359,26 @@ export function makeFakeControls(store: AppStore) {
   const issue = (path: string) => ({ path, code: 'missing-field', message: 'title is required', hint: 'Add a non-empty "title".', severity: 'error' as const });
   const ingest = {
     validate: vi.fn(async (docs: unknown[]): Promise<ImportDocView[]> => docs.map((d) => {
-      const doc = d as { id?: string; title?: string; bad?: boolean };
-      return { id: doc.id ?? '?', title: doc.title, action: 'valid', issues: doc.bad ? [issue('title')] : [] };
+      const doc = d as { id?: string; title?: string; bad?: boolean; source?: { rights?: string } };
+      const copy = doc.source?.rights === 'personal-copy';
+      return { id: doc.id ?? '?', title: doc.title, action: 'valid', issues: doc.bad ? [issue('title')] : [], ...(copy ? { published: true, analysisCoverage: 0.5 } : {}) };
     })),
     import: vi.fn(async (docs: unknown[]): Promise<ImportDocView[]> => {
       const out: ImportDocView[] = [];
       for (const d of docs) {
-        const doc = d as { id: string; title: string; lang?: 'es' };
+        const doc = d as FakeDoc;
+        if (doc.source?.rights === 'personal-copy') {
+          // A personal copy: readable on this device (published), attached to its work, labelled as the learner's own.
+          const lang = doc.lang ?? 'th';
+          await store.texts.put({
+            id: `text:${lang}:${doc.id}`, corpusId: `ci-${lang}`, lang, kind: 'story', title: doc.title, sourceId: 'src:personal-copy', importedAt: '2026-01-01T00:00:00.000Z',
+            tags: [], editorialTags: [], prepTargets: [], reviewStatus: 'unreviewed', published: true, unpublishedReasons: [],
+            schemaVersion: 2, generated: false, transformations: [], contentVersion: 1, personalCopy: true,
+            ...(doc.work ? { workId: `work:${doc.work.courseId}:${doc.work.slug}`, chapter: doc.work.chapter } : {}),
+          });
+          out.push({ id: doc.id, title: doc.title, action: 'created', contentVersion: 1, published: true, issues: [], analysisCoverage: 0.5 });
+          continue;
+        }
         await store.texts.put({
           id: `text:es:${doc.id}`, corpusId: 'ci-es', lang: 'es', kind: 'story', title: doc.title, sourceId: 'src:import', importedAt: '2026-01-01T00:00:00.000Z',
           tags: [], editorialTags: [], prepTargets: [], reviewStatus: 'unreviewed', published: false, unpublishedReasons: ['Awaiting native-speaker review.'],
@@ -347,6 +389,7 @@ export function makeFakeControls(store: AppStore) {
       return out;
     }),
     history: vi.fn((_text: Text): ContentHistoryView[] => []),
+    convertPlainText: vi.fn((text: string, opts: PlainTextOptions): PlainTextResult => (USE_REAL_CONVERTER ? plainTextToDocuments(text, opts) : fakePlainText(text, opts))),
   } satisfies IngestApi;
   const backup = {
     exportLearner: vi.fn(async (userId: string, o?: { includeRecordings?: boolean }) => ({ format: 'go-backup', version: 1, userId, includesRecordings: !!o?.includeRecordings })),
@@ -367,6 +410,91 @@ export function makeFakeControls(store: AppStore) {
   return { ingest, backup, speech, speechProxyStatus };
 }
 
+// ───────────────────────── ladder fakes ─────────────────────────
+
+/** The part of an import document the fake importer reads (package D's real documents are richer). */
+interface FakeDoc { id: string; title: string; lang?: 'th' | 'es'; work?: { slug: string; courseId: string; chapter: { index: number; title?: string } }; source?: { rights?: string; provenance?: string }; bad?: boolean }
+
+const HEADING = /^(บทที่|ตอนที่|Chapter)\s*\S+/;
+
+/**
+ * A stand-in for package D's `plainTextToDocuments`: chapters begin at lines like "Chapter 3" / "บทที่ ๓" / "ตอนที่ 3"; no heading ⇒ one
+ * document. Documents are personal copies attached to the work (or free-standing with the given title). Never alters the text.
+ */
+export function fakePlainText(text: string, opts: PlainTextOptions): PlainTextResult {
+  const lines = text.split(/\r?\n/);
+  const starts = lines.flatMap((l, i) => (HEADING.test(l.trim()) ? [i] : []));
+  const base = opts.idPrefix ?? (opts.work ? opts.work.id.split(':').pop()! : (opts.title ?? 'text').toLowerCase().replace(/\W+/g, '-'));
+  const source = { rights: 'personal-copy', ...(opts.copyNote ? { provenance: opts.copyNote } : {}) };
+  const pieces = starts.length === 0 ? [{ heading: undefined as string | undefined, body: lines.join('\n') }]
+    : starts.map((s, k) => ({ heading: lines[s].trim(), body: lines.slice(s, starts[k + 1] ?? lines.length).join('\n') }));
+  const documents = pieces.map((piece, k) => ({
+    schemaVersion: 2, id: `${base}-ch${k + 1}`, lang: opts.lang, title: piece.heading ?? opts.work?.title ?? opts.title ?? 'Untitled',
+    ...(opts.work ? { work: { slug: opts.work.id.slice(`work:${opts.work.courseId}:`.length), courseId: opts.work.courseId, chapter: { index: k + 1, ...(piece.heading ? { title: piece.heading } : {}) } } } : {}),
+    source, body: piece.body,
+  }));
+  return {
+    documents: documents as unknown as PlainTextResult['documents'],
+    notes: starts.length === 0 ? ['No chapter headings were found, so the text is one document.'] : [`${starts.length} chapters found by headings like “${lines[starts[0]].trim()}”.`],
+  };
+}
+
+/** A catalogue with the contract's behaviour on the memory store, built from the Thai manifest (used while createCourseCatalog is a stub). */
+export function makeFakeCatalog(store: AppStore, golearn?: Pick<GoLearn, 'stageReadiness'>): CourseCatalog {
+  const key = (userId: string, courseId: string) => `stage:${userId}:${courseId}`;
+  const stages = async (courseId: string): Promise<Stage[]> => (await store.stages.where('courseId', courseId)).sort((a, b) => a.index - b.index);
+  const fallback: AssistanceProfile = { visibility: 'contextual', defaultHighlight: 'subtle', layers: ['gloss', 'phrase', 'grammar', 'sentence', 'english', 'history'], englishRescue: 'secondary', romanization: 'never', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'full' };
+  const self: CourseCatalog = {
+    async install(courseId) {
+      if (courseId !== THAI_COURSE_ID) return;
+      await store.stages.bulkPut(THAI_STAGES);
+      for (const w of THAI_WORKS) {
+        const stored = await store.works.get(w.id);
+        await store.works.put(stored && (stored.rights.verified || stored.bibliographyVerified) ? { ...w, rights: stored.rights } : w);
+      }
+    },
+    stages,
+    async works(courseId, stageId) {
+      const rows = await store.works.where('courseId', courseId);
+      const rank = (r: string) => (r === 'spine' ? 0 : 1);
+      return rows.filter((w) => !stageId || w.stageId === stageId).sort((a, b) => rank(a.role) - rank(b.role) || a.order - b.order);
+    },
+    work: (id) => store.works.get(id),
+    async textsOf(workId) {
+      return (await store.texts.where('workId', workId)).sort((a, b) => (a.chapter?.index ?? 0) - (b.chapter?.index ?? 0) || a.title.localeCompare(b.title));
+    },
+    async stageOfText(textId) {
+      const t = await store.texts.get(textId);
+      const w = t?.workId ? await store.works.get(t.workId) : undefined;
+      return w ? store.stages.get(w.stageId) : undefined;
+    },
+    async assistanceFor({ courseId, textId, currentStageId }) {
+      const of = textId ? await self.stageOfText(textId) : undefined;
+      const stage = of ?? (currentStageId ? await store.stages.get(currentStageId) : undefined);
+      void courseId;
+      return stage?.assistance ?? fallback;
+    },
+    async currentStage(userId, courseId) {
+      const all = await stages(courseId);
+      const stored = await store.meta.get(key(userId, courseId));
+      const chosen = stored ? all.find((s) => s.id === stored.value) : undefined;
+      if (chosen) return chosen;
+      if (!golearn) return all[0];
+      for (const s of all) if ((await golearn.stageReadiness(userId, courseId, s.id)).verdict !== 'ready-to-advance') return s;
+      return all.at(-1);
+    },
+    async setCurrentStage(userId, courseId, stageId) {
+      await store.meta.put({ id: key(userId, courseId), value: stageId, updatedAt: new Date().toISOString() });
+    },
+  };
+  return self;
+}
+
+/** The real catalogue when package E has landed (it throws while it is the stub), otherwise the fake above. */
+export function makeCatalog(store: AppStore, golearn?: Pick<GoLearn, 'stageReadiness'>): { catalog: CourseCatalog; real: boolean } {
+  try { return { catalog: createCourseCatalog({ store, golearn }), real: true }; } catch { return { catalog: makeFakeCatalog(store, golearn), real: false }; }
+}
+
 // ───────────────────────── harness ─────────────────────────
 
 export interface Harness {
@@ -378,6 +506,8 @@ export interface Harness {
   voice: VoiceConfig;
   tell: ReturnType<typeof makeFakeGoTell>;
   controls: ReturnType<typeof makeFakeControls>;
+  /** True when `services.catalog` is the real package-E catalogue, false when it is the fake in this file. */
+  catalogIsReal: boolean;
   events(type?: DomainEvent['type']): Promise<DomainEvent[]>;
   /** `session: null` mounts WITHOUT a fixed session id, so the provider uses the learner's sitting-stable id (sitting.ts). */
   mount(element: ReactElement, opts?: { router?: string; session?: string | null }): Promise<Mounted>;
@@ -389,12 +519,13 @@ export interface Mounted {
   unmount(): Promise<void>;
 }
 
-export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: FakeListenOptions; tell?: FakeTellOptions } = {}): Promise<Harness> {
+export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: FakeListenOptions; tell?: FakeTellOptions; courseId?: string } = {}): Promise<Harness> {
   resetPrefsForTests();
   resetSittingsForTests();
   try { localStorage.clear(); } catch { /* jsdom only */ }
   const store = createMemoryStore();
-  await seedBasics(store, USER, 'honduras-es');
+  const courseId = opts.courseId ?? 'honduras-es';
+  await seedBasics(store, USER, courseId);
   // Seeded audio uses readable asset ids ("asset:0") that are not content hashes: report their bytes as present, as the
   // real store does for real assets (the listening emitter refuses completions for an asset whose bytes are missing).
   const realHas = store.assets.has.bind(store.assets);
@@ -404,17 +535,19 @@ export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: Fak
   const { fake: listen, voice } = makeFakeGoListen(store, opts.listen);
   const tell = makeFakeGoTell(store, opts.tell, (rev) => createTestimonyText(store, voice, rev));
   const controls = makeFakeControls(store);
+  const { catalog, real: catalogIsReal } = makeCatalog(store, learn);
+  await catalog.install(courseId); // what bootstrap does at startup (a no-op for a course without a ladder)
   const services: AppServices = {
-    store, bus,
+    store, bus, catalog, lexicon: (lang) => ({ ...createMemoryLexiconSource(lang, []), info: async () => undefined }),
     adapters: { get: () => { throw new Error('adapters are not used by the UI tests'); }, all: () => [] },
     golearn: learn, golisten: listen, gotell: tell,
     ingest: controls.ingest, backup: controls.backup, speech: controls.speech,
   };
   const user = (await store.users.get(USER))!;
-  const course = COURSES.find((c) => c.id === 'honduras-es')!;
+  const course = COURSES.find((c) => c.id === courseId)!;
 
   return {
-    store, bus, services, learn, listen, voice, tell, controls,
+    store, bus, services, learn, listen, voice, tell, controls, catalogIsReal,
     async events(type) {
       const all = await bus.history({ userId: USER });
       return type ? all.filter((e) => e.type === type) : all;

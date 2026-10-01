@@ -27,8 +27,13 @@ export function ImportReport({ docs, title }: { docs: ImportDocView[]; title?: s
               <span className={`chip${d.action === 'rejected' || errors.length > 0 ? ' chip--wine' : ''}`}>{actionLabel(d)}</span>
             </h3>
             {d.note && <p className="card__note" data-testid="import-note">{d.note}</p>}
+            {d.action === 'valid' && d.published === true && (
+              <p className="card__note" data-testid="would-publish">Will be published to learners when imported.</p>
+            )}
             {d.published === false && (d.unpublishedReasons ?? []).length > 0 && (
-              <p className="card__note">Not published: {(d.unpublishedReasons ?? []).join(' ')}</p>
+              <p className="card__note" data-testid={d.action === 'valid' ? 'would-publish' : undefined}>
+                {d.action === 'valid' ? 'Will be imported but NOT published to learners yet: ' : 'Not published: '}{(d.unpublishedReasons ?? []).join(' ')}
+              </p>
             )}
             {d.analysisCoverage !== undefined && <p className="card__note">Analysis coverage: {Math.round(d.analysisCoverage * 100)}% of the words have an analysis; the rest show “not analysed yet”.</p>}
             {d.issues.length > 0 && (

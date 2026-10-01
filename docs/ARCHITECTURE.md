@@ -208,3 +208,22 @@ The full brief is `docs/PLAN2.md`; the outcome and what still needs outside inpu
     against a mocked service only.
 22. **Backup is source of truth only.** `src/backup` exports events, testimonies, versions, drafts and
     (optionally) recordings; derived state is rebuilt after restore (`docs/STORAGE.md`).
+
+## 13. Round 3 (supplied-text readiness, October 2026)
+
+Brief: `docs/PLAN3.md`. Status of record: `docs/READINESS.md`.
+
+23. **Five reading notions, never merged**: displayed/previewed (`TextViewed`, counts nothing), reading exposure
+    (`SentenceViewed` after a length-proportional dwell in a visible, focused reader with no preparation panel
+    open — shown as "Seen"), explicit completion (`TextCompleted` only), reported understanding
+    (`ComprehensionReported` 'all' without help), estimated familiarity (labelled estimate on items).
+24. **Sittings come from time, not from the UI.** GoLearn derives `Encounter.sitting` from a 30-minute gap and
+    keeps one exposure per item + sentence per sitting whatever session id arrived; the UI also keeps a
+    sitting-stable session id. Policy `evidence@3`; existing state is rebuilt from the log.
+25. **Evidence is pinned to the version read** (`contentVersion` on events and encounters).
+26. **Review is a recorded act, separate from text.** `applyReview` / `npm run corpus:review` write only the
+    `review` block; publication follows from the gate. Version bumps are logged and exposed by `contentHistory`.
+27. **Speech credentials never reach the client.** A same-origin Vite plugin (`server/speechProxy.ts`) holds
+    `AZURE_SPEECH_KEY` / `AZURE_SPEECH_REGION` from `.env.local`; the browser talks to `/api/speech/*` through
+    `ProxySpeechProvider`. The direct, key-in-the-browser adapter remains only as an advanced fallback for
+    static hosting. Unconfigured ⇒ an honest unavailable state naming the two variables.

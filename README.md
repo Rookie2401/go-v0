@@ -18,6 +18,7 @@ npm run dev              # http://127.0.0.1:5196
 npm run gate             # tsc -b && vitest run
 npm run corpus:check     # bundled corpus: validation, re-import, Scripture byte check
 npm run corpus:validate -- path/to/text.json
+npm run corpus:review -- path/to/text.json --by "Reviewer Name"   # record a review (never changes text)
 node scripts/verify-scripture.mjs
 npm run build && npm run preview   # http://127.0.0.1:4196
 ```
@@ -29,8 +30,9 @@ npm run build && npm run preview   # http://127.0.0.1:4196
 | `docs/READINESS.md` | Per-language readiness (ingestion, analysis, Scripture, speech); implemented vs verified vs awaiting external input |
 | `docs/IMPORT.md` + `docs/import/templates/` | The versioned text-import specification, templates, and how to validate, import, review and publish |
 | `docs/STORAGE.md` | Storage model, backup and restore |
+| `docs/SPEECH.md` | Speech configuration (server-side key), what is recorded, failure states, review |
 | `docs/ARCHITECTURE.md` | Architecture and decisions (§12 = the readiness round) |
-| `docs/PLAN.md`, `docs/PLAN2.md` | Package ownership and the briefs the code was built against |
+| `docs/PLAN.md`, `docs/PLAN2.md`, `docs/PLAN3.md` | Package ownership and the briefs the code was built against |
 | `src/golisten/QA.md` | Speech QA set and the voice audition procedure |
 
 ## Layout
@@ -59,8 +61,9 @@ test/           per-package tests + test/integration (Spanish end-to-end loop, f
   visible only in the bannered preview mode. Spanish (Reina-Valera 1909) and German (Lutherbibel 1912)
   Scripture samples are byte-verified against eBible.org; Albanian, Hindi and Thai Scripture is blocked until
   an approved translation is supplied.
-- **Audio is unavailable until a speech provider is configured.** The Azure adapter has only been tested
-  against a mocked service. Fixture tones are development-only and can never count as listening.
+- **Audio is unavailable until a speech provider is configured**: set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in
+  `.env.local` (never committed) and restart; the key stays on the server. Tested against a mocked service only —
+  no real speech has been produced. Fixture tones are development-only and can never count as listening.
 - **Analysis is seed-lexicon only.** Every word of a supplied text is tokenized and tracked; lemma and gloss
   exist only for seed vocabulary or for analysis supplied with the text.
 - **GoTell is rule-based** and states what it cannot check. No GoSpeak, no pronunciation scores, no

@@ -28,7 +28,8 @@ import type { BackupFile } from '../backup';
 import { createGoLearn } from '../golearn';
 import { AZURE_PROVIDER_ID, AzureSpeechProvider, ProxySpeechProvider, createGoListen } from '../golisten';
 import { createGoTell } from '../gotell';
-import { INGEST_TOOL, contentHistory, importDocuments, loadBundledCorpus, validateBatch } from '../ingest';
+import { INGEST_TOOL, computePublished, contentHistory, importDocuments, loadBundledCorpus, validateBatch } from '../ingest';
+import type { CorpusDocument } from '../ingest';
 import type { DocumentReport } from '../ingest';
 import type { AppServices, BackupApi, ImportDocView, IngestApi, SpeechApi, StartupInfo } from '../ui/context';
 import {
@@ -120,11 +121,17 @@ export function createIngestApi(store: AppStore, adapters: AppServices['adapters
         }
       }
       const batch = validateBatch(docs, { registry: adapters, existingTexts });
-      return batch.documents.map((r, i): ImportDocView => ({
-        id: r.id, title: titleOf(docs[i]), action: 'valid',
-        issues: r.issues.map((x) => ({ path: x.path, code: x.code, message: x.message, hint: x.hint, severity: x.severity })),
-        analysisCoverage: r.coverage && r.coverage.words > 0 ? r.coverage.coverage : undefined,
-      }));
+      return batch.documents.map((r, i): ImportDocView => {
+        // Say BEFORE importing whether the document would be published, and what is still missing if not.
+        const valid = !r.issues.some((x) => x.severity === 'error');
+        const decision = valid ? computePublished(docs[i] as CorpusDocument) : undefined;
+        return {
+          id: r.id, title: titleOf(docs[i]), action: 'valid',
+          issues: r.issues.map((x) => ({ path: x.path, code: x.code, message: x.message, hint: x.hint, severity: x.severity })),
+          analysisCoverage: r.coverage && r.coverage.words > 0 ? r.coverage.coverage : undefined,
+          ...(decision ? { published: decision.published, unpublishedReasons: decision.unpublishedReasons } : {}),
+        };
+      });
     },
     async import(docs) {
       const report = await importDocuments(store, adapters, docs, { clock });

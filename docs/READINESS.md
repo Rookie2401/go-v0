@@ -32,7 +32,7 @@ a reviewer (`corrections`, stored as human rows that survive re-import), or adde
 
 | Blocker | Status |
 |---|---|
-| Testimony drafts disappear | **Verified fixed** in the engine (autosaved per learner + language, survive reload, language switch, stale-tab conflict, restore from a version) — see `spanish-loop` step 8. UI autosave, status line and failure fallback: see the UI section of the summary. |
+| Testimony drafts disappear | **Verified fixed.** Engine: autosaved per learner + language, survive reload, language switch, stale-tab conflict, restore from a version (`spanish-loop` step 8). App: typed a draft, saw "Saved", reloaded, switched team to Germany and back — both drafts and the saved version were there (dev server and production build). A failed save keeps the text on the page, writes a local fallback copy and offers it back on the next load (jsdom tests; a real storage failure was not provoked in a browser). Residual risk: text can be lost only if both IndexedDB and localStorage fail before the tab closes. |
 | Fixture tones create learner evidence | **Verified fixed.** Non-speech and unreviewed audio never produce evidence; legacy fixture events are excluded on rebuild; the audit lists them; nothing is deleted (`spanish-loop` 9b). The fixture is no longer registered outside development preview. |
 | Exposure treated as comprehension | **Verified fixed.** Viewing, completing and playing are exposure only. Recognition needs reported understanding without help, an explicit mark, or production (`spanish-loop` 2–3). |
 | GoTell meaning help returned an unrelated draft | **Verified fixed.** Built only from the stated meaning and encountered sentences; testimony texts are excluded from retrieval; unsupported meanings are refused with an explanation and nothing to insert. |
@@ -73,6 +73,24 @@ node scripts/verify-scripture.mjs                    # Scripture wording against
 Then either place the file under `data/corpus/<lang>/` (bundled at build) or use Settings → Content in the app.
 Publication is automatic once the document says it has been reviewed by a named person and its rights are
 established; Scripture additionally needs translation identity and a verification record.
+
+## Browser flows run against the real app (2026-10-01)
+
+Fresh install → team choice → Home says what is awaited (no unreviewed text offered) → Read list empty with the
+reason → verified Spanish Scripture opens with exact wording and "audio is not available" → preview mode on
+(banner on every screen) → read the seed story: 94 exposure encounters, two sentences marked Understood
+(34 demonstrated), one word tapped (assisted), end-of-text report "most" (no item evidence) → word sheet:
+"Met 3 times in 1 text; needed help once; understood without help once" → Scripture preparation lists gaps
+with status and the texts that address them → testimony: autosave, reload, a correction with its source
+sentence and scope, accept, save version (assisted vs independent recorded; re-check and re-save add
+nothing) → team switch to Germany and back → Home recommends rereading and new input before testimony
+rehearsal → fixture audio in preview generates on its own, is badged "not counted", and its playback leaves
+listening state empty → Settings → Evidence reports the two excluded fixture events → preview off: the
+unpublished story is refused even by direct link → production build on a clean origin: clean console,
+autosave and restore work.
+
+Not exercised in a browser: the in-app file importer and backup download/restore (file pickers; covered by
+jsdom tests and the integration suite), a real speech provider, a provoked storage failure.
 
 ## Evidence that backs this document
 

@@ -43,7 +43,7 @@ describe('speechNormalize (all languages)', () => {
     });
 
     it(`${lang}: never transliterates: script of the words is unchanged`, () => {
-      const script = { es: /^[\p{Script=Latin}\s.,!?¿¡'-]+$/u, sq: /^[\p{Script=Latin}\s.,!?'-]+$/u, de: /^[\p{Script=Latin}\s.,!?'-]+$/u, th: /^[\p{Script=Thai}\s]+$/u, hi: /^[\p{Script=Devanagari}\s।,.?!]+$/u }[lang];
+      const script = { es: /^[\p{Script=Latin}\s.,:;!?¿¡'«»"“”()…-]+$/u, sq: /^[\p{Script=Latin}\s.,!?'-]+$/u, de: /^[\p{Script=Latin}\s.,!?'-]+$/u, th: /^[\p{Script=Thai}\s]+$/u, hi: /^[\p{Script=Devanagari}\s।,.?!]+$/u }[lang];
       for (const doc of loadBundledCorpus().filter((d) => d.lang === lang && d.contentType !== 'scripture')) {
         for (const sec of doc.sections) for (const par of sec.paragraphs) {
           if (!('sentences' in par)) continue;
@@ -61,6 +61,12 @@ describe('speechNormalize (all languages)', () => {
           if (!('sentences' in par)) continue;
           for (const s of par.sentences) {
             const r = ad.speechNormalize(s.text);
+            if (lang === 'es' && /[—–]/u.test(s.text)) {
+              // Spanish dialogue: the raya is written, not spoken; the change is recorded like any other
+              expect(r.speechText).not.toMatch(/[—–]/u);
+              expect(r.transformations.map((t) => t.description).join('|')).toMatch(/dialogue dashes/);
+              continue;
+            }
             expect(r.speechText).toBe(s.text);
             expect(r.transformations).toEqual([]);
           }
@@ -68,6 +74,41 @@ describe('speechNormalize (all languages)', () => {
       }
     });
   }
+
+  describe('Spanish dialogue dashes (raya)', () => {
+    const es = adapter('es');
+    const say = (t: string) => es.speechNormalize(t);
+
+    it('the dash that opens a turn is not spoken', () => {
+      expect(say('—Hola, Ana.').speechText).toBe('Hola, Ana.');
+      expect(say('—¿Cómo estás?').speechText).toBe('¿Cómo estás?');
+      expect(say('—Hola.\n—Adiós.').speechText).toBe('Hola.\nAdiós.');
+    });
+
+    it('the pair around a reporting clause becomes a pause', () => {
+      expect(say('—Hola —dijo Luis—. ¿Qué tal?').speechText).toBe('Hola, dijo Luis. ¿Qué tal?');
+      expect(say('—Hola, Ana —dice Juan.').speechText).toBe('Hola, Ana, dice Juan.');
+      expect(say('—¿Cómo estás? —preguntó Ana.').speechText).toBe('¿Cómo estás? preguntó Ana.');
+      expect(say('—No sé… —dijo Ana.').speechText).toBe('No sé… dijo Ana.');
+    });
+
+    it('a spaced dash between words is a pause too', () => {
+      expect(say('Dios ama al mundo — sí.').speechText).toBe('Dios ama al mundo, sí.');
+    });
+
+    it('the transformation is recorded, deterministic and versioned like the others', () => {
+      const r = say('—Hola —dijo Luis—. Son 3.');
+      expect(r.transformations[0]).toEqual({ at: '1970-01-01T00:00:00.000Z', tool: 'speech-es@1', description: expect.stringMatching(/dialogue dashes/) });
+      expect(r.transformations.map((t) => t.description).join('|')).toMatch(/integers expanded/);
+      expect(r.speechText).toBe('Hola, dijo Luis. Son tres.');
+      expect(say('—Hola —dijo Luis—. Son 3.')).toEqual(r);
+    });
+
+    it('text without a dash is untouched and records nothing for it; a hyphen is not a dash', () => {
+      expect(say('Hola, Ana.')).toMatchObject({ speechText: 'Hola, Ana.', transformations: [] });
+      expect(say('Es un hombre bien-educado.').speechText).toBe('Es un hombre bien-educado.');
+    });
+  });
 
   it('does not strip a genuine leading numeral from scripture (only markers)', () => {
     const r = adapter('es').speechNormalize('3 mil personas', { isScripture: true });

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { spawnSync } from 'node:child_process';
+import { runNode } from '../helpers/cli';
 import { afterAll, describe, expect, it } from 'vitest';
 import { toJsonl } from '../../src/bench/gold/format';
 import {
@@ -225,71 +225,71 @@ describe('reading-unit draft and accept', () => {
 // ───────────────────────────── the command-line tools, end to end ─────────────────────────────
 
 const cli = path.resolve('node_modules/vite-node/dist/cli.mjs');
-const run = (script: string, ...args: string[]) => {
-  const r = spawnSync(process.execPath, [cli, script, ...args], { encoding: 'utf8', cwd: path.resolve('.'), timeout: 120_000 });
-  return { status: r.status, out: `${r.stdout}${r.stderr}` };
+const run = async (script: string, ...args: string[]) => {
+  const r = await runNode([cli, script, ...args], { cwd: path.resolve('.'), timeout: 120_000 });
+  return { status: r.status, out: r.out };
 };
 
 describe('npm scripts, in a temporary gold directory', () => {
   const d = newDir();
   const text = put(d, 'book.txt', 'ฉันไปตลาดครับ ผมอยู่บ้าน\nแม่ไปตลาดนะ ลูกอยู่บ้าน\nพ่อรักลูกค่ะ แม่รักพ่อ\nเด็กกินข้าวทุกวัน\n\nบ้านของฉันอยู่ใกล้โรงเรียน\nวันนี้ฝนตกหนัก\n');
 
-  it('gold:draft --kind units writes a draft and a sidecar, prints no text; gold:accept --kind units writes the units file', () => {
-    const dr = run('scripts/gold-draft.mts', text, '--stratum', 'stage0', '--kind', 'units', '--n', '2', '--dir', d);
+  it('gold:draft --kind units writes a draft and a sidecar, prints no text; gold:accept --kind units writes the units file', async () => {
+    const dr = await run('scripts/gold-draft.mts', text, '--stratum', 'stage0', '--kind', 'units', '--n', '2', '--dir', d);
     expect(dr.status, dr.out).toBe(0);
     expect(dr.out).toMatch(/2 paragraphs drafted as reading units for stratum stage0/);
     expect(dr.out).not.toMatch(/ฉัน/u);
     const draft = fs.readdirSync(path.join(d, 'units')).find((f) => f.endsWith('.units-draft.txt')) as string;
     expect(fs.existsSync(path.join(d, 'units', `${draft}.meta.json`))).toBe(true);
     const draftPath = path.join(d, 'units', draft);
-    expect(run('scripts/gold-accept.mts', draftPath, '--kind', 'units', '--dir', d, '--confirm-unchanged').status).toBe(1); // no --by
-    expect(run('scripts/gold-accept.mts', draftPath, '--kind', 'units', '--dir', d, '--by', 'N. Reviewer').status).toBe(1); // unchanged
-    const ok = run('scripts/gold-accept.mts', draftPath, '--kind', 'units', '--dir', d, '--by', 'N. Reviewer', '--confirm-unchanged');
+    expect((await run('scripts/gold-accept.mts', draftPath, '--kind', 'units', '--dir', d, '--confirm-unchanged')).status).toBe(1); // no --by
+    expect((await run('scripts/gold-accept.mts', draftPath, '--kind', 'units', '--dir', d, '--by', 'N. Reviewer')).status).toBe(1); // unchanged
+    const ok = await run('scripts/gold-accept.mts', draftPath, '--kind', 'units', '--dir', d, '--by', 'N. Reviewer', '--confirm-unchanged');
     expect(ok.status, ok.out).toBe(0);
     expect(ok.out).toMatch(/2 paragraphs accepted as reading units/);
     const out = path.join(d, 'units', draft.replace('.units-draft.txt', '.units.jsonl'));
     const cases = parseJsonl(fs.readFileSync(out, 'utf8'));
     expect(cases.map((c) => c.checkedBy)).toEqual(['N. Reviewer', 'N. Reviewer']);
     // a second draft does not offer the paragraphs already accepted (here that leaves none)
-    const again = run('scripts/gold-draft.mts', text, '--stratum', 'stage0', '--kind', 'units', '--n', '10', '--seed', '2', '--dir', d);
+    const again = await run('scripts/gold-draft.mts', text, '--stratum', 'stage0', '--kind', 'units', '--n', '10', '--seed', '2', '--dir', d);
     expect(again.status).toBe(1);
     expect(again.out).toMatch(/no paragraphs left to sample/);
   }, 240_000);
 
-  it('gold:draft/accept words, then gold:freeze, gold:status, bench:words --frozen with a report, and the immutability refusals', () => {
-    const dr = run('scripts/gold-draft.mts', text, '--stratum', 'stage0', '--n', '4', '--held-out', '--dir', d);
+  it('gold:draft/accept words, then gold:freeze, gold:status, bench:words --frozen with a report, and the immutability refusals', async () => {
+    const dr = await run('scripts/gold-draft.mts', text, '--stratum', 'stage0', '--n', '4', '--held-out', '--dir', d);
     expect(dr.status, dr.out).toBe(0);
     expect(dr.out).toMatch(/HELD OUT: not shown/);
     const draftPath = path.join(d, 'stage0', fs.readdirSync(path.join(d, 'stage0')).find((f) => f.endsWith('.draft.txt')) as string);
     const gold = path.join(d, 'stage0', 'book.s1.heldout.gold.jsonl');
-    const acc = run('scripts/gold-accept.mts', draftPath, '--by', 'N. Reviewer', '--confirm-unchanged', '--dir', d);
+    const acc = await run('scripts/gold-accept.mts', draftPath, '--by', 'N. Reviewer', '--confirm-unchanged', '--dir', d);
     expect(acc.status, acc.out).toBe(0);
     expect(fs.existsSync(gold)).toBe(true);
     // nothing checked is frozen before it exists; freeze the whole directory (words + units)
-    const fr = run('scripts/gold-freeze.mts', '--name', 'v1', '--dir', d);
+    const fr = await run('scripts/gold-freeze.mts', '--name', 'v1', '--dir', d);
     expect(fr.status, fr.out).toBe(0);
     expect(fr.out).toMatch(/frozen "v1" \(set hash [0-9a-f]{64}\)/);
     expect(fr.out).toMatch(/sentences:\s+stage0 4/);
     expect(fr.out).toMatch(/held out:\s+stage0 4/);
     expect(fr.out).not.toMatch(/ฉัน/u);
-    expect(run('scripts/gold-freeze.mts', '--name', 'v1', '--dir', d).status).toBe(1); // immutable name
-    expect(run('scripts/gold-freeze.mts', '--verify', 'v1', '--dir', d).out).toMatch(/verified/);
-    const st = run('scripts/gold-status.mts', '--dir', d);
+    expect((await run('scripts/gold-freeze.mts', '--name', 'v1', '--dir', d)).status).toBe(1); // immutable name
+    expect((await run('scripts/gold-freeze.mts', '--verify', 'v1', '--dir', d)).out).toMatch(/verified/);
+    const st = await run('scripts/gold-status.mts', '--dir', d);
     expect(st.status, st.out).toBe(0);
     expect(st.out).toMatch(/reading units: 2 checked paragraph/);
     expect(st.out).toMatch(/frozen sets: v1 /);
 
     // accept refuses to write into a frozen file, even with --overwrite
-    const again = run('scripts/gold-accept.mts', draftPath, '--by', 'N. Reviewer', '--confirm-unchanged', '--dir', d, '--overwrite');
+    const again = await run('scripts/gold-accept.mts', draftPath, '--by', 'N. Reviewer', '--confirm-unchanged', '--dir', d, '--overwrite');
     expect(again.status).toBe(1);
     expect(again.out).toMatch(/belongs to the frozen set\(s\) v1|already in the gold set/);
 
     // a held-out-only... the freeze includes held-out rows: ordinary run has none, an explicit held-out run has 4
-    const none = run('scripts/bench-words.mts', '--frozen', 'v1', '--gold', d, '--systems', 'adapter');
+    const none = await run('scripts/bench-words.mts', '--frozen', 'v1', '--gold', d, '--systems', 'adapter');
     expect(none.status).toBe(1);
     expect(none.out).toMatch(/no \(non held-out\) sentences/);
     const rep = path.join(d, 'reports', 'out.md');
-    const ho = run('scripts/bench-words.mts', '--frozen', 'v1', '--gold', d, '--systems', 'adapter,icu', '--held-out', '--report', rep);
+    const ho = await run('scripts/bench-words.mts', '--frozen', 'v1', '--gold', d, '--systems', 'adapter,icu', '--held-out', '--report', rep);
     expect(ho.status, ho.out).toBe(0);
     expect(ho.out).toMatch(/frozen set: v1, set hash [0-9a-f]{64} \(all file hashes verified\)/);
     expect(ho.out).not.toMatch(/ฉัน/u);
@@ -299,28 +299,28 @@ describe('npm scripts, in a temporary gold directory', () => {
     expect(md).toMatch(/\| \*\*all\*\* \| adapter \|/);
     expect(fs.existsSync(path.join(d, 'errors', 'v1', 'adapter.heldout.errors.jsonl'))).toBe(true);
     // the default report path is under reports/
-    const def = run('scripts/bench-words.mts', '--frozen', 'v1', '--gold', d, '--systems', 'adapter', '--held-out', '--report');
+    const def = await run('scripts/bench-words.mts', '--frozen', 'v1', '--gold', d, '--systems', 'adapter', '--held-out', '--report');
     expect(def.status, def.out).toBe(0);
     expect(def.out).toMatch(/report written to .*\/reports\/v1-\d{4}-\d{2}-\d{2}-heldout\.md/);
 
     // changing a frozen file makes the benchmark refuse to run, naming the file
     fs.appendFileSync(gold, '\n');
-    const bad = run('scripts/bench-words.mts', '--frozen', 'v1', '--gold', d, '--systems', 'adapter', '--held-out');
+    const bad = await run('scripts/bench-words.mts', '--frozen', 'v1', '--gold', d, '--systems', 'adapter', '--held-out');
     expect(bad.status).toBe(1);
     expect(bad.out).toMatch(/refuses to run/);
     expect(bad.out).toMatch(/book\.s1\.heldout\.gold\.jsonl: the file has changed since it was frozen/);
-    expect(run('scripts/gold-freeze.mts', '--verify', 'v1', '--dir', d).status).toBe(1);
+    expect((await run('scripts/gold-freeze.mts', '--verify', 'v1', '--dir', d)).status).toBe(1);
   }, 300_000);
 
-  it('a frozen set of held-out rows only needs --held-out; --report needs --frozen', () => {
+  it('a frozen set of held-out rows only needs --held-out; --report needs --frozen', async () => {
     const e = newDir();
     seed(e);
-    expect(run('scripts/gold-freeze.mts', '--name', 'h', '--held-out-only', '--dir', e).status).toBe(0);
-    const plain = run('scripts/bench-words.mts', '--frozen', 'h', '--gold', e, '--systems', 'adapter');
+    expect((await run('scripts/gold-freeze.mts', '--name', 'h', '--held-out-only', '--dir', e)).status).toBe(0);
+    const plain = await run('scripts/bench-words.mts', '--frozen', 'h', '--gold', e, '--systems', 'adapter');
     expect(plain.status).toBe(1);
     expect(plain.out).toMatch(/held-out sentences only: run it with --held-out/);
-    expect(run('scripts/bench-words.mts', '--frozen', 'h', '--gold', e, '--systems', 'adapter', '--held-out').status).toBe(0);
-    const norep = run('scripts/bench-words.mts', '--gold', e, '--systems', 'adapter', '--report', path.join(e, 'x.md'));
+    expect((await run('scripts/bench-words.mts', '--frozen', 'h', '--gold', e, '--systems', 'adapter', '--held-out')).status).toBe(0);
+    const norep = await run('scripts/bench-words.mts', '--gold', e, '--systems', 'adapter', '--report', path.join(e, 'x.md'));
     expect(norep.status).toBe(1);
     expect(norep.out).toMatch(/--report needs --frozen/);
   }, 240_000);

@@ -27,7 +27,10 @@ import { explainItem } from './explain';
 import { FOLD_TYPES, FOLD_TYPE_SET, Folder } from './fold';
 import { predictDifficulty } from './forecast';
 import { itemHistory } from './history';
+import { findOccurrences } from './occurrences';
 import { readingPace } from './pace';
+import { scoreProfile } from './personal';
+import { rankLibrary } from './rank';
 import { POLICY_VERSION, defaultPolicy } from './policy';
 import { readingProgress, readingProgressMany } from './progress';
 import * as q from './queries';
@@ -38,7 +41,7 @@ import type { Ctx } from './state';
 export { defaultPolicy, POLICY_VERSION } from './policy';
 export {
   BAND_THRESHOLDS, ESTIMATE, FORECAST, HEAVY_HELP_FRACTION, LEVEL_THRESHOLDS, LISTEN_ASSISTANCE, PRODUCTION_ASSISTANCE, PRODUCTION_WEIGHTS,
-  READING_WEIGHTS, READINESS,
+  PERSONAL, RANKING, READING_WEIGHTS, READINESS,
 } from './policy';
 export { morphologyLine, pickAnalysis } from './analysis';
 
@@ -210,6 +213,10 @@ export function createGoLearn(deps: GoLearnDeps): GoLearn {
     stageReadiness: (userId, courseId, stageId) => read(() => stageReadiness(ctx, userId, courseId, stageId)),
     readingPace: (userId, opts) => read(() => readingPace(ctx, userId, opts)),
     itemHistory: (userId, itemId) => read(() => itemHistory(ctx, userId, itemId)),
+    // ── library-scale selection: a text's profile against the learner's item states, read by id ──
+    scoreProfile: (userId, profile, opts) => read(() => scoreProfile(ctx, userId, profile, opts)),
+    rankLibrary: (userId, candidates, opts) => read(() => rankLibrary(ctx, userId, candidates, opts)),
+    findOccurrences: (q) => read(() => findOccurrences(ctx, q)),
   };
   return golearn;
 }

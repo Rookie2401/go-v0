@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-3-01",
+  "lang": "es",
+  "title": "El libro que desapareció",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-3-01",
+    "title": "Camino 3 — Historias: El libro que desapareció (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "reading"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-3",
+    "chapter": {
+      "index": 1,
+      "title": "El libro que desapareció"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "books",
+    "family"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "El libro que desapareció",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cuando Juan llegó a casa, vio que el libro que había dejado sobre la mesa ya no estaba allí.",
+              "english": "When Juan got home, he saw that the book he had left on the table was no longer there."
+            },
+            {
+              "text": "Buscó en la cocina, en la sala y debajo de la cama, pero no lo encontró.",
+              "english": "He looked in the kitchen, in the living room and under the bed, but he did not find it."
+            },
+            {
+              "text": "—Qué raro, estoy seguro de que lo dejé aquí —pensó.",
+              "english": "\"How strange, I am sure I left it here,\" he thought."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Juan se sentó e intentó recordar lo que había hecho esa mañana.",
+              "english": "Juan sat down and tried to remember what he had done that morning."
+            },
+            {
+              "text": "Se había levantado temprano, había tomado café y había leído unas páginas.",
+              "english": "He had got up early, had had coffee and had read a few pages."
+            },
+            {
+              "text": "Después había salido a trabajar.",
+              "english": "Then he had gone out to work."
+            },
+            {
+              "text": "Entonces recordó que su hermana Sofía había pasado por la casa a la hora del almuerzo.",
+              "english": "Then he remembered that his sister Sofía had dropped by the house at lunchtime."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Juan la llamó por teléfono.",
+              "english": "Juan called her on the phone."
+            },
+            {
+              "text": "—Sofía, ¿has visto mi libro? —preguntó.",
+              "english": "\"Sofía, have you seen my book?\" he asked."
+            },
+            {
+              "text": "—Sí, lo tengo yo, porque quería leerlo esta noche —dijo ella.",
+              "english": "\"Yes, I have it, because I wanted to read it tonight,\" she said."
+            },
+            {
+              "text": "—No hay problema —dijo Juan—, pero la próxima vez dime antes de que te lo lleves.",
+              "english": "\"No problem,\" said Juan, \"but next time tell me before you take it.\""
+            },
+            {
+              "text": "—Tienes razón, lo siento —dijo Sofía.",
+              "english": "\"You are right, I am sorry,\" said Sofía."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—No te preocupes, quédatelo y léelo con calma.",
+              "english": "\"Don't worry, keep it and read it at your own pace.\""
+            },
+            {
+              "text": "—Gracias. Cuando lo termine, te lo traeré, aunque tarde unos días.",
+              "english": "\"Thanks. When I finish it, I will bring it to you, even if it takes a few days.\""
+            },
+            {
+              "text": "—Está bien. Quiero que lo disfrutes —dijo Juan.",
+              "english": "\"That's fine. I want you to enjoy it,\" said Juan."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después de colgar, Juan miró la mesa vacía.",
+              "english": "After hanging up, Juan looked at the empty table."
+            },
+            {
+              "text": "Sacó otro libro del estante y se puso a leer.",
+              "english": "He took another book from the shelf and started to read."
+            },
+            {
+              "text": "Pensó que, al fin y al cabo, un libro prestado también se lee.",
+              "english": "He thought that, after all, a borrowed book gets read too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

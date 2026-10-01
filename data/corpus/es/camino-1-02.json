@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-1-02",
+  "lang": "es",
+  "title": "La casa de Ana",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-1-02",
+    "title": "Camino 1 — Primeros pasos: La casa de Ana (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "home"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-1",
+    "chapter": {
+      "index": 2,
+      "title": "La casa de Ana"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "La casa de Ana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana tiene una casa.",
+              "english": "Ana has a house."
+            },
+            {
+              "text": "La casa es pequeña.",
+              "english": "The house is small."
+            },
+            {
+              "text": "La casa es bonita.",
+              "english": "The house is pretty."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la casa hay una mesa.",
+              "english": "In the house there is a table."
+            },
+            {
+              "text": "En la casa hay una silla.",
+              "english": "In the house there is a chair."
+            },
+            {
+              "text": "Ana está en la casa.",
+              "english": "Ana is in the house."
+            },
+            {
+              "text": "Ana tiene hambre.",
+              "english": "Ana is hungry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana quiere comer.",
+              "english": "Ana wants to eat."
+            },
+            {
+              "text": "Ana va a la cocina.",
+              "english": "Ana goes to the kitchen."
+            },
+            {
+              "text": "En la cocina hay pan.",
+              "english": "In the kitchen there is bread."
+            },
+            {
+              "text": "Ana toma el pan y come.",
+              "english": "Ana takes the bread and eats."
+            },
+            {
+              "text": "Ana está contenta.",
+              "english": "Ana is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

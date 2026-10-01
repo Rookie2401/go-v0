@@ -3,8 +3,16 @@
  * itself). `stages` is empty for a course without a ladder: that is how a page knows there is none.
  */
 import { useCallback, useEffect, useState } from 'react';
-import type { Stage, Text, Work } from '../../core';
+import type { CourseCatalog, Stage, Text, Work } from '../../core';
 import { useApp } from '../context';
+
+/**
+ * The stages of a READING LADDER: a course whose stages are shelves (Spanish: an orientation for browsing a catalogue, never a sequence) has
+ * no ladder, so it gets no ladder page and no ladder door.
+ */
+export async function ladderStages(catalog: CourseCatalog, courseId: string): Promise<Stage[]> {
+  return (await catalog.stages(courseId)).filter((s) => s.kind !== 'shelf');
+}
 
 export interface Ladder {
   stages: Stage[];
@@ -32,7 +40,7 @@ export function useLadder(): LadderState {
     let live = true;
     setError(null);
     void (async () => {
-      const stages = await catalog.stages(course.id);
+      const stages = await ladderStages(catalog, course.id);
       if (stages.length === 0) { if (live) setLadder({ stages, works: [], textsByWork: new Map(), current: undefined }); return; }
       const [works, current] = await Promise.all([catalog.works(course.id), catalog.currentStage(userId, course.id)]);
       const rows = await Promise.all(works.map(async (w) => [w.id, await catalog.textsOf(w.id)] as const));
@@ -52,7 +60,7 @@ export function useCurrentStage(): { stages: Stage[] | null; current: Stage | un
     let live = true;
     setState({ stages: null, current: undefined });
     void (async () => {
-      const stages = await catalog.stages(course.id);
+      const stages = await ladderStages(catalog, course.id);
       const current = stages.length > 0 ? (await catalog.currentStage(userId, course.id)) ?? stages[0] : undefined;
       if (live) setState({ stages, current });
     })().catch(() => { if (live) setState({ stages: [], current: undefined }); });

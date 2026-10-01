@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-1-05",
+  "lang": "es",
+  "title": "El desayuno",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-1-05",
+    "title": "Camino 1 — Primeros pasos: El desayuno (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "food"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-1",
+    "chapter": {
+      "index": 5,
+      "title": "El desayuno"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food",
+    "family"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "El desayuno",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es por la mañana.",
+              "english": "It is morning."
+            },
+            {
+              "text": "Luis tiene hambre.",
+              "english": "Luis is hungry."
+            },
+            {
+              "text": "Luis quiere comer.",
+              "english": "Luis wants to eat."
+            },
+            {
+              "text": "En la mesa hay pan, huevos y café.",
+              "english": "On the table there is bread, eggs and coffee."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Luis toma el pan y come.",
+              "english": "Luis takes the bread and eats."
+            },
+            {
+              "text": "Marta toma los huevos.",
+              "english": "Marta takes the eggs."
+            },
+            {
+              "text": "Rosa toma café.",
+              "english": "Rosa drinks coffee."
+            },
+            {
+              "text": "Pedro no toma café.",
+              "english": "Pedro does not drink coffee."
+            },
+            {
+              "text": "Pedro toma agua.",
+              "english": "Pedro drinks water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Luis quiere más pan.",
+              "english": "Luis wants more bread."
+            },
+            {
+              "text": "Rosa da más pan a Luis.",
+              "english": "Rosa gives more bread to Luis."
+            },
+            {
+              "text": "Luis está contento.",
+              "english": "Luis is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

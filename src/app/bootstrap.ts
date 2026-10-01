@@ -22,17 +22,18 @@
  * small interfaces in `AppServices` (ingest / backup / speech), bound to the real modules here.
  */
 import { COURSES, FEATURES, LANGUAGE_ROWS, StoreEventBus, hash } from '../core';
-import type { AppStore, Course, EventBus, Features, GoListen, LanguageCode, LexiconSource, ProviderAvailability, TtsProvider, User } from '../core';
+import type { AppStore, Course, EventBus, Features, GoListen, LanguageCode, Library, LexiconSource, ProviderAvailability, TtsProvider, User } from '../core';
 import { createCourseCatalog } from '../course';
 import { createDexieStore } from '../db/dexie';
 import { createFetchLexiconSource } from '../dict';
+import { createLibrary } from '../library';
 import { createAdapterRegistry } from '../adapters';
 import { exportLearner, restoreLearner, validateBackup } from '../backup';
 import type { BackupFile } from '../backup';
 import { createGoLearn } from '../golearn';
 import { AZURE_PROVIDER_ID, AzureSpeechProvider, ProxySpeechProvider, createGoListen } from '../golisten';
 import { createGoTell } from '../gotell';
-import { INGEST_TOOL, contentHistory, importDocuments, loadBundledCorpus, previewDocuments } from '../ingest';
+import { INGEST_TOOL, contentHistory, epubToDocuments, importDocuments, loadBundledCorpus, previewDocuments } from '../ingest';
 import type { ImportOptions } from '../ingest';
 import type { DocumentReport } from '../ingest';
 import { plainTextToDocuments } from '../ingest/plaintext';
@@ -127,6 +128,7 @@ export function createIngestApi(store: AppStore, adapters: AppServices['adapters
   const importOpts: ImportOptions = { clock, ...(lexicon ? { lexicon } : {}) };
   return {
     convertPlainText: (text, opts) => plainTextToDocuments(text, opts),
+    convertEpub: (bytes, opts) => epubToDocuments(bytes, opts),
     async validate(docs) {
       // A dry run of the import itself: the same validation (known works included), the same planning with the
       // installed dictionary. So the preview says BEFORE importing what the result will say after: the analysis
@@ -260,7 +262,10 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   // ── bundled content through the importer ──
   if (!opts.skipCorpus) {
     const docs = loadBundledCorpus();
-    const signature = `${INGEST_TOOL}|${docs.length}|${hash(JSON.stringify(docs))}`;
+    // The analyzers are part of it: a text is analysed when it is imported, so a better adapter reaches the texts
+    // already on a device only if the import runs again (it then re-analyses exactly the texts whose analyzer changed).
+    const analyzers = adapters.all().map((a) => `${a.lang}@${a.version}`).join(',');
+    const signature = `${INGEST_TOOL}|${docs.length}|${hash(JSON.stringify(docs))}|${analyzers}`;
     const last = await store.meta.get(BUNDLE_META_ID);
     const haveTexts = (await store.texts.count()) > 0;
     if (!(last?.value === signature && haveTexts)) {
@@ -279,6 +284,13 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   // A restored learner row may exist without the device-local team choice (it is not part of a backup): adopt it.
   if (user && !recallChosenCourse()) rememberChosenCourse(user.courseId);
   if (user) startup.policyRebuilt = await golearn.ensureCurrent(user.id);
+  // A built-in text that was re-analysed or revised changes what the words a learner has already met are counted as
+  // ("no sé" was a form of ser, and is now saber): every learner's derived state is rebuilt from the event log, which
+  // is itself never changed.
+  if ((startup.bundledReport ?? []).some((d) => d.action === 'updated')) {
+    for (const u of users) if (!(u.id === user?.id && startup.policyRebuilt)) await golearn.rebuild(u.id);
+    startup.modelRebuilt = true;
+  }
   // The ladder of the active course goes into the store (a no-op for a course without one). A failure never stops the app.
   if (course) {
     try { await catalog.install(course.id); } catch (e) {
@@ -320,10 +332,16 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
     },
   };
 
+  // The library (index, profiles, open-on-demand). Built inside a guard: if it cannot be, the app starts with an empty one.
+  let library: Library;
+  try { library = createLibrary({ store, adapters, clock, lexicon }); } catch {
+    library = emptyLibrary(); // the catalogue pages then say there is nothing in the library yet
+  }
+
   const services: AppServices = {
     store, bus, adapters, golearn, golisten, gotell,
     ingest: createIngestApi(store, adapters, clock, lexicon),
-    catalog, lexicon,
+    catalog, lexicon, library,
     backup: createBackupApi(store),
     speech,
     features,
@@ -332,7 +350,25 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   // Jobs queued earlier (a saved testimony version only queues its audio) or left retryable are picked up now,
   // in the background, when a usable provider exists. Never blocks startup; never runs without a provider.
   if (listen) void proxyCheck.then(() => resumeQueuedAudio(store, golisten));
+  // The texts already in the store (bundled, personal) become searchable and scorable in the background: never before first paint.
+  if (course) {
+    void (async () => {
+      try { if ((await catalog.streams(course.id)).length > 0) await library.indexStore(course.lang); } catch { /* the catalogue pages say what is missing */ }
+    })();
+  }
   return { services, user, course };
+}
+
+/** A library with nothing in it: what the app runs with when the real one cannot be built (the catalogue pages then say there is nothing yet). */
+export function emptyLibrary(): Library {
+  return {
+    info: async () => undefined,
+    search: async () => ({ total: 0, items: [] }),
+    entry: async () => undefined,
+    profile: async () => undefined,
+    open: async (textId) => { throw new Error(`The library has no text ${textId}.`); },
+    indexStore: async () => 0,
+  };
 }
 
 /** Run queued / retryable audio jobs once, if there are any and a usable provider is available. Never throws. */

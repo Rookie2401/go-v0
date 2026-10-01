@@ -11,11 +11,13 @@
  * Nothing here emits events or fetches evidence: the Reader opens layers and emits (see Reader.tsx).
  */
 import { useCallback, useEffect, useRef, useState } from 'react';
-import type { DictionaryView } from './assistance';
+import type { DescribeMorph, DictionaryView } from './assistance';
+import { varietyLine as courseVarietyLine } from '../../core';
+import type { Variety, VarietyPolicy } from '../../core';
 import type { AnalysisSourceInfo, ContentNote, DictionaryInfo, HelpLayer, LanguageCode, Sentence, SyllableAnalysis, Token, TokenSupport } from '../../core';
 import { useApp } from '../context';
 import { I, IconBtn } from '../ui';
-import { MORE_LABEL, NOTE_KIND_LABEL, analysisSourceLine, certainty, clauseSegments, decodingSource, dictionaryName, dictionaryOthers, hasClauseSpans, listsDiffer, maxLevel, noteIsReviewed, pick, roleText, ruleToneLine, syllableSourceLabel, varietyLine } from './assistance';
+import { MORE_LABEL, NOTE_KIND_LABEL, analysisSourceLine, certainty, clauseSegments, decodingSource, dictionaryName, dictionaryOthers, hasClauseSpans, listsDiffer, maxLevel, morphAlternates, morphInWords, noteIsReviewed, pick, roleText, ruleToneLine, syllableSourceLabel, varietyLine, wordParts } from './assistance';
 
 
 export type SheetSubject = { kind: 'word'; token: Token } | { kind: 'sentence'; sentence: Sentence };
@@ -68,6 +70,11 @@ export interface TokenCardProps {
   dictionary?: DictionaryInfo;
   /** What the installed dictionary lists for this form (looked up when the sheet opened); absent while pending or when it has nothing. */
   dictionaryView?: DictionaryView;
+  /** The adapter's plain-words morphology (Spanish): "first person plural, imperfect subjunctive". Absent ⇒ the sheet's own line. */
+  describeMorph?: DescribeMorph;
+  /** The course's variety policy and the adapter's variety definitions, for the line under the gloss. */
+  varietyPolicy?: VarietyPolicy;
+  varieties?: Readonly<Record<string, Variety>>;
   /** Lines from the learner's own record with this word (`golearn.itemHistory`). */
   history: string[];
   /** The sheet is up. When false it plays its exit, then calls onExited. */
@@ -80,7 +87,7 @@ export interface TokenCardProps {
 }
 
 export function TokenCard(props: TokenCardProps) {
-  const { subject, legacy, opened, next, supports, loaded, explanation, english, why, lang, sentence, notes, clauseView, decoding, sources, dictionary, dictionaryView, history, open, onMore, onRescue, onClose, onExited } = props;
+  const { subject, legacy, opened, next, supports, loaded, explanation, english, why, lang, sentence, notes, clauseView, decoding, sources, dictionary, dictionaryView, describeMorph, varietyPolicy, varieties, history, open, onMore, onRescue, onClose, onExited } = props;
   const { store } = useApp();
   const token = subject.kind === 'word' ? subject.token : undefined;
   const level = maxLevel(opened);
@@ -151,6 +158,13 @@ export function TokenCard(props: TokenCardProps) {
   const dialogLabel = subject.kind === 'word' ? `Help for ${subject.token.surface}` : `Notes for sentence ${subject.sentence.index + 1}`;
   const senses = !legacy ? sensesOf(analysis?.notes?.senses) : [];
   const variety = !legacy ? varietyLine(analysis?.register) : undefined;
+  // Parts, variety tags and a modern aid appear only when the analysis carries them (the Spanish adapter fills them).
+  const parts = wordParts(analysis);
+  const varietyTagsLine = analysis?.varieties?.length ? courseVarietyLine(analysis.varieties, varietyPolicy, varieties) : undefined;
+  const modern = typeof analysis?.notes?.modern === 'string' ? analysis.notes.modern : undefined;
+  const surface = token?.surface ?? '';
+  const morphText = morphInWords(describeMorph, analysis?.morph, analysis?.pos ?? lemma?.pos, lemma?.lemma, surface) ?? morphologyLine;
+  const morphOthers = morphAlternates(describeMorph, analysis, surface);
   const sourceLine = analysisSourceLine(analysis, sources, dictionary);
   const others = dictionaryOthers(analysis, dictionaryView);
   const differ = listsDiffer(analysis, gloss, dictionaryView);
@@ -192,6 +206,16 @@ export function TokenCard(props: TokenCardProps) {
             {fromDictionary && gloss && <p className="card__note" data-testid="dictionary-gloss">dictionary meaning, not checked for this sentence</p>}
             {sourceLine && <p className="card__note sheet__source" data-testid="analysis-source">{sourceLine}</p>}
             {variety && <p className="card__note sheet__variety" data-testid="variety">{variety}</p>}
+            {parts.length > 0 && (
+              <p className="card__note sheet__parts" data-testid="word-parts">
+                <span lang={lang}>{surface}</span> ={' '}
+                {parts.map((p, i) => (
+                  <span key={`${p.start}-${i}`}>{i > 0 ? ' + ' : ''}<span lang={lang}>{p.text}</span>{p.role ? ` (${p.role})` : ''}</span>
+                ))}
+              </p>
+            )}
+            {varietyTagsLine && <p className="card__note sheet__variety" data-testid="variety-tags">{varietyTagsLine}</p>}
+            {modern && <p className="card__note" data-testid="modern-form" title="A modern aid beside the text; the text itself stays as written">today: <span lang={lang}>{modern}</span></p>}
             {uncertain && anyLoaded && <p className="card__note">The analysis here is uncertain.</p>}
             {!legacy && analysis?.role && (
               <div className="card__line"><span className="k">What it does here</span><span data-testid="word-role">{roleText(analysis.role)}</span></div>
@@ -250,11 +274,12 @@ export function TokenCard(props: TokenCardProps) {
                 return (
                   <section key={layer} className="card__section" aria-label="Grammar">
                     <h3 className="label">Grammar</h3>
-                    {morphologyLine ? (
-                      <div className="card__line"><span className="k">Morphology</span><span>{morphologyLine}</span></div>
+                    {morphText ? (
+                      <div className="card__line"><span className="k">Morphology</span><span data-testid="morph-line">{morphText}</span></div>
                     ) : (
                       <p className="card__text">{unanalysed ? 'Not analysed yet.' : 'No grammar analysis available.'}</p>
                     )}
+                    {morphOthers.length > 0 && <p className="card__note" data-testid="morph-alternates">or: {morphOthers.join('; or: ')}</p>}
                     {patterns.map((p) => (
                       <p key={p.id} className="card__text"><b>{p.title}.</b> {p.explanation}</p>
                     ))}

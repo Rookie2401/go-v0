@@ -1,14 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { spawnSync } from 'node:child_process';
+import { runNode } from '../helpers/cli';
 import { afterAll, describe, expect, it } from 'vitest';
 import { lastModifiedFromHeaders } from '../../src/dict/compare-node';
 import { FIXTURE, tmpDir } from './helpers';
 
 const cli = path.resolve('node_modules/vite-node/dist/cli.mjs');
-const run = (...args: string[]) => {
-  const r = spawnSync(process.execPath, [cli, 'scripts/dict-compare.mts', ...args], { encoding: 'utf8', cwd: path.resolve('.'), timeout: 90_000 });
-  return { status: r.status, out: `${r.stdout}${r.stderr}` };
+const run = async (...args: string[]) => {
+  const r = await runNode([cli, 'scripts/dict-compare.mts', ...args], { cwd: path.resolve('.'), timeout: 90_000 });
+  return { status: r.status, out: r.out };
 };
 
 const root = tmpDir('go-dict-compare-');
@@ -29,9 +29,9 @@ const common = (name: string) => {
 };
 
 describe('npm run dict:compare (scripts/dict-compare.mts)', () => {
-  it('compares the hand data with the fixture, writes both outputs and creates an empty resolutions file', () => {
+  it('compares the hand data with the fixture, writes both outputs and creates an empty resolutions file', async () => {
     const p = paths('ok');
-    const r = run('--', ...common('ok'));
+    const r = await run('--', ...common('ok'));
     expect(r.status, r.out).toBe(0);
     expect(r.out).toMatch(/dict:compare - kaikki-th@2026-09-28/);
     expect(r.out).toMatch(/all hand entries\s+\d+/);
@@ -46,7 +46,7 @@ describe('npm run dict:compare (scripts/dict-compare.mts)', () => {
     expect(fs.readFileSync(p.resolutions, 'utf8').trim()).toBe('{}');
   }, 120_000);
 
-  it('is deterministic, and never overwrites an existing resolutions file', () => {
+  it('is deterministic, and never overwrites an existing resolutions file', async () => {
     const a = paths('det-a');
     const b = paths('det-b');
     fs.mkdirSync(path.dirname(a.resolutions), { recursive: true });
@@ -54,15 +54,15 @@ describe('npm run dict:compare (scripts/dict-compare.mts)', () => {
     fs.mkdirSync(path.dirname(b.resolutions), { recursive: true });
     fs.writeFileSync(a.resolutions, mine, 'utf8');
     fs.writeFileSync(b.resolutions, mine, 'utf8');
-    expect(run(...common('det-a')).status).toBe(0);
-    expect(run(...common('det-b')).status).toBe(0);
+    expect((await run(...common('det-a'))).status).toBe(0);
+    expect((await run(...common('det-b'))).status).toBe(0);
     expect(fs.readFileSync(a.report)).toEqual(fs.readFileSync(b.report));
     expect(fs.readFileSync(a.json)).toEqual(fs.readFileSync(b.json));
     expect(fs.readFileSync(a.resolutions, 'utf8')).toBe(mine);
     expect(fs.readFileSync(a.report, 'utf8')).toMatch(/matches no current disagreement \(kept in resolutions\.json\): 1/);
   }, 180_000);
 
-  it('exits 1 with a usage line for missing or bad arguments, and writes nothing', () => {
+  it('exits 1 with a usage line for missing or bad arguments, and writes nothing', async () => {
     const p = paths('bad');
     const cases: string[][] = [
       [],
@@ -76,7 +76,7 @@ describe('npm run dict:compare (scripts/dict-compare.mts)', () => {
       ['--in', FIXTURE, '--lang', 'th'], // no way to tell the version (the fixture's folder has no headers.txt)
     ];
     for (const args of cases) {
-      const r = run(...args, '--report', p.report, '--json', p.json, '--resolutions', p.resolutions);
+      const r = await run(...args, '--report', p.report, '--json', p.json, '--resolutions', p.resolutions);
       expect(r.status, args.join(' ')).toBe(1);
       expect(r.out, args.join(' ')).toMatch(/usage: npm run dict:compare/);
     }

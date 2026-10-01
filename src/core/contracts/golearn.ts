@@ -26,7 +26,7 @@ export interface TokenSupport {
   priorEncounters: Encounter[];
   /** Other sentences (ids) where the learner has met this lemma. */
   knownExamples: string[];
-  /** Whether the analysis is uncertain (confidence < 0.6 or alternatives present). */
+  /** Whether the analysis is uncertain (confidence < 0.6, or another reading competes: its confidence is within 0.2 of the chosen one). */
   uncertain: boolean;
 }
 
@@ -314,6 +314,7 @@ export interface ProfileScore {
 export interface RankCandidate {
   profile: TextProfile;
   /** Catalogue facts the ranking uses. */
+  workId?: string;
   stream?: string;
   domains?: string[];
   variety?: string;

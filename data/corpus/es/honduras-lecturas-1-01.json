@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 2,
+  "id": "honduras-lecturas-1-01",
+  "lang": "es",
+  "title": "En el mercado",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:honduras-lecturas-1-01",
+    "title": "Honduras — Lecturas 1: En el mercado (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. The Spanish is plain educated Spanish with a few Honduran words and, in one text, voseo; every statement about Honduras and every regional form must be checked by a Honduran reviewer before release. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "food",
+    "honduras"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-regional-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "honduras-lecturas-1",
+    "chapter": {
+      "index": 1,
+      "title": "En el mercado"
+    }
+  },
+  "streams": [
+    "honduras",
+    "acquisition"
+  ],
+  "domains": [
+    "food",
+    "places",
+    "honduras"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "En el mercado",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es sábado por la mañana en Tegucigalpa, la capital de Honduras.",
+              "english": "It is Saturday morning in Tegucigalpa, the capital of Honduras."
+            },
+            {
+              "text": "Karla va al mercado con su madre, doña Reina.",
+              "english": "Karla goes to the market with her mother, doña Reina."
+            },
+            {
+              "text": "En el mercado hay mucha gente.",
+              "english": "There are many people at the market."
+            },
+            {
+              "text": "Hay frutas, verduras, queso y tortillas.",
+              "english": "There is fruit, vegetables, cheese and tortillas."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Doña Reina necesita frijoles, plátanos y tomates.",
+              "english": "Doña Reina needs beans, plantains and tomatoes."
+            },
+            {
+              "text": "—Buenos días, doña Reina —dice la vendedora.",
+              "english": "\"Good morning, doña Reina,\" says the seller."
+            },
+            {
+              "text": "—Buenos días —dice doña Reina.",
+              "english": "\"Good morning,\" says doña Reina."
+            },
+            {
+              "text": "—¿Qué desea? —pregunta la vendedora.",
+              "english": "\"What would you like?\" asks the seller."
+            },
+            {
+              "text": "—Quiero una bolsa de frijoles y seis plátanos, por favor.",
+              "english": "\"I would like a bag of beans and six plantains, please.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La vendedora pone todo en una bolsa.",
+              "english": "The seller puts everything in a bag."
+            },
+            {
+              "text": "—¿Cuánto es? —pregunta doña Reina.",
+              "english": "\"How much is it?\" asks doña Reina."
+            },
+            {
+              "text": "—Son cincuenta lempiras, señora —dice la vendedora.",
+              "english": "\"It is fifty lempiras, ma'am,\" says the seller."
+            },
+            {
+              "text": "Doña Reina paga y recibe su cambio.",
+              "english": "Doña Reina pays and gets her change."
+            },
+            {
+              "text": "Después compran tomates y queso.",
+              "english": "Then they buy tomatoes and cheese."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla tiene hambre y quiere una baleada.",
+              "english": "Karla is hungry and wants a baleada."
+            },
+            {
+              "text": "Una baleada es una tortilla de harina con frijoles.",
+              "english": "A baleada is a flour tortilla with beans."
+            },
+            {
+              "text": "También puede llevar queso.",
+              "english": "It can also have cheese."
+            },
+            {
+              "text": "En una esquina del mercado, una mujer hace baleadas.",
+              "english": "On a corner of the market, a woman makes baleadas."
+            },
+            {
+              "text": "—Una baleada, por favor, señora —dice Karla.",
+              "english": "\"A baleada, please, ma'am,\" says Karla."
+            },
+            {
+              "text": "Karla come la baleada y dice: —Está muy rica.",
+              "english": "Karla eats the baleada and says, \"It is very good.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Al salir, pasan por la pulpería de la esquina.",
+              "english": "On the way out, they pass by the pulpería on the corner."
+            },
+            {
+              "text": "Doña Reina compra café.",
+              "english": "Doña Reina buys coffee."
+            },
+            {
+              "text": "Con las bolsas llenas, las dos vuelven a casa.",
+              "english": "With their bags full, the two of them go back home."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

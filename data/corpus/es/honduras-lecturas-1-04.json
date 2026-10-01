@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 2,
+  "id": "honduras-lecturas-1-04",
+  "lang": "es",
+  "title": "La comida en familia",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:honduras-lecturas-1-04",
+    "title": "Honduras — Lecturas 1: La comida en familia (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. The Spanish is plain educated Spanish with a few Honduran words and, in one text, voseo; every statement about Honduras and every regional form must be checked by a Honduran reviewer before release. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family",
+    "food",
+    "honduras"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-regional-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "honduras-lecturas-1",
+    "chapter": {
+      "index": 4,
+      "title": "La comida en familia"
+    }
+  },
+  "streams": [
+    "honduras",
+    "acquisition"
+  ],
+  "domains": [
+    "food",
+    "family",
+    "honduras"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "La comida en familia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En la casa de doña Reina, todos ayudan con la comida.",
+              "english": "In doña Reina's house, everyone helps with the meal."
+            },
+            {
+              "text": "Doña Reina cocina el pollo.",
+              "english": "Doña Reina cooks the chicken."
+            },
+            {
+              "text": "Don José fríe las tajadas.",
+              "english": "Don José fries the tajadas (slices of plantain)."
+            },
+            {
+              "text": "Karla prepara una ensalada y Kevin pone la mesa.",
+              "english": "Karla makes a salad and Kevin sets the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Llega la abuela, doña Ana, con una bolsa de naranjas.",
+              "english": "Grandmother arrives, doña Ana, with a bag of oranges."
+            },
+            {
+              "text": "—Bienvenida, mamá —dice doña Reina.",
+              "english": "\"Welcome, Mom,\" says doña Reina."
+            },
+            {
+              "text": "—Abuela, ¿quiere sentarse aquí? —pregunta Karla.",
+              "english": "\"Grandma, would you like to sit here?\" asks Karla."
+            },
+            {
+              "text": "—Gracias, mi hija —dice la abuela.",
+              "english": "\"Thank you, dear,\" says Grandma."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La mesa está llena: hay pollo, tajadas, arroz, frijoles, tortillas y ensalada.",
+              "english": "The table is full: there is chicken, tajadas, rice, beans, tortillas and salad."
+            },
+            {
+              "text": "Antes de comer, don José da gracias a Dios.",
+              "english": "Before eating, don José gives thanks to God."
+            },
+            {
+              "text": "—Gracias, Señor, por esta comida y por esta familia —dice.",
+              "english": "\"Thank you, Lord, for this food and for this family,\" he says."
+            },
+            {
+              "text": "Todos dicen: —Amén.",
+              "english": "Everyone says, \"Amen.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Comen despacio y hablan mucho.",
+              "english": "They eat slowly and talk a lot."
+            },
+            {
+              "text": "La abuela cuenta una historia de cuando ella era niña.",
+              "english": "Grandma tells a story from when she was a girl."
+            },
+            {
+              "text": "—¿Quiere más pollo, abuela? —pregunta Kevin.",
+              "english": "\"Would you like more chicken, Grandma?\" asks Kevin."
+            },
+            {
+              "text": "—No, gracias, mi hijo. Ya comí mucho —responde la abuela.",
+              "english": "\"No, thank you, dear. I have eaten a lot,\" answers Grandma."
+            },
+            {
+              "text": "Karla sirve jugo de naranja a todos.",
+              "english": "Karla serves orange juice to everyone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después de comer, doña Reina trae café y pan.",
+              "english": "After eating, doña Reina brings coffee and bread."
+            },
+            {
+              "text": "—Qué rica comida, Reina. Gracias —dice don José.",
+              "english": "\"What a delicious meal, Reina. Thank you,\" says don José."
+            },
+            {
+              "text": "—Gracias a todos por ayudar —dice doña Reina.",
+              "english": "\"Thank you all for helping,\" says doña Reina."
+            },
+            {
+              "text": "Karla y Kevin lavan los platos.",
+              "english": "Karla and Kevin wash the dishes."
+            },
+            {
+              "text": "La abuela se sienta en la sala y sonríe.",
+              "english": "Grandma sits down in the living room and smiles."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-1-06",
+  "lang": "es",
+  "title": "Pedro va a la ciudad",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-1-06",
+    "title": "Camino 1 — Primeros pasos: Pedro va a la ciudad (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "places"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-1",
+    "chapter": {
+      "index": 6,
+      "title": "Pedro va a la ciudad"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "places",
+    "food"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "Pedro va a la ciudad",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy Pedro va a la ciudad.",
+              "english": "Today Pedro goes to the city."
+            },
+            {
+              "text": "Pedro tiene un carro.",
+              "english": "Pedro has a car."
+            },
+            {
+              "text": "El carro es azul.",
+              "english": "The car is blue."
+            },
+            {
+              "text": "Pedro va en el carro.",
+              "english": "Pedro goes in the car."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La ciudad es grande.",
+              "english": "The city is big."
+            },
+            {
+              "text": "En la ciudad hay muchas casas y muchas tiendas.",
+              "english": "In the city there are many houses and many shops."
+            },
+            {
+              "text": "Pedro va a una tienda.",
+              "english": "Pedro goes to a shop."
+            },
+            {
+              "text": "En la tienda hay pan, agua y café.",
+              "english": "In the shop there is bread, water and coffee."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pedro quiere pan y café para su familia.",
+              "english": "Pedro wants bread and coffee for his family."
+            },
+            {
+              "text": "Pedro compra el pan y el café.",
+              "english": "Pedro buys the bread and the coffee."
+            },
+            {
+              "text": "Pedro va a la casa en el carro.",
+              "english": "Pedro goes home in the car."
+            },
+            {
+              "text": "La familia está contenta.",
+              "english": "The family is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

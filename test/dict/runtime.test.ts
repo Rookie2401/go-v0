@@ -204,7 +204,7 @@ describe('fetch source (fake fetch)', () => {
     const got = await src.lookup(forms);
     expect([...got.keys()]).toEqual(['ไป', 'มา', 'กิน', 'น้ำ', 'ดี']);
     const shardReqs = f.log.filter((u) => !u.endsWith('manifest.json'));
-    const wanted = new Set(forms.map(bucketOf).filter((b) => out.manifest.shardFiles.includes(shardName(b))));
+    const wanted = new Set(forms.map((f) => bucketOf(f)).filter((b) => out.manifest.shardFiles.includes(shardName(b))));
     expect(shardReqs).toHaveLength(wanted.size); // one per bucket that has a file, none for empty buckets
   });
 

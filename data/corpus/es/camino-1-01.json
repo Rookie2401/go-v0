@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-1-01",
+  "lang": "es",
+  "title": "Juan y el libro",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-1-01",
+    "title": "Camino 1 — Primeros pasos: Juan y el libro (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "reading"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-1",
+    "chapter": {
+      "index": 1,
+      "title": "Juan y el libro"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "books"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "Juan y el libro",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Juan tiene un libro.",
+              "english": "Juan has a book."
+            },
+            {
+              "text": "El libro está en la mesa.",
+              "english": "The book is on the table."
+            },
+            {
+              "text": "Juan quiere leer el libro.",
+              "english": "Juan wants to read the book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Juan va a la mesa.",
+              "english": "Juan goes to the table."
+            },
+            {
+              "text": "Juan toma el libro.",
+              "english": "Juan takes the book."
+            },
+            {
+              "text": "Es un libro grande.",
+              "english": "It is a big book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Juan lee el libro.",
+              "english": "Juan reads the book."
+            },
+            {
+              "text": "Juan lee y lee.",
+              "english": "Juan reads and reads."
+            },
+            {
+              "text": "El libro es muy bueno.",
+              "english": "The book is very good."
+            },
+            {
+              "text": "Juan está contento.",
+              "english": "Juan is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,160 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-3-06",
+  "lang": "es",
+  "title": "Querida abuela",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-3-06",
+    "title": "Camino 3 — Historias: Querida abuela (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "people",
+    "family",
+    "letters"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-3",
+    "chapter": {
+      "index": 6,
+      "title": "Querida abuela"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "school",
+    "travel"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "Querida abuela",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esta es la carta que Marta le escribió a su abuela durante su primer mes en la ciudad.",
+              "english": "This is the letter that Marta wrote to her grandmother during her first month in the city."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Querida abuela:",
+              "english": "Dear Grandmother,"
+            },
+            {
+              "text": "Espero que estés bien y que la rodilla ya no te duela.",
+              "english": "I hope you are well and that your knee no longer hurts."
+            },
+            {
+              "text": "Aquí todo es nuevo para mí, aunque ya me estoy acostumbrando.",
+              "english": "Everything here is new to me, although I am already getting used to it."
+            },
+            {
+              "text": "La ciudad es mucho más grande de lo que había imaginado.",
+              "english": "The city is much bigger than I had imagined."
+            },
+            {
+              "text": "Los primeros días me perdí tres veces, y una señora tuvo que acompañarme hasta la casa.",
+              "english": "The first days I got lost three times, and a lady had to walk me to the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mi tía Lucía dice que no me preocupe, porque pronto conoceré todas las calles.",
+              "english": "My aunt Lucía says I should not worry, because I will soon know all the streets."
+            },
+            {
+              "text": "En la escuela nueva tengo una maestra que se parece mucho a ti.",
+              "english": "At the new school I have a teacher who is very much like you."
+            },
+            {
+              "text": "Siempre quiere que hagamos preguntas.",
+              "english": "She always wants us to ask questions."
+            },
+            {
+              "text": "Ayer me dijo que he mejorado mucho en matemáticas.",
+              "english": "Yesterday she told me that I have improved a lot in mathematics."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Te extraño, sobre todo por las noches, cuando recuerdo las historias que nos contabas.",
+              "english": "I miss you, above all at night, when I remember the stories you used to tell us."
+            },
+            {
+              "text": "Cuando vuelva en las vacaciones, quiero que me enseñes a hacer tortillas como las tuyas.",
+              "english": "When I come back in the holidays, I want you to teach me to make tortillas like yours."
+            },
+            {
+              "text": "Dile a Luis que no se olvide de darle de comer a Sol.",
+              "english": "Tell Luis not to forget to feed Sol."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ojalá que puedas venir a visitarme algún día, para que veas dónde vivo.",
+              "english": "I hope you can come to visit me some day, so that you can see where I live."
+            },
+            {
+              "text": "Pero si no puedes, no te preocupes: yo iré a verte en cuanto pueda.",
+              "english": "But if you cannot, do not worry: I will come to see you as soon as I can."
+            },
+            {
+              "text": "Te mando un abrazo muy fuerte.",
+              "english": "I send you a very big hug."
+            },
+            {
+              "text": "Tu nieta, Marta.",
+              "english": "Your granddaughter, Marta."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La abuela leyó la carta tres veces y la guardó en su caja de recuerdos.",
+              "english": "The grandmother read the letter three times and put it away in her box of keepsakes."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

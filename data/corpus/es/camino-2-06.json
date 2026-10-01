@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-2-06",
+  "lang": "es",
+  "title": "El cumpleaños de Marta",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-2-06",
+    "title": "Camino 2 — Días y lugares: El cumpleaños de Marta (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-2",
+    "chapter": {
+      "index": 6,
+      "title": "El cumpleaños de Marta"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "food",
+    "home"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "El cumpleaños de Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El sábado era el cumpleaños de Marta.",
+              "english": "Saturday was Marta's birthday."
+            },
+            {
+              "text": "Iba a cumplir nueve años.",
+              "english": "She was going to turn nine."
+            },
+            {
+              "text": "Marta no sabía nada de la fiesta.",
+              "english": "Marta knew nothing about the party."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Rosa y Luis tenían que prepararlo todo.",
+              "english": "Rosa and Luis had to get everything ready."
+            },
+            {
+              "text": "Rosa hizo un pastel de chocolate.",
+              "english": "Rosa made a chocolate cake."
+            },
+            {
+              "text": "Luis compró globos y los puso en la sala.",
+              "english": "Luis bought balloons and put them in the living room."
+            },
+            {
+              "text": "Pedro acababa de llegar con el regalo cuando Marta entró.",
+              "english": "Pedro had just arrived with the present when Marta came in."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¡Sorpresa! —gritaron todos.",
+              "english": "\"Surprise!\" they all shouted."
+            },
+            {
+              "text": "Marta no podía creerlo.",
+              "english": "Marta could not believe it."
+            },
+            {
+              "text": "Se puso muy contenta.",
+              "english": "She became very happy."
+            },
+            {
+              "text": "Pedro le dio un libro.",
+              "english": "Pedro gave her a book."
+            },
+            {
+              "text": "Luis le dio un dibujo de Sol.",
+              "english": "Luis gave her a drawing of Sol."
+            },
+            {
+              "text": "—¿Es para mí? —preguntó Marta.",
+              "english": "\"Is it for me?\" asked Marta."
+            },
+            {
+              "text": "—Sí, es para ti —dijo Luis.",
+              "english": "\"Yes, it is for you,\" said Luis."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Comieron pastel y cantaron.",
+              "english": "They ate cake and sang."
+            },
+            {
+              "text": "Al final Marta dijo: —¡Gracias a todos, qué día tan bonito!",
+              "english": "At the end Marta said, \"Thank you, everyone, what a lovely day!\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

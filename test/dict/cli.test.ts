@@ -1,14 +1,14 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { spawnSync } from 'node:child_process';
+import { runNode } from '../helpers/cli';
 import { afterAll, describe, expect, it } from 'vitest';
 import { createFileLexiconSource } from '../../src/dict/file';
 import { DATE, FIXTURE, tmpDir } from './helpers';
 
 const cli = path.resolve('node_modules/vite-node/dist/cli.mjs');
-const run = (...args: string[]) => {
-  const r = spawnSync(process.execPath, [cli, 'scripts/dict-build.mts', ...args], { encoding: 'utf8', cwd: path.resolve('.'), timeout: 90_000 });
-  return { status: r.status, out: `${r.stdout}${r.stderr}` };
+const run = async (...args: string[]) => {
+  const r = await runNode([cli, 'scripts/dict-build.mts', ...args], { cwd: path.resolve('.'), timeout: 90_000 });
+  return { status: r.status, out: r.out };
 };
 
 const root = tmpDir('go-dict-cli-');
@@ -17,7 +17,7 @@ afterAll(() => { fs.rmSync(root, { recursive: true, force: true }); });
 describe('npm run dict:build (scripts/dict-build.mts)', () => {
   it('builds the fixture, prints the counts, and the result is readable by the file source', async () => {
     const outDir = path.join(root, 'ok');
-    const r = run('--', '--in', FIXTURE, '--lang', 'th', '--out', outDir, '--date', DATE,
+    const r = await run('--', '--in', FIXTURE, '--lang', 'th', '--out', outDir, '--date', DATE,
       '--source-url', 'https://example.test/f.jsonl', '--last-modified', '2026-09-28', '--retrieved', '2026-09-30');
     expect(r.status).toBe(0);
     expect(r.out).toMatch(/dict:build - kaikki-th@2026-09-28 \(schema 2\)/);
@@ -35,17 +35,17 @@ describe('npm run dict:build (scripts/dict-build.mts)', () => {
     expect((await src.lookup(['ขนม'])).get('ขนม')?.[0].pos).toBe('NOUN');
   }, 120_000);
 
-  it('is deterministic for the same input and --date', () => {
+  it('is deterministic for the same input and --date', async () => {
     const a = path.join(root, 'det-a');
     const b = path.join(root, 'det-b');
-    expect(run('--in', FIXTURE, '--lang', 'th', '--out', a, '--date', DATE).status).toBe(0);
-    expect(run('--in', FIXTURE, '--lang', 'th', '--out', b, '--date', DATE).status).toBe(0);
+    expect((await run('--in', FIXTURE, '--lang', 'th', '--out', a, '--date', DATE)).status).toBe(0);
+    expect((await run('--in', FIXTURE, '--lang', 'th', '--out', b, '--date', DATE)).status).toBe(0);
     const names = fs.readdirSync(path.join(a, 'th'));
     expect(names).toEqual(fs.readdirSync(path.join(b, 'th')));
     for (const n of names) expect(fs.readFileSync(path.join(a, 'th', n))).toEqual(fs.readFileSync(path.join(b, 'th', n)));
   }, 120_000);
 
-  it('exits 1 with a usage line for missing or bad arguments, and writes nothing', () => {
+  it('exits 1 with a usage line for missing or bad arguments, and writes nothing', async () => {
     const outDir = path.join(root, 'bad');
     const cases: string[][] = [
       [],
@@ -59,18 +59,18 @@ describe('npm run dict:build (scripts/dict-build.mts)', () => {
       ['--in', FIXTURE, '--lang', 'th', '--out', outDir, '--retrieved', '2026/09/30'],
     ];
     for (const args of cases) {
-      const r = run(...args);
+      const r = await run(...args);
       expect(r.status, args.join(' ')).toBe(1);
       expect(r.out, args.join(' ')).toMatch(/usage: npm run dict:build/);
     }
     expect(fs.existsSync(outDir)).toBe(false);
   }, 180_000);
 
-  it('exits 1 on an input with no usable entries, writing nothing', () => {
+  it('exits 1 on an input with no usable entries, writing nothing', async () => {
     const input = path.join(root, 'junk.jsonl');
     fs.writeFileSync(input, 'not json\n{"word":"x"}\n');
     const outDir = path.join(root, 'junk-out');
-    const r = run('--in', input, '--lang', 'th', '--out', outDir, '--date', DATE);
+    const r = await run('--in', input, '--lang', 'th', '--out', outDir, '--date', DATE);
     expect(r.status).toBe(1);
     expect(r.out).toMatch(/no usable entries/);
     expect(fs.existsSync(outDir)).toBe(false);

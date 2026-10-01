@@ -41,7 +41,7 @@ function fakeCatalog(p: AssistanceProfile): CourseCatalog {
     install: vi.fn(async () => undefined), stages: vi.fn(async () => []), works: vi.fn(async () => []), work: vi.fn(async () => undefined),
     textsOf: vi.fn(async () => []), stageOfText: vi.fn(async () => undefined), assistanceFor: vi.fn(async () => p),
     currentStage: vi.fn(async () => undefined), setCurrentStage: vi.fn(async () => undefined),
-  } as CourseCatalog;
+  } as unknown as CourseCatalog;
 }
 
 const MOTHER: SyllableAnalysis = {

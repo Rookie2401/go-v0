@@ -1,0 +1,198 @@
+{
+  "schemaVersion": 2,
+  "id": "honduras-lecturas-1-02",
+  "lang": "es",
+  "title": "En el autobús",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:honduras-lecturas-1-02",
+    "title": "Honduras — Lecturas 1: En el autobús (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. The Spanish is plain educated Spanish with a few Honduran words and, in one text, voseo; every statement about Honduras and every regional form must be checked by a Honduran reviewer before release. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "travel",
+    "friends",
+    "honduras"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-regional-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "honduras-lecturas-1",
+    "chapter": {
+      "index": 2,
+      "title": "En el autobús"
+    }
+  },
+  "streams": [
+    "honduras",
+    "acquisition"
+  ],
+  "domains": [
+    "travel",
+    "people",
+    "honduras"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "En el autobús",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Daniel y Marvin son amigos y viven en Tegucigalpa.",
+              "english": "Daniel and Marvin are friends and live in Tegucigalpa."
+            },
+            {
+              "text": "Hoy van a San Pedro Sula, una ciudad de Honduras.",
+              "english": "Today they are going to San Pedro Sula, a city in Honduras."
+            },
+            {
+              "text": "Van en autobús, porque el viaje es largo.",
+              "english": "They go by bus, because the trip is long."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la terminal, Daniel habla con el empleado.",
+              "english": "At the terminal, Daniel talks with the clerk."
+            },
+            {
+              "text": "—Buenas tardes, señor.",
+              "english": "\"Good afternoon, sir.\""
+            },
+            {
+              "text": "—¿A qué hora sale el autobús para San Pedro Sula?",
+              "english": "\"What time does the bus to San Pedro Sula leave?\""
+            },
+            {
+              "text": "—Sale en diez minutos, joven —dice el empleado.",
+              "english": "\"It leaves in ten minutes, young man,\" says the clerk."
+            },
+            {
+              "text": "—Entonces quiero dos boletos, por favor.",
+              "english": "\"Then I would like two tickets, please.\""
+            },
+            {
+              "text": "Daniel paga los boletos y llama a su amigo.",
+              "english": "Daniel pays for the tickets and calls his friend."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¡Vení, Marvin, que el autobús ya está aquí! —dice Daniel.",
+              "english": "\"Come on, Marvin, the bus is already here!\" says Daniel."
+            },
+            {
+              "text": "—¿Vos tenés los boletos? —pregunta Marvin.",
+              "english": "\"Do you have the tickets?\" asks Marvin."
+            },
+            {
+              "text": "—Sí, aquí los tengo —dice Daniel.",
+              "english": "\"Yes, I have them here,\" says Daniel."
+            },
+            {
+              "text": "Los dos suben al autobús y buscan sus asientos.",
+              "english": "The two get on the bus and look for their seats."
+            },
+            {
+              "text": "—Mirá, hay dos asientos junto a la ventana —dice Marvin.",
+              "english": "\"Look, there are two seats by the window,\" says Marvin."
+            },
+            {
+              "text": "—¿Vos querés la ventana? —pregunta Daniel.",
+              "english": "\"Do you want the window?\" asks Daniel."
+            },
+            {
+              "text": "—Sí, gracias —dice Marvin.",
+              "english": "\"Yes, thanks,\" says Marvin."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El autobús sale de la terminal.",
+              "english": "The bus leaves the terminal."
+            },
+            {
+              "text": "Por la ventana se ven montañas.",
+              "english": "Through the window you can see mountains."
+            },
+            {
+              "text": "—¿Qué hacés en San Pedro Sula? —pregunta Daniel.",
+              "english": "\"What are you doing in San Pedro Sula?\" asks Daniel."
+            },
+            {
+              "text": "—Voy a visitar a mi abuela, ¿y vos? —dice Marvin.",
+              "english": "\"I'm going to visit my grandmother, and you?\" says Marvin."
+            },
+            {
+              "text": "—Yo voy a ver a mi tío —dice Daniel.",
+              "english": "\"I'm going to see my uncle,\" says Daniel."
+            },
+            {
+              "text": "—Vos sos un buen sobrino —dice Marvin.",
+              "english": "\"You are a good nephew,\" says Marvin."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Los amigos hablan, miran por la ventana y comen algo.",
+              "english": "The friends talk, look out of the window and eat something."
+            },
+            {
+              "text": "Después de varias horas, el autobús llega a San Pedro Sula.",
+              "english": "After several hours, the bus arrives in San Pedro Sula."
+            },
+            {
+              "text": "—Ya llegamos —dice Daniel.",
+              "english": "\"We're here,\" says Daniel."
+            },
+            {
+              "text": "Los dos bajan del autobús y se despiden.",
+              "english": "The two get off the bus and say goodbye."
+            },
+            {
+              "text": "—Cuidate, catracho —dice Marvin.",
+              "english": "\"Take care, catracho,\" says Marvin."
+            },
+            {
+              "text": "—Nos vemos pronto —dice Daniel.",
+              "english": "\"See you soon,\" says Daniel."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

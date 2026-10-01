@@ -124,6 +124,8 @@ is ignored by the validator — the templates use it for inline explanations.
   "english": { "source": "…" },     // required when any English is supplied: where the English came from
   "work": { "slug": "mana-mani-1", "chapter": { "index": 3 } },   // optional: the curriculum work and chapter, see §7
   "notes": [ { "match": "…", "kind": "cultural", "body": "…" } ], // optional: notes anchored by sentence text, see §8
+  "streams": ["library"], "domains": ["engineering"], "variety": "es-HN",   // optional catalogue facts → Text, see §11
+  "quality": { "checkedWith": "quality@1", "flags": [], "verdict": "clean" }, // written by the converters (inspectText), see §11
   "sections": [ { "title": "…", "chapter": 3, "paragraphs": [ … ] } ]
 }
 ```
@@ -265,6 +267,7 @@ runs in the app's importer (`validateDocument` / `validateBatch` in `src/ingest`
 | `personal-copy-scripture` | error | "Scripture is never a personal copy: it must be an identified, verified translation" (§9). |
 | `personal-copy-generated` | error | "generated text is not a published work, so it cannot be a personal copy" (§9). |
 | `personal-copy-authorship` | error | A personal copy needs `source.authorship: "published"` (§9). |
+| `source-damaged` | warning · error | The document's `quality.verdict` is `damaged` (§11). A warning for a personal copy (the learner decides); an **error** when the document is destined for the built library (`ValidateContext.destination: 'library'`). |
 
 ---
 
@@ -561,9 +564,64 @@ dictionary); syllables are never stored (decoded on demand). Validation stays di
 changing or removing a dictionary re-analyses a text on its next import (and adds a log record); the same dictionary again is
 a no-op. If the dictionary cannot be read, the text imports without it and the report says so in `note`.
 
+**Inflected forms.** A dictionary entry with `formOf` (this form is "first-person singular present of …") becomes a candidate
+whose `lemma` is the form-of lemma (one per lemma), `morph` read from the entry's tags by the adapter's `morphFromTags` when it
+has one (otherwise empty — never guessed), origin `dictionary`, with the source's own tags in `notes.formOfTags`. The entry's
+gloss describes the form, so it never becomes the lemma's gloss.
+
 ---
 
-## 11. For developers
+## 11. Source quality, Western prose, EPUB
+
+**Quality control** (`inspectText(text, { lang, sourceKind })`, `src/ingest/quality.ts`) reports what is wrong with raw
+text before it becomes documents and **never changes it**. Each flag has a code, a severity (`info` · `warning` · `serious`), a
+count, a sample of at most 120 characters and a plain message: `mojibake` (UTF-8 read as Latin-1: "Ã¡", "â€"), `replacement-characters`,
+`control-characters`, `broken-accents` (loose combining accent, ´ or ¨ before a vowel, n~), `ocr-confusions` ("rn" for "m", digits inside
+words, accents dropped in a text that otherwise has them), `hard-wrapped-lines`, `hyphenated-line-breaks`, `page-numbers`, `running-heads`,
+`footnote-markers`, `duplicated-paragraphs`, `very-long-paragraphs`, `boilerplate` (Project Gutenberg header and licence, "Produced
+by", transcriber's notes, source notices), `title-page-noise` (ISBN, copyright), `language-mismatch` (too few common words of the
+language; says when the text looks like English), `mixed-scripts`, `mangled-punctuation`, `no-chapters-found`. Verdict: `clean` (no
+flags), `usable` (only info and warnings), `damaged` (any serious flag: import only after a person has looked). The converters store the
+report on every document (`quality`) and the importer on the `Text` (`Text.quality`). A `damaged` verdict is said plainly in the converter's
+notes and in the import preview (`source-damaged` warning) and does not block a personal copy; a document destined for the built library is
+refused (`validateBatch(docs, { registry, destination: 'library' })`).
+
+**Western prose in the plain-text converter** (`plainTextToDocuments`; the Thai behaviour is unchanged):
+
+* `paragraphs: 'lines' | 'blank-line'` — default: `blank-line` when the text is hard-wrapped (never for Thai), otherwise one paragraph per line.
+  With `blank-line` and no `unwrap`, a paragraph is its lines joined by the line break: the paragraph texts reproduce the source lines.
+* `unwrap: true` — joins the lines of a paragraph with one space; a hyphenated line break ("pala-" / "bra") is re-joined only when the joined
+  word is not itself hyphenated elsewhere in the text ("bien-estar" keeps its hyphen). **Every join is counted** in the notes and in
+  `result.unwrapped` (`spaces`, `dehyphenated`, `hyphenKept`).
+* `stripBoilerplate: true` — removes ONLY the lines `inspectText` identified as boilerplate or title-page noise. They stay retrievable in
+  `result.removed` (line numbers and text), summarised in the notes; the CLI also writes `removed-boilerplate.txt`.
+* Chapter headings, besides the Thai and "Chapter 4" forms: `Capítulo I`, `CAPÍTULO PRIMERO`, `Capítulo 12. Title`, `Cap. 4`, `Libro segundo`,
+  `Parte tercera`, `Canto`, `Tomo`, `Acto`, `Chapter Two`, and bare Roman numerals (`I.`, `IV. Title`) — the last only as a sequence that starts at
+  I, because "C." and "V. Hugo" are initials. A sentence that merely begins with such a word is not a heading. An explicit regular expression
+  (`chapters`) still wins over automatic detection.
+* The correction path: the result lists the headings it found (`headings`: line number, text, title). Pass a corrected list of 1-based line
+  numbers as `headings` on a second call (the CLI: `--headings 1,40,95`) and exactly those lines are headings.
+* `npm run corpus:convert` takes all of these (`--paragraphs`, `--unwrap`, `--strip-boilerplate`, `--source-kind`, `--headings`, `--author`,
+  `--variety`, `--streams`, `--domains`) and looks Spanish works up in `src/course/spanish.ts`.
+
+**EPUB** (`readEpub(bytes)`, `epubToDocuments(bytes, options)`, `src/ingest/epub.ts`): a minimal zip reader (central directory; stored and
+deflate entries through `DecompressionStream('deflate-raw')`), `META-INF/container.xml` → the package → the spine order → each XHTML page as
+plain text (block elements are paragraphs, headings stay their own lines, scripts, styles, navigation and page-break markers are dropped,
+entities are decoded; one that is not known stays as written and is reported). Checksums are verified; a file bigger than it says is refused.
+`epubToDocuments` produces personal-copy documents through the plain-text path (one paragraph per line; chapters by headings in the text or,
+when there are none, by the book's own sections that begin with a heading) and also returns what the file says about itself (`epub`).
+**A protected file is refused, never worked around:** `META-INF/encryption.xml` that lists anything other than the obfuscation of embedded
+fonts, `rights.xml`, `sinf.xml` or an encrypted zip entry throw `EpubError('encrypted')`; other errors are `not-epub`, `damaged` and
+`unsupported`, each with a plain message. The bytes are read where they are; nothing is uploaded.
+
+**Document fields.** `streams` and `domains` (arrays of short slugs, `[a-z0-9-]`, at most 40 characters) and `variety` (a short code such as
+`es-HN`, `es-ES`, `es-hist`) are optional on a document and are copied to `Text.streams / domains / variety`; changing them is a metadata
+edit. A candidate's `parts` (units inside a written word: verb + attached pronouns) and `varieties` are stored on the analysis as the adapter
+states them.
+
+---
+
+## 12. For developers
 
 * **Testimony revisions.** GoTell materializes each accepted revision as a private Text:
   ```ts

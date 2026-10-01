@@ -7,8 +7,10 @@
  * blocks, warns against or ranks reading.
  */
 import { useEffect, useState } from 'react';
-import type { DifficultyForecast, ForecastItem } from '../../core';
+import type { DifficultyForecast, ForecastItem, PersonalDifficulty } from '../../core';
 import { useApp } from '../context';
+import { pct } from '../format';
+import { PERSONAL_FACTOR_WORD } from './assistance';
 
 type State =
   | { status: 'idle' }
@@ -69,11 +71,39 @@ export function DifficultyPreview({ textId }: { textId: string }) {
   );
 }
 
+const LABEL_WORD: Record<PersonalDifficulty['label'], string> = {
+  comfortable: 'comfortable', manageable: 'manageable', challenging: 'challenging', hard: 'hard', unknown: 'not known yet',
+};
+
+/** The personal estimate in words: the label, then its factors on one line, then what the data cannot support. */
+function PersonalBlock({ personal }: { personal: PersonalDifficulty }) {
+  return (
+    <div className="card__section" data-testid="difficulty-personal">
+      <h3 className="label">For you</h3>
+      <p className="card__text" data-testid="difficulty-personal-label">{LABEL_WORD[personal.label]}</p>
+      {personal.factors.length > 0 && (
+        <p className="card__text" data-testid="difficulty-factors">
+          {personal.factors.map((f, i) => {
+            const value = f.key === 'lexical-coverage' && personal.lexicalCoverage !== undefined ? pct(personal.lexicalCoverage) : f.level;
+            return <span key={f.key} title={f.note}>{i > 0 ? ' · ' : ''}{PERSONAL_FACTOR_WORD[f.key] ?? f.key}: {value}</span>;
+          })}
+        </p>
+      )}
+      {personal.caveats.length > 0 && (
+        <ul className="difficulty__limits" aria-label="Caveats of this estimate" data-testid="difficulty-caveats">
+          {personal.caveats.map((c, i) => <li key={`${i}:${c}`}>{c}</li>)}
+        </ul>
+      )}
+    </div>
+  );
+}
+
 function ForecastBody({ forecast: f }: { forecast: DifficultyForecast }) {
   const varieties = Object.entries(f.varieties).filter(([, n]) => n > 0);
   return (
     <div className="difficulty-body" data-testid="difficulty-body">
       <p className="difficulty__summary" data-testid="difficulty-summary">{f.summary}</p>
+      {f.personal && <PersonalBlock personal={f.personal} />}
       {LISTS.map(({ key, label, note }) => {
         const items = f[key];
         if (items.length === 0) return null;

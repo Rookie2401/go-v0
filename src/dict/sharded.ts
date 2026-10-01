@@ -30,7 +30,7 @@ export function createShardedSource(lang: LanguageCode, read: ReadDictFile): Lex
   };
 
   const loadShard = (m: DictionaryManifest, bucket: number): Promise<Map<string, DictionaryEntry[]>> => {
-    const name = shardName(bucket);
+    const name = shardName(bucket, m.buckets);
     if (m.shardFiles.length && !m.shardFiles.includes(name)) return Promise.resolve(new Map());
     let p = shards.get(bucket);
     if (!p) {
@@ -55,7 +55,7 @@ export function createShardedSource(lang: LanguageCode, read: ReadDictFile): Lex
       const wanted = new Map<number, string[]>();
       for (const f of new Set(forms)) {
         if (typeof f !== 'string' || !f) continue;
-        const b = bucketOf(f);
+        const b = bucketOf(f, m.buckets);
         wanted.set(b, [...(wanted.get(b) ?? []), f]);
       }
       await Promise.all([...wanted].map(async ([bucket, list]) => {

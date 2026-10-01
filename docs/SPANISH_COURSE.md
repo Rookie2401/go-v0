@@ -75,6 +75,15 @@ tagged `vosotros` or `es-ES` is shown, tracked and explained — "used in Spain:
 — and never suppressed. Historical Spanish (`es-hist`) is preserved exactly as written; a modern equivalent is an
 aid shown beside it, clearly separate from the text.
 
+## 6a. Readings in context
+
+Spanish spells many common nouns and verb forms alike (`la pregunta` / `pregunta`, `las tiendas` / `tiendas`) and
+has pairs such as `fue` (ser, ir) and `sé` (saber, ser). The engine returns every reading; `spanish/disambiguate.ts`
+then orders them by one or two words to the left and one to the right. It is deliberately not a parser: the chosen
+reading keeps its confidence, the others stay on the word sheet marked down, a note records which neighbour
+decided, and where the neighbours do not decide nothing is changed. Measured on the course's own texts only
+(`docs/spanish/STATUS.md`, section 6).
+
 ## 7. What this pass does not do
 
 It does not download a corpus, verify any rights, or ingest literature: the catalogue lists candidates and the

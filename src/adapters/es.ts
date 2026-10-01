@@ -1,31 +1,69 @@
 /**
  * Spanish adapter. NFC + lower-case identity, accents preserved (entendía ≠ entendia).
- * Confident: lexicon forms of the course vocabulary (incl. conjugation paradigms of the fixture verbs),
- * gender/number of lexicon nouns and articles, enclitic pronouns on lexicon infinitives.
- * Uncertain / out of scope: unknown words (empty candidates), gerund/imperative clitics (dámelo),
- * syntactic disambiguation beyond the lexicon ("la" is article only here).
+ *
+ * Layers, in the order a token meets them: the hand lexicon (src/adapters/spanish: about 1,500 lemmas, the closed
+ * classes with every form, regional words tagged with their variety, plus the older paradigms below) → the
+ * morphology engine (spanish/morphology.ts: rule readings of any verb, noun or adjective form, with honest
+ * confidence, `knownLemma` answered from the lexicon) → older spelling (spanish/historical.ts: the modern lemma, tagged
+ * es-hist, the text itself never changed) → nothing. Phrase units (spanish/phrases), constructions
+ * (spanish/constructions), sentence segmentation (spanish/sentences).
+ * Confident: lexicon words, closed classes, listed phrases and constructions. Uncertain: a word the engine only infers
+ * (confidence 0.6 or less, the rule says so), older spelling, a word with two readings (both are returned).
+ * A word with two readings is ordered by its neighbours where they decide (spanish/disambiguate.ts: one or two words to
+ * the left, one to the right); that is not a parser, and where they do not decide the order is left as it was.
+ * Out of scope: syntax beyond that; a word the rules cannot derive stays unanalysed.
+ * The data is machine-drafted and has not been checked by a native speaker.
  */
 import type {
-  AnalysisCandidate, AnalyzedToken, ErrorCandidate, LanguageAdapter, PatternCandidate, PhraseCandidate,
-  PronunciationSupport, RawToken, AdapterSupport } from '../core';
+  AdapterSupport, AnalysisCandidate, AnalysisSourceInfo, AnalyzedToken, ErrorCandidate, LanguageAdapter, PatternCandidate,
+  PhraseCandidate, PronunciationSupport, RawToken, RegisterTag, WordPart,
+} from '../core';
 import {
-  E, Lexicon, hasLemma, hasPos, lexiconAnalyze, makeWordTokenizer, matchCase, matchPhraseRules,
-  nfc, speechNormalizeGeneric, splitSentences, stripMarks, type PhraseRule,
+  DETERMINISTIC_AT, E, Lexicon, makeWordTokenizer, matchCase, matchPhraseRules, nfc, speechNormalizeGeneric, stripMarks, type PhraseRule,
 } from './shared';
+import { analyzeSpanishForm, describeSpanishMorph, type SpanishAnalysis } from './spanish/morphology';
+import { annotationKey, buildRows, mergeAnnotations, parseRows, type EsAnnotation } from './spanish/entries';
+import { VERB_ROWS } from './spanish/lexicon-verbs';
+import { NOUN_ROWS } from './spanish/lexicon-nouns';
+import { ADJECTIVE_ROWS, PROPER_ROWS } from './spanish/lexicon-modifiers';
+import { FUNCTION_ROWS } from './spanish/function-words';
+import { REGIONAL_ROWS } from './spanish/regional';
+import { COURSE_ROWS } from './spanish/lexicon-course';
+import { ES_VARIETIES } from './spanish/varieties';
+import { HISTORICAL_EXACT, OLD_CONTRACTIONS, historicalSpellings } from './spanish/historical';
+import { VERB_SLOT_PATTERNS, buildPhraseRules } from './spanish/phrases';
+import { detectSpanishConstructions } from './spanish/constructions';
+import { segmentSpanishSentences } from './spanish/sentences';
+import { disambiguateSpanish } from './spanish/disambiguate';
 
 const LANG = 'es' as const;
-const VERSION = '1';
+const VERSION = '3';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
+
+/** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
+export const ES_SOURCE_IDS = {
+  hand: `${ANALYZER}:hand`,
+  phrases: `${ANALYZER}:phrases`,
+  constructions: `${ANALYZER}:constructions`,
+  rules: `${ANALYZER}:rules`,
+} as const;
+
+const ES_SOURCES: Record<string, AnalysisSourceInfo> = {
+  [ES_SOURCE_IDS.hand]: { id: ES_SOURCE_IDS.hand, label: 'Course word list', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [ES_SOURCE_IDS.phrases]: { id: ES_SOURCE_IDS.phrases, label: 'Course phrase list', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [ES_SOURCE_IDS.constructions]: { id: ES_SOURCE_IDS.constructions, label: 'Course grammar patterns', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [ES_SOURCE_IDS.rules]: { id: ES_SOURCE_IDS.rules, label: 'Spanish word-form rules', origin: 'rule', reviewStatus: 'machine-drafted', version: VERSION },
+};
 
 const normalize = (s: string) => nfc(s).toLocaleLowerCase('es');
 
-// ── lexicon (tiny: what the bundled corpus and the tests need) ──
+// ── the older hand list: explicit paradigms that the engine only adds to ──
 const ENTRIES = [
   // verbs
   E('ser', 'AUX', 'to be (essence)', ['ser:inf', 'soy:1s pres', 'eres:2s pres', 'es:3s pres', 'era:1s impf', 'era:3s impf']),
   E('estar', 'AUX', 'to be (state/location)', ['estar:inf', 'estoy:1s pres', 'estás:2s pres', 'está:3s pres']),
   E('tener', 'VERB', 'to have', ['tener:inf', 'tengo:1s pres', 'tienes:2s pres', 'tiene:3s pres', 'tenemos:1p pres', 'tenía:1s impf', 'tenía:3s impf', 'tenga:1s subj', 'tenga:3s subj']),
-  E('haber', 'AUX', 'to have (auxiliary)', ['haber:inf', 'he:1s pres', 'ha:3s pres']),
+  E('haber', 'AUX', 'to have (auxiliary)', ['haber:inf', 'he:1s pres', 'ha:3s pres', 'hay:3s pres']),
   E('entender', 'VERB', 'to understand', ['entender:inf', 'entiendo:1s pres', 'entiendes:2s pres', 'entiende:3s pres', 'entendía:1s impf', 'entendía:3s impf', 'entendí:1s pret', 'entendió:3s pret']),
   E('creer', 'VERB', 'to believe', ['creer:inf', 'creo:1s pres', 'crees:2s pres', 'cree:3s pres', 'creía:1s impf', 'creía:3s impf']),
   E('perdonar', 'VERB', 'to forgive', ['perdonar:inf', 'perdono:1s pres', 'perdona:3s pres', 'perdona:2s imper', 'perdonó:3s pret', 'perdone:1s subj', 'perdone:3s subj']),
@@ -52,6 +90,7 @@ const ENTRIES = [
   E('vida', 'NOUN', 'life', ['vida:f sg']),
   E('manera', 'NOUN', 'manner, way', ['manera:f sg']),
   E('hijo', 'NOUN', 'son', ['hijo:m sg', 'hijos:m pl']),
+  E('hija', 'NOUN', 'daughter', ['hija:f sg', 'hijas:f pl']),
   E('casa', 'NOUN', 'house', ['casa:f sg', 'casas:f pl']),
   E('libro', 'NOUN', 'book', ['libro:m sg', 'libros:m pl']),
   E('Ana', 'PROPN', 'Ana (name)'), E('Pedro', 'PROPN', 'Pedro (name)'),
@@ -64,7 +103,7 @@ const ENTRIES = [
   E('se', 'PRON', 'oneself (reflexive clitic)', ['se:prs']),
   E('qué', 'PRON', 'what', ['qué:int']),
   E('cómo', 'ADV', 'how', ['cómo:int']),
-  E('aquel', 'PRON', 'that one', ['aquel:m sg dem']),
+  E('aquel', 'PRON', 'that one', ['aquel:m sg dem', 'aquella:f sg dem', 'aquello:sg dem', 'aquellos:m pl dem', 'aquellas:f pl dem']),
   E('el', 'DET', 'the', ['el:m sg def art']),
   E('la', 'DET', 'the', ['la:f sg def art']),
   E('los', 'DET', 'the', ['los:m pl def art']),
@@ -92,8 +131,8 @@ const ENTRIES = [
   E('sí', 'INTJ', 'yes'),
   E('hola', 'INTJ', 'hello'),
   E('gracias', 'INTJ', 'thank you'),
-  // function words
-  E('a', 'ADP', 'to, at (personal a)', ['a', 'á']),
+  // function words (á is older spelling: it is handled by spanish/historical.ts)
+  E('a', 'ADP', 'to, at (personal a)', ['a']),
   E('al', 'ADP', 'to the (a + el)', ['al'], { notes: { components: ['a', 'el'] } }),
   E('del', 'ADP', 'of the (de + el)', ['del'], { notes: { components: ['de', 'el'] } }),
   E('en', 'ADP', 'in, on'),
@@ -115,11 +154,31 @@ const ENTRIES = [
   E('doce', 'NUM', 'twelve'), E('veinte', 'NUM', 'twenty'), E('treinta', 'NUM', 'thirty'),
 ];
 
+// ── the core lexicon: rows (text blocks) → entries; a row the older list already has is skipped ──
+const ROWS = [
+  ...parseRows(FUNCTION_ROWS, 'function-words'), ...parseRows(VERB_ROWS, 'verbs'), ...parseRows(NOUN_ROWS, 'nouns'),
+  ...parseRows(ADJECTIVE_ROWS, 'modifiers'), ...parseRows(PROPER_ROWS, 'proper'), ...parseRows(REGIONAL_ROWS, 'regional'), ...parseRows(COURSE_ROWS, 'course'),
+];
+const OLD_KEYS = new Set(ENTRIES.map((e) => annotationKey(e.lemma, e.pos)));
+const BUILT = buildRows(ROWS, OLD_KEYS);
+const ANNOTATIONS: Map<string, EsAnnotation> = mergeAnnotations(BUILT.annotations);
+
+/** The order matters: when a surface is ambiguous the earlier entry is listed first, and the older list comes first. */
+export const esLexicon = new Lexicon([...ENTRIES, ...BUILT.entries], normalize);
+
+/** What the lexicon holds, for the readiness table and the tests. */
+export const esLexiconStats = {
+  lemmas: esLexicon.entries.length,
+  duplicates: BUILT.duplicates,
+  byPos: esLexicon.entries.reduce<Record<string, number>>((m, e) => { m[e.pos] = (m[e.pos] ?? 0) + 1; return m; }, {}),
+  /** Lemmas carrying a variety tag, by variety. */
+  byVariety: [...ANNOTATIONS.values()].reduce<Record<string, number>>((m, a) => { for (const v of a.varieties ?? []) m[v] = (m[v] ?? 0) + 1; return m; }, {}),
+};
+
 /** Value of the lexicon numerals (for "number above one takes a plural noun"). */
 const NUMERAL_VALUE: Record<string, number> = {
   uno: 1, dos: 2, tres: 3, cuatro: 4, cinco: 5, seis: 6, siete: 7, ocho: 8, nueve: 9, diez: 10, doce: 12, veinte: 20, treinta: 30,
 };
-export const esLexicon = new Lexicon(ENTRIES, normalize);
 
 const CLITICS = ['me', 'te', 'lo', 'la', 'los', 'las', 'le', 'les', 'nos', 'se'];
 
@@ -137,15 +196,217 @@ function splitClitics(normalized: string): { stem: string; clitics: string[] } |
   return undefined;
 }
 
-function unknownWord(token: RawToken, _i: number, _tokens: RawToken[], lex: Lexicon): AnalysisCandidate[] {
-  const sp = splitClitics(token.normalized);
+// ── the analysis pipeline for one normalized form ──
+const CLOSED = new Set(['DET', 'PRON', 'ADP', 'CONJ', 'SCONJ', 'NUM', 'INTJ', 'PART', 'PROPN']);
+/** Closed-class words that are also very common verb forms: the engine's reading is kept beside the hand one. */
+const ALSO_VERB = new Set(['como', 'salvo', 'bajo']);
+
+const knownLemma = (lemma: string, pos?: string): boolean => !!esLexicon.find(lemma, pos as never);
+const union = (a: readonly string[] | undefined, b: readonly string[] | undefined): string[] | undefined => {
+  const out = [...new Set([...(a ?? []), ...(b ?? [])])];
+  return out.length ? out : undefined;
+};
+const keyOf = (c: AnalysisCandidate) => `${c.lemma}|${c.pos}`;
+
+/** Copy variety and register tags from the annotation table onto a candidate. */
+function annotate(c: AnalysisCandidate): AnalysisCandidate {
+  const ann = c.lemma && c.pos ? ANNOTATIONS.get(annotationKey(c.lemma, c.pos)) : undefined;
+  const varieties = union(c.varieties, ann?.varieties);
+  // a future subjunctive (dijéremos) is older Spanish whoever produced it
+  const old = c.morph.Mood === 'Sub' && c.morph.Tense === 'Fut' ? ['es-hist'] : undefined;
+  const v = union(varieties, old);
+  const register = union(c.register, ann?.register) as RegisterTag[] | undefined;
+  const next = { ...c };
+  if (v) next.varieties = v;
+  if (register) next.register = register;
+  if (old && !next.register?.includes('historical')) next.register = [...(next.register ?? []), 'historical'];
+  return next;
+}
+
+/** Spoken text of a dialogue line: the raya (— –) is not pronounced. */
+function spokenDialogue(text: string): string {
+  if (!/[—–]/u.test(text)) return text;
+  return text
+    .replace(/(^|\n)[ \t]*[—–][ \t]*/gu, '$1') // opens a turn
+    .replace(/[ \t]*[—–][ \t]*(?=[.,;:!?…)»”]|$|\n)/gu, '') // closes a reporting clause
+    .replace(/([?!…])[ \t]*[—–][ \t]*/gu, '$1 ') // a reporting clause after a question or exclamation
+    .replace(/[ \t]*[—–][ \t]*/gu, ', '); // any other dash between words: a pause
+}
+
+/**
+ * An engine reading. A lemma the word list vouches for is glossed from it; a lemma it does not hold is a rule guess:
+ * origin 'rule', confidence 0.6 at most, no gloss, and never marked as a lexicon hit.
+ */
+function fromEngine(a: SpanishAnalysis): AnalysisCandidate {
+  const entry = a.lemmaKnown ? esLexicon.find(a.lemma, a.pos) ?? esLexicon.find(a.lemma) : undefined;
+  const c: AnalysisCandidate = {
+    lemma: a.lemma, pos: a.pos, morph: { ...a.morph }, confidence: a.lemmaKnown ? a.confidence : Math.min(a.confidence, 0.6),
+    notes: { source: 'rule', rule: a.rule, lemmaStatus: a.lemmaKnown ? 'in the word list' : 'inferred by the rules' },
+    origin: 'rule', sourceId: ES_SOURCE_IDS.rules,
+  };
+  if (entry) c.gloss = entry.gloss;
+  if (a.parts?.length) c.parts = a.parts.map((p) => ({ ...p }));
+  if (a.varieties?.length) c.varieties = [...a.varieties];
+  return annotate(c);
+}
+
+const engineRead = (form: string): AnalysisCandidate[] => analyzeSpanishForm(form, { knownLemma }).map(fromEngine);
+
+const handCandidates = (form: string): AnalysisCandidate[] =>
+  esLexicon.toCandidates(esLexicon.lookup(form)).map((c) => annotate({ ...c, origin: 'hand', sourceId: ES_SOURCE_IDS.hand }));
+
+/** al / del are two units: a + el, de + el. */
+function withContractionParts(form: string, c: AnalysisCandidate): AnalysisCandidate {
+  if (form !== 'al' && form !== 'del') return c;
+  const parts: WordPart[] = [
+    { text: form.slice(0, -1), start: 0, end: form.length - 1, lemma: form === 'al' ? 'a' : 'de', pos: 'ADP' },
+    { text: 'l', start: form.length - 1, end: form.length, lemma: 'el', pos: 'DET', morph: { Gender: 'Masc', Number: 'Sing', Definite: 'Def', PronType: 'Art' } },
+  ];
+  return { ...c, parts };
+}
+
+/** A lexicon infinitive with attached pronouns: entenderlo, perdonarnos. Built from the lexicon, so confident enough to show. */
+function clitic(form: string): AnalysisCandidate[] {
+  const sp = splitClitics(form);
   if (!sp) return [];
-  const hit = lex.lookup(sp.stem).find((h) => h.form.morph.VerbForm === 'Inf');
+  const hit = esLexicon.lookup(sp.stem).find((h) => h.form.morph.VerbForm === 'Inf');
   if (!hit) return [];
-  return [{
+  // the engine knows the offsets and, when it can tell, the pronoun roles; ours are the plain fallback
+  const eng = analyzeSpanishForm(form, { knownLemma }).find((a) => a.lemma === hit.entry.lemma && a.morph.VerbForm === 'Inf' && a.parts?.length);
+  let off = sp.stem.length;
+  const parts: WordPart[] = eng?.parts?.length ? eng.parts.map((p) => ({ ...p })) : [
+    { text: sp.stem, start: 0, end: sp.stem.length, lemma: hit.entry.lemma, pos: 'VERB', morph: { VerbForm: 'Inf' } },
+    ...sp.clitics.map((cl): WordPart => { const p: WordPart = { text: cl, start: off, end: off + cl.length, lemma: cl, pos: 'PRON', role: 'object pronoun' }; off += cl.length; return p; }),
+  ];
+  return [annotate({
     lemma: hit.entry.lemma, pos: 'VERB', morph: { VerbForm: 'Inf' }, gloss: hit.entry.gloss, confidence: 0.85,
-    notes: { stem: sp.stem, clitics: sp.clitics, source: 'rule' },
-  }];
+    notes: { stem: sp.stem, clitics: sp.clitics, source: 'rule' }, parts, origin: 'rule', sourceId: ES_SOURCE_IDS.rules,
+  })];
+}
+
+let foldIndex: Map<string, string[]> | undefined;
+function foldLookup(folded: string): string[] {
+  if (!foldIndex) {
+    foldIndex = new Map();
+    for (const e of esLexicon.entries) for (const f of e.forms) {
+      const n = normalize(f.form);
+      const k = stripMarks(n);
+      const list = foldIndex.get(k) ?? [];
+      if (!list.includes(n)) list.push(n);
+      foldIndex.set(k, list);
+    }
+  }
+  return foldIndex.get(folded) ?? [];
+}
+
+/** Readings a modern spelling has from the lexicon or from a known lemma only (an inferred lemma does not count as "a word"). */
+function solidReadings(modern: string): AnalysisCandidate[] {
+  const hand = handCandidates(modern);
+  if (hand.length) return hand;
+  return analyzeSpanishForm(modern, { knownLemma }).filter((a) => a.lemmaKnown).map(fromEngine);
+}
+
+/** Older spelling: the modern lemma, tagged es-hist, `notes.modern` the modern spelling; the surface is never altered. */
+function historical(form: string): AnalysisCandidate[] {
+  const old = OLD_CONTRACTIONS[form];
+  if (old) {
+    const parts: WordPart[] = [
+      { text: 'de', start: 0, end: 2, lemma: 'de', pos: 'ADP' },
+      { text: old.rest, start: 2, end: form.length, lemma: old.lemma, pos: old.lemma === 'este' ? 'DET' : 'PRON' },
+    ];
+    return [{
+      lemma: 'de', pos: 'ADP', morph: {}, gloss: old.gloss, confidence: 0.7, parts, varieties: ['es-hist'], register: ['historical'],
+      notes: { source: 'rule', modern: old.modern, historical: 'older contraction of de with a pronoun' }, origin: 'rule', sourceId: ES_SOURCE_IDS.rules,
+    }];
+  }
+  const out: AnalysisCandidate[] = [];
+  for (const r of historicalSpellings(form, (m) => solidReadings(m).length > 0, foldLookup)) {
+    const exact = HISTORICAL_EXACT[form] === r.modern;
+    for (const c of solidReadings(r.modern)) {
+      out.push(annotate({
+        ...c, confidence: Math.min(c.confidence, exact ? 0.7 : r.rules.length > 1 ? 0.5 : 0.6),
+        varieties: union(c.varieties, ['es-hist']), register: union(c.register, ['historical']) as RegisterTag[],
+        notes: { ...(c.notes ?? {}), source: 'rule', modern: r.modern, historical: r.rules.join('; ') }, origin: 'rule', sourceId: ES_SOURCE_IDS.rules,
+      }));
+    }
+  }
+  return out;
+}
+
+const cloneCandidate = (c: AnalysisCandidate): AnalysisCandidate => {
+  const n: AnalysisCandidate = { ...c, morph: { ...c.morph } };
+  if (c.notes) { n.notes = {}; for (const k in c.notes) { const v = c.notes[k]; n.notes[k] = Array.isArray(v) ? [...v] : v; } }
+  if (c.parts) n.parts = c.parts.map((p) => ({ ...p, ...(p.morph ? { morph: { ...p.morph } } : {}) }));
+  if (c.varieties) n.varieties = [...c.varieties];
+  if (c.register) n.register = [...c.register];
+  return n;
+};
+
+/** Context-free analyses are a pure function of the form: computed once, kept in a bounded cache (oldest evicted), handed out as copies. */
+const FORM_CACHE = new Map<string, AnalysisCandidate[]>();
+const FORM_CACHE_MAX = 40000;
+
+/** Everything the adapter can say about one normalized form, best first. Empty when nothing is derivable. */
+function analyzeForm(form: string): AnalysisCandidate[] {
+  let hit = FORM_CACHE.get(form);
+  if (!hit) {
+    hit = analyzeFormUncached(form).map(cloneCandidate);
+    if (FORM_CACHE.size >= FORM_CACHE_MAX) FORM_CACHE.delete(FORM_CACHE.keys().next().value as string);
+    FORM_CACHE.set(form, hit);
+  }
+  return hit.map(cloneCandidate);
+}
+
+function analyzeFormUncached(form: string): AnalysisCandidate[] {
+  if (HISTORICAL_EXACT[form] !== undefined) {
+    const h = historical(form);
+    if (h.length) return h;
+  }
+  const hand = handCandidates(form);
+  if (hand.length) {
+    const mergeable = hand.some((c) => !CLOSED.has(c.pos ?? '')) || ALSO_VERB.has(form);
+    const base = hand.map((c) => withContractionParts(form, c));
+    if (!mergeable) return base;
+    const have = new Set(base.map(keyOf));
+    // beside a word-list reading the rules add only readings of lemmas the list also knows: not a guessed verb
+    // (después → "despuer") and not a guessed derivation (pelota → augmentative of pelo)
+    const alt = engineRead(form).filter((c) => !have.has(keyOf(c)) && c.notes?.lemmaStatus === 'in the word list' && c.morph.Degree === undefined);
+    if (!alt.length) return base;
+    // the course list is the first reading; the rules' other readings follow it, below it
+    const top = Math.min(0.75, Math.max(...base.map((c) => c.confidence)));
+    return [...base.map((c) => ({ ...c, confidence: Math.min(c.confidence, top) })), ...alt.map((c) => ({ ...c, confidence: Math.min(c.confidence, top - 0.05) }))];
+  }
+  const cl = clitic(form);
+  if (cl.length) return cl;
+  const eng = engineRead(form);
+  if (eng.some((c) => c.notes?.lemmaStatus === 'in the word list')) return eng;
+  const hist = historical(form);
+  return hist.length ? [...hist, ...eng] : eng;
+}
+
+// quantifiers that are both a determiner and an adverb (mucho, poco, tanto …), and nouns that are also adverbs (tarde, mañana)
+const QUANTIFIERS = new Set(['mucho', 'poco', 'tanto', 'demasiado', 'bastante']);
+const TIME_NOUNS = new Set(['tarde', 'mañana']);
+
+function disambiguate(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[] {
+  const cands = base[i];
+  if (cands.length < 2) return cands;
+  const w = tokens[i].normalized;
+  const choose = (pos: string, conf: number): AnalysisCandidate[] => {
+    const idx = cands.findIndex((c) => c.pos === pos && c.origin === 'hand');
+    if (idx < 0) return cands;
+    return [{ ...cands[idx], confidence: conf }, ...cands.filter((_, k) => k !== idx).map((c) => ({ ...c, confidence: Math.min(c.confidence, 0.3) }))];
+  };
+  if (QUANTIFIERS.has(w) && cands.some((c) => c.pos === 'DET') && cands.some((c) => c.pos === 'ADV')) {
+    const nx = base[i + 1]?.[0];
+    return nx && (nx.pos === 'NOUN' || nx.pos === 'PROPN') && tokens[i + 1].isWord ? choose('DET', 0.75) : choose('ADV', 0.7);
+  }
+  // (after aunque the verb is possible: "aunque tarde unos días" — left to the neighbour rules)
+  if (TIME_NOUNS.has(w) && cands.some((c) => c.pos === 'NOUN') && cands.some((c) => c.pos === 'ADV') && tokens[i - 1]?.normalized !== 'aunque') {
+    const pv = base[i - 1]?.[0];
+    return pv && tokens[i - 1].isWord && pv.pos === 'DET' ? choose('NOUN', 0.75) : choose('ADV', 0.7);
+  }
+  return disambiguateSpanish(i, tokens, base);
 }
 
 // ── phrases ──
@@ -156,6 +417,7 @@ const PHRASES: PhraseRule[] = [
     variants: [['empezar', 'a', 'entender']] },
   { pattern: ['creer', 'en', '_'], display: 'creer en …', gloss: 'to believe in (someone)', kind: 'frame',
     variants: [['creer', 'en', { slot: true }], ['en', { slot: true, pos: ['PRON', 'PROPN'] }, 'creer']] },
+  ...buildPhraseRules(),
 ];
 
 const DET_NOUN_GUARD = /^h?á?a/u; // el agua, el alma: feminine nouns with stressed a- take "el"
@@ -171,19 +433,37 @@ function articleFor(defn: string, gender: string, number: string): string | unde
 
 const SUPPORT: AdapterSupport = {
   tokenization: 'dependable', // Intl.Segmenter('es'); every token slices the input exactly
-  sentenceSegmentation: 'limited', // terminators + a short abbreviation list; an unlisted abbreviation ("Av.") can split a sentence
-  lemmatization: 'seed-only', // the lexicon covers the seed corpus only; any other word is left unanalysed (empty candidates), never guessed
-  morphology: 'seed-only', // person/number/tense only for the paradigms listed in the lexicon
-  phraseDetection: 'seed-only', // three course phrases (cuando era joven, empezar a entender, creer en …)
+  sentenceSegmentation: 'limited', // ¿ ? ¡ ! « » dialogue dashes, ellipses and a list of abbreviations; an unlisted abbreviation (Av.) followed by a capital can split a sentence
+  lemmatization: 'seed-only', // a hand list of about 1,500 lemmas and the closed classes; other words get a rule reading with its confidence (an inferred lemma stays at 0.6 or less) or none
+  morphology: 'limited', // rule readings of verbs (incl. voseo, vosotros, attached pronouns), nouns and adjectives; ambiguity returns every reading; not measured on running prose yet
+  phraseDetection: 'limited', // about 190 listed phrase units and 23 constructions, found where the neighbouring words are known; nothing is discovered
   productionChecks: 'limited',
   limitations: [
-    'Lemmatization is seed-only: the lexicon covers the bundled corpus, so supplied texts will have unanalysed words.',
-    'Historical Scripture forms outside the lexicon (á for a, dijéremos, engañamos are listed; others are not) stay unanalysed.',
-    'Clitics are split only on lexicon infinitives (entenderlo); gerund and imperative clitics (dámelo) are not analysed.',
-    'Production checks: article–noun agreement, de/a + el contraction, yo + conjugation (third-person verb or infinitive), and number above one + singular noun — only for lexicon words.',
-    'Sentence splitting does not know every abbreviation.',
+    'Lemmatization is seed-only: the built-in word list is a machine-drafted seed (about 1,500 lemmas and the closed classes) that has not been checked by a native speaker; any other word gets a rule reading marked as inferred, or none.',
+    'A reading the rules only infer (the lemma is not in the word list) is kept so that the form is still explained, but it is a rule guess: origin "rule", confidence 0.6 at most, no gloss, a note saying the lemma is inferred, and never marked as a word-list hit. Go does not claim it.',
+    'Regional words are tagged where known (Honduras, Central America, Latin America, Mexico, the Caribbean, the Andes, the Río de la Plata, Spain): only a handful of each is listed, and an untagged word is not thereby the same everywhere.',
+    'Older spelling (á for a, fué, dixo, fazer, vn) is recognised without changing the text, and only when the modern spelling is a word Go knows.',
+    'Phrase units and constructions are listed patterns, found only where the neighbouring words are in the word list or readable by the rules; they are not a grammar check.',
+    'Sentence splitting knows the usual abbreviations (Sr., Sra., Dr., Ud., pág., núm., EE. UU., a. C.) but not every one.',
+    'Production checks: article–noun agreement, de/a + el contraction, yo + conjugation (third-person verb or infinitive), and number above one + singular noun — only for words with a hand-written paradigm or a noun with a plural in the list.',
   ],
 };
+
+/** Dictionary form tags ("first-person", "plural", "imperfect") → features. */
+const TAG_MORPH: Record<string, Record<string, string>> = {
+  'first-person': { Person: '1' }, 'second-person': { Person: '2' }, 'third-person': { Person: '3' },
+  singular: { Number: 'Sing' }, plural: { Number: 'Plur' }, masculine: { Gender: 'Masc' }, feminine: { Gender: 'Fem' },
+  present: { Tense: 'Pres' }, imperfect: { Tense: 'Imp' }, preterite: { Tense: 'Past', Aspect: 'Perf' }, past: { Tense: 'Past' }, future: { Tense: 'Fut' },
+  conditional: { Mood: 'Cnd' }, indicative: { Mood: 'Ind' }, subjunctive: { Mood: 'Sub' }, imperative: { Mood: 'Imp' },
+  infinitive: { VerbForm: 'Inf' }, gerund: { VerbForm: 'Ger' }, participle: { VerbForm: 'Part' },
+  comparative: { Degree: 'Cmp' }, superlative: { Degree: 'Sup' }, diminutive: { Degree: 'Dim' }, augmentative: { Degree: 'Aug' },
+};
+
+function morphFromTags(tags: readonly string[]): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const t of tags) Object.assign(out, TAG_MORPH[t.toLowerCase()] ?? {});
+  return out;
+}
 
 export const esAdapter: LanguageAdapter = {
   lang: LANG,
@@ -191,9 +471,10 @@ export const esAdapter: LanguageAdapter = {
   script: 'Latn',
   version: VERSION,
   support: SUPPORT,
+  sources: ES_SOURCES,
+  varieties: ES_VARIETIES,
 
-  segmentSentences: (text) =>
-    splitSentences(text, { terminators: '.!?…', abbreviations: ['sr', 'sra', 'srta', 'dr', 'dra', 'etc', 'pág', 'pp', 'ud', 'uds', 'vs'] }),
+  segmentSentences: segmentSpanishSentences,
   tokenize: makeWordTokenizer({ locale: 'es', normalize }),
   normalize,
   /** Accent-insensitive (people type "corazon") but ñ stays distinct from n. */
@@ -202,36 +483,19 @@ export const esAdapter: LanguageAdapter = {
     return stripMarks(s).replace(/\u0001/g, 'ñ').trim();
   },
 
-  analyze: (tokens): AnalyzedToken[] => lexiconAnalyze(tokens, esLexicon, ANALYZER, { unknown: unknownWord }),
+  analyze: (tokens): AnalyzedToken[] => {
+    const base = tokens.map((t) => (t.isWord ? analyzeForm(t.normalized) : []));
+    return tokens.map((t, i) => ({ token: t, candidates: t.isWord ? disambiguate(i, tokens, base) : [], analyzer: ANALYZER }));
+  },
 
   detectPhrases(tokens, analyses): PhraseCandidate[] {
-    return matchPhraseRules(tokens, analyses, PHRASES, normalize);
+    const verbalSlot = (i: number) => !!analyses[i]?.candidates.some((c) => (c.pos === 'VERB' || c.pos === 'AUX') && (c.morph.VerbForm === 'Inf' || c.morph.VerbForm === 'Ger'));
+    return matchPhraseRules(tokens, analyses, PHRASES, normalize)
+      .filter((p) => !VERB_SLOT_PATTERNS.has(p.pattern.join(' ')) || verbalSlot(p.tokenIndexes[p.tokenIndexes.length - 1]));
   },
 
   detectPatterns(tokens, analyses): PatternCandidate[] {
-    const out: PatternCandidate[] = [];
-    analyses.forEach((a, i) => {
-      const c = a.candidates[0];
-      if (!c) return;
-      if (c.pos && ['VERB', 'AUX'].includes(c.pos) && c.morph.Tense === 'Imp') {
-        out.push({ key: 'imperfect', title: 'Imperfect (pretérito imperfecto)', confidence: c.confidence, tokenIndexes: [i],
-          explanation: 'Describes how things used to be or were ongoing in the past: "cuando era joven…", "no entendía".' });
-      }
-      if (c.pos && ['VERB', 'AUX'].includes(c.pos) && c.morph.Tense === 'Past' && c.morph.Aspect === 'Perf') {
-        out.push({ key: 'preterite', title: 'Preterite (pretérito indefinido)', confidence: c.confidence, tokenIndexes: [i],
-          explanation: 'A completed event in the past: "empecé a entender", "Dios perdonó".' });
-      }
-      if (c.notes?.clitics) {
-        out.push({ key: 'enclitic-pronoun', title: 'Pronoun attached to the infinitive', confidence: c.confidence, tokenIndexes: [i],
-          explanation: 'Object pronouns attach to the end of an infinitive: entender + lo → entenderlo.' });
-      }
-      if (normalize(tokens[i].surface) === 'a' && i > 0 && hasPos(analyses[i - 1], 'VERB') && i + 1 < tokens.length &&
-        (hasPos(analyses[i + 1], 'PROPN') || hasLemma(analyses[i + 1], 'todo'))) {
-        out.push({ key: 'personal-a', title: 'Personal "a"', confidence: 0.8, tokenIndexes: [i - 1, i, i + 1],
-          explanation: 'Spanish marks a person as direct object with "a": amo a Dios, perdona a todos.' });
-      }
-    });
-    return out;
+    return detectSpanishConstructions(tokens, analyses);
   },
 
   pronunciation(token, analysis): PronunciationSupport {
@@ -252,7 +516,10 @@ export const esAdapter: LanguageAdapter = {
 
   speechNormalize: (text, opts) => {
     void opts; // verse markers are stripped in every mode: they are never spoken
-    return speechNormalizeGeneric(text, {
+    // the raya of dialogue is punctuation, not a sound: the dash opening a turn is dropped; the pair that sets off a
+    // reporting clause (—Hola —dijo Luis—.) becomes a pause
+    const spoken = spokenDialogue(nfc(text));
+    const inner = speechNormalizeGeneric(spoken, {
       tool: `speech-${LANG}@1`,
       numberToWords: esNumberToWords,
       percentWord: 'por ciento',
@@ -264,6 +531,11 @@ export const esAdapter: LanguageAdapter = {
         { pattern: /\betc\./gu, replacement: 'etcétera', label: 'etc.' },
       ],
     });
+    if (spoken === nfc(text)) return inner;
+    return {
+      ...inner,
+      transformations: [{ at: DETERMINISTIC_AT, tool: `speech-${LANG}@1`, description: 'dialogue dashes (raya) not spoken: dropped at the start of a turn, a pause around a reporting clause' }, ...inner.transformations],
+    };
   },
 
   display: { wordSeparator: ' ', showBoundariesOnHighlight: false, fontFamily: 'Georgia, "Times New Roman", serif', lineHeight: 1.7 },
@@ -315,9 +587,9 @@ export const esAdapter: LanguageAdapter = {
             message: '"yo" takes the first-person verb form.',
             suggestion: fix ? { start: tokens[j].start, end: tokens[j].end, replacement: matchCase(tokens[j].surface, fix.form) } : undefined,
           });
-        } else if (isVerb && v.morph.VerbForm === 'Inf' && !v.notes?.clitics) {
-          // "Yo creer" → "Yo creo": a bare infinitive after yo (only when the verb is in the lexicon)
-          const fix = entry ? esLexicon.formWith(entry, { Person: '1', Number: 'Sing', Tense: 'Pres', Mood: 'Ind' }) : undefined;
+        } else if (isVerb && v.morph.VerbForm === 'Inf' && !v.notes?.clitics && entry && entry.forms.length > 1) {
+          // "Yo creer" → "Yo creo": a bare infinitive after yo (only for a verb with a hand-written paradigm; others are not guessed at)
+          const fix = esLexicon.formWith(entry, { Person: '1', Number: 'Sing', Tense: 'Pres', Mood: 'Ind' });
           out.push({
             category: 'conjugation', tokenIndexes: [i, j], confidence: fix ? 0.8 : 0.65, affectsMeaning: false,
             message: '"yo" needs a conjugated verb, not the infinitive: "yo creo", not "yo creer".',
@@ -349,11 +621,15 @@ export const esAdapter: LanguageAdapter = {
   relate(a, b) {
     const na = normalize(a), nb = normalize(b);
     if (na === nb) return 'same';
-    const la = new Set([...esLexicon.lemmasOf(na), ...(splitClitics(na) ? [esLexicon.lookup(splitClitics(na)!.stem)[0]?.entry.lemma] : [])].filter(Boolean));
-    const lb = new Set([...esLexicon.lemmasOf(nb), ...(splitClitics(nb) ? [esLexicon.lookup(splitClitics(nb)!.stem)[0]?.entry.lemma] : [])].filter(Boolean));
-    for (const l of la) if (lb.has(l)) return 'inflection';
+    // the lemmas of each form (the word list, attached pronouns, the rules and older spelling): readings of 0.5 or more count
+    const lemmas = (form: string) => new Set(analyzeForm(form).filter((c) => c.confidence >= 0.5 && c.lemma).map((c) => c.lemma as string));
+    const lb = lemmas(nb);
+    for (const l of lemmas(na)) if (lb.has(l)) return 'inflection';
     return 'none';
   },
+
+  morphFromTags,
+  describeMorph: (morph) => describeSpanishMorph(morph),
 };
 
 // ── numbers 0–999 999 ──

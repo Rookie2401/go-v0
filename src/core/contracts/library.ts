@@ -84,6 +84,8 @@ export interface TextProfile {
 
 export interface LibraryQuery {
   lang: LanguageCode;
+  /** All catalogued texts (chapters) of one work, in chapter order. */
+  workId?: string;
   stream?: string;
   stageId?: string;
   domain?: string;

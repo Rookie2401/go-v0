@@ -64,8 +64,9 @@ describe('the UI over the real engines', () => {
     page = await render('/');
     const empty = q(page, '[data-testid="home-empty"]');
     const rows = qa(page, 'ul.list li');
-    // either GoLearn offers a note or Home explains what is awaited: never a blank "for you today"
-    expect(rows.length > 0 || !!empty).toBe(true);
+    // either GoLearn offers a note, Home explains what is awaited, or Best next reads has something: never a blank "for you today"
+    const best = q(page, '[data-testid="best-next"]'); // a Spanish Home with something ranked for the learner is not a dead end either
+    expect(rows.length > 0 || !!empty || !!best).toBe(true);
     expect(page.textContent).not.toContain('Open a story to begin');
   });
 

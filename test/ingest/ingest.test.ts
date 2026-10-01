@@ -3,12 +3,13 @@ import {
   createMemoryStore, hash, ids, LANGUAGES, type AppStore, type LanguageCode, type Sentence, type TokenAnalysis,
 } from '../../src/core';
 import {
-  CorpusValidationError, applyReview, computePublished, contentSignatureOf, importDocuments, validateDocument, ingestAll, ingestDocument, loadBundledCorpus, testimonyDocument, testimonyDocumentId,
+  CorpusValidationError, applyReview, computePublished, contentSignatureOf, importDocuments, validateDocument, ingestAll, ingestDocument, testimonyDocument, testimonyDocumentId,
   type CorpusDocument,
 } from '../../src/ingest';
+import { loadSeedCorpus } from './seed';
 import { baseDoc, clock, countWrites, registry, scriptureDoc, snapshot } from './helpers';
 
-const docs = loadBundledCorpus();
+const docs = loadSeedCorpus(); // the original fifteen seed texts; the course texts have their own tests (corpus.test.ts)
 const clone = <T,>(x: T): T => structuredClone(x);
 const sentencesOf = (d: CorpusDocument): string[] =>
   d.sections.flatMap((s) => s.paragraphs.flatMap((p) => ('sentences' in p ? p.sentences.map((x) => x.text) : [p.text])));
@@ -470,7 +471,7 @@ describe('content versioning', () => {
 
     const human = async (sentenceId: string, n: number): Promise<TokenAnalysis> => {
       const tokenId = ids.token(sentenceId, n);
-      const row: TokenAnalysis = { id: `human:${tokenId}`, tokenId, lang: 'es', morph: {}, confidence: 1, provenance: 'human', analyzer: 'human:cj', createdAt: clock(), supersedes: ids.analysis(tokenId, 'adapter-es@1') };
+      const row: TokenAnalysis = { id: `human:${tokenId}`, tokenId, lang: 'es', morph: {}, confidence: 1, provenance: 'human', analyzer: 'human:cj', createdAt: clock(), supersedes: ids.analysis(tokenId, `adapter-es@${registry.get('es').version}`) };
       await store.analyses.put(row);
       return row;
     };
@@ -634,7 +635,7 @@ describe('author analysis: spans and corrections', () => {
     expect(r2.documents[0].action).toBe('updated');
     expect(r2.documents[0].contentVersion).toBe(1);
     const back = await store.analyses.where('tokenId', ids.token(s.id, 0));
-    expect(back.map((x) => x.analyzer)).toEqual(['adapter-es@1']);
+    expect(back.map((x) => x.analyzer)).toEqual([`adapter-es@${registry.get('es').version}`]);
     const d3 = withSpans({});
     await importDocuments(store, registry, [d3], { clock });
     expect((await store.analyses.get(human.id))?.provenance).toBe('human');

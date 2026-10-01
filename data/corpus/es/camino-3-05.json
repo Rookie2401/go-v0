@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-3-05",
+  "lang": "es",
+  "title": "La bicicleta de Marta",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-3-05",
+    "title": "Camino 3 — Historias: La bicicleta de Marta (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-3",
+    "chapter": {
+      "index": 5,
+      "title": "La bicicleta de Marta"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "places",
+    "home"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "La bicicleta de Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Desde que cumplió diez años, Marta soñaba con tener una bicicleta.",
+              "english": "Ever since she turned ten, Marta had dreamed of having a bicycle."
+            },
+            {
+              "text": "Todos los días veía pasar a los niños del barrio en sus bicicletas.",
+              "english": "Every day she saw the children of the neighborhood go by on their bicycles."
+            },
+            {
+              "text": "Una noche se lo dijo a su padre.",
+              "english": "One night she told her father."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Papá, quiero una bicicleta, ¿me la puedes comprar? —dijo.",
+              "english": "\"Dad, I want a bicycle, can you buy it for me?\" she said."
+            },
+            {
+              "text": "Pedro pensó un momento.",
+              "english": "Pedro thought for a moment."
+            },
+            {
+              "text": "—Una bicicleta cuesta mucho —dijo—, y no podemos comprarla ahora, pero te propongo algo.",
+              "english": "\"A bicycle costs a lot,\" he said, \"and we can't buy it now, but I have a proposal.\""
+            },
+            {
+              "text": "—Cuando hayas ahorrado la mitad del dinero, yo pondré la otra mitad.",
+              "english": "\"When you have saved half of the money, I will put in the other half.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta aceptó enseguida.",
+              "english": "Marta accepted right away."
+            },
+            {
+              "text": "Al día siguiente fue a ver a don Carlos, un vecino que tenía un jardín grande.",
+              "english": "The next day she went to see don Carlos, a neighbor who had a big garden."
+            },
+            {
+              "text": "—Don Carlos, ¿necesita que alguien lo ayude con el jardín? —preguntó.",
+              "english": "\"Don Carlos, do you need someone to help you with the garden?\" she asked."
+            },
+            {
+              "text": "—Pues sí —dijo don Carlos—, porque mis rodillas ya no son como antes, y si vienes los sábados, te pagaré por tu trabajo.",
+              "english": "\"Well, yes,\" said don Carlos, \"because my knees are not what they used to be, and if you come on Saturdays, I will pay you for your work.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Desde entonces, cada sábado Marta regaba las plantas y sacaba las malas hierbas.",
+              "english": "From then on, every Saturday Marta watered the plants and pulled the weeds."
+            },
+            {
+              "text": "Aunque a veces hacía calor y estaba cansada, no dejó de ir ni un solo sábado.",
+              "english": "Although sometimes it was hot and she was tired, she did not miss a single Saturday."
+            },
+            {
+              "text": "Su madre guardaba el dinero en una lata para que no se perdiera.",
+              "english": "Her mother kept the money in a tin so that it would not get lost."
+            },
+            {
+              "text": "Luis, que ya tenía una bicicleta vieja, le dijo que le enseñaría a montar en cuanto tuviera la suya.",
+              "english": "Luis, who already had an old bicycle, told her he would teach her to ride as soon as she had her own."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pasaron los meses.",
+              "english": "The months went by."
+            },
+            {
+              "text": "Un sábado, la lata estaba casi llena.",
+              "english": "One Saturday, the tin was almost full."
+            },
+            {
+              "text": "Pedro contó el dinero y dijo: —Marta, ya has ahorrado la mitad.",
+              "english": "Pedro counted the money and said, \"Marta, you have already saved half.\""
+            },
+            {
+              "text": "Fueron a la tienda y Marta eligió una bicicleta roja.",
+              "english": "They went to the shop and Marta chose a red bicycle."
+            },
+            {
+              "text": "—Nunca había tenido algo tan bonito —dijo.",
+              "english": "\"I had never had anything so beautiful,\" she said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Esa tarde Luis la llevó a la calle y le enseñó a montar.",
+              "english": "That afternoon Luis took her to the street and taught her to ride."
+            },
+            {
+              "text": "Se cayó dos veces, pero no lloró.",
+              "english": "She fell twice, but she did not cry."
+            },
+            {
+              "text": "A la tercera vez, pedaleó sola hasta el final de la calle.",
+              "english": "The third time, she pedaled by herself to the end of the street."
+            },
+            {
+              "text": "—¡Lo logré! —gritó.",
+              "english": "\"I did it!\" she shouted."
+            },
+            {
+              "text": "Don Carlos, que miraba desde su ventana, aplaudió.",
+              "english": "Don Carlos, who was watching from his window, clapped."
+            },
+            {
+              "text": "Marta supo que el trabajo había valido la pena.",
+              "english": "Marta knew that the work had been worth it."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-3-02",
+  "lang": "es",
+  "title": "La vida de Elena",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-3-02",
+    "title": "Camino 3 — Historias: La vida de Elena (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography",
+    "people"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-3",
+    "chapter": {
+      "index": 2,
+      "title": "La vida de Elena"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "people",
+    "school",
+    "family"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "La vida de Elena",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Elena nació en un pueblo pequeño, entre montañas.",
+              "english": "Elena was born in a small town, among mountains."
+            },
+            {
+              "text": "Su padre era agricultor y su madre cosía ropa para los vecinos.",
+              "english": "Her father was a farmer and her mother sewed clothes for the neighbors."
+            },
+            {
+              "text": "Elena era la mayor de cinco hermanos, y desde niña ayudó en casa.",
+              "english": "Elena was the oldest of five children, and from childhood she helped at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Aunque la familia era pobre, sus padres querían que ella estudiara.",
+              "english": "Although the family was poor, her parents wanted her to study."
+            },
+            {
+              "text": "Cada mañana caminaba una hora hasta la escuela del pueblo vecino.",
+              "english": "Every morning she walked for an hour to the school in the next town."
+            },
+            {
+              "text": "Cuando tenía quince años, su maestro le dijo que ella también podía ser maestra.",
+              "english": "When she was fifteen, her teacher told her that she could be a teacher too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Una tía la recibió en su casa de la ciudad, y Elena vivió allí cuatro años mientras estudiaba.",
+              "english": "An aunt took her in at her house in the city, and Elena lived there for four years while she studied."
+            },
+            {
+              "text": "Al principio extrañaba mucho a su familia.",
+              "english": "At first she missed her family a lot."
+            },
+            {
+              "text": "Le escribía una carta a su madre todas las semanas.",
+              "english": "She wrote her mother a letter every week."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Cuando terminó sus estudios, volvió a su pueblo.",
+              "english": "When she finished her studies, she went back to her town."
+            },
+            {
+              "text": "Abrió una escuela pequeña en una casa vieja.",
+              "english": "She opened a small school in an old house."
+            },
+            {
+              "text": "Los primeros años tenía pocos alumnos, pero poco a poco llegaron más niños.",
+              "english": "The first years she had few pupils, but little by little more children came."
+            },
+            {
+              "text": "Elena enseñaba a leer a los niños y también a sus padres, que nunca habían aprendido.",
+              "english": "Elena taught the children to read, and also their parents, who had never learned."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Se casó con Miguel, un carpintero que hizo los bancos de la escuela.",
+              "english": "She married Miguel, a carpenter who made the benches for the school."
+            },
+            {
+              "text": "Tuvieron tres hijos.",
+              "english": "They had three children."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hoy Elena tiene setenta años y ya no enseña, pero muchos de sus alumnos han llegado a ser maestros, enfermeros y agricultores.",
+              "english": "Today Elena is seventy and no longer teaches, but many of her pupils have become teachers, nurses and farmers."
+            },
+            {
+              "text": "Cuando la ven por la calle, la saludan con cariño.",
+              "english": "When they see her in the street, they greet her warmly."
+            },
+            {
+              "text": "Algunos le dicen: —Maestra, gracias por todo lo que nos enseñó.",
+              "english": "Some say to her, \"Teacher, thank you for everything you taught us.\""
+            },
+            {
+              "text": "Ella siempre contesta: —Yo solo quería que ustedes aprendieran.",
+              "english": "She always answers, \"I only wanted you to learn.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

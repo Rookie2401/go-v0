@@ -15,7 +15,7 @@ describe('Spanish adapter', () => {
     expect(es.normalize('Entendía')).toBe('entendía');
     expect(es.normalize('Entendia')).not.toBe(es.normalize('Entendía'));
     // a word without its accent is NOT in the lexicon: uncertainty, not a guess
-    expect(run('es', 'entendia').analyses[0].candidates).toEqual([]);
+    for (const c of run('es', 'entendia').analyses[0].candidates) expect(c.confidence).toBeLessThanOrEqual(0.6); // none, or a rule guess
   });
 
   it('analyses conjugated forms from the lexicon paradigm', () => {
@@ -45,8 +45,14 @@ describe('Spanish adapter', () => {
     expect(r.tokens[indexOfToken(r, 'entenderlo')].normalized).toBe('entenderlo');
     expect(best(r, 'perdonarnos').notes).toMatchObject({ clitics: ['nos'] });
     expect(patterns('es', 'Quiero entenderlo.').map((p) => p.key)).toContain('enclitic-pronoun');
-    // an unknown stem is not guessed
-    expect(run('es', 'comprarlo').analyses[0].candidates).toEqual([]);
+    // the word list now holds comprar, so the same rule applies to it; a stem the list does not hold is not guessed
+    expect(best(run('es', 'comprarlo'), 'comprarlo')).toMatchObject({ lemma: 'comprar', notes: { clitics: ['lo'] } });
+    for (const c of run('es', 'zapatearlo').analyses[0].candidates) expect(c.confidence).toBeLessThanOrEqual(0.6); // only a rule reading, never a confident one
+    // the pieces of the word are reported with offsets inside it
+    expect(best(r, 'entenderlo').parts).toEqual([
+      expect.objectContaining({ text: 'entender', start: 0, end: 8, lemma: 'entender' }),
+      expect.objectContaining({ text: 'lo', start: 8, end: 10 }),
+    ]);
   });
 
   it('detects the three target phrases (also with a pronoun inside and in the Bible word order)', () => {

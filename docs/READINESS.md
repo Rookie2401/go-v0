@@ -13,17 +13,18 @@ This is **not** a production-readiness claim.
 
 Three different things are kept apart, because a green test gate proves only the first.
 
-**1. Implementation correctness** — does the software do what it says? Verified by `npm run gate` (2,828 tests in
-161 files, typecheck clean), the production build, the import proof (162 checks, 0 mismatches), the corpus check,
-and browser flows in a sandbox database. The audit round below fixed four confirmed defects, one wording issue and
-two further faults found while verifying them.
+**1. Implementation correctness** — does the software do what it says? Verified by `npm run gate` (3,531 tests in
+196 files, typecheck clean, no runner errors), the production build, the import proof (162 checks, 0 mismatches),
+the corpus check, and browser flows in sandbox databases. The audit round below fixed four confirmed defects, one
+wording issue and two further faults found while verifying them; the Spanish pass fixed five more found in its own
+browser audit (see "Spanish course").
 
 **2. Linguistic validation (Thai)** — is the language analysis right? Only partly measured, and only against
 dictionary data, never against a native reviewer:
 
 | Measure | Result | What it does and does not show |
 |---|---|---|
-| Word segmentation on 3,116 Wiktionary examples | boundary F1 90.27 %, 61.26 % of sentences exact | Short dictionary examples divided by another project's convention; says little about book prose. **The segmentation gate is not met.** |
+| Word segmentation on 3,116 Wiktionary examples | course tokenizer: boundary F1 90.27 %, 61.26 % of sentences exact. **PyThaiNLP newmm 5.3.8 on the same sentences: F1 89.97 %, 57.83 % exact** (run 2026-10-01) | Parity with an established tokenizer on this set, with the opposite error profile (ours over-splits compounds, newmm under-splits). Short dictionary examples divided by another project's convention; says little about book prose. **The segmentation gate is not met.** |
 | Tone rules alone, held-out half of 17,298 Wiktionary spellings | 24 confidently wrong words = 0.82 % of confident answers; a third of words answered confidently, the rest marked uncertain | The rules are tuned on the other half only. Nothing was tuned or hard-coded against the held-out half |
 | Dictionary respelling read by the engine vs the IPA | same **tone sequence** for 99.88 % of 8,124 held-out respellings | **Tone agreement only** (one tone per syllable, hence syllable count). It does not check consonants, vowels, length or finals, so it is not a measure of complete pronunciation accuracy, and the reference is Wiktionary, not a native speaker |
 | Reading units | 80 of 107 constructed stress paragraphs exact | Cases written by a model: behaviour on known hazards, not accuracy on real prose |
@@ -36,11 +37,9 @@ dictionary data, never against a native reviewer:
    text under `data/private/`, `npm run gold:draft`, a person corrects the boundaries, `npm run gold:accept -- --by
    "Name"`, `npm run gold:freeze`, `npm run bench:words -- --frozen <id> --report`. The gold set is empty today and
    no model judgment is ever written into it as ground truth.
-2. **Python 3.9+ with PyThaiNLP** for the comparison with an established tokenizer. Checked on this machine
-   2026-10-01: there is no Python runtime (only the Microsoft Store placeholder alias), so nothing was run and
-   nothing was installed. With the owner's go-ahead: create a virtual environment, `pip install pythainlp`, run
-   `scripts/external/pythainlp_tokenize.py` as described in the workflow document, then
-   `npm run bench:words -- --external newmm=<file>`.
+2. *(done)* Python 3.12.10 was installed with the owner's go-ahead and PyThaiNLP 5.3.8 into an isolated
+   environment (`data/private/venv-thai`, git-ignored); the comparison ran (`docs/thai/BENCHMARKS.md` 3.7). The same
+   two commands will score the course gold set once it exists.
 3. **Human review**: a native speaker's check of pronunciation, of the 598-entry hand lexicon, the phrase units,
    constructions and tone exception lists, and a reviewer's decisions on the 112 recorded disagreements
    (`data/review/th/resolutions.json`).
@@ -71,11 +70,38 @@ dormant code.
 
 Held-out discipline: no fix in this round touched the tone engine, the tokenizer or the held-out sets.
 
+## Spanish course (foundation, contract v7, 2026-10-01)
+
+Status of record: **`docs/spanish/STATUS.md`**. In brief:
+
+- **Implemented and verified**: streams, shelves and doors; rights states that gate what may be bundled; regional
+  varieties with an explicit course policy (Honduran / Central American target, voseo active, Spain and older
+  Spanish receptive); rule morphology with attached pronouns; readings ordered by context; a library that never
+  loads whole (20,000-row catalogue tests); personal difficulty and ranking with reasons; search; import of a
+  learner's own `.txt` or unprotected `.epub`; a source quality check that reports and never fixes.
+- **Architecture only**: the built library (the build tool has run on fixtures only; none is shipped); ranking over
+  a real corpus (weights are first guesses); the Spanish dictionary layer (the 1.05 GB kaikki file has not been
+  downloaded: permission needed); knowledge, mission and listening streams (no texts); frequency data (none).
+- **Bundled**: 26 course texts drafted by an AI model (about 3,660 words, unreviewed, unpublished, preview only),
+  the two older seed texts (same state), and three byte-verified verses of Reina-Valera 1909 (published).
+- **Recommended only**: 61 of the 66 catalogued works are metadata. **Rights**: 50 unverified, 11 prohibited from
+  bundling, 4 course-authored, 1 verified. Nothing is treated as public domain because it is old or online.
+- **Found and fixed in the browser audit of this pass**: (1) the reader's Previous / Next followed titles instead
+  of chapter order; (2) the first reading of common homographs was wrong for about 1.1 % of the words of the course
+  texts ("no sé" as ser, "—pregunta Marvin" as a noun, "fue al mercado" as ser, plural nouns as "tú" forms) and
+  guessed verbs were listed beside adverbs; (3) an improved analyzer never reached texts already imported on a
+  device, because the remembered signature covered the documents only; (4) the word sheet said "possibly" for
+  every word that had a second reading, even one ruled out; (5) the test suite passed but the runner reported
+  worker timeouts, because command-line tests blocked their workers with synchronous spawns (and one test counted
+  temporary directories shared with other test files).
+- **Not verified**: anything about Spanish on real prose; every Honduran fact and regional gloss; the controlled
+  texts' Spanish (no native reader has seen them).
+
 ## Readiness by language
 
 | | Ingestion | Progress tracking | Linguistic analysis | Scripture | Audio (GoListen: deferred to V2, switched off) |
 |---|---|---|---|---|---|
-| **Spanish** | Verified (proof + browser importer) | Verified (one record on Home, library, reader; version-scoped) | Tokenization dependable; sentence splitting limited; lemma / morphology / phrases **seed lexicon only**; `á`, `dijéremos`, `engañamos` analysed, other historical forms left unanalysed | **Published**: Reina-Valera 1909, 3 verses, byte-verified against eBible.org | **Not verified** — no credentials; nothing synthesized |
+| **Spanish** | Verified (proof + browser importer; a learner's own `.txt` / `.epub` imports chapter by chapter) | Verified (one record on Home, library, reader; version-scoped) | Tokenization dependable; sentence splitting limited; a word list of 1,701 lemmas (**machine-drafted, not native-reviewed**) plus rule morphology for any verb, noun or adjective form (an inferred lemma is marked as such, 0.6 at most, no gloss); readings ordered by neighbouring words, measured on the course's own texts only; no dictionary installed; nothing measured on real prose (see "Spanish course") | **Published**: Reina-Valera 1909, 3 verses, byte-verified against eBible.org | **Not verified** — no credentials; nothing synthesized |
 | **German** | Verified | Verified (engine); browser checked for Spanish only | Dependable tokenization; separable verbs only `anfangen`; compounds low-confidence; **seed lexicon only** | **Published**: Lutherbibel 1912, 3 verses, byte-verified | Not verified |
 | **Albanian** | Verified | as German | ë / ç preserved; inflected forms related; clitics ambiguous in thin context; **seed lexicon only** | **Blocked** — awaiting an approved translation | Not verified |
 | **Hindi** | Verified (grapheme-safe spans, danda kept, non-NFC preserved) | as German | Compound verbs only when listed; **seed lexicon only** | **Blocked** | Not verified |
@@ -190,8 +216,8 @@ database created under the previous version).
 1. **The books.** Every work is a recommendation with rights unverified; the learner supplies each text from a
    copy he is entitled to use. Bibliographic details (authors, publishers, editions) are from general knowledge
    and are marked unverified.
-2. **Python with PyThaiNLP** (or its output for the benchmark sentences) for the comparison with an established
-   tokenizer — the owner's decision whether to install it.
+2. *(done 2026-10-01)* Python with PyThaiNLP was installed with the owner's go-ahead and the comparison with an
+   established tokenizer ran (`docs/thai/BENCHMARKS.md` 3.7); the segmentation gate is still not met.
 3. **A Thai Bible**: the release metadata of the candidate translation verified, then verification of the text
    as for Spanish and German. The three-verse Thai sample in `data/corpus/th/` is of unidentified origin and
    should be replaced by a rights-clear fixture.

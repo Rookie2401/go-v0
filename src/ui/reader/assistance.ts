@@ -330,3 +330,46 @@ export const hasSeveralReadings = (notes: TokenAnalysis['notes']): boolean => {
   const r = notes?.readings;
   return Array.isArray(r) && r.length > 1;
 };
+
+// ───────────────────────────── morphology, parts, varieties (Spanish) ─────────────────────────────
+
+export type DescribeMorph = (morph: Record<string, string>, pos?: PartOfSpeech) => string;
+
+/** The lemma text inside a lemma id ("lemma:es:haber:VERB" → "haber"). */
+export function lemmaOfId(id?: string): string | undefined {
+  const m = id ? /^lemma:[^:]+:(.*?)(?::[A-Z]+)?$/.exec(id) : null;
+  return m?.[1] || undefined;
+}
+
+const sameWord = (a: string, b: string): boolean => a.normalize('NFC').toLowerCase() === b.normalize('NFC').toLowerCase();
+
+/** "first person plural, imperfect subjunctive of haber": the adapter's plain words plus the lemma (when it is not the written form). */
+export function morphInWords(describe: DescribeMorph | undefined, morph: Record<string, string> | undefined, pos: PartOfSpeech | undefined, lemma: string | undefined, surface: string): string | undefined {
+  if (!describe || !morph || Object.keys(morph).length === 0) return undefined;
+  const words = describe(morph, pos);
+  if (!words) return undefined;
+  return lemma && !sameWord(lemma, surface) ? `${words} of ${lemma}` : words;
+}
+
+/** The other readings the analyzer kept, briefly ("or: …"). Dictionary alternatives are glosses, not morphology: not here. */
+export function morphAlternates(describe: DescribeMorph | undefined, a: Pick<TokenAnalysis, 'alternatives'> | undefined, surface: string): string[] {
+  if (!describe) return [];
+  const out: string[] = [];
+  for (const alt of a?.alternatives ?? []) {
+    if (alt.origin === 'dictionary') continue;
+    const line = morphInWords(describe, alt.morph, alt.pos, lemmaOfId(alt.lemmaId), surface);
+    if (line && !out.includes(line)) out.push(line);
+  }
+  return out.slice(0, 3);
+}
+
+/** The parts of a written word that is several units; fewer than two is not worth a line. */
+export const wordParts = (a: Pick<TokenAnalysis, 'parts'> | undefined) => ((a?.parts?.length ?? 0) >= 2 ? a!.parts! : []);
+
+/** How the personal-difficulty factors read in words. */
+export const PERSONAL_FACTOR_WORD: Record<string, string> = {
+  'lexical-coverage': 'lexical coverage', 'new-words': 'new words', phrases: 'phrases', constructions: 'unfamiliar constructions',
+  'sentence-length': 'sentence length', 'clause-depth': 'clause depth', subjunctive: 'subjunctive', clitics: 'attached pronouns',
+  regional: 'regional vocabulary', historical: 'historical vocabulary', 'proper-names': 'names', domain: 'subject matter',
+  author: "author's style", unanalysed: 'words without analysis',
+};

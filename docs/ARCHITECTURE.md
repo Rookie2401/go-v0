@@ -318,3 +318,33 @@ Briefs: `docs/PLAN7.md`, `docs/PLAN8.md`. Results: `docs/READINESS.md`.
 54. **Playback is not speech.** `ProviderAvailability.realSpeech` is separate from `available`.
 55. **Product scope is a flag, not a deletion.** `FEATURES.listen = false` defers GoListen to V2: no provider, no
     request, no audio interface, no statement about listening, no data removed; the dormant package stays tested.
+
+## 18. The Spanish course (contract v7)
+
+Design: `docs/SPANISH_COURSE.md`. Brief: `docs/PLAN9.md`. Status: `docs/spanish/STATUS.md`.
+
+56. **A corpus, not a syllabus.** Streams (what kind of content) and shelves (roughly how hard) describe works;
+    neither locks anything. What a learner is offered is computed from the learner model, per text.
+57. **Rights are a state, and the state gates the build.** A work is bundlable only as verified public domain,
+    verified open licence or course-authored, each with its verifier; everything else is metadata. Age and online
+    availability are leads, never grounds.
+58. **The library never loads whole.** Index rows and posting lists in the store, a profile per text fetched for
+    the candidates being scored, documents imported when a text is opened. A page costs a page.
+59. **Personal difficulty is computed, labels are kept.** An editor's level is stored as given; what is shown to a
+    learner is coverage and factors for that learner, with what is not known said in words.
+60. **Varieties are a policy of the course.** The analysis tags a form's variety; the course says which varieties are
+    the active target and which are receptive. Nothing is suppressed; older Spanish is never modernised in the text.
+61. **Rule morphology states its own standing.** A reading by rule carries the rule, a confidence, and whether the
+    lemma is in the word list or only inferred (0.6 at most, no gloss).
+62. **Context orders readings, it does not delete them.** The neighbour rules (`spanish/disambiguate.ts`) move one
+    reading to the front, mark the others down and record which neighbour decided; where the neighbours do not
+    decide the order is left alone. "Uncertain" on the word sheet means low confidence or a reading that still
+    competes (within `COMPETING_MARGIN`), not merely that another reading exists.
+63. **An analyzer is part of the content signature.** The built-in import runs again when any adapter's version
+    changes; texts whose analyzer changed are re-analysed in place (same sentences, tokens and content version) and
+    every learner's derived state is rebuilt from the log. An adapter whose output changes must change its version.
+64. **A source is inspected before it is imported.** The quality check reports damage (encoding, OCR, wrapping,
+    boilerplate, wrong language) and fixes nothing; a damaged source is refused by the library build.
+65. **Command-line tests never block their worker.** They start the scripts asynchronously
+    (`test/helpers/cli.ts`): a synchronous spawn of several seconds, repeated inside one test, starved the test
+    runner's own messaging and failed a green suite.

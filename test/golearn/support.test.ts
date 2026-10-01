@@ -54,15 +54,23 @@ describe('tokenSupport returns only what the level needs', () => {
     expect(l5.analysis).toBeDefined();
   });
 
-  it('flags uncertain analyses instead of guessing: low confidence, alternatives, or no analysis', async () => {
+  it('flags uncertain analyses instead of guessing: low confidence, a competing reading, or no analysis', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
     const token = `${ES_STORY}/s1/t1`; // corazón
     const a = (await h.store.analyses.where('tokenId', token))[0];
     await h.store.analyses.put({ ...a, confidence: 0.4 });
     expect((await h.golearn.tokenSupport(U, token, 1)).uncertain).toBe(true);
-    await h.store.analyses.put({ ...a, confidence: 0.9, alternatives: [{ morph: {}, confidence: 0.3 }] });
+    // another reading about as likely as the chosen one: uncertain
+    await h.store.analyses.put({ ...a, confidence: 0.9, alternatives: [{ morph: {}, confidence: 0.85 }] });
     expect((await h.golearn.tokenSupport(U, token, 3)).uncertain).toBe(true);
+    await h.store.analyses.put({ ...a, confidence: 0.7, alternatives: [{ morph: {}, confidence: 0.7 }] });
+    expect((await h.golearn.tokenSupport(U, token, 3)).uncertain).toBe(true);
+    // a reading the analyzer marked down (the neighbouring words decided against it) is kept but does not compete
+    await h.store.analyses.put({ ...a, confidence: 0.9, alternatives: [{ morph: {}, confidence: 0.3 }] });
+    expect((await h.golearn.tokenSupport(U, token, 3)).uncertain).toBe(false);
+    await h.store.analyses.put({ ...a, confidence: 0.7, alternatives: [{ morph: {}, confidence: 0.4 }] });
+    expect((await h.golearn.tokenSupport(U, token, 3)).uncertain).toBe(false);
     await h.store.analyses.put({ ...a, confidence: 0.9, alternatives: undefined });
     expect((await h.golearn.tokenSupport(U, token, 3)).uncertain).toBe(false);
     await h.store.analyses.delete(a.id);

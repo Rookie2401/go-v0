@@ -1,8 +1,11 @@
 /**
  * On-disk dictionary format (schema 2): pure, browser-safe, shared by the builder and by every runtime source.
  *
- *   <dir>/<lang>/manifest.json      DictionaryInfo + { schema: 2, shards: <count>, shardFiles: [...] }
- *   <dir>/<lang>/s-<hh>.json        { [form]: CompactEntry[] }   hh = hex of bucketOf(form), 00-ff
+ *   <dir>/<lang>/manifest.json      DictionaryInfo + { schema: 2, buckets, shards: <count>, shardFiles: [...] }
+ *   <dir>/<lang>/s-<hh>.json        { [form]: CompactEntry[] }   hh = hex of bucketOf(form, buckets), at least 2 digits
+ *
+ * `buckets` (256 times a power of two, chosen per language so that no shard grows past ~250 kB) is in the manifest;
+ * a manifest without it is an older build and means 256.
  *
  * Schema 2 added the preserved senses, pronunciations, etymology number and alt-of headwords, and the `source`
  * record in the manifest. A schema-1 dictionary on disk reads as "not installed" (rebuild it).
@@ -26,21 +29,28 @@ export const REGISTER_TAGS: readonly RegisterTag[] = [
 const POS_SET = new Set<string>(PARTS_OF_SPEECH);
 const REGISTER_SET = new Set<string>(REGISTER_TAGS);
 
-/** Stable bucket of a normalized form: 32-bit FNV-1a over its UTF-16 code units, modulo 256. */
-export function bucketOf(form: string): number {
+/** Stable bucket of a normalized form: 32-bit FNV-1a over its UTF-16 code units, modulo the bucket count (default 256). */
+export function bucketOf(form: string, buckets = BUCKETS): number {
   let h = 0x811c9dc5;
   for (let i = 0; i < form.length; i++) {
     h ^= form.charCodeAt(i);
     h = Math.imul(h, 0x01000193);
   }
-  return (h >>> 0) % BUCKETS;
+  return (h >>> 0) % buckets;
 }
 
-export const shardName = (bucket: number): string => `s-${bucket.toString(16).padStart(2, '0')}.json`;
-const SHARD_FILE = /^s-[0-9a-f]{2}\.json$/;
+/** Shard file name: two hex digits for 256 buckets or fewer, wider when there are more (s-3ff.json for 1024). */
+export function shardName(bucket: number, buckets = BUCKETS): string {
+  const width = Math.max(2, (buckets - 1).toString(16).length);
+  return `s-${bucket.toString(16).padStart(width, '0')}.json`;
+}
+export const SHARD_FILE = /^s-[0-9a-f]{2,4}\.json$/;
+export const MAX_BUCKETS = 65536;
 
 export interface DictionaryManifest extends DictionaryInfo {
   schema: typeof DICT_SCHEMA;
+  /** Number of hash buckets the forms are spread over (256 when an older manifest does not say). */
+  buckets: number;
   /** Number of shard files written (empty buckets have no file). */
   shards: number;
   /** Names of the shard files that exist, sorted; lets the browser skip requests for empty buckets. */
@@ -72,7 +82,11 @@ export interface CompactEntry {
   y?: number;
   /** alt-of headwords */
   a?: string[];
+  /** inflected form of these lemmas */
+  m?: CompactFormOf[];
 }
+/** Compact shape of one form-of relation inside a shard. */
+export interface CompactFormOf { l: string; t?: string[] }
 
 const compactSense = (s: DictionarySense): CompactSense => ({
   g: s.gloss, ...(s.tags?.length ? { t: s.tags } : {}), ...(s.topics?.length ? { o: s.topics } : {}), ...(s.examples ? { x: s.examples } : {}),
@@ -92,6 +106,7 @@ export function compactEntry(e: DictionaryEntry): CompactEntry {
     ...(e.senses?.length ? { s: e.senses.map(compactSense) } : {}),
     ...(e.pronunciations?.length ? { n: e.pronunciations.map(compactPronunciation) } : {}),
     ...(e.etymology !== undefined ? { y: e.etymology } : {}), ...(e.altOf?.length ? { a: e.altOf } : {}),
+    ...(e.formOf?.length ? { m: e.formOf.map((f) => ({ l: f.lemma, ...(f.tags.length ? { t: f.tags } : {}) })) } : {}),
   };
 }
 
@@ -125,7 +140,12 @@ function expandPronunciation(raw: unknown): DictionaryPronunciation | undefined 
 export function expandEntry(form: string, lang: LanguageCode, raw: unknown): DictionaryEntry | undefined {
   if (!isObj(raw)) return undefined;
   const glosses = strList(raw.g);
-  if (!glosses.length) return undefined;
+  const formOf: Array<{ lemma: string; tags: string[] }> = [];
+  if (Array.isArray(raw.m)) {
+    for (const m of raw.m) { const lemma = isObj(m) ? strOpt(m.l) : undefined; if (lemma) formOf.push({ lemma, tags: isObj(m) ? strList(m.t) : [] }); }
+  }
+  // An inflected form has no gloss of its own: formOf is what it says. Neither means nothing usable.
+  if (!glosses.length && !formOf.length) return undefined;
   const e: DictionaryEntry = { form, lang, glosses };
   if (typeof raw.p === 'string' && POS_SET.has(raw.p)) e.pos = raw.p as PartOfSpeech;
   const r = strOpt(raw.r); if (r) e.respelling = r;
@@ -141,6 +161,7 @@ export function expandEntry(form: string, lang: LanguageCode, raw: unknown): Dic
   if (Array.isArray(raw.n)) { const n = raw.n.map(expandPronunciation).filter((x): x is DictionaryPronunciation => x !== undefined); if (n.length) e.pronunciations = n; }
   if (typeof raw.y === 'number' && Number.isInteger(raw.y) && raw.y >= 1) e.etymology = raw.y;
   const a = strList(raw.a); if (a.length) e.altOf = a;
+  if (formOf.length) e.formOf = formOf;
   return e;
 }
 
@@ -167,12 +188,17 @@ export function parseManifest(raw: unknown, lang: LanguageCode): DictionaryManif
   if (typeof raw.entries !== 'number' || !Number.isInteger(raw.entries) || raw.entries < 0) return undefined;
   if (typeof raw.hasFrequency !== 'boolean') return undefined;
   if (typeof raw.shards !== 'number' || !Number.isInteger(raw.shards) || raw.shards < 0) return undefined;
+  let buckets = BUCKETS;
+  if (raw.buckets !== undefined) {
+    if (typeof raw.buckets !== 'number' || !Number.isInteger(raw.buckets) || raw.buckets < 1 || raw.buckets > MAX_BUCKETS) return undefined;
+    buckets = raw.buckets;
+  }
   const shardFiles = Array.isArray(raw.shardFiles) && raw.shardFiles.every((s) => typeof s === 'string' && SHARD_FILE.test(s))
     ? (raw.shardFiles as string[]) : [];
   const source = parseSource(raw.source);
   return {
     schema: DICT_SCHEMA, id, lang, attribution, licence, entries: raw.entries, builtAt, hasFrequency: raw.hasFrequency,
-    ...(source ? { source } : {}), shards: raw.shards, shardFiles,
+    ...(source ? { source } : {}), buckets, shards: raw.shards, shardFiles,
   };
 }
 

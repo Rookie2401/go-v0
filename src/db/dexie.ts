@@ -61,6 +61,18 @@ export const SCHEMA_V2: Record<string, string> = {
   meta: 'id',
 };
 
+/**
+ * The schema as shipped in version 3 (Thai course foundation): the curriculum tables (`stages`, `works`, `notes`) and the
+ * `texts.workId` index, but no `catalog` table. Written out literally for the same reason as SCHEMA_V1 / SCHEMA_V2.
+ */
+export const SCHEMA_V3: Record<string, string> = {
+  ...SCHEMA_V2,
+  texts: 'id,corpusId,lang,kind,sourceId,reviewStatus,workId',
+  stages: 'id,courseId,lang',
+  works: 'id,courseId,stageId,lang,role',
+  notes: 'id,textId,sentenceId,kind',
+};
+
 export const MIGRATION_V2_META_ID = 'migration:dexie-v2';
 
 /** Loose row type for the upgrade: rows written by contract v1 lack the v2 fields. */
@@ -223,7 +235,10 @@ export function createDexieStore(name = 'go-v0'): DexieAppStore {
   db.version(2).stores(SCHEMA_V2).upgrade((tx) => upgradeToV2(tx as unknown as Parameters<typeof upgradeToV2>[0]));
   // Version 3 (Thai course foundation) only ADDS: the `stages`, `works` and `notes` tables and the `texts.workId` index.
   // Existing rows need no rewriting (a text without `workId` is simply not part of a ladder), so there is no upgrade step.
-  db.version(3).stores(schemaFor());
+  db.version(3).stores(SCHEMA_V3);
+  // Version 4 (Spanish course foundation) only ADDS the `catalog` table: the library index (one small row per catalogued
+  // text). Nothing is rewritten; the library fills it from the texts in the store and from a built library, on demand.
+  db.version(4).stores(schemaFor());
 
   const store = {} as DexieAppStore;
   for (const tableName of Object.keys(INDEXES) as TableName[]) {

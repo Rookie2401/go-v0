@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-2-05",
+  "lang": "es",
+  "title": "La carta",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-2-05",
+    "title": "Camino 2 — Días y lugares: La carta (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-2",
+    "chapter": {
+      "index": 5,
+      "title": "La carta"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "home"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "La carta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pedro recibió una carta ayer.",
+              "english": "Pedro received a letter yesterday."
+            },
+            {
+              "text": "La carta era de su hermano Tomás.",
+              "english": "The letter was from his brother Tomás."
+            },
+            {
+              "text": "Tomás vivía lejos, en otra ciudad.",
+              "english": "Tomás lived far away, in another city."
+            },
+            {
+              "text": "Pedro abrió la carta y la leyó.",
+              "english": "Pedro opened the letter and read it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tomás escribió: «Voy a visitarlos el sábado, porque quiero ver a todos.»",
+              "english": "Tomás wrote: \"I'm going to visit you on Saturday, because I want to see everyone.\""
+            },
+            {
+              "text": "Pedro estaba muy contento.",
+              "english": "Pedro was very happy."
+            },
+            {
+              "text": "Le dijo a Rosa: —Tomás va a venir a vernos.",
+              "english": "He said to Rosa, \"Tomás is going to come to see us.\""
+            },
+            {
+              "text": "—¿Cuándo va a llegar? —preguntó Rosa.",
+              "english": "\"When is he going to arrive?\" asked Rosa."
+            },
+            {
+              "text": "—El sábado —dijo Pedro.",
+              "english": "\"On Saturday,\" said Pedro."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Rosa dijo: —Tenemos que preparar la casa.",
+              "english": "Rosa said, \"We have to get the house ready.\""
+            },
+            {
+              "text": "Los niños ayudaron.",
+              "english": "The children helped."
+            },
+            {
+              "text": "Marta limpió la mesa y Luis puso las sillas.",
+              "english": "Marta cleaned the table and Luis set out the chairs."
+            },
+            {
+              "text": "El sábado Tomás llegó con una bolsa grande.",
+              "english": "On Saturday Tomás arrived with a big bag."
+            },
+            {
+              "text": "Les dio un regalo a los niños.",
+              "english": "He gave the children a present."
+            },
+            {
+              "text": "Pedro lo abrazó y todos comieron juntos.",
+              "english": "Pedro hugged him and they all ate together."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

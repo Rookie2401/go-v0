@@ -45,6 +45,50 @@ describe('bootstrap: content goes through the importer, then the policy migratio
     expect(again.services.startup!.bundledReport!.every((d) => d.action === 'unchanged')).toBe(true);
   });
 
+  it('re-imports when an adapter version changed, although the documents did not', async () => {
+    // found in the audit: analyses are made at import, and the remembered signature covered the documents only, so an
+    // improved analyzer never reached texts already on a device
+    const store = createMemoryStore();
+    await bootstrap({ store, courseId: 'honduras-es' });
+    const signature = String((await store.meta.get(BUNDLE_META_ID))!.value);
+    expect(signature).toMatch(/|[^|]*es@d+/);
+    await store.meta.put({ id: BUNDLE_META_ID, value: signature.replace(/es@[^,|]+/, 'es@older'), updatedAt: 'x' });
+    const again = await bootstrap({ store, courseId: 'honduras-es' });
+    expect(again.services.startup!.bundledReport).toBeDefined();
+    expect(String((await store.meta.get(BUNDLE_META_ID))!.value)).toBe(signature);
+    const third = await bootstrap({ store, courseId: 'honduras-es' });
+    expect(third.services.startup!.bundledReport).toBeUndefined();
+  });
+
+  it('rebuilds every learner\'s derived state when a built-in text was re-analysed, and only then', async () => {
+    const store = createMemoryStore();
+    const first = await bootstrap({ store, courseId: 'honduras-es' });
+    expect(first.services.startup!.modelRebuilt).toBeUndefined(); // a first import creates, it does not re-analyse
+    const userId = first.user!.id;
+    // an event in the log, and a text that looks as if an earlier analyzer had prepared it
+    const event: DomainEvent = { id: 'ev:kept:1', type: 'TextViewed', userId, lang: 'es', at: '2026-01-01T00:00:00.000Z', surface: 'corpus', session: 's', dedupeKey: 'kept:1', textId: 'text:es:camino-1-01' };
+    await store.events.put(event);
+    const text = (await store.texts.get('text:es:camino-1-01'))!;
+    expect(text.transformations.some((t) => t.tool.startsWith('adapter-es@'))).toBe(true);
+    await store.texts.put({ ...text, transformations: text.transformations.map((t) => (t.tool.startsWith('adapter-es@') ? { ...t, tool: 'adapter-es@older' } : t)) });
+    const own = (await store.meta.all()).find((m) => m.id !== BUNDLE_META_ID && m.id.includes('text:es:camino-1-01') && typeof m.value === 'string')!;
+    expect(own).toBeDefined();
+    await store.meta.put({ ...own, value: `${String(own.value)}-older` });
+    const signature = String((await store.meta.get(BUNDLE_META_ID))!.value);
+    await store.meta.put({ id: BUNDLE_META_ID, value: signature.replace(/es@[^,|]+/, 'es@older'), updatedAt: 'x' });
+
+    const second = await bootstrap({ store, courseId: 'honduras-es' });
+    const report = second.services.startup!.bundledReport!;
+    expect(report.filter((d) => d.action === 'updated').length).toBe(1);
+    expect(report.filter((d) => d.action === 'rejected')).toEqual([]);
+    expect(second.services.startup!.modelRebuilt).toBe(true);
+    expect(await store.events.get('ev:kept:1')).toEqual(event); // the log is never rewritten
+
+    const third = await bootstrap({ store, courseId: 'honduras-es' });
+    expect(third.services.startup!.bundledReport).toBeUndefined();
+    expect(third.services.startup!.modelRebuilt).toBeUndefined();
+  });
+
   it('skipCorpus leaves the store without texts', async () => {
     const r = await bootstrap(opts({ skipCorpus: true }));
     expect(await r.services.store.texts.count()).toBe(0);

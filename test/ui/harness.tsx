@@ -18,14 +18,17 @@ import { createRoot } from 'react-dom/client';
 import type { Root } from 'react-dom/client';
 import { MemoryRouter } from 'react-router-dom';
 import { vi } from 'vitest';
+import type { Mock } from 'vitest';
 import { COURSES, REVIEW_OK, StoreEventBus, buildFixtureText, createMemoryStore, ids, seedBasics } from '../../src/core';
 import type {
   AppStore, AssistanceLevel, AudioAsset, AudioManifest, AudioSegment, AudioStatus, ComfortBand, ComprehensionReported, DomainEvent,
-  AssistanceProfile, CourseCatalog, EvidenceAudit, Features, GoLearn, GoListen, GoTell, GoTellSuggestion, IntentProposal, PersonalizedCoverage, ProductionAnalysis, ProviderAvailability,
-  ReadingPace, ReadingProgress, Recommendation, ScriptureReadiness, Stage, StageReadiness, SentenceSupport, Testimony, TestimonyDraft, TestimonyRevision, Text, TokenSupport, VoiceConfig,
+  AssistanceProfile, CatalogText, CourseCatalog, EvidenceAudit, Features, GoLearn, GoListen, GoTell, GoTellSuggestion, IntentProposal, PersonalizedCoverage, ProductionAnalysis, ProviderAvailability,
+  Library, LibraryQuery, RankedText, ReadingPace, ReadingProgress, Recommendation, ScriptureReadiness, Stage, StageReadiness, SentenceSupport, Testimony, TestimonyDraft, TestimonyRevision, Text, TokenSupport, VoiceConfig,
 } from '../../src/core';
+import type { Stream, Work } from '../../src/core';
 import { THAI_COURSE_ID, THAI_STAGES, THAI_WORKS, createCourseCatalog } from '../../src/course';
 import { createMemoryLexiconSource } from '../../src/dict';
+import { epubToDocuments } from '../../src/ingest';
 import { plainTextToDocuments } from '../../src/ingest/plaintext';
 import type { PlainTextOptions, PlainTextResult } from '../../src/ingest/plaintext';
 import { AppProvider } from '../../src/ui/context';
@@ -140,6 +143,8 @@ export function makeFakeGoLearn(store: AppStore, opts: FakeLearnOptions = {}, bu
     readingPace: vi.fn(async (_userId: string, _o?: { textId?: string; stageId?: string; lang?: string }): Promise<ReadingPace> => ({
       basis: 'sentence-dwell', sentences: 0, lookupsPer100Words: 0, rescuesPer100Sentences: 0, rereadSittings: 0, trend: 'insufficient-data', ...opts.pace,
     })),
+    /** The library ranking: empty unless a test scripts it (`h.learn.rankLibrary.mockImplementation(...)`). */
+    rankLibrary: vi.fn(async (_userId: string, _candidates: unknown[], _o?: unknown): Promise<RankedText[]> => []),
     readingProgress,
     readingProgressMany,
     settled,
@@ -389,6 +394,8 @@ export function makeFakeControls(store: AppStore) {
       return out;
     }),
     history: vi.fn((_text: Text): ContentHistoryView[] => []),
+    /** The real EPUB reader (package S4): a test hands it a tiny real EPUB built by `tinyEpub` in fixtures.ts. */
+    convertEpub: vi.fn(async (bytes: Uint8Array, opts: PlainTextOptions): Promise<PlainTextResult> => epubToDocuments(bytes, opts)),
     convertPlainText: vi.fn((text: string, opts: PlainTextOptions): PlainTextResult => (USE_REAL_CONVERTER ? plainTextToDocuments(text, opts) : fakePlainText(text, opts))),
   } satisfies IngestApi;
   const backup = {
@@ -435,6 +442,9 @@ export function fakePlainText(text: string, opts: PlainTextOptions): PlainTextRe
   }));
   return {
     documents: documents as unknown as PlainTextResult['documents'],
+    headings: starts.map((i) => ({ line: i + 1, text: lines[i].trim() })),
+    quality: { checkedWith: 'fake@1', flags: [], verdict: 'clean' },
+    removed: [],
     notes: starts.length === 0 ? ['No chapter headings were found, so the text is one document.'] : [`${starts.length} chapters found by headings like “${lines[starts[0]].trim()}”.`],
   };
 }
@@ -454,6 +464,8 @@ export function makeFakeCatalog(store: AppStore, golearn?: Pick<GoLearn, 'stageR
       }
     },
     stages,
+    streams: async () => [],
+    findWorks: memoryFindWorks(store),
     async works(courseId, stageId) {
       const rows = await store.works.where('courseId', courseId);
       const rank = (r: string) => (r === 'spine' ? 0 : 1);
@@ -490,9 +502,88 @@ export function makeFakeCatalog(store: AppStore, golearn?: Pick<GoLearn, 'stageR
   return self;
 }
 
+const accentless = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+
+/** The paged work search over the works in the store (what package S6's catalogue does): the fake catalogue's, and the stand-in for the real one. */
+export function memoryFindWorks(store: AppStore): CourseCatalog['findWorks'] {
+  return async (q) => {
+    const rows = (await store.works.where('courseId', q.courseId)).filter((w: Work) =>
+      (!q.stream || (w.streams ?? []).includes(q.stream)) && (!q.stageId || w.stageId === q.stageId) && (!q.domain || (w.domains ?? []).includes(q.domain))
+      && (!q.variety || w.variety === q.variety) && (!q.rights || w.rights.state === q.rights)
+      && (!q.text || accentless(`${w.title} ${w.author ?? ''}`).includes(accentless(q.text))))
+      .sort((x, y) => x.order - y.order);
+    const offset = q.offset ?? 0;
+    return { total: rows.length, items: rows.slice(offset, offset + Math.min(q.limit ?? 30, 200)) };
+  };
+}
+
 /** The real catalogue when package E has landed (it throws while it is the stub), otherwise the fake above. */
-export function makeCatalog(store: AppStore, golearn?: Pick<GoLearn, 'stageReadiness'>): { catalog: CourseCatalog; real: boolean } {
-  try { return { catalog: createCourseCatalog({ store, golearn }), real: true }; } catch { return { catalog: makeFakeCatalog(store, golearn), real: false }; }
+export function makeCatalog(store: AppStore, golearn?: Pick<GoLearn, 'stageReadiness'>, extra: { streams?: Stream[] } = {}): { catalog: CourseCatalog; real: boolean } {
+  let base: CourseCatalog;
+  let real = true;
+  try { base = createCourseCatalog({ store, golearn }); } catch { base = makeFakeCatalog(store, golearn); real = false; }
+  // The streams and the paged work search are package S6's; until the real catalogue has them (or when a test scripts the streams) these stand in.
+  const catalog: CourseCatalog = {
+    ...base,
+    streams: extra.streams ? async (courseId) => (courseId === extra.streams![0]?.courseId ? extra.streams! : []) : (base.streams?.bind(base) ?? (async () => [])),
+    findWorks: base.findWorks?.bind(base) ?? memoryFindWorks(store),
+  };
+  return { catalog, real };
+}
+
+export interface FakeLibrary extends Library {
+  search: Mock<Library['search']>;
+  open: Mock<Library['open']>;
+  profile: Mock<Library['profile']>;
+  items: CatalogText[];
+  /** Ids passed to `open`, in order. */
+  opened: string[];
+}
+
+/** A small in-memory library over catalogue rows (paged, filtered like the real index); `open` makes the text readable by writing a Text row. */
+export function makeFakeLibrary(store: AppStore, items: CatalogText[] = []): FakeLibrary {
+  const accent = (s: string) => s.normalize('NFD').replace(/\p{M}/gu, '').toLowerCase();
+  const lib: FakeLibrary = {
+    items, opened: [],
+    info: vi.fn(async (lang: string) => (items.length > 0 ? { lang, id: 'library-fake', texts: items.length, works: items.length, words: 0, builtAt: '2026-10-01' } : undefined)) as unknown as Library['info'],
+    search: vi.fn(async (q: LibraryQuery) => {
+      const rows = lib.items.filter((t) => t.lang === q.lang && (!q.stream || t.stream === q.stream || (t.streams ?? []).includes(q.stream)) && (!q.stageId || t.stageId === q.stageId)
+        && (!q.domain || (t.domains ?? []).includes(q.domain)) && (!q.workId || t.workId === q.workId) && (!q.variety || t.variety === q.variety) && (!q.rights || t.rights === q.rights)
+        && (!q.location || t.location === q.location) && (!q.publishedOnly || t.published)
+        && (!q.text || accent(`${t.title} ${t.author ?? ''}`).includes(accent(q.text))));
+      if (q.workId) rows.sort((a, b) => (a.chapter ?? 0) - (b.chapter ?? 0));
+      const offset = q.offset ?? 0;
+      return { total: rows.length, items: rows.slice(offset, offset + Math.min(q.limit ?? 30, 200)) };
+    }),
+    entry: vi.fn(async (id: string) => lib.items.find((t) => t.id === id)),
+    profile: vi.fn(async (id: string) => {
+      const t = lib.items.find((x) => x.id === id);
+      return t ? { textId: t.id, lang: t.lang, analyzers: ['fake@1'], words: t.features.words, forms: [], lemmas: [], phrases: [], patterns: [], features: t.features } : undefined;
+    }),
+    open: vi.fn(async (id: string) => {
+      lib.opened.push(id);
+      const have = await store.texts.get(id);
+      if (have) return have;
+      const t = lib.items.find((x) => x.id === id);
+      if (!t) throw new Error(`The library has no text ${id}.`);
+      const row: Text = {
+        id: t.id, corpusId: 'ci-es', lang: t.lang, kind: 'story', title: t.title, sourceId: 'src:fake-library', importedAt: '2026-01-01T00:00:00.000Z', tags: [], editorialTags: [], prepTargets: [],
+        reviewStatus: 'approved', published: t.published, unpublishedReasons: [], schemaVersion: 2, generated: false, transformations: [], contentVersion: 1,
+      };
+      await store.texts.put(row);
+      return row;
+    }),
+    indexStore: vi.fn(async () => 0),
+  };
+  return lib;
+}
+
+/** One catalogue row with sensible defaults. */
+export function catalogText(over: Partial<CatalogText> & { id: string; title: string }): CatalogText {
+  return {
+    lang: 'es', stream: 'library', rights: 'rights-unverified', location: 'library', published: true,
+    features: { words: 1200, sentences: 90, uniqueForms: 500, meanSentenceWords: 13 }, ...over,
+  };
 }
 
 // ───────────────────────── harness ─────────────────────────
@@ -506,6 +597,8 @@ export interface Harness {
   voice: VoiceConfig;
   tell: ReturnType<typeof makeFakeGoTell>;
   controls: ReturnType<typeof makeFakeControls>;
+  /** The fake library in `services.library`: set `library.items` before mounting. */
+  library: FakeLibrary;
   /** True when `services.catalog` is the real package-E catalogue, false when it is the fake in this file. */
   catalogIsReal: boolean;
   events(type?: DomainEvent['type']): Promise<DomainEvent[]>;
@@ -519,13 +612,16 @@ export interface Mounted {
   unmount(): Promise<void>;
 }
 
-export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: FakeListenOptions; tell?: FakeTellOptions; courseId?: string; features?: Partial<Features> } = {}): Promise<Harness> {
+export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: FakeListenOptions; tell?: FakeTellOptions; courseId?: string; features?: Partial<Features>;
+  /** Streams the catalogue reports for the course (default: whatever the real catalogue says, which is none until package S6). */
+  streams?: Stream[]; library?: CatalogText[]; interests?: string[] } = {}): Promise<Harness> {
   resetPrefsForTests();
   resetSittingsForTests();
   try { localStorage.clear(); } catch { /* jsdom only */ }
   const store = createMemoryStore();
   const courseId = opts.courseId ?? 'honduras-es';
   await seedBasics(store, USER, courseId);
+  if (opts.interests) await store.users.put({ ...(await store.users.get(USER))!, interests: opts.interests });
   // Seeded audio uses readable asset ids ("asset:0") that are not content hashes: report their bytes as present, as the
   // real store does for real assets (the listening emitter refuses completions for an asset whose bytes are missing).
   const realHas = store.assets.has.bind(store.assets);
@@ -535,10 +631,11 @@ export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: Fak
   const { fake: listen, voice } = makeFakeGoListen(store, opts.listen);
   const tell = makeFakeGoTell(store, opts.tell, (rev) => createTestimonyText(store, voice, rev));
   const controls = makeFakeControls(store);
-  const { catalog, real: catalogIsReal } = makeCatalog(store, learn);
+  const { catalog, real: catalogIsReal } = makeCatalog(store, learn, { streams: opts.streams });
+  const library = makeFakeLibrary(store, opts.library ?? []);
   await catalog.install(courseId); // what bootstrap does at startup (a no-op for a course without a ladder)
   const services: AppServices = {
-    store, bus, catalog, lexicon: (lang) => ({ ...createMemoryLexiconSource(lang, []), info: async () => undefined }),
+    store, bus, catalog, library, lexicon: (lang) => ({ ...createMemoryLexiconSource(lang, []), info: async () => undefined }),
     adapters: { get: () => { throw new Error('adapters are not used by the UI tests'); }, all: () => [] },
     golearn: learn, golisten: listen, gotell: tell,
     ingest: controls.ingest, backup: controls.backup, speech: controls.speech,
@@ -548,7 +645,7 @@ export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: Fak
   const course = COURSES.find((c) => c.id === courseId)!;
 
   return {
-    store, bus, services, learn, listen, voice, tell, controls, catalogIsReal,
+    store, bus, services, learn, listen, voice, tell, controls, library, catalogIsReal,
     async events(type) {
       const all = await bus.history({ userId: USER });
       return type ? all.filter((e) => e.type === type) : all;

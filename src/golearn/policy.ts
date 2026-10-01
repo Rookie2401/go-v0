@@ -110,8 +110,14 @@ export const RECOGNIZED_EVIDENCE_REF = LEVEL_THRESHOLDS.receptive.recognized.evi
 
 /** A lemma link is only used to build lemma knowledge when the analysis is at least this confident (or human). */
 export const LEMMA_MIN_CONFIDENCE = 0.5;
-/** tokenSupport flags an analysis as `uncertain` below this confidence (or when alternatives exist). */
+/** tokenSupport flags an analysis as `uncertain` below this confidence (or when another reading competes with it). */
 export const UNCERTAIN_BELOW = 0.6;
+/**
+ * Another reading competes when its confidence is within this margin of the chosen one. A reading the analyzer has
+ * marked down (the neighbours decided against it: "la casa" is not a form of casar) is still listed on the word
+ * sheet, but it no longer makes the chosen reading "possibly …".
+ */
+export const COMPETING_MARGIN = 0.2;
 
 /** Recommendation: a text is a `reread` candidate when at least this share of the word encounters of its latest reading sitting needed help. */
 export const HEAVY_HELP_FRACTION = 0.4;
@@ -256,4 +262,60 @@ export const FORECAST = {
   minHistoryForms: 50,
   /** A phrase is "weak" when its last this-many encounters needed item-targeted help. */
   weakPhraseTail: 2,
+} as const;
+
+/**
+ * Personal difficulty (scoreProfile): the cut-offs that turn a measured share into "low / moderate / high". Coarse on purpose and
+ * PROVISIONAL, like READINESS: they exist to say things in words, not to grade a text. For "higher is harder" measures a value up to
+ * `low` is low, up to `moderate` is moderate, above is high.
+ */
+export const PERSONAL = {
+  /** Coverage factor: at least `low` ⇒ low difficulty, at least `moderate` ⇒ moderate, else high. (Same cut-offs as the comfort bands.) */
+  coverage: { low: BAND_THRESHOLDS.comfortable, moderate: BAND_THRESHOLDS.productiveChallenge },
+  newShare: { low: 0.03, moderate: 0.08 },
+  newPatterns: { low: 0, moderate: 2 },
+  newPhraseShare: { low: 0.25, moderate: 0.6 },
+  meanSentenceWords: { low: 12, moderate: 20 },
+  subordinatorsPerSentence: { low: 0.5, moderate: 1 },
+  subjunctiveShare: { low: 0.01, moderate: 0.04 },
+  cliticShare: { low: 0.02, moderate: 0.06 },
+  regionalShare: { low: 0.02, moderate: 0.08 },
+  historicalShare: { low: 0, moderate: 0.05 },
+  properNounShare: { low: 0.03, moderate: 0.08 },
+  /** Domain familiarity: at least `low` ⇒ low difficulty, at least `moderate` ⇒ moderate, else high. */
+  domain: { low: 0.8, moderate: 0.5 },
+  unanalysedShare: { low: 0.02, moderate: 0.05 },
+  /** "Little history": fewer than this share of the text's most frequent forms have ever been met. */
+  historyTopForms: 50,
+  historyMinShare: 0.2,
+  /** Cap on the lists of weak items / new items carried in a ProfileScore. */
+  listCap: 50,
+  /** Variety tags that are not regional Spanish for the factor of that name. */
+  historicalTag: 'es-hist',
+} as const;
+
+/** Library ranking weights and targets (provisional, coarse). Weights sum to 1. */
+export const RANKING = {
+  weights: { comprehensibility: 0.45, challenge: 0.05, interest: 0.15, reinforcement: 0.12, regional: 0.08, novelty: 0.08, quality: 0.07 },
+  /** The coverage each `challenge` option asks for: the comprehensibility score PEAKS here, not at 100 %. */
+  targetCoverage: { easy: 0.97, steady: 0.93, stretch: 0.88 },
+  /** How far below the target the score falls to 0, and how gently it falls above it. */
+  belowSpan: 0.3,
+  aboveSlope: 1.5,
+  /** The number of new constructions each option is comfortable with. */
+  idealNewPatterns: { easy: 0, steady: 1, stretch: 3 },
+  /** Weak items that make a text fully valuable as natural reinforcement. */
+  reinforcementFull: 8,
+  /** A candidate counts as authentic-and-comprehensible at this predicted coverage. */
+  authenticComprehensible: 0.9,
+  /** Controlled texts: their weight is multiplied by 1 - this x (share of authentic candidates that are comprehensible). */
+  controlledFade: 0.7,
+  /** Controlled and authentic texts within this coverage of each other are "of comparable comprehensibility". */
+  comparableCoverage: 0.05,
+  /** At most this many consecutive results from one work. */
+  maxConsecutiveFromWork: 2,
+  /** A result whose author equals the previous result's keeps this share of its score. */
+  sameAuthorKeeps: 0.9,
+  /** A part must contribute at least this much of the score to be told as a reason. */
+  reasonMin: 0.04,
 } as const;

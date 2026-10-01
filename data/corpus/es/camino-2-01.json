@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-2-01",
+  "lang": "es",
+  "title": "El libro perdido",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-2-01",
+    "title": "Camino 2 — Días y lugares: El libro perdido (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "reading"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-2",
+    "chapter": {
+      "index": 1,
+      "title": "El libro perdido"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "books"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "El libro perdido",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ayer Juan quería leer su libro.",
+              "english": "Yesterday Juan wanted to read his book."
+            },
+            {
+              "text": "Fue a la mesa, pero el libro no estaba allí.",
+              "english": "He went to the table, but the book was not there."
+            },
+            {
+              "text": "Juan buscó el libro en la cocina.",
+              "english": "Juan looked for the book in the kitchen."
+            },
+            {
+              "text": "Lo buscó en la sala y en la cama.",
+              "english": "He looked for it in the living room and in the bed."
+            },
+            {
+              "text": "No lo encontró.",
+              "english": "He did not find it."
+            },
+            {
+              "text": "Juan estaba triste.",
+              "english": "Juan was sad."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Entonces llamó a Ana.",
+              "english": "Then he called Ana."
+            },
+            {
+              "text": "—Ana, ¿tienes mi libro? —preguntó Juan.",
+              "english": "\"Ana, do you have my book?\" Juan asked."
+            },
+            {
+              "text": "—No, no lo tengo —dijo Ana.",
+              "english": "\"No, I don't have it,\" said Ana."
+            },
+            {
+              "text": "—Pues no sé dónde está —dijo Juan.",
+              "english": "\"Well, I don't know where it is,\" said Juan."
+            },
+            {
+              "text": "—Voy a tu casa y vamos a buscarlo juntos —dijo Ana.",
+              "english": "\"I'm coming to your house and we're going to look for it together,\" said Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana llegó a la casa de Juan.",
+              "english": "Ana arrived at Juan's house."
+            },
+            {
+              "text": "Buscaron juntos en toda la casa.",
+              "english": "They looked together all over the house."
+            },
+            {
+              "text": "Al final, Ana vio el libro.",
+              "english": "In the end, Ana saw the book."
+            },
+            {
+              "text": "Estaba en el suelo, debajo de la mesa.",
+              "english": "It was on the floor, under the table."
+            },
+            {
+              "text": "—¡Aquí está! —dijo Ana.",
+              "english": "\"Here it is!\" said Ana."
+            },
+            {
+              "text": "Juan tomó el libro y dio las gracias a Ana.",
+              "english": "Juan took the book and thanked Ana."
+            },
+            {
+              "text": "Los dos estaban muy contentos.",
+              "english": "Both of them were very happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

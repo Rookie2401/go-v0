@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-1-04",
+  "lang": "es",
+  "title": "La familia de Marta",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-1-04",
+    "title": "Camino 1 — Primeros pasos: La familia de Marta (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-1",
+    "chapter": {
+      "index": 4,
+      "title": "La familia de Marta"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "home"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "La familia de Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La familia de Marta es grande.",
+              "english": "Marta's family is big."
+            },
+            {
+              "text": "Marta tiene un padre y una madre.",
+              "english": "Marta has a father and a mother."
+            },
+            {
+              "text": "El padre se llama Pedro.",
+              "english": "The father is called Pedro."
+            },
+            {
+              "text": "La madre se llama Rosa.",
+              "english": "The mother is called Rosa."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta también tiene un hermano.",
+              "english": "Marta also has a brother."
+            },
+            {
+              "text": "El hermano se llama Luis.",
+              "english": "The brother is called Luis."
+            },
+            {
+              "text": "Pedro, Rosa, Luis y Marta viven en una casa.",
+              "english": "Pedro, Rosa, Luis and Marta live in a house."
+            },
+            {
+              "text": "La casa es grande.",
+              "english": "The house is big."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la casa hay una mesa grande.",
+              "english": "In the house there is a big table."
+            },
+            {
+              "text": "La familia come en la mesa.",
+              "english": "The family eats at the table."
+            },
+            {
+              "text": "Marta quiere mucho a su familia.",
+              "english": "Marta loves her family very much."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

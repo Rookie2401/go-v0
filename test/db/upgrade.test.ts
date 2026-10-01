@@ -3,7 +3,7 @@ import 'fake-indexeddb/auto';
 import Dexie from 'dexie';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { ids } from '../../src/core';
-import { BLOBS_TABLE, MIGRATION_V2_META_ID, SCHEMA_V1, SCHEMA_V2, createDexieStore, schemaFor, upgradeToV2 } from '../../src/db/dexie';
+import { BLOBS_TABLE, MIGRATION_V2_META_ID, SCHEMA_V1, SCHEMA_V2, SCHEMA_V3, createDexieStore, schemaFor, upgradeToV2 } from '../../src/db/dexie';
 import type { DexieAppStore } from '../../src/db/dexie';
 
 let n = 0;
@@ -22,7 +22,7 @@ describe('schema version 2', () => {
     expect(SCHEMA_V1.meta).toBeUndefined();
     expect(SCHEMA_V1.texts).not.toContain('reviewStatus');
     expect(SCHEMA_V1.sentences).not.toContain('key');
-    expect(store.db.verno).toBe(3);
+    expect(store.db.verno).toBe(4);
   });
 
   it('stores drafts and meta rows and finds drafts by learner + language', async () => {
@@ -69,7 +69,7 @@ describe('upgrade from a version-1 database', () => {
     try {
       // nothing was lost: every v1 table has exactly the rows it had
       for (const table of Object.keys(counts)) expect(await up.db.table(table).count(), table).toBe(counts[table]);
-      expect(up.db.verno).toBe(3);
+      expect(up.db.verno).toBe(4);
 
       // events and encounters are untouched
       expect((await up.events.get('ev:2'))!.type).toBe('AudioSegmentCompleted');
@@ -118,7 +118,7 @@ describe('upgrade from a version-1 database', () => {
     try {
       expect(await second.texts.get('text:es:new')).toMatchObject({ reviewStatus: 'reviewed', published: true });
       expect(await second.meta.get(MIGRATION_V2_META_ID)).toEqual(metaBefore);
-      expect(second.db.verno).toBe(3);
+      expect(second.db.verno).toBe(4);
     } finally {
       await second.destroy();
     }
@@ -147,7 +147,7 @@ describe('upgrade from a version-1 database', () => {
 
 describe('schema version 3 (Thai course foundation)', () => {
   it('adds the curriculum tables and the texts.workId index to version 2, and nothing else', () => {
-    const v3 = schemaFor();
+    const v3 = SCHEMA_V3;
     expect(v3.stages).toBe('id,courseId,lang');
     expect(v3.works).toBe('id,courseId,stageId,lang,role');
     expect(v3.notes).toBe('id,textId,sentenceId,kind');
@@ -187,7 +187,7 @@ describe('upgrade from a version-2 database', () => {
     const up = createDexieStore(name);
     try {
       for (const table of Object.keys(counts)) expect(await up.db.table(table).count(), table).toBe(counts[table]);
-      expect(up.db.verno).toBe(3);
+      expect(up.db.verno).toBe(4);
       // rows are exactly as the previous release wrote them (no field added, none rewritten)
       expect(await up.texts.get(text.id)).toEqual(text);
       expect((await up.meta.get('golearn.policy:u1'))!.value).toBe('evidence@4'); // the policy migration is GoLearn's, through ensureCurrent
@@ -210,7 +210,7 @@ describe('upgrade from a version-2 database', () => {
     }
   });
 
-  it('a version-1 database goes all the way to version 3 in one open', async () => {
+  it('a version-1 database goes all the way to the current version in one open', async () => {
     const name = `go-upgrade-${n++}`;
     const db = new Dexie(name);
     db.version(1).stores(SCHEMA_V1);
@@ -218,7 +218,7 @@ describe('upgrade from a version-2 database', () => {
     db.close();
     const up = createDexieStore(name);
     try {
-      expect(up.db.verno).toBe(3);
+      expect(up.db.verno).toBe(4);
       expect((await up.texts.get('text:es:old'))).toMatchObject({ reviewStatus: 'unreviewed', published: false });
       expect(await up.works.count()).toBe(0);
       expect(await up.texts.where('workId', 'work:none')).toEqual([]);

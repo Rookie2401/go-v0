@@ -157,10 +157,12 @@ function readingsOf(entries: readonly DictionaryEntry[]): string[] {
  * speech, 0.45 when it has several); entry order is kept, the first is the best candidate and the rest become
  * alternatives. When the entries list more than one reading, the first candidate carries them all in `notes.readings`.
  */
-export function dictionaryCandidates(form: string, entries: readonly DictionaryEntry[], sourceId?: string): AnalysisCandidate[] {
+export function dictionaryCandidates(
+  form: string, entries: readonly DictionaryEntry[], sourceId?: string, morphFromTags?: (tags: readonly string[]) => Record<string, string>,
+): AnalysisCandidate[] {
   const confidence = new Set(entries.map((e) => e.pos ?? '')).size > 1 ? 0.45 : 0.6;
   const readings = readingsOf(entries);
-  return entries.map((e, k) => {
+  return entries.flatMap((e, k) => {
     const glosses = e.glosses.filter((g) => g.trim().length > 0);
     const notes: Record<string, string | string[]> = {};
     if (e.respelling) notes.respelling = e.respelling;
@@ -169,14 +171,23 @@ export function dictionaryCandidates(form: string, entries: readonly DictionaryE
     if (glosses.length > 2) notes.senses = glosses.slice(2);
     if (e.classifiers?.length) notes.classifiers = [...e.classifiers];
     if (k === 0 && readings.length > 1) notes.readings = readings;
-    return {
-      lemma: form, pos: e.pos, morph: {}, confidence, origin: 'dictionary' as const, ...(sourceId ? { sourceId } : {}),
+    const common = {
+      pos: e.pos, confidence, origin: 'dictionary' as const, ...(sourceId ? { sourceId } : {}),
       ...(glosses.length ? { gloss: glosses.slice(0, 2).join('; ') } : {}),
       ...(e.register?.length ? { register: [...e.register] } : {}),
       ...(e.role ? { role: e.role } : {}),
       ...(e.definition ? { definition: e.definition } : {}),
-      ...(Object.keys(notes).length ? { notes } : {}),
     };
+    // an inflected form: the candidate's lemma is the form-of lemma (one candidate per lemma the entry is a form of), its
+    // grammatical labels are the source's own tags, read into `morph` when the adapter can (never guessed otherwise)
+    if (e.formOf?.length) {
+      return e.formOf.map((f, j) => {
+        const own: Record<string, string | string[]> = { ...notes, formOfTags: [...f.tags] };
+        if (j > 0) delete own.readings;
+        return { ...common, lemma: f.lemma, morph: morphFromTags ? { ...morphFromTags(f.tags) } : {}, notes: own };
+      });
+    }
+    return [{ ...common, lemma: form, morph: {}, ...(Object.keys(notes).length ? { notes } : {}) }];
   });
 }
 
@@ -219,7 +230,7 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
       analyzed.forEach((a, ti) => {
         const entries = a.token.isWord ? opts.dictionary!.get(tokens[ti].normalized) : undefined;
         if (!entries?.length) return;
-        const cands = dictionaryCandidates(tokens[ti].normalized, entries, dictId);
+        const cands = dictionaryCandidates(tokens[ti].normalized, entries, dictId, adapter.morphFromTags?.bind(adapter));
         if (unanalysed(a)) { analyzed[ti] = { token: tokens[ti], candidates: cands, analyzer: dictTool }; dictTokens++; }
         else beside.set(ti, cands);
       });
@@ -318,6 +329,7 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
       id: doc.id, lang: doc.lang, locale: doc.locale, title: doc.title, contentType: doc.contentType, corpus: doc.corpus, source: doc.source, review: doc.review,
       difficulty: doc.difficulty, topics: doc.topics, editorialTags: doc.editorialTags, prepTargets: doc.prepTargets, generated: doc.generated,
       scripture: doc.scripture, english: doc.english, sections: doc.sections.map((s) => ({ title: s.title, chapter: s.chapter })), work: doc.work,
+      streams: doc.streams, domains: doc.domains, variety: doc.variety, quality: doc.quality,
     },
     paragraphs,
     sentences: sentences.map((s) => ({
@@ -459,13 +471,15 @@ export function materializeSentence(plan: DocumentPlan, ps: PlannedSentence, sen
       origin: c.origin ?? (c.notes?.source === 'rule' ? 'rule' : 'hand'), sourceId: c.sourceId ?? `adapter-${lang}@${plan.adapter.version}`,
     });
     const bestOrigin = originOf(best);
-    const lemmaId = best.lemma ? ensureLemma(best.lemma, best.pos, fromSpan ? undefined : best.gloss) : undefined;
+    // the gloss of an inflected form ("first-person plural of …") describes the form, not the lemma: it never becomes the lemma's gloss
+    const describesForm = (c: AnalysisCandidate) => !!c.notes?.formOfTags;
+    const lemmaId = best.lemma ? ensureLemma(best.lemma, best.pos, fromSpan || describesForm(best) ? undefined : best.gloss) : undefined;
     const alternatives: NonNullable<TokenAnalysis['alternatives']> = rest.map((r) => {
       const o = originOf(r);
       // a dictionary entry beside a hand analysis never fills in the hand lemma's gloss; it carries its own gloss
       const besideHand = o.origin === 'dictionary' && bestOrigin.origin !== 'dictionary';
       return {
-        lemmaId: r.lemma ? ensureLemma(r.lemma, r.pos, fromSpan || besideHand ? undefined : r.gloss) : undefined, pos: r.pos, morph: r.morph, confidence: r.confidence,
+        lemmaId: r.lemma ? ensureLemma(r.lemma, r.pos, fromSpan || besideHand || describesForm(r) ? undefined : r.gloss) : undefined, pos: r.pos, morph: r.morph, confidence: r.confidence,
         ...(besideHand && r.gloss ? { gloss: r.gloss } : {}), origin: o.origin, sourceId: o.sourceId,
       };
     });
@@ -479,6 +493,9 @@ export function materializeSentence(plan: DocumentPlan, ps: PlannedSentence, sen
       ...(notes && Object.keys(notes).length ? { notes } : {}), ...(best.gloss && fromSpan ? { gloss: best.gloss } : {}),
       // variety, function and an easy target-language definition travel with the analysis (syllables are decoded on demand, never stored)
       ...(best.register?.length ? { register: [...best.register] } : {}), ...(best.role ? { role: best.role } : {}), ...(best.definition ? { definition: best.definition } : {}),
+      // units inside the written word (verb + attached pronouns) and the varieties it belongs to, as the adapter states them
+      ...(best.parts?.length ? { parts: best.parts.map((p) => ({ ...p, ...(p.morph ? { morph: { ...p.morph } } : {}) })) } : {}),
+      ...(best.varieties?.length ? { varieties: [...best.varieties] } : {}),
       confidence: best.confidence, provenance: fromRule ? 'machine' : 'lexicon', origin: bestOrigin.origin, sourceId: bestOrigin.sourceId, analyzer: a.analyzer, createdAt: now,
       ...(alternatives.length ? { alternatives } : {}),
     });

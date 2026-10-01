@@ -6,6 +6,8 @@
  * Writes <out>/<lang>/manifest.json (schema 2, with the source record: file name, sha256, line count, and the url /
  * last-modified / retrieved dates you state) and s-<hh>.json shards, prints counts, exit 1 on bad arguments or
  * unusable input. The dictionary id is kaikki-<lang>@<last-modified date> (the build date when none is given).
+ * The input is streamed and memory stays bounded (entries are spilled to the temp directory by form hash, then merged
+ * and written one partition at a time); the bucket count is chosen from the data size and recorded in the manifest.
  * Thin CLI over src/dict/build.ts and src/dict/build-node.ts.
  */
 import fs from 'node:fs';
@@ -49,11 +51,14 @@ try {
   console.log(`  skipped:          ${KAIKKI_SKIPS.map((k) => `${k} ${s.skipped[k]}`).join(', ')}${nonWord ? ` (non-word: ${nonWord})` : ''}`);
   console.log(`  entries kept:     ${s.kept} lines -> ${s.entries} entries (${s.forms} forms) after merging same form + part of speech + etymology + pronunciations`);
   console.log(`  with respelling:  ${s.withRespelling}; ipa ${s.withIpa}; romanization ${s.withRomanization}; register ${s.withRegister}`);
+  console.log(`  inflected forms:  ${s.withFormOf} entries are forms of a lemma (${s.formOfRelations} form-of relations, no gloss of their own)`);
   console.log(`  preserved:        ${s.senses} senses, ${s.pronunciations} pronunciations (${s.withPronunciations} entries); ${s.unpairedGroups} entries with unpaired pronunciation rows`);
-  console.log(`  shards written:   ${s.shards} (${s.shardBytes} bytes total, largest ${s.largestShardBytes}) -> ${r.dir}`);
+  console.log(`  shards written:   ${s.shards} of ${s.buckets} buckets (${s.shardBytes} bytes total, largest ${s.largestShardBytes}) -> ${r.dir}`);
+  if (s.largestShardBytes > 250_000) console.log('  warning:          the largest shard is over 250 kB (a few very heavy forms); consider a raise of the bucket target');
   console.log(`  source:           ${r.manifest.source?.file}, ${r.manifest.source?.lines} lines, sha256 ${r.manifest.source?.sha256}`);
   console.log(`  attribution:      ${r.manifest.attribution}`);
   console.log(`  build time:       ${Date.now() - t0} ms`);
+  console.log(`  peak memory:      ${Math.round(process.resourceUsage().maxRSS / 1024)} MB (resident set, this process)`);
 } catch (e) {
   console.error(`dict:build failed: ${e instanceof Error ? e.message : String(e)}`);
   process.exit(1);

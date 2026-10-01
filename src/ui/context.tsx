@@ -9,7 +9,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import type { ReactNode } from 'react';
 import { rememberActiveUser } from './prefs';
 import { newSession, sittingSession, touchSitting } from './sitting';
-import type { AdapterRegistry, AppStore, Course, CourseCatalog, EventBus, Features, GoLearn, GoListen, GoTell, LanguageCode, LexiconSource, ProviderAvailability, Text, User } from '../core';
+import type { AdapterRegistry, AppStore, Course, CourseCatalog, EventBus, Features, GoLearn, GoListen, GoTell, LanguageCode, Library, LexiconSource, ProviderAvailability, Text, User } from '../core';
 import type { PlainTextOptions, PlainTextResult } from '../ingest/plaintext';
 
 export { newSession };
@@ -53,6 +53,11 @@ export interface IngestApi {
   history?(text: Text): ContentHistoryView[];
   /** The exact text of a book as import documents (a personal copy). Never alters the text; bootstrap binds it to `plainTextToDocuments`. */
   convertPlainText(text: string, opts: PlainTextOptions): PlainTextResult;
+  /**
+   * The same for an EPUB (bytes read on this device). Rejects with `EpubError` for a protected or damaged file; protection is never removed.
+   * Bootstrap binds it to `epubToDocuments` in src/ingest.
+   */
+  convertEpub(bytes: Uint8Array, opts: PlainTextOptions): Promise<PlainTextResult>;
 }
 
 export interface ContentHistoryView { version: number; at: string; summary: string }
@@ -90,6 +95,8 @@ export interface StartupInfo {
   bundledReport?: ImportDocView[];
   /** GoLearn rebuilt derived state for the active learner at startup (policy version changed). */
   policyRebuilt?: boolean;
+  /** GoLearn rebuilt every learner's derived state at startup because a built-in text was re-analysed or revised. */
+  modelRebuilt?: boolean;
   /** Startup problems that did not stop the app (bundled documents rejected, etc.). */
   warnings?: string[];
 }
@@ -108,6 +115,11 @@ export interface AppServices {
   lexicon(lang: LanguageCode): LexiconSource | undefined;
   backup: BackupApi;
   speech: SpeechApi;
+  /**
+   * The large corpus behind the catalogue pages: index (paged, searched), profiles and open-on-demand. Bootstrap builds it inside a guard, so
+   * a failure leaves an empty library (no catalogue) and the app still starts.
+   */
+  library: Library;
   /** Which optional parts of the app are on (GoListen is off in V1). The UI reads this, never the constant, so tests can render either state. */
   features: Features;
   startup?: StartupInfo;

@@ -7,7 +7,7 @@
  * The full specification, with examples, is `docs/IMPORT.md`; valid templates are in `docs/import/templates`.
  */
 import type {
-  Authorship, AdapterRegistry, ContentNote, Corpus, LanguageCode, PartOfSpeech, RightsStatus, ReviewStatus, SourceVerification,
+  Authorship, AdapterRegistry, ContentNote, Corpus, LanguageCode, PartOfSpeech, QualityReport, RightsStatus, ReviewStatus, SourceVerification,
   Text, TextKind,
 } from '../core';
 import { COURSES, LANGUAGES, LANGUAGE_ROWS, courseForLang, ids } from '../core';
@@ -179,6 +179,13 @@ export interface CorpusDocument {
   sections: DocSection[];
   /** The curriculum work (and chapter) this text belongs to. */
   work?: DocWork;
+  /** Catalogue facts carried to `Text`: content streams and subject domains (short slugs, e.g. "library", "honduras", "engineering"). */
+  streams?: string[];
+  domains?: string[];
+  /** Variety of the language the text is written in ("es-HN", "es-ES", "es-hist"): a short code, carried to `Text.variety`. */
+  variety?: string;
+  /** What the importer's quality check found in the source (`inspectText`); written by the converters, carried to `Text.quality`. */
+  quality?: QualityReport;
   /** Notes anchored by matching sentence text (see `DocDocumentNote`); notes on a declared sentence go in its `notes`. */
   notes?: DocDocumentNote[];
   /** Ignored by the validator (templates use it for inline comments). */
@@ -201,7 +208,7 @@ export type ValidationCode =
   | 'missing-provenance' | 'unverified-without-note' | 'review-missing-reviewer'
   | 'review-signature-mismatch' | 'not-nfc' | 'edge-whitespace' | 'adapter-would-split' | 'low-analysis-coverage'
   | 'unknown-work' | 'note-anchor-missing' | 'note-not-on-token'
-  | 'personal-copy-scripture' | 'personal-copy-generated' | 'personal-copy-authorship';
+  | 'personal-copy-scripture' | 'personal-copy-generated' | 'personal-copy-authorship' | 'source-damaged';
 
 export interface ValidationIssue {
   /** JSON path of the offending value, e.g. `sections[0].paragraphs[1].sentences[2].spans[0]`. */
@@ -219,6 +226,11 @@ export interface ValidateContext {
   existingTexts?: ReadonlyArray<{ id: string; sourceId: string }>;
   /** Ids of the works in the store's `works` table. A document naming a work of a course that has works, but not this one, gets `unknown-work`. */
   knownWorks?: ReadonlySet<string>;
+  /**
+   * Where the document is going. 'library' (the built library) refuses a source whose quality verdict is 'damaged' (the
+   * `source-damaged` error); anywhere else it is a warning — a personal copy is the learner's decision.
+   */
+  destination?: 'library' | 'personal';
 }
 
 export class CorpusValidationError extends Error {
@@ -259,10 +271,13 @@ const DOC_ID = /^[a-z0-9][a-z0-9-]*$/;
 const SENTENCE_ID = /^[A-Za-z0-9][A-Za-z0-9._-]*$/;
 const LOCALE = /^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$/;
 
-const DOC_KEYS = ['schemaVersion', 'id', 'lang', 'locale', 'title', 'contentType', 'corpus', 'source', 'review', 'difficulty', 'topics', 'editorialTags', 'prepTargets', 'speakers', 'generated', 'scripture', 'english', 'sections', 'work', 'notes'];
+const DOC_KEYS = ['schemaVersion', 'id', 'lang', 'locale', 'title', 'contentType', 'corpus', 'source', 'review', 'difficulty', 'topics', 'editorialTags', 'prepTargets', 'speakers', 'generated', 'scripture', 'english', 'sections', 'work', 'notes', 'streams', 'domains', 'variety', 'quality'];
 const SOURCE_KEYS = ['id', 'title', 'author', 'publisher', 'url', 'edition', 'attribution', 'provenance', 'rights', 'licenseNote', 'authorship'];
 const SENTENCE_KEYS = ['id', 'text', 'english', 'verseRefs', 'speaker', 'spans', 'corrections', 'notes'];
 const WORK_SLUG = /^[a-z0-9-]+$/;
+const SHORT_SLUG = /^[a-z0-9][a-z0-9-]{0,39}$/;
+const VARIETY_CODE = /^[A-Za-z0-9][A-Za-z0-9-]{0,23}$/;
+const QUALITY_VERDICTS = ['clean', 'usable', 'damaged'];
 const NOTE_KEYS = ['kind', 'body', 'start', 'end', 'spans', 'topics', 'provenance', 'reviewStatus', 'by'];
 
 const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
@@ -398,6 +413,29 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
             'The text imports, but it will not appear under a work of the ladder. Check the slug against the works in src/course (docs/IMPORT.md, "Works and chapters").');
         }
       }
+    }
+  }
+
+  // catalogue facts: streams, domains, variety
+  for (const key of ['streams', 'domains'] as const) {
+    const v = d[key];
+    if (v !== undefined && (!Array.isArray(v) || v.some((x) => typeof x !== 'string' || !SHORT_SLUG.test(x)))) {
+      err(key, 'invalid-value', `${key} must be an array of short slugs (lower-case letters, digits, hyphens; at most 40 characters)`, `e.g. "${key}": ["${key === 'streams' ? 'library' : 'engineering'}"]`);
+    }
+  }
+  if (d.variety !== undefined && (typeof d.variety !== 'string' || !VARIETY_CODE.test(d.variety))) {
+    err('variety', 'invalid-value', 'variety must be a short code such as "es-HN", "es-ES" or "es-hist"', 'Use letters, digits and hyphens (at most 24 characters), or omit it.');
+  }
+  // the source-quality report written by the converters
+  if (d.quality !== undefined) {
+    const q = d.quality;
+    if (!isObj(q) || !QUALITY_VERDICTS.includes(q.verdict as string) || !Array.isArray(q.flags) || typeof q.checkedWith !== 'string') {
+      err('quality', 'invalid-value', 'quality must be {checkedWith, flags, verdict} as written by the converters', 'Remove it, or regenerate it with npm run corpus:convert.');
+    } else if (q.verdict === 'damaged') {
+      const serious = (q.flags as Array<{ code?: unknown; severity?: unknown }>).filter((x) => x && x.severity === 'serious').map((x) => String(x.code)).join(', ');
+      const message = `the source text was found damaged by the quality check${serious ? ` (${serious})` : ''}`;
+      if (ctx.destination === 'library') err('quality', 'source-damaged', message, 'A text for the built library is never imported damaged: repair or replace the source, then convert it again.');
+      else warn('quality', 'source-damaged', message, 'Look at the flagged places before you read it; a personal copy is still imported, because the choice is yours.');
     }
   }
 

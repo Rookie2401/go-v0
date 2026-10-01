@@ -17,6 +17,7 @@ import type { HighlightPref, ThemePref } from '../prefs';
 import { BackLink, Disclosure, I, IconBtn, Topbar } from '../ui';
 import { BackupSection } from './settings/BackupSection';
 import { ContentSection } from './settings/ContentSection';
+import { InterestsSection } from './settings/InterestsSection';
 import { EvidenceSection } from './settings/EvidenceSection';
 import { LanguageSupportSection } from './settings/LanguageSupportSection';
 import { AdvancedSpeechControls, SpeechSection } from './settings/SpeechSection';
@@ -138,6 +139,7 @@ function LearnerSection() {
         />
         <span className="card__note">You are learning {languageName(course)}. Your progress is kept per language, so switching teams loses nothing.</span>
       </label>
+      <InterestsSection />
       <form
         className="settings__new"
         onSubmit={(e) => {

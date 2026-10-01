@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-2-02",
+  "lang": "es",
+  "title": "En el mercado",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-2-02",
+    "title": "Camino 2 — Días y lugares: En el mercado (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "food"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-2",
+    "chapter": {
+      "index": 2,
+      "title": "En el mercado"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food",
+    "places",
+    "family"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "En el mercado",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esta mañana Rosa fue al mercado con su hija Marta.",
+              "english": "This morning Rosa went to the market with her daughter Marta."
+            },
+            {
+              "text": "Tenían que comprar frutas y verduras para la semana.",
+              "english": "They had to buy fruit and vegetables for the week."
+            },
+            {
+              "text": "En el mercado había mucha gente.",
+              "english": "There were many people at the market."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Rosa vio a una vendedora y le dijo:",
+              "english": "Rosa saw a seller and said to her:"
+            },
+            {
+              "text": "—Buenos días.",
+              "english": "\"Good morning.\""
+            },
+            {
+              "text": "La vendedora tenía naranjas, plátanos y tomates.",
+              "english": "The seller had oranges, bananas and tomatoes."
+            },
+            {
+              "text": "—¿Cuántas naranjas quiere? —preguntó la vendedora.",
+              "english": "\"How many oranges do you want?\" asked the seller."
+            },
+            {
+              "text": "—Quiero diez naranjas y seis plátanos —dijo Rosa.",
+              "english": "\"I want ten oranges and six bananas,\" said Rosa."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La vendedora puso las naranjas en una bolsa y se las dio a Rosa.",
+              "english": "The seller put the oranges in a bag and gave them to Rosa."
+            },
+            {
+              "text": "Rosa pagó y dio las gracias.",
+              "english": "Rosa paid and said thank you."
+            },
+            {
+              "text": "Marta tenía hambre y quería un plátano.",
+              "english": "Marta was hungry and wanted a banana."
+            },
+            {
+              "text": "—Mamá, ¿me das un plátano? —preguntó.",
+              "english": "\"Mom, will you give me a banana?\" she asked."
+            },
+            {
+              "text": "Rosa le dio un plátano y Marta se lo comió.",
+              "english": "Rosa gave her a banana and Marta ate it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después Rosa compró tomates y cebollas.",
+              "english": "Then Rosa bought tomatoes and onions."
+            },
+            {
+              "text": "Volvieron a casa con las bolsas.",
+              "english": "They went back home with the bags."
+            },
+            {
+              "text": "En casa, Rosa dijo: —Voy a hacer una sopa.",
+              "english": "At home, Rosa said, \"I'm going to make a soup.\""
+            },
+            {
+              "text": "—¡Qué bien, voy a ayudarte! —dijo Marta.",
+              "english": "\"Great, I'm going to help you!\" said Marta."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

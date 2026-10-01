@@ -295,8 +295,10 @@ describe('provenance: every analysis says where it came from', () => {
     expect(contested[0].ruleTone).toBe('mid');
   });
 
-  it('the other four languages declare no sources, so their reader shows no provenance line and nothing else changes', () => {
-    for (const lang of ['es', 'de', 'sq', 'hi'] as const) {
+  it('languages that declare no sources show no provenance line, and nothing else changes for them', () => {
+    // Spanish declares its sources since the Spanish course (its hand word list is labelled machine-drafted too)
+    expect(Object.values(app.adapters.get('es').sources ?? {}).every((s) => s.origin === 'rule' || s.reviewStatus === 'machine-drafted')).toBe(true);
+    for (const lang of ['de', 'sq', 'hi'] as const) {
       const adapter = app.adapters.get(lang);
       expect(adapter.sources, lang).toBeUndefined();
       expect(adapter.decode, lang).toBeUndefined();

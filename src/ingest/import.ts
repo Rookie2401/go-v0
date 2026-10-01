@@ -547,6 +547,7 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
     transformations, contentVersion,
     workId: plan.workId, chapter: doc.work?.chapter ? compact({ index: doc.work.chapter.index, title: doc.work.chapter.title }) : undefined,
     personalCopy: plan.decision.personalCopy,
+    streams: doc.streams ? [...doc.streams] : undefined, domains: doc.domains ? [...doc.domains] : undefined, variety: doc.variety, quality: doc.quality,
     scripture: doc.scripture
       ? compact({ book: doc.scripture.book, chapter: doc.scripture.chapter, translationId: doc.scripture.translationId, edition: doc.scripture.edition, verification: doc.scripture.verification })
       : undefined,

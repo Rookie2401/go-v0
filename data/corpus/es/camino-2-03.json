@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-2-03",
+  "lang": "es",
+  "title": "La lluvia",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-2-03",
+    "title": "Camino 2 — Días y lugares: La lluvia (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "weather"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-2",
+    "chapter": {
+      "index": 3,
+      "title": "La lluvia"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "weather",
+    "family",
+    "animals"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "La lluvia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis y Marta iban a ir al parque con Sol.",
+              "english": "Luis and Marta were going to go to the park with Sol."
+            },
+            {
+              "text": "Pero por la mañana empezó a llover.",
+              "english": "But in the morning it started to rain."
+            },
+            {
+              "text": "—Qué lástima, ahora no podemos ir al parque —dijo Luis.",
+              "english": "\"What a pity, now we can't go to the park,\" said Luis."
+            },
+            {
+              "text": "Los niños tenían que quedarse en casa.",
+              "english": "The children had to stay at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sol estaba triste también.",
+              "english": "Sol was sad too."
+            },
+            {
+              "text": "Miraba la lluvia por la ventana.",
+              "english": "He watched the rain through the window."
+            },
+            {
+              "text": "Marta tomó un libro y empezó a leer.",
+              "english": "Marta took a book and began to read."
+            },
+            {
+              "text": "Luis jugó con Sol en la sala y le dio una pelota.",
+              "english": "Luis played with Sol in the living room and gave him a ball."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después de una hora, Luis miró por la ventana.",
+              "english": "After an hour, Luis looked out of the window."
+            },
+            {
+              "text": "—¡Mira, ya no llueve! —dijo.",
+              "english": "\"Look, it isn't raining any more!\" he said."
+            },
+            {
+              "text": "La lluvia acababa de terminar.",
+              "english": "The rain had just stopped."
+            },
+            {
+              "text": "Los niños y el perro salieron al parque.",
+              "english": "The children and the dog went out to the park."
+            },
+            {
+              "text": "El suelo estaba mojado y Sol corrió por todas partes.",
+              "english": "The ground was wet and Sol ran everywhere."
+            },
+            {
+              "text": "Después de todo, fue un buen día.",
+              "english": "After all, it was a good day."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

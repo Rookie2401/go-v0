@@ -152,7 +152,8 @@ established tokenizer.
 
 ## 7. Add an external tokenizer (PyThaiNLP)
 
-An established Thai tokenizer is the right yardstick for "is the adapter any good". **Python is not installed on this machine,
+An established Thai tokenizer is the right yardstick for "is the adapter any good". **(Update 2026-10-01: Python 3.12.10 is now installed and PyThaiNLP 5.3.8 lives in `data\private\venv-thai`; use
+`data\private\venv-thai\Scripts\python.exe` in place of `python` below.)** When this was written, Python was not installed on this machine,
 and none of the above needs it.** To get the comparison, the owner (or someone with the owner's go-ahead) must, on a machine
 with **Python 3.9 or later**, create a virtual environment and install `pythainlp`:
 

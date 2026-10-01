@@ -7,7 +7,7 @@ import { itemKindOf, ids } from '../core';
 import { publicRow } from './agg';
 import { AnalysisCache, morphologyLine, pickAnalysis } from './analysis';
 import { classifyTokens } from './coverage';
-import { UNCERTAIN_BELOW, levelAtLeast, productionKindOf } from './policy';
+import { COMPETING_MARGIN, UNCERTAIN_BELOW, levelAtLeast, productionKindOf } from './policy';
 import type { Ctx } from './state';
 import { byAtThenId, effectiveEstimate, effectiveReadingLevel, emptyDimension } from './state';
 
@@ -194,7 +194,7 @@ export async function tokenSupport(ctx: Ctx, userId: string, tokenId: string, le
   const ownLive = !own || own.retiredInVersion === undefined;
   const analysis = await resolveAnalysis(ctx, tokenId);
   const lemma = analysis?.lemmaId ? await ctx.store.lemmas.get(analysis.lemmaId) : undefined;
-  support.uncertain = !analysis || analysis.confidence < UNCERTAIN_BELOW || (analysis.alternatives?.length ?? 0) > 0;
+  support.uncertain = !analysis || analysis.confidence < UNCERTAIN_BELOW || (analysis.alternatives ?? []).some((alt) => alt.confidence > analysis.confidence - COMPETING_MARGIN);
   if (lemma?.gloss) support.gloss = lemma.gloss; // level 1: gloss only
 
   if (level >= 2) {

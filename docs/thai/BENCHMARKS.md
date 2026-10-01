@@ -93,8 +93,8 @@ them out; only an explicit `bench:words --held-out` run evaluates them (and only
 errors, with text, to `<system>.heldout.errors.jsonl` in the git-ignored errors directory. Tune on the ordinary rows, report on
 the held-out ones once.
 
-**Pending: PyThaiNLP `newmm`.** Python is not installed on this machine and nothing was installed or downloaded, so the
-comparison with an established tokenizer has not been run. Two commands, on a machine with Python:
+**PyThaiNLP `newmm`: run on 2026-10-01 (results in 3.7).** When this section was first written Python was not installed
+and the comparison was pending. The two commands, on a machine with Python:
 
     python scripts/external/pythainlp_tokenize.py --gold data/benchmarks/th/generated --out data/benchmarks/th/generated/external/newmm.edit.txt
     npm run bench:words -- --external newmm=data/benchmarks/th/generated/external/newmm.edit.txt
@@ -142,7 +142,7 @@ does it. Output (git-ignored, CC BY-SA): `data/benchmarks/th/generated/wiktionar
   mostly noun phrases, and clustered by template: 195 start with ประเทศ and 114 with สาธารณรัฐ (a country name follows). Names,
   loans and numerals that Wiktionary has no entry for are exactly what is missing.
 - **`dict-mm` is our own baseline**, written for this benchmark, not an established tokenizer.
-- **The comparison with PyThaiNLP `newmm` is pending** because Python is not installed (section 2).
+- The comparison with PyThaiNLP `newmm` was run later (section 3.7): parity on this set, opposite error profile.
 - Nothing here measures the course's own word convention. That needs the course gold set (section 2).
 
 ### 3.3 Checking 60 aligned sentences by eye
@@ -365,9 +365,37 @@ alphabetically; counts are across the 3,116 sentences. Full error cases (text, g
 
 ### 3.6 Not done
 
-- PyThaiNLP `newmm` (and any other external tool): the script and the commands are ready, nothing was run.
+- PyThaiNLP `newmm`: run on 2026-10-01, see 3.7. Other external tools: not run.
 - The course gold set (500 to 1,000 checked sentences over eight strata): the tooling is ready and tested, the set is empty.
 - No tuning of the adapter, the compound list or any threshold was done on these results.
+
+### 3.7 Comparison with PyThaiNLP `newmm` (run 2026-10-01)
+
+With the owner's go-ahead Python 3.12.10 was installed (winget, per user) and PyThaiNLP 5.3.8 was installed into an
+isolated virtual environment inside the project's git-ignored folder (`data/private/venv-thai`). The prepared script
+segmented the same 3,116 sentences with `word_tokenize(engine="newmm")` and the benchmark scored it beside the
+course tokenizer (Node v24.19.0, ICU 78.3):
+
+| system | boundary P | boundary R | boundary F1 | word F1 | sentences exact |
+|---|---:|---:|---:|---:|---:|
+| course adapter (ICU + course compounds) | 84.49 | 96.89 | 90.27 | 80.86 | 61.26 |
+| ICU alone | 84.14 | 96.95 | 90.09 | 80.42 | 60.33 |
+| **PyThaiNLP newmm 5.3.8** | 95.34 | 85.17 | 89.97 | 79.49 | 57.83 |
+| our dictionary longest-match baseline | 99.72 | 93.59 | 96.56 | 92.59 | 82.83 |
+
+By stratum, newmm: examples P 94.58 / R 81.88 / F1 87.77 / exact 60.37; quotations P 96.48 / R 90.55 / F1 93.42 /
+exact 43.14. Errors: adapter 1,308 over-splits and 244 under-splits; newmm 251 over-splits and 1,333 under-splits.
+
+What this shows: on this set the course tokenizer is **on a par with an established tokenizer** (F1 90.3 against
+90.0), with the opposite error profile — the adapter splits compounds the Wiktionary editors kept whole, newmm keeps
+whole what they split. What it does not show: which convention is right for the course, or how either behaves on
+running book prose. The set is short dictionary examples divided by another project's convention (section 3.2), and
+our own longest-match baseline scores highest only because it is built from the same word list as the gold. **The
+segmentation gate is still not met**: it needs the human-corrected course gold set.
+
+To repeat: `data\private\venv-thai\Scripts\python.exe scripts\external\pythainlp_tokenize.py --gold
+data\benchmarks\th\generated --out data\benchmarks\th\generated\external\newmm.edit.txt`, then `npm run bench:words --
+--external newmm=data/benchmarks/th/generated/external/newmm.edit.txt`.
 
 ## 4 Reading units and boundary sensitivity
 

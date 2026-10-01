@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-1-03",
+  "lang": "es",
+  "title": "Juan y Ana",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-1-03",
+    "title": "Camino 1 — Primeros pasos: Juan y Ana (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "people"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-1",
+    "chapter": {
+      "index": 3,
+      "title": "Juan y Ana"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "people",
+    "home"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "Juan y Ana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Juan es un hombre.",
+              "english": "Juan is a man."
+            },
+            {
+              "text": "Ana es una mujer.",
+              "english": "Ana is a woman."
+            },
+            {
+              "text": "Juan y Ana son amigos.",
+              "english": "Juan and Ana are friends."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hoy Juan va a la casa de Ana.",
+              "english": "Today Juan goes to Ana's house."
+            },
+            {
+              "text": "Ana está en la casa.",
+              "english": "Ana is in the house."
+            },
+            {
+              "text": "—Hola, Ana —dice Juan.",
+              "english": "\"Hello, Ana,\" says Juan."
+            },
+            {
+              "text": "—Hola, Juan —dice Ana.",
+              "english": "\"Hello, Juan,\" says Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Tengo un libro —dice Juan.",
+              "english": "\"I have a book,\" says Juan."
+            },
+            {
+              "text": "—¿Es bueno el libro? —dice Ana.",
+              "english": "\"Is the book good?\" says Ana."
+            },
+            {
+              "text": "—Sí, es muy bueno —dice Juan.",
+              "english": "\"Yes, it is very good,\" says Juan."
+            },
+            {
+              "text": "Juan da el libro a Ana.",
+              "english": "Juan gives the book to Ana."
+            },
+            {
+              "text": "Ana está contenta.",
+              "english": "Ana is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

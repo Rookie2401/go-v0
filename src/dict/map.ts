@@ -5,6 +5,10 @@
  * Everything the source says is kept: every sense (`senses`, with its own labels), every pronunciation row group
  * (`pronunciations`, tags verbatim), the etymology number, the alt-of headwords. `glosses`, `respelling`, `ipa` and
  * `romanization` are only the short view. Real shapes: docs/PLAN6.md ("Facts established").
+ *
+ * An inflected form is its own entry whose senses carry `form_of: [{ word }]`: those senses become `formOf`
+ * (lemma + the source's grammatical labels), never a gloss or a sense of their own. A word that is also a lemma keeps
+ * both. Region labels on senses and pronunciations stay verbatim tags; no variety is guessed from them.
  */
 import type { DictionaryEntry, DictionaryPronunciation, DictionarySense, LanguageCode, PartOfSpeech, RegisterTag } from '../core';
 import { MAX_GLOSSES } from './format';
@@ -35,8 +39,11 @@ const NON_WORD_POS = new Set(['character', 'symbol', 'punct']);
 const REGISTER_MAP: Record<string, RegisterTag> = {
   colloquial: 'colloquial', informal: 'colloquial', formal: 'formal', literary: 'literary', poetic: 'literary',
   archaic: 'archaic', obsolete: 'archaic', historical: 'historical', royal: 'royal', religious: 'religious',
-  slang: 'slang', isan: 'regional-isan', northeastern: 'regional-isan', northern: 'regional-north', southern: 'regional-south',
-  teochew: 'teochew', childish: 'child-directed',
+  slang: 'slang', childish: 'child-directed',
+};
+/** The regional register tags are Thai ones (Isan, Northern, Southern, Teochew); another language's region labels stay plain tags. */
+const THAI_REGISTER_MAP: Record<string, RegisterTag> = {
+  isan: 'regional-isan', northeastern: 'regional-isan', northern: 'regional-north', southern: 'regional-south', teochew: 'teochew',
 };
 
 const isObj = (x: unknown): x is Record<string, unknown> => typeof x === 'object' && x !== null && !Array.isArray(x);
@@ -51,6 +58,7 @@ const labelsOf = (o: Record<string, unknown>): string[] => {
 const lower = (labels: string[]): string[] => labels.map((t) => t.toLowerCase());
 
 const pushUnique = <T>(arr: T[], v: T) => { if (!arr.includes(v)) arr.push(v); };
+const sameList = (a: string[], b: string[]) => a.length === b.length && a.every((x, i) => x === b[i]);
 
 function classifiersOf(x: unknown): string[] {
   const out: string[] = [];
@@ -165,9 +173,22 @@ export function mapKaikkiLine(line: unknown, normalize: (surface: string) => str
   const heading = typeof line.pos === 'string' ? line.pos.trim().toLowerCase() : '';
   if (NON_WORD_POS.has(heading)) return { skipped: 'non-word', nonWordPos: heading };
 
-  // Senses with a gloss; spelling and form variants only feed the short view when nothing else is there.
-  const senses = list(line.senses).filter(isObj).filter((s) => glossParts(s).length > 0);
-  if (!senses.length) return { skipped: 'no-gloss' };
+  // Inflected-form senses (form_of lemmas) become formOf; the rest are senses with a gloss. Spelling and form
+  // variants without a lemma only feed the short view when nothing else is there.
+  const formOf: Array<{ lemma: string; tags: string[] }> = [];
+  const senses: Array<Record<string, unknown>> = [];
+  for (const s of list(line.senses).filter(isObj)) {
+    const lemmas = list(s.form_of).map((f) => (isObj(f) ? str(f.word) : undefined)).filter((w): w is string => w !== undefined);
+    if (lemmas.length) {
+      const tags = labelsOf(s);
+      for (const w of lemmas) {
+        let lemma = w;
+        try { lemma = normalize(w) || w; } catch { /* keep the source's spelling */ }
+        if (!formOf.some((f) => f.lemma === lemma && sameList(f.tags, tags))) formOf.push({ lemma, tags });
+      }
+    } else if (glossParts(s).length > 0) senses.push(s);
+  }
+  if (!senses.length && !formOf.length) return { skipped: 'no-gloss' };
   const isVariant = (s: Record<string, unknown>) => lower(labelsOf(s)).some((t) => t === 'form-of' || t === 'alt-of');
   const real = senses.filter((s) => !isVariant(s));
   const used = real.length ? real : senses;
@@ -179,7 +200,7 @@ export function mapKaikkiLine(line: unknown, normalize: (surface: string) => str
   for (const s of used) {
     const g = shortGloss(glossParts(s));
     if (glosses.length < MAX_GLOSSES) pushUnique(glosses, g);
-    for (const t of lower(labelsOf(s))) { const r = REGISTER_MAP[t]; if (r) pushUnique(register, r); }
+    for (const t of lower(labelsOf(s))) { const r = REGISTER_MAP[t] ?? (lang === 'th' ? THAI_REGISTER_MAP[t] : undefined); if (r) pushUnique(register, r); }
     for (const c of classifiersOf(s.classifiers)) pushUnique(classifiers, c);
   }
 
@@ -199,8 +220,10 @@ export function mapKaikkiLine(line: unknown, normalize: (surface: string) => str
 
   const { list: pronunciations, unpaired } = pronunciationsOf(soundRows(list(line.sounds)), form);
   // The short view comes from the plain readings (no variant label); with none, from whatever is there.
+  // Thai variant readings are orthographic variants; another language's labels are usually regions, and no region's
+  // reading is promoted to "the" reading, so there the short view comes from untagged readings only.
   const plain = pronunciations.filter((p) => !p.tags?.length);
-  const pool = plain.length ? plain : pronunciations;
+  const pool = plain.length || lang !== 'th' ? plain : pronunciations;
   const respelling = pool.find((p) => p.respelling)?.respelling;
   const ipa = pool.find((p) => p.ipa)?.ipa;
   const formRoman = list(line.forms).filter(isObj).map((f) => (lower(labelsOf(f)).includes('romanization') ? str(f.form) : undefined)).find((v) => v !== undefined);
@@ -216,11 +239,12 @@ export function mapKaikkiLine(line: unknown, normalize: (surface: string) => str
   if (romanization) entry.romanization = romanization;
   if (register.length) entry.register = register;
   if (classifiers.length) entry.classifiers = classifiers;
-  entry.senses = allSenses;
+  if (allSenses.length) entry.senses = allSenses;
   if (pronunciations.length) entry.pronunciations = pronunciations;
   const ety = line.etymology_number;
   if (typeof ety === 'number' && Number.isInteger(ety) && ety >= 1) entry.etymology = ety;
   if (altOf.length) entry.altOf = altOf;
+  if (formOf.length) entry.formOf = formOf;
   return unpaired ? { entry, unpairedPronunciations: true } : { entry };
 }
 

@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import os from 'node:os';
 import path from 'node:path';
-import { spawnSync } from 'node:child_process';
+import { runNode } from '../helpers/cli';
 import { afterAll, describe, expect, it } from 'vitest';
 import { acceptDraft } from '../../src/bench/gold/accept';
 import {
@@ -175,59 +175,59 @@ describe('status', () => {
 // ───────────────────────────── the command-line tools ─────────────────────────────
 
 const cli = path.resolve('node_modules/vite-node/dist/cli.mjs');
-const run = (script: string, ...args: string[]) => {
-  const r = spawnSync(process.execPath, [cli, script, ...args], { encoding: 'utf8', cwd: path.resolve('.'), timeout: 120_000 });
-  return { status: r.status, out: `${r.stdout}${r.stderr}` };
+const run = async (script: string, ...args: string[]) => {
+  const r = await runNode([cli, script, ...args], { cwd: path.resolve('.'), timeout: 120_000 });
+  return { status: r.status, out: r.out };
 };
 const tmp = fs.mkdtempSync(path.join(os.tmpdir(), 'go-bench-'));
 afterAll(() => { fs.rmSync(tmp, { recursive: true, force: true }); });
 
 describe('npm scripts', () => {
-  it('gold:accept refuses without --by and writes nothing', () => {
+  it('gold:accept refuses without --by and writes nothing', async () => {
     const draft = path.join(tmp, 'x.s1.draft.txt');
     fs.writeFileSync(draft, draftText(draftOf()), 'utf8');
-    const r = run('scripts/gold-accept.mts', draft, '--confirm-unchanged');
+    const r = await run('scripts/gold-accept.mts', draft, '--confirm-unchanged');
     expect(r.status).toBe(1);
     expect(r.out).toMatch(/--by/);
     expect(fs.readdirSync(tmp)).toEqual(['x.s1.draft.txt']);
   }, 180_000);
 
-  it('gold:accept refuses an unedited draft, accepts it with --confirm-unchanged to --out, and will not overwrite', () => {
+  it('gold:accept refuses an unedited draft, accepts it with --confirm-unchanged to --out, and will not overwrite', async () => {
     const draft = path.join(tmp, 'y.s1.draft.txt');
     fs.writeFileSync(draft, draftText(draftOf({ heldOut: true })), 'utf8');
     const out = path.join(tmp, 'y.gold.jsonl');
-    expect(run('scripts/gold-accept.mts', draft, '--by', 'N. Reviewer', '--out', out).status).toBe(1);
+    expect((await run('scripts/gold-accept.mts', draft, '--by', 'N. Reviewer', '--out', out)).status).toBe(1);
     expect(fs.existsSync(out)).toBe(false);
-    const ok = run('scripts/gold-accept.mts', draft, '--by', 'N. Reviewer', '--confirm-unchanged', '--out', out);
+    const ok = await run('scripts/gold-accept.mts', draft, '--by', 'N. Reviewer', '--confirm-unchanged', '--out', out);
     expect(ok.status, ok.out).toBe(0);
     expect(ok.out).toMatch(/5 sentences accepted for stratum stage0 \(5 held out\)/);
     expect(ok.out).not.toMatch(/ฉัน/u); // sentence text is never printed
     expect(parseGoldJsonl(fs.readFileSync(out, 'utf8')).problems).toEqual([]);
-    expect(run('scripts/gold-accept.mts', draft, '--by', 'N. Reviewer', '--confirm-unchanged', '--out', out).status).toBe(1);
+    expect((await run('scripts/gold-accept.mts', draft, '--by', 'N. Reviewer', '--confirm-unchanged', '--out', out)).status).toBe(1);
   }, 180_000);
 
-  it('bench:words scores a gold file, keeps the errors file, skips held-out rows unless asked, and prints no held-out text', () => {
+  it('bench:words scores a gold file, keeps the errors file, skips held-out rows unless asked, and prints no held-out text', async () => {
     const plain = { id: 'p1', lang: 'th', stratum: 'stage0', text: 'ตอนนี้ฉันรักพระเจ้า', boundaries: [], source: SOURCE, tokenizedBy: 'test' };
     const held = { ...plain, id: 'h1', text: 'ผมอยู่บ้านนี้', heldOut: true };
     const dir = path.join(tmp, 'gold');
     fs.mkdirSync(dir);
     fs.writeFileSync(path.join(dir, 'a.gold.jsonl'), toJsonl([plain as unknown as GoldSentence, held as unknown as GoldSentence]), 'utf8');
-    const ord = run('scripts/bench-words.mts', '--gold', dir, '--systems', 'adapter,icu');
+    const ord = await run('scripts/bench-words.mts', '--gold', dir, '--systems', 'adapter,icu');
     expect(ord.status, ord.out).toBe(0);
     expect(ord.out).toMatch(/1 sentences from 1 gold file/);
     expect(ord.out).toMatch(/adapter {2}\[course\]/);
     expect(fs.existsSync(path.join(dir, 'errors', 'adapter.errors.jsonl'))).toBe(true);
     expect(fs.readFileSync(path.join(dir, 'errors', 'adapter.errors.jsonl'), 'utf8')).not.toMatch(/ผมอยู่/u);
-    const ho = run('scripts/bench-words.mts', '--gold', dir, '--systems', 'adapter', '--held-out');
+    const ho = await run('scripts/bench-words.mts', '--gold', dir, '--systems', 'adapter', '--held-out');
     expect(ho.status, ho.out).toBe(0);
     expect(ho.out).toMatch(/1 held-out sentences/);
     expect(ho.out).not.toMatch(/ผม/u);
     expect(fs.existsSync(path.join(dir, 'errors', 'adapter.heldout.errors.jsonl'))).toBe(true);
-    expect(run('scripts/bench-words.mts', '--gold', path.join(tmp, 'nothing-here')).status).toBe(1);
+    expect((await run('scripts/bench-words.mts', '--gold', path.join(tmp, 'nothing-here'))).status).toBe(1);
   }, 180_000);
 
-  it('gold:status prints counts only', () => {
-    const r = run('scripts/gold-status.mts', '--dir', path.join(tmp, 'gold'));
+  it('gold:status prints counts only', async () => {
+    const r = await run('scripts/gold-status.mts', '--dir', path.join(tmp, 'gold'));
     expect(r.status, r.out).toBe(0);
     expect(r.out).toMatch(/stage0 +0 +0 +2 /);
     expect(r.out).toMatch(/checked in all: 0/);

@@ -6,6 +6,7 @@ import { describe, expect, it } from 'vitest';
 import { LANGUAGES, type AdapterSupport, type SupportLevel } from '../../src/core';
 import { analysisCoverage } from '../../src/adapters';
 import { segmentThaiSentences } from '../../src/adapters/th';
+import { analyzeSpanishForm } from '../../src/adapters/spanish/morphology';
 import { adapter, best, errors, patterns, run, words } from './helpers';
 
 const LEVELS: SupportLevel[] = ['dependable', 'limited', 'seed-only', 'none'];
@@ -252,9 +253,37 @@ describe('Spanish: accents, inflection and historical Scripture forms', () => {
     expect(es.relate('á', 'a')).toBe('inflection'); // the historical spelling is a separate form of the same lemma
   });
 
-  it('unknown historical forms stay unanalysed (empty candidates) instead of being guessed', () => {
-    for (const w of ['pudiéremos', 'hiciéredes', 'perezcan', 'dijeremos', 'enganamos', 'confesaremos', 'creyéremos']) {
-      expect(run('es', w).analyses[0].candidates, w).toEqual([]);
+  // true once the morphology engine (spanish/morphology.ts) is real; while it is the stub nothing outside the word list is analysed
+  const engineLive = analyzeSpanishForm('hablamos', { knownLemma: () => true }).length > 0;
+  const cands = (w: string) => run('es', w).analyses[0].candidates;
+
+  it('a correctly spelled form of a verb the word list holds is analysed by rule (older forms are tagged es-hist); with no engine nothing is guessed', () => {
+    for (const [w, lemma] of [['pudiéremos', 'poder'], ['hiciéredes', 'hacer'], ['creyéremos', 'creer'], ['confesaremos', 'confesar']] as const) {
+      if (!engineLive) { expect(cands(w), w).toEqual([]); continue; }
+      const c = cands(w).find((x) => x.lemma === lemma);
+      expect(c, w).toBeDefined();
+      expect(c!.origin, w).toBe('rule');
+      expect(c!.confidence, w).toBeGreaterThanOrEqual(0.5);
+    }
+    if (engineLive) {
+      expect(cands('pudiéremos').find((x) => x.lemma === 'poder')).toMatchObject({ morph: expect.objectContaining({ Mood: 'Sub', Tense: 'Fut' }), varieties: expect.arrayContaining(['es-hist']) });
+    }
+  });
+
+  it('a misspelling gets no confident analysis; a word whose lemma nobody vouches for gets at most a rule guess, never a word-list hit', () => {
+    for (const w of ['dijeremos', 'entendia']) {
+      for (const c of cands(w)) { expect(c.origin, w).toBe('rule'); expect(c.confidence, w).toBeLessThanOrEqual(0.6); }
+    }
+    for (const w of ['enganamos', 'perezcan']) {
+      const c = cands(w);
+      if (!engineLive) expect(c, w).toEqual([]);
+      for (const x of c) {
+        expect(x.origin, w).toBe('rule');
+        expect(x.sourceId, w).toBe('adapter-es@3:rules');
+        expect(x.confidence, w).toBeLessThanOrEqual(0.6);
+        expect(x.gloss, w).toBeUndefined();
+        expect(x.notes?.lemmaStatus, w).toBe('inferred by the rules');
+      }
     }
     // an accentless look-alike of a listed form is a different, unknown form
     expect(es.normalize('dijéremos')).not.toBe(es.normalize('dijeremos'));
@@ -266,7 +295,7 @@ describe('Spanish: accents, inflection and historical Scripture forms', () => {
     expect(best(run('es', 'Él tiene paz.'), 'tiene').lemma).toBe('tener');
     expect(es.relate('creo', 'creer')).toBe('inflection');
     expect(es.relate('entendía', 'entendí')).toBe('inflection');
-    expect(run('es', 'entendia').analyses[0].candidates).toEqual([]);
+    for (const c of run('es', 'entendia').analyses[0].candidates) expect(c.confidence).toBeLessThanOrEqual(0.6); // the accent is identity: no confident reading
     expect(es.relate('Él', 'el')).toBe('none'); // él (pronoun) ≠ el (article): the accent is identity
   });
 

@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-2-04",
+  "lang": "es",
+  "title": "Sol se fue",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-2-04",
+    "title": "Camino 2 — Días y lugares: Sol se fue (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "animals"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-2",
+    "chapter": {
+      "index": 4,
+      "title": "Sol se fue"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "animals",
+    "family",
+    "places"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "Sol se fue",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un día Sol salió de la casa y no volvió.",
+              "english": "One day Sol went out of the house and did not come back."
+            },
+            {
+              "text": "Luis lo buscó en el jardín y en la calle.",
+              "english": "Luis looked for him in the garden and in the street."
+            },
+            {
+              "text": "No lo encontró.",
+              "english": "He did not find him."
+            },
+            {
+              "text": "Luis estaba muy triste y lloraba.",
+              "english": "Luis was very sad and was crying."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—No llores, Luis, vamos a buscarlo —dijo Marta.",
+              "english": "\"Don't cry, Luis, let's go and look for him,\" said Marta."
+            },
+            {
+              "text": "Los dos niños salieron a la calle.",
+              "english": "The two children went out into the street."
+            },
+            {
+              "text": "Preguntaron a todos:",
+              "english": "They asked everyone:"
+            },
+            {
+              "text": "—¿Vieron ustedes un perro blanco que se llama Sol?",
+              "english": "\"Did you see a white dog called Sol?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un señor dijo: —Sí, lo vi hace un rato, cuando iba hacia el parque.",
+              "english": "A man said, \"Yes, I saw him a little while ago, when he was going toward the park.\""
+            },
+            {
+              "text": "Los niños corrieron al parque.",
+              "english": "The children ran to the park."
+            },
+            {
+              "text": "Sol estaba debajo del árbol grande.",
+              "english": "Sol was under the big tree."
+            },
+            {
+              "text": "Cuando vio a Luis, corrió hacia él.",
+              "english": "When he saw Luis, he ran toward him."
+            },
+            {
+              "text": "Luis lo abrazó.",
+              "english": "Luis hugged him."
+            },
+            {
+              "text": "—¡Sol, qué susto me diste! —dijo Luis.",
+              "english": "\"Sol, you gave me such a scare!\" said Luis."
+            },
+            {
+              "text": "Desde ese día, Luis siempre cierra la puerta.",
+              "english": "Since that day, Luis always closes the door."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

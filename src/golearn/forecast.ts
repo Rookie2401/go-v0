@@ -21,6 +21,7 @@ import { readingTail } from './agg';
 import type { StoredItem } from './agg';
 import { AnalysisCache } from './analysis';
 import { analyzeText } from './coverage';
+import { scoreProfile } from './personal';
 import { FORECAST } from './policy';
 import type { Ctx } from './state';
 import { cmp, pct1, plural, round4 } from './util';
@@ -144,8 +145,29 @@ export async function predictDifficulty(
   const summary = `Predicted coverage ${pct1(predictedCoverage)} % (an estimate). ${plural(newUsefulWords.length, 'new useful word')} · ${plural(rareWords.length, 'rare word')}`
     + ` · ${plural(weakPhrases.length, 'weak phrase')} · ${plural(newConstructions.length, 'new construction')}.`;
 
+  // Generic features of the text and the personal estimate built from its stored profile (the library package; absent when it cannot
+  // say, for instance for a scoped forecast, which describes only part of the text).
+  let features: DifficultyForecast['features'];
+  let personal: DifficultyForecast['personal'];
+  if (!opts?.sentenceIds) {
+    try {
+      const lib = await import('../library');
+      features = await lib.featuresOfStoredText(ctx.store, textId);
+      const profile = await lib.profileOfStoredText(ctx.store, textId);
+      if (profile) {
+        const work = text.workId ? await ctx.store.works.get(text.workId) : undefined;
+        personal = (await scoreProfile(ctx, userId, profile, { domains: work?.domains, variety: work?.variety })).personal;
+        features ??= profile.features;
+      }
+    } catch {
+      features = undefined; // the library cannot profile this text: the forecast simply has no features / personal part
+      personal = undefined;
+    }
+  }
+
   return {
     textId, userId, coverage, predictedCoverage, newUsefulWords, rareWords, weakPhrases, newConstructions, properNouns,
     varieties, unanalysedWords: unanalysed, limits, summary,
+    ...(features ? { features } : {}), ...(personal ? { personal } : {}),
   };
 }

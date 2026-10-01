@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-2-08",
+  "lang": "es",
+  "title": "La abuela cuenta",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-2-08",
+    "title": "Camino 2 — Días y lugares: La abuela cuenta (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-2",
+    "chapter": {
+      "index": 8,
+      "title": "La abuela cuenta"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "home",
+    "travel"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "La abuela cuenta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Por la noche, la abuela se sentó con los niños.",
+              "english": "In the evening, their grandmother sat down with the children."
+            },
+            {
+              "text": "—Cuéntanos una historia, abuela —dijo Marta.",
+              "english": "\"Tell us a story, Grandma,\" said Marta."
+            },
+            {
+              "text": "—Voy a contarles cómo era mi vida cuando tenía su edad —dijo la abuela.",
+              "english": "\"I'm going to tell you what my life was like when I was your age,\" said Grandma."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—Cuando yo era niña, vivía en esta misma casa.",
+              "english": "\"When I was a girl, I lived in this very house."
+            },
+            {
+              "text": "Mi padre trabajaba en el campo y mi madre cocinaba.",
+              "english": "My father worked in the fields and my mother cooked."
+            },
+            {
+              "text": "Todos los días yo iba a la escuela a pie.",
+              "english": "Every day I went to school on foot."
+            },
+            {
+              "text": "La escuela quedaba lejos y tenía que caminar mucho.",
+              "english": "The school was far away and I had to walk a lot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde ayudaba a mi madre a hacer tortillas.",
+              "english": "In the afternoon I helped my mother make tortillas."
+            },
+            {
+              "text": "Mi hermano y yo jugábamos en el río.",
+              "english": "My brother and I played in the river.\""
+            },
+            {
+              "text": "—¿Y no tenían juguetes? —preguntó Luis.",
+              "english": "\"And didn't you have toys?\" asked Luis."
+            },
+            {
+              "text": "—Teníamos una pelota vieja y mucha imaginación —dijo la abuela, y se rió.",
+              "english": "\"We had an old ball and a lot of imagination,\" said Grandma, and she laughed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Marta dijo: —Me gusta tu historia.",
+              "english": "Marta said, \"I like your story.\""
+            },
+            {
+              "text": "—Mañana les voy a enseñar a hacer tortillas —dijo la abuela.",
+              "english": "\"Tomorrow I am going to teach you how to make tortillas,\" said Grandma."
+            },
+            {
+              "text": "Los niños se fueron a dormir muy contentos.",
+              "english": "The children went to bed very happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

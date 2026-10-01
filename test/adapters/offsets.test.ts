@@ -39,7 +39,11 @@ describe('token offsets round-trip (all five languages)', () => {
     it(`${lang}: every bundled corpus sentence`, () => {
       const ad = adapter(lang);
       const docs = loadBundledCorpus().filter((d) => d.lang === lang);
-      expect(docs).toHaveLength(3);
+      // the three original seed documents of each language are always there; further bundled texts are checked too
+      const SEED: Record<string, string[]> = { es: ['story-01', 'dialogue-01', 'bible-1john-1'] };
+      const seed = lang === 'es' ? docs.filter((d) => SEED.es.includes(d.id)) : docs;
+      expect(seed).toHaveLength(3);
+      expect(docs.length).toBeGreaterThanOrEqual(3);
       let checked = 0;
       for (const doc of docs) for (const sec of doc.sections) for (const par of sec.paragraphs) {
         if (!('sentences' in par)) continue;

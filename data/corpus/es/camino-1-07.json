@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-1-07",
+  "lang": "es",
+  "title": "Luis y Sol",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-1-07",
+    "title": "Camino 1 — Primeros pasos: Luis y Sol (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "animals"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-1",
+    "chapter": {
+      "index": 7,
+      "title": "Luis y Sol"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "animals",
+    "family"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "Luis y Sol",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis tiene un perro.",
+              "english": "Luis has a dog."
+            },
+            {
+              "text": "El perro se llama Sol.",
+              "english": "The dog is called Sol."
+            },
+            {
+              "text": "Sol es pequeño.",
+              "english": "Sol is small."
+            },
+            {
+              "text": "Sol tiene hambre.",
+              "english": "Sol is hungry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Luis tiene pan.",
+              "english": "Luis has bread."
+            },
+            {
+              "text": "Luis da pan a Sol.",
+              "english": "Luis gives bread to Sol."
+            },
+            {
+              "text": "Sol come el pan.",
+              "english": "Sol eats the bread."
+            },
+            {
+              "text": "Sol está contento.",
+              "english": "Sol is happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Luis quiere mucho a Sol.",
+              "english": "Luis loves Sol very much."
+            },
+            {
+              "text": "Luis y Sol van al parque.",
+              "english": "Luis and Sol go to the park."
+            },
+            {
+              "text": "En el parque hay un árbol grande.",
+              "english": "In the park there is a big tree."
+            },
+            {
+              "text": "Sol corre y Luis corre también.",
+              "english": "Sol runs and Luis runs too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

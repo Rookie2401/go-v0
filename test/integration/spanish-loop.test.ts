@@ -42,7 +42,11 @@ describe('Spanish end-to-end loop', () => {
     const recs = await app.golearn.recommend(USER, { lang: LANG });
     expect(recs.every((r) => !r.textId || r.reason !== 'first-text')).toBe(true); // no unreviewed text is pushed at him
     const withPreview = await app.golearn.recommend(USER, { lang: LANG, includeUnpublished: true });
-    expect(withPreview.some((r) => r.reason === 'first-text' && r.textId === ids.text(LANG, 'story-01'))).toBe(true);
+    // in preview the easiest unreviewed text is offered as a first text — and it is one of the unpublished ones
+    const first = withPreview.find((r) => r.reason === 'first-text');
+    expect(first?.textId).toBeDefined();
+    expect((await app.store.texts.get(first!.textId!))?.published).toBe(false);
+    expect(first!.explanation).toContain('in preview (not published)');
   });
 
   it('1 — import: reviewed CI material is published; Scripture is exact, verified and unchanged by import', async () => {

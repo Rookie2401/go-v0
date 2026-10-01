@@ -1,0 +1,33 @@
+{"word":"hablar","pos":"verb","lang_code":"es","lang":"Spanish","forms":[{"form":"hablo","tags":["first-person","indicative","present","singular"]},{"form":"hablas","tags":["indicative","informal","present","second-person","singular"]}],"sounds":[{"ipa":"/aˈblaɾ/"},{"rhymes":"-aɾ"}],"senses":[{"glosses":["to speak"]},{"glosses":["to talk"],"tags":["intransitive"]}]}
+{"word":"hablo","pos":"verb","lang_code":"es","lang":"Spanish","sounds":[{"ipa":"/ˈablo/"}],"senses":[{"glosses":["first-person singular present indicative of hablar"],"tags":["first-person","form-of","indicative","present","singular"],"form_of":[{"word":"hablar"}]}]}
+{"word":"hablas","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["informal second-person singular tú present indicative of hablar"],"tags":["form-of","indicative","informal","present","second-person","singular"],"form_of":[{"word":"hablar"}]}]}
+{"word":"habláis","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["second-person plural present indicative of hablar"],"tags":["form-of","indicative","plural","present","second-person","Spain"],"form_of":[{"word":"hablar"}]}]}
+{"word":"hablás","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["voseo form of hablas"],"tags":["Latin-America","form-of","indicative","present","second-person","singular","with-voseo"],"form_of":[{"word":"Hablar","extra":"fixture: capital letter, normalized"}]}]}
+{"word":"hablado","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["past participle of hablar"],"tags":["form-of","masculine","participle","past","singular"],"form_of":[{"word":"hablar"}]}]}
+{"word":"hablado","pos":"adj","lang_code":"es","lang":"Spanish","senses":[{"glosses":["spoken"]}]}
+{"word":"tener","pos":"verb","lang_code":"es","lang":"Spanish","sounds":[{"ipa":"/teˈneɾ/"}],"senses":[{"glosses":["to have"]},{"glosses":["to hold"]}]}
+{"word":"tengo","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["first-person singular present indicative of tener"],"tags":["first-person","form-of","indicative","present","singular"],"form_of":[{"word":"tener"}]}]}
+{"word":"tenés","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["voseo present indicative of tener"],"tags":["Latin-America","form-of","indicative","present","second-person","singular","with-voseo"],"form_of":[{"word":"tener"}]}]}
+{"word":"fui","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["first-person singular preterite indicative of ir"],"tags":["first-person","form-of","indicative","preterite","singular"],"form_of":[{"word":"ir"}]},{"glosses":["first-person singular preterite indicative of ser"],"tags":["first-person","form-of","indicative","preterite","singular"],"form_of":[{"word":"ser"}]}]}
+{"word":"sé","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["first-person singular present indicative of saber"],"tags":["first-person","form-of","indicative","present","singular"],"form_of":[{"word":"saber"}]},{"glosses":["second-person singular imperative of ser"],"tags":["form-of","imperative","second-person","singular"],"form_of":[{"word":"ser"}]}]}
+{"word":"dame","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["second-person singular imperative of dar combined with me"],"tags":["combined-form","form-of","imperative","second-person","singular"],"form_of":[{"word":"dar","extra":"me"}]}]}
+{"word":"niña","pos":"noun","lang_code":"es","lang":"Spanish","senses":[{"glosses":["girl"]},{"glosses":["feminine singular of niño"],"tags":["feminine","form-of","singular"],"form_of":[{"word":"niño"}]}]}
+{"word":"niño","pos":"noun","lang_code":"es","lang":"Spanish","senses":[{"glosses":["boy","child"]}]}
+{"word":"casa","pos":"noun","lang_code":"es","lang":"Spanish","senses":[{"glosses":["house","home"]}]}
+{"word":"casas","pos":"noun","lang_code":"es","lang":"Spanish","senses":[{"glosses":["plural of casa"],"tags":["form-of","plural"],"form_of":[{"word":"casa"}]}]}
+{"word":"casas","pos":"noun","lang_code":"es","lang":"Spanish","senses":[{"glosses":["plural of casa"],"tags":["form-of","plural"],"form_of":[{"word":"casa"}]}]}
+{"word":"grande","pos":"adj","lang_code":"es","lang":"Spanish","senses":[{"glosses":["big","large"]}]}
+{"word":"grandes","pos":"adj","lang_code":"es","lang":"Spanish","senses":[{"glosses":["plural of grande"],"tags":["form-of","plural"],"form_of":[{"word":"grande"}]}]}
+{"word":"coche","pos":"noun","lang_code":"es","lang":"Spanish","sounds":[{"ipa":"/ˈkotʃe/"}],"senses":[{"glosses":["car"],"tags":["Spain"]},{"glosses":["carriage"]}]}
+{"word":"carro","pos":"noun","lang_code":"es","lang":"Spanish","senses":[{"glosses":["car"],"tags":["Latin-America","Mexico"]},{"glosses":["cart"]}]}
+{"word":"chamba","pos":"noun","lang_code":"es","lang":"Spanish","senses":[{"glosses":["work, job"],"tags":["Central-America","Mexico","colloquial"]}]}
+{"word":"vos","pos":"pron","lang_code":"es","lang":"Spanish","senses":[{"glosses":["you (singular, informal)"],"tags":["Honduras","Rioplatense","Central-America"]},{"glosses":["you (formal, archaic)"],"tags":["archaic"]}]}
+{"word":"calle","pos":"noun","lang_code":"es","lang":"Spanish","sounds":[{"ipa":"/ˈkaʝe/","tags":["Latin-America"]},{"ipa":"/ˈkaʎe/","raw_tags":["Spain"]}],"senses":[{"glosses":["street"]}]}
+{"word":"Dios","pos":"name","lang_code":"es","lang":"Spanish","senses":[{"glosses":["God"]}]}
+{"word":"al","pos":"contraction","lang_code":"es","lang":"Spanish","senses":[{"glosses":["contraction of a + el"],"tags":["contraction"]}]}
+{"word":"por favor","pos":"phrase","lang_code":"es","lang":"Spanish","senses":[{"glosses":["please"]}]}
+{"word":"zzz","pos":"verb","lang_code":"es","lang":"Spanish","senses":[{"glosses":["a form-of sense whose lemma list is garbage (fixture)"],"tags":["form-of"],"form_of":[{"word":""},5,{"extra":"y"}]}]}
+{"word":"ñ","pos":"character","lang_code":"es","lang":"Spanish","senses":[{"glosses":["a letter (fixture)"]}]}
+{"word":"water","pos":"noun","lang_code":"en","lang":"English","senses":[{"glosses":["a clear liquid"]}]}
+{"word":"vacío","pos":"adj","lang_code":"es","lang":"Spanish","senses":[]}
+{"word":"truncado","pos":"verb","lang_code":"es","lang":"Spanish","senses":[

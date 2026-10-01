@@ -157,8 +157,10 @@ export const CASES: ProofCase[] = [
       const d = report.documents[0];
       r.eq('01 valid-text', 'import ok / action / version', { ok: true, action: 'created', contentVersion: 1 }, { ok: report.ok, action: d.action, contentVersion: d.contentVersion });
       r.eq('01 valid-text', 'sentences added / retired', { added: 6, retired: 0 }, { added: d.sentencesAdded, retired: d.sentencesRetired });
-      r.eq('01 valid-text', 'validation errors / warning codes', { errors: 0, warnings: ['low-analysis-coverage'] },
-        { errors: errorsOf(d).length, warnings: uniq(d.issues.filter((i) => i.severity === 'warning').map((i) => i.code)) });
+      // (the low-analysis-coverage warning depends on how much of this text the Spanish word list knows, which grows over time:
+      // it is neither required nor forbidden here; any OTHER warning would be a finding)
+      r.eq('01 valid-text', 'validation errors / warning codes other than the lexicon-dependent coverage warning', { errors: 0, warnings: [] as string[] },
+        { errors: errorsOf(d).length, warnings: uniq(d.issues.filter((i) => i.severity === 'warning' && i.code !== 'low-analysis-coverage').map((i) => i.code)) });
       const textId = textIdOf(doc);
       c.state.validTextId = textId;
       const live = await liveOf(c.store, textId);

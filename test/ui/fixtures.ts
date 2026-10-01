@@ -1,5 +1,6 @@
 /** Fixture texts for the UI tests (explicit tokens — never split(' ')). */
 import { buildFixtureText } from '../../src/core';
+import { makeEpub, xhtml } from '../ingest/zip';
 import type { AppStore, Text } from '../../src/core';
 
 export const STORY_ID = 'text:es:story-01';
@@ -108,4 +109,20 @@ export async function seedChapter(store: AppStore, workId: string, chapterIndex:
   const next: Text = { ...text, workId, chapter: { index: chapterIndex, title: opts.title ?? `ตอนที่ ${chapterIndex}` }, personalCopy: true };
   await store.texts.put(next);
   return next;
+}
+
+/**
+ * A tiny REAL EPUB (built with the importer's own test helper): one section per chapter, each a heading and its paragraphs.
+ * `protectedBy` adds the file that marks a book as copy-protected (the reader refuses it).
+ */
+export function tinyEpub(chapters: Array<{ heading: string; paragraphs: string[] }>, opts: { title?: string; author?: string; protectedBy?: 'rights' | 'encryption' } = {}): Uint8Array {
+  const esc = (t: string) => t.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+  return makeEpub({
+    title: opts.title ?? 'Cuentos', author: opts.author ?? 'Ana Autora', language: 'es',
+    pages: chapters.map((c, i) => ({ id: `c${i + 1}`, href: `c${i + 1}.xhtml`, html: xhtml(`<h1>${esc(c.heading)}</h1>${c.paragraphs.map((p) => `<p>${esc(p)}</p>`).join('')}`) })),
+    ...(opts.protectedBy === 'rights' ? { extra: [{ name: 'META-INF/rights.xml', data: '<rights/>' }] } : {}),
+    ...(opts.protectedBy === 'encryption'
+      ? { extra: [{ name: 'META-INF/encryption.xml', data: '<encryption xmlns="urn:oasis:names:tc:opendocument:xmlns:container"><EncryptedData xmlns="http://www.w3.org/2001/04/xmlenc#"><CipherData><CipherReference URI="OEBPS/c1.xhtml"/></CipherData></EncryptedData></encryption>' }] }
+      : {}),
+  });
 }

@@ -1,0 +1,123 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-1-08",
+  "lang": "es",
+  "title": "Marta quiere un perro",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-1-08",
+    "title": "Camino 1 — Primeros pasos: Marta quiere un perro (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "school"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-1",
+    "chapter": {
+      "index": 8,
+      "title": "Marta quiere un perro"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "school",
+    "animals",
+    "family"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "Marta quiere un perro",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta tiene ocho años.",
+              "english": "Marta is eight years old."
+            },
+            {
+              "text": "Marta va a la escuela.",
+              "english": "Marta goes to school."
+            },
+            {
+              "text": "En la escuela hay muchos niños.",
+              "english": "At school there are many children."
+            },
+            {
+              "text": "Marta tiene una maestra.",
+              "english": "Marta has a teacher."
+            },
+            {
+              "text": "La maestra se llama Elena.",
+              "english": "The teacher is called Elena."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hoy Marta lee un libro en la escuela.",
+              "english": "Today Marta reads a book at school."
+            },
+            {
+              "text": "En el libro hay un perro.",
+              "english": "In the book there is a dog."
+            },
+            {
+              "text": "Marta quiere un perro como Sol.",
+              "english": "Marta wants a dog like Sol."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde, Marta va a la casa.",
+              "english": "In the afternoon, Marta goes home."
+            },
+            {
+              "text": "Marta habla con su madre.",
+              "english": "Marta talks with her mother."
+            },
+            {
+              "text": "—Mamá, quiero un perro —dice Marta.",
+              "english": "\"Mom, I want a dog,\" says Marta."
+            },
+            {
+              "text": "Su madre sonríe.",
+              "english": "Her mother smiles."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

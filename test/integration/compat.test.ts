@@ -33,7 +33,9 @@ for (const lang of LANGS) {
       expect(validateBatch(docs, { registry: app.adapters }).ok).toBe(true);
       const report = await importDocuments(app.store, app.adapters, docs);
       expect(report.ok).toBe(true);
-      expect(report.documents.map((d) => d.action)).toEqual(['created', 'created', 'created']);
+      // the three seed documents of every language, plus (for Spanish) the course's own controlled texts
+      expect(report.documents.length).toBeGreaterThanOrEqual(3);
+      expect(report.documents.every((d) => d.action === 'created')).toBe(true);
       const counts = async () => Promise.all([app.store.texts.count(), app.store.sentences.count(), app.store.tokens.count(), app.store.analyses.count(), app.store.rescues.count()]);
       const before = await counts();
       const again = await importDocuments(app.store, app.adapters, docs);

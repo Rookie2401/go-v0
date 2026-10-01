@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-3-04",
+  "lang": "es",
+  "title": "El hijo que volvió",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-3-04",
+    "title": "Camino 3 — Historias: El hijo que volvió (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "scripture",
+    "parables"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [
+    "LUK.15.11"
+  ],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-3",
+    "chapter": {
+      "index": 4,
+      "title": "El hijo que volvió"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "scripture",
+    "family"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "El hijo que volvió",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un hombre tenía dos hijos.",
+              "english": "A man had two sons."
+            },
+            {
+              "text": "Un día el hijo menor le dijo a su padre: —Quiero que me des la parte del dinero que me toca.",
+              "english": "One day the younger son said to his father, \"I want you to give me the part of the money that is mine.\""
+            },
+            {
+              "text": "El padre se lo dio, aunque le dolía mucho.",
+              "english": "The father gave it to him, even though it hurt him very much."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El hijo menor juntó todo lo que tenía y se fue a un país lejano.",
+              "english": "The younger son gathered everything he had and went to a faraway country."
+            },
+            {
+              "text": "Allí gastó el dinero en fiestas y en cosas que no necesitaba.",
+              "english": "There he spent the money on parties and on things he did not need."
+            },
+            {
+              "text": "Cuando ya no le quedaba nada, llegó un hambre fuerte a aquella tierra.",
+              "english": "When he had nothing left, a severe hunger came to that land."
+            },
+            {
+              "text": "El joven, que nunca había pasado necesidad, empezó a sufrir.",
+              "english": "The young man, who had never been in need, began to suffer."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Buscó trabajo, y un hombre lo mandó a cuidar cerdos.",
+              "english": "He looked for work, and a man sent him to look after pigs."
+            },
+            {
+              "text": "Tenía tanta hambre que habría querido comer lo mismo que los cerdos, pero nadie le daba nada.",
+              "english": "He was so hungry that he would have liked to eat the same food as the pigs, but nobody gave him anything."
+            },
+            {
+              "text": "Entonces pensó: —En la casa de mi padre, hasta los trabajadores tienen pan de sobra, y yo me muero de hambre aquí.",
+              "english": "Then he thought, \"In my father's house even the workers have plenty of bread, and I am dying of hunger here.\""
+            },
+            {
+              "text": "Voy a volver con mi padre y le voy a decir: «He pecado contra Dios y contra ti, y ya no merezco que me llames hijo; trátame como a uno de tus trabajadores.»",
+              "english": "I am going to go back to my father and say to him, 'I have sinned against God and against you, and I no longer deserve to be called your son; treat me like one of your workers.'\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Se levantó y volvió a su casa.",
+              "english": "He got up and went back to his home."
+            },
+            {
+              "text": "Cuando todavía estaba lejos, su padre lo vio y sintió compasión.",
+              "english": "While he was still far away, his father saw him and felt compassion."
+            },
+            {
+              "text": "El padre corrió hacia él, lo abrazó y lo besó.",
+              "english": "The father ran toward him, hugged him and kissed him."
+            },
+            {
+              "text": "El hijo empezó a decir lo que había preparado, pero su padre no lo dejó terminar.",
+              "english": "The son began to say what he had prepared, but his father did not let him finish."
+            },
+            {
+              "text": "Llamó a sus criados y les dijo: —Traigan la mejor ropa y vístanlo, y pónganle también un anillo y zapatos.",
+              "english": "He called his servants and said to them, \"Bring the best clothes and dress him, and put a ring and shoes on him too.\""
+            },
+            {
+              "text": "Hagamos una fiesta, porque mi hijo estaba perdido y ya lo hemos encontrado: era como si hubiera muerto y ha vuelto a vivir.",
+              "english": "Let us have a party, because my son was lost and now we have found him: it was as if he had died, and he has come back to life.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mientras tanto, el hijo mayor volvía del campo.",
+              "english": "Meanwhile, the older son was coming back from the field."
+            },
+            {
+              "text": "Al acercarse a la casa, oyó música y supo que había una fiesta.",
+              "english": "As he came near the house, he heard music and learned that there was a party."
+            },
+            {
+              "text": "Preguntó qué pasaba, y un criado le dijo que su hermano había vuelto.",
+              "english": "He asked what was going on, and a servant told him that his brother had come back."
+            },
+            {
+              "text": "El hijo mayor se enojó mucho y no quiso entrar.",
+              "english": "The older son became very angry and did not want to go in."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El padre salió a buscarlo y le pidió que entrara.",
+              "english": "The father went out to find him and asked him to come in."
+            },
+            {
+              "text": "—Yo te he servido durante muchos años —respondió el hijo mayor—, y nunca me diste ni un cabrito para celebrar con mis amigos.",
+              "english": "\"I have served you for many years,\" the older son answered, \"and you never gave me even a young goat to celebrate with my friends.\""
+            },
+            {
+              "text": "Pero cuando vuelve este hijo tuyo, que gastó tu dinero, haces una fiesta para él.",
+              "english": "But when this son of yours comes back, the one who spent your money, you throw a party for him.\""
+            },
+            {
+              "text": "—Hijo mío —dijo el padre—, tú siempre estás conmigo y todo lo que tengo es tuyo.",
+              "english": "\"My son,\" said the father, \"you are always with me, and everything I have is yours."
+            },
+            {
+              "text": "Pero teníamos que alegrarnos, porque tu hermano estaba perdido y ha sido encontrado.",
+              "english": "But we had to be glad, because your brother was lost and has been found.\""
+            },
+            {
+              "text": "La historia no dice si el hijo mayor entró a la fiesta.",
+              "english": "The story does not say whether the older son went into the party."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

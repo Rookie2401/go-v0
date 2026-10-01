@@ -57,3 +57,20 @@
 @media (max-width: 30rem) {
   .copy__facts dt { min-width: 0; flex-basis: 100%; }
 }
+
+/* catalogue pages (Explore, Your Books), Best next reads, doors, interests */
+.explore__shelves { flex-wrap: wrap; margin-bottom: 0.8rem; }
+.explore__search { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 0.5rem; margin-bottom: 0.4rem; }
+.explore__search .field { flex: 1 1 14rem; margin-bottom: 0; }
+.explore__filters { margin-bottom: 0.6rem; }
+.explore__pager { justify-content: space-between; }
+.explore-work .work__title { font-size: 1.12rem; }
+.best-reads__entry { background: transparent; border-left: 0; border-right: 0; border-top: 0; font: inherit; cursor: pointer; }
+.best-reads__note { max-width: 26rem; margin: 0.4rem auto 0; text-align: left; padding: 0 0.6rem; }
+.doors { margin-bottom: 0; }
+.interests { border: 0; padding: 0; margin: 0 0 1rem; }
+.interests__group { flex-wrap: wrap; margin: 0.3rem 0; }
+.copy__quality { margin: 0.5rem 0; }
+.copy__headings { border: 0; padding: 0; margin: 0.4rem 0; }
+.copy__headings li { padding: 0.15rem 0; }
+.books .disclosure__btn { font-size: 1rem; }

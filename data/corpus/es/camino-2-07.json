@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-2-07",
+  "lang": "es",
+  "title": "El viaje en autobús",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-2-07",
+    "title": "Camino 2 — Días y lugares: El viaje en autobús (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "travel"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-2",
+    "chapter": {
+      "index": 7,
+      "title": "El viaje en autobús"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel",
+    "family",
+    "places"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "El viaje en autobús",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En las vacaciones, Marta y Luis fueron a la casa de su abuela.",
+              "english": "In the holidays, Marta and Luis went to their grandmother's house."
+            },
+            {
+              "text": "Su abuela vivía en un pueblo pequeño.",
+              "english": "Their grandmother lived in a small town."
+            },
+            {
+              "text": "Tuvieron que ir en autobús.",
+              "english": "They had to go by bus."
+            },
+            {
+              "text": "El viaje era largo.",
+              "english": "The trip was long."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Salieron de la casa temprano.",
+              "english": "They left the house early."
+            },
+            {
+              "text": "Pedro los llevó a la estación.",
+              "english": "Pedro took them to the station."
+            },
+            {
+              "text": "En la estación compraron los boletos.",
+              "english": "At the station they bought the tickets."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Luis tenía un asiento junto a la ventana.",
+              "english": "Luis had a seat by the window."
+            },
+            {
+              "text": "Marta quería ese asiento también.",
+              "english": "Marta wanted that seat too."
+            },
+            {
+              "text": "—Yo lo vi primero —dijo Luis.",
+              "english": "\"I saw it first,\" said Luis."
+            },
+            {
+              "text": "Rosa dijo: —Luis, dale el asiento a tu hermana un rato.",
+              "english": "Rosa said, \"Luis, give your sister the seat for a while.\""
+            },
+            {
+              "text": "Luis se lo dio.",
+              "english": "Luis gave it to her."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Por la ventana vieron montañas, ríos y vacas.",
+              "english": "Through the window they saw mountains, rivers and cows."
+            },
+            {
+              "text": "Marta durmió un rato y Luis leyó un libro.",
+              "english": "Marta slept for a while and Luis read a book."
+            },
+            {
+              "text": "Después de muchas horas llegaron al pueblo.",
+              "english": "After many hours they arrived at the town."
+            },
+            {
+              "text": "La abuela los esperaba en la puerta.",
+              "english": "Their grandmother was waiting for them at the door."
+            },
+            {
+              "text": "—¡Mis niños, qué grandes están! —dijo la abuela, y los abrazó.",
+              "english": "\"My children, how big you are!\" said their grandmother, and hugged them."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

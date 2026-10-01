@@ -4,13 +4,19 @@
  * 'published'): readable on this device, labelled "Your copy", never bundled. See docs/IMPORT.md, "Your own copy of a
  * book". Nothing here reads or writes a file; `scripts/corpus-convert.mts` is the command-line wrapper.
  *
- * Exactness: a paragraph is a non-empty line of the input, stored as a raw paragraph `{ text }`. The only change ever
- * made to a line is trimming plain indentation (spaces and tabs) at its two ends, and that is reported in `notes`.
- * No Unicode normalisation, no re-spacing, no added spaces; sentence boundaries inside a paragraph are left to the
- * importer. A chapter heading line becomes the title of its section (its text is kept, exactly).
+ * Exactness: a paragraph is a non-empty line of the input (Thai and the default) or a block of lines between blank lines
+ * (Western prose that is hard-wrapped), stored as a raw paragraph `{ text }`. The only change ever made to a line is
+ * trimming plain indentation (spaces and tabs) at its two ends, and that is reported in `notes`. Two things are done only
+ * on request, and every one is counted in the result: `unwrap` joins the lines of a block (a single space; a hyphenated
+ * line break is re-joined unless the word is hyphenated elsewhere in the text) and `stripBoilerplate` removes exactly the
+ * lines `inspectText` identified as boilerplate, keeping them retrievable in the result. No Unicode normalisation, no
+ * re-spacing, no added spaces; sentence boundaries inside a paragraph are left to the importer. A chapter heading line
+ * becomes the title of its section (its text is kept, exactly).
  */
-import type { LanguageCode, TextKind, Work } from '../core';
+import type { LanguageCode, QualityReport, TextKind, Work } from '../core';
 import type { CorpusDocument, DocWork } from './format';
+import { autoHeading, detectHeadings, westernHeading, type Heading } from './headings';
+import { findBoilerplate, inspectText, looksHardWrapped, type QualityOptions } from './quality';
 
 export interface PlainTextOptions {
   lang: LanguageCode;
@@ -18,14 +24,37 @@ export interface PlainTextOptions {
   work?: Work;
   /** Used when there is no work: a free-standing text. */
   title?: string;
+  /** Used when there is no work: who wrote it (the credit line of a free-standing book). */
+  author?: string;
   contentType?: TextKind;
   /** Stable slug prefix for the produced documents; default derives from the work slug or the title. */
   idPrefix?: string;
   /**
-   * How chapters are found: 'auto' recognises common Thai/English chapter headings ("บทที่ ๑", "ตอนที่ 3", "Chapter 4")
+   * How chapters are found: 'auto' recognises common Thai/English chapter headings ("บทที่ ๑", "ตอนที่ 3", "Chapter 4") and, for
+   * the other languages, Spanish and English ones ("Capítulo I", "CAPÍTULO PRIMERO", "Libro segundo", "Parte tercera", "I.")
    * on their own line; 'none' makes one document; a RegExp source string is matched against whole lines.
    */
   chapters?: 'auto' | 'none' | string;
+  /**
+   * Line numbers (1-based, physical lines of the file) that are chapter headings. The correction path: call once, read
+   * `headings` in the result, call again with the corrected list. It wins over `chapters`.
+   */
+  headings?: number[];
+  /**
+   * What a paragraph is: 'lines' (every non-empty line) or 'blank-line' (the lines between blank lines). Default: 'blank-line'
+   * when the text has hard-wrapped lines (never for Thai), otherwise 'lines'.
+   */
+  paragraphs?: 'lines' | 'blank-line';
+  /** Join the lines of a blank-line paragraph (single space; hyphenated line breaks re-joined unless the word is hyphenated elsewhere). Counted. */
+  unwrap?: boolean;
+  /** Remove ONLY the lines `inspectText` identified as boilerplate (licence header and footer, production credits, copyright lines); they stay in `removed`. */
+  stripBoilerplate?: boolean;
+  /** Where the text came from, for the quality check. */
+  sourceKind?: QualityOptions['sourceKind'];
+  /** Catalogue facts and variety, carried to every document (`Text.streams / domains / variety`). */
+  streams?: string[];
+  domains?: string[];
+  variety?: string;
   /** Who is importing and from what copy ("my paperback, 12th printing") — recorded in source.provenance. */
   copyNote?: string;
 }
@@ -34,40 +63,21 @@ export interface PlainTextResult {
   documents: CorpusDocument[];
   /** What was recognised and what was not, in plain words ("14 chapters found by headings like 'บทที่ ๑'"). */
   notes: string[];
+  /** The headings detected (or given): line number (1-based), the heading line and its title. Pass a corrected list of lines as `headings` to change them. */
+  headings: Array<{ line: number; text: string; title?: string }>;
+  /** The source-quality report (also stored on each document as `quality`). */
+  quality: QualityReport;
+  /** What `stripBoilerplate` removed, exactly (1-based inclusive lines and the text), so nothing is lost. */
+  removed: Array<{ kind: 'boilerplate' | 'title-page-noise'; label: string; startLine: number; endLine: number; text: string }>;
+  /** What `unwrap` did: line breaks joined with a space, hyphenated breaks re-joined, hyphenated breaks kept as real hyphens. */
+  unwrapped?: { spaces: number; dehyphenated: number; hyphenKept: number };
 }
 
-// Chapter words, written as escapes so no editor can change a character:
-//   บทที่ (U+0E1A U+0E17 U+0E17 U+0E35 U+0E48), ตอนที่ (U+0E15 U+0E2D U+0E19 …), ภาคที่ (U+0E20 U+0E32 U+0E04 …).
-// "ที่" is accepted with the tone mark before or after the vowel, as sloppy files have both orders.
-const THI = '\\u0E17(?:\\u0E35\\u0E48|\\u0E48\\u0E35)';
-const CHAPTER_WORD = `(?:\\u0E1A\\u0E17${THI}|\\u0E15\\u0E2D\\u0E19${THI}|\\u0E20\\u0E32\\u0E04${THI}|chapter)`;
-/** Western digits and Thai digits ๐–๙ (U+0E50–U+0E59). */
-const DIGITS = '[0-9\\u0E50-\\u0E59]+';
-const AUTO_HEADING = new RegExp(`^(${CHAPTER_WORD})\\s*(${DIGITS})(.*)$`, 'iu');
-const HEADING_SEPARATOR = /^[\s:：.\-–—)\]]/u;
-const MAX_TITLE_LENGTH = 100;
 const INDENT = /^[ \t]+|[ \t]+$/g;
 
-interface Heading { line: string; title?: string; number?: number }
-
-const thaiDigitsToAscii = (s: string): string => s.replace(/[๐-๙]/g, (c) => String(c.charCodeAt(0) - 0x0E50));
-
-function autoHeading(line: string): Heading | undefined {
-  const m = AUTO_HEADING.exec(line);
-  if (!m) return undefined;
-  const rest = m[3];
-  let title: string | undefined;
-  if (rest !== '') {
-    if (!HEADING_SEPARATOR.test(rest)) return undefined; // "บทที่ 1abc": not a heading
-    title = rest.replace(/^[\s:：.\-–—)\]]+/u, '').trim();
-    if (title.length > MAX_TITLE_LENGTH) return undefined; // a sentence that happens to begin with a chapter word
-  }
-  return { line, ...(title ? { title } : {}), number: Number(thaiDigitsToAscii(m[2])) };
-}
-
-function headingMatcher(mode: string): ((line: string) => Heading | undefined) | undefined {
-  if (mode === 'none') return undefined;
-  if (mode === 'auto') return autoHeading;
+/** The original matcher for a custom regular expression (or none). */
+function customMatcher(mode: string): ((line: string) => Heading | undefined) | undefined {
+  if (mode === 'none' || mode === 'auto') return undefined;
   let re: RegExp;
   try { re = new RegExp(`^(?:${mode})$`, 'u'); }
   catch (e) { throw new Error(`chapters: "${mode}" is not a valid regular expression (${e instanceof Error ? e.message : String(e)})`); }
@@ -75,17 +85,17 @@ function headingMatcher(mode: string): ((line: string) => Heading | undefined) |
     const m = re.exec(line);
     if (!m) return undefined;
     const title = m.groups?.title?.trim();
-    return { line, ...(title ? { title } : {}) };
+    return { line, ...(title ? { title } : {}), kind: 'numbered' };
   };
 }
 
 const slugify = (s: string): string => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
 
-interface Block { heading?: Heading; paragraphs: string[] }
+interface Block { heading?: Heading; headingLine?: number; paragraphs: string[] }
 
 /**
  * Turn the exact text of a book into one v2 import document per chapter. The text is never altered: paragraphs are
- * the text's own lines; sentence boundaries inside a paragraph are left to the importer. The documents are personal
+ * the text's own lines (or blocks); sentence boundaries inside a paragraph are left to the importer. The documents are personal
  * copies (source.rights 'personal-copy', authorship 'published'): readable on this device, never bundled.
  */
 export function plainTextToDocuments(text: string, opts: PlainTextOptions): PlainTextResult {
@@ -93,6 +103,7 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
   if (!bookTitle) throw new Error('plainTextToDocuments: give the work or a title');
   const notes: string[] = [];
   const mode = opts.chapters ?? 'auto';
+  const lang = opts.lang;
 
   // ── lines: BOM and line endings are handled, nothing else in the text is touched ──
   let body = text;
@@ -101,22 +112,82 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
   if (body.includes('�')) notes.push('The text contains replacement characters (�): the file may not be UTF-8, or part of it is damaged. Check it before reading.');
   const lines = body.split(/\r\n|\r|\n/);
 
-  const match = headingMatcher(mode);
+  const quality = inspectText(body, { lang, sourceKind: opts.sourceKind });
+
+  // ── boilerplate: removed only on request, and only what the quality check identified ──
+  const removedLines = new Set<number>();
+  const removed: PlainTextResult['removed'] = [];
+  if (opts.stripBoilerplate) {
+    for (const r of findBoilerplate(lines)) {
+      for (let i = r.startLine; i <= r.endLine; i++) removedLines.add(i);
+      removed.push({ kind: r.kind, label: r.label, startLine: r.startLine + 1, endLine: r.endLine + 1, text: lines.slice(r.startLine, r.endLine + 1).join('\n') });
+    }
+  }
+  /** The lines as the converter reads them: indentation trimmed, removed lines gone (blank). */
+  const work = lines.map((l, i) => (removedLines.has(i) ? '' : l.replace(INDENT, '')));
+  const stripped = lines.map((l, i) => (removedLines.has(i) ? '' : l));
+
+  // ── what a paragraph is ──
+  const wrapped = lang !== 'th' && looksHardWrapped(stripped, lang);
+  const pmode = opts.paragraphs ?? (wrapped ? 'blank-line' : 'lines');
+
+  // ── headings ──
+  const headingAt = new Map<number, Heading>();
+  if (opts.headings) {
+    for (const n of opts.headings) {
+      const i = n - 1;
+      if (Number.isInteger(i) && i >= 0 && i < work.length && work[i] !== '') headingAt.set(i, autoHeading(work[i]) ?? (lang === 'th' ? undefined : westernHeading(work[i])) ?? { line: work[i], kind: 'numbered' });
+    }
+  } else if (mode === 'auto') {
+    for (const { index, heading } of detectHeadings(work, lang)) headingAt.set(index, heading);
+  } else if (mode !== 'none') {
+    const match = customMatcher(mode)!;
+    work.forEach((l, i) => { if (l !== '') { const h = match(l); if (h) headingAt.set(i, h); } });
+  }
+
+  // ── unwrapping (only on request): every join is counted ──
+  const unwrapStats = { spaces: 0, dehyphenated: 0, hyphenKept: 0 };
+  const hyphenated = new Set<string>();
+  if (opts.unwrap && pmode === 'blank-line') {
+    for (const l of work) for (const m of l.matchAll(/\p{L}+(?:-\p{L}+)+/gu)) hyphenated.add(m[0].toLowerCase());
+  }
+  const joinLines = (cur: string[]): string => {
+    if (!opts.unwrap || cur.length === 1) return cur.join('\n');
+    let out = cur[0];
+    for (let k = 1; k < cur.length; k++) {
+      const next = cur[k];
+      const left = /(\p{L}+)-$/u.exec(out);
+      const right = /^(\p{L}+)/u.exec(next);
+      if (left && !/--$/.test(out) && /^\p{Ll}/u.test(next) && right) {
+        if (hyphenated.has(`${left[1]}-${right[1]}`.toLowerCase())) { out += next; unwrapStats.hyphenKept++; } // a real hyphen: keep it
+        else { out = out.slice(0, -1) + next; unwrapStats.dehyphenated++; }
+      } else { out += ` ${next}`; unwrapStats.spaces++; }
+    }
+    return out;
+  };
+
+  // ── blocks ──
   const blocks: Block[] = [{ paragraphs: [] }];
   let blank = 0;
   let trimmed = 0;
   let notNfc = 0;
   let paragraphs = 0;
-  for (const raw of lines) {
-    const line = raw.replace(INDENT, '');
-    if (line.trim() === '') { blank++; continue; }
-    if (line !== raw) trimmed++;
-    const heading = match?.(line);
-    if (heading) { blocks.push({ heading, paragraphs: [] }); continue; }
-    blocks[blocks.length - 1].paragraphs.push(line);
+  let cur: string[] = [];
+  const addParagraph = (p: string) => {
+    blocks[blocks.length - 1].paragraphs.push(p);
     paragraphs++;
-    if (line !== line.normalize('NFC')) notNfc++;
-  }
+    if (p !== p.normalize('NFC')) notNfc++;
+  };
+  const flush = () => { if (cur.length) { addParagraph(joinLines(cur)); cur = []; } };
+  lines.forEach((raw, i) => {
+    const line = work[i];
+    if (line === '') { if (!removedLines.has(i)) blank++; flush(); return; }
+    if (line !== raw) trimmed++;
+    const heading = headingAt.get(i);
+    if (heading) { flush(); blocks.push({ heading, headingLine: i + 1, paragraphs: [] }); return; }
+    if (pmode === 'lines') addParagraph(line); else cur.push(line);
+  });
+  flush();
 
   // ── chapters: headed blocks that have text; text before the first heading is front matter ──
   const headed = blocks.filter((b) => b.heading);
@@ -124,9 +195,9 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
   const empty = headed.filter((b) => b.paragraphs.length === 0);
   const front = blocks[0].paragraphs.length > 0 ? blocks[0] : undefined;
 
-  if (mode === 'none') notes.push('Chapter detection is off: the whole text is one chapter.');
-  else if (headed.length === 0) notes.push(mode === 'auto'
-    ? 'No chapter headings were found (a heading is a line such as "บทที่ ๑", "ตอนที่ 3" or "Chapter 4" on its own), so the whole text is one chapter.'
+  if (mode === 'none' && !opts.headings) notes.push('Chapter detection is off: the whole text is one chapter.');
+  else if (headed.length === 0) notes.push(mode === 'auto' || opts.headings
+    ? 'No chapter headings were found (a heading is a line such as "บทที่ ๑", "ตอนที่ 3", "Capítulo I" or "Chapter 4" on its own), so the whole text is one chapter.'
     : 'No line matched the chapter pattern, so the whole text is one chapter.');
   else {
     const first = headed[0].heading!.line;
@@ -137,16 +208,38 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
     }
   }
   for (const b of empty) notes.push(`The heading "${b.heading!.line}" has no text after it and was skipped.`);
-  if (front && headed.length) notes.push('The text before the first heading is kept as chapter 0, "Front matter".');
-  notes.push(`${paragraphs} paragraph${paragraphs === 1 ? '' : 's'} read, one for each non-empty line; ${blank} blank line${blank === 1 ? '' : 's'} skipped.`);
-  if (trimmed) notes.push(`Spaces or tabs at the start or end of ${trimmed} line${trimmed === 1 ? '' : 's'} were trimmed. That is the only change made to the text.`);
+  if (front && headed.length && !(mode === 'none' && !opts.headings)) notes.push('The text before the first heading is kept as chapter 0, "Front matter".');
+  if (pmode === 'lines') {
+    notes.push(`${paragraphs} paragraph${paragraphs === 1 ? '' : 's'} read, one for each non-empty line; ${blank} blank line${blank === 1 ? '' : 's'} skipped.`);
+    if (opts.unwrap) notes.push('Unwrap has no effect here: every line is its own paragraph (set paragraphs to "blank-line" to join lines).');
+  } else {
+    notes.push(`${paragraphs} paragraph${paragraphs === 1 ? '' : 's'} read, each the lines between blank lines (${blank} blank line${blank === 1 ? '' : 's'} between them).`);
+    if (!opts.unwrap) notes.push('The line breaks inside a paragraph are kept exactly as they are (unwrap is off).');
+  }
+  if (trimmed) notes.push(`Spaces or tabs at the start or end of ${trimmed} line${trimmed === 1 ? '' : 's'} were trimmed. That is the only change made to the text${opts.unwrap || removed.length ? ' unless you asked for more (see below)' : ''}.`);
   if (notNfc) notes.push(`${notNfc} paragraph${notNfc === 1 ? ' is' : 's are'} not in Unicode NFC; they are stored exactly as supplied.`);
   if (paragraphs === 0) notes.push('The text has no content.');
+  if (opts.unwrap && pmode === 'blank-line') {
+    const { spaces, dehyphenated, hyphenKept } = unwrapStats;
+    notes.push(`Unwrap joined ${spaces + dehyphenated + hyphenKept} line break${spaces + dehyphenated + hyphenKept === 1 ? '' : 's'}: ${spaces} with a single space, ${dehyphenated} hyphenated break${dehyphenated === 1 ? '' : 's'} re-joined into one word, ${hyphenKept} kept their hyphen because the word is hyphenated elsewhere in the text.`);
+  }
+  if (opts.stripBoilerplate) {
+    const lineCount = removedLines.size;
+    notes.push(removed.length
+      ? `Removed ${removed.length} boilerplate block${removed.length === 1 ? '' : 's'} (${lineCount} line${lineCount === 1 ? '' : 's'}): ${removed.map((r) => `${r.label}, lines ${r.startLine}-${r.endLine}`).join('; ')}. The removed text is in the result's "removed" list.`
+      : 'No boilerplate was found to remove.');
+  }
+  if (quality.verdict !== 'clean') {
+    const codes = quality.flags.map((f) => `${f.code}${f.severity === 'serious' ? ' (serious)' : ''}`).join(', ');
+    notes.push(quality.verdict === 'damaged'
+      ? `The source looks damaged: ${codes}. You can still import it as your own copy, but look at the flagged places first.`
+      : `Source check: usable, with ${quality.flags.length} note${quality.flags.length === 1 ? '' : 's'}: ${codes}.`);
+  }
 
   // ── one document per chapter ──
   type Chapter = { index: number; heading?: Heading; front: boolean; paragraphs: string[] };
   const chapters: Chapter[] = [];
-  if (headed.length === 0 || mode === 'none') {
+  if (headed.length === 0 || (mode === 'none' && !opts.headings)) {
     const all = blocks.flatMap((b) => b.paragraphs);
     if (all.length) chapters.push({ index: 1, front: false, paragraphs: all });
   } else {
@@ -157,25 +250,25 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
   const workSlug = opts.work ? opts.work.id.slice(`work:${opts.work.courseId}:`.length) : undefined;
   const prefix = opts.idPrefix ?? workSlug ?? (slugify(opts.title ?? '') || 'book');
   const width = Math.max(2, String(chapters.length).length);
-  const author = opts.work?.author?.trim();
+  const author = (opts.work?.author ?? opts.author)?.trim();
   const copy = opts.copyNote?.trim();
   const provenance = `Supplied by the learner from a personal copy${copy ? ` (${copy})` : ''}; transcription not checked.`;
 
   const documents = chapters.map((ch): CorpusDocument => {
     const heading = ch.heading?.line;
     const chapterTitle = ch.front ? 'Front matter' : ch.heading?.title;
-    const work: DocWork | undefined = workSlug
+    const docWork: DocWork | undefined = workSlug
       ? { slug: workSlug, courseId: opts.work!.courseId, chapter: { index: ch.index, ...(chapterTitle ? { title: chapterTitle } : {}) } }
       : undefined;
     return {
       schemaVersion: 2,
       id: `${prefix}-ch${String(ch.index).padStart(width, '0')}`,
-      lang: opts.lang,
+      lang,
       title: ch.front ? `${bookTitle} — Front matter` : heading ? `${bookTitle} — ${heading}` : bookTitle,
       contentType: opts.contentType ?? 'story',
-      corpus: { id: `personal-${opts.lang}`, kind: 'comprehensible-input', title: 'Your books' },
+      corpus: { id: `personal-${lang}`, kind: 'comprehensible-input', title: 'Your books' },
       source: {
-        id: `src:${opts.lang}:${prefix}`,
+        id: `src:${lang}:${prefix}`,
         title: bookTitle,
         ...(author ? { author } : {}),
         ...(opts.work?.publisher ? { publisher: opts.work.publisher } : {}),
@@ -191,10 +284,18 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
       editorialTags: [],
       prepTargets: [],
       generated: false,
-      ...(work ? { work } : {}),
+      ...(docWork ? { work: docWork } : {}),
+      ...(opts.streams?.length ? { streams: [...opts.streams] } : {}),
+      ...(opts.domains?.length ? { domains: [...opts.domains] } : {}),
+      ...(opts.variety ? { variety: opts.variety } : {}),
+      quality,
       sections: [{ ...(heading ? { title: heading } : {}), paragraphs: ch.paragraphs.map((p) => ({ text: p })) }],
     };
   });
 
-  return { documents, notes };
+  return {
+    documents, notes, quality, removed,
+    headings: headed.map((b) => ({ line: b.headingLine!, text: b.heading!.line, ...(b.heading!.title ? { title: b.heading!.title } : {}) })),
+    ...(opts.unwrap && pmode === 'blank-line' ? { unwrapped: unwrapStats } : {}),
+  };
 }

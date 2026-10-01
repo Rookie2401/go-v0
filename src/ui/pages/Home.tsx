@@ -17,6 +17,8 @@ import type { Recommendation, Text, TextViewed } from '../../core';
 import { useApp } from '../context';
 import { ProgressLine, useCoverageMany, useReadingProgress } from '../coverage';
 import { BAND_LABEL, INPUT_REASONS, REASON_LABEL, awaitedStatement, isTestimonyText, isVisibleText, languageName, pct, plainReason, plainReasons, teamLabel, textPath } from '../format';
+import { useStreams } from '../course/catalogue';
+import { BestNextReads, Doors } from '../course/StreamHome';
 import { useCurrentStage } from '../course/useLadder';
 import { useLangTexts } from '../library';
 import { usePreview } from '../prefs';
@@ -46,6 +48,10 @@ export function Home() {
     () => (stages && stages.length > 0 && currentStage ? [{ to: '/course', name: 'Reading ladder', sub: currentStage.label }, ...ENTRIES] : ENTRIES),
     [stages, currentStage],
   );
+  // A course with streams (Spanish) gets Best next reads and the doors; it keeps everything else. Without streams Home is exactly as before.
+  const streams = useStreams();
+  const hasStreams = (streams?.length ?? 0) > 0;
+  const [bestShown, setBestShown] = useState<number | null>(null); // null until Best next reads has looked
   const [items, setItems] = useState<Item[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [lastRead, setLastRead] = useState<LastRead | null>(null);
@@ -154,6 +160,18 @@ export function Home() {
     return { text: 'Nothing to suggest yet. Open a story to begin.', reasons: [] };
   }, [items, allTexts, preview, completed, course]);
 
+  // With streams, Best next reads replace the recommendation list once they have something to say; with nothing to read yet, the same plain
+  // sentence the list would have carried stands where they would be.
+  const emptyAtBest = hasStreams && bestShown === 0 && !!emptyNote;
+  const showRecs = !(hasStreams && (bestShown === null || bestShown > 0)) && !emptyAtBest;
+  const emptyBlock = emptyNote && (
+    <div className="home__empty" data-testid="home-empty">
+      <p className="muted">{emptyNote.text}</p>
+      {emptyNote.reasons.length > 0 && <ul className="reasons">{emptyNote.reasons.map((r) => <li key={r}>{r}</li>)}</ul>}
+      {heldBack && !preview && <p className="card__note">Development samples exist but are not reviewed yet. <Link to="/settings">Preview mode in Settings</Link> shows them, clearly marked.</p>}
+    </div>
+  );
+
   return (
     <div className="page home route-fade">
       <h1 className="home__title">Go</h1>
@@ -182,16 +200,15 @@ export function Home() {
         ))}
       </nav>
 
+      {hasStreams && <BestNextReads onCount={setBestShown} />}
+      {emptyAtBest && <section aria-label="Best next reads" data-testid="best-next-empty"><h2 className="home__list-divider">Best next reads</h2>{emptyBlock}</section>}
+      {hasStreams && <Doors />}
+
+      {showRecs && (<>
       <h2 className="home__list-divider">For you today</h2>
       {error && <p role="alert" className="error">Could not load recommendations: {error}</p>}
       {items === null && !error && <p className="muted" role="status">Looking at where you are…</p>}
-      {emptyNote && (
-        <div className="home__empty" data-testid="home-empty">
-          <p className="muted">{emptyNote.text}</p>
-          {emptyNote.reasons.length > 0 && <ul className="reasons">{emptyNote.reasons.map((r) => <li key={r}>{r}</li>)}</ul>}
-          {heldBack && !preview && <p className="card__note">Development samples exist but are not reviewed yet. <Link to="/settings">Preview mode in Settings</Link> shows them, clearly marked.</p>}
-        </div>
-      )}
+      {emptyBlock}
       <ul className="list home__list">
         {items?.map(({ rec, text }, i) => {
           const itemProgress = text ? progress.get(text.id) : undefined;
@@ -234,6 +251,7 @@ export function Home() {
           );
         })}
       </ul>
+      </>)}
 
       <p className="home__links">
         <Link to="/settings">Settings</Link>

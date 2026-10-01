@@ -2,9 +2,15 @@ import fs from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { LANGUAGES, type LanguageCode } from '../../src/core';
 import { computePublished, loadBundledCorpus, type CorpusDocument } from '../../src/ingest';
-import { registry } from './helpers';
+import { createMemoryStore } from '../../src/core';
+import { SPANISH_WORKS } from '../../src/course/spanish';
+import { importDocuments, validateBatch } from '../../src/ingest';
+import { clock, registry } from './helpers';
+import { isSeed, loadCourseCorpus } from './seed';
 
-const docs = loadBundledCorpus();
+// The three original seed texts per language (story-01, dialogue-01, bible-1john-1): the shape assertions below are about them.
+// The course texts added to the bundled corpus later have their own describe at the end of this file.
+const docs = loadBundledCorpus().filter(isSeed);
 const byLang = (l: LanguageCode) => docs.filter((d) => d.lang === l);
 type S = { text: string; english?: string; verseRefs?: string[] };
 const sentencesOf = (d: CorpusDocument): S[] =>
@@ -135,5 +141,58 @@ describe('bundled corpus shape (schema version 2)', () => {
       for (const t of th.tokenize(s.text)) expect(/\s/u.test(t.surface)).toBe(false);
       expect(th.tokenize(s.text).filter((t) => t.isWord).length).toBeGreaterThanOrEqual(3);
     }
+  });
+});
+
+describe('the bundled course texts (everything that is not a seed text)', () => {
+  const course = loadCourseCorpus();
+  const works = new Set(SPANISH_WORKS.map((w) => w.id));
+
+  it('are version 2 documents that validate as a batch, with no errors', () => {
+    const batch = validateBatch(course, { registry });
+    for (const d of batch.documents) expect(d.issues.filter((i) => i.severity === 'error'), d.id).toEqual([]);
+    expect(batch.ok).toBe(true);
+    for (const d of course) {
+      expect(d.schemaVersion, d.id).toBe(2);
+      expect(d.source.id, d.id).toBe(`src:${d.lang}:${d.id}`);
+    }
+  });
+
+  it('belong to a work of the course (known work id, a chapter), carry streams and a variety, and are not seed ids', async () => {
+    const store = createMemoryStore();
+    await store.works.bulkPut(SPANISH_WORKS);
+    const r = await importDocuments(store, registry, course, { clock });
+    expect(r.ok).toBe(true);
+    for (const rep of r.documents) expect(rep.issues.filter((i) => i.code === 'unknown-work'), rep.id).toEqual([]);
+    for (const d of course) {
+      const t = (await store.texts.get(`text:${d.lang}:${d.id}`))!;
+      expect(t.workId, d.id).toBeDefined();
+      expect(works.has(t.workId!), `${d.id} -> ${t.workId}`).toBe(true);
+      expect(t.chapter?.index, d.id).toBeGreaterThanOrEqual(0);
+      if (d.streams) expect(t.streams, d.id).toEqual(d.streams);
+      if (d.variety) expect(t.variety, d.id).toBe(d.variety);
+    }
+  });
+
+  it('are not published, and say why (machine-drafted text needs a native-speaker review)', () => {
+    for (const d of course) {
+      const gate = computePublished(d);
+      expect(gate.published, d.id).toBe(false);
+      expect(gate.unpublishedReasons.length, d.id).toBeGreaterThan(0);
+      if (d.generated) expect(gate.unpublishedReasons.join(' '), d.id).toMatch(/native-speaker review/);
+      else expect(gate.unpublishedReasons.join(' '), d.id).toMatch(/review|rights|verified/);
+    }
+  });
+
+  it('re-import unchanged, and their analysis coverage is reported (not asserted: the Spanish lexicon is still being expanded)', async () => {
+    const store = createMemoryStore();
+    await store.works.bulkPut(SPANISH_WORKS);
+    const first = await importDocuments(store, registry, course, { clock });
+    expect(first.documents.every((x) => x.action === 'created')).toBe(true);
+    const again = await importDocuments(store, registry, course, { clock });
+    expect(again.documents.every((x) => x.action === 'unchanged')).toBe(true);
+    const total = first.documents.reduce((n, x) => ({ words: n.words + x.analysisCoverage.words, analysed: n.analysed + x.analysisCoverage.analysed }), { words: 0, analysed: 0 });
+    const lowest = [...first.documents].sort((a, b) => a.analysisCoverage.coverage - b.analysisCoverage.coverage).slice(0, 3);
+    console.info(`course texts: ${course.length} documents, ${total.words} words, analysis coverage ${total.words ? ((100 * total.analysed) / total.words).toFixed(1) : 'n/a'}% (${total.analysed}/${total.words}); lowest: ${lowest.map((x) => `${x.id} ${(x.analysisCoverage.coverage * 100).toFixed(1)}%`).join(', ')}`);
   });
 });

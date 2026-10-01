@@ -128,11 +128,15 @@ describe('every localStorage key the app uses is namespaced, and the two worlds 
     const real = Object.getOwnPropertyDescriptor(window, 'localStorage')!;
     Object.defineProperty(window, 'localStorage', { configurable: true, get() { throw new Error('blocked'); } });
     try {
-      const normal = sittingSession('u1', Date.now());
+      // One clock reading for the whole test: with separate Date.now() calls the last assertion only held when the
+      // two calls fell in the same millisecond, which made this test fail under load (the code was never at fault).
+      const t = Date.now();
+      const normal = sittingSession('u1', t);
       go('?sandbox=acc-1');
-      const inSandbox = sittingSession('u1', Date.now());
+      const inSandbox = sittingSession('u1', t);
       expect(inSandbox).not.toBe(normal);
-      expect(sittingSession('u1', Date.now() + SITTING_GAP_MS - 1)).toBe(inSandbox);
+      expect(sittingSession('u1', t + SITTING_GAP_MS - 1)).toBe(inSandbox);
+      expect(sittingSession('u1', t + SITTING_GAP_MS)).not.toBe(inSandbox);
     } finally { Object.defineProperty(window, 'localStorage', real); }
   });
 });

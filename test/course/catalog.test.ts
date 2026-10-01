@@ -46,11 +46,11 @@ describe('install', () => {
   it('does nothing for a course without a ladder', async () => {
     const store = createMemoryStore();
     const catalog = createCourseCatalog({ store });
-    await catalog.install('honduras-es');
+    await catalog.install('albania-sq');
     await catalog.install('no-such-course');
     expect(await store.stages.count()).toBe(0);
     expect(await store.works.count()).toBe(0);
-    expect(await catalog.stages('honduras-es')).toEqual([]);
+    expect(await catalog.stages('albania-sq')).toEqual([]);
   });
 
   it('refreshes the ladder data of works nobody has verified (a later edit to the manifest reaches the store)', async () => {

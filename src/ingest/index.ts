@@ -20,6 +20,9 @@ export { computePublished, contentSignatureOf, type PublicationDecision } from '
 export { INGEST_TOOL, IMPORT_ANALYZER, planDocument, collectWordForms, collectUnanalysedForms, dictionaryCandidates, dictionaryView, dictionaryTool, type PlanOptions, type DocumentPlan } from './plan';
 export * from './import';
 export { plainTextToDocuments, type PlainTextOptions, type PlainTextResult } from './plaintext';
+export { epubToDocuments, readEpub, EpubError, type EpubBook, type EpubChapter, type EpubDocumentsResult } from './epub';
+export { inspectText, findBoilerplate, looksHardWrapped, QUALITY_VERSION, type QualityOptions, type BoilerplateRange, type QualityFlag, type QualityReport } from './quality';
+export { detectHeadings, type Heading } from './headings';
 export { contentHistory, describeVersionBump, VERSION_RECORD_PREFIX, type ContentHistoryEntry, type VersionBump } from './history';
 export {
   applyReview, isIsoDate, REVIEW_STATUSES, NEEDS_REVIEW_TAG,

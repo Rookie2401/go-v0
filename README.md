@@ -36,6 +36,7 @@ npm run build && npm run preview   # http://127.0.0.1:4196
 | `docs/IMPORT.md` + `docs/import/templates/` | The versioned text-import specification, templates, and how to validate, import, review and publish |
 | `docs/import/PROOF.md` | Generated record of the import tests (valid, malformed, duplicates, batches, spans, revisions, holds) |
 | `docs/THAI_COURSE.md` | The Thai course: reading ladder, rights, Thai analysis, assistance that removes itself, learner model |
+| `docs/SPANISH_COURSE.md` + `docs/spanish/STATUS.md` | The Spanish course: streams, shelves, rights states, varieties, the library, personal difficulty — and exactly what is built, bundled, recommended only, and unverified |
 | `docs/STORAGE.md` | Storage model, backup and restore |
 | `docs/SPEECH.md` | Speech configuration (server-side key), what is recorded, failure states, review |
 | `docs/ARCHITECTURE.md` | Architecture and decisions (§12 = the readiness round) |
@@ -48,7 +49,8 @@ npm run build && npm run preview   # http://127.0.0.1:4196
 src/core        contract: model, ids, events, adapter/store/engine interfaces, memory store, bus, fixtures
 src/adapters    es / sq / th / hi / de LanguageAdapter implementations, seed lexicons, declared support
 src/ingest      import format v2, validation, atomic repeatable importer, publication gate, plain-text books
-src/course      reading ladders (stages, works, rights, assistance profiles) and the catalogue
+src/course      reading ladders (stages, works, rights, assistance profiles), Spanish streams and shelves, the catalogue
+src/library     the large-corpus library: index, posting lists, per-text profiles, build tool, import on open
 src/dict        dictionary build pipeline and runtime source
 src/golearn     evidence policy, encounters, coverage, readiness, recommendations, audit/rebuild
 src/golisten    speech provider interface (Azure adapter, development fixture), jobs, assets, status, player
@@ -78,6 +80,12 @@ test/           per-package tests + test/integration (Spanish end-to-end loop, f
   reading), stage-specific assistance, Thai script decoding, the learner model for a ladder and the import of a
   learner's own copy of a book are built and tested; every work is a recommendation with rights unverified, and
   no dictionary, Thai Bible or audio is included. See `docs/READINESS.md`, "Thai course".
+- **The Spanish course has its system and almost none of its content.** Streams, shelves, rights states, regional
+  varieties, rule morphology with readings ordered by context, a library that never loads whole, personal
+  difficulty, ranking, search and the import of a learner's own `.txt` / `.epub` are built and tested. Bundled are 26
+  short course texts drafted by an AI model (unreviewed, preview only) and three verified Bible verses; the other 61
+  works of the catalogue are metadata with rights unverified, and no Spanish dictionary is installed. See
+  `docs/spanish/STATUS.md`.
 - **Analysis is seed-lexicon only.** Every word of a supplied text is tokenized and tracked; lemma and gloss
   exist only for seed vocabulary or for analysis supplied with the text.
 - **GoTell is rule-based** and states what it cannot check. No GoSpeak, no pronunciation scores, no

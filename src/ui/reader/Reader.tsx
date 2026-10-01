@@ -106,7 +106,20 @@ function buildVerses(sentences: Sentence[]): Map<string, VerseInfo> {
   return out;
 }
 
-/** Previous / next text in the same corpus, in the Library's order (by title). */
+/**
+ * Previous / next text, in the Library's order: the chapters of a work in chapter order (never across works), and
+ * the texts that belong to no work by title within their corpus.
+ */
+export function siblingOrder(text: Text, rows: Text[]): Text[] {
+  const same = rows.filter((t) => t.lang === text.lang && (t.kind === 'scripture') === (text.kind === 'scripture'));
+  if (text.workId) {
+    return same
+      .filter((t) => t.workId === text.workId)
+      .sort((a, b) => (a.chapter?.index ?? 0) - (b.chapter?.index ?? 0) || a.title.localeCompare(b.title));
+  }
+  return same.filter((t) => !t.workId).sort((a, b) => a.title.localeCompare(b.title));
+}
+
 function useSiblings(text: Text): { prev?: Text; next?: Text } {
   const { store } = useApp();
   const [sib, setSib] = useState<{ prev?: Text; next?: Text }>({});
@@ -115,14 +128,12 @@ function useSiblings(text: Text): { prev?: Text; next?: Text } {
     void (async () => {
       const [rows, cs] = await Promise.all([store.texts.where('corpusId', text.corpusId), store.corpora.all()]);
       const corpusMap = new Map(cs.map((c) => [c.id, c]));
-      const list = rows
-        .filter((t) => t.lang === text.lang && !isTestimonyText(t, corpusMap) && (t.kind === 'scripture') === (text.kind === 'scripture'))
-        .sort((a, b) => a.title.localeCompare(b.title));
+      const list = siblingOrder(text, rows.filter((t) => !isTestimonyText(t, corpusMap)));
       const i = list.findIndex((t) => t.id === text.id);
       if (live) setSib(i < 0 ? {} : { prev: list[i - 1], next: list[i + 1] });
     })().catch(() => { /* the nav bar is a convenience */ });
     return () => { live = false; };
-  }, [store, text.id, text.corpusId, text.lang, text.kind]);
+  }, [store, text.id, text.corpusId, text.lang, text.kind, text.workId]);
   return sib;
 }
 
@@ -168,16 +179,17 @@ interface CardState {
 }
 
 function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, concealed, bar, before }: ReaderProps & { data: TextData; profile: AssistanceProfile }) {
-  const { bus, golearn, adapters, lexicon, userId, currentSession } = useApp() as ReturnType<typeof useApp> & { lexicon?: unknown };
+  const { bus, golearn, adapters, lexicon, course, userId, currentSession } = useApp() as ReturnType<typeof useApp> & { lexicon?: unknown };
   const preview = usePreview();
   const { text } = data;
   const legacy = useMemo(() => isLegacyProfile(profile), [profile]);
   const plan = useMemo(() => planLayers(profile), [profile]);
   const chrome = legacy ? 'full' : profile.chrome;
   const adapter = useMemo<LanguageAdapter | undefined>(() => {
-    if (legacy) return undefined;
     try { return adapters.get(text.lang); } catch { return undefined; }
-  }, [adapters, legacy, text.lang]);
+  }, [adapters, text.lang]);
+  // A course without a ladder whose adapter explains morphology or varieties (Spanish) also wants the full analysis on tap.
+  const rich = !legacy || !!(adapter?.describeMorph || adapter?.varieties);
   const surface = mode === 'scripture' ? 'scripture' : 'corpus';
   const emitter = useMemo(() => makeEmitter({ bus, userId, lang: text.lang, session: currentSession }), [bus, userId, text.lang, currentSession]);
   const script = LANGUAGE_ROWS.find((l) => l.id === text.lang)?.script ?? 'Latn';
@@ -373,7 +385,7 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
 
   const openToken = useCallback(async (token: Token) => {
     if (card && sheetOpen && card.subject.kind === 'word' && card.subject.token.id === token.id) { setSheetOpen(false); return; }
-    setCard({ subject: { kind: 'word', token }, opened: plan.base, supports: {}, rescued: false, history: [], detailDone: legacy });
+    setCard({ subject: { kind: 'word', token }, opened: plan.base, supports: {}, rescued: false, history: [], detailDone: legacy && !rich });
     setSheetOpen(true);
     askDictionary(token);
     await emitter.emit<TokenHelpOpened>(surface, { type: 'TokenHelpOpened', sentenceId: token.sentenceId, tokenId: token.id, itemId: token.formId, level: 1 });
@@ -382,12 +394,12 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
       (why) => setCard((c) => (c && c.subject.kind === 'word' && c.subject.token.id === token.id ? { ...c, why: why.summary } : c)),
       () => undefined, // the summary is a nicety; the gloss never waits on it
     );
-    if (legacy) { await fetchSupport(token, 1); return; }
+    if (legacy && !rich) { await fetchSupport(token, 1); return; }
     // A ladder stage: the gloss shows as soon as it is there; what the other layers need (analysis, phrases, patterns) is fetched once, now.
     const detail = fetchSupport(token, 3).catch(() => undefined);
     detailRef.current = detail;
     void detail.then(() => setCard((c) => (c && c.subject.kind === 'word' && c.subject.token.id === token.id ? { ...c, detailDone: true } : c)));
-    if (profile.layers.includes('history')) {
+    if (!legacy && profile.layers.includes('history')) {
       void Promise.resolve().then(() => golearn.itemHistory?.(userId, token.formId)).then(
         (h) => setCard((c) => (c && c.subject.kind === 'word' && c.subject.token.id === token.id ? { ...c, history: h?.lines ?? [] } : c)),
         () => undefined, // the history is a nicety too
@@ -395,7 +407,7 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
     }
     const [, support] = await Promise.all([fetchSupport(token, 1), detail]);
     if (plan.base.includes('decoding')) await emitDecoding(token, support?.analysis, false);
-  }, [card, sheetOpen, plan, legacy, profile.layers, emitter, surface, fetchSupport, emitDecoding, askDictionary, golearn, userId]);
+  }, [card, sheetOpen, plan, legacy, rich, profile.layers, emitter, surface, fetchSupport, emitDecoding, askDictionary, golearn, userId]);
 
   /** Open one more layer of the word sheet and emit what that layer means for evidence. */
   const openLayer = useCallback(async (layer: HelpLayer) => {
@@ -716,7 +728,10 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
           notes={cardNotes}
           clauseView={clauseView}
           decoding={decodingView}
-          sources={adapter?.sources}
+          sources={legacy ? undefined : adapter?.sources}
+          describeMorph={adapter?.describeMorph?.bind(adapter)}
+          varietyPolicy={course.variety}
+          varieties={adapter?.varieties}
           dictionary={dictionary}
           dictionaryView={cardToken ? dictViews.get(cardToken.normalized) : undefined}
           history={card.history}

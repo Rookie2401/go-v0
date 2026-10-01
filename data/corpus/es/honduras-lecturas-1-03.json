@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 2,
+  "id": "honduras-lecturas-1-03",
+  "lang": "es",
+  "title": "El domingo en la iglesia",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:honduras-lecturas-1-03",
+    "title": "Honduras — Lecturas 1: El domingo en la iglesia (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. The Spanish is plain educated Spanish with a few Honduran words and, in one text, voseo; every statement about Honduras and every regional form must be checked by a Honduran reviewer before release. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "church",
+    "honduras"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-regional-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "honduras-lecturas-1",
+    "chapter": {
+      "index": 3,
+      "title": "El domingo en la iglesia"
+    }
+  },
+  "streams": [
+    "honduras",
+    "acquisition"
+  ],
+  "domains": [
+    "church",
+    "family",
+    "honduras"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "El domingo en la iglesia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es domingo y la familia de Karla se levanta temprano.",
+              "english": "It is Sunday and Karla's family gets up early."
+            },
+            {
+              "text": "Hoy van a la iglesia.",
+              "english": "Today they go to church."
+            },
+            {
+              "text": "Van Karla, su madre doña Reina, su padre don José y su hermano menor, Kevin.",
+              "english": "Karla, her mother doña Reina, her father don José and her younger brother Kevin all go."
+            },
+            {
+              "text": "Se ponen su mejor ropa y salen de la casa.",
+              "english": "They put on their best clothes and leave the house."
+            },
+            {
+              "text": "La iglesia no está lejos, y caminan veinte minutos.",
+              "english": "The church is not far, and they walk for twenty minutes."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Frente a la puerta, don Mario saluda a todos.",
+              "english": "In front of the door, don Mario greets everyone."
+            },
+            {
+              "text": "—Buenos días, doña Reina —dice don Mario.",
+              "english": "\"Good morning, doña Reina,\" says don Mario."
+            },
+            {
+              "text": "—Buenos días, don Mario, ¿cómo está usted? —pregunta doña Reina.",
+              "english": "\"Good morning, don Mario, how are you?\" asks doña Reina."
+            },
+            {
+              "text": "—Estoy bien, gracias a Dios —responde don Mario.",
+              "english": "\"I am well, thank God,\" answers don Mario."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Adentro, la iglesia está llena de gente.",
+              "english": "Inside, the church is full of people."
+            },
+            {
+              "text": "Los niños se sientan con sus padres.",
+              "english": "The children sit with their parents."
+            },
+            {
+              "text": "Un grupo de jóvenes toca la guitarra y todos cantan.",
+              "english": "A group of young people plays the guitar and everyone sings."
+            },
+            {
+              "text": "Después un hombre lee un pasaje de la Biblia.",
+              "english": "Then a man reads a passage from the Bible."
+            },
+            {
+              "text": "El pastor habla del amor de Dios y de cómo ayudar a los vecinos.",
+              "english": "The pastor speaks about God's love and about how to help our neighbors."
+            },
+            {
+              "text": "Kevin no quiere estar sentado, pero escucha.",
+              "english": "Kevin does not want to sit still, but he listens."
+            },
+            {
+              "text": "Al final todos oran.",
+              "english": "At the end everyone prays."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después del servicio, la gente se queda afuera.",
+              "english": "After the service, the people stay outside."
+            },
+            {
+              "text": "Los hombres hablan, las mujeres hablan y los niños corren.",
+              "english": "The men talk, the women talk and the children run."
+            },
+            {
+              "text": "Una señora le ofrece café a doña Reina.",
+              "english": "A woman offers doña Reina some coffee."
+            },
+            {
+              "text": "—Muchas gracias —dice doña Reina.",
+              "english": "\"Thank you very much,\" says doña Reina."
+            },
+            {
+              "text": "—Con mucho gusto —responde la señora.",
+              "english": "\"My pleasure,\" answers the woman."
+            },
+            {
+              "text": "Karla habla con una amiga, y Kevin juega con otros cipotes.",
+              "english": "Karla talks with a friend, and Kevin plays with other cipotes."
+            },
+            {
+              "text": "A mediodía, la familia vuelve a casa.",
+              "english": "At noon, the family goes back home."
+            },
+            {
+              "text": "Hoy van a comer juntos, como todos los domingos.",
+              "english": "Today they are going to eat together, as every Sunday."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

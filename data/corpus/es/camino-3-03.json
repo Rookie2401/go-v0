@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 2,
+  "id": "camino-3-03",
+  "lang": "es",
+  "title": "El viaje de Tomás",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-es",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Spanish"
+  },
+  "source": {
+    "id": "src:es:camino-3-03",
+    "title": "Camino 3 — Historias: El viaje de Tomás (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "travel",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "camino-3",
+    "chapter": {
+      "index": 3,
+      "title": "El viaje de Tomás"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel",
+    "people",
+    "family"
+  ],
+  "variety": "es-419",
+  "sections": [
+    {
+      "title": "El viaje de Tomás",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Tomás decidió visitar a su hermano Pedro, al que no veía desde hacía tres años.",
+              "english": "Tomás decided to visit his brother Pedro, whom he had not seen for three years."
+            },
+            {
+              "text": "Salió de su casa antes de que saliera el sol para tomar el primer autobús.",
+              "english": "He left his house before the sun came up to catch the first bus."
+            },
+            {
+              "text": "En la estación, el empleado le dijo que el autobús saldría con una hora de retraso.",
+              "english": "At the station, the clerk told him that the bus would leave an hour late."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tomás compró un café y se sentó a esperar.",
+              "english": "Tomás bought a coffee and sat down to wait."
+            },
+            {
+              "text": "Mientras esperaba, conoció a una mujer que también viajaba a la ciudad.",
+              "english": "While he waited, he met a woman who was also traveling to the city."
+            },
+            {
+              "text": "Se llamaba Carmen y llevaba una caja grande sobre las piernas.",
+              "english": "Her name was Carmen and she had a big box on her lap."
+            },
+            {
+              "text": "—Es un pastel para mi nieta —le explicó—, y quiero que llegue entero, así que lo llevo con mucho cuidado.",
+              "english": "\"It is a cake for my granddaughter,\" she explained, \"and I want it to arrive in one piece, so I am carrying it very carefully.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El autobús salió por fin.",
+              "english": "The bus finally left."
+            },
+            {
+              "text": "El camino subía por las montañas, y por la ventana Tomás veía campos verdes y casas pequeñas.",
+              "english": "The road climbed through the mountains, and through the window Tomás saw green fields and small houses."
+            },
+            {
+              "text": "De repente, el autobús se detuvo.",
+              "english": "Suddenly, the bus stopped."
+            },
+            {
+              "text": "Un árbol había caído sobre el camino.",
+              "english": "A tree had fallen across the road."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Los hombres bajaron para ayudar al conductor a moverlo.",
+              "english": "The men got off to help the driver move it."
+            },
+            {
+              "text": "Tomás también bajó, aunque no estaba acostumbrado al trabajo pesado.",
+              "english": "Tomás got off too, although he was not used to heavy work."
+            },
+            {
+              "text": "Tardaron casi una hora en limpiar el camino.",
+              "english": "It took them almost an hour to clear the road."
+            },
+            {
+              "text": "Cuando por fin pudieron seguir, ya era de noche.",
+              "english": "When they were finally able to continue, it was already night."
+            },
+            {
+              "text": "Tomás pensó que llegaría muy tarde y que Pedro estaría dormido.",
+              "english": "Tomás thought he would arrive very late and that Pedro would be asleep."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pero cuando llegó a la ciudad, vio a su hermano en la estación, con una linterna en la mano.",
+              "english": "But when he reached the city, he saw his brother at the station, with a flashlight in his hand."
+            },
+            {
+              "text": "—Te estaba esperando —dijo Pedro—, porque le pregunté al empleado y me dijo que el autobús se había retrasado.",
+              "english": "\"I was waiting for you,\" said Pedro, \"because I asked the clerk and he told me that the bus had been delayed.\""
+            },
+            {
+              "text": "Los dos hermanos se abrazaron.",
+              "english": "The two brothers hugged."
+            },
+            {
+              "text": "Carmen bajó detrás de Tomás, con el pastel entero en los brazos.",
+              "english": "Carmen got off behind Tomás, with the cake whole in her arms."
+            },
+            {
+              "text": "—Es tarde —dijo Pedro—, vamos a casa para que descanses.",
+              "english": "\"It is late,\" said Pedro, \"let's go home so that you can rest.\""
+            },
+            {
+              "text": "Esa noche cenaron juntos y hablaron hasta que se hizo muy tarde.",
+              "english": "That night they had dinner together and talked until it got very late."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

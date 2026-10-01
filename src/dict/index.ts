@@ -8,11 +8,11 @@
 import type { DictionaryEntry, DictionaryInfo, LanguageCode, LexiconSource } from '../core';
 import { createShardedSource } from './sharded';
 
-export { bucketOf, shardName, compactEntry, expandEntry, parseManifest, parseShard, DICT_SCHEMA, BUCKETS, MAX_GLOSSES } from './format';
-export type { CompactEntry, CompactSense, CompactPronunciation, DictionaryManifest } from './format';
+export { bucketOf, shardName, compactEntry, expandEntry, parseManifest, parseShard, DICT_SCHEMA, BUCKETS, MAX_BUCKETS, MAX_GLOSSES } from './format';
+export type { CompactEntry, CompactSense, CompactPronunciation, CompactFormOf, DictionaryManifest } from './format';
 export { entryFromKaikki, mapKaikkiLine, KAIKKI_SKIPS } from './map';
 export type { KaikkiMapping, KaikkiSkip } from './map';
-export { buildDictionary, createDictionaryBuilder, mergeEntries, KAIKKI_ATTRIBUTION, KAIKKI_LICENCE } from './build';
+export { buildDictionary, createDictionaryBuilder, mergeEntries, chooseBuckets, TARGET_SHARD_BYTES, KAIKKI_ATTRIBUTION, KAIKKI_LICENCE } from './build';
 export type { BuildOutput, BuildStats, BuilderOptions, DictionaryBuilder } from './build';
 export { createShardedSource } from './sharded';
 export type { ReadDictFile } from './sharded';

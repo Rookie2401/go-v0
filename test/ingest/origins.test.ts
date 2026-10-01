@@ -238,7 +238,7 @@ describe('the other languages are unchanged apart from origin and sourceId', () 
     const store = createMemoryStore();
     const reg = bareRegistry;
     expect((await importDocuments(store, reg, docs, { clock })).ok).toBe(true);
-    const allowed = new Set(['id', 'tokenId', 'lang', 'lemmaId', 'pos', 'morph', 'notes', 'gloss', 'register', 'role', 'definition', 'confidence', 'provenance', 'origin', 'sourceId', 'analyzer', 'createdAt', 'supersedes', 'alternatives']);
+    const allowed = new Set(['id', 'tokenId', 'lang', 'lemmaId', 'pos', 'morph', 'notes', 'gloss', 'register', 'role', 'definition', 'confidence', 'provenance', 'origin', 'sourceId', 'analyzer', 'createdAt', 'supersedes', 'alternatives', 'parts', 'varieties']); // (parts and varieties: stated by the Spanish adapter since contract v7)
     const allowedAlt = new Set(['lemmaId', 'pos', 'morph', 'confidence', 'origin', 'sourceId']);
     const rows = await store.analyses.all();
     expect(rows.length).toBeGreaterThan(300);
@@ -246,7 +246,7 @@ describe('the other languages are unchanged apart from origin and sourceId', () 
     for (const a of rows) {
       for (const k of Object.keys(a)) expect(allowed.has(k), k).toBe(true);
       expect(['hand', 'rule']).toContain(a.origin);
-      expect(a.sourceId).toBe(`adapter-${a.lang}@${reg.get(a.lang as LanguageCode).version}`);
+      expect(a.sourceId!.startsWith(`adapter-${a.lang}@${reg.get(a.lang as LanguageCode).version}`), a.sourceId).toBe(true); // the adapter may name its own source, e.g. adapter-es@1:hand
       expect(a.notes && 'readings' in a.notes).toBeFalsy();
       for (const alt of a.alternatives ?? []) {
         for (const k of Object.keys(alt)) expect(allowedAlt.has(k), k).toBe(true);
@@ -271,7 +271,9 @@ describe('the other languages are unchanged apart from origin and sourceId', () 
     const es = createMemoryLexiconSource('es', [{ form: 'hola', lang: 'es', pos: 'INTJ', glosses: ['hello (dictionary)'] }], { id: 'es-dict@1' });
     await importDocuments(store, bareRegistry, [baseDoc()], { clock, lexicon: (l) => (l === 'es' ? es : undefined) });
     const [row] = await store.analyses.all();
-    expect(row).toMatchObject({ analyzer: 'adapter-es@1', origin: 'hand', sourceId: 'adapter-es@1' });
+    const v = bareRegistry.get('es').version;
+    expect(row).toMatchObject({ analyzer: `adapter-es@${v}`, origin: 'hand' });
+    expect(row.sourceId!.startsWith(`adapter-es@${v}`)).toBe(true);
     expect(row.alternatives).toBeUndefined();
     expect(row.notes).toMatchObject({ dictionary: 'es-dict@1' });
   });

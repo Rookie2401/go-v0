@@ -115,3 +115,56 @@ export function paceLines(p: ReadingPace): string[] {
   if (p.sentences > 0) out.push(`You looked up ${fmt(p.lookupsPer100Words)} words per 100 and asked for ${fmt(p.rescuesPer100Sentences)} whole-sentence explanations per 100 sentences.`);
   return out;
 }
+
+// ───────────────────────── catalogue (streams and shelves) ─────────────────────────
+
+/**
+ * The rights line of a catalogue work, from its recorded STATE. It claims what the record says and no more: "public domain" and
+ * "open licence" appear only for the verified states AND only when the record says who verified it; "in copyright" only when the
+ * record's own copyright field says so. A record without a state falls back to the older wording.
+ */
+export function stateRightsLine(w: Pick<Work, 'rights'>): string {
+  const r = w.rights;
+  const by = r.verifiedBy ? ` by ${r.verifiedBy}` : '';
+  const where = r.jurisdiction && r.jurisdiction !== 'not established' ? ` Where this applies: ${r.jurisdiction}.` : '';
+  switch (r.state) {
+    case 'verified-public-domain':
+      return r.verified && r.verifiedBy ? `Public domain (verified${by}).${where}` : 'Recorded as public domain, but no verification is on record. Read it from your own copy.';
+    case 'verified-open-licence':
+      return r.verified && r.verifiedBy ? `Open licence${r.licensing ? `: ${r.licensing}` : ''} (verified${by}).${where}` : 'Recorded as openly licensed, but no verification is on record. Read it from your own copy.';
+    case 'course-authored': return 'Written for this course.';
+    case 'recommended-only': return 'A recommendation. Go does not supply the text; read it from your own copy.';
+    case 'user-supplied': return 'Your own copy. It stays on this device.';
+    case 'rights-unverified': return 'Rights not verified — not bundled. Read it from your own copy.';
+    case 'prohibited-from-bundling':
+      return r.copyrightStatus === 'in-copyright' ? 'In copyright — read it from your own copy.' : 'Not bundled — read it from your own copy.';
+    default: return rightsLine(r);
+  }
+}
+
+/** The states a learner can filter by, in plain words. */
+export const RIGHTS_FILTER: Array<{ state: string; label: string }> = [
+  { state: 'course-authored', label: 'Written for this course' },
+  { state: 'verified-public-domain', label: 'Public domain (verified)' },
+  { state: 'verified-open-licence', label: 'Open licence (verified)' },
+  { state: 'rights-unverified', label: 'Rights not verified' },
+  { state: 'prohibited-from-bundling', label: 'Own copy only' },
+  { state: 'recommended-only', label: 'Recommended only' },
+];
+
+/** The varieties a learner can filter by. */
+export const VARIETY_FILTER: Array<{ variety: string; label: string }> = [
+  { variety: 'es-HN', label: 'Honduran' },
+  { variety: 'es-419', label: 'Latin American' },
+  { variety: 'es-ES', label: 'From Spain' },
+  { variety: 'es-hist', label: 'Older Spanish' },
+];
+
+/** A personal-difficulty label in words. It is an estimate from what the learner has read, never a grade or a lock. */
+export const DIFFICULTY_WORD: Record<'comfortable' | 'manageable' | 'challenging' | 'hard' | 'unknown', string> = {
+  comfortable: 'Should feel comfortable',
+  manageable: 'Manageable',
+  challenging: 'A stretch',
+  hard: 'Hard for now',
+  unknown: 'Not enough history to estimate',
+};

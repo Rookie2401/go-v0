@@ -85,7 +85,7 @@ describe('dictionary build over the fixture', () => {
         for (const e of shard[f] as Array<Record<string, unknown>>) expect(Array.isArray(e.g)).toBe(true);
       }
     }
-    expect(out.manifest.shards).toBe(new Set([...all.keys()].map(bucketOf)).size);
+    expect(out.manifest.shards).toBe(new Set([...all.keys()].map((f) => bucketOf(f))).size);
   });
 
   it('merges the same form + part of speech and keeps different parts of speech apart', () => {

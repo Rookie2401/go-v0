@@ -25,3 +25,14 @@ export function downloadTextFile(filename: string, text: string, mime = 'applica
   a.remove();
   if (canObjectUrl) setTimeout(() => URL.revokeObjectURL(url), 10_000);
 }
+
+/** Read a File as bytes (Blob.arrayBuffer where it exists, FileReader otherwise). Used for EPUB files: nothing is uploaded. */
+export function readFileBytes(file: Blob): Promise<Uint8Array> {
+  if (typeof file.arrayBuffer === 'function') return file.arrayBuffer().then((b) => new Uint8Array(b));
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(new Uint8Array(reader.result as ArrayBuffer));
+    reader.onerror = () => reject(reader.error ?? new Error('Could not read the file.'));
+    reader.readAsArrayBuffer(file);
+  });
+}

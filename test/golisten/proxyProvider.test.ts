@@ -324,7 +324,7 @@ describe('ProxySpeechProvider through GoListen (the real proxy handler, mocked A
     const proxy = new ProxySpeechProvider({ baseUrl: ORIGIN, fetch: proxyNetwork({ env: {} }).net });
     const { store, gl } = await makeEnv({ allowFixture: false, providers: [proxy] });
     await addStory(store, 'es');
-    expect(await gl.availability()).toEqual({ available: false, reason: 'missing-credentials', detail: SETUP });
+    expect(await gl.availability()).toMatchObject({ available: false, realSpeech: false, reason: 'missing-credentials', detail: SETUP, realSpeechReason: 'missing-credentials', realSpeechDetail: SETUP });
     const st = await gl.audioStatus(tid('es'));
     expect(st.state).toBe('unavailable');
     expect(st.reason).toContain('.env.local');

@@ -240,7 +240,7 @@ export function makeFakeGoListen(store: AppStore, opts: FakeListenOptions = {}) 
     registerProvider: () => undefined,
     providers: () => [],
     resolveVoice: vi.fn(async () => currentVoice()),
-    availability: vi.fn(async (): Promise<ProviderAvailability> => opts.availability ?? (opts.unavailable ? { available: false, reason: 'no-provider' } : { available: providerId !== 'fixture', ...(providerId === 'fixture' ? { reason: 'development-fixture' as const } : {}) })),
+    availability: vi.fn(async (): Promise<ProviderAvailability> => opts.availability ?? (opts.unavailable ? { available: false, reason: 'no-provider' } : { available: providerId !== 'fixture', realSpeech: providerId !== 'fixture', ...(providerId === 'fixture' ? { reason: 'development-fixture' as const } : {}) })),
     audioStatus,
     setVoiceReview: vi.fn(async (id: string, status: VoiceConfig['reviewStatus'], note?: string): Promise<VoiceConfig> => {
       const row = (await store.voices.get(id)) ?? voice;

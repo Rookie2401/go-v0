@@ -26,6 +26,7 @@
     "gold:draft": "vite-node scripts/gold-draft.mts",
     "gold:accept": "vite-node scripts/gold-accept.mts",
     "gold:status": "vite-node scripts/gold-status.mts",
+    "gold:freeze": "vite-node scripts/gold-freeze.mts",
     "speech:check": "vite-node scripts/speech-check.mts"
   },
   "dependencies": {

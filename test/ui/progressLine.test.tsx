@@ -35,6 +35,16 @@ describe('the progress line is built only from the canonical record', () => {
     for (const x of [p, { ...p, finishedAt: 'a' }, { ...p, finishedEarlierVersion: { at: 'b' } }]) expect(progressSummary(x)).not.toMatch(/\bRead\b/);
   });
 
+  it('a report about earlier wording is history, never "you said you understood X" for wording that has changed', () => {
+    const earlier = { degree: 'most' as const, version: 1, at: '2026-09-01T10:00:00.000Z' };
+    expect(progressSummary({ ...p, reportedEarlierVersion: earlier })).toBe('Seen 2 of 10 sentences · you said you understood most of an earlier version');
+    expect(progressSummary({ ...p, reportedEarlierVersion: { ...earlier, degree: 'all' } })).toBe('Seen 2 of 10 sentences · you said you understood all of an earlier version');
+    expect(progressSummary({ ...p, finishedEarlierVersion: { at: 'b' }, reportedEarlierVersion: earlier, earlierVersions: { sentencesSeen: 3, sentencesUnderstood: 0 } }))
+      .toBe('Seen 2 of 10 sentences · Finished an earlier version — the text has changed since · you said you understood most of an earlier version · 3 more seen in an earlier version');
+    // a report about THIS version is not repeated on the line (the reader shows it beside it), and wins over history
+    expect(progressSummary({ ...p, reportedComprehension: 'some', reportedEarlierVersion: earlier })).toBe('Seen 2 of 10 sentences');
+  });
+
   it('the explanation is needed exactly when the text is finished (this or an earlier version) with Seen below the total', () => {
     expect(needsFinishedExplanation(p)).toBe(false); // seen but not finished: nothing to explain
     expect(needsFinishedExplanation({ ...p, finishedAt: 'a' })).toBe(true);

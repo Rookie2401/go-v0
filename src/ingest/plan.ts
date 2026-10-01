@@ -9,8 +9,8 @@ import type {
   PartOfSpeech, PatternCandidate, PatternOccurrence, Phrase, PhraseCandidate, PhraseOccurrence, RawToken, ReviewStatus, Token, TokenAnalysis,
 } from '../core';
 import { hash, ids } from '../core';
-import { analysisCoverage, type AnalysisCoverage } from '../adapters/shared';
-import { anchorDocumentNotes, workIdOf, type CorpusDocument, type DocCorrection, type DocNote, type DocSpan } from './format';
+import type { AnalysisCoverage } from '../adapters/shared';
+import { anchorDocumentNotes, workIdOf, type CorpusDocument, type DocCorrection, type DocNote, type DocSpan, type ValidationIssue } from './format';
 import { computePublished, type PublicationDecision } from './publish';
 
 export const INGEST_TOOL = 'ingest@2';
@@ -308,8 +308,7 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
   }
 
   const allTokens = sentences.flatMap((s) => s.tokens);
-  const allAnalyzed = sentences.flatMap((s) => s.analyzed);
-  const coverage = analysisCoverage(allTokens, allAnalyzed);
+  const coverage = finalCoverage(sentences);
   const decision = computePublished(doc);
   const noteCount = sentences.reduce((n, s) => n + s.notes.length, 0);
 
@@ -331,6 +330,53 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
   return {
     doc, textId, adapter, analyzerName, paragraphs, sentences, coverage, decision, signature, nonNfcBlocks, tokenCount: allTokens.length,
     ...(workIdOf(doc) ? { workId: workIdOf(doc) } : {}), ...(dictTool ? { dictionary: { tool: dictTool, tokens: dictTokens, alongside: dictAlongside } } : {}), noteCount,
+  };
+}
+
+/**
+ * Coverage of the FINAL analysis of a document: the adapter's word list, the dictionary, spans supplied with the text and
+ * reviewers' corrections (a token with a human correction counts as analysed), with the breakdown by source. The single
+ * basis for the figure shown beside the import and for the low-coverage warning.
+ */
+function finalCoverage(sentences: readonly PlannedSentence[]): AnalysisCoverage {
+  const by = { adapter: 0, dictionary: 0, supplied: 0, corrected: 0 };
+  const unknown = new Set<string>();
+  let words = 0;
+  let analysed = 0;
+  for (const s of sentences) {
+    const corrected = new Set<number>();
+    for (const c of s.corrections) { const ti = s.tokens.findIndex((t) => t.start === c.start && t.end === c.end); if (ti >= 0) corrected.add(ti); }
+    s.tokens.forEach((t, ti) => {
+      if (!t.isWord) return;
+      words++;
+      if (corrected.has(ti)) by.corrected++;
+      else if (s.spanTokens.has(ti)) by.supplied++;
+      else if (s.analyzed[ti]?.candidates.length) { if (s.analyzed[ti].analyzer.startsWith('dict:')) by.dictionary++; else by.adapter++; }
+      else { unknown.add(t.normalized); return; }
+      analysed++;
+    });
+  }
+  return { words, analysed, coverage: words ? analysed / words : 1, unanalysed: [...unknown], bySource: by };
+}
+
+const COVERAGE_THRESHOLD = 0.6;
+
+/**
+ * The low-coverage warning computed from the plan's final coverage (same threshold as validation's adapter-only one),
+ * with the breakdown and the remedies that apply. `dictionaryError` is the reason an installed dictionary could not be read.
+ */
+export function coverageWarning(plan: DocumentPlan, dictionaryError?: string): ValidationIssue | undefined {
+  const c = plan.coverage;
+  if (!c.words || c.coverage >= COVERAGE_THRESHOLD) return undefined;
+  const by = c.bySource ?? { adapter: c.analysed, dictionary: 0, supplied: 0, corrected: 0 };
+  const dictId = plan.dictionary ? plan.dictionary.tool.slice('dict:'.length) : undefined;
+  const remedies = ['add spans to the sentences', 'record a correction for a word (docs/IMPORT.md)'];
+  if (!dictId) remedies.push(dictionaryError ? 'fix the dictionary so that it can be read' : 'install a dictionary for this language');
+  return {
+    path: '', code: 'low-analysis-coverage', severity: 'warning',
+    message: `only ${Math.round(c.coverage * 100)}% of the words have an analysis (${c.analysed} of ${c.words}): ${by.adapter} from the language's word list, ` +
+      `${by.dictionary} from the dictionary ${dictId ?? '(none installed)'}, ${by.supplied} supplied with the text, ${by.corrected} corrected by a reviewer`,
+    hint: `The text imports and reads fine, but word help will be missing for the other words. To add analysis: ${remedies.join('; ')}.${dictionaryError ? ' The dictionary could not be read (' + dictionaryError.replace(/^dictionary not used: /, '') + ').' : ''}`,
   };
 }
 

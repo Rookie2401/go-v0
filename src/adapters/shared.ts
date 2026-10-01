@@ -484,6 +484,11 @@ export interface AnalysisCoverage {
   coverage: number;
   /** Distinct normalized forms of the word tokens with no analysis, in order of first appearance. */
   unanalysed: string[];
+  /**
+   * Where the analysed words' analyses came from, when known (the import plan fills it; the sum is `analysed`):
+   * the language's own word list, the installed dictionary, spans supplied with the text, a reviewer's correction.
+   */
+  bySource?: { adapter: number; dictionary: number; supplied: number; corrected: number };
 }
 
 /**

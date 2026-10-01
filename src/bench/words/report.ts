@@ -56,3 +56,64 @@ export function consoleSummary(reports: readonly SystemReport[]): string {
   }
   return lines.join('\n');
 }
+
+// ───────────────────────────── report of a frozen set ─────────────────────────────
+
+export interface FrozenReportInput {
+  date: string;
+  manifest: {
+    id: string; setHash: string; createdAt: string;
+    tools: { goldTools: string; adapter: string; node: string; icu: string; unicode: string };
+    selection: { strata: string[] | null; heldOutOnly: boolean };
+    files: Array<{ path: string; kind: string; sha256: string; rows: number }>;
+    checkedBy: Array<{ name: string; firstDate: string; lastDate: string; rows: number }>;
+  };
+  runTools: { node: string; icu: string; unicode: string; adapter: string };
+  /** An explicit held-out run: only the held-out rows were scored; no sentence text is printed in this report. */
+  heldOutRun: boolean;
+  reports: readonly SystemReport[];
+  errorsDir: string;
+  patterns: number;
+}
+
+/** A dated Markdown report for a frozen set. Local by default: the numbers describe personal copies of books. */
+export function renderFrozenReport(i: FrozenReportInput): string {
+  const m = i.manifest;
+  const sentences = i.reports[0]?.overall.sentences ?? 0;
+  const lines: string[] = [
+    `# Word segmentation report: frozen set ${m.id}`,
+    '',
+    `- Date of this run: ${i.date}`,
+    `- Frozen set: \`${m.id}\`, set hash \`${m.setHash}\` (frozen ${m.createdAt}; every file verified against its sha256 before this run)`,
+    `- Scored: ${sentences} sentences (${i.heldOutRun ? 'HELD-OUT rows only, an explicit held-out run' : 'ordinary rows; held-out rows were not used'})`,
+    `- Selection: strata ${m.selection.strata ? m.selection.strata.join(', ') : 'all'}; held-out only: ${m.selection.heldOutOnly ? 'yes' : 'no'}`,
+    `- Checked by: ${m.checkedBy.map((c) => `${c.name} (${c.rows} rows, ${c.firstDate === c.lastDate ? c.firstDate : `${c.firstDate} to ${c.lastDate}`})`).join('; ') || 'nobody'}`,
+    `- Tools when frozen: ${m.tools.goldTools}, ${m.tools.adapter}, Node ${m.tools.node}, ICU ${m.tools.icu}`,
+    `- Tools in this run: bench-words, ${i.runTools.adapter}, Node ${i.runTools.node}, ICU ${i.runTools.icu}, Unicode ${i.runTools.unicode}${m.tools.icu !== i.runTools.icu || m.tools.adapter !== i.runTools.adapter ? ' (differs from the freeze: compare with care)' : ''}`,
+    `- Errors file${i.reports.length > 1 ? 's' : ''}: \`${i.errorsDir}/\` (one per system${i.heldOutRun ? ', held-out rows, with text' : ''}; local only)`,
+    '',
+    'Files in the set:',
+    '',
+    ...m.files.map((f) => `- \`${f.path}\` (${f.kind}, ${f.rows} rows, sha256 \`${f.sha256.slice(0, 16)}…\`)`),
+    '',
+    '## Results',
+    '',
+    'Percentages. "boundary" counts each cut; "word" counts a word right only if both edges are; "exact match" is the share of sentences with no error.',
+    '',
+    markdownTable(i.reports),
+    '',
+    markdownErrorKinds(i.reports),
+    ...(i.patterns > 0 && !i.heldOutRun
+      ? i.reports.flatMap((r) => ['', `### Most frequent error patterns: ${r.system}`, '', markdownPatterns(r, i.patterns)])
+      : []),
+    '',
+    '## What these numbers are',
+    '',
+    '- The reference is the boundaries a named person checked and accepted; a machine draft is never reference.',
+    `- Systems: ${i.reports.map((r) => `${r.system} (${r.kind}: ${r.label})`).join('; ')}.`,
+    '- Held-out sentences are for reporting, once. Do not tune the adapter, the compound list or any threshold on them.',
+    '- The sentences come from texts supplied by the owner, possibly personal copies: keep this report local unless the owner chooses to copy numbers (not text) into the docs.',
+    '',
+  ];
+  return lines.join('\n');
+}

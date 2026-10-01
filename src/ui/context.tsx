@@ -32,6 +32,8 @@ export interface ImportDocView {
   action: 'valid' | 'created' | 'updated' | 'unchanged' | 'rejected';
   contentVersion?: number;
   published?: boolean;
+  /** The learner's own copy of a published work: readable on this device, not published to other learners. */
+  personalCopy?: boolean;
   unpublishedReasons?: string[];
   issues: IngestIssueView[];
   analysisCoverage?: number;

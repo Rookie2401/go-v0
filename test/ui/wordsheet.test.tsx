@@ -190,19 +190,19 @@ describe('word sheet — Stage 0', () => {
     expect(decoding.textContent).not.toContain('falling');
   });
 
-  it('has three tiers of confidence: plain, "by the spelling rules", and "uncertain"', async () => {
+  it('has three tiers of certainty, separate from the source: nothing, "less certain", and "uncertain"', async () => {
     await seedThaiText(h.store);
     wire(stage0);
     await reader();
     await click(tokenButton('แม่')); // 0.95
-    expect(q(mounted!.container, '[data-testid="by-rules"]')).toBeNull();
+    expect(q(mounted!.container, '[data-testid="less-certain"]')).toBeNull();
     expect(byLabel(mounted!.container, 'Decoding').textContent).not.toContain('uncertain');
     await click(tokenButton('กิน')); // 0.7
-    const rules = q(mounted!.container, '[data-testid="by-rules"]')!;
-    expect(rules.textContent).toBe('by the spelling rules; not checked against a dictionary');
+    expect(q(mounted!.container, '[data-testid="less-certain"]')!.textContent).toBe('less certain');
+    expect(mounted!.container.textContent).not.toContain('not checked against a dictionary');
     expect(byLabel(mounted!.container, 'Decoding').textContent).not.toContain('uncertain');
     await click(tokenButton('ไป')); // 0.4
-    expect(q(mounted!.container, '[data-testid="by-rules"]')).toBeNull();
+    expect(q(mounted!.container, '[data-testid="less-certain"]')).toBeNull();
     expect(byLabel(mounted!.container, 'Decoding').textContent).toContain('uncertain');
   });
 

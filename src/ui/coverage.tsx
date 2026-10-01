@@ -13,6 +13,7 @@
  *      "Understood x of y (your report)"                    when sentencesUnderstood > 0
  *      "Finished"                                           only when `finishedAt` (this content version) is set
  *      "Finished an earlier version — the text has changed since"   when only `finishedEarlierVersion` is set
+ *      "you said you understood <degree> of an earlier version"   a whole-text report that exists only about earlier wording
  *      "n more seen in an earlier version"                  exposure against sentences the text no longer has (history)
  *    and, whenever the text is finished (this or an earlier version) with Seen < total, an explanation of why the two
  *    can differ ("Why?"): a real disclosure in the reader, a title on the line inside list rows that are links.
@@ -48,6 +49,10 @@ export function progressParts(p: ReadingProgress): string[] {
   // away in the reader.
   if (p.finishedAt) parts.push(p.sentencesSeen < p.sentencesTotal ? FINISHED_BY_MARK_TEXT : 'Finished');
   else if (p.finishedEarlierVersion) parts.push(FINISHED_EARLIER_TEXT);
+  // A whole-text report is about one version of the wording. This version's own report is shown by the reader beside the line;
+  // a report that exists only about EARLIER wording is history, said to be exactly that and never as understanding of the
+  // text as it reads now.
+  if (!p.reportedComprehension && p.reportedEarlierVersion) parts.push(`you said you understood ${p.reportedEarlierVersion.degree} of an earlier version`);
   const earlier = p.earlierVersions?.sentencesSeen ?? 0;
   if (earlier > 0) parts.push(`${earlier} more seen in an earlier version`);
   return parts;

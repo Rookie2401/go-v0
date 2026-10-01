@@ -71,7 +71,22 @@ empty strata (today all eight).
    without `--by`, refuses a draft nobody changed (compared with a digest recorded in the draft) unless `--confirm-unchanged`,
    refuses invalid boundaries, malformed files, a missing stratum or source, duplicate ids, ids already in the set, and will not
    overwrite a file without `--overwrite`. It prints counts only.
-4. `npm run bench:words -- --gold data/private/benchmarks/th` runs the systems on it.
+4. `npm run gold:freeze -- --name <id> [--strata a,b] [--held-out-only]` freezes the checked files into
+   `data/private/benchmarks/th/frozen/<id>.json`: each file's sha256, sentence and paragraph counts per stratum, who checked
+   them and when, the tool versions and a set hash. Rows without `checkedBy` cannot be frozen. A frozen set is immutable:
+   `gold:accept` refuses to write into one of its files, and `bench:words -- --frozen <id>` verifies every hash first and
+   refuses to run if a file changed.
+5. `npm run bench:words -- --frozen <id> --report` runs the systems on the frozen set and writes a dated report (frozen id and
+   set hash, who checked, tool and ICU versions, per-stratum boundary and word P / R / F1, exact match, the errors path) to
+   `data/private/benchmarks/th/reports/` (local). Without `--frozen`, `--gold <dir>` runs on any gold directory.
+
+**Reading units.** `gold:draft --kind units` samples paragraphs and drafts the adapter's unit boundaries in H2's format
+(`src/bench/units/gold.ts`, imported unchanged); `gold:accept --kind units --by "Name"` accepts the corrected draft into
+`data/private/benchmarks/th/units/<name>.units.jsonl`; `gold:freeze` puts it in the same manifest; `bench:units -- --gold
+data/private/benchmarks/th/units` scores it (run `gold:freeze -- --verify <id>` first: `bench:units` does not check hashes).
+
+The step-by-step procedure for a non-programmer (what text counts, how many sentences, the `|` conventions to decide once, what
+to do with a doubtful case, what the results may be used for) is `docs/thai/GOLD_WORKFLOW.md`.
 
 **Held-out sentences** (`--held-out` at draft time, `heldOut: true` in the row) are never printed by any tool. Ordinary runs leave
 them out; only an explicit `bench:words --held-out` run evaluates them (and only them), prints numbers only, and writes their
@@ -84,7 +99,10 @@ comparison with an established tokenizer has not been run. Two commands, on a ma
     python scripts/external/pythainlp_tokenize.py --gold data/benchmarks/th/generated --out data/benchmarks/th/generated/external/newmm.edit.txt
     npm run bench:words -- --external newmm=data/benchmarks/th/generated/external/newmm.edit.txt
 
-(`pip install pythainlp` first. The script refuses to write a file if the engine changes the text.) Until that is done, section 3
+(Requirement: Python 3.9 or later and `pip install pythainlp`, in a virtual environment, run by the owner or with the owner's
+go-ahead; only the Microsoft Store alias stub exists on this machine, and nothing was run or installed. For the course gold set use
+`--gold data/private/benchmarks/th` and `--frozen <id>`; see `docs/thai/GOLD_WORKFLOW.md`, step 7. The script refuses to write a
+file if the engine changes the text.) Until that is done, section 3
 compares the adapter only with ICU alone and with our own `dict-mm`, and the claim "benchmarked against an established tokenizer"
 is not yet met.
 

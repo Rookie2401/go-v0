@@ -53,7 +53,19 @@ export interface SynthesisResult {
 }
 
 export interface ProviderAvailability {
+  /**
+   * Playback of SOME kind is possible. From GoListen.availability() in preview mode this can be the development
+   * fixture, which is placeholder sound and not speech: a caller that means "real speech" must read `realSpeech`.
+   */
   available: boolean;
+  /**
+   * GoListen.availability() only: a real speech provider is usable right now. Never true for a fixture. When false
+   * while `available` is true, only placeholder playback exists, and `realSpeechReason` / `realSpeechDetail` say why
+   * real speech is not available (so the missing-configuration guidance stays accurate).
+   */
+  realSpeech?: boolean;
+  realSpeechReason?: 'no-provider' | 'missing-credentials' | 'provider-error' | 'offline';
+  realSpeechDetail?: string;
   reason?: 'no-provider' | 'missing-credentials' | 'provider-error' | 'offline' | 'development-fixture';
   detail?: string;
 }

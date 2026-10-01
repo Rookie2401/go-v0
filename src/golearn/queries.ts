@@ -188,13 +188,17 @@ export async function tokenSupport(ctx: Ctx, userId: string, tokenId: string, le
   const support: TokenSupport = { token, phrases: [], patterns: [], priorEncounters: [], knownExamples: [], uncertain: false };
   if (level < 1) return support;
 
+  // A sentence a revision retired is history: its phrase and pattern occurrences (kept so a rebuild can recreate the evidence) are
+  // never offered, and neither is it offered as an example.
+  const own = await ctx.store.sentences.get(token.sentenceId);
+  const ownLive = !own || own.retiredInVersion === undefined;
   const analysis = await resolveAnalysis(ctx, tokenId);
   const lemma = analysis?.lemmaId ? await ctx.store.lemmas.get(analysis.lemmaId) : undefined;
   support.uncertain = !analysis || analysis.confidence < UNCERTAIN_BELOW || (analysis.alternatives?.length ?? 0) > 0;
   if (lemma?.gloss) support.gloss = lemma.gloss; // level 1: gloss only
 
   if (level >= 2) {
-    const occs = (await ctx.store.phraseOccurrences.where('sentenceId', token.sentenceId)).filter((o) => o.tokenIds.includes(tokenId));
+    const occs = !ownLive ? [] : (await ctx.store.phraseOccurrences.where('sentenceId', token.sentenceId)).filter((o) => o.tokenIds.includes(tokenId));
     for (const occurrence of occs) {
       const phrase = await ctx.store.phrases.get(occurrence.phraseId);
       if (phrase) support.phrases.push({ phrase, occurrence });
@@ -206,7 +210,7 @@ export async function tokenSupport(ctx: Ctx, userId: string, tokenId: string, le
     if (lemma) support.lemma = lemma;
     const line = morphologyLine(analysis);
     if (line) support.morphologyLine = line;
-    const pocc = (await ctx.store.patternOccurrences.where('sentenceId', token.sentenceId)).filter((o) => o.tokenIds.includes(tokenId));
+    const pocc = !ownLive ? [] : (await ctx.store.patternOccurrences.where('sentenceId', token.sentenceId)).filter((o) => o.tokenIds.includes(tokenId));
     for (const o of pocc) {
       const p = await ctx.store.patterns.get(o.patternId);
       if (p && !support.patterns.some((x) => x.id === p.id)) support.patterns.push(p);
@@ -229,10 +233,18 @@ export async function tokenSupport(ctx: Ctx, userId: string, tokenId: string, le
     support.priorEncounters = prior.sort(byAtThenId);
     const exampleItem = lemma?.id ?? token.formId;
     const examples: string[] = [];
+    const liveSentence = new Map<string, boolean>();
     for (const e of (await ctx.store.encounters.where('itemId', exampleItem))
       .filter((x) => x.userId === userId && x.modality === 'reading' && x.sentenceId !== token.sentenceId)
       .sort(byAtThenId).reverse()) {
-      if (!examples.includes(e.sentenceId)) examples.push(e.sentenceId);
+      if (examples.includes(e.sentenceId)) continue;
+      let live = liveSentence.get(e.sentenceId);
+      if (live === undefined) {
+        const s = await ctx.store.sentences.get(e.sentenceId);
+        liveSentence.set(e.sentenceId, (live = !!s && s.retiredInVersion === undefined));
+      }
+      if (!live) continue; // an example is a sentence of the current text
+      examples.push(e.sentenceId);
       if (examples.length >= 10) break;
     }
     support.knownExamples = examples;

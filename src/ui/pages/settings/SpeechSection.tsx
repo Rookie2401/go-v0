@@ -13,7 +13,7 @@ import { useCallback, useEffect, useState } from 'react';
 import type { ProviderAvailability, VoiceConfig } from '../../../core';
 import { useApp } from '../../context';
 import { REVIEW_LABEL } from '../../format';
-import { setPref, usePref } from '../../prefs';
+import { setPref, usePref, usePreview } from '../../prefs';
 import { errorText } from './shared';
 
 const REASON_TEXT: Record<string, string> = {
@@ -36,6 +36,8 @@ export function SpeechSection({ refreshKey }: { refreshKey?: unknown }) {
   const [error, setError] = useState<string | null>(null);
   const [tick, setTick] = useState(0);
   const [checking, setChecking] = useState(false);
+  // Entering or leaving preview mode changes which providers are usable (the fixture), so availability is read again.
+  const preview = usePreview();
   const checkAgain = async () => {
     setChecking(true); setError(null);
     try { await speech.recheck?.(); setTick((n) => n + 1); } catch (e) { setError(errorText(e)); } finally { setChecking(false); }
@@ -59,24 +61,29 @@ export function SpeechSection({ refreshKey }: { refreshKey?: unknown }) {
       catch (e) { if (live && !(e instanceof Error && e.name === 'AudioUnavailable')) setError(errorText(e)); }
     })().catch((e: unknown) => { if (live) setError(errorText(e)); });
     return () => { live = false; };
-  }, [golisten, store, lang, course.id, speech, tick, refreshKey]);
+  }, [golisten, store, lang, course.id, speech, tick, refreshKey, preview]);
 
   const setReview = useCallback(async (v: VoiceConfig, status: VoiceConfig['reviewStatus']) => {
     setError(null);
     try { await golisten.setVoiceReview(v.id, status); setTick((n) => n + 1); } catch (e) { setError(errorText(e)); }
   }, [golisten]);
 
-  const reason = availability?.reason ? REASON_TEXT[availability.reason] ?? availability.reason : undefined;
+  // Three states, never blurred: real speech (only when GoListen says `realSpeech`), placeholder playback in preview with real
+  // speech unavailable, and nothing. "Available" alone means "something can play", which may be the fixture.
+  const state: 'real' | 'placeholder' | 'none' | undefined = !availability ? undefined
+    : availability.realSpeech === true ? 'real'
+      : availability.available ? 'placeholder' : 'none';
+  const why = (reasonKey: string | undefined, detail: string | undefined) => `${reasonKey ? REASON_TEXT[reasonKey] ?? reasonKey : 'no reason given'}${detail ? ` (${detail})` : ''}`;
 
   return (
     <section aria-label="Speech" id="settings-speech" data-settings-section="speech">
       <h2 className="section-head" tabIndex={-1}>Speech</h2>
       {error && <p role="alert" className="error">{error}</p>}
       {!availability ? <p className="muted" role="status">Checking speech…</p> : (
-        <p data-testid="speech-availability" data-available={availability.available ? 'yes' : 'no'}>
-          {availability.available
-            ? 'Real speech is available.'
-            : `Real speech is not available: ${reason ?? 'no reason given'}${availability.detail ? ` (${availability.detail})` : ''}. You can still read; audio stays off until a provider is set up.`}
+        <p data-testid="speech-availability" data-state={state} data-available={state === 'real' ? 'yes' : 'no'}>
+          {state === 'real' && 'Real speech is available.'}
+          {state === 'placeholder' && `Placeholder sound is available in preview mode. It is not speech and never counts toward your listening progress. Real speech is not available: ${why(availability.realSpeechReason ?? 'no-provider', availability.realSpeechDetail)}. You can still read.`}
+          {state === 'none' && `Real speech is not available: ${why(availability.reason, availability.detail)}. You can still read; audio stays off until a provider is set up.`}
         </p>
       )}
       {service && (

@@ -40,7 +40,8 @@ interface TextLog {
   reports: Array<{ sentenceIds: string[]; sitting: string; at: string }>;
   completions: Array<{ at: string; version?: number }>;
   /** latest text-scope reading report */
-  textReport?: { degree: Degree; at: string };
+  /** every whole-text reading report, in log order, with the content version it was about (undefined on legacy events) */
+  textReports: Array<{ degree: Degree; at: string; version?: number }>;
 }
 
 const key = (sitting: string, sentenceId: string) => `${sitting}\n${sentenceId}`;
@@ -78,7 +79,7 @@ export async function readingProgressMany(ctx: Ctx, userId: string, textIds: str
 
   const logs = new Map<string, TextLog>();
   const asOf = new Map<string, string>();
-  for (const id of wanted) logs.set(id, { views: new Map(), reports: [], completions: [] });
+  for (const id of wanted) logs.set(id, { views: new Map(), reports: [], completions: [], textReports: [] });
   const bump = (textId: string, at: string) => asOf.set(textId, latest(asOf.get(textId), at));
 
   for (const e of events) {
@@ -107,7 +108,7 @@ export async function readingProgressMany(ctx: Ctx, userId: string, textIds: str
           log.reports.push({ sentenceIds: e.sentenceIds, sitting: sittings.get(e.id) ?? '', at: e.at });
           counted = e.sentenceIds.some((sid) => textOfSentence.get(sid) === e.textId);
         }
-        if (e.scope === 'text') { log.textReport = { degree: e.degree, at: e.at }; counted = true; }
+        if (e.scope === 'text') { log.textReports.push({ degree: e.degree, at: e.at, ...(e.contentVersion !== undefined ? { version: e.contentVersion } : {}) }); counted = true; }
         if (counted) bump(e.textId, e.at);
         break;
       }
@@ -154,6 +155,16 @@ export async function readingProgressMany(ctx: Ctx, userId: string, textIds: str
       else if (!earlier || c.at > earlier.at) earlier = { ...(c.version !== undefined ? { version: c.version } : {}), at: c.at };
     }
 
+    // A whole-text report is about one content version (the same rule as a completion): the latest one about THIS version is the
+    // current report; the latest about any other version is history. Nothing is deleted from the log.
+    let reported: Degree | undefined;
+    let reportedEarlier: ReadingProgress['reportedEarlierVersion'];
+    for (const r of log.textReports) {
+      const current = r.version === undefined ? text.contentVersion === 1 : r.version === text.contentVersion;
+      if (current) reported = r.degree;
+      else reportedEarlier = { degree: r.degree, ...(r.version !== undefined ? { version: r.version } : {}), at: r.at };
+    }
+
     const listened = new Set<string>();
     for (const e of (await ctx.store.encounters.where('textId', id)) as StoredEncounter[]) {
       if (e.userId === userId && e.modality === 'listening' && live.has(e.sentenceId)) { listened.add(e.sentenceId); bump(id, e.at); }
@@ -165,7 +176,8 @@ export async function readingProgressMany(ctx: Ctx, userId: string, textIds: str
       ...(finishedAt ? { finishedAt } : {}),
       ...(earlier ? { finishedEarlierVersion: earlier } : {}),
       ...(seenEarlier > 0 || understoodEarlier > 0 ? { earlierVersions: { sentencesSeen: seenEarlier, sentencesUnderstood: understoodEarlier } } : {}),
-      ...(log.textReport ? { reportedComprehension: log.textReport.degree } : {}),
+      ...(reported ? { reportedComprehension: reported } : {}),
+      ...(reportedEarlier ? { reportedEarlierVersion: reportedEarlier } : {}),
       sittings: sittingKeys.size,
       listenedSentences: listened.size,
       ...(asOf.has(id) ? { asOf: asOf.get(id)! } : {}),

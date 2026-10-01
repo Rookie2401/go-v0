@@ -258,7 +258,7 @@ runs in the app's importer (`validateDocument` / `validateBatch` in `src/ingest`
 | `review-signature-mismatch` | warning | `review.contentSignature` differs from the current wording: the text is unpublished until it is reviewed again (`npm run corpus:review`). |
 | `not-nfc` · `edge-whitespace` | warning | The text is stored exactly as supplied anyway. |
 | `adapter-would-split` | warning | The adapter would split a declared sentence; your declaration wins. |
-| `low-analysis-coverage` | warning | Under 60 % of words can be analysed: the text reads fine, but word help will be missing. Add `spans` or extend the lexicon. |
+| `low-analysis-coverage` | warning | Under 60 % of words have an analysis: the text reads fine, but word help will be missing. Where the import plans the text (the app, its preview, `corpus:check`) the figure and this warning come from the SAME final analysis — the language's word list + the installed dictionary + spans supplied with the text + corrections (a corrected token counts) — and the message gives the breakdown (`AnalysisCoverage.bySource`). Plain `corpus:validate` / `validateDocument` have no plan, so the warning says it is "by the language's own word list alone (no dictionary consulted)". Add `spans`, record a correction, or install a dictionary. |
 | `unknown-work` | warning | `work.slug` is not among the works the app holds for that course (§7). The text imports; it just does not appear under a work. |
 | `note-anchor-missing` | error | A document-level note's `match` (with `occurrence`) is in no sentence (§8). |
 | `note-not-on-token` | error | A note's `start`/`end` do not begin and end on word boundaries of its sentence. |
@@ -415,8 +415,9 @@ Guarantees:
 * **Repeatable.** Re-importing an unchanged document writes nothing and changes no version (a content signature is
   kept in `meta`). Running an import three times gives identical rows and ids.
 * **Versioned.** Edit a sentence's wording and re-import: the changed sentence gets a **new key and id** and the old
-  one is **retired** (`retiredInVersion`; its tokens and analyses stay so learner history remains interpretable, its
-  English rescue and phrase/pattern occurrences are removed); `Text.contentVersion` bumps; **unchanged sentences
+  one is **retired** (`retiredInVersion`; its tokens, analyses and phrase / pattern occurrences stay so learner history can be
+  rebuilt from the event log, and so do the phrase / pattern definitions; only its English rescue, an aid and not evidence, is
+  removed — learner-facing reads ignore retired sentences); `Text.contentVersion` bumps; **unchanged sentences
   keep their ids, tokens, human corrections and — through GoListen's text-hash cache keys — their audio**;
   encounters and events are never touched. Reordering sentences also bumps the version (audio manifests are
   ordered). Reverting an edit revives the retired sentence under its original id. A sentence with an author `id`

@@ -4,6 +4,10 @@
  *   rules      decodeThai(word) alone (spelling rules + the engine's own exception lists)
  *   respelling decodeThaiRespelling(word, phonemic respelling) WITHOUT the IPA, compared with the IPA tones
  *
+ * WHAT THIS MEASURES: agreement of the TONE SEQUENCE (one tone per syllable, hence also the syllable count) with the
+ * tone letters of a listed IPA reading. It does not check consonants, vowels, vowel length or finals, so it is not a
+ * measure of complete pronunciation accuracy; and the reference is Wiktionary's data, not a native reviewer.
+ *
  * One row per distinct written word; the reference is the IPA tone letters of ANY pronunciation Wiktionary lists for
  * that spelling (homographs and variant readings all count as right). The tone parser here is the script's own.
  *
@@ -109,7 +113,7 @@ console.log(`\nby syllable count (shortest listed reading):`);
 for (const [n, b] of [...bySyl.entries()].sort((a, c) => a[0] - c[0]).slice(0, 7)) {
   console.log(`  ${n} syll: ${b.n} words — confident right ${pct(b.confidentRight, b.n)}, confident wrong ${pct(b.confidentWrong, b.n)}, uncertain/none ${pct(b.uncertain, b.n)}`);
 }
-console.log(`\nRESPELLING PATH (decodeThaiRespelling, no IPA) on ${resp.evaluated} respellings: right ${resp.right} (${pct(resp.right, resp.evaluated)}), wrong ${resp.wrong} (${pct(resp.wrong, resp.evaluated)}), no answer ${resp.noAnswer} (${pct(resp.noAnswer, resp.evaluated)})`);
+console.log(`\nRESPELLING PATH (decodeThaiRespelling, no IPA) on ${resp.evaluated} respellings — TONE SEQUENCE agreement with the IPA (not complete pronunciation): same ${resp.right} (${pct(resp.right, resp.evaluated)}), different ${resp.wrong} (${pct(resp.wrong, resp.evaluated)}), no answer ${resp.noAnswer} (${pct(resp.noAnswer, resp.evaluated)})`);
 if (listN > 0) {
   console.log(`\nfirst confident-wrong cases:`);
   for (const c of confidentWrong.slice(0, listN)) console.log(`  ${c.word}: expected ${c.expected.map((t) => t.join(' ')).join(' | ')}; got ${c.got!.join(' ')} @ ${c.conf!.join(',')}`);

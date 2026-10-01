@@ -15,12 +15,8 @@ import type { DictionaryView } from './assistance';
 import type { AnalysisSourceInfo, ContentNote, DictionaryInfo, HelpLayer, LanguageCode, Sentence, SyllableAnalysis, Token, TokenSupport } from '../../core';
 import { useApp } from '../context';
 import { I, IconBtn } from '../ui';
-import { MORE_LABEL, NOTE_KIND_LABEL, analysisSourceLine, clauseSegments, decodingSourceLine, dictionaryName, dictionaryOthers, hasClauseSpans, listsDiffer, maxLevel, noteIsReviewed, pick, roleText, varietyLine } from './assistance';
+import { MORE_LABEL, NOTE_KIND_LABEL, analysisSourceLine, certainty, clauseSegments, decodingSource, dictionaryName, dictionaryOthers, hasClauseSpans, listsDiffer, maxLevel, noteIsReviewed, pick, roleText, ruleToneLine, syllableSourceLabel, varietyLine } from './assistance';
 
-/** Below this the engine says "uncertain" (the same line GoLearn draws for an analysis). */
-const UNCERTAIN_BELOW = 0.6;
-/** From there up a decoding is plain; between the two it comes from the spelling rules alone. */
-const RULES_ONLY_BELOW = 0.8;
 
 export type SheetSubject = { kind: 'word'; token: Token } | { kind: 'sentence'; sentence: Sentence };
 
@@ -33,6 +29,10 @@ export interface DecodingView {
   rescued: boolean;
   /** `notes.readings` lists more than one reading of the word. */
   severalReadings?: boolean;
+  /** The dictionary's short name, when known ("Wiktionary"), for the source line of a dictionary reading. */
+  dictionaryName?: string;
+  /** Who checked the analysis, when a reviewed override itself supplies the syllables. */
+  reviewedBy?: string;
   /** The romanization to show once rescued; undefined = the word has none. */
   romanization?: string;
 }
@@ -354,6 +354,7 @@ function sensesOf(v: string | string[] | undefined): string[] {
 
 function DecodingSection({ decoding, loaded, lang, onRescue }: { decoding: DecodingView; loaded: boolean; lang?: LanguageCode; onRescue(): void }) {
   const { syllables } = decoding;
+  const src = decodingSource(syllables ?? [], { dictionary: decoding.dictionaryName, reviewedBy: decoding.reviewedBy });
   return (
     <section className="card__section" aria-label="Decoding">
       <h3 className="label">How it is read</h3>
@@ -363,11 +364,11 @@ function DecodingSection({ decoding, loaded, lang, onRescue }: { decoding: Decod
         <p className="card__text" data-testid="cannot-decode">Go cannot decode this spelling reliably.</p>
       ) : (
         <>
-          {decodingSourceLine(syllables) && <p className="card__note" data-testid="decoding-source">{decodingSourceLine(syllables)}</p>}
+          {src.top && <p className="card__note" data-testid="decoding-source">{src.top}</p>}
           {decoding.severalReadings && <p className="card__text" data-testid="several-readings">This word has more than one reading.</p>}
           {syllables.some((s) => s.respelled) && <p className="card__text" data-testid="not-as-spelled">This word is not read exactly as it is spelled.</p>}
           <ol className="decode" aria-label="Syllables">
-            {syllables.map((s, i) => <SyllableRow key={`${s.start}-${i}`} s={s} lang={lang} />)}
+            {syllables.map((s, i) => <SyllableRow key={`${s.start}-${i}`} s={s} lang={lang} sourceLabel={src.perSyllable ? syllableSourceLabel(s.source, decoding.dictionaryName) : undefined} />)}
           </ol>
         </>
       )}
@@ -389,10 +390,11 @@ function DecodingSection({ decoding, loaded, lang, onRescue }: { decoding: Decod
 
 const ENDING_WORD = { open: 'open (no final consonant)', live: 'live', dead: 'dead' } as const;
 
-function SyllableRow({ s, lang }: { s: SyllableAnalysis; lang?: LanguageCode }) {
-  // Three tiers: plain; by the rules only (a quiet note); uncertain.
-  const low = s.confidence < UNCERTAIN_BELOW;
-  const byRules = !low && s.confidence < RULES_ONLY_BELOW;
+function SyllableRow({ s, lang, sourceLabel }: { s: SyllableAnalysis; lang?: LanguageCode; sourceLabel?: string }) {
+  // Source and certainty are two statements: where the reading came from (`source`), and how sure the engine is (`confidence`).
+  const sure = certainty(s.confidence);
+  const low = sure === 'uncertain';
+  const toneLine = ruleToneLine(s);
   const unwritten = s.vowel === '◌';
   return (
     <li className="decode__syl" data-uncertain={low ? 'true' : undefined}>
@@ -401,7 +403,8 @@ function SyllableRow({ s, lang }: { s: SyllableAnalysis; lang?: LanguageCode }) 
         {low && <span className="chip chip--wine">uncertain</span>}
         {s.irregular && <span className="chip">irregular spelling</span>}
       </div>
-      {byRules && <p className="card__note" data-testid="by-rules">by the spelling rules; not checked against a dictionary</p>}
+      {sourceLabel && <p className="card__note" data-testid="syllable-source">{sourceLabel}</p>}
+      {sure === 'less-certain' && <p className="card__note" data-testid="less-certain">less certain</p>}
       {s.respelled && <p className="card__text decode__respelled">Read as <span lang={lang}>{s.respelled}</span></p>}
       {s.initial && (
         <div className="card__line"><span className="k">Letters</span><span lang={lang}>{[s.cluster && s.cluster !== s.initial ? `${s.initial} (${s.cluster})` : s.initial, s.final ? `final ${s.final}` : ''].filter(Boolean).join(' · ')}</span></div>
@@ -421,7 +424,7 @@ function SyllableRow({ s, lang }: { s: SyllableAnalysis; lang?: LanguageCode }) 
       <div className="card__line"><span className="k">Tone mark</span><span lang={s.toneMark ? lang : undefined}>{s.toneMark ?? 'none'}</span></div>
       <div className="card__line"><span className="k">Tone</span><span>{s.tone ?? 'not decided — Go will not guess'}</span></div>
       {s.rule && <p className="card__text decode__rule">{s.rule}</p>}
-      {s.ruleTone && <p className="card__note" data-testid="rule-tone">The spelling rules alone would give {s.ruleTone}.</p>}
+      {toneLine && <p className="card__note" data-testid="rule-tone">{toneLine}</p>}
     </li>
   );
 }

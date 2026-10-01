@@ -18,7 +18,11 @@ export function ImportReport({ docs, title }: { docs: ImportDocView[]; title?: s
             </h3>
             {d.note && <p className="card__note" data-testid="import-note">{d.note}</p>}
             {d.action === 'valid' && d.published === true && (
-              <p className="card__note" data-testid="would-publish">Will be published to learners when imported.</p>
+              <p className="card__note" data-testid="would-publish">
+                {d.personalCopy
+                  ? 'Will be readable on this device when imported. It is your own copy: it is not published to anyone else.'
+                  : 'Will be published to learners when imported.'}
+              </p>
             )}
             {d.published === false && (d.unpublishedReasons ?? []).length > 0 && (
               <p className="card__note" data-testid={d.action === 'valid' ? 'would-publish' : undefined}>

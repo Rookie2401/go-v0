@@ -18,7 +18,7 @@ import type { AnalysisCoverage } from '../adapters/shared';
 import { describeVersionBump } from './history';
 import { hasErrors, validateBatch, type CorpusDocument, type ValidationIssue } from './format';
 import {
-  INGEST_TOOL, buildNoteRows, collectWordForms, materializeSentence, newCatalog, planDocument, type DocumentPlan, type PlannedSentence,
+  INGEST_TOOL, buildNoteRows, collectWordForms, coverageWarning, materializeSentence, newCatalog, planDocument, type DocumentPlan, type PlannedSentence,
   type SentenceRows,
 } from './plan';
 
@@ -41,6 +41,8 @@ export interface DocumentReport {
   action: ImportAction;
   contentVersion: number;
   published: boolean;
+  /** Readable because it is the learner's own copy of a published work: on this device only, not published to anyone. */
+  personalCopy?: true;
   unpublishedReasons: string[];
   issues: ValidationIssue[];
   analysisCoverage: AnalysisCoverage;
@@ -151,12 +153,24 @@ export async function planWithDictionary(
   return { plans, notes };
 }
 
+/**
+ * Where a plan exists the low-coverage warning comes from the plan's final coverage (word list + dictionary + supplied spans +
+ * corrections), the same basis as the figure shown beside it: validation's adapter-only issue is replaced by it.
+ */
+function withPlanCoverage(issues: ValidationIssue[], plan: DocumentPlan, dictionaryNote?: string): ValidationIssue[] {
+  const warning = coverageWarning(plan, dictionaryNote);
+  const out = issues.filter((i) => i.code !== 'low-analysis-coverage');
+  return warning ? [...out, warning] : out;
+}
+
 export interface DocumentPreview {
   id: string;
   issues: ValidationIssue[];
   /** Present for a document without errors: what the import would store, with the installed dictionary applied. */
   analysisCoverage?: AnalysisCoverage;
   published?: boolean;
+  /** Readable because it is the learner's own copy of a published work: on this device only, not published to anyone. */
+  personalCopy?: true;
   unpublishedReasons?: string[];
   note?: string;
 }
@@ -183,7 +197,8 @@ export async function previewDocuments(store: AppStore, registry: AdapterRegistr
     const { plans, notes } = await planWithDictionary([docs[i] as CorpusDocument], registry, opts.lexicon);
     const plan = plans[0];
     out.push({
-      id: r.id, issues: r.issues, analysisCoverage: plan.coverage, published: plan.decision.published,
+      id: r.id, issues: withPlanCoverage(r.issues, plan, notes.get(0)), analysisCoverage: plan.coverage, published: plan.decision.published,
+      ...(plan.decision.personalCopy ? { personalCopy: true as const } : {}),
       unpublishedReasons: plan.decision.unpublishedReasons, ...(notes.has(0) ? { note: notes.get(0) } : {}),
     });
   }
@@ -233,7 +248,7 @@ export async function importDocuments(store: AppStore, registry: AdapterRegistry
 
   await store.transaction([...TABLES], async () => {
     for (let i = 0; i < plans.length; i++) {
-      const r = await importOne(store, plans[i], batch.documents[i].issues, now);
+      const r = await importOne(store, plans[i], withPlanCoverage(batch.documents[i].issues, plans[i], dictNotes.get(i)), now);
       reports.push(dictNotes.has(i) ? { ...r, note: dictNotes.get(i) } : r);
     }
   });
@@ -259,6 +274,7 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
   const existing = await store.texts.get(textId);
   const report = (action: ImportAction, contentVersion: number, added: number, retired: number): DocumentReport => ({
     id: doc.id, textId, action, contentVersion, published: plan.decision.published, unpublishedReasons: plan.decision.unpublishedReasons, issues,
+    ...(plan.decision.personalCopy ? { personalCopy: true as const } : {}),
     analysisCoverage: plan.coverage, sentencesAdded: added, sentencesRetired: retired,
   });
 
@@ -450,14 +466,12 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
   for (const p of catalog.phrases.values()) if (!(await store.phrases.get(p.id))) await store.phrases.put(compact(p));
   for (const p of catalog.patterns.values()) if (!(await store.patterns.get(p.id))) await store.patterns.put(p);
 
-  // retired sentences stay as history (their tokens and analyses too, for rebuilding learner state); their derived
-  // aids — phrase/pattern occurrences and English rescue — go, so nothing retired is offered to a learner
+  // retired sentences stay as history: their tokens, analyses AND phrase / pattern occurrences are kept (a rebuild of learner
+  // state from the event log needs to see which phrase / pattern items the old sentence carried; the definitions they point
+  // to are never deleted). Only the English rescue goes - an aid shown at display time, not evidence. Nothing retired is
+  // offered to a learner because learner-facing reads ignore sentences with retiredInVersion.
   if (retiredRows.length) await putChanged(store.sentences, retiredRows);
-  for (const s of retire) {
-    for (const o of await store.phraseOccurrences.where('sentenceId', s.id)) staleOccs.phrase.push(o.id);
-    for (const o of await store.patternOccurrences.where('sentenceId', s.id)) staleOccs.pattern.push(o.id);
-    staleOccs.rescue.push(ids.rescue(s.id));
-  }
+  for (const s of retire) staleOccs.rescue.push(ids.rescue(s.id));
   await deleteAll(store.analyses, staleAnalyses);
   await deleteAll(store.tokens, staleTokens);
   await deleteAll(store.phraseOccurrences, staleOccs.phrase);

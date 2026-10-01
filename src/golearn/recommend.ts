@@ -121,7 +121,10 @@ export async function recommend(
       const first = ranked[0].t;
       offer({
         reason: 'first-text', textId: first.id, reinforces: [], score: 1,
-        explanation: `A good place to start: "${first.title}" is the easiest published ${langName} text${first.staticLevel ? ` (${first.staticLevel})` : ''}.`,
+        // Say what the text is: an unpublished text can only be here because preview mode asked for it.
+        explanation: first.published
+          ? `A good place to start: "${first.title}" is the easiest published ${langName} text${first.staticLevel ? ` (${first.staticLevel})` : ''}.`
+          : `A good place to start: "${first.title}" is the easiest ${langName} text in preview (not published)${first.staticLevel ? `, level ${first.staticLevel}` : ''}.`,
       });
     } else {
       notes.push({

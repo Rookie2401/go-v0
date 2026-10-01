@@ -747,7 +747,7 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
   if (adapter) {
     coverage = { words: wordsTotal, analysed: analysedTotal, coverage: wordsTotal ? analysedTotal / wordsTotal : 1, unanalysed: [...unknownForms] };
     if (wordsTotal > 0 && coverage.coverage < 0.6) {
-      warn('', 'low-analysis-coverage', `only ${Math.round(coverage.coverage * 100)}% of the words can be analysed (${analysedTotal}/${wordsTotal})`,
+      warn('', 'low-analysis-coverage', `only ${Math.round(coverage.coverage * 100)}% of the words can be analysed by the language's own word list alone (${analysedTotal}/${wordsTotal}; no dictionary consulted)`,
         'The text imports and reads fine, but word help will be missing for unknown words. Add spans to the sentences (docs/IMPORT.md) or extend the language lexicon.');
     }
   }

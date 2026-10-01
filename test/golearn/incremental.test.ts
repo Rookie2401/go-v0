@@ -211,6 +211,29 @@ describe('incremental folding equals a rebuild from the log', () => {
     await check();
   });
 
+  it('a revision in the middle (sentences retired, their tokens, analyses and phrase / pattern occurrences kept) does not change what a rebuild derives', async () => {
+    const h = await world();
+    const { events } = await script(h, 31, 360);
+    const half = Math.floor(events.length / 2);
+    for (const e of events.slice(0, half)) await h.bus.emit(e);
+    // retire the two sentences of the story that carry the phrase "creo en _"
+    const text = (await h.store.texts.get(ES_STORY))!;
+    await h.store.texts.put({ ...text, contentVersion: 2 });
+    for (const i of [0, 2]) {
+      const old = (await h.store.sentences.get(`${ES_STORY}/s${i}`))!;
+      await h.store.sentences.put({ ...old, retiredInVersion: 2 });
+      const { retiredInVersion: _r, ...rest } = old;
+      void _r;
+      await h.store.sentences.put({ ...rest, id: `${old.id}@2`, key: `${old.key}@2`, versionAdded: 2 });
+    }
+    expect((await h.store.phraseOccurrences.where('textId', ES_STORY)).length).toBeGreaterThan(0);
+    for (const e of events.slice(half)) await h.bus.emit(e);
+    const live = await snapshot(h);
+    expect(JSON.parse(live).items.some((r: { itemKind: string }) => r.itemKind === 'phrase')).toBe(true);
+    await h.golearn.rebuild(U);
+    expect(firstDiff(live, await snapshot(h))).toBeNull();
+  });
+
   it('a cold GoLearn started halfway (aggregates persisted between processes) folds to the same state as one that never stopped', async () => {
     const whole = await world();
     const { events } = await script(whole, 99, 360);

@@ -6,7 +6,9 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
-import { COURSE_DIR, loadGoldDir } from '../src/bench/gold/io-node';
+import { COURSE_DIR, UNITS_SUBDIR, findUnitFiles, loadGoldDir } from '../src/bench/gold/io-node';
+import { listFrozen } from '../src/bench/gold/freeze';
+import { parseJsonl } from '../src/bench/units/gold';
 import { fromEditing } from '../src/bench/gold/format';
 import { goldStatus } from '../src/bench/gold/status';
 
@@ -40,3 +42,26 @@ for (const s of st.strata) {
 console.log(`  checked in all: ${st.checkedTotal} (${st.heldOutTotal} held out), target ${st.target.min}-${st.target.max}: ${st.vsTarget}${st.missingToMin ? `, ${st.missingToMin} more to the minimum` : ''}`);
 console.log(st.emptyStrata.length ? `  empty strata: ${st.emptyStrata.join(', ')}` : '  no empty strata');
 if (st.checkedTotal === 0) console.log('  nothing is in the course gold set yet: supply a lawful text, then npm run gold:draft (docs/thai/BENCHMARKS.md, section 2).');
+
+// reading units (paragraphs) and frozen sets: counts only
+{
+  const unitCounts = new Map<string, number>();
+  let unchecked = 0;
+  for (const f of findUnitFiles(dir)) {
+    for (const c of parseJsonl(fs.readFileSync(f, 'utf8'))) {
+      if (c.checkedBy) unitCounts.set(c.stratum, (unitCounts.get(c.stratum) ?? 0) + 1); else unchecked++;
+    }
+  }
+  let unitDrafts = 0;
+  const udir = path.join(dir, UNITS_SUBDIR);
+  if (fs.existsSync(udir)) {
+    for (const name of fs.readdirSync(udir)) {
+      if (!name.endsWith('.units-draft.txt.meta.json')) continue;
+      try { unitDrafts += (JSON.parse(fs.readFileSync(path.join(udir, name), 'utf8')) as { cases: unknown[] }).cases.length; } catch { /* unreadable sidecar */ }
+    }
+  }
+  const total = [...unitCounts.values()].reduce((a, b) => a + b, 0);
+  console.log(`  reading units: ${total} checked paragraph(s)${total ? ` (${[...unitCounts.entries()].map(([k, v]) => `${k} ${v}`).join(', ')})` : ''}, ${unchecked} unchecked, ${unitDrafts} in drafts`);
+  const frozen = listFrozen(dir);
+  console.log(frozen.length ? `  frozen sets: ${frozen.map((m) => `${m.id} (${m.setHash.slice(0, 12)})`).join(', ')}` : '  frozen sets: none (npm run gold:freeze -- --name <id> when a set is complete)');
+}

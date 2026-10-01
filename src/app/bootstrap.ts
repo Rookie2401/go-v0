@@ -109,6 +109,7 @@ const titleOf = (doc: unknown): string | undefined => {
 function toView(d: DocumentReport, title?: string): ImportDocView {
   return {
     id: d.id, title, action: d.action, contentVersion: d.contentVersion, published: d.published, unpublishedReasons: d.unpublishedReasons,
+    ...(d.personalCopy ? { personalCopy: true } : {}),
     issues: d.issues.map((i) => ({ path: i.path, code: i.code, message: i.message, hint: i.hint, severity: i.severity })),
     analysisCoverage: d.analysisCoverage.words > 0 ? d.analysisCoverage.coverage : undefined,
     sentencesAdded: d.sentencesAdded, sentencesRetired: d.sentencesRetired, note: d.note,
@@ -130,6 +131,7 @@ export function createIngestApi(store: AppStore, adapters: AppServices['adapters
         issues: r.issues.map((x) => ({ path: x.path, code: x.code, message: x.message, hint: x.hint, severity: x.severity })),
         analysisCoverage: r.analysisCoverage && r.analysisCoverage.words > 0 ? r.analysisCoverage.coverage : undefined,
         ...(r.published !== undefined ? { published: r.published, unpublishedReasons: r.unpublishedReasons } : {}),
+        ...(r.personalCopy ? { personalCopy: true } : {}),
         ...(r.note ? { note: r.note } : {}),
       }));
     },

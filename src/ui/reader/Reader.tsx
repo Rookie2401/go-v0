@@ -59,7 +59,7 @@ import { createViewDetector } from './viewDetection';
 import type { ViewDetector, ViewDetectorFactory } from './viewDetection';
 import { useTextData } from './useTextData';
 import type { TextData } from './useTextData';
-import { englishBehindMenu, hasClauseSpans, hasSeveralReadings, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, visibleNotes } from './assistance';
+import { dictionaryName, englishBehindMenu, hasClauseSpans, hasSeveralReadings, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, visibleNotes } from './assistance';
 import type { LayerFacts } from './assistance';
 import type { DictionaryInfo, LexiconSource } from '../../core';
 import { dictionaryView } from '../../ingest';
@@ -615,6 +615,9 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
   const decodingView: DecodingView = {
     syllables, canRescue: !legacy && profile.romanization === 'rescue', rescued: !!card?.rescued, romanization,
     severalReadings: hasSeveralReadings(cardAnalysis?.notes),
+    dictionaryName: dictionaryName(dictionary),
+    // Only a reviewed override that itself supplies the syllables lets the decoding say who checked it.
+    reviewedBy: cardAnalysis?.origin === 'reviewed' && cardAnalysis.syllables?.length ? (cardAnalysis.sourceId?.replace(/^human:/, '').trim() || 'a person') : undefined,
   };
   // The dictionary's attribution, read only when the analysis on show (or its alternatives) came from it.
   const needsDictionary = !!cardAnalysis && (cardAnalysis.origin === 'dictionary' || cardAnalysis.alternatives?.some((a) => a.origin === 'dictionary'));

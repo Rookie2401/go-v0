@@ -73,7 +73,7 @@ describe('availability details', () => {
     const fake = new FakeSpeechProvider();
     const { store, gl } = await makeEnv({ allowFixture: true, providers: [fake] });
     await addStory(store, 'de');
-    expect(await gl.availability()).toEqual({ available: true, detail: 'fake-speech' });
+    expect(await gl.availability()).toEqual({ available: true, realSpeech: true, detail: 'fake-speech' });
     const voice = await gl.resolveVoice('de');
     expect(voice.providerId).toBe('fake-speech'); // automatic choice: usable real provider before the fixture
     expect(voice).toMatchObject({ isSpeech: true, reviewStatus: 'unreviewed', providerVersion: '1' });

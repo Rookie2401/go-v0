@@ -56,22 +56,36 @@ export async function selectProvider(rt: Runtime): Promise<Selection> {
   return firstReal ?? { usable: false, why: NONE };
 }
 
-/** GoListen.availability(): real speech available / only the development fixture / nothing (with the reason). */
+/** The reason a real provider gave, in the vocabulary of `realSpeechReason` (a real provider never answers 'development-fixture'). */
+const realReason = (a: ProviderAvailability | undefined): NonNullable<ProviderAvailability['realSpeechReason']> =>
+  !a?.reason || a.reason === 'development-fixture' ? 'no-provider' : a.reason;
+
+/**
+ * GoListen.availability(): real speech available / only the development fixture / nothing (with the reason).
+ *
+ * Two meanings, kept apart:
+ *   `available`   — playback of SOME kind is possible. Callers that mean "can anything play or be generated" read this
+ *                   (Player's job runner, bootstrap's queued-audio resume, audioStatus's "unavailable" gate).
+ *   `realSpeech`  — a real speech provider is usable. Only this may be shown as "real speech is available".
+ * When only the fixture is usable (preview), `realSpeechReason` / `realSpeechDetail` carry the first real provider's own answer.
+ */
 export async function aggregateAvailability(rt: Runtime): Promise<ProviderAvailability> {
   const all = [...rt.providers.values()];
   let firstReal: ProviderAvailability | undefined;
   for (const p of all.filter((x) => x.isSpeech)) {
     const a = await probe(p);
-    if (a.available) return { available: true, detail: p.id };
+    if (a.available) return { available: true, realSpeech: true, detail: p.id };
     firstReal ??= a;
   }
+  const realDetail = firstReal ? firstReal.detail : NONE.detail;
+  const why = { realSpeechReason: realReason(firstReal ?? NONE), ...(realDetail ? { realSpeechDetail: realDetail } : {}) };
   if (rt.allowFixture) {
     for (const p of all.filter((x) => !x.isSpeech)) {
       const a = await probe(p);
-      if (a.available) return { available: true, reason: 'development-fixture', detail: a.detail ?? `${p.id}: not speech, development only` };
+      if (a.available) return { available: true, reason: 'development-fixture', realSpeech: false, ...why, detail: a.detail ?? `${p.id}: not speech, development only` };
     }
   }
-  return firstReal ?? NONE;
+  return { ...(firstReal ?? NONE), realSpeech: false, ...why };
 }
 
 export function unavailableOf(a: ProviderAvailability): { reason: UnavailableReason; detail?: string } {

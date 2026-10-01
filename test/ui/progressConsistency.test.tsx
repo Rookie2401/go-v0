@@ -4,7 +4,7 @@ import { act } from 'react';
 import { createRoot } from 'react-dom/client';
 import { MemoryRouter } from 'react-router-dom';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import type { DomainEvent, EventInput, Sentence, SentenceViewed, Text, TextCompleted, TextViewed } from '../../src/core';
+import type { ComprehensionReported, DomainEvent, EventInput, Sentence, SentenceViewed, Text, TextCompleted, TextViewed } from '../../src/core';
 import { createMemoryStore, hash, ids } from '../../src/core';
 import { bootstrap } from '../../src/app/bootstrap';
 import type { BootstrapResult } from '../../src/app/bootstrap';
@@ -157,6 +157,25 @@ describe('one canonical record, rendered identically by Home, the library and th
     expect(qa(rd, 'button').some((b) => /finished reading/.test(b.textContent ?? ''))).toBe(true);
     await finish(2);
     await expectIdentical(`Seen 2 of ${S2.length} sentences · Finished (your mark) · 2 more seen in an earlier version`, { why: true });
+  });
+
+  it('(e) a whole-text report about the earlier wording is history: the same words on Home, the library and the reader, never a claim about the new wording', async () => {
+    await importDocs([doc()]);
+    const S = await live();
+    await open(1); await view(S.slice(0, 4), 1);
+    await emit<ComprehensionReported>({ type: 'ComprehensionReported', dedupeKey: `cr:${++n}`, textId: STORY, sentenceIds: [], modality: 'reading', scope: 'text', degree: 'most', contentVersion: 1 });
+    await expectIdentical(`Seen 4 of ${S.length} sentences`, { why: false }); // about this version: the line itself says nothing more
+
+    const revised = doc();
+    const para = revised.sections[0].paragraphs[0] as { sentences: Array<{ text: string; english?: string }> };
+    para.sentences[0] = { text: 'Cuando era joven, yo no entendía nada.', english: 'When I was young, I understood nothing.' };
+    para.sentences[1] = { text: 'Yo tenía pecado en mi corazón.', english: 'I had sin in my heart.' };
+    await importDocs([revised]);
+    const S2 = await live();
+    const s = await expectIdentical(`Seen 2 of ${S2.length} sentences · you said you understood most of an earlier version · 2 more seen in an earlier version`, { why: false });
+    expect(s.reader[0].line).not.toMatch(/you said you understood most( of it)?( ·|$)/);
+    // the reader's own extras do not repeat the old report as if it were about this wording
+    expect(q(document.body, '[data-testid="reading-extras"]')).toBeNull();
   });
 
   it('(d) views recorded against legacy index-id sentences that the importer retired', async () => {

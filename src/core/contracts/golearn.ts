@@ -110,8 +110,20 @@ export interface ReadingProgress {
    * legacy migration). It is history: kept, reported here explicitly, never counted in `sentencesSeen`.
    */
   earlierVersions?: { sentencesSeen: number; sentencesUnderstood: number };
-  /** Last text-level self-report, if any. */
+  /**
+   * The last whole-text self-report OF THIS CONTENT VERSION, if any (a ComprehensionReported with scope 'text' whose
+   * contentVersion equals the current one; a report without a version counts only while the text is still at
+   * version 1 — the same conservative rule as `finishedAt`). A report made about earlier wording is never shown as
+   * understanding of the current wording: it is `reportedEarlierVersion`.
+   */
   reportedComprehension?: 'all' | 'most' | 'some' | 'little';
+  /**
+   * The last whole-text self-report made about an EARLIER version of the text. History: kept and shown as such
+   * ("you said you understood all of an earlier version"), never used as a statement about the current wording by
+   * recommendations, readiness or display. Sentence-level evidence of unchanged sentences is unaffected (it lives in
+   * `sentencesUnderstood`, which follows sentence identity).
+   */
+  reportedEarlierVersion?: { degree: 'all' | 'most' | 'some' | 'little'; version?: number; at: string };
   /** Distinct reading sittings in which this text was seen (see Encounter.sitting). */
   sittings: number;
   listenedSentences: number; // real, reviewed speech only

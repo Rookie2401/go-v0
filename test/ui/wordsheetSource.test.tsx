@@ -17,7 +17,7 @@ import type { Harness, Mounted } from './harness';
 
 let h: Harness;
 let mounted: Mounted | undefined;
-beforeEach(async () => { h = await makeHarness(); });
+beforeEach(async () => { h = await makeHarness(); override = {}; });
 afterEach(async () => { await mounted?.unmount(); mounted = undefined; });
 
 const TH = 'text:th:source';
@@ -36,10 +36,12 @@ const DICT: DictionaryInfo = {
 const syl = (text: string, over: Partial<SyllableAnalysis> = {}): SyllableAnalysis => ({ text, start: 0, end: text.length, ending: 'open', confidence: 0.9, tone: 'mid', ...over });
 
 const decodeWithPronunciation = vi.fn((_s: string, _p: unknown, _id?: string): SyllableAnalysis[] => [syl('ไป', { source: 'dictionary', sourceId: 'kaikki-th@2026-09-28' })]);
+/** Per-test decodings that take precedence over the defaults below. */
+let override: Record<string, SyllableAnalysis[]> = {};
 const adapter = {
   lang: 'th', name: 'fake-th', sources,
   decode: (surface: string): SyllableAnalysis[] => (
-    surface === 'แม่' ? [syl('แม่', { source: 'exception-list', tone: 'falling' })]
+    override[surface] ? override[surface] : surface === 'แม่' ? [syl('แม่', { source: 'exception-list', tone: 'falling' })]
       : surface === 'กิน' ? [syl('กิน', { source: 'dictionary', tone: 'mid', ruleTone: 'rising' })]
         : surface === 'ข้าว' ? [syl('ข้าว', { source: 'rule' })] : []),
   decodeWithPronunciation,
@@ -157,13 +159,13 @@ describe('the decoding block names its source', () => {
     wire();
     await open();
     await click(tok('ข้าว'));
-    expect(q(mounted!.container, '[data-testid="decoding-source"]')).toBeNull();
+    expect(q(mounted!.container, '[data-testid="decoding-source"]')!.textContent).toBe('by the spelling rules');
     expect(q(mounted!.container, '[data-testid="several-readings"]')).toBeNull();
     await click(tok('แม่'));
     expect(q(mounted!.container, '[data-testid="decoding-source"]')!.textContent).toBe("from the course's list of irregular words (machine-drafted)");
     await click(tok('กิน'));
-    expect(q(mounted!.container, '[data-testid="decoding-source"]')!.textContent).toBe("from the dictionary's pronunciation");
-    expect(q(mounted!.container, '[data-testid="rule-tone"]')!.textContent).toBe('The spelling rules alone would give rising.');
+    expect(q(mounted!.container, '[data-testid="decoding-source"]')!.textContent).toBe("from the dictionary's pronunciation (Wiktionary)");
+    expect(q(mounted!.container, '[data-testid="rule-tone"]')!.textContent).toBe('Dictionary: mid. Spelling rules alone: rising.');
     expect(q(mounted!.container, '[data-testid="several-readings"]')!.textContent).toBe('This word has more than one reading.');
   });
 
@@ -184,7 +186,7 @@ describe('the decoding block names its source', () => {
     await open();
     await click(tok('ไป'));
     expect(decodeWithPronunciation).toHaveBeenCalledWith('ไป', { respelling: 'ไป', ipa: undefined }, DICT.id);
-    expect(q(mounted!.container, '[data-testid="decoding-source"]')!.textContent).toBe("from the dictionary's pronunciation");
+    expect(q(mounted!.container, '[data-testid="decoding-source"]')!.textContent).toBe("from the dictionary's pronunciation (Wiktionary)");
     decodeWithPronunciation.mockClear();
     await click(tok('ข้าว'));
     expect(decodeWithPronunciation).toHaveBeenCalledWith('ข้าว', { respelling: 'ข้าว', ipa: undefined }, undefined);
@@ -270,5 +272,110 @@ describe('the other languages show no provenance', () => {
       mounted = undefined;
     }
     expect(lookup).not.toHaveBeenCalled();
+  });
+});
+
+describe('the syllable row: source and certainty are separate statements', () => {
+  const sourceTop = () => q(mounted!.container, '[data-testid="decoding-source"]')?.textContent;
+  const rows = () => qa(mounted!.container, 'li.decode__syl');
+  const decodingText = () => byLabel(mounted!.container, 'Decoding').textContent ?? '';
+
+  async function show(surface: string, syllables: SyllableAnalysis[], analysis?: Partial<TokenAnalysis>) {
+    await seed(h.store);
+    override[surface] = syllables;
+    if (analysis) await patch(h.store, ['แม่', 'กิน', 'ข้าว', 'ไป'].indexOf(surface), analysis);
+    wire();
+    await open();
+    await click(tok(surface));
+  }
+
+  it('REGRESSION: a dictionary syllable at 0.7 is "from the dictionary", never "by the spelling rules"', async () => {
+    await show('ไป', [syl('ไป', { source: 'dictionary', sourceId: DICT.id, confidence: 0.7, tone: 'falling', rule: 'tone taken from the dictionary' })]);
+    expect(sourceTop()).toBe("from the dictionary's pronunciation (Wiktionary)");
+    expect(decodingText()).not.toContain('by the spelling rules');
+    expect(decodingText()).not.toContain('not checked against a dictionary');
+    expect(rows()[0].textContent).toContain('less certain');
+    expect(rows()[0].textContent).not.toContain('uncertain');
+    expect(rows()[0].textContent).toContain('tone taken from the dictionary');
+  });
+
+  it('says a uniform source once at the top, not on every syllable', async () => {
+    await show('ข้าว', [syl('ข้า', { source: 'rule' }), syl('ว', { source: 'rule' })]);
+    expect(sourceTop()).toBe('by the spelling rules');
+    expect(qa(mounted!.container, '[data-testid="syllable-source"]')).toHaveLength(0);
+  });
+
+  it('labels each syllable when the sources are mixed, and says nothing at the top', async () => {
+    await show('ข้าว', [syl('ข้า', { source: 'rule' }), syl('ว', { source: 'dictionary', confidence: 0.7 })]);
+    expect(sourceTop()).toBeUndefined();
+    expect(qa(mounted!.container, '[data-testid="syllable-source"]').map((e) => e.textContent)).toEqual([
+      'by the spelling rules', "from the dictionary's pronunciation (Wiktionary)",
+    ]);
+    expect(rows()[0].textContent).not.toContain('less certain');
+    expect(rows()[1].textContent).toContain('less certain');
+  });
+
+  it('rule-only decoding at 0.9, 0.7 and 0.5: the source is the same, the certainty differs', async () => {
+    await show('ข้าว', [syl('ข้าว', { source: 'rule', confidence: 0.9 })]);
+    expect(sourceTop()).toBe('by the spelling rules');
+    expect(decodingText()).not.toMatch(/less certain|uncertain/);
+    await mounted!.unmount();
+    override['ข้าว'] = [syl('ข้าว', { source: 'rule', confidence: 0.7 })];
+    await open();
+    await click(tok('ข้าว'));
+    expect(sourceTop()).toBe('by the spelling rules');
+    expect(rows()[0].textContent).toContain('less certain');
+    await mounted!.unmount();
+    override['ข้าว'] = [syl('ข้าว', { source: 'rule', confidence: 0.5 })];
+    await open();
+    await click(tok('ข้าว'));
+    expect(sourceTop()).toBe('by the spelling rules');
+    expect(rows()[0].textContent).toContain('uncertain');
+    expect(rows()[0].textContent).not.toContain('less certain');
+  });
+
+  it('exception list, author and an absent source', async () => {
+    await show('แม่', [syl('แม่', { source: 'exception-list' })]);
+    expect(sourceTop()).toBe("from the course's list of irregular words (machine-drafted)");
+    await mounted!.unmount();
+    override['แม่'] = [syl('แม่', { source: 'author' })];
+    await open();
+    await click(tok('แม่'));
+    expect(sourceTop()).toBe('supplied with this text');
+    await mounted!.unmount();
+    override['แม่'] = [syl('แม่', { confidence: 0.7 })]; // no source: nothing is said about it, only the certainty
+    await open();
+    await click(tok('แม่'));
+    expect(sourceTop()).toBeUndefined();
+    expect(qa(mounted!.container, '[data-testid="syllable-source"]')).toHaveLength(0);
+    expect(rows()[0].textContent).toContain('less certain');
+  });
+
+  it('only a reviewed analysis that supplies the syllables says "checked by <name>"', async () => {
+    await show('ไป', [syl('ไป', { source: 'dictionary' })], { origin: 'reviewed', sourceId: 'human:Khun Somchai', syllables: [syl('ไป', { source: 'dictionary' })] });
+    expect(sourceTop()).toBe('checked by Khun Somchai');
+    await mounted!.unmount();
+    await patch(h.store, 3, { origin: 'reviewed', sourceId: 'human:Khun Somchai', syllables: undefined }); // a reviewed gloss; the reviewer did not supply the decoding
+    await open();
+    await click(tok('ไป'));
+    expect(sourceTop()).toBe("from the dictionary's pronunciation (Wiktionary)");
+    expect(decodingText()).not.toContain('checked by');
+  });
+
+  it('shows both readings with their labels when the rules disagree, without saying which is right', async () => {
+    await show('กิน', [syl('กิน', { source: 'dictionary', tone: 'mid', ruleTone: 'rising' })]);
+    const line = q(mounted!.container, '[data-testid="rule-tone"]')!.textContent!;
+    expect(line).toBe('Dictionary: mid. Spelling rules alone: rising.');
+    expect(line).not.toMatch(/correct|wrong|reviewed|settled/i);
+    await mounted!.unmount();
+    override['กิน'] = [syl('กิน', { source: 'exception-list', tone: 'high', ruleTone: 'mid' })];
+    await open();
+    await click(tok('กิน'));
+    expect(q(mounted!.container, '[data-testid="rule-tone"]')!.textContent).toBe("The course's list of irregular words: high. Spelling rules alone: mid.");
+  });
+
+  it('keeps the several-readings line', async () => {
+    await show('กิน', [syl('กิน', { source: 'rule' })], { notes: { readings: ['kin', 'gin'] } });
+    expect(q(mounted!.container, '[data-testid="several-readings"]')!.textContent).toBe('This word has more than one reading.');
   });
 });

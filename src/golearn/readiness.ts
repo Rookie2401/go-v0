@@ -30,7 +30,6 @@ import { paceOf } from './pace';
 import { READINESS } from './policy';
 import { readingProgressMany } from './progress';
 import type { Ctx, StoredEncounter } from './state';
-import { eventsOfTexts } from './userlog';
 import { cmp, pct1, plural, round1 } from './util';
 
 const NAME: Record<ReadinessSignalKey, string> = {
@@ -132,21 +131,26 @@ export async function stageReadiness(ctx: Ctx, userId: string, courseId: string,
     }
   }
 
-  // ── reported-comprehension: the latest text-level report per stage text ──
+  // ── reported-comprehension: the latest text-level report of each stage text's current version ──
   {
     const { share, minReports } = R.reportedComprehension;
     const target = `at least ${Math.round(share * 100)} % of your reports are "all" or "most" (from ${minReports} or more texts)`;
-    const latest = new Map<string, string>();
-    for (const e of eventsOfTexts(await ctx.userLog(userId), textIds)) {
-      if (e.type === 'ComprehensionReported' && e.modality === 'reading' && e.scope === 'text' && progress.has(e.textId)) latest.set(e.textId, e.degree);
+    // The latest whole-text report of each text's CURRENT version (progress.ts applies the version rule); a report about
+    // earlier wording is history and is left out, and the explanation says so.
+    const degrees: string[] = [];
+    let leftOut = 0;
+    for (const id of textIds) {
+      const p = progress.get(id);
+      if (p?.reportedComprehension) degrees.push(p.reportedComprehension);
+      else if (p?.reportedEarlierVersion) leftOut += 1;
     }
-    const degrees = [...latest.values()];
+    const note = leftOut > 0 ? ` ${plural(leftOut, 'report')} about an earlier version of a text ${leftOut === 1 ? 'was' : 'were'} left out.` : '';
     if (degrees.length < minReports) {
-      signals.push(sig('reported-comprehension', 'insufficient-data', target, `You have said how much you understood of ${plural(degrees.length, 'text')} in this stage; ${minReports} are needed.`));
+      signals.push(sig('reported-comprehension', 'insufficient-data', target, `You have said how much you understood of ${plural(degrees.length, 'text')} in this stage; ${minReports} are needed.${note}`));
     } else {
       const v = degrees.filter((d) => d === 'all' || d === 'most').length / degrees.length;
       signals.push(sig('reported-comprehension', v >= share ? 'met' : 'not-met', target,
-        `You said you understood all or most of ${degrees.filter((d) => d === 'all' || d === 'most').length} of ${plural(degrees.length, 'text')} (${pct1(v)} %).`, v));
+        `You said you understood all or most of ${degrees.filter((d) => d === 'all' || d === 'most').length} of ${plural(degrees.length, 'text')} (${pct1(v)} %).${note}`, v));
     }
   }
 

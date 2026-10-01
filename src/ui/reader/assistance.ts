@@ -276,13 +276,53 @@ export function listsDiffer(a: Pick<TokenAnalysis, 'origin' | 'pos' | 'alternati
   return false;
 }
 
-/** The line naming where a decoding came from; undefined when it came from the spelling rules (as it always did). */
-export function decodingSourceLine(syllables: readonly SyllableAnalysis[]): string | undefined {
-  const has = (s: NonNullable<SyllableAnalysis['source']>) => syllables.some((x) => x.source === s);
-  if (has('dictionary')) return "from the dictionary's pronunciation";
-  if (has('exception-list')) return "from the course's list of irregular words (machine-drafted)";
-  if (has('author')) return 'supplied with this text';
-  return undefined;
+type SyllableSource = NonNullable<SyllableAnalysis['source']>;
+
+/**
+ * Where a syllable's reading came from — a property of the reading itself (`SyllableAnalysis.source`), never inferred
+ * from how sure the engine is. Absent source ⇒ nothing is said.
+ */
+export function syllableSourceLabel(source: SyllableSource | undefined, dictionary?: string): string | undefined {
+  switch (source) {
+    case 'rule': return 'by the spelling rules';
+    case 'exception-list': return "from the course's list of irregular words (machine-drafted)";
+    case 'dictionary': return `from the dictionary's pronunciation${dictionary ? ` (${dictionary})` : ''}`;
+    case 'author': return 'supplied with this text';
+    default: return undefined;
+  }
+}
+
+export interface DecodingSource {
+  /** One line for the whole word: all syllables share a source, or a reviewer supplied the decoding. */
+  top?: string;
+  /** The sources differ: each syllable names its own. */
+  perSyllable: boolean;
+}
+
+/**
+ * The provenance of a word's decoding. A uniform source is said once at the top; mixed sources are labelled on each
+ * syllable; a reviewed analysis that itself supplies the syllables says who checked it (and nothing else implies review).
+ */
+export function decodingSource(syllables: readonly SyllableAnalysis[], opts: { dictionary?: string; reviewedBy?: string } = {}): DecodingSource {
+  if (opts.reviewedBy) return { top: `checked by ${opts.reviewedBy}`, perSyllable: false };
+  const sources = new Set(syllables.map((x) => x.source));
+  if (sources.size === 1) return { top: syllableSourceLabel([...sources][0], opts.dictionary), perSyllable: false };
+  return { perSyllable: [...sources].some((x) => x !== undefined) };
+}
+
+const TONE_SOURCE: Record<SyllableSource, string> = {
+  rule: 'Spelling rules', 'exception-list': "The course's list of irregular words", dictionary: 'Dictionary', author: 'Supplied with the text',
+};
+
+/** Both readings, labelled, with no statement that either is right: "Dictionary: mid. Spelling rules alone: rising." */
+export function ruleToneLine(s: Pick<SyllableAnalysis, 'source' | 'tone' | 'ruleTone'>): string | undefined {
+  if (!s.ruleTone) return undefined;
+  return `${s.source ? TONE_SOURCE[s.source] : 'This reading'}: ${s.tone ?? 'no tone given'}. Spelling rules alone: ${s.ruleTone}.`;
+}
+
+/** The certainty of a decoding, a second statement apart from its source: nothing from 0.8, "less certain" from 0.6, else "uncertain". */
+export function certainty(confidence: number): 'sure' | 'less-certain' | 'uncertain' {
+  return confidence < 0.6 ? 'uncertain' : confidence < 0.8 ? 'less-certain' : 'sure';
 }
 
 /** `notes.readings` lists more than one reading of the word. */

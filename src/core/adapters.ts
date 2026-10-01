@@ -44,6 +44,13 @@ export interface AnalysisCandidate {
   /** Where this candidate came from; the importer stores it on the analysis. Absent ⇒ 'hand' for a lexicon hit, 'rule' when notes.source === 'rule'. */
   origin?: AnalysisOrigin;
   sourceId?: string;
+  /**
+   * A reading by rule whose lemma the adapter's own data does not vouch for (Spanish: "trabucaban" → a guessed
+   * "trabucar"). It explains the form and nothing more. When a dictionary is installed the importer lets the
+   * dictionary decide such a word: a reading the dictionary confirms is kept (with the dictionary as its source),
+   * one it does not confirm is dropped; with no dictionary entry for the form the guess stays as it is.
+   */
+  unconfirmed?: boolean;
 }
 
 export interface AnalyzedToken {
@@ -164,6 +171,15 @@ export interface LanguageAdapter {
    * "subjunctive") into this adapter's morphological features. Unknown labels are ignored, never guessed.
    */
   morphFromTags?(tags: readonly string[]): Record<string, string>;
+  /**
+   * Order the readings of each token by its neighbours again, after the importer replaced the readings of some tokens
+   * with a dictionary's. The importer calls it once per sentence; the replaced lists arrive as the dictionary gives them
+   * (not yet ordered by context). The adapter does what `analyze` does, taking those lists as given: for its own tokens
+   * it starts again from its context-free readings, so nothing depends on an earlier ordering. It may only move a
+   * reading, lower a confidence and set `notes.context`: it never adds, removes or rewrites a reading, and never
+   * touches a token whose `analyzer` is not in `analyzers` (an author's span, a reviewer's correction).
+   */
+  refine?(tokens: RawToken[], analyzed: AnalyzedToken[], analyzers: ReadonlySet<string>): AnalyzedToken[];
   /** A plain-words line for a feature bundle ("first person plural, imperfect subjunctive"), for the word sheet. */
   describeMorph?(morph: Record<string, string>, pos?: PartOfSpeech): string;
   /** The varieties this adapter can label, keyed by code. */

@@ -737,6 +737,8 @@ export interface PersonalizedCoverage {
   unseenCoverage: number;
   /** One plain sentence saying what the numbers are based on. */
   explanation: string;
+  /** Time of the latest evidence event these numbers include (same evidence ⇒ same numbers, always). */
+  asOf?: string;
   newItems: Array<{ itemId: string; itemKind: ItemKind; surface: string; count: number }>;
   knownPhraseCoverage: number; // fraction of phrase occurrences known
   unfamiliarPatterns: string[]; // patternIds

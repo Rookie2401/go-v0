@@ -84,21 +84,39 @@ export interface ItemExplanation {
  *  5. estimated familiarity — a labelled estimate on items (`DimensionState.estimatedFamiliar`), never progress.
  */
 export interface ReadingProgress {
+  // ── scope: THE canonical record for (learner, language, text, content version). Home, the library and the
+  //    reader all render this one record; none of them computes progress itself. ──
+  userId: string;
+  lang: LanguageCode;
   textId: string;
-  /** The content version these numbers describe (live sentences only). */
+  /** The content version these numbers describe (its live sentences only). */
   contentVersion: number;
   sentencesTotal: number;
   /** Notion 2: live sentences with at least one reading exposure. Label: "Seen", never "Read". */
   sentencesSeen: number;
   /** Notion 4: live sentences the learner reported understanding without sentence-level help. */
   sentencesUnderstood: number;
-  /** Notion 3: latest explicit TextCompleted, if any. */
+  /**
+   * Notion 3: explicit completion OF THIS CONTENT VERSION (a TextCompleted whose contentVersion equals the
+   * current one; an event without a version counts only while the text is still at version 1). Finishing is a
+   * statement by the learner and is independent of `sentencesSeen`: a text can be finished with few or no
+   * sentences recorded as seen (he read it elsewhere, quickly, or with the window unfocused).
+   */
   finishedAt?: string;
+  /** He finished an EARLIER version; the text has changed since. Shown as such, never as "Finished". */
+  finishedEarlierVersion?: { version?: number; at: string };
+  /**
+   * Exposure recorded against sentences that are no longer part of the text (retired by a revision or by the
+   * legacy migration). It is history: kept, reported here explicitly, never counted in `sentencesSeen`.
+   */
+  earlierVersions?: { sentencesSeen: number; sentencesUnderstood: number };
   /** Last text-level self-report, if any. */
   reportedComprehension?: 'all' | 'most' | 'some' | 'little';
   /** Distinct reading sittings in which this text was seen (see Encounter.sitting). */
   sittings: number;
   listenedSentences: number; // real, reviewed speech only
+  /** Time of the latest event this record includes (two surfaces showing the same asOf must show the same numbers). */
+  asOf?: string;
 }
 
 /** Result of scanning the log for events that must not count (fixture / non-speech / unreviewed audio). */
@@ -164,6 +182,14 @@ export interface GoLearn {
   auditEvidence(userId: string, opts?: { rebuild?: boolean }): Promise<EvidenceAudit>;
   explainItem(userId: string, itemId: string): Promise<ItemExplanation>;
   readingProgress(userId: string, textId: string): Promise<ReadingProgress>;
+  /** The same canonical records for several texts from ONE read of the log (lists: library, Home). */
+  readingProgressMany(userId: string, textIds: string[]): Promise<Map<string, ReadingProgress>>;
+  /**
+   * Resolves when every event emitted so far has been folded into derived state. All read methods of GoLearn
+   * already wait for this internally (a read never observes a half-applied fold); the UI awaits it instead of
+   * guessing with a timer before it re-reads.
+   */
+  settled(): Promise<void>;
 }
 
 /** Evidence weights — the single place where assistance discounts and modality rules live. */

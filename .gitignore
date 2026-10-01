@@ -2,3 +2,8 @@ node_modules
 dist
 node_modules/.tmp
 *.local
+# learner-supplied copies of published works: never committed, never bundled
+data/private/
+# downloaded dictionary sources and the shards built from them
+data/dictionaries/
+public/dict/

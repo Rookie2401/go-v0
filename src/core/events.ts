@@ -41,6 +41,18 @@ export interface SentenceExplanationRevealed extends Base { type: 'SentenceExpla
 export interface EnglishRescueRevealed extends Base { type: 'EnglishRescueRevealed'; textId: string; sentenceIds: string[]; scope: 'sentence' | 'verse' | 'parallel' }
 export interface SentenceReread extends Base { type: 'SentenceReread'; sentenceId: string }
 /**
+ * The learner opened the script decoding of a word (syllables, consonant class, vowel length, tone rule), or — only
+ * where the stage still allows it — the romanization rescue. This is help with the written form: it counts as
+ * item-targeted help for the form (`itemId`) and for each writing-system item in `features` (ids.orth(lang, feature)).
+ */
+export interface DecodingRevealed extends Base { type: 'DecodingRevealed'; sentenceId: string; tokenId: string; itemId: string; features: string[]; romanization: boolean }
+/**
+ * A note attached to the text was opened. Cultural / regional / register / literary / historical notes are context,
+ * not language help: recorded, no effect on evidence. A 'clause-structure' note is a sentence explanation: the UI
+ * emits SentenceExplanationRevealed for it as well.
+ */
+export interface NoteOpened extends Base { type: 'NoteOpened'; textId: string; noteId: string; sentenceId?: string; kind: string }
+/**
  * The learner says how much he understood. This — not viewing, completing or playing — is what demonstrates
  * comprehension. Only degree 'all' is item-level evidence, and only for listed sentences where no sentence
  * explanation / English rescue was used; 'most' | 'some' | 'little' inform recommendations (reread) only.
@@ -110,7 +122,7 @@ export interface IndependentProductionDetected extends Base { type: 'Independent
 
 export type DomainEvent =
   | TextViewed | SentenceViewed | TokenHelpOpened | PhraseHelpOpened | GrammarHelpOpened
-  | SentenceExplanationRevealed | EnglishRescueRevealed | SentenceReread | ComprehensionReported | TextCompleted | PassageCompleted
+  | SentenceExplanationRevealed | EnglishRescueRevealed | SentenceReread | DecodingRevealed | NoteOpened | ComprehensionReported | TextCompleted | PassageCompleted
   | ItemMarked | FormSearched | PhraseEncountered
   | AudioPlayed | AudioSegmentCompleted | AudioReplayed | PhraseReplayed | AudioSeeked | PlaybackSpeedChanged
   | TranscriptRevealed | AudioAbandoned | ShadowingAttempt | UserRecordingCreated

@@ -9,6 +9,7 @@ import type {
   TextSection, Token, TokenAnalysis, User, UserRecording, VoiceConfig,
 } from './model';
 import type { DomainEvent } from './events';
+import type { ContentNote, Stage, Work } from './course';
 
 export interface Table<T extends { id: string }> {
   get(id: string): Promise<T | undefined>;
@@ -58,6 +59,11 @@ export interface AppStore {
   drafts: Table<TestimonyDraft>;
   /** Policy versions, migrations, flags. */
   meta: Table<MetaRow>;
+  /** Curriculum: reading stages of a course and the works recommended at each (course.ts). */
+  stages: Table<Stage>;
+  works: Table<Work>;
+  /** Cultural / regional / register / literary / clause-structure notes attached to texts. */
+  notes: Table<ContentNote>;
   /** Run `fn` atomically where the backend supports it (Dexie rw transaction); MemoryStore just runs it. */
   transaction<R>(tables: (keyof AppStore)[], fn: () => Promise<R>): Promise<R>;
   /** Binary asset storage (audio bytes), content-addressed. Not a database blob column in spirit: a separate object store. */
@@ -80,7 +86,7 @@ export const INDEXES: Record<keyof Omit<AppStore, 'transaction' | 'assets'>, str
   courses: ['lang'],
   sources: ['rights'],
   corpora: ['lang', 'kind'],
-  texts: ['corpusId', 'lang', 'kind', 'sourceId', 'reviewStatus'],
+  texts: ['corpusId', 'lang', 'kind', 'sourceId', 'reviewStatus', 'workId'],
   sections: ['textId'],
   paragraphs: ['textId', 'sectionId'],
   sentences: ['textId', 'paragraphId', 'lang', 'textHash', 'key'],
@@ -108,4 +114,7 @@ export const INDEXES: Record<keyof Omit<AppStore, 'transaction' | 'assets'>, str
   suggestions: ['testimonyId', 'userId', 'draftHash', 'status'],
   drafts: ['userId', 'lang'],
   meta: [],
+  stages: ['courseId', 'lang'],
+  works: ['courseId', 'stageId', 'lang', 'role'],
+  notes: ['textId', 'sentenceId', 'kind'],
 };

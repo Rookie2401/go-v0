@@ -16,6 +16,8 @@
     "corpus:migrate": "vite-node scripts/corpus-migrate.mts",
     "corpus:review": "vite-node scripts/corpus-review.mts",
     "corpus:prove": "vite-node scripts/corpus-prove.mts",
+    "corpus:convert": "vite-node scripts/corpus-convert.mts",
+    "dict:build": "vite-node scripts/dict-build.mts",
     "speech:check": "vite-node scripts/speech-check.mts"
   },
   "dependencies": {

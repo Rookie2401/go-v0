@@ -10,6 +10,7 @@
  *  - Adapters own no learner state and no storage.
  */
 import type { ErrorCategory, LanguageCode, PartOfSpeech, Script, TransformationRecord } from './model';
+import type { RegisterTag, SyllableAnalysis } from './course';
 
 export interface Span { start: number; end: number; text: string }
 
@@ -29,6 +30,12 @@ export interface AnalysisCandidate {
   notes?: Record<string, string | string[]>;
   confidence: number;
   gloss?: string;
+  /** Script decoding (see SyllableAnalysis). Present whenever the adapter can decode the spelling, even for a
+   *  word it has no gloss for: decoding does not depend on the dictionary. */
+  syllables?: SyllableAnalysis[];
+  register?: RegisterTag[];
+  role?: string;
+  definition?: string;
 }
 
 export interface AnalyzedToken {
@@ -130,6 +137,41 @@ export interface LanguageAdapter {
    * 'same' | 'inflection' (same lemma) | 'component' (German compound part) | 'none'.
    */
   relate(a: string, b: string): 'same' | 'inflection' | 'component' | 'none';
+  /**
+   * Script decoding of one written word, independent of any dictionary (optional: languages whose script needs no
+   * decoding help do not implement it). Never guesses: low confidence / missing tone when the spelling is ambiguous.
+   */
+  decode?(surface: string): SyllableAnalysis[];
+  /**
+   * Decoding with a dictionary's pronunciation data as the authority (phonemic respelling and/or IPA): used for
+   * words whose spelling does not follow the rules. Falls back to decode() when the data cannot be used.
+   */
+  decodeWithPronunciation?(surface: string, pron: { respelling?: string; ipa?: string }): SyllableAnalysis[];
+  /** The writing-system items ('orth') a decoded word exercises, e.g. ["class:mid", "vowel:า", "mark:mai-tho", "rule:mid+mai-tho=falling"]. */
+  orthFeatures?(syllables: SyllableAnalysis[]): string[];
+  /** Plain-words label of one orth feature key, for the word sheet and the audit views. */
+  describeOrthFeature?(feature: string): string;
+}
+
+/**
+ * The decoding of one token, from the best source available: a decoding stored with the analysis (author-supplied),
+ * else the dictionary pronunciation stored in the analysis notes (`respelling`, `ipa`), else the spelling rules.
+ * Decodings are computed on demand and never stored per token by the importer (a novel has tens of thousands).
+ * Empty when the language needs no decoding or the spelling cannot be decoded.
+ */
+export function decodeFor(
+  adapter: Pick<LanguageAdapter, 'decode' | 'decodeWithPronunciation'>,
+  surface: string,
+  analysis?: { syllables?: SyllableAnalysis[]; notes?: Record<string, string | string[]> },
+): SyllableAnalysis[] {
+  if (analysis?.syllables?.length) return analysis.syllables;
+  const respelling = typeof analysis?.notes?.respelling === 'string' ? analysis.notes.respelling : undefined;
+  const ipa = typeof analysis?.notes?.ipa === 'string' ? analysis.notes.ipa : undefined;
+  if ((respelling || ipa) && adapter.decodeWithPronunciation) {
+    const out = adapter.decodeWithPronunciation(surface, { respelling, ipa });
+    if (out.length) return out;
+  }
+  return adapter.decode ? adapter.decode(surface) : [];
 }
 
 export interface AdapterRegistry {

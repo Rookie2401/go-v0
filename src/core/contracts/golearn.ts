@@ -184,6 +184,16 @@ export interface GoLearn {
   readingProgress(userId: string, textId: string): Promise<ReadingProgress>;
   /** The same canonical records for several texts from ONE read of the log (lists: library, Home). */
   readingProgressMany(userId: string, textIds: string[]): Promise<Map<string, ReadingProgress>>;
+  // ── course-level reading model (see docs/THAI_COURSE.md; language-neutral) ──
+  /** What a text will be like for THIS learner, before he opens it. Optional to look at; never a gate. */
+  predictDifficulty(userId: string, textId: string, opts?: { sentenceIds?: string[] }): Promise<DifficultyForecast>;
+  /** Whether the learner looks ready to move past a stage — several signals, never completion alone. */
+  stageReadiness(userId: string, courseId: string, stageId?: string): Promise<StageReadiness>;
+  /** Quiet reading-pace measures from what was already recorded (dwell, lookups, rescues). Not a score. */
+  readingPace(userId: string, opts?: { textId?: string; stageId?: string; lang?: LanguageCode }): Promise<ReadingPace>;
+  /** The learner's whole history with one item, across every text and surface. */
+  itemHistory(userId: string, itemId: string): Promise<ItemHistory>;
+
   /**
    * Resolves when every event emitted so far has been folded into derived state. All read methods of GoLearn
    * already wait for this internally (a read never observes a half-applied fold); the UI awaits it instead of
@@ -202,4 +212,89 @@ export interface EvidencePolicy {
   productionWeight(kind: 'independent' | 'self-repaired' | 'assisted' | 'copied'): number;
   /** Map accumulated evidence + counts to a level for one modality. */
   level(dimension: 'reading' | 'listening' | 'writing' | 'speaking', evidence: number, unassisted: number, assisted: number): string;
+}
+
+// ───────────────────────────── course-level reading model ─────────────────────────────
+
+export interface ForecastItem { itemId: string; itemKind: ItemKind; surface: string; count: number; gloss?: string; register?: string[] }
+
+/**
+ * A prediction for one text and one learner. Every category is derived from recorded evidence and from the
+ * text's own analysis; where the system lacks data (no frequency information, words without analysis) it says so
+ * in `limits` instead of inventing a number.
+ */
+export interface DifficultyForecast {
+  textId: string;
+  userId: string;
+  coverage: PersonalizedCoverage;
+  /** shown + likely familiar, as one figure for display ("Predicted coverage: 94.7 %"). An estimate. */
+  predictedCoverage: number;
+  /** New to the learner and likely to recur (repeated in this text or its work, or frequent in the corpus). */
+  newUsefulWords: ForecastItem[];
+  /** New, and occurring once with no sign of being common. */
+  rareWords: ForecastItem[];
+  /** Phrase units met before that still needed help. */
+  weakPhrases: ForecastItem[];
+  /** Constructions in this text the learner has not met. */
+  newConstructions: ForecastItem[];
+  properNouns: ForecastItem[];
+  /** Words that carry a non-standard variety tag (regional, historical, literary…), by tag. */
+  varieties: Record<string, number>;
+  /** Words in the text with no analysis at all (the dictionary does not cover them). */
+  unanalysedWords: number;
+  limits: string[];
+  summary: string;
+}
+
+export type ReadinessSignalKey =
+  | 'lexical-coverage' | 'lookup-rate' | 'sentence-rescue-rate' | 'reported-comprehension'
+  | 'reading-pace-trend' | 'unfamiliar-material' | 'retention' | 'listening'
+  /** Script decoding: how often the learner still opens the decoding of a word (pre-reader stage). */
+  | 'decoding';
+
+export interface ReadinessSignal {
+  key: ReadinessSignalKey;
+  value?: number;
+  /** What the signal is compared with, in words ("≥ 95 % comfortable coverage on unread same-stage texts"). */
+  target: string;
+  status: 'met' | 'not-met' | 'insufficient-data' | 'not-available';
+  explanation: string;
+}
+
+/** Advancement is advice from several signals. Finishing a book is never sufficient on its own. */
+export interface StageReadiness {
+  userId: string;
+  courseId: string;
+  stageId: string;
+  signals: ReadinessSignal[];
+  verdict: 'stay' | 'ready-to-advance' | 'insufficient-data';
+  explanation: string;
+}
+
+export interface ReadingPace {
+  /** Word tokens per minute estimated from recorded dwell: a rough, quiet measure — never a target or a score. */
+  wordsPerMinute?: number;
+  basis: 'sentence-dwell';
+  sentences: number;
+  /** Lookups (word / phrase / grammar help) per 100 word tokens seen. */
+  lookupsPer100Words: number;
+  /** Sentence-level rescues (explanation or English) per 100 sentences seen. */
+  rescuesPer100Sentences: number;
+  rereadSittings: number;
+  trend: 'faster' | 'steady' | 'slower' | 'insufficient-data';
+}
+
+export interface ItemHistory {
+  itemId: string;
+  itemKind: ItemKind;
+  encounterCount: number;
+  first?: { textId: string; textTitle: string; workId?: string; chapter?: number; at: string; sentenceId: string };
+  byText: Array<{ textId: string; textTitle: string; workId?: string; count: number }>;
+  /** Plain labels per competence; 'not measured' where the system has no evidence source. */
+  reading: string;
+  listening: string;
+  production: string;
+  pronunciation: 'not measured';
+  /** Ready-made lines for the word sheet ("You first met this in …, chapter 7." "Met 23 times." …). */
+  lines: string[];
 }

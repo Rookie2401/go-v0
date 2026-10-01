@@ -31,6 +31,11 @@ export const ids = {
   lemma: (lang: LanguageCode, lemma: string, pos?: PartOfSpeech) => `lemma:${lang}:${lemma}${pos ? ':' + pos : ''}`,
   phrase: (lang: LanguageCode, pattern: string[]) => `phrase:${lang}:${pattern.join('_')}`,
   pattern: (lang: LanguageCode, key: string) => `pattern:${lang}:${key}`,
+  /** A writing-system item: "orth:th:class:mid", "orth:th:mark:mai-tho", "orth:th:vowel:เ◌า"… */
+  orth: (lang: LanguageCode, feature: string) => `orth:${lang}:${feature}`,
+  stage: (courseId: string, key: string) => `stage:${courseId}:${key}`,
+  work: (courseId: string, slug: string) => `work:${courseId}:${slug}`,
+  note: (textId: string, key: string) => `note:${textId}:${key}`,
   rescue: (sentenceId: string) => `rescue:${sentenceId}`,
   analysis: (tokenId: string, analyzer: string, n = 0) => `an:${tokenId}:${analyzer}:${n}`,
   phraseOccurrence: (phraseId: string, sentenceId: string, firstTokenIndex: number) => `po:${hash(phraseId + '|' + sentenceId)}:${firstTokenIndex}`,
@@ -66,7 +71,8 @@ export function parseSentenceId(sentenceId: string): { textId: string; sentenceK
   return { textId: m[1], sentenceKey: m[2], sentenceIndex: Number(m[2]) };
 }
 
-export function itemKindOf(itemId: string): 'form' | 'lemma' | 'phrase' | 'pattern' {
+export function itemKindOf(itemId: string): 'form' | 'lemma' | 'phrase' | 'pattern' | 'orth' {
+  if (itemId.startsWith('orth:')) return 'orth';
   if (itemId.startsWith('form:')) return 'form';
   if (itemId.startsWith('lemma:')) return 'lemma';
   if (itemId.startsWith('phrase:')) return 'phrase';

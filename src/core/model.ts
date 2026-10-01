@@ -53,9 +53,11 @@ export type RightsStatus =
   | 'owner-authored' // written by the course authors
   | 'generated' // machine generated — must be displayed as such
   | 'user-private' // learner's own content (testimony, recordings)
+  | 'personal-copy' // a published work the learner supplied from a copy he is entitled to use: stays on this device, never bundled, never redistributed
   | 'unverified'; // sample/test text whose rights have not been established — never ship
 
-export type Authorship = 'human' | 'public-domain' | 'licensed' | 'generated' | 'learner';
+/** 'published' = a published work by a native author (a book), as opposed to course-written or generated text. */
+export type Authorship = 'human' | 'public-domain' | 'licensed' | 'generated' | 'learner' | 'published';
 
 /** Editorial review of a text or a voice. Only 'reviewed' / 'approved' content reaches normal learner use. */
 export type ReviewStatus = 'unreviewed' | 'in-review' | 'reviewed' | 'approved' | 'rejected';
@@ -140,6 +142,11 @@ export interface Text {
   contentVersion: number;
   /** For scripture: canonical book code (e.g. "JHN") + first chapter, translation identity and verification. */
   scripture?: { book: string; chapter: number; translationId?: string; edition?: string; verification?: SourceVerification };
+  /** The curriculum Work this text belongs to (course.ts) and its place in it. One Text = one chapter / unit. */
+  workId?: string;
+  /** The learner's own copy of a published work (source.rights 'personal-copy'): readable on this device, labelled, never bundled. */
+  personalCopy?: boolean;
+  chapter?: { index: number; title?: string };
 }
 
 export interface TextSection {
@@ -217,6 +224,8 @@ export interface Lemma {
   gloss?: string; // concise English gloss
 }
 
+import type { RegisterTag, SyllableAnalysis } from './course';
+
 export type PartOfSpeech =
   | 'NOUN' | 'PROPN' | 'VERB' | 'AUX' | 'ADJ' | 'ADV' | 'PRON' | 'DET' | 'ADP' | 'CONJ' | 'SCONJ'
   | 'PART' | 'NUM' | 'INTJ' | 'CLF' /* Thai classifier */ | 'PUNCT' | 'X';
@@ -240,6 +249,14 @@ export interface TokenAnalysis {
   notes?: Record<string, string | string[]>;
   /** Contextual meaning of this token here (distinct from the lemma's dictionary gloss). */
   gloss?: string;
+  /** Script decoding, syllable by syllable (Thai: consonant class, vowel length, ending, tone). */
+  syllables?: SyllableAnalysis[];
+  /** Variety / register when it is not ordinary standard usage. Absent = no claim. */
+  register?: RegisterTag[];
+  /** What the word is doing, when that matters more than a gloss: 'classifier', 'particle', 'discourse-marker', 'aspect', 'serial-verb', 'pronoun', 'negator', 'question'. */
+  role?: string;
+  /** An easy definition in the target language itself, when one is available. */
+  definition?: string;
   confidence: number; // 0..1 — uncertainty is stored, never hidden
   provenance: AnalysisProvenance;
   analyzer: string; // "adapter-de@1", "human:cj"
@@ -304,7 +321,11 @@ export interface EnglishRescue {
 
 // ───────────────────────────── learner state (GoLearn owns) ─────────────────────────────
 
-export type ItemKind = 'form' | 'lemma' | 'phrase' | 'pattern';
+/**
+ * 'orth' = an element of the writing system the learner has to learn to decode (a consonant class, a vowel
+ * form, a tone mark, a spelling pattern). It has its own encounter history like any other item.
+ */
+export type ItemKind = 'form' | 'lemma' | 'phrase' | 'pattern' | 'orth';
 export type Modality = 'reading' | 'listening' | 'writing' | 'speaking';
 
 /** Ordered evidence levels. Not all are user-visible. */

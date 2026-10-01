@@ -18,6 +18,14 @@
     "corpus:prove": "vite-node scripts/corpus-prove.mts",
     "corpus:convert": "vite-node scripts/corpus-convert.mts",
     "dict:build": "vite-node scripts/dict-build.mts",
+    "dict:compare": "vite-node scripts/dict-compare.mts",
+    "tones:eval": "vite-node scripts/eval-tones-kaikki.mts",
+    "bench:words": "vite-node scripts/bench-words.mts",
+    "bench:units": "vite-node scripts/bench-units.mts",
+    "gold:wiktionary": "vite-node scripts/gold-wiktionary.mts",
+    "gold:draft": "vite-node scripts/gold-draft.mts",
+    "gold:accept": "vite-node scripts/gold-accept.mts",
+    "gold:status": "vite-node scripts/gold-status.mts",
     "speech:check": "vite-node scripts/speech-check.mts"
   },
   "dependencies": {

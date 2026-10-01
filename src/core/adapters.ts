@@ -9,7 +9,7 @@
  *    alternatives, never a confident guess.
  *  - Adapters own no learner state and no storage.
  */
-import type { ErrorCategory, LanguageCode, PartOfSpeech, Script, TransformationRecord } from './model';
+import type { AnalysisOrigin, AnalysisSourceInfo, ErrorCategory, LanguageCode, PartOfSpeech, Script, TransformationRecord } from './model';
 import type { RegisterTag, SyllableAnalysis } from './course';
 
 export interface Span { start: number; end: number; text: string }
@@ -36,6 +36,9 @@ export interface AnalysisCandidate {
   register?: RegisterTag[];
   role?: string;
   definition?: string;
+  /** Where this candidate came from; the importer stores it on the analysis. Absent ⇒ 'hand' for a lexicon hit, 'rule' when notes.source === 'rule'. */
+  origin?: AnalysisOrigin;
+  sourceId?: string;
 }
 
 export interface AnalyzedToken {
@@ -151,6 +154,8 @@ export interface LanguageAdapter {
   orthFeatures?(syllables: SyllableAnalysis[]): string[];
   /** Plain-words label of one orth feature key, for the word sheet and the audit views. */
   describeOrthFeature?(feature: string): string;
+  /** The adapter's own sources (hand word list, rule sets) with their honest review state, keyed by sourceId. */
+  readonly sources?: Readonly<Record<string, AnalysisSourceInfo>>;
 }
 
 /**

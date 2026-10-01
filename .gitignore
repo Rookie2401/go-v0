@@ -7,3 +7,7 @@ data/private/
 # downloaded dictionary sources and the shards built from them
 data/dictionaries/
 public/dict/
+# gold data derived from the dictionary source (CC BY-SA): regenerated, never committed
+data/benchmarks/th/generated/
+# raw evaluation dumps
+data/review/th/*-eval-*.json

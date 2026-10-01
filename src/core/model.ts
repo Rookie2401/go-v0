@@ -237,6 +237,28 @@ export type AnalysisProvenance = 'machine' | 'lexicon' | 'human';
  * Resolution rule (GoLearn.resolveAnalysis): human > lexicon > machine, then highest confidence.
  * Overrides never delete prior rows; they add a row with `supersedes`.
  */
+/**
+ * WHERE an analysis came from — kept on every analysis so that importing a dictionary can never blur it:
+ *   rule        derived by an adapter rule (script decoding, a clitic split, a compound guess)
+ *   hand        the course's own hand-written word list (its review state is on the source, see AnalysisSourceInfo)
+ *   dictionary  an external dictionary (source id + version in `sourceId`, e.g. "kaikki-th@2026-09-28")
+ *   corpus      supplied with or observed in the corpus document itself (an author's span, an attestation)
+ *   reviewed    checked by a named person (a correction or an override); supersedes the others and keeps their history
+ * Orthogonal to `confidence` and to the coarse `provenance` used for ranking.
+ */
+export type AnalysisOrigin = 'rule' | 'hand' | 'dictionary' | 'corpus' | 'reviewed';
+
+/** What a `sourceId` stands for, for display and audit ("Course word list — machine-drafted, not native-reviewed"). */
+export interface AnalysisSourceInfo {
+  id: string;
+  label: string;
+  origin: AnalysisOrigin;
+  /** 'machine-drafted' = written by a model and not checked by a native speaker; 'external' = a published source under its own licence. */
+  reviewStatus: 'machine-drafted' | 'native-reviewed' | 'external';
+  licence?: string;
+  version?: string;
+}
+
 export interface TokenAnalysis {
   id: string;
   tokenId: string;
@@ -259,11 +281,15 @@ export interface TokenAnalysis {
   definition?: string;
   confidence: number; // 0..1 — uncertainty is stored, never hidden
   provenance: AnalysisProvenance;
+  /** Where this analysis came from (see AnalysisOrigin). Absent on rows written before origins were recorded. */
+  origin?: AnalysisOrigin;
+  /** The source within that origin: "adapter-th@2:hand", "kaikki-th@2026-09-28", "import@2", "human:<name>". */
+  sourceId?: string;
   analyzer: string; // "adapter-de@1", "human:cj"
   createdAt: string;
   supersedes?: string; // id of the analysis this overrides
   /** Alternative readings the analyzer considered (kept so the UI can say "possibly …"). */
-  alternatives?: Array<{ lemmaId?: string; pos?: PartOfSpeech; morph: Record<string, string>; confidence: number }>;
+  alternatives?: Array<{ lemmaId?: string; pos?: PartOfSpeech; morph: Record<string, string>; confidence: number; gloss?: string; origin?: AnalysisOrigin; sourceId?: string }>;
 }
 
 /** A multi-token unit worth tracking: collocation, formula, idiom, argument frame. */

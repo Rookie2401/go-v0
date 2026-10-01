@@ -179,7 +179,18 @@ export interface SyllableAnalysis {
   ipa?: string;
   /** Emergency rescue only (see AssistanceProfile.romanization). */
   romanization?: string;
-  irregular?: boolean; // taken from the exception list
+  irregular?: boolean; // sound and spelling part ways (exception list or dictionary pronunciation)
+  /**
+   * Where this reading came from: the spelling rules, the engine's hand-written exception list (machine-drafted),
+   * a dictionary's pronunciation data (`sourceId`), or a decoding supplied with the text.
+   */
+  source?: 'rule' | 'exception-list' | 'dictionary' | 'author';
+  sourceId?: string;
+  /**
+   * When `source` is not 'rule': what the spelling rules alone say for this syllable, if they give a confident answer
+   * that DIFFERS. Kept so that a dictionary never silently overrides a rule result (and the reverse).
+   */
+  ruleTone?: 'mid' | 'low' | 'falling' | 'high' | 'rising';
   confidence: number; // 0..1
 }
 

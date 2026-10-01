@@ -286,7 +286,8 @@ export interface PersonalDifficulty {
   lexicalCoverage?: number;
   factors: Array<{
     key: 'lexical-coverage' | 'new-words' | 'phrases' | 'constructions' | 'sentence-length' | 'clause-depth' | 'subjunctive' | 'clitics'
-      | 'regional' | 'historical' | 'proper-names' | 'domain' | 'author' | 'unanalysed';
+      | 'regional' | 'historical' | 'proper-names' | 'domain' | 'author' | 'unanalysed'
+      | 'compounds' | 'verb-bracket' | 'genitive' | 'passive' | 'relative-clauses' | 'participial-modifiers' | 'nominalizations' | 'older-spelling';
     level: 'low' | 'moderate' | 'high';
     note: string;
   }>;
@@ -308,6 +309,11 @@ export interface ProfileScore {
   newPhrases: string[];
   /** How much of the profile's domain vocabulary he already knows, when the text has domains and he has history in them. */
   domainFamiliarity?: number;
+  /**
+   * New compounds by what the learner knows of their components: `transparent` = every component known (not counted as
+   * a known word, and not as a wholly new one either), `partial` = some, `opaque` = none or not decomposed.
+   */
+  compounds?: { transparent: number; partial: number; opaque: number };
   personal: PersonalDifficulty;
 }
 

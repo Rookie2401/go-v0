@@ -301,6 +301,45 @@ export interface WordPart {
   morph?: Record<string, string>;
   /** In plain words: "indirect object pronoun", "direct object pronoun", "reflexive". */
   role?: string;
+  /**
+   * What kind of part this is, for code that reasons about parts (the plain words stay in `role`):
+   *   'component' a word inside a compound (Leben in Lebensversicherung); 'head' the last component, which decides
+   *   gender and meaning class (Versicherung); 'link' a connecting element that belongs to no component (the -s-);
+   *   'contracted' a word written together with another (im = in + dem); 'clitic' an attached pronoun;
+   *   'prefix' a separable prefix written on the verb (auf in aufstehen, aufgestanden); 'marker' an inserted marker
+   *   (zu in anzufangen, ge in aufgestanden); 'stem' the rest of a word whose prefix or marker is named.
+   */
+  kind?: 'component' | 'head' | 'link' | 'contracted' | 'clitic' | 'prefix' | 'marker' | 'stem';
+}
+
+/**
+ * One written word of a lexical unit that this sentence writes as several words: German "steht … auf" is aufstehen.
+ * Every piece carries the unit's lemma in its analysis, so the word sheet of either piece shows the unit; the unit's
+ * encounter is counted ONCE, on the head piece (see GoLearn `creditableLemmaId`). A periphrastic tense (ist gegangen,
+ * würde gehen, wird gebaut) is not a unit: its auxiliary keeps its own lemma and the pattern is a construction.
+ */
+export interface UnitLink {
+  /** The piece that carries the unit's encounter (the verb in "steht … auf"). */
+  headTokenId: string;
+  /** Every piece, in text order (the head included). */
+  pieceTokenIds: string[];
+  /** This token's part in the unit: 'head', or what it is in plain words ("separable prefix"). */
+  role: string;
+  /** The unit written together, as a dictionary lists it ("aufstehen"). */
+  display: string;
+}
+
+/**
+ * How an older or other spelling relates to today's standard spelling. The text keeps its own spelling: this is the
+ * analysis layer's statement about it (daß → dass, thun → tun, Thal → Tal), never a rewrite.
+ */
+export interface OrthographyRelation {
+  /** Today's standard spelling of this written form. */
+  modern: string;
+  /** The spelling norm the written form belongs to: a variety code of the adapter ('de-1901', 'de-pre1901', 'es-hist'). */
+  period: string;
+  /** How sure the relation is (a listed pair is surer than a pattern). */
+  confidence: number;
 }
 
 export interface TokenAnalysis {
@@ -323,6 +362,10 @@ export interface TokenAnalysis {
   varieties?: string[];
   /** The parts of one written word that is several units (decírselo = decir + se + lo). Offsets within the token surface. */
   parts?: WordPart[];
+  /** Set when this word is one piece of a lexical unit written as several words (see UnitLink). */
+  unit?: UnitLink;
+  /** Set when the written form follows an older or other spelling norm (see OrthographyRelation). */
+  orthography?: OrthographyRelation;
   /** What the word is doing, when that matters more than a gloss: 'classifier', 'particle', 'discourse-marker', 'aspect', 'serial-verb', 'pronoun', 'negator', 'question'. */
   role?: string;
   /** An easy definition in the target language itself, when one is available. */

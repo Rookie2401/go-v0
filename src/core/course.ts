@@ -104,6 +104,7 @@ export type WorkRole = 'spine' | 'subsidiary' | 'nonfiction' | 'extensive' | 'au
 export type RightsState =
   | 'verified-public-domain'
   | 'verified-open-licence'
+  | 'permission-granted' // the rights holder gave written permission for this use; the permission is on file and named in the record
   | 'course-authored' // written for the course by its authors (machine-drafted text says so separately and still needs review)
   | 'recommended-only' // listed for the learner to find; the app holds no text
   | 'user-supplied' // the learner's own lawful copy, on this device only
@@ -134,6 +135,28 @@ export interface WorkRights {
   acquisitionNotes?: string;
   /** True only when a person has checked the claims above against a source. */
   verified: boolean;
+  // ── the evidence record of an exact edition (required before a text is bundled; absent on a mere recommendation) ──
+  /** Where the text was taken from: the repository ("de.wikisource.org", "eBible.org") and the exact page or file. */
+  sourceRepository?: string;
+  /** Every jurisdiction the basis was checked for ("DE", "EU", "US"). A U.S.-only statement is not worldwide. */
+  jurisdictions?: string[];
+  /** The licence the source states for its text ("CC BY-SA 4.0", "Public Domain"), verbatim, with where it says so. */
+  licence?: string;
+  attributionRequired?: boolean;
+  shareAlike?: boolean;
+  /** What was changed on the way in ("none: identical to the source", "line breaks removed; page headers removed"). */
+  modifications?: string;
+  retrievedAt?: string;
+  /** sha256 of the retrieved source file or page. */
+  checksum?: string;
+  /** The source's own proofreading state ("Wikisource: proofread twice (fertig)"), or 'unknown'. */
+  proofreading?: string;
+  /** The evidence itself, one statement per line: who died when, which edition, what the source page says. */
+  evidence?: string[];
+  /** Contractual limits of the source site that apply whatever the copyright status (a site's terms of use). */
+  sourceTerms?: string;
+  /** Whether the app as built meets the licence's conditions (attribution shown, share-alike respected), and how. */
+  compliance?: string;
 }
 
 export interface Work {
@@ -183,6 +206,18 @@ export interface Work {
   sourceUrl?: string;
   /** How far the text has come: only catalogued, ingested by a tool into the library, or bundled with the app. */
   ingestion?: 'catalogued' | 'ingested' | 'bundled';
+  translator?: string;
+  editor?: string;
+  /** A translation and an edition have their own terms: the translator's death year is a separate lead. */
+  translatorDied?: number;
+  /**
+   * Where the work stands on the way into the corpus. 'implemented' = bundled and readable now; 'verified-ready' =
+   * rights verified for an exact edition, not yet ingested; 'candidate' = awaiting a rights review; 'recommendation' =
+   * will only ever be the learner's own copy. Never 'implemented' or 'verified-ready' without a verified rights state.
+   */
+  readiness?: 'implemented' | 'verified-ready' | 'candidate' | 'recommendation';
+  /** The pipeline states of a text on its way in. */
+  pipeline?: { acquisition: 'none' | 'retrieved'; parsing: 'none' | 'parsed'; proofreading: 'unknown' | 'none' | 'once' | 'twice' };
 }
 
 /** A major content stream of a course. Streams share one learner model; they are shelves of one library, not courses. */

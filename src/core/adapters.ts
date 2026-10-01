@@ -9,7 +9,7 @@
  *    alternatives, never a confident guess.
  *  - Adapters own no learner state and no storage.
  */
-import type { AnalysisOrigin, AnalysisSourceInfo, ErrorCategory, LanguageCode, PartOfSpeech, Script, TransformationRecord, WordPart } from './model';
+import type { AnalysisOrigin, AnalysisSourceInfo, ErrorCategory, LanguageCode, PartOfSpeech, Script, TransformationRecord, WordPart, OrthographyRelation } from './model';
 import type { Variety } from './variety';
 import type { RegisterTag, SyllableAnalysis } from './course';
 
@@ -44,6 +44,15 @@ export interface AnalysisCandidate {
   /** Where this candidate came from; the importer stores it on the analysis. Absent ⇒ 'hand' for a lexicon hit, 'rule' when notes.source === 'rule'. */
   origin?: AnalysisOrigin;
   sourceId?: string;
+  /**
+   * This token is one piece of a lexical unit that the sentence writes as several words (German "steht … auf" =
+   * aufstehen). `lemma` of the candidate is the unit's lemma on every piece; `head` and `pieces` are token indexes in
+   * the sentence; the importer turns them into token ids (`TokenAnalysis.unit`). The unit's encounter is counted once,
+   * on the head piece.
+   */
+  unit?: { head: number; pieces: number[]; role: string; display: string };
+  /** The written form follows an older or other spelling norm; the text is never changed (see OrthographyRelation). */
+  orthography?: OrthographyRelation;
   /**
    * A reading by rule whose lemma the adapter's own data does not vouch for (Spanish: "trabucaban" → a guessed
    * "trabucar"). It explains the form and nothing more. When a dictionary is installed the importer lets the

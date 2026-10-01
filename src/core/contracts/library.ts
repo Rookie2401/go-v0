@@ -36,6 +36,20 @@ export interface TextFeatures {
   unanalysedShare?: number;
   /** Share of word tokens carrying each non-general variety tag ('es-ES', 'voseo', 'es-hist' …). */
   varietyShare?: Record<string, number>;
+  /** Share of word tokens that are compounds (an analysis with component parts). */
+  compoundShare?: number;
+  /** Share of word tokens in the genitive (only an unambiguous "Gen" counts). */
+  genitiveShare?: number;
+  /** Passive constructions, relative clauses and participial modifiers per sentence (from stored pattern occurrences). */
+  passivePerSentence?: number;
+  relativePerSentence?: number;
+  participialPerSentence?: number;
+  /** Mean number of words between the two ends of a verb bracket (finite verb … participle / infinitive / separated prefix). */
+  bracketDistance?: number;
+  /** Share of word tokens written in an older spelling (an analysis with an orthography relation). */
+  historicalSpellingShare?: number;
+  /** Share of word tokens that are nouns made from verbs or adjectives by suffix (-ung, -heit, -keit …), when the analysis says so. */
+  nominalizationShare?: number;
 }
 
 /** One catalogued text (usually a chapter). Small: tens of thousands of these are paged, never listed whole. */
@@ -79,6 +93,11 @@ export interface TextProfile {
   lemmas: Array<[string, number]>;
   phrases: Array<[string, number]>; // [phrase item id, occurrences]
   patterns: Array<[string, number]>; // [pattern item id, occurrences]
+  /**
+   * Compounds whose analysis names their components: [lemma item id of the whole, lemma item ids of the components,
+   * occurrences]. Lets a compound the learner has not met count as transparent when he knows its components.
+   */
+  compounds?: Array<[string, string[], number]>;
   features: TextFeatures;
 }
 

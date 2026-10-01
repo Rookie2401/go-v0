@@ -20,7 +20,7 @@ import type {
   ReadingProgress, Recommendation, ScriptureReadiness, SentenceSupport, Testimony, TestimonyDraft, TestimonyRevision, TokenSupport, VoiceConfig,
 } from '../../src/core';
 import { AppProvider } from '../../src/ui/context';
-import type { AppServices, BackupApi, ImportDocView, IngestApi, SpeechApi } from '../../src/ui/context';
+import type { AppServices, BackupApi, BackupCheckView, ImportDocView, IngestApi, SpeechApi } from '../../src/ui/context';
 import { resetPrefsForTests } from '../../src/ui/prefs';
 
 (globalThis as { IS_REACT_ACT_ENVIRONMENT?: boolean }).IS_REACT_ACT_ENVIRONMENT = true;
@@ -312,7 +312,7 @@ export function makeFakeControls(store: AppStore) {
   } satisfies IngestApi;
   const backup = {
     exportLearner: vi.fn(async (userId: string, o?: { includeRecordings?: boolean }) => ({ format: 'go-backup', version: 1, userId, includesRecordings: !!o?.includeRecordings })),
-    check: vi.fn((file: unknown) => (file && typeof file === 'object' && (file as { format?: string }).format === 'go-backup'
+    check: vi.fn((file: unknown): BackupCheckView => (file && typeof file === 'object' && (file as { format?: string }).format === 'go-backup'
       ? { ok: true, errors: [], warnings: [], summary: '3 history events, 1 saved versions' }
       : { ok: false, errors: ['This is not a Go backup file.'] })),
     restore: vi.fn(async (_file: unknown, _o?: { mode?: 'merge' | 'replace' }) => ({ needsRebuild: true, summary: ['3 history events added'] })),

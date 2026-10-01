@@ -147,6 +147,7 @@ describe('Testimony autosave', () => {
     await inAct(() => probe.app!.selectUser('u1'));
     await flush(10);
     expect(editor().value).toBe(DRAFT);
+    expect(h.learn.ensureCurrent).toHaveBeenCalledWith('u2'); // another learner's state is brought up to the current policy before it is shown
     expect((await row('u2'))!.text).toBe('Hola.');
     expect((await row('u1'))!.text).toBe(DRAFT);
   });

@@ -662,6 +662,16 @@ export function materializeSentence(plan: DocumentPlan, ps: PlannedSentence, sen
     const notes = best.notes ? { ...best.notes } : undefined;
     const fromRule = notes?.source === 'rule';
     if (notes) delete notes.source;
+    // a lexical unit written as several words (steht … auf): the adapter names its pieces by token index in the sentence,
+    // the stored analysis by token id. A piece outside the sentence is a broken analysis: nothing is written.
+    let unit: TokenAnalysis['unit'];
+    if (best.unit) {
+      const idOf = (i: number): string => {
+        if (!Number.isInteger(i) || i < 0 || i >= tokens.length) throw new Error(`unit of "${tokens[ti].surface}" in ${sentenceId} names token ${i}, which is not in the sentence`);
+        return tokens[i].id;
+      };
+      unit = { headTokenId: idOf(best.unit.head), pieceTokenIds: best.unit.pieces.map(idOf), role: best.unit.role, display: best.unit.display };
+    }
     analyses.push({
       id: ids.analysis(tokens[ti].id, a.analyzer, 0), tokenId: tokens[ti].id, lang, lemmaId, pos: best.pos, morph: best.morph,
       ...(notes && Object.keys(notes).length ? { notes } : {}), ...(best.gloss && fromSpan ? { gloss: best.gloss } : {}),
@@ -670,6 +680,8 @@ export function materializeSentence(plan: DocumentPlan, ps: PlannedSentence, sen
       // units inside the written word (verb + attached pronouns) and the varieties it belongs to, as the adapter states them
       ...(best.parts?.length ? { parts: best.parts.map((p) => ({ ...p, ...(p.morph ? { morph: { ...p.morph } } : {}) })) } : {}),
       ...(best.varieties?.length ? { varieties: [...best.varieties] } : {}),
+      // a unit written as several words, and the relation of an older spelling to today's (the text itself is never changed)
+      ...(unit ? { unit } : {}), ...(best.orthography ? { orthography: { ...best.orthography } } : {}),
       confidence: best.confidence, provenance: fromRule ? 'machine' : 'lexicon', origin: bestOrigin.origin, sourceId: bestOrigin.sourceId, analyzer: a.analyzer, createdAt: now,
       ...(alternatives.length ? { alternatives } : {}),
     });

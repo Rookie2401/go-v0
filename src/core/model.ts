@@ -394,6 +394,14 @@ export interface Encounter {
   playbackSpeed?: number; // listening only
   /** Reading/listening sitting this encounter belongs to (estimates need distinct sessions). */
   session?: string;
+  /**
+   * Sitting key derived by GoLearn from time, not trusted from the UI: encounters of one learner less than
+   * SITTING_GAP_MS apart belong to one sitting. A reload or a route revisit inside a sitting can therefore never
+   * add a second exposure for the same item + sentence, whatever session id the UI sent.
+   */
+  sitting?: string;
+  /** Content version of the text when the encounter happened (history stays attached to what was actually read). */
+  contentVersion?: number;
   /** Listening only: replays within the pass. */
   replays?: number;
   /** Production encounters only: how the production came about. */
@@ -401,6 +409,9 @@ export interface Encounter {
 }
 
 export type EvidenceKind = 'exposure' | 'assisted' | 'demonstrated' | 'production';
+
+/** Two encounters of one learner closer than this belong to the same sitting (30 minutes). */
+export const SITTING_GAP_MS = 30 * 60 * 1000;
 
 /** The layered support ladder. Higher = more help = weaker evidence of comprehension. */
 export type AssistanceLevel = 0 | 1 | 2 | 3 | 4 | 5;

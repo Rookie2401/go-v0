@@ -25,9 +25,15 @@ interface Base {
 }
 
 // ── reading ──
-export interface TextViewed extends Base { type: 'TextViewed'; textId: string }
+/** The text was opened (or shown in a preview/preparation panel: mode 'preview'). Displayed ≠ exposure: never evidence. */
+export interface TextViewed extends Base { type: 'TextViewed'; textId: string; mode?: 'open' | 'preview'; contentVersion?: number }
 /** The learner had this sentence on screen long enough to read it (the reader decides, not the DOM). */
-export interface SentenceViewed extends Base { type: 'SentenceViewed'; textId: string; sentenceId: string; tokenIds: string[]; dwellMs?: number }
+/**
+ * READING EXPOSURE: emitted only when the sentence stayed in view, in the reader itself (not a preview or
+ * preparation panel), in a visible tab, for a dwell proportional to its length. Still not "read" and not
+ * comprehension. `contentVersion` pins the evidence to the version encountered.
+ */
+export interface SentenceViewed extends Base { type: 'SentenceViewed'; textId: string; sentenceId: string; tokenIds: string[]; dwellMs?: number; contentVersion?: number }
 export interface TokenHelpOpened extends Base { type: 'TokenHelpOpened'; sentenceId: string; tokenId: string; itemId: string; level: AssistanceLevel }
 export interface PhraseHelpOpened extends Base { type: 'PhraseHelpOpened'; sentenceId: string; phraseOccurrenceId: string; phraseId: string }
 export interface GrammarHelpOpened extends Base { type: 'GrammarHelpOpened'; sentenceId: string; patternId: string; tokenIds: string[] }
@@ -46,8 +52,10 @@ export interface ComprehensionReported extends Base {
   modality: 'reading' | 'listening';
   scope: 'sentence' | 'text';
   degree: 'all' | 'most' | 'some' | 'little';
+  contentVersion?: number;
 }
-export interface TextCompleted extends Base { type: 'TextCompleted'; textId: string }
+/** EXPLICIT completion: the learner pressed "I have finished reading". Never inferred from views. */
+export interface TextCompleted extends Base { type: 'TextCompleted'; textId: string; contentVersion?: number }
 export interface PassageCompleted extends Base { type: 'PassageCompleted'; textId: string; sentenceIds: string[]; mode: Modality }
 export interface ItemMarked extends Base { type: 'ItemMarked'; itemId: string; itemKind: ItemKind; mark: 'known' | 'unknown' | 'clear' }
 export interface FormSearched extends Base { type: 'FormSearched'; query: string; itemId?: string }

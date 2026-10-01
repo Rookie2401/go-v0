@@ -72,14 +72,32 @@ export interface ItemExplanation {
   texts: Array<{ textId: string; title: string; count: number }>;
 }
 
-/** Reading COMPLETION (what was on screen / finished) — deliberately separate from vocabulary coverage. */
+/**
+ * Reading progress for the CURRENT content version of a text. Five notions are kept apart everywhere:
+ *
+ *  1. displayed / previewed — the text was opened or a panel showed it (`TextViewed`). Nothing is counted.
+ *  2. reading exposure      — a sentence stayed in view long enough to plausibly be read (`SentenceViewed`).
+ *                             This is `sentencesSeen`. It is NOT "read" and not comprehension.
+ *  3. explicit completion   — the learner said he finished (`TextCompleted`). Only this sets `finishedAt`;
+ *                             seeing every sentence never implies completion.
+ *  4. reported understanding — `ComprehensionReported` degree 'all' without help: `sentencesUnderstood`.
+ *  5. estimated familiarity — a labelled estimate on items (`DimensionState.estimatedFamiliar`), never progress.
+ */
 export interface ReadingProgress {
   textId: string;
+  /** The content version these numbers describe (live sentences only). */
+  contentVersion: number;
   sentencesTotal: number;
-  sentencesViewed: number;
-  completedAt?: string;
-  /** Last self-report for the text, if any. */
+  /** Notion 2: live sentences with at least one reading exposure. Label: "Seen", never "Read". */
+  sentencesSeen: number;
+  /** Notion 4: live sentences the learner reported understanding without sentence-level help. */
+  sentencesUnderstood: number;
+  /** Notion 3: latest explicit TextCompleted, if any. */
+  finishedAt?: string;
+  /** Last text-level self-report, if any. */
   reportedComprehension?: 'all' | 'most' | 'some' | 'little';
+  /** Distinct reading sittings in which this text was seen (see Encounter.sitting). */
+  sittings: number;
   listenedSentences: number; // real, reviewed speech only
 }
 

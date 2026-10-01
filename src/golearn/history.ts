@@ -84,7 +84,9 @@ export async function itemHistory(ctx: Ctx, userId: string, itemId: string): Pro
 
   // Labels come from the stored evidence; an explicit mark is reported on its own line, never folded into a label.
   const readingLabel = receptiveLabel(row?.reading ?? k.reading, nReading, 'met', 'not met in reading yet');
-  const listeningLabel = receptiveLabel(row?.listening ?? k.listening, nListening, 'heard in real speech', 'not heard in real speech yet');
+  const listeningLabel = ctx.listening
+    ? receptiveLabel(row?.listening ?? k.listening, nListening, 'heard in real speech', 'not heard in real speech yet')
+    : 'not part of this version';
   const productionText = productionLabel(k);
 
   // The run of most recent readings that needed no help with this item ("Met 23 times in 4 texts, the last 4 without help.").
@@ -98,7 +100,7 @@ export async function itemHistory(ctx: Ctx, userId: string, itemId: string): Pro
   lines.push(`Reading: ${readingLabel}.`);
   if (row?.manualMark === 'known') lines.push('You marked it known.');
   else if (row?.manualMark === 'unknown') lines.push('You marked it unknown.');
-  lines.push(`Listening: ${listeningLabel}.`);
+  if (ctx.listening) lines.push(`Listening: ${listeningLabel}.`);
   lines.push(`${capital(productionText)}.`);
   lines.push('Pronunciation: not measured.');
 

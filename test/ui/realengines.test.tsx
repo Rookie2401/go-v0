@@ -23,7 +23,7 @@ let boot: BootstrapResult;
 let unmount: (() => Promise<void>) | undefined;
 beforeEach(async () => {
   resetPrefsForTests(); localStorage.clear(); installMediaStubs();
-  boot = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es' });
+  boot = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', features: { listen: true } });
 });
 afterEach(async () => { await unmount?.(); unmount = undefined; resetPrefsForTests(); localStorage.clear(); });
 

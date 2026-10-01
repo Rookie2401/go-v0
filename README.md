@@ -70,9 +70,10 @@ test/           per-package tests + test/integration (Spanish end-to-end loop, f
   visible only in the bannered preview mode. Spanish (Reina-Valera 1909) and German (Lutherbibel 1912)
   Scripture samples are byte-verified against eBible.org; Albanian, Hindi and Thai Scripture is blocked until
   an approved translation is supplied.
-- **Audio is unavailable until a speech provider is configured**: set AZURE_SPEECH_KEY and AZURE_SPEECH_REGION in
-  `.env.local` (never committed) and restart; the key stays on the server. Tested against a mocked service only —
-  no real speech has been produced. Fixture tones are development-only and can never count as listening.
+- **GoListen (audio) is deferred to V2 and switched off** (`FEATURES.listen` in `src/core/config.ts`, with the
+  matching `LISTEN` constant in `vite.config.ts`): the app shows no audio interface, registers no speech provider
+  and makes no speech request. The package, the speech proxy and their tests stay in the repository, dormant and
+  green. It was only ever tested against a mocked service — no real speech has been produced.
 - **The Thai course has its structure and none of its books.** The reading ladder (Stage 0, Grades 1–9, open
   reading), stage-specific assistance, Thai script decoding, the learner model for a ladder and the import of a
   learner's own copy of a book are built and tested; every work is a recommendation with rights unverified, and

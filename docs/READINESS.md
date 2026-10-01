@@ -9,9 +9,71 @@ Three words are used strictly:
 
 This is **not** a production-readiness claim.
 
+## Status at a glance (2026-10-01)
+
+Three different things are kept apart, because a green test gate proves only the first.
+
+**1. Implementation correctness** — does the software do what it says? Verified by `npm run gate` (2,828 tests in
+161 files, typecheck clean), the production build, the import proof (162 checks, 0 mismatches), the corpus check,
+and browser flows in a sandbox database. The audit round below fixed four confirmed defects, one wording issue and
+two further faults found while verifying them.
+
+**2. Linguistic validation (Thai)** — is the language analysis right? Only partly measured, and only against
+dictionary data, never against a native reviewer:
+
+| Measure | Result | What it does and does not show |
+|---|---|---|
+| Word segmentation on 3,116 Wiktionary examples | boundary F1 90.27 %, 61.26 % of sentences exact | Short dictionary examples divided by another project's convention; says little about book prose. **The segmentation gate is not met.** |
+| Tone rules alone, held-out half of 17,298 Wiktionary spellings | 24 confidently wrong words = 0.82 % of confident answers; a third of words answered confidently, the rest marked uncertain | The rules are tuned on the other half only. Nothing was tuned or hard-coded against the held-out half |
+| Dictionary respelling read by the engine vs the IPA | same **tone sequence** for 99.88 % of 8,124 held-out respellings | **Tone agreement only** (one tone per syllable, hence syllable count). It does not check consonants, vowels, length or finals, so it is not a measure of complete pronunciation accuracy, and the reference is Wiktionary, not a native speaker |
+| Reading units | 80 of 107 constructed stress paragraphs exact | Cases written by a model: behaviour on known hazards, not accuracy on real prose |
+| Hand lexicon vs dictionary | 112 disagreements recorded, all open | Neither source is chosen; nothing is adjudicated by the system |
+
+**3. Missing external input** — what cannot be produced inside the repository:
+
+1. **Lawful Thai text** for the course gold set (at minimum one Stage 0 reader, มานะ มานี ป.1, one later literary
+   work, and a Grade 8-style prose sample as a stress test). Procedure: `docs/thai/GOLD_WORKFLOW.md` — supply the
+   text under `data/private/`, `npm run gold:draft`, a person corrects the boundaries, `npm run gold:accept -- --by
+   "Name"`, `npm run gold:freeze`, `npm run bench:words -- --frozen <id> --report`. The gold set is empty today and
+   no model judgment is ever written into it as ground truth.
+2. **Python 3.9+ with PyThaiNLP** for the comparison with an established tokenizer. Checked on this machine
+   2026-10-01: there is no Python runtime (only the Microsoft Store placeholder alias), so nothing was run and
+   nothing was installed. With the owner's go-ahead: create a virtual environment, `pip install pythainlp`, run
+   `scripts/external/pythainlp_tokenize.py` as described in the workflow document, then
+   `npm run bench:words -- --external newmm=<file>`.
+3. **Human review**: a native speaker's check of pronunciation, of the 598-entry hand lexicon, the phrase units,
+   constructions and tone exception lists, and a reviewer's decisions on the 112 recorded disagreements
+   (`data/review/th/resolutions.json`).
+4. **A Thai Bible** with verified release metadata and rights (see the policy below), and replacement of the
+   three-verse Thai sample of unidentified origin.
+
+**Scope change — GoListen is deferred to V2** (course owner, 2026-10-01). It is switched off by one flag
+(`FEATURES.listen` in `src/core/config.ts`), not deleted: the app registers no speech provider, makes no speech
+request, exposes no speech endpoint on the dev server, shows no audio interface (no player, no Settings → Speech,
+no recordings in My Testimony, no listening works on the ladder) and makes no statement about listening (no
+listening recommendation, readiness signal or history line). Learner data is untouched, including any audio rows
+and listening events already stored; backups keep recordings. The package, its tests and `npm run speech:check`
+stay in the repository, green, for V2. Verified by tests (bootstrap makes no `/api/speech/` request and queues no
+audio job; each page in the off state) and in the browser. Sections of this document about speech describe that
+dormant code.
+
+## Audit round (2026-10-01): confirmed defects, root causes, fixes
+
+| Finding | Root cause | Fix | Verified |
+|---|---|---|---|
+| 1. A whole-text comprehension report survived a revision ("all" still shown after every sentence was replaced) | `progress.ts` kept the last whole-text report without looking at its content version (completions in the same function were already version-scoped); the readiness signal read the raw log the same way | A report counts as current only for the version it was made about (a report with no version counts only at version 1). An earlier report is kept and exposed as `reportedEarlierVersion`; the progress line says "you said you understood all of an earlier version". Sentence-level understanding still follows sentence identity; no history is deleted; word knowledge is not reset | Engine and integration tests (full replacement, partial revision, unchanged re-import, metadata-only change, legacy report, new report after revision, recommendation and readiness consumers); browser: reader, library and Home show the same line |
+| 2. The Thai word sheet said "from the dictionary's pronunciation" and, per syllable, "by the spelling rules; not checked against a dictionary" | The syllable row inferred the source from the confidence band (0.6–0.8) and never read the syllable's actual source | Source is rendered from the source (spelling rules · machine-drafted exception list · dictionary pronunciation · supplied analysis · reviewed override); certainty is a separate statement ("less certain" / "uncertain"); when the rules and the dictionary differ both are shown with labels and neither is declared right | Tests (dictionary syllable at 0.7, mixed sources, several readings, rule-only at three confidences); browser: แอปเปิล |
+| 3. Settings said "Real speech is available." with only the placeholder fixture present | Availability returned `available: true` for the fixture in preview and the page read that as real speech | Real speech and placeholder playback are separate (`realSpeech`); three truthful states; the missing-configuration guidance stays with the "real speech is not available" statement | Tests (three states, entering and leaving preview, course switch, "Check again", a fixture session leaves listened sentences at 0); browser, before GoListen was switched off. Now dormant code |
+| 4. "Analysis coverage: 20%" beside "only 0% of the words can be analysed (0/5)" | The figure came from the import plan (dictionary included); the warning was computed in validation from the language's own word list alone | One basis for both: word list + dictionary + spans supplied with the text + corrections. The warning states the breakdown and only the remedies that apply; a validation-only diagnostic names its scope ("by the language's own word list alone") | Tests (dictionary-only, mixed, spans, corrections, no dictionary, lookup failure; preview equals result); browser: preview and result both "56 %… (5 of 9): 0 from the word list, 5 from the dictionary…" |
+| 5. An unpublished preview text was called "the easiest published Thai text" | The first-text explanation assumed publication | "…the easiest Thai text in preview (not published)"; a test proves no unpublished text reaches any recommendation when preview is off | Tests; browser |
+| Found while verifying: after a revision, a rebuild of learner state lost the phrase and grammar-pattern history of the replaced sentences | The importer kept the retired sentences' words but deleted their phrase / pattern occurrence rows | Retired sentences keep those rows as history; every learner-facing read ignores retired sentences | `test/integration/revision-rebuild.test.ts` (failed before), importer and engine tests |
+| Found while verifying: a learner's own copy was announced as "Will be published to learners" | The preview line did not know about personal copies | "Will be readable on this device… not published to anyone else" | Test; browser |
+
+Held-out discipline: no fix in this round touched the tone engine, the tokenizer or the held-out sets.
+
 ## Readiness by language
 
-| | Ingestion | Progress tracking | Linguistic analysis | Scripture | Real speech |
+| | Ingestion | Progress tracking | Linguistic analysis | Scripture | Audio (GoListen: deferred to V2, switched off) |
 |---|---|---|---|---|---|
 | **Spanish** | Verified (proof + browser importer) | Verified (one record on Home, library, reader; version-scoped) | Tokenization dependable; sentence splitting limited; lemma / morphology / phrases **seed lexicon only**; `á`, `dijéremos`, `engañamos` analysed, other historical forms left unanalysed | **Published**: Reina-Valera 1909, 3 verses, byte-verified against eBible.org | **Not verified** — no credentials; nothing synthesized |
 | **German** | Verified | Verified (engine); browser checked for Spanish only | Dependable tokenization; separable verbs only `anfangen`; compounds low-confidence; **seed lexicon only** | **Published**: Lutherbibel 1912, 3 verses, byte-verified | Not verified |
@@ -39,12 +101,12 @@ was added. Reports: `docs/thai/DICTIONARY_REPORT.md` (generated), `docs/thai/BEN
 | Disagreements | **112 recorded, all open, none resolved by the system**: 60 hand entries the dictionary lacks, 12 part of speech, 10 possibly different meaning, 25 register, 5 classifier. Tone: 0 across the 106 exception-list words that could be compared. One error in the engine's own list (ผลาญ, listed as two syllables) was found this way and the entry withdrawn | `data/review/th/disagreements.json`; decisions go in `resolutions.json` |
 | Pronunciation coverage | 99.6 % of dictionary words carry a respelling, IPA and romanization; all 537 hand forms found in the dictionary have all three | same report |
 | Tone engine, rules alone, on **17,298 Wiktionary spellings** | Before: confident and wrong for **5.71 %** of its confident answers (the earlier 185-word table, 0 wrong, was too easy). After a conservative rework by general rules, on the half the engine's author never saw (8,714 words): **0.82 % of confident answers wrong (24 words)**, confident and right 33.4 %, the rest marked uncertain. All words: 0.63 %. The price: confident answers fell from 45.6 % to 33.6 % of words | `npm run tones:eval -- --split test` |
-| Tone resolution with the dictionary | The dictionary's respelling, read by the engine without the IPA, agrees with the IPA for 99.88 % of 8,124 held-out respellings (1 differs — the Wiktionary IPA for ข้าวหมกไก่ looks wrong and is recorded, not overridden; 9 unreadable). Coordinator tables: every word present agrees (599 of 614; 15 absent). Of 71 held-out words the rules leave uncertain, 65 are resolved by the dictionary, 6 are not in it. Hand lexicon: 64 uncertain readings resolved, 472 confident readings confirmed, 0 contradicted | `scripts/eval-resolution.mts`, `scripts/check-tone-tables.mts` |
+| Tone resolution with the dictionary | The dictionary's respelling, read by the engine without the IPA, gives the same **tone sequence** as the IPA for 99.88 % of 8,124 held-out respellings — tone agreement only, not complete pronunciation accuracy (1 differs — the Wiktionary IPA for ข้าวหมกไก่ looks wrong and is recorded, not overridden; 9 unreadable). Coordinator tables: every word present agrees (599 of 614; 15 absent). Of 71 held-out words the rules leave uncertain, 65 are resolved by the dictionary, 6 are not in it. Hand lexicon: 64 uncertain readings resolved, 472 confident readings confirmed, 0 contradicted | `scripts/eval-resolution.mts`, `scripts/check-tone-tables.mts` |
 | Word segmentation, first benchmark | 3,116 Wiktionary usage examples whose word breaks come from the editors' romanization (half of 6,206 aligned). Current tokenizer: boundary precision 84.5 %, recall 96.9 %, **F1 90.3 %, 61.3 % of sentences exactly right**; 65 % of its errors split a compound the editors kept whole. ICU alone: F1 90.1 %. Our own dictionary longest-match baseline: F1 96.6 % (built from the same word list as the gold, so favoured) | `npm run gold:wiktionary && npm run bench:words` |
 | Reading units | 107 constructed stress paragraphs (machine-drafted): the splitter cut inside every abbreviation and every clock time. After fixing only the deterministic hazards: 80 of 107 exact (was 57), boundary precision 61.5 % (was 36.2 %), abbreviation splits 2 (was 11). Contested hazards (dialogue turns, quotation + reporting clause, unmarked sentence breaks, hard line breaks) deliberately left for real prose | `npm run bench:units`, section 4 of BENCHMARKS |
 | How far a wrong boundary reaches | Same text under two segmentations, same reading: 15–23 of 307 word forms change their encounter count (about 1–3 % of encounters), audio segments 126 vs 136, and reading pace moves 4–13 % because of the reader's dwell floor and cap | `npm run bench:units -- --sensitivity` |
 | Performance | Fold still flat (about 0.8 ms per sentence view). Import of 2,000 words: 138 ms without, 127–151 ms with the dictionary. Stored analysis +23 % with the dictionary (a first version copied dictionary senses onto every occurrence, +133 %; fixed by asking the dictionary at display time). App bundle +15 kB (1,050 → 1,065 kB). Dictionary lookups: 1,000 words in 75 ms cold, 6 ms warm | `scripts/probe-scale.mts`, `scripts/probe-import.mts` |
-| Tests | `npm run gate`: 2,722 tests in 147 files, typecheck clean; import proof 162 checks, 0 mismatches; corpus check unchanged (2 published, 13 held) | |
+| Tests (at the end of that phase) | `npm run gate`: 2,722 tests in 147 files, typecheck clean; import proof 162 checks, 0 mismatches; corpus check unchanged (2 published, 13 held). Current figures: "Status at a glance" | |
 | The four other courses | Unchanged: their adapters declare no sources and no decoding, so the reader shows no provenance line and asks no dictionary (tests; Spanish reader checked in the browser, zero dictionary requests); their bundled documents import identically apart from two new provenance fields | |
 
 ### Provenance (implemented and verified)
@@ -61,10 +123,11 @@ browser with the real dictionary.
 ### Release gates not met
 
 - **Word segmentation.** The only measurement is on short dictionary examples tokenized by another project's
-  convention. **No comparison with an established tokenizer has been run** (PyThaiNLP `newmm` needs Python, which
-  is not installed; the script and commands are ready in `scripts/external/`). **The course gold set is empty**
-  (0 of 500–1,000 sentences, all eight strata) because no lawful book text has been supplied. Tools are ready:
-  `npm run gold:draft`, `gold:accept`, `gold:status`, `bench:words -- --gold`.
+  convention. **No comparison with an established tokenizer has been run** (PyThaiNLP `newmm` needs Python; this
+  machine has none, only the Microsoft Store placeholder alias; the script and commands are ready in
+  `scripts/external/`). **The course gold set is empty** (0 of 500–1,000 sentences, all eight strata) because no
+  lawful book text has been supplied. The workflow is ready and documented in `docs/thai/GOLD_WORKFLOW.md`:
+  `npm run gold:draft`, `gold:accept`, `gold:freeze`, `gold:status`, `bench:words -- --frozen <id> --report`.
 - **Reading units.** Measured only on constructed cases written by a model. Real dialogue and book formatting
   are untested.
 - **The tone engine's rules still give a confident wrong reading for about 1 word in 120 of those they answer
@@ -209,7 +272,7 @@ ignored analysis supplied with the file when counting coverage, so preview and r
 a review now records which wording it covers, and a revised text is held until it is reviewed again
 (Scripture is bound by its verification instead). No synthetic text is published or present in the normal library.
 
-## Speech
+## Speech (dormant: GoListen is switched off and deferred to V2)
 
 `npm run speech:check`: `configured: no`; **12 of 12 provider-independent checks pass** (cache keys, requested vs
 delivered locale, voice metadata and review gate, content-version invalidation, retry, dead state with visible

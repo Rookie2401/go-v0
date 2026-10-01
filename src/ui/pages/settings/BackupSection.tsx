@@ -10,7 +10,7 @@ import { downloadTextFile, readFileText } from '../../files';
 import { errorText } from './shared';
 
 export function BackupSection() {
-  const { backup, golearn, userId, user, refreshUser } = useApp();
+  const { backup, golearn, userId, user, refreshUser, features } = useApp();
   const inputId = useId();
   const [includeRecordings, setIncludeRecordings] = useState(false);
   const [message, setMessage] = useState<string | null>(null);
@@ -24,7 +24,8 @@ export function BackupSection() {
   const doExport = async () => {
     setBusy(true); setError(null); setMessage(null);
     try {
-      const data = await backup.exportLearner(userId, { includeRecordings });
+      // Listening off: the option is hidden, so nothing may be silently dropped from the file: recordings already on this device go in.
+      const data = await backup.exportLearner(userId, { includeRecordings: features.listen ? includeRecordings : true });
       const day = new Date().toISOString().slice(0, 10);
       downloadTextFile(`go-backup-${userId}-${day}.json`, JSON.stringify(data));
       setMessage('Your backup file has been saved to your downloads. Keep it somewhere private: it contains your writing.');
@@ -61,9 +62,9 @@ export function BackupSection() {
       {error && <p role="alert" className="error">{error}</p>}
       {message && <p role="status" className="note">{message}</p>}
 
-      <label className="field field--row"><span>Include my recordings (makes the file much larger)</span>
+      {features.listen && <label className="field field--row"><span>Include my recordings (makes the file much larger)</span>
         <input type="checkbox" checked={includeRecordings} aria-label="Include my recordings" onChange={(e) => setIncludeRecordings(e.target.checked)} />
-      </label>
+      </label>}
       <div className="actions">
         <button type="button" className="btn" disabled={busy} onClick={() => { void doExport(); }}>Export my data</button>
       </div>

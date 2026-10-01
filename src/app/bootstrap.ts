@@ -21,8 +21,8 @@
  * The UI never imports the engines' extras directly: the importer, backup and speech-provider controls reach it as
  * small interfaces in `AppServices` (ingest / backup / speech), bound to the real modules here.
  */
-import { COURSES, LANGUAGE_ROWS, StoreEventBus, hash } from '../core';
-import type { AppStore, Course, EventBus, GoListen, LanguageCode, LexiconSource, ProviderAvailability, TtsProvider, User } from '../core';
+import { COURSES, FEATURES, LANGUAGE_ROWS, StoreEventBus, hash } from '../core';
+import type { AppStore, Course, EventBus, Features, GoListen, LanguageCode, LexiconSource, ProviderAvailability, TtsProvider, User } from '../core';
 import { createCourseCatalog } from '../course';
 import { createDexieStore } from '../db/dexie';
 import { createFetchLexiconSource } from '../dict';
@@ -43,6 +43,12 @@ import {
 } from '../ui/prefs';
 
 export interface BootstrapOptions {
+  /**
+   * Which optional parts of the app are on (default: `FEATURES`). With `listen: false` (V1) the app registers no speech provider,
+   * makes no speech request, reads no remembered Azure key, resumes no queued audio, gives GoTell no GoListen (a saved
+   * testimony version queues no audio job) and tells GoLearn `listening: false`. GoListen still exists as an inert object.
+   */
+  features?: Partial<Features>;
   /** Default: Dexie (IndexedDB). Tests pass createMemoryStore(). */
   store?: AppStore;
   /** Database name (default `go-v0`). A page opened with `?sandbox=<name>` always uses `go-v0-sandbox-<name>` instead (see ui/sandbox.ts). */
@@ -188,18 +194,21 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   const bus: EventBus = new StoreEventBus(store, clock);
   const adapters = createAdapterRegistry();
   const startup: StartupInfo = {};
+  const features: Features = { ...FEATURES, ...opts.features };
+  const listen = features.listen;
 
   await seedFirstRun(store, clock(), opts.courseId);
 
   // ── GoListen: no fixture unless preview mode or the development preference is on ──
   const wantsFixture = () => opts.allowFixture ?? (getPref('preview') || getPref('devFixtureAudio'));
-  const providers: TtsProvider[] = [...(opts.providers ?? [])];
-  const remembered = recallAzure();
+  const providers: TtsProvider[] = listen ? [...(opts.providers ?? [])] : [];
+  const remembered = listen ? recallAzure() : undefined; // listening off: a remembered key is not even read
   let azure: AzureSpeechProvider | undefined;
   if (remembered) { azure = new AzureSpeechProvider({ key: remembered.key, region: remembered.region }); providers.push(azure); }
-  const golisten = createGoListen({ store, bus, adapters, clock, providers, allowFixture: wantsFixture() });
+  // Listening off: the object exists (other code holds a reference) but has no provider and never the fixture, so it is simply unavailable.
+  const golisten = createGoListen({ store, bus, adapters, clock, providers, allowFixture: listen ? wantsFixture() : false });
   // Preview mode and the development preference flip the fixture switch at runtime; a real provider is unaffected.
-  if (opts.allowFixture === undefined) subscribePrefs(() => golisten.setAllowFixture(wantsFixture()));
+  if (listen && opts.allowFixture === undefined) subscribePrefs(() => golisten.setAllowFixture(wantsFixture()));
 
   // ── the app's own speech service: registered only when it says it is configured and reachable ──
   // Never blocks startup. No key is read, stored or bundled here: the server holds it. When the service reports missing
@@ -214,7 +223,7 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
     },
     () => undefined,
   );
-  if (opts.speechProxy !== false) {
+  if (listen && opts.speechProxy !== false) {
     const cfg = opts.speechProxy ?? {};
     proxy = cfg.provider ?? new ProxySpeechProvider({
       ...(cfg.baseUrl !== undefined ? { baseUrl: cfg.baseUrl } : {}),
@@ -224,14 +233,19 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   }
 
   // ── GoLearn (listening is recommended only where reviewed real speech exists) and GoTell ──
-  const golearn = createGoLearn({
+  // `listening` is GoLearn's own option (package E); typed as an intersection so this compiles before and after it exists.
+  const learnDeps: Parameters<typeof createGoLearn>[0] & { listening?: boolean } = {
     store, bus, adapters, clock,
+    listening: listen,
     audioEligible: async (textId) => {
+      if (!listen) return false;
       try { return (await golisten.audioStatus(textId)).evidenceEligible; } catch { return false; }
     },
-  });
+  };
+  const golearn = createGoLearn(learnDeps);
   golearn.attach();
-  const gotell = createGoTell({ store, bus, adapters, golearn, golisten, clock });
+  // No GoListen for GoTell while listening is off: a saved testimony version then queues no audio job.
+  const gotell = createGoTell({ store, bus, adapters, golearn, ...(listen ? { golisten } : {}), clock });
 
   // ── the reading ladder and the dictionaries ──
   // One lazy source per language: createFetchLexiconSource makes no request until it is first asked something.
@@ -273,7 +287,14 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   }
 
   // ── speech-provider controls for Settings → Speech ──
-  const speech: SpeechApi = {
+  const inertSpeech: SpeechApi = {
+    azure: () => ({ configured: false, remembered: false }),
+    proxy: async () => undefined,
+    recheck: async () => undefined,
+    configureAzure: async () => undefined,
+    forgetAzure: () => undefined,
+  };
+  const speech: SpeechApi = !listen ? inertSpeech : {
     azure: () => ({ configured: !!azure, remembered: !!recallAzure(), region: azure?.region ?? recallAzure()?.region }),
     proxy: () => proxyCheck,
     async recheck() {
@@ -305,11 +326,12 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
     catalog, lexicon,
     backup: createBackupApi(store),
     speech,
+    features,
     startup,
   };
   // Jobs queued earlier (a saved testimony version only queues its audio) or left retryable are picked up now,
   // in the background, when a usable provider exists. Never blocks startup; never runs without a provider.
-  void proxyCheck.then(() => resumeQueuedAudio(store, golisten));
+  if (listen) void proxyCheck.then(() => resumeQueuedAudio(store, golisten));
   return { services, user, course };
 }
 

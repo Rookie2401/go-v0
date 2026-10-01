@@ -9,7 +9,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import type { ReactNode } from 'react';
 import { rememberActiveUser } from './prefs';
 import { newSession, sittingSession, touchSitting } from './sitting';
-import type { AdapterRegistry, AppStore, Course, CourseCatalog, EventBus, GoLearn, GoListen, GoTell, LanguageCode, LexiconSource, ProviderAvailability, Text, User } from '../core';
+import type { AdapterRegistry, AppStore, Course, CourseCatalog, EventBus, Features, GoLearn, GoListen, GoTell, LanguageCode, LexiconSource, ProviderAvailability, Text, User } from '../core';
 import type { PlainTextOptions, PlainTextResult } from '../ingest/plaintext';
 
 export { newSession };
@@ -108,6 +108,8 @@ export interface AppServices {
   lexicon(lang: LanguageCode): LexiconSource | undefined;
   backup: BackupApi;
   speech: SpeechApi;
+  /** Which optional parts of the app are on (GoListen is off in V1). The UI reads this, never the constant, so tests can render either state. */
+  features: Features;
   startup?: StartupInfo;
 }
 

@@ -28,7 +28,7 @@ export interface ListenOpts {
 }
 
 export function createHarness(opts: {
-  lemmaOf?: Parameters<typeof createTestRegistry>[0]; decode?: LanguageCode[]; policy?: GoLearnDeps['policy']; attach?: boolean;
+  lemmaOf?: Parameters<typeof createTestRegistry>[0]; decode?: LanguageCode[]; listening?: boolean; policy?: GoLearnDeps['policy']; attach?: boolean;
   audioEligible?: GoLearnDeps['audioEligible'];
   /**
    * Default true: a reading / listening helper called with a DIFFERENT session string than the previous helper call starts
@@ -41,7 +41,7 @@ export function createHarness(opts: {
   const clock = makeClock();
   const bus = new StoreEventBus(store, clock);
   const adapters = createTestRegistry(opts.lemmaOf, { decode: opts.decode });
-  const golearn = createGoLearn({ store, bus, adapters, policy: opts.policy, clock, audioEligible: opts.audioEligible });
+  const golearn = createGoLearn({ store, bus, adapters, policy: opts.policy, clock, audioEligible: opts.audioEligible, listening: opts.listening });
   if (opts.attach !== false) golearn.attach();
   let counter = 0;
   const uniq = () => `k${counter++}`;

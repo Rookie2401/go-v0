@@ -22,3 +22,12 @@ export const COURSES: Course[] = [
 ];
 
 export const courseForLang = (lang: Language['id']) => COURSES.find((c) => c.lang === lang)!;
+
+/**
+ * Product scope switches. GoListen (audio: synthesis, playback, recordings, listening evidence) is deferred to a
+ * later V2 iteration by the course owner (2026-10-01). Its code stays in the repository, dormant and tested, so V2
+ * starts from it; with `listen: false` the app registers no speech provider, makes no speech request, shows no audio
+ * interface and makes no statement about listening. Flip the flag to bring it back.
+ */
+export interface Features { listen: boolean }
+export const FEATURES: Features = { listen: false };

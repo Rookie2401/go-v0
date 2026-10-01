@@ -24,7 +24,7 @@ import { useDraft } from './useDraft';
 type DiffRow = { kind: 'same' | 'added' | 'removed' | 'changed'; a?: string; b?: string };
 
 export function Testimony() {
-  const { store, gotell, userId, lang, course } = useApp();
+  const { store, gotell, userId, lang, course, features } = useApp();
   const owner = useMemo(() => ({ userId, lang }), [userId, lang]);
   const { ctrl: rawCtrl, rerender } = useDraft(gotell, owner);
   // While the controller for a just-switched learner / language is being created, show nothing of the old one.
@@ -265,7 +265,7 @@ export function Testimony() {
           </section>
         )}
 
-        {latest && <RevisionAudio key={latest.id} revision={latest} currentDraft={draft} />}
+        {features.listen && latest && <RevisionAudio key={latest.id} revision={latest} currentDraft={draft} />}
 
         <section className="history" aria-label="Version history">
           <h2 className="section-head">Versions</h2>

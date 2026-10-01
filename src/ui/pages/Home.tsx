@@ -37,7 +37,7 @@ const ENTRIES: Array<{ to: string; name: string; sub: string }> = [
 const isRehearsal = (r: Recommendation) => r.reason === 'rehearse-testimony';
 
 export function Home() {
-  const { store, bus, golearn, userId, lang, user, course } = useApp();
+  const { store, bus, golearn, userId, lang, user, course, features } = useApp();
   const preview = usePreview();
   const { texts: allTexts } = useLangTexts();
   // A course with a reading ladder gets one more door, above the others; a course without one looks exactly as before.
@@ -66,6 +66,7 @@ export function Home() {
       // are dropped outside preview even if the engine offered them.
       const kept: Item[] = [];
       for (let i = 0; i < recs.length; i++) {
+        if (!features.listen && recs[i].reason === 'listen-to-read-text') continue; // no audio suggestion while listening is off
         const text = rows[i];
         if (text && isTestimonyText(text, corpusMap)) {
           if (recs[i].reason === 'rehearse-testimony') kept.push({ rec: recs[i] });
@@ -78,7 +79,7 @@ export function Home() {
       if (live) setItems(ordered);
     })().catch((e: unknown) => { if (live) setError(e instanceof Error ? e.message : String(e)); });
     return () => { live = false; };
-  }, [store, golearn, userId, lang, preview]);
+  }, [store, golearn, userId, lang, preview, features.listen]);
 
   // Has this learner finished a text in this language? (Decides the empty-state wording.)
   useEffect(() => {

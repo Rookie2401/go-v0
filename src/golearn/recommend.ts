@@ -158,7 +158,7 @@ export async function recommend(
             explanation: `${pctOf(cov.coverage.partialCoverage)} % of its words were met but not yet shown understood.`,
           });
         }
-        if (ctx.audioEligible && (await ctx.audioEligible(t.id))) {
+        if (ctx.listening && ctx.audioEligible && (await ctx.audioEligible(t.id))) {
           const heard = new Set((byText.get(t.id) ?? []).filter((e) => e.modality === 'listening').map((e) => e.sentenceId));
           const liveIds = new Set((await live(t.id)).map((s) => s.id));
           const heardLive = [...heard].filter((id) => liveIds.has(id)).length;

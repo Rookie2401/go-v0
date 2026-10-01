@@ -10,7 +10,7 @@ import { forgetAzure, recallAzure, rememberAzure, resetPrefsForTests, setPref } 
 beforeEach(() => { resetPrefsForTests(); localStorage.clear(); });
 afterEach(() => { resetPrefsForTests(); localStorage.clear(); });
 
-const opts = (extra: Parameters<typeof bootstrap>[0] = {}) => ({ store: createMemoryStore(), courseId: 'honduras-es', ...extra });
+const opts = (extra: Parameters<typeof bootstrap>[0] = {}) => ({ store: createMemoryStore(), courseId: 'honduras-es', features: { listen: true }, ...extra });
 
 describe('bootstrap: content goes through the importer, then the policy migration', () => {
   it('imports the bundled corpus through the v2 importer, remembers it, and skips it when unchanged', async () => {

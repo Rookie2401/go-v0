@@ -14,7 +14,7 @@ afterEach(() => { resetPrefsForTests(); localStorage.clear(); });
 
 const reply = (status: number, body?: unknown) => ({ ok: status >= 200 && status < 300, status, json: async () => { if (body === undefined) throw new Error('no json'); return body; } }) as unknown as Response;
 const STATUS = { configured: true, provider: 'azure', providerVersion: 'azure-neural@2026-09', region: 'westeurope' };
-const opts = (fetchImpl: typeof fetch) => ({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: { fetch: fetchImpl } });
+const opts = (fetchImpl: typeof fetch) => ({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: { fetch: fetchImpl }, features: { listen: true } });
 const ids = (r: Awaited<ReturnType<typeof bootstrap>>) => r.services.golisten.providers().map((p) => p.id);
 
 describe('bootstrap: the app\'s own speech service', () => {

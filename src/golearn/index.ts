@@ -54,6 +54,12 @@ export interface GoLearnDeps {
    */
   audioEligible?: (textId: string) => Promise<boolean>;
   /**
+   * Whether listening is part of this version (default true: the engine's capability is unchanged). When false there is no listening
+   * recommendation, no `listening` readiness signal, no listening line in an item's history and no audio wording in explanations.
+   * Listening events already in a log still fold exactly as before: stored state is identical either way.
+   */
+  listening?: boolean;
+  /**
    * Safety valve of the wait for an in-flight emit (ms). It only matters when a subscriber registered BEFORE GoLearn awaits a
    * GoLearn read inside its handler (that read then waits for an emit that waits for the handler). Default 3000.
    */
@@ -68,6 +74,7 @@ export function createGoLearn(deps: GoLearnDeps): GoLearn {
     store: deps.store, bus: deps.bus, adapters: deps.adapters,
     policy: deps.policy ?? defaultPolicy, clock: deps.clock ?? (() => new Date().toISOString()),
     audioEligible: deps.audioEligible,
+    listening: deps.listening ?? true,
     evidenceAsOf: (userId, lang) => folder.lastEvidenceAt(userId, lang), // called only after `folder` exists
     userLog: (userId) => folder.userLog(userId),
   };

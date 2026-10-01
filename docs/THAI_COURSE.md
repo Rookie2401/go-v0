@@ -113,9 +113,11 @@ explain references and never argue a position.
 
 ## 8. GoListen, GoTell, My Testimony
 
-Unchanged engines. Listening counts only for reviewed real speech; the `audio` works of the ladder are
-recommendations until audio and rights exist. GoTell continues to constrain production to what the learner has
-met and never writes the testimony for him.
+**GoListen is deferred to V2** (course owner, 2026-10-01) and switched off by `FEATURES.listen`: no audio
+interface, no speech request, no statement about listening; the `audio` works stay in the ladder data but are not
+shown. When it returns, listening counts only for reviewed real speech, a recording is bound to the exact text
+release it reads, and audio rights are tracked separately from text rights. GoTell continues to constrain
+production to what the learner has met and never writes the testimony for him.
 
 ## 9. Not in this foundation
 

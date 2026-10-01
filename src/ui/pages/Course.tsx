@@ -21,7 +21,7 @@ import { BackLink, Disclosure, Topbar } from '../ui';
 import '../course/course.css';
 
 export function CoursePage() {
-  const { catalog, course, userId } = useApp();
+  const { catalog, course, userId, features } = useApp();
   const preview = usePreview();
   const { ladder, error, reload } = useLadder();
 
@@ -61,7 +61,7 @@ export function CoursePage() {
             // Re-keyed when it becomes the current stage, so it opens by itself after "Change".
             <StageSection
               key={`${s.id}|${s.id === current.id}`} stage={s} open={s.id === current.id}
-              works={ladder.works.filter((w) => w.stageId === s.id)} visible={visibleByWork} progress={progress} onImported={reload}
+              works={ladder.works.filter((w) => w.stageId === s.id && (features.listen || w.role !== 'audio'))} visible={visibleByWork} progress={progress} onImported={reload}
             />
           ))}
         </div>

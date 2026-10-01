@@ -9,10 +9,12 @@
  */
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useApp } from './context';
 import { setPref, usePreview } from './prefs';
 
 export function PreviewBanner() {
   const preview = usePreview();
+  const { features } = useApp();
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -32,7 +34,7 @@ export function PreviewBanner() {
     <div ref={ref} className="preview-banner" role="region" aria-label="Preview mode" data-testid="preview-banner">
       <strong className="preview-banner__title">Preview mode</strong>
       <span className="preview-banner__text">
-        Unreviewed content is showing. These texts have not been reviewed or verified, and any audio may be placeholder sound, not speech. This is not the learner&rsquo;s normal library.
+        Unreviewed content is showing. These texts have not been reviewed or verified{features.listen ? ', and any audio may be placeholder sound, not speech' : ''}. This is not the learner&rsquo;s normal library.
       </span>
       <span className="preview-banner__actions">
         <button type="button" className="btn btn--small" onClick={() => setPref('preview', false)}>Turn off preview</button>

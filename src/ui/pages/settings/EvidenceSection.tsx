@@ -14,7 +14,7 @@ const REASON_LABEL: Record<EvidenceAudit['excluded'][number]['reason'], string> 
 };
 
 export function EvidenceSection() {
-  const { golearn, userId } = useApp();
+  const { golearn, userId, features } = useApp();
   const [audit, setAudit] = useState<EvidenceAudit | null>(null);
   const [message, setMessage] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
@@ -32,8 +32,8 @@ export function EvidenceSection() {
     <section aria-label="Evidence">
       <h3 className="subsection-head">Evidence</h3>
       <p className="card__note">
-        Progress is worked out from your history by fixed rules: opening or hearing something is exposure, not understanding; help is recorded as help;
-        only reviewed real speech counts for listening. Nothing is ever deleted from your history; events that do not count are listed here.
+        Progress is worked out from your history by fixed rules: opening{features.listen ? ' or hearing' : ''} something is exposure, not understanding; help is recorded as help;
+        {features.listen ? ' only reviewed real speech counts for listening.' : ''} Nothing is ever deleted from your history; events that do not count are listed here.
       </p>
       {error && <p role="alert" className="error">{error}</p>}
       {message && <p role="status" className="note">{message}</p>}

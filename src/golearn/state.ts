@@ -21,6 +21,11 @@ export interface Ctx {
   /** True when reviewed, real-speech audio exists for the text (supplied by GoListen). Absent ⇒ never recommend listening. */
   audioEligible?: (textId: string) => Promise<boolean>;
   /**
+   * Whether listening is part of this version of the product (GoListen is switched off by one flag, PLAN8). It only decides what GoLearn
+   * SAYS and RECOMMENDS; listening events already in the log fold exactly as before, so stored state is the same either way.
+   */
+  listening: boolean;
+  /**
    * Time of the latest evidence event of this learner (in that language) that has been folded (the `asOf` of coverage). Wired by
    * `createGoLearn`; reads the folder's in-memory index and therefore never waits on the fold queue.
    */

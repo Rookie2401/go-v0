@@ -195,7 +195,7 @@ export function TextList({ refreshKey }: { refreshKey: unknown }) {
 }
 
 export function ContentSection() {
-  const { startup } = useApp();
+  const { startup, features } = useApp();
   const [preview, setPreview] = usePref('preview');
   const [tick, setTick] = useState(0);
   const onImported = useCallback(() => setTick((n) => n + 1), []);
@@ -208,8 +208,8 @@ export function ContentSection() {
         <input type="checkbox" checked={preview} aria-label="Preview unreviewed content" onChange={(e) => setPreview(e.target.checked)} />
       </label>
       <p className="card__note">
-        Off by default. When it is on, texts that have not been reviewed or verified are listed (each with the reasons it is held back),
-        placeholder audio is allowed, and a banner says so on every screen. Scripture whose wording has not been verified is never shown unless this is on.
+        Off by default. When it is on, texts that have not been reviewed or verified are listed (each with the reasons it is held back),{' '}
+        {features.listen ? 'placeholder audio is allowed, ' : ''}and a banner says so on every screen. Scripture whose wording has not been verified is never shown unless this is on.
       </p>
       <Importer onImported={onImported} />
       <Disclosure headingLevel={3} lazy label="Add a book from a text file" className="copy__disclosure">

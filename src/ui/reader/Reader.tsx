@@ -65,6 +65,7 @@ import type { DictionaryInfo, LexiconSource } from '../../core';
 import { dictionaryView } from '../../ingest';
 import type { DictionaryView } from './assistance';
 import { useAssistance } from './useAssistance';
+import { useListenEnabled } from './useListen';
 import './thai.css';
 
 export interface ReaderProps {
@@ -201,7 +202,10 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
   const [viewed, setViewed] = useState<ReadonlySet<string>>(new Set());
   const [auto, setAuto] = useState<boolean | null>(null);
   const [finishedHere, setFinishedHere] = useState(false);
-  const record = useReadingProgress(useMemo(() => [text.id], [text.id])).get(text.id);
+  const listen = useListenEnabled();
+  const stored = useReadingProgress(useMemo(() => [text.id], [text.id])).get(text.id);
+  // With listening off the reading details say nothing about listening, whatever an older record holds.
+  const record = useMemo(() => (stored && !listen && stored.listenedSentences ? { ...stored, listenedSentences: 0 } : stored), [stored, listen]);
   const detectorRef = useRef<ViewDetector | null>(null);
   const overlays = useRef(new Set<string>());
   const gate = useMemo<ReadingGate>(() => ({

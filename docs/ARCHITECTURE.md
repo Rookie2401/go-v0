@@ -301,3 +301,20 @@ Briefs: `docs/PLAN6.md`. Results: `docs/READINESS.md`, `docs/thai/DICTIONARY_REP
     retained, pluggable systems (including an external tokenizer's output), a derived rights-safe set, and the
     tooling for a manually checked, held-out course gold set (`src/bench`, never part of the app bundle).
 49. **A technical fixture is not Scripture.** `scripture.role: 'technical-fixture'` can never be published.
+
+## 17. Audit round and scope change (2026-10-01)
+
+Briefs: `docs/PLAN7.md`, `docs/PLAN8.md`. Results: `docs/READINESS.md`.
+
+50. **A whole-text report belongs to a content version.** Like a completion, a whole-text comprehension report is
+    current only for the version it was made about; an earlier one is history (`reportedEarlierVersion`). Recommendations
+    and readiness read the canonical record, never the raw log.
+51. **A retired sentence keeps all of its evidence-bearing rows** (tokens, analyses, phrase and pattern occurrences),
+    so a rebuild after a revision is identical; learner-facing reads consider live sentences only.
+52. **Source and certainty are different properties.** A reading's provenance is rendered from its recorded source,
+    its certainty from its confidence; a disagreement between sources is shown, never settled by the display.
+53. **One coverage basis.** The coverage figure and the low-coverage warning are computed from the same final
+    analysis (word list, dictionary, supplied spans, corrections); a validation-only diagnostic names its scope.
+54. **Playback is not speech.** `ProviderAvailability.realSpeech` is separate from `available`.
+55. **Product scope is a flag, not a deletion.** `FEATURES.listen = false` defers GoListen to V2: no provider, no
+    request, no audio interface, no statement about listening, no data removed; the dormant package stays tested.

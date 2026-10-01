@@ -21,7 +21,7 @@ import { vi } from 'vitest';
 import { COURSES, REVIEW_OK, StoreEventBus, buildFixtureText, createMemoryStore, ids, seedBasics } from '../../src/core';
 import type {
   AppStore, AssistanceLevel, AudioAsset, AudioManifest, AudioSegment, AudioStatus, ComfortBand, ComprehensionReported, DomainEvent,
-  AssistanceProfile, CourseCatalog, EvidenceAudit, GoLearn, GoListen, GoTell, GoTellSuggestion, IntentProposal, PersonalizedCoverage, ProductionAnalysis, ProviderAvailability,
+  AssistanceProfile, CourseCatalog, EvidenceAudit, Features, GoLearn, GoListen, GoTell, GoTellSuggestion, IntentProposal, PersonalizedCoverage, ProductionAnalysis, ProviderAvailability,
   ReadingPace, ReadingProgress, Recommendation, ScriptureReadiness, Stage, StageReadiness, SentenceSupport, Testimony, TestimonyDraft, TestimonyRevision, Text, TokenSupport, VoiceConfig,
 } from '../../src/core';
 import { THAI_COURSE_ID, THAI_STAGES, THAI_WORKS, createCourseCatalog } from '../../src/course';
@@ -519,7 +519,7 @@ export interface Mounted {
   unmount(): Promise<void>;
 }
 
-export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: FakeListenOptions; tell?: FakeTellOptions; courseId?: string } = {}): Promise<Harness> {
+export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: FakeListenOptions; tell?: FakeTellOptions; courseId?: string; features?: Partial<Features> } = {}): Promise<Harness> {
   resetPrefsForTests();
   resetSittingsForTests();
   try { localStorage.clear(); } catch { /* jsdom only */ }
@@ -542,6 +542,7 @@ export async function makeHarness(opts: { learn?: FakeLearnOptions; listen?: Fak
     adapters: { get: () => { throw new Error('adapters are not used by the UI tests'); }, all: () => [] },
     golearn: learn, golisten: listen, gotell: tell,
     ingest: controls.ingest, backup: controls.backup, speech: controls.speech,
+    features: { listen: true, ...opts.features }, // the dormant GoListen UI keeps its tests: new tests pass { listen: false }
   };
   const user = (await store.users.get(USER))!;
   const course = COURSES.find((c) => c.id === courseId)!;

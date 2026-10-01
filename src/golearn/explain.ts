@@ -38,7 +38,8 @@ export async function explainItem(ctx: Ctx, userId: string, itemId: string): Pro
   const noun = k.itemKind === 'phrase' ? 'phrase' : k.itemKind === 'pattern' ? 'pattern' : k.itemKind === 'orth' ? 'spelling feature' : 'word';
 
   let excludedEvents = 0;
-  for (const { event } of await excludedListens(ctx, userId)) {
+  // Without listening in this version there is no audio wording (the ignored plays stay in the log and in the audit)
+  for (const { event } of ctx.listening ? await excludedListens(ctx, userId) : []) {
     for (const sid of event.sentenceIds) {
       const info = await sentenceItems(ctx, sid);
       if (info?.items.has(itemId)) { excludedEvents += 1; break; }

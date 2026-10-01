@@ -1,5 +1,10 @@
 # Speech (GoListen audio)
 
+> **Dormant.** GoListen is deferred to V2 and switched off (`FEATURES.listen` in `src/core/config.ts`, `LISTEN` in
+> `vite.config.ts`). With the flag off the app shows no audio interface, registers no provider and the dev server
+> has no `/api/speech/*` endpoint. Everything below describes the dormant code, which stays tested
+> (`npm run speech:check`, `test/golisten`, `test/server`). To resume work on it, set both constants to `true`.
+
 **No real speech has been produced or auditioned in this repository's history.** Every Azure path described here —
 the same-origin proxy and the direct adapter — is verified against **mocked HTTP only**. No request has ever been
 sent to the live Azure service, no voice has been heard, and nothing in the audio pipeline claims otherwise. Until a

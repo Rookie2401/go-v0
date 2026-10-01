@@ -168,9 +168,10 @@ export function ProgressLine({ progress, testId = 'reading-progress', explain = 
 
 /** What only the reader adds beside the progress line: the learner's own text-level report and real, reviewed listening. */
 function ReaderExtras({ progress }: { progress: ReadingProgress }) {
+  const { features } = useApp();
   const parts: string[] = [];
   if (progress.reportedComprehension) parts.push(`you said you understood ${DEGREE_WORD[progress.reportedComprehension]}`);
-  if (progress.listenedSentences > 0) parts.push(`listened to ${progress.listenedSentences} ${progress.listenedSentences === 1 ? 'sentence' : 'sentences'}`);
+  if (features.listen && progress.listenedSentences > 0) parts.push(`listened to ${progress.listenedSentences} ${progress.listenedSentences === 1 ? 'sentence' : 'sentences'}`);
   if (parts.length === 0) return null;
   return <span data-testid="reading-extras"> · {parts.join(' · ')}</span>;
 }

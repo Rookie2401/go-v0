@@ -22,6 +22,7 @@ import {
 } from '../../golisten';
 import type { PlayerEffect, PlayerManifestInput, PlayerModel, TranscriptMode } from '../../golisten';
 import { useApp } from '../context';
+import { useListenEnabled } from '../reader/useListen';
 import { setPref, usePref, usePreview } from '../prefs';
 import { I, IconBtn } from '../ui';
 import { configureAudio, isEditableTarget } from './audio';
@@ -69,7 +70,12 @@ const TRANSCRIPT_LABELS: Record<TranscriptMode, string> = {
 const viewKey = (m: PlayerModel) =>
   [m.segmentIndex, m.playing, m.speed, m.transcriptMode, m.revealed.join(','), m.started, m.completed, m.finished, m.loop.unit, m.manifest.segments.length, m.manifest.segments.filter((s) => s.ready).length].join('|');
 
-export function Player({ textId, onChange, controlRef }: PlayerProps) {
+/** With listening switched off the player does not exist: nothing renders and GoListen is never called. */
+export function Player(props: PlayerProps) {
+  return useListenEnabled() ? <PlayerBody {...props} /> : null;
+}
+
+function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
   const { store, bus, golisten, userId, lang, session } = useApp();
   const preview = usePreview();
   const [audio, setAudio] = useState<AudioStatus | undefined>();

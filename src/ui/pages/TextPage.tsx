@@ -17,6 +17,7 @@ import type { PlayerChange } from '../player/Player';
 import { usePreview } from '../prefs';
 import { DifficultyPreview } from '../reader/DifficultyPreview';
 import { useReadingOverlay } from '../reader/readingGate';
+import { useListenEnabled } from '../reader/useListen';
 import { Reader } from '../reader/Reader';
 import { BackLink, Topbar } from '../ui';
 
@@ -29,6 +30,7 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
   const back = mode === 'scripture' ? '/scripture' : '/read';
   const backLabel = mode === 'scripture' ? 'Scripture' : 'Library';
   const { store, lang } = useApp();
+  const listen = useListenEnabled();
   const preview = usePreview();
   const [gate, setGate] = useState<Gate>({ state: 'loading' });
   useEffect(() => {
@@ -78,10 +80,10 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
       key={`reader:${textId}`}
       textId={textId}
       mode={mode}
-      activeSentenceId={info?.state.playing ? info.segment?.sentenceIds[0] : undefined}
-      concealed={info?.concealed}
+      activeSentenceId={listen && info?.state.playing ? info.segment?.sentenceIds[0] : undefined}
+      concealed={listen ? info?.concealed : undefined}
       before={<>{mode === 'scripture' && <PreparePanel textId={textId} />}<DifficultyPreview textId={textId} /></>}
-      bar={<Player key={`player:${textId}`} textId={textId} onChange={onChange} />}
+      bar={listen ? <Player key={`player:${textId}`} textId={textId} onChange={onChange} /> : undefined}
     />
   );
 }

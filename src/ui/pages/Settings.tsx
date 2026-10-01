@@ -52,10 +52,11 @@ function jumpTo(id: string): void {
 }
 
 function SectionNav() {
+  const { features } = useApp();
   return (
     <nav className="settings__nav" aria-label="Settings sections">
       <ul>
-        {SETTINGS_SECTIONS.map((s) => (
+        {SETTINGS_SECTIONS.filter((s) => features.listen || s.id !== 'speech').map((s) => (
           <li key={s.id}>
             <button type="button" className="settings__nav-btn" data-section={s.id} onClick={() => jumpTo(s.id)}>{s.label}</button>
           </li>
@@ -66,7 +67,7 @@ function SectionNav() {
 }
 
 export function Settings() {
-  const { user, course } = useApp();
+  const { user, course, features } = useApp();
   const [speechTick, setSpeechTick] = useState(0);
   return (
     <div>
@@ -82,7 +83,7 @@ export function Settings() {
         <ReadingSection />
         <BackupSection />
         <ContentSection />
-        <SpeechSection refreshKey={speechTick} />
+        {features.listen && <SpeechSection refreshKey={speechTick} />}
         <VocabularySection />
         <AdvancedSection onSpeechChanged={() => setSpeechTick((n) => n + 1)} />
       </div>
@@ -213,7 +214,7 @@ type KindFilter = Extract<ItemKind, 'form' | 'lemma' | 'phrase'>;
  * on its own page (/vocabulary) it is shown open.
  */
 function VocabularySection({ collapsed = true }: { collapsed?: boolean } = {}) {
-  const { store, bus, golearn, userId, lang, session } = useApp();
+  const { store, bus, golearn, userId, lang, session, features } = useApp();
   const [rows, setRows] = useState<LearnerItemState[] | null>(null);
   const [kind, setKind] = useState<KindFilter>('form');
   const [query, setQuery] = useState('');
@@ -264,10 +265,10 @@ function VocabularySection({ collapsed = true }: { collapsed?: boolean } = {}) {
       ) : (
         <div className="table-wrap">
           <table className="vocab">
-            <thead><tr><th>Word</th><th>Reading</th><th>Listening</th><th>Writing</th><th>Met</th><th>Mark</th><th>Why</th></tr></thead>
+            <thead><tr><th>Word</th><th>Reading</th>{features.listen && <th>Listening</th>}<th>Writing</th><th>Met</th><th>Mark</th><th>Why</th></tr></thead>
             <tbody>
               {visible.slice(0, limit).map((r) => (
-                <VocabRow key={r.id} r={r} why={why[r.itemId]} onWhy={() => { void explain(r.itemId); }} onMark={(v) => { void mark(r, v); }} />
+                <VocabRow key={r.id} r={r} listen={features.listen} why={why[r.itemId]} onWhy={() => { void explain(r.itemId); }} onMark={(v) => { void mark(r, v); }} />
               ))}
             </tbody>
           </table>
@@ -280,7 +281,7 @@ function VocabularySection({ collapsed = true }: { collapsed?: boolean } = {}) {
   return (
     <section aria-label="Vocabulary" id="vocabulary" data-settings-section="vocabulary">
       <h2 className="section-head" tabIndex={-1}>Vocabulary</h2>
-      <p className="card__note">Built from what you have actually read, heard and written. Marking a word only adjusts how it is displayed to you; it never erases the evidence.</p>
+      <p className="card__note">Built from what you have actually read{features.listen ? ', heard' : ''} and written. Marking a word only adjusts how it is displayed to you; it never erases the evidence.</p>
       {collapsed
         ? <Disclosure headingLevel={3} className="vocab__disclosure" label={rows === null ? 'Vocabulary table' : `Vocabulary table (${wordCount} ${wordCount === 1 ? 'word' : 'words'})`}>{table}</Disclosure>
         : table}
@@ -289,14 +290,14 @@ function VocabularySection({ collapsed = true }: { collapsed?: boolean } = {}) {
 }
 
 /** One vocabulary row; "likely familiar (estimate)" is an estimate and is never shown as known. */
-function VocabRow({ r, why, onWhy, onMark }: { r: LearnerItemState; why?: string; onWhy(): void; onMark(v: 'known' | 'unknown' | 'clear'): void }) {
+function VocabRow({ r, why, listen, onWhy, onMark }: { r: LearnerItemState; listen: boolean; why?: string; onWhy(): void; onMark(v: 'known' | 'unknown' | 'clear'): void }) {
   const estimate = r.reading.estimatedFamiliar && levelRank(r.reading.level) < levelRank('recognized');
   return (
     <>
       <tr className="vocab__row">
         <th scope="row" lang={r.lang}><span className={`vocab__dot vocab__dot--${dotClass(r.reading.level)}`} aria-hidden="true" />{itemSurface(r.itemId)}</th>
         <td data-label="Reading">{levelLabel(r.reading.level)}{estimate && <span className="faint"> · likely familiar (estimate)</span>}</td>
-        <td data-label="Listening">{levelLabel(r.listening.level)}</td>
+        {listen && <td data-label="Listening">{levelLabel(r.listening.level)}</td>}
         <td data-label="Writing">{levelLabel(r.writing.level)}</td>
         <td data-label="Met">{r.encounterCount}</td>
         <td>
@@ -308,7 +309,7 @@ function VocabRow({ r, why, onWhy, onMark }: { r: LearnerItemState; why?: string
         </td>
         <td><button type="button" className="btn btn--small btn--quiet" aria-label={`Why ${itemSurface(r.itemId)}?`} onClick={onWhy}>Why?</button></td>
       </tr>
-      {why && <tr className="vocab__why"><td colSpan={7} className="card__prov" data-testid="vocab-why">{why}</td></tr>}
+      {why && <tr className="vocab__why"><td colSpan={listen ? 7 : 6} className="card__prov" data-testid="vocab-why">{why}</td></tr>}
     </>
   );
 }
@@ -318,16 +319,19 @@ function VocabRow({ r, why, onWhy, onMark }: { r: LearnerItemState; why?: string
  * is needed to read, listen or write; everything that used to be on this page is still here.
  */
 function AdvancedSection({ onSpeechChanged }: { onSpeechChanged(): void }) {
+  const { features } = useApp();
   return (
     <section aria-label="Advanced" id="settings-advanced" data-settings-section="advanced" className="advanced">
       <Disclosure headingLevel={2} lazy label="Advanced" className="advanced__disclosure">
-        <p className="card__note">For checking and repairing, not for everyday use: what counts as evidence, audio jobs, a directly entered speech key, and what each language can honestly do.</p>
+        <p className="card__note">For checking and repairing, not for everyday use: what counts as evidence{features.listen ? ', audio jobs, a directly entered speech key,' : ''} and what each language can honestly do.</p>
         <EvidenceSection />
-        <DiagnosticsSection />
-        <section aria-label="Speech: direct key and development">
-          <h3 className="subsection-head">Speech: direct key and development</h3>
-          <AdvancedSpeechControls onChanged={onSpeechChanged} />
-        </section>
+        {features.listen && <DiagnosticsSection />}
+        {features.listen && (
+          <section aria-label="Speech: direct key and development">
+            <h3 className="subsection-head">Speech: direct key and development</h3>
+            <AdvancedSpeechControls onChanged={onSpeechChanged} />
+          </section>
+        )}
         <LanguageSupportSection />
       </Disclosure>
     </section>

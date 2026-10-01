@@ -227,8 +227,8 @@ export async function stageReadiness(ctx: Ctx, userId: string, courseId: string,
     }
   }
 
-  // ── listening: only reviewed real speech ever creates listening encounters ──
-  {
+  // ── listening: only reviewed real speech ever creates listening encounters. Omitted entirely when listening is not part of this version. ──
+  if (ctx.listening) {
     const { minSentences, coverage } = R.listening;
     const target = `at least ${Math.round(coverage * 100)} % of the words in the sentences you have heard are understood by ear`;
     const heard = new Map<string, Set<string>>();

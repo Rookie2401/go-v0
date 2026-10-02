@@ -13,6 +13,12 @@ import type { LanguageCode, PartOfSpeech } from '../model';
 export interface DictionaryEntry {
   /** Adapter-normalized headword. */
   form: string;
+  /**
+   * The headword as the source writes it, when that differs from `form` (normalization folds case: "PA", "ESO",
+   * "Rosa", "Marte"). Absent = written as `form`. An entry written with capitals is a reading only of a word written
+   * that way: the acronym ESO is not a reading of "eso", the name Rosa not of "una rosa".
+   */
+  written?: string;
   lang: LanguageCode;
   pos?: PartOfSpeech;
   /** English glosses, most important first. */

@@ -1,8 +1,211 @@
 /**
- * Standard Albanian adjectives (with and without a linking article), ordinals and adverbs of the word list. Package Q1.
- * STUB written by the coordinator: the signatures are final (docs/PLAN13.md), the body is the owning package's work.
+ * Standard Albanian adjectives (with and without a linking article) and adverbs of the word list. Package Q1.
+ *
+ * MACHINE-DRAFTED. This list was drafted by a language model and has NOT been checked by a native speaker. An adjective is
+ * stated as its masculine singular without the article, `articulated` (does it stand after i / e / të / së: i mirë, e mirë,
+ * të mirë, të mira), and the forms that differ from the lemma: `fem` (feminine singular), `plM` (masculine plural), `plF`
+ * (feminine plural); an absent form is the lemma. Only adjectives whose article and forms the drafter was sure of are listed.
+ * The deictic adverbs (këtu, aty, atje, kështu, ashtu) belong to the closed-class list. Ordinals other than "i parë" belong to the numerals.
  */
 import type { SqLexeme } from './types';
+import { A, W } from './types';
 
-export const SQ_ADJECTIVES: SqLexeme[] = [];
-export const SQ_ADVERBS: SqLexeme[] = [];
+/** An adjective that takes the linking article ("i mirë"). */
+const I = (lemma: string, gloss: string, extra: Parameters<typeof A>[3] = {}): SqLexeme => A(lemma, true, gloss, extra);
+/** An adjective without the linking article ("shqiptar"). */
+const NA = (lemma: string, gloss: string, extra: Parameters<typeof A>[3] = {}): SqLexeme => A(lemma, false, gloss, extra);
+/** The commonest pattern of the articulated adjective: the feminine plural in -a (i gjatë: të gjata), the rest as the lemma. */
+const IA = (lemma: string, gloss: string, plF: string): SqLexeme => I(lemma, gloss, { plF });
+
+const ARTICULATED: SqLexeme[] = [
+  // size, age, quality
+  I('mirë', 'good', { plF: 'mira' }),
+  I('keq', 'bad', { fem: 'keqe', plM: 'këqij', plF: 'këqija' }),
+  I('madh', 'big, great', { fem: 'madhe', plM: 'mëdhenj', plF: 'mëdha' }),
+  I('vogël', 'small, little', { plM: 'vegjël', plF: 'vogla' }),
+  I('ri', 'young, new', { fem: 're', plM: 'rinj', plF: 'reja' }),
+  IA('vjetër', 'old', 'vjetra'),
+  IA('bukur', 'beautiful, nice', 'bukura'),
+  IA('gjatë', 'tall, long', 'gjata'),
+  IA('shkurtër', 'short', 'shkurtra'),
+  IA('lartë', 'high, tall', 'larta'),
+  IA('ulët', 'low', 'ulëta'),
+  IA('gjerë', 'wide', 'gjera'),
+  IA('ngushtë', 'narrow, tight', 'ngushta'),
+  IA('thellë', 'deep', 'thella'),
+  IA('hollë', 'thin, fine', 'holla'),
+  IA('trashë', 'thick, fat', 'trasha'),
+  IA('fortë', 'strong, loud', 'forta'),
+  IA('dobët', 'weak', 'dobëta'),
+  IA('shpejtë', 'fast, quick', 'shpejta'),
+  IA('lehtë', 'light, easy', 'lehta'),
+  IA('rëndë', 'heavy', 'rënda'),
+  IA('vështirë', 'difficult', 'vështira'),
+  IA('thjeshtë', 'simple', 'thjeshta'),
+  IA('pastër', 'clean, pure', 'pastra'),
+  IA('plotë', 'full, whole', 'plota'),
+  IA('tërë', 'whole, entire', 'tëra'),
+  IA('hapur', 'open', 'hapura'),
+  IA('mbyllur', 'closed', 'mbyllura'),
+  IA('afërt', 'near, close', 'afërta'),
+  IA('largët', 'far, distant', 'largëta'),
+  IA('lirë', 'free; cheap', 'lira'),
+  IA('shtrenjtë', 'expensive', 'shtrenjta'),
+  // temperature, taste, colour
+  IA('ngrohtë', 'warm', 'ngrohta'),
+  IA('ftohtë', 'cold', 'ftohta'),
+  IA('nxehtë', 'hot', 'nxehta'),
+  IA('thatë', 'dry', 'thata'),
+  IA('ëmbël', 'sweet', 'ëmbla'),
+  IA('hidhur', 'bitter', 'hidhura'),
+  IA('bardhë', 'white', 'bardha'),
+  I('zi', 'black', { fem: 'zezë', plM: 'zinj', plF: 'zeza' }),
+  I('kuq', 'red', { fem: 'kuqe', plF: 'kuqe' }),
+  IA('kaltër', 'blue', 'kaltra'),
+  IA('verdhë', 'yellow', 'verdha'),
+  IA('gjelbër', 'green', 'gjelbra'),
+  // people, feelings, state
+  IA('lumtur', 'happy', 'lumtura'),
+  IA('trishtuar', 'sad', 'trishtuara'),
+  IA('lodhur', 'tired', 'lodhura'),
+  IA('uritur', 'hungry', 'uritura'),
+  IA('ngopur', 'full (of food)', 'ngopura'),
+  IA('mërzitur', 'bored, upset', 'mërzitura'),
+  IA('zemëruar', 'angry', 'zemëruara'),
+  IA('shqetësuar', 'worried, troubled', 'shqetësuara'),
+  IA('dëshpëruar', 'in despair, desperate', 'dëshpëruara'),
+  IA('gëzuar', 'glad, cheerful', 'gëzuara'),
+  IA('sëmurë', 'ill, sick', 'sëmura'),
+  IA('vdekur', 'dead', 'vdekura'),
+  IA('gjallë', 'alive, living', 'gjalla'),
+  IA('pasur', 'rich', 'pasura'),
+  IA('varfër', 'poor', 'varfra'),
+  IA('mençur', 'wise, sensible', 'mençura'),
+  IA('zgjuar', 'clever, bright', 'zgjuara'),
+  IA('dashur', 'dear, beloved', 'dashura'),
+  IA('nderuar', 'honoured, esteemed', 'nderuara'),
+  IA('njohur', 'known, famous', 'njohura'),
+  I('vetëm', 'alone, only', { fem: 'vetme', plF: 'vetme' }),
+  I('marrë', 'foolish, mad', { plF: 'mara' }),
+  IA('qetë', 'calm, quiet', 'qeta'),
+  // truth and judgement
+  IA('vërtetë', 'true, real', 'vërteta'),
+  IA('drejtë', 'right, straight, just', 'drejta'),
+  IA('saktë', 'exact, correct', 'sakta'),
+  IA('qartë', 'clear', 'qarta'),
+  IA('gabuar', 'wrong, mistaken', 'gabuara'),
+  IA('njëjtë', 'same', 'njëjta'),
+  IA('veçantë', 'special, particular', 'veçanta'),
+  IA('përbashkët', 'common, shared', 'përbashkëta'),
+  IA('fshehtë', 'secret, hidden', 'fshehta'),
+  I('tjetër', 'other, another', { plM: 'tjerë', plF: 'tjera' }),
+  I('huaj', 'foreign, strange', { plF: 'huaja' }),
+  I('ndryshëm', 'different', { fem: 'ndryshme', plF: 'ndryshme' }),
+  I('ngjashëm', 'similar', { fem: 'ngjashme', plF: 'ngjashme' }),
+  I('rëndësishëm', 'important', { fem: 'rëndësishme', plF: 'rëndësishme' }),
+  I('shëndetshëm', 'healthy', { fem: 'shëndetshme', plF: 'shëndetshme' }),
+  I('rrezikshëm', 'dangerous', { fem: 'rrezikshme', plF: 'rrezikshme' }),
+  I('fuqishëm', 'powerful', { fem: 'fuqishme', plF: 'fuqishme' }),
+  I('mrekullueshëm', 'wonderful', { fem: 'mrekullueshme', plF: 'mrekullueshme' }),
+  I('pafajshëm', 'innocent', { fem: 'pafajshme', plF: 'pafajshme' }),
+  // faith
+  IA('shenjtë', 'holy, sacred', 'shenjta'),
+  IA('bekuar', 'blessed', 'bekuara'),
+  IA('urtë', 'wise, gentle', 'urta'),
+  IA('përulur', 'humble', 'përulura'),
+  I('krishterë', 'Christian', { plF: 'krishtera' }),
+  // first and last
+  I('parë', 'first', { plF: 'para' }),
+  I('fundit', 'last'),
+];
+
+const PLAIN: SqLexeme[] = [
+  NA('besnik', 'faithful, loyal', { fem: 'besnike', plM: 'besnikë', plF: 'besnike' }),
+  NA('trim', 'brave', { fem: 'trime', plM: 'trima', plF: 'trime' }),
+  NA('bujar', 'generous', { fem: 'bujare', plM: 'bujarë', plF: 'bujare' }),
+  NA('kryesor', 'main, chief', { fem: 'kryesore', plM: 'kryesorë', plF: 'kryesore' }),
+  NA('shqiptar', 'Albanian', { fem: 'shqiptare', plM: 'shqiptarë', plF: 'shqiptare' }),
+  NA('kosovar', 'Kosovar', { fem: 'kosovare', plM: 'kosovarë', plF: 'kosovare' }),
+  NA('grek', 'Greek', { fem: 'greke', plM: 'grekë', plF: 'greke' }),
+  NA('anglez', 'English', { fem: 'angleze', plM: 'anglezë', plF: 'angleze' }),
+  NA('gjerman', 'German', { fem: 'gjermane', plM: 'gjermanë', plF: 'gjermane' }),
+  NA('francez', 'French', { fem: 'franceze', plM: 'francezë', plF: 'franceze' }),
+  NA('italian', 'Italian', { fem: 'italiane', plM: 'italianë', plF: 'italiane' }),
+  NA('rus', 'Russian', { fem: 'ruse', plM: 'rusë', plF: 'ruse' }),
+  NA('serb', 'Serbian', { fem: 'serbe', plM: 'serbë', plF: 'serbe' }),
+  NA('spanjoll', 'Spanish', { fem: 'spanjolle', plM: 'spanjollë', plF: 'spanjolle' }),
+  NA('amerikan', 'American', { fem: 'amerikane', plM: 'amerikanë', plF: 'amerikane' }),
+  NA('evropian', 'European', { fem: 'evropiane', plM: 'evropianë', plF: 'evropiane' }),
+  NA('gati', 'ready'),
+  NA('bosh', 'empty'),
+];
+
+export const SQ_ADJECTIVES: SqLexeme[] = [...ARTICULATED, ...PLAIN];
+
+const ADV = (lemma: string, gloss: string): SqLexeme => W(lemma, 'ADV', gloss);
+
+export const SQ_ADVERBS: SqLexeme[] = [
+  // time
+  ADV('tani', 'now'),
+  ADV('tashmë', 'already, by now'),
+  ADV('sot', 'today'),
+  ADV('dje', 'yesterday'),
+  ADV('pardje', 'the day before yesterday'),
+  ADV('nesër', 'tomorrow'),
+  ADV('pasnesër', 'the day after tomorrow'),
+  ADV('sonte', 'tonight'),
+  ADV('mbrëmë', 'last night, yesterday evening'),
+  ADV('atëherë', 'then'),
+  ADV('pastaj', 'afterwards, then'),
+  ADV('ende', 'still, yet'),
+  ADV('akoma', 'still, yet'),
+  ADV('dikur', 'once, formerly'),
+  ADV('herët', 'early'),
+  ADV('vonë', 'late'),
+  ADV('shpejt', 'quickly, soon'),
+  ADV('ngadalë', 'slowly'),
+  ADV('gjithmonë', 'always'),
+  ADV('gjithnjë', 'always, all the time'),
+  ADV('shpesh', 'often'),
+  ADV('rrallë', 'rarely, seldom'),
+  ADV('ndonjëherë', 'sometimes'),
+  ADV('kurrë', 'never, ever'),
+  ADV('përsëri', 'again'),
+  ADV('sërish', 'again'),
+  ADV('fillimisht', 'at first'),
+  // manner and degree
+  ADV('mirë', 'well'),
+  ADV('keq', 'badly'),
+  ADV('bukur', 'beautifully, nicely'),
+  ADV('lehtë', 'easily, lightly'),
+  ADV('vështirë', 'with difficulty'),
+  ADV('fort', 'strongly, very much, loudly'),
+  ADV('shumë', 'very, much, a lot'),
+  ADV('pak', 'little, a little'),
+  ADV('mjaft', 'quite, enough'),
+  ADV('tepër', 'too, excessively'),
+  ADV('aq', 'so, that much'),
+  ADV('fare', 'at all'),
+  ADV('aspak', 'not at all'),
+  ADV('pothuajse', 'almost'),
+  ADV('thjesht', 'simply'),
+  ADV('pikërisht', 'exactly, precisely'),
+  ADV('sidomos', 'especially'),
+  ADV('veçanërisht', 'particularly'),
+  ADV('madje', 'even'),
+  ADV('vetëm', 'only; alone'),
+  ADV('bashkë', 'together'),
+  ADV('gjithashtu', 'also, likewise'),
+  // place
+  ADV('larg', 'far'),
+  ADV('afër', 'near'),
+  ADV('lart', 'up, above'),
+  ADV('poshtë', 'down, below'),
+  ADV('brenda', 'inside'),
+  ADV('jashtë', 'outside'),
+  // stance
+  ADV('sigurisht', 'certainly, of course'),
+  ADV('ndoshta', 'perhaps'),
+  ADV('vërtet', 'really, truly'),
+  ADV('padyshim', 'undoubtedly'),
+];

@@ -59,7 +59,7 @@ import { createViewDetector } from './viewDetection';
 import type { ViewDetector, ViewDetectorFactory } from './viewDetection';
 import { useTextData } from './useTextData';
 import type { TextData } from './useTextData';
-import { dictionaryName, englishBehindMenu, hasClauseSpans, hasSeveralReadings, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, unitStretches, unitText, visibleNotes } from './assistance';
+import { dictionaryName, englishBehindMenu, hasClauseSpans, hasSeveralReadings, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, unitStretches, unitText, visibleNotes, rescueRomanization } from './assistance';
 import type { LayerFacts } from './assistance';
 import type { DictionaryInfo, LexiconSource } from '../../core';
 import { dictionaryView } from '../../ingest';
@@ -643,9 +643,16 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
     () => (cardToken && wordCard?.opened.includes('decoding') && loaded ? decodeToken(adapter, cardToken, cardAnalysis) : null),
     [adapter, cardToken, wordCard?.opened, loaded, cardAnalysis],
   );
-  const romanization = syllables
-    ? (syllables.map((s) => s.romanization).filter((r): r is string => !!r).join('-') || (typeof cardAnalysis?.notes?.romanization === 'string' ? cardAnalysis.notes.romanization : undefined))
-    : undefined;
+  // The rescue shows the WORD as it is said (see rescueRomanization): the adapter's romanization of the whole word is asked
+  // for only when the units are written units rather than syllables.
+  const romanization = useMemo<string | undefined>(() => {
+    if (!syllables) return undefined;
+    const whole = (): string | undefined => {
+      if (!adapter || !cardToken) return undefined;
+      try { return adapter.pronunciation({ surface: cardToken.surface, start: 0, end: cardToken.surface.length, isWord: true, normalized: cardToken.normalized }).transliteration; } catch { return undefined; }
+    };
+    return rescueRomanization(syllables, whole, typeof cardAnalysis?.notes?.romanization === 'string' ? cardAnalysis.notes.romanization : undefined);
+  }, [adapter, syllables, cardToken, cardAnalysis]);
   const decodingView: DecodingView = {
     syllables, canRescue: !legacy && profile.romanization === 'rescue', rescued: !!card?.rescued, romanization,
     severalReadings: hasSeveralReadings(cardAnalysis?.notes),

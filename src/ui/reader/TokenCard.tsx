@@ -17,7 +17,7 @@ import type { Variety, VarietyPolicy } from '../../core';
 import type { AnalysisSourceInfo, ContentNote, DictionaryInfo, HelpLayer, LanguageCode, Sentence, SyllableAnalysis, Token, TokenSupport } from '../../core';
 import { useApp } from '../context';
 import { I, IconBtn } from '../ui';
-import { MORE_LABEL, NOTE_KIND_LABEL, analysisSourceLine, certainty, clauseSegments, compoundHeadLine, decodingSource, dictionaryName, dictionaryOthers, hasClauseSpans, listsDiffer, maxLevel, morphAlternates, morphInWords, noteIsReviewed, olderSpellingLine, partRole, partText, pick, roleText, ruleToneLine, syllableSourceLabel, unitRoleText, unitText, varietyLine, wordParts } from './assistance';
+import { MORE_LABEL, NOTE_KIND_LABEL, analysisSourceLine, certainty, clauseSegments, compoundHeadLine, decodingSource, dictionaryName, dictionaryOthers, hasClauseSpans, listsDiffer, maxLevel, morphAlternates, morphInWords, noteIsReviewed, olderSpellingLine, partRole, partText, pick, posWord, roleText, ruleToneLine, syllableSourceLabel, unitRoleText, unitText, varietyLine, wordParts } from './assistance';
 
 
 export type SheetSubject = { kind: 'word'; token: Token } | { kind: 'sentence'; sentence: Sentence };
@@ -242,7 +242,7 @@ export function TokenCard(props: TokenCardProps) {
             {lemma && lemma.lemma !== subject.token.surface.toLowerCase() && (
               <div className="card__line"><span className="k">Lemma</span><span lang={lang}>{lemma.lemma}</span></div>
             )}
-            {lemma?.pos && <div className="card__line"><span className="k">Part of speech</span><span>{lemma.pos.toLowerCase()}</span></div>}
+            {lemma?.pos && <div className="card__line"><span className="k">Part of speech</span><span>{posWord(lemma.pos)}</span></div>}
             {senses.length > 0 && (
               <div className="sheet__senses">
                 <button type="button" className="btn btn--small btn--quiet" aria-expanded={otherMeanings} onClick={() => setOtherMeanings((v) => !v)}>Other meanings</button>

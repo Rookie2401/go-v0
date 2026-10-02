@@ -438,3 +438,30 @@ export function olderSpellingLine(o: Pick<OrthographyRelation, 'modern' | 'perio
   const label = varieties?.[o.period]?.label;
   return label ? { modern: o.modern, label } : { modern: o.modern };
 }
+
+// ───────────────────────────── part of speech in plain words ─────────────────────────────
+
+/** The tags a learner would not recognise, in plain words; every other tag is shown in lower case as before ("noun", "verb"). */
+const POS_WORDS: Partial<Record<PartOfSpeech, string>> = {
+  PROPN: 'name', AUX: 'helping verb', ADP: 'preposition or postposition', SCONJ: 'conjunction (joins clauses)', CONJ: 'conjunction',
+  PART: 'particle', DET: 'determiner', INTJ: 'interjection', NUM: 'number', PRON: 'pronoun', ADV: 'adverb', ADJ: 'adjective',
+};
+export const posWord = (pos: PartOfSpeech): string => POS_WORDS[pos] ?? pos.toLowerCase();
+
+// ───────────────────────────── the romanization rescue ─────────────────────────────
+
+/**
+ * What the romanization rescue shows for a word. Units that are syllables (each states how it ends: Thai) are joined
+ * with a hyphen, as before. Units that are written units and not syllables (none states an ending: Devanagari akṣaras)
+ * would mislead if joined — घर is one syllable, "ghar", not "gha-r" — so there the adapter's romanization of the whole
+ * word is shown when it has one (`whole` is asked only in that case). Falls back to the joined units, then to a
+ * romanization carried in the analysis notes; undefined when the word has none.
+ */
+export function rescueRomanization(units: readonly SyllableAnalysis[], whole: () => string | undefined, fromNotes?: string): string | undefined {
+  const joined = units.map((s) => s.romanization).filter((r): r is string => !!r).join('-');
+  if (units.length > 0 && units.every((s) => s.ending === undefined)) {
+    const w = whole();
+    if (w) return w;
+  }
+  return joined || fromNotes || undefined;
+}

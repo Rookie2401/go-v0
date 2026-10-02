@@ -146,11 +146,11 @@ describe('adding a personal copy to a work', () => {
   });
 });
 
-describe('Settings → Content accepts a .txt without a work', () => {
+describe('Team Texts accepts a .txt without a work', () => {
   it('asks for a title, shows the preview, imports only after the confirm, and the text is a free-standing copy', async () => {
     const h = await makeHarness({ courseId: THAI_COURSE_ID });
-    mounted = await h.mount(app(), { router: '/settings' });
-    const content = byLabel(mounted.container, 'Content');
+    mounted = await h.mount(app(), { router: '/team-texts' });
+    const content = byLabel(mounted.container, 'Add a text');
     await click(button(content, 'Add a book from a text file'));
     await pickFiles(byLabel<HTMLInputElement>(content, 'Choose a text file with the text of a book'), [txt(BOOK, 'my-novel.txt')]);
     // asks for a title (prefilled from the file name); nothing converted yet
@@ -172,8 +172,8 @@ describe('Settings → Content accepts a .txt without a work', () => {
 
   it('the existing JSON importer is untouched', async () => {
     const h = await makeHarness();
-    mounted = await h.mount(app(), { router: '/settings' });
-    const content = byLabel(mounted.container, 'Content');
+    mounted = await h.mount(app(), { router: '/team-texts' });
+    const content = byLabel(mounted.container, 'Add a text');
     expect(byLabel<HTMLInputElement>(content, 'Choose text files to import').getAttribute('accept')).toBe('.json,application/json');
   });
 });

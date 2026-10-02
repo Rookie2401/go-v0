@@ -12,6 +12,7 @@
  */
 import { useId, useState } from 'react';
 import type { LanguageCode, QualityFlag, QualityReport, Work } from '../../core';
+import { documentText, fitsTeamLanguage } from '../../ingest/language';
 import type { PlainTextOptions, PlainTextResult } from '../../ingest/plaintext';
 import { useApp } from '../context';
 import type { ImportDocView } from '../context';
@@ -60,8 +61,8 @@ const headingsOf = (result: PlainTextResult): Heading[] => (result.headings ?? [
 
 const FLAG_ADVICE: Partial<Record<QualityFlag['code'], 'unwrap' | 'boilerplate'>> = { 'hard-wrapped-lines': 'unwrap', 'hyphenated-line-breaks': 'unwrap', boilerplate: 'boilerplate' };
 
-export function CopyImporter({ work, onImported }: { work?: Work; onImported(): void }) {
-  const { ingest, lang } = useApp();
+export function CopyImporter({ work, onImported }: { work?: Work; onImported(views: ImportDocView[]): void }) {
+  const { ingest, lang, course } = useApp();
   const fileId = useId();
   const noteId = useId();
   const titleId = useId();
@@ -94,6 +95,11 @@ export function CopyImporter({ work, onImported }: { work?: Work; onImported(): 
     let opts = optionsFor(titleFor, c);
     if (c.droppedHeadings.length > 0) opts = { ...opts, headings: headingLinesKept(phase, c.droppedHeadings) };
     const converted = source.kind === 'text' ? ingest.convertPlainText(source.text, opts) : await ingest.convertEpub(source.bytes, opts);
+    if (source.kind === 'epub') {
+      // an EPUB is only readable once converted: the team's language is checked on its chapters' running text
+      const verdict = fitsTeamLanguage(converted.documents.map((d) => documentText(d)).join('\n'), { lang: course.lang, country: course.country });
+      if (!verdict.ok) { setError(verdict.message!); return; }
+    }
     await check(converted.documents, converted.notes, fileName, true, { source, quality: qualityOf(converted), headings: headingsOf(converted), titled: titleFor });
   };
 
@@ -113,13 +119,21 @@ export function CopyImporter({ work, onImported }: { work?: Work; onImported(): 
       const text = await readFileText(file);
       if (isText(file)) {
         if (text.trim() === '') { setError('That file is empty.'); return; }
+        const verdict = fitsTeamLanguage(text, { lang: course.lang, country: course.country });
+        if (!verdict.ok) { setError(verdict.message!); return; }
         const source: Source = { kind: 'text', text };
         if (work) await convert(source, file.name, undefined, DEFAULT_CHOICES);
         else { setTitle(baseName(file.name)); setPhase({ kind: 'needs-title', file, source }); }
       } else {
         let parsed: unknown;
         try { parsed = JSON.parse(text); } catch (e) { setError(`This file is not valid JSON (${errorText(e)}). Choose a .txt or .epub file with the book, or a Go text file in .json format.`); return; }
-        await check(Array.isArray(parsed) ? parsed : [parsed], [], file.name, false);
+        const parsedDocs = Array.isArray(parsed) ? parsed : [parsed];
+        for (const d of parsedDocs) {
+          const declared = d && typeof d === 'object' ? (d as { lang?: unknown }).lang : undefined;
+          const verdict = fitsTeamLanguage(documentText(d), { lang: course.lang, country: course.country }, typeof declared === 'string' ? declared : undefined);
+          if (!verdict.ok) { setError(verdict.message!); return; }
+        }
+        await check(parsedDocs, [], file.name, false);
       }
     } catch (e) { setError(`${errorText(e)} Nothing was imported.`); } finally { setBusy(false); }
   };
@@ -144,7 +158,7 @@ export function CopyImporter({ work, onImported }: { work?: Work; onImported(): 
     try {
       const done = await ingest.import(phase.docs);
       setPhase({ kind: 'done', views: done });
-      onImported();
+      onImported(done);
     } catch (e) { setError(errorText(e)); } finally { setBusy(false); }
   };
 

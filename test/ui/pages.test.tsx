@@ -94,7 +94,7 @@ describe('Library and routes', () => {
     expect(rows[0].textContent).toContain('Mostly words you already know.');
     expect(rows[1].getAttribute('href')).toBe('/testimony');
     // no persistent nav strip: the doorway entries, then the quiet links
-    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Read', 'Scripture', 'My Testimony']);
+    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Read', 'Scripture', 'My Testimony', 'Team Texts']);
     expect(qa(mounted.container, '.home__links a').map((a) => a.textContent)).toEqual(['Settings', 'Vocabulary']);
     expect(q(mounted.container, 'nav[aria-label="Main"]')).toBeNull();
   });

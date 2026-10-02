@@ -45,6 +45,10 @@
 .work__chapter { color: var(--ink); }
 .work .disclosure__btn { font-size: 0.92rem; min-height: 2.25rem; }
 
+/* GoRead: Team Texts */
+.team-texts .work__added { display: block; color: var(--ink-faint); font-size: 0.8rem; }
+.team-texts section + section { margin-top: 1.4rem; }
+
 /* the importer and its preview */
 .copy { margin-top: 0.4rem; }
 .copy__facts { margin: 0.5rem 0; }

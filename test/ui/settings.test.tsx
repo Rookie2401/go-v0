@@ -16,81 +16,16 @@ const section = (name: string) => byLabel(mounted!.container, name);
 const json = (o: unknown, name: string) => new File([JSON.stringify(o)], name, { type: 'application/json' });
 /** Advanced is collapsed by default (and mounts its content on first open): open it. */
 const openAdvanced = async () => { await click(button(section('Advanced'), 'Advanced')); };
-const fileInput = () => byLabel<HTMLInputElement>(section('Content'), 'Choose text files to import');
 
-describe('Settings → Content: the in-app importer', () => {
-  it('happy path: choose a file → validation report → import → the text appears in the list, unpublished with its reason', async () => {
+describe('Settings → Content', () => {
+  it('points to Team Texts for adding texts, and has no importer of its own', async () => {
     await open();
-    await pickFiles(fileInput(), [json({ id: 'my-story', title: 'My story' }, 'my-story.json')]);
-    expect(h.controls.ingest.validate).toHaveBeenCalledWith([{ id: 'my-story', title: 'My story' }]);
-    const report = q(mounted!.container, '[data-testid="import-report"]')!;
-    expect(report.textContent).toContain('My story');
-    expect(report.textContent).toContain('my-story.json');
-    expect(report.textContent).toContain('valid');
-    expect(h.controls.ingest.import).not.toHaveBeenCalled(); // checking is not importing
-
-    await click(button(section('Content'), 'Import 1 document'));
-    expect(h.controls.ingest.import).toHaveBeenCalledWith([{ id: 'my-story', title: 'My story' }]);
-    expect(q(mounted!.container, '[data-testid="import-done"]')!.textContent).toContain('Import finished.');
-    const result = qa(mounted!.container, '[data-testid="import-report"]').at(-1)!;
-    expect(result.textContent).toContain('imported (new)');
-    expect(result.textContent).toContain('Not published: Awaiting native-speaker review.');
-    expect(result.textContent).toContain('Analysis coverage: 80%');
-
-    const listed = q(mounted!.container, 'tr[data-text-id="text:es:my-story"]')!;
-    expect(listed.getAttribute('data-published')).toBe('no');
-    expect(listed.textContent).toContain('not reviewed');
-    expect(listed.textContent).toContain('Awaiting native-speaker review.');
-  });
-
-  it('a rejected file: shows the path, the message and how to fix it, and imports nothing', async () => {
-    await open();
-    await pickFiles(fileInput(), [json({ id: 'bad', title: 'Bad story', bad: true }, 'bad.json')]);
-    const issue = q(mounted!.container, 'li.issue[data-severity="error"]')!;
-    expect(issue.querySelector('.issue__path')!.textContent).toBe('title');
-    expect(issue.textContent).toContain('title is required');
-    expect(issue.textContent).toContain('How to fix: Add a non-empty "title".');
-    expect(q(mounted!.container, '[data-testid="import-blocked"]')!.textContent).toContain('Nothing was imported');
-    expect(qa(section('Content'), 'button').some((b) => /^Import /.test(b.textContent ?? ''))).toBe(true);
-    expect(button(section('Content'), 'Import 1 document').disabled).toBe(true);
-    expect(h.controls.ingest.import).not.toHaveBeenCalled();
-  });
-
-  it('one bad file blocks the whole batch, including the good one', async () => {
-    await open();
-    await pickFiles(fileInput(), [json({ id: 'good', title: 'Good' }, 'good.json'), json({ id: 'bad', title: 'Bad', bad: true }, 'bad.json')]);
-    expect(qa(mounted!.container, 'section.import-doc')).toHaveLength(2);
-    expect(button(section('Content'), 'Import 2 documents').disabled).toBe(true);
-    expect(q(mounted!.container, '[data-testid="import-blocked"]')).not.toBeNull();
-  });
-
-  it('a file that is not JSON is reported with a hint, and nothing else is imported with it', async () => {
-    await open();
-    await pickFiles(fileInput(), [new File(['{ not json'], 'broken.json', { type: 'application/json' })]);
-    const issue = q(mounted!.container, 'li.issue')!;
-    expect(issue.getAttribute('data-code')).toBe('invalid-json');
-    expect(issue.textContent).toContain('not valid JSON');
-    expect(issue.textContent).toContain('How to fix');
-    expect(h.controls.ingest.validate).not.toHaveBeenCalled();
-    expect(qa(section('Content'), 'button').some((b) => /^Import /.test(b.textContent ?? ''))).toBe(false);
-  });
-
-  it('accepts a file holding an array of documents', async () => {
-    await open();
-    await pickFiles(fileInput(), [json([{ id: 'a', title: 'A' }, { id: 'b', title: 'B' }], 'pair.json')]);
-    expect(qa(mounted!.container, 'section.import-doc')).toHaveLength(2);
-    await click(button(section('Content'), 'Import 2 documents'));
-    expect(h.controls.ingest.import).toHaveBeenCalledWith([{ id: 'a', title: 'A' }, { id: 'b', title: 'B' }]);
-  });
-
-  it('shows a valid document that was rejected only because of another one, with its note', async () => {
-    h.controls.ingest.validate.mockImplementation(async (docs: unknown[]) => docs.map((d, i) => ({
-      id: (d as { id: string }).id, action: 'rejected' as const, issues: [],
-      note: i === 0 ? 'Not imported: another document in this batch has errors.' : undefined,
-    })));
-    await open();
-    await pickFiles(fileInput(), [json([{ id: 'a', title: 'A' }], 'one.json')]);
-    expect(q(mounted!.container, '[data-testid="import-note"]')!.textContent).toContain('another document in this batch has errors');
+    const content = section('Content');
+    expect(content.textContent).toContain('To add texts for your team, use Team Texts on the Home page.');
+    expect(qa(mounted!.container, 'input[aria-label="Choose text files to import"]')).toHaveLength(0);
+    expect(qa(mounted!.container, 'input[aria-label="Choose a text file with the text of a book"]')).toHaveLength(0);
+    expect(content.textContent).not.toContain('Add a book from a text file');
+    expect(byLabel(mounted!.container, 'Preview unreviewed content')).not.toBeNull(); // what it keeps
   });
 
   it('lists every text with its review status, publication state, reason, and who reviewed it', async () => {

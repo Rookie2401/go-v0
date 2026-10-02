@@ -120,7 +120,6 @@ describe('Settings: the long tables are collapsed, with their counts in the summ
     // everything the learner needs day to day is outside any collapsed panel
     const hidden = (el: Element | null) => { expect(el).not.toBeNull(); return !!el!.closest('[hidden]'); };
     expect(hidden(byLabel(mounted!.container, 'Preview unreviewed content'))).toBe(false);
-    expect(hidden(byLabel(mounted!.container, 'Choose text files to import'))).toBe(false);
     expect(hidden(byLabel(mounted!.container, 'Learner'))).toBe(false);
     expect(hidden(byLabel(mounted!.container, 'Team'))).toBe(false);
     expect(hidden(byLabel(mounted!.container, 'Highlighting'))).toBe(false);

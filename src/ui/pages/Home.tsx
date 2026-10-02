@@ -34,6 +34,7 @@ const ENTRIES: Array<{ to: string; name: string; sub: string }> = [
   { to: '/read', name: 'Read', sub: 'Stories and dialogues' },
   { to: '/scripture', name: 'Scripture', sub: 'The Bible, prepared for you' },
   { to: '/testimony', name: 'My Testimony', sub: 'Write it in your own words' },
+  { to: '/team-texts', name: 'Team Texts', sub: 'GoRead — what your team reads' },
 ];
 
 /** Input first, the testimony rehearsal last, whatever order the engine returned (defence in depth). */

@@ -6,6 +6,7 @@
 import { useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { TeamTextsPage } from './goread/TeamTexts';
 import { BooksPage } from './pages/Books';
 import { CoursePage } from './pages/Course';
 import { ExplorePage } from './pages/Explore';
@@ -43,6 +44,7 @@ export function AppRoutes() {
       <Route path="/scripture" element={<Library mode="scripture" />} />
       <Route path="/scripture/:textId" element={<TextPage mode="scripture" />} />
       <Route path="/testimony" element={<Testimony />} />
+      <Route path="/team-texts" element={<TeamTextsPage />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/vocabulary" element={<VocabularyPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />

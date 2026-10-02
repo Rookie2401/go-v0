@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 2,
+  "id": "grimm-sternthaler-1857",
+  "lang": "de",
+  "title": "Die Sternthaler",
+  "contentType": "story",
+  "corpus": {
+    "id": "lit-de",
+    "kind": "comprehensible-input",
+    "title": "German literature"
+  },
+  "source": {
+    "id": "src:de:grimm-sternthaler-1857",
+    "title": "Die Sternthaler (Kinder- und Haus-Märchen, 7. Auflage 1857, KHM 153)",
+    "author": "Jacob und Wilhelm Grimm",
+    "publisher": "Dieterich, Göttingen",
+    "url": "https://de.wikisource.org/w/index.php?oldid=3577237",
+    "edition": "7. Auflage 1857 (Ausgabe letzter Hand), Band 2, S. 285",
+    "attribution": "Brüder Grimm, Kinder- und Haus-Märchen (1857). Transcription: German Wikisource (https://de.wikisource.org/wiki/Die_Sternthaler_(1857)), available under Creative Commons Attribution-Share Alike 4.0.",
+    "provenance": "Taken by scripts/build-de-grimm.mjs on 2026-10-02 from the German Wikisource transcription of the 1857 edition (revision 3577237, marked there as proofread twice against the scan). Nothing was retyped; page-number marks were removed and the original spelling of 1857 is kept. The English lines are plain translations drafted by an AI model for this course and have not been reviewed.",
+    "rights": "public-domain",
+    "licenseNote": "The tale is in the public domain (Wilhelm Grimm died in 1859, Jacob Grimm in 1863; this edition appeared in 1857). The transcription comes from German Wikisource, whose text is offered under Creative Commons Attribution-Share Alike 4.0: the source is named here and on the text.",
+    "authorship": "public-domain"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "The German wording is identical to the source transcription (checked by the build script). The English lines are machine-drafted: a person must read them before this text is published."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fairy-tale",
+    "grimm"
+  ],
+  "editorialTags": [
+    "english-machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "grimm-sternthaler-1857",
+    "chapter": {
+      "index": 1,
+      "title": "Die Sternthaler"
+    }
+  },
+  "streams": [
+    "library"
+  ],
+  "variety": "de-pre1901",
+  "english": {
+    "source": "Plain English drafted by an AI model for this course; not reviewed"
+  },
+  "sections": [
+    {
+      "title": "Die Sternthaler",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es war einmal ein kleines Mädchen, dem war Vater und Mutter gestorben, und es war so arm, daß es kein Kämmerchen mehr hatte darin zu wohnen und kein Bettchen mehr darin zu schlafen und endlich gar nichts mehr als die Kleider auf dem Leib und ein Stückchen Brot in der Hand, das ihm ein mitleidiges Herz geschenkt hatte.",
+              "english": "Once upon a time there was a little girl whose father and mother had died, and she was so poor that she no longer had a little room to live in or a little bed to sleep in, and at last had nothing left but the clothes on her body and a little piece of bread in her hand, which a kind heart had given her."
+            },
+            {
+              "text": "Es war aber gut und fromm.",
+              "english": "But she was good and devout."
+            },
+            {
+              "text": "Und weil es so von aller Welt verlassen war, gieng es im Vertrauen auf den lieben Gott hinaus ins Feld.",
+              "english": "And because she was so forsaken by all the world, she went out into the fields, trusting in the good Lord."
+            },
+            {
+              "text": "Da begegnete ihm ein armer Mann, der sprach „ach, gib mir etwas zu essen, ich bin so hungerig.“",
+              "english": "There a poor man met her, who said, “Oh, give me something to eat, I am so hungry.”"
+            },
+            {
+              "text": "Es reichte ihm das ganze Stückchen Brot und sagte „Gott segne dirs“ und gieng weiter.",
+              "english": "She handed him the whole piece of bread and said, “God bless it to you,” and went on."
+            },
+            {
+              "text": "Da kam ein Kind das jammerte und sprach „es friert mich so an meinem Kopfe, schenk mir etwas, womit ich ihn bedecken kann.“",
+              "english": "Then came a child who wailed and said, “My head is so cold, give me something to cover it with.”"
+            },
+            {
+              "text": "Da that es seine Mütze ab und gab sie ihm.",
+              "english": "So she took off her cap and gave it to him."
+            },
+            {
+              "text": "Und als es noch eine Weile gegangen war, kam wieder ein Kind und hatte kein Leibchen an und fror: da gab es ihm seins: und noch weiter, da bat eins um ein Röcklein, das gab es auch von sich hin.",
+              "english": "And when she had walked a while longer, another child came who had no bodice on and was freezing: so she gave it hers; and a little farther on one asked for a little skirt, and she gave that away too."
+            },
+            {
+              "text": "Endlich gelangte es in einen Wald, und es war schon dunkel geworden, da kam noch eins und bat um ein Hemdlein, und das fromme Mädchen dachte „es ist dunkle Nacht, da sieht dich niemand du kannst wohl dein Hemd weg geben,“ und zog das Hemd ab und gab es auch noch hin.",
+              "english": "At last she came into a forest, and it had already grown dark, and yet another came and asked for a little shirt, and the devout girl thought, “It is a dark night, no one will see you, you can well give your shirt away,” and she took off the shirt and gave that away as well."
+            },
+            {
+              "text": "Und wie es so stand und gar nichts mehr hatte, fielen auf einmal die Sterne vom Himmel, und waren lauter harte blanke Thaler: und ob es gleich sein Hemdlein weg gegeben, so hatte es ein neues an und das war vom allerfeinsten Linnen.",
+              "english": "And as she stood there with nothing left at all, suddenly the stars fell from the sky, and they were nothing but hard, shining thalers; and although she had given away her little shirt, she had a new one on, and it was of the very finest linen."
+            },
+            {
+              "text": "Da sammelte es sich die Thaler hinein und war reich für sein Lebtag.",
+              "english": "Then she gathered the thalers into it and was rich for the rest of her life."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

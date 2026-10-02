@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 2,
+  "id": "grimm-der-suesse-brei-1857",
+  "lang": "de",
+  "title": "Der süße Brei",
+  "contentType": "story",
+  "corpus": {
+    "id": "lit-de",
+    "kind": "comprehensible-input",
+    "title": "German literature"
+  },
+  "source": {
+    "id": "src:de:grimm-der-suesse-brei-1857",
+    "title": "Der süße Brei (Kinder- und Haus-Märchen, 7. Auflage 1857, KHM 103)",
+    "author": "Jacob und Wilhelm Grimm",
+    "publisher": "Dieterich, Göttingen",
+    "url": "https://de.wikisource.org/w/index.php?oldid=3445434",
+    "edition": "7. Auflage 1857 (Ausgabe letzter Hand), Band 2, S. 90",
+    "attribution": "Brüder Grimm, Kinder- und Haus-Märchen (1857). Transcription: German Wikisource (https://de.wikisource.org/wiki/Der_s%C3%BC%C3%9Fe_Brei_(1857)), available under Creative Commons Attribution-Share Alike 4.0.",
+    "provenance": "Taken by scripts/build-de-grimm.mjs on 2026-10-02 from the German Wikisource transcription of the 1857 edition (revision 3445434, marked there as proofread twice against the scan). Nothing was retyped; page-number marks were removed and the original spelling of 1857 is kept. The English lines are plain translations drafted by an AI model for this course and have not been reviewed.",
+    "rights": "public-domain",
+    "licenseNote": "The tale is in the public domain (Wilhelm Grimm died in 1859, Jacob Grimm in 1863; this edition appeared in 1857). The transcription comes from German Wikisource, whose text is offered under Creative Commons Attribution-Share Alike 4.0: the source is named here and on the text.",
+    "authorship": "public-domain"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "The German wording is identical to the source transcription (checked by the build script). The English lines are machine-drafted: a person must read them before this text is published."
+  },
+  "difficulty": "B1",
+  "topics": [
+    "fairy-tale",
+    "grimm"
+  ],
+  "editorialTags": [
+    "english-machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "grimm-der-suesse-brei-1857",
+    "chapter": {
+      "index": 1,
+      "title": "Der süße Brei"
+    }
+  },
+  "streams": [
+    "library"
+  ],
+  "variety": "de-pre1901",
+  "english": {
+    "source": "Plain English drafted by an AI model for this course; not reviewed"
+  },
+  "sections": [
+    {
+      "title": "Der süße Brei",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es war einmal ein armes frommes Mädchen, das lebte mit seiner Mutter allein, und sie hatten nichts mehr zu essen.",
+              "english": "Once upon a time there was a poor, devout girl who lived alone with her mother, and they had nothing left to eat."
+            },
+            {
+              "text": "Da gieng das Kind hinaus in den Wald, und begegnete ihm da eine alte Frau, die wußte seinen Jammer schon und schenkte ihm ein Töpfchen, zu dem sollt es sagen „Töpfchen, koche,“ so kochte es guten süßen Hirsenbrei, und wenn es sagte „Töpfchen, steh,“ so hörte es wieder auf zu kochen.",
+              "english": "So the child went out into the forest, and there an old woman met her who already knew of her misery and gave her a little pot, to which she was to say, “Little pot, cook,” and it would cook good sweet millet porridge; and when she said, “Little pot, stop,” it would stop cooking again."
+            },
+            {
+              "text": "Das Mädchen brachte den Topf seiner Mutter heim, und nun waren sie ihrer Armuth und ihres Hungers ledig und aßen süßen Brei so oft sie wollten.",
+              "english": "The girl brought the pot home to her mother, and now they were rid of their poverty and their hunger and ate sweet porridge as often as they liked."
+            },
+            {
+              "text": "Auf eine Zeit war das Mädchen ausgegangen, da sprach die Mutter „Töpfchen, koche,“ da kocht es, und sie ißt sich satt; nun will sie daß das Töpfchen wieder aufhören soll, aber sie weiß das Wort nicht.",
+              "english": "One time the girl had gone out, and the mother said, “Little pot, cook,” and it cooks, and she eats her fill; now she wants the pot to stop again, but she does not know the word."
+            },
+            {
+              "text": "Also kocht es fort, und der Brei steigt über den Rand hinaus und kocht immer zu, die Küche und das ganze Haus voll, und das zweite Haus und dann die Straße, als wollts die ganze Welt satt machen, und ist die größte Noth, und kein Mensch weiß sich da zu helfen.",
+              "english": "So it goes on cooking, and the porridge rises over the rim and keeps on cooking, the kitchen and the whole house full, and the second house and then the street, as if it wanted to feed the whole world, and there is the greatest distress, and no one knows what to do."
+            },
+            {
+              "text": "Endlich, wie nur noch ein einziges Haus übrig ist, da kommt das Kind heim, und spricht nur „Töpfchen, steh,“ da steht es und hört auf zu kochen; und wer wieder in die Stadt wollte, der mußte sich durchessen.",
+              "english": "At last, when only one single house is left, the child comes home and just says, “Little pot, stop,” and it stops and leaves off cooking; and whoever wanted to go back into the town had to eat his way through."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

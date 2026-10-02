@@ -135,16 +135,44 @@ export const LUTHER_1912_RIGHTS: WorkRights = {
   licence: 'Public Domain (as stated on the source\'s copyright page)',
   jurisdictions: ['as stated by the distributor; not checked country by country'],
   attributionRequired: false, shareAlike: false,
-  modifications: 'none: each bundled verse is identical to the source after Unicode normalization (NFC)',
+  modifications: 'none: each bundled verse is identical to the source after Unicode normalization (NFC) and whitespace normalization',
   proofreading: 'the distributor\'s text; no proofreading of our own',
   evidence: [
-    'Martin Luther died in 1546; the 1912 revision was published in 1912 by the German Bible societies.',
+    'Martin Luther died in 1546. The text is the revision of his translation published in 1912; the distributor names no reviser.',
     'eBible.org lists the translation "Luther Bibel 1912" (deu1912) with the statement Public Domain on its copyright page.',
     'Every bundled verse is compared with the distributor\'s page and recorded with its URL in data/verified/scripture.json.',
   ],
   compliance: 'No attribution is required; the source and edition are named on every Scripture text.',
   audioRights: 'No recording is bundled. A recording has rights of its own, to be checked separately.',
 };
+
+/**
+ * A tale of the Brothers Grimm in the seventh edition (1857), from the German Wikisource transcription. The evidence
+ * for each tale (revision, proofreading state, checksum) is written by `scripts/build-de-grimm.mjs` to
+ * `data/sources/de/<slug>.source.json`; the summary is in docs/german/RIGHTS.md.
+ */
+const grimm1857 = (page: string, revision: number, scanPage: number, sha256: string): WorkRights => ({
+  state: 'verified-public-domain', copyrightStatus: 'public-domain', permission: 'not-needed', canBundle: true, userImportOnly: false,
+  canModify: true, canStoreOffline: true, canBundleAudio: false, audiobook: 'unknown', verified: true,
+  verifiedBy: 'coordinator (AI), from the evidence listed; not legal advice — to be confirmed by the owner', verifiedAt: '2026-10-01',
+  basis: 'The authors died in 1859 and 1863 and this edition appeared in 1857: more than 160 years ago, beyond every copyright term in use (life plus 70, life plus 100, and publication before 1929 for the United States).',
+  sourceRepository: `de.wikisource.org, page "${page}", revision ${revision} (https://de.wikisource.org/w/index.php?oldid=${revision})`,
+  licence: 'Underlying text: public domain. The Wikisource transcription is offered by the site under Creative Commons Attribution-Share Alike 4.0.',
+  jurisdictions: ['DE', 'EU', 'US'],
+  attributionRequired: true, shareAlike: true,
+  modifications: 'page-number marks removed; whitespace normalised; cut into sentences without changing a character; the spelling of 1857 is kept',
+  retrievedAt: '2026-10-01', checksum: `sha256 ${sha256}`,
+  proofreading: 'Wikisource: "fertig" — proofread twice against the scan; scan page quality 4 of 4',
+  evidence: [
+    'Wilhelm Grimm died on 16 December 1859 and Jacob Grimm on 20 September 1863.',
+    `Kinder- und Haus-Märchen, Große Ausgabe, 7. Auflage (Ausgabe letzter Hand), Band 2, Göttingen: Dieterich, 1857, page ${scanPage} — as stated on the source page, which links the scan.`,
+    `The German wording is identical to revision ${revision} of the source page (the build script reconstructs the paragraph from its sentences and refuses a difference).`,
+    'The site states Creative Commons Attribution-Share Alike 4.0 for its text.',
+  ],
+  sourceTerms: 'Wikimedia terms of use: reuse is allowed with attribution under the stated licence.',
+  compliance: 'The source, the edition and the licence are named in the text\'s own source line, which the reader shows. If the transcription is a licensed work at all, this bundled copy is offered under the same licence (CC BY-SA 4.0). The English lines are the course\'s own.',
+  audioRights: 'No recording is bundled. A recording has rights of its own, to be checked separately.',
+});
 
 export const GERMAN_WORKS: Work[] = [
   // ── Shelf 0: controlled German written for the course ──
@@ -183,6 +211,12 @@ export const GERMAN_WORKS: Work[] = [
     { slug: 'grimm-khm', title: 'Kinder- und Hausmärchen', author: 'Jacob und Wilhelm Grimm', died: 1863, year: 1857, edition: '7th edition, 1857 (the last by the brothers)', era: '19th century', genre: 'fairy tales', level: 'easy', variety: OLD,
       rights: lead('Wilhelm Grimm died in 1859 and Jacob Grimm in 1863; the seventh edition appeared in 1857.'),
       notes: 'About two hundred tales of very different difficulty; each bundled tale is listed as its own work with its own evidence. Original spelling (thun, Thür, giebt).' },
+    { slug: 'grimm-sternthaler-1857', title: 'Die Sternthaler', author: 'Jacob und Wilhelm Grimm', died: 1863, year: 1857, edition: 'Kinder- und Haus-Märchen, 7. Auflage 1857, Band 2, S. 285 (KHM 153)', era: '19th century', genre: 'fairy tale', level: 'intermediate', variety: OLD,
+      rights: grimm1857('Die Sternthaler (1857)', 3577237, 285, '1a676af4ab8aa5506d2c218a198a7222df74a7bd9f2a5b561d960d6d678aa6ab'), ingestion: 'bundled', readiness: 'implemented', sourceUrl: 'https://de.wikisource.org/wiki/Die_Sternthaler_(1857)',
+      notes: 'The first verified literary text of the course. Spelling of 1857 (daß, gieng, that, Thaler), related to today\'s in the analysis. Bundled; in preview until the English lines have been read by a person.' },
+    { slug: 'grimm-der-suesse-brei-1857', title: 'Der süße Brei', author: 'Jacob und Wilhelm Grimm', died: 1863, year: 1857, edition: 'Kinder- und Haus-Märchen, 7. Auflage 1857, Band 2, S. 90 (KHM 103)', era: '19th century', genre: 'fairy tale', level: 'intermediate', variety: OLD,
+      rights: grimm1857('Der süße Brei (1857)', 3445434, 90, 'bd54868208ac173eb0ae8d703d719e7e24953cadc3b5e37d0b8223b4601b0a0b'), ingestion: 'bundled', readiness: 'implemented', sourceUrl: 'https://de.wikisource.org/wiki/Der_s%C3%BC%C3%9Fe_Brei_(1857)',
+      notes: 'Spelling of 1857 (gieng, wußte, Armuth, Noth, mußte). Bundled; in preview until the English lines have been read by a person.' },
     { slug: 'bechstein-maerchenbuch', title: 'Deutsches Märchenbuch', author: 'Ludwig Bechstein', died: 1860, year: 1845, era: '19th century', genre: 'fairy tales', level: 'easy', variety: OLD },
     { slug: 'hebel-schatzkaestlein', title: 'Schatzkästlein des rheinischen Hausfreundes', author: 'Johann Peter Hebel', died: 1826, year: 1811, era: 'early 19th century', genre: 'calendar stories', level: 'intermediate', variety: OLD, registers: ['literary'] },
     { slug: 'hauff-maerchen', title: 'Märchen (Die Karawane; Der Scheik von Alessandria; Das Wirtshaus im Spessart)', author: 'Wilhelm Hauff', died: 1827, year: 1826, era: 'early 19th century', genre: 'literary fairy tales', level: 'intermediate', variety: OLD },

@@ -130,15 +130,26 @@ export async function recommend(
       const byPlace = (a?: [number, number, number], b?: [number, number, number]) =>
         (a && b ? a[0] - b[0] || a[1] - b[1] || a[2] - b[2] : a ? -1 : b ? 1 : 0);
       ranked.sort((a, b) => a.rank - b.rank || byPlace(a.place, b.place) || a.difficulty - b.difficulty || (a.t.id < b.t.id ? -1 : 1));
-      const first = ranked[0].t;
-      const opens = ranked[0].place !== undefined;
+      // A book is begun at its beginning: when the chosen text is a later chapter of a work, the earliest chapter of that
+      // work among the texts on offer is the one to start with (a learner's own book: chapter 1 before chapter 2).
+      let chosen = ranked[0];
+      if (!chosen.place && chosen.t.workId && chosen.t.chapter !== undefined) {
+        for (const r of ranked) {
+          if (r.t.workId === chosen.t.workId && r.t.chapter !== undefined && r.t.chapter.index < chosen.t.chapter!.index) chosen = r;
+        }
+      }
+      const first = chosen.t;
+      const opens = chosen.place !== undefined;
+      const beginsBook = chosen !== ranked[0];
       const level = first.staticLevel;
       offer({
         reason: 'first-text', textId: first.id, reinforces: [], score: 1,
         // Say what the text is: an unpublished text can only be here because preview mode asked for it.
         explanation: opens
           ? `A good place to start: "${first.title}" opens the course's own reading path${first.published ? '' : ' (in preview, not published)'}${level ? `, level ${level}` : ''}.`
-          : first.published
+          : beginsBook
+            ? `A good place to start: "${first.title}", the first chapter of a book you can read here${first.published ? '' : ' (in preview, not published)'}.`
+            : first.published
             ? `A good place to start: "${first.title}" is the easiest published ${langName} text${level ? ` (${level})` : ''}.`
             : `A good place to start: "${first.title}" is the easiest ${langName} text in preview (not published)${level ? `, level ${level}` : ''}.`,
       });

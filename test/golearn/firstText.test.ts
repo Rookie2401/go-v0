@@ -53,4 +53,20 @@ describe('first-text', () => {
     expect(preview[0]).toMatchObject({ reason: 'first-text', textId: ids.text('es', 'path-1') });
     expect(preview[0].explanation).toMatch(/in preview, not published/);
   });
+
+  it('a book that is not part of the reading path is begun at its first chapter, even when a later chapter looks easier', async () => {
+    const h = createHarness();
+    await h.seed(U);
+    await h.store.stages.bulkPut([stageRow(0, 's1')]);
+    await h.store.works.bulkPut([workRow('own', 's1', 'subsidiary', 0)]);
+    await buildChapter(h.store, { slug: 'own-1', work: 'own', chapter: 1, sentences: long(6) });
+    await buildChapter(h.store, { slug: 'own-2', work: 'own', chapter: 2, sentences: short() });
+    await buildChapter(h.store, { slug: 'own-3', work: 'own', chapter: 3, sentences: short() });
+    // chapter 2 is the one stated to be easiest: by level alone it would be offered first
+    const levels = { 'own-1': 'A2', 'own-2': 'A0', 'own-3': 'A1' } as const;
+    for (const slug of ['own-1', 'own-2', 'own-3'] as const) await h.store.texts.put({ ...(await h.store.texts.get(ids.text('es', slug)))!, published: true, staticLevel: levels[slug] });
+    const recs = await h.golearn.recommend(U, { lang: 'es' });
+    expect(recs[0]).toMatchObject({ reason: 'first-text', textId: ids.text('es', 'own-1') });
+    expect(recs[0].explanation).toMatch(/the first chapter of a book/);
+  });
 });

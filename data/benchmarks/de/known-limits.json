@@ -1,12 +1,42 @@
 {
-  "r2-02": "The article of a subject noun phrase is not narrowed with its noun (Der stays Nom or Gen, Sing or Plur); a noun subject does not fix the verb's person (liest stays 2 or 3).",
-  "r2-07": "The perfect of the passive (ist … gebaut worden) is not reported as the passive construction.",
-  "r2-13": "As r2-02 for the article; eröffnen is not in the hand word list (the reading is marked unconfirmed, which is right).",
-  "r2-17": "The relative pronoun die is not narrowed to the plural of the noun it refers to; spielten stays indicative-or-Konjunktiv II inside a relative clause.",
-  "r2-20": "bis before another preposition (bis zur Kirche) is read as the conjunction.",
-  "r2-24": "A false modal-particle construction is reported for a sentence whose only particle is nicht.",
-  "r2-27": "As r2-24.",
-  "r2-29": "A pronoun subject does not fix the verb's person in a verb-final je-clause (liest stays 2 or 3).",
-  "r2-33": "After viele Deutsche the verb stays 1st or 3rd person plural.",
-  "r2-34": "The participle of a separable verb that is not in the word list (abgeschickt, built on the known schicken) is guessed as an invented infinitive; the perfect is then missed. Also the false modal-particle of r2-24."
+  "r2-02": {
+    "reason": "The article of a subject noun phrase is not narrowed with its noun (Der stays nominative-or-genitive, singular-or-plural after Lehrer has become nominative singular), and a noun subject does not fix the verb's person (liest stays 2nd-or-3rd).",
+    "expected": ["Der: Case=Nom", "Der: Number=Sing", "liest: Person=3"]
+  },
+  "r2-07": {
+    "reason": "The perfect of the passive (ist … gebaut worden) is recorded as no construction at all: the perfect detector stays silent on worden, the passive detector requires a finite werden.",
+    "expected": ["+passive-perfect"]
+  },
+  "r2-13": {
+    "reason": "The article of the subject noun phrase is not narrowed with its noun (as r2-02). The absent word-list entry for eröffnen is NOT a failure of this sentence: its lemma, part of speech and person are right (the reading is marked unconfirmed, as it should be).",
+    "expected": ["Der: Case=Nom", "Der: Number=Sing"]
+  },
+  "r2-17": {
+    "reason": "The relative pronoun die is not narrowed to the plural of the noun it refers to, and the matrix verb lachten stays 1st-or-3rd person because its subject (Die Kinder) is separated from it by the relative clause.",
+    "expected": ["die: Number=Plur", "lachten: Person=3"]
+  },
+  "r2-20": {
+    "reason": "bis before another preposition (bis zur Kirche) is read as the conjunction.",
+    "expected": ["bis: pos"]
+  },
+  "r2-24": {
+    "reason": "The modal-particle detector accepts every particle with a role except zu, so the negation nicht is reported as a modal particle.",
+    "expected": ["-modal-particle"]
+  },
+  "r2-27": {
+    "reason": "As r2-24: nicht reported as a modal particle.",
+    "expected": ["-modal-particle"]
+  },
+  "r2-29": {
+    "reason": "A pronoun subject does not fix the verb's person in the verb-final je-clause (liest stays 2nd-or-3rd).",
+    "expected": ["liest: Person=3"]
+  },
+  "r2-33": {
+    "reason": "A noun-phrase subject AFTER an inverted verb is not recognised (fahren stays 1st-or-3rd person plural).",
+    "expected": ["fahren: Person=3"]
+  },
+  "r2-34": {
+    "reason": "The participle of a separable verb that is not in the word list (abgeschickt, on the known schicken) is guessed as an invented infinitive in the finite present; haben then stays a full verb and the perfect is not recorded. Also nicht as a modal particle (r2-24).",
+    "expected": ["abgeschickt: lemma", "abgeschickt: VerbForm=Part", "abgeschickt: Tense=Past", "hat: pos", "+sentence-bracket-perfect", "-modal-particle"]
+  }
 }

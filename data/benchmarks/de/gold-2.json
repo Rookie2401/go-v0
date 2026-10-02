@@ -2,6 +2,11 @@
   "schema": 1,
   "language": "de",
   "note": "Round 2 of the coordinator's German gold set: sentences written AFTER the adapter landed and first run against it unseen (the first-run result is recorded in docs/german/STATUS.md). After that first run they are development data like round 1. The coordinator is an AI model, not a native speaker: the judgements are standard school grammar; disputed cases are labelled.",
+  "provenance": "Written by the coordinator (an AI model) on 2026-10-01 after commit 4ecddc0; first run unseen at that commit: 25 of 35 correct. Development data since then.",
+  "corrections": [
+    "2026-10-01, r2-07: the expected construction was 'passive'. The course's own convention names the tense of a passive in its key (passive = wird gebaut, passive-past = wurde gebaut), so the perfect of the passive is 'passive-perfect'. The sentence was failing before the correction and the correction does not make it pass by itself: no passive construction of any name was recorded.",
+    "2026-10-01, r2-17: spielten was required to be exactly indicative. The form is indicative or Konjunktiv II by its shape and nothing in the sentence excludes either as a matter of grammar; the indicative is the natural default, not a certainty. The expectation is now that the indicative is among the moods of the first reading (so an honest 'indicative or Konjunktiv II' is correct, and so is 'indicative' with the Konjunktiv kept as a second reading). An audit of 2026-10-01 raised this."
+  ],
   "sentences": [
     { "id": "r2-01", "category": "separable verbs", "text": "Wir laden unsere Freunde zum Essen ein.",
       "tokens": [
@@ -49,7 +54,7 @@
         { "form": "gebaut", "lemma": "bauen", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
         { "form": "worden", "lemma": "werden", "pos": "AUX" },
         { "form": "Großvater", "lemma": "Großvater", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Masc", "Number": "Sing" } }
-      ], "constructions": ["passive"], "notConstructions": ["sentence-bracket-perfect"] },
+      ], "constructions": ["passive-perfect"], "notConstructions": ["sentence-bracket-perfect", "pluperfect"] },
     { "id": "r2-08", "category": "Konjunktiv", "text": "Ich hätte gern einen Kaffee.",
       "tokens": [
         { "form": "hätte", "lemma": "haben", "morph": { "Mood": "Sub", "Tense": "Past", "Person": "1", "Number": "Sing" } },
@@ -108,7 +113,7 @@
     { "id": "r2-17", "category": "relative clause", "text": "Die Kinder, die im Garten spielten, lachten laut.",
       "tokens": [
         { "form": "die", "pos": "PRON", "morph": { "PronType": "Rel", "Number": "Plur" }, "includes": { "Case": "Nom" } },
-        { "form": "spielten", "lemma": "spielen", "pos": "VERB", "morph": { "Mood": "Ind", "Tense": "Past", "Person": "3", "Number": "Plur" } },
+        { "form": "spielten", "lemma": "spielen", "pos": "VERB", "morph": { "Tense": "Past", "Person": "3", "Number": "Plur" }, "includes": { "Mood": "Ind" } },
         { "form": "lachten", "lemma": "lachen", "pos": "VERB", "morph": { "Mood": "Ind", "Tense": "Past", "Person": "3", "Number": "Plur" } },
         { "form": "im", "lemma": "in", "parts": [{ "lemma": "in", "kind": "contracted" }, { "lemma": "der", "kind": "contracted" }] }
       ], "constructions": ["relative-clause"] },

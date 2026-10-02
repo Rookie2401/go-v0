@@ -233,12 +233,13 @@ describe('Settings', () => {
     expect((await h.store.users.get('u2'))!.courseId).toBe('india-hi');
     expect(q(mounted.container, '.who')!.textContent).toContain('Second · HI');
 
+    // a new learner joins the team shown above (one team box, no second course box)
+    expect(mounted.container.querySelector('[aria-label="New learner course"]')).toBeNull();
     await typeInto(byLabel<HTMLInputElement>(mounted.container, 'New learner name'), 'Third');
-    await choose(byLabel<HTMLSelectElement>(mounted.container, 'New learner course'), 'germany-de');
     await click(button(mounted.container, 'Add learner'));
     const added = (await h.store.users.all()).find((u) => u.displayName === 'Third')!;
-    expect(added.courseId).toBe('germany-de');
-    expect(q(mounted.container, '.who')!.textContent).toContain('Third · DE'); // switched to the new learner
+    expect(added.courseId).toBe('india-hi');
+    expect(q(mounted.container, '.who')!.textContent).toContain('Third · HI'); // switched to the new learner
   });
 });
 

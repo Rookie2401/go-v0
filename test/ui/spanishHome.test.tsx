@@ -7,7 +7,7 @@ import { SPANISH_COURSE_ID, SPANISH_DOORS, SPANISH_STREAMS } from '../../src/cou
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { buildFixtureText } from '../../src/core';
 import { setPref } from '../../src/ui/prefs';
-import { button, byLabel, click, flush, makeHarness, q, qa, catalogText } from './harness';
+import { byLabel, click, flush, makeHarness, q, qa, catalogText } from './harness';
 import type { Mounted } from './harness';
 
 let mounted: Mounted | undefined;
@@ -206,23 +206,13 @@ describe('courses without streams are unchanged', () => {
 });
 
 describe('Interests (Settings → You)', () => {
-  it('offers "more of", never "only": chosen streams and subjects persist on the learner and reach the ranking', async () => {
+  it('is not offered any more: Settings → You shows no "More of" box (the kinds of reading and subjects were for advanced learners)', async () => {
     const h = await spanish({ library: LIB });
-    h.learn.rankLibrary.mockImplementation(async () => [ranked('text:es:cuento-1', 'manageable', ['Easy to follow.'])]);
     mounted = await h.mount(app(), { router: '/settings' });
     await flush(6);
-    const box = byLabel(mounted.container, 'More of');
-    expect(box.textContent).toContain('never hides anything');
-    expect(box.textContent).not.toContain('Listen'); // the listening stream is switched off with GoListen
-    expect(box.textContent).not.toContain('Your Books');
-    const honduras = button(box, 'Honduras');
-    expect(honduras.getAttribute('aria-pressed')).toBe('false');
-    await click(honduras);
-    await click(button(box, 'History'));
-    expect((await h.store.users.get('u1'))!.interests).toEqual(['honduras', 'history']);
-    expect(button(byLabel(mounted.container, 'More of'), 'Honduras').getAttribute('aria-pressed')).toBe('true');
-    await click(button(byLabel(mounted.container, 'More of'), 'Honduras')); // toggles off again
-    expect((await h.store.users.get('u1'))!.interests).toEqual(['history']);
+    expect(q(mounted.container, '[data-testid="interests"]')).toBeNull();
+    expect(mounted.container.textContent).not.toContain('More of');
+    expect(mounted.container.textContent).not.toContain('Kinds of reading');
   });
 
   it('the learner interests reach the ranking and widen the candidate pages (they never narrow them)', async () => {
@@ -239,12 +229,6 @@ describe('Interests (Settings → You)', () => {
     expect(candidates.map((c) => c.profile.textId)).toContain('text:es:cuento-1'); // a text outside the interest is still a candidate
   });
 
-  it('is not offered for a course without streams', async () => {
-    const h = await makeHarness({ courseId: 'thailand-th' });
-    mounted = await h.mount(app(), { router: '/settings' });
-    await flush(6);
-    expect(q(mounted.container, '[data-testid="interests"]')).toBeNull();
-  });
 
   it('the Spanish course id is the one the doors and streams belong to', () => {
     expect(SPANISH_STREAMS.every((s) => s.courseId === SPANISH_COURSE_ID)).toBe(true);

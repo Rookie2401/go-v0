@@ -8,7 +8,7 @@
  */
 import { useCallback, useEffect, useId, useMemo, useState } from 'react';
 import { LEVEL_ORDER } from '../../core';
-import type { Course, GoListenDiagnostics, ItemKind, ItemMarked, LearnerItemState, LearnerLevel, User } from '../../core';
+import type { GoListenDiagnostics, ItemKind, ItemMarked, LearnerItemState, LearnerLevel, User } from '../../core';
 import { useApp } from '../context';
 import { itemSurface, languageName } from '../format';
 import { TeamSelect } from '../Onboarding';
@@ -17,7 +17,6 @@ import type { HighlightPref, ThemePref } from '../prefs';
 import { BackLink, Disclosure, I, IconBtn, Topbar } from '../ui';
 import { BackupSection } from './settings/BackupSection';
 import { ContentSection } from './settings/ContentSection';
-import { InterestsSection } from './settings/InterestsSection';
 import { EvidenceSection } from './settings/EvidenceSection';
 import { LanguageSupportSection } from './settings/LanguageSupportSection';
 import { AdvancedSpeechControls, SpeechSection } from './settings/SpeechSection';
@@ -106,16 +105,12 @@ export function VocabularyPage() {
 function LearnerSection() {
   const { store, user, course, selectUser, refreshUser } = useApp();
   const [users, setUsers] = useState<User[]>([]);
-  const [courses, setCourses] = useState<Course[]>([]);
   const [name, setName] = useState('');
-  const [newCourse, setNewCourse] = useState('');
   const [error, setError] = useState<string | null>(null);
 
   const load = useCallback(async () => {
-    const [u, c] = await Promise.all([store.users.all(), store.courses.all()]);
+    const u = await store.users.all();
     setUsers(u.sort((a, b) => a.createdAt.localeCompare(b.createdAt)));
-    setCourses(c);
-    setNewCourse((prev) => prev || c[0]?.id || '');
   }, [store]);
   useEffect(() => { void load(); }, [load, user.id]);
 
@@ -139,15 +134,15 @@ function LearnerSection() {
         />
         <span className="card__note">You are learning {languageName(course)}. Your progress is kept per language, so switching teams loses nothing.</span>
       </label>
-      <InterestsSection />
       <form
         className="settings__new"
         onSubmit={(e) => {
           e.preventDefault();
-          if (!name.trim() || !newCourse) return;
+          if (!name.trim()) return;
           run(async () => {
             const id = `u-${Date.now().toString(36)}`;
-            await store.users.put({ id, displayName: name.trim(), courseId: newCourse, createdAt: new Date().toISOString() });
+            // a new learner joins the team chosen above; the team can be changed for them afterwards
+            await store.users.put({ id, displayName: name.trim(), courseId: course.id, createdAt: new Date().toISOString() });
             setName('');
             await selectUser(id);
             await load();
@@ -158,15 +153,9 @@ function LearnerSection() {
           <span className="label">New learner</span>
           <input type="text" value={name} onChange={(e) => setName(e.target.value)} aria-label="New learner name" />
         </label>
-        <label className="field">
-          <span className="label">Course</span>
-          <select value={newCourse} onChange={(e) => setNewCourse(e.target.value)} aria-label="New learner course">
-            {courses.map((c) => <option key={c.id} value={c.id}>{c.country}</option>)}
-          </select>
-        </label>
         <button type="submit" className="btn btn--small" disabled={!name.trim()}>Add learner</button>
       </form>
-      <p className="card__note">Each learner has their own reading history, vocabulary and testimonies on this device.</p>
+      <p className="card__note">A new learner joins the {course.country} team. Each learner has their own reading history, vocabulary and testimonies on this device.</p>
     </section>
   );
 }

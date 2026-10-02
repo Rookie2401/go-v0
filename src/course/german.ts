@@ -130,17 +130,28 @@ export const LUTHER_1912_RIGHTS: WorkRights = {
   state: 'verified-public-domain', copyrightStatus: 'public-domain', permission: 'not-needed', canBundle: true, userImportOnly: false,
   canModify: true, canStoreOffline: true, canBundleAudio: false, audiobook: 'unknown', verified: true,
   verifiedBy: 'coordinator (AI), from the evidence listed; not legal advice — to be confirmed by the owner', verifiedAt: '2026-10-01',
-  basis: 'Revision of Luther\'s translation published in 1912; the distributor states "Public Domain" for this text.',
+  basis: 'Luther died in 1546. The revision of 1912 was published (New Testament December 1912, whole Bible 1913) as a church text '
+    + 'without named revisers; a work published without its authors\' names is protected for 70 years from publication (Germany: UrhG § 66; '
+    + 'EU: Directive 2006/116/EC Art. 1(3)), which ended in 1983 at the latest; in the United States a work published before 1929 is in the '
+    + 'public domain. The publisher of the Luther Bible claims copyright only in its own digital edition, not in this text. '
+    + 'NOT ESTABLISHED FROM A PRIMARY SOURCE: a written statement of the Deutsche Bibelgesellschaft that the text is free (only a third party\'s '
+    + 'report of one exists), and the names and death dates of the revisers (were a reviser identified as an author, life plus 70 years would apply to that contribution).',
   sourceRepository: 'eBible.org, translation id deu1912 (https://ebible.org/deu1912/)',
   licence: 'Public Domain (as stated on the source\'s copyright page)',
-  jurisdictions: ['as stated by the distributor; not checked country by country'],
+  jurisdictions: ['US', 'DE', 'EU'],
+  statusByJurisdiction: { US: 'public-domain', DE: 'public-domain', EU: 'public-domain' },
+  countryOfOrigin: 'DE', editionYear: 1912, retrievedAt: '2026-10-01',
   attributionRequired: false, shareAlike: false,
   modifications: 'none: each bundled verse is identical to the source after Unicode normalization (NFC) and whitespace normalization',
   proofreading: 'the distributor\'s text; no proofreading of our own',
   evidence: [
-    'Martin Luther died in 1546. The text is the revision of his translation published in 1912; the distributor names no reviser.',
-    'eBible.org lists the translation "Luther Bibel 1912" (deu1912) with the statement Public Domain on its copyright page.',
-    'Every bundled verse is compared with the distributor\'s page and recorded with its URL in data/verified/scripture.json.',
+    'Martin Luther died in 1546. The text is the second church revision of his translation, commissioned by the Evangelische Kirchenkonferenz: New Testament December 1912, whole Bible 1913 (de.wikipedia.org, "Lutherbibel", section "Lutherbibel von 1912", read 2026-10-01).',
+    'eBible.org lists the translation "Luther Bibel 1912" (deu1912) with the statement Public Domain on its copyright page (https://ebible.org/deu1912/copyright.htm, read 2026-10-01); the page names no reviser and no jurisdiction.',
+    'The Deutsche Bibelgesellschaft\'s own online edition (https://www.die-bibel.de/bibel/LU12/GEN.1, read 2026-10-01) carries the line "Neu durchgesehen nach dem vom Deutschen Evangelischen Kirchenausschuss genehmigten Text (1912). © der digitalen Ausgabe 1999, 2018 Deutsche Bibelgesellschaft Stuttgart": no reviser is named, and copyright is claimed in the digital edition only. That edition is NOT the source of the bundled text.',
+    'freie-bibel.de reports: "Die Lizenzabteilung der Deutschen Bibelgesellschaft hat uns am 2014-01-21 bestätigt, dass die Luther 1912 mittlerweile gemeinfrei ist", and adds that no list of the revisers with their years of death exists there (http://www.freie-bibel.de/official/bibel/luther/luther_1912/information/uebersetzung_luther_1912.html, read 2026-10-01). A third party\'s report, not the statement itself.',
+    'de.wikipedia.org, "Lutherbibel", section "Die Lutherbibel von 1912 im 21. Jahrhundert": the revision of 1912 is "nicht mehr durch das Urheberrecht geschützt" and may be reprinted without permission (read 2026-10-01). An encyclopedia, not an authority.',
+    'Every bundled verse is compared with the distributor\'s page and recorded with its URL in data/verified/scripture.json. That record proves the wording is the source\'s wording; it says nothing about rights.',
+    'Not checked: Austria and Switzerland individually; any jurisdiction with a term longer than 70 years.',
   ],
   compliance: 'No attribution is required; the source and edition are named on every Scripture text.',
   audioRights: 'No recording is bundled. A recording has rights of its own, to be checked separately.',
@@ -159,6 +170,8 @@ const grimm1857 = (page: string, revision: number, scanPage: number, sha256: str
   sourceRepository: `de.wikisource.org, page "${page}", revision ${revision} (https://de.wikisource.org/w/index.php?oldid=${revision})`,
   licence: 'Underlying text: public domain. The Wikisource transcription is offered by the site under Creative Commons Attribution-Share Alike 4.0.',
   jurisdictions: ['DE', 'EU', 'US'],
+  statusByJurisdiction: { DE: 'public-domain', EU: 'public-domain', US: 'public-domain' },
+  countryOfOrigin: 'DE', editionYear: 1857,
   attributionRequired: true, shareAlike: true,
   modifications: 'page-number marks removed; whitespace normalised; cut into sentences without changing a character; the spelling of 1857 is kept',
   retrievedAt: '2026-10-01', checksum: `sha256 ${sha256}`,

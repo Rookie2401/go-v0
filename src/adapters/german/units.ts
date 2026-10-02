@@ -75,17 +75,30 @@ function join(s: Sent, v: Tok, p: Tok): boolean {
   return true;
 }
 
-/** A separable-kind particle stranded after a finite verb the list does not join with it: an unconfirmed unit, behind the ordinary readings. */
-function guessUnit(s: Sent, cl: Clause, p: Tok): void {
+/** An adverb of measure or degree in front of weg, hin, her …: "Er wohnt weit weg" is no weggehen-type unit. */
+const MEASURE = new Set(['weit', 'ganz', 'sehr', 'ziemlich', 'recht', 'so', 'zu', 'viel', 'wenig', 'nah', 'nahe', 'fern', 'kurz', 'lang', 'etwas']);
+
+/**
+ * A word of the unambiguously separable prefix list at the END of its clause (or before the closing "zu + infinitive"), after a finite
+ * verb the list knows but does not join with it: an unconfirmed unit (prefix + verb, confidence 0.5, no gloss), put first on both words
+ * with the ordinary readings right behind it, for the dictionary to decide. Never when the word has another job in the clause: an
+ * adjective or noun reading (fest, bereit), a verb reading, an adverb of measure in front of it (weit weg), and never when the only
+ * verb is sein, haben, werden or a modal (Er ist weg. Die Tür ist zu. Er will mit.).
+ */
+function guessUnit(s: Sent, cl: Clause, p: Tok): boolean {
   const pre = p.raw.normalized;
-  if (s.lex.prefixKind(pre) !== 'separable' || !p.own) return;
-  if (anyLive(p, (c) => c.pos === 'ADJ' || c.pos === 'NOUN' || c.pos === 'PROPN')) return;
+  if (s.lex.prefixKind(pre) !== 'separable' || !p.own) return false;
+  if (anyLive(p, (c) => c.pos === 'ADJ' || c.pos === 'NOUN' || c.pos === 'PROPN' || c.pos === 'VERB' || c.pos === 'AUX')) return false;
+  const before = s.toks[p.i - 1];
+  if (before?.word && MEASURE.has(before.raw.normalized)) return false;
   const slot = finiteSlot(s, cl);
-  if (slot < 0) return;
+  if (slot < 0) return false;
   const v = s.toks[cl.words[slot]];
-  if (!v.own || v.i >= p.i) return;
+  if (!v.own || v.i >= p.i) return false;
   const base = v.rs.filter((r) => !r.down && r.c.pos === 'VERB' && isFin(r.c) && !r.c.unconfirmed && !r.prefix && r.c.lemma && !NOT_SEPARABLE_HEADS.has(r.c.lemma));
-  if (!base.length) return;
+  if (!base.length) return false;
+  // the finite verb is the clause's only verb: no modal or auxiliary stands beside a participle or infinitive of its own
+  if (v.rs.some((r) => !r.down && isFin(r.c) && r.c.lemma && NOT_SEPARABLE_HEADS.has(r.c.lemma))) return false;
   const seen = new Set<string>();
   const vOut: R[] = [];
   for (const r of base) {
@@ -102,7 +115,7 @@ function guessUnit(s: Sent, cl: Clause, p: Tok): void {
     c.notes = { source: 'rule', rule: `${r.c.lemma} with the prefix ${pre} stranded at the end of the clause; ${lemma} is not in the word list (a guess)`, lemmaStatus: 'inferred by the rules', unit: lemma, separable: pre };
     c.origin = 'rule';
     c.sourceId = DE_SOURCE_IDS.rules;
-    vOut.push({ c, own: true, late: true });
+    vOut.push({ c, own: true });
   }
   const lemma0 = `${pre}${base[0].c.lemma}`;
   const pc: R['c'] = {
@@ -110,10 +123,16 @@ function guessUnit(s: Sent, cl: Clause, p: Tok): void {
     notes: { source: 'rule', rule: `the particle ${pre} stranded at the end of the clause, perhaps the prefix of ${lemma0} (not in the word list; a guess)`, lemmaStatus: 'inferred by the rules', unit: lemma0, separable: pre, particleOf: String(v.i) },
     origin: 'rule', sourceId: DE_SOURCE_IDS.rules, unit: makeUnit(v, p, lemma0, 'separable prefix'),
   };
-  v.rs = [...v.rs, ...vOut];
-  p.rs = [...p.rs, { c: pc, own: true, late: true }];
+  for (const r of v.rs) if (!r.down) markDown(r);
+  for (const r of p.rs) if (!r.down) markDown(r);
+  for (const r of vOut) addContext(r, `${pre} stands alone at the end of the clause after ${base[0].c.lemma}: perhaps ${r.c.lemma}, which the word list does not hold (a guess; the dictionary decides)`);
+  const pr: R = { c: pc, own: true };
+  addContext(pr, `${pre} stands alone at the end of the clause after ${s.toks[v.i].raw.surface}: perhaps the prefix of ${lemma0}, which the word list does not hold (a guess; the dictionary decides)`);
+  v.rs = [...vOut, ...v.rs];
+  p.rs = [pr, ...p.rs];
   settle(v);
   settle(p);
+  return true;
 }
 
 /** Put separated verbs together; drop the detached readings that found no prefix. */
@@ -139,9 +158,8 @@ export function joinSeparableVerbs(s: Sent): void {
       if (v.rs.some((r) => r.c.unit)) continue;
       v.rs = v.rs.filter((r) => !detached(r));
     }
-    if (!final && !done) {
-      const p = s.toks[cl.words[cl.words.length - 1]];
-      if (cl.words.length >= 2) guessUnit(s, cl, p);
+    if (!final && !done && cl.words.length >= 2) {
+      for (const p of particleSlots(s, cl)) if (guessUnit(s, cl, p)) break;
     }
   }
   // detached readings on a verb outside any clause (a lone word) are dropped too

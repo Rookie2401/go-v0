@@ -1,0 +1,166 @@
+{
+  "schema": 1,
+  "language": "de",
+  "note": "Round 4 of the German gold set: native prose only. Every sentence is taken whole and unchanged from Franz Kafka, Die Verwandlung (1915), the two pages after those used in round 3. It was written while the last fix batch was running, kept outside the repository, and run once after that batch landed; no fix followed that run in this pass. It is the most honest figure this pass has for German the system has not been tuned on — and it is still small, by one author, and judged by an AI model.",
+  "provenance": "Wording: de.wikisource.org, 'Seite:De Kafka Die Verwandlung 1179.jpg' (revision 3249397) and '…1180.jpg' (revision 3249398), proofread twice ('fertig'), from Die Weißen Blätter 2 (1915), Heft 10; Kafka died in 1924. Judgements: the coordinator (an AI model, not a native speaker; standard school grammar; not reviewed by a person). First run: see docs/german/STATUS.md.",
+  "sentences": [
+    { "id": "r4-01", "category": "native prose (Kafka)", "text": "Und er sah zur Weckuhr hinüber, die auf dem Kasten tickte.",
+      "tokens": [
+        { "form": "sah", "lemma": "hinübersehen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" }, "unitWith": ["hinüber"] },
+        { "form": "zur", "lemma": "zu", "pos": "ADP", "parts": [{ "lemma": "zu", "kind": "contracted" }, { "lemma": "der", "kind": "contracted" }] },
+        { "form": "Weckuhr", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Fem", "Number": "Sing" } },
+        { "form": "die", "pos": "PRON", "morph": { "PronType": "Rel", "Gender": "Fem", "Number": "Sing" } },
+        { "form": "tickte", "lemma": "ticken", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } }
+      ], "constructions": ["relative-clause", "separable-prefix-verb"] },
+    { "id": "r4-02", "category": "native prose (Kafka)", "text": "Sollte der Wecker nicht geläutet haben?",
+      "tokens": [
+        { "form": "Sollte", "lemma": "sollen", "pos": "AUX", "morph": { "Person": "3", "Number": "Sing" } },
+        { "form": "Wecker", "lemma": "Wecker", "pos": "NOUN", "morph": { "Case": "Nom", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "geläutet", "lemma": "läuten", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "haben", "lemma": "haben", "morph": { "VerbForm": "Inf" } }
+      ], "constructions": ["modal-infinitive"], "notConstructions": ["modal-particle"] },
+    { "id": "r4-03", "category": "native prose (Kafka)", "text": "Was aber sollte er jetzt tun?",
+      "tokens": [
+        { "form": "sollte", "lemma": "sollen", "pos": "AUX", "morph": { "Person": "3", "Number": "Sing" } },
+        { "form": "tun", "lemma": "tun", "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "Was", "pos": "PRON", "includes": { "Case": "Acc" } }
+      ], "constructions": ["modal-infinitive"] },
+    { "id": "r4-04", "category": "native prose (Kafka)", "text": "Es war eine Kreatur des Chefs, ohne Rückgrat und Verstand.",
+      "tokens": [
+        { "form": "war", "lemma": "sein", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "Chefs", "lemma": "Chef", "pos": "NOUN", "morph": { "Case": "Gen", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "des", "pos": "DET", "morph": { "Case": "Gen", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "Kreatur", "pos": "NOUN", "morph": { "Gender": "Fem", "Number": "Sing" }, "includes": { "Case": "Nom" } },
+        { "form": "Verstand", "lemma": "Verstand", "pos": "NOUN", "includes": { "Case": "Acc" } }
+      ], "constructions": ["genitive-attribute"] },
+    { "id": "r4-05", "category": "native prose (Kafka)", "text": "Wie nun, wenn er sich krank meldete?",
+      "note": "meldete is indicative or Konjunktiv II by its shape; in this wenn-clause the Konjunktiv must at least be among its moods.",
+      "tokens": [
+        { "form": "meldete", "lemma": "melden", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" }, "includes": { "Mood": "Sub" } },
+        { "form": "wenn", "lemma": "wenn", "pos": "SCONJ" },
+        { "form": "krank", "lemma": "krank", "pos": "ADJ" }
+      ], "constructions": ["verb-final-subordinate"] },
+    { "id": "r4-06", "category": "native prose (Kafka)", "text": "Wolltest du nicht wegfahren?",
+      "tokens": [
+        { "form": "Wolltest", "lemma": "wollen", "pos": "AUX", "morph": { "Person": "2", "Number": "Sing", "Tense": "Past" } },
+        { "form": "wegfahren", "lemma": "wegfahren", "pos": "VERB", "morph": { "VerbForm": "Inf" } }
+      ], "constructions": ["modal-infinitive"], "notConstructions": ["modal-particle"] },
+    { "id": "r4-07", "category": "native prose (Kafka)", "text": "Die sanfte Stimme!",
+      "tokens": [
+        { "form": "sanfte", "lemma": "sanft", "pos": "ADJ", "morph": { "Gender": "Fem", "Number": "Sing", "Decl": "Weak" } },
+        { "form": "Stimme", "lemma": "Stimme", "pos": "NOUN", "morph": { "Gender": "Fem", "Number": "Sing" }, "includes": { "Case": "Nom" } }
+      ] },
+    { "id": "r4-08", "category": "native prose (Kafka)", "text": "Der Vater kehrte auch zu seinem Frühstück zurück, die Schwester aber flüsterte: »Gregor, mach auf, ich beschwöre dich.«",
+      "tokens": [
+        { "form": "kehrte", "lemma": "zurückkehren", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" }, "unitWith": ["zurück"] },
+        { "form": "Frühstück", "lemma": "Frühstück", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Neut", "Number": "Sing" } },
+        { "form": "flüsterte", "lemma": "flüstern", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "mach", "lemma": "aufmachen", "pos": "VERB", "morph": { "Mood": "Imp" }, "unitWith": ["auf"] },
+        { "form": "beschwöre", "lemma": "beschwören", "pos": "VERB", "morph": { "Person": "1", "Number": "Sing" } },
+        { "form": "dich", "pos": "PRON", "morph": { "Case": "Acc" } }
+      ], "constructions": ["separable-prefix-verb", "imperative"] },
+    { "id": "r4-09", "category": "native prose (Kafka)", "text": "Aber weiterhin wurde es schwierig, besonders weil er so ungemein breit war.",
+      "note": "wurde is the full verb werden (to become), not a passive.",
+      "tokens": [
+        { "form": "wurde", "lemma": "werden", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "war", "lemma": "sein", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "schwierig", "lemma": "schwierig", "pos": "ADJ" },
+        { "form": "weil", "lemma": "weil", "pos": "SCONJ" }
+      ], "constructions": ["verb-final-subordinate"], "notConstructions": ["passive-past", "passive"] },
+    { "id": "r4-10", "category": "native prose (Kafka)", "text": "Die Decke abzuwerfen war ganz einfach; er brauchte sich nur ein wenig aufzublasen und sie fiel von selbst.",
+      "tokens": [
+        { "form": "abzuwerfen", "lemma": "abwerfen", "pos": "VERB", "morph": { "VerbForm": "Inf" }, "parts": [{ "kind": "prefix" }, { "kind": "marker" }] },
+        { "form": "aufzublasen", "lemma": "aufblasen", "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "fiel", "lemma": "fallen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "brauchte", "lemma": "brauchen", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "Decke", "lemma": "Decke", "pos": "NOUN", "morph": { "Gender": "Fem", "Number": "Sing" }, "includes": { "Case": "Acc" } }
+      ], "constructions": ["zu-infinitive"] },
+    { "id": "r4-11", "category": "native prose (Kafka)", "text": "Ist dir nicht wohl?",
+      "note": "wohl is the adjective / adverb (well) here, not the modal particle.",
+      "tokens": [
+        { "form": "dir", "pos": "PRON", "morph": { "Case": "Dat" } },
+        { "form": "wohl", "lemma": "wohl", "pos": ["ADV", "ADJ"] },
+        { "form": "Ist", "lemma": "sein", "morph": { "Person": "3", "Number": "Sing" } }
+      ], "notConstructions": ["modal-particle"] },
+    { "id": "r4-12", "category": "native prose (Kafka)", "text": "Brauchst du etwas?",
+      "tokens": [
+        { "form": "Brauchst", "lemma": "brauchen", "morph": { "Person": "2", "Number": "Sing" } },
+        { "form": "etwas", "lemma": "etwas", "pos": ["PRON", "DET", "ADV"] }
+      ], "constructions": ["question-verb-first"] },
+    { "id": "r4-13", "category": "native prose (Kafka)", "text": "»Gregor, Gregor,« rief er, »was ist denn?«",
+      "tokens": [
+        { "form": "rief", "lemma": "rufen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "denn", "pos": "PART", "hasRole": true },
+        { "form": "ist", "lemma": "sein", "morph": { "Person": "3", "Number": "Sing" } }
+      ], "constructions": ["modal-particle"] },
+    { "id": "r4-14", "category": "native prose (Kafka)", "text": "Es war halb sieben Uhr, und die Zeiger gingen ruhig vorwärts, es war sogar halb vorüber, es näherte sich schon dreiviertel.",
+      "tokens": [
+        { "form": "gingen", "lemma": ["gehen", "vorwärtsgehen"], "pos": "VERB", "morph": { "Person": "3", "Number": "Plur", "Tense": "Past" } },
+        { "form": "Zeiger", "lemma": "Zeiger", "pos": "NOUN", "morph": { "Number": "Plur" }, "includes": { "Case": "Nom" } },
+        { "form": "näherte", "lemma": ["nähern", "sich nähern"], "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "sieben", "lemma": "sieben", "pos": "NUM" }
+      ] },
+    { "id": "r4-15", "category": "native prose (Kafka)", "text": "Man sah vom Bett aus, daß er auf vier Uhr richtig eingestellt war; gewiß hatte er auch geläutet.",
+      "tokens": [
+        { "form": "sah", "lemma": "sehen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "daß", "lemma": "dass", "pos": "SCONJ", "orthography": { "modern": "dass", "period": "de-1901" } },
+        { "form": "eingestellt", "lemma": "einstellen", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "gewiß", "lemma": "gewiss", "orthography": { "modern": "gewiss", "period": "de-1901" } },
+        { "form": "hatte", "lemma": "haben", "pos": "AUX", "morph": { "Person": "3", "Number": "Sing" } },
+        { "form": "geläutet", "lemma": "läuten", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "Bett", "lemma": "Bett", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Neut", "Number": "Sing" } }
+      ], "constructions": ["pluperfect", "verb-final-subordinate"] },
+    { "id": "r4-16", "category": "native prose (Kafka)", "text": "Nun, ruhig hatte er ja nicht geschlafen, aber wahrscheinlich desto fester.",
+      "tokens": [
+        { "form": "hatte", "lemma": "haben", "pos": "AUX", "morph": { "Person": "3", "Number": "Sing" } },
+        { "form": "geschlafen", "lemma": "schlafen", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "ja", "pos": "PART", "hasRole": true },
+        { "form": "fester", "lemma": "fest", "pos": ["ADJ", "ADV"] }
+      ], "constructions": ["pluperfect", "modal-particle"], "notConstructions": ["je-desto"] },
+    { "id": "r4-17", "category": "native prose (Kafka)", "text": "Gregor fühlte sich tatsächlich, abgesehen von einer nach dem langen Schlaf wirklich überflüssigen Schläfrigkeit, ganz wohl und hatte sogar einen besonders kräftigen Hunger.",
+      "tokens": [
+        { "form": "fühlte", "lemma": ["fühlen", "sich fühlen"], "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "hatte", "lemma": "haben", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" } },
+        { "form": "Hunger", "lemma": "Hunger", "pos": "NOUN", "morph": { "Case": "Acc", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "kräftigen", "lemma": "kräftig", "pos": "ADJ", "morph": { "Case": "Acc", "Gender": "Masc", "Number": "Sing", "Decl": "Mixed" } },
+        { "form": "Schlaf", "lemma": "Schlaf", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "langen", "lemma": "lang", "pos": "ADJ", "morph": { "Case": "Dat", "Gender": "Masc", "Number": "Sing", "Decl": "Weak" } }
+      ], "notConstructions": ["pluperfect", "sentence-bracket-perfect"] },
+    { "id": "r4-18", "category": "native prose (Kafka)", "text": "Zunächst wollte er ruhig und ungestört aufstehen, sich anziehen und vor allem frühstücken, und dann erst das Weitere überlegen, denn, das merkte er wohl, im Bett würde er mit dem Nachdenken zu keinem vernünftigen Ende kommen.",
+      "tokens": [
+        { "form": "wollte", "lemma": "wollen", "pos": "AUX", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "aufstehen", "lemma": "aufstehen", "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "anziehen", "lemma": ["anziehen", "sich anziehen"], "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "frühstücken", "lemma": "frühstücken", "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "würde", "lemma": "werden", "pos": "AUX", "morph": { "Mood": "Sub", "Person": "3", "Number": "Sing" } },
+        { "form": "kommen", "lemma": "kommen", "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "Nachdenken", "lemma": "Nachdenken", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Neut", "Number": "Sing" } },
+        { "form": "Ende", "lemma": "Ende", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Neut", "Number": "Sing" } },
+        { "form": "vernünftigen", "lemma": "vernünftig", "pos": "ADJ", "morph": { "Case": "Dat", "Gender": "Neut", "Number": "Sing", "Decl": "Mixed" } }
+      ], "constructions": ["modal-infinitive", "konjunktiv-2-wuerde"] },
+    { "id": "r4-19", "category": "native prose (Kafka)", "text": "Daß die Veränderung der Stimme nichts anderes war, als der Vorbote einer tüchtigen Verkühlung, einer Berufskrankheit der Reisenden, daran zweifelte er nicht im geringsten.",
+      "tokens": [
+        { "form": "Daß", "lemma": "dass", "pos": "SCONJ", "orthography": { "modern": "dass", "period": "de-1901" } },
+        { "form": "der", "pos": "DET", "morph": { "Case": "Gen", "Gender": "Fem", "Number": "Sing" } },
+        { "form": "Stimme", "lemma": "Stimme", "pos": "NOUN", "morph": { "Case": "Gen", "Gender": "Fem", "Number": "Sing" } },
+        { "form": "zweifelte", "lemma": "zweifeln", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "Berufskrankheit", "lemma": "Berufskrankheit", "pos": "NOUN", "includes": { "Gender": "Fem" }, "parts": [{ "lemma": "Beruf", "kind": "component" }, { "text": "s", "kind": "link" }, { "lemma": "Krankheit", "kind": "head" }] },
+        { "form": "Reisenden", "pos": ["NOUN", "ADJ"], "morph": { "Case": "Gen", "Number": "Plur" } }
+      ], "constructions": ["verb-final-subordinate", "genitive-attribute"] },
+    { "id": "r4-20", "category": "native prose (Kafka)", "text": "Und hätte er übrigens in diesem Falle so ganz unrecht?",
+      "tokens": [
+        { "form": "hätte", "lemma": "haben", "morph": { "Mood": "Sub", "Tense": "Past", "Person": "3", "Number": "Sing" } },
+        { "form": "Falle", "lemma": "Fall", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "diesem", "pos": "DET", "morph": { "Case": "Dat", "Gender": "Masc", "Number": "Sing" } }
+      ], "constructions": ["konjunktiv-2"] },
+    { "id": "r4-21", "category": "native prose (Kafka)", "text": "Der nächste Zug ging um sieben Uhr; um den einzuholen, hätte er sich unsinnig beeilen müssen, und die Kollektion war noch nicht eingepackt, und er selbst fühlte sich durchaus nicht besonders frisch und beweglich.",
+      "tokens": [
+        { "form": "ging", "lemma": "gehen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" }, "notUnit": true },
+        { "form": "einzuholen", "lemma": "einholen", "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "nächste", "lemma": ["nah", "nahe", "nächst"], "pos": "ADJ", "morph": { "Case": "Nom", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "eingepackt", "lemma": "einpacken", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "beeilen", "lemma": ["beeilen", "sich beeilen"], "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "müssen", "lemma": "müssen", "morph": { "VerbForm": "Inf" } }
+      ], "constructions": ["um-zu", "konjunktiv-2"], "notConstructions": ["modal-particle"] }
+  ]
+}

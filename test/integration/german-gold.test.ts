@@ -91,6 +91,6 @@ describe('the known-limit record cannot hide a change', () => {
     const r = evaluateRound(de, 'example', sentences, { b: { reason: 'deliberately wrong expectation', expected: ['Haus: lemma'] } });
     expect([r.total, r.correct, r.knownLimits, r.regressions]).toEqual([3, 1, 1, 1]);
     expect(r.results.map((x) => x.standing)).toEqual(['correct', 'known-limit', 'regression']);
-    expect(roundLine(r)).toContain('1 of 3 sentences correct (33.3 %); 1 recorded as known limits, 1 unrecorded failures');
+    expect(roundLine(r)).toContain('1 of 3 sentences correct (33.3 %); 1 of 3 stated facts hold (33.3 %); 1 recorded as known limits, 1 unrecorded failures');
   });
 });

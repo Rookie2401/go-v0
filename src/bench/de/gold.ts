@@ -98,6 +98,18 @@ export function failuresOf(de: LanguageAdapter, s: GoldSentence): GoldFailure[] 
   return out;
 }
 
+/** How many separate facts a gold sentence states (each can hold or fail on its own). */
+export function expectationCount(s: GoldSentence): number {
+  let n = s.segments !== undefined ? 1 : 0;
+  for (const g of s.tokens ?? []) {
+    n += (g.lemma !== undefined ? 1 : 0) + (g.pos !== undefined ? 1 : 0)
+      + Object.keys(g.morph ?? {}).length + Object.keys(g.includes ?? {}).length + Object.keys(g.ambiguous ?? {}).length
+      + (g.unitWith ? 1 : 0) + (g.notUnit ? 1 : 0) + (g.parts ? 1 : 0) + (g.noPartKind ? 1 : 0)
+      + (g.orthography ? 1 : 0) + (g.noOrthography ? 1 : 0) + (g.hasRole ? 1 : 0) + (g.unconfirmed !== undefined ? 1 : 0) + (g.noGloss ? 1 : 0);
+  }
+  return n + (s.constructions?.length ?? 0) + (s.notConstructions?.length ?? 0);
+}
+
 export interface LimitComparison {
   /** Failures the limit records and that still occur. */
   still: string[];
@@ -127,6 +139,9 @@ export interface RoundResult {
   /** Failing sentences that are not recorded at all. */
   regressions: number;
   byCategory: Array<{ category: string; total: number; correct: number }>;
+  /** Stated facts in the round, and how many of them hold (a missing token or reading is counted as one failed fact). */
+  expectations: number;
+  expectationsHeld: number;
   results: SentenceResult[];
 }
 
@@ -152,6 +167,8 @@ export function evaluateRound(de: LanguageAdapter, name: string, sentences: read
     knownLimits: results.filter((r) => r.failures.length > 0 && limits[r.sentence.id]).length,
     regressions: results.filter((r) => r.standing === 'regression').length,
     byCategory: [...by.entries()].map(([category, v]) => ({ category, ...v })),
+    expectations: sentences.reduce((n, x) => n + expectationCount(x), 0),
+    expectationsHeld: results.reduce((n, r) => n + Math.max(0, expectationCount(r.sentence) - r.failures.length), 0),
     results,
   };
 }
@@ -159,6 +176,7 @@ export function evaluateRound(de: LanguageAdapter, name: string, sentences: read
 /** The line a status document quotes: correctness first, then what the failing sentences are. */
 export function roundLine(r: RoundResult): string {
   const pct = r.total ? ((100 * r.correct) / r.total).toFixed(1) : '0.0';
-  return `${r.name}: ${r.correct} of ${r.total} sentences correct (${pct} %); ${r.knownLimits} recorded as known limits, ${r.regressions} unrecorded failures. `
+  const facts = r.expectations ? ((100 * r.expectationsHeld) / r.expectations).toFixed(1) : '0.0';
+  return `${r.name}: ${r.correct} of ${r.total} sentences correct (${pct} %); ${r.expectationsHeld} of ${r.expectations} stated facts hold (${facts} %); ${r.knownLimits} recorded as known limits, ${r.regressions} unrecorded failures. `
     + r.byCategory.map((c) => `${c.category} ${c.correct}/${c.total}`).join('; ');
 }

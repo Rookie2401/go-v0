@@ -39,6 +39,29 @@ function toR(r: DeReading): R {
 
 const GENDER_NAME = { m: 'Masc', f: 'Fem', n: 'Neut' } as const;
 
+/**
+ * A row that says it is another form of the word listed under another lemma (Friede: [same: Frieden]) is one word: its readings
+ * report that lemma, the row's own headword stays in `notes.variantOf`, and readings that thereby become the same (lemma, cells) are one,
+ * the higher confidence kept.
+ */
+function sameWord(rs: R[], lex: DeLexiconView): R[] {
+  for (const r of rs) {
+    if (r.c.pos !== 'NOUN' || !r.c.lemma || r.c.unconfirmed) continue;
+    const rows = lex.nouns(norm(r.c.lemma));
+    const same = rows.length > 0 && rows.every((n) => n.sameAs && n.sameAs === rows[0].sameAs) ? rows[0].sameAs : undefined;
+    if (!same || same === r.c.lemma) continue;
+    r.c.notes = { ...(r.c.notes ?? {}), variantOf: r.c.lemma, rule: `${String(r.c.notes?.rule ?? '')}; ${r.c.lemma} is another form of ${same}: one word` };
+    r.c.lemma = same;
+  }
+  const out: R[] = [];
+  for (const r of rs) {
+    const twin = out.find((o) => o.c.pos === r.c.pos && o.c.lemma === r.c.lemma && JSON.stringify(o.c.morph) === JSON.stringify(r.c.morph) && JSON.stringify(o.cells) === JSON.stringify(r.cells));
+    if (!twin) { out.push(r); continue; }
+    if (r.c.confidence > twin.c.confidence) { twin.c.confidence = r.c.confidence; }
+  }
+  return out;
+}
+
 /** A noun's lexical gender is in its morph, the plural too (the engine's cells leave it out of a plural). */
 function withGender(rs: R[], lex: DeLexiconView): void {
   for (const r of rs) {
@@ -182,7 +205,7 @@ const CACHE_LIMIT = 40_000;
 
 function compute(surface: string, lex: DeLexiconView): R[] {
   const eng = analyzeGermanForm(surface, lex);
-  let rs = eng.map(toR);
+  let rs = sameWord(eng.map(toR), lex);
   withGender(rs, lex);
   const known = rs.some((r) => !r.c.unconfirmed);
   const cap = /^\p{Lu}/u.test(surface);

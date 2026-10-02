@@ -20,11 +20,11 @@ import {
 } from './context';
 import type { DeCell } from './types';
 
-export interface Subj { persons: string[]; numbers: string[]; why: string; tok?: Tok; phrase?: Phrase; kind: 'pronoun' | 'phrase' | 'name' | 'relative' | 'inherited' | 'default' }
+export interface Subj { persons: string[]; numbers: string[]; why: string; tok?: Tok; phrase?: Phrase; kind: 'pronoun' | 'phrase' | 'name' | 'relative' | 'inherited' | 'default' | 'clause' }
 
 const PERSON_NAME: Record<string, string> = { '1': 'first person', '2': 'second person', '3': 'third person' };
 const NUMBER_NAME: Record<string, string> = { Sing: 'singular', Plur: 'plural' };
-const STRICT = new Set(['ich', 'du', 'er', 'wir', 'man']);
+const STRICT = new Set(['ich', 'du', 'er', 'wir', 'man', 'wer']);
 const COORDINATORS = new Set(['und', 'oder', 'aber', 'sondern', 'denn']);
 const order = (xs: Iterable<string>, ref: readonly string[]): string[] => ref.filter((x) => new Set(xs).has(x));
 const joinSet = (xs: string[], ys: string[]): string[] => xs.filter((x) => ys.includes(x));
@@ -38,11 +38,16 @@ function subjectText(persons: string[], numbers: string[]): string {
 /** A nominative personal pronoun (or man …) as the subject: its person and number, the formal Sie counted as third person plural. */
 export function pronounSubject(t: Tok | undefined): Subj | undefined {
   if (!t || !t.word) return undefined;
-  const rs = t.rs.filter((r) => !r.down && r.c.pos === 'PRON' && has(r.c, 'Case', 'Nom') && (has(r.c, 'PronType', 'Prs') || has(r.c, 'PronType', 'Ind')) && r.c.morph.Person);
+  // wer and was (question or free relative) in the nominative are third person singular subjects
+  const wh = t.raw.normalized === 'wer' || t.raw.normalized === 'was';
+  const rs = t.rs.filter((r) => !r.down && r.c.pos === 'PRON' && has(r.c, 'Case', 'Nom')
+    && (((has(r.c, 'PronType', 'Prs') || has(r.c, 'PronType', 'Ind')) && r.c.morph.Person) || (wh && (has(r.c, 'PronType', 'Int') || has(r.c, 'PronType', 'Rel')))));
   if (!rs.length) return undefined;
   const persons = new Set<string>();
   const numbers = new Set<string>();
+  if (wh) { persons.add('3'); numbers.add('Sing'); }
   for (const r of rs) {
+    if (wh) continue;
     if (has(r.c, 'Polite', 'Form')) { persons.add('3'); numbers.add('Plur'); continue; }
     for (const p of feat(r.c, 'Person')) persons.add(p);
     for (const n of feat(r.c, 'Number')) numbers.add(n);
@@ -113,6 +118,9 @@ function candidates(s: Sent, words: number[], skip: Tok | undefined): { phrases:
     if (!words.includes(run.noun.i)) continue;
     for (const m of [run.contraction, run.det, ...run.adjs, run.noun, run.prep]) if (m) inPhrase.add(m.i);
     if (run.prep || run.contraction) continue; // governed: not nominative
+    // wie Haremsfrauen, als Kind: a phrase after the comparison word takes the case of what it is compared with, it is no candidate of its own
+    const firstOf = run.det ?? run.adjs[0] ?? run.noun;
+    if (['wie', 'als'].includes(s.toks[firstOf.i - 1]?.raw.normalized ?? '')) continue;
     const nomCapable = run.noun.rs.some((r) => !r.down && (r.c.pos === 'NOUN' || r.c.notes?.nominalization) && (cellsOf(r) ?? []).some((x) => x.c === 'N'));
     if (nomCapable) phrases.push(run);
   }
@@ -216,8 +224,12 @@ export function decideSubjects(s: Sent): void {
     const subjectClauseBefore = slot === 0 && !!prevClause && /,/.test(cl.open) && verbFinalClause(s, prevClause) && ['wer', 'was', 'dass', 'daß', 'ob'].includes(headWord(s, prevClause).raw.normalized);
     const commandHead = slot === 0 && cl.first && !final && s.endMark !== '?' && slotTok.rs.some((r) => !r.down && has(r.c, 'Mood', 'Imp') && isVerbal(r.c));
     // 2./3. a noun phrase, when it is the only candidate (after a coordinating und with the verb right behind it, a noun phrase is the object: the subject is the one before)
+    // a verb first after a comma, with no subject of its own and no imperative reading, continues the subject of the clause before (… schloß die Augen, ließ erst ab)
+    const asyndetic = !lead && !cl.first && /,/.test(cl.open) && slot === 0 && !final && s.endMark !== '?' && !subjectClauseBefore && frag < 0
+      && !!prevClause && !verbFinalClause(s, prevClause) && finiteSlot(s, prevClause) >= 0
+      && !slotTok.rs.some((r) => !r.down && has(r.c, 'Mood', 'Imp') && isVerbal(r.c));
     let own = !!sub || subjectClauseBefore;
-    if (!sub && !(lead && effective === 0) && !subjectClauseBefore && !commandHead) {
+    if (!sub && !(lead && effective === 0) && !asyndetic && !subjectClauseBefore && !commandHead) {
       // wer is nominative only, so it counts as a candidate; der / die / das (relative) are not nominative only and do not
       const { phrases, others } = candidates(s, words, rel && rel.raw.normalized !== 'wer' ? rel : undefined);
       own = phrases.length + others.length > 0;
@@ -236,9 +248,21 @@ export function decideSubjects(s: Sent): void {
 
     // 4. no pronoun for the first or second person: third person; a coordinated clause shares the subject before it
     if (!sub) {
-      if (lead && !own) {
-        const prev = subjAt[ci - 1];
-        if (prev) sub = { ...prev, why: `the subject is shared with the clause before, across ${s.toks[cl.lead >= 0 ? cl.lead : w[0]].raw.surface} (${prev.why})`, kind: 'inherited' };
+      if (subjectClauseBefore && !own) {
+        sub = undefined;
+      } else if (subjectClauseBefore) {
+        // Wer das sagt, lügt. Dass er kommt, freut mich.: the clause before is the subject, third person singular
+        sub = { persons: ['3'], numbers: ['Sing'], why: `the clause before (${s.toks[headWord(s, prevClause as Clause).i].raw.surface} …) is the subject: third person singular`, kind: 'clause' };
+      } else if ((lead || asyndetic) && !own) {
+        // the nearest clause before that has a finite verb of its own and is no subordinate clause (an infinitive clause with um … zu has none)
+        let prev: Subj | undefined;
+        for (let j = ci - 1; j >= 0; j--) {
+          const cj = s.clauses[j];
+          if (verbFinalClause(s, cj) || finiteSlot(s, cj) < 0) continue;
+          prev = subjAt[j];
+          break;
+        }
+        if (prev) sub = { ...prev, why: `the subject is shared with the clause before, across ${lead ? s.toks[cl.lead >= 0 ? cl.lead : w[0]].raw.surface : 'the comma'} (${prev.why})`, kind: 'inherited' };
       } else if (own && effective > 0 && frag < 0 && !words.some((k) => s.toks[k].raw.normalized === 'ihr' && anyLive(s.toks[k], (c) => c.pos === 'PRON' && has(c, 'Case', 'Nom')))) {
         sub = { persons: ['3'], numbers: ['Sing', 'Plur'], why: 'no ich, wir, du or ihr in the clause: a finite verb is first or second person only with its pronoun, so third person', kind: 'default' };
       }

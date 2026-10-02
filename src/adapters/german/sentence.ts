@@ -18,7 +18,7 @@
  */
 import type { AnalysisCandidate, AnalyzedToken, RawToken } from '../../core';
 import { agreeNounPhrases, settlePhrases } from './agreement';
-import { decideHomographs } from './context-nouns';
+import { decideHomographs, mergeSameReadings } from './context-nouns';
 import { baseReadings } from './context-base';
 import { decideVerbs } from './context-verbs';
 import { applyCapitals, decideInitial, decideWords } from './context-words';
@@ -49,7 +49,9 @@ function run(tokens: RawToken[], lex: DeLexiconView, given: (i: number) => Given
   agreeNounPhrases(s);
   decideWords(s);
   decideVerbs(s);
+  for (const t of s.toks) if (t.word) mergeSameReadings(t);
   if (decideHomographs(s)) settlePhrases(s);
+  for (const t of s.toks) if (t.word) mergeSameReadings(t);
   return toks.map((t) => {
     if (!t.word) return [];
     settle(t);

@@ -54,7 +54,7 @@ function roleReadings(t: Tok, role: Role): R[] {
 type Run = Phrase;
 
 /** The parts of a reading's context this step writes (and writes anew when the phrase is settled again). */
-const MY_CONTEXT = /^(after |agrees with |the phrase does not fit|at the start of a clause|\S+ = \S+ \+ )/;
+const MY_CONTEXT = /^(after |agrees with |the phrase does not fit|at the start of a clause|in the pre-field|\S+ takes a dative object|\S+ = \S+ \+ )/;
 
 const unitBound = (t: Tok): boolean => !!top(t)?.c.unit;
 
@@ -136,7 +136,7 @@ function agree(s: Sent, run: Run): void {
     } else {
       for (const r of roleReadings(t, roleOf(t))) {
         let cells = cellsOf(r) as DeCell[];
-        if (roleOf(t) === 'adj' || r.c.pos === 'ADJ') {
+        if (roleOf(t) === 'adj' || r.c.pos === 'ADJ' || cells.some((x) => x.decl)) {
           const withDecl = cells.filter((x) => x.decl);
           if (withDecl.length) cells = withDecl.filter((x) => x.decl === decl);
         }
@@ -152,11 +152,23 @@ function agree(s: Sent, run: Run): void {
     allowed = allowed ? new Set([...allowed].filter((k) => u.has(k))) : u;
   }
   if (!allowed || allowed.size === 0) return;
-  let vorfeld: string | undefined;
+  // what a rule decided about the case of the whole phrase is remembered, so that settling the phrase again keeps saying why
+  const reasons = run.reasons ?? (run.reasons = []);
+  const remember = (x: string): void => { if (!reasons.includes(x)) reasons.push(x); };
   // a noun phrase that opens a clause is not genitive when another case fits: a genitive attribute follows its noun (Der Lehrer liest …)
   if (!run.prep && !run.contraction && opensMainClause(s, run)) {
     const noGen = new Set([...allowed].filter((k) => k[0] !== 'G'));
-    if (noGen.size > 0 && noGen.size < allowed.size) { allowed = noGen; vorfeld = 'at the start of a clause a noun phrase is not genitive (a genitive attribute follows its noun)'; }
+    if (noGen.size > 0 && noGen.size < allowed.size) { allowed = noGen; remember('at the start of a clause a noun phrase is not genitive (a genitive attribute follows its noun)'); }
+  }
+  // the pre-field holds one constituent: a noun phrase that follows another noun phrase before the finite verb is its genitive attribute
+  if (!run.prep && !run.contraction && inPrefieldAfterNoun(s, run)) {
+    const gen = new Set([...allowed].filter((k) => k[0] === 'G'));
+    if (gen.size > 0 && gen.size < allowed.size) { allowed = gen; remember('in the pre-field one constituent stands: a noun phrase that follows another noun phrase there is its genitive attribute'); }
+  }
+  // a case a later step decided for the whole phrase (the dative object of a verb that takes the dative)
+  if (run.force) {
+    const forced = new Set([...allowed].filter((k) => run.force?.cases.includes(k[0] as DeCase)));
+    if (forced.size > 0 && forced.size < allowed.size) { allowed = forced; remember(run.force.why); }
   }
   let prepNote: string | undefined;
   /** The phrase agrees among itself but not with what the preposition governs (a learner's mistake: mit den Mann). */
@@ -200,7 +212,7 @@ function agree(s: Sent, run: Run): void {
       const before = cellsOf(r) as DeCell[];
       const changed = narrowed.length !== before.length;
       const why: string[] = [];
-      if (vorfeld) why.push(vorfeld);
+      for (const x of reasons) why.push(x);
       if (prepNote) why.push(prepNote);
       const carrier = run.det ?? run.contraction ?? run.noun;
       if (conflict && (t === run.det || t === run.noun)) why.push(`the phrase does not fit the case after ${conflict.prep}: ${conflict.text}, but ${surfaces(members)} is ${describeCells(narrowed)}`);
@@ -224,7 +236,20 @@ function agree(s: Sent, run: Run): void {
   }
 }
 
-/** Run the noun-phrase step over a sentence. */
+/** Does this phrase follow another noun phrase inside the pre-field of a main clause (in front of the finite verb)? */
+function inPrefieldAfterNoun(s: Sent, run: Run): boolean {
+  const first = run.det ?? run.adjs[0] ?? run.noun;
+  const prev = s.toks[first.i - 1];
+  if (!prev || !prev.word || !roleReadings(prev, 'noun').length) return false;
+  const ci = s.clauseOf[first.i];
+  if (ci < 0 || ci !== s.clauseOf[prev.i]) return false;
+  const cl = s.clauses[ci];
+  if (verbFinalClause(s, cl)) return false;
+  const slot = finiteSlot(s, cl);
+  if (slot >= 0) return cl.words.indexOf(run.noun.i) < slot;
+  return s.clauses.some((_, k) => matrixFragment(s, k) === ci);
+}
+
 /** Does this phrase open a main clause (its verb comes after it, or after the clauses inserted behind it)? */
 function opensMainClause(s: Sent, run: Run): boolean {
   const first = run.det ?? run.adjs[0] ?? run.noun;
@@ -250,6 +275,8 @@ export function agreeNounPhrases(s: Sent): void {
     if (!roleReadings(t, 'noun').length) continue;
     const run = runAt(s, t);
     for (const m of [run.contraction, run.det, ...run.adjs, run.noun]) if (m) seen.add(m.i);
+    // a word that stood alone as a noun (Andere, a nominalised adjective) and is now the adjective of this phrase is not a phrase of its own
+    s.phrases = s.phrases.filter((p) => ![run.det, run.contraction, ...run.adjs].includes(p.noun));
     s.phrases.push(run);
     agree(s, run);
   }

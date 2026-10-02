@@ -182,20 +182,27 @@ describe('separated verbs become one unit', () => {
     expect(first(p, 'umfährt').parts).toBeUndefined();
   });
 
-  it('a prefix stranded after a verb the list does not join is an unconfirmed guess behind the ordinary readings', () => {
+  it('a prefix stranded after a verb the list does not join is an unconfirmed unit, first, with the ordinary readings right behind it', () => {
     expect(lex.verb('mitschwimmen')).toEqual([]);
     const p = parse('Er schwimmt heute mit.');
-    const guess = cands(p, 'schwimmt').find((c) => c.unit);
-    const prefix = cands(p, 'mit').find((c) => c.unit);
-    expect(first(p, 'schwimmt').unit).toBeUndefined();
-    expect(first(p, 'mit').unit).toBeUndefined();
-    expect(guess?.lemma).toBe('mitschwimmen');
-    expect(guess?.unconfirmed).toBe(true);
-    expect(guess?.confidence).toBeLessThanOrEqual(0.6);
-    expect(guess?.gloss).toBeUndefined();
-    expect(prefix?.lemma).toBe('mitschwimmen');
-    expect(prefix?.unit?.role).toBe('separable prefix');
-    expect(cands(p, 'schwimmt').indexOf(guess!)).toBeGreaterThan(0);
+    const guess = first(p, 'schwimmt');
+    const prefix = first(p, 'mit');
+    expect(guess.unit).toBeDefined();
+    expect(guess.lemma).toBe('mitschwimmen');
+    expect(guess.unconfirmed).toBe(true);
+    expect(guess.confidence).toBeLessThanOrEqual(0.6);
+    expect(guess.gloss).toBeUndefined();
+    expect(prefix.lemma).toBe('mitschwimmen');
+    expect(prefix.unit?.role).toBe('separable prefix');
+    expect(prefix.unconfirmed).toBe(true);
+    // the unit readings (one per form: er schwimmt, ihr schwimmt) come first; the ordinary readings stand right behind them
+    const all = cands(p, 'schwimmt');
+    const k = all.findIndex((c) => !c.unit);
+    expect(k).toBeGreaterThan(0);
+    expect(all.slice(0, k).every((c) => c.lemma === 'mitschwimmen' && c.unconfirmed)).toBe(true);
+    expect(all[k].lemma).toBe('schwimmen');
+    expect(all.slice(k).some((c) => c.unit)).toBe(false);
+    expect(cands(p, 'mit')[1].unit).toBeUndefined();
   });
 
   it('a prefix that is not of the separable kind (um, wieder …) is never guessed', () => {
@@ -509,8 +516,8 @@ describe('candidates carry their provenance', () => {
 });
 
 describe('the adapter', () => {
-  it('is wired: version 2, sources, varieties, honest support', () => {
-    expect(de.version).toBe('3');
+  it('is wired: version 4, sources, varieties, honest support', () => {
+    expect(de.version).toBe('4');
     expect(Object.keys(de.sources ?? {}).sort()).toEqual(Object.values(DE_SOURCE_IDS).sort());
     expect(de.varieties?.['de-1901']?.kind).toBe('historical');
     expect(de.support.lemmatization).toBe('seed-only');
@@ -541,7 +548,7 @@ describe('more decisions', () => {
     ['Der Alte kommt.', [['Alte', { lemma: 'alt', pos: 'ADJ', morph: { Case: 'Nom', Gender: 'Masc', Number: 'Sing', Decl: 'Weak' }, role: 'adjective used as a noun' }]]],
     ['Das Gute siegt.', [['Gute', { lemma: 'gut', morph: { Case: 'Nom', Gender: 'Neut', Number: 'Sing' } }]]],
     ['Er hat dem Alten geholfen.', [['Alten', { morph: { Case: 'Dat', Number: 'Sing', Decl: 'Weak' } }]]],
-    ['Alte Männer sind weise.', [['Alte', { pos: 'ADJ', morph: { Case: 'Nom,Acc', Number: 'Plur', Decl: 'Strong' } }]]],
+    ['Alte Männer sind weise.', [['Alte', { pos: 'ADJ', morph: { Case: 'Nom', Number: 'Plur', Decl: 'Strong' } }]]],
     ['Das Haus ist gebaut worden.', [['ist', { role: 'perfect auxiliary of werden' }], ['worden', { role: 'passive auxiliary of bauen' }]]],
     ['Die Kinder, die im Garten spielen, sind laut.', [['spielen', { morph: { VerbForm: 'Fin', Person: '3', Number: 'Plur' } }]]],
     ['Der Mann, der dort wohnt, ist alt.', [['wohnt', { morph: { Person: '3', Number: 'Sing' } }]]],
@@ -1093,5 +1100,188 @@ describe('G. an unconfirmed participle still makes its auxiliary an auxiliary', 
   it('negative: haben with no participle stays a verb, and a confirmed participle needs no remark', () => {
     expect(first(parse('Er hat Hunger.'), 'hat').pos).toBe('VERB');
     expect(first(parse('Er hat gelesen.'), 'hat').role).toBe('perfect auxiliary of lesen');
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// fix batch 3 (adapter-de@4)
+
+describe('batch 3, addendum: one noun, several spellings (DeNoun.sameAs)', () => {
+  it('Frieden / Friede / Friedens are one lemma, the own headword stays in a note, and the word is not capped', () => {
+    const p = parse('Wir beten um Frieden.');
+    expect(first(p, 'Frieden')).toMatchObject({ lemma: 'Frieden', pos: 'NOUN' });
+    expect(first(p, 'Frieden').confidence).toBeGreaterThan(0.8);
+    const q = parse('Friede sei mit euch.');
+    expect(first(q, 'Friede')).toMatchObject({ lemma: 'Frieden', morph: { Case: 'Nom' } });
+    expect(first(q, 'Friede').notes?.variantOf).toBe('Friede');
+    expect(first(q, 'Friede').confidence).toBeGreaterThan(0.8);
+  });
+
+  it('Samen is one lemma and is not capped', () => {
+    const p = parse('Er gab ihm seinen eigenen Samen.');
+    expect(first(p, 'Samen').lemma).toBe('Samen');
+    expect(first(p, 'Samen').confidence).toBeGreaterThan(0.8);
+  });
+
+  it('negative: a real homograph (Feste: Fest plural or Feste singular) is still capped and still open', () => {
+    const c = cands(parse('Und Gott nannte die Feste Himmel.'), 'Feste').filter((x) => x.pos === 'NOUN' && !x.unconfirmed && x.confidence > 0.4);
+    expect(new Set(c.map((x) => x.lemma))).toEqual(new Set(['Fest', 'Feste']));
+  });
+});
+
+describe('batch 3, rule 1: one finite verb per clause', () => {
+  it('a form at the end of a clause that has its finite verb is the participle', () => {
+    const p = parse('Eines Morgens fand er sich in seinem Bett zu einem Ungeziefer verwandelt.');
+    expect(first(p, 'fand')).toMatchObject({ lemma: 'finden', morph: { VerbForm: 'Fin', Person: '3', Number: 'Sing' } });
+    expect(first(p, 'verwandelt')).toMatchObject({ lemma: 'verwandeln', morph: { VerbForm: 'Part' } });
+  });
+
+  it('negatives: a verb-final subordinate clause keeps its finite verb, and a coordinated second verb is finite', () => {
+    const p = parse('Er sagte, dass er kommt und geht.');
+    expect(first(p, 'kommt').morph).toMatchObject({ VerbForm: 'Fin', Person: '3' });
+    expect(first(p, 'geht').morph).toMatchObject({ VerbForm: 'Fin', Person: '3' });
+    const q = parse('Ich weiß, dass er hier wohnt.');
+    expect(first(q, 'wohnt').morph).toMatchObject({ VerbForm: 'Fin', Person: '3', Number: 'Sing' });
+  });
+});
+
+describe('batch 3, rule 2: the pre-field holds one constituent', () => {
+  it('a noun phrase after another noun phrase in the pre-field is its genitive attribute', () => {
+    const p = parse('Die alten Häuser der Stadt wurden renoviert.');
+    expect(first(p, 'Stadt').morph).toMatchObject({ Case: 'Gen', Gender: 'Fem', Number: 'Sing' });
+    expect(first(p, 'Häuser').morph).toMatchObject({ Case: 'Nom', Number: 'Plur' });
+    const q = parse('Der Bruder meiner Mutter kommt.');
+    expect(first(q, 'Mutter').morph).toMatchObject({ Case: 'Gen', Gender: 'Fem' });
+    expect(first(q, 'Bruder').morph).toMatchObject({ Case: 'Nom', Gender: 'Masc' });
+    expect(String(first(q, 'Mutter').notes?.context)).toMatch(/pre-field/);
+  });
+
+  it('negative: after the verb the same shape is not decided (dative or genitive stays open)', () => {
+    const p = parse('Gestern gab der Lehrer der Schülerin ein Buch.');
+    expect(first(p, 'Schülerin').morph.Case).toBe('Dat,Gen');
+  });
+
+  it('negative: in a subordinate clause nothing is forced', () => {
+    const p = parse('Ich weiß, dass der Lehrer der Schülerin ein Buch gab.');
+    expect(first(p, 'Schülerin').morph.Case).toBe('Dat,Gen');
+  });
+});
+
+describe('batch 3, rule 3: a verb the list marks [dat] decides its single dative-capable phrase', () => {
+  it('gehören: the one phrase that can be dative is the dative', () => {
+    const p = parse('Die Bücher gehören meiner Schwester.');
+    expect(first(p, 'Schwester').morph).toMatchObject({ Case: 'Dat' });
+    expect(first(p, 'Schwester').morph.Case).toBe('Dat');
+    expect(String(first(p, 'Schwester').notes?.context)).toMatch(/takes a dative object/);
+  });
+
+  it('the list marks 50 verbs; geben is not one of them, so its dative stays open (nothing is invented)', () => {
+    expect(lex.allVerbs().filter((v) => v.governs === 'dat').length).toBe(50);
+    expect(lex.allVerbs().find((v) => v.lemma === 'geben')?.governs).toBeUndefined();
+    const p = parse('Ich gebe der Frau das Buch.');
+    expect(first(p, 'Frau').morph.Case).toBe('Dat,Gen');
+  });
+});
+
+describe('batch 3, rule 4: wer and was as subject', () => {
+  it('Wer kommt heute? / Was ist das? / Wer das sagt, lügt.', () => {
+    expect(first(parse('Wer kommt heute?'), 'kommt').morph).toMatchObject({ Person: '3', Number: 'Sing' });
+    expect(first(parse('Was ist das?'), 'ist').morph).toMatchObject({ Person: '3', Number: 'Sing' });
+    const p = parse('Wer das sagt, lügt.');
+    expect(first(p, 'sagt').morph).toMatchObject({ Person: '3', Number: 'Sing' });
+    expect(first(p, 'lügt').morph).toMatchObject({ Person: '3', Number: 'Sing' });
+  });
+
+  it('negatives: Was machst du? and Wen siehst du? keep their own subject du', () => {
+    expect(first(parse('Was machst du?'), 'machst').morph).toMatchObject({ Person: '2', Number: 'Sing' });
+    const p = parse('Wen siehst du?');
+    expect(first(p, 'siehst').morph).toMatchObject({ Person: '2' });
+    expect(first(p, 'Wen').morph.Case).toBe('Acc');
+  });
+});
+
+describe('batch 3, rule 5: long sentences', () => {
+  it('a comma between coordinated adjectives in a noun phrase is no clause boundary', () => {
+    const p = parse('Ein großes, schönes Haus steht dort.');
+    expect(first(p, 'schönes').morph).toMatchObject({ Case: 'Nom', Gender: 'Neut' });
+    expect(first(p, 'steht').morph).toMatchObject({ VerbForm: 'Fin', Person: '3', Number: 'Sing' });
+  });
+
+  it('an um … zu clause ends at its infinitive; "und ließ …" is the main clause again', () => {
+    const p = parse('Er ging nach Hause, um zu schlafen, und ließ die Tür offen.');
+    expect(first(p, 'schlafen').morph).toMatchObject({ VerbForm: 'Inf' });
+    expect(first(p, 'ließ').morph).toMatchObject({ VerbForm: 'Fin', Person: '3', Number: 'Sing' });
+  });
+
+  it('a zu-infinitive before a clause-final finite verb does not end the clause', () => {
+    const p = parse('Ich weiß, dass er versucht, früh aufzustehen, und dann kommt.');
+    expect(first(p, 'kommt').morph).toMatchObject({ VerbForm: 'Fin', Person: '3', Number: 'Sing' });
+  });
+
+  it('sentence-initial als with a clause-final finite verb is the subordinator', () => {
+    expect(first(parse('Als er kam, war sie schon weg.'), 'Als').pos).toBe('SCONJ');
+  });
+
+  it('negatives: als of comparison and als "as" are not the subordinator', () => {
+    expect(first(parse('Er ist größer als ich.'), 'als').pos).toBe('CONJ');
+    expect(first(parse('Als Kind wohnte er in Berlin.'), 'Als').pos).toBe('CONJ');
+  });
+});
+
+describe('batch 3, rule 6: a stranded prefix of a verb the list does not hold', () => {
+  it('builds an unconfirmed unit first, with the ordinary readings behind it, for several verbs', () => {
+    for (const [text, verb, unit] of [['Er gleitet langsam zurück.', 'gleitet', 'zurückgleiten'], ['Der Mann lässt den Hund heute ab.', 'lässt', 'ablassen'], ['Wir bleiben heute zusammen.', 'bleiben', 'zusammenbleiben']] as const) {
+      const p = parse(text);
+      expect(first(p, verb), text).toMatchObject({ lemma: unit, unconfirmed: true });
+      expect(first(p, verb).unit?.display).toBe(unit);
+      expect(first(p, verb).confidence).toBeLessThanOrEqual(0.6);
+      expect(first(p, verb).gloss).toBeUndefined();
+      expect(cands(p, verb).length).toBeGreaterThan(1);
+    }
+  });
+
+  it('a listed verb keeps its confirmed unit', () => {
+    const p = parse('Er kommt morgen her.');
+    expect(first(p, 'kommt')).toMatchObject({ lemma: 'herkommen' });
+    expect(first(p, 'kommt').unconfirmed).toBeUndefined();
+  });
+
+  it('negatives: a preposition with its noun phrase, a measure adverb, and sein/modal verbs make no unit', () => {
+    for (const [text, verb] of [['Er steht auf dem Tisch.', 'steht'], ['Er wohnt weit weg.', 'wohnt'], ['Die Tür ist zu.', 'ist'], ['Das Licht ist an.', 'ist'], ['Er ist weg.', 'ist'], ['Er will mit.', 'will']] as const) {
+      const p = parse(text);
+      expect(first(p, verb).unit, text).toBeUndefined();
+      expect(first(p, verb).unconfirmed, text).toBeUndefined();
+    }
+  });
+});
+
+describe('batch 3, rule 7: andere / viele + an adjectival noun, plural verb', () => {
+  it('the plural noun is the subject of the plural verb', () => {
+    const p = parse('Andere Reisende leben wie Haremsfrauen.');
+    expect(first(p, 'Reisende').morph).toMatchObject({ Case: 'Nom', Number: 'Plur' });
+    expect(first(p, 'leben').morph).toMatchObject({ VerbForm: 'Fin', Person: '3', Number: 'Plur' });
+    expect(first(parse('Viele Deutsche wohnen hier.'), 'wohnen').morph).toMatchObject({ Person: '3', Number: 'Plur' });
+    expect(first(parse('Die Angestellten arbeiten viel.'), 'arbeiten').morph).toMatchObject({ Person: '3', Number: 'Plur' });
+  });
+
+  it('negative: the singular feminine "Die Reisende lebt" stays singular', () => {
+    const p = parse('Die Reisende lebt in Berlin.');
+    expect(first(p, 'Reisende').morph).toMatchObject({ Number: 'Sing', Gender: 'Fem' });
+    expect(first(p, 'lebt').morph).toMatchObject({ Number: 'Sing' });
+  });
+});
+
+describe('batch 3, rule 8: the state passive is not a perfect', () => {
+  it('sein + participle of a verb that takes only haben is the state passive', () => {
+    const p = parse('Das Fenster ist geöffnet.');
+    expect(first(p, 'ist').role).toBe('state passive: sein + participle says the result of öffnen');
+    expect(first(p, 'ist').notes?.voice).toBe('state-passive');
+  });
+
+  it('negatives: sein-verbs stay perfect; haben stays perfect', () => {
+    const p = parse('Er ist gekommen.');
+    expect(first(p, 'ist').role).toBe('perfect auxiliary of kommen');
+    expect(first(p, 'ist').notes?.voice).toBeUndefined();
+    expect(first(parse('Er hat das Fenster geöffnet.'), 'hat').role).toBe('perfect auxiliary of öffnen');
   });
 });

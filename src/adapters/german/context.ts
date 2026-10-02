@@ -11,7 +11,7 @@ import { morphOfCells } from './types';
 
 export type C = AnalysisCandidate;
 
-export const DE_ANALYZER_VERSION = '3';
+export const DE_ANALYZER_VERSION = '4';
 export const DE_ANALYZER = `adapter-de@${DE_ANALYZER_VERSION}`;
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
 export const DE_SOURCE_IDS = {
@@ -62,7 +62,13 @@ export interface Clause {
 }
 
 /** A noun phrase: [preposition or contraction]? [determiner]? [adjective]* noun. Its members share one set of cells for the rest of the pipeline. */
-export interface Phrase { prep?: Tok; contraction?: Tok; det?: Tok; adjs: Tok[]; noun: Tok; numeral?: boolean }
+export interface Phrase {
+  prep?: Tok; contraction?: Tok; det?: Tok; adjs: Tok[]; noun: Tok; numeral?: boolean;
+  /** A case a later step decided for the whole phrase (the dative object of a dative verb); `why` says so in `notes.context`. */
+  force?: { cases: DeCase[]; why: string };
+  /** What the case rules decided for the whole phrase, kept so that settling it again repeats the reason. */
+  reasons?: string[];
+}
 
 export interface Sent {
   /** The noun phrases the agreement step found (empty until it has run). */
@@ -278,6 +284,18 @@ export function makeSent(lex: DeLexiconView, toks: Tok[]): Sent {
     if (t.word) cur.words.push(t.i);
   }
   close('');
+  // a comma between two coordinated adjectives of one noun phrase is no clause boundary (einen noch nie gefühlten, leichten, dumpfen Schmerz)
+  const adjectiveLike = (t: Tok): boolean => anyLive(t, (c) => (c.pos === 'ADJ' || (isVerbal(c) && has(c, 'VerbForm', 'Part'))) && !!c.morph.Case)
+    && !anyLive(t, (c) => isFin(c)) && /(e|en|er|es|em)$/u.test(t.raw.normalized) && !t.cap;
+  for (let k = clauses.length - 1; k > 0; k--) {
+    const prev = clauses[k - 1];
+    const cur = clauses[k];
+    if (prev.close !== ',' || cur.open !== ',') continue;
+    if (!adjectiveLike(toks[prev.words[prev.words.length - 1]]) || !adjectiveLike(toks[cur.words[0]])) continue;
+    prev.words.push(...cur.words);
+    prev.close = cur.close;
+    clauses.splice(k, 1);
+  }
   // split a clause at a coordinating conjunction that opens a new clause: a verb form that cannot be an infinitive, or a
   // subject pronoun / article and such a verb, follows ("und gehe aus", "und sie kocht"); "Brot und Milch kaufen" does not split
   const finiteAfter = (from: number, to: number): boolean => {
@@ -360,9 +378,16 @@ export function verbFinalClause(s: Sent, cl: Clause): boolean {
   return false;
 }
 
+/** Prepositions that open an infinitive clause with zu (um … zu, ohne … zu, anstatt … zu). */
+const INFINITIVE_OPENERS = new Set(['um', 'ohne', 'anstatt', 'statt']);
+
 /** The index (into the clause's words) of the finite verb's position: the last word of a verb-final clause, else the first word that can be finite. */
 export function finiteSlot(s: Sent, cl: Clause): number {
   if (verbFinalClause(s, cl)) return cl.words.length - 1;
+  // um die Beine nicht sehen zu müssen: an infinitive clause has no finite verb of its own unless a word can only be finite
+  if (INFINITIVE_OPENERS.has(s.toks[cl.words[0]].raw.normalized) && cl.words.some((k) => s.toks[k].raw.normalized === 'zu' || s.toks[k].rs.some((r) => r.c.parts?.some((p) => p.kind === 'marker' && p.text === 'zu')))) {
+    return cl.words.findIndex((k) => { const t = s.toks[k]; const live = t.rs.filter((r) => !r.down); return live.length > 0 && live.every((r) => isFin(r.c)); });
+  }
   for (let w = 0; w < cl.words.length; w++) {
     const t = s.toks[cl.words[w]];
     if (!anyLive(t, (c) => isFin(c))) continue;

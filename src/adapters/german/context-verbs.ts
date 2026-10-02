@@ -13,8 +13,9 @@
  */
 import { settlePhrases } from './agreement';
 import { decideRelatives, decideSubjects, pronounSubject } from './context-subject';
+import { decideDatives } from './context-valency';
 import {
-  addContext, addNote, anyLive, markDown, finiteSlot, has, isFin, isInf, isNounLike, isPart, isVerbal, prefer, settle, top, verbFinalClause,
+  addContext, addNote, anyLive, cloneR, markDown, norm, finiteSlot, has, isFin, isInf, isNounLike, isPart, isVerbal, prefer, settle, top, verbFinalClause,
   type C, type Clause, type R, type Sent, type Tok,
 } from './context';
 
@@ -87,6 +88,22 @@ function decideClause(s: Sent, cl: Clause): void {
     else if (werden && hasPart && !hasInf) prefer(t, (r) => isPart(r.c), `with ${s.toks[w[slot]].raw.surface}: the past participle`);
     else if (werden && hasInf && !hasPart) prefer(t, (r) => isInf(r.c), `with ${s.toks[w[slot]].raw.surface} at the end of the clause: the infinitive`);
   }
+  // ── a form in -t with an unstressed prefix that the list does not hold (verwandelt), last in a clause that has its finite verb
+  // already, is the participle: a predicative participle needs no auxiliary (… fand er sich verwandelt)
+  if (slotTok && !final && slot < w.length - 1) {
+    const last = s.toks[w[w.length - 1]];
+    const before = s.toks[w[w.length - 2]];
+    const live = last.rs.filter((r) => !r.down);
+    if (last.own && !last.frozen && !COORDINATORS.has(before.raw.normalized) && live.length > 0 && live.every((r) => isFin(r.c) && r.c.unconfirmed)
+      && /^(be|emp|ent|er|ge|miss|ver|zer)\p{L}{3,}t$/u.test(last.raw.normalized) && slotTok.rs.some((r) => !r.down && isFin(r.c) && !r.c.unconfirmed)) {
+      const part = cloneR(live[0]);
+      part.c.morph = { VerbForm: 'Part', Tense: 'Past' };
+      part.c.confidence = Math.min(0.4, live[0].c.confidence);
+      part.c.notes = { ...(part.c.notes ?? {}), rule: `guessed past participle of ${part.c.lemma} (a form in -t with the unstressed prefix, in a clause that already has its finite verb)` };
+      last.rs.unshift(part);
+      prefer(last, (r) => r === part, `the clause has its finite verb (${slotTok.raw.surface}) already: a predicative participle`);
+    }
+  }
   // ── words that are not in the finite position: where another reading is not finite, that is the reading
   if (slotTok) {
     for (let k = 0; k < w.length; k++) {
@@ -154,7 +171,15 @@ function labelAuxiliaries(s: Sent): void {
         if (lemma === 'haben') {
           if (part && fin) { r.c.pos = 'AUX'; r.c.role = `perfect auxiliary of ${perfectOf}`; }
         } else if (lemma === 'sein') {
-          if (part && fin) r.c.role = `perfect auxiliary of ${perfectOf}`;
+          if (part && fin) {
+            // sein + the participle of a verb that makes its perfect with haben only (öffnen) is the state passive, the result of the action
+            const pc = top(part)?.c;
+            const rows = pc && !pc.unconfirmed && pc.lemma ? s.lex.verb(norm(pc.lemma)) : [];
+            if (perfectOf !== 'werden' && rows.length > 0 && rows.every((v) => v.aux === 'haben')) {
+              r.c.role = `state passive: sein + participle says the result of ${pc?.lemma}`;
+              addNote(r.c, 'voice', 'state-passive');
+            } else r.c.role = `perfect auxiliary of ${perfectOf}`;
+          }
         } else if (lemma === 'werden') {
           const wuerde = WUERDE.has(t.raw.normalized) && has(r.c, 'Mood', 'Sub');
           if (inf && fin) r.c.role = wuerde ? `würde + infinitive of ${top(inf)?.c.lemma}` : `future auxiliary of ${top(inf)?.c.lemma}`;
@@ -249,6 +274,7 @@ function decideMoodTwins(s: Sent, t: Tok): void {
 export function decideVerbs(s: Sent): void {
   for (const cl of s.clauses) demoteStrayImperatives(s, cl);
   decideRelatives(s);
+  if (decideDatives(s)) settlePhrases(s);
   decideSubjects(s);
   for (const cl of s.clauses) decideClause(s, cl);
   settlePhrases(s);

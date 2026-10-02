@@ -23,6 +23,18 @@ function describe(t: Tok, lemma: string): string {
   return plural && !singular ? `the plural of ${lemma}` : singular && !plural ? `the singular of ${lemma}` : `a form of ${lemma}`;
 }
 
+/** Noun readings of one word that the sentence made the same (one lemma, one set of features) are one reading, the higher confidence kept (Friede and Frieden after a noun phrase narrowed both). */
+export function mergeSameReadings(t: Tok): void {
+  if (!t.own || t.frozen) return;
+  const out: R[] = [];
+  for (const r of t.rs) {
+    const twin = r.c.pos === 'NOUN' ? out.find((o) => o.c.pos === 'NOUN' && !!o.down === !!r.down && o.c.lemma === r.c.lemma && JSON.stringify(o.c.morph) === JSON.stringify(r.c.morph)) : undefined;
+    if (!twin) out.push(r);
+    else twin.c.confidence = Math.max(twin.c.confidence, r.c.confidence);
+  }
+  t.rs = out;
+}
+
 /** The step, over a sentence that the noun phrases and the verbs have already settled. Returns whether anything changed. */
 export function decideHomographs(s: Sent): boolean {
   let changed = false;

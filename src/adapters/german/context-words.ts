@@ -226,6 +226,20 @@ function decideConjunctionPreposition(s: Sent, t: Tok): void {
   else prefer(t, (r) => r.c.pos === 'ADP', 'before a noun phrase, a time word, a number or another preposition (no clause ending in its verb follows): the preposition');
 }
 
+/**
+ * als: the conjunction (SCONJ, "when") when a clause with its finite verb at the end follows (Als Gregor Samsa erwachte, …; … ließ ab, als er
+ * zu fühlen begann); the comparison particle (CONJ) before a noun phrase or a pronoun with no clause behind it (größer als ich; Als Kind wohnte er …).
+ */
+function decideAls(s: Sent, t: Tok): void {
+  if (t.raw.normalized !== 'als' || !anyLive(t, (c) => c.pos === 'CONJ') || !anyLive(t, (c) => c.pos === 'SCONJ')) return;
+  const cl = s.clauses[s.clauseOf[t.i]];
+  if (!cl) return;
+  const tail = cl.words.slice(cl.words.indexOf(t.i) + 1).map((k) => s.toks[k]);
+  const clause = tail.length >= 2 && anyLive(tail[tail.length - 1], (c) => isFin(c)) && !s.lex.preposition(tail[0].raw.normalized);
+  if (clause) prefer(t, (r) => r.c.pos === 'SCONJ', 'a clause with its finite verb at the end follows: the conjunction "when"');
+  else prefer(t, (r) => r.c.pos === 'CONJ', 'no clause ending in its verb follows (a noun phrase or pronoun): the comparison "than / as"');
+}
+
 /** The step: capitals first, then the words with several functions. */
 export function decideWords(s: Sent): void {
   for (const t of s.toks) {
@@ -234,6 +248,7 @@ export function decideWords(s: Sent): void {
     decideAdjective(t);
     decidePreposition(s, t);
     decideConjunctionPreposition(s, t);
+    decideAls(s, t);
     decideArticles(s, t);
     decideZu(s, t);
     decidePossessive(s, t);

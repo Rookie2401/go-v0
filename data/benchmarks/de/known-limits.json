@@ -1,38 +1,42 @@
 {
-  "r3-a05": {
-    "reason": "A feminine noun phrase that is dative-or-genitive by its form (meiner Schwester) is left open after a verb that takes the dative (gehören).",
-    "expected": ["meiner: Case=Dat", "Schwester: Case=Dat"]
-  },
-  "r3-a11": {
-    "reason": "je … desto is not recognised when the comparatives are not ones the detector knows (länger, nervöser).",
-    "expected": ["+je-desto"]
-  },
-  "r3-a14": {
-    "reason": "A genitive attribute after its noun (die Häuser der Stadt) is left dative-or-genitive. The participle of an -ieren verb that is not in the word list (renoviert) is guessed as a finite form of an invented infinitive (renoviern), so the passive is not recorded.",
-    "expected": ["der: Case=Gen", "Stadt: Case=Gen", "renoviert: lemma", "renoviert: VerbForm=Part", "renoviert: Tense=Past", "+passive-past"]
-  },
-  "r3-k01": {
-    "reason": "A participle that ends its clause without an auxiliary (fand er sich … verwandelt) is read as a finite verb; the als-clause that opens the sentence is not recorded as verb-final.",
-    "expected": ["verwandelt: VerbForm=Part", "verwandelt: Tense=Past", "+verb-final-subordinate"]
-  },
-  "r3-k05": {
-    "reason": "An adjectival noun after andere (Andere Reisende) is read as feminine singular although the verb is plural. Haremsfrauen: Harem is not in the word list, so the compound is not taken apart and the unknown plural keeps its plural spelling as its lemma.",
-    "expected": ["Reisende: Number=Plur", "Haremsfrauen: lemma", "Haremsfrauen: Number=Plur"]
-  },
-  "r3-k07": {
-    "reason": "The question word wer as subject does not fix the verb's person (weiß stays 1st-or-3rd).",
-    "expected": ["weiß: Person=3"]
-  },
   "r3-k08": {
-    "reason": "Pult is not in the word list: its gender is honestly left masculine-or-neuter after vom.",
+    "reason": "Pult is not in the word list: its gender is honestly left masculine-or-neuter after vom. (A word-list gap, deliberately not closed by adding the word to make the sentence pass.)",
     "expected": ["Pult: Gender=Neut"]
   },
-  "r3-k11": {
-    "reason": "A stranded prefix whose joined verb is not in the word list (glitt … zurück = zurückgleiten) is not joined into a unit.",
-    "expected": ["glitt: lemma", "glitt: unit", "+separable-prefix-verb"]
-  },
   "r3-k13": {
-    "reason": "In a long sentence with a comma-separated adjective list inside the als-clause, the clause is not delimited: its subject does not fix begann, the clause is not recorded as verb-final, and ließ … ab (ablassen) before the comma is not joined.",
-    "expected": ["ließ: lemma", "ließ: unit", "begann: Person=3", "+verb-final-subordinate"]
+    "reason": "In a long sentence the als-clause at its end (…, als er … einen … Schmerz zu fühlen begann) is still not recorded as a verb-final clause, although its subject and the separated verb before it are now read correctly.",
+    "expected": ["+verb-final-subordinate"]
+  },
+  "r4-01": {
+    "reason": "A relative clause after a separated prefix (… sah zur Weckuhr hinüber, die auf dem Kasten tickte) is not recorded as a relative clause.",
+    "expected": ["+relative-clause"]
+  },
+  "r4-10": {
+    "reason": "The object of a zu-infinitive that opens the sentence (Die Decke abzuwerfen war …) is asserted to be nominative: the infinitive clause, not the noun, is the subject. A wrong assertion, not an open set.",
+    "expected": ["Decke: Case includes Acc"]
+  },
+  "r4-15": {
+    "reason": "von … aus (vom Bett aus) is read as the separable verb aussehen: a false unit and a wrong lemma. gewiß (the pre-1996 spelling of gewiss) gets no reading at all.",
+    "expected": ["sah: lemma", "gewiß: reading"]
+  },
+  "r4-17": {
+    "reason": "After a long inserted phrase, the second verb of a coordination (… und hatte sogar …) does not inherit its subject: hatte stays 1st-or-3rd person.",
+    "expected": ["hatte: Person=3"]
+  },
+  "r4-18": {
+    "reason": "In a chain of infinitives under one modal (wollte … aufstehen, sich anziehen und … frühstücken) the last infinitive is read as a finite plural, and the modal construction is not recorded.",
+    "expected": ["frühstücken: VerbForm=Inf", "+modal-infinitive"]
+  },
+  "r4-19": {
+    "reason": "Inside a subordinate clause a genitive attribute after its noun (die Veränderung der Stimme; einer Berufskrankheit der Reisenden) is left dative-or-genitive, and der Reisenden is read as feminine singular without the plural among its readings; the genitive-attribute construction is not recorded. (That der Reisenden is plural here is a judgement from the meaning; grammar alone allows the feminine singular too — but the plural must at least be among the readings.)",
+    "expected": ["der: Case=Gen", "Stimme: Case=Gen", "Reisenden: Case=Gen", "Reisenden: Number=Plur", "+genitive-attribute"]
+  },
+  "r4-20": {
+    "reason": "The old dative in -e of a noun that is not in the word list (in diesem Falle) is given the lemma Falle instead of Fall; its gender is left open.",
+    "expected": ["Falle: lemma", "Falle: Gender=Masc", "diesem: Gender=Masc"]
+  },
+  "r4-21": {
+    "reason": "um … zu with a pronoun object and the zu inside a separable verb (um den einzuholen) is not recorded as the um-zu construction.",
+    "expected": ["+um-zu"]
   }
 }

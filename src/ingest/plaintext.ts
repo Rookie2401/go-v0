@@ -74,6 +74,9 @@ export interface PlainTextResult {
 }
 
 const INDENT = /^[ \t]+|[ \t]+$/g;
+/** A chapter above this many characters is divided into parts of about PART_SIZE, at paragraph boundaries. */
+export const PART_ABOVE = 120_000;
+export const PART_SIZE = 60_000;
 
 /** The original matcher for a custom regular expression (or none). */
 function customMatcher(mode: string): ((line: string) => Heading | undefined) | undefined {
@@ -237,7 +240,7 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
   }
 
   // ── one document per chapter ──
-  type Chapter = { index: number; heading?: Heading; front: boolean; paragraphs: string[] };
+  type Chapter = { index: number; heading?: Heading; front: boolean; paragraphs: string[]; part?: { k: number; of: number } };
   const chapters: Chapter[] = [];
   if (headed.length === 0 || (mode === 'none' && !opts.headings)) {
     const all = blocks.flatMap((b) => b.paragraphs);
@@ -245,6 +248,40 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
   } else {
     if (front) chapters.push({ index: 0, front: true, paragraphs: front.paragraphs });
     kept.forEach((b, i) => chapters.push({ index: i + 1, heading: b.heading, front: false, paragraphs: b.paragraphs }));
+  }
+
+  // ── a chapter too long to read or analyse in one piece is divided at paragraph boundaries (a whole novel without
+  // headings would otherwise be one document of hundreds of thousands of words). Not when one document was asked for.
+  if (!(mode === 'none' && !opts.headings)) {
+    let divided = 0;
+    let partsMade = 0;
+    const sized: Chapter[] = [];
+    for (const ch of chapters) {
+      const size = ch.paragraphs.reduce((n, p) => n + p.length + 1, 0);
+      if (size <= PART_ABOVE || ch.paragraphs.length < 2) { sized.push(ch); continue; }
+      const want = Math.ceil(size / PART_SIZE);
+      const target = size / want;
+      const parts: string[][] = [[]];
+      let acc = 0;
+      for (const p of ch.paragraphs) {
+        if (parts[parts.length - 1].length && acc >= target * parts.length && parts.length < want) parts.push([]);
+        parts[parts.length - 1].push(p);
+        acc += p.length + 1;
+      }
+      if (parts.length < 2) { sized.push(ch); continue; }
+      divided++;
+      partsMade += parts.length;
+      parts.forEach((ps, k) => sized.push({ ...ch, paragraphs: ps, part: { k: k + 1, of: parts.length } }));
+    }
+    if (divided) {
+      let n = sized[0]?.front ? -1 : 0;
+      for (const ch of sized) ch.index = ++n;
+      chapters.length = 0;
+      chapters.push(...sized);
+      notes.push(headed.length === 0
+        ? `The text is long and has no chapter headings: it was divided into ${partsMade} parts of about ${PART_SIZE.toLocaleString('en-US')} characters, at paragraph boundaries, so that it can be read and analysed in pieces. Nothing in the text is changed. To divide it at its real chapters, give their line numbers.`
+        : `${divided} chapter${divided === 1 ? ' is' : 's are'} longer than ${PART_ABOVE.toLocaleString('en-US')} characters and ${divided === 1 ? 'was' : 'were'} divided into ${partsMade} parts at paragraph boundaries. Nothing in the text is changed; chapters are numbered in the order they appear.`);
+    }
   }
 
   const workSlug = opts.work ? opts.work.id.slice(`work:${opts.work.courseId}:`.length) : undefined;
@@ -255,8 +292,11 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
   const provenance = `Supplied by the learner from a personal copy${copy ? ` (${copy})` : ''}; transcription not checked.`;
 
   const documents = chapters.map((ch): CorpusDocument => {
-    const heading = ch.heading?.line;
-    const chapterTitle = ch.front ? 'Front matter' : ch.heading?.title;
+    const partLabel = ch.part ? `part ${ch.part.k} of ${ch.part.of}` : undefined;
+    const ownHeading = ch.heading?.line;
+    const heading = partLabel ? (ownHeading ? `${ownHeading} (${partLabel})` : `Part ${ch.part!.k} of ${ch.part!.of}`) : ownHeading;
+    const baseTitle = ch.front ? 'Front matter' : ch.heading?.title;
+    const chapterTitle = partLabel ? (baseTitle ? `${baseTitle} (${partLabel})` : heading) : baseTitle;
     const docWork: DocWork | undefined = workSlug
       ? { slug: workSlug, courseId: opts.work!.courseId, chapter: { index: ch.index, ...(chapterTitle ? { title: chapterTitle } : {}) } }
       : undefined;
@@ -264,7 +304,7 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
       schemaVersion: 2,
       id: `${prefix}-ch${String(ch.index).padStart(width, '0')}`,
       lang,
-      title: ch.front ? `${bookTitle} — Front matter` : heading ? `${bookTitle} — ${heading}` : bookTitle,
+      title: ch.front ? `${bookTitle} — Front matter${partLabel ? ` (${partLabel})` : ''}` : heading ? `${bookTitle} — ${heading}` : bookTitle,
       contentType: opts.contentType ?? 'story',
       corpus: { id: `personal-${lang}`, kind: 'comprehensible-input', title: 'Your books' },
       source: {

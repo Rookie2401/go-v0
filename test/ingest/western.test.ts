@@ -187,6 +187,38 @@ describe('chapter headings, Spanish and English', () => {
   });
 });
 
+describe('a text too long for one document is divided at paragraph boundaries', () => {
+  // 500 paragraphs of 600 characters: 300,000 characters and not one heading
+  const paragraph = (n: number) => `Párrafo ${String(n).padStart(4, '0')}. ${'La lluvia caía sobre el camino viejo y nadie decía nada. '.repeat(11)}`.slice(0, 600);
+  const LONG = Array.from({ length: 500 }, (_, i) => paragraph(i + 1));
+  const body = (n: number) => `Un párrafo del capítulo número ${n}.`;
+
+  it('a long text without headings becomes parts; every paragraph is kept, in order, exactly', () => {
+    const r = convert(LONG.join('\n'));
+    expect(r.headings).toEqual([]);
+    expect(r.documents.length).toBe(6);
+    expect(r.documents.flatMap(paragraphsOf)).toEqual(LONG);
+    expect(r.documents.map((d) => d.title)).toEqual([1, 2, 3, 4, 5, 6].map((k) => `Libro de prueba — Part ${k} of 6`));
+    expect(new Set(r.documents.map((d) => d.id)).size).toBe(6);
+    for (const d of r.documents) expect(paragraphsOf(d).join('\n').length).toBeLessThan(70_000);
+    expect(r.notes.join(' ')).toMatch(/long and has no chapter headings: it was divided into 6 parts .* Nothing in the text is changed/);
+  });
+
+  it('a long chapter among short ones is divided; the others stay; chapters are numbered in order', () => {
+    const r = convert(lines('Capítulo I', body(1), 'Capítulo II. El largo', ...LONG.slice(0, 250), 'Capítulo III', body(3)));
+    expect(r.documents.map((d) => d.sections[0].title)).toEqual(['Capítulo I', 'Capítulo II. El largo (part 1 of 3)', 'Capítulo II. El largo (part 2 of 3)', 'Capítulo II. El largo (part 3 of 3)', 'Capítulo III']);
+    expect(r.documents.flatMap(paragraphsOf)).toEqual([body(1), ...LONG.slice(0, 250), body(3)]);
+    expect(r.notes.join(' ')).toMatch(/1 chapter is longer than 120,000 characters and was divided into 3 parts/);
+  });
+
+  it('not when one document was asked for, and not for a text of ordinary length', () => {
+    expect(convert(LONG.join('\n'), { chapters: 'none' }).documents).toHaveLength(1);
+    const short = convert(LONG.slice(0, 150).join('\n'));
+    expect(short.documents).toHaveLength(1);
+    expect(short.notes.join(' ')).not.toMatch(/divided/);
+  });
+});
+
 describe('the quality report travels with the documents', () => {
   const MOJIBAKE = lines('Capítulo I', 'El niÃ±o llegÃ³ y dijo â€” hola.', 'Y la maÃ±ana siguiente fue frÃ­a.');
 

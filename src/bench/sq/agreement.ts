@@ -6,6 +6,8 @@
  *   wiktionary  English Wiktionary's Albanian entries with their inflection tables (kaikki.org extract; CC BY-SA)
  *   ud-tsa      UD_Albanian-TSA (60 sentences, annotated by hand; CC BY-SA)
  *   ud-staf     UD_Albanian-STAF (202 sentences, lemmas and features "automatic with corrections"; CC BY-SA)
+ *   corpus      how often a written form occurs in the analyzer authors' corpus of some 31 million words (their word
+ *               list, MIT): usage, not analysis — see `corpusVerdict`
  * Each says one of:
  *   agree   it has the form under this lemma (or a recorded citation alias) with features that do not contradict
  *   differ  it has the form under this lemma, and nothing it says about it is compatible with these features
@@ -19,6 +21,9 @@
  *     found only under another headword is silence about this word, not a statement against it.
  *   - a treebank: never. A treebank attests the readings that happen to occur in its sentences; it cannot say a
  *     reading does not exist. Its agreement supports; its differences are recorded for a reviewer and nothing more.
+ *   - the corpus: it speaks only where a Wiktionary table puts ANOTHER form in the reading's cell, and then only when
+ *     usage is lopsided: it agrees when the list's form is in use and the table's hardly occurs (hidhni 1,543 against
+ *     hedhni 9) and says otherwise when it is the reverse (gjellat 7 against gjellët 113).
  *
  * The outcome (nothing is picked silently — every reading that is not `unanimous` is written, with what each source
  * said, to data/review/sq/source-agreement.json):
@@ -34,7 +39,7 @@ import { SQ_CITATION_ALIASES, sameCitation } from './aliases';
 import { COMPARED, samePos, type UniparserVerdict } from './uniparser';
 import type { WiktIndex } from './wiktionary';
 
-export const SOURCE_IDS = ['uniparser', 'wiktionary', 'ud-tsa', 'ud-staf'] as const;
+export const SOURCE_IDS = ['uniparser', 'wiktionary', 'ud-tsa', 'ud-staf', 'corpus'] as const;
 export type SourceId = (typeof SOURCE_IDS)[number];
 export type SourceVerdict = 'agree' | 'differ' | 'other' | 'silent';
 export type AgreementStatus = 'unanimous' | 'majority' | 'disputed' | 'single-source' | 'name-unlisted';
@@ -96,9 +101,32 @@ export function wiktVerdict(lemma: string, form: string, r: SqReading, index: Wi
   return { verdict: v === 'differ' ? 'silent' : v, filledBy: [] };
 }
 
+/** A form has to occur at least this often before its frequency says anything. */
+export const CORPUS_MIN = 50;
+/** ... and at least this many times as often as the competing form. */
+export const CORPUS_RATIO = 10;
+
+/**
+ * Usage as a witness between two forms competing for one cell. `ours` = how often the list's form occurs; `theirs` =
+ * how often the commonest form a Wiktionary table has in that cell occurs; `theirsOnly` = the same, counting only table
+ * forms the word list does not itself generate (a form that is also the lemma or another cell — "lugë" beside the
+ * plural "luga" — is frequent for that other reason, and proves nothing about this cell).
+ *   agree   the list's form is in use (CORPUS_MIN) and the table's hardly occurs (under CORPUS_MIN, and a tenth of ours
+ *           at most)
+ *   differ  the list's form hardly occurs and a table form the list does not generate is in use, ten times as often
+ *   silent  otherwise
+ * A frequency says that a form is used, never what it means: it is used for nothing but this comparison.
+ */
+export function corpusVerdict(ours: number, theirs: number, theirsOnly: number): SourceVerdict {
+  if (ours >= CORPUS_MIN && theirs < CORPUS_MIN && ours >= CORPUS_RATIO * theirs) return 'agree';
+  if (ours < CORPUS_MIN && theirsOnly >= CORPUS_MIN && theirsOnly >= CORPUS_RATIO * ours) return 'differ';
+  return 'silent';
+}
+
 const dissents = (v: Verdicts): SourceId[] => [
   ...(v.uniparser === 'differ' || v.uniparser === 'other' ? ['uniparser' as const] : []),
   ...(v.wiktionary === 'differ' ? ['wiktionary' as const] : []),
+  ...(v.corpus === 'differ' ? ['corpus' as const] : []),
 ];
 const supports = (v: Verdicts): SourceId[] => SOURCE_IDS.filter((s) => v[s] === 'agree');
 

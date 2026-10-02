@@ -28,7 +28,7 @@ import { SQ_FUNCTION_READINGS } from '../src/adapters/albanian/function-words';
 import { sqGeneratedForms } from '../src/adapters/albanian/morphology';
 import { sqNormalize } from '../src/adapters/albanian/orthography';
 import type { SqReading } from '../src/adapters/albanian/types';
-import { AGREEMENT_STATUSES, SOURCE_IDS, adjudicate, fromUniparser, verdictFrom, wiktVerdict, type AgreementStatus, type SourceId, type Statement, type Verdicts } from '../src/bench/sq/agreement';
+import { AGREEMENT_STATUSES, SOURCE_IDS, adjudicate, corpusVerdict, fromUniparser, verdictFrom, wiktVerdict, type AgreementStatus, type SourceId, type Statement, type Verdicts } from '../src/bench/sq/agreement';
 import { SQ_CITATION_ALIASES } from '../src/bench/sq/aliases';
 import { splitOf } from '../src/bench/sq/compare';
 import { parseConllu } from '../src/bench/sq/conllu';
@@ -100,12 +100,30 @@ function treebank(dir: string): { index: Map<string, Statement[]>; info: Record<
 const tsa = treebank('data/research/ud/UD_Albanian-TSA');
 const staf = treebank('data/research/ud/UD_Albanian-STAF');
 
+// ── source 5: usage — how often a written form occurs in the analyzer authors' corpus ──
+const WORDLIST = 'data/research/uniparser-grammar-albanian/wordlists/wordlist.csv';
+let freq: Map<string, number> | undefined;
+let freqInfo: Record<string, unknown> = { available: false };
+if (fs.existsSync(WORDLIST)) {
+  freq = new Map();
+  for (const line of fs.readFileSync(WORDLIST, 'utf8').replace(/^\uFEFF/, '').split('\n')) {
+    const tab = line.lastIndexOf('\t');
+    if (tab <= 0) continue;
+    const form = sqNormalize(line.slice(0, tab));
+    const n = Number(line.slice(tab + 1));
+    if (Number.isFinite(n)) freq.set(form, (freq.get(form) ?? 0) + n);
+  }
+  let commit: string | undefined;
+  try { commit = execSync('git rev-parse HEAD', { cwd: path.dirname(path.dirname(WORDLIST)), encoding: 'utf8', stdio: ['ignore', 'pipe', 'ignore'] }).trim(); } catch { /* not a checkout */ }
+  freqInfo = { available: true, name: 'uniparser-grammar-albanian word list (form frequencies in the authors\' corpus)', forms: freq.size, commit, licence: 'MIT', note: 'usage counts only; in the review file each row carries the count of its form' };
+}
+
 // ── compare ──
 interface Finding { form: string; lemma: string; pos: string; status: AgreementStatus; ours: string; said: Verdicts; support: SourceId[]; dissent: SourceId[]; evidence: Partial<Record<SourceId, string[]>> }
 const findings: Finding[] = [];
 const counts: Record<string, Record<AgreementStatus, number>> = {};
 const totals: Record<AgreementStatus, number> = { unanimous: 0, majority: 0, disputed: 0, 'single-source': 0, 'name-unlisted': 0 };
-const bySource: Record<SourceId, Record<string, number>> = { uniparser: {}, wiktionary: {}, 'ud-tsa': {}, 'ud-staf': {} };
+const bySource: Record<SourceId, Record<string, number>> = { uniparser: {}, wiktionary: {}, 'ud-tsa': {}, 'ud-staf': {}, corpus: {} };
 const feat = (m: Record<string, string>) => COMPARED.filter((f) => m[f]).map((f) => `${f}=${m[f]}`).join(' ');
 const say = (s: Statement) => `${s.lemma}${s.pos ? `/${s.pos}` : ''}${feat(s.morph) ? ` ${feat(s.morph)}` : ''}`;
 
@@ -124,6 +142,10 @@ for (const [form, list] of [...ours.entries()].sort((a, b) => (a[0] < b[0] ? -1 
       wiktionary: wkFinding.verdict,
       'ud-tsa': verdictFrom(lemma, r, t1),
       'ud-staf': verdictFrom(lemma, r, t2),
+      // usage speaks only between the list's form and the form(s) a Wiktionary table has in the same cell
+      corpus: wkFinding.verdict === 'differ' && freq
+        ? corpusVerdict(freq.get(form) ?? 0, Math.max(...wkFinding.filledBy.map((f) => freq!.get(f) ?? 0)), Math.max(0, ...wkFinding.filledBy.filter((f) => !ours.has(f)).map((f) => freq!.get(f) ?? 0)))
+        : 'silent',
     };
     for (const s of SOURCE_IDS) bySource[s][said[s]] = (bySource[s][said[s]] ?? 0) + 1;
     const { status, support, dissent } = adjudicate(r.pos, said);
@@ -136,6 +158,8 @@ for (const [form, list] of [...ours.entries()].sort((a, b) => (a[0] < b[0] ? -1 
       else if (said.wiktionary === 'other') evidence.wiktionary = [...new Set(wk.map(say))].slice(0, 5);
       if (said['ud-tsa'] === 'differ' || said['ud-tsa'] === 'other') evidence['ud-tsa'] = [...new Set(t1.map(say))].slice(0, 5);
       if (said['ud-staf'] === 'differ' || said['ud-staf'] === 'other') evidence['ud-staf'] = [...new Set(t2.map(say))].slice(0, 5);
+      if (freq && wkFinding.verdict === 'differ') evidence.corpus = [`${form} ${freq.get(form) ?? 0}`, ...wkFinding.filledBy.map((f) => `${f} ${freq!.get(f) ?? 0}`)];
+      else if (freq) evidence.corpus = [`${form} ${freq.get(form) ?? 0}`];
       findings.push({ form, lemma: r.lemma, pos: r.pos, status, ours: feat(r.morph) || '(no features)', said, support, dissent, evidence });
     }
   }
@@ -144,7 +168,7 @@ for (const [form, list] of [...ours.entries()].sort((a, b) => (a[0] < b[0] ? -1 
 // ── report ──
 const pct = (a: number, b: number) => (b ? `${((100 * a) / b).toFixed(2)} %` : 'n/a');
 const total = Object.values(totals).reduce((a, b) => a + b, 0);
-console.log(`sq:agreement - split ${split}: ${ours.size} written forms, ${total} readings; sources: analyzer yes, Wiktionary ${wikt ? 'yes' : 'ABSENT'}, UD-TSA ${tsa.info.available ? 'yes' : 'ABSENT'}, UD-STAF ${staf.info.available ? 'yes' : 'ABSENT'}`);
+console.log(`sq:agreement - split ${split}: ${ours.size} written forms, ${total} readings; sources: analyzer yes, Wiktionary ${wikt ? 'yes' : 'ABSENT'}, UD-TSA ${tsa.info.available ? 'yes' : 'ABSENT'}, UD-STAF ${staf.info.available ? 'yes' : 'ABSENT'}, corpus frequencies ${freq ? 'yes' : 'ABSENT'}`);
 console.log(`  unanimous ${totals.unanimous} (${pct(totals.unanimous, total)}); majority ${totals.majority}; disputed ${totals.disputed}; single-source ${totals['single-source']}; names no source lists ${totals['name-unlisted']}`);
 for (const s of SOURCE_IDS) console.log(`  ${s.padEnd(10)} agree ${bySource[s].agree ?? 0}; differ ${bySource[s].differ ?? 0}; other word ${bySource[s].other ?? 0}; silent ${bySource[s].silent ?? 0}`);
 for (const [pos, c] of Object.entries(counts).sort((a, b) => Object.values(b[1]).reduce((x, y) => x + y, 0) - Object.values(a[1]).reduce((x, y) => x + y, 0))) {
@@ -174,6 +198,7 @@ if (args.includes('--write')) {
       wiktionary: wiktInfo,
       'ud-tsa': { name: 'UD_Albanian-TSA', ...tsa.info },
       'ud-staf': { name: 'UD_Albanian-STAF', ...staf.info },
+      corpus: freqInfo,
     },
     citationAliases: SQ_CITATION_ALIASES,
     totals,

@@ -134,7 +134,7 @@ const HOME: SqLexeme[] = [
   N('telefon', 'm', 'telefoni', 'telefona', 'telephone'),
   N('makinë', 'f', 'makina', 'makina', 'car; machine'),
   N('thikë', 'f', 'thika', 'thika', 'knife'),
-  N('lugë', 'f', 'luga', 'luga', 'spoon'),
+  N('lugë', 'f', 'luga', 'lugë', 'spoon'),
   N('pirun', 'm', 'piruni', 'pirunë', 'fork'),
   N('pjatë', 'f', 'pjata', 'pjata', 'plate'),
   N('gotë', 'f', 'gota', 'gota', 'glass'),
@@ -192,7 +192,7 @@ const FOOD: SqLexeme[] = [
   N('çokollatë', 'f', 'çokollata', 'çokollata', 'chocolate'),
   N('perime', 'f', 'perimja', 'perime', 'vegetable'),
   N('pulë', 'f', 'pula', 'pula', 'hen, chicken'),
-  N('gjellë', 'f', 'gjella', 'gjella', 'dish, meal'),
+  N('gjellë', 'f', 'gjella', 'gjellë', 'dish, meal'),
 ];
 
 const TOWN: SqLexeme[] = [

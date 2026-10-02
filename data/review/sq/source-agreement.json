@@ -37,6 +37,14 @@
    "commit": "22ae839b1d7c78005e900dd97747f0739b233c42",
    "licence": "CC BY-SA 4.0",
    "note": "dev half only (even hash of sent_id); research material, never bundled"
+  },
+  "corpus": {
+   "available": true,
+   "name": "uniparser-grammar-albanian word list (form frequencies in the authors' corpus)",
+   "forms": 1332391,
+   "commit": "7d423dbccfc3702f30d52f016bca2e92c70cb5fc",
+   "licence": "MIT",
+   "note": "usage counts only; in the review file each row carries the count of its form"
   }
  },
  "citationAliases": {
@@ -57,9 +65,9 @@
   ]
  },
  "totals": {
-  "unanimous": 10885,
-  "majority": 5,
-  "disputed": 198,
+  "unanimous": 10890,
+  "majority": 38,
+  "disputed": 160,
   "single-source": 36,
   "name-unlisted": 32
  },
@@ -79,16 +87,16 @@
    "name-unlisted": 32
   },
   "NOUN": {
-   "unanimous": 3748,
-   "majority": 1,
-   "disputed": 78,
+   "unanimous": 3753,
+   "majority": 14,
+   "disputed": 60,
    "single-source": 24,
    "name-unlisted": 0
   },
   "VERB": {
    "unanimous": 6332,
-   "majority": 3,
-   "disputed": 115,
+   "majority": 23,
+   "disputed": 95,
    "single-source": 10,
    "name-unlisted": 0
   },
@@ -158,16 +166,16 @@
  },
  "bySource": {
   "uniparser": {
-   "agree": 10971,
-   "silent": 99,
-   "other": 63,
-   "differ": 23
+   "agree": 10963,
+   "silent": 104,
+   "other": 64,
+   "differ": 25
   },
   "wiktionary": {
-   "agree": 8299,
+   "agree": 8307,
    "silent": 2411,
    "other": 321,
-   "differ": 125
+   "differ": 117
   },
   "ud-tsa": {
    "silent": 10998,
@@ -180,6 +188,11 @@
    "silent": 10631,
    "other": 145,
    "differ": 77
+  },
+  "corpus": {
+   "silent": 11110,
+   "differ": 10,
+   "agree": 36
   }
  },
  "findings": [
@@ -193,7 +206,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -204,6 +218,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: eti"
+    ],
+    "corpus": [
+     "ati 3457",
+     "eti 251"
     ]
    }
   },
@@ -217,7 +235,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "other"
+    "ud-staf": "other",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -227,14 +246,17 @@
    ],
    "evidence": {
     "uniparser": [
-     "ai [PRO,alb,f,sg,acc]",
      "ajo [PRO,3,sg,f,alb,acc]",
+     "ai [PRO,alb,m,sg,acc]",
      "ai [PRO,3,sg,m,alb,acc]",
-     "ai [PRO,alb,m,sg,acc]"
+     "ai [PRO,alb,f,sg,acc]"
     ],
     "ud-staf": [
      "ai/PRON Case=Acc Number=Sing Gender=Masc Person=3",
      "ai/PRON Case=Acc Number=Sing Gender=Masc"
+    ],
+    "corpus": [
+     "atë 219987"
     ]
    }
   },
@@ -248,15 +270,21 @@
     "uniparser": "silent",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "differ"
    },
    "support": [],
    "dissent": [
-    "wiktionary"
+    "wiktionary",
+    "corpus"
    ],
    "evidence": {
     "wiktionary": [
      "its table has here: bini"
+    ],
+    "corpus": [
+     "bieni 2",
+     "bini 778"
     ]
    }
   },
@@ -270,12 +298,14 @@
     "uniparser": "differ",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "differ"
    },
    "support": [],
    "dissent": [
     "uniparser",
-    "wiktionary"
+    "wiktionary",
+    "corpus"
    ],
    "evidence": {
     "uniparser": [
@@ -283,6 +313,10 @@
     ],
     "wiktionary": [
      "its table has here: dojë"
+    ],
+    "corpus": [
+     "dashë 6",
+     "dojë 2090"
     ]
    }
   },
@@ -296,7 +330,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -308,6 +343,9 @@
     "uniparser": [
      "jap [V,vt,vi,alb,3,sg,aor,ind,pass]",
      "jap [V,vt,vi,alb,2,sg,aor,ind,act]"
+    ],
+    "corpus": [
+     "dha 30334"
     ]
    }
   },
@@ -321,7 +359,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -332,6 +371,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: di"
+    ],
+    "corpus": [
+     "dije 14915",
+     "di 50108"
     ]
    }
   },
@@ -345,7 +388,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -356,6 +400,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: dini"
+    ],
+    "corpus": [
+     "dijeni 7537",
+     "dini 10781"
     ]
    }
   },
@@ -369,7 +417,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "agree",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary",
@@ -382,6 +431,9 @@
     "uniparser": [
      "disa [PRO,alb,deriv,sg,acc,indef]",
      "disa [PRO,alb,deriv,sg,nom,indef]"
+    ],
+    "corpus": [
+     "disa 275164"
     ]
    }
   },
@@ -395,11 +447,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "flitu 0"
+    ]
+   }
   },
   {
    "form": "flituni",
@@ -411,7 +468,8 @@
     "uniparser": "differ",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -420,6 +478,9 @@
    "evidence": {
     "uniparser": [
      "flas [V,vt,vi,borr,lat,deriv,2,pl,imp,act]"
+    ],
+    "corpus": [
+     "flituni 0"
     ]
    }
   },
@@ -433,7 +494,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "agree"
+    "ud-staf": "agree",
+    "corpus": "silent"
    },
    "support": [
     "ud-staf"
@@ -449,102 +511,39 @@
     "wiktionary": [
      "fund/NOUN Case=Gen,Dat Number=Sing Definite=Def",
      "fund/NOUN Case=Abl Number=Sing Definite=Def"
+    ],
+    "corpus": [
+     "fundit 223826"
     ]
    }
   },
   {
-   "form": "gjella",
+   "form": "gjellë",
    "lemma": "gjellë",
    "pos": "NOUN",
    "status": "disputed",
    "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
    "said": {
-    "uniparser": "agree",
-    "wiktionary": "differ",
+    "uniparser": "differ",
+    "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
-    "uniparser"
-   ],
-   "dissent": [
     "wiktionary"
    ],
-   "evidence": {
-    "wiktionary": [
-     "its table has here: gjellë"
-    ]
-   }
-  },
-  {
-   "form": "gjellash",
-   "lemma": "gjellë",
-   "pos": "NOUN",
-   "status": "disputed",
-   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
-   "said": {
-    "uniparser": "agree",
-    "wiktionary": "differ",
-    "ud-tsa": "silent",
-    "ud-staf": "silent"
-   },
-   "support": [
+   "dissent": [
     "uniparser"
    ],
-   "dissent": [
-    "wiktionary"
-   ],
    "evidence": {
-    "wiktionary": [
-     "its table has here: gjellësh"
-    ]
-   }
-  },
-  {
-   "form": "gjellat",
-   "lemma": "gjellë",
-   "pos": "NOUN",
-   "status": "disputed",
-   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
-   "said": {
-    "uniparser": "agree",
-    "wiktionary": "differ",
-    "ud-tsa": "silent",
-    "ud-staf": "silent"
-   },
-   "support": [
-    "uniparser"
-   ],
-   "dissent": [
-    "wiktionary"
-   ],
-   "evidence": {
-    "wiktionary": [
-     "its table has here: gjellët"
-    ]
-   }
-  },
-  {
-   "form": "gjellave",
-   "lemma": "gjellë",
-   "pos": "NOUN",
-   "status": "disputed",
-   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
-   "said": {
-    "uniparser": "agree",
-    "wiktionary": "differ",
-    "ud-tsa": "silent",
-    "ud-staf": "silent"
-   },
-   "support": [
-    "uniparser"
-   ],
-   "dissent": [
-    "wiktionary"
-   ],
-   "evidence": {
-    "wiktionary": [
-     "its table has here: gjellësh, gjellëve"
+    "uniparser": [
+     "gjellë [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+     "gjellë [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+     "gjellë [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
+    ],
+    "corpus": [
+     "gjellë 375"
     ]
    }
   },
@@ -558,7 +557,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -569,6 +569,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: gjermani"
+    ],
+    "corpus": [
+     "gjermanie 31",
+     "gjermani 22667"
     ]
    }
   },
@@ -582,7 +586,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -593,6 +598,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: gjermanit"
+    ],
+    "corpus": [
+     "gjermanisë 13373",
+     "gjermanit 310"
     ]
    }
   },
@@ -606,7 +615,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "other"
+    "ud-staf": "other",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -620,6 +630,10 @@
     ],
     "ud-staf": [
      "haj/VERB Number=Sing Person=3 Tense=Pres Mood=Sub Voice=Act VerbForm=Fin"
+    ],
+    "corpus": [
+     "hajë 843",
+     "haje 159"
     ]
    }
   },
@@ -633,7 +647,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -644,6 +659,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: hartë"
+    ],
+    "corpus": [
+     "harta 2147",
+     "hartë 1432"
     ]
    }
   },
@@ -657,7 +676,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -668,6 +688,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: hartësh"
+    ],
+    "corpus": [
+     "hartash 34",
+     "hartësh 0"
     ]
    }
   },
@@ -675,16 +699,18 @@
    "form": "hartat",
    "lemma": "hartë",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -692,6 +718,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: hartët"
+    ],
+    "corpus": [
+     "hartat 586",
+     "hartët 0"
     ]
    }
   },
@@ -699,16 +729,18 @@
    "form": "hartave",
    "lemma": "hartë",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -716,6 +748,11 @@
    "evidence": {
     "wiktionary": [
      "its table has here: hartësh, hartëve"
+    ],
+    "corpus": [
+     "hartave 339",
+     "hartësh 0",
+     "hartëve 0"
     ]
    }
   },
@@ -723,16 +760,18 @@
    "form": "hidhni",
    "lemma": "hedh",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -740,6 +779,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: hedhni"
+    ],
+    "corpus": [
+     "hidhni 1543",
+     "hedhni 9"
     ]
    }
   },
@@ -753,7 +796,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -763,8 +807,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,2,sg,imp,act]",
-     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]"
+     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]",
+     "hipi [V,vt,vi,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "hip 335"
     ]
    }
   },
@@ -778,7 +825,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -788,8 +836,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,2,sg,imp,act]",
-     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]"
+     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]",
+     "hipi [V,vt,vi,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "hip 335"
     ]
    }
   },
@@ -803,7 +854,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -813,8 +865,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,2,sg,imp,act]",
-     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]"
+     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]",
+     "hipi [V,vt,vi,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "hip 335"
     ]
    }
   },
@@ -828,7 +883,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -839,6 +895,9 @@
    "evidence": {
     "uniparser": [
      "hipi [V,vt,vi,alb,1,sg,aor,ind,act]"
+    ],
+    "corpus": [
+     "hipa 147"
     ]
    }
   },
@@ -852,7 +911,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -862,8 +922,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,2,sg,aor,ind,act]",
-     "hipi [V,vt,vi,alb,2,sg,imp,act]"
+     "hipi [V,vt,vi,alb,2,sg,imp,act]",
+     "hipi [V,vt,vi,alb,2,sg,aor,ind,act]"
+    ],
+    "corpus": [
+     "hipe 9"
     ]
    }
   },
@@ -877,7 +940,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -887,11 +951,14 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,2,sg,imp,act]",
-     "hipi [V,vt,vi,alb,3,sg,aor,ind,act]",
+     "hipi [V,vt,vi,alb,1,sg,pres,ind,act]",
      "hipi [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
-     "hipi [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
-     "hipi [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
+     "hipi [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
+     "hipi [V,vt,vi,alb,3,sg,aor,ind,act]",
+     "hipi [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]"
+    ],
+    "corpus": [
+     "hipi 647"
     ]
    }
   },
@@ -905,7 +972,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -916,6 +984,9 @@
    "evidence": {
     "uniparser": [
      "hipi [V,vt,vi,alb,1,pl,pres,ind,act]"
+    ],
+    "corpus": [
+     "hipim 43"
     ]
    }
   },
@@ -929,7 +1000,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -940,6 +1012,9 @@
    "evidence": {
     "uniparser": [
      "hipi [V,vt,vi,alb,3,pl,pres,ind,act]"
+    ],
+    "corpus": [
+     "hipin 273"
     ]
    }
   },
@@ -953,7 +1028,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -963,9 +1039,12 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipje [NOUN,f,inanim,alb,deriv,sg,nom,def]",
      "hipi [V,vt,vi,alb,1,sg,ipf,ind,act]",
+     "hipje [NOUN,f,inanim,alb,deriv,sg,nom,def]",
      "hipi [V,vt,vi,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "hipja 70"
     ]
    }
   },
@@ -979,7 +1058,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -989,11 +1069,14 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipje [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
-     "hipje [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
-     "hipje [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
      "hipje [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
-     "hipi [V,vt,vi,alb,2,sg,ipf,ind,act]"
+     "hipje [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+     "hipje [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+     "hipi [V,vt,vi,alb,2,sg,ipf,ind,act]",
+     "hipje [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
+    ],
+    "corpus": [
+     "hipje 14"
     ]
    }
   },
@@ -1007,7 +1090,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1019,6 +1103,9 @@
     "uniparser": [
      "hipi [V,vt,vi,alb,2,pl,imp,act]",
      "hipi [V,vt,vi,alb,2,pl,pres,ind,act]"
+    ],
+    "corpus": [
+     "hipni 63"
     ]
    }
   },
@@ -1032,7 +1119,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1044,6 +1132,9 @@
     "uniparser": [
      "hipi [V,vt,vi,alb,2,pl,imp,act]",
      "hipi [V,vt,vi,alb,2,pl,pres,ind,act]"
+    ],
+    "corpus": [
+     "hipni 63"
     ]
    }
   },
@@ -1057,7 +1148,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1068,6 +1160,9 @@
    "evidence": {
     "uniparser": [
      "hipi [V,vt,vi,alb,1,pl,ipf,ind,act]"
+    ],
+    "corpus": [
+     "hipnim 33"
     ]
    }
   },
@@ -1081,7 +1176,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1092,6 +1188,9 @@
    "evidence": {
     "uniparser": [
      "hipi [V,vt,vi,alb,3,pl,ipf,ind,act]"
+    ],
+    "corpus": [
+     "hipnin 164"
     ]
    }
   },
@@ -1105,7 +1204,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1116,6 +1216,9 @@
    "evidence": {
     "uniparser": [
      "hipi [V,vt,vi,alb,2,pl,ipf,ind,act]"
+    ],
+    "corpus": [
+     "hipnit 1"
     ]
    }
   },
@@ -1129,7 +1232,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1140,6 +1244,9 @@
    "evidence": {
     "uniparser": [
      "hipi [V,vt,vi,alb,3,sg,ipf,ind,act]"
+    ],
+    "corpus": [
+     "hipte 294"
     ]
    }
   },
@@ -1153,7 +1260,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1163,8 +1271,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,ptcp]",
-     "hipur [ADV,alb,deriv]"
+     "hipur [ADV,alb,deriv]",
+     "hipi [V,vt,vi,alb,ptcp]"
+    ],
+    "corpus": [
+     "hipur 1293"
     ]
    }
   },
@@ -1178,7 +1289,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1190,6 +1302,9 @@
     "uniparser": [
      "hipi [V,vt,vi,alb,ptcp,nonst,Gheg]",
      "hipi [V,vt,vi,alb,3,sg,pres,sbjv,act]"
+    ],
+    "corpus": [
+     "hipë 86"
     ]
    }
   },
@@ -1203,7 +1318,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1214,6 +1330,9 @@
    "evidence": {
     "uniparser": [
      "hipi [V,vt,vi,alb,1,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "hipëm 103"
     ]
    }
   },
@@ -1227,7 +1346,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1237,9 +1357,12 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,3,pl,aor,ind,act]",
+     "hipi [V,vt,vi,alb,3,sg,pres,ind,act]",
      "hipi [V,vt,vi,alb,2,sg,pres,ind,act]",
-     "hipi [V,vt,vi,alb,3,sg,pres,ind,act]"
+     "hipi [V,vt,vi,alb,3,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "hipën 420"
     ]
    }
   },
@@ -1253,7 +1376,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1264,6 +1388,9 @@
    "evidence": {
     "uniparser": [
      "hipi [V,vt,vi,alb,2,sg,pres,sbjv,act]"
+    ],
+    "corpus": [
+     "hipësh 52"
     ]
    }
   },
@@ -1277,7 +1404,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1288,6 +1416,9 @@
    "evidence": {
     "uniparser": [
      "hipi [V,vt,vi,alb,2,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "hipët 6"
     ]
    }
   },
@@ -1301,7 +1432,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1312,6 +1444,9 @@
    "evidence": {
     "uniparser": [
      "hudhër [NOUN,f,inanim,alb,sg,nom,def]"
+    ],
+    "corpus": [
+     "hudhra 1331"
     ]
    }
   },
@@ -1325,11 +1460,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "hudhrash 13"
+    ]
+   }
   },
   {
    "form": "hudhrave",
@@ -1341,11 +1481,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "hudhrave 62"
+    ]
+   }
   },
   {
    "form": "hunda",
@@ -1357,7 +1502,8 @@
     "uniparser": "differ",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -1370,6 +1516,10 @@
     ],
     "wiktionary": [
      "its table has here: hundë"
+    ],
+    "corpus": [
+     "hunda 681",
+     "hundë 1125"
     ]
    }
   },
@@ -1383,15 +1533,21 @@
     "uniparser": "silent",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "differ"
    },
    "support": [],
    "dissent": [
-    "wiktionary"
+    "wiktionary",
+    "corpus"
    ],
    "evidence": {
     "wiktionary": [
      "its table has here: hundësh"
+    ],
+    "corpus": [
+     "hundash 0",
+     "hundësh 106"
     ]
    }
   },
@@ -1405,15 +1561,21 @@
     "uniparser": "silent",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "differ"
    },
    "support": [],
    "dissent": [
-    "wiktionary"
+    "wiktionary",
+    "corpus"
    ],
    "evidence": {
     "wiktionary": [
      "its table has here: hundët"
+    ],
+    "corpus": [
+     "hundat 0",
+     "hundët 693"
     ]
    }
   },
@@ -1427,15 +1589,22 @@
     "uniparser": "silent",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "differ"
    },
    "support": [],
    "dissent": [
-    "wiktionary"
+    "wiktionary",
+    "corpus"
    ],
    "evidence": {
     "wiktionary": [
      "its table has here: hundësh, hundëve"
+    ],
+    "corpus": [
+     "hundave 0",
+     "hundësh 106",
+     "hundëve 200"
     ]
    }
   },
@@ -1449,7 +1618,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1460,6 +1630,9 @@
    "evidence": {
     "uniparser": [
      "iki [V,vi,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "iku 3714"
     ]
    }
   },
@@ -1473,7 +1646,8 @@
     "uniparser": "differ",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -1482,6 +1656,9 @@
    "evidence": {
     "uniparser": [
      "jap [V,vt,vi,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "jepu 134"
     ]
    }
   },
@@ -1495,7 +1672,8 @@
     "uniparser": "differ",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -1504,6 +1682,9 @@
    "evidence": {
     "uniparser": [
      "jap [V,vt,vi,alb,2,pl,imp,act]"
+    ],
+    "corpus": [
+     "jepuni 103"
     ]
    }
   },
@@ -1517,7 +1698,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "differ"
+    "ud-staf": "differ",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1531,6 +1713,10 @@
     ],
     "ud-staf": [
      "kokë/NOUN Case=Nom Number=Sing Definite=Def Gender=Fem"
+    ],
+    "corpus": [
+     "koka 5747",
+     "kokë 14830"
     ]
    }
   },
@@ -1544,7 +1730,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1555,6 +1742,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: kokësh"
+    ],
+    "corpus": [
+     "kokash 56",
+     "kokësh 6"
     ]
    }
   },
@@ -1562,16 +1753,18 @@
    "form": "kokat",
    "lemma": "kokë",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -1579,6 +1772,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: kokët"
+    ],
+    "corpus": [
+     "kokat 1475",
+     "kokët 36"
     ]
    }
   },
@@ -1586,16 +1783,18 @@
    "form": "kokave",
    "lemma": "kokë",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -1603,6 +1802,11 @@
    "evidence": {
     "wiktionary": [
      "its table has here: kokësh, kokëve"
+    ],
+    "corpus": [
+     "kokave 277",
+     "kokësh 6",
+     "kokëve 12"
     ]
    }
   },
@@ -1616,7 +1820,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1627,6 +1832,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: kompjutera"
+    ],
+    "corpus": [
+     "kompjuterë 413",
+     "kompjutera 139"
     ]
    }
   },
@@ -1640,7 +1849,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1651,6 +1861,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: kompjuterash"
+    ],
+    "corpus": [
+     "kompjuterësh 50",
+     "kompjuterash 35"
     ]
    }
   },
@@ -1664,7 +1878,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1675,6 +1890,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: kompjuterat"
+    ],
+    "corpus": [
+     "kompjuterët 401",
+     "kompjuterat 133"
     ]
    }
   },
@@ -1688,7 +1907,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1699,6 +1919,11 @@
    "evidence": {
     "wiktionary": [
      "its table has here: kompjuterash, kompjuterave"
+    ],
+    "corpus": [
+     "kompjuterëve 333",
+     "kompjuterash 35",
+     "kompjuterave 97"
     ]
    }
   },
@@ -1712,7 +1937,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1723,6 +1949,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: këmishë"
+    ],
+    "corpus": [
+     "këmisha 336",
+     "këmishë 661"
     ]
    }
   },
@@ -1736,7 +1966,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1747,6 +1978,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: këmishësh"
+    ],
+    "corpus": [
+     "këmishash 3",
+     "këmishësh 4"
     ]
    }
   },
@@ -1760,7 +1995,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1771,6 +2007,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: këmishët"
+    ],
+    "corpus": [
+     "këmishat 75",
+     "këmishët 71"
     ]
    }
   },
@@ -1784,7 +2024,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1795,6 +2036,11 @@
    "evidence": {
     "wiktionary": [
      "its table has here: këmishësh, këmishëve"
+    ],
+    "corpus": [
+     "këmishave 38",
+     "këmishësh 4",
+     "këmishëve 23"
     ]
    }
   },
@@ -1808,7 +2054,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -1818,9 +2065,12 @@
    ],
    "evidence": {
     "uniparser": [
+     "lë [V,vt,alb,2,sg,aor,ind,act]",
      "lë [V,vt,alb,ptcp,nonst]",
-     "lë [V,vt,alb,3,sg,aor,ind,pass]",
-     "lë [V,vt,alb,2,sg,aor,ind,act]"
+     "lë [V,vt,alb,3,sg,aor,ind,pass]"
+    ],
+    "corpus": [
+     "la 23462"
     ]
    }
   },
@@ -1828,16 +2078,18 @@
    "form": "lini",
    "lemma": "lë",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -1845,6 +2097,11 @@
    "evidence": {
     "wiktionary": [
      "its table has here: liheni, lëni"
+    ],
+    "corpus": [
+     "lini 2347",
+     "liheni 8",
+     "lëni 36"
     ]
    }
   },
@@ -1858,11 +2115,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "luajtëm 752"
+    ]
+   }
   },
   {
    "form": "luajtën",
@@ -1874,11 +2136,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "luajtën 1468"
+    ]
+   }
   },
   {
    "form": "luajtët",
@@ -1890,11 +2157,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "luajtët 69"
+    ]
+   }
   },
   {
    "form": "lufta",
@@ -1906,7 +2178,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1917,6 +2190,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: luftëra"
+    ],
+    "corpus": [
+     "lufta 22501",
+     "luftëra 1319"
     ]
    }
   },
@@ -1930,7 +2207,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -1941,6 +2219,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: luftërash"
+    ],
+    "corpus": [
+     "luftash 43",
+     "luftërash 192"
     ]
    }
   },
@@ -1954,17 +2236,23 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "differ"
    },
    "support": [
     "uniparser"
    ],
    "dissent": [
-    "wiktionary"
+    "wiktionary",
+    "corpus"
    ],
    "evidence": {
     "wiktionary": [
      "its table has here: luftërat"
+    ],
+    "corpus": [
+     "luftat 15",
+     "luftërat 2497"
     ]
    }
   },
@@ -1978,113 +2266,86 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "differ"
    },
    "support": [
     "uniparser"
    ],
    "dissent": [
-    "wiktionary"
+    "wiktionary",
+    "corpus"
    ],
    "evidence": {
     "wiktionary": [
      "its table has here: luftërash, luftërave"
+    ],
+    "corpus": [
+     "luftave 18",
+     "luftërash 192",
+     "luftërave 2142"
     ]
    }
   },
   {
-   "form": "luga",
+   "form": "lugë",
    "lemma": "lugë",
    "pos": "NOUN",
    "status": "disputed",
    "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
    "said": {
-    "uniparser": "agree",
-    "wiktionary": "differ",
+    "uniparser": "differ",
+    "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
-    "uniparser"
-   ],
-   "dissent": [
     "wiktionary"
    ],
+   "dissent": [
+    "uniparser"
+   ],
    "evidence": {
-    "wiktionary": [
-     "its table has here: lugë"
+    "uniparser": [
+     "lugë [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+     "lugë [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
+     "lugë [NOUN,f,inanim,alb,deriv,sg,nom,indef]"
+    ],
+    "corpus": [
+     "lugë 4077"
     ]
    }
   },
   {
-   "form": "lugash",
-   "lemma": "lugë",
-   "pos": "NOUN",
-   "status": "disputed",
-   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
-   "said": {
-    "uniparser": "agree",
-    "wiktionary": "differ",
-    "ud-tsa": "silent",
-    "ud-staf": "silent"
-   },
-   "support": [
-    "uniparser"
-   ],
-   "dissent": [
-    "wiktionary"
-   ],
-   "evidence": {
-    "wiktionary": [
-     "its table has here: lugësh"
-    ]
-   }
-  },
-  {
-   "form": "lugat",
+   "form": "lugët",
    "lemma": "lugë",
    "pos": "NOUN",
    "status": "disputed",
    "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
    "said": {
-    "uniparser": "agree",
-    "wiktionary": "differ",
+    "uniparser": "other",
+    "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
-    "uniparser"
-   ],
-   "dissent": [
     "wiktionary"
    ],
-   "evidence": {
-    "wiktionary": [
-     "its table has here: lugët"
-    ]
-   }
-  },
-  {
-   "form": "lugave",
-   "lemma": "lugë",
-   "pos": "NOUN",
-   "status": "disputed",
-   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
-   "said": {
-    "uniparser": "agree",
-    "wiktionary": "differ",
-    "ud-tsa": "silent",
-    "ud-staf": "silent"
-   },
-   "support": [
+   "dissent": [
     "uniparser"
    ],
-   "dissent": [
-    "wiktionary"
-   ],
    "evidence": {
-    "wiktionary": [
-     "its table has here: lugësh, lugëve"
+    "uniparser": [
+     "lugët [A,alb,deriv,m,pl]",
+     "lugët [A,alb,deriv,m,pl,acc,indef]",
+     "lugët [A,alb,deriv,f,sg,acc,indef]",
+     "lugët [A,alb,deriv,f,sg]",
+     "lugët [A,alb,deriv,m,pl,nom,indef]"
+    ],
+    "corpus": [
+     "lugët 74"
     ]
    }
   },
@@ -2098,7 +2359,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2109,6 +2371,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: lëkurë"
+    ],
+    "corpus": [
+     "lëkura 2566",
+     "lëkurë 3536"
     ]
    }
   },
@@ -2122,7 +2388,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2133,6 +2400,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: lëkurësh"
+    ],
+    "corpus": [
+     "lëkurash 8",
+     "lëkurësh 8"
     ]
    }
   },
@@ -2146,7 +2417,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2157,6 +2429,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: lëkurët"
+    ],
+    "corpus": [
+     "lëkurat 228",
+     "lëkurët 70"
     ]
    }
   },
@@ -2170,7 +2446,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2181,6 +2458,11 @@
    "evidence": {
     "wiktionary": [
      "its table has here: lëkurësh, lëkurëve"
+    ],
+    "corpus": [
+     "lëkurave 48",
+     "lëkurësh 8",
+     "lëkurëve 36"
     ]
    }
   },
@@ -2194,7 +2476,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2205,6 +2488,11 @@
    "evidence": {
     "wiktionary": [
      "its table has here: lesh, lihesh"
+    ],
+    "corpus": [
+     "lësh 578",
+     "lesh 590",
+     "lihesh 0"
     ]
    }
   },
@@ -2218,7 +2506,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2229,6 +2518,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: mace"
+    ],
+    "corpus": [
+     "maceje 57",
+     "mace 686"
     ]
    }
   },
@@ -2236,16 +2529,18 @@
    "form": "mblidhni",
    "lemma": "mbledh",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -2253,6 +2548,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: mbledhni"
+    ],
+    "corpus": [
+     "mblidhni 231",
+     "mbledhni 6"
     ]
    }
   },
@@ -2266,17 +2565,23 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "differ"
    },
    "support": [
     "uniparser"
    ],
    "dissent": [
-    "wiktionary"
+    "wiktionary",
+    "corpus"
    ],
    "evidence": {
     "wiktionary": [
      "its table has here: mbytemi"
+    ],
+    "corpus": [
+     "mbytim 4",
+     "mbytemi 67"
     ]
    }
   },
@@ -2290,7 +2595,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2301,6 +2607,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: mbyten"
+    ],
+    "corpus": [
+     "mbytin 75",
+     "mbyten 320"
     ]
    }
   },
@@ -2314,7 +2624,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2325,6 +2636,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: mbyteni"
+    ],
+    "corpus": [
+     "mbytni 21",
+     "mbyteni 25"
     ]
    }
   },
@@ -2338,17 +2653,23 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "differ"
    },
    "support": [
     "uniparser"
    ],
    "dissent": [
-    "wiktionary"
+    "wiktionary",
+    "corpus"
    ],
    "evidence": {
     "wiktionary": [
      "its table has here: mbyste"
+    ],
+    "corpus": [
+     "mbytte 7",
+     "mbyste 202"
     ]
    }
   },
@@ -2362,7 +2683,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2373,6 +2695,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: mbytet"
+    ],
+    "corpus": [
+     "mbytë 102",
+     "mbytet 619"
     ]
    }
   },
@@ -2386,7 +2712,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2397,6 +2724,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: mbytesh"
+    ],
+    "corpus": [
+     "mbytësh 14",
+     "mbytesh 27"
     ]
    }
   },
@@ -2410,7 +2741,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2421,6 +2753,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: meshë"
+    ],
+    "corpus": [
+     "mesha 301",
+     "meshë 289"
     ]
    }
   },
@@ -2434,7 +2770,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2445,6 +2782,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: meshësh"
+    ],
+    "corpus": [
+     "meshash 2",
+     "meshësh 0"
     ]
    }
   },
@@ -2458,7 +2799,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2469,6 +2811,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: meshët"
+    ],
+    "corpus": [
+     "meshat 60",
+     "meshët 8"
     ]
    }
   },
@@ -2482,7 +2828,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2493,6 +2840,11 @@
    "evidence": {
     "wiktionary": [
      "its table has here: meshësh, meshëve"
+    ],
+    "corpus": [
+     "meshave 10",
+     "meshësh 0",
+     "meshëve 1"
     ]
    }
   },
@@ -2506,11 +2858,13 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "agree"
+    "ud-staf": "agree",
+    "corpus": "agree"
    },
    "support": [
     "uniparser",
-    "ud-staf"
+    "ud-staf",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -2518,6 +2872,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: muajtë"
+    ],
+    "corpus": [
+     "muajt 12002",
+     "muajtë 26"
     ]
    }
   },
@@ -2531,7 +2889,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2542,6 +2901,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: murgjsh"
+    ],
+    "corpus": [
+     "murgjish 8",
+     "murgjsh 0"
     ]
    }
   },
@@ -2555,7 +2918,8 @@
     "uniparser": "other",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -2564,11 +2928,15 @@
    ],
    "evidence": {
     "uniparser": [
-     "muzeum [NOUN,mf,inanim,pl,acc,indef]",
-     "muzeum [NOUN,mf,inanim,pl,nom,indef]"
+     "muzeum [NOUN,mf,inanim,pl,nom,indef]",
+     "muzeum [NOUN,mf,inanim,pl,acc,indef]"
     ],
     "wiktionary": [
      "its table has here: muze"
+    ],
+    "corpus": [
+     "muzeume 90",
+     "muze 2707"
     ]
    }
   },
@@ -2582,7 +2950,8 @@
     "uniparser": "other",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -2595,6 +2964,10 @@
     ],
     "wiktionary": [
      "its table has here: muzesh"
+    ],
+    "corpus": [
+     "muzeumesh 3",
+     "muzesh 15"
     ]
    }
   },
@@ -2608,7 +2981,8 @@
     "uniparser": "other",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -2617,11 +2991,15 @@
    ],
    "evidence": {
     "uniparser": [
-     "muzeum [NOUN,mf,inanim,pl,acc,def]",
-     "muzeum [NOUN,mf,inanim,pl,nom,def]"
+     "muzeum [NOUN,mf,inanim,pl,nom,def]",
+     "muzeum [NOUN,mf,inanim,pl,acc,def]"
     ],
     "wiktionary": [
      "its table has here: muzetë"
+    ],
+    "corpus": [
+     "muzeumet 117",
+     "muzetë 601"
     ]
    }
   },
@@ -2635,7 +3013,8 @@
     "uniparser": "other",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -2644,13 +3023,18 @@
    ],
    "evidence": {
     "uniparser": [
-     "muzeum [NOUN,mf,inanim,pl,abl,def]",
-     "muzeum [NOUN,mf,inanim,pl,abl,indef]",
      "muzeum [NOUN,mf,inanim,pl,gen_dat,indef]",
-     "muzeum [NOUN,mf,inanim,pl,gen_dat,def]"
+     "muzeum [NOUN,mf,inanim,pl,gen_dat,def]",
+     "muzeum [NOUN,mf,inanim,pl,abl,indef]",
+     "muzeum [NOUN,mf,inanim,pl,abl,def]"
     ],
     "wiktionary": [
      "its table has here: muzesh, muzeve"
+    ],
+    "corpus": [
+     "muzeumeve 85",
+     "muzesh 15",
+     "muzeve 360"
     ]
    }
   },
@@ -2664,7 +3048,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2675,6 +3060,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: nipërsh"
+    ],
+    "corpus": [
+     "nipërish 1",
+     "nipërsh 0"
     ]
    }
   },
@@ -2682,16 +3071,18 @@
    "form": "numëro",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Sing Person=2 Mood=Imp Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -2699,6 +3090,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numero"
+    ],
+    "corpus": [
+     "numëro 121",
+     "numero 9"
     ]
    }
   },
@@ -2712,7 +3107,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2723,6 +3119,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numerofsh"
+    ],
+    "corpus": [
+     "numërofsh 0",
+     "numerofsh 0"
     ]
    }
   },
@@ -2736,7 +3136,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2747,6 +3148,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numerofsha"
+    ],
+    "corpus": [
+     "numërofsha 0",
+     "numerofsha 0"
     ]
    }
   },
@@ -2760,7 +3165,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2771,6 +3177,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numerofshi"
+    ],
+    "corpus": [
+     "numërofshi 0",
+     "numerofshi 0"
     ]
    }
   },
@@ -2784,7 +3194,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2795,6 +3206,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numerofshim"
+    ],
+    "corpus": [
+     "numërofshim 0",
+     "numerofshim 0"
     ]
    }
   },
@@ -2808,7 +3223,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2819,6 +3235,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numerofshin"
+    ],
+    "corpus": [
+     "numërofshin 0",
+     "numerofshin 0"
     ]
    }
   },
@@ -2832,7 +3252,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2843,6 +3264,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeroftë"
+    ],
+    "corpus": [
+     "numëroftë 0",
+     "numeroftë 0"
     ]
    }
   },
@@ -2850,16 +3275,18 @@
    "form": "numëroi",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -2867,6 +3294,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeroi"
+    ],
+    "corpus": [
+     "numëroi 253",
+     "numeroi 2"
     ]
    }
   },
@@ -2880,7 +3311,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2891,6 +3323,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeroja"
+    ],
+    "corpus": [
+     "numëroja 48",
+     "numeroja 1"
     ]
    }
   },
@@ -2904,7 +3340,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -2915,6 +3352,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeroje"
+    ],
+    "corpus": [
+     "numëroje 12",
+     "numeroje 7"
     ]
    }
   },
@@ -2922,16 +3363,18 @@
    "form": "numërojmë",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=1 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -2939,6 +3382,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numerojmë"
+    ],
+    "corpus": [
+     "numërojmë 197",
+     "numerojmë 0"
     ]
    }
   },
@@ -2946,16 +3393,18 @@
    "form": "numërojnë",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=3 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -2963,6 +3412,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numerojnë"
+    ],
+    "corpus": [
+     "numërojnë 490",
+     "numerojnë 1"
     ]
    }
   },
@@ -2970,16 +3423,18 @@
    "form": "numërojë",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Sing Person=3 Tense=Pres Mood=Sub Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -2987,6 +3442,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numerojë"
+    ],
+    "corpus": [
+     "numërojë 191",
+     "numerojë 0"
     ]
    }
   },
@@ -2994,16 +3453,18 @@
    "form": "numëron",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Sing Person=2,3 Tense=Pres Mood=Ind Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3011,6 +3472,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeron"
+    ],
+    "corpus": [
+     "numëron 2462",
+     "numeron 13"
     ]
    }
   },
@@ -3018,16 +3483,18 @@
    "form": "numëroni",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3035,6 +3502,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeroni"
+    ],
+    "corpus": [
+     "numëroni 109",
+     "numeroni 1"
     ]
    }
   },
@@ -3042,16 +3513,18 @@
    "form": "numëroni",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=2 Mood=Imp Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3059,6 +3532,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeroni"
+    ],
+    "corpus": [
+     "numëroni 109",
+     "numeroni 1"
     ]
    }
   },
@@ -3072,7 +3549,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3083,6 +3561,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeronim"
+    ],
+    "corpus": [
+     "numëronim 19",
+     "numeronim 0"
     ]
    }
   },
@@ -3090,16 +3572,18 @@
    "form": "numëronin",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=3 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3107,6 +3591,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeronin"
+    ],
+    "corpus": [
+     "numëronin 86",
+     "numeronin 2"
     ]
    }
   },
@@ -3120,7 +3608,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3131,6 +3620,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeronit"
+    ],
+    "corpus": [
+     "numëronit 6",
+     "numeronit 0"
     ]
    }
   },
@@ -3138,16 +3631,18 @@
    "form": "numëronte",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Sing Person=3 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3155,6 +3650,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeronte"
+    ],
+    "corpus": [
+     "numëronte 410",
+     "numeronte 1"
     ]
    }
   },
@@ -3162,16 +3661,18 @@
    "form": "numërosh",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Sing Person=2 Tense=Pres Mood=Sub Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3179,6 +3680,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numerosh"
+    ],
+    "corpus": [
+     "numërosh 63",
+     "numerosh 2"
     ]
    }
   },
@@ -3192,7 +3697,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3203,6 +3709,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numerova"
+    ],
+    "corpus": [
+     "numërova 40",
+     "numerova 0"
     ]
    }
   },
@@ -3216,7 +3726,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3227,6 +3738,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numerove"
+    ],
+    "corpus": [
+     "numërove 5",
+     "numerove 2"
     ]
    }
   },
@@ -3240,7 +3755,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3251,6 +3767,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeruaka"
+    ],
+    "corpus": [
+     "numëruaka 0",
+     "numeruaka 0"
     ]
    }
   },
@@ -3264,7 +3784,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3275,6 +3796,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeruakam"
+    ],
+    "corpus": [
+     "numëruakam 0",
+     "numeruakam 0"
     ]
    }
   },
@@ -3288,7 +3813,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3299,6 +3825,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeruakan"
+    ],
+    "corpus": [
+     "numëruakan 2",
+     "numeruakan 0"
     ]
    }
   },
@@ -3312,7 +3842,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3323,6 +3854,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeruake"
+    ],
+    "corpus": [
+     "numëruake 0",
+     "numeruake 0"
     ]
    }
   },
@@ -3336,7 +3871,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3347,6 +3883,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeruakemi"
+    ],
+    "corpus": [
+     "numëruakemi 0",
+     "numeruakemi 0"
     ]
    }
   },
@@ -3360,7 +3900,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3371,6 +3912,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeruakeni"
+    ],
+    "corpus": [
+     "numëruakeni 0",
+     "numeruakeni 0"
     ]
    }
   },
@@ -3384,7 +3929,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3395,6 +3941,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeruam"
+    ],
+    "corpus": [
+     "numëruam 25",
+     "numeruam 0"
     ]
    }
   },
@@ -3402,16 +3952,18 @@
    "form": "numëruan",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3419,6 +3971,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeruan"
+    ],
+    "corpus": [
+     "numëruan 124",
+     "numeruan 3"
     ]
    }
   },
@@ -3426,16 +3982,18 @@
    "form": "numëruar",
    "lemma": "numëroj",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "VerbForm=Part",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3443,6 +4001,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeruar"
+    ],
+    "corpus": [
+     "numëruar 1207",
+     "numeruar 36"
     ]
    }
   },
@@ -3456,7 +4018,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3467,6 +4030,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: numeruat"
+    ],
+    "corpus": [
+     "numëruat 3",
+     "numeruat 0"
     ]
    }
   },
@@ -3480,7 +4047,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "other"
+    "ud-staf": "other",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -3498,6 +4066,9 @@
      "pa/SCONJ",
      "pa/ADP",
      "pa/PART"
+    ],
+    "corpus": [
+     "pa 278785"
     ]
    }
   },
@@ -3511,11 +4082,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "pasdita 3"
+    ]
+   }
   },
   {
    "form": "pasdite",
@@ -3527,7 +4103,8 @@
     "uniparser": "differ",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -3535,14 +4112,17 @@
    ],
    "evidence": {
     "uniparser": [
-     "pasdite [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
      "pasdite [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
+     "pasdite [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
      "pasdite [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
-     "pasdite [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
-     "pasdite [NOUN,f,inanim,alb,deriv,sg,nom,indef]"
+     "pasdite [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+     "pasdite [NOUN,f,inanim,alb,deriv,pl,acc,indef]"
     ],
     "wiktionary": [
      "pasdite/ADV"
+    ],
+    "corpus": [
+     "pasdite 7766"
     ]
    }
   },
@@ -3556,11 +4136,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "pastor 106"
+    ]
+   }
   },
   {
    "form": "pastori",
@@ -3572,11 +4157,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "pastori 163"
+    ]
+   }
   },
   {
    "form": "pastori",
@@ -3588,11 +4178,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "pastori 163"
+    ]
+   }
   },
   {
    "form": "pastorin",
@@ -3604,11 +4199,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "pastorin 29"
+    ]
+   }
   },
   {
    "form": "pastorit",
@@ -3620,11 +4220,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "pastorit 67"
+    ]
+   }
   },
   {
    "form": "pastorë",
@@ -3636,11 +4241,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "pastorë 6"
+    ]
+   }
   },
   {
    "form": "pastorësh",
@@ -3652,11 +4262,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "pastorësh 0"
+    ]
+   }
   },
   {
    "form": "pastorët",
@@ -3668,11 +4283,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "pastorët 10"
+    ]
+   }
   },
   {
    "form": "pastorëve",
@@ -3684,11 +4304,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "pastorëve 4"
+    ]
+   }
   },
   {
    "form": "perime",
@@ -3700,7 +4325,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -3710,8 +4336,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "perime [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
-     "perime [NOUN,f,inanim,alb,deriv,pl,nom,indef]"
+     "perime [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+     "perime [NOUN,f,inanim,alb,deriv,pl,acc,indef]"
+    ],
+    "corpus": [
+     "perime 2761"
     ]
    }
   },
@@ -3725,7 +4354,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -3736,6 +4366,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: pritni"
+    ],
+    "corpus": [
+     "prisni 2458",
+     "pritni 239"
     ]
    }
   },
@@ -3743,16 +4377,18 @@
    "form": "pritëm",
    "lemma": "pres",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3760,6 +4396,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: prtitëm"
+    ],
+    "corpus": [
+     "pritëm 398",
+     "prtitëm 0"
     ]
    }
   },
@@ -3773,7 +4413,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -3784,8 +4425,11 @@
    "evidence": {
     "uniparser": [
      "qepë [NOUN,f,inanim,borr,lat,sg,unmkd,indef]",
-     "qepë [NOUN,f,inanim,borr,lat,sg,nom,indef]",
-     "qepë [NOUN,f,inanim,borr,lat,sg,acc,indef]"
+     "qepë [NOUN,f,inanim,borr,lat,sg,acc,indef]",
+     "qepë [NOUN,f,inanim,borr,lat,sg,nom,indef]"
+    ],
+    "corpus": [
+     "qepë 728"
     ]
    }
   },
@@ -3799,7 +4443,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -3810,6 +4455,9 @@
    "evidence": {
     "uniparser": [
      "qep [V,vt,alb,deriv,2,sg,pres,sbjv,act]"
+    ],
+    "corpus": [
+     "qepësh 29"
     ]
    }
   },
@@ -3823,7 +4471,8 @@
     "uniparser": "other",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -3835,6 +4484,9 @@
     "uniparser": [
      "qep [V,med,alb,deriv,2,pl,aor,ind,act]",
      "qep [V,vt,alb,deriv,2,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "qepët 343"
     ]
    }
   },
@@ -3848,11 +4500,13 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "agree"
+    "ud-staf": "agree",
+    "corpus": "agree"
    },
    "support": [
     "uniparser",
-    "ud-staf"
+    "ud-staf",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3860,6 +4514,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: qeshqesh"
+    ],
+    "corpus": [
+     "qeshi 1208",
+     "qeshqesh 0"
     ]
    }
   },
@@ -3873,7 +4531,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "agree",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary",
@@ -3884,9 +4543,12 @@
    ],
    "evidence": {
     "uniparser": [
-     "bie [V,vi,alb,ptcp,nonst]",
      "bie [V,vi,alb,3,sg,aor,ind,pass]",
+     "bie [V,vi,alb,ptcp,nonst]",
      "bie [V,vi,alb,2,sg,aor,ind,act]"
+    ],
+    "corpus": [
+     "ra 12383"
     ]
    }
   },
@@ -3894,16 +4556,18 @@
    "form": "restorante",
    "lemma": "restorant",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Masc",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3911,6 +4575,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: restorantë"
+    ],
+    "corpus": [
+     "restorante 1776",
+     "restorantë 1"
     ]
    }
   },
@@ -3918,16 +4586,18 @@
    "form": "restorantesh",
    "lemma": "restorant",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3935,6 +4605,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: restorantësh"
+    ],
+    "corpus": [
+     "restorantesh 115",
+     "restorantësh 0"
     ]
    }
   },
@@ -3942,16 +4616,18 @@
    "form": "restorantet",
    "lemma": "restorant",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Masc",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3959,6 +4635,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: restorantët"
+    ],
+    "corpus": [
+     "restorantet 2049",
+     "restorantët 2"
     ]
    }
   },
@@ -3966,16 +4646,18 @@
    "form": "restoranteve",
    "lemma": "restorant",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Masc",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -3983,6 +4665,11 @@
    "evidence": {
     "wiktionary": [
      "its table has here: restorantësh, restorantëve"
+    ],
+    "corpus": [
+     "restoranteve 1122",
+     "restorantësh 0",
+     "restorantëve 6"
     ]
    }
   },
@@ -3996,7 +4683,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4005,10 +4693,13 @@
    "evidence": {
     "uniparser": [
      "roman [A,f,pl]",
-     "roman [A,f,pl,nom,indef]",
+     "roman [A,f,sg]",
      "roman [A,f,sg,acc,indef]",
-     "roman [A,f,sg,nom,indef]",
-     "roman [A,f,pl,acc,indef]"
+     "roman [A,f,pl,acc,indef]",
+     "roman [A,f,sg,nom,indef]"
+    ],
+    "corpus": [
+     "romane 747"
     ]
    }
   },
@@ -4022,7 +4713,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4031,6 +4723,9 @@
    "evidence": {
     "uniparser": [
      "roman [A,f,pl,abl2,indef]"
+    ],
+    "corpus": [
+     "romanesh 34"
     ]
    }
   },
@@ -4044,7 +4739,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4052,8 +4748,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "roman [A,f,pl,nom,def]",
-     "roman [A,f,pl,acc,def]"
+     "roman [A,f,pl,acc,def]",
+     "roman [A,f,pl,nom,def]"
+    ],
+    "corpus": [
+     "romanet 572"
     ]
    }
   },
@@ -4067,7 +4766,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4075,10 +4775,13 @@
    ],
    "evidence": {
     "uniparser": [
+     "roman [A,f,pl,abl,indef]",
      "roman [A,f,pl,gen_dat,def]",
-     "roman [A,f,pl,gen_dat,indef]",
      "roman [A,f,pl,abl,def]",
-     "roman [A,f,pl,abl,indef]"
+     "roman [A,f,pl,gen_dat,indef]"
+    ],
+    "corpus": [
+     "romaneve 251"
     ]
    }
   },
@@ -4092,7 +4795,8 @@
     "uniparser": "silent",
     "wiktionary": "other",
     "ud-tsa": "other",
-    "ud-staf": "other"
+    "ud-staf": "other",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
@@ -4106,6 +4810,9 @@
     "ud-staf": [
      "së/PART",
      "s'/PART"
+    ],
+    "corpus": [
+     "s' 0"
     ]
    }
   },
@@ -4119,7 +4826,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "other",
-    "ud-staf": "other"
+    "ud-staf": "other",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4143,6 +4851,9 @@
     "ud-staf": [
      "saj/PRON Case=Abl Number=Sing Gender=Fem Person=3",
      "saj/PRON Case=Acc Number=Sing Gender=Masc Person=3"
+    ],
+    "corpus": [
+     "saj 275581"
     ]
    }
   },
@@ -4156,11 +4867,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "salata 0"
+    ]
+   }
   },
   {
    "form": "salata",
@@ -4172,11 +4888,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "salata 0"
+    ]
+   }
   },
   {
    "form": "salatash",
@@ -4188,11 +4909,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "salatash 0"
+    ]
+   }
   },
   {
    "form": "salatat",
@@ -4204,11 +4930,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "salatat 0"
+    ]
+   }
   },
   {
    "form": "salatave",
@@ -4220,11 +4951,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "salatave 0"
+    ]
+   }
   },
   {
    "form": "salate",
@@ -4236,11 +4972,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "salate 0"
+    ]
+   }
   },
   {
    "form": "salatën",
@@ -4252,11 +4993,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "salatën 0"
+    ]
+   }
   },
   {
    "form": "salatës",
@@ -4268,11 +5014,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "salatës 0"
+    ]
+   }
   },
   {
    "form": "shihu",
@@ -4284,7 +5035,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -4295,6 +5047,9 @@
    "evidence": {
     "uniparser": [
      "shoh [V,vt,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "shihu 2"
     ]
    }
   },
@@ -4308,7 +5063,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -4319,6 +5075,9 @@
    "evidence": {
     "uniparser": [
      "shoh [V,vt,alb,2,pl,imp,act]"
+    ],
+    "corpus": [
+     "shihuni 4"
     ]
    }
   },
@@ -4332,7 +5091,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -4343,6 +5103,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: shishe"
+    ],
+    "corpus": [
+     "shisheje 48",
+     "shishe 2479"
     ]
    }
   },
@@ -4356,7 +5120,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -4367,6 +5132,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: shitëssh"
+    ],
+    "corpus": [
+     "shitësish 7",
+     "shitëssh 0"
     ]
    }
   },
@@ -4374,16 +5143,18 @@
    "form": "shtretërish",
    "lemma": "shtrat",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -4391,6 +5162,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: shtretërsh"
+    ],
+    "corpus": [
+     "shtretërish 64",
+     "shtretërsh 0"
     ]
    }
   },
@@ -4404,7 +5179,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4413,6 +5189,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]"
+    ],
+    "corpus": [
+     "shëtis 79"
     ]
    }
   },
@@ -4426,7 +5205,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4435,6 +5215,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,1,pl,pres,ind,act]"
+    ],
+    "corpus": [
+     "shëtisim 55"
     ]
    }
   },
@@ -4448,7 +5231,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4457,6 +5241,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,3,pl,pres,ind,act]"
+    ],
+    "corpus": [
+     "shëtisin 305"
     ]
    }
   },
@@ -4470,7 +5257,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4479,6 +5267,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,1,sg,ipf,ind,act]"
+    ],
+    "corpus": [
+     "shëtisja 40"
     ]
    }
   },
@@ -4492,7 +5283,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4501,6 +5293,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,2,sg,ipf,ind,act]"
+    ],
+    "corpus": [
+     "shëtisje 9"
     ]
    }
   },
@@ -4514,7 +5309,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4523,6 +5319,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,2,pl,pres,ind,act]"
+    ],
+    "corpus": [
+     "shëtisni 66"
     ]
    }
   },
@@ -4536,7 +5335,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4545,6 +5345,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,2,pl,pres,ind,act]"
+    ],
+    "corpus": [
+     "shëtisni 66"
     ]
    }
   },
@@ -4558,7 +5361,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4567,6 +5371,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,1,pl,ipf,ind,act]"
+    ],
+    "corpus": [
+     "shëtisnim 52"
     ]
    }
   },
@@ -4580,7 +5387,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4589,6 +5397,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,3,pl,ipf,ind,act]"
+    ],
+    "corpus": [
+     "shëtisnin 156"
     ]
    }
   },
@@ -4602,7 +5413,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4611,6 +5423,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,2,pl,ipf,ind,act]"
+    ],
+    "corpus": [
+     "shëtisnit 0"
     ]
    }
   },
@@ -4624,7 +5439,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4633,6 +5449,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,3,sg,ipf,ind,act]"
+    ],
+    "corpus": [
+     "shëtiste 325"
     ]
    }
   },
@@ -4646,7 +5465,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4655,6 +5475,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,3,sg,pres,sbjv,act]"
+    ],
+    "corpus": [
+     "shëtisë 70"
     ]
    }
   },
@@ -4668,7 +5491,8 @@
     "uniparser": "other",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4677,6 +5501,9 @@
    "evidence": {
     "uniparser": [
      "shëtit [V,vt,vi,borr,slav,2,sg,pres,sbjv,act]"
+    ],
+    "corpus": [
+     "shëtisësh 31"
     ]
    }
   },
@@ -4690,7 +5517,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4698,11 +5526,11 @@
    ],
    "evidence": {
     "uniparser": [
+     "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
+     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
      "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
      "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]",
-     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,pass]",
-     "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]"
+     "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,pass]"
     ],
     "wiktionary": [
      "shëtit/VERB",
@@ -4710,6 +5538,9 @@
      "shëtit/VERB Number=Sing Person=2 Tense=Pres Mood=Ind",
      "shëtit/VERB Number=Sing Person=3 Tense=Pres Mood=Ind",
      "shëtit/VERB Number=Sing Person=1 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "shëtit 312"
     ]
    }
   },
@@ -4723,7 +5554,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4731,11 +5563,11 @@
    ],
    "evidence": {
     "uniparser": [
+     "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
+     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
      "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
      "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]",
-     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,pass]",
-     "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]"
+     "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,pass]"
     ],
     "wiktionary": [
      "shëtit/VERB",
@@ -4743,6 +5575,9 @@
      "shëtit/VERB Number=Sing Person=2 Tense=Pres Mood=Ind",
      "shëtit/VERB Number=Sing Person=3 Tense=Pres Mood=Ind",
      "shëtit/VERB Number=Sing Person=1 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "shëtit 312"
     ]
    }
   },
@@ -4756,7 +5591,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4769,6 +5605,9 @@
     "wiktionary": [
      "shëtit/VERB Tense=Past",
      "shëtit/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "shëtita 29"
     ]
    }
   },
@@ -4782,7 +5621,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4790,12 +5630,15 @@
    ],
    "evidence": {
     "uniparser": [
+     "shëtit [V,vt,vi,borr,slav,2,sg,aor,ind,act]",
      "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,pass,nonst]",
-     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]",
-     "shëtit [V,vt,vi,borr,slav,2,sg,aor,ind,act]"
+     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]"
     ],
     "wiktionary": [
      "shëtit/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "shëtite 5"
     ]
    }
   },
@@ -4809,7 +5652,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4822,6 +5666,9 @@
     ],
     "wiktionary": [
      "shëtit/VERB Number=Sing Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "shëtiti 72"
     ]
    }
   },
@@ -4835,7 +5682,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4843,14 +5691,17 @@
    ],
    "evidence": {
     "uniparser": [
-     "shëtitur [A,borr,slav,deriv,f,sg]",
+     "shëtitur [A,borr,slav,deriv,m,pl,acc,indef]",
      "shëtitur [A,borr,slav,deriv,m,sg,nom,indef]",
-     "shëtitur [A,borr,slav,deriv,m,sg,acc,indef]",
-     "shëtitur [A,borr,slav,deriv,m,pl]",
-     "shëtitur [A,borr,slav,deriv,f,sg,nom,indef]"
+     "shëtit [V,vt,vi,borr,slav,ptcp]",
+     "shëtitur [A,borr,slav,deriv,f,sg,acc,indef]",
+     "shëtitur [A,borr,slav,deriv,m,pl,nom,indef]"
     ],
     "wiktionary": [
      "shëtit/VERB VerbForm=Part"
+    ],
+    "corpus": [
+     "shëtitur 678"
     ]
    }
   },
@@ -4864,7 +5715,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4876,6 +5728,9 @@
     ],
     "wiktionary": [
      "shëtit/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "shëtitëm 33"
     ]
    }
   },
@@ -4889,7 +5744,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4901,6 +5757,9 @@
     ],
     "wiktionary": [
      "shëtit/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "shëtitën 50"
     ]
    }
   },
@@ -4914,7 +5773,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -4926,6 +5786,9 @@
     ],
     "wiktionary": [
      "shëtit/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "shëtitët 5"
     ]
    }
   },
@@ -4933,16 +5796,18 @@
    "form": "spitale",
    "lemma": "spital",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Masc",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -4950,6 +5815,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: spitala"
+    ],
+    "corpus": [
+     "spitale 4441",
+     "spitala 0"
     ]
    }
   },
@@ -4957,16 +5826,18 @@
    "form": "spitalesh",
    "lemma": "spital",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -4974,6 +5845,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: spitalash"
+    ],
+    "corpus": [
+     "spitalesh 77",
+     "spitalash 0"
     ]
    }
   },
@@ -4981,16 +5856,18 @@
    "form": "spitalet",
    "lemma": "spital",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Masc",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -4998,6 +5875,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: spitalat"
+    ],
+    "corpus": [
+     "spitalet 6601",
+     "spitalat 0"
     ]
    }
   },
@@ -5005,16 +5886,18 @@
    "form": "spitaleve",
    "lemma": "spital",
    "pos": "NOUN",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Masc",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -5022,6 +5905,11 @@
    "evidence": {
     "wiktionary": [
      "its table has here: spitalash, spitalave"
+    ],
+    "corpus": [
+     "spitaleve 2418",
+     "spitalash 0",
+     "spitalave 0"
     ]
    }
   },
@@ -5035,7 +5923,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -5046,6 +5935,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: tezje"
+    ],
+    "corpus": [
+     "tezeje 5",
+     "tezje 3"
     ]
    }
   },
@@ -5059,7 +5952,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "agree"
+    "ud-staf": "agree",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary",
@@ -5070,9 +5964,12 @@
    ],
    "evidence": {
     "uniparser": [
-     "them [V,vt,alb,nonst,3,sg,aor,ind,pass]",
      "them [V,vt,alb,nonst,ptcp]",
-     "them [V,vt,alb,nonst,3,sg,aor,ind,act]"
+     "them [V,vt,alb,nonst,3,sg,aor,ind,act]",
+     "them [V,vt,alb,nonst,3,sg,aor,ind,pass]"
+    ],
+    "corpus": [
+     "tha 322138"
     ]
    }
   },
@@ -5086,11 +5983,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "thyeu 1"
+    ]
+   }
   },
   {
    "form": "thyeva",
@@ -5102,11 +6004,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "thyeva 5"
+    ]
+   }
   },
   {
    "form": "thyeve",
@@ -5118,11 +6025,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "thyeve 1"
+    ]
+   }
   },
   {
    "form": "tyre",
@@ -5134,7 +6046,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "other"
+    "ud-staf": "other",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -5155,6 +6068,9 @@
     ],
     "ud-staf": [
      "tyre/PRON Case=Abl Number=Sing Gender=Masc Person=3"
+    ],
+    "corpus": [
+     "tyre 413249"
     ]
    }
   },
@@ -5168,7 +6084,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -5179,6 +6096,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: ungjijt"
+    ],
+    "corpus": [
+     "ungjijtë 30",
+     "ungjijt 0"
     ]
    }
   },
@@ -5186,16 +6107,18 @@
    "form": "vdesësh",
    "lemma": "vdes",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Sing Person=2 Tense=Pres Mood=Sub Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -5203,6 +6126,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: vdësh"
+    ],
+    "corpus": [
+     "vdesësh 345",
+     "vdësh 0"
     ]
    }
   },
@@ -5216,20 +6143,27 @@
     "uniparser": "differ",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
-   "support": [],
+   "support": [
+    "corpus"
+   ],
    "dissent": [
     "uniparser",
     "wiktionary"
    ],
    "evidence": {
     "uniparser": [
-     "vdes [V,vi,alb,2,sg,aor,ind,act]",
-     "vdes [V,vi,alb,3,sg,aor,ind,pass]"
+     "vdes [V,vi,alb,3,sg,aor,ind,pass]",
+     "vdes [V,vi,alb,2,sg,aor,ind,act]"
     ],
     "wiktionary": [
      "its table has here: vdiqi"
+    ],
+    "corpus": [
+     "vdiq 8176",
+     "vdiqi 0"
     ]
    }
   },
@@ -5243,11 +6177,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "vetëmlindur 3"
+    ]
+   }
   },
   {
    "form": "vish",
@@ -5259,7 +6198,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -5270,6 +6210,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: vesh"
+    ],
+    "corpus": [
+     "vish 852",
+     "vesh 14392"
     ]
    }
   },
@@ -5283,17 +6227,23 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "differ"
    },
    "support": [
     "uniparser"
    ],
    "dissent": [
-    "wiktionary"
+    "wiktionary",
+    "corpus"
    ],
    "evidence": {
     "wiktionary": [
      "its table has here: veshje"
+    ],
+    "corpus": [
+     "vishje 13",
+     "veshje 3463"
     ]
    }
   },
@@ -5301,16 +6251,18 @@
    "form": "vishni",
    "lemma": "vesh",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=2 Mood=Imp Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -5318,6 +6270,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: veshni"
+    ],
+    "corpus": [
+     "vishni 486",
+     "veshni 15"
     ]
    }
   },
@@ -5331,7 +6287,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -5342,6 +6299,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: veshnim"
+    ],
+    "corpus": [
+     "vishnim 20",
+     "veshnim 1"
     ]
    }
   },
@@ -5349,16 +6310,18 @@
    "form": "vishnin",
    "lemma": "vesh",
    "pos": "VERB",
-   "status": "disputed",
+   "status": "majority",
    "ours": "Number=Plur Person=3 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
    "said": {
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "agree"
    },
    "support": [
-    "uniparser"
+    "uniparser",
+    "corpus"
    ],
    "dissent": [
     "wiktionary"
@@ -5366,6 +6329,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: veshnin"
+    ],
+    "corpus": [
+     "vishnin 155",
+     "veshnin 10"
     ]
    }
   },
@@ -5379,7 +6346,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -5390,6 +6358,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: veshnit"
+    ],
+    "corpus": [
+     "vishnit 20",
+     "veshnit 0"
     ]
    }
   },
@@ -5403,7 +6375,8 @@
     "uniparser": "agree",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "uniparser"
@@ -5414,6 +6387,10 @@
    "evidence": {
     "wiktionary": [
      "its table has here: vritni"
+    ],
+    "corpus": [
+     "vrisni 327",
+     "vritni 52"
     ]
    }
   },
@@ -5427,7 +6404,8 @@
     "uniparser": "differ",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -5436,6 +6414,9 @@
    "evidence": {
     "uniparser": [
      "vras [V,vt,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "vritu 7"
     ]
    }
   },
@@ -5449,7 +6430,8 @@
     "uniparser": "differ",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -5458,6 +6440,9 @@
    "evidence": {
     "uniparser": [
      "vras [V,vt,alb,2,pl,imp,act]"
+    ],
+    "corpus": [
+     "vrituni 1"
     ]
    }
   },
@@ -5471,11 +6456,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "vuajtëm 99"
+    ]
+   }
   },
   {
    "form": "vuajtën",
@@ -5487,11 +6477,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "vuajtën 372"
+    ]
+   }
   },
   {
    "form": "vuajtët",
@@ -5503,11 +6498,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "vuajtët 5"
+    ]
+   }
   },
   {
    "form": "vëllanë",
@@ -5519,7 +6519,8 @@
     "uniparser": "differ",
     "wiktionary": "agree",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [
     "wiktionary"
@@ -5530,6 +6531,9 @@
    "evidence": {
     "uniparser": [
      "vëlla [NOUN,m,anim,alb,sg,acc,def,nonst]"
+    ],
+    "corpus": [
+     "vëllanë 1586"
     ]
    }
   },
@@ -5543,7 +6547,8 @@
     "uniparser": "differ",
     "wiktionary": "differ",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -5556,6 +6561,10 @@
     ],
     "wiktionary": [
      "its table has here: zhduku"
+    ],
+    "corpus": [
+     "zhduki 29",
+     "zhduku 218"
     ]
    }
   },
@@ -5569,7 +6578,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -5585,6 +6595,9 @@
      "çorap/NOUN Case=Nom Number=Plur Definite=Ind",
      "çorap/NOUN Case=Acc Number=Plur Definite=Ind",
      "çorap/NOUN Case=Acc,Nom Number=Plur Definite=Ind"
+    ],
+    "corpus": [
+     "çorape 497"
     ]
    }
   },
@@ -5598,7 +6611,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -5614,6 +6628,9 @@
      "çorap/NOUN Case=Nom Number=Plur Definite=Ind",
      "çorap/NOUN Case=Acc Number=Plur Definite=Ind",
      "çorap/NOUN Case=Acc,Nom Number=Plur Definite=Ind"
+    ],
+    "corpus": [
+     "çorape 497"
     ]
    }
   },
@@ -5627,11 +6644,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "çorapeje 0"
+    ]
+   }
   },
   {
    "form": "çorapen",
@@ -5643,11 +6665,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "çorapen 30"
+    ]
+   }
   },
   {
    "form": "çorapes",
@@ -5659,11 +6686,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "çorapes 9"
+    ]
+   }
   },
   {
    "form": "çorapesh",
@@ -5675,7 +6707,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -5687,6 +6720,9 @@
     ],
     "wiktionary": [
      "çorap/NOUN Case=Abl Number=Plur Definite=Ind"
+    ],
+    "corpus": [
+     "çorapesh 15"
     ]
    }
   },
@@ -5700,7 +6736,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -5708,13 +6745,16 @@
    ],
    "evidence": {
     "uniparser": [
-     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,def]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,def]"
+     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,def]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,def]"
     ],
     "wiktionary": [
      "çorap/NOUN Case=Nom Number=Plur Definite=Def",
      "çorap/NOUN Case=Acc Number=Plur Definite=Def",
      "çorap/NOUN Case=Acc,Nom Number=Plur Definite=Def"
+    ],
+    "corpus": [
+     "çorapet 269"
     ]
    }
   },
@@ -5728,7 +6768,8 @@
     "uniparser": "other",
     "wiktionary": "other",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [
@@ -5736,15 +6777,18 @@
    ],
    "evidence": {
     "uniparser": [
-     "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,def]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,abl,indef]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,abl,def]",
      "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,indef]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,abl,def]"
+     "çorap [NOUN,mf,inanim,borr,turk,pl,abl,indef]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,def]"
     ],
     "wiktionary": [
      "çorap/NOUN Case=Gen,Dat Number=Plur Definite=Ind",
      "çorap/NOUN Case=Gen,Dat Number=Plur Definite=Def",
      "çorap/NOUN Case=Abl Number=Plur Definite=Def"
+    ],
+    "corpus": [
+     "çorapeve 67"
     ]
    }
   },
@@ -5758,11 +6802,16 @@
     "uniparser": "silent",
     "wiktionary": "silent",
     "ud-tsa": "silent",
-    "ud-staf": "silent"
+    "ud-staf": "silent",
+    "corpus": "silent"
    },
    "support": [],
    "dissent": [],
-   "evidence": {}
+   "evidence": {
+    "corpus": [
+     "çorapja 16"
+    ]
+   }
   }
  ]
 }

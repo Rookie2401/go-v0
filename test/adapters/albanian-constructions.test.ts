@@ -309,8 +309,10 @@ describe('Albanian constructions: the confidence is never more than the readings
     // libri: the definite nominative, or "of a book"
     const r = run('Libri është mbi tavolinë.');
     expect(r.find('definite-noun-ending')?.confidence).toBeLessThanOrEqual(0.55);
-    // kisha: the verb, taken over the noun kishë because a participle follows
-    expect(run('Kisha punuar sot.').find('pluperfect')?.confidence).toBeLessThanOrEqual(0.55);
+    // kisha: the sentence layer reads it as the auxiliary because a participle follows (sentence-perfect.ts), so the
+    // pattern is as certain as that reading and no longer capped as an undecided rival
+    expect(run('Kisha punuar sot.').find('pluperfect')?.confidence).toBeLessThanOrEqual(0.85);
+    expect(run('Kisha punuar sot.').find('pluperfect')?.confidence).toBeGreaterThan(0.55);
     // and then the noun reading is not also counted as a definite ending
     expect(run('Kisha punuar sot.').keys()).not.toContain('definite-noun-ending');
   });

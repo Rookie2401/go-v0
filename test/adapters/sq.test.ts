@@ -23,20 +23,23 @@ describe('Albanian adapter', () => {
   it('resolves the clitics e / i / më / të from the next word, honestly', () => {
     const verb = run('sq', 'Perëndia e fali mëkatin tim.');
     expect(best(verb, 'e').pos).toBe('PRON');
-    expect(best(verb, 'e').notes).toMatchObject({ clitic: 'yes' });
-    expect(best(verb, 'e').morph).toMatchObject({ Person: '3', Case: 'Acc' });
+    expect(best(verb, 'e').morph).toMatchObject({ Person: '3', Case: 'Acc', Clitic: 'Yes' });
+    // the linking article and its adjective are one unit: both pieces carry the unit's lemma, "i ri"
     const art = run('sq', 'Ai është i ri.');
-    expect(best(art, 'i').pos).toBe('DET');
+    expect(best(art, 'i')).toMatchObject({ lemma: 'i ri', pos: 'ADJ' });
+    expect(best(art, 'i').unit).toBeDefined();
+    expect(best(art, 'ri')).toMatchObject({ lemma: 'i ri', pos: 'ADJ' });
     const dat = run('sq', 'Ai më do.');
     expect(best(dat, 'më').pos).toBe('PRON');
-    const link = run('sq', 'Shihni e vërteta.'); // "e" before a noun → linking article; low confidence
-    expect(best(link, 'e').pos).toBe('DET');
+    const link = run('sq', 'Shihni e vërteta.'); // "e" before an articulated adjective → its linking article
+    expect(best(link, 'e')).toMatchObject({ lemma: 'i vërtetë', pos: 'ADJ' });
     // the subjunctive particle
     expect(best(run('sq', 'fillova të kuptoj'), 'të').pos).toBe('PART');
-    // with no context the clitic stays ambiguous and low-confidence
+    // with no context the little word keeps every reading, and none is presented as certain
     const alone = run('sq', 'e');
     expect(alone.analyses[0].candidates.length).toBeGreaterThan(1);
-    expect(alone.analyses[0].candidates.every((c) => c.confidence <= 0.4)).toBe(true);
+    expect(new Set(alone.analyses[0].candidates.map((c) => c.pos))).toEqual(new Set(['PRON', 'DET', 'CONJ']));
+    expect(alone.analyses[0].candidates.every((c) => c.confidence <= 0.6)).toBe(true);
   });
 
   it('detects clitic doubling and the subjunctive të', () => {
@@ -55,8 +58,33 @@ describe('Albanian adapter', () => {
     expect(sq.segmentSentences('Ai erdhi. Pse? Sepse dua.').map((s) => s.text)).toEqual(['Ai erdhi.', 'Pse?', 'Sepse dua.']);
   });
 
-  it('unknown words stay empty', () => {
-    expect(run('sq', 'kompjuter').analyses[0].candidates).toEqual([]);
+  it('an unknown word is empty or a marked guess — never a confident reading', () => {
+    expect(run('sq', 'xhuxhmaxhuxh').analyses[0].candidates).toEqual([]);
+    for (const w of ['shqyrtoni', 'blorgu', 'flimpon']) {
+      for (const c of run('sq', w).analyses[0].candidates) {
+        expect(c.unconfirmed, w).toBe(true);
+        expect(c.gloss, w).toBeUndefined();
+        expect(c.confidence, w).toBeLessThanOrEqual(0.5);
+      }
+    }
+  });
+
+  it('names its sources, its varieties and its limits', () => {
+    expect(sq.version).toBe('2');
+    expect(Object.values(sq.sources ?? {}).every((s) => s.reviewStatus === 'machine-drafted')).toBe(true);
+    expect(Object.keys(sq.varieties ?? {})).toEqual(expect.arrayContaining(['sq', 'aln', 'sq-ascii']));
+    expect(sq.support.lemmatization).toBe('seed-only');
+    expect(sq.support.limitations.join(' ')).toMatch(/no native speaker/);
+    expect(sq.lemmaVariants?.('i mirë')).toEqual(['mirë']);
+    expect(sq.lemmaVariants?.('libër')).toEqual([]);
+  });
+
+  it('refine leaves a token that is not its own exactly as it came', () => {
+    const r = run('sq', 'Ai e pa librin.');
+    const foreign = r.analyses.map((a, i) => (i === 0 ? { ...a, analyzer: 'author@1', candidates: [{ lemma: 'x', morph: {}, confidence: 1 }] } : a));
+    const out = sq.refine!(r.tokens, foreign, new Set([r.analyses[1].analyzer]));
+    expect(out[0]).toBe(foreign[0]);
+    expect(out.find((a) => a.token.normalized === 'librin')?.candidates[0].lemma).toBe('libër');
   });
 
   describe('checkProduction', () => {

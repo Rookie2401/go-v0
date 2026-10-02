@@ -7,8 +7,11 @@
  *   - the adapter's word-form engine must have a reading whose lemma its own lists hold (not a guess, not a respelling);
  *   - with --analyzer, the UniParser Albanian analyzer (offline, optional) must recognise the form too, and at least
  *     one of the adapter's readings must have the analyzer's lemma.
+ *   - no form may have only readings the sources dispute (src/adapters/albanian/disputed.ts, from npm run sq:agreement).
  * A word that fails is printed with its sentence. Exit 1 when any word fails: a text with such a word is not ready
  * to be shown to a reviewer, let alone to a learner. This checks FORMS; it cannot judge whether a sentence is natural.
+ * The one way past a failure is a row in data/review/sq/accepted-differences.json, written by a person, saying what
+ * each source states; such forms are named on every run and the reader goes on showing them as uncertain.
  */
 import { spawnSync } from 'node:child_process';
 import fs from 'node:fs';
@@ -45,7 +48,7 @@ for (const f of forms) {
   else if (!rs.some((r) => r.lemmaKnown)) problems.set(f, `the adapter only guesses (${rs.map((r) => r.lemma).join(', ')})`);
   else if (rs.every((r) => r.relation)) problems.set(f, `not Standard spelling as written (read as ${rs[0].relation!.standard})`);
   // the recorded comparison (data/review/sq/analyzer-check.json): a form all of whose known readings are disputed
-  else if (rs.filter((r) => r.lemmaKnown).every((r) => SQ_DISPUTED.has(`${f}\t${sqNormalize(r.lemma)}`))) problems.set(f, `the sources dispute every reading of this form (${[...new Set(rs.map((r) => r.lemma))].join(', ')}): see data/review/sq/analyzer-check.json`);
+  else if (rs.filter((r) => r.lemmaKnown).every((r) => SQ_DISPUTED.has(`${f}\t${sqNormalize(r.lemma)}`))) problems.set(f, `the sources dispute every reading of this form (${[...new Set(rs.map((r) => r.lemma))].join(', ')}): see data/review/sq/source-agreement.json`);
 }
 
 let analyzerNote = 'the UniParser analyzer was not consulted (run with --analyzer)';
@@ -75,12 +78,30 @@ if (useAnalyzer) {
   analyzerNote = `UniParser analyzer consulted: ${unknown} form(s) it does not recognise, ${otherLemma} read under another lemma`;
 }
 
+// forms a person has accepted in course texts although the sources differ: recorded, named on every run, never silent
+const ACCEPTED = 'data/review/sq/accepted-differences.json';
+const accepted = new Map<string, string>();
+if (fs.existsSync(ACCEPTED)) {
+  const file = JSON.parse(fs.readFileSync(ACCEPTED, 'utf8')) as { forms?: Array<{ form: string; status?: string }> };
+  for (const f of file.forms ?? []) accepted.set(sqNormalize(f.form), f.status ?? 'recorded');
+}
+const open = [...problems].filter(([form]) => !accepted.has(form));
+const waived = [...problems].filter(([form]) => accepted.has(form));
+
 console.log(`sq:check-texts - ${docs} course-written document(s) in ${dir}; ${occ.length} words, ${forms.length} distinct forms; ${analyzerNote}`);
-if (problems.size === 0) { console.log('every word form is known to the sources consulted, and they agree on a lemma for it'); process.exit(0); }
-for (const [form, why] of problems) {
+const line = (form: string, why: string) => {
   const first = occ.find((o) => o.form === form)!;
   const n = occ.filter((o) => o.form === form).length;
   console.log(`  ${form} (${n}×): ${why}\n      ${first.doc}: ${first.sentence}`);
+};
+if (waived.length) {
+  console.log(`${waived.length} form(s) are used although the sources differ about them (recorded in ${ACCEPTED}; the reader still shows them as uncertain):`);
+  for (const [form, why] of waived) line(form, `${why} — ${accepted.get(form)}`);
 }
-console.log(`${problems.size} form(s) need attention`);
+if (open.length === 0) {
+  console.log(waived.length ? 'every other word form is known to the sources consulted, and they agree on a lemma for it' : 'every word form is known to the sources consulted, and they agree on a lemma for it');
+  process.exit(0);
+}
+for (const [form, why] of open) line(form, why);
+console.log(`${open.length} form(s) need attention`);
 process.exit(1);

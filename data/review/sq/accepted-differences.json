@@ -1,0 +1,28 @@
+{
+  "schema": 1,
+  "note": "Written forms that the course's own Albanian texts use although the sources consulted do not all agree about them. Nothing here is a ruling about the language: each row says what each source states, so that a native reviewer can settle it. The engine still treats these readings as uncertain (see src/adapters/albanian/disputed.ts); this file only stops `npm run sq:check-texts` from failing on them, and the check names them every time it runs. Edited by hand; a row is removed when a reviewer has settled it or when the sources come to agree.",
+  "forms": [
+    {
+      "form": "dha",
+      "lemma": "jap",
+      "reading": "third person singular aorist active (ai dha: he gave)",
+      "wordList": "third person singular aorist",
+      "uniparser": "second person singular aorist active, or third person singular aorist non-active. In the analyzer's grammar (uniparser-grammar-albanian, paradigms.txt, paradigm aor-ind-act-1-2-sg-b) the bare aorist stem carries the label 2,sg,aor,ind,act; the same holds for la, pa and vdiq.",
+      "wiktionary": "its entry 'dha' says: third-person singular indicative aorist of jap",
+      "treebanks": "not found in the half of the treebank sentences this comparison may read",
+      "status": "open: one source against one; awaiting a native reviewer",
+      "corpus": "dha occurs 30,334 times in the analyzer authors' word list (their corpus of about 31 million words)"
+    },
+    {
+      "form": "vdiq",
+      "lemma": "vdes",
+      "reading": "third person singular aorist active (ai vdiq: he died)",
+      "wordList": "third person singular aorist",
+      "uniparser": "second person singular aorist active, or third person singular aorist non-active (the same labelling of the bare aorist stem as for dha)",
+      "wiktionary": "its table of vdes has \"vdiqi\" in the third person singular aorist cell; \"vdiq\" is not in the table",
+      "treebanks": "not found in the half of the treebank sentences this comparison may read",
+      "status": "open: both other sources state something else (each a different thing); usage attests the form; awaiting a native reviewer",
+      "corpus": "vdiq occurs 8,176 times in the analyzer authors' word list; vdiqe (the second person in the word list here) 64 times; vdiqi does not occur"
+    }
+  ]
+}

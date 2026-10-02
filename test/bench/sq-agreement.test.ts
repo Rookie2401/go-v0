@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import type { SqReading } from '../../src/adapters/albanian/types';
-import { adjudicate, fromUniparser, verdictFrom, wiktVerdict, type Verdicts } from '../../src/bench/sq/agreement';
+import { adjudicate, corpusVerdict, fromUniparser, verdictFrom, wiktVerdict, type Verdicts } from '../../src/bench/sq/agreement';
 import { sameCitation } from '../../src/bench/sq/aliases';
 import { toUniparserAnalyses, uniparserVerdict } from '../../src/bench/sq/uniparser';
 import { buildWiktIndex, hasConsistentTable, kaikkiEntryReadings, kaikkiTagsToMorph, type KaikkiEntry } from '../../src/bench/sq/wiktionary';
@@ -162,7 +162,19 @@ describe('the analyzer\'s verdict and its naming conventions', () => {
 });
 
 describe('the outcome', () => {
-  const v = (uniparser: string, wiktionary: string, tsa = 'silent', staf = 'silent') => ({ uniparser, wiktionary, 'ud-tsa': tsa, 'ud-staf': staf }) as Verdicts;
+  const v = (uniparser: string, wiktionary: string, tsa = 'silent', staf = 'silent', corpus = 'silent') => ({ uniparser, wiktionary, 'ud-tsa': tsa, 'ud-staf': staf, corpus }) as Verdicts;
+  it('usage is a witness only between two forms for one cell, and only when it is lopsided', () => {
+    expect(corpusVerdict(1543, 9, 9)).toBe('agree'); // hidhni against the table's hedhni
+    expect(corpusVerdict(7, 113, 113)).toBe('differ'); // gjellat against the table's gjellët
+    expect(corpusVerdict(112, 4077, 0)).toBe('silent'); // luga against lugë: lugë is also the singular, so its count proves nothing
+    expect(corpusVerdict(31, 22667, 0)).toBe('silent'); // the table form is one the list generates itself
+    expect(corpusVerdict(74, 71, 71)).toBe('silent'); // lugët and lugat: both in use
+    expect(corpusVerdict(900, 300, 300)).toBe('silent'); // the table's form is in use too
+    expect(corpusVerdict(30, 0, 0)).toBe('silent'); // too rare to say anything
+    expect(corpusVerdict(0, 0, 0)).toBe('silent');
+    expect(adjudicate('VERB', v('agree', 'differ', 'silent', 'silent', 'agree')).status).toBe('majority');
+    expect(adjudicate('NOUN', v('agree', 'differ', 'silent', 'silent', 'differ'))).toEqual({ status: 'disputed', support: ['uniparser'], dissent: ['wiktionary', 'corpus'] });
+  });
   it('unanimous: someone agrees and nobody says otherwise', () => {
     expect(adjudicate('NOUN', v('agree', 'silent')).status).toBe('unanimous');
     expect(adjudicate('NOUN', v('silent', 'agree')).status).toBe('unanimous');

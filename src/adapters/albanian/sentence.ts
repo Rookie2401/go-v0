@@ -4,8 +4,8 @@
  * Albanian leaves four things to the sentence (see types.ts): which of e / i / të / së is the linking article, an
  * object pronoun, the subjunctive particle or "and"; which article + adjective pairs are one lexical unit ("i mirë");
  * which case an ending that serves several cases has here (after a preposition, after a linking article); and whether a
- * word is a verb. The rules live in sentence-little.ts (the little words), sentence-clause.ts (names, case, verbs,
- * person) and sentence-look.ts (what the neighbours are); sentence-core.ts holds the one way a decision is made.
+ * word is a verb. The rules live in sentence-little.ts (the little words), sentence-perfect.ts (kam / jam + participle),
+ * sentence-clause.ts (names, case, verbs, person) and sentence-look.ts (what the neighbours are); sentence-core.ts holds the one way a decision is made.
  *
  * What it is: an ordering of the readings the word-form engine already has. A reading the sentence chose goes first,
  * keeps its confidence, gets `notes.context` (what decided) and has its comma unions cut down to what the sentence allows
@@ -20,6 +20,7 @@ import type { AnalysisCandidate, RawToken } from '../../core';
 import type { Ctx } from './sentence-core';
 import { names, prepositions, verbs } from './sentence-clause';
 import { formUnits, littleWords } from './sentence-little';
+import { perfect } from './sentence-perfect';
 
 /**
  * `base[i]` = the context-free candidates of token i, best first (empty for a token that is not a word). Returns, for
@@ -31,6 +32,7 @@ export function orderSqSentence(tokens: RawToken[], base: AnalysisCandidate[][])
   names(cx);
   formUnits(cx);
   littleWords(cx);
+  perfect(cx);
   prepositions(cx);
   verbs(cx);
   return base.map((original, i) => cx.cur[i] ?? original);

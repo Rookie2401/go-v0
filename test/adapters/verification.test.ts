@@ -221,12 +221,21 @@ describe('Albanian: ë and ç are preserved in forms; inflected forms are relate
     expect(sq.searchNormalize('zemër')).toBe(sq.searchNormalize('zemer'));
   });
 
-  it('token surfaces and forms keep the diacritics; the undiacritized spelling is unanalysed, not guessed', () => {
+  it('token surfaces and forms keep the diacritics; the undiacritized spelling is not the word itself: it is related to it, and says so', () => {
     const r = run('sq', 'Çfarë? Zemrën time, mëkatin.');
     expect(r.tokens.filter((t) => t.isWord).map((t) => t.normalized)).toEqual(['çfarë', 'zemrën', 'time', 'mëkatin']);
     expect(best(r, 'Zemrën').lemma).toBe('zemër');
-    expect(run('sq', 'zemren').analyses[0].candidates).toEqual([]);
-    expect(run('sq', 'mekatin').analyses[0].candidates).toEqual([]);
+    // typed without ë: the token keeps its form; the reading names the properly spelled word and is less certain
+    for (const [typed, standard, lemma] of [['zemren', 'zemrën', 'zemër'], ['mekatin', 'mëkatin', 'mëkat']] as const) {
+      const a = run('sq', typed).analyses[0];
+      expect(a.token.normalized).toBe(typed);
+      expect(a.candidates.length).toBeGreaterThan(0);
+      for (const c of a.candidates) {
+        expect(c.lemma).toBe(lemma);
+        expect(c.orthography).toMatchObject({ modern: standard, period: 'sq-ascii' });
+        expect(c.confidence).toBeLessThanOrEqual(0.7);
+      }
+    }
   });
 
   it('relate(): definite/indefinite and case forms of one noun are inflections; ë is not dropped', () => {

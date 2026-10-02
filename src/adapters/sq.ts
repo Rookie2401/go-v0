@@ -1,171 +1,83 @@
 /**
- * Albanian adapter. NFC + lower-case identity; ë/ç are kept (they distinguish words).
- * Confident: lexicon nouns with definiteness (Definite=Def/Ind) and case, verbs listed under their 1sg-present
- * lemma, possessives. Uncertain: the very ambiguous function words e / i / të / më are resolved only from the
- * next word (verb ⇒ clitic/particle, adjective ⇒ linking article); when context is thin they stay ambiguous
- * with low confidence. Unknown words: no candidates.
+ * Albanian adapter (course target: Standard Albanian, `sq`). NFC + lower-case identity; ë and ç are kept (they
+ * distinguish words), digraphs (dh, gj, ll, nj, rr, sh, th, xh, zh) are single letters of the alphabet.
+ *
+ * Layers, in the order a token meets them (docs/PLAN13.md, docs/albanian/):
+ *   the closed classes and the word list (albanian/function-*.ts, lexicon-*.ts: nouns with gender, definite form and
+ *   plural; verbs with their principal parts; adjectives with or without a linking article) → the word-form engine
+ *   (albanian/morphology.ts: every context-free reading of a written form, fused short pronouns taken apart, a word
+ *   typed without ë / ç, a Gheg or older form related to its Standard equivalent, and only then a guess by ending) →
+ *   the agreement of sources (albanian/disputed.ts, generated: a reading the UniParser analyzer, Wiktionary and the
+ *   treebanks do not agree on is kept at low confidence) → the sentence layer (albanian/sentence.ts: the linking
+ *   article and its adjective as one unit, e / i / të / u / do / po / pa / më by their neighbours, case after a
+ *   preposition, kam / jam + participle) → phrase units and constructions (albanian/phrases.ts, constructions.ts) and
+ *   checks on the learner's own Albanian (albanian/production.ts).
+ * Confident: closed-class words, words of the list and their generated forms where the sources agree. Uncertain, and
+ * said so: every competing reading the sentence does not decide (kept, none presented as certain), a reading the
+ * sources dispute, a word outside the list (`unconfirmed`, no gloss), a form that is not Standard spelling as written.
+ * There is no parser. All of the data is machine-drafted; no native speaker has checked it.
  */
-import type { AnalysisCandidate, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport, RawToken, AdapterSupport } from '../core';
-import {
-  E, Lexicon, hasPos, lexiconAnalyze, makeWordTokenizer, matchPhraseRules, nfc, speechNormalizeGeneric,
-  splitSentences, type PhraseRule,
-} from './shared';
+import type {
+  AdapterSupport, AnalysisSourceInfo, AnalyzedToken, LanguageAdapter, PronunciationSupport, RawToken,
+} from '../core';
+import { makeWordTokenizer, matchPhraseRules, speechNormalizeGeneric } from './shared';
+import { SQ_ANALYZER, SQ_SOURCE_IDS, SQ_VERSION, sqAnalyze, sqCandidates } from './albanian/analyze';
+import { detectSqConstructions } from './albanian/constructions';
+import { describeSqMorph } from './albanian/describe';
+import { SQ_LEXEMES, analyzeSqForm } from './albanian/morphology';
+import { SQ_LETTERS, sqLetters, sqNormalize, sqSearchNormalize } from './albanian/orthography';
+import { SQ_PHRASE_RULES } from './albanian/phrases';
+import { checkSqProduction } from './albanian/production';
+import { orderSqSentence } from './albanian/sentence';
+import { segmentSqSentences } from './albanian/sentences';
+import { sqMorphFromTags } from './albanian/tags';
+import { SQ_VARIETIES, sqVarietiesFromTags } from './albanian/varieties';
 
 const LANG = 'sq' as const;
-const VERSION = '1';
-const ANALYZER = `adapter-${LANG}@${VERSION}`;
+const VERSION = SQ_VERSION;
+const ANALYZER = SQ_ANALYZER;
 
-const normalize = (s: string) => nfc(s).toLocaleLowerCase('sq');
+export { SQ_SOURCE_IDS };
 
-const ENTRIES = [
-  // verbs — lemma = 1sg present
-  E('jam', 'AUX', 'to be', ['jam:1s pres', 'je:2s pres', 'është:3s pres', 'isha:1s impf', 'ishte:3s impf', 'qoftë:3s subj']),
-  E('kam', 'VERB', 'to have', ['kam:1s pres', 'ka:3s pres', 'kemi:1p pres', 'kisha:1s impf', 'ketë:3s subj']),
-  E('kuptoj', 'VERB', 'to understand', ['kuptoj:1s pres', 'kuptoj:1s subj', 'kupton:2s pres', 'kupton:3s pres', 'kuptoja:1s impf']),
-  E('besoj', 'VERB', 'to believe', ['besoj:1s pres', 'besoj:1s subj', 'beson:2s pres', 'beson:3s pres', 'besoja:1s impf']),
-  E('filloj', 'VERB', 'to begin', ['filloj:1s pres', 'fillova:1s pret']),
-  E('fal', 'VERB', 'to forgive', ['fal:1s pres', 'fal:3s pres', 'fali:3s pret', 'falë:3s subj']),
-  E('dua', 'VERB', 'to love, to want', ['dua:1s pres', 'do:3s pres', 'deshi:3s pret']),
-  E('them', 'VERB', 'to say', ['themi:1p pres']),
-  E('mashtroj', 'VERB', 'to deceive', ['mashtrojmë:1p pres']),
-  E('rrëfej', 'VERB', 'to confess', ['rrëfejmë:1p pres']),
-  E('pastroj', 'VERB', 'to cleanse', ['pastrojë:3s subj']),
-  E('humbas', 'VERB', 'to lose, perish', ['humbasë:3s subj']),
-  E('jap', 'VERB', 'to give', ['dha:3s pret']),
-  // nouns (Definite=Ind/Def = the "article" ending)
-  E('mëkat', 'NOUN', 'sin', ['mëkat:m sg indef nom acc', 'mëkati:m sg def nom', 'mëkatin:m sg def acc', 'mëkatet:m pl def nom acc', 'mëkate:m pl indef nom acc']),
-  E('zemër', 'NOUN', 'heart', ['zemër:f sg indef nom acc', 'zemra:f sg def nom', 'zemrën:f sg def acc']),
-  E('Perëndi', 'PROPN', 'God', ['Perëndi:f sg indef nom acc', 'Perëndia:f sg def nom', 'Perëndinë:f sg def acc']),
-  E('botë', 'NOUN', 'world', ['botë:f sg indef nom acc', 'bota:f sg def nom', 'botën:f sg def acc']),
-  E('ditë', 'NOUN', 'day', ['ditë:f sg indef nom acc', 'dita:f sg def nom', 'ditën:f sg def acc']),
-  E('paqe', 'NOUN', 'peace', ['paqe:f sg indef nom acc', 'paqja:f sg def nom', 'paqen:f sg def acc']),
-  E('jetë', 'NOUN', 'life', ['jetë:f sg indef nom acc', 'jeta:f sg def nom', 'jetën:f sg def acc']),
-  E('libër', 'NOUN', 'book', ['libër:m sg indef nom acc', 'libri:m sg def nom', 'librin:m sg def acc', 'libra:m pl indef nom acc', 'librat:m pl def nom acc']),
-  E('gjë', 'NOUN', 'thing', ['gjë:f sg indef nom acc']),
-  E('vërtetë', 'NOUN', 'truth', ['vërtetë:f sg indef nom acc', 'vërteta:f sg def nom']),
-  E('padrejtësi', 'NOUN', 'unrighteousness', ['padrejtësi:f sg indef nom acc']),
-  E('bir', 'NOUN', 'son', ['bir:m sg indef nom acc', 'biri:m sg def nom', 'birin:m sg def acc']),
-  E('Ana', 'PROPN', 'Ana (name)'), E('Pavli', 'PROPN', 'Pavli (name, Paul)'),
-  // adjectives
-  E('ri', 'ADJ', 'young, new', ['ri:m sg']),
-  E('besnik', 'ADJ', 'faithful'),
-  E('drejtë', 'ADJ', 'righteous, straight'),
-  E('vetëmlindur', 'ADJ', 'only-begotten'),
-  E('përjetshëm', 'ADJ', 'eternal', ['përjetshme:f sg']),
-  // pronouns, clitics, determiners
-  E('unë', 'PRON', 'I', ['unë:1s nom prs']),
-  E('ai', 'PRON', 'he', ['ai:3s m nom prs']),
-  E('ne', 'PRON', 'we', ['ne:1p nom prs']),
-  E('e', 'PRON', 'him/her/it (clitic, object)', ['e:3s acc prs'], { notes: { clitic: 'yes' } }),
-  E('e', 'DET', 'the (linking article before noun/adjective)', ['e:art']),
-  E('e', 'CONJ', 'and', ['e']),
-  E('i', 'PRON', 'them / to him (clitic)', ['i:3p acc prs', 'i:3s dat prs'], { notes: { clitic: 'yes' } }),
-  E('i', 'DET', '(adjective article, masc.)', ['i:m sg art']),
-  E('më', 'PRON', 'me (clitic)', ['më:1s acc dat prs'], { notes: { clitic: 'yes' } }),
-  E('më', 'ADV', 'more', ['më']),
-  E('na', 'PRON', 'us (clitic)', ['na:1p acc dat prs'], { notes: { clitic: 'yes' } }),
-  E('ma', 'PRON', 'më + e (me it)', ['ma:1s prs'], { notes: { clitic: 'yes', components: ['më', 'e'] } }),
-  E('ta', 'PRON', 'të + e (you it)', ['ta:2s prs'], { notes: { clitic: 'yes', components: ['të', 'e'] } }),
-  E('të', 'PART', '(subjunctive / infinitive particle)', ['të']),
-  E('të', 'DET', '(adjective article before noun/adjective)', ['të:pl art']),
-  E('im', 'DET', 'my', ['im:m sg poss', 'tim:m sg poss', 'ime:f sg poss', 'time:f sg poss']),
-  E('ynë', 'DET', 'our', ['ynë:m sg poss', 'tonë:f sg poss', 'tona:pl poss']),
-  E('tij', 'PRON', 'his', ['tij:3s m poss']),
-  E('vetja', 'PRON', 'oneself', ['vetja:f sg def nom', 'veten:f sg def acc']),
-  E('gjithë', 'PRON', 'all', ['gjithë:pl']),
-  E('kushdo', 'PRON', 'whoever'),
-  E('çdo', 'DET', 'every'),
-  E('çfarë', 'PRON', 'what', ['çfarë:int']),
-  E('një', 'DET', 'a, one', ['një:indef']),
-  // adverbs, particles, prepositions
-  E('nuk', 'ADV', 'not', ['nuk:neg']),
-  E('mos', 'PART', 'not (subjunctive)', ['mos:neg']),
-  E('tani', 'ADV', 'now'), E('edhe', 'ADV', 'also'), E('mirë', 'ADV', 'well, good'), E('aq', 'ADV', 'so'), E('shumë', 'ADV', 'very, much'),
-  E('si', 'ADV', 'how', ['si:int']), E('pse', 'ADV', 'why', ['pse:int']),
-  E('a', 'PART', '(yes/no question marker)', ['a:int']),
-  E('po', 'INTJ', 'yes'), E('faleminderit', 'INTJ', 'thank you'), E('përshëndetje', 'INTJ', 'greetings, hello'),
-  E('në', 'ADP', 'in, at'), E('për', 'ADP', 'for'), E('me', 'ADP', 'with'), E('nga', 'ADP', 'from'),
-  E('te', 'ADP', 'to, at (before a person)'), E('tek', 'ADP', 'to, at (before a person)'),
-  // conjunctions
-  E('dhe', 'CONJ', 'and'), E('por', 'CONJ', 'but'),
-  E('se', 'SCONJ', 'that'), E('që', 'SCONJ', 'that, who'), E('kur', 'SCONJ', 'when'), E('sepse', 'SCONJ', 'because'), E('sa', 'SCONJ', 'so that, as much as'),
-];
-export const sqLexicon = new Lexicon(ENTRIES, normalize);
+const SOURCES: Record<string, AnalysisSourceInfo> = {
+  [SQ_SOURCE_IDS.hand]: { id: SQ_SOURCE_IDS.hand, label: 'Course word list', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [SQ_SOURCE_IDS.rules]: { id: SQ_SOURCE_IDS.rules, label: 'Albanian word-form and sentence rules', origin: 'rule', reviewStatus: 'machine-drafted', version: VERSION },
+  [SQ_SOURCE_IDS.phrases]: { id: SQ_SOURCE_IDS.phrases, label: 'Course phrase list', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [SQ_SOURCE_IDS.constructions]: { id: SQ_SOURCE_IDS.constructions, label: 'Course grammar patterns', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+};
 
-const CLITIC_WORDS = new Set(['e', 'i', 'më', 'na', 'ma', 'ta']);
-
-/** Next content word index after skipping clitic pronouns. */
-function nextContent(tokens: RawToken[], i: number): number {
-  let j = i + 1;
-  while (j < tokens.length && tokens[j].isWord && CLITIC_WORDS.has(tokens[j].normalized)) j++;
-  return j;
-}
-
-function contextual(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[] {
-  const cands = base[i];
-  const w = tokens[i].normalized;
-  if (cands.length < 2 || !['e', 'i', 'të', 'më'].includes(w)) return cands;
-  const pick = (pos: string, conf: number): AnalysisCandidate[] => {
-    const idx = cands.findIndex((c) => c.pos === pos);
-    if (idx < 0) return cands;
-    return [{ ...cands[idx], confidence: conf }, ...cands.filter((_, k) => k !== idx).map((c) => ({ ...c, confidence: Math.min(c.confidence, 0.3) }))];
-  };
-  const j = nextContent(tokens, i);
-  const nextC = base[j] ?? [];
-  const nextIsVerb = nextC.some((c) => c.pos === 'VERB' || c.pos === 'AUX');
-  const nextIsNominal = nextC.some((c) => c.pos && ['NOUN', 'PROPN', 'ADJ', 'DET', 'PRON'].includes(c.pos));
-  if (w === 'e') {
-    if (nextIsVerb) return pick('PRON', 0.75);
-    if (nextIsNominal && i > 0) return pick('DET', 0.6);
-    return cands.map((c, k) => ({ ...c, confidence: k === 0 ? 0.4 : 0.3 }));
-  }
-  if (w === 'i') {
-    if (nextIsVerb) return pick('PRON', 0.75);
-    if (nextC.some((c) => c.pos === 'ADJ')) return pick('DET', 0.75);
-    return cands.map((c) => ({ ...c, confidence: 0.4 }));
-  }
-  if (w === 'të') {
-    if (nextIsVerb) return pick('PART', 0.85);
-    if (nextIsNominal) return pick('DET', 0.7);
-    return cands.map((c) => ({ ...c, confidence: 0.4 }));
-  }
-  if (w === 'më') {
-    if (nextIsVerb) return pick('PRON', 0.75);
-    return pick('ADV', 0.5);
-  }
-  return cands;
-}
-
-const PHRASES: PhraseRule[] = [
-  { pattern: ['kur', 'jam', 'i', 'ri'], display: 'kur isha i ri', gloss: 'when I was young', kind: 'formula',
-    variants: [['kur', 'jam', 'i', 'ri']] },
-  { pattern: ['filloj', 'të', 'kuptoj'], display: 'filloj të kuptoj', gloss: 'I begin to understand', kind: 'construction',
-    variants: [['filloj', 'të', 'kuptoj']] },
-  { pattern: ['besoj', 'te', '_'], display: 'besoj te …', gloss: 'to believe in', kind: 'frame',
-    variants: [['besoj', ['te', 'tek', 'në'], { slot: true }]] },
-];
-
-const PREPS_ACC = new Set(['në', 'me', 'për', 'nga', 'te', 'tek']);
-
-function definiteForm(lemma: string, want: Record<string, string>): string | undefined {
-  const entry = sqLexicon.find(lemma);
-  return entry ? sqLexicon.formWith(entry, want)?.form : undefined;
-}
+const LEMMAS = SQ_LEXEMES.length;
 
 const SUPPORT: AdapterSupport = {
-  tokenization: 'dependable', // Intl.Segmenter('sq'); ë and ç stay inside tokens
-  sentenceSegmentation: 'limited',
-  lemmatization: 'seed-only', // the lexicon covers the seed corpus only; other words are left unanalysed
-  morphology: 'seed-only', // definiteness (the noun-final article) and case for lexicon nouns only
-  phraseDetection: 'seed-only',
+  tokenization: 'dependable', // Intl.Segmenter('sq'); ë and ç stay inside tokens; an apostrophe form (t'i, s'jam) is one token
+  sentenceSegmentation: 'limited', // terminators and a list of abbreviations; an unlisted abbreviation can split a sentence
+  lemmatization: 'seed-only', // a machine-drafted word list; any other word gets a guess by its ending (unconfirmed) or nothing
+  morphology: 'limited', // every reading of a listed word's forms; the sentence narrows some; not measured on running prose by a reviewer
+  phraseDetection: 'limited',
   productionChecks: 'limited',
   limitations: [
-    'Lemmatization is seed-only: the lexicon covers the bundled corpus, so supplied texts will have unanalysed words.',
-    'The clitic / article words e, i, të, më are resolved only from the next word; with thin context they stay ambiguous at low confidence.',
-    'Verbs are listed under their first-person-present lemma; only the listed forms are recognised.',
-    'Production checks: definite noun after te/tek, definite noun before a possessive — only for lexicon nouns.',
+    `Lemmatization is seed-only: the word list is a machine-drafted seed of about ${LEMMAS.toLocaleString('en')} words (nouns, names, verbs, adjectives, adverbs) plus the closed classes, which no native speaker has checked; a word outside it gets a reading the rules only infer from its ending (marked unconfirmed, no gloss) or none.`,
+    'Every generated reading was compared with other sources (the UniParser Albanian analyzer, Wiktionary\'s Albanian tables, two small treebanks). Where they do not agree, or where no other source knows the reading, it is kept at low confidence and shown as uncertain; the differences are listed in data/review/sq/source-agreement.json for a reviewer. Agreement between sources is not a native speaker\'s review.',
+    'There is no parser. The sentence layer reads the neighbouring words (the linking article and its adjective, a short pronoun before a verb, the particle të, the case a preposition governs, kam / jam before a participle); what they do not decide stays a union (Case "Nom,Acc") or a list of competing readings, never a guess.',
+    'The very ambiguous little words e, i, të, së, u, më, do, po, pa keep every reading; none is presented as certain unless the sentence decides it.',
+    'Fused short pronouns (ma, ta, ia, t\'i, m\'u …) are taken apart only into pairs the lists state; a cluster outside the lists has no reading.',
+    'A Gheg or pre-standard form is related to its Standard equivalent without changing the text, and only when the Standard form is a word the list knows. Gheg is not analysed as a variety of its own.',
+    'Production checks are rules for the commonest learner errors; each fires only on its own unambiguous shape and says nothing when a fact is missing. There are no idiomaticity checks: they need native data that does not exist yet.',
   ],
 };
+
+/** The lemmas the word list knows for a written form as it stands (no respelling, no guess). */
+function lemmasOf(form: string): Set<string> {
+  const out = new Set<string>();
+  for (const r of analyzeSqForm(sqNormalize(form))) if (r.lemmaKnown && !r.relation) out.add(`${r.lemma}|${r.pos === 'AUX' ? 'VERB' : r.pos}`);
+  return out;
+}
+
+const LETTER_HINT = new Map(SQ_LETTERS.map((l) => [l.letter, l]));
+/** Letters an English reader does not sound as written. */
+const TAUGHT = ['ë', 'ç', 'c', 'dh', 'gj', 'j', 'll', 'nj', 'q', 'rr', 'sh', 'th', 'x', 'xh', 'y', 'zh'];
+
+const ARTICLE_LEMMA = /^(?:i|e|të|së) (.+)$/u;
 
 export const sqAdapter: LanguageAdapter = {
   lang: LANG,
@@ -173,61 +85,45 @@ export const sqAdapter: LanguageAdapter = {
   script: 'Latn',
   version: VERSION,
   support: SUPPORT,
+  sources: SOURCES,
+  varieties: SQ_VARIETIES,
 
-  segmentSentences: (text) => splitSentences(text, { terminators: '.!?…', abbreviations: ['dr', 'p', 'sh', 'etj', 'z', 'znj', 'prof'] }),
-  tokenize: makeWordTokenizer({ locale: 'sq', normalize }),
-  normalize,
-  /** Forgiving search: people type without ë/ç. */
-  searchNormalize: (q) => normalize(q).replace(/ë/g, 'e').replace(/ç/g, 'c').trim(),
+  segmentSentences: segmentSqSentences,
+  tokenize: makeWordTokenizer({ locale: 'sq', normalize: sqNormalize }),
+  normalize: sqNormalize,
+  /** Forgiving search: people type without ë / ç. */
+  searchNormalize: sqSearchNormalize,
 
-  analyze: (tokens) => lexiconAnalyze(tokens, sqLexicon, ANALYZER, { contextual }),
+  analyze: (tokens: RawToken[]): AnalyzedToken[] => sqAnalyze(tokens),
 
-  detectPhrases: (tokens, analyses) => matchPhraseRules(tokens, analyses, PHRASES, normalize),
-
-  detectPatterns(tokens, analyses): PatternCandidate[] {
-    const out: PatternCandidate[] = [];
-    analyses.forEach((a, i) => {
-      const c = a.candidates[0];
-      if (!c) return;
-      if (c.pos === 'NOUN' && c.morph.Definite === 'Def') {
-        out.push({ key: 'definite-noun-ending', title: 'Definite noun ending', confidence: c.confidence, tokenIndexes: [i],
-          explanation: 'Albanian puts "the" on the end of the noun: zemër → zemra / zemrën, mëkat → mëkati / mëkatin.' });
-      }
-      if (c.pos === 'PRON' && c.notes?.clitic === 'yes' && c.morph.PronType === 'Prs' && i + 1 < tokens.length && hasPos(analyses[i + 1], 'VERB')) {
-        let noun = -1;
-        for (let k = i + 2; k < Math.min(tokens.length, i + 5); k++) {
-          const n = analyses[k]?.candidates[0];
-          if ((n?.pos === 'NOUN' || n?.pos === 'PROPN') && n.morph.Definite === 'Def' && (n.morph.Case ?? '').split(',').includes('Acc')) { noun = k; break; }
-        }
-        if (noun > 0) {
-          out.push({ key: 'clitic-doubling', title: 'Clitic doubling', confidence: Math.min(c.confidence, 0.7), tokenIndexes: [i, i + 1, noun],
-            explanation: 'A short pronoun before the verb repeats the object: Perëndia e fali mëkatin — "e" points to "mëkatin".' });
-        }
-      }
-      if (c.pos === 'PART' && tokens[i].normalized === 'të' && hasPos(analyses[nextContent(tokens, i)], 'VERB')) {
-        out.push({ key: 'subjunctive-te', title: 'të + verb (subjunctive)', confidence: c.confidence, tokenIndexes: [i, nextContent(tokens, i)],
-          explanation: 'After "fillova", "dua" and similar verbs, Albanian uses të + a present-tense verb where English uses "to".' });
-      }
-      if (c.pos === 'DET' && c.morph.Poss === 'Yes' && i > 0 && analyses[i - 1]?.candidates[0]?.pos === 'NOUN') {
-        out.push({ key: 'possessive-after-noun', title: 'Possessive after the noun', confidence: 0.8, tokenIndexes: [i - 1, i],
-          explanation: 'The possessive follows a definite noun: zemrën time "my heart" (literally "the heart mine").' });
-      }
+  /**
+   * The same ordering as `analyze`, after the importer put a dictionary's readings on some tokens. A token of this
+   * adapter starts again from its context-free readings; any other token brings its readings as they are, and its
+   * neighbours read them like ours. A token whose analyzer is not in `analyzers`, and a token named in `given`, is
+   * returned exactly as it came.
+   */
+  refine: (tokens, analyzed, analyzers, given): AnalyzedToken[] => {
+    const own = (i: number): boolean => analyzed[i].analyzer === ANALYZER && analyzers.has(ANALYZER) && !given?.has(i);
+    const base = tokens.map((t, i) => (!t.isWord ? [] : own(i) ? sqCandidates(t.normalized) : analyzed[i].candidates));
+    const ordered = orderSqSentence(tokens, base);
+    return tokens.map((t, i) => {
+      if (!t.isWord || given?.has(i) || !analyzers.has(analyzed[i].analyzer)) return analyzed[i];
+      return { ...analyzed[i], candidates: ordered[i] };
     });
-    return out;
   },
 
+  detectPhrases: (tokens, analyses) => matchPhraseRules(tokens, analyses, SQ_PHRASE_RULES, sqNormalize),
+
+  detectPatterns: (tokens, analyses) => detectSqConstructions(tokens, analyses),
+
+  /** One line for each letter of the word that is not sounded as an English reader expects; a digraph is one letter. */
   pronunciation(token): PronunciationSupport {
-    const s = token.normalized;
+    const letters = new Set(sqLetters(token.normalized));
     const notes: string[] = [];
-    if (/ë/.test(s)) notes.push('ë is a short, unstressed "uh" vowel.');
-    if (/ç/.test(s)) notes.push('ç is "ch" as in church.');
-    if (/xh/.test(s)) notes.push('xh is "j" as in jam.');
-    if (/q/.test(s)) notes.push('q is a soft "ty" (like a palatal ch).');
-    if (/gj/.test(s)) notes.push('gj is a soft "dy" (palatal).');
-    if (/dh/.test(s)) notes.push('dh is the voiced "th" of "this"; th is the "th" of "thin".');
-    if (/sh/.test(s)) notes.push('sh is "sh"; zh is the "s" of "measure".');
-    if (/y/.test(s)) notes.push('y is like German ü / French u.');
-    if (/rr/.test(s)) notes.push('rr is a strongly trilled r.');
+    for (const l of TAUGHT) {
+      const info = LETTER_HINT.get(l);
+      if (letters.has(l) && info) notes.push(`${l}: ${info.hint}.`);
+    }
     return { notes };
   },
 
@@ -245,48 +141,28 @@ export const sqAdapter: LanguageAdapter = {
 
   display: { wordSeparator: ' ', showBoundariesOnHighlight: false, fontFamily: 'Georgia, "Times New Roman", serif', lineHeight: 1.7 },
 
-  checkProduction(tokens, analyses, _sentence): ErrorCandidate[] {
-    const out: ErrorCandidate[] = [];
-    tokens.forEach((t, i) => {
-      const n = analyses[i]?.candidates[0];
-      if (!t.isWord || !n || n.pos !== 'NOUN' || n.morph.Definite !== 'Ind' || !n.lemma) return;
-      const prev = tokens[i - 1];
-      const num = n.morph.Number;
-      if (!num || num.includes(',')) return;
+  checkProduction: (tokens, analyses, sentence) => checkSqProduction(tokens, analyses, sentence),
 
-      // te / tek + noun: the noun is definite ("te libri", not "te libër")
-      if (prev && (prev.normalized === 'te' || prev.normalized === 'tek')) {
-        const fix = definiteForm(n.lemma, { Definite: 'Def', Case: 'Nom', Number: num });
-        out.push({
-          category: 'definiteness', tokenIndexes: [i - 1, i], confidence: fix ? 0.8 : 0.6, affectsMeaning: false,
-          message: `After "${prev.surface}" the noun takes its definite form.`,
-          suggestion: fix ? { start: t.start, end: t.end, replacement: fix } : undefined,
-        });
-        return;
-      }
-
-      // noun + possessive: the noun is definite ("zemrën time", not "zemër time")
-      const next = analyses[i + 1]?.candidates[0];
-      if (next?.pos === 'DET' && next.morph.Poss === 'Yes') {
-        const afterPrepOrVerb = !!prev && (PREPS_ACC.has(prev.normalized) || hasPos(analyses[i - 1], 'VERB'));
-        const kase = afterPrepOrVerb ? 'Acc' : i === 0 ? 'Nom' : undefined;
-        const fix = kase ? definiteForm(n.lemma, { Definite: 'Def', Case: kase, Number: num }) : undefined;
-        out.push({
-          category: 'definiteness', tokenIndexes: [i, i + 1], confidence: fix ? 0.75 : 0.6, affectsMeaning: false,
-          message: 'A noun followed by a possessive takes its definite form: zemrën time.',
-          suggestion: fix ? { start: t.start, end: t.end, replacement: fix } : undefined,
-        });
-      }
-    });
-    return out;
-  },
-
+  /** 'same' | 'inflection' (the word list knows both forms under one lemma, as they are written) | 'none'. */
   relate(a, b) {
-    const na = normalize(a), nb = normalize(b);
-    if (na === nb) return 'same';
-    const lb = new Set(sqLexicon.lemmasOf(nb));
-    return sqLexicon.lemmasOf(na).some((l) => lb.has(l)) ? 'inflection' : 'none';
+    if (sqNormalize(a) === sqNormalize(b)) return 'same';
+    const lb = lemmasOf(b);
+    for (const l of lemmasOf(a)) if (lb.has(l)) return 'inflection';
+    return 'none';
   },
+
+  /**
+   * Other headwords a dictionary may file this lemma under: an adjective cited here with its linking article ("i mirë")
+   * is "mirë" there. Asked for only when the lemma has no entry of its own; the reading keeps its lemma.
+   */
+  lemmaVariants: (lemma): string[] => {
+    const m = ARTICLE_LEMMA.exec(lemma);
+    return m ? [m[1]] : [];
+  },
+
+  morphFromTags: sqMorphFromTags,
+  varietiesFromTags: sqVarietiesFromTags,
+  describeMorph: (morph, pos) => describeSqMorph(morph, pos),
 };
 
 // ── numbers 0–999 999 ──

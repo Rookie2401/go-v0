@@ -87,4 +87,18 @@ export const PARTICLES: SqLexeme[] = [
   F('a', 'PART', 'question particle', undefined, { role: 'opens a yes / no question: a vjen? = is he coming?' }),
   F('më', 'ADV', 'more', undefined, { role: 'comparative word: more (më shumë: more); with an adjective it builds the comparative' }),
   F('jo', 'INTJ', 'no'),
+  F('ja', 'PART', 'here is, there is; look', undefined, { role: 'points at something: ja libri = here is the book' }),
+];
+
+/** The pointing adverbs of place and manner. */
+export const DEICTIC_ADVERBS: SqLexeme[] = [
+  F('këtu', 'ADV', 'here'), F('aty', 'ADV', 'there (near you)'), F('atje', 'ADV', 'there, over there'),
+  F('kështu', 'ADV', 'like this, so'), F('ashtu', 'ADV', 'like that, so'),
+];
+
+/** Greetings and thanks: one word each, said as a whole. */
+export const GREETINGS: SqLexeme[] = [
+  F('mirëmëngjes', 'INTJ', 'good morning'), F('mirëdita', 'INTJ', 'good day, hello'), F('mirëmbrëma', 'INTJ', 'good evening'),
+  F('mirupafshim', 'INTJ', 'goodbye'), F('tungjatjeta', 'INTJ', 'hello; goodbye (a long life to you)'),
+  F('faleminderit', 'INTJ', 'thank you'), F('përshëndetje', 'INTJ', 'hello, greetings'),
 ];

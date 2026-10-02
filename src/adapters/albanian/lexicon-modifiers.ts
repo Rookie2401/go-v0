@@ -114,6 +114,8 @@ const ARTICULATED: SqLexeme[] = [
   IA('urtë', 'wise, gentle', 'urta'),
   IA('përulur', 'humble', 'përulura'),
   I('krishterë', 'Christian', { plF: 'krishtera' }),
+  I('përjetshëm', 'eternal', { fem: 'përjetshme', plF: 'përjetshme' }),
+  I('vetëmlindur', 'only-begotten'),
   // first and last
   I('parë', 'first', { plF: 'para' }),
   I('fundit', 'last'),
@@ -146,6 +148,7 @@ const ADV = (lemma: string, gloss: string): SqLexeme => W(lemma, 'ADV', gloss);
 
 export const SQ_ADVERBS: SqLexeme[] = [
   // time
+  ADV('shqip', 'in Albanian'),
   ADV('tani', 'now'),
   ADV('tashmë', 'already, by now'),
   ADV('sot', 'today'),

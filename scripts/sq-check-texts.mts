@@ -16,6 +16,8 @@ import path from 'node:path';
 import { analyzeSqForm } from '../src/adapters/albanian/morphology';
 import { sqNormalize } from '../src/adapters/albanian/orthography';
 import { makeWordTokenizer } from '../src/adapters/shared';
+import { SQ_DISPUTED } from '../src/adapters/albanian/disputed';
+import { sameCitation } from '../src/bench/sq/aliases';
 
 const args = process.argv.slice(2).filter((a) => a !== '--');
 const opt = (k: string): string | undefined => { const i = args.indexOf(`--${k}`); return i >= 0 ? args[i + 1] : undefined; };
@@ -42,6 +44,8 @@ for (const f of forms) {
   if (!rs.length) problems.set(f, 'the adapter has no reading');
   else if (!rs.some((r) => r.lemmaKnown)) problems.set(f, `the adapter only guesses (${rs.map((r) => r.lemma).join(', ')})`);
   else if (rs.every((r) => r.relation)) problems.set(f, `not Standard spelling as written (read as ${rs[0].relation!.standard})`);
+  // the recorded comparison (data/review/sq/analyzer-check.json): a form all of whose known readings are disputed
+  else if (rs.filter((r) => r.lemmaKnown).every((r) => SQ_DISPUTED.has(`${f}\t${sqNormalize(r.lemma)}`))) problems.set(f, `the sources dispute every reading of this form (${[...new Set(rs.map((r) => r.lemma))].join(', ')}): see data/review/sq/analyzer-check.json`);
 }
 
 let analyzerNote = 'the UniParser analyzer was not consulted (run with --analyzer)';
@@ -62,7 +66,7 @@ if (useAnalyzer) {
     const ours = analyzeSqForm(row.form).filter((x) => x.lemmaKnown);
     const theirs = new Set(row.analyses.map((a) => sqNormalize(a.lemma)));
     const stem = (l: string) => sqNormalize(l).replace(/h?em$/u, '');
-    const agree = ours.some((o) => theirs.has(sqNormalize(o.lemma)) || [...theirs].some((t) => t.replace(/j$/u, '') === stem(o.lemma)) || (o.parts?.length ?? 0) > 0 || o.pos === 'PROPN');
+    const agree = ours.some((o) => [...theirs].some((t) => sameCitation(sqNormalize(o.lemma), t) || t.replace(/j$/u, '') === stem(o.lemma)) || (o.parts?.length ?? 0) > 0 || o.pos === 'PROPN');
     if (!row.analyses.length) { if (!ours.some((o) => o.pos === 'PROPN')) { unknown++; if (!problems.has(row.form)) problems.set(row.form, 'the UniParser analyzer does not recognise this form'); } }
     else if (ours.length && !agree) { otherLemma++; if (!problems.has(row.form)) problems.set(row.form, `the sources differ: the adapter reads ${[...new Set(ours.map((o) => o.lemma))].join(', ')}, the analyzer ${[...theirs].slice(0, 4).join(', ')}`); }
   }

@@ -42,6 +42,7 @@ import { sqGeneratedForms } from '../src/adapters/albanian/morphology';
 import { sqNormalize } from '../src/adapters/albanian/orthography';
 import { uniparserToReading, type UniparserReading } from '../src/adapters/albanian/tags';
 import { sqAgree, type SqReading } from '../src/adapters/albanian/types';
+import { SQ_CITATION_ALIASES } from '../src/bench/sq/aliases';
 
 const args = process.argv.slice(2).filter((a) => a !== '--');
 const opt = (k: string): string | undefined => { const i = args.indexOf(`--${k}`); return i >= 0 ? args[i + 1] : undefined; };
@@ -111,19 +112,20 @@ const deponentMatch = (r: SqReading, t: { lemma: string; reading: UniparserReadi
   const theirs = t.lemma.replace(/j$/u, '');
   return (mine.includes(theirs) || mine.includes(t.lemma)) && (t.reading.morph.Voice === 'Mid' || t.reading.morph.VerbForm === 'Part');
 };
-/**
- * The same verb under two citation forms — a difference of NAMING, not of analysis. Here a verb is cited by its first
- * person singular present (përgatis) or, when it is only used non-actively, by that form (përpiqem, quhem); the
- * analyzer cites the dictionary's headword (përgatit) or the active verb (përpjek, quaj). Features must still agree.
- * Kept short and explicit, and written into the review file so that a person can see what was treated as the same.
- */
-const CITATION_ALIASES: Readonly<Record<string, readonly string[]>> = {
-  përgatis: ['përgatit'],
-  përpiqem: ['përpjek'],
-  quhem: ['quaj'],
-};
+/** The same word under two citation forms (src/bench/sq/aliases.ts): a difference of naming. Features must still agree. */
+const CITATION_ALIASES = SQ_CITATION_ALIASES;
 const aliasMatch = (r: SqReading, t: { lemma: string; reading: UniparserReading }): boolean =>
-  (r.pos === 'VERB' || r.pos === 'AUX') && t.reading.pos === 'VERB' && (CITATION_ALIASES[sqNormalize(r.lemma)] ?? []).includes(t.lemma);
+  samePos(r.pos, t.reading.pos) && (CITATION_ALIASES[sqNormalize(r.lemma)] ?? []).includes(t.lemma);
+
+/**
+ * A short object pronoun: here it is a form of the full pronoun (na under ne, më under unë); the analyzer files it
+ * under itself with one label such as acc_1pl. The same word when the label's case, person and number fit.
+ */
+const cliticMatch = (form: string, r: SqReading, t: { lemma: string; reading: UniparserReading }): boolean => {
+  if (r.pos !== 'PRON' || t.lemma !== form || t.reading.clitics.length !== 1) return false;
+  const m = /^(acc|dat)_([123])(sg|pl)$/.exec(t.reading.clitics[0]);
+  return !!m && sqAgree(r.morph.Case, m[1] === 'acc' ? 'Acc' : 'Dat') && sqAgree(r.morph.Person, m[2]) && sqAgree(r.morph.Number, m[3] === 'sg' ? 'Sing' : 'Plur');
+};
 
 interface Finding { form: string; lemma: string; pos: string; verdict: Verdict; ours: string; theirs: string[] }
 const findings: Finding[] = [];
@@ -141,6 +143,9 @@ for (const [form, list] of [...ours.entries()].sort((a, b) => (a[0] < b[0] ? -1 
     const same = them.filter((t) => (t.lemma === lemma && samePos(r.pos, t.reading.pos)) || deponentMatch(r, t) || aliasMatch(r, t));
     const otherPos = them.filter((t) => t.lemma === lemma && !samePos(r.pos, t.reading.pos) && compatible(r, t.reading));
     if (!them.length) verdict = r.pos === 'PROPN' ? 'name-unknown' : 'unknown-form';
+    else if (them.some((t) => cliticMatch(form, r, t))) verdict = 'agree';
+    // a personal name the analyzer does not hold, spelled like a common word it does (Ana / anë, Mira / mirë): not a dispute
+    else if (!same.length && r.pos === 'PROPN') verdict = 'name-unknown';
     else if (!same.length) verdict = otherPos.length ? 'pos-differs' : 'other-lemma';
     else {
       const ok = same.filter((t) => compatible(r, t.reading));

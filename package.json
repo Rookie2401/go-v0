@@ -29,6 +29,7 @@
     "es:eval-morph": "vite-node scripts/eval-es-morph.mts",
     "es:eval-context": "vite-node scripts/eval-es-context.mts",
     "sq:check-analyzer": "vite-node scripts/sq-check-analyzer.mts",
+    "sq:check-texts": "vite-node scripts/sq-check-texts.mts",
     "sq:eval-ud": "vite-node scripts/sq-eval-ud.mts",
     "sq:gold": "vite-node scripts/sq-gold.mts",
     "authoring:report": "vite-node scripts/authoring-report.mts",

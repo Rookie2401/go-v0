@@ -23,7 +23,7 @@ import type {
   PartOfSpeech, PhraseCandidate, PronunciationSupport, RawToken, RegisterTag,
 } from '../core';
 import {
-  Lexicon, hasPos, makeWordTokenizer, matchPhraseRules, nfc, speechNormalizeGeneric, type PhraseRule,
+  Lexicon, hasPos, makeWordTokenizer, matchPhraseRules, nfc, speechNormalizeGeneric, type LexEntry, type PhraseRule,
 } from './shared';
 import { analyzeHindiForm, describeHindiMorph, type HindiAnalysis, type HindiLemmaInfo } from './hindi/morphology';
 import { annotationKey, buildRows, parseRows, type HiAnnotation } from './hindi/entries';
@@ -38,6 +38,7 @@ import { COURSE_ROWS } from './hindi/lexicon-course';
 import { VERB_MORE_ROWS } from './hindi/lexicon-more-verbs';
 import { WORD_MORE_ROWS } from './hindi/lexicon-more-words';
 import { EXTRA_MORE_ROWS } from './hindi/lexicon-more-extra';
+import { FRAME_MORE_ROWS } from './hindi/lexicon-more-frames';
 import { registerOf } from './hindi/registers';
 import { HI_VARIETIES } from './hindi/varieties';
 import { hindiSearchForm, hindiSpellingVariants } from './hindi/script';
@@ -83,6 +84,7 @@ const ROWS = [
   ...parseRows(ADJECTIVE_ROWS, 'modifiers', hiLexiconProblems), ...parseRows(COURSE_ROWS, 'course', hiLexiconProblems),
   ...parseRows(VERB_MORE_ROWS, 'more-verbs', hiLexiconProblems), ...parseRows(WORD_MORE_ROWS, 'more-words', hiLexiconProblems),
   ...parseRows(EXTRA_MORE_ROWS, 'more-extra', hiLexiconProblems),
+  ...parseRows(FRAME_MORE_ROWS, 'more-frames', hiLexiconProblems),
 ];
 const BUILT = buildRows(ROWS, new Set(), hiLexiconProblems);
 const ANNOTATIONS: Map<string, HiAnnotation> = BUILT.annotations;
@@ -233,6 +235,9 @@ function annotate(c: AnalysisCandidate): AnalysisCandidate {
     out.morph = { ...c.morph, Voice: 'Cau' };
     out.notes = { ...(c.notes ?? {}), derivedFrom: (c.notes?.derivedFrom as string | undefined) ?? base };
   }
+  // whether the verb takes ने in the perfective, where the row says so (the construction detector tells a passive from a compound verb by it)
+  const erg = c.pos === 'VERB' || c.pos === 'AUX' ? ann?.info.ergative : undefined;
+  if (erg !== undefined) out.notes = { ...(out.notes ?? c.notes ?? {}), ergative: erg ? 'yes' : 'no' };
   return out;
 }
 
@@ -264,8 +269,44 @@ const engineRead = (form: string): AnalysisCandidate[] => analyzeHindiForm(form,
 /** The rules' readings of lemmas the list holds. */
 const engineKnown = (form: string): AnalysisCandidate[] => engineRead(form).filter((c) => c.notes?.lemmaStatus === IN_LIST);
 
-const handCandidates = (form: string): AnalysisCandidate[] =>
-  hiLexicon.toCandidates(hiLexicon.lookup(form)).map((c) => annotate({ ...c, origin: 'hand', sourceId: HI_SOURCE_IDS.hand }));
+/**
+ * The word list's readings of one spelling. Forms that are written alike but are different forms (the masculine plural
+ * perfective participle and the second / third person subjunctive of one verb, the oblique singular and the direct plural of
+ * an adjective) stay SEPARATE readings, as the rule engine gives them: one reading per entry and per distinct feature bundle,
+ * so that no reading carries a comma list in a feature and the neighbour rules can choose between them.
+ */
+function handCandidates(form: string): AnalysisCandidate[] {
+  const hits = [...hiLexicon.lookup(form)].sort((a, b) => a.order - b.order);
+  if (!hits.length) return [];
+  const byEntry = new Map<LexEntry, Array<{ morph: Record<string, string>; notes: Record<string, string | string[]> }>>();
+  for (const h of hits) {
+    const list = byEntry.get(h.entry) ?? [];
+    const key = JSON.stringify(Object.entries(h.form.morph).sort());
+    const have = list.find((r) => JSON.stringify(Object.entries(r.morph).sort()) === key);
+    if (have) Object.assign(have.notes, h.form.notes ?? {});
+    else list.push({ morph: { ...h.form.morph }, notes: { ...(h.entry.notes ?? {}), ...(h.form.notes ?? {}), ...(h.entry.translit ? { translit: h.entry.translit } : {}) } });
+    byEntry.set(h.entry, list);
+  }
+  const total = [...byEntry.values()].reduce((n, l) => n + l.length, 0);
+  const out: AnalysisCandidate[] = [];
+  for (const [entry, list] of byEntry) {
+    list.forEach((r, k) => {
+      // one reading: sure. Several readings of one entry (forms written alike): 0.8. Several entries: 0.55, and among a verb's readings the
+      // perfective participle of a base verb (met, grew) outranks the bare stem of its causative (mixed, increased), which needs a vector or an
+      // auxiliary after it to be read as a stem at all
+      let confidence = total === 1 ? 0.92 : byEntry.size === 1 ? 0.8 : k === 0 ? 0.55 : 0.5;
+      if (byEntry.size > 1) {
+        if (r.morph.VerbForm === 'Stem' && r.morph.Voice === 'Cau') confidence = 0.5;
+        else if (r.morph.VerbForm === 'Part' && r.morph.Aspect === 'Perf' && !entry.forms.some((f) => f.morph.Voice === 'Cau')) confidence = 0.6;
+      }
+      out.push(annotate({
+        lemma: entry.lemma, pos: entry.pos, morph: r.morph, notes: Object.keys(r.notes).length ? r.notes : undefined,
+        confidence, gloss: entry.gloss, origin: 'hand', sourceId: HI_SOURCE_IDS.hand,
+      }));
+    });
+  }
+  return out;
+}
 
 /**
  * The word list's readings of one spelling, with the rules' readings of other listed lemmas beside them. Empty when the list

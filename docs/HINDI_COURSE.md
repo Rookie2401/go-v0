@@ -73,6 +73,13 @@ Nothing in Thai or Spanish was replaced. The language-neutral additions made for
 - **Grammar is an inventory met in texts, not a syllabus of lessons.** 46 constructions are recognised where they
   occur and become learner items; nothing is "taught" before it is read. Two that occur in almost every sentence
   are marked ubiquitous.
+- **Canonical texts and adaptive supplements are different things.** The Stage 0 stories are canonical course
+  texts: fixed wording, versioned, reviewed as wording, the same for every learner. A text generated to prepare one
+  learner for one passage is a separate kind (`generated-prep`), never replaces a canonical text and is never
+  described as course material of native quality. None is generated for Hindi yet (architecture only).
+- **Repetition comes from the next texts, not from drills.** A word the learner needed help with raises the rank
+  of texts that contain it (the ranking says so in its reasons); the Stage 0 series is written so that every new
+  form returns.
 - **Home** shows Continue reading (the course's own first story for a new learner), Best next reads with
   reasons, the doors, and "Help you needed": how often each kind of help was used per 100 words or sentences and
   whether that is falling.
@@ -235,8 +242,9 @@ anything shipped; no model, tagger or corpus was bundled. Details in `docs/hindi
    line is sometimes debatable. They are shown as facts about a word, never as "correct Hindi" — but a wrong tag
    is still wrong.
 10. **Best next reads for a learner with no history** is not in story order (the Continue card is).
-11. **First start-up is slow** (every course's bundled texts are imported, about 15 seconds in the foreground):
-    a cross-course matter, not Hindi's alone.
+11. **First start-up** imported every course's bundled texts (15–25 seconds). Resolved on 2026-10-01 by the Spanish
+    session (`e63a617`): only the chosen course's language is imported, and the first-run team choice also builds
+    the library index before Home opens. Not re-measured in the browser by this session.
 
 ## 11. Native-review work required (in order of value)
 

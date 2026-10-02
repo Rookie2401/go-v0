@@ -18,6 +18,7 @@ import { COURSE_ROWS } from '../../src/adapters/hindi/lexicon-course';
 import { VERB_MORE_ROWS } from '../../src/adapters/hindi/lexicon-more-verbs';
 import { WORD_MORE_ROWS } from '../../src/adapters/hindi/lexicon-more-words';
 import { EXTRA_MORE_ROWS } from '../../src/adapters/hindi/lexicon-more-extra';
+import { FRAME_MORE_ROWS } from '../../src/adapters/hindi/lexicon-more-frames';
 import { REGISTER_GROUPS, registerGroupOf, registerOf } from '../../src/adapters/hindi/registers';
 import { HI_VARIETIES } from '../../src/adapters/hindi/varieties';
 import { loadBundledCorpus } from '../../src/ingest';
@@ -25,7 +26,7 @@ import { run } from './helpers';
 
 const BLOCKS: Record<string, string> = {
   function: FUNCTION_ROWS, 'numbers-time': NUMBER_TIME_ROWS, verbs: VERB_ROWS, 'nouns-home': NOUN_HOME_ROWS,
-  'nouns-world': NOUN_WORLD_ROWS, 'nouns-faith': NOUN_FAITH_ROWS, modifiers: ADJECTIVE_ROWS, course: COURSE_ROWS, 'more-verbs': VERB_MORE_ROWS, 'more-words': WORD_MORE_ROWS, 'more-extra': EXTRA_MORE_ROWS,
+  'nouns-world': NOUN_WORLD_ROWS, 'nouns-faith': NOUN_FAITH_ROWS, modifiers: ADJECTIVE_ROWS, course: COURSE_ROWS, 'more-verbs': VERB_MORE_ROWS, 'more-words': WORD_MORE_ROWS, 'more-extra': EXTRA_MORE_ROWS, 'more-frames': FRAME_MORE_ROWS,
 };
 const ROWS = Object.entries(BLOCKS).flatMap(([label, src]) => parseRows(src, label));
 
@@ -69,7 +70,7 @@ describe('the row format', () => {
     expect(hiLexiconStats.duplicates).toEqual([]);
     const seen = new Set<string>();
     for (const r of ROWS) {
-      const k = annotationKey(r.lemma, r.pos);
+      const k = annotationKey(r.lemma, r.pos) + (r.homograph ? `#${r.homograph}` : '');
       expect(seen.has(k), `duplicate row ${k}`).toBe(false);
       seen.add(k);
     }
@@ -90,9 +91,9 @@ describe('the row format', () => {
 
 describe('size and shape of the list', () => {
   const by = hiLexiconStats.byPos;
-  it(`about 1,300-2,600 lemmas (${hiLexiconStats.lemmas}): ${Object.entries(by).map(([p, n]) => `${p} ${n}`).join(', ')}`, () => {
+  it(`about 1,300-3,200 lemmas (${hiLexiconStats.lemmas}): ${Object.entries(by).map(([p, n]) => `${p} ${n}`).join(', ')}`, () => {
     expect(hiLexiconStats.lemmas).toBeGreaterThanOrEqual(1300);
-    expect(hiLexiconStats.lemmas).toBeLessThanOrEqual(2600);
+    expect(hiLexiconStats.lemmas).toBeLessThanOrEqual(3200);
     expect(by.VERB + by.AUX).toBeGreaterThanOrEqual(300);
     expect(by.NOUN).toBeGreaterThanOrEqual(600);
     expect(by.ADJ).toBeGreaterThanOrEqual(200);
@@ -108,6 +109,7 @@ describe('size and shape of the list', () => {
     expect(nouns.length).toBeGreaterThanOrEqual(600);
     for (const r of nouns) {
       expect(r.gender, r.lemma).toBeDefined();
+      if (r.homograph) continue; // the second word of a spelling: the lemma data is the first one's
       const e = hiLexicon.find(r.lemma, 'NOUN')!;
       for (const f of e.forms) expect(f.morph.Gender, `${r.lemma} ${f.form}`).toBeDefined();
       expect(hiLemmaInfo(r.lemma, 'NOUN')?.gender, r.lemma).toBe(r.gender);
@@ -126,14 +128,14 @@ describe('size and shape of the list', () => {
     for (const w of ['सुंदर', 'लाल', 'शांत', 'पवित्र', 'ज़रूरी']) expect(hiLemmaInfo(w, 'ADJ')?.invariant, w).toBe(true);
     for (const w of ['छोटा', 'बड़ा', 'अच्छा', 'काला']) expect(hiLemmaInfo(w, 'ADJ')?.invariant, w).toBeUndefined();
     const forms = (lemma: string) => hiLexicon.find(lemma, 'ADJ')!.forms.map((f) => f.form).sort();
-    expect(forms('छोटा')).toEqual(['छोटा', 'छोटी', 'छोटी', 'छोटे', 'छोटे'].sort());
+    expect(forms('छोटा')).toEqual(['छोटा', 'छोटी', 'छोटी', 'छोटे', 'छोटे', 'छोटे'].sort());
     expect(forms('लाल')).toEqual(['लाल']);
     expect(forms('शांत')).toEqual(['शांत']);
   });
 
   it('verbs: ergative flags where certain, causatives point to a verb in the list', () => {
     const erg = (w: string) => hiLemmaInfo(w, w === 'होना' ? 'AUX' : 'VERB')?.ergative;
-    for (const w of ['करना', 'देखना', 'खाना', 'पढ़ना', 'लेना', 'देना', 'कहना', 'समझना']) expect(erg(w), w).toBe(true);
+    for (const w of ['करना', 'देखना', 'खाना', 'पढ़ना', 'लेना', 'देना', 'कहना']) expect(erg(w), w).toBe(true);
     for (const w of ['जाना', 'आना', 'होना', 'बैठना', 'रहना', 'मरना', 'गिरना']) expect(erg(w), w).toBe(false);
     const verbs = ROWS.filter((r) => r.pos === 'VERB');
     const caus = verbs.filter((r) => r.causativeOf);
@@ -561,5 +563,262 @@ describe('also: other spellings of one lemma', () => {
       expect(ROWS.some((x) => x.lemma === a), `${a} is a lemma of its own`).toBe(false);
     }
     expect(() => parseRows('# NOUN\nघर/m = house [also:घर]', 't')).toThrow(/the lemma itself/);
+  });
+});
+
+// ───────────────────────── fix batch 2 ─────────────────────────
+
+const RAW_FEATURE = /\b(VerbForm|Aspect|Mood|Number|Gender|Case|Person|Polite|Tense|PronType|Voice|Poss|Degree|Definite|Polarity)\b/u;
+const RAW_VALUE = /\b(Sing|Plur|Masc|Fem|Dir|Obl|Erg|Dat|Fin|Part|Conv|Stem|Imp|Sub|Ind|Pres|Past|Fut|Perf|Prog|Cau|Fam|Infm|Prs|Dem|Rel|Int)\b/u;
+
+describe('transitivity on verb readings', () => {
+  const ERG = ['करना', 'देना', 'लेना', 'देखना', 'सुनना', 'कहना', 'खाना', 'पीना', 'पढ़ना', 'लिखना', 'पीटना', 'काटना', 'डालना', 'सीखना', 'पूछना', 'बनाना', 'भेजना', 'खोलना', 'तोड़ना', 'ख़रीदना'];
+  const NOERG = ['जाना', 'आना', 'होना', 'रहना', 'लगना', 'पड़ना', 'मिलना', 'बैठना', 'उठना', 'चलना', 'दौड़ना', 'गिरना', 'मरना', 'डरना', 'लाना', 'भूलना', 'हँसना', 'बनना', 'निकलना', 'पहुँचना'];
+  const form = (lemma: string) => (hiLexicon.find(lemma, 'AUX') ?? hiLexicon.find(lemma, 'VERB'))!.forms[Math.min(3, hiLexicon.find(lemma, 'VERB')?.forms.length ?? 1)].form;
+  it('twenty verbs that take ने and twenty that do not: every hand reading says so in notes.ergative', () => {
+    for (const [verbs, value] of [[ERG, 'yes'], [NOERG, 'no']] as const) {
+      expect(verbs.length).toBe(20);
+      for (const v of verbs) {
+        const pos = hiLexicon.find(v, 'AUX') ? 'AUX' : 'VERB';
+        const e = hiLexicon.find(v, pos)!;
+        expect(hiLemmaInfo(v, pos)?.ergative, v).toBe(value === 'yes');
+        for (const f of new Set([e.lemma, form(v), e.forms[e.forms.length - 1].form])) {
+          const cands = run('hi', f).analyses[0].candidates.filter((c) => c.lemma === v && c.pos === pos);
+          expect(cands.length, `${f} (${v})`).toBeGreaterThan(0);
+          for (const c of cands) expect(c.notes?.ergative, `${f} (${v})`).toBe(value);
+        }
+      }
+    }
+  });
+  it('a verb the row does not say anything about carries nothing; the verbs left unsaid are listed here, with the reason', () => {
+    const UNSAID = {
+      बोलना: 'normally without ने (वह बोला, लड़की कुछ बोली); ने occurs with an object for some speakers (झूठ बोला)', समझना: 'both patterns are heard',
+      सकना: 'a modal: it follows the pattern of the verb before it', चाहिए: 'invariant', नहाना: 'with or without ने', छींकना: 'with or without ने', खाँसना: 'with or without ने',
+      भौंकना: 'with or without ने', बदलना: 'transitive "to change" takes ने, intransitive does not', खेलना: 'a game played takes ने, "he played" often does not',
+      हारना: 'a match lost takes ने, "he was beaten" does not', पलटना: 'both ways', गुनगुनाना: 'both ways', बड़बड़ाना: 'both ways', फुसफुसाना: 'both ways', खुजलाना: 'both ways', लहराना: 'both ways',
+    } as Record<string, string>;
+    const verbs = hiLexicon.entries.filter((e) => e.pos === 'VERB' || e.pos === 'AUX');
+    const unsaid = verbs.filter((e) => hiLemmaInfo(e.lemma, e.pos)?.ergative === undefined).map((e) => e.lemma).sort();
+    expect(unsaid, 'update the list above when a verb is added without erg / noerg').toEqual(Object.keys(UNSAID).sort());
+    for (const e of verbs.filter((x) => UNSAID[x.lemma])) {
+      for (const c of run('hi', e.forms[0].form).analyses[0].candidates.filter((x) => x.lemma === e.lemma)) expect(c.notes?.ergative, e.lemma).toBeUndefined();
+    }
+  });
+  it('लाना and भूलना are transitive but take no ने (the reference grammars: लाना follows आना; वह किताब लाया, मैं उसका नाम भूल गया); बोलना and समझना are left unsaid', () => {
+    for (const w of ['लाना', 'भूलना']) {
+      expect(hiLemmaInfo(w, 'VERB')?.ergative, w).toBe(false);
+      for (const f of hiLexicon.find(w, 'VERB')!.forms.map((x) => x.form)) for (const c of run('hi', f).analyses[0].candidates.filter((x) => x.lemma === w)) expect(c.notes?.ergative, f).toBe('no');
+    }
+    for (const w of ['बोलना', 'समझना']) {
+      expect(hiLemmaInfo(w, 'VERB')?.ergative, w).toBeUndefined();
+      for (const c of run('hi', hiLexicon.find(w, 'VERB')!.forms[3].form).analyses[0].candidates.filter((x) => x.lemma === w)) expect(c.notes?.ergative, w).toBeUndefined();
+    }
+  });
+  it('a reading of the rules carries it from the lemma\'s row too', () => {
+    if (!ENGINE) return;
+    for (const [f, lemma, value] of [['खरीदियेगा', 'ख़रीदना', 'yes'], ['जाइयेगा', 'जाना', 'no'], ['पढ़ियेगा', 'पढ़ना', 'yes']] as const) {
+      const c = run('hi', f).analyses[0].candidates.filter((x) => x.lemma === lemma);
+      expect(c.length, f).toBeGreaterThan(0);
+      for (const x of c) expect(x.notes?.ergative, f).toBe(value);
+    }
+  });
+  it('a noun or an adjective never carries it', () => {
+    for (const w of ['खाना', 'सोना', 'काम', 'छोटा']) for (const c of run('hi', w).analyses[0].candidates) if (c.pos !== 'VERB' && c.pos !== 'AUX') expect(c.notes?.ergative, w).toBeUndefined();
+  });
+});
+
+describe('forms written alike are separate readings, each with features a learner can be told', () => {
+  const readingsOf = (w: string, pos: PartOfSpeech, lemma?: string) => run('hi', w).analyses[0].candidates.filter((c) => c.pos === pos && (!lemma || c.lemma === lemma));
+  const bundle = (c: { morph: Record<string, string> }) => `${c.morph.Gender ?? ''}/${c.morph.Number ?? ''}/${c.morph.Case ?? ''}`;
+  it('the -े form of an -ा adjective is masculine oblique singular, masculine direct plural and masculine oblique plural, as three readings', () => {
+    for (const [w, lemma] of [['छोटे', 'छोटा'], ['बड़े', 'बड़ा'], ['अच्छे', 'अच्छा'], ['काले', 'काला'], ['पूरे', 'पूरा']] as const) {
+      const r = readingsOf(w, 'ADJ', lemma);
+      expect(r.map(bundle).sort(), w).toEqual(['Masc/Plur/Dir', 'Masc/Plur/Obl', 'Masc/Sing/Obl']);
+    }
+    // the feminine -ी is two readings: singular and plural
+    expect(readingsOf('छोटी', 'ADJ', 'छोटा').map(bundle).sort()).toEqual(['Fem/Plur/', 'Fem/Sing/']);
+    // an ordinal and a possessive are built the same way
+    expect(readingsOf('पाँचवें', 'ADJ', 'पाँचवाँ').map(bundle).sort()).toEqual(['Masc/Plur/Dir', 'Masc/Plur/Obl', 'Masc/Sing/Obl']);
+    expect(readingsOf('मेरे', 'DET', 'मेरा').map(bundle).sort()).toEqual(['Masc/Plur/Dir', 'Masc/Plur/Obl', 'Masc/Sing/Obl']);
+    expect(readingsOf('हमारे', 'DET', 'हमारा').map(bundle).sort()).toEqual(['Masc/Plur/Dir', 'Masc/Plur/Obl', 'Masc/Sing/Obl']);
+  });
+  it('the perfective participle and the subjunctive that are written alike (रहे, सुने) are separate readings', () => {
+    for (const [w, lemma] of [['सुने', 'सुनना'], ['रहे', 'रहना'], ['देखे', 'देखना'], ['खाए', 'खाना']] as const) {
+      const r = readingsOf(w, 'VERB', lemma);
+      expect(r.some((c) => c.morph.VerbForm === 'Part' && c.morph.Aspect === 'Perf' && c.morph.Gender === 'Masc' && c.morph.Number === 'Plur'), `${w}: participle`).toBe(true);
+      expect(r.some((c) => c.morph.VerbForm === 'Fin' && c.morph.Mood === 'Sub'), `${w}: subjunctive`).toBe(true);
+      for (const c of r) {
+        expect(c.morph.VerbForm, w).not.toMatch(/,/);
+        expect(`${c.morph.Aspect ?? ''}${c.morph.Mood ?? ''}${c.morph.Gender ?? ''}${c.morph.Tense ?? ''}`, w).not.toMatch(/,/);
+        if (c.morph.VerbForm === 'Part') expect(c.morph.Mood, `${w}: a participle is not also a subjunctive`).toBeUndefined();
+      }
+    }
+  });
+  it('no form the list generates has a comma list in any feature, and every bundle is described in words by the adapter', () => {
+    const seen = new Set<string>();
+    let bundles = 0;
+    for (const e of hiLexicon.entries) for (const f of e.forms) {
+      for (const [k, v] of Object.entries(f.morph)) expect(v.includes(','), `${e.lemma} ${f.form}: ${k}=${v}`).toBe(false);
+      const key = `${e.pos}|${JSON.stringify(Object.entries(f.morph).sort())}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      bundles++;
+      const text = hiAdapter.describeMorph!(f.morph, e.pos);
+      expect(text, `${e.lemma} ${f.form}`).not.toMatch(RAW_FEATURE);
+      expect(text, `${e.lemma} ${f.form}: ${text}`).not.toMatch(RAW_VALUE);
+      expect(text, `${e.lemma} ${f.form}: ${text}`).not.toMatch(/[A-Za-z0-9],[A-Za-z0-9]/);
+    }
+    expect(bundles).toBeGreaterThan(80);
+  });
+  it('every reading the adapter gives for the bundled texts is described in words (hand and rule readings)', () => {
+    const bad = new Map<string, string>();
+    for (const d of loadBundledCorpus().filter((x) => x.lang === 'hi')) for (const text of sentencesOfDoc(d).slice(0, 60)) {
+      const toks = hiAdapter.tokenize(text);
+      hiAdapter.analyze(toks).forEach((a) => {
+        for (const c of a.candidates) {
+          const t = hiAdapter.describeMorph!(c.morph, c.pos);
+          if (RAW_FEATURE.test(t) || RAW_VALUE.test(t) || /[A-Za-z0-9],[A-Za-z0-9]/.test(t)) bad.set(JSON.stringify(c.morph), t);
+        }
+      });
+    }
+    // a bundle of the rule engine that its own describer cannot put in words is the engine's to fix: it is named here, not hidden
+    expect([...bad].slice(0, 5), 'bundles the describer cannot put in words').toEqual([]);
+  });
+});
+
+describe('one reading per person', () => {
+  const persons = (w: string, lemma: string) => run('hi', w).analyses[0].candidates.filter((c) => c.lemma === lemma && c.origin === 'hand' && c.morph.Person !== undefined && c.morph.VerbForm === 'Fin');
+  it('हैं, है, हो, हों, था, थे, होंगे: each person is its own reading, third then first then second, at one confidence', () => {
+    const hain = persons('हैं', 'होना');
+    expect(hain.map((c) => c.morph.Person)).toEqual(['3', '1', '2']);
+    expect(hain.map((c) => c.morph.Polite)).toEqual([undefined, undefined, 'Form']);
+    expect(new Set(hain.map((c) => c.confidence)).size).toBe(1);
+    expect(persons('है', 'होना').map((c) => c.morph.Person)).toEqual(['3', '2']);
+    expect(persons('हूँ', 'होना').map((c) => c.morph.Person)).toEqual(['1']);
+    expect(persons('हो', 'होना').filter((c) => c.morph.Tense === 'Pres').map((c) => `${c.morph.Person}${c.morph.Polite ?? ''}`)).toEqual(['2Fam']);
+    expect(persons('हों', 'होना').filter((c) => c.morph.Mood === 'Sub').map((c) => c.morph.Person)).toEqual(['3', '1', '2']);
+    expect(persons('था', 'होना').map((c) => c.morph.Person)).toEqual(['3', '1', '2']);
+    expect(persons('थे', 'होना').map((c) => `${c.morph.Person}${c.morph.Polite ?? ''}`)).toEqual(['3', '1', '2Fam', '2Form']);
+    expect(persons('होंगे', 'होना').map((c) => c.morph.Person)).toEqual(['3', '1', '2']);
+    expect(persons('होगा', 'होना').map((c) => c.morph.Person)).toEqual(['3', '2']);
+    for (const w of ['हैं', 'है', 'हो', 'हों', 'था', 'थे', 'होंगे']) for (const c of run('hi', w).analyses[0].candidates) expect(c.morph.Person ?? '', `${w}: ${JSON.stringify(c.morph)}`).not.toMatch(/,/);
+  });
+  it('the same holds for every regular verb: the subjunctive -ें, the future -ेंगे and -ेगा', () => {
+    for (const [w, lemma] of [['सुनें', 'सुनना'], ['देखें', 'देखना'], ['करें', 'करना']] as const) {
+      const sub = persons(w, lemma).filter((c) => c.morph.Mood === 'Sub');
+      expect(sub.map((c) => c.morph.Person), w).toEqual(['3', '1', '2']);
+      expect(sub.map((c) => c.morph.Polite), w).toEqual([undefined, undefined, 'Form']);
+      expect(new Set(sub.map((c) => c.confidence)).size).toBe(1);
+    }
+    for (const [w, lemma] of [['सुनेंगे', 'सुनना'], ['जाएँगे', 'जाना']] as const) {
+      const fut = persons(w, lemma).filter((c) => c.morph.Tense === 'Fut');
+      expect(fut.map((c) => c.morph.Person), w).toEqual(['3', '1', '2']);
+      expect(fut.filter((c) => c.morph.Polite === 'Form').map((c) => c.morph.Person)).toEqual(['2']);
+    }
+    expect(persons('सुनेगा', 'सुनना').filter((c) => c.morph.Tense === 'Fut').map((c) => c.morph.Person)).toEqual(['3', '2']);
+  });
+});
+
+describe('forms the list writes out by hand carry the features the engine would give', () => {
+  it('every hand-listed inflected noun form has a Case on its first reading', () => {
+    let n = 0;
+    for (const e of hiLexicon.entries.filter((x) => x.pos === 'NOUN')) {
+      for (const f of e.forms.filter((x) => x.form !== e.lemma && x.morph.Number !== undefined)) {
+        const c = run('hi', f.form).analyses[0].candidates.find((x) => x.lemma === e.lemma && x.pos === 'NOUN');
+        expect(c, `${f.form} (${e.lemma})`).toBeDefined();
+        expect(c!.morph.Case, `${f.form} (${e.lemma})`).toBeDefined();
+        expect(c!.morph.Gender, `${f.form}`).toBeDefined();
+        n++;
+      }
+    }
+    expect(n).toBeGreaterThan(3);
+  });
+  it('regular noun forms are the engine\'s, not the list\'s: the plural of "book" and of "matter" carry a direct case', () => {
+    if (!ENGINE) return;
+    for (const [w, lemma] of [['किताबें', 'किताब'], ['बातें', 'बात'], ['पापों', 'पाप'], ['दिलों', 'दिल']] as const) {
+      const c = run('hi', w).analyses[0].candidates.find((x) => x.lemma === lemma)!;
+      expect(c.morph.Case, w).toBeDefined();
+      expect(c.morph.Number, w).toBe('Plur');
+    }
+  });
+});
+
+describe('a tie the neighbour rules cannot break: the participle of the base verb and the bare stem of its causative', () => {
+  const PAIRS: Array<[string, string, string]> = [['मिला', 'मिलना', 'मिलाना'], ['बढ़ा', 'बढ़ना', 'बढ़ाना'], ['जला', 'जलना', 'जलाना'], ['गिरा', 'गिरना', 'गिराना'], ['चला', 'चलना', 'चलाना'], ['बना', 'बनना', 'बनाना'], ['उठा', 'उठना', 'उठाना']];
+  it('five or more pairs: the participle of the base verb has the higher confidence, and is first when nothing else is known', () => {
+    expect(PAIRS.length).toBeGreaterThanOrEqual(5);
+    for (const [w, base, caus] of PAIRS) {
+      const c = run('hi', w).analyses[0].candidates;
+      const part = c.find((x) => x.lemma === base && x.morph.VerbForm === 'Part')!;
+      const stem = c.find((x) => x.lemma === caus && x.morph.VerbForm === 'Stem')!;
+      expect(part, `${w}: participle`).toBeDefined();
+      expect(stem, `${w}: stem`).toBeDefined();
+      expect(part.confidence, w).toBeGreaterThan(stem.confidence);
+      expect(c[0].lemma, `${w} alone`).toBe(base);
+    }
+  });
+  it('before a vector verb the neighbour rules promote the stem of the causative, and the participle stays below it', () => {
+    const SENT: Record<string, string> = { मिला: 'उसने दूध में पानी मिला दिया', बढ़ा: 'उसने बात आगे बढ़ा दी', जला: 'उसने दीया जला दिया', गिरा: 'उसने कप नीचे गिरा दिया', चला: 'उसने गाड़ी चला दी' };
+    for (const [w, s] of Object.entries(SENT)) {
+      const r = run('hi', s);
+      const i = r.tokens.findIndex((t) => t.surface === w);
+      const c = r.analyses[i].candidates;
+      const [, base, caus] = PAIRS.find((p) => p[0] === w)!;
+      const stem = c.find((x) => x.lemma === caus && x.morph.VerbForm === 'Stem')!;
+      const part = c.find((x) => x.lemma === base && x.morph.VerbForm === 'Part')!;
+      expect(stem && part, w).toBeTruthy();
+      expect(c.indexOf(stem), `${w} in "${s}": the stem comes before the participle`).toBeLessThan(c.indexOf(part));
+    }
+    // and in the context of a subject and an object the participle of the base verb stays first
+    for (const [w, s] of [['मिला', 'वह मुझे कल मिला'], ['गिरा', 'वह सीढ़ी से गिरा'], ['चला', 'वह घर से चला']] as const) {
+      const r = run('hi', s);
+      const i = r.tokens.findIndex((t) => t.surface === w);
+      expect(r.analyses[i].candidates[0].morph.VerbForm, s).toBe('Part');
+    }
+  });
+});
+
+describe('basic words found missing by frame, and the written forms that are two words', () => {
+  it('liking, needing, feeling, meeting, apologising, counting, time, directions, questions, comparison: the words are there', () => {
+    const MUST: Array<[string, PartOfSpeech]> = [
+      ['पसंद', 'ADJ'], ['पसंद', 'NOUN'], ['नापसंद', 'ADJ'], ['शौक़', 'NOUN'], ['मज़ा', 'NOUN'], ['ठंड', 'NOUN'], ['चक्कर', 'NOUN'], ['मुलाक़ात', 'NOUN'], ['माफ़', 'ADJ'], ['माफ़ी', 'NOUN'], ['खेद', 'NOUN'],
+      ['दर्जन', 'NOUN'], ['पौन', 'NUM'], ['साढ़े', 'NUM'], ['डेढ़', 'NUM'], ['सवा', 'NUM'], ['पूरब', 'NOUN'], ['पश्चिम', 'NOUN'], ['किसलिए', 'ADV'], ['तुलना', 'NOUN'], ['मुक़ाबला', 'NOUN'],
+      ['अंग', 'NOUN'], ['गोद', 'NOUN'], ['दीदी', 'NOUN'], ['भैया', 'NOUN'], ['शिकायत', 'NOUN'], ['सलाह', 'NOUN'], ['फ़ायदा', 'NOUN'], ['नुकसान', 'NOUN'], ['सैर', 'NOUN'], ['किराया', 'NOUN'], ['ख़राब', 'ADJ'],
+    ];
+    for (const [w, pos] of MUST) expect(hiLexicon.find(w, pos), `${w} ${pos}`).toBeDefined();
+    // the clock: "तीन बजे" is a form of "to strike"
+    expect(run('hi', 'बजे').analyses[0].candidates.some((c) => c.lemma === 'बजना')).toBe(true);
+  });
+  it('two words of one spelling are two entries: a defeat (feminine) and a necklace (masculine) are both NOUN हार', () => {
+    const hars = hiLexicon.entries.filter((e) => e.lemma === 'हार' && e.pos === 'NOUN');
+    expect(hars.length).toBe(2);
+    expect(hars.map((e) => e.forms[0].morph.Gender).sort()).toEqual(['Fem', 'Masc']);
+    expect(hars.map((e) => e.gloss).join(' ')).toMatch(/defeat/);
+    expect(hars.map((e) => e.gloss).join(' ')).toMatch(/necklace/);
+    const c = run('hi', 'हार').analyses[0].candidates.filter((x) => x.lemma === 'हार');
+    expect(c.map((x) => x.morph.Gender).sort()).toEqual(['Fem', 'Masc']);
+    expect(c.map((x) => x.gloss).sort().join('|')).not.toBe(`${c[0].gloss}|${c[0].gloss}`);
+    // the necklace's oblique plural is written out, the defeat's comes from the rules
+    expect(run('hi', 'हारों').analyses[0].candidates.some((x) => x.lemma === 'हार' && x.morph.Gender === 'Masc')).toBe(true);
+    expect(() => buildRows(parseRows('# NOUN\nहार/f = defeat\nहार/m = necklace'))).not.toThrow();
+    expect(buildRows(parseRows('# NOUN\nहार/f = defeat\nहार/m = necklace')).duplicates).toEqual(['हार|NOUN']);
+    expect(buildRows(parseRows('# NOUN\nहार/f = defeat\nहार#2/m = necklace')).duplicates).toEqual([]);
+  });
+  it('commonest pairs of words written alike: both entries exist, with different parts of speech or genders', () => {
+    const PAIRS: Array<Array<[string, PartOfSpeech]>> = [
+      [['माँग', 'NOUN'], ['माँगना', 'VERB']], [['मार', 'NOUN'], ['मारना', 'VERB']], [['लाल', 'ADJ'], ['लाल', 'NOUN']], [['मोती', 'NOUN'], ['मोती', 'PROPN']], [['रवि', 'NOUN'], ['रवि', 'PROPN']],
+      [['किरण', 'NOUN'], ['किरण', 'PROPN']], [['मत', 'NOUN'], ['मत', 'PART']], [['दौड़', 'NOUN'], ['दौड़ना', 'VERB']], [['डाल', 'NOUN'], ['डालना', 'VERB']], 
+      [['खेल', 'NOUN'], ['खेलना', 'VERB']], [['जीत', 'NOUN'], ['जीतना', 'VERB']], [['भूल', 'NOUN'], ['भूलना', 'VERB']], [['रोक', 'NOUN'], ['रोकना', 'VERB']], [['बोल', 'NOUN'], ['बोलना', 'VERB']],
+      [['ढाल', 'NOUN'], ['ढालना', 'VERB']], [['लूट', 'NOUN'], ['लूटना', 'VERB']], [['खोज', 'NOUN'], ['खोजना', 'VERB']], [['बाँध', 'NOUN'], ['बाँधना', 'VERB']], [['जोड़', 'NOUN'], ['जोड़ना', 'VERB']],
+      [['मिल', 'NOUN'], ['मिलना', 'VERB']], [['फूल', 'NOUN'], ['फूलना', 'VERB']], [['पूजा', 'NOUN'], ['पूजना', 'VERB']], [['भाव', 'NOUN'], ['भाना', 'VERB']], [['बैठक', 'NOUN'], ['बैठना', 'VERB']],
+    ];
+    for (const group of PAIRS) for (const [w, pos] of group) expect(hiLexicon.find(w, pos), `${w} ${pos}`).toBeDefined();
+    for (const w of ['माँग', 'मार', 'दौड़', 'डाल', 'खेल', 'जीत', 'भूल', 'रोक', 'बोल']) {
+      const c = run('hi', w).analyses[0].candidates;
+      expect(c.some((x) => x.pos === 'NOUN'), `${w} noun`).toBe(true);
+      expect(c.some((x) => x.pos === 'VERB'), `${w} verb (the stem)`).toBe(true);
+    }
+    // the lamp is also written like the verb form "gave"
+    expect(run('hi', 'दिया').analyses[0].candidates.map((c) => c.lemma)).toEqual(expect.arrayContaining(['देना', 'दीया']));
   });
 });

@@ -1,0 +1,220 @@
+/**
+ * A third pass over the commonest sentence frames of a beginner's Hindi (liking, needing, feeling hot or cold, seeming, meeting,
+ * asking, apologising, counting, telling the time, directions, questions, quantity, comparison), and the written forms that are
+ * TWO words: a defeat and a necklace (हार), a demand and the stem of "to ask for" (माँग), a ruby and "red", a pearl and the dog Moti.
+ * A second word of the same spelling and part of speech is written `lemma#2/m` (see ./entries.ts).
+ * Machine-drafted, not reviewed by a native speaker.
+ */
+export const FRAME_MORE_ROWS = `
+# ADJ
+पसंद = liked, pleasing (X को Y पसंद है) [inv perso-arabic everyday]
+नापसंद = disliked, not to one's taste [inv perso-arabic everyday]
+सक्षम = able, capable [inv sanskritic formal]
+क़ाबिल = able, worthy [inv perso-arabic everyday]
+मुमकिन = possible [inv perso-arabic everyday]
+समाप्त = finished, ended [inv sanskritic formal]
+माफ़ = forgiven, excused (माफ़ कीजिए) [inv perso-arabic everyday]
+चालू = running, in use, current [inv everyday]
+# NOUN
+## d:feelings
+पसंद/f = liking, choice, taste [perso-arabic everyday]
+शौक़/m = hobby, liking [perso-arabic everyday]
+मज़ा/m = enjoyment, fun, taste [perso-arabic everyday]
+ठंड/f = cold, chill [everyday d:nature]
+चक्कर/m = dizziness; a turn, a round [perso-arabic everyday d:health]
+खेद/m = regret, sorrow [sanskritic formal]
+## d:daily-life
+दिखाई/f = sight, visibility (दिखाई देना = to be seen) [everyday]
+सुनाई/f = hearing, audibility (सुनाई देना = to be heard) [everyday]
+मुलाक़ात/f = meeting, visit [perso-arabic everyday]
+परिचय/m = introduction, acquaintance [sanskritic formal]
+माँग/f = demand, request; the parting of the hair [everyday]
+आगमन/m = arrival, coming [sanskritic formal]
+सौदा/m = deal, bargain; goods bought [perso-arabic everyday]
+दर्जन/m = dozen [english-loan everyday d:number]
+सैकड़ा/m = a hundred, hundreds [everyday d:number]
+पूरब/m = east [everyday d:travel]
+तुलना/f = comparison [sanskritic formal]
+मुक़ाबला/m = competition, match, comparison [perso-arabic everyday]
+## d:body
+अंग/m = limb, part of the body [sanskritic everyday]
+गोद/f = lap; the arms (of a mother) [everyday]
+बगल/f = armpit, side [perso-arabic everyday]
+पसली/f = rib [everyday]
+रीढ़/f = spine [everyday]
+## d:daily-life
+// ── two words written alike
+हार#2/m = necklace, garland [everyday d:clothes] | हार:m; हारों:m pl obl
+मार/f = beating, blow, hitting [everyday]
+मिल/f = mill, factory [english-loan everyday d:work]
+लाल/m = ruby; dear son, darling [literary everyday]
+मोती/m = pearl [everyday]
+रवि/m = the sun [sanskritic literary d:nature]
+किरण/f = ray of light [sanskritic everyday d:nature]
+कमल/m = lotus [sanskritic everyday d:nature]
+मत/m = opinion, vote, view [sanskritic formal]
+दौड़/f = run, race [everyday]
+डाल/f = branch of a tree [everyday d:nature]
+चाल/f = gait, pace; a move, a trick [everyday]
+खाल/f = skin, hide [everyday]
+हाल/m = state, condition; news of someone [perso-arabic everyday]
+ताल/m = rhythm, beat; a pond [everyday]
+कली/f = bud [everyday d:nature]
+भाव/m = feeling; price, rate [sanskritic everyday]
+रोक/f = stop, ban, restraint [everyday]
+बोल/m = word, utterance; a line of a song [everyday]
+मोल/m = price, worth [everyday]
+टीका/m = a tilak mark; vaccination [everyday]
+# NUM
+पौन = three-quarters (पौन घंटा) [everyday d:number] | पौन
+साढ़े = and a half (साढ़े तीन = three and a half) [everyday d:number] | साढ़े
+# ADV
+किसलिए = why, for what purpose [everyday] | किसलिए
+// ── frames: chores, trips, shopping, feeling, family, the body, weather, food, time (a second sweep by frame)
+# VERB
+माँजना = to scrub, to polish [erg] | @verb:c
+# ADJ
+हवाई = of the air; by air (हवाई जहाज़) [inv perso-arabic everyday]
+सुहाना = pleasant, lovely [everyday]
+सुहावना = pleasant, agreeable [everyday]
+सुखद = pleasant, agreeable [inv sanskritic formal]
+आरामदायक = comfortable [inv perso-arabic everyday]
+तंग = narrow, tight; hard up [inv perso-arabic everyday]
+ज़िद्दी = stubborn [inv perso-arabic everyday]
+बेहोश = unconscious, fainted [inv perso-arabic everyday]
+ख़राब = bad, spoiled, out of order [inv perso-arabic everyday]
+अनोखा = unique, strange, rare [everyday]
+सौतेला = step- (सौतेली माँ) [everyday]
+जुड़वाँ = twin [inv everyday]
+# NOUN
+## d:feelings
+अफ़सोस/m = regret, sorrow [perso-arabic everyday]
+हैरानी/f = astonishment, surprise [perso-arabic everyday]
+शिकायत/f = complaint [perso-arabic everyday]
+सलाह/f = advice [perso-arabic everyday]
+ज़िद/f = stubbornness, insistence [perso-arabic everyday]
+फ़ायदा/m = benefit, profit [perso-arabic everyday]
+नुकसान/m = harm, loss [perso-arabic everyday]
+लगन/f = devotion, dedication [everyday]
+## d:travel
+सैर/f = walk, outing, stroll [perso-arabic everyday]
+सीट/f = seat [english-loan everyday]
+किराया/m = fare, rent [perso-arabic everyday]
+उड़ान/f = flight [everyday]
+बिल/m = bill [english-loan everyday d:money]
+रसीद/f = receipt [perso-arabic everyday d:money]
+छूट/f = discount, exemption [everyday d:money]
+थैली/f = small bag, pouch [everyday]
+तराज़ू/m = scales, balance [perso-arabic everyday]
+किलो/m = kilogram [english-loan everyday]
+लीटर/m = litre [english-loan everyday]
+मीटर/m = metre [english-loan everyday]
+इस्तेमाल/m = use, usage [perso-arabic everyday]
+चढ़ाई/f = climb, ascent [everyday d:nature]
+उतार/m = descent, slope down [everyday d:nature]
+## d:school
+पन्ना/m = page, leaf of paper [everyday]
+अध्याय/m = chapter [sanskritic formal]
+नंबर/m = number, mark, turn [english-loan everyday]
+## d:family
+जीजा/m = sister's husband [inv everyday]
+बहनोई/m = sister's husband [inv everyday]
+साला/m = wife's brother [everyday]
+साली/f = wife's sister [everyday]
+देवरानी/f = husband's younger brother's wife [everyday]
+जेठानी/f = husband's elder brother's wife [everyday]
+विधवा/f = widow [sanskritic everyday]
+ससुराल/m = husband's family home, in-laws' house [everyday]
+मायका/m = a wife's parental home [everyday]
+बाप/m = father [inv everyday colloquial]
+अम्मी/f = mother, mum [perso-arabic everyday]
+अब्बू/m = father, dad [perso-arabic everyday]
+अम्मा/f = mother [everyday]
+पिताजी/m = father (respectful) [inv everyday]
+माताजी/f = mother (respectful) [everyday]
+भैया/m = brother (also a respectful address) [inv everyday]
+दीदी/f = elder sister [everyday]
+## d:body
+जबड़ा/m = jaw [everyday]
+पंजा/m = paw, palm and fingers [perso-arabic everyday]
+## d:nature
+सूखा/m = drought [everyday]
+लू/f = hot dry wind of summer [everyday]
+बूँद/f = drop [everyday]
+नमी/f = dampness, humidity [perso-arabic everyday]
+सूर्योदय/m = sunrise [sanskritic formal d:time]
+सूर्यास्त/m = sunset [sanskritic formal d:time]
+पूर्णिमा/f = full moon [sanskritic everyday d:time]
+## d:food
+पकौड़ा/m = pakora, a fritter [everyday]
+चना/m = chickpea, gram [everyday]
+राजमा/m = kidney beans [everyday]
+रायता/m = raita, spiced curd [everyday]
+पुलाव/m = pulao [perso-arabic everyday]
+बिरयानी/f = biryani [perso-arabic everyday]
+## d:time
+दशक/m = decade [sanskritic formal]
+सदी/f = century [perso-arabic everyday]
+पीढ़ी/f = generation [everyday]
+## d:daily-life
+// ── more written forms that are two words
+बाँध/m = dam, embankment [everyday]
+ढाल/f = shield; slope [everyday]
+लूट/f = plunder, loot [everyday]
+खोज/f = search, discovery [everyday]
+मेल/m = harmony, union; mail [everyday]
+जोड़/m = joint; sum, total [everyday]
+बैठक/f = meeting, sitting room [everyday]
+छाप/f = print, mark, impression [everyday]
+// ── the vocabulary of the Hindi Bible beyond the bundled chapters (famine, inheritance, sword, throne, commandment, harvest)
+# VERB
+घेरना = to surround, to besiege [erg] | @verb:c
+ढाँपना = to cover [erg] | @verb:c
+छिड़कना = to sprinkle [erg] | @verb:c
+जकड़ना = to seize tightly, to bind [erg] | @verb:c
+हाँकना = to drive (animals), to herd [erg d:village] | @verb:c
+बाँचना = to read aloud [erg] | @verb:c
+# ADJ
+कंगाल = destitute, penniless [inv perso-arabic everyday biblical]
+जयवंत = victorious [inv sanskritic formal biblical]
+उड़ाऊ = wasteful, prodigal [inv everyday biblical]
+नंगा = naked [everyday biblical]
+धनी = rich; a rich person [inv sanskritic everyday biblical]
+# NOUN
+## d:scripture
+अकाल/m = famine [perso-arabic everyday biblical]
+वारिस/m = heir [perso-arabic everyday biblical]
+सताव/m = persecution [everyday biblical]
+तलवार/f = sword [everyday biblical]
+सिंहासन/m = throne [sanskritic formal biblical]
+सामर्थ्य/m = power, ability [sanskritic formal biblical]
+धीरज/m = patience, endurance [everyday biblical]
+दासत्व/m = slavery, bondage [sanskritic formal biblical]
+विश्राम/m = rest [sanskritic formal biblical]
+आदर/m = honour, respect [sanskritic formal biblical]
+हत्या/f = murder [sanskritic formal biblical]
+व्यभिचार/m = adultery [sanskritic formal biblical]
+नरसिंगा/m = trumpet [everyday biblical]
+गरज/f = thunder; need [everyday biblical]
+फरीसी/m = Pharisee [biblical]
+जौ/m = barley [everyday biblical]
+वंश/m = line, descendants [sanskritic formal biblical]
+ब्याह/m = marriage, wedding [everyday biblical]
+कन्या/f = girl, daughter, maiden [sanskritic formal biblical]
+ग़ुलाम/m = slave [perso-arabic everyday biblical]
+हाकिम/m = ruler, governor [perso-arabic everyday biblical]
+सरदार/m = chief, leader [perso-arabic everyday biblical]
+बैरी/m = enemy [everyday biblical]
+शासक/m = ruler [sanskritic formal biblical]
+अर्पण/m = offering [sanskritic formal biblical]
+होमबलि/f = burnt offering [sanskritic religious biblical]
+तम्बू/m = tent [everyday biblical]
+खलिहान/m = threshing floor, barn [everyday biblical]
+अंजीर/m = fig [perso-arabic everyday biblical]
+जैतून/m = olive [perso-arabic everyday biblical]
+मरी/f = plague, pestilence [everyday biblical]
+गरीबी/f = poverty [perso-arabic everyday]
+कंगाली/f = poverty, destitution [perso-arabic everyday]
+राज्यपाल/m = governor [sanskritic formal biblical]
+इस्राएली/mf = Israelite [biblical]
+`;

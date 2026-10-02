@@ -7,7 +7,7 @@
  */
 export const FUNCTION_ROWS = `
 # AUX
-होना = to be; to become [noerg everyday] | होना:inf; होने:inf obl; हूँ:1s pres VerbForm=Fin; है:2s pres VerbForm=Fin; है:3s pres VerbForm=Fin; हैं:1p pres VerbForm=Fin; हैं:3p pres VerbForm=Fin; हैं:Person=2 pres Polite=Form VerbForm=Fin; हो:2p pres VerbForm=Fin; हो:VerbForm=Stem; हो:2s subj VerbForm=Fin; हो:3s subj VerbForm=Fin; हो:2p subj VerbForm=Fin; हो:Mood=Imp Person=2 Polite=Fam VerbForm=Fin; हों:1p subj VerbForm=Fin; हों:3p subj VerbForm=Fin; हों:Mood=Imp Person=2 Polite=Form VerbForm=Fin; होइए:Mood=Imp Person=2 Polite=Form VerbForm=Fin; था:m sg past VerbForm=Fin; थे:m pl past VerbForm=Fin; थी:f sg past VerbForm=Fin; थीं:f pl past VerbForm=Fin; हुआ:VerbForm=Part pfv m sg; हुए:VerbForm=Part pfv m pl; हुई:VerbForm=Part pfv f sg; हुईं:VerbForm=Part pfv f pl; होता:VerbForm=Part ipfv m sg; होते:VerbForm=Part ipfv m pl; होते:VerbForm=Part ipfv m sg obl; होती:VerbForm=Part ipfv f sg; होतीं:VerbForm=Part ipfv f pl; हूँगा:Tense=Fut Mood=Ind VerbForm=Fin Person=1 Number=Sing Gender=Masc; हूँगी:Tense=Fut Mood=Ind VerbForm=Fin Person=1 Number=Sing Gender=Fem; होगा:Tense=Fut Mood=Ind VerbForm=Fin Person=2,3 Number=Sing Gender=Masc; होगी:Tense=Fut Mood=Ind VerbForm=Fin Person=2,3 Number=Sing Gender=Fem; होंगे:Tense=Fut Mood=Ind VerbForm=Fin Person=1,2,3 Number=Plur Gender=Masc; होंगी:Tense=Fut Mood=Ind VerbForm=Fin Person=1,2,3 Number=Plur Gender=Fem; होगे:Tense=Fut Mood=Ind VerbForm=Fin Person=2 Number=Plur Gender=Masc; होकर:VerbForm=Conv
+होना = to be; to become [noerg everyday] | होना:inf; होने:inf obl; हूँ:1s pres VerbForm=Fin; है:3s pres VerbForm=Fin; है:2s pres VerbForm=Fin; हैं:3p pres VerbForm=Fin; हैं:1p pres VerbForm=Fin; हैं:Person=2 Number=Plur Polite=Form pres VerbForm=Fin; हो:Person=2 Polite=Fam pres VerbForm=Fin; हो:VerbForm=Stem; हो:Mood=Sub Person=3 Number=Sing VerbForm=Fin; हो:Mood=Sub Person=2 Number=Sing VerbForm=Fin; हो:Mood=Sub Person=2 Polite=Fam VerbForm=Fin; हो:Mood=Imp Person=2 Polite=Fam VerbForm=Fin; हों:Mood=Sub Person=3 Number=Plur VerbForm=Fin; हों:Mood=Sub Person=1 Number=Plur VerbForm=Fin; हों:Mood=Sub Person=2 Number=Plur Polite=Form VerbForm=Fin; हों:Mood=Imp Person=2 Polite=Form VerbForm=Fin; होइए:Mood=Imp Person=2 Polite=Form VerbForm=Fin; था:m sg past Person=3 VerbForm=Fin; था:m sg past Person=1 VerbForm=Fin; था:m sg past Person=2 VerbForm=Fin; थी:f sg past Person=3 VerbForm=Fin; थी:f sg past Person=1 VerbForm=Fin; थी:f sg past Person=2 VerbForm=Fin; थे:m pl past Person=3 VerbForm=Fin; थे:m pl past Person=1 VerbForm=Fin; थे:m pl past Person=2 Polite=Fam VerbForm=Fin; थे:m pl past Person=2 Polite=Form VerbForm=Fin; थीं:f pl past Person=3 VerbForm=Fin; थीं:f pl past Person=1 VerbForm=Fin; थीं:f pl past Person=2 Polite=Fam VerbForm=Fin; थीं:f pl past Person=2 Polite=Form VerbForm=Fin; हुआ:VerbForm=Part pfv m sg; हुए:VerbForm=Part pfv m pl; हुई:VerbForm=Part pfv f sg; हुईं:VerbForm=Part pfv f pl; होता:VerbForm=Part ipfv m sg; होते:VerbForm=Part ipfv m pl; होते:VerbForm=Part ipfv m sg obl; होती:VerbForm=Part ipfv f sg; होतीं:VerbForm=Part ipfv f pl; हूँगा:Tense=Fut Mood=Ind VerbForm=Fin Person=1 Number=Sing Gender=Masc; हूँगी:Tense=Fut Mood=Ind VerbForm=Fin Person=1 Number=Sing Gender=Fem; होगा:Tense=Fut Mood=Ind VerbForm=Fin Person=3 Number=Sing Gender=Masc; होगा:Tense=Fut Mood=Ind VerbForm=Fin Person=2 Number=Sing Gender=Masc; होगी:Tense=Fut Mood=Ind VerbForm=Fin Person=3 Number=Sing Gender=Fem; होगी:Tense=Fut Mood=Ind VerbForm=Fin Person=2 Number=Sing Gender=Fem; होगी:Tense=Fut Mood=Ind VerbForm=Fin Person=2 Polite=Fam Gender=Fem; होंगे:Tense=Fut Mood=Ind VerbForm=Fin Person=3 Number=Plur Gender=Masc; होंगे:Tense=Fut Mood=Ind VerbForm=Fin Person=1 Number=Plur Gender=Masc; होंगे:Tense=Fut Mood=Ind VerbForm=Fin Person=2 Number=Plur Polite=Form Gender=Masc; होंगी:Tense=Fut Mood=Ind VerbForm=Fin Person=3 Number=Plur Gender=Fem; होंगी:Tense=Fut Mood=Ind VerbForm=Fin Person=1 Number=Plur Gender=Fem; होंगी:Tense=Fut Mood=Ind VerbForm=Fin Person=2 Number=Plur Polite=Form Gender=Fem; होगे:Tense=Fut Mood=Ind VerbForm=Fin Person=2 Polite=Fam Gender=Masc; होकर:VerbForm=Conv
 सकना = to be able to, can [everyday] | @verb:c noimp
 चाहिए = ought to, should; is needed [inv everyday] | चाहिए
 
@@ -24,21 +24,21 @@ export const FUNCTION_ROWS = `
 लगना = to seem; to be felt; to begin (after an oblique infinitive) [noerg everyday] | @verb:c
 पड़ना = to fall; to have to (after an oblique infinitive) [noerg everyday] | @verb:c
 चुकना = to have already (done); to be finished [noerg everyday] | @verb:c noimp
-समझना = to understand; to think, to consider [erg everyday d:school] | @verb:c
+समझना = to understand; to think, to consider [everyday d:school] | @verb:c
 रखना = to keep, to put, to place [erg everyday] | @verb:c
 मानना = to accept, to obey; to believe; to confess [erg everyday d:theology] | @verb:c
 देखना = to see, to look at [erg everyday] | @verb:c
 सुनना = to hear, to listen [erg everyday] | @verb:c
-बोलना = to speak [erg everyday d:speech] | @verb:c
+बोलना = to speak [everyday d:speech] | @verb:c
 करवाना = to have (something) done [erg everyday cau:करना] | @verb:v
 कराना = to have (something) done [erg everyday cau:करना] | @verb:v
 
 # PRON
 मैं = I [everyday] | मैं:1s dir prs; मैंने:1s prs Case=Erg; मुझ:1s obl prs; मुझे:1s prs Case=Dat; मुझको:1s prs Case=Dat; मुझसे:1s obl prs; मुझमें:1s obl prs; मुझपर:1s obl prs
-हम = we [everyday] | हम:1p dir obl prs; हमने:1p prs Case=Erg; हमें:1p prs Case=Dat; हमको:1p prs Case=Dat; हमसे:1p obl prs; हममें:1p obl prs; हमपर:1p obl prs
+हम = we [everyday] | हम:1p dir prs; हम:1p obl prs; हमने:1p prs Case=Erg; हमें:1p prs Case=Dat; हमको:1p prs Case=Dat; हमसे:1p obl prs; हममें:1p obl prs; हमपर:1p obl prs
 तू = you (intimate: to a child, a close friend, God in prayer) [everyday] | तू:2s dir prs Polite=Infm; तूने:2s prs Case=Erg Polite=Infm; तुझ:2s obl prs Polite=Infm; तुझे:2s prs Case=Dat Polite=Infm; तुझको:2s prs Case=Dat Polite=Infm; तुझसे:2s obl prs Polite=Infm; तुझमें:2s obl prs Polite=Infm; तुझपर:2s obl prs Polite=Infm
-तुम = you (familiar) [everyday] | तुम:Person=2 dir obl prs Polite=Fam; तुमने:Person=2 prs Case=Erg Polite=Fam; तुम्हें:Person=2 prs Case=Dat Polite=Fam; तुमको:Person=2 prs Case=Dat Polite=Fam; तुमसे:Person=2 obl prs Polite=Fam; तुममें:Person=2 obl prs Polite=Fam; तुमपर:Person=2 obl prs Polite=Fam
-आप = you (polite); oneself (in अपने आप) [everyday] | आप:Person=2 dir obl prs Polite=Form; आपने:Person=2 prs Case=Erg Polite=Form; आपको:Person=2 prs Case=Dat Polite=Form; आपसे:Person=2 obl prs Polite=Form; आपमें:Person=2 obl prs Polite=Form; आपपर:Person=2 obl prs Polite=Form
+तुम = you (familiar) [everyday] | तुम:Person=2 dir prs Polite=Fam; तुम:Person=2 obl prs Polite=Fam; तुमने:Person=2 prs Case=Erg Polite=Fam; तुम्हें:Person=2 prs Case=Dat Polite=Fam; तुमको:Person=2 prs Case=Dat Polite=Fam; तुमसे:Person=2 obl prs Polite=Fam; तुममें:Person=2 obl prs Polite=Fam; तुमपर:Person=2 obl prs Polite=Fam
+आप = you (polite); oneself (in अपने आप) [everyday] | आप:Person=2 dir prs Polite=Form; आप:Person=2 obl prs Polite=Form; आपने:Person=2 prs Case=Erg Polite=Form; आपको:Person=2 prs Case=Dat Polite=Form; आपसे:Person=2 obl prs Polite=Form; आपमें:Person=2 obl prs Polite=Form; आपपर:Person=2 obl prs Polite=Form
 यह = this; he, she, it (near) [everyday] | यह:3s dir dem; इस:3s obl dem; इसे:3s dem Case=Dat; इसको:3s dem Case=Dat; इसने:3s dem Case=Erg; इससे:3s obl dem; इसमें:3s obl dem; इसपर:3s obl dem
 ये = these; they (near); this [everyday] | ये:3p dir dem; इन:3p obl dem; इन्हें:3p dem Case=Dat; इनको:3p dem Case=Dat; इन्होंने:3p dem Case=Erg; इनसे:3p obl dem; इनमें:3p obl dem; इनपर:3p obl dem
 वह = that; he, she, it (far) [everyday] | वह:3s dir dem; उस:3s obl dem; उसे:3s dem Case=Dat; उसको:3s dem Case=Dat; उसने:3s dem Case=Erg; उससे:3s obl dem; उसमें:3s obl dem; उसपर:3s obl dem
@@ -157,8 +157,8 @@ export const FUNCTION_ROWS = `
 भी = also, too, even [everyday] | भी
 ही = only, just, very; (emphasis) [everyday] | ही
 तो = then, so; indeed, as for (emphasis) [everyday] | तो
-न = not; (a tag question: न?) [everyday] | न:neg
-मत = do not (a command) [everyday] | मत:neg
+न = not; (a tag question: न?) [everyday] | न
+मत = do not (a command) [everyday] | मत
 क्या = (marks a yes/no question) [everyday] | क्या:int
 सा = -ish; like, as if (after a word: थोड़ा सा, कौन सा) [everyday] | @adj
 वाला = one who, one that; -er (आने वाला = the coming one) [everyday] | @adj
@@ -167,7 +167,7 @@ export const FUNCTION_ROWS = `
 केवल = only, merely [sanskritic] | केवल
 
 # ADV
-नहीं = not, no [everyday] | नहीं:neg
+नहीं = not, no [everyday] | नहीं
 अब = now [everyday] | अब
 तब = then, at that time [everyday] | तब
 फिर = then, again, afterwards [perso-arabic everyday] | फिर

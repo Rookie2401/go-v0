@@ -7,7 +7,7 @@ export const VERB_MORE_ROWS = `
 # VERB
 // ── play, animals, sounds
 खेलना = to play (a game, a sport) [d:school] | @verb:c
-भौंकना = to bark [noerg d:animals] | @verb:c
+भौंकना = to bark [d:animals] | @verb:c
 दहाड़ना = to roar [noerg d:animals] | @verb:c
 चहचहाना = to chirp, to twitter [noerg d:animals] | @verb:v
 हिनहिनाना = to neigh [noerg d:animals] | @verb:v

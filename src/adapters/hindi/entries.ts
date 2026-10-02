@@ -10,6 +10,7 @@
  *   inv            the word does not change (सुंदर, लाल; the nouns पिता, राजा)
  *   erg / noerg    a verb that takes ने in the perfective / does not; left out when it is not certain
  *   cau:करना        this verb is the causative of करना
+ *   हार#2/m         a second word spelled and classed like another (हार/f defeat, हार#2/m necklace): the lemma is हार for both, the first row carries the lemma's data
  *   also:भविष्यद्वक्ता   another spelling of this lemma (a variant of it: the learner's record stays one word)
  *   a register     everyday sanskritic perso-arabic english-loan biblical formal literary colloquial religious
  *   d:family       a domain (see HI_DOMAINS): kept in a side table, like the Spanish annotations
@@ -56,6 +57,8 @@ export interface HiRow {
   causativeOf?: string;
   /** Other spellings of this lemma (`also:भविष्यद्वक्ता`): variants of it, never lemmas of their own. */
   also: string[];
+  /** `हार#2/m`: the second word of the same spelling and part of speech (a necklace beside a defeat); the lemma is still हार. */
+  homograph?: string;
   register: RegisterTag[];
   domains: string[];
   forms?: string[];
@@ -138,11 +141,14 @@ export function parseRows(source: string, label = 'rows', problems?: string[]): 
     let gender: HiRow['gender'];
     const g = /\/(m|f|mf)$/u.exec(head);
     if (g) { gender = g[1] as HiRow['gender']; head = head.slice(0, g.index); }
+    let homograph: string | undefined;
+    const hm = /^(.+)#(\w+)$/u.exec(head);
+    if (hm) { head = hm[1]; homograph = hm[2]; }
     if (!head || !rest) throw new Error(`${where}: empty lemma or gloss`);
     if ((pos === 'NOUN') && !gender) throw new Error(`${where}: a noun needs a gender (${head})`);
     for (const d of sectionDomains) if (!domains.includes(d)) domains.push(d);
     for (const a of also) if (a === head) throw new Error(`${where}: also:${a} is the lemma itself`);
-    rows.push({ lemma: head, pos, gloss: rest, gender, invariant, ergative, causativeOf, also, register, domains, forms, where });
+    rows.push({ lemma: head, pos, gloss: rest, gender, invariant, ergative, causativeOf, also, homograph, register, domains, forms, where });
   };
   source.split('\n').forEach((raw, n) => {
     try {
@@ -166,7 +172,7 @@ function adjectiveForms(lemma: string, extra: string): string[] {
   const stem = lemma.slice(0, -1);
   const x = extra ? ` ${extra}` : '';
   return [
-    `${lemma}:m sg dir${x}`, `${stem}े:m sg obl${x}`, `${stem}े:m pl${x}`, `${stem}ी:f sg${x}`, `${stem}ी:f pl${x}`,
+    `${lemma}:m sg dir${x}`, `${stem}े:m sg obl${x}`, `${stem}े:m pl dir${x}`, `${stem}े:m pl obl${x}`, `${stem}ी:f sg${x}`, `${stem}ी:f pl${x}`,
   ];
 }
 
@@ -174,7 +180,7 @@ function adjectiveForms(lemma: string, extra: string): string[] {
 function ordinalForms(lemma: string): string[] {
   if (!lemma.endsWith('वाँ')) throw new Error(`@ord needs a word in -वाँ: ${lemma}`);
   const stem = lemma.slice(0, -2);
-  return [`${lemma}:m sg dir`, `${stem}वें:m`, `${stem}वीं:f`];
+  return [`${lemma}:m sg dir`, `${stem}ें:m sg obl`, `${stem}ें:m pl dir`, `${stem}ें:m pl obl`, `${stem}ीं:f sg`, `${stem}ीं:f pl`];
 }
 
 const FUT = 'Tense=Fut Mood=Ind VerbForm=Fin';
@@ -231,19 +237,25 @@ function verbForms(lemma: string, kind: string, opts: ReadonlySet<string>): stri
     add(pfv[0], `${pf} m sg`); add(pfv[1], `${pf} m pl`); add(pfv[2], `${pf} f sg`); add(pfv[3], `${pf} f pl`);
   }
   // the subjunctive, the commands and the future
-  add(sub.s1, `1s subj ${FIN}`);
-  add(sub.s23, `2s subj ${FIN}`); add(sub.s23, `3s subj ${FIN}`);
-  add(sub.sp, `1p subj ${FIN}`); add(sub.sp, `3p subj ${FIN}`);
-  add(sub.s2p, `2p subj ${FIN}`);
+  // the way the rule engine states them: the singular second / third person is one form, the plural first / second / third another
+// every person is a reading of its own, in the order third, first, second; Polite=Form only on the आप reading
+  const persons = (form: string, tags: string, set: 'sing' | 'plur') => {
+    if (set === 'sing') { add(form, `${tags} Person=3 Number=Sing`); add(form, `${tags} Person=2 Number=Sing`); }
+    else { add(form, `${tags} Person=3 Number=Plur`); add(form, `${tags} Person=1 Number=Plur`); add(form, `${tags} Person=2 Number=Plur Polite=Form`); }
+  };
+  add(sub.s1, `Mood=Sub Person=1 Number=Sing ${FIN}`);
+  persons(sub.s23, `Mood=Sub ${FIN}`, 'sing');
+  persons(sub.sp, `Mood=Sub ${FIN}`, 'plur');
   add(sub.s2p, `Mood=Imp Person=2 Polite=Fam ${FIN}`);
+  add(sub.s2p, `Mood=Sub Person=2 Polite=Fam ${FIN}`);
   add(sub.sp, `Mood=Imp Person=2 Polite=Form ${FIN}`);
   if (!opts.has('noimp')) add(sub.formal, `Mood=Imp Person=2 Polite=Form ${FIN}`);
   if (!opts.has('nofut')) {
     // the plural: खाएँगे (a nasal on the vowel), समझेंगे / देंगे (anusvara before ग)
     add(`${sub.s1}गा`, `${FUT} Person=1 Number=Sing Gender=Masc`); add(`${sub.s1}गी`, `${FUT} Person=1 Number=Sing Gender=Fem`);
-    add(`${sub.s23}गा`, `${FUT} Person=2,3 Number=Sing Gender=Masc`); add(`${sub.s23}गी`, `${FUT} Person=2,3 Number=Sing Gender=Fem`);
-    add(`${sub.sp}गे`, `${FUT} Person=1,2,3 Number=Plur Gender=Masc`); add(`${sub.sp}गी`, `${FUT} Person=1,2,3 Number=Plur Gender=Fem`);
-    add(`${sub.s2p}गे`, `${FUT} Person=2 Number=Plur Gender=Masc`); add(`${sub.s2p}गी`, `${FUT} Person=2 Number=Plur Gender=Fem`);
+    persons(`${sub.s23}गा`, `${FUT} Gender=Masc`, 'sing'); persons(`${sub.s23}गी`, `${FUT} Gender=Fem`, 'sing');
+    persons(`${sub.sp}गे`, `${FUT} Gender=Masc`, 'plur'); persons(`${sub.sp}गी`, `${FUT} Gender=Fem`, 'plur');
+    add(`${sub.s2p}गे`, `${FUT} Person=2 Polite=Fam Gender=Masc`); add(`${sub.s2p}गी`, `${FUT} Person=2 Polite=Fam Gender=Fem`);
   }
   if (!opts.has('noconv') && stem !== 'कर') {
     add(`${stem}कर`, 'VerbForm=Conv'); add(`${stem}करके`, 'VerbForm=Conv');
@@ -279,7 +291,7 @@ function defaultForms(r: HiRow): string[] {
     case 'NOUN':
     case 'PROPN': {
       if (!r.gender) return [r.lemma];
-      if (r.gender === 'mf') return [`${r.lemma}:Gender=Fem,Masc`];
+      if (r.gender === 'mf') return [`${r.lemma}:Gender=Masc`, `${r.lemma}:Gender=Fem`];
       // a feminine lemma form is singular; a masculine one in -ा is singular, one that does not change or ends in a consonant is not (घर: one house or many)
       if (r.gender === 'f') return [r.pos === 'NOUN' ? `${r.lemma}:f sg` : `${r.lemma}:f`];
       return [r.pos === 'NOUN' && end === AA && !r.invariant ? `${r.lemma}:m sg dir` : `${r.lemma}:m`];
@@ -304,7 +316,7 @@ export function buildRows(rows: readonly HiRow[], taken: ReadonlySet<string> = n
   const seen = new Set<string>();
   const duplicates: string[] = [];
   for (const r of rows) {
-    const key = annotationKey(r.lemma, r.pos);
+    const key = annotationKey(r.lemma, r.pos) + (r.homograph ? `#${r.homograph}` : '');
     if (seen.has(key) || taken.has(key)) { duplicates.push(key); continue; }
     seen.add(key);
     let entry: LexEntry;

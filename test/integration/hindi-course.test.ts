@@ -334,6 +334,28 @@ describe('Your Copy', () => {
     // and it shares the learner model: words read in the course are not new here
     const p = (await library.profile(ch1.id))!;
     expect((await app.golearn.scoreProfile(U, p)).newShare).toBeLessThan(1);
+    // a text on no shelf gets the course's profile for such texts: every layer within reach (decoding and the
+    // transliteration rescue included), none pushed forward
+    const outside = await catalog.assistanceFor({ courseId: HINDI_COURSE_ID, textId: ch1.id });
+    expect(outside).toMatchObject({ romanization: 'rescue', decodingFirst: false });
+    expect(outside.layers).toEqual(expect.arrayContaining(['decoding', 'grammar', 'english']));
+  });
+});
+
+describe('what makes a text hard is said in words', () => {
+  it('Scripture is measured as carrying biblical and Sanskrit-derived vocabulary; a Stage 0 story is not', async () => {
+    const mark = (await library.profile(T('bible-mrk-1')))!;
+    expect(mark.features.registerShare?.marked ?? 0).toBeGreaterThan(0.02);
+    expect(Object.keys(mark.features.registerShare ?? {})).toEqual(expect.arrayContaining(['biblical']));
+    const story = (await library.profile(T('s0a-01')))!;
+    expect(story.features.registerShare?.marked ?? 0).toBeLessThan(mark.features.registerShare!.marked);
+    const score = await app.golearn.scoreProfile(U, mark);
+    const register = score.personal.factors.find((f) => f.key === 'register');
+    expect(register, JSON.stringify(score.personal.factors.map((f) => f.key))).toBeDefined();
+    expect(register!.note).toMatch(/vocabulary/);
+    expect(register!.note).not.toMatch(/correct|pure|proper|better/i);
+    // relative-correlative clauses of Hindi are counted as relative clauses
+    expect(mark.features.relativePerSentence ?? 0).toBeGreaterThan(0);
   });
 });
 

@@ -279,6 +279,25 @@ export function inspectText(text: string, opts: QualityOptions): QualityReport {
       const english = lower.filter((w) => ENGLISH_WORDS.has(w)).length / lower.length;
       add('language-mismatch', share < 0.1 ? 'serious' : 'warning', words.length,
         `Only ${Math.round(share * 100)}% of the words are common words of this language${english > 0.25 ? '; the text looks like English' : ''}.`, nonBlank.find((l) => l.length > 30));
+    } else {
+      // the text as a whole is in its language, but parts of it may not be: an annotated edition carries an English
+      // preface, notes, exercises and a vocabulary. Paragraph by paragraph: English common words clearly outweigh the
+      // language's own. Reported from 5 % of the words; at 15 % the source is not the book alone.
+      let foreign = 0;
+      let foreignParagraphs = 0;
+      let foreignSample = '';
+      for (const p of paragraphs) {
+        const ws = (p.match(/\p{L}[\p{L}\p{M}'’]*/gu) ?? []).map((w) => w.toLowerCase());
+        if (ws.length < 12) continue;
+        const en = ws.filter((w) => ENGLISH_WORDS.has(w)).length / ws.length;
+        const own = ws.filter((w) => functionWords.has(w)).length / ws.length;
+        if (en >= 0.25 && en > 2 * own) { foreign += ws.length; foreignParagraphs++; foreignSample ||= p; }
+      }
+      const part = foreign / words.length;
+      if (part >= 0.05) {
+        add('language-mismatch', part >= 0.15 ? 'serious' : 'warning', foreign,
+          `About ${Math.round(part * 100)}% of the words stand in paragraphs that look like English (${foreignParagraphs} paragraphs): a preface, notes, exercises or a vocabulary of an annotated edition. They are not the book; cut them from the source, they are not removed here.`, foreignSample);
+      }
     }
   }
   const letters = body.match(/\p{L}/gu) ?? [];

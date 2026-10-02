@@ -229,6 +229,25 @@ describe('language and script', () => {
     expect(codes(es('Hola. Gracias.'))).not.toContain('language-mismatch'); // too short to judge
   });
 
+  it('an annotated edition: the book is in its language, the preface, notes and vocabulary in English', () => {
+    const SPANISH = 'Esa mañana el niño salió de la casa y caminó por el camino que llevaba al río, y su madre le había dicho que no se detuviera, porque la lluvia podía llegar antes del mediodía.';
+    const book = Array.from({ length: 40 }, (_, i) => `${SPANISH} Era el día ${i + 1} del viaje.`);
+    // a few quoted English lines in a Spanish book (under a twentieth of it): nothing to report
+    const few = es([...book, ENGLISH].join('\n'));
+    expect(codes(few)).not.toContain('language-mismatch');
+    // a tenth of the text: reported, the source still usable
+    const notes = es([...book, ENGLISH, ENGLISH, ENGLISH].join('\n'));
+    expect(flag(notes, 'language-mismatch')).toMatchObject({ severity: 'warning' });
+    expect(flag(notes, 'language-mismatch')!.message).toMatch(/paragraphs that look like English \(3 paragraphs\).*annotated edition/);
+    expect(notes.verdict).toBe('usable');
+    // a quarter of the text: the source is not the book alone
+    const apparatus = es([...book, ...Array.from({ length: 10 }, () => ENGLISH)].join('\n'));
+    expect(flag(apparatus, 'language-mismatch')).toMatchObject({ severity: 'serious' });
+    expect(apparatus.verdict).toBe('damaged');
+    // the sample shows one of the paragraphs, and nothing is removed from the text (the check only reports)
+    expect(flag(apparatus, 'language-mismatch')!.sample).toMatch(/^The boy walked/);
+  });
+
   it('the same check runs for German', () => {
     const de = 'Der Junge ging am Morgen aus dem Haus und folgte dem Weg, der zum Fluss führte. Seine Mutter hatte ihm gesagt, er solle nicht stehen bleiben, weil der Regen vor dem Mittag kommen könnte. Als er die Brücke erreichte, sah er einen Mann, der mit einer sehr langen Angel fischte und nicht auf ihn achtete.';
     expect(codes(inspectText(de, { lang: 'de' }))).not.toContain('language-mismatch');

@@ -19,8 +19,8 @@ person, a permission or a file).
 | Stage 0 stories: 26 texts, 4,387 words, recurring cast | implemented; **machine-drafted, not reviewed** — visible in preview only; awaiting a native reviewer |
 | Devanagari layer: akṣara segmentation, pronunciation by rule with the unwritten *a* stated per unit, romanization as a rescue | implemented; verified against the coordinator's unseen tables (169 checks); awaiting a native reviewer for the exception list |
 | Word forms by rule (nouns, adjectives, pronouns and their fusions, verbs, causatives, -वाला, abstract nouns) | implemented; verified against the coordinator's unseen tables (288 of 288, including the script checks) |
-| Word list: 2,532 lemmas with gender, register layer, domains, causative and ने flags | implemented; machine-drafted; awaiting a native reviewer |
-| Multiword units (603 complex predicates, 13 vector verbs, 73 compound postpositions, 81 fixed expressions), 46 constructions, neighbour rules, sentence splitting, writing checks | implemented; tested on the real adapter; machine-drafted |
+| Word list: 2,746 lemmas with gender, register layer, domains, causative and ने flags | implemented; machine-drafted; awaiting a native reviewer |
+| Multiword units (603 complex predicates, 13 vector verbs, 73 compound postpositions, 81 fixed expressions), 50 constructions, neighbour rules, sentence splitting, writing checks | implemented; tested on the real adapter; machine-drafted |
 | Hindi Scripture: 91 verses of the Indian Revised Version (IRV Hindi 2019, CC BY-SA 4.0) | implemented and **verified** verse by verse against the distributor; the whole translation is awaiting a download the owner approved but the tool permissions blocked (section 12) |
 | Rights: a state for every work, a machine-enforced build gate, the credit shown with the text | implemented; verified for the bundled sources (section 8) |
 | Learner model shared by stories, Scripture, the learner's own books and testimony; rescue dependence; heritage languages kept apart | implemented |
@@ -70,7 +70,7 @@ Nothing in Thai or Spanish was replaced. The language-neutral additions made for
   Every such request is recorded, so dependence on it is visible and can be seen to fall.
 - **Help in a fixed order of depth:** word → phrase or unit → grammar (the construction, in two plain sentences) →
   how it is read → English for the sentence. English is never removed, only moved further away shelf by shelf.
-- **Grammar is an inventory met in texts, not a syllabus of lessons.** 46 constructions are recognised where they
+- **Grammar is an inventory met in texts, not a syllabus of lessons.** 50 constructions are recognised where they
   occur and become learner items; nothing is "taught" before it is read. Two that occur in almost every sentence
   are marked ubiquitous.
 - **Canonical texts and adaptive supplements are different things.** The Stage 0 stories are canonical course
@@ -112,7 +112,7 @@ Nothing in Thai or Spanish was replaced. The language-neutral additions made for
 | `entries.ts`, `lexicon-*.ts`, `registers.ts` | the word list as readable rows (`लड़का/m = boy [everyday d:family]`), paradigm macros, register groups (समय / वक़्त / टाइम) |
 | `hi.ts` | wiring: the list, then the rules on lemmas the list vouches for, then spelling variants (script-driven and list-driven for the nukta, always stated as `variantOf`, never a rewrite), then unconfirmed guesses |
 | `verb-group.ts`, `phrases.ts`, `phrase-data.ts` | the verb group; compound verbs (stem + vector) by rule; complex predicates, compound postpositions and fixed expressions from tables; unit patterns written in lemmas |
-| `constructions.ts`, `construction-*.ts` | the 46-key inventory with plain explanations, and the detectors |
+| `constructions.ts`, `construction-*.ts` | the 50-key inventory with plain explanations, and the detectors |
 | `disambiguate.ts` | neighbour rules that reorder readings and never add or remove one |
 | `sentences.ts`, `production.ts` | sentence splitting (danda, quotations, abbreviations); writing checks with corrections only where the rule reproduces what the learner wrote |
 | `varieties.ts` | Awadhi, Braj and the language of the sant poets as heritage varieties |
@@ -139,13 +139,17 @@ reading the list does not vouch for is `unconfirmed`, at most 0.6, without a glo
 - **Coverage, stated honestly.** On the bundled texts every Stage 0 word and 99.9 % of Scripture words have a
   reading the list vouches for — *by construction*, because the list was extended while looking at those texts.
   On six unbundled chapters the list was never built against (Ruth 1, Luke 15, John 3, Romans 8, Psalm 103,
-  Exodus 20; 4,097 words; `npx vite-node scripts/probe-hi-heldout.mts`) the figures were **93.8 % vouched, 1.3 %
-  unconfirmed guess, 4.9 % no reading** before the last word-list batch. "Vouched" means the list holds the lemma,
-  not that the reading is right.
+  Exodus 20; 4,097 words; `npx vite-node scripts/probe-hi-heldout.mts`) the figures are **94.6 % vouched, 1.1 %
+  unconfirmed guess, 4.3 % no reading** (93.8 / 1.3 / 4.9 before the frame-by-frame pass over missing basic words,
+  which was made without looking at these chapters). "Vouched" means the list holds the lemma, not that the
+  reading is right. The chapters are the same translation and register as the bundled Scripture; ordinary prose
+  has not been measured, because no lawful ordinary prose is in hand.
 - **Correctness is not measured.** The only instrument for that is the gold set, and no item of it has been
   accepted by a person. A defect-finding run over the 189 drafts (labelled "not a measurement" by the tool) has
-  171 read as the draft expects; the drafts are themselves unreviewed and five of the 17 differences are a
-  convention question (section 10).
+  180 read as the draft expects after the fix batches (171 before). The drafts are themselves unreviewed, the
+  coordinator has now seen their failures (so they are not a held-out set), and of the 8 differences that remain 5
+  are one convention question (section 10, item 4) and 3 are matters for the reviewer (whether "began to rain" is a
+  unit or a construction, the part of speech of और "more", and one verb's use of ने).
 
 ## 6. Corpus integrated
 
@@ -168,8 +172,10 @@ English beside Scripture is the World English Bible (public domain), a separate 
 - **The gate is code, not a note.** `bundleDecision` (`src/ingest/rights.ts`) returns bundle / exclude / refuse
   for every bundled document; the Vite build plugin replaces an excluded document with nothing and stops the
   build on a refused one; `npm run build` runs `scripts/rights-gate.mts` first; `npm run rights:check` prints the
-  same decision. Today: 109 documents, 107 bundled, 2 left out (unverified Albanian and Thai Scripture samples),
-  0 refused.
+  same decision. At the Hindi verification run: 109 documents, 107 bundled, 2 left out (the unverified Albanian and
+  Thai Scripture samples), 0 refused, and a production build made that way contained the Hindi stories and the
+  credited verses and neither of the two unverified texts. (Later the same evening the check reported catalogue
+  problems for Albanian texts whose course was not yet registered: the gate stopping a build is the gate working.)
 - **A licensed text carries its licence.** The Hindi Scripture documents name the translation, the rights holder,
   the licence and the distributor; the reader shows that line under the text at every assistance level, with the
   licence terms and what was left out (footnotes, headings, cross-references) one disclosure away.
@@ -305,4 +311,35 @@ node scripts/build-hi-scripture.mjs && node scripts/verify-scripture.mjs   # reb
 
 ## 15. Tests
 
-RESULTS
+Added for Hindi (all pass; counts at commit `7a56681`): **37 test files, 1,667 tests** in the Hindi-specific run —
+
+| What is tested | Files |
+|---|---|
+| Unicode normalization, nukta preservation, round trip, akṣara segmentation, pronunciation, romanization | `test/adapters/hindi-script`, `hindi-pronunciation`, `hindi-translit`; `test/integration/hindi-course` (stored text, token and form identity) |
+| Tokenization, punctuation, sentence splitting | `test/adapters/hi`, `hindi-sentences` |
+| Oblique forms, pronoun variants and fusions, verb forms, causatives, persons, feminine plural, guesses | `test/adapters/hindi-morph*` (7 files) |
+| Word list: rows, genders, registers, nukta relation, transitivity, homograph pairs, Stage 0 fully vouched | `test/adapters/hindi-lexicon`, `hindi-wiring` |
+| Compound verbs, complex predicates, postpositions; constructions; neighbour rules — on fixtures and on the real adapter | `hindi-phrases`, `hindi-constructions`, `hindi-disambiguate` and their `-real` files |
+| Writing checks: silence on correct sentences, corrections only where reproducible | `hindi-production`, `hindi-production-real`; the coordinator's own sentences in `test/integration/hindi-writing` |
+| The coordinator's unseen tables (script, pronunciation, forms, fusions, nonsense) | `test/integration/hindi-engine` with `hindi-tables` (288) |
+| Course end to end: shelves and assistance, one learner model across stories / Scripture / own book, variety separation, Your Copy privacy, Bible isolation, rights gating, register in difficulty | `test/integration/hindi-course` (24) |
+| Catalogue and Stage 0 constraints | `test/course/hindiCatalog`, `test/content/hindi-stage0` |
+| Rights gate; review levels; heritage separation; rescue dependence; first text; headings; gold workflow; source line; romanization rescue; Help-you-needed panel | `test/ingest/rights`, `reviewLevel`, `hindiHeadings`; `test/golearn/heritage`, `rescue`, `firstText`; `test/tools/hi-gold`; `test/ui/sourceLine`, `rescueRomanization`, `helpNeeded` |
+
+Whole suite (every course; run once at the end with three other sessions working in the same tree): 284 files,
+8,321 tests passed, 10 failed in 7 files. Six of the failing tests were command-line tests (`dict:build`,
+`corpus:check`, `corpus:review`, `corpus:convert`, `library:build`) that passed when run on their own (24 of 24):
+they time out when several sessions run tests at once. The other four were Albanian tests (`test/adapters/sq`,
+the Albanian lines of `verification`, `test/bench/sq-gold`) belonging to a course that was being edited at that
+moment by its own session. No Hindi, Thai, Spanish or German test failed. The suite was 196 files / 3,531 tests
+before the Hindi work began; Thai and Spanish regression safety rests on their own integration tests
+(`thai-course`, `thai-ladder`, `thai-tones`, `spanish-course`, `spanish-loop`, `spanish-dictionary`,
+`compat`), all passing.
+
+Also run: type check clean for all Hindi files; `corpus:check` (0 validation errors, re-import unchanged, verified
+verses byte-identical); a production build with the rights gate; a browser audit in a sandbox (Home and doors,
+Explore, the Stage 0 reader and word sheet, the romanization rescue, Scripture with its credit, Your Books import of
+a Hindi text with chapter headings, testimony checking; Spanish spot-checked unchanged). The audit found six
+things the tests had not: no credit on the Scripture page, the Stage 0 help profile not reaching the reader, Hindi
+chapter headings not recognised, "add your copy" offered for NCERT, the eighth story offered first, and "gha-r".
+All fixed, each with a test.

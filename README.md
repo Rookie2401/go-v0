@@ -90,8 +90,8 @@ test/           per-package tests + test/integration (Spanish end-to-end loop, f
   `docs/spanish/STATUS.md`.
 - **The Hindi course has its system and a first slice of content.** Shelves that are never locks (Stage 0A–0C,
   Classes 1–12, Open Reading), real Hindi from the first line with the script decoded on the word sheet and
-  romanization only as a recorded rescue, rule morphology with a word list of 2,532 lemmas, compound verbs and
-  complex predicates as units, 46 constructions met in texts, register layers, heritage languages kept apart, and a
+  romanization only as a recorded rescue, rule morphology with a word list of 2,746 lemmas, compound verbs and
+  complex predicates as units, 50 constructions met in texts, register layers, heritage languages kept apart, and a
   rights gate in the production build. Bundled are 26 Stage 0 stories drafted by an AI model (unreviewed, preview
   only) and 91 verified verses; everything else in the catalogue is metadata with its rights state. No analysis has
   been checked by a native speaker. See `docs/HINDI_COURSE.md`.

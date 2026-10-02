@@ -396,6 +396,11 @@ export class Folder {
 
   // ───────────────────────── shared sentence → items ─────────────────────────
 
+  /** Whether a variety code names a heritage variety of the language (the adapter's own table says so). */
+  private heritage(lang: LanguageCode, variety: string): boolean {
+    try { return this.ctx.adapters.get(lang).varieties?.[variety]?.kind === 'heritage'; } catch { return false; }
+  }
+
   private async encounterSentence(a: {
     userId: string; lang: LanguageCode; sentenceId: string; session: string; sitting: string; contentVersion?: number; at: string;
     modality: ReceptiveModality; tokenFilter?: Set<string>;
@@ -408,6 +413,10 @@ export class Folder {
     const info = await sentenceItems(ctx, a.sentenceId, a.tokenFilter, a.modality === 'reading' ? this.orth : undefined);
     if (!info) return; // unknown sentence: nothing to attach evidence to
     const { sentence, text, items, firstPhraseOcc } = info;
+    // A text in a heritage variety (Awadhi or Braj beside Modern Standard Hindi) is read as its own language: meeting
+    // its words is not evidence about the course language, so no item is credited. The reading itself stays in the log
+    // (progress, pace and rescue measures read it); only the word, phrase, pattern and script items are left alone.
+    if (text?.variety && this.heritage(text.lang, text.variety)) return;
     const surface = a.modality === 'listening' ? 'listen'
       : text?.kind === 'scripture' ? 'scripture' : text?.kind === 'testimony' ? 'testimony' : 'corpus';
     const memo = this.memo(a.userId, a.sitting, a.sentenceId);

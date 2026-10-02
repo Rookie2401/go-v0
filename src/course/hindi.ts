@@ -84,6 +84,15 @@ export const HINDI_STREAMS: Stream[] = [
 
 const NOT_A_GRADE = 'a reading-difficulty shelf, not an Indian school grade';
 
+/**
+ * A text on no shelf — the learner's own book, his testimony: every layer is within reach (decoding and the
+ * transliteration rescue included, because nobody knows how far the owner of the book has come), none is pushed forward.
+ */
+export const HINDI_OUTSIDE_ASSISTANCE: AssistanceProfile = {
+  visibility: 'contextual', defaultHighlight: 'subtle', layers: L('gloss', 'phrase', 'grammar', 'decoding', 'sentence', 'english', 'history'),
+  englishRescue: 'secondary', romanization: 'rescue', decodingFirst: false, targetLanguageDefinitions: false, chrome: 'full',
+};
+
 const shelf = (index: number, key: string, label: string, purpose: string[]): Stage => ({
   id: ids.stage(HINDI_COURSE_ID, key), courseId: HINDI_COURSE_ID, lang: LANG, index, key, label, kind: 'shelf', purpose, assistance: HINDI_ASSISTANCE[key],
 });

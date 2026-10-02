@@ -295,13 +295,20 @@ describe('provenance: every analysis says where it came from', () => {
     expect(contested[0].ruleTone).toBe('mid');
   });
 
-  it('languages that declare no sources show no provenance line, and nothing else changes for them', () => {
-    // Spanish declares its sources since the Spanish course (its hand word list is labelled machine-drafted too)
-    expect(Object.values(app.adapters.get('es').sources ?? {}).every((s) => s.origin === 'rule' || s.reviewStatus === 'machine-drafted')).toBe(true);
-    for (const lang of ['de', 'sq', 'hi'] as const) {
-      const adapter = app.adapters.get(lang);
-      expect(adapter.sources, lang).toBeUndefined();
-      expect(adapter.decode, lang).toBeUndefined();
+  it('a language that declares its sources labels each one; one that declares none shows no provenance line', () => {
+    // Spanish, German and Hindi declare their sources since their courses were built; a course without its own engine declares none
+    for (const lang of ['es', 'de', 'sq', 'hi'] as const) {
+      const sources = app.adapters.get(lang).sources;
+      if (!sources) continue;
+      for (const [id, src] of Object.entries(sources)) {
+        expect(src.id, `${lang} ${id}`).toBe(id);
+        expect(src.label.length, `${lang} ${id}`).toBeGreaterThan(0);
+        expect(['machine-drafted', 'native-reviewed', 'external'], `${lang} ${id}`).toContain(src.reviewStatus);
+      }
+    }
+    // nothing in Spanish or Hindi has been read by a native speaker yet, and the labels say so
+    for (const lang of ['es', 'hi'] as const) {
+      expect(Object.values(app.adapters.get(lang).sources ?? {}).every((x) => x.origin === 'rule' || x.reviewStatus === 'machine-drafted'), lang).toBe(true);
     }
   });
 });

@@ -103,6 +103,45 @@ export function westernHeading(line: string): Heading | undefined {
   return undefined;
 }
 
+// ── Hindi headings ──
+
+// "अध्याय 3", "अध्याय ३", "भाग 2: शीर्षक", "पाठ 5", "खंड 1", "परिच्छेद 4", and the ordinal before the word ("पहला अध्याय", "दूसरा भाग").
+const nfc = (s: string) => s.normalize('NFC');
+const HINDI_WORD = `(?:${['अध्याय', 'भाग', 'पाठ', 'खंड', 'खण्ड', 'परिच्छेद', 'सर्ग', 'प्रकरण'].map(nfc).join('|')})`;
+/** Western digits and Devanagari digits ०–९ (U+0966–U+096F). */
+const HINDI_DIGITS = '[0-9\\u0966-\\u096F]+';
+const HINDI_ORDINALS: Record<string, number> = Object.fromEntries(([
+  ['पहला', 1], ['प्रथम', 1], ['दूसरा', 2], ['द्वितीय', 2], ['तीसरा', 3], ['तृतीय', 3], ['चौथा', 4], ['चतुर्थ', 4], ['पाँचवाँ', 5], ['पांचवां', 5], ['पंचम', 5],
+  ['छठा', 6], ['छठवाँ', 6], ['सातवाँ', 7], ['सातवां', 7], ['आठवाँ', 8], ['आठवां', 8], ['नौवाँ', 9], ['नौवां', 9], ['दसवाँ', 10], ['दसवां', 10],
+] as Array<[string, number]>).map(([w, n]) => [nfc(w), n]));
+const HINDI_NUMBERED = new RegExp(`^(${HINDI_WORD})\\s*(${HINDI_DIGITS})(.*)$`, 'u');
+const HINDI_ORDINAL = new RegExp(`^(${Object.keys(HINDI_ORDINALS).join('|')})\\s+(${HINDI_WORD})(.*)$`, 'u');
+const devanagariDigitsToAscii = (s: string): string => s.replace(/[\u0966-\u096F]/g, (c) => String(c.charCodeAt(0) - 0x0966));
+
+/** A Hindi chapter heading on a line of its own (+ a title after a separator). A sentence that begins with a chapter word is not one. */
+export function hindiHeading(raw: string): Heading | undefined {
+  const line = nfc(raw);
+  const titleOf = (rest: string): string | undefined | false => {
+    if (rest === '') return undefined;
+    if (!HEADING_SEPARATOR.test(rest)) return false;
+    const title = rest.replace(/^[\s:：.\-–—)\]]+/u, '').trim();
+    return title.length > MAX_TITLE_LENGTH || /[\u0964?!]$/u.test(title) ? false : title || undefined;
+  };
+  const m = HINDI_NUMBERED.exec(line);
+  if (m) {
+    const title = titleOf(m[3]);
+    if (title === false) return undefined;
+    return { line: raw, ...(title ? { title } : {}), number: Number(devanagariDigitsToAscii(m[2])), kind: 'numbered' };
+  }
+  const o = HINDI_ORDINAL.exec(line);
+  if (o) {
+    const title = titleOf(o[3]);
+    if (title === false) return undefined;
+    return { line: raw, ...(title ? { title } : {}), number: HINDI_ORDINALS[o[1]], kind: 'numbered' };
+  }
+  return undefined;
+}
+
 /**
  * Detect the headings among already indentation-trimmed lines (blank lines are `''`). Returns the 0-based line index of each.
  * Thai: exactly the original rule. Other languages: also the Western forms; bare Roman headings are kept only when they run
@@ -112,7 +151,7 @@ export function detectHeadings(lines: readonly string[], lang: LanguageCode): Ar
   const found: Array<{ index: number; heading: Heading }> = [];
   lines.forEach((line, index) => {
     if (line === '') return;
-    const h = autoHeading(line) ?? (lang === 'th' ? undefined : westernHeading(line));
+    const h = autoHeading(line) ?? (lang === 'hi' ? hindiHeading(line) : undefined) ?? (lang === 'th' ? undefined : westernHeading(line));
     if (h) found.push({ index, heading: h });
   });
   const roman = found.filter((f) => f.heading.kind === 'roman');

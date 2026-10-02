@@ -13,7 +13,7 @@
 import type { AppStore, AssistanceProfile, CourseCatalog, GoLearn, Stage, Stream, Text, Work } from '../core';
 import { DEFAULT_ASSISTANCE } from '../core';
 import { GERMAN_COURSE_ID, GERMAN_SHELVES, GERMAN_STREAMS, GERMAN_WORKS } from './german';
-import { HINDI_COURSE_ID, HINDI_SHELVES, HINDI_STREAMS, HINDI_WORKS } from './hindi';
+import { HINDI_COURSE_ID, HINDI_OUTSIDE_ASSISTANCE, HINDI_SHELVES, HINDI_STREAMS, HINDI_WORKS } from './hindi';
 import { SPANISH_COURSE_ID, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS } from './spanish';
 import { THAI_COURSE_ID, THAI_STAGES, THAI_WORKS } from './thai';
 
@@ -29,12 +29,14 @@ export interface CourseCatalogDeps {
 export const stageMetaId = (userId: string, courseId: string) => `stage:${userId}:${courseId}`;
 
 /** The ladders this build ships: course id → stages and works. A course without an entry has no ladder. */
-const LADDERS: Record<string, { stages: Stage[]; works: Work[] }> = {
+const LADDERS: Record<string, { stages: Stage[]; works: Work[]; outside?: AssistanceProfile }> = {
   [THAI_COURSE_ID]: { stages: THAI_STAGES, works: THAI_WORKS },
   // Spanish: the stages are SHELVES (a browsing orientation of a large library, never a gate)
   [SPANISH_COURSE_ID]: { stages: SPANISH_SHELVES, works: SPANISH_WORKS },
   [GERMAN_COURSE_ID]: { stages: GERMAN_SHELVES, works: GERMAN_WORKS },
-  [HINDI_COURSE_ID]: { stages: HINDI_SHELVES, works: HINDI_WORKS },
+  // Hindi: shelves that carry a help profile each (decoding the script first at Stage 0); `outside` is the profile of a
+  // text on no shelf (the learner's own book, his testimony)
+  [HINDI_COURSE_ID]: { stages: HINDI_SHELVES, works: HINDI_WORKS, outside: HINDI_OUTSIDE_ASSISTANCE },
 };
 
 /** The content streams of the courses that have them. */
@@ -133,8 +135,9 @@ export function createCourseCatalog(deps: CourseCatalogDeps): CourseCatalog {
 
     async assistanceFor({ courseId, textId, currentStageId }) {
       const copy = (p: AssistanceProfile): AssistanceProfile => structuredClone(p);
-      // A shelf never changes the reader: the word sheet is the same everywhere (the shelf's profile is the default one).
-      const profile = (s: Stage) => (s.kind === 'shelf' ? copy(DEFAULT_ASSISTANCE) : copy(s.assistance));
+      // The profile is the stage's or shelf's own. A course whose shelves should not change the reader gives every shelf
+      // the default profile (Spanish, German); a course whose script has to be decoded gives its first shelves more help.
+      const profile = (s: Stage) => copy(s.assistance ?? DEFAULT_ASSISTANCE);
       if (textId) {
         const stage = await catalog.stageOfText(textId);
         if (stage && stage.courseId === courseId) return profile(stage);
@@ -143,7 +146,7 @@ export function createCourseCatalog(deps: CourseCatalogDeps): CourseCatalog {
         const stage = await store.stages.get(currentStageId);
         if (stage && stage.courseId === courseId) return profile(stage);
       }
-      return copy(DEFAULT_ASSISTANCE);
+      return copy(LADDERS[courseId]?.outside ?? DEFAULT_ASSISTANCE);
     },
 
     async currentStage(userId, courseId) {

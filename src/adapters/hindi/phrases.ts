@@ -74,7 +74,7 @@ const stemOf = (inf: string): string => (inf.endsWith('ना') && inf.length > 
 
 // ───────────────────────────── complex predicates ─────────────────────────────
 
-const GAP_PARTICLES = new Set(['ही', 'भी', 'तो', 'न', 'नहीं', 'बहुत', 'अब', 'फिर', 'कभी', 'ज़रा', 'थोड़ा']);
+const GAP_PARTICLES = new Set(['ही', 'भी', 'तो', 'न', 'नहीं', 'मत', 'बहुत', 'अब', 'फिर', 'कभी', 'ज़रा', 'थोड़ा']);
 const GAP_POS = new Set(['PRON', 'ADP', 'DET']);
 
 /** The causatives of the light verbs, by lemma → the light verb they are the causative of. */
@@ -82,7 +82,7 @@ const CAUSATIVE_BASE: Readonly<Record<string, string>> = {
   [key('कराना')]: key('करना'), [key('करवाना')]: key('करना'), [key('दिलाना')]: key('देना'), [key('दिलवाना')]: key('देना'),
 };
 
-interface PredIndex { verb: string; verbShown: string; gloss: string; noun: string }
+interface PredIndex { verb: string; verbShown: string; gloss: string; noun: string; derived?: boolean }
 let predicateIndex: Map<string, PredIndex[]> | undefined;
 function predicates(): Map<string, PredIndex[]> {
   if (predicateIndex) return predicateIndex;
@@ -92,6 +92,16 @@ function predicates(): Map<string, PredIndex[]> {
     const list = predicateIndex.get(k) ?? [];
     list.push({ verb: key(p.verb), verbShown: p.verb, gloss: p.gloss, noun: p.noun });
     predicateIndex.set(k, list);
+  }
+  // "X करना" is in the table: its intransitive counterpart "X होना" is a unit by rule (शुरू करना → शुरू होना), unless the table lists it itself.
+  // The reverse is not assumed. The causatives (कराना, करवाना; दिलाना, दिलवाना) are matched against the base verb in `complexPredicates`.
+  const be = key('होना');
+  for (const p of HINDI_COMPLEX_PREDICATES) {
+    if (key(p.verb) !== key('करना')) continue;
+    const list = predicateIndex.get(key(p.noun)) ?? [];
+    if (list.some((e) => e.verb === be)) continue;
+    list.push({ verb: be, verbShown: 'होना', noun: p.noun, derived: true, gloss: `to be done, to happen, to become (the intransitive of ${p.noun} करना: ${p.gloss})` });
+    predicateIndex.set(key(p.noun), list);
   }
   return predicateIndex;
 }
@@ -124,10 +134,10 @@ function complexPredicates(tokens: RawToken[], analyses: AnalyzedToken[]): Phras
           if (verb) {
             const best = cands[0] === verb ? 1 : 0.75;
             out.push({
-              pattern: [entry.noun, entry.verbShown], kind: 'collocation',
+              pattern: [entry.noun, causal ? (causal.lemma as string) : entry.verbShown], kind: 'collocation',
               display: `${entry.noun} ${causal ? (causal.lemma as string) : entry.verbShown}`,
-              tokenIndexes: [i, j], gloss: causal ? `causative: to have it done, to make it happen — ${entry.noun} ${entry.verbShown} is "${entry.gloss}"` : entry.gloss,
-              confidence: Math.max(0.5, 0.9 * best - 0.05 * skipped),
+              tokenIndexes: [i, j], gloss: causal ? `causative of ${entry.noun} ${entry.verbShown}: to have it done, to make it happen (${entry.gloss})` : entry.gloss,
+              confidence: Math.max(0.5, (entry.derived ? 0.8 : 0.9) * best - 0.05 * skipped),
             });
             break;
           }

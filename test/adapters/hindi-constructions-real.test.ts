@@ -187,3 +187,108 @@ describe('constructions that occur in nearly every sentence are marked', async (
     expect(HINDI_UBIQUITOUS_CONSTRUCTIONS.has('progressive')).toBe(false);
   });
 });
+
+// ── batch 2 ──
+function reads(sentence: string, surface: string, nth = 0) {
+  const r = run(sentence);
+  const idx = r.tokens.map((t, i) => (t.surface === surface ? i : -1)).filter((i) => i >= 0)[nth];
+  if (idx === undefined) throw new Error(`no ${surface} in ${sentence}`);
+  return r.analyses[idx].candidates;
+}
+const feats = (c: { morph: Record<string, string> } | undefined, k: string): string[] => (c?.morph[k] ?? '').split(',').filter(Boolean);
+
+describe('batch 2.1 - the number of a participle follows the clause', () => {
+  it('a plural auxiliary or subject puts the plural first', () => {
+    expect(feats(reads('वे पढ़ रहे हैं।', 'रहे')[0], 'Number')).toContain('Plur');
+    expect(feats(reads('वे जाते हैं।', 'जाते')[0], 'Number')).toContain('Plur');
+  });
+  it('the feminine -ी forms are the same in the singular and the plural: the clause is said in a note when the list has only one reading', () => {
+    const plural = reads('लड़कियाँ गाती हैं।', 'गाती')[0];
+    if (feats(plural, 'Number').includes('Plur')) expect(feats(plural, 'Number')[0]).toBe('Plur');
+    else expect(String((plural as { notes?: Record<string, string> }).notes?.context)).toMatch(/plural/u);
+    const sing = reads('वह गाती है।', 'गाती')[0];
+    expect(feats(sing, 'Number')).toContain('Sing');
+    expect(String((sing as { notes?: Record<string, string> }).notes?.context ?? '')).not.toMatch(/plural here/u);
+  });
+});
+
+describe('batch 2.2 - the person of the copula follows the subject', () => {
+  const person = (s: string, w: string) => feats(reads(s, w)[0], 'Person');
+  it.each([
+    ['हम जाते हैं।', 'हैं', '1'], ['वे जाते हैं।', 'हैं', '3'], ['लड़कियाँ खेल रही हैं।', 'हैं', '3'], ['बच्चे खेल रहे हैं।', 'हैं', '3'],
+  ])('%s', (s, w, p) => { expect(person(s, w)).toEqual([p]); });
+  it('आप takes the polite second person; तुम takes हो as the present', () => {
+    const a = reads('आप जाते हैं।', 'हैं')[0];
+    expect(feats(a, 'Person')).toContain('2');
+    expect(feats(a, 'Polite')).toEqual(['Form']);
+    const t = reads('तुम जाते हो।', 'हो')[0];
+    expect(feats(t, 'Tense')).toContain('Pres');
+  });
+  it('the context note names the subject and the person', () => {
+    expect(String((reads('हम जाते हैं।', 'हैं')[0] as { notes?: Record<string, string> }).notes?.context)).toMatch(/first person/u);
+  });
+});
+
+describe('batch 2.3 - a subjunctive trigger at a distance', () => {
+  it.each([
+    'शायद कल सुबह वह घर आए।', 'काश वह कल मेरे साथ यहाँ आए।', 'अगर वह जल्दी से घर आए, तो हम खाएँगे।', 'चाहे वह कितनी भी देर से आए।',
+    'ताकि सब बच्चे भी जल्दी समझें।', 'शायद कल सुबह तुम भी आओ।', 'ताकि वह नाश न हो।',
+  ])('%s', (s) => {
+    const r = run(s);
+    expect(r.keys).toContain('subjunctive');
+    expect(r.keys).not.toContain('perfective-past');
+  });
+  it('without a trigger the same spelling is a perfective', () => {
+    expect(run('वे घर आए।').keys).toContain('perfective-past');
+    expect(run('शायद वह कल आया।').keys).toContain('perfective-past');
+  });
+  it('the other trigger rules do not depend on adjacency', () => {
+    expect(run('मुझे वह पुरानी कहानी बहुत पसंद है।').keys).toContain('ko-experiencer');
+    expect(run('मुझे अपने बड़े भाई से बहुत डर लगता है।').keys).toContain('ko-experiencer');
+    expect(run('उसने अपने पुराने दोस्त के घर में सब कुछ कह दिया।').keys).toContain('ergative-ne');
+    expect(run('जो लोग सुबह जल्दी उठते हैं, वे स्वस्थ रहते हैं।').keys).toContain('relative-correlative');
+  });
+});
+
+describe('batch 2.5 - the infinitive with a second verb', () => {
+  it.each([
+    ['वह रोने लगा।', 'inceptive-lagna'], ['मुझे जाने दो।', 'permissive-dena'], ['गाड़ी आने वाली है।', 'about-to-vaala'], ['वह जाने वाला था।', 'about-to-vaala'],
+    ['मैं पढ़ने के लिए आया।', 'purpose-infinitive'],
+  ])('%s → %s, and not a compound verb', (s, key) => {
+    const r = run(s);
+    expect(r.keys).toContain(key);
+    expect(r.keys).not.toContain('compound-verb');
+  });
+  it('the keys are in the inventory with a plain explanation and an example', async () => {
+    const { HINDI_CONSTRUCTIONS } = await import('../../src/adapters/hindi/constructions');
+    for (const k of ['inceptive-lagna', 'permissive-dena', 'about-to-vaala', 'purpose-infinitive']) {
+      expect(HINDI_CONSTRUCTIONS[k].explanation).toMatch(/[ऀ-ॿ]/u);
+      expect(HINDI_CONSTRUCTIONS[k].family).toBe('the infinitive');
+    }
+  });
+});
+
+describe('batch 2.6 - three homograph frames', () => {
+  it('(a) two identical forms in a row: the first is the noun, the second the infinitive', () => {
+    expect(reads('मुझे खाना खाना पड़ेगा।', 'खाना', 0)[0].pos).toBe('NOUN');
+    expect(feats(reads('मुझे खाना खाना पड़ेगा।', 'खाना', 1)[0], 'VerbForm')).toContain('Inf');
+    expect(run('मुझे खाना खाना पड़ेगा।').keys).not.toContain('reduplication');
+  });
+  it('(b) कर with no stem before it and a full verb after it is the noun', () => {
+    expect(reads('सरकार ने कर लगाया।', 'कर')[0].pos).toBe('NOUN');
+    expect(reads('कर लगाना होगा।', 'कर')[0].pos).toBe('NOUN');
+    expect(reads('वह कर देता है।', 'कर')[0].pos).toBe('VERB');
+    expect(run('वह कर देता है।').keys).toContain('compound-verb');
+  });
+  it('(c) a feminine noun / participle ending the clause after an indefinite or adverb, with no other verb: the verb', () => {
+    for (const s of ['वह कुछ बोली।', 'वह धीरे बोली।', 'वह ज़ोर से बोली।']) expect(reads(s, 'बोली')[0].pos, s).toBe('VERB');
+    expect(reads('उसकी बोली मीठी है।', 'बोली')[0].pos).toBe('NOUN');
+  });
+});
+
+describe('batch 2.3b - a subjunctive vector (हो जाए, कर सके) is a subjunctive', () => {
+  it.each(['पानी एक स्थान में इकट्ठा हो जाए।', 'जल भर जाए, ताकि वह खुश हो जाए।'])('%s', (s) => {
+    const r = run(s);
+    expect(r.keys).toContain('subjunctive');
+  });
+});

@@ -198,31 +198,38 @@ const SUBJUNCTIVE_TRIGGERS = new Set(['शायद', 'ताकि', 'काश
 /** Verbs after which a कि-clause is a wish, a request or a command. */
 const WISHING = new Set(['चाहना', 'चाहिए', 'कहना', 'माँगना', 'बोलना', 'सुझाना', 'आदेश', 'प्रार्थना']);
 
-export function buildVerbGroups(tokens: RawToken[], analyses: AnalyzedToken[]): VerbGroup[] {
-  /** A subjunctive trigger stands before word i in the sentence: शायद, ताकि …, जब तक, a न directly before, or कि after a verb of wishing. */
-  const subjunctiveContext = (i: number): boolean => {
-    for (let k = i - 1, n = 0; k >= 0 && n < 8; k--) {
-      const t = tokens[k];
-      if (!t.isWord) { if (/^[।॥?!]$/u.test(t.surface)) return false; continue; }
-      n++;
-      const w = t.normalized;
-      if (SUBJUNCTIVE_TRIGGERS.has(w)) return true;
-      if (w === 'तक' && tokens[k - 1]?.normalized === 'जब') return true;
-      if (w === 'न' && k === i - 1) return true;
-      if (w === 'कि') {
-        for (let m = k - 1; m >= 0 && m > k - 6; m--) if (tokens[m].isWord && (analyses[m]?.candidates ?? []).some((c) => c.lemma !== undefined && WISHING.has(c.lemma))) return true;
-        return false;
-      }
+/**
+ * A subjunctive trigger stands before word i in its sentence, however many adverbs, time words, objects or the subject stand
+ * between: शायद, ताकि, काश, चाहे, अगर, यदि, जब तक … न, a न directly before, or कि after a verb of wishing or telling.
+ * `candsOf` gives the readings of a word (so the neighbour rules, which only have the context-free analyses, can use it too).
+ */
+export function subjunctiveTriggerBefore(tokens: RawToken[], candsOf: (k: number) => readonly C[], i: number): boolean {
+  for (let k = i - 1, n = 0; k >= 0 && n < 14; k--) {
+    const t = tokens[k];
+    if (!t.isWord) { if (/^[।॥?!]$/u.test(t.surface)) return false; continue; }
+    n++;
+    const w = t.normalized;
+    if (SUBJUNCTIVE_TRIGGERS.has(w)) return true;
+    if (w === 'तक' && tokens[k - 1]?.normalized === 'जब') return true;
+    if (w === 'न' && k === i - 1) return true;
+    if (w === 'कि') {
+      for (let m = k - 1; m >= 0 && m > k - 6; m--) if (tokens[m].isWord && candsOf(m).some((c) => c.lemma !== undefined && WISHING.has(c.lemma))) return true;
+      return false;
     }
-    return false;
-  };
+  }
+  return false;
+}
+
+export function buildVerbGroups(tokens: RawToken[], analyses: AnalyzedToken[]): VerbGroup[] {
+  const subjunctiveContext = (i: number): boolean => subjunctiveTriggerBefore(tokens, (k) => analyses[k]?.candidates ?? [], i);
   const verbal = (i: number): Elem[] => {
     const t = tokens[i];
     if (!t?.isWord) return [];
     const cands = analyses[i]?.candidates ?? [];
     // a verb form that a noun or adjective reading of the same word outranks does not count, except the bare stem (a stem followed by a second verb is strong evidence in itself)
     const nonVerbalTop = Math.max(0, ...cands.filter((c) => !isVerbal(c)).map((c) => c.confidence));
-    return cands
+    const subCtx = cands.some((c) => isVerbal(c) && (hasF(c, 'Mood', 'Sub'))) && subjunctiveContext(i);
+    const elems = cands
       .filter((c) => isVerbal(c) && c.lemma !== undefined && viable(cands, c))
       .flatMap((c) => {
         let kinds = vkinds(c, t.normalized);
@@ -230,10 +237,11 @@ export function buildVerbGroups(tokens: RawToken[], analyses: AnalyzedToken[]): 
         const l = c.lemma as string;
         if (kinds.includes('conv') && !kinds.includes('stem') && l.endsWith('ना') && t.normalized === l.slice(0, -2)) kinds.push('stem');
         // a form that is a participle / command AND a subjunctive: the subjunctive when a trigger stands before it
-        if (kinds.includes('sub') && (kinds.includes('pf') || kinds.includes('imp')) && subjunctiveContext(i)) kinds = ['sub', ...kinds.filter((k) => k !== 'sub')];
         if (c.confidence < nonVerbalTop) kinds = kinds.filter((k) => k === 'stem');
         return kinds.map((kind) => ({ i, c, lemma: l, kind, surface: t.normalized, role: 'aux' as const }));
       });
+    // a trigger before it: the subjunctive readings of the word first (a form that is also a participle or a command: आए, समझें)
+    return subCtx ? [...elems.filter((x) => x.kind === 'sub'), ...elems.filter((x) => x.kind !== 'sub')] : elems;
   };
   const groups: VerbGroup[] = [];
   for (let i = 0; i < tokens.length; ) {

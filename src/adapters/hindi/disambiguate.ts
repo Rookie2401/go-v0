@@ -15,7 +15,7 @@
  * Machine-drafted rules, not checked by a native speaker.
  */
 import type { AnalysisCandidate, RawToken } from '../../core';
-import { HINDI_VECTOR_VERBS } from './verb-group';
+import { HINDI_VECTOR_VERBS, subjunctiveTriggerBefore } from './verb-group';
 
 type C = AnalysisCandidate;
 
@@ -36,7 +36,124 @@ const GOVERNING_WORDS = new Set(['वाला', 'वाली', 'वाले',
 /** Verbs that take an infinitive: after one of them a word that is also a noun is read as the infinitive. */
 const TAKES_INFINITIVE = new Set(['चाहना', 'चाहिए', 'पड़ना', 'लगना', 'देना', 'सकना']);
 
+/** Readings that satisfy `pred` first, the rest marked down to 0.4 at most; undefined when nothing changes. */
+function promote(list: C[], pred: (c: C) => boolean, why: string): C[] | undefined {
+  const yes = list.filter(pred);
+  const no = list.filter((c) => !pred(c));
+  if (yes.length === 0 || no.length === 0) return undefined;
+  if (list[0] === yes[0] && no.every((c) => c.confidence <= 0.4)) return undefined;
+  return [{ ...yes[0], notes: { ...(yes[0].notes ?? {}), context: why } }, ...yes.slice(1), ...no.map((c) => (c.confidence > 0.4 ? { ...c, confidence: 0.4 } : c))];
+}
+
+const PERSON_WORDS: Record<string, string> = { '1': 'first person', '2': 'second person', '3': 'third person' };
+
+/**
+ * Agreement with the clause: a form shared by several persons (हैं: I / you-polite / they) or by singular and plural (the
+ * feminine -ी participles) is ordered by the subject of its clause, or by a plural auxiliary after it. Works on the readings the
+ * other rules left; only readings of the same kind as the first one compete. One reading whose Person or Number is a list is
+ * annotated, never split.
+ */
+function agreeWithClause(i: number, tokens: RawToken[], base: C[][], out: C[]): C[] {
+  const first = out[0];
+  if (!first || !isVerbal(first) || !tokens[i]?.isWord) return out;
+  const word = (j: number): number | undefined => (j >= 0 && j < tokens.length && tokens[j].isWord ? j : undefined);
+  const kindKey = (c: C) => [c.lemma, c.pos === 'AUX' ? 'AUX' : 'V', c.morph.VerbForm, c.morph.Mood, c.morph.Tense, c.morph.Aspect].join('|');
+  const sib = out.filter((c) => isVerbal(c) && kindKey(c) === kindKey(first));
+  const personList = sib.length === 1 && feat(first, 'Person').length > 1;
+  const personVaries = new Set(sib.map((c) => feat(c, 'Person').join(','))).size > 1;
+  const numberVaries = new Set(sib.map((c) => feat(c, 'Number').join(','))).size > 1;
+  // the feminine -ी forms are the same in the singular and the plural; a list that gives only the singular reading can only be annotated
+  const singularOnly = sib.length === 1 && feat(first, 'Gender')[0] === 'Fem' && feat(first, 'Number').join() === 'Sing' && /ी$/u.test(tokens[i].normalized) && (has(first, 'VerbForm', 'Part') || feat(first, 'Aspect').length > 0);
+  if (!personVaries && !personList && !numberVaries && !singularOnly) return out;
+
+  const isPunct = (t: RawToken) => !t.isWord && /^[,;:।॥?!…]$/u.test(t.surface);
+  let start = i;
+  while (start > 0 && !isPunct(tokens[start - 1])) start--;
+  const isPost = (j: number | undefined) => j !== undefined && (base[j] ?? []).some((c) => c.pos === 'ADP');
+  let erg = false;
+  let subject: { k: number; c: C } | undefined;
+  let object: { k: number; c: C } | undefined;
+  for (let k = start; k < i; k++) {
+    if (!tokens[k].isWord) continue;
+    const rs = base[k] ?? [];
+    if (tokens[k].normalized === 'ने' || rs.some((c) => has(c, 'Case', 'Erg'))) { erg = true; continue; }
+    const r = rs[0];
+    if (!r || isPost(word(k + 1))) continue;
+    const bareCase = !r.morph.Case || has(r, 'Case', 'Dir');
+    if (r.pos === 'PRON' && feat(r, 'Person').length === 1 && bareCase && !r.morph.PronType?.match(/Int|Rel|Ind/u)) subject ??= { k, c: r };
+    else if ((r.pos === 'NOUN' || r.pos === 'PROPN') && bareCase) { if (!subject) subject = { k, c: r }; object = { k, c: r }; }
+  }
+  const subj = erg ? undefined : subject;
+
+  // person: from the subject
+  if (personVaries || personList) {
+    if (!subj) return out;
+    const person = subj.c.pos === 'PRON' ? feat(subj.c, 'Person')[0] : '3';
+    const polite = subj.c.pos === 'PRON' ? subj.c.morph.Polite : undefined;
+    const fits = (c: C): boolean => {
+      const p = feat(c, 'Person');
+      if (p.length && !p.includes(person)) return false;
+      if (person === '2' && polite === 'Form' && c.morph.Polite && c.morph.Polite !== 'Form') return false;
+      if (person === '2' && polite === 'Fam' && c.morph.Polite && c.morph.Polite !== 'Fam') return false;
+      return true;
+    };
+    const who = `subject "${tokens[subj.k].normalized}": ${PERSON_WORDS[person]}${polite === 'Form' ? ' (polite)' : polite === 'Fam' ? ' (familiar)' : ''}`;
+    if (personList) {
+      const note = `${who}; the list gives one reading for several persons (${feat(first, 'Person').join(', ')})`;
+      return first.notes?.context === note ? out : [{ ...first, notes: { ...(first.notes ?? {}), context: note } }, ...out.slice(1)];
+    }
+    const r = promote(out, (c) => !sib.includes(c) || fits(c), who);
+    return r ?? out;
+  }
+
+  // number of a participle: a plural auxiliary after it, else the subject (or the object, when the subject is in the ergative)
+  if (numberVaries || singularOnly) {
+    let plural: boolean | undefined;
+    let why = '';
+    for (let k = i + 1, n = 0; k < tokens.length && n < 3; k++) {
+      if (!tokens[k].isWord) break;
+      const rs = base[k] ?? [];
+      if (['नहीं', 'न', 'ही', 'भी', 'तो'].includes(tokens[k].normalized)) continue;
+      n++;
+      const be = rs.filter((c) => c.lemma === 'होना' && has(c, 'VerbForm', 'Fin') && (has(c, 'Tense', 'Pres') || has(c, 'Tense', 'Past') || feat(c, 'Person').length > 0));
+      if (be.length) {
+        const nums = new Set(be.flatMap((c) => feat(c, 'Number')));
+        if (nums.size === 1) { plural = nums.has('Plur'); why = `the auxiliary "${tokens[k].normalized}" is ${plural ? 'plural' : 'singular'}`; }
+        break;
+      }
+      if (!rs.some((c) => c.lemma === 'रहना' || isVerbal(c))) break;
+    }
+    if (plural === undefined) {
+      const carrier = erg ? object : subj;
+      if (carrier) {
+        const nums = new Set((base[carrier.k] ?? []).filter((c) => c.pos === carrier.c.pos && (!c.morph.Case || has(c, 'Case', 'Dir'))).flatMap((c) => feat(c, 'Number')));
+        if (nums.size === 1) { plural = nums.has('Plur'); why = `${erg ? 'the object' : 'the subject'} "${tokens[carrier.k].normalized}" is ${plural ? 'plural' : 'singular'}`; }
+      }
+    }
+    if (plural === undefined) return out;
+    if (singularOnly) {
+      if (!plural) return out;
+      const note = `plural here: ${why}; the list gives only the singular reading of this -ी form, which is the same in the plural`;
+      return first.notes?.context === note ? out : [{ ...first, notes: { ...(first.notes ?? {}), context: note } }, ...out.slice(1)];
+    }
+    const wantPlural = (c: C) => feat(c, 'Number').includes('Plur');
+    const wantSing = (c: C) => !feat(c, 'Number').includes('Plur');
+    const feminine = feat(first, 'Gender')[0] === 'Fem';
+    // masculine -े: plural when the clause says plural; with a singular clause both readings are left (the honorific plural is real)
+    if (!feminine && !plural) return out;
+    const r = promote(out, (c) => !sib.includes(c) || (plural ? wantPlural(c) : wantSing(c)), why);
+    return r ?? out;
+  }
+  return out;
+}
+
 export function disambiguateHindi(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[] {
+  const decided = decide(i, tokens, base);
+  const agreed = agreeWithClause(i, tokens, base, decided);
+  return agreed === decided ? decided : agreed;
+}
+
+function decide(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[] {
   const cands = base[i];
   if (!cands || cands.length === 0 || !tokens[i]?.isWord) return cands;
   // one reading whose features are lists (Number Plur,Sing; Case Dir,Obl) can only be annotated, never split
@@ -84,6 +201,30 @@ export function disambiguateHindi(i: number, tokens: RawToken[], base: AnalysisC
     if (p !== undefined && any(p, (c) => has(c, 'VerbForm', 'Stem'))) return choose(progressive, `after the bare stem "${form(p)}": the progressive (रहा = is …-ing)`) ?? cands;
     return choose((c) => !progressive(c), 'no bare verb stem before it: "stayed, kept on"') ?? cands;
   }
+
+  // ── a subjunctive reading, when a trigger (शायद, ताकि, काश, चाहे, अगर, यदि, जब तक … न) stands anywhere before it in the clause ──
+  if (cands.some((c) => isVerbal(c) && has(c, 'Mood', 'Sub')) && subjunctiveTriggerBefore(tokens, (k) => base[k] ?? [], i)) {
+    const sub = (c: C) => isVerbal(c) && has(c, 'Mood', 'Sub');
+    if (cands.length === 1) {
+      const note = 'a subjunctive trigger (शायद, ताकि, चाहे, अगर …) stands before it: the subjunctive';
+      return cands[0].notes?.context === note ? cands : [{ ...cands[0], notes: { ...(cands[0].notes ?? {}), context: note } }];
+    }
+    if (!cands.some((c) => !isVerbal(c) && c.confidence > 0.4 && c.pos !== 'AUX')) return choose(sub, 'a subjunctive trigger (शायद, ताकि, चाहे, अगर …) stands before it: the subjunctive') ?? cands;
+  }
+  // चाहे opening a clause is the conjunction, not the participle of चाहना
+  if (w === 'चाहे' && cands.some((c) => c.pos === 'SCONJ' || c.pos === 'CONJ') && (prev === undefined || commaBefore)) return choose((c) => c.pos === 'SCONJ' || c.pos === 'CONJ', 'opens a clause: "whether, no matter"') ?? cands;
+
+  // ── हो after तुम: the present of "to be", not the command ──
+  if (w === 'हो' && cands.some((c) => c.lemma === 'होना' && has(c, 'Tense', 'Pres')) && cands.some((c) => has(c, 'Mood', 'Imp'))) {
+    let start = i;
+    while (start > 0 && !(/^[,;:।॥?!…]$/u.test(tokens[start - 1].surface) && !tokens[start - 1].isWord)) start--;
+    const tum = tokens.slice(start, i).some((t, k) => t.isWord && (base[start + k] ?? []).some((c) => c.pos === 'PRON' && c.morph.Polite === 'Fam' && !has(c, 'Case', 'Erg') && !has(c, 'Case', 'Dat')));
+    if (tum) return choose((c) => c.lemma === 'होना' && has(c, 'Tense', 'Pres'), 'तुम stands before it: the present of "to be"') ?? cands;
+  }
+
+  // ── लिए after a genitive (के लिए) is the postposition, not the participle of लेना ──
+  if ((w === 'लिए' || w === 'लिये') && cands.some((c) => c.pos === 'ADP') && prev !== undefined && any(prev, (c) => c.lemma === 'का' || c.morph.Poss === 'Yes' || has(c, 'Case', 'Gen'))) return choose((c) => c.pos === 'ADP', 'after a genitive: के लिए "for"') ?? cands;
+  if ((w === 'लिए' || w === 'लिये') && cands.some((c) => c.pos === 'ADP') && cands.some((c) => c.lemma === 'लेना') && prev !== undefined && !any(prev, (c) => c.pos === 'ADP')) return choose((c) => c.lemma === 'लेना', 'no genitive before it: the participle of लेना "took"') ?? cands;
 
   // ── की: of, or did ──
   if (w === 'की' && cands.some((c) => c.lemma === 'का') && cands.some((c) => c.lemma === 'करना')) {
@@ -159,6 +300,13 @@ export function disambiguateHindi(i: number, tokens: RawToken[], base: AnalysisC
     return choose((c) => c.pos === 'NOUN', 'not before a noun: the noun') ?? cands;
   }
 
+  // ── कर with no stem before it and a different full verb after it: the noun ("tax") ──
+  if (w === 'कर' && cands.some((c) => c.pos === 'NOUN') && cands.some((c) => isVerbal(c) && (has(c, 'VerbForm', 'Conv') || has(c, 'VerbForm', 'Stem')))) {
+    const stemBefore = prev !== undefined && any(prev, (c) => has(c, 'VerbForm', 'Stem'));
+    const fullVerbAfter = next !== undefined && any(next, (c) => isVerbal(c) && c.lemma !== undefined && !(c.lemma in HINDI_VECTOR_VERBS) && !['रहना', 'सकना', 'होना', 'चाहिए'].includes(c.lemma));
+    if (!stemBefore && fullVerbAfter) return choose((c) => c.pos === 'NOUN', 'no verb stem before it and a full verb after it: the noun "tax", not the marker कर') ?? cands;
+  }
+
   // ── a bare stem (before a second verb, रहा or कर), or the familiar command ──
   const stem = (c: C) => has(c, 'VerbForm', 'Stem');
   const command = (c: C) => isVerbal(c) && has(c, 'Mood', 'Imp') && !has(c, 'VerbForm', 'Stem');
@@ -207,13 +355,20 @@ export function disambiguateHindi(i: number, tokens: RawToken[], base: AnalysisC
     if (next !== undefined && !['चाहिए', 'चाहिये'].includes(form(next) as string) && any(next, (c) => c.lemma === 'चाहना' || c.lemma === 'पड़ना' || c.lemma === 'लगना')) {
       return choose(verbalReading, `before "${form(next)}": the infinitive`) ?? cands;
     }
-    const prevDetermines = prev !== undefined && (any(prev, (c) => c.pos === 'DET' || c.morph.Poss === 'Yes' || c.lemma === 'का') || ['एक', 'हर', 'कोई', 'कुछ', 'सब'].includes(form(prev) as string) || prevT?.pos === 'ADJ' || prevT?.pos === 'NUM');
+    const prevDetermines = prev !== undefined && (any(prev, (c) => c.pos === 'DET' || c.morph.Poss === 'Yes' || c.lemma === 'का') || ['एक', 'हर'].includes(form(prev) as string) || prevT?.pos === 'ADJ' || prevT?.pos === 'NUM');
+    // two identical forms in a row, a noun and an infinitive (खाना खाना चाहिए): the first is the object, the second the infinitive
+    const sameNext = next !== undefined && form(next) === w;
+    const samePrev = prev !== undefined && form(prev) === w;
+    if (sameNext && cands.some(nominalReading)) return choose(nominalReading, 'the same form follows: this one is the noun (the object), the next the infinitive') ?? cands;
+    if (samePrev && cands.some((c) => isVerbal(c) && has(c, 'VerbForm', 'Inf'))) return choose((c) => isVerbal(c) && has(c, 'VerbForm', 'Inf'), 'the same form stands before it: the noun is the object, this is the infinitive') ?? cands;
     const prevDemonstrative = prev !== undefined && ['यह', 'वह', 'इस', 'उस', 'ये', 'वे'].includes(form(prev) as string) && !prevDetermines;
     // a feminine noun that is also a perfective participle (बोली): the participle when no other finite verb stands in the sentence and no determiner stands before it
     if (participle && !prevDetermines && !(next !== undefined && isPost(next))) {
       const otherFinite = base.some((r, k) => k !== i && tokens[k].isWord && !!r[0] && isVerbal(r[0]) && (r[0].pos === 'AUX' || has(r[0], 'VerbForm', 'Fin') || has(r[0], 'Aspect', 'Perf') || has(r[0], 'Aspect', 'Imp')));
       if (!otherFinite) return choose((c) => isVerbal(c) && has(c, 'Aspect', 'Perf'), 'no other verb in the sentence: the participle') ?? cands;
     }
+    // an indefinite (कुछ, सब, कोई) before it: the noun, unless it ends the clause with no other verb (वह कुछ बोली)
+    if (prev !== undefined && ['कुछ', 'सब', 'कोई'].includes(form(prev) as string) && !(next !== undefined && isPost(next))) return choose(nominalReading, `after "${form(prev)}": a noun`) ?? cands;
     if (prevDemonstrative) return choose(nominalReading, `after "${form(prev)}": a noun or adjective`) ?? cands;
     if (prevDetermines) return choose(nominalReading, `after "${form(prev)}": a noun or adjective`) ?? cands;
     const nextT = top(next);

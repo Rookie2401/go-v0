@@ -59,8 +59,8 @@ describe('units found in real sentences', () => {
 
 describe('the causative of a light verb is the causative of the unit', () => {
   it.each([
-    ['वह काम शुरू कराता है।', 'शुरू करना', 'कराना'],
-    ['मैं उसकी मदद करवाता हूँ।', 'मदद करना', 'करवाना'],
+    ['वह काम शुरू कराता है।', 'शुरू कराना', 'कराना'],
+    ['मैं उसकी मदद करवाता हूँ।', 'मदद करवाना', 'करवाना'],
   ])('%s', (s, base, causative) => {
     const u = units(s).byPattern(base);
     expect(u).toHaveLength(1);
@@ -111,4 +111,36 @@ describe('every light verb of the table is found in its irregular forms', async 
       }
     }
   }
+});
+
+describe('batch 2.4 - units', () => {
+  it('a negation or particle between the noun and its light verb does not break the unit', () => {
+    for (const [s, p] of [['तुम काम शुरू मत करो।', 'शुरू करना'], ['उसने गलती नहीं की।', 'गलती करना'], ['उसने मदद भी की।', 'मदद करना'], ['वह याद ही करता है।', 'याद करना'], ['उसे डर भी नहीं लगा।', 'डर लगना']] as const) {
+      expect(units(s).byPattern(p).length, s).toBeGreaterThanOrEqual(1);
+    }
+  });
+  it('X करना in the table makes X होना a unit by rule, and not the other way round', () => {
+    expect(units('काम शुरू हुआ।').byPattern('शुरू होना')).toHaveLength(1);
+    expect(units('पूजा हुई।').byPattern('पूजा होना').length).toBeGreaterThanOrEqual(1);
+    expect(units('उसे दर्द हुआ।').byPattern('दर्द करना')).toHaveLength(0);
+    expect(units('काम शुरू हुआ।').byPattern('शुरू होना')[0].gloss).toMatch(/intransitive|begin/u);
+  });
+  it('the causative is reported as the causative: the pattern holds the causative verb', () => {
+    const u = units('वह काम शुरू कराता है।').found.filter((x) => x.pattern[0] === 'शुरू');
+    expect(u.map((x) => x.pattern[1])).toContain('कराना');
+    expect(u[0].gloss).toMatch(/causative of/u);
+    expect(units('मैं उसकी मदद करवाता हूँ।').found.some((x) => x.pattern.join(' ') === 'मदद करवाना')).toBe(true);
+  });
+  it('noun + हो गया reports the complex predicate for the feeling and state nouns, with the case frame in the gloss', () => {
+    const frames: Array<[string, string, RegExp]> = [
+      ['उसे उससे प्यार हो गया।', 'प्यार होना', /से/u], ['मुझे उस पर शक हो गया।', 'शक होना', /पर/u], ['उसे डर हो गया।', 'डर होना', /से/u],
+      ['मुझसे गलती हो गई।', 'ग\u093Cलती होना', /से/u], ['मुझे देर हो गई।', 'देर होना', /late/u], ['मुझे ज़रूरत हो गई।', 'ज़रूरत होना', /की/u],
+      ['काम शुरू हो गया।', 'शुरू होना', /begin/u], ['काम खत्म हो गया।', 'खत्म होना', /end/u],
+    ];
+    for (const [s, p, g] of frames) {
+      const u = units(s).byPattern(p);
+      expect(u.length, `${p} in ${s}`).toBeGreaterThanOrEqual(1);
+      expect(u[0].gloss, p).toMatch(g);
+    }
+  });
 });

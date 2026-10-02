@@ -23,7 +23,8 @@ import {
 import { feat, hasF, isChahiye, one, vkinds, type C, type VerbGroup } from './verb-group';
 
 const NUKTA = '़';
-const solid = (c: C | undefined): c is C => !!c && !c.unconfirmed && c.confidence >= 0.6;
+/** A reading the word list vouches for (not a rule's guess), and not a weak one. */
+const solid = (c: C | undefined): c is C => !!c && !c.unconfirmed && c.confidence >= 0.5;
 const isNounC = (c: C): boolean => c.pos === 'NOUN';
 const norm = (s: string): string => s.normalize('NFC').replace(/ं/gu, 'ँ');
 const gender = (c: C): Gender | undefined => { const g = one(c, 'Gender'); return g === 'Masc' || g === 'Fem' ? g : undefined; };
@@ -93,14 +94,14 @@ function genitives(c: Ctx): Out {
     if (j < 0) continue;
     const nouns = c.cands(j).filter((x) => isNounC(x) && gender(x) !== undefined);
     if (nouns.length === 0 || !solid(nouns[0]) || new Set(nouns.map((x) => gender(x))).size !== 1) continue;
-    if (c.cands(j).some((x) => x.pos === 'ADP' && x.confidence >= nouns[0].confidence)) continue;
+    if (c.cands(j).some((x) => x.pos === 'ADP' && x.confidence >= nouns[0].confidence) || c.cands(j)[0]?.pos !== 'NOUN') continue;
     const g = gender(nouns[0]) as Gender;
     const last = surface[surface.length - 1];
     const allowed = new Set<string>();
     for (const n of nouns) for (const e of genitiveEnding(g, num(n) ?? 'Sing', feat(n, 'Case'))) allowed.add(e);
     if (allowed.has(last)) continue;
     const fixed = allowed.size === 1 ? surface.slice(0, -1) + [...allowed][0] : undefined;
-    const saidWith = g === 'Fem' ? 'feminine' : allowed.has('े') && !allowed.has('ा') ? 'a plural or oblique masculine' : 'a masculine singular';
+    const saidWith = g === 'Fem' ? 'feminine' : allowed.has('े') && !allowed.has('ा') ? 'a plural or oblique masculine' : allowed.has('े') ? 'masculine (का, or के before a plural or oblique)' : 'a masculine singular';
     out.push(make(c.tokens, 'agreement', [i, j],
       `${surface} has to agree with the thing owned, not the owner: "${c.tokens[j].surface}" is ${saidWith}${fixed ? `, so ${fixed}` : ''}.`,
       fixed ? 0.8 : 0.6, fixed ? { a: i, b: i, text: fixed } : undefined));
@@ -125,7 +126,7 @@ function obliques(c: Ctx): Out {
     }
     // a masculine noun in -ा, direct singular, before a postposition: लड़का को → लड़के को
     const noun = solidFind(c, i, (x) => isNounC(x) && gender(x) === 'Masc' && num(x) === 'Sing' && hasF(x, 'Case', 'Dir') && !hasF(x, 'Case', 'Obl'));
-    if (noun && noun.lemma && noun.lemma === c.n(i) && noun.lemma.endsWith('ा') && !INVARIANT_IN_AA.has(noun.lemma) && c.cands(i).every((x) => !hasF(x, 'Case', 'Obl') && !hasF(x, 'Case', 'Voc')) && !['का', 'के', 'की'].includes(post)) {
+    if (noun && noun.lemma && noun.lemma === c.n(i) && noun.lemma.endsWith('ा') && !INVARIANT_IN_AA.has(noun.lemma) && c.cands(i).every((x) => !hasF(x, 'Case', 'Obl') && !hasF(x, 'Case', 'Voc'))) {
       const fixed = noun.lemma.slice(0, -1) + 'े';
       out.push(make(c.tokens, 'case', [i, j], `Before a postposition a masculine noun in -ा changes to -े: ${fixed} ${c.tokens[j].surface}.`, 0.75, { a: i, b: i, text: fixed }));
       continue;
@@ -254,7 +255,8 @@ function subjectAgreement(c: Ctx): Out {
         if (e.kind !== 'ipf' && e.kind !== 'pf' && e.kind !== 'prog') continue;
         const rs = c.cands(e.i).filter((x) => x.lemma === e.lemma && vkinds(x, e.surface).includes(e.kind));
         if (rs.length === 0 || rs.some((x) => x.unconfirmed || !gender(x) || !num(x))) continue;
-        const fits = rs.some((x) => gender(x) === ng && (num(x) === nn || (nn === 'Sing' && num(x) === 'Plur')));
+        // the feminine -ी forms are the same in the singular and the plural (a list may give only one of them)
+        const fits = rs.some((x) => gender(x) === ng && (num(x) === nn || (nn === 'Sing' && num(x) === 'Plur') || (ng === 'Fem' && /ी$/u.test(e.surface))));
         if (fits) continue;
         const seen = rs.find((x) => participleForm(e.lemma, e.kind as 'ipf' | 'pf' | 'prog', gender(x) as Gender, num(x) as Num) === e.surface);
         const fixed = seen ? participleForm(e.lemma, e.kind as 'ipf' | 'pf' | 'prog', ng, nn) : undefined;

@@ -93,7 +93,7 @@ export function pluralForms(c: Ctx): PatternCandidate[] {
   for (let i = 0; i < c.tokens.length; i++) {
     const x = c.find(i, (r) => isNoun(r) && numberOf(r) === 'Plur' && r.lemma !== undefined && r.lemma !== c.n(i));
     if (!x) continue;
-    if (!['NOUN', 'PROPN', 'ADJ'].includes(c.cands(i)[0]?.pos ?? '')) continue; // the word reads better as something else
+    if (!['NOUN', 'PROPN'].includes(c.cands(i)[0]?.pos ?? '')) continue; // the word reads better as something else
     const j = c.after(i);
     if (j >= 0 && isPostposition(c, j)) continue; // before a postposition the form is the oblique singular, not a plural
     // a form that may also be a singular (लड़के) is a plural with less certainty
@@ -189,6 +189,7 @@ export function reduplication(c: Ctx): PatternCandidate[] {
     if (!c.isWord(j) || c.n(j) !== w) continue;
     const x = usable(i);
     if (!x && !hyphen) continue; // two equal unanalysed words are not enough
+    if (!hyphen && c.cands(i)[0]?.pos !== c.cands(j)[0]?.pos) continue; // a noun and an infinitive of the same spelling (खाना खाना) are not a repeated word
     out.push(hit('reduplication', x ? trust(x) * (hyphen ? 1 : 0.85) : 0.6, [i, j])); // the hyphen between the halves is not a word of the construction
     i = j;
   }

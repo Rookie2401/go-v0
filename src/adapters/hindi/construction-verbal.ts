@@ -6,7 +6,7 @@
  */
 import type { PatternCandidate } from '../../core';
 import { hit, isPostposition, trust, type Ctx } from './construction-ctx';
-import { hasF, isChahiye, type C, type VerbGroup } from './verb-group';
+import { hasF, isChahiye, subjunctiveTriggerBefore, type C, type VerbGroup } from './verb-group';
 
 const tenseOf = (g: VerbGroup): 'Pres' | 'Past' | 'Fut' | 'Sub' | undefined => {
   const a = g.tenseAux;
@@ -17,7 +17,7 @@ const tenseOf = (g: VerbGroup): 'Pres' | 'Past' | 'Fut' | 'Sub' | undefined => {
   return 'Pres';
 };
 
-const SUBJUNCTIVE_TRIGGERS = new Set(['ताकि', 'कि', 'शायद', 'काश', 'चाहे', 'कहीं', 'चाहिए', 'अगर', 'यदि', 'क्या', 'जब तक']);
+const WEAK_TRIGGERS = new Set(['कि', 'चाहिए', 'क्या']);
 
 /** Tokens of an element list. */
 const idx = (g: VerbGroup, ...extra: number[]): number[] => [...g.elems.map((e) => e.i), ...extra];
@@ -47,10 +47,12 @@ function tenseAndAspect(c: Ctx, g: VerbGroup): PatternCandidate[] {
     }
   } else if (core.kind === 'fut' || (t0 === 'Fut' && g.elems.length > 1)) {
     out.push(hit('future', core.kind === 'fut' ? t : t * 0.75, idx(g)));
-  } else if (core.kind === 'sub' && g.elems.length === 1 && g.main.lemma !== 'होना') {
-    const before = c.tokens.slice(0, g.start).some((tk) => tk.isWord && SUBJUNCTIVE_TRIGGERS.has(tk.normalized));
+  } else if (core.kind === 'sub') {
+    const before = subjunctiveTriggerBefore(c.tokens, (k) => c.cands(k), g.start);
+    if (g.main.lemma === 'होना' && g.elems.length === 1 && !before) return out;
     const alsoImp = c.cands(g.main.i).some((r) => hasF(r, 'Mood', 'Imp'));
-    out.push(hit('subjunctive', t * (before ? 0.95 : alsoImp ? 0.6 : 0.7), idx(g)));
+    const weak = c.tokens.slice(0, g.start).some((tk) => tk.isWord && WEAK_TRIGGERS.has(tk.normalized));
+    out.push(hit('subjunctive', t * (before ? 0.95 : weak ? 0.8 : alsoImp ? 0.6 : 0.7), idx(g)));
   } else if (core.kind === 'imp') {
     const mat = c.before(g.start);
     if (mat >= 0 && c.n(mat) == 'मत') {
@@ -133,7 +135,19 @@ export function verbalConstructions(c: Ctx): PatternCandidate[] {
       if (!(withBe && !dat.length && maybeNoun)) out.push(hit('obligation', t * (dat.length || !withBe ? 1 : 0.75), [...dat, ...idx(g)]));
       dat.forEach((d) => koUsed.add(d));
     }
-    if (f.beginning || f.letting) out.push(hit('oblique-infinitive', t, [g.main.i, g.elems[1].i]));
+    if (f.beginning || f.letting) {
+      out.push(hit('oblique-infinitive', t, [g.main.i, g.elems[1].i]));
+      out.push(hit(f.beginning ? 'inceptive-lagna' : 'permissive-dena', t, [g.main.i, g.elems[1].i]));
+    }
+    if (g.elems.length === 1 && g.main.kind === 'infobl') {
+      // oblique infinitive + वाला + होना: about to; + के लिए / को: purpose
+      const v = c.after(g.main.i);
+      if (v >= 0 && (/^वाल[ाेी]$/u.test(c.n(v)) || c.lemma(v, 'वाला'))) {
+        const be = c.groups.find((x) => x.main.lemma === 'होना' && x.start === c.after(v));
+        if (be) out.push(hit('about-to-vaala', t * 0.95, [g.main.i, v, be.main.i]));
+      } else if (v >= 0 && c.n(v) === 'को') out.push(hit('purpose-infinitive', t * 0.8, [g.main.i, v]));
+      else if (v >= 0 && ['के', 'की', 'का'].includes(c.n(v)) && ['लिए', 'लिये'].includes(c.n(c.after(v)))) out.push(hit('purpose-infinitive', t, [g.main.i, v, c.after(v)]));
+    }
     if (g.elems.length === 1 && g.main.kind === 'inf') out.push(hit('infinitive-as-noun', t * 0.9, [g.main.i]));
     if (g.elems.length === 1 && g.main.kind === 'infobl') {
       const j = c.after(g.main.i);

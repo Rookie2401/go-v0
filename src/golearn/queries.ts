@@ -197,7 +197,9 @@ export async function tokenSupport(ctx: Ctx, userId: string, tokenId: string, le
   // Another reading competes when it is about as likely AND is another word or part of speech: "zurcía" as the first or the
   // third person of zurcir is one meaning, not two.
   support.uncertain = !analysis || analysis.confidence < UNCERTAIN_BELOW
-    || (analysis.alternatives ?? []).some((alt) => alt.confidence > analysis.confidence - COMPETING_MARGIN && (alt.lemmaId !== analysis.lemmaId || alt.pos !== analysis.pos));
+    // (the gap is compared with a hair of tolerance: 0.6 - 0.4 is not exactly 0.2 in floating point, and a reading marked
+    // down to 0.4 beside one at 0.6 does not compete)
+    || (analysis.alternatives ?? []).some((alt) => analysis.confidence - alt.confidence < COMPETING_MARGIN - 1e-9 && (alt.lemmaId !== analysis.lemmaId || alt.pos !== analysis.pos));
   if (lemma?.gloss) support.gloss = lemma.gloss; // level 1: gloss only
 
   if (level >= 2) {

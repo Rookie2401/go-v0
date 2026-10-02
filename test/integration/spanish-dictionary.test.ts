@@ -14,7 +14,7 @@ import type { DictionaryEntry, LexiconSource, Sentence, Token, TokenAnalysis } f
 import { SPANISH_COURSE_ID } from '../../src/course';
 import { createMemoryLexiconSource } from '../../src/dict';
 import { importDocuments, plainTextToDocuments } from '../../src/ingest';
-import { CONFIRMED_BY_DICTIONARY, LEMMA_IN_DICTIONARY } from '../../src/ingest/plan';
+import { CONFIRMED_BY_DICTIONARY, DECIDED_BY_CONTEXT, LEMMA_IN_DICTIONARY } from '../../src/ingest/plan';
 import { liveSentences, makeApp, reader, seedUser, tokensOf, type App } from './harness';
 
 const U = 'es-dict-learner';
@@ -33,6 +33,9 @@ const ENTRIES: DictionaryEntry[] = [
   formOf('zurra', 'VERB', 'zurrar', ['third-person', 'singular', 'present', 'indicative'], ['second-person', 'singular', 'imperative']),
   head('zurrar', 'VERB', ['to thrash, to beat']),
   head('guaro', 'NOUN', ['liquor distilled from sugar cane'], ['masculine', 'Honduras', 'Central-America']),
+  // the same spelling is also a verb form in the dictionary: two parts of speech for one written word
+  formOf('guaro', 'VERB', 'guarir', ['first-person', 'singular', 'present', 'indicative']),
+  head('guarir', 'VERB', ['to cure (obsolete)']),
   // a word the list does hold: the dictionary stands beside it and changes nothing
   head('casa', 'NOUN', ['house']),
 ];
@@ -121,6 +124,11 @@ describe('Spanish with a dictionary: the dictionary decides what the rules only 
     expect(String(noun.notes?.context ?? '')).toMatch(/article|after/);
     expect((noun.alternatives ?? []).some((x) => x.pos === 'VERB')).toBe(true); // the verb reading is kept, below
     expect((noun.alternatives ?? []).every((x) => x.confidence < noun.confidence)).toBe(true);
+    // the dictionary lists "zurra" under two parts of speech (0.45); once a neighbour has decided, that doubt is gone:
+    // the reading is stored as a one-part-of-speech dictionary reading and the word sheet does not say "possibly"
+    expect(noun.confidence).toBeGreaterThanOrEqual(DECIDED_BY_CONTEXT);
+    const nounToken = withDict.tokens.filter((t) => t.surface === 'zurra')[0];
+    expect((await withDict.app.golearn.tokenSupport(U, nounToken.id, 1)).uncertain).toBe(false);
 
     const verb = await analysisOf(withDict, 'zurra', 1); // Él no zurra a nadie.
     expect(verb.pos).toBe('VERB');
@@ -159,6 +167,11 @@ describe('Spanish with a dictionary: the dictionary decides what the rules only 
     expect(a.varieties).toEqual(['es-HN', 'es-CA']);
     expect(varietyStanding(a.varieties, COURSE.variety, withDict.app.adapters.get('es').varieties)).toBe('target');
     expect((await lemmaOf(withDict, a))?.gloss).toBe('liquor distilled from sugar cane');
+    // two parts of speech in the dictionary, and "bebieron guaro" decides for the noun: stored without the doubt, the verb kept below
+    expect(a.confidence).toBe(DECIDED_BY_CONTEXT);
+    expect((a.alternatives ?? []).some((x) => x.pos === 'VERB' && x.confidence <= 0.4)).toBe(true);
+    const token = withDict.tokens.find((t) => t.surface === 'guaro')!;
+    expect((await withDict.app.golearn.tokenSupport(U, token.id, 1)).uncertain).toBe(false);
   });
 
   it('a word the list holds is not touched: the dictionary stands beside it', async () => {

@@ -572,6 +572,10 @@ export function chainedLemmasToLookUp(
 
 /** A dictionary reading that joins a word the adapter already reads is placed after the adapter's own, at this confidence at most. */
 export const BESIDE_CONFIDENCE = 0.45;
+/** What a dictionary reading is stored at once a neighbour has decided for it among several parts of speech: the one-part-of-speech dictionary confidence. */
+export const DECIDED_BY_CONTEXT = 0.6;
+/** "Marked down by a context rule": the most a reading keeps when a neighbour decided against it (the adapters' own convention). */
+export const BELOW_CONTEXT_CHOICE = 0.4;
 /** At most this many dictionary readings join a word the adapter already reads. */
 export const BESIDE_MAX = 3;
 /** Beside a unit the dictionary vouches for, the pieces' other readings are kept at this confidence at most. */
@@ -790,6 +794,15 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
           const own = first?.origin === 'dictionary' && first.sourceId === dictId ? was.get(readingKey(first)) : undefined;
           if (own !== undefined && own > first.confidence) analyzed[ti] = { ...analyzed[ti], candidates: [{ ...first, confidence: own }, ...rest] };
         }
+        // A dictionary reading is stored below certainty when the dictionary lists the spelling under several parts of
+        // speech (0.45). When a neighbour then decided for one of them (it says which, and marked every other reading
+        // down), the doubt about the part of speech is gone: it is stored as a one-part-of-speech dictionary reading.
+        analyzed.forEach((a, ti) => {
+          const [first, ...rest] = a.candidates;
+          if (!first || first.origin !== 'dictionary' || first.confidence >= DECIDED_BY_CONTEXT || !first.notes?.context) return;
+          if (rest.length === 0 || rest.some((r) => r.confidence > BELOW_CONTEXT_CHOICE)) return;
+          analyzed[ti] = { ...a, candidates: [{ ...first, confidence: DECIDED_BY_CONTEXT }, ...rest] };
+        });
       }
     }
     const spanTokens = new Set<number>();

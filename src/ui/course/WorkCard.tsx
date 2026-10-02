@@ -9,7 +9,7 @@ import { ProgressLine } from '../coverage';
 import { textPath } from '../format';
 import { Disclosure } from '../ui';
 import { CopyImporter } from './CopyImporter';
-import { registerChips, rightsDetail, workRightsLine } from './wording';
+import { pointerOnly, registerChips, rightsDetail, workRightsLine } from './wording';
 import './course.css';
 
 export const chapterLabel = (t: Text): string => (t.chapter ? `${t.chapter.index}. ${t.chapter.title ?? t.title}` : t.title);
@@ -76,7 +76,7 @@ export function WorkCard({ work, texts, held, progress, onImported }: {
           {held} {held === 1 ? 'chapter is' : 'chapters are'} not shown because {held === 1 ? 'it is' : 'they are'} not published yet. <Link to="/settings">Preview mode in Settings</Link> lists them, clearly marked.
         </p>
       )}
-      {work.role !== 'audio' && (
+      {work.role !== 'audio' && !pointerOnly(work.rights) && (
         <Disclosure label={texts.length > 0 || held > 0 ? 'Add or replace your copy' : 'Add your copy'} lazy className="work__add">
           <CopyImporter work={work} onImported={onImported} />
         </Disclosure>

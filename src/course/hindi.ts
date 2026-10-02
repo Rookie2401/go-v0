@@ -183,7 +183,8 @@ export const IRV_HINDI_RIGHTS: WorkRights = {
  * docs/hindi/SOURCES_RESEARCH.md, section 3) rule out everything an app would do with them.
  */
 const NCERT: WorkRights = {
-  ...BASE, state: 'prohibited-from-bundling', copyrightStatus: 'in-copyright', permission: 'none',
+  // userImportOnly is false on purpose: the stated terms also rule out use inside software, so the app offers no "add your copy"
+  ...BASE, state: 'prohibited-from-bundling', copyrightStatus: 'in-copyright', permission: 'none', userImportOnly: false,
   basis: 'NCERT states on its online-textbook page that its textbooks are copyrighted, that nobody may copy and redistribute them in any form, and that using them as part of digital content packages or software is prohibited.',
   sourceTerms: 'ncert.nic.in/textbook.php, section "Copyright of NCERT Textbooks and terms of use": download for use as a textbook or for reference only; no redistribution; no use inside software; even a link needs NCERT\'s written permission.',
   acquisitionNotes: 'Never bundled, never fetched and not linked from the app: the app holds no text of it. Listed only so that the learner knows the series exists. Only NCERT\'s written permission would change this.',

@@ -124,6 +124,12 @@ export function paceLines(p: ReadingPace): string[] {
  * "open licence" appear only for the verified states AND only when the record says who verified it; "in copyright" only when the
  * record's own copyright field says so. A record without a state falls back to the older wording.
  */
+/**
+ * A work that is only pointed at: it can neither be bundled nor added as the learner's own copy, because the source's
+ * own terms rule out use inside software (a record says so with `canBundle: false` and `userImportOnly: false`).
+ */
+export const pointerOnly = (r: WorkRights): boolean => r.state === 'prohibited-from-bundling' && !r.canBundle && !r.userImportOnly;
+
 export function stateRightsLine(w: Pick<Work, 'rights'>): string {
   const r = w.rights;
   const by = r.verifiedBy ? ` by ${r.verifiedBy}` : '';
@@ -138,6 +144,7 @@ export function stateRightsLine(w: Pick<Work, 'rights'>): string {
     case 'user-supplied': return 'Your own copy. It stays on this device.';
     case 'rights-unverified': return 'Rights not verified — not bundled. Read it from your own copy.';
     case 'prohibited-from-bundling':
+      if (pointerOnly(r)) return 'Not available in Go: the publisher\'s own terms do not allow it inside an app. Listed so that you know it exists.';
       return r.copyrightStatus === 'in-copyright' ? 'In copyright — read it from your own copy.' : 'Not bundled — read it from your own copy.';
     case 'research-only': return 'Kept for checking the analysis only — not part of the course.';
     default: return rightsLine(r);

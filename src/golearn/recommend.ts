@@ -111,20 +111,36 @@ export async function recommend(
   // ── input ──
   if (!hasReading) {
     if (input.length > 0) {
-      const ranked: Array<{ t: Text; rank: number; difficulty: number }> = [];
+      // A course's own reading path has an order: a chapter of a main ('spine') work is placed by shelf, work and chapter.
+      // Among texts of the same stated level, the path's opening chapter comes before "easiest by estimate" — an estimate
+      // made for someone who has read nothing cannot tell the first story of a series from the eighth.
+      const placeOf = async (t: Text): Promise<[number, number, number] | undefined> => {
+        if (!t.workId || t.chapter === undefined) return undefined;
+        const work = await ctx.store.works.get(t.workId);
+        if (!work || work.role !== 'spine') return undefined;
+        const stage = await ctx.store.stages.get(work.stageId);
+        return [stage?.index ?? Number.MAX_SAFE_INTEGER, work.order, t.chapter.index];
+      };
+      const ranked: Array<{ t: Text; rank: number; difficulty: number; place?: [number, number, number] }> = [];
       for (const t of input) {
         const cov = (await analyzeText(ctx, userId, t.id)).coverage;
         const r = t.staticLevel ? LEVEL_RANK.indexOf(t.staticLevel) : LEVEL_RANK.length;
-        ranked.push({ t, rank: r < 0 ? LEVEL_RANK.length : r, difficulty: cov.expectedDifficulty });
+        ranked.push({ t, rank: r < 0 ? LEVEL_RANK.length : r, difficulty: cov.expectedDifficulty, place: await placeOf(t) });
       }
-      ranked.sort((a, b) => a.rank - b.rank || a.difficulty - b.difficulty || (a.t.id < b.t.id ? -1 : 1));
+      const byPlace = (a?: [number, number, number], b?: [number, number, number]) =>
+        (a && b ? a[0] - b[0] || a[1] - b[1] || a[2] - b[2] : a ? -1 : b ? 1 : 0);
+      ranked.sort((a, b) => a.rank - b.rank || byPlace(a.place, b.place) || a.difficulty - b.difficulty || (a.t.id < b.t.id ? -1 : 1));
       const first = ranked[0].t;
+      const opens = ranked[0].place !== undefined;
+      const level = first.staticLevel;
       offer({
         reason: 'first-text', textId: first.id, reinforces: [], score: 1,
         // Say what the text is: an unpublished text can only be here because preview mode asked for it.
-        explanation: first.published
-          ? `A good place to start: "${first.title}" is the easiest published ${langName} text${first.staticLevel ? ` (${first.staticLevel})` : ''}.`
-          : `A good place to start: "${first.title}" is the easiest ${langName} text in preview (not published)${first.staticLevel ? `, level ${first.staticLevel}` : ''}.`,
+        explanation: opens
+          ? `A good place to start: "${first.title}" opens the course's own reading path${first.published ? '' : ' (in preview, not published)'}${level ? `, level ${level}` : ''}.`
+          : first.published
+            ? `A good place to start: "${first.title}" is the easiest published ${langName} text${level ? ` (${level})` : ''}.`
+            : `A good place to start: "${first.title}" is the easiest ${langName} text in preview (not published)${level ? `, level ${level}` : ''}.`,
       });
     } else {
       notes.push({

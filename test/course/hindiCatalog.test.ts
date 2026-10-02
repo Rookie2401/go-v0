@@ -144,7 +144,8 @@ describe('works: rights are recorded facts, never inferences', () => {
     for (const w of HINDI_WORKS) {
       const own = w.rights.state === 'course-authored' || w.rights.state === 'verified-open-licence';
       expect(w.rights.canBundle, w.title).toBe(own);
-      expect(w.rights.userImportOnly, w.title).toBe(!own);
+      // everything not bundled is the learner's own copy to bring — except NCERT's readers, whose terms rule out use inside software
+      expect(w.rights.userImportOnly, w.title).toBe(!own && w.publisher !== 'NCERT');
       expect(w.ingestion === 'bundled', w.title).toBe(own);
       expect(w.ingestion === 'ingested', w.title).toBe(false);
       if (!own) {
@@ -281,6 +282,8 @@ describe('works: the entries the brief names', () => {
       expect(w.readiness, w.title).toBe('recommendation');
       expect(w.rights.canBundle, w.title).toBe(false);
       expect(w.rights.sourceTerms, w.title).toMatch(/no redistribution/);
+      expect(w.rights.sourceTerms, w.title).toMatch(/no use inside software/);
+      expect(w.rights.userImportOnly, w.title).toBe(false); // so the app offers no "add your copy" for it
       expect(w.sourceUrl, w.title).toBeUndefined();
     }
   });

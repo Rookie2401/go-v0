@@ -13,7 +13,7 @@ import { Disclosure } from '../ui';
 import { libraryChapters } from './catalogue';
 import { CopyImporter } from './CopyImporter';
 import { chapterLabel } from './WorkCard';
-import { stateRightsLine } from './wording';
+import { pointerOnly, stateRightsLine } from './wording';
 import './course.css';
 
 export function ExploreWork({ work, reloadKey, onImported }: { work: Work; reloadKey: number; onImported(): void }) {
@@ -43,7 +43,8 @@ export function ExploreWork({ work, reloadKey, onImported }: { work: Work; reloa
 
   const where = [work.region, work.era].filter(Boolean).join(' · ');
   const personal = !!stored && stored.length > 0 && stored.every((t) => t.personalCopy === true);
-  const copyAllowed = work.rights.state !== 'course-authored'; // a text written for the course is not something to add a copy of
+  // a text written for the course is not something to add a copy of; neither is a work whose source forbids use inside an app
+  const copyAllowed = work.rights.state !== 'course-authored' && !pointerOnly(work.rights);
   const readLabel = stored && stored.length > 0 ? `${personal ? 'Your copy' : 'Read'} · ${stored.length} ${stored.length === 1 ? 'chapter' : 'chapters'}` : undefined;
 
   return (

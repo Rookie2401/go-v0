@@ -174,6 +174,8 @@ describe('Explore: rights lines never claim more than the data says', () => {
     expect(line({ state: 'rights-unverified' })).toBe('Rights not verified — not bundled. Read it from your own copy.');
     expect(line({ state: 'prohibited-from-bundling', copyrightStatus: 'in-copyright' })).toBe('In copyright — read it from your own copy.');
     expect(line({ state: 'prohibited-from-bundling', copyrightStatus: 'unknown' })).toBe('Not bundled — read it from your own copy.'); // "in copyright" only if the record says so
+    // a source whose own terms rule out use inside software is only pointed at: no "own copy" is suggested
+    expect(line({ state: 'prohibited-from-bundling', copyrightStatus: 'in-copyright', canBundle: false, userImportOnly: false })).toMatch(/^Not available in Go: the publisher's own terms/);
   });
 
   it('every work of the real Spanish manifest, rendered page by page, says "public domain" only where a verification is on record', async () => {

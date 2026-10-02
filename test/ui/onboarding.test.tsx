@@ -21,25 +21,29 @@ async function firstRun() {
 }
 
 describe('Team onboarding', () => {
-  it('asks which team you are on, with the five countries and a live language line', async () => {
+  it('opens on one choice, "Select your team"; then lists the five countries, each with the language its team learns', async () => {
     const { h, app } = await firstRun();
     mounted = await h.mount(app);
     expect(q(mounted.container, 'h1.home__title')!.textContent).toBe('Go');
+    expect(mounted.container.textContent).not.toContain('Which team are you on?');
+    expect(qa(mounted.container, '.onboarding__team')).toHaveLength(0);
+    await click(button(mounted.container, 'Select your team'));
     expect(mounted.container.textContent).toContain('Which team are you on?');
-    const select = byLabel<HTMLSelectElement>(mounted.container, 'Team');
-    expect(qa(select, 'option').map((o) => o.textContent)).toEqual(['Honduras', 'Albania', 'Thailand', 'India', 'Germany']);
-    expect(q(mounted.container, '.onboarding__lang')!.textContent).toBe('You will be learning Spanish');
-    await choose(select, 'india-hi');
-    expect(q(mounted.container, '.onboarding__lang')!.textContent).toBe('You will be learning Hindi');
+    expect(qa(mounted.container, '.onboarding__country').map((o) => o.textContent)).toEqual(['Honduras', 'Albania', 'Thailand', 'India', 'Germany']);
+    expect(qa(mounted.container, '.onboarding__lang').map((o) => o.textContent)).toEqual(['Spanish', 'Albanian', 'Thai', 'Hindi', 'German']);
     expect(q(mounted.container, 'nav')).toBeNull(); // not Home yet
+    // Back returns to the first screen
+    await click(button(mounted.container, 'Back'));
+    expect(mounted.container.textContent).not.toContain('Which team are you on?');
+    expect(button(mounted.container, 'Select your team')).toBeDefined();
   });
 
   it('choosing Thailand creates the learner for that course and opens Home on "Thailand team · Thai"', async () => {
     const { h, store, app } = await firstRun();
     mounted = await h.mount(app);
     expect(await store.users.count()).toBe(0);
-    await choose(byLabel<HTMLSelectElement>(mounted.container, 'Team'), 'thailand-th');
-    await click(button(mounted.container, 'Begin'));
+    await click(button(mounted.container, 'Select your team'));
+    await click(button(mounted.container, 'Thailand'));
     const users = await store.users.all();
     expect(users).toHaveLength(1);
     expect(users[0].courseId).toBe('thailand-th');

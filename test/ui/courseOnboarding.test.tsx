@@ -5,7 +5,7 @@ import { COURSES, LANGUAGE_ROWS, createMemoryStore } from '../../src/core';
 import { THAI_COURSE_ID, THAI_STAGES, createCourseCatalog } from '../../src/course';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { Gate } from '../../src/ui/Onboarding';
-import { button, byLabel, choose, click, makeHarness, qa } from './harness';
+import { button, click, makeHarness, qa } from './harness';
 import type { Mounted } from './harness';
 
 let mounted: Mounted | undefined;
@@ -26,8 +26,8 @@ describe('choosing a team on a first run', () => {
     const { h, store, services, app } = await firstRun();
     expect(await services.catalog.stages(THAI_COURSE_ID)).toHaveLength(0);
     mounted = await h.mount(app);
-    await choose(byLabel<HTMLSelectElement>(mounted.container, 'Team'), THAI_COURSE_ID);
-    await click(button(mounted.container, 'Begin'));
+    await click(button(mounted.container, 'Select your team'));
+    await click(button(mounted.container, 'Thailand'));
     const door = qa(mounted.container, 'a.home__entry').find((a) => a.getAttribute('href') === '/course')!;
     expect(door).toBeDefined();
     expect(door.textContent).toContain('Reading ladder');
@@ -42,12 +42,12 @@ describe('choosing a team on a first run', () => {
     const prepared = new Promise<void>((resolve) => { done = resolve; });
     const withContent = { ...services, content: { ensureCourse: async (courseId: string) => { calls.push(courseId); await services.catalog.install(courseId); await prepared; } } };
     mounted = await h.mount(<Gate services={withContent} user={null} course={null}><Shell><AppRoutes /></Shell></Gate>);
-    await choose(byLabel<HTMLSelectElement>(mounted.container, 'Team'), THAI_COURSE_ID);
-    await click(button(mounted.container, 'Begin'));
+    await click(button(mounted.container, 'Select your team'));
+    await click(button(mounted.container, 'Thailand'));
     expect(calls).toEqual([THAI_COURSE_ID]);
     // still on the first-run screen, saying what it is doing; the button cannot be pressed twice
     expect(mounted.container.querySelector('[data-testid="preparing"]')?.textContent).toBe('Preparing your texts…');
-    expect(button(mounted.container, 'Begin').disabled).toBe(true);
+    expect(qa(mounted.container, '.onboarding__team').every((b) => (b as HTMLButtonElement).disabled)).toBe(true);
     expect(qa(mounted.container, 'a.home__entry')).toHaveLength(0);
     done();
     await vi.waitFor(() => expect(qa(mounted!.container, 'a.home__entry').length).toBeGreaterThan(0));
@@ -58,7 +58,8 @@ describe('choosing a team on a first run', () => {
   it('Honduras: no ladder door', async () => {
     const { h, app } = await firstRun();
     mounted = await h.mount(app);
-    await click(button(mounted.container, 'Begin'));
+    await click(button(mounted.container, 'Select your team'));
+    await click(button(mounted.container, 'Honduras'));
     expect(qa(mounted.container, 'a').some((a) => a.getAttribute('href') === '/course')).toBe(false);
   });
 });

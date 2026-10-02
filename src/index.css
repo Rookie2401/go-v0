@@ -477,8 +477,17 @@ table.vocab select, table.datatable select { padding: 0.2rem 0.4rem; font-size: 
 /* ------------------------------------------------------------ onboarding */
 .onboarding__form { max-width: 22rem; margin: 0 auto; text-align: left; }
 .onboarding__form select { font-size: 1.1rem; }
-.onboarding__lang { color: var(--ink-soft); font-style: italic; margin: -0.3rem 0 1.6rem; }
 .onboarding__form .btn { width: 100%; }
+/* the five teams, listed like the doors on Home: the country in the reading size, its language beneath in small caps */
+.onboarding__teams { list-style: none; margin: 0 auto; padding: 0; max-width: 26rem; text-align: left; }
+.onboarding__team { display: flex; flex-direction: column; gap: 0.1rem; width: 100%; text-align: left; padding: 0.85rem 0.6rem; min-height: 2.75rem; border: 0; border-bottom: 1px solid var(--rule); border-radius: 0; background: transparent; color: var(--ink); font: inherit; cursor: pointer; transition: padding-left 0.15s, background-color 0.15s; }
+.onboarding__team:hover:not(:disabled) { background: color-mix(in srgb, var(--ink) 3.5%, transparent); padding-left: 1rem; }
+.onboarding__team:disabled { cursor: default; color: var(--ink-faint); }
+.onboarding__team--chosen:disabled { color: var(--ink); }
+.onboarding__country { font-size: 1.25rem; line-height: 1.3; }
+.onboarding__lang { font-variant: small-caps; letter-spacing: 0.06em; color: var(--ink-faint); font-size: 0.78rem; }
+.onboarding__back { margin-top: 1.2rem; }
+.onboarding .card__note { margin-top: 1rem; }
 
 /* ------------------------------------------------------ sandbox + preview banners (stacked), honesty, drafts, importer */
 /* Sticky headers sit below whichever banners are showing: --banner-h is the sum of the sandbox and preview banner heights. */

@@ -36,17 +36,21 @@ export function TeamSelect({ value, onChange, label = 'Team', id }: { value: str
   );
 }
 
+/**
+ * Two screens. The first shows the name and one choice: "Select your team". The second lists the five teams, each
+ * with its country and the language it learns; choosing one creates the learner and goes on to the app.
+ */
 export function Onboarding({ store, onChosen }: { store: AppStore; onChosen(user: User, course: Course): void }) {
-  const [courseId, setCourseId] = useState(COURSES[0].id);
-  const [busy, setBusy] = useState(false);
+  const [step, setStep] = useState<'welcome' | 'team'>('welcome');
+  const [chosen, setChosen] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const course = COURSES.find((c) => c.id === courseId) ?? COURSES[0];
+  const busy = chosen !== null && !error;
 
-  const begin = () => {
-    setBusy(true); setError(null);
+  const begin = (courseId: string) => {
+    setChosen(courseId); setError(null);
     chooseTeam(store, courseId).then(
       ({ user, course: c }) => onChosen(user, c),
-      (e: unknown) => { setBusy(false); setError(e instanceof Error ? e.message : String(e)); },
+      (e: unknown) => { setChosen(null); setError(e instanceof Error ? e.message : String(e)); },
     );
   };
 
@@ -55,18 +59,36 @@ export function Onboarding({ store, onChosen }: { store: AppStore; onChosen(user
       <SandboxBanner />
       <main className="page page--narrow home onboarding route-fade">
         <h1 className="home__title">Go</h1>
-        <p className="home__subtitle">Which team are you on?</p>
-        <div className="home__rule" />
-        <div className="onboarding__form">
-          <label className="field">
-            <span className="label">Team</span>
-            <TeamSelect value={courseId} onChange={setCourseId} label="Team" />
-          </label>
-          <p className="onboarding__lang" role="status">You will be learning {languageName(course)}</p>
-          {error && <p role="alert" className="error">{error}</p>}
-          {busy && !error && <p className="card__note" role="status" data-testid="preparing">Preparing your texts…</p>}
-          <button type="button" className="btn btn--primary" disabled={busy} onClick={begin}>Begin</button>
-        </div>
+        {step === 'welcome' ? (
+          <>
+            <p className="home__subtitle">Learn the language of the people you are going to.</p>
+            <div className="home__rule" />
+            <div className="onboarding__form">
+              <button type="button" className="btn btn--primary" onClick={() => setStep('team')}>Select your team</button>
+            </div>
+          </>
+        ) : (
+          <>
+            <p className="home__subtitle">Which team are you on?</p>
+            <div className="home__rule" />
+            <ul className="onboarding__teams" aria-label="Teams">
+              {COURSES.map((c) => (
+                <li key={c.id}>
+                  <button
+                    type="button" className={`onboarding__team${chosen === c.id ? ' onboarding__team--chosen' : ''}`} aria-label={c.country}
+                    disabled={busy} onClick={() => begin(c.id)}
+                  >
+                    <span className="onboarding__country">{c.country}</span>
+                    <span className="onboarding__lang">{languageName(c)}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+            {error && <p role="alert" className="error">{error}</p>}
+            {busy && <p className="card__note" role="status" data-testid="preparing">Preparing your texts…</p>}
+            {!busy && <button type="button" className="btn btn--quiet onboarding__back" onClick={() => setStep('welcome')}>Back</button>}
+          </>
+        )}
       </main>
     </>
   );

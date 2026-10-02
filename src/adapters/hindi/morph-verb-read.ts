@@ -10,7 +10,7 @@ import type { PartOfSpeech, WordPart } from '../../core';
 import { consonantCount, fold } from './morph-orth';
 import type { Ctx, Raw } from './morph-types';
 import { causativeBase, type Causative } from './morph-causative';
-import { IRREG, SLOTS, slotCanon, slotForms, stemClass, validStemStart, type Cls } from './morph-verb';
+import { AUX_PLURAL_NOTE, AUX_PLURAL_PENALTY, IRREG, SLOTS, slotCanon, slotForms, stemClass, validStemStart, type Cls } from './morph-verb';
 
 interface TailEntry { cls: Cls; si: number; rest: string }
 interface IrrEntry { stem: string; cls: Cls; si: number }
@@ -119,15 +119,23 @@ function emit(out: Raw[], seen: Set<string>, ctx: Ctx, stem: string, cls: Cls, s
   for (const m of slot.morphs) {
     const morph = { ...m };
     if (cau) morph.Voice = 'Cau';
-    out.push({ lemma, pos, morph, ...(parts ? { parts: parts.map((p) => ({ ...p })) } : {}), ...(cau ? { notes: { derivedFrom: cau.base, causative: cau.kind } } : {}), rule, known, tier, prior: base, paradigm: lemma });
+    const group = slot.auxPlural ? `${lemma}|${pos}|${slot.id}|fem-i` : undefined;
+    const reading: Raw = { lemma, pos, morph, ...(parts ? { parts: parts.map((p) => ({ ...p })) } : {}), ...(cau ? { notes: { derivedFrom: cau.base, causative: cau.kind } } : {}), rule, known, tier, prior: base, paradigm: lemma, ...(group ? { group } : {}) };
+    out.push(reading);
+    // -ी is also the plural when a plural auxiliary follows; a little behind the singular, so the singular stays first
+    if (slot.auxPlural) out.push({ ...reading, morph: { ...morph, Number: 'Plur' }, rule: `${rule}; ${AUX_PLURAL_NOTE}`, prior: base - AUX_PLURAL_PENALTY, penalty: AUX_PLURAL_PENALTY });
     // रहा / रहे / रही: the same participle is the progressive auxiliary (कर रहा है), far the commoner use
     if (stem === 'रह' && slot.id.startsWith('pf_')) {
       const auxKnown = ctx.knownVerb(lemma);
-      out.push({
-        lemma, pos: 'AUX', morph: { ...morph, Aspect: 'Prog' }, rule: `progressive auxiliary: the perfective participle of रहना before है / था (कर रहा है)`,
+      const progRule = 'progressive auxiliary: the perfective participle of रहना before है / था (कर रहा है)';
+      const prog: Raw = {
+        lemma, pos: 'AUX', morph: { ...morph, Aspect: 'Prog' }, rule: progRule,
         known: auxKnown, tier: auxKnown ? 'rule' : 'guess', prior: base + 0.05, paradigm: lemma,
         // (रहना has no irregular forms, so this reading is never `certain`)
-      });
+        ...(slot.auxPlural ? { group: `${lemma}|AUX|${slot.id}|fem-i` } : {}),
+      };
+      out.push(prog);
+      if (slot.auxPlural) out.push({ ...prog, morph: { ...prog.morph, Number: 'Plur' }, rule: `${progRule}; ${AUX_PLURAL_NOTE}`, prior: prog.prior - AUX_PLURAL_PENALTY, penalty: AUX_PLURAL_PENALTY });
     }
   }
 }
@@ -173,6 +181,11 @@ export function inflectVerb(lemma: string, causativeOf?: string): Array<{ form: 
         if (causativeOf) morph.Voice = 'Cau';
         rows.push({ form, morph });
         if (stem === 'रह' && slot.id.startsWith('pf_')) rows.push({ form, morph: { ...morph, Aspect: 'Prog' } });
+        // the -ी form is also the plural before a plural helping verb (beside the -ीं form of the plural cell)
+        if (slot.auxPlural) {
+          rows.push({ form, morph: { ...morph, Number: 'Plur' } });
+          if (stem === 'रह' && slot.id.startsWith('pf_')) rows.push({ form, morph: { ...morph, Aspect: 'Prog', Number: 'Plur' } });
+        }
       }
     }
   }

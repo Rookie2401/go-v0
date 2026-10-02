@@ -42,7 +42,13 @@ export interface Slot {
   build(stem: string, cls: Cls): string[];
   /** The slot exists only for irregular stems (the copula). */
   irregOnly?: boolean;
+  /** A feminine participle in -ी: the same form is also the plural when a plural helping verb follows (रही हैं, गई थीं). */
+  auxPlural?: boolean;
 }
+
+/** What the rule text adds for that second, plural reading. */
+export const AUX_PLURAL_NOTE = 'feminine plural when a plural helping verb follows (रही हैं, गई थीं); alone it would be written with a nasal mark (-ीं)';
+export const AUX_PLURAL_PENALTY = 0.03;
 
 function vend(stem: string, cls: Cls, ending: string): string {
   switch (cls) {
@@ -122,11 +128,11 @@ export const SLOTS: Slot[] = [
   { id: 'inf_f', label: 'feminine infinitive (stem + नी)', morphs: [{ VerbForm: 'Inf', Gender: 'Fem' }], evid: 0.45, build: sfx('नी') },
   { id: 'ipf_ms', label: 'imperfective participle (stem + ता)', morphs: [{ ...PART_I, Gender: 'Masc', Number: 'Sing' }], evid: 0.58, build: sfx('ता') },
   { id: 'ipf_mp', label: 'imperfective participle (stem + ते)', morphs: [{ ...PART_I, Gender: 'Masc', Number: 'Plur' }, { ...PART_I, Gender: 'Masc', Number: 'Sing', Case: 'Obl' }], evid: 0.58, build: sfx('ते') },
-  { id: 'ipf_fs', label: 'imperfective participle (stem + ती)', morphs: [{ ...PART_I, Gender: 'Fem', Number: 'Sing' }, { ...PART_I, Gender: 'Fem', Number: 'Plur' }], evid: 0.55, build: sfx('ती') },
+  { id: 'ipf_fs', label: 'imperfective participle (stem + ती)', morphs: [{ ...PART_I, Gender: 'Fem', Number: 'Sing' }], auxPlural: true, evid: 0.55, build: sfx('ती') },
   { id: 'ipf_fp', label: 'imperfective participle (stem + तीं)', morphs: [{ ...PART_I, Gender: 'Fem', Number: 'Plur' }], evid: 0.58, build: sfx('तीं') },
   { id: 'pf_ms', label: 'perfective participle', morphs: [{ ...PART_P, Gender: 'Masc', Number: 'Sing' }], evid: 0.3, build: PF(0) },
   { id: 'pf_mp', label: 'perfective participle', morphs: [{ ...PART_P, Gender: 'Masc', Number: 'Plur' }], evid: 0.25, build: PF(1) },
-  { id: 'pf_f', label: 'perfective participle', morphs: [{ ...PART_P, Gender: 'Fem', Number: 'Sing' }], evid: 0.25, build: PF(2) },
+  { id: 'pf_f', label: 'perfective participle', morphs: [{ ...PART_P, Gender: 'Fem', Number: 'Sing' }], auxPlural: true, evid: 0.25, build: PF(2) },
   { id: 'pf_fp', label: 'perfective participle', morphs: [{ ...PART_P, Gender: 'Fem', Number: 'Plur' }], evid: 0.4, build: PF(3) },
   { id: 'conv_kar', label: 'conjunctive (stem + कर)', morphs: [{ VerbForm: 'Conv' }], evid: 0.5, build: sfx('कर') },
   { id: 'conv_ke', label: 'conjunctive (stem + के)', morphs: [{ VerbForm: 'Conv' }], evid: 0.3, build: sfx('के') },

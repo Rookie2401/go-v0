@@ -198,7 +198,8 @@ function verbForms(lemma: string, kind: string, opts: ReadonlySet<string>): stri
   // the imperfective participle (the habitual and the continuous are made of it)
   const ip = 'VerbForm=Part ipfv';
   add(`${stem}ता`, `${ip} m sg`); add(`${stem}ते`, `${ip} m pl`); add(`${stem}ते`, `${ip} m sg obl`);
-  add(`${stem}ती`, `${ip} f sg`); add(`${stem}तीं`, `${ip} f pl`);
+  // a feminine participle in -ी is also the plural when a plural auxiliary follows (वे पढ़ती हैं); the nasal -ीं is the plural at the end of the verb group
+  add(`${stem}ती`, `${ip} f sg`); add(`${stem}ती`, `${ip} f pl`); add(`${stem}तीं`, `${ip} f pl`);
   // the perfective participle
   const pf = 'VerbForm=Part pfv';
   if (kind === 'c' && /[ािीुूेैोौ]$/u.test(stem)) throw new Error(`@verb:c needs a consonant stem: ${lemma}`);
@@ -234,7 +235,7 @@ function verbForms(lemma: string, kind: string, opts: ReadonlySet<string>): stri
     default: throw new Error(`unknown verb kind "${kind}" (c, v, e, ii, uu)`);
   }
   if (!opts.has('nopf')) {
-    add(pfv[0], `${pf} m sg`); add(pfv[1], `${pf} m pl`); add(pfv[2], `${pf} f sg`); add(pfv[3], `${pf} f pl`);
+    add(pfv[0], `${pf} m sg`); add(pfv[1], `${pf} m pl`); add(pfv[2], `${pf} f sg`); add(pfv[2], `${pf} f pl`); add(pfv[3], `${pf} f pl`);
   }
   // the subjunctive, the commands and the future
   // the way the rule engine states them: the singular second / third person is one form, the plural first / second / third another

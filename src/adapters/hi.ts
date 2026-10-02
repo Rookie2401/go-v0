@@ -299,6 +299,8 @@ function handCandidates(form: string): AnalysisCandidate[] {
         if (r.morph.VerbForm === 'Stem' && r.morph.Voice === 'Cau') confidence = 0.5;
         else if (r.morph.VerbForm === 'Part' && r.morph.Aspect === 'Perf' && !entry.forms.some((f) => f.morph.Voice === 'Cau')) confidence = 0.6;
       }
+      // the plural of a feminine participle without the nasal (रही as "were staying") is the less usual reading of the form
+      if (r.morph.VerbForm === 'Part' && r.morph.Gender === 'Fem' && r.morph.Number === 'Plur' && !form.endsWith(String.fromCodePoint(0x0902))) confidence = Math.max(0.3, Math.round((confidence - 0.05) * 100) / 100);
       out.push(annotate({
         lemma: entry.lemma, pos: entry.pos, morph: r.morph, notes: Object.keys(r.notes).length ? r.notes : undefined,
         confidence, gloss: entry.gloss, origin: 'hand', sourceId: HI_SOURCE_IDS.hand,

@@ -77,7 +77,8 @@ function makeCtx(opts: HindiAnalyzeOptions): Ctx {
 }
 
 /** The reading without its person: the variants of one finite form (third / first / second) share it. */
-const groupKey = (r: { lemma: string; pos: string; morph: Record<string, string> }): string => {
+const groupKey = (r: { lemma: string; pos: string; morph: Record<string, string>; group?: string }): string => {
+  if (r.group) return r.group;
   const { Person: _p, Polite: _q, ...rest } = r.morph;
   void _p; void _q;
   return `${r.lemma}|${r.pos}|${JSON.stringify(rest)}`;
@@ -123,7 +124,7 @@ export function analyzeHindiForm(form: string, opts: HindiAnalyzeOptions = {}): 
 
   const distinctKnown = new Set(known.map(groupKey)).size;
   const knownOut = known
-    .map((r, i) => ({ r, i, c: ambiguous ? 0.7 : r.tier === 'assumed' ? 0.8 : distinctKnown >= 2 ? 0.85 : 0.9 }))
+    .map((r, i) => ({ r, i, c: (ambiguous ? 0.7 : r.tier === 'assumed' ? 0.8 : distinctKnown >= 2 ? 0.85 : 0.9) - (r.penalty ?? 0) }))
     .sort((a, b) => b.c - a.c || b.r.prior - a.r.prior || a.i - b.i)
     .map((x) => toAnalysis(x.r, x.c));
 

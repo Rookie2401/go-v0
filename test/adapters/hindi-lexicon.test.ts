@@ -193,8 +193,8 @@ describe('Unicode: NFC, and the nukta stays a sign of its own', () => {
       expect(w.includes(NUKTA), `${w} is typed with a nukta`).toBe(true);
       expect(hiLexicon.find(w), `${w} is in the list`).toBeDefined();
       const bare = w.split(NUKTA).join('');
-      // the bare spelling is a different form: it is never an entry of its own unless it is a different word (राज is, जरा is not)
-      if (bare !== 'राज') expect(hiLexicon.find(bare), `${bare} must not be listed as a lemma`).toBeUndefined();
+      // the bare spelling is a different form: it is never an entry of its own unless it is a different word (राज and सजा are, जरा is not)
+      if (bare !== 'राज' && bare !== 'सजा') expect(hiLexicon.find(bare), `${bare} must not be listed as a lemma`).toBeUndefined();
     }
     expect(hiLexicon.find('राज', 'NOUN')?.gloss).toMatch(/rule|reign/);
     expect(hiLexicon.find('राज़', 'NOUN')?.gloss).toMatch(/secret/);
@@ -820,5 +820,79 @@ describe('basic words found missing by frame, and the written forms that are two
     }
     // the lamp is also written like the verb form "gave"
     expect(run('hi', 'दिया').analyses[0].candidates.map((c) => c.lemma)).toEqual(expect.arrayContaining(['देना', 'दीया']));
+  });
+});
+
+// ───────────────────────── fix batch 4 ─────────────────────────
+
+describe('feminine participles in -ी: the plural reading is there, a little less sure, and the nasal -ीं is plural only', () => {
+  const fem = (w: string, lemma: string) => run('hi', w).analyses[0].candidates.filter((c) => c.lemma === lemma && c.morph.VerbForm === 'Part' && c.morph.Gender === 'Fem');
+  it('nine verbs: रही, गई, की, दी, पढ़ती, हुई, ली … each give a singular and a plural reading, the plural no more sure than the singular', () => {
+    for (const [w, lemma] of [['रही', 'रहना'], ['गई', 'जाना'], ['की', 'करना'], ['दी', 'देना'], ['पढ़ती', 'पढ़ना'], ['हुई', 'होना'], ['ली', 'लेना'], ['बनी', 'बनना'], ['खाई', 'खाना']] as const) {
+      const r = fem(w, lemma);
+      const sing = r.filter((c) => c.morph.Number === 'Sing');
+      const plur = r.filter((c) => c.morph.Number === 'Plur');
+      expect(sing.length, `${w} singular`).toBeGreaterThan(0);
+      expect(plur.length, `${w} plural`).toBeGreaterThan(0);
+      expect(Math.max(...plur.map((c) => c.confidence)), w).toBeLessThanOrEqual(Math.max(...sing.map((c) => c.confidence)));
+      for (const c of r) expect(c.morph.Case, w).toBeUndefined();
+    }
+    // the hand readings themselves: singular and plural, and the plural a little below
+    for (const w of ['रही', 'गई', 'दी']) {
+      const hand = hiLexicon.lookup(w).filter((h) => h.form.morph.Gender === 'Fem' && h.form.morph.VerbForm === 'Part');
+      expect(hand.map((h) => h.form.morph.Number).sort(), w).toEqual(['Plur', 'Sing']);
+    }
+  });
+  it('the nasal forms are plural only, and थी (the past of "to be") is singular only', () => {
+    for (const [w, lemma] of [['रहीं', 'रहना'], ['गईं', 'जाना'], ['कीं', 'करना'], ['दीं', 'देना'], ['पढ़तीं', 'पढ़ना'], ['हुईं', 'होना']] as const) {
+      const r = fem(w, lemma);
+      expect(r.length, w).toBeGreaterThan(0);
+      for (const c of r) expect(c.morph.Number, w).toBe('Plur');
+    }
+    expect(run('hi', 'थी').analyses[0].candidates.some((c) => c.morph.Number === 'Plur' && c.lemma === 'होना')).toBe(false);
+  });
+  it('after a plural subject and before a plural auxiliary रही has a plural reading (the sentence layer puts it first)', () => {
+    const r = run('hi', 'लड़कियाँ मैदान में दौड़ रही हैं।');
+    const i = r.tokens.findIndex((t) => t.surface === 'रही');
+    const c = r.analyses[i].candidates;
+    expect(c.some((x) => x.lemma === 'रहना' && x.morph.Number === 'Plur')).toBe(true);
+    expect(c.some((x) => x.lemma === 'रहना' && x.morph.Number === 'Sing')).toBe(true);
+    if (c[0].morph.Aspect === 'Prog') expect(c[0].morph.Number).toBe('Plur');
+  });
+});
+
+describe('every possessive determiner has all its forms, as the engine gives them for an -ा adjective', () => {
+  const POSS: Array<[string, string]> = [['मेरा', 'मेर'], ['तेरा', 'तेर'], ['हमारा', 'हमार'], ['तुम्हारा', 'तुम्हार'], ['अपना', 'अपन'], ['उसका', 'उसक'], ['इसका', 'इसक'], ['उनका', 'उनक'], ['इनका', 'इनक'], ['किसका', 'किसक'], ['जिसका', 'जिसक'], ['आपका', 'आपक']];
+  it('twelve rows: masculine singular direct, masculine singular oblique, masculine plural direct, masculine plural oblique, feminine singular, feminine plural', () => {
+    for (const [lemma, stem] of POSS) {
+      const e = hiLexicon.find(lemma, 'DET')!;
+      expect(e, lemma).toBeDefined();
+      const cell = (f: string, g: string, n: string, c?: string) => e.forms.some((x) => x.form === f && x.morph.Gender === g && x.morph.Number === n && x.morph.Case === c && x.morph.Poss === 'Yes');
+      expect(cell(lemma, 'Masc', 'Sing', 'Dir'), `${lemma} m sg dir`).toBe(true);
+      expect(cell(`${stem}े`, 'Masc', 'Sing', 'Obl'), `${lemma} m sg obl`).toBe(true);
+      expect(cell(`${stem}े`, 'Masc', 'Plur', 'Dir'), `${lemma} m pl dir`).toBe(true);
+      expect(cell(`${stem}े`, 'Masc', 'Plur', 'Obl'), `${lemma} m pl obl`).toBe(true);
+      expect(cell(`${stem}ी`, 'Fem', 'Sing'), `${lemma} f sg`).toBe(true);
+      expect(cell(`${stem}ी`, 'Fem', 'Plur'), `${lemma} f pl`).toBe(true);
+      expect(e.forms.length, lemma).toBe(6);
+    }
+  });
+});
+
+describe('nouns and adjectives spelled like a form of a listed verb', () => {
+  it('the vehicle, the branch, the clap, the cleaning, ripe, burnt: both the noun or adjective and the verb form are read', () => {
+    const PAIRS: Array<[string, PartOfSpeech, string]> = [
+      ['गाड़ी', 'NOUN', 'गाड़ना'], ['डाली', 'NOUN', 'डालना'], ['पका', 'ADJ', 'पकना'], ['जला', 'ADJ', 'जलना'], ['सोया', 'ADJ', 'सोना'], ['भीगा', 'ADJ', 'भीगना'], ['पकड़', 'NOUN', 'पकड़ना'], ['चमक', 'NOUN', 'चमकना'], ['पाला', 'NOUN', 'पालना'],
+    ];
+    for (const [w, pos, verb] of PAIRS) {
+      const c = run('hi', w).analyses[0].candidates;
+      expect(c.some((x) => x.lemma === w && x.pos === pos), `${w} ${pos}`).toBe(true);
+      expect(c.some((x) => x.lemma === verb && x.pos === 'VERB'), `${w} as a form of ${verb}`).toBe(true);
+    }
+  });
+  it('the added words are in the list with their parts of speech, and two words that differ only by the nukta stay apart', () => {
+    const MUST: Array<[string, PartOfSpeech]> = [['बाली', 'NOUN'], ['गाली', 'NOUN'], ['सिलाई', 'NOUN'], ['कटाई', 'NOUN'], ['पहचान', 'NOUN'], ['पुकार', 'NOUN'], ['जाँच', 'NOUN'], ['उबाल', 'NOUN'], ['फ़ैसला', 'NOUN'], ['ज़माना', 'NOUN'], ['बहाना', 'NOUN'], ['झूलना', 'VERB'], ['पका', 'ADJ'], ['लिखा', 'ADJ'], ['रखा', 'ADJ']];
+    for (const [w, pos] of MUST) expect(hiLexicon.find(w, pos), `${w} ${pos}`).toBeDefined();
+    expect(hiAdapter.relate('ज़माना', 'जमाना')).toBe('none');
   });
 });

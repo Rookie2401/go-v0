@@ -27,6 +27,10 @@ export interface Raw {
   paradigm: string;
   /** Extra facts about how the reading was reached (`derivedFrom`: the base of an abstract noun). */
   notes?: Record<string, string>;
+  /** Subtracted from the confidence of a vouched reading: a variant that must stay behind its twin (the plural use of a feminine -ी participle). */
+  penalty?: number;
+  /** Readings with the same group are variants of ONE reading and count once against the cap on guesses. */
+  group?: string;
 }
 
 /** What the caller's word list can say, with every call guarded (a missing callback answers "no"). */

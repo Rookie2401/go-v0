@@ -263,14 +263,29 @@ function amongNominals(i: number, tokens: RawToken[], base: C[][], asLeft: C[]):
   const after = next === undefined ? [] : solid(base[next]);
   const nounNext = after.length > 0 && (after[0].pos === 'NOUN' || after[0].pos === 'PROPN') && !after.some((c) => c.pos === 'ADJ');
 
-  // a capital letter inside a sentence: the name (a Jamaica, del Paraguay, la GAO)
+  // a capital letter inside a sentence: the name (a Jamaica, del Paraguay, la FAO, Rosa dijo). Also after an article:
+  // leaving those to the noun was tried on the dev examples and lost more names (el Paraguay, el Senado, la FAO) than
+  // it gained nouns written with a capital (la Red); telling the two apart needs the dictionary's own spelling
   if (has('PROPN') && capitalInside(i, tokens)) {
     return list[0].pos === 'PROPN' ? list : prefer(['PROPN'], 'written with a capital inside the sentence: a name') ?? list;
+  }
+  // ¿Vamos al cine, gordo? ¡Cállate, tonto!: after a comma, closing a question or an exclamation, someone is addressed
+  // (in a statement the last word after a comma may as well describe: Llegó tarde, cansado.)
+  if (list[0].pos === 'ADJ' && has('NOUN') && standsAlone(i, tokens) === 'closes' && /^[?!]/u.test(tokens[i + 1]?.surface.trim() ?? '')) {
+    const r = prefer(['NOUN'], 'after a comma, closing a question or exclamation: the person addressed');
+    if (r) return r;
   }
   // bajo la mesa, salvo Ana, menos Juan: a preposition before its noun phrase (not "el bajo", "un sobre", "a bajo precio")
   // (menos before a bare noun or number is "less": menos trabajo, menos dos)
   if (has('ADP') && ALSO_PREPOSITION.has(w) && !article && !(p !== undefined && PREPOSITIONS.has(p)) && beforeNounPhrase(next, tokens, base, w !== 'menos')) {
     const r = prefer(['ADP'], 'before a noun phrase: a preposition');
+    if (r) return r;
+  }
+  // antes de la cena, cerca de aquí, dentro de un año: an adverb with "de" after it works as a preposition; where the
+  // word has that reading it comes first, otherwise the adverb stays. Not a word of degree (menos de diez, más de
+  // uno are comparisons) and not after an article (el menos de todos)
+  if (has('ADP') && list[0].pos === 'ADV' && !INTENSIFIERS.has(w) && !article && next !== undefined && ['de', 'del'].includes(tokens[next].normalized)) {
+    const r = prefer(['ADP'], 'before "de": a preposition (adverb + de)');
     if (r) return r;
   }
   // a bajo precio, de bajo nivel, a salvo: after a preposition a word that is preposition or adjective is the adjective
@@ -294,6 +309,23 @@ function amongNominals(i: number, tokens: RawToken[], base: C[][], asLeft: C[]):
   // no hay menores, aquí hay blancos: "hay" takes a noun phrase
   if (p === 'hay' && has('NOUN')) {
     const r = prefer(['NOUN'], 'after "hay": a noun');
+    if (r) return r;
+  }
+  // no quiero viejos groseros, llegaron jóvenes simpáticos: after a verb, a plural that is noun or adjective, with a
+  // word after it that is only an adjective and agrees with it, is the noun that adjective describes
+  const afterKnownVerb = prev !== undefined && solid(base[prev]).length > 0 && solid(base[prev]).every((c) => isVerbal(c) && c.unconfirmed !== true);
+  const plural = nominal.some((c) => c.pos === 'NOUN' && c.morph.Number === 'Plur');
+  if (afterKnownVerb && list[0].pos === 'ADJ' && plural && after.length > 0 && after[0].pos === 'ADJ' && after.every((c) => c.pos === 'ADJ' && hasNumber(c, 'Plur'))) {
+    const r = prefer(['NOUN'], 'after a verb, with its adjective after it: a noun');
+    if (r) return r;
+  }
+  // personal de seguridad, medios aristocráticos: a label of a few words (nothing before it, no closing punctuation)
+  // opens with its noun rather than with an adjective — a weak cue: lleno de agua, libre de impuestos are labels too
+  const words = tokens.filter((t) => t.isWord).length;
+  const closed = /[.!?…]/u.test(tokens.slice(-2).filter((t) => !t.isWord).map((t) => t.surface).join(''));
+  if (list[0].pos === 'ADJ' && has('NOUN') && !closed && words <= 4 && !tokens.slice(0, i).some((t) => t.isWord)
+    && next !== undefined && (tokens[next].normalized === 'de' || (after.length > 0 && after.every((c) => c.pos === 'ADJ')))) {
+    const r = prefer(['NOUN'], 'opens a label of a few words: its noun', 'weak');
     if (r) return r;
   }
   // habla claro, trabaja duro, maneja fatal: directly after a verb that is not ser or estar, and not before its noun

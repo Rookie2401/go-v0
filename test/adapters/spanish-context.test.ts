@@ -78,6 +78,15 @@ describe('a name: written with a capital inside the sentence', () => {
     expect(read('Al final Marta dijo: —¡Gracias a todos!', { beside: { Gracias: [d('Gracias', 'PROPN', [], 'a surname')] } }).first('Gracias')).toBe('gracias/INTJ');
   });
 
+  it('also after an article: la India, la FAO (so "la Red" reads as a name too: the rules cannot tell them apart)', () => {
+    const india = [d('india', 'NOUN', ['feminine', 'singular'], 'Indian woman'), d('India', 'PROPN', [], 'India')];
+    expect(read('Viajó a la India.', { decided: { India: india } }).first('India')).toBe('India/PROPN');
+    expect(read('Lo dice la FAO.', { decided: { FAO: [d('fao', 'NOUN', ['masculine', 'singular']), d('FAO', 'PROPN', [], 'Food and Agriculture Organization')] } }).first('FAO')).toBe('FAO/PROPN');
+    const red = [d('red', 'NOUN', ['feminine', 'singular'], 'net, network'), d('Red', 'PROPN', [], 'the Internet')];
+    expect(read('Lo encontré en la Red.', { decided: { Red: red } }).first('Red')).toBe('Red/PROPN');
+    expect(read('Lo encontré en la red.', { decided: { red } }).first('red')).toBe('red/NOUN');
+  });
+
   it('written small, a name waits behind the other readings', () => {
     const r = read('Tomamos una jamaica fría.', { decided: { jamaica: [d('Jamaica', 'PROPN', [], 'Jamaica (a country)'), d('jamaica', 'NOUN', ['feminine', 'singular'], 'hibiscus tea')] } });
     expect(r.order('jamaica')).toEqual(['jamaica/NOUN', 'Jamaica/PROPN']);
@@ -256,6 +265,79 @@ describe('qué: determiner before a noun, "how" before an adjective, else the pr
     expect(read('¿Qué compra Pedro?', que('Qué')).first('Qué')).toBe('qué/PRON'); // compra: a noun or a form of comprar
     expect(read('No sé qué decir.', que('qué')).first('qué')).toBe('qué/PRON');
     expect(read('¿Qué?', que('Qué')).first('Qué')).toBe('qué/PRON');
+  });
+});
+
+describe('an adverb with "de" after it: the preposition, where the word has that reading', () => {
+  const antes = { beside: { antes: [d('antes', 'ADP', [], 'before')] } };
+
+  it('antes de la cena, cerca del río', () => {
+    const r = read('Llegó antes de la cena.', antes);
+    expect(r.first('antes')).toBe('antes/ADP');
+    expect(r.why('antes')).toMatch(/before "de"/);
+    expect(read('Vive cerca del río.', { beside: { cerca: [d('cerca', 'ADP', [], 'near'), d('cerca', 'NOUN', ['feminine', 'singular'], 'fence')] } }).first('cerca')).toBe('cerca/ADP');
+  });
+
+  it('without "de", or without a preposition reading, the adverb stays', () => {
+    expect(read('Llegó antes.', antes).first('antes')).toBe('antes/ADV');
+    expect(read('Llegó antes que yo.', antes).first('antes')).toBe('antes/ADV');
+    expect(read('Vive cerca de aquí.', { beside: { cerca: [d('cerca', 'NOUN', ['feminine', 'singular'], 'fence')] } }).first('cerca')).toBe('cerca/ADV');
+  });
+
+  it('a word of degree before "de" is a comparison, not a preposition: menos de diez, el menos de todos', () => {
+    const menos = { beside: { menos: [d('menos', 'ADP', [], 'except')] } };
+    expect(read('Vinieron menos de diez personas.', menos).first('menos')).not.toBe('menos/ADP');
+    expect(read('Come el menos de todos.', menos).first('menos')).not.toBe('menos/ADP');
+  });
+});
+
+describe('someone addressed after a comma, closing a question or an exclamation', () => {
+  const viejo = { beside: { viejo: [d('viejo', 'NOUN', ['masculine', 'singular'], 'old man; (colloquial) dad, mate')] } };
+
+  it('¿Qué dices, viejo? ¡Ven aquí, viejo!: the noun', () => {
+    const r = read('¿Qué dices, viejo?', viejo);
+    expect(r.first('viejo')).toBe('viejo/NOUN');
+    expect(r.why('viejo')).toMatch(/addressed/);
+    expect(read('¡Ven aquí, viejo!', viejo).first('viejo')).toBe('viejo/NOUN');
+  });
+
+  it('in a statement, or inside the clause, the adjective of the word list stays', () => {
+    expect(read('Volvió a casa cansado, viejo.', viejo).first('viejo')).toBe('viejo/ADJ');
+    expect(read('¿Es viejo tu perro?', viejo).first('viejo')).toBe('viejo/ADJ');
+    expect(read('¿Está viejo, enfermo o cansado?', viejo).first('viejo')).toBe('viejo/ADJ');
+  });
+});
+
+describe('after a verb, a plural with an adjective after it: the noun', () => {
+  const jovenes = { beside: { jóvenes: [d('joven', 'NOUN', ['plural'], 'young person')] } };
+
+  it('busco jóvenes altos: the noun that the adjective describes', () => {
+    const r = read('Busco jóvenes altos.', jovenes);
+    expect(r.first('jóvenes')).toBe('joven/NOUN');
+    expect(r.why('jóvenes')).toMatch(/after a verb/);
+  });
+
+  it('with nothing after it, or a noun after it, it stays the adjective', () => {
+    expect(read('Mis hermanos son jóvenes.', jovenes).first('jóvenes')).toBe('joven/ADJ');
+    expect(read('Busco jóvenes amigos.', jovenes).first('jóvenes')).toBe('joven/ADJ');
+    // the singular is left alone too
+    expect(read('Parece joven alto.', { beside: { joven: [d('joven', 'NOUN', ['singular'], 'young person')] } }).first('joven')).toBe('joven/ADJ');
+  });
+});
+
+describe('a label of a few words opens with its noun (a weak cue)', () => {
+  const personal = [d('personal', 'ADJ', ['singular']), d('personal', 'NOUN', ['masculine', 'singular'], 'staff')];
+
+  it('personal de seguridad, personal sanitario: among readings of one standing, the noun', () => {
+    expect(read('personal de seguridad', { decided: { personal } }).first('personal')).toBe('personal/NOUN');
+    const sanitario = [d('sanitario', 'ADJ', ['masculine', 'singular'])];
+    expect(read('personal sanitario', { decided: { personal, sanitario } }).first('personal')).toBe('personal/NOUN');
+  });
+
+  it('not in a sentence with closing punctuation, not after another word, and never against an adjective of the word list', () => {
+    expect(read('Personal de seguridad.', { decided: { Personal: personal } }).first('Personal')).toBe('personal/ADJ');
+    expect(read('solo personal de seguridad', { decided: { personal } }).first('personal')).toBe('personal/ADJ');
+    expect(read('Lleno de agua', { beside: { Lleno: [d('lleno', 'NOUN', ['masculine', 'singular'], 'full house')] } }).first('Lleno')).toBe('lleno/ADJ');
   });
 });
 

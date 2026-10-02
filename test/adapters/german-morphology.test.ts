@@ -788,7 +788,7 @@ describe('analysis: closed classes', () => {
     ]);
     expect(an('zum')[0].parts!.map((p) => p.text)).toEqual(['zu', 'dem']);
     expect(an('zur')[0].parts!.map((p) => p.text)).toEqual(['zu', 'der']);
-    expect(an('Zum')[0].parts!.map((p) => p.text)).toEqual(['Zu', 'm']);
+    expect(an('Zum')[0].parts!.map((p) => p.text)).toEqual(['zu', 'dem']); // the words as the word list has them, whatever the capital of the written form
   });
 
   it('articles with their cells and features; plain words', () => {

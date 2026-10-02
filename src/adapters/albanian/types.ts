@@ -132,6 +132,12 @@ export interface SqReading {
   articulated?: boolean;
   /** A preposition's governed case. */
   governs?: SqLexeme['governs'];
+  /**
+   * The written form is not Standard spelling as it stands: it was typed without ë / ç, or it is a Gheg or an older form.
+   * `standard` is the Standard Albanian form this reading was made from; the text itself is never changed.
+   * `period` is a variety code of varieties.ts ('sq-ascii', 'aln', 'sq-pre1972').
+   */
+  relation?: { standard: string; period: string; confidence: number; rule: string };
 }
 
 /** A short object pronoun as the clitic table lists it. */
@@ -169,6 +175,8 @@ const TAGS: Record<string, [string, string]> = {
   act: ['Voice', 'Act'], mid: ['Voice', 'Mid'],
   ptcp: ['VerbForm', 'Part'],
   prs: ['PronType', 'Prs'], dem: ['PronType', 'Dem'], int: ['PronType', 'Int'], rel: ['PronType', 'Rel'], art: ['PronType', 'Art'],
+  // 'ind' is the indicative mood: an indefinite or a negative pronoun is 'pind' / 'pneg'
+  pind: ['PronType', 'Ind'], pneg: ['PronType', 'Neg'],
   poss: ['Poss', 'Yes'], clitic: ['Clitic', 'Yes'], cmp: ['Degree', 'Cmp'], sup: ['Degree', 'Sup'],
 };
 const ORDER: Record<string, string[]> = {
@@ -179,7 +187,8 @@ const ORDER: Record<string, string[]> = {
 /**
  * "3 sg pres ind" → { Person: '3', Number: 'Sing', Tense: 'Pres', Mood: 'Ind', VerbForm: 'Fin' }. Several values of
  * one feature become a union in the conventional order ("gen dat abl sg indef" → Case 'Gen,Dat,Abl'). A finite verb
- * form (one with a person, a tense or a mood) gets VerbForm 'Fin'. An unknown tag throws: a typo must not pass.
+ * form (one with a tense or a mood; a person alone is a pronoun's) gets VerbForm 'Fin'. An unknown tag throws: a typo
+ * must not pass.
  */
 export function sqMorph(tags: string): Record<string, string> {
   const sets: Record<string, string[]> = {};
@@ -194,7 +203,7 @@ export function sqMorph(tags: string): Record<string, string> {
     const order = ORDER[k];
     out[k] = (order ? [...vs].sort((a, b) => order.indexOf(a) - order.indexOf(b)) : vs).join(',');
   }
-  if (!out.VerbForm && (out.Person || out.Tense || out.Mood)) out.VerbForm = 'Fin';
+  if (!out.VerbForm && (out.Tense || out.Mood)) out.VerbForm = 'Fin';
   return out;
 }
 

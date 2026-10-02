@@ -1,0 +1,104 @@
+# sent_id = sample-1
+# text = Unë kam një libër.
+1	Unë	unë	PRON	_	Case=Nom|Number=Sing|Person=1|PronType=Prs	2	nsubj	_	_
+2	kam	kam	VERB	_	Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	_
+3	një	një	DET	_	Definite=Ind	4	det	_	_
+4	libër	libër	NOUN	_	Case=Acc|Definite=Ind|Gender=Masc|Number=Sing	2	obj	_	SpaceAfter=No
+5	.	.	PUNCT	_	_	2	punct	_	_
+
+# sent_id = sample-2
+# text = Libri është i mirë.
+1	Libri	libër	NOUN	_	Case=Nom|Definite=Def|Gender=Masc|Number=Sing	4	nsubj	_	_
+2	është	jam	AUX	_	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	4	cop	_	_
+3	i	i	DET	_	Case=Nom|Gender=Masc|Number=Sing|PronType=Art	4	det	_	_
+4	mirë	mirë	ADJ	_	Case=Nom|Gender=Masc|Number=Sing	0	root	_	SpaceAfter=No
+5	.	.	PUNCT	_	_	4	punct	_	_
+
+# sent_id = sample-3
+# text = Ai ta dha.
+1	Ai	ai	PRON	_	Case=Nom|Gender=Masc|Number=Sing|Person=3|PronType=Prs	4	nsubj	_	_
+2-3	ta	_	_	_	_	_	_	_	_
+2	të	ti	PRON	_	Case=Dat|Number=Sing|Person=2|PronType=Prs|Clitic=Yes	4	iobj	_	_
+3	e	ai	PRON	_	Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Clitic=Yes	4	obj	_	_
+4	dha	jap	VERB	_	Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin|Voice=Act	0	root	_	SpaceAfter=No
+5	.	.	PUNCT	_	_	4	punct	_	_
+
+# sent_id = sample-4
+# text = Ma jep!
+1-2	Ma	_	_	_	_	_	_	_	_
+1	Më	unë	PRON	_	Case=Dat|Number=Sing|Person=1|PronType=Prs|Clitic=Yes	3	iobj	_	_
+2	e	ai	PRON	_	Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Clitic=Yes	3	obj	_	_
+3	jep	jap	VERB	_	Mood=Imp|Number=Sing|Person=2|VerbForm=Fin|Voice=Act	0	root	_	SpaceAfter=No
+4	!	!	PUNCT	_	_	3	punct	_	_
+
+# sent_id = sample-5
+# text = Nuk e di.
+1	Nuk	nuk	PART	_	Polarity=Neg	3	advmod	_	_
+2	e	ai	PRON	_	Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Clitic=Yes	3	obj	_	_
+3	di	di	VERB	_	Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	SpaceAfter=No
+4	.	.	PUNCT	_	_	3	punct	_	_
+
+# sent_id = sample-6
+# text = S'ka kohë.
+1-2	S'ka	_	_	_	_	_	_	_	_
+1	S'	nuk	PART	_	Polarity=Neg	2	advmod	_	_
+2	ka	kam	VERB	_	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	_
+3	kohë	kohë	NOUN	_	Case=Acc|Definite=Ind|Gender=Fem|Number=Sing	2	obj	_	SpaceAfter=No
+4	.	.	PUNCT	_	_	2	punct	_	_
+
+# sent_id = sample-7
+# text = Dua t'i shkruaj.
+1	Dua	dua	VERB	_	Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	_
+2-3	t'i	_	_	_	_	_	_	_	_
+2	të	të	PART	_	_	4	mark	_	_
+3	i	ai	PRON	_	Case=Dat|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Clitic=Yes	4	iobj	_	_
+4	shkruaj	shkruaj	VERB	_	Mood=Sub|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act	1	xcomp	_	SpaceAfter=No
+5	.	.	PUNCT	_	_	1	punct	_	_
+
+# sent_id = sample-8
+# text = Shtëpia e madhe është këtu.
+1	Shtëpia	shtëpi	NOUN	_	Case=Nom|Definite=Def|Gender=Fem|Number=Sing	5	nsubj	_	_
+2	e	e	DET	_	Case=Nom|Gender=Fem|Number=Sing|PronType=Art	3	det	_	_
+3	madhe	madh	ADJ	_	Case=Nom|Gender=Fem|Number=Sing	1	amod	_	_
+4	është	jam	AUX	_	Mood=Ind|Number=Sing|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	5	cop	_	_
+5	këtu	këtu	ADV	_	_	0	root	_	SpaceAfter=No
+6	.	.	PUNCT	_	_	5	punct	_	_
+
+# sent_id = sample-9
+# text = Fëmijët lexojnë libra në shkollë.
+1	Fëmijët	fëmijë	NOUN	_	Case=Nom|Definite=Def|Gender=Masc|Number=Plur	2	nsubj	_	_
+2	lexojnë	lexoj	VERB	_	Mood=Ind|Number=Plur|Person=3|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	_
+3	libra	libër	NOUN	_	Case=Acc|Definite=Ind|Gender=Masc|Number=Plur	2	obj	_	_
+4	në	në	ADP	_	_	5	case	_	_
+5	shkollë	shkollë	NOUN	_	Case=Acc|Definite=Ind|Gender=Fem|Number=Sing	2	obl	_	SpaceAfter=No
+6	.	.	PUNCT	_	_	2	punct	_	_
+
+# sent_id = sample-10
+# text = Nuk ma tha.
+1	Nuk	nuk	PART	_	Polarity=Neg	4	advmod	_	_
+2-3	ma	_	_	_	_	_	_	_	_
+2	më	unë	PRON	_	Case=Dat|Number=Sing|Person=1|PronType=Prs|Clitic=Yes	4	iobj	_	_
+3	e	ai	PRON	_	Case=Acc|Gender=Masc|Number=Sing|Person=3|PronType=Prs|Clitic=Yes	4	obj	_	_
+4	tha	them	VERB	_	Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin|Voice=Act	0	root	_	SpaceAfter=No
+5	.	.	PUNCT	_	_	4	punct	_	_
+
+# sent_id = sample-11
+# text = "Mirëdita," tha ai.
+1	"	"	PUNCT	_	_	2	punct	_	SpaceAfter=No
+2	Mirëdita	mirëdita	INTJ	_	_	5	parataxis	_	SpaceAfter=No
+3	,	,	PUNCT	_	_	2	punct	_	SpaceAfter=No
+4	"	"	PUNCT	_	_	2	punct	_	_
+5	tha	them	VERB	_	Mood=Ind|Number=Sing|Person=3|Tense=Past|VerbForm=Fin|Voice=Act	0	root	_	_
+6	ai	ai	PRON	_	Case=Nom|Gender=Masc|Number=Sing|Person=3|PronType=Prs	5	nsubj	_	SpaceAfter=No
+7	.	.	PUNCT	_	_	5	punct	_	_
+
+# sent_id = sample-12
+# text = Unë kam librin dhe ti çantën.
+1	Unë	unë	PRON	_	Case=Nom|Number=Sing|Person=1|PronType=Prs	2	nsubj	_	_
+2	kam	kam	VERB	_	Mood=Ind|Number=Sing|Person=1|Tense=Pres|VerbForm=Fin|Voice=Act	0	root	_	_
+3	librin	libër	NOUN	_	Case=Acc|Definite=Def|Gender=Masc|Number=Sing	2	obj	_	_
+4	dhe	dhe	CCONJ	_	_	5	cc	_	_
+5	ti	ti	PRON	_	Case=Nom|Number=Sing|Person=2|PronType=Prs	2	conj	_	_
+5.1	kam	kam	VERB	_	Mood=Ind|Number=Sing|Person=2|Tense=Pres|VerbForm=Fin|Voice=Act	_	_	2:conj	_
+6	çantën	çantë	NOUN	_	Case=Acc|Definite=Def|Gender=Fem|Number=Sing	5	obj	_	SpaceAfter=No
+7	.	.	PUNCT	_	_	2	punct	_	_

@@ -18,6 +18,8 @@ export const SQ_VARIETIES: Record<string, Variety> = {
   als: { code: 'als', label: 'Tosk', kind: 'regional', note: 'The dialect group of the south, on which the Standard is largely based; dialectal Tosk is still not the Standard.' },
   aae: { code: 'aae', label: 'Arbëresh (Italy)', kind: 'regional', note: 'The Albanian of the old Albanian communities in southern Italy, with its own history and borrowings.' },
   aat: { code: 'aat', label: 'Arvanitika (Greece)', kind: 'regional', note: 'The Albanian of the old Albanian communities in Greece, now spoken by few.' },
+  // not a variety of the language: a habit of typing. Listed so that a reading made from "eshte" can say what it is.
+  'sq-ascii': { code: 'sq-ascii', label: 'typed without ë and ç', kind: 'feature', note: 'The word is written without its Albanian letters (eshte for është, cfare for çfarë), as much informal writing online is; Standard spelling has them.' },
   'sq-hist': { code: 'sq-hist', label: 'older Albanian', kind: 'historical', note: 'Words and spellings from before the modern standard; the text is kept as written.' },
   'sq-pre1972': { code: 'sq-pre1972', label: 'Albanian spelling before 1972', kind: 'historical', parent: 'sq-hist', note: 'Printed in the common Latin alphabet but before the 1972 norm, so spelling and some forms differ from today\'s.' },
   'sq-pre1908': { code: 'sq-pre1908', label: 'Albanian before the 1908 alphabet', kind: 'historical', parent: 'sq-hist', note: 'Written before the common alphabet of 1908, in other alphabets: a matter of the edition, recorded on the work.' },

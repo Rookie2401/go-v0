@@ -1,0 +1,51 @@
+{
+  "note": "External Albanian resources used for validation only. Facts are those read from the treebanks' READMEs by the coordinator on 2026-10-01; nothing here is guessed. The treebanks are NOT downloaded: retrieved and version are filled when the owner has approved a download and it has been done. They are never course text, never bundled, never shown to a learner.",
+  "readFrom": "the READMEs of the three repositories, read 2026-10-01",
+  "resources": [
+    {
+      "name": "UD_Albanian-STAF",
+      "repository": "https://github.com/UniversalDependencies/UD_Albanian-STAF",
+      "licence": "CC BY-SA 4.0",
+      "udSince": "v2.15",
+      "sentences": 202,
+      "tokens": null,
+      "text": "six works of fiction (1963-2004)",
+      "annotation": "lemmas and features automatic with corrections",
+      "use": "research-only",
+      "shipped": false,
+      "localPath": "data/research/ud/UD_Albanian-STAF",
+      "retrieved": null,
+      "version": null
+    },
+    {
+      "name": "UD_Albanian-TSA",
+      "repository": "https://github.com/UniversalDependencies/UD_Albanian-TSA",
+      "licence": "CC BY-SA 4.0",
+      "udSince": "v2.6",
+      "sentences": 60,
+      "tokens": 922,
+      "text": "Wikipedia",
+      "annotation": "manual",
+      "use": "research-only",
+      "shipped": false,
+      "localPath": "data/research/ud/UD_Albanian-TSA",
+      "retrieved": null,
+      "version": null
+    },
+    {
+      "name": "UD_Gheg-GPS",
+      "repository": "https://github.com/UniversalDependencies/UD_Gheg-GPS",
+      "licence": "CC BY-SA 4.0",
+      "udSince": "v2.11",
+      "sentences": 966,
+      "tokens": "about 16,000",
+      "text": "spoken retellings of the Pear Stories film by Gheg speakers in Prishtina and Zurich, with code-switching (mostly Swiss German) and disfluencies",
+      "annotation": "manual",
+      "use": "research-only",
+      "shipped": false,
+      "localPath": "data/research/ud/UD_Gheg-GPS",
+      "retrieved": null,
+      "version": null
+    }
+  ]
+}

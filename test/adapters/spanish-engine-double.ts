@@ -6,7 +6,7 @@
  */
 import type { PartOfSpeech, WordPart } from '../../src/core';
 
-interface Reading { lemma: string; pos: PartOfSpeech; morph: Record<string, string>; varieties?: string[]; parts?: WordPart[]; rule: string }
+interface Reading { lemma: string; pos: PartOfSpeech; morph: Record<string, string>; varieties?: string[]; parts?: WordPart[]; rule: string; afterFinite?: boolean }
 type KnownLemma = (lemma: string, pos?: PartOfSpeech) => boolean;
 
 const V = (lemma: string, morph: Record<string, string>, extra: Partial<Reading> = {}): Reading =>
@@ -54,6 +54,20 @@ const TABLE: Record<string, Reading[]> = {
   comprarlo: [V('comprar', { VerbForm: 'Inf' }, { parts: [
     { text: 'comprar', start: 0, end: 7, lemma: 'comprar', pos: 'VERB' },
     { text: 'lo', start: 7, end: 9, lemma: 'lo', pos: 'PRON', role: 'direct object pronoun' },
+  ] })],
+  dámelo: [V('dar', { VerbForm: 'Fin', Mood: 'Imp', Person: '2', Number: 'Sing' }, { parts: [
+    { text: 'dá', start: 0, end: 2, lemma: 'dar', pos: 'VERB', morph: { VerbForm: 'Fin', Mood: 'Imp', Person: '2', Number: 'Sing' } },
+    { text: 'me', start: 2, end: 4, lemma: 'me', pos: 'PRON', role: 'indirect object pronoun' },
+    { text: 'lo', start: 4, end: 6, lemma: 'lo', pos: 'PRON', role: 'direct object pronoun' },
+  ] })],
+  // a pronoun after a conjugated verb, as the engine gives it (afterFinite)
+  díjole: [V('decir', fin('3', 'Sing', 'Past'), { afterFinite: true, parts: [
+    { text: 'díjo', start: 0, end: 4, lemma: 'decir', pos: 'VERB', morph: fin('3', 'Sing', 'Past') },
+    { text: 'le', start: 4, end: 6, lemma: 'le', pos: 'PRON', role: 'object pronoun' },
+  ] })],
+  hallábase: [V('hallar', fin('3', 'Sing', 'Imp'), { afterFinite: true, parts: [
+    { text: 'hallába', start: 0, end: 7, lemma: 'hallar', pos: 'VERB', morph: fin('3', 'Sing', 'Imp') },
+    { text: 'se', start: 7, end: 9, lemma: 'se', pos: 'PRON', role: 'reflexive' },
   ] })],
   // a word the engine can only guess at: a lemma that is not in the word list
   zapatear: [V('zapatear', { VerbForm: 'Inf' })],

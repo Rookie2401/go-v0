@@ -321,8 +321,10 @@ describe('attached pronouns on a nosotros command', () => {
   it('a form that keeps the -s before nos, or drops it before another pronoun, is not read so', () => {
     expect(read('lavémosnos').some((c) => c.lemma === 'lavar')).toBe(false);
     expect(read('cantémolo').some((c) => c.lemma === 'cantar')).toBe(false);
-    // te and os on a third-person command stay impossible (sienten + te)
-    expect(read('siéntente').some((c) => c.parts?.length)).toBe(false);
+    // te and os on a third-person command stay impossible (digan + te); where the same letters are also a statement
+    // (sienten + te = te sienten) what is left is that literary order, a reading from the shape alone
+    expect(read('dígante').some((c) => c.lemma === 'decir' || c.unconfirmed !== true)).toBe(false);
+    expect(read('siéntente').every((c) => !c.parts?.length || (c.morph.Mood === 'Ind' && c.unconfirmed === true))).toBe(true);
   });
 
   it('for a verb outside the word list it is the first guess, with no plural-noun guess beside it', () => {
@@ -387,7 +389,7 @@ describe('a plural in -es after -or, -ón: no noun in -ore, -one is guessed', ()
 
 describe('the flag and the version', () => {
   it('every guess the engine adds is unconfirmed, and the adapter is version 5', () => {
-    expect(es.version).toBe('5');
+    expect(es.version).toBe('6');
     for (const f of ['inspectora', 'lombrices', 'podcasts', 'esparcírselo', 'aúna', 'litografían']) {
       for (const c of read(f)) if (c.notes?.lemmaStatus === 'inferred by the rules') expect(c.unconfirmed, `${f} ${c.lemma}`).toBe(true);
     }

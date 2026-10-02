@@ -60,7 +60,8 @@ function joins(text: string, prev: Span, next: Span): boolean {
   if (!endsQuestion && !endsEllipsis) return false;
   const head = next.text;
   // a narrator's remark after a question, exclamation or ellipsis: "—¿Cómo estás? —preguntó Ana."
-  if (/^[—–]\s*\p{Ll}/u.test(head)) return true;
+  // (plain-text editions write the dash as two hyphens: "--¿Cómo estás?--preguntó Ana.")
+  if (/^(?:[—–]|--)\s*\p{Ll}/u.test(head)) return true;
   // a question or exclamation that carries on in lower case: «¿Vienes?» y me fui.
   if (endsQuestion && /^\p{Ll}/u.test(head)) return true;
   // an ellipsis that carries on in lower case: "Bueno… entonces vamos."

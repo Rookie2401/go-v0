@@ -237,9 +237,11 @@ describe('attached pronouns', () => {
     expect(find('mantenlo', 'mantener', { Mood: 'Imp' })).toBeDefined();
     expect(find('idos', 'ir', { Mood: 'Imp', Number: 'Plur' })).toBeDefined();
   });
-  it('does not attach pronouns to finite forms or the wrong person', () => {
-    // hablo is a finite verb: "hablolo" is not hablo + lo
-    expect(analyzeSpanishForm('hablolo', { knownLemma: known }).every((a) => !a.parts && !a.lemmaKnown)).toBe(true);
+  it('does not attach pronouns to the wrong form or the wrong person', () => {
+    // "hablolo" is not hablo + lo (that would be written háblolo): only the literary habló + lo, marked as such and lower
+    // (test/adapters/spanish-literary.test.ts has the rule)
+    const hablolo = analyzeSpanishForm('hablolo', { knownLemma: known });
+    expect(hablolo.every((a) => a.afterFinite === true && a.morph.Tense === 'Past' && a.morph.Person === '3' && a.confidence <= 0.5)).toBe(true);
     expect(analyzeSpanishForm('callaste', { knownLemma: known }).every((a) => !a.parts)).toBe(true);
     // os goes with a vosotros imperative, not a tú one
     expect(analyzeSpanishForm('callaos', { knownLemma: known }).some((a) => a.morph.Person === '2' && a.morph.Number === 'Sing')).toBe(false);

@@ -129,18 +129,31 @@ function around(i: number, tokens: RawToken[]): Around {
   const prev2 = prev !== undefined ? word(prev - 1) : undefined;
   const next = word(i + 1);
   let reporting = false;
-  if (prev === undefined && i > 0 && /^[—–]$/u.test(tokens[i - 1].surface.trim())) {
-    const before = tokens[i - 2];
-    reporting = !!before && before.surface.trim() !== ':' && tokens.slice(0, i - 1).some((t) => t.isWord);
+  const dash = prev === undefined ? dashEndingAt(i - 1, tokens) : undefined;
+  if (dash !== undefined) {
+    const before = tokens[dash - 1];
+    reporting = !!before && before.surface.trim() !== ':' && tokens.slice(0, dash).some((t) => t.isWord);
   }
   return { prev, prev2, next, reporting };
+}
+
+/**
+ * The dialogue dash whose last token is token `j`: — or –, or the two hyphens that plain-text editions write for it
+ * (--dijo, as in Project Gutenberg). The index of its first token; undefined when token `j` does not end one.
+ */
+function dashEndingAt(j: number, tokens: RawToken[]): number | undefined {
+  const t = tokens[j];
+  if (!t) return undefined;
+  if (/^[—–]$/u.test(t.surface.trim())) return j;
+  const p = tokens[j - 1];
+  return t.surface === '-' && p?.surface === '-' && p.end === t.start ? j - 1 : undefined;
 }
 
 /**
  * Written with a capital where a sentence does not begin: after a word, a comma or a semicolon. After a dash, a
  * colon, ¡ ¿, a quotation mark or a full stop a capital says nothing (—¡Gracias a todos!).
  */
-function capitalInside(i: number, tokens: RawToken[]): boolean {
+export function capitalInside(i: number, tokens: RawToken[]): boolean {
   if (i === 0 || !/^\p{Lu}/u.test(tokens[i].surface)) return false;
   const before = tokens[i - 1];
   return before.isWord || /^[,;]$/u.test(before.surface.trim());
@@ -158,7 +171,7 @@ function standsAlone(i: number, tokens: RawToken[]): 'opens' | 'closes' | undefi
   const b = before?.surface.trim() ?? '';
   const a = after?.surface.trim() ?? '';
   if (after && !/^[,.!?…;:]/u.test(a)) return undefined;
-  if (!before || /[¡¿—–«"“(:.!?…]$/u.test(b)) return 'opens';
+  if (!before || /[¡¿—–«"“(:.!?…]$/u.test(b) || dashEndingAt(i - 1, tokens) !== undefined) return 'opens';
   return b === ',' && (!after || /^[.!?…]/u.test(a)) ? 'closes' : undefined;
 }
 

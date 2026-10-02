@@ -43,7 +43,7 @@ describe('AdapterSupport — honest, on every adapter', () => {
 
 describe('analysisCoverage(tokens, analyses)', () => {
   it('counts word tokens with a candidate; punctuation and numerals are not words; lists the unknown forms once', () => {
-    const r = run('es', 'Dios ama Zzyzx, Zzyzx y 3 cosas.');
+    const r = run('es', 'Dios ama zzyzx, zzyzx y 3 cosas.');
     const c = analysisCoverage(r.tokens, r.analyses);
     expect(c.words).toBe(6); // Dios ama Zzyzx Zzyzx y cosas
     expect(c.analysed).toBe(4);
@@ -288,7 +288,7 @@ describe('Spanish: accents, inflection and historical Scripture forms', () => {
       if (!engineLive) expect(c, w).toEqual([]);
       for (const x of c) {
         expect(x.origin, w).toBe('rule');
-        expect(x.sourceId, w).toBe('adapter-es@5:rules');
+        expect(x.sourceId, w).toBe('adapter-es@6:rules');
         expect(x.confidence, w).toBeLessThanOrEqual(0.6);
         expect(x.gloss, w).toBeUndefined();
         expect(x.notes?.lemmaStatus, w).toBe('inferred by the rules');

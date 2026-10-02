@@ -139,6 +139,24 @@ describe('chapter headings, Spanish and English', () => {
     expect(convert(lines('I.', body(1), 'V.', body(2))).headings).toEqual([]);
   });
 
+  it('Roman numerals between dashes, as plain-text editions set them (-I-, --II--, — III —)', () => {
+    const r = convert(lines('-I-', '', 'Perdido', '', body(1), '', '-II-', '', body(2), '', '--III--', body(3), '— IV —', body(4)));
+    expect(r.headings.map((h) => h.text)).toEqual(['-I-', '-II-', '--III--', '— IV —']);
+    expect(r.documents).toHaveLength(4);
+    expect(paragraphsOf(r.documents[0])).toEqual(['Perdido', body(1)]);
+    // a line of dashes alone, or a dash before a word, is not a heading
+    expect(convert(lines('--', body(1), '---', body(2), '-No -dijo él.')).headings).toEqual([]);
+  });
+
+  it('Roman numerals past XXXIX: Capítulo XL, Capítulo LII, Libro XC', () => {
+    const r = convert(lines('Capítulo XXXIX', body(1), 'Capítulo XL', body(2), 'Capítulo LII. Del fin', body(3), 'Libro XC', body(4), 'Capítulo CXXVI', body(5)));
+    expect(r.headings.map((h) => h.text)).toEqual(['Capítulo XXXIX', 'Capítulo XL', 'Capítulo LII. Del fin', 'Libro XC', 'Capítulo CXXVI']);
+    expect(r.headings[2].title).toBe('Del fin');
+    expect(r.notes.join(' ')).toContain('heading numbers (39, 40, 52, 90, 126) do not run');
+    // letters that are not a Roman numeral are still no heading
+    expect(convert(lines('Capítulo I', body(1), 'Capítulo IC', 'Capítulo LL', 'Capítulo XXXX')).headings.map((h) => h.text)).toEqual(['Capítulo I']);
+  });
+
   it('an explicit regular expression still wins over automatic detection', () => {
     const r = convert(lines('Capítulo I', body(1), 'ACTO I', body(2), 'ACTO II', body(3)), { chapters: 'ACTO [IVX]+' });
     expect(r.headings.map((h) => h.text)).toEqual(['ACTO I', 'ACTO II']);

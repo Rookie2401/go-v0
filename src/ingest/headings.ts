@@ -48,7 +48,8 @@ export function autoHeading(line: string): Heading | undefined {
 
 // ── Western headings ──
 
-const ROMAN = '(?:X{0,3})(?:IX|IV|V?I{0,3})';
+// up to CCCXCIX: a long novel numbers its chapters past XXXIX (Capítulo LII, Kapitel XLII)
+const ROMAN = '(?:C{0,3})(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})';
 const ROMAN_ONLY = new RegExp(`^${ROMAN}$`);
 
 const WORDS: Record<string, number> = {
@@ -64,7 +65,7 @@ const WORD_LIST = Object.keys(WORDS).join('|');
 const strip = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
 
 const romanValue = (s: string): number => {
-  const v: Record<string, number> = { I: 1, V: 5, X: 10 };
+  const v: Record<string, number> = { I: 1, V: 5, X: 10, L: 50, C: 100 };
   let total = 0;
   for (let i = 0; i < s.length; i++) total += v[s[i]] < (v[s[i + 1]] ?? 0) ? -v[s[i]] : v[s[i]];
   return total;
@@ -73,7 +74,8 @@ const romanValue = (s: string): number => {
 // "Capítulo", "Cap.", "Libro", "Parte", "Canto", "Tomo", "Acto", "Escena", "Chapter", "Book", "Part" — then a number, Roman numeral or word
 const WESTERN_WORD = '(?:cap[ií]tulo|cap\\.|libro|parte|canto|tomo|acto|escena|chapter|book|part)';
 const WESTERN = new RegExp(`^(${WESTERN_WORD})\\s+(\\d+|${ROMAN}|${WORD_LIST})(?![\\p{L}\\d])(.*)$`, 'iu');
-const ROMAN_HEADING = new RegExp(`^(${ROMAN})\\.?(?:\\s+(\\p{Lu}.*))?$`, 'u');
+// a Roman numeral on a line of its own: "I", "IV.", "II El regreso", and between dashes as plain-text editions set it: "-I-", "--IV--", "— II —"
+const ROMAN_HEADING = new RegExp(`^(?:[-–—]{1,3}\\s*)?(${ROMAN})(?:\\s*[-–—]{1,3})?\\.?(?:\\s+(\\p{Lu}.*))?$`, 'u');
 
 /** "Capítulo I", "CAPÍTULO PRIMERO", "Libro segundo", "Parte tercera", "Capítulo 12", "Chapter Two" (+ a title after a separator). */
 export function westernHeading(line: string): Heading | undefined {
@@ -92,7 +94,7 @@ export function westernHeading(line: string): Heading | undefined {
     }
     if (token === '') return undefined;
     const upper = token.toUpperCase();
-    const number = isDigits ? Number(token) : /^[IVX]+$/.test(upper) && ROMAN_ONLY.test(upper) ? romanValue(upper) : WORDS[strip(token)];
+    const number = isDigits ? Number(token) : /^[IVXLC]+$/.test(upper) && ROMAN_ONLY.test(upper) ? romanValue(upper) : WORDS[strip(token)];
     return { line, ...(title ? { title } : {}), ...(number !== undefined ? { number } : {}), kind: 'numbered' };
   }
   const r = ROMAN_HEADING.exec(line);
@@ -175,7 +177,7 @@ export function germanHeading(line: string): Heading | undefined {
   const a = GERMAN_AFTER.exec(line);
   if (a) {
     const isDigits = /^\d+$/.test(a[2]);
-    const isRoman = !isDigits && /^[IVX]+$/i.test(a[2]);
+    const isRoman = !isDigits && /^[IVXLC]+$/i.test(a[2]);
     const number = numberOf(isDigits ? a[2] : undefined, isRoman ? a[2] : undefined, GERMAN_CARDINALS[a[2].toLowerCase()]);
     const title = titleOf(a[3], isDigits);
     if (number === false || number === undefined || title === false) return undefined;

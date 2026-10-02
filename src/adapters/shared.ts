@@ -22,6 +22,7 @@ export const nfc = (s: string): string => s.normalize('NFC');
 // ───────────────────────────── tokenization ─────────────────────────────
 
 const SKIP_SEGMENT = /^[\s​﻿]+$/u;
+const EDGE_UNDERSCORES = /^(_*)(.*?)(_*)$/su;
 
 /**
  * Word tokenizer on Intl.Segmenter. Whitespace is dropped, punctuation and numerals are kept as
@@ -59,8 +60,20 @@ export function makeWordTokenizer(cfg: { locale: string; normalize: (s: string) 
       const end = last.index + last.segment.length;
       const surface = text.slice(start, end);
       const isWord = segs.slice(i, i + take).some((x) => x.isWordLike === true) && /\p{L}/u.test(surface);
-      out.push({ surface, start, end, isWord, normalized: cfg.normalize(surface) });
       i += take;
+      // "_" counts as a letter for the segmenter, but plain text writes it AROUND words to mark italics (_adelante_, _Fiat
+      // lux_): at the edge of a word it is a mark of its own, never part of the word. Inside a word it stays.
+      const edges = take === 1 && isWord && surface.includes('_') ? EDGE_UNDERSCORES.exec(surface) : null;
+      if (edges && (edges[1] || edges[3]) && edges[2]) {
+        let at = start;
+        for (const [piece, word] of [[edges[1], false], [edges[2], true], [edges[3], false]] as const) {
+          if (!piece) continue;
+          out.push({ surface: piece, start: at, end: at + piece.length, isWord: word, normalized: cfg.normalize(piece) });
+          at += piece.length;
+        }
+        continue;
+      }
+      out.push({ surface, start, end, isWord, normalized: cfg.normalize(surface) });
     }
     return out;
   };

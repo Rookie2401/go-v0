@@ -9,6 +9,8 @@ import { addAccent, stripAccents, transferStress } from './morph-orth';
 const CLITIC_SET = ['nos', 'los', 'las', 'les', 'me', 'te', 'se', 'lo', 'la', 'le', 'os'];
 const DIRECT = ['lo', 'la', 'los', 'las'];
 const FIRST_OF_TWO = ['se', 'me', 'te', 'nos', 'os'];
+// after "se" an indirect object may follow as well (se me, se te, se le, se nos, se os, se les): partiéndoseme, échesele
+const AFTER_SE = ['me', 'te', 'le', 'les', 'nos', 'os'];
 
 export interface Peeling { rest: string; clitics: string[] }
 
@@ -21,6 +23,8 @@ export function peelClitics(form: string): Peeling[] {
     out.push({ rest, clitics: [c2] });
     if (DIRECT.includes(c2)) {
       for (const c1 of FIRST_OF_TWO) if (rest.endsWith(c1) && rest.length > c1.length + 1) out.push({ rest: rest.slice(0, -c1.length), clitics: [c1, c2] });
+    } else if (AFTER_SE.includes(c2) && rest.endsWith('se') && rest.length > 3) {
+      out.push({ rest: rest.slice(0, -2), clitics: ['se', c2] });
     }
   }
   return out;
@@ -58,7 +62,7 @@ const ROLE_ONE: Record<string, string> = { lo: 'direct object pronoun', la: 'dir
 
 /** Plain roles for the attached pronouns when the shape settles them; "object pronoun" when it does not. */
 export function cliticRoles(clitics: string[]): string[] {
-  if (clitics.length === 2) return ['indirect object pronoun', 'direct object pronoun'];
+  if (clitics.length === 2) return DIRECT.includes(clitics[1]) ? ['indirect object pronoun', 'direct object pronoun'] : ['reflexive', 'indirect object pronoun'];
   return [ROLE_ONE[clitics[0]] ?? 'object pronoun'];
 }
 

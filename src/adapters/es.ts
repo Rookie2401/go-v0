@@ -34,10 +34,10 @@ import { HISTORICAL_EXACT, OLD_CONTRACTIONS, historicalSpellings } from './spani
 import { VERB_SLOT_PATTERNS, buildPhraseRules } from './spanish/phrases';
 import { detectSpanishConstructions } from './spanish/constructions';
 import { segmentSpanishSentences } from './spanish/sentences';
-import { disambiguateSpanish } from './spanish/disambiguate';
+import { capitalInside, disambiguateSpanish } from './spanish/disambiguate';
 
 const LANG = 'es' as const;
-const VERSION = '5';
+const VERSION = '6';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
@@ -258,7 +258,10 @@ function fromEngine(a: SpanishAnalysis): AnalysisCandidate {
     origin: 'rule', sourceId: ES_SOURCE_IDS.rules,
   };
   if (entry) c.gloss = entry.gloss;
-  if (!a.lemmaKnown) c.unconfirmed = true;
+  // a pronoun after a conjugated verb (díjole) is read from the shape of the word alone, whatever the lemma's standing:
+  // a dictionary that lists the same writing as a word of its own decides (rodeos is not rodé + os)
+  if (!a.lemmaKnown || a.afterFinite) c.unconfirmed = true;
+  if (a.afterFinite) c.notes = { ...c.notes, enclisis: 'after a conjugated verb' };
   if (a.parts?.length) c.parts = a.parts.map((p) => ({ ...p }));
   if (a.varieties?.length) c.varieties = [...a.varieties];
   return annotate(c);
@@ -397,6 +400,22 @@ function analyzeFormUncached(form: string): AnalysisCandidate[] {
   const hist = historical(form);
   // beside an older spelling of a word the list knows, only verb guesses (as before) are kept: not a noun or adjective guess from the ending
   return hist.length ? [...hist, ...eng.filter((c) => c.pos === 'VERB' || c.pos === 'AUX')] : eng;
+}
+
+/**
+ * The readings of one word of a sentence before its neighbours order them: those of the written form, and — for a word
+ * no list holds, written with a capital where no sentence begins (la Nela, de Aldeacorba) — the guess that it is a
+ * name, before the guesses from its ending. A guess like them: `unconfirmed`, below 0.6, no gloss; a dictionary that
+ * lists the word decides.
+ */
+function readWord(i: number, tokens: RawToken[]): AnalysisCandidate[] {
+  const cands = analyzeForm(tokens[i].normalized);
+  if (cands.some((c) => c.unconfirmed !== true) || !/^\p{Lu}\p{Ll}/u.test(tokens[i].surface) || !capitalInside(i, tokens)) return cands;
+  const name = annotate({
+    lemma: nfc(tokens[i].surface), pos: 'PROPN', morph: {}, confidence: 0.5, unconfirmed: true, origin: 'rule', sourceId: ES_SOURCE_IDS.rules,
+    notes: { source: 'rule', rule: 'written with a capital inside the sentence and on no list: probably a name', lemmaStatus: 'inferred by the rules' },
+  });
+  return [name, ...cands.map((c) => (c.confidence >= name.confidence ? { ...c, confidence: name.confidence - 0.05 } : c))];
 }
 
 // quantifiers that are both a determiner and an adverb (mucho, poco, tanto …), and nouns that are also adverbs (tarde, mañana)
@@ -566,7 +585,7 @@ export const esAdapter: LanguageAdapter = {
   },
 
   analyze: (tokens): AnalyzedToken[] => {
-    const base = tokens.map((t) => (t.isWord ? analyzeForm(t.normalized) : []));
+    const base = tokens.map((t, i) => (t.isWord ? readWord(i, tokens) : []));
     return tokens.map((t, i) => ({ token: t, candidates: t.isWord ? disambiguate(i, tokens, base) : [], analyzer: ANALYZER }));
   },
 
@@ -581,8 +600,8 @@ export const esAdapter: LanguageAdapter = {
   refine: (tokens, analyzed, analyzers, given): AnalyzedToken[] => {
     const base = tokens.map((t, i) => {
       if (analyzed[i].analyzer !== ANALYZER) return analyzed[i].candidates;
-      if (given?.has(i)) return t.isWord ? startAgain(analyzed[i].candidates, analyzeForm(t.normalized)) : analyzed[i].candidates;
-      return t.isWord ? analyzeForm(t.normalized) : [];
+      if (given?.has(i)) return t.isWord ? startAgain(analyzed[i].candidates, readWord(i, tokens)) : analyzed[i].candidates;
+      return t.isWord ? readWord(i, tokens) : [];
     });
     return tokens.map((t, i) => (t.isWord && analyzers.has(analyzed[i].analyzer)
       ? { ...analyzed[i], candidates: [...disambiguate(i, tokens, base)] }

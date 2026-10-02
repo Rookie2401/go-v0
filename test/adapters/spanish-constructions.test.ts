@@ -16,7 +16,7 @@ const units = (text: string) => phrases('es', text).map((p) => p.pattern.join(' 
 
 describe('Spanish constructions', () => {
   it('lists the constructions of the plan, each with a key, a title, an explanation with a Spanish example and its English', () => {
-    const want = ['imperfect', 'preterite', 'enclitic-pronoun', 'personal-a', 'ir-a-infinitive', 'perfect-tense', 'estar-gerund', 'llevar-gerund', 'acabar-de', 'tener-que', 'se-impersonal',
+    const want = ['imperfect', 'preterite', 'enclitic-pronoun', 'enclitic-after-conjugated-verb', 'personal-a', 'ir-a-infinitive', 'perfect-tense', 'estar-gerund', 'llevar-gerund', 'acabar-de', 'tener-que', 'se-impersonal',
       'gustar-type', 'aunque-subjunctive', 'si-conditional', 'para-que-subjunctive', 'cuando-subjunctive', 'querer-que-subjunctive', 'comparison', 'ser-estar-adjective',
       'double-object-pronouns', 'voseo', 'vosotros', 'future-subjunctive'];
     expect(SPANISH_CONSTRUCTIONS.map((c) => c.key)).toEqual(want);
@@ -84,6 +84,17 @@ describe('Spanish constructions', () => {
 
   it('decírselo: two attached pronouns are the double-object construction as well as the attached-pronoun one', () => {
     expect(keys('decírselo')).toEqual(expect.arrayContaining(['enclitic-pronoun', 'double-object-pronouns']));
+  });
+
+  it('díjole, hallábase: the literary order is its own construction, not "a command with a pronoun"; dámelo and entenderlo stay the ordinary one', () => {
+    for (const s of ['Entonces díjole que no.', 'Hallábase solo en la casa.']) {
+      expect(keys(s), s).toContain('enclitic-after-conjugated-verb');
+      expect(keys(s), s).not.toContain('enclitic-pronoun');
+    }
+    for (const s of ['Dámelo ahora.', 'Quiero entenderlo.']) {
+      expect(keys(s), s).toContain('enclitic-pronoun');
+      expect(keys(s), s).not.toContain('enclitic-after-conjugated-verb');
+    }
   });
 
   it('a sentence with nothing in it fires nothing', () => {

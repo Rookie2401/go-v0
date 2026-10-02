@@ -43,6 +43,9 @@ const isInf = (c: AnalysisCandidate) => has(c, 'VerbForm', 'Inf');
 const isGer = (c: AnalysisCandidate) => has(c, 'VerbForm', 'Ger');
 const isPart = (c: AnalysisCandidate) => has(c, 'VerbForm', 'Part');
 const isSubj = (c: AnalysisCandidate) => has(c, 'Mood', 'Sub');
+/** A statement (indicative or conditional) with a pronoun written after it as part of the word: díjole, hallábase. */
+const afterConjugated = (c: AnalysisCandidate) =>
+  isVerb(c) && c.morph.VerbForm === 'Fin' && (c.morph.Mood === 'Ind' || c.morph.Mood === 'Cnd') && (c.parts ?? []).some((p) => /pronoun|reflexive/u.test(p.role ?? ''));
 
 function makeCtx(tokens: RawToken[], analyses: AnalyzedToken[]): Ctx {
   const cands = (i: number): AnalysisCandidate[] => (tokens[i]?.isWord ? analyses[i]?.candidates ?? [] : []);
@@ -116,7 +119,19 @@ export const SPANISH_CONSTRUCTIONS: readonly SpanishConstruction[] = [
       const a = c.analyses[i].candidates[0];
       if (!a) return undefined;
       const attachedParts = (a.parts ?? []).filter((p) => /pronoun|reflexive/u.test(p.role ?? '')).length;
+      if (afterConjugated(a)) return undefined; // díjole: the construction below
       return a.notes?.clitics || attachedParts ? hit('enclitic-pronoun', 'Pronouns attached to the verb', 'Object pronouns attach to the end of an infinitive, a gerund or a command: entender + lo → entenderlo, decir + se + lo → decírselo.', a.confidence, [i]) : undefined;
+    }),
+  },
+  {
+    key: 'enclitic-after-conjugated-verb',
+    title: 'A pronoun after a conjugated verb (older and literary Spanish)',
+    explanation: 'Older and literary Spanish may write the pronoun after a conjugated verb, as one word: le dijo → díjole (he said to him), se hallaba → hallábase (he found himself). Today the pronoun goes before the verb.',
+    example: { es: 'Díjole que no.', en: 'He told him no.' },
+    nearMiss: ['Le dijo que no.'],
+    detect: (c) => each(c, (i) => {
+      const a = c.analyses[i].candidates[0];
+      return a && afterConjugated(a) ? hit('enclitic-after-conjugated-verb', 'A pronoun after a conjugated verb (older and literary Spanish)', 'Older and literary Spanish may write the pronoun after a conjugated verb, as one word: le dijo → díjole, se hallaba → hallábase. Today the pronoun goes before the verb.', a.confidence, [i]) : undefined;
     }),
   },
   {

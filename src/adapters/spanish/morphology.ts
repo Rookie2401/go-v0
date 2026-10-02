@@ -10,7 +10,7 @@
 import type { PartOfSpeech, WordPart } from '../../core';
 import { attachClitics, cliticParts, lowerClitics, peelClitics, verbCandidates } from './morph-clitics';
 import { analyzeNominal, contractionParts, guessNominal } from './morph-nominal';
-import { stripAccents } from './morph-orth';
+import { addAccent, stressInfo, stripAccents } from './morph-orth';
 import { endingClasses, stemVariants } from './morph-verbcands';
 import { IRREGULAR, irregularParticipleLemmas, takesPrefix } from './verb-irregular';
 import { stemOf, type FormRec } from './verb-regular';
@@ -31,6 +31,12 @@ export interface SpanishAnalysis {
   rule: string;
   /** True when the lemma was confirmed by `knownLemma`; a rule-only guess stays below 0.8. */
   lemmaKnown: boolean;
+  /**
+   * True when the reading is a conjugated verb with a pronoun written after it (díjole = le dijo, hallábase = se hallaba,
+   * sentose = se sentó): the order of older and literary Spanish. The form alone suggests it; a list or a dictionary that
+   * holds the same writing as a word of its own overrules it.
+   */
+  afterFinite?: boolean;
   confidence: number;
 }
 
@@ -42,7 +48,8 @@ export interface AnalyzeOptions {
 }
 
 /** irregular / regular: confirmed lemma; assumed: confirmed lemma, guessed stem change; listed: our own tables know the verb but nobody vouched; inferred: rule alone. */
-type Tier = 'irregular' | 'regular' | 'assumed' | 'listed' | 'inferred' | 'derived' | 'closed';
+/** literary / literary-plain: a confirmed lemma's conjugated form with a pronoun after it, with the accent that shows it (díjole) / without one (sentose). */
+type Tier = 'irregular' | 'regular' | 'assumed' | 'listed' | 'inferred' | 'derived' | 'closed' | 'literary' | 'literary-plain';
 type Raw = Omit<SpanishAnalysis, 'confidence'> & { tier: Tier; rank?: number };
 type Known = AnalyzeOptions['knownLemma'];
 
@@ -241,6 +248,8 @@ function acceptsClitics(r: Raw, first: string, many: boolean, dropS?: boolean, d
   // otherwise os belongs to a vosotros imperative, te to a tú imperative
   if (first === 'os' && !(m.Person === '2' && m.Number === 'Plur')) return false;
   if (first === 'te' && !(m.Person === '2' && m.Number === 'Sing')) return false;
+  // "se" alone is the reflexive of usted, ustedes and nosotros: a tú or vos command takes te (levántate), so levántase is not one
+  if (first === 'se' && !many && m.Person === '2' && m.Number === 'Sing') return false;
   if (m.Person === '2' && m.Number === 'Plur') {
     if (first === 'os') return !many && (dropD ? true : r.lemma === 'ir'); // callaos / idos
     return !dropS && !dropD && (first !== 'se' || many); // dadlo, apuntadle, dádmelo; "se" alone is the reflexive, which a vosotros command writes as os
@@ -248,16 +257,61 @@ function acceptsClitics(r: Raw, first: string, many: boolean, dropS?: boolean, d
   return !dropS && !dropD;
 }
 
+/**
+ * A conjugated verb that older and literary Spanish writes a pronoun after: indicative or conditional, first or third
+ * person (díjole, hallábase, veríase, dijéronme). Not the subjunctive (its forms are the usted and nosotros commands) and
+ * not the second person.
+ */
+function finiteHost(r: Raw): boolean {
+  const m = r.morph;
+  return m.VerbForm === 'Fin' && (m.Mood === 'Ind' || m.Mood === 'Cnd') && (m.Person === '1' || m.Person === '3');
+}
+
+/** The older spelling of verb + pronouns: the accent written on the verb's stressed vowel whether or not today's rules ask for it (oyóse, dióme, déme). */
+function olderAttachment(verb: string, clitics: string[]): string | undefined {
+  const info = stressInfo(verb);
+  if (!info) return undefined;
+  const plain = stripAccents(verb);
+  const v = plain[info.markPos];
+  if (!v || !'aeiou'.includes(v)) return undefined;
+  return plain.slice(0, info.markPos) + addAccent(v) + plain.slice(info.markPos + 1) + clitics.join('');
+}
+
+const OLDER_ACCENT = 'written with the accent of the older spelling';
+const AFTER_FINITE = 'after a conjugated verb, the order of older and literary Spanish';
+
 function withClitics(original: string, w: string, known: Known, confirmed: boolean): Raw[] {
   const out: Raw[] = [];
+  const literary: Raw[] = [];
   if (confirmed && !known) return out;
   for (const { rest, clitics } of peelClitics(w)) {
     if (!/[aeiouáéíóú]/.test(rest)) continue;
     for (const cand of verbCandidates(rest, clitics)) {
-      if (attachClitics(cand.verb, clitics, { dropS: cand.dropS, dropD: cand.dropD }) !== w) continue;
+      const modern = attachClitics(cand.verb, clitics, { dropS: cand.dropS, dropD: cand.dropD }) === w;
+      const older = !modern && !cand.dropS && !cand.dropD && olderAttachment(cand.verb, clitics) === w;
+      if (!modern && !older) continue;
       for (const r of verbOnly(cand.verb, known, confirmed)) {
-        if (!acceptsClitics(r, clitics[0], clitics.length > 1, cand.dropS, cand.dropD)) continue;
+        if (!acceptsClitics(r, clitics[0], clitics.length > 1, cand.dropS, cand.dropD)) {
+          if (cand.dropS || cand.dropD || !finiteHost(r)) continue;
+          // the accent shows the joint (díjole, hallábase, oyóse); without one (sentose, diome) the writing could be many things
+          const shown = /[áéíóú]/.test(w);
+          // an unaccented …os is a plural noun far more often (paseos, rodeos); a guessed lemma is only tried where the
+          // joint shows, or for the commonest case: a preterite in -ó with se, le, les, me, nos (acercose, preguntole)
+          if (!shown && clitics[clitics.length - 1] === 'os') continue;
+          if (!r.lemmaKnown && !shown && !(clitics.length === 1 && ['se', 'le', 'les', 'me', 'nos'].includes(clitics[0]) && r.morph.Tense === 'Past' && r.morph.Person === '3' && r.morph.Number === 'Sing')) continue;
+          literary.push({
+            ...r, parts: cliticParts(original, lowerClitics(clitics), r.lemma, r.pos, r.morph), afterFinite: true,
+            // among guesses the imperfect and the conditional are unmistakable under their accent (zurrábase, zurraríase): first
+            ...(r.lemmaKnown ? { tier: shown ? 'literary' as const : 'literary-plain' as const } : { rank: shown && (r.morph.Tense === 'Imp' || r.morph.Mood === 'Cnd') ? 0 : 2 }),
+            rule: `${r.rule}; with the attached pronoun${clitics.length > 1 ? 's' : ''} ${clitics.join(' + ')} ${AFTER_FINITE}${older ? `; ${OLDER_ACCENT}` : ''}`,
+          });
+          continue;
+        }
         const parts = cliticParts(original, lowerClitics(clitics), r.lemma, r.pos, r.morph);
+        if (older) {
+          out.push({ ...r, parts, rank: 1, rule: `${r.rule}; with the attached pronoun${clitics.length > 1 ? 's' : ''} ${clitics.join(' + ')}; ${OLDER_ACCENT}` });
+          continue;
+        }
         // among guesses, an infinitive, gerund or vosotros command with pronouns is the likelier reading: zurcírselo, apuntadlo.
         // Not an infinitive with "os" alone: -eros, -aros, -iros is far more often a plural (panaderos, pájaros, suspiros)
         const infinitiveOs = r.morph.VerbForm === 'Inf' && clitics.length === 1 && clitics[0] === 'os';
@@ -267,12 +321,14 @@ function withClitics(original: string, w: string, known: Known, confirmed: boole
       }
     }
   }
-  return out;
+  // an infinitive, a gerund or a command with pronouns is the ordinary reading of a verb the lexicon vouches for: the
+  // literary one is only offered without it. Among guesses both stand (which lemma exists is not known here)
+  return confirmed && out.length ? out : [...out, ...literary];
 }
 
 // ---------------------------------------------------------------------------------------------------------------
 
-const BASE_CONFIDENCE: Record<Tier, number> = { irregular: 0.9, regular: 0.85, assumed: 0.55, listed: 0.5, inferred: 0.35, derived: 0.6, closed: 0.95 };
+const BASE_CONFIDENCE: Record<Tier, number> = { irregular: 0.9, regular: 0.85, assumed: 0.55, listed: 0.5, inferred: 0.35, derived: 0.6, closed: 0.95, literary: 0.6, 'literary-plain': 0.5 };
 const COMPETING_CAP = 0.7;
 
 function analyzeUncached(original: string, w: string, known: Known, genderOf?: AnalyzeOptions['genderOf']): SpanishAnalysis[] {
@@ -286,6 +342,8 @@ function analyzeUncached(original: string, w: string, known: Known, genderOf?: A
     for (const n of analyzeNominal(w, (l, p) => known(l, p), genderOf)) {
       raws.push({ lemma: n.lemma, pos: n.pos, morph: n.morph, rule: n.rule, lemmaKnown: true, tier: n.derived ? 'derived' : 'regular' });
     }
+    // a pronoun after a conjugated verb is only read where the writing is no word the lexicon vouches for (fuese, vela)
+    if (raws.some((r) => r.lemmaKnown && !r.afterFinite)) for (let k = raws.length - 1; k >= 0; k--) if (raws[k].afterFinite) raws.splice(k, 1);
   }
   // once the lexicon vouches for a reading, rule-only guesses for the same string are noise: they are only looked for
   // when nothing was vouched for

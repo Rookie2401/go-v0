@@ -13,8 +13,10 @@
  *      unavailable; Settings → Speech shows its instruction and a "Check again" button). Not reachable / no proxy on this
  *      host: not registered. No key is ever stored or bundled for that path;
  *   3. GoLearn (+ `audioEligible`: reviewed real speech exists for a text) and GoTell;
- *   4. the bundled corpus goes through the importer (validated as one batch, atomic, repeatable; skipped when the
- *      bundle is unchanged since the last successful import);
+ *   4. the built-in texts of the ACTIVE course's language go through the importer (validated as one batch, atomic,
+ *      repeatable; skipped when that language's bundle and analyzer are unchanged since its last successful import).
+ *      Another language's texts are imported when its course becomes active (`content.ensureCourse`): a learner never
+ *      waits at startup for texts of a language he is not learning;
  *   5. `golearn.ensureCurrent(userId)`: state derived under an older evidence policy is rebuilt from the event log
  *      before anything is shown (nothing is deleted from the log).
  *
@@ -56,6 +58,11 @@ export interface BootstrapOptions {
   dbName?: string;
   /** Skip importing the bundled corpus (tests). */
   skipCorpus?: boolean;
+  /**
+   * Which languages' built-in texts are imported at startup. 'active' (default): the active course's language only
+   * (nothing before a team is chosen); the others follow when their course becomes active. 'all': every language now.
+   */
+  bundleLanguages?: 'active' | 'all';
   /** Last active learner id (persisted by the caller). */
   userId?: string;
   /** Learn this course without the onboarding screen (tests, deep links). Otherwise the learner is created once a team has been chosen. */
@@ -91,8 +98,10 @@ export interface BootstrapResult {
 
 export { DEFAULT_USER_ID };
 
-/** meta row that records the last successful bundled-corpus import (importer version + content fingerprint). */
+/** Prefix of the meta rows that record the last successful import of the built-in texts, one row per language. */
 export const BUNDLE_META_ID = 'bundled-corpus';
+/** meta row of one language's built-in texts: importer version + content fingerprint + that language's analyzer version. */
+export const bundleMetaId = (lang: LanguageCode): string => `${BUNDLE_META_ID}:${lang}`;
 
 /**
  * Seed languages and courses (idempotent), and the first learner once a course has been chosen —
@@ -259,30 +268,72 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
     return s;
   };
 
-  // ── bundled content through the importer ──
-  if (!opts.skipCorpus) {
-    const docs = loadBundledCorpus();
-    // The analyzers are part of it: a text is analysed when it is imported, so a better adapter reaches the texts
-    // already on a device only if the import runs again (it then re-analyses exactly the texts whose analyzer changed).
-    const analyzers = adapters.all().map((a) => `${a.lang}@${a.version}`).join(',');
-    const signature = `${INGEST_TOOL}|${docs.length}|${hash(JSON.stringify(docs))}|${analyzers}`;
-    const last = await store.meta.get(BUNDLE_META_ID);
-    const haveTexts = (await store.texts.count()) > 0;
-    if (!(last?.value === signature && haveTexts)) {
-      const report = await importDocuments(store, adapters, docs, { clock });
-      startup.bundledReport = report.documents.map((d, i) => toView(d, titleOf(docs[i])));
-      if (report.ok) await store.meta.put({ id: BUNDLE_META_ID, value: signature, updatedAt: clock() });
-      else startup.warnings = [`${report.documents.filter((d) => d.action === 'rejected').length} built-in text(s) were rejected by the importer, so none were imported. See Settings → Content.`];
-    }
+  // The library (index, profiles, open-on-demand). Built inside a guard: if it cannot be, the app starts with an empty one.
+  let library: Library;
+  try { library = createLibrary({ store, adapters, clock, lexicon }); } catch {
+    library = emptyLibrary(); // the catalogue pages then say there is nothing in the library yet
   }
 
-  // ── which learner, and bring their derived state up to the current evidence policy ──
+  // ── built-in texts through the importer, one language at a time ──
+  let bundle: ReturnType<typeof loadBundledCorpus> | undefined;
+  const inFlight = new Map<LanguageCode, Promise<ImportDocView[] | undefined>>();
+  /**
+   * Import one language's built-in texts unless they are there and unchanged. The analyzer is part of the signature: a
+   * text is analysed when it is imported, so a better adapter reaches the texts already on a device only if the import
+   * runs again (it then re-analyses exactly the texts whose analyzer changed) — for a language that is not active now,
+   * when its course next becomes active. Returns the report, or undefined when nothing had to be done.
+   */
+  const ensureBundle = (lang: LanguageCode): Promise<ImportDocView[] | undefined> => {
+    if (opts.skipCorpus) return Promise.resolve(undefined);
+    const running = inFlight.get(lang);
+    if (running) return running;
+    const run = (async () => {
+      const docs = (bundle ??= loadBundledCorpus()).filter((d) => d.lang === lang);
+      if (docs.length === 0) return undefined;
+      const signature = `${INGEST_TOOL}|${docs.length}|${hash(JSON.stringify(docs))}|${lang}@${adapters.get(lang).version}`;
+      const last = await store.meta.get(bundleMetaId(lang));
+      const haveTexts = (await store.texts.where('lang', lang)).length > 0;
+      if (last?.value === signature && haveTexts) return undefined;
+      const report = await importDocuments(store, adapters, docs, { clock });
+      if (report.ok) await store.meta.put({ id: bundleMetaId(lang), value: signature, updatedAt: clock() });
+      else startup.warnings = [...(startup.warnings ?? []), `${report.documents.filter((d) => d.action === 'rejected').length} built-in text(s) were rejected by the importer, so none were imported. See Settings → Content.`];
+      return report.documents.map((d, i) => toView(d, titleOf(docs[i])));
+    })().finally(() => { inFlight.delete(lang); });
+    inFlight.set(lang, run);
+    return run;
+  };
+  const indexLibrary = async (course: Course): Promise<void> => {
+    try { if ((await catalog.streams(course.id)).length > 0) await library.indexStore(course.lang); } catch { /* the catalogue pages say what is missing */ }
+  };
+  /**
+   * Everything a course needs before its Home is shown: its language's built-in texts, the learner models rebuilt if a
+   * text was re-analysed or revised, its reading ladder, and (awaited here, unlike at startup) the library index.
+   */
+  const ensureCourse = async (courseId: string): Promise<void> => {
+    const course = (await store.courses.get(courseId)) ?? COURSES.find((c) => c.id === courseId);
+    if (!course) return;
+    const report = await ensureBundle(course.lang);
+    if ((report ?? []).some((d) => d.action === 'updated')) for (const u of await store.users.all()) await golearn.rebuild(u.id);
+    try { await catalog.install(course.id); } catch { /* the ladder pages say what is missing */ }
+    await indexLibrary(course);
+  };
+
+  // ── which learner ──
   const users = await store.users.all();
   const wanted = opts.userId ?? recallActiveUser();
   const user = users.find((u) => u.id === wanted) ?? users.sort((a, b) => a.createdAt.localeCompare(b.createdAt))[0] ?? null;
   const course = user ? (await store.courses.get(user.courseId)) ?? COURSES[0] : null;
   // A restored learner row may exist without the device-local team choice (it is not part of a backup): adopt it.
   if (user && !recallChosenCourse()) rememberChosenCourse(user.courseId);
+
+  // ── the built-in texts: the active course's language (or every language when asked) ──
+  const languages: LanguageCode[] = opts.bundleLanguages === 'all' ? adapters.all().map((a) => a.lang) : course ? [course.lang] : [];
+  for (const lang of languages) {
+    const report = await ensureBundle(lang);
+    if (report) startup.bundledReport = [...(startup.bundledReport ?? []), ...report];
+  }
+
+  // ── bring the learner's derived state up to the current evidence policy ──
   if (user) startup.policyRebuilt = await golearn.ensureCurrent(user.id);
   // A built-in text that was re-analysed or revised changes what the words a learner has already met are counted as
   // ("no sé" was a form of ser, and is now saber): every learner's derived state is rebuilt from the event log, which
@@ -332,16 +383,11 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
     },
   };
 
-  // The library (index, profiles, open-on-demand). Built inside a guard: if it cannot be, the app starts with an empty one.
-  let library: Library;
-  try { library = createLibrary({ store, adapters, clock, lexicon }); } catch {
-    library = emptyLibrary(); // the catalogue pages then say there is nothing in the library yet
-  }
-
   const services: AppServices = {
     store, bus, adapters, golearn, golisten, gotell,
     ingest: createIngestApi(store, adapters, clock, lexicon),
     catalog, lexicon, library,
+    content: { ensureCourse },
     backup: createBackupApi(store),
     speech,
     features,
@@ -351,11 +397,7 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   // in the background, when a usable provider exists. Never blocks startup; never runs without a provider.
   if (listen) void proxyCheck.then(() => resumeQueuedAudio(store, golisten));
   // The texts already in the store (bundled, personal) become searchable and scorable in the background: never before first paint.
-  if (course) {
-    void (async () => {
-      try { if ((await catalog.streams(course.id)).length > 0) await library.indexStore(course.lang); } catch { /* the catalogue pages say what is missing */ }
-    })();
-  }
+  if (course) void indexLibrary(course);
   return { services, user, course };
 }
 

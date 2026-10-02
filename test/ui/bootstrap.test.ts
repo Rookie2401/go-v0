@@ -1,14 +1,19 @@
 // @vitest-environment jsdom
 import 'fake-indexeddb/auto';
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
-import { createMemoryStore } from '../../src/core';
+import { COURSES, createMemoryStore } from '../../src/core';
 import type { DomainEvent } from '../../src/core';
-import { BUNDLE_META_ID, bootstrap } from '../../src/app/bootstrap';
+import { BUNDLE_META_ID, bootstrap, bundleMetaId } from '../../src/app/bootstrap';
+import { loadBundledCorpus } from '../../src/ingest';
+import { chooseTeam } from '../../src/ui/Onboarding';
 import { createDexieStore } from '../../src/db/dexie';
 import { forgetAzure, recallAzure, rememberAzure, resetPrefsForTests, setPref } from '../../src/ui/prefs';
 
 beforeEach(() => { resetPrefsForTests(); localStorage.clear(); });
 afterEach(() => { resetPrefsForTests(); localStorage.clear(); });
+
+const ES = bundleMetaId('es');
+const bundledIn = (lang: string): number => loadBundledCorpus().filter((d) => d.lang === lang).length;
 
 const opts = (extra: Parameters<typeof bootstrap>[0] = {}) => ({ store: createMemoryStore(), courseId: 'honduras-es', features: { listen: true }, ...extra });
 
@@ -22,8 +27,9 @@ describe('bootstrap: content goes through the importer, then the policy migratio
     expect(report.every((d) => d.action === 'created')).toBe(true);
     expect(first.services.startup!.warnings).toBeUndefined();
     expect(await store.texts.count()).toBe(report.length);
-    const signature = await store.meta.get(BUNDLE_META_ID);
+    const signature = await store.meta.get(ES);
     expect(signature!.value).toMatch(/^ingest@/);
+    expect(await store.meta.get(BUNDLE_META_ID)).toBeUndefined(); // one row per language, none for "everything"
     // every imported text carries the v2 publication fields: nothing is published by accident
     for (const t of await store.texts.all()) {
       expect(t.schemaVersion).toBe(2);
@@ -40,7 +46,7 @@ describe('bootstrap: content goes through the importer, then the policy migratio
   it('re-imports when the stored signature no longer matches, without changing unchanged documents', async () => {
     const store = createMemoryStore();
     await bootstrap({ store, courseId: 'honduras-es' });
-    await store.meta.put({ id: BUNDLE_META_ID, value: 'ingest@0|stale', updatedAt: 'x' });
+    await store.meta.put({ id: ES, value: 'ingest@0|stale', updatedAt: 'x' });
     const again = await bootstrap({ store, courseId: 'honduras-es' });
     expect(again.services.startup!.bundledReport!.every((d) => d.action === 'unchanged')).toBe(true);
   });
@@ -50,12 +56,12 @@ describe('bootstrap: content goes through the importer, then the policy migratio
     // improved analyzer never reached texts already on a device
     const store = createMemoryStore();
     await bootstrap({ store, courseId: 'honduras-es' });
-    const signature = String((await store.meta.get(BUNDLE_META_ID))!.value);
-    expect(signature).toMatch(/|[^|]*es@d+/);
-    await store.meta.put({ id: BUNDLE_META_ID, value: signature.replace(/es@[^,|]+/, 'es@older'), updatedAt: 'x' });
+    const signature = String((await store.meta.get(ES))!.value);
+    expect(signature.split('|').pop()).toMatch(/^es@.+$/);
+    await store.meta.put({ id: ES, value: signature.replace(/es@[^,|]+/, 'es@older'), updatedAt: 'x' });
     const again = await bootstrap({ store, courseId: 'honduras-es' });
     expect(again.services.startup!.bundledReport).toBeDefined();
-    expect(String((await store.meta.get(BUNDLE_META_ID))!.value)).toBe(signature);
+    expect(String((await store.meta.get(ES))!.value)).toBe(signature);
     const third = await bootstrap({ store, courseId: 'honduras-es' });
     expect(third.services.startup!.bundledReport).toBeUndefined();
   });
@@ -71,11 +77,11 @@ describe('bootstrap: content goes through the importer, then the policy migratio
     const text = (await store.texts.get('text:es:camino-1-01'))!;
     expect(text.transformations.some((t) => t.tool.startsWith('adapter-es@'))).toBe(true);
     await store.texts.put({ ...text, transformations: text.transformations.map((t) => (t.tool.startsWith('adapter-es@') ? { ...t, tool: 'adapter-es@older' } : t)) });
-    const own = (await store.meta.all()).find((m) => m.id !== BUNDLE_META_ID && m.id.includes('text:es:camino-1-01') && typeof m.value === 'string')!;
+    const own = (await store.meta.all()).find((m) => !m.id.startsWith(BUNDLE_META_ID) && m.id.includes('text:es:camino-1-01') && typeof m.value === 'string')!;
     expect(own).toBeDefined();
     await store.meta.put({ ...own, value: `${String(own.value)}-older` });
-    const signature = String((await store.meta.get(BUNDLE_META_ID))!.value);
-    await store.meta.put({ id: BUNDLE_META_ID, value: signature.replace(/es@[^,|]+/, 'es@older'), updatedAt: 'x' });
+    const signature = String((await store.meta.get(ES))!.value);
+    await store.meta.put({ id: ES, value: signature.replace(/es@[^,|]+/, 'es@older'), updatedAt: 'x' });
 
     const second = await bootstrap({ store, courseId: 'honduras-es' });
     const report = second.services.startup!.bundledReport!;
@@ -87,6 +93,88 @@ describe('bootstrap: content goes through the importer, then the policy migratio
     const third = await bootstrap({ store, courseId: 'honduras-es' });
     expect(third.services.startup!.bundledReport).toBeUndefined();
     expect(third.services.startup!.modelRebuilt).toBeUndefined();
+  });
+
+  it('imports only the active course\'s language at startup; another language when its course becomes active', async () => {
+    // found in browser audits by three sessions: a first start imported every language's texts (109 documents, about 25 s)
+    const store = createMemoryStore();
+    const first = await bootstrap({ store, courseId: 'honduras-es' });
+    const langs = new Set((await store.texts.all()).map((t) => t.lang));
+    expect([...langs]).toEqual(['es']);
+    expect(await store.texts.count()).toBe(bundledIn('es'));
+    expect(await store.meta.get(bundleMetaId('de'))).toBeUndefined();
+
+    // the learner changes team: the German texts and the German ladder are there before Home counts them
+    await store.users.put({ ...first.user!, courseId: 'germany-de' });
+    await first.services.content!.ensureCourse('germany-de');
+    expect((await store.texts.where('lang', 'de')).length).toBe(bundledIn('de'));
+    expect((await store.texts.where('lang', 'es')).length).toBe(bundledIn('es')); // nothing is taken away
+    expect(await store.meta.get(bundleMetaId('de'))).toBeDefined();
+    const german = COURSES.find((c) => c.id === 'germany-de')!;
+    if ((await first.services.catalog.streams(german.id)).length > 0 || (await store.stages.where('courseId', german.id)).length > 0) {
+      expect((await store.works.where('courseId', german.id)).length).toBeGreaterThan(0); // its ladder is installed
+    }
+    // again: nothing to do, nothing written
+    const before = (await store.meta.get(bundleMetaId('de')))!.updatedAt;
+    await first.services.content!.ensureCourse('germany-de');
+    expect((await store.meta.get(bundleMetaId('de')))!.updatedAt).toBe(before);
+
+    // and the next start, now on the German course, imports nothing
+    const next = await bootstrap({ store });
+    expect(next.course!.id).toBe('germany-de');
+    expect(next.services.startup!.bundledReport).toBeUndefined();
+  });
+
+  it('a language that went stale while another course was active is re-analysed when it next becomes active, not skipped for good', async () => {
+    const store = createMemoryStore();
+    const first = await bootstrap({ store, courseId: 'germany-de' });
+    const userId = first.user!.id;
+    const de = String((await store.meta.get(bundleMetaId('de')))!.value);
+    // the learner moves to Spanish; meanwhile the German texts look as if an older German analyzer had prepared them
+    await store.users.put({ ...first.user!, courseId: 'honduras-es' });
+    const text = (await store.texts.where('lang', 'de'))[0];
+    await store.texts.put({ ...text, transformations: text.transformations.map((t) => (t.tool.startsWith('adapter-de@') ? { ...t, tool: 'adapter-de@older' } : t)) });
+    const own = (await store.meta.all()).find((m) => !m.id.startsWith(BUNDLE_META_ID) && m.id.includes(text.id) && typeof m.value === 'string')!;
+    await store.meta.put({ ...own, value: `${String(own.value)}-older` });
+    await store.meta.put({ id: bundleMetaId('de'), value: de.replace(/de@[^,|]+/, 'de@older'), updatedAt: 'x' });
+
+    const spanish = await bootstrap({ store, userId });
+    expect(spanish.course!.id).toBe('honduras-es');
+    expect(spanish.services.startup!.bundledReport!.length).toBe(bundledIn('es')); // the Spanish texts only: German is left alone at this start
+    expect((await store.texts.get(text.id))!.transformations.some((t) => t.tool === 'adapter-de@older')).toBe(true);
+    expect(String((await store.meta.get(bundleMetaId('de')))!.value)).not.toBe(de); // still stale
+
+    await store.users.put({ ...(await store.users.get(userId))!, courseId: 'germany-de' });
+    await spanish.services.content!.ensureCourse('germany-de');
+    expect(String((await store.meta.get(bundleMetaId('de')))!.value)).toBe(de); // caught up
+    const again = (await store.texts.get(text.id))!;
+    expect(again.transformations.some((t) => /analyzer changed/.test(t.description))).toBe(true);
+    expect(again.contentVersion).toBe(text.contentVersion); // the words did not change
+  });
+
+  it('first run: nothing is imported before a team is chosen; choosing one leaves its texts, its ladder and its library index in place', async () => {
+    const store = createMemoryStore();
+    const r = await bootstrap({ store });
+    expect(r.user).toBeNull();
+    expect(await store.texts.count()).toBe(0);
+    expect(r.services.startup!.bundledReport).toBeUndefined();
+
+    const { course } = await chooseTeam(store, 'honduras-es');
+    await r.services.content!.ensureCourse(course.id);
+    expect((await store.texts.where('lang', 'es')).length).toBe(bundledIn('es'));
+    expect((await store.works.where('courseId', course.id)).length).toBeGreaterThan(0);
+    // the library index exists without a reload (it used to be built only when a course already existed at startup)
+    const page = await r.services.library.search({ lang: 'es', location: 'bundled', limit: 5 });
+    expect(page.total).toBe(bundledIn('es'));
+  });
+
+  it('bundleLanguages "all" imports every language at startup', async () => {
+    const store = createMemoryStore();
+    const r = await bootstrap({ store, courseId: 'honduras-es', bundleLanguages: 'all' });
+    expect(await store.texts.count()).toBe(loadBundledCorpus().length);
+    expect(r.services.startup!.bundledReport!.length).toBe(loadBundledCorpus().length);
+    const again = await bootstrap({ store, courseId: 'honduras-es', bundleLanguages: 'all' });
+    expect(again.services.startup!.bundledReport).toBeUndefined();
   });
 
   it('skipCorpus leaves the store without texts', async () => {

@@ -64,6 +64,7 @@ export function Onboarding({ store, onChosen }: { store: AppStore; onChosen(user
           </label>
           <p className="onboarding__lang" role="status">You will be learning {languageName(course)}</p>
           {error && <p role="alert" className="error">{error}</p>}
+          {busy && !error && <p className="card__note" role="status" data-testid="preparing">Preparing your texts…</p>}
           <button type="button" className="btn btn--primary" disabled={busy} onClick={begin}>Begin</button>
         </div>
       </main>
@@ -90,9 +91,10 @@ export function Gate({ services, user, course, children }: GateProps) {
             setWho({ user: u, course: c });
             if (typeof window !== 'undefined' && window.location.hash) window.location.hash = '#/'; // the app opens on Home
           };
-          // The course was chosen only now, after startup: its reading ladder (if it has one) goes into the store
-          // before Home is shown, so the ladder door is there on the first screen. A failure never blocks the app.
-          void services.catalog.install(c.id).then(enter, enter);
+          // The course was chosen only now, after startup: its built-in texts, its reading ladder (if it has one) and its
+          // library index go into the store before Home is shown, so the first screen is complete. A failure never blocks the app.
+          const ready = services.content ? services.content.ensureCourse(c.id) : services.catalog.install(c.id);
+          void ready.then(enter, enter);
         }}
       />
     );

@@ -120,6 +120,13 @@ export interface AppServices {
    * a failure leaves an empty library (no catalogue) and the app still starts.
    */
   library: Library;
+  /**
+   * Built-in content by course. `ensureCourse` makes a course ready to show: its language's built-in texts imported (only
+   * the active course's language is imported at startup), learner models rebuilt if a text was re-analysed, its reading
+   * ladder installed, its library index built. Idempotent and cheap when nothing changed. Optional: a test harness that
+   * seeds its own texts leaves it out, and callers then install the ladder alone.
+   */
+  content?: { ensureCourse(courseId: string): Promise<void> };
   /** Which optional parts of the app are on (GoListen is off in V1). The UI reads this, never the constant, so tests can render either state. */
   features: Features;
   startup?: StartupInfo;
@@ -167,11 +174,14 @@ export function AppProvider({ services, user: initialUser, course: initialCourse
     if (!user) throw new Error(`unknown user ${userId}`);
     const course = await store.courses.get(user.courseId);
     if (!course) throw new Error(`unknown course ${user.courseId}`);
-    // A learner on another course (or a changed team): its ladder goes into the store before the UI shows it. Idempotent;
-    // a course without a ladder is a no-op, and a failure here never stops the switch.
-    try { await services.catalog.install(course.id); } catch { /* the ladder pages say what is missing */ }
+    // A learner on another course (or a changed team): its built-in texts and its ladder go into the store before the UI
+    // shows it. Idempotent; a course without a ladder is a no-op, and a failure here never stops the switch.
+    try {
+      if (services.content) await services.content.ensureCourse(course.id);
+      else await services.catalog.install(course.id);
+    } catch { /* the ladder pages say what is missing */ }
     return { user, course };
-  }, [store, services.catalog]);
+  }, [store, services.catalog, services.content]);
 
   const selectUser = useCallback(async (userId: string) => {
     const next = await load(userId);

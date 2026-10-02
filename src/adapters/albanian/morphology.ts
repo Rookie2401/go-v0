@@ -40,7 +40,7 @@ function readingOf(lex: SqLexeme, f: SqForm, listed: boolean): SqReading {
   if (lex.gender && (lex.pos === 'NOUN' || lex.pos === 'PROPN') && !morph.Gender) morph.Gender = GENDER[lex.gender];
   const r: SqReading = {
     lemma: lex.lemma, pos: lex.pos, morph, gloss: lex.gloss, confidence: listed ? 0.9 : 0.85, lemmaKnown: true,
-    rule: f.form === lex.lemma && listed ? 'as listed' : `${f.rule} of ${lex.lemma}`, origin: listed ? 'hand' : 'rule',
+    rule: f.form === lex.lemma && listed ? 'as listed' : f.rule.endsWith(` of ${lex.lemma}`) ? f.rule : `${f.rule} of ${lex.lemma}`, origin: listed ? 'hand' : 'rule',
   };
   const varieties = [...new Set([...(lex.varieties ?? []), ...(f.varieties ?? [])])];
   if (varieties.length) r.varieties = varieties;

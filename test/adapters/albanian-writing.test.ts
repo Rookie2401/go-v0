@@ -231,7 +231,8 @@ describe('segmentSqSentences', () => {
 
 describe('SQ_VARIETIES', () => {
   it('has exactly the agreed codes', () => {
-    expect(Object.keys(SQ_VARIETIES).sort()).toEqual(['aae', 'aat', 'aln', 'aln-AL', 'aln-XK', 'als', 'sq', 'sq-hist', 'sq-pre1908', 'sq-pre1972']);
+    // 'sq-ascii' (typed without ë and ç) was added by the coordinator: a habit of typing, kind 'feature', not a variety of the language
+    expect(Object.keys(SQ_VARIETIES).sort()).toEqual(['aae', 'aat', 'aln', 'aln-AL', 'aln-XK', 'als', 'sq', 'sq-ascii', 'sq-hist', 'sq-pre1908', 'sq-pre1972']);
     for (const [code, v] of Object.entries(SQ_VARIETIES)) {
       expect(v.code).toBe(code);
       expect(v.label.length).toBeGreaterThan(0);

@@ -27,10 +27,9 @@
  * on their corpus. A disagreement is a place for a person to look, and until one has, the adapter does not present
  * that reading as certain (see `--write`).
  *
- * `--write` regenerates the two files that carry the outcome:
- *   data/review/sq/analyzer-check.json     every disagreement, for a reviewer (nothing is decided in it)
- *   src/adapters/albanian/disputed.ts      the (form, lemma) pairs the two sources disagree on, read by the engine,
- *                                          which keeps those readings at low confidence ("possibly …")
+ * `--write` regenerates data/review/sq/analyzer-check.json: every disagreement, for a reviewer (nothing is decided
+ * in it). What the engine does with a difference is decided over ALL sources (this analyzer, Wiktionary, the
+ * treebanks) by `npm run sq:agreement`, which writes src/adapters/albanian/disputed.ts.
  * Lemmas are split in two by a hash; rule fixes are made looking at `dev` only, and `--show` is refused for `test`.
  * `--reuse` skips the analyzer run and reads the last result (data/private/sq/forms.uniparser.jsonl).
  */
@@ -40,9 +39,9 @@ import path from 'node:path';
 import { SQ_FUNCTION_READINGS } from '../src/adapters/albanian/function-words';
 import { sqGeneratedForms } from '../src/adapters/albanian/morphology';
 import { sqNormalize } from '../src/adapters/albanian/orthography';
-import { uniparserToReading, type UniparserReading } from '../src/adapters/albanian/tags';
-import { sqAgree, type SqReading } from '../src/adapters/albanian/types';
+import type { SqReading } from '../src/adapters/albanian/types';
 import { SQ_CITATION_ALIASES } from '../src/bench/sq/aliases';
+import { COMPARED, UNIPARSER_DISPUTE, toUniparserAnalyses, uniparserVerdict, type UniparserAnalysis, type UniparserVerdict } from '../src/bench/sq/uniparser';
 
 const args = process.argv.slice(2).filter((a) => a !== '--');
 const opt = (k: string): string | undefined => { const i = args.indexOf(`--${k}`); return i >= 0 ? args[i + 1] : undefined; };
@@ -79,85 +78,38 @@ if (!args.includes('--reuse')) {
   fs.rmSync(mineOut, { force: true });
 }
 if (!fs.existsSync(OUT)) { console.error(`no analyzer output at ${OUT}: run without --reuse`); process.exit(1); }
-const theirs = new Map<string, Array<{ lemma: string; gramm: string; reading: UniparserReading }>>();
-const analysedForms = new Set<string>();
+const theirs = new Map<string, UniparserAnalysis[]>();
 for (const line of fs.readFileSync(OUT, 'utf8').split('\n')) {
   if (!line.trim()) continue;
   const row = JSON.parse(line) as { form: string; analyses: Array<{ lemma: string; gramm: string }> };
-  analysedForms.add(row.form);
-  theirs.set(row.form, row.analyses.map((a) => ({ lemma: sqNormalize(a.lemma), gramm: a.gramm, reading: uniparserToReading(a.gramm) })));
+  theirs.set(row.form, toUniparserAnalyses(row.analyses));
 }
 
-const stale = [...ours.keys()].filter((f) => !analysedForms.has(f)).length;
+const stale = [...ours.keys()].filter((f) => !theirs.has(f)).length;
 if (stale > 0) { console.error(`${stale} generated form(s) are not in the stored analyzer result (the word list changed since it was made): run without --reuse`); process.exit(1); }
 
-// ── compare ──
-type Verdict = 'agree' | 'nonstandard' | 'features-differ' | 'other-lemma' | 'unknown-form' | 'pos-differs' | 'name-unknown';
-const DISPUTE: ReadonlySet<Verdict> = new Set<Verdict>(['nonstandard', 'features-differ', 'other-lemma', 'unknown-form']);
-const FEATURES = ['Case', 'Number', 'Definite', 'Gender', 'Person', 'Tense', 'Mood', 'Voice', 'VerbForm'];
-const samePos = (a: string, b: string | undefined): boolean =>
-  b === undefined || a === b || (a === 'AUX' && b === 'VERB') || (a === 'PROPN' && b === 'NOUN') || (['DET', 'PRON'].includes(a) && ['DET', 'PRON'].includes(b))
-  || (['CONJ', 'SCONJ'].includes(a) && b === 'CONJ') || (['PART', 'ADV', 'INTJ', 'ADP', 'CONJ', 'SCONJ'].includes(a) && ['PART', 'ADV', 'INTJ', 'ADP', 'CONJ'].includes(b));
-const compatible = (r: SqReading, u: UniparserReading): boolean => {
-  // the plural command is the present second person plural for the analyzer
-  const pluralCommand = r.morph.Mood === 'Imp' && r.morph.Number === 'Plur' && u.morph.Mood === 'Ind' && u.morph.Tense === 'Pres';
-  return FEATURES.every((f) => (pluralCommand && (f === 'Mood' || f === 'Tense')) || sqAgree(r.morph[f], u.morph[f]));
-};
-/** ankohem (listed here) and ankoj with a non-active analysis (listed there) are the same verb. */
-const deponentMatch = (r: SqReading, t: { lemma: string; reading: UniparserReading }): boolean => {
-  if (!(r.pos === 'VERB' || r.pos === 'AUX') || !/em$/u.test(r.lemma) || t.reading.pos !== 'VERB') return false;
-  const lemma = sqNormalize(r.lemma);
-  // lahem → la-j (the h belongs to the ending), lodhem → lodh (the h belongs to the stem): either
-  const mine = [lemma.replace(/em$/u, ''), lemma.replace(/hem$/u, '')];
-  const theirs = t.lemma.replace(/j$/u, '');
-  return (mine.includes(theirs) || mine.includes(t.lemma)) && (t.reading.morph.Voice === 'Mid' || t.reading.morph.VerbForm === 'Part');
-};
-/** The same word under two citation forms (src/bench/sq/aliases.ts): a difference of naming. Features must still agree. */
-const CITATION_ALIASES = SQ_CITATION_ALIASES;
-const aliasMatch = (r: SqReading, t: { lemma: string; reading: UniparserReading }): boolean =>
-  samePos(r.pos, t.reading.pos) && (CITATION_ALIASES[sqNormalize(r.lemma)] ?? []).includes(t.lemma);
-
-/**
- * A short object pronoun: here it is a form of the full pronoun (na under ne, më under unë); the analyzer files it
- * under itself with one label such as acc_1pl. The same word when the label's case, person and number fit.
- */
-const cliticMatch = (form: string, r: SqReading, t: { lemma: string; reading: UniparserReading }): boolean => {
-  if (r.pos !== 'PRON' || t.lemma !== form || t.reading.clitics.length !== 1) return false;
-  const m = /^(acc|dat)_([123])(sg|pl)$/.exec(t.reading.clitics[0]);
-  return !!m && sqAgree(r.morph.Case, m[1] === 'acc' ? 'Acc' : 'Dat') && sqAgree(r.morph.Person, m[2]) && sqAgree(r.morph.Number, m[3] === 'sg' ? 'Sing' : 'Plur');
-};
-
+// ── compare (the comparison itself is src/bench/sq/uniparser.ts) ──
+type Verdict = UniparserVerdict;
 interface Finding { form: string; lemma: string; pos: string; verdict: Verdict; ours: string; theirs: string[] }
 const findings: Finding[] = [];
 const counts: Record<string, Record<Verdict, number>> = {};
 const lexemes = new Map<string, { n: number; bad: number }>();
 const bump = (pos: string, v: Verdict) => { ((counts[pos] ??= { agree: 0, nonstandard: 0, 'features-differ': 0, 'other-lemma': 0, 'unknown-form': 0, 'pos-differs': 0, 'name-unknown': 0 })[v])++; };
-const feat = (m: Record<string, string>) => FEATURES.filter((f) => m[f]).map((f) => `${f}=${m[f]}`).join(' ');
+const feat = (m: Record<string, string>) => COMPARED.filter((f) => m[f]).map((f) => `${f}=${m[f]}`).join(' ');
 
 for (const [form, list] of [...ours.entries()].sort((a, b) => (a[0] < b[0] ? -1 : 1))) {
   const them = theirs.get(form) ?? [];
   for (const r of list) {
     const lemma = sqNormalize(r.lemma);
     if (!inSplit(lemma)) continue;
-    let verdict: Verdict;
-    const same = them.filter((t) => (t.lemma === lemma && samePos(r.pos, t.reading.pos)) || deponentMatch(r, t) || aliasMatch(r, t));
-    const otherPos = them.filter((t) => t.lemma === lemma && !samePos(r.pos, t.reading.pos) && compatible(r, t.reading));
-    if (!them.length) verdict = r.pos === 'PROPN' ? 'name-unknown' : 'unknown-form';
-    else if (them.some((t) => cliticMatch(form, r, t))) verdict = 'agree';
-    // a personal name the analyzer does not hold, spelled like a common word it does (Ana / anë, Mira / mirë): not a dispute
-    else if (!same.length && r.pos === 'PROPN') verdict = 'name-unknown';
-    else if (!same.length) verdict = otherPos.length ? 'pos-differs' : 'other-lemma';
-    else {
-      const ok = same.filter((t) => compatible(r, t.reading));
-      verdict = !ok.length ? 'features-differ' : ok.every((t) => t.reading.gheg || t.reading.nonstandard) ? 'nonstandard' : 'agree';
-    }
+    const { verdict, evidence } = uniparserVerdict(form, r, them);
     bump(r.pos, verdict);
     const key = `${lemma}|${r.pos}`;
     const lx = lexemes.get(key) ?? { n: 0, bad: 0 };
     lx.n++;
-    if (DISPUTE.has(verdict)) {
+    if (UNIPARSER_DISPUTE.has(verdict)) {
       lx.bad++;
-      findings.push({ form, lemma: r.lemma, pos: r.pos, verdict, ours: feat(r.morph) || '(no features)', theirs: (verdict === 'other-lemma' ? them : same.length ? same : them).slice(0, 6).map((t) => `${t.lemma} [${t.gramm}]`) });
+      findings.push({ form, lemma: r.lemma, pos: r.pos, verdict, ours: feat(r.morph) || '(no features)', theirs: evidence.slice(0, 6).map((t) => `${t.lemma} [${t.gramm}]`) });
     }
     lexemes.set(key, lx);
   }
@@ -185,28 +137,16 @@ if (show > 0) {
 }
 
 if (args.includes('--write')) {
-  if (split !== 'all') { console.error('--write needs --split all (the files cover every lemma, written mechanically without looking)'); process.exit(1); }
+  if (split !== 'all') { console.error('--write needs --split all (the file covers every lemma, written mechanically without looking)'); process.exit(1); }
   fs.mkdirSync('data/review/sq', { recursive: true });
   const review = {
     schema: 1,
-    note: 'Readings on which the Albanian word list / rules (machine-drafted) and the UniParser Albanian analyzer differ. Nothing is decided here: each is a place for a person to look. Generated by npm run sq:check-analyzer -- --write; do not edit by hand.',
+    note: 'Readings on which the Albanian word list / rules (machine-drafted) and the UniParser Albanian analyzer differ. Nothing is decided here: each is a place for a person to look. Generated by npm run sq:check-analyzer -- --write; do not edit by hand. What the engine does with a difference is decided over all sources by npm run sq:agreement.',
     analyzer: { name: 'uniparser-albanian', version: '2.3.0', licence: 'MIT', authors: 'Maria Morozova, Alexander Rusakov, Timofey Arkhangelskiy', mode: 'strict, no disambiguation' },
-    citationAliases: CITATION_ALIASES,
+    citationAliases: SQ_CITATION_ALIASES,
     counts,
     findings,
   };
   fs.writeFileSync('data/review/sq/analyzer-check.json', `${JSON.stringify(review, null, 1)}\n`, 'utf8');
-  const pairs = [...new Set(findings.map((f) => `${f.form}\t${sqNormalize(f.lemma)}`))].sort();
-  const body = `/**
- * Readings the adapter's own word list and the UniParser Albanian analyzer disagree on: written form + lemma.
- * GENERATED by \`npm run sq:check-analyzer -- --write\` — do not edit by hand. The engine keeps these readings at low
- * confidence (shown as "possibly …") until a person has looked; the full record with both sides' statements is
- * data/review/sq/analyzer-check.json. ${pairs.length} pairs.
- */
-export const SQ_DISPUTED: ReadonlySet<string> = new Set([
-${pairs.map((p) => `  ${JSON.stringify(p)},`).join('\n')}
-]);
-`;
-  fs.writeFileSync('src/adapters/albanian/disputed.ts', body, 'utf8');
-  console.log(`\nwrote data/review/sq/analyzer-check.json (${findings.length} findings) and src/adapters/albanian/disputed.ts (${pairs.length} pairs)`);
+  console.log(`\nwrote data/review/sq/analyzer-check.json (${findings.length} findings); run npm run sq:agreement -- --write to regenerate the engine's list`);
 }

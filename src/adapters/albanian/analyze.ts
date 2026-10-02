@@ -7,15 +7,17 @@
  *   notes.articulated   'yes' on an adjective, ordinal or possessive that stands after a linking article
  *   notes.governs       the case a preposition governs
  *   notes.lemmaStatus   'in the word list' | 'inferred by the rules' (the second also sets `unconfirmed`)
- *   notes.disputed      set when the adapter's own data and the UniParser analyzer disagree about this reading
- *                       (see scripts/sq-check-analyzer.mts): the reading is kept, at 0.55 at most, until someone has looked
+ *   notes.disputed      set when the sources do not agree about this reading (the word list, the UniParser analyzer,
+ *                       Wiktionary's tables, the treebanks — npm run sq:agreement), or when no other source knows it:
+ *                       the reading is kept, at 0.55 at most, until someone has looked
+ *   notes.sources       'majority' when one source says otherwise and at least two others agree: kept at 0.75 at most
  *   parts               the grammatical words inside one written token (ma = më + e)
  *   orthography         the Standard form a reading was made from, when the written form is not Standard spelling
  *   varieties           'aln', 'sq-pre1972', 'sq-ascii' … when the form is not Standard as it stands
  * The lemma of an articulated adjective is its citation form with the article ("i mirë"), with or without a unit.
  */
 import type { AnalysisCandidate, AnalyzedToken, RawToken } from '../../core';
-import { SQ_DISPUTED } from './disputed';
+import { SQ_DISPUTED, SQ_MAJORITY } from './disputed';
 import { analyzeSqForm } from './morphology';
 import { orderSqSentence } from './sentence';
 import { sqCitation, type SqReading } from './types';
@@ -29,8 +31,10 @@ export const SQ_SOURCE_IDS = {
   constructions: `${SQ_ANALYZER}:constructions`,
 } as const;
 
-/** A reading the two sources disagree about is not presented as certain. */
+/** A reading the sources disagree about, or that only the word list knows, is not presented as certain. */
 export const DISPUTED_MAX_CONFIDENCE = 0.55;
+/** One source says otherwise, at least two others agree. */
+export const MAJORITY_MAX_CONFIDENCE = 0.75;
 
 export function toCandidate(form: string, r: SqReading): AnalysisCandidate {
   const notes: Record<string, string | string[]> = { rule: r.rule, lemmaStatus: r.lemmaKnown ? 'in the word list' : 'inferred by the rules' };
@@ -39,9 +43,13 @@ export function toCandidate(form: string, r: SqReading): AnalysisCandidate {
   if (r.governs) notes.governs = r.governs;
   if (r.relation) notes.relation = r.relation.rule;
   let confidence = r.confidence;
-  if (r.lemmaKnown && SQ_DISPUTED.has(`${r.relation?.standard ?? form}\t${r.lemma.normalize('NFC').toLocaleLowerCase('sq')}`)) {
-    notes.disputed = 'the word list and the UniParser analyzer differ on this reading';
+  const key = `${r.relation?.standard ?? form}\t${r.lemma.normalize('NFC').toLocaleLowerCase('sq')}`;
+  if (r.lemmaKnown && SQ_DISPUTED.has(key)) {
+    notes.disputed = 'the sources consulted do not agree on this reading, or no other source knows it';
     confidence = Math.min(confidence, DISPUTED_MAX_CONFIDENCE);
+  } else if (r.lemmaKnown && SQ_MAJORITY.has(key)) {
+    notes.sources = 'majority';
+    confidence = Math.min(confidence, MAJORITY_MAX_CONFIDENCE);
   }
   const c: AnalysisCandidate = {
     lemma: sqCitation(r.lemma, r.articulated), pos: r.pos, morph: { ...r.morph }, notes, confidence,

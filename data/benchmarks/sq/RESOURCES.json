@@ -1,5 +1,5 @@
 {
-  "note": "External Albanian resources used for validation only. Facts are those read from the treebanks' READMEs by the coordinator on 2026-10-01; nothing here is guessed. The treebanks are NOT downloaded: retrieved and version are filled when the owner has approved a download and it has been done. They are never course text, never bundled, never shown to a learner.",
+  "note": "External Albanian resources used for validation only. Facts are those read from the resources themselves by the coordinator on 2026-10-01; nothing here is guessed. Downloaded on 2026-10-01 with the owner's permission into data/research/ (git-ignored). They are never course text, never bundled, never shown to a learner.",
   "readFrom": "the READMEs of the three repositories, read 2026-10-01",
   "resources": [
     {
@@ -14,8 +14,8 @@
       "use": "research-only",
       "shipped": false,
       "localPath": "data/research/ud/UD_Albanian-STAF",
-      "retrieved": null,
-      "version": null
+      "retrieved": "2026-10-01",
+      "version": "git 22ae839b1d7c78005e900dd97747f0739b233c42 (last commit 2026-05-06, branch master, shallow clone)"
     },
     {
       "name": "UD_Albanian-TSA",
@@ -29,8 +29,8 @@
       "use": "research-only",
       "shipped": false,
       "localPath": "data/research/ud/UD_Albanian-TSA",
-      "retrieved": null,
-      "version": null
+      "retrieved": "2026-10-01",
+      "version": "git f9f4cf1be5564b5d50bafe7d4d6234d5552cdfce (last commit 2026-05-06, branch master, shallow clone)"
     },
     {
       "name": "UD_Gheg-GPS",
@@ -44,8 +44,33 @@
       "use": "research-only",
       "shipped": false,
       "localPath": "data/research/ud/UD_Gheg-GPS",
-      "retrieved": null,
-      "version": null
+      "retrieved": "2026-10-01",
+      "version": "git 2247098511ae1608457ca2f8d1dcf74a7e129284 (last commit 2026-05-06, branch master, shallow clone)"
+    },
+    {
+      "name": "uniparser-grammar-albanian",
+      "repository": "https://github.com/timarkh/uniparser-grammar-albanian",
+      "licence": "MIT (LICENSE in the repository)",
+      "text": "the analyzer's lexeme files, paradigms, constraint-grammar rules and corpus word lists",
+      "use": "research-only",
+      "shipped": false,
+      "localPath": "data/research/uniparser-grammar-albanian",
+      "retrieved": "2026-10-01",
+      "version": "git 7d423dbccfc3702f30d52f016bca2e92c70cb5fc (last commit 2026-01-08, shallow clone)",
+      "purpose": "read to understand the analyzer's statements (e.g. which paradigm labels a form); the installed analyzer itself is the PyPI package uniparser-albanian 2.3.0"
+    },
+    {
+      "name": "kaikki.org Albanian dictionary (English Wiktionary extract)",
+      "repository": "https://kaikki.org/dictionary/Albanian/kaikki.org-dictionary-Albanian.jsonl.gz",
+      "licence": "CC BY-SA (Wiktionary); extract by kaikki.org / wiktextract",
+      "entries": 24262,
+      "text": "English Wiktionary entries for Albanian words, with head-line forms, inflection tables and form-of entries",
+      "use": "research-only",
+      "shipped": false,
+      "localPath": "data/research/kaikki/kaikki.org-dictionary-Albanian.jsonl.gz",
+      "retrieved": "2026-10-01",
+      "version": "Last-Modified 2026-09-28; 7,846,113 bytes compressed; sha256 (gz) 29cf43f3475e481dddcc44305be75a9b57d38dccaa387ac12c1951ce7343eb39",
+      "purpose": "validation source for npm run sq:agreement; not yet built into a bundled dictionary"
     }
   ]
 }

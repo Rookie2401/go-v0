@@ -241,3 +241,123 @@ describe('refine: never adds, removes or rewrites a reading', () => {
     out.forEach((o, i) => { if (!tokens[i].isWord) expect(o.candidates).toEqual([]); });
   });
 });
+
+describe('refine: `given` — one of our own tokens with a dictionary reading put beside ours', () => {
+  /** The sentence analysed by the adapter, with dictionary readings appended to the named words' own lists (the analyzer stays ours). */
+  function withBeside(text: string, added: Record<string, AnalysisCandidate[]>) {
+    const { tokens, analyzed } = analyzeText(text);
+    const given = new Set<number>();
+    const out = analyzed.map((a, i) => {
+      const more = added[tokens[i].surface];
+      if (!more) return a;
+      given.add(i);
+      return { ...a, candidates: [...a.candidates, ...more.map((c) => ({ ...c }))] };
+    });
+    return { tokens, analyzed: out, given };
+  }
+
+  it('the list is kept whole and ordered by its neighbours: la marcha (the noun), no marcha (the verb)', () => {
+    const noun = withBeside('La marcha fue larga.', { marcha: [VERB3S('marchar')] });
+    const i = at(noun.tokens, 'marcha');
+    const out = refine(noun.tokens, noun.analyzed, both, noun.given);
+    expect(order(out[i])).toEqual(['marcha/NOUN', 'marchar/VERB']);
+    expect(out[i].analyzer).toBe(OWN);
+    expect(out[i].candidates[0].origin).toBe('hand');
+    expect(out[i].candidates[1]).toMatchObject({ origin: 'dictionary', sourceId: DICT });
+
+    const verb = withBeside('No marcha bien.', { marcha: [VERB3S('marchar')] });
+    const j = at(verb.tokens, 'marcha');
+    const res = refine(verb.tokens, verb.analyzed, both, verb.given);
+    expect(order(res[j])).toEqual(['marchar/VERB', 'marcha/NOUN']);
+    expect(res[j].candidates[0].notes?.context).toMatch(/"no"/);
+    expect(res[j].candidates[0]).toMatchObject({ origin: 'dictionary', confidence: 0.45 }); // moved, not rewritten
+  });
+
+  it('without `given` such a token starts again from the adapter\'s own readings (which is why the importer names it)', () => {
+    const { tokens, analyzed } = withBeside('No marcha bien.', { marcha: [VERB3S('marchar')] });
+    expect(order(refine(tokens, analyzed, both)[at(tokens, 'marcha')])).toEqual(['marcha/NOUN']);
+  });
+
+  it('nothing is added or dropped, and the other tokens are as without `given`', () => {
+    const { tokens, analyzed, given } = withBeside('Ella cuenta la marcha.', { marcha: [VERB3S('marchar')], cuenta: [dictReading('cuento', 'NOUN', ['masculine', 'singular'])] });
+    const out = refine(tokens, analyzed, both, given);
+    out.forEach((o, i) => expect(multiset(o), tokens[i].surface).toEqual(multiset(analyzed[i])));
+    expect(out[at(tokens, 'cuenta')].candidates[0]).toMatchObject({ lemma: 'contar', pos: 'VERB' }); // after its subject
+    const plain = refine(tokens, analyzed, both);
+    for (const k of [at(tokens, 'Ella'), at(tokens, 'la')]) expect(out[k]).toEqual(plain[k]);
+  });
+
+  it('the readings that are still ours start again: an earlier ordering (lowered confidence, a stale notes.context) does not leak', () => {
+    const clean = withBeside('Pagó la cuenta.', { cuenta: [dictReading('cuento', 'NOUN', ['masculine', 'singular'])] });
+    const i = at(clean.tokens, 'cuenta');
+    const stale = clean.analyzed.map((a, k) => (k === i
+      ? { ...a, candidates: [...a.candidates].reverse().map((c) => (c.origin === 'dictionary' ? c : { ...c, confidence: 0.1, notes: { ...(c.notes ?? {}), context: 'an earlier pass' } })) }
+      : a));
+    const a = refine(clean.tokens, clean.analyzed, both, clean.given);
+    const b = refine(clean.tokens, stale, both, clean.given);
+    expect(b[i]).toEqual(a[i]);
+    expect(a[i].candidates[0]).toMatchObject({ lemma: 'cuenta', pos: 'NOUN', origin: 'hand' });
+    expect(a[i].candidates.filter((c) => c.notes?.context)).toHaveLength(1);
+    // the context-free confidence of the noun, not the 0.1 it arrived with
+    expect(a[i].candidates[0].confidence).toBeGreaterThan(0.5);
+  });
+
+  it('a reading of ours that the importer changed (another gloss, another confidence) is kept as it came', () => {
+    const { tokens, analyzed } = analyzeText('Pagó la cuenta.');
+    const i = at(tokens, 'cuenta');
+    const changed = analyzed.map((a, k) => (k === i
+      ? { ...a, candidates: a.candidates.map((c) => (c.pos === 'NOUN' ? { ...c, confidence: 0.7, gloss: 'bill (from the lemma entry)' } : c)) }
+      : a));
+    const out = refine(tokens, changed, both, new Set([i]));
+    const noun = out[i].candidates.find((c) => c.pos === 'NOUN')!;
+    expect(noun.gloss).toBe('bill (from the lemma entry)'); // not swapped for the adapter's context-free copy
+    expect(noun.confidence).toBeLessThanOrEqual(0.7);
+    expect(multiset(out[i])).toEqual(multiset(changed[i]));
+    expect(out[i].candidates[0].pos).toBe('NOUN'); // still ordered by the article before it
+  });
+
+  it('`given` never unlocks a token whose analyzer is not in the set, and an index that is not a word changes nothing', () => {
+    const { tokens, analyzed, given } = withBeside('No marcha bien.', { marcha: [VERB3S('marchar')] });
+    const i = at(tokens, 'marcha');
+    expect(refine(tokens, analyzed, new Set([DICT]), given)[i]).toEqual(analyzed[i]);
+    const dot = tokens.findIndex((t) => !t.isWord);
+    const out = refine(tokens, analyzed, both, new Set([...given, dot]));
+    expect(out[dot]).toEqual(analyzed[dot]);
+    expect(order(out[i])).toEqual(['marchar/VERB', 'marcha/NOUN']);
+  });
+
+  it('with an empty `given` it is the same as with none: equal to analyze for our own tokens', () => {
+    const { tokens, analyzed } = analyzeText('La abuela llena la jarra y cuenta una historia.');
+    expect(refine(tokens, analyzed, new Set([OWN]), new Set())).toEqual(analyzed);
+  });
+});
+
+describe('lemmaVariants: the other headword a dictionary may file a verb under', () => {
+  const variants = (lemma: string, pos?: AnalysisCandidate['pos']) => es.lemmaVariants!(lemma, pos);
+
+  it('a verb in -ar, -er, -ir, -ír: the pronominal headword', () => {
+    expect(variants('arrepentir', 'VERB')).toEqual(['arrepentirse']);
+    expect(variants('quejar', 'VERB')).toEqual(['quejarse']);
+    expect(variants('atrever', 'VERB')).toEqual(['atreverse']);
+    expect(variants('reír', 'VERB')).toEqual(['reírse']);
+    expect(variants('ir', 'VERB')).toEqual(['irse']);
+  });
+
+  it('a lemma that already ends in -se: the bare verb', () => {
+    expect(variants('arrepentirse', 'VERB')).toEqual(['arrepentir']);
+    expect(variants('quejarse', 'VERB')).toEqual(['quejar']);
+    expect(variants('atreverse', 'VERB')).toEqual(['atrever']);
+    expect(variants('reírse', 'VERB')).toEqual(['reír']);
+    expect(variants('quejarse')).toEqual(['quejar']); // no part of speech given: by the shape
+  });
+
+  it('anything else: none', () => {
+    expect(variants('mujer', 'NOUN')).toEqual([]); // ends in -er but is not a verb
+    expect(variants('base', 'NOUN')).toEqual([]);
+    expect(variants('familiar', 'ADJ')).toEqual([]);
+    expect(variants('clase', 'VERB')).toEqual([]); // -se that is not an infinitive with se
+    expect(variants('casa', 'VERB')).toEqual([]);
+    expect(variants('pues')).toEqual([]);
+    expect(variants('ser', 'AUX')).toEqual([]);
+  });
+});

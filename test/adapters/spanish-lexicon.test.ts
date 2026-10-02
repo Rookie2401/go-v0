@@ -3,9 +3,9 @@
  * nothing is listed twice. These tests read the adapter as it ships and do not depend on the morphology engine.
  */
 import { describe, expect, it } from 'vitest';
-import { esAdapter, esLexicon, esLexiconStats, ES_SOURCE_IDS } from '../../src/adapters/es';
+import { esAdapter, esLexicon, esLexiconProblems, esLexiconStats, ES_SOURCE_IDS } from '../../src/adapters/es';
 import { ES_VARIETIES, ES_VARIETY_CODES, REGIONAL_PAIRS } from '../../src/adapters/spanish/varieties';
-import { parseRows } from '../../src/adapters/spanish/entries';
+import { buildRows, parseRows } from '../../src/adapters/spanish/entries';
 import { run } from './helpers';
 
 const cands = (w: string) => run('es', w).analyses[0].candidates;
@@ -48,6 +48,28 @@ describe('Spanish lexicon: size and integrity', () => {
     expect(() => parseRows('casa/f = house')).toThrow(/before any section/);
     expect(() => parseRows('# NOPE\n')).toThrow(/unknown part of speech/);
     expect(parseRows('# NOUN\ncobija/f = blanket [es-419 colloquial]')[0]).toMatchObject({ lemma: 'cobija', gender: 'f', varieties: ['es-419'], register: ['colloquial'] });
+  });
+
+  it('every row of the word-list files is read: no row was skipped as malformed', () => {
+    // a broken row fails here, by file and line, and not the loading of the adapter (and with it of every language)
+    expect(esLexiconProblems).toEqual([]);
+  });
+
+  it('given a list to report to, the row reader skips a bad row, says where and what, and keeps the good ones', () => {
+    const problems: string[] = [];
+    const rows = parseRows('# NOUN\ncasa/f = house\nmesa/f: table\nsilla/f =chair\n# NOPE\nperro/m = dog\n# ADJ\nrojo = red [es-XX!]\nverde = green', 'sample', problems);
+    expect(rows.map((r) => r.lemma)).toEqual(['casa', 'verde']);
+    expect(problems).toEqual([
+      'sample:3: expected "lemma = gloss"',
+      'sample:4: expected "lemma = gloss"',
+      'sample:5: unknown part of speech "NOPE"',
+      'sample:6: a row before any section header', // the lines under a bad header are not filed under the section before it
+      'sample:8: unknown tag "es-XX!"',
+    ]);
+    // forms that cannot be built are reported too, and the other rows are built
+    const built = buildRows(parseRows('# DET\neste = this | este:m sg dem\n# NOUN\ncasa/f = house', 'sample'), new Set(), problems);
+    expect(built.entries.map((e) => e.lemma)).toEqual(['este', 'casa']);
+    expect(problems).toHaveLength(5);
   });
 
   it('the older hand paradigms still work and the lexicon keeps them first', () => {
@@ -206,7 +228,7 @@ describe('Spanish adapter: provenance', () => {
     expect(Object.values(esAdapter.sources!).every((s) => s.reviewStatus === 'machine-drafted')).toBe(true);
     expect(esAdapter.sources![ES_SOURCE_IDS.hand].origin).toBe('hand');
     expect(esAdapter.sources![ES_SOURCE_IDS.rules].origin).toBe('rule');
-    expect(ES_SOURCE_IDS.hand).toBe('adapter-es@4:hand');
+    expect(ES_SOURCE_IDS.hand).toBe('adapter-es@5:hand');
   });
 
   it('the support record is honest: seed-only lemmatization, nothing dependable beyond tokenization, limits stated', () => {

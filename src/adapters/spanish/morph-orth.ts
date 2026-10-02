@@ -93,7 +93,8 @@ export function writeStress(plain: string, markIndex: number): string | undefine
   const last = plain[plain.length - 1];
   let need: boolean;
   const strongAt = (i: number) => i >= 0 && i < marked.length && STRONG.includes(marked[i]);
-  if ('íú'.includes(marked[markIndex]) && ns[k][1] - ns[k][0] === 1 && (strongAt(markIndex - 1) || strongAt(markIndex + 1))) need = true;
+  // a stressed i / u beside a strong vowel always carries the accent (oíd, reíos), whatever stands on its other side (huíos, construíos)
+  if ('íú'.includes(marked[markIndex]) && (strongAt(markIndex - 1) || strongAt(markIndex + 1))) need = true;
   else if (ns.length === 1) need = false;
   else if (fromEnd === 0) need = 'aeiouns'.includes(last);
   else if (fromEnd === 1) need = !'aeiouns'.includes(last);

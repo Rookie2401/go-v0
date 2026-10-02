@@ -3,7 +3,7 @@
  *   irregular table → prefixed relative of an irregular (mantener) → -ducir family → listed stem-changer →
  *   (assumed class, only when the caller asks) → regular.
  */
-import { IRREGULAR, IRREGULAR_PARTICIPLES, strongPret } from './verb-irregular';
+import { IRREGULAR, IRREGULAR_PARTICIPLES, strongPret, takesPrefix } from './verb-irregular';
 import { generateForms, regularParadigm, stemOf, withPrefix, type FormRec, type Paradigm } from './verb-regular';
 import { stemChangeParadigm, stemClassOf, type StemClass } from './verb-stem';
 
@@ -47,7 +47,7 @@ function build(lemma: string, assume?: StemClass): Conjugation | null {
   for (const [base, e] of Object.entries(IRREGULAR)) {
     if (!e.prefixes || lemma.length <= base.length || !lemma.endsWith(base)) continue;
     const prefix = lemma.slice(0, lemma.length - base.length);
-    if (!e.prefixes.includes(prefix)) continue;
+    if (!takesPrefix(e, prefix)) continue;
     let forms = generateForms(e.build()).map((r) => ({ ...r, form: withPrefix(prefix, r.form) }));
     if (base === 'decir') forms = decirFamily(lemma, prefix, forms);
     return { forms, kind: 'irregular' };

@@ -37,7 +37,7 @@ import { segmentSpanishSentences } from './spanish/sentences';
 import { disambiguateSpanish } from './spanish/disambiguate';
 
 const LANG = 'es' as const;
-const VERSION = '4';
+const VERSION = '5';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
@@ -155,12 +155,19 @@ const ENTRIES = [
 ];
 
 // ── the core lexicon: rows (text blocks) → entries; a row the older list already has is skipped ──
-const ROWS = [
-  ...parseRows(FUNCTION_ROWS, 'function-words'), ...parseRows(VERB_ROWS, 'verbs'), ...parseRows(NOUN_ROWS, 'nouns'),
-  ...parseRows(ADJECTIVE_ROWS, 'modifiers'), ...parseRows(PROPER_ROWS, 'proper'), ...parseRows(REGIONAL_ROWS, 'regional'), ...parseRows(COURSE_ROWS, 'course'),
+/**
+ * Rows of the word-list files that could not be read ("file:line: what is wrong"). A bad row is skipped and listed
+ * here instead of throwing while the module loads: the adapter registry imports every adapter, so a throw here would
+ * stop every language. test/adapters/spanish-lexicon.test.ts asserts that this list is empty.
+ */
+export const esLexiconProblems: string[] = [];
+const ROW_FILES: ReadonlyArray<[rows: string, file: string]> = [
+  [FUNCTION_ROWS, 'function-words'], [VERB_ROWS, 'verbs'], [NOUN_ROWS, 'nouns'], [ADJECTIVE_ROWS, 'modifiers'],
+  [PROPER_ROWS, 'proper'], [REGIONAL_ROWS, 'regional'], [COURSE_ROWS, 'course'],
 ];
+const ROWS = ROW_FILES.flatMap(([rows, file]) => parseRows(rows, file, esLexiconProblems));
 const OLD_KEYS = new Set(ENTRIES.map((e) => annotationKey(e.lemma, e.pos)));
-const BUILT = buildRows(ROWS, OLD_KEYS);
+const BUILT = buildRows(ROWS, OLD_KEYS, esLexiconProblems);
 const ANNOTATIONS: Map<string, EsAnnotation> = mergeAnnotations(BUILT.annotations);
 
 /** The order matters: when a surface is ambiguous the earlier entry is listed first, and the older list comes first. */
@@ -202,6 +209,11 @@ const CLOSED = new Set(['DET', 'PRON', 'ADP', 'CONJ', 'SCONJ', 'NUM', 'INTJ', 'P
 const ALSO_VERB = new Set(['como', 'salvo', 'bajo']);
 
 const knownLemma = (lemma: string, pos?: string): boolean => !!esLexicon.find(lemma, pos as never);
+/** The gender the list gives a noun (a diminutive keeps it): the first single gender among its forms. */
+const genderOf = (lemma: string, pos: string): string | undefined =>
+  esLexicon.find(lemma, pos as never)?.forms.map((f) => f.morph.Gender).find((g) => g !== undefined && !g.includes(','));
+/** One options object, so that the engine's per-lexicon memo is shared by every call. */
+const ENGINE_OPTS = { knownLemma, genderOf };
 const union = (a: readonly string[] | undefined, b: readonly string[] | undefined): string[] | undefined => {
   const out = [...new Set([...(a ?? []), ...(b ?? [])])];
   return out.length ? out : undefined;
@@ -252,7 +264,7 @@ function fromEngine(a: SpanishAnalysis): AnalysisCandidate {
   return annotate(c);
 }
 
-const engineRead = (form: string): AnalysisCandidate[] => analyzeSpanishForm(form, { knownLemma }).map(fromEngine);
+const engineRead = (form: string): AnalysisCandidate[] => analyzeSpanishForm(form, ENGINE_OPTS).map(fromEngine);
 
 const handCandidates = (form: string): AnalysisCandidate[] =>
   esLexicon.toCandidates(esLexicon.lookup(form)).map((c) => annotate({ ...c, origin: 'hand', sourceId: ES_SOURCE_IDS.hand }));
@@ -274,7 +286,7 @@ function clitic(form: string): AnalysisCandidate[] {
   const hit = esLexicon.lookup(sp.stem).find((h) => h.form.morph.VerbForm === 'Inf');
   if (!hit) return [];
   // the engine knows the offsets and, when it can tell, the pronoun roles; ours are the plain fallback
-  const eng = analyzeSpanishForm(form, { knownLemma }).find((a) => a.lemma === hit.entry.lemma && a.morph.VerbForm === 'Inf' && a.parts?.length);
+  const eng = analyzeSpanishForm(form, ENGINE_OPTS).find((a) => a.lemma === hit.entry.lemma && a.morph.VerbForm === 'Inf' && a.parts?.length);
   let off = sp.stem.length;
   const parts: WordPart[] = eng?.parts?.length ? eng.parts.map((p) => ({ ...p })) : [
     { text: sp.stem, start: 0, end: sp.stem.length, lemma: hit.entry.lemma, pos: 'VERB', morph: { VerbForm: 'Inf' } },
@@ -305,7 +317,7 @@ function foldLookup(folded: string): string[] {
 function solidReadings(modern: string): AnalysisCandidate[] {
   const hand = handCandidates(modern);
   if (hand.length) return hand;
-  return analyzeSpanishForm(modern, { knownLemma }).filter((a) => a.lemmaKnown).map(fromEngine);
+  return analyzeSpanishForm(modern, ENGINE_OPTS).filter((a) => a.lemmaKnown).map(fromEngine);
 }
 
 /** Older spelling: the modern lemma, tagged es-hist, `notes.modern` the modern spelling; the surface is never altered. */
@@ -383,7 +395,8 @@ function analyzeFormUncached(form: string): AnalysisCandidate[] {
   const eng = engineRead(form);
   if (eng.some((c) => c.notes?.lemmaStatus === 'in the word list')) return eng;
   const hist = historical(form);
-  return hist.length ? [...hist, ...eng] : eng;
+  // beside an older spelling of a word the list knows, only verb guesses (as before) are kept: not a noun or adjective guess from the ending
+  return hist.length ? [...hist, ...eng.filter((c) => c.pos === 'VERB' || c.pos === 'AUX')] : eng;
 }
 
 // quantifiers that are both a determiner and an adverb (mucho, poco, tanto …), and nouns that are also adverbs (tarde, mañana)
@@ -409,6 +422,30 @@ function disambiguate(i: number, tokens: RawToken[], base: AnalysisCandidate[][]
     return pv && tokens[i - 1].isWord && pv.pos === 'DET' ? choose('NOUN', 0.75) : choose('ADV', 0.7);
   }
   return disambiguateSpanish(i, tokens, base);
+}
+
+/** A reading without what an ordering by context may have changed in it (its confidence, `notes.context`). */
+function unordered(c: AnalysisCandidate): string {
+  const { confidence: _confidence, notes, ...rest } = c;
+  const { context: _context, ...kept } = notes ?? {};
+  return JSON.stringify(Object.keys(kept).length ? { ...rest, notes: kept } : rest);
+}
+
+/**
+ * The list of one of our own tokens after the importer put other readings beside ours (`refine`, `given`): the same
+ * readings, none added or dropped. Those that are still ours but for an earlier ordering go first, as the form has
+ * them without context (their order, their confidence, no `notes.context`); every other reading follows as it came.
+ */
+function startAgain(list: AnalysisCandidate[], contextFree: AnalysisCandidate[]): AnalysisCandidate[] {
+  const left = list.map((c) => ({ c, key: unordered(c) }));
+  const ours: AnalysisCandidate[] = [];
+  for (const fresh of contextFree) {
+    const k = left.findIndex((x) => x.key === unordered(fresh));
+    if (k < 0) continue;
+    left.splice(k, 1);
+    ours.push(fresh);
+  }
+  return [...ours, ...left.map((x) => x.c)];
 }
 
 // ── phrases ──
@@ -538,12 +575,25 @@ export const esAdapter: LanguageAdapter = {
    * adapter starts again from its context-free readings (what an earlier ordering did to them does not matter); any
    * other token brings its readings as they are, and its neighbours read them like ours. Only order, a lowered
    * confidence and `notes.context` can change; a token whose analyzer is not in `analyzers` is left exactly alone.
+   * A token named in `given` is ours but carries readings the importer put beside ours: its list is kept whole, and
+   * only the readings in it that are still exactly ours start again (see `startAgain`).
    */
-  refine: (tokens, analyzed, analyzers): AnalyzedToken[] => {
-    const base = tokens.map((t, i) => (analyzed[i].analyzer === ANALYZER ? (t.isWord ? analyzeForm(t.normalized) : []) : analyzed[i].candidates));
+  refine: (tokens, analyzed, analyzers, given): AnalyzedToken[] => {
+    const base = tokens.map((t, i) => {
+      if (analyzed[i].analyzer !== ANALYZER) return analyzed[i].candidates;
+      if (given?.has(i)) return t.isWord ? startAgain(analyzed[i].candidates, analyzeForm(t.normalized)) : analyzed[i].candidates;
+      return t.isWord ? analyzeForm(t.normalized) : [];
+    });
     return tokens.map((t, i) => (t.isWord && analyzers.has(analyzed[i].analyzer)
       ? { ...analyzed[i], candidates: [...disambiguate(i, tokens, base)] }
       : analyzed[i]));
+  },
+
+  /** A dictionary may file a verb only as pronominal (arrepentirse), or the pronominal one under the bare verb. */
+  lemmaVariants: (lemma, pos): string[] => {
+    if (pos !== undefined && pos !== 'VERB') return [];
+    if (/[aeií]rse$/.test(lemma)) return [lemma.slice(0, -2)];
+    return /(ar|er|ir|ír)$/.test(lemma) ? [`${lemma}se`] : [];
   },
 
   detectPhrases(tokens, analyses): PhraseCandidate[] {

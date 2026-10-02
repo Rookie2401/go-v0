@@ -31,7 +31,7 @@ export const lowerClitics = (cl: string[]): string[] => cl.map((c) => c.toLowerC
 
 /**
  * The written form of `verb` with `clitics` attached, the stress staying where it was.
- *   dropS: the -s of the hortative -mos goes before nos (vamos + nos → vámonos)
+ *   dropS: the -s of the hortative -mos goes before nos, os and se (vamos + nos → vámonos, digamos + se + lo → digámoselo)
  *   dropD: the -d of the vosotros imperative goes before os (callad + os → callaos)
  */
 export function attachClitics(verb: string, clitics: string[], flags: { dropS?: boolean; dropD?: boolean } = {}): string | undefined {
@@ -48,7 +48,8 @@ export function verbCandidates(rest: string, clitics: string[]): Array<{ verb: s
   const bases = new Set<string>([rest, plain]);
   for (let i = 0; i < plain.length; i++) if ('aeiou'.includes(plain[i])) bases.add(plain.slice(0, i) + addAccent(plain[i]) + plain.slice(i + 1));
   const out: Array<{ verb: string; dropS?: boolean; dropD?: boolean }> = [...bases].map((verb) => ({ verb }));
-  if (clitics[0] === 'nos' && plain.endsWith('mo')) for (const b of new Set([plain + 's', ...[...bases].filter((x) => x.endsWith('mo')).map((x) => x + 's')])) out.push({ verb: b, dropS: true });
+  // the nosotros command loses its -s before nos and os (sentémonos, sentémoos), and before se it is written once (digámoselo)
+  if (['nos', 'os', 'se'].includes(clitics[0]) && plain.endsWith('mo')) for (const b of new Set([plain + 's', ...[...bases].filter((x) => x.endsWith('mo')).map((x) => x + 's')])) out.push({ verb: b, dropS: true });
   if (clitics[0] === 'os') for (const b of bases) if (/[aeiouáéíóú]$/.test(b)) out.push({ verb: b + 'd', dropD: true });
   return out;
 }

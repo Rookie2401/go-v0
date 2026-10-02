@@ -9,12 +9,12 @@
  */
 import type { PartOfSpeech, WordPart } from '../../core';
 import { attachClitics, cliticParts, lowerClitics, peelClitics, verbCandidates } from './morph-clitics';
-import { analyzeNominal, contractionParts } from './morph-nominal';
+import { analyzeNominal, contractionParts, guessNominal } from './morph-nominal';
 import { stripAccents } from './morph-orth';
 import { endingClasses, stemVariants } from './morph-verbcands';
-import { IRREGULAR, irregularParticipleLemmas } from './verb-irregular';
+import { IRREGULAR, irregularParticipleLemmas, takesPrefix } from './verb-irregular';
 import { stemOf, type FormRec } from './verb-regular';
-import { assumableClasses } from './verb-stem';
+import { assumableClasses, HIATUS_CLASS, type StemClass } from './verb-stem';
 import { conjugateLemma, formsMatching } from './verbs';
 
 /** One reading of a written form. Several can be right at once (canto: noun, or 1st person present of cantar). */
@@ -37,11 +37,13 @@ export interface SpanishAnalysis {
 export interface AnalyzeOptions {
   /** Is this a real lemma (of this part of speech, when given)? Supplied by the adapter from its lexicon / a dictionary. */
   knownLemma?: (lemma: string, pos?: PartOfSpeech) => boolean;
+  /** The gender of a known noun ('Masc' / 'Fem'), when the caller has it: a diminutive keeps it. Like `knownLemma`, assumed to answer the same way each time. */
+  genderOf?: (lemma: string, pos: PartOfSpeech) => string | undefined;
 }
 
 /** irregular / regular: confirmed lemma; assumed: confirmed lemma, guessed stem change; listed: our own tables know the verb but nobody vouched; inferred: rule alone. */
 type Tier = 'irregular' | 'regular' | 'assumed' | 'listed' | 'inferred' | 'derived' | 'closed';
-type Raw = Omit<SpanishAnalysis, 'confidence'> & { tier: Tier };
+type Raw = Omit<SpanishAnalysis, 'confidence'> & { tier: Tier; rank?: number };
 type Known = AnalyzeOptions['knownLemma'];
 
 const WORD = /^[a-záéíóúüñ]+$/;
@@ -121,8 +123,15 @@ function candidateLemmas(w: string): string[] {
   const hit = candidateCache.get(w);
   if (hit) return hit;
   const out = new Set<string>();
-  // an infinitive carries an accent only in -ír (oír, reír); anything else with one is not a lemma
-  const add = (l: string) => { if (!out.has(l) && !/[áéíóú]/.test(l.endsWith('ír') ? l.slice(0, -2) : l) && (stemOf(l) || IRREGULAR[l])) out.add(l); };
+  // an infinitive carries an accent only in -aír, -eír, -oír (embaír, reír, oír); anything else with one is not a lemma
+  // (zurcír, criír are only an accent that belongs to the attached pronouns or to the stressed stem)
+  const add = (l: string) => {
+    if (out.has(l)) return;
+    if (/[iu]er$|iir$|[aeo]ir$|quar$/.test(l)) return; // no Spanish infinitive ends in -ier, -uer, -iir, -quar, or in an unaccented -air, -eir, -oir
+    const accented = l.endsWith('ír');
+    if (accented ? !/[aeo]ír$/.test(l) || /[áéíóú]/.test(l.slice(0, -2)) : /[áéíóú]/.test(l)) return;
+    if (stemOf(l) || IRREGULAR[l]) out.add(l);
+  };
   if (/(ar|er|ir|ír)$/.test(w)) add(w);
   for (const l of irregularParticipleLemmas(w)) add(l);
   const idx = irregularBases();
@@ -132,7 +141,7 @@ function candidateLemmas(w: string): string[] {
     const prefix = w.slice(0, k);
     for (const b of bases) {
       if (k === 0) add(b);
-      else if (IRREGULAR[b].prefixes?.includes(prefix)) add(prefix + b);
+      else if (takesPrefix(IRREGULAR[b], prefix)) add(prefix + b);
     }
   }
   const ends = endingClasses();
@@ -149,12 +158,24 @@ function candidateLemmas(w: string): string[] {
   return res;
 }
 
+const HIATUS_SIGNATURE = /[íú]/; // an accented weak vowel: after a strong one (reúne) or at the end of the stem (radiografían)
+/**
+ * What a written form shows of each stem change, for a lemma nobody vouched for: the diphthong (cierran, cuentan), or
+ * the raised vowel of an -ir verb before an ending in -ió, -ie- (pidió, sintiera, durmiendo). A bare i (pide, pidas)
+ * shows nothing: any word with an i would then be a form of some verb in -e-ir.
+ */
+const CHANGED_VOWEL: Partial<Record<StemClass['kind'], RegExp>> = {
+  'e>ie': /ie|ye|i(?:[^aeiouáéíóú]|gu|qu)+i[óe]/, 'o>ue': /ue|üe|u(?:[^aeiouáéíóú])+i[óe]/, 'e>i': /i(?:[^aeiouáéíóú]|gu|qu)+i[óe]/,
+};
+
 const lemmaClass = (lemma: string): 'ar' | 'er' | 'ir' => (lemma.endsWith('ar') ? 'ar' : lemma.endsWith('er') ? 'er' : 'ir');
 
 function ruleText(lemma: string, tier: Tier, kind: string, morph: Record<string, string>, assumed: string | undefined, confirmed: boolean): string {
   const what = kind === 'irregular' ? `irregular verb ${lemma}` : kind === 'stem-change' || tier === 'assumed' ? `stem-changing -${lemmaClass(lemma)} verb` : `regular -${lemmaClass(lemma)} verb`;
   let s = `${what}, ${describeSpanishMorph(morph)}`;
-  if (tier === 'assumed') s += `; ${lemma} is not on the stem-change list, so this assumes a ${assumed} change`;
+  if (assumed === 'hiatus') s += confirmed ? `; ${lemma} is on no list: the written accent on its stem is taken as it stands` : `; the lemma ${lemma} is not confirmed, this is the rule alone (the written accent on the stem taken as it stands)`;
+  else if (tier === 'assumed') s += `; ${lemma} is not on the stem-change list, so this assumes a ${assumed} change`;
+  else if (!confirmed && assumed) s += `; the lemma ${lemma} is not confirmed and neither is its ${assumed} change: the rule alone, twice`;
   else if (!confirmed) s += `; the lemma ${lemma} is not confirmed, this is the rule alone`;
   return s;
 }
@@ -174,22 +195,31 @@ function verbOnly(w: string, known: Known, confirmed: boolean): Raw[] {
     }
     const conj = conjugateLemma(lemma);
     if (!conj) continue;
-    const emit = (forms: FormRec[], tier: Tier, kind: string, assumed?: string) => {
+    const emit = (forms: FormRec[], tier: Tier, kind: string, assumed?: string, rank?: number) => {
       for (const f of forms) {
         out.push({
           lemma, pos: kpos ?? 'VERB', morph: { ...f.morph }, ...(f.varieties?.length ? { varieties: [...f.varieties] } : {}),
-          rule: ruleText(lemma, tier, kind, f.morph, assumed, !!kpos), lemmaKnown: !!kpos, tier,
+          rule: ruleText(lemma, tier, kind, f.morph, assumed, !!kpos), lemmaKnown: !!kpos, tier, ...(rank !== undefined ? { rank } : {}),
         });
       }
     };
     const hits = formsMatching(conj, w);
     if (hits.length) emit(hits, kpos ? (conj.kind === 'irregular' ? 'irregular' : 'regular') : conj.kind === 'regular' ? 'inferred' : 'listed', conj.kind);
-    else if (kpos && conj.kind === 'regular' && !w.startsWith(stemOf(lemma)!.stem)) {
-      // a vouched-for verb on no list: whether its stem changes is unknown, so a reading that needs a change is only assumed
+    else if (conj.kind === 'regular' && !w.startsWith(stemOf(lemma)!.stem)) {
+      // a verb on no list: whether its stem changes is unknown, so a reading that needs a change is only assumed.
+      // For a lemma nobody vouched for it is a guess upon a guess (concuerdan → concordar): kept, after the plain guesses,
+      // and only tried where the written form shows the changed vowel
       for (const cls of assumableClasses(lemmaClass(lemma))) {
+        if (!kpos && !CHANGED_VOWEL[cls.kind]?.test(w)) continue;
         const c2 = conjugateLemma(lemma, cls);
         const h2 = c2 ? formsMatching(c2, w) : [];
-        if (h2.length) emit(h2, 'assumed', 'stem-change', c2!.assumed);
+        if (h2.length) emit(h2, kpos ? 'assumed' : 'inferred', 'stem-change', c2!.assumed, kpos ? undefined : 2);
+      }
+      // reúne, prohíbe, aísla: an accent on the weak vowel of the stem after a strong one is the mark of a verb that keeps its hiatus
+      if (HIATUS_SIGNATURE.test(w)) {
+        const c2 = conjugateLemma(lemma, HIATUS_CLASS);
+        const h2 = c2 ? formsMatching(c2, w) : [];
+        if (h2.length) emit(h2, kpos ? 'assumed' : 'inferred', 'stem-change', c2!.assumed);
       }
     }
   }
@@ -201,11 +231,20 @@ function acceptsClitics(r: Raw, first: string, many: boolean, dropS?: boolean, d
   const m = r.morph;
   if (m.VerbForm === 'Inf' || m.VerbForm === 'Ger') return !dropS && !dropD;
   if (m.Mood !== 'Imp') return false;
-  // os belongs to a vosotros imperative, te to a tú imperative
+  // the nosotros command: its -s goes before nos and os (vámonos, pongámonoslo, sentémoos) and is written once before
+  // se (digámoselo); before any other pronoun it stays (hagámoslo, ayudémoste)
+  if (m.Person === '1' && m.Number === 'Plur') {
+    if (first === 'nos' || first === 'os') return !!dropS;
+    if (first === 'se') return !!dropS && many;
+    return !dropS && !dropD;
+  }
+  // otherwise os belongs to a vosotros imperative, te to a tú imperative
   if (first === 'os' && !(m.Person === '2' && m.Number === 'Plur')) return false;
   if (first === 'te' && !(m.Person === '2' && m.Number === 'Sing')) return false;
-  if (m.Person === '1' && m.Number === 'Plur') return first === 'nos' ? !!dropS && !many : !dropS && !dropD; // vámonos / hagámoslo
-  if (m.Person === '2' && m.Number === 'Plur') return first === 'os' && !many && (dropD ? true : r.lemma === 'ir'); // callaos / idos
+  if (m.Person === '2' && m.Number === 'Plur') {
+    if (first === 'os') return !many && (dropD ? true : r.lemma === 'ir'); // callaos / idos
+    return !dropS && !dropD && (first !== 'se' || many); // dadlo, apuntadle, dádmelo; "se" alone is the reflexive, which a vosotros command writes as os
+  }
   return !dropS && !dropD;
 }
 
@@ -219,7 +258,12 @@ function withClitics(original: string, w: string, known: Known, confirmed: boole
       for (const r of verbOnly(cand.verb, known, confirmed)) {
         if (!acceptsClitics(r, clitics[0], clitics.length > 1, cand.dropS, cand.dropD)) continue;
         const parts = cliticParts(original, lowerClitics(clitics), r.lemma, r.pos, r.morph);
-        out.push({ ...r, parts, rule: `${r.rule}; with the attached pronoun${clitics.length > 1 ? 's' : ''} ${clitics.join(' + ')}` });
+        // among guesses, an infinitive, gerund or vosotros command with pronouns is the likelier reading: zurcírselo, apuntadlo.
+        // Not an infinitive with "os" alone: -eros, -aros, -iros is far more often a plural (panaderos, pájaros, suspiros)
+        const infinitiveOs = r.morph.VerbForm === 'Inf' && clitics.length === 1 && clitics[0] === 'os';
+        // nor is a nosotros command that lost its -s before nos / os / se anything else (casémonos, sentémoos)
+        const likely = !infinitiveOs && (r.morph.VerbForm === 'Inf' || r.morph.VerbForm === 'Ger' || !!cand.dropS || (r.morph.Mood === 'Imp' && r.morph.Person === '2' && r.morph.Number === 'Plur'));
+        out.push({ ...r, parts, rank: likely ? 0 : 1, rule: `${r.rule}; with the attached pronoun${clitics.length > 1 ? 's' : ''} ${clitics.join(' + ')}` });
       }
     }
   }
@@ -231,7 +275,7 @@ function withClitics(original: string, w: string, known: Known, confirmed: boole
 const BASE_CONFIDENCE: Record<Tier, number> = { irregular: 0.9, regular: 0.85, assumed: 0.55, listed: 0.5, inferred: 0.35, derived: 0.6, closed: 0.95 };
 const COMPETING_CAP = 0.7;
 
-function analyzeUncached(original: string, w: string, known: Known): SpanishAnalysis[] {
+function analyzeUncached(original: string, w: string, known: Known, genderOf?: AnalyzeOptions['genderOf']): SpanishAnalysis[] {
   const raws: Raw[] = [];
   const contraction = contractionParts(w);
   if (contraction) {
@@ -239,13 +283,19 @@ function analyzeUncached(original: string, w: string, known: Known): SpanishAnal
   }
   if (known) {
     raws.push(...verbOnly(w, known, true), ...withClitics(original, w, known, true));
-    for (const n of analyzeNominal(w, (l, p) => known(l, p))) {
+    for (const n of analyzeNominal(w, (l, p) => known(l, p), genderOf)) {
       raws.push({ lemma: n.lemma, pos: n.pos, morph: n.morph, rule: n.rule, lemmaKnown: true, tier: n.derived ? 'derived' : 'regular' });
     }
   }
   // once the lexicon vouches for a reading, rule-only guesses for the same string are noise: they are only looked for
   // when nothing was vouched for
-  if (!raws.some((r) => r.lemmaKnown)) raws.push(...verbOnly(w, known, false), ...withClitics(original, w, known, false));
+  if (!raws.some((r) => r.lemmaKnown)) {
+    raws.push(...verbOnly(w, known, false), ...withClitics(original, w, known, false));
+    // beside a likely verb with attached pronouns (an infinitive, a gerund, a vosotros command), or a verb our own tables know, the ending says nothing about a noun; otherwise a regular ending gives noun and adjective guesses
+    if (known && !raws.some((r) => r.rank === 0 || r.tier === 'listed')) {
+      for (const g of guessNominal(w, raws.length === 0)) raws.push({ lemma: g.lemma, pos: g.pos, morph: g.morph, rule: g.rule, lemmaKnown: false, tier: 'inferred', rank: g.rank });
+    }
+  }
 
   const seen = new Set<string>();
   const uniq = raws.filter((r) => {
@@ -259,11 +309,13 @@ function analyzeUncached(original: string, w: string, known: Known): SpanishAnal
   const out = uniq.map((r, i) => {
     let c = BASE_CONFIDENCE[r.tier];
     if (competing && r.tier !== 'closed') c = Math.min(c, COMPETING_CAP);
-    const { tier, ...rest } = r;
-    void tier;
-    return { a: { ...rest, confidence: c } as SpanishAnalysis, i };
+    // `rank` orders guesses of equal confidence (lower first); a vouched-for reading never moves for it
+    const rank = r.lemmaKnown ? 1 : r.rank ?? 1;
+    const { tier, rank: _rank, ...rest } = r;
+    void tier; void _rank;
+    return { a: { ...rest, confidence: c } as SpanishAnalysis, i, rank };
   });
-  out.sort((x, y) => y.a.confidence - x.a.confidence || x.i - y.i);
+  out.sort((x, y) => y.a.confidence - x.a.confidence || x.rank - y.rank || x.i - y.i);
   return out.map((o) => o.a);
 }
 
@@ -319,7 +371,7 @@ export function analyzeSpanishForm(form: string, opts: AnalyzeOptions = {}): Spa
         ...(old.hist ? { varieties: [...(a.varieties ?? []), 'es-hist'] } : {}),
         rule: `${a.rule}; written ${w}, the older spelling with an accent`,
       }));
-    } else result = analyzeUncached(original, w, opts.knownLemma);
+    } else result = analyzeUncached(original, w, opts.knownLemma, opts.genderOf);
   }
   if (memo.size >= MEMO_CAP) memo.clear();
   memo.set(original, result);

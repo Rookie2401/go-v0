@@ -22,6 +22,15 @@ const six = (tense: string, forms: string[]): Record<string, string[]> =>
 
 export interface IrregularEntry { build: () => Paradigm; prefixes?: string[] }
 
+/** Prefixes that may stand before another prefix of a family: descomponer (des + com), presuponer (pre + su), indisponer (in + dis), desavenir (des + a). */
+const OUTER_PREFIXES = ['des', 're', 'pre', 'in'];
+
+/** Does this irregular verb take `prefix` (one of its listed prefixes, or an outer one before a listed one)? */
+export function takesPrefix(e: IrregularEntry, prefix: string): boolean {
+  if (!e.prefixes) return false;
+  return e.prefixes.includes(prefix) || OUTER_PREFIXES.some((o) => prefix.length > o.length && prefix.startsWith(o) && e.prefixes!.includes(prefix.slice(o.length)));
+}
+
 /** The paradigm of a stem-changing verb with some forms replaced. */
 function stemPlus(lemma: string, kind: 'e>ie' | 'o>ue', o: Partial<Paradigm>): Paradigm {
   return { ...stemChangeParadigm(lemma, { kind, shift: false })!, kind: 'irregular', ...o };
@@ -85,7 +94,7 @@ export const IRREGULAR: Record<string, IrregularEntry> = {
     }),
   },
   ver: {
-    prefixes: ['pre', 'entre', 're'],
+    prefixes: ['pre', 'entre', 're', 'ante'],
     build: () => irr('ver', 'er', 'v', {
       over: {
         ...six('pres', ['veo', 'ves', 've', 'vemos', 'veis', 'ven']),
@@ -101,14 +110,14 @@ export const IRREGULAR: Record<string, IrregularEntry> = {
 // Yo-form verbs with a changed stem and a strong preterite, future and conditional.
 Object.assign(IRREGULAR, {
   tener: {
-    prefixes: ['a', 'abs', 'con', 'de', 'entre', 'man', 'ob', 're', 'sos'],
+    prefixes: ['a', 'abs', 'con', 'de', 'entre', 'man', 'manu', 'ob', 're', 'sos'],
     build: () => irr('tener', 'er', 'ten', {
       presStrong: 'tien', pres1: 'teng', subStrong: 'teng', subWeak: 'teng', fut: 'tendr',
       over: { ...six('pret', strongPret('tuv')), 'imp.2s': ['ten'] },
     }),
   },
   venir: {
-    prefixes: ['a', 'con', 'contra', 'de', 'inter', 'pre', 'pro', 're', 'sobre', 'sub'],
+    prefixes: ['a', 'ad', 'con', 'contra', 'de', 'inter', 'pre', 'pro', 're', 'sobre', 'sub', 'super'],
     build: () => irr('venir', 'ir', 'ven', {
       presStrong: 'vien', pres1: 'veng', subStrong: 'veng', subWeak: 'veng', stemPret3: 'vin', fut: 'vendr',
       over: { ...six('pret', strongPret('vin')), 'imp.2s': ['ven'] },
@@ -132,6 +141,13 @@ Object.assign(IRREGULAR, {
       over: { ...six('pret', ['hice', 'hiciste', 'hizo', 'hicimos', 'hicisteis', 'hicieron']), 'imp.2s': ['haz'], part: ['hecho'] },
     }),
   },
+  // satisfacer: the hacer pattern with an f (satisfago, satisfice, satisfaré, satisfecho; satisface and satisfaz)
+  satisfacer: {
+    build: () => irr('satisfacer', 'er', 'satisfac', {
+      pres1: 'satisfag', subStrong: 'satisfag', subWeak: 'satisfag', fut: 'satisfar',
+      over: { ...six('pret', ['satisfice', 'satisficiste', 'satisfizo', 'satisficimos', 'satisficisteis', 'satisficieron']), 'imp.2s': ['satisface', 'satisfaz'], part: ['satisfecho'] },
+    }),
+  },
   decir: {
     prefixes: ['contra', 'des', 'entre', 'inter', 'pre', 'ben', 'mal'],
     build: () => irr('decir', 'ir', 'dec', {
@@ -142,7 +158,7 @@ Object.assign(IRREGULAR, {
   poder: {
     build: () => irr('poder', 'er', 'pod', {
       presStrong: 'pued', pres1: 'pued', subStrong: 'pued', stemPret3: 'pud', fut: 'podr',
-      over: six('pret', strongPret('pud')), skip: ['imp.'],
+      over: six('pret', strongPret('pud')), skip: ['imp.2s', 'imp.vos'], // no tú or vos command; the usted, nosotros, ustedes and vosotros ones exist (pueda, podamos)
     }),
   },
   querer: {
@@ -156,7 +172,7 @@ Object.assign(IRREGULAR, {
   },
   caber: {
     build: () => irr('caber', 'er', 'cab', {
-      pres1: 'quep', subStrong: 'quep', subWeak: 'quep', fut: 'cabr', over: six('pret', strongPret('cup')), skip: ['imp.'],
+      pres1: 'quep', subStrong: 'quep', subWeak: 'quep', fut: 'cabr', over: six('pret', strongPret('cup')), skip: ['imp.2s', 'imp.vos'], // quepa, quepamos, quepan, cabed
     }),
   },
   valer: {
@@ -170,10 +186,11 @@ Object.assign(IRREGULAR, {
     build: () => irr('andar', 'ar', 'and', { over: six('pret', strongPret('anduv')) }),
   },
   asir: {
+    prefixes: ['des'],
     build: () => irr('asir', 'ir', 'as', { pres1: 'asg', subStrong: 'asg', subWeak: 'asg' }),
   },
   traer: {
-    prefixes: ['a', 'abs', 'con', 'de', 'dis', 'ex', 'mal', 'pro', 're', 'sub', 'sus'],
+    prefixes: ['a', 'abs', 'con', 'de', 'dis', 'ex', 'mal', 'pro', 're', 'sub', 'subs', 'sus'],
     build: () => irr('traer', 'er', 'tra', { pres1: 'traig', subStrong: 'traig', subWeak: 'traig', over: six('pret', strongPret('traj')) }),
   },
   caer: {

@@ -8,7 +8,7 @@
  * Speed: the morph objects and variety arrays of a slot are shared (frozen) between all verbs; spelling flags are
  * worked out once per paradigm, not once per form.
  */
-import { restress, stripAccents } from './morph-orth';
+import { nuclei, restress, stripAccents } from './morph-orth';
 
 export type Cls = 'ar' | 'er' | 'ir';
 export type Pers = '1s' | '2s' | '3s' | '1p' | '2p' | '3p';
@@ -42,6 +42,8 @@ export interface Paradigm {
   zNotZc?: boolean;
   /** Marks that the class was assumed, not looked up (verb-stem.ts). */
   assumed?: string;
+  /** A second stem for the stressed forms when the verb is written both ways (evacuo / evacúo): its forms are added to the first's. */
+  altStrong?: string;
   /** Provenance for the rule text: 'regular' | 'stem-change' | 'irregular'. */
   kind: 'regular' | 'stem-change' | 'irregular';
 }
@@ -95,8 +97,9 @@ export function makeJoiner(p: Pick<Paradigm, 'lemma' | 'cls' | 'zNotZc'>): Joine
   }
   const gerGir = /g[ei]r$/.test(lem);
   const guir = lem.endsWith('guir');
+  const quir = lem.endsWith('quir'); // delinquir → delinco, delinca
   const cerCir = /c[ei]r$/.test(lem);
-  const uir = /[^gq]uir$/.test(lem);
+  const uir = /([^gq]u|ü)ir$/.test(lem); // construir, and argüir (arguyo, arguyó, arguyendo, but argüimos)
   const noZc = !!p.zNotZc || Z_NOT_ZC.has(lem);
   return (stem, ending) => {
     const e0 = ending[0];
@@ -105,13 +108,15 @@ export function makeJoiner(p: Pick<Paradigm, 'lemma' | 'cls' | 'zNotZc'>): Joine
     if ('aáoó'.includes(e0)) {
       if (gerGir && s.endsWith('g')) s = s.slice(0, -1) + 'j';
       else if (guir && s.endsWith('gu')) s = s.slice(0, -1);
+      else if (quir && s.endsWith('qu')) s = s.slice(0, -2) + 'c';
       else if (cerCir && s.endsWith('c')) s = s.slice(0, -1) + (isV(s[s.length - 2]) && !noZc ? 'zc' : 'z');
     }
     const lead = e.startsWith('ió') || e.startsWith('ie');
     if (lead && (s.endsWith('ñ') || s.endsWith('ll'))) e = e.slice(1);
-    else if (uir && s.endsWith('u')) {
-      if ('aeo'.includes(e0)) s += 'y';
-      else if (lead) { s += 'y'; e = e.slice(1); }
+    else if (uir && (s.endsWith('u') || s.endsWith('ü'))) {
+      const y = (t: string) => (t.endsWith('ü') ? t.slice(0, -1) + 'u' : t) + 'y'; // argü- loses its diaeresis before the y
+      if ('aeoáéó'.includes(e0)) s = y(s); // construyo, construyen, construyáis
+      else if (lead) { s = y(s); e = e.slice(1); }
     } else if (!uir && 'aeo'.includes(s[s.length - 1] ?? '-')) {
       // leer, caer, oír: unstressed i between vowels becomes y; stressed i keeps a written accent (leíste)
       if (lead) { s += 'y'; e = e.slice(1); }
@@ -143,8 +148,11 @@ export function regularParadigm(lemma: string): Paradigm | undefined {
   if (!st) return undefined;
   const { stem, cls } = st;
   const acc = cls === 'ar' && accentedIU(lemma) ? stem.slice(0, -1) + { i: 'í', u: 'ú' }[stem[stem.length - 1] as 'i'] : stem;
+  // -cuar verbs are written both ways (evacuo / evacúo, adecuo / adecúo): the unaccented spelling is the first, the other is added
+  const both = cls === 'ar' && /cuar$/.test(lemma);
   return {
     lemma, cls, stem, presStrong: acc, pres1: acc, presWeak: stem, subStrong: acc, subWeak: stem, stemPret3: stem, kind: 'regular',
+    ...(both ? { altStrong: stem.slice(0, -1) + 'ú' } : {}),
   };
 }
 
@@ -217,10 +225,33 @@ function morphOf(key: string, make: () => Record<string, string>): Record<string
 
 const DERIVED_SLOT = /^(imp|subr|subs|subf)\./;
 
+/**
+ * A written monosyllable whose accent only marks the stressed vowel of a diphthong is written without it since 2010
+ * (crió → crio, fié → fie, criáis → criais, vos criés → cries): the unaccented spelling of such a form, else undefined.
+ * A diacritic accent (dé, sé) is not touched: its vowel stands alone.
+ */
+function monosyllableSpelling(form: string): string | undefined {
+  if (!/[áéó]/.test(form)) return undefined;
+  const plain = stripAccents(form);
+  const ns = nuclei(plain);
+  return ns.length === 1 && ns[0][1] - ns[0][0] >= 2 ? plain : undefined;
+}
+
 export function generateForms(p: Paradigm): FormRec[] {
+  if (!p.altStrong) return generateFormsOnce(p);
+  const first = generateFormsOnce(p);
+  const alt = { ...p, presStrong: p.altStrong, pres1: p.altStrong, subStrong: p.altStrong, altStrong: undefined };
+  // the morph objects of a slot are shared, so a form that both spellings give is the same (form, morph) pair
+  return [...first, ...generateFormsOnce(alt).filter((r) => !first.some((x) => x.form === r.form && x.morph === r.morph))];
+}
+
+function generateFormsOnce(p: Paradigm): FormRec[] {
   const slots = baseSlots(p);
   const over = p.over ? Object.entries(p.over) : [];
   for (const [k, v] of over) if (!DERIVED_SLOT.test(k)) slots[k] = v;
+  // voseo present subjunctive: the nosotros form with -és (-ar) or -ás (-er, -ir) in place of -emos / -amos (matés, comás, vivás), so irregular stems follow
+  const sub1p = /^(.*)(emos|amos)$/.exec(slots['subp.1p']?.[0] ?? '');
+  if (sub1p) slots['subp.vos'] = [sub1p[1] + (sub1p[2] === 'emos' ? 'és' : 'ás')];
   deriveImperatives(slots, p);
   derivedSubjunctives(slots);
   for (const [k, v] of over) if (DERIVED_SLOT.test(k)) slots[k] = v;
@@ -236,6 +267,11 @@ export function generateForms(p: Paradigm): FormRec[] {
       if (seen.has(k)) continue;
       seen.add(k);
       out.push(vs ? { form: f, morph: morphOf(key, make), varieties: vs as string[] } : { form: f, morph: morphOf(key, make) });
+      const short = monosyllableSpelling(f);
+      if (short && !seen.has(key + '|' + short)) {
+        seen.add(key + '|' + short);
+        out.push(vs ? { form: short, morph: morphOf(key, make), varieties: vs as string[] } : { form: short, morph: morphOf(key, make) });
+      }
     }
   };
   add(slots.inf, 'inf', () => ({ VerbForm: 'Inf' }));
@@ -261,6 +297,7 @@ export function generateForms(p: Paradigm): FormRec[] {
   fin('Ind', 'Fut', 'fut');
   fin('Cnd', null, 'cnd');
   fin('Sub', 'Pres', 'subp');
+  add(slots['subp.vos'], 'subp.vos', () => ({ VerbForm: 'Fin', Mood: 'Sub', Tense: 'Pres', Person: '2', Number: 'Sing' }), VOSEO);
   fin('Sub', 'Imp', 'subr', { Variant: 'Ra' });
   fin('Sub', 'Imp', 'subs', { Variant: 'Se' });
   fin('Sub', 'Fut', 'subf');

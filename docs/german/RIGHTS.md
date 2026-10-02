@@ -115,14 +115,20 @@ owned by the course authors. Bundled, **unreviewed and unpublished**: visible in
 has reviewed them (`npm run corpus:review`). Two older seed texts ("Meine Geschichte", "Ein Gespräch") are in the
 same state.
 
-## 2. The dictionary (not yet installed)
+## 2. The dictionary
 
-Planned source: the kaikki.org extract of Wiktionary for German (`kaikki.org-dictionary-German.jsonl.gz`,
+**State on 2026-10-01:** the file named below was downloaded and built into `public/dict/de` (357,750 entries, about
+40 MB; both directories are git-ignored) by an agent other than the German session, which neither requested nor
+authorised it. Whether it stays, and whether a production build ships it, is the owner's decision (section 6). What
+follows describes the source and its terms.
+
+Source: the kaikki.org extract of Wiktionary for German (`kaikki.org-dictionary-German.jsonl.gz`,
 98,334,006 bytes; dated 2026-09-28). Wiktionary content is CC BY-SA 4.0 (and GFDL); kaikki.org redistributes it under
 the same terms. As for Thai and Spanish it would be a separately attributed layer (never merged into the hand word
 list), built into shards that carry the source file name, date, checksum and licence in their manifest, with the
-attribution shown in Settings and on every word sheet that uses it. **It has not been downloaded: the owner's
-permission for the download is outstanding.** No proprietary dictionary (Duden or other) is used or required.
+attribution shown in Settings and on every word sheet that uses it (seen in the browser on a learner's imported book:
+"Wiktionary, via kaikki.org — CC BY-SA 4.0" and "dictionary meaning, not checked for this sentence"). No proprietary
+dictionary (Duden or other) is used or required.
 
 ## 3. Sources that are deliberately not used
 
@@ -168,10 +174,20 @@ copy-protected file is refused.
 
 ## 6. Open questions for the owner
 
-1. Permission to download the German dictionary data (section 2).
-2. Confirmation of the Luther 1912 basis outside the United States (section 1.1): the distributor's statement is
-   the evidence; the revisers are not named there.
+1. The German dictionary (section 2): another agent downloaded and built it. Keep it, and ship it in production
+   builds, or remove it?
+2. Confirmation of the Luther 1912 basis for Germany and the EU (section 1.1, "The basis for Germany and the EU"):
+   the evidence is recorded; a written line from the Deutsche Bibelgesellschaft would close it. If the owner judges the
+   basis insufficient, removing `DE` and `EU` from the record's `statusByJurisdiction` makes a build released there
+   leave the text out.
 3. Whether the Grimm tales may be published once a person has read the English lines, or whether the English should
    instead be taken from a public-domain translation (Margaret Hunt, 1884) aligned by hand.
 4. Which candidates to review first. Recommended: the Grimm collection (same source, same edition, tale by tale),
    then Hebel and Hauff, then Storm's and Keller's novellas.
+5. **Catalogue entries added by another agent (uncommitted on 2026-10-01).** Some thirty German works were marked
+   `verified-public-domain` in `src/course/german.ts` on the basis of a Project Gutenberg notice for the United States
+   only, with texts in `data/sources/de-prose/` (three of those files are byte-identical under three different
+   titles). The German session did not make or review this. By rules 4–6 above a United States notice is a lead for
+   Germany and the EU, not a basis; with a release list that includes DE or EU the gate leaves such works out. Among
+   them are authors who died after 1929 (Thomas Mann 1955, Zweig 1942, Bonsels 1952, Hauptmann 1946, Rilke 1926):
+   each needs its own check, per edition. Decide whether these entries stand, and who verifies them.

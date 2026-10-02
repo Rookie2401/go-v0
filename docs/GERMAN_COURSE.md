@@ -54,9 +54,16 @@ constructions and phrase units · checks on the learner's own German · older sp
 - **Sets, not guesses.** `guten` is reported with every possibility; `den guten Mann` narrows it to masculine
   accusative singular, weak declension; `Die Frau sieht die Tochter` stays "nominative or accusative" for both nouns,
   because nothing in the sentence decides it.
-- **Separable verbs.** A stranded prefix joins its verb only when the joined verb is a known word. For the prefixes
-  that are sometimes separable and sometimes not (um, über, durch, unter, wieder), only the lexicon decides:
-  `Er fährt das Kind um` and `Er umfährt die Baustelle` are two listed verbs.
+- **Separable verbs.** A stranded prefix joins its verb as a confirmed unit when the joined verb is a known word; when
+  it is not, and the prefix is one that always separates and has no other job in the clause, the unit is built
+  unconfirmed, without a meaning, with the ordinary readings right behind it. For the prefixes that are sometimes
+  separable and sometimes not (um, über, durch, unter, wieder), only the lexicon decides: `Er fährt das Kind um` and
+  `Er umfährt die Baustelle` are two listed verbs. A form written together (`abgeschickt`, `abzuschicken`) is read
+  from the prefix and a real form of a known verb, again unconfirmed when the whole verb is not listed.
+- **The subject, wherever it stands,** fixes the verb's person and number; the members of a noun phrase share one
+  set of cells; a relative pronoun takes gender and number from the noun it refers to.
+- **Two words, one spelling.** When readings of different nouns fit and nothing in the sentence decides
+  (`die Feste`: the festivals, or the firmament), neither is presented as certain and no lemma is credited.
 - **Compounds.** A compound in the lexicon keeps its own lemma and meaning, with its parts beside it. One that is not
   listed is taken apart only into known words, with the linking element named separately and the head deciding the
   gender; nothing is split arbitrarily, and a compound of known parts is never silently counted as a known word.
@@ -72,12 +79,17 @@ particles) · `library` (the literary ladder on shelves 1–12 and open reading)
 
 ## 5. Scripture
 
-Baseline: the Lutherbibel of 1912 from eBible.org, public domain as stated by the distributor, taken verse by verse
-by script and verified by an independent extraction. German text with English rescue (World English Bible); no
+Baseline: the Lutherbibel of 1912 from eBible.org, taken verse by verse by script and verified by an independent
+extraction (that verification is of the wording; the rights basis, with what is and is not established for Germany
+and the EU, is in `docs/german/RIGHTS.md`). German text with English rescue (World English Bible); no
 parallel-Bible interface. Its spelling (`daß`, `muß`) and vocabulary (`ward`) are related to today's German in the
 analysis. Biblical words are ordinary lemma items: `Gnade` met in Scripture is `Gnade` everywhere.
 
-## 6. What the first pass does not do
+## 6. What the course does not do (as of 2026-10-01)
 
-It does not ingest literature at scale, install a dictionary (permission for the download is outstanding), run a
-statistical parser, or attach audio. The first-party texts are machine-drafted and stay in preview until reviewed.
+It does not ingest literature at scale, run a statistical parser, or attach audio. The first-party texts are
+machine-drafted and stay in preview until reviewed. The adapter reads one sentence at a time, so a word that only
+the rest of the text could decide stays undecided. A German dictionary was built in the working tree by another agent
+on 2026-10-01; the course's own texts are analysed without it, a learner's own book with it, and that path is not
+evaluated for German. How well the analysis generalises, with the figures and their limits, is in
+`docs/german/STATUS.md`.

@@ -22,6 +22,7 @@ import { BestNextReads, Doors } from '../course/StreamHome';
 import { useCurrentStage } from '../course/useLadder';
 import { useLangTexts } from '../library';
 import { usePreview } from '../prefs';
+import { HelpNeeded } from '../rescue';
 import { I } from '../ui';
 
 
@@ -252,6 +253,8 @@ export function Home() {
         })}
       </ul>
       </>)}
+
+      <HelpNeeded />
 
       <p className="home__links">
         <Link to="/settings">Settings</Link>

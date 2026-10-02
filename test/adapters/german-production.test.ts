@@ -3,7 +3,9 @@
  * sentence layer are other packages): every check fires on its error, stays silent on the correct sentence, and its
  * suggestion applied to the sentence gives the correct sentence.
  */
+import { readdirSync, readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
+import { deAdapter } from '../../src/adapters/de';
 import type { AnalysisCandidate, AnalyzedToken, ErrorCandidate, PartOfSpeech, RawToken } from '../../src/core';
 import { checkGermanProduction } from '../../src/adapters/german/production';
 import type { DeAdjective, DeLexiconView, DeNoun, DePreposition, DeVerb } from '../../src/adapters/german/types';
@@ -17,7 +19,7 @@ const NOUNS: Record<string, DeNoun[]> = {
   herz: [noun('Herz', 'n')], sünde: [noun('Sünde', 'f')], see: [noun('See', 'm'), noun('See', 'f')], männer: [noun('Mann', 'pl')], kleid: [noun('Kleid', 'n')],
 };
 const VERBS: Record<string, DeVerb[]> = {
-  gehen: [vb('gehen', 'sein')], kommen: [vb('kommen', 'sein')], kaufen: [vb('kaufen', 'haben', { cls: 'weak' })], fahren: [vb('fahren', 'haben/sein')],
+  gehen: [vb('gehen', 'sein', { pres3: 'geht', pret: 'ging', part: 'gegangen' })], kommen: [vb('kommen', 'sein', { pres3: 'kommt', pret: 'kam', part: 'gekommen' })], kaufen: [vb('kaufen', 'haben', { cls: 'weak' })], fahren: [vb('fahren', 'haben/sein')],
   aufstehen: [vb('aufstehen', 'sein', { prefix: 'auf', base: 'stehen' })],
   umfahren: [vb('umfahren', 'haben', { prefix: 'um', base: 'fahren' }), vb('umfahren', 'haben')],
   gewesen: [vb('sein', 'sein')],
@@ -33,8 +35,16 @@ const PREPOSITIONS: Record<string, DePreposition> = {
 };
 const PREFIXES: Record<string, 'separable' | 'inseparable' | 'dual'> = { auf: 'separable', an: 'separable', um: 'dual', ver: 'inseparable' };
 
+VERBS.lesen = [vb('lesen', 'haben', { pres3: 'liest', pret: 'las', part: 'gelesen' })];
+// the definite article's cells as the real lexicon lists them (c = case, g = gender or p for the plural)
+const cell = (c: string, g: string) => ({ c: c as 'N' | 'A' | 'D' | 'G', g: g as 'm' | 'f' | 'n' | 'p' });
+const ARTICLE_CELLS: Record<string, Array<ReturnType<typeof cell>>> = {
+  den: [cell('A', 'm'), cell('D', 'p')], dem: [cell('D', 'm'), cell('D', 'n')], der: [cell('N', 'm'), cell('D', 'f'), cell('G', 'f'), cell('G', 'p')],
+  die: [cell('N', 'f'), cell('A', 'f'), cell('N', 'p'), cell('A', 'p')], das: [cell('N', 'n'), cell('A', 'n')], des: [cell('G', 'm'), cell('G', 'n')],
+};
 const lex: DeLexiconView = {
-  nouns: (l) => NOUNS[l] ?? [], verb: (l) => VERBS[l] ?? [], adjective: (l) => ADJECTIVES[l], closed: () => [], plain: () => [],
+  nouns: (l) => NOUNS[l] ?? [], verb: (l) => VERBS[l] ?? [], adjective: (l) => ADJECTIVES[l], plain: () => [],
+  closed: (f) => (ARTICLE_CELLS[f] ? [{ form: f, lemma: 'der', pos: 'DET', gloss: 'the', cells: ARTICLE_CELLS[f] }] : []),
   preposition: (f) => PREPOSITIONS[f], contraction: () => undefined, prefixKind: (p) => PREFIXES[p], separableVerbsOf: () => [],
   allNouns: () => [], allVerbs: () => [], allAdjectives: () => [],
 };
@@ -261,7 +271,7 @@ describe('German production checks', () => {
       expect(apply(text, e.find((x) => x.category === 'conjugation')!.suggestion!)).toBe('Ich weiß, dass ich nach Hause gekommen bin.');
     });
     it('an undecided person gives the error without a suggestion', () => {
-      const e = check('Wir haben gegangen.', { Wir: WIR, haben: aux('haben', { Person: '1,3', Number: 'Plur' }), gegangen: ptc('gehen') });
+      const e = check('Wir haben gegangen.', { Wir: WIR, haben: aux('haben', { Person: '1,3', Number: 'Plur', Tense: 'Pres,Past' }), gegangen: ptc('gehen') });
       expect(e).toHaveLength(1);
       expect(e[0].suggestion).toBeUndefined();
     });
@@ -311,13 +321,29 @@ describe('German production checks', () => {
       expect(check('wir ist hier', { wir: WIR, ist: aux('sein', { Person: '3', Number: 'Sing' }) })[0].message).toContain('first person plural');
       expect(check('Er gehen', { Er: ER, gehen: verb('gehen', { VerbForm: 'Fin,Inf', Person: '1,3', Number: 'Plur' }) })).toHaveLength(1);
     });
+    it('the verb\'s own paradigm decides, so a form that is two persons at once is caught, and the right form is suggested', () => {
+      const geht = verb('gehen', { Person: '2,3', Number: 'Sing,Plur' });
+      const e = check('du geht', { du: DU, geht });
+      expect(e).toHaveLength(1);
+      expect(apply('du geht', e[0].suggestion!)).toBe('du gehst');
+      expect(apply('wir geht', check('wir geht', { wir: WIR, geht })[0].suggestion!)).toBe('wir gehen');
+      expect(apply('ich gehst', check('ich gehst', { ich: ICH, gehst: verb('gehen', { Person: '2', Number: 'Sing' }) })[0].suggestion!)).toBe('ich gehe');
+      expect(apply('er gehen', check('er gehen', { er: ER, gehen: verb('gehen', { VerbForm: 'Fin,Inf', Person: '1,3', Number: 'Plur' }) })[0].suggestion!)).toBe('er geht');
+    });
+    it('the pronoun behind the verb counts too (Heute gehst ich), but not es / sie, which may be objects', () => {
+      const e = check('Heute gehst ich', { Heute: C('ADV', 'heute'), gehst: verb('gehen', { Person: '2', Number: 'Sing' }), ich: ICH });
+      expect(e.some((x) => x.category === 'agreement')).toBe(true);
+      expect(apply('Heute gehst ich', e.find((x) => x.category === 'agreement')!.suggestion!)).toBe('Heute gehe ich');
+      expect(check('Ich glaube es', { Ich: ICH, glaube: verb('glauben', { Person: '1', Number: 'Sing' }), es: C('PRON', 'es', { PronType: 'Prs', Case: 'Nom,Acc', Person: '3', Number: 'Sing' }) })).toEqual([]);
+    });
+    it('is silent for an unconfirmed (guessed) verb reading', () => {
+      expect(check('ich geht', { ich: ICH, geht: verb('gehen', { Person: '3', Number: 'Sing' }, { unconfirmed: true }) })).toEqual([]);
+    });
     it('is silent: a matching ending, a union that holds the person, "er und ich gehen", "sie" (undecided), a pronoun that is not the subject', () => {
       expect(check('ich gehe', { ich: ICH, gehe: verb('gehen', { Person: '1', Number: 'Sing' }) })).toEqual([]);
       expect(check('wir gehen', { wir: WIR, gehen: verb('gehen', { VerbForm: 'Fin,Inf', Person: '1,3', Number: 'Plur' }) })).toEqual([]);
       expect(check('er und ich gehen', { er: ER, und: C('CONJ', 'und'), ich: ICH, gehen: verb('gehen', { Person: '1,3', Number: 'Plur' }) })).toEqual([]);
       expect(check('sie geht', { sie: C('PRON', 'sie', { PronType: 'Prs', Case: 'Nom,Acc', Person: '3', Number: 'Sing,Plur' }), geht: verb('gehen', { Person: '3', Number: 'Sing' }) })).toEqual([]);
-      // "du geht": the person and number sets of "geht" both contain the pronoun's features, so nothing is said (it is not guessed)
-      expect(check('du geht', { du: DU, geht: verb('gehen', { Person: '2,3', Number: 'Sing,Plur' }) })).toEqual([]);
     });
   });
 
@@ -424,5 +450,152 @@ describe('German production checks', () => {
       expect([...firsts].sort((a, b) => a - b)).toEqual(firsts);
       for (const x of e) for (const i of x.tokenIndexes) expect(i).toBeLessThan(tokens.length);
     });
+  });
+
+  describe('the case a preposition governs, from the determiner\'s cells and the noun\'s gender and number (fix batch 1)', () => {
+    const mann = nn('Mann', { Gender: 'Masc', Number: 'Sing', Case: 'Acc' });
+    it('mit den Mann → mit dem Mann, although the sentence layer kept den as an accusative', () => {
+      const text = 'Ich gehe mit den Mann.';
+      const e = check(text, { mit: C('ADP', 'mit'), den: der({ Case: 'Acc', Gender: 'Masc', Number: 'Sing' }), Mann: mann });
+      expect(e).toHaveLength(1);
+      expect(apply(text, e[0].suggestion!)).toBe('Ich gehe mit dem Mann.');
+    });
+    it('the same with the union the first layer gave (Acc,Dat) and with a government note on the determiner', () => {
+      const text = 'Ich gehe mit den Mann.';
+      const e = check(text, { mit: C('ADP', 'mit'), den: der({ Case: 'Acc,Dat', Gender: 'Masc', Number: 'Sing,Plur' }, ), Mann: mann });
+      expect(apply(text, e[0].suggestion!)).toBe('Ich gehe mit dem Mann.');
+      const noted = der({ Case: 'Acc', Gender: 'Masc', Number: 'Sing' });
+      noted.notes = { governmentConflict: 'mit' };
+      expect(check(text, { mit: C('ADP', 'mit'), den: noted, Mann: mann })).toHaveLength(1);
+    });
+    it('is silent on correct German: dative singular and plural, a plural with an adjective, a two-way and a genitive preposition', () => {
+      expect(check('Ich gehe mit dem Mann.', { mit: C('ADP', 'mit'), dem: der({ Case: 'Dat', Gender: 'Masc,Neut', Number: 'Sing' }), Mann: nn('Mann', { Gender: 'Masc', Number: 'Sing', Case: 'Dat' }) })).toEqual([]);
+      expect(check('mit den Männern', { mit: C('ADP', 'mit'), den: der({ Case: 'Acc,Dat', Gender: 'Masc', Number: 'Sing,Plur' }), Männern: nn('Mann', { Gender: 'Masc', Number: 'Plur', Case: 'Dat' }) })).toEqual([]);
+      expect(check('mit den guten Männern', { mit: C('ADP', 'mit'), den: der({ Case: 'Acc,Dat', Gender: 'Masc', Number: 'Sing,Plur' }), guten: adj('gut', { Decl: 'Weak' }), Männern: nn('Mann', { Gender: 'Masc', Number: 'Plur', Case: 'Dat' }) })).toEqual([]);
+      expect(check('in die Kirche', { in: C('ADP', 'in'), die: der({ Case: 'Acc', Gender: 'Fem', Number: 'Sing' }), Kirche: nn('Kirche', { Gender: 'Fem', Number: 'Sing' }) })).toEqual([]);
+      expect(check('wegen des Wetters', { wegen: C('ADP', 'wegen'), des: der({ Case: 'Gen', Gender: 'Masc,Neut', Number: 'Sing' }), Wetters: nn('Wetter', { Gender: 'Neut', Number: 'Sing', Case: 'Gen' }) })).toEqual([]);
+    });
+    it('a two-way preposition is flagged only when neither accusative nor dative is possible (in des Haus)', () => {
+      const e = check('in des Haus', { in: C('ADP', 'in'), des: der({ Case: 'Gen', Gender: 'Masc,Neut', Number: 'Sing' }), Haus: nn('Haus', { Gender: 'Neut', Number: 'Sing' }) });
+      expect(e).toHaveLength(1);
+      expect(e[0].suggestion).toBeUndefined();
+    });
+  });
+
+  describe('the auxiliary of the perfect, both ways (fix batch 1)', () => {
+    const ind = (person: string, number: string, extra: Record<string, string> = {}) => ({ Person: person, Number: number, Mood: 'Ind,Sub', ...extra });
+    it('habe with Mood Ind,Sub (as the real adapter reports it) → bin; hast → bist; hat → ist; haben → sind; habt → seid; hatte → war', () => {
+      const g = ptc('gehen');
+      const cases: Array<[string, Record<string, string>, string]> = [
+        ['Ich habe nach Hause gegangen.', ind('1', 'Sing'), 'Ich bin nach Hause gegangen.'],
+        ['Du hast nach Hause gegangen.', ind('2', 'Sing'), 'Du bist nach Hause gegangen.'],
+        ['Er hat nach Hause gegangen.', ind('3', 'Sing'), 'Er ist nach Hause gegangen.'],
+        ['Wir haben nach Hause gegangen.', ind('1,3', 'Plur'), 'Wir sind nach Hause gegangen.'],
+        ['Ihr habt nach Hause gegangen.', ind('2', 'Plur', { Mood: 'Ind' }), 'Ihr seid nach Hause gegangen.'],
+        ['Er hatte nach Hause gegangen.', ind('1,3', 'Sing', { Mood: 'Ind', Tense: 'Past' }), 'Er war nach Hause gegangen.'],
+      ];
+      for (const [text, morph, expected] of cases) {
+        const auxWord = text.split(' ')[1];
+        const e = check(text, { [auxWord]: aux('haben', morph), nach: C('ADP', 'nach'), Hause: nn('Haus', { Case: 'Dat' }), gegangen: g });
+        expect(e, text).toHaveLength(1);
+        expect(apply(text, e[0].suggestion!), text).toBe(expected);
+      }
+    });
+    it('the reverse: Ich bin das Buch gelesen → Ich habe das Buch gelesen (a pronoun subject and a direct object)', () => {
+      const text = 'Ich bin das Buch gelesen.';
+      const defs: Defs = { Ich: ICH, bin: aux('sein', { Person: '1', Number: 'Sing' }), das: der({ Case: 'Nom,Acc', Gender: 'Neut', Number: 'Sing' }), Buch: nn('Buch', { Case: 'Nom,Acc' }), gelesen: ptc('lesen') };
+      const e = check(text, defs);
+      expect(e).toHaveLength(1);
+      expect(apply(text, e[0].suggestion!)).toBe('Ich habe das Buch gelesen.');
+    });
+    it('is silent: a state (Ich bin überzeugt), a perfect passive, a verb listed with both, a transitive use of a sein-verb, a verb with two readings', () => {
+      expect(check('Ich bin gelesen.', { Ich: ICH, bin: aux('sein', { Person: '1', Number: 'Sing' }), gelesen: ptc('lesen') })).toEqual([]);
+      expect(check('Das Buch ist gelesen worden.', { Buch: nn('Buch'), ist: aux('sein', { Person: '3', Number: 'Sing' }), gelesen: ptc('lesen'), worden: ptc('werden') })).toEqual([]);
+      expect(check('Ich habe gefahren.', { Ich: ICH, habe: aux('haben', { Person: '1', Number: 'Sing', Mood: 'Ind,Sub' }), gefahren: ptc('fahren') })).toEqual([]);
+      const object = check('Ich habe das Haus gegangen.', { Ich: ICH, habe: aux('haben', { Person: '1', Number: 'Sing' }), das: der({ Case: 'Nom,Acc', Gender: 'Neut' }), Haus: nn('Haus', { Case: 'Nom,Acc' }), gegangen: ptc('gehen') });
+      expect(object).toEqual([]);
+      // gefallen is the participle of fallen (sein) and of gefallen (haben): every reading counts
+      const gefallen = [ptc('fallen'), ptc('gefallen')];
+      VERBS.fallen = [vb('fallen', 'sein')];
+      VERBS.gefallen = [vb('gefallen', 'haben')];
+      expect(check('Wie hat es gefallen?', { hat: aux('haben', { Person: '3', Number: 'Sing' }), gefallen })).toEqual([]);
+      delete VERBS.fallen;
+      delete VERBS.gefallen;
+    });
+  });
+
+  describe('a noun with several readings is judged on all of them (Arme: der Arme / die Arme)', () => {
+    it('stays silent on "in die Arme" when one reading of Arme is a plural', () => {
+      const e = check('in die Arme', {
+        in: C('ADP', 'in'), die: der({ Case: 'Acc', Gender: 'Fem', Number: 'Sing,Plur' }),
+        Arme: [nn('Arme', { Gender: 'Fem', Number: 'Sing', Case: 'Acc' }), nn('Arm', { Gender: 'Masc', Number: 'Plur', Case: 'Acc' })],
+      });
+      expect(e).toEqual([]);
+    });
+  });
+});
+
+// ───────────────────────────── on the real adapter ─────────────────────────────
+
+function real(text: string): ErrorCandidate[] {
+  const tokens = deAdapter.tokenize(text);
+  return deAdapter.checkProduction(tokens, deAdapter.analyze(tokens), text);
+}
+
+describe('German production checks on the real adapter', () => {
+  const FIXES: Array<[string, string, string]> = [
+    ['auxiliary: habe → bin', 'Ich habe nach Hause gegangen.', 'Ich bin nach Hause gegangen.'],
+    ['auxiliary: hast → bist', 'Du hast nach Hause gegangen.', 'Du bist nach Hause gegangen.'],
+    ['auxiliary: haben → sind', 'Wir haben nach Hause gegangen.', 'Wir sind nach Hause gegangen.'],
+    ['auxiliary: hatte → war', 'Er hatte nach Hause gegangen.', 'Er war nach Hause gegangen.'],
+    ['auxiliary, the reverse: bin → habe', 'Ich bin das Buch gelesen.', 'Ich habe das Buch gelesen.'],
+    ['case after a preposition', 'Ich gehe mit den Mann.', 'Ich gehe mit dem Mann.'],
+    ['case after a preposition (feminine)', 'Ich gehe mit die Frau.', 'Ich gehe mit der Frau.'],
+    ['subject and verb: du geht', 'Du geht nach Hause.', 'Du gehst nach Hause.'],
+    ['subject and verb: ich gehst', 'Ich gehst nach Hause.', 'Ich gehe nach Hause.'],
+    ['subject and verb: er gehen', 'Er gehen nach Hause.', 'Er geht nach Hause.'],
+    ['subject and verb: wir geht', 'Wir geht nach Hause.', 'Wir gehen nach Hause.'],
+    ['capital: gott', 'ich liebe gott', 'ich liebe Gott'],
+    ['capital: haus', 'das haus ist groß', 'das Haus ist groß'],
+    ['verb second', 'Heute ich gehe nach Hause.', 'Heute gehe ich nach Hause.'],
+    ['verb last', 'Ich bleibe zu Hause, weil ich bin müde.', 'Ich bleibe zu Hause, weil ich müde bin.'],
+    ['old spelling', 'Ich weiß, daß er kommt.', 'Ich weiß, dass er kommt.'],
+  ];
+  for (const [name, text, fixed] of FIXES) {
+    it(`finds and fixes: ${name}`, () => {
+      const e = real(text).filter((x) => x.suggestion);
+      expect(e.length, text).toBeGreaterThan(0);
+      expect(apply(text, e[0].suggestion!), text).toBe(fixed);
+    });
+  }
+
+  it('is silent on correct German', () => {
+    for (const text of [
+      'Ich bin nach Hause gegangen.', 'Ich bleibe zu Hause, weil ich müde bin.', 'Ich glaube an Jesus Christus.', 'Heute gehe ich mit dem Mann in die Kirche.',
+      'Ich gehe mit dem Mann.', 'Ich gehe mit den Männern.', 'Ich gehe mit den guten Männern.', 'Wegen des Wetters bleibe ich zu Hause.', 'Ich warte seit einem Jahr.',
+      'Ich habe das Buch gelesen.', 'Ich gehe heute', 'wir essen', 'Wir essen.', 'Er und ich gehen nach Hause.', 'Sie gehen nach Hause.', 'Sie geht nach Hause.',
+      'Ich glaube es.', 'Wenn ich es habe, gebe ich es dir.', 'Ich bin überzeugt.', 'Das Haus ist gebaut worden.', 'Ich habe das Auto gefahren.',
+      'Wie hat Ihnen der Gottesdienst gefallen?', 'Er nahm ihn in die Arme.', 'Ich stehe um sechs Uhr auf.', 'Ich weiß, dass er heute kommt.',
+      'Ihr habt das Buch gelesen.', 'Du bist nach Hause gegangen.', 'Wir sind nach Hause gegangen.', 'Er sagt, er sei krank.',
+    ]) expect(real(text), text).toEqual([]);
+  });
+
+  it('says nothing about a single word, an empty sentence, or a sentence of unknown words', () => {
+    for (const text of ['', 'Haus', 'Xyzzy plugh frobnicate.']) expect(real(text), text).toEqual([]);
+  });
+
+  it('every sentence of the bundled weg-*.json and gespraeche-*.json texts: no finding (a finding there is a false alarm or a mistake in the text)', () => {
+    const dir = new URL('../../data/corpus/de/', import.meta.url);
+    const found: string[] = [];
+    let sentences = 0;
+    for (const f of readdirSync(dir).filter((x) => /^(weg-|gespraech)/.test(x)).sort()) {
+      const j = JSON.parse(readFileSync(new URL(f, dir), 'utf8')) as { sections?: Array<{ paragraphs?: Array<{ sentences?: Array<{ text: string }> }> }> };
+      for (const s of j.sections ?? []) for (const p of s.paragraphs ?? []) for (const x of p.sentences ?? []) {
+        sentences++;
+        for (const e of real(x.text)) found.push(`${f}: ${x.text} — ${e.message}`);
+      }
+    }
+    expect(sentences).toBeGreaterThan(400);
+    expect(found).toEqual([]);
   });
 });

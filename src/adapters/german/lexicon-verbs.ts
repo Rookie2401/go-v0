@@ -21,7 +21,7 @@ bringen = to bring | bringt, brachte, gebracht [mixed]
 denken = to think | denkt, dachte, gedacht [mixed]
 dringen = to press; to penetrate | dringt, drang, gedrungen, sein
 essen = to eat | isst, aß, gegessen
-fahren = to drive; to go (by vehicle) | fährt, fuhr, gefahren, sein
+fahren = to drive; to go (by vehicle) | fährt, fuhr, gefahren, haben/sein
 fallen = to fall | fällt, fiel, gefallen, sein
 fangen = to catch | fängt, fing, gefangen
 finden = to find | findet, fand, gefunden
@@ -828,4 +828,37 @@ verschließen = to lock; to close | verschließt, verschloss, verschlossen
 aus|gießen = to pour out | gießt, goss, gegossen
 `;
 
-export const VERB_ROWS = ['# VERB', STRONG, IRREGULAR, INSEPARABLE, SEPARABLE, WEAK, REFLEXIVE, MORE].join('\n');
+const FIX2 = `
+// ── fix batch 2
+zeugen = to beget; to father
+regieren = to rule; to govern
+mehren = to increase; to multiply
+schweben = to hover; to float | haben/sein
+weben = to weave
+herrschen = to rule; to reign
+heim|holen = to bring home
+verdolmetschen = to interpret; to translate orally
+wandeln = to walk; to change | haben/sein
+verwelken = to wither | sein
+geraten = to get into; to turn out | gerät, geriet, geraten, sein
+verstreuen = to scatter
+vergehen = to pass; to vanish | vergeht, verging, vergangen, sein
+mangeln = to be lacking [dat]
+weiden = to graze; to pasture
+erquicken = to refresh; to revive
+salben = to anoint
+jammern = to lament; to wail
+bedecken = to cover
+gelangen = to reach; to get to | sein
+strecken = to stretch; to extend
+verfassen = to compose; to write
+verwalten = to administer; to manage
+besamen = to inseminate
+erregen = to excite; to arouse
+auf|gehen = to rise; to come up; to open | geht, ging, gegangen, sein
+hervor|bringen = to produce; to bring forth | bringt, brachte, gebracht [mixed]
+hervor|gehen = to emerge; to result | geht, ging, gegangen, sein
+sich durch|essen = to eat one's way through | isst, aß, gegessen
+`;
+
+export const VERB_ROWS = ['# VERB', STRONG, IRREGULAR, INSEPARABLE, SEPARABLE, WEAK, REFLEXIVE, MORE, FIX2].join('\n');

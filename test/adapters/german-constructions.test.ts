@@ -7,6 +7,7 @@ import type { AnalysisCandidate, AnalyzedToken, PartOfSpeech, PatternCandidate, 
 import { GERMAN_CONSTRUCTION_INFO, GERMAN_CONSTRUCTION_KEYS, GERMAN_PHRASE_RULES, detectGermanConstructions } from '../../src/adapters/german/constructions';
 import { PHRASE_UNITS, PREPOSITION_FRAMES } from '../../src/adapters/german/phrases';
 import { matchPhraseRules } from '../../src/adapters/shared';
+import { deAdapter } from '../../src/adapters/de';
 
 // ───────────────────────────── helpers ─────────────────────────────
 
@@ -554,5 +555,107 @@ describe('German phrase units', () => {
     expect(patterns('Ich denke, dass er an der Uni arbeitet.', { denke: verb('denken'), an: C('ADP', 'an'), dass: C('SCONJ', 'dass') })).not.toContain('denken an _');
     expect(patterns('Ich warte und arbeite auf dem Feld.', { warte: verb('warten'), und: C('CONJ', 'und'), arbeite: verb('arbeiten'), auf: C('ADP', 'auf') })).not.toContain('warten auf _');
     expect(patterns('Er wartet nicht.', { wartet: verb('warten') })).toEqual([]);
+  });
+});
+
+// ───────────────────────────── features are sets (fix batch 1) ─────────────────────────────
+
+describe('German constructions: unions in the readings', () => {
+  it('a form that is the same in the indicative and Konjunktiv I (Mood Ind,Sub) still makes a perfect, a future, a passive', () => {
+    const habe = aux('haben', { Mood: 'Ind,Sub', Person: '1', Number: 'Sing' });
+    const r = run('Ich habe das Buch gelesen.', { habe, gelesen: ptc('lesen') });
+    expect(r.find('sentence-bracket-perfect')?.tokenIndexes).toEqual([1, 4]);
+    expect(r.find('konjunktiv-1')).toBeUndefined(); // never for a plain "ich habe"
+    expect(r.find('konjunktiv-2')).toBeUndefined();
+    const f = run('Wir werden morgen kommen.', { werden: aux('werden', { Mood: 'Ind,Sub', Person: '1,3', Number: 'Plur' }), kommen: C('VERB', 'kommen', { VerbForm: 'Fin,Inf' }) });
+    expect(f.find('future')?.tokenIndexes).toEqual([1, 3]);
+    const p = run('Die Häuser werden gebaut.', { werden: aux('werden', { Mood: 'Ind,Sub', Person: '1,3', Number: 'Plur' }), gebaut: ptc('bauen') });
+    expect(p.find('passive')?.tokenIndexes).toEqual([2, 3]);
+  });
+
+  it('a pure Konjunktiv II form is not a perfect (hätte … gelesen); a past that may be indicative makes the pluperfect', () => {
+    const k = run('Er hätte das Buch gelesen.', { hätte: aux('haben', { Mood: 'Sub', Tense: 'Past', Person: '3', Number: 'Sing' }), gelesen: ptc('lesen') });
+    expect(k.find('sentence-bracket-perfect')).toBeUndefined();
+    expect(k.find('pluperfect')).toBeUndefined();
+    const u = run('Er hatte das Buch gelesen.', { hatte: aux('haben', { Mood: 'Ind,Sub', Tense: 'Past', Person: '1,3', Number: 'Sing' }), gelesen: ptc('lesen') });
+    expect(u.find('pluperfect')?.tokenIndexes).toEqual([1, 4]);
+  });
+
+  it('modal + infinitive where the infinitive is still Fin,Inf; a form that may be an infinitive does not stop the search', () => {
+    const r = run('Wir können gehen.', { können: aux('können', { Person: '1,3', Number: 'Plur' }), gehen: C('VERB', 'gehen', { VerbForm: 'Fin,Inf' }) });
+    expect(r.find('modal-infinitive')?.tokenIndexes).toEqual([1, 2]);
+    const s = run('Ich weiß, dass er nach Hause gehen kann.', { dass: C('SCONJ', 'dass'), er: ER, gehen: C('VERB', 'gehen', { VerbForm: 'Fin,Inf' }), kann: aux('können', { Person: '1,3' }) });
+    expect(s.find('modal-infinitive')?.tokenIndexes).toEqual([8, 7]);
+    expect(s.find('verb-final-subordinate')?.tokenIndexes).toEqual([3, 8]);
+  });
+
+  it('pos AUX and pos VERB both do for sein / haben; a participle that may also be finite is not a participle', () => {
+    expect(run('Ich bin gegangen.', { bin: C('VERB', 'sein', { VerbForm: 'Fin', Mood: 'Ind', Tense: 'Pres' }), gegangen: ptc('gehen') }).find('sentence-bracket-perfect')).toBeDefined();
+    const notPart = run('Ich habe gehen.', { habe: aux('haben'), gehen: C('VERB', 'gehen', { VerbForm: 'Part,Fin', Tense: 'Past' }) });
+    expect(notPart.find('sentence-bracket-perfect')).toBeUndefined();
+  });
+
+  it('PronType is a set: a relative pronoun among Dem,Rel', () => {
+    const rel = C('PRON', 'der', { PronType: 'Dem,Rel', Case: 'Nom' });
+    const r = run('Der Mann, der dort steht, ist mein Vater.', { Mann: noun('Mann'), der: rel, steht: verb('stehen') });
+    expect(r.find('relative-clause')?.tokenIndexes).toEqual([3, 5]);
+  });
+
+  it('Number and Degree unions: es gibt, comparative-als', () => {
+    const gibt = verb('geben', { Person: '3', Number: 'Sing,Plur' });
+    expect(run('Es gibt hier ein Café.', { Es: ES, gibt, hier: adv('hier'), ein: C('DET', 'ein', { Case: 'Nom,Acc' }), Café: noun('Café') }).find('es-gibt')).toBeDefined();
+    expect(run('Er ist größer als ich.', { größer: C('ADJ', 'groß', { Degree: 'Cmp,Sup' }), als: C('CONJ', 'als') }).find('comparative-als')).toBeDefined();
+  });
+
+  it('a dative verb with a dative that is only a union (Dat,Gen) behind the verb; a union that may be accusative is not one', () => {
+    const r = run('Ich helfe der Frau.', { helfe: verb('helfen'), der: C('DET', 'der', { Case: 'Dat,Gen' }) });
+    expect(r.find('dative-object-verb')?.tokenIndexes).toEqual([1, 2]);
+    expect(run('Ich helfe den Kindern.', { helfe: verb('helfen'), den: C('DET', 'der', { Case: 'Acc,Dat' }) }).find('dative-object-verb')).toBeUndefined();
+  });
+
+  it('a reflexive verb needs the lexicon\'s word for it: ich freue mich yes, ich sehe dich no', () => {
+    const also = 'also the reflexive pronoun: ich freue mich = I am glad';
+    const mich = C('PRON', 'ich', { PronType: 'Prs', Case: 'Acc' }, { role: also });
+    expect(run('Ich freue mich.', { freue: verb('freuen'), mich }).find('reflexive-verb')).toBeDefined();
+    expect(run('Ich sehe dich.', { sehe: verb('sehen'), dich: C('PRON', 'du', { PronType: 'Prs', Case: 'Acc' }, { role: also }) }).find('reflexive-verb')).toBeUndefined();
+  });
+});
+
+// ───────────────────────────── the real adapter ─────────────────────────────
+
+describe('German constructions on the real adapter', () => {
+  const realPatterns = (text: string): string[] => {
+    const tokens = deAdapter.tokenize(text);
+    return deAdapter.detectPatterns(tokens, deAdapter.analyze(tokens)).map((p) => p.key);
+  };
+  const CASES: Array<[string, string]> = [
+    ['Ich habe das Buch gelesen.', 'sentence-bracket-perfect'],
+    ['Ich habe nach Hause gegangen.', 'sentence-bracket-perfect'],
+    ['Er hatte das Buch gelesen.', 'pluperfect'],
+    ['Ich werde morgen kommen.', 'future'],
+    ['Das Haus wird gebaut.', 'passive'],
+    ['Das Haus wurde gebaut.', 'passive-past'],
+    ['Ich muss heute arbeiten.', 'modal-infinitive'],
+    ['Ich stehe um sechs Uhr auf.', 'separable-prefix-verb'],
+    ['Es ist schön, dich zu sehen.', 'zu-infinitive'],
+    ['Ich lerne, um zu bestehen.', 'um-zu'],
+    ['Der Mann, der dort steht, ist mein Vater.', 'relative-clause'],
+    ['Ich weiß, dass er heute kommt.', 'verb-final-subordinate'],
+    ['Heute gehe ich nach Hause.', 'verb-second-inversion'],
+    ['Ich würde gern reisen.', 'konjunktiv-2-wuerde'],
+    ['Er sagt, er sei krank.', 'konjunktiv-1'],
+    ['Ich helfe dem Mann.', 'dative-object-verb'],
+    ['Ich freue mich.', 'reflexive-verb'],
+  ];
+  it('finds each construction in a plain sentence', () => {
+    for (const [text, key] of CASES) expect(realPatterns(text), text).toContain(key);
+  });
+  it('does not call a plain "ich habe" a Konjunktiv, nor a plain "ich sehe dich" a reflexive verb', () => {
+    for (const text of ['Ich habe das Buch gelesen.', 'Ich habe Hunger.', 'Ich gehe nach Hause.']) {
+      expect(realPatterns(text), text).not.toContain('konjunktiv-1');
+      expect(realPatterns(text), text).not.toContain('konjunktiv-2');
+    }
+    expect(realPatterns('Ich sehe dich.')).not.toContain('reflexive-verb');
+    expect(realPatterns('Es ist schön, dich zu sehen.')).not.toContain('reflexive-verb');
   });
 });

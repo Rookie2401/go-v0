@@ -184,7 +184,7 @@ describe('German: inflection and separable constructions', () => {
     const r = run('de', 'Gott hat die Sünden vergeben.');
     expect(best(r, 'Sünden').lemma).toBe('Sünde');
     expect(best(r, 'Sünden').morph.Number).toBe('Plur');
-    expect(best(r, 'die').morph.Case).toBe('Acc,Nom');
+    expect(best(r, 'die').morph.Case).toBe('Nom,Acc'); // a union is written in the order Nom, Acc, Dat, Gen (docs/PLAN11.md)
     expect(best(run('de', 'mit ganzem Herzen'), 'Herzen').lemma).toBe('Herz');
   });
 
@@ -279,7 +279,7 @@ describe('Spanish: accents, inflection and historical Scripture forms', () => {
       if (!engineLive) expect(c, w).toEqual([]);
       for (const x of c) {
         expect(x.origin, w).toBe('rule');
-        expect(x.sourceId, w).toBe('adapter-es@4:rules');
+        expect(x.sourceId, w).toBe('adapter-es@5:rules');
         expect(x.confidence, w).toBeLessThanOrEqual(0.6);
         expect(x.gloss, w).toBeUndefined();
         expect(x.notes?.lemmaStatus, w).toBe('inferred by the rules');

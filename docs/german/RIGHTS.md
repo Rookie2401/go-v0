@@ -109,7 +109,7 @@ permission for the download is outstanding.** No proprietary dictionary (Duden o
 
 ## 4. Candidates awaiting a rights review (not bundled)
 
-The catalogue lists 55 further works as `candidate` (rights unverified) — Guerber's reader, Busch, Hoffmann's
+The catalogue lists 61 further works as `candidate` (rights unverified) — Guerber's reader, Busch, Hoffmann's
 *Struwwelpeter*, the complete Grimm collection, Bechstein, Hebel, Hauff, Spyri, Bassewitz, Bonsels, Keller, Storm,
 Karl May, Eichendorff, Droste-Hülshoff, Hauptmann, Kafka, Stifter, Fontane, E. T. A. Hoffmann, Schnitzler, Kleist,
 Büchner, Thomas Mann, Zweig, Goethe, Schiller, Lessing, Novalis, Luther's catechism, Schleiermacher, Bonhoeffer,

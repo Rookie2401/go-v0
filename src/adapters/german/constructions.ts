@@ -11,6 +11,7 @@
  * Machine-drafted, not native-reviewed.
  */
 import type { AnalysisCandidate, AnalyzedToken, PatternCandidate, RawToken, Span } from '../../core';
+import { deLexiconView } from './lexicon';
 import { segmentGermanSentences as segment } from './sentences';
 
 export { GERMAN_PHRASE_RULES } from './phrases';
@@ -248,8 +249,11 @@ export const exact = (c: AnalysisCandidate | undefined, k: string, v: string): b
 const verbal = (c: AnalysisCandidate | undefined): c is AnalysisCandidate => c?.pos === 'VERB' || c?.pos === 'AUX';
 /** A finite verb; a union that still holds Fin and Inf counts (the reading cannot be anything but finite where the position shows it). */
 const finite = (c: AnalysisCandidate | undefined): boolean => verbal(c) && has(c, 'VerbForm', 'Fin') && !has(c, 'VerbForm', 'Part');
-const infinitive = (c: AnalysisCandidate | undefined): boolean => verbal(c) && exact(c, 'VerbForm', 'Inf');
-const pastParticiple = (c: AnalysisCandidate | undefined): boolean => verbal(c) && exact(c, 'VerbForm', 'Part') && exact(c, 'Tense', 'Past');
+/** A verb that can only be finite (no infinitive or participle reading left in the union). */
+const surelyFinite = (c: AnalysisCandidate | undefined): boolean => finite(c) && !has(c, 'VerbForm', 'Inf');
+/** May be an infinitive (a union "Fin,Inf" counts: the adapter keeps both when no neighbour decides). */
+const infinitive = (c: AnalysisCandidate | undefined): boolean => verbal(c) && has(c, 'VerbForm', 'Inf');
+const pastParticiple = (c: AnalysisCandidate | undefined): boolean => verbal(c) && has(c, 'VerbForm', 'Part') && !has(c, 'VerbForm', 'Fin') && has(c, 'Tense', 'Past');
 const nominal = (c: AnalysisCandidate | undefined): boolean => !!c && ['DET', 'ADJ', 'PRON', 'NOUN', 'PROPN', 'NUM'].includes(c.pos ?? '');
 const nounLike = (c: AnalysisCandidate | undefined): boolean => c?.pos === 'NOUN' || c?.pos === 'PROPN';
 const subjectPronoun = (c: AnalysisCandidate | undefined): boolean => c?.pos === 'PRON' && has(c, 'PronType', 'Prs') && has(c, 'Case', 'Nom');
@@ -302,7 +306,7 @@ const verbSecond: Detector = (ctx) => {
     const s = ctx.c(ws[0])?.pos === 'CONJ' ? 1 : 0;
     if (s >= ws.length) return;
     const first = ctx.c(ws[s]);
-    if (!first || first.pos === 'SCONJ' || first.pos === 'CONJ' || exact(first, 'PronType', 'Rel')) return;
+    if (!first || first.pos === 'SCONJ' || first.pos === 'CONJ' || has(first, 'PronType', 'Rel')) return;
     let v = -1;
     for (let k = s; k < ws.length; k++) {
       const c = ctx.c(ws[k]);
@@ -353,8 +357,8 @@ const subordinate: Detector = (ctx) => {
       const last = ctx.c(stretch[stretch.length - 1]);
       if (!finite(last)) continue;
       // another conjugated verb inside means two clauses run together: not this pattern
-      if (stretch.slice(1, -1).some((w) => finite(ctx.c(w)))) continue;
-      if (question && finite(ctx.c(stretch[1]))) continue;
+      if (stretch.slice(1, -1).some((w) => surelyFinite(ctx.c(w)))) continue;
+      if (question && surelyFinite(ctx.c(stretch[1]))) continue;
       out.push(hit('verb-final-subordinate', Math.min(conf(c, last), question ? 0.7 : 0.9), [ws[k], stretch[stretch.length - 1]]));
       k = end - 1;
     }
@@ -364,18 +368,18 @@ const subordinate: Detector = (ctx) => {
 
 /** The word of the clause that completes an auxiliary: the nearest one after it, or before it when the auxiliary closes the clause. */
 function partner(ctx: Ctx, ws: number[], pos: number, want: (c: AnalysisCandidate | undefined) => boolean): number | undefined {
-  const stop = (c: AnalysisCandidate | undefined) => finite(c) || c?.pos === 'CONJ';
+  const stop = (c: AnalysisCandidate | undefined) => surelyFinite(c) || c?.pos === 'CONJ';
   const after: number[] = [];
   for (let k = pos + 1; k < ws.length; k++) {
     const c = ctx.c(ws[k]);
+    if (want(c)) { after.push(ws[k]); continue; }
     if (stop(c)) break;
-    if (want(c)) after.push(ws[k]);
   }
   const before: number[] = [];
   for (let k = pos - 1; k >= 0; k--) {
     const c = ctx.c(ws[k]);
+    if (want(c)) { before.push(ws[k]); continue; }
     if (stop(c)) break;
-    if (want(c)) before.push(ws[k]);
   }
   if (pos < ws.length - 1 && after.length) return after[after.length - 1];
   return before[0];
@@ -392,25 +396,29 @@ const brackets: Detector = (ctx) => {
     ws.forEach((w, pos) => {
       const a = ctx.c(w);
       if (!a || !finite(a) || !a.lemma) return;
-      const { Mood: mood, Tense: tense } = a.morph;
+      // set-aware: a form that is the same in the indicative and Konjunktiv I ("habe": Mood Ind,Sub) may be the indicative
+      const ind = has(a, 'Mood', 'Ind');
+      const sub = has(a, 'Mood', 'Sub');
+      const pres = has(a, 'Tense', 'Pres') && !has(a, 'Tense', 'Past');
+      const past = has(a, 'Tense', 'Past') && !has(a, 'Tense', 'Pres');
       if (a.lemma === 'haben' || a.lemma === 'sein') {
-        if (mood !== 'Ind' || perfectPassive) return;
+        if (!ind || perfectPassive) return;
         const p = partner(ctx, ws, pos, notWerden);
         if (p === undefined) return;
         const base = conf(a, ctx.c(p)) - (a.lemma === 'sein' ? 0.1 : 0);
-        if (tense === 'Pres') out.push(hit('sentence-bracket-perfect', base, [w, p]));
-        else if (tense === 'Past') out.push(hit('pluperfect', base, [w, p]));
+        if (pres) out.push(hit('sentence-bracket-perfect', base, [w, p]));
+        else if (past) out.push(hit('pluperfect', base, [w, p]));
         return;
       }
       if (a.lemma === 'werden') {
-        if (mood === 'Ind' && (tense === 'Pres' || tense === 'Past')) {
+        if (ind && (pres || past)) {
           const pp = partner(ctx, ws, pos, notWerden);
-          if (pp !== undefined) { out.push(hit(tense === 'Pres' ? 'passive' : 'passive-past', conf(a, ctx.c(pp)), [w, pp])); return; }
-          if (tense === 'Pres') {
+          if (pp !== undefined) { out.push(hit(pres ? 'passive' : 'passive-past', conf(a, ctx.c(pp)), [w, pp])); return; }
+          if (pres) {
             const ip = partner(ctx, ws, pos, infinitive);
             if (ip !== undefined) out.push(hit('future', conf(a, ctx.c(ip)), [w, ip]));
           }
-        } else if (mood === 'Sub') {
+        } else if (sub && !ind) {
           const ip = partner(ctx, ws, pos, infinitive);
           if (ip !== undefined) out.push(hit('konjunktiv-2-wuerde', conf(a, ctx.c(ip)), [w, ip]));
         }
@@ -471,7 +479,7 @@ const relativeClause: Detector = (ctx) => {
     const ws = cl.words;
     const k = ctx.c(ws[0])?.pos === 'ADP' ? 1 : 0;
     const rel = ctx.c(ws[k]);
-    if (!rel || rel.pos !== 'PRON' || !exact(rel, 'PronType', 'Rel') || ws.length < k + 2) return;
+    if (!rel || !(rel.pos === 'PRON' || rel.pos === 'DET') || !has(rel, 'PronType', 'Rel') || ws.length < k + 2) return;
     const lastIndex = ws[ws.length - 1];
     const last = ctx.c(lastIndex);
     if (!finite(last)) return;
@@ -511,7 +519,7 @@ const imperative: Detector = (ctx) => {
     const s = ctx.c(cl.words[0])?.pos === 'CONJ' ? 1 : 0;
     const w = cl.words[s];
     const c = w === undefined ? undefined : ctx.c(w);
-    if (c && verbal(c) && exact(c, 'Mood', 'Imp')) out.push(hit('imperative', c.confidence, [w]));
+    if (c && verbal(c) && has(c, 'Mood', 'Imp') && !has(c, 'Mood', 'Ind')) out.push(hit('imperative', c.confidence, [w]));
   });
   return out;
 };
@@ -611,7 +619,7 @@ const comparativeAls: Detector = (ctx) => {
   const out: PatternCandidate[] = [];
   ctx.tokens.forEach((t, i) => {
     const c = ctx.c(i);
-    if (!t.isWord || !c || !(c.pos === 'ADJ' || c.pos === 'ADV') || !exact(c, 'Degree', 'Cmp')) return;
+    if (!t.isWord || !c || !(c.pos === 'ADJ' || c.pos === 'ADV') || !has(c, 'Degree', 'Cmp')) return;
     let k = i;
     for (let step = 0; step < 5; step++) {
       const from = k;
@@ -631,7 +639,7 @@ const superlativeAm: Detector = (ctx) => {
     if (!t.isWord || ctx.n(i) !== 'am') return;
     const nx = ctx.next(i);
     const sc = sameClause(ctx, i, nx) ? ctx.c(nx) : undefined;
-    if (!sc || !(sc.pos === 'ADJ' || sc.pos === 'ADV') || !exact(sc, 'Degree', 'Sup')) return;
+    if (!sc || !(sc.pos === 'ADJ' || sc.pos === 'ADV') || !has(sc, 'Degree', 'Sup')) return;
     const after = ctx.next(nx);
     if (sameClause(ctx, i, after) && nounLike(ctx.c(after))) return;
     out.push(hit('superlative-am', Math.min(sc.confidence, 0.85), [i, nx]));
@@ -657,7 +665,7 @@ const esGibt: Detector = (ctx) => {
   const out: PatternCandidate[] = [];
   ctx.tokens.forEach((t, i) => {
     const c = ctx.c(i);
-    if (!t.isWord || !c || c.lemma !== 'geben' || !finite(c) || !exact(c, 'Person', '3') || !exact(c, 'Number', 'Sing')) return;
+    if (!t.isWord || !c || c.lemma !== 'geben' || !finite(c) || !has(c, 'Person', '3') || !has(c, 'Number', 'Sing')) return;
     const p = ctx.prev(i);
     const nx = ctx.next(i);
     let es = -1;
@@ -691,15 +699,27 @@ const manImpersonal: Detector = (ctx) => {
   return out;
 };
 
-/** Reflexive pronoun and its verb. */
+/**
+ * Reflexive pronoun and its verb. Sich (or a reading marked Reflex) always counts; mich / dich / uns / euch are also
+ * ordinary object pronouns, so they count only for a verb the lexicon lists as reflexive (ich freue mich, not ich sehe dich).
+ * A verb the lexicon lists but does not mark as reflexive (Er sieht sich) is not a reflexive verb.
+ */
 const reflexiveVerb: Detector = (ctx) => {
   const out: PatternCandidate[] = [];
   ctx.tokens.forEach((t, i) => {
     const c = ctx.c(i);
-    if (!t.isWord || !c || !(c.lemma === 'sich' || /reflexive/iu.test(c.role ?? '') || c.notes?.reflexive !== undefined)) return;
+    if (!t.isWord || !c || c.pos !== 'PRON') return;
+    const sich = c.lemma === 'sich' || has(c, 'Reflex', 'Yes');
+    const alsoReflexive = /reflexive/iu.test(c.role ?? '') || c.notes?.reflexive !== undefined;
+    if (!sich && !alsoReflexive) return;
     const ws = ctx.clauses[ctx.clauseOf[i]]?.words ?? [];
     const verb = ws.find((w) => finite(ctx.c(w))) ?? ws.find((w) => verbal(ctx.c(w)));
-    if (verb !== undefined) out.push(hit('reflexive-verb', c.confidence, [verb, i]));
+    if (verb === undefined) return;
+    const lemma = ctx.c(verb)?.lemma;
+    const entries = lemma ? deLexiconView.verb(lemma.toLocaleLowerCase('de')) : [];
+    const listedReflexive = entries.some((e) => e.reflexive);
+    if (entries.length ? !listedReflexive : !sich) return;
+    out.push(hit('reflexive-verb', c.confidence, [verb, i]));
   });
   return out;
 };
@@ -714,7 +734,10 @@ const dativeObjectVerb: Detector = (ctx) => {
     for (const w of ws) {
       if (w === i) continue;
       const o = ctx.c(w);
-      if (!o || !['PRON', 'DET', 'NOUN', 'PROPN'].includes(o.pos ?? '') || !exact(o, 'Case', 'Dat')) continue;
+      if (!o || !['PRON', 'DET', 'NOUN', 'PROPN'].includes(o.pos ?? '')) continue;
+      // decided dative anywhere in the clause; a union that may be dative (and not accusative) only behind the verb
+      const dative = exact(o, 'Case', 'Dat') || (w > i && has(o, 'Case', 'Dat') && !has(o, 'Case', 'Acc') && !has(o, 'Case', 'Nom'));
+      if (!dative) continue;
       const before = ctx.prev(w);
       if (before >= 0 && sameClause(ctx, w, before) && ctx.c(before)?.pos === 'ADP') continue;
       out.push(hit('dative-object-verb', conf(c, o), [i, w]));
@@ -751,7 +774,7 @@ const participialModifier: Detector = (ctx) => {
   const out: PatternCandidate[] = [];
   ctx.tokens.forEach((t, i) => {
     const c = ctx.c(i);
-    if (!t.isWord || !c || !(c.pos === 'ADJ' || c.pos === 'VERB') || !exact(c, 'VerbForm', 'Part') || !set(c, 'Case').length) return;
+    if (!t.isWord || !c || !(c.pos === 'ADJ' || c.pos === 'VERB') || !has(c, 'VerbForm', 'Part') || has(c, 'VerbForm', 'Fin') || !set(c, 'Case').length) return;
     const noun = ctx.next(i);
     if (!sameClause(ctx, i, noun) || ctx.c(noun)?.pos !== 'NOUN') return;
     let k = ctx.prev(i);

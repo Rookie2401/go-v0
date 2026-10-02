@@ -1244,4 +1244,52 @@ Zeitraum/m, -es, ¨-e = period
 Zugang/m, -es, ¨-e = access
 `;
 
-export const NOUN_ROWS = ['# NOUN', PEOPLE, BODY, HOUSE, FOOD, TOWN, NATURE, TIME, WORK, FAITH, ABSTRACT, THINGS, EXTRA].join('\n');
+const FIX2 = `
+// ── fix batch 2: compound parts, the Luther 1912 slice, the Grimm tales, course texts
+Verfassung/f, -, -en = constitution; condition
+Verwaltung/f, -, -en = administration
+Bahn/f, -, -en = railway; track; path
+Automat/m, -en, -en = machine; vending machine [weak]
+Kraut/n, -es, ¨-er = herb; plant; cabbage
+Gewürm/n, -s, 0 = creeping things; worms (collective) [literary]
+Getier/n, -s, 0 = animals (collective)
+Vieh/n, -es, 0 = cattle; livestock
+Gevögel/n, -s, 0 = fowl; birds (collective) [archaic]
+Gefieder/n, -s, - = plumage; feathers
+Gefangenschaft/f, -, 0 = captivity
+Glied/n, -es, -er = limb; member; link
+Gottlose/adj = godless person; ungodly one [adjectival]
+Same/m, -ns, -n = seed [weak]
+Samen/m, -s, - = seed; semen
+Weib/n, -es, -er = woman; wife (dated)
+Geburt/f, -, -en = birth
+Gemahl/m, -s, -e = husband; spouse (formal)
+Ort/m, -es, ¨-er = place (older plural) [archaic]
+Sammlung/f, -, -en = collection; gathering
+Walfisch/m, -es, -e = whale
+Schande/f, -, 0 = shame; disgrace
+Volk/n, -es, ¨-er = people; nation
+Jungfrau/f, -, -en = virgin; maiden
+Spötter/m, -s, - = mocker; scoffer
+Wasserbach/m, -es, ¨-e = brook; stream of water
+Spreu/f, -, 0 = chaff
+Aue/f, -, -n = meadow; pasture
+Stab/m, -es, ¨-e = staff; rod
+Angesicht/n, -es, -er = face; countenance [literary]
+Haupt/n, -es, ¨-er = head [literary]
+Jammer/m, -s, 0 = misery; lamentation
+Hirse/f, -, -n = millet
+Rand/m, -es, ¨-er = edge; rim
+Linnen/n, -s, - = linen
+Lebtag/m, -es, -e = lifetime; day of one's life [archaic]
+Lebtag/n, -s, -e = lifetime (in "sein Lebtag": all his life) [archaic]
+Feste/f, -, -n = firmament (Luther); fortress [archaic]
+Fräulein/n, -s, - = young lady; Miss (dated)
+Kaninchen/n, -s, - = rabbit
+Taler/m, -s, - = thaler (old coin)
+Kammer/f, -, -n = chamber; small room
+Rock/m, -es, ¨-e = skirt; coat
+Halt/m, -es, -e = hold; support; stop
+`;
+
+export const NOUN_ROWS = ['# NOUN', PEOPLE, BODY, HOUSE, FOOD, TOWN, NATURE, TIME, WORK, FAITH, ABSTRACT, THINGS, EXTRA, FIX2].join('\n');

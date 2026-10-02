@@ -117,6 +117,7 @@ const STRONG_WORDS: Strong[] = [
   { lemma: 'dieser', stem: 'dies', gloss: 'this; these', pronType: 'Dem', genders: ['m', 'f', 'n', 'p'], both: true, weak: true },
   { lemma: 'jener', stem: 'jen', gloss: 'that; those (over there; the former)', pronType: 'Dem', genders: ['m', 'f', 'n', 'p'], both: true, weak: true },
   { lemma: 'jeder', stem: 'jed', gloss: 'every; each; everyone', pronType: 'Ind', genders: ['m', 'f', 'n'], both: true, weak: true },
+  { lemma: 'jeglicher', stem: 'jeglich', gloss: 'each; every; any (older, literary)', pronType: 'Ind', genders: ['m', 'f', 'n'], both: true, weak: true },
   { lemma: 'welcher', stem: 'welch', gloss: 'which; what', pronType: 'Int', genders: ['m', 'f', 'n', 'p'], both: true, weak: true },
   { lemma: 'mancher', stem: 'manch', gloss: 'some; many a', pronType: 'Ind', genders: ['m', 'f', 'n', 'p'], both: true, weak: true },
   { lemma: 'solcher', stem: 'solch', gloss: 'such', pronType: 'Dem', genders: ['m', 'f', 'n', 'p'], weak: true },
@@ -341,6 +342,13 @@ zumal = especially since
 wohingegen = whereas
 # ADV
 seitdem = since then
+je = ever; each; the (in je … desto)
+desto = the (in je … desto: the more … the more)
+umso = all the (umso mehr: all the more)
+# ADP
+willen = for the sake of (um … willen; um des Herrn willen)
+# DET
+allerlei = all kinds of; of every sort
 # PART
 zu = to | role: the infinitive marker; it stands before the infinitive (Ich habe Lust, ihn zu sehen) and inside a separable verb (aufzustehen)
 nicht = not | role: negates the verb, a whole clause or the word it stands before
@@ -394,6 +402,7 @@ nein = no
 amen = amen [religious]
 halleluja = hallelujah [religious]
 halt = stop!
+siehe = behold; look; see (also the imperative of sehen) [literary]
 # NUM
 null = zero
 eins = one
@@ -473,4 +482,53 @@ Lena = Lena (female first name)
 Lukas = Lukas (male first name)
 Max = Max (male first name)
 Luther = Luther (surname)
+Jesu = of Jesus (genitive)
+Christi = of Christ (genitive of Christus)
+Joseph = Joseph (biblical personal name)
+Jakob = Jacob (biblical personal name)
+David = David (biblical personal name)
+Abraham = Abraham (biblical personal name)
+Isaak = Isaac (biblical personal name)
+Juda = Judah (biblical personal name)
+Perez = Perez (biblical personal name)
+Hezron = Hezron (biblical personal name)
+Ram = Ram (biblical personal name)
+Amminadab = Amminadab (biblical personal name)
+Nahesson = Nahshon (biblical personal name)
+Salma = Salmon (biblical personal name)
+Boas = Boaz (biblical personal name)
+Obed = Obed (biblical personal name)
+Jesse = Jesse (biblical personal name)
+Salomo = Solomon (biblical personal name)
+Rehabeam = Rehoboam (biblical personal name)
+Abia = Abijah (biblical personal name)
+Asa = Asa (biblical personal name)
+Josaphat = Jehoshaphat (biblical personal name)
+Joram = Joram (biblical personal name)
+Usia = Uzziah (biblical personal name)
+Jotham = Jotham (biblical personal name)
+Ahas = Ahaz (biblical personal name)
+Hiskia = Hezekiah (biblical personal name)
+Manasse = Manasseh (biblical personal name)
+Amon = Amon (biblical personal name)
+Josia = Josiah (biblical personal name)
+Jechonja = Jeconiah (biblical personal name)
+Sealthiel = Shealtiel (biblical personal name)
+Serubabel = Zerubbabel (biblical personal name)
+Abiud = Abiud (biblical personal name)
+Eliakim = Eliakim (biblical personal name)
+Asor = Azor (biblical personal name)
+Zadok = Zadok (biblical personal name)
+Achim = Achim (biblical personal name)
+Eliud = Eliud (biblical personal name)
+Eleasar = Eleazar (biblical personal name)
+Matthan = Matthan (biblical personal name)
+Serah = Zerah (biblical personal name)
+Thamar = Tamar (biblical personal name)
+Rahab = Rahab (biblical personal name)
+Ruth = Ruth (biblical personal name)
+Uria = Uriah (biblical personal name)
+Immanuel = Immanuel (biblical name)
+Daniel = Daniel (personal name)
+Jonas = Jonas; Jonah (personal name)
 `;

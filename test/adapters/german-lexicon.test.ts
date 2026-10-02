@@ -294,7 +294,7 @@ describe('facts of nouns (gender, genitive, plural)', () => {
 describe('facts of verbs (principal parts and auxiliary)', () => {
   // [lemma, pres3, preterite, participle, auxiliary]
   const STRONG: Array<[string, string, string, string, string]> = [
-    ['fahren', 'fährt', 'fuhr', 'gefahren', 'sein'], ['gehen', 'geht', 'ging', 'gegangen', 'sein'], ['kommen', 'kommt', 'kam', 'gekommen', 'sein'],
+    ['fahren', 'fährt', 'fuhr', 'gefahren', 'haben/sein'], ['gehen', 'geht', 'ging', 'gegangen', 'sein'], ['kommen', 'kommt', 'kam', 'gekommen', 'sein'],
     ['bleiben', 'bleibt', 'blieb', 'geblieben', 'sein'], ['sehen', 'sieht', 'sah', 'gesehen', 'haben'], ['geben', 'gibt', 'gab', 'gegeben', 'haben'],
     ['nehmen', 'nimmt', 'nahm', 'genommen', 'haben'], ['essen', 'isst', 'aß', 'gegessen', 'haben'], ['trinken', 'trinkt', 'trank', 'getrunken', 'haben'],
     ['schreiben', 'schreibt', 'schrieb', 'geschrieben', 'haben'], ['lesen', 'liest', 'las', 'gelesen', 'haben'], ['sprechen', 'spricht', 'sprach', 'gesprochen', 'haben'],
@@ -609,5 +609,65 @@ describe('the older seed list is still covered', () => {
       'Land', 'Stadt', 'Bundesland', 'Bahnhof', 'Zug', 'Straßenbahn', 'Rathaus', 'Hausaufgabe', 'Krankenhaus', 'Wohnzimmer', 'Kindergarten', 'Arbeitszimmer', 'Lebensversicherung', 'Geburtstag', 'Wochenende', 'Handschuh', 'Frühstück']) {
       expect(lex.nouns(lower(w)).length, w).toBeGreaterThan(0);
     }
+  });
+});
+
+describe('fix batch 2: compound parts, Luther 1912, Grimm, course words', () => {
+  it('has the compound parts and the base nouns of the diminutives', () => {
+    const t: Array<[string, string, string, string | null]> = [
+      ['Verfassung', 'f', 'Verfassung', 'Verfassungen'], ['Verwaltung', 'f', 'Verwaltung', 'Verwaltungen'], ['Bahn', 'f', 'Bahn', 'Bahnen'],
+      ['Hof', 'm', 'Hofes', 'Höfe'], ['Gericht', 'n', 'Gerichtes', 'Gerichte'], ['Bund', 'm', 'Bundes', 'Bünde'], ['Automat', 'm', 'Automaten', 'Automaten'],
+      ['Karte', 'f', 'Karte', 'Karten'], ['Fahrkarte', 'f', 'Fahrkarte', 'Fahrkarten'], ['Kraut', 'n', 'Krautes', 'Kräuter'], ['Glied', 'n', 'Gliedes', 'Glieder'],
+      ['Volk', 'n', 'Volkes', 'Völker'], ['Haupt', 'n', 'Hauptes', 'Häupter'], ['Stab', 'm', 'Stabes', 'Stäbe'], ['Rand', 'm', 'Randes', 'Ränder'],
+      ['Rock', 'm', 'Rockes', 'Röcke'], ['Topf', 'm', 'Topfes', 'Töpfe'], ['Stück', 'n', 'Stücks', 'Stücke'], ['Hemd', 'n', 'Hemdes', 'Hemden'],
+      ['Bett', 'n', 'Bettes', 'Betten'], ['Kammer', 'f', 'Kammer', 'Kammern'], ['Leib', 'm', 'Leibes', 'Leiber'], ['Taler', 'm', 'Talers', 'Taler'],
+      ['Weib', 'n', 'Weibes', 'Weiber'], ['Same', 'm', 'Samens', 'Samen'], ['Samen', 'm', 'Samens', 'Samen'], ['Gemahl', 'm', 'Gemahls', 'Gemahle'],
+      ['Halt', 'm', 'Haltes', 'Halte'], ['Gefieder', 'n', 'Gefieders', 'Gefieder'], ['Hirse', 'f', 'Hirse', 'Hirsen'], ['Jammer', 'm', 'Jammers', null],
+    ];
+    for (const [l, g, gen, pl] of t) {
+      const n = lex.nouns(lower(l)).find((x) => x.gender === g && x.plural === (pl ?? undefined));
+      expect(n, l).toBeDefined();
+      // the genitive of the "-es" rows is the full form; accept the rows' own choice
+      expect(n!.genSg!.startsWith(l), l).toBe(true);
+      expect([gen, l + 's', l + 'es', l + 'ens']).toContain(n!.genSg);
+    }
+    expect(lex.nouns('ort').map((n) => n.plural).sort()).toEqual(['Orte', 'Örter']);
+    expect(nounOf('Gottlose')?.adjectival).toBe(true);
+    expect(nounOf('Weib')?.gender).toBe('n');
+  });
+
+  it('has the verbs, the adjectives and the function words', () => {
+    for (const l of ['verfassen', 'verwalten', 'zeugen', 'regieren', 'mehren', 'schweben', 'weben', 'herrschen', 'heimholen', 'verdolmetschen', 'wandeln', 'verwelken',
+      'verstreuen', 'mangeln', 'weiden', 'erquicken', 'salben', 'jammern', 'bedecken', 'gelangen', 'strecken', 'besamen', 'erregen']) expect(verbOf(l), l).toBeDefined();
+    expect(verbOf('geraten', null)).toMatchObject({ pres3: 'gerät', pret: 'geriet', part: 'geraten', aux: 'sein' });
+    expect(verbOf('vergehen')).toMatchObject({ part: 'vergangen', aux: 'sein' });
+    expect(verbOf('aufgehen')).toMatchObject({ prefix: 'auf', aux: 'sein' });
+    expect(verbOf('hervorbringen')).toMatchObject({ prefix: 'hervor', cls: 'mixed' });
+    expect(verbOf('hervorgehen')).toMatchObject({ prefix: 'hervor', aux: 'sein' });
+    expect(verbOf('heimholen')).toMatchObject({ prefix: 'heim' });
+    expect(verbOf('durchessen')).toMatchObject({ prefix: 'durch', reflexive: true, part: 'gegessen' });
+    expect(verbOf('mangeln')?.governs).toBe('dat');
+    expect(verbOf('gelangen')?.aux).toBe('sein');
+    for (const l of ['gottlos', 'babylonisch', 'fruchtbar', 'schwanger', 'wüst', 'finster', 'heimlich', 'recht', 'übrig', 'mitleidig', 'hungrig', 'hungerig', 'blank', 'fein', 'gefiedert', 'untertan', 'allerlei']) {
+      expect(lex.adjective(l), l).toBeDefined();
+    }
+    expect(lex.adjective('hungerig')?.register).toEqual(['archaic']);
+    expect(lex.adjective('allerlei')?.indeclinable).toBe(true);
+    expect(lex.adjective('untertan')?.indeclinable).toBe(true);
+    expect(cellText(lex.closed('jeglichem').find((f) => f.lemma === 'jeglicher' && f.pos === 'DET')?.cells)).toBe('D-m,D-n');
+    expect(lex.closed('jegliches').find((f) => f.pos === 'DET')?.governsDecl).toBe('wk');
+    expect(lex.plain('siehe').some((p) => p.pos === 'INTJ')).toBe(true);
+    for (const w of ['je', 'desto']) expect(lex.plain(w).some((p) => p.pos === 'ADV'), w).toBe(true);
+    expect(lex.plain('willen').some((p) => p.pos === 'ADP')).toBe(true);
+    expect(lex.plain('hervor').some((p) => p.pos === 'ADV')).toBe(true);
+    expect(lex.plain('immerdar').some((p) => p.pos === 'ADV')).toBe(true);
+    expect(lex.plain('allerlei').some((p) => p.pos === 'DET')).toBe(true);
+  });
+
+  it('lists the biblical and course names as proper names, with Jesu and Christi as forms', () => {
+    const names = ['Joseph', 'Jakob', 'David', 'Abraham', 'Isaak', 'Juda', 'Perez', 'Hezron', 'Ram', 'Amminadab', 'Nahesson', 'Salma', 'Boas', 'Obed', 'Jesse', 'Salomo', 'Rehabeam',
+      'Abia', 'Asa', 'Josaphat', 'Joram', 'Usia', 'Jotham', 'Ahas', 'Hiskia', 'Manasse', 'Amon', 'Josia', 'Jechonja', 'Sealthiel', 'Serubabel', 'Abiud', 'Eliakim', 'Asor', 'Zadok',
+      'Achim', 'Eliud', 'Eleasar', 'Matthan', 'Serah', 'Thamar', 'Rahab', 'Ruth', 'Uria', 'Maria', 'Immanuel', 'Jesus', 'Jesu', 'Christus', 'Christi', 'Anna', 'Daniel', 'Lena', 'Paul', 'Max', 'Jonas'];
+    for (const w of names) expect(lex.plain(lower(w)).some((p) => p.pos === 'PROPN'), w).toBe(true);
   });
 });

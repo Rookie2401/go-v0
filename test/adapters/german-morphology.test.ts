@@ -27,12 +27,24 @@ const NOUNS: DeNoun[] = [
   noun({ lemma: 'Lehrer', gender: 'm', genSg: 'Lehrers', plural: 'Lehrer' }),
   noun({ lemma: 'Eltern', gender: 'pl' }),
   noun({ lemma: 'Deutsche', gender: 'm', adjectival: true }),
+  noun({ lemma: 'Stück', gender: 'n', genSg: 'Stückes', plural: 'Stücke' }),
+  noun({ lemma: 'Bett', gender: 'n', genSg: 'Bettes', plural: 'Betten' }),
+  noun({ lemma: 'Hemd', gender: 'n', genSg: 'Hemdes', plural: 'Hemden' }),
+  noun({ lemma: 'Topf', gender: 'm', genSg: 'Topfes', plural: 'Töpfe' }),
+  noun({ lemma: 'Rock', gender: 'm', genSg: 'Rockes', plural: 'Röcke' }),
+  noun({ lemma: 'Kammer', gender: 'f', genSg: 'Kammer', plural: 'Kammern' }),
+  noun({ lemma: 'Katze', gender: 'f', genSg: 'Katze', plural: 'Katzen' }),
+  noun({ lemma: 'Garten', gender: 'm', genSg: 'Gartens', plural: 'Gärten' }),
+  noun({ lemma: 'Leib', gender: 'm', genSg: 'Leibes', plural: 'Leiber' }),
+  noun({ lemma: 'Mädchen', gender: 'n', genSg: 'Mädchens', plural: 'Mädchen' }),
+  noun({ lemma: 'Fräulein', gender: 'n', genSg: 'Fräuleins', plural: 'Fräulein' }),
 ];
 
 const verb = (v: Partial<DeVerb> & Pick<DeVerb, 'lemma'>): DeVerb => ({ cls: 'weak', aux: 'haben', gloss: v.lemma, ...v });
 const strong = (lemma: string, pres3: string, pret: string, part: string, extra: Partial<DeVerb> = {}): DeVerb =>
   verb({ lemma, cls: 'strong', pres3, pret, part, ...extra });
 const VERBS: DeVerb[] = [
+  verb({ lemma: 'erquicken' }), verb({ lemma: 'salben' }), verb({ lemma: 'führen' }), verb({ lemma: 'weiden' }),
   verb({ lemma: 'machen' }), verb({ lemma: 'arbeiten' }), verb({ lemma: 'reisen', aux: 'sein' }), verb({ lemma: 'sammeln' }),
   verb({ lemma: 'wandern', aux: 'sein' }), verb({ lemma: 'studieren' }), verb({ lemma: 'lächeln' }),
   strong('fahren', 'fährt', 'fuhr', 'gefahren', { aux: 'sein' }), strong('gehen', 'geht', 'ging', 'gegangen', { aux: 'sein' }),
@@ -80,7 +92,19 @@ const CONTRACTIONS: DeContraction[] = [
   { form: 'zum', preposition: 'zu', article: 'dem', cell: cell('D', 'm'), gloss: 'to the' },
   { form: 'zur', preposition: 'zu', article: 'der', cell: cell('D', 'f'), gloss: 'to the' },
 ];
-const PLAIN = [{ lemma: 'und', pos: 'CONJ' as const, gloss: 'and' }];
+CLOSED.push(
+  closed({ form: 'es', lemma: 'es', pos: 'PRON', cells: [cell('N', 'n'), cell('A', 'n')], morph: { PronType: 'Prs', Person: '3', Number: 'Sing' } }),
+  closed({ form: 'dir', lemma: 'du', pos: 'PRON', morph: { PronType: 'Prs', Person: '2', Number: 'Sing', Case: 'Dat' } }),
+  closed({ form: 'sich', lemma: 'sich', pos: 'PRON', morph: { PronType: 'Prs', Reflex: 'Yes', Person: '3', Case: 'Acc,Dat' } }),
+  closed({ form: 'uns', lemma: 'wir', pos: 'PRON', morph: { PronType: 'Prs', Person: '1', Number: 'Plur', Case: 'Acc,Dat' } }),
+  closed({ form: 'alles', lemma: 'alle', pos: 'PRON', morph: { PronType: 'Ind' } }),
+  closed({ form: 'eins', lemma: 'ein', pos: 'NUM', morph: { NumType: 'Card' } }),
+);
+const PLAIN = [
+  { lemma: 'und', pos: 'CONJ' as const, gloss: 'and' },
+  ...['Anna', 'Maria', 'Daniel', 'David', 'Jonas', 'Max', 'Hans', 'Paul'].map((lemma) => ({ lemma, pos: 'PROPN' as const, gloss: `${lemma} (name)` })),
+  { lemma: 'Berlin', pos: 'PROPN' as const, gloss: 'Berlin' },
+];
 const PREFIXES: Record<string, DePrefixKind> = { auf: 'separable', an: 'separable', ein: 'separable', ver: 'inseparable', um: 'dual' };
 
 const lexicon: DeLexiconView = {
@@ -88,7 +112,7 @@ const lexicon: DeLexiconView = {
   verb: (l) => VERBS.filter((v) => v.lemma === l),
   adjective: (l) => ADJECTIVES.find((a) => a.lemma === l),
   closed: (f) => CLOSED.filter((c) => c.form === f),
-  plain: (f) => (f === 'und' ? PLAIN : []),
+  plain: (f) => PLAIN.filter((p) => p.lemma.toLowerCase() === f),
   preposition: (f) => (PREPOSITIONS[f] ? { form: f, cases: PREPOSITIONS[f], gloss: f } : undefined),
   contraction: (f) => CONTRACTIONS.find((c) => c.form === f),
   prefixKind: (p) => PREFIXES[p],
@@ -824,6 +848,132 @@ describe('analysis: words the lexicon does not hold', () => {
     expect(an('')).toEqual([]);
     expect(an('ab3d')).toEqual([]);
     expect(an('xyz')).toEqual([]);
+  });
+});
+
+describe('derived readings', () => {
+  const derived = (rs: DeReading[]) => rs.every((r) => /derived/.test(r.rule));
+
+  it('diminutives in -chen and -lein from a known noun: as written, umlaut undone, dropped -e / -en or -er stem', () => {
+    const t = an('Töpfchen');
+    expect(t.map((r) => `${r.lemma}|${r.morph.Case}|${r.morph.Gender}|${r.morph.Number}`)).toEqual([
+      'Töpfchen|Nom,Acc,Dat|Neut|Sing', 'Töpfchen|Nom,Acc,Dat,Gen|Neut|Plur']);
+    expect(t.every((r) => r.pos === 'NOUN' && r.lemmaKnown === false && r.confidence === 0.6 && derived([r]))).toBe(true);
+    expect(t[0].cells!.map((c) => `${c.c}${c.g}`)).toEqual(['Nn', 'An', 'Dn']);
+    expect(t[1].cells!.map((c) => `${c.c}${c.g}`)).toEqual(['Np', 'Ap', 'Dp', 'Gp']);
+    expect(t[0].gloss).toBeUndefined();
+    expect(t[0].parts).toEqual([
+      { text: 'Töpf', start: 0, end: 4, lemma: 'Topf', pos: 'NOUN', kind: 'stem', role: 'base noun: topf' },
+      { text: 'chen', start: 4, end: 8, kind: 'marker', role: 'diminutive suffix -chen: makes a small or dear one' },
+    ]);
+    const g = an('Töpfchens');
+    expect(g.map(sig)).toEqual(['Töpfchen|NOUN|Case=Gen,Gender=Neut,Number=Sing']);
+    expect(g[0].parts!.map((p) => [p.text, p.kind])).toEqual([['Töpf', 'stem'], ['chen', 'marker'], ['s', 'marker']]);
+    const base = (w: string) => an(w)[0].parts![0].lemma;
+    expect(base('Stückchen')).toBe('Stück');
+    expect(base('Bettchen')).toBe('Bett');
+    expect(base('Hemdlein')).toBe('Hemd');
+    expect(base('Röcklein')).toBe('Rock');
+    expect(base('Kämmerchen')).toBe('Kammer');
+    expect(base('Leibchen')).toBe('Leib');
+    expect(base('Kätzchen')).toBe('Katze');
+    expect(base('Gärtchen')).toBe('Garten');
+    expect(an('Röcklein')[0].parts![1]).toMatchObject({ text: 'lein', kind: 'marker' });
+  });
+
+  it('never derives a diminutive from a listed row, from a short base, or from lower case', () => {
+    for (const w of ['Mädchen', 'Fräulein']) {
+      expect(an(w).every((r) => r.lemmaKnown && !/derived/.test(r.rule)), w).toBe(true);
+    }
+    const ei: DeLexiconView = { ...lexicon, nouns: (l) => (l === 'ei' ? [noun({ lemma: 'Ei', gender: 'n', genSg: 'Eis', plural: 'Eier' })] : lexicon.nouns(l)) };
+    const short = analyzeGermanForm('Eichen', ei);
+    expect(short.some((r) => /derived/.test(r.rule))).toBe(false);
+    expect(short.every((r) => !r.lemmaKnown)).toBe(true);
+    expect(an('töpfchen').some((r) => /derived diminutive/.test(r.rule))).toBe(false);
+    expect(an('Brötchen').some((r) => /derived diminutive/.test(r.rule))).toBe(false); // Brot is not in the fixture: a guess at most
+  });
+
+  it('a name + s is the genitive of the name; names in s, ß, x, z take an apostrophe (either character)', () => {
+    for (const [w, lemma] of [['Annas', 'Anna'], ['Davids', 'David'], ['Marias', 'Maria'], ['Daniels', 'Daniel'], ['Pauls', 'Paul'], ['Berlins', 'Berlin'], ["Jonas'", 'Jonas'], ['Jonas’', 'Jonas'], ["Max'", 'Max'], ['Hans’', 'Hans']] as const) {
+      const rs = an(w);
+      expect(rs, w).toHaveLength(1);
+      expect(rs[0]).toMatchObject({ lemma, pos: 'PROPN', morph: { Case: 'Gen' }, lemmaKnown: true });
+      expect(rs[0].rule).toMatch(/derived/);
+      expect(rs[0].gloss).toBe(`${lemma} (name)`.replace('Berlin (name)', 'Berlin'));
+      expect(rs[0].parts!.map((p) => p.text).join('')).toBe(w);
+    }
+    // not accepted: -s after s / x, an apostrophe after another name, lower case, an unknown name
+    for (const w of ['Jonass', 'Maxs', "Anna'", 'Anna’', 'annas', 'Klausens', 'Xavers']) {
+      expect(an(w).some((r) => r.pos === 'PROPN' && r.lemmaKnown && r.morph.Case === 'Gen'), w).toBe(false);
+    }
+    expect(an('Hans')[0]).toMatchObject({ lemma: 'Hans', lemmaKnown: true }); // a row stays a row
+    expect(an('Hans')[0].rule).not.toMatch(/derived/);
+  });
+
+  it("the clitic es: geht's, gibt's, ist's, sich's, hab's; and without the apostrophe in older texts", () => {
+    for (const ap of ["'", '’']) {
+      const rs = an(`geht${ap}s`);
+      const r = find(rs, (x) => x.lemma === 'gehen' && x.morph.Person === '3');
+      expect(r.confidence).toBe(0.9); // the base's own
+      expect(r.rule).toMatch(/derived/);
+      expect(r.parts).toEqual([
+        { text: 'geht', start: 0, end: 4, lemma: 'gehen', pos: 'VERB', kind: 'stem' },
+        { text: `${ap}s`, start: 4, end: 6, lemma: 'es', pos: 'PRON', morph: { PronType: 'Prs', Person: '3', Number: 'Sing', Gender: 'Neut' }, kind: 'clitic', role: 'the pronoun es, shortened to s' },
+      ]);
+    }
+    expect(an("Geht's").some((r) => r.lemma === 'gehen')).toBe(true);
+    expect(an("gibt's")[0]).toMatchObject({ lemma: 'geben', morph: { Person: '3', Number: 'Sing' } });
+    expect(an("ist's")[0].lemma).toBe('sein');
+    const sich = an("sich's");
+    expect(sich[0]).toMatchObject({ lemma: 'sich', pos: 'PRON' });
+    expect(sich[0].parts![1]).toMatchObject({ text: "'s", kind: 'clitic', lemma: 'es' });
+    // hab's: the imperative of haben, and the first person with its -e dropped
+    const hab = an("hab's");
+    expect(hab.some((r) => r.lemma === 'haben' && r.morph.Mood === 'Imp')).toBe(true);
+    const first = find(hab, (r) => r.lemma === 'haben' && r.morph.Mood === 'Ind');
+    expect(first.morph).toMatchObject({ Tense: 'Pres', Person: '1', Number: 'Sing' });
+    expect(first.confidence).toBe(0.6);
+    expect(first.rule).toMatch(/dropped/);
+    // without the apostrophe: a finite verb form or a personal pronoun, confidence 0.6
+    for (const [w, lemma] of [['gehts', 'gehen'], ['wollts', 'wollen'], ['dirs', 'du'], ['wirds', 'werden'], ['ists', 'sein']] as const) {
+      const rs = an(w);
+      expect(rs.length, w).toBeGreaterThan(0);
+      expect(rs.every((r) => r.lemma === lemma && r.confidence === 0.6 && r.lemmaKnown && /derived/.test(r.rule)), w).toBe(true);
+      expect(rs[0].parts![1]).toMatchObject({ text: 's', kind: 'clitic', lemma: 'es' });
+    }
+  });
+
+  it('the bare clitic never touches a word that is already a reading, or a capitalised word', () => {
+    for (const w of ['Hauses', 'eins', 'alles', 'uns', 'Tages', 'Manns']) {
+      expect(an(w).some((r) => r.parts?.some((p) => p.kind === 'clitic')), w).toBe(false);
+    }
+    expect(an('uns')[0]).toMatchObject({ lemma: 'wir' });
+    expect(an('Gehts').some((r) => r.parts?.some((p) => p.kind === 'clitic'))).toBe(false);
+    expect(an('Blumenvases').some((r) => r.parts?.some((p) => p.kind === 'clitic'))).toBe(false);
+    expect(an('blumenvases').some((r) => r.parts?.some((p) => p.kind === 'clitic'))).toBe(false); // base is not a verb form or a pronoun
+    expect(an("Haus's").some((r) => r.parts?.some((p) => p.kind === 'clitic'))).toBe(false);
+  });
+
+  it('the old full endings -et / -est: erquicket, salbest, führet', () => {
+    // the list already gives Konjunktiv I (ihr erquicket); the derived indicative readings come after it
+    expect(an('erquicket')[0]).toMatchObject({ lemma: 'erquicken', morph: { Mood: 'Sub' } });
+    expect(an('erquicket')[0].rule).not.toMatch(/derived/);
+    const e = an('erquicket').filter((r) => /derived/.test(r.rule));
+    expect(e.map((r) => `${r.lemma}|${r.morph.Mood}|${r.morph.Person}|${r.morph.Number}`).sort()).toEqual(['erquicken|Imp|2|Plur', 'erquicken|Ind|2|Plur', 'erquicken|Ind|3|Sing']);
+    expect(e.every((r) => r.confidence === 0.6 && r.lemmaKnown && r.register?.[0] === 'literary' && /older form of today's erquickt/.test(r.rule))).toBe(true);
+    expect(e[0].parts).toBeUndefined();
+    const s = an('salbest').filter((r) => /derived/.test(r.rule));
+    expect(s).toHaveLength(1);
+    expect(s[0]).toMatchObject({ lemma: 'salben', morph: { Mood: 'Ind', Tense: 'Pres', Person: '2', Number: 'Sing' } });
+    expect(s[0].rule).toMatch(/full ending -est .* salbst/);
+    expect(an('führet').filter((r) => /derived/.test(r.rule)).every((r) => r.lemma === 'führen')).toBe(true); // führet is also fahren, Konjunktiv II
+    expect(an('führet').some((r) => r.lemma === 'führen' && /derived/.test(r.rule))).toBe(true);
+    // weidet is regular and listed: not derived
+    expect(an('weidet').every((r) => !/derived/.test(r.rule))).toBe(true);
+    // no base, capital letter, or a listed form: nothing derived
+    expect(an('blorfet').every((r) => !r.lemmaKnown)).toBe(true);
+    expect(an('Salbest').some((r) => /derived/.test(r.rule))).toBe(false);
+    expect(an('arbeitet').every((r) => !/derived/.test(r.rule))).toBe(true);
   });
 });
 

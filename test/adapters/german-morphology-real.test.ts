@@ -263,6 +263,58 @@ describe('real lexicon: contractions', () => {
   });
 });
 
+describe('real lexicon: derived readings', () => {
+  const derived = (rs: DeReading[]): DeReading[] => rs.filter((r) => /derived/.test(r.rule));
+
+  it('diminutives from known nouns say they are derived and unconfirmed', () => {
+    for (const [w, base] of [['Töpfchen', 'Topf'], ['Stückchen', 'Stück'], ['Bettchen', 'Bett'], ['Hemdlein', 'Hemd'], ['Röcklein', 'Rock'],
+      ['Kämmerchen', 'Kammer'], ['Leibchen', 'Leib'], ['Kätzchen', 'Katze'], ['Blümchen', 'Blume'], ['Häuschen', 'Haus'], ['Hündchen', 'Hund']] as const) {
+      const rs = an(w);
+      expect(rs.length, w).toBeGreaterThanOrEqual(1);
+      for (const r of rs) {
+        expect(r, w).toMatchObject({ lemma: w, pos: 'NOUN', lemmaKnown: false, confidence: 0.6 });
+        expect(r.morph.Gender).toBe('Neut');
+        expect(r.parts![0]).toMatchObject({ lemma: base, kind: 'stem' });
+        expect(r.parts![1].kind).toBe('marker');
+        expect(r.rule).toMatch(/derived/);
+      }
+    }
+    reads('Töpfchens', 'Töpfchen', { Case: 'Gen', Gender: 'Neut', Number: 'Sing' });
+    // listed rows stay as listed
+    for (const w of ['Mädchen', 'Märchen', 'Brötchen']) {
+      expect(an(w).every((r) => r.lemmaKnown && !/derived/.test(r.rule)), w).toBe(true);
+    }
+  });
+
+  it('the genitive of a name', () => {
+    for (const [w, lemma] of [['Annas', 'Anna'], ['Davids', 'David'], ['Abrahams', 'Abraham'], ['Marias', 'Maria'], ['Daniels', 'Daniel'], ["Jonas'", 'Jonas'], ['Jonas’', 'Jonas']] as const) {
+      const rs = derived(an(w)).filter((r) => r.pos === 'PROPN');
+      expect(rs, w).toHaveLength(1);
+      expect(rs[0]).toMatchObject({ lemma, morph: { Case: 'Gen' }, lemmaKnown: true });
+    }
+    expect(an('Jonass').some((r) => r.pos === 'PROPN' && r.morph.Case === 'Gen')).toBe(false);
+  });
+
+  it("the clitic es and the old full endings", () => {
+    reads("geht's", 'gehen', { Person: '3', Number: 'Sing' }, (r) => r.parts?.[1]?.kind === 'clitic' && r.confidence >= 0.8);
+    reads('geht’s', 'gehen', { Person: '3' }, (r) => r.parts?.[1]?.kind === 'clitic');
+    reads("gibt's", 'geben', { Person: '3' });
+    reads("ist's", 'sein', { Person: '3' });
+    reads("hab's", 'haben', { Mood: 'Ind', Person: '1' });
+    reads("sich's", 'sich', {});
+    reads('gehts', 'gehen', { Person: '3' }, (r) => r.confidence === 0.6);
+    reads('wollts', 'wollen', {}, (r) => r.confidence === 0.6);
+    reads('dirs', 'du', {}, (r) => r.confidence === 0.6);
+    reads('wirds', 'werden', { Person: '3' });
+    reads('ists', 'sein', { Person: '3' });
+    for (const w of ['Hauses', 'eins', 'alles', 'uns']) expect(an(w).some((r) => r.parts?.some((p) => p.kind === 'clitic')), w).toBe(false);
+    reads('erquicket', 'erquicken', { Mood: 'Ind', Person: '3', Number: 'Sing' }, (r) => /older form/.test(r.rule) && r.confidence === 0.6);
+    reads('salbest', 'salben', { Mood: 'Ind', Person: '2', Number: 'Sing' }, (r) => /older form/.test(r.rule) && r.register?.[0] === 'literary');
+    reads('führet', 'führen', { Mood: 'Ind' }, (r) => /older form/.test(r.rule));
+    expect(an('weidet').every((r) => !/derived/.test(r.rule))).toBe(true);
+  });
+});
+
 describe('real lexicon: every entry', () => {
   it('every noun generates forms: none empty, none repeated, a paradigm with a nominative', () => {
     for (const n of lex.allNouns()) {
@@ -314,6 +366,7 @@ describe('real lexicon: every entry', () => {
       for (const f of declineNoun(n)) {
         const rs = an(f.form).filter((r) => r.lemma === n.lemma && r.pos === 'NOUN');
         expect(rs.length, `${f.form} → ${n.lemma}`).toBeGreaterThan(0);
+        expect(rs.some((r) => !/derived/.test(r.rule)), `${f.form} is listed, not derived`).toBe(true);
         for (const cell of f.cells) {
           expect(rs.some((r) => r.cells?.some((x) => x.c === cell.c && x.g === cell.g && x.decl === cell.decl)), `${f.form} cell ${cell.c}${cell.g}`).toBe(true);
         }
@@ -331,6 +384,7 @@ describe('real lexicon: every entry', () => {
         if (form.includes(' ') || (v.prefix && key.startsWith('imp.'))) continue;
         const rs = an(form).filter((r) => r.lemma === v.lemma && r.pos === 'VERB');
         expect(rs.length, `${form} (${key}) → ${v.lemma}`).toBeGreaterThan(0);
+        expect(rs.some((r) => !/derived/.test(r.rule)), `${form} (${key}) is listed, not derived`).toBe(true);
         if (v.prefix) expect(rs.some((r) => r.prefix?.attached === true), `${form} keeps its prefix attached`).toBe(true);
         checked++;
       }

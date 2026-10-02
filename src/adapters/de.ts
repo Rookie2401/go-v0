@@ -1,228 +1,92 @@
 /**
- * German adapter. NFC + lower-case identity (whole words: compounds keep their own form identity).
- * Confident: lexicon forms with case/gender for articles, possessives and nouns; strong/weak/irregular
- * verb class in notes; separable prefix detection across the sentence (fing … an → anfangen).
- * Uncertain: compound decomposition (rule-based, low confidence, only when every part is a lexicon noun);
- * case of ambiguous article forms is reported as a union (Case=Dat,Gen,Nom), not guessed.
+ * German adapter (course target: Standard German of Germany, de-DE). NFC + lower-case identity (whole words:
+ * compounds keep their own form identity; `Lebensversicherung` is one token with parts).
+ *
+ * Layers, in the order a token meets them (docs/PLAN11.md, docs/GERMAN_COURSE.md section 3):
+ *   lexicon rows (german/lexicon.ts: nouns with gender / genitive / plural, verbs with principal parts and separable
+ *   prefix, adjectives, the closed classes with every form) → the word-form engine (german/morphology.ts: every
+ *   context-free reading of a written word with all its case / gender / number cells) → older spelling related to
+ *   today's (german/historical.ts) → the sentence layer (german/sentence.ts: agreement in the noun phrase, what a
+ *   preposition governs, capital letters, separated verbs put together, compounds taken apart, readings ordered by
+ *   their neighbours) → phrase units and constructions (german/phrases.ts, german/constructions.ts) and checks on the
+ *   learner's own German (german/production.ts).
+ * Confident: words the lexicon holds and their inflected forms, the closed classes, a noun phrase's agreement, a
+ * separated verb whose joined form the lexicon lists. Uncertain, and said so: a reading for a word outside the
+ * lexicon (`unconfirmed`, 0.6 at most, no gloss), a compound taken apart (0.55), an older spelling, anything the
+ * neighbours do not decide (a union such as Case "Nom,Acc", never a guess). There is no parser.
+ * The data is machine-drafted and has not been checked by a native speaker.
  */
-import type { AnalysisCandidate, ErrorCandidate, LanguageAdapter, PatternCandidate, PronunciationSupport, RawToken, AdapterSupport } from '../core';
-import {
-  E, Lexicon, hasPos, lexiconAnalyze, makeWordTokenizer, matchCase, matchPhraseRules, nfc, speechNormalizeGeneric,
-  splitSentences, type PhraseRule,
-} from './shared';
+import type {
+  AdapterSupport, AnalysisSourceInfo, AnalyzedToken, LanguageAdapter, PronunciationSupport, RawToken,
+} from '../core';
+import { makeWordTokenizer, matchPhraseRules, nfc, speechNormalizeGeneric } from './shared';
+import { deLexiconStats, deLexiconView } from './german/lexicon';
+import { describeGermanMorph } from './german/morphology';
+import { analyzeGermanSentence, refineGermanSentence, relateGerman } from './german/sentence';
+import { DE_ANALYZER, DE_ANALYZER_VERSION, DE_SOURCE_IDS, capitalise } from './german/context';
+import { baseReadings } from './german/context-base';
+import { DE_VARIETIES } from './german/varieties';
+import { GERMAN_PHRASE_RULES, detectGermanConstructions, segmentGermanSentences } from './german/constructions';
+import { checkGermanProduction } from './german/production';
+import { deMorphFromTags, deVarietiesFromTags } from './german/tags';
+import { LISTED_GROUPS } from './german/historical';
 
 const LANG = 'de' as const;
-const VERSION = '1';
-const ANALYZER = `adapter-${LANG}@${VERSION}`;
+const VERSION = DE_ANALYZER_VERSION;
+const ANALYZER = DE_ANALYZER;
+
+export { DE_SOURCE_IDS };
+
+const SOURCES: Record<string, AnalysisSourceInfo> = {
+  [DE_SOURCE_IDS.hand]: { id: DE_SOURCE_IDS.hand, label: 'Course word list', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [DE_SOURCE_IDS.phrases]: { id: DE_SOURCE_IDS.phrases, label: 'Course phrase list', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [DE_SOURCE_IDS.constructions]: { id: DE_SOURCE_IDS.constructions, label: 'Course grammar patterns', origin: 'hand', reviewStatus: 'machine-drafted', version: VERSION },
+  [DE_SOURCE_IDS.rules]: { id: DE_SOURCE_IDS.rules, label: 'German word-form and sentence rules', origin: 'rule', reviewStatus: 'machine-drafted', version: VERSION },
+};
 
 const normalize = (s: string) => nfc(s).toLocaleLowerCase('de');
 
-const STRONG = { class: 'strong' };
-const WEAK = { class: 'weak' };
-const IRREG = { class: 'irregular' };
-
-const ENTRIES = [
-  // verbs
-  E('sein', 'AUX', 'to be', ['sein:inf', 'bin:1s pres', 'bist:2s pres', 'ist:3s pres', 'sind:1p pres', 'sind:3p pres', 'war:1s past', 'war:3s past'], { notes: IRREG }),
-  E('haben', 'VERB', 'to have', ['haben:inf', 'haben:1p pres', 'haben:3p pres', 'habe:1s pres', 'hast:2s pres', 'hat:3s pres', 'hatte:1s past', 'hatte:3s past'], { notes: IRREG }),
-  E('verstehen', 'VERB', 'to understand', ['verstehen:inf', 'verstehen:1p pres', 'verstehen:3p pres', 'verstehe:1s pres', 'verstehst:2s pres', 'versteht:3s pres', 'verstand:1s past', 'verstand:3s past'], { notes: STRONG }),
-  E('glauben', 'VERB', 'to believe', ['glauben:inf', 'glauben:1p pres', 'glauben:3p pres', 'glaube:1s pres', 'glaubst:2s pres', 'glaubt:3s pres', 'glaubte:1s past', 'glaubte:3s past'], { notes: WEAK }),
-  E('anfangen', 'VERB', 'to begin', ['anfangen:inf', 'anzufangen:inf', 'fange:1s pres', 'fängst:2s pres', 'fängt:3s pres', 'fing:1s past', 'fing:3s past', 'angefangen:ptcp'], { notes: { class: 'strong', separable: 'an' } }),
-  E('vergeben', 'VERB', 'to forgive', ['vergeben:inf', 'vergeben:1p pres', 'vergeben:3p pres', 'vergebe:1s pres', 'vergibst:2s pres', 'vergibt:3s pres', 'vergab:1s past', 'vergab:3s past'], { notes: STRONG }),
-  E('lieben', 'VERB', 'to love', ['lieben:inf', 'liebe:1s pres', 'liebst:2s pres', 'liebt:3s pres', 'geliebt:ptcp'], { notes: WEAK }),
-  E('wollen', 'AUX', 'to want', ['wollen:inf', 'will:1s pres', 'will:3s pres'], { notes: IRREG }),
-  E('gehen', 'VERB', 'to go; geht es dir = how are you', ['gehen:inf', 'geht:3s pres'], { notes: STRONG }),
-  E('sagen', 'VERB', 'to say', ['sagen:inf', 'sagen:1p pres', 'sagen:3p pres', 'sage:1s pres'], { notes: WEAK }),
-  E('bekennen', 'VERB', 'to confess', ['bekennen:inf', 'bekennen:1p pres'], { notes: IRREG }),
-  E('verführen', 'VERB', 'to lead astray, deceive', ['verführen:inf', 'verführen:1p pres'], { notes: WEAK }),
-  E('reinigen', 'VERB', 'to cleanse', ['reinigen:inf', 'reinigt:3s pres'], { notes: WEAK }),
-  E('geben', 'VERB', 'to give', ['geben:inf', 'gab:1s past', 'gab:3s past'], { notes: STRONG }),
-  E('verlieren', 'VERB', 'to lose, perish', ['verlieren:inf', 'verloren:ptcp'], { notes: STRONG }),
-  E('werden', 'AUX', 'to become; passive auxiliary', ['werden:inf', 'werden:1p pres', 'werden:3p pres', 'wird:3s pres'], { notes: IRREG }),
-  // nouns
-  E('Herz', 'NOUN', 'heart', ['Herz:n sg nom acc', 'Herzen:n sg dat', 'Herzen:n pl nom acc dat gen']),
-  E('Sünde', 'NOUN', 'sin', ['Sünde:f sg nom acc dat gen', 'Sünden:f pl nom acc dat gen']),
-  E('Gott', 'PROPN', 'God', ['Gott:m sg nom acc dat']),
-  E('Friede', 'NOUN', 'peace', ['Friede:m sg nom', 'Frieden:m sg nom acc dat']),
-  E('Welt', 'NOUN', 'world', ['Welt:f sg nom acc dat gen', 'Welten:f pl nom acc dat gen']),
-  E('Sohn', 'NOUN', 'son', ['Sohn:m sg nom acc dat']),
-  E('Wahrheit', 'NOUN', 'truth', ['Wahrheit:f sg nom acc dat gen']),
-  E('Leben', 'NOUN', 'life', ['Leben:n sg nom acc dat']),
-  E('Tag', 'NOUN', 'day', ['Tag:m sg nom acc dat', 'Tages:m sg gen', 'Tage:m pl nom acc gen']),
-  E('Untugend', 'NOUN', 'unrighteousness', ['Untugend:f sg nom acc dat gen']),
-  E('Haus', 'NOUN', 'house', ['Haus:n sg nom acc', 'Häuser:n pl nom acc gen']),
-  E('Wort', 'NOUN', 'word', ['Wort:n sg nom acc', 'Worte:n pl nom acc gen']),
-  E('Mann', 'NOUN', 'man', ['Mann:m sg nom acc dat', 'Männer:m pl nom acc gen']),
-  E('Anna', 'PROPN', 'Anna (name)'), E('Paul', 'PROPN', 'Paul (name)'),
-  // articles, determiners
-  E('der', 'DET', 'the', [
-    'der:m sg nom def art', 'der:f sg dat def art', 'der:f sg gen def art', 'der:pl gen def art',
-    'die:f sg nom def art', 'die:f sg acc def art', 'die:pl nom def art', 'die:pl acc def art',
-    'das:n sg nom def art', 'das:n sg acc def art', 'dem:m sg dat def art', 'dem:n sg dat def art',
-    'den:m sg acc def art', 'den:pl dat def art', 'des:m sg gen def art', 'des:n sg gen def art',
-  ]),
-  E('der', 'PRON', 'who, which (relative)', ['die:pl nom rel']),
-  E('ein', 'DET', 'a, an', [
-    'ein:m sg nom indef art', 'ein:n sg nom indef art', 'ein:n sg acc indef art', 'eine:f sg nom indef art', 'eine:f sg acc indef art',
-    'einen:m sg acc indef art', 'einem:m sg dat indef art', 'einem:n sg dat indef art', 'einer:f sg dat indef art', 'einer:f sg gen indef art',
-    'eines:m sg gen indef art', 'eines:n sg gen indef art',
-  ]),
-  E('kein', 'DET', 'no, not any', ['kein:m sg nom', 'keine:f sg nom acc', 'keine:pl nom acc', 'keinen:m sg acc', 'keinem:m sg dat', 'keiner:f sg dat']),
-  E('mein', 'DET', 'my', ['mein:m sg nom poss', 'meine:f sg nom acc poss', 'meine:pl nom acc poss', 'meinen:m sg acc poss', 'meinen:pl dat poss', 'meinem:m sg dat poss', 'meinem:n sg dat poss', 'meiner:f sg dat poss']),
-  E('unser', 'DET', 'our', ['unsre:f sg nom acc poss', 'unsre:pl nom acc poss', 'unsere:f sg nom acc poss', 'unsere:pl nom acc poss']),
-  E('sein', 'DET', 'his', ['seinen:m sg acc poss', 'seinen:pl dat poss', 'seine:f sg nom acc poss', 'seinem:m sg dat poss']),
-  E('alle', 'PRON', 'all, everyone', ['alle:pl nom acc', 'allen:pl dat', 'aller:pl gen', 'aller:f sg dat gen']),
-  // pronouns
-  E('ich', 'PRON', 'I', ['ich:1s nom prs']),
-  E('du', 'PRON', 'you (sg, informal)', ['du:2s nom prs']),
-  E('er', 'PRON', 'he', ['er:3s m nom prs']),
-  E('sie', 'PRON', 'she, they', ['sie:3s f nom acc prs', 'sie:3p nom acc prs']),
-  E('es', 'PRON', 'it', ['es:3s n nom acc prs']),
-  E('wir', 'PRON', 'we', ['wir:1p nom prs']),
-  E('mir', 'PRON', 'me (dative)', ['mir:1s dat prs']),
-  E('dir', 'PRON', 'you (dative)', ['dir:2s dat prs']),
-  E('uns', 'PRON', 'us', ['uns:1p acc dat prs']),
-  E('ihn', 'PRON', 'him', ['ihn:3s m acc prs']),
-  E('etwas', 'PRON', 'something'),
-  E('was', 'PRON', 'what', ['was:int']),
-  E('selbst', 'ADV', 'oneself, even'),
-  // adjectives
-  E('jung', 'ADJ', 'young'),
-  E('gut', 'ADJ', 'good, well'),
-  E('treu', 'ADJ', 'faithful'),
-  E('gerecht', 'ADJ', 'righteous'),
-  E('ewig', 'ADJ', 'eternal', ['ewige:n sg acc', 'ewige:m sg nom']),
-  E('eingeboren', 'ADJ', 'only-begotten', ['eingeborenen:m sg acc']),
-  E('ganz', 'ADJ', 'whole, all', ['ganzem:m sg dat', 'ganzem:n sg dat']),
-  // adverbs
-  E('jetzt', 'ADV', 'now'), E('heute', 'ADV', 'today'), E('dann', 'ADV', 'then'), E('gestern', 'ADV', 'yesterday'),
-  E('oft', 'ADV', 'often'), E('manchmal', 'ADV', 'sometimes'), E('morgen', 'ADV', 'tomorrow'),
-  E('auch', 'ADV', 'also'),
-  E('nicht', 'ADV', 'not', ['nicht:neg']),
-  E('also', 'ADV', 'thus, so'),
-  E('wie', 'ADV', 'how', ['wie:int']),
-  E('warum', 'ADV', 'why', ['warum:int']),
-  E('so', 'ADV', 'so, thus'),
-  // prepositions & particles
-  E('an', 'ADP', 'at, on; (believe) in'),
-  E('in', 'ADP', 'in'),
-  E('mit', 'ADP', 'with'), E('von', 'ADP', 'from, of'), E('aus', 'ADP', 'out of'), E('bei', 'ADP', 'at, with'),
-  E('nach', 'ADP', 'after, to'), E('seit', 'ADP', 'since'), E('auf', 'ADP', 'on, upon'), E('für', 'ADP', 'for'),
-  E('zu', 'ADP', 'to, at', ['zu']),
-  E('zu', 'PART', 'to (infinitive marker)', ['zu']),
-  // conjunctions
-  E('und', 'CONJ', 'and'), E('aber', 'CONJ', 'but'), E('sondern', 'CONJ', 'but rather'), E('oder', 'CONJ', 'or'),
-  E('als', 'SCONJ', 'when, as'),
-  E('dass', 'SCONJ', 'that', ['dass', 'daß']),
-  E('wenn', 'SCONJ', 'if, when'), E('weil', 'SCONJ', 'because'),
-  // interjections
-  E('hallo', 'INTJ', 'hello'), E('ja', 'INTJ', 'yes'), E('danke', 'INTJ', 'thanks'),
-];
-export const deLexicon = new Lexicon(ENTRIES, normalize);
-
-// ── compounds (rule-based, low confidence) ──
-const LINKS = ['', 's', 'n', 'en', 'e', 'es'];
-const NOUN_PARTS = new Map<string, string>(); // normalized form → normalized lemma
-for (const e of ENTRIES) {
-  if (e.pos !== 'NOUN' && e.pos !== 'PROPN') continue;
-  for (const f of e.forms) NOUN_PARTS.set(normalize(f.form), normalize(e.lemma));
+/**
+ * What the checks on the learner's own German see: a lower-case word the list knows only as a noun (gott, zeitung) and has no
+ * other confirmed reading for is shown as the noun the learner meant, so that the capital-letter check can say so. The analysis
+ * itself never gives a lower-case word a noun reading.
+ */
+function productionView(tokens: RawToken[], analyses: AnalyzedToken[]): AnalyzedToken[] {
+  return analyses.map((a, i) => {
+    const t = tokens[i];
+    if (!t.isWord || !/^\p{Ll}/u.test(t.surface) || a.candidates.some((c) => !c.unconfirmed)) return a;
+    const nouns = baseReadings(capitalise(t.surface), deLexiconView).filter((r) => r.c.pos === 'NOUN' && !r.c.unconfirmed);
+    return nouns.length ? { ...a, candidates: nouns.map((r) => r.c) } : a;
+  });
 }
 
-function decompose(normalized: string, depth = 0): string[] | undefined {
-  if (depth > 2) return undefined;
-  for (let k = 3; k <= normalized.length - 3; k++) {
-    const left = normalized.slice(0, k);
-    for (const link of LINKS) {
-      if (link && !left.endsWith(link)) continue;
-      const head = link ? left.slice(0, -link.length) : left;
-      const lemma = NOUN_PARTS.get(head);
-      if (!lemma || head.length < 3) continue;
-      const rest = normalized.slice(k);
-      const restLemma = NOUN_PARTS.get(rest);
-      if (restLemma) return [lemma, restLemma];
-      const deeper = decompose(rest, depth + 1);
-      if (deeper) return [lemma, ...deeper];
-    }
+/** Modern spelling → the older spellings the list pairs with it (Tal → Thal, dass → daß), built once. */
+let OLDER: Map<string, string[]> | undefined;
+function olderHeadwords(lemma: string): string[] {
+  if (!OLDER) {
+    OLDER = new Map();
+    for (const g of LISTED_GROUPS) for (const [old, modern] of g.pairs) OLDER.set(modern, [...(OLDER.get(modern) ?? []), old]);
   }
-  return undefined;
+  return OLDER.get(lemma) ?? [];
 }
 
-function unknownWord(token: RawToken): AnalysisCandidate[] {
-  if (!/^\p{Lu}/u.test(token.surface)) return [];
-  const parts = decompose(token.normalized);
-  if (!parts) return [];
-  return [{
-    pos: 'NOUN', morph: {}, confidence: 0.35, gloss: `compound of ${parts.join(' + ')}`,
-    notes: { components: parts, source: 'rule' },
-  }];
-}
-
-function contextual(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[] {
-  const cands = base[i];
-  const t = tokens[i];
-  const reorder = (pos: string, conf: number) => {
-    const idx = cands.findIndex((c) => c.pos === pos);
-    if (idx <= 0) return cands;
-    return [{ ...cands[idx], confidence: conf }, ...cands.filter((_, k) => k !== idx).map((c) => ({ ...c, confidence: Math.min(c.confidence, 0.35) }))];
-  };
-  if (t.normalized === 'die' && cands.length > 1 && tokens[i - 1]?.surface === ',') return reorder('PRON', 0.7);
-  if (t.normalized === 'zu' && cands.length > 1) {
-    const next = base[i + 1]?.[0];
-    if (next && (next.morph.VerbForm ?? '').split(',').includes('Inf')) return reorder('PART', 0.85);
-    return reorder('ADP', 0.7);
-  }
-  if (t.normalized === 'an') {
-    for (let j = i - 1; j >= 0; j--) {
-      const c = base[j]?.[0];
-      if (c && c.pos === 'VERB' && c.notes?.separable === 'an' && c.morph.VerbForm !== 'Inf') {
-        const next = tokens[i + 1];
-        if (!next || !next.isWord || next.normalized === 'zu') {
-          return [
-            { lemma: 'anfangen', pos: 'VERB', morph: {}, gloss: 'to begin (separable particle)', confidence: 0.8, notes: { separable: 'an', particleOf: String(j), source: 'rule' } },
-            ...cands.map((c) => ({ ...c, confidence: 0.3 })),
-          ];
-        }
-        break;
-      }
-    }
-  }
-  return cands;
-}
-
-// ── phrases ──
-const PHRASES: PhraseRule[] = [
-  { pattern: ['als', '_', 'jung', 'sein'], display: 'als ich jung war', gloss: 'when I was young', kind: 'formula',
-    variants: [['als', { slot: true, pos: ['PRON'] }, 'jung', 'sein']] },
-  { pattern: ['anfangen', 'zu', 'verstehen'], display: 'anfangen … zu verstehen', gloss: 'to begin to understand', kind: 'construction',
-    variants: [['anfangen', { gap: 8 }, 'zu', 'verstehen']] },
-  { pattern: ['glauben', 'an', '_'], display: 'glauben an …', gloss: 'to believe in', kind: 'frame',
-    variants: [['glauben', { gap: 4 }, 'an', { slot: true }], ['an', { slot: true, pos: ['PRON', 'PROPN', 'NOUN'] }, 'glauben']] },
-];
-
-const DATIVE_PREPS = new Set(['mit', 'zu', 'von', 'aus', 'bei', 'nach', 'seit']);
-const FRONT_ADVERBS = new Set(['jetzt', 'heute', 'dann', 'morgen', 'gestern', 'oft', 'manchmal']);
-const NOM_PRONOUNS = new Set(['ich', 'du', 'er', 'sie', 'es', 'wir']);
-const SUBORDINATORS = new Set(['als', 'dass', 'daß', 'wenn', 'weil', 'warum', 'ob']);
-
-function dativeArticle(lemma: string, gender: string, number: string): string | undefined {
-  const entry = deLexicon.find(lemma, 'DET');
-  if (!entry) return undefined;
-  return entry.forms.find((f) => (f.morph.Case ?? '').split(',').includes('Dat') && f.morph.Gender === gender && f.morph.Number === number)?.form;
-}
+const LEMMAS = deLexiconStats.nouns + deLexiconStats.verbs + deLexiconStats.adjectives + deLexiconStats.plainWords;
 
 const SUPPORT: AdapterSupport = {
   tokenization: 'dependable', // Intl.Segmenter('de'); whole words (compounds stay one token)
-  sentenceSegmentation: 'limited', // terminators, ordinal dot (3. Mai) and a short abbreviation list
-  lemmatization: 'seed-only', // the lexicon covers the seed corpus only; other words are unanalysed unless a capitalised compound of lexicon nouns
-  morphology: 'seed-only', // case/gender for the listed articles, possessives, nouns; ambiguous forms report a union, not a guess
-  phraseDetection: 'seed-only',
+  sentenceSegmentation: 'limited', // terminators, ordinal dot (3. Mai), a list of abbreviations; an unlisted abbreviation followed by a capital can split a sentence
+  lemmatization: 'seed-only', // a machine-drafted word list of about 2,900 entries and the closed classes; any other word gets an inferred (unconfirmed) reading or none
+  morphology: 'limited', // every reading of a form with its case / gender / number cells; agreement narrows them inside the noun phrase; not measured on running prose
+  phraseDetection: 'limited',
   productionChecks: 'limited',
   limitations: [
-    'Lemmatization is seed-only: the lexicon covers the bundled corpus, so supplied texts will have unanalysed words.',
-    'Compound decomposition is a low-confidence rule that only fires when every part is a lexicon noun.',
-    'Separable-prefix detection covers anfangen (an); other separable verbs are not analysed.',
-    'Adjective endings and verb paradigms outside the lexicon are not analysed.',
-    'Production checks: noun capitalisation, dative article after a dative preposition, verb-second after a fronted adverb — only for lexicon words.',
+    `Lemmatization is seed-only: the word list is a machine-drafted seed of about ${LEMMAS.toLocaleString('en')} entries (nouns, verbs, adjectives, closed classes) that no native speaker has checked; a word outside it gets a reading the rules only infer (marked unconfirmed, 0.6 at most, no gloss) or none.`,
+    'There is no parser. The sentence layer reads the neighbouring words (the noun phrase, the preposition in front of it, the end of the clause, the subject pronoun); what they do not decide stays a union (Case "Nom,Acc"), never a guess: in "Die Frau sieht die Tochter" both nouns stay nominative-or-accusative.',
+    'A separated verb (steht … auf) is put together only when the prefix stands at the end of its clause and the joined verb is in the word list; a stranded prefix of a verb the list does not hold is offered as an unconfirmed guess behind the ordinary reading. Prefixes such as um, über, durch split only for verbs the list marks as separable.',
+    'Compounds are taken apart only into words the word list knows, with the linking element named; the reading is marked unconfirmed (0.55) and has no gloss. A compound the list holds keeps its own lemma and gloss with its parts beside it.',
+    'Older spelling (daß, muß, thun, Thal, gieng) is related to today\'s word without changing the text, and only when the modern spelling is a word the list knows; vocabulary that is merely old (ward, Weib) is not a spelling variant.',
+    'Verb forms are decided by a subject pronoun, a clause that ends in its verb, a modal or an auxiliary; a verb form no neighbour decides keeps every reading (Mood "Ind,Sub", an infinitive that may be finite).',
+    'Production checks are rules for the commonest errors (capital letters, article against noun gender, the case after a preposition, verb position, haben against sein, verb ending against the subject, older spelling): they fire only on their own unambiguous shape and say nothing when a fact is missing.',
   ],
 };
 
@@ -232,57 +96,31 @@ export const deAdapter: LanguageAdapter = {
   script: 'Latn',
   version: VERSION,
   support: SUPPORT,
+  sources: SOURCES,
+  varieties: DE_VARIETIES,
 
-  segmentSentences: (text) =>
-    splitSentences(text, { terminators: '.!?…', ordinalDot: true, abbreviations: ['dr', 'nr', 'usw', 'bzw', 'ca', 'vgl', 'etc', 'str', 'prof', 'ggf', 'evtl'] }),
+  segmentSentences: segmentGermanSentences,
   tokenize: makeWordTokenizer({ locale: 'de', normalize }),
   normalize,
   /** Keeps umlauts (ü ≠ u): they distinguish words. */
   searchNormalize: (q) => normalize(q).trim(),
 
-  analyze: (tokens) => lexiconAnalyze(tokens, deLexicon, ANALYZER, { unknown: unknownWord, contextual }),
-
-  detectPhrases: (tokens, analyses) => matchPhraseRules(tokens, analyses, PHRASES, normalize),
-
-  detectPatterns(tokens, analyses): PatternCandidate[] {
-    const out: PatternCandidate[] = [];
-    // separable prefix verb
-    analyses.forEach((a, j) => {
-      const c = a.candidates[0];
-      const v = c?.notes?.particleOf;
-      if (typeof v === 'string') {
-        out.push({
-          key: 'separable-prefix-verb', title: 'Separable-prefix verb', confidence: c.confidence, tokenIndexes: [Number(v), j],
-          explanation: 'The prefix splits off and goes to the end of the clause: anfangen → "Ich fing an, …". Look for the verb and its prefix together.',
-        });
-      }
-    });
-    // verb-final subordinate clause
-    tokens.forEach((t, i) => {
-      if (!SUBORDINATORS.has(t.normalized) || !t.isWord) return;
-      let end = i + 1;
-      while (end < tokens.length && tokens[end].surface !== ',' && !/^[.!?…]$/.test(tokens[end].surface)) end++;
-      const last = end - 1;
-      if (last > i && hasPos(analyses[last], 'VERB', 'AUX')) {
-        out.push({
-          key: 'verb-final-subordinate', title: 'Subordinate clause: verb last', confidence: 0.85, tokenIndexes: [i, last],
-          explanation: 'After als / dass / warum / wenn the conjugated verb moves to the end of its clause.',
-        });
-      }
-    });
-    // dative after preposition
-    tokens.forEach((t, i) => {
-      if (!DATIVE_PREPS.has(t.normalized)) return;
-      const next = analyses[i + 1]?.candidates[0];
-      if (next && (next.morph.Case ?? '').split(',').includes('Dat') && ['DET', 'ADJ'].includes(next.pos ?? '')) {
-        out.push({
-          key: 'dative-after-preposition', title: 'Dative after the preposition', confidence: 0.75, tokenIndexes: [i, i + 1],
-          explanation: 'mit, von, zu, aus, bei, nach, seit always take the dative case: von ganzem Herzen.',
-        });
-      }
-    });
-    return out;
+  analyze: (tokens: RawToken[]): AnalyzedToken[] => {
+    const cands = analyzeGermanSentence(tokens, deLexiconView);
+    return tokens.map((t, i) => ({ token: t, candidates: cands[i], analyzer: ANALYZER }));
   },
+
+  /**
+   * The same ordering as `analyze`, after the importer put a dictionary's readings on some tokens. A token of this
+   * adapter starts again from its context-free readings; any other token brings its readings as they are, and its
+   * neighbours read them like ours. Only order, a lowered confidence and `notes.context` can change; a token whose
+   * analyzer is not in `analyzers` is left exactly alone.
+   */
+  refine: (tokens, analyzed, analyzers, given): AnalyzedToken[] => refineGermanSentence(tokens, analyzed, analyzers, deLexiconView, given),
+
+  detectPhrases: (tokens, analyses) => matchPhraseRules(tokens, analyses, GERMAN_PHRASE_RULES, normalize),
+
+  detectPatterns: (tokens, analyses) => detectGermanConstructions(tokens, analyses),
 
   pronunciation(token): PronunciationSupport {
     const s = token.normalized;
@@ -318,68 +156,24 @@ export const deAdapter: LanguageAdapter = {
 
   display: { wordSeparator: ' ', showBoundariesOnHighlight: false, fontFamily: 'Georgia, "Times New Roman", serif', lineHeight: 1.7 },
 
-  checkProduction(tokens, analyses, _sentence): ErrorCandidate[] {
-    const out: ErrorCandidate[] = [];
+  checkProduction: (tokens, analyses, sentence) => checkGermanProduction(tokens, productionView(tokens, analyses), sentence, deLexiconView),
 
-    // nouns are capitalised
-    tokens.forEach((t, i) => {
-      const cands = analyses[i]?.candidates ?? [];
-      if (!t.isWord || !cands.length || !cands.every((c) => c.pos === 'NOUN' || c.pos === 'PROPN')) return;
-      if (t.surface[0] === t.surface[0].toLowerCase() && t.surface[0] !== t.surface[0].toUpperCase()) {
-        out.push({
-          category: 'spelling', tokenIndexes: [i], confidence: 0.85, affectsMeaning: false,
-          message: 'German nouns are written with a capital letter.',
-          suggestion: { start: t.start, end: t.end, replacement: t.surface[0].toUpperCase() + t.surface.slice(1) },
-        });
-      }
-    });
+  relate: (a, b) => relateGerman(a, b, deLexiconView),
 
-    // article after a dative preposition
-    tokens.forEach((t, i) => {
-      if (!DATIVE_PREPS.has(t.normalized)) return;
-      const art = analyses[i + 1]?.candidates[0];
-      const noun = analyses[i + 2]?.candidates[0];
-      if (!art || art.pos !== 'DET' || !art.morph.Case) return;
-      if (art.morph.Case.split(',').includes('Dat')) return;
-      let suggestion: ErrorCandidate['suggestion'];
-      if (noun && noun.pos === 'NOUN' && noun.morph.Gender && noun.morph.Number && !noun.morph.Number.includes(',') && !noun.morph.Gender.includes(',') && art.lemma) {
-        const fix = dativeArticle(art.lemma, noun.morph.Gender, noun.morph.Number);
-        if (fix) suggestion = { start: tokens[i + 1].start, end: tokens[i + 1].end, replacement: matchCase(tokens[i + 1].surface, fix) };
-      }
-      out.push({
-        category: 'case', tokenIndexes: [i, i + 1], confidence: suggestion ? 0.8 : 0.6, affectsMeaning: false,
-        message: `"${t.surface}" takes the dative: "${tokens[i + 1].surface}" is not a dative form.`,
-        suggestion,
-      });
-    });
-
-    // verb-second: fronted adverb + subject pronoun + finite verb → verb must come second
-    if (tokens.length >= 3 && FRONT_ADVERBS.has(tokens[0].normalized) && NOM_PRONOUNS.has(tokens[1].normalized)) {
-      const v = analyses[2]?.candidates[0];
-      if (v && (v.pos === 'VERB' || v.pos === 'AUX') && v.morph.Person) {
-        const last = tokens[2];
-        out.push({
-          category: 'word-order', tokenIndexes: [0, 1, 2], confidence: 0.7, affectsMeaning: false,
-          message: 'In a main clause the conjugated verb is the second element: "Jetzt glaube ich".',
-          suggestion: { start: tokens[0].start, end: last.end, replacement: `${tokens[0].surface} ${last.surface} ${tokens[1].surface}` },
-        });
-      }
-    }
-    return out;
+  /**
+   * Other headwords a dictionary may file this lemma under: an older spelling the list pairs with it (Tal → Thal), then the
+   * ß / ss variant (daß ⇄ dass, Strasse ⇄ Straße). Asked for only when the lemma has no entry of its own; the reading keeps its lemma.
+   */
+  lemmaVariants: (lemma): string[] => {
+    const out = [...olderHeadwords(lemma)];
+    const alt = lemma.includes('ß') ? lemma.replace(/ß/g, 'ss') : lemma.replace(/ss/g, 'ß');
+    if (alt !== lemma) out.push(alt);
+    return [...new Set(out)].filter((v) => v !== lemma);
   },
 
-  relate(a, b) {
-    const na = normalize(a), nb = normalize(b);
-    if (na === nb) return 'same';
-    const la = deLexicon.lemmasOf(na), lb = new Set(deLexicon.lemmasOf(nb));
-    if (la.some((l) => lb.has(l))) return 'inflection';
-    const ca = decompose(na), cb = decompose(nb);
-    const lemmasB = new Set([nb, ...deLexicon.lemmasOf(nb).map(normalize)]);
-    const lemmasA = new Set([na, ...deLexicon.lemmasOf(na).map(normalize)]);
-    if (ca && ca.some((p) => lemmasB.has(p))) return 'component';
-    if (cb && cb.some((p) => lemmasA.has(p))) return 'component';
-    return 'none';
-  },
+  morphFromTags: deMorphFromTags,
+  varietiesFromTags: deVarietiesFromTags,
+  describeMorph: (morph, pos) => describeGermanMorph(morph, pos),
 };
 
 // ── numbers 0–999 999 ──

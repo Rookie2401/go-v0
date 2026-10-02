@@ -12,8 +12,11 @@ describe('German adapter', () => {
     expect(verb.lemma).toBe('anfangen');
     expect(verb.notes).toMatchObject({ separable: 'an' });
     expect(part.lemma).toBe('anfangen');
-    expect(part.pos).toBe('VERB');
+    // changed (contract v9): the stranded prefix keeps the word class the lexicon gives the word an (a preposition), and the pair is a unit
+    expect(part.pos).toBe('ADP');
     expect(part.notes).toMatchObject({ separable: 'an', particleOf: String(indexOf(r, 'fing')) });
+    expect(verb.unit).toEqual({ head: indexOf(r, 'fing'), pieces: [indexOf(r, 'fing'), indexOf(r, 'an')], role: 'head', display: 'anfangen' });
+    expect(part.unit?.role).toBe('separable prefix');
     const pat = patterns('de', r.text).find((p) => p.key === 'separable-prefix-verb');
     expect(pat?.tokenIndexes).toEqual([indexOf(r, 'fing'), indexOf(r, 'an')]);
     // the phrase "anfangen … zu verstehen" spans the gap
@@ -28,10 +31,11 @@ describe('German adapter', () => {
   it('gives case and gender for articles; ambiguous forms stay ambiguous (and less confident)', () => {
     const dem = best(run('de', 'mit dem Herzen'), 'dem');
     expect(dem.morph.Case).toBe('Dat');
-    const der = best(run('de', 'der Mann'), 'der');
+    // changed (contract v9): "der" alone is every possibility; the union is the honest answer (a listed form has the same 0.92
+    // confidence whatever its ambiguity), and inside "der Mann" the noun phrase narrows it to the nominative
+    const der = run('de', 'der').analyses[0].candidates.find((c) => c.pos === 'DET')!;
     expect(der.morph.Case.split(',').sort()).toEqual(['Dat', 'Gen', 'Nom']);
-    expect(der.confidence).toBeLessThan(dem.confidence + 0.0001);
-    expect(der.confidence).toBeLessThan(0.9);
+    expect(best(run('de', 'der Mann'), 'der').morph.Case).toBe('Nom');
     expect(best(run('de', 'in meinem Herzen'), 'meinem').morph).toMatchObject({ Case: 'Dat', Poss: 'Yes' });
     expect(best(run('de', 'der Mann'), 'Mann').morph).toMatchObject({ Gender: 'Masc', Number: 'Sing' });
   });
@@ -47,12 +51,19 @@ describe('German adapter', () => {
     const t = r.tokens[1];
     expect(t.normalized).toBe('gotteshaus');
     const c = r.analyses[1].candidates[0];
-    expect(c.notes).toMatchObject({ components: ['gott', 'haus'] });
-    expect(c.lemma).toBeUndefined();
-    expect(c.confidence).toBeLessThan(0.5); // a structural guess, flagged as such
-    expect(run('de', 'Weltfrieden').analyses[0].candidates[0].notes).toMatchObject({ components: ['welt', 'friede'] });
-    // not a compound of known nouns → nothing
-    expect(run('de', 'Qwertzuiop').analyses[0].candidates).toEqual([]);
+    // changed (contract v9): components are the lemmas of the parts (capital letters kept); a compound the list holds keeps its own
+    // lemma and gloss, one it does not hold is an unconfirmed noun (0.55, no gloss) with the parts beside it
+    expect(c.notes).toMatchObject({ components: ['Gott', 'Haus'] });
+    expect(c.lemma).toBe('Gotteshaus');
+    expect(c.parts?.map((x) => x.kind)).toEqual(['component', 'link', 'head']);
+    const w = run('de', 'Weltfrieden').analyses[0].candidates[0];
+    expect(w.notes).toMatchObject({ components: ['Welt', 'Frieden'] });
+    expect(w).toMatchObject({ lemma: 'Weltfrieden', unconfirmed: true, confidence: 0.55 });
+    expect(w.gloss).toBeUndefined();
+    // not a compound of known words → only the unconfirmed guess of the rules, never a decomposition
+    const q = run('de', 'Qwertzuiop').analyses[0].candidates;
+    expect(q.length).toBeGreaterThan(0);
+    for (const x of q) { expect(x.unconfirmed).toBe(true); expect(x.parts).toBeUndefined(); expect(x.gloss).toBeUndefined(); }
   });
 
   it('relate: same / inflection / component / none', () => {

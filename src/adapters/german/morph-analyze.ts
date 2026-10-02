@@ -5,6 +5,7 @@
 import type { DeCell, DeClosedForm, DeContraction, DeLexiconView, DeReading } from './types';
 import { morphOfCells } from './types';
 import { describeGermanMorph } from './morph-describe';
+import { deriveReadings, oldEnding } from './morph-derived';
 import { guessReadings } from './morph-guess';
 import { adjectiveEntries, nounEntries, type Entry } from './morph-readings';
 import { capitalise, isCapitalised } from './morph-util';
@@ -118,7 +119,8 @@ function plainReadings(lex: DeLexiconView, lower: string): DeReading[] {
 const CAPITAL_NOUN = 'written with a capital, as German nouns are';
 const CAPITAL_LOWER = 'written with a capital: possibly only the first word of a sentence';
 
-function compute(word: string, lex: DeLexiconView, idx: Index): DeReading[] {
+/** The readings the word list itself gives (listed forms and regular paradigms), with no derivation and no guess. */
+function listed(word: string, lex: DeLexiconView, idx: Index): DeReading[] {
   const cap = isCapitalised(word);
   const lower = word.toLowerCase();
   const out: DeReading[] = [];
@@ -133,7 +135,21 @@ function compute(word: string, lex: DeLexiconView, idx: Index): DeReading[] {
   rest.push(...plainReadings(lex, lower));
   rest.push(...(idx.lower.get(lower) ?? []));
   for (const r of rest) out.push(cap ? { ...r, rule: `${r.rule}; ${CAPITAL_LOWER}` } : r);
-  return out.length ? out : guessReadings(word);
+  return out;
+}
+
+/** Listed readings; for a word the list does not hold, derived readings (diminutive, name genitive, clitic es, old full ending), then guesses. */
+function compute(word: string, lex: DeLexiconView, idx: Index): DeReading[] {
+  const own = listed(word, lex, idx);
+  if (own.length) {
+    // erquicket, salbest: spelled like a Konjunktiv I form (-et, -est), which is all the list gives; Luther's present indicative follows
+    if (own.every((r) => r.pos === 'VERB' && r.morph.Mood === 'Sub') && /e(?:s)?t$/.test(word)) {
+      return [...own, ...oldEnding(word, (w) => listed(w, lex, idx))];
+    }
+    return own;
+  }
+  const derived = deriveReadings(word, lex, (w) => listed(w, lex, idx));
+  return derived.length ? derived : guessReadings(word);
 }
 
 function clone(r: DeReading): DeReading {

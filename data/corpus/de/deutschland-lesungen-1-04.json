@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 2,
+  "id": "deutschland-lesungen-1-04",
+  "lang": "de",
+  "title": "Zum ersten Mal bei einer deutschen Familie",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:deutschland-lesungen-1-04",
+    "title": "Deutschland — Lesungen 1: Zum ersten Mal bei einer deutschen Familie (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own. A German reviewer must check it before publication, above all every statement about everyday life in Germany.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a German reviewer (naturalness and every statement about life in Germany)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "germany"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-regional-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "deutschland-lesungen-1",
+    "chapter": {
+      "index": 4,
+      "title": "Zum ersten Mal bei einer deutschen Familie"
+    }
+  },
+  "streams": [
+    "germany",
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "food",
+    "people",
+    "germany"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Zum ersten Mal bei einer deutschen Familie",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Daniel ist am Samstagabend zum ersten Mal bei der Familie Keller eingeladen.",
+              "english": "On Saturday evening Daniel is invited to the Keller family's home for the first time."
+            },
+            {
+              "text": "Er kommt pünktlich um sechs Uhr, weil man in Deutschland gern pünktlich ist.",
+              "english": "He arrives on time at six o'clock, because in Germany people like to be punctual."
+            },
+            {
+              "text": "Er bringt einen kleinen Strauß Blumen mit.",
+              "english": "He brings a small bunch of flowers."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Paul macht die Tür auf und sagt: „Guten Abend, Herr Miller! Kommen Sie herein.“",
+              "english": "Paul opens the door and says, \"Good evening, Mr Miller! Come in.\""
+            },
+            {
+              "text": "Daniel gibt Anna die Blumen, und Anna freut sich.",
+              "english": "Daniel gives Anna the flowers, and Anna is pleased."
+            },
+            {
+              "text": "An der Tür fragt Paul: „Möchten Sie Hausschuhe?“",
+              "english": "At the door Paul asks, \"Would you like some house slippers?\""
+            },
+            {
+              "text": "In vielen Häusern zieht man die Schuhe an der Tür aus.",
+              "english": "In many houses people take their shoes off at the door."
+            },
+            {
+              "text": "Daniel zieht die Schuhe aus und nimmt die Hausschuhe.",
+              "english": "Daniel takes off his shoes and puts on the slippers."
+            },
+            {
+              "text": "Max kommt und riecht an Daniels Schuhen.",
+              "english": "Max comes and sniffs at Daniel's shoes."
+            },
+            {
+              "text": "Lena zeigt ihm ihr Zimmer.",
+              "english": "Lena shows him her room."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Zum Abendbrot gibt es Brot, Käse, Wurst, Tomaten und Tee.",
+              "english": "For supper there is bread, cheese, sausage, tomatoes and tea."
+            },
+            {
+              "text": "Viele Familien essen abends kalt und mittags warm.",
+              "english": "Many families eat a cold meal in the evening and a hot one at midday."
+            },
+            {
+              "text": "Vor dem Essen sagt Anna: „Guten Appetit!“",
+              "english": "Before the meal Anna says, \"Enjoy your meal!\""
+            },
+            {
+              "text": "Daniel antwortet: „Danke, gleichfalls!“",
+              "english": "Daniel answers, \"Thank you, you too!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Essen redet die Familie lange mit ihm.",
+              "english": "After the meal the family talks with him for a long time."
+            },
+            {
+              "text": "Paul sagt: „Wir können uns ruhig duzen. Ich bin Paul.“",
+              "english": "Paul says, \"We can safely say du to each other. I am Paul.\""
+            },
+            {
+              "text": "Daniel sagt: „Gern! Ich bin Daniel.“",
+              "english": "Daniel says, \"Gladly! I am Daniel.\""
+            },
+            {
+              "text": "Lena fragt: „Darf ich auch du sagen?“",
+              "english": "Lena asks, \"May I say du too?\""
+            },
+            {
+              "text": "Daniel lacht und sagt: „Natürlich!“",
+              "english": "Daniel laughs and says, \"Of course!\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

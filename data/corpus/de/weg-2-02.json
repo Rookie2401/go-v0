@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-2-02",
+  "lang": "de",
+  "title": "Auf dem Markt",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-2-02",
+    "title": "Weg 2 — Tage und Orte: Auf dem Markt (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-2",
+    "chapter": {
+      "index": 2,
+      "title": "Auf dem Markt"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "town",
+    "food",
+    "shopping"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Auf dem Markt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Samstag geht Anna auf den Markt.",
+              "english": "On Saturday Anna goes to the market."
+            },
+            {
+              "text": "Der Markt ist auf dem Platz vor der Kirche.",
+              "english": "The market is on the square in front of the church."
+            },
+            {
+              "text": "Lena kommt mit.",
+              "english": "Lena comes along."
+            },
+            {
+              "text": "Anna kauft dort immer Obst und Gemüse ein.",
+              "english": "Anna always buys fruit and vegetables there."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Heute will sie Äpfel, Tomaten und Kartoffeln kaufen.",
+              "english": "Today she wants to buy apples, tomatoes and potatoes."
+            },
+            {
+              "text": "Der Mann am Stand sagt: „Guten Morgen! Was darf es sein?“",
+              "english": "The man at the stall says, \"Good morning! What can I get you?\""
+            },
+            {
+              "text": "Anna sagt: „Ich möchte ein Kilo Äpfel und zwei Kilo Kartoffeln, bitte.“",
+              "english": "Anna says, \"I would like a kilo of apples and two kilos of potatoes, please.\""
+            },
+            {
+              "text": "Der Mann fragt: „Sonst noch etwas?“",
+              "english": "The man asks, \"Anything else?\""
+            },
+            {
+              "text": "Anna sagt: „Ja, noch ein Pfund Tomaten und einen Salat.“",
+              "english": "Anna says, \"Yes, a pound of tomatoes and a lettuce as well.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lena steht neben ihrer Mutter und sieht die Bananen.",
+              "english": "Lena stands next to her mother and looks at the bananas."
+            },
+            {
+              "text": "Der Mann gibt Lena eine Banane, weil sie so freundlich ist.",
+              "english": "The man gives Lena a banana because she is so friendly."
+            },
+            {
+              "text": "Lena sagt: „Vielen Dank!“",
+              "english": "Lena says, \"Thank you very much!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna bezahlt und nimmt die Tasche.",
+              "english": "Anna pays and takes the bag."
+            },
+            {
+              "text": "Die Tasche ist schwer.",
+              "english": "The bag is heavy."
+            },
+            {
+              "text": "Dann gehen Anna und Lena nach Hause.",
+              "english": "Then Anna and Lena go home."
+            },
+            {
+              "text": "Zu Hause isst Paul schon einen Apfel.",
+              "english": "At home Paul is already eating an apple."
+            },
+            {
+              "text": "Er sagt, dass der Apfel sehr gut ist.",
+              "english": "He says that the apple is very good."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

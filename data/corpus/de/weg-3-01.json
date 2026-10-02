@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-3-01",
+  "lang": "de",
+  "title": "Das Buch, das verschwunden war",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-3-01",
+    "title": "Weg 3 — Geschichten: Das Buch, das verschwunden war (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "stories"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-3",
+    "chapter": {
+      "index": 1,
+      "title": "Das Buch, das verschwunden war"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "books",
+    "family"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Das Buch, das verschwunden war",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Als Anna am Mittwoch vom Einkaufen nach Hause kam, war das Buch nicht mehr auf dem Tisch.",
+              "english": "When Anna came home from shopping on Wednesday, the book was no longer on the table."
+            },
+            {
+              "text": "Es war das Buch, das sie am Morgen dort hingelegt hatte.",
+              "english": "It was the book that she had put there in the morning."
+            },
+            {
+              "text": "Anna suchte im Zimmer, in der Küche und sogar im Garten, aber sie fand es nicht.",
+              "english": "Anna looked in the room, in the kitchen and even in the garden, but she did not find it."
+            },
+            {
+              "text": "Max lag in seinem Korb und schlief.",
+              "english": "Max lay in his basket and slept."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Abend fragte sie Paul, ob er das Buch gesehen hatte.",
+              "english": "In the evening she asked Paul whether he had seen the book."
+            },
+            {
+              "text": "„Nein“, sagte er, „ich war ja den ganzen Tag bei der Arbeit.“",
+              "english": "\"No,\" he said, \"I was at work all day, after all.\""
+            },
+            {
+              "text": "„Vielleicht hat Lena es genommen“, sagte Anna.",
+              "english": "\"Maybe Lena took it,\" said Anna."
+            },
+            {
+              "text": "Aber Lena war noch nicht zu Hause.",
+              "english": "But Lena was not at home yet."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sie kam erst um sechs Uhr, weil sie bei Frau Weber gewesen war.",
+              "english": "She only came at six o'clock, because she had been at Frau Weber's."
+            },
+            {
+              "text": "Anna fragte: „Lena, weißt du, wo mein Buch ist?“",
+              "english": "Anna asked, \"Lena, do you know where my book is?\""
+            },
+            {
+              "text": "Lena wurde rot.",
+              "english": "Lena turned red."
+            },
+            {
+              "text": "„Ja“, sagte sie leise, „ich habe es Frau Weber gebracht.“",
+              "english": "\"Yes,\" she said quietly, \"I took it to Frau Weber.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna war sehr überrascht.",
+              "english": "Anna was very surprised."
+            },
+            {
+              "text": "„Warum denn das?“, fragte sie.",
+              "english": "\"Why on earth?\" she asked."
+            },
+            {
+              "text": "Lena erzählte, dass Frau Weber seit drei Tagen krank war und den ganzen Tag im Bett lag.",
+              "english": "Lena told her that Frau Weber had been ill for three days and was lying in bed all day."
+            },
+            {
+              "text": "„Sie langweilt sich“, sagte Lena, „und du hast mir doch erzählt, dass es ein gutes Buch ist.“",
+              "english": "\"She is bored,\" said Lena, \"and you told me yourself that it is a good book.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna wollte zuerst ein bisschen böse sein.",
+              "english": "At first Anna wanted to be a little angry."
+            },
+            {
+              "text": "Aber dann musste sie lächeln.",
+              "english": "But then she had to smile."
+            },
+            {
+              "text": "„Das war eine gute Idee“, sagte sie.",
+              "english": "\"That was a good idea,\" she said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am nächsten Tag gingen Anna und Lena zu Frau Weber.",
+              "english": "The next day Anna and Lena went to see Frau Weber."
+            },
+            {
+              "text": "Frau Weber saß im Sessel und las.",
+              "english": "Frau Weber was sitting in the armchair, reading."
+            },
+            {
+              "text": "Sie sagte: „Ihr Buch ist wunderbar, Frau Keller. Ich kann kaum aufhören zu lesen.“",
+              "english": "She said, \"Your book is wonderful, Frau Keller. I can hardly stop reading.\""
+            },
+            {
+              "text": "Anna antwortete: „Behalten Sie es, so lange Sie wollen.“",
+              "english": "Anna answered, \"Keep it as long as you like.\""
+            },
+            {
+              "text": "Zu Hause lag Max wieder in seinem Korb und sah sehr zufrieden aus.",
+              "english": "At home Max was lying in his basket again, looking very pleased."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

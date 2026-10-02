@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 2,
+  "id": "deutschland-lesungen-1-02",
+  "lang": "de",
+  "title": "Sonntag in der Gemeinde",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:deutschland-lesungen-1-02",
+    "title": "Deutschland — Lesungen 1: Sonntag in der Gemeinde (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own. A German reviewer must check it before publication, above all every statement about everyday life in Germany.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a German reviewer (naturalness and every statement about life in Germany)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "germany"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-regional-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "deutschland-lesungen-1",
+    "chapter": {
+      "index": 2,
+      "title": "Sonntag in der Gemeinde"
+    }
+  },
+  "streams": [
+    "germany",
+    "acquisition"
+  ],
+  "domains": [
+    "church",
+    "germany",
+    "people"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Sonntag in der Gemeinde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag geht Daniel zum ersten Mal in eine deutsche Gemeinde.",
+              "english": "On Sunday Daniel goes to a German congregation for the first time."
+            },
+            {
+              "text": "Anna, Paul und Lena haben ihn eingeladen.",
+              "english": "Anna, Paul and Lena have invited him."
+            },
+            {
+              "text": "Der Gottesdienst beginnt um zehn Uhr.",
+              "english": "The service begins at ten o'clock."
+            },
+            {
+              "text": "Vor dem Gottesdienst geben sich die Leute die Hand und sagen: „Guten Morgen!“",
+              "english": "Before the service people shake hands and say, \"Good morning!\""
+            },
+            {
+              "text": "Am Eingang bekommt jeder ein Liederbuch.",
+              "english": "At the entrance everyone gets a hymn book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lena geht in den Kindergottesdienst, weil sie dort mit anderen Kindern singen und spielen kann.",
+              "english": "Lena goes to the children's service, because she can sing and play there with other children."
+            },
+            {
+              "text": "Die Erwachsenen setzen sich auf die Bänke.",
+              "english": "The adults sit down on the benches."
+            },
+            {
+              "text": "Zuerst singt die Gemeinde ein Lied.",
+              "english": "First the congregation sings a hymn."
+            },
+            {
+              "text": "Daniel kennt die Melodie, aber der Text ist deutsch.",
+              "english": "Daniel knows the tune, but the words are German."
+            },
+            {
+              "text": "Er singt leise mit und liest den Text im Buch.",
+              "english": "He sings along quietly and reads the words in the book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann liest ein Mann aus der Bibel vor, und die Gemeinde betet.",
+              "english": "Then a man reads aloud from the Bible, and the congregation prays."
+            },
+            {
+              "text": "Danach hält der Pastor die Predigt.",
+              "english": "After that the pastor gives the sermon."
+            },
+            {
+              "text": "Daniel versteht nicht alles, aber er versteht mehr, als er gedacht hat.",
+              "english": "Daniel does not understand everything, but he understands more than he had thought."
+            },
+            {
+              "text": "Am Ende singen alle noch ein Lied.",
+              "english": "At the end everyone sings one more hymn."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Gottesdienst gibt es Kaffee und Kuchen.",
+              "english": "After the service there is coffee and cake."
+            },
+            {
+              "text": "Die Leute stehen noch lange zusammen und reden miteinander.",
+              "english": "The people stand together for a long time and talk to each other."
+            },
+            {
+              "text": "Eine ältere Frau kommt zu Daniel und sagt: „Willkommen bei uns! Bleiben Sie noch auf einen Kaffee?“",
+              "english": "An older woman comes to Daniel and says, \"Welcome to our church! Will you stay for a coffee?\""
+            },
+            {
+              "text": "Daniel bleibt gern.",
+              "english": "Daniel gladly stays."
+            },
+            {
+              "text": "Er trinkt Kaffee, isst ein Stück Kuchen und spricht Deutsch.",
+              "english": "He drinks coffee, eats a piece of cake and speaks German."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

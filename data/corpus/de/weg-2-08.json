@@ -1,0 +1,139 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-2-08",
+  "lang": "de",
+  "title": "Was machen wir am Samstag?",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-2-08",
+    "title": "Weg 2 — Tage und Orte: Was machen wir am Samstag? (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-2",
+    "chapter": {
+      "index": 8,
+      "title": "Was machen wir am Samstag?"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "family",
+    "plans"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Was machen wir am Samstag?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Freitagabend.",
+              "english": "It is Friday evening."
+            },
+            {
+              "text": "Die Familie sitzt am Tisch und isst Abendbrot.",
+              "english": "The family is sitting at the table eating supper."
+            },
+            {
+              "text": "Paul fragt: „Was wollen wir morgen machen?“",
+              "english": "Paul asks, \"What do we want to do tomorrow?\""
+            },
+            {
+              "text": "Lena sagt: „Ich möchte ins Schwimmbad gehen!“",
+              "english": "Lena says, \"I would like to go to the swimming pool!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna sagt: „Ich möchte lieber in den Park gehen, weil das Wetter schön ist.“",
+              "english": "Anna says, \"I would rather go to the park, because the weather is nice.\""
+            },
+            {
+              "text": "Paul sagt: „Ich muss am Vormittag noch arbeiten.“",
+              "english": "Paul says, \"I still have to work in the morning.\""
+            },
+            {
+              "text": "„Aber am Nachmittag kann ich mitkommen“, sagt er.",
+              "english": "\"But in the afternoon I can come along,\" he says."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lena fragt: „Kommt Max auch mit?“",
+              "english": "Lena asks, \"Is Max coming too?\""
+            },
+            {
+              "text": "Anna sagt: „In den Park kann Max mitkommen, ins Schwimmbad nicht.“",
+              "english": "Anna says, \"Max can come to the park, but not to the swimming pool.\""
+            },
+            {
+              "text": "Lena sagt: „Dann gehen wir zuerst in den Park!“",
+              "english": "Lena says, \"Then let us go to the park first!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna sagt: „Gut. Um zwölf Uhr gehen wir mit Max nach Hause zurück.“",
+              "english": "Anna says, \"Good. At twelve o'clock we go back home with Max.\""
+            },
+            {
+              "text": "Paul sagt: „Dann esse ich mit euch zu Mittag, und danach fahren wir ins Schwimmbad.“",
+              "english": "Paul says, \"Then I will have lunch with you, and afterwards we will drive to the swimming pool.\""
+            },
+            {
+              "text": "Lena sagt, dass das ein guter Plan ist.",
+              "english": "Lena says that that is a good plan."
+            },
+            {
+              "text": "Max sagt nichts.",
+              "english": "Max says nothing."
+            },
+            {
+              "text": "Aber er wedelt mit dem Schwanz.",
+              "english": "But he wags his tail."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

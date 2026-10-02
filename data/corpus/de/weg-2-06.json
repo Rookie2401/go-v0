@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-2-06",
+  "lang": "de",
+  "title": "Frau Weber",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-2-06",
+    "title": "Weg 2 — Tage und Orte: Frau Weber (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-2",
+    "chapter": {
+      "index": 6,
+      "title": "Frau Weber"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "neighbours",
+    "politeness"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Frau Weber",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Frau Weber wohnt im Haus neben Anna.",
+              "english": "Frau Weber lives in the house next to Anna."
+            },
+            {
+              "text": "Sie ist schon achtzig Jahre alt und wohnt allein.",
+              "english": "She is already eighty years old and lives alone."
+            },
+            {
+              "text": "Sie hat einen Garten, aber sie kann nicht mehr gut arbeiten.",
+              "english": "She has a garden, but she cannot work well any more."
+            },
+            {
+              "text": "Anna hilft ihr jeden Samstag.",
+              "english": "Anna helps her every Saturday."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Heute geht Anna mit Lena zu Frau Weber.",
+              "english": "Today Anna goes to Frau Weber with Lena."
+            },
+            {
+              "text": "Anna sagt: „Guten Tag, Frau Weber. Wie geht es Ihnen?“",
+              "english": "Anna says, \"Good day, Frau Weber. How are you?\""
+            },
+            {
+              "text": "Frau Weber sagt: „Danke, es geht mir gut. Kommen Sie doch herein!“",
+              "english": "Frau Weber says, \"Thank you, I am well. Do come in!\""
+            },
+            {
+              "text": "Anna sagt: „Wir haben Ihnen Brot mitgebracht.“",
+              "english": "Anna says, \"We have brought you some bread.\""
+            },
+            {
+              "text": "Frau Weber freut sich sehr.",
+              "english": "Frau Weber is very pleased."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann gehen sie zusammen in den Garten.",
+              "english": "Then they go into the garden together."
+            },
+            {
+              "text": "Frau Weber gibt Lena einen Apfel aus dem Garten.",
+              "english": "Frau Weber gives Lena an apple from the garden."
+            },
+            {
+              "text": "Lena sagt: „Vielen Dank, Frau Weber!“",
+              "english": "Lena says, \"Thank you very much, Frau Weber!\""
+            },
+            {
+              "text": "Lena hilft Frau Weber beim Arbeiten im Garten.",
+              "english": "Lena helps Frau Weber with the gardening."
+            },
+            {
+              "text": "Anna trägt den Korb zum Haus.",
+              "english": "Anna carries the basket to the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Ende sagt Frau Weber: „Vielen Dank für Ihre Hilfe!“",
+              "english": "At the end Frau Weber says, \"Thank you very much for your help!\""
+            },
+            {
+              "text": "Anna sagt: „Gern geschehen. Bis nächsten Samstag!“",
+              "english": "Anna says, \"You are welcome. Until next Saturday!\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

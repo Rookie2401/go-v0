@@ -1,0 +1,147 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-1-03",
+  "lang": "de",
+  "title": "Lena hat Hunger",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-1-03",
+    "title": "Weg 1 — Erste Schritte: Lena hat Hunger (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "reading"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-1",
+    "chapter": {
+      "index": 3,
+      "title": "Lena hat Hunger"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "family",
+    "food"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Lena hat Hunger",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna und Paul haben ein Kind.",
+              "english": "Anna and Paul have a child."
+            },
+            {
+              "text": "Das Kind heißt Lena.",
+              "english": "The child is called Lena."
+            },
+            {
+              "text": "Lena ist acht Jahre alt.",
+              "english": "Lena is eight years old."
+            },
+            {
+              "text": "Lena geht in die Schule.",
+              "english": "Lena goes to school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jetzt ist Lena zu Hause.",
+              "english": "Now Lena is at home."
+            },
+            {
+              "text": "Lena hat eine Tasche.",
+              "english": "Lena has a bag."
+            },
+            {
+              "text": "Die Tasche ist rot.",
+              "english": "The bag is red."
+            },
+            {
+              "text": "Lena sagt: „Hallo, Mama! Hallo, Papa!“",
+              "english": "Lena says, \"Hello, Mum! Hello, Dad!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna sagt: „Hallo, Lena! Hast du Hunger?“",
+              "english": "Anna says, \"Hello, Lena! Are you hungry?\""
+            },
+            {
+              "text": "Lena sagt: „Ja, ich habe Hunger.“",
+              "english": "Lena says, \"Yes, I am hungry.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna hat Brot.",
+              "english": "Anna has bread."
+            },
+            {
+              "text": "Das Brot ist auf dem Tisch.",
+              "english": "The bread is on the table."
+            },
+            {
+              "text": "Lena nimmt das Brot.",
+              "english": "Lena takes the bread."
+            },
+            {
+              "text": "Lena isst das Brot.",
+              "english": "Lena eats the bread."
+            },
+            {
+              "text": "Das Brot ist gut.",
+              "english": "The bread is good."
+            },
+            {
+              "text": "Max sieht Lena.",
+              "english": "Max sees Lena."
+            },
+            {
+              "text": "Max hat auch Hunger.",
+              "english": "Max is hungry too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

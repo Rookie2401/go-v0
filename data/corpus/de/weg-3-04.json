@@ -1,0 +1,175 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-3-04",
+  "lang": "de",
+  "title": "Der Sohn, der zurückkam",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-3-04",
+    "title": "Weg 3 — Geschichten: Der Sohn, der zurückkam (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "stories"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-3",
+    "chapter": {
+      "index": 4,
+      "title": "Der Sohn, der zurückkam"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "farm",
+    "parable"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Der Sohn, der zurückkam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ein Mann hatte zwei Söhne.",
+              "english": "A man had two sons."
+            },
+            {
+              "text": "Eines Tages sagte der jüngere Sohn: „Vater, gib mir jetzt meinen Teil vom Geld. Ich will die Welt sehen.“",
+              "english": "One day the younger son said, \"Father, give me my share of the money now. I want to see the world.\""
+            },
+            {
+              "text": "Der Vater war traurig, aber er gab ihm das Geld.",
+              "english": "The father was sad, but he gave him the money."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Wenige Tage später packte der Sohn seine Sachen und zog in ein fernes Land.",
+              "english": "A few days later the son packed his things and moved to a faraway country."
+            },
+            {
+              "text": "Dort lebte er wie ein reicher Mann und gab sein Geld aus.",
+              "english": "There he lived like a rich man and spent his money."
+            },
+            {
+              "text": "Dann war das Geld weg, und im ganzen Land gab es kaum noch zu essen.",
+              "english": "Then the money was gone, and in the whole country there was hardly anything left to eat."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Der junge Mann fand Arbeit bei einem Bauern, der Schweine hatte.",
+              "english": "The young man found work with a farmer who had pigs."
+            },
+            {
+              "text": "Er hatte so großen Hunger, dass er das Futter der Schweine essen wollte.",
+              "english": "He was so hungry that he wanted to eat the pigs' food."
+            },
+            {
+              "text": "Er dachte: „Bei meinem Vater haben sogar die Arbeiter genug Brot, und ich sterbe hier vor Hunger.“",
+              "english": "He thought, \"At my father's, even the workers have enough bread, and here I am dying of hunger.\""
+            },
+            {
+              "text": "Er beschloss, nach Hause zu gehen und seinen Vater um Arbeit zu bitten.",
+              "english": "He decided to go home and ask his father for work."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sein Vater sah ihn schon von weitem, lief ihm entgegen, nahm ihn in die Arme und küsste ihn.",
+              "english": "His father saw him from far away, ran to meet him, took him in his arms and kissed him."
+            },
+            {
+              "text": "Der Sohn sagte: „Vater, ich habe Unrecht getan. Ich bin es nicht wert, dein Sohn zu sein.“",
+              "english": "The son said, \"Father, I have done wrong. I am not worthy to be your son.\""
+            },
+            {
+              "text": "Aber der Vater rief seinen Dienern zu: „Bringt das beste Hemd, einen Ring und neue Schuhe!“",
+              "english": "But the father called to his servants, \"Bring the best shirt, a ring and new shoes!\""
+            },
+            {
+              "text": "„Mein Sohn ist wieder da, wir wollen feiern!“, rief er.",
+              "english": "\"My son is back, let us celebrate!\" he cried."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Der ältere Sohn war an diesem Tag auf dem Feld.",
+              "english": "The older son was in the field that day."
+            },
+            {
+              "text": "Als er nach Hause kam, hörte er Musik und Lachen, und ein Diener erzählte ihm, was passiert war.",
+              "english": "When he came home, he heard music and laughter, and a servant told him what had happened."
+            },
+            {
+              "text": "Da wurde er wütend und wollte nicht ins Haus gehen.",
+              "english": "Then he became angry and did not want to go into the house."
+            },
+            {
+              "text": "Der Vater kam heraus und bat ihn, mitzufeiern.",
+              "english": "The father came out and asked him to join the celebration."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Der ältere Sohn sagte: „Ich arbeite seit Jahren für dich, aber für mich hast du nie ein Fest gemacht.“",
+              "english": "The older son said, \"I have worked for you for years, but you never made a feast for me.\""
+            },
+            {
+              "text": "Der Vater antwortete: „Mein Sohn, du bist immer bei mir, und alles, was ich habe, gehört auch dir.“",
+              "english": "The father answered, \"My son, you are always with me, and everything I have is yours too.\""
+            },
+            {
+              "text": "„Wir müssen uns freuen, weil dein Bruder wieder da ist.“",
+              "english": "\"We have to be glad, because your brother is back.\""
+            },
+            {
+              "text": "Die Geschichte sagt nicht, ob der ältere Sohn ins Haus ging.",
+              "english": "The story does not say whether the older son went into the house."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

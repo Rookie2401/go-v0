@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-3-02",
+  "lang": "de",
+  "title": "Ein Brief an Oma",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-3-02",
+    "title": "Weg 3 — Geschichten: Ein Brief an Oma (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "stories"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-3",
+    "chapter": {
+      "index": 2,
+      "title": "Ein Brief an Oma"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "letters"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Ein Brief an Oma",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Liebe Oma,",
+              "english": "Dear Grandma,"
+            },
+            {
+              "text": "vielen Dank für die Äpfel, die du uns mitgebracht hast!",
+              "english": "thank you very much for the apples that you brought us!"
+            },
+            {
+              "text": "Wir haben sie gegessen, und Papa hat gesagt, dass es die besten Äpfel sind, die er kennt.",
+              "english": "We ate them, and Dad said that they are the best apples he knows."
+            },
+            {
+              "text": "Ich möchte dir erzählen, was in dieser Woche passiert ist.",
+              "english": "I want to tell you what has happened this week."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Montag war ich krank und musste im Bett bleiben, aber jetzt bin ich wieder gesund.",
+              "english": "On Monday I was ill and had to stay in bed, but now I am well again."
+            },
+            {
+              "text": "Die Ärztin hat gesagt, dass ich viel Tee trinken muss.",
+              "english": "The doctor said that I have to drink a lot of tea."
+            },
+            {
+              "text": "Papa hat mir ein neues Buch mitgebracht, das ich schon zweimal gelesen habe.",
+              "english": "Dad brought me a new book that I have already read twice."
+            },
+            {
+              "text": "In der Schule habe ich ein Bild von unserem Haus gemalt, und meine Lehrerin hat es an die Wand gehängt.",
+              "english": "At school I painted a picture of our house, and my teacher hung it on the wall."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Weißt du, was Max gemacht hat?",
+              "english": "Do you know what Max did?"
+            },
+            {
+              "text": "Er hat auf Mamas Buch geschlafen, und Mama hat es eine Stunde lang gesucht!",
+              "english": "He slept on Mum's book, and Mum looked for it for an hour!"
+            },
+            {
+              "text": "Als sie es gefunden hat, hat sie so laut gelacht, dass Frau Weber es gehört hat.",
+              "english": "When she found it, she laughed so loudly that Frau Weber heard it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ich weiß nicht, ob du schon gehört hast, dass bald die Ferien anfangen.",
+              "english": "I do not know whether you have heard yet that the holidays start soon."
+            },
+            {
+              "text": "Wenn ihr uns im Sommer besucht, zeige ich dir meine Schule und meinen Lieblingsbaum im Park.",
+              "english": "When you visit us in the summer, I will show you my school and my favourite tree in the park."
+            },
+            {
+              "text": "Wenn es nicht regnet, können wir im Garten Kaffee trinken und Kuchen essen.",
+              "english": "If it does not rain, we can drink coffee and eat cake in the garden."
+            },
+            {
+              "text": "Ich frage Mama, ob wir euch am Bahnhof abholen dürfen.",
+              "english": "I will ask Mum whether we may pick you up at the station."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Schreibst du mir bald zurück?",
+              "english": "Will you write back to me soon?"
+            },
+            {
+              "text": "Ich warte schon auf deinen Brief.",
+              "english": "I am already waiting for your letter."
+            },
+            {
+              "text": "Viele liebe Grüße von uns allen!",
+              "english": "Many kind regards from all of us!"
+            },
+            {
+              "text": "Deine Lena",
+              "english": "Your Lena"
+            },
+            {
+              "text": "Ach ja, Max sagt auch „Wau!“",
+              "english": "Oh yes, Max says \"Woof!\" too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 2,
+  "id": "gespraeche-1-05",
+  "lang": "de",
+  "title": "Nach dem Gottesdienst",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:gespraeche-1-05",
+    "title": "Gespräche 1: Nach dem Gottesdienst (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "gespraeche-1",
+    "chapter": {
+      "index": 5,
+      "title": "Nach dem Gottesdienst"
+    }
+  },
+  "streams": [
+    "conversation",
+    "acquisition"
+  ],
+  "domains": [
+    "church",
+    "people",
+    "coffee"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "A": "Daniel",
+    "B": "Herr Brandt"
+  },
+  "sections": [
+    {
+      "title": "Nach dem Gottesdienst",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Na, wie hat Ihnen der Gottesdienst gefallen?",
+              "english": "Well, how did you like the service?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Sehr gut! Ich habe nicht alles verstanden, aber die Lieder waren schön.",
+              "english": "Very much! I did not understand everything, but the hymns were beautiful."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Das kommt schon noch. Mit der Zeit versteht man immer mehr.",
+              "english": "That will come. With time you understand more and more."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Hoffentlich! Die Predigt war schwer für mich.",
+              "english": "I hope so! The sermon was hard for me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Das ist ja normal. Pastor Lange spricht eben manchmal schnell.",
+              "english": "That is quite normal. Pastor Lange just sometimes speaks fast."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Ja, ein bisschen. Aber ich habe ein Wort verstanden: Vergebung.",
+              "english": "Yes, a little. But I understood one word: forgiveness."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Das ist ein wichtiges Wort!",
+              "english": "That is an important word!"
+            },
+            {
+              "speaker": "B",
+              "text": "Kommen Sie doch mit zum Kaffee.",
+              "english": "Do come along for coffee."
+            },
+            {
+              "speaker": "B",
+              "text": "Der Kuchen ist heute wohl von Frau Schmidt, und der ist immer gut.",
+              "english": "The cake today is probably from Frau Schmidt, and it is always good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Gern! Darf ich mich zu Ihnen setzen?",
+              "english": "Gladly! May I sit with you?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Aber natürlich! Ich bin übrigens Heinz.",
+              "english": "But of course! By the way, I am Heinz."
+            },
+            {
+              "speaker": "B",
+              "text": "In unserer Gemeinde sagen wir meistens du.",
+              "english": "In our congregation we mostly say du."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Sehr gern. Ich bin Daniel.",
+              "english": "Gladly. I am Daniel."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Prima, Daniel! Dann komm mit.",
+              "english": "Great, Daniel! Then come along."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

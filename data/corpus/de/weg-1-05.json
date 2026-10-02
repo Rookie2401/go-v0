@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-1-05",
+  "lang": "de",
+  "title": "Das Frühstück",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-1-05",
+    "title": "Weg 1 — Erste Schritte: Das Frühstück (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "reading"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-1",
+    "chapter": {
+      "index": 5,
+      "title": "Das Frühstück"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "food"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Das Frühstück",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Morgen.",
+              "english": "It is morning."
+            },
+            {
+              "text": "Anna ist in der Küche.",
+              "english": "Anna is in the kitchen."
+            },
+            {
+              "text": "Anna macht Kaffee.",
+              "english": "Anna makes coffee."
+            },
+            {
+              "text": "Der Kaffee ist heiß.",
+              "english": "The coffee is hot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Paul kommt in die Küche.",
+              "english": "Paul comes into the kitchen."
+            },
+            {
+              "text": "Paul sagt: „Guten Morgen, Anna!“",
+              "english": "Paul says, \"Good morning, Anna!\""
+            },
+            {
+              "text": "Anna sagt: „Guten Morgen, Paul!“",
+              "english": "Anna says, \"Good morning, Paul!\""
+            },
+            {
+              "text": "Paul hat Hunger.",
+              "english": "Paul is hungry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Auf dem Tisch ist Brot.",
+              "english": "There is bread on the table."
+            },
+            {
+              "text": "Auf dem Tisch sind auch Brötchen.",
+              "english": "There are also rolls on the table."
+            },
+            {
+              "text": "Paul nimmt ein Brötchen.",
+              "english": "Paul takes a roll."
+            },
+            {
+              "text": "Das Brötchen ist warm.",
+              "english": "The roll is warm."
+            },
+            {
+              "text": "Paul nimmt auch Butter.",
+              "english": "Paul also takes butter."
+            },
+            {
+              "text": "Das Brötchen ist gut.",
+              "english": "The roll is good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lena kommt in die Küche.",
+              "english": "Lena comes into the kitchen."
+            },
+            {
+              "text": "Lena trinkt keinen Kaffee.",
+              "english": "Lena does not drink coffee."
+            },
+            {
+              "text": "Lena trinkt Milch.",
+              "english": "Lena drinks milk."
+            },
+            {
+              "text": "Max hat Wasser.",
+              "english": "Max has water."
+            },
+            {
+              "text": "Max trinkt das Wasser.",
+              "english": "Max drinks the water."
+            },
+            {
+              "text": "Das Frühstück ist gut.",
+              "english": "Breakfast is good."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

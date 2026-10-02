@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-2-07",
+  "lang": "de",
+  "title": "Wo ist mein Buch?",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-2-07",
+    "title": "Weg 2 — Tage und Orte: Wo ist mein Buch? (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-2",
+    "chapter": {
+      "index": 7,
+      "title": "Wo ist mein Buch?"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "books",
+    "animals"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Wo ist mein Buch?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna sucht ihr Buch.",
+              "english": "Anna is looking for her book."
+            },
+            {
+              "text": "Das Buch ist nicht auf dem Tisch.",
+              "english": "The book is not on the table."
+            },
+            {
+              "text": "Sie geht ins Zimmer und sucht auf dem Sofa.",
+              "english": "She goes into the room and looks on the sofa."
+            },
+            {
+              "text": "Dort ist das Buch nicht.",
+              "english": "The book is not there."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sie sucht unter dem Bett und hinter dem Schrank.",
+              "english": "She looks under the bed and behind the cupboard."
+            },
+            {
+              "text": "Das Buch ist nicht da.",
+              "english": "The book is not there."
+            },
+            {
+              "text": "Dann sucht sie in der Küche und im Flur.",
+              "english": "Then she looks in the kitchen and in the hallway."
+            },
+            {
+              "text": "Anna fragt Paul: „Hast du mein Buch gesehen?“",
+              "english": "Anna asks Paul, \"Have you seen my book?\""
+            },
+            {
+              "text": "Paul sagt: „Nein, ich habe es nicht gesehen. Frag doch Lena!“",
+              "english": "Paul says, \"No, I have not seen it. Ask Lena!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lena sagt: „Nein, Mama. Aber ich habe Max im Zimmer gesehen.“",
+              "english": "Lena says, \"No, Mum. But I saw Max in the room.\""
+            },
+            {
+              "text": "Anna geht zu Max.",
+              "english": "Anna goes to Max."
+            },
+            {
+              "text": "Max liegt in seinem Korb und schläft.",
+              "english": "Max is lying in his basket, asleep."
+            },
+            {
+              "text": "Unter Max liegt etwas.",
+              "english": "Something is lying under Max."
+            },
+            {
+              "text": "Anna sieht genau hin.",
+              "english": "Anna looks closely."
+            },
+            {
+              "text": "Es ist das Buch!",
+              "english": "It is the book!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Max hat auf dem Buch geschlafen.",
+              "english": "Max has been sleeping on the book."
+            },
+            {
+              "text": "Anna lacht und nimmt das Buch aus dem Korb.",
+              "english": "Anna laughs and takes the book out of the basket."
+            },
+            {
+              "text": "Sie legt das Buch auf den Tisch.",
+              "english": "She puts the book on the table."
+            },
+            {
+              "text": "Max sieht sie an und schläft weiter.",
+              "english": "Max looks at her and goes on sleeping."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

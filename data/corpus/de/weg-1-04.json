@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-1-04",
+  "lang": "de",
+  "title": "Das Haus",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-1-04",
+    "title": "Weg 1 — Erste Schritte: Das Haus (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "reading"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-1",
+    "chapter": {
+      "index": 4,
+      "title": "Das Haus"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Das Haus",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Das Haus ist nicht groß.",
+              "english": "The house is not big."
+            },
+            {
+              "text": "Das Haus ist klein, aber schön.",
+              "english": "The house is small, but beautiful."
+            },
+            {
+              "text": "Das Haus hat eine Küche und zwei Zimmer.",
+              "english": "The house has a kitchen and two rooms."
+            },
+            {
+              "text": "Die Küche ist hell.",
+              "english": "The kitchen is bright."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "In der Küche ist ein Tisch.",
+              "english": "In the kitchen there is a table."
+            },
+            {
+              "text": "Auf dem Tisch ist ein Glas.",
+              "english": "On the table there is a glass."
+            },
+            {
+              "text": "Im Glas ist Wasser.",
+              "english": "In the glass there is water."
+            },
+            {
+              "text": "Auf dem Tisch ist auch ein Buch.",
+              "english": "On the table there is also a book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Paul ist in der Küche.",
+              "english": "Paul is in the kitchen."
+            },
+            {
+              "text": "Paul hat Hunger.",
+              "english": "Paul is hungry."
+            },
+            {
+              "text": "Paul nimmt das Brot.",
+              "english": "Paul takes the bread."
+            },
+            {
+              "text": "Paul isst das Brot und trinkt das Wasser.",
+              "english": "Paul eats the bread and drinks the water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna ist im Zimmer.",
+              "english": "Anna is in the room."
+            },
+            {
+              "text": "Anna hat das Buch in der Hand.",
+              "english": "Anna has the book in her hand."
+            },
+            {
+              "text": "Anna liest das Buch.",
+              "english": "Anna reads the book."
+            },
+            {
+              "text": "Max ist auch im Zimmer.",
+              "english": "Max is in the room too."
+            },
+            {
+              "text": "Max schläft und schläft.",
+              "english": "Max sleeps and sleeps."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

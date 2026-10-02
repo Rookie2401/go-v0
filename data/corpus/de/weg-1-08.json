@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-1-08",
+  "lang": "de",
+  "title": "Der Abend",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-1-08",
+    "title": "Weg 1 — Erste Schritte: Der Abend (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "reading"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-1",
+    "chapter": {
+      "index": 8,
+      "title": "Der Abend"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "family",
+    "food"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Der Abend",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich bin Anna.",
+              "english": "I am Anna."
+            },
+            {
+              "text": "Es ist Abend.",
+              "english": "It is evening."
+            },
+            {
+              "text": "Wir sind zu Hause.",
+              "english": "We are at home."
+            },
+            {
+              "text": "Paul, Lena und ich sind am Tisch.",
+              "english": "Paul, Lena and I are at the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Wir haben Brot, Käse und Tee.",
+              "english": "We have bread, cheese and tea."
+            },
+            {
+              "text": "Der Käse ist gut.",
+              "english": "The cheese is good."
+            },
+            {
+              "text": "Paul isst Käse.",
+              "english": "Paul eats cheese."
+            },
+            {
+              "text": "Lena isst Brot und Butter.",
+              "english": "Lena eats bread and butter."
+            },
+            {
+              "text": "Ich trinke Tee.",
+              "english": "I drink tea."
+            },
+            {
+              "text": "Max liegt auch am Tisch.",
+              "english": "Max is lying at the table too."
+            },
+            {
+              "text": "Max hat keinen Hunger.",
+              "english": "Max is not hungry."
+            },
+            {
+              "text": "Er schläft.",
+              "english": "He is asleep."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lena ist müde.",
+              "english": "Lena is tired."
+            },
+            {
+              "text": "Lena sagt: „Gute Nacht, Mama!“",
+              "english": "Lena says, \"Good night, Mum!\""
+            },
+            {
+              "text": "Lena geht ins Bett.",
+              "english": "Lena goes to bed."
+            },
+            {
+              "text": "Paul geht auch ins Bett.",
+              "english": "Paul goes to bed too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jetzt bin ich am Tisch.",
+              "english": "Now I am at the table."
+            },
+            {
+              "text": "Ich habe das Buch wieder in der Hand.",
+              "english": "I have the book in my hand again."
+            },
+            {
+              "text": "Ich lese und bin froh.",
+              "english": "I read and am happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

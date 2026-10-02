@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-2-04",
+  "lang": "de",
+  "title": "Am Sonntag bei uns",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-2-04",
+    "title": "Weg 2 — Tage und Orte: Am Sonntag bei uns (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-2",
+    "chapter": {
+      "index": 4,
+      "title": "Am Sonntag bei uns"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "family",
+    "food"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Am Sonntag bei uns",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ich bin Anna.",
+              "english": "I am Anna."
+            },
+            {
+              "text": "Gestern waren Oma und Opa bei uns.",
+              "english": "Yesterday Grandma and Grandpa were with us."
+            },
+            {
+              "text": "Sie sind mit dem Zug gekommen.",
+              "english": "They came by train."
+            },
+            {
+              "text": "Der Zug war pünktlich.",
+              "english": "The train was on time."
+            },
+            {
+              "text": "Oma hat uns Äpfel aus ihrem Garten mitgebracht.",
+              "english": "Grandma brought us apples from her garden."
+            },
+            {
+              "text": "Paul ist um zehn Uhr zum Bahnhof gefahren und hat sie abgeholt.",
+              "english": "Paul drove to the station at ten o'clock and picked them up."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ich habe schon früh das Essen gekocht.",
+              "english": "I cooked the meal early on."
+            },
+            {
+              "text": "Wir haben Suppe, Kartoffeln und Fleisch gegessen.",
+              "english": "We ate soup, potatoes and meat."
+            },
+            {
+              "text": "Danach haben wir den Kuchen gegessen.",
+              "english": "Afterwards we ate the cake."
+            },
+            {
+              "text": "Lena hat den Kuchen mit Oma gebacken.",
+              "english": "Lena baked the cake with Grandma."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nach dem Essen sind wir in den Garten gegangen.",
+              "english": "After the meal we went into the garden."
+            },
+            {
+              "text": "Dort haben wir Kaffee getrunken.",
+              "english": "There we drank coffee."
+            },
+            {
+              "text": "Lena hat Opa ein Bild gegeben.",
+              "english": "Lena gave Grandpa a picture."
+            },
+            {
+              "text": "Opa hat sich sehr gefreut.",
+              "english": "Grandpa was very pleased."
+            },
+            {
+              "text": "Er hat Max ein Stück Wurst gegeben.",
+              "english": "He gave Max a piece of sausage."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Um fünf Uhr hat Paul Oma und Opa zum Bahnhof gebracht.",
+              "english": "At five o'clock Paul took Grandma and Grandpa to the station."
+            },
+            {
+              "text": "Sie sind wieder nach Hause gefahren.",
+              "english": "They went home again."
+            },
+            {
+              "text": "Ich bin müde, aber froh.",
+              "english": "I am tired, but happy."
+            },
+            {
+              "text": "Es war ein schöner Tag.",
+              "english": "It was a lovely day."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

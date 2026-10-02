@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-1-02",
+  "lang": "de",
+  "title": "Max und das Brot",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-1-02",
+    "title": "Weg 1 — Erste Schritte: Max und das Brot (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "reading"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-1",
+    "chapter": {
+      "index": 2,
+      "title": "Max und das Brot"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "animals",
+    "food"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Max und das Brot",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna hat einen Mann.",
+              "english": "Anna has a husband."
+            },
+            {
+              "text": "Der Mann heißt Paul.",
+              "english": "The man is called Paul."
+            },
+            {
+              "text": "Paul hat einen Hund.",
+              "english": "Paul has a dog."
+            },
+            {
+              "text": "Der Hund heißt Max.",
+              "english": "The dog is called Max."
+            },
+            {
+              "text": "Max ist groß und braun.",
+              "english": "Max is big and brown."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Paul hat Brot.",
+              "english": "Paul has bread."
+            },
+            {
+              "text": "Das Brot ist auf dem Tisch.",
+              "english": "The bread is on the table."
+            },
+            {
+              "text": "Max sieht das Brot.",
+              "english": "Max sees the bread."
+            },
+            {
+              "text": "Max will das Brot.",
+              "english": "Max wants the bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Paul sagt: „Nein, Max! Das Brot ist für Anna.“",
+              "english": "Paul says, \"No, Max! The bread is for Anna.\""
+            },
+            {
+              "text": "Max ist traurig.",
+              "english": "Max is sad."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Paul hat auch einen Ball.",
+              "english": "Paul also has a ball."
+            },
+            {
+              "text": "Max sieht den Ball.",
+              "english": "Max sees the ball."
+            },
+            {
+              "text": "Paul nimmt den Ball.",
+              "english": "Paul takes the ball."
+            },
+            {
+              "text": "Paul wirft den Ball.",
+              "english": "Paul throws the ball."
+            },
+            {
+              "text": "Max läuft.",
+              "english": "Max runs."
+            },
+            {
+              "text": "Max hat den Ball!",
+              "english": "Max has the ball!"
+            },
+            {
+              "text": "Max ist froh.",
+              "english": "Max is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

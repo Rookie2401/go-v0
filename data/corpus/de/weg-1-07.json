@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-1-07",
+  "lang": "de",
+  "title": "Lena und Max im Park",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-1-07",
+    "title": "Weg 1 — Erste Schritte: Lena und Max im Park (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "reading"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-1",
+    "chapter": {
+      "index": 7,
+      "title": "Lena und Max im Park"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "town",
+    "animals",
+    "play"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Lena und Max im Park",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Heute ist Samstag.",
+              "english": "Today is Saturday."
+            },
+            {
+              "text": "Lena hat keine Schule.",
+              "english": "Lena has no school."
+            },
+            {
+              "text": "Lena und Max gehen in den Park.",
+              "english": "Lena and Max go to the park."
+            },
+            {
+              "text": "Der Park ist groß und schön.",
+              "english": "The park is big and beautiful."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lena hat einen Ball.",
+              "english": "Lena has a ball."
+            },
+            {
+              "text": "Der Ball ist rot.",
+              "english": "The ball is red."
+            },
+            {
+              "text": "Lena wirft den Ball.",
+              "english": "Lena throws the ball."
+            },
+            {
+              "text": "Max läuft und holt den Ball.",
+              "english": "Max runs and fetches the ball."
+            },
+            {
+              "text": "Lena wirft den Ball noch einmal.",
+              "english": "Lena throws the ball once more."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Im Park ist ein Baum.",
+              "english": "In the park there is a tree."
+            },
+            {
+              "text": "Der Baum ist hoch.",
+              "english": "The tree is tall."
+            },
+            {
+              "text": "Der Ball fliegt in den Baum.",
+              "english": "The ball flies into the tree."
+            },
+            {
+              "text": "Oh, der Ball ist im Baum!",
+              "english": "Oh, the ball is in the tree!"
+            },
+            {
+              "text": "Max sieht den Ball.",
+              "english": "Max sees the ball."
+            },
+            {
+              "text": "Max will den Ball.",
+              "english": "Max wants the ball."
+            },
+            {
+              "text": "Der Baum ist zu hoch.",
+              "english": "The tree is too tall."
+            },
+            {
+              "text": "Lena ist traurig.",
+              "english": "Lena is sad."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Da kommt Paul.",
+              "english": "Here comes Paul."
+            },
+            {
+              "text": "Paul ist groß.",
+              "english": "Paul is tall."
+            },
+            {
+              "text": "Er holt den Ball.",
+              "english": "He gets the ball."
+            },
+            {
+              "text": "Lena sagt: „Danke, Papa!“",
+              "english": "Lena says, \"Thank you, Dad!\""
+            },
+            {
+              "text": "Max ist froh.",
+              "english": "Max is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

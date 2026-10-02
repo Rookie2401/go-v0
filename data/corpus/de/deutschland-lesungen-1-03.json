@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "id": "deutschland-lesungen-1-03",
+  "lang": "de",
+  "title": "Beim Bäcker und auf dem Markt",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:deutschland-lesungen-1-03",
+    "title": "Deutschland — Lesungen 1: Beim Bäcker und auf dem Markt (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own. A German reviewer must check it before publication, above all every statement about everyday life in Germany.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a German reviewer (naturalness and every statement about life in Germany)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "germany"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-regional-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "deutschland-lesungen-1",
+    "chapter": {
+      "index": 3,
+      "title": "Beim Bäcker und auf dem Markt"
+    }
+  },
+  "streams": [
+    "germany",
+    "acquisition"
+  ],
+  "domains": [
+    "town",
+    "food",
+    "shopping",
+    "germany"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Beim Bäcker und auf dem Markt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Samstagmorgen zeigt Anna Daniel die Bäckerei an der Ecke.",
+              "english": "On Saturday morning Anna shows Daniel the bakery on the corner."
+            },
+            {
+              "text": "Viele Bäckereien öffnen schon früh am Morgen.",
+              "english": "Many bakeries open early in the morning."
+            },
+            {
+              "text": "In der Auslage liegen Brötchen, Brezeln und viele Sorten Brot.",
+              "english": "In the display there are rolls, pretzels and many kinds of bread."
+            },
+            {
+              "text": "Anna sagt, dass man in Deutschland sehr viele Brotsorten kennt.",
+              "english": "Anna says that very many kinds of bread are known in Germany."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Die Verkäuferin fragt: „Was darf es sein?“",
+              "english": "The shop assistant asks, \"What can I get you?\""
+            },
+            {
+              "text": "Daniel sagt: „Ich hätte gern vier Brötchen, bitte.“",
+              "english": "Daniel says, \"I would like four rolls, please.\""
+            },
+            {
+              "text": "Anna erklärt: „In Bayern sagt man oft Semmel statt Brötchen.“",
+              "english": "Anna explains, \"In Bavaria people often say Semmel instead of Brötchen.\""
+            },
+            {
+              "text": "Daniel bezahlt und sagt: „Danke! Tschüs!“",
+              "english": "Daniel pays and says, \"Thanks! Bye!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Danach gehen sie auf den Wochenmarkt.",
+              "english": "After that they go to the weekly market."
+            },
+            {
+              "text": "Der Markt ist jede Woche am Samstag auf dem Platz vor der Kirche.",
+              "english": "The market is held every week on Saturday on the square in front of the church."
+            },
+            {
+              "text": "Dort verkaufen Bauern und Händler Obst, Gemüse, Käse, Eier und Blumen.",
+              "english": "There farmers and traders sell fruit, vegetables, cheese, eggs and flowers."
+            },
+            {
+              "text": "Man bezahlt in Euro, und am Marktstand oft mit Bargeld.",
+              "english": "One pays in euros, and at a market stall often with cash."
+            },
+            {
+              "text": "Der Mann am Käsestand gibt Daniel ein kleines Stück zum Probieren.",
+              "english": "The man at the cheese stall gives Daniel a small piece to taste."
+            },
+            {
+              "text": "Daniel sagt: „Der Käse schmeckt sehr gut.“",
+              "english": "Daniel says, \"The cheese tastes very good.\""
+            },
+            {
+              "text": "Daniel kauft ein Pfund Tomaten und einen Strauß Blumen.",
+              "english": "Daniel buys a pound of tomatoes and a bunch of flowers."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna erzählt, dass am Sonntag die meisten Geschäfte geschlossen sind.",
+              "english": "Anna tells him that on Sundays most shops are closed."
+            },
+            {
+              "text": "Deshalb kaufen viele Leute schon am Samstag ein.",
+              "english": "That is why many people do their shopping on Saturday."
+            },
+            {
+              "text": "Daniel merkt sich das gut.",
+              "english": "Daniel makes a good mental note of that."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

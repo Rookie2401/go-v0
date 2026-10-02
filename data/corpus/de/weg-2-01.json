@@ -1,0 +1,151 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-2-01",
+  "lang": "de",
+  "title": "Am Morgen",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-2-01",
+    "title": "Weg 2 — Tage und Orte: Am Morgen (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-2",
+    "chapter": {
+      "index": 1,
+      "title": "Am Morgen"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "time",
+    "school"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Am Morgen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna steht jeden Morgen um sechs Uhr auf.",
+              "english": "Anna gets up at six o'clock every morning."
+            },
+            {
+              "text": "Sie geht in die Küche und macht Kaffee.",
+              "english": "She goes into the kitchen and makes coffee."
+            },
+            {
+              "text": "Um halb sieben kommt Paul in die Küche.",
+              "english": "At half past six Paul comes into the kitchen."
+            },
+            {
+              "text": "Er möchte einen Kaffee und ein Brötchen.",
+              "english": "He would like a coffee and a roll."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lena muss um sieben Uhr aufstehen.",
+              "english": "Lena has to get up at seven o'clock."
+            },
+            {
+              "text": "Aber Lena ist noch müde.",
+              "english": "But Lena is still tired."
+            },
+            {
+              "text": "Sie sagt: „Ich will nicht aufstehen!“",
+              "english": "She says, \"I don't want to get up!\""
+            },
+            {
+              "text": "Anna sagt: „Du musst jetzt aufstehen, Lena. Die Schule fängt um acht Uhr an.“",
+              "english": "Anna says, \"You have to get up now, Lena. School starts at eight o'clock.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann steht Lena auf und isst ein Brötchen mit Butter.",
+              "english": "Then Lena gets up and eats a roll with butter."
+            },
+            {
+              "text": "Max kommt mit.",
+              "english": "Max comes along."
+            },
+            {
+              "text": "Er geht jeden Morgen mit Lena zur Haltestelle.",
+              "english": "Every morning he goes with Lena to the bus stop."
+            },
+            {
+              "text": "Lena fährt mit dem Bus zur Schule.",
+              "english": "Lena goes to school by bus."
+            },
+            {
+              "text": "Der Bus fährt um Viertel nach sieben ab.",
+              "english": "The bus leaves at a quarter past seven."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Paul fährt mit dem Auto zur Arbeit.",
+              "english": "Paul drives to work in the car."
+            },
+            {
+              "text": "Er fängt um acht Uhr an.",
+              "english": "He starts at eight o'clock."
+            },
+            {
+              "text": "Dann ist es still im Haus.",
+              "english": "Then it is quiet in the house."
+            },
+            {
+              "text": "Anna trinkt in Ruhe ihren Kaffee.",
+              "english": "Anna drinks her coffee in peace."
+            },
+            {
+              "text": "Max kommt zurück und schläft wieder.",
+              "english": "Max comes back and sleeps again."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

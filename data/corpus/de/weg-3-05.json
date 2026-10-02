@@ -1,0 +1,179 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-3-05",
+  "lang": "de",
+  "title": "Der Kuchen für Frau Weber",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-3-05",
+    "title": "Weg 3 — Geschichten: Der Kuchen für Frau Weber (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "stories"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-3",
+    "chapter": {
+      "index": 5,
+      "title": "Der Kuchen für Frau Weber"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "food",
+    "neighbours"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Der Kuchen für Frau Weber",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Frau Weber wurde am Sonntag einundachtzig Jahre alt.",
+              "english": "Frau Weber turned eighty-one on Sunday."
+            },
+            {
+              "text": "Anna wollte ihr einen Kuchen backen, und Lena wollte helfen.",
+              "english": "Anna wanted to bake her a cake, and Lena wanted to help."
+            },
+            {
+              "text": "Am Samstagnachmittag standen sie in der Küche und rührten den Teig.",
+              "english": "On Saturday afternoon they stood in the kitchen and stirred the dough."
+            },
+            {
+              "text": "Lena schlug die Eier in die Schüssel, und Anna gab Mehl, Zucker und Butter dazu.",
+              "english": "Lena cracked the eggs into the bowl, and Anna added flour, sugar and butter."
+            },
+            {
+              "text": "Dann stellten sie den Kuchen in den Ofen.",
+              "english": "Then they put the cake into the oven."
+            },
+            {
+              "text": "„In einer Stunde ist er fertig“, sagte Anna.",
+              "english": "\"It will be ready in an hour,\" said Anna."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Plötzlich klingelte das Telefon.",
+              "english": "Suddenly the telephone rang."
+            },
+            {
+              "text": "Es war Annas Schwester Katrin, die schon lange nicht mehr angerufen hatte.",
+              "english": "It was Anna's sister Katrin, who had not called for a long time."
+            },
+            {
+              "text": "Die beiden redeten und lachten, und Anna vergaß die Zeit.",
+              "english": "The two of them talked and laughed, and Anna forgot the time."
+            },
+            {
+              "text": "Da rief Lena: „Mama, es riecht komisch!“",
+              "english": "Then Lena called, \"Mum, it smells funny!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna lief in die Küche und machte den Ofen auf.",
+              "english": "Anna ran into the kitchen and opened the oven."
+            },
+            {
+              "text": "Der Kuchen war schwarz!",
+              "english": "The cake was black!"
+            },
+            {
+              "text": "Anna hatte vergessen, ihn rechtzeitig herauszunehmen.",
+              "english": "Anna had forgotten to take it out in time."
+            },
+            {
+              "text": "Lena fing an zu weinen.",
+              "english": "Lena began to cry."
+            },
+            {
+              "text": "„Jetzt haben wir keinen Geburtstagskuchen für Frau Weber“, sagte sie traurig.",
+              "english": "\"Now we have no birthday cake for Frau Weber,\" she said sadly."
+            },
+            {
+              "text": "Anna nahm ein Messer und schnitt die schwarze Seite ab.",
+              "english": "Anna took a knife and cut off the black side."
+            },
+            {
+              "text": "Der Rest sah gar nicht schlecht aus.",
+              "english": "The rest did not look bad at all."
+            },
+            {
+              "text": "„Den bringen wir ihr trotzdem“, sagte Anna.",
+              "english": "\"We will take it to her anyway,\" said Anna."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Sonntag gingen sie mit dem Kuchen zu Frau Weber.",
+              "english": "On Sunday they went to Frau Weber with the cake."
+            },
+            {
+              "text": "Anna sagte: „Wir haben ihn leider ein bisschen zu lange gebacken.“",
+              "english": "Anna said, \"I am afraid we baked it a little too long.\""
+            },
+            {
+              "text": "Frau Weber probierte ein Stück und lächelte.",
+              "english": "Frau Weber tried a piece and smiled."
+            },
+            {
+              "text": "Sie sagte: „So einen Kuchen habe ich seit vierzig Jahren nicht gegessen.“",
+              "english": "She said, \"I have not eaten a cake like this for forty years.\""
+            },
+            {
+              "text": "„Meine Mutter hat ihn auch immer ein bisschen zu dunkel gebacken“, sagte sie.",
+              "english": "\"My mother always baked it a little too dark as well,\" she said."
+            },
+            {
+              "text": "Am Ende aß Frau Weber drei Stücke.",
+              "english": "In the end Frau Weber ate three pieces."
+            },
+            {
+              "text": "„Aber nächstes Mal“, sagte Anna, „stelle ich einen Wecker.“",
+              "english": "\"But next time,\" said Anna, \"I will set an alarm clock.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

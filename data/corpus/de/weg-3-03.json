@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-3-03",
+  "lang": "de",
+  "title": "Der Zug, der zu spät kam",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-3-03",
+    "title": "Weg 3 — Geschichten: Der Zug, der zu spät kam (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "stories"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-3",
+    "chapter": {
+      "index": 3,
+      "title": "Der Zug, der zu spät kam"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel",
+    "family"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Der Zug, der zu spät kam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Im Sommer fuhren Anna und Lena mit dem Zug zu Oma und Opa.",
+              "english": "In the summer Anna and Lena took the train to Grandma and Grandpa."
+            },
+            {
+              "text": "Lena war schon um fünf Uhr aufgestanden, weil sie sich so auf die Reise freute.",
+              "english": "Lena had got up at five o'\"'\"'clock, because she was so looking forward to the journey."
+            },
+            {
+              "text": "Paul musste arbeiten, deshalb blieb er mit Max zu Hause.",
+              "english": "Paul had to work, so he stayed at home with Max."
+            },
+            {
+              "text": "Der Zug fuhr um zehn Uhr ab, und Lena saß am Fenster.",
+              "english": "The train left at ten o'clock, and Lena sat by the window."
+            },
+            {
+              "text": "Sie sah Felder, Wälder und kleine Dörfer.",
+              "english": "She saw fields, forests and small villages."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nach zwei Stunden hielt der Zug plötzlich mitten auf dem Feld.",
+              "english": "After two hours the train suddenly stopped in the middle of a field."
+            },
+            {
+              "text": "Eine Stimme aus dem Lautsprecher sagte, dass ein Baum auf den Gleisen lag.",
+              "english": "A voice from the loudspeaker said that a tree was lying on the tracks."
+            },
+            {
+              "text": "Alle mussten eine Stunde warten.",
+              "english": "Everyone had to wait for an hour."
+            },
+            {
+              "text": "Als der Zug endlich weiterfuhr, war es schon Mittag.",
+              "english": "When the train finally went on, it was already noon."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "In der Stadt, in der sie umsteigen mussten, war der Anschlusszug schon abgefahren.",
+              "english": "In the town where they had to change trains, the connecting train had already left."
+            },
+            {
+              "text": "Der nächste Zug fuhr erst in zwei Stunden.",
+              "english": "The next train did not leave for two hours."
+            },
+            {
+              "text": "Lena war müde und hatte Hunger, und Anna wusste nicht, was sie tun sollte.",
+              "english": "Lena was tired and hungry, and Anna did not know what to do."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Eine ältere Frau, die auf der Bank neben ihnen saß, hatte alles gehört.",
+              "english": "An older woman who was sitting on the bench next to them had heard everything."
+            },
+            {
+              "text": "„Wohin müssen Sie denn?“, fragte sie freundlich.",
+              "english": "\"Where do you have to go?\" she asked kindly."
+            },
+            {
+              "text": "Anna nannte das Dorf von Oma und Opa.",
+              "english": "Anna named Oma and Opa's village."
+            },
+            {
+              "text": "Die Frau lachte und sagte: „Da muss ich auch hin. Wir können zusammen ein Taxi nehmen.“",
+              "english": "The woman laughed and said, \"I have to go there too. We can take a taxi together.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Im Taxi erzählte die Frau, dass sie Oma schon seit vierzig Jahren kannte.",
+              "english": "In the taxi the woman told them that she had known Grandma for forty years."
+            },
+            {
+              "text": "Opa stand vor dem Haus und wartete schon lange.",
+              "english": "Grandpa was standing in front of the house and had been waiting for a long time."
+            },
+            {
+              "text": "Lena lief zu ihm und rief: „Opa, wir haben eine Freundin von Oma getroffen!“",
+              "english": "Lena ran to him and called, \"Grandpa, we met a friend of Grandma's!\""
+            },
+            {
+              "text": "Am Abend sagte sie: „Ein Zug, der zu spät kommt, ist manchmal gar nicht so schlecht.“",
+              "english": "In the evening she said, \"A train that comes too late is sometimes not so bad at all.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 2,
+  "id": "gespraeche-1-04",
+  "lang": "de",
+  "title": "Am Telefon",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:gespraeche-1-04",
+    "title": "Gespräche 1: Am Telefon (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "gespraeche-1",
+    "chapter": {
+      "index": 4,
+      "title": "Am Telefon"
+    }
+  },
+  "streams": [
+    "conversation",
+    "acquisition"
+  ],
+  "domains": [
+    "telephone",
+    "family",
+    "friends"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "A": "Lena",
+    "B": "Daniel",
+    "C": "Anna"
+  },
+  "sections": [
+    {
+      "title": "Am Telefon",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Keller.",
+              "english": "Keller speaking."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Hallo, Lena! Hier ist Daniel. Ist deine Mama da?",
+              "english": "Hello, Lena! This is Daniel. Is your mum there?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Hallo, Daniel! Ja, die ist da. Ich hole sie mal.",
+              "english": "Hello, Daniel! Yes, she is here. I will fetch her."
+            },
+            {
+              "speaker": "A",
+              "text": "Mama! Daniel ist am Telefon!",
+              "english": "Mum! Daniel is on the phone!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "C",
+              "text": "Hallo, Daniel! Wie geht's? Was gibt's?",
+              "english": "Hello, Daniel! How are you? What is up?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Danke, gut! Und bei euch?",
+              "english": "Fine, thank you! And you?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "C",
+              "text": "Auch gut. Lena hat gerade ihre Hausaufgaben gemacht.",
+              "english": "Fine too. Lena has just done her homework."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Schön. Ich wollte fragen, ob ich am Sonntag früher kommen kann.",
+              "english": "Good. I wanted to ask whether I can come earlier on Sunday."
+            },
+            {
+              "speaker": "B",
+              "text": "Der Bus fährt ja nur alle zwei Stunden.",
+              "english": "After all, the bus only goes every two hours."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "C",
+              "text": "Das ist doch kein Problem!",
+              "english": "That is no problem at all!"
+            },
+            {
+              "speaker": "C",
+              "text": "Komm einfach um neun, dann frühstücken wir halt zusammen.",
+              "english": "Just come at nine, then we will have breakfast together."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Wirklich? Das ist nett. Soll ich etwas mitbringen?",
+              "english": "Really? That is kind. Shall I bring something?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "C",
+              "text": "Nein, nein. Es gibt ja schon genug. Bring nur gute Laune mit!",
+              "english": "No, no. There is plenty already. Just bring a good mood!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Das mache ich. Bis Sonntag dann!",
+              "english": "I will do that. See you on Sunday, then!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "C",
+              "text": "Bis Sonntag! Tschüs, Daniel!",
+              "english": "See you on Sunday! Bye, Daniel!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

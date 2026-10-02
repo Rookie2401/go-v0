@@ -1,0 +1,183 @@
+{
+  "schemaVersion": 2,
+  "id": "gespraeche-1-01",
+  "lang": "de",
+  "title": "Hallo, ich bin Daniel",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:gespraeche-1-01",
+    "title": "Gespräche 1: Hallo, ich bin Daniel (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "gespraeche-1",
+    "chapter": {
+      "index": 1,
+      "title": "Hallo, ich bin Daniel"
+    }
+  },
+  "streams": [
+    "conversation",
+    "acquisition"
+  ],
+  "domains": [
+    "church",
+    "people",
+    "greetings"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "A": "Daniel",
+    "B": "Anna",
+    "C": "Paul"
+  },
+  "sections": [
+    {
+      "title": "Hallo, ich bin Daniel",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Guten Morgen! Ich bin neu hier.",
+              "english": "Good morning! I am new here."
+            },
+            {
+              "speaker": "A",
+              "text": "Mein Name ist Daniel Miller.",
+              "english": "My name is Daniel Miller."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Guten Morgen, Herr Miller! Ich bin Anna Keller, und das ist mein Mann Paul.",
+              "english": "Good morning, Mr Miller! I am Anna Keller, and this is my husband Paul."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "C",
+              "text": "Herzlich willkommen! Woher kommen Sie denn?",
+              "english": "A warm welcome! Where do you come from?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Ich komme aus den USA.",
+              "english": "I come from the USA."
+            },
+            {
+              "speaker": "A",
+              "text": "Ich lerne seit einem Jahr Deutsch, aber ich spreche noch nicht gut.",
+              "english": "I have been learning German for a year, but I do not speak well yet."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Doch, Sie sprechen schon sehr gut!",
+              "english": "Oh yes, you already speak very well!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Das ist nett. Ich bin ja erst seit zwei Wochen hier.",
+              "english": "That is kind. After all, I have only been here for two weeks."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Keine Sorge, das wird mit der Zeit immer besser.",
+              "english": "Do not worry, it gets better and better with time."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "C",
+              "text": "Und was machen Sie hier in der Stadt?",
+              "english": "And what do you do here in town?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Ich helfe in einer Gemeinde mit und möchte Deutsch lernen.",
+              "english": "I help out in a congregation and want to learn German."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Dann setzen Sie sich doch zu uns!",
+              "english": "Then do sit with us!"
+            },
+            {
+              "speaker": "B",
+              "text": "Der Gottesdienst fängt gleich an.",
+              "english": "The service is about to begin."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Sehr gern. Vielen Dank!",
+              "english": "Gladly. Thank you very much!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

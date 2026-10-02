@@ -1,0 +1,191 @@
+{
+  "schemaVersion": 2,
+  "id": "gespraeche-1-03",
+  "lang": "de",
+  "title": "Wie komme ich zum Bahnhof?",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:gespraeche-1-03",
+    "title": "Gespräche 1: Wie komme ich zum Bahnhof? (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "gespraeche-1",
+    "chapter": {
+      "index": 3,
+      "title": "Wie komme ich zum Bahnhof?"
+    }
+  },
+  "streams": [
+    "conversation",
+    "acquisition"
+  ],
+  "domains": [
+    "town",
+    "travel",
+    "directions"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "A": "Daniel",
+    "B": "Passantin"
+  },
+  "sections": [
+    {
+      "title": "Wie komme ich zum Bahnhof?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Entschuldigung, wie komme ich zum Bahnhof?",
+              "english": "Excuse me, how do I get to the station?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Zum Bahnhof? Das ist nicht weit.",
+              "english": "To the station? That is not far."
+            },
+            {
+              "speaker": "B",
+              "text": "Gehen Sie hier geradeaus bis zur Ampel.",
+              "english": "Go straight ahead here as far as the traffic lights."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Bis zur Ampel. Und dann?",
+              "english": "As far as the traffic lights. And then?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Dann biegen Sie links ab.",
+              "english": "Then turn left."
+            },
+            {
+              "speaker": "B",
+              "text": "Nach der Kirche sehen Sie den Bahnhof schon.",
+              "english": "After the church you will already see the station."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Wie lange dauert das denn zu Fuß?",
+              "english": "How long does it take on foot?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Etwa zehn Minuten.",
+              "english": "About ten minutes."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Gut, das schaffe ich. Mein Zug fährt erst in einer Stunde.",
+              "english": "Good, I can manage that. My train does not leave for an hour."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Sie können aber auch die Straßenbahn nehmen, die fährt ja direkt hin.",
+              "english": "But you can also take the tram, it goes straight there, after all."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Wo ist denn die Haltestelle?",
+              "english": "Where is the stop, then?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Moment mal, die ist wohl auf der anderen Straßenseite.",
+              "english": "Just a moment, I think it is on the other side of the street."
+            },
+            {
+              "speaker": "B",
+              "text": "Ja, da hinten, sehen Sie?",
+              "english": "Yes, back there, do you see?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Ja, jetzt sehe ich sie. Vielen Dank für Ihre Hilfe!",
+              "english": "Yes, now I see it. Thank you very much for your help!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Gern geschehen. Gute Fahrt!",
+              "english": "You are welcome. Have a good journey!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

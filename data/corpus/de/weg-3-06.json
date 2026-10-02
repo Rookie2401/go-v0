@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-3-06",
+  "lang": "de",
+  "title": "Eine Brezel für zwei",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-3-06",
+    "title": "Weg 3 — Geschichten: Eine Brezel für zwei (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "stories"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-3",
+    "chapter": {
+      "index": 6,
+      "title": "Eine Brezel für zwei"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "town",
+    "food",
+    "people"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Eine Brezel für zwei",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anna und Paul lernten sich in einer Bäckerei kennen.",
+              "english": "Anna and Paul met in a bakery."
+            },
+            {
+              "text": "Es war an einem kalten Wintermorgen, vor vielen Jahren.",
+              "english": "It was on a cold winter morning, many years ago."
+            },
+            {
+              "text": "Anna hatte es eilig, weil ihr Zug in zehn Minuten fuhr.",
+              "english": "Anna was in a hurry because her train was leaving in ten minutes."
+            },
+            {
+              "text": "Sie wollte nur noch schnell eine Brezel kaufen.",
+              "english": "She only wanted to buy a pretzel quickly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "In der Bäckerei lag nur noch eine einzige Brezel auf dem Blech.",
+              "english": "In the bakery only a single pretzel was left on the tray."
+            },
+            {
+              "text": "Anna streckte die Hand aus.",
+              "english": "Anna stretched out her hand."
+            },
+            {
+              "text": "Im gleichen Moment streckte auch ein großer Mann, der neben ihr stand, die Hand aus.",
+              "english": "At the same moment a tall man who was standing next to her also stretched out his hand."
+            },
+            {
+              "text": "„Bitte, nehmen Sie sie“, sagte der Mann.",
+              "english": "\"Please, you take it,\" said the man."
+            },
+            {
+              "text": "„Nein, nehmen Sie sie“, sagte Anna.",
+              "english": "\"No, you take it,\" said Anna."
+            },
+            {
+              "text": "Beide wollten höflich sein.",
+              "english": "Both wanted to be polite."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Die Verkäuferin lachte und sagte: „Dann teilen Sie sie doch!“",
+              "english": "The shop assistant laughed and said, \"Then share it!\""
+            },
+            {
+              "text": "So teilten die beiden die Brezel und aßen sie auf dem Weg zum Bahnhof.",
+              "english": "So the two of them shared the pretzel and ate it on the way to the station."
+            },
+            {
+              "text": "Der Mann stellte sich vor: „Ich heiße Paul.“",
+              "english": "The man introduced himself: \"My name is Paul.\""
+            },
+            {
+              "text": "„Und ich bin Anna“, sagte sie.",
+              "english": "\"And I am Anna,\" she said."
+            },
+            {
+              "text": "Paul fuhr erst seit einer Woche mit diesem Zug, weil er eine neue Arbeit hatte.",
+              "english": "Paul had only been taking this train for a week, because he had a new job."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am nächsten Morgen standen beide wieder in der Bäckerei.",
+              "english": "The next morning both were standing in the bakery again."
+            },
+            {
+              "text": "Diesmal kauften sie zwei Brezeln.",
+              "english": "This time they bought two pretzels."
+            },
+            {
+              "text": "Nach einer Woche sagte Paul: „Wir können uns doch duzen, oder?“",
+              "english": "After a week Paul said, \"We can say du to each other, can't we?\""
+            },
+            {
+              "text": "Zwei Jahre später waren sie verheiratet.",
+              "english": "Two years later they were married."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Heute haben sie ein Haus, einen Hund und eine Tochter.",
+              "english": "Today they have a house, a dog and a daughter."
+            },
+            {
+              "text": "Aber noch heute streiten sie darüber, wem die Brezel damals gehört hat.",
+              "english": "But even today they argue about whom the pretzel belonged to back then."
+            },
+            {
+              "text": "Lena sagt dann immer: „Ihr könnt doch einfach zwei kaufen!“",
+              "english": "Lena always says then, \"You can just buy two!\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 2,
+  "id": "deutschland-lesungen-1-01",
+  "lang": "de",
+  "title": "Mit dem Regionalzug und der Straßenbahn",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:deutschland-lesungen-1-01",
+    "title": "Deutschland — Lesungen 1: Mit dem Regionalzug und der Straßenbahn (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own. A German reviewer must check it before publication, above all every statement about everyday life in Germany.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting review by a German reviewer (naturalness and every statement about life in Germany)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "germany"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-regional-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "deutschland-lesungen-1",
+    "chapter": {
+      "index": 1,
+      "title": "Mit dem Regionalzug und der Straßenbahn"
+    }
+  },
+  "streams": [
+    "germany",
+    "acquisition"
+  ],
+  "domains": [
+    "travel",
+    "town",
+    "germany"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Mit dem Regionalzug und der Straßenbahn",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Daniel kommt aus den USA und wohnt seit zwei Wochen in einer kleinen Stadt in Deutschland.",
+              "english": "Daniel comes from the USA and has lived in a small town in Germany for two weeks."
+            },
+            {
+              "text": "Heute möchte er einen Freund in der nächsten größeren Stadt besuchen.",
+              "english": "Today he would like to visit a friend in the next bigger town."
+            },
+            {
+              "text": "Er fährt mit dem Regionalzug, weil das die einfachste Möglichkeit ist.",
+              "english": "He goes by regional train, because that is the simplest way."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Bahnhof steht ein Fahrkartenautomat.",
+              "english": "At the station there is a ticket machine."
+            },
+            {
+              "text": "Auf dem Bildschirm kann man oft die Sprache wählen.",
+              "english": "On the screen one can often choose the language."
+            },
+            {
+              "text": "Daniel wählt Deutsch, weil er üben will.",
+              "english": "Daniel chooses German, because he wants to practise."
+            },
+            {
+              "text": "Er kauft eine Fahrkarte und liest den Text darauf genau.",
+              "english": "He buys a ticket and reads the text on it carefully."
+            },
+            {
+              "text": "Manchmal muss man eine Fahrkarte vor der Fahrt stempeln, und dann steht ein kleines Gerät am Bahnsteig.",
+              "english": "Sometimes you have to stamp a ticket before the journey, and then there is a small machine on the platform."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Der Regionalzug hält an vielen kleinen Bahnhöfen.",
+              "english": "The regional train stops at many small stations."
+            },
+            {
+              "text": "Vor jedem Halt sagt eine Stimme den Namen des Bahnhofs an.",
+              "english": "Before every stop a voice announces the name of the station."
+            },
+            {
+              "text": "Manchmal hat ein Zug Verspätung, aber heute kommt er pünktlich an.",
+              "english": "Sometimes a train is late, but today it arrives on time."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "In der größeren Stadt steigt Daniel in die Straßenbahn um.",
+              "english": "In the bigger town Daniel changes to the tram."
+            },
+            {
+              "text": "Oft zeigt ein Bildschirm den Namen der nächsten Haltestelle.",
+              "english": "A screen often shows the name of the next stop."
+            },
+            {
+              "text": "Wer aussteigen möchte, drückt auf einen Knopf.",
+              "english": "Whoever wants to get off presses a button."
+            },
+            {
+              "text": "Plötzlich kommt eine Frau und sagt: „Die Fahrscheine, bitte!“",
+              "english": "Suddenly a woman comes and says, \"Tickets, please!\""
+            },
+            {
+              "text": "Sie kontrolliert die Fahrkarten, und wer keine hat, muss Strafe zahlen.",
+              "english": "She checks the tickets, and anyone without one has to pay a fine."
+            },
+            {
+              "text": "Daniel zeigt seine Fahrkarte, und alles ist in Ordnung.",
+              "english": "Daniel shows his ticket, and everything is fine."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "An der Haltestelle wartet sein Freund und winkt.",
+              "english": "At the stop his friend is waiting and waves."
+            },
+            {
+              "text": "Daniel ist froh, denn die erste Fahrt allein hat gut geklappt.",
+              "english": "Daniel is happy, because the first journey on his own went well."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 2,
+  "id": "gespraeche-1-06",
+  "lang": "de",
+  "title": "Eine Einladung zum Abendbrot",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:gespraeche-1-06",
+    "title": "Gespräche 1: Eine Einladung zum Abendbrot (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "gespraeche-1",
+    "chapter": {
+      "index": 6,
+      "title": "Eine Einladung zum Abendbrot"
+    }
+  },
+  "streams": [
+    "conversation",
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "food",
+    "invitations"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "A": "Anna",
+    "B": "Daniel"
+  },
+  "sections": [
+    {
+      "title": "Eine Einladung zum Abendbrot",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Hast du am Samstag schon etwas vor, Daniel?",
+              "english": "Do you already have plans for Saturday, Daniel?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Nein, eigentlich nicht. Warum denn?",
+              "english": "No, not really. Why?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Dann komm doch zum Abendbrot zu uns!",
+              "english": "Then come to us for supper!"
+            },
+            {
+              "speaker": "A",
+              "text": "Paul und Lena freuen sich schon.",
+              "english": "Paul and Lena are already looking forward to it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Das ist ja nett! Wann soll ich denn da sein?",
+              "english": "That is nice! When should I be there?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Um sechs Uhr, wenn es dir passt.",
+              "english": "At six o'clock, if that suits you."
+            },
+            {
+              "speaker": "A",
+              "text": "Isst du eigentlich alles?",
+              "english": "Do you eat everything, by the way?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Ja, ich esse fast alles.",
+              "english": "Yes, I eat almost everything."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Prima, dann gibt es kein Problem.",
+              "english": "Great, then there is no problem."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Das passt mir gut. Soll ich etwas mitbringen?",
+              "english": "That suits me fine. Shall I bring something?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Nein, nein. Bring einfach dich mit.",
+              "english": "No, no. Just bring yourself."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Ich bringe wenigstens Blumen mit.",
+              "english": "I will at least bring flowers."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Das ist lieb von dir. Aber das musst du nicht.",
+              "english": "That is kind of you. But you do not have to."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Doch, doch, das mache ich gern!",
+              "english": "Yes, yes, I am glad to!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Na gut. Es gibt halt nur Brot und Aufschnitt, nichts Besonderes.",
+              "english": "All right. We are only having bread and cold cuts, nothing special."
+            },
+            {
+              "speaker": "A",
+              "text": "Abends essen wir eben meistens kalt.",
+              "english": "In the evening we mostly eat cold, that is just how it is."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Das klingt perfekt. Bis Samstag!",
+              "english": "That sounds perfect. See you on Saturday!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

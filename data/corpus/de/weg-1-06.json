@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-1-06",
+  "lang": "de",
+  "title": "Paul geht in die Stadt",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-1-06",
+    "title": "Weg 1 — Erste Schritte: Paul geht in die Stadt (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "reading"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-1",
+    "chapter": {
+      "index": 6,
+      "title": "Paul geht in die Stadt"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "town",
+    "food"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Paul geht in die Stadt",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Paul hat ein Auto.",
+              "english": "Paul has a car."
+            },
+            {
+              "text": "Das Auto ist blau.",
+              "english": "The car is blue."
+            },
+            {
+              "text": "Paul fährt in die Stadt.",
+              "english": "Paul drives into town."
+            },
+            {
+              "text": "Die Stadt ist groß.",
+              "english": "The town is big."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "In der Stadt ist eine Bäckerei.",
+              "english": "In the town there is a bakery."
+            },
+            {
+              "text": "In der Bäckerei ist eine Frau.",
+              "english": "In the bakery there is a woman."
+            },
+            {
+              "text": "Die Frau sagt: „Guten Tag!“",
+              "english": "The woman says, \"Good day!\""
+            },
+            {
+              "text": "Paul sagt: „Guten Tag! Ein Brot, bitte.“",
+              "english": "Paul says, \"Good day! A loaf of bread, please.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Die Frau nimmt das Brot.",
+              "english": "The woman takes the bread."
+            },
+            {
+              "text": "Das Brot ist braun.",
+              "english": "The bread is brown."
+            },
+            {
+              "text": "„Das macht drei Euro“, sagt die Frau.",
+              "english": "\"That comes to three euros,\" says the woman."
+            },
+            {
+              "text": "Paul hat drei Euro.",
+              "english": "Paul has three euros."
+            },
+            {
+              "text": "Paul sagt: „Danke! Auf Wiedersehen!“",
+              "english": "Paul says, \"Thank you! Goodbye!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Paul fährt nach Hause.",
+              "english": "Paul drives home."
+            },
+            {
+              "text": "Anna sieht das Brot.",
+              "english": "Anna sees the bread."
+            },
+            {
+              "text": "Anna ist froh.",
+              "english": "Anna is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

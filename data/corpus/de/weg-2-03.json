@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-2-03",
+  "lang": "de",
+  "title": "Ein Anruf",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-2-03",
+    "title": "Weg 2 — Tage und Orte: Ein Anruf (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-2",
+    "chapter": {
+      "index": 3,
+      "title": "Ein Anruf"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "family",
+    "telephone"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Ein Anruf",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Am Mittwochabend liegt das Handy auf dem Tisch.",
+              "english": "On Wednesday evening the phone is lying on the table."
+            },
+            {
+              "text": "Plötzlich klingelt es.",
+              "english": "Suddenly it rings."
+            },
+            {
+              "text": "Paul nimmt das Handy und sagt: „Hallo, hier ist Paul.“",
+              "english": "Paul takes the phone and says, \"Hello, this is Paul.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Es ist Opa.",
+              "english": "It is Grandpa."
+            },
+            {
+              "text": "Opa wohnt mit Oma in einem Dorf bei der Stadt.",
+              "english": "Grandpa lives with Grandma in a village near the town."
+            },
+            {
+              "text": "Er sagt: „Hallo, Paul! Wie geht es euch?“",
+              "english": "He says, \"Hello, Paul! How are you all?\""
+            },
+            {
+              "text": "Paul sagt: „Danke, gut! Und wie geht es dir?“",
+              "english": "Paul says, \"Fine, thank you! And how are you?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Opa fragt: „Können wir am Sonntag zu euch kommen?“",
+              "english": "Grandpa asks, \"Can we come to see you on Sunday?\""
+            },
+            {
+              "text": "Paul sagt: „Ja, gern! Wir freuen uns sehr.“",
+              "english": "Paul says, \"Yes, gladly! We are very pleased.\""
+            },
+            {
+              "text": "Opa sagt, dass er und Oma mit dem Zug kommen.",
+              "english": "Grandpa says that he and Grandma are coming by train."
+            },
+            {
+              "text": "Paul sagt: „Ich hole euch am Bahnhof ab.“",
+              "english": "Paul says, \"I will pick you up at the station.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dann ruft Paul: „Anna! Opa hat angerufen!“",
+              "english": "Then Paul calls, \"Anna! Grandpa has called!\""
+            },
+            {
+              "text": "Anna kommt in die Küche.",
+              "english": "Anna comes into the kitchen."
+            },
+            {
+              "text": "Sie freut sich, weil sie Oma und Opa lange nicht gesehen hat.",
+              "english": "She is glad because she has not seen Grandma and Grandpa for a long time."
+            },
+            {
+              "text": "Lena sagt: „Dann backen wir einen Kuchen!“",
+              "english": "Lena says, \"Then let us bake a cake!\""
+            },
+            {
+              "text": "Anna lacht und sagt: „Gute Idee! Wir kaufen morgen Eier und Mehl.“",
+              "english": "Anna laughs and says, \"Good idea! Tomorrow we will buy eggs and flour.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

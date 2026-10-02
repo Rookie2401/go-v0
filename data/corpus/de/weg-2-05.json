@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 2,
+  "id": "weg-2-05",
+  "lang": "de",
+  "title": "Lena ist krank",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:weg-2-05",
+    "title": "Weg 2 — Tage und Orte: Lena ist krank (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "weg-2",
+    "chapter": {
+      "index": 5,
+      "title": "Lena ist krank"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "health",
+    "school"
+  ],
+  "variety": "de-DE",
+  "sections": [
+    {
+      "title": "Lena ist krank",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es ist Montagmorgen.",
+              "english": "It is Monday morning."
+            },
+            {
+              "text": "Lena liegt im Bett und ist sehr müde.",
+              "english": "Lena is lying in bed and is very tired."
+            },
+            {
+              "text": "Sie hat Fieber.",
+              "english": "She has a fever."
+            },
+            {
+              "text": "Sie kann heute nicht in die Schule gehen, weil sie krank ist.",
+              "english": "She cannot go to school today because she is ill."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anna ruft die Schule an.",
+              "english": "Anna calls the school."
+            },
+            {
+              "text": "Sie sagt, dass Lena heute zu Hause bleibt.",
+              "english": "She says that Lena is staying at home today."
+            },
+            {
+              "text": "Dann geht Anna mit Lena zum Arzt.",
+              "english": "Then Anna goes to the doctor with Lena."
+            },
+            {
+              "text": "Die Ärztin ist sehr freundlich.",
+              "english": "The doctor is very friendly."
+            },
+            {
+              "text": "Sie sagt: „Lena muss drei Tage im Bett bleiben und viel Tee trinken.“",
+              "english": "She says, \"Lena must stay in bed for three days and drink a lot of tea.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lena ist traurig, weil sie nicht spielen kann.",
+              "english": "Lena is sad because she cannot play."
+            },
+            {
+              "text": "Vom Bett aus sieht sie in den Garten.",
+              "english": "From her bed she looks out into the garden."
+            },
+            {
+              "text": "Zu Hause macht Anna einen Tee mit Honig.",
+              "english": "At home Anna makes a tea with honey."
+            },
+            {
+              "text": "Paul kommt früh von der Arbeit zurück.",
+              "english": "Paul comes back early from work."
+            },
+            {
+              "text": "Er bringt Lena ein neues Buch mit.",
+              "english": "He brings Lena a new book."
+            },
+            {
+              "text": "Max liegt bei Lena im Bett.",
+              "english": "Max is lying in bed with Lena."
+            },
+            {
+              "text": "Er will bei ihr bleiben.",
+              "english": "He wants to stay with her."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Am Abend sagt Lena: „Ich möchte aufstehen und spielen.“",
+              "english": "In the evening Lena says, \"I would like to get up and play.\""
+            },
+            {
+              "text": "Anna sagt: „Nein, noch nicht. Du musst noch im Bett bleiben.“",
+              "english": "Anna says, \"No, not yet. You still have to stay in bed.\""
+            },
+            {
+              "text": "Lena nimmt das Buch und liest.",
+              "english": "Lena takes the book and reads."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

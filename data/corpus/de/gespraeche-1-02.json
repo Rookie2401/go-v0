@@ -1,0 +1,204 @@
+{
+  "schemaVersion": 2,
+  "id": "gespraeche-1-02",
+  "lang": "de",
+  "title": "Beim Bäcker",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-de",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — German"
+  },
+  "source": {
+    "id": "src:de:gespraeche-1-02",
+    "title": "Gespräche 1: Beim Bäcker (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled German. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive German written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily-life",
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "gespraeche-1",
+    "chapter": {
+      "index": 2,
+      "title": "Beim Bäcker"
+    }
+  },
+  "streams": [
+    "conversation",
+    "acquisition"
+  ],
+  "domains": [
+    "town",
+    "food",
+    "shopping"
+  ],
+  "variety": "de-DE",
+  "speakers": {
+    "A": "Verkäuferin",
+    "B": "Daniel"
+  },
+  "sections": [
+    {
+      "title": "Beim Bäcker",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Guten Morgen! Was darf es sein?",
+              "english": "Good morning! What can I get you?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Guten Morgen! Ich hätte gern vier Brötchen und ein Brot, bitte.",
+              "english": "Good morning! I would like four rolls and a loaf of bread, please."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Welches Brot denn?",
+              "english": "Which bread?"
+            },
+            {
+              "speaker": "A",
+              "text": "Wir haben Weißbrot, Vollkornbrot und Roggenbrot.",
+              "english": "We have white bread, wholemeal bread and rye bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Hm, ich weiß nicht. Was ist denn das da, das dunkle Brot?",
+              "english": "Hm, I do not know. What is that over there, the dark bread?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Das ist Roggenbrot. Das schmeckt halt ein bisschen kräftiger.",
+              "english": "That is rye bread. It just tastes a little stronger."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Dann probiere ich das mal.",
+              "english": "Then I will try that."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Eine gute Wahl! Das Brot ist von heute Morgen und noch ganz frisch.",
+              "english": "A good choice! The bread is from this morning and still quite fresh."
+            },
+            {
+              "speaker": "A",
+              "text": "Soll ich es Ihnen schneiden?",
+              "english": "Shall I slice it for you?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Ja, bitte. Und noch eine Brezel.",
+              "english": "Yes, please. And a pretzel as well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Sonst noch etwas?",
+              "english": "Anything else?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Nein, das ist alles. Was macht das zusammen?",
+              "english": "No, that is all. What does that come to altogether?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Das macht vier Euro fünfzig.",
+              "english": "That comes to four euros fifty."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Hier sind fünf Euro.",
+              "english": "Here are five euros."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Und fünfzig Cent zurück. Schönen Tag noch!",
+              "english": "And fifty cents back. Have a nice day!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Danke, gleichfalls! Tschüs!",
+              "english": "Thank you, you too! Bye!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

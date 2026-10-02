@@ -93,6 +93,16 @@ function impForm(stem: string, cls: Cls, fut: boolean): string[] {
   }
 }
 
+/**
+ * A form shared by several persons is one reading PER PERSON, identical in every other feature, in the order third, first,
+ * second. 'sg' (-े, -ेगा, है): third, and second singular intimate (तू, Polite=Infm). 'pl' (-ें, -ेंगे, हैं): third, first, and
+ * second with plural agreement, the polite आप (Polite=Form). Number stays a single value.
+ */
+function split(base: Record<string, string>, kind: 'sg' | 'pl'): Array<Record<string, string>> {
+  if (kind === 'sg') return [{ ...base, Person: '3', Number: 'Sing' }, { ...base, Person: '2', Number: 'Sing', Polite: 'Infm' }];
+  return [{ ...base, Person: '3', Number: 'Plur' }, { ...base, Person: '1', Number: 'Plur' }, { ...base, Person: '2', Number: 'Plur', Polite: 'Form' }];
+}
+
 const sfx = (s: string) => (stem: string) => [stem + s];
 const V = (ending: string) => (stem: string, cls: Cls) => [fixNasal(vend(stem, cls, ending))];
 const PF = (n: number) => (stem: string, cls: Cls) => [perf(stem, cls, n)];
@@ -121,15 +131,15 @@ export const SLOTS: Slot[] = [
   { id: 'conv_kar', label: 'conjunctive (stem + कर)', morphs: [{ VerbForm: 'Conv' }], evid: 0.5, build: sfx('कर') },
   { id: 'conv_ke', label: 'conjunctive (stem + के)', morphs: [{ VerbForm: 'Conv' }], evid: 0.3, build: sfx('के') },
   { id: 'sub_1s', label: 'subjunctive, first person singular', morphs: [{ ...SUB, Person: '1', Number: 'Sing' }], evid: 0.4, build: V('ऊँ') },
-  { id: 'sub_23s', label: 'subjunctive, second / third person singular', morphs: [{ ...SUB, Person: '2,3', Number: 'Sing' }], evid: 0.22, build: V('ए') },
-  { id: 'sub_13p', label: 'subjunctive, first / third person plural (also polite आप)', morphs: [{ ...SUB, Person: '1,2,3', Number: 'Plur' }], evid: 0.25, build: V('एँ') },
+  { id: 'sub_23s', label: 'subjunctive, second / third person singular', morphs: split(SUB, 'sg'), evid: 0.22, build: V('ए') },
+  { id: 'sub_13p', label: 'subjunctive, first / third person plural (also polite आप)', morphs: split(SUB, 'pl'), evid: 0.25, build: V('एँ') },
   { id: 'sub_2p', label: 'subjunctive, तुम', morphs: [{ ...SUB, Person: '2', Polite: 'Fam' }], evid: 0.25, build: V('ओ') },
   { id: 'fut_1sm', label: 'future, first person singular masculine', morphs: [{ ...FUT, Person: '1', Number: 'Sing', Gender: 'Masc' }], evid: 0.58, build: V('ऊँगा') },
   { id: 'fut_1sf', label: 'future, first person singular feminine', morphs: [{ ...FUT, Person: '1', Number: 'Sing', Gender: 'Fem' }], evid: 0.58, build: V('ऊँगी') },
-  { id: 'fut_23sm', label: 'future, second / third person singular masculine', morphs: [{ ...FUT, Person: '2,3', Number: 'Sing', Gender: 'Masc' }], evid: 0.58, build: V('एगा') },
-  { id: 'fut_23sf', label: 'future, second / third person singular feminine', morphs: [{ ...FUT, Person: '2,3', Number: 'Sing', Gender: 'Fem' }], evid: 0.58, build: V('एगी') },
-  { id: 'fut_pm', label: 'future, first / third person plural masculine (also polite आप)', morphs: [{ ...FUT, Person: '1,2,3', Number: 'Plur', Gender: 'Masc' }], evid: 0.58, build: V('एँगे') },
-  { id: 'fut_pf', label: 'future, first / third person plural feminine (also polite आप)', morphs: [{ ...FUT, Person: '1,2,3', Number: 'Plur', Gender: 'Fem' }], evid: 0.58, build: V('एँगी') },
+  { id: 'fut_23sm', label: 'future, second / third person singular masculine', morphs: split({ ...FUT, Gender: 'Masc' }, 'sg'), evid: 0.58, build: V('एगा') },
+  { id: 'fut_23sf', label: 'future, second / third person singular feminine', morphs: split({ ...FUT, Gender: 'Fem' }, 'sg'), evid: 0.58, build: V('एगी') },
+  { id: 'fut_pm', label: 'future, first / third person plural masculine (also polite आप)', morphs: split({ ...FUT, Gender: 'Masc' }, 'pl'), evid: 0.58, build: V('एँगे') },
+  { id: 'fut_pf', label: 'future, first / third person plural feminine (also polite आप)', morphs: split({ ...FUT, Gender: 'Fem' }, 'pl'), evid: 0.58, build: V('एँगी') },
   { id: 'fut_2pm', label: 'future, तुम masculine', morphs: [{ ...FUT, Person: '2', Polite: 'Fam', Gender: 'Masc' }], evid: 0.55, build: V('ओगे') },
   { id: 'fut_2pf', label: 'future, तुम feminine', morphs: [{ ...FUT, Person: '2', Polite: 'Fam', Gender: 'Fem' }], evid: 0.55, build: V('ओगी') },
   { id: 'imp_infm', label: 'command to तू (the bare stem)', morphs: [{ ...IMP, Polite: 'Infm' }], evid: 0, build: (s) => [s] },
@@ -138,8 +148,8 @@ export const SLOTS: Slot[] = [
   { id: 'imp_formfut', label: 'polite command to आप, later (stem + इएगा)', morphs: [{ ...IMP, Polite: 'Form', Tense: 'Fut' }], evid: 0.55, build: (s, c) => impForm(s, c, true) },
   { id: 'stem', label: 'bare stem', morphs: [{ VerbForm: 'Stem' }], evid: 0, build: (s) => [s] },
   { id: 'cop_1s', label: 'present of होना, first person singular', morphs: [{ ...COP, Person: '1', Number: 'Sing' }], evid: 0, build: none, irregOnly: true },
-  { id: 'cop_23s', label: 'present of होना, second / third person singular', morphs: [{ ...COP, Person: '2,3', Number: 'Sing' }], evid: 0, build: none, irregOnly: true },
-  { id: 'cop_p', label: 'present of होना, plural', morphs: [{ ...COP, Person: '1,2,3', Number: 'Plur' }], evid: 0, build: none, irregOnly: true },
+  { id: 'cop_23s', label: 'present of होना, second / third person singular', morphs: split(COP, 'sg'), evid: 0, build: none, irregOnly: true },
+  { id: 'cop_p', label: 'present of होना, plural', morphs: split(COP, 'pl'), evid: 0, build: none, irregOnly: true },
   { id: 'cop_2p', label: 'present of होना, तुम', morphs: [{ ...COP, Person: '2', Polite: 'Fam' }], evid: 0, build: none, irregOnly: true },
   { id: 'cop_pms', label: 'past of होना, masculine singular', morphs: [{ ...PAST, Gender: 'Masc', Number: 'Sing' }], evid: 0, build: none, irregOnly: true },
   { id: 'cop_pmp', label: 'past of होना, masculine plural', morphs: [{ ...PAST, Gender: 'Masc', Number: 'Plur' }], evid: 0, build: none, irregOnly: true },

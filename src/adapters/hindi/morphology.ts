@@ -76,6 +76,13 @@ function makeCtx(opts: HindiAnalyzeOptions): Ctx {
   };
 }
 
+/** The reading without its person: the variants of one finite form (third / first / second) share it. */
+const groupKey = (r: { lemma: string; pos: string; morph: Record<string, string> }): string => {
+  const { Person: _p, Polite: _q, ...rest } = r.morph;
+  void _p; void _q;
+  return `${r.lemma}|${r.pos}|${JSON.stringify(rest)}`;
+};
+
 const round2 = (n: number): number => Math.round(n * 100) / 100;
 
 /** Every reading the rules give for one form (NFC), best first. Empty when nothing can be derived. */
@@ -114,8 +121,9 @@ export function analyzeHindiForm(form: string, opts: HindiAnalyzeOptions = {}): 
     lemmaKnown: r.known, confidence: round2(confidence),
   });
 
+  const distinctKnown = new Set(known.map(groupKey)).size;
   const knownOut = known
-    .map((r, i) => ({ r, i, c: ambiguous ? 0.7 : r.tier === 'assumed' ? 0.8 : known.length >= 2 ? 0.85 : 0.9 }))
+    .map((r, i) => ({ r, i, c: ambiguous ? 0.7 : r.tier === 'assumed' ? 0.8 : distinctKnown >= 2 ? 0.85 : 0.9 }))
     .sort((a, b) => b.c - a.c || b.r.prior - a.r.prior || a.i - b.i)
     .map((x) => toAnalysis(x.r, x.c));
 
@@ -127,8 +135,17 @@ export function analyzeHindiForm(form: string, opts: HindiAnalyzeOptions = {}): 
     guesses = guesses.filter((r) => r.prior >= top - GUESS_SPREAD && (!known.length || r.prior >= 0.57));
   }
   const ordered = guesses.map((r, i) => ({ r, i })).sort((a, b) => b.r.prior - a.r.prior || a.i - b.i).map((x) => x.r);
+  // the person-variants of one guess are one guess
+  const cap = known.length ? 2 + new Set(closedRest.map(groupKey)).size : GUESS_CAP;
+  const kept = new Set<string>();
   const unknownOut = [...closedRest, ...ordered]
-    .slice(0, known.length ? 2 + closedRest.length : GUESS_CAP)
+    .filter((r) => {
+      const k = groupKey(r);
+      if (kept.has(k)) return true;
+      if (kept.size >= cap) return false;
+      kept.add(k);
+      return true;
+    })
     .map((r) => toAnalysis(r, Math.min(0.6, r.prior)));
   return [...knownOut, ...unknownOut];
 }

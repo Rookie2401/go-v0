@@ -44,7 +44,7 @@ describe('causatives by rule, from a vouched base', () => {
     const o = verbs();
     const want: Array<[string, Record<string, string>]> = [
       ['करवाना', { VerbForm: 'Inf' }], ['करवाने', { VerbForm: 'Inf', Case: 'Obl' }], ['करवाता', { VerbForm: 'Part', Aspect: 'Imp', Gender: 'Masc', Number: 'Sing' }],
-      ['करवाएगा', { Tense: 'Fut', Person: '2,3', Gender: 'Masc' }], ['करवाऊँगी', { Tense: 'Fut', Person: '1', Gender: 'Fem' }], ['करवाइए', { Mood: 'Imp', Polite: 'Form' }],
+      ['करवाएगा', { Tense: 'Fut', Person: '3', Gender: 'Masc' }], ['करवाऊँगी', { Tense: 'Fut', Person: '1', Gender: 'Fem' }], ['करवाइए', { Mood: 'Imp', Polite: 'Form' }],
       ['करवाओ', { Mood: 'Imp', Polite: 'Fam' }], ['करवाकर', { VerbForm: 'Conv' }], ['करवाई', { Aspect: 'Perf', Gender: 'Fem', Number: 'Sing' }], ['करवाए', { Aspect: 'Perf', Gender: 'Masc', Number: 'Plur' }],
       ['बनवाया', { Aspect: 'Perf' }], ['बुलाएँगे', { Tense: 'Fut', Gender: 'Masc' }], ['दिखाइए', { Mood: 'Imp', Polite: 'Form' }], ['खिलाती', { Aspect: 'Imp', Gender: 'Fem' }],
     ];

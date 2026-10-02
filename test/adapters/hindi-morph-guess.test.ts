@@ -15,7 +15,8 @@ describe('words outside the list: rule-only guesses', () => {
     for (const w of UNKNOWN) {
       const r = none(w);
       expect(r.length, w).toBeGreaterThan(0);
-      expect(r.length, w).toBeLessThanOrEqual(4);
+      // the person-variants of one guess count as one guess
+      expect(new Set(r.map((a) => `${a.lemma}|${a.pos}|${JSON.stringify({ ...a.morph, Person: undefined, Polite: undefined })}`)).size, w).toBeLessThanOrEqual(4);
       for (const a of r) {
         expect(a.lemmaKnown, w).toBe(false);
         expect(a.confidence, w).toBeLessThanOrEqual(0.6);
@@ -173,8 +174,12 @@ describe('describeHindiMorph', () => {
     expect(d({ VerbForm: 'Part', Aspect: 'Perf', Gender: 'Masc', Number: 'Sing', Voice: 'Cau' })).toMatch(/causative$/);
     expect(d({}, 'ADJ')).toBe('does not change');
     expect(d({})).toBe('');
-    expect(d({ VerbForm: 'Fin', Mood: 'Sub', Person: '1,2,3', Number: 'Plur' })).toMatch(/first, second \(polite, आप\) or third person plural/);
-    expect(d({ VerbForm: 'Fin', Mood: 'Sub', Person: '2,3', Number: 'Sing' })).toMatch(/second \(तू\) or third person singular/);
+    expect(d({ VerbForm: 'Fin', Mood: 'Sub', Person: '3', Number: 'Plur' })).toBe('third person plural, subjunctive');
+    expect(d({ VerbForm: 'Fin', Mood: 'Sub', Person: '1', Number: 'Plur' })).toBe('first person plural, subjunctive');
+    expect(d({ VerbForm: 'Fin', Mood: 'Sub', Person: '2', Number: 'Plur', Polite: 'Form' })).toBe('you (आप), subjunctive');
+    expect(d({ VerbForm: 'Fin', Mood: 'Sub', Person: '2', Number: 'Sing', Polite: 'Infm' })).toBe('you (तू), subjunctive');
+    expect(d({ VerbForm: 'Fin', Mood: 'Sub', Person: '2', Polite: 'Fam' })).toBe('you (तुम), subjunctive');
+    expect(d({ VerbForm: 'Fin', Mood: 'Ind', Tense: 'Fut', Person: '2', Number: 'Plur', Polite: 'Form', Gender: 'Fem' })).toBe('you (आप), future (feminine)');
   });
 
   it('describes every reading the engine produces for a sample, without empty or raw feature text', () => {

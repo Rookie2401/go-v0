@@ -42,6 +42,12 @@ function personText(m: Record<string, string>): string {
   return t;
 }
 
+/** One person in words: "third person plural", "first person singular", "you (आप)", "you (तू)", "you (तुम)". */
+function finiteWho(m: Record<string, string>): string {
+  if (m.Person === '2') return `you (${POLITE_WORD[m.Polite ?? ''] ?? 'तुम'})`;
+  return personText(m);
+}
+
 function finite(m: Record<string, string>): string {
   if (m.Mood === 'Imp') {
     const who = m.Polite === 'Form' ? 'polite command (आप)' : m.Polite === 'Fam' ? 'familiar command (तुम)' : 'plain command (तू)';
@@ -49,7 +55,7 @@ function finite(m: Record<string, string>): string {
   }
   const g = gender(m);
   if (m.Tense === 'Past') return `${[g, number(m)].filter(Boolean).join(' ')}, past (was / were)`;
-  const who = personText(m);
+  const who = finiteWho(m);
   if (m.Mood === 'Sub') return `${who}, subjunctive`;
   if (m.Tense === 'Fut') return `${who}, future${g ? ` (${g})` : ''}`;
   if (m.Tense === 'Pres') return `${who}, present (is / am / are)`;

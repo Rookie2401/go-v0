@@ -23,7 +23,12 @@ export const COURSES: Course[] = [
   { id: 'albania-sq', lang: 'sq', country: 'Albania', title: 'Albania → Albanian', preferredLocales: ['sq-AL'] },
   { id: 'thailand-th', lang: 'th', country: 'Thailand', title: 'Thailand → Thai', preferredLocales: ['th-TH'] },
   { id: 'india-hi', lang: 'hi', country: 'India', title: 'India → Hindi', preferredLocales: ['hi-IN'] },
-  { id: 'germany-de', lang: 'de', country: 'Germany', title: 'Germany → German', preferredLocales: ['de-DE'] },
+  {
+    id: 'germany-de', lang: 'de', country: 'Germany', title: 'Germany → German', preferredLocales: ['de-DE'],
+    // Active target: modern Standard German of Germany. Austrian and Swiss Standard German, dialect and older spelling are
+    // for recognition only.
+    variety: { target: 'de-DE', within: [] },
+  },
 ];
 
 export const courseForLang = (lang: Language['id']) => COURSES.find((c) => c.lang === lang)!;

@@ -12,6 +12,7 @@
  */
 import type { AppStore, AssistanceProfile, CourseCatalog, GoLearn, Stage, Stream, Text, Work } from '../core';
 import { DEFAULT_ASSISTANCE } from '../core';
+import { GERMAN_COURSE_ID, GERMAN_SHELVES, GERMAN_STREAMS, GERMAN_WORKS } from './german';
 import { SPANISH_COURSE_ID, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS } from './spanish';
 import { THAI_COURSE_ID, THAI_STAGES, THAI_WORKS } from './thai';
 
@@ -31,11 +32,13 @@ const LADDERS: Record<string, { stages: Stage[]; works: Work[] }> = {
   [THAI_COURSE_ID]: { stages: THAI_STAGES, works: THAI_WORKS },
   // Spanish: the stages are SHELVES (a browsing orientation of a large library, never a gate)
   [SPANISH_COURSE_ID]: { stages: SPANISH_SHELVES, works: SPANISH_WORKS },
+  [GERMAN_COURSE_ID]: { stages: GERMAN_SHELVES, works: GERMAN_WORKS },
 };
 
 /** The content streams of the courses that have them. */
 const STREAMS: Record<string, Stream[]> = {
   [SPANISH_COURSE_ID]: SPANISH_STREAMS,
+  [GERMAN_COURSE_ID]: GERMAN_STREAMS,
 };
 
 /** Accent- and case-insensitive text for matching titles and authors. */

@@ -2,27 +2,20 @@
  * Reads of the catalogue for a course with streams (Spanish): its streams, its doors, the works of a door paged through
  * `catalog.findWorks`, and how much is behind each door. Nothing here loads a catalogue whole: every read is one page.
  *
- * Doors are an orientation. `SPANISH_DOORS` lives with the course data; a course with streams but no door list gets one door per
- * available stream. The listening stream and door are never shown (GoListen is deferred), and neither is a door whose stream is
+ * Doors are an orientation. Each course's door list lives with its data (`COURSE_DOORS` in src/course/doors.ts); a course with streams
+ * but no door list gets one door per available stream. The listening stream and door are never shown (GoListen is deferred), and neither is a door whose stream is
  * switched off.
  */
 import { useEffect, useMemo, useState } from 'react';
 import type { CatalogText, CourseCatalog, LanguageCode, Library, Stage, Stream, Work } from '../../core';
 import { ids } from '../../core';
-import { SPANISH_COURSE_ID, SPANISH_DOORS } from '../../course/spanish';
+import { COURSE_DOORS, type CourseDoor } from '../../course/doors';
 import { useApp } from '../context';
 import { usePreview } from '../prefs';
 
 export const PAGE_SIZE = 20;
 
-export interface Door {
-  key: string;
-  label: string;
-  stream?: string;
-  domain?: string;
-  /** Shelf keys ('s5', 's6', 's7') the door covers. */
-  stages?: readonly string[];
-}
+export type Door = CourseDoor;
 
 /** The streams of a course; empty (never an error) for a course without them or when the catalogue cannot say. */
 export async function streamsOf(catalog: CourseCatalog, courseId: string): Promise<Stream[]> {
@@ -37,9 +30,8 @@ export async function shelvesOf(catalog: CourseCatalog, courseId: string): Promi
 /** The doors a course offers, only those that point at something this build can show. */
 export function doorsFor(courseId: string, streams: readonly Stream[]): Door[] {
   const available = new Set(streams.filter((s) => s.available).map((s) => s.key));
-  const base: readonly Door[] = courseId === SPANISH_COURSE_ID
-    ? SPANISH_DOORS
-    : streams.filter((s) => s.available && s.kind !== 'personal').map((s) => ({ key: s.key, label: s.label, stream: s.key }));
+  const base: readonly Door[] = COURSE_DOORS[courseId]
+    ?? streams.filter((s) => s.available && s.kind !== 'personal').map((s) => ({ key: s.key, label: s.label, stream: s.key }));
   return base.filter((d) => d.key !== 'listening' && (!d.stream || available.has(d.stream)));
 }
 

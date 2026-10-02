@@ -18,21 +18,20 @@ function fake(...answers: Array<{ status: number; body?: unknown } | 'throw'>) {
 
 const summary = { id: 'el-viajero-ch01', title: 'El viajero', lang: 'es', addedBy: 'Ana', addedAt: '2026-10-02T10:00:00.000Z', updatedAt: '2026-10-02T10:00:00.000Z', sha256: 'ab', bytes: 10 };
 const doc = { schemaVersion: 2, id: 'el-viajero-ch01', lang: 'es', title: 'El viajero' } as unknown as CorpusDocument;
-const headers = (c: Call) => c.init.headers as Record<string, string>;
+const headers = (c: Call) => (c.init.headers ?? {}) as Record<string, string>;
 
-describe('createTeamClient', () => {
-  it('health: GET /health with no code, trailing slashes trimmed', async () => {
+describe('createTeamClient (open teams: no credential anywhere)', () => {
+  it('health: GET /health, trailing slashes trimmed', async () => {
     const f = fake({ status: 200, body: { ok: true, service: 'goread', version: 1 } });
-    const client = createTeamClient({ baseUrl: ' https://goread.example.org// ', code: 'sekret', fetch: f.impl });
+    const client = createTeamClient({ baseUrl: ' https://goread.example.org// ', fetch: f.impl });
     expect(await client.health()).toEqual({ ok: true });
     expect(f.calls[0].url).toBe('https://goread.example.org/health');
     expect(f.calls[0].init.method).toBe('GET');
-    expect(JSON.stringify(f.calls[0])).not.toContain('sekret');
   });
 
   it('health: an unreachable server, an error status and a stranger are all { ok: false } and never throw', async () => {
     const f = fake('throw', { status: 500 }, { status: 200, body: { hello: 'world' } });
-    const client = createTeamClient({ baseUrl: 'http://x', code: 'c', fetch: f.impl });
+    const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
     expect(await client.health()).toEqual({ ok: false, message: UNREACHABLE_MESSAGE });
     expect((await client.health()).ok).toBe(false);
     const stranger = await client.health();
@@ -40,78 +39,79 @@ describe('createTeamClient', () => {
     expect(stranger.message).toMatch(/not a GoRead team server/);
   });
 
-  it('list: Bearer header, encoded course and since, returns the summaries', async () => {
+  it('list: encoded course and since, no Authorization, returns the summaries', async () => {
     const f = fake({ status: 200, body: { course: 'honduras-es', lang: 'es', texts: [summary] } }, { status: 200, body: { texts: [] } });
-    const client = createTeamClient({ baseUrl: 'http://x/', code: 'sekret', fetch: f.impl });
+    const client = createTeamClient({ baseUrl: 'http://x/', fetch: f.impl });
     expect(await client.list('honduras-es')).toEqual([summary]);
     expect(f.calls[0].url).toBe('http://x/teams/honduras-es/texts');
-    expect(headers(f.calls[0])).toEqual({ Authorization: 'Bearer sekret' });
     await client.list('a b', '2026-10-01T00:00:00.000Z');
     expect(f.calls[1].url).toBe('http://x/teams/a%20b/texts?since=2026-10-01T00%3A00%3A00.000Z');
-    // the code is never in a URL
-    expect(f.calls.every((c) => !c.url.includes('sekret'))).toBe(true);
+    for (const c of f.calls) expect(headers(c)).not.toHaveProperty('Authorization');
   });
 
   it('get: returns the shared text', async () => {
     const shared = { document: doc, addedBy: 'Ana', addedAt: 'a', updatedAt: 'b', sha256: 'c' };
     const f = fake({ status: 200, body: shared });
-    const client = createTeamClient({ baseUrl: 'http://x', code: 'c', fetch: f.impl });
+    const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
     expect(await client.get('honduras-es', 'el-viajero-ch01')).toEqual(shared);
     expect(f.calls[0].url).toBe('http://x/teams/honduras-es/texts/el-viajero-ch01');
   });
 
-  it('share: PUT with { document, addedBy }; 201 and 200 are told apart', async () => {
-    const f = fake({ status: 201, body: { summary } }, { status: 200, body: { summary } });
-    const client = createTeamClient({ baseUrl: 'http://x', code: 'sekret', fetch: f.impl });
-    const first = await client.share('honduras-es', doc, 'Ana');
-    expect(first).toEqual({ status: 201, summary });
+  it('share: PUT with { document, addedBy } and only a Content-Type header; 201 with the summary', async () => {
+    const f = fake({ status: 201, body: { summary } });
+    const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
+    expect(await client.share('honduras-es', doc, 'Ana')).toEqual({ status: 201, summary });
     expect(f.calls[0].url).toBe('http://x/teams/honduras-es/texts/el-viajero-ch01');
     expect(f.calls[0].init.method).toBe('PUT');
-    expect(headers(f.calls[0])).toEqual({ Authorization: 'Bearer sekret', 'Content-Type': 'application/json' });
+    expect(headers(f.calls[0])).toEqual({ 'Content-Type': 'application/json' });
     expect(JSON.parse(String(f.calls[0].init.body))).toEqual({ document: doc, addedBy: 'Ana' });
-    expect((await client.share('honduras-es', doc, 'Ana')).status).toBe(200);
   });
 
-  it('remove: DELETE with { addedBy }, 204 resolves', async () => {
-    const f = fake({ status: 204 });
-    const client = createTeamClient({ baseUrl: 'http://x', code: 'c', fetch: f.impl });
-    await expect(client.remove('honduras-es', 'el-viajero-ch01', 'Ana')).resolves.toBeUndefined();
-    expect(f.calls[0].init.method).toBe('DELETE');
-    expect(JSON.parse(String(f.calls[0].init.body))).toEqual({ addedBy: 'Ana' });
-    expect(headers(f.calls[0]).Authorization).toBe('Bearer c');
+  it('there is no remove, and nothing but GET and PUT is ever sent', async () => {
+    const f = fake({ status: 200, body: { texts: [] } }, { status: 201, body: { summary } });
+    const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
+    expect(client).not.toHaveProperty('remove');
+    await client.list('c');
+    await client.share('c', doc, 'Ana');
+    expect(f.calls.map((c) => c.init.method)).toEqual(['GET', 'PUT']);
+  });
+
+  it('a 409 already-there is a TeamServerError like any other refusal', async () => {
+    const f = fake({ status: 409, body: { error: 'already-there', message: 'Your team already has this text.' } });
+    const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
+    const e = await client.share('honduras-es', doc, 'Ana').catch((x: unknown) => x);
+    expect(e).toBeInstanceOf(TeamServerError);
+    expect(e).toMatchObject({ status: 409, error: 'already-there', message: 'Your team already has this text.' });
   });
 
   it('maps the server error body to a TeamServerError carrying the learner-facing message and issues', async () => {
     const issues = [{ path: 'sections', code: 'missing-field', message: 'sections must be a non-empty array', severity: 'error' }];
     const f = fake(
-      { status: 401, body: { error: 'not-a-team-member', message: 'That team code is not right.' } },
+      { status: 404, body: { error: 'no-such-team', message: 'There is no such team.' } },
       { status: 422, body: { error: 'invalid-document', message: 'The text did not pass the checks.', issues } },
-      { status: 403, body: { error: 'not-yours', message: 'Another learner added this text.' } },
       { status: 404, body: { error: 'no-such-text' } },
     );
-    const client = createTeamClient({ baseUrl: 'http://x', code: 'c', fetch: f.impl });
+    const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
     const e1 = await client.list('honduras-es').catch((e: unknown) => e);
     expect(e1).toBeInstanceOf(TeamServerError);
-    expect(e1).toMatchObject({ status: 401, error: 'not-a-team-member', message: 'That team code is not right.' });
+    expect(e1).toMatchObject({ status: 404, error: 'no-such-team', message: 'There is no such team.' });
     const e2 = await client.share('honduras-es', doc, 'Ana').catch((e: unknown) => e);
     expect(e2).toMatchObject({ status: 422, error: 'invalid-document', message: 'The text did not pass the checks.', issues });
-    const e3 = await client.remove('honduras-es', 'x', 'Bea').catch((e: unknown) => e);
-    expect(e3).toMatchObject({ status: 403, error: 'not-yours' });
-    const e4 = await client.get('honduras-es', 'zz').catch((e: unknown) => e);
-    expect(e4).toMatchObject({ status: 404, error: 'no-such-text' });
-    expect((e4 as TeamServerError).message.length).toBeGreaterThan(0);
+    const e3 = await client.get('honduras-es', 'zz').catch((e: unknown) => e);
+    expect(e3).toMatchObject({ status: 404, error: 'no-such-text' });
+    expect((e3 as TeamServerError).message.length).toBeGreaterThan(0);
   });
 
   it('a non-JSON error becomes http-<status>', async () => {
     const impl = (async () => new Response('<html>bad gateway</html>', { status: 502 })) as typeof fetch;
-    const client = createTeamClient({ baseUrl: 'http://x', code: 'c', fetch: impl });
+    const client = createTeamClient({ baseUrl: 'http://x', fetch: impl });
     await expect(client.list('honduras-es')).rejects.toMatchObject({ status: 502, error: 'http-502' });
   });
 
   it('a network failure is status 0 / unreachable with the Settings sentence', async () => {
-    const f = fake('throw', 'throw', 'throw', 'throw');
-    const client = createTeamClient({ baseUrl: 'http://x', code: 'c', fetch: f.impl });
-    for (const run of [() => client.list('c'), () => client.get('c', 'i'), () => client.share('c', doc, 'Ana'), () => client.remove('c', 'i', 'Ana')]) {
+    const f = fake('throw', 'throw', 'throw');
+    const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
+    for (const run of [() => client.list('c'), () => client.get('c', 'i'), () => client.share('c', doc, 'Ana')]) {
       const e = await run().catch((x: unknown) => x);
       expect(e).toBeInstanceOf(TeamServerError);
       expect(e).toMatchObject({ status: 0, error: 'unreachable', message: 'The team server did not answer. Check the address in Settings → Team sharing.' });
@@ -119,9 +119,11 @@ describe('createTeamClient', () => {
   });
 
   it('a successful answer that is not what the contract promises is a bad-response', async () => {
-    const f = fake({ status: 200, body: { nope: true } }, { status: 200, body: { nope: true } });
-    const client = createTeamClient({ baseUrl: 'http://x', code: 'c', fetch: f.impl });
+    const f = fake({ status: 200, body: { nope: true } }, { status: 200, body: { nope: true } }, { status: 200, body: { summary } });
+    const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
     await expect(client.list('c')).rejects.toMatchObject({ error: 'bad-response' });
     await expect(client.get('c', 'i')).rejects.toMatchObject({ error: 'bad-response' });
+    // v2 knows only 201 for a share: a 200 (a replace) is not something this client accepts
+    await expect(client.share('c', doc, 'Ana')).rejects.toMatchObject({ error: 'bad-response' });
   });
 });

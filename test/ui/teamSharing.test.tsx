@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 /**
- * GoRead team sharing, the UI side: Settings → Team sharing (server address + code, kept on this device, a health check) and
+ * GoRead team sharing, the UI side: Settings → Team sharing (server address, kept on this device, a health check; no code) and
  * Team Texts (fetch, share a book, share what was just imported). The library under it (client, sync, sharing) is mocked.
  */
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
@@ -34,7 +34,7 @@ beforeEach(async () => {
 afterEach(async () => { await mounted?.unmount(); mounted = undefined; });
 
 const open = async (router: string) => { mounted = await h.mount(<Shell><AppRoutes /></Shell>, { router }); return mounted; };
-const useServer = () => { setPref('teamServer', 'https://team.example.org/api'); setPref('teamCode', 'sesame'); };
+const useServer = () => { setPref('teamServer', 'https://team.example.org/api'); };
 const storedPrefs = () => JSON.parse(localStorage.getItem('go-v0:prefs') ?? '{}') as { teamServer?: string; teamCode?: string };
 const listSection = () => byLabel(mounted!.container, 'Team texts');
 const addSection = () => byLabel(mounted!.container, 'Add a text');
@@ -62,26 +62,24 @@ describe('Settings → Team sharing', () => {
     const sec = byLabel(mounted!.container, 'Team sharing');
     expect(sec.getAttribute('data-settings-section')).toBe('team-sharing');
     expect(q(sec, 'h2.section-head')!.textContent).toBe('Team sharing');
-    expect(sec.textContent).toContain("Your team's server lets everyone on the team fetch the texts the team added. The address and the code stay on this device.");
+    expect(sec.textContent).toContain("Your team's server holds the texts the team added. Anyone with the app can join any team, read its texts and add to them; a text once added stays. The address is kept on this device.");
     const order = qa(mounted!.container, '[data-settings-section]').map((s) => s.getAttribute('data-settings-section'));
     expect(order.indexOf('team-sharing')).toBe(order.indexOf('you') + 1);
     expect(qa(byLabel(mounted!.container, 'Settings sections'), 'button').map((b) => b.textContent)).toContain('Team sharing');
     expect(byLabel<HTMLInputElement>(sec, 'Team server address').placeholder).toBe('https://…');
-    const codeField = byLabel<HTMLInputElement>(sec, 'Team code');
-    expect(codeField.type).toBe('password');
-    expect(codeField.getAttribute('autocomplete')).toBe('off');
+    expect(q(sec, '[aria-label="Team code"]')).toBeNull(); // no code: the team is the course
+    expect(q(sec, 'input[type="password"]')).toBeNull();
     expect(button(sec, 'Check the server').disabled).toBe(true);
     expect(sec.textContent).toContain('No team server set. Team Texts stays on this device.');
   });
 
-  it('typing an address and a code keeps them in the preferences on this device', async () => {
+  it('typing an address keeps it in the preferences on this device (and stores no code)', async () => {
     await open('/settings');
     const sec = byLabel(mounted!.container, 'Team sharing');
     await typeInto(byLabel<HTMLInputElement>(sec, 'Team server address'), 'https://team.example.org');
-    await typeInto(byLabel<HTMLInputElement>(sec, 'Team code'), 'sesame');
     expect(getPref('teamServer')).toBe('https://team.example.org');
-    expect(getPref('teamCode')).toBe('sesame');
-    expect(storedPrefs()).toMatchObject({ teamServer: 'https://team.example.org', teamCode: 'sesame' });
+    expect(storedPrefs()).toMatchObject({ teamServer: 'https://team.example.org' });
+    expect(storedPrefs().teamCode).toBeUndefined();
     expect(button(sec, 'Check the server').disabled).toBe(false);
     expect(sec.textContent).not.toContain('No team server set.');
   });
@@ -92,18 +90,18 @@ describe('Settings → Team sharing', () => {
     await open('/settings');
     const sec = byLabel(mounted!.container, 'Team sharing');
     await click(button(sec, 'Check the server'));
-    expect(m.createTeamClient).toHaveBeenCalledWith({ baseUrl: 'https://team.example.org/api', code: 'sesame' });
+    expect(m.createTeamClient).toHaveBeenCalledWith({ baseUrl: 'https://team.example.org/api' });
     expect(q(sec, '[role="status"]')!.textContent).toBe('The team server answers.');
     expect(q(sec, '[role="alert"]')).toBeNull();
   });
 
   it('"Check the server" shows the error, whether the server refuses or cannot be reached', async () => {
     useServer();
-    m.health.mockRejectedValueOnce(new Error('The team code was not accepted.'));
+    m.health.mockRejectedValueOnce(new Error('The team server did not answer.'));
     await open('/settings');
     const sec = byLabel(mounted!.container, 'Team sharing');
     await click(button(sec, 'Check the server'));
-    expect(q(sec, '[role="alert"]')!.textContent).toBe('The team code was not accepted.');
+    expect(q(sec, '[role="alert"]')!.textContent).toBe('The team server did not answer.');
     expect(q(sec, '[role="status"]')).toBeNull();
 
     m.health.mockResolvedValueOnce({ ok: false, message: 'The server is not a team server.' });
@@ -131,7 +129,7 @@ describe('Team Texts with a team server: fetching', () => {
     m.fetchTeamTexts.mockImplementation(() => new Promise((resolve) => { release = () => resolve({ fetched: 5, imported: 3, skipped: 2, failed: [] }); }));
     await open('/team-texts');
     expect(q(mounted!.container, '[data-testid="team-server-line"]')!.textContent).toContain('Team server: team.example.org');
-    expect(m.createTeamClient).toHaveBeenCalledWith({ baseUrl: 'https://team.example.org/api', code: 'sesame' });
+    expect(m.createTeamClient).toHaveBeenCalledWith({ baseUrl: 'https://team.example.org/api' });
     expect(mounted!.container.textContent).not.toContain('set a team server in Settings');
 
     await click(button(mounted!.container, 'Fetch team texts'));
@@ -213,9 +211,26 @@ describe('Team Texts with a team server: sharing a book', () => {
     expect(q(cuento(), '[role="alert"]')!.textContent).toBe('Someone else shared this text first.');
     expect(q(cuento(), '[role="status"]')).toBeNull();
 
-    m.shareBook.mockRejectedValueOnce(new Error('The team code was not accepted.'));
+    m.shareBook.mockRejectedValueOnce(new Error('The team server did not answer.'));
     await click(button(cuento(), 'Share Un cuento with the team'));
-    expect(q(cuento(), '[role="alert"]')!.textContent).toBe('The team code was not accepted.');
+    expect(q(cuento(), '[role="alert"]')!.textContent).toBe('The team server did not answer.');
+  });
+
+  it('says how many were already on the team\'s shelf, as part of the status line', async () => {
+    useServer();
+    await seedShelf();
+    const cuento = () => qa(listSection(), 'li.work[data-book]').find((r) => (r.textContent ?? '').includes('Un cuento'))!;
+    const libro = () => qa(listSection(), 'li.work[data-book]').find((r) => (r.textContent ?? '').includes('Mi libro'))!;
+    m.shareBook.mockResolvedValueOnce({ shared: ['text:es:libro-2'], alreadyThere: ['text:es:libro-1'], refused: [] });
+    await open('/team-texts');
+    await click(button(libro(), 'Share Mi libro with the team'));
+    expect(q(libro(), '[role="status"]')!.textContent).toBe("Shared with the team. 1 already on the team's shelf.");
+    expect(q(libro(), '[role="alert"]')).toBeNull();
+
+    m.shareBook.mockResolvedValueOnce({ shared: [], alreadyThere: ['text:es:cuento'], refused: [] });
+    await click(button(cuento(), 'Share Un cuento with the team'));
+    expect(q(cuento(), '[role="status"]')!.textContent).toBe("1 already on the team's shelf.");
+    expect(q(cuento(), '[role="alert"]')).toBeNull();
   });
 
   it('a book that may not be shared shows why instead of a button', async () => {

@@ -12,33 +12,40 @@ npx vite-node server/goread/main.ts --port 8787 --data data/goread
 - Needs Node 24 (it uses the built-in `node:sqlite`) and no other dependency. The texts are in `<data>/goread.sqlite`.
 - Stops cleanly on Ctrl-C / SIGTERM.
 
-## Team codes
+## Open teams
 
-One code per team (course id), read from
-1. the environment: `GOREAD_TEAM_CODES="honduras-es=<code>,thailand-th=<code>"`, and
-2. `<data>/team-codes.json`: `{ "honduras-es": "<code>" }`.
+There is nothing to configure: every course of the app (`COURSES`) is a team, and there are no codes, no sign-in and no
+`Authorization` header. Anyone who can reach the server can read a team's texts and add to them. A text, once added, is
+never replaced or deleted through the server (`PUT` of an existing id is `409 already-there`, whoever asks; there is no
+`DELETE`). Whoever runs the server can remove one in `goread.sqlite`. `addedBy` is a 1-60 character display name and
+decides nothing.
 
-Where both name a course, the environment wins. A course without a code is closed: every request to it gets `401`.
-Clients send `Authorization: Bearer <code>`; codes are compared in constant time and are never printed, logged or
-returned. Use long random codes (the program warns about codes under 12 characters).
+## What it answers
 
-## What it refuses
+| | |
+|---|---|
+| `GET /health` | `200 { ok, service, version }` |
+| `GET /teams/:course/texts[?since=<ISO>]` | summaries, oldest first; `404 no-such-team` for an unknown course |
+| `GET /teams/:course/texts/:id` | the document and who added it, or `404 no-such-text` |
+| `PUT /teams/:course/texts/:id` | `201 { summary }`; `409 already-there`; or one of the `422`s below |
 
-Every refusal is a `422 { error, message }` written for the learner (`403 not-yours` for someone else's text):
+Other methods are `405`. CORS: any origin; methods `GET,PUT,OPTIONS`; header `Content-Type`.
+
+## What it refuses (`422 { error, message }`, written for the learner)
 
 | error | when |
 |---|---|
 | `id-mismatch` | `document.id` is not the id in the address |
 | `wrong-language` | `document.lang` is not the course's language |
 | `not-the-team-language` | the text itself looks like another language (`src/ingest/language.ts`) |
-| `not-shareable` | rights: only `owner-authored`, or `public-domain` / `licensed` with a verification record (`by` + `checkedAt`, in `source.verification` or `scripture.verification`), are shared; personal copies, `user-private`, `generated`, `unverified` never |
+| `not-shareable` | rights: only `owner-authored`, or `public-domain` / `licensed` with a verification record (`by` + `checkedAt`, in `source.verification` or `scripture.verification`), are shared; personal copies, `user-private`, `generated`, `unverified` never; and any document marked `generated: true` or `authorship: 'generated'`, whatever its rights say |
 | `invalid-document` | the body is not `{ document, addedBy }`, `addedBy` is not 1-60 characters, or `validateBatch` found an error (listed in `issues`) |
 | `too-large` | the request body is over 2 MB |
 
-The checks run in that order, then the ownership check (`403 not-yours`), then the text is stored.
+The checks run in that order; then, if the id is already on the shelf, `409`; otherwise the text is stored.
 
 ## Logs
 
-One line per request on stdout: `METHOD /path status ms`. Never a body, a query string or a code.
+One line per request on stdout: `METHOD /path status ms`. Never a body or a query string.
 
 Tests: `npx vitest run test/server/goread.test.ts`.

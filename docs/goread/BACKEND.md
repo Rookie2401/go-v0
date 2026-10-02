@@ -1,8 +1,13 @@
-# GoRead — the team server (contract v1, 2026-10-02)
+# GoRead — the team server (contract v2, 2026-10-02 — open teams)
 
 Until now "the team" in Team Texts meant every learner on one device. This server lets a team share texts between
-devices. It is deliberately small: one Node program, no third-party service, no accounts, no personal data beyond a
+devices. It is deliberately small: one Node program, no third-party service, no accounts, no codes, no personal data beyond a
 display name the learner types.
+
+**Open teams (v2).** A team exists on its own, independently of who uses it. Anyone with the app may join any team,
+read what is there and add to it, and leave again. Nothing a learner adds is taken away: a text, once added, stays —
+it cannot be replaced or deleted through the app. Only whoever runs the server can remove one, in the database.
+There is nearly no security, by decision; the server's only defences are the checks below on what a text is.
 
 ## What is shared, and what never is
 
@@ -29,24 +34,22 @@ npx vite-node server/goread/main.ts --port 8787 --data data/goread
 ```
 
 - `--data` is a directory (created if missing; git-ignored). It holds `goread.sqlite` (Node's built-in `node:sqlite`).
-- **Team codes** are read from `GOREAD_TEAM_CODES` in the environment, `course=code` pairs separated by commas
-  (`honduras-es=…,thailand-th=…`), or from `<data>/team-codes.json` (`{ "honduras-es": "…" }`). A course without a code
-  is closed: every request to it is refused. The program never prints a code. Codes are compared in constant time.
+- Every course the app knows (`COURSES`) is a team; there is nothing to configure.
 - CORS: any origin may call it (the app is a static site); only the headers below.
-- Logs one line per request to stdout (method, path, status, ms); never a body, never a code.
+- Logs one line per request to stdout (method, path, status, ms); never a body.
 
 ## HTTP
 
-All bodies are JSON. Every `/teams/…` request carries `Authorization: Bearer <team code>`; a wrong or missing code is
-`401 { error: 'not-a-team-member', message }`. A course the server does not know: `404 { error: 'no-such-team' }`.
+All bodies are JSON. No request carries any credential. A course the server does not know: `404 { error: 'no-such-team' }`.
 
 | | |
 |---|---|
 | `GET /health` | `200 { ok: true, service: 'goread', version: 1 }` |
 | `GET /teams/:course/texts[?since=<ISO>]` | `200 { course, lang, texts: TextSummary[] }` — summaries only, newest last; `since` keeps those added or updated after that time |
 | `GET /teams/:course/texts/:id` | `200 { document, addedBy, addedAt, updatedAt, sha256 }` or `404 { error: 'no-such-text' }` |
-| `PUT /teams/:course/texts/:id` body `{ document, addedBy }` | `201` (new) or `200` (same id, replaced by the same `addedBy`) `{ summary: TextSummary }`; `403 { error: 'not-yours' }` when another `addedBy` holds the id; `422 { error, message }` for a refused document (see below) |
-| `DELETE /teams/:course/texts/:id` body `{ addedBy }` | `204`; `403 not-yours`; `404 no-such-text` |
+| `PUT /teams/:course/texts/:id` body `{ document, addedBy }` | `201 { summary: TextSummary }` (new); `409 { error: 'already-there', message }` when the id exists — a text once added is never replaced; `422 { error, message }` for a refused document (see below) |
+
+There is no DELETE: what a learner adds stays. (`PUT` of an id that exists answers 409 even for the same `addedBy`.)
 
 ```ts
 interface TextSummary { id: string; title: string; lang: string; addedBy: string; addedAt: string; updatedAt: string; sha256: string; bytes: number; workId?: string; chapter?: { index: number; title?: string } }
@@ -60,13 +63,13 @@ interface TextSummary { id: string; title: string; lang: string; addedBy: string
 wrote can be shared."), `invalid-document` (with the validator's issues in `issues`), `too-large`, `id-mismatch`,
 `wrong-language` (document `lang` ≠ the course's language).
 
-`addedBy` is a display name (1–60 characters). It is not an identity: the server trusts the team code, and within a
-team the name only decides who may replace or delete a text. That is the honest limit of a code-shared team.
+`addedBy` is a display name (1–60 characters), shown beside the text as who added it. It is not an identity and
+decides nothing; anyone may write any name. That is the honest limit of an open team.
 
 ## The app side
 
-- Settings → **Team sharing**: server address and team code, kept on this device only (`prefs`), never sent anywhere but
-  to that server. A status line says whether the server answers (`/health`).
+- Settings → **Team sharing**: the server address, kept on this device only (`prefs`). A status line says whether the
+  server answers (`/health`). No code, no sign-in: the team is the course the learner chose.
 - Team Texts page, when a server is configured: **"Fetch team texts"** pulls the summaries, imports the documents the
   device does not have yet (through the ordinary importer, so every check runs again locally) and records them in the
   `goread:<lang>` row with the server's `addedBy`/`addedAt`. **"Share with the team"** on a book row sends its chapters
@@ -74,19 +77,12 @@ team the name only decides who may replace or delete a text. That is the honest 
   a button. After a local import on this page, the same documents are offered for sharing with one click.
 - Nothing is sent without a tap. Nothing is fetched without a tap. No background sync in v1.
 
-## Not in v1
+## Not in v2
 
-Accounts, passwords, per-learner identity, audio, deletion by anyone but the adder, a hosted instance. Where to host
-it is the owner's decision; it runs on any machine with Node 24 and a port.
+Accounts, passwords, per-learner identity, any removal through the app, audio, a hosted instance. Where to host it is
+the owner's decision; it runs on any machine with Node 24 and a port.
 
-## Status (2026-10-02, evening)
+## Status
 
-Built and checked end to end on one machine: the server on a local port with a throwaway code; the app in two sandbox
-databases as two devices — one added a text its team wrote (the "Our team or I wrote it" choice) and shared it, the
-other fetched it and read it in the reader, labelled "Your team's text". A learner's own copy of a published book was
-offered no Share button, with the reason. The server logged no code. Tests: `test/server` (21), `test/goread` (39),
-`test/ingest/teamText.test.ts`, `test/ingest/ownership.test.ts`, `test/ui/teamSharing.test.tsx`, `test/ui/teamTexts.test.tsx`.
-
-Not done: hosting (where the server runs and who sets the team codes is the owner's decision); an `npm run` alias for
-the server (package.json was being edited by another tool at the time — the command above works as is); anything
-beyond "Not in v1".
+v1 (team codes, replace and delete by the adder) was built and checked end to end on 2026-10-02 (commit 77d77db).
+v2 (open teams, immutable texts, no code) replaces it the same day; see the commit for what was checked.

@@ -1,6 +1,6 @@
 /**
  * The GoRead team server (docs/goread/BACKEND.md). Part 1 drives the handler in-process on a throw-away http server
- * (port 0); part 2 runs the real program once, as a child process, on a free port with a made-up team code.
+ * (port 0); part 2 runs the real program once, as a child process, on a free port with no configuration at all.
  */
 import { spawn, type ChildProcess } from 'node:child_process';
 import { createServer, type Server } from 'node:http';
@@ -15,8 +15,6 @@ import { createGoreadHandler, PERSONAL_COPY_MESSAGE } from '../../server/goread/
 import { openStore, STORE_FILE, type GoreadStore } from '../../server/goread/store';
 import { baseDoc, registry } from '../ingest/helpers';
 
-const CODE = 'a-made-up-team-code-for-tests';
-const OTHER_CODE = 'another-made-up-code-for-tests';
 const TEAM = 'honduras-es';
 
 const dirs: string[] = [];
@@ -43,7 +41,7 @@ describe('GoRead handler (in-process)', () => {
   beforeEach(async () => {
     clock = '2026-10-02T10:00:00.000Z';
     store = openStore(tempDir());
-    server = createServer(createGoreadHandler({ store, codes: { [TEAM]: CODE, 'albania-sq': OTHER_CODE }, registry, courses: COURSES, now: () => clock }));
+    server = createServer(createGoreadHandler({ store, registry, courses: COURSES, now: () => clock }));
     await new Promise<void>((r) => server.listen(0, '127.0.0.1', r));
     base = `http://127.0.0.1:${(server.address() as AddressInfo).port}`;
   });
@@ -53,36 +51,32 @@ describe('GoRead handler (in-process)', () => {
     removeDirs();
   });
 
-  const call = async (method: string, path: string, opts: { code?: string | null; body?: unknown; raw?: string } = {}) => {
+  const call = async (method: string, path: string, opts: { body?: unknown; raw?: string } = {}) => {
     const headers: Record<string, string> = {};
-    if (opts.code !== null) headers.Authorization = `Bearer ${opts.code ?? CODE}`;
     const body = opts.raw ?? (opts.body === undefined ? undefined : JSON.stringify(opts.body));
     if (body !== undefined) headers['Content-Type'] = 'application/json';
     const res = await fetch(`${base}${path}`, { method, headers, body });
     const text = await res.text();
     return { status: res.status, headers: res.headers, json: text ? JSON.parse(text) as Record<string, any> : undefined };
   };
-  const put = (doc: unknown, addedBy = 'Ana', id = (doc as { id: string }).id, code?: string | null) => call('PUT', `/teams/${TEAM}/texts/${id}`, { body: { document: doc, addedBy }, code });
+  const put = (doc: unknown, addedBy = 'Ana', id = (doc as { id: string }).id) => call('PUT', `/teams/${TEAM}/texts/${id}`, { body: { document: doc, addedBy } });
 
-  it('answers /health without a code', async () => {
-    const r = await call('GET', '/health', { code: null });
+  it('answers /health', async () => {
+    const r = await call('GET', '/health');
     expect(r.status).toBe(200);
     expect(r.json).toEqual({ ok: true, service: 'goread', version: 1 });
   });
 
-  it('turns away a missing or wrong code (401), a closed team, and an unknown team (404)', async () => {
-    for (const code of [null, 'wrong-code', '']) {
-      const r = await call('GET', `/teams/${TEAM}/texts`, { code });
-      expect(r.status, String(code)).toBe(401);
-      expect(r.json?.error).toBe('not-a-team-member');
-      expect(JSON.stringify(r.json)).not.toContain(CODE);
+  it('needs no credential: every course is a team, and an unknown one is 404 no-such-team', async () => {
+    for (const c of COURSES) {
+      const r = await call('GET', `/teams/${c.id}/texts`);
+      expect(r.status, c.id).toBe(200);
+      expect(r.json).toMatchObject({ course: c.id, lang: c.lang, texts: [] });
     }
-    expect((await call('GET', `/teams/${TEAM}/texts`, { code: OTHER_CODE })).status).toBe(401); // another team's code
-    expect((await call('GET', '/teams/thailand-th/texts')).status).toBe(401); // a known course with no code is closed
     const unknown = await call('GET', '/teams/atlantis/texts');
     expect(unknown.status).toBe(404);
     expect(unknown.json?.error).toBe('no-such-team');
-    expect((await call('PUT', `/teams/${TEAM}/texts/x`, { code: null, body: {} })).status).toBe(401);
+    expect((await call('PUT', '/teams/atlantis/texts/x', { body: {} })).status).toBe(404);
   });
 
   it('stores a shareable document (201), lists it, and returns it byte-for-byte', async () => {
@@ -113,38 +107,36 @@ describe('GoRead handler (in-process)', () => {
     expect(missing.json?.error).toBe('no-such-text');
   });
 
-  it('lets the adder replace a text (200, addedAt kept) and refuses another name (403)', async () => {
-    await put(spanish());
+  it('never replaces a text: a second PUT of the id is 409 already-there, whoever adds it', async () => {
+    const first = await put(spanish());
+    expect(first.status).toBe(201);
     clock = '2026-10-02T11:00:00.000Z';
-    const changed = spanish('el-viajero-ch01', { title: 'El viajero (segunda versión)' });
-    const again = await put(changed, '  Ana  ');
-    expect(again.status).toBe(200);
-    expect(again.json?.summary).toMatchObject({ addedBy: 'Ana', addedAt: '2026-10-02T10:00:00.000Z', updatedAt: clock, title: 'El viajero (segunda versión)' });
-    const other = await put(spanish('el-viajero-ch01', { title: 'Mío' }), 'Luis');
-    expect(other.status).toBe(403);
-    expect(other.json?.error).toBe('not-yours');
-    expect((await call('GET', `/teams/${TEAM}/texts/el-viajero-ch01`)).json?.document.title).toBe('El viajero (segunda versión)');
+    for (const name of ['Ana', 'Luis']) {
+      const again = await put(spanish('el-viajero-ch01', { title: 'Otra versión' }), name);
+      expect(again.status, name).toBe(409);
+      expect(again.json).toEqual({
+        error: 'already-there',
+        message: "This text is already on the team's shelf. A text once added stays as it is; add it under another id if it is a new version.",
+      });
+    }
+    const got = await call('GET', `/teams/${TEAM}/texts/el-viajero-ch01`);
+    expect(got.json?.document.title).toBe('El viajero');
+    expect(got.json).toMatchObject({ addedBy: 'Ana', addedAt: '2026-10-02T10:00:00.000Z', updatedAt: '2026-10-02T10:00:00.000Z' });
+    expect((await call('GET', `/teams/${TEAM}/texts`)).json?.texts).toEqual([first.json?.summary]);
   });
 
-  it('deletes only by the adder: 403 for another name, 204 for the adder, then 404', async () => {
+  it('has no DELETE: it is 405 like any other wrong method, and the text stays', async () => {
     await put(spanish());
-    const other = await call('DELETE', `/teams/${TEAM}/texts/el-viajero-ch01`, { body: { addedBy: 'Luis' } });
-    expect(other.status).toBe(403);
-    expect(other.json?.error).toBe('not-yours');
-    const mine = await call('DELETE', `/teams/${TEAM}/texts/el-viajero-ch01`, { body: { addedBy: 'Ana' } });
-    expect(mine.status).toBe(204);
-    expect((await call('GET', `/teams/${TEAM}/texts/el-viajero-ch01`)).status).toBe(404);
-    const gone = await call('DELETE', `/teams/${TEAM}/texts/el-viajero-ch01`, { body: { addedBy: 'Ana' } });
-    expect(gone.status).toBe(404);
-    expect(gone.json?.error).toBe('no-such-text');
-    expect((await call('DELETE', `/teams/${TEAM}/texts/x`, { body: {} })).status).toBe(422);
+    for (const body of [{ addedBy: 'Ana' }, undefined]) {
+      expect((await call('DELETE', `/teams/${TEAM}/texts/el-viajero-ch01`, { body })).status).toBe(405);
+    }
+    expect((await call('GET', `/teams/${TEAM}/texts/el-viajero-ch01`)).status).toBe(200);
   });
 
   it('keeps the texts of different teams apart', async () => {
     await put(spanish());
-    const sq = await call('GET', '/teams/albania-sq/texts', { code: OTHER_CODE });
-    expect(sq.json?.texts).toEqual([]);
-    expect((await call('GET', '/teams/albania-sq/texts/el-viajero-ch01', { code: OTHER_CODE })).status).toBe(404);
+    expect((await call('GET', '/teams/albania-sq/texts')).json?.texts).toEqual([]);
+    expect((await call('GET', '/teams/albania-sq/texts/el-viajero-ch01')).status).toBe(404);
   });
 
   it('filters the listing by ?since= (updated after it), newest last', async () => {
@@ -152,11 +144,12 @@ describe('GoRead handler (in-process)', () => {
     clock = '2026-10-02T12:00:00.000Z';
     await put(spanish('dos'));
     clock = '2026-10-02T13:00:00.000Z';
-    await put(spanish('uno', { title: 'Uno otra vez' }));
+    await put(spanish('tres'));
     const ids = async (since?: string) => ((await call('GET', `/teams/${TEAM}/texts${since ? `?since=${encodeURIComponent(since)}` : ''}`)).json?.texts as Array<{ id: string }>).map((t) => t.id);
-    expect(await ids()).toEqual(['dos', 'uno']);
-    expect(await ids('2026-10-02T12:00:00.000Z')).toEqual(['uno']);
-    expect(await ids('2026-10-02T09:00:00.000Z')).toEqual(['dos', 'uno']);
+    expect(await ids()).toEqual(['uno', 'dos', 'tres']);
+    expect(await ids('2026-10-02T10:00:00.000Z')).toEqual(['dos', 'tres']);
+    expect(await ids('2026-10-02T12:00:00.000Z')).toEqual(['tres']);
+    expect(await ids('2026-10-02T09:00:00.000Z')).toEqual(['uno', 'dos', 'tres']);
     expect(await ids('2026-10-02T13:00:00.000Z')).toEqual([]);
     expect((await call('GET', `/teams/${TEAM}/texts?since=yesterday-ish`)).status).toBe(422);
   });
@@ -236,7 +229,7 @@ describe('GoRead handler (in-process)', () => {
       const big = { ...spanish('grande'), _padding: 'x'.repeat(2 * 1024 * 1024 + 10) };
       await refused(put(big), 'too-large');
       // the server is still alive and answering
-      expect((await call('GET', '/health', { code: null })).status).toBe(200);
+      expect((await call('GET', '/health')).status).toBe(200);
     });
   });
 
@@ -249,17 +242,18 @@ describe('GoRead handler (in-process)', () => {
     const pre = await fetch(`${base}/teams/${TEAM}/texts/uno`, { method: 'OPTIONS', headers: { Origin: 'https://example.org', 'Access-Control-Request-Method': 'PUT' } });
     expect(pre.status).toBe(204);
     expect(pre.headers.get('access-control-allow-origin')).toBe('*');
-    expect(pre.headers.get('access-control-allow-methods')).toBe('GET,PUT,DELETE,OPTIONS');
-    expect(pre.headers.get('access-control-allow-headers')).toBe('Authorization, Content-Type');
-    for (const r of [await call('GET', '/health', { code: null }), await call('GET', `/teams/${TEAM}/texts`, { code: null }), await call('GET', '/nowhere', { code: null })]) {
+    expect(pre.headers.get('access-control-allow-methods')).toBe('GET,PUT,OPTIONS');
+    expect(pre.headers.get('access-control-allow-headers')).toBe('Content-Type');
+    for (const r of [await call('GET', '/health'), await call('GET', `/teams/${TEAM}/texts`), await call('GET', '/nowhere')]) {
       expect(r.headers.get('access-control-allow-origin')).toBe('*');
     }
   });
 
   it('answers an unknown path with 404 and a wrong method with 405', async () => {
-    expect((await call('GET', '/nowhere', { code: null })).status).toBe(404);
-    expect((await call('POST', '/health', { code: null })).status).toBe(405);
+    expect((await call('GET', '/nowhere')).status).toBe(404);
+    expect((await call('POST', '/health')).status).toBe(405);
     expect((await call('POST', `/teams/${TEAM}/texts`)).status).toBe(405);
+    expect((await call('PATCH', `/teams/${TEAM}/texts/x`)).status).toBe(405);
   });
 });
 
@@ -281,12 +275,11 @@ describe('GoRead program (child process)', () => {
     s.listen(0, '127.0.0.1', () => { const { port } = s.address() as AddressInfo; s.close(() => resolve(port)); });
   });
 
-  it('serves /health and a PUT then GET with the code from the environment, and never writes a codes file', async () => {
+  it('serves /health and a PUT then GET with no configuration, keeps a text immutable, and never writes a codes file', async () => {
     const data = tempDir();
     const port = await freePort();
-    const code = 'process-test-made-up-code-123';
     child = spawn(process.execPath, ['node_modules/vite-node/dist/cli.mjs', 'server/goread/main.ts', '--port', String(port), '--data', data], {
-      env: { ...process.env, GOREAD_TEAM_CODES: `${TEAM}=${code}` }, stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true,
+      env: Object.fromEntries(Object.entries(process.env).filter(([k]) => k !== 'GOREAD_TEAM_CODES')), stdio: ['ignore', 'pipe', 'pipe'], windowsHide: true,
     });
     let out = '';
     let err = '';
@@ -302,20 +295,26 @@ describe('GoRead program (child process)', () => {
 
     const base = `http://127.0.0.1:${port}`;
     expect(await (await fetch(`${base}/health`)).json()).toEqual({ ok: true, service: 'goread', version: 1 });
-    expect((await fetch(`${base}/teams/${TEAM}/texts`)).status).toBe(401);
+    expect((await fetch(`${base}/teams/${TEAM}/texts`)).status).toBe(200);
 
     const doc = spanish('proceso-01');
-    const headers = { Authorization: `Bearer ${code}`, 'Content-Type': 'application/json' };
+    const headers = { 'Content-Type': 'application/json' };
     const put = await fetch(`${base}/teams/${TEAM}/texts/proceso-01`, { method: 'PUT', headers, body: JSON.stringify({ document: doc, addedBy: 'Ana' }) });
     expect(put.status).toBe(201);
-    const got = await fetch(`${base}/teams/${TEAM}/texts/proceso-01`, { headers });
+    for (const addedBy of ['Ana', 'Luis']) {
+      const again = await fetch(`${base}/teams/${TEAM}/texts/proceso-01`, { method: 'PUT', headers, body: JSON.stringify({ document: { ...doc, title: 'Otra' }, addedBy }) });
+      expect(again.status, addedBy).toBe(409);
+      expect(((await again.json()) as { error: string }).error).toBe('already-there');
+    }
+    const got = await fetch(`${base}/teams/${TEAM}/texts/proceso-01`);
     expect(got.status).toBe(200);
     expect(JSON.stringify(((await got.json()) as { document: unknown }).document)).toBe(JSON.stringify(doc));
 
-    // one line per request, never a body or a code
+    // one line per request, never a body
     await new Promise((r) => setTimeout(r, 200));
     expect(out).toMatch(/PUT \/teams\/honduras-es\/texts\/proceso-01 201 \d+ms/);
-    expect(out + err).not.toContain(code);
+    expect(out).not.toContain('El viajero');
+    expect(out + err).not.toMatch(/team code/i);
 
     const exited = new Promise<void>((r) => child!.once('exit', () => r()));
     child.kill();

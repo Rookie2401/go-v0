@@ -48,7 +48,6 @@ function fakeClient(shared: Array<{ doc: CorpusDocument; addedBy: string; addedA
       calls.share.push({ course, id: document.id, addedBy });
       return { status: 201, summary: summaryOf(document, addedBy, '2026-10-02T12:00:00.000Z') };
     },
-    async remove() { /* unused */ },
   };
   return { client, calls };
 }
@@ -201,13 +200,35 @@ describe('shareBook', () => {
     await ingestOver(store).import([doc('uno'), doc('dos')]);
     let n = 0;
     const picky = {
-      share: async () => { n++; throw new TeamServerError({ status: 403, error: 'not-yours', message: 'Another learner added this text.' }); },
+      share: async () => { n++; throw new TeamServerError({ status: 422, error: 'invalid-document', message: 'The text did not pass the checks.' }); },
     };
     const r = await shareBook({ client: picky, course: 'c', store, textIds: ['text:es:uno', 'text:es:dos'], addedBy: 'Ana' });
     expect(n).toBe(2);
-    expect(r.refused).toEqual([{ id: 'text:es:uno', reason: 'Another learner added this text.' }, { id: 'text:es:dos', reason: 'Another learner added this text.' }]);
+    expect(r.refused).toEqual([{ id: 'text:es:uno', reason: 'The text did not pass the checks.' }, { id: 'text:es:dos', reason: 'The text did not pass the checks.' }]);
+    expect(r.alreadyThere).toEqual([]);
 
     const dead = { share: async () => { throw new TeamServerError({ status: 0, error: 'unreachable', message: 'The team server did not answer.' }); } };
     await expect(shareBook({ client: dead, course: 'c', store, textIds: ['text:es:uno'], addedBy: 'Ana' })).rejects.toMatchObject({ status: 0 });
+    const noTeam = { share: async () => { throw new TeamServerError({ status: 404, error: 'no-such-team', message: 'No such team.' }); } };
+    await expect(shareBook({ client: noTeam, course: 'c', store, textIds: ['text:es:uno'], addedBy: 'Ana' })).rejects.toMatchObject({ error: 'no-such-team' });
+  });
+
+  it('a 409 already-there is "already on the shelf": listed in alreadyThere, not refused, and the rest carry on', async () => {
+    const store = createMemoryStore();
+    await ingestOver(store).import([doc('uno'), doc('dos'), doc('tres')]);
+    const held = new Set(['dos']);
+    const seen: string[] = [];
+    const server = {
+      async share(_course: string, d: CorpusDocument, by: string) {
+        seen.push(d.id);
+        if (held.has(d.id)) throw new TeamServerError({ status: 409, error: 'already-there', message: 'Your team already has this text.' });
+        return { status: 201 as const, summary: summaryOf(d, by, '2026-10-02T12:00:00.000Z') };
+      },
+    };
+    const r = await shareBook({ client: server, course: 'c', store, textIds: ['text:es:uno', 'text:es:dos', 'text:es:tres'], addedBy: 'Ana' });
+    expect(seen).toEqual(['uno', 'dos', 'tres']);
+    expect(r.shared).toEqual(['text:es:uno', 'text:es:tres']);
+    expect(r.alreadyThere).toEqual(['text:es:dos']);
+    expect(r.refused).toEqual([]);
   });
 });

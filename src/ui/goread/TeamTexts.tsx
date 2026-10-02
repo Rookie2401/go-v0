@@ -91,9 +91,11 @@ function serverHost(address: string): string {
 interface Outcome { ok: boolean; text: string }
 type Verdict = { ok: true } | { ok: false; reason: string };
 
-function shareOutcomes(r: { shared: string[]; refused: Array<{ id: string; reason: string }> }): Outcome[] {
+function shareOutcomes(r: { shared: string[]; alreadyThere?: string[]; refused: Array<{ id: string; reason: string }> }): Outcome[] {
   const out: Outcome[] = [];
-  if (r.shared.length > 0) out.push({ ok: true, text: 'Shared with the team.' });
+  const there = r.alreadyThere?.length ?? 0;
+  const line = [r.shared.length > 0 ? 'Shared with the team.' : '', there > 0 ? `${there} already on the team's shelf.` : ''].filter(Boolean).join(' ');
+  if (line) out.push({ ok: true, text: line });
   const reasons = [...new Set(r.refused.map((x) => x.reason))];
   if (reasons.length > 0) out.push({ ok: false, text: reasons.join(' ') });
   if (out.length === 0) out.push({ ok: false, text: 'Nothing was shared.' });
@@ -127,9 +129,8 @@ export function TeamTextsPage() {
   const { store, user, course, lang, ingest } = useApp();
   const [tick, setTick] = useState(0);
   const [server] = usePref('teamServer');
-  const [code] = usePref('teamCode');
   const address = server.trim();
-  const client = useMemo(() => (address ? createTeamClient({ baseUrl: address, code }) : null), [address, code]);
+  const client = useMemo(() => (address ? createTeamClient({ baseUrl: address }) : null), [address]);
   const [fetching, setFetching] = useState(false);
   const [fetched, setFetched] = useState<Outcome[] | undefined>(undefined);
   const [verdicts, setVerdicts] = useState<Record<string, Verdict>>({});

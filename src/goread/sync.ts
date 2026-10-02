@@ -73,8 +73,8 @@ export async function fetchTeamTexts(args: FetchTeamTextsArgs): Promise<FetchTea
       got.push({ summary, shared });
       result.fetched++;
     } catch (e) {
-      // the team as a whole is out of reach (no answer, wrong code, no such team): stop, do not repeat the failure per text
-      if (e instanceof TeamServerError && (e.status === 0 || e.status === 401 || e.error === 'no-such-team')) throw e;
+      // the team as a whole is out of reach (no answer, no such team): stop, do not repeat the failure per text
+      if (e instanceof TeamServerError && (e.status === 0 || e.error === 'no-such-team')) throw e;
       result.failed.push({ id: summary.id, message: messageOf(e) });
     }
   }
@@ -112,6 +112,8 @@ export interface ShareBookArgs {
 export interface ShareBookResult {
   /** Text ids the server accepted. */
   shared: string[];
+  /** Text ids the server already holds (`409 already-there`): a text once added is never replaced, so there is nothing to do. */
+  alreadyThere: string[];
   /** Text ids not sent, or turned away by the server, with the reason in the learner's words. */
   refused: Array<{ id: string; reason: string }>;
   /** What `documentOf` could not carry into the document, per shared text id (only those with something to say). */
@@ -120,12 +122,13 @@ export interface ShareBookResult {
 
 /**
  * Send chapters to the team. Each is checked against the rights table BEFORE anything is sent; one that may not be shared
- * is refused with the reason and never reaches the client. The server's own refusals (`not-shareable`, `not-yours`,
- * `invalid-document`, …) are reported in `refused` too; a server that cannot be reached, or a wrong code, stops the whole call.
+ * is refused with the reason and never reaches the client. A text the server already holds (409 `already-there`) is listed in
+ * `alreadyThere`, not `refused`. The server's other refusals (`not-shareable`, `invalid-document`, …) are reported in
+ * `refused`; a server that cannot be reached, or a team that does not exist, stops the whole call.
  */
 export async function shareBook(args: ShareBookArgs): Promise<ShareBookResult> {
   const { client, course, store, addedBy } = args;
-  const result: ShareBookResult = { shared: [], refused: [], notes: {} };
+  const result: ShareBookResult = { shared: [], alreadyThere: [], refused: [], notes: {} };
   for (const id of args.textIds) {
     const text = await store.texts.get(id);
     if (!text) { result.refused.push({ id, reason: 'This text is not on this device.' }); continue; }
@@ -143,7 +146,8 @@ export async function shareBook(args: ShareBookArgs): Promise<ShareBookResult> {
       result.shared.push(id);
       if (built.notes.length) result.notes[id] = built.notes;
     } catch (e) {
-      if (e instanceof TeamServerError && e.status !== 0 && e.status !== 401 && e.error !== 'no-such-team') { result.refused.push({ id, reason: e.message }); continue; }
+      if (e instanceof TeamServerError && e.status === 409) { result.alreadyThere.push(id); continue; }
+      if (e instanceof TeamServerError && e.status !== 0 && e.error !== 'no-such-team') { result.refused.push({ id, reason: e.message }); continue; }
       throw e;
     }
   }

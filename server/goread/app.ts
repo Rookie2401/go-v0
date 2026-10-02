@@ -2,9 +2,9 @@
  * The GoRead team server's request handler (contract: docs/goread/BACKEND.md). Plain `node:http`: it returns a
  * `(req, res) => void`, so a test can mount it on a throw-away server, and `main.ts` mounts it on the real one.
  *
- * Knows the rules, not the storage (store.ts) and not the process (main.ts). It logs nothing and never echoes a team code.
+ * Knows the rules, not the storage (store.ts) and not the process (main.ts). It logs nothing.
  */
-import { createHash, timingSafeEqual } from 'node:crypto';
+import { createHash } from 'node:crypto';
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import type { AdapterRegistry, LanguageCode } from '../../src/core/index.ts';
 import { validateBatch, workIdOf, type CorpusDocument, type ValidationIssue } from '../../src/ingest/format.ts';
@@ -20,8 +20,6 @@ export interface GoreadCourse { id: string; lang: LanguageCode; country: string 
 
 export interface GoreadHandlerOptions {
   store: GoreadStore;
-  /** course id → team code. A course without a code (or with a blank one) is closed: every request to it is refused. */
-  codes: Readonly<Record<string, string>>;
   registry: AdapterRegistry;
   courses: readonly GoreadCourse[];
   /** The clock (ISO timestamps). Default: the system clock. */
@@ -40,10 +38,9 @@ export const PERSONAL_COPY_MESSAGE =
 const TEAM_HINT = 'Texts your team wrote can be shared.';
 
 const MESSAGES = {
-  notMember: 'The team code is missing or wrong. Ask your team for the code and enter it in Settings → Team sharing.',
   noTeam: 'This server has no team with that name.',
   noText: 'The team has no text with that id.',
-  notYours: 'Another team member added this text, so only they can replace or delete it.',
+  alreadyThere: "This text is already on the team's shelf. A text once added stays as it is; add it under another id if it is a new version.",
   tooLarge: 'This text is too large to share (the limit is 2 MB). Share it a chapter at a time.',
   notFound: 'Nothing here.',
   method: 'That method is not allowed here.',
@@ -51,9 +48,6 @@ const MESSAGES = {
 } as const;
 
 const sha256Hex = (s: string | Buffer): string => createHash('sha256').update(s).digest('hex');
-
-/** Constant-time equality of two secrets of any length (both are hashed to the same length first). */
-const sameSecret = (a: string, b: string): boolean => timingSafeEqual(createHash('sha256').update(a).digest(), createHash('sha256').update(b).digest());
 
 const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
 const isNonBlank = (v: unknown): v is string => typeof v === 'string' && v.trim().length > 0;
@@ -148,14 +142,14 @@ function addedByOf(body: Record<string, unknown>): string {
 }
 
 export function createGoreadHandler(options: GoreadHandlerOptions): (req: IncomingMessage, res: ServerResponse) => void {
-  const { store, codes, registry, courses } = options;
+  const { store, registry, courses } = options;
   const now = options.now ?? ((): string => new Date().toISOString());
   const courseById = new Map(courses.map((c) => [c.id, c] as const));
 
   const cors = (res: ServerResponse): void => {
     res.setHeader('Access-Control-Allow-Origin', '*');
-    res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,DELETE,OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Authorization, Content-Type');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,PUT,OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     res.setHeader('Access-Control-Max-Age', '600');
   };
 
@@ -172,21 +166,6 @@ export function createGoreadHandler(options: GoreadHandlerOptions): (req: Incomi
 
   const fail = (req: IncomingMessage, res: ServerResponse, r: Refusal): void =>
     send(req, res, r.status, { error: r.error, message: r.message, ...r.extra });
-
-  const bearer = (req: IncomingMessage): string | undefined => {
-    const h = req.headers.authorization;
-    const m = typeof h === 'string' ? /^Bearer[ \t]+(.+)$/i.exec(h.trim()) : null;
-    return m ? m[1].trim() : undefined;
-  };
-
-  /** Throws unless the request carries the course's team code. */
-  const requireMember = (req: IncomingMessage, course: string): void => {
-    const code = codes[course];
-    const given = bearer(req);
-    // a closed course (no code) refuses everyone; the comparison is made either way so timing does not tell the two apart
-    const ok = given !== undefined && isNonBlank(code) && sameSecret(given, code);
-    if (!ok) throw new Refusal(401, 'not-a-team-member', {}, MESSAGES.notMember);
-  };
 
   async function putText(req: IncomingMessage, res: ServerResponse, course: GoreadCourse, id: string): Promise<void> {
     const body = await readJsonObject(req);
@@ -212,7 +191,7 @@ export function createGoreadHandler(options: GoreadHandlerOptions): (req: Incomi
     if (!verdict.ok) throw new Refusal(422, 'invalid-document', { issues }, issueSummary(issues));
 
     const existing = store.get(course.id, id);
-    if (existing && existing.addedBy !== addedBy) throw new Refusal(403, 'not-yours', {}, MESSAGES.notYours);
+    if (existing) throw new Refusal(409, 'already-there', {}, MESSAGES.alreadyThere);
 
     const canonical = JSON.stringify(doc);
     const typed = doc as unknown as CorpusDocument;
@@ -226,7 +205,7 @@ export function createGoreadHandler(options: GoreadHandlerOptions): (req: Incomi
       chapterIndex: typed.work?.chapter?.index ?? null,
       chapterTitle: typed.work?.chapter?.title ?? null,
       addedBy,
-      addedAt: existing ? existing.addedAt : stamp,
+      addedAt: stamp,
       updatedAt: stamp,
       sha256: sha256Hex(canonical),
       bytes: Buffer.byteLength(canonical),
@@ -234,17 +213,7 @@ export function createGoreadHandler(options: GoreadHandlerOptions): (req: Incomi
     });
     const stored = store.get(course.id, id);
     if (!stored) throw new Error('the text was not stored');
-    send(req, res, existing ? 200 : 201, { summary: summaryOf(stored) });
-  }
-
-  async function deleteText(req: IncomingMessage, res: ServerResponse, course: GoreadCourse, id: string): Promise<void> {
-    const body = await readJsonObject(req);
-    const addedBy = addedByOf(body);
-    const existing = store.get(course.id, id);
-    if (!existing) throw new Refusal(404, 'no-such-text', {}, MESSAGES.noText);
-    if (existing.addedBy !== addedBy) throw new Refusal(403, 'not-yours', {}, MESSAGES.notYours);
-    store.remove(course.id, id);
-    send(req, res, 204);
+    send(req, res, 201, { summary: summaryOf(stored) });
   }
 
   async function route(req: IncomingMessage, res: ServerResponse): Promise<void> {
@@ -264,7 +233,6 @@ export function createGoreadHandler(options: GoreadHandlerOptions): (req: Incomi
     if (parts[0] !== 'teams' || parts.length < 3 || parts[2] !== 'texts' || parts.length > 4) throw new Refusal(404, 'not-found', {}, MESSAGES.notFound);
     const course = courseById.get(parts[1]);
     if (!course) throw new Refusal(404, 'no-such-team', {}, MESSAGES.noTeam);
-    requireMember(req, course.id);
 
     if (parts.length === 3) {
       if (method !== 'GET') throw new Refusal(405, 'method-not-allowed', {}, MESSAGES.method);
@@ -287,7 +255,6 @@ export function createGoreadHandler(options: GoreadHandlerOptions): (req: Incomi
       return;
     }
     if (method === 'PUT') { await putText(req, res, course, id); return; }
-    if (method === 'DELETE') { await deleteText(req, res, course, id); return; }
     throw new Refusal(405, 'method-not-allowed', {}, MESSAGES.method);
   }
 

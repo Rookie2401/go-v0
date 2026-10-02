@@ -1,7 +1,7 @@
 /**
  * The GoRead team-server client (contract: docs/goread/BACKEND.md). A thin, dependency-free wrapper over `fetch`.
  *
- *  - The team code travels only in `Authorization: Bearer <code>`, never in a URL, and never to `/health`.
+ *  - Contract v2 (open teams): no request carries any credential, and a text once added is never replaced or removed.
  *  - Every failure is a `TeamServerError` that carries the server's own learner-facing `message`; a server that does not
  *    answer at all is `status: 0, error: 'unreachable'` with a sentence that tells the learner where to look.
  *  - Nothing is retried and nothing is cached: one call, one request.
@@ -60,8 +60,6 @@ export class TeamServerError extends Error {
 export interface TeamClientOptions {
   /** The server's address, e.g. `https://goread.example.org` (a trailing slash is ignored). */
   baseUrl: string;
-  /** The team code. Sent only as a Bearer token. */
-  code: string;
   /** Defaults to the global `fetch`. */
   fetch?: typeof fetch;
 }
@@ -71,8 +69,8 @@ export interface TeamClient {
   health(): Promise<{ ok: boolean; message?: string }>;
   list(course: string, since?: string): Promise<TextSummary[]>;
   get(course: string, id: string): Promise<SharedText>;
-  share(course: string, document: CorpusDocument, addedBy: string): Promise<{ status: 201 | 200; summary: TextSummary }>;
-  remove(course: string, id: string, addedBy: string): Promise<void>;
+  /** Add a text to the team. A text once added is never replaced: an id that exists is a `409 already-there` TeamServerError. */
+  share(course: string, document: CorpusDocument, addedBy: string): Promise<{ status: 201; summary: TextSummary }>;
 }
 
 const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
@@ -109,7 +107,6 @@ export function createTeamClient(opts: TeamClientOptions): TeamClient {
     return new TeamServerError({ status: res.status, error: `http-${res.status}`, message: `The team server answered with an error (${res.status}).` });
   }
 
-  const authed = (extra: Record<string, string> = {}): Record<string, string> => ({ Authorization: `Bearer ${opts.code}`, ...extra });
   const JSON_BODY = { 'Content-Type': 'application/json' };
   const team = (course: string) => `/teams/${encodeURIComponent(course)}/texts`;
 
@@ -136,7 +133,7 @@ export function createTeamClient(opts: TeamClientOptions): TeamClient {
 
     async list(course, since) {
       const query = since ? `?since=${encodeURIComponent(since)}` : '';
-      const res = await send(`${team(course)}${query}`, { method: 'GET', headers: authed() });
+      const res = await send(`${team(course)}${query}`, { method: 'GET' });
       if (!res.ok) throw await failure(res);
       const body = await jsonOf(res);
       if (!Array.isArray(body.texts)) throw new TeamServerError({ status: res.status, error: 'bad-response', message: 'The team server sent an answer this version of Go cannot read.' });
@@ -144,7 +141,7 @@ export function createTeamClient(opts: TeamClientOptions): TeamClient {
     },
 
     async get(course, id) {
-      const res = await send(`${team(course)}/${encodeURIComponent(id)}`, { method: 'GET', headers: authed() });
+      const res = await send(`${team(course)}/${encodeURIComponent(id)}`, { method: 'GET' });
       if (!res.ok) throw await failure(res);
       const body = await jsonOf(res);
       if (!isObj(body.document)) throw new TeamServerError({ status: res.status, error: 'bad-response', message: 'The team server sent an answer this version of Go cannot read.' });
@@ -153,21 +150,14 @@ export function createTeamClient(opts: TeamClientOptions): TeamClient {
 
     async share(course, document, addedBy) {
       const res = await send(`${team(course)}/${encodeURIComponent(document.id)}`, {
-        method: 'PUT', headers: authed(JSON_BODY), body: JSON.stringify({ document, addedBy }),
+        method: 'PUT', headers: JSON_BODY, body: JSON.stringify({ document, addedBy }),
       });
       if (!res.ok) throw await failure(res);
       const body = await jsonOf(res);
-      if (!isObj(body.summary) || (res.status !== 200 && res.status !== 201)) {
+      if (!isObj(body.summary) || res.status !== 201) {
         throw new TeamServerError({ status: res.status, error: 'bad-response', message: 'The team server sent an answer this version of Go cannot read.' });
       }
-      return { status: res.status, summary: body.summary as unknown as TextSummary };
-    },
-
-    async remove(course, id, addedBy) {
-      const res = await send(`${team(course)}/${encodeURIComponent(id)}`, {
-        method: 'DELETE', headers: authed(JSON_BODY), body: JSON.stringify({ addedBy }),
-      });
-      if (!res.ok) throw await failure(res);
+      return { status: 201, summary: body.summary as unknown as TextSummary };
     },
   };
 }

@@ -3,20 +3,15 @@
  *
  *   npx vite-node server/goread/main.ts --port 8787 --data data/goread
  *
- * Team codes come from the environment (`GOREAD_TEAM_CODES=honduras-es=…,thailand-th=…`) and from `<data>/team-codes.json`
- * (`{ "honduras-es": "…" }`); the environment wins where both name a course. The program never prints, logs or returns a code.
+ * Open teams: every course of the app is a team; there are no codes and nothing to configure.
  */
 import { createServer } from 'node:http';
 import type { AddressInfo } from 'node:net';
-import { existsSync, readFileSync } from 'node:fs';
-import { join, resolve } from 'node:path';
+import { resolve } from 'node:path';
 import { createAdapterRegistry } from '../../src/adapters/index.ts';
 import { COURSES } from '../../src/core/config.ts';
 import { createGoreadHandler } from './app.ts';
 import { openStore } from './store.ts';
-
-export const TEAM_CODES_FILE = 'team-codes.json';
-const MIN_CODE_LENGTH = 12;
 
 interface Args { port: number; data: string; host: string }
 
@@ -43,43 +38,12 @@ function parseArgs(argv: readonly string[]): Args {
   return out;
 }
 
-/** `course=code` pairs separated by commas; the code is everything after the first "=". */
-function parseEnvCodes(raw: string | undefined): Record<string, string> {
-  const out: Record<string, string> = {};
-  for (const pair of (raw ?? '').split(',')) {
-    const eq = pair.indexOf('=');
-    if (eq < 1) continue;
-    const course = pair.slice(0, eq).trim();
-    const code = pair.slice(eq + 1).trim();
-    if (course && code) out[course] = code;
-  }
-  return out;
-}
-
-function readCodesFile(dir: string): Record<string, string> {
-  const file = join(dir, TEAM_CODES_FILE);
-  if (!existsSync(file)) return {};
-  let parsed: unknown;
-  try { parsed = JSON.parse(readFileSync(file, 'utf8')); } catch { throw new Error(`${file} is not valid JSON; expected { "honduras-es": "<code>" }`); }
-  if (typeof parsed !== 'object' || parsed === null || Array.isArray(parsed)) throw new Error(`${file} must be a JSON object { "<course id>": "<code>" }`);
-  const out: Record<string, string> = {};
-  for (const [course, code] of Object.entries(parsed)) if (typeof code === 'string' && code.trim()) out[course] = code.trim();
-  return out;
-}
-
 function main(): void {
   const args = parseArgs(process.argv.slice(2));
   const dir = resolve(args.data);
   const store = openStore(dir);
-  const codes = { ...readCodesFile(dir), ...parseEnvCodes(process.env.GOREAD_TEAM_CODES) };
 
-  const known = new Set(COURSES.map((c) => c.id));
-  const open = Object.keys(codes).filter((c) => known.has(c));
-  for (const c of Object.keys(codes)) if (!known.has(c)) console.error(`goread: ignoring a team code for "${c}": not a course of this app`);
-  for (const c of open) if (codes[c].length < MIN_CODE_LENGTH) console.error(`goread: the code for "${c}" is short (under ${MIN_CODE_LENGTH} characters); anyone who guesses it can read and add texts`);
-  if (open.length === 0) console.error(`goread: no team codes found (GOREAD_TEAM_CODES or ${join(dir, TEAM_CODES_FILE)}); every team is closed`);
-
-  const handler = createGoreadHandler({ store, codes, registry: createAdapterRegistry(), courses: COURSES });
+  const handler = createGoreadHandler({ store, registry: createAdapterRegistry(), courses: COURSES });
   const server = createServer((req, res) => {
     const started = Date.now();
     const method = req.method ?? '-';

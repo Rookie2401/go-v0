@@ -782,11 +782,12 @@ describe('analysis: closed classes', () => {
     expect(an('zum')[0].cells).toEqual([{ c: 'D', g: 'm' }, { c: 'D', g: 'n' }]);
     expect(an('zur')[0].cells).toEqual([{ c: 'D', g: 'f' }]);
     expect(im[0].parts).toEqual([
-      { text: 'i', start: 0, end: 1, lemma: 'in', pos: 'ADP', kind: 'contracted' },
-      { text: 'm', start: 1, end: 2, lemma: 'der', pos: 'DET', morph: { Case: 'Dat', Gender: 'Masc,Neut', Number: 'Sing', PronType: 'Art', Definite: 'Def' }, kind: 'contracted' },
+      // text is the WORD the part stands for (what a reader is shown: im = in + dem); start / end are its letters in the written word
+      { text: 'in', start: 0, end: 1, lemma: 'in', pos: 'ADP', kind: 'contracted' },
+      { text: 'dem', start: 1, end: 2, lemma: 'der', pos: 'DET', morph: { Case: 'Dat', Gender: 'Masc,Neut', Number: 'Sing', PronType: 'Art', Definite: 'Def' }, kind: 'contracted' },
     ]);
-    expect(an('zum')[0].parts!.map((p) => p.text)).toEqual(['zu', 'm']);
-    expect(an('zur')[0].parts!.map((p) => p.text)).toEqual(['zu', 'r']);
+    expect(an('zum')[0].parts!.map((p) => p.text)).toEqual(['zu', 'dem']);
+    expect(an('zur')[0].parts!.map((p) => p.text)).toEqual(['zu', 'der']);
     expect(an('Zum')[0].parts!.map((p) => p.text)).toEqual(['Zu', 'm']);
   });
 

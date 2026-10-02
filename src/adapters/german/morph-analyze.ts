@@ -99,9 +99,11 @@ function contractionReading(c: DeContraction, written: string, lex: DeLexiconVie
   return {
     lemma: c.preposition, pos: 'ADP', morph: {}, cells, confidence: 0.92, lemmaKnown: true, gloss: c.gloss,
     rule: `contraction of ${c.preposition} + ${c.article}: ${describeGermanMorph(cellMorph)} article`,
+    // `text` is the WORD each part stands for (im = in + dem), which is what a reader is shown; `start` / `end` say which
+    // letters of the written word belong to it. The letters alone ("i" + "m") are not words and must never be displayed.
     parts: [
-      { text: written.slice(0, n), start: 0, end: n, lemma: c.preposition, pos: 'ADP', kind: 'contracted' },
-      { text: written.slice(n), start: n, end: written.length, lemma: 'der', pos: 'DET', morph: articleMorph, kind: 'contracted' },
+      { text: c.preposition, start: 0, end: n, lemma: c.preposition, pos: 'ADP', kind: 'contracted' },
+      { text: c.article, start: n, end: written.length, lemma: 'der', pos: 'DET', morph: articleMorph, kind: 'contracted' },
     ],
   };
 }

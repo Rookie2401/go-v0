@@ -243,16 +243,16 @@ describe('real lexicon: verbs', () => {
 
 describe('real lexicon: contractions', () => {
   const rows: Array<[string, string, string[], string[]]> = [
-    ['im', 'in', ['Dm', 'Dn'], ['i', 'm']],
-    ['am', 'an', ['Dm', 'Dn'], ['a', 'm']],
-    ['beim', 'bei', ['Dm', 'Dn'], ['bei', 'm']],
-    ['vom', 'von', ['Dm', 'Dn'], ['vo', 'm']],
-    ['zum', 'zu', ['Dm', 'Dn'], ['zu', 'm']],
-    ['zur', 'zu', ['Df'], ['zu', 'r']],
-    ['ins', 'in', ['An'], ['in', 's']],
-    ['ans', 'an', ['An'], ['an', 's']],
-    ['aufs', 'auf', ['An'], ['auf', 's']],
-    ['fürs', 'für', ['An'], ['für', 's']],
+    ['im', 'in', ['Dm', 'Dn'], ['in', 'dem']],
+    ['am', 'an', ['Dm', 'Dn'], ['an', 'dem']],
+    ['beim', 'bei', ['Dm', 'Dn'], ['bei', 'dem']],
+    ['vom', 'von', ['Dm', 'Dn'], ['von', 'dem']],
+    ['zum', 'zu', ['Dm', 'Dn'], ['zu', 'dem']],
+    ['zur', 'zu', ['Df'], ['zu', 'der']],
+    ['ins', 'in', ['An'], ['in', 'das']],
+    ['ans', 'an', ['An'], ['an', 'das']],
+    ['aufs', 'auf', ['An'], ['auf', 'das']],
+    ['fürs', 'für', ['An'], ['für', 'das']],
   ];
   it.each(rows)('%s = %s + the article, cells %j', (surface, prep, cells, parts) => {
     const r = an(surface).find((x) => x.pos === 'ADP' && x.lemma === prep)!;

@@ -118,7 +118,8 @@ describe('noun phrase: agreement, government, declension', () => {
     const p = parse('Er wohnt im Haus.');
     const im = first(p, 'im');
     expect(im.parts?.map((x) => x.kind)).toEqual(['contracted', 'contracted']);
-    expect(im.parts?.map((x) => x.text).join('')).toBe('im');
+    expect(im.parts?.map((x) => x.text)).toEqual(['in', 'dem']); // the words it stands for, never the letters "i" + "m"
+    expect(im.parts?.map((x) => [x.start, x.end])).toEqual([[0, 1], [1, 2]]);
     expect(String(im.notes?.context)).toMatch(/im = in \+ dem/);
   });
 });
@@ -763,7 +764,7 @@ describe('every candidate of the bundled German documents is well formed', () =>
     }
   });
 
-  it('parts: offsets inside the surface, in order, each part\'s text is its slice', () => {
+  it('parts: offsets inside the surface, in order; each part\'s text is its slice — except a contracted part, whose text is the word it stands for', () => {
     let parts = 0;
     for (const s of GERMAN_SENTENCES) {
       const a = de.analyze(s.tokens);
@@ -777,7 +778,8 @@ describe('every candidate of the bundled German documents is well formed', () =>
             expect(p.start, `${s.doc} ${surface}`).toBeGreaterThanOrEqual(at);
             expect(p.end).toBeGreaterThan(p.start);
             expect(p.end).toBeLessThanOrEqual(surface.length);
-            expect(surface.slice(p.start, p.end).normalize('NFC').toLocaleLowerCase('de')).toBe(p.text.normalize('NFC').toLocaleLowerCase('de'));
+            if (p.kind === 'contracted') expect(p.text.length, `${s.doc} ${surface}`).toBeGreaterThanOrEqual(p.end - p.start); // im = in + dem
+            else expect(surface.slice(p.start, p.end).normalize('NFC').toLocaleLowerCase('de')).toBe(p.text.normalize('NFC').toLocaleLowerCase('de'));
             at = p.end;
           }
         }

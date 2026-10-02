@@ -376,3 +376,37 @@ Design and status: `docs/HINDI_COURSE.md`. Decisions that bind later work:
   to the page it is read on.
 - **H8. Drafts are not gold and a check is not a review.** A model's judgement never enters the gold set; a
   language check by a non-native is recorded and publishes nothing.
+
+## The Spanish dictionary (contract v8)
+
+Brief: `docs/PLAN10.md`. What it does and what was measured: `docs/spanish/DICTIONARY.md`.
+
+- **S1. The dictionary decides what the rules only guess.** A reading the adapter's own data does not vouch for is
+  marked `unconfirmed`; with a dictionary installed the importer keeps the readings the dictionary confirms (rule and
+  dictionary agreeing outrank either alone), drops the ones it does not list, and leaves a word neither knows as a
+  marked guess. A word the adapter's own data vouches for is never replaced.
+- **S2. Other readings join, and context orders them.** For an adapter that can reorder (`refine`), the dictionary's
+  readings of another word or part of speech are added below the adapter's; never to a function word, never from an
+  entry that is not a word of running text. An adapter without `refine` gets nothing copied onto its tokens.
+- **S3. Readings have standing.** A context rule needs a stronger cue to put a dictionary reading in front of a
+  word-list reading than to choose among equals, and a certain one against a function word. Measured need: without
+  it, 124 words of the course's own texts changed their first reading for the worse.
+- **S4. A meaning belongs to a lemma.** A form's label is never a meaning; a meaning is never borrowed across parts
+  of speech; a form of a form is followed one step; an alternative spelling is read as its target.
+- **S5. The source's spelling is kept.** Normalization folds case for lookup; the entry keeps how the source writes
+  the headword, and an entry written with capitals is a reading only of a word written that way.
+- **S6. Scale is a format and a bound, not a hope.** Repeated label lists are stored once and referred to by number;
+  the runtime holds a fixed number of parsed shards and reads a fixed number at a time, so a book's vocabulary never
+  loads the dictionary whole. Which dictionaries a build ships is printed before every build.
+- **S7. Held-out means sealed, and a measure is checked like code.** Evaluation data is split by a hash; tuning sees
+  one part; the other is run once at the end. A sample inside a hash split must not reuse the split's own bits; when a
+  held-out figure disagrees with dev, the held-out part is divided again rather than looked at.
+- **S8. A word-level measure does not see the sentence.** Besides the marked-word evaluation, the course's own texts
+  are run with and without the dictionary and every changed first reading is listed for a person
+  (`scripts/probe-es-pipeline-diff.mts`).
+- **S9. Startup imports one language.** Only the active course's built-in texts are imported at startup; another
+  language's when its course becomes active. The remembered signature is per language and names that language's
+  analyzer, so a stale language is re-analysed in place when it next becomes active.
+- **S10. Several sessions, one tree.** Each session stages its own paths; shared contract files change additively and
+  are announced; one writer per file; an adapter stays importable at every save (every adapter is imported by one
+  registry, so one that throws stops every language's tests).

@@ -72,7 +72,19 @@ Held-out discipline: no fix in this round touched the tone engine, the tokenizer
 
 ## Spanish course (foundation, contract v7, 2026-10-01)
 
-Status of record: **`docs/spanish/STATUS.md`**. In brief:
+Status of record: **`docs/spanish/STATUS.md`**; the dictionary layer and every measurement:
+**`docs/spanish/DICTIONARY.md`**. In brief:
+
+- **Dictionary pass (evening of 2026-10-01, contract v8)**: the Spanish dictionary is installed as a separately
+  sourced layer (Wiktionary via kaikki.org, 808,278 entries, 57.7 MB in compact shards, a bounded runtime) and the
+  importer uses it for a learner's own books: it decides the words the rules only guess at, adds its other readings
+  of word-list words for the context rules to order, respects capitals, carries region labels, and is named on the
+  word sheet. **Measured on data never looked at**: on 7,649 words marked in Wiktionary's usage examples the first
+  reading is right for 92.65 % (82.1 % of the 1,686 ambiguous ones; 61.9 % without context rules); the rule engine
+  finds the dictionary's lemma for 98.4 % of word-list forms with features agreeing for 99.8 %, and verbs with
+  attached pronouns for 99.3 %. None of this is on a book, and none was checked by a native speaker. The word list
+  differs from the dictionary in 45 recorded places, none decided. Startup now imports only the active course's
+  language.
 
 - **Implemented and verified**: streams, shelves and doors; rights states that gate what may be bundled; regional
   varieties with an explicit course policy (Honduran / Central American target, voseo active, Spain and older
@@ -80,8 +92,8 @@ Status of record: **`docs/spanish/STATUS.md`**. In brief:
   loads whole (20,000-row catalogue tests); personal difficulty and ranking with reasons; search; import of a
   learner's own `.txt` or unprotected `.epub`; a source quality check that reports and never fixes.
 - **Architecture only**: the built library (the build tool has run on fixtures only; none is shipped); ranking over
-  a real corpus (weights are first guesses); the Spanish dictionary layer (the 1.05 GB kaikki file has not been
-  downloaded: permission needed); knowledge, mission and listening streams (no texts); frequency data (none).
+  a real corpus (weights are first guesses); knowledge, mission and listening streams (no texts); frequency data
+  (none).
 - **Bundled**: 26 course texts drafted by an AI model (about 3,660 words, unreviewed, unpublished, preview only),
   the two older seed texts (same state), and three byte-verified verses of Reina-Valera 1909 (published).
 - **Recommended only**: 61 of the 66 catalogued works are metadata. **Rights**: 50 unverified, 11 prohibited from
@@ -94,8 +106,9 @@ Status of record: **`docs/spanish/STATUS.md`**. In brief:
   every word that had a second reading, even one ruled out; (5) the test suite passed but the runner reported
   worker timeouts, because command-line tests blocked their workers with synchronous spawns (and one test counted
   temporary directories shared with other test files).
-- **Not verified**: anything about Spanish on real prose; every Honduran fact and regional gloss; the controlled
-  texts' Spanish (no native reader has seen them).
+- **Not verified**: anything about Spanish on a real book; every Honduran fact and regional gloss (the dictionary
+  labels 940 senses as Honduran — material for a reviewer, not a verification); the controlled texts' Spanish (no
+  native reader has seen them).
 
 ## Hindi course (contract v10, 2026-10-01)
 
@@ -118,7 +131,7 @@ readers are recorded as prohibited by NCERT's own terms and are only pointed at.
 
 | | Ingestion | Progress tracking | Linguistic analysis | Scripture | Audio (GoListen: deferred to V2, switched off) |
 |---|---|---|---|---|---|
-| **Spanish** | Verified (proof + browser importer; a learner's own `.txt` / `.epub` imports chapter by chapter) | Verified (one record on Home, library, reader; version-scoped) | Tokenization dependable; sentence splitting limited; a word list of 1,701 lemmas (**machine-drafted, not native-reviewed**) plus rule morphology for any verb, noun or adjective form (an inferred lemma is marked as such, 0.6 at most, no gloss); readings ordered by neighbouring words, measured on the course's own texts only; no dictionary installed; nothing measured on real prose (see "Spanish course") | **Published**: Reina-Valera 1909, 3 verses, byte-verified against eBible.org | **Not verified** — no credentials; nothing synthesized |
+| **Spanish** | Verified (proof + browser importer; a learner's own `.txt` / `.epub` imports chapter by chapter) | Verified (one record on Home, library, reader; version-scoped) | Tokenization dependable; sentence splitting limited; a word list of 1,701 lemmas (**machine-drafted, not native-reviewed**) plus rule morphology for any verb, noun or adjective form (an inferred lemma is marked as such, 0.6 at most, no gloss); **dictionary installed** (Wiktionary via kaikki.org, separate layer) and used when a learner's own book is imported; readings ordered by neighbouring words — held-out on dictionary example sentences: first reading right for 92.65 %, 82.1 % of ambiguous words; nothing measured on a book (see "Spanish course") | **Published**: Reina-Valera 1909, 3 verses, byte-verified against eBible.org | **Not verified** — no credentials; nothing synthesized |
 | **German** | Verified | Verified (engine); browser checked for Spanish only | Dependable tokenization; separable verbs only `anfangen`; compounds low-confidence; **seed lexicon only** | **Published**: Lutherbibel 1912, 3 verses, byte-verified | Not verified |
 | **Albanian** | Verified | as German | ë / ç preserved; inflected forms related; clitics ambiguous in thin context; **seed lexicon only** | **Blocked** — awaiting an approved translation | Not verified |
 | **Hindi** | Verified (grapheme-safe spans, danda kept, nukta never folded; a learner's own `.txt` imports chapter by chapter, Hindi chapter headings recognised) | Verified (engine; browser in a sandbox) | Akṣara-level script decoding with the unwritten *a* stated; rule morphology and a word list of 2,746 lemmas (**machine-drafted, not native-reviewed**); compound verbs, complex predicates and 50 constructions; readings ordered by neighbouring words. On six unseen Scripture chapters 94.6 % of words have a reading the list vouches for; correctness is **not measured** (gold set: 189 drafts, 0 accepted). No dictionary installed (see "Hindi course") | **Published**: Indian Revised Version (IRV Hindi 2019, CC BY-SA 4.0), 91 verses, byte-verified against eBible.org; a licensed text, credited where it is read | Not verified |

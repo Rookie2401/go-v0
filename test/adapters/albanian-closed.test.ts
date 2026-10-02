@@ -462,7 +462,8 @@ describe('the whole list', () => {
         expect(r.confidence).toBeGreaterThan(0);
         expect(r.confidence).toBeLessThanOrEqual(0.92);
         if (rs.length > 1) expect(r.confidence, `${form} ${keyOf(r)}`).toBeLessThanOrEqual(0.6);
-        expect(r.morph.VerbForm, `${form}: a closed-class word is not a finite verb`).toBeUndefined();
+        // the one closed-class word that is a conjugated form: the modal duhet / duhen / duhej (a form of duhem)
+        if (r.lemma !== 'duhem') expect(r.morph.VerbForm, `${form}: a closed-class word is not a finite verb`).toBeUndefined();
       }
     }
   });

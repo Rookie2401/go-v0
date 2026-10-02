@@ -90,6 +90,17 @@ export const PARTICLES: SqLexeme[] = [
   F('ja', 'PART', 'here is, there is; look', undefined, { role: 'points at something: ja libri = here is the book' }),
 ];
 
+/**
+ * The two modal words that stand before të + a verb. Both are also forms of full verbs (mund / mundem, to defeat, to
+ * be able; duhem, to be needed), which the word list reads beside them.
+ */
+export const MODALS: SqLexeme[] = [
+  F('mund', 'VERB', 'can, may, to be able', undefined, { role: 'modal: stands unchanged before të + a verb (mund të vij: I can come)' }),
+  F('duhem', 'VERB', 'to be needed; must, have to', ['duhet: 3 sg pres ind mid', 'duhen: 3 pl pres ind mid', 'duhej: 3 sg impf ind mid'], {
+    role: 'modal: duhet të + a verb (duhet të punoj: I must work)',
+  }),
+];
+
 /** The pointing adverbs of place and manner. */
 export const DEICTIC_ADVERBS: SqLexeme[] = [
   F('këtu', 'ADV', 'here'), F('aty', 'ADV', 'there (near you)'), F('atje', 'ADV', 'there, over there'),

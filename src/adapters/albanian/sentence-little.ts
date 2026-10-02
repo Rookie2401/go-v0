@@ -85,6 +85,9 @@ export function littleWords(cx: Ctx): void {
   }
 }
 
+/** The written forms of the two modal words (function-minor.ts MODALS). */
+const MODAL_FORMS = new Set(['mund', 'duhet', 'duhen', 'duhej']);
+
 /** Did the sentence open (or a new clause begin after a comma) just before this word? */
 function clauseStart(cx: Ctx, i: number): 'start' | 'comma' | undefined {
   if (prevWord(cx, i) !== undefined) return undefined;
@@ -107,6 +110,10 @@ function articleOrPronoun(cx: Ctx, i: number): void {
   if (isTe) {
     if (pw === 'për' && (v || (k !== undefined && cx.base[k].some(isParticiple)))) { particle('after "për": the "to do" phrase, with the subjunctive particle'); return; }
     if (pw === 'do' && v) { particle('after "do": the future, with the subjunctive particle'); return; }
+    // the modal words take të + a verb (mund të vij, duhet të punoj)
+    if (pw !== undefined && MODAL_FORMS.has(pw) && v) { particle(`after the modal "${pw}": the subjunctive particle`); return; }
+    // "të të shoh": the first is the particle, the second the short pronoun
+    if (simpleTe && pw === 'të' && p !== undefined && decided(cx, p) && isTeParticle(cx.cur[p][0]) && v) { clitic('after the particle "të", before a verb: the short object pronoun (të të shoh)'); return; }
     if (v) {
       if (simpleTe && v.shorts > 0) { particle('before a short pronoun and a verb: the subjunctive particle (të më shohë)'); return; }
       const before = clauseStart(cx, i);

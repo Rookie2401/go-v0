@@ -12,7 +12,7 @@ import type { SqLexeme, SqReading } from './types';
 import { buildReadings } from './function-build';
 import { LINKING_ARTICLE } from './function-article';
 import { DEMONSTRATIVES, INDEFINITES, PERSONAL, POSSESSIVES, QUESTION_WORDS } from './function-pronouns';
-import { CONJUNCTIONS, DEICTIC_ADVERBS, GREETINGS, NUMERALS, ORDINALS, PARTICLES, PREPOSITION_ADVERBS, PREPOSITIONS } from './function-minor';
+import { CONJUNCTIONS, DEICTIC_ADVERBS, GREETINGS, MODALS, NUMERALS, ORDINALS, PARTICLES, PREPOSITION_ADVERBS, PREPOSITIONS } from './function-minor';
 
 export { linkingArticle, linkingArticleReadings } from './function-article';
 
@@ -24,7 +24,7 @@ export { linkingArticle, linkingArticleReadings } from './function-article';
 export const SQ_FUNCTION_WORDS: SqLexeme[] = [
   ...POSSESSIVES, ...PERSONAL, ...DEMONSTRATIVES, ...QUESTION_WORDS, ...INDEFINITES, LINKING_ARTICLE,
   ...NUMERALS, ...ORDINALS, ...PREPOSITIONS, ...PREPOSITION_ADVERBS, ...CONJUNCTIONS, ...PARTICLES,
-  ...DEICTIC_ADVERBS, ...GREETINGS,
+  ...DEICTIC_ADVERBS, ...GREETINGS, ...MODALS,
 ];
 
 /** Competing parts of speech of one form, best first when the form is read alone. */

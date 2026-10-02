@@ -18,8 +18,9 @@
  *      ("combined-form") but gives most of them no entry of their own, so the importer can only keep the rule's
  *      reading when the rule finds the verb: is the verb among the adapter's readings, with the pronouns as parts?
  *
- * Held-out discipline: lemmas are split in two by a hash; `dev` may be looked at and tuned on, `test` is reported as
- * it comes. `--show` (examples of failures) is refused for `test`.
+ * Held-out discipline: lemmas are split by a hash; `dev` and `dev2` may be looked at and tuned on, `final` is reported
+ * as it comes (`test` = dev2 + final, the original held-out half). `--show` (examples of failures) is refused for
+ * `final` and `test`.
  * Reads the .jsonl or .jsonl.gz; downloads nothing; writes nothing.
  */
 import { createReadStream, existsSync } from 'node:fs';
@@ -32,9 +33,10 @@ import type { AnalysisCandidate, PartOfSpeech, RawToken } from '../src/core';
 const args = process.argv.slice(2).filter((a) => a !== '--');
 const opt = (k: string): string | undefined => { const i = args.indexOf(`--${k}`); return i >= 0 ? args[i + 1] : undefined; };
 const split = opt('split');
-if (split !== 'dev' && split !== 'test') { console.error('usage: npm run es:eval-morph -- --split dev|test [--in <file>] [--sample N] [--show N]'); process.exit(1); }
+const SPLITS = ['dev', 'dev2', 'final', 'test'];
+if (!split || !SPLITS.includes(split)) { console.error('usage: npm run es:eval-morph -- --split dev|dev2|final|test [--in <file>] [--sample N] [--show N]'); process.exit(1); }
 const show = Number(opt('show') ?? 0);
-if (show > 0 && split === 'test') { console.error('--show is refused for the held-out split: its failures are not to be looked at'); process.exit(1); }
+if (show > 0 && (split === 'test' || split === 'final')) { console.error('--show is refused for the held-out split: its failures are not to be looked at'); process.exit(1); }
 const sample = Math.max(1, Number(opt('sample') ?? 1));
 const candidatesIn = [opt('in'), 'data/dictionaries/kaikki.org-dictionary-Spanish.jsonl', 'data/dictionaries/kaikki.org-dictionary-Spanish.jsonl.gz'].filter((f): f is string => !!f);
 const file = candidatesIn.find((f) => existsSync(f));
@@ -46,7 +48,24 @@ const POS: Record<string, PartOfSpeech> = { verb: 'VERB', noun: 'NOUN', adj: 'AD
 const compatible = (a: PartOfSpeech | undefined, b: PartOfSpeech): boolean => a === b || (b === 'VERB' && a === 'AUX');
 /** FNV-1a, for a stable split that does not depend on file order. */
 const hash = (s: string): number => { let h = 0x811c9dc5; for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 0x01000193); } return h >>> 0; };
-const inSplit = (lemma: string): boolean => (hash(lemma) % 2 === 0) === (split === 'dev');
+/**
+ * For SAMPLING, the hash is mixed first. The low bits of FNV-1a of "lemma|form" depend on the low bits of the lemma's own
+ * hash - the bits the split is made from - so an unmixed `% 16` picked different KINDS of forms in each split (found on
+ * 2026-10-01: the attached-pronoun sample of one quarter was nearly all of one shape). The split itself is unchanged.
+ */
+const mixed = (s: string): number => { let h = hash(s); h ^= h >>> 16; h = Math.imul(h, 0x85ebca6b); h ^= h >>> 13; h = Math.imul(h, 0xc2b2ae35); h ^= h >>> 16; return h >>> 0; };
+/**
+ * dev = even hash. The other half was first kept whole as `test`; on 2026-10-01 its attached-pronoun figure did not match
+ * dev (61.6 % against 99.0 %), and rather than look at held-out failures the half was divided again by the next bit of the
+ * hash: `dev2` was opened for diagnosis, `final` has never been looked at and is the figure to report. `test` = both.
+ */
+const inSplit = (lemma: string): boolean => {
+  const h = hash(lemma);
+  if (split === 'dev') return h % 2 === 0;
+  if (h % 2 === 0) return false;
+  if (split === 'test') return true;
+  return ((h >>> 1) % 2 === 0) === (split === 'dev2');
+};
 
 interface Relation { form: string; lemma: string; pos: PartOfSpeech; tags: string[] }
 /** Verb + attached pronoun(s), from the verb's own table of forms. */
@@ -86,8 +105,9 @@ for await (const line of createInterface({ input })) {
   if (headword && pos === 'VERB' && Array.isArray(e.forms)) {
     for (const f of e.forms as Array<{ form?: unknown; tags?: unknown }>) {
       const tags = Array.isArray(f.tags) ? (f.tags as unknown[]).filter((t): t is string => typeof t === 'string') : [];
-      if (typeof f.form !== 'string' || /s/.test(f.form) || !tags.includes('combined-form')) continue;
-      if (hash(`${form}|${f.form}`) % 16 === 0) combined.push({ form: norm(f.form), lemma: form, tags }); // 1 in 16: the tables are very large
+      // a cell of the table that holds no word ("-": the combination does not exist) or that the extractor could not read is not a form
+      if (typeof f.form !== 'string' || /\s/.test(f.form) || !/\p{L}/u.test(f.form) || !tags.includes('combined-form') || tags.some((t) => t.startsWith('error-'))) continue;
+      if (mixed(`${form}|${f.form}`) % 16 === 0) combined.push({ form: norm(f.form), lemma: form, tags }); // 1 in 16: the tables are very large
     }
   }
 }
@@ -117,7 +137,7 @@ const keep = (list: string[], s: string) => { if (list.length < show) list.push(
 
 for (const r of relations) {
   if (!inSplit(r.lemma)) continue;
-  if (hash(`${r.form}|${r.lemma}`) % sample !== 0) continue;
+  if (mixed(`${r.form}|${r.lemma}`) % sample !== 0) continue;
   const cands = readings(r.form);
   const want = es.morphFromTags ? es.morphFromTags(r.tags) : {};
   const hasFeatures = Object.keys(want).length > 0;
@@ -153,7 +173,7 @@ for (const r of relations) {
 for (const [form, set] of listed) {
   if (set.size !== 1) continue;
   const [lemma, pos] = [...set][0].split('|') as [string, PartOfSpeech];
-  if (!inSplit(lemma) || !inWordList(lemma, pos) || hash(form) % sample !== 0) continue;
+  if (!inSplit(lemma) || !inWordList(lemma, pos) || mixed(form) % sample !== 0) continue;
   const cands = readings(form);
   C.forms++;
   const first = cands[0];
@@ -166,7 +186,7 @@ for (const [form, set] of listed) {
 const D = { n: 0, lemma: 0, parts: 0, nWordList: 0, lemmaWordList: 0, hasEntry: 0 };
 const missD: string[] = [];
 for (const c of combined) {
-  if (!inSplit(c.lemma) || hash(`${c.form}|${c.lemma}|d`) % sample !== 0) continue;
+  if (!inSplit(c.lemma) || mixed(`${c.form}|${c.lemma}|d`) % sample !== 0) continue;
   const cands = readings(c.form);
   const same = cands.filter((x) => x.lemma !== undefined && norm(x.lemma) === c.lemma && compatible(x.pos, 'VERB'));
   const listedWord = inWordList(c.lemma, 'VERB');

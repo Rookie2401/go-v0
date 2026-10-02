@@ -63,7 +63,9 @@ describe('Spanish end-to-end loop', () => {
     bibleSentences = await liveSentences(app.store, bible.id);
     const es = verified.translations.find((t) => t.lang === 'es')!;
     for (const s of bibleSentences) {
-      const expected = (s.verseRefs ?? []).map((r) => (es.verses as Record<string, { text: string }>)[r].text).join(' ');
+      // the record holds several translations with different verse sets: read this one's verses by reference
+      const verses = es.verses as unknown as Record<string, { text: string } | undefined>;
+      const expected = (s.verseRefs ?? []).map((r) => verses[r]!.text).join(' ');
       expect(s.text).toBe(expected); // byte-identical to the verified source
       expect(/\d/.test(s.text)).toBe(false); // verse numbers are metadata
     }

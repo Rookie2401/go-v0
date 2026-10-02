@@ -172,7 +172,7 @@ describe('doors count only what the learner may read, and call a listed book a l
 
 describe('courses without streams are unchanged', () => {
   // germany-de has streams since the German course (see test/ui/germanHome.test.tsx); a course joins or leaves this list with its own data
-  it.each(['thailand-th', 'albania-sq'])('%s: no Best next reads, no Explore doors, no Your Books door, nothing asked of the library', async (courseId) => {
+  it.each(['thailand-th'])('%s: no Best next reads, no Explore doors, no Your Books door, nothing asked of the library', async (courseId) => {
     const h = await makeHarness({ courseId, library: LIB });
     mounted = await h.mount(app());
     await flush(8);
@@ -186,7 +186,7 @@ describe('courses without streams are unchanged', () => {
   });
 
   it('/explore goes home for a course without streams', async () => {
-    const h = await makeHarness({ courseId: 'albania-sq' });
+    const h = await makeHarness({ courseId: 'thailand-th' });
     mounted = await h.mount(app(), { router: '/explore' });
     await flush(6);
     expect(q(mounted.container, '.home__title')!.textContent).toBe('Go');

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 2,
+  "id": "misioni-1-03",
+  "lang": "sq",
+  "title": "Në kishë",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:misioni-1-03",
+    "title": "Misioni 1 — Takime: Në kishë (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own. The text speaks of Christian belief: it needs a native reviewer who can also judge theological wording.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review (including theological wording)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "mission",
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-theological-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "misioni-1",
+    "chapter": {
+      "index": 3,
+      "title": "Në kishë"
+    }
+  },
+  "streams": [
+    "mission",
+    "acquisition"
+  ],
+  "domains": [
+    "mission",
+    "church",
+    "theology"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Në kishë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën Marku shkon në kishë.",
+              "english": "On Sunday Mark goes to church."
+            },
+            {
+              "text": "Dritani shkon me të.",
+              "english": "Dritan goes with him."
+            },
+            {
+              "text": "Në kishë ka shumë njerëz.",
+              "english": "In the church there are many people."
+            },
+            {
+              "text": "Ata këndojnë dhe luten.",
+              "english": "They sing and pray."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Një burrë lexon nga Bibla.",
+              "english": "A man reads from the Bible."
+            },
+            {
+              "text": "Ai flet për dashurinë e Perëndisë.",
+              "english": "He speaks about the love of God."
+            },
+            {
+              "text": "Dritani dëgjon.",
+              "english": "Dritan listens."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas kishës Dritani pyet:",
+              "english": "After church Dritan asks:"
+            },
+            {
+              "text": "— Çfarë është Bibla?",
+              "english": "\"What is the Bible?\""
+            },
+            {
+              "text": "— Bibla është fjala e Perëndisë, — thotë Marku.",
+              "english": "\"The Bible is the word of God,\" says Mark."
+            },
+            {
+              "text": "— A mund ta lexoj?",
+              "english": "\"May I read it?\""
+            },
+            {
+              "text": "— Po. Unë të jap një Bibël.",
+              "english": "\"Yes. I will give you a Bible.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

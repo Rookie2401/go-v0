@@ -20,7 +20,12 @@ export const COURSES: Course[] = [
     // it; vosotros (Spain) and the historical language are for recognition only.
     variety: { target: 'es-HN', within: ['es-CA', 'es-419'], activeFeatures: ['voseo'] },
   },
-  { id: 'albania-sq', lang: 'sq', country: 'Albania', title: 'Albania → Albanian', preferredLocales: ['sq-AL'] },
+  {
+    id: 'albania-sq', lang: 'sq', country: 'Albania', title: 'Albania → Albanian', preferredLocales: ['sq-AL'],
+    // Active target: Standard Albanian. Gheg, the other dialects and pre-standard spelling are for recognition only:
+    // a form is related to its Standard equivalent, never counted as Standard.
+    variety: { target: 'sq', within: [] },
+  },
   { id: 'thailand-th', lang: 'th', country: 'Thailand', title: 'Thailand → Thai', preferredLocales: ['th-TH'] },
   {
     id: 'india-hi', lang: 'hi', country: 'India', title: 'India → Hindi', preferredLocales: ['hi-IN'],

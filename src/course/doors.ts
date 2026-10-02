@@ -2,6 +2,7 @@
  * The doors each course offers on Home and Explore. A door is an orientation — a stream, a subject or a range of
  * shelves — never a separate course. One line per course: a course without a line gets one door per available stream.
  */
+import { ALBANIAN_COURSE_ID, ALBANIAN_DOORS } from './albanian';
 import { GERMAN_COURSE_ID, GERMAN_DOORS } from './german';
 import { HINDI_COURSE_ID, HINDI_DOORS } from './hindi';
 import { SPANISH_COURSE_ID, SPANISH_DOORS } from './spanish';
@@ -18,5 +19,6 @@ export interface CourseDoor {
 export const COURSE_DOORS: Record<string, readonly CourseDoor[]> = {
   [SPANISH_COURSE_ID]: SPANISH_DOORS,
   [GERMAN_COURSE_ID]: GERMAN_DOORS,
+  [ALBANIAN_COURSE_ID]: ALBANIAN_DOORS,
   [HINDI_COURSE_ID]: HINDI_DOORS,
 };

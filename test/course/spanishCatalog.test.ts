@@ -54,7 +54,7 @@ describe('streams', () => {
     expect(streams.map((s) => s.key)).toEqual(SPANISH_STREAMS.map((s) => s.key));
     expect(streams.map((s) => s.order)).toEqual([...streams.map((s) => s.order)].sort((a, b) => a - b));
     expect(streams.find((s) => s.key === 'listening')!.available).toBe(false);
-    expect(await catalog.streams('albania-sq')).toEqual([]);
+    expect(await catalog.streams('thailand-th')).toEqual([]);
     streams[0].label = 'changed'; // a copy: the data is not shared
     expect((await catalog.streams(C))[0].label).not.toBe('changed');
   });
@@ -73,7 +73,7 @@ describe('findWorks', () => {
     expect(all.map((w) => w.id)).toEqual((await catalog.works(C)).map((w) => w.id)); // the same order as works()
     expect((await catalog.findWorks({ courseId: C, limit: 100000 })).items.length).toBeLessThanOrEqual(200);
     expect((await catalog.findWorks({ courseId: C, offset: 100000 })).items).toEqual([]);
-    expect((await catalog.findWorks({ courseId: 'albania-sq' })).total).toBe(0);
+    expect((await catalog.findWorks({ courseId: 'thailand-th' })).total).toBe(0);
   });
 
   it('filters by stream, shelf, domain, variety and rights; each filter only narrows', async () => {

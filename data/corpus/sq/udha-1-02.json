@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 2,
+  "id": "udha-1-02",
+  "lang": "sq",
+  "title": "Libri i Anës",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:udha-1-02",
+    "title": "Udha 1 — Familja dhe shtëpia: Libri i Anës (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "reading"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "udha-1",
+    "chapter": {
+      "index": 2,
+      "title": "Libri i Anës"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "books"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Libri i Anës",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana ka një libër të ri.",
+              "english": "Ana has a new book."
+            },
+            {
+              "text": "Libri është i bukur.",
+              "english": "The book is beautiful."
+            },
+            {
+              "text": "Ana e do librin.",
+              "english": "Ana loves the book."
+            },
+            {
+              "text": "Ajo e lexon librin çdo ditë.",
+              "english": "She reads the book every day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sot Ana nuk e gjen librin.",
+              "english": "Today Ana does not find the book."
+            },
+            {
+              "text": "— Ku është libri im? — pyet Ana.",
+              "english": "\"Where is my book?\" asks Ana."
+            },
+            {
+              "text": "Beni nuk e di.",
+              "english": "Beni does not know."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nëna e sheh librin mbi tavolinë.",
+              "english": "The mother sees the book on the table."
+            },
+            {
+              "text": "— Ja libri yt! — thotë nëna.",
+              "english": "\"Here is your book!\" says the mother."
+            },
+            {
+              "text": "Ajo ia jep librin Anës.",
+              "english": "She gives the book to Ana."
+            },
+            {
+              "text": "Ana është e lumtur.",
+              "english": "Ana is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

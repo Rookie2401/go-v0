@@ -1,0 +1,112 @@
+{
+  "schemaVersion": 2,
+  "id": "udha-0-01",
+  "lang": "sq",
+  "title": "Kush është?",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:udha-0-01",
+    "title": "Udha 0 — Shkronjat dhe fjalët e para: Kush është? (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "people"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "udha-0",
+    "chapter": {
+      "index": 1,
+      "title": "Kush është?"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Kush është?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ky është Beni.",
+              "english": "This is Beni."
+            },
+            {
+              "text": "Beni është djalë.",
+              "english": "Beni is a boy."
+            },
+            {
+              "text": "Kjo është Ana.",
+              "english": "This is Ana."
+            },
+            {
+              "text": "Ana është vajzë.",
+              "english": "Ana is a girl."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Beni është këtu.",
+              "english": "Beni is here."
+            },
+            {
+              "text": "Ana është këtu.",
+              "english": "Ana is here."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kush është ky?",
+              "english": "Who is this?"
+            },
+            {
+              "text": "Ky është Beni.",
+              "english": "This is Beni."
+            },
+            {
+              "text": "Kush është kjo?",
+              "english": "Who is this?"
+            },
+            {
+              "text": "Kjo është Ana.",
+              "english": "This is Ana."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

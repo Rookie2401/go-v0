@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 2,
+  "id": "udha-1-01",
+  "lang": "sq",
+  "title": "Mëngjesi",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:udha-1-01",
+    "title": "Udha 1 — Familja dhe shtëpia: Mëngjesi (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "udha-1",
+    "chapter": {
+      "index": 1,
+      "title": "Mëngjesi"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "food"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Mëngjesi",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Është mëngjes.",
+              "english": "It is morning."
+            },
+            {
+              "text": "Beni zgjohet herët.",
+              "english": "Beni wakes up early."
+            },
+            {
+              "text": "Ai lahet dhe vishet.",
+              "english": "He washes and gets dressed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nëna është në kuzhinë.",
+              "english": "The mother is in the kitchen."
+            },
+            {
+              "text": "Ajo përgatit mëngjesin.",
+              "english": "She prepares breakfast."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Mirëmëngjes, nënë! — thotë Beni.",
+              "english": "\"Good morning, mother!\" says Beni."
+            },
+            {
+              "text": "— Mirëmëngjes, Beni! A do çaj?",
+              "english": "\"Good morning, Beni! Do you want tea?\""
+            },
+            {
+              "text": "— Po, dua çaj dhe bukë.",
+              "english": "\"Yes, I want tea and bread.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nëna i jep çajin.",
+              "english": "The mother gives him the tea."
+            },
+            {
+              "text": "Beni e pi çajin dhe ha bukën.",
+              "english": "Beni drinks the tea and eats the bread."
+            },
+            {
+              "text": "Pastaj shkon në shkollë.",
+              "english": "Then he goes to school."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

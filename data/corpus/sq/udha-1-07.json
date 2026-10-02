@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 2,
+  "id": "udha-1-07",
+  "lang": "sq",
+  "title": "Darka",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:udha-1-07",
+    "title": "Udha 1 — Familja dhe shtëpia: Darka (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "udha-1",
+    "chapter": {
+      "index": 7,
+      "title": "Darka"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "food"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Darka",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Në darkë familja është në shtëpi.",
+              "english": "At dinner the family is at home."
+            },
+            {
+              "text": "Babai vjen nga puna.",
+              "english": "The father comes from work."
+            },
+            {
+              "text": "Ai është i lodhur, por i lumtur.",
+              "english": "He is tired, but happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nëna e ka bërë darkën.",
+              "english": "The mother has made the dinner."
+            },
+            {
+              "text": "Të gjithë ulen në tavolinë.",
+              "english": "Everyone sits down at the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Si ishte dita? — pyet babai.",
+              "english": "\"How was the day?\" asks the father."
+            },
+            {
+              "text": "— Mirë, — thotë Beni.",
+              "english": "\"Good,\" says Beni."
+            },
+            {
+              "text": "— Mësuesi na dha një libër të ri.",
+              "english": "\"The teacher gave us a new book.\""
+            },
+            {
+              "text": "— Unë i shkrova gjyshes, — thotë Ana.",
+              "english": "\"I wrote to the grandmother,\" says Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pas darkës, fëmijët lajnë pjatat.",
+              "english": "After dinner, the children wash the plates."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

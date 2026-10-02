@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 2,
+  "id": "udha-1-06",
+  "lang": "sq",
+  "title": "Letra",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:udha-1-06",
+    "title": "Udha 1 — Familja dhe shtëpia: Letra (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "family",
+    "writing"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "udha-1",
+    "chapter": {
+      "index": 6,
+      "title": "Letra"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "school"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Letra",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dje Ana i shkroi një letër gjyshes.",
+              "english": "Yesterday Ana wrote a letter to the grandmother."
+            },
+            {
+              "text": "Ajo shkroi:",
+              "english": "She wrote:"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "«E dashur gjyshe, si je?",
+              "english": "\"Dear grandmother, how are you?"
+            },
+            {
+              "text": "Unë jam mirë.",
+              "english": "I am well."
+            },
+            {
+              "text": "Dje shkova në shkollë dhe mësova shumë.",
+              "english": "Yesterday I went to school and learned a lot."
+            },
+            {
+              "text": "Beni më dha një libër të ri.",
+              "english": "Beni gave me a new book."
+            },
+            {
+              "text": "Të dua shumë.",
+              "english": "I love you very much."
+            },
+            {
+              "text": "Ana.»",
+              "english": "Ana.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana ia dha letrën nënës.",
+              "english": "Ana gave the letter to the mother."
+            },
+            {
+              "text": "Nëna e lexoi letrën dhe buzëqeshi.",
+              "english": "The mother read the letter and smiled."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

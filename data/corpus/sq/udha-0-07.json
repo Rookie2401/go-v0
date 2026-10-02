@@ -1,0 +1,100 @@
+{
+  "schemaVersion": 2,
+  "id": "udha-0-07",
+  "lang": "sq",
+  "title": "Ku është Beni?",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:udha-0-07",
+    "title": "Udha 0 — Shkronjat dhe fjalët e para: Ku është Beni? (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "school"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "udha-0",
+    "chapter": {
+      "index": 7,
+      "title": "Ku është Beni?"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "school"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Ku është Beni?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot Beni është në shkollë.",
+              "english": "Today Beni is at school."
+            },
+            {
+              "text": "Ana nuk është në shkollë.",
+              "english": "Ana is not at school."
+            },
+            {
+              "text": "Ana është në shtëpi.",
+              "english": "Ana is at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ku është Beni?",
+              "english": "Where is Beni?"
+            },
+            {
+              "text": "Beni është në shkollë.",
+              "english": "Beni is at school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "A është Ana në shkollë?",
+              "english": "Is Ana at school?"
+            },
+            {
+              "text": "Jo, Ana nuk është në shkollë.",
+              "english": "No, Ana is not at school."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

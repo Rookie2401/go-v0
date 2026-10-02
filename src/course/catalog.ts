@@ -12,6 +12,7 @@
  */
 import type { AppStore, AssistanceProfile, CourseCatalog, GoLearn, Stage, Stream, Text, Work } from '../core';
 import { DEFAULT_ASSISTANCE } from '../core';
+import { ALBANIAN_COURSE_ID, ALBANIAN_STAGES, ALBANIAN_STREAMS, ALBANIAN_WORKS } from './albanian';
 import { GERMAN_COURSE_ID, GERMAN_SHELVES, GERMAN_STREAMS, GERMAN_WORKS } from './german';
 import { HINDI_COURSE_ID, HINDI_OUTSIDE_ASSISTANCE, HINDI_SHELVES, HINDI_STREAMS, HINDI_WORKS } from './hindi';
 import { SPANISH_COURSE_ID, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS } from './spanish';
@@ -34,6 +35,8 @@ const LADDERS: Record<string, { stages: Stage[]; works: Work[]; outside?: Assist
   // Spanish: the stages are SHELVES (a browsing orientation of a large library, never a gate)
   [SPANISH_COURSE_ID]: { stages: SPANISH_SHELVES, works: SPANISH_WORKS },
   [GERMAN_COURSE_ID]: { stages: GERMAN_SHELVES, works: GERMAN_WORKS },
+  // Albanian: ten stages and an open stage, each with its help profile; a description of the course's own texts, never a gate
+  [ALBANIAN_COURSE_ID]: { stages: ALBANIAN_STAGES, works: ALBANIAN_WORKS },
   // Hindi: shelves that carry a help profile each (decoding the script first at Stage 0); `outside` is the profile of a
   // text on no shelf (the learner's own book, his testimony)
   [HINDI_COURSE_ID]: { stages: HINDI_SHELVES, works: HINDI_WORKS, outside: HINDI_OUTSIDE_ASSISTANCE },
@@ -43,6 +46,7 @@ const LADDERS: Record<string, { stages: Stage[]; works: Work[]; outside?: Assist
 const STREAMS: Record<string, Stream[]> = {
   [SPANISH_COURSE_ID]: SPANISH_STREAMS,
   [GERMAN_COURSE_ID]: GERMAN_STREAMS,
+  [ALBANIAN_COURSE_ID]: ALBANIAN_STREAMS,
   [HINDI_COURSE_ID]: HINDI_STREAMS,
 };
 

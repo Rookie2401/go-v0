@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 2,
+  "id": "udha-1-08",
+  "lang": "sq",
+  "title": "Nata",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:udha-1-08",
+    "title": "Udha 1 — Familja dhe shtëpia: Nata (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "udha-1",
+    "chapter": {
+      "index": 8,
+      "title": "Nata"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Nata",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Është natë.",
+              "english": "It is night."
+            },
+            {
+              "text": "Fëmijët janë të lodhur.",
+              "english": "The children are tired."
+            },
+            {
+              "text": "Nëna u thotë:",
+              "english": "The mother says to them:"
+            },
+            {
+              "text": "— Është koha për të fjetur.",
+              "english": "\"It is time to sleep.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Beni dhe Ana lahen dhe shkojnë në dhomë.",
+              "english": "Beni and Ana wash and go to the room."
+            },
+            {
+              "text": "Babai u lexon një histori.",
+              "english": "The father reads them a story."
+            },
+            {
+              "text": "Historia është e bukur.",
+              "english": "The story is beautiful."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj babai u thotë:",
+              "english": "Then the father says to them:"
+            },
+            {
+              "text": "— Natën e mirë!",
+              "english": "\"Good night!\""
+            },
+            {
+              "text": "— Natën e mirë, baba! — thonë fëmijët.",
+              "english": "\"Good night, father!\" say the children."
+            },
+            {
+              "text": "Fëmijët flenë.",
+              "english": "The children sleep."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

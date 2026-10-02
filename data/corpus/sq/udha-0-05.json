@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 2,
+  "id": "udha-0-05",
+  "lang": "sq",
+  "title": "Rruga",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:udha-0-05",
+    "title": "Udha 0 — Shkronjat dhe fjalët e para: Rruga (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "town"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "udha-0",
+    "chapter": {
+      "index": 5,
+      "title": "Rruga"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "town"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Rruga",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Kjo është rruga.",
+              "english": "This is the street."
+            },
+            {
+              "text": "Rruga është e gjatë.",
+              "english": "The street is long."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gjyshi është në rrugë.",
+              "english": "The grandfather is in the street."
+            },
+            {
+              "text": "Gjyshja është në shtëpi.",
+              "english": "The grandmother is at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Beni ka një xhaketë të re.",
+              "english": "Beni has a new jacket."
+            },
+            {
+              "text": "Xhaketa është e bukur.",
+              "english": "The jacket is beautiful."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 2,
+  "id": "udha-1-05",
+  "lang": "sq",
+  "title": "Shiu",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:udha-1-05",
+    "title": "Udha 1 — Familja dhe shtëpia: Shiu (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "weather"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "udha-1",
+    "chapter": {
+      "index": 5,
+      "title": "Shiu"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home",
+    "weather"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Shiu",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot bie shi.",
+              "english": "Today it is raining."
+            },
+            {
+              "text": "Beni nuk mund të dalë.",
+              "english": "Beni cannot go out."
+            },
+            {
+              "text": "Ai është në dhomë dhe shikon nga dritarja.",
+              "english": "He is in the room and looks out of the window."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Dua të luaj në rrugë, — thotë Beni.",
+              "english": "\"I want to play in the street,\" says Beni."
+            },
+            {
+              "text": "— Nuk mund të luash sot, — thotë babai.",
+              "english": "\"You cannot play today,\" says the father."
+            },
+            {
+              "text": "— Bie shi.",
+              "english": "\"It is raining.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Çfarë mund të bëj?",
+              "english": "\"What can I do?\""
+            },
+            {
+              "text": "— Mund të lexosh një libër.",
+              "english": "\"You can read a book.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Beni merr një libër dhe fillon të lexojë.",
+              "english": "Beni takes a book and begins to read."
+            },
+            {
+              "text": "Libri është i mirë.",
+              "english": "The book is good."
+            },
+            {
+              "text": "Beni nuk mendon më për shiun.",
+              "english": "Beni no longer thinks about the rain."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

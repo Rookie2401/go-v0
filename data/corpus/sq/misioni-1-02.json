@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 2,
+  "id": "misioni-1-02",
+  "lang": "sq",
+  "title": "Një kafe",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:misioni-1-02",
+    "title": "Misioni 1 — Takime: Një kafe (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "mission",
+    "hospitality"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "misioni-1",
+    "chapter": {
+      "index": 2,
+      "title": "Një kafe"
+    }
+  },
+  "streams": [
+    "mission",
+    "acquisition"
+  ],
+  "domains": [
+    "mission",
+    "home"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një kafe",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "— Mirë se vini!",
+              "english": "\"Welcome!"
+            },
+            {
+              "text": "Hyni, ju lutem.",
+              "english": "Come in, please.\""
+            },
+            {
+              "text": "— Faleminderit.",
+              "english": "\"Thank you."
+            },
+            {
+              "text": "Shtëpia juaj është shumë e bukur.",
+              "english": "Your house is very beautiful.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Uluni.",
+              "english": "\"Sit down."
+            },
+            {
+              "text": "A doni një kafe?",
+              "english": "Do you want a coffee?\""
+            },
+            {
+              "text": "— Po, faleminderit.",
+              "english": "\"Yes, thank you.\""
+            },
+            {
+              "text": "Dritani sjell kafenë.",
+              "english": "Dritan brings the coffee."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— Kjo është gruaja ime, Mira.",
+              "english": "\"This is my wife, Mira.\""
+            },
+            {
+              "text": "— Gëzohem, Mira.",
+              "english": "\"I am glad to meet you, Mira.\""
+            },
+            {
+              "text": "— A keni familje?",
+              "english": "\"Do you have a family?\""
+            },
+            {
+              "text": "— Po. Kam një grua dhe dy fëmijë.",
+              "english": "\"Yes. I have a wife and two children."
+            },
+            {
+              "text": "Ata janë në Amerikë.",
+              "english": "They are in America.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 2,
+  "id": "udha-0-02",
+  "lang": "sq",
+  "title": "Çfarë është kjo?",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:udha-0-02",
+    "title": "Udha 0 — Shkronjat dhe fjalët e para: Çfarë është kjo? (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "things"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "udha-0",
+    "chapter": {
+      "index": 2,
+      "title": "Çfarë është kjo?"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "home"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Çfarë është kjo?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Kjo është një shtëpi.",
+              "english": "This is a house."
+            },
+            {
+              "text": "Shtëpia është e madhe.",
+              "english": "The house is big."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ky është një libër.",
+              "english": "This is a book."
+            },
+            {
+              "text": "Libri është i ri.",
+              "english": "The book is new."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Kjo është një çantë.",
+              "english": "This is a bag."
+            },
+            {
+              "text": "Çanta është e vogël.",
+              "english": "The bag is small."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Çfarë është kjo?",
+              "english": "What is this?"
+            },
+            {
+              "text": "Kjo është një çantë.",
+              "english": "This is a bag."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

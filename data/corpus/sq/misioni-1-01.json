@@ -1,0 +1,135 @@
+{
+  "schemaVersion": 2,
+  "id": "misioni-1-01",
+  "lang": "sq",
+  "title": "Takimi",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ci-sq",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Albanian"
+  },
+  "source": {
+    "id": "src:sq:misioni-1-01",
+    "title": "Misioni 1 — Takime: Takimi (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Standard Albanian written for learners and may contain unnatural or incorrect phrasing. Every word form was checked by machine against the course's own word list, the UniParser Albanian analyzer and Wiktionary's Albanian tables (npm run sq:check-texts); that is a check of forms, not of naturalness, and forms on which those sources differ are listed in data/review/sq/accepted-differences.json. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "mission",
+    "introductions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "misioni-1",
+    "chapter": {
+      "index": 1,
+      "title": "Takimi"
+    }
+  },
+  "streams": [
+    "mission",
+    "acquisition"
+  ],
+  "domains": [
+    "mission",
+    "people"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Takimi",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "— Përshëndetje! Unë quhem Marku.",
+              "english": "\"Hello! My name is Mark."
+            },
+            {
+              "text": "Si quheni ju?",
+              "english": "What is your name?\""
+            },
+            {
+              "text": "— Unë quhem Dritan.",
+              "english": "\"My name is Dritan."
+            },
+            {
+              "text": "Gëzohem që ju njoh.",
+              "english": "I am glad to meet you.\""
+            },
+            {
+              "text": "— Edhe unë gëzohem.",
+              "english": "\"I am glad too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nga jeni?",
+              "english": "Where are you from?\""
+            },
+            {
+              "text": "— Jam nga Tirana.",
+              "english": "\"I am from Tirana."
+            },
+            {
+              "text": "Po ju?",
+              "english": "And you?\""
+            },
+            {
+              "text": "— Unë jam nga Amerika.",
+              "english": "\"I am from America."
+            },
+            {
+              "text": "Tani jetoj në Tiranë.",
+              "english": "Now I live in Tirana.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "— A flisni shqip?",
+              "english": "\"Do you speak Albanian?\""
+            },
+            {
+              "text": "— Flas pak.",
+              "english": "\"I speak a little."
+            },
+            {
+              "text": "Po mësoj.",
+              "english": "I am learning.\""
+            },
+            {
+              "text": "— Flisni mirë!",
+              "english": "\"You speak well!\""
+            },
+            {
+              "text": "— Faleminderit.",
+              "english": "\"Thank you.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -53,6 +53,7 @@ import type { HighlightPref } from '../prefs';
 import { BackLink, I, IconBtn, Topbar } from '../ui';
 import { ReadingGateContext } from './readingGate';
 import type { ReadingGate } from './readingGate';
+import { SourceLine } from './SourceLine';
 import { TokenCard } from './TokenCard';
 import type { DecodingView } from './TokenCard';
 import { createViewDetector } from './viewDetection';
@@ -811,6 +812,9 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
           <ReadingGateContext.Provider value={gate}>{before}</ReadingGateContext.Provider>
 
           <div className="reader-body">{sectionBlocks}</div>
+
+          {/* whose text this is: shown with the text at every assistance level (a licence's credit is not optional help) */}
+          <SourceLine text={text} />
 
           <footer className="reader__end">
             {finished ? (

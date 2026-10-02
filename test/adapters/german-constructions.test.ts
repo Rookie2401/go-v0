@@ -396,7 +396,7 @@ describe('German constructions: general', () => {
       'separable-prefix-verb', 'zu-infinitive', 'um-zu', 'relative-clause', 'konjunktiv-2-wuerde', 'konjunktiv-2', 'konjunktiv-1', 'dative-after-preposition',
       'accusative-after-preposition', 'two-way-preposition', 'genitive-attribute', 'genitive-preposition', 'adjective-ending-weak', 'adjective-ending-strong',
       'adjective-ending-mixed', 'comparative-als', 'superlative-am', 'negation-kein', 'es-gibt', 'man-impersonal', 'question-verb-first', 'imperative',
-      'participial-modifier', 'reflexive-verb', 'dative-object-verb', 'nominalised-verb', 'modal-particle', 'passive-perfect', 'je-desto',
+      'participial-modifier', 'reflexive-verb', 'dative-object-verb', 'nominalised-verb', 'modal-particle', 'passive-perfect', 'passive-state', 'je-desto',
     ];
     for (const k of required) expect(GERMAN_CONSTRUCTION_KEYS).toContain(k);
     for (const [k, info] of Object.entries(GERMAN_CONSTRUCTION_INFO)) {
@@ -740,12 +740,11 @@ describe('German constructions: the perfect of the passive and its neighbours', 
     expect(g.keys()).not.toContain('passive');
   });
 
-  it('a plain perfect with sein stays a perfect; a state passive (ist geöffnet) is reported as the perfect today', () => {
+  it('a plain perfect with sein stays a perfect', () => {
     const k = run('Er ist gekommen.', { ist: aux('sein', { Person: '3', Number: 'Sing' }), gekommen: ptc('kommen') });
     expect(k.keys()).toEqual(['sentence-bracket-perfect']);
-    const s = run('Die Tür ist geöffnet.', { ist: aux('sein', { Person: '3', Number: 'Sing' }), geöffnet: ptc('öffnen') });
-    // kept as it is today: without the verb's auxiliary the detector cannot tell the state from the perfect; never passive-perfect
-    expect(s.keys()).toEqual(['sentence-bracket-perfect']);
+    // the state passive (ist geöffnet: öffnen perfects with haben) is its own construction, passive-state, see below; never passive-perfect
+    expect(run('Die Tür ist geöffnet.', { ist: aux('sein', { Person: '3', Number: 'Sing' }), geöffnet: ptc('öffnen') }).keys()).toEqual(['passive-state']);
   });
 
   it('the passive infinitive: "gebaut werden" is a passive, with a modal also modal-infinitive', () => {
@@ -779,7 +778,7 @@ describe('German constructions: the perfect of the passive and its neighbours', 
     expect(keys('Das Haus muss gebaut werden.')).toEqual(expect.arrayContaining(['passive', 'modal-infinitive']));
     expect(keys('Das Haus wird gebaut werden.')).toEqual(expect.arrayContaining(['passive', 'future']));
     expect(keys('Er ist Lehrer geworden.')).toEqual(['sentence-bracket-perfect']);
-    expect(keys('Die Tür ist geöffnet.')).toEqual(['sentence-bracket-perfect']);
+    expect(keys('Die Tür ist geöffnet.')).toEqual(['passive-state']);
     expect(keys('Er ist gekommen.')).toEqual(['sentence-bracket-perfect']);
     expect(keys('Das Haus wird gebaut.')).toContain('passive');
     expect(keys('Das Haus wurde gebaut.')).toContain('passive-past');
@@ -857,6 +856,140 @@ describe('German constructions: the nominalised verb and a preposition with an u
   });
   it('a preposition before a noun that could be any case says nothing', () => {
     expect(run('statt Brötchen', { statt: C('ADP', 'statt'), Brötchen: noun('Brötchen', { Case: 'Nom,Acc,Dat,Gen' }) }).keys()).toEqual([]);
+  });
+});
+
+// ───────────────────────────── fix batch 3 ─────────────────────────────
+
+describe('German constructions: je … desto without a known comparative', () => {
+  const je = adv('je');
+  it('je at the start of a clause and desto / umso at the start of a later clause: the construction, comparatives or not', () => {
+    // nervöser: an adjective outside the word list, an unconfirmed reading with no Degree
+    const unknown = C('ADJ', 'nervös', { Case: 'Nom,Dat,Gen' }, { unconfirmed: true, confidence: 0.38 });
+    const r = run('Je länger ich warte, desto nervöser werde ich.', {
+      Je: je, länger: C('ADJ', 'lang', { Degree: 'Cmp' }), ich: ICH, warte: verb('warten', { Person: '1', Number: 'Sing' }),
+      desto: adv('desto'), nervöser: unknown, werde: aux('werden', { Person: '1', Number: 'Sing' }),
+    });
+    const p = r.find('je-desto')!;
+    expect(p.tokenIndexes).toEqual([0, r.at('desto'), r.at('länger')]);
+    // both comparatives known: more confident
+    const both = run('Je länger ich warte, desto später werde ich.', {
+      Je: je, länger: C('ADJ', 'lang', { Degree: 'Cmp' }), ich: ICH, warte: verb('warten', { Person: '1', Number: 'Sing' }),
+      desto: adv('desto'), später: C('ADV', 'spät', { Degree: 'Cmp' }), werde: aux('werden', { Person: '1', Number: 'Sing' }),
+    }).find('je-desto')!;
+    expect(both.confidence).toBeGreaterThan(p.confidence);
+    // neither comparative known: still found, least confident
+    const none = run('Je xyz ich warte, desto abc werde ich.', { Je: je, ich: ICH, warte: verb('warten'), desto: adv('desto') }).find('je-desto')!;
+    expect(none.tokenIndexes).toHaveLength(2); // je and desto only
+    expect(none.confidence).toBeLessThan(p.confidence);
+    expect(run('Je xyz ich warte, umso abc werde ich.', { Je: je, umso: adv('umso') }).find('je-desto')).toBeDefined();
+  });
+
+  it('je alone is silent: distributive je, "seit eh und je", "je nach Wetter", "je nachdem"', () => {
+    expect(run('Er hat je zwei Äpfel gekauft.', { je, zwei: C('NUM', 'zwei'), gekauft: ptc('kaufen') }).keys()).not.toContain('je-desto');
+    expect(run('Das war seit eh und je so.', { je }).keys()).not.toContain('je-desto');
+    expect(run('Je nach Wetter gehen wir.', { Je: je, nach: C('ADP', 'nach'), Wetter: noun('Wetter') }).keys()).not.toContain('je-desto');
+    expect(run('Je nachdem, wie es regnet, bleiben wir.', { Je: je }).keys()).not.toContain('je-desto');
+    // desto with no je in front is not the construction either
+    expect(run('Desto besser ist es.', { Desto: adv('desto') }).keys()).not.toContain('je-desto');
+  });
+
+  it('on the real adapter', () => {
+    const keys = (text: string): string[] => {
+      const tokens = deAdapter.tokenize(text);
+      return deAdapter.detectPatterns(tokens, deAdapter.analyze(tokens)).map((p) => p.key);
+    };
+    expect(keys('Je länger ich warte, desto nervöser werde ich.')).toContain('je-desto');
+    for (const text of ['Er hat je zwei Äpfel gekauft.', 'Das war seit eh und je so.', 'Je nach Wetter gehen wir.', 'Je nachdem, wie es regnet, bleiben wir.']) expect(keys(text), text).not.toContain('je-desto');
+  });
+});
+
+describe('German constructions: the state passive', () => {
+  const ist = aux('sein', { Person: '3', Number: 'Sing' });
+  const war = aux('sein', { Tense: 'Past', Person: '3', Number: 'Sing' });
+  it('sein + the participle of a verb that perfects with haben: passive-state, not a perfect or a pluperfect', () => {
+    const r = run('Die Tür ist geöffnet.', { ist, geöffnet: ptc('öffnen') });
+    expect(r.keys()).toEqual(['passive-state']);
+    expect(r.find('passive-state')?.tokenIndexes).toEqual([r.at('ist'), r.at('geöffnet')]);
+    const p = run('Das Geschäft war geschlossen.', { war, geschlossen: ptc('schließen') });
+    expect(p.keys()).toEqual(['passive-state']);
+    const s = run('Ich weiß, dass die Tür geöffnet ist.', { dass: C('SCONJ', 'dass'), geöffnet: ptc('öffnen'), ist });
+    expect(s.find('passive-state')?.tokenIndexes).toEqual([s.at('ist'), s.at('geöffnet')]);
+  });
+
+  it('the sentence layer\'s own note (notes.voice: state-passive) counts too, even for a verb the lexicon does not hold', () => {
+    const noted = C('AUX', 'sein', { VerbForm: 'Fin', Mood: 'Ind', Tense: 'Pres', Person: '3', Number: 'Sing' }, { notes: { voice: 'state-passive' } });
+    const r = run('Das Fenster ist verriegelt.', { ist: noted, verriegelt: ptc('verriegeln') });
+    expect(r.keys()).toEqual(['passive-state']);
+  });
+
+  it('stays a perfect: sein or both auxiliaries in the list, a verb not in the list, an unconfirmed participle', () => {
+    expect(run('Er ist gekommen.', { ist, gekommen: ptc('kommen') }).keys()).toEqual(['sentence-bracket-perfect']);
+    expect(run('Er ist gefahren.', { ist, gefahren: ptc('fahren') }).keys()).toEqual(['sentence-bracket-perfect']);
+    expect(run('Er ist xyzt.', { ist, xyzt: ptc('xyzen') }).keys()).toEqual(['sentence-bracket-perfect']);
+    const guessed = C('VERB', 'abschicken', { VerbForm: 'Part', Tense: 'Past' }, { unconfirmed: true, confidence: 0.6 });
+    expect(run('Der Brief ist abgeschickt.', { ist, abgeschickt: guessed }).keys()).toEqual(['sentence-bracket-perfect']);
+    // a participle with a second reading that takes sein is not decided
+    expect(run('Es ist gefallen.', { ist, gefallen: [ptc('fallen'), ptc('gefallen')] }).keys()).toEqual(['sentence-bracket-perfect']);
+  });
+
+  it('the neighbours: the perfect with haben, the passive, the perfect passive', () => {
+    expect(run('Er hat die Tür geöffnet.', { hat: aux('haben', { Person: '3', Number: 'Sing' }), geöffnet: ptc('öffnen') }).keys()).toEqual(['sentence-bracket-perfect']);
+    expect(run('Die Tür wird geöffnet.', { wird: aux('werden', { Person: '3', Number: 'Sing' }), geöffnet: ptc('öffnen') }).keys()).toEqual(['passive']);
+    expect(run('Die Tür ist geöffnet worden.', { ist, geöffnet: ptc('öffnen'), worden: ptc('werden') }).keys()).toEqual(['passive-perfect']);
+  });
+
+  it('on the real adapter', () => {
+    const keys = (text: string): string[] => {
+      const tokens = deAdapter.tokenize(text);
+      return deAdapter.detectPatterns(tokens, deAdapter.analyze(tokens)).map((p) => p.key);
+    };
+    expect(keys('Die Tür ist geöffnet.')).toEqual(['passive-state']);
+    expect(keys('Das Geschäft war geschlossen.')).toEqual(['passive-state']);
+    expect(keys('Er hat die Tür geöffnet.')).toEqual(['sentence-bracket-perfect']);
+    expect(keys('Die Tür ist geöffnet worden.')).toEqual(['passive-perfect']);
+    expect(keys('Die Tür wird geöffnet.')).toEqual(['passive']);
+    expect(keys('Er ist gekommen.')).toEqual(['sentence-bracket-perfect']);
+    expect(keys('Er ist gefahren.')).toEqual(['sentence-bracket-perfect']);
+  });
+});
+
+describe('German constructions: a verb-final als-clause', () => {
+  const ALS = C('CONJ', 'als'); // the sentence layer reads als as CONJ when it cannot tell the clause from the comparison
+  it('als at the start of a clause, the verb last: reported, also at the start of the sentence', () => {
+    const r = run('Als er kam, fand er sich allein.', { Als: ALS, er: ER, kam: verb('kommen', { Tense: 'Past', Person: '3', Number: 'Sing' }), fand: verb('finden', { Tense: 'Past', Person: '3', Number: 'Sing' }) });
+    expect(r.find('verb-final-subordinate')?.tokenIndexes).toEqual([0, r.at('kam')]);
+    const m = run('Es war ihm, als er einen Schmerz zu fühlen begann.', { war: aux('sein', { Tense: 'Past' }), als: ALS, er: ER, zu: C('PART', 'zu'), fühlen: C('VERB', 'fühlen', { VerbForm: 'Inf' }), begann: verb('beginnen', { Tense: 'Past', Person: '3', Number: 'Sing' }) });
+    expect(m.find('verb-final-subordinate')?.tokenIndexes).toEqual([m.at('als'), m.at('begann')]);
+    // after a conjunction
+    const c = run('Und als er kam, ging sie.', { Und: C('CONJ', 'und'), als: ALS, er: ER, kam: verb('kommen', { Tense: 'Past', Person: '3', Number: 'Sing' }) });
+    expect(c.find('verb-final-subordinate')).toBeDefined();
+  });
+
+  it('a long clause with unknown words in it is still found when its last word is the conjugated verb', () => {
+    const r = run('Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er sich verwandelt.', {
+      Als: ALS, Gregor: C('NOUN', 'Gregor', {}, { unconfirmed: true }), eines: C('DET', 'ein', { Case: 'Gen' }), Morgens: noun('Morgen', { Case: 'Gen' }), aus: C('ADP', 'aus'),
+      Träumen: noun('Traum', { Case: 'Dat' }), erwachte: verb('erwachen', { Tense: 'Past', Person: '3', Number: 'Sing' }),
+    });
+    expect(r.find('verb-final-subordinate')?.tokenIndexes).toEqual([0, r.at('erwachte')]);
+  });
+
+  it('silent: the comparison (Er ist größer als ich), als meaning "as" (Als Kind wohnte er in Berlin), als in the middle of a clause', () => {
+    expect(run('Er ist größer als ich.', { ist: aux('sein'), größer: C('ADJ', 'groß', { Degree: 'Cmp' }), als: ALS, ich: ICH }).find('verb-final-subordinate')).toBeUndefined();
+    expect(run('Als Kind wohnte er in Berlin.', { Als: ALS, Kind: noun('Kind'), wohnte: verb('wohnen', { Tense: 'Past' }), er: ER, in: C('ADP', 'in') }).find('verb-final-subordinate')).toBeUndefined();
+    expect(run('Er arbeitet als Lehrer und kommt früh.', { arbeitet: verb('arbeiten'), als: ALS, Lehrer: noun('Lehrer'), und: C('CONJ', 'und'), kommt: verb('kommen') }).find('verb-final-subordinate')).toBeUndefined();
+  });
+
+  it('on the real adapter', () => {
+    const has = (text: string): boolean => {
+      const tokens = deAdapter.tokenize(text);
+      return deAdapter.detectPatterns(tokens, deAdapter.analyze(tokens)).some((p) => p.key === 'verb-final-subordinate');
+    };
+    expect(has('Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.')).toBe(true);
+    expect(has('Es war ihm, als er in der Seite einen leichten Schmerz zu fühlen begann.')).toBe(true);
+    expect(has('Er ist größer, als ich dachte.')).toBe(true);
+    expect(has('Er ist größer als ich.')).toBe(false);
+    expect(has('Als Kind wohnte er in Berlin.')).toBe(false);
   });
 });
 

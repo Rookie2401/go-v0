@@ -57,6 +57,10 @@ export const GERMAN_CONSTRUCTION_INFO: Readonly<Record<string, Info>> = {
     title: 'Perfect passive: ist … worden',
     explanation: 'The perfect of the passive (wird gebaut, wurde gebaut) is sein + past participle + worden; with war it is the pluperfect: "Das Haus ist von meinem Großvater gebaut worden." Note worden, not geworden (geworden is the perfect of werden: "Er ist Lehrer geworden").',
   },
+  'passive-state': {
+    title: 'State passive: sein + past participle',
+    explanation: 'Sein plus the participle of a verb that makes its perfect with haben describes the result of an action, a state: "Die Tür ist geöffnet" (the door is open), "Das Geschäft war geschlossen" (the shop was closed). Compare the action: "Die Tür wird geöffnet."',
+  },
   'je-desto': {
     title: 'je … desto: the more … the more',
     explanation: 'Je + comparative opens a clause with the verb last; desto or umso + comparative starts the main clause, with the verb second: "Je mehr er liest, desto mehr versteht er" (the more he reads, the more he understands).',
@@ -357,7 +361,12 @@ const subordinate: Detector = (ctx) => {
     const ws = cl.words;
     for (let k = 0; k < ws.length; k++) {
       const c = ctx.c(ws[k]);
-      const sconj = c?.pos === 'SCONJ';
+      // a subordinator: pos SCONJ, or at the start of a clause a word with an SCONJ reading among its readings (als is read as CONJ
+      // when the sentence layer cannot tell the clause from the comparison, "größer als ich"); a comparison inside a clause is
+      // never matched, since the stretch must start the clause and have a verb at its end
+      const starts = k === 0 || (k === 1 && ctx.c(ws[0])?.pos === 'CONJ');
+      const sconj = c?.pos === 'SCONJ' || (starts && ctx.n(ws[k]) === 'als') ||
+        (starts && c?.pos !== 'ADP' && (ctx.analyses[ws[k]]?.candidates ?? []).some((x) => x.pos === 'SCONJ'));
       const question = !sconj && k === 0 && ci > 0 && cl.before.trim() === ',' && !!c && has(c, 'PronType', 'Int') && (c.pos === 'ADV' || c.pos === 'PRON');
       if (!sconj && !question) continue;
       let end = ws.length;
@@ -395,6 +404,21 @@ function partner(ctx: Ctx, ws: number[], pos: number, want: Want): number | unde
   }
   if (pos < ws.length - 1 && after.length) return after[after.length - 1];
   return before[0];
+}
+
+/**
+ * The state passive: sein + the participle of a verb whose perfect is made with haben ("Die Tür ist geöffnet" = the door is
+ * in the state of having been opened; öffnen perfects with haben, so this is no perfect). Read from the sentence layer's own
+ * decision (notes.voice 'state-passive' on the auxiliary) or decided here from the lexicon: EVERY reading of the participle
+ * names a verb the lexicon lists with haben only. A verb listed with sein or with both ("Er ist gefahren"), a verb the
+ * lexicon does not hold, and a guessed (unconfirmed) participle stay a perfect.
+ */
+function isStatePassive(ctx: Ctx, aux: AnalysisCandidate, participle: number): boolean {
+  if (aux.notes?.voice === 'state-passive') return true;
+  const readings = (ctx.analyses[participle]?.candidates ?? []).filter((c) => verbal(c) && has(c, 'VerbForm', 'Part') && !has(c, 'VerbForm', 'Fin') && c.lemma);
+  if (!readings.length || readings.some((c) => c.unconfirmed)) return false;
+  const auxes = new Set(readings.flatMap((c) => deLexiconView.verb(c.lemma!.toLocaleLowerCase('de')).map((v) => v.aux)));
+  return auxes.size === 1 && auxes.has('haben');
 }
 
 /** "worden", the participle of werden inside a passive perfect; "geworden" is the perfect of werden itself. */
@@ -450,6 +474,10 @@ const brackets: Detector = (ctx) => {
         }
         const p = partner(ctx, ws, pos, perfectParticiple);
         if (p === undefined) return;
+        if (a.lemma === 'sein' && isStatePassive(ctx, a, p)) {
+          out.push(hit('passive-state', conf(a, ctx.c(p)) - 0.05, [w, p]));
+          return;
+        }
         const base = conf(a, ctx.c(p)) - (a.lemma === 'sein' ? 0.1 : 0);
         if (pres) out.push(hit('sentence-bracket-perfect', base, [w, p]));
         else if (past) out.push(hit('pluperfect', base, [w, p]));
@@ -830,10 +858,11 @@ function comparativeAt(ctx: Ctx, i: number): boolean {
 }
 
 /**
- * je … desto / umso: je + a comparative opens a clause (the finite verb last), desto or umso + a comparative opens the
- * next clause. Both halves are needed: "Er hat je zwei Äpfel gekauft" (distributive je) and "seit eh und je" have no desto.
- * The je-clause is a subordinate clause with its verb last, so it is also reported as verb-final-subordinate, like the
- * clauses of dass, weil or wenn.
+ * je … desto / umso: je at the start of a clause, desto or umso at the start of a later clause of the same sentence. That
+ * pair is the construction (desto and umso occur nowhere else): a comparative after each confirms it when the analysis has
+ * one (an adjective outside the word list, nervöser, has none) and raises the confidence; it is not required. "Er hat je zwei
+ * Äpfel gekauft", "seit eh und je", "je nach Wetter" and "je nachdem" have no desto clause and stay silent. The je-clause is a
+ * subordinate clause with its verb last, so it is also reported as verb-final-subordinate, like the clauses of dass, weil or wenn.
  */
 const jeDesto: Detector = (ctx) => {
   const out: PatternCandidate[] = [];
@@ -842,14 +871,13 @@ const jeDesto: Detector = (ctx) => {
     const s = ctx.c(ws[0])?.pos === 'CONJ' ? 1 : 0;
     const je = ws[s];
     if (je === undefined || ctx.n(je) !== 'je' || (ctx.c(je)?.lemma ?? 'je') !== 'je') return;
-    // the comparative after je, with no conjugated verb in between
+    // the comparative after je, when there is one (no conjugated verb in between)
     let cmp1 = -1;
     for (let k = s + 1; k < Math.min(ws.length, s + 5); k++) {
       if (surelyFinite(ctx.c(ws[k]))) break;
       if (comparativeAt(ctx, ws[k])) { cmp1 = ws[k]; break; }
     }
-    if (cmp1 < 0) return;
-    // desto / umso + comparative at the start of a later clause
+    // desto / umso at the start of a later clause
     for (let cj = ci + 1; cj < ctx.clauses.length; cj++) {
       const wd = ctx.clauses[cj].words;
       const t = ctx.c(wd[0])?.pos === 'CONJ' ? 1 : 0;
@@ -857,8 +885,9 @@ const jeDesto: Detector = (ctx) => {
       if (d === undefined || !['desto', 'umso'].includes(ctx.n(d))) continue;
       let cmp2 = -1;
       for (let k = t + 1; k < Math.min(wd.length, t + 4); k++) if (comparativeAt(ctx, wd[k])) { cmp2 = wd[k]; break; }
-      if (cmp2 < 0) continue;
-      out.push(hit('je-desto', Math.min(conf(ctx.c(je)), conf(ctx.c(d)), 0.85), [je, d, cmp1, cmp2]));
+      const seen = (cmp1 >= 0 ? 1 : 0) + (cmp2 >= 0 ? 1 : 0);
+      const confidence = Math.min(conf(ctx.c(je)), conf(ctx.c(d)), seen === 2 ? 0.85 : seen === 1 ? 0.78 : 0.7);
+      out.push(hit('je-desto', confidence, [je, d, ...(cmp1 >= 0 ? [cmp1] : []), ...(cmp2 >= 0 ? [cmp2] : [])]));
       // the je-clause: verb last
       const stretch = ws.slice(s);
       const last = ctx.c(stretch[stretch.length - 1]);

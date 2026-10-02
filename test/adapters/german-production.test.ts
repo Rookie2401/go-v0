@@ -509,6 +509,10 @@ describe('German production checks', () => {
       expect(apply(text, e[0].suggestion!)).toBe('Ich habe das Buch gelesen.');
     });
     it('is silent: a state (Ich bin überzeugt), a perfect passive, a verb listed with both, a transitive use of a sein-verb, a verb with two readings', () => {
+      // the state passive: öffnen perfects with haben, but "Die Tür ist geöffnet" is a state, not a wrong auxiliary
+      VERBS.öffnen = [vb('öffnen', 'haben', { cls: 'weak' })];
+      expect(check('Die Tür ist geöffnet.', { Die: der({ Case: 'Nom', Gender: 'Fem', Number: 'Sing' }), Tür: nn('Tür', { Case: 'Nom', Gender: 'Fem', Number: 'Sing' }), ist: aux('sein', { Person: '3', Number: 'Sing' }), geöffnet: ptc('öffnen') })).toEqual([]);
+      delete VERBS.öffnen;
       expect(check('Ich bin gelesen.', { Ich: ICH, bin: aux('sein', { Person: '1', Number: 'Sing' }), gelesen: ptc('lesen') })).toEqual([]);
       expect(check('Das Buch ist gelesen worden.', { Buch: nn('Buch'), ist: aux('sein', { Person: '3', Number: 'Sing' }), gelesen: ptc('lesen'), worden: ptc('werden') })).toEqual([]);
       expect(check('Ich habe gefahren.', { Ich: ICH, habe: aux('haben', { Person: '1', Number: 'Sing', Mood: 'Ind,Sub' }), gefahren: ptc('fahren') })).toEqual([]);
@@ -576,7 +580,7 @@ describe('German production checks on the real adapter', () => {
       'Ich habe das Buch gelesen.', 'Ich gehe heute', 'wir essen', 'Wir essen.', 'Er und ich gehen nach Hause.', 'Sie gehen nach Hause.', 'Sie geht nach Hause.',
       'Ich glaube es.', 'Wenn ich es habe, gebe ich es dir.', 'Ich bin überzeugt.', 'Das Haus ist gebaut worden.', 'Ich habe das Auto gefahren.',
       'Wie hat Ihnen der Gottesdienst gefallen?', 'Er nahm ihn in die Arme.', 'Ich stehe um sechs Uhr auf.', 'Ich weiß, dass er heute kommt.',
-      'Ihr habt das Buch gelesen.', 'Du bist nach Hause gegangen.', 'Wir sind nach Hause gegangen.', 'Er sagt, er sei krank.',
+      'Die Tür ist geöffnet.', 'Das Geschäft war geschlossen.', 'Die Tür ist geöffnet worden.', 'Ihr habt das Buch gelesen.', 'Du bist nach Hause gegangen.', 'Wir sind nach Hause gegangen.', 'Er sagt, er sei krank.',
     ]) expect(real(text), text).toEqual([]);
   });
 

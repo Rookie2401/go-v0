@@ -1,0 +1,139 @@
+# Albanian course — status of record (2026-10-01)
+
+Course `albania-sq`, language `sq` (Standard Albanian). This file says what exists, what was verified and how, and what
+has NOT happened. It is the place to look before believing any other statement about the Albanian course.
+
+## The six questions
+
+| Question | Answer |
+| --- | --- |
+| Architecture complete? | **Yes, for V1 reading and writing**: adapter, sentence layer, constructions, writing checks, catalogue, rights gate, authoring pipeline, gold-set tooling, source-agreement tooling. GoListen is out of scope (deferred to V2 for every language). |
+| Pipeline operational? | **Yes.** `npm run sq:check-analyzer`, `sq:agreement`, `sq:check-texts`, `sq:eval-ud`, `sq:gold`, `sq:dict-expand`, `authoring:report`, `authoring:check`, `rights:check` all run; the tests listed below pass. |
+| Seed corpus present? | **A small one**: 20 course-written texts (about 850 words; Stage 0 and early Stage 1) plus two older seed texts. Against the Stage 0 target of 15,000–25,000 words this is about 1.6 % of Stage 0 alone. |
+| Native review complete? | **No. None.** No Albanian speaker has reviewed any word list, rule, text, gloss, pattern explanation or check. Everything is machine-drafted and marked so; the reader shows the texts only in preview mode. |
+| Rights verified? | **Only for what the course wrote itself** (3 works, `course-authored`). 21 works are `rights-unverified`, 6 `prohibited-from-bundling`. The Albanian Bible commonly labelled ALB is **not** bundled: its provenance is not established (docs/albanian/RIGHTS.md). No person has verified any third-party work. |
+| Full corpus populated? | **No.** The eventual target (2–3 million words over the ladder) has not been started beyond the seed. The gold set holds 0 reviewed sentences (target 1,500). |
+
+## What is built
+
+| Part | Where | Size |
+| --- | --- | --- |
+| Word list (machine-drafted) | `src/adapters/albanian/lexicon-*.ts` | 896 lexemes: 460 nouns, 41 names, 113 adjectives, 60 adverbs, 222 verbs → 9,990 written forms |
+| Closed classes | `function-*.ts`, `clitics.ts` | 163 lexemes, 227 forms; 8 short pronouns, 19 fused clusters (ma, ta, ia, t'i, m'u …) |
+| Word-form engine | `morphology.ts`, `morph-*.ts` | every context-free reading of a form; diacritic restoration; Gheg and older forms related to Standard; guesses marked `unconfirmed` |
+| Sentence layer | `sentence*.ts` | article + adjective as one unit; e / i / të / u / do / po / pa / më; case after a preposition; kam / jam + participle; modals |
+| Construction memory | `constructions.ts`, `phrases.ts` | 31 patterns with the stage each is first taught; 80 phrase rules |
+| Writing checks | `production.ts` | 10 kinds (spelling without ë / ç, Gheg form, definiteness, case, article and adjective agreement, verb–subject, mos / nuk, future without të, kam where jam is needed) |
+| Varieties | `varieties.ts`, `gheg.ts`, `historical.ts` | sq, aln, aln-XK, aln-AL, als, aae, aat, sq-hist, sq-pre1972, sq-pre1908, sq-ascii |
+| Course | `src/course/albanian.ts` | 11 stages (0–9, open), 8 streams (listening unavailable), 30 works, doors, help profiles, corpus targets |
+| Authoring pipeline | `src/authoring/**` | recurrence report, vocabulary budget, states DRAFT → AUTO_VALIDATED → NEEDS_NATIVE_REVIEW → NATIVE_REVIEWED → APPROVED / REJECTED (language-neutral) |
+| Validation | `src/bench/sq/**`, `scripts/sq-*.mts` | analyzer comparison, agreement of five sources, treebank comparison, gold-set tooling |
+| Dictionary (build output) | `public/dict/sq` (not committed) | 91,271 entries, 6.1 MB, CC BY-SA |
+
+## How sure is the word-form engine? (measured, 2026-10-01)
+
+**Agreement of sources**, over every reading the word list generates (11,160 readings of 10,196 forms;
+`npm run sq:agreement -- --split all`):
+
+| Outcome | Readings | What the engine does |
+| --- | --- | --- |
+| unanimous — a source agrees, none says otherwise | 10,894 (97.62 %) | normal confidence |
+| majority — one source says otherwise, two others agree | 38 | capped at 0.75, `notes.sources = 'majority'` |
+| disputed — a source says otherwise, fewer than two agree | 160 | capped at 0.55, shown as "possibly …", `notes.disputed` |
+| single-source — no other source knows the reading | 36 | capped at 0.55, shown as "possibly …" |
+| a name no source lists | 32 | not penalised |
+
+Against the UniParser analyzer alone: 98.07 % of readings agree. Every reading that is not unanimous is listed, with
+what each source said, in `data/review/sq/source-agreement.json` — the review queue for a native speaker. The rule is in
+`src/bench/sq/agreement.ts`. **Agreement between sources is not a native speaker's review.**
+
+Known classes of difference (the commonest, not all):
+- the analyzer labels the bare aorist stem (dha, la, pa, vdiq) as second person singular (its paradigm
+  `aor-ind-act-1-2-sg-b`); Wiktionary gives third person. Open.
+- Wiktionary's tables are generated by templates and some are wrong ("qeshqesh" for qeshi, "hedhni" for hidhni,
+  "muajtë" for muajt); usage counts (the analyzer authors' 31-million-word list) outvote the table where they are lopsided.
+- two citation forms of one word (hip / hipi, muze / muzeum), and plurals on which the sources differ (kompjuterë /
+  kompjutera).
+
+**On running prose** (the held-out half of two small Standard treebanks; `npm run sq:eval-ud`; a treebank is not
+ground truth, and STAF's own annotation is automatic with corrections):
+
+| | Fiction (STAF, 101 sentences) | Wikipedia (TSA, 30 sentences) |
+| --- | --- | --- |
+| word boundaries, F1 | 99.8 % | 99.3 % |
+| fused pronouns read as one token with the right number of parts | 30 of 33 | none in the sample |
+| words with no reading — adapter alone | 15.6 % | 21.0 % |
+| words with no reading — with the dictionary | 8.0 % | 12.9 % |
+| part of speech equal to the treebank's, first reading — adapter alone | 57.7 % | 53.6 % |
+| part of speech equal, first reading — with the dictionary | 63.4 % | 63.1 % |
+| lemma equal, first reading — with the dictionary | 64.2 % | 67.7 % |
+
+Much of the remaining difference is convention (the treebank's lemma of the short pronoun "e" is "e", here "ai";
+determiner against pronoun; auxiliary against verb), and the rest is vocabulary the word list and the dictionary lack.
+Spoken Gheg (UD_Gheg-GPS, held-out half): 33.7 % of words have no reading even with the dictionary — Gheg is not
+analysed as a variety of its own.
+
+## The course's own texts
+
+`npm run sq:check-texts -- --analyzer`: 22 course-written documents, 960 words, 295 distinct forms. Every form is
+known to the word list and to the analyzer under an agreeing lemma, **except two that are used although the sources
+differ** — recorded by hand in `data/review/sq/accepted-differences.json` and named on every run:
+
+- **dha** (ai dha, he gave; 4 times): analyzer second person, Wiktionary third person; 30,334 occurrences in the corpus list.
+- **vdiq** (ai vdiq, he died; once): analyzer second person; Wiktionary's table has "vdiqi"; "vdiq" occurs 8,176 times in
+  the corpus list and "vdiqi" not at all.
+
+The reader goes on showing both as uncertain. Whether to keep them is the owner's decision (see "Decisions waiting").
+
+Recurrence (`docs/albanian/RECURRENCE.md`): 188 distinct lemmas; 55 met only once — the seed is too small for the
+repetition the ladder needs, and the report lists every such lemma.
+
+## Tests
+
+1,335 tests in the 22 Albanian and authoring test files pass (`test/adapters/albanian-*.test.ts`, `test/adapters/sq.test.ts`,
+`test/integration/albanian-*.test.ts`, `test/bench/sq-*.test.ts`, `test/course/albanianCatalog.test.ts`, `test/authoring/**`).
+`npm run rights:check`: 129 documents, 127 bundled, 2 left out, 0 refused, 0 catalogue problems.
+
+Checked in a browser (sandbox profile, 2026-10-01): team choice, Home with the ladder and the doors, the publication
+gate ("No Albanian text is published yet … awaiting native-speaker review"), preview mode, the catalogue (the Bible work
+shown as "Rights not verified — not bundled"), the reader with word cards (uncertain readings marked, the unit "e tij =
+i tij", grammar patterns, sources named), and My Testimony (three deliberate errors found, each with a suggestion and
+the checker's limits stated). **Not** checked in a browser: adding the learner's own book (it needs a file upload); that
+path is covered by `test/integration/albanian-course.test.ts` only.
+
+The whole suite was run once after the adapter switch (8,333 tests): 9 failures, none in Albanian files once the new
+texts were in place; the others were in other sessions' work in progress or timed out under load. A clean whole-suite
+run with all four language sessions idle has not been done.
+
+## External resources (all research-only, never bundled except the dictionary)
+
+Exact versions: `data/benchmarks/sq/RESOURCES.json`.
+
+| Resource | Version | Licence | Use |
+| --- | --- | --- | --- |
+| uniparser-albanian (PyPI) + uniparser-morph | 2.3.0 / 2.11.0 | MIT | offline, in `data/private/venv-sq`: validates the word list and the course texts. Not shipped; nothing derived from its lexicon is shipped. |
+| uniparser-grammar-albanian (GitHub) | git 7d423dbc, 2026-01-08 | MIT | read to understand the analyzer's statements; its word list gives usage counts for the agreement rule. Not shipped. |
+| UD_Albanian-STAF, UD_Albanian-TSA, UD_Gheg-GPS | git 22ae839b, f9f4cf1b, 22470985 | CC BY-SA 4.0 | comparison only (`sq:eval-ud`, `sq:agreement` reads the dev half). Never course text, never bundled, never copied into `data/corpus`. |
+| kaikki.org extract of English Wiktionary, Albanian | Last-Modified 2026-09-28 | CC BY-SA | validation source, and the source of the shipped dictionary (attributed in its manifest and on the word card). |
+
+## Decisions waiting for the owner
+
+1. **dha / vdiq in the mission text.** Keep them with the recorded difference (the present state), or have the two
+   sentences rewritten until a native reviewer has settled the forms?
+2. **A native reviewer.** Nothing can leave preview without one. The review queue is `data/review/sq/source-agreement.json`
+   (234 rows), then the 20 texts, then the word list.
+3. **The Albanian Bible.** Which translation, from which rights holder? Until a person records that, Scripture in Albanian
+   is the learner's own copy only.
+4. **The analyzer's lexicon as a shipped source.** It would cut the "no reading" share further (58,651 lexemes with
+   English glosses, MIT). So far it is used offline only, as approved; shipping a lexicon built from it is a separate
+   decision and needs the dictionary pipeline to take a second source.
+5. **The third-party works** (21 unverified): a verifier per `docs/albanian/RIGHTS.md`.
+
+## Next steps (in order)
+
+1. Native review of the disputed readings, then of the 20 texts (states move by `npm run authoring:check`).
+2. Stage 0 and Stage 1 texts to their targets, written against the recurrence report; each batch through
+   `sq:check-texts` before anyone sees it.
+3. Gold set: draft 100 sentences per category with `npm run sq:gold`, to be accepted by a reviewer.
+4. Word list growth from the "no reading" lists of `sq:eval-ud` (dev half only), each addition through `sq:agreement`.
+5. The Gheg bridge as texts with correspondences (the correspondences exist; no Gheg text is bundled).

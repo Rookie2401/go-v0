@@ -127,13 +127,29 @@ preview only). **Awaiting external input:** a native reviewer; two downloads the
 and the Wiktionary Hindi extract); an answer from Pratham Books before any StoryWeaver story is taken. NCERT's
 readers are recorded as prohibited by NCERT's own terms and are only pointed at.
 
+## Albanian course (contract v11, 2026-10-01)
+
+Status of record: `docs/albanian/STATUS.md`; how it works: `docs/albanian/COURSE.md`. In one paragraph: the course has
+its system and a seed of content. **Implemented and tested:** a ladder of ten stages and an open stage that lock
+nothing, streams and doors, the rights manifest of 30 works; the Albanian adapter version 2 (word list of 896 lexemes,
+rule morphology, fused short pronouns with their parts, the linking article and its adjective as one unit, a sentence
+layer, 31 constructions, ten kinds of writing check, Gheg and older forms related to Standard, never counted as it); an
+authoring pipeline with review states; a machine-enforced rights gate that also refuses a "course-written" label inside
+somebody else's work. **Verified:** every reading the word list generates against the UniParser analyzer, Wiktionary's
+tables, two treebanks and corpus usage counts — 97.62 % unanimous, every other reading capped and listed
+(`data/review/sq/source-agreement.json`); 1,335 tests; the reader, the catalogue and My Testimony in a browser sandbox.
+**Not verified:** anything against a native speaker (no review of any kind has happened; the 20 course texts, about 850
+words, are visible in preview only); the rights of any third-party work. **Awaiting external input:** a native
+reviewer; an Albanian Bible translation with an established rights holder; the owner's decision on two forms (dha,
+vdiq) the sources split on and on shipping a lexicon built from the analyzer.
+
 ## Readiness by language
 
 | | Ingestion | Progress tracking | Linguistic analysis | Scripture | Audio (GoListen: deferred to V2, switched off) |
 |---|---|---|---|---|---|
 | **Spanish** | Verified (proof + browser importer; a learner's own `.txt` / `.epub` imports chapter by chapter) | Verified (one record on Home, library, reader; version-scoped) | Tokenization dependable; sentence splitting limited; a word list of 1,701 lemmas (**machine-drafted, not native-reviewed**) plus rule morphology for any verb, noun or adjective form (an inferred lemma is marked as such, 0.6 at most, no gloss); **dictionary installed** (Wiktionary via kaikki.org, separate layer) and used when a learner's own book is imported; readings ordered by neighbouring words — held-out on dictionary example sentences: first reading right for 92.65 %, 82.1 % of ambiguous words; nothing measured on a book (see "Spanish course") | **Published**: Reina-Valera 1909, 3 verses, byte-verified against eBible.org | **Not verified** — no credentials; nothing synthesized |
 | **German** | Verified | Verified (engine); browser checked for Spanish only | Dependable tokenization; separable verbs only `anfangen`; compounds low-confidence; **seed lexicon only** | **Published**: Lutherbibel 1912, 3 verses, byte-verified | Not verified |
-| **Albanian** | Verified | as German | ë / ç preserved; inflected forms related; clitics ambiguous in thin context; **seed lexicon only** | **Blocked** — awaiting an approved translation | Not verified |
+| **Albanian** | Verified (a word typed without ë / ç is related to the proper spelling; a learner's own copy tested by integration test, not in a browser) | Verified (engine; browser in a sandbox) | A word list of 896 lexemes and the closed classes (**machine-drafted, not native-reviewed**) with rule morphology; fused short pronouns taken apart; the linking article and its adjective one unit; 31 constructions. Every generated reading compared with four other sources: 97.62 % unanimous, the rest capped and listed for review. **Dictionary installed** (Wiktionary via kaikki.org, with its inflection tables). On held-out treebank prose 8.0 % (fiction) and 12.9 % (Wikipedia) of words have no reading; correctness against a native speaker is **not measured** (gold set: 0 accepted). See "Albanian course" | **Blocked** — the translation commonly labelled ALB has no established provenance; not bundled | Not verified |
 | **Hindi** | Verified (grapheme-safe spans, danda kept, nukta never folded; a learner's own `.txt` imports chapter by chapter, Hindi chapter headings recognised) | Verified (engine; browser in a sandbox) | Akṣara-level script decoding with the unwritten *a* stated; rule morphology and a word list of 2,746 lemmas (**machine-drafted, not native-reviewed**); compound verbs, complex predicates and 50 constructions; readings ordered by neighbouring words. On six unseen Scripture chapters 94.6 % of words have a reading the list vouches for; correctness is **not measured** (gold set: 189 drafts, 0 accepted). No dictionary installed (see "Hindi course") | **Published**: Indian Revised Version (IRV Hindi 2019, CC BY-SA 4.0), 91 verses, byte-verified against eBible.org; a licensed text, credited where it is read | Not verified |
 | **Thai** | Verified (no spaces added; a learner's own copy of a book imports chapter by chapter — see "Thai course") | Verified (engine and browser, sandbox) | Word segmentation **is a release gate that is not met**: first benchmark F1 90.3 % on a biased set, nothing measured on book prose (see "Thai substrate validation"); hand lexicon of 598 entries, **machine-drafted, not native-reviewed**; Wiktionary dictionary installed as a separate, attributed layer; script decoding measured on 17,298 words | **Blocked** | Not verified |
 

@@ -223,7 +223,11 @@ export interface GoLearn {
    */
   rankLibrary(userId: string, candidates: RankCandidate[], opts?: RankOptions): Promise<RankedText[]>;
   /** Sentences in the store (live, visible ones) containing a lemma, a form, a phrase or a construction: search and natural examples. */
-  findOccurrences(q: { lang: LanguageCode; itemId: string; textIds?: string[]; includeUnpublished?: boolean; limit?: number }): Promise<Array<{ sentenceId: string; textId: string; tokenIds: string[] }>>;
+  findOccurrences(q: { lang: LanguageCode; itemId: string; textIds?: string[]; includeUnpublished?: boolean; limit?: number }): Promise<Array<{
+    sentenceId: string; textId: string; tokenIds: string[];
+    /** Present when a match was found through an older or other spelling of the queried form ("dass" finds "daß"): which tokens, and how they are written. */
+    spellings?: Array<{ tokenId: string; written: string; modern: string; period: string }>;
+  }>>;
 
   /**
    * Resolves when every event emitted so far has been folded into derived state. All read methods of GoLearn

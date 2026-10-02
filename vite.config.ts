@@ -15,7 +15,13 @@ export default defineConfig({
   // rightsGate(): a production build leaves out every bundled document whose rights are unverified, and stops on a
   // document that claims a status without its evidence (src/ingest/rights.ts; `npm run rights:check` reports the same).
   plugins: [react(), rightsGate(), ...(LISTEN ? [speechProxy()] : [])],
-  server: { port: 5196, strictPort: true },
+  // The watcher stays out of the large data files that tools write while a dev server runs: a dictionary source being
+  // downloaded or a dictionary being built (a thousand shards) locked files under the watcher and stopped the server
+  // (EBUSY). They are static data: nothing in them is a module, and the built shards are served fresh on every request.
+  server: {
+    port: 5196, strictPort: true,
+    watch: { ignored: ['**/data/dictionaries/**', '**/data/private/**', '**/data/research/**', '**/data/review/*/generated/**', '**/public/dict/**', '**/public/library/**'] },
+  },
   preview: { port: 4196, strictPort: true },
   build: { chunkSizeWarningLimit: 1500 },
 });

@@ -21,6 +21,7 @@
  */
 import fs from 'node:fs';
 import crypto from 'node:crypto';
+import { runningNumber } from './lib-canon.mjs';
 
 const BASE = 'https://ebible.org/hin2017';
 const ENGLISH = 'https://ebible.org/eng-web';
@@ -56,7 +57,11 @@ function versesOf(html) {
     .replace(/<a [^>]*class="notemark"[\s\S]*?<\/a>/g, '')
     .replace(/<span class="popup">[\s\S]*?<\/span>/g, '')
     // the cross-references the translation sets inside a verse in parentheses are apparatus, not verse text (as in verify-scripture.mjs)
-    .replace(/<span class=['"]bdit['"]>\s*\([^<()]*\d+\s*[:.]\s*\d+[^<()]*\)\s*<\/span>/g, '')
+    .replace(/<span class=['"]bdit['"]>\s*\([^<()]*\d+\s*[:.]\s*\d+[^<()]*\)\s*<\/span>/g, ' ') // a space, not nothing: the reference stands between two words (राज्य … निकट); whitespace is collapsed below
+    // two inline style spans set side by side with no space between them (राज्य</span><span class='it'>निकट in the
+    // distributor's page, \wj* \it in its USFM) are two words: the marker boundary is a word boundary. Without this the
+    // two words would be joined into one that no dictionary has.
+    .replace(/(?<=\p{L})<\/span>(?=(?:<span\b[^>]*>)+\p{L})/gu, '</span> ')
     // inline tags are removed without a space, exactly as verify-scripture.mjs does: a footnote mark before a comma
     // must not leave a gap ("अच्छा है;" not "अच्छा है ;")
     .replace(/<[^>]+>/g, '')
@@ -125,7 +130,7 @@ for (const part of SLICE) {
     prepTargets: [],
     generated: false,
     // the catalogue work these chapters belong to (src/course/hindi.ts): its rights record names the licence and the check
-    work: { slug: 'bible-hindi', chapter: { index: SLICE.indexOf(part) + 1, title: part.title } },
+    work: { slug: 'bible-hindi', chapter: { index: runningNumber(part.book, part.chapter), title: part.title } },
     scripture: {
       translationId: 'hin2017', translationName: NAME, edition: 'IRV Hindi 2019', book: part.book, chapter: part.chapter,
       verification: { against: 'eBible.org hin2017', url: BASE, checkedAt: today, method: 'byte-comparison', by: 'scripts/verify-scripture.mjs' },

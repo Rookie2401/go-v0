@@ -16,6 +16,7 @@
  */
 import fs from 'node:fs';
 import crypto from 'node:crypto';
+import { runningNumber } from './lib-canon.mjs';
 
 const BASE = 'https://ebible.org/deu1912';
 const ENGLISH = 'https://ebible.org/eng-web';
@@ -110,7 +111,7 @@ for (const part of SLICE) {
     editorialTags: [],
     prepTargets: [],
     generated: false,
-    work: { slug: 'lutherbibel-1912', chapter: { index: SLICE.indexOf(part) + 1, title: part.title } },
+    work: { slug: 'lutherbibel-1912', chapter: { index: runningNumber(part.book, part.chapter), title: part.title } },
     scripture: {
       translationId: 'deu1912', translationName: 'Lutherbibel 1912', edition: 'Luther 1912', book: part.book, chapter: part.chapter,
       verification: { against: 'eBible.org deu1912', url: BASE, checkedAt: today, method: 'byte-comparison', by: 'scripts/verify-scripture.mjs' },

@@ -161,6 +161,9 @@ describe('building a library from a fixture manifest', () => {
     const r = await build({ ...manifest, entries: [manifest.entries[1]] }, files);
     const row = parseShard(JSON.parse(r.out.get(parseManifest(JSON.parse(r.out.get('manifest.json')!), 'es')!.shards[0].file)!), 'es')[0];
     expect(row).toMatchObject({ id: 'text:es:camino-test-ch01', rights: 'course-authored', stream: 'acquisition', published: false });
+    // Source documents keep their corpus, including separately licensed Bible corpora.
+    const document = JSON.parse(r.out.get(documentPathOf(row.id))!);
+    expect(document.corpus).toEqual(JSON.parse(courseDocuments())[0].corpus);
     // a document whose own rights say public-domain cannot ride in under course-authored
     const mismatched = JSON.stringify([{ ...JSON.parse(courseDocuments())[0], source: { ...JSON.parse(courseDocuments())[0].source, rights: 'public-domain' } }]);
     const bad = await build({ ...manifest, entries: [manifest.entries[0], manifest.entries[1]] }, { ...files, 'camino.json': mismatched });
@@ -195,7 +198,7 @@ describe('building a library from a fixture manifest', () => {
   });
 
   it('splits an index into shards of at most SHARD_ROWS rows, per primary stream', async () => {
-    const chapters = Array.from({ length: SHARD_ROWS + 20 }, (_, i) => `Capítulo ${i + 1}\n\nAna vive en una casa con el perro y la gata, y por la tarde va al río con su padre para ver a los niños que juegan en la arena.`).join('\n\n');
+    const chapters = Array.from({ length: SHARD_ROWS + 20 }, (_, i) => `Capítulo ${i + 1}\n\nAna vive en una casa con el perro y la gata, y por la tarde va al río con su padre para ver a los niños que juegan en la arena. Es el día ${i + 1}.`).join('\n\n');
     const files = { 'largo.txt': chapters };
     const r = await build({ schema: 1, lang: 'es', entries: [entry({ slug: 'largo', source: { file: 'largo.txt' } })] }, files);
     expect(r.manifest.texts).toBe(SHARD_ROWS + 20);

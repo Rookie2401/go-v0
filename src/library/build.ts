@@ -25,6 +25,7 @@ import {
   type LibraryManifest, type LibraryShardInfo,
 } from './format';
 import { groupedAnalysesOf, measureStoredText } from './measure';
+import { runningNumber } from './canon';
 
 // ───────────────────────────── the build manifest (input) ─────────────────────────────
 
@@ -151,6 +152,8 @@ export interface BuildOptions {
   lexicon?: (lang: LanguageCode) => LexiconSource | undefined;
   /** The quality check (default: the importer's `inspectText`). */
   inspect?: (text: string, opts: QualityOptions) => QualityReport;
+  /** Text ids that ship bundled with the app: a library document with one of these ids is left out (the bundled text is the one opened). */
+  bundledTextIds?: ReadonlySet<string>;
   progress?: (message: string) => void;
 }
 
@@ -250,7 +253,7 @@ async function documentsOf(entry: BuildEntry, opts: BuildOptions, notes: string[
       ...d,
       title: d.title || entry.title,
       contentType: kind === 'documents' ? d.contentType : entry.contentType ?? d.contentType ?? 'story',
-      corpus: { id: `library-${opts.lang}`, kind: 'comprehensible-input', title: 'Library' },
+      corpus: kind === 'documents' ? d.corpus : { id: `library-${opts.lang}`, kind: 'comprehensible-input', title: 'Library' },
       source,
       generated: entry.generated ?? d.generated ?? false,
       work: { slug: entry.slug, courseId, chapter },
@@ -270,7 +273,62 @@ async function documentsOf(entry: BuildEntry, opts: BuildOptions, notes: string[
     if (errors.length) return { refuse: errors.slice(0, 3).map((x) => `${doc.id}: ${x.path || '(document)'}: ${x.message}`) };
     out.push(doc);
   }
-  return { docs: out, sha256: src.sha256, quality: report ? report.verdict : 'not checked', report };
+  return { docs: inOrder(out, kind, opts, notes), sha256: src.sha256, quality: report ? report.verdict : 'not checked', report };
+}
+
+/** A text's words, for telling two texts with the same words apart from two texts. */
+const bodyOf = (d: CorpusDocument): string => d.sections.flatMap((s) => s.paragraphs.flatMap((p) => ('sentences' in p ? p.sentences.map((x) => x.text) : [(p as { text: string }).text]))).join('\n').normalize('NFC').replace(/\s+/g, ' ').trim();
+
+/**
+ * The texts of a work IN ORDER, whatever order and numbers the source gave them — enforced here so that no regenerated
+ * source can undo it:
+ *  - Scripture is sorted by the canon and each chapter is numbered by its place in it (Genesis 1 = 1 … Revelation
+ *    22 = 1189), so bundled and library chapters of one Bible fall into one sequence; a chapter outside the canon
+ *    stops the work;
+ *  - any other collection given as documents is numbered 1, 2, 3 … in the order given (a single text is chapter 1;
+ *    texts the converter produced keep its numbering, with 0 for front matter);
+ *  - a text with exactly the words of an earlier text of the work is left out (once is enough);
+ *  - a text whose id is bundled with the app is left out: opening it would show the bundled text.
+ * Each omission is a note of the work; no word of any text is changed.
+ */
+function inOrder(docs: CorpusDocument[], kind: BuildSourceKind, opts: BuildOptions, notes: string[]): CorpusDocument[] {
+  let list = docs;
+  const bundled = opts.bundledTextIds;
+  if (bundled) {
+    const dup = list.filter((d) => bundled.has(`text:${opts.lang}:${d.id}`));
+    if (dup.length) { notes.push(`${dup.length} text(s) left out because they are bundled with the app already: ${dup.slice(0, 4).map((d) => d.id).join(', ')}${dup.length > 4 ? ', …' : ''}`); list = list.filter((d) => !dup.includes(d)); }
+  }
+  const seen = new Map<string, string>();
+  const unique: CorpusDocument[] = [];
+  for (const d of list) {
+    const key = bodyOf(d);
+    if (key.length >= 40 && seen.has(key)) { notes.push(`${d.id} left out: the same words as ${seen.get(key)}`); continue; }
+    seen.set(key, d.id);
+    unique.push(d);
+  }
+  list = unique;
+  const scripture = list.length > 0 && list.every((d) => d.contentType === 'scripture' && !!d.scripture?.book);
+  if (scripture) {
+    const place = (d: CorpusDocument) => runningNumber(d.scripture!.book, d.scripture!.chapter);
+    const outside = list.filter((d) => place(d) === undefined);
+    if (outside.length) throw new LibraryBuildError(`${outside.length} chapter(s) are outside the canon and cannot be ordered: ${outside.slice(0, 3).map((d) => `${d.id} (${d.scripture?.book} ${d.scripture?.chapter})`).join(', ')}`);
+    const ordered = [...list].sort((a, b) => place(a)! - place(b)!);
+    let renumbered = 0;
+    for (const d of ordered) {
+      const n = place(d)!;
+      if (d.work?.chapter?.index !== n) renumbered++;
+      d.work = { ...d.work!, chapter: { ...(d.work?.chapter ?? {}), index: n, title: d.work?.chapter?.title ?? d.title } };
+    }
+    if (renumbered || ordered.some((d, i) => d !== list[i])) notes.push(`the chapters were put in the order of the canon and numbered by their place in it (${renumbered} renumbered)`);
+    return ordered;
+  }
+  if (kind !== 'documents') return list; // the converter's own numbering (0 = front matter) stands
+  const numbers = list.map((d) => d.work?.chapter?.index);
+  const contiguousFrom = (start: number) => numbers.every((n, i) => n === start + i);
+  if (contiguousFrom(1) || (numbers[0] === 0 && contiguousFrom(0))) return list;
+  list.forEach((d, i) => { d.work = { ...d.work!, chapter: { ...(d.work?.chapter ?? {}), index: i + 1, title: d.work?.chapter?.title ?? d.title } }; });
+  notes.push(`${list.length === 1 ? 'the one text is chapter 1' : `${list.length} texts numbered 1 … ${list.length} in the order given`} (the source numbered them ${numbers.slice(0, 4).map(String).join(', ')}${numbers.length > 4 ? ', …' : ''})`);
+  return list;
 }
 
 /** Run the build. Throws `LibraryBuildError` when nothing could be built (nothing is then written). */
@@ -363,7 +421,9 @@ export async function buildLibrary(opts: BuildOptions): Promise<BuildResult> {
 
   for (const stream of [...buffers.keys()]) flush(stream, true);
   for (const f of pending.splice(0)) await io.write(f.path, f.content);
-  if (!built.length) throw new LibraryBuildError(refused.length ? `nothing was built: every entry was refused (${refused.length})` : 'the manifest has no entries');
+  if (!built.length) throw new LibraryBuildError(refused.length
+    ? `nothing was built: every entry was refused (${refused.length})\n${refused.map((r) => `  ${r.slug}: ${r.reasons.join('; ')}`).join('\n')}`
+    : 'the manifest has no entries');
 
   const manifest: LibraryManifest = {
     schema: LIBRARY_SCHEMA, lang, id: `library-${lang}@${opts.date}`, builtAt: opts.date, tool: BUILD_TOOL,

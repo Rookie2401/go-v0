@@ -152,6 +152,25 @@ const SCRIPTS: Array<[string, RegExp]> = [
 const EXPECTED_SCRIPT: Record<LanguageCode, string> = { es: 'Latin', de: 'Latin', sq: 'Latin', th: 'Thai', hi: 'Devanagari' };
 
 /**
+ * Whether one paragraph looks like English rather than the language of the text: the paragraph rule of `inspectText`
+ * (at least 12 words, English common words a quarter of them and more than twice the language's own), usable on its
+ * own. For a language written in another script (Thai, Devanagari): at least 4 words, most of them in Latin letters.
+ * A rule of thumb for apparatus (a publisher's English description, an editor's notes), never a language identifier.
+ */
+const SHARED_WITH_NEIGHBOURS = new Set('as he an so up do in on one is it at be or we me am no if to a i'.split(' '));
+
+export function looksLikeEnglishParagraph(paragraph: string, lang: LanguageCode): boolean {
+  const ws = (paragraph.match(/\p{L}[\p{L}\p{M}'’]*/gu) ?? []).map((w) => w.toLowerCase());
+  if (EXPECTED_SCRIPT[lang] !== 'Latin') return ws.length >= 4 && ws.filter((w) => /^[a-z'’]+$/.test(w)).length / ws.length > 0.5;
+  const own = FUNCTION_WORDS[lang];
+  if (!own || ws.length < 12) return false;
+  // only words that are English and not also a word of a Germanic or Romance neighbour (as, he, an, so, up, do, in …):
+  // a Low German or Dutch paragraph must not pass for English
+  const en = ws.filter((w) => ENGLISH_WORDS.has(w) && !SHARED_WITH_NEIGHBOURS.has(w)).length / ws.length;
+  return en >= 0.25 && en > 2 * (ws.filter((w) => own.has(w)).length / ws.length);
+}
+
+/**
  * Inspect raw text BEFORE it becomes documents: bad encoding, broken accents, OCR damage, hard line wraps, page
  * numbers, running heads, footnote markers, duplicated paragraphs, boilerplate, language mismatch. Never changes the
  * text: it reports. What to do about a flag (strip boilerplate, unwrap lines) is an explicit converter option.

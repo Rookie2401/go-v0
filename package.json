@@ -6,7 +6,7 @@
   "description": "Go — a missions-oriented language-acquisition system (Comprehensible Input Corpus, Bible Corpus, My Testimony) with GoLearn / GoListen / GoTell engines underneath.",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite-node scripts/rights-gate.mts && vite-node scripts/dict-status.mts && vite build",
+    "build": "tsc -b && vite-node scripts/rights-gate.mts && vite-node scripts/library-audit.mts all && vite-node scripts/dict-status.mts && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b",
     "test": "vitest run",
@@ -45,7 +45,10 @@
     "gold:accept": "vite-node scripts/gold-accept.mts",
     "gold:status": "vite-node scripts/gold-status.mts",
     "gold:freeze": "vite-node scripts/gold-freeze.mts",
-    "speech:check": "vite-node scripts/speech-check.mts"
+    "speech:check": "vite-node scripts/speech-check.mts",
+    "library:audit": "vite-node scripts/library-audit.mts",
+    "library:order": "vite-node scripts/library-order.mts",
+    "library:sync-catalogue": "vite-node scripts/sync-library-catalogue.mts"
   },
   "dependencies": {
     "dexie": "^4",

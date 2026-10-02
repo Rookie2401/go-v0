@@ -11,6 +11,7 @@ import path from 'node:path';
 import type { LanguageCode } from '../core';
 import { createAdapterRegistry } from '../adapters';
 import { createFileLexiconSource } from '../dict/file';
+import { loadBundledCorpus } from '../ingest';
 import { buildLibrary, parseBuildManifest, LibraryBuildError, type BuildIO, type BuildOptions, type BuildResult } from './build';
 
 export interface BuildFilesOptions {
@@ -34,6 +35,18 @@ export interface BuildFilesResult extends BuildResult {
   bytes: number;
 }
 
+/** Windows scanners can briefly hold a newly written directory open. */
+async function renameWithRetry(from: string, to: string): Promise<void> {
+  for (let attempt = 0; ; attempt++) {
+    try { fs.renameSync(from, to); return; }
+    catch (error) {
+      const code = (error as NodeJS.ErrnoException).code;
+      if (attempt >= 4 || !['EPERM', 'EBUSY', 'EACCES'].includes(code ?? '')) throw error;
+      await new Promise((resolve) => setTimeout(resolve, 100 * 2 ** attempt));
+    }
+  }
+}
+
 export async function buildLibraryFiles(opts: BuildFilesOptions): Promise<BuildFilesResult> {
   let raw: unknown;
   try { raw = JSON.parse(fs.readFileSync(opts.manifestFile, 'utf8')); }
@@ -41,8 +54,14 @@ export async function buildLibraryFiles(opts: BuildFilesOptions): Promise<BuildF
   const manifest = parseBuildManifest(raw, opts.lang);
 
   const root = path.resolve(opts.inDir);
-  const dir = path.join(opts.outDir, opts.lang);
-  const staging = path.join(opts.outDir, `.${opts.lang}.building-${process.pid}`);
+  const outputRoot = path.resolve(opts.outDir);
+  const dir = path.join(outputRoot, opts.lang);
+  const staging = path.join(outputRoot, `.${opts.lang}.building-${process.pid}`);
+  const previous = path.join(outputRoot, `.${opts.lang}.previous-${process.pid}`);
+  for (const target of [dir, staging, previous]) {
+    const relative = path.relative(outputRoot, path.resolve(target));
+    if (!relative || relative.startsWith('..') || path.isAbsolute(relative)) throw new LibraryBuildError('library output must stay inside the selected output directory');
+  }
   fs.rmSync(staging, { recursive: true, force: true });
 
   let files = 0, bytes = 0;
@@ -68,10 +87,17 @@ export async function buildLibraryFiles(opts: BuildFilesOptions): Promise<BuildF
     const result = await buildLibrary({
       lang: opts.lang, manifest, io, adapters: createAdapterRegistry(), date: opts.date, inspect: opts.inspect, progress: opts.progress,
       lexicon: dict ? (l) => (l === opts.lang ? dict : undefined) : undefined,
+      bundledTextIds: new Set(loadBundledCorpus().filter((d) => d.lang === opts.lang).map((d) => `text:${d.lang}:${d.id}`)),
     });
     fs.mkdirSync(opts.outDir, { recursive: true });
-    fs.rmSync(dir, { recursive: true, force: true });
-    fs.renameSync(staging, dir);
+    const hadPrevious = fs.existsSync(dir);
+    if (hadPrevious) await renameWithRetry(dir, previous);
+    try { await renameWithRetry(staging, dir); }
+    catch (error) {
+      if (hadPrevious) await renameWithRetry(previous, dir);
+      throw error;
+    }
+    if (hadPrevious) fs.rmSync(previous, { recursive: true, force: true });
     return { ...result, dir, files, bytes };
   } catch (e) {
     fs.rmSync(staging, { recursive: true, force: true });

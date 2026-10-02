@@ -51,7 +51,9 @@ import { segmentHindiSentences } from './hindi/sentences';
 import { checkHindiProduction } from './hindi/production';
 
 const LANG = 'hi' as const;
-const VERSION = '2';
+// '3': the fix batches after '2' changed what is stored (persons and cells as separate readings, causatives, the
+// progressive, transitivity notes, the list-driven nukta relation, ~1,000 more lemmas), so imported Hindi texts are re-analysed
+const VERSION = '3';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */

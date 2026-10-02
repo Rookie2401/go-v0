@@ -39,7 +39,11 @@ async function fetchVerses(base, refs) {
       .replace(/<a [^>]*class="notemark"[\s\S]*?<\/a>/g, '')
       // a cross-reference set inside a verse in parentheses ("(इब्रा. 1:10, इब्रा. 11:3)", marked as a character style by
       // the source) is apparatus like a footnote, not verse text: it is left out, and only when it is exactly that
-      .replace(/<span class=['"]bdit['"]>\s*\([^<()]*\d+\s*[:.]\s*\d+[^<()]*\)\s*<\/span>/g, '')
+      .replace(/<span class=['"]bdit['"]>\s*\([^<()]*\d+\s*[:.]\s*\d+[^<()]*\)\s*<\/span>/g, ' ') // a space, not nothing: the reference stands between two words (राज्य … निकट); whitespace is collapsed below
+    // two inline style spans set side by side with no space between them (राज्य</span><span class='it'>निकट in the
+    // distributor's page, \wj* \it in its USFM) are two words: the marker boundary is a word boundary. Without this the
+    // two words would be joined into one that no dictionary has.
+    .replace(/(?<=\p{L})<\/span>(?=(?:<span\b[^>]*>)+\p{L})/gu, '</span> ')
       .replace(/<[^>]+>/g, '')
       .replace(/&nbsp;|&#160;/g, ' ');
     const clean = (x) => x.replace(/\s+/g, ' ').trim().normalize('NFC');
@@ -103,7 +107,19 @@ const prev = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, 'utf8')) : und
 const strip = ({ checkedAt: _d, ...rest }) => rest;
 for (const t of record.translations) {
   const old = prev?.translations.find((p) => p.lang === t.lang && p.translationId === t.translationId);
+  // Bulk USFM verification records contain the complete translation. The normal
+  // slice checker must retain that verified bulk record while refreshing the
+  // bundled slice; otherwise a routine rerun would silently truncate it.
+  if (old?.sourceArchive && Object.keys(old.verses ?? {}).length > Object.keys(t.verses ?? {}).length) {
+    t.verses = { ...old.verses, ...t.verses };
+    t.sourceArchive = old.sourceArchive;
+  }
   t.checkedAt = old && JSON.stringify(strip(old)) === JSON.stringify(strip(t)) ? (old.checkedAt ?? prev.checkedAt) : record.checkedAt;
+}
+// A translation this script does not check (one verified by another script against its own archive, e.g. the Thai
+// release) is kept as it stands: a run here must never drop it.
+for (const old of prev?.translations ?? []) {
+  if (!record.translations.some((t) => t.lang === old.lang && t.translationId === old.translationId)) record.translations.push(old);
 }
 if (prev && record.translations.some((t) => t.checkedAt !== record.checkedAt)) record.checkedAt = prev.checkedAt;
 if (prev && JSON.stringify(prev.translations.map(strip)) === JSON.stringify(record.translations.map(strip))) {

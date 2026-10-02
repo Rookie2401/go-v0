@@ -20,9 +20,9 @@ const hiDocs = () => loadBundledCorpus().filter((d) => d.lang === 'hi');
 
 describe('identity', () => {
   it('the adapter is version 2 and its analyses name themselves', () => {
-    expect(hiAdapter.version).toBe('2');
-    expect(run('hi', 'घर').analyses[0].analyzer).toBe('adapter-hi@2');
-    expect(ANALYZER).toBe('adapter-hi@2');
+    expect(hiAdapter.version).toBe('3');
+    expect(run('hi', 'घर').analyses[0].analyzer).toBe('adapter-hi@3');
+    expect(ANALYZER).toBe('adapter-hi@3');
   });
 
   it('normalize is NFC and nothing else: the nukta stays, case and marks are not folded', () => {

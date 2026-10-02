@@ -17,11 +17,30 @@ export function pickAnalysis(rows: TokenAnalysis[]): TokenAnalysis | undefined {
     || (a.id < b.id ? -1 : 1))[0];
 }
 
-/** The lemma item an analysis may credit: human always; otherwise only when confidence ≥ LEMMA_MIN_CONFIDENCE. */
-export function creditableLemmaId(a: TokenAnalysis | undefined): string | undefined {
+/**
+ * A piece of a lexical unit written as several words (German "steht … auf" = aufstehen) that is NOT the unit's head. Every piece
+ * carries the unit's lemma, but the unit is one word: its encounter is counted once, on the head piece.
+ */
+export const isNonHeadPiece = (a: Pick<TokenAnalysis, 'tokenId' | 'unit'> | undefined): boolean =>
+  !!a?.unit && a.unit.headTokenId !== a.tokenId;
+
+/**
+ * The lemma an analysis is ABOUT, when it may be named at all: human always; otherwise only when confidence ≥ LEMMA_MIN_CONFIDENCE.
+ * Every piece of a unit is about the unit's lemma: a learner who taps the stranded "auf" has asked about aufstehen, so help on any
+ * piece is help on that lemma (the fold uses this one for help; encounters use `creditableLemmaId`).
+ */
+export function askedLemmaId(a: TokenAnalysis | undefined): string | undefined {
   if (!a?.lemmaId) return undefined;
   if (a.provenance === 'human' || a.confidence >= LEMMA_MIN_CONFIDENCE) return a.lemmaId;
   return undefined;
+}
+
+/**
+ * The lemma item an analysis may credit with an encounter (see `askedLemmaId`). A piece of a lexical unit that is not its head
+ * credits none: the head piece does, so a unit is one word, in encounters, coverage and difficulty alike. Its FORM still counts.
+ */
+export function creditableLemmaId(a: TokenAnalysis | undefined): string | undefined {
+  return isNonHeadPiece(a) ? undefined : askedLemmaId(a);
 }
 
 /** Per-operation memo so one coverage / recommend pass resolves each token once. */
@@ -40,8 +59,14 @@ export class AnalysisCache {
     await Promise.all(tokenIds.filter((t) => !this.byToken.has(t)).map((t) => this.resolve(t)));
   }
 
+  /** The lemma this token credits with an encounter (none for a non-head piece of a lexical unit). */
   async lemmaIdOf(tokenId: string): Promise<string | undefined> {
     return creditableLemmaId(await this.resolve(tokenId));
+  }
+
+  /** The lemma this token is about, whatever piece of a unit it is: where help on the token lands. */
+  async askedLemmaIdOf(tokenId: string): Promise<string | undefined> {
+    return askedLemmaId(await this.resolve(tokenId));
   }
 }
 

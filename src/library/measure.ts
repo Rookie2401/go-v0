@@ -7,14 +7,30 @@
  *   - part-of-speech features (subordinators, proper nouns, clitics) need at least one analysis that states a POS;
  *   - the subjunctive share needs at least one analysis that states a mood, and counts only an unambiguous "Sub";
  *   - the phrase share needs at least one stored phrase occurrence;
- *   - variety shares are present only when some analysis carries a variety tag.
+ *   - variety shares are present only when some analysis carries a variety tag;
+ *   - the genitive share counts only an unambiguous "Gen" and is reported only above zero (pronouns of other languages state a
+ *     case too, and a text without a genitive says nothing about it);
+ *   - compounds, older spelling, nominalizations and the per-sentence construction counts (passive, relative clause,
+ *     participial modifier) are present only when the text has at least one stored instance of them, and the verb-bracket
+ *     distance only when it has at least one bracket construction.
+ * A lexical unit written as several words (`unit`) is one word: only its head piece credits the lemma (`creditableLemmaId`).
  */
 import type { AppStore, LanguageCode, Text, TextFeatures, TextProfile, Token, TokenAnalysis } from '../core';
+import { ids } from '../core';
 import { creditableLemmaId, pickAnalysis } from '../golearn/analysis';
 import { cmp, round4 } from './text';
 
 /** A long sentence has more than this many words. */
 export const LONG_SENTENCE_WORDS = 30;
+
+/**
+ * The constructions whose two ends are a verb bracket: the finite verb (or the word that opens the bracket) and the participle,
+ * infinitive or separated prefix that closes it. `bracketDistance` averages the words between the first two tokens of each.
+ */
+export const BRACKET_PATTERN_KEYS: readonly string[] = [
+  'sentence-bracket-perfect', 'pluperfect', 'future', 'passive', 'passive-past', 'modal-infinitive', 'separable-prefix-verb',
+  'konjunktiv-2-wuerde', 'um-zu',
+];
 
 /** The analyzers a stored text was produced with, from its transformation log: the adapter and the dictionary, if any. */
 export function analyzerKeyOf(text: Pick<Text, 'transformations'>): string[] {
@@ -73,7 +89,21 @@ function carriesClitic(a: TokenAnalysis): boolean {
   return m.PronType === 'Prs' && /Acc|Dat/.test(m.Case ?? '') && !/Nom/.test(m.Case ?? '');
 }
 
-const isRelativePronoun = (a: TokenAnalysis): boolean => a.pos === 'PRON' && (a.morph?.PronType ?? '').split(',').includes('Rel');
+/** An analysis that takes its word apart into the parts of a compound (a component, the head, or a linking element). */
+const isCompound = (a: TokenAnalysis): boolean => !!a.parts?.some((p) => p.kind === 'component' || p.kind === 'head');
+
+/** The lemma item ids of a compound's component and head parts that state both a lemma and a part of speech, in order, without repeats. */
+function componentLemmaIds(a: TokenAnalysis): string[] {
+  const out: string[] = [];
+  for (const p of a.parts ?? []) {
+    if ((p.kind !== 'component' && p.kind !== 'head') || !p.lemma || !p.pos) continue;
+    const id = ids.lemma(a.lang, p.lemma, p.pos);
+    if (!out.includes(id)) out.push(id);
+  }
+  return out;
+}
+
+const isRelativePronoun =(a: TokenAnalysis): boolean => a.pos === 'PRON' && (a.morph?.PronType ?? '').split(',').includes('Rel');
 
 /** Only an unambiguous "Sub" counts: a value such as "Ind,Sub" states uncertainty and is not asserted. */
 const isSubjunctive = (a: TokenAnalysis): boolean => a.morph?.Mood === 'Sub';
@@ -96,7 +126,9 @@ export async function measureStoredText(store: AppStore, textId: string, opts: M
   const lemmas = new Map<string, number>();
   const wordIds = new Set<string>();
   let analysed = 0, withPos = 0, withMood = 0, subordinators = 0, proper = 0, subjunctive = 0, clitics = 0;
+  let genitive = 0, compounds = 0, olderSpelling = 0, nominalizations = 0;
   const varieties = new Map<string, number>();
+  const compoundCounts = new Map<string, { whole: string; parts: string[]; n: number }>();
 
   for (const t of words) {
     wordIds.add(t.id);
@@ -115,6 +147,18 @@ export async function measureStoredText(store: AppStore, textId: string, opts: M
     if (a.morph?.Mood !== undefined) { withMood++; if (isSubjunctive(a)) subjunctive++; }
     if (carriesClitic(a)) clitics++;
     for (const v of new Set(a.varieties ?? [])) bump(varieties, v);
+    if (a.morph?.Case === 'Gen') genitive++;
+    if (isCompound(a)) {
+      compounds++;
+      if (lemmaId) {
+        const parts = componentLemmaIds(a);
+        const key = `${lemmaId}\u0000${parts.join('\u0000')}`;
+        const cur = compoundCounts.get(key);
+        if (cur) cur.n++; else compoundCounts.set(key, { whole: lemmaId, parts, n: 1 });
+      }
+    }
+    if (a.orthography) olderSpelling++;
+    if (hasText(a.notes?.nominalization)) nominalizations++;
   }
 
   const phrases = new Map<string, number>();
@@ -127,7 +171,27 @@ export async function measureStoredText(store: AppStore, textId: string, opts: M
     for (const id of o.tokenIds) if (wordIds.has(id)) inPhrase.add(id);
   }
   const patterns = new Map<string, number>();
-  for (const o of await store.patternOccurrences.where('textId', textId)) if (live.has(o.sentenceId)) bump(patterns, o.patternId);
+  // the words of each live sentence by index: the distance between the two ends of a verb bracket counts the words between them
+  const wordIndexes = new Map<string, number[]>();
+  const indexOf = new Map<string, number>();
+  for (const t of words) { (wordIndexes.get(t.sentenceId) ?? wordIndexes.set(t.sentenceId, []).get(t.sentenceId)!).push(t.index); indexOf.set(t.id, t.index); }
+  const keyPrefix = `pattern:${lang}:`;
+  let passive = 0, relative = 0, participial = 0, brackets = 0, bracketWords = 0;
+  for (const o of await store.patternOccurrences.where('textId', textId)) {
+    if (!live.has(o.sentenceId)) continue;
+    bump(patterns, o.patternId);
+    const key = o.patternId.startsWith(keyPrefix) ? o.patternId.slice(keyPrefix.length) : '';
+    if (key.startsWith('passive')) passive++;
+    else if (key === 'relative-clause') relative++;
+    else if (key === 'participial-modifier') participial++;
+    if (BRACKET_PATTERN_KEYS.includes(key) && o.tokenIds.length >= 2) {
+      const [a, b] = [indexOf.get(o.tokenIds[0]), indexOf.get(o.tokenIds[1])];
+      if (a === undefined || b === undefined) continue;
+      const [from, to] = a < b ? [a, b] : [b, a];
+      brackets++;
+      bracketWords += (wordIndexes.get(o.sentenceId) ?? []).filter((i) => i > from && i < to).length;
+    }
+  }
 
   const total = words.length;
   const sentenceCount = [...live].filter((id) => wordsInSentence.has(id)).length;
@@ -140,7 +204,11 @@ export async function measureStoredText(store: AppStore, textId: string, opts: M
   if (sentenceCount) {
     features.longSentenceShare = round4([...wordsInSentence.values()].filter((n) => n > LONG_SENTENCE_WORDS).length / sentenceCount);
     if (withPos) features.subordinatorsPerSentence = round4(subordinators / sentenceCount);
+    if (passive) features.passivePerSentence = round4(passive / sentenceCount);
+    if (relative) features.relativePerSentence = round4(relative / sentenceCount);
+    if (participial) features.participialPerSentence = round4(participial / sentenceCount);
   }
+  if (brackets) features.bracketDistance = round4(bracketWords / brackets);
   if (total) {
     if (withMood) features.subjunctiveShare = round4(subjunctive / total);
     if (withPos) features.cliticShare = round4(clitics / total);
@@ -148,6 +216,10 @@ export async function measureStoredText(store: AppStore, textId: string, opts: M
     if (withPos) features.properNounShare = round4(proper / total);
     features.unanalysedShare = round4((total - analysed) / total);
     if (varieties.size) features.varietyShare = Object.fromEntries([...varieties].sort((a, b) => cmp(a[0], b[0])).map(([k, n]) => [k, round4(n / total)]));
+    if (compounds) features.compoundShare = round4(compounds / total);
+    if (genitive) features.genitiveShare = round4(genitive / total);
+    if (olderSpelling) features.historicalSpellingShare = round4(olderSpelling / total);
+    if (nominalizations) features.nominalizationShare = round4(nominalizations / total);
   }
 
   const profile: TextProfile = {
@@ -155,6 +227,12 @@ export async function measureStoredText(store: AppStore, textId: string, opts: M
     forms: sortedEntries(forms), lemmas: sortedEntries(lemmas), phrases: sortedEntries(phrases), patterns: sortedEntries(patterns),
     features,
   };
+  // compounds that name their components: [whole, components, occurrences], most frequent first
+  if (compoundCounts.size) {
+    profile.compounds = [...compoundCounts.values()]
+      .sort((x, y) => y.n - x.n || cmp(x.whole, y.whole) || cmp(x.parts.join(), y.parts.join()))
+      .map((c): [string, string[], number] => [c.whole, c.parts, c.n]);
+  }
   return { profile, features };
 }
 

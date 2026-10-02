@@ -28,7 +28,7 @@ import { cmp, pct1, plural, round4 } from './util';
 
 const byCount = (a: ForecastItem, b: ForecastItem) => b.count - a.count || cmp(a.surface, b.surface) || cmp(a.itemId, b.itemId);
 
-interface Form { itemId: string; surface: string; count: number; proper: boolean; gloss?: string; register: Set<string> }
+interface Form { itemId: string; itemKind: 'form' | 'lemma'; surface: string; count: number; proper: boolean; gloss?: string; register: Set<string> }
 
 export async function predictDifficulty(
   ctx: Ctx, userId: string, textId: string, opts?: { sentenceIds?: string[] },
@@ -51,12 +51,19 @@ export async function predictDifficulty(
     if (!analysis) unanalysed += 1;
     for (const tag of analysis?.register ?? []) if (tag !== 'standard') varieties[tag] = (varieties[tag] ?? 0) + 1;
     if (c.cls !== 'unseen') continue;
-    let f = fresh.get(c.token.formId);
+    if (c.unitPiece) continue; // the other piece of a lexical unit is the same new word as its head: listed once, with the head
+    // a lexical unit written as several words is listed once, under its lemma, as a dictionary lists it ("aufstehen")
+    const unit = analysis?.unit && analysis.lemmaId ? analysis.unit : undefined;
+    const key = unit ? analysis!.lemmaId! : c.token.formId;
+    let f = fresh.get(key);
     if (!f) {
       let gloss = analysis?.gloss;
       if (!gloss && analysis?.lemmaId) gloss = (await ctx.store.lemmas.get(analysis.lemmaId))?.gloss;
-      f = { itemId: c.token.formId, surface: c.token.surface, count: 0, proper: false, register: new Set(), ...(gloss ? { gloss } : {}) };
-      fresh.set(c.token.formId, f);
+      f = {
+        itemId: key, itemKind: unit ? 'lemma' : 'form', surface: unit ? unit.display : c.token.surface, count: 0, proper: false, register: new Set(),
+        ...(gloss ? { gloss } : {}),
+      };
+      fresh.set(key, f);
     }
     f.count += 1;
     if (analysis?.pos === 'PROPN') f.proper = true;
@@ -89,12 +96,12 @@ export async function predictDifficulty(
   const rareWords: ForecastItem[] = [];
   for (const f of [...fresh.values()].sort((x, y) => cmp(x.itemId, y.itemId))) {
     const item: ForecastItem = {
-      itemId: f.itemId, itemKind: 'form', surface: f.surface, count: f.count,
+      itemId: f.itemId, itemKind: f.itemKind, surface: f.surface, count: f.count,
       ...(f.gloss ? { gloss: f.gloss } : {}), ...(f.register.size ? { register: [...f.register].sort() } : {}),
     };
     if (f.proper) { properNouns.push(item); continue; }
     let useful = f.count >= FORECAST.usefulInWork;
-    if (!useful) {
+    if (!useful && f.itemKind === 'form') { // recurrence is counted by form: a unit's lemma has no form tokens to count
       const o = await occurrences(f.itemId);
       useful = f.count + o.work >= FORECAST.usefulInWork || Math.max(o.library, f.count) >= FORECAST.usefulInLibrary;
     }
@@ -142,13 +149,14 @@ export async function predictDifficulty(
     limits.push('You have read very little so far, so the estimate of which words you already know rests on very little.');
   }
 
-  const summary = `Predicted coverage ${pct1(predictedCoverage)} % (an estimate). ${plural(newUsefulWords.length, 'new useful word')} · ${plural(rareWords.length, 'rare word')}`
+  const baseSummary = `Predicted coverage ${pct1(predictedCoverage)} % (an estimate). ${plural(newUsefulWords.length, 'new useful word')} · ${plural(rareWords.length, 'rare word')}`
     + ` · ${plural(weakPhrases.length, 'weak phrase')} · ${plural(newConstructions.length, 'new construction')}.`;
 
   // Generic features of the text and the personal estimate built from its stored profile (the library package; absent when it cannot
   // say, for instance for a scoped forecast, which describes only part of the text).
   let features: DifficultyForecast['features'];
   let personal: DifficultyForecast['personal'];
+  let transparentCompounds = 0;
   if (!opts?.sentenceIds) {
     try {
       const lib = await import('../library');
@@ -156,14 +164,22 @@ export async function predictDifficulty(
       const profile = await lib.profileOfStoredText(ctx.store, textId);
       if (profile) {
         const work = text.workId ? await ctx.store.works.get(text.workId) : undefined;
-        personal = (await scoreProfile(ctx, userId, profile, { domains: work?.domains, variety: work?.variety })).personal;
+        const score = await scoreProfile(ctx, userId, profile, { domains: work?.domains, variety: work?.variety });
+        personal = score.personal;
+        transparentCompounds = score.compounds?.transparent ?? 0;
         features ??= profile.features;
       }
     } catch {
       features = undefined; // the library cannot profile this text: the forecast simply has no features / personal part
       personal = undefined;
+      transparentCompounds = 0;
     }
   }
+
+  // A ForecastItem has no field for a note, so the new compounds the learner could read from words he knows are counted in the
+  // summary instead: the new words listed above include them, and they are not really new to him.
+  const summary = baseSummary + (transparentCompounds > 0
+    ? ` ${plural(transparentCompounds, 'new compound')} in it ${transparentCompounds === 1 ? 'is' : 'are'} made of words you know.` : '');
 
   return {
     textId, userId, coverage, predictedCoverage, newUsefulWords, rareWords, weakPhrases, newConstructions, properNouns,

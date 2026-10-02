@@ -6,6 +6,11 @@
 
 /* ── word sheet: variety, other meanings, history ── */
 .sheet__variety { font-style: normal; color: var(--accent); }
+/* a lexical unit written as several words (steht … auf = aufstehen): its pieces in the text are marked together while a sheet is open.
+   A wash AND a heavy underline, and a hidden label every piece points to: never colour alone. */
+.sheet__unit { font-style: normal; }
+button.w.unit-piece { background: color-mix(in srgb, var(--accent) 14%, transparent); box-shadow: inset 0 -2px 0 var(--accent); }
+button.w.unit-piece.sel { background: var(--selection); }
 .sheet__senses { margin-top: 0.4rem; }
 .sheet__senses > .btn { margin-left: -0.6rem; }
 .sheet__list { margin: 0.3rem 0 0; padding-left: 1.1rem; font-size: 0.95rem; line-height: 1.5; color: var(--ink-soft); }

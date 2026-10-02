@@ -7,7 +7,7 @@
  * DEFAULT_ASSISTANCE, and the reader then keeps its original behaviour exactly (see `isLegacyProfile`).
  */
 import { DEFAULT_ASSISTANCE, LAYER_ASSISTANCE_LEVEL, REVIEW_OK } from '../../core';
-import type { AnalysisSourceInfo, AssistanceLevel, AssistanceProfile, ContentNote, DictionaryInfo, HelpLayer, PartOfSpeech, RegisterTag, SyllableAnalysis, TokenAnalysis, TokenSupport } from '../../core';
+import type { AnalysisSourceInfo, AssistanceLevel, AssistanceProfile, ContentNote, DictionaryInfo, HelpLayer, OrthographyRelation, PartOfSpeech, RegisterTag, SyllableAnalysis, TokenAnalysis, TokenSupport, Variety, WordPart } from '../../core';
 
 /** The profile of a course without a ladder: the reader looks and behaves exactly as it always did. */
 export function isLegacyProfile(profile: AssistanceProfile): boolean {
@@ -376,4 +376,50 @@ export const PERSONAL_FACTOR_WORD: Record<string, string> = {
   'sentence-length': 'sentence length', 'clause-depth': 'clause depth', subjunctive: 'subjunctive', clitics: 'attached pronouns',
   regional: 'regional vocabulary', historical: 'historical vocabulary', 'proper-names': 'names', domain: 'subject matter',
   author: "author's style", unanalysed: 'words without analysis',
+  compounds: 'compound words', 'verb-bracket': 'verbs split apart', genitive: 'genitive', passive: 'passive', 'relative-clauses': 'relative clauses',
+  'participial-modifiers': 'participle phrases', nominalizations: 'nouns made from verbs', 'older-spelling': 'older spelling',
 };
+
+// ───────────────────────────── lexical units, compounds, older spelling ─────────────────────────────
+
+/** The pieces of a lexical unit written as several words, in text order, then the unit as a dictionary lists it: "steht … auf = aufstehen". */
+export function unitText(pieces: readonly string[], display: string): string {
+  return pieces.length > 1 ? `${pieces.join(' … ')} = ${display}` : display;
+}
+
+/** This word's part in its unit, in plain words ("this word is the separable prefix"). The head is the word that carries the unit. */
+export function unitRoleText(role: string): string {
+  return role === 'head' ? 'this word is the main part' : `this word is the ${roleText(role)}`;
+}
+
+/** How one part of a written word reads in the word-parts line: a linking element is shown as such (-s-), the rest as written. */
+export function partText(p: Pick<WordPart, 'text' | 'kind'>): string {
+  return p.kind === 'link' ? `-${p.text.replace(/^-+|-+$/g, '')}-` : p.text;
+}
+
+/**
+ * The plain words after a part, in parentheses. A part that states its `kind` is read by that kind (a component, the head, a link and
+ * a contracted word need no label: "im = in + dem"); a prefix, marker, stem or clitic keeps its role; a part with no kind keeps its
+ * role exactly as it always did.
+ */
+export function partRole(p: Pick<WordPart, 'role' | 'kind'>): string | undefined {
+  if (!p.role) return undefined;
+  if (p.kind === undefined || p.kind === 'prefix' || p.kind === 'marker' || p.kind === 'stem' || p.kind === 'clitic') return p.role;
+  return undefined;
+}
+
+/** The sentence that names the head of a compound ("the last part decides the gender and the kind of thing"), when the parts name one. */
+export function compoundHeadLine(parts: ReadonlyArray<Pick<WordPart, 'text' | 'kind'>>): string | undefined {
+  const head = parts.find((p) => p.kind === 'head');
+  if (!head) return undefined;
+  return head === parts[parts.length - 1]
+    ? `${head.text} is the head: the last part decides the gender and the kind of thing.`
+    : `${head.text} is the head: it decides the gender and the kind of thing.`;
+}
+
+/** The older spelling of a word: today's spelling and the period's label from the adapter's table ("today: dass — spelling before 1996"). */
+export function olderSpellingLine(o: Pick<OrthographyRelation, 'modern' | 'period'> | undefined, varieties?: Readonly<Record<string, Pick<Variety, 'label'>>>): { modern: string; label?: string } | undefined {
+  if (!o) return undefined;
+  const label = varieties?.[o.period]?.label;
+  return label ? { modern: o.modern, label } : { modern: o.modern };
+}

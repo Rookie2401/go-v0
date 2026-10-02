@@ -527,7 +527,8 @@ export class Folder {
     const token = await this.ctx.store.tokens.get(tokenId);
     if (!token) return [];
     const out = [token.formId];
-    const lemmaId = await new AnalysisCache(this.ctx.store).lemmaIdOf(tokenId);
+    // help on any piece of a lexical unit is help on the unit's lemma (a non-head piece credits no ENCOUNTER, but it asked)
+    const lemmaId = await new AnalysisCache(this.ctx.store).askedLemmaIdOf(tokenId);
     if (lemmaId) out.push(lemmaId);
     return out;
   }

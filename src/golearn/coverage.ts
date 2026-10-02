@@ -27,7 +27,7 @@ import type {
   ScriptureReadiness, Sentence, Token,
 } from '../core';
 import { ids } from '../core';
-import { AnalysisCache } from './analysis';
+import { AnalysisCache, askedLemmaId, creditableLemmaId, isNonHeadPiece } from './analysis';
 import { RECOGNIZED_EVIDENCE_REF, bandFor, levelAtLeast } from './policy';
 import type { Ctx } from './state';
 import { effectiveEstimate, effectiveReadingLevel } from './state';
@@ -42,15 +42,35 @@ export interface Classified {
   formState?: LearnerItemState;
   lemmaState?: LearnerItemState;
   listeningKnown: boolean;
+  /**
+   * Set on a piece of a lexical unit that is not its head (the "auf" of "steht … auf"): part of ONE word. It is classified exactly
+   * as the head is (the head's form and the unit's lemma) and carries no lemma of its own, so that a unit is counted, listed and
+   * grouped once, on its head. Absent on every other token.
+   */
+  unitPiece?: true;
 }
 
 const met = (s?: LearnerItemState) => !!s && (s.reading.level !== 'unseen' || s.listening.level !== 'unseen');
 
 export async function classifyTokens(ctx: Ctx, userId: string, tokens: Token[], cache: AnalysisCache): Promise<Classified[]> {
   await cache.prefetch(tokens.map((t) => t.id));
-  const lemmaIds = await Promise.all(tokens.map((t) => cache.lemmaIdOf(t.id)));
+  const analyses = await Promise.all(tokens.map((t) => cache.resolve(t.id)));
+  const lemmaIds = analyses.map((a) => creditableLemmaId(a));
+  // A non-head piece of a unit is judged as its head is: by the head's form and by the unit's lemma (not by its own form).
+  const pieces = analyses.map((a) => isNonHeadPiece(a));
+  const headIds = [...new Set(analyses.flatMap((a, i) => (pieces[i] ? [a!.unit!.headTokenId] : [])))];
+  const headTokens = new Map<string, Token>();
+  if (headIds.length > 0) (await ctx.store.tokens.getMany(headIds)).forEach((t) => { if (t) headTokens.set(t.id, t); });
+  const judged = tokens.map((t, i) => (pieces[i]
+    ? { formId: headTokens.get(analyses[i]!.unit!.headTokenId)?.formId, lemmaId: askedLemmaId(analyses[i]) }
+    : { formId: t.formId, lemmaId: lemmaIds[i] }));
+
   const wanted = new Set<string>();
-  tokens.forEach((t, i) => { wanted.add(t.formId); const l = lemmaIds[i]; if (l) wanted.add(l); });
+  tokens.forEach((t, i) => {
+    wanted.add(t.formId);
+    const l = lemmaIds[i]; if (l) wanted.add(l);
+    const j = judged[i]; if (j.formId) wanted.add(j.formId); if (j.lemmaId) wanted.add(j.lemmaId);
+  });
   const list = [...wanted];
   const rows = await ctx.store.learnerItems.getMany(list.map((i) => ids.learnerItem(userId, i)));
   const states = new Map<string, LearnerItemState>();
@@ -58,15 +78,17 @@ export async function classifyTokens(ctx: Ctx, userId: string, tokens: Token[], 
 
   return Promise.all(tokens.map(async (token, i) => {
     const lemmaId = lemmaIds[i];
-    const formState = states.get(token.formId);
-    const lemmaState = lemmaId ? states.get(lemmaId) : undefined;
+    const j = judged[i];
+    // for an ordinary token these are the token's own form and credited lemma, exactly as before
+    const formState = j.formId ? states.get(j.formId) : undefined;
+    const lemmaState = j.lemmaId ? states.get(j.lemmaId) : undefined;
     const known = levelAtLeast(effectiveReadingLevel(formState), 'recognized') || levelAtLeast(effectiveReadingLevel(lemmaState), 'recognized');
     const cls: Cls = known ? 'known'
       : effectiveEstimate(formState) || effectiveEstimate(lemmaState) ? 'estimated'
         : met(formState) || met(lemmaState) ? 'partial' : 'unseen';
     const listeningKnown = levelAtLeast(formState?.listening.level ?? 'unseen', 'recognized') || levelAtLeast(lemmaState?.listening.level ?? 'unseen', 'recognized');
-    const pos = (await cache.resolve(token.id))?.pos;
-    return { token, cls, ...(pos ? { pos } : {}), lemmaId, formState, lemmaState, listeningKnown };
+    const pos = analyses[i]?.pos;
+    return { token, cls, ...(pos ? { pos } : {}), lemmaId, formState: pieces[i] ? states.get(token.formId) : formState, lemmaState, listeningKnown, ...(pieces[i] ? { unitPiece: true as const } : {}) };
   }));
 }
 
@@ -196,7 +218,7 @@ export async function scriptureReadiness(
 
   const unfam = new Map<string, { itemId: string; surface: string; lemmaId?: string; lemmaKnown: boolean; count: number }>();
   for (const c of classified) {
-    if (c.cls === 'known') continue;
+    if (c.cls === 'known' || c.unitPiece) continue; // a unit's other piece is listed with its head, never on its own
     const cur = unfam.get(c.token.formId);
     if (cur) cur.count += 1;
     else unfam.set(c.token.formId, {
@@ -215,7 +237,7 @@ export async function scriptureReadiness(
   }
   const groups = new Map<string, Group>();
   for (const c of classified) {
-    if (c.cls === 'known') continue;
+    if (c.cls === 'known' || c.unitPiece) continue;
     const id = c.lemmaId ?? c.token.formId;
     const state = c.lemmaId ? c.lemmaState : c.formState;
     let g = groups.get(id);

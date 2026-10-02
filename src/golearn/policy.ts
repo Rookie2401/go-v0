@@ -285,6 +285,19 @@ export const PERSONAL = {
   /** Domain familiarity: at least `low` ⇒ low difficulty, at least `moderate` ⇒ moderate, else high. */
   domain: { low: 0.8, moderate: 0.5 },
   unanalysedShare: { low: 0.02, moderate: 0.05 },
+  // Structure that German (and any language whose analyses state it) adds. First guesses, not tuned on any learner.
+  /** Share of the text's word tokens that are new compounds he cannot read from words he knows (partial + opaque occurrences / words). */
+  compoundNotTransparentShare: { low: 0.01, moderate: 0.03 },
+  /** Mean number of words between the two ends of a verb bracket (finite verb … participle, infinitive or separated prefix). */
+  bracketDistance: { low: 2, moderate: 5 },
+  genitiveShare: { low: 0.03, moderate: 0.07 },
+  /** Per sentence. */
+  passivePerSentence: { low: 0.1, moderate: 0.3 },
+  relativePerSentence: { low: 0.2, moderate: 0.5 },
+  participialPerSentence: { low: 0.05, moderate: 0.2 },
+  nominalizationShare: { low: 0.03, moderate: 0.08 },
+  /** Share of the words written in an older spelling. */
+  olderSpellingShare: { low: 0, moderate: 0.05 },
   /** "Little history": fewer than this share of the text's most frequent forms have ever been met. */
   historyTopForms: 50,
   historyMinShare: 0.2,

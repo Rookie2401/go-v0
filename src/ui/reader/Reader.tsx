@@ -59,7 +59,7 @@ import { createViewDetector } from './viewDetection';
 import type { ViewDetector, ViewDetectorFactory } from './viewDetection';
 import { useTextData } from './useTextData';
 import type { TextData } from './useTextData';
-import { dictionaryName, englishBehindMenu, hasClauseSpans, hasSeveralReadings, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, visibleNotes } from './assistance';
+import { dictionaryName, englishBehindMenu, hasClauseSpans, hasSeveralReadings, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, unitText, visibleNotes } from './assistance';
 import type { LayerFacts } from './assistance';
 import type { DictionaryInfo, LexiconSource } from '../../core';
 import { dictionaryView } from '../../ingest';
@@ -82,6 +82,9 @@ export interface ReaderProps {
   /** Content above the text that scrolls with it (passage preparation). */
   before?: ReactNode;
 }
+
+/** The hidden label every piece of an open lexical unit points to (`aria-describedby`), so the grouping is not colour alone. */
+const UNIT_LABEL_ID = 'unit-label';
 
 interface VerseInfo { label: string; first: boolean; sentenceIds: string[] }
 
@@ -344,6 +347,18 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
   const cardSentenceId = card ? (card.subject.kind === 'word' ? card.subject.token.sentenceId : card.subject.sentenceId) : undefined;
   const clauseView = !legacy && profile.layers.includes('clause-structure');
 
+  // A word that is one piece of a lexical unit written as several words (steht … auf): while the sheet of ANY piece is open, every
+  // piece is marked as belonging together. The marks come from the open word's own analysis, so a word with no unit marks nothing.
+  const unitOpen = card?.subject.kind === 'word' && sheetOpen ? pick(card.supports, 'analysis')?.unit : undefined;
+  const unitPieceIds = useMemo(() => new Set(unitOpen?.pieceTokenIds ?? []), [unitOpen]);
+  const unitPieces = useMemo(() => {
+    if (!unitOpen || !cardSentenceId) return undefined;
+    const bySentence = data.tokensBySentence.get(cardSentenceId) ?? [];
+    const found = bySentence.filter((t) => unitOpen.pieceTokenIds.includes(t.id)).sort((a, b) => a.start - b.start).map((t) => t.surface);
+    return found.length > 0 ? found : undefined;
+  }, [unitOpen, cardSentenceId, data.tokensBySentence]);
+  const unitLabel = unitOpen ? `Part of a word written in pieces: ${unitText(unitPieces ?? [], unitOpen.display)}` : undefined;
+
   const fetchSupport = useCallback(async (token: Token, level: AssistanceLevel) => {
     const support = await golearn.tokenSupport(userId, token.id, level);
     setCard((c) => (c && c.subject.kind === 'word' && c.subject.token.id === token.id ? { ...c, supports: { ...c.supports, [level]: support } } : c));
@@ -523,8 +538,10 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
           <button
             key={t.id}
             type="button"
-            className={`w tok hl-${state}${MARK[state] ? ` ${MARK[state]}` : ''}${sheetOpen && cardToken?.id === t.id ? ' sel is-open' : ''}`}
+            className={`w tok hl-${state}${MARK[state] ? ` ${MARK[state]}` : ''}${sheetOpen && cardToken?.id === t.id ? ' sel is-open' : ''}${unitPieceIds.has(t.id) ? ' unit-piece' : ''}`}
             data-token-id={t.id}
+            data-unit-piece={unitPieceIds.has(t.id) ? 'true' : undefined}
+            aria-describedby={unitPieceIds.has(t.id) ? UNIT_LABEL_ID : undefined}
             aria-expanded={sheetOpen && cardToken?.id === t.id}
             onClick={() => { void openToken(t); }}
           >{t.surface}</button>,
@@ -735,6 +752,7 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
           dictionary={dictionary}
           dictionaryView={cardToken ? dictViews.get(cardToken.normalized) : undefined}
           history={card.history}
+          unitPieces={unitPieces}
           open={sheetOpen}
           onMore={() => { if (nextStep) void openLayer(nextStep); }}
           onRescue={() => { void romanizationRescue(romanization); }}
@@ -742,6 +760,8 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
           onExited={() => setCard(null)}
         />
       )}
+
+      {unitLabel && <span id={UNIT_LABEL_ID} className="sr-only" data-testid="unit-label">{unitLabel}</span>}
 
       <div className="reader__main">
         <header className="reader__header" ref={headRef}>

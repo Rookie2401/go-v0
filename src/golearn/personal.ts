@@ -14,6 +14,11 @@
  * asking the language adapter for the readings of each new form (confidence of at least LEMMA_MIN_CONFIDENCE, as everywhere else) and
  * only when the learner has met some lemma of the profile at all.
  *
+ * COMPOUNDS (a profile that names them): a compound whose whole word the learner does not know is transparent when he knows every
+ * component by the same test as "known", partial when he knows some, opaque when he knows none. The shares do not change (a
+ * transparent compound is not counted as known); the `new-words` factor leaves out the compounds he has never met but could read.
+ * Like the other structural factors, the new ones are said in words and do not move the label, which rests on coverage alone.
+ *
  * Coarse on purpose: a label, and for each factor that applies a level and one line. `caveats` says what the data cannot support.
  */
 import type {
@@ -89,8 +94,10 @@ export async function scoreProfile(
   const lang = profile.lang;
   const forms = [...profile.forms].sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : a[0] > b[0] ? 1 : 0));
   const formId = (f: string) => ids.form(lang, f);
+  const compoundList = profile.compounds ?? [];
   const rows = await rowsByItemId(ctx, userId, [
     ...forms.map(([f]) => formId(f)), ...profile.lemmas.map(([l]) => l), ...profile.phrases.map(([p]) => p), ...profile.patterns.map(([p]) => p),
+    ...compoundList.flatMap(([whole, parts]) => [whole, ...parts]),
   ]);
 
   // lemma-aware: lemmas of the profile the learner has met, by their written lemma
@@ -118,6 +125,24 @@ export async function scoreProfile(
   const unmet = (list: Array<[string, number]>) => list.filter(([id]) => !(rows.get(id)?.encounterCount)).map(([id]) => id);
   const newPhrases = unmet(profile.phrases).slice(0, PERSONAL.listCap);
   const newPatterns = unmet(profile.patterns).slice(0, PERSONAL.listCap);
+
+  // ── compounds the learner does not know as wholes, by what he knows of their parts ──
+  // `known` is the very test the shares use. A transparent compound is NOT counted as known (the shares do not change), but the
+  // `new-words` factor does not judge him on it: it is made of words he knows. Only a compound whose whole word he has never met
+  // is taken out of the new count (its form is then new too); the learner's other new words are never discounted for it.
+  const isKnown = (id: string) => classOf(rows.get(id)) === 'known';
+  const compounds: NonNullable<ProfileScore['compounds']> = { transparent: 0, partial: 0, opaque: 0 };
+  let transparentTokens = 0;
+  let transparentUnmet = 0;
+  let notTransparentTokens = 0; // word tokens that are new compounds he cannot read from known parts (partial + opaque)
+  for (const [whole, parts, n] of compoundList) {
+    if (isKnown(whole)) continue;
+    const knownParts = parts.filter(isKnown).length;
+    const kind = parts.length > 0 && knownParts === parts.length ? 'transparent' : knownParts > 0 ? 'partial' : 'opaque';
+    compounds[kind] += 1;
+    if (kind !== 'transparent') notTransparentTokens += n;
+    if (kind === 'transparent' && !met(rows.get(whole))) { transparentTokens += n; transparentUnmet += 1; }
+  }
 
   const t = Math.max(1, total);
   const empty = total === 0;
@@ -160,8 +185,21 @@ export async function scoreProfile(
   const add = (key: DifficultyFactor['key'], level: Level, note: string) => factors.push({ key, level, note });
   if (lexicalCoverage !== undefined) {
     add('lexical-coverage', down(lexicalCoverage, PERSONAL.coverage), `About ${share(lexicalCoverage)} of its words are shown understood or likely familiar (an estimate).`);
-    add('new-words', up(newShare, PERSONAL.newShare),
-      newForms === 0 ? 'No word in it is new to you.' : `${plural(newForms, 'word')} (${share(newShare)} of the words) you have not met${promoted > 0 ? ', not counting forms of words you know' : ''}.`);
+    // without the compounds made of words he knows (see above); with none of those this is exactly the share of the whole text
+    const judgedTokens = Math.max(0, counts.new - transparentTokens);
+    const judgedNewShare = empty ? 0 : judgedTokens / t;
+    const judgedForms = Math.max(0, newForms - transparentUnmet);
+    const notCounting = [promoted > 0 ? 'forms of words you know' : '', transparentUnmet > 0 ? 'compounds made of words you know' : ''].filter(Boolean).join(' or ');
+    add('new-words', up(judgedNewShare, PERSONAL.newShare),
+      judgedForms === 0 ? `No word in it is new to you${transparentUnmet > 0 ? ', apart from compounds made of words you know' : ''}.`
+        : `${plural(judgedForms, 'word')} (${share(judgedNewShare)} of the words) you have not met${notCounting ? `, not counting ${notCounting}` : ''}.`);
+  }
+  const newCompounds = compounds.transparent + compounds.partial + compounds.opaque;
+  if (newCompounds > 0) {
+    const notTransparent = compounds.partial + compounds.opaque;
+    // judged by the share of the TEXT's words, so that one opaque compound in a long text does not read "high"
+    add('compounds', up(empty ? 0 : notTransparentTokens / t, PERSONAL.compoundNotTransparentShare),
+      `${plural(newCompounds, 'new compound')}: ${compounds.transparent} made of words you know, ${notTransparent} not.`);
   }
   const phraseNew = profile.phrases.length > 0 ? newPhrases.length / profile.phrases.length : 0;
   if (profile.phrases.length > 0) add('phrases', up(phraseNew, PERSONAL.newPhraseShare), `${newPhrases.length} of its ${plural(profile.phrases.length, 'phrase')} are new to you.`);
@@ -170,6 +208,14 @@ export async function scoreProfile(
   if (f.subordinatorsPerSentence !== undefined) add('clause-depth', up(f.subordinatorsPerSentence, PERSONAL.subordinatorsPerSentence), `About ${f.subordinatorsPerSentence.toFixed(1)} subordinating words per sentence.`);
   if (f.subjunctiveShare !== undefined && f.subjunctiveShare > 0) add('subjunctive', up(f.subjunctiveShare, PERSONAL.subjunctiveShare), `${share(f.subjunctiveShare)} of the words are subjunctive forms.`);
   if (f.cliticShare !== undefined && f.cliticShare > 0) add('clitics', up(f.cliticShare, PERSONAL.cliticShare), `${share(f.cliticShare)} of the words carry or are attached pronouns.`);
+  // structure the analyses state (each only when the text has it): the verb bracket, the genitive, passives, relative clauses …
+  const perSentence = (x: number) => x.toFixed(2);
+  if (f.bracketDistance !== undefined) add('verb-bracket', up(f.bracketDistance, PERSONAL.bracketDistance), `Between the two parts of a verb there are ${f.bracketDistance.toFixed(1)} words on average.`);
+  if (f.genitiveShare !== undefined && f.genitiveShare > 0) add('genitive', up(f.genitiveShare, PERSONAL.genitiveShare), `${share(f.genitiveShare)} of the words are in the genitive.`);
+  if (f.passivePerSentence !== undefined && f.passivePerSentence > 0) add('passive', up(f.passivePerSentence, PERSONAL.passivePerSentence), `About ${perSentence(f.passivePerSentence)} passive constructions per sentence.`);
+  if (f.relativePerSentence !== undefined && f.relativePerSentence > 0) add('relative-clauses', up(f.relativePerSentence, PERSONAL.relativePerSentence), `About ${perSentence(f.relativePerSentence)} relative clauses per sentence.`);
+  if (f.participialPerSentence !== undefined && f.participialPerSentence > 0) add('participial-modifiers', up(f.participialPerSentence, PERSONAL.participialPerSentence), `About ${perSentence(f.participialPerSentence)} participle phrases describing a noun per sentence.`);
+  if (f.nominalizationShare !== undefined && f.nominalizationShare > 0) add('nominalizations', up(f.nominalizationShare, PERSONAL.nominalizationShare), `${share(f.nominalizationShare)} of the words are nouns made from verbs or adjectives.`);
   let regional = 0;
   let historical = 0;
   for (const [tag, s] of Object.entries(f.varietyShare ?? {})) {
@@ -178,6 +224,7 @@ export async function scoreProfile(
   }
   if (regional > 0) add('regional', up(regional, PERSONAL.regionalShare), `${share(regional)} of the words are marked as belonging to another variety of the language.`);
   if (historical > 0) add('historical', up(historical, PERSONAL.historicalShare), `${share(historical)} of the words are in older Spanish.`);
+  if (f.historicalSpellingShare !== undefined && f.historicalSpellingShare > 0) add('older-spelling', up(f.historicalSpellingShare, PERSONAL.olderSpellingShare), `${share(f.historicalSpellingShare)} of the words are written in an older spelling.`);
   if (f.properNounShare !== undefined && f.properNounShare > 0) add('proper-names', up(f.properNounShare, PERSONAL.properNounShare), `${share(f.properNounShare)} of the words are names.`);
   if (domainFamiliarity !== undefined) add('domain', down(domainFamiliarity, PERSONAL.domain), `You know about ${share(domainFamiliarity)} of the words it shares with texts of the same subject you have read.`);
   if (f.unanalysedShare !== undefined && f.unanalysedShare > 0) add('unanalysed', up(f.unanalysedShare, PERSONAL.unanalysedShare), `${share(f.unanalysedShare)} of the words could not be analysed.`);
@@ -195,6 +242,6 @@ export async function scoreProfile(
 
   return {
     textId: profile.textId, knownShare, familiarShare, metShare, newShare, newForms, weakItems, newPatterns, newPhrases,
-    ...(domainFamiliarity !== undefined ? { domainFamiliarity } : {}), personal,
+    ...(domainFamiliarity !== undefined ? { domainFamiliarity } : {}), ...(compoundList.length > 0 ? { compounds } : {}), personal,
   };
 }

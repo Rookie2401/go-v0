@@ -17,7 +17,7 @@ import type { Variety, VarietyPolicy } from '../../core';
 import type { AnalysisSourceInfo, ContentNote, DictionaryInfo, HelpLayer, LanguageCode, Sentence, SyllableAnalysis, Token, TokenSupport } from '../../core';
 import { useApp } from '../context';
 import { I, IconBtn } from '../ui';
-import { MORE_LABEL, NOTE_KIND_LABEL, analysisSourceLine, certainty, clauseSegments, decodingSource, dictionaryName, dictionaryOthers, hasClauseSpans, listsDiffer, maxLevel, morphAlternates, morphInWords, noteIsReviewed, pick, roleText, ruleToneLine, syllableSourceLabel, varietyLine, wordParts } from './assistance';
+import { MORE_LABEL, NOTE_KIND_LABEL, analysisSourceLine, certainty, clauseSegments, compoundHeadLine, decodingSource, dictionaryName, dictionaryOthers, hasClauseSpans, listsDiffer, maxLevel, morphAlternates, morphInWords, noteIsReviewed, olderSpellingLine, partRole, partText, pick, roleText, ruleToneLine, syllableSourceLabel, unitRoleText, unitText, varietyLine, wordParts } from './assistance';
 
 
 export type SheetSubject = { kind: 'word'; token: Token } | { kind: 'sentence'; sentence: Sentence };
@@ -77,6 +77,8 @@ export interface TokenCardProps {
   varieties?: Readonly<Record<string, Variety>>;
   /** Lines from the learner's own record with this word (`golearn.itemHistory`). */
   history: string[];
+  /** When the word is one piece of a lexical unit written as several words: the surfaces of all its pieces, in text order. */
+  unitPieces?: string[];
   /** The sheet is up. When false it plays its exit, then calls onExited. */
   open: boolean;
   onMore(): void;
@@ -87,7 +89,7 @@ export interface TokenCardProps {
 }
 
 export function TokenCard(props: TokenCardProps) {
-  const { subject, legacy, opened, next, supports, loaded, explanation, english, why, lang, sentence, notes, clauseView, decoding, sources, dictionary, dictionaryView, describeMorph, varietyPolicy, varieties, history, open, onMore, onRescue, onClose, onExited } = props;
+  const { subject, legacy, opened, next, supports, loaded, explanation, english, why, lang, sentence, notes, clauseView, decoding, sources, dictionary, dictionaryView, describeMorph, varietyPolicy, varieties, history, unitPieces, open, onMore, onRescue, onClose, onExited } = props;
   const { store } = useApp();
   const token = subject.kind === 'word' ? subject.token : undefined;
   const level = maxLevel(opened);
@@ -161,7 +163,11 @@ export function TokenCard(props: TokenCardProps) {
   // Parts, variety tags and a modern aid appear only when the analysis carries them (the Spanish adapter fills them).
   const parts = wordParts(analysis);
   const varietyTagsLine = analysis?.varieties?.length ? courseVarietyLine(analysis.varieties, varietyPolicy, varieties) : undefined;
-  const modern = typeof analysis?.notes?.modern === 'string' ? analysis.notes.modern : undefined;
+  const unit = analysis?.unit;
+  const headLine = compoundHeadLine(parts);
+  // An older spelling (the adapter's statement) says it all; the plain `notes.modern` aid is for analyses that only have the note.
+  const spelling = olderSpellingLine(analysis?.orthography, varieties);
+  const modern = !spelling && typeof analysis?.notes?.modern === 'string' ? analysis.notes.modern : undefined;
   const surface = token?.surface ?? '';
   const morphText = morphInWords(describeMorph, analysis?.morph, analysis?.pos ?? lemma?.pos, lemma?.lemma, surface) ?? morphologyLine;
   const morphOthers = morphAlternates(describeMorph, analysis, surface);
@@ -206,16 +212,29 @@ export function TokenCard(props: TokenCardProps) {
             {fromDictionary && gloss && <p className="card__note" data-testid="dictionary-gloss">dictionary meaning, not checked for this sentence</p>}
             {sourceLine && <p className="card__note sheet__source" data-testid="analysis-source">{sourceLine}</p>}
             {variety && <p className="card__note sheet__variety" data-testid="variety">{variety}</p>}
+            {unit && (
+              <p className="card__note sheet__unit" data-testid="word-unit">
+                <span lang={lang} data-testid="unit-pieces">{unitText(unitPieces ?? [], unit.display)}</span>
+                {' — '}<span data-testid="unit-role">{unitRoleText(unit.role)}</span>
+              </p>
+            )}
             {parts.length > 0 && (
               <p className="card__note sheet__parts" data-testid="word-parts">
                 <span lang={lang}>{surface}</span> ={' '}
-                {parts.map((p, i) => (
-                  <span key={`${p.start}-${i}`}>{i > 0 ? ' + ' : ''}<span lang={lang}>{p.text}</span>{p.role ? ` (${p.role})` : ''}</span>
-                ))}
+                {parts.map((p, i) => {
+                  const role = partRole(p);
+                  return <span key={`${p.start}-${i}`}>{i > 0 ? ' + ' : ''}<span lang={lang}>{partText(p)}</span>{role ? ` (${role})` : ''}</span>;
+                })}
               </p>
             )}
+            {headLine && <p className="card__note sheet__parts" data-testid="compound-head">{headLine}</p>}
             {varietyTagsLine && <p className="card__note sheet__variety" data-testid="variety-tags">{varietyTagsLine}</p>}
-            {modern && <p className="card__note" data-testid="modern-form" title="A modern aid beside the text; the text itself stays as written">today: <span lang={lang}>{modern}</span></p>}
+            {spelling && (
+              <p className="card__note" data-testid="older-spelling" title="Today's spelling beside the text; the text itself stays as written">
+                today: <span lang={lang}>{spelling.modern}</span>{spelling.label ? ` — ${spelling.label}` : ''}
+              </p>
+            )}
+            {modern &&<p className="card__note" data-testid="modern-form" title="A modern aid beside the text; the text itself stays as written">today: <span lang={lang}>{modern}</span></p>}
             {uncertain && anyLoaded && <p className="card__note">The analysis here is uncertain.</p>}
             {!legacy && analysis?.role && (
               <div className="card__line"><span className="k">What it does here</span><span data-testid="word-role">{roleText(analysis.role)}</span></div>

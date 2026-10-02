@@ -18,7 +18,7 @@ import type { AnalysisCoverage } from '../adapters/shared';
 import { describeVersionBump } from './history';
 import { hasErrors, validateBatch, type CorpusDocument, type ValidationIssue } from './format';
 import {
-  INGEST_TOOL, analyseDocument, buildNoteRows, coverageWarning, lemmasToLookUp, materializeSentence, newCatalog, planDocument, wordFormsOf, type DocumentPlan,
+  INGEST_TOOL, analyseDocument, buildNoteRows, chainedLemmasToLookUp, coverageWarning, lemmasToLookUp, materializeSentence, newCatalog, planDocument, wordFormsOf, type DocumentPlan,
   type PlannedSentence, type SentenceRows,
 } from './plan';
 
@@ -148,14 +148,19 @@ export async function planWithDictionary(
       }
       // an inflected form's gloss is its lemma's, another spelling is read as its headword, and a guess (about a form the
       // dictionary lacks, or about a unit written as several words) is judged by its lemma: one more round for those lemmas and
-      // the other headwords they may be filed under (no further rounds)
-      const lemmas = lemmasToLookUp(registry.get(doc.lang), analysis, found.values(), dict.known);
-      const wantLemmas = [...lemmas].filter((l) => !dict!.asked.has(l));
-      if (wantLemmas.length) {
-        const foundLemmas = await dict.src.lookup(wantLemmas);
-        for (const l of wantLemmas) dict.asked.add(l);
-        for (const [form, entries] of foundLemmas) if (entries.length) dict.known.set(form, entries);
-      }
+      // the other headwords they may be filed under
+      const adapter = registry.get(doc.lang);
+      const ask = async (lemmas: Set<string>) => {
+        const want = [...lemmas].filter((l) => !dict!.asked.has(l));
+        if (!want.length) return;
+        const got = await dict!.src.lookup(want);
+        for (const l of want) dict!.asked.add(l);
+        for (const [form, entries] of got) if (entries.length) dict!.known.set(form, entries);
+      };
+      await ask(lemmasToLookUp(adapter, analysis, found.values(), dict.known));
+      // a form of a form (a feminine plural of a participle of a verb): where such a lemma turned out to be only an inflected
+      // form itself, a third and last round asks for the lemma it is a form of (no further rounds)
+      await ask(chainedLemmasToLookUp(adapter, found.values(), dict.known));
       plans.push(planDocument(doc, registry, { dictionary: dict.known, dictionaryId: dict.info.id, analysis }));
     } catch (e) {
       // a dictionary that cannot be read must not block the import of the text: say so and import without it

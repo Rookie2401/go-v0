@@ -203,27 +203,97 @@ const VERBAL = new Set<PartOfSpeech>(['VERB', 'AUX']);
  * No entry of the right word class means no entry: a verb form is never glossed with the noun's meaning.
  */
 function lemmaEntryFor(lemmaEntries: readonly DictionaryEntry[] | undefined, pos: PartOfSpeech | undefined): DictionaryEntry | undefined {
-  const fits = (e: DictionaryEntry) => pos === undefined || e.pos === pos || (e.pos !== undefined && VERBAL.has(pos) && VERBAL.has(e.pos));
-  return (lemmaEntries ?? []).find((e) => !e.formOf?.length && !alternativeOnly(e) && e.glosses.some((g) => g.trim().length > 0) && fits(e));
+  return (lemmaEntries ?? []).find((e) => !e.formOf?.length && !alternativeOnly(e) && e.glosses.some((g) => g.trim().length > 0) && posFits(pos, e));
+}
+/** An entry's part of speech fits a reading's: equal, both verbal, or the reading has none. */
+const posFits = (pos: PartOfSpeech | undefined, e: DictionaryEntry): boolean =>
+  pos === undefined || e.pos === pos || (e.pos !== undefined && VERBAL.has(pos) && VERBAL.has(e.pos));
+
+/**
+ * A form of a form: a lemma L that an inflected form names may itself be only an inflected form ("encallecido", listed only
+ * as the past participle of "encallecer"). When L's entries of a fitting word class carry exactly one such relation, it is
+ * returned (the lemma M and L's labels for it); several relations name no single lemma, so none is chosen. One step only.
+ */
+function formOfForm(entriesOfL: readonly DictionaryEntry[] | undefined, pos: PartOfSpeech | undefined): { lemma: string; tags: string[] } | undefined {
+  const relations = (entriesOfL ?? []).filter((x) => posFits(pos, x)).flatMap((x) => x.formOf ?? []);
+  return relations.length === 1 ? relations[0] : undefined;
+}
+
+const CAPITAL = /\p{Lu}|\p{Lt}/u;
+const SMALL = /\p{Ll}/u;
+/** The first letter of a spelling is a capital. */
+const startsWithCapital = (s: string): boolean => { const first = /\p{L}/u.exec(s)?.[0]; return first !== undefined && CAPITAL.test(first); };
+/** A spelling with capitals and no small letter at all (a headline, an initialism). */
+const allCapitals = (s: string): boolean => CAPITAL.test(s) && !SMALL.test(s);
+
+/**
+ * How the source writes a headword, as far as its capitals go: 'capitals' = two or more capital letters with no small
+ * letter before the first run of capitals ends (PA, ESO, TVE, EE. UU., McDonald); 'capitalised' = it starts with its one
+ * capital (Rosa, Marte, Dios); 'any' = everything else (no capital at all, or a small letter first: iPhone, pH).
+ */
+export function writtenCase(written: string): 'capitals' | 'capitalised' | 'any' {
+  const chars = [...written];
+  const first = chars.findIndex((c) => CAPITAL.test(c));
+  if (first < 0) return 'any';
+  let end = first;
+  while (end < chars.length && CAPITAL.test(chars[end])) end++;
+  const capitals = chars.filter((c) => CAPITAL.test(c)).length;
+  if (capitals >= 2 && !SMALL.test(chars.slice(0, end).join(''))) return 'capitals';
+  return startsWithCapital(written) ? 'capitalised' : 'any';
+}
+
+/**
+ * Is this entry a reading of a word written `surface`? An entry written with capitals in the source (`written`; the form
+ * it is filed under has lost them) is a reading only of a word written that way:
+ *  - an all-capitals word or initialism (PA, ESO): only of the same spelling exactly, or of a word in ALL capitals (a headline);
+ *  - a capitalised word (Rosa, Marte): only of a word that starts with a capital (so a sentence-initial word still gets both
+ *    the name and the common word, and the adapter's context rules choose);
+ *  - anything else, and every entry without `written`: of any word.
+ * A script without capitals has no such entries, so nothing changes there.
+ */
+export function entryAppliesTo(surface: string, entry: Pick<DictionaryEntry, 'written'>): boolean {
+  if (entry.written === undefined) return true;
+  const written = entry.written.normalize('NFC');
+  const s = surface.normalize('NFC');
+  switch (writtenCase(written)) {
+    case 'capitals': return s === written || allCapitals(s);
+    case 'capitalised': return startsWithCapital(s);
+    default: return true;
+  }
+}
+
+/**
+ * The dictionary's entries for one token: those filed under its form that are readings of a word written as the token is
+ * (`entryAppliesTo`). The one place a token's entries are read: what is left out here is left out for that token
+ * everywhere (deciding, explaining, joining, the marker).
+ */
+function entriesFor(dictionary: ReadonlyMap<string, readonly DictionaryEntry[]>, token: RawToken): readonly DictionaryEntry[] {
+  const filed = dictionary.get(token.normalized) ?? [];
+  return filed.some((e) => e.written !== undefined) ? filed.filter((e) => entryAppliesTo(token.surface, e)) : filed;
 }
 
 /** A lemma's entry as the importer found it; `headword` is set when it is filed under another headword than the lemma asked for. */
 interface LemmaHit { entry: DictionaryEntry; headword?: string }
-type LemmaLookup = (lemma: string, pos: PartOfSpeech | undefined) => LemmaHit | undefined;
+/** `spelling` = the spelling the lemma is looked up from, when that is not the lemma itself (an inflected form the source writes with a capital). */
+type LemmaLookup = (lemma: string, pos: PartOfSpeech | undefined, spelling?: string) => LemmaHit | undefined;
 
 /**
  * Where the importer looks for a lemma's own entry: under the lemma itself, and when that has no entry of the right word
  * class, under the other headwords the adapter says a dictionary may file it under (`lemmaVariants`), in order.
+ * An entry the source writes with capitals counts only when the lemma is written that way too (`entryAppliesTo`): the
+ * common word rosa is never glossed from the name Rosa. A lemma named by an inflected form's entry has lost its capitals
+ * (the build normalizes it), so there the form's own spelling in the source decides (Rosas → Rosa).
  */
 function lemmaLookup(
   lemmaEntries: ((lemma: string) => readonly DictionaryEntry[] | undefined) | undefined,
   lemmaVariants: ((lemma: string, pos?: PartOfSpeech) => string[]) | undefined,
 ): LemmaLookup {
-  return (lemma, pos) => {
-    const own = lemmaEntryFor(lemmaEntries?.(lemma), pos);
+  return (lemma, pos, spelling) => {
+    const entriesOf = (headword: string) => lemmaEntries?.(headword)?.filter((e) => entryAppliesTo(spelling ?? headword, e));
+    const own = lemmaEntryFor(entriesOf(lemma), pos);
     if (own) return { entry: own };
     for (const headword of lemmaVariants?.(lemma, pos) ?? []) {
-      const entry = lemmaEntryFor(lemmaEntries?.(headword), pos);
+      const entry = lemmaEntryFor(entriesOf(headword), pos);
       if (entry) return { entry, headword };
     }
     return undefined;
@@ -270,6 +340,9 @@ export const LEMMA_IN_DICTIONARY = 0.6;
  * the target (one candidate per target), gloss = the target's own, the form's label kept in `notes.altOf`.
  * `lemmaVariants` names other headwords a lemma may be filed under; an entry found there gives the gloss, the candidate keeps
  * the lemma it had, and `notes.lemmaEntry` names the headword used.
+ * A form of a form: when the lemma an inflected form names has no entry of its own and is itself listed as exactly one form
+ * of a lemma that has one, that lemma is the candidate's, the labels are the form's own followed by the middle step's, and
+ * `notes.formOfChain` names the middle step.
  */
 export function dictionaryCandidates(
   form: string, entries: readonly DictionaryEntry[], sourceId?: string, morphFromTags?: (tags: readonly string[]) => Record<string, string>,
@@ -312,14 +385,24 @@ function candidatesByEntry(
     // grammatical labels are the source's own tags, read into `morph` when the adapter can (never guessed otherwise)
     if (e.formOf?.length) {
       return e.formOf.map((f, j) => {
-        const own: Record<string, string | string[]> = { ...notes, formOfTags: [...f.tags] };
+        let lemma = f.lemma;
+        let tags = f.tags;
+        let hit = lemmaOf(f.lemma, e.pos, e.written);
+        let chain: string[] | undefined;
+        if (!hit) {
+          // a form of a form (encallecidas → encallecido → encallecer): the lemma is the one at the end, the labels are both steps'
+          const via = formOfForm(lemmaEntries?.(f.lemma)?.filter((x) => entryAppliesTo(e.written ?? f.lemma, x)), e.pos);
+          const further = via && via.lemma !== f.lemma && via.lemma !== form ? lemmaOf(via.lemma, e.pos, e.written) : undefined;
+          if (via && further) { hit = further; lemma = via.lemma; tags = [...new Set([...f.tags, ...via.tags])]; chain = [f.lemma]; }
+        }
+        const own: Record<string, string | string[]> = { ...notes, formOfTags: [...tags] };
         if (j > 0) delete own.readings;
-        const hit = lemmaOf(f.lemma, e.pos);
+        if (chain) own.formOfChain = chain;
         if (hit) own.glossFrom = 'lemma';
         if (hit?.headword) own.lemmaEntry = hit.headword;
         return {
-          ...common, ...(hit ? { gloss: shortGloss(hit.entry) } : {}), lemma: f.lemma, morph: morphFromTags ? { ...morphFromTags(f.tags) } : {}, notes: own,
-          ...varietiesOf(f.tags, hit ? labelsOfEverySense(hit.entry) : []),
+          ...common, ...(hit ? { gloss: shortGloss(hit.entry) } : {}), lemma, morph: morphFromTags ? { ...morphFromTags(tags) } : {}, notes: own,
+          ...varietiesOf(tags, hit ? labelsOfEverySense(hit.entry) : []),
         };
       });
     }
@@ -453,8 +536,34 @@ export function lemmasToLookUp(
       if (!a.token.isWord) continue;
       for (const c of a.candidates) if (unitGuess(c)) want(c.unit!.display, c.pos);
       const own = withoutUnitGuesses(a);
-      if (!decidable(own) || known.get(a.token.normalized)?.length) continue;
+      if (!decidable(own) || entriesFor(known, a.token).length) continue;
       for (const c of own.candidates) if (says(c) && c.lemma !== undefined) want(c.lemma, c.pos);
+    }
+  }
+  lemmas.delete('');
+  return lemmas;
+}
+
+/**
+ * The lemmas (normalized) a third and last lookup round asks for: where an inflected form among the entries just `found`
+ * names a lemma that has no entry of its own and is itself exactly one form of another lemma (a form of a form), that other
+ * lemma, with the headwords the adapter says it may be filed under. `known` = the entries after the second round.
+ */
+export function chainedLemmasToLookUp(
+  adapter: LanguageAdapter, found: Iterable<readonly DictionaryEntry[]>, known: ReadonlyMap<string, readonly DictionaryEntry[]>,
+): Set<string> {
+  const lemmaEntries = (l: string) => known.get(adapter.normalize(l));
+  const lemmaOf = lemmaLookup(lemmaEntries, adapter.lemmaVariants?.bind(adapter));
+  const lemmas = new Set<string>();
+  for (const entries of found) {
+    for (const e of entries) {
+      for (const f of e.formOf ?? []) {
+        if (lemmaOf(f.lemma, e.pos, e.written)) continue;
+        const via = formOfForm(lemmaEntries(f.lemma)?.filter((x) => entryAppliesTo(e.written ?? f.lemma, x)), e.pos);
+        if (!via) continue;
+        lemmas.add(adapter.normalize(via.lemma));
+        for (const v of adapter.lemmaVariants?.(via.lemma, e.pos) ?? []) lemmas.add(adapter.normalize(v));
+      }
     }
   }
   lemmas.delete('');
@@ -501,6 +610,9 @@ function headwordsFirst(cands: readonly AnalysisCandidate[]): AnalysisCandidate[
   }
   return out;
 }
+
+/** What a reading says, for telling one from another: its lemma, part of speech and features. */
+const readingKey = (c: AnalysisCandidate): string => `${c.lemma}|${c.pos ?? ''}|${morphKey(c.morph)}`;
 
 /** The kind of a reading: its lemma and word class (a verb and an auxiliary are one class). */
 const kindOf = (adapter: LanguageAdapter, c: AnalysisCandidate): string =>
@@ -600,8 +712,8 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
           given.add(ti);
           supplied = true;
         };
-        const entries = opts.dictionary!.get(tokens[ti].normalized);
-        if (!entries?.length) {
+        const entries = entriesFor(opts.dictionary!, tokens[ti]);
+        if (!entries.length) {
           // the dictionary lacks the form: guesses whose lemma it lists stay as the rule's readings, with the lemma's gloss
           const byLemma = decidable(own) ? readByLemma(own.candidates.filter((c) => says(c)), lemmaOf, dictId) : undefined;
           if (byLemma) { replace(byLemma); dictLemmaOnly++; }
@@ -648,6 +760,7 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
       // a word the adapter reads from its own data: the dictionary's readings of another kind join it, after the adapter's own.
       // Only where `refine` can order them by context; a word that is a piece of a unit is left alone, and so is a function
       // word of the adapter's own list (de eso is never the acronym ESO); an entry that is not a word of running text never joins.
+      const uncapped = new Map<number, Map<string, number>>(); // per joined token: what each joined reading's confidence was before the cap
       if (adapter.refine) {
         for (const [ti, { joinable }] of beside) {
           const a = analyzed[ti];
@@ -655,6 +768,7 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
           const joining = joiningReadings(adapter, a.candidates, joinable);
           if (!joining.length) continue;
           analyzed[ti] = { ...a, candidates: [...a.candidates, ...joining] };
+          uncapped.set(ti, new Map(joining.map((j) => [readingKey(j), joinable.find((d) => readingKey(d) === readingKey(j))!.confidence])));
           given.add(ti);
           supplied = true;
           dictJoined++;
@@ -669,6 +783,13 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
           if (JSON.stringify(readingPairs(r)) !== JSON.stringify(before[ti])) throw new Error(`adapter ${doc.lang}: refine() changed the readings of token ${ti} in "${text}"`);
           analyzed[ti] = r;
         });
+        // a joined reading that context moved in front of the adapter's own was chosen: the cap that kept it from competing
+        // no longer applies, and it gets back the confidence the dictionary reading had (the ones left behind keep the cap)
+        for (const [ti, was] of uncapped) {
+          const [first, ...rest] = analyzed[ti].candidates;
+          const own = first?.origin === 'dictionary' && first.sourceId === dictId ? was.get(readingKey(first)) : undefined;
+          if (own !== undefined && own > first.confidence) analyzed[ti] = { ...analyzed[ti], candidates: [{ ...first, confidence: own }, ...rest] };
+        }
       }
     }
     const spanTokens = new Set<number>();

@@ -76,6 +76,9 @@ describe('Spanish fixture: inflected forms', () => {
     expect(one('hablás').formOf![0].lemma).toBe('hablar'); // source says "Hablar"
     expect(all.has('dios')).toBe(true);
     expect(all.has('Dios')).toBe(false);
+    // the capital the source writes is kept beside the normalized form; a headword written as its form carries nothing
+    expect(one('dios').written).toBe('Dios');
+    expect('written' in one('hablar')).toBe(false);
   });
 
   it('a form with two lemmas keeps both, one relation each', () => {

@@ -239,6 +239,9 @@ export function mapKaikkiLine(line: unknown, normalize: (surface: string) => str
   const unit = UNIT_ROLES[heading];
   const pos: PartOfSpeech | undefined = unit ? 'X' : POS_MAP[heading];
   const entry: DictionaryEntry = { form, lang, glosses };
+  // the source's own spelling, kept when normalization changed it (its capitals above all: PA, ESO, Rosa)
+  const written = word!.normalize('NFC');
+  if (written !== form) entry.written = written;
   if (pos) entry.pos = pos;
   if (unit) entry.role = unit;
   if (respelling) entry.respelling = respelling;

@@ -7,6 +7,7 @@ import {
   DICT_SCHEMA, DROP_FORM_PRONUNCIATIONS, MAX_GLOSSES, TARGET_SHARD_BYTES, bucketOf, buildDictionary, chooseBuckets, createFetchLexiconSource,
   deriveGlosses, expandEntry, infoOf, mapKaikkiLine, parseManifest, parseShard, shardName,
 } from '../../src/dict';
+import { mergeKey } from '../../src/dict/build';
 import { buildDictionaryFile } from '../../src/dict/build-node';
 import { createFileLexiconSource } from '../../src/dict/file';
 import { DATE, FIXTURE, buildFixture, fakeFetch, tmpDir } from './helpers';
@@ -46,6 +47,13 @@ const stripPronunciation = (e: DictionaryEntry): DictionaryEntry => {
   return rest;
 };
 const isFormOnly = (e: DictionaryEntry) => !e.glosses.length && (e.formOf?.length ?? 0) > 0;
+/**
+ * A build of today keeps the source's spelling of a headword when normalization changed it (`written`): the one such
+ * headword of the Spanish fixture is "Dios". The schema-2 fixture was written before that and has no such field.
+ */
+const WRITTEN: Record<string, string> = { dios: 'Dios' };
+const asBuiltToday = (expected: Record<string, DictionaryEntry[]>): Record<string, DictionaryEntry[]> =>
+  Object.fromEntries(Object.entries(expected).map(([form, list]) => [form, WRITTEN[form] ? list.map((e) => ({ ...e, written: WRITTEN[form] })) : list]));
 
 describe('a schema-2 dictionary written by the old writer still reads exactly as before', () => {
   for (const lang of ['th', 'es'] as const) {
@@ -113,7 +121,7 @@ describe('schema 3 round trip', () => {
     const got = readAll(out, 'es');
     expect(Object.keys(Object.fromEntries(got)).sort()).toEqual(Object.keys(FROZEN.es.expected).sort());
     let dropped = 0;
-    for (const [form, list] of Object.entries(FROZEN.es.expected)) {
+    for (const [form, list] of Object.entries(asBuiltToday(FROZEN.es.expected))) {
       const want = list.map((e) => {
         if (!isFormOnly(e)) return e;
         if (e.pronunciations?.length || e.ipa) dropped++;
@@ -135,7 +143,7 @@ describe('schema 3 round trip', () => {
     expect(DROP_FORM_PRONUNCIATIONS.th).toBe(false);
     const keep = buildEs({ dropFormPronunciations: false });
     expect(keep.stats.pronunciationsDropped).toBe(0);
-    expect(Object.fromEntries(readAll(keep, 'es'))).toEqual(FROZEN.es.expected); // nothing dropped: exactly the schema-2 reading
+    expect(Object.fromEntries(readAll(keep, 'es'))).toEqual(asBuiltToday(FROZEN.es.expected)); // nothing dropped: exactly the schema-2 reading (plus the kept spelling)
     const dropTh = buildDictionary(fs.readFileSync(FIXTURE, 'utf8').split(/\r?\n/).filter(Boolean), {
       lang: 'th', normalize: (s) => createAdapterRegistry().get('th').normalize(s), date: DATE, dropFormPronunciations: true,
     });
@@ -296,6 +304,67 @@ describe('the reader does not trust a schema-3 shard or manifest', () => {
     expect(parseManifest({ ...good, schema: 2, labelSets: 'junk' }, 'es')?.labelSets).toEqual([]);
     expect(parseManifest({ ...good, schema: 4 }, 'es')).toBeUndefined();
     expect(parseManifest({ ...good, schema: '3' }, 'es')).toBeUndefined();
+  });
+});
+
+describe('the source\'s spelling of a headword (written)', () => {
+  const es = (s: string) => s.toLowerCase();
+  const line = (word: string, pos: string, gloss: string, extra: Record<string, unknown> = {}) => JSON.stringify({ word, pos, lang_code: 'es', senses: [{ glosses: [gloss] }], ...extra });
+
+  it('is stored under one key, first, only when it is not the form; the shard key stays the normalized form', () => {
+    const out = buildDictionary([line('PA', 'noun', 'blood pressure'), line('pa', 'prep', 'towards')], { lang: 'es', normalize: es, date: DATE });
+    const shard = JSON.parse([...out.files].find(([n]) => n !== 'manifest.json')![1]) as Record<string, Array<Record<string, unknown>>>;
+    expect(Object.keys(shard)).toEqual(['pa']);
+    expect(shard.pa).toEqual([{ w: 'PA', p: 'NOUN', s: [{ g: 'blood pressure' }] }, { p: 'ADP', s: [{ g: 'towards' }] }]);
+    expect(Object.keys(shard.pa[0])[0]).toBe('w');
+    expect(out.manifest.schema).toBe(3); // the schema did not change
+  });
+
+  it('reads back exactly; a shard built before it was kept has no such key and reads as it always did', () => {
+    const out = buildDictionary([line('PA', 'noun', 'blood pressure'), line('pa', 'prep', 'towards'), line('Rosa', 'name', 'a female given name')], { lang: 'es', normalize: es, date: DATE });
+    const all = readAll(out, 'es');
+    expect(all.get('pa')!.map((e) => [e.form, e.written, e.pos])).toEqual([['pa', 'PA', 'NOUN'], ['pa', undefined, 'ADP']]);
+    expect(all.get('rosa')![0]).toEqual({ form: 'rosa', written: 'Rosa', lang: 'es', pos: 'PROPN', glosses: ['a female given name'], senses: [{ gloss: 'a female given name' }] });
+    // an older schema-3 entry, and a schema-2 one: no key, no field
+    expect(expandEntry('pa', 'es', { p: 'NOUN', s: [{ g: 'blood pressure' }] }, [])).toEqual({ form: 'pa', lang: 'es', pos: 'NOUN', glosses: ['blood pressure'], senses: [{ gloss: 'blood pressure' }] });
+    expect('written' in expandEntry('pa', 'es', { p: 'NOUN', g: ['blood pressure'] })!).toBe(false);
+    // untrusted: anything but a spelling that differs from the form is dropped
+    for (const w of ['pa', '', ' ', 5, null, ['PA'], {}]) expect('written' in expandEntry('pa', 'es', { w, g: ['x'] }, [])!, JSON.stringify(w)).toBe(false);
+    expect(expandEntry('pa', 'es', { w: 'PA', g: ['x'] })!.written).toBe('PA'); // read from a schema-2 shard too, should one ever carry it
+  });
+
+  it('entries that differ only in the source\'s spelling do not merge; the same spelling still does', () => {
+    const lines = [
+      line('PA', 'noun', 'blood pressure'), line('pa', 'noun', 'dad'), line('Pa', 'noun', 'a name'), line('PA', 'noun', 'public address'),
+      line('pa', 'noun', 'father'),
+    ];
+    const out = buildDictionary(lines, { lang: 'es', normalize: es, date: DATE });
+    expect(readAll(out, 'es').get('pa')!.map((e) => [e.written, e.glosses])).toEqual([
+      ['PA', ['blood pressure', 'public address']], [undefined, ['dad', 'father']], ['Pa', ['a name']],
+    ]);
+    expect(out.stats.entries).toBe(3);
+    expect(mergeKey({ form: 'pa', lang: 'es', glosses: [], written: 'PA' })).not.toBe(mergeKey({ form: 'pa', lang: 'es', glosses: [] }));
+    // an inflected form that loses its pronunciation (Spanish) is merged again afterwards: still never across spellings
+    const forms = [
+      line('Rosas', 'noun', 'plural of Rosa', { senses: [{ glosses: ['plural of Rosa'], tags: ['form-of', 'plural'], form_of: [{ word: 'Rosa' }] }], sounds: [{ ipa: '/a/' }] }),
+      line('rosas', 'noun', 'plural of rosa', { senses: [{ glosses: ['plural of rosa'], tags: ['form-of', 'plural'], form_of: [{ word: 'rosa' }] }], sounds: [{ ipa: '/b/' }] }),
+    ];
+    const built = readAll(buildDictionary(forms, { lang: 'es', normalize: es, date: DATE }), 'es').get('rosas')!;
+    expect(built.map((e) => [e.written, e.ipa])).toEqual([['Rosas', undefined], [undefined, undefined]]);
+  });
+
+  it('the streaming writer keeps it too, byte for byte like the in-memory builder', async () => {
+    const input = path.join(root, 'written.jsonl');
+    const lines = [line('PA', 'noun', 'blood pressure'), line('pa', 'prep', 'towards'), line('Rosa', 'name', 'a name'), line('rosa', 'noun', 'rose')];
+    fs.writeFileSync(input, lines.join('\n') + '\n', 'utf8');
+    const outDir = path.join(root, 'stream-written');
+    const r = await buildDictionaryFile({ input, lang: 'es', outDir, date: DATE });
+    const mem = buildDictionary(lines, { lang: 'es', normalize: esNormalize, date: DATE });
+    for (const [name, text] of mem.files) if (name !== 'manifest.json') expect(fs.readFileSync(path.join(outDir, 'es', name), 'utf8'), name).toBe(text); // (the file build's manifest also names its source file)
+    expect(r.stats).toEqual(mem.stats);
+    const got = await createFileLexiconSource(outDir, 'es').lookup(['pa', 'rosa']);
+    expect(got.get('pa')!.map((e) => e.written)).toEqual(['PA', undefined]);
+    expect(got.get('rosa')!.map((e) => e.written)).toEqual(['Rosa', undefined]);
   });
 });
 

@@ -128,11 +128,12 @@ export function mergeEntries(a: DictionaryEntry, b: DictionaryEntry): Dictionary
 }
 
 /**
- * Same form + part of speech + etymology + pronunciations may merge; anything else stays a separate entry. The
- * pronunciations count by what they say, not by the order their fields were set in.
+ * Same form + spelling in the source + part of speech + etymology + pronunciations may merge; anything else stays a
+ * separate entry (the acronym PA and the word pa share a form and nothing else). The pronunciations count by what they
+ * say, not by the order their fields were set in.
  */
 export const mergeKey = (e: DictionaryEntry): string =>
-  `${e.form}\u0000${e.pos ?? ''}\u0000${e.etymology ?? ''}\u0000${
+  `${e.form}\u0000${e.written ?? ''}\u0000${e.pos ?? ''}\u0000${e.etymology ?? ''}\u0000${
     JSON.stringify((e.pronunciations ?? []).map((p) => [p.respelling ?? '', p.ipa ?? '', p.romanization ?? '', p.tags ?? [], p.asWritten === true]))}`;
 
 export interface BuilderOptions {

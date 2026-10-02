@@ -19,6 +19,8 @@
  *     inflected form is just `{"p":"VERB","m":[["abundar",17]]}`;
  *   - an inflected-form entry of a language whose spelling tells the pronunciation carries no pronunciation fields
  *     (the builder's per-language choice, src/dict/build.ts).
+ * Later, within schema 3: an entry may carry `w`, the headword as the source writes it when normalization changed it
+ * ("PA" under the key "pa"). A shard built before that simply has no such key and reads as it always did.
  * A schema-3 shard cannot be read without its manifest's label sets (parseShard takes the manifest).
  *
  * Every field read back from disk is untrusted: a bad entry is dropped, a bad manifest or shard reads as absent.
@@ -87,6 +89,8 @@ export interface CompactPronunciation { r?: string; i?: string; t?: string; g?: 
 
 /** Compact shape of one entry inside a shard (the form is the shard key, the language is the manifest's). */
 export interface CompactEntry {
+  /** the headword as the source writes it, when that is not the form (the shard key); absent in shards built before it was kept */
+  w?: string;
   p?: PartOfSpeech;
   /** glosses; absent when the senses say the same (see deriveGlosses) or when there are none */
   g?: string[];
@@ -149,6 +153,7 @@ export function compactEntry(e: DictionaryEntry, labelSetOf: LabelSetIndex): Com
   // `g` is what the senses do not already say: left out when deriveGlosses gives the same list (and when there are none).
   const gFromSenses = sameList(e.glosses, deriveGlosses(e.senses ?? []));
   return {
+    ...(e.written !== undefined && e.written !== e.form ? { w: e.written } : {}),
     ...(e.pos ? { p: e.pos } : {}), ...(gFromSenses ? {} : { g: e.glosses }), ...(e.respelling ? { r: e.respelling } : {}), ...(e.ipa ? { i: e.ipa } : {}),
     ...(e.romanization ? { t: e.romanization } : {}), ...(e.register?.length ? { c: e.register } : {}),
     ...(e.classifiers?.length ? { l: e.classifiers } : {}), ...(e.role ? { o: e.role } : {}), ...(e.definition ? { d: e.definition } : {}),
@@ -217,6 +222,7 @@ export function expandEntry(form: string, lang: LanguageCode, raw: unknown, labe
   // An inflected form has no gloss of its own: formOf is what it says. Neither means nothing usable.
   if (!glosses.length && !formOf.length) return undefined;
   const e: DictionaryEntry = { form, lang, glosses };
+  const w = strOpt(raw.w); if (w && w !== form) e.written = w;
   if (typeof raw.p === 'string' && POS_SET.has(raw.p)) e.pos = raw.p as PartOfSpeech;
   const r = strOpt(raw.r); if (r) e.respelling = r;
   const i = strOpt(raw.i); if (i) e.ipa = i;

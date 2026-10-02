@@ -30,6 +30,19 @@ describe('entryFromKaikki: fields', () => {
     expect(map(base({ word: '  x  ' }))[0].form).toBe('x');
   });
 
+  it('keeps the source\'s spelling (written) only when normalization changed it', () => {
+    const lower = (s: string) => s.normalize('NFC').toLowerCase();
+    expect(map(base({ word: 'PA' }), lower)[0]).toMatchObject({ form: 'pa', written: 'PA' });
+    expect(map(base({ word: 'Rosa' }), lower)[0]).toMatchObject({ form: 'rosa', written: 'Rosa' });
+    expect(map(base({ word: 'EE. UU.' }), lower)[0]).toMatchObject({ form: 'ee. uu.', written: 'EE. UU.' });
+    for (const [word, normalize] of [['rosa', lower], ['Rosa', id], ['  x  ', id], ['ขนม', thNormalize]] as const) {
+      expect('written' in map(base({ word }), normalize)[0], word).toBe(false);
+    }
+    // the spelling is kept in NFC: a decomposed accent alone is not a different spelling
+    expect('written' in map(base({ word: 'café' }), lower)[0]).toBe(false);
+    expect(map(base({ word: 'Café' }), lower)[0].written).toBe('Café');
+  });
+
   it('keeps at most 6 glosses: the first gloss of each sense, in order, without repeats', () => {
     const senses = ['a', 'b', 'a', 'c', 'd', 'e', 'f', 'g', 'h'].map((g) => ({ glosses: [g, `${g} narrower`] }));
     expect(map(base({ senses }))[0].glosses).toEqual(['a', 'b', 'c', 'd', 'e', 'f']);

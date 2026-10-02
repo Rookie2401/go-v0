@@ -444,13 +444,24 @@ describe('statistics and the import', () => {
     expect(plans[1].dictionary?.decided).toBe(1);
   });
 
-  it('does not recurse: the lemma entries are not asked about their own form-of lemmas', async () => {
+  it('does not recurse: a lemma that is itself only a form is followed one step (a third round), never further', async () => {
     const { registry } = fake({ trabucaban: [TRABUCAR_RULE] });
-    const chain = [TRABUCAR_FORM, entry('trabucar', { pos: 'VERB', glosses: [], formOf: [{ lemma: 'trabuco', tags: [] }] }), entry('trabuco', { glosses: ['x'] })];
+    // trabucaban → trabucar → trabuco → trabuca: each only a form of the next; only the last has a meaning
+    const chain = [
+      TRABUCAR_FORM, entry('trabucar', { pos: 'VERB', glosses: [], formOf: [{ lemma: 'trabuco', tags: [] }] }),
+      entry('trabuco', { pos: 'VERB', glosses: [], formOf: [{ lemma: 'trabuca', tags: [] }] }), entry('trabuca', { pos: 'VERB', glosses: ['x'] }),
+    ];
     const src = createMemoryLexiconSource('es', chain, { id: 'd1' });
     const lookup = vi.spyOn(src, 'lookup');
-    await planWithDictionary([docOf('Trabucaban')], registry, lexicon(chain, src));
-    expect(lookup).toHaveBeenCalledTimes(2);
+    const { plans } = await planWithDictionary([docOf('Trabucaban')], registry, lexicon(chain, src));
+    expect(lookup.mock.calls.map((c) => c[0])).toEqual([['trabucaban'], ['trabucar'], ['trabuco']]);
+    // two steps away there is still no meaning: the reading stays as it was (the form's own lemma, no gloss)
+    expect(plans[0].sentences[0].analyzed[0].candidates.map((c) => [c.lemma, c.gloss, c.notes?.formOfChain])).toEqual([['trabucar', undefined, undefined]]);
+    // the usual case, a lemma with an entry of its own: two rounds
+    const usual = createMemoryLexiconSource('es', entries, { id: 'd1' });
+    const two = vi.spyOn(usual, 'lookup');
+    await planWithDictionary([docOf('Trabucaban')], registry, lexicon(entries, usual));
+    expect(two).toHaveBeenCalledTimes(2);
   });
 
   it('a form whose lemma is also a word of the text is asked once; no second round when there are no form-of entries', async () => {
@@ -898,5 +909,98 @@ describe('where the dictionary supplies the list, a headword comes before an inf
     expect(noHead.candidates.map((c) => [c.lemma, c.notes?.readings])).toEqual([['cantar', ['can-to', 'cán-to']], ['cuanto', undefined]]);
     const headFirst = planDocument(docOf('Canto'), registry, { dictionary: dictOf(NOUN, FORM), dictionaryId: 'd1' }).sentences[0].analyzed[0];
     expect(headFirst.candidates.map((c) => c.lemma)).toEqual(['canto', 'cantar']);
+  });
+});
+
+describe('a form of a form: the lemma is the one at the end of the chain', () => {
+  // "encallecidas" is the feminine plural of "encallecido", which is itself listed only as the past participle of "encallecer"
+  const FORM = entry('encallecidas', { pos: 'VERB', formOf: [{ lemma: 'encallecido', tags: ['feminine', 'form-of', 'plural'] }] });
+  const MIDDLE = entry('encallecido', { pos: 'VERB', formOf: [{ lemma: 'encallecer', tags: ['form-of', 'participle', 'past'] }] });
+  const VERB = entry('encallecer', { pos: 'VERB', glosses: ['to harden', 'to callus', 'to toughen'], senses: [{ gloss: 'to harden', tags: ['Honduras'] }] });
+  const lookup = (...e: DictionaryEntry[]) => (l: string) => e.filter((x) => x.form === l);
+  const tagMorph = (tags: readonly string[]): Record<string, string> => ({
+    ...(tags.includes('feminine') ? { Gender: 'Fem' } : {}), ...(tags.includes('plural') ? { Number: 'Plur' } : {}), ...(tags.includes('participle') ? { VerbForm: 'Part' } : {}),
+    ...(tags.includes('past') ? { Tense: 'Past' } : {}),
+  });
+  const candidates = (...e: DictionaryEntry[]) => dictionaryCandidates('encallecidas', [FORM], 'd1', tagMorph, lookup(...e));
+
+  it('the lemma becomes the verb, the labels are the form\'s followed by the middle step\'s, the gloss is the verb\'s', () => {
+    expect(candidates(MIDDLE, VERB)).toEqual([{
+      lemma: 'encallecer', pos: 'VERB', confidence: 0.6, origin: 'dictionary', sourceId: 'd1', gloss: 'to harden; to callus',
+      morph: { Gender: 'Fem', Number: 'Plur', VerbForm: 'Part', Tense: 'Past' },
+      notes: { formOfTags: ['feminine', 'form-of', 'plural', 'participle', 'past'], formOfChain: ['encallecido'], glossFrom: 'lemma' },
+    }]);
+    // the verb's every-sense region labels travel as they do for any lemma gloss
+    const [c] = dictionaryCandidates('encallecidas', [FORM], 'd1', tagMorph, lookup(MIDDLE, VERB), (tags) => (tags.includes('Honduras') ? ['es-HN'] : []));
+    expect(c.varieties).toEqual(['es-HN']);
+  });
+
+  it('left as it is today when the middle step names several lemmas, or the end has no entry of its own, or the word class does not fit', () => {
+    const asToday = [{ lemma: 'encallecido', pos: 'VERB', confidence: 0.6, origin: 'dictionary', sourceId: 'd1', morph: { Gender: 'Fem', Number: 'Plur' }, notes: { formOfTags: ['feminine', 'form-of', 'plural'] } }];
+    const twoTargets = entry('encallecido', { pos: 'VERB', formOf: [{ lemma: 'encallecer', tags: ['participle'] }, { lemma: 'encallar', tags: ['participle'] }] });
+    const twoRelations = entry('encallecido', { pos: 'VERB', formOf: [{ lemma: 'encallecer', tags: ['participle'] }, { lemma: 'encallecer', tags: ['participle', 'masculine'] }] });
+    const cases: DictionaryEntry[][] = [
+      [], [MIDDLE], // the middle step is unknown; the end is unknown
+      [twoTargets, VERB, entry('encallar', { pos: 'VERB', glosses: ['to run aground'] })],
+      [twoRelations, VERB],
+      [MIDDLE, { ...VERB, pos: 'NOUN' }], // the end is of another word class
+      [{ ...MIDDLE, pos: 'NOUN' }, VERB], // the middle step's relation is that of a noun
+      [MIDDLE, entry('encallecer', { pos: 'VERB', formOf: [{ lemma: 'x', tags: [] }] })], // the end is itself only a form: no third step
+      [entry('encallecido', { pos: 'VERB', formOf: [{ lemma: 'encallecidas', tags: [] }] }), entry('encallecidas', { pos: 'VERB', glosses: ['never'] })], // back to the form itself
+    ];
+    for (const entries of cases) expect(candidates(...entries), JSON.stringify(entries.map((e) => [e.form, e.pos]))).toEqual(asToday);
+  });
+
+  it('a middle step with an entry of its own is the lemma, as always (an adjective that is also a participle keeps its adjective reading)', () => {
+    // cansadas: feminine plural of the adjective cansado (a headword), and of the participle cansado (a form of cansar)
+    const adjForm = entry('cansadas', { pos: 'ADJ', formOf: [{ lemma: 'cansado', tags: ['feminine', 'form-of', 'plural'] }] });
+    const verbForm = entry('cansadas', { pos: 'VERB', formOf: [{ lemma: 'cansado', tags: ['feminine', 'form-of', 'participle', 'plural'] }] });
+    const cansado = [entry('cansado', { pos: 'ADJ', glosses: ['tired'] }), entry('cansado', { pos: 'VERB', formOf: [{ lemma: 'cansar', tags: ['form-of', 'participle', 'past'] }] })];
+    const cansar = entry('cansar', { pos: 'VERB', glosses: ['to tire'] });
+    const got = dictionaryCandidates('cansadas', [adjForm, verbForm], 'd1', undefined, lookup(...cansado, cansar));
+    expect(got.map((c) => [c.lemma, c.pos, c.gloss, c.notes?.formOfChain])).toEqual([['cansado', 'ADJ', 'tired', undefined], ['cansar', 'VERB', 'to tire', ['cansado']]]);
+  });
+
+  it('the end of the chain may be filed under another headword (lemmaVariants): the lemma stays, the notes name the headword', () => {
+    const pronominal = entry('encallecerse', { pos: 'VERB', glosses: ['to become callous'] });
+    const [c] = dictionaryCandidates('encallecidas', [FORM], 'd1', undefined, lookup(MIDDLE, pronominal), undefined, (l) => [`${l}se`]);
+    expect(c).toMatchObject({ lemma: 'encallecer', gloss: 'to become callous', notes: { formOfChain: ['encallecido'], lemmaEntry: 'encallecerse', glossFrom: 'lemma' } });
+  });
+
+  it('a rule reading with the verb as its lemma merges with it; one with the middle step as its lemma is dropped', () => {
+    const { registry } = fake({ encallecidas: [guess('encallecer', 'VERB', { Gender: 'Fem', Number: 'Plur' }), guess('encallecido', 'VERB', {})] }, { morphFromTags: tagMorph });
+    const plan = planDocument(docOf('Encallecidas'), registry, { dictionary: dictOf(FORM, MIDDLE, VERB), dictionaryId: 'd1' });
+    expect(plan.sentences[0].analyzed[0].candidates).toEqual([{
+      lemma: 'encallecer', pos: 'VERB', morph: { Gender: 'Fem', Number: 'Plur' }, gloss: 'to harden; to callus', origin: 'dictionary', sourceId: 'd1', confidence: 0.7,
+      notes: { formOfTags: ['feminine', 'form-of', 'plural', 'participle', 'past'], formOfChain: ['encallecido'], glossFrom: 'lemma', rule: 'rule-encallecer' },
+    }]);
+  });
+
+  it('a third lookup round asks for the end of the chain, once; the import gives the verb\'s lemma row the gloss', async () => {
+    const { registry } = fake({});
+    const a = lexiconOf([FORM, MIDDLE, VERB]);
+    const store = createMemoryStore();
+    await importDocuments(store, registry, [{ ...docOf('Encallecidas'), id: 'c1' }, { ...docOf('Encallecidas otra'), id: 'c2' }], { clock, lexicon: a.lexicon });
+    expect(a.lookup.mock.calls.map((c) => c[0])).toEqual([['encallecidas'], ['encallecido'], ['encallecer'], ['otra']]);
+    expect((await store.lemmas.get(ids.lemma('es', 'encallecer', 'VERB')))!.gloss).toBe('to harden; to callus');
+    expect(await store.lemmas.get(ids.lemma('es', 'encallecido', 'VERB'))).toBeUndefined();
+    const rows = (await store.analyses.all()).filter((r) => r.lemmaId === ids.lemma('es', 'encallecer', 'VERB'));
+    expect(rows).toHaveLength(2);
+    expect(rows[0]).toMatchObject({ origin: 'dictionary', analyzer: 'dict:d1', notes: { formOfChain: ['encallecido'], glossFrom: 'lemma' } });
+    // preview and import agree
+    const [preview] = await previewDocuments(createMemoryStore(), registry, [docOf('Encallecidas')], { lexicon: lexiconOf([FORM, MIDDLE, VERB]).lexicon });
+    const report = await importDocuments(createMemoryStore(), registry, [docOf('Encallecidas')], { clock, lexicon: lexiconOf([FORM, MIDDLE, VERB]).lexicon });
+    expect(preview.analysisCoverage).toEqual(report.documents[0].analysisCoverage);
+  });
+
+  it('no third round when no lemma is a form of a form; the variants of the end of the chain are part of it', async () => {
+    const { registry } = fake({}, { lemmaVariants: (l, pos) => (pos === 'VERB' ? [`${l}se`] : []) });
+    const a = lexiconOf([FORM, MIDDLE, entry('encallecerse', { pos: 'VERB', glosses: ['to become callous'] })]);
+    const { plans } = await planWithDictionary([docOf('Encallecidas')], registry, a.lexicon);
+    expect(a.lookup.mock.calls.map((c) => c[0])).toEqual([['encallecidas'], ['encallecido', 'encallecidose'], ['encallecer', 'encallecerse']]);
+    expect(plans[0].sentences[0].analyzed[0].candidates[0]).toMatchObject({ lemma: 'encallecer', gloss: 'to become callous', notes: { lemmaEntry: 'encallecerse' } });
+    const b = lexiconOf([TRABUCAR_FORM, TRABUCAR_LEMMA]);
+    await planWithDictionary([docOf('Trabucaban')], fake({}).registry, b.lexicon);
+    expect(b.lookup).toHaveBeenCalledTimes(2);
   });
 });

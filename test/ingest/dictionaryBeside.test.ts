@@ -323,6 +323,34 @@ describe('importing a word with a joined reading', () => {
     expect((await store.lemmas.get(ids.lemma('es', 'abandonar', 'VERB')))!.gloss).toBe('hand gloss of abandonar');
   });
 
+  it('a joined reading that refine moved to the front gets its own confidence back; the ones left behind keep the cap', async () => {
+    // one part of speech in the dictionary: the reading was 0.6 before the cap (with several it was 0.45, and stays 0.45)
+    const noun = entry('miedo', { pos: 'NOUN', glosses: ['fear'] });
+    const other = entry('miedo', { pos: 'NOUN', glosses: ['a second noun'], formOf: [{ lemma: 'mieda', tags: [] }] });
+    const table = { miedo: [hand('medir', 'VERB')] };
+    const lowered: NonNullable<LanguageAdapter['refine']> = (tokens, analyzed, analyzers, given) => dictionaryFirst(tokens, analyzed, analyzers, given)
+      .map((a) => ({ ...a, candidates: a.candidates.map((c, i) => (i > 0 && c.origin !== 'dictionary' ? { ...c, confidence: 0.4, notes: { ...(c.notes ?? {}), context: 'after an article' } } : c)) }));
+    const promoted = planDocument(docOf('Miedo'), fake(table, { refine: lowered }), { dictionary: dictOf(noun, other), dictionaryId: 'd1' }).sentences[0].analyzed[0];
+    expect(promoted.candidates.map((c) => [c.lemma, c.pos, c.confidence, c.origin ?? 'adapter'])).toEqual([
+      ['miedo', 'NOUN', 0.6, 'dictionary'], // chosen by context: what the dictionary reading was before the cap
+      ['mieda', 'NOUN', 0.45, 'dictionary'], // joined and not chosen: still capped
+      ['medir', 'VERB', 0.4, 'adapter'], // whatever refine left
+    ]);
+    const stayed = planDocument(docOf('Miedo'), fake(table, { refine: keep }), { dictionary: dictOf(noun, other), dictionaryId: 'd1' }).sentences[0].analyzed[0];
+    expect(stayed.candidates.map((c) => [c.lemma, c.confidence])).toEqual([['medir', 1], ['miedo', 0.45], ['mieda', 0.45]]);
+    // several parts of speech for the form: the dictionary reading itself was 0.45
+    const several = planDocument(docOf('Miedo'), fake(table, { refine: dictionaryFirst }), { dictionary: dictOf(noun, entry('miedo', { pos: 'ADJ', glosses: ['afraid'] })), dictionaryId: 'd1' }).sentences[0].analyzed[0];
+    expect(several.candidates.map((c) => [c.pos, c.confidence])).toEqual([['NOUN', 0.45], ['ADJ', 0.45], ['VERB', 1]]);
+
+    // and so it is stored
+    const store = createMemoryStore();
+    await importDocuments(store, fake(table, { refine: lowered }), [docOf('Miedo')], { clock, lexicon: lexicon([noun]) });
+    const [row] = await store.analyses.all();
+    expect(row).toMatchObject({ origin: 'dictionary', sourceId: 'd1', analyzer: FAKE, confidence: 0.6, pos: 'NOUN', lemmaId: ids.lemma('es', 'miedo', 'NOUN') });
+    expect(row.alternatives).toEqual([{ lemmaId: ids.lemma('es', 'medir', 'VERB'), pos: 'VERB', morph: {}, confidence: 0.4, origin: 'hand', sourceId: FAKE }]);
+    expect((await store.lemmas.get(ids.lemma('es', 'miedo', 'NOUN')))!.gloss).toBe('fear');
+  });
+
   it('a joined inflected form moved to the front: the lemma\'s gloss when the lemma entry is found, never the form\'s label', async () => {
     const table = { marcha: [hand('marcha', 'NOUN')] };
     const form = entry('marcha', { pos: 'VERB', glosses: ['third-person singular of marchar'], formOf: [{ lemma: 'marchar', tags: ['third-person'] }] });

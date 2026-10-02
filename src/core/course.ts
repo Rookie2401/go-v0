@@ -109,7 +109,9 @@ export type RightsState =
   | 'recommended-only' // listed for the learner to find; the app holds no text
   | 'user-supplied' // the learner's own lawful copy, on this device only
   | 'rights-unverified'
-  | 'prohibited-from-bundling';
+  | 'prohibited-from-bundling'
+  // material kept for validation or study only (a treebank, a reference edition): never bundled, never shown as course text
+  | 'research-only';
 
 export interface WorkRights {
   /** Preferred over the older fields below when present. */
@@ -157,6 +159,21 @@ export interface WorkRights {
   sourceTerms?: string;
   /** Whether the app as built meets the licence's conditions (attribution shown, share-alike respected), and how. */
   compliance?: string;
+  // ── an old work has several layers, each with its own rights: the work, this edition, the scan, the transcription ──
+  /** Country the work was first published in ("AL", "IT", "TR"): the term of the source country starts from here. */
+  countryOfOrigin?: string;
+  /** Year this EDITION was published (the work's first publication is `Work.publicationYear`). */
+  editionYear?: number;
+  /** The scan the text was read from (library, shelf mark or URL), when a scan is the source. */
+  scanSource?: string;
+  /** Who transcribed the text and from what; a modern transcription may carry rights the old work does not. */
+  transcriptionSource?: string;
+  /** Who modernised or normalised the spelling, when the text is not in its original orthography. */
+  modernizationSource?: string;
+  /** The status in each jurisdiction that was actually checked ("US", "AL", "EU"). Absent = not checked; one never implies another. */
+  statusByJurisdiction?: Record<string, 'public-domain' | 'in-copyright' | 'licensed' | 'unknown'>;
+  /** Whether the licence or permission covers commercial use. Absent = not established. */
+  commercialUse?: boolean;
 }
 
 export interface Work {
@@ -218,6 +235,10 @@ export interface Work {
   readiness?: 'implemented' | 'verified-ready' | 'candidate' | 'recommendation';
   /** The pipeline states of a text on its way in. */
   pipeline?: { acquisition: 'none' | 'retrieved'; parsing: 'none' | 'parsed'; proofreading: 'unknown' | 'none' | 'once' | 'twice' };
+  /** The writing system or spelling norm of this edition, in plain words ("Istanbul alphabet (1879)", "pre-1972 spelling"). */
+  orthography?: string;
+  /** Whether the text is as its source wrote it, or was normalised / modernised (then `rights.modernizationSource` says by whom). */
+  modernization?: 'original' | 'normalized' | 'modernized';
 }
 
 /** A major content stream of a course. Streams share one learner model; they are shelves of one library, not courses. */

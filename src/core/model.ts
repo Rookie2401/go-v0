@@ -775,7 +775,9 @@ export interface MetaRow { id: string; value: string; updatedAt: string }
 export type ErrorCategory =
   | 'spelling' | 'morphology' | 'conjugation' | 'agreement' | 'case' | 'syntax' | 'word-order'
   | 'lexical-choice' | 'missing-function-word' | 'collocation' | 'ambiguity' | 'clarity' | 'register'
-  | 'meaning-change' | 'segmentation' | 'particle' | 'classifier' | 'postposition' | 'definiteness';
+  | 'meaning-change' | 'segmentation' | 'particle' | 'classifier' | 'postposition' | 'definiteness'
+  // a form of another variety of the language (Gheg in Standard Albanian); an unidiomatic but grammatical wording
+  | 'dialect' | 'idiomaticity';
 
 export interface ProvenanceRef {
   itemId: string;

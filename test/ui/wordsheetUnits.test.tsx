@@ -164,6 +164,13 @@ describe('the parts of a written word', () => {
     expect(partText({ text: '-s-', kind: 'link' })).toBe('-s-');
     expect(partText({ text: 's', kind: 'link' })).toBe('-s-');
     expect(partText({ text: 'Leben', kind: 'component' })).toBe('Leben');
+    // a part that names its word is shown as that word, not as the letters it occupies (found in the browser audit)
+    expect(partText({ text: 'aufgaben', kind: 'head', lemma: 'Aufgabe' })).toBe('Aufgabe');
+    expect(partText({ text: 'Töpf', kind: 'stem', lemma: 'Topf' })).toBe('Topf');
+    expect(partText({ text: 'Harems', kind: 'component' })).toBe('Harems'); // no word is claimed for it: as written
+    expect(partText({ text: 'ge', kind: 'marker', lemma: 'ge' })).toBe('ge');
+    expect(partText({ text: 'lo', kind: 'clitic', lemma: 'él' })).toBe('lo'); // an attached pronoun stays as written
+    expect(compoundHeadLine([{ text: 'Haus', kind: 'component', lemma: 'Haus' }, { text: 'aufgaben', kind: 'head', lemma: 'Aufgabe' }])).toBe('Aufgabe is the head: the last part decides the gender and the kind of thing.');
     expect(compoundHeadLine([{ text: 'Haus', kind: 'head' }, { text: 'tür', kind: 'component' }])).toBe('Haus is the head: it decides the gender and the kind of thing.');
     expect(compoundHeadLine([{ text: 'im', kind: 'contracted' }, { text: 'in', kind: 'contracted' }])).toBeUndefined();
   });

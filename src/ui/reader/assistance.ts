@@ -409,9 +409,15 @@ export function unitRoleText(role: string): string {
   return role === 'head' ? 'this word is the main part' : `this word is the ${roleText(role)}`;
 }
 
-/** How one part of a written word reads in the word-parts line: a linking element is shown as such (-s-), the rest as written. */
-export function partText(p: Pick<WordPart, 'text' | 'kind'>): string {
-  return p.kind === 'link' ? `-${p.text.replace(/^-+|-+$/g, '')}-` : p.text;
+/**
+ * How one part of a written word reads in the word-parts line. A linking element is shown as such (-s-). A component, the
+ * head or a stem that names its word is shown as that WORD, not as the letters it occupies: Hausaufgaben = Haus + Aufgabe
+ * (not "aufgaben"), Töpfchen = Topf + chen (not "Töpf"). Everything else is shown as written.
+ */
+export function partText(p: Pick<WordPart, 'text' | 'kind' | 'lemma'>): string {
+  if (p.kind === 'link') return `-${p.text.replace(/^-+|-+$/g, '')}-`;
+  if ((p.kind === 'component' || p.kind === 'head' || p.kind === 'stem') && p.lemma) return p.lemma;
+  return p.text;
 }
 
 /**
@@ -426,12 +432,12 @@ export function partRole(p: Pick<WordPart, 'role' | 'kind'>): string | undefined
 }
 
 /** The sentence that names the head of a compound ("the last part decides the gender and the kind of thing"), when the parts name one. */
-export function compoundHeadLine(parts: ReadonlyArray<Pick<WordPart, 'text' | 'kind'>>): string | undefined {
+export function compoundHeadLine(parts: ReadonlyArray<Pick<WordPart, 'text' | 'kind' | 'lemma'>>): string | undefined {
   const head = parts.find((p) => p.kind === 'head');
   if (!head) return undefined;
   return head === parts[parts.length - 1]
-    ? `${head.text} is the head: the last part decides the gender and the kind of thing.`
-    : `${head.text} is the head: it decides the gender and the kind of thing.`;
+    ? `${partText(head)} is the head: the last part decides the gender and the kind of thing.`
+    : `${partText(head)} is the head: it decides the gender and the kind of thing.`;
 }
 
 /** The older spelling of a word: today's spelling and the period's label from the adapter's table ("today: dass — spelling before 1996"). */

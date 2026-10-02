@@ -59,7 +59,7 @@ import { createViewDetector } from './viewDetection';
 import type { ViewDetector, ViewDetectorFactory } from './viewDetection';
 import { useTextData } from './useTextData';
 import type { TextData } from './useTextData';
-import { dictionaryName, englishBehindMenu, hasClauseSpans, hasSeveralReadings, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, unitText, visibleNotes } from './assistance';
+import { dictionaryName, englishBehindMenu, hasClauseSpans, hasSeveralReadings, isLegacyProfile, maxLevel, nextLayer, pick, planLayers, unitStretches, unitText, visibleNotes } from './assistance';
 import type { LayerFacts } from './assistance';
 import type { DictionaryInfo, LexiconSource } from '../../core';
 import { dictionaryView } from '../../ingest';
@@ -354,8 +354,9 @@ function ReaderBody({ data, profile, mode, createDetector, activeSentenceId, con
   const unitPieces = useMemo(() => {
     if (!unitOpen || !cardSentenceId) return undefined;
     const bySentence = data.tokensBySentence.get(cardSentenceId) ?? [];
-    const found = bySentence.filter((t) => unitOpen.pieceTokenIds.includes(t.id)).sort((a, b) => a.start - b.start).map((t) => t.surface);
-    return found.length > 0 ? found : undefined;
+    const ordered = [...bySentence].sort((a, b) => a.start - b.start);
+    const found = ordered.map((t, at) => ({ id: t.id, surface: t.surface, at })).filter((t) => unitOpen.pieceTokenIds.includes(t.id));
+    return found.length > 0 ? unitStretches(found) : undefined;
   }, [unitOpen, cardSentenceId, data.tokensBySentence]);
   const unitLabel = unitOpen ? `Part of a word written in pieces: ${unitText(unitPieces ?? [], unitOpen.display)}` : undefined;
 

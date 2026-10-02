@@ -382,9 +382,24 @@ export const PERSONAL_FACTOR_WORD: Record<string, string> = {
 
 // ───────────────────────────── lexical units, compounds, older spelling ─────────────────────────────
 
-/** The pieces of a lexical unit written as several words, in text order, then the unit as a dictionary lists it: "steht … auf = aufstehen". */
+/**
+ * The pieces of a lexical unit written as several words, in text order, then the unit as a dictionary lists it:
+ * "steht … auf = aufstehen". Each piece is one stretch of the text (see `unitStretches`), so pieces that stand side
+ * by side read as written ("të mira = i mirë") and only separated ones get the dots.
+ */
 export function unitText(pieces: readonly string[], display: string): string {
-  return pieces.length > 1 ? `${pieces.join(' … ')} = ${display}` : display;
+  const written = pieces.join(' … ');
+  return written && written !== display ? `${written} = ${display}` : display;
+}
+
+/** The pieces of a unit as stretches of the text: neighbours in the sentence are joined by a space. `at` is each piece's place in its sentence, ascending. */
+export function unitStretches(pieces: ReadonlyArray<{ surface: string; at: number }>): string[] {
+  const out: string[] = [];
+  pieces.forEach((p, i) => {
+    if (i > 0 && p.at === pieces[i - 1].at + 1) out[out.length - 1] += ` ${p.surface}`;
+    else out.push(p.surface);
+  });
+  return out;
 }
 
 /** This word's part in its unit, in plain words ("this word is the separable prefix"). The head is the word that carries the unit. */

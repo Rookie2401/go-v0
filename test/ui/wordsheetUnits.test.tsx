@@ -12,7 +12,7 @@ import type { LanguageAdapter, PersonalDifficulty, TokenAnalysis, UnitLink, Vari
 import { buildFixtureText, ids } from '../../src/core';
 import type { AppStore } from '../../src/core';
 import { Reader } from '../../src/ui/reader/Reader';
-import { PERSONAL_FACTOR_WORD, compoundHeadLine, partRole, partText, unitRoleText, unitText } from '../../src/ui/reader/assistance';
+import { PERSONAL_FACTOR_WORD, compoundHeadLine, partRole, partText, unitRoleText, unitStretches, unitText } from '../../src/ui/reader/assistance';
 import { click, makeHarness, q, qa } from './harness';
 import type { Harness, Mounted } from './harness';
 
@@ -267,6 +267,12 @@ describe('words for the new factors', () => {
     expect(unitText(['steht', 'auf'], 'aufstehen')).toBe('steht … auf = aufstehen');
     expect(unitText([], 'aufstehen')).toBe('aufstehen');
     expect(unitText(['aufstehen'], 'aufstehen')).toBe('aufstehen');
+    // neighbours read as written; only separated pieces get the dots
+    expect(unitStretches([{ surface: 'steht', at: 1 }, { surface: 'auf', at: 6 }])).toEqual(['steht', 'auf']);
+    expect(unitStretches([{ surface: 'të', at: 2 }, { surface: 'mira', at: 3 }])).toEqual(['të mira']);
+    expect(unitText(['të mira'], 'i mirë')).toBe('të mira = i mirë');
+    expect(unitText(['i mirë'], 'i mirë')).toBe('i mirë');
+    expect(unitStretches([{ surface: 'hat', at: 0 }, { surface: 'an', at: 4 }, { surface: 'gefangen', at: 5 }])).toEqual(['hat', 'an gefangen']);
     expect(unitRoleText('head')).toBe('this word is the main part');
     expect(unitRoleText('separable-prefix')).toBe('this word is the separable prefix');
   });

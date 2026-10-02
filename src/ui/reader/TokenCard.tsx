@@ -77,7 +77,7 @@ export interface TokenCardProps {
   varieties?: Readonly<Record<string, Variety>>;
   /** Lines from the learner's own record with this word (`golearn.itemHistory`). */
   history: string[];
-  /** When the word is one piece of a lexical unit written as several words: the surfaces of all its pieces, in text order. */
+  /** When the word is one piece of a lexical unit written as several words: its pieces as stretches of the text, in text order (neighbours already joined). */
   unitPieces?: string[];
   /** The sheet is up. When false it plays its exit, then calls onExited. */
   open: boolean;

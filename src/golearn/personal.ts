@@ -34,6 +34,13 @@ type Cls = 'known' | 'familiar' | 'met' | 'new';
 type Level = 'low' | 'moderate' | 'high';
 type DifficultyFactor = PersonalDifficulty['factors'][number];
 
+/** How a register layer is named in a difficulty note. A layer without a name here is named by its tag. */
+const REGISTER_WORDS: Record<string, string> = {
+  sanskritic: 'Sanskrit-derived words', 'perso-arabic': 'Persian- or Arabic-derived words', 'english-loan': 'English loans', biblical: 'biblical vocabulary',
+  literary: 'literary words', formal: 'formal words', archaic: 'older words', historical: 'historical words', religious: 'religious vocabulary',
+  royal: 'royal vocabulary', colloquial: 'colloquial words', slang: 'slang', 'child-directed': 'words used with children',
+};
+
 const CHUNK = 400;
 
 /** Item rows by id, in batches (one `getMany` per chunk). */
@@ -216,6 +223,11 @@ export async function scoreProfile(
   if (f.relativePerSentence !== undefined && f.relativePerSentence > 0) add('relative-clauses', up(f.relativePerSentence, PERSONAL.relativePerSentence), `About ${perSentence(f.relativePerSentence)} relative clauses per sentence.`);
   if (f.participialPerSentence !== undefined && f.participialPerSentence > 0) add('participial-modifiers', up(f.participialPerSentence, PERSONAL.participialPerSentence), `About ${perSentence(f.participialPerSentence)} participle phrases describing a noun per sentence.`);
   if (f.nominalizationShare !== undefined && f.nominalizationShare > 0) add('nominalizations', up(f.nominalizationShare, PERSONAL.nominalizationShare), `${share(f.nominalizationShare)} of the words are nouns made from verbs or adjectives.`);
+  // register layers: stated as what the vocabulary is made of, never as better or worse language
+  if (f.registerShare?.marked) {
+    const layers = Object.entries(f.registerShare).filter(([k, v]) => k !== 'marked' && v >= 0.01).sort((a, b) => b[1] - a[1]).slice(0, 3);
+    if (layers.length) add('register', up(f.registerShare.marked, PERSONAL.registerShare), `Its vocabulary: ${layers.map(([k, v]) => `${share(v)} ${REGISTER_WORDS[k] ?? k}`).join(', ')}.`);
+  }
   let regional = 0;
   let historical = 0;
   for (const [tag, s] of Object.entries(f.varietyShare ?? {})) {

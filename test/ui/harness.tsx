@@ -23,7 +23,7 @@ import { COURSES, REVIEW_OK, StoreEventBus, buildFixtureText, createMemoryStore,
 import type {
   AppStore, AssistanceLevel, AudioAsset, AudioManifest, AudioSegment, AudioStatus, ComfortBand, ComprehensionReported, DomainEvent,
   AssistanceProfile, CatalogText, CourseCatalog, EvidenceAudit, Features, GoLearn, GoListen, GoTell, GoTellSuggestion, IntentProposal, PersonalizedCoverage, ProductionAnalysis, ProviderAvailability,
-  Library, LibraryQuery, RankedText, ReadingPace, ReadingProgress, Recommendation, ScriptureReadiness, Stage, StageReadiness, SentenceSupport, Testimony, TestimonyDraft, TestimonyRevision, Text, TokenSupport, VoiceConfig,
+  Library, LibraryQuery, RankedText, ReadingPace, ReadingProgress, Recommendation, RescueDependence, ScriptureReadiness, Stage, StageReadiness, SentenceSupport, Testimony, TestimonyDraft, TestimonyRevision, Text, TokenSupport, VoiceConfig,
 } from '../../src/core';
 import type { Stream, Work } from '../../src/core';
 import { THAI_COURSE_ID, THAI_STAGES, THAI_WORKS, createCourseCatalog } from '../../src/course';
@@ -143,9 +143,9 @@ export function makeFakeGoLearn(store: AppStore, opts: FakeLearnOptions = {}, bu
     readingPace: vi.fn(async (_userId: string, _o?: { textId?: string; stageId?: string; lang?: string }): Promise<ReadingPace> => ({
       basis: 'sentence-dwell', sentences: 0, lookupsPer100Words: 0, rescuesPer100Sentences: 0, rereadSittings: 0, trend: 'insufficient-data', ...opts.pace,
     })),
-    rescueDependence: vi.fn(async (_userId: string, _o?: { textId?: string; stageId?: string; lang?: string }) => ({
+    rescueDependence: vi.fn(async (_userId: string, _o?: { textId?: string; stageId?: string; lang?: string }): Promise<RescueDependence> => ({
       overall: { sentences: 0, words: 0, per100Words: { decoding: 0, romanization: 0, word: 0, phrase: 0, grammar: 0 }, per100Sentences: { explanation: 0, english: 0 }, unaidedSentenceShare: 0 },
-      trend: 'insufficient-data' as const,
+      trend: 'insufficient-data',
     })),
     /** The library ranking: empty unless a test scripts it (`h.learn.rankLibrary.mockImplementation(...)`). */
     rankLibrary: vi.fn(async (_userId: string, _candidates: unknown[], _o?: unknown): Promise<RankedText[]> => []),

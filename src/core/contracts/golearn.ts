@@ -296,7 +296,8 @@ export interface PersonalDifficulty {
   factors: Array<{
     key: 'lexical-coverage' | 'new-words' | 'phrases' | 'constructions' | 'sentence-length' | 'clause-depth' | 'subjunctive' | 'clitics'
       | 'regional' | 'historical' | 'proper-names' | 'domain' | 'author' | 'unanalysed'
-      | 'compounds' | 'verb-bracket' | 'genitive' | 'passive' | 'relative-clauses' | 'participial-modifiers' | 'nominalizations' | 'older-spelling';
+      | 'compounds' | 'verb-bracket' | 'genitive' | 'passive' | 'relative-clauses' | 'participial-modifiers' | 'nominalizations' | 'older-spelling'
+      | 'register';
     level: 'low' | 'moderate' | 'high';
     note: string;
   }>;

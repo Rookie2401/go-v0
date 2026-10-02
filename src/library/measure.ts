@@ -128,6 +128,8 @@ export async function measureStoredText(store: AppStore, textId: string, opts: M
   let analysed = 0, withPos = 0, withMood = 0, subordinators = 0, proper = 0, subjunctive = 0, clitics = 0;
   let genitive = 0, compounds = 0, olderSpelling = 0, nominalizations = 0;
   const varieties = new Map<string, number>();
+  const registers = new Map<string, number>();
+  let registerMarked = 0;
   const compoundCounts = new Map<string, { whole: string; parts: string[]; n: number }>();
 
   for (const t of words) {
@@ -147,6 +149,9 @@ export async function measureStoredText(store: AppStore, textId: string, opts: M
     if (a.morph?.Mood !== undefined) { withMood++; if (isSubjunctive(a)) subjunctive++; }
     if (carriesClitic(a)) clitics++;
     for (const v of new Set(a.varieties ?? [])) bump(varieties, v);
+    // register layers beyond plain everyday / standard usage (a word may carry several)
+    const layers = [...new Set(a.register ?? [])].filter((r) => r !== 'everyday' && r !== 'standard');
+    if (layers.length) { registerMarked++; for (const r of layers) bump(registers, r); }
     if (a.morph?.Case === 'Gen') genitive++;
     if (isCompound(a)) {
       compounds++;
@@ -182,7 +187,7 @@ export async function measureStoredText(store: AppStore, textId: string, opts: M
     bump(patterns, o.patternId);
     const key = o.patternId.startsWith(keyPrefix) ? o.patternId.slice(keyPrefix.length) : '';
     if (key.startsWith('passive')) passive++;
-    else if (key === 'relative-clause') relative++;
+    else if (key === 'relative-clause' || key === 'relative-correlative') relative++;
     else if (key === 'participial-modifier') participial++;
     if (BRACKET_PATTERN_KEYS.includes(key) && o.tokenIds.length >= 2) {
       const [a, b] = [indexOf.get(o.tokenIds[0]), indexOf.get(o.tokenIds[1])];
@@ -220,6 +225,7 @@ export async function measureStoredText(store: AppStore, textId: string, opts: M
     if (genitive) features.genitiveShare = round4(genitive / total);
     if (olderSpelling) features.historicalSpellingShare = round4(olderSpelling / total);
     if (nominalizations) features.nominalizationShare = round4(nominalizations / total);
+    if (registerMarked) features.registerShare = { ...Object.fromEntries([...registers].sort((a, b) => cmp(a[0], b[0])).map(([k, n]) => [k, round4(n / total)])), marked: round4(registerMarked / total) };
   }
 
   const profile: TextProfile = {

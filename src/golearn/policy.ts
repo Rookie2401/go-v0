@@ -298,6 +298,8 @@ export const PERSONAL = {
   nominalizationShare: { low: 0.03, moderate: 0.08 },
   /** Share of the words written in an older spelling. */
   olderSpellingShare: { low: 0, moderate: 0.05 },
+  /** Share of words in a register layer beyond everyday usage (formal Sanskrit-derived words, biblical vocabulary …). */
+  registerShare: { low: 0.1, moderate: 0.25 },
   /** "Little history": fewer than this share of the text's most frequent forms have ever been met. */
   historyTopForms: 50,
   historyMinShare: 0.2,

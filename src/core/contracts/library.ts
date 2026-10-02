@@ -50,6 +50,12 @@ export interface TextFeatures {
   historicalSpellingShare?: number;
   /** Share of word tokens that are nouns made from verbs or adjectives by suffix (-ung, -heit, -keit …), when the analysis says so. */
   nominalizationShare?: number;
+  /**
+   * Share of word tokens carrying each register layer the analysis states, other than plain everyday / standard usage
+   * ('sanskritic', 'perso-arabic', 'english-loan', 'biblical', 'literary', 'formal' …). `marked` is the share of words
+   * carrying at least one such layer. A fact about the text's vocabulary, never a verdict on it.
+   */
+  registerShare?: Record<string, number>;
 }
 
 /** One catalogued text (usually a chapter). Small: tens of thousands of these are paged, never listed whole. */

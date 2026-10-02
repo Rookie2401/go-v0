@@ -106,9 +106,16 @@ Status of record: **`docs/spanish/STATUS.md`**; the dictionary layer and every m
   every word that had a second reading, even one ruled out; (5) the test suite passed but the runner reported
   worker timeouts, because command-line tests blocked their workers with synchronous spawns (and one test counted
   temporary directories shared with other test files).
-- **Not verified**: anything about Spanish on a real book; every Honduran fact and regional gloss (the dictionary
+- **First run on real prose (night of 2026-10-01, adapter-es@6)**: five plain-text books were planned (not imported)
+  with the dictionary; the four clean ones (547,756 words) get a reading for 99.6–99.9 % of their words. Nine
+  defects showed and were fixed with tests: a pronoun after a conjugated verb (`díjole`), plain-text italics and
+  dashes, chapter headings, a chapterless text as one huge document, names, old contractions, Roman numerals, and a
+  quality check that called an annotated school edition usable (`docs/spanish/DICTIONARY.md` 4.6).
+- **Not verified**: whether the readings on a real book are right (three 150-word samples are written, none
+  marked); a whole book imported and read in the browser; every Honduran fact and regional gloss (the dictionary
   labels 940 senses as Honduran — material for a reviewer, not a verification); the controlled texts' Spanish (no
-  native reader has seen them).
+  native reader has seen them). A Spanish library being assembled by another tool in the working tree is not part
+  of this statement (`docs/spanish/STATUS.md`, end).
 
 ## Hindi course (contract v10, 2026-10-01)
 

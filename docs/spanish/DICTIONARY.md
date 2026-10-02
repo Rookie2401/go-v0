@@ -170,13 +170,80 @@ say the word is current, polite, or unused elsewhere, and 77 of the Honduran sen
 derogatory. This is material for a Honduran reviewer and for the authors of the Honduran readings, not a word list
 to ship.
 
+### 4.6 Real prose: five books planned, nothing imported (night of 2026-10-01, adapter 6)
+
+Plain-text files of five books appeared in `data/sources/es-prose/` that evening (acquired by another tool; their
+rights records are that tool's, see `docs/spanish/STATUS.md`). `npx vite-node scripts/probe-es-book.mts -- <file>`
+runs a file through the quality check, the converter and the import **planner** with the installed dictionary and
+counts where each word's first reading comes from. It writes nothing to any database and changes no file of theirs.
+
+**What this measures: whether a word gets a reading, and from what. Not whether the reading is right.**
+
+| book | words | chapters found | word list or rule on its lemmas | dictionary | rule on a dictionary lemma | guessed a name | other guess | nothing | "possibly" on the word sheet |
+|---|---|---|---|---|---|---|---|---|---|
+| Galdós, *Marianela* | 50,969 | 22 (`-I-`) | 80.96 % | 17.28 % | 0.37 % | 1.13 % | 0.19 % | 0.06 % | 3.98 % |
+| Martí, *La edad de oro* | 66,816 | 7 (`--I--`), long ones divided | 84.57 % | 14.54 % | 0.05 % | 0.51 % | 0.16 % | 0.16 % | 3.70 % |
+| Palma, *Tradiciones peruanas* | 47,998 | none found; 5 parts | 73.96 % | 23.92 % | 0.36 % | 0.85 % | 0.54 % | 0.37 % | 4.38 % |
+| Cervantes, *Don Quijote* ¹ | 381,973 | 126 | 82.09 % | 16.45 % | 0.40 % | — | 0.98 % ² | 0.09 % | 3.71 % |
+| Alarcón, *El capitán Veneno* ³ | 52,016 | 43 | 50.46 % | 21.49 % | 0.38 % | — | 8.75 % ² | 18.93 % | 12.11 % |
+
+¹ run before the fix for old contractions and before names were counted apart. ² names included. ³ a 1920 American
+school edition: the preface, notes, exercises and vocabulary are English (see below); the figures show what such a
+source does, not how the pipeline reads Alarcón.
+
+Time: 0.5 to 1.7 ms per word in Node on a machine four other sessions were using (*Don Quijote*: 489 s). That is
+slower than the 1.5 s for a two-chapter book in the browser audit suggests per word; nobody has imported a whole
+novel in the browser yet.
+
+What the first run of *Marianela* showed, and what was done about each (all in commits of that night, with tests):
+
+- **A pronoun after a conjugated verb** (`díjole`, `hallábase`, `detúvose`, `sentose`, `dijéronme`; with the older
+  accent `oyóse`, `dióme`, `déme`) had no reading. The engine now reads verb + pronouns from the shape of the word:
+  a guess (`unconfirmed`, 0.6 where the accent shows the joint, 0.5 where today's spelling writes none) that a
+  dictionary entry for the same writing overrules and a dictionary lemma confirms; never offered beside a reading
+  the word list vouches for (`fuese`, `paseos`); not for an unaccented `…os` (plural nouns); with its own grammar
+  note. `se` alone no longer makes a tú command (`levántase` = *se levanta*); `se` + indirect object is split
+  (`partiéndoseme`, `échesele`).
+- **Italics written as `_word_`** (Project Gutenberg) made the word unreadable: an underscore at the edge of a word
+  is now a mark of its own, for every language.
+- **The dialogue dash written `--`** was not a dash for the context rules (`--pregunta Marvin` read as the noun) or
+  for the sentence splitter.
+- **Chapter headings** `-I-`, `--IV--` and Roman numerals above XXXIX (`Capítulo LII`) were not found.
+- **A chapterless text was one document** of any size (48,000 words for Palma; a novel would be hundreds of
+  thousands): a chapter above 120,000 characters is now divided into parts of about 60,000 at paragraph
+  boundaries, with a note; not when one document was asked for.
+- **Names** (`la Nela` 341 times, `Aldeacorba`, `Celipín`) were guessed as nouns or verbs from their endings, or
+  got nothing: a word on no list written with a capital inside the sentence is now first guessed to be a name
+  (a guess, 0.5, no meaning; the dictionary decides if it lists the word).
+- **Old contractions** (`desta` 93 times in *Don Quijote*, `deste`, `della`) were read correctly alone but kept a
+  guessed verb `destar` beside them, which the context rules put first after `se` or `que`: no guess stands beside
+  them now.
+- **Roman numerals in the text** (`Felipe II`, `siglo XIX`) had no reading: now a number with its value.
+- **The quality check called an annotated school edition "usable"**: it now reports paragraphs that look like
+  English — a warning from 5 % of the words, "not the book alone" (serious, the library refuses it) from 15 %. On
+  the 27 Spanish files on disk that night it flags *El capitán Veneno* (17 %), *El sombrero de tres picos* (26 %)
+  and *Platero y yo* (14 %, warning).
+
+Dev split after these changes (the held-out splits were not run again; their figures above are for adapter 5):
+single forms — lemma among the readings 99.19 %, features 99.84 %, guesses for other lemmas 93.45 %, first reading
+99.50 %, attached pronouns 99.45 % (before: 99.14 / 99.89 / 93.47 / 99.43 / 99.48; the features figure fell because
+forms such as `cábeme`, formerly unread, are now read as a statement where the dictionary's table calls them a
+command); sentences — 96.22 % / 92.20 % / 81.85 % of 1,769 (before: 96.22 / 92.21 / 81.92).
+
+Still unread or guessed in these books: names at the start of a sentence; archaic spellings (`fee`,
+`encantamento`, `perfeción`, `válame`); foreign words; rare derivatives (`atrasadilla`, `pedrote`).
+
+**For a person:** `--sample 150 --out data/review/es/generated/<book>-sample.tsv` writes 150 words, chosen by a
+fixed hash, each in its sentence with the pipeline's first reading and an empty column. Three such files exist
+locally (*Marianela*, *La edad de oro*, *Tradiciones peruanas*; git-ignored). None has been marked. Until someone
+marks them there is no figure for correctness on a book.
+
 ## 5. What remains for the dictionary layer
 
 - **A person's judgement**: the 45 recorded differences; the 65 changed readings in the course texts; the Honduran
-  extract.
-- **A real book**: every figure above is on dictionary data or on the course's own texts. The first rights-cleared
-  Spanish book should be run through `corpus:convert` → import with the dictionary, and a hand-checked sample of its
-  analyses taken.
+  extract; the three 150-word samples from real books (4.6).
+- **A real book, imported**: 4.6 plans five books and counts readings; no book has been imported into a learner's
+  database and read in the browser, and no sample has been hand-checked.
 - **Frequency**: the source has none. "Rare" in the difficulty preview still means "once in this text".
 - **Re-analysis of a learner's own books** when a dictionary is installed or updated (today: on re-import only).
 - **Size**: 57.7 MB of static files is acceptable for a hosted build and is fetched a shard at a time; a fully

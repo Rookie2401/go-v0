@@ -1,4 +1,4 @@
-# Spanish course — status (2026-10-01, updated the same evening for the dictionary pass)
+# Spanish course — status (2026-10-01, updated the same evening for the dictionary pass and that night for the first run on real prose)
 
 Words as in `docs/READINESS.md`: **implemented** (the code exists and its own tests pass), **verified** (also proven
 end to end: integration tests on the real adapter, importer and engines, and a browser flow in a sandbox database),
@@ -19,6 +19,13 @@ This is not a production-readiness claim. The short version:
 - **Since the evening of 2026-10-01 a Spanish dictionary is installed** (Wiktionary via kaikki.org, 808,278 entries,
   kept as a separately sourced layer) and the importer uses it for a learner's own books: `docs/spanish/DICTIONARY.md`
   has what it does and every measurement, including the two evaluations on data that was never looked at.
+- **That night the pipeline met real books for the first time** — five plain-text files another tool had placed in
+  `data/sources/es-prose/` were planned (not imported) with the dictionary. Between 99.6 % and 99.9 % of the words of
+  the four clean books get a reading; nine defects showed and were fixed (adapter 6). Whether the readings are right
+  on a book is still unmeasured: three 150-word samples wait for a person. See "First run on real prose" at the end.
+- **A library for Spanish is being built by another tool in the same working tree, uncommitted** (26 Project
+  Gutenberg editions, rights recorded as verified for the United States only). This document does not vouch for it;
+  what this session saw of it, and what it would ask before relying on it, is at the end.
 
 Design: `docs/SPANISH_COURSE.md`. Build plan and file ownership: `docs/PLAN9.md`. The controlled texts:
 `docs/spanish/ACQUISITION.md`.
@@ -120,8 +127,8 @@ annotations and audio recordings have their own rights and are recorded separate
   all tokens); after, for 1 (`con mucho gusto`: determiner read as adverb, same lemma). **This is a
   development-set figure**: the rules were written while looking at these texts, and the judge was the same model
   that wrote them, not a native speaker. The only independent signal is small: 85 sentences judged before the rules
-  were run (about 35 of them not from the course texts) all came out as judged on the first run. Nothing has been
-  measured on real prose. A `di`, `sal` or `para` at the start of a sentence, `la`/`los`/`las` before a word that
+  were run (about 35 of them not from the course texts) all came out as judged on the first run. On real prose only
+  coverage has been measured (whether a word gets a reading), not correctness. A `di`, `sal` or `para` at the start of a sentence, `la`/`los`/`las` before a word that
   can be a verb, and subordinate clauses are the known weak places.
 - **Words outside the word list.** With the dictionary installed they get the dictionary's lemma and meaning; on the
   held-out example sentences 1.0 % of all words stay a rule guess and 1.2 % get nothing (names, typing, rare forms).
@@ -173,7 +180,8 @@ data. Nothing in the Spanish course waits for it.
 3. Run them through `corpus:convert` → quality check → `library:build`; read the quality reports; fix sources, not
    texts.
 4. Measure the analysis on that real prose with a hand-checked sample (the figures above are on dictionary examples
-   and on the course's own texts, not on a book).
+   and on the course's own texts, not on a book). *Started 2026-10-01 night: coverage measured on five books, samples
+   written, none marked (`docs/spanish/DICTIONARY.md` 4.6).*
 5. Move the word list and course texts out of the main bundle (it touches files every language's session shares, so
    it needs to be agreed with them); decide where the built library and the 57.7 MB dictionary are hosted.
 6. Only then widen the manifest. The catalogue of 66 is a list of candidates, not a plan to ingest them all.
@@ -189,6 +197,10 @@ text outside preview, and Home says so.
 - Who decides the 45 recorded differences between the word list and the dictionary, and who reads the Honduran extract.
 - Whether a release names jurisdictions for the rights gate (then Reina-Valera 1909 needs a status for each).
 - A native reviewer for the controlled texts and a Honduran reviewer for the Honduran material.
+- Whether the library the other tool is building is the "usable library" meant above, and who integrates it. If it
+  is: which jurisdictions a release is for (its rights records cover the United States only; the team is in
+  Honduras), and what to do with the annotated school editions among its sources.
+- Someone to mark the three 150-word samples from real books (a Spanish reader; an hour).
 
 ## 9. Verification of this pass
 
@@ -241,3 +253,50 @@ Left behind on this machine (browser storage for `127.0.0.1:5198`, the audit wor
 and `es2` from this pass (a default learner, one finished course text in `es1`, the two-chapter test book in
 `es2`), and the sandboxes of earlier rounds. They are separate from the normal library and can be deleted from the
 browser's site data.
+
+### First run on real prose (night of 2026-10-01)
+
+Done by this session, read-only with respect to the acquired files: `scripts/probe-es-book.mts` plans a plain-text
+book with the installed dictionary and counts where each word's first reading comes from. Figures, the nine defects
+it exposed and their fixes: `docs/spanish/DICTIONARY.md` 4.6. In short: *Marianela*, *La edad de oro*, *Tradiciones
+peruanas* and *Don Quijote* (547,756 words together) are read to between 99.6 % and 99.9 % of their words, about
+1 % of them as a guessed name; the word sheet would say "possibly" for about 4 %.
+
+- Implemented and tested (commits `5c194a1`, `7bbded0`, `b8d71ca`, `4f22d0b`, `4ea6eb3`): adapter 6 — a pronoun
+  after a conjugated verb, the older accent, `se` + indirect object, names guessed from a capital, Roman numerals,
+  old contractions without a guess beside them, `--` as the dialogue dash; underscores of plain-text italics (shared
+  tokenizer); chapter headings `-I-` and above XXXIX; division of an overlong chapter into parts; the quality
+  check's report of English sections in an annotated edition.
+- Verified: the Spanish, importer and shared-tokenizer tests (every language's adapter tests pass with the tokenizer
+  change); the dev-split evaluations before and after (no fall in sentences beyond one word in 7,970; the held-out
+  splits were not run again). A clean checkout of the commit was type-checked and tested.
+- Not verified: correctness of readings on a book (samples unmarked); a whole book imported and read in the browser;
+  speed of such an import in the browser (in Node: 0.5–1.7 ms per word on a busy machine).
+- Because the analyzer version changed (5 → 6), the bundled Spanish texts are analysed again on the next start, and
+  a learner's own Spanish books on re-import.
+
+**The other tool's Spanish library, as this session saw it (not its author; nothing of it was changed, committed
+or reverted here).** By 21:46 the working tree held 27 Spanish text files and a manifest of 26 works in
+`data/sources/es-prose/`, uncommitted edits to `src/course/spanish.ts` (works marked `verified-public-domain`,
+`verifiedBy: 'Project Gutenberg ebook page and licence notice'`, `statusByJurisdiction: { US: 'public-domain' }`),
+to `src/library/build.ts`, to catalogue and UI files and to two Spanish catalogue tests, and a library build
+running into `public/library/es`. Twelve course and catalogue tests fail in that working tree and pass in a clean
+checkout of the last commit: they assert the rights states the edits change. What a person should decide before
+relying on it:
+
+1. **Who verified.** The project's rule is that no work is marked verified without a person's record. These
+   records name a web page as the verifier.
+2. **Where.** The records cover the United States. By this session's reading of the usual terms — not legal advice,
+   and to be checked — Juan Ramón Jiménez (died 1958) and Pío Baroja (died 1956) are still protected in Honduras
+   (life + 75 years), in Spain (life + 80 for authors who died before 1987) and in most of the European Union
+   (life + 70). *Platero y yo*, *El árbol de la ciencia* and *Zalacaín el aventurero* are in the manifest. The shared
+   rights gate refuses a work without a status for a named release jurisdiction, but only when the build is given
+   the list (`npm run rights:check -- --release …`).
+3. **Which edition.** *El capitán Veneno* (#29731) and *El sombrero de tres picos* (#29506) are American school
+   editions: 17 % and 26 % of their words stand in English notes, exercises and vocabularies; *Platero y yo*
+   (#9980) 14 %. The editors' apparatus is a work of its own, and for a learner it is not the book. The quality
+   check now refuses the first two for a library and warns on the third.
+4. **Old spelling.** Six files are judged "damaged" by the quality check; for *Novelas ejemplares*, *El conde
+   Lucanor*, *Libro de buen amor* and Bécquer the cause is the missing-accent test firing on an old-orthography
+   edition, which is a property of the edition and not scan damage. A person should look before either trusting
+   or overriding that verdict; the test's threshold was not changed.

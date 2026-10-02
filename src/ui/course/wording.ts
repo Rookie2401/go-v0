@@ -139,6 +139,7 @@ export function stateRightsLine(w: Pick<Work, 'rights'>): string {
     case 'rights-unverified': return 'Rights not verified — not bundled. Read it from your own copy.';
     case 'prohibited-from-bundling':
       return r.copyrightStatus === 'in-copyright' ? 'In copyright — read it from your own copy.' : 'Not bundled — read it from your own copy.';
+    case 'research-only': return 'Kept for checking the analysis only — not part of the course.';
     default: return rightsLine(r);
   }
 }

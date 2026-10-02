@@ -1,0 +1,12 @@
+{
+  "r2-02": "The article of a subject noun phrase is not narrowed with its noun (Der stays Nom or Gen, Sing or Plur); a noun subject does not fix the verb's person (liest stays 2 or 3).",
+  "r2-07": "The perfect of the passive (ist … gebaut worden) is not reported as the passive construction.",
+  "r2-13": "As r2-02 for the article; eröffnen is not in the hand word list (the reading is marked unconfirmed, which is right).",
+  "r2-17": "The relative pronoun die is not narrowed to the plural of the noun it refers to; spielten stays indicative-or-Konjunktiv II inside a relative clause.",
+  "r2-20": "bis before another preposition (bis zur Kirche) is read as the conjunction.",
+  "r2-24": "A false modal-particle construction is reported for a sentence whose only particle is nicht.",
+  "r2-27": "As r2-24.",
+  "r2-29": "A pronoun subject does not fix the verb's person in a verb-final je-clause (liest stays 2 or 3).",
+  "r2-33": "After viele Deutsche the verb stays 1st or 3rd person plural.",
+  "r2-34": "The participle of a separable verb that is not in the word list (abgeschickt, built on the known schicken) is guessed as an invented infinitive; the perfect is then missed. Also the false modal-particle of r2-24."
+}

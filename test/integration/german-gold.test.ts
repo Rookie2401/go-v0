@@ -24,7 +24,9 @@ interface GoldSentence {
   tokens?: GoldToken[]; constructions?: string[]; notConstructions?: string[];
 }
 
-const gold = JSON.parse(fs.readFileSync('data/benchmarks/de/gold.json', 'utf8')) as { sentences: GoldSentence[] };
+// Round 1 (gold.json) was written before the adapter existed; round 2 (gold-2.json) after it landed and first run unseen.
+const readGold = (file: string) => (JSON.parse(fs.readFileSync(file, 'utf8')) as { sentences: GoldSentence[] }).sentences;
+const gold = { sentences: [...readGold('data/benchmarks/de/gold.json'), ...readGold('data/benchmarks/de/gold-2.json')] };
 const LIMITS_FILE = 'data/benchmarks/de/known-limits.json';
 const limits: Record<string, string> = fs.existsSync(LIMITS_FILE) ? JSON.parse(fs.readFileSync(LIMITS_FILE, 'utf8')) : {};
 

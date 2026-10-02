@@ -11,6 +11,7 @@
  * Machine-drafted, not native-reviewed.
  */
 import type { AnalysisCandidate, AnalyzedToken, PatternCandidate, RawToken, Span } from '../../core';
+import { PARTICLE_KINDS } from './function-words';
 import { deLexiconView } from './lexicon';
 import { segmentGermanSentences as segment } from './sentences';
 
@@ -51,6 +52,14 @@ export const GERMAN_CONSTRUCTION_INFO: Readonly<Record<string, Info>> = {
   'passive-past': {
     title: 'Passive in the past: wurde + past participle',
     explanation: 'Wurde plus a past participle is the past of the passive: "Das Haus wurde gebaut" (the house was built).',
+  },
+  'passive-perfect': {
+    title: 'Perfect passive: ist … worden',
+    explanation: 'The perfect of the passive (wird gebaut, wurde gebaut) is sein + past participle + worden; with war it is the pluperfect: "Das Haus ist von meinem Großvater gebaut worden." Note worden, not geworden (geworden is the perfect of werden: "Er ist Lehrer geworden").',
+  },
+  'je-desto': {
+    title: 'je … desto: the more … the more',
+    explanation: 'Je + comparative opens a clause with the verb last; desto or umso + comparative starts the main clause, with the verb second: "Je mehr er liest, desto mehr versteht er" (the more he reads, the more he understands).',
   },
   'modal-infinitive': {
     title: 'Modal verb + infinitive',
@@ -294,7 +303,8 @@ function hit(key: string, confidence: number, tokenIndexes: number[], extra = ''
 type Detector = (ctx: Ctx) => PatternCandidate[];
 
 /** The lowest confidence among the readings a construction rests on. */
-const conf = (...cs: Array<AnalysisCandidate | undefined>): number => Math.min(...cs.map((c) => c?.confidence ?? 0.5));
+const conf = (...cs: Array<AnalysisCandidate | undefined>): number =>
+  Math.min(...cs.map((c) => (c?.unconfirmed ? Math.min(c.confidence, 0.6) : c?.confidence ?? 0.5))); // a guessed reading never counts for more than 0.6
 
 // ───────────────────────────── clause structure ─────────────────────────────
 
@@ -366,33 +376,62 @@ const subordinate: Detector = (ctx) => {
   return out;
 };
 
+type Want = (c: AnalysisCandidate | undefined, i: number) => boolean;
+
 /** The word of the clause that completes an auxiliary: the nearest one after it, or before it when the auxiliary closes the clause. */
-function partner(ctx: Ctx, ws: number[], pos: number, want: (c: AnalysisCandidate | undefined) => boolean): number | undefined {
+function partner(ctx: Ctx, ws: number[], pos: number, want: Want): number | undefined {
   const stop = (c: AnalysisCandidate | undefined) => surelyFinite(c) || c?.pos === 'CONJ';
   const after: number[] = [];
   for (let k = pos + 1; k < ws.length; k++) {
     const c = ctx.c(ws[k]);
-    if (want(c)) { after.push(ws[k]); continue; }
+    if (want(c, ws[k])) { after.push(ws[k]); continue; }
     if (stop(c)) break;
   }
   const before: number[] = [];
   for (let k = pos - 1; k >= 0; k--) {
     const c = ctx.c(ws[k]);
-    if (want(c)) { before.push(ws[k]); continue; }
+    if (want(c, ws[k])) { before.push(ws[k]); continue; }
     if (stop(c)) break;
   }
   if (pos < ws.length - 1 && after.length) return after[after.length - 1];
   return before[0];
 }
 
-/** The sentence bracket: an auxiliary or modal and the participle or infinitive that closes the clause. */
+/** "worden", the participle of werden inside a passive perfect; "geworden" is the perfect of werden itself. */
+const isWorden = (ctx: Ctx, i: number): boolean => ctx.n(i) === 'worden' && pastParticiple(ctx.c(i));
+
+/**
+ * The sentence bracket: an auxiliary or modal and the participle or infinitive that closes the clause.
+ *  - haben / sein + participle: perfect (Pres) or pluperfect (Past); an unconfirmed participle (a separable verb the word list
+ *    does not hold) counts, with the lower confidence of its reading; geworden is a participle like any other;
+ *  - sein + participle + worden: passive-perfect, and neither of the two above;
+ *  - werden + participle: passive / passive-past; an infinitive werden after a participle (gebaut werden, after a modal or
+ *    after wird) is reported as passive too, and then the finite werden is reported as the future (wird gebaut werden:
+ *    future + passive), not as a second passive.
+ */
 const brackets: Detector = (ctx) => {
   const out: PatternCandidate[] = [];
-  const notWerden = (c: AnalysisCandidate | undefined) => pastParticiple(c) && c?.lemma !== 'werden';
+  const verbParticiple: Want = (c) => pastParticiple(c) && c?.lemma !== 'werden';
+  const perfectParticiple: Want = (c, i) => pastParticiple(c) && !isWorden(ctx, i);
+  const anInfinitive: Want = (c) => infinitive(c);
   ctx.clauses.forEach((cl) => {
     const ws = cl.words;
-    // "ist gebaut worden" is a perfect passive: not a perfect with sein
-    const perfectPassive = ws.some((w) => pastParticiple(ctx.c(w)) && ctx.c(w)?.lemma === 'werden');
+    const worden = ws.find((w) => isWorden(ctx, w));
+    // participles claimed by an infinitive werden: the passive infinitive
+    const claimed = new Set<number>();
+    ws.forEach((w, pos) => {
+      const a = ctx.c(w);
+      if (!a || a.lemma !== 'werden' || !infinitive(a) || surelyFinite(a)) return;
+      let pp = partner(ctx, ws, pos, verbParticiple);
+      if (pp === undefined && pos > 0) {
+        // the word right in front may be a participle the sentence layer left as a second reading (verloren: Fin or Part)
+        const before = ws[pos - 1];
+        if ((ctx.analyses[before]?.candidates ?? []).some((x) => pastParticiple(x) && x.lemma !== 'werden')) pp = before;
+      }
+      if (pp === undefined || pp > w) return; // the participle stands in front: gebaut werden
+      claimed.add(pp);
+      out.push(hit('passive', conf(a, ctx.c(pp)), [w, pp], 'With the verb at the end the participle comes first: "Das Haus muss gebaut werden", "Das Haus wird gebaut werden", "…, dass das Haus gebaut werden soll".'));
+    });
     ws.forEach((w, pos) => {
       const a = ctx.c(w);
       if (!a || !finite(a) || !a.lemma) return;
@@ -402,8 +441,14 @@ const brackets: Detector = (ctx) => {
       const pres = has(a, 'Tense', 'Pres') && !has(a, 'Tense', 'Past');
       const past = has(a, 'Tense', 'Past') && !has(a, 'Tense', 'Pres');
       if (a.lemma === 'haben' || a.lemma === 'sein') {
-        if (!ind || perfectPassive) return;
-        const p = partner(ctx, ws, pos, notWerden);
+        if (!ind) return;
+        if (worden !== undefined) {
+          // "ist gebaut worden", "war gebaut worden": the perfect of the passive, not a perfect of the verb
+          const pp = a.lemma === 'sein' ? partner(ctx, ws, pos, verbParticiple) : undefined;
+          if (pp !== undefined) out.push(hit('passive-perfect', conf(a, ctx.c(pp), ctx.c(worden)), [w, worden, pp]));
+          return;
+        }
+        const p = partner(ctx, ws, pos, perfectParticiple);
         if (p === undefined) return;
         const base = conf(a, ctx.c(p)) - (a.lemma === 'sein' ? 0.1 : 0);
         if (pres) out.push(hit('sentence-bracket-perfect', base, [w, p]));
@@ -412,20 +457,20 @@ const brackets: Detector = (ctx) => {
       }
       if (a.lemma === 'werden') {
         if (ind && (pres || past)) {
-          const pp = partner(ctx, ws, pos, notWerden);
-          if (pp !== undefined) { out.push(hit(pres ? 'passive' : 'passive-past', conf(a, ctx.c(pp)), [w, pp])); return; }
+          const pp = partner(ctx, ws, pos, verbParticiple);
+          if (pp !== undefined && !claimed.has(pp)) { out.push(hit(pres ? 'passive' : 'passive-past', conf(a, ctx.c(pp)), [w, pp])); return; }
           if (pres) {
-            const ip = partner(ctx, ws, pos, infinitive);
+            const ip = partner(ctx, ws, pos, anInfinitive);
             if (ip !== undefined) out.push(hit('future', conf(a, ctx.c(ip)), [w, ip]));
           }
         } else if (sub && !ind) {
-          const ip = partner(ctx, ws, pos, infinitive);
+          const ip = partner(ctx, ws, pos, anInfinitive);
           if (ip !== undefined) out.push(hit('konjunktiv-2-wuerde', conf(a, ctx.c(ip)), [w, ip]));
         }
         return;
       }
       if (MODALS.has(a.lemma)) {
-        const ip = partner(ctx, ws, pos, infinitive);
+        const ip = partner(ctx, ws, pos, anInfinitive);
         if (ip !== undefined) out.push(hit('modal-infinitive', conf(a, ctx.c(ip)), [w, ip]));
       }
     });
@@ -554,7 +599,7 @@ const prepositions: Detector = (ctx) => {
     const together = sameClause(ctx, i, nx);
     const nc = together ? ctx.c(nx) : undefined;
     const kase = contracted ? [contracted] : nominal(nc) ? set(nc, 'Case') : [];
-    if (!kase.length) return;
+    if (!kase.length || kase.length >= 4) return; // a form that is every case (Brötchen) says nothing about the preposition
     const idx = together ? [i, nx] : [i];
     const shown = together ? `"${t.surface} ${ctx.tokens[nx].surface}"` : `"${t.surface}"`;
     const sure = kase.length === 1 ? (contracted ? 0.8 : 0.85) : 0.65;
@@ -752,19 +797,76 @@ const nominalisedVerb: Detector = (ctx) => {
   const out: PatternCandidate[] = [];
   ctx.tokens.forEach((t, i) => {
     const c = ctx.c(i);
-    if (!t.isWord || c?.pos !== 'NOUN' || !c.lemma || !/^\p{Lu}/u.test(t.surface)) return;
-    if (!/^\p{Ll}.*(en|ern|eln)$/u.test(c.lemma) || ctx.n(i) !== c.lemma.toLowerCase()) return;
+    if (!t.isWord || c?.pos !== 'NOUN' || !c.lemma || c.unconfirmed || !/^\p{Lu}/u.test(t.surface)) return;
+    // the sentence layer says so itself (notes.nominalization: "infinitive used as a noun"), or the lemma is the bare infinitive
+    const note = c.notes?.nominalization;
+    const said = typeof note === 'string' && /^infinitive/u.test(note); // not the -heit / -ung nouns, which carry the same note
+    const shape = /^\p{Ll}.*(en|ern|eln)$/u.test(c.lemma) && ctx.n(i) === c.lemma.toLowerCase();
+    if (!said && !shape) return;
     out.push(hit('nominalised-verb', c.confidence, [i]));
   });
   return out;
 };
 
+/**
+ * A modal particle: the chosen (first) reading is a PART reading whose lemma the lexicon states to be one
+ * (PARTICLE_KINDS: doch, mal, ja, denn, eben, halt …). Negation (nicht), the infinitive marker (zu), an answer word (ja at the
+ * start of a clause is INTJ), and a focus or degree word the sentence layer read as an adverb (nur, auch, sehr) are not.
+ */
 const modalParticle: Detector = (ctx) => {
   const out: PatternCandidate[] = [];
   ctx.tokens.forEach((t, i) => {
     const c = ctx.c(i);
-    if (!t.isWord || c?.pos !== 'PART' || !c.role || c.lemma === 'zu') return;
-    out.push(hit('modal-particle', Math.min(c.confidence, 0.8), [i], `Here "${t.surface}" works as a modal particle: ${c.role}.`));
+    if (!t.isWord || c?.pos !== 'PART' || PARTICLE_KINDS[(c.lemma ?? ctx.n(i)).toLocaleLowerCase('de')] !== 'modal') return;
+    out.push(hit('modal-particle', Math.min(conf(c), 0.8), [i], c.role ? `Here "${t.surface}" works as a modal particle: ${c.role}.` : ''));
+  });
+  return out;
+};
+
+/** A comparative: some reading of the word has Degree Cmp, or it is mehr / weniger (adverbs and quantifiers with no Degree). */
+function comparativeAt(ctx: Ctx, i: number): boolean {
+  if (['mehr', 'weniger'].includes(ctx.n(i))) return true;
+  return (ctx.analyses[i]?.candidates ?? []).some((c) => has(c, 'Degree', 'Cmp'));
+}
+
+/**
+ * je … desto / umso: je + a comparative opens a clause (the finite verb last), desto or umso + a comparative opens the
+ * next clause. Both halves are needed: "Er hat je zwei Äpfel gekauft" (distributive je) and "seit eh und je" have no desto.
+ * The je-clause is a subordinate clause with its verb last, so it is also reported as verb-final-subordinate, like the
+ * clauses of dass, weil or wenn.
+ */
+const jeDesto: Detector = (ctx) => {
+  const out: PatternCandidate[] = [];
+  ctx.clauses.forEach((cl, ci) => {
+    const ws = cl.words;
+    const s = ctx.c(ws[0])?.pos === 'CONJ' ? 1 : 0;
+    const je = ws[s];
+    if (je === undefined || ctx.n(je) !== 'je' || (ctx.c(je)?.lemma ?? 'je') !== 'je') return;
+    // the comparative after je, with no conjugated verb in between
+    let cmp1 = -1;
+    for (let k = s + 1; k < Math.min(ws.length, s + 5); k++) {
+      if (surelyFinite(ctx.c(ws[k]))) break;
+      if (comparativeAt(ctx, ws[k])) { cmp1 = ws[k]; break; }
+    }
+    if (cmp1 < 0) return;
+    // desto / umso + comparative at the start of a later clause
+    for (let cj = ci + 1; cj < ctx.clauses.length; cj++) {
+      const wd = ctx.clauses[cj].words;
+      const t = ctx.c(wd[0])?.pos === 'CONJ' ? 1 : 0;
+      const d = wd[t];
+      if (d === undefined || !['desto', 'umso'].includes(ctx.n(d))) continue;
+      let cmp2 = -1;
+      for (let k = t + 1; k < Math.min(wd.length, t + 4); k++) if (comparativeAt(ctx, wd[k])) { cmp2 = wd[k]; break; }
+      if (cmp2 < 0) continue;
+      out.push(hit('je-desto', Math.min(conf(ctx.c(je)), conf(ctx.c(d)), 0.85), [je, d, cmp1, cmp2]));
+      // the je-clause: verb last
+      const stretch = ws.slice(s);
+      const last = ctx.c(stretch[stretch.length - 1]);
+      if (stretch.length >= 3 && finite(last) && !stretch.slice(1, -1).some((w) => surelyFinite(ctx.c(w)))) {
+        out.push(hit('verb-final-subordinate', Math.min(conf(ctx.c(je), last), 0.85), [je, stretch[stretch.length - 1]]));
+      }
+      return;
+    }
   });
   return out;
 };
@@ -791,7 +893,7 @@ const participialModifier: Detector = (ctx) => {
 const DETECTORS: readonly Detector[] = [
   verbSecond, subordinate, brackets, separable, zuInfinitive, relativeClause, questionVerbFirst, imperative, konjunktiv,
   prepositions, genitiveAttribute, adjectiveEndings, comparativeAls, superlativeAm, negationKein, esGibt, manImpersonal,
-  reflexiveVerb, dativeObjectVerb, nominalisedVerb, modalParticle, participialModifier,
+  reflexiveVerb, dativeObjectVerb, nominalisedVerb, modalParticle, participialModifier, jeDesto,
 ];
 
 /** Every construction in one sentence, in text order. */

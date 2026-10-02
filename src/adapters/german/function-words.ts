@@ -295,6 +295,19 @@ export const CONTRACTIONS: DeContraction[] = [
 /** Every closed form built above (the articles, determiners and pronouns). */
 export const CLOSED_FORMS: readonly DeClosedForm[] = out;
 
+/**
+ * What a word of pos PART is, by lemma: the explicit fact that tells a modal particle (doch, mal, ja …: it colours the
+ * tone of a sentence) from negation (nicht) and from the infinitive marker (zu). Additive: no row, reading or view is
+ * changed. The `# PART` rows of FUNCTION_ROWS below are the source: every row whose gloss is "(modal particle)" is 'modal'
+ * here, and test/adapters/german-constructions.test.ts checks that the two never drift apart. A word that is also an adverb
+ * or a focus word (nur, auch, sogar, sehr) is a modal particle only where the sentence layer chose its PART reading.
+ */
+export const PARTICLE_KINDS: Readonly<Record<string, 'modal' | 'negation' | 'infinitive'>> = {
+  zu: 'infinitive', nicht: 'negation',
+  doch: 'modal', mal: 'modal', eben: 'modal', halt: 'modal', ja: 'modal', wohl: 'modal', schon: 'modal', denn: 'modal', eigentlich: 'modal',
+  einfach: 'modal', ruhig: 'modal', bloß: 'modal', nur: 'modal', auch: 'modal', aber: 'modal', vielleicht: 'modal', etwa: 'modal',
+};
+
 // ── uninflected function words, as rows (parsed by lexicon.ts with the row parser)
 export const FUNCTION_ROWS = `
 # CONJ

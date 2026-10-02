@@ -349,7 +349,7 @@ function perfectAuxiliary(p: PCtx): ErrorCandidate[] {
   const out: ErrorCandidate[] = [];
   p.clauses.forEach((cl) => {
     const ws = cl.words;
-    if (ws.some((w) => pastParticiple(p.c(w)) && p.c(w)?.lemma === 'werden')) return; // ist gebaut worden: a perfect passive
+    if (ws.some((w) => p.tokens[w].normalized === 'worden')) return; // ist gebaut worden: a perfect passive (geworden is the perfect of werden)
     const participles = ws.filter((w) => pastParticiple(p.c(w)));
     if (participles.length !== 1) return;
     const pi = participles[0];

@@ -44,6 +44,10 @@ const verb = (v: Partial<DeVerb> & Pick<DeVerb, 'lemma'>): DeVerb => ({ cls: 'we
 const strong = (lemma: string, pres3: string, pret: string, part: string, extra: Partial<DeVerb> = {}): DeVerb =>
   verb({ lemma, cls: 'strong', pres3, pret, part, ...extra });
 const VERBS: DeVerb[] = [
+  verb({ lemma: 'schicken' }), verb({ lemma: 'probieren' }), verb({ lemma: 'bestellen' }), verb({ lemma: 'hören' }), verb({ lemma: 'gehören' }),
+  strong('gestehen', 'gesteht', 'gestand', 'gestanden'),
+  strong('ankommen', 'kommt', 'kam', 'gekommen', { prefix: 'an', base: 'kommen', aux: 'sein' }),
+  strong('wegwerfen', 'wirft', 'warf', 'geworfen', { prefix: 'weg', base: 'werfen' }),
   verb({ lemma: 'erquicken' }), verb({ lemma: 'salben' }), verb({ lemma: 'führen' }), verb({ lemma: 'weiden' }),
   verb({ lemma: 'machen' }), verb({ lemma: 'arbeiten' }), verb({ lemma: 'reisen', aux: 'sein' }), verb({ lemma: 'sammeln' }),
   verb({ lemma: 'wandern', aux: 'sein' }), verb({ lemma: 'studieren' }), verb({ lemma: 'lächeln' }),
@@ -69,7 +73,7 @@ const ADJECTIVES: DeAdjective[] = [
   adj({ lemma: 'gut', comparative: 'besser', superlative: 'best' }), adj({ lemma: 'alt', comparative: 'älter', superlative: 'ältest' }),
   adj({ lemma: 'klein' }), adj({ lemma: 'teuer', comparative: 'teurer', superlative: 'teuerst', stem: 'teur' }),
   adj({ lemma: 'dunkel', stem: 'dunkl' }), adj({ lemma: 'rosa', indeclinable: true }), adj({ lemma: 'frisch' }), adj({ lemma: 'neu' }),
-  adj({ lemma: 'müde', stem: 'müd' }), adj({ lemma: 'leise', stem: 'leis' }),
+  adj({ lemma: 'müde', stem: 'müd' }), adj({ lemma: 'leise', stem: 'leis' }), adj({ lemma: 'abgelegen' }),
 ];
 
 const cell = (c: DeCell['c'], g: DeCell['g'], decl?: DeCell['decl']): DeCell => (decl ? { c, g, decl } : { c, g });
@@ -653,8 +657,8 @@ describe('analysis: verbs', () => {
       'machen|VERB|VerbForm=Fin,Mood=Ind,Tense=Past,Person=1,3,Number=Plur',
       'machen|VERB|VerbForm=Fin,Mood=Sub,Tense=Past,Person=1,3,Number=Plur',
     ]);
-    expect(an('kam').map(sig)).toEqual(['kommen|VERB|VerbForm=Fin,Mood=Ind,Tense=Past,Person=1,3,Number=Sing']);
-    expect(an('käme').map(sig)).toEqual(['kommen|VERB|VerbForm=Fin,Mood=Sub,Tense=Past,Person=1,3,Number=Sing']);
+    expect(an('kam').filter((r) => !r.prefix || r.prefix.attached).map(sig)).toEqual(['kommen|VERB|VerbForm=Fin,Mood=Ind,Tense=Past,Person=1,3,Number=Sing']);
+    expect(an('käme').filter((r) => !r.prefix || r.prefix.attached).map(sig)).toEqual(['kommen|VERB|VerbForm=Fin,Mood=Sub,Tense=Past,Person=1,3,Number=Sing']);
     expect(an('gehen').map(sig).sort()).toEqual([
       'gehen|VERB|VerbForm=Fin,Mood=Ind,Tense=Pres,Person=1,3,Number=Plur',
       'gehen|VERB|VerbForm=Fin,Mood=Sub,Tense=Pres,Person=1,3,Number=Plur',
@@ -974,6 +978,134 @@ describe('derived readings', () => {
     expect(an('blorfet').every((r) => !r.lemmaKnown)).toBe(true);
     expect(an('Salbest').some((r) => /derived/.test(r.rule))).toBe(false);
     expect(an('arbeitet').every((r) => !/derived/.test(r.rule))).toBe(true);
+  });
+});
+
+describe('an unlisted separable verb: prefix + a form of a known verb', () => {
+  const isDerived = (r: DeReading) => /derived/.test(r.rule);
+  const lemmas = (rs: DeReading[]) => [...new Set(rs.map((r) => r.lemma))];
+
+  it('abgeschickt: ab + the participle of schicken, never the invented abgeschicken', () => {
+    const rs = an('abgeschickt');
+    expect(rs).toHaveLength(1);
+    expect(rs[0]).toMatchObject({ lemma: 'abschicken', pos: 'VERB', morph: { VerbForm: 'Part', Tense: 'Past' }, lemmaKnown: false, confidence: 0.6, prefix: { text: 'ab', attached: true } });
+    expect(rs[0].gloss).toBeUndefined(); // abschicken does not mean "to send"
+    expect(rs[0].parts).toEqual([
+      { text: 'ab', start: 0, end: 2, kind: 'prefix', role: 'separable prefix' },
+      { text: 'ge', start: 2, end: 4, kind: 'marker', role: 'participle prefix ge-' },
+      { text: 'schickt', start: 4, end: 11, lemma: 'schicken', pos: 'VERB', kind: 'stem', role: 'known verb: schicken' },
+    ]);
+    expect(rs[0].rule).toMatch(/derived/);
+    expect(rs[0].rule).toMatch(/auxiliary .* not known/);
+    expect(rs.every((r) => !/abgeschicken/.test(r.lemma))).toBe(true);
+  });
+
+  it('a strong base: hinausgegangen is hinaus + gegangen; the longest prefix wins', () => {
+    const rs = an('hinausgegangen');
+    expect(lemmas(rs)).toEqual(['hinausgehen']);
+    expect(rs[0].parts!.map((p) => [p.text, p.kind])).toEqual([['hinaus', 'prefix'], ['ge', 'marker'], ['gangen', 'stem']]);
+    expect(rs[0]).toMatchObject({ morph: { VerbForm: 'Part', Tense: 'Past' }, lemmaKnown: false, confidence: 0.6 });
+  });
+
+  it('prefix + zu + infinitive', () => {
+    const rs = an('abzuschicken');
+    expect(rs).toHaveLength(1);
+    expect(rs[0]).toMatchObject({ lemma: 'abschicken', morph: { VerbForm: 'Inf' }, confidence: 0.6, lemmaKnown: false });
+    expect(rs[0].parts!.map((p) => [p.text, p.kind])).toEqual([['ab', 'prefix'], ['zu', 'marker'], ['schicken', 'stem']]);
+  });
+
+  it('prefix + infinitive and prefix + a finite form (the verb-final clause)', () => {
+    expect(an('abschicken').map((r) => `${r.lemma}|${r.morph.VerbForm}|${r.morph.Mood ?? ''}`).sort())
+      .toEqual(['abschicken|Fin|Ind', 'abschicken|Fin|Sub', 'abschicken|Inf|']);
+    expect(an('abschickt').map((r) => `${r.morph.Person}${r.morph.Number}`).sort()).toEqual(['2Plur', '3Sing']);
+    expect(an('abschickte').every((r) => r.lemma === 'abschicken' && r.confidence <= 0.6 && !r.lemmaKnown && r.gloss === undefined)).toBe(true);
+    expect(an('abschickte')[0].parts!.map((p) => p.kind)).toEqual(['prefix', 'stem']);
+  });
+
+  it('a participle without ge- is also a finite form: both readings, all unconfirmed', () => {
+    const rs = an('abbestellt');
+    expect(lemmas(rs)).toEqual(['abbestellen']);
+    expect(rs.map((r) => r.morph.VerbForm).sort()).toEqual(['Fin', 'Fin', 'Part']);
+    expect(rs.every((r) => r.confidence <= 0.6 && !r.lemmaKnown)).toBe(true);
+    expect(an('anprobiert').map((r) => r.morph.VerbForm).sort()).toEqual(['Fin', 'Fin', 'Part']);
+    expect(an('anprobiert')[0].lemma).toBe('anprobieren');
+  });
+
+  it('a two-way prefix: ge- or zu- shows a separable verb (0.6), the bare form says nothing (0.4)', () => {
+    const g = an('übergeschickt');
+    expect(g[0]).toMatchObject({ lemma: 'überschicken', morph: { VerbForm: 'Part' }, confidence: 0.6, lemmaKnown: false });
+    expect(g[0].rule).toMatch(/ge- after the prefix shows a separable verb/);
+    expect(an('umzuschicken')[0]).toMatchObject({ lemma: 'umschicken', morph: { VerbForm: 'Inf' }, confidence: 0.6 });
+    const bare = an('überschickt');
+    expect(bare.length).toBeGreaterThan(0);
+    expect(bare.every((r) => r.lemma === 'überschicken' && r.confidence <= 0.4 && !r.lemmaKnown)).toBe(true);
+    expect(bare[0].rule).toMatch(/separable or inseparable cannot be told from this form/);
+    expect(an('umschicken').every((r) => r.confidence <= 0.4)).toBe(true);
+  });
+
+  it('angehört: every reading built from real forms, all unconfirmed, the participle of anhören first', () => {
+    const rs = an('angehört');
+    expect(lemmas(rs)).toEqual(['anhören', 'angehören']);
+    expect(rs[0]).toMatchObject({ lemma: 'anhören', morph: { VerbForm: 'Part' }, confidence: 0.6 });
+    expect(rs.some((r) => r.lemma === 'angehören' && r.morph.VerbForm === 'Part')).toBe(true);
+    expect(rs.every((r) => !r.lemmaKnown && r.confidence <= 0.6 && r.gloss === undefined)).toBe(true);
+    expect(rs.find((r) => r.lemma === 'angehören')!.confidence).toBeLessThan(0.6);
+  });
+
+  it('eingestehen is ein + the infinitive gestehen, never a participle of einstehen', () => {
+    const rs = an('eingestehen');
+    expect(lemmas(rs)).toEqual(['eingestehen']);
+    expect(rs.some((r) => r.morph.VerbForm === 'Inf')).toBe(true);
+    expect(rs.some((r) => r.lemma === 'einstehen')).toBe(false);
+    expect(rs.some((r) => r.morph.VerbForm === 'Part')).toBe(false);
+    // eingestanden, on the other hand, is a participle of both
+    expect(lemmas(an('eingestanden')).sort()).toEqual(['eingestehen', 'einstehen']);
+  });
+
+  it('NEGATIVE: inseparable prefixes never take this rule', () => {
+    for (const w of ['verschickt', 'verschicken', 'beschickt', 'erschickt', 'zerschickt', 'entschickt', 'geschickt', 'missschickt']) {
+      const rs = an(w);
+      expect(rs.some((r) => r.prefix !== undefined || r.parts?.some((p) => p.kind === 'prefix')), w).toBe(false);
+      expect(rs.some(isDerived), w).toBe(false);
+    }
+    // gehört: hören's participle or gehören, never a prefix verb
+    expect(lemmas(an('gehört')).sort()).toEqual(['gehören', 'hören']);
+    expect(an('gehört').every((r) => r.lemmaKnown && !isDerived(r))).toBe(true);
+  });
+
+  it('NEGATIVE: a listed whole verb is never touched', () => {
+    for (const [w, lemma] of [['angekommen', 'ankommen'], ['weggeworfen', 'wegwerfen'], ['aufgestanden', 'aufstehen'], ['umgefahren', 'umfahren']] as const) {
+      const rs = an(w);
+      expect(rs.every((r) => r.lemma === lemma && r.lemmaKnown && !isDerived(r)), w).toBe(true);
+    }
+  });
+
+  it('NEGATIVE: nouns, adjectives, a capitalised word and a remainder that is no form of a known verb', () => {
+    expect(an('Angebot').some(isDerived)).toBe(false);
+    expect(an('Ausgabe').some(isDerived)).toBe(false);
+    expect(an('Abgeschickt').every((r) => r.pos === 'NOUN' && !r.prefix)).toBe(true); // the nominalised participle is the sentence layer's business
+    expect(an('angeblich').some((r) => r.pos === 'VERB')).toBe(false);
+    expect(an('abgelegen').every((r) => r.lemma === 'abgelegen' && r.lemmaKnown)).toBe(true); // a listed adjective
+    expect(an('abgeblorft').some((r) => /derived/.test(r.rule))).toBe(false);
+    expect(an('zurückblorft').some((r) => /derived/.test(r.rule))).toBe(false);
+    expect(an('abgeschickte').some((r) => r.pos === 'VERB' && r.lemmaKnown === true)).toBe(false);
+  });
+
+  it('the ordinary guess never adds -en to prefix + ge: abgeblorft and geblorft', () => {
+    const a = an('abgeblorft');
+    expect(a.map((r) => `${r.lemma}|${r.pos}|${r.morph.VerbForm}|${r.morph.Tense}|${r.confidence}|${r.lemmaKnown}`)).toEqual(['abblorfen|VERB|Part|Past|0.45|false']);
+    expect(a[0].rule).toMatch(/ge- left out/);
+    expect(a[0].gloss).toBeUndefined();
+    expect(an('angemachelt')[0]).toMatchObject({ lemma: 'anmacheln', morph: { VerbForm: 'Part' } }); // -eln: the infinitive ends in -n
+    expect(an('abgeblorfen').some((r) => r.pos === 'VERB')).toBe(false); // no invented infinitive 'abgeblorfen'
+    expect(an('geblorft').map((r) => `${r.lemma}|${r.morph.VerbForm}|${r.confidence}`)).toEqual(['blorfen|Part|0.5', 'geblorfen|Fin|0.35']);
+    expect(an('gesammelt').length).toBeGreaterThan(0);
+  });
+
+  it('works only for a word with no listed reading, and says so in the cost: a listed prefix verb keeps its own readings', () => {
+    expect(an('aufsteht').every((r) => r.lemmaKnown && !isDerived(r))).toBe(true);
+    expect(an('steht').every((r) => r.lemmaKnown && !isDerived(r))).toBe(true); // the detached readings of the listed verb stay
+    expect(an('steht').some((r) => r.lemma === 'aufstehen' && r.prefix?.attached === false)).toBe(true);
   });
 });
 

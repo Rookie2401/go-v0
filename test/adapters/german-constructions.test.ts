@@ -6,6 +6,7 @@ import { afterAll, describe, expect, it } from 'vitest';
 import type { AnalysisCandidate, AnalyzedToken, PartOfSpeech, PatternCandidate, RawToken } from '../../src/core';
 import { GERMAN_CONSTRUCTION_INFO, GERMAN_CONSTRUCTION_KEYS, GERMAN_PHRASE_RULES, detectGermanConstructions } from '../../src/adapters/german/constructions';
 import { PHRASE_UNITS, PREPOSITION_FRAMES } from '../../src/adapters/german/phrases';
+import { FUNCTION_ROWS, PARTICLE_KINDS } from '../../src/adapters/german/function-words';
 import { matchPhraseRules } from '../../src/adapters/shared';
 import { deAdapter } from '../../src/adapters/de';
 
@@ -123,6 +124,8 @@ describe('German constructions: clause structure', () => {
     expect(run('Ich habe ein Buch.', { habe: aux('haben'), Buch: noun('Buch') }).find('sentence-bracket-perfect')).toBeUndefined();
     const pp = run('Das Haus ist gebaut worden.', { ist: aux('sein'), gebaut: ptc('bauen'), worden: ptc('werden') });
     expect(pp.find('sentence-bracket-perfect')).toBeUndefined();
+    expect(pp.find('pluperfect')).toBeUndefined();
+    expect(pp.find('passive-perfect')).toBeDefined(); // its own construction
     expect(run('Er ist müde.', { ist: aux('sein'), müde: C('ADJ', 'müde') }).find('sentence-bracket-perfect')).toBeUndefined();
   });
 
@@ -393,7 +396,7 @@ describe('German constructions: general', () => {
       'separable-prefix-verb', 'zu-infinitive', 'um-zu', 'relative-clause', 'konjunktiv-2-wuerde', 'konjunktiv-2', 'konjunktiv-1', 'dative-after-preposition',
       'accusative-after-preposition', 'two-way-preposition', 'genitive-attribute', 'genitive-preposition', 'adjective-ending-weak', 'adjective-ending-strong',
       'adjective-ending-mixed', 'comparative-als', 'superlative-am', 'negation-kein', 'es-gibt', 'man-impersonal', 'question-verb-first', 'imperative',
-      'participial-modifier', 'reflexive-verb', 'dative-object-verb', 'nominalised-verb', 'modal-particle',
+      'participial-modifier', 'reflexive-verb', 'dative-object-verb', 'nominalised-verb', 'modal-particle', 'passive-perfect', 'je-desto',
     ];
     for (const k of required) expect(GERMAN_CONSTRUCTION_KEYS).toContain(k);
     for (const [k, info] of Object.entries(GERMAN_CONSTRUCTION_INFO)) {
@@ -414,10 +417,6 @@ describe('German constructions: general', () => {
     expect(true).toBe(true);
   });
 
-  afterAll(() => {
-    const missing = GERMAN_CONSTRUCTION_KEYS.filter((k) => !fired.has(k));
-    expect(missing).toEqual([]);
-  });
 });
 
 // ───────────────────────────── phrase units ─────────────────────────────
@@ -658,4 +657,211 @@ describe('German constructions on the real adapter', () => {
     expect(realPatterns('Ich sehe dich.')).not.toContain('reflexive-verb');
     expect(realPatterns('Es ist schön, dich zu sehen.')).not.toContain('reflexive-verb');
   });
+});
+
+// ───────────────────────────── fix batch 2 ─────────────────────────────
+
+describe('German constructions: modal particles are a positive test', () => {
+  const NEG = C('PART', 'nicht', {}, { role: 'negates the verb, a whole clause or the word it stands before' });
+  const modal = (lemma: string) => C('PART', lemma, {}, { role: 'a modal particle role' });
+
+  it('the lexicon fact: every "# PART" row glossed "(modal particle)" is modal in PARTICLE_KINDS, and nothing else is', () => {
+    const rows = FUNCTION_ROWS.split('# PART')[1].split('\n# ')[0].split('\n').filter((l) => /^\S+ = /u.test(l));
+    const modalRows = rows.filter((l) => /^\S+ = \(modal particle\)/u.test(l)).map((l) => l.split(' = ')[0]).sort();
+    const modalKinds = Object.entries(PARTICLE_KINDS).filter(([, k]) => k === 'modal').map(([w]) => w).sort();
+    expect(modalKinds).toEqual(modalRows);
+    expect(modalRows.length).toBeGreaterThanOrEqual(15);
+    expect(PARTICLE_KINDS.nicht).toBe('negation');
+    expect(PARTICLE_KINDS.zu).toBe('infinitive');
+  });
+
+  it('negation is not a modal particle, wherever it stands', () => {
+    expect(run('Ich weiß nicht, ob er wiederkommt.', { nicht: NEG }).find('modal-particle')).toBeUndefined();
+    expect(run('Wegen der Krankheit konnte sie nicht kommen.', { nicht: NEG }).find('modal-particle')).toBeUndefined();
+    expect(run('Sie hat den Brief nicht abgeschickt.', { nicht: NEG }).find('modal-particle')).toBeUndefined();
+    expect(run('Ich habe nicht nur Brot gekauft.', { nicht: NEG }).find('modal-particle')).toBeUndefined();
+    expect(run('Er versucht, nicht zu lachen.', { nicht: NEG, zu: C('PART', 'zu', {}, { role: 'the infinitive marker' }) }).find('modal-particle')).toBeUndefined();
+    expect(run('Das ist nicht schön.', { nicht: NEG }).find('modal-particle')).toBeUndefined();
+  });
+
+  it('an answer word, a focus or degree word read as an adverb, bitte, als / wie are not modal particles', () => {
+    expect(run('Ja, ich komme.', { Ja: C('INTJ', 'ja') }).find('modal-particle')).toBeUndefined();
+    expect(run('Er kommt nur heute.', { nur: C('ADV', 'nur', {}, { role: 'a modal particle role' }) }).find('modal-particle')).toBeUndefined();
+    expect(run('Sie kommt auch.', { auch: C('ADV', 'auch') }).find('modal-particle')).toBeUndefined();
+    expect(run('Das ist sehr schön.', { sehr: C('ADV', 'sehr') }).find('modal-particle')).toBeUndefined();
+    expect(run('Das ist zu schwer.', { zu: C('ADV', 'zu') }).find('modal-particle')).toBeUndefined();
+    expect(run('Bitte komm.', { Bitte: C('INTJ', 'bitte') }).find('modal-particle')).toBeUndefined();
+    expect(run('Er ist größer als ich.', { als: C('CONJ', 'als') }).find('modal-particle')).toBeUndefined();
+  });
+
+  it('a modal particle is found by its lemma, whatever the role text says', () => {
+    for (const w of ['doch', 'mal', 'ja', 'denn', 'eben', 'halt', 'eigentlich', 'wohl', 'schon', 'bloß', 'nur', 'aber', 'auch', 'etwa', 'ruhig', 'einfach', 'vielleicht']) {
+      expect(run(`Das ist ${w} so.`, { [w]: modal(w) }).find('modal-particle'), w).toBeDefined();
+    }
+  });
+
+  it('on the real adapter: the five particle sentences fire, the negative ones do not', () => {
+    const count = (text: string): number => {
+      const tokens = deAdapter.tokenize(text);
+      return deAdapter.detectPatterns(tokens, deAdapter.analyze(tokens)).filter((p) => p.key === 'modal-particle').length;
+    };
+    for (const text of ['Komm doch mal her!', 'Das ist ja schön!', 'Was machst du denn da?', 'Das ist halt so.', 'Das ist eben so.']) expect(count(text), text).toBeGreaterThan(0);
+    for (const text of [
+      'Ich weiß nicht, ob er wiederkommt.', 'Wegen der Krankheit konnte sie nicht kommen.', 'Sie hat den Brief nicht abgeschickt, sondern weggeworfen.', 'Ja, ich komme.',
+      'Ich habe nicht nur Brot gekauft.', 'Er versucht, nicht zu lachen.', 'Das ist nicht schön.',
+    ]) expect(count(text), text).toBe(0);
+  });
+});
+
+describe('German constructions: the perfect of the passive and its neighbours', () => {
+  const worden = ptc('werden');
+  it('passive-perfect: sein + participle + worden, with war … worden the same key; not also a perfect or a pluperfect', () => {
+    const r = run('Das Haus ist von meinem Großvater gebaut worden.', { ist: aux('sein', { Person: '3', Number: 'Sing' }), gebaut: ptc('bauen'), worden });
+    expect(r.find('passive-perfect')?.tokenIndexes).toEqual([r.at('ist'), r.at('worden'), r.at('gebaut')]);
+    expect(r.keys()).not.toContain('sentence-bracket-perfect');
+    expect(r.keys()).not.toContain('pluperfect');
+    expect(r.keys()).not.toContain('passive');
+    const p = run('Das Haus war gebaut worden.', { war: aux('sein', { Tense: 'Past', Person: '3', Number: 'Sing' }), gebaut: ptc('bauen'), worden });
+    expect(p.find('passive-perfect')).toBeDefined();
+    expect(p.keys()).not.toContain('pluperfect');
+    expect(r.find('passive-perfect')?.explanation).toMatch(/war/); // the explanation says war … worden is the same
+  });
+
+  it('passive-perfect in a subordinate clause (the auxiliary last)', () => {
+    const r = run('Ich weiß, dass das Haus gebaut worden ist.', { dass: C('SCONJ', 'dass'), gebaut: ptc('bauen'), worden, ist: aux('sein', { Person: '3', Number: 'Sing' }) });
+    expect(r.find('passive-perfect')?.tokenIndexes).toEqual([r.at('ist'), r.at('worden'), r.at('gebaut')]);
+  });
+
+  it('haben + worden is nothing, and the perfect of werden (geworden) is a plain perfect', () => {
+    expect(run('Er hat gebaut worden.', { hat: aux('haben'), gebaut: ptc('bauen'), worden }).keys()).not.toContain('passive-perfect');
+    const g = run('Er ist Lehrer geworden.', { ist: aux('sein', { Person: '3', Number: 'Sing' }), Lehrer: noun('Lehrer'), geworden: ptc('werden') });
+    expect(g.find('sentence-bracket-perfect')?.tokenIndexes).toEqual([g.at('ist'), g.at('geworden')]);
+    expect(g.keys()).not.toContain('passive-perfect');
+    expect(g.keys()).not.toContain('passive');
+  });
+
+  it('a plain perfect with sein stays a perfect; a state passive (ist geöffnet) is reported as the perfect today', () => {
+    const k = run('Er ist gekommen.', { ist: aux('sein', { Person: '3', Number: 'Sing' }), gekommen: ptc('kommen') });
+    expect(k.keys()).toEqual(['sentence-bracket-perfect']);
+    const s = run('Die Tür ist geöffnet.', { ist: aux('sein', { Person: '3', Number: 'Sing' }), geöffnet: ptc('öffnen') });
+    // kept as it is today: without the verb's auxiliary the detector cannot tell the state from the perfect; never passive-perfect
+    expect(s.keys()).toEqual(['sentence-bracket-perfect']);
+  });
+
+  it('the passive infinitive: "gebaut werden" is a passive, with a modal also modal-infinitive', () => {
+    const m = run('Das Haus muss gebaut werden.', { muss: aux('müssen', { Person: '3', Number: 'Sing' }), gebaut: ptc('bauen'), werden: C('AUX', 'werden', { VerbForm: 'Inf' }) });
+    expect(m.keys().sort()).toEqual(['modal-infinitive', 'passive']);
+    expect(m.find('passive')?.tokenIndexes).toEqual([m.at('werden'), m.at('gebaut')]);
+    // a copula werden with no participle is not a passive
+    expect(run('Er will Lehrer werden.', { will: aux('wollen'), Lehrer: noun('Lehrer'), werden: C('AUX', 'werden', { VerbForm: 'Inf' }) }).keys()).not.toContain('passive');
+  });
+
+  it('the future passive: "wird gebaut werden" is reported as future (wird … werden) and passive (gebaut werden), once each', () => {
+    const f = run('Das Haus wird gebaut werden.', { wird: aux('werden', { Person: '3', Number: 'Sing' }), gebaut: ptc('bauen'), werden: C('AUX', 'werden', { VerbForm: 'Inf' }) });
+    expect(f.keys().sort()).toEqual(['future', 'passive']);
+    expect(f.find('future')?.tokenIndexes).toEqual([f.at('wird'), f.at('werden')]);
+    expect(f.find('passive')?.tokenIndexes).toEqual([f.at('werden'), f.at('gebaut')]);
+  });
+
+  it('the participle may be a second reading right in front of werden (verloren: Fin or Part)', () => {
+    const v = [verb('verlieren', { Tense: 'Past', Person: '1,3', Number: 'Plur' }), ptc('verlieren')];
+    const r = run('Sie sollen nicht verloren werden.', { sollen: aux('sollen', { Person: '3', Number: 'Plur' }), verloren: v, werden: C('AUX', 'werden', { VerbForm: 'Inf' }) });
+    expect(r.keys()).toContain('passive');
+  });
+
+  it('on the real adapter', () => {
+    const keys = (text: string): string[] => {
+      const tokens = deAdapter.tokenize(text);
+      return deAdapter.detectPatterns(tokens, deAdapter.analyze(tokens)).map((p) => p.key);
+    };
+    expect(keys('Das Haus ist von meinem Großvater gebaut worden.')).toContain('passive-perfect');
+    expect(keys('Das Haus ist von meinem Großvater gebaut worden.')).not.toContain('sentence-bracket-perfect');
+    expect(keys('Das Haus muss gebaut werden.')).toEqual(expect.arrayContaining(['passive', 'modal-infinitive']));
+    expect(keys('Das Haus wird gebaut werden.')).toEqual(expect.arrayContaining(['passive', 'future']));
+    expect(keys('Er ist Lehrer geworden.')).toEqual(['sentence-bracket-perfect']);
+    expect(keys('Die Tür ist geöffnet.')).toEqual(['sentence-bracket-perfect']);
+    expect(keys('Er ist gekommen.')).toEqual(['sentence-bracket-perfect']);
+    expect(keys('Das Haus wird gebaut.')).toContain('passive');
+    expect(keys('Das Haus wurde gebaut.')).toContain('passive-past');
+  });
+});
+
+describe('German constructions: je … desto', () => {
+  const je = adv('je');
+  const cmp = (lemma: string) => C('ADJ', lemma, { Degree: 'Cmp' });
+  it('je + comparative … desto / umso + comparative; the je-clause is also a verb-final subordinate clause', () => {
+    const r = run('Je älter man wird, umso schneller vergeht die Zeit.', {
+      Je: je, älter: cmp('alt'), man: C('PRON', 'man', { PronType: 'Ind', Case: 'Nom' }), wird: aux('werden', { Person: '3', Number: 'Sing' }),
+      umso: adv('umso'), schneller: cmp('schnell'), vergeht: verb('vergehen', { Person: '3', Number: 'Sing' }),
+    });
+    expect(r.find('je-desto')?.tokenIndexes).toEqual([0, r.at('umso'), 1, r.at('schneller')]);
+    expect(r.find('verb-final-subordinate')?.tokenIndexes).toEqual([0, r.at('wird')]);
+  });
+
+  it('mehr / weniger count as comparatives', () => {
+    const r = run('Je mehr er liest, desto mehr versteht er.', { Je: je, mehr: adv('mehr'), er: ER, liest: verb('lesen', { Person: '2,3' }), desto: adv('desto'), versteht: verb('verstehen', { Person: '3', Number: 'Sing' }) });
+    expect(r.find('je-desto')).toBeDefined();
+    expect(r.find('verb-final-subordinate')?.tokenIndexes).toEqual([0, r.at('liest')]);
+  });
+
+  it('is silent on the distributive je, on "seit eh und je", and on je with no desto', () => {
+    expect(run('Er hat je zwei Äpfel gekauft.', { je, zwei: C('NUM', 'zwei'), gekauft: ptc('kaufen') }).keys()).not.toContain('je-desto');
+    expect(run('Das war seit eh und je so.', { je }).keys()).toEqual([]);
+    expect(run('Je älter er wird, er lacht.', { Je: je, älter: cmp('alt'), er: ER, wird: aux('werden') }).keys()).not.toContain('je-desto');
+    expect(run('Desto besser ist es.', { Desto: adv('desto'), besser: cmp('gut') }).keys()).not.toContain('je-desto');
+  });
+
+  it('on the real adapter', () => {
+    const keys = (text: string): string[] => {
+      const tokens = deAdapter.tokenize(text);
+      return deAdapter.detectPatterns(tokens, deAdapter.analyze(tokens)).map((p) => p.key);
+    };
+    expect(keys('Je mehr er liest, desto mehr versteht er.')).toContain('je-desto');
+    expect(keys('Je älter man wird, umso schneller vergeht die Zeit.')).toContain('je-desto');
+    expect(keys('Er hat je zwei Äpfel gekauft.')).not.toContain('je-desto');
+  });
+});
+
+describe('German constructions: a participle that is not confirmed', () => {
+  const guessed = C('VERB', 'abschicken', { VerbForm: 'Part', Tense: 'Past' }, { unconfirmed: true, confidence: 0.6 });
+  it('the perfect, the pluperfect and the passive work on an unconfirmed participle, at a lower confidence than a confirmed one', () => {
+    const hat = aux('haben', { Person: '3', Number: 'Sing' });
+    const sure = run('Sie hat den Brief geschickt.', { hat, geschickt: ptc('schicken') }).find('sentence-bracket-perfect')!;
+    const unsure = run('Sie hat den Brief abgeschickt.', { hat, abgeschickt: guessed }).find('sentence-bracket-perfect')!;
+    expect(unsure).toBeDefined();
+    expect(unsure.confidence).toBeLessThan(sure.confidence);
+    expect(unsure.confidence).toBeLessThanOrEqual(0.6);
+    const plu = run('Sie hatte den Brief abgeschickt.', { hatte: aux('haben', { Tense: 'Past', Person: '3', Number: 'Sing' }), abgeschickt: guessed }).find('pluperfect')!;
+    expect(plu.confidence).toBeLessThanOrEqual(0.6);
+    const pas = run('Der Brief wird abgeschickt.', { wird: aux('werden', { Person: '3', Number: 'Sing' }), abgeschickt: guessed }).find('passive')!;
+    expect(pas.confidence).toBeLessThanOrEqual(0.6);
+    // even if the engine had given the guess a high confidence, the pattern never claims more than 0.6
+    const high = run('Sie hat den Brief abgeschickt.', { hat, abgeschickt: { ...guessed, confidence: 0.9 } }).find('sentence-bracket-perfect')!;
+    expect(high.confidence).toBeLessThanOrEqual(0.6);
+  });
+
+  it('on the real adapter: "Sie hat den Brief nicht abgeschickt, sondern weggeworfen." is a perfect and has no modal particle', () => {
+    const tokens = deAdapter.tokenize('Sie hat den Brief nicht abgeschickt, sondern weggeworfen.');
+    const keys = deAdapter.detectPatterns(tokens, deAdapter.analyze(tokens)).map((p) => p.key);
+    expect(keys).toContain('sentence-bracket-perfect');
+    expect(keys).not.toContain('modal-particle');
+  });
+});
+
+describe('German constructions: the nominalised verb and a preposition with an uninformative case', () => {
+  it('nominalised-verb: the sentence layer\'s own note counts, but only the infinitive kind (not -heit nouns)', () => {
+    const lesen = C('NOUN', 'Lesen', { Gender: 'Neut', Number: 'Sing' }, { notes: { nominalization: 'infinitive used as a noun (das Lesen)' } });
+    expect(run('Das Lesen macht Spaß.', { Lesen: lesen }).find('nominalised-verb')?.tokenIndexes).toEqual([1]);
+    const heit = C('NOUN', 'Wahrheit', { Gender: 'Fem' }, { notes: { nominalization: '-heit noun, made from an adjective or a noun' } });
+    expect(run('Die Wahrheit ist wichtig.', { Wahrheit: heit }).find('nominalised-verb')).toBeUndefined();
+  });
+  it('a preposition before a noun that could be any case says nothing', () => {
+    expect(run('statt Brötchen', { statt: C('ADP', 'statt'), Brötchen: noun('Brötchen', { Case: 'Nom,Acc,Dat,Gen' }) }).keys()).toEqual([]);
+  });
+});
+
+// every construction key has fired somewhere in this file (checked when the whole file has run)
+afterAll(() => {
+  const missing = GERMAN_CONSTRUCTION_KEYS.filter((k) => !fired.has(k));
+  expect(missing).toEqual([]);
 });

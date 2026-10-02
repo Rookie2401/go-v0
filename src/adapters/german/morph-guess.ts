@@ -7,6 +7,7 @@ import type { DeCell, DeReading } from './types';
 import { morphOfCells } from './types';
 import { endingCells } from './morph-adjective';
 import { describeGermanMorph } from './morph-describe';
+import { PREFIX_GE, PREFIX_GE_PARTICIPLE } from './morph-separable';
 import { isCapitalised, needsEInsertion } from './morph-util';
 
 const MAX_GUESSES = 4;
@@ -71,12 +72,25 @@ const VERB_ENDINGS: Array<{ end: string; score: number; morph: Record<string, st
   { end: 'e', score: 0.35, morph: { ...PRES, Person: '1', Number: 'Sing' } },
 ];
 
+/** The infinitive of a weak stem: -en, or -n after -el / -er (sammel → sammeln, wander → wandern). */
+const infinitiveOf = (stem: string): string => (/(?:el|er)$/.test(stem) ? `${stem}n` : `${stem}en`);
+
 function verbGuesses(word: string): Guess[] {
   const out: Guess[] = [];
+  if (PREFIX_GE.test(word)) {
+    // prefix + ge-: the shape of a separable verb's participle (abgeschickt). Never an infinitive with ge- inside it
+    // (abgeschicken), never a finite form of such a verb: only the participle, with the lemma rebuilt without ge-.
+    const p = PREFIX_GE_PARTICIPLE.exec(word);
+    return p ? [guess({
+      lemma: `${p[1]}${infinitiveOf(p[2])}`, pos: 'VERB', morph: { VerbForm: 'Part', Tense: 'Past' },
+      rule: `guessed past participle of a verb not in the word list: the separable prefix ${p[1]}- + ge- + stem + -t; `
+        + `the lemma is rebuilt as ${p[1]}${infinitiveOf(p[2])} (ge- left out), unconfirmed; the meaning and the auxiliary are not known`,
+    }, 0.45)] : [];
+  }
   const m = /^ge(.{3,}?)(e?t)$/.exec(word);
   if (m) {
     out.push(guess({
-      lemma: `${m[1]}en`, pos: 'VERB', morph: { VerbForm: 'Part', Tense: 'Past' },
+      lemma: infinitiveOf(m[1]), pos: 'VERB', morph: { VerbForm: 'Part', Tense: 'Past' },
       rule: 'guessed weak verb (not in the word list): past participle, ge- + stem + -t',
     }, 0.5));
   }
@@ -84,7 +98,7 @@ function verbGuesses(word: string): Guess[] {
     if (!word.endsWith(e.end) || word.length - e.end.length < 3) continue;
     let stem = word.slice(0, -e.end.length);
     if (e.end !== 'en' && stem.endsWith('e') && needsEInsertion(stem.slice(0, -1))) stem = stem.slice(0, -1); // arbeit-e-te → arbeiten
-    const lemma = e.end === 'en' ? word : `${stem}en`;
+    const lemma = e.end === 'en' ? word : infinitiveOf(stem);
     out.push(guess({
       lemma, pos: 'VERB', morph: { ...e.morph },
       rule: `guessed weak verb ${lemma} (not in the word list): ${describeGermanMorph(e.morph)}`,

@@ -315,6 +315,66 @@ describe('real lexicon: derived readings', () => {
   });
 });
 
+describe('real lexicon: an unlisted separable verb', () => {
+  it('abgeschickt is ab + the participle of schicken, unconfirmed, with no gloss', () => {
+    const rs = an('abgeschickt');
+    expect(rs.map((r) => `${r.lemma}|${r.pos}|${r.morph.VerbForm}|${r.lemmaKnown}|${r.confidence}`)).toEqual(['abschicken|VERB|Part|false|0.6']);
+    expect(rs[0].gloss).toBeUndefined();
+    expect(rs[0].parts!.map((p) => [p.text, p.kind])).toEqual([['ab', 'prefix'], ['ge', 'marker'], ['schickt', 'stem']]);
+    expect(rs[0].parts![2]).toMatchObject({ lemma: 'schicken', role: 'known verb: to send' });
+    expect(rs[0].rule).toMatch(/auxiliary .* not known/);
+    expect(an('abgeschickt').some((r) => /abgeschicken/.test(r.lemma))).toBe(false);
+  });
+
+  it('abzuschicken, abschickt, abschickte, zurückgeschickt, hinausgeschickt', () => {
+    reads('abzuschicken', 'abschicken', { VerbForm: 'Inf' }, (r) => r.confidence === 0.6 && r.parts![1].kind === 'marker');
+    reads('abschickt', 'abschicken', { Person: '3', Number: 'Sing' }, (r) => r.confidence <= 0.6 && !r.lemmaKnown);
+    reads('abschickte', 'abschicken', { Mood: 'Ind', Tense: 'Past' });
+    reads('zurückgeschickt', 'zurückschicken', { VerbForm: 'Part' });
+    reads('hinausgeschickt', 'hinausschicken', { VerbForm: 'Part' });
+    for (const w of ['abschickt', 'abgeschickt', 'abzuschicken']) expect(an(w).every((r) => r.gloss === undefined && !r.lemmaKnown && r.confidence <= 0.6), w).toBe(true);
+  });
+
+  it('a participle without ge- is also a finite form: both readings (abbestellt)', () => {
+    const rs = an('abbestellt');
+    expect(rs.map((r) => r.morph.VerbForm).sort()).toEqual(['Fin', 'Fin', 'Part']);
+    expect(rs.every((r) => r.lemma === 'abbestellen' && !r.lemmaKnown && r.confidence <= 0.6)).toBe(true);
+  });
+
+  it('two-way prefixes: ge- / zu- 0.6, the bare form at most 0.4', () => {
+    expect(an('umgeschickt')[0]).toMatchObject({ lemma: 'umschicken', confidence: 0.6, lemmaKnown: false });
+    expect(an('übergeschickt')[0]).toMatchObject({ lemma: 'überschicken', confidence: 0.6 });
+    expect(an('umzuschicken')[0]).toMatchObject({ lemma: 'umschicken', confidence: 0.6 });
+    const bare = an('umschickt');
+    expect(bare.length).toBeGreaterThan(0);
+    expect(bare.every((r) => r.confidence <= 0.4 && /cannot be told/.test(r.rule))).toBe(true);
+  });
+
+  it('angehört: both readings; the participle of anhören first', () => {
+    const rs = an('angehört');
+    expect([...new Set(rs.map((r) => r.lemma))]).toEqual(['anhören', 'angehören']);
+    expect(rs[0].confidence).toBe(0.6);
+    expect(rs.every((r) => !r.lemmaKnown && r.gloss === undefined)).toBe(true);
+  });
+
+  it('negatives: inseparable prefixes, listed verbs, nouns, capitals, no known base', () => {
+    for (const w of ['verschickt', 'gehört']) expect(an(w).some((r) => r.prefix?.text !== undefined && !r.lemmaKnown), w).toBe(false);
+    expect(an('verschickt').some((r) => /derived/.test(r.rule))).toBe(false);
+    for (const [w, lemma] of [['angekommen', 'ankommen'], ['weggeworfen', 'wegwerfen'], ['aufgestanden', 'aufstehen']] as const) {
+      expect(an(w).every((r) => r.lemma === lemma && r.lemmaKnown && !/derived/.test(r.rule)), w).toBe(true);
+    }
+    for (const w of ['Angebot', 'Ausgabe', 'Abgeschickt']) expect(an(w).some((r) => /derived/.test(r.rule)), w).toBe(false);
+    expect(an('angeblich').some((r) => r.pos === 'VERB')).toBe(false);
+    expect(an('abgeblorft').some((r) => /derived/.test(r.rule))).toBe(false);
+  });
+
+  it('the guess for prefix + ge-: abgeblorft is a participle with the lemma rebuilt; geblorft as before', () => {
+    expect(an('abgeblorft').map((r) => `${r.lemma}|${r.pos}|${r.morph.VerbForm}|${r.confidence}|${r.lemmaKnown}`)).toEqual(['abblorfen|VERB|Part|0.45|false']);
+    expect(an('geblorft').map((r) => `${r.lemma}|${r.morph.VerbForm}|${r.confidence}`)).toEqual(['blorfen|Part|0.5', 'geblorfen|Fin|0.35']);
+    expect(an('angemachelt')[0].lemma).toBe('anmacheln');
+  });
+});
+
 describe('real lexicon: every entry', () => {
   it('every noun generates forms: none empty, none repeated, a paradigm with a nominative', () => {
     for (const n of lex.allNouns()) {

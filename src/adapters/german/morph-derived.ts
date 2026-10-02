@@ -9,6 +9,7 @@ import type { DeCell, DeLexiconView, DeNoun, DeReading } from './types';
 import { morphOfCells } from './types';
 import { describeGermanMorph } from './morph-describe';
 import { isCapitalised } from './morph-util';
+import { separablePrefixVerb } from './morph-separable';
 
 /** The readings the word list itself gives for a word (no derivation, no guess). */
 type Listed = (word: string) => DeReading[];
@@ -16,7 +17,7 @@ type Listed = (word: string) => DeReading[];
 
 export function deriveReadings(word: string, lex: DeLexiconView, listed: Listed): DeReading[] {
   if (word.length < 4 || !/^[\p{L}'’ʼ]+$/u.test(word)) return [];
-  for (const attempt of [() => nameGenitive(word, lex), () => diminutive(word, lex), () => clitic(word, listed), () => oldEnding(word, listed)]) {
+  for (const attempt of [() => nameGenitive(word, lex), () => diminutive(word, lex), () => clitic(word, listed), () => (isCapitalised(word) ? [] : separablePrefixVerb(word, listed)), () => oldEnding(word, listed)]) {
     const found = attempt();
     if (found.length) return found;
   }

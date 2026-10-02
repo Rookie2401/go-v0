@@ -31,7 +31,7 @@ source of every reading it supplies, and where it differs from the word list not
 | Build | 28 s, 553 MB peak, bounded (entries are spilled to disk by form hash and merged one partition at a time) |
 | Format | schema 3: the label lists of form-of relations (629 distinct) are stored once in the manifest and referred to by number; no empty or repeated fields; pronunciations of entries that are only inflected forms are dropped for Spanish (233,240), because the spelling tells the pronunciation. Schema 2 (the Thai dictionary on disk) is still read unchanged. The first build in the old format projected about 93 MB |
 | At run time | at most 24 parsed shards are held and 4 are read at a time, so the vocabulary of a whole book never loads the dictionary into memory. Measured: 38,653 real forms looked up in 1.0 s with 47 MB of heap growth |
-| In a browser | a two-chapter book of my own writing imported in 1.5 s with 133 shard requests |
+| In a browser | a two-chapter book of my own writing imported in 1.5 s with 133 shard requests; re-importing it after an importer change re-analysed it in place (content version unchanged) |
 | Shipped | a production build copies `public/dict/**`. `npm run dict:status` runs before every build and says which dictionaries will ship (es 57.7 MB, th 7.3 MB today). A clean checkout ships none until `dict:build` has been run |
 
 The headword's original spelling is kept (`DictionaryEntry.written`) when normalization folded its case: 9,893 entries.
@@ -76,8 +76,9 @@ Limits of the mechanism, stated:
 - The reader's display-time lookup (used by courses with a stage-aware word sheet; not by Spanish) does not yet apply
   the capitals rule.
 - A capitalised headword's lemma is stored in its lower-case form (`rosa` / proper noun).
-- A context-chosen reading that the dictionary lists under two parts of speech is stored at 0.45 and therefore shows
-  as "possibly" (`al abandono`): honest, and more cautious than it need be.
+- A dictionary reading that a neighbour singled out among several parts of speech is stored at 0.6 with the others
+  marked down (`al abandono`, `bebían guaro`), so it does not read "possibly"; where no neighbour decides ("me voy pa mi
+  casa": *papá* or *pa'*, para) both stay at 0.45 and the word sheet says "possibly".
 
 ## 4. Measurements
 

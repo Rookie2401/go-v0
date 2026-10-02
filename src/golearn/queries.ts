@@ -194,7 +194,10 @@ export async function tokenSupport(ctx: Ctx, userId: string, tokenId: string, le
   const ownLive = !own || own.retiredInVersion === undefined;
   const analysis = await resolveAnalysis(ctx, tokenId);
   const lemma = analysis?.lemmaId ? await ctx.store.lemmas.get(analysis.lemmaId) : undefined;
-  support.uncertain = !analysis || analysis.confidence < UNCERTAIN_BELOW || (analysis.alternatives ?? []).some((alt) => alt.confidence > analysis.confidence - COMPETING_MARGIN);
+  // Another reading competes when it is about as likely AND is another word or part of speech: "zurcía" as the first or the
+  // third person of zurcir is one meaning, not two.
+  support.uncertain = !analysis || analysis.confidence < UNCERTAIN_BELOW
+    || (analysis.alternatives ?? []).some((alt) => alt.confidence > analysis.confidence - COMPETING_MARGIN && (alt.lemmaId !== analysis.lemmaId || alt.pos !== analysis.pos));
   if (lemma?.gloss) support.gloss = lemma.gloss; // level 1: gloss only
 
   if (level >= 2) {

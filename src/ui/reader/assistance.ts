@@ -220,6 +220,9 @@ export function analysisSourceLine(
   dictionary?: Pick<DictionaryInfo, 'attribution'>,
 ): string | undefined {
   if (!a?.origin) return undefined;
+  // A dictionary's reading always names the dictionary, whatever the adapter has opted in to: the meaning on show is
+  // the dictionary's, and its licence asks for the attribution.
+  if (a.origin === 'dictionary') return dictionary?.attribution ?? (a.sourceId ? `Dictionary ${a.sourceId}` : 'From a dictionary');
   // An adapter that declares no sources has not opted in to showing provenance: its reader stays exactly as it was.
   if (!sources) return undefined;
   switch (a.origin) {
@@ -230,7 +233,6 @@ export function analysisSourceLine(
         : src.reviewStatus === 'native-reviewed' ? ', checked by a native speaker' : '';
       return `${src.label}${state}`;
     }
-    case 'dictionary': return dictionary?.attribution ?? (a.sourceId ? `Dictionary ${a.sourceId}` : 'From a dictionary');
     case 'rule': return 'worked out by rule';
     case 'corpus': return 'supplied with this text';
     case 'reviewed': {

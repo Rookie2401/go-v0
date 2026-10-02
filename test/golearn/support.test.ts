@@ -71,6 +71,13 @@ describe('tokenSupport returns only what the level needs', () => {
     expect((await h.golearn.tokenSupport(U, token, 3)).uncertain).toBe(false);
     await h.store.analyses.put({ ...a, confidence: 0.7, alternatives: [{ morph: {}, confidence: 0.4 }] });
     expect((await h.golearn.tokenSupport(U, token, 3)).uncertain).toBe(false);
+    // another person or tense of the SAME word is one meaning, not two (found in the browser: "possibly to darn" for zurcía,
+    // whose only other reading was the first person of the same verb)
+    await h.store.analyses.put({ ...a, confidence: 0.7, alternatives: [{ lemmaId: a.lemmaId, pos: a.pos, morph: { Person: '1' }, confidence: 0.7 }] });
+    expect((await h.golearn.tokenSupport(U, token, 3)).uncertain).toBe(false);
+    // the same lemma as another part of speech is another reading
+    await h.store.analyses.put({ ...a, confidence: 0.7, alternatives: [{ lemmaId: a.lemmaId, pos: a.pos === 'VERB' ? 'NOUN' : 'VERB', morph: {}, confidence: 0.7 }] });
+    expect((await h.golearn.tokenSupport(U, token, 3)).uncertain).toBe(true);
     await h.store.analyses.put({ ...a, confidence: 0.9, alternatives: undefined });
     expect((await h.golearn.tokenSupport(U, token, 3)).uncertain).toBe(false);
     await h.store.analyses.delete(a.id);

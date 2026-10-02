@@ -273,6 +273,22 @@ describe('the other languages show no provenance', () => {
     }
     expect(lookup).not.toHaveBeenCalled();
   });
+
+  it('but a meaning that came from the dictionary always names the dictionary and says it was not checked here', async () => {
+    // found in the browser audit of the Spanish dictionary: a word decided by Wiktionary showed its gloss with no source at all
+    await seedStory(h.store);
+    const info = vi.fn(async () => ({ id: 'kaikki-es@test', lang: 'es' as const, attribution: 'Wiktionary, via kaikki.org — CC BY-SA 4.0', licence: 'CC BY-SA 4.0', entries: 1, builtAt: '2026-10-01', hasFrequency: false }));
+    Object.assign(h.services, { lexicon: () => ({ lang: 'es', info, lookup: async () => new Map() }) });
+    const first = ids.token(ids.sentence(STORY_ID, 0), 1);
+    const row = (await h.store.analyses.where('tokenId', first))[0];
+    await h.store.analyses.put({ ...row, origin: 'dictionary', sourceId: 'kaikki-es@test', analyzer: 'dict:kaikki-es@test' });
+    mounted = await h.mount(<Reader textId={STORY_ID} mode="corpus" />);
+    await click(qa<HTMLButtonElement>(mounted.container, 'button.tok').find((b) => b.textContent === 'creo')!);
+    await click(button(mounted.container, 'Show phrases'));
+    await click(button(mounted.container, 'Show grammar'));
+    await vi.waitFor(() => expect(sourceLine()).toBe('Wiktionary, via kaikki.org — CC BY-SA 4.0'));
+    expect(q(mounted.container, '[data-testid="dictionary-gloss"]')?.textContent).toBe('dictionary meaning, not checked for this sentence');
+  });
 });
 
 describe('the syllable row: source and certainty are separate statements', () => {

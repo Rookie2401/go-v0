@@ -176,7 +176,8 @@ export function TokenCard(props: TokenCardProps) {
   const differ = listsDiffer(analysis, gloss, dictionaryView);
   const [altOpen, setAltOpen] = useState(false);
   useEffect(() => { setAltOpen(false); }, [token?.id]);
-  const fromDictionary = !legacy && !!analysis?.analyzer?.startsWith('dict:');
+  // said for every course: a meaning that came from the dictionary (as the analysis, or as the lemma's gloss of a word read by rule)
+  const fromDictionary = analysis?.origin === 'dictionary' || !!analysis?.analyzer?.startsWith('dict:');
 
   return (
     <aside

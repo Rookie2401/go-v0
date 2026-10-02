@@ -179,6 +179,10 @@ English beside Scripture is the World English Bible (public domain), a separate 
 - **A licensed text carries its licence.** The Hindi Scripture documents name the translation, the rights holder,
   the licence and the distributor; the reader shows that line under the text at every assistance level, with the
   licence terms and what was left out (footnotes, headings, cross-references) one disclosure away.
+- **Jurisdictions.** The gate can be given the jurisdictions a build is released in
+  (`npm run rights:check -- --release US,DE,EU`; added by the German session, `2780589`). The IRV record states
+  its basis as a licence granted worldwide by the rights holder (`statusByJurisdiction: { '*': 'licensed' }`),
+  so all five Hindi Scripture documents pass any release list; a public-domain status is never recorded that way.
 - **Share-alike is isolated.** The verses are passed on unchanged, as their own corpus (`bible-hi-irv2019`),
   beside — not inside — the app's code, word list and other corpora. No other Hindi text is in that corpus or under
   that licence (tested). Open question for the owner, recorded in the rights record: whether the word-by-word

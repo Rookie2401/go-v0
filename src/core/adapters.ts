@@ -194,8 +194,17 @@ export interface LanguageAdapter {
    * it starts again from its context-free readings, so nothing depends on an earlier ordering. It may only move a
    * reading, lower a confidence and set `notes.context`: it never adds, removes or rewrites a reading, and never
    * touches a token whose `analyzer` is not in `analyzers` (an author's span, a reviewer's correction).
+   * `given` (optional) names token indexes whose lists must be taken as given although the analyzer is the adapter's
+   * own: the importer added a dictionary's readings of another lemma or part of speech BESIDE the adapter's (la marcha:
+   * the word list has the noun, the dictionary also a form of marchar), and starting those tokens again would lose them.
    */
-  refine?(tokens: RawToken[], analyzed: AnalyzedToken[], analyzers: ReadonlySet<string>): AnalyzedToken[];
+  refine?(tokens: RawToken[], analyzed: AnalyzedToken[], analyzers: ReadonlySet<string>, given?: ReadonlySet<number>): AnalyzedToken[];
+  /**
+   * Other headwords a dictionary may file this lemma under, most likely first (Spanish: a verb the source lists only as
+   * pronominal, "arrepentir" → ["arrepentirse"]). The importer asks for them when the lemma itself has no entry of its
+   * own; the reading keeps the adapter's lemma. Empty or absent = none.
+   */
+  lemmaVariants?(lemma: string, pos?: PartOfSpeech): string[];
   /** A plain-words line for a feature bundle ("first person plural, imperfect subjunctive"), for the word sheet. */
   describeMorph?(morph: Record<string, string>, pos?: PartOfSpeech): string;
   /** The varieties this adapter can label, keyed by code. */

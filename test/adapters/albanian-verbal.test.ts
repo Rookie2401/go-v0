@@ -265,16 +265,52 @@ describe('irregular verbs', () => {
 
   it('lë, vë, zë (mixed aorists stated in forms)', () => {
     paradigm('lë', 'Past', 'Ind', ['lashë', 'le', 'la', 'lamë', 'latë', 'lanë']);
-    paradigm('lë', 'Pres', 'Sub', ['lë', 'lësh', 'lërë', 'lëmë', 'lëni', 'lënë']);
+    paradigm('lë', 'Pres', 'Sub', ['lë', 'lësh', 'lërë', 'lëmë', 'lini', 'lënë']);
     paradigm('vë', 'Past', 'Ind', ['vura', 'vure', 'vuri', 'vumë', 'vutë', 'vunë']);
     paradigm('zë', 'Past', 'Ind', ['zura', 'zure', 'zuri', 'zumë', 'zutë', 'zunë']);
     paradigm('bëj', 'Past', 'Ind', ['bëra', 'bëre', 'bëri', 'bëmë', 'bëtë', 'bënë']);
     paradigm('rri', 'Pres', 'Ind', ['rri', 'rri', 'rri', 'rrimë', 'rrini', 'rrinë']);
-    paradigm('fle', 'Pres', 'Sub', ['fle', 'flesh', 'flejë', 'flemë', 'fleni', 'flenë']);
+    paradigm('fle', 'Pres', 'Sub', ['fle', 'flesh', 'flejë', 'flemë', 'flini', 'flenë']);
     paradigm('di', 'Past', 'Ind', ['dita', 'dite', 'diti', 'ditëm', 'ditët', 'ditën']);
     expect(formsOf('vë').some((f) => f.form === 'vurëm')).toBe(false);
     expect(reads(formsOf('bëj'), 'bë', { Voice: 'Mid', Tense: 'Past', Person: '3' })).toBe(true); // u bë
     expect(formsOf('bëj').some((f) => f.form === 'bër')).toBe(false);
+  });
+});
+
+describe('analyzer check, part 2: classes fixed', () => {
+  it('vowel stems in -e / -ë take the i-stem in the 2nd plural (present and imperative), not in the 1st or 3rd plural', () => {
+    for (const [lemma, i2, pl1, pl3] of [['fle', 'flini', 'flemë', 'flenë'], ['lë', 'lini', 'lëmë', 'lënë'], ['vë', 'vini', 'vëmë', 'vënë'], ['zë', 'zini', 'zëmë', 'zënë'], ['ngre', 'ngrini', 'ngremë', 'ngrenë']]) {
+      const f = formsOf(lemma);
+      expect(reads(f, i2, { Person: '2', Number: 'Plur', Tense: 'Pres' }), `${lemma}: ${i2}`).toBe(true);
+      expect(reads(f, i2, { Person: '2', Number: 'Plur', Mood: 'Imp' }), `${lemma}: imperative ${i2}`).toBe(true);
+      expect(reads(f, pl1, { Person: '1', Number: 'Plur' }), `${lemma}: ${pl1}`).toBe(true);
+      expect(reads(f, pl3, { Person: '3', Number: 'Plur', Tense: 'Pres' }), `${lemma}: ${pl3}`).toBe(true);
+      expect(f.some((x) => x.form === `${lemma}ni`)).toBe(false);
+    }
+    // stems in -a / -i keep their vowel
+    expect(reads(formsOf('ha'), 'hani', { Person: '2', Number: 'Plur', Mood: 'Imp' })).toBe(true);
+    expect(reads(formsOf('pi'), 'pini', { Person: '2', Number: 'Plur', Tense: 'Pres' })).toBe(true);
+  });
+
+  it('ndez: e becomes i before -ni and in the imperfect (a lexical fact of the verb, stated in forms)', () => {
+    paradigm('ndez', 'Pres', 'Ind', ['ndez', 'ndez', 'ndez', 'ndezim', 'ndizni', 'ndezin']);
+    paradigm('ndez', 'Imp', 'Ind', ['ndizja', 'ndizje', 'ndizte', 'ndiznim', 'ndiznit', 'ndiznin']);
+    expect(reads(formsOf('ndez'), 'ndizni', { Mood: 'Imp', Person: '2', Number: 'Plur' })).toBe(true);
+    expect(formsOf('ndez').some((x) => x.form === 'ndezni' || x.form === 'ndezte')).toBe(false);
+  });
+
+  it('short verbs in -j with an -ra aorist have the strong plural: hyra / hymë, as bëra / bëmë', () => {
+    paradigm('hyj', 'Past', 'Ind', ['hyra', 'hyre', 'hyri', 'hymë', 'hytë', 'hynë']);
+    expect(formsOf('hyj').some((x) => x.form === 'hyrëm' || x.form === 'hyrët' || x.form === 'hyrën')).toBe(false);
+    expect(reads(formsOf('hyj'), 'hyrë', { VerbForm: 'Part' })).toBe(true);
+    // marr keeps the weak plural: mora / morëm
+    expect(reads(formsOf('marr'), 'morëm', { Tense: 'Past', Person: '1', Number: 'Plur' })).toBe(true);
+  });
+
+  it('kam: optative paça, paç, pastë, paçim, paçi, paçin', () => {
+    paradigm('kam', undefined, 'Opt', ['paça', 'paç', 'pastë', 'paçim', 'paçi', 'paçin']);
+    expect(formsOf('kam').some((x) => x.form === 'pasha' || x.form === 'pashim')).toBe(false);
   });
 });
 

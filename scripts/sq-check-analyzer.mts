@@ -66,17 +66,29 @@ for (const [form, list] of SQ_FUNCTION_READINGS) ours.set(form, [...(ours.get(fo
 if (!args.includes('--reuse')) {
   if (!fs.existsSync(PY)) { console.error(`the analyzer is not installed (${PY}): it is an optional offline tool, installed only with the owner's permission`); process.exit(1); }
   fs.mkdirSync(WORK, { recursive: true });
-  fs.writeFileSync(FORMS, `${[...ours.keys()].sort().join('\n')}\n`, 'utf8');
-  const r = spawnSync(PY, ['scripts/external/uniparser_sq_analyze.py', FORMS, OUT], { encoding: 'utf8', stdio: ['ignore', 'inherit', 'inherit'] });
+  // two runs at once (two packages checking their own changes) must not read each other's half-written files
+  const mine = path.join(WORK, `forms.${process.pid}.txt`);
+  const mineOut = path.join(WORK, `forms.uniparser.${process.pid}.jsonl`);
+  fs.writeFileSync(mine, `${[...ours.keys()].sort().join('\n')}\n`, 'utf8');
+  const r = spawnSync(PY, ['scripts/external/uniparser_sq_analyze.py', mine, mineOut], { encoding: 'utf8', stdio: ['ignore', 'inherit', 'inherit'] });
   if (r.status !== 0) { console.error('the analyzer run failed'); process.exit(1); }
+  fs.copyFileSync(mine, FORMS);
+  fs.copyFileSync(mineOut, OUT);
+  fs.rmSync(mine, { force: true });
+  fs.rmSync(mineOut, { force: true });
 }
 if (!fs.existsSync(OUT)) { console.error(`no analyzer output at ${OUT}: run without --reuse`); process.exit(1); }
 const theirs = new Map<string, Array<{ lemma: string; gramm: string; reading: UniparserReading }>>();
+const analysedForms = new Set<string>();
 for (const line of fs.readFileSync(OUT, 'utf8').split('\n')) {
   if (!line.trim()) continue;
   const row = JSON.parse(line) as { form: string; analyses: Array<{ lemma: string; gramm: string }> };
+  analysedForms.add(row.form);
   theirs.set(row.form, row.analyses.map((a) => ({ lemma: sqNormalize(a.lemma), gramm: a.gramm, reading: uniparserToReading(a.gramm) })));
 }
+
+const stale = [...ours.keys()].filter((f) => !analysedForms.has(f)).length;
+if (stale > 0) { console.error(`${stale} generated form(s) are not in the stored analyzer result (the word list changed since it was made): run without --reuse`); process.exit(1); }
 
 // ── compare ──
 type Verdict = 'agree' | 'nonstandard' | 'features-differ' | 'other-lemma' | 'unknown-form' | 'pos-differs' | 'name-unknown';
@@ -92,11 +104,26 @@ const compatible = (r: SqReading, u: UniparserReading): boolean => {
 };
 /** ankohem (listed here) and ankoj with a non-active analysis (listed there) are the same verb. */
 const deponentMatch = (r: SqReading, t: { lemma: string; reading: UniparserReading }): boolean => {
-  if (!(r.pos === 'VERB' || r.pos === 'AUX') || !/(h?em)$/u.test(r.lemma) || t.reading.pos !== 'VERB') return false;
-  const mine = sqNormalize(r.lemma).replace(/h?em$/u, '');
+  if (!(r.pos === 'VERB' || r.pos === 'AUX') || !/em$/u.test(r.lemma) || t.reading.pos !== 'VERB') return false;
+  const lemma = sqNormalize(r.lemma);
+  // lahem → la-j (the h belongs to the ending), lodhem → lodh (the h belongs to the stem): either
+  const mine = [lemma.replace(/em$/u, ''), lemma.replace(/hem$/u, '')];
   const theirs = t.lemma.replace(/j$/u, '');
-  return (mine === theirs || mine === t.lemma) && (t.reading.morph.Voice === 'Mid' || t.reading.morph.VerbForm === 'Part');
+  return (mine.includes(theirs) || mine.includes(t.lemma)) && (t.reading.morph.Voice === 'Mid' || t.reading.morph.VerbForm === 'Part');
 };
+/**
+ * The same verb under two citation forms — a difference of NAMING, not of analysis. Here a verb is cited by its first
+ * person singular present (përgatis) or, when it is only used non-actively, by that form (përpiqem, quhem); the
+ * analyzer cites the dictionary's headword (përgatit) or the active verb (përpjek, quaj). Features must still agree.
+ * Kept short and explicit, and written into the review file so that a person can see what was treated as the same.
+ */
+const CITATION_ALIASES: Readonly<Record<string, readonly string[]>> = {
+  përgatis: ['përgatit'],
+  përpiqem: ['përpjek'],
+  quhem: ['quaj'],
+};
+const aliasMatch = (r: SqReading, t: { lemma: string; reading: UniparserReading }): boolean =>
+  (r.pos === 'VERB' || r.pos === 'AUX') && t.reading.pos === 'VERB' && (CITATION_ALIASES[sqNormalize(r.lemma)] ?? []).includes(t.lemma);
 
 interface Finding { form: string; lemma: string; pos: string; verdict: Verdict; ours: string; theirs: string[] }
 const findings: Finding[] = [];
@@ -111,7 +138,7 @@ for (const [form, list] of [...ours.entries()].sort((a, b) => (a[0] < b[0] ? -1 
     const lemma = sqNormalize(r.lemma);
     if (!inSplit(lemma)) continue;
     let verdict: Verdict;
-    const same = them.filter((t) => (t.lemma === lemma && samePos(r.pos, t.reading.pos)) || deponentMatch(r, t));
+    const same = them.filter((t) => (t.lemma === lemma && samePos(r.pos, t.reading.pos)) || deponentMatch(r, t) || aliasMatch(r, t));
     const otherPos = them.filter((t) => t.lemma === lemma && !samePos(r.pos, t.reading.pos) && compatible(r, t.reading));
     if (!them.length) verdict = r.pos === 'PROPN' ? 'name-unknown' : 'unknown-form';
     else if (!same.length) verdict = otherPos.length ? 'pos-differs' : 'other-lemma';
@@ -159,6 +186,7 @@ if (args.includes('--write')) {
     schema: 1,
     note: 'Readings on which the Albanian word list / rules (machine-drafted) and the UniParser Albanian analyzer differ. Nothing is decided here: each is a place for a person to look. Generated by npm run sq:check-analyzer -- --write; do not edit by hand.',
     analyzer: { name: 'uniparser-albanian', version: '2.3.0', licence: 'MIT', authors: 'Maria Morozova, Alexander Rusakov, Timofey Arkhangelskiy', mode: 'strict, no disambiguation' },
+    citationAliases: CITATION_ALIASES,
     counts,
     findings,
   };

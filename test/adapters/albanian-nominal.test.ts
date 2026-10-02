@@ -387,3 +387,46 @@ describe('the word lists', () => {
     }
   });
 });
+
+describe('fixes after the independent analyzer check (dev half)', () => {
+  const noun = (l: string) => SQ_NOUNS.find((n) => n.lemma === l)!;
+
+  it('a masculine noun in -en has the plural in -e (liqene), not -enj', () => {
+    expect(got(N('liqen', 'm', 'liqeni', 'liqene', 'x'))).toEqual(cells('liqen', 'liqeni liqenin liqenit liqeni liqene liqenet liqeneve liqenesh'));
+    expect(noun('liqen').plural).toBe('liqene');
+  });
+
+  it('a compound in -javë keeps the plural of javë (fundjavë, fundjavët), not an invented -a plural', () => {
+    expect(noun('fundjavë').plural).toBe('fundjavë');
+    expect(got(N('fundjavë', 'f', 'fundjava', 'fundjavë', 'x'))).toEqual(cells('fundjavë', 'fundjava fundjavën fundjavës fundjave fundjavë fundjavët fundjavëve fundjavësh'));
+  });
+
+  it('fruit is the feminine frutë (fruta, frutat), not a masculine fryt', () => {
+    expect(SQ_NOUNS.some((n) => n.lemma === 'fryt')).toBe(false);
+    expect(got(noun('frutë'))).toEqual(cells('frutë', 'fruta frutën frutës frute fruta frutat frutave frutash'));
+  });
+
+  it('the Church word is listed under the dictionary lemma atë (ati, etër)', () => {
+    expect(SQ_NOUNS.some((n) => n.lemma === 'at')).toBe(false);
+    expect(got(noun('atë'))).toEqual(cells('atë', 'ati atin atit ati etër etërit etërve etërish'));
+  });
+
+  it('a monk: murg, murgu, murgj, murgjit (the -të heuristic does not apply), by explicit forms', () => {
+    const f = got(noun('murg'));
+    expect(f).toContain('murgjit|Nom,Acc|Plur|Def');
+    expect(f).toContain('murgjish|Abl|Plur|Ind');
+    expect(f).not.toContain('murgjtë|Nom,Acc|Plur|Def');
+    expect(f).toContain('murgj|Nom,Acc|Plur|Ind');
+  });
+
+  it('the feminine plural of a -rrë / -llë adjective keeps the doubled consonant (e marrë, të marra)', () => {
+    expect(forms2(A('marrë', true, 'x', { plF: 'marra' }))).toContain('marra|Fem|Plur');
+    for (const a of SQ_ADJECTIVES) {
+      const m = /([bcdfghjklmnprstvxz])\1ë$/.exec(a.lemma);
+      if (m && a.plF) expect(a.plF, a.lemma).toContain(`${m[1]}${m[1]}`);
+    }
+    expect(SQ_ADJECTIVES.find((a) => a.lemma === 'marrë')?.plF).toBe('marra');
+    expect(SQ_ADJECTIVES.find((a) => a.lemma === 'hollë')?.plF).toBe('holla');
+  });
+});
+const forms2 = (lex: SqLexeme): string[] => adjectiveForms(lex).map((f) => `${f.form}|${f.morph.Gender}|${f.morph.Number}`);

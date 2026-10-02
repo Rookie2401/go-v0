@@ -25,7 +25,10 @@
  *     participle (punuam, kthyem);
  *   - 1sg in -va with `aorist3` in -u (lava / lau, piva / piu): -ve, plural stem + më / të / në (lamë);
  *   - 1sg in -a (hapa, mora, dita, luajta): -e, -i (or `aorist3`), -ëm / -ët / -ën.
- * Mixed paradigms (vura / vumë, bëra / bëmë) state their odd forms in `forms`.
+ * Mixed paradigms (vura / vumë, bëra / bëmë, hyra / hymë) state their odd forms in `forms`: which short -ra aorists
+ * have the strong plural (hyj, bëj, vë, zë) and which the weak one (marr: morëm, ha: hëngrëm) is lexical.
+ * Vowel stems in -e / -ë take the i-stem in the 2nd plural (flini, lini, vini, ngrini); for consonant stems the change
+ * (e/a/o to i: ndizni, flisni, shihni; but qeshni, pyesni) is lexical and stated in `forms`.
  */
 import type { SqForm, SqLexeme } from './types';
 import { sqMorph } from './types';
@@ -131,12 +134,14 @@ function consParadigm(lex: SqLexeme, ex: Slot[]): Paradigm {
 function vowelParadigm(lex: SqLexeme): Paradigm {
   const l = lex.lemma;
   const b = l.endsWith('e') ? `${l.slice(0, -1)}i` : l.endsWith('ë') ? undefined : l;
+  // a stem in -e / -ë takes the i-stem before -ni (fle: flini, lë: lini, vë: vini, ngre: ngrini) and in the imperfect
+  const i2 = l.endsWith('e') || l.endsWith('ë') ? `${l.slice(0, -1)}i` : l;
   return {
-    pres: [l, l, l, `${l}më`, `${l}ni`, `${l}në`],
+    pres: [l, l, l, `${l}më`, `${i2}ni`, `${l}në`],
     subj2: `${l}sh`,
     subj3: l.endsWith('ë') ? `${l}rë` : `${l}jë`,
     impf: b ? [`${b}ja`, `${b}je`, `${b}nte`, `${b}nim`, `${b}nit`, `${b}nin`] : undefined,
-    impPl: `${l}ni`,
+    impPl: `${i2}ni`,
     na: l.endsWith('e') || l.endsWith('ë') ? `${l.slice(0, -1)}ih` : `${l}h`,
   };
 }

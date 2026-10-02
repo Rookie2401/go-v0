@@ -86,7 +86,7 @@ const ARTICULATED: SqLexeme[] = [
   IA('nderuar', 'honoured, esteemed', 'nderuara'),
   IA('njohur', 'known, famous', 'njohura'),
   I('vetëm', 'alone, only', { fem: 'vetme', plF: 'vetme' }),
-  I('marrë', 'foolish, mad', { plF: 'mara' }),
+  I('marrë', 'foolish, mad', { plF: 'marra' }),
   IA('qetë', 'calm, quiet', 'qeta'),
   // truth and judgement
   IA('vërtetë', 'true, real', 'vërteta'),

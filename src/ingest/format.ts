@@ -195,6 +195,12 @@ export interface CorpusDocument {
   variety?: string;
   /** What the importer's quality check found in the source (`inspectText`); written by the converters, carried to `Text.quality`. */
   quality?: QualityReport;
+  /**
+   * Added by a team member as the team's own writing: readable on this device without a review, labelled as the team's,
+   * never bundled (`Text.teamText`). Valid only with `source.rights` "owner-authored", `source.authorship` "human", not
+   * generated and not Scripture (error `team-text-rights` otherwise).
+   */
+  teamText?: true;
   /** Notes anchored by matching sentence text (see `DocDocumentNote`); notes on a declared sentence go in its `notes`. */
   notes?: DocDocumentNote[];
   /** Ignored by the validator (templates use it for inline comments). */
@@ -217,7 +223,7 @@ export type ValidationCode =
   | 'missing-provenance' | 'unverified-without-note' | 'review-missing-reviewer'
   | 'review-signature-mismatch' | 'not-nfc' | 'edge-whitespace' | 'adapter-would-split' | 'low-analysis-coverage'
   | 'unknown-work' | 'note-anchor-missing' | 'note-not-on-token'
-  | 'personal-copy-scripture' | 'personal-copy-generated' | 'personal-copy-authorship' | 'source-damaged';
+  | 'personal-copy-scripture' | 'personal-copy-generated' | 'personal-copy-authorship' | 'source-damaged' | 'team-text-rights';
 
 export interface ValidationIssue {
   /** JSON path of the offending value, e.g. `sections[0].paragraphs[1].sentences[2].spans[0]`. */
@@ -280,7 +286,7 @@ const DOC_ID = /^[a-z0-9][a-z0-9-]*$/;
 const SENTENCE_ID = /^[A-Za-z0-9][A-Za-z0-9._-]*$/;
 const LOCALE = /^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$/;
 
-const DOC_KEYS = ['schemaVersion', 'id', 'lang', 'locale', 'title', 'contentType', 'corpus', 'source', 'review', 'difficulty', 'topics', 'editorialTags', 'prepTargets', 'speakers', 'generated', 'scripture', 'english', 'sections', 'work', 'notes', 'streams', 'domains', 'variety', 'quality'];
+const DOC_KEYS = ['schemaVersion', 'id', 'lang', 'locale', 'title', 'contentType', 'corpus', 'source', 'review', 'difficulty', 'topics', 'editorialTags', 'prepTargets', 'speakers', 'generated', 'scripture', 'english', 'sections', 'work', 'notes', 'streams', 'domains', 'variety', 'quality', 'teamText'];
 const SOURCE_KEYS = ['id', 'title', 'author', 'publisher', 'url', 'edition', 'attribution', 'provenance', 'rights', 'licenseNote', 'authorship'];
 const SENTENCE_KEYS = ['id', 'text', 'english', 'verseRefs', 'speaker', 'spans', 'corrections', 'notes'];
 const WORK_SLUG = /^[a-z0-9-]+$/;
@@ -504,6 +510,23 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
 
   // english provenance
   if (d.english !== undefined && (!isObj(d.english) || !isStr(d.english.source))) err('english', 'invalid-value', 'english must be {"source": "…"}', 'Say where the English rescue lines came from.');
+
+  // team text: the team's own writing, readable without a review (see `computePublished`)
+  if (d.teamText !== undefined) {
+    if (d.teamText !== true) err('teamText', 'invalid-value', 'teamText must be true, or omitted', 'Remove the field, or set it to true for a text the team wrote itself.');
+    else {
+      const s = isObj(src) ? src : undefined;
+      const missing: string[] = [];
+      if (s?.rights !== 'owner-authored') missing.push('source.rights "owner-authored"');
+      if (s?.authorship !== 'human') missing.push('source.authorship "human"');
+      if (d.generated === true) missing.push('generated false');
+      if (d.contentType === 'scripture') missing.push('a contentType other than "scripture"');
+      if (missing.length) {
+        err('teamText', 'team-text-rights', `teamText is only for text the team wrote itself; this document would need ${missing.join(', ')}`,
+          'Remove teamText, or correct the source: a team text is owner-authored, written by a person, not machine-generated and not Scripture. A published book is a personal copy, not a team text.');
+      }
+    }
+  }
 
   // scripture
   const scripture = d.contentType === 'scripture';

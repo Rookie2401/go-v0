@@ -1,6 +1,8 @@
 // @vitest-environment jsdom
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import type { Text } from '../../src/core';
+import { createAdapterRegistry } from '../../src/adapters';
+import { importDocuments } from '../../src/ingest';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { recordTeamImport } from '../../src/ui/goread/TeamTexts';
 import { button, byLabel, click, makeHarness, pickFiles, q, qa } from './harness';
@@ -242,6 +244,62 @@ describe('Team Texts: the language gate', () => {
     expect(h.controls.ingest.validate).not.toHaveBeenCalled();
     expect(q(section(), '[data-testid="copy-preview"]')).toBeNull();
     expect(h.controls.ingest.import).not.toHaveBeenCalled();
+  });
+});
+
+describe('Team Texts: who wrote it', () => {
+  it('"Our team or I wrote it" imports a Spanish .txt that is not a personal copy and has owner-authored rights', async () => {
+    await open();
+    await click(button(section(), 'Add a book from a text file'));
+    const group = byLabel(section(), 'Who wrote this?');
+    const labels = qa(group, 'label').map((l) => (l.textContent ?? '').trim());
+    expect(labels).toEqual(['A published book — my own copy (stays on this device)', 'Our team or I wrote it (can be shared with the team)']);
+    await click(qa<HTMLInputElement>(group, 'input[type="radio"]')[1]);
+    await pickFiles(byLabel<HTMLInputElement>(section(), 'Choose a text file with the text of a book'), [txt(SPANISH, 'nuestro-cuento.txt')]);
+    await click(button(section(), 'Check this file'));
+    expect(q(section(), '[data-testid="copy-preview"]')!.textContent).toContain('Written by your team: it can be shared with the team from Team Texts.');
+    await click(button(section(), 'Import 1 chapter'));
+
+    const imported = h.controls.ingest.import.mock.calls.at(-1)![0] as Array<{ source: { rights: string; authorship: string } }>;
+    expect(imported[0].source.rights).toBe('owner-authored');
+    expect(imported[0].source.authorship).toBe('human');
+    const texts = await h.store.texts.all();
+    expect(texts).toHaveLength(1);
+    expect(texts[0].personalCopy).not.toBe(true);
+    const rows = JSON.parse((await h.store.meta.get('goread:es'))!.value) as Array<{ textId: string }>;
+    expect(rows.map((r) => r.textId)).toEqual([texts[0].id]);
+  });
+});
+
+describe('Team Texts: a text the team wrote is readable', () => {
+  it('an owner-authored, human-written .json is marked teamText before validation and stored as a published teamText text', async () => {
+    // the real importer over the harness store (the harness's fake one stores everything unpublished)
+    const registry = createAdapterRegistry();
+    h.controls.ingest.import.mockImplementation(async (docs: unknown[]) => {
+      const report = await importDocuments(h.store, registry, docs, { clock: () => '2026-10-02T08:00:00.000Z' });
+      return report.documents.map((d) => ({
+        id: d.id, action: d.action, published: d.published, unpublishedReasons: d.unpublishedReasons, ...(d.teamText ? { teamText: true } : {}),
+        issues: d.issues.map((i) => ({ path: i.path, code: i.code, message: i.message, severity: i.severity })),
+      }));
+    });
+    const ours = {
+      schemaVersion: 2, id: 'nuestro-cuento', lang: 'es', title: 'Nuestro cuento', contentType: 'story',
+      corpus: { id: 'ci-es', kind: 'comprehensible-input', title: 'Comprehensible input - Spanish' },
+      source: { id: 'src:es:nuestro-cuento', title: 'Nuestro cuento', attribution: 'Escrito por el equipo.', provenance: 'Written by the team. Nothing is copied.', rights: 'owner-authored', authorship: 'human' },
+      review: { status: 'unreviewed' }, topics: [], editorialTags: [], prepTargets: [], generated: false,
+      sections: [{ paragraphs: [{ text: SPANISH }] }],
+    };
+    await open();
+    await pickFiles(fileInput(), [json(ours, 'nuestro-cuento.json')]);
+    expect(h.controls.ingest.validate).toHaveBeenCalledWith([{ ...ours, teamText: true }]);
+    await click(button(section(), 'Import 1 document'));
+    expect(h.controls.ingest.import).toHaveBeenCalledWith([{ ...ours, teamText: true }]);
+
+    const stored = await h.store.texts.get('text:es:nuestro-cuento');
+    expect(stored).toMatchObject({ published: true, teamText: true, reviewStatus: 'unreviewed' });
+    expect(stored?.personalCopy).not.toBe(true);
+    const rows = JSON.parse((await h.store.meta.get('goread:es'))!.value) as Array<{ textId: string }>;
+    expect(rows.map((r) => r.textId)).toEqual(['text:es:nuestro-cuento']);
   });
 });
 

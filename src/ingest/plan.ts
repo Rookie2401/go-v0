@@ -901,6 +901,8 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
       difficulty: doc.difficulty, topics: doc.topics, editorialTags: doc.editorialTags, prepTargets: doc.prepTargets, generated: doc.generated,
       scripture: doc.scripture, english: doc.english, sections: doc.sections.map((s) => ({ title: s.title, chapter: s.chapter })), work: doc.work,
       streams: doc.streams, domains: doc.domains, variety: doc.variety, quality: doc.quality,
+      // only when set, so the signature of every other document is what it was before the flag existed
+      ...(doc.teamText ? { teamText: true } : {}),
     },
     paragraphs,
     sentences: sentences.map((s) => ({

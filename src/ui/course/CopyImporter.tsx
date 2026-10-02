@@ -25,6 +25,7 @@ import { coverageSentence } from './wording';
 import './course.css';
 
 export const STAYS_ON_DEVICE = 'This stays on this device. It is not uploaded, bundled or shared.';
+const TEAM_WRITTEN = 'Written by your team: it can be shared with the team from Team Texts.';
 
 
 type Source = { kind: 'text'; text: string } | { kind: 'epub'; bytes: Uint8Array };
@@ -74,10 +75,13 @@ export function CopyImporter({ work, onImported }: { work?: Work; onImported(vie
   const [choices, setChoices] = useState<Choices>(DEFAULT_CHOICES);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [writtenBy, setWrittenBy] = useState<'book' | 'team'>('book');
+  const whoName = useId();
 
   const optionsFor = (titleFor: string | undefined, c: Choices): PlainTextOptions => ({
     lang: lang as LanguageCode,
     ...(work ? { work } : { title: titleFor }),
+    ...(!work && writtenBy === 'team' ? { ownership: { kind: 'team-authored' as const, by: `the ${course.country} team` } } : {}),
     ...(copyNote.trim() ? { copyNote: copyNote.trim() } : {}),
     ...(!work && author.trim() ? { author: author.trim() } : {}),
     ...(c.chapters === 'none' ? { chapters: 'none' as const } : c.chapters === 'pattern' && c.pattern.trim() ? { chapters: c.pattern.trim() } : {}),
@@ -167,7 +171,20 @@ export function CopyImporter({ work, onImported }: { work?: Work; onImported(vie
   return (
     <div className="copy" data-testid="copy-importer">
       {/* Said once: here until a preview is showing, and then in the preview. */}
-      {phase.kind !== 'preview' && <p className="card__note">{STAYS_ON_DEVICE}</p>}
+      {phase.kind !== 'preview' && <p className="card__note">{!work && writtenBy === 'team' ? TEAM_WRITTEN : STAYS_ON_DEVICE}</p>}
+      {!work && (
+        <div className="field copy__who" role="radiogroup" aria-label="Who wrote this?">
+          <span className="label" aria-hidden="true">Who wrote this?</span>
+          <label>
+            <input type="radio" name={whoName} checked={writtenBy === 'book'} onChange={() => setWrittenBy('book')} />{' '}
+            A published book — my own copy (stays on this device)
+          </label>
+          <label>
+            <input type="radio" name={whoName} checked={writtenBy === 'team'} onChange={() => setWrittenBy('team')} />{' '}
+            Our team or I wrote it (can be shared with the team)
+          </label>
+        </div>
+      )}
       <label className="field" htmlFor={noteId}>
         <span className="label">About your copy (optional)</span>
         <input id={noteId} type="text" value={copyNote} placeholder="for example: my paperback, 12th printing" onChange={(e) => setCopyNote(e.target.value)} />
@@ -273,6 +290,8 @@ function CopyPreview({ phase, busy, choices, onChoices, onRecheck, onConfirm, on
   const n = views.length;
   const blocked = n === 0 || errors > 0 || views.some((v) => v.action === 'rejected');
   const canCorrect = !!phase.source;
+  // a text the team wrote (source.rights 'owner-authored') is not "kept on this device only"
+  const teamWritten = fromText && phase.docs.length > 0 && phase.docs.every((d) => (d as { source?: { rights?: unknown } } | null)?.source?.rights === 'owner-authored');
   const advice = new Set((quality?.flags ?? []).map((f) => FLAG_ADVICE[f.code]).filter(Boolean));
 
   let readable: string;
@@ -285,7 +304,7 @@ function CopyPreview({ phase, busy, choices, onChoices, onRecheck, onConfirm, on
 
   return (
     <section className="copy__preview" aria-label="Preview of what will be imported" data-testid="copy-preview">
-      <p className="note">{STAYS_ON_DEVICE}</p>
+      <p className="note">{teamWritten ? TEAM_WRITTEN : STAYS_ON_DEVICE}</p>
       <dl className="copy__facts">
         <div><dt>File</dt><dd>{phase.fileName}</dd></div>
         <div><dt>{fromText ? 'Chapters found' : 'Documents'}</dt><dd data-testid="copy-count">{n}</dd></div>

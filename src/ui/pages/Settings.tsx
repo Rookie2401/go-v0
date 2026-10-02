@@ -20,6 +20,7 @@ import { ContentSection } from './settings/ContentSection';
 import { EvidenceSection } from './settings/EvidenceSection';
 import { LanguageSupportSection } from './settings/LanguageSupportSection';
 import { AdvancedSpeechControls, SpeechSection } from './settings/SpeechSection';
+import { TeamSharingSection } from './settings/TeamSharingSection';
 
 /** One sentence whose audio failed for good (GoListen's diagnostics(textId).failedSentences). */
 interface FailedSentenceView { sentenceId: string; index: number; text: string; error: string; attempts?: number }
@@ -35,6 +36,7 @@ const dotClass = (l: LearnerLevel) => {
 /** The sections, in page order. `id` matches the section's data-settings-section attribute. */
 export const SETTINGS_SECTIONS = [
   { id: 'you', label: 'You' },
+  { id: 'team-sharing', label: 'Team sharing' },
   { id: 'reading', label: 'Reading' },
   { id: 'backup', label: 'Backup and recovery' },
   { id: 'content', label: 'Content' },
@@ -80,6 +82,7 @@ export function Settings() {
         <p className="who label" title={course.title}>{user.displayName} · {course.lang.toUpperCase()}</p>
         <SectionNav />
         <LearnerSection />
+        <TeamSharingSection />
         <ReadingSection />
         <BackupSection />
         <ContentSection />

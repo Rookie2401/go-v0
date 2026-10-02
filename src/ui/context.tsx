@@ -34,6 +34,8 @@ export interface ImportDocView {
   published?: boolean;
   /** The learner's own copy of a published work: readable on this device, not published to other learners. */
   personalCopy?: boolean;
+  /** The team's own writing: readable on this device without a review, labelled as the team's. */
+  teamText?: boolean;
   unpublishedReasons?: string[];
   issues: IngestIssueView[];
   analysisCoverage?: number;

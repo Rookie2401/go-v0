@@ -128,7 +128,7 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
             <section key={workId} className="lib__group lib__group--1" data-work={workId}>
               <h2 className="lib__head">
                 <span className="lib__title" lang={works.get(workId)?.lang}>{works.get(workId)?.title ?? 'Your copy'}</span>
-                <span className="lib__meta">{list.every((t) => t.personalCopy) ? 'Your copy · ' : ''}{list.length} {list.length === 1 ? 'chapter' : 'chapters'}</span>
+                <span className="lib__meta">{list.every((t) => t.personalCopy) ? 'Your copy · ' : list.every((t) => t.teamText) ? 'Your team’s text · ' : ''}{list.length} {list.length === 1 ? 'chapter' : 'chapters'}</span>
               </h2>
               <ul className="list entrylist">
                 {list.map((t) => renderRow(t, chapterLabel))}

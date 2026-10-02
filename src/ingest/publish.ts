@@ -10,6 +10,9 @@
  * Exception — a personal copy (source.rights 'personal-copy', authorship 'published', not generated, not Scripture, with a
  * provenance) is published without a review and marked `personalCopy`; any other use of 'personal-copy' is refused.
  *
+ * Exception — a team text (`teamText: true` on an owner-authored, human-written, non-generated, non-Scripture document) is
+ * published without a review and marked `teamText`; a rejected review still blocks it.
+ *
  * Every failed condition contributes one actionable sentence to `unpublishedReasons`.
  */
 import { REVIEW_OK, hash } from '../core';
@@ -20,6 +23,8 @@ export interface PublicationDecision {
   unpublishedReasons: string[];
   /** True (and only then present) when the text is published as the learner's own copy of a published work: `Text.personalCopy`. */
   personalCopy?: true;
+  /** True (and only then present) when the text is published as the team's own writing, without a review: `Text.teamText`. */
+  teamText?: true;
 }
 
 /**
@@ -62,6 +67,14 @@ export function computePublished(doc: Pick<CorpusDocument, 'contentType' | 'revi
     if (!nonEmpty(d.source.provenance)) reasons.push('a personal copy needs source.provenance saying where the copy came from');
     if (d.review?.status === 'rejected') reasons.push('review was rejected — fix the text and record a new review');
     return reasons.length ? { published: false, unpublishedReasons: reasons } : { published: true, unpublishedReasons: [], personalCopy: true };
+  }
+
+  // A team text is the team's own writing (owner-authored, by a person, not generated, not Scripture), added by a team member:
+  // readable on this device without a review, labelled as the team's. A rejected review still blocks it. A document that
+  // claims teamText without those conditions is not treated as one (the validator refuses it) and takes the ordinary path.
+  if (d.teamText === true && d.source?.rights === 'owner-authored' && d.source.authorship === 'human' && d.generated !== true && d.contentType !== 'scripture') {
+    if (d.review?.status === 'rejected') return { published: false, unpublishedReasons: ['review was rejected — fix the text and record a new review'] };
+    return { published: true, unpublishedReasons: [], teamText: true };
   }
 
   const status = d.review?.status;

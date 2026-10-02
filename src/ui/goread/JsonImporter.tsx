@@ -24,6 +24,20 @@ export function teamLanguageIssue(doc: unknown, file: string, team: { lang: Lang
   };
 }
 
+/**
+ * A document added on the Team Texts page that is the team's own writing - `owner-authored`, `human`, not generated, not
+ * Scripture - is marked `teamText: true`, so it is readable on this device without a review. Anything else is returned as
+ * it is (including a document that already says something about `teamText`: the validator judges that).
+ */
+export function markTeamText(doc: unknown): unknown {
+  if (!doc || typeof doc !== 'object' || Array.isArray(doc)) return doc;
+  const d = doc as { teamText?: unknown; generated?: unknown; contentType?: unknown; source?: unknown };
+  if (d.teamText !== undefined || d.generated === true || d.contentType === 'scripture') return doc;
+  const s = d.source && typeof d.source === 'object' ? (d.source as { rights?: unknown; authorship?: unknown }) : undefined;
+  if (s?.rights !== 'owner-authored' || s.authorship !== 'human') return doc;
+  return { ...d, teamText: true };
+}
+
 export function JsonImporter({ onImported }: { onImported(views: ImportDocView[]): void }) {
   const { ingest, course } = useApp();
   const inputId = useId();
@@ -56,7 +70,7 @@ export function JsonImporter({ onImported }: { onImported(views: ImportDocView[]
           // the team's language first: a text in another language is turned away before anything else is checked
           const turnedAway = teamLanguageIssue(d, f.name, { lang: course.lang, country: course.country });
           if (turnedAway) { failures.push(turnedAway); continue; }
-          good.push(d); from.push(f.name);
+          good.push(markTeamText(d)); from.push(f.name);
         }
       }
       const checked = good.length > 0 ? await ingest.validate(good) : [];

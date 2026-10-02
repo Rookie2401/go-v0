@@ -49,6 +49,15 @@
 .team-texts .work__added { display: block; color: var(--ink-faint); font-size: 0.8rem; }
 .team-texts section + section { margin-top: 1.4rem; }
 
+/* GoRead: team sharing */
+.team-share { margin: 0.8rem 0; }
+.team-share .actions { margin: 0.3rem 0; }
+.team-share__host { font-weight: 500; overflow-wrap: anywhere; }
+.team-share__result { margin: 0.3rem 0; }
+.team-share--offer { margin-top: 0.8rem; }
+.team-texts .work__noshare { display: block; font-size: 0.85rem; margin-top: 0.3rem; }
+.team-texts .work__share { margin-top: 0.3rem; }
+
 /* the importer and its preview */
 .copy { margin-top: 0.4rem; }
 .copy__facts { margin: 0.5rem 0; }

@@ -45,7 +45,8 @@ export function ExploreWork({ work, reloadKey, onImported }: { work: Work; reloa
   const personal = !!stored && stored.length > 0 && stored.every((t) => t.personalCopy === true);
   // a text written for the course is not something to add a copy of; neither is a work whose source forbids use inside an app
   const copyAllowed = work.rights.state !== 'course-authored' && !pointerOnly(work.rights);
-  const readLabel = stored && stored.length > 0 ? `${personal ? 'Your copy' : 'Read'} · ${stored.length} ${stored.length === 1 ? 'chapter' : 'chapters'}` : undefined;
+  const teamOwn = !personal && !!stored && stored.length > 0 && stored.every((t) => t.teamText === true);
+  const readLabel = stored && stored.length > 0 ? `${personal ? 'Your copy' : teamOwn ? 'Your team’s text' : 'Read'} · ${stored.length} ${stored.length === 1 ? 'chapter' : 'chapters'}` : undefined;
 
   return (
     <li className="work explore-work" data-work={work.id}>

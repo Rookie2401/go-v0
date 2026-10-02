@@ -21,7 +21,9 @@ export function ImportReport({ docs, title }: { docs: ImportDocView[]; title?: s
               <p className="card__note" data-testid="would-publish">
                 {d.personalCopy
                   ? 'Will be readable on this device when imported. It is your own copy: it is not published to anyone else.'
-                  : 'Will be published to learners when imported.'}
+                  : d.teamText
+                    ? 'Will be readable on this device when imported. It is your team’s own text: it is not checked by a native speaker unless its review says so, and it is not published beyond your team.'
+                    : 'Will be published to learners when imported.'}
               </p>
             )}
             {d.published === false && (d.unpublishedReasons ?? []).length > 0 && (

@@ -22,8 +22,8 @@ describe('Settings: sections, in-page nav, Advanced collapsed', () => {
     await open();
     const nav = byLabel(mounted!.container, 'Settings sections');
     expect(nav.tagName).toBe('NAV');
-    expect(qa(nav, 'button').map((b) => b.textContent)).toEqual(['You', 'Reading', 'Backup and recovery', 'Content', 'Speech', 'Vocabulary', 'Advanced']);
-    expect(sections()).toEqual(['you', 'reading', 'backup', 'content', 'speech', 'vocabulary', 'advanced']);
+    expect(qa(nav, 'button').map((b) => b.textContent)).toEqual(['You', 'Team sharing', 'Reading', 'Backup and recovery', 'Content', 'Speech', 'Vocabulary', 'Advanced']);
+    expect(sections()).toEqual(['you', 'team-sharing', 'reading', 'backup', 'content', 'speech', 'vocabulary', 'advanced']);
     // each section has a heading (Advanced's heading holds its disclosure button)
     for (const [id, name] of [['you', 'You'], ['reading', 'Reading'], ['backup', 'Backup and recovery'], ['content', 'Content'], ['speech', 'Speech'], ['vocabulary', 'Vocabulary']]) {
       expect(q(mounted!.container, `[data-settings-section="${id}"] h2`)!.textContent).toBe(name);

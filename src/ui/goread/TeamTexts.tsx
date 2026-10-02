@@ -11,11 +11,15 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ids } from '../../core';
 import type { AppStore, LanguageCode, Text } from '../../core';
+import { createTeamClient } from '../../goread/client';
+import { shareableText } from '../../goread/sharing';
+import { fetchTeamTexts, shareBook } from '../../goread/sync';
 import { CopyImporter } from '../course/CopyImporter';
 import { useApp } from '../context';
 import type { ImportDocView } from '../context';
 import { formatDate, languageName, textPath } from '../format';
 import { useLangTexts } from '../library';
+import { usePref } from '../prefs';
 import { BackLink, Disclosure, Topbar } from '../ui';
 import { JsonImporter } from './JsonImporter';
 import '../course/course.css';
@@ -75,9 +79,63 @@ function groupBooks(texts: Text[], added: Map<string, TeamTextEntry>): TeamBook[
   }).sort((a, b) => a.title.localeCompare(b.title));
 }
 
+const errorMessage = (e: unknown): string => (e instanceof Error ? e.message : String(e));
+const plural = (n: number, one: string, many: string) => `${n} ${n === 1 ? one : many}`;
+
+/** The server's host for display ("Team server: example.org"); the address as typed when it does not parse. */
+function serverHost(address: string): string {
+  try { return new URL(address).host || address; } catch { return address; }
+}
+
+/** What a fetch or a share said, as one line each. */
+interface Outcome { ok: boolean; text: string }
+type Verdict = { ok: true } | { ok: false; reason: string };
+
+function shareOutcomes(r: { shared: string[]; refused: Array<{ id: string; reason: string }> }): Outcome[] {
+  const out: Outcome[] = [];
+  if (r.shared.length > 0) out.push({ ok: true, text: 'Shared with the team.' });
+  const reasons = [...new Set(r.refused.map((x) => x.reason))];
+  if (reasons.length > 0) out.push({ ok: false, text: reasons.join(' ') });
+  if (out.length === 0) out.push({ ok: false, text: 'Nothing was shared.' });
+  return out;
+}
+
+function Outcomes({ list }: { list: Outcome[] | undefined }) {
+  if (!list) return null;
+  return (
+    <>
+      {list.map((o, i) => (o.ok
+        ? <p key={i} role="status" className="note team-share__result">{o.text}</p>
+        : <p key={i} role="alert" className="error team-share__result">{o.text}</p>))}
+    </>
+  );
+}
+
+/** The share control of one book row: a button, or (when the first chapter may not be shared) the reason why. */
+function BookShare({ book, verdict, busy, outcome, onShare }: { book: TeamBook; verdict: Verdict | undefined; busy: boolean; outcome: Outcome[] | undefined; onShare(): void }) {
+  if (!verdict) return null;
+  if (!verdict.ok) return <span className="work__noshare muted">{verdict.reason}</span>;
+  return (
+    <>
+      <button type="button" className="btn btn--small btn--quiet work__share" aria-label={`Share ${book.title} with the team`} disabled={busy} onClick={onShare}>Share</button>
+      <Outcomes list={outcome} />
+    </>
+  );
+}
+
 export function TeamTextsPage() {
-  const { store, user, course, lang } = useApp();
+  const { store, user, course, lang, ingest } = useApp();
   const [tick, setTick] = useState(0);
+  const [server] = usePref('teamServer');
+  const [code] = usePref('teamCode');
+  const address = server.trim();
+  const client = useMemo(() => (address ? createTeamClient({ baseUrl: address, code }) : null), [address, code]);
+  const [fetching, setFetching] = useState(false);
+  const [fetched, setFetched] = useState<Outcome[] | undefined>(undefined);
+  const [verdicts, setVerdicts] = useState<Record<string, Verdict>>({});
+  const [shared, setShared] = useState<Record<string, Outcome[]>>({});
+  const [sharing, setSharing] = useState<string | null>(null);
+  const [offer, setOffer] = useState<{ ids: string[]; outcome?: Outcome[] } | null>(null);
   const { texts: all } = useLangTexts(tick);
   const [entries, setEntries] = useState<TeamTextEntry[] | null>(null);
   const [existing, setExisting] = useState<Set<string> | null>(null);
@@ -95,10 +153,31 @@ export function TeamTextsPage() {
   }, [store, lang, tick]);
 
   const onImported = useCallback((views: ImportDocView[]) => {
+    const kept = views.filter((v) => v.action === 'created' || v.action === 'updated' || v.action === 'unchanged').map((v) => ids.text(lang, v.id));
+    setOffer(kept.length > 0 ? { ids: kept } : null);
     void recordTeamImport(store, lang, views, user.displayName)
       .catch(() => undefined)
       .finally(() => setTick((n) => n + 1));
   }, [store, lang, user.displayName]);
+
+  const fetchTexts = async () => {
+    if (!client) return;
+    setFetching(true); setFetched(undefined);
+    try {
+      const r = await fetchTeamTexts({ client, course: course.id, lang, store, ingest, recordTeamImport });
+      const out: Outcome[] = [{ ok: true, text: `${plural(r.imported, 'new text', 'new texts')} fetched, ${r.skipped} already here.` }];
+      if (r.failed.length > 0) out.push({ ok: false, text: `${plural(r.failed.length, 'text', 'texts')} could not be added: ${r.failed.map((f) => f.message).join(' ')}` });
+      setFetched(out);
+    } catch (e) {
+      setFetched([{ ok: false, text: errorMessage(e) }]);
+    } finally { setFetching(false); setTick((n) => n + 1); }
+  };
+
+  const share = async (textIds: string[]): Promise<Outcome[]> => {
+    if (!client) return [{ ok: false, text: 'No team server is set.' }];
+    try { return shareOutcomes(await shareBook({ client, course: course.id, store, textIds, addedBy: user.displayName })); }
+    catch (e) { return [{ ok: false, text: errorMessage(e) }]; }
+  };
 
   const loading = all === null || entries === null || existing === null;
   const books = useMemo(() => {
@@ -108,6 +187,21 @@ export function TeamTextsPage() {
     return groupBooks(all.filter((t) => t.lang === course.lang && added.has(t.id)), added);
   }, [all, entries, existing, course.lang]);
 
+  // Which books may be shared: asked of the first chapter, and only when there is a server to share with.
+  useEffect(() => {
+    if (!client) { setVerdicts({}); return; }
+    let live = true;
+    void (async () => {
+      const next: Record<string, Verdict> = {};
+      for (const b of books) {
+        try { next[b.key] = await shareableText(store, b.texts[0]); }
+        catch (e) { next[b.key] = { ok: false, reason: errorMessage(e) }; }
+      }
+      if (live) setVerdicts(next);
+    })();
+    return () => { live = false; };
+  }, [client, books, store]);
+
   return (
     <div>
       <Topbar title="Team Texts" left={<BackLink to="/" label="Home" />} />
@@ -116,12 +210,40 @@ export function TeamTextsPage() {
           What the {course.country} team reads, in {languageName(course)}. Anything added here stays on this device and is shared with every learner on it.
         </p>
 
+        {client ? (
+          <div className="team-share" data-testid="team-server-line">
+            <p className="card__note">Team server: <span className="team-share__host">{serverHost(address)}</span></p>
+            <div className="actions">
+              <button type="button" className="btn btn--small" disabled={fetching} onClick={() => { void fetchTexts(); }}>{fetching ? 'Fetching…' : 'Fetch team texts'}</button>
+            </div>
+            <Outcomes list={fetched} />
+          </div>
+        ) : (
+          <p className="muted" data-testid="team-no-server">To share texts with your team on other devices, set a team server in Settings → Team sharing.</p>
+        )}
+
         <section aria-label="Add a text">
           <h2 className="section-head">Add a text</h2>
           <JsonImporter onImported={onImported} />
           <Disclosure label="Add a book from a text file" headingLevel={3} lazy className="copy__disclosure">
             <CopyImporter onImported={onImported} />
           </Disclosure>
+          {client && offer && (
+            <div className="team-share team-share--offer" data-testid="team-share-offer">
+              {!offer.outcome?.some((o) => o.ok) && (
+                <>
+                  <p className="card__note">Share these {plural(offer.ids.length, 'text', 'texts')} with the team?</p>
+                  <div className="actions">
+                    <button
+                      type="button" className="btn btn--small" disabled={sharing === 'offer'}
+                      onClick={() => { const sent = offer.ids; setSharing('offer'); void share(sent).then((outcome) => { setOffer({ ids: sent, outcome }); setSharing(null); }); }}
+                    >Share with the team</button>
+                  </div>
+                </>
+              )}
+              <Outcomes list={offer.outcome} />
+            </div>
+          )}
         </section>
 
         <section aria-label="Team texts">
@@ -136,6 +258,10 @@ export function TeamTextsPage() {
                   <Link to={textPath(b.texts[0])} className="work__copy-link">{b.texts.length} {b.texts.length === 1 ? 'chapter' : 'chapters'}</Link>
                 </p>
                 <span className="work__added">Added by {b.by || 'a learner'} · {b.at ? formatDate(b.at) : 'earlier'}</span>
+                {client && <BookShare book={b} verdict={verdicts[b.key]} busy={sharing === b.key} outcome={shared[b.key]} onShare={() => {
+                  setSharing(b.key); setShared((m) => ({ ...m, [b.key]: [] }));
+                  void share(b.texts.map((t) => t.id)).then((outcome) => { setShared((m) => ({ ...m, [b.key]: outcome })); setSharing(null); });
+                }} />}
               </li>
             ))}
           </ul>

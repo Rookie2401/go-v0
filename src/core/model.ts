@@ -170,6 +170,12 @@ export interface Text {
   workId?: string;
   /** The learner's own copy of a published work (source.rights 'personal-copy'): readable on this device, labelled, never bundled. */
   personalCopy?: boolean;
+  /**
+   * The team's own writing, added by a team member (source.rights 'owner-authored', authorship 'human', not generated, not
+   * Scripture): readable on this device without a review, labelled as the team's, never bundled. The text is not checked
+   * by a native speaker unless its review says so.
+   */
+  teamText?: boolean;
   /** What the importer's quality check found in the source (OCR damage, wrapped lines, boilerplate …). Flags, never silent fixes. */
   quality?: QualityReport;
   /** Catalogue facts carried from the work or the document, for browsing and scoring: content streams and subject domains. */

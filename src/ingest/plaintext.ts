@@ -57,6 +57,13 @@ export interface PlainTextOptions {
   variety?: string;
   /** Who is importing and from what copy ("my paperback, 12th printing") — recorded in source.provenance. */
   copyNote?: string;
+  /**
+   * Whose words these are. Default `'personal-copy'`: a published book the learner owns a copy of (source.rights
+   * 'personal-copy', authorship 'published'; stays on this device). `{ kind: 'team-authored', by }`: the team (or the
+   * importer) wrote it — source.rights 'owner-authored', authorship 'human', so it is not a personal copy and can be
+   * shared with the team. It still needs its review before it is published.
+   */
+  ownership?: 'personal-copy' | { kind: 'team-authored'; by: string };
 }
 
 export interface PlainTextResult {
@@ -289,7 +296,23 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
   const width = Math.max(2, String(chapters.length).length);
   const author = (opts.work?.author ?? opts.author)?.trim();
   const copy = opts.copyNote?.trim();
-  const provenance = `Supplied by the learner from a personal copy${copy ? ` (${copy})` : ''}; transcription not checked.`;
+  const teamBy = typeof opts.ownership === 'object' ? opts.ownership.by.trim() : undefined;
+  const provenance = teamBy !== undefined
+    ? `Supplied by ${teamBy} as their own writing.`
+    : `Supplied by the learner from a personal copy${copy ? ` (${copy})` : ''}; transcription not checked.`;
+  const rightsFields = teamBy !== undefined
+    ? {
+        attribution: `${bookTitle}${author ? ` — ${author}` : ''}. Written by ${teamBy}.`,
+        rights: 'owner-authored' as const,
+        licenseNote: `Written by ${teamBy}; theirs to share with their team.`,
+        authorship: 'human' as const,
+      }
+    : {
+        attribution: `${bookTitle}${author ? ` — ${author}` : ''}. Your own copy; not distributed.`,
+        rights: 'personal-copy' as const,
+        licenseNote: 'Personal copy: kept on this device, never bundled or shared.',
+        authorship: 'published' as const,
+      };
 
   const documents = chapters.map((ch): CorpusDocument => {
     const partLabel = ch.part ? `part ${ch.part.k} of ${ch.part.of}` : undefined;
@@ -313,11 +336,8 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
         ...(author ? { author } : {}),
         ...(opts.work?.publisher ? { publisher: opts.work.publisher } : {}),
         ...(opts.work?.edition ? { edition: opts.work.edition } : {}),
-        attribution: `${bookTitle}${author ? ` — ${author}` : ''}. Your own copy; not distributed.`,
         provenance,
-        rights: 'personal-copy',
-        licenseNote: 'Personal copy: kept on this device, never bundled or shared.',
-        authorship: 'published',
+        ...rightsFields,
       },
       review: { status: 'unreviewed' },
       topics: [],
@@ -325,6 +345,9 @@ export function plainTextToDocuments(text: string, opts: PlainTextOptions): Plai
       prepTargets: [],
       generated: false,
       ...(docWork ? { work: docWork } : {}),
+      // a text the team wrote: shareable with the team (top-level `teamText`); a personal copy never carries it.
+      // Cast locally until CorpusDocument declares the field (src/ingest/format.ts).
+      ...(teamBy !== undefined ? { teamText: true as const } : {}),
       ...(opts.streams?.length ? { streams: [...opts.streams] } : {}),
       ...(opts.domains?.length ? { domains: [...opts.domains] } : {}),
       ...(opts.variety ? { variety: opts.variety } : {}),

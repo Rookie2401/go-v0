@@ -17,3 +17,6 @@ data/review/th/*-eval-*.json
 data/review/es/generated/
 # research and validation material (treebanks, reference editions): never committed, never bundled, never course text
 data/research/
+
+# GoRead team server data (sqlite, team codes)
+data/goread/

@@ -43,6 +43,8 @@ export interface DocumentReport {
   published: boolean;
   /** Readable because it is the learner's own copy of a published work: on this device only, not published to anyone. */
   personalCopy?: true;
+  /** Readable because it is the team's own writing, added by a team member: no review needed, labelled as the team's. */
+  teamText?: true;
   unpublishedReasons: string[];
   issues: ValidationIssue[];
   analysisCoverage: AnalysisCoverage;
@@ -189,6 +191,8 @@ export interface DocumentPreview {
   published?: boolean;
   /** Readable because it is the learner's own copy of a published work: on this device only, not published to anyone. */
   personalCopy?: true;
+  /** Readable because it is the team's own writing, added by a team member: no review needed, labelled as the team's. */
+  teamText?: true;
   unpublishedReasons?: string[];
   note?: string;
 }
@@ -217,6 +221,7 @@ export async function previewDocuments(store: AppStore, registry: AdapterRegistr
     out.push({
       id: r.id, issues: withPlanCoverage(r.issues, plan, notes.get(0)), analysisCoverage: plan.coverage, published: plan.decision.published,
       ...(plan.decision.personalCopy ? { personalCopy: true as const } : {}),
+      ...(plan.decision.teamText ? { teamText: true as const } : {}),
       unpublishedReasons: plan.decision.unpublishedReasons, ...(notes.has(0) ? { note: notes.get(0) } : {}),
     });
   }
@@ -293,6 +298,7 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
   const report = (action: ImportAction, contentVersion: number, added: number, retired: number): DocumentReport => ({
     id: doc.id, textId, action, contentVersion, published: plan.decision.published, unpublishedReasons: plan.decision.unpublishedReasons, issues,
     ...(plan.decision.personalCopy ? { personalCopy: true as const } : {}),
+    ...(plan.decision.teamText ? { teamText: true as const } : {}),
     analysisCoverage: plan.coverage, sentencesAdded: added, sentencesRetired: retired,
   });
 
@@ -564,7 +570,7 @@ async function importOne(store: AppStore, plan: DocumentPlan, issues: Validation
     published: plan.decision.published, unpublishedReasons: [...plan.decision.unpublishedReasons], schemaVersion: 2, generated: doc.generated,
     transformations, contentVersion,
     workId: plan.workId, chapter: doc.work?.chapter ? compact({ index: doc.work.chapter.index, title: doc.work.chapter.title }) : undefined,
-    personalCopy: plan.decision.personalCopy,
+    personalCopy: plan.decision.personalCopy, teamText: plan.decision.teamText,
     streams: doc.streams ? [...doc.streams] : undefined, domains: doc.domains ? [...doc.domains] : undefined, variety: doc.variety, quality: doc.quality,
     scripture: doc.scripture
       ? compact({ book: doc.scripture.book, chapter: doc.scripture.chapter, translationId: doc.scripture.translationId, edition: doc.scripture.edition, verification: doc.scripture.verification })

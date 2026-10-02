@@ -173,8 +173,8 @@ and licence are shown where a text is read (verified in the browser for Scriptur
 | Whole suite, once, announced to the other sessions | `a49a8bd` + working tree | 288 files: 8,615 passed, 6 failed, **none German** (Scripture record changed by another agent; two corpus CLI tests; two Hindi catalogue tests; one Albanian speech test) |
 | Type check `tsc -b` | `62c76b1` + working tree | fails on two files of another session (`src/adapters/es.ts`, `scripts/probe-es-book.mts`); no German file |
 | `npm run rights:check`, with and without `--release US,DE,EU` | working tree | OK; German 41 bundled |
-| Production build | — | **not run**: its first step is the type check, which fails on another session's files in this moving tree |
-| Clean checkout of the final German commit | see "Release-candidate check" below | |
+| Production build in the shared working tree | — | **not run**: its first step is the type check, which fails there on another session's uncommitted files |
+| Clean checkout of the final German commit | `cd8ce97` | type check, whole suite (8,615 tests), rights check and production build **all pass** — see "Release-candidate check" below |
 
 **Browser audit** (sandbox databases; a dev server without hot reload at commit `62c76b1`, because five writers
 were saving files): course selection and onboarding ("You will be learning German" → texts prepared → Home);
@@ -196,10 +196,25 @@ Weg 1 (order not investigated); the stranded prefix of a separated verb is label
 speech beside the correct unit line; with the German dictionary present (section 8) `renoviert` in a passive
 sentence of an imported book was shown as "possibly renovated — adjective".
 
-### Release-candidate check
+### Release-candidate check (a clean checkout of one commit)
 
-To be filled by the clean-checkout run described in the final report of this round; until then there is **no
-reproducible release sign-off**.
+Because the shared working tree never holds still, commit **`cd8ce97`** (this document's first version; every German
+change of the round is in it) was checked out by itself, with nothing uncommitted and no dictionary, and the release
+steps were run there on 2026-10-01:
+
+| Step | Result at `cd8ce97` |
+|---|---|
+| `tsc -b` | passes |
+| `npx vitest run` (whole suite) | **286 files, 8,615 tests, all passed** |
+| `npm run rights:check` | OK: 129 documents, 127 bundled, 2 left out, 0 refused; German 41 bundled |
+| `npm run rights:check -- --release US,DE,EU` | OK: 126 bundled, 3 left out; German 41 bundled |
+| `npm run build` (type check, rights check, dictionary status, production bundle) | passes; 2 documents left out by the rights gate (Albanian and Thai Scripture samples, rights unverified); bundle 2,710 kB (gzip 795 kB) in one chunk |
+| the same build with `GO_RELEASE_JURISDICTIONS=US,DE,EU` | passes; 3 documents left out (also the Spanish Scripture sample: no catalogue work records a basis); every German document stays |
+
+This is a reproducible sign-off **of the software at that commit**: it builds and its tests pass. It is not a sign-off
+of the German course for release (section 7), and it says nothing about the uncommitted changes of section 8. The
+browser audit ran at `62c76b1`; the only later German changes are documents. The bundle is one large file holding every
+language's word list and course texts: splitting it by language is outstanding for all courses.
 
 ## 7. Blockers to a public release
 
@@ -207,7 +222,9 @@ reproducible release sign-off**.
    person. Until then the public course is 71 Bible verses.
 2. **The rights record is an AI model's.** The owner must confirm Luther 1912 for Germany / EU — ideally with one
    written line from the Deutsche Bibelgesellschaft — and the Grimm record, before distribution.
-3. **No release gate on a frozen tree.** Type check and build do not pass on the shared working tree; see section 6.
+3. **The release gate passes only on a clean checkout of one commit** (`cd8ce97`, section 6), not on the shared
+   working tree, where other writers' uncommitted changes break the type check and several tests. A release must be
+   cut from an identified commit, and the browser journey repeated on that build.
 4. **The word list and the gold judgements are unreviewed.** Every explanation a learner reads rests on a
    machine-drafted list.
 

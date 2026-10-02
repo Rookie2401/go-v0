@@ -157,7 +157,7 @@ last, after which nothing was fixed; the rounds the adapter was then fitted to s
 Recognition coverage of the bundled texts (96.7–100 %) is not accuracy. **Browser:** onboarding, preview, reader and
 word sheet, units, compounds, older spelling, shared vocabulary, book import, testimony writing and licence lines were
 run in a sandbox; four defects found there were fixed. **Not verified:** anything against a native speaker; the rights
-record by a person; a build on a frozen tree. **Published content:** 71 verses of the Lutherbibel 1912 and nothing
+record by a person. **Release gate:** on a clean checkout of commit `cd8ce97` the type check, the whole suite (8,615 tests), the rights check and the production build pass; the shared working tree does not, because of other writers' uncommitted changes. **Published content:** 71 verses of the Lutherbibel 1912 and nothing
 else — 34 course texts and the English lines of two Grimm tales await review. **Awaiting external input:** a native
 reviewer; the owner's confirmation of the Luther 1912 basis for Germany / EU; the owner's decision on a German
 dictionary and on Project Gutenberg catalogue entries that another agent added to the working tree.

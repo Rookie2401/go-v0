@@ -1,0 +1,300 @@
+# The Hindi course (India → Hindi)
+
+Design and readiness of record for the Hindi course. Written so that another session can continue without
+reconstructing the decisions. Companion files: `docs/PLAN12.md` (the build brief and conventions),
+`docs/hindi/STAGE0.md` (the Stage 0 stories and the questions for a reviewer), `docs/hindi/SOURCES_RESEARCH.md`
+(what each candidate source states about its own rights, with where and when it was read),
+`docs/hindi/GOLD_WORKFLOW.md` (the linguistic gold set and how a reviewer works on it).
+
+Status words used throughout, and nothing else: **implemented** (code exists and its tests pass),
+**verified** (checked against something independent of the code that produced it), **architecture only** (the
+place for it exists; the content or the measurement does not), **awaiting external input** (cannot move without a
+person, a permission or a file).
+
+## 1. Status at a glance (2026-10-01)
+
+| Area | Status |
+|---|---|
+| Course structure: 16 shelves (Stage 0A–0C, Classes 1–12, Open Reading), 9 streams, 9 doors, 50 catalogued works | implemented |
+| Stage 0 stories: 26 texts, 4,387 words, recurring cast | implemented; **machine-drafted, not reviewed** — visible in preview only; awaiting a native reviewer |
+| Devanagari layer: akṣara segmentation, pronunciation by rule with the unwritten *a* stated per unit, romanization as a rescue | implemented; verified against the coordinator's unseen tables (169 checks); awaiting a native reviewer for the exception list |
+| Word forms by rule (nouns, adjectives, pronouns and their fusions, verbs, causatives, -वाला, abstract nouns) | implemented; verified against the coordinator's unseen tables (288 of 288, including the script checks) |
+| Word list: 2,532 lemmas with gender, register layer, domains, causative and ने flags | implemented; machine-drafted; awaiting a native reviewer |
+| Multiword units (603 complex predicates, 13 vector verbs, 73 compound postpositions, 81 fixed expressions), 46 constructions, neighbour rules, sentence splitting, writing checks | implemented; tested on the real adapter; machine-drafted |
+| Hindi Scripture: 91 verses of the Indian Revised Version (IRV Hindi 2019, CC BY-SA 4.0) | implemented and **verified** verse by verse against the distributor; the whole translation is awaiting a download the owner approved but the tool permissions blocked (section 12) |
+| Rights: a state for every work, a machine-enforced build gate, the credit shown with the text | implemented; verified for the bundled sources (section 8) |
+| Learner model shared by stories, Scripture, the learner's own books and testimony; rescue dependence; heritage languages kept apart | implemented |
+| Linguistic gold set | architecture only: 189 model-drafted candidates, **0 accepted**; nothing about correctness has been measured against a native speaker |
+| Hindi dictionary (Wiktionary extract) | awaiting the same blocked download; the importer path exists and is used by Thai and Spanish |
+| Children's and general native Hindi (StoryWeaver, Premchand …) | catalogued only; rights unverified; nothing bundled |
+| Audio | out of scope: GoListen is switched off for every course and is not a prerequisite for anything here |
+
+## 2. What was found in the Thai and Spanish courses, and what Hindi reuses
+
+The brief was to extend the existing architecture, not to build a parallel one. Inspection before any Hindi code:
+
+| Existing piece (where it came from) | Hindi's use of it |
+|---|---|
+| `LanguageAdapter` contract: tokenize, analyze, phrases, patterns, pronunciation, decode, writing-system items, production checks, `refine`, varieties, sources (core; Thai and Spanish) | implemented in full by `src/adapters/hi.ts`; no new adapter method was needed |
+| Analysis as a versioned overlay with provenance: every stored analysis says its origin (hand list / rule / dictionary / reviewed) and source (Thai audit round) | reused as is; Hindi's four sources are declared and labelled "machine-drafted" |
+| Script decoding on the word sheet, writing-system items in the learner model, "decoding first", romanization as a Stage 0 rescue (Thai) | reused; a decoding unit may now be a written unit that is not a syllable, and may state what happens to an unwritten vowel (contract v10, additive) |
+| Stages with assistance profiles that thin out (Thai ladder) and shelves that are an orientation, never a lock (Spanish) | Hindi uses shelves (never locks) that each carry an assistance profile; the catalogue now passes a shelf's own profile to the reader (identical for Spanish and German, whose shelves carry the default) |
+| Streams, doors, the catalogue of works with a rights state each, Explore, Best next reads (Spanish) | reused; Hindi supplies data only (`src/course/hindi.ts`) |
+| Rule morphology + hand word list + neighbour rules + "the dictionary decides what the rules only guess" (Spanish, contract v8) | same shape: rules propose, the word list vouches, guesses are marked unconfirmed (≤ 0.6, no gloss), a dictionary can later confirm them |
+| Multiword units as learner items beside their component words (Thai phrases, German lexical units) | reused for compound verbs, complex predicates and compound postpositions |
+| Variety policy: active target vs recognition (Spanish) | reused; a new variety kind `heritage` keeps related literary languages out of the course language's evidence |
+| Publication gate: machine-drafted text is unpublished until reviewed; Scripture is published only when verified verse by verse (all courses) | reused; a review can now say whether it was a native speaker's or only a language check |
+| `scripts/verify-scripture.mjs` (Spanish, German) | extended to a licensed translation: the licence and rights holder must be on the distributor's page |
+| Your Books: plain text / EPUB to chapters, personal copies that never leave the device (Thai, Spanish) | reused; Hindi chapter headings are recognised |
+| Gold-set discipline: drafts are not gold; only a named person accepts (Thai) | the same rule, with a Hindi item format that includes units and constructions |
+| GoTell: writing checks, suggestions never applied automatically (all courses) | reused; Hindi rules in `src/adapters/hindi/production.ts` |
+
+Nothing in Thai or Spanish was replaced. The language-neutral additions made for Hindi are listed in section 4.
+
+## 3. The course as the learner meets it
+
+- **Three surfaces, one learner state.** Read (stories and books), Scripture, My Testimony. A word met in a story is
+  known when it turns up in Mark; a word the learner writes is the same item he reads.
+- **Shelves, never locks.** Stage 0A, 0B, 0C, Class 1 … Class 12, Open Reading. A Class is this course's own
+  orientation and is said, on every shelf, not to be an Indian school grade. Everything is open at all times;
+  what suits the learner now is computed per learner, per text.
+- **Stage 0 is real Hindi from the first line.** No alphabet course comes first. 0A: this/that + is, in/on, also,
+  and, the first habitual verbs and questions (79 distinct forms across 12 stories). 0B: postpositions and oblique
+  forms, possessives, commands, the progressive, was/were. 0C: the narrative past with ने, compound verbs, clause
+  linking. One family and one dog recur throughout. A test enforces the 0A constraints (sentence length, at most
+  12 new forms a story, each new form at least three times, no 0B grammar).
+- **The script is learned by reading.** Tapping a word shows each written unit (akṣara): its letters, its vowel
+  sign, and for a unit with no vowel sign whether the unwritten *a* is said, not said or uncertain, with the rule
+  in a sentence. Romanization is never a parallel line: it appears only when asked for ("Show romanization
+  (rescue)") on the first shelves (0A–Class 2) and on the learner's own books; from Class 3 on it is not offered.
+  Every such request is recorded, so dependence on it is visible and can be seen to fall.
+- **Help in a fixed order of depth:** word → phrase or unit → grammar (the construction, in two plain sentences) →
+  how it is read → English for the sentence. English is never removed, only moved further away shelf by shelf.
+- **Grammar is an inventory met in texts, not a syllabus of lessons.** 46 constructions are recognised where they
+  occur and become learner items; nothing is "taught" before it is read. Two that occur in almost every sentence
+  are marked ubiquitous.
+- **Home** shows Continue reading (the course's own first story for a new learner), Best next reads with
+  reasons, the doors, and "Help you needed": how often each kind of help was used per 100 words or sentences and
+  whether that is falling.
+
+## 4. Architecture: what was added
+
+### Language-neutral (available to every course)
+
+| Addition | Where | Commit |
+|---|---|---|
+| Contract v10: register layers (`everyday`, `sanskritic`, `perso-arabic`, `english-loan`, `biblical`); decoding units with `inherentVowel` and without a syllable ending; variety kind `heritage` | `src/core` | `0eeed6c` |
+| Rescue dependence: each kind of help per 100 words / sentences, earlier vs recent, a trend only above a minimum of reading | `src/golearn/rescue.ts`, panel `src/ui/rescue.tsx` | `a6e8b75`, `e370fd7` |
+| Rights gate: a production build leaves out unverified documents and stops on a claim without evidence | `src/ingest/rights.ts`, `server/rightsGate.ts`, `scripts/rights-gate.mts`, in `npm run build` | `37e3a1f`, `e168690` |
+| Review levels: `native` vs `linguistic-check`; a language check never publishes machine-drafted text | `src/ingest/format.ts`, `publish.ts`, `review.ts` | `3367cc5` |
+| Heritage varieties credit nothing to the course language | `src/golearn/fold.ts` | `af36b74` |
+| A shelf's own assistance profile reaches the reader; a profile for texts on no shelf | `src/course/catalog.ts` | `e168690` |
+| Register layers as a stated factor of a text's difficulty | `src/library/measure.ts`, `src/golearn/personal.ts` | `dcf67ad` |
+| The first text follows the course's reading path; a book is begun at chapter 1 | `src/golearn/recommend.ts` | `93dd8aa`, `79c4f21` |
+| A work whose source forbids use inside software is only pointed at (no "add your copy") | `src/ui/course/wording.ts` | `93dd8aa` |
+| The reader names the source of a licensed or public-domain text with the text | `src/ui/reader/SourceLine.tsx` | `5ce7a73` |
+| Romanization of a word as a whole where units are not syllables; parts of speech in plain words | `src/ui/reader/assistance.ts` | `9c56715` |
+
+### Hindi only (`src/adapters/hi.ts`, `src/adapters/hindi/**`, `src/course/hindi.ts`)
+
+| Module | What it does |
+|---|---|
+| `script.ts`, `orth-*.ts` | akṣara segmentation; identity = NFC with the nukta kept; search form; spelling variants that hold in both directions (हिंदी ↔ हिन्दी, गई ↔ गयी) |
+| `pronunciation.ts`, `translit.ts` | per-unit pronunciation with the rule and a confidence; the unwritten *a* as pronounced / dropped / uncertain; ISO 15919 romanization of the word, withheld when unsure |
+| `morphology.ts`, `morph-*.ts` | analysis by generate-and-compare (a reading is kept only if generating that cell gives the written form); nouns in ten classes, agreeing adjectives, pronouns and their fusions with postpositions (as `parts`), verbs with aspect, tense, mood, honorific level, irregulars, causatives by rule, X-वाला, abstract nouns |
+| `entries.ts`, `lexicon-*.ts`, `registers.ts` | the word list as readable rows (`लड़का/m = boy [everyday d:family]`), paradigm macros, register groups (समय / वक़्त / टाइम) |
+| `hi.ts` | wiring: the list, then the rules on lemmas the list vouches for, then spelling variants (script-driven and list-driven for the nukta, always stated as `variantOf`, never a rewrite), then unconfirmed guesses |
+| `verb-group.ts`, `phrases.ts`, `phrase-data.ts` | the verb group; compound verbs (stem + vector) by rule; complex predicates, compound postpositions and fixed expressions from tables; unit patterns written in lemmas |
+| `constructions.ts`, `construction-*.ts` | the 46-key inventory with plain explanations, and the detectors |
+| `disambiguate.ts` | neighbour rules that reorder readings and never add or remove one |
+| `sentences.ts`, `production.ts` | sentence splitting (danda, quotations, abbreviations); writing checks with corrections only where the rule reproduces what the learner wrote |
+| `varieties.ts` | Awadhi, Braj and the language of the sant poets as heritage varieties |
+| `src/course/hindi.ts` | shelves, assistance profiles, streams, doors, works with their rights records |
+
+Conventions that must not drift (also in `docs/PLAN12.md`): identity is NFC and nothing folds the nukta; canonical
+text is never rewritten and every relation between spellings is stated on the reading; features follow UD
+(Case Dir/Obl/Voc/Erg/Dat/Gen; VerbForm Fin/Inf/Part/Conv/Stem; Aspect Imp/Perf/Prog; Voice=Cau); the lemma of a
+pronoun is its direct form of the same number (वे for उन्होंने); a fused word is one reading with `parts`; a
+reading the list does not vouch for is `unconfirmed`, at most 0.6, without a gloss.
+
+## 5. What works linguistically (and how that is known)
+
+- **Script and pronunciation.** All 115 common words of the coordinator's unseen table are pronounced correctly
+  with confidence; the hard cases are either right or marked uncertain (never confidently wrong in that table).
+  2.0 % of Scripture words are left uncertain; none in Stage 0.
+- **Word forms.** The coordinator's unseen form table (about 100 rows plus fused forms and nonsense input) passes
+  in full after one fix batch (adjectives in -या were the only failing class).
+- **Reading real text** (the bundled texts were read through the assembled adapter and every class of error was
+  sent back to its package as a class, never as a word list): the progressive was being read as a perfect
+  (33 occurrences in Stage 0, 1 found; now 34 found); the oblique singular was preferred where no postposition
+  follows; several homographs were ordered wrongly; causatives carried no mark; nukta-less spellings were not
+  reached. All fixed and covered by tests on the real adapter.
+- **Coverage, stated honestly.** On the bundled texts every Stage 0 word and 99.9 % of Scripture words have a
+  reading the list vouches for — *by construction*, because the list was extended while looking at those texts.
+  On six unbundled chapters the list was never built against (Ruth 1, Luke 15, John 3, Romans 8, Psalm 103,
+  Exodus 20; 4,097 words; `npx vite-node scripts/probe-hi-heldout.mts`) the figures were **93.8 % vouched, 1.3 %
+  unconfirmed guess, 4.9 % no reading** before the last word-list batch. "Vouched" means the list holds the lemma,
+  not that the reading is right.
+- **Correctness is not measured.** The only instrument for that is the gold set, and no item of it has been
+  accepted by a person. A defect-finding run over the 189 drafts (labelled "not a measurement" by the tool) has
+  171 read as the draft expects; the drafts are themselves unreviewed and five of the 17 differences are a
+  convention question (section 10).
+
+## 6. Corpus integrated
+
+| Text | Words | Rights of the text | Published to learners |
+|---|---|---|---|
+| Stage 0A: 12 stories (`s0a-01` … `s0a-12`) | 1,359 | written for the course (machine-drafted) | no: awaiting native review; preview only |
+| Stage 0B: 8 stories | 1,421 | same | no |
+| Stage 0C: 6 stories | 1,607 | same | no |
+| Seed story and dialogue (`story-01`, `dialogue-01`) | about 140 | same | no |
+| Indian Revised Version: Genesis 1, Psalms 1 and 23, Mark 1, and 1 John 1:8–9 + John 3:16 (5 documents, 91 verses) | about 2,000 | licensed: CC BY-SA 4.0, © 2017, 2018, 2019 Bridge Connectivity Solutions, via eBible.org `hin2017` | yes: every verse byte-verified |
+
+English beside Scripture is the World English Bible (public domain), a separate text and not a translation of the Hindi.
+
+## 7. Rights machinery
+
+- **States.** Every work has one of: `course-authored`, `verified-public-domain`, `verified-open-licence`,
+  `permission-granted`, `recommended-only`, `user-supplied`, `rights-unverified`, `prohibited-from-bundling`,
+  `research-only`. There is no state meaning "probably public domain": age is recorded as a lead for verification
+  with the caveat that an edition, a transcription or a translation can carry rights of its own.
+- **The gate is code, not a note.** `bundleDecision` (`src/ingest/rights.ts`) returns bundle / exclude / refuse
+  for every bundled document; the Vite build plugin replaces an excluded document with nothing and stops the
+  build on a refused one; `npm run build` runs `scripts/rights-gate.mts` first; `npm run rights:check` prints the
+  same decision. Today: 109 documents, 107 bundled, 2 left out (unverified Albanian and Thai Scripture samples),
+  0 refused.
+- **A licensed text carries its licence.** The Hindi Scripture documents name the translation, the rights holder,
+  the licence and the distributor; the reader shows that line under the text at every assistance level, with the
+  licence terms and what was left out (footnotes, headings, cross-references) one disclosure away.
+- **Share-alike is isolated.** The verses are passed on unchanged, as their own corpus (`bible-hi-irv2019`),
+  beside — not inside — the app's code, word list and other corpora. No other Hindi text is in that corpus or under
+  that licence (tested). Open question for the owner, recorded in the rights record: whether the word-by-word
+  help shown over a verse is "adapted material"; it is computed on the device and never stored in the verse text.
+- **Your Copy.** A learner's own book is `personalCopy`, stays on the device, is refused by the build gate, and
+  shares the learner model. Importing a file does not change its copyright status, and the app says only that the
+  copy stays on the device.
+
+## 8. Rights status of every bundled source
+
+| Source | State | Evidence |
+|---|---|---|
+| पहली कहानियाँ 0A / 0B / 0C and the two seed texts | course-authored | written for the course by an AI model; labelled as such on every document and work |
+| Indian Revised Version (IRV) Hindi 2019 | verified-open-licence (CC BY-SA 4.0) | the distributor's copyright page names the rights holder and the licence; the build script re-reads that page on every run and writes nothing if it no longer says so; all 91 verses equal the distributor's text (`data/verified/scripture.json`); verified by the coordinator (an AI), not legal advice, to be confirmed by the owner |
+| World English Bible (the English beside the verses) | public domain | as stated by the same distributor |
+
+Nothing else of Hindi is bundled.
+
+## 9. Recommendation only, and unverified or excluded
+
+**Pointer only (the source's own terms rule out use inside software; no "add your copy" is offered):** the three
+NCERT reader series (रिमझिम, वसंत, क्षितिज). NCERT's online-textbook page states that its textbooks are
+copyrighted, may not be redistributed in any form, and may not be used as part of digital content packages or
+software.
+
+**Recommendation only (in copyright; the learner brings a lawful copy, which stays on the device):** Harry Potter 1
+in Hindi (a story the learner may already know), तमस, झूठा सच, मधुशाला, मैला आँचल, राग दरबारी, गुनाहों का
+देवता, रश्मिरथी, अग्नि की उड़ान.
+
+**Rights unverified — catalogued, nothing bundled, nothing fetched:**
+- *StoryWeaver (Pratham Books).* Verified: the site states CC BY 4.0 for all stories and illustrations and
+  CC BY-NC-ND 4.0 for narrated stories and videos (so text and audio rights differ), and prescribes the credit a
+  reused story must carry. Not verified: the licence line of any individual story; a lawful way of taking stories
+  at scale (no documented interface; the terms are silent on automated retrieval, a sister site forbids it; the
+  site names a partner contact). Until Pratham Books answers, nothing is fetched by a program.
+- *Premchand* (15 stories, 4 novels; died 1936) and the other older authors (गुलेरी, प्रसाद, भारतेंदु, खत्री,
+  सुभद्रा कुमारी चौहान, गांधी, रामचंद्र शुक्ल), पंचतंत्र retellings. The date of death is a lead; which edition
+  and transcription a digital text follows, and its status in India and the United States, are not established.
+  Part of Premchand's work first appeared in Urdu, so the Hindi edition matters.
+- *Heritage:* रामचरितमानस (Awadhi), सूरसागर selections (Braj), कबीर के दोहे — on the Open Reading shelf, tagged
+  with their variety, never a main reading, never counted as Modern Standard Hindi.
+
+**NLP resources audited and not used:** the Hindi dependency treebank (HDTB) is CC BY-NC-SA and is not used for
+anything shipped; no model, tagger or corpus was bundled. Details in `docs/hindi/SOURCES_RESEARCH.md`.
+
+## 10. Known linguistic weaknesses
+
+1. **Everything Hindi was written by a model.** Stories, glosses, genders, the ने flags, the pronunciation
+   exceptions, the unit tables and the construction explanations are machine-drafted and unreviewed.
+2. **Unseen text.** About one word in sixteen of unseen Scripture has no list-vouched reading; general prose
+   will be worse, since the list leans toward the home, school and church domains it was built for. A dictionary
+   would close most of this gap (section 12).
+3. **Homographs are decided by a handful of neighbour rules.** कल is never split; सोने का … (gold / to sleep),
+   खाना है, a noun that is also a participle are right in the common frames and can be wrong outside them. A
+   second sense may be missing entirely (the word list is one sense per entry unless both were thought of).
+4. **Pronoun lemmas.** The lemma of वे / उन / उन्होंने is वे and of ये is ये (the direct form of the same number);
+   a dictionary files them under वह / यह. The gold drafts expect the dictionary headword. One of the two has to be
+   chosen by a reviewer; changing it is a small table change plus a version bump.
+5. **The unwritten *a*** in long or compound words is a rule with exceptions; the engine says "uncertain" rather
+   than guess, and a dictionary's pronunciation, when present, overrides the rule.
+6. **Writing checks see little.** Agreement, the oblique before a postposition, ने with a non-perfective verb, a
+   few spelling slips. A missing ने (मैं किताब पढ़ा) is not yet reported. The page says so wherever a check runs.
+7. **Sentence splitting** joins a sentence that ends in a listed abbreviation to the next one, and an ellipsis
+   always ends a sentence.
+8. **Constructions are detected conservatively:** an unusual word order is missed rather than guessed.
+9. **Register tags** are the drafter's judgement of a word's origin layer; the Sanskrit-derived / Perso-Arabic
+   line is sometimes debatable. They are shown as facts about a word, never as "correct Hindi" — but a wrong tag
+   is still wrong.
+10. **Best next reads for a learner with no history** is not in story order (the Continue card is).
+11. **First start-up is slow** (every course's bundled texts are imported, about 15 seconds in the foreground):
+    a cross-course matter, not Hindi's alone.
+
+## 11. Native-review work required (in order of value)
+
+1. **Stage 0A (12 stories, 1,359 words):** naturalness, gender and agreement, spelling choices, the English lines.
+   `docs/hindi/STAGE0.md` lists the sentences the drafter doubted. Until this is done no Hindi course text is
+   published to learners. Record with `npm run corpus:review -- <file> --by "<name>" --level native`.
+2. **The 0A word list (79 forms) and its glosses and genders**, then 0B and 0C.
+3. **The gold set:** correct and accept drafts (`npm run hi:gold -- accept --by "<name>" --id …`), beginning with
+   the categories that mislead most: ने, को, oblique, agreement, compound verbs, complex predicates. Decide the
+   pronoun-lemma convention on the way.
+4. **Pronunciation:** the exception list (7 words) and the words left "uncertain" in the texts.
+5. **The unit tables** (603 complex predicates) and the construction explanations.
+6. **Register tags** of the commonest 300 words.
+
+A reviewer who is not a native speaker can still record a language check (`--level linguistic-check`); it is kept
+and it does not publish anything.
+
+## 12. Awaiting external input
+
+- **Two downloads the owner approved on 2026-10-01 and the tool's permission layer then refused.** Run them by
+  hand (or allow them) from `C:\Users\CJWal\dev\go-v0`:
+  - `hin2017_usfm.zip` from `https://ebible.org/Scriptures/hin2017_usfm.zip` (2,237,995 bytes) → `data/sources/hi/`
+    — the whole IRV Hindi text, to build the Bible beyond the 91-verse slice (same licence, same verification).
+  - `kaikki.org-dictionary-Hindi.jsonl.gz` from `https://kaikki.org/dictionary/Hindi/` (17,993,921 bytes) →
+    `data/dictionaries/` — the Wiktionary extract, to be built into `public/dict/hi` with `npm run dict:build`
+    as for Thai and Spanish. Its licence (CC BY-SA and GFDL) is the dictionary's own and is shown with every gloss.
+- **A native Hindi reviewer** (section 11).
+- **Pratham Books** on a lawful route to StoryWeaver stories at scale.
+- **The owner's confirmation** of the IRV rights record and of the open share-alike question (section 7).
+
+## 13. Next highest-value step
+
+A native review of Stage 0A. It is the smallest unit of work that turns the course from a preview into something a
+learner can start, and it exercises the whole review path once. In parallel, and needing no reviewer: fetch the two
+approved files, build the dictionary and the full Scripture, and re-run the held-out probe.
+
+## 14. How to continue
+
+```
+npm run gate                      # type check + every test
+npm run rights:check              # what a production build will bundle, leave out or refuse
+npm run corpus:check              # every bundled document validated, with analysis coverage
+npm run hi:probe                  # how the adapter reads the bundled Hindi texts
+npm run hi:sentence -- "<Hindi>"  # everything the adapter says about one sentence
+npx vite-node scripts/probe-hi-heldout.mts   # unseen chapters, counts only
+npm run hi:gold -- status         # the gold set: accepted, drafts, stale
+npm run hi:eval-gold              # measures only accepted items; --include-drafts is defect-finding
+node scripts/build-hi-scripture.mjs && node scripts/verify-scripture.mjs   # rebuild and re-verify the slice
+```
+
+- Work on a class of error, never on a single word, and never tune against the held-out tables
+  (`test/integration/hindi-tables.ts`) or the held-out chapters.
+- Patch files with the editor or a script written to disk; shell heredocs in this environment lose backslashes.
+- Hindi code points that an editor may recompose (the nukta letters) are written in tests as
+  `String.fromCodePoint(…)`.
+- Several sessions may share this working tree: stage by path, never `git add -A`; keep every adapter importable
+  at every save; never link `node_modules` into a temporary folder and never run `npm ci` while others work.
+
+## 15. Tests
+
+RESULTS

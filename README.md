@@ -36,6 +36,7 @@ npm run build && npm run preview   # http://127.0.0.1:4196
 | `docs/IMPORT.md` + `docs/import/templates/` | The versioned text-import specification, templates, and how to validate, import, review and publish |
 | `docs/import/PROOF.md` | Generated record of the import tests (valid, malformed, duplicates, batches, spans, revisions, holds) |
 | `docs/THAI_COURSE.md` | The Thai course: reading ladder, rights, Thai analysis, assistance that removes itself, learner model |
+| `docs/HINDI_COURSE.md` + `docs/hindi/` | The Hindi course: shelves, Stage 0, the Devanagari layer, morphology and constructions, register layers, rights status of every source, what is verified and what awaits a native reviewer |
 | `docs/SPANISH_COURSE.md` + `docs/spanish/STATUS.md` | The Spanish course: streams, shelves, rights states, varieties, the library, personal difficulty — and exactly what is built, bundled, recommended only, and unverified |
 | `docs/STORAGE.md` | Storage model, backup and restore |
 | `docs/SPEECH.md` | Speech configuration (server-side key), what is recorded, failure states, review |
@@ -70,7 +71,8 @@ test/           per-package tests + test/integration (Spanish end-to-end loop, f
   without erasing history.
 - **Nothing unreviewed reaches a learner.** The ten bundled stories and dialogues are machine-drafted samples,
   visible only in the bannered preview mode. Spanish (Reina-Valera 1909) and German (Lutherbibel 1912)
-  Scripture samples are byte-verified against eBible.org; Albanian, Hindi and Thai Scripture is blocked until
+  Scripture samples are byte-verified against eBible.org, and so are 91 verses of the Hindi Indian Revised
+  Version (a licensed text, CC BY-SA 4.0, credited where it is read); Albanian and Thai Scripture is blocked until
   an approved translation is supplied.
 - **GoListen (audio) is deferred to V2 and switched off** (`FEATURES.listen` in `src/core/config.ts`, with the
   matching `LISTEN` constant in `vite.config.ts`): the app shows no audio interface, registers no speech provider
@@ -86,6 +88,13 @@ test/           per-package tests + test/integration (Spanish end-to-end loop, f
   short course texts drafted by an AI model (unreviewed, preview only) and three verified Bible verses; the other 61
   works of the catalogue are metadata with rights unverified, and no Spanish dictionary is installed. See
   `docs/spanish/STATUS.md`.
+- **The Hindi course has its system and a first slice of content.** Shelves that are never locks (Stage 0A–0C,
+  Classes 1–12, Open Reading), real Hindi from the first line with the script decoded on the word sheet and
+  romanization only as a recorded rescue, rule morphology with a word list of 2,532 lemmas, compound verbs and
+  complex predicates as units, 46 constructions met in texts, register layers, heritage languages kept apart, and a
+  rights gate in the production build. Bundled are 26 Stage 0 stories drafted by an AI model (unreviewed, preview
+  only) and 91 verified verses; everything else in the catalogue is metadata with its rights state. No analysis has
+  been checked by a native speaker. See `docs/HINDI_COURSE.md`.
 - **Analysis is seed-lexicon only.** Every word of a supplied text is tokenized and tracked; lemma and gloss
   exist only for seed vocabulary or for analysis supplied with the text.
 - **GoTell is rule-based** and states what it cannot check. No GoSpeak, no pronunciation scores, no

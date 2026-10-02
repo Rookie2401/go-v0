@@ -348,3 +348,31 @@ Design: `docs/SPANISH_COURSE.md`. Brief: `docs/PLAN9.md`. Status: `docs/spanish/
 65. **Command-line tests never block their worker.** They start the scripts asynchronously
     (`test/helpers/cli.ts`): a synchronous spawn of several seconds, repeated inside one test, starved the test
     runner's own messaging and failed a green suite.
+
+
+## The Hindi course (contract v10)
+
+Design and status: `docs/HINDI_COURSE.md`. Decisions that bind later work:
+
+- **H1. Hindi extends the architecture; it adds no parallel system.** One adapter behind the existing contract,
+  course data in one file, and every other change language-neutral (register layers, decoding units that are not
+  syllables, the heritage variety kind, rescue dependence, the rights gate, review levels, the source line).
+- **H2. Identity keeps the nukta.** A form's identity is its NFC text; nothing folds the nukta, the anusvara or a
+  conjunct spelling. Two spellings of one word are related on the reading (`notes.variantOf`), by the script
+  module where the relation holds in both directions and by the word list where the list has the other spelling;
+  the stored text is never rewritten.
+- **H3. A decoding unit is what is written.** Devanagari is decoded by akṣara; a unit states its letters, its vowel
+  sign and what happens to an unwritten *a* (pronounced / dropped / uncertain) with the rule and a confidence.
+  Pronunciation is separate from spelling, and romanization is a rescue of the whole word, never a stored line.
+- **H4. Rules propose, the word list vouches, a dictionary may confirm.** A reading of a lemma the list does not
+  hold is `unconfirmed`, at most 0.6, without a gloss. Analysis is by generate-and-compare, so the analyser and
+  the generator cannot disagree.
+- **H5. Units beside words.** A compound verb or a complex predicate is a learner item of its own, with its pattern
+  written in lemmas, and its words keep their own analyses; both are credited when the sentence is read.
+- **H6. A register layer is a fact about a word, a heritage variety is another language's text.** Layers are shown
+  and counted, never ranked; a text in Awadhi or Braj is readable and credits nothing to Modern Standard Hindi.
+- **H7. Rights are enforced by the build.** No state means "probably free"; an unverified document is left out of a
+  production build and a claim without evidence stops it; a licensed text is its own corpus and carries its credit
+  to the page it is read on.
+- **H8. Drafts are not gold and a check is not a review.** A model's judgement never enters the gold set; a
+  language check by a non-native is recorded and publishes nothing.

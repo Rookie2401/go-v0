@@ -97,6 +97,23 @@ Status of record: **`docs/spanish/STATUS.md`**. In brief:
 - **Not verified**: anything about Spanish on real prose; every Honduran fact and regional gloss; the controlled
   texts' Spanish (no native reader has seen them).
 
+## Hindi course (contract v10, 2026-10-01)
+
+Status of record: `docs/HINDI_COURSE.md`. In one paragraph: the course has its system and a first slice of
+content. **Implemented and tested:** sixteen shelves that are never locks (Stage 0A–0C, Classes 1–12, Open Reading),
+streams and doors; 26 Stage 0 stories (4,387 words); the Devanagari layer (written units, the unwritten *a*,
+romanization only as a recorded rescue); rule morphology, a word list of 2,532 lemmas with register layers,
+compound verbs and complex predicates as units, 46 constructions met in texts rather than taught; heritage
+languages (Awadhi, Braj) kept out of the course language's evidence; rescue dependence as a progress measure; a
+machine-enforced rights gate in the production build; the credit of a licensed text shown where it is read.
+**Verified:** 91 verses of the Indian Revised Version against the distributor, and its licence on the distributor's
+own page; the script and word-form engines against the coordinator's unseen tables (288 of 288). **Not verified:**
+the correctness of any Hindi analysis against a native speaker (the gold set holds 189 drafts and no accepted item);
+the Stage 0 stories, glosses, genders and pronunciation exceptions (all machine-drafted — the stories are visible in
+preview only). **Awaiting external input:** a native reviewer; two downloads the owner approved (the whole IRV text
+and the Wiktionary Hindi extract); an answer from Pratham Books before any StoryWeaver story is taken. NCERT's
+readers are recorded as prohibited by NCERT's own terms and are only pointed at.
+
 ## Readiness by language
 
 | | Ingestion | Progress tracking | Linguistic analysis | Scripture | Audio (GoListen: deferred to V2, switched off) |
@@ -104,7 +121,7 @@ Status of record: **`docs/spanish/STATUS.md`**. In brief:
 | **Spanish** | Verified (proof + browser importer; a learner's own `.txt` / `.epub` imports chapter by chapter) | Verified (one record on Home, library, reader; version-scoped) | Tokenization dependable; sentence splitting limited; a word list of 1,701 lemmas (**machine-drafted, not native-reviewed**) plus rule morphology for any verb, noun or adjective form (an inferred lemma is marked as such, 0.6 at most, no gloss); readings ordered by neighbouring words, measured on the course's own texts only; no dictionary installed; nothing measured on real prose (see "Spanish course") | **Published**: Reina-Valera 1909, 3 verses, byte-verified against eBible.org | **Not verified** — no credentials; nothing synthesized |
 | **German** | Verified | Verified (engine); browser checked for Spanish only | Dependable tokenization; separable verbs only `anfangen`; compounds low-confidence; **seed lexicon only** | **Published**: Lutherbibel 1912, 3 verses, byte-verified | Not verified |
 | **Albanian** | Verified | as German | ë / ç preserved; inflected forms related; clitics ambiguous in thin context; **seed lexicon only** | **Blocked** — awaiting an approved translation | Not verified |
-| **Hindi** | Verified (grapheme-safe spans, danda kept, non-NFC preserved) | as German | Compound verbs only when listed; **seed lexicon only** | **Blocked** | Not verified |
+| **Hindi** | Verified (grapheme-safe spans, danda kept, nukta never folded; a learner's own `.txt` imports chapter by chapter, Hindi chapter headings recognised) | Verified (engine; browser in a sandbox) | Akṣara-level script decoding with the unwritten *a* stated; rule morphology and a word list of 2,532 lemmas (**machine-drafted, not native-reviewed**); compound verbs, complex predicates and 46 constructions; readings ordered by neighbouring words. On six unseen Scripture chapters 93.8 % of words have a reading the list vouches for; correctness is **not measured** (gold set: 189 drafts, 0 accepted). No dictionary installed (see "Hindi course") | **Published**: Indian Revised Version (IRV Hindi 2019, CC BY-SA 4.0), 91 verses, byte-verified against eBible.org; a licensed text, credited where it is read | Not verified |
 | **Thai** | Verified (no spaces added; a learner's own copy of a book imports chapter by chapter — see "Thai course") | Verified (engine and browser, sandbox) | Word segmentation **is a release gate that is not met**: first benchmark F1 90.3 % on a biased set, nothing measured on book prose (see "Thai substrate validation"); hand lexicon of 598 entries, **machine-drafted, not native-reviewed**; Wiktionary dictionary installed as a separate, attributed layer; script decoding measured on 17,298 words | **Blocked** | Not verified |
 
 A course in the team list, or a seeded example, is not evidence of support: this table is. "Seed lexicon only"
@@ -328,7 +345,7 @@ the integration test in this one; they were not re-walked in the browser after t
 ## Awaiting external input
 
 1. **Native-speaker review** of comprehensible-input texts (none is reviewed; the normal Read list is empty).
-2. **Approved Scripture** for Albanian, Hindi and Thai, then `node scripts/verify-scripture.mjs`.
+2. **Approved Scripture** for Albanian and Thai, then `node scripts/verify-scripture.mjs`. (Hindi: the Indian Revised Version is verified and bundled as a slice; the whole text awaits one download, see `docs/HINDI_COURSE.md` §12.)
 3. **Speech**: `AZURE_SPEECH_KEY` and `AZURE_SPEECH_REGION` in `.env.local`, restart, `npm run speech:check`, then
    a human audition of each voice (`src/golisten/QA.md`).
 4. **Native review** of GoTell's per-language tables and the adapters' writing rules.

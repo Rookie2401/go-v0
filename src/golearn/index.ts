@@ -29,6 +29,7 @@ import { predictDifficulty } from './forecast';
 import { itemHistory } from './history';
 import { findOccurrences } from './occurrences';
 import { readingPace } from './pace';
+import { rescueDependence } from './rescue';
 import { scoreProfile } from './personal';
 import { rankLibrary } from './rank';
 import { POLICY_VERSION, defaultPolicy } from './policy';
@@ -212,6 +213,7 @@ export function createGoLearn(deps: GoLearnDeps): GoLearn {
     predictDifficulty: (userId, textId, opts) => read(() => predictDifficulty(ctx, userId, textId, opts)),
     stageReadiness: (userId, courseId, stageId) => read(() => stageReadiness(ctx, userId, courseId, stageId)),
     readingPace: (userId, opts) => read(() => readingPace(ctx, userId, opts)),
+    rescueDependence: (userId, opts) => read(() => rescueDependence(ctx, userId, opts)),
     itemHistory: (userId, itemId) => read(() => itemHistory(ctx, userId, itemId)),
     // ── library-scale selection: a text's profile against the learner's item states, read by id ──
     scoreProfile: (userId, profile, opts) => read(() => scoreProfile(ctx, userId, profile, opts)),

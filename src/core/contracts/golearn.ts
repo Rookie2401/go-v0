@@ -204,6 +204,11 @@ export interface GoLearn {
   stageReadiness(userId: string, courseId: string, stageId?: string): Promise<StageReadiness>;
   /** Quiet reading-pace measures from what was already recorded (dwell, lookups, rescues). Not a score. */
   readingPace(userId: string, opts?: { textId?: string; stageId?: string; lang?: LanguageCode }): Promise<ReadingPace>;
+  /**
+   * How often each kind of help was needed while reading (script decoding, transliteration, word, phrase, grammar,
+   * sentence explanation, English), and whether the need is falling. A progress measure in its own right; never a score.
+   */
+  rescueDependence(userId: string, opts?: { textId?: string; stageId?: string; lang?: LanguageCode }): Promise<RescueDependence>;
   /** The learner's whole history with one item, across every text and surface. */
   itemHistory(userId: string, itemId: string): Promise<ItemHistory>;
   /**
@@ -385,6 +390,31 @@ export interface ReadingPace {
   rescuesPer100Sentences: number;
   rereadSittings: number;
   trend: 'faster' | 'steady' | 'slower' | 'insufficient-data';
+}
+
+/** The kinds of help a reader can ask for, shallowest first. 'romanization' is the transliteration rescue (a subset of 'decoding'). */
+export type RescueKind = 'decoding' | 'romanization' | 'word' | 'phrase' | 'grammar' | 'explanation' | 'english';
+
+export interface RescueRates {
+  /** Sentences read (one sentence in one sitting counts once) and their word tokens: what the rates are out of. */
+  sentences: number;
+  words: number;
+  /** Times a word-level help was opened, per 100 words read. */
+  per100Words: Record<'decoding' | 'romanization' | 'word' | 'phrase' | 'grammar', number>;
+  /** Sentences for which a sentence-level rescue was used, per 100 sentences read. */
+  per100Sentences: Record<'explanation' | 'english', number>;
+  /** Share (0..1) of the sentences read with no help of any kind. */
+  unaidedSentenceShare: number;
+}
+
+export interface RescueDependence {
+  overall: RescueRates;
+  /** The earlier and the later half of the reading in scope; present only when there is enough reading to compare. */
+  earlier?: RescueRates;
+  recent?: RescueRates;
+  byKind?: Record<RescueKind, 'falling' | 'steady' | 'rising'>;
+  /** The direction of English sentence rescues, the deepest help; 'insufficient-data' below the minimum of reading. */
+  trend: 'falling' | 'steady' | 'rising' | 'insufficient-data';
 }
 
 export interface ItemHistory {

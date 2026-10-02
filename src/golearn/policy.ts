@@ -319,3 +319,14 @@ export const RANKING = {
   /** A part must contribute at least this much of the score to be told as a reason. */
   reasonMin: 0.04,
 } as const;
+
+/**
+ * Rescue dependence (rescue.ts): provisional values, not calibrated on learners. A trend is stated only from
+ * `minUnitsForTrend` sentence readings; a change counts when the later rate differs from the earlier one by `change`
+ * (relative) and by at least `minAbsoluteChange` (per 100), so that 1 → 0 on a handful of sentences is not "falling".
+ */
+export const RESCUE = {
+  minUnitsForTrend: 60,
+  change: 0.25,
+  minAbsoluteChange: 2,
+} as const;

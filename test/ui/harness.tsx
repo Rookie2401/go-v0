@@ -143,6 +143,10 @@ export function makeFakeGoLearn(store: AppStore, opts: FakeLearnOptions = {}, bu
     readingPace: vi.fn(async (_userId: string, _o?: { textId?: string; stageId?: string; lang?: string }): Promise<ReadingPace> => ({
       basis: 'sentence-dwell', sentences: 0, lookupsPer100Words: 0, rescuesPer100Sentences: 0, rereadSittings: 0, trend: 'insufficient-data', ...opts.pace,
     })),
+    rescueDependence: vi.fn(async (_userId: string, _o?: { textId?: string; stageId?: string; lang?: string }) => ({
+      overall: { sentences: 0, words: 0, per100Words: { decoding: 0, romanization: 0, word: 0, phrase: 0, grammar: 0 }, per100Sentences: { explanation: 0, english: 0 }, unaidedSentenceShare: 0 },
+      trend: 'insufficient-data' as const,
+    })),
     /** The library ranking: empty unless a test scripts it (`h.learn.rankLibrary.mockImplementation(...)`). */
     rankLibrary: vi.fn(async (_userId: string, _candidates: unknown[], _o?: unknown): Promise<RankedText[]> => []),
     readingProgress,

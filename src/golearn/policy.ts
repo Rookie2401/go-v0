@@ -286,8 +286,8 @@ export const PERSONAL = {
   domain: { low: 0.8, moderate: 0.5 },
   unanalysedShare: { low: 0.02, moderate: 0.05 },
   // Structure that German (and any language whose analyses state it) adds. First guesses, not tuned on any learner.
-  /** Share of the text's word tokens that are new compounds he cannot read from words he knows (partial + opaque occurrences / words). */
-  compoundNotTransparentShare: { low: 0.01, moderate: 0.03 },
+  /** Share of the text's word tokens that are new compounds with a component he does not know (partial + opaque occurrences / words). */
+  compoundPartsUnknownShare: { low: 0.01, moderate: 0.03 },
   /** Mean number of words between the two ends of a verb bracket (finite verb … participle, infinitive or separated prefix). */
   bracketDistance: { low: 2, moderate: 5 },
   genitiveShare: { low: 0.03, moderate: 0.07 },

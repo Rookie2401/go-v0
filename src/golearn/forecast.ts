@@ -156,7 +156,7 @@ export async function predictDifficulty(
   // say, for instance for a scoped forecast, which describes only part of the text).
   let features: DifficultyForecast['features'];
   let personal: DifficultyForecast['personal'];
-  let transparentCompounds = 0;
+  let partsKnownCompounds = 0;
   if (!opts?.sentenceIds) {
     try {
       const lib = await import('../library');
@@ -166,20 +166,21 @@ export async function predictDifficulty(
         const work = text.workId ? await ctx.store.works.get(text.workId) : undefined;
         const score = await scoreProfile(ctx, userId, profile, { domains: work?.domains, variety: work?.variety });
         personal = score.personal;
-        transparentCompounds = score.compounds?.transparent ?? 0;
+        partsKnownCompounds = score.compounds?.partsKnown ?? 0;
         features ??= profile.features;
       }
     } catch {
       features = undefined; // the library cannot profile this text: the forecast simply has no features / personal part
       personal = undefined;
-      transparentCompounds = 0;
+      partsKnownCompounds = 0;
     }
   }
 
-  // A ForecastItem has no field for a note, so the new compounds the learner could read from words he knows are counted in the
-  // summary instead: the new words listed above include them, and they are not really new to him.
-  const summary = baseSummary + (transparentCompounds > 0
-    ? ` ${plural(transparentCompounds, 'new compound')} in it ${transparentCompounds === 1 ? 'is' : 'are'} made of words you know.` : '');
+  // A ForecastItem has no field for a note, so the new compounds whose parts the learner all knows are counted in the summary
+  // instead. They STAY new words (the list above includes them): knowing the parts is an estimate of how readable the whole is,
+  // not knowledge of it, and the summary says so.
+  const summary = baseSummary + (partsKnownCompounds > 0
+    ? ` ${plural(partsKnownCompounds, 'new compound')} in it ${partsKnownCompounds === 1 ? 'is' : 'are'} made of words you know (the whole may still mean something new).` : '');
 
   return {
     textId, userId, coverage, predictedCoverage, newUsefulWords, rareWords, weakPhrases, newConstructions, properNouns,

@@ -101,7 +101,7 @@ export interface TextProfile {
   patterns: Array<[string, number]>; // [pattern item id, occurrences]
   /**
    * Compounds whose analysis names their components: [lemma item id of the whole, lemma item ids of the components,
-   * occurrences]. Lets a compound the learner has not met count as transparent when he knows its components.
+   * occurrences]. Lets a compound the learner has not met be told apart, as an estimate, when he knows all its components.
    */
   compounds?: Array<[string, string[], number]>;
   features: TextFeatures;

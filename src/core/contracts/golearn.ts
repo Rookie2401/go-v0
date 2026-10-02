@@ -320,10 +320,12 @@ export interface ProfileScore {
   /** How much of the profile's domain vocabulary he already knows, when the text has domains and he has history in them. */
   domainFamiliarity?: number;
   /**
-   * New compounds by what the learner knows of their components: `transparent` = every component known (not counted as
-   * a known word, and not as a wholly new one either), `partial` = some, `opaque` = none or not decomposed.
+   * New compounds by what the learner knows of their COMPONENTS: `partsKnown` = every component is a word he knows,
+   * `partial` = some, `opaque` = none or not decomposed. This is component familiarity only: the system has no evidence
+   * that a compound means what its parts suggest (many are lexicalised: Handschuh is not a shoe), so `partsKnown` is an
+   * ESTIMATE of readability, never knowledge of the word. Such a compound is not counted as a known word.
    */
-  compounds?: { transparent: number; partial: number; opaque: number };
+  compounds?: { partsKnown: number; partial: number; opaque: number };
   personal: PersonalDifficulty;
 }
 

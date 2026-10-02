@@ -14,9 +14,11 @@
  * asking the language adapter for the readings of each new form (confidence of at least LEMMA_MIN_CONFIDENCE, as everywhere else) and
  * only when the learner has met some lemma of the profile at all.
  *
- * COMPOUNDS (a profile that names them): a compound whose whole word the learner does not know is transparent when he knows every
- * component by the same test as "known", partial when he knows some, opaque when he knows none. The shares do not change (a
- * transparent compound is not counted as known); the `new-words` factor leaves out the compounds he has never met but could read.
+ * COMPOUNDS (a profile that names them): a compound whose whole word the learner does not know has its PARTS KNOWN when he knows
+ * every component by the same test as "known", partial when he knows some, opaque when he knows none. That is component familiarity,
+ * not knowledge of the whole: nothing here shows that the compound means what its parts suggest, so it is an estimate and is said as
+ * one (a caveat). The shares do not change (such a compound is never counted as known); the `new-words` factor sets apart the
+ * compounds he has never met whose parts he knows, and says that it does.
  * Like the other structural factors, the new ones are said in words and do not move the label, which rests on coverage alone.
  *
  * Coarse on purpose: a label, and for each factor that applies a level and one line. `caveats` says what the data cannot support.
@@ -134,21 +136,21 @@ export async function scoreProfile(
   const newPatterns = unmet(profile.patterns).slice(0, PERSONAL.listCap);
 
   // ── compounds the learner does not know as wholes, by what he knows of their parts ──
-  // `known` is the very test the shares use. A transparent compound is NOT counted as known (the shares do not change), but the
-  // `new-words` factor does not judge him on it: it is made of words he knows. Only a compound whose whole word he has never met
+  // `known` is the very test the shares use. A compound whose parts he knows is NOT counted as known (the shares do not change);
+  // the `new-words` factor sets it apart as probably readable — an estimate from its parts, stated as such in the note and a caveat. Only a compound whose whole word he has never met
   // is taken out of the new count (its form is then new too); the learner's other new words are never discounted for it.
   const isKnown = (id: string) => classOf(rows.get(id)) === 'known';
-  const compounds: NonNullable<ProfileScore['compounds']> = { transparent: 0, partial: 0, opaque: 0 };
-  let transparentTokens = 0;
-  let transparentUnmet = 0;
-  let notTransparentTokens = 0; // word tokens that are new compounds he cannot read from known parts (partial + opaque)
+  const compounds: NonNullable<ProfileScore['compounds']> = { partsKnown: 0, partial: 0, opaque: 0 };
+  let partsKnownTokens = 0;
+  let partsKnownUnmet = 0;
+  let partsUnknownTokens = 0; // word tokens that are new compounds with a component he does not know (partial + opaque)
   for (const [whole, parts, n] of compoundList) {
     if (isKnown(whole)) continue;
     const knownParts = parts.filter(isKnown).length;
-    const kind = parts.length > 0 && knownParts === parts.length ? 'transparent' : knownParts > 0 ? 'partial' : 'opaque';
+    const kind = parts.length > 0 && knownParts === parts.length ? 'partsKnown' : knownParts > 0 ? 'partial' : 'opaque';
     compounds[kind] += 1;
-    if (kind !== 'transparent') notTransparentTokens += n;
-    if (kind === 'transparent' && !met(rows.get(whole))) { transparentTokens += n; transparentUnmet += 1; }
+    if (kind !== 'partsKnown') partsUnknownTokens += n;
+    if (kind === 'partsKnown' && !met(rows.get(whole))) { partsKnownTokens += n; partsKnownUnmet += 1; }
   }
 
   const t = Math.max(1, total);
@@ -192,21 +194,21 @@ export async function scoreProfile(
   const add = (key: DifficultyFactor['key'], level: Level, note: string) => factors.push({ key, level, note });
   if (lexicalCoverage !== undefined) {
     add('lexical-coverage', down(lexicalCoverage, PERSONAL.coverage), `About ${share(lexicalCoverage)} of its words are shown understood or likely familiar (an estimate).`);
-    // without the compounds made of words he knows (see above); with none of those this is exactly the share of the whole text
-    const judgedTokens = Math.max(0, counts.new - transparentTokens);
+    // without the compounds whose parts he knows (see above); with none of those this is exactly the share of the whole text
+    const judgedTokens = Math.max(0, counts.new - partsKnownTokens);
     const judgedNewShare = empty ? 0 : judgedTokens / t;
-    const judgedForms = Math.max(0, newForms - transparentUnmet);
-    const notCounting = [promoted > 0 ? 'forms of words you know' : '', transparentUnmet > 0 ? 'compounds made of words you know' : ''].filter(Boolean).join(' or ');
+    const judgedForms = Math.max(0, newForms - partsKnownUnmet);
+    const notCounting = [promoted > 0 ? 'forms of words you know' : '', partsKnownUnmet > 0 ? `${plural(partsKnownUnmet, 'compound')} whose parts you know` : ''].filter(Boolean).join(' or ');
     add('new-words', up(judgedNewShare, PERSONAL.newShare),
-      judgedForms === 0 ? `No word in it is new to you${transparentUnmet > 0 ? ', apart from compounds made of words you know' : ''}.`
+      judgedForms === 0 ? `No word in it is new to you${partsKnownUnmet > 0 ? `, apart from ${plural(partsKnownUnmet, 'compound')} whose parts you know` : ''}.`
         : `${plural(judgedForms, 'word')} (${share(judgedNewShare)} of the words) you have not met${notCounting ? `, not counting ${notCounting}` : ''}.`);
   }
-  const newCompounds = compounds.transparent + compounds.partial + compounds.opaque;
+  const newCompounds = compounds.partsKnown + compounds.partial + compounds.opaque;
   if (newCompounds > 0) {
-    const notTransparent = compounds.partial + compounds.opaque;
+    const partsUnknown = compounds.partial + compounds.opaque;
     // judged by the share of the TEXT's words, so that one opaque compound in a long text does not read "high"
-    add('compounds', up(empty ? 0 : notTransparentTokens / t, PERSONAL.compoundNotTransparentShare),
-      `${plural(newCompounds, 'new compound')}: ${compounds.transparent} made of words you know, ${notTransparent} not.`);
+    add('compounds', up(empty ? 0 : partsUnknownTokens / t, PERSONAL.compoundPartsUnknownShare),
+      `${plural(newCompounds, 'new compound')}: ${compounds.partsKnown} made of words you know, ${partsUnknown} not.`);
   }
   const phraseNew = profile.phrases.length > 0 ? newPhrases.length / profile.phrases.length : 0;
   if (profile.phrases.length > 0) add('phrases', up(phraseNew, PERSONAL.newPhraseShare), `${newPhrases.length} of its ${plural(profile.phrases.length, 'phrase')} are new to you.`);
@@ -244,6 +246,7 @@ export async function scoreProfile(
   const caveats: string[] = ["No frequency data: 'new' means not yet met by you, not uncommon."];
   if (littleHistory) caveats.push('You have read little so far, so which words you already know rests on very little.');
   if ((f.unanalysedShare ?? 0) > FORECAST.unanalysedShare) caveats.push(`${share(f.unanalysedShare!)} of its words could not be analysed, so they are counted by form only.`);
+  if (compounds.partsKnown > 0) caveats.push('A compound made of words you know is treated as probably readable. That is an estimate from its parts: the whole can mean something its parts do not say, and it is not counted as a word you know.');
   if (empty) caveats.push('The text has no words to count.');
 
   const label: PersonalDifficulty['label'] = lexicalCoverage === undefined || littleHistory ? 'unknown'

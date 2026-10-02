@@ -1,7 +1,7 @@
 /**
  * Compounds and the new structural factors in the personal difficulty (contract v9): a compound whose whole word the learner
- * does not know is transparent / partial / opaque by what he knows of its parts; shares do not change; the `new-words` factor
- * leaves out the transparent compounds he has never met; the new factors appear only when the profile's features carry them.
+ * does not know has its parts known / partly known / unknown (opaque); shares do not change; the `new-words` factor
+ * sets apart the compounds he has never met whose parts he knows (an estimate, said as one); the new factors appear only when the profile's features carry them.
  *
  * The first block pins today's behaviour with literal values taken from the code BEFORE this change: a profile with none of the
  * new data must score exactly as it did, and those values must never be edited to make a later change pass.
@@ -77,28 +77,28 @@ const without = (p: TextProfile): TextProfile => { const { compounds, ...rest } 
 const factor = (s: ProfileScore, key: PersonalDifficulty['factors'][number]['key']) => s.personal.factors.find((f) => f.key === key);
 
 describe('compounds the learner does not know as wholes', () => {
-  it('transparent when every part is known, partial when some, opaque when none; a known whole is not a new compound', async () => {
+  it('parts known when every part is known, partial when some, opaque when none; a known whole is not a new compound', async () => {
     const h = await learner();
     const s = await h.golearn.scoreProfile(U, compoundProfile());
     // Lebensversicherung: Leben + Versicherung known. Hausaufgabe: Haus known, Aufgabe only met. Kühlschrank: nothing known.
-    expect(s.compounds).toEqual({ transparent: 1, partial: 1, opaque: 1 });
+    expect(s.compounds).toEqual({ partsKnown: 1, partial: 1, opaque: 1 });
   });
 
   it('a part he has only met (or met with help) is not a known part: the same test the shares use', async () => {
     const h = await learner();
     const p = compoundProfile({ compounds: [[L('Hausaufgabe'), [L('Haus'), L('Aufgabe')], 2]] });
-    expect((await h.golearn.scoreProfile(U, p)).compounds).toEqual({ transparent: 0, partial: 1, opaque: 0 });
+    expect((await h.golearn.scoreProfile(U, p)).compounds).toEqual({ partsKnown: 0, partial: 1, opaque: 0 });
     await h.mark(U, 'de', L('Aufgabe'), 'known', 'lemma');
-    expect((await h.golearn.scoreProfile(U, p)).compounds).toEqual({ transparent: 1, partial: 0, opaque: 0 });
+    expect((await h.golearn.scoreProfile(U, p)).compounds).toEqual({ partsKnown: 1, partial: 0, opaque: 0 });
   });
 
   it('a compound that names no parts is opaque', async () => {
     const h = await learner();
     const s = await h.golearn.scoreProfile(U, compoundProfile({ compounds: [[L('Kühlschrank'), [], 1]] }));
-    expect(s.compounds).toEqual({ transparent: 0, partial: 0, opaque: 1 });
+    expect(s.compounds).toEqual({ partsKnown: 0, partial: 0, opaque: 1 });
   });
 
-  it('the shares do not change: a transparent compound is not counted as known', async () => {
+  it('the shares do not change: a compound whose parts he knows is not counted as known', async () => {
     const h = await learner();
     const withC = await h.golearn.scoreProfile(U, compoundProfile());
     const plain = await h.golearn.scoreProfile(U, without(compoundProfile()));
@@ -123,7 +123,7 @@ describe('the new-words factor', () => {
     const withC = await h.golearn.scoreProfile(U, compoundProfile());
     const plain = await h.golearn.scoreProfile(U, without(compoundProfile()));
     expect(factor(plain, 'new-words')).toMatchObject({ level: 'moderate', note: '3 words (6.0 % of the words) you have not met.' });
-    expect(factor(withC, 'new-words')).toMatchObject({ level: 'low', note: '2 words (3.0 % of the words) you have not met, not counting compounds made of words you know.' });
+    expect(factor(withC, 'new-words')).toMatchObject({ level: 'low', note: '2 words (3.0 % of the words) you have not met, not counting 1 compound whose parts you know.' });
   });
 
   it('only a compound whose whole word he has never met is taken out of the new count; one he has met is already not new', async () => {
@@ -131,7 +131,7 @@ describe('the new-words factor', () => {
     await buildFixtureText(h.store, { lang: 'de', slug: 'treffen', sentences: [{ tokens: [{ surface: 'Lebensversicherung', lemma: 'Lebensversicherung', pos: 'NOUN' }] }] });
     await h.view(U, 'de', ids.text('de', 'treffen'), 0);
     const s = await h.golearn.scoreProfile(U, compoundProfile());
-    expect(s.compounds).toEqual({ transparent: 1, partial: 1, opaque: 1 }); // still transparent, since he does not KNOW the whole
+    expect(s.compounds).toEqual({ partsKnown: 1, partial: 1, opaque: 1 }); // its parts are known; he still does not KNOW the whole
     expect(factor(s, 'new-words')?.note).toBe('2 words (3.0 % of the words) you have not met.'); // its form is met now, so it is not new, and it is not taken out a second time
   });
 
@@ -140,7 +140,17 @@ describe('the new-words factor', () => {
     const p = compoundProfile({
       forms: [['der', 97], ['lebensversicherung', 3]], compounds: [[L('Lebensversicherung'), [L('Leben'), L('Versicherung')], 3]], features: feat({ words: 100, uniqueForms: 2 }),
     });
-    expect(factor(await h.golearn.scoreProfile(U, p), 'new-words')).toMatchObject({ level: 'low', note: 'No word in it is new to you, apart from compounds made of words you know.' });
+    expect(factor(await h.golearn.scoreProfile(U, p), 'new-words')).toMatchObject({ level: 'low', note: 'No word in it is new to you, apart from 1 compound whose parts you know.' });
+  });
+
+  it('says that knowing the parts is an estimate, not knowledge of the whole — and only when it used that estimate', async () => {
+    const h = await learner();
+    const withC = await h.golearn.scoreProfile(U, compoundProfile());
+    expect(withC.personal.caveats.join(' ')).toMatch(/treated as probably readable\. That is an estimate from its parts: the whole can mean something its parts do not say, and it is not counted as a word you know/);
+    const plain = await h.golearn.scoreProfile(U, without(compoundProfile()));
+    expect(plain.personal.caveats.join(' ')).not.toMatch(/probably readable/);
+    // the whole compound itself is still unknown to the learner model
+    expect((await h.golearn.getItemState(U, L('Lebensversicherung')))?.encounterCount ?? 0).toBe(0);
   });
 });
 
@@ -166,7 +176,7 @@ describe('the compounds factor', () => {
   it('is absent when every compound of the profile is already known', async () => {
     const h = await learner();
     const s = await h.golearn.scoreProfile(U, compoundProfile({ compounds: [[L('Bahnhof'), [L('Bahn'), L('Hof')], 4]] }));
-    expect(s.compounds).toEqual({ transparent: 0, partial: 0, opaque: 0 });
+    expect(s.compounds).toEqual({ partsKnown: 0, partial: 0, opaque: 0 });
     expect(factor(s, 'compounds')).toBeUndefined();
   });
 
@@ -225,7 +235,7 @@ describe('the factors the features add, each only when its feature is present', 
 });
 
 describe('the forecast says how many new compounds the learner could read', () => {
-  it('names the transparent ones in its summary (a ForecastItem has no field for a note), and says nothing when there are none', async () => {
+  it('names the ones whose parts he knows in its summary (a ForecastItem has no field for a note), and says nothing when there are none', async () => {
     const h = createHarness();
     await buildFixtureText(h.store, { lang: 'de', slug: 'basis', sentences: [{ tokens: [{ surface: 'Leben', lemma: 'Leben', pos: 'NOUN' }, { surface: 'Versicherung', lemma: 'Versicherung', pos: 'NOUN' }] }] });
     await buildFixtureText(h.store, { lang: 'de', slug: 'neu', sentences: [{ tokens: [{ surface: 'Lebensversicherung', lemma: 'Lebensversicherung', pos: 'NOUN' }, { surface: 'Kühlschrank', lemma: 'Kühlschrank', pos: 'NOUN' }] }] });
@@ -246,7 +256,7 @@ describe('the forecast says how many new compounds the learner could read', () =
     await h.understood(U, 'de', basis, [0], 's1');
     for (const w of ['Leben', 'Versicherung']) await h.mark(U, 'de', L(w), 'known', 'lemma');
     const f = await h.golearn.predictDifficulty(U, neu);
-    expect(f.summary).toContain('1 new compound in it is made of words you know.');
+    expect(f.summary).toContain('1 new compound in it is made of words you know (the whole may still mean something new).');
     expect(f.personal?.factors.find((x) => x.key === 'compounds')?.note).toBe('2 new compounds: 1 made of words you know, 1 not.');
 
     // a learner who knows neither part: no sentence about it

@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 2,
+  "id": "bible-psa-23",
+  "lang": "de",
+  "title": "Psalm 23",
+  "contentType": "scripture",
+  "corpus": {
+    "id": "bible-de-luther1912",
+    "kind": "scripture",
+    "title": "Lutherbibel 1912"
+  },
+  "source": {
+    "id": "src:de:bible-psa-23",
+    "title": "Die Bibel nach Martin Luther, Ausgabe 1912",
+    "edition": "Luther 1912",
+    "attribution": "Lutherbibel 1912, public domain (eBible.org)",
+    "provenance": "Lutherbibel 1912, taken verse by verse from the distributor's page https://ebible.org/deu1912/PSA023.htm by scripts/build-de-scripture.mjs on 2026-10-02; nothing was retyped. The distributor states \"Public Domain\" for this translation. Each verse is compared with the source again by scripts/verify-scripture.mjs.",
+    "url": "https://ebible.org/deu1912/PSA023.htm",
+    "rights": "public-domain",
+    "licenseNote": "The 1912 revision of Luther’s translation is in the public domain (stated by the distributor, eBible.org).",
+    "authorship": "public-domain"
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "scripts/verify-scripture.mjs",
+    "reviewedAt": "2026-10-02",
+    "notes": "Wording verified by byte-comparison against eBible.org deu1912."
+  },
+  "topics": [
+    "scripture",
+    "psalm-23"
+  ],
+  "editorialTags": [],
+  "prepTargets": [],
+  "generated": false,
+  "work": {
+    "slug": "lutherbibel-1912",
+    "chapter": {
+      "index": 3,
+      "title": "Psalm 23"
+    }
+  },
+  "scripture": {
+    "translationId": "deu1912",
+    "translationName": "Lutherbibel 1912",
+    "edition": "Luther 1912",
+    "book": "PSA",
+    "chapter": 23,
+    "verification": {
+      "against": "eBible.org deu1912",
+      "url": "https://ebible.org/deu1912",
+      "checkedAt": "2026-10-02",
+      "method": "byte-comparison",
+      "by": "scripts/verify-scripture.mjs"
+    }
+  },
+  "english": {
+    "source": "World English Bible (public domain), eBible.org eng-web"
+  },
+  "sections": [
+    {
+      "title": "Psalm 23",
+      "chapter": 23,
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ein Psalm Davids. Der HERR ist mein Hirte; mir wird nichts mangeln.",
+              "english": "Yahweh is my shepherd; I shall lack nothing.",
+              "verseRefs": [
+                "PSA.23.1"
+              ]
+            },
+            {
+              "text": "Er weidet mich auf einer grünen Aue und führet mich zum frischen Wasser.",
+              "english": "He makes me lie down in green pastures. He leads me beside still waters.",
+              "verseRefs": [
+                "PSA.23.2"
+              ]
+            },
+            {
+              "text": "Er erquicket meine Seele; er führet mich auf rechter Straße um seines Namens willen.",
+              "english": "He restores my soul. He guides me in the paths of righteousness for his name’s sake.",
+              "verseRefs": [
+                "PSA.23.3"
+              ]
+            },
+            {
+              "text": "Und ob ich schon wanderte im finstern Tal, fürchte ich kein Unglück; denn du bist bei mir, dein Stecken und dein Stab trösten mich.",
+              "english": "Even though I walk through the valley of the shadow of death, I will fear no evil, for you are with me. Your rod and your staff, they comfort me.",
+              "verseRefs": [
+                "PSA.23.4"
+              ]
+            },
+            {
+              "text": "Du bereitest vor mir einen Tisch im Angesicht meiner Feinde. Du salbest mein Haupt mit Öl und schenkest mir voll ein.",
+              "english": "You prepare a table before me in the presence of my enemies. You anoint my head with oil. My cup runs over.",
+              "verseRefs": [
+                "PSA.23.5"
+              ]
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gutes und Barmherzigkeit werden mir folgen mein Leben lang, und ich werde bleiben im Hause des HERRN immerdar.",
+              "english": "Surely goodness and loving kindness shall follow me all the days of my life, and I will dwell in Yahweh’s house forever.",
+              "verseRefs": [
+                "PSA.23.6"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

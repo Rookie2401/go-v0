@@ -3,7 +3,11 @@ import { describe, expect, it } from 'vitest';
 import { LANGUAGES, type LanguageCode } from '../../src/core';
 import { computePublished, loadBundledCorpus, type CorpusDocument } from '../../src/ingest';
 import { createMemoryStore } from '../../src/core';
+import { GERMAN_WORKS } from '../../src/course/german';
 import { SPANISH_WORKS } from '../../src/course/spanish';
+
+// The works of every course that bundles texts of its own: a course adds its list here.
+const COURSE_WORKS = [...SPANISH_WORKS, ...GERMAN_WORKS];
 import { importDocuments, validateBatch } from '../../src/ingest';
 import { clock, registry } from './helpers';
 import { isSeed, loadCourseCorpus } from './seed';
@@ -146,7 +150,7 @@ describe('bundled corpus shape (schema version 2)', () => {
 
 describe('the bundled course texts (everything that is not a seed text)', () => {
   const course = loadCourseCorpus();
-  const works = new Set(SPANISH_WORKS.map((w) => w.id));
+  const works = new Set(COURSE_WORKS.map((w) => w.id));
 
   it('are version 2 documents that validate as a batch, with no errors', () => {
     const batch = validateBatch(course, { registry });
@@ -160,7 +164,7 @@ describe('the bundled course texts (everything that is not a seed text)', () => 
 
   it('belong to a work of the course (known work id, a chapter), carry streams and a variety, and are not seed ids', async () => {
     const store = createMemoryStore();
-    await store.works.bulkPut(SPANISH_WORKS);
+    await store.works.bulkPut(COURSE_WORKS);
     const r = await importDocuments(store, registry, course, { clock });
     expect(r.ok).toBe(true);
     for (const rep of r.documents) expect(rep.issues.filter((i) => i.code === 'unknown-work'), rep.id).toEqual([]);
@@ -174,9 +178,11 @@ describe('the bundled course texts (everything that is not a seed text)', () => 
     }
   });
 
-  it('are not published, and say why (machine-drafted text needs a native-speaker review)', () => {
+  it('are not published, and say why (machine-drafted text needs a native-speaker review) — except Scripture whose wording is verified', () => {
     for (const d of course) {
       const gate = computePublished(d);
+      // a Scripture slice taken from its source and verified verse by verse is published: that is what the gate is for
+      if (d.contentType === 'scripture' && d.scripture?.verification) { expect(gate.published, d.id).toBe(true); continue; }
       expect(gate.published, d.id).toBe(false);
       expect(gate.unpublishedReasons.length, d.id).toBeGreaterThan(0);
       if (d.generated) expect(gate.unpublishedReasons.join(' '), d.id).toMatch(/native-speaker review/);
@@ -186,7 +192,7 @@ describe('the bundled course texts (everything that is not a seed text)', () => 
 
   it('re-import unchanged, and their analysis coverage is reported (not asserted: the Spanish lexicon is still being expanded)', async () => {
     const store = createMemoryStore();
-    await store.works.bulkPut(SPANISH_WORKS);
+    await store.works.bulkPut(COURSE_WORKS);
     const first = await importDocuments(store, registry, course, { clock });
     expect(first.documents.every((x) => x.action === 'created')).toBe(true);
     const again = await importDocuments(store, registry, course, { clock });

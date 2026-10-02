@@ -24,7 +24,8 @@
           "url": "https://ebible.org/spaRV1909/JHN03.htm"
         }
       },
-      "mismatches": []
+      "mismatches": [],
+      "checkedAt": "2026-09-30"
     },
     {
       "lang": "de",
@@ -45,9 +46,282 @@
         "JHN.3.16": {
           "text": "Also hat Gott die Welt geliebt, daß er seinen eingeborenen Sohn gab, auf daß alle, die an ihn glauben, nicht verloren werden, sondern das ewige Leben haben.",
           "url": "https://ebible.org/deu1912/JHN03.htm"
+        },
+        "GEN.1.1": {
+          "text": "Am Anfang schuf Gott Himmel und Erde.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.2": {
+          "text": "Und die Erde war wüst und leer, und es war finster auf der Tiefe; und der Geist Gottes schwebte auf dem Wasser.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.3": {
+          "text": "Und Gott sprach: Es werde Licht! und es ward Licht.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.4": {
+          "text": "Und Gott sah, daß das Licht gut war. Da schied Gott das Licht von der Finsternis",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.5": {
+          "text": "und nannte das Licht Tag und die Finsternis Nacht. Da ward aus Abend und Morgen der erste Tag.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.6": {
+          "text": "Und Gott sprach: Es werde eine Feste zwischen den Wassern, und die sei ein Unterschied zwischen den Wassern.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.7": {
+          "text": "Da machte Gott die Feste und schied das Wasser unter der Feste von dem Wasser über der Feste. Und es geschah also.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.8": {
+          "text": "Und Gott nannte die Feste Himmel. Da ward aus Abend und Morgen der andere Tag.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.9": {
+          "text": "Und Gott sprach: Es sammle sich das Wasser unter dem Himmel an besondere Örter, daß man das Trockene sehe. Und es geschah also.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.10": {
+          "text": "Und Gott nannte das Trockene Erde, und die Sammlung der Wasser nannte er Meer. Und Gott sah, daß es gut war.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.11": {
+          "text": "Und Gott sprach: Es lasse die Erde aufgehen Gras und Kraut, das sich besame, und fruchtbare Bäume, da ein jeglicher nach seiner Art Frucht trage und habe seinen eigenen Samen bei sich selbst auf Erden. Und es geschah also.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.12": {
+          "text": "Und die Erde ließ aufgehen Gras und Kraut, das sich besamte, ein jegliches nach seiner Art, und Bäume, die da Frucht trugen und ihren eigenen Samen bei sich selbst hatten, ein jeglicher nach seiner Art. Und Gott sah, daß es gut war.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.13": {
+          "text": "Da ward aus Abend und Morgen der dritte Tag.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.14": {
+          "text": "Und Gott sprach: Es werden Lichter an der Feste des Himmels, die da scheiden Tag und Nacht und geben Zeichen, Zeiten, Tage und Jahre",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.15": {
+          "text": "und seien Lichter an der Feste des Himmels, daß sie scheinen auf Erden. Und es geschah also.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.16": {
+          "text": "Und Gott machte zwei große Lichter: ein großes Licht, das den Tag regiere, und ein kleines Licht, das die Nacht regiere, dazu auch Sterne.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.17": {
+          "text": "Und Gott setzte sie an die Feste des Himmels, daß sie schienen auf die Erde",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.18": {
+          "text": "und den Tag und die Nacht regierten und schieden Licht und Finsternis. Und Gott sah, daß es gut war.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.19": {
+          "text": "Da ward aus Abend und Morgen der vierte Tag.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.20": {
+          "text": "Und Gott sprach: Es errege sich das Wasser mit webenden und lebendigen Tieren, und Gevögel fliege auf Erden unter der Feste des Himmels.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.21": {
+          "text": "Und Gott schuf große Walfische und allerlei Getier, daß da lebt und webt, davon das Wasser sich erregte, ein jegliches nach seiner Art, und allerlei gefiedertes Gevögel, ein jegliches nach seiner Art. Und Gott sah, daß es gut war.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.22": {
+          "text": "Und Gott segnete sie und sprach: Seid fruchtbar und mehrt euch und erfüllt das Wasser im Meer; und das Gefieder mehre sich auf Erden.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.23": {
+          "text": "Da ward aus Abend und Morgen der fünfte Tag.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.24": {
+          "text": "Und Gott sprach: Die Erde bringe hervor lebendige Tiere, ein jegliches nach seiner Art: Vieh, Gewürm und Tiere auf Erden, ein jegliches nach seiner Art. Und es geschah also.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.25": {
+          "text": "Und Gott machte die Tiere auf Erden, ein jegliches nach seiner Art, und das Vieh nach seiner Art, und allerlei Gewürm auf Erden nach seiner Art. Und Gott sah, daß es gut war.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.26": {
+          "text": "Und Gott sprach: Laßt uns Menschen machen, ein Bild, das uns gleich sei, die da herrschen über die Fische im Meer und über die Vögel unter dem Himmel und über das Vieh und über die ganze Erde und über alles Gewürm, das auf Erden kriecht.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.27": {
+          "text": "Und Gott schuf den Menschen ihm zum Bilde, zum Bilde Gottes schuf er ihn; und schuf sie einen Mann und ein Weib.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.28": {
+          "text": "Und Gott segnete sie und sprach zu ihnen: Seid fruchtbar und mehrt euch und füllt die Erde und macht sie euch untertan und herrscht über die Fische im Meer und über die Vögel unter dem Himmel und über alles Getier, das auf Erden kriecht.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.29": {
+          "text": "Und Gott sprach: Seht da, ich habe euch gegeben allerlei Kraut, das sich besamt, auf der ganzen Erde und allerlei fruchtbare Bäume, die sich besamen, zu eurer Speise,",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.30": {
+          "text": "und allem Getier auf Erden und allen Vögeln unter dem Himmel und allem Gewürm, das da lebt auf Erden, daß sie allerlei grünes Kraut essen. Und es geschah also.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "GEN.1.31": {
+          "text": "Und Gott sah alles an, was er gemacht hatte; und siehe da, es war sehr gut. Da ward aus Abend und Morgen der sechste Tag.",
+          "url": "https://ebible.org/deu1912/GEN01.htm"
+        },
+        "PSA.1.1": {
+          "text": "Wohl dem, der nicht wandelt im Rat der Gottlosen noch tritt auf den Weg Sünder noch sitzt, da die Spötter sitzen,",
+          "url": "https://ebible.org/deu1912/PSA001.htm"
+        },
+        "PSA.1.2": {
+          "text": "sondern hat Lust zum Gesetz des HERRN und redet von seinem Gesetz Tag und Nacht!",
+          "url": "https://ebible.org/deu1912/PSA001.htm"
+        },
+        "PSA.1.3": {
+          "text": "Der ist wie ein Baum, gepflanzt an den Wasserbächen, der seine Frucht bringt zu seiner Zeit, und seine Blätter verwelken nicht; und was er macht, das gerät wohl.",
+          "url": "https://ebible.org/deu1912/PSA001.htm"
+        },
+        "PSA.1.4": {
+          "text": "Aber so sind die Gottlosen nicht, sondern wie Spreu, die der Wind verstreut.",
+          "url": "https://ebible.org/deu1912/PSA001.htm"
+        },
+        "PSA.1.5": {
+          "text": "Darum bleiben die Gottlosen nicht im Gericht noch die Sünder in der Gemeinde der Gerechten.",
+          "url": "https://ebible.org/deu1912/PSA001.htm"
+        },
+        "PSA.1.6": {
+          "text": "Denn der HERR kennt den Weg der Gerechten; aber der Gottlosen Weg vergeht.",
+          "url": "https://ebible.org/deu1912/PSA001.htm"
+        },
+        "PSA.23.1": {
+          "text": "Ein Psalm Davids. Der HERR ist mein Hirte; mir wird nichts mangeln.",
+          "url": "https://ebible.org/deu1912/PSA023.htm"
+        },
+        "PSA.23.2": {
+          "text": "Er weidet mich auf einer grünen Aue und führet mich zum frischen Wasser.",
+          "url": "https://ebible.org/deu1912/PSA023.htm"
+        },
+        "PSA.23.3": {
+          "text": "Er erquicket meine Seele; er führet mich auf rechter Straße um seines Namens willen.",
+          "url": "https://ebible.org/deu1912/PSA023.htm"
+        },
+        "PSA.23.4": {
+          "text": "Und ob ich schon wanderte im finstern Tal, fürchte ich kein Unglück; denn du bist bei mir, dein Stecken und dein Stab trösten mich.",
+          "url": "https://ebible.org/deu1912/PSA023.htm"
+        },
+        "PSA.23.5": {
+          "text": "Du bereitest vor mir einen Tisch im Angesicht meiner Feinde. Du salbest mein Haupt mit Öl und schenkest mir voll ein.",
+          "url": "https://ebible.org/deu1912/PSA023.htm"
+        },
+        "PSA.23.6": {
+          "text": "Gutes und Barmherzigkeit werden mir folgen mein Leben lang, und ich werde bleiben im Hause des HERRN immerdar.",
+          "url": "https://ebible.org/deu1912/PSA023.htm"
+        },
+        "MAT.1.1": {
+          "text": "Dies ist das Buch von der Geburt Jesu Christi, der da ist ein Sohn Davids, des Sohnes Abrahams.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.2": {
+          "text": "Abraham zeugte Isaak. Isaak zeugte Jakob. Jakob zeugte Juda und seine Brüder.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.3": {
+          "text": "Juda zeugte Perez und Serah von Thamar. Perez zeugte Hezron. Hezron zeugte Ram.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.4": {
+          "text": "Ram zeugte Amminadab. Amminadab zeugte Nahesson. Nahesson zeugte Salma.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.5": {
+          "text": "Salma zeugte Boas von der Rahab. Boas zeugte Obed von der Ruth. Obed zeugte Jesse.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.6": {
+          "text": "Jesse zeugte den König David. Der König David zeugte Salomo von dem Weib des Uria.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.7": {
+          "text": "Salomo zeugte Rehabeam. Rehabeam zeugte Abia. Abia zeugte Asa.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.8": {
+          "text": "Asa zeugte Josaphat. Josaphat zeugte Joram. Joram zeugte Usia.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.9": {
+          "text": "Usia zeugte Jotham. Jotham zeugte Ahas. Ahas zeugte Hiskia.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.10": {
+          "text": "Hiskia zeugte Manasse. Manasse zeugte Amon. Amon zeugte Josia.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.11": {
+          "text": "Josia zeugte Jechonja und seine Brüder um die Zeit der babylonischen Gefangenschaft.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.12": {
+          "text": "Nach der babylonischen Gefangenschaft zeugte Jechonja Sealthiel. Sealthiel zeugte Serubabel.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.13": {
+          "text": "Serubabel zeugte Abiud. Abiud zeugte Eliakim. Eliakim zeugte Asor.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.14": {
+          "text": "Asor zeugte Zadok. Zadok zeugte Achim. Achim zeugte Eliud.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.15": {
+          "text": "Eliud zeugte Eleasar. Eleasar zeugte Matthan. Matthan zeugte Jakob.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.16": {
+          "text": "Jakob zeugte Joseph, den Mann Marias, von welcher ist geboren Jesus, der da heißt Christus.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.17": {
+          "text": "Alle Glieder von Abraham bis auf David sind vierzehn Glieder. Von David bis auf die Gefangenschaft sind vierzehn Glieder. Von der babylonischen Gefangenschaft bis auf Christus sind vierzehn Glieder.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.18": {
+          "text": "Die Geburt Christi war aber also getan. Als Maria, seine Mutter, dem Joseph vertraut war, fand sich's ehe er sie heimholte, daß sie schwanger war von dem heiligen Geist.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.19": {
+          "text": "Joseph aber, ihr Mann, war fromm und wollte sie nicht in Schande bringen, gedachte aber, sie heimlich zu verlassen.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.20": {
+          "text": "Indem er aber also gedachte, siehe, da erschien ihm ein Engel des HERRN im Traum und sprach: Joseph, du Sohn Davids, fürchte dich nicht, Maria, dein Gemahl, zu dir zu nehmen; denn das in ihr geboren ist, das ist von dem heiligen Geist.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.21": {
+          "text": "Und sie wird einen Sohn gebären, des Namen sollst du Jesus heißen; denn er wird sein Volk selig machen von ihren Sünden.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.22": {
+          "text": "Das ist aber alles geschehen, auf daß erfüllt würde, was der HERR durch den Propheten gesagt hat, der da spricht:",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.23": {
+          "text": "“Siehe, eine Jungfrau wird schwanger sein und einen Sohn gebären, und sie werden seinen Namen Immanuel heißen”, das ist verdolmetscht: Gott mit uns.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.24": {
+          "text": "Da nun Joseph vom Schlaf erwachte, tat er, wie ihm des HERRN Engel befohlen hatte, und nahm sein Gemahl zu sich.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
+        },
+        "MAT.1.25": {
+          "text": "Und er erkannte sie nicht, bis sie ihren ersten Sohn gebar; und hieß seinen Namen Jesus.",
+          "url": "https://ebible.org/deu1912/MAT01.htm"
         }
       },
-      "mismatches": []
+      "mismatches": [],
+      "checkedAt": "2026-10-02"
     }
   ]
 }

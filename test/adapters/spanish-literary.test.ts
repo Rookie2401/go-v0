@@ -162,6 +162,25 @@ describe('a word on no list, written with a capital inside the sentence', () => 
   });
 });
 
+describe('Roman numerals in running text', () => {
+  it('Felipe II, el siglo XIX, Carlos V, Alfonso X: a number with its value', () => {
+    for (const [text, word, value] of [['Felipe II reinó entonces.', 'II', 2], ['Era el siglo XIX.', 'XIX', 19], ['Carlos V lo supo.', 'V', 5], ['Alfonso X escribió.', 'X', 10], ['Luis XIV y el tomo XLII.', 'XLII', 42]] as const) {
+      const c = first(text, word);
+      expect(c, word).toMatchObject({ lemma: word, pos: 'NUM', gloss: `${value} (Roman numeral)`, origin: 'rule' });
+      expect(c.unconfirmed, word).toBeUndefined();
+    }
+  });
+
+  it('not a word of the list written in capitals, not an initial, not lower case', () => {
+    expect(first('YO LO VI AYER.', 'VI')).toMatchObject({ lemma: 'ver', pos: 'VERB' });
+    expect(first('Vino D. Juan.', 'D')?.pos).not.toBe('NUM');
+    expect(first('Dijo C que no.', 'C')?.pos).not.toBe('NUM');
+    expect(first('Dijo L que no.', 'L')?.pos).not.toBe('NUM');
+    expect(first('Dijo xix que no.', 'xix')?.pos).not.toBe('NUM');
+    expect(first('Dijo IIII que no.', 'IIII')?.pos).not.toBe('NUM');
+  });
+});
+
 describe('old contractions (desta, deste, della) in running text', () => {
   it('stay "de + …" whatever stands before them: no guessed verb beside them to be put first', () => {
     for (const [text, word] of [

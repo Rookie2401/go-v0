@@ -405,6 +405,16 @@ function analyzeFormUncached(form: string): AnalysisCandidate[] {
   return hist.length ? [...hist, ...eng.filter((c) => c.pos === 'VERB' || c.pos === 'AUX')] : eng;
 }
 
+const ROMAN_NUMERAL = /^(?:XC|XL|L?X{0,3})(?:IX|IV|V?I{0,3})$/;
+/** The value of capitals that are a Roman numeral of I, V, X, L, C (1–99); undefined for anything else. */
+function romanNumeral(surface: string): number | undefined {
+  if (!surface || !ROMAN_NUMERAL.test(surface) || surface === 'L') return undefined;
+  const v: Record<string, number> = { I: 1, V: 5, X: 10, L: 50, C: 100 };
+  let total = 0;
+  for (let k = 0; k < surface.length; k++) total += v[surface[k]] < (v[surface[k + 1]] ?? 0) ? -v[surface[k]] : v[surface[k]];
+  return total;
+}
+
 /**
  * The readings of one word of a sentence before its neighbours order them: those of the written form, and — for a word
  * no list holds, written with a capital where no sentence begins (la Nela, de Aldeacorba) — the guess that it is a
@@ -413,7 +423,17 @@ function analyzeFormUncached(form: string): AnalysisCandidate[] {
  */
 function readWord(i: number, tokens: RawToken[]): AnalysisCandidate[] {
   const cands = analyzeForm(tokens[i].normalized);
-  if (cands.some((c) => c.unconfirmed !== true) || !/^\p{Lu}\p{Ll}/u.test(tokens[i].surface) || !capitalInside(i, tokens)) return cands;
+  if (cands.some((c) => c.unconfirmed !== true)) return cands;
+  // Felipe II, el siglo XIX, Carlos V: capitals that are a Roman numeral and no word of any list (a lone
+  // C, D, L or M is an initial or an abbreviation — D. Juan — and is left alone; values 1 to 99)
+  const roman = romanNumeral(tokens[i].surface);
+  if (roman !== undefined) {
+    return [annotate({
+      lemma: tokens[i].surface, pos: 'NUM', morph: { NumForm: 'Roman' }, gloss: `${roman} (Roman numeral)`, confidence: 0.8, origin: 'rule', sourceId: ES_SOURCE_IDS.rules,
+      notes: { source: 'rule', rule: `capitals that read as the Roman numeral ${roman}` },
+    })];
+  }
+  if (!/^\p{Lu}\p{Ll}/u.test(tokens[i].surface) || !capitalInside(i, tokens)) return cands;
   const name = annotate({
     lemma: nfc(tokens[i].surface), pos: 'PROPN', morph: {}, confidence: 0.5, unconfirmed: true, origin: 'rule', sourceId: ES_SOURCE_IDS.rules,
     notes: { source: 'rule', rule: 'written with a capital inside the sentence and on no list: probably a name', lemmaStatus: 'inferred by the rules' },

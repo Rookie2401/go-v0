@@ -253,7 +253,6 @@ Hand/f, -, ¨-e = hand
 Händler/m, -s, - = trader, dealer
 Handy/n, -s, -s = mobile phone
 Haus/n, -es, ¨-er = house
-Hausaufgaben/pl = homework
 Hausschuh/m, -es, -e = house slipper
 Hemd/n, -es, -en = shirt
 Herr/m, -n, -en = gentleman; Mr [weak]

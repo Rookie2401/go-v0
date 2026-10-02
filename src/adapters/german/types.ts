@@ -60,6 +60,12 @@ export interface DeNoun {
   weak?: boolean;
   /** Declined like an adjective (der Deutsche, ein Deutscher, die Deutschen). */
   adjectival?: boolean;
+  /**
+   * This row is another form of the word listed under that lemma (Friede → Frieden, Same → Samen): its own paradigm,
+   * but ONE word. Whoever turns a reading into a candidate reports `sameAs` as the lemma, so the learner model and
+   * the homograph rule see one word, not two.
+   */
+  sameAs?: string;
   /** Irregular case forms the endings do not give, keyed "D sg", "A sg", "G sg", "D pl". */
   irregular?: Record<string, string>;
   gloss: string;

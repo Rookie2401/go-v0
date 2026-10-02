@@ -40,8 +40,8 @@ Rights states used in the code and what the owner's brief calls them:
 |---|---|
 | Work / edition | *Die Bibel nach der deutschen Übersetzung D. Martin Luthers*, the revision of 1912 |
 | Exact source | eBible.org, translation id `deu1912`, https://ebible.org/deu1912/ — the chapter pages `GEN01.htm`, `PSA001.htm`, `PSA023.htm`, `MAT01.htm`, `1JN01.htm`, `JHN03.htm` |
-| Legal basis | Luther died in 1546; the revision was published in 1912; the distributor's copyright page states "Public Domain" for this text (the build script reads that page and stops if it does not say so) |
-| Jurisdictions | as stated by the distributor; not checked country by country. A 1912 publication is out of copyright in the United States (published before 1929); in countries with a term of life plus seventy years the question is the revisers' death dates, which the distributor does not give — **this is the one open point** |
+| Legal basis | Luther died in 1546. The revision of 1912 (New Testament December 1912, whole Bible 1913) was commissioned by the Evangelische Kirchenkonferenz and published as a church text; the editions name no reviser. The distributor's copyright page states "Public Domain" (the build script reads that page and stops if it does not say so) |
+| Jurisdictions | **Recorded: United States, Germany, EU** (see "The basis for Germany and the EU" below). Not checked: Austria and Switzerland individually; any jurisdiction with a longer term |
 | Attribution / share-alike | none required; the source and edition are named on every text |
 | Modifications | none: each verse is identical to the source after Unicode and whitespace normalisation |
 | Redistribution | permitted (public domain) |
@@ -50,6 +50,35 @@ Rights states used in the code and what the owner's brief calls them:
 | Verification | `scripts/build-de-scripture.mjs` takes each verse from the page; `scripts/verify-scripture.mjs` extracts it again independently and compares: 71 verses, 0 mismatches; record with URLs in `data/verified/scripture.json` |
 | English rescue | World English Bible (eBible.org `eng-web`, public domain), verse by verse |
 | Audio | none bundled |
+
+**The basis for Germany and the EU** (investigated 2026-10-01 after an outside audit; an AI model's reading of the
+sources, not legal advice):
+
+| Evidence | Kind | What it shows |
+|---|---|---|
+| The Deutsche Bibelgesellschaft's own online edition (https://www.die-bibel.de/bibel/LU12/GEN.1, read 2026-10-01) carries the line "Neu durchgesehen nach dem vom Deutschen Evangelischen Kirchenausschuss genehmigten Text (1912). © der digitalen Ausgabe 1999, 2018 Deutsche Bibelgesellschaft Stuttgart" | primary: the publisher of the Luther Bible | no reviser is named; copyright is claimed in the *digital edition* only, not in the text. (That edition is not our source.) |
+| freie-bibel.de: "Die Lizenzabteilung der Deutschen Bibelgesellschaft hat uns am 2014-01-21 bestätigt, dass die Luther 1912 mittlerweile gemeinfrei ist"; and that no list of the revisers with their years of death exists there | secondary: a third party's report of the publisher's statement | the only plausible rights holder is reported to have confirmed that the text is free |
+| de.wikipedia.org, "Lutherbibel", section "Die Lutherbibel von 1912 im 21. Jahrhundert": "nicht mehr durch das Urheberrecht geschützt"; reprinted and distributed without permission | tertiary | common understanding; widely reprinted |
+| The term for a work published without its authors' names is 70 years from publication (Germany: UrhG § 66; EU: Directive 2006/116/EC Art. 1(3)) | the law's general rule | 1912 / 1913 + 70 years ended in 1983 at the latest |
+
+**What is NOT established**, and stays an open point for the owner: (1) no written statement of the Deutsche
+Bibelgesellschaft is on file — only a third party's report of one; (2) the revisers' names and death dates are
+unknown; were a reviser identified as an author, life plus seventy years would apply to that contribution; (3) the
+origin of eBible.org's digital text (who keyed it) is not stated; (4) Austria, Switzerland and jurisdictions with
+longer terms were not checked. **Recommended before a public release in Germany:** one written line from the
+Deutsche Bibelgesellschaft's licensing department. The catalogue records the status as public domain for US, DE
+and EU *with* this note (`LUTHER_1912_RIGHTS.basis`); if the owner judges the basis insufficient, removing `DE` and
+`EU` from `statusByJurisdiction` makes a build released there leave the text out (next paragraph).
+
+**What the machine enforces, and what it does not.** `npm run rights:check` and the production build apply
+`src/ingest/rights.ts`. Three facts are kept apart for every public-domain or licensed text: *wording verified*
+(the text is its source's text — source fidelity, nothing more), *rights recorded* (the catalogue work says who
+established the state and when), and *jurisdictions recorded*. A Scripture text that names its work is held to the
+catalogue record; a verified wording alone no longer bundles it. A build or report that names where it is released
+(`GO_RELEASE_JURISDICTIONS=US,DE,EU npm run build`, `npm run rights:check -- --release US,DE,EU`) leaves out any
+such text without a recorded basis for each of those jurisdictions. Without a release list the build makes no
+claim about where it may be distributed, and says so. **Passing the gate means the records are present and
+consistent. It is not legal clearance.**
 
 ### 1.2 Two tales of the Brothers Grimm, edition of 1857 (verified public domain; transcription under an open licence)
 

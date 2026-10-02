@@ -21,7 +21,8 @@
  * Nouns: the genitive token is "-es", "-s", "-", "-en", "-ns", "-ens", "-ses" … (appended to the lemma) or a whole form;
  * the plural token is "-e", "¨-e", "-er", "¨-er", "-n", "-en", "-s", "-se", "-" (same as the singular), "¨-" (umlaut
  * only), "0" (no plural) or a whole form ("Studien", "Ärztinnen").
- * Tags: weak, adjectival (nouns); mixed, reflexive, dat, irregular (verbs); indeclinable, "stem: x" (adjectives);
+ * Tags: weak, adjectival, "same: Lemma" (nouns: this row is another form of that word — Friede [same: Frieden] — one
+ * word for the learner, two paradigms for the engine); mixed, reflexive, dat, irregular (verbs); indeclinable, "stem: x" (adjectives);
  * registers (standard, colloquial, formal, literary, archaic, historical, religious, slang); varieties (de-AT, de-CH …).
  *
  * Machine-drafted and not checked by a native speaker: a malformed row throws with the file label and line number, so
@@ -49,7 +50,7 @@ const REGISTERS = new Set<string>(['standard', 'colloquial', 'formal', 'literary
 const AUXES = new Set<string>(['haben', 'sein', 'haben/sein']);
 const CASE_KEY: Record<string, string> = { n: 'N', nom: 'N', a: 'A', acc: 'A', d: 'D', dat: 'D', g: 'G', gen: 'G' };
 
-interface Tags { weak: boolean; adjectival: boolean; mixed: boolean; reflexive: boolean; dat: boolean; irregular: boolean; indeclinable: boolean; stem?: string; register: RegisterTag[]; varieties: string[] }
+interface Tags { weak: boolean; adjectival: boolean; mixed: boolean; reflexive: boolean; dat: boolean; irregular: boolean; indeclinable: boolean; stem?: string; same?: string; register: RegisterTag[]; varieties: string[] }
 
 /** Take the bracketed tag groups off the end of a string. */
 function takeTags(s: string, tags: Tags, where: string): string {
@@ -61,6 +62,8 @@ function takeTags(s: string, tags: Tags, where: string): string {
     let body = m[1];
     const stem = /stem:\s*(\S+)/u.exec(body);
     if (stem) { tags.stem = stem[1]; body = body.replace(stem[0], ' '); }
+    const same = /same:\s*(\S+)/u.exec(body);
+    if (same) { tags.same = same[1]; body = body.replace(same[0], ' '); }
     for (const t of body.split(/[\s,]+/u).filter(Boolean)) {
       if (t === 'weak') tags.weak = true;
       else if (t === 'adjectival') tags.adjectival = true;
@@ -118,6 +121,10 @@ function parseNoun(head: string, gloss: string, tail: string | undefined, tags: 
   }
   if (tags.weak) noun.weak = true;
   if (tags.adjectival) noun.adjectival = true;
+  if (tags.same) {
+    if (!/^\p{Lu}[\p{L}\-]*$/u.test(tags.same) || tags.same === lemma) throw new Error(`${where}: "same: ${tags.same}" must name another noun`);
+    noun.sameAs = tags.same;
+  }
   if (tags.mixed || tags.reflexive || tags.dat || tags.irregular || tags.indeclinable || tags.stem) throw new Error(`${where}: a tag that does not belong on a noun`);
   if (tail) {
     const irregular: Record<string, string> = {};

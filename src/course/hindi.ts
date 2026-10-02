@@ -166,6 +166,10 @@ export const IRV_HINDI_RIGHTS: WorkRights = {
   licence: 'Creative Commons Attribution Share-Alike license 4.0 (as stated on the source\'s copyright page, https://ebible.org/hin2017/copyright.htm)',
   jurisdictions: ['a worldwide public licence granted by the rights holder; not checked country by country'],
   attributionRequired: true, shareAlike: true, commercialUse: true,
+  // A Creative Commons licence is granted by the rights holder worldwide by its own terms: the basis is the licence, the
+  // same in every jurisdiction, and not a term of protection that differs by country (which is why a public-domain
+  // status is never recorded this way).
+  statusByJurisdiction: { '*': 'licensed' },
   modifications: 'none to the wording: each bundled verse is identical to the source after Unicode normalization (NFC) and whitespace normalization. A selection: the translators\' footnotes, the section headings and the cross-references are not included, and every Scripture text says so.',
   proofreading: 'the distributor\'s text; no proofreading of our own',
   evidence: [

@@ -35,6 +35,13 @@
   "editorialTags": [],
   "prepTargets": [],
   "generated": false,
+  "work": {
+    "slug": "bible-hindi",
+    "chapter": {
+      "index": 5,
+      "title": "1 यूहन्ना 1:8–9; यूहन्ना 3:16"
+    }
+  },
   "scripture": {
     "translationId": "hin2017",
     "translationName": "इंडियन रिवाइज्ड वर्जन (IRV) हिंदी - 2019",

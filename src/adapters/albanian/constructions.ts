@@ -263,14 +263,19 @@ function use(cx: Ctx, i: number, pred: (c: AnalysisCandidate) => boolean, opts: 
 
 const clip = (n: number): number => Math.max(0, Math.min(0.95, Math.round(n * 100) / 100));
 
-/** The pattern, at the lowest cap among the readings it relies on. `extra` is added to the explanation. */
-function hit(key: string, uses: Array<Use | { cap: number }>, tokenIndexes: number[], extra = ''): PatternCandidate {
+/**
+ * The pattern, at the lowest cap among the readings it relies on. The explanation is the catalogue's, word for word:
+ * the importer stores ONE explanation per construction and shows it on every occurrence, so a remark about this one
+ * sentence (the make-up of this cluster) would appear on every other sentence too. `_remark` is therefore not shown;
+ * what a fused pronoun is made of is on the word itself (`parts`).
+ */
+function hit(key: string, uses: Array<Use | { cap: number }>, tokenIndexes: number[], _remark = ''): PatternCandidate {
   const info = INFO.get(key);
   if (!info) throw new Error(`sq construction "${key}" is not in the catalogue`);
   const seen = new Set<number>();
   const idx = tokenIndexes.filter((i) => (seen.has(i) ? false : (seen.add(i), true))).sort((a, b) => a - b);
   return {
-    key, title: info.title, explanation: extra ? `${info.explanation} ${extra}` : info.explanation, tokenIndexes: idx,
+    key, title: info.title, explanation: info.explanation, tokenIndexes: idx,
     confidence: clip(Math.min(...uses.map((u) => u.cap))),
   };
 }

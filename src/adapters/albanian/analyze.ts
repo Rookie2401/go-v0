@@ -22,7 +22,7 @@ import { analyzeSqForm } from './morphology';
 import { orderSqSentence } from './sentence';
 import { sqCitation, type SqReading } from './types';
 
-export const SQ_VERSION = '2';
+export const SQ_VERSION = '3';
 export const SQ_ANALYZER = `adapter-sq@${SQ_VERSION}`;
 export const SQ_SOURCE_IDS = {
   hand: `${SQ_ANALYZER}:hand`,

@@ -345,9 +345,15 @@ describe('Albanian constructions: the confidence is never more than the readings
     expect(run('Zhurmuesi punon.').out).toEqual([]);
   });
 
-  it('gives the make-up of a fused cluster in the explanation', () => {
-    expect(run('Ma dha.').find('clitic-cluster')?.explanation).toContain('ma = më + e');
-    expect(run("Dua t'ia jap.").find('clitic-cluster')?.explanation).toContain("t'ia = ");
+  it('every occurrence carries the catalogue\'s explanation, word for word (the importer stores one per construction and shows it on every sentence)', () => {
+    const catalogue = new Map(SQ_CONSTRUCTIONS.map((c) => [c.key, c.explanation]));
+    for (const s of ['Ma dha.', "Dua t'ia jap.", 'Ia dhashë librin mësuesit.', 'Ai e pa djalin.', 'Kam punuar sot.', 'Ai jeton larg qytetit.', 'Mund të vij nesër.']) {
+      const r = run(s);
+      expect(r.keys().length, s).toBeGreaterThan(0);
+      for (const key of r.keys()) expect(r.find(key)?.explanation, `${s}: ${key}`).toBe(catalogue.get(key));
+    }
+    // two different clusters: the same explanation, with no remark about either sentence
+    expect(run('Ma dha.').find('clitic-cluster')?.explanation).toBe(run("Dua t'ia jap.").find('clitic-cluster')?.explanation);
   });
 });
 

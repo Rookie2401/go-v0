@@ -398,6 +398,9 @@ function analyzeFormUncached(form: string): AnalysisCandidate[] {
   const eng = engineRead(form);
   if (eng.some((c) => c.notes?.lemmaStatus === 'in the word list')) return eng;
   const hist = historical(form);
+  // an old contraction (desta, deste, della) is a closed word: no guess stands beside it (a guessed verb "destar" was
+  // put first after se or que, on every page of an old book)
+  if (OLD_CONTRACTIONS[form]) return hist;
   // beside an older spelling of a word the list knows, only verb guesses (as before) are kept: not a noun or adjective guess from the ending
   return hist.length ? [...hist, ...eng.filter((c) => c.pos === 'VERB' || c.pos === 'AUX')] : eng;
 }

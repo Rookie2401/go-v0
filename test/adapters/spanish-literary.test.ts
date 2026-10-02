@@ -162,6 +162,21 @@ describe('a word on no list, written with a capital inside the sentence', () => 
   });
 });
 
+describe('old contractions (desta, deste, della) in running text', () => {
+  it('stay "de + …" whatever stands before them: no guessed verb beside them to be put first', () => {
+    for (const [text, word] of [
+      ['No se desta manera.', 'desta'], ['Que deste modo se hace.', 'deste'], ['Y desta suerte lo dijo.', 'desta'], ['Me habló della ayer.', 'della'], ['Se rieron dellos.', 'dellos'],
+    ] as const) {
+      const tokens = es.tokenize(text);
+      const cands = es.analyze(tokens)[tokens.findIndex((t) => t.surface === word)].candidates;
+      expect(cands[0], text).toMatchObject({ lemma: 'de', pos: 'ADP' });
+      expect(cands[0].unconfirmed, text).toBeUndefined();
+      expect(cands.some((c) => c.unconfirmed === true), text).toBe(false);
+      expect(cands[0].parts?.map((p) => p.text).join('+'), text).toBe(`de+${word.slice(2)}`);
+    }
+  });
+});
+
 describe('plain-text editions: italics in underscores, the dash as two hyphens', () => {
   it('an underscore at the edge of a word is a mark of its own, never part of the word; offsets stay exact', () => {
     const text = 'Dijo _adelante_, _siempre adelante_ y nada más.';

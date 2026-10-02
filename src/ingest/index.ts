@@ -55,8 +55,12 @@ export async function ingestAll(store: AppStore, registry: AdapterRegistry, docs
   return out;
 }
 
-/** The bundled corpus documents (`data/corpus/<lang>/*.json`), sorted by path for determinism. */
+/**
+ * The bundled corpus documents (`data/corpus/<lang>/*.json`), sorted by path for determinism. In a production build the
+ * rights gate (server/rightsGate.ts) has replaced every document whose rights are unverified by `null`: those are not
+ * in the bundle and are dropped here. Development and tests see every document.
+ */
 export function loadBundledCorpus(): CorpusDocument[] {
-  const modules = import.meta.glob('../../data/corpus/**/*.json', { eager: true, import: 'default' }) as Record<string, CorpusDocument>;
-  return Object.keys(modules).sort().map((k) => modules[k]);
+  const modules = import.meta.glob('../../data/corpus/**/*.json', { eager: true, import: 'default' }) as Record<string, CorpusDocument | null>;
+  return Object.keys(modules).sort().map((k) => modules[k]).filter((d): d is CorpusDocument => d !== null && d !== undefined);
 }

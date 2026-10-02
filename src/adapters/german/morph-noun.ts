@@ -34,12 +34,25 @@ export function olderDative(noun: DeNoun): string | undefined {
   return `${noun.lemma}e`;
 }
 
+/**
+ * The other spelling of the genitive of a strong masculine or neuter noun: a row lists Mannes OR Manns. -s is added
+ * to a listed -es unless the stem ends in s, ß, x, z, sch or st; -es to a listed -s on a one-syllable noun.
+ */
+function otherGenitive(noun: DeNoun): string | undefined {
+  const g = noun.genSg;
+  if ((noun.gender !== 'm' && noun.gender !== 'n') || noun.weak || noun.irregular?.['G sg'] || !g) return undefined;
+  const l = noun.lemma;
+  if (g === `${l}es`) return /(?:[sßxz]|sch|st)$/.test(l) ? undefined : `${l}s`;
+  if (g === `${l}s` && (l.match(/[aeiouyäöü]+/gi) ?? []).length === 1) return `${l}es`;
+  return undefined;
+}
+
+/** Adjectival nouns (der Deutsche, die Deutsche, ein Deutscher, die Deutschen): every gender and the plural; the row's gender is ignored. */
 function adjectivalForms(noun: DeNoun): NounForm[] {
   const stem = noun.lemma.endsWith('e') ? noun.lemma.slice(0, -1) : noun.lemma;
-  const list = formsOnStem(stem);
   const out = new Map<string, DeCell[]>();
-  for (const { form, cells } of list) {
-    const wanted = cells.filter((c) => (noun.gender === 'pl' ? c.g === 'p' : c.g === noun.gender || c.g === 'p'));
+  for (const { form, cells } of formsOnStem(stem)) {
+    const wanted = noun.gender === 'pl' ? cells.filter((c) => c.g === 'p') : cells;
     if (wanted.length) addCells(out, form, wanted);
   }
   return [...out].map(([form, cells]) => ({ form, cells: sortCells(cells) }));
@@ -61,6 +74,8 @@ export function nounForms(noun: DeNoun): NounForm[] {
     put(irr['A sg'] ?? oblique, 'A', g);
     put(irr['D sg'] ?? oblique, 'D', g);
     put(irr['G sg'] ?? gen, 'G', g);
+    const other = otherGenitive(noun);
+    if (other) put(other, 'G', g);
   }
   const plural = noun.gender === 'pl' ? (noun.plural ?? noun.lemma) : noun.plural;
   if (plural) {

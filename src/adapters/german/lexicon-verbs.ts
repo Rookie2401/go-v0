@@ -558,7 +558,6 @@ ermöglichen = to make possible
 ernähren = to feed; to nourish
 erobern = to conquer
 erreichen = to reach; to achieve
-erschaffen = to create
 erstellen = to draw up; to create
 erwachen = to wake up | sein
 erwarten = to expect

@@ -7,7 +7,7 @@ import {
   analyzeGermanForm, conjugateGerman, declineAdjective, declineNoun, describeGermanMorph,
 } from '../../src/adapters/german/morphology';
 import type {
-  DeAdjective, DeCell, DeClosedForm, DeContraction, DeLexiconView, DeNoun, DePrefixKind, DeReading, DeVerb,
+  DeAdjective, DeCase, DeCell, DeClosedForm, DeContraction, DeLexiconView, DeNoun, DePrefixKind, DeReading, DeVerb,
 } from '../../src/adapters/german/types';
 
 // ---------------------------------------------------------------------------------------------------------------
@@ -57,6 +57,7 @@ const ADJECTIVES: DeAdjective[] = [
   adj({ lemma: 'gut', comparative: 'besser', superlative: 'best' }), adj({ lemma: 'alt', comparative: 'älter', superlative: 'ältest' }),
   adj({ lemma: 'klein' }), adj({ lemma: 'teuer', comparative: 'teurer', superlative: 'teuerst', stem: 'teur' }),
   adj({ lemma: 'dunkel', stem: 'dunkl' }), adj({ lemma: 'rosa', indeclinable: true }), adj({ lemma: 'frisch' }), adj({ lemma: 'neu' }),
+  adj({ lemma: 'müde', stem: 'müd' }), adj({ lemma: 'leise', stem: 'leis' }),
 ];
 
 const cell = (c: DeCell['c'], g: DeCell['g'], decl?: DeCell['decl']): DeCell => (decl ? { c, g, decl } : { c, g });
@@ -67,8 +68,15 @@ const CLOSED: DeClosedForm[] = [
   closed({ form: 'das', lemma: 'der', pos: 'DET', cells: [cell('N', 'n'), cell('A', 'n')], morph: { PronType: 'Art', Definite: 'Def' }, governsDecl: 'wk' }),
   closed({ form: 'ein', lemma: 'ein', pos: 'DET', cells: [cell('N', 'm'), cell('N', 'n'), cell('A', 'n')], morph: { PronType: 'Art', Definite: 'Ind' }, governsDecl: 'mx' }),
 ];
+// like the real lexicon: the contraction's own `cell` is one cell; the article's readings and the preposition's cases decide
+CLOSED.push(
+  closed({ form: 'dem', lemma: 'der', pos: 'DET', cells: [cell('D', 'm'), cell('D', 'n')], morph: { PronType: 'Art', Definite: 'Def' }, governsDecl: 'wk' }),
+  closed({ form: 'dem', lemma: 'der', pos: 'PRON', cells: [cell('D', 'm'), cell('D', 'n')], morph: { PronType: 'Rel' } }),
+);
+const PREPOSITIONS: Record<string, DeCase[]> = { in: ['A', 'D'], zu: ['D'] };
 const CONTRACTIONS: DeContraction[] = [
   { form: 'im', preposition: 'in', article: 'dem', cell: cell('D', 'm'), gloss: 'in the' },
+  { form: 'ins', preposition: 'in', article: 'das', cell: cell('N', 'n'), gloss: 'into the' },
   { form: 'zum', preposition: 'zu', article: 'dem', cell: cell('D', 'm'), gloss: 'to the' },
   { form: 'zur', preposition: 'zu', article: 'der', cell: cell('D', 'f'), gloss: 'to the' },
 ];
@@ -81,7 +89,7 @@ const lexicon: DeLexiconView = {
   adjective: (l) => ADJECTIVES.find((a) => a.lemma === l),
   closed: (f) => CLOSED.filter((c) => c.form === f),
   plain: (f) => (f === 'und' ? PLAIN : []),
-  preposition: () => undefined,
+  preposition: (f) => (PREPOSITIONS[f] ? { form: f, cases: PREPOSITIONS[f], gloss: f } : undefined),
   contraction: (f) => CONTRACTIONS.find((c) => c.form === f),
   prefixKind: (p) => PREFIXES[p],
   separableVerbsOf: (b) => VERBS.filter((v) => v.prefix && v.base === b),
@@ -102,7 +110,7 @@ function paradigm(n: DeNoun): Record<string, string> {
   const out: Record<string, string> = {};
   for (const f of declineNoun(n)) {
     if ((f as { older?: boolean }).older) continue;
-    for (const c of f.cells) out[`${c.c}${c.g}`] = f.form;
+    for (const c of f.cells) out[`${c.c}${c.g}`] ??= f.form; // the first form of a cell is the listed one; the other genitive spelling follows
   }
   return out;
 }
@@ -153,8 +161,29 @@ describe('noun declension', () => {
     expect(cellsOf('Deutsche')).toEqual(expect.arrayContaining(['Nmwk', 'Npst']));
     expect(cellsOf('Deutscher')).toEqual(expect.arrayContaining(['Nmst', 'Nmmx', 'Gpst']));
     expect(cellsOf('Deutschen')).toEqual(expect.arrayContaining(['Amwk', 'Dmwk', 'Gmmx', 'Dpwk', 'Apmx']));
-    expect(cellsOf('Deutschem')).toEqual(['Dmst']);
-    expect(cellsOf('Deutsches')).toEqual([]); // masculine lemma: no neuter forms
+    expect(cellsOf('Deutschem')).toEqual(['Dmst', 'Dnst']);
+    // the row's gender ('m') is ignored: die Deutsche, das Deutsche
+    expect(cellsOf('Deutsche')).toEqual(expect.arrayContaining(['Nfwk', 'Afst', 'Nnwk']));
+    expect(cellsOf('Deutscher')).toEqual(expect.arrayContaining(['Dfst', 'Gfst']));
+    expect(cellsOf('Deutsches')).toEqual(expect.arrayContaining(['Nnst', 'Anst', 'Nnmx']));
+  });
+
+  it('accepts both genitive spellings of a strong masculine or neuter noun', () => {
+    const gen = (n: DeNoun) => declineNoun(n).filter((f) => f.cells.some((c) => c.c === 'G' && c.g !== 'p')).map((f) => f.form).sort();
+    expect(gen(N('Mann'))).toEqual(['Mannes', 'Manns']);
+    expect(gen(N('Kind'))).toEqual(['Kindes', 'Kinds']);
+    expect(gen(N('Tag'))).toEqual(['Tages', 'Tags']);
+    expect(gen(N('Haus'))).toEqual(['Hauses']); // stem in s: only -es
+    expect(gen(noun({ lemma: 'Tisch', gender: 'm', genSg: 'Tisches', plural: 'Tische' }))).toEqual(['Tisches']);
+    expect(gen(noun({ lemma: 'Fuchs', gender: 'm', genSg: 'Fuchses', plural: 'Füchse' }))).toEqual(['Fuchses']);
+    expect(gen(noun({ lemma: 'Kranz', gender: 'm', genSg: 'Kranzes', plural: 'Kränze' }))).toEqual(['Kranzes']);
+    expect(gen(noun({ lemma: 'Haupt', gender: 'n', genSg: 'Hauptes', plural: 'Häupter' }))).toEqual(['Hauptes', 'Haupts']);
+    expect(gen(noun({ lemma: 'Rat', gender: 'm', genSg: 'Rats', plural: 'Räte' }))).toEqual(['Rates', 'Rats']); // listed -s, one syllable
+    expect(gen(noun({ lemma: 'Vater', gender: 'm', genSg: 'Vaters', plural: 'Väter' }))).toEqual(['Vaters']); // two syllables: no -es
+    expect(gen(N('Lehrer'))).toEqual(['Lehrers']);
+    expect(gen(N('Student'))).toEqual(['Studenten']);
+    expect(an('Manns')[0]).toMatchObject({ lemma: 'Mann', morph: { Case: 'Gen', Gender: 'Masc', Number: 'Sing' } });
+    expect(an('Manns')[0].rule).toMatch(/genitive singular/);
   });
 
   it('lists the older dative in -e for strong masculine and neuter nouns, marked, and says both when it equals another form', () => {
@@ -228,6 +257,22 @@ describe('adjective declension', () => {
     expect(forms('pos')).toEqual(expect.arrayContaining(pos));
     expect(forms('cmp')).toEqual(expect.arrayContaining(cmp));
     expect(forms('sup')).toEqual(expect.arrayContaining(sup));
+  });
+
+  it('adjectives in -e (müde, leise): the lemma is still the uninflected form; endings come from the stem', () => {
+    const forms = (l: string, d: 'pos' | 'cmp' | 'sup' = 'pos') => declineAdjective(A(l), d).map((f) => f.form);
+    expect(forms('müde')).toEqual(['müde', 'müder', 'müdes', 'müden', 'müdem']);
+    expect(forms('müde', 'cmp')).toEqual(expect.arrayContaining(['müder', 'müdere', 'müderer', 'müderes', 'müderen', 'müderem']));
+    expect(forms('müde', 'sup')).toEqual(['müdeste', 'müdester', 'müdestes', 'müdesten', 'müdestem']);
+    expect(forms('leise', 'cmp')).toContain('leiser');
+    expect(forms('leise', 'sup')).toContain('leiseste');
+    // in analysis müde is two readings: the uninflected form and the -e form with its cells
+    const rs = an('müde').filter((r) => r.lemma === 'müde');
+    expect(rs.filter((r) => !r.cells)).toHaveLength(1);
+    expect(rs.find((r) => r.cells)!.morph.Decl).toBe('Strong,Weak,Mixed');
+    // müder: comparative uninflected, and the positive masculine nominative strong
+    expect(an('müder').map((r) => r.morph.Degree ?? 'pos').sort()).toEqual(['Cmp', 'pos']);
+    expect(an('müden')[0].lemma).toBe('müde');
   });
 
   it('keeps the superlative without an uninflected form and gives an indeclinable adjective one form for everything', () => {
@@ -442,7 +487,7 @@ describe('analysis: nouns', () => {
     expect(rs).toHaveLength(1);
     const r = rs[0];
     expect([r.lemma, r.pos, r.lemmaKnown]).toEqual(['Mann', 'NOUN', true]);
-    expect(r.morph).toEqual({ Case: 'Dat', Number: 'Plur' });
+    expect(r.morph).toEqual({ Case: 'Dat', Gender: 'Masc', Number: 'Plur' }); // the lexical gender is stated also for a plural
     expect(r.cells).toEqual([{ c: 'D', g: 'p' }]);
     expect(r.confidence).toBeGreaterThanOrEqual(0.8);
     expect(r.confidence).toBeLessThanOrEqual(0.92);
@@ -455,7 +500,7 @@ describe('analysis: nouns', () => {
     const rs = an('Herzen');
     expect(rs.map(sig)).toEqual([
       'Herz|NOUN|Case=Dat,Gender=Neut,Number=Sing',
-      'Herz|NOUN|Case=Nom,Acc,Dat,Gen,Number=Plur',
+      'Herz|NOUN|Case=Nom,Acc,Dat,Gen,Gender=Neut,Number=Plur',
     ]);
     expect(an('Herz').map(sig)).toEqual(['Herz|NOUN|Case=Nom,Acc,Gender=Neut,Number=Sing']);
     expect(an('Herzens').map(sig)).toEqual(['Herz|NOUN|Case=Gen,Gender=Neut,Number=Sing']);
@@ -465,7 +510,7 @@ describe('analysis: nouns', () => {
     const rs = an('Studenten');
     expect(rs.map(sig)).toEqual([
       'Student|NOUN|Case=Acc,Dat,Gen,Gender=Masc,Number=Sing',
-      'Student|NOUN|Case=Nom,Acc,Dat,Gen,Number=Plur',
+      'Student|NOUN|Case=Nom,Acc,Dat,Gen,Gender=Masc,Number=Plur',
     ]);
     expect(rs[0].rule).toMatch(/weak/);
     expect(rs[0].cells).toHaveLength(3);
@@ -496,7 +541,7 @@ describe('analysis: nouns', () => {
     const tage = an('Tage');
     expect(tage).toHaveLength(2);
     expect(tage[0].register).toBeUndefined();
-    expect(tage[0].morph).toEqual({ Case: 'Nom,Acc,Gen', Number: 'Plur' });
+    expect(tage[0].morph).toEqual({ Case: 'Nom,Acc,Gen', Gender: 'Masc', Number: 'Plur' });
     expect(tage[1].register).toEqual(['literary']);
     expect(tage[1].rule).toMatch(/older dative/);
     expect(tage[1].rule).toMatch(/also/);
@@ -504,10 +549,12 @@ describe('analysis: nouns', () => {
 
   it('plural-only and adjectival nouns', () => {
     expect(an('Eltern').map(sig)).toEqual(['Eltern|NOUN|Case=Nom,Acc,Dat,Gen,Number=Plur']);
+    // an adjectival noun's row gender is ignored: every gender and the plural, the gender read from the cells
     const d = an('Deutscher');
-    expect(d[0].morph).toEqual({ Case: 'Nom', Gender: 'Masc', Number: 'Sing', Decl: 'Strong,Mixed' });
+    expect(d[0].morph).toEqual({ Case: 'Nom,Dat,Gen', Gender: 'Masc,Fem', Number: 'Sing', Decl: 'Strong,Mixed' });
     expect(d[1].morph).toEqual({ Case: 'Gen', Number: 'Plur', Decl: 'Strong' });
     expect(an('Deutschen')[0].lemma).toBe('Deutsche');
+    expect(an('Deutsche')[0].morph.Gender).toBe('Masc,Fem,Neut');
   });
 });
 
@@ -702,10 +749,13 @@ describe('analysis: closed classes', () => {
     const im = an('im');
     expect(im).toHaveLength(1);
     expect([im[0].lemma, im[0].pos]).toEqual(['in', 'ADP']);
-    expect(im[0].cells).toEqual([{ c: 'D', g: 'm' }]);
+    expect(im[0].cells).toEqual([{ c: 'D', g: 'm' }, { c: 'D', g: 'n' }]); // im Haus agrees with a neuter noun too
+    expect(an('ins')[0].cells).toEqual([{ c: 'A', g: 'n' }]);
+    expect(an('zum')[0].cells).toEqual([{ c: 'D', g: 'm' }, { c: 'D', g: 'n' }]);
+    expect(an('zur')[0].cells).toEqual([{ c: 'D', g: 'f' }]);
     expect(im[0].parts).toEqual([
       { text: 'i', start: 0, end: 1, lemma: 'in', pos: 'ADP', kind: 'contracted' },
-      { text: 'm', start: 1, end: 2, lemma: 'der', pos: 'DET', morph: { Case: 'Dat', Gender: 'Masc', Number: 'Sing', PronType: 'Art', Definite: 'Def' }, kind: 'contracted' },
+      { text: 'm', start: 1, end: 2, lemma: 'der', pos: 'DET', morph: { Case: 'Dat', Gender: 'Masc,Neut', Number: 'Sing', PronType: 'Art', Definite: 'Def' }, kind: 'contracted' },
     ]);
     expect(an('zum')[0].parts!.map((p) => p.text)).toEqual(['zu', 'm']);
     expect(an('zur')[0].parts!.map((p) => p.text)).toEqual(['zu', 'r']);

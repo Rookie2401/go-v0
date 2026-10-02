@@ -2,7 +2,7 @@
  * Analysis of one written word: reverse indexes built ONCE per lexicon view from the generated forms, then O(1)
  * lookups. Capital letters decide the noun readings; the closed classes are asked of the lexicon directly.
  */
-import type { DeClosedForm, DeContraction, DeLexiconView, DeReading } from './types';
+import type { DeCell, DeClosedForm, DeContraction, DeLexiconView, DeReading } from './types';
 import { morphOfCells } from './types';
 import { describeGermanMorph } from './morph-describe';
 import { guessReadings } from './morph-guess';
@@ -75,14 +75,27 @@ function closedReading(c: DeClosedForm): DeReading {
   return reading;
 }
 
+/**
+ * The cells of a contraction: the article's own determiner cells, kept where the preposition governs the case
+ * (im = in + dem: dative masculine and neuter). The lexicon's single `cell` is only the fallback.
+ */
+function contractionCells(c: DeContraction, lex: DeLexiconView): DeCell[] {
+  const cases = lex.preposition(c.preposition)?.cases;
+  const article = lex.closed(c.article).find((x) => x.pos === 'DET' && x.morph?.PronType === 'Art' && x.cells);
+  const cells = (article?.cells ?? []).filter((x) => !cases || cases.includes(x.c));
+  return cells.length ? cells.map((x) => ({ c: x.c, g: x.g })) : [{ c: c.cell.c, g: c.cell.g }];
+}
+
 /** im = in + dem: the preposition part is the longest shared beginning, the rest is the article's ending. */
-function contractionReading(c: DeContraction, written: string): DeReading {
+function contractionReading(c: DeContraction, written: string, lex: DeLexiconView): DeReading {
   let n = 0;
   while (n < c.preposition.length && n < written.length - 1 && written[n].toLowerCase() === c.preposition[n]) n++;
-  const articleMorph = { ...morphOfCells([c.cell]), PronType: 'Art', Definite: 'Def' };
+  const cells = contractionCells(c, lex);
+  const cellMorph = morphOfCells(cells);
+  const articleMorph = { ...cellMorph, PronType: 'Art', Definite: 'Def' };
   return {
-    lemma: c.preposition, pos: 'ADP', morph: {}, cells: [{ ...c.cell }], confidence: 0.92, lemmaKnown: true, gloss: c.gloss,
-    rule: `contraction of ${c.preposition} + ${c.article}: ${describeGermanMorph(morphOfCells([c.cell]))} article`,
+    lemma: c.preposition, pos: 'ADP', morph: {}, cells, confidence: 0.92, lemmaKnown: true, gloss: c.gloss,
+    rule: `contraction of ${c.preposition} + ${c.article}: ${describeGermanMorph(cellMorph)} article`,
     parts: [
       { text: written.slice(0, n), start: 0, end: n, lemma: c.preposition, pos: 'ADP', kind: 'contracted' },
       { text: written.slice(n), start: n, end: written.length, lemma: 'der', pos: 'DET', morph: articleMorph, kind: 'contracted' },
@@ -115,7 +128,7 @@ function compute(word: string, lex: DeLexiconView, idx: Index): DeReading[] {
   }
   const rest: DeReading[] = [];
   const con = lex.contraction(lower);
-  if (con) rest.push(contractionReading(con, word));
+  if (con) rest.push(contractionReading(con, word, lex));
   for (const c of lex.closed(lower)) rest.push(closedReading(c));
   rest.push(...plainReadings(lex, lower));
   rest.push(...(idx.lower.get(lower) ?? []));

@@ -19,6 +19,17 @@ function nounNote(noun: DeNoun): string {
   return '';
 }
 
+/** A noun states its lexical gender also when every cell is plural; the feature goes after Case, as morphOfCells orders them. */
+function withGender(noun: DeNoun, morph: Record<string, string>): Record<string, string> {
+  if (noun.adjectival || noun.gender === 'pl' || morph.Gender) return morph;
+  const gender = { m: 'Masc', f: 'Fem', n: 'Neut' }[noun.gender];
+  const out: Record<string, string> = {};
+  if (morph.Case) out.Case = morph.Case;
+  out.Gender = gender;
+  for (const [k, v] of Object.entries(morph)) if (k !== 'Case') out[k] = v;
+  return out;
+}
+
 /** Index entries (written form, reading) for every form of a noun. */
 export function nounEntries(noun: DeNoun): Entry[] {
   const out: Entry[] = [];
@@ -27,7 +38,7 @@ export function nounEntries(noun: DeNoun): Entry[] {
     const groups: DeCell[][] = [f.cells.filter((c) => c.g !== 'p'), f.cells.filter((c) => c.g === 'p')];
     for (const cells of groups) {
       if (!cells.length) continue;
-      const morph = morphOfCells(cells);
+      const morph = withGender(noun, morphOfCells(cells));
       let rule: string;
       if (f.older) {
         const same = forms.find((x) => !x.older && x.form === f.form);

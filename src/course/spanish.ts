@@ -223,6 +223,7 @@ export const SPANISH_WORKS: Work[] = [
       rights: {
         state: 'verified-public-domain', copyrightStatus: 'public-domain', permission: 'not-needed', canBundle: true, userImportOnly: false, canModify: false, canStoreOffline: true, canBundleAudio: false,
         audiobook: 'unknown', verified: true, verifiedBy: 'checked against the distributor\'s notice (eBible.org, translation id spaRV1909) when the bundled sample was verified',
+        verifiedAt: '2026-09-30', // the `checkedAt` of data/verified/scripture.json for spaRV1909
         basis: 'Revision published in 1909; distributed by eBible.org as public domain. The wording of the bundled verses is byte-verified against that source.',
         jurisdiction: 'stated by the distributor; not separately researched per country',
         acquisitionNotes: 'Only three verses are bundled today. Ingesting more requires the same byte-for-byte verification (scripts/verify-scripture.mjs). The text is never modified.',

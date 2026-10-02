@@ -1,4 +1,4 @@
-# Spanish course — status (2026-10-01)
+# Spanish course — status (2026-10-01, updated the same evening for the dictionary pass)
 
 Words as in `docs/READINESS.md`: **implemented** (the code exists and its own tests pass), **verified** (also proven
 end to end: integration tests on the real adapter, importer and engines, and a browser flow in a sandbox database),
@@ -16,6 +16,9 @@ This is not a production-readiness claim. The short version:
   verified (three verses of Reina-Valera 1909).
 - Nothing Spanish is **published** to a learner beyond those three verses. Everything else is visible only in
   preview mode, labelled as unreviewed.
+- **Since the evening of 2026-10-01 a Spanish dictionary is installed** (Wiktionary via kaikki.org, 808,278 entries,
+  kept as a separately sourced layer) and the importer uses it for a learner's own books: `docs/spanish/DICTIONARY.md`
+  has what it does and every measurement, including the two evaluations on data that was never looked at.
 
 Design: `docs/SPANISH_COURSE.md`. Build plan and file ownership: `docs/PLAN9.md`. The controlled texts:
 `docs/spanish/ACQUISITION.md`.
@@ -41,7 +44,11 @@ Design: `docs/SPANISH_COURSE.md`. Build plan and file ownership: `docs/PLAN9.md`
 | Reader | Text first; gloss → phrases → grammar → sentence → English in layers; word parts, variety line and morphology in words appear only where the analysis carries them | `test/ui/wordsheet*.test.tsx`; browser |
 | Analyzer upgrades reach texts already on a device (added in the audit of this pass) | The remembered signature of the built-in texts now names the analyzers. When one changes, the affected texts are re-analysed in place — same sentences, same tokens, same content version — and every learner's derived state is rebuilt from the event log, which is never rewritten | `test/integration/analyzer-upgrade.test.ts`, `test/ui/bootstrap.test.ts`; browser (a sandbox prepared by the earlier analyzer came up with the new readings) |
 
-Speed, measured on the 29 bundled Spanish documents (3,836 word tokens): analysis 0.08 ms per word cold, 0.005 ms
+| The dictionary decides what the rules only guess (PLAN10) | With the dictionary installed, a learner's own book is imported with it: a word outside the word list gets the dictionary's lemma and meaning (rule and dictionary agreeing at 0.7), a form the dictionary lacks is read by rule from a lemma it has, the dictionary's other readings of a word-list word are added below the word list's and ordered by context, capitals matter (`PA` is not a reading of "pa"), region labels are carried, and the word sheet names the dictionary and says the meaning was not checked for the sentence | `test/ingest/dictionaryDecides.test.ts`, `dictionaryBeside.test.ts`, `dictionaryWritten.test.ts`, `test/integration/spanish-dictionary.test.ts`; browser (a two-chapter book: 1.5 s, 133 shard requests); held-out figures in `docs/spanish/DICTIONARY.md` |
+| Dictionary at Spanish scale | Compact shards (57.7 MB for 808,278 entries; the first format projected 93 MB), at most 24 parsed shards in memory, 4 read at a time; `npm run dict:status` before every build says which dictionaries ship | `test/dict/format3.test.ts`, `bounded.test.ts`, `scale-es.test.ts`, `status-cli.test.ts` |
+| Startup imports one language | Only the active course's built-in texts are imported at startup; another language's when its course becomes active; a first-run team choice ends with texts, ladder and library index in place ("Preparing your texts…"). First start had grown to about 25 s because every language's texts were imported | `test/ui/bootstrap.test.ts`, `courseOnboarding.test.tsx` |
+
+Speed, measured on the 29 bundled Spanish documents (3,836 word tokens): analysis 0.02 ms per word cold, 0.002 ms
 warm (`npx vite-node scripts/probe-es-speed.mts`). The per-view cost of the learner model is flat in the size of
 the history (see `docs/READINESS.md`, Thai course).
 
@@ -55,9 +62,8 @@ These exist as contracts, code and fixture tests. No real content has been throu
 - **Ranking over a real corpus.** The ranking has been exercised on the 29 bundled documents and on synthetic
   profiles. Its weights (`RANKING` in `src/golearn/policy.ts`) are first guesses, not tuned on any learner. "Best
   next reads" needs texts to rank: with only unpublished texts it shows nothing outside preview.
-- **The Spanish dictionary layer.** The mapping from kaikki / Wiktionary to the dictionary format handles Spanish
-  (inflected-form entries, `formOf`), tested on a small fixture. The real file has **not** been downloaded (see
-  section 8), so no Spanish dictionary is installed.
+- *(no longer architecture only)* The Spanish dictionary layer: installed and measured on the real file — see
+  section 1 and `docs/spanish/DICTIONARY.md`.
 - **Knowledge, mission and listening streams.** They exist as streams with no texts. Science & Engineering is an
   empty door that says so.
 - **Frequency.** There is no Spanish frequency list. "Rare" in the difficulty preview means "occurs once in this
@@ -104,7 +110,12 @@ annotations and audio recordings have their own rights and are recorded separate
 
 ## 6. Known limits of the Spanish analysis
 
-- **Homographs.** Measured on the bundled texts: 186 of 3,836 word tokens (4.8 %) have readings that differ in
+- **Readings in sentences, measured on data never looked at** (`docs/spanish/DICTIONARY.md` 4.2): on 7,649 words that
+  Wiktionary's usage examples mark, the pipeline's first reading is the example's own headword and part of speech for
+  92.65 %, and for 82.1 % of the 1,686 words that have competing readings (61.9 % without the context rules). So
+  roughly one ambiguous word in six still gets the wrong first reading; the right one is on the word sheet. The examples
+  are not running prose, and the judge is the dictionary the pipeline also uses.
+- **Homographs in the course texts.** Measured on the bundled texts: 186 of 3,836 word tokens (4.8 %) have readings that differ in
   lemma or part of speech. Before the context rules, I judged the first reading wrong for about 44 of them (1.1 % of
   all tokens); after, for 1 (`con mucho gusto`: determiner read as adverb, same lemma). **This is a
   development-set figure**: the rules were written while looking at these texts, and the judge was the same model
@@ -112,15 +123,23 @@ annotations and audio recordings have their own rights and are recorded separate
   were run (about 35 of them not from the course texts) all came out as judged on the first run. Nothing has been
   measured on real prose. A `di`, `sal` or `para` at the start of a sentence, `la`/`los`/`las` before a word that
   can be a verb, and subordinate clauses are the known weak places.
-- **Inferred lemmas.** A word outside the 1,701-lemma list gets a rule reading with an inferred lemma, no gloss,
-  confidence 0.6 or less, shown as uncertain. On real books this will be common until a dictionary is installed.
-- **Rare forms.** `freír`-type verbs, irregular `-ísimo` forms and some irregular participles of unlisted verbs
-  are not derived.
+- **Words outside the word list.** With the dictionary installed they get the dictionary's lemma and meaning; on the
+  held-out example sentences 1.0 % of all words stay a rule guess and 1.2 % get nothing (names, typing, rare forms).
+  Without the dictionary (a clean checkout, or a build made without `dict:build`) such a word is a rule guess: an
+  inferred lemma, no meaning, shown as uncertain. A learner's own book imported before the dictionary was installed
+  keeps its old analysis until it is imported again.
+- **The rule engine against the dictionary's inflection data, held out** (`docs/spanish/DICTIONARY.md` 4.1): the
+  dictionary's lemma is among the readings for 98.4 % of word-list forms, features agree for 99.8 %, verbs with
+  attached pronouns are found for 99.3 %; for forms of lemmas outside the word list the right lemma is among the
+  guesses for 93.3 %. Not derived: bare e > i stem changes of unlisted verbs, obsolete verbs, a guessed verb beside a
+  word-list verb that already explains the form (`créales` is read as creer).
 - **Regional tags.** Only a handful of words per variety are tagged (6 Honduran, 4 Central American, 20 Latin
   American, 4 Spain). An untagged word is not thereby the same everywhere. The Honduran entries are unverified.
 - **Sentence splitting** knows the common abbreviations, not all.
-- **"Possibly …" on the word sheet** now appears when the reading is below 0.6 or another reading is about as
-  likely (within 0.2), not merely because another reading exists.
+- **"Possibly …" on the word sheet** appears when the reading is below 0.6 or another word or part of speech is about
+  as likely (within 0.2) — not because another reading exists, and not for another person of the same verb.
+- **The word list against the dictionary**: 45 differences recorded for a person to decide, none decided
+  (`docs/spanish/DICTIONARY_REPORT.md`).
 
 ## 7. What remains
 
@@ -130,7 +149,15 @@ the texts and the word list; lawful Honduran and Central American texts (the cat
 Gamero, Amaya Amador, Sosa, Salarrué, Asturias, Darío as candidates, rights unverified); mission-specific texts
 from the team itself.
 
-**The Bible.** Three verses of Reina-Valera 1909 are bundled and published. Bundling the whole translation needs
+**Honduras, from an independent source.** The dictionary labels 940 senses in 780 entries as Honduran and 300 in 269
+as Central American (`scripts/es-regional.mts` writes them to a local review file; nothing is committed or shipped).
+Seven of the ten Honduran or Central American words of the hand list carry a matching label; `baleada`, `catracha`
+and `lempira` carry none. That is material for the Honduran reviewer, not a verification.
+
+**The Bible.** Three verses of Reina-Valera 1909 are bundled and published. The rights record now carries the date of
+its verification; it records no status per jurisdiction ("stated by the distributor; not separately researched per
+country"), so a build made with a release list of jurisdictions (`npm run rights:check -- --release …`, the shared
+rights gate) leaves the verses out until someone has checked those jurisdictions. Bundling the whole translation needs
 the rights verification repeated for the complete text and edition, then an ordinary import through the Scripture
 path (which is already verified for Spanish). No modern Spanish translation is bundled or proposed: each has an
 owner whose permission would be needed. No verse alignment to another language is fabricated.
@@ -140,14 +167,15 @@ owner whose permission would be needed. No verse alignment to another language i
 data. Nothing in the Spanish course waits for it.
 
 **Large-scale ingestion.** In order:
-1. Install a Spanish dictionary (needs the download in section 8) so that words outside the word list are glossed.
+1. *(done 2026-10-01)* A Spanish dictionary is installed and the importer uses it.
 2. Choose a first small set of sources and **verify their rights** (section 5). Recommended start: ten to twenty
    short nineteenth-century works whose authors' death dates make a check straightforward.
 3. Run them through `corpus:convert` → quality check → `library:build`; read the quality reports; fix sources, not
    texts.
-4. Measure the analysis on that real prose with a hand-checked sample (the homograph and coverage figures above are
-   not that).
-5. Move the word list and course texts out of the main bundle; decide where the built library is hosted.
+4. Measure the analysis on that real prose with a hand-checked sample (the figures above are on dictionary examples
+   and on the course's own texts, not on a book).
+5. Move the word list and course texts out of the main bundle (it touches files every language's session shares, so
+   it needs to be agreed with them); decide where the built library and the 57.7 MB dictionary are hosted.
 6. Only then widen the manifest. The catalogue of 66 is a list of candidates, not a plan to ingest them all.
 
 **Review of the controlled texts.** A native speaker reads Camino 1–3 and Honduras — Lecturas 1; `npm run
@@ -156,10 +184,10 @@ text outside preview, and Home says so.
 
 ## 8. Awaiting a decision
 
-- **Permission to download the Spanish dictionary data**: `kaikki.org-dictionary-Spanish.jsonl` from
-  https://kaikki.org/dictionary/Spanish/, 1,054,565,864 bytes (about 1.05 GB), Wiktionary content under CC BY-SA.
-  It would be kept outside git, built into shards, attributed, and kept as a separate layer exactly as for Thai.
-- Which sources to verify first, and who verifies.
+- *(decided 2026-10-01: download and use it; ship the Thai dictionary too)* The Spanish dictionary data.
+- Which sources to verify first, and who verifies ("I'll get back to you on a usable library").
+- Who decides the 45 recorded differences between the word list and the dictionary, and who reads the Honduran extract.
+- Whether a release names jurisdictions for the rights gate (then Reina-Valera 1909 needs a status for each).
 - A native reviewer for the controlled texts and a Honduran reviewer for the Honduran material.
 
 ## 9. Verification of this pass
@@ -180,7 +208,36 @@ text outside preview, and Home says so.
   and the test suite reported worker timeouts because command-line tests blocked their workers (they now spawn
   asynchronously).
 
-Left behind on this machine (browser storage for `127.0.0.1:5196`, not the repository): sandbox databases `es1`
+### The dictionary pass (evening of 2026-10-01)
+
+Four sessions worked in this repository at once (Spanish and the dictionary / importer here; Hindi, German and
+Albanian elsewhere), each committing its own files by path. What was run for Spanish:
+
+- Typecheck: clean in every Spanish, dictionary, importer and shared file touched here (other sessions' in-flight files
+  showed errors of their own at times).
+- Tests: every area this work owns passes — 160 files, 2,587 tests (dictionary, importer, library, learner model,
+  course, content, UI, Spanish adapter and integration). The whole suite at that moment: 8,485 of 8,497 passing in 286
+  files; the 12 failures were in the German gold set and the Albanian course, both being worked on by their sessions.
+  Under the load of four sessions the runner reported one worker timeout on a green run; see "Known" below.
+- Evaluations: dev and held-out, in `docs/spanish/DICTIONARY.md` section 4. The held-out sentence set and the sealed
+  morphology quarter were each run once, after all tuning, and nothing was changed afterwards.
+- Browser, in an isolated worktree of the commit on its own port (so that other sessions' half-saved files could not
+  reload the page): a two-chapter book of my own writing imported with the real dictionary (1.5 s, 133 shard
+  requests); stored analyses and word sheets checked for `zurcía`, `alféizar`, `guaro`, `pulpería`, `decírselo`,
+  `abandono`, `sabés`, `marcha` / `marchan`, `forjaba`, `trabucaban`, `mascullaba`, `Fue` / `fue`; no console
+  errors. Found and fixed there: a dictionary meaning shown with no source; "possibly" for a word whose only other
+  reading was another person of the same verb; first start taking about 25 s.
+- Found by measuring rather than by tests: the attached-pronoun measure was unsound (biased sample, placeholder cells,
+  a mangled regular expression) and reported 99 % then 62 % for an engine that was at 95 %; dictionary readings beside
+  the word list's made 124 course-text words worse until the context rules weighed readings by standing; capitalised
+  entries (PA, ESO, Rosa) matched lower-case words.
+
+Known: a learner's own book imported before the dictionary keeps its old analysis until re-imported; the production
+bundle still contains the word list and course texts of every language; `createFetchLexiconSource` reads 4 shards at
+a time, which is slower on a high-latency link than reading all at once.
+
+Left behind on this machine (browser storage for `127.0.0.1:5198`, the audit worktree's port): sandbox database `es3`
+(a default learner and the two-chapter test book). Also, from the first pass (browser storage for `127.0.0.1:5196`, not the repository): sandbox databases `es1`
 and `es2` from this pass (a default learner, one finished course text in `es1`, the two-chapter test book in
 `es2`), and the sandboxes of earlier rounds. They are separate from the normal library and can be deleted from the
 browser's site data.

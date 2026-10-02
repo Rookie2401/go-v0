@@ -375,6 +375,34 @@ describe('real lexicon: an unlisted separable verb', () => {
   });
 });
 
+describe('real lexicon: guesses for -ieren verbs and unknown plural compounds', () => {
+  it('renoviert, funktioniert, organisiert: the participle and the finite forms of a verb in -ieren', () => {
+    for (const [w, lemma] of [['renoviert', 'renovieren'], ['funktioniert', 'funktionieren'], ['organisiert', 'organisieren']] as const) {
+      const rs = an(w);
+      expect(rs.map((r) => `${r.lemma}|${r.morph.VerbForm}|${r.confidence}`), w).toEqual([`${lemma}|Part|0.55`, `${lemma}|Fin|0.5`, `${lemma}|Fin|0.45`]);
+      expect(rs.every((r) => !r.lemmaKnown && r.gloss === undefined), w).toBe(true);
+    }
+    expect(an('renovierte')[0]).toMatchObject({ lemma: 'renovieren', morph: { Tense: 'Past' } });
+    expect(an('renovierend')[0]).toMatchObject({ lemma: 'renovieren', morph: { VerbForm: 'Part', Tense: 'Pres' } });
+    expect(an('renoviert').some((r) => r.lemma === 'renoviern')).toBe(false);
+  });
+
+  it('listed verbs in -el / -er / -ieren keep their listed readings', () => {
+    for (const [w, lemma] of [['wandert', 'wandern'], ['klingelt', 'klingeln'], ['feiert', 'feiern'], ['dauert', 'dauern'], ['probiert', 'probieren'], ['studiert', 'studieren']] as const) {
+      expect(an(w).some((r) => r.lemma === lemma && r.lemmaKnown && !/derived/.test(r.rule)), w).toBe(true);
+    }
+  });
+
+  it('Haremsfrauen is a plural of the known head Frau; negatives', () => {
+    const rs = an('Haremsfrauen');
+    expect(rs[0]).toMatchObject({ lemma: 'Haremsfrau', pos: 'NOUN', lemmaKnown: false, confidence: 0.55, morph: { Gender: 'Fem', Number: 'Plur' } });
+    expect(rs[0].parts!.map((p) => [p.text, p.kind, p.lemma])).toEqual([['Harems', 'component', undefined], ['frauen', 'head', 'Frau']]);
+    expect(rs[0].gloss).toBeUndefined();
+    expect(an('Zeitungen').every((r) => r.lemma === 'Zeitung' && r.lemmaKnown)).toBe(true);
+    expect(an('Xfrauen').some((r) => r.parts?.some((p) => p.kind === 'head'))).toBe(false);
+  });
+});
+
 describe('real lexicon: every entry', () => {
   it('every noun generates forms: none empty, none repeated, a paradigm with a nominative', () => {
     for (const n of lex.allNouns()) {

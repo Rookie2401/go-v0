@@ -6,7 +6,7 @@ import type { DeCell, DeClosedForm, DeContraction, DeLexiconView, DeReading } fr
 import { morphOfCells } from './types';
 import { describeGermanMorph } from './morph-describe';
 import { deriveReadings, oldEnding } from './morph-derived';
-import { guessReadings } from './morph-guess';
+import { buildPluralHeads, guessReadings, type PluralHeads } from './morph-guess';
 import { adjectiveEntries, nounEntries, type Entry } from './morph-readings';
 import { capitalise, isCapitalised } from './morph-util';
 import { conjugateFull } from './morph-verb';
@@ -19,6 +19,8 @@ interface Index {
   lower: Map<string, DeReading[]>;
   /** Finished answers by written form (bounded). */
   cache: Map<string, DeReading[]>;
+  /** Plural forms of the known nouns, built the first time an unknown capitalised word needs them. */
+  heads?: PluralHeads;
 }
 
 const INDEXES = new WeakMap<DeLexiconView, Index>();
@@ -149,7 +151,10 @@ function compute(word: string, lex: DeLexiconView, idx: Index): DeReading[] {
     return own;
   }
   const derived = deriveReadings(word, lex, (w) => listed(w, lex, idx));
-  return derived.length ? derived : guessReadings(word);
+  if (derived.length) return derived;
+  if (!isCapitalised(word)) return guessReadings(word);
+  idx.heads ??= buildPluralHeads(lex.allNouns());
+  return guessReadings(word, idx.heads, (front) => listed(front, lex, idx).length > 0);
 }
 
 function clone(r: DeReading): DeReading {

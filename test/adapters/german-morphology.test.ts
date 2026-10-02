@@ -1109,6 +1109,86 @@ describe('an unlisted separable verb: prefix + a form of a known verb', () => {
   });
 });
 
+describe('guesses for verbs in -ieren and in -eln / -ern', () => {
+  const sigs = (w: string) => an(w).map((r) => `${r.lemma}|${r.morph.VerbForm}|${r.morph.Tense ?? ''}|${r.morph.Person ?? ''}${r.morph.Number ?? ''}|${r.confidence}`);
+
+  it('-iert: the participle (no ge-) AND the finite 3rd singular / 2nd plural of a verb in -ieren', () => {
+    for (const [w, lemma] of [['renoviert', 'renovieren'], ['funktioniert', 'funktionieren'], ['organisiert', 'organisieren'], ['fotografiert', 'fotografieren']] as const) {
+      expect(sigs(w), w).toEqual([`${lemma}|Part|Past||0.55`, `${lemma}|Fin|Pres|3Sing|0.5`, `${lemma}|Fin|Pres|2Plur|0.45`]);
+      expect(an(w).every((r) => !r.lemmaKnown && r.confidence <= 0.6 && r.gloss === undefined && /guess/.test(r.rule)), w).toBe(true);
+    }
+  });
+
+  it('-ierte, -ierten, -ierst, -iere, -ierend, -ieren: forms of a verb in -ieren', () => {
+    expect(an('fotografierte')[0]).toMatchObject({ lemma: 'fotografieren', morph: { Tense: 'Past', Person: '1,3', Number: 'Sing' } });
+    expect(an('fotografierten').find((r) => r.morph.Tense === 'Past')!.lemma).toBe('fotografieren');
+    expect(an('fotografierst')[0]).toMatchObject({ lemma: 'fotografieren', morph: { Person: '2', Number: 'Sing' } });
+    expect(an('fotografiere').find((r) => r.pos === 'VERB')!.lemma).toBe('fotografieren');
+    expect(an('fotografierend')[0]).toMatchObject({ lemma: 'fotografieren', morph: { VerbForm: 'Part', Tense: 'Pres' } });
+    expect(an('fotografieren')[0]).toMatchObject({ lemma: 'fotografieren', morph: { VerbForm: 'Inf' } });
+    for (const w of ['renoviert', 'renovierte', 'renovierst', 'renovierend']) expect(an(w).some((r) => r.lemma === 'renoviern'), w).toBe(false);
+  });
+
+  it('-n only after an unstressed -el / -er: klingeln, feiern, dauern, zittern; never after consonant + -ier', () => {
+    for (const [w, lemma] of [['klingelt', 'klingeln'], ['feiert', 'feiern'], ['dauert', 'dauern'], ['zittert', 'zittern'], ['steuert', 'steuern'], ['klingelte', 'klingeln'], ['feierte', 'feiern']] as const) {
+      const rs = an(w);
+      expect(rs.some((r) => r.lemma === lemma && r.pos === 'VERB'), w).toBe(true);
+      expect(rs.some((r) => /^(klingelen|feieren|daueren|zitteren|steueren)$/.test(r.lemma)), w).toBe(false);
+    }
+    expect(an('studiert').every((r) => r.lemmaKnown && r.lemma === 'studieren')).toBe(true); // listed in the fixture: stays the listed reading
+  });
+
+  it('a listed -ieren verb keeps its listed readings', () => {
+    const rs = an('probiert');
+    expect(rs.every((r) => r.lemma === 'probieren' && r.lemmaKnown && r.confidence >= 0.8)).toBe(true);
+    expect(rs.some((r) => r.morph.VerbForm === 'Part')).toBe(true);
+  });
+});
+
+describe('an unknown plural noun whose head is a known noun', () => {
+  const head = (w: string) => an(w)[0];
+
+  it('Haremsfrauen: the front is not claimed, the head gives lemma, gender and cells', () => {
+    const rs = an('Haremsfrauen');
+    expect(rs[0]).toMatchObject({ lemma: 'Haremsfrau', pos: 'NOUN', lemmaKnown: false, confidence: 0.55, morph: { Case: 'Nom,Acc,Dat,Gen', Gender: 'Fem', Number: 'Plur' } });
+    expect(rs[0].gloss).toBeUndefined();
+    expect(rs[0].cells).toEqual([{ c: 'N', g: 'p' }, { c: 'A', g: 'p' }, { c: 'D', g: 'p' }, { c: 'G', g: 'p' }]);
+    expect(rs[0].parts).toEqual([
+      { text: 'Harems', start: 0, end: 6, kind: 'component', role: 'front part: not a known word' },
+      { text: 'frauen', start: 6, end: 12, lemma: 'Frau', pos: 'NOUN', kind: 'head', role: 'head noun: frau' },
+    ]);
+    expect(rs[0].parts![0].lemma).toBeUndefined();
+    expect(rs[0].rule).toMatch(/front part Harems is not a known word/);
+    expect(rs.length).toBeLessThanOrEqual(4);
+    expect(rs.filter((r) => r.lemma === 'Haremsfrau')).toHaveLength(1); // the ending-stripping guess does not repeat it
+    expect(rs.every((r) => !r.lemmaKnown && r.confidence <= 0.6)).toBe(true);
+  });
+
+  it('other known plurals: Häuser, Kinder, Männer, Bücher, and a dative plural', () => {
+    expect(head('Harems' + 'kinder')).toMatchObject({ lemma: 'Haremskind', morph: { Case: 'Nom,Acc,Gen', Gender: 'Neut', Number: 'Plur' } });
+    expect(head('Stuhlmänner')).toMatchObject({ lemma: 'Stuhlmann', morph: { Gender: 'Masc', Number: 'Plur' } });
+    expect(head('Stuhlbücher')).toMatchObject({ lemma: 'Stuhlbuch' });
+    expect(head('Haremshäuser')).toMatchObject({ lemma: 'Haremshaus', morph: { Gender: 'Neut', Number: 'Plur' } });
+    expect(head('Haremshäusern')).toMatchObject({ lemma: 'Haremshaus', morph: { Case: 'Dat', Number: 'Plur' } });
+    // a front that is itself a word of the list is said to be one, and still not claimed
+    const known = an('Hausfrauen')[0];
+    expect(known.lemma).toBe('Hausfrau');
+    expect(known.rule).toMatch(/front part Haus is a word of the list/);
+    expect(known.parts![0].lemma).toBeUndefined();
+  });
+
+  it('NEGATIVE: a front under three letters, no noun row for the head, a spelling that could be singular, a listed word', () => {
+    expect(an('Xfrauen').some((r) => r.parts?.some((p) => p.kind === 'head'))).toBe(false);
+    expect(an('Abfrauen').some((r) => r.parts?.some((p) => p.kind === 'head'))).toBe(false);
+    expect(an('Haremsblorfen').some((r) => r.parts?.some((p) => p.kind === 'head'))).toBe(false);
+    expect(an('Haremslehrer').some((r) => r.parts?.some((p) => p.kind === 'head'))).toBe(false); // Lehrer is also the singular
+    expect(an('Taxistudenten').some((r) => r.parts?.some((p) => p.kind === 'head'))).toBe(false); // Studenten is also a singular form
+    expect(an('Frauen').every((r) => r.lemmaKnown && r.lemma === 'Frau')).toBe(true);
+    expect(an('Kinder').every((r) => r.lemmaKnown)).toBe(true);
+    expect(an('Haremsfrau').some((r) => r.parts?.some((p) => p.kind === 'head'))).toBe(false); // a singular is not a plural head
+  });
+});
+
 describe('describeGermanMorph', () => {
   const d = describeGermanMorph;
   it('nouns, adjectives and unions', () => {

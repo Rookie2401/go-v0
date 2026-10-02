@@ -1,6 +1,6 @@
 /// <reference types="node" />
 /**
- * npm run sq:eval-ud -- --treebank <dir-or-file.conllu> --split dev|test [--show N] [--name STAF]
+ * npm run sq:eval-ud -- --treebank <dir-or-file.conllu> --split dev|test [--show N] [--name STAF] [--dict public/dict]
  *
  * How far does the Albanian adapter agree with a Universal Dependencies treebank (UD_Albanian-STAF, UD_Albanian-TSA,
  * UD_Gheg-GPS)? For each sentence of the chosen split the adapter tokenizes the text and analyses it, and the result
@@ -19,6 +19,10 @@
  *     owner's permission into data/research/ud/ (git-ignored), never bundled, never shown to a learner, never copied
  *     into data/corpus/. This script reads them and writes nothing.
  *
+ * With `--dict <dir>` the readings are those the IMPORTER would store with the dictionary installed under <dir>/sq
+ * (words the adapter cannot read are looked up, guessed lemmas are checked against it): the same comparison, so the two
+ * runs show what the dictionary changes on running prose. The sentences are planned in memory and nothing is written.
+ *
  * Held-out discipline: sentences are split by a stable hash of `sent_id` (even = dev, odd = test). `dev` may be looked
  * at and tuned on, with `--show N` listing examples. `test` is reported as it comes, `--show` is refused for it (and
  * the tables that would print words from it are withheld): its failures are not to be looked at.
@@ -29,11 +33,15 @@
 import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { createAdapterRegistry } from '../src/adapters';
+import type { AnalyzedToken, RawToken } from '../src/core';
+import type { CorpusDocument } from '../src/ingest/format';
+import { createFileLexiconSource } from '../src/dict/file';
+import { planWithDictionary } from '../src/ingest/import';
 import { parseConllu, type UdSentence } from '../src/bench/sq/conllu';
-import { compareWithTreebank, type Split } from '../src/bench/sq/compare';
+import { compareWithTreebank, splitOf, type ComparableAdapter, type Split } from '../src/bench/sq/compare';
 import { formatReport } from '../src/bench/sq/report';
 
-const USAGE = 'usage: npm run sq:eval-ud -- --treebank <dir-or-file.conllu> --split dev|test [--show N] [--name STAF]';
+const USAGE = 'usage: npm run sq:eval-ud -- --treebank <dir-or-file.conllu> --split dev|test [--show N] [--name STAF] [--dict public/dict]';
 const args = process.argv.slice(2).filter((a) => a !== '--');
 const opt = (k: string): string | undefined => { const i = args.indexOf(`--${k}`); return i >= 0 ? args[i + 1] : undefined; };
 const die = (message: string): never => { console.error(message); process.exit(1); };
@@ -67,7 +75,8 @@ for (const f of files) {
 }
 
 const name = opt('name') ?? path.basename(treebank!.replace(/[\\/]+$/, ''));
-const adapter = createAdapterRegistry().get('sq');
+const registry = createAdapterRegistry();
+const adapter = registry.get('sq');
 const tokenCount = sentences.reduce((n, s) => n + s.tokens.length, 0);
 
 console.log(`treebank ${name}: ${files.length} file(s), ${sentences.length} sentences, ${tokenCount} surface tokens (punctuation included)`);
@@ -75,5 +84,34 @@ console.log(`adapter ${adapter.name} (${adapter.lang}) version ${adapter.version
 console.log('a treebank is research material and not ground truth; see the header of scripts/sq-eval-ud.mts');
 console.log('');
 
-const result = compareWithTreebank(sentences, adapter, { split: split as Split, show, name });
+// with a dictionary: the importer's readings of each sentence, planned in memory (nothing is written, nothing kept)
+let compared: ComparableAdapter = adapter;
+const dictDir = opt('dict');
+if (dictDir) {
+  const source = createFileLexiconSource(dictDir, 'sq');
+  const info = await source.info();
+  if (!info) die(`no Albanian dictionary under ${dictDir}/sq (build one with npm run dict:build)`);
+  const chosen = sentences.filter((s) => splitOf(s.id) === split);
+  const docs = chosen.map((s, i) => ({
+    schemaVersion: 2, id: `ud-${i}`, lang: 'sq', title: 'treebank sentence', contentType: 'article',
+    source: { id: `src:sq:ud-${i}`, title: 'treebank sentence', rights: 'research-only', attribution: 'Universal Dependencies', licenseNote: 'CC BY-SA 4.0' },
+    review: { status: 'unreviewed' },
+    sections: [{ paragraphs: [{ sentences: [{ text: s.text }] }] }],
+  })) as unknown as CorpusDocument[];
+  const { plans } = await planWithDictionary(docs, registry, () => source);
+  const key = (tokens: RawToken[]): string => tokens.map((t) => t.surface).join('\u0001');
+  const planned = new Map<string, AnalyzedToken[]>();
+  let fromDictionary = 0, decided = 0, lemmaOnly = 0, joined = 0;
+  for (const p of plans) {
+    planned.set(key(p.sentences.flatMap((x) => x.tokens)), p.sentences.flatMap((x) => x.analyzed));
+    fromDictionary += p.dictionary?.tokens ?? 0; decided += p.dictionary?.decided ?? 0; lemmaOnly += p.dictionary?.lemmaOnly ?? 0; joined += p.dictionary?.joined ?? 0;
+  }
+  let missed = 0;
+  compared = { ...adapter, analyze: (tokens) => { const hit = planned.get(key(tokens)); if (!hit || hit.length !== tokens.length) { missed++; return adapter.analyze(tokens); } return hit; } };
+  console.log(`dictionary ${info!.id}: ${fromDictionary} word(s) read from it alone, ${decided} guessed word(s) it decided, ${lemmaOnly} guessed lemma(s) it lists, ${joined} word(s) with a dictionary reading beside the adapter's`);
+  process.on('exit', () => { if (missed) console.log(`(${missed} sentence(s) fell back to the adapter alone: the importer split them differently)`); });
+  console.log('');
+}
+
+const result = compareWithTreebank(sentences, compared, { split: split as Split, show, name });
 for (const l of formatReport(result)) console.log(l);

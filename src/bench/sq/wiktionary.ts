@@ -132,6 +132,35 @@ export function hasConsistentTable(e: KaikkiEntry, pos: string): boolean {
   return true;
 }
 
+/**
+ * The single-word cells of an entry's inflection table, with the source's own labels — only for an entry whose table
+ * agrees with its head line (`hasConsistentTable`), only Standard cells, and not the cell that is the headword itself.
+ * For `npm run sq:dict-expand`, which writes each cell as an "X of Y" line so that a dictionary built from the extract
+ * also knows the inflected forms the tables give.
+ */
+export function kaikkiTableCells(e: KaikkiEntry): Array<{ form: string; tags: string[] }> {
+  const pos = POS[e.pos ?? ''];
+  if (!pos || !e.word || /\s/.test(e.word.trim()) || !hasConsistentTable(e, pos)) return [];
+  const senses = e.senses ?? [];
+  if (senses.length > 0 && senses.every((s) => s.form_of?.length)) return [];
+  const word = plain(e.word);
+  const forms = e.forms ?? [];
+  const at = forms.findIndex((f) => (f.tags ?? []).includes('inflection-template'));
+  const out: Array<{ form: string; tags: string[] }> = [];
+  const seen = new Set<string>();
+  for (const f of forms.slice(at + 1)) {
+    const tags = f.tags ?? [];
+    if (!f.form || f.form === '-' || !kaikkiTagsToMorph(tags)) continue;
+    const form = cellForm(f.form, tags, pos);
+    if (!form || form === word) continue;
+    const key = `${form}|${[...tags].sort().join(' ')}`;
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push({ form, tags: [...tags] });
+  }
+  return out;
+}
+
 /** Every statement one entry makes about a written form: [normalized form, reading]. */
 export function kaikkiEntryReadings(e: KaikkiEntry): Array<[string, WiktReading]> {
   const pos = POS[e.pos ?? ''];

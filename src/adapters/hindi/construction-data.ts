@@ -102,3 +102,11 @@ export const HINDI_CONSTRUCTION_TABLE: Readonly<Record<string, HindiConstruction
   'auxiliary-chain': c('verb groups', 'A chain of helping verbs',
     'A main verb can be followed by several helpers, each adding a layer: कर रहा था is the stem + रहा + था "was doing"; कह चुका है is "has already said".'),
 };
+
+/**
+ * Constructions that turn up in about one word in twenty of ordinary text (measured on the bundled Hindi texts: the
+ * postposition after a noun about one word in seven, the perfective past about one in seventeen). They are real and may be
+ * explained on request, but a learner record that lists every occurrence is noise: the learner model should count them
+ * once per text, or not as evidence of anything. Detection is unchanged; this is a mark the consumer may read.
+ */
+export const HINDI_UBIQUITOUS_CONSTRUCTIONS: ReadonlySet<string> = new Set(['postposition-after-noun', 'perfective-past']);

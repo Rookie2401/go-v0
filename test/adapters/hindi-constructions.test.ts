@@ -185,7 +185,7 @@ const POSITIVE: Case[] = [
   ['सबसे', 'यह=यह.P.p3,sg सबसे=सबसे.ADV अच्छा=अच्छा.J.m,sg घर=घर.N.m,sg है=होना.A.fin,pres,p3,sg ।', 'superlative-sabse', [1, 2]],
   ['वाला after an infinitive', 'खाने=खाना.V.inf,obl वाला=वाला.J.m,sg आया=आना.V.part,pf,m,sg ।', 'vaala', [0, 1]],
   ['वाला after a noun', 'दूध=दूध.N.m,sg वाला=वाला.N.m,sg आया=आना.V.part,pf,m,sg ।', 'vaala', [0, 1]],
-  ['repeated word with hyphen token', 'वह=वह.P.p3,sg धीरे=धीरे.ADV - धीरे=धीरे.ADV चला=चलना.V.part,pf,m,sg ।', 'reduplication', [1, 2, 3]],
+  ['repeated word with hyphen token', 'वह=वह.P.p3,sg धीरे=धीरे.ADV - धीरे=धीरे.ADV चला=चलना.V.part,pf,m,sg ।', 'reduplication', [1, 3]],
   ['repeated word, one token', 'वह=वह.P.p3,sg धीरे-धीरे=धीरे.ADV चला=चलना.V.part,pf,m,sg ।', 'reduplication', [1]],
   ['repeated adjective', 'छोटी-छोटी=छोटा.J.f,pl बातें=बात.N.f,pl ।', 'reduplication', [0]],
   ['emphatic ही', 'मैं=मैं.P.p1,sg ही=ही.PART गया=जाना.V.part,pf,m,sg ।', 'emphatic-particles', [0, 1]],

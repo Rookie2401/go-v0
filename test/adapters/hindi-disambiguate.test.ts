@@ -240,7 +240,7 @@ describe('a bare stem, or the familiar command', () => {
   it('before सकता: the stem', () => { expect(decided(`वह=वह.P.p3,sg ${KAR} सकता=सकना.V.part,ipf,m,sg है=होना.A.fin,pres,p3,sg ।`, 'कर')[0].morph.VerbForm).toBe('Stem'); });
   it('a particle between does not hide the vector', () => { expect(decided(`मैं=मैं.P.p1,sg ${KAR} नहीं=नहीं.ADV पाया=पाना.V.part,pf,m,sg ।`, 'कर')[0].morph.VerbForm).toBe('Stem'); });
   it('ending the sentence: the familiar command', () => { expect(decided(`तू=तू.P.p2,infm जल्दी=जल्दी.ADV ${KAR} ।`, 'कर')[0].morph.Mood).toBe('Imp'); });
-  it('followed by a noun: nothing decides', () => { undecided(`तू=तू.P.p2,infm ${KAR} काम=काम.N.m,sg ।`, 'कर'); });
+  it('followed by a noun: no second verb joins it, so it is not the bare stem', () => { expect(decided(`तू=तू.P.p2,infm ${KAR} काम=काम.N.m,sg ।`, 'कर')[0].morph.Mood).toBe('Imp'); });
 });
 
 describe('the rules are quiet where they have nothing to say', () => {

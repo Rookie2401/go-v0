@@ -128,7 +128,9 @@ export function verbalConstructions(c: Ctx): PatternCandidate[] {
     if (f.obligation) {
       const dat = dativeBefore(c, g);
       const withBe = g.elems[1]?.lemma === 'होना';
-      out.push(hit('obligation', t * (dat.length || !withBe ? 1 : 0.75), [...dat, ...idx(g)]));
+      // "X है" with no person with को and a word that may as well be a noun (रसोई में खाना है) is not an obligation
+      const maybeNoun = c.cands(g.main.i).some((r) => r.pos === 'NOUN' && r.confidence >= g.main.c.confidence);
+      if (!(withBe && !dat.length && maybeNoun)) out.push(hit('obligation', t * (dat.length || !withBe ? 1 : 0.75), [...dat, ...idx(g)]));
       dat.forEach((d) => koUsed.add(d));
     }
     if (f.beginning || f.letting) out.push(hit('oblique-infinitive', t, [g.main.i, g.elems[1].i]));

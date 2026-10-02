@@ -10,7 +10,9 @@
  * construction-clauses.ts. A detector fires only where the words it reads are analysed, and reports a confidence.
  */
 import type { AnalyzedToken, PatternCandidate, RawToken } from '../../core';
-import { HINDI_CONSTRUCTION_TABLE } from './construction-data';
+import { HINDI_CONSTRUCTION_TABLE, HINDI_UBIQUITOUS_CONSTRUCTIONS } from './construction-data';
+
+export { HINDI_UBIQUITOUS_CONSTRUCTIONS };
 import { makeCtx } from './construction-ctx';
 import {
   adjectiveNounAgreement, comparisonAndSuperlative, emphaticParticles, existencePossession, genitiveAgreement,

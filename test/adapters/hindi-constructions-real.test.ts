@@ -178,3 +178,12 @@ describe('compound verbs and sentences taken from the bundled texts keep their k
     expect(run(s).pats).toEqual(run(s).pats);
   });
 });
+
+describe('constructions that occur in nearly every sentence are marked', async () => {
+  const { HINDI_UBIQUITOUS_CONSTRUCTIONS, HINDI_CONSTRUCTIONS } = await import('../../src/adapters/hindi/constructions');
+  it('the mark names real keys and includes the postposition after a noun', () => {
+    for (const k of HINDI_UBIQUITOUS_CONSTRUCTIONS) expect(HINDI_CONSTRUCTIONS[k], k).toBeDefined();
+    expect(HINDI_UBIQUITOUS_CONSTRUCTIONS.has('postposition-after-noun')).toBe(true);
+    expect(HINDI_UBIQUITOUS_CONSTRUCTIONS.has('progressive')).toBe(false);
+  });
+});

@@ -238,7 +238,7 @@ describe('the other languages are unchanged apart from origin and sourceId', () 
     const store = createMemoryStore();
     const reg = bareRegistry;
     expect((await importDocuments(store, reg, docs, { clock })).ok).toBe(true);
-    const allowed = new Set(['id', 'tokenId', 'lang', 'lemmaId', 'pos', 'morph', 'notes', 'gloss', 'register', 'role', 'definition', 'confidence', 'provenance', 'origin', 'sourceId', 'analyzer', 'createdAt', 'supersedes', 'alternatives', 'parts', 'varieties']); // (parts and varieties: stated by the Spanish adapter since contract v7)
+    const allowed = new Set(['id', 'tokenId', 'lang', 'lemmaId', 'pos', 'morph', 'notes', 'gloss', 'register', 'role', 'definition', 'confidence', 'provenance', 'origin', 'sourceId', 'analyzer', 'createdAt', 'supersedes', 'alternatives', 'parts', 'varieties', 'unit', 'orthography']); // (parts and varieties: stated by the Spanish adapter since contract v7; unit and orthography: by the German adapter since contract v9)
     const allowedAlt = new Set(['lemmaId', 'pos', 'morph', 'confidence', 'origin', 'sourceId']);
     const rows = await store.analyses.all();
     expect(rows.length).toBeGreaterThan(300);

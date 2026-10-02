@@ -117,14 +117,24 @@ describe('dictionary formOf: the inflected form is analysed as its lemma', () =>
     expect(await store.lemmas.get(ids.lemma('es', FORM, 'VERB'))).toBeUndefined();
   });
 
-  it('beside a word the adapter analyses, a form-of entry changes nothing but the marker; and the plan signature follows the dictionary id', async () => {
-    const hand = withAnalyze((tokens) => tokens.map((token) => ({ token, analyzer: 'adapter-es@t', candidates: token.isWord ? [{ lemma: 'cosa', pos: 'NOUN' as const, morph: {}, confidence: 1, gloss: 'thing' }] : [] })));
+  it('beside a word the adapter analyses, a form-of entry changes nothing but the marker when the adapter cannot reorder; and the plan signature follows the dictionary id', async () => {
+    const analyze = (tokens: RawToken[]): AnalyzedToken[] => tokens.map((token) => ({ token, analyzer: 'adapter-es@t', candidates: token.isWord ? [{ lemma: 'cosa', pos: 'NOUN' as const, morph: {}, confidence: 1, gloss: 'thing' }] : [] }));
+    // an adapter that cannot order readings by context (no `refine`): the entry is never copied onto the token
+    const hand = withAnalyze(analyze, { refine: undefined });
     const store = createMemoryStore();
     await importDocuments(store, hand, [oneWord()], { clock, lexicon: lexicon([inflected]) });
     const [a] = await store.analyses.all();
     expect(a).toMatchObject({ lemmaId: ids.lemma('es', 'cosa', 'NOUN'), origin: 'hand' });
     expect(a.alternatives).toBeUndefined();
     expect(a.notes).toMatchObject({ dictionary: 'es-dict@1', respelling: 'zzz', pronunciationSource: 'es-dict@1' });
+
+    // an adapter that can (PLAN10, joined readings): the dictionary's reading of ANOTHER word joins, after the adapter's own and below it
+    const refining = withAnalyze(analyze, { refine: (_tokens, analyzed) => analyzed });
+    const store2 = createMemoryStore();
+    await importDocuments(store2, refining, [oneWord()], { clock, lexicon: lexicon([inflected]) });
+    const [b] = await store2.analyses.all();
+    expect(b).toMatchObject({ lemmaId: ids.lemma('es', 'cosa', 'NOUN'), origin: 'hand', analyzer: 'adapter-es@t' });
+    expect(b.alternatives).toEqual([expect.objectContaining({ lemmaId: ids.lemma('es', 'zzzlemma', 'VERB'), origin: 'dictionary', confidence: 0.45 })]);
 
     const map = new Map([[FORM, [inflected]]]);
     expect(planDocument(oneWord(), none, { dictionary: map, dictionaryId: 'a' }).signature).not.toBe(planDocument(oneWord(), none, { dictionary: map, dictionaryId: 'b' }).signature);

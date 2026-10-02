@@ -229,6 +229,19 @@ describe('entryFromKaikki: variants and skips', () => {
     expect(e.register).toEqual(['colloquial']);
   });
 
+  it('a form-of target written as a description ("X combined with …") is the form of its first word', () => {
+    const esLine = (form_of: unknown[], tags: string[] = ['form-of', 'infinitive']) => ({ word: 'decírselo', pos: 'verb', lang_code: 'es', senses: [{ glosses: ['label'], tags, form_of }] });
+    const es = (line: unknown) => entryFromKaikki(line, (s) => s.toLowerCase(), 'es')[0];
+    expect(es(esLine([{ word: 'decir combined with indirect object le/les and direct object lo' }])).formOf).toEqual([{ lemma: 'decir', tags: ['form-of', 'infinitive'] }]);
+    // the rest is kept out of the lemma and nothing is put in its place; the same lemma with the same labels is listed once
+    expect(es(esLine([{ word: 'Dar combined with lo' }, { word: 'dar combined with indirect object le' }, { word: 'dar' }])).formOf).toEqual([{ lemma: 'dar', tags: ['form-of', 'infinitive'] }]);
+    // only that wording, and only after a single first word: any other target is kept whole
+    expect(es(esLine([{ word: 'dar a luz' }])).formOf).toEqual([{ lemma: 'dar a luz', tags: ['form-of', 'infinitive'] }]);
+    expect(es(esLine([{ word: 'dar a luz combined with lo' }])).formOf).toEqual([{ lemma: 'dar a luz combined with lo', tags: ['form-of', 'infinitive'] }]);
+    expect(es(esLine([{ word: 'combined with lo' }])).formOf).toEqual([{ lemma: 'combined with lo', tags: ['form-of', 'infinitive'] }]);
+    expect(es(esLine([{ word: 'decircombined with lo' }])).formOf).toEqual([{ lemma: 'decircombined with lo', tags: ['form-of', 'infinitive'] }]);
+  });
+
   it('says why a line produced nothing', () => {
     expect(mapKaikkiLine(null, id).skipped).toBe('not-an-object');
     expect(mapKaikkiLine([1], id).skipped).toBe('not-an-object');

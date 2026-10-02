@@ -29,6 +29,9 @@ const UNIT_ROLES: Record<string, string> = {
   phrase: 'phrase', proverb: 'proverb', prep_phrase: 'prepositional phrase', prefix: 'prefix', suffix: 'suffix', infix: 'infix',
 };
 
+/** How the source continues a form-of target that describes a verb with attached pronouns, after the verb itself. */
+const COMBINED_WITH = ' combined with';
+
 /** Headings that are not words at all (a letter, a symbol, punctuation): kept out of word analysis, but counted. */
 const NON_WORD_POS = new Set(['character', 'symbol', 'punct']);
 
@@ -181,7 +184,11 @@ export function mapKaikkiLine(line: unknown, normalize: (surface: string) => str
     const lemmas = list(s.form_of).map((f) => (isObj(f) ? str(f.word) : undefined)).filter((w): w is string => w !== undefined);
     if (lemmas.length) {
       const tags = labelsOf(s);
-      for (const w of lemmas) {
+      for (const target of lemmas) {
+        // a verb with attached pronouns names its lemma as a description ("decir combined with indirect object le/les and
+        // direct object lo"): the lemma is the first word; the description is not a headword and nothing is put in its place
+        const at = target.indexOf(COMBINED_WITH);
+        const w = at > 0 && !/\s/.test(target.slice(0, at)) ? target.slice(0, at) : target;
         let lemma = w;
         try { lemma = normalize(w) || w; } catch { /* keep the source's spelling */ }
         if (!formOf.some((f) => f.lemma === lemma && sameList(f.tags, tags))) formOf.push({ lemma, tags });

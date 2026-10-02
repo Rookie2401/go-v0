@@ -27,7 +27,7 @@ interface Info { title: string; explanation: string }
 export const GERMAN_CONSTRUCTION_INFO: Readonly<Record<string, Info>> = {
   'verb-second-inversion': {
     title: 'Verb second: something else comes first',
-    explanation: 'The conjugated verb is always the second element of a main clause. When something other than the subject comes first, the subject moves behind the verb: "Heute gehe ich nach Hause" (today go I home).',
+    explanation: 'The conjugated verb is always the second element of a main clause. When something other than the subject comes first, the subject moves behind the verb: "Heute gehe ich nach Hause" (today go I home). A whole clause in front counts as the first element too: "Wenn er kommt, gehe ich."',
   },
   'verb-final-subordinate': {
     title: 'Subordinate clause: verb last',
@@ -47,7 +47,7 @@ export const GERMAN_CONSTRUCTION_INFO: Readonly<Record<string, Info>> = {
   },
   passive: {
     title: 'Passive: werden + past participle',
-    explanation: 'Werden plus a past participle says what is done to the subject: "Das Haus wird gebaut" (the house is being built). The doer, if named, comes with von: "von den Arbeitern".',
+    explanation: 'Werden plus a past participle says what is done to the subject: "Das Haus wird gebaut" (the house is being built). The doer, if named, comes with von: "von den Arbeitern". With an infinitive the participle comes first: "Das Haus muss gebaut werden".',
   },
   'passive-past': {
     title: 'Passive in the past: wurde + past participle',
@@ -297,11 +297,16 @@ const CONTRACTIONS: Record<string, [string, 'Acc' | 'Dat']> = {
 
 const clip = (n: number): number => Math.max(0, Math.min(0.95, Math.round(n * 100) / 100));
 
-function hit(key: string, confidence: number, tokenIndexes: number[], extra = ''): PatternCandidate {
+/**
+ * One occurrence of a construction. The explanation is the CONSTRUCTION's, word for word: the importer stores it once per
+ * construction and shows it on every occurrence, so nothing about this one sentence may be written into it (a remark such
+ * as "here the case is accusative: an ihn" was shown on every other sentence that has the construction).
+ */
+function hit(key: string, confidence: number, tokenIndexes: number[]): PatternCandidate {
   const info = GERMAN_CONSTRUCTION_INFO[key];
   const seen = new Set<number>();
   const idx = tokenIndexes.filter((i) => (seen.has(i) ? false : (seen.add(i), true)));
-  return { key, title: info.title, explanation: extra ? `${info.explanation} ${extra}` : info.explanation, tokenIndexes: idx, confidence: clip(confidence) };
+  return { key, title: info.title, explanation: info.explanation, tokenIndexes: idx, confidence: clip(confidence) };
 }
 
 type Detector = (ctx: Ctx) => PatternCandidate[];
@@ -338,7 +343,7 @@ const verbSecond: Detector = (ctx) => {
       // a main clause after a fronted subordinate clause: "Wenn er kommt, gehe ich …"
       const before = ctx.clauses[ci - 1];
       if (!before || cl.before.trim() !== ',' || ctx.c(before.words[0])?.pos !== 'SCONJ') return;
-      out.push(hit('verb-second-inversion', base - 0.05, [ws[v], subjectIndex], 'Here the whole clause in front counts as the first element.'));
+      out.push(hit('verb-second-inversion', base - 0.05, [ws[v], subjectIndex]));
       return;
     }
     // what stands in front must not be able to be the subject itself
@@ -454,7 +459,7 @@ const brackets: Detector = (ctx) => {
       }
       if (pp === undefined || pp > w) return; // the participle stands in front: gebaut werden
       claimed.add(pp);
-      out.push(hit('passive', conf(a, ctx.c(pp)), [w, pp], 'With the verb at the end the participle comes first: "Das Haus muss gebaut werden", "Das Haus wird gebaut werden", "…, dass das Haus gebaut werden soll".'));
+      out.push(hit('passive', conf(a, ctx.c(pp)), [w, pp]));
     });
     ws.forEach((w, pos) => {
       const a = ctx.c(w);
@@ -515,7 +520,7 @@ const separable: Detector = (ctx) => {
     if (!t.isWord || !c || !unit || unit.head !== i) return;
     const pieces = [...new Set(unit.pieces)].filter((p) => p !== i && p >= 0 && p < ctx.tokens.length);
     if (!pieces.length) return;
-    out.push(hit('separable-prefix-verb', c.confidence, [i, ...pieces], unit.display ? `Here: ${unit.display}.` : ''));
+    out.push(hit('separable-prefix-verb', c.confidence, [i, ...pieces])); // which verb it is: the unit line of the word sheet
   });
   return out;
 };
@@ -629,18 +634,13 @@ const prepositions: Detector = (ctx) => {
     const kase = contracted ? [contracted] : nominal(nc) ? set(nc, 'Case') : [];
     if (!kase.length || kase.length >= 4) return; // a form that is every case (Brötchen) says nothing about the preposition
     const idx = together ? [i, nx] : [i];
-    const shown = together ? `"${t.surface} ${ctx.tokens[nx].surface}"` : `"${t.surface}"`;
     const sure = kase.length === 1 ? (contracted ? 0.8 : 0.85) : 0.65;
     const base = Math.min(c.confidence, sure);
     if (DATIVE_PREPOSITIONS.has(lemma) && kase.includes('Dat')) out.push(hit('dative-after-preposition', base, idx));
     else if (ACCUSATIVE_PREPOSITIONS.has(lemma) && kase.includes('Acc')) out.push(hit('accusative-after-preposition', base, idx));
     else if (GENITIVE_PREPOSITIONS.has(lemma) && kase.includes('Gen') && !contracted) out.push(hit('genitive-preposition', base, idx));
-    else if (TWO_WAY_PREPOSITIONS.has(lemma) && kase.length === 1 && (kase[0] === 'Acc' || kase[0] === 'Dat')) {
-      const extra = kase[0] === 'Acc'
-        ? `Here the case is accusative: ${shown} says where something is going (movement or direction). With some verbs, warten auf or denken an for example, the accusative is simply part of the verb.`
-        : `Here the case is dative: ${shown} says where something is or happens (position).`;
-      out.push(hit('two-way-preposition', base - 0.05, idx, extra));
-    }
+    // which of the two cases it is here is on the word sheet of the noun (its morphology line), not in the construction's text
+    else if (TWO_WAY_PREPOSITIONS.has(lemma) && kase.length === 1 && (kase[0] === 'Acc' || kase[0] === 'Dat')) out.push(hit('two-way-preposition', base - 0.05, idx));
   });
   return out;
 };
@@ -846,7 +846,7 @@ const modalParticle: Detector = (ctx) => {
   ctx.tokens.forEach((t, i) => {
     const c = ctx.c(i);
     if (!t.isWord || c?.pos !== 'PART' || PARTICLE_KINDS[(c.lemma ?? ctx.n(i)).toLocaleLowerCase('de')] !== 'modal') return;
-    out.push(hit('modal-particle', Math.min(conf(c), 0.8), [i], c.role ? `Here "${t.surface}" works as a modal particle: ${c.role}.` : ''));
+    out.push(hit('modal-particle', Math.min(conf(c), 0.8), [i])); // what this particle does: its role on the word sheet
   });
   return out;
 };

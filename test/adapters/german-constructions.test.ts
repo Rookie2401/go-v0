@@ -267,14 +267,16 @@ describe('German constructions: the noun phrase and what governs it', () => {
     expect(run('für dem Mann', { für: C('ADP', 'für'), dem: C('DET', 'der', { Case: 'Dat' }) }).find('accusative-after-preposition')).toBeUndefined();
   });
 
-  it('two-way-preposition: says which case it is and what it means', () => {
+  it('two-way-preposition: found for the accusative and for the dative, with ONE explanation (the importer stores it once per construction)', () => {
     const dir = run('Ich gehe in den Garten.', { in: C('ADP', 'in'), den: C('DET', 'der', { Case: 'Acc' }) });
     expect(dir.find('two-way-preposition')?.tokenIndexes).toEqual([2, 3]);
-    expect(dir.find('two-way-preposition')?.explanation).toMatch(/accusative/);
-    expect(dir.find('two-way-preposition')?.explanation).toMatch(/going/);
     const place = run('Ich bin im Garten.', { im: C('ADP', 'in') });
-    expect(place.find('two-way-preposition')?.explanation).toMatch(/dative/);
-    expect(place.find('two-way-preposition')?.explanation).toMatch(/is or happens/);
+    // the same words on both: nothing about one sentence ("here the case is accusative: in den") may be in it, or it would
+    // be shown on every other sentence that has the construction (found in the browser audit: Psalm 23 showed "an ihn")
+    expect(place.find('two-way-preposition')?.explanation).toBe(dir.find('two-way-preposition')?.explanation);
+    expect(dir.find('two-way-preposition')?.explanation).toMatch(/dative for position/);
+    expect(dir.find('two-way-preposition')?.explanation).toMatch(/accusative for movement/);
+    expect(dir.find('two-way-preposition')?.explanation).not.toMatch(/Here /);
     // an undecided case says nothing
     expect(run('in der Stadt', { in: C('ADP', 'in'), der: C('DET', 'der', { Case: 'Nom,Dat,Gen' }) }).find('two-way-preposition')).toBeUndefined();
     expect(run('in den Garten', { in: C('ADP', 'in'), den: C('DET', 'der', { Case: 'Acc,Dat' }) }).find('two-way-preposition')).toBeUndefined();
@@ -378,7 +380,9 @@ describe('German constructions: the noun phrase and what governs it', () => {
   it('modal-particle: a PART reading with a role; zu and a plain adverb are not one', () => {
     const r = run('Komm doch mal her!', { doch: C('PART', 'doch', {}, { role: 'softens a request' }), mal: C('PART', 'mal', {}, { role: 'softens a request' }) });
     expect(r.all('modal-particle').map((p) => p.tokenIndexes)).toEqual([[1], [2]]);
-    expect(r.find('modal-particle')?.explanation).toMatch(/softens a request/);
+    // what THIS particle does is its role on the word sheet; the construction's explanation is the same for every particle
+    expect(r.find('modal-particle')?.explanation).not.toMatch(/softens a request|Here /);
+    expect(r.all('modal-particle')[0].explanation).toBe(r.all('modal-particle')[1].explanation);
     expect(run('Es ist doch so.', { doch: adv('doch') }).find('modal-particle')).toBeUndefined();
     expect(run('Es ist zu viel.', { zu: C('PART', 'zu') }).find('modal-particle')).toBeUndefined();
   });
@@ -997,4 +1001,24 @@ describe('German constructions: a verb-final als-clause', () => {
 afterAll(() => {
   const missing = GERMAN_CONSTRUCTION_KEYS.filter((k) => !fired.has(k));
   expect(missing).toEqual([]);
+});
+
+describe('a construction has one explanation', () => {
+  it('on the real adapter, every occurrence of a construction in the bundled texts carries the construction\'s own explanation, word for word', async () => {
+    const { deAdapter } = await import('../../src/adapters/de');
+    const { GERMAN_CONSTRUCTION_INFO } = await import('../../src/adapters/german/constructions');
+    const sentences = [
+      'Also hat Gott die Welt geliebt, daß er seinen eingeborenen Sohn gab, auf daß alle, die an ihn glauben, nicht verloren werden.',
+      'Ich werde bleiben im Hause des HERRN immerdar.', 'Anna steht jeden Morgen um sechs Uhr auf.', 'Komm doch mal her!', 'Wenn er kommt, gehe ich.', 'Das Haus muss gebaut werden.',
+    ];
+    let seen = 0;
+    for (const text of sentences) {
+      const tokens = deAdapter.tokenize(text);
+      for (const p of deAdapter.detectPatterns(tokens, deAdapter.analyze(tokens))) {
+        seen += 1;
+        expect(p.explanation, `${p.key} in "${text}"`).toBe(GERMAN_CONSTRUCTION_INFO[p.key].explanation);
+      }
+    }
+    expect(seen).toBeGreaterThan(8);
+  });
 });

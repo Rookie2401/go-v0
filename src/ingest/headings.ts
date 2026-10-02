@@ -142,6 +142,55 @@ export function hindiHeading(raw: string): Heading | undefined {
   return undefined;
 }
 
+// ── German headings ──
+
+// "Kapitel 1", "Kapitel IV", "Kapitel drei", "Teil 2: Die Reise", and the ordinal before the word: "1. Kapitel", "Erstes Kapitel",
+// "Zweiter Teil", "Drittes Buch", "IV. Kapitel", "Erster Aufzug".
+const GERMAN_WORD = '(?:kapitel|teil|buch|abschnitt|band|aufzug|akt|auftritt|szene)';
+const GERMAN_CARDINALS: Record<string, number> = {
+  eins: 1, zwei: 2, drei: 3, vier: 4, fünf: 5, sechs: 6, sieben: 7, acht: 8, neun: 9, zehn: 10, elf: 11, zwölf: 12, dreizehn: 13, vierzehn: 14,
+  fünfzehn: 15, sechzehn: 16, siebzehn: 17, achtzehn: 18, neunzehn: 19, zwanzig: 20,
+};
+const GERMAN_ORDINAL_STEMS: Record<string, number> = {
+  erst: 1, zweit: 2, dritt: 3, viert: 4, fünft: 5, sechst: 6, siebt: 7, siebent: 7, acht: 8, neunt: 9, zehnt: 10, elft: 11, zwölft: 12, dreizehnt: 13,
+  vierzehnt: 14, fünfzehnt: 15, sechzehnt: 16, siebzehnt: 17, achtzehnt: 18, neunzehnt: 19, zwanzigst: 20,
+};
+const GERMAN_AFTER = new RegExp(`^(${GERMAN_WORD})\\s+(\\d+|${ROMAN}|${Object.keys(GERMAN_CARDINALS).join('|')})(?![\\p{L}\\d])(.*)$`, 'iu');
+const GERMAN_BEFORE = new RegExp(`^(?:(\\d+)\\.|(${ROMAN})\\.|(${Object.keys(GERMAN_ORDINAL_STEMS).join('|')})e[rs]?)\\s+(${GERMAN_WORD})(?![\\p{L}\\d])(.*)$`, 'iu');
+
+/** A German chapter heading on a line of its own (+ a title after a separator). A sentence that begins with such words is not one. */
+export function germanHeading(line: string): Heading | undefined {
+  // the same rule as the Western forms: digits may be followed by a title after a space, anything else needs punctuation
+  const titleOf = (rest: string, afterDigits: boolean): string | undefined | false => {
+    if (rest === '') return undefined;
+    if (afterDigits ? !HEADING_SEPARATOR.test(rest) : !PUNCT_SEPARATOR.test(rest) && rest.trim() !== '') return false;
+    const title = rest.replace(/^[\s:：.\-–—)\]]+/u, '').trim();
+    return title.length > MAX_TITLE_LENGTH || /[.?!]$/u.test(title) ? false : title || undefined;
+  };
+  const numberOf = (digits: string | undefined, roman: string | undefined, word: number | undefined): number | undefined | false => {
+    if (digits) return Number(digits);
+    if (roman !== undefined) return roman !== '' && ROMAN_ONLY.test(roman.toUpperCase()) ? romanValue(roman.toUpperCase()) : false;
+    return word;
+  };
+  const a = GERMAN_AFTER.exec(line);
+  if (a) {
+    const isDigits = /^\d+$/.test(a[2]);
+    const isRoman = !isDigits && /^[IVX]+$/i.test(a[2]);
+    const number = numberOf(isDigits ? a[2] : undefined, isRoman ? a[2] : undefined, GERMAN_CARDINALS[a[2].toLowerCase()]);
+    const title = titleOf(a[3], isDigits);
+    if (number === false || number === undefined || title === false) return undefined;
+    return { line, ...(title ? { title } : {}), number, kind: 'numbered' };
+  }
+  const b = GERMAN_BEFORE.exec(line);
+  if (b) {
+    const number = numberOf(b[1], b[2], b[3] ? GERMAN_ORDINAL_STEMS[b[3].toLowerCase()] : undefined);
+    const title = titleOf(b[5], false);
+    if (number === false || number === undefined || title === false) return undefined;
+    return { line, ...(title ? { title } : {}), number, kind: 'numbered' };
+  }
+  return undefined;
+}
+
 /**
  * Detect the headings among already indentation-trimmed lines (blank lines are `''`). Returns the 0-based line index of each.
  * Thai: exactly the original rule. Other languages: also the Western forms; bare Roman headings are kept only when they run
@@ -151,7 +200,7 @@ export function detectHeadings(lines: readonly string[], lang: LanguageCode): Ar
   const found: Array<{ index: number; heading: Heading }> = [];
   lines.forEach((line, index) => {
     if (line === '') return;
-    const h = autoHeading(line) ?? (lang === 'hi' ? hindiHeading(line) : undefined) ?? (lang === 'th' ? undefined : westernHeading(line));
+    const h = autoHeading(line) ?? (lang === 'hi' ? hindiHeading(line) : undefined) ?? (lang === 'de' ? germanHeading(line) : undefined) ?? (lang === 'th' ? undefined : westernHeading(line));
     if (h) found.push({ index, heading: h });
   });
   const roman = found.filter((f) => f.heading.kind === 'roman');

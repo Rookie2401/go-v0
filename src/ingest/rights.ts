@@ -86,7 +86,16 @@ export function bundleDecision(doc: unknown, ctx: RightsContext = {}): BundleDec
   const d = doc as DocLike;
   const rights = d.source?.rights;
 
-  if (rights === 'owner-authored' || rights === 'generated') return { verdict: 'bundle', reason: 'written for the course by its authors' };
+  if (rights === 'owner-authored' || rights === 'generated') {
+    // A course-written text cannot belong to somebody else's work: a document that says "written for the course" but
+    // names a catalogue work recorded as anything else (rights-unverified, prohibited-from-bundling, research-only,
+    // even verified public domain) contradicts the catalogue, and the claim is not taken on its word.
+    const state = text(d.work?.slug) && text(d.lang) ? ctx.work?.(d.lang, d.work.slug as string)?.state : undefined;
+    if (state !== undefined && state !== 'course-authored') {
+      return { verdict: 'refuse', reason: `the document says it was written for the course ("${rights}") but belongs to the work "${String(d.work?.slug)}", which the catalogue records as ${state}` };
+    }
+    return { verdict: 'bundle', reason: 'written for the course by its authors' };
+  }
   if (rights === 'personal-copy' || rights === 'user-private') {
     return { verdict: 'refuse', reason: `a document with rights "${rights}" belongs to one learner's device and can never be part of the repository's bundle` };
   }

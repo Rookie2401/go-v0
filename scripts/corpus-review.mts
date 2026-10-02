@@ -1,6 +1,9 @@
 /// <reference types="node" />
 /**
- * npm run corpus:review -- <file> --by "<name>" [--status reviewed|approved|in-review|rejected] [--date YYYY-MM-DD] [--notes "..."]
+ * npm run corpus:review -- <file> --by "<name>" [--status reviewed|approved|in-review|rejected] [--level native|linguistic-check] [--date YYYY-MM-DD] [--notes "..."]
+ *
+ * --level says what kind of review it was: "native" (a native speaker read the text) or "linguistic-check" (its language was
+ * checked by someone else or by a tool). A language check is recorded but does not publish machine-drafted text.
  *
  * Records a review in the file's `review` block (status defaults to `reviewed`, date to today) and removes the
  * `needs-native-review` editorial tag when the status is reviewed/approved. No text is ever changed: only `review` and
@@ -14,7 +17,7 @@ import fs from 'node:fs';
 import { applyReview, validateBatch, type CorpusDocument, type ReviewOptions } from '../src/ingest';
 import { printIssues, printPublication, registry } from './corpus-cli.mts';
 
-const USAGE = 'usage: npm run corpus:review -- <file> --by "<name>" [--status reviewed|approved|in-review|rejected] [--date YYYY-MM-DD] [--notes "..."]';
+const USAGE = 'usage: npm run corpus:review -- <file> --by "<name>" [--status reviewed|approved|in-review|rejected] [--level native|linguistic-check] [--date YYYY-MM-DD] [--notes "..."]';
 const fail = (msg: string): never => { console.error(msg); process.exit(1); };
 
 // ── arguments ──
@@ -26,7 +29,7 @@ for (let i = 0; i < argv.length; i++) {
   if (!a.startsWith('--')) { positional.push(a); continue; }
   const eq = a.indexOf('=');
   const name = eq > 0 ? a.slice(2, eq) : a.slice(2);
-  if (!['by', 'status', 'date', 'notes'].includes(name)) fail(`unknown option --${name}\n${USAGE}`);
+  if (!['by', 'status', 'date', 'notes', 'level'].includes(name)) fail(`unknown option --${name}\n${USAGE}`);
   if (eq > 0) { flags.set(name, a.slice(eq + 1)); continue; }
   const value = argv[i + 1];
   if (value === undefined || (value.startsWith('--') && name !== 'notes')) { flags.set(name, ''); continue; }
@@ -43,7 +46,7 @@ let doc: unknown;
 try { doc = JSON.parse(raw.replace(/^﻿/, '')); } catch (e) { fail(`${file}: not valid JSON: ${e instanceof Error ? e.message : String(e)}`); }
 
 // ── review ──
-const opts: ReviewOptions = { by: flags.get('by'), status: flags.get('status'), date: flags.get('date'), notes: flags.get('notes') };
+const opts: ReviewOptions = { by: flags.get('by'), status: flags.get('status'), date: flags.get('date'), notes: flags.get('notes'), ...(flags.has('level') ? { level: flags.get('level') } : {}) };
 const result = applyReview(doc, opts);
 if (!result.ok) {
   console.error(`corpus:review - refused ${file}`);

@@ -6,7 +6,7 @@
  */
 import type { ReviewStatus } from '../core';
 import { REVIEW_OK } from '../core';
-import type { CorpusDocument, DocReview } from './format';
+import { REVIEW_LEVELS, type CorpusDocument, type DocReview, type ReviewLevel } from './format';
 import { computePublished, contentSignatureOf, type PublicationDecision } from './publish';
 
 export const REVIEW_STATUSES: readonly ReviewStatus[] = ['reviewed', 'approved', 'in-review', 'rejected'];
@@ -20,10 +20,12 @@ export interface ReviewOptions {
   /** YYYY-MM-DD; default today (UTC). */
   date?: string;
   notes?: string;
+  /** 'native' (a native speaker read it) or 'linguistic-check' (its language was checked by someone else or by a tool). Optional. */
+  level?: string;
 }
 
 export type ReviewRefusalCode =
-  | 'not-a-document' | 'missing-reviewer' | 'invalid-status' | 'invalid-date' | 'scripture-unverified';
+  | 'not-a-document' | 'missing-reviewer' | 'invalid-status' | 'invalid-date' | 'invalid-level' | 'scripture-unverified';
 
 export interface ReviewRefusal { code: ReviewRefusalCode; message: string; hint: string }
 
@@ -83,12 +85,16 @@ export function applyReview(doc: unknown, opts: ReviewOptions): ReviewResult {
       hint: 'Verification is a separate step: run `node scripts/verify-scripture.mjs` (or proofread against a published source) and record scripture.verification {against, checkedAt, method, by} first; then review.',
     });
   }
+  if (opts.level !== undefined && !(REVIEW_LEVELS as readonly string[]).includes(opts.level)) {
+    refusals.push({ code: 'invalid-level', message: `--level must be one of ${REVIEW_LEVELS.join(', ')}, got "${opts.level}"`, hint: 'Use "native" when a native speaker read the text, "linguistic-check" when its language was checked by someone else or by a tool.' });
+  }
   if (refusals.length) return { ok: false, refusals };
 
   const next = structuredClone(doc) as unknown as CorpusDocument;
   const previous = isObj(doc.review) ? (structuredClone(doc.review) as unknown as DocReview) : undefined;
   const review: DocReview = { status, reviewedBy: by, reviewedAt: date, contentSignature: contentSignatureOf(doc) };
   if (nonEmpty(opts.notes)) review.notes = opts.notes.trim();
+  if (opts.level !== undefined) review.level = opts.level as ReviewLevel;
   next.review = review; // assigned in place: an existing `review` key keeps its position in the file
 
   let removedTags: string[] = [];

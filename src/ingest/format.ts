@@ -42,7 +42,16 @@ export interface DocReview {
   notes?: string;
   /** Which wording the review covers (`contentSignatureOf`); written by `applyReview` / `npm run corpus:review`. Optional. */
   contentSignature?: string;
+  /**
+   * What kind of review this was. 'linguistic-check': the language was checked by someone who is not a native speaker,
+   * or by a tool — worth recording, and NOT enough to publish machine-drafted text. 'native': a native speaker read it.
+   * Absent ⇒ the review is taken as given (the state of every review recorded before this field existed).
+   */
+  level?: ReviewLevel;
 }
+
+export type ReviewLevel = 'linguistic-check' | 'native';
+export const REVIEW_LEVELS: readonly ReviewLevel[] = ['linguistic-check', 'native'];
 
 export interface DocScripture {
   /** Stable translation identity, e.g. "spaRV1909". */
@@ -481,6 +490,7 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
       err('review.reviewedBy', 'review-missing-reviewer', `review.status "${review.status}" needs review.reviewedBy`, 'Name the person (or verification tool) that reviewed the text, plus reviewedAt; reviews are never anonymous.');
     }
     for (const k of ['reviewedBy', 'reviewedAt', 'notes', 'contentSignature'] as const) if (review[k] !== undefined && typeof review[k] !== 'string') err(`review.${k}`, 'invalid-value', `review.${k} must be a string`, 'Use plain text.');
+    if (review.level !== undefined && !(REVIEW_LEVELS as readonly unknown[]).includes(review.level)) err('review.level', 'invalid-value', `review.level must be one of ${REVIEW_LEVELS.join(', ')}`, 'Say whether a native speaker read the text ("native") or its language was checked by someone else or by a tool ("linguistic-check").');
   }
 
   if (isObj(review) && typeof review.contentSignature === 'string' && d.contentType !== 'scripture' && Array.isArray(d.sections) && review.contentSignature !== contentSignatureOf(d)) {

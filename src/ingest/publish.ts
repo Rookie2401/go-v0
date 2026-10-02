@@ -75,6 +75,9 @@ export function computePublished(doc: Pick<CorpusDocument, 'contentType' | 'revi
     );
   } else if (!nonEmpty(d.review?.reviewedBy)) {
     reasons.push('the review names no reviewer — set review.reviewedBy');
+  } else if (d.review?.level === 'linguistic-check' && (d.generated === true || d.source?.authorship === 'generated')) {
+    // a language check is recorded and kept, but machine-drafted text reaches learners only after a native speaker has read it
+    reasons.push(`the review on record is a language check by ${d.review.reviewedBy}, not a native speaker's review — machine-drafted text is published only after a native speaker has read it (npm run corpus:review -- <file> --by "<name>" --level native)`);
   } else if (d.contentType !== 'scripture') {
     // A review must cover the content it publishes. Scripture is exempt: its wording is bound by
     // scripture.verification and the byte-for-byte check against data/verified (scripts/verify-scripture.mjs).

@@ -68,3 +68,13 @@ all word lists are machine-drafted and say so.
 
 The gold suite (`data/benchmarks/de/gold.json`) is written by the coordinator from his own judgement of each
 sentence and is not shown to the packages before their work lands: it is the independent check.
+
+**What became of that plan (added 2026-10-01 after an outside audit).** The paragraph above describes the intent,
+and it held only until the adapter first landed. From then on the packages ran the gold test while fixing, so
+**round 1 (`gold.json`) is development data**: its 84 of 84 says the adapter was fitted to those sentences, not
+that it generalises. Each later round (`gold-2.json`, `gold-3.json`, `gold-4.json`) was written after the
+adapter's last change, kept from the packages, run once, and its FIRST run recorded before any fix; after that
+run it too is development data. The first-run figures are the generalisation signal; they are in
+`docs/german/STATUS.md` with their provenance (all judgements are the coordinator's — an AI model, not a native
+speaker — and nothing was reviewed by a person). A green gold test means "nothing changed against the record of
+known limits", not "every sentence is correct" (`test/integration/german-gold.test.ts`, header).

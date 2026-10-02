@@ -79,6 +79,18 @@ describe('recommend() — a new learner', () => {
     expect(preview[0]).toMatchObject({ reason: 'first-text', textId: 'text:es:draft' });
   });
 
+  it('with only unpublished stories but PUBLISHED Scripture, does not say that no text is published (found in the German browser audit)', async () => {
+    const h = createHarness();
+    await h.seed(U, 'honduras-es');
+    await buildFixtureText(h.store, { lang: 'es', slug: 'draft', published: false, sentences: [{ tokens: [{ surface: 'uno' }] }] });
+    await buildSpanishScripture(h.store);
+    const recs = await h.golearn.recommend(U);
+    const note = recs.find((r) => r.reason === 'first-text' && !r.textId)!;
+    expect(note.explanation).toMatch(/No Spanish story or dialogue is published yet: 1 imported text is waiting/);
+    expect(note.explanation).toContain('Scripture is published: open it under Scripture.');
+    expect(note.explanation).not.toMatch(/No Spanish text is published/);
+  });
+
   it('with no text at all, says so', async () => {
     const h = createHarness();
     await h.seed(U, 'honduras-es');

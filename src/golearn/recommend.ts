@@ -68,6 +68,7 @@ export async function recommend(
   const inputAll = texts.filter((t) => INPUT_KINDS.has(t.kind));
   const input = inputAll.filter(visible);
   const withheld = inputAll.filter((t) => !visible(t));
+  const scripturePublished = texts.some((t) => t.kind === 'scripture' && t.published);
 
   const records = await readingProgressMany(ctx, userId, texts.map((t) => t.id)); // ONE read of the log
   const liveByText = new Map<string, Awaited<ReturnType<typeof liveSentences>>>();
@@ -156,7 +157,7 @@ export async function recommend(
     } else {
       notes.push({
         reason: 'first-text', reinforces: [], score: 0,
-        explanation: noneExplanation(langName, withheld, includeUnpublished),
+        explanation: noneExplanation(langName, withheld, includeUnpublished, scripturePublished),
       });
     }
   } else {
@@ -270,7 +271,7 @@ export async function recommend(
     notes.push({
       reason: 'next-input', reinforces: [], score: 0,
       explanation: input.length === 0
-        ? noneExplanation(langName, withheld, includeUnpublished)
+        ? noneExplanation(langName, withheld, includeUnpublished, scripturePublished)
         : `You have read every published ${langName} text so far; more will appear here as they are reviewed and published.`,
     });
   }
@@ -278,11 +279,12 @@ export async function recommend(
   return [...inputs, ...notes, ...rehearse].slice(0, limit);
 }
 
-function noneExplanation(langName: string, withheld: Text[], includeUnpublished: boolean): string {
+function noneExplanation(langName: string, withheld: Text[], includeUnpublished: boolean, scripturePublished = false): string {
   if (includeUnpublished || withheld.length === 0) return `No ${langName} text has been imported yet.`;
   const reasons = [...new Set(withheld.flatMap((t) => t.unpublishedReasons))].slice(0, 3);
-  return `No ${langName} text is published yet: ${withheld.length} imported text${withheld.length === 1 ? ' is' : 's are'} waiting`
-    + (reasons.length ? ` (${reasons.join('; ')})` : '') + '. You can still use preview mode to see them.';
+  // "No text" would be untrue when the Scripture of this language is published: say what is missing, and where the rest is.
+  return `No ${langName} ${scripturePublished ? 'story or dialogue' : 'text'} is published yet: ${withheld.length} imported text${withheld.length === 1 ? ' is' : 's are'} waiting`
+    + (reasons.length ? ` (${reasons.join('; ')})` : '') + `.${scripturePublished ? ' Scripture is published: open it under Scripture.' : ''} You can still use preview mode to see them.`;
 }
 
 /** Help was heavy when ≥ HEAVY_HELP_FRACTION of the word encounters of the LATEST reading sitting needed help. */

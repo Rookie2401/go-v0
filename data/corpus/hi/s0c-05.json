@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 2,
+  "id": "s0c-05",
+  "lang": "hi",
+  "title": "आम के पेड़ के नीचे",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0c-05",
+    "title": "Hindi controlled stories, Stage 0C, story 5 of 6 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "family",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0c",
+    "chapter": {
+      "index": 5,
+      "title": "आम के पेड़ के नीचे"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "आम के पेड़ के नीचे",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सब आँगन में आए।",
+              "english": "Everyone came to the courtyard."
+            },
+            {
+              "text": "आँगन में धूप थी।",
+              "english": "There was sunshine in the courtyard."
+            },
+            {
+              "text": "आम का पेड़ बड़ा था।",
+              "english": "The mango tree was big."
+            },
+            {
+              "text": "पेड़ पर बहुत आम थे।",
+              "english": "There were many mangoes on the tree."
+            },
+            {
+              "text": "उसके नीचे ठंडी छाया थी।",
+              "english": "There was cool shade beneath it."
+            },
+            {
+              "text": "रवि धीरे से पेड़ के पास गया।",
+              "english": "Ravi went quietly up to the tree."
+            },
+            {
+              "text": "रवि ने पेड़ के नीचे देखा।",
+              "english": "Ravi looked under the tree."
+            },
+            {
+              "text": "वहाँ एक सफ़ेद कुत्ता सो रहा था।",
+              "english": "A white dog was sleeping there."
+            },
+            {
+              "text": "मीरा ने कहा, \"देखो, मोती यहाँ है!\"",
+              "english": "Mira said, \"Look, Moti is here!\""
+            },
+            {
+              "text": "सब मोती के पास गए।",
+              "english": "Everyone went over to Moti."
+            },
+            {
+              "text": "मोती ने आँखें खोलीं।",
+              "english": "Moti opened his eyes."
+            },
+            {
+              "text": "उसने सबको देखा।",
+              "english": "He saw everyone."
+            },
+            {
+              "text": "वह उठा और पूँछ हिलाने लगा।",
+              "english": "He got up and started wagging his tail."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सीता ने कहा, \"देखो, वह तो यहीं सो रहा था!\"",
+              "english": "Sita said, \"Look, he was sleeping right here!\""
+            },
+            {
+              "text": "राजू ज़ोर से हँसा।",
+              "english": "Raju laughed loudly."
+            },
+            {
+              "text": "रवि ने कहा, \"मोती, हमने तुम्हें हर जगह ढूँढा।\"",
+              "english": "Ravi said, \"Moti, we looked for you everywhere.\""
+            },
+            {
+              "text": "रवि ने पूछा, \"मोती, तुम यहाँ क्यों सो रहे थे?\"",
+              "english": "Ravi asked, \"Moti, why were you sleeping here?\""
+            },
+            {
+              "text": "मोती ने कुछ नहीं कहा।",
+              "english": "Moti said nothing."
+            },
+            {
+              "text": "उसने बस पूँछ हिलाई।",
+              "english": "He just wagged his tail."
+            },
+            {
+              "text": "मीरा ने मोती को पानी दिया।",
+              "english": "Mira gave Moti some water."
+            },
+            {
+              "text": "मोती ने पानी पिया।",
+              "english": "Moti drank the water."
+            },
+            {
+              "text": "मीरा हँसने लगी।",
+              "english": "Mira started laughing."
+            },
+            {
+              "text": "दादी ने मोती के सिर पर हाथ रखा।",
+              "english": "Grandma put her hand on Moti's head."
+            },
+            {
+              "text": "दादी ने कहा, \"मोती अच्छा कुत्ता है।\"",
+              "english": "Grandma said, \"Moti is a good dog.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दादी ने कहा, \"कुत्ते को भी आम के पेड़ की छाया अच्छी लगती है।\"",
+              "english": "Grandma said, \"Even a dog likes the shade of a mango tree.\""
+            },
+            {
+              "text": "रवि ने कहा, \"मोती आम नहीं खाता, इसलिए वह सो गया।\"",
+              "english": "Ravi said, \"Moti does not eat mangoes, so he went to sleep.\""
+            },
+            {
+              "text": "सब ज़ोर से हँसे।",
+              "english": "Everyone laughed loudly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "राजू ने कहा, \"चलो, अब हम खेलते हैं।\"",
+              "english": "Raju said, \"Come on, now let's play.\""
+            },
+            {
+              "text": "रवि ने बैग से अपनी गेंद निकाली।",
+              "english": "Ravi took his ball out of his bag."
+            },
+            {
+              "text": "सब आँगन में गेंद से खेलने लगे।",
+              "english": "Everyone started playing with the ball in the courtyard."
+            },
+            {
+              "text": "मोती भी गेंद के पीछे भागा।",
+              "english": "Moti ran after the ball too."
+            },
+            {
+              "text": "मोती ने गेंद पकड़ ली।",
+              "english": "Moti caught the ball."
+            },
+            {
+              "text": "लेकिन उसने गेंद रवि को नहीं दी।",
+              "english": "But he did not give the ball to Ravi."
+            },
+            {
+              "text": "सीता ने कहा, \"यह तो मोती की गेंद है!\"",
+              "english": "Sita said, \"This is Moti's ball now!\""
+            },
+            {
+              "text": "रवि ने कहा, \"ठीक है, आज यह मोती की गेंद है।\"",
+              "english": "Ravi said, \"All right, today it is Moti's ball.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शाम को दादी ने सबको खाना दिया।",
+              "english": "In the evening Grandma gave everyone food."
+            },
+            {
+              "text": "सबने खाना खाया।",
+              "english": "Everyone ate."
+            },
+            {
+              "text": "मोती ने भी दूध पिया।",
+              "english": "Moti drank milk too."
+            },
+            {
+              "text": "रात को दादी ने आँगन का दरवाज़ा बंद कर दिया।",
+              "english": "At night Grandma shut the courtyard door."
+            },
+            {
+              "text": "सब सो गए।",
+              "english": "Everyone went to sleep."
+            },
+            {
+              "text": "मोती आँगन में नहीं सोया।",
+              "english": "Moti did not sleep in the courtyard."
+            },
+            {
+              "text": "वह रवि के बिस्तर के पास सोया।",
+              "english": "He slept next to Ravi's bed."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

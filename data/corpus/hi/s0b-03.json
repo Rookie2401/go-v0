@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 2,
+  "id": "s0b-03",
+  "lang": "hi",
+  "title": "स्कूल का दिन",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0b-03",
+    "title": "Hindi controlled stories, Stage 0B, story 3 of 8 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "school",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0b",
+    "chapter": {
+      "index": 3,
+      "title": "स्कूल का दिन"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "school",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "स्कूल का दिन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रवि और मीरा रोज़ बस से स्कूल जाते हैं।",
+              "english": "Ravi and Mira go to school by bus every day."
+            },
+            {
+              "text": "स्कूल घर से दूर नहीं है।",
+              "english": "The school is not far from the house."
+            },
+            {
+              "text": "बस में बहुत बच्चे हैं।",
+              "english": "There are many children on the bus."
+            },
+            {
+              "text": "रवि अमित से बात करता है।",
+              "english": "Ravi talks to Amit."
+            },
+            {
+              "text": "मीरा नेहा से बात करती है।",
+              "english": "Mira talks to Neha."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "स्कूल में बहुत कमरे हैं।",
+              "english": "The school has many rooms."
+            },
+            {
+              "text": "रवि की कक्षा बड़ी है।",
+              "english": "Ravi's class is big."
+            },
+            {
+              "text": "रवि की कक्षा में बहुत बच्चे हैं।",
+              "english": "There are many children in Ravi's class."
+            },
+            {
+              "text": "शर्मा जी कक्षा में आते हैं।",
+              "english": "Mr Sharma comes into the class."
+            },
+            {
+              "text": "बच्चे कहते हैं, \"नमस्ते, शर्मा जी।\"",
+              "english": "The children say, \"Hello, Mr Sharma.\""
+            },
+            {
+              "text": "शर्मा जी कहते हैं, \"नमस्ते, बच्चो। बैठो।\"",
+              "english": "Mr Sharma says, \"Hello, children. Sit down.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शर्मा जी बच्चों को कहानी सुनाते हैं।",
+              "english": "Mr Sharma tells the children a story."
+            },
+            {
+              "text": "बच्चे कहानी सुन रहे हैं।",
+              "english": "The children are listening to the story."
+            },
+            {
+              "text": "कहानी बहुत अच्छी है।",
+              "english": "The story is very good."
+            },
+            {
+              "text": "अमित रवि के पास बैठता है।",
+              "english": "Amit sits next to Ravi."
+            },
+            {
+              "text": "नेहा मीरा की कक्षा में है।",
+              "english": "Neha is in Mira's class."
+            },
+            {
+              "text": "मीरा और नेहा एक साथ पढ़ती हैं।",
+              "english": "Mira and Neha study together."
+            },
+            {
+              "text": "शर्मा जी रवि से पूछते हैं, \"तुम्हारी किताब कहाँ है?\"",
+              "english": "Mr Sharma asks Ravi, \"Where is your book?\""
+            },
+            {
+              "text": "रवि कहता है, \"मेरी किताब बैग में है।\"",
+              "english": "Ravi says, \"My book is in my bag.\""
+            },
+            {
+              "text": "शर्मा जी रवि को किताब देते हैं।",
+              "english": "Mr Sharma gives Ravi a book."
+            },
+            {
+              "text": "शर्मा जी लड़के को किताब देते हैं।",
+              "english": "Mr Sharma gives the boy a book."
+            },
+            {
+              "text": "शर्मा जी लड़की को भी किताब देते हैं।",
+              "english": "Mr Sharma gives the girl a book too."
+            },
+            {
+              "text": "रवि अमित को किताब देता है।",
+              "english": "Ravi gives Amit the book."
+            },
+            {
+              "text": "अमित रवि से कहता है, \"धन्यवाद।\"",
+              "english": "Amit says \"thank you\" to Ravi."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दोपहर को सब बच्चे मैदान में खेलते हैं।",
+              "english": "At noon all the children play on the field."
+            },
+            {
+              "text": "लड़के गेंद से खेलते हैं।",
+              "english": "The boys play with a ball."
+            },
+            {
+              "text": "लड़कियाँ बाग में बैठती हैं।",
+              "english": "The girls sit in the garden."
+            },
+            {
+              "text": "शाम को रवि और मीरा बस से घर आते हैं।",
+              "english": "In the evening Ravi and Mira come home by bus."
+            },
+            {
+              "text": "माँ रवि और मीरा को दूध देती है।",
+              "english": "Mom gives Ravi and Mira milk."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

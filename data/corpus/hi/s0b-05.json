@@ -1,0 +1,177 @@
+{
+  "schemaVersion": 2,
+  "id": "s0b-05",
+  "lang": "hi",
+  "title": "आइए, बैठिए",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0b-05",
+    "title": "Hindi controlled stories, Stage 0B, story 5 of 8 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "hospitality"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0b",
+    "chapter": {
+      "index": 5,
+      "title": "आइए, बैठिए"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life",
+    "hospitality"
+  ],
+  "sections": [
+    {
+      "title": "आइए, बैठिए",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज शर्मा जी रवि के घर आ रहे हैं।",
+              "english": "Today Mr Sharma is coming to Ravi's house."
+            },
+            {
+              "text": "रवि कहता है, \"मीरा, यहाँ आओ।\"",
+              "english": "Ravi says, \"Mira, come here.\""
+            },
+            {
+              "text": "मीरा पूछती है, \"दरवाज़े पर कौन है?\"",
+              "english": "Mira asks, \"Who is at the door?\""
+            },
+            {
+              "text": "रवि कहता है, \"देखो, शर्मा जी आ रहे हैं।\"",
+              "english": "Ravi says, \"Look, Mr Sharma is coming.\""
+            },
+            {
+              "text": "माँ रसोई से आती है।",
+              "english": "Mom comes from the kitchen."
+            },
+            {
+              "text": "पापा बाहर जाते हैं।",
+              "english": "Dad goes outside."
+            },
+            {
+              "text": "माँ मीरा से कहती है, \"मीरा, पानी लाओ।\"",
+              "english": "Mom says to Mira, \"Mira, bring some water.\""
+            },
+            {
+              "text": "मीरा पानी लाती है।",
+              "english": "Mira brings water."
+            },
+            {
+              "text": "रवि कहता है, \"शर्मा जी, पानी लीजिए।\"",
+              "english": "Ravi says, \"Mr Sharma, please have some water.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शर्मा जी घर के अंदर आते हैं।",
+              "english": "Mr Sharma comes inside the house."
+            },
+            {
+              "text": "पापा कहते हैं, \"आइए, बैठिए।\"",
+              "english": "Dad says, \"Please come in, please sit.\""
+            },
+            {
+              "text": "शर्मा जी कुर्सी पर बैठते हैं।",
+              "english": "Mr Sharma sits on a chair."
+            },
+            {
+              "text": "माँ कहती है, \"चाय लीजिए।\"",
+              "english": "Mom says, \"Please have some tea.\""
+            },
+            {
+              "text": "शर्मा जी चाय पीते हैं।",
+              "english": "Mr Sharma drinks tea."
+            },
+            {
+              "text": "शर्मा जी कहते हैं, \"धन्यवाद।\"",
+              "english": "Mr Sharma says, \"Thank you.\""
+            },
+            {
+              "text": "पापा शर्मा जी से बात करते हैं।",
+              "english": "Dad talks with Mr Sharma."
+            },
+            {
+              "text": "माँ मीरा से कहती है, \"रोटी लाओ।\"",
+              "english": "Mom says to Mira, \"Bring some flatbread.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि कहता है, \"मोती, यहाँ आओ।\"",
+              "english": "Ravi says, \"Moti, come here.\""
+            },
+            {
+              "text": "मोती नहीं आता है।",
+              "english": "Moti does not come."
+            },
+            {
+              "text": "रवि कहता है, \"मोती, बैठो।\"",
+              "english": "Ravi says, \"Moti, sit.\""
+            },
+            {
+              "text": "मोती नहीं बैठता है।",
+              "english": "Moti does not sit."
+            },
+            {
+              "text": "मीरा कहती है, \"मोती, देखो! यह रोटी है।\"",
+              "english": "Mira says, \"Moti, look! This is flatbread.\""
+            },
+            {
+              "text": "मोती रोटी को देखता है।",
+              "english": "Moti looks at the flatbread."
+            },
+            {
+              "text": "मोती मीरा के पास आता है।",
+              "english": "Moti comes to Mira."
+            },
+            {
+              "text": "मोती बैठता है और रोटी खाता है।",
+              "english": "Moti sits and eats the flatbread."
+            },
+            {
+              "text": "शर्मा जी कहते हैं, \"मोती अच्छा कुत्ता है।\"",
+              "english": "Mr Sharma says, \"Moti is a good dog.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

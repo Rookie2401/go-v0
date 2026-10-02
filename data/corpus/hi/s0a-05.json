@@ -1,0 +1,173 @@
+{
+  "schemaVersion": 2,
+  "id": "s0a-05",
+  "lang": "hi",
+  "title": "दोस्त",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0a-05",
+    "title": "Hindi controlled stories, Stage 0A, story 5 of 12 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "school",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0a",
+    "chapter": {
+      "index": 5,
+      "title": "दोस्त"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "school",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "दोस्त",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "यह अमित है।",
+              "english": "This is Amit."
+            },
+            {
+              "text": "अमित स्कूल में है।",
+              "english": "Amit is at school."
+            },
+            {
+              "text": "रवि भी स्कूल में है।",
+              "english": "Ravi is at school too."
+            },
+            {
+              "text": "रवि और अमित दोस्त हैं।",
+              "english": "Ravi and Amit are friends."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह नेहा है।",
+              "english": "This is Neha."
+            },
+            {
+              "text": "नेहा स्कूल में है।",
+              "english": "Neha is at school."
+            },
+            {
+              "text": "मीरा भी स्कूल में है।",
+              "english": "Mira is at school too."
+            },
+            {
+              "text": "मीरा और नेहा दोस्त हैं।",
+              "english": "Mira and Neha are friends."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "स्कूल बड़ा है।",
+              "english": "The school is big."
+            },
+            {
+              "text": "स्कूल अच्छा है।",
+              "english": "The school is good."
+            },
+            {
+              "text": "रवि अच्छा है।",
+              "english": "Ravi is good."
+            },
+            {
+              "text": "अमित अच्छा है।",
+              "english": "Amit is good."
+            },
+            {
+              "text": "नेहा अच्छी है।",
+              "english": "Neha is good."
+            },
+            {
+              "text": "मीरा अच्छी है।",
+              "english": "Mira is good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमित घर में नहीं है।",
+              "english": "Amit is not in the house."
+            },
+            {
+              "text": "नेहा घर में नहीं है।",
+              "english": "Neha is not in the house."
+            },
+            {
+              "text": "अमित और नेहा स्कूल में हैं।",
+              "english": "Amit and Neha are at school."
+            },
+            {
+              "text": "रवि और मीरा स्कूल में हैं।",
+              "english": "Ravi and Mira are at school."
+            },
+            {
+              "text": "रवि, अमित और नेहा दोस्त हैं।",
+              "english": "Ravi, Amit and Neha are friends."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नेहा अच्छी है।",
+              "english": "Neha is good."
+            },
+            {
+              "text": "मीरा भी अच्छी है।",
+              "english": "Mira is good too."
+            },
+            {
+              "text": "रवि अच्छा है।",
+              "english": "Ravi is good."
+            },
+            {
+              "text": "अमित भी अच्छा है।",
+              "english": "Amit is good too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

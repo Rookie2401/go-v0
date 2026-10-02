@@ -22,7 +22,12 @@ export const COURSES: Course[] = [
   },
   { id: 'albania-sq', lang: 'sq', country: 'Albania', title: 'Albania → Albanian', preferredLocales: ['sq-AL'] },
   { id: 'thailand-th', lang: 'th', country: 'Thailand', title: 'Thailand → Thai', preferredLocales: ['th-TH'] },
-  { id: 'india-hi', lang: 'hi', country: 'India', title: 'India → Hindi', preferredLocales: ['hi-IN'] },
+  {
+    id: 'india-hi', lang: 'hi', country: 'India', title: 'India → Hindi', preferredLocales: ['hi-IN'],
+    // Active target: Modern Standard Hindi in all its everyday layers (Sanskrit-derived, Persian- and Arabic-derived,
+    // English loans). Awadhi, Braj and the language of the sant poets are heritage languages: readable, never counted.
+    variety: { target: 'hi-IN', within: [] },
+  },
   {
     id: 'germany-de', lang: 'de', country: 'Germany', title: 'Germany → German', preferredLocales: ['de-DE'],
     // Active target: modern Standard German of Germany. Austrian and Swiss Standard German, dialect and older spelling are

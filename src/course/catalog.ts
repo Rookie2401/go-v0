@@ -13,6 +13,7 @@
 import type { AppStore, AssistanceProfile, CourseCatalog, GoLearn, Stage, Stream, Text, Work } from '../core';
 import { DEFAULT_ASSISTANCE } from '../core';
 import { GERMAN_COURSE_ID, GERMAN_SHELVES, GERMAN_STREAMS, GERMAN_WORKS } from './german';
+import { HINDI_COURSE_ID, HINDI_SHELVES, HINDI_STREAMS, HINDI_WORKS } from './hindi';
 import { SPANISH_COURSE_ID, SPANISH_SHELVES, SPANISH_STREAMS, SPANISH_WORKS } from './spanish';
 import { THAI_COURSE_ID, THAI_STAGES, THAI_WORKS } from './thai';
 
@@ -33,12 +34,14 @@ const LADDERS: Record<string, { stages: Stage[]; works: Work[] }> = {
   // Spanish: the stages are SHELVES (a browsing orientation of a large library, never a gate)
   [SPANISH_COURSE_ID]: { stages: SPANISH_SHELVES, works: SPANISH_WORKS },
   [GERMAN_COURSE_ID]: { stages: GERMAN_SHELVES, works: GERMAN_WORKS },
+  [HINDI_COURSE_ID]: { stages: HINDI_SHELVES, works: HINDI_WORKS },
 };
 
 /** The content streams of the courses that have them. */
 const STREAMS: Record<string, Stream[]> = {
   [SPANISH_COURSE_ID]: SPANISH_STREAMS,
   [GERMAN_COURSE_ID]: GERMAN_STREAMS,
+  [HINDI_COURSE_ID]: HINDI_STREAMS,
 };
 
 /** Accent- and case-insensitive text for matching titles and authors. */

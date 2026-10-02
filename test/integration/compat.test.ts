@@ -12,7 +12,8 @@ import { bundled, bundledDoc, liveSentences, makeApp, makeClock, reader, seedUse
 
 const COURSES: Record<LanguageCode, string> = { es: 'honduras-es', sq: 'albania-sq', th: 'thailand-th', hi: 'india-hi', de: 'germany-de' };
 const LANGS = Object.keys(COURSES) as LanguageCode[];
-const SCRIPTURE_PUBLISHED: Record<LanguageCode, boolean> = { es: true, de: true, sq: false, th: false, hi: false };
+// es and de: public-domain translations verified against the distributor; hi: a licensed translation (IRV, CC BY-SA 4.0) verified the same way
+const SCRIPTURE_PUBLISHED: Record<LanguageCode, boolean> = { es: true, de: true, sq: false, th: false, hi: true };
 
 function graphemeBoundaries(text: string, lang: string): Set<number> {
   const out = new Set<number>([0, text.length]);

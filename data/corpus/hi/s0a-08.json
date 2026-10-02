@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 2,
+  "id": "s0a-08",
+  "lang": "hi",
+  "title": "रवि रोटी खाता है",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0a-08",
+    "title": "Hindi controlled stories, Stage 0A, story 8 of 12 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "food",
+    "family"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0a",
+    "chapter": {
+      "index": 8,
+      "title": "रवि रोटी खाता है"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food",
+    "family"
+  ],
+  "sections": [
+    {
+      "title": "रवि रोटी खाता है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रवि रोटी खाता है।",
+              "english": "Ravi eats flatbread."
+            },
+            {
+              "text": "मीरा रोटी खाती है।",
+              "english": "Mira eats flatbread."
+            },
+            {
+              "text": "माँ भी रोटी खाती है।",
+              "english": "Mom eats flatbread too."
+            },
+            {
+              "text": "पापा रोटी खाते हैं।",
+              "english": "Dad eats flatbread."
+            },
+            {
+              "text": "दादा जी रोटी खाते हैं।",
+              "english": "Grandpa eats flatbread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "माँ खाना खाती है।",
+              "english": "Mom eats a meal."
+            },
+            {
+              "text": "पापा भी खाना खाते हैं।",
+              "english": "Dad eats a meal too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि दूध पीता है।",
+              "english": "Ravi drinks milk."
+            },
+            {
+              "text": "मीरा दूध पीती है।",
+              "english": "Mira drinks milk."
+            },
+            {
+              "text": "माँ चाय पीती है।",
+              "english": "Mom drinks tea."
+            },
+            {
+              "text": "चाय गरम है।",
+              "english": "The tea is hot."
+            },
+            {
+              "text": "पापा चाय पीते हैं।",
+              "english": "Dad drinks tea."
+            },
+            {
+              "text": "दादा जी भी चाय पीते हैं।",
+              "english": "Grandpa drinks tea too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दादी रोटी खाती हैं।",
+              "english": "Grandma eats flatbread."
+            },
+            {
+              "text": "दादी दूध पीती हैं।",
+              "english": "Grandma drinks milk."
+            },
+            {
+              "text": "रवि आम खाता है।",
+              "english": "Ravi eats a mango."
+            },
+            {
+              "text": "आम मीठा है।",
+              "english": "The mango is sweet."
+            },
+            {
+              "text": "मीरा भी आम खाती है।",
+              "english": "Mira eats a mango too."
+            },
+            {
+              "text": "पापा और दादा जी आम खाते हैं।",
+              "english": "Dad and Grandpa eat mangoes."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमित भी घर में है।",
+              "english": "Amit is in the house too."
+            },
+            {
+              "text": "अमित पानी पीता है।",
+              "english": "Amit drinks water."
+            },
+            {
+              "text": "नेहा भी घर में है।",
+              "english": "Neha is in the house too."
+            },
+            {
+              "text": "नेहा पानी पीती है।",
+              "english": "Neha drinks water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मोती दूध पीता है।",
+              "english": "Moti drinks milk."
+            },
+            {
+              "text": "मोती रोटी खाता है।",
+              "english": "Moti eats flatbread."
+            },
+            {
+              "text": "मोती आम नहीं खाता है।",
+              "english": "Moti does not eat mangoes."
+            },
+            {
+              "text": "मोती पानी भी पीता है।",
+              "english": "Moti drinks water too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "घर में सब हैं।",
+              "english": "Everyone is in the house."
+            },
+            {
+              "text": "सब रोटी खाते हैं।",
+              "english": "Everyone eats flatbread."
+            },
+            {
+              "text": "सब आम खाते हैं।",
+              "english": "Everyone eats mangoes."
+            },
+            {
+              "text": "सब चाय पीते हैं।",
+              "english": "Everyone drinks tea."
+            },
+            {
+              "text": "पापा और दादा जी दूध नहीं पीते हैं।",
+              "english": "Dad and Grandpa do not drink milk."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

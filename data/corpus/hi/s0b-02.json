@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 2,
+  "id": "s0b-02",
+  "lang": "hi",
+  "title": "यह किसकी किताब है?",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0b-02",
+    "title": "Hindi controlled stories, Stage 0B, story 2 of 8 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "school",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0b",
+    "chapter": {
+      "index": 2,
+      "title": "यह किसकी किताब है?"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "school",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "यह किसकी किताब है?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज मेज़ पर तीन किताबें हैं।",
+              "english": "Today there are three books on the table."
+            },
+            {
+              "text": "एक किताब बड़ी है।",
+              "english": "One book is big."
+            },
+            {
+              "text": "दो किताबें छोटी हैं।",
+              "english": "Two books are small."
+            },
+            {
+              "text": "यह किसकी किताब है?",
+              "english": "Whose book is this?"
+            },
+            {
+              "text": "यह किताब मीरा की है।",
+              "english": "This book is Mira's."
+            },
+            {
+              "text": "वह किताब रवि की है।",
+              "english": "That book is Ravi's."
+            },
+            {
+              "text": "और यह किताब शर्मा जी की है।",
+              "english": "And this book is Mr Sharma's."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मेज़ के पास चार कुर्सियाँ हैं।",
+              "english": "There are four chairs near the table."
+            },
+            {
+              "text": "एक कुर्सी पर बैग है।",
+              "english": "There is a bag on one chair."
+            },
+            {
+              "text": "यह बैग किसका है?",
+              "english": "Whose bag is this?"
+            },
+            {
+              "text": "यह बैग अमित का है।",
+              "english": "This bag is Amit's."
+            },
+            {
+              "text": "अमित रवि का दोस्त है।",
+              "english": "Amit is Ravi's friend."
+            },
+            {
+              "text": "नेहा मीरा की दोस्त है।",
+              "english": "Neha is Mira's friend."
+            },
+            {
+              "text": "रवि के बैग में किताबें हैं।",
+              "english": "There are books in Ravi's bag."
+            },
+            {
+              "text": "मीरा की किताबें मेज़ पर हैं।",
+              "english": "Mira's books are on the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि के पास एक गेंद है।",
+              "english": "Ravi has a ball."
+            },
+            {
+              "text": "वह गेंद नई है।",
+              "english": "That ball is new."
+            },
+            {
+              "text": "मीरा के पास गेंद नहीं है।",
+              "english": "Mira does not have a ball."
+            },
+            {
+              "text": "मीरा के पास दो किताबें हैं।",
+              "english": "Mira has two books."
+            },
+            {
+              "text": "रवि की गेंद कहाँ है?",
+              "english": "Where is Ravi's ball?"
+            },
+            {
+              "text": "रवि की गेंद मोती के पास है।",
+              "english": "Ravi's ball is with Moti."
+            },
+            {
+              "text": "मोती गेंद से खेलता है।",
+              "english": "Moti plays with the ball."
+            },
+            {
+              "text": "रवि मोती से कहता है, \"मोती, यह मेरी गेंद है।\"",
+              "english": "Ravi says to Moti, \"Moti, this is my ball.\""
+            },
+            {
+              "text": "मोती गेंद को देखता है।",
+              "english": "Moti looks at the ball."
+            },
+            {
+              "text": "मोती रवि को गेंद नहीं देता है।",
+              "english": "Moti does not give Ravi the ball."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि मीरा से पूछता है, \"तुम्हारी किताब कहाँ है?\"",
+              "english": "Ravi asks Mira, \"Where is your book?\""
+            },
+            {
+              "text": "मीरा कहती है, \"मेरी किताब मेज़ पर है।\"",
+              "english": "Mira says, \"My book is on the table.\""
+            },
+            {
+              "text": "रवि कहता है, \"यह तुम्हारी किताब है, और वह मेरी है।\"",
+              "english": "Ravi says, \"This is your book, and that one is mine.\""
+            },
+            {
+              "text": "मीरा कहती है, \"हाँ, वह तुम्हारी किताब है।\"",
+              "english": "Mira says, \"Yes, that is your book.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

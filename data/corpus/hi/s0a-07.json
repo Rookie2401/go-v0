@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 2,
+  "id": "s0a-07",
+  "lang": "hi",
+  "title": "मेज़ पर खाना",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0a-07",
+    "title": "Hindi controlled stories, Stage 0A, story 7 of 12 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "food",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0a",
+    "chapter": {
+      "index": 7,
+      "title": "मेज़ पर खाना"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "मेज़ पर खाना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "माँ रसोई में है।",
+              "english": "Mom is in the kitchen."
+            },
+            {
+              "text": "रसोई में खाना है।",
+              "english": "There is food in the kitchen."
+            },
+            {
+              "text": "खाना मेज़ पर है।",
+              "english": "The food is on the table."
+            },
+            {
+              "text": "मेज़ पर रोटी है।",
+              "english": "There is flatbread on the table."
+            },
+            {
+              "text": "मेज़ पर आम है।",
+              "english": "There is a mango on the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रोटी अच्छी है।",
+              "english": "The flatbread is good."
+            },
+            {
+              "text": "खाना अच्छा है।",
+              "english": "The food is good."
+            },
+            {
+              "text": "आम मीठा है।",
+              "english": "The mango is sweet."
+            },
+            {
+              "text": "आम बड़ा है।",
+              "english": "The mango is big."
+            },
+            {
+              "text": "चाय भी है।",
+              "english": "There is tea too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मेज़ पर दूध है।",
+              "english": "There is milk on the table."
+            },
+            {
+              "text": "दूध सफ़ेद है।",
+              "english": "The milk is white."
+            },
+            {
+              "text": "मेज़ पर पानी है।",
+              "english": "There is water on the table."
+            },
+            {
+              "text": "पानी अच्छा है।",
+              "english": "The water is good."
+            },
+            {
+              "text": "पानी सफ़ेद नहीं है।",
+              "english": "The water is not white."
+            },
+            {
+              "text": "चाय गरम है।",
+              "english": "The tea is hot."
+            },
+            {
+              "text": "दूध गरम है।",
+              "english": "The milk is hot."
+            },
+            {
+              "text": "रोटी गरम है।",
+              "english": "The flatbread is hot."
+            },
+            {
+              "text": "चाय मेज़ पर नहीं है।",
+              "english": "The tea is not on the table."
+            },
+            {
+              "text": "चाय रसोई में है।",
+              "english": "The tea is in the kitchen."
+            },
+            {
+              "text": "दूध अच्छा है।",
+              "english": "The milk is good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि और मीरा कुर्सी पर हैं।",
+              "english": "Ravi and Mira are on the chairs."
+            },
+            {
+              "text": "मोती मेज़ पर है।",
+              "english": "Moti is on the table."
+            },
+            {
+              "text": "रोटी मेज़ पर नहीं है।",
+              "english": "The flatbread is not on the table."
+            },
+            {
+              "text": "आम मेज़ पर है।",
+              "english": "The mango is on the table."
+            },
+            {
+              "text": "आम मीठा है।",
+              "english": "The mango is sweet."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह खाना है।",
+              "english": "This is the food."
+            },
+            {
+              "text": "यह रोटी है।",
+              "english": "This is flatbread."
+            },
+            {
+              "text": "यह आम है।",
+              "english": "This is a mango."
+            },
+            {
+              "text": "यह चाय है।",
+              "english": "This is tea."
+            },
+            {
+              "text": "यह दूध है।",
+              "english": "This is milk."
+            },
+            {
+              "text": "यह आम मीठा है।",
+              "english": "This mango is sweet."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

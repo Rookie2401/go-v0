@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 2,
+  "id": "s0b-07",
+  "lang": "hi",
+  "title": "मोती का दिन",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0b-07",
+    "title": "Hindi controlled stories, Stage 0B, story 7 of 8 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0b",
+    "chapter": {
+      "index": 7,
+      "title": "मोती का दिन"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life",
+    "family"
+  ],
+  "sections": [
+    {
+      "title": "मोती का दिन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सुबह मोती उठता है।",
+              "english": "In the morning Moti gets up."
+            },
+            {
+              "text": "वह रवि के पास आता है।",
+              "english": "He comes to Ravi."
+            },
+            {
+              "text": "मोती दूध पीता है।",
+              "english": "Moti drinks milk."
+            },
+            {
+              "text": "रवि मोती को रोटी देता है।",
+              "english": "Ravi gives Moti flatbread."
+            },
+            {
+              "text": "मोती रोटी खाता है।",
+              "english": "Moti eats the flatbread."
+            },
+            {
+              "text": "मीरा कुत्ते को दूध देती है।",
+              "english": "Mira gives the dog milk."
+            },
+            {
+              "text": "कुत्ते को दूध अच्छा लगता है।",
+              "english": "The dog likes milk."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दोपहर को मोती सोता है।",
+              "english": "At noon Moti sleeps."
+            },
+            {
+              "text": "वह कुर्सी के नीचे सोता है।",
+              "english": "He sleeps under the chair."
+            },
+            {
+              "text": "कभी वह मेज़ के नीचे सोता है।",
+              "english": "Sometimes he sleeps under the table."
+            },
+            {
+              "text": "कभी वह बाग में पेड़ के नीचे सोता है।",
+              "english": "Sometimes he sleeps under a tree in the garden."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शाम को मोती बाहर जाता है।",
+              "english": "In the evening Moti goes outside."
+            },
+            {
+              "text": "वह बाग में खेलता है।",
+              "english": "He plays in the garden."
+            },
+            {
+              "text": "रवि और मीरा भी बाग में आते हैं।",
+              "english": "Ravi and Mira come to the garden too."
+            },
+            {
+              "text": "रवि और मीरा मोती के साथ खेलते हैं।",
+              "english": "Ravi and Mira play with Moti."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मोती कब सोता है?",
+              "english": "When does Moti sleep?"
+            },
+            {
+              "text": "वह दोपहर को सोता है।",
+              "english": "He sleeps at noon."
+            },
+            {
+              "text": "मोती क्या खाता है?",
+              "english": "What does Moti eat?"
+            },
+            {
+              "text": "वह रोटी खाता है।",
+              "english": "He eats flatbread."
+            },
+            {
+              "text": "मोती कहाँ खेलता है?",
+              "english": "Where does Moti play?"
+            },
+            {
+              "text": "वह बाग में खेलता है।",
+              "english": "He plays in the garden."
+            },
+            {
+              "text": "मोती बाहर क्यों जाता है?",
+              "english": "Why does Moti go outside?"
+            },
+            {
+              "text": "वहाँ उसकी गेंद है।",
+              "english": "His ball is there."
+            },
+            {
+              "text": "बाग में कितने पेड़ हैं?",
+              "english": "How many trees are in the garden?"
+            },
+            {
+              "text": "बाग में पाँच पेड़ हैं।",
+              "english": "There are five trees in the garden."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "कल रवि की रोटी मेज़ पर थी।",
+              "english": "Yesterday Ravi's flatbread was on the table."
+            },
+            {
+              "text": "मोती मेज़ के नीचे था।",
+              "english": "Moti was under the table."
+            },
+            {
+              "text": "रोटी मेज़ पर नहीं थी।",
+              "english": "The flatbread was not on the table."
+            },
+            {
+              "text": "रवि कहता है, \"मेरी रोटी कहाँ है?\"",
+              "english": "Ravi says, \"Where is my flatbread?\""
+            },
+            {
+              "text": "मोती मेज़ के नीचे सो रहा था।",
+              "english": "Moti was sleeping under the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अब रात है।",
+              "english": "Now it is night."
+            },
+            {
+              "text": "मोती सो रहा है।",
+              "english": "Moti is sleeping."
+            },
+            {
+              "text": "कल रात मोती बाहर था।",
+              "english": "Last night Moti was outside."
+            },
+            {
+              "text": "आज वह घर के अंदर है।",
+              "english": "Today he is inside the house."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

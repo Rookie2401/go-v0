@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 2,
+  "id": "s0a-11",
+  "lang": "hi",
+  "title": "गेंद कहाँ है?",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0a-11",
+    "title": "Hindi controlled stories, Stage 0A, story 11 of 12 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "school",
+    "family"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0a",
+    "chapter": {
+      "index": 11,
+      "title": "गेंद कहाँ है?"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "school",
+    "family"
+  ],
+  "sections": [
+    {
+      "title": "गेंद कहाँ है?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रवि मैदान में है।",
+              "english": "Ravi is on the field."
+            },
+            {
+              "text": "अमित भी मैदान में है।",
+              "english": "Amit is on the field too."
+            },
+            {
+              "text": "गेंद कहाँ है?",
+              "english": "Where is the ball?"
+            },
+            {
+              "text": "गेंद मैदान में नहीं है।",
+              "english": "The ball is not on the field."
+            },
+            {
+              "text": "मोती कहाँ है?",
+              "english": "Where is Moti?"
+            },
+            {
+              "text": "मोती भी मैदान में नहीं है।",
+              "english": "Moti is not on the field either."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "क्या गेंद घर में है?",
+              "english": "Is the ball in the house?"
+            },
+            {
+              "text": "नहीं, गेंद घर में नहीं है।",
+              "english": "No, the ball is not in the house."
+            },
+            {
+              "text": "क्या गेंद स्कूल में है?",
+              "english": "Is the ball at school?"
+            },
+            {
+              "text": "नहीं, गेंद स्कूल में नहीं है।",
+              "english": "No, the ball is not at school."
+            },
+            {
+              "text": "क्या गेंद बाज़ार में है?",
+              "english": "Is the ball in the market?"
+            },
+            {
+              "text": "नहीं, गेंद बाज़ार में नहीं है।",
+              "english": "No, the ball is not in the market."
+            },
+            {
+              "text": "क्या गेंद छत पर है?",
+              "english": "Is the ball on the roof?"
+            },
+            {
+              "text": "नहीं, गेंद छत पर नहीं है।",
+              "english": "No, the ball is not on the roof."
+            },
+            {
+              "text": "छत बड़ी है।",
+              "english": "The roof is big."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मीरा कहाँ है?",
+              "english": "Where is Mira?"
+            },
+            {
+              "text": "मीरा रसोई में है।",
+              "english": "Mira is in the kitchen."
+            },
+            {
+              "text": "क्या गेंद रसोई में है?",
+              "english": "Is the ball in the kitchen?"
+            },
+            {
+              "text": "हाँ, गेंद रसोई में है।",
+              "english": "Yes, the ball is in the kitchen."
+            },
+            {
+              "text": "मोती भी रसोई में है।",
+              "english": "Moti is in the kitchen too."
+            },
+            {
+              "text": "मोती रोटी खाता है।",
+              "english": "Moti eats flatbread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दादी कहाँ हैं?",
+              "english": "Where is Grandma?"
+            },
+            {
+              "text": "दादी घर में हैं।",
+              "english": "Grandma is in the house."
+            },
+            {
+              "text": "दादा जी कहाँ हैं?",
+              "english": "Where is Grandpa?"
+            },
+            {
+              "text": "दादा जी बाज़ार में हैं।",
+              "english": "Grandpa is in the market."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि और अमित रसोई में हैं।",
+              "english": "Ravi and Amit are in the kitchen."
+            },
+            {
+              "text": "गेंद कहाँ है?",
+              "english": "Where is the ball?"
+            },
+            {
+              "text": "गेंद रसोई में है।",
+              "english": "The ball is in the kitchen."
+            },
+            {
+              "text": "मोती कहाँ है?",
+              "english": "Where is Moti?"
+            },
+            {
+              "text": "मोती रसोई में है।",
+              "english": "Moti is in the kitchen."
+            },
+            {
+              "text": "मोती रोटी खाता है।",
+              "english": "Moti eats flatbread."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

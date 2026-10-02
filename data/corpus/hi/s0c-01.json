@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 2,
+  "id": "s0c-01",
+  "lang": "hi",
+  "title": "देर हो गई",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0c-01",
+    "title": "Hindi controlled stories, Stage 0C, story 1 of 6 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "school",
+    "family"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0c",
+    "chapter": {
+      "index": 1,
+      "title": "देर हो गई"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "school",
+    "family"
+  ],
+  "sections": [
+    {
+      "title": "देर हो गई",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज सुबह मीरा ने रवि को उठाया।",
+              "english": "This morning Mira woke Ravi up."
+            },
+            {
+              "text": "मीरा ने कहा, \"रवि, उठो! बस आ रही है।\"",
+              "english": "Mira said, \"Ravi, get up! The bus is coming.\""
+            },
+            {
+              "text": "रवि ने कहा, \"थोड़ी देर और।\"",
+              "english": "Ravi said, \"A little longer.\""
+            },
+            {
+              "text": "मीरा स्कूल चली गई, और रवि सो गया।",
+              "english": "Mira went to school, and Ravi fell asleep again."
+            },
+            {
+              "text": "थोड़ी देर बाद रवि उठा।",
+              "english": "A little later Ravi got up."
+            },
+            {
+              "text": "उसने घड़ी देखी।",
+              "english": "He looked at the clock."
+            },
+            {
+              "text": "घड़ी में आठ बजे थे।",
+              "english": "The clock said eight."
+            },
+            {
+              "text": "रवि घबरा गया, क्योंकि बस आठ बजे आती है।",
+              "english": "Ravi was alarmed, because the bus comes at eight."
+            },
+            {
+              "text": "उसने माँ से पूछा, \"मीरा कहाँ है?\"",
+              "english": "He asked Mom, \"Where is Mira?\""
+            },
+            {
+              "text": "माँ ने कहा, \"मीरा बस से स्कूल चली गई। उसने तुम्हें दो बार उठाया।\"",
+              "english": "Mom said, \"Mira went to school by bus. She woke you twice.\""
+            },
+            {
+              "text": "रवि ने जल्दी से कपड़े पहने।",
+              "english": "Ravi quickly put on his clothes."
+            },
+            {
+              "text": "माँ ने उसे एक रोटी दी।",
+              "english": "Mom gave him a flatbread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि ने रोटी ली और घर से भाग गया।",
+              "english": "Ravi took the flatbread and ran out of the house."
+            },
+            {
+              "text": "सड़क पर बहुत लोग थे।",
+              "english": "There were many people on the road."
+            },
+            {
+              "text": "लेकिन बस वहाँ नहीं थी।",
+              "english": "But the bus was not there."
+            },
+            {
+              "text": "वह चली गई।",
+              "english": "It was gone."
+            },
+            {
+              "text": "रवि रुक गया।",
+              "english": "Ravi stopped."
+            },
+            {
+              "text": "तभी पीछे से आवाज़ आई।",
+              "english": "Just then a sound came from behind."
+            },
+            {
+              "text": "मोती ज़ोर से भौंका।",
+              "english": "Moti barked loudly."
+            },
+            {
+              "text": "रवि ने मोती को देखा।",
+              "english": "Ravi looked at Moti."
+            },
+            {
+              "text": "मोती उसके पास आ गया।",
+              "english": "Moti came up to him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि ने कहा, \"मोती, तुम घर जाओ। मुझे स्कूल जाना है।\"",
+              "english": "Ravi said, \"Moti, you go home. I have to go to school.\""
+            },
+            {
+              "text": "लेकिन मोती घर नहीं गया।",
+              "english": "But Moti did not go home."
+            },
+            {
+              "text": "रवि स्कूल की तरफ़ भागा।",
+              "english": "Ravi ran toward the school."
+            },
+            {
+              "text": "मोती भी उसके साथ भागा।",
+              "english": "Moti ran with him too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "जब रवि कक्षा में आया, तब सब बच्चे बैठे थे।",
+              "english": "When Ravi came into the class, all the children were sitting."
+            },
+            {
+              "text": "शर्मा जी ने रवि को देखा।",
+              "english": "Mr Sharma looked at Ravi."
+            },
+            {
+              "text": "शर्मा जी ने पूछा, \"रवि, तुम देर से क्यों आए?\"",
+              "english": "Mr Sharma asked, \"Ravi, why did you come late?\""
+            },
+            {
+              "text": "रवि ने कहा, \"शर्मा जी, मैं देर से उठा, इसलिए बस चली गई।\"",
+              "english": "Ravi said, \"Mr Sharma, I got up late, so the bus left.\""
+            },
+            {
+              "text": "शर्मा जी ने कहा, \"अगर तुम जल्दी उठते हो, तो बस मिल जाती है।\"",
+              "english": "Mr Sharma said, \"If you get up early, you catch the bus.\""
+            },
+            {
+              "text": "तभी कक्षा के बाहर से आवाज़ आई।",
+              "english": "Just then a sound came from outside the class."
+            },
+            {
+              "text": "सब बच्चों ने बाहर देखा।",
+              "english": "All the children looked outside."
+            },
+            {
+              "text": "मोती दरवाज़े पर बैठा था।",
+              "english": "Moti was sitting at the door."
+            },
+            {
+              "text": "सब बच्चे हँसने लगे।",
+              "english": "All the children started laughing."
+            },
+            {
+              "text": "शर्मा जी भी हँसने लगे।",
+              "english": "Mr Sharma started laughing too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि ने अपनी रोटी मोती को दे दी।",
+              "english": "Ravi gave his flatbread to Moti."
+            },
+            {
+              "text": "मोती ने रोटी खा ली।",
+              "english": "Moti ate it up."
+            },
+            {
+              "text": "रवि को भूख लगी, लेकिन वह भी हँसने लगा।",
+              "english": "Ravi felt hungry, but he started laughing too."
+            },
+            {
+              "text": "मोती सारा दिन दरवाज़े पर बैठा रहा।",
+              "english": "Moti stayed sitting at the door all day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शाम को रवि और मीरा घर आए।",
+              "english": "In the evening Ravi and Mira came home."
+            },
+            {
+              "text": "माँ ने रवि से पूछा, \"आज तुमने क्या खाया?\"",
+              "english": "Mom asked Ravi, \"What did you eat today?\""
+            },
+            {
+              "text": "रवि ने कहा, \"आज मैंने कुछ नहीं खाया।\"",
+              "english": "Ravi said, \"Today I ate nothing.\""
+            },
+            {
+              "text": "माँ हँसने लगी।",
+              "english": "Mom started laughing."
+            },
+            {
+              "text": "उसने रवि को दूध और रोटी दी।",
+              "english": "She gave Ravi milk and flatbread."
+            },
+            {
+              "text": "रवि ने खाना खाया, और मोती उसके पास बैठ गया।",
+              "english": "Ravi ate, and Moti sat down next to him."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

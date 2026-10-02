@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 2,
+  "id": "s0a-12",
+  "lang": "hi",
+  "title": "यह कौन है?",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0a-12",
+    "title": "Hindi controlled stories, Stage 0A, story 12 of 12 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "family",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0a",
+    "chapter": {
+      "index": 12,
+      "title": "यह कौन है?"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "यह कौन है?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "यह तस्वीर है।",
+              "english": "This is a picture."
+            },
+            {
+              "text": "तस्वीर बड़ी है।",
+              "english": "The picture is big."
+            },
+            {
+              "text": "तस्वीर में कौन है?",
+              "english": "Who is in the picture?"
+            },
+            {
+              "text": "तस्वीर में लड़का है।",
+              "english": "There is a boy in the picture."
+            },
+            {
+              "text": "तस्वीर में लड़की है।",
+              "english": "There is a girl in the picture."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह लड़का कौन है?",
+              "english": "Who is this boy?"
+            },
+            {
+              "text": "यह लड़का रवि है।",
+              "english": "This boy is Ravi."
+            },
+            {
+              "text": "यह लड़की कौन है?",
+              "english": "Who is this girl?"
+            },
+            {
+              "text": "यह लड़की मीरा है।",
+              "english": "This girl is Mira."
+            },
+            {
+              "text": "यह कौन है?",
+              "english": "Who is this?"
+            },
+            {
+              "text": "यह मोती है।",
+              "english": "This is Moti."
+            },
+            {
+              "text": "मोती कुत्ता है।",
+              "english": "Moti is a dog."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "वह कौन हैं?",
+              "english": "Who is that?"
+            },
+            {
+              "text": "वह पापा हैं।",
+              "english": "That is Dad."
+            },
+            {
+              "text": "वह कौन हैं?",
+              "english": "Who is that?"
+            },
+            {
+              "text": "वह दादी हैं।",
+              "english": "That is Grandma."
+            },
+            {
+              "text": "वह कौन हैं?",
+              "english": "Who is that?"
+            },
+            {
+              "text": "वह दादा जी हैं।",
+              "english": "That is Grandpa."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "कौन स्कूल जाता है?",
+              "english": "Who goes to school?"
+            },
+            {
+              "text": "रवि और मीरा स्कूल जाते हैं।",
+              "english": "Ravi and Mira go to school."
+            },
+            {
+              "text": "कौन पानी पीता है?",
+              "english": "Who drinks water?"
+            },
+            {
+              "text": "मोती पानी पीता है।",
+              "english": "Moti drinks water."
+            },
+            {
+              "text": "कौन दूध पीती है?",
+              "english": "Who drinks milk?"
+            },
+            {
+              "text": "मीरा दूध पीती है।",
+              "english": "Mira drinks milk."
+            },
+            {
+              "text": "कौन चाय पीते हैं?",
+              "english": "Who drinks tea?"
+            },
+            {
+              "text": "पापा और दादा जी चाय पीते हैं।",
+              "english": "Dad and Grandpa drink tea."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "कौन अध्यापक हैं?",
+              "english": "Who is a teacher?"
+            },
+            {
+              "text": "शर्मा जी अध्यापक हैं।",
+              "english": "Mr Sharma is a teacher."
+            },
+            {
+              "text": "कौन किताब पढ़ता है?",
+              "english": "Who reads a book?"
+            },
+            {
+              "text": "अमित किताब पढ़ता है।",
+              "english": "Amit reads a book."
+            },
+            {
+              "text": "क्या नेहा भी खेलती है?",
+              "english": "Does Neha play too?"
+            },
+            {
+              "text": "हाँ, नेहा भी खेलती है।",
+              "english": "Yes, Neha plays too."
+            },
+            {
+              "text": "तस्वीर कहाँ है?",
+              "english": "Where is the picture?"
+            },
+            {
+              "text": "तस्वीर मेज़ पर है।",
+              "english": "The picture is on the table."
+            },
+            {
+              "text": "तस्वीर अच्छी है।",
+              "english": "The picture is good."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

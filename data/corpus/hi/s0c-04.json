@@ -1,0 +1,217 @@
+{
+  "schemaVersion": 2,
+  "id": "s0c-04",
+  "lang": "hi",
+  "title": "मोती कहाँ गया?",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0c-04",
+    "title": "Hindi controlled stories, Stage 0C, story 4 of 6 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "family",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0c",
+    "chapter": {
+      "index": 4,
+      "title": "मोती कहाँ गया?"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "मोती कहाँ गया?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दोपहर को सब आँगन में बैठे थे।",
+              "english": "At noon everyone was sitting in the courtyard."
+            },
+            {
+              "text": "दादी ने सबको आम दिए।",
+              "english": "Grandma gave everyone mangoes."
+            },
+            {
+              "text": "आम बहुत मीठे थे।",
+              "english": "The mangoes were very sweet."
+            },
+            {
+              "text": "रवि ने तीन आम खाए।",
+              "english": "Ravi ate three mangoes."
+            },
+            {
+              "text": "मीरा ने दो आम खाए।",
+              "english": "Mira ate two mangoes."
+            },
+            {
+              "text": "राजू और सीता ने भी आम खाए।",
+              "english": "Raju and Sita ate mangoes too."
+            },
+            {
+              "text": "मोती आम नहीं खाता, इसलिए दादी ने उसे दूध दिया।",
+              "english": "Moti does not eat mangoes, so Grandma gave him milk."
+            },
+            {
+              "text": "मोती ने दूध पिया।",
+              "english": "Moti drank the milk."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "थोड़ी देर बाद रवि ने कहा, \"मोती कहाँ है?\"",
+              "english": "A little later Ravi said, \"Where is Moti?\""
+            },
+            {
+              "text": "सबने आँगन में देखा।",
+              "english": "Everyone looked in the courtyard."
+            },
+            {
+              "text": "मोती आँगन में नहीं था।",
+              "english": "Moti was not in the courtyard."
+            },
+            {
+              "text": "वह गाय के पास भी नहीं था।",
+              "english": "He was not near the cow either."
+            },
+            {
+              "text": "रवि ने गाय से पूछा, \"क्या तुमने मोती को देखा?\"",
+              "english": "Ravi asked the cow, \"Have you seen Moti?\""
+            },
+            {
+              "text": "गाय ने कुछ नहीं कहा।",
+              "english": "The cow said nothing."
+            },
+            {
+              "text": "सीता ने कहा, \"शायद वह खेत की तरफ़ गया।\"",
+              "english": "Sita said, \"Maybe he went toward the field.\""
+            },
+            {
+              "text": "राजू ने कहा, \"चलो, ढूँढते हैं।\"",
+              "english": "Raju said, \"Come on, let's look for him.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सबने मोती को ढूँढा।",
+              "english": "Everyone looked for Moti."
+            },
+            {
+              "text": "पहले सब खेत में गए।",
+              "english": "First everyone went to the field."
+            },
+            {
+              "text": "वहाँ मोती नहीं था।",
+              "english": "Moti was not there."
+            },
+            {
+              "text": "फिर सब नदी के पास गए।",
+              "english": "Then everyone went to the river."
+            },
+            {
+              "text": "वहाँ भी मोती नहीं मिला।",
+              "english": "Moti was not found there either."
+            },
+            {
+              "text": "फिर सीता ने पड़ोस की चाची से पूछा, \"चाची, क्या आपने एक सफ़ेद कुत्ता देखा?\"",
+              "english": "Then Sita asked the neighbour aunt, \"Aunt, have you seen a white dog?\""
+            },
+            {
+              "text": "चाची ने कहा, \"नहीं, मैंने कुत्ता नहीं देखा। लेकिन मैंने एक गाय देखी।\"",
+              "english": "The aunt said, \"No, I have not seen a dog. But I saw a cow.\""
+            },
+            {
+              "text": "राजू ने गाँव के बच्चों से पूछा, \"क्या तुमने एक सफ़ेद कुत्ता देखा?\"",
+              "english": "Raju asked the village children, \"Have you seen a white dog?\""
+            },
+            {
+              "text": "बच्चों ने कहा, \"नहीं, हमने कोई कुत्ता नहीं देखा।\"",
+              "english": "The children said, \"No, we have not seen any dog.\""
+            },
+            {
+              "text": "मीरा रोने लगी।",
+              "english": "Mira started to cry."
+            },
+            {
+              "text": "सीता ने मीरा को पानी दिया।",
+              "english": "Sita gave Mira some water."
+            },
+            {
+              "text": "रवि ने कहा, \"मीरा, मोती ज़रूर यहीं कहीं है।\"",
+              "english": "Ravi said, \"Mira, Moti is certainly somewhere around here.\""
+            },
+            {
+              "text": "मीरा ने कहा, \"मोती खो गया, इसलिए मुझे डर लग रहा है।\"",
+              "english": "Mira said, \"Moti is lost, so I am afraid.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "राजू ने कहा, \"हमने खेत में देखा। हमने नदी के पास भी देखा।\"",
+              "english": "Raju said, \"We looked in the field. We looked near the river too.\""
+            },
+            {
+              "text": "सीता ने कहा, \"चलो, दादी से पूछते हैं।\"",
+              "english": "Sita said, \"Come on, let's ask Grandma.\""
+            },
+            {
+              "text": "सब दादी के पास गए।",
+              "english": "Everyone went to Grandma."
+            },
+            {
+              "text": "दादी ने पूछा, \"क्या हुआ?\"",
+              "english": "Grandma asked, \"What happened?\""
+            },
+            {
+              "text": "रवि ने कहा, \"दादी, मोती खो गया।\"",
+              "english": "Ravi said, \"Grandma, Moti is lost.\""
+            },
+            {
+              "text": "दादी ने आँगन की तरफ़ देखा और कहा, \"पहले आम के पेड़ के नीचे देखो।\"",
+              "english": "Grandma looked toward the courtyard and said, \"First look under the mango tree.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

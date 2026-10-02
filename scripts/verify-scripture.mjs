@@ -15,6 +15,10 @@ const SOURCES = [
   // one translation, several bundled documents: one record entry holds the verses of all of them
   { lang: 'de', docs: ['data/corpus/de/bible-1john-1.json', 'data/corpus/de/bible-gen-1.json', 'data/corpus/de/bible-psa-1.json', 'data/corpus/de/bible-psa-23.json', 'data/corpus/de/bible-mat-1.json'],
     translationId: 'deu1912', name: 'Lutherbibel 1912', rights: 'public-domain', base: 'https://ebible.org/deu1912' },
+  // a LICENSED translation (not public domain): the copyright page must state this licence and this rights holder
+  { lang: 'hi', docs: ['data/corpus/hi/bible-1john-1.json', 'data/corpus/hi/bible-gen-1.json', 'data/corpus/hi/bible-psa-1.json', 'data/corpus/hi/bible-psa-23.json', 'data/corpus/hi/bible-mrk-1.json'],
+    translationId: 'hin2017', name: 'इंडियन रिवाइज्ड वर्जन (IRV) हिंदी - 2019', rights: 'licensed', base: 'https://ebible.org/hin2017',
+    licence: 'Creative Commons Attribution Share-Alike license 4.0', holder: 'copyright © 2017, 2018, 2019 Bridge Connectivity Solutions' },
 ];
 const fix = process.argv.includes('--fix');
 
@@ -33,6 +37,9 @@ async function fetchVerses(base, refs) {
       .replace(/<div class=['"](?:s\d?|ms\d?|mt\d?|r|d|sp|mr|sr|b)['"][^>]*>[\s\S]*?<\/div>/g, '\n')
       .replace(/<span class="verse" id="V(\d+)">[^<]*<\/span>/g, '\n@@$1 ')
       .replace(/<a [^>]*class="notemark"[\s\S]*?<\/a>/g, '')
+      // a cross-reference set inside a verse in parentheses ("(इब्रा. 1:10, इब्रा. 11:3)", marked as a character style by
+      // the source) is apparatus like a footnote, not verse text: it is left out, and only when it is exactly that
+      .replace(/<span class=['"]bdit['"]>\s*\([^<()]*\d+\s*[:.]\s*\d+[^<()]*\)\s*<\/span>/g, '')
       .replace(/<[^>]+>/g, '')
       .replace(/&nbsp;|&#160;/g, ' ');
     const clean = (x) => x.replace(/\s+/g, ' ').trim().normalize('NFC');
@@ -46,15 +53,21 @@ async function fetchVerses(base, refs) {
   return out;
 }
 
-async function rightsStatement(base) {
+async function rightsStatement(base, src) {
   const html = await (await fetch(`${base}/copyright.htm`)).text();
+  if (src?.licence) {
+    const plain = html.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ');
+    return plain.includes(src.licence) && plain.includes(src.holder)
+      ? `${src.licence}; ${src.holder} (as stated on the source copyright page)`
+      : 'THE EXPECTED LICENCE OR RIGHTS HOLDER IS NOT STATED';
+  }
   return /Public Domain/i.test(html) ? 'Public Domain (as stated on the source copyright page)' : 'NOT STATED AS PUBLIC DOMAIN';
 }
 
 const record = { checkedAt: new Date().toISOString().slice(0, 10), method: 'byte-comparison', by: 'scripts/verify-scripture.mjs', translations: [] };
 let failed = false;
 for (const src of SOURCES) {
-  const rights = await rightsStatement(src.base);
+  const rights = await rightsStatement(src.base, src);
   const entry = { lang: src.lang, translationId: src.translationId, name: src.name, source: 'eBible.org', base: src.base, rightsStatement: rights, verses: {}, mismatches: [] };
   for (const path of src.docs ?? [src.doc]) {
   const doc = JSON.parse(fs.readFileSync(path, 'utf8'));
@@ -75,7 +88,7 @@ for (const src of SOURCES) {
   }
   if (fix && entry.mismatches.length > before) fs.writeFileSync(path, JSON.stringify(doc, null, 2) + '\n');
   }
-  if (!/^Public Domain/.test(rights)) failed = true;
+  if (!(src.licence ? rights.startsWith(src.licence) : /^Public Domain/.test(rights))) failed = true;
   record.translations.push(entry);
   console.log(`${src.lang} ${src.name}: ${Object.keys(entry.verses).length} verses, ${entry.mismatches.length} mismatch(es)${fix && entry.mismatches.length ? ' — corrected from source' : ''}; rights: ${rights}`);
   for (const m of entry.mismatches) console.log('   ', JSON.stringify(m));

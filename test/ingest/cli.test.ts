@@ -3,7 +3,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { runNode } from '../helpers/cli';
 import { afterAll, beforeAll, describe, expect, it } from 'vitest';
-import { contentSignatureOf } from '../../src/ingest';
+import { contentSignatureOf, loadBundledCorpus } from '../../src/ingest';
 import { baseDoc, scriptureDoc } from './helpers';
 
 const cli = path.resolve('node_modules/vite-node/dist/cli.mjs');
@@ -133,10 +133,16 @@ describe('corpus CLI (npm run corpus:validate / corpus:check / corpus:migrate)',
   it('corpus:check passes on the bundled corpus: valid, re-import a no-op, verified Scripture byte-identical', async () => {
     const r = await run('scripts/corpus-check.mts');
     expect(r.status).toBe(0);
-    const m = /corpus:check - (\d+) document\(s\), 0 validation error\(s\), \d+ warning\(s\); 2 published, (\d+) unpublished; re-import unchanged: yes; 6 verified verse\(s\) byte-identical; OK/.exec(r.out);
+    const m = /corpus:check - (\d+) document\(s\), 0 validation error\(s\), \d+ warning\(s\); (\d+) published, (\d+) unpublished; re-import unchanged: yes; (\d+) verified verse\(s\) byte-identical; OK/.exec(r.out);
     expect(m, r.out.slice(-300)).not.toBeNull();
-    expect(Number(m![1])).toBeGreaterThanOrEqual(15); // the seed texts plus the course texts
-    expect(Number(m![2])).toBe(Number(m![1]) - 2); // only the verified es and de Scripture is published
+    // the totals follow the corpus (several courses add documents): only Scripture whose wording is verified is published
+    const docs = loadBundledCorpus();
+    const verified = docs.filter((d) => d.contentType === 'scripture' && d.scripture?.verification);
+    expect(Number(m![1])).toBe(docs.length);
+    expect(Number(m![2])).toBe(verified.length);
+    expect(Number(m![3])).toBe(docs.length - verified.length);
+    expect(Number(m![4])).toBeGreaterThanOrEqual(verified.length); // at least one verse per verified document
+    expect(verified.length).toBeGreaterThanOrEqual(2);
   }, 120_000);
 
   it('corpus:migrate is repeatable: the bundled corpus is already version 2, nothing is rewritten', async () => {

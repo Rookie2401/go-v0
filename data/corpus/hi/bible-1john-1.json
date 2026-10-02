@@ -5,44 +5,52 @@
   "title": "1 यूहन्ना 1:8–9; यूहन्ना 3:16",
   "contentType": "scripture",
   "corpus": {
-    "id": "bible-hi-unverified",
+    "id": "bible-hi-irv2019",
     "kind": "scripture",
-    "title": "Hindi Bible (unverified sample)"
+    "title": "इंडियन रिवाइज्ड वर्जन (IRV) हिंदी - 2019"
   },
   "source": {
     "id": "src:hi:bible-1john-1",
-    "title": "Hindi Bible passage (translation not identified)",
-    "edition": "unverified sample",
-    "attribution": "Unverified sample (translation not identified) - not for release",
-    "provenance": "Wording the drafter (an AI assistant) recalls as the traditional published Hindi rendering, written from memory. The translation/edition could not be identified, the wording may deviate from it, and the licence is unknown (rights: unverified). This is a test sample: it MUST be replaced by a licensed, verified text before any release.",
-    "rights": "unverified",
-    "licenseNote": "Licence unknown. Do not ship.",
-    "authorship": "human"
+    "title": "इंडियन रिवाइज्ड वर्जन (IRV) हिंदी - 2019",
+    "edition": "IRV Hindi 2019",
+    "publisher": "Bridge Connectivity Solutions Pvt. Ltd.",
+    "attribution": "इंडियन रिवाइज्ड वर्जन (IRV) हिंदी - 2019 — copyright © 2017, 2018, 2019 Bridge Connectivity Solutions; Creative Commons Attribution Share-Alike 4.0 (CC BY-SA 4.0); from eBible.org (hin2017)",
+    "provenance": "Indian Revised Version (Hindi). These verses first stood here as an unverified sample typed from memory; on 2026-10-02 their wording was replaced by the distributor's own text (https://ebible.org/hin2017, pages 1JN01.htm and JHN03.htm) by scripts/verify-scripture.mjs --fix; nothing was retyped. The distributor's copyright page states the Creative Commons Attribution Share-Alike licence 4.0 for this translation. A selection, not a change: the verse text is exactly the source's; the translators' footnotes, the section headings and the cross-references (the lines between verses and the references the translation sets in parentheses inside a verse) are not included. The English beside it is the World English Bible, a separate public-domain text.",
+    "url": "https://ebible.org/hin2017/1JN01.htm",
+    "rights": "licensed",
+    "licenseNote": "CC BY-SA 4.0 (https://creativecommons.org/licenses/by-sa/4.0/), as stated by the distributor, eBible.org: share and adapt with the copyright and source named, changes indicated, and the same licence kept. This text is passed on unchanged under that licence.",
+    "authorship": "licensed"
   },
   "review": {
-    "status": "unreviewed",
-    "notes": "Unverified sample: the wording is not checked against any published source."
+    "status": "reviewed",
+    "reviewedBy": "scripts/verify-scripture.mjs",
+    "reviewedAt": "2026-10-02",
+    "notes": "Wording verified by byte-comparison against eBible.org hin2017."
   },
   "topics": [
     "scripture",
     "1john-1",
     "john-3"
   ],
-  "editorialTags": [
-    "unverified-sample",
-    "typed-from-memory"
-  ],
+  "editorialTags": [],
   "prepTargets": [],
   "generated": false,
   "scripture": {
-    "translationId": "unidentified",
-    "translationName": "unverified sample",
-    "edition": "unverified sample",
+    "translationId": "hin2017",
+    "translationName": "इंडियन रिवाइज्ड वर्जन (IRV) हिंदी - 2019",
+    "edition": "IRV Hindi 2019",
     "book": "1JN",
-    "chapter": 1
+    "chapter": 1,
+    "verification": {
+      "against": "eBible.org hin2017",
+      "url": "https://ebible.org/hin2017",
+      "checkedAt": "2026-10-02",
+      "method": "byte-comparison",
+      "by": "scripts/verify-scripture.mjs"
+    }
   },
   "english": {
-    "source": "World English Bible (public domain)"
+    "source": "World English Bible (public domain), eBible.org eng-web"
   },
   "sections": [
     {
@@ -52,14 +60,14 @@
         {
           "sentences": [
             {
-              "text": "यदि हम कहें, कि हम में कुछ पाप नहीं, तो अपने आप को धोखा देते हैं, और हम में सत्य नहीं।",
+              "text": "यदि हम कहें, कि हम में कुछ भी पाप नहीं, तो अपने आपको धोखा देते हैं और हम में सत्य नहीं।",
               "english": "If we say that we have no sin, we deceive ourselves, and the truth isn’t in us.",
               "verseRefs": [
                 "1JN.1.8"
               ]
             },
             {
-              "text": "यदि हम अपने पापों को मान लें, तो वह हमारे पापों को क्षमा करने और हमें सब अधर्म से शुद्ध करने में विश्वासयोग्य और धर्मी है।",
+              "text": "यदि हम अपने पापों को मान लें, तो वह हमारे पापों को क्षमा करने, और हमें सब अधर्म से शुद्ध करने में विश्वासयोग्य और धर्मी है।",
               "english": "If we confess our sins, he is faithful and righteous to forgive us the sins, and to cleanse us from all unrighteousness.",
               "verseRefs": [
                 "1JN.1.9"
@@ -76,7 +84,7 @@
         {
           "sentences": [
             {
-              "text": "क्योंकि परमेश्वर ने जगत से ऐसा प्रेम रखा कि उसने अपना एकलौता पुत्र दे दिया, ताकि जो कोई उस पर विश्वास करे वह नाश न हो, परन्तु अनन्त जीवन पाए।",
+              "text": "“क्योंकि परमेश्वर ने जगत से ऐसा प्रेम रखा कि उसने अपना एकलौता पुत्र दे दिया, ताकि जो कोई उस पर विश्वास करे, वह नाश न हो, परन्तु अनन्त जीवन पाए।",
               "english": "For God so loved the world, that he gave his only born Son, that whoever believes in him should not perish, but have eternal life.",
               "verseRefs": [
                 "JHN.3.16"

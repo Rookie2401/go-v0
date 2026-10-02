@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 2,
+  "id": "s0c-03",
+  "lang": "hi",
+  "title": "गाँव का सफ़र",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0c-03",
+    "title": "Hindi controlled stories, Stage 0C, story 3 of 6 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "travel",
+    "family"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0c",
+    "chapter": {
+      "index": 3,
+      "title": "गाँव का सफ़र"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel",
+    "family"
+  ],
+  "sections": [
+    {
+      "title": "गाँव का सफ़र",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "स्कूल की छुट्टी थी।",
+              "english": "School was on holiday."
+            },
+            {
+              "text": "छुट्टी का पहला दिन था।",
+              "english": "It was the first day of the holiday."
+            },
+            {
+              "text": "सुबह माँ ने कहा, \"आज हम दादी के गाँव जा रहे हैं।\"",
+              "english": "In the morning Mom said, \"Today we are going to Grandma's village.\""
+            },
+            {
+              "text": "रवि और मीरा ने अपने बैग उठाए।",
+              "english": "Ravi and Mira picked up their bags."
+            },
+            {
+              "text": "रवि ने माँ से पूछा, \"क्या मोती भी हमारे साथ आ रहा है?\"",
+              "english": "Ravi asked Mom, \"Is Moti coming with us too?\""
+            },
+            {
+              "text": "माँ ने कहा, \"हाँ, मोती भी आ रहा है।\"",
+              "english": "Mom said, \"Yes, Moti is coming too.\""
+            },
+            {
+              "text": "मोती ने रवि को देखा और पूँछ हिलाई।",
+              "english": "Moti looked at Ravi and wagged his tail."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सब बस के पास पहुँचे।",
+              "english": "Everyone reached the bus."
+            },
+            {
+              "text": "बस में बहुत भीड़ थी।",
+              "english": "The bus was very crowded."
+            },
+            {
+              "text": "रवि को खिड़की के पास जगह मिली।",
+              "english": "Ravi got a seat by the window."
+            },
+            {
+              "text": "मीरा माँ के पास बैठी।",
+              "english": "Mira sat next to Mom."
+            },
+            {
+              "text": "मोती रवि के पास बैठ गया।",
+              "english": "Moti sat down next to Ravi."
+            },
+            {
+              "text": "बस चली।",
+              "english": "The bus set off."
+            },
+            {
+              "text": "रवि ने खिड़की से बाहर देखा।",
+              "english": "Ravi looked out of the window."
+            },
+            {
+              "text": "उसने खेत देखे, पेड़ देखे और एक नदी देखी।",
+              "english": "He saw fields, trees and a river."
+            },
+            {
+              "text": "खेतों में लोग काम कर रहे थे।",
+              "english": "People were working in the fields."
+            },
+            {
+              "text": "एक आदमी ने मोती को देखा।",
+              "english": "A man saw Moti."
+            },
+            {
+              "text": "उसने कहा, \"यह कुत्ता बहुत प्यारा है।\"",
+              "english": "He said, \"This dog is very sweet.\""
+            },
+            {
+              "text": "रवि ने कहा, \"धन्यवाद। इसका नाम मोती है।\"",
+              "english": "Ravi said, \"Thank you. His name is Moti.\""
+            },
+            {
+              "text": "माँ ने सबको रोटी दी।",
+              "english": "Mom gave everyone flatbread."
+            },
+            {
+              "text": "सबने रोटी खाई।",
+              "english": "Everyone ate the flatbread."
+            },
+            {
+              "text": "मोती ने भी थोड़ी रोटी खाई।",
+              "english": "Moti ate a little flatbread too."
+            },
+            {
+              "text": "मीरा ने पानी पिया।",
+              "english": "Mira drank water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अचानक बस रुक गई।",
+              "english": "Suddenly the bus stopped."
+            },
+            {
+              "text": "सड़क पर बहुत गायें थीं।",
+              "english": "There were many cows on the road."
+            },
+            {
+              "text": "मीरा को डर लगा।",
+              "english": "Mira felt afraid."
+            },
+            {
+              "text": "रवि ने कहा, \"डर की कोई बात नहीं है।\"",
+              "english": "Ravi said, \"There is nothing to be afraid of.\""
+            },
+            {
+              "text": "मोती ने गायों को देखा, लेकिन वह भौंका नहीं।",
+              "english": "Moti looked at the cows, but he did not bark."
+            },
+            {
+              "text": "थोड़ी देर बाद गायें चली गईं।",
+              "english": "After a little while the cows left."
+            },
+            {
+              "text": "फिर बस चली।",
+              "english": "Then the bus moved on."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दो घंटे बाद बस गाँव पहुँची।",
+              "english": "Two hours later the bus reached the village."
+            },
+            {
+              "text": "सब बस से उतरे।",
+              "english": "Everyone got off the bus."
+            },
+            {
+              "text": "गाँव के पास राजू और सीता खड़े थे।",
+              "english": "Raju and Sita were standing near the village."
+            },
+            {
+              "text": "राजू ने कहा, \"रवि! मीरा! इधर आओ!\"",
+              "english": "Raju said, \"Ravi! Mira! Come over here!\""
+            },
+            {
+              "text": "सीता ने मोती को देखा।",
+              "english": "Sita saw Moti."
+            },
+            {
+              "text": "उसने कहा, \"अरे, मोती भी आ गया!\"",
+              "english": "She said, \"Oh, Moti has come too!\""
+            },
+            {
+              "text": "राजू ने रवि का बैग ले लिया।",
+              "english": "Raju took Ravi's bag."
+            },
+            {
+              "text": "सीता ने मीरा का बैग ले लिया।",
+              "english": "Sita took Mira's bag."
+            },
+            {
+              "text": "सब दादी के घर की तरफ़ चले।",
+              "english": "Everyone walked toward Grandma's house."
+            },
+            {
+              "text": "दादी आँगन में खड़ी थीं।",
+              "english": "Grandma was standing in the courtyard."
+            },
+            {
+              "text": "दादी ने सबको देखा और हँसने लगीं।",
+              "english": "Grandma saw everyone and started laughing."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

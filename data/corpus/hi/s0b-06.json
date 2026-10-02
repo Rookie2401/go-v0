@@ -1,0 +1,153 @@
+{
+  "schemaVersion": 2,
+  "id": "s0b-06",
+  "lang": "hi",
+  "title": "फ़ोन पर",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0b-06",
+    "title": "Hindi controlled stories, Stage 0B, story 6 of 8 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0b",
+    "chapter": {
+      "index": 6,
+      "title": "फ़ोन पर"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life",
+    "family"
+  ],
+  "sections": [
+    {
+      "title": "फ़ोन पर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज राजू रवि को फ़ोन करता है।",
+              "english": "Today Raju calls Ravi on the phone."
+            },
+            {
+              "text": "राजू कहता है, \"हैलो, रवि! तुम कैसे हो?\"",
+              "english": "Raju says, \"Hello, Ravi! How are you?\""
+            },
+            {
+              "text": "रवि कहता है, \"मैं ठीक हूँ। तुम कैसे हो?\"",
+              "english": "Ravi says, \"I am fine. How are you?\""
+            },
+            {
+              "text": "राजू कहता है, \"मैं भी ठीक हूँ।\"",
+              "english": "Raju says, \"I am fine too.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि पूछता है, \"तुम क्या कर रहे हो?\"",
+              "english": "Ravi asks, \"What are you doing?\""
+            },
+            {
+              "text": "राजू कहता है, \"मैं आम खा रहा हूँ। तुम क्या कर रहे हो?\"",
+              "english": "Raju says, \"I am eating a mango. What are you doing?\""
+            },
+            {
+              "text": "रवि कहता है, \"मैं किताब पढ़ रहा हूँ।\"",
+              "english": "Ravi says, \"I am reading a book.\""
+            },
+            {
+              "text": "राजू पूछता है, \"मीरा क्या कर रही है?\"",
+              "english": "Raju asks, \"What is Mira doing?\""
+            },
+            {
+              "text": "रवि कहता है, \"वह मोती के साथ खेल रही है।\"",
+              "english": "Ravi says, \"She is playing with Moti.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि पूछता है, \"सीता कहाँ है? वह क्या कर रही है?\"",
+              "english": "Ravi asks, \"Where is Sita? What is she doing?\""
+            },
+            {
+              "text": "राजू कहता है, \"सीता गाय को पानी दे रही है।\"",
+              "english": "Raju says, \"Sita is giving the cow water.\""
+            },
+            {
+              "text": "रवि पूछता है, \"दादी कैसी हैं?\"",
+              "english": "Ravi asks, \"How is Grandma?\""
+            },
+            {
+              "text": "राजू कहता है, \"दादी ठीक हैं। वह चाय पी रही हैं।\"",
+              "english": "Raju says, \"Grandma is fine. She is drinking tea.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "राजू पूछता है, \"तुम गाँव कब आ रहे हो?\"",
+              "english": "Raju asks, \"When are you coming to the village?\""
+            },
+            {
+              "text": "रवि कहता है, \"हम जल्दी आ रहे हैं।\"",
+              "english": "Ravi says, \"We are coming soon.\""
+            },
+            {
+              "text": "राजू कहता है, \"अच्छा! आप सब आइए।\"",
+              "english": "Raju says, \"Good! All of you, please come.\""
+            },
+            {
+              "text": "राजू कहता है, \"मेरे पास नई गेंद है।\"",
+              "english": "Raju says, \"I have a new ball.\""
+            },
+            {
+              "text": "रवि कहता है, \"अच्छा! मैं भी अपनी गेंद लाता हूँ।\"",
+              "english": "Ravi says, \"Good! I will bring my ball too.\""
+            },
+            {
+              "text": "रवि कहता है, \"धन्यवाद, राजू।\"",
+              "english": "Ravi says, \"Thank you, Raju.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

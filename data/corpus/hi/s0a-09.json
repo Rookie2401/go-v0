@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 2,
+  "id": "s0a-09",
+  "lang": "hi",
+  "title": "स्कूल जाते हैं",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0a-09",
+    "title": "Hindi controlled stories, Stage 0A, story 9 of 12 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "school",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0a",
+    "chapter": {
+      "index": 9,
+      "title": "स्कूल जाते हैं"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "school",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "स्कूल जाते हैं",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रवि रोज़ स्कूल जाता है।",
+              "english": "Ravi goes to school every day."
+            },
+            {
+              "text": "मीरा रोज़ स्कूल जाती है।",
+              "english": "Mira goes to school every day."
+            },
+            {
+              "text": "अमित भी स्कूल जाता है।",
+              "english": "Amit goes to school too."
+            },
+            {
+              "text": "नेहा भी स्कूल जाती है।",
+              "english": "Neha goes to school too."
+            },
+            {
+              "text": "रवि और अमित स्कूल जाते हैं।",
+              "english": "Ravi and Amit go to school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि स्कूल में पढ़ता है।",
+              "english": "Ravi studies at school."
+            },
+            {
+              "text": "मीरा स्कूल में पढ़ती है।",
+              "english": "Mira studies at school."
+            },
+            {
+              "text": "रवि और अमित स्कूल में पढ़ते हैं।",
+              "english": "Ravi and Amit study at school."
+            },
+            {
+              "text": "मीरा और नेहा भी पढ़ती हैं।",
+              "english": "Mira and Neha study too."
+            },
+            {
+              "text": "शर्मा जी भी स्कूल जाते हैं।",
+              "english": "Mr Sharma goes to school too."
+            },
+            {
+              "text": "सब स्कूल जाते हैं।",
+              "english": "Everyone goes to school."
+            },
+            {
+              "text": "रवि और अमित दोस्त हैं।",
+              "english": "Ravi and Amit are friends."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "माँ बाज़ार जाती है।",
+              "english": "Mom goes to the market."
+            },
+            {
+              "text": "बाज़ार में लोग हैं।",
+              "english": "There are people in the market."
+            },
+            {
+              "text": "दादा जी रोज़ बाज़ार जाते हैं।",
+              "english": "Grandpa goes to the market every day."
+            },
+            {
+              "text": "पापा भी बाज़ार जाते हैं।",
+              "english": "Dad goes to the market too."
+            },
+            {
+              "text": "दादी बाज़ार नहीं जाती हैं।",
+              "english": "Grandma does not go to the market."
+            },
+            {
+              "text": "मोती भी बाज़ार जाता है।",
+              "english": "Moti goes to the market too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि किताब पढ़ता है।",
+              "english": "Ravi reads a book."
+            },
+            {
+              "text": "मीरा भी किताब पढ़ती है।",
+              "english": "Mira reads a book too."
+            },
+            {
+              "text": "पापा भी किताब पढ़ते हैं।",
+              "english": "Dad reads a book too."
+            },
+            {
+              "text": "अमित और नेहा किताब पढ़ते हैं।",
+              "english": "Amit and Neha read a book."
+            },
+            {
+              "text": "मोती किताब नहीं पढ़ता है।",
+              "english": "Moti does not read books."
+            },
+            {
+              "text": "मोती स्कूल नहीं जाता है।",
+              "english": "Moti does not go to school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नई किताब बैग में है।",
+              "english": "The new book is in the bag."
+            },
+            {
+              "text": "नया बैग स्कूल में है।",
+              "english": "The new bag is at school."
+            },
+            {
+              "text": "रवि रोज़ खाना खाता है।",
+              "english": "Ravi eats a meal every day."
+            },
+            {
+              "text": "मीरा रोज़ खाना खाती है।",
+              "english": "Mira eats a meal every day."
+            },
+            {
+              "text": "सब खाना खाते हैं।",
+              "english": "Everyone eats a meal."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

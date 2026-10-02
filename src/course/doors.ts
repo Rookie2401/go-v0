@@ -3,6 +3,7 @@
  * shelves — never a separate course. One line per course: a course without a line gets one door per available stream.
  */
 import { GERMAN_COURSE_ID, GERMAN_DOORS } from './german';
+import { HINDI_COURSE_ID, HINDI_DOORS } from './hindi';
 import { SPANISH_COURSE_ID, SPANISH_DOORS } from './spanish';
 
 export interface CourseDoor {
@@ -17,4 +18,5 @@ export interface CourseDoor {
 export const COURSE_DOORS: Record<string, readonly CourseDoor[]> = {
   [SPANISH_COURSE_ID]: SPANISH_DOORS,
   [GERMAN_COURSE_ID]: GERMAN_DOORS,
+  [HINDI_COURSE_ID]: HINDI_DOORS,
 };

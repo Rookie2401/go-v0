@@ -1,0 +1,245 @@
+{
+  "schemaVersion": 2,
+  "id": "s0c-02",
+  "lang": "hi",
+  "title": "दादी की कहानी",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0c-02",
+    "title": "Hindi controlled stories, Stage 0C, story 2 of 6 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "family",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0c",
+    "chapter": {
+      "index": 2,
+      "title": "दादी की कहानी"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "दादी की कहानी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शाम को रवि और मीरा दादी के पास बैठे।",
+              "english": "In the evening Ravi and Mira sat down beside Grandma."
+            },
+            {
+              "text": "मीरा ने कहा, \"दादी, कहानी सुनाइए।\"",
+              "english": "Mira said, \"Grandma, please tell a story.\""
+            },
+            {
+              "text": "दादी ने कहा, \"ठीक है, सुनो।\"",
+              "english": "Grandma said, \"All right, listen.\""
+            },
+            {
+              "text": "मोती भी आ गया और दादी के पास बैठ गया।",
+              "english": "Moti came too and sat down beside Grandma."
+            },
+            {
+              "text": "दादी ने पूछा, \"कौन सी कहानी?\"",
+              "english": "Grandma asked, \"Which story?\""
+            },
+            {
+              "text": "रवि ने कहा, \"कौए की कहानी।\"",
+              "english": "Ravi said, \"The crow's story.\""
+            },
+            {
+              "text": "दादी ने कहानी शुरू की।",
+              "english": "Grandma began the story."
+            },
+            {
+              "text": "रवि और मीरा ध्यान से सुन रहे थे।",
+              "english": "Ravi and Mira were listening carefully."
+            },
+            {
+              "text": "मोती भी चुपचाप बैठा था।",
+              "english": "Moti was sitting quietly too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "एक कौआ था।",
+              "english": "There was a crow."
+            },
+            {
+              "text": "गर्मी का दिन था।",
+              "english": "It was a hot day."
+            },
+            {
+              "text": "कौए को बहुत प्यास लगी।",
+              "english": "The crow felt very thirsty."
+            },
+            {
+              "text": "उसने पानी ढूँढा, लेकिन कहीं पानी नहीं था।",
+              "english": "He looked for water, but there was no water anywhere."
+            },
+            {
+              "text": "कौआ आसमान में उड़ा।",
+              "english": "The crow flew up into the sky."
+            },
+            {
+              "text": "उसने नदी ढूँढी, लेकिन नदी बहुत दूर थी।",
+              "english": "He looked for a river, but the river was very far."
+            },
+            {
+              "text": "उसने तालाब ढूँढा, लेकिन तालाब में पानी नहीं था।",
+              "english": "He looked for a pond, but there was no water in the pond."
+            },
+            {
+              "text": "कौआ बहुत थक गया।",
+              "english": "The crow got very tired."
+            },
+            {
+              "text": "फिर उसने एक घर देखा।",
+              "english": "Then he saw a house."
+            },
+            {
+              "text": "घर के आँगन में एक घड़ा था।",
+              "english": "In the courtyard of the house there was a pot."
+            },
+            {
+              "text": "कौआ घड़े के पास गया।",
+              "english": "The crow went up to the pot."
+            },
+            {
+              "text": "उसने घड़े में देखा।",
+              "english": "He looked into the pot."
+            },
+            {
+              "text": "घड़े में पानी था, लेकिन बहुत नीचे।",
+              "english": "There was water in the pot, but far down."
+            },
+            {
+              "text": "कौआ पानी तक नहीं पहुँचा।",
+              "english": "The crow could not reach the water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "कौए ने सोचा।",
+              "english": "The crow thought."
+            },
+            {
+              "text": "आँगन में बहुत कंकड़ थे।",
+              "english": "There were many pebbles in the courtyard."
+            },
+            {
+              "text": "कौए ने एक कंकड़ उठाया।",
+              "english": "The crow picked up a pebble."
+            },
+            {
+              "text": "उसने कंकड़ घड़े में डाल दिया।",
+              "english": "He dropped the pebble into the pot."
+            },
+            {
+              "text": "फिर उसने दूसरा कंकड़ डाला।",
+              "english": "Then he dropped a second pebble."
+            },
+            {
+              "text": "कौए ने बहुत कंकड़ डाले।",
+              "english": "The crow dropped many pebbles."
+            },
+            {
+              "text": "पानी ऊपर आ गया।",
+              "english": "The water came up."
+            },
+            {
+              "text": "कौए ने पानी पी लिया।",
+              "english": "The crow drank the water."
+            },
+            {
+              "text": "फिर वह आसमान में उड़ गया।",
+              "english": "Then he flew off into the sky."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दादी ने कहा, \"जब हम सोचते हैं, तब हमें रास्ता मिल जाता है।\"",
+              "english": "Grandma said, \"When we think, we find a way.\""
+            },
+            {
+              "text": "मीरा ने कहा, \"दादी, कहानी बहुत अच्छी है।\"",
+              "english": "Mira said, \"Grandma, the story is very good.\""
+            },
+            {
+              "text": "रवि ने पूछा, \"दादी, कौआ कहाँ गया?\"",
+              "english": "Ravi asked, \"Grandma, where did the crow go?\""
+            },
+            {
+              "text": "दादी हँसने लगीं और बोलीं, \"वह अपने घर गया।\"",
+              "english": "Grandma started laughing and said, \"He went to his home.\""
+            },
+            {
+              "text": "रवि ने कहा, \"दादी, एक कहानी और सुनाइए।\"",
+              "english": "Ravi said, \"Grandma, please tell one more story.\""
+            },
+            {
+              "text": "दादी ने कहा, \"अब रात हो गई है।\"",
+              "english": "Grandma said, \"It is night now.\""
+            },
+            {
+              "text": "दादी ने रवि और मीरा को दूध दिया।",
+              "english": "Grandma gave Ravi and Mira milk."
+            },
+            {
+              "text": "दोनों ने दूध पिया।",
+              "english": "Both of them drank the milk."
+            },
+            {
+              "text": "मोती ने भी कहानी सुनी।",
+              "english": "Moti listened to the story too."
+            },
+            {
+              "text": "मोती सो गया।",
+              "english": "Moti fell asleep."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

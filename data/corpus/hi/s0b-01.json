@@ -1,0 +1,229 @@
+{
+  "schemaVersion": 2,
+  "id": "s0b-01",
+  "lang": "hi",
+  "title": "मेरा नाम रवि है",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0b-01",
+    "title": "Hindi controlled stories, Stage 0B, story 1 of 8 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "family",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0b",
+    "chapter": {
+      "index": 1,
+      "title": "मेरा नाम रवि है"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "मेरा नाम रवि है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मेरा नाम रवि है।",
+              "english": "My name is Ravi."
+            },
+            {
+              "text": "मैं लड़का हूँ।",
+              "english": "I am a boy."
+            },
+            {
+              "text": "मैं स्कूल जाता हूँ।",
+              "english": "I go to school."
+            },
+            {
+              "text": "यह मेरा घर है।",
+              "english": "This is my house."
+            },
+            {
+              "text": "मेरा घर बहुत बड़ा है।",
+              "english": "My house is very big."
+            },
+            {
+              "text": "मेरे घर में छह लोग हैं।",
+              "english": "There are six people in my house."
+            },
+            {
+              "text": "मेरे घर में तीन कमरे हैं।",
+              "english": "My house has three rooms."
+            },
+            {
+              "text": "मैं अपने कमरे में पढ़ता हूँ।",
+              "english": "I study in my room."
+            },
+            {
+              "text": "मीरा भी अपने कमरे में पढ़ती है।",
+              "english": "Mira studies in her room too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह मेरी माँ है।",
+              "english": "This is my mom."
+            },
+            {
+              "text": "मेरी माँ बहुत अच्छी है।",
+              "english": "My mom is very good."
+            },
+            {
+              "text": "मेरी माँ रसोई में खाना बनाती है।",
+              "english": "My mom makes food in the kitchen."
+            },
+            {
+              "text": "मेरी माँ मुझे दूध देती है।",
+              "english": "My mom gives me milk."
+            },
+            {
+              "text": "यह मेरे पापा हैं।",
+              "english": "This is my dad."
+            },
+            {
+              "text": "मेरे पापा रोज़ काम पर जाते हैं।",
+              "english": "My dad goes to work every day."
+            },
+            {
+              "text": "मेरे पापा शाम को घर आते हैं।",
+              "english": "My dad comes home in the evening."
+            },
+            {
+              "text": "मेरे पापा बहुत अच्छे हैं।",
+              "english": "My dad is very good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह मेरी बहन है।",
+              "english": "This is my sister."
+            },
+            {
+              "text": "उसका नाम मीरा है।",
+              "english": "Her name is Mira."
+            },
+            {
+              "text": "मीरा लड़की है।",
+              "english": "Mira is a girl."
+            },
+            {
+              "text": "मीरा मुझसे छोटी है।",
+              "english": "Mira is younger than me."
+            },
+            {
+              "text": "मीरा भी मेरे साथ स्कूल जाती है।",
+              "english": "Mira goes to school with me too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह मेरी दादी हैं।",
+              "english": "This is my grandmother."
+            },
+            {
+              "text": "यह मेरे दादा जी हैं।",
+              "english": "This is my grandfather."
+            },
+            {
+              "text": "मेरे दादा जी रोज़ बाज़ार जाते हैं।",
+              "english": "My grandfather goes to the market every day."
+            },
+            {
+              "text": "मेरी दादी घर में रहती हैं।",
+              "english": "My grandmother stays at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मेरे पास एक कुत्ता है।",
+              "english": "I have a dog."
+            },
+            {
+              "text": "उसका नाम मोती है।",
+              "english": "His name is Moti."
+            },
+            {
+              "text": "मोती सफ़ेद और छोटा है।",
+              "english": "Moti is white and small."
+            },
+            {
+              "text": "वह मेरा दोस्त है।",
+              "english": "He is my friend."
+            },
+            {
+              "text": "मेरे दोस्त अमित और नेहा हैं।",
+              "english": "My friends are Amit and Neha."
+            },
+            {
+              "text": "हम सब एक घर में रहते हैं।",
+              "english": "We all live in one house."
+            },
+            {
+              "text": "मेरे घर में एक बड़ी तस्वीर है।",
+              "english": "There is a big picture in my house."
+            },
+            {
+              "text": "तस्वीर में हम सब हैं।",
+              "english": "We are all in the picture."
+            },
+            {
+              "text": "मेरा घर बाज़ार के पास है।",
+              "english": "My house is near the market."
+            },
+            {
+              "text": "मेरे घर के पास एक बाग है।",
+              "english": "There is a garden near my house."
+            },
+            {
+              "text": "मैं रोज़ अपने बाग में खेलता हूँ।",
+              "english": "I play in my garden every day."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

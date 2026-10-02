@@ -1,0 +1,137 @@
+{
+  "schemaVersion": 2,
+  "id": "s0a-01",
+  "lang": "hi",
+  "title": "रवि और मीरा",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0a-01",
+    "title": "Hindi controlled stories, Stage 0A, story 1 of 12 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "family",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0a",
+    "chapter": {
+      "index": 1,
+      "title": "रवि और मीरा"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "रवि और मीरा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "यह रवि है।",
+              "english": "This is Ravi."
+            },
+            {
+              "text": "रवि घर में है।",
+              "english": "Ravi is in the house."
+            },
+            {
+              "text": "यह मीरा है।",
+              "english": "This is Mira."
+            },
+            {
+              "text": "मीरा भी घर में है।",
+              "english": "Mira is in the house too."
+            },
+            {
+              "text": "रवि और मीरा घर में हैं।",
+              "english": "Ravi and Mira are in the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह घर है।",
+              "english": "This is a house."
+            },
+            {
+              "text": "यह घर बड़ा है।",
+              "english": "This house is big."
+            },
+            {
+              "text": "घर बड़ा है।",
+              "english": "The house is big."
+            },
+            {
+              "text": "घर में रवि और मीरा हैं।",
+              "english": "Ravi and Mira are in the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह रवि है।",
+              "english": "This is Ravi."
+            },
+            {
+              "text": "यह मीरा है।",
+              "english": "This is Mira."
+            },
+            {
+              "text": "रवि और मीरा घर में हैं।",
+              "english": "Ravi and Mira are in the house."
+            },
+            {
+              "text": "घर बड़ा है।",
+              "english": "The house is big."
+            },
+            {
+              "text": "रवि भी घर में है।",
+              "english": "Ravi is in the house too."
+            },
+            {
+              "text": "मीरा भी घर में है।",
+              "english": "Mira is in the house too."
+            },
+            {
+              "text": "यह घर बड़ा है।",
+              "english": "This house is big."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

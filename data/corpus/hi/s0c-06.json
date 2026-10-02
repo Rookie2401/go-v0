@@ -1,0 +1,193 @@
+{
+  "schemaVersion": 2,
+  "id": "s0c-06",
+  "lang": "hi",
+  "title": "शर्मा जी का सवाल",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0c-06",
+    "title": "Hindi controlled stories, Stage 0C, story 6 of 6 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "school",
+    "family"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0c",
+    "chapter": {
+      "index": 6,
+      "title": "शर्मा जी का सवाल"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "school",
+    "family"
+  ],
+  "sections": [
+    {
+      "title": "शर्मा जी का सवाल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "छुट्टी के बाद स्कूल खुला।",
+              "english": "After the holiday the school opened."
+            },
+            {
+              "text": "सब बच्चे कक्षा में आए।",
+              "english": "All the children came into the class."
+            },
+            {
+              "text": "शर्मा जी ने कहा, \"नमस्ते, बच्चो। छुट्टी में तुमने क्या किया?\"",
+              "english": "Mr Sharma said, \"Hello, children. What did you do in the holiday?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमित ने कहा कि वह रोज़ मैदान में खेला।",
+              "english": "Amit said that he played on the field every day."
+            },
+            {
+              "text": "नेहा ने कहा कि उसने बहुत किताबें पढ़ीं और एक कहानी लिखी।",
+              "english": "Neha said that she read many books and wrote a story."
+            },
+            {
+              "text": "शर्मा जी ने पूछा, \"नेहा, तुमने कौन सी कहानी लिखी?\"",
+              "english": "Mr Sharma asked, \"Neha, which story did you write?\""
+            },
+            {
+              "text": "नेहा ने कहा, \"मैंने एक छोटी चिड़िया की कहानी लिखी।\"",
+              "english": "Neha said, \"I wrote the story of a little bird.\""
+            },
+            {
+              "text": "शर्मा जी ने कहा कि उन्होंने भी छुट्टी में एक किताब पढ़ी।",
+              "english": "Mr Sharma said that he had read a book in the holiday too."
+            },
+            {
+              "text": "मीरा ने कहा कि उसने दादी से कहानी सुनी।",
+              "english": "Mira said that she heard a story from Grandma."
+            },
+            {
+              "text": "शर्मा जी ने पूछा, \"कौन सी कहानी?\"",
+              "english": "Mr Sharma asked, \"Which story?\""
+            },
+            {
+              "text": "मीरा ने बताया कि एक कौए को प्यास लगी।",
+              "english": "Mira told them that a crow felt thirsty."
+            },
+            {
+              "text": "उसने घड़े में कंकड़ डाले, और पानी ऊपर आ गया।",
+              "english": "He dropped pebbles into the pot, and the water came up."
+            },
+            {
+              "text": "फिर उसने पानी पी लिया।",
+              "english": "Then he drank the water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "फिर शर्मा जी ने रवि से पूछा, \"तुम कहाँ गए?\"",
+              "english": "Then Mr Sharma asked Ravi, \"Where did you go?\""
+            },
+            {
+              "text": "रवि ने कहा, \"मैं दादी के गाँव गया।\"",
+              "english": "Ravi said, \"I went to Grandma's village.\""
+            },
+            {
+              "text": "शर्मा जी ने पूछा, \"वहाँ तुमने क्या देखा?\"",
+              "english": "Mr Sharma asked, \"What did you see there?\""
+            },
+            {
+              "text": "रवि ने कहा, \"मैंने खेत देखे, नदी देखी और आम का पेड़ देखा।\"",
+              "english": "Ravi said, \"I saw fields, a river and a mango tree.\""
+            },
+            {
+              "text": "नेहा ने पूछा, \"क्या मोती भी गाँव गया?\"",
+              "english": "Neha asked, \"Did Moti go to the village too?\""
+            },
+            {
+              "text": "रवि ने कहा, \"हाँ, मोती भी गया। लेकिन वह खो गया।\"",
+              "english": "Ravi said, \"Yes, Moti went too. But he got lost.\""
+            },
+            {
+              "text": "अमित ने पूछा, \"फिर वह कहाँ मिला?\"",
+              "english": "Amit asked, \"Then where was he found?\""
+            },
+            {
+              "text": "रवि ने कहा, \"वह आम के पेड़ के नीचे सो रहा था।\"",
+              "english": "Ravi said, \"He was sleeping under the mango tree.\""
+            },
+            {
+              "text": "सब बच्चे ज़ोर से हँसे।",
+              "english": "All the children laughed loudly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शर्मा जी ने कहा, \"बहुत अच्छा!\"",
+              "english": "Mr Sharma said, \"Very good!\""
+            },
+            {
+              "text": "शर्मा जी ने कहा, \"अगर तुम रोज़ एक कहानी पढ़ते हो, तो तुम्हारी पढ़ाई अच्छी होती है।\"",
+              "english": "Mr Sharma said, \"If you read a story every day, your studies go well.\""
+            },
+            {
+              "text": "उसी समय दरवाज़े पर कोई आया।",
+              "english": "At that moment someone came to the door."
+            },
+            {
+              "text": "वह मोती था!",
+              "english": "It was Moti!"
+            },
+            {
+              "text": "रवि ने कहा, \"मोती, तुम फिर आ गए?\"",
+              "english": "Ravi said, \"Moti, you have come again?\""
+            },
+            {
+              "text": "शर्मा जी हँसने लगे और बोले, \"ठीक है, मोती, तुम भी बैठ जाओ।\"",
+              "english": "Mr Sharma started laughing and said, \"All right, Moti, you sit down too.\""
+            },
+            {
+              "text": "मोती कक्षा में आया और रवि के पास बैठ गया।",
+              "english": "Moti came into the class and sat down next to Ravi."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

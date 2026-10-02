@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 2,
+  "id": "s0a-06",
+  "lang": "hi",
+  "title": "शर्मा जी",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0a-06",
+    "title": "Hindi controlled stories, Stage 0A, story 6 of 12 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "school",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0a",
+    "chapter": {
+      "index": 6,
+      "title": "शर्मा जी"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "school",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "शर्मा जी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "यह शर्मा जी हैं।",
+              "english": "This is Mr Sharma."
+            },
+            {
+              "text": "शर्मा जी अध्यापक हैं।",
+              "english": "Mr Sharma is a teacher."
+            },
+            {
+              "text": "शर्मा जी स्कूल में हैं।",
+              "english": "Mr Sharma is at school."
+            },
+            {
+              "text": "शर्मा जी घर में नहीं हैं।",
+              "english": "Mr Sharma is not at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मेज़ पर किताब है।",
+              "english": "There is a book on the table."
+            },
+            {
+              "text": "यह किताब बड़ी है।",
+              "english": "This book is big."
+            },
+            {
+              "text": "यह किताब अच्छी है।",
+              "english": "This book is good."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "बैग कुर्सी पर है।",
+              "english": "The bag is on the chair."
+            },
+            {
+              "text": "बैग छोटा है।",
+              "english": "The bag is small."
+            },
+            {
+              "text": "किताब बैग में नहीं है।",
+              "english": "The book is not in the bag."
+            },
+            {
+              "text": "किताब मेज़ पर है।",
+              "english": "The book is on the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अध्यापक स्कूल में हैं।",
+              "english": "The teacher is at school."
+            },
+            {
+              "text": "वह अध्यापक हैं।",
+              "english": "He is a teacher."
+            },
+            {
+              "text": "रवि और मीरा स्कूल में हैं।",
+              "english": "Ravi and Mira are at school."
+            },
+            {
+              "text": "मीरा और नेहा स्कूल में हैं।",
+              "english": "Mira and Neha are at school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह किताब नई है।",
+              "english": "This book is new."
+            },
+            {
+              "text": "नई किताब मेज़ पर है।",
+              "english": "The new book is on the table."
+            },
+            {
+              "text": "किताब नई है।",
+              "english": "The book is new."
+            },
+            {
+              "text": "यह बैग नया है।",
+              "english": "This bag is new."
+            },
+            {
+              "text": "बैग नया है।",
+              "english": "The bag is new."
+            },
+            {
+              "text": "नया बैग कुर्सी पर है।",
+              "english": "The new bag is on the chair."
+            },
+            {
+              "text": "बैग लाल है।",
+              "english": "The bag is red."
+            },
+            {
+              "text": "लाल बैग छोटा है।",
+              "english": "The red bag is small."
+            },
+            {
+              "text": "बैग लाल और नया है।",
+              "english": "The bag is red and new."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शर्मा जी स्कूल में हैं।",
+              "english": "Mr Sharma is at school."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

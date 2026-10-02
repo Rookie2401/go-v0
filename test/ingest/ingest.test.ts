@@ -56,9 +56,9 @@ describe('import of the bundled corpus', () => {
       ['bible-1john-1', 'dialogue-01', 'story-01'].map((s) => ids.text(lang, s)).sort());
   });
 
-  it('the publication gate on the stored texts: only verified es / de Scripture is published', async () => {
+  it('the publication gate on the stored texts: only verified es / de / hi Scripture is published', async () => {
     const published = (await store.texts.all()).filter((t) => t.published).map((t) => t.id).sort();
-    expect(published).toEqual([ids.text('de', 'bible-1john-1'), ids.text('es', 'bible-1john-1')]);
+    expect(published).toEqual([ids.text('de', 'bible-1john-1'), ids.text('es', 'bible-1john-1'), ids.text('hi', 'bible-1john-1')]);
     for (const t of await store.texts.all()) {
       if (t.published) { expect(t.unpublishedReasons).toEqual([]); expect(['reviewed', 'approved']).toContain(t.reviewStatus); }
       else expect(t.unpublishedReasons.length).toBeGreaterThan(0);
@@ -67,8 +67,8 @@ describe('import of the bundled corpus', () => {
     const es = (await store.texts.get(ids.text('es', 'story-01')))!;
     expect(es).toMatchObject({ reviewStatus: 'unreviewed', generated: true, tags: ['mission', 'testimony'], prepTargets: ['JHN.3.16', '1JN.1.8', '1JN.1.9'] });
     expect(es.editorialTags).toEqual(['needs-native-review', 'machine-drafted']);
-    const hi = (await store.texts.get(ids.text('hi', 'bible-1john-1')))!;
-    expect(hi.unpublishedReasons.join(' ')).toMatch(/unverified/);
+    const th = (await store.texts.get(ids.text('th', 'bible-1john-1')))!;
+    expect(th.unpublishedReasons.join(' ')).toMatch(/unverified/);
   });
 
   it('stores sentence text exactly as authored; ids come from stable keys; offsets and paragraphs round-trip', async () => {
@@ -107,7 +107,7 @@ describe('import of the bundled corpus', () => {
       expect(text.generated).toBe(false);
       expect(text.version).toBe(d.scripture!.translationName);
       expect(text.scripture).toMatchObject({ book: '1JN', chapter: 1, translationId: d.scripture!.translationId, edition: d.scripture!.edition });
-      expect(!!text.scripture!.verification).toBe(d.lang === 'es' || d.lang === 'de');
+      expect(!!text.scripture!.verification).toBe(d.lang === 'es' || d.lang === 'de' || d.lang === 'hi');
       const stored = await liveSentences(store, textId);
       expect(stored.map((s) => s.verseRefs)).toEqual([['1JN.1.8'], ['1JN.1.9'], ['JHN.3.16']]);
       for (const s of stored) {
@@ -152,7 +152,15 @@ describe('import of the bundled corpus', () => {
       expect(s.provenance).toMatch(/byte for byte/);
       expect(s.provenance).toMatch(/verify-scripture/);
     }
-    for (const lang of ['sq', 'th', 'hi'] as const) {
+    {
+      // Hindi: a licensed translation, with the licence and the rights holder named
+      const s = await source('hi', 'bible-1john-1');
+      expect(s.rights).toBe('licensed');
+      expect(s.licenseNote).toMatch(/CC BY-SA 4.0/);
+      expect(s.attribution).toMatch(/Bridge Connectivity Solutions/);
+      expect(s.provenance).toMatch(/verify-scripture/);
+    }
+    for (const lang of ['sq', 'th'] as const) {
       const s = await source(lang, 'bible-1john-1');
       expect(s.rights).toBe('unverified');
       expect(s.provenance).toMatch(/replaced|replace/i);

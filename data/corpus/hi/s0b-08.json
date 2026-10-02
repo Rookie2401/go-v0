@@ -1,0 +1,185 @@
+{
+  "schemaVersion": 2,
+  "id": "s0b-08",
+  "lang": "hi",
+  "title": "शहर में",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0b-08",
+    "title": "Hindi controlled stories, Stage 0B, story 8 of 8 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "travel",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0b",
+    "chapter": {
+      "index": 8,
+      "title": "शहर में"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "शहर में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पापा का दफ़्तर शहर में है।",
+              "english": "Dad's office is in the city."
+            },
+            {
+              "text": "पापा रोज़ बस से शहर जाते हैं।",
+              "english": "Dad goes to the city by bus every day."
+            },
+            {
+              "text": "शहर गाँव से बहुत बड़ा है।",
+              "english": "The city is much bigger than the village."
+            },
+            {
+              "text": "शहर में बहुत सड़कें हैं।",
+              "english": "There are many roads in the city."
+            },
+            {
+              "text": "सड़कों पर बहुत गाड़ियाँ हैं।",
+              "english": "There are many vehicles on the roads."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आज रवि और मीरा पापा के साथ शहर जा रहे हैं।",
+              "english": "Today Ravi and Mira are going to the city with Dad."
+            },
+            {
+              "text": "बस में बहुत लोग हैं।",
+              "english": "There are many people on the bus."
+            },
+            {
+              "text": "रवि बस से बाहर देखता है।",
+              "english": "Ravi looks out of the bus."
+            },
+            {
+              "text": "रवि कहता है, \"देखो, मीरा! वह कितना बड़ा बाज़ार है!\"",
+              "english": "Ravi says, \"Look, Mira! What a big market that is!\""
+            },
+            {
+              "text": "मीरा कहती है, \"यहाँ बहुत दुकानें हैं।\"",
+              "english": "Mira says, \"There are many shops here.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "पापा एक दुकान में जाते हैं।",
+              "english": "Dad goes into a shop."
+            },
+            {
+              "text": "दुकान में बहुत किताबें हैं।",
+              "english": "There are many books in the shop."
+            },
+            {
+              "text": "पापा रवि के लिए एक किताब लेते हैं।",
+              "english": "Dad buys a book for Ravi."
+            },
+            {
+              "text": "पापा मीरा के लिए एक बैग लेते हैं।",
+              "english": "Dad buys a bag for Mira."
+            },
+            {
+              "text": "मीरा का बैग लाल है।",
+              "english": "Mira's bag is red."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "पापा रवि और मीरा को दफ़्तर ले जाते हैं।",
+              "english": "Dad takes Ravi and Mira to the office."
+            },
+            {
+              "text": "दफ़्तर में बहुत लोग काम करते हैं।",
+              "english": "Many people work in the office."
+            },
+            {
+              "text": "पापा अपनी कुर्सी पर बैठते हैं।",
+              "english": "Dad sits on his chair."
+            },
+            {
+              "text": "मीरा पूछती है, \"पापा, आप क्या कर रहे हैं?\"",
+              "english": "Mira asks, \"Dad, what are you doing?\""
+            },
+            {
+              "text": "पापा कहते हैं, \"मैं काम कर रहा हूँ।\"",
+              "english": "Dad says, \"I am working.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शाम को पापा, रवि और मीरा बस से घर आते हैं।",
+              "english": "In the evening Dad, Ravi and Mira come home by bus."
+            },
+            {
+              "text": "माँ पूछती है, \"शहर कैसा है?\"",
+              "english": "Mom asks, \"How is the city?\""
+            },
+            {
+              "text": "रवि कहता है, \"शहर बड़ा है। गाँव छोटा है।\"",
+              "english": "Ravi says, \"The city is big. The village is small.\""
+            },
+            {
+              "text": "मीरा कहती है, \"मेरा बैग बहुत अच्छा है!\"",
+              "english": "Mira says, \"My bag is very good!\""
+            },
+            {
+              "text": "मोती बैग के पास आता है।",
+              "english": "Moti comes up to the bag."
+            },
+            {
+              "text": "मीरा कहती है, \"मोती, यह मेरा बैग है।\"",
+              "english": "Mira says, \"Moti, this is my bag.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

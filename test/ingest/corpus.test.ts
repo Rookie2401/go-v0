@@ -4,10 +4,11 @@ import { LANGUAGES, type LanguageCode } from '../../src/core';
 import { computePublished, loadBundledCorpus, type CorpusDocument } from '../../src/ingest';
 import { createMemoryStore } from '../../src/core';
 import { GERMAN_WORKS } from '../../src/course/german';
+import { HINDI_WORKS } from '../../src/course/hindi';
 import { SPANISH_WORKS } from '../../src/course/spanish';
 
 // The works of every course that bundles texts of its own: a course adds its list here.
-const COURSE_WORKS = [...SPANISH_WORKS, ...GERMAN_WORKS];
+const COURSE_WORKS = [...SPANISH_WORKS, ...GERMAN_WORKS, ...HINDI_WORKS];
 import { importDocuments, validateBatch } from '../../src/ingest';
 import { clock, registry } from './helpers';
 import { isSeed, loadCourseCorpus } from './seed';
@@ -86,7 +87,7 @@ describe('bundled corpus shape (schema version 2)', () => {
     }
   });
 
-  it('es and de Scripture are verified and published; sq, th and hi are unverified and unpublished with reasons', () => {
+  it('es and de Scripture (public domain) and hi Scripture (licensed) are verified and published; sq and th are unverified and unpublished with reasons', () => {
     for (const l of ['es', 'de'] as const) {
       const d = byLang(l).find((x) => x.contentType === 'scripture')!;
       expect(d.review.status).toBe('reviewed');
@@ -97,7 +98,22 @@ describe('bundled corpus shape (schema version 2)', () => {
     }
     expect(byLang('es').find((x) => x.contentType === 'scripture')!.scripture).toMatchObject({ translationId: 'spaRV1909', translationName: 'Reina-Valera 1909' });
     expect(byLang('de').find((x) => x.contentType === 'scripture')!.scripture).toMatchObject({ translationId: 'deu1912' });
-    for (const l of ['sq', 'th', 'hi'] as const) {
+    // Hindi: a LICENSED translation (Indian Revised Version, CC BY-SA 4.0), never described as public domain; the licence,
+    // the rights holder and the source are named in every document, and every document is verified against the source
+    const hindi = byLang('hi').filter((x) => x.contentType === 'scripture');
+    expect(hindi.length).toBeGreaterThanOrEqual(1);
+    for (const d of hindi) {
+      expect(d.source.rights, d.id).toBe('licensed');
+      expect(d.source.licenseNote, d.id).toMatch(/CC BY-SA 4.0/);
+      expect(d.source.attribution, d.id).toMatch(/Bridge Connectivity Solutions/);
+      expect(d.source.attribution, d.id).toMatch(/eBible.org/);
+      expect(d.source.provenance, d.id).toMatch(/footnotes.*not included|not included/);
+      expect(d.scripture, d.id).toMatchObject({ translationId: 'hin2017', verification: { method: 'byte-comparison', by: 'scripts/verify-scripture.mjs' } });
+      expect(d.review.reviewedBy, d.id).toBe('scripts/verify-scripture.mjs');
+      expect(d.generated, d.id).toBe(false);
+      expect(computePublished(d), d.id).toEqual({ published: true, unpublishedReasons: [] });
+    }
+    for (const l of ['sq', 'th'] as const) {
       const d = byLang(l).find((x) => x.contentType === 'scripture')!;
       expect(d.source.rights).toBe('unverified');
       expect(d.scripture!.verification).toBeUndefined();
@@ -110,18 +126,24 @@ describe('bundled corpus shape (schema version 2)', () => {
     }
   });
 
-  it('bundled es / de Scripture text equals data/verified/scripture.json byte for byte', () => {
+  it('bundled es / de / hi Scripture text equals data/verified/scripture.json byte for byte', () => {
     const verified = JSON.parse(fs.readFileSync('data/verified/scripture.json', 'utf8')) as {
-      by: string; checkedAt: string; translations: Array<{ lang: string; translationId: string; verses: Record<string, { text: string }>; mismatches: unknown[] }>;
+      by: string; checkedAt: string; translations: Array<{ lang: string; translationId: string; checkedAt?: string; verses: Record<string, { text: string }>; mismatches: unknown[] }>;
     };
-    expect(verified.translations.map((t) => t.lang).sort()).toEqual(['de', 'es']);
+    expect(verified.translations.map((t) => t.lang).sort()).toEqual(['de', 'es', 'hi']);
     for (const t of verified.translations) {
       expect(t.mismatches).toEqual([]);
-      const d = byLang(t.lang as LanguageCode).find((x) => x.contentType === 'scripture')!;
-      expect(d.scripture!.translationId).toBe(t.translationId);
-      expect(d.scripture!.verification!.checkedAt).toBe(verified.checkedAt);
-      for (const s of sentencesOf(d)) {
-        expect(s.text, `${t.lang} ${s.verseRefs}`).toBe(s.verseRefs!.map((r) => t.verses[r].text).join(' '));
+      // every verified document of the language, not only the first: each verse equals the record
+      const all = byLang(t.lang as LanguageCode).filter((x) => x.contentType === 'scripture' && x.scripture?.verification);
+      expect(all.length, t.lang).toBeGreaterThanOrEqual(1);
+      for (const d of all) {
+        expect(d.scripture!.translationId, d.id).toBe(t.translationId);
+        // a document carries the date its verses were verified: between the record's first writing and the translation's latest check
+        const at = d.scripture!.verification!.checkedAt;
+        expect(at >= verified.checkedAt && at <= (t.checkedAt ?? verified.checkedAt), `${d.id} verified ${at}`).toBe(true);
+        for (const s of sentencesOf(d)) {
+          expect(s.text, `${t.lang} ${s.verseRefs}`).toBe(s.verseRefs!.map((r) => t.verses[r].text).join(' '));
+        }
       }
     }
   });

@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 2,
+  "id": "s0a-02",
+  "lang": "hi",
+  "title": "माँ और पापा",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0a-02",
+    "title": "Hindi controlled stories, Stage 0A, story 2 of 12 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "family",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0a",
+    "chapter": {
+      "index": 2,
+      "title": "माँ और पापा"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "माँ और पापा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "यह माँ है।",
+              "english": "This is Mom."
+            },
+            {
+              "text": "माँ रसोई में है।",
+              "english": "Mom is in the kitchen."
+            },
+            {
+              "text": "यह रसोई है।",
+              "english": "This is the kitchen."
+            },
+            {
+              "text": "रसोई बड़ी है।",
+              "english": "The kitchen is big."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह पापा हैं।",
+              "english": "This is Dad."
+            },
+            {
+              "text": "पापा घर में हैं।",
+              "english": "Dad is in the house."
+            },
+            {
+              "text": "पापा भी रसोई में हैं।",
+              "english": "Dad is in the kitchen too."
+            },
+            {
+              "text": "माँ और पापा रसोई में हैं।",
+              "english": "Mom and Dad are in the kitchen."
+            },
+            {
+              "text": "रसोई बड़ी है।",
+              "english": "The kitchen is big."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "वह रवि है।",
+              "english": "That is Ravi."
+            },
+            {
+              "text": "वह मीरा है।",
+              "english": "That is Mira."
+            },
+            {
+              "text": "रवि और मीरा घर में हैं।",
+              "english": "Ravi and Mira are in the house."
+            },
+            {
+              "text": "घर बड़ा है।",
+              "english": "The house is big."
+            },
+            {
+              "text": "रसोई भी बड़ी है।",
+              "english": "The kitchen is big too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "वह माँ है।",
+              "english": "That is Mom."
+            },
+            {
+              "text": "वह पापा हैं।",
+              "english": "That is Dad."
+            },
+            {
+              "text": "माँ और पापा घर में हैं।",
+              "english": "Mom and Dad are in the house."
+            },
+            {
+              "text": "रवि और मीरा घर में हैं।",
+              "english": "Ravi and Mira are in the house."
+            },
+            {
+              "text": "वह घर है।",
+              "english": "That is the house."
+            },
+            {
+              "text": "वह घर भी बड़ा है।",
+              "english": "That house is big too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

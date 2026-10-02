@@ -1,0 +1,197 @@
+{
+  "schemaVersion": 2,
+  "id": "s0b-04",
+  "lang": "hi",
+  "title": "दादी का गाँव",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0b-04",
+    "title": "Hindi controlled stories, Stage 0B, story 4 of 8 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "family",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0b",
+    "chapter": {
+      "index": 4,
+      "title": "दादी का गाँव"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "दादी का गाँव",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दादी का गाँव बहुत छोटा है।",
+              "english": "Grandma's village is very small."
+            },
+            {
+              "text": "गाँव में बहुत पेड़ हैं।",
+              "english": "There are many trees in the village."
+            },
+            {
+              "text": "गाँव में एक नदी है।",
+              "english": "There is a river in the village."
+            },
+            {
+              "text": "नदी के पास खेत हैं।",
+              "english": "There are fields near the river."
+            },
+            {
+              "text": "दादी का घर भी छोटा है।",
+              "english": "Grandma's house is small too."
+            },
+            {
+              "text": "घर की छत छोटी है।",
+              "english": "The roof of the house is small."
+            },
+            {
+              "text": "छत पर कुछ फूल हैं।",
+              "english": "There are some flowers on the roof."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "घर में एक बड़ा आँगन है।",
+              "english": "The house has a big courtyard."
+            },
+            {
+              "text": "आँगन में आम का पेड़ है।",
+              "english": "There is a mango tree in the courtyard."
+            },
+            {
+              "text": "पेड़ पर बहुत आम हैं।",
+              "english": "There are many mangoes on the tree."
+            },
+            {
+              "text": "आँगन में एक गाय भी है।",
+              "english": "There is a cow in the courtyard too."
+            },
+            {
+              "text": "दादी रोज़ गाय को पानी देती हैं।",
+              "english": "Grandma gives the cow water every day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "गाँव में राजू और सीता रहते हैं।",
+              "english": "Raju and Sita live in the village."
+            },
+            {
+              "text": "राजू सीता का भाई है।",
+              "english": "Raju is Sita's brother."
+            },
+            {
+              "text": "सीता राजू की बहन है।",
+              "english": "Sita is Raju's sister."
+            },
+            {
+              "text": "राजू और सीता दादी के घर के पास रहते हैं।",
+              "english": "Raju and Sita live near Grandma's house."
+            },
+            {
+              "text": "राजू और सीता रवि और मीरा के दोस्त हैं।",
+              "english": "Raju and Sita are friends of Ravi and Mira."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "राजू रवि को आम देता है।",
+              "english": "Raju gives Ravi a mango."
+            },
+            {
+              "text": "आम बहुत मीठे हैं।",
+              "english": "The mangoes are very sweet."
+            },
+            {
+              "text": "सीता मीरा को पानी देती है।",
+              "english": "Sita gives Mira water."
+            },
+            {
+              "text": "मोती गाय को देखता है।",
+              "english": "Moti looks at the cow."
+            },
+            {
+              "text": "गाय मोती को देखती है।",
+              "english": "The cow looks at Moti."
+            },
+            {
+              "text": "मोती गाय से दूर बैठता है।",
+              "english": "Moti sits far from the cow."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "कल रवि और मीरा गाँव में थे।",
+              "english": "Yesterday Ravi and Mira were in the village."
+            },
+            {
+              "text": "दादी भी गाँव में थीं।",
+              "english": "Grandma was in the village too."
+            },
+            {
+              "text": "राजू आँगन में था।",
+              "english": "Raju was in the courtyard."
+            },
+            {
+              "text": "सीता नदी के पास थी।",
+              "english": "Sita was near the river."
+            },
+            {
+              "text": "मोती भी गाँव में था।",
+              "english": "Moti was in the village too."
+            },
+            {
+              "text": "गाँव में सब अच्छा था।",
+              "english": "Everything in the village was good."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

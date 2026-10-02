@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 2,
+  "id": "s0a-04",
+  "lang": "hi",
+  "title": "मोती",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0a-04",
+    "title": "Hindi controlled stories, Stage 0A, story 4 of 12 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "daily-life",
+    "family"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0a",
+    "chapter": {
+      "index": 4,
+      "title": "मोती"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life",
+    "family"
+  ],
+  "sections": [
+    {
+      "title": "मोती",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "यह मोती है।",
+              "english": "This is Moti."
+            },
+            {
+              "text": "मोती कुत्ता है।",
+              "english": "Moti is a dog."
+            },
+            {
+              "text": "यह कुत्ता छोटा है।",
+              "english": "This dog is small."
+            },
+            {
+              "text": "मोती सफ़ेद है।",
+              "english": "Moti is white."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मोती घर में है।",
+              "english": "Moti is in the house."
+            },
+            {
+              "text": "मोती कुर्सी पर है।",
+              "english": "Moti is on the chair."
+            },
+            {
+              "text": "कुर्सी बड़ी है।",
+              "english": "The chair is big."
+            },
+            {
+              "text": "मोती छोटा है।",
+              "english": "Moti is small."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मेज़ बड़ी है।",
+              "english": "The table is big."
+            },
+            {
+              "text": "मेज़ सफ़ेद है।",
+              "english": "The table is white."
+            },
+            {
+              "text": "मोती मेज़ पर है।",
+              "english": "Moti is on the table."
+            },
+            {
+              "text": "मोती कुर्सी पर नहीं है।",
+              "english": "Moti is not on the chair."
+            },
+            {
+              "text": "मेज़ पर मोती है।",
+              "english": "Moti is on the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि और मीरा घर में हैं।",
+              "english": "Ravi and Mira are in the house."
+            },
+            {
+              "text": "रवि कुर्सी पर है।",
+              "english": "Ravi is on the chair."
+            },
+            {
+              "text": "मीरा मेज़ पर नहीं है।",
+              "english": "Mira is not on the table."
+            },
+            {
+              "text": "मोती मेज़ पर है।",
+              "english": "Moti is on the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह मोती है।",
+              "english": "This is Moti."
+            },
+            {
+              "text": "यह कुत्ता सफ़ेद है।",
+              "english": "This dog is white."
+            },
+            {
+              "text": "मोती छोटा है।",
+              "english": "Moti is small."
+            },
+            {
+              "text": "मोती घर में है।",
+              "english": "Moti is in the house."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

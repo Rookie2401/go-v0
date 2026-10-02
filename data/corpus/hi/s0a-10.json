@@ -1,0 +1,205 @@
+{
+  "schemaVersion": 2,
+  "id": "s0a-10",
+  "lang": "hi",
+  "title": "मैदान में",
+  "contentType": "story",
+  "corpus": {
+    "id": "ci-hi",
+    "kind": "comprehensible-input",
+    "title": "Comprehensible input — Hindi"
+  },
+  "source": {
+    "id": "src:hi:s0a-10",
+    "title": "Hindi controlled stories, Stage 0A, story 10 of 12 (course-authored, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A0",
+  "topics": [
+    "school",
+    "daily-life"
+  ],
+  "editorialTags": [
+    "needs-native-review",
+    "machine-drafted"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "work": {
+    "slug": "pehli-kahaniyan-0a",
+    "chapter": {
+      "index": 10,
+      "title": "मैदान में"
+    }
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "school",
+    "daily-life"
+  ],
+  "sections": [
+    {
+      "title": "मैदान में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैदान बड़ा है।",
+              "english": "The field is big."
+            },
+            {
+              "text": "बाग भी बड़ा है।",
+              "english": "The garden is big too."
+            },
+            {
+              "text": "बाग में पेड़ है।",
+              "english": "There is a tree in the garden."
+            },
+            {
+              "text": "पेड़ बड़ा है।",
+              "english": "The tree is big."
+            },
+            {
+              "text": "पेड़ पर आम है।",
+              "english": "There is a mango on the tree."
+            },
+            {
+              "text": "बाग में फूल हैं।",
+              "english": "There are flowers in the garden."
+            },
+            {
+              "text": "फूल लाल हैं।",
+              "english": "The flowers are red."
+            },
+            {
+              "text": "फूल सफ़ेद हैं।",
+              "english": "The flowers are white."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि मैदान में खेलता है।",
+              "english": "Ravi plays on the field."
+            },
+            {
+              "text": "मीरा भी मैदान में खेलती है।",
+              "english": "Mira plays on the field too."
+            },
+            {
+              "text": "रवि और अमित मैदान में खेलते हैं।",
+              "english": "Ravi and Amit play on the field."
+            },
+            {
+              "text": "गेंद मैदान में है।",
+              "english": "The ball is on the field."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यह गेंद है।",
+              "english": "This is a ball."
+            },
+            {
+              "text": "क्या यह गेंद है?",
+              "english": "Is this a ball?"
+            },
+            {
+              "text": "हाँ, यह गेंद है।",
+              "english": "Yes, this is a ball."
+            },
+            {
+              "text": "क्या मोती मैदान में है?",
+              "english": "Is Moti on the field?"
+            },
+            {
+              "text": "हाँ, मोती मैदान में है।",
+              "english": "Yes, Moti is on the field."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "क्या मोती खेलता है?",
+              "english": "Does Moti play?"
+            },
+            {
+              "text": "हाँ, मोती भी खेलता है।",
+              "english": "Yes, Moti plays too."
+            },
+            {
+              "text": "क्या मीरा खेलती है?",
+              "english": "Does Mira play?"
+            },
+            {
+              "text": "हाँ, मीरा खेलती है।",
+              "english": "Yes, Mira plays."
+            },
+            {
+              "text": "क्या मीरा स्कूल जाती है?",
+              "english": "Does Mira go to school?"
+            },
+            {
+              "text": "हाँ, मीरा स्कूल जाती है।",
+              "english": "Yes, Mira goes to school."
+            },
+            {
+              "text": "मीरा स्कूल में पढ़ती है।",
+              "english": "Mira studies at school."
+            },
+            {
+              "text": "रवि और अमित स्कूल में पढ़ते हैं।",
+              "english": "Ravi and Amit study at school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "क्या रवि और अमित खेलते हैं?",
+              "english": "Do Ravi and Amit play?"
+            },
+            {
+              "text": "हाँ, रवि और अमित खेलते हैं।",
+              "english": "Yes, Ravi and Amit play."
+            },
+            {
+              "text": "क्या शर्मा जी मैदान में हैं?",
+              "english": "Is Mr Sharma on the field?"
+            },
+            {
+              "text": "नहीं, वह स्कूल में हैं।",
+              "english": "No, he is at school."
+            },
+            {
+              "text": "क्या रवि स्कूल जाता है?",
+              "english": "Does Ravi go to school?"
+            },
+            {
+              "text": "हाँ, रवि रोज़ स्कूल जाता है।",
+              "english": "Yes, Ravi goes to school every day."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

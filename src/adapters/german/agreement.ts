@@ -8,8 +8,8 @@
  */
 import type { DeCase, DeCell, DeLexiconView } from './types';
 import {
-  addContext, addNote, anyLive, applyCells, cellsOf, demote, has, isVerbal, lexicalGender, markDown, norm, pairKey, prefer, settle, top,
-  type R, type Sent, type Tok,
+  addNote, anyLive, applyCells, cellsOf, demote, has, isVerbal, lexicalGender, finiteSlot, markDown, norm, pairKey, prefer, settle, top,
+  verbFinalClause, matrixFragment, replaceContext, type Phrase, type R, type Sent, type Tok,
 } from './context';
 
 type Decl = 'st' | 'wk' | 'mx';
@@ -51,7 +51,10 @@ function roleReadings(t: Tok, role: Role): R[] {
   return rs.filter((r) => r.c.pos === 'NUM');
 }
 
-interface Run { prep?: Tok; contraction?: Tok; det?: Tok; adjs: Tok[]; noun: Tok; numeral?: boolean }
+type Run = Phrase;
+
+/** The parts of a reading's context this step writes (and writes anew when the phrase is settled again). */
+const MY_CONTEXT = /^(after |agrees with |the phrase does not fit|at the start of a clause|\S+ = \S+ \+ )/;
 
 const unitBound = (t: Tok): boolean => !!top(t)?.c.unit;
 
@@ -149,6 +152,12 @@ function agree(s: Sent, run: Run): void {
     allowed = allowed ? new Set([...allowed].filter((k) => u.has(k))) : u;
   }
   if (!allowed || allowed.size === 0) return;
+  let vorfeld: string | undefined;
+  // a noun phrase that opens a clause is not genitive when another case fits: a genitive attribute follows its noun (Der Lehrer liest …)
+  if (!run.prep && !run.contraction && opensMainClause(s, run)) {
+    const noGen = new Set([...allowed].filter((k) => k[0] !== 'G'));
+    if (noGen.size > 0 && noGen.size < allowed.size) { allowed = noGen; vorfeld = 'at the start of a clause a noun phrase is not genitive (a genitive attribute follows its noun)'; }
+  }
   let prepNote: string | undefined;
   /** The phrase agrees among itself but not with what the preposition governs (a learner's mistake: mit den Mann). */
   let conflict: { prep: string; text: string } | undefined;
@@ -191,6 +200,7 @@ function agree(s: Sent, run: Run): void {
       const before = cellsOf(r) as DeCell[];
       const changed = narrowed.length !== before.length;
       const why: string[] = [];
+      if (vorfeld) why.push(vorfeld);
       if (prepNote) why.push(prepNote);
       const carrier = run.det ?? run.contraction ?? run.noun;
       if (conflict && (t === run.det || t === run.noun)) why.push(`the phrase does not fit the case after ${conflict.prep}: ${conflict.text}, but ${surfaces(members)} is ${describeCells(narrowed)}`);
@@ -198,12 +208,12 @@ function agree(s: Sent, run: Run): void {
       if (t === run.contraction) {
         const con = lex.contraction(t.raw.normalized);
         if (con) why.push(`${t.raw.surface} = ${con.preposition} + ${con.article}: ${describeCells(narrowed)}`);
-        if (why.length) addContext(r, why.join('; '));
+        replaceContext(r, why, MY_CONTEXT);
         continue;
       }
       if (r.own && changed) applyCells(r, narrowed, role === 'noun' ? gender : undefined);
       if (conflict && t === carrier) addNote(r.c, 'governmentConflict', run.prep ? (lex.preposition(run.prep.raw.normalized)?.form ?? norm(conflict.prep)) : conflict.prep);
-      if (why.length) addContext(r, why.join('; '));
+      replaceContext(r, why, MY_CONTEXT);
     }
     // readings of the member that cannot be part of the phrase move behind it
     if (t !== run.contraction && (members.length > 1 || run.prep)) {
@@ -215,13 +225,32 @@ function agree(s: Sent, run: Run): void {
 }
 
 /** Run the noun-phrase step over a sentence. */
+/** Does this phrase open a main clause (its verb comes after it, or after the clauses inserted behind it)? */
+function opensMainClause(s: Sent, run: Run): boolean {
+  const first = run.det ?? run.adjs[0] ?? run.noun;
+  const ci = s.clauseOf[first.i];
+  const cl = s.clauses[ci];
+  if (!cl || cl.words[0] !== first.i || verbFinalClause(s, cl)) return false;
+  if (finiteSlot(s, cl) >= 1) return true;
+  // Die Kinder, die im Garten spielten, lachten: the fragment in front of the inserted clause
+  return s.clauses.some((_, k) => matrixFragment(s, k) === ci);
+}
+
+/** Settle every noun phrase again with the cells its members have now: what narrowed one member narrows all of them. */
+export function settlePhrases(s: Sent): void {
+  for (const run of s.phrases) agree(s, run);
+}
+
+/** Run the noun-phrase step over a sentence. */
 export function agreeNounPhrases(s: Sent): void {
+  s.phrases = [];
   const seen = new Set<number>();
   for (const t of s.toks) {
     if (!t.word || seen.has(t.i)) continue;
     if (!roleReadings(t, 'noun').length) continue;
     const run = runAt(s, t);
     for (const m of [run.contraction, run.det, ...run.adjs, run.noun]) if (m) seen.add(m.i);
+    s.phrases.push(run);
     agree(s, run);
   }
 }

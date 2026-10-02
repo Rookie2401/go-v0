@@ -211,6 +211,21 @@ function decidePreposition(s: Sent, t: Tok): void {
   prefer(t, (r) => !prep.includes(r), 'no noun phrase follows: not a preposition');
 }
 
+/** bis, seit, während: the conjunction only when a clause with its finite verb at the end follows; before a noun phrase, a time word, a number or another preposition they are prepositions. */
+const CONJUNCTION_OR_PREPOSITION = new Set(['bis', 'seit', 'während']);
+function decideConjunctionPreposition(s: Sent, t: Tok): void {
+  if (!CONJUNCTION_OR_PREPOSITION.has(t.raw.normalized) || t.rs.some((r) => r.c.unit)) return;
+  if (!anyLive(t, (c) => c.pos === 'ADP') || !anyLive(t, (c) => c.pos === 'SCONJ')) return;
+  const cl = s.clauses[s.clauseOf[t.i]];
+  if (!cl) return;
+  const tail = cl.words.slice(cl.words.indexOf(t.i) + 1).map((k) => s.toks[k]);
+  const first = tail[0];
+  const conjunction = tail.length >= 2 && anyLive(tail[tail.length - 1], (c) => isFin(c))
+    && !(s.lex.preposition(first.raw.normalized) || s.lex.contraction(first.raw.normalized) || anyLive(first, (c) => c.pos === 'NUM'));
+  if (conjunction) prefer(t, (r) => r.c.pos === 'SCONJ', 'a clause with its finite verb at the end follows: the conjunction');
+  else prefer(t, (r) => r.c.pos === 'ADP', 'before a noun phrase, a time word, a number or another preposition (no clause ending in its verb follows): the preposition');
+}
+
 /** The step: capitals first, then the words with several functions. */
 export function decideWords(s: Sent): void {
   for (const t of s.toks) {
@@ -218,6 +233,7 @@ export function decideWords(s: Sent): void {
     decideNumeral(t);
     decideAdjective(t);
     decidePreposition(s, t);
+    decideConjunctionPreposition(s, t);
     decideArticles(s, t);
     decideZu(s, t);
     decidePossessive(s, t);

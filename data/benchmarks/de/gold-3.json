@@ -1,0 +1,334 @@
+{
+  "schema": 1,
+  "language": "de",
+  "note": "Round 3 of the German gold set. Part A (r3-a*): sentences written by the coordinator to test, on NEW vocabulary, the rules changed after the audit of 2026-10-01, and some things no earlier round tested. Part K (r3-k*): sentences of native prose, taken unchanged from Franz Kafka, Die Verwandlung (1915), so that the wording is not the coordinator's own; the judgements on them are. Neither part was shown to the agents who changed the adapter, and the file was not in the repository while they worked.",
+  "provenance": "Sentences and judgements by the coordinator (an AI model, not a native speaker; standard school grammar; nothing here was reviewed by a person). Kafka's sentences: de.wikisource.org, pages 'Seite:De Kafka Die Verwandlung 1177.jpg' (revision 3249395) and '…1178.jpg' (revision 3249396), proofread twice ('fertig'), from Die Weißen Blätter 2 (1915), Heft 10; Kafka died in 1924. First run: see docs/german/STATUS.md. Development data after that first run.",
+  "sentences": [
+    { "id": "r3-a01", "category": "subject and agreement", "text": "Die Lehrerin erklärt den Schülern die Aufgabe.",
+      "tokens": [
+        { "form": "Die", "pos": "DET", "morph": { "Gender": "Fem", "Number": "Sing" }, "includes": { "Case": "Nom" } },
+        { "form": "erklärt", "lemma": "erklären", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" } },
+        { "form": "Schülern", "lemma": "Schüler", "pos": "NOUN", "morph": { "Case": "Dat", "Number": "Plur" } },
+        { "form": "Aufgabe", "lemma": "Aufgabe", "pos": "NOUN", "includes": { "Case": "Acc" } }
+      ] },
+    { "id": "r3-a02", "category": "subject and agreement", "text": "Der Arzt untersucht das kranke Kind.",
+      "tokens": [
+        { "form": "Der", "pos": "DET", "morph": { "Case": "Nom", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "Arzt", "lemma": "Arzt", "pos": "NOUN", "morph": { "Case": "Nom", "Number": "Sing" } },
+        { "form": "untersucht", "lemma": "untersuchen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" }, "notUnit": true, "noPartKind": "prefix" },
+        { "form": "kranke", "lemma": "krank", "pos": "ADJ", "morph": { "Decl": "Weak", "Gender": "Neut", "Number": "Sing" } }
+      ], "notConstructions": ["separable-prefix-verb"] },
+    { "id": "r3-a03", "category": "subject and agreement", "text": "Am Abend besuchen uns die Nachbarn.",
+      "note": "The subject follows the inverted verb and an object pronoun.",
+      "tokens": [
+        { "form": "besuchen", "lemma": "besuchen", "pos": "VERB", "morph": { "Person": "3", "Number": "Plur" } },
+        { "form": "Nachbarn", "lemma": "Nachbar", "pos": "NOUN", "morph": { "Number": "Plur" }, "includes": { "Case": "Nom" } },
+        { "form": "uns", "pos": "PRON", "includes": { "Case": "Acc" } },
+        { "form": "Abend", "lemma": "Abend", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Masc", "Number": "Sing" } }
+      ] },
+    { "id": "r3-a04", "category": "subject and agreement", "text": "Nach dem Essen spielen die Kinder im Hof.",
+      "tokens": [
+        { "form": "spielen", "lemma": "spielen", "pos": "VERB", "morph": { "Person": "3", "Number": "Plur" } },
+        { "form": "Essen", "lemma": "Essen", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Neut", "Number": "Sing" } },
+        { "form": "Kinder", "lemma": "Kind", "pos": "NOUN", "morph": { "Number": "Plur" }, "includes": { "Case": "Nom" } },
+        { "form": "Hof", "lemma": "Hof", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Masc", "Number": "Sing" } }
+      ] },
+    { "id": "r3-a05", "category": "relative clause", "text": "Die Bücher, die auf dem Tisch liegen, gehören meiner Schwester.",
+      "tokens": [
+        { "form": "die", "pos": "PRON", "morph": { "PronType": "Rel", "Number": "Plur" }, "includes": { "Case": "Nom" } },
+        { "form": "liegen", "lemma": "liegen", "pos": "VERB", "morph": { "Person": "3", "Number": "Plur" } },
+        { "form": "gehören", "lemma": "gehören", "pos": "VERB", "morph": { "Person": "3", "Number": "Plur" } },
+        { "form": "meiner", "pos": "DET", "morph": { "Case": "Dat", "Gender": "Fem", "Number": "Sing" } },
+        { "form": "Schwester", "lemma": "Schwester", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Fem", "Number": "Sing" } }
+      ], "constructions": ["relative-clause"] },
+    { "id": "r3-a06", "category": "relative clause", "text": "Der Mann, dem ich geholfen habe, wohnt nebenan.",
+      "tokens": [
+        { "form": "dem", "pos": "PRON", "morph": { "PronType": "Rel", "Case": "Dat", "Number": "Sing" } },
+        { "form": "geholfen", "lemma": "helfen", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "habe", "lemma": "haben", "pos": "AUX", "morph": { "Person": "1", "Number": "Sing" } },
+        { "form": "wohnt", "lemma": "wohnen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" } }
+      ], "constructions": ["relative-clause", "sentence-bracket-perfect"] },
+    { "id": "r3-a07", "category": "relative clause", "text": "Das Kind, das im Garten spielt, lacht.",
+      "tokens": [
+        { "form": "das", "pos": "PRON", "morph": { "PronType": "Rel", "Gender": "Neut", "Number": "Sing" } },
+        { "form": "spielt", "lemma": "spielen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" } },
+        { "form": "lacht", "lemma": "lachen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" } }
+      ], "constructions": ["relative-clause"] },
+    { "id": "r3-a08", "category": "bis", "text": "Wir fahren von Hamburg bis nach München.",
+      "tokens": [
+        { "form": "bis", "lemma": "bis", "pos": "ADP" },
+        { "form": "fahren", "lemma": "fahren", "pos": "VERB", "morph": { "Person": "1", "Number": "Plur" } }
+      ], "notConstructions": ["verb-final-subordinate"] },
+    { "id": "r3-a09", "category": "bis", "text": "Ich bleibe, bis der Regen aufhört.",
+      "tokens": [
+        { "form": "bis", "lemma": "bis", "pos": "SCONJ" },
+        { "form": "aufhört", "lemma": "aufhören", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" }, "notUnit": true },
+        { "form": "Regen", "lemma": "Regen", "pos": "NOUN", "morph": { "Case": "Nom", "Number": "Sing" } }
+      ], "constructions": ["verb-final-subordinate"] },
+    { "id": "r3-a10", "category": "bis", "text": "Bis zum Sommer wollen wir fertig sein.",
+      "tokens": [
+        { "form": "Bis", "lemma": "bis", "pos": "ADP" },
+        { "form": "zum", "lemma": "zu", "pos": "ADP", "parts": [{ "lemma": "zu", "kind": "contracted" }, { "lemma": "der", "kind": "contracted" }] },
+        { "form": "wollen", "lemma": "wollen", "pos": "AUX", "morph": { "Person": "1", "Number": "Plur" } },
+        { "form": "sein", "lemma": "sein", "morph": { "VerbForm": "Inf" } }
+      ], "constructions": ["modal-infinitive"], "notConstructions": ["verb-final-subordinate"] },
+    { "id": "r3-a11", "category": "je … desto", "text": "Je länger ich warte, desto nervöser werde ich.",
+      "tokens": [
+        { "form": "warte", "lemma": "warten", "pos": "VERB", "morph": { "Person": "1", "Number": "Sing" } },
+        { "form": "werde", "lemma": "werden", "morph": { "Person": "1", "Number": "Sing" } },
+        { "form": "länger", "lemma": "lang", "pos": ["ADJ", "ADV"] }
+      ], "constructions": ["je-desto"] },
+    { "id": "r3-a12", "category": "passive", "text": "Das Paket ist gestern abgeholt worden.",
+      "tokens": [
+        { "form": "abgeholt", "lemma": "abholen", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "worden", "lemma": "werden", "pos": "AUX" },
+        { "form": "ist", "lemma": "sein", "pos": "AUX" }
+      ], "constructions": ["passive-perfect"], "notConstructions": ["sentence-bracket-perfect"] },
+    { "id": "r3-a13", "category": "passive", "text": "Die Briefe sind schon geschrieben worden.",
+      "tokens": [
+        { "form": "sind", "lemma": "sein", "pos": "AUX", "morph": { "Person": "3", "Number": "Plur" } },
+        { "form": "geschrieben", "lemma": "schreiben", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "Briefe", "lemma": "Brief", "pos": "NOUN", "morph": { "Number": "Plur" }, "includes": { "Case": "Nom" } }
+      ], "constructions": ["passive-perfect"], "notConstructions": ["sentence-bracket-perfect", "modal-particle"] },
+    { "id": "r3-a14", "category": "passive", "text": "Die alten Häuser der Stadt wurden renoviert.",
+      "tokens": [
+        { "form": "Häuser", "lemma": "Haus", "pos": "NOUN", "morph": { "Number": "Plur" }, "includes": { "Case": "Nom" } },
+        { "form": "der", "pos": "DET", "morph": { "Case": "Gen", "Gender": "Fem", "Number": "Sing" } },
+        { "form": "Stadt", "lemma": "Stadt", "pos": "NOUN", "morph": { "Case": "Gen", "Gender": "Fem", "Number": "Sing" } },
+        { "form": "wurden", "lemma": "werden", "pos": "AUX", "morph": { "Person": "3", "Number": "Plur", "Tense": "Past" } },
+        { "form": "renoviert", "lemma": "renovieren", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } }
+      ], "constructions": ["passive-past"] },
+    { "id": "r3-a15", "category": "separable participles", "text": "Er hat die Tür nicht zugemacht.",
+      "tokens": [
+        { "form": "zugemacht", "lemma": "zumachen", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "hat", "lemma": "haben", "pos": "AUX" },
+        { "form": "nicht", "lemma": "nicht", "pos": "PART" }
+      ], "constructions": ["sentence-bracket-perfect"], "notConstructions": ["modal-particle"] },
+    { "id": "r3-a16", "category": "separable participles", "text": "Hast du den Koffer schon ausgepackt?",
+      "note": "auspacken is expected to be outside the hand word list: the reading must then be marked unconfirmed and carry no gloss.",
+      "tokens": [
+        { "form": "ausgepackt", "lemma": "auspacken", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "Hast", "lemma": "haben", "pos": "AUX", "morph": { "Person": "2", "Number": "Sing" } },
+        { "form": "Koffer", "lemma": "Koffer", "pos": "NOUN", "morph": { "Case": "Acc", "Gender": "Masc", "Number": "Sing" } }
+      ], "constructions": ["sentence-bracket-perfect"] },
+    { "id": "r3-a17", "category": "separable participles", "text": "Sie hat ihre Freundin eingeladen und ist dann weggegangen.",
+      "tokens": [
+        { "form": "eingeladen", "lemma": "einladen", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "weggegangen", "lemma": "weggehen", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "hat", "lemma": "haben", "pos": "AUX" },
+        { "form": "ist", "lemma": "sein", "pos": "AUX" }
+      ], "constructions": ["sentence-bracket-perfect"] },
+    { "id": "r3-a18", "category": "separable participles", "text": "Er versucht, das Fenster aufzumachen.",
+      "tokens": [
+        { "form": "aufzumachen", "lemma": "aufmachen", "pos": "VERB", "morph": { "VerbForm": "Inf" }, "parts": [{ "kind": "prefix" }, { "kind": "marker" }] },
+        { "form": "versucht", "lemma": "versuchen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" }, "noPartKind": "prefix" }
+      ], "constructions": ["zu-infinitive"] },
+    { "id": "r3-a19", "category": "particles and negation", "text": "Das ist doch nicht wahr!",
+      "tokens": [
+        { "form": "doch", "pos": "PART", "hasRole": true },
+        { "form": "nicht", "lemma": "nicht", "pos": "PART" },
+        { "form": "wahr", "lemma": "wahr", "pos": "ADJ" }
+      ], "constructions": ["modal-particle"] },
+    { "id": "r3-a20", "category": "particles and negation", "text": "Ich kann heute leider nicht kommen.",
+      "tokens": [
+        { "form": "kann", "lemma": "können", "pos": "AUX", "morph": { "Person": "1", "Number": "Sing" } },
+        { "form": "kommen", "lemma": "kommen", "pos": "VERB", "morph": { "VerbForm": "Inf" } }
+      ], "constructions": ["modal-infinitive"], "notConstructions": ["modal-particle"] },
+    { "id": "r3-a21", "category": "particles and negation", "text": "Nein, das möchte ich nicht.",
+      "tokens": [
+        { "form": "möchte", "morph": { "Person": "1", "Number": "Sing" } },
+        { "form": "das", "pos": "PRON" }
+      ], "notConstructions": ["modal-particle"] },
+    { "id": "r3-a22", "category": "subject and agreement", "text": "Gestern kaufte meine Mutter einen neuen Mantel.",
+      "tokens": [
+        { "form": "kaufte", "lemma": "kaufen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" }, "includes": { "Mood": "Ind" } },
+        { "form": "meine", "pos": "DET", "morph": { "Case": "Nom", "Gender": "Fem", "Number": "Sing" } },
+        { "form": "Mutter", "lemma": "Mutter", "pos": "NOUN", "morph": { "Case": "Nom", "Gender": "Fem", "Number": "Sing" } },
+        { "form": "neuen", "lemma": "neu", "pos": "ADJ", "morph": { "Case": "Acc", "Gender": "Masc", "Number": "Sing", "Decl": "Mixed" } },
+        { "form": "Mantel", "lemma": "Mantel", "pos": "NOUN", "morph": { "Case": "Acc", "Gender": "Masc", "Number": "Sing" } }
+      ] },
+    { "id": "r3-a23", "category": "subject and agreement", "text": "Ich ging in die Stadt und kaufte ein Buch.",
+      "note": "The second verb shares the subject ich: it must not be asserted to be third person.",
+      "tokens": [
+        { "form": "ging", "lemma": "gehen", "pos": "VERB", "morph": { "Person": "1", "Number": "Sing" } },
+        { "form": "kaufte", "lemma": "kaufen", "pos": "VERB", "includes": { "Person": "1" } },
+        { "form": "Stadt", "lemma": "Stadt", "pos": "NOUN", "morph": { "Case": "Acc", "Gender": "Fem", "Number": "Sing" } }
+      ] },
+    { "id": "r3-a24", "category": "subject and agreement", "text": "Den Brief schrieb der Vater seinem Sohn.",
+      "tokens": [
+        { "form": "Den", "pos": "DET", "morph": { "Case": "Acc", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "schrieb", "lemma": "schreiben", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" } },
+        { "form": "der", "pos": "DET", "morph": { "Case": "Nom", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "Vater", "lemma": "Vater", "pos": "NOUN", "morph": { "Case": "Nom", "Number": "Sing" } },
+        { "form": "Sohn", "lemma": "Sohn", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Masc", "Number": "Sing" } }
+      ] },
+    { "id": "r3-a25", "category": "honest ambiguity", "text": "Die Katze fängt die Maus.",
+      "note": "Nothing in the sentence says which noun is the subject: both must stay nominative-or-accusative; the verb is third person either way.",
+      "tokens": [
+        { "form": "Katze", "lemma": "Katze", "pos": "NOUN", "ambiguous": { "Case": ["Nom", "Acc"] } },
+        { "form": "Maus", "lemma": "Maus", "pos": "NOUN", "ambiguous": { "Case": ["Nom", "Acc"] } },
+        { "form": "fängt", "lemma": "fangen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" }, "notUnit": true }
+      ] },
+    { "id": "r3-a26", "category": "subject and agreement", "text": "Der Lehrer der Kinder kommt aus Berlin.",
+      "tokens": [
+        { "form": "Der", "pos": "DET", "morph": { "Case": "Nom", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "der", "pos": "DET", "morph": { "Case": "Gen", "Number": "Plur" } },
+        { "form": "Kinder", "lemma": "Kind", "pos": "NOUN", "morph": { "Case": "Gen", "Number": "Plur" } },
+        { "form": "kommt", "lemma": "kommen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" } }
+      ], "constructions": ["genitive-attribute"] },
+    { "id": "r3-a27", "category": "homograph nouns", "text": "Die Feste der Stadt sind berühmt.",
+      "note": "The plural verb decides: these are festivals (Fest), not the firmament or a fortress (Feste, singular).",
+      "tokens": [
+        { "form": "Feste", "lemma": "Fest", "pos": "NOUN", "morph": { "Number": "Plur" }, "includes": { "Case": "Nom" } },
+        { "form": "sind", "lemma": "sein", "morph": { "Person": "3", "Number": "Plur" } }
+      ] },
+    { "id": "r3-a28", "category": "homograph nouns", "text": "Eine feste Burg ist unser Gott.",
+      "tokens": [
+        { "form": "feste", "lemma": "fest", "pos": "ADJ", "morph": { "Gender": "Fem", "Number": "Sing" } },
+        { "form": "Burg", "lemma": "Burg", "pos": "NOUN", "morph": { "Gender": "Fem", "Number": "Sing" }, "includes": { "Case": "Nom" } }
+      ] },
+    { "id": "r3-a29", "category": "Konjunktiv", "text": "Wenn er käme, würden wir uns freuen.",
+      "tokens": [
+        { "form": "käme", "lemma": "kommen", "pos": "VERB", "morph": { "Mood": "Sub", "Tense": "Past", "Person": "3", "Number": "Sing" } },
+        { "form": "würden", "lemma": "werden", "pos": "AUX", "morph": { "Mood": "Sub", "Person": "1", "Number": "Plur" } },
+        { "form": "freuen", "lemma": ["freuen", "sich freuen"], "pos": "VERB", "morph": { "VerbForm": "Inf" } }
+      ], "constructions": ["konjunktiv-2", "konjunktiv-2-wuerde"] },
+    { "id": "r3-a30", "category": "Konjunktiv", "text": "Sie sagte, sie komme morgen.",
+      "tokens": [
+        { "form": "komme", "lemma": "kommen", "pos": "VERB", "morph": { "Mood": "Sub", "Tense": "Pres", "Person": "3", "Number": "Sing" } },
+        { "form": "sagte", "lemma": "sagen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } }
+      ], "constructions": ["konjunktiv-1"] },
+    { "id": "r3-a31", "category": "imperative and mehr", "text": "Mehr Geld brauchen wir nicht.",
+      "tokens": [
+        { "form": "Mehr", "lemma": ["mehr", "viel"], "pos": ["DET", "ADV", "ADJ", "PRON"] },
+        { "form": "brauchen", "lemma": "brauchen", "pos": ["VERB", "AUX"], "morph": { "Person": "1", "Number": "Plur" } }
+      ], "notConstructions": ["imperative", "modal-particle"] },
+    { "id": "r3-a32", "category": "imperative and mehr", "text": "Lies mehr Bücher!",
+      "tokens": [
+        { "form": "Lies", "lemma": "lesen", "pos": "VERB", "morph": { "Mood": "Imp" } },
+        { "form": "mehr", "lemma": ["mehr", "viel"], "pos": ["DET", "ADV", "ADJ", "PRON"] },
+        { "form": "Bücher", "lemma": "Buch", "pos": "NOUN", "morph": { "Number": "Plur" }, "includes": { "Case": "Acc" } }
+      ], "constructions": ["imperative"] },
+    { "id": "r3-a33", "category": "separable verbs", "text": "Er kommt um acht Uhr an und geht um zehn wieder weg.",
+      "tokens": [
+        { "form": "kommt", "lemma": "ankommen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" }, "unitWith": ["an"] },
+        { "form": "geht", "lemma": "weggehen", "pos": "VERB", "unitWith": ["weg"] },
+        { "form": "um", "lemma": "um", "pos": "ADP", "notUnit": true }
+      ], "constructions": ["separable-prefix-verb"] },
+    { "id": "r3-a34", "category": "subject and agreement", "text": "Wegen des starken Regens blieben wir zu Hause.",
+      "tokens": [
+        { "form": "des", "pos": "DET", "morph": { "Case": "Gen", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "starken", "lemma": "stark", "pos": "ADJ", "morph": { "Case": "Gen", "Gender": "Masc", "Number": "Sing", "Decl": "Weak" } },
+        { "form": "blieben", "lemma": "bleiben", "pos": "VERB", "morph": { "Person": "1", "Number": "Plur", "Tense": "Past" } }
+      ], "constructions": ["genitive-preposition"] },
+    { "id": "r3-a35", "category": "auxiliary constructions", "text": "Mit wem hast du gesprochen?",
+      "tokens": [
+        { "form": "wem", "pos": "PRON", "morph": { "Case": "Dat" } },
+        { "form": "hast", "lemma": "haben", "pos": "AUX", "morph": { "Person": "2", "Number": "Sing" } },
+        { "form": "gesprochen", "lemma": "sprechen", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } }
+      ], "constructions": ["sentence-bracket-perfect"] },
+
+    { "id": "r3-k01", "category": "native prose (Kafka)", "text": "Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er sich in seinem Bett zu einem ungeheueren Ungeziefer verwandelt.",
+      "tokens": [
+        { "form": "erwachte", "lemma": "erwachen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" }, "includes": { "Mood": "Ind" } },
+        { "form": "fand", "lemma": "finden", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "Morgens", "lemma": "Morgen", "pos": "NOUN", "morph": { "Case": "Gen", "Number": "Sing" } },
+        { "form": "Träumen", "lemma": "Traum", "pos": "NOUN", "morph": { "Case": "Dat", "Number": "Plur" } },
+        { "form": "Bett", "lemma": "Bett", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Neut", "Number": "Sing" } },
+        { "form": "verwandelt", "lemma": "verwandeln", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } }
+      ], "constructions": ["verb-final-subordinate"] },
+    { "id": "r3-k02", "category": "native prose (Kafka)", "text": "Seine vielen, im Vergleich zu seinem sonstigen Umfang kläglich dünnen Beine flimmerten ihm hilflos vor den Augen.",
+      "tokens": [
+        { "form": "Beine", "lemma": "Bein", "pos": "NOUN", "morph": { "Number": "Plur" }, "includes": { "Case": "Nom" } },
+        { "form": "flimmerten", "lemma": "flimmern", "pos": "VERB", "morph": { "Person": "3", "Number": "Plur", "Tense": "Past" } },
+        { "form": "ihm", "pos": "PRON", "morph": { "Case": "Dat" } },
+        { "form": "Augen", "lemma": "Auge", "pos": "NOUN", "morph": { "Case": "Dat", "Number": "Plur" } },
+        { "form": "Vergleich", "lemma": "Vergleich", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "dünnen", "lemma": "dünn", "pos": "ADJ" }
+      ] },
+    { "id": "r3-k03", "category": "native prose (Kafka)", "text": "»Was ist mit mir geschehen?« dachte er.",
+      "tokens": [
+        { "form": "ist", "lemma": "sein", "pos": "AUX" },
+        { "form": "geschehen", "lemma": "geschehen", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "dachte", "lemma": "denken", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "mir", "pos": "PRON", "morph": { "Case": "Dat" } }
+      ], "constructions": ["sentence-bracket-perfect"] },
+    { "id": "r3-k04", "category": "native prose (Kafka)", "text": "Der Mensch muß seinen Schlaf haben.",
+      "tokens": [
+        { "form": "muß", "lemma": "müssen", "pos": "AUX", "orthography": { "modern": "muss", "period": "de-1901" } },
+        { "form": "Der", "pos": "DET", "morph": { "Case": "Nom", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "Schlaf", "lemma": "Schlaf", "pos": "NOUN", "morph": { "Case": "Acc", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "haben", "lemma": "haben", "morph": { "VerbForm": "Inf" } }
+      ], "constructions": ["modal-infinitive"] },
+    { "id": "r3-k05", "category": "native prose (Kafka)", "text": "Andere Reisende leben wie Haremsfrauen.",
+      "tokens": [
+        { "form": "leben", "lemma": "leben", "pos": "VERB", "morph": { "Person": "3", "Number": "Plur" } },
+        { "form": "Reisende", "lemma": ["Reisende", "Reisender", "reisend", "reisen"], "pos": ["NOUN", "ADJ"], "morph": { "Number": "Plur" } },
+        { "form": "Haremsfrauen", "lemma": "Haremsfrau", "pos": "NOUN", "morph": { "Number": "Plur" } }
+      ] },
+    { "id": "r3-k06", "category": "native prose (Kafka)", "text": "Das sollte ich bei meinem Chef versuchen; ich würde auf der Stelle hinausfliegen.",
+      "tokens": [
+        { "form": "sollte", "lemma": "sollen", "pos": "AUX", "morph": { "Person": "1", "Number": "Sing" } },
+        { "form": "versuchen", "lemma": "versuchen", "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "würde", "lemma": "werden", "pos": "AUX", "morph": { "Mood": "Sub", "Person": "1", "Number": "Sing" } },
+        { "form": "hinausfliegen", "lemma": "hinausfliegen", "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "Chef", "lemma": "Chef", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "Stelle", "lemma": "Stelle", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Fem", "Number": "Sing" } }
+      ], "constructions": ["modal-infinitive", "konjunktiv-2-wuerde"] },
+    { "id": "r3-k07", "category": "native prose (Kafka)", "text": "Wer weiß übrigens, ob das nicht sehr gut für mich wäre.",
+      "tokens": [
+        { "form": "weiß", "lemma": "wissen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" } },
+        { "form": "wäre", "lemma": "sein", "morph": { "Mood": "Sub", "Tense": "Past", "Person": "3", "Number": "Sing" } },
+        { "form": "ob", "lemma": "ob", "pos": "SCONJ" },
+        { "form": "mich", "pos": "PRON", "morph": { "Case": "Acc" } }
+      ], "constructions": ["verb-final-subordinate", "konjunktiv-2"], "notConstructions": ["modal-particle"] },
+    { "id": "r3-k08", "category": "native prose (Kafka)", "text": "Vom Pult hätte er fallen müssen!",
+      "note": "hätte … fallen müssen: the perfect of a modal with the infinitive in place of the participle.",
+      "tokens": [
+        { "form": "Vom", "lemma": "von", "pos": "ADP", "parts": [{ "lemma": "von", "kind": "contracted" }, { "lemma": "der", "kind": "contracted" }] },
+        { "form": "Pult", "lemma": "Pult", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Neut", "Number": "Sing" } },
+        { "form": "hätte", "lemma": "haben", "morph": { "Mood": "Sub", "Tense": "Past", "Person": "3", "Number": "Sing" } },
+        { "form": "fallen", "lemma": "fallen", "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "müssen", "lemma": "müssen", "morph": { "VerbForm": "Inf" } }
+      ], "constructions": ["konjunktiv-2"] },
+    { "id": "r3-k09", "category": "native prose (Kafka)", "text": "Dann wird der große Schnitt gemacht.",
+      "tokens": [
+        { "form": "wird", "lemma": "werden", "pos": "AUX", "morph": { "Person": "3", "Number": "Sing" } },
+        { "form": "gemacht", "lemma": "machen", "pos": "VERB", "morph": { "VerbForm": "Part", "Tense": "Past" } },
+        { "form": "große", "lemma": "groß", "pos": "ADJ", "morph": { "Case": "Nom", "Gender": "Masc", "Number": "Sing", "Decl": "Weak" } },
+        { "form": "Schnitt", "lemma": "Schnitt", "pos": "NOUN", "morph": { "Case": "Nom", "Gender": "Masc", "Number": "Sing" } }
+      ], "constructions": ["passive"], "notConstructions": ["future"] },
+    { "id": "r3-k10", "category": "native prose (Kafka)", "text": "Vorläufig allerdings muß ich aufstehen, denn mein Zug fährt um fünf.",
+      "tokens": [
+        { "form": "muß", "lemma": "müssen", "pos": "AUX", "morph": { "Person": "1", "Number": "Sing" }, "orthography": { "modern": "muss", "period": "de-1901" } },
+        { "form": "aufstehen", "lemma": "aufstehen", "pos": "VERB", "morph": { "VerbForm": "Inf" }, "notUnit": true },
+        { "form": "fährt", "lemma": "fahren", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing" }, "notUnit": true },
+        { "form": "um", "lemma": "um", "pos": "ADP", "notUnit": true },
+        { "form": "Zug", "lemma": "Zug", "pos": "NOUN", "morph": { "Case": "Nom", "Gender": "Masc", "Number": "Sing" } }
+      ], "constructions": ["modal-infinitive"], "notConstructions": ["separable-prefix-verb"] },
+    { "id": "r3-k11", "category": "native prose (Kafka)", "text": "Er glitt wieder in seine frühere Lage zurück.",
+      "tokens": [
+        { "form": "glitt", "lemma": "zurückgleiten", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" }, "unitWith": ["zurück"] },
+        { "form": "Lage", "lemma": "Lage", "pos": "NOUN", "morph": { "Case": "Acc", "Gender": "Fem", "Number": "Sing" } },
+        { "form": "frühere", "lemma": "früh", "pos": "ADJ" },
+        { "form": "in", "lemma": "in", "pos": "ADP", "notUnit": true }
+      ], "constructions": ["separable-prefix-verb"] },
+    { "id": "r3-k12", "category": "native prose (Kafka)", "text": "Der Teufel soll das alles holen!",
+      "tokens": [
+        { "form": "soll", "lemma": "sollen", "pos": "AUX", "morph": { "Person": "3", "Number": "Sing" } },
+        { "form": "holen", "lemma": "holen", "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "Teufel", "lemma": "Teufel", "pos": "NOUN", "morph": { "Case": "Nom", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "Der", "pos": "DET", "morph": { "Case": "Nom", "Gender": "Masc", "Number": "Sing" } }
+      ], "constructions": ["modal-infinitive"] },
+    { "id": "r3-k13", "category": "native prose (Kafka)", "text": "Er versuchte es wohl hundertmal, schloß die Augen, um die zappelnden Beine nicht sehen zu müssen und ließ erst ab, als er in der Seite einen noch nie gefühlten, leichten, dumpfen Schmerz zu fühlen begann.",
+      "tokens": [
+        { "form": "versuchte", "lemma": "versuchen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "schloß", "lemma": "schließen", "pos": "VERB", "morph": { "Tense": "Past" }, "orthography": { "modern": "schloss", "period": "de-1901" } },
+        { "form": "ließ", "lemma": "ablassen", "pos": "VERB", "morph": { "Tense": "Past" }, "unitWith": ["ab"] },
+        { "form": "begann", "lemma": "beginnen", "pos": "VERB", "morph": { "Person": "3", "Number": "Sing", "Tense": "Past" } },
+        { "form": "fühlen", "lemma": "fühlen", "pos": "VERB", "morph": { "VerbForm": "Inf" } },
+        { "form": "Schmerz", "lemma": "Schmerz", "pos": "NOUN", "morph": { "Case": "Acc", "Gender": "Masc", "Number": "Sing" } },
+        { "form": "Seite", "lemma": "Seite", "pos": "NOUN", "morph": { "Case": "Dat", "Gender": "Fem", "Number": "Sing" } }
+      ], "constructions": ["um-zu", "verb-final-subordinate"], "notConstructions": ["modal-particle"] }
+  ]
+}

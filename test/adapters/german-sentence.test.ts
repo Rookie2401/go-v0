@@ -510,7 +510,7 @@ describe('candidates carry their provenance', () => {
 
 describe('the adapter', () => {
   it('is wired: version 2, sources, varieties, honest support', () => {
-    expect(de.version).toBe('2');
+    expect(de.version).toBe('3');
     expect(Object.keys(de.sources ?? {}).sort()).toEqual(Object.values(DE_SOURCE_IDS).sort());
     expect(de.varieties?.['de-1901']?.kind).toBe('historical');
     expect(de.support.lemmatization).toBe('seed-only');
@@ -539,7 +539,7 @@ describe('the adapter', () => {
 describe('more decisions', () => {
   run([
     ['Der Alte kommt.', [['Alte', { lemma: 'alt', pos: 'ADJ', morph: { Case: 'Nom', Gender: 'Masc', Number: 'Sing', Decl: 'Weak' }, role: 'adjective used as a noun' }]]],
-    ['Das Gute siegt.', [['Gute', { lemma: 'gut', morph: { Case: 'Nom,Acc', Gender: 'Neut', Number: 'Sing' } }]]],
+    ['Das Gute siegt.', [['Gute', { lemma: 'gut', morph: { Case: 'Nom', Gender: 'Neut', Number: 'Sing' } }]]],
     ['Er hat dem Alten geholfen.', [['Alten', { morph: { Case: 'Dat', Number: 'Sing', Decl: 'Weak' } }]]],
     ['Alte Männer sind weise.', [['Alte', { pos: 'ADJ', morph: { Case: 'Nom,Acc', Number: 'Plur', Decl: 'Strong' } }]]],
     ['Das Haus ist gebaut worden.', [['ist', { role: 'perfect auxiliary of werden' }], ['worden', { role: 'passive auxiliary of bauen' }]]],
@@ -555,7 +555,7 @@ describe('more decisions', () => {
     ['Hast du Zeit?', [['Hast', { morph: { Person: '2', Number: 'Sing' } }]]],
     ['Und Gott sprach: Es werde Licht!', [['werde', { lemma: 'werden', morph: { Mood: 'Sub', Person: '3' } }]]],
     ['Vor jedem Halt sagt eine Stimme den Namen an.', [['Halt', { pos: 'NOUN' }], ['sagt', { lemma: 'ansagen' }], ['an', { lemma: 'ansagen' }]]],
-    ['Die Wohnung ist klein.', [['Wohnung', { morph: { Case: 'Nom,Acc', Gender: 'Fem' } }]]],
+    ['Die Wohnung ist klein.', [['Wohnung', { morph: { Case: 'Nom', Gender: 'Fem' } }]]],
   ]);
 
   it('a unit reading is not made of a capitalised noun the list lacks (Halt is not the verb halten)', () => {
@@ -817,7 +817,7 @@ describe('every candidate of the bundled German documents is well formed', () =>
 });
 
 describe('government conflicts, given tokens, headword variants', () => {
-  it('correct German never carries a governmentConflict: none of the bundled German sentences does', () => {
+  it('correct German never carries a governmentConflict: none of the bundled German sentences does (exact list: empty)', () => {
     const found: string[] = [];
     for (const s of GERMAN_SENTENCES) {
       const a = de.analyze(s.tokens);
@@ -825,12 +825,8 @@ describe('government conflicts, given tokens, headword variants', () => {
         if (t.candidates.some((c) => c.notes?.governmentConflict)) found.push(`${s.doc}: ${s.tokens.map((x) => x.surface).join(' ')} [${s.tokens[i].surface}]`);
       });
     }
-    // The sentences below are reported to the lexicon, not hidden: Luther's "die Feste" (the firmament, feminine) is not in the list, which
-    // holds only Fest (n., plural Feste), so "unter der Feste" cannot be read as a dative; Grimm's archaic "für sein Lebtag" is not standard
-    // (sein for a masculine accusative). Anything else is a new error.
-    const known = found.filter((f) => /^bible-gen-1: .*\[der\]$/.test(f) || /^grimm-sternthaler-1857: .*\[sein\]$/.test(f));
-    expect(found.filter((f) => !known.includes(f))).toEqual([]);
-    expect(known.length).toBeLessThanOrEqual(7);
+    // the exact list: empty (Luther's feminine Feste is in the list now); a sentence that appears here is a lexicon or analysis error to report
+    expect(found).toEqual([]);
   });
 
   it('a token named in given is taken as it is: not restarted, reordered or re-decided, though its neighbours read it', () => {
@@ -860,5 +856,242 @@ describe('government conflicts, given tokens, headword variants', () => {
     expect(v('Straße')).toEqual(['Strasse']);
     expect(v('Haus')).toEqual([]);
     for (const l of ['Tal', 'dass', 'Fluss', 'Straße']) expect(v(l)).not.toContain(l);
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────────────────────────────────────────────────
+// batch 2: one phrase one set of cells, the subject fixes the verb, the relative pronoun, bis, je … desto, homograph nouns, auxiliaries
+
+describe('A. one noun phrase, one set of cells', () => {
+  run([
+    ['Der Lehrer liest den Kindern eine Geschichte vor.', [
+      ['Der', { morph: { Case: 'Nom', Gender: 'Masc', Number: 'Sing' } }], ['Lehrer', { morph: { Case: 'Nom', Gender: 'Masc', Number: 'Sing' } }],
+      ['den', { morph: { Case: 'Dat', Number: 'Plur' } }], ['Kindern', { morph: { Case: 'Dat', Number: 'Plur' } }]]],
+    ['Der Lehrer der Kinder kommt.', [
+      ['Der', { morph: { Case: 'Nom', Number: 'Sing' } }], ['Lehrer', { morph: { Case: 'Nom', Number: 'Sing' } }],
+      ['der', { morph: { Case: 'Gen', Number: 'Plur' } }], ['Kinder', { morph: { Case: 'Gen', Number: 'Plur' } }]]],
+    ['Im Sommer fahren viele Deutsche an die Ostsee.', [
+      ['viele', { morph: { Case: 'Nom', Number: 'Plur' } }], ['Deutsche', { morph: { Case: 'Nom', Number: 'Plur' } }], ['fahren', { morph: { Person: '3', Number: 'Plur' } }]]],
+    // nothing decides: both phrases stay nominative-or-accusative
+    ['Die Frau sieht die Tochter.', [['Die', { morph: { Case: 'Nom,Acc' } }], ['Frau', { morph: { Case: 'Nom,Acc' } }], ['die', { morph: { Case: 'Nom,Acc' } }], ['Tochter', { morph: { Case: 'Nom,Acc' } }]]],
+    // a number that agrees with only one of two phrases decides that one
+    ['Die Frau sieht die Töchter.', [['Die', { morph: { Case: 'Nom', Number: 'Sing' } }], ['Frau', { morph: { Case: 'Nom' } }]]],
+  ]);
+
+  it('the article never keeps an alternative the noun has lost: determiner, adjectives and noun carry the same case, gender and number', () => {
+    for (const text of ['Der Lehrer liest den Kindern eine Geschichte vor.', 'Der gute Lehrer kommt.', 'Im Sommer fahren viele junge Deutsche an die Ostsee.', 'Morgen kommt der Lehrer.']) {
+      const p = parse(text);
+      for (const [det, noun] of [['Der', 'Lehrer'], ['Der', 'Lehrer'], ['viele', 'Deutsche'], ['der', 'Lehrer']] as const) {
+        if (!p.tokens.some((t) => t.surface === det) || !p.tokens.some((t) => t.surface === noun)) continue;
+        for (const k of ['Case', 'Number'] as const) expect(first(p, det).morph[k], `${text} ${det} ${k}`).toBe(first(p, noun).morph[k]);
+      }
+    }
+  });
+
+  it('a dative that is also genitive stays so after a verb: "der Frau" is not made nominative by any subject rule', () => {
+    const p = parse('Ich gebe der Frau das Buch.');
+    expect(first(p, 'der').morph.Case.split(',')).toContain('Dat');
+    expect(first(p, 'der').morph.Case.split(',')).not.toContain('Nom');
+    expect(first(p, 'Frau').morph.Case.split(',')).not.toContain('Nom');
+  });
+
+  it('one lemma with several cells is not a homograph: die Lehrer keeps its confidence', () => {
+    const c = cands(parse('Die Lehrer kommen.'), 'Lehrer');
+    expect(new Set(c.map((x) => x.lemma)).size).toBe(1);
+    expect(c[0].confidence).toBeGreaterThan(0.5);
+  });
+
+  it('a genitive does not open a clause when another case fits, but a genitive that is only genitive stays', () => {
+    expect(first(parse('Der Lehrer liest.'), 'Der').morph.Case).toBe('Nom');
+    expect(first(parse('Eines Tages kam er.'), 'Eines').morph.Case).toBe('Gen');
+  });
+});
+
+describe('B. the subject, wherever it stands, fixes the verb', () => {
+  run([
+    // 1. a nominative-only pronoun, before the verb, after it, or anywhere before a clause-final verb
+    ['Je mehr er liest, desto klüger wird er.', [['liest', { morph: { Person: '3', Number: 'Sing' } }]]],
+    ['Ich ahne, weil du morgen früh kommst, dass es klappt.', [['kommst', { morph: { Person: '2', Number: 'Sing' } }]]],
+    ['Morgen gehen wir.', [['gehen', { morph: { Person: '1', Number: 'Plur' } }]]],
+    ['Gehen wir!', [['Gehen', { morph: { Person: '1', Number: 'Plur' } }]]],
+    // 2. the only noun phrase that can be nominative and agrees in number
+    ['Morgen kommt der Lehrer.', [['kommt', { morph: { Person: '3', Number: 'Sing' } }], ['Lehrer', { morph: { Case: 'Nom' } }]]],
+    ['Dem Kind gibt die Frau ein Buch.', [['gibt', { morph: { Person: '3', Number: 'Sing' } }], ['Kind', { morph: { Case: 'Dat' } }]]],
+    // 3./4. two candidates: neither narrowed, the verb still third person; no first or second person without its pronoun
+    ['Die Frau sieht die Tochter.', [['sieht', { morph: { Person: '3', Number: 'Sing' } }]]],
+    ['Die Kinder lachten laut.', [['lachten', { morph: { Person: '3', Number: 'Plur' } }]]],
+    ['Dort liest man das Buch.', [['liest', { morph: { Person: '3', Number: 'Sing' } }]]],
+    // a subject shared across a coordination
+    ['Ich ging nach Hause und las ein Buch.', [['las', { morph: { Person: '1', Number: 'Sing' } }], ['Buch', { morph: { Case: 'Nom,Acc' } }]]],
+    ['Wir kamen an und gingen sofort ins Hotel.', [['gingen', { morph: { Person: '1', Number: 'Plur' } }]]],
+    ['Sie kommen morgen.', [['kommen', { morph: { Person: '3', Number: 'Plur' } }]]],
+    // 5. the matrix clause continues across an inserted clause
+    ['Die Kinder, die im Garten spielten, lachten laut.', [['lachten', { morph: { Person: '3', Number: 'Plur' } }], ['spielten', { morph: { Person: '3', Number: 'Plur' } }]]],
+    ['Der Mann, den ich gestern gesehen habe, wohnt hier.', [['wohnt', { morph: { Person: '3', Number: 'Sing' } }], ['habe', { morph: { Person: '1', Number: 'Sing' } }]]],
+    // what stays open
+    ['Lies das Buch!', [['Lies', { morph: { Mood: 'Imp', Person: '2' } }], ['Buch', { morph: { Case: 'Nom,Acc' } }]]],
+    ['Bring nur gute Laune mit!', [['Laune', { morph: { Case: 'Nom,Acc' } }]]],
+  ]);
+
+  it('a coordinated clause whose subject cannot be told stays open: no third person is asserted', () => {
+    expect(first(parse('Und las ein Buch.'), 'las').morph.Person).toBe('1,3');
+    expect(first(parse('Gestern las.'), 'las').morph.Person).toBe('1,3'); // a fragment with no subject at all
+  });
+
+  it('a clause whose subject is a clause: the noun phrase behind the verb is not narrowed', () => {
+    const p = parse('Wer keine Karte hat, muss Strafe zahlen.');
+    expect(first(p, 'Strafe').morph.Case.split(',').length).toBeGreaterThan(1);
+  });
+
+  it('a first or second person form with no pronoun is still possible where the clause cannot be read: a verb first stays open', () => {
+    expect(first(parse('Habe keine Zeit.'), 'Habe').morph.Person).not.toBe('3');
+  });
+});
+
+describe('C. the relative pronoun takes gender and number from its antecedent, never case', () => {
+  run([
+    ['Die Kinder, die im Garten spielten, lachten laut.', [['die', { pos: 'PRON', morph: { Number: 'Plur' } }]]],
+    ['Die Frau, die dort steht, ist nett.', [['die', { pos: 'PRON', morph: { Gender: 'Fem', Number: 'Sing', Case: 'Nom,Acc' } }]]],
+    ['Das Buch, das ich lese, ist gut.', [['das', { pos: 'PRON', morph: { Gender: 'Neut', Number: 'Sing' } }]]],
+    ['Die Männer, denen ich helfe, danken mir.', [['denen', { pos: 'PRON', morph: { Case: 'Dat', Number: 'Plur' } }]]],
+    ['Das Haus des Mannes, das dort steht, ist alt.', [['das', { pos: 'PRON', morph: { Gender: 'Neut', Number: 'Sing' } }]]],
+  ]);
+
+  it('a relative pronoun that is the subject gives its number to the verb of its clause', () => {
+    expect(first(parse('Die Kinder, die spielen, lachen.'), 'spielen').morph).toMatchObject({ Person: '3', Number: 'Plur' });
+    expect(first(parse('Das Kind, das spielt, lacht.'), 'spielt').morph).toMatchObject({ Person: '3', Number: 'Sing' });
+  });
+
+  it('when several candidates agree the union is kept: "der Sohn der Frau, der" is not decided', () => {
+    const p = parse('Der Sohn der Frau, der dort steht, ist nett.');
+    expect(first(p, 'der', 1).morph).toMatchObject({ PronType: 'Rel', Gender: 'Masc,Fem' }); // Sohn (m) and Frau (f) both fit the form: the union stays
+  });
+
+  it('the Konjunktiv rule runs inside relative and other subordinate clauses as in a main clause', () => {
+    const p = parse('Die Kinder, die im Garten spielten, lachten laut.');
+    for (const w of ['spielten', 'lachten']) {
+      const c = cands(p, w);
+      expect(c[0].morph.Mood, w).toBe('Ind');
+      const sub = c.find((x) => x.morph.Mood === 'Sub')!;
+      expect(sub.confidence, w).toBeLessThanOrEqual(0.3);
+      expect(String(sub.notes?.context)).toMatch(/Konjunktiv II/);
+    }
+    // the licences: wenn, als ob, another unambiguous Konjunktiv II beside it
+    expect(first(parse('Wenn die Kinder im Garten spielten, wäre es laut.'), 'spielten').morph.Mood).toBe('Ind,Sub');
+    expect(first(parse('Er tut, als ob die Kinder spielten.'), 'spielten').morph.Mood).toBe('Ind,Sub');
+    expect(first(parse('Die Kinder spielten, und sie würden lachen.'), 'spielten').morph.Mood).toBe('Ind,Sub');
+    // a form that is itself ambiguous does not license its neighbour
+    expect(first(parse('Die Kinder spielten und lachten.'), 'spielten').morph.Mood).toBe('Ind');
+  });
+});
+
+describe('D. bis', () => {
+  it.each([
+    'Ich warte bis Montag.', 'Bis morgen!', 'Bis drei Uhr bleibe ich hier.', 'Er wartet bis jetzt.', 'Bis dahin ist es lang.',
+    'Wir gehen bis zur Kirche.', 'Wir gehen bis nach Berlin.', 'Wir gehen bis an den Rand.', 'Er arbeitet bis in die Nacht.',
+    'Das gilt bis auf weiteres.', 'Er bleibt bis zum Ende.', 'Von Montag bis Freitag arbeiten wir.',
+  ])('%s: the preposition', (text) => {
+    const p = parse(text);
+    expect(first(p, p.tokens.find((t) => t.normalized === 'bis')!.surface).pos).toBe('ADP');
+  });
+
+  it.each(['Ich warte, bis er kommt.', 'Bis du zurück bist, bleibe ich hier.', 'Ich warte bis er kommt.', 'Sie bleibt hier, bis wir fertig sind.'])('%s: the conjunction', (text) => {
+    const p = parse(text);
+    expect(first(p, p.tokens.find((t) => t.normalized === 'bis')!.surface).pos).toBe('SCONJ');
+  });
+});
+
+describe('E. je … desto, and the imperative', () => {
+  it('je opens a clause that ends in its verb; mehr is not an imperative; the desto clause has its verb right after the desto phrase', () => {
+    const p = parse('Je mehr du liest, desto besser verstehst du die Sprache.');
+    expect(first(p, 'mehr').pos).not.toBe('VERB');
+    expect(cands(p, 'mehr').find((c) => c.morph.Mood === 'Imp')?.confidence ?? 0).toBeLessThanOrEqual(0.4);
+    expect(first(p, 'liest').morph).toMatchObject({ Person: '2', Number: 'Sing' });
+    expect(first(p, 'verstehst').morph).toMatchObject({ Person: '2', Number: 'Sing' });
+  });
+
+  it('an imperative stands at the head of its clause; a word that is also a function word or adverb does not take it', () => {
+    expect(first(parse('Mehr Licht!'), 'Mehr').pos).not.toBe('VERB');
+    expect(first(parse('Lies mehr!'), 'Lies').morph.Mood).toBe('Imp');
+    expect(first(parse('Lies mehr!'), 'mehr').pos).not.toBe('VERB');
+    expect(first(parse('Halt!'), 'Halt').pos).toBe('INTJ');
+    expect(first(parse('Gib mir bitte das Buch!'), 'bitte').pos).not.toBe('VERB');
+    expect(first(parse('Bitte komm!'), 'komm').morph.Mood).toBe('Imp');
+    expect(first(parse('Komm doch mal her!'), 'Komm').morph.Mood).toBe('Imp');
+    expect(first(parse('Hör mal zu!'), 'Hör').morph.Mood).toBe('Imp');
+    expect(first(parse('Er geht weg.'), 'weg').pos).not.toBe('VERB');
+  });
+});
+
+describe('F. two nouns, one spelling', () => {
+  it('nothing decides: neither is certain, both are named', () => {
+    const p = parse('Und Gott nannte die Feste Himmel.');
+    const c = cands(p, 'Feste').filter((x) => x.pos === 'NOUN' && !x.unconfirmed && x.confidence > 0.4);
+    expect(new Set(c.map((x) => x.lemma))).toEqual(new Set(['Fest', 'Feste']));
+    for (const x of c) {
+      expect(x.confidence).toBeLessThanOrEqual(0.45);
+      expect(String(x.notes?.context)).toMatch(/could be the plural of Fest or the singular of Feste: the sentence does not decide/);
+    }
+  });
+
+  it('within one sentence a spelling means one word: the occurrence the article decides decides the others', () => {
+    const p = parse('Da machte Gott die Feste und schied das Wasser unter der Feste von dem Wasser.');
+    expect(first(p, 'Feste', 0).lemma).toBe('Feste');
+    expect(first(p, 'Feste', 0).confidence).toBeGreaterThan(0.5);
+    expect(String(first(p, 'Feste', 0).notes?.context)).toMatch(/the same spelling stands elsewhere in the sentence/);
+    expect(first(p, 'Feste', 1)).toMatchObject({ lemma: 'Feste' });
+  });
+
+  it('it does not fire when the article or an adjective decides', () => {
+    expect(first(parse('Er sieht eine Feste.'), 'Feste')).toMatchObject({ lemma: 'Feste' });
+    expect(first(parse('Er sieht eine Feste.'), 'Feste').confidence).toBeGreaterThan(0.5);
+    expect(first(parse('Viele Feste sind schön.'), 'Feste')).toMatchObject({ lemma: 'Fest' });
+    expect(first(parse('Viele Feste sind schön.'), 'Feste').confidence).toBeGreaterThan(0.5);
+    expect(first(parse('Das Fest ist schön.'), 'Fest').confidence).toBeGreaterThan(0.5);
+  });
+
+  it('every pair the rule fires on in the bundled texts is a real homograph of two lemmas', () => {
+    const fired = new Map<string, number>();
+    for (const s of GERMAN_SENTENCES) {
+      de.analyze(s.tokens).forEach((a) => {
+        const c = a.candidates.find((x) => String(x.notes?.context ?? '').includes('the sentence does not decide'));
+        if (!c) return;
+        const key = String(c.notes!.context).match(/could be (.*?): the sentence does not decide/)![1];
+        fired.set(key, (fired.get(key) ?? 0) + 1);
+        const lemmas = a.candidates.filter((x) => x.pos === 'NOUN' && x.confidence <= 0.45).map((x) => x.lemma);
+        expect(new Set(lemmas).size, key).toBeGreaterThan(1);
+      });
+    }
+    console.log(`Homograph nouns the rule fired on (bundled texts): ${[...fired].map(([k, v]) => `${v} × ${k}`).join('; ')}`);
+    expect(fired.size).toBeGreaterThan(0);
+  });
+});
+
+describe('G. an unconfirmed participle still makes its auxiliary an auxiliary', () => {
+  it('both participles belong to hat, the unconfirmed one keeps its flag', () => {
+    const p = parse('Sie hat den Brief nicht abgeschickt, sondern weggeworfen.');
+    const hat = first(p, 'hat');
+    expect(hat.pos).toBe('AUX');
+    expect(hat.role).toBe('perfect auxiliary of abschicken (a verb not in the word list) and wegwerfen');
+    expect(first(p, 'abgeschickt')).toMatchObject({ lemma: 'abschicken', unconfirmed: true });
+    expect(first(p, 'abgeschickt').gloss).toBeUndefined();
+    expect(first(p, 'abgeschickt').confidence).toBeLessThanOrEqual(0.6);
+  });
+
+  it('with a stubbed unconfirmed participle (the engine\'s reading given by somebody else)', () => {
+    const tokens = de.tokenize('Er hat es zugeschickt.');
+    const analyzed = de.analyze(tokens);
+    const i = tokens.findIndex((t) => t.surface === 'zugeschickt');
+    const stub: AnalysisCandidate = { lemma: 'zuschicken', pos: 'VERB', morph: { VerbForm: 'Part', Tense: 'Past' }, confidence: 0.6, unconfirmed: true, origin: 'rule' };
+    const out = de.refine!(tokens, analyzed.map((a, k) => (k === i ? { ...a, candidates: [stub], analyzer: DICT } : a)), new Set([OWN, DICT]));
+    const hat = out[tokens.findIndex((t) => t.surface === 'hat')].candidates[0];
+    expect(hat.pos).toBe('AUX');
+    expect(hat.role).toBe('perfect auxiliary of zuschicken (a verb not in the word list)');
+    expect(out[i].candidates[0].unconfirmed).toBe(true);
+  });
+
+  it('negative: haben with no participle stays a verb, and a confirmed participle needs no remark', () => {
+    expect(first(parse('Er hat Hunger.'), 'hat').pos).toBe('VERB');
+    expect(first(parse('Er hat gelesen.'), 'hat').role).toBe('perfect auxiliary of lesen');
   });
 });

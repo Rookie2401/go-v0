@@ -11,138 +11,44 @@
  *  - sein, werden and the modal verbs are auxiliaries (pos AUX) always, haben only when a participle of its clause depends on it.
  * Nothing is guessed: a reading that no neighbour decides stays where the engine put it.
  */
+import { settlePhrases } from './agreement';
+import { decideRelatives, decideSubjects, pronounSubject } from './context-subject';
 import {
-  addContext, addNote, anyLive, markDown, feat, finiteSlot, has, isFin, isInf, isNounLike, isPart, isVerbal, prefer, settle, top, verbFinalClause,
+  addContext, addNote, anyLive, markDown, finiteSlot, has, isFin, isInf, isNounLike, isPart, isVerbal, prefer, settle, top, verbFinalClause,
   type C, type Clause, type R, type Sent, type Tok,
 } from './context';
 
 const MODALS = new Set(['können', 'müssen', 'wollen', 'sollen', 'dürfen', 'mögen', 'möchten']);
-const COORDINATORS = new Set(['und', 'oder', 'aber', 'sondern']);
-
-const PERSON_NAME: Record<string, string> = { '1': 'first person', '2': 'second person', '3': 'third person' };
-const NUMBER_NAME: Record<string, string> = { Sing: 'singular', Plur: 'plural' };
-
-interface Subj { persons: string[]; numbers: string[]; why: string; tok: Tok }
-
-const order = (xs: Iterable<string>, ref: readonly string[]): string[] => ref.filter((x) => new Set(xs).has(x));
-
-function subjectText(persons: string[], numbers: string[]): string {
-  const p = persons.length === 1 ? PERSON_NAME[persons[0]] : persons.length === 2 ? `${PERSON_NAME[persons[0]]} or ${PERSON_NAME[persons[1]]}` : '';
-  const n = numbers.length === 1 ? NUMBER_NAME[numbers[0]] : '';
-  return [p, n].filter(Boolean).join(' ');
-}
-
-/** A nominative personal pronoun (or man, jemand …) as the subject: its person and number, the formal Sie counted as third person plural. */
-function pronounSubject(t: Tok | undefined): Subj | undefined {
-  if (!t || !t.word) return undefined;
-  const rs = t.rs.filter((r) => !r.down && r.c.pos === 'PRON' && has(r.c, 'Case', 'Nom') && (has(r.c, 'PronType', 'Prs') || has(r.c, 'PronType', 'Ind')) && r.c.morph.Person);
-  if (!rs.length) return undefined;
-  const persons = new Set<string>();
-  const numbers = new Set<string>();
-  for (const r of rs) {
-    if (has(r.c, 'Polite', 'Form')) { persons.add('3'); numbers.add('Plur'); continue; }
-    for (const p of feat(r.c, 'Person')) persons.add(p);
-    for (const n of feat(r.c, 'Number')) numbers.add(n);
-  }
-  const P = order(persons, ['1', '2', '3']);
-  const N = order(numbers, ['Sing', 'Plur']);
-  return { persons: P, numbers: N, why: `the subject ${t.raw.surface}: ${subjectText(P, N) || 'person and number'}`, tok: t };
-}
-
-/** The noun phrase that fills the whole field in front of the finite verb: its head noun's number, when the sentence has settled it. */
-function nounSubject(s: Sent, cl: Clause, slot: number): Subj | undefined {
-  if (slot < 1 || verbFinalClause(s, cl)) return undefined;
-  // a name (or a full name) fills the field in front of the verb: third person singular
-  const before = cl.words.slice(0, slot).map((k) => s.toks[k]);
-  if (before.length && before.every((t) => t.cap && anyLive(t, (c) => c.pos === 'PROPN') && !anyLive(t, (c) => c.pos === 'NOUN'))) {
-    return { persons: ['3'], numbers: ['Sing'], why: `the subject ${before.map((t) => t.raw.surface).join(' ')}: a name, third person singular`, tok: before[before.length - 1] };
-  }
-  const head = s.toks[cl.words[slot - 1]];
-  if (!head.cap || !anyLive(head, (c) => c.pos === 'NOUN')) return undefined;
-  // everything in front of the verb must be this noun phrase: determiner / adjectives / noun, nothing else
-  for (let w = 0; w < slot - 1; w++) {
-    const t = s.toks[cl.words[w]];
-    if (!anyLive(t, (c) => c.pos === 'DET' || c.pos === 'ADJ' || (isVerbal(c) && has(c, 'VerbForm', 'Part')))) return undefined;
-  }
-  const rs = head.rs.filter((r) => !r.down && r.c.pos === 'NOUN');
-  if (!rs.every((r) => has(r.c, 'Case', 'Nom'))) return undefined;
-  const numbers = new Set(rs.flatMap((r) => feat(r.c, 'Number')));
-  if (numbers.size !== 1) return undefined;
-  const n = [...numbers][0];
-  return { persons: ['3'], numbers: [n], why: `the subject ${head.raw.surface}: ${NUMBER_NAME[n]} noun, third person`, tok: head };
-}
-
-/** A relative pronoun that can be the subject of its clause: the verb is third person (a pronoun subject elsewhere in the clause was looked for first). */
-function relativeSubject(t: Tok | undefined): Subj | undefined {
-  if (!t || !t.word) return undefined;
-  const rs = t.rs.filter((r) => !r.down && r.c.pos === 'PRON' && has(r.c, 'PronType', 'Rel') && has(r.c, 'Case', 'Nom'));
-  if (!rs.length) return undefined;
-  const numbers = order(new Set(rs.flatMap((r) => feat(r.c, 'Number'))), ['Sing', 'Plur']);
-  return { persons: ['3'], numbers: numbers.length ? numbers : ['Sing', 'Plur'], why: `the relative pronoun ${t.raw.surface} is the subject: third person`, tok: t };
-}
-
-function findSubject(s: Sent, cl: Clause, slot: number): Subj | undefined {
-  const w = cl.words;
-  if (verbFinalClause(s, cl)) {
-    // dass ich …, weil er …: the pronoun directly after the conjunction (or after one more small word)
-    for (let k = 1; k < Math.min(3, w.length - 1); k++) {
-      const sub = pronounSubject(s.toks[w[k]]);
-      if (sub) return sub;
-      if (!anyLive(s.toks[w[k]], (c) => c.pos === 'ADV' || c.pos === 'PART')) break;
-    }
-    return relativeSubject(s.toks[w[0]]);
-  }
-  if (slot < 0) return undefined;
-  return pronounSubject(s.toks[w[slot - 1]]) ?? pronounSubject(s.toks[w[slot + 1]]) ?? nounSubject(s, cl, slot);
-}
-
-const joinSet = (xs: string[], ys: string[]): string[] => xs.filter((x) => ys.includes(x));
-
-/** Keep, in front, the finite readings that agree with the subject; narrow their person and number to what the subject allows. */
-function agreeWithSubject(t: Tok, sub: Subj): boolean {
-  const fits = (c: C): boolean => {
-    if (!isVerbal(c) || !isFin(c)) return false;
-    const P = feat(c, 'Person');
-    const N = feat(c, 'Number');
-    return (!P.length || joinSet(P, sub.persons).length > 0) && (!N.length || joinSet(N, sub.numbers).length > 0);
-  };
-  if (!t.rs.some((r) => !r.down && fits(r.c))) return false;
-  prefer(t, (r) => fits(r.c), sub.why);
-  for (const r of t.rs) {
-    if (r.down || !r.own || !fits(r.c)) continue;
-    const P = feat(r.c, 'Person');
-    const N = feat(r.c, 'Number');
-    const p2 = P.length ? joinSet(P, sub.persons) : P;
-    const n2 = N.length ? joinSet(N, sub.numbers) : N;
-    if (p2.join() !== P.join() || n2.join() !== N.join()) {
-      r.c.morph = { ...r.c.morph };
-      if (p2.length) r.c.morph.Person = p2.join(',');
-      if (n2.length) r.c.morph.Number = n2.join(',');
-      addContext(r, sub.why);
-    }
-  }
-  return true;
-}
-
-/** sie kommt / sie kommen: the pronoun's own readings follow the number of the verb. */
-function pronounFollowsVerb(sub: Subj, v: Tok): void {
-  const t = sub.tok;
-  const verb = top(v)?.c;
-  if (!verb || !isFin(verb)) return;
-  const nums = feat(verb, 'Number');
-  if (nums.length !== 1) return;
-  const readings = t.rs.filter((r) => !r.down && r.c.pos === 'PRON' && has(r.c, 'Case', 'Nom'));
-  if (readings.length < 2) return;
-  const fits = (r: R): boolean => {
-    if (!(r.c.pos === 'PRON' && has(r.c, 'Case', 'Nom'))) return true;
-    if (has(r.c, 'Polite', 'Form')) return nums[0] === 'Plur';
-    const n = feat(r.c, 'Number');
-    return !n.length || n.includes(nums[0]);
-  };
-  prefer(t, fits, `agrees with the ${NUMBER_NAME[nums[0]]} verb ${v.raw.surface}`);
-}
+const COORDINATORS = new Set(['und', 'oder', 'aber', 'sondern', 'denn']);
 
 const lemmaOfSlot = (t: Tok | undefined): string[] => (t ? [...new Set(t.rs.filter((r) => !r.down && isFin(r.c) && r.c.lemma).map((r) => r.c.lemma as string))] : []);
+
+/** A reading of a function word or adverb (mehr, bitte, weg, los, halt …): a word that has one never takes the imperative reading. */
+const ordinaryWord = (c: C): boolean => !!c.pos && ['ADV', 'DET', 'PRON', 'ADP', 'CONJ', 'SCONJ', 'PART', 'INTJ', 'NUM'].includes(c.pos);
+
+const isImp = (c: C): boolean => isVerbal(c) && has(c, 'Mood', 'Imp');
+
+/**
+ * An imperative needs the verb at the head of its clause (after at most an interjection, bitte or a coordinating und), in a
+ * clause that does not end in its verb; a word that is also an ordinary function word or adverb (mehr, bitte, weg, los, halt)
+ * takes it only when an article or pronoun follows (Halt die Klappe!), never otherwise (Je mehr du liest, Mehr Licht!, Lies mehr!).
+ */
+function demoteStrayImperatives(s: Sent, cl: Clause): void {
+  const w = cl.words;
+  const final = verbFinalClause(s, cl);
+  for (let k = 0; k < w.length; k++) {
+    const t = s.toks[w[k]];
+    if (!t.rs.some((r) => !r.down && isImp(r.c)) || !t.rs.some((r) => !r.down && !isImp(r.c))) continue;
+    const before = w.slice(0, k).map((x) => s.toks[x]);
+    const atHead = !final && before.every((b) => COORDINATORS.has(b.raw.normalized) || b.raw.normalized === 'bitte' || (b.rs.length > 0 && b.rs.every((r) => r.c.pos === 'INTJ')));
+    if (!atHead) { prefer(t, (r) => !isImp(r.c), final ? 'a verb-final clause has no imperative' : 'an imperative stands at the head of its clause: not here'); continue; }
+    if (t.rs.some((r) => !r.down && ordinaryWord(r.c))) {
+      const next = s.toks[w[k + 1]];
+      const object = !!next && anyLive(next, (c) => c.pos === 'DET' || (c.pos === 'PRON' && has(c, 'PronType', 'Prs')));
+      if (!object) prefer(t, (r) => !isImp(r.c), 'a function word or adverb, not the imperative of the verb it is spelled like');
+    }
+  }
+}
 
 function decideClause(s: Sent, cl: Clause): void {
   const w = cl.words;
@@ -150,23 +56,13 @@ function decideClause(s: Sent, cl: Clause): void {
   const slot = finiteSlot(s, cl);
   const slotTok = slot >= 0 ? s.toks[w[slot]] : undefined;
 
-  // ── the finite verb and its subject
-  let subject: Subj | undefined;
+  // ── a verb first with no subject after it: a command (the subject itself was decided before: decideSubjects)
   if (slotTok) {
-    subject = findSubject(s, cl, slot);
-    if (subject) {
-      if (agreeWithSubject(slotTok, subject)) {
-        const st = subject.tok;
-        // Ihr kommt: the pronoun in front of its finite verb is the nominative one
-        if (st.rs.some((r) => !r.down && r.c.pos === 'PRON' && has(r.c, 'Case', 'Nom'))) prefer(st, (r) => r.c.pos === 'PRON' && has(r.c, 'Case', 'Nom'), `the subject of ${slotTok.raw.surface}`);
-        pronounFollowsVerb(subject, slotTok);
-      }
-    } else if (slot === 0 && cl.first && !final && s.endMark !== '?') {
+    if (slot === 0 && cl.first && !final && s.endMark !== '?' && !pronounSubject(s.toks[w[1]])) {
       // verb first, no subject after it: a command (Komm doch mal her! Gib mir das Buch.)
       const isCommand = (r: R): boolean => isVerbal(r.c) && has(r.c, 'Mood', 'Imp');
-      const nx = s.toks[w[1]];
-      const subjectFollows = !!pronounSubject(nx);
-      if (!subjectFollows && slotTok.rs.some((r) => !r.down && isCommand(r))) prefer(slotTok, isCommand, 'a verb first with no subject after it: a command');
+      const objectNext = !!w[1] && anyLive(s.toks[w[1]], (c) => c.pos === 'DET' || (c.pos === 'PRON' && has(c, 'PronType', 'Prs')));
+      if (slotTok.rs.some((r) => !r.down && isCommand(r)) && (objectNext || !slotTok.rs.some((r) => !r.down && ordinaryWord(r.c)))) prefer(slotTok, isCommand, 'a verb first with no subject after it: a command');
     }
   }
 
@@ -237,10 +133,19 @@ function labelAuxiliaries(s: Sent): void {
       if (k !== slot && !(final && k === cl.words.length - 1)) continue;
       // the partner: the last word after (or, in a subordinate clause, before) the auxiliary that is a participle or an infinitive
       const partners = cl.words.map((x) => s.toks[x]).filter((p) => p !== t && p.i !== t.i);
+      // a participle in a coordinated fragment without a finite verb of its own belongs to the same auxiliary (hat … abgeschickt, sondern weggeworfen)
+      const ci = s.clauseOf[t.i];
+      for (let j = ci + 1; j < s.clauses.length; j++) {
+        const next = s.clauses[j];
+        if (!(next.lead >= 0 || COORDINATORS.has(s.toks[next.words[0]].raw.normalized)) || finiteSlot(s, next) >= 0 || verbFinalClause(s, next)) break;
+        partners.push(...next.words.map((x) => s.toks[x]));
+      }
       const parts = [...partners].reverse().filter((p) => { const f = top(p)?.c; return !!f && isPart(f) && f.lemma !== t.rs[0]?.c.lemma; });
       // ist gebaut worden: the participle of the verb is the one before worden
       const part = parts.find((p) => top(p)?.c.lemma !== 'werden') ?? parts[0];
-      const perfectOf = parts[0] && top(parts[0])?.c.lemma === 'werden' ? 'werden' : top(part ?? parts[0])?.c.lemma;
+      // the verbs of the participles, in text order; a verb the list does not hold says so
+      const named = [...parts].reverse().filter((p) => top(p)?.c.lemma !== 'werden').map((p) => { const c = top(p)?.c; return c?.unconfirmed ? `${c.lemma} (a verb not in the word list)` : c?.lemma; });
+      const perfectOf = parts[0] && top(parts[0])?.c.lemma === 'werden' ? 'werden' : [...new Set(named)].join(' and ');
       const inf = [...partners].reverse().find((p) => { const f = top(p)?.c; return !!f && isInf(f); });
       for (const r of t.rs) {
         const lemma = r.c.lemma;
@@ -292,7 +197,13 @@ function unrealAround(s: Sent, t: Tok): string | undefined {
   const cl = s.clauses[s.clauseOf[t.i]];
   const first = cl ? s.toks[cl.words[0]].raw.normalized : '';
   if (first === 'wenn' || first === 'falls') return `in a ${first} clause`;
-  const other = s.toks.find((o) => o.word && o !== t && o.rs.some((r) => !r.down && isFin(r.c) && r.c.morph.Mood === 'Sub' && r.c.morph.Tense === 'Past'));
+  if (first === 'als' && cl && ['ob', 'wenn'].includes(s.toks[cl.words[1]]?.raw.normalized ?? '')) return `in an als ${s.toks[cl.words[1]].raw.normalized} clause`;
+  // another verb that can only be Konjunktiv II (hätte, käme, würde): a form that is also the preterite does not count
+  const other = s.toks.find((o) => {
+    if (!o.word || o === t) return false;
+    const fin = o.rs.filter((r) => !r.down && isFin(r.c) && !has(r.c, 'Mood', 'Imp'));
+    return fin.length > 0 && fin.every((r) => r.c.morph.Mood === 'Sub' && r.c.morph.Tense === 'Past');
+  });
   return other ? `beside the Konjunktiv II ${other.raw.surface}` : undefined;
 }
 
@@ -336,7 +247,11 @@ function decideMoodTwins(s: Sent, t: Tok): void {
 
 /** The step, over a whole sentence. */
 export function decideVerbs(s: Sent): void {
+  for (const cl of s.clauses) demoteStrayImperatives(s, cl);
+  decideRelatives(s);
+  decideSubjects(s);
   for (const cl of s.clauses) decideClause(s, cl);
+  settlePhrases(s);
   labelAuxiliaries(s);
   for (const t of s.toks) if (t.word && t.own) { decideMoodTwins(s, t); settle(t); }
   void isNounLike;

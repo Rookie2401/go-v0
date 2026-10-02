@@ -11,7 +11,7 @@ import { morphOfCells } from './types';
 
 export type C = AnalysisCandidate;
 
-export const DE_ANALYZER_VERSION = '2';
+export const DE_ANALYZER_VERSION = '3';
 export const DE_ANALYZER = `adapter-de@${DE_ANALYZER_VERSION}`;
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
 export const DE_SOURCE_IDS = {
@@ -61,7 +61,12 @@ export interface Clause {
   first: boolean;
 }
 
+/** A noun phrase: [preposition or contraction]? [determiner]? [adjective]* noun. Its members share one set of cells for the rest of the pipeline. */
+export interface Phrase { prep?: Tok; contraction?: Tok; det?: Tok; adjs: Tok[]; noun: Tok; numeral?: boolean }
+
 export interface Sent {
+  /** The noun phrases the agreement step found (empty until it has run). */
+  phrases: Phrase[];
   lex: DeLexiconView;
   toks: Tok[];
   clauses: Clause[];
@@ -176,6 +181,14 @@ export function addContext(r: R, why: string): void {
     if (had.split('; ').includes(why)) return;
     addNote(r.c, 'context', `${had}; ${why}`);
   } else addNote(r.c, 'context', why);
+}
+
+/** Set the parts of a reading's context that start with one of `kinds` anew (a decision that is made again after the phrase changed), keeping the others. */
+export function replaceContext(r: R, why: string[], kinds: RegExp): void {
+  const had = typeof r.c.notes?.context === 'string' ? (r.c.notes?.context as string).split('; ') : [];
+  const kept = had.filter((x) => !kinds.test(x));
+  const next = [...kept, ...why.filter((x) => !kept.includes(x))];
+  if (next.length) addNote(r.c, 'context', next.join('; '));
 }
 
 export const DOWN = 0.4;
@@ -294,7 +307,7 @@ export function makeSent(lex: DeLexiconView, toks: Tok[]): Sent {
   const letters = toks.filter((t) => t.word && t.raw.surface.length > 1);
   const endTok = [...toks].reverse().find((t) => isSeparator(t) && /^[.!?…]+$/u.test(t.raw.surface));
   return {
-    lex, toks, clauses: out, clauseOf,
+    lex, toks, clauses: out, clauseOf, phrases: [],
     endMark: endTok && toks.slice(endTok.i + 1).every((t) => !t.word) ? endTok.raw.surface.slice(-1) : '',
     allCaps: letters.length > 0 && letters.every((t) => t.caps),
   };
@@ -306,6 +319,8 @@ export function makeSent(lex: DeLexiconView, toks: Tok[]): Sent {
 export const SUBORDINATORS = new Set([
   'dass', 'daß', 'weil', 'wenn', 'ob', 'obwohl', 'obgleich', 'obschon', 'wenngleich', 'damit', 'bevor', 'ehe', 'nachdem', 'sobald',
   'solange', 'falls', 'indem', 'sodass', 'seitdem', 'als', 'während', 'da', 'bis', 'seit', 'sofern', 'soweit', 'zumal', 'wohingegen',
+  // je mehr er liest, …: the je clause ends in its verb, like a clause with a conjunction (desto / umso then open a main clause)
+  'je',
 ]);
 /** Question words and relative words that open a verb-final clause after a comma. */
 export const OPENING_WORDS = new Set([
@@ -314,18 +329,32 @@ export const OPENING_WORDS = new Set([
 ]);
 
 /** Does this clause end with its conjugated verb, as a subordinate clause does? (A conjunction or question word opens it and a finite verb stands last.) */
+/** The first word of a clause that is not a coordinating conjunction (", und wer keine hat": wer). */
+export function headWord(s: Sent, cl: Clause): Tok {
+  const first = s.toks[cl.words[0]];
+  return cl.words.length > 2 && COORDINATORS.has(first.raw.normalized) && !first.cap ? s.toks[cl.words[1]] : first;
+}
+
 export function verbFinalClause(s: Sent, cl: Clause): boolean {
   if (cl.words.length < 2) return false;
-  const first = s.toks[cl.words[0]];
+  const first = headWord(s, cl);
   const n = first.raw.normalized;
   const afterComma = /,/.test(cl.open);
   const lastTok = s.toks[cl.words[cl.words.length - 1]];
   const finalFinite = anyLive(lastTok, (c) => isFin(c));
   if (SUBORDINATORS.has(n) && (afterComma || cl.first || /[:„“«»]/u.test(cl.open))) return finalFinite;
-  if (OPENING_WORDS.has(n) && afterComma) return finalFinite;
+  // (a question word that opens the sentence and is closed by a comma opens a clause that ends in its verb, as a free relative does: Wer keine Karte hat, muss zahlen)
+  if (OPENING_WORDS.has(n) && (afterComma || (cl.first && /,/.test(cl.close)))) {
+    // wie hat Ihnen der Gottesdienst gefallen?: a question word with the finite verb right behind it opens a main clause, not a clause ending in its verb
+    const at = cl.words.indexOf(first.i);
+    const second = s.toks[cl.words[at + 1]];
+    const secondFiniteOnly = !!second && second.rs.some((r) => !r.down) && second.rs.filter((r) => !r.down).every((r) => isFin(r.c));
+    if (secondFiniteOnly && at + 1 < cl.words.length - 1) return false;
+    return finalFinite;
+  }
   // preposition + relative pronoun: ", mit dem er spricht"
   if (afterComma && cl.words.length > 2 && s.lex.preposition(n)) {
-    const second = s.toks[cl.words[1]];
+    const second = s.toks[cl.words[cl.words.indexOf(first.i) + 1]];
     if (OPENING_WORDS.has(second.raw.normalized)) return finalFinite;
   }
   return false;
@@ -346,4 +375,18 @@ export function finiteSlot(s: Sent, cl: Clause): number {
     return w;
   }
   return -1;
+}
+
+/**
+ * The clause that stands in front of the clauses inserted before the verb of main clause `ci`: in "Die Kinder, die im Garten
+ * spielten, lachten laut" the matrix verb opens its own stretch and the subject is the fragment "Die Kinder". -1 when there is none.
+ */
+export function matrixFragment(s: Sent, ci: number): number {
+  const cl = s.clauses[ci];
+  if (!cl || ci === 0 || verbFinalClause(s, cl) || finiteSlot(s, cl) !== 0) return -1;
+  let j = ci - 1;
+  while (j >= 0 && /,/.test(s.clauses[j + 1].open) && verbFinalClause(s, s.clauses[j])) j--;
+  if (j === ci - 1 || j < 0) return -1;
+  if (finiteSlot(s, s.clauses[j]) >= 0) return -1;
+  return j;
 }

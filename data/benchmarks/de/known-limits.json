@@ -1,42 +1,38 @@
 {
-  "r2-02": {
-    "reason": "The article of a subject noun phrase is not narrowed with its noun (Der stays nominative-or-genitive, singular-or-plural after Lehrer has become nominative singular), and a noun subject does not fix the verb's person (liest stays 2nd-or-3rd).",
-    "expected": ["Der: Case=Nom", "Der: Number=Sing", "liest: Person=3"]
+  "r3-a05": {
+    "reason": "A feminine noun phrase that is dative-or-genitive by its form (meiner Schwester) is left open after a verb that takes the dative (gehören).",
+    "expected": ["meiner: Case=Dat", "Schwester: Case=Dat"]
   },
-  "r2-07": {
-    "reason": "The perfect of the passive (ist … gebaut worden) is recorded as no construction at all: the perfect detector stays silent on worden, the passive detector requires a finite werden.",
-    "expected": ["+passive-perfect"]
+  "r3-a11": {
+    "reason": "je … desto is not recognised when the comparatives are not ones the detector knows (länger, nervöser).",
+    "expected": ["+je-desto"]
   },
-  "r2-13": {
-    "reason": "The article of the subject noun phrase is not narrowed with its noun (as r2-02). The absent word-list entry for eröffnen is NOT a failure of this sentence: its lemma, part of speech and person are right (the reading is marked unconfirmed, as it should be).",
-    "expected": ["Der: Case=Nom", "Der: Number=Sing"]
+  "r3-a14": {
+    "reason": "A genitive attribute after its noun (die Häuser der Stadt) is left dative-or-genitive. The participle of an -ieren verb that is not in the word list (renoviert) is guessed as a finite form of an invented infinitive (renoviern), so the passive is not recorded.",
+    "expected": ["der: Case=Gen", "Stadt: Case=Gen", "renoviert: lemma", "renoviert: VerbForm=Part", "renoviert: Tense=Past", "+passive-past"]
   },
-  "r2-17": {
-    "reason": "The relative pronoun die is not narrowed to the plural of the noun it refers to, and the matrix verb lachten stays 1st-or-3rd person because its subject (Die Kinder) is separated from it by the relative clause.",
-    "expected": ["die: Number=Plur", "lachten: Person=3"]
+  "r3-k01": {
+    "reason": "A participle that ends its clause without an auxiliary (fand er sich … verwandelt) is read as a finite verb; the als-clause that opens the sentence is not recorded as verb-final.",
+    "expected": ["verwandelt: VerbForm=Part", "verwandelt: Tense=Past", "+verb-final-subordinate"]
   },
-  "r2-20": {
-    "reason": "bis before another preposition (bis zur Kirche) is read as the conjunction.",
-    "expected": ["bis: pos"]
+  "r3-k05": {
+    "reason": "An adjectival noun after andere (Andere Reisende) is read as feminine singular although the verb is plural. Haremsfrauen: Harem is not in the word list, so the compound is not taken apart and the unknown plural keeps its plural spelling as its lemma.",
+    "expected": ["Reisende: Number=Plur", "Haremsfrauen: lemma", "Haremsfrauen: Number=Plur"]
   },
-  "r2-24": {
-    "reason": "The modal-particle detector accepts every particle with a role except zu, so the negation nicht is reported as a modal particle.",
-    "expected": ["-modal-particle"]
+  "r3-k07": {
+    "reason": "The question word wer as subject does not fix the verb's person (weiß stays 1st-or-3rd).",
+    "expected": ["weiß: Person=3"]
   },
-  "r2-27": {
-    "reason": "As r2-24: nicht reported as a modal particle.",
-    "expected": ["-modal-particle"]
+  "r3-k08": {
+    "reason": "Pult is not in the word list: its gender is honestly left masculine-or-neuter after vom.",
+    "expected": ["Pult: Gender=Neut"]
   },
-  "r2-29": {
-    "reason": "A pronoun subject does not fix the verb's person in the verb-final je-clause (liest stays 2nd-or-3rd).",
-    "expected": ["liest: Person=3"]
+  "r3-k11": {
+    "reason": "A stranded prefix whose joined verb is not in the word list (glitt … zurück = zurückgleiten) is not joined into a unit.",
+    "expected": ["glitt: lemma", "glitt: unit", "+separable-prefix-verb"]
   },
-  "r2-33": {
-    "reason": "A noun-phrase subject AFTER an inverted verb is not recognised (fahren stays 1st-or-3rd person plural).",
-    "expected": ["fahren: Person=3"]
-  },
-  "r2-34": {
-    "reason": "The participle of a separable verb that is not in the word list (abgeschickt, on the known schicken) is guessed as an invented infinitive in the finite present; haben then stays a full verb and the perfect is not recorded. Also nicht as a modal particle (r2-24).",
-    "expected": ["abgeschickt: lemma", "abgeschickt: VerbForm=Part", "abgeschickt: Tense=Past", "hat: pos", "+sentence-bracket-perfect", "-modal-particle"]
+  "r3-k13": {
+    "reason": "In a long sentence with a comma-separated adjective list inside the als-clause, the clause is not delimited: its subject does not fix begann, the clause is not recorded as verb-final, and ließ … ab (ablassen) before the comma is not joined.",
+    "expected": ["ließ: lemma", "ließ: unit", "begann: Person=3", "+verb-final-subordinate"]
   }
 }

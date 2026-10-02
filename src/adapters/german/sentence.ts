@@ -9,13 +9,16 @@
  *   4. the noun phrase: case, gender and number agree, a preposition governs, the adjective's declension follows
  *      the determiner (agreement.ts);
  *   5. words with several functions: der / die / das, zu, sein / ihr, the modal particles (context-words.ts);
- *   6. the verbs of each clause: subject, infinitive, participle, imperative, auxiliaries (context-verbs.ts).
+ *   6. the verbs of each clause: the relative pronoun's gender and number, the subject wherever it stands, infinitive, participle,
+ *      imperative, auxiliaries (context-subject.ts, context-verbs.ts); the noun phrases are settled again with what that decided;
+ *   7. two nouns of one spelling that nothing separates (die Feste) are not shown as certain (context-nouns.ts).
  * Everything a step cannot decide stays a union or stays in the order the engine gave; nothing is guessed. `refine`
  * does the same after a dictionary replaced the readings of some tokens: the dictionary's readings are neighbours that
  * may be reordered and marked down, never added to, removed or rewritten.
  */
 import type { AnalysisCandidate, AnalyzedToken, RawToken } from '../../core';
-import { agreeNounPhrases } from './agreement';
+import { agreeNounPhrases, settlePhrases } from './agreement';
+import { decideHomographs } from './context-nouns';
 import { baseReadings } from './context-base';
 import { decideVerbs } from './context-verbs';
 import { applyCapitals, decideInitial, decideWords } from './context-words';
@@ -46,6 +49,7 @@ function run(tokens: RawToken[], lex: DeLexiconView, given: (i: number) => Given
   agreeNounPhrases(s);
   decideWords(s);
   decideVerbs(s);
+  if (decideHomographs(s)) settlePhrases(s);
   return toks.map((t) => {
     if (!t.word) return [];
     settle(t);

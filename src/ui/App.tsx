@@ -11,10 +11,10 @@ import { BooksPage } from './pages/Books';
 import { CoursePage } from './pages/Course';
 import { ExplorePage } from './pages/Explore';
 import { Home } from './pages/Home';
-import { Library } from './pages/Library';
 import { Settings, VocabularyPage } from './pages/Settings';
 import { TextPage } from './pages/TextPage';
 import { PreviewBanner } from './PreviewBanner';
+import { ReadPage } from './read/ReadPage';
 import { SandboxBanner } from './SandboxBanner';
 import { ScriptureRoute } from './scripture/ScripturePage';
 import { applyTheme, usePref } from './prefs';
@@ -36,7 +36,7 @@ export function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="/read" element={<Library mode="corpus" />} />
+      <Route path="/read" element={<ReadPage />} />
       <Route path="/read/:textId" element={<TextPage mode="corpus" />} />
       <Route path="/course" element={<CoursePage />} />
       <Route path="/explore" element={<ExplorePage />} />

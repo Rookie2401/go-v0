@@ -215,18 +215,28 @@ describe('Home, Read and Settings around the ladder', () => {
     await seedChapter(h.store, w, 2);
     await seedChapter(h.store, w, 1);
     mounted = await h.mount(app(), { router: '/read' });
-    const group = q(mounted.container, `[data-work="${w}"]`)!;
+    // Read is now shelf → book → chapters (src/ui/read): the copies are the books of the shelf "Your books" (they were a section per work
+    // headed "Your copy · 2 chapters"); the book says "2 chapters" and each chapter row carries the chip "Your copy".
+    const shelf = q(mounted.container, '[data-group="personal"]')!;
+    expect(q(shelf, ':scope > button .lib__title')!.textContent).toBe('Your books');
+    const group = q(shelf, `[data-group="b:p:w:${w}"]`)!;
     expect(q(group, '.lib__title')!.textContent).toBe(THAI_WORKS.find((x) => x.id === w)!.title);
-    expect(q(group, '.lib__meta')!.textContent).toBe('Your copy · 2 chapters');
-    expect(qa(group, '.entry__title').map((e) => e.textContent)).toEqual(['1. ตอนที่ 1', '2. ตอนที่ 2']);
+    expect(q(group, '.lib__meta')!.textContent).toBe('2 chapters');
+    // the only shelf and its only book are open by default
+    expect(q(group, ':scope > button.lib__head')!.getAttribute('aria-expanded')).toBe('true');
+    const rows = qa(group, '.entrylist [role="listitem"] a.entry');
+    expect(rows.map((e) => `${q(e, '.entry__num')!.textContent}|${q(e, '.entry__native')!.textContent}`)).toEqual(['Chapter 1|ตอนที่ 1', 'Chapter 2|ตอนที่ 2']);
+    for (const r of rows) expect(qa(r, '.entry__badges .chip').map((c) => c.textContent)).toEqual(['Your copy']);
   });
 
   it('Read for a course without a ladder is unchanged (grouped by corpus only)', async () => {
     const es = await makeHarness();
     await (await import('./fixtures')).seedStory(es.store);
     mounted = await es.mount(app(), { router: '/read' });
-    expect(qa(mounted.container, '[data-work]')).toHaveLength(0);
-    expect(qa(mounted.container, '.lib__group')).toHaveLength(1);
+    // Read is now shelf → book: with no work anywhere, texts are books per corpus (they were one section per corpus), all on one shelf
+    expect(qa(mounted.container, '[data-group^="b:w:"]')).toHaveLength(0);
+    expect(qa(mounted.container, '.lib__group--1')).toHaveLength(1);
+    expect(qa(mounted.container, '.lib__group--3').map((g) => g.getAttribute('data-group'))).toEqual(['b:c:ci-es']);
   });
 
   it('Settings → Language support says per language whether a dictionary is installed', async () => {

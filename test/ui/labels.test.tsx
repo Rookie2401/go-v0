@@ -69,7 +69,8 @@ describe('Library rows', () => {
     await seedStory(h.store);
     await seedJohn(h.store);
     mounted = await h.mount(app(), { router: '/read' });
-    const row = () => q(mounted!.container, 'ul.list li')!.textContent!;
+    // the Read page is shelf → book → chapters; the story is the single row of the open first shelf and book (it was `ul.list li`)
+    const row = () => q(mounted!.container, '.entrylist [role="listitem"]')!.textContent!;
     expect(row()).toContain('Seen 0 of 3 sentences');
     expect(row()).not.toContain('Finished');
     await mounted.unmount();

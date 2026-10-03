@@ -52,12 +52,16 @@ describe('the UI over the real engines', () => {
     expect(published.every((t) => t.kind === 'scripture')).toBe(true); // the bundle's state: only verified Scripture is published
 
     let page = await render('/read');
-    expect(qa(page, 'ul.list a')).toHaveLength(0);
+    // Read is shelf → book → chapters and Scripture the canon tree: rows are `.entrylist [role=listitem] a.entry` (they were `ul.list a`)
+    expect(qa(page, '.entrylist [role="listitem"] a.entry')).toHaveLength(0);
     expect(q(page, '[data-testid="awaited"]')!.textContent).toContain('awaiting');
     await unmount!(); unmount = undefined;
 
     page = await render('/scripture');
-    expect(qa(page, 'ul.list a')).toHaveLength(published.length);
+    // only the first book with chapters is open by default, so: every chapter shown is a published text, and there is one
+    const shown = qa<HTMLAnchorElement>(page, 'a.entry--chapter').map((a) => decodeURIComponent(a.getAttribute('href')!.replace(/^.*\/scripture\//, '')));
+    expect(shown.length).toBeGreaterThan(0);
+    for (const id of shown) expect(published.map((t) => t.id)).toContain(id);
     expect(published.length).toBeGreaterThan(0);
     await unmount!(); unmount = undefined;
 
@@ -74,7 +78,7 @@ describe('the UI over the real engines', () => {
     setPref('preview', true);
     const page = await render('/read');
     expect(q(page, '[data-testid="preview-banner"]')).not.toBeNull();
-    const links = qa<HTMLAnchorElement>(page, 'ul.list a');
+    const links = qa<HTMLAnchorElement>(page, '.entrylist [role="listitem"] a.entry'); // the open first shelf and book (was `ul.list a`)
     expect(links.length).toBeGreaterThan(0);
     expect(qa(page, 'ul.reasons').length).toBeGreaterThan(0);
     const story = (await texts()).find((t) => t.kind !== 'scripture')!;

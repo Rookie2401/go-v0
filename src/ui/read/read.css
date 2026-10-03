@@ -1,0 +1,7 @@
+/*
+ * The Read page. The dropdowns (shelf → book → chapters: chevron heads, height-animated collapsibles, entry rows, the phone
+ * rules and the reduced-motion rule) are src/ui/disclosure/disclosure.css, scoped under .disclosure-page, which this page's
+ * root carries beside .read. Only what is Read's own is here.
+ */
+.read .read__alert { margin: 0.5rem 0; }
+.read .lib__tags { margin-top: 0.75rem; }

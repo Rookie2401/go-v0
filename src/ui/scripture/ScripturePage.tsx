@@ -13,15 +13,16 @@
  * Publication gate as before: unpublished texts appear only in preview mode, each with its badges and reasons.
  * Albanian keeps the previous page (ScriptureRoute).
  */
-import { memo, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import type { MouseEvent, ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import type { CatalogText, LanguageCode, Text } from '../../core';
 import { CANON, bookIndex } from '../../library/canon';
 import { useApp } from '../context';
-import { BibleAccess } from '../course/BibleAccess';
 import { ProgressLine, useCoverageMany, useReadingProgress } from '../coverage';
-import { BAND_LABEL, isVisibleText, languageName, pct, textPath } from '../format';
+// the dropdown parts (and disclosure.css) load before scripture.css, so this page's own rules win where both apply
+import { BookSection, Group } from '../disclosure/Disclosure';
+import { BAND_LABEL, awaitedStatement, isVisibleText, languageName, pct, plainReasons, textPath } from '../format';
 import { TextBadges, UnpublishedReasons, useLangTexts } from '../library';
 import { Library } from '../pages/Library';
 import { usePreview } from '../prefs';
@@ -29,6 +30,14 @@ import { BackLink, Topbar } from '../ui';
 import { bookName, bookNameEn, canonTree, isScriptureLang, placeOfRunning } from './canon';
 import type { BookNode, DivisionNode, ScriptureLang, TestamentNode } from './canon';
 import './scripture.css';
+
+/**
+ * The "Bible access" block (src/ui/course/BibleAccess.tsx) belongs to another line of work and is not committed yet. It is
+ * shown when the module is present and simply left out when it is not, so this page never depends on an uncommitted file
+ * (a clean checkout of the repository must build). `import.meta.glob` returns an empty object for a missing file.
+ */
+const bibleAccessModules = import.meta.glob<{ BibleAccess?: (p: { lang: LanguageCode }) => ReactNode }>('../course/BibleAccess.tsx', { eager: true });
+const BibleAccess = Object.values(bibleAccessModules)[0]?.BibleAccess;
 
 /** The route: every language but Albanian gets the canon tree; Albanian keeps the previous page. */
 export function ScriptureRoute() {
@@ -294,10 +303,20 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
   return (
     <div>
       {bar}
-      <div className="page page--narrow scripture route-fade">
-        <BibleAccess lang={course.lang} />
+      <div className="page page--narrow scripture disclosure-page route-fade">
+        {BibleAccess && <BibleAccess lang={course.lang} />}
         {!catalogReady && <p className="muted" role="status">Loading Scripture library…</p>}
-        {empty && <p className="awaited" role="status">No {languageName(course)} Scripture library is available yet.</p>}
+        {empty && residentAll.length === 0 && <p className="awaited" role="status">No {languageName(course)} Scripture library is available yet.</p>}
+        {empty && residentAll.length > 0 && (() => {
+          const awaited = awaitedStatement(residentAll, 'scripture', languageName(course));
+          return (
+            <div className="awaited" role="status" data-testid="awaited">
+              <p className="muted">{awaited.headline}</p>
+              {awaited.reasons.length > 0 && <ul className="reasons">{plainReasons(awaited.reasons).map((r) => <li key={r}>{r}</li>)}</ul>}
+              {!preview && <p className="card__note"><Link to="/settings">Preview mode in Settings</Link> lists them, clearly marked, so they can be reviewed.</p>}
+            </div>
+          );
+        })()}
         {catalogError && <p role="alert" className="error scripture__alert">{catalogError}</p>}
         {openError && <p role="alert" className="error scripture__alert">{openError}</p>}
         {catalogReady && !empty && last && (
@@ -318,72 +337,6 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
           </nav>
         )}
       </div>
-    </div>
-  );
-}
-
-const CHEVRON = (
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
-);
-
-/**
- * One book's group, re-rendered only when what it shows changes: its own open state, its chapters, the learner's progress
- * and coverage, the chapter last read, preview mode. Clicking one book then renders that book, not all 66 with their rows,
- * so the opening animation starts at once.
- */
-const BookSection = memo(
-  function BookSection({ render }: { open: boolean; chapters: unknown; progress: unknown; coverage: unknown; lastId?: string; preview: boolean; render: () => ReactNode }) {
-    return <>{render()}</>;
-  },
-  (a, b) => a.open === b.open && a.chapters === b.chapters && a.progress === b.progress && a.coverage === b.coverage && a.lastId === b.lastId && a.preview === b.preview,
-);
-
-/**
- * Height-animated disclosure: grid-template-rows 0fr <-> 1fr; `inert` keeps a collapsed panel out of tab and
- * assistive-technology reach. Content that is mounted on opening is first laid out closed and opened on the next frame,
- * so the panel always grows from nothing instead of appearing at its full height.
- */
-function Collapsible({ open, children }: { open: boolean; children: ReactNode }) {
-  const [shown, setShown] = useState(open);
-  const ref = useRef<HTMLDivElement>(null);
-  useLayoutEffect(() => {
-    if (!open) { setShown(false); return; }
-    // lay the newly mounted content out CLOSED (a forced layout read), then open it in the same task, before paint:
-    // the browser has a closed starting point to transition from, without waiting for animation frames
-    ref.current?.getBoundingClientRect();
-    setShown(true);
-  }, [open]);
-  const isOpen = open && shown;
-  return (
-    <div ref={ref} className="collapsible" data-open={isOpen ? 'true' : 'false'}>
-      <div className="collapsible__inner" inert={!isOpen}>{children}</div>
-    </div>
-  );
-}
-
-/** One disclosure rung: a button head with a rotating (decorative) chevron and height-animated children. A group that cannot be opened is a muted, non-interactive head. */
-function Group({ id, level, open, onToggle, title, native, lang, meta, current, expandable = true, children }: {
-  id: string; level: 1 | 2 | 3; open: boolean; onToggle: (id: string) => void; title: string; native: string; lang: LanguageCode; meta?: string; current?: boolean; expandable?: boolean; children: ReactNode | (() => ReactNode);
-}) {
-  // A book's chapter list is mounted on first opening and then kept (so the collapse can animate); every group above it is always mounted.
-  const seen = useRef(open);
-  if (open && expandable) seen.current = true;
-  const head = (
-    <>
-      <span className={`lib__chev${open && expandable ? ' lib__chev--open' : ''}${expandable ? '' : ' lib__chev--none'}`} aria-hidden="true">{CHEVRON}</span>
-      <span className="lib__title">{title}</span>
-      {native && <span className="lib__native" lang={lang}>{native}</span>}
-      {meta && <span className="lib__meta">{meta}</span>}
-    </>
-  );
-  return (
-    <div className={`lib__group lib__group--${level}${current ? ' lib__group--current' : ''}${expandable ? '' : ' lib__group--empty'}`} data-group={id}>
-      {expandable ? (
-        <button type="button" className="lib__head" aria-expanded={open} onClick={() => onToggle(id)}>{head}</button>
-      ) : (
-        <div className="lib__head lib__head--static" data-unavailable="true">{head}</div>
-      )}
-      {expandable && <Collapsible open={open}><div className="lib__children">{level < 3 || seen.current ? (typeof children === 'function' ? children() : children) : null}</div></Collapsible>}
     </div>
   );
 }

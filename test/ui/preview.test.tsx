@@ -33,7 +33,7 @@ describe('Preview mode is off by default and gates what is shown', () => {
     const h = await makeHarness();
     await seedUnpublished(h);
     mounted = await h.mount(app(), { router: '/read' });
-    expect(qa(mounted.container, 'ul.list a')).toHaveLength(0);
+    expect(qa(mounted.container, '.entrylist [role="listitem"] a.entry')).toHaveLength(0); // (was `ul.list a`)
     const awaited = q(mounted.container, '[data-testid="awaited"]')!;
     expect(awaited.textContent).toContain('No stories or dialogues in Spanish are published yet');
     expect(awaited.textContent).toContain('1 text is imported but awaiting native-speaker review');
@@ -51,7 +51,7 @@ describe('Preview mode is off by default and gates what is shown', () => {
     const h = await makeHarness();
     await seedUnpublished(h);
     mounted = await h.mount(app(), { router: '/scripture' });
-    expect(qa(mounted.container, 'ul.list a')).toHaveLength(0);
+    expect(qa(mounted.container, 'a.entry--chapter')).toHaveLength(0); // (was `ul.list a`)
     const awaited = q(mounted.container, '[data-testid="awaited"]')!.textContent!;
     expect(awaited).toContain('No Scripture in Spanish is published yet');
     expect(awaited).toContain('review and verification of the wording against a named source');
@@ -103,7 +103,8 @@ describe('Preview mode is off by default and gates what is shown', () => {
     await seedStory(h.store);
     await seedThai(h.store);
     mounted = await h.mount(app(), { router: '/read' });
-    expect(qa(mounted.container, 'ul.list a').map((a) => a.textContent)).toEqual([expect.stringContaining('Story 1')]);
+    // Read rows are `.entrylist [role=listitem] a.entry` (it was `ul.list a`)
+    expect(qa(mounted.container, '.entrylist [role="listitem"] a.entry').map((a) => a.textContent)).toEqual([expect.stringContaining('Story 1')]);
     await mounted.unmount();
     mounted = await h.mount(app(), { router: `/read/${encodeURIComponent('text:th:th-1')}` });
     expect(mounted.container.textContent).toContain('This text is in Thai, not the language you are learning');
@@ -142,7 +143,8 @@ describe('Preview mode on', () => {
     await turnOn(h);
     await mounted!.unmount();
     mounted = await h.mount(app(), { router: '/read' });
-    const links = qa<HTMLAnchorElement>(mounted.container, 'ul.list a');
+    // Read rows are `.entrylist [role=listitem] a.entry` (it was `ul.list a`); the story's book is open by default
+    const links = qa<HTMLAnchorElement>(mounted.container, '.entrylist [role="listitem"] a.entry');
     expect(links).toHaveLength(1);
     expect(links[0].textContent).toContain('Story 1');
     expect(links[0].textContent).toContain('unpublished · not reviewed');
@@ -151,7 +153,7 @@ describe('Preview mode on', () => {
     await mounted.unmount();
 
     mounted = await h.mount(app(), { router: '/scripture' });
-    expect(qa(mounted.container, 'ul.list a')).toHaveLength(1);
+    expect(qa(mounted.container, 'a.entry--chapter')).toHaveLength(1); // Scripture's chapters (it was `ul.list a`)
     expect(byLabel(mounted.container, 'Why Juan 3 is not published').textContent).toContain('not been verified');
     await mounted.unmount();
 

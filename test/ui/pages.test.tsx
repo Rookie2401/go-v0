@@ -25,24 +25,28 @@ describe('Library and routes', () => {
     await seedStory(h.store);
     await seedJohn(h.store);
     mounted = await h.mount(app(), { router: '/read' });
-    const links = qa<HTMLAnchorElement>(mounted.container, 'ul.list a');
+    // Read is shelf → book → chapters: the story is the row of the open first shelf and book (it was `ul.list a`)
+    const rowLinks = () => qa<HTMLAnchorElement>(mounted!.container, '.entrylist [role="listitem"] a.entry');
+    const links = rowLinks();
     expect(links).toHaveLength(1); // the scripture text is not in the Read list
     expect(links[0].textContent).toContain('Story 1');
     expect(links[0].textContent).toContain('good challenge · shown 91%'); // demonstrated, not merely seen
     expect(links[0].textContent).toContain('Seen 0 of 3 sentences'); // exposure is its own statement (never "Read")
     expect(links[0].textContent).not.toMatch(/Read d/);
     expect(links[0].getAttribute('href')).toBe(`/read/${encodeURIComponent(STORY_ID)}`);
-    expect(mounted.container.textContent).toContain('ci-es'); // shelf named by corpus
+    // texts with no work sit in a book per corpus (the corpus is not titled in this fixture, so "Short texts"); it was a "Reading path" section
+    expect(q(mounted.container, '.lib__group--3 .lib__title')!.textContent).toBe('Short texts');
 
     // tags act as pathways
     const tags = qa(mounted.container, '.lib__tags button').map((b) => b.textContent);
     expect(tags).toEqual(['all', 'daily-life', 'mission']);
     await click(button(mounted.container, 'mission'));
-    expect(qa(mounted.container, 'ul.list a')).toHaveLength(1);
+    expect(rowLinks()).toHaveLength(1);
     await mounted.unmount();
 
     mounted = await h.mount(app(), { router: '/scripture' });
-    const sc = qa<HTMLAnchorElement>(mounted.container, 'ul.list a');
+    // Scripture is the canon tree (Juan's book is open by default): its one chapter is an `a.entry--chapter` (it was `ul.list a`)
+    const sc = qa<HTMLAnchorElement>(mounted.container, 'a.entry--chapter');
     expect(sc).toHaveLength(1);
     expect(sc[0].textContent).toContain('Juan 3');
     expect(sc[0].getAttribute('href')).toBe(`/scripture/${encodeURIComponent(JOHN_ID)}`);
@@ -115,12 +119,13 @@ describe('Testimony privacy', () => {
     const h = await makeHarness();
     const privateId = await withPrivateText(h);
     mounted = await h.mount(app(), { router: '/read' });
-    expect(qa(mounted.container, 'ul.list a').map((a) => a.textContent)).toEqual([expect.stringContaining('Story 1')]);
+    // Read rows are `.entrylist [role=listitem] a.entry`, Scripture's chapters `a.entry--chapter` (both were `ul.list a`)
+    expect(qa(mounted.container, '.entrylist [role="listitem"] a.entry').map((a) => a.textContent)).toEqual([expect.stringContaining('Story 1')]);
     expect(mounted.container.textContent).not.toContain('Testimony v1');
     expect(h.learn.coverage).not.toHaveBeenCalledWith('u1', privateId);
     await mounted.unmount();
     mounted = await h.mount(app(), { router: '/scripture' });
-    expect(qa(mounted.container, 'ul.list a')).toHaveLength(1);
+    expect(qa(mounted.container, 'a.entry--chapter')).toHaveLength(1);
     expect(mounted.container.textContent).not.toContain('Testimony v1');
   });
 

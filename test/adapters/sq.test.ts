@@ -70,7 +70,7 @@ describe('Albanian adapter', () => {
   });
 
   it('names its sources, its varieties and its limits', () => {
-    expect(sq.version).toBe('3');
+    expect(sq.version).toBe('4');
     expect(Object.values(sq.sources ?? {}).every((s) => s.reviewStatus === 'machine-drafted')).toBe(true);
     expect(Object.keys(sq.varieties ?? {})).toEqual(expect.arrayContaining(['sq', 'aln', 'sq-ascii']));
     expect(sq.support.lemmatization).toBe('seed-only');

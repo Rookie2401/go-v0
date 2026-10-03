@@ -166,7 +166,7 @@ const CONS: SqLexeme[] = [
   V('mbyt', 'cons', 'mbyta', 'mbytur', 'to drown, to choke'),
   V('zhduk', 'cons', 'zhduka', 'zhdukur', 'to make disappear, to destroy'),
   V('porosit', 'cons', 'porosita', 'porositur', 'to order'),
-  V('mbështet', 'cons', 'mbështeta', 'mbështetur', 'to support, to lean'),
+  V('mbështet', 'cons', 'mbështeta', 'mbështetur', 'to support, to lean; non-active: to lean on, to rely on', { nonActive: true }),
   V('përmend', 'cons', 'përmenda', 'përmendur', 'to mention'),
   V('përmbush', 'cons', 'përmbusha', 'përmbushur', 'to fulfil'),
 ];

@@ -117,6 +117,14 @@ describe('restoreDiacritics', () => {
     expect(restoreDiacritics('nje', k)).toEqual(['një']);
     expect(restoreDiacritics('ESHTE', k)).toEqual(['është']);
   });
+
+  it('a form that already has an ë or a ç was not typed without them: nothing is restored', () => {
+    // mbështetem (I rely) is one letter away from mbështetëm (we leaned): a word the lists do not know must not become it
+    const k = (w: string) => w === 'mbështetëm' || w === 'çfarë';
+    expect(restoreDiacritics('mbështetem', k)).toEqual([]);
+    expect(restoreDiacritics('çfare', k)).toEqual([]);
+    expect(restoreDiacritics('mbeshtetem', k)).toEqual(['mbështetëm']);
+  });
   it('returns several candidates, fewest changes first, then alphabetical', () => {
     const known = new Set(['ceme', 'çemë', 'çeme', 'cëme', 'cemë']);
     expect(restoreDiacritics('ceme', (w) => known.has(w))).toEqual(['cemë', 'cëme', 'çeme', 'çemë']);

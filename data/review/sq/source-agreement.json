@@ -65,7 +65,7 @@
   ]
  },
  "totals": {
-  "unanimous": 10894,
+  "unanimous": 10909,
   "majority": 38,
   "disputed": 160,
   "single-source": 36,
@@ -94,7 +94,7 @@
    "name-unlisted": 0
   },
   "VERB": {
-   "unanimous": 6336,
+   "unanimous": 6351,
    "majority": 23,
    "disputed": 95,
    "single-source": 10,
@@ -166,31 +166,31 @@
  },
  "bySource": {
   "uniparser": {
-   "agree": 10967,
+   "agree": 10982,
    "silent": 104,
    "other": 64,
    "differ": 25
   },
   "wiktionary": {
-   "agree": 8311,
-   "silent": 2411,
+   "agree": 8312,
+   "silent": 2425,
    "other": 321,
    "differ": 117
   },
   "ud-tsa": {
-   "silent": 11000,
+   "silent": 11015,
    "agree": 107,
    "differ": 17,
    "other": 36
   },
   "ud-staf": {
    "agree": 303,
-   "silent": 10632,
+   "silent": 10647,
    "other": 148,
    "differ": 77
   },
   "corpus": {
-   "silent": 11114,
+   "silent": 11129,
    "differ": 10,
    "agree": 36
   }
@@ -246,10 +246,10 @@
    ],
    "evidence": {
     "uniparser": [
-     "ajo [PRO,3,sg,f,alb,acc]",
      "ai [PRO,alb,f,sg,acc]",
      "ai [PRO,3,sg,m,alb,acc]",
-     "ai [PRO,alb,m,sg,acc]"
+     "ai [PRO,alb,m,sg,acc]",
+     "ajo [PRO,3,sg,f,alb,acc]"
     ],
     "ud-staf": [
      "ai/PRON Case=Acc Number=Sing Gender=Masc Person=3",
@@ -341,8 +341,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "jap [V,vt,vi,alb,3,sg,aor,ind,pass]",
-     "jap [V,vt,vi,alb,2,sg,aor,ind,act]"
+     "jap [V,vt,vi,alb,2,sg,aor,ind,act]",
+     "jap [V,vt,vi,alb,3,sg,aor,ind,pass]"
     ],
     "corpus": [
      "dha 30334"
@@ -505,8 +505,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "fund [NOUN,mf,inanim,borr,lat,sg,abl,def]",
-     "fund [NOUN,mf,inanim,borr,lat,sg,gen_dat,def]"
+     "fund [NOUN,mf,inanim,borr,lat,sg,gen_dat,def]",
+     "fund [NOUN,mf,inanim,borr,lat,sg,abl,def]"
     ],
     "wiktionary": [
      "fund/NOUN Case=Gen,Dat Number=Sing Definite=Def",
@@ -539,8 +539,8 @@
    "evidence": {
     "uniparser": [
      "gjellë [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
-     "gjellë [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
-     "gjellë [NOUN,f,inanim,alb,deriv,sg,nom,indef]"
+     "gjellë [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+     "gjellë [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]"
     ],
     "corpus": [
      "gjellë 375"
@@ -951,11 +951,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,1,sg,pres,ind,act]",
+     "hipi [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
+     "hipi [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
      "hipi [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
-     "hipi [V,vt,vi,alb,2,sg,imp,act]",
-     "hipi [V,vt,vi,alb,3,sg,aor,ind,act]",
-     "hipi [NOUN,f,inanim,alb,deriv,pl,acc,indef]"
+     "hipi [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+     "hipi [V,vt,vi,alb,2,sg,imp,act]"
     ],
     "corpus": [
      "hipi 647"
@@ -1071,8 +1071,8 @@
     "uniparser": [
      "hipje [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
      "hipje [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
-     "hipje [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
      "hipje [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+     "hipi [V,vt,vi,alb,2,sg,ipf,ind,act]",
      "hipje [NOUN,f,inanim,alb,deriv,pl,acc,indef]"
     ],
     "corpus": [
@@ -1271,8 +1271,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,ptcp]",
-     "hipur [ADV,alb,deriv]"
+     "hipur [ADV,alb,deriv]",
+     "hipi [V,vt,vi,alb,ptcp]"
     ],
     "corpus": [
      "hipur 1293"
@@ -1357,9 +1357,9 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,3,pl,aor,ind,act]",
      "hipi [V,vt,vi,alb,2,sg,pres,ind,act]",
-     "hipi [V,vt,vi,alb,3,sg,pres,ind,act]"
+     "hipi [V,vt,vi,alb,3,sg,pres,ind,act]",
+     "hipi [V,vt,vi,alb,3,pl,aor,ind,act]"
     ],
     "corpus": [
      "hipën 420"
@@ -2065,9 +2065,9 @@
    ],
    "evidence": {
     "uniparser": [
-     "lë [V,vt,alb,ptcp,nonst]",
      "lë [V,vt,alb,3,sg,aor,ind,pass]",
-     "lë [V,vt,alb,2,sg,aor,ind,act]"
+     "lë [V,vt,alb,2,sg,aor,ind,act]",
+     "lë [V,vt,alb,ptcp,nonst]"
     ],
     "corpus": [
      "la 23462"
@@ -2338,10 +2338,10 @@
    ],
    "evidence": {
     "uniparser": [
-     "lugët [A,alb,deriv,m,pl,acc,indef]",
-     "lugët [A,alb,deriv,m,sg,acc,indef]",
-     "lugët [A,alb,deriv,f,sg,acc,indef]",
+     "lugët [A,alb,deriv,m,sg,nom,indef]",
      "lugët [A,alb,deriv,m,sg]",
+     "lugët [A,alb,deriv,m,pl,nom,indef]",
+     "lugët [A,alb,deriv,m,pl]",
      "lugët [A,alb,deriv,f,sg]"
     ],
     "corpus": [
@@ -2928,8 +2928,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "muzeum [NOUN,mf,inanim,pl,nom,indef]",
-     "muzeum [NOUN,mf,inanim,pl,acc,indef]"
+     "muzeum [NOUN,mf,inanim,pl,acc,indef]",
+     "muzeum [NOUN,mf,inanim,pl,nom,indef]"
     ],
     "wiktionary": [
      "its table has here: muze"
@@ -3023,10 +3023,10 @@
    ],
    "evidence": {
     "uniparser": [
-     "muzeum [NOUN,mf,inanim,pl,gen_dat,indef]",
-     "muzeum [NOUN,mf,inanim,pl,gen_dat,def]",
      "muzeum [NOUN,mf,inanim,pl,abl,def]",
-     "muzeum [NOUN,mf,inanim,pl,abl,indef]"
+     "muzeum [NOUN,mf,inanim,pl,gen_dat,indef]",
+     "muzeum [NOUN,mf,inanim,pl,abl,indef]",
+     "muzeum [NOUN,mf,inanim,pl,gen_dat,def]"
     ],
     "wiktionary": [
      "its table has here: muzesh, muzeve"
@@ -4058,9 +4058,9 @@
    ],
    "evidence": {
     "uniparser": [
-     "shoh [V,vt,alb,ptcp,nonst]",
      "shoh [V,vt,alb,2,sg,aor,ind,act]",
-     "shoh [V,vt,alb,3,sg,aor,ind,pass]"
+     "shoh [V,vt,alb,3,sg,aor,ind,pass]",
+     "shoh [V,vt,alb,ptcp,nonst]"
     ],
     "ud-staf": [
      "pa/SCONJ",
@@ -4112,11 +4112,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "pasdite [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+     "pasdite [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
      "pasdite [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
      "pasdite [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
-     "pasdite [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
-     "pasdite [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
+     "pasdite [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+     "pasdite [NOUN,f,inanim,alb,deriv,pl,nom,indef]"
     ],
     "wiktionary": [
      "pasdite/ADV"
@@ -4424,8 +4424,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "qepë [NOUN,f,inanim,borr,lat,sg,acc,indef]",
      "qepë [NOUN,f,inanim,borr,lat,sg,unmkd,indef]",
+     "qepë [NOUN,f,inanim,borr,lat,sg,acc,indef]",
      "qepë [NOUN,f,inanim,borr,lat,sg,nom,indef]"
     ],
     "corpus": [
@@ -4482,8 +4482,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "qep [V,vt,alb,deriv,2,pl,aor,ind,act]",
-     "qep [V,med,alb,deriv,2,pl,aor,ind,act]"
+     "qep [V,med,alb,deriv,2,pl,aor,ind,act]",
+     "qep [V,vt,alb,deriv,2,pl,aor,ind,act]"
     ],
     "corpus": [
      "qepët 343"
@@ -4543,9 +4543,9 @@
    ],
    "evidence": {
     "uniparser": [
-     "bie [V,vi,alb,2,sg,aor,ind,act]",
+     "bie [V,vi,alb,3,sg,aor,ind,pass]",
      "bie [V,vi,alb,ptcp,nonst]",
-     "bie [V,vi,alb,3,sg,aor,ind,pass]"
+     "bie [V,vi,alb,2,sg,aor,ind,act]"
     ],
     "corpus": [
      "ra 12383"
@@ -4692,11 +4692,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "roman [A,f,pl,nom,indef]",
-     "roman [A,f,pl]",
+     "roman [A,f,sg,nom,indef]",
+     "roman [A,f,sg,acc,indef]",
      "roman [A,f,pl,acc,indef]",
-     "roman [A,f,sg]",
-     "roman [A,f,sg,acc,indef]"
+     "roman [A,f,pl,nom,indef]",
+     "roman [A,f,sg]"
     ],
     "corpus": [
      "romane 747"
@@ -4775,9 +4775,9 @@
    ],
    "evidence": {
     "uniparser": [
-     "roman [A,f,pl,abl,indef]",
      "roman [A,f,pl,gen_dat,def]",
      "roman [A,f,pl,gen_dat,indef]",
+     "roman [A,f,pl,abl,indef]",
      "roman [A,f,pl,abl,def]"
     ],
     "corpus": [
@@ -4835,8 +4835,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "saj [PRO,alb]",
-     "ajo [PRO,3,sg,f,alb,abl]"
+     "ajo [PRO,3,sg,f,alb,abl]",
+     "saj [PRO,alb]"
     ],
     "wiktionary": [
      "saj/DET",
@@ -5526,11 +5526,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
      "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,pass]",
+     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
+     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]",
      "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]"
+     "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]"
     ],
     "wiktionary": [
      "shëtit/VERB",
@@ -5563,11 +5563,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
      "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,pass]",
+     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
+     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]",
      "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]"
+     "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]"
     ],
     "wiktionary": [
      "shëtit/VERB",
@@ -5630,9 +5630,9 @@
    ],
    "evidence": {
     "uniparser": [
-     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]",
+     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,pass,nonst]",
      "shëtit [V,vt,vi,borr,slav,2,sg,aor,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,pass,nonst]"
+     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]"
     ],
     "wiktionary": [
      "shëtit/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
@@ -5661,8 +5661,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]"
+     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]",
+     "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,act]"
     ],
     "wiktionary": [
      "shëtit/VERB Number=Sing Person=3 Tense=Past Mood=Ind"
@@ -5691,11 +5691,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "shëtitur [A,borr,slav,deriv,f,sg,acc,indef]",
+     "shëtitur [A,borr,slav,deriv,m,sg,nom,indef]",
+     "shëtitur [A,borr,slav,deriv,m,sg]",
      "shëtitur [A,borr,slav,deriv,m,pl]",
      "shëtitur [A,borr,slav,deriv,m,pl,acc,indef]",
-     "shëtit [V,vt,vi,borr,slav,ptcp]",
-     "shëtitur [A,borr,slav,deriv,m,sg,nom,indef]"
+     "shëtitur [A,borr,slav,deriv,f,sg]"
     ],
     "wiktionary": [
      "shëtit/VERB VerbForm=Part"
@@ -5964,9 +5964,9 @@
    ],
    "evidence": {
     "uniparser": [
+     "them [V,vt,alb,nonst,3,sg,aor,ind,act]",
      "them [V,vt,alb,nonst,ptcp]",
-     "them [V,vt,alb,nonst,3,sg,aor,ind,pass]",
-     "them [V,vt,alb,nonst,3,sg,aor,ind,act]"
+     "them [V,vt,alb,nonst,3,sg,aor,ind,pass]"
     ],
     "corpus": [
      "tha 322138"
@@ -6055,8 +6055,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "ata [PRO,3,pl,m,alb,abl]",
      "ato [PRO,3,pl,f,alb,abl]",
+     "ata [PRO,3,pl,m,alb,abl]",
      "tyre [PRO,alb]"
     ],
     "wiktionary": [
@@ -6587,8 +6587,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]"
+     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]"
     ],
     "wiktionary": [
      "çorap/NOUN Number=Plur",
@@ -6620,8 +6620,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]"
+     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]"
     ],
     "wiktionary": [
      "çorap/NOUN Number=Plur",
@@ -6745,8 +6745,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,def]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,def]"
+     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,def]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,def]"
     ],
     "wiktionary": [
      "çorap/NOUN Case=Nom Number=Plur Definite=Def",
@@ -6777,10 +6777,10 @@
    ],
    "evidence": {
     "uniparser": [
-     "çorap [NOUN,mf,inanim,borr,turk,pl,abl,indef]",
      "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,indef]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,abl,def]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,def]"
+     "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,def]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,abl,indef]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,abl,def]"
     ],
     "wiktionary": [
      "çorap/NOUN Case=Gen,Dat Number=Plur Definite=Ind",

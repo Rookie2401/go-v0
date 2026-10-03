@@ -68,6 +68,14 @@ describe('checkSqProduction', () => {
       repairs('Mekat.', 'spelling', 'Mëkat.');
       repairs('Dua caj.', 'spelling', 'Dua çaj.');
     });
+    it('a word written with its ë is not a misspelling of another word (mbështetem, I rely — not mbështetëm, we leaned)', () => {
+      expect(check('Tani mbështetem te Jezusi çdo ditë.')).toEqual([]);
+      expect(check('Ne mbështetëm murin.')).toEqual([]);
+      // typed with no ë at all, the spelling cannot say which of the two is meant: noted, nothing suggested
+      const e = check('Mbeshtetem te Jezusi.').filter((x) => x.category === 'spelling');
+      expect(e).toHaveLength(1);
+      expect(e[0].suggestion).toBeUndefined();
+    });
     it('lists the candidates and offers no suggestion when the spelling does not say which word it is', () => {
       const e = flagsOnly('Ajo ka femije.', 'spelling');
       expect(e.message).toContain('fëmijë');

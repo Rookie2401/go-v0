@@ -87,9 +87,13 @@ const MAX_POSITIONS = 12;
  * restricted to forms `known` accepts. Any subset of the e and c positions is tried (e → ë, c → ç). Never returns the
  * input itself; a form with more than 12 e / c positions returns []. Candidates are lower case (the form is normalised
  * first); order is deterministic: fewest changes first, then alphabetical.
+ *
+ * A form that already has an ë or a ç was not typed without them: it returns []. Otherwise a word the lists do not know
+ * would be "corrected" into a known word one letter away (mbështetem, I rely, into mbështetëm, we leaned).
  */
 export function restoreDiacritics(form: string, known: (form: string) => boolean): string[] {
   const base = sqNormalize(form);
+  if (/[ëç]/u.test(base)) return [];
   const positions: number[] = [];
   for (let i = 0; i < base.length; i++) if (base[i] === 'e' || base[i] === 'c') positions.push(i);
   if (positions.length === 0 || positions.length > MAX_POSITIONS) return [];

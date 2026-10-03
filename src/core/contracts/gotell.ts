@@ -4,6 +4,9 @@
  * Reports productive evidence to GoLearn through ProductionRecorded events; keeps no vocabulary model.
  */
 import type { ErrorCategory, GoTellSuggestion, ItemKnowledge, LanguageCode, ProvenanceRef, SemanticSection, SuggestionSource, Testimony, TestimonyDraft, TestimonyRevision } from '../model';
+import type { GoTellPractice } from './gotell-practice';
+
+export type * from './gotell-practice';
 
 export type ProductionTask = 'testimony' | 'explain-passage' | 'about-church' | 'answer-question' | 'retell' | 'free';
 
@@ -97,6 +100,9 @@ export interface GoTell {
 
   /** Privacy: every accessor checks the requesting user owns the testimony. */
   assertOwner(userId: string, testimonyId: string): Promise<void>;
+
+  /** The productive-language engine (practice saying things). Optional: a GoTell without it still serves My Testimony. */
+  practice?: GoTellPractice;
 }
 
 /**

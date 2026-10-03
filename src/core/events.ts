@@ -11,6 +11,7 @@
  * unique key per action.
  */
 import type { AssistanceLevel, ItemKind, LanguageCode, Modality, ProductionKind } from './model';
+import type { AssistanceStep, SelectionExplanation, SemanticGoal, TaskFamily, TellAttemptRecord } from './contracts/gotell-practice';
 
 export type Surface = 'corpus' | 'scripture' | 'testimony' | 'listen' | 'home';
 
@@ -120,6 +121,21 @@ export interface ProductionRecorded extends Base {
 /** Convenience alias emitted for each independently produced item. */
 export interface IndependentProductionDetected extends Base { type: 'IndependentProductionDetected'; itemIds: string[]; revisionId: string }
 
+// ── GoTell practice (the productive engine). Append-only: productive state is a pure function of these. ──
+/** The learner wrote down a meaning he wants to be able to say. A later definition with the same goalId is a new version. */
+export interface TellGoalDefined extends Base { type: 'TellGoalDefined'; goal: SemanticGoal }
+/** A practice task was offered, with the scheduler's reasons as they were at that moment. */
+export interface TellTaskPresented extends Base {
+  type: 'TellTaskPresented'; taskId: string; goalId: string; goalVersion: number; family: TaskFamily; prompt: string;
+  retellSource?: { textId: string; title: string }; selection: SelectionExplanation;
+}
+/** One intervention (hint, cue, frame, correction, model) exactly as shown. */
+export interface TellInterventionShown extends Base { type: 'TellInterventionShown'; taskId: string; goalId: string; step: AssistanceStep }
+/** One attempt, immutable: the text as typed, what was shown before it, how it was judged, and the state change. */
+export interface TellAttemptSubmitted extends Base { type: 'TellAttemptSubmitted'; record: TellAttemptRecord }
+/** The task ended: said successfully, reproduced after the model, or left. */
+export interface TellTaskClosed extends Base { type: 'TellTaskClosed'; taskId: string; goalId: string; outcome: 'success' | 'model-reproduced' | 'abandoned'; finalAttemptId?: string }
+
 export type DomainEvent =
   | TextViewed | SentenceViewed | TokenHelpOpened | PhraseHelpOpened | GrammarHelpOpened
   | SentenceExplanationRevealed | EnglishRescueRevealed | SentenceReread | DecodingRevealed | NoteOpened | ComprehensionReported | TextCompleted | PassageCompleted
@@ -127,7 +143,8 @@ export type DomainEvent =
   | AudioPlayed | AudioSegmentCompleted | AudioReplayed | PhraseReplayed | AudioSeeked | PlaybackSpeedChanged
   | TranscriptRevealed | AudioAbandoned | ShadowingAttempt | UserRecordingCreated
   | TestimonyTextSubmitted | TestimonyRevisionAccepted | GoTellSuggestionShown | GoTellSuggestionAccepted
-  | GoTellSuggestionRejected | GoTellSuggestionEdited | ProductionRecorded | IndependentProductionDetected;
+  | GoTellSuggestionRejected | GoTellSuggestionEdited | ProductionRecorded | IndependentProductionDetected
+  | TellGoalDefined | TellTaskPresented | TellInterventionShown | TellAttemptSubmitted | TellTaskClosed;
 
 export type EventType = DomainEvent['type'];
 export type EventOf<T extends EventType> = Extract<DomainEvent, { type: T }>;

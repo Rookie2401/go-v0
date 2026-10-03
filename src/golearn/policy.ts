@@ -321,6 +321,10 @@ export const RANKING = {
   idealNewPatterns: { easy: 0, steady: 1, stretch: 3 },
   /** Weak items that make a text fully valuable as natural reinforcement. */
   reinforcementFull: 8,
+  /** A productive gap (a word he is practising saying in GoTell and cannot yet) counts this much of a weak item. Modest on purpose. */
+  productiveWeight: 0.5,
+  /** GoTell practice attempts older than this are not read for productive gaps. */
+  productiveWindowDays: 21,
   /** A candidate counts as authentic-and-comprehensible at this predicted coverage. */
   authenticComprehensible: 0.9,
   /** Controlled texts: their weight is multiplied by 1 - this x (share of authentic candidates that are comprehensible). */

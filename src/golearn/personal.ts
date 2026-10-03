@@ -95,7 +95,12 @@ const up = (v: number, cut: { low: number; moderate: number }): Level => (v <= c
 const down = (v: number, cut: { low: number; moderate: number }): Level => (v >= cut.low ? 'low' : v >= cut.moderate ? 'moderate' : 'high');
 const share = (x: number) => `${pct1(x)} %`;
 
-export interface ScoreOptions { domains?: string[]; variety?: string }
+export interface ScoreOptions {
+  domains?: string[];
+  variety?: string;
+  /** GoTell → GoLearn: items he is practising saying and cannot yet (src/golearn/productive.ts). */
+  productiveGaps?: ReadonlySet<string>;
+}
 
 export async function scoreProfile(
   ctx: Ctx, userId: string, profile: TextProfile, opts: ScoreOptions = {}, memo: LemmaReadings = new Map(),
@@ -130,6 +135,10 @@ export async function scoreProfile(
     const row = rows.get(p);
     if (row && classOf(row) === 'met' && row.reading.assisted > 0) weak.push([p, c]);
   }
+  // what he is trying to SAY and cannot yet (GoTell practice): met forms of the profile that are productive gaps
+  const productiveItems = opts.productiveGaps?.size
+    ? forms.map(([f]) => formId(f)).filter((id) => opts.productiveGaps!.has(id) && met(rows.get(id))).slice(0, PERSONAL.listCap)
+    : undefined;
   const weakItems = weak.sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).slice(0, PERSONAL.listCap).map(([id]) => id);
   const unmet = (list: Array<[string, number]>) => list.filter(([id]) => !(rows.get(id)?.encounterCount)).map(([id]) => id);
   const newPhrases = unmet(profile.phrases).slice(0, PERSONAL.listCap);
@@ -257,6 +266,7 @@ export async function scoreProfile(
 
   return {
     textId: profile.textId, knownShare, familiarShare, metShare, newShare, newForms, weakItems, newPatterns, newPhrases,
+    ...(productiveItems ? { productiveItems } : {}),
     ...(domainFamiliarity !== undefined ? { domainFamiliarity } : {}), ...(compoundList.length > 0 ? { compounds } : {}), personal,
   };
 }

@@ -314,6 +314,11 @@ export interface ProfileScore {
   newForms: number;
   /** Items of the profile the learner has met and still needs help with (the natural-reinforcement value of the text). */
   weakItems: string[];
+  /**
+   * Items of the profile the learner has met in reading and is practising, without success yet, to SAY (GoTell practice).
+   * Present only when the caller passed productive gaps. They raise the text's reinforcement value modestly; nothing else.
+   */
+  productiveItems?: string[];
   /** Constructions and phrases in the profile the learner has never met. */
   newPatterns: string[];
   newPhrases: string[];

@@ -8,6 +8,7 @@
  *   challenge          how well the number of NEW constructions fits the option (a stretch text may bring a few; an easy one none)
  *   interest           the candidate's stream or domains match what the learner said he is interested in
  *   reinforcement      natural repetition: words and phrases he has met and still needs help with that this text contains. A struggle
+ *                      (and, at half weight, words he is practising saying in GoTell and cannot yet say on his own)
  *                      raises the value of texts that use the item in context; it never produces a drill
  *   regional           the candidate's variety against the course's target variety
  *   novelty            not yet read
@@ -24,6 +25,7 @@
 import type { RankCandidate, RankOptions, RankedText } from '../core';
 import { RANKING } from './policy';
 import { scoreProfile } from './personal';
+import { productiveGaps } from './productive';
 import type { LemmaReadings } from './personal';
 import type { Ctx } from './state';
 import { pct1, plural } from './util';
@@ -63,10 +65,11 @@ export async function rankLibrary(ctx: Ctx, userId: string, candidates: RankCand
   const interests = new Set((opts.interests ?? []).map((s) => s.toLowerCase()));
   const memo: LemmaReadings = new Map();
   const W = RANKING.weights;
+  const gaps = await productiveGaps(ctx, userId);
 
   const scored = [];
   for (const c of candidates) {
-    const profile = await scoreProfile(ctx, userId, c.profile, { domains: c.domains, variety: opts.targetVariety }, memo);
+    const profile = await scoreProfile(ctx, userId, c.profile, { domains: c.domains, variety: opts.targetVariety, ...(gaps.size ? { productiveGaps: gaps } : {}) }, memo);
     const coverage = profile.knownShare + profile.familiarShare;
     const effective = coverage + 0.5 * profile.metShare;
     const matched = [c.stream, ...(c.domains ?? [])].filter((x): x is string => !!x && interests.has(x.toLowerCase()));
@@ -75,7 +78,7 @@ export async function rankLibrary(ctx: Ctx, userId: string, candidates: RankCand
       comprehensibility: comprehensibility(effective, target),
       challenge: clamp01(1 - Math.abs(profile.newPatterns.length - ideal) / (ideal + 3)),
       interest: matched.length > 0 ? 1 : 0,
-      reinforcement: clamp01(profile.weakItems.length / RANKING.reinforcementFull),
+      reinforcement: clamp01((profile.weakItems.length + RANKING.productiveWeight * (profile.productiveItems?.length ?? 0)) / RANKING.reinforcementFull),
       regional: regionalFit(c.variety, opts.targetVariety),
       novelty: c.alreadyRead ? 0.1 : 1,
       quality: (c.published === false ? 0 : 0.7) + (c.rights && RELIABLE_RIGHTS.has(c.rights) ? 0.3 : c.rights ? 0.1 : 0.15),
@@ -131,7 +134,11 @@ export async function rankLibrary(ctx: Ctx, userId: string, candidates: RankCand
       if (v < RANKING.reasonMin && k !== 'interest' && k !== 'reinforcement') continue;
       if (k === 'comprehensibility') reasons.push(`About ${pct1(r.coverage)} % of its words are shown understood or likely familiar${r.parts.comprehensibility >= 0.8 ? ', close to what you asked for' : ''}.`);
       else if (k === 'interest' && r.matched.length > 0) reasons.push(`It matches your interest in ${r.matched.join(', ')}.`);
-      else if (k === 'reinforcement' && r.profile.weakItems.length > 0) reasons.push(`It uses ${plural(r.profile.weakItems.length, 'word')} or phrase${r.profile.weakItems.length === 1 ? '' : 's'} you have met but still need help with, in natural context.`);
+      else if (k === 'reinforcement') {
+        if (r.profile.weakItems.length > 0) reasons.push(`It uses ${plural(r.profile.weakItems.length, 'word')} or phrase${r.profile.weakItems.length === 1 ? '' : 's'} you have met but still need help with, in natural context.`);
+        const practising = r.profile.productiveItems?.length ?? 0;
+        if (practising > 0) reasons.push(`It uses ${plural(practising, 'word')} you are practising saying (GoTell), in natural context.`);
+      }
       else if (k === 'regional' && r.parts.regional >= 0.8) reasons.push('It is written in the variety of the language you are learning.');
       else if (k === 'novelty' && !r.c.alreadyRead) reasons.push('You have not read it yet.');
       else if (k === 'quality' && r.parts.quality >= 0.9) reasons.push('It is published, with its rights on record.');

@@ -350,6 +350,7 @@ export function ReadPage() {
           </Link>
         )}
         <p className="card__note"><Link to="/team-texts">Team Texts</Link> · what your team reads</p>
+        {(lang === 'th' || lang === 'hi') && <p className="card__note"><Link to="/alphabet">Alphabet</Link> · learn the letters, 10 at a time</p>}
         {tags.length > 0 && (
           <div className="segmented lib__tags" role="group" aria-label="Pathways">
             <button type="button" aria-pressed={tag === null} onClick={() => setTag(null)}>all</button>

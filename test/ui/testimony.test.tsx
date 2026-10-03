@@ -3,6 +3,7 @@ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { ids } from '../../src/core';
 import type { AudioPlayed, ShadowingAttempt, UserRecordingCreated } from '../../src/core';
 import { Testimony } from '../../src/ui/testimony/Testimony';
+import { setPref } from '../../src/ui/prefs';
 import { button, byLabel, click, flush, installMediaStubs, makeHarness, q, qa, suggestion, type as typeInto } from './harness';
 import type { Harness, Mounted } from './harness';
 import { seedStory } from './fixtures';
@@ -148,13 +149,32 @@ describe('My Testimony editor', () => {
 describe('My Testimony rehearsal', () => {
   async function saved() {
     h = await makeHarness();
+    setPref('preview', true); // the fixture player is available only under the explicit preview opt-in
     mounted = await h.mount(<Testimony />);
     await typeInto(editor(), 'Yo creo en Dios. Dios me perdonó.');
     await click(button(mounted.container, 'Save this version'));
+    // The UI harness uses readable fake asset IDs. Mark these rows honestly as non-speech preview tones;
+    // the player may expose them only through its explicit preview-fixture path.
+    const manifest = await h.listen.getManifest(TEXT_ID);
+    for (const segmentId of manifest?.segmentIds ?? []) {
+      const segment = await h.listen.getSegment(segmentId);
+      const asset = segment?.assetId ? await h.listen.getAsset(segment.assetId) : undefined;
+      if (asset) await h.store.audioAssets.put({
+        ...asset, sourceType: 'generated-tts', audioKind: 'synthetic', isSpeech: false,
+        rights: { id: `preview-fixture:${asset.id}`, status: 'pending', recordingOwner: 'local test fixture', recordingBasis: 'generated sine tone; preview test only',
+          performanceOwner: 'fixture', performancePermission: 'no production grant', playInApp: false, stream: false, offline: false,
+          redistribute: false, segment: false, transform: false, textDerivative: 'unknown', providerRetention: 'unknown' },
+      });
+    }
   }
 
   it('rehearses from the private testimony Text manifest with the shared Player (real segment ids, fixture badge, pitch kept)', async () => {
     await saved();
+    expect(await h.store.audioAssets.get('asset:1-1')).toMatchObject({ sourceType: 'generated-tts', audioKind: 'synthetic', isSpeech: false });
+    // Reload after the test fixture metadata is applied so Player sees the opt-in preview source at mount time.
+    await mounted!.unmount();
+    mounted = await h.mount(<Testimony />);
+    await flush();
     const rev = (await h.tell.listRevisions('tst:u1:es'))[0];
     expect(rev.textId).toBe(TEXT_ID);
     expect((await h.store.texts.get(TEXT_ID))!.kind).toBe('testimony');

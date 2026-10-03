@@ -13,15 +13,43 @@
  */
 import { beforeAll, describe, expect, it } from 'vitest';
 import type { DomainEvent, GrammarHelpOpened, PhraseHelpOpened, Sentence, Text, TextViewed } from '../../src/core';
+import type { AudioGenerationAuthorization, EnsureAudioOptions } from '../../src/core/contracts/golisten';
 import { ids } from '../../src/core';
 import { applyReview, contentHistory, importDocuments, validateBatch } from '../../src/ingest';
 import type { CorpusDocument } from '../../src/ingest';
-import { listeningEmitter } from '../../src/golisten';
+import { canonicalTextSha256, editionIdOf, listeningEmitter, releaseIdOf } from '../../src/golisten';
 import { SyntheticSpeechProvider, bundled, bundledDoc, liveSentences, makeApp, makeClock, reader, seedUser, tokensOf } from './harness';
 
 const USER = 'loop-es';
 const LANG = 'es' as const;
 const form = (s: string) => ids.form(LANG, s);
+
+/** Test-only grant for the mocked speech provider; it records exact release scope and no retention. */
+async function ensureAuthorizedTestSpeech(app: ReturnType<typeof makeApp>, textId: string, options: EnsureAudioOptions = {}) {
+  const text = await app.store.texts.get(textId);
+  if (!text) throw new Error(`Missing test text ${textId}`);
+  const live = (await app.store.sentences.where('textId', textId)).filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
+  const voice = options.voiceConfigId ? await app.store.voices.get(options.voiceConfigId) : await app.golisten.resolveVoice(text.lang);
+  if (!voice) throw new Error('The test speech provider did not resolve a voice');
+  const rights: AudioGenerationAuthorization['rights'] = {
+    id: `test-only:${voice.providerId}:${text.id}`, status: 'approved', recordingOwner: 'test-only mock provider', recordingBasis: 'explicit integration-test authorization',
+    performanceOwner: voice.providerId, performancePermission: 'Mock output only; no external retention', playInApp: true, stream: true, offline: false,
+    redistribute: false, segment: true, transform: false, textDerivative: 'allowed', providerRetention: 'none', providerId: voice.providerId,
+    providerTerms: 'Test mock only; no retention or redistribution',
+  };
+  const generationAuthorization: AudioGenerationAuthorization = { rights, textBinding: {
+    textId, contentVersion: text.contentVersion, textSha256: await canonicalTextSha256(textId, text.contentVersion, live),
+    releaseId: releaseIdOf(text), editionId: editionIdOf(text),
+  } };
+  const result = await app.golisten.ensureAudio(textId, { ...options, generationAuthorization });
+  // The mocked WAV passes technical validation; this remains test-only metadata, not an acoustic review.
+  for (const segmentId of result.manifest.segmentIds) {
+    const segment = await app.golisten.getSegment(segmentId);
+    const asset = segment?.assetId ? await app.golisten.getAsset(segment.assetId) : undefined;
+    if (asset) await app.store.audioAssets.put({ ...asset, qualityState: 'machine_checked' });
+  }
+  return result;
+}
 
 describe('one complete acquisition loop — Spanish', () => {
   const clock = makeClock();
@@ -259,7 +287,7 @@ describe('one complete acquisition loop — Spanish', () => {
     await expect(app.golisten.ensureAudio(revisionTextId, { runNow: true })).rejects.toMatchObject({ name: 'AudioUnavailable' });
 
     const live = makeApp({ store: app.store, clock, providers: [speech] }); // TEST-ONLY stand-in for a configured provider
-    const r = await live.golisten.ensureAudio(revisionTextId, { runNow: true });
+    const r = await ensureAuthorizedTestSpeech(live, revisionTextId, { runNow: true });
     const segs = await Promise.all(r.manifest.segmentIds.map((id) => live.golisten.getSegment(id)));
     expect(segs.map((s) => s!.displayText)).toEqual([OWN, 'Dios ama al mundo.']); // the exact saved version
     expect((await live.golisten.audioStatus(revisionTextId)).state).toBe('preview-only'); // voice not auditioned
@@ -270,7 +298,8 @@ describe('one complete acquisition loop — Spanish', () => {
     const seg = segs[0]!;
     await em.played({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, { speed: 0.9, transcriptVisible: false });
     await em.replayed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, { speed: 0.9, transcriptVisible: false });
-    await em.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, { speed: 0.9, transcriptVisible: false });
+    await em.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, { speed: 0.9, transcriptVisible: false }, { heardCoverageRatio: 1 });
+    await live.golearn.settled();
     const after = (await live.golearn.getItemState(USER, form('pecado')))!;
     expect(after.listening).toMatchObject({ level: 'encountered', evidence: 0 }); // heard ≠ understood by ear
     expect(after.listening.exposures).toBe(before.listening.exposures + 1);
@@ -279,7 +308,7 @@ describe('one complete acquisition loop — Spanish', () => {
 
   it('12 — revising the imported text: version history, analysis and audio follow; learner history stays', async () => {
     const live = makeApp({ store: app.store, clock, providers: [speech] });
-    const a1 = await live.golisten.ensureAudio(storyId, { runNow: true });
+    const a1 = await ensureAuthorizedTestSpeech(live, storyId, { runNow: true });
     await live.golisten.setVoiceReview(a1.manifest.voiceConfigId, 'reviewed', 'synthetic');
     expect((await live.golisten.audioStatus(storyId)).state).toBe('ready');
     const target = S.find((s) => s.text === 'Dios ama al mundo.')!;
@@ -319,7 +348,7 @@ describe('one complete acquisition loop — Spanish', () => {
     expect(await live.golearn.readingProgress(USER, storyId)).toMatchObject({ contentVersion: 2, sentencesTotal: S.length, sentencesSeen: S.length - 1 });
     // Audio: stale until regenerated; only the changed sentence is synthesized again.
     expect((await live.golisten.audioStatus(storyId)).state).toBe('stale');
-    const a2 = await live.golisten.ensureAudio(storyId, { runNow: true });
+    const a2 = await ensureAuthorizedTestSpeech(live, storyId, { runNow: true });
     expect([a2.created, a2.reused]).toEqual([1, S.length - 1]);
     expect((await live.golisten.audioStatus(storyId)).state).toBe('ready');
     // What he learned from the retired sentence is still his: "al" remains sourced to the sentence he actually read.

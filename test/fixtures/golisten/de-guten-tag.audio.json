@@ -1,0 +1,40 @@
+{
+  "id": "commons-de-guten-tag-2007-qa",
+  "textId": "text:de:golisten-guten-tag-qa",
+  "contentVersion": 1,
+  "textSha256": "da3216f5a97f54772b0d5f92b196df30f6fbdfec19f0a749eba7442737cf150b",
+  "releaseId": "text:de:golisten-guten-tag-qa@1",
+  "lang": "de",
+  "locale": "de-DE",
+  "narrator": "Beagle Beck (attributed as assumed by Commons)",
+  "variety": "de-DE",
+  "kind": "human",
+  "qualityState": "machine_checked",
+  "recording": {
+    "owner": "Beagle Beck (uploader copyright-holder statement)",
+    "basis": "PD-self statement at https://commons.wikimedia.org/wiki/File:De-Guten_Tag.oga (oldid 888223486)",
+    "license": "Public-domain dedication worldwide; unconditional any-purpose fallback grant",
+    "attribution": "Recording uploaded by Beagle Beck, Wikimedia Commons, 27 February 2007; PD-self. Author is attributed as assumed in source metadata."
+  },
+  "performance": {
+    "performer": "Beagle Beck (own work assumed in source metadata)",
+    "permission": "Uploader copyright-holder/own-work statement grants any-purpose use; no independent performer investigation claimed"
+  },
+  "rights": {
+    "status": "approved",
+    "playInApp": true,
+    "stream": true,
+    "offline": true,
+    "redistribute": true,
+    "segment": true,
+    "transform": true
+  },
+  "coverage": [
+    {
+      "sentenceId": "text:de:golisten-guten-tag-qa/sgreeting",
+      "startMs": 0,
+      "endMs": 2639.8185941043084,
+      "reviewState": "checked"
+    }
+  ]
+}

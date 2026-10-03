@@ -4,6 +4,7 @@ import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import type { AudioAbandoned, AudioPlayed, AudioSegmentCompleted } from '../../src/core';
 import { ids } from '../../src/core';
 import { Player } from '../../src/ui/player/Player';
+import { setPref } from '../../src/ui/prefs';
 import { button, click, flush, installMediaStubs, makeHarness, q, qa, seedAudio, sleep } from './harness';
 import type { Harness, Mounted } from './harness';
 import { STORY_ID, seedStory } from './fixtures';
@@ -86,23 +87,37 @@ describe('Player — every audio state, driven by golisten.audioStatus', () => {
     expect(h.listen.ensureAudio).toHaveBeenCalledWith(STORY_ID, { runNow: true });
   });
 
-  it('preview-only (placeholder sound): playable, badged, and says plainly that it does not count', async () => {
+  it('unreviewed real recording: playable, exposure-counted, and clearly marked as not evidence-eligible', async () => {
     await setup();
     mounted = await h.mount(<Player textId={STORY_ID} />);
     expect(state()).toBe('preview-only');
-    expect(q(mounted.container, '[data-testid="fixture-badge"]')!.textContent).toBe('fixture audio — not speech');
-    expect(q(mounted.container, '[data-testid="preview-audio-badge"]')!.textContent).toBe('preview audio — not counted');
-    expect(q(mounted.container, '[data-testid="preview-audio-note"]')!.textContent).toContain('does not count toward your progress');
+    expect(q(mounted.container, '[data-testid="fixture-badge"]')).toBeNull();
+    expect(q(mounted.container, '[data-testid="preview-audio-badge"]')!.textContent).toBe('Unreviewed recording');
+    expect(q(mounted.container, '[data-testid="preview-audio-note"]')!.textContent).toContain('You can record listening exposure');
+    expect(q(mounted.container, '[data-testid="preview-audio-note"]')!.textContent).toContain('has not passed human review for listening evidence');
     await click(button(mounted.container, 'Play'));
     expect(media.play).toHaveBeenCalled();
   });
 
-  it('preview-only for a real voice nobody has auditioned: badged, with the reason', async () => {
+  it('keeps non-speech fixture audio clearly marked as not counted', async () => {
+    await setup();
+    for (const id of ['asset:0', 'asset:1', 'asset:2']) {
+      const asset = (await h.store.audioAssets.get(id))!;
+      await h.store.audioAssets.put({ ...asset, sourceType: 'generated-tts', audioKind: undefined, isSpeech: false, rights: undefined, textBinding: undefined, qualityState: undefined, narratorOrVoiceId: undefined });
+    }
+    setPref('preview', true);
+    mounted = await h.mount(<Player textId={STORY_ID} />);
+    expect(q(mounted.container, '[data-testid="fixture-badge"]')!.textContent).toBe('fixture audio — not speech');
+    expect(q(mounted.container, '[data-testid="preview-audio-badge"]')!.textContent).toBe('fixture audio — not counted');
+    expect(q(mounted.container, '[data-testid="preview-audio-note"]')!.textContent).toContain('does not count toward your listening progress');
+  });
+
+  it('preview-only for a real voice nobody has auditioned: distinguishes exposure from evidence', async () => {
     await setup({ listen: { providerId: 'azure', approved: false } });
     mounted = await h.mount(<Player textId={STORY_ID} />);
     expect(state()).toBe('preview-only');
     expect(q(mounted.container, '[data-testid="fixture-badge"]')).toBeNull(); // it IS speech, just not reviewed
-    expect(q(mounted.container, '[data-testid="preview-audio-note"]')!.textContent).toContain('has not been auditioned');
+    expect(q(mounted.container, '[data-testid="preview-audio-note"]')!.textContent).toContain('You can record listening exposure');
   });
 
   it('ready: reviewed real speech plays with no preview badge', async () => {
@@ -133,6 +148,7 @@ describe('Player — listening events say what was played', () => {
     await setup();
     mounted = await h.mount(<Player textId={STORY_ID} />);
     await click(button(mounted.container, 'Play'));
+    await act(async () => { audioEl().currentTime = 0.8; audioEl().dispatchEvent(new Event('timeupdate')); });
     await act(async () => { audioEl().dispatchEvent(new Event('ended')); });
     await flush();
     const played = ((await h.events('AudioPlayed')) as AudioPlayed[])[0];
@@ -143,8 +159,11 @@ describe('Player — listening events say what was played', () => {
 
   it('reviewed real speech is recorded as such', async () => {
     await setup({ listen: { providerId: 'azure', approved: true, actualLocale: 'es-HN' } });
+    const asset = (await h.store.audioAssets.get('asset:0'))!;
+    await h.store.audioAssets.put({ ...asset, qualityState: 'human_reviewed' });
     mounted = await h.mount(<Player textId={STORY_ID} />);
     await click(button(mounted.container, 'Play'));
+    await act(async () => { audioEl().currentTime = 0.8; audioEl().dispatchEvent(new Event('timeupdate')); });
     await act(async () => { audioEl().dispatchEvent(new Event('ended')); });
     await flush();
     expect(((await h.events('AudioSegmentCompleted')) as AudioSegmentCompleted[])[0]).toMatchObject({ speech: true, voiceReviewed: true, assetId: 'asset:0' });

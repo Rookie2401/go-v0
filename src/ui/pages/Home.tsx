@@ -32,6 +32,7 @@ interface LastRead { text: Text; corpus?: string }
 
 const ENTRIES: Array<{ to: string; name: string; sub: string }> = [
   { to: '/read', name: 'Read', sub: 'Stories and dialogues' },
+  { to: '/listen', name: 'GoListen', sub: 'Understand stories and Scripture by listening' },
   { to: '/scripture', name: 'Scripture', sub: 'The Bible, prepared for you' },
   { to: '/testimony', name: 'My Testimony', sub: 'Write it in your own words' },
   { to: '/team-texts', name: 'Team Texts', sub: 'GoRead — what your team reads' },

@@ -1,7 +1,7 @@
 /**
  * GoLearn — learner state, coverage and recommendations on top of the shared AppStore and EventBus.
  * Events are the only write path: `attach()` subscribes to the bus, `handle()` folds one event, `rebuild()`
- * replays the log. See policy.ts for every weight/threshold (`evidence@6`) and fold.ts for what each event does.
+ * replays the log. See policy.ts for every weight/threshold (`evidence@7`) and fold.ts for what each event does.
  *
  * CONSISTENT READS. Folds are serialized in one queue. Every public READ is a queue entry too: it runs after every
  * fold queued before it and before any fold queued after it, so it can never observe a half-applied fold, whatever

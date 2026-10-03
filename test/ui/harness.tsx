@@ -28,6 +28,7 @@ import type {
 import type { Stream, Work } from '../../src/core';
 import { THAI_COURSE_ID, THAI_STAGES, THAI_WORKS, createCourseCatalog } from '../../src/course';
 import { createMemoryLexiconSource } from '../../src/dict';
+import { canonicalTextSha256, editionIdOf, releaseIdOf } from '../../src/golisten/rights';
 import { epubToDocuments } from '../../src/ingest';
 import { plainTextToDocuments } from '../../src/ingest/plaintext';
 import type { PlainTextOptions, PlainTextResult } from '../../src/ingest/plaintext';
@@ -766,23 +767,29 @@ export function installMediaStubs() {
 /** Seed a ready manifest of N sentences for `textId` with the given voice. */
 export async function seedAudio(store: AppStore, voice: VoiceConfig, textId: string, sentenceIds: string[], tag = ''): Promise<AudioManifest> {
   await store.voices.put(voice);
+  const text = (await store.texts.get(textId))!;
+  const liveSentences = (await store.sentences.where('textId', textId)).filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
+  const textSha256 = await canonicalTextSha256(textId, text.contentVersion, liveSentences);
   const segmentIds: string[] = [];
   for (let i = 0; i < sentenceIds.length; i++) {
     const sentence = (await store.sentences.get(sentenceIds[i]))!;
     const asset: AudioAsset = {
-      id: `asset:${tag}${i}`, sourceType: 'generated-tts', lang: 'es', locale: voice.actualLocale, mime: 'audio/wav', sampleRate: 22050, channels: 1, durationMs: 800, bytes: 10,
-      checksum: 'x', createdAt: '2026-01-01T00:00:00.000Z', isSpeech: voice.isSpeech,
+      id: `asset:${tag}${i}`, sourceType: 'human-recording', audioKind: 'human', lang: text.lang, locale: voice.actualLocale, mime: 'audio/wav', sampleRate: 22050, channels: 1, durationMs: 800, bytes: 10,
+      checksum: 'x', createdAt: '2026-01-01T00:00:00.000Z', isSpeech: true, qualityState: 'machine_checked',
+      narratorOrVoiceId: 'Test narrator',
+      rights: { id: `rights:${tag}${i}`, status: 'approved', recordingOwner: 'Test recorder', recordingBasis: 'Local UI test recording', performanceOwner: 'Test narrator', performancePermission: 'Permission granted for local UI tests', playInApp: true, stream: true, offline: false, redistribute: false, segment: true, transform: false, reviewedAt: '2026-10-03T00:00:00.000Z' },
+      textBinding: { textId, contentVersion: text.contentVersion, textSha256, releaseId: releaseIdOf(text), editionId: editionIdOf(text) },
     };
     await store.audioAssets.put(asset);
     const seg: AudioSegment = {
-      id: `seg:${tag}${i}`, cacheKey: `ck${tag}${i}`, lang: 'es', sentenceIds: [sentenceIds[i]], textId, displayText: sentence.text, speechText: sentence.text, speechNormalization: [],
-      pronunciationOverridesUsed: [], voiceConfigId: voice.id, assetId: asset.id, status: 'ready', sequence: i, contentVersion: 1,
+      id: `seg:${tag}${i}`, cacheKey: `ck${tag}${i}`, lang: text.lang, sentenceIds: [sentenceIds[i]], textId, displayText: sentence.text, speechText: sentence.text, speechNormalization: [],
+      pronunciationOverridesUsed: [], voiceConfigId: voice.id, assetId: asset.id, status: 'ready', sequence: i, contentVersion: text.contentVersion,
     };
     await store.audioSegments.put(seg);
     segmentIds.push(seg.id);
   }
   const manifest: AudioManifest = {
-    id: ids.manifest(textId, voice.id, 1), textId, lang: 'es', voiceConfigId: voice.id, contentVersion: 1, segmentIds, complete: true,
+    id: ids.manifest(textId, voice.id, text.contentVersion), textId, lang: text.lang, voiceConfigId: voice.id, contentVersion: text.contentVersion, segmentIds, complete: true,
     createdAt: '2026-01-01T00:00:00.000Z', updatedAt: '2026-01-01T00:00:00.000Z',
   };
   await store.manifests.put(manifest);

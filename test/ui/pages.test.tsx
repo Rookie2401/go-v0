@@ -59,7 +59,8 @@ describe('Library and routes', () => {
     await seedAudio(h.store, h.voice, STORY_ID, [0, 1, 2].map((i) => ids.sentence(STORY_ID, i)));
     mounted = await h.mount(app(), { router: `/read/${encodeURIComponent(STORY_ID)}` });
     expect(q(mounted.container, 'article.reader')!.getAttribute('data-mode')).toBe('corpus');
-    expect(q(mounted.container, '[data-testid="fixture-badge"]')).not.toBeNull();
+    expect(q(mounted.container, '[data-testid="fixture-badge"]')).toBeNull();
+    expect(q(mounted.container, '[data-testid="audio-source-kind"]')!.textContent).toBe('Human recording');
     expect(qa(mounted.container, 'button.tok').length).toBeGreaterThan(5);
     expect(q(mounted.container, '.prepare')).toBeNull(); // preparation is for scripture
   });
@@ -98,7 +99,7 @@ describe('Library and routes', () => {
     expect(rows[0].textContent).toContain('Mostly words you already know.');
     expect(rows[1].getAttribute('href')).toBe('/testimony');
     // no persistent nav strip: the doorway entries, then the quiet links
-    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Read', 'Scripture', 'My Testimony', 'Team Texts']);
+    expect(qa(mounted.container, 'nav[aria-label="Start here"] .home__entry-name').map((a) => a.textContent)).toEqual(['Read', 'GoListen', 'Scripture', 'My Testimony', 'Team Texts']);
     expect(qa(mounted.container, '.home__links a').map((a) => a.textContent)).toEqual(['Settings', 'Vocabulary']);
     expect(q(mounted.container, 'nav[aria-label="Main"]')).toBeNull();
   });

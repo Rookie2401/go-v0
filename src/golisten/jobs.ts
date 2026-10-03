@@ -22,6 +22,7 @@ import { describeError } from './errors';
 import { usability } from './providers';
 import { PIPELINE_NORMALIZER_SUFFIX, addMs, type Runtime } from './types';
 import { inspectWav } from './wav';
+import { sha256Hex } from './rights';
 
 const STALE_RUNNING_MS = 60_000;
 const DURATION_TOLERANCE_MS = 100;
@@ -151,13 +152,19 @@ async function synthesizeAndStore(rt: Runtime, segment: AudioSegment): Promise<{
   let asset = await rt.store.audioAssets.get(assetId);
   if (!asset) {
     asset = {
-      id: assetId, sourceType: 'generated-tts', lang: segment.lang, locale: result.actualLocale, mime: result.mime,
+      id: assetId, sourceType: 'generated-tts', audioKind: 'synthetic', lang: segment.lang, locale: result.actualLocale, mime: result.mime,
       isSpeech: provider.isSpeech === true, // a non-speech provider's audio can never earn listening evidence
       sampleRate: measured.sampleRate, channels: measured.channels, durationMs: Math.round(measured.durationMs), bytes: result.bytes.length,
-      checksum: assetId, createdAt: rt.clock(),
+      checksum: await sha256Hex(result.bytes), createdAt: rt.clock(),
+      narratorOrVoiceId: voice.voiceId,
+      // Synthesis terms cannot be inferred from permission to display text. Untyped legacy jobs remain blocked.
+      rights: segment.generationRights ?? { id: `rights:unresolved:${assetId}`, status: 'pending', recordingOwner: 'unknown', recordingBasis: 'unknown',
+        performanceOwner: provider.id, performancePermission: 'provider terms not recorded', playInApp: false, stream: false,
+        offline: false, redistribute: false, segment: false, transform: false, textDerivative: 'unknown', providerRetention: 'unknown' },
+      textBinding: segment.textBinding,
       generation: {
         providerId: provider.id, engine: result.engine ?? voice.engine, voiceId: voice.voiceId, settings: { ...rt.settings },
-        sourceTextHash: hash(segment.displayText), speechTextHash: hash(segment.speechText),
+        sourceTextHash: hash(segment.displayText), sourceTextSha256: await sha256Hex(new TextEncoder().encode(segment.displayText)), speechTextHash: hash(segment.speechText),
         normalizerVersion: `${adapter.speechNormalize(segment.displayText).normalizerVersion}+${PIPELINE_NORMALIZER_SUFFIX}`,
         pronunciationLexiconVersion: lexiconVersionOf(entries), softwareVersion: `${rt.softwareVersion}; ${provider.id}@${provider.version}`,
       },

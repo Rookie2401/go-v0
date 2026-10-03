@@ -40,7 +40,7 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
       const text = await store.texts.get(textId);
       const corpus = text ? await store.corpora.get(text.corpusId) : undefined;
       let next: Gate;
-      if (!text || isTestimonyText(text, corpus ? new Map([[corpus.id, corpus]]) : undefined)) next = { state: 'missing' };
+      if (!text || text.listeningAssessmentId !== undefined || isTestimonyText(text, corpus ? new Map([[corpus.id, corpus]]) : undefined)) next = { state: 'missing' };
       else if (text.lang !== lang) next = { state: 'language', textLang: text.lang };
       else if (text.published !== true && !preview) next = { state: 'unpublished', reasons: plainReasons(text.unpublishedReasons ?? []) };
       else next = { state: 'ok' };
@@ -83,7 +83,7 @@ export function TextPage({ mode }: { mode: 'corpus' | 'scripture' }) {
       activeSentenceId={listen && info?.state.playing ? info.segment?.sentenceIds[0] : undefined}
       concealed={listen ? info?.concealed : undefined}
       before={<>{mode === 'scripture' && <PreparePanel textId={textId} />}<DifficultyPreview textId={textId} /></>}
-      bar={listen ? <Player key={`player:${textId}`} textId={textId} onChange={onChange} /> : undefined}
+      bar={listen ? <Player key={`player:${textId}`} textId={textId} onChange={onChange} allowSynthesis={false} /> : undefined}
     />
   );
 }
@@ -137,7 +137,7 @@ export function PreparePanel({ textId }: { textId: string }) {
       const found = rows.filter((t): t is Text => !!t);
       setPrepTexts(new Map(found.map((t) => [t.id, t])));
       // Never offer private testimony texts, nor unpublished ones outside preview.
-      const hidden = new Set(found.filter((t) => isTestimonyText(t) || (t.published !== true && !preview)).map((t) => t.id));
+      const hidden = new Set(found.filter((t) => t.listeningAssessmentId !== undefined || isTestimonyText(t) || (t.published !== true && !preview)).map((t) => t.id));
       setReadiness({ ...r, preparatoryTexts: r.preparatoryTexts.filter((p) => !hidden.has(p.textId)) });
     } catch (e) {
       setError(e instanceof Error ? e.message : String(e));

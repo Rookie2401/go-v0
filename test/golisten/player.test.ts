@@ -18,6 +18,12 @@ function run(m0: PlayerModel, actions: PlayerAction[]) {
 }
 const emits = (fx: PlayerEffect[]): PlayerEmit[] => fx.flatMap((f) => (f.type === 'emit' ? [f.emit] : []));
 const names = (fx: PlayerEffect[]) => emits(fx).map((e) => e.event);
+function finish(m: PlayerModel) {
+  const seg = m.manifest.segments[m.segmentIndex];
+  const end = seg.rangeMs?.endMs ?? seg.durationMs ?? 0;
+  const observed = reducePlayer(m, { type: 'position', ms: end, observedAtMs: 2000 });
+  return reducePlayer(observed.model, { type: 'ended' });
+}
 
 describe('player state machine: basics', () => {
   it('starts at the first playable segment, paused, speed 1, transcript hidden, no loop', () => {
@@ -81,10 +87,10 @@ describe('player state machine: basics', () => {
 describe('player state machine: navigation', () => {
   it('ended emits completed and auto-advances; the last segment finishes playback; play then restarts', () => {
     let { m } = run(createPlayerModel(manifest([true, true])), [{ type: 'play' }]);
-    const r1 = reducePlayer(m, { type: 'ended' });
+    const r1 = finish(m);
     expect(names(r1.effects)).toEqual(['completed', 'seeked', 'played']);
     expect(r1.model).toMatchObject({ segmentIndex: 1, playing: true, started: true, completed: false });
-    const r2 = reducePlayer(r1.model, { type: 'ended' });
+    const r2 = finish(r1.model);
     expect(names(r2.effects)).toEqual(['completed']);
     expect(r2.model).toMatchObject({ playing: false, finished: true });
     const again = reducePlayer(r2.model, { type: 'play' });
@@ -108,7 +114,9 @@ describe('player state machine: navigation', () => {
   });
 
   it('prev restarts the current segment when more than 2 s in, otherwise goes back', () => {
-    const m0 = run(createPlayerModel(manifest()), [{ type: 'play' }, { type: 'next' }, { type: 'position', ms: 500 }]).m;
+    const longManifest = manifest();
+    longManifest.segments[1] = { ...longManifest.segments[1], durationMs: 5000 };
+    const m0 = run(createPlayerModel(longManifest), [{ type: 'play' }, { type: 'next' }, { type: 'position', ms: 500 }]).m;
     expect(reducePlayer(m0, { type: 'prev' }).model.segmentIndex).toBe(0);
     const late = reducePlayer(m0, { type: 'position', ms: 3000 }).model;
     const r = reducePlayer(late, { type: 'prev' });
@@ -140,7 +148,7 @@ describe('player state machine: navigation', () => {
     const unstarted = reducePlayer(createPlayerModel(manifest()), { type: 'next' });
     expect(names(unstarted.effects)).not.toContain('abandoned');
     const ended = run(createPlayerModel(manifest()), [{ type: 'play' }, { type: 'position', ms: 600 }, { type: 'ended' }]);
-    expect(names(ended.effects).filter((n) => n === 'abandoned')).toEqual([]);
+    expect(names(ended.effects).filter((n) => n === 'abandoned')).toEqual(['abandoned']);
   });
 
   it('prefetches a window ahead of the current segment, skipping unready ones and never repeating', () => {
@@ -177,10 +185,11 @@ describe('player state machine: replay and loops', () => {
     const r2 = reducePlayer(r1.model, { type: 'replay' });
     expect(r2.model.replayCount).toBe(2);
     m = r2.model;
-    const end = reducePlayer(m, { type: 'ended' });
+    const end = finish(m);
     expect(emits(end.effects)[0]).toMatchObject({ event: 'completed', replayCount: 2 });
     // play after a completed (non-advancing) pass is a deliberate replay
-    const nonAdv = run(createPlayerModel(manifest(), { autoAdvance: false }), [{ type: 'play' }, { type: 'ended' }]);
+    const nonAdvFirst = reducePlayer(createPlayerModel(manifest(), { autoAdvance: false }), { type: 'play' }).model;
+    const nonAdv = { m: finish(nonAdvFirst).model, effects: finish(nonAdvFirst).effects };
     expect(nonAdv.m).toMatchObject({ playing: false, completed: true, finished: false, segmentIndex: 0 });
     expect(names(reducePlayer(nonAdv.m, { type: 'play' }).effects)).toEqual(['replayed']);
   });
@@ -189,20 +198,70 @@ describe('player state machine: replay and loops', () => {
     let m = run(createPlayerModel(manifest()), [{ type: 'play' }, { type: 'setLoop', unit: 'sentence' }]).m;
     expect(m.loop).toEqual({ unit: 'sentence', alignmentId: undefined });
     for (let i = 1; i <= 3; i++) {
-      const r = reducePlayer(m, { type: 'ended' });
+      const r = finish(m);
       expect(names(r.effects)).toEqual(['completed', 'replayed']);
       expect(r.effects).toContainEqual({ type: 'seek', ms: 0 });
       expect(r.model).toMatchObject({ segmentIndex: 0, playing: true, replayCount: i });
       m = r.model;
     }
     m = reducePlayer(m, { type: 'setLoop', unit: 'none' }).model;
-    expect(reducePlayer(m, { type: 'ended' }).model.segmentIndex).toBe(1);
+    expect(finish(m).model.segmentIndex).toBe(1);
+  });
+
+  it('requires fresh observed coverage for every loop pass and restarts a ranged sentence at its offset', () => {
+    const ranged = { ...manifest([true]), segments: [{ ...seg(0), rangeMs: { startMs: 200, endMs: 1500 } }] };
+    let m = run(createPlayerModel(ranged), [{ type: 'play' }, { type: 'setLoop', unit: 'sentence' }, { type: 'position', ms: 1500, observedAtMs: 1300 }]).m;
+    const first = reducePlayer(m, { type: 'ended' });
+    expect(names(first.effects)).toEqual(['completed', 'replayed']);
+    expect(first.effects).toContainEqual({ type: 'seek', ms: 200 });
+    expect(first.model.heardRanges).toEqual([]);
+    // A duplicate end or seek to the end on pass two has no new observed coverage.
+    expect(names(reducePlayer(first.model, { type: 'ended' }).effects)).toEqual(['abandoned']);
+    const seeked = reducePlayer(first.model, { type: 'seekPosition', ms: 1490 });
+    const end = reducePlayer(seeked.model, { type: 'ended' });
+    expect(names(end.effects)).toEqual(['abandoned']);
+  });
+
+  it('seeking after completion starts a fresh pass at the chosen point instead of resetting to zero', () => {
+    const completed = finish(run(createPlayerModel(manifest([true])), [{ type: 'play' }]).m).model;
+    expect(completed.completed).toBe(true);
+    const seek = reducePlayer(completed, { type: 'seekPosition', ms: 1000 });
+    expect(seek.model).toMatchObject({ positionMs: 1000, completed: false, finished: false, started: false, heardRanges: [] });
+    expect(names(seek.effects)).toEqual(['replayed']);
+    const play = reducePlayer(seek.model, { type: 'play' });
+    expect(play.model.positionMs).toBe(1000);
+    const end = reducePlayer(reducePlayer(play.model, { type: 'position', ms: 1500, observedAtMs: 1000 }).model, { type: 'ended' });
+    expect(names(end.effects)).toEqual(['abandoned']);
+  });
+
+  it('applies a paused user seek and a restored checkpoint to the media element before Play', () => {
+    const fresh = createPlayerModel(manifest([true]));
+    const selected = reducePlayer(fresh, { type: 'seekPosition', ms: 1000 });
+    expect(selected.model.positionMs).toBe(1000);
+    expect(selected.effects).toEqual([{ type: 'seek', ms: 1000 }]);
+    const playSelected = reducePlayer(selected.model, { type: 'play' });
+    expect(playSelected.effects.slice(0, 3)).toEqual([
+      { type: 'load', segmentIndex: 0, segmentId: 'seg:0', assetId: 'asset:0' },
+      { type: 'seek', ms: 1000 },
+      { type: 'setRate', rate: 1, preservesPitch: true },
+    ]);
+    expect(emits(playSelected.effects).map((e) => e.event)).toEqual(['played']);
+
+    const restored = reducePlayer(fresh, { type: 'restorePosition', segmentId: 'seg:0', positionMs: 1000 });
+    expect(restored.model.positionMs).toBe(1000);
+    expect(emits(restored.effects)).toEqual([]);
+    const playRestored = reducePlayer(restored.model, { type: 'play' });
+    expect(playRestored.effects).toContainEqual({ type: 'seek', ms: 1000 });
+    expect(emits(playRestored.effects).map((e) => e.event)).toEqual(['played']);
   });
 
   it('a phrase loop needs a real aligned range; position past its end seeks back and emits phraseReplayed', () => {
-    const m0 = run(createPlayerModel(manifest()), [{ type: 'play' }]).m;
+    const phraseManifest = { ...manifest(), segments: manifest().segments.map((s, i) => i === 0 ? { ...s, reviewedAlignmentIds: ['al:1'], reviewedAlignmentRanges: [{ id: 'al:1', unitId: 'po:1', unit: 'phrase' as const, startMs: 400, endMs: 900 }] } : s) };
+    const m0 = run(createPlayerModel(phraseManifest), [{ type: 'play' }]).m;
     expect(reducePlayer(m0, { type: 'setLoop', unit: 'phrase' }).model.loop.unit).toBe('none'); // no range: refused
     expect(reducePlayer(m0, { type: 'setLoop', unit: 'phrase', alignmentId: 'al:1', range: { startMs: 500, endMs: 500 } }).model.loop.unit).toBe('none');
+    expect(reducePlayer(m0, { type: 'setLoop', unit: 'phrase', alignmentId: 'al:1', unitId: 'po:1', range: { startMs: 401, endMs: 900 } }).model.loop.unit).toBe('none'); // caller cannot substitute a made-up range
+    expect(reducePlayer(m0, { type: 'setLoop', unit: 'phrase', alignmentId: 'al:1', unitId: 'po:other', range: { startMs: 400, endMs: 900 } }).model.loop.unit).toBe('none');
     const m1 = reducePlayer(m0, { type: 'setLoop', unit: 'phrase', alignmentId: 'al:1', unitId: 'po:1', range: { startMs: 400, endMs: 900 } }).model;
     expect(m1.loop).toEqual({ unit: 'phrase', alignmentId: 'al:1' });
     expect(reducePlayer(m1, { type: 'position', ms: 700 }).effects).toEqual([]);
@@ -226,7 +285,7 @@ describe('player state machine: transcript modes', () => {
     expect(isTranscriptVisible(rcPlaying, 1)).toBe(false);
     const ra = run(at('reveal-after'), [{ type: 'play' }]).m;
     expect(isTranscriptVisible(ra, 0)).toBe(false); // hidden while listening
-    const done = reducePlayer(ra, { type: 'ended' }).model; // advanced to 1
+    const done = finish(ra).model; // advanced to 1
     expect(isTranscriptVisible(done, 0)).toBe(true); // revealed after
     expect(isTranscriptVisible(done, 1)).toBe(false);
   });
@@ -236,23 +295,36 @@ describe('player state machine: transcript modes', () => {
     const rev = reducePlayer(m0, { type: 'revealTranscript' });
     expect(emits(rev.effects)).toEqual([{ event: 'transcriptRevealed', segmentIndex: 0, view: { speed: 1, transcriptVisible: true } }]);
     expect(reducePlayer(rev.model, { type: 'revealTranscript' }).effects).toEqual([]);
-    expect(emits(reducePlayer(rev.model, { type: 'ended' }).effects)[0]).toMatchObject({ event: 'completed', revealedTranscript: true });
+    expect(emits(finish(rev.model).effects)[0]).toMatchObject({ event: 'completed', revealedTranscript: true });
     // never revealed -> listened "blind"
-    expect(emits(reducePlayer(m0, { type: 'ended' }).effects)[0]).toMatchObject({ event: 'completed', revealedTranscript: false, view: { transcriptVisible: false } });
+    expect(emits(finish(m0).effects)[0]).toMatchObject({ event: 'completed', revealedTranscript: false, view: { transcriptVisible: false } });
     // reveal-after only reveals once the pass is over, so a completed pass still counts as blind
     const ra = run(at('reveal-after'), [{ type: 'play' }]).m;
-    expect(emits(reducePlayer(ra, { type: 'ended' }).effects)[0]).toMatchObject({ event: 'completed', revealedTranscript: false });
+    expect(emits(finish(ra).effects)[0]).toMatchObject({ event: 'completed', revealedTranscript: false });
     // visible mode: nothing to reveal, and completion says it was visible
     const vis = run(at('visible'), [{ type: 'play' }]).m;
     expect(reducePlayer(vis, { type: 'revealTranscript' }).effects).toEqual([]);
-    expect(emits(reducePlayer(vis, { type: 'ended' }).effects)[0]).toMatchObject({ revealedTranscript: true });
+    expect(emits(finish(vis).effects)[0]).toMatchObject({ revealedTranscript: true });
   });
 
   it('events carry the speed in force at the time', () => {
-    const { effects } = run(at('hidden'), [{ type: 'setSpeed', speed: 0.8 }, { type: 'play' }, { type: 'ended' }]);
-    const e = emits(effects);
+    const started = run(at('hidden'), [{ type: 'setSpeed', speed: 0.8 }, { type: 'play' }]).m;
+    const e = emits(finish(started).effects);
     expect(e.find((x) => x.event === 'played')).toMatchObject({ view: { speed: 0.8 } });
     expect(e.find((x) => x.event === 'completed')).toMatchObject({ view: { speed: 0.8 } });
+  });
+
+  it('does not let visible-to-hidden transcript changes launder a pass', () => {
+    const m = run(at('hidden'), [{ type: 'play' }, { type: 'setTranscriptMode', mode: 'visible' }, { type: 'setTranscriptMode', mode: 'hidden' }]).m;
+    const covered = reducePlayer(m, { type: 'position', ms: 1500, observedAtMs: 1400 }).model;
+    expect(emits(reducePlayer(covered, { type: 'ended' }).effects)[0]).toMatchObject({ event: 'completed', revealedTranscript: true, view: { transcriptVisible: true } });
+  });
+
+  it('paused or not-yet-started position callbacks add no audible coverage', () => {
+    const fresh = reducePlayer(createPlayerModel(manifest()), { type: 'position', ms: 900, observedAtMs: 900 });
+    expect(fresh.model.heardRanges).toEqual([]);
+    const paused = run(at('hidden'), [{ type: 'play' }, { type: 'pause' }]).m;
+    expect(reducePlayer(paused, { type: 'position', ms: 900, observedAtMs: 1200 }).model.heardRanges).toEqual([]);
   });
 });
 

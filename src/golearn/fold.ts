@@ -1,5 +1,5 @@
 /**
- * Event folding — events are the ONLY write path into learner state. Policy `evidence@6`.
+ * Event folding — events are the ONLY write path into learner state. Policy `evidence@7`.
  *
  *  SITTINGS: every evidence event is assigned a sitting derived from event TIME per learner (sitting.ts), never from the
  *  UI's `session` string. Within one sitting there is at most ONE encounter per (user, item, sentence, modality), whatever
@@ -245,6 +245,9 @@ export class Folder {
   // ───────────────────────── dispatch ─────────────────────────
 
   async fold(event: DomainEvent, replay = false): Promise<void> {
+    // Protected assessment material is never training exposure, assistance, comprehension, or production input.
+    // Keep the separate assessment log intact, but do not let its text contaminate learner state.
+    if (await this.isProtectedAssessmentTrainingEvent(event)) return;
     // Every folded evidence event extends its learner's sitting index and `lastAt`, whether or not it changes an item
     // (a 'most' report, a fixture play): live folding then derives exactly what a rebuild from the log derives.
     if (FOLD_TYPE_SET.has(event.type)) await this.sittingOf(event);
@@ -263,6 +266,25 @@ export class Folder {
       case 'ItemMarked': return this.onItemMarked(event);
       default: return; // not evidence (PhraseEncountered is GoLearn's own output; counted on the SentenceViewed)
     }
+  }
+
+  private async isProtectedAssessmentTrainingEvent(e: DomainEvent): Promise<boolean> {
+    const sentenceIds: string[] = [];
+    switch (e.type) {
+      case 'SentenceViewed': case 'TokenHelpOpened': case 'PhraseHelpOpened': case 'GrammarHelpOpened':
+      case 'SentenceExplanationRevealed': case 'DecodingRevealed':
+        sentenceIds.push(e.sentenceId); break;
+      case 'EnglishRescueRevealed': case 'ComprehensionReported':
+        sentenceIds.push(...e.sentenceIds); break;
+      default: return false;
+    }
+    for (const id of sentenceIds) {
+      const sentence = await this.ctx.store.sentences.get(id);
+      if (!sentence) continue;
+      const text = await this.ctx.store.texts.get(sentence.textId);
+      if (text && (text as typeof text & { listeningAssessmentId?: string }).listeningAssessmentId) return true;
+    }
+    return false;
   }
 
   // ───────────────────────── reading ─────────────────────────

@@ -191,9 +191,8 @@ describe('library chapters', () => {
       library: [
         catalogText({ id: 'text:de:bible-psa-23', lang: 'de', title: 'Psalm 23 (Bibliothek)', stream: 'scripture', streams: ['scripture'], chapter: psa23, rights: 'verified-public-domain' }),
         catalogText({ id: 'text:de:bible-psa-24', lang: 'de', title: 'Psalm 24', stream: 'scripture', streams: ['scripture'], chapter: psa23 + 1, rights: 'verified-public-domain' }),
-        // the same chapter under the same title as the resident one, but another id: listed once
-        catalogText({ id: 'text:de:bible-gen-1', lang: 'de', title: '1. Mose 1', stream: 'scripture', streams: ['scripture'], chapter: 1, rights: 'verified-public-domain' }),
-        catalogText({ id: 'text:de:gen-1', lang: 'de', title: 'Doppelt', stream: 'scripture', streams: ['scripture'], chapter: 1, rights: 'verified-public-domain' }),
+        // Same canonical catalog ID: the resident text wins and is listed only once.
+        catalogText({ id: 'text:de:gen-1', lang: 'de', title: '1. Mose 1', stream: 'scripture', streams: ['scripture'], chapter: 1, rights: 'verified-public-domain' }),
       ],
     });
     await seed(h, 'gen-1', '1. Mose 1', 'GEN', 1); // id text:de:gen-1, also in the library: the resident one is listed

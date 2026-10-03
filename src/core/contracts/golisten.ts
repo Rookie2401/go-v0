@@ -2,7 +2,36 @@
  * GoListen service contract. Implementation in src/golisten.
  * Reports listening evidence to GoLearn through events; keeps no mastery score of its own.
  */
-import type { AudioAlignment, AudioAsset, AudioJob, AudioManifest, AudioSegment, AudioValidation, LanguageCode, VoiceConfig } from '../model';
+import type { AudioAlignment, AudioAsset, AudioJob, AudioManifest, AudioRightsRecord, AudioSegment, AudioValidation, LanguageCode, VoiceConfig } from '../model';
+
+/** User-supplied WAV + provenance record. The importer verifies every field against live canonical text. */
+export interface AudioImportManifest {
+  id: string;
+  textId: string;
+  contentVersion: number;
+  /** SHA-256 of JSON.stringify({textId,contentVersion,sentences:[[id,text],...]}) in sentence order. */
+  textSha256: string;
+  /** Must be `${textId}@${contentVersion}`; Bible imports also require the exact selected edition. */
+  releaseId: string;
+  editionId?: string;
+  lang: LanguageCode;
+  locale: string;
+  narrator: string;
+  variety?: string;
+  kind: 'human' | 'synthetic';
+  syntheticProvider?: { id: string; terms: string; retention: 'none' | 'transient' | 'stored' };
+  recording: { owner: string; basis: string; license?: string; attribution?: string };
+  performance: { performer: string; permission: string };
+  rights: Omit<AudioRightsRecord, 'id' | 'recordingOwner' | 'recordingBasis' | 'recordingLicense' | 'performanceOwner' | 'performancePermission' | 'attribution' | 'reviewedAt' | 'providerId' | 'providerTerms'>;
+  /** Explicitly accepted terms for provider use of text; mandatory for synthetic imports. */
+  textDerivative?: 'allowed' | 'denied';
+  qualityState: 'unreviewed' | 'machine_checked' | 'human_reviewed' | 'approved' | 'rejected';
+  coverage: Array<{ sentenceId: string; startMs: number; endMs: number; sourceStart?: number; sourceEnd?: number; reviewState: 'checked' | 'reviewed' }>;
+}
+
+export interface AudioImportResult { manifest: AudioManifest; asset: AudioAsset; imported: number; reused: boolean }
+export interface OfflineAudioPackage { asset: AudioAsset; bytes: Uint8Array; rights: AudioRightsRecord; textBinding: NonNullable<AudioAsset['textBinding']>; alignments: AudioAlignment[] }
+export interface AudioGenerationAuthorization { rights: AudioRightsRecord; textBinding: NonNullable<AudioAsset['textBinding']> }
 
 export interface Voice {
   id: string;
@@ -91,6 +120,11 @@ export interface AudioStatus {
   failedSegments: number;
   /** True only for reviewed real speech: the sole case in which playback may earn listening evidence. */
   evidenceEligible: boolean;
+  playAllowed?: boolean;
+  rightsStatus?: AudioRightsRecord['status'];
+  qualityState?: AudioAsset['qualityState'];
+  sourceType?: AudioAsset['sourceType'];
+  narratorOrVoiceId?: string;
 }
 
 export interface TtsProvider {
@@ -110,6 +144,8 @@ export interface EnsureAudioOptions {
   sentenceIds?: string[]; // subset (e.g. a passage); default: whole text
   /** Run queued jobs now (tests/probes) rather than leaving them for the worker. */
   runNow?: boolean;
+  /** Required for production speech: explicit derivative permission, provider retention terms, and exact text binding. */
+  generationAuthorization?: AudioGenerationAuthorization;
 }
 
 export interface EnsureAudioResult {
@@ -128,7 +164,11 @@ export interface GoListen {
   /** Idempotent: computes cache keys, creates missing segments/jobs, optionally runs them, builds the manifest. */
   ensureAudio(textId: string, opts?: EnsureAudioOptions): Promise<EnsureAudioResult>;
   /** Audio for an arbitrary accepted sentence (testimony). Returns a ready or pending segment. */
-  ensureSentenceAudio(args: { lang: LanguageCode; text: string; ownerId: string; contextId: string; voiceConfigId?: string; runNow?: boolean }): Promise<AudioSegment>;
+  ensureSentenceAudio(args: { lang: LanguageCode; text: string; ownerId: string; contextId: string; voiceConfigId?: string; runNow?: boolean; generationAuthorization?: AudioGenerationAuthorization }): Promise<AudioSegment>;
+  /** Import a verified local PCM WAV bound to one exact text release; no network fetches occur. */
+  importRecording(args: { manifest: AudioImportManifest; bytes: Uint8Array }): Promise<AudioImportResult>;
+  /** Returns bytes and the complete rights/binding metadata only when offline use is explicitly granted. */
+  offlinePackage(assetId: string): Promise<OfflineAudioPackage | undefined>;
   /** Process queued/retryable jobs. Returns number processed. */
   runJobs(opts?: { max?: number; now?: string }): Promise<number>;
 

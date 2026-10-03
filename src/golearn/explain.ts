@@ -29,7 +29,7 @@ export async function explainItem(ctx: Ctx, userId: string, itemId: string): Pro
   for (const [textId, count] of byText) texts.push({ textId, title: (await ctx.store.texts.get(textId))?.title ?? textId, count });
   texts.sort((a, b) => b.count - a.count || (a.textId < b.textId ? -1 : 1));
 
-  // Two different kinds of help (policy.ts, evidence@6): help ABOUT this item vs the English / explanation shown for a sentence.
+  // Two different kinds of help (policy.ts, evidence@7): help ABOUT this item vs the English / explanation shown for a sentence.
   const reading = encs.filter((e) => e.modality === 'reading');
   const needed = orth ? totalsOf(orth, 'reading').helped : reading.filter((e) => itemHelpOf(e) > 0).length;
   const englishShown = reading.filter((e) => e.assistance >= 5).length;

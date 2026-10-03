@@ -25,19 +25,18 @@ beforeEach(() => { media = installMediaStubs(); });
 afterEach(async () => { await mounted?.unmount(); mounted = undefined; });
 
 describe('Player', () => {
-  it('always shows the "fixture audio — not speech" badge for the fixture provider, and not for others', async () => {
+  it('labels the authorized recording source instead of confusing it with the configured provider', async () => {
     await setup();
     mounted = await h.mount(<Player textId={STORY_ID} />);
-    expect(q(mounted.container, '[data-testid="fixture-badge"]')!.textContent).toBe('fixture audio — not speech');
-    expect(q(mounted.container, '[data-testid="voice-info"]')!.textContent).toContain('fixture');
-    expect(q(mounted.container, '[data-testid="voice-info"]')!.textContent).toContain('fallback accent'); // asked es-HN, got es-419
+    expect(q(mounted.container, '[data-testid="fixture-badge"]')).toBeNull();
+    expect(q(mounted.container, '[data-testid="audio-source-kind"]')!.textContent).toBe('Human recording');
+    expect(q(mounted.container, '[data-testid="audio-narrator"]')!.textContent).toBe('Test narrator');
     await mounted.unmount();
 
     await setup({ listen: { providerId: 'azure', actualLocale: 'es-HN', approved: true } });
     mounted = await h.mount(<Player textId={STORY_ID} />);
     expect(q(mounted.container, '[data-testid="fixture-badge"]')).toBeNull();
-    expect(q(mounted.container, '[data-testid="voice-info"]')!.textContent).toContain('azure');
-    expect(q(mounted.container, '[data-testid="voice-info"]')!.textContent).not.toContain('fallback');
+    expect(q(mounted.container, '[data-testid="audio-source-kind"]')!.textContent).toBe('Human recording');
   });
 
   it('labels every control for assistive tech', async () => {
@@ -47,6 +46,17 @@ describe('Player', () => {
       expect(byLabel(mounted.container, label)).toBeTruthy();
     }
     expect(q(mounted.container, '[aria-live="polite"]')!.textContent).toContain('Sentence 1 of 3');
+  });
+
+  it('updates the seek slider as playback advances', async () => {
+    await setup();
+    mounted = await h.mount(<Player textId={STORY_ID} />);
+    const slider = byLabel<HTMLInputElement>(mounted.container, 'Seek within current listening unit');
+    expect(slider.value).toBe('0');
+    await click(button(mounted.container, 'Play'));
+    await act(async () => { audioEl().currentTime = 0.5; audioEl().dispatchEvent(new Event('timeupdate')); });
+    await flush();
+    expect(Number(slider.value)).toBe(500);
   });
 
   it('plays with preservesPitch and emits AudioPlayed; play/pause toggle works', async () => {
@@ -121,12 +131,14 @@ describe('Player', () => {
 
     await click(button(mounted.container, 'Loop sentence'));
     expect(byLabel(mounted.container, 'Loop sentence').getAttribute('aria-pressed')).toBe('true');
+    await act(async () => { audioEl().currentTime = 0.8; audioEl().dispatchEvent(new Event('timeupdate')); });
     await act(async () => { audioEl().dispatchEvent(new Event('ended')); });
     await flush();
     expect(q(mounted.container, '[aria-live="polite"]')!.textContent).toContain('Sentence 2 of 3'); // looped, did not advance
     expect((await h.events('AudioSegmentCompleted'))).toHaveLength(1);
 
     await click(button(mounted.container, 'Loop sentence'));
+    await act(async () => { audioEl().currentTime = 0.8; audioEl().dispatchEvent(new Event('timeupdate')); });
     await act(async () => { audioEl().dispatchEvent(new Event('ended')); });
     await flush();
     expect(q(mounted.container, '[aria-live="polite"]')!.textContent).toContain('Sentence 3 of 3'); // auto-advanced

@@ -22,7 +22,7 @@ export async function writeSentenceAlignments(rt: Runtime, segment: AudioSegment
   const rows: AudioAlignment[] = segment.sentenceIds.map((sentenceId) => ({
     id: `al:${segment.id}:sentence:${sentenceId}`,
     segmentId: segment.id, assetId: asset.id, unit: 'sentence', unitId: sentenceId,
-    startMs: 0, endMs: asset.durationMs, method: 'by-construction', confidence: 1, alignerVersion: ALIGNER_CONSTRUCT,
+    startMs: 0, endMs: asset.durationMs, method: 'by-construction', confidence: 1, alignerVersion: ALIGNER_CONSTRUCT, reviewState: 'generated',
   }));
   if (rows.length) await rt.store.alignments.bulkPut(rows);
   return rows.length;
@@ -94,7 +94,7 @@ export async function writeMarkAlignments(
         id: `al:${segment.id}:word:${display[di].id}`,
         segmentId: segment.id, assetId: asset.id, unit: 'word', unitId: display[di].id,
         startMs: mk.startMs, endMs: mk.endMs, method: 'provider-marks',
-        confidence: identity ? MARKS_CONFIDENCE_EXACT : MARKS_CONFIDENCE_MAPPED, alignerVersion,
+        confidence: identity ? MARKS_CONFIDENCE_EXACT : MARKS_CONFIDENCE_MAPPED, alignerVersion, reviewState: 'generated',
       });
     }
   }

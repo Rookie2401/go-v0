@@ -1,5 +1,5 @@
 /**
- * evidence@6 — writing-system (`orth`) items and decoding help. Orth items are folded with the same policy as other items
+ * evidence@7 — writing-system (`orth`) items and decoding help. Orth items are folded with the same policy as other items
  * (reading only), they are driven by the adapter's decoding, they never leak into anything that counts WORDS, the romanization
  * rescue is kept on the encounter, NoteOpened is not evidence, and everything rebuilds from the log.
  */
@@ -24,7 +24,7 @@ async function thai(opts: Parameters<typeof createHarness>[0] = { decode: ['th']
   return h;
 }
 /**
- * A writing-system item has NO encounter rows (evidence@6): its encounters of the current sitting live in its aggregate. This
+ * A writing-system item has NO encounter rows (evidence@7): its encounters of the current sitting live in its aggregate. This
  * shows them in the shape of encounter rows, so the tests read the same for every kind of item.
  */
 const orthEnc = async (h: Harness, itemId: string): Promise<StoredEncounter[]> => {
@@ -245,7 +245,7 @@ describe('derived state with orth items rebuilds identically from the log', () =
     expect((await snapshot(h)).items.length).toBeLessThan(full.items.length);
 
     expect(await h.golearn.ensureCurrent(U)).toBe(true);
-    expect((await h.store.meta.get(`golearn.policy:${U}`))!.value).toBe('evidence@6');
+    expect((await h.store.meta.get(`golearn.policy:${U}`))!.value).toBe('evidence@7');
     expect(await snapshot(h)).toEqual(full);
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
   });

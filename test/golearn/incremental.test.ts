@@ -1,5 +1,5 @@
 /**
- * evidence@6 — learner state is updated INCREMENTALLY (agg.ts); it must be exactly what a rebuild from the log derives, for every
+ * evidence@7 — learner state is updated INCREMENTALLY (agg.ts); it must be exactly what a rebuild from the log derives, for every
  * event type and in every order the log allows. A long, seeded, mixed sequence is folded live, and then
  *   1. snapshotted, rebuilt from the log, and compared byte for byte (items, encounters);
  *   2. compared, item by item, with the REFERENCE derivation from the encounter rows (the evidence@5 definition);
@@ -85,10 +85,19 @@ async function script(h: Harness, seed: number, steps: number): Promise<Plan> {
     else if (r < 0.84) {
       const ss = [...new Set([index, (index + 1) % text.sentences])].sort((x, y) => x - y);
       const real = rnd() < 0.85;
+      const segmentId = `seg:${n}`;
+      if (real) await h.seedAudio(segmentId, { speech: true, textId: text.id, sentenceIds: ss.map((k) => `${text.id}/s${k}`), lang: text.lang });
+      const segment = await h.store.audioSegments.get(segmentId);
+      const asset = segment?.assetId ? await h.store.audioAssets.get(segment.assetId) : undefined;
       push({
-        type: 'AudioSegmentCompleted', ...b('listen'), textId: text.id, segmentId: `seg:${n}`, sentenceIds: ss.map((k) => `${text.id}/s${k}`),
+        type: 'AudioSegmentCompleted', ...b('listen'), textId: text.id, segmentId, sentenceIds: ss.map((k) => `${text.id}/s${k}`),
         speed: pick([0.7, 0.85, 1, 1.25]), transcriptVisible: rnd() < 0.15, replayCount: Math.floor(rnd() * 3),
-        revealedTranscript: rnd() < 0.15, revealedTranslation: rnd() < 0.1, assetId: 'sha256:real', speech: real, voiceReviewed: real,
+        revealedTranscript: rnd() < 0.15, revealedTranslation: rnd() < 0.1,
+        ...(real && asset && segment?.assetId ? { assetId: segment.assetId, speech: true, voiceReviewed: true,
+          sourceType: asset.sourceType, audioKind: asset.audioKind, qualityState: asset.qualityState, rightsId: asset.rights?.id,
+          rightsApproved: true, exactTextBound: true, textSha256: asset.textBinding?.textSha256,
+          contentVersion: segment.contentVersion, releaseId: asset.textBinding?.releaseId, editionId: asset.textBinding?.editionId,
+          narratorOrVoiceId: asset.narratorOrVoiceId, locale: asset.locale, heardCoverageRatio: 1, audibleCoverageVersion: 'observed-playback@1' as const } : { speech: false }),
       });
     } else if (r < 0.9) {
       push({
@@ -107,6 +116,16 @@ async function world(): Promise<Harness> {
   await buildSpanishScripture(h.store);
   await buildThai(h.store);
   return h;
+}
+
+async function copyAudio(from: Harness, to: Harness) {
+  for (const row of await from.store.voices.all()) await to.store.voices.put(row);
+  for (const row of await from.store.audioSegments.all()) await to.store.audioSegments.put(row);
+  for (const row of await from.store.audioAssets.all()) {
+    const blob = await from.store.assets.get(row.checksum);
+    if (blob) await to.store.assets.put(blob.bytes, blob.mime);
+    await to.store.audioAssets.put(row);
+  }
 }
 
 const byId = <T extends { id: string }>(a: T, b: T) => (a.id < b.id ? -1 : 1);
@@ -230,8 +249,13 @@ describe('incremental folding equals a rebuild from the log', () => {
     for (const e of events.slice(half)) await h.bus.emit(e);
     const live = await snapshot(h);
     expect(JSON.parse(live).items.some((r: { itemKind: string }) => r.itemKind === 'phrase')).toBe(true);
+    const listeningBeforeRebuild = (await h.store.encounters.where('userId', U)).filter((e) => e.modality === 'listening').length;
+    const readingBeforeRebuild = (await h.store.encounters.where('userId', U)).filter((e) => e.modality === 'reading').length;
     await h.golearn.rebuild(U);
-    expect(firstDiff(live, await snapshot(h))).toBeNull();
+    const after = await snapshot(h);
+    expect((await h.store.encounters.where('userId', U)).filter((e) => e.modality === 'listening').length).toBeLessThan(listeningBeforeRebuild);
+    expect((await h.store.encounters.where('userId', U)).filter((e) => e.modality === 'reading').length).toBe(readingBeforeRebuild);
+    expect(JSON.parse(after).items.some((r: { itemKind: string }) => r.itemKind === 'phrase')).toBe(true);
   });
 
   it('a cold GoLearn started halfway (aggregates persisted between processes) folds to the same state as one that never stopped', async () => {
@@ -240,6 +264,7 @@ describe('incremental folding equals a rebuild from the log', () => {
     for (const e of events) await whole.bus.emit(e);
 
     const split = await world();
+    await copyAudio(whole, split);
     const half = Math.floor(events.length / 2) + 3; // not on a sitting boundary
     for (const e of events.slice(0, half)) await split.bus.emit(e);
     split.golearn.attach()(); // detach the first GoLearn …

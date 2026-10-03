@@ -8,7 +8,7 @@ import {
   type AdapterRegistry, type AppStore, type EventBus, type FixtureSentence, type LanguageAdapter, type LanguageCode, type RawToken,
   type ProviderAvailability, type SynthesisRequest, type SynthesisResult, type TtsProvider, type WordMark,
 } from '../../src/core';
-import { createGoListen, FixtureTtsProvider, encodeWav, fixtureChunks, renderFixtureChunks, type GoListenDeps, type GoListenService } from '../../src/golisten';
+import { canonicalTextSha256, createGoListen, editionIdOf, FixtureTtsProvider, encodeWav, fixtureChunks, releaseIdOf, renderFixtureChunks, type AudioGenerationAuthorization, type GoListenDeps, type GoListenService } from '../../src/golisten';
 
 export const LANGS: LanguageCode[] = ['es', 'sq', 'th', 'hi', 'de'];
 
@@ -187,6 +187,47 @@ export async function makeEnv(opts: Partial<GoListenDeps> & { identitySpeech?: b
   const { identitySpeech: _i, providerFactory: _p, ...deps } = opts;
   void _i; void _p;
   const gl = createGoListen({ store, bus, adapters: registry, clock: clock.clock, allowFixture: true, ...deps, providers });
+  // Unit tests make an explicit, test-only grant for synthetic providers. Production GoListen never receives
+  // this wrapper; the grant binds the current release and records terms so unknown rights stay blocked.
+  const ensureAudio = gl.ensureAudio.bind(gl);
+  gl.ensureAudio = async (textId, request = {}) => {
+    if (request.generationAuthorization) return ensureAudio(textId, request);
+    const text = await store.texts.get(textId);
+    const providerId = request.voiceConfigId ? (await store.voices.get(request.voiceConfigId))?.providerId
+      : (await gl.resolveVoice(text?.lang ?? 'de')).providerId;
+    const provider = gl.providers().find((p) => p.id === providerId);
+    if (!text || !provider?.isSpeech) return ensureAudio(textId, request);
+    const sentences = (await store.sentences.where('textId', text.id)).filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
+    const rights = { id: `test-rights:${provider.id}:${text.id}`, status: 'approved' as const,
+      recordingOwner: 'test fixture', recordingBasis: 'explicit unit-test authorization', performanceOwner: provider.id,
+      performancePermission: 'test provider authorization', playInApp: true, stream: true, offline: true, redistribute: false,
+      segment: true, transform: false, textDerivative: 'allowed' as const, providerRetention: 'none' as const, providerId: provider.id, providerTerms: 'unit-test only; no retention' };
+    const generationAuthorization: AudioGenerationAuthorization = { rights,
+      textBinding: { textId: text.id, contentVersion: text.contentVersion, textSha256: await canonicalTextSha256(text.id, text.contentVersion, sentences), releaseId: releaseIdOf(text), editionId: editionIdOf(text) } };
+    return ensureAudio(textId, { ...request, generationAuthorization });
+  };
+  const ensureSentenceAudio = gl.ensureSentenceAudio.bind(gl);
+  gl.ensureSentenceAudio = async (request) => {
+    if (request.generationAuthorization) return ensureSentenceAudio(request);
+    const context = await store.texts.get(request.contextId);
+    const providerId = request.voiceConfigId ? (await store.voices.get(request.voiceConfigId))?.providerId
+      : (await gl.resolveVoice(context?.lang ?? request.lang)).providerId;
+    const provider = gl.providers().find((p) => p.id === providerId);
+    if (!provider?.isSpeech) return ensureSentenceAudio(request);
+    let textBinding: AudioGenerationAuthorization['textBinding'];
+    if (context) {
+      const sentences = (await store.sentences.where('textId', context.id)).filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
+      textBinding = { textId: context.id, contentVersion: context.contentVersion, textSha256: await canonicalTextSha256(context.id, context.contentVersion, sentences), releaseId: releaseIdOf(context), editionId: editionIdOf(context) };
+    } else {
+      const { sha256Hex } = await import('../../src/golisten');
+      textBinding = { textId: `personal:${request.ownerId}`, contentVersion: 1, textSha256: await sha256Hex(new TextEncoder().encode(request.text)), releaseId: `personal:${request.ownerId}`, scope: 'personal', ownerId: request.ownerId };
+    }
+    const rights = { id: `test-rights:${provider.id}:${request.ownerId}:${textBinding.textSha256}`, status: 'approved' as const,
+      recordingOwner: 'test fixture', recordingBasis: 'explicit unit-test authorization', performanceOwner: provider.id,
+      performancePermission: 'test provider authorization', playInApp: true, stream: true, offline: true, redistribute: false,
+      segment: true, transform: false, textDerivative: 'allowed' as const, providerRetention: 'none' as const, providerId: provider.id, providerTerms: 'unit-test only; no retention' };
+    return ensureSentenceAudio({ ...request, generationAuthorization: { rights, textBinding } });
+  };
   return { store, bus, gl, clock, registry };
 }
 

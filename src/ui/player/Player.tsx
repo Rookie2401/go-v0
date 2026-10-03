@@ -12,7 +12,7 @@
  *  - Playing audio never touches reading evidence (GoLearn decides what listening events mean).
  *  - What is shown is driven by `golisten.audioStatus(textId)`, for every state: unavailable (no provider — you can
  *    still read), not generated, generating, ready, stale (earlier version), failed (reason + retry) and
- *    preview-only (placeholder or unreviewed voice: playable, badged, no evidence).
+ *    preview-only (playable and clearly labelled; real audio may count as exposure without quality-eligible evidence).
  */
 import { useCallback, useEffect, useId, useMemo, useRef, useState } from 'react';
 import type { KeyboardEvent as ReactKeyboardEvent, MutableRefObject } from 'react';
@@ -26,6 +26,7 @@ import { useListenEnabled } from '../reader/useListen';
 import { setPref, usePref, usePreview } from '../prefs';
 import { I, IconBtn } from '../ui';
 import { configureAudio, isEditableTarget } from './audio';
+import { latestListeningCheckpoint } from '../../golisten/progress';
 
 /**
  * GoListen's status reasons are already learner-facing sentences ("Audio is not available — no speech provider is
@@ -49,12 +50,18 @@ export interface PlayerControls {
   seekSentence(sentenceId: string): void;
   play(): void;
   replay(): void;
+  setTranscriptMode(mode: TranscriptMode): void;
+  revealForHandoff(): Promise<void>;
 }
 
 export interface PlayerProps {
   textId: string;
   onChange?: (info: PlayerChange) => void;
   controlRef?: MutableRefObject<PlayerControls | null>;
+  /** Override the saved transcript preference for a fresh GoListen session. */
+  defaultTranscriptMode?: TranscriptMode;
+  /** Synthesis is hidden from production reading/listening surfaces until a lawful synthesis path is configured. */
+  allowSynthesis?: boolean;
 }
 
 type Status = 'loading' | 'unavailable' | 'none' | 'generating' | 'preparing' | 'stale' | 'failed' | 'ready' | 'error';
@@ -68,14 +75,14 @@ const TRANSCRIPT_LABELS: Record<TranscriptMode, string> = {
 
 /** The parts of the model that change what is on screen (position ticks alone do not). */
 const viewKey = (m: PlayerModel) =>
-  [m.segmentIndex, m.playing, m.speed, m.transcriptMode, m.revealed.join(','), m.started, m.completed, m.finished, m.loop.unit, m.manifest.segments.length, m.manifest.segments.filter((s) => s.ready).length].join('|');
+  [m.segmentIndex, m.playing, Math.floor(m.positionMs / 250), m.speed, m.transcriptMode, m.revealed.join(','), m.started, m.completed, m.finished, m.loop.unit, m.manifest.segments.length, m.manifest.segments.filter((s) => s.ready).length].join('|');
 
 /** With listening switched off the player does not exist: nothing renders and GoListen is never called. */
 export function Player(props: PlayerProps) {
   return useListenEnabled() ? <PlayerBody {...props} /> : null;
 }
 
-function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
+function PlayerBody({ textId, onChange, controlRef, defaultTranscriptMode, allowSynthesis = true }: PlayerProps) {
   const { store, bus, golisten, userId, lang, session } = useApp();
   const preview = usePreview();
   const [audio, setAudio] = useState<AudioStatus | undefined>();
@@ -96,34 +103,34 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
   // (a dependency on them would rebuild the player, and stop playback, every time speed changes).
   const [speedPref] = usePref('speed');
   const [transcriptPref] = usePref('transcript');
-  const initialPrefs = useRef({ speed: speedPref, transcriptMode: transcriptPref });
+  const initialPrefs = useRef({ speed: speedPref, transcriptMode: defaultTranscriptMode ?? transcriptPref });
 
   const machineRef = useRef<PlayerMachine | null>(null);
   const lastKey = useRef('');
   const audioRef = useRef<HTMLAudioElement>(null);
-  const urlCache = useRef(new Map<string, string | undefined>());
   const prefetchRef = useRef<HTMLAudioElement | null>(null);
   const queue = useRef<Promise<void>>(Promise.resolve());
   const emitterRef = useRef(emitter);
   emitterRef.current = emitter;
+  const lastPositionSaved = useRef<{ at: number; segmentId: string; ms: number } | null>(null);
 
   const urlForAsset = useCallback(async (assetId: string | undefined) => {
     if (!assetId) return undefined;
-    if (urlCache.current.has(assetId)) return urlCache.current.get(assetId);
-    const url = await golisten.assetUrl(assetId);
-    urlCache.current.set(assetId, url);
-    return url;
+    // Re-check rights at each load, replay, and resume. The store owns object-URL reuse; a UI cache
+    // could let a revoked recording keep playing from a stale URL.
+    return golisten.assetUrl(assetId);
   }, [golisten]);
 
   // ── perform the machine's effects against the <audio> element, in order ──
   const perform = useCallback(async (m: PlayerModel, effects: PlayerEffect[]) => {
     const audio = audioRef.current;
+    let playbackBlocked = false;
     if (audio) {
       for (const fx of effects) {
         switch (fx.type) {
           case 'load': {
             const url = await urlForAsset(fx.assetId);
-            if (!url) { setUnplayable(true); machineRef.current?.dispatch({ type: 'pause' }); break; }
+            if (!url) { playbackBlocked = true; setUnplayable(true); machineRef.current?.dispatch({ type: 'pause' }); break; }
             setUnplayable(false);
             if (audio.dataset.src !== url) { audio.src = url; audio.dataset.src = url; }
             audio.currentTime = 0;
@@ -132,6 +139,11 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
           case 'setRate': configureAudio(audio, fx.rate); break;
           case 'seek': audio.currentTime = fx.ms / 1000; break;
           case 'play': {
+            const active = m.manifest.segments[m.segmentIndex];
+            const currentUrl = await urlForAsset(active?.assetId);
+            if (!currentUrl) { playbackBlocked = true; setUnplayable(true); audio.pause(); machineRef.current?.dispatch({ type: 'pause' }); break; }
+            setUnplayable(false);
+            if (audio.dataset.src !== currentUrl) { audio.src = currentUrl; audio.dataset.src = currentUrl; }
             const p = audio.play() as Promise<void> | undefined;
             // Autoplay blocked / interrupted: stay paused, the learner can press play again.
             p?.catch(() => { machineRef.current?.dispatch({ type: 'pause' }); });
@@ -153,7 +165,7 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
         }
       }
     }
-    await emitPlayerEffects(emitterRef.current, m, effects);
+    await emitPlayerEffects(emitterRef.current, m, playbackBlocked ? [] : effects);
   }, [urlForAsset]);
 
   const attach = useCallback((input: PlayerManifestInput) => {
@@ -183,13 +195,15 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
     const m = await golisten.getManifest(textId);
     setManifest(m);
     if (!m || m.segmentIds.length === 0) { machineRef.current = null; setModel(null); setStatus('none'); return; }
-    const input = await buildPlayerManifest(store, m);
+    const input = await buildPlayerManifest(store, m, { allowFixture: preview });
     const rows = (await Promise.all(m.segmentIds.map((id) => golisten.getSegment(id)))).filter((s): s is AudioSegment => !!s);
     setSegments(new Map(rows.map((s) => [s.id, s])));
     if (machineRef.current && machineRef.current.state.manifest.manifestId === input.manifestId) {
       machineRef.current.dispatch({ type: 'manifestUpdated', manifest: input });
     } else {
       attach(input);
+      const checkpoint = await latestListeningCheckpoint(store, userId, textId, m.id);
+      if (checkpoint) machineRef.current?.dispatch({ type: 'restorePosition', segmentId: checkpoint.segmentId, positionMs: checkpoint.positionMs });
     }
     const v = await store.voices.get(m.voiceConfigId);
     setVoice(v);
@@ -199,7 +213,7 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
       setFixtureAsset(a?.generation?.providerId === 'fixture');
     }
     setStatus('ready');
-  }, [golisten, store, textId, attach, preview]);
+  }, [golisten, store, userId, textId, attach, preview]);
 
   useEffect(() => {
     let live = true;
@@ -255,12 +269,43 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
     if (a.type === 'setTranscriptMode') setPref('transcript', machine.state.transcriptMode);
   }, []);
 
+  const savePosition = useCallback((force = false) => {
+    const m = machineRef.current?.state;
+    const seg = m?.manifest.segments[m.segmentIndex];
+    if (!m || !seg || m.positionMs <= 0 || !m.manifestId) return;
+    const now = Date.now();
+    const last = lastPositionSaved.current;
+    if (!force && last && last.segmentId === seg.segmentId && now - last.at < 5000 && Math.abs(last.ms - m.positionMs) < 4000) return;
+    lastPositionSaved.current = { at: now, segmentId: seg.segmentId, ms: m.positionMs };
+    void emitterRef.current.positionSaved({ manifestId: m.manifestId, segmentId: seg.segmentId, positionMs: Math.round(m.positionMs) });
+  }, []);
+
+  const wasPlaying = useRef(false);
+  useEffect(() => {
+    if (model && !model.playing && model.positionMs > 0) savePosition(wasPlaying.current);
+    wasPlaying.current = !!model?.playing;
+  }, [model, savePosition]);
+
+  useEffect(() => {
+    const onVisibility = () => { if (document.visibilityState === 'hidden') savePosition(true); };
+    document.addEventListener('visibilitychange', onVisibility);
+    return () => document.removeEventListener('visibilitychange', onVisibility);
+  }, [savePosition]);
+
   useEffect(() => {
     if (!controlRef) return;
     controlRef.current = {
       seekSentence: (sentenceId) => dispatch({ type: 'seekSentence', sentenceId }),
       play: () => dispatch({ type: 'play' }),
       replay: () => dispatch({ type: 'replay' }),
+      setTranscriptMode: (mode) => dispatch({ type: 'setTranscriptMode', mode }),
+      revealForHandoff: async () => {
+        const machine = machineRef.current;
+        if (machine && !isTranscriptVisible(machine.state, machine.state.segmentIndex)) dispatch({ type: 'revealTranscript' });
+        await queue.current;
+        if (machineRef.current) dispatch({ type: 'setTranscriptMode', mode: 'visible' });
+        await queue.current;
+      },
     };
     return () => { controlRef.current = null; };
   }, [controlRef, dispatch]);
@@ -275,6 +320,7 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
       if (m.started && !m.completed && m.positionMs > 0 && seg) {
         void emitterRef.current.abandoned({ segmentId: seg.segmentId, sentenceIds: seg.sentenceIds }, { speed: m.speed, transcriptVisible: isTranscriptVisible(m, m.segmentIndex) }, Math.round(m.positionMs));
       }
+      if (m.positionMs > 0 && seg && m.manifestId) void emitterRef.current.positionSaved({ manifestId: m.manifestId, segmentId: seg.segmentId, positionMs: Math.round(m.positionMs) });
     }
     audio?.pause();
     prefetchRef.current = null;
@@ -318,7 +364,8 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
   };
 
   // ── render ──
-  const isFixture = voice?.providerId === 'fixture' || (!voice && fixtureAsset);
+  const currentSource = model?.manifest.segments[model.segmentIndex]?.sourceType;
+  const isFixture = (currentSource === 'generated-tts' && voice?.providerId === 'fixture') || (!currentSource && !voice && fixtureAsset);
   const fallbackAccent = voice && voice.actualLocale !== voice.requestedLocale;
 
   const stateProp = audio?.state ?? status;
@@ -360,9 +407,11 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
   );
   if (status === 'none' || status === 'preparing' || !model) return (
     <section className="player" aria-label="Audio player" data-audio-state={stateProp}>
-      <button type="button" className="btn btn--small" disabled={status === 'preparing'} onClick={() => { void prepare(); }}>
-        {status === 'preparing' ? 'Preparing audio…' : 'Prepare audio for this text'}
-      </button>
+      {allowSynthesis
+        ? <button type="button" className="btn btn--small" disabled={status === 'preparing'} onClick={() => { void prepare(); }}>
+          {status === 'preparing' ? 'Preparing audio…' : 'Prepare audio for this text'}
+        </button>
+        : <p className="note" role="status">No recording is attached to this text yet. Add a recording with its rights details in GoListen.</p>}
       <p className="card__note" data-testid="audio-privacy">
         {audio?.isSpeech
           ? `The sentences of this text are sent to the speech provider (${audio.providerId ?? 'your speech provider'}) to make the audio; the audio is then kept on this device.`
@@ -375,6 +424,10 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
   const readyCount = segs.filter((s) => s.ready).length;
   const hasParagraphs = new Set(segs.map((s) => s.paragraphIndex).filter((p) => p !== undefined)).size > 1;
   const showTranscript = current ? isTranscriptVisible(model, model.segmentIndex) : false;
+  const activePlayerSegment = model.manifest.segments[model.segmentIndex];
+  const seekStart = activePlayerSegment?.rangeMs?.startMs ?? 0;
+  const seekEnd = activePlayerSegment?.rangeMs?.endMs ?? activePlayerSegment?.durationMs ?? 0;
+  const skip = (delta: number) => dispatch({ type: 'seekPosition', ms: model.positionMs + delta });
 
   return (
     <section className="player" aria-label="Audio player" data-audio-state={stateProp} onKeyDown={onPlayerKey}>
@@ -383,7 +436,17 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
         preload="auto"
         onEnded={() => dispatch({ type: 'ended' })}
         onError={() => dispatch({ type: 'playbackError' })}
-        onTimeUpdate={(e) => dispatch({ type: 'position', ms: e.currentTarget.currentTime * 1000 })}
+        onTimeUpdate={(e) => {
+          dispatch({ type: 'position', ms: e.currentTarget.currentTime * 1000, observedAtMs: performance.now() });
+          const m = machineRef.current?.state;
+          const seg = m?.manifest.segments[m.segmentIndex];
+          if (seg?.rangeMs && e.currentTarget.currentTime * 1000 >= seg.rangeMs.endMs - 40) dispatch({ type: 'ended' });
+          const now = Date.now();
+          if (m && seg && m.manifestId && m.positionMs > 0 && (!lastPositionSaved.current || lastPositionSaved.current.segmentId !== seg.segmentId || now - lastPositionSaved.current.at >= 5000)) {
+            lastPositionSaved.current = { at: now, segmentId: seg.segmentId, ms: m.positionMs };
+            void emitterRef.current.positionSaved({ manifestId: m.manifestId, segmentId: seg.segmentId, positionMs: Math.round(m.positionMs) });
+          }
+        }}
       />
       <div className="player__bar" role="group" aria-label="Playback controls">
         <IconBtn label="Previous sentence" onClick={() => dispatch({ type: 'prev' })}>{I.prev}</IconBtn>
@@ -402,23 +465,47 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
           </>
         )}
         <span className="player__status" aria-live="polite">
-          Sentence {model.segmentIndex + 1} of {segs.length}
+          {current?.sentenceIds.length === 1 ? `Sentence ${model.segmentIndex + 1} of ${segs.length}` : `Passage segment ${model.segmentIndex + 1} of ${segs.length}`}
+          {model.positionMs > 0 && !model.started && ' · resume position saved'}
+          {model.speed < 0.999 && ' · slowed'}
           {readyCount < segs.length && ` · ${segs.length - readyCount} without audio`}
           {model.loop.unit === 'sentence' && ' · looping'}
         </span>
         {isFixture && <span className="chip chip--wine" data-testid="fixture-badge">fixture audio — not speech</span>}
-        {audio?.state === 'preview-only' && <span className="chip chip--wine" data-testid="preview-audio-badge">preview audio — not counted</span>}
+        {audio?.state === 'preview-only' && !isFixture && <span className="chip chip--wine" data-testid="preview-audio-badge">
+          {activePlayerSegment?.sourceType === 'human-recording' || activePlayerSegment?.sourceType === 'licensed-recording' ? 'Unreviewed recording' : 'Unreviewed audio'}
+        </span>}
+        {audio?.state === 'preview-only' && isFixture && <span className="chip chip--wine" data-testid="preview-audio-badge">fixture audio — not counted</span>}
+        {activePlayerSegment?.sourceType && <span className="chip" data-testid="audio-source-kind">
+          {activePlayerSegment.sourceType === 'human-recording' || activePlayerSegment.sourceType === 'licensed-recording' ? 'Human recording' : activePlayerSegment.sourceType === 'generated-tts' ? 'Synthetic audio' : activePlayerSegment.sourceType}
+        </span>}
+        {activePlayerSegment?.narratorOrVoiceId && <span className="chip" data-testid="audio-narrator">{activePlayerSegment.narratorOrVoiceId}</span>}
       </div>
+      {seekEnd > seekStart && <div className="player__seek" role="group" aria-label="Seek current listening unit">
+        <button type="button" className="btn btn--small btn--quiet" aria-label="Skip back 10 seconds" onClick={() => skip(-10000)}>−10s</button>
+        <input
+          type="range" min={seekStart} max={seekEnd} step={250} value={Math.max(seekStart, Math.min(seekEnd, model.positionMs))}
+          aria-label="Seek within current listening unit"
+          aria-valuetext={`${Math.floor(model.positionMs / 1000)} seconds`}
+          onChange={(e) => dispatch({ type: 'seekPosition', ms: Number(e.target.value) })}
+        />
+        <button type="button" className="btn btn--small btn--quiet" aria-label="Skip forward 10 seconds" onClick={() => skip(10000)}>+10s</button>
+      </div>}
       {audio?.state === 'failed' && (
         <div className="note note--warn" role="status" data-testid="audio-partial">
           <p>{audio.reason ?? `${audio.readySegments} of ${audio.totalSegments} sentences ready; ${audio.failedSegments} failed.`}</p>
           <button type="button" className="btn btn--small btn--quiet" onClick={() => { void prepare(); }}>Try the missing sentences again</button>
         </div>
       )}
-      {audio?.state === 'preview-only' && (
+      {audio?.state === 'preview-only' && !isFixture && (
         <p className="note note--warn" role="note" data-testid="preview-audio-note">
-          Listening to this does not count toward your progress.{audio.reason ? ` ${audio.reason}` : ''}
+          {activePlayerSegment?.sourceType === 'human-recording' || activePlayerSegment?.sourceType === 'licensed-recording'
+            ? 'You can record listening exposure, but this recording has not passed human review for listening evidence.'
+            : 'You can record listening exposure, but this audio has not passed quality review for listening evidence.'}
         </p>
+      )}
+      {audio?.state === 'preview-only' && isFixture && (
+        <p className="note note--warn" role="note" data-testid="preview-audio-note">Fixture audio is not speech and does not count toward your listening progress.</p>
       )}
 
       <details className="player__more">
@@ -441,7 +528,7 @@ function PlayerBody({ textId, onChange, controlRef }: PlayerProps) {
           </div>
         </div>
         {isFixture && <p className="note note--warn">This voice is placeholder audio, not speech. It is here so the player can be tried before a real voice is set up.</p>}
-        {voice && (
+        {voice && currentSource !== 'human-recording' && currentSource !== 'licensed-recording' && (
           <p className="card__note" data-testid="voice-info">
             {voice.providerId} · {voice.voiceId} · {voice.actualLocale}
             {fallbackAccent ? ` (fallback accent; wanted ${voice.requestedLocale})` : ''}

@@ -12,6 +12,8 @@ import { BooksPage } from './pages/Books';
 import { CoursePage } from './pages/Course';
 import { ExplorePage } from './pages/Explore';
 import { Home } from './pages/Home';
+import { ListenHome } from './listen/ListenHome';
+import { ListenPage } from './listen/ListenPage';
 import { Settings, VocabularyPage } from './pages/Settings';
 import { TextPage } from './pages/TextPage';
 import { PreviewBanner } from './PreviewBanner';
@@ -41,6 +43,8 @@ export function AppRoutes() {
       <Route path="/" element={<Home />} />
       <Route path="/read" element={<ReadPage />} />
       <Route path="/read/:textId" element={<TextPage mode="corpus" />} />
+      <Route path="/listen" element={<ListenHome />} />
+      <Route path="/listen/:textId" element={<ListenPage />} />
       <Route path="/course" element={<CoursePage />} />
       <Route path="/explore" element={<ExplorePage />} />
       <Route path="/explore/:door" element={<ExplorePage />} />

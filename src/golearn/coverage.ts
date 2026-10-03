@@ -5,7 +5,7 @@
  * `Sentence.index`, never an id) is
  *   known      — its form OR its credited lemma has (manual-mark-adjusted) reading level ≥ `recognized`: DEMONSTRATED
  *   estimated  — not known, but its form or lemma is "likely familiar" (≥ 4 help-free exposures over ≥ 2 sittings,
- *                no help with THAT item lately; the English shown for a sentence does not veto it — policy.ts, evidence@6).
+ *                no help with THAT item lately; the English shown for a sentence does not veto it — policy.ts, evidence@7).
  *                An ESTIMATE: reported separately, never merged into `knownLexicalCoverage`
  *   partial    — met (read, heard or needed help) but neither known nor estimated
  *   unseen     — otherwise

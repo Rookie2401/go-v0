@@ -12,10 +12,11 @@
  */
 import { StoreEventBus, COURSES, createMemoryStore, hash, seedBasics } from '../src/core';
 import type { AdapterRegistry, AppStore, DomainEvent } from '../src/core';
+import type { AudioGenerationAuthorization, EnsureAudioOptions } from '../src/core/contracts/golisten';
 import { createAdapterRegistry } from '../src/adapters';
 import { importDocuments, type CorpusDocument } from '../src/ingest';
 import {
-  AZURE_VOICES, ProxySpeechProvider, buildPlayerManifest, computeCacheKey, createGoListen, encodeWav, listeningEmitter, playableIndexes, validateWav,
+  AZURE_VOICES, ProxySpeechProvider, buildPlayerManifest, canonicalTextSha256, computeCacheKey, createGoListen, editionIdOf, encodeWav, listeningEmitter, playableIndexes, releaseIdOf, validateWav,
   type CacheKeyParts, type GoListenService,
 } from '../src/golisten';
 import { createRateLimiter, handleSpeechRequest, type SpeechEnv } from '../server/speechHandler';
@@ -190,6 +191,37 @@ async function importStory(s: Scenario, slug: string, sentences: string[]): Prom
   return { textId: d.textId, contentVersion: d.contentVersion };
 }
 
+/** Explicit test-only authorization for the mocked proxy output; never used by live synthesis. */
+async function ensureMockSpeech(s: Scenario, textId: string, options: EnsureAudioOptions = {}) {
+  const text = await s.store.texts.get(textId);
+  if (!text) throw new Error(`Missing speech-check text ${textId}`);
+  const live = (await s.store.sentences.where('textId', textId)).filter((x) => x.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
+  const voice = options.voiceConfigId ? await s.store.voices.get(options.voiceConfigId) : await s.gl.resolveVoice(text.lang);
+  if (!voice) throw new Error('The mocked provider did not resolve a voice');
+  const rights: AudioGenerationAuthorization['rights'] = {
+    id: `speech-check:${voice.providerId}:${text.id}`, status: 'approved', recordingOwner: 'speech:check mocked provider', recordingBasis: 'explicit provider-independent test grant',
+    performanceOwner: voice.providerId, performancePermission: 'Mock bytes only; no retention', playInApp: true, stream: true, offline: false,
+    redistribute: false, segment: true, transform: false, textDerivative: 'allowed', providerRetention: 'none', providerId: voice.providerId,
+    providerTerms: 'Test-only mocked upstream; no retention or redistribution',
+  };
+  const generationAuthorization: AudioGenerationAuthorization = { rights, textBinding: {
+    textId, contentVersion: text.contentVersion, textSha256: await canonicalTextSha256(textId, text.contentVersion, live),
+    releaseId: releaseIdOf(text), editionId: editionIdOf(text),
+  } };
+  const result = await s.gl.ensureAudio(textId, { ...options, generationAuthorization });
+  await markMockWavQuality(s, result.manifest.segmentIds);
+  return result;
+}
+
+/** Metadata describes successful WAV validation only; mock tones never claim human/acoustic review. */
+async function markMockWavQuality(s: Scenario, segmentIds: string[]): Promise<void> {
+  for (const id of segmentIds) {
+    const segment = await s.gl.getSegment(id);
+    const asset = segment?.assetId ? await s.gl.getAsset(segment.assetId) : undefined;
+    if (asset) await s.store.audioAssets.put({ ...asset, qualityState: 'machine_checked' });
+  }
+}
+
 /** Runs queued / retrying jobs until none are left (advancing the manual clock past every backoff). */
 async function drain(s: Scenario, rounds = 12): Promise<void> {
   for (let i = 0; i < rounds; i++) {
@@ -271,7 +303,7 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
   let voiceId: string | undefined;
   const setup = await guarded('setup', 'real chain: import, resolve voice, generate three sentences through the proxy handler', async () => {
     happyText = await importStory(happy, 'speech-check-story', SENTENCES);
-    const r = await happy.gl.ensureAudio(happyText.textId, { runNow: true });
+    const r = await ensureMockSpeech(happy, happyText.textId, { runNow: true });
     voiceId = r.manifest.voiceConfigId;
     const st = await happy.gl.audioStatus(happyText.textId);
     const ok = r.created === 3 && r.failed === 0 && happy.upstream.synth === 3 && st.readySegments === 3;
@@ -315,14 +347,14 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
   results.push(await guarded('invalidation', 'content-version invalidation: one edited sentence => stale; re-ensure regenerates exactly one segment', async () => {
     if (!happyText) throw new Error('the chain did not produce a text');
     const callsBefore = happy.upstream.synth;
-    const again = await happy.gl.ensureAudio(happyText.textId, { runNow: true });
+    const again = await ensureMockSpeech(happy, happyText.textId, { runNow: true });
     const idempotent = again.created === 0 && again.reused === 3 && happy.upstream.synth === callsBefore;
     // Edit one sentence through the REAL importer.
     const edited = [SENTENCES[0], 'Dios me perdonó hoy.', SENTENCES[2]];
     const imp = await importStory(happy, 'speech-check-story', edited);
     const stale = await happy.gl.audioStatus(happyText.textId);
     const staleOk = imp.contentVersion === 2 && stale.state === 'stale' && stale.evidenceEligible === false && stale.audioContentVersion === 1 && stale.textContentVersion === 2;
-    const r = await happy.gl.ensureAudio(happyText.textId, { runNow: true });
+    const r = await ensureMockSpeech(happy, happyText.textId, { runNow: true });
     const regenerated = happy.upstream.synth - callsBefore;
     const after = await happy.gl.audioStatus(happyText.textId);
     const ok = idempotent && staleOk && r.created === 1 && r.reused === 2 && regenerated === 1 && after.state === 'ready' && after.readySegments === 3 && after.audioContentVersion === 2;
@@ -333,7 +365,7 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
   results.push(await guarded('retry', 'retry with backoff after 429 then 5xx, then success; no duplicate asset', async () => {
     const s = track(await makeScenario({ behaviour: ({ attempt }) => attempt === 1 ? { status: 429, retryAfter: '2' } : attempt === 2 ? { status: 503 } : undefined }));
     const { textId } = await importStory(s, 'speech-check-retry', ['Yo creo en Dios.']);
-    await s.gl.ensureAudio(textId, { runNow: true });
+    await ensureMockSpeech(s, textId, { runNow: true });
     const j1 = (await s.gl.jobs())[0];
     const d1 = Date.parse(j1.nextAttemptAt ?? '') - Date.parse(j1.updatedAt);
     const early = await s.gl.runJobs(); // not due yet: must do nothing
@@ -357,7 +389,7 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
   results.push(await guarded('dead', 'dead after max attempts (4) with the reason visible in audioStatus and diagnostics', async () => {
     const s = track(await makeScenario({ behaviour: () => ({ status: 503, body: `upstream trouble, subscription key ${CHECK_KEY} rejected` }) }));
     const { textId } = await importStory(s, 'speech-check-dead', ['Yo creo en Dios.']);
-    await s.gl.ensureAudio(textId, { runNow: true });
+    await ensureMockSpeech(s, textId, { runNow: true });
     await drain(s);
     const job = (await s.gl.jobs())[0];
     const st = await s.gl.audioStatus(textId);
@@ -380,8 +412,9 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
     partialScenario = s;
     const { textId } = await importStory(s, 'speech-check-partial', SENTENCES);
     partialText = textId;
-    const r = await s.gl.ensureAudio(textId, { runNow: true });
+    const r = await ensureMockSpeech(s, textId, { runNow: true });
     await drain(s);
+    await markMockWavQuality(s, r.manifest.segmentIds);
     const st = await s.gl.audioStatus(textId);
     const diag = await s.gl.diagnostics(textId);
     const manifest = (await s.gl.getManifest(textId))!;
@@ -419,8 +452,8 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
     const fvoice = (await fx.store.voices.get(fr.manifest.voiceConfigId))!;
     const fseg = (await fx.store.audioSegments.get(fr.manifest.segmentIds[0]))!;
     const fe = emitterFor(fx, fxText.textId);
-    const fixtureDone = await fe.completed({ segmentId: fseg.id, sentenceIds: fseg.sentenceIds }, view) as (DomainEvent & Listen) | null;
-    const fixtureOk = fvoice.isSpeech === false && fvoice.approved === false && fst.state === 'preview-only' && fst.evidenceEligible === false && fixtureDone?.type === 'AudioSegmentCompleted' && fixtureDone.speech === false;
+    const fixtureDone = await fe.completed({ segmentId: fseg.id, sentenceIds: fseg.sentenceIds }, view, { heardCoverageRatio: 1 }) as (DomainEvent & Listen) | null;
+    const fixtureOk = fvoice.isSpeech === false && fvoice.approved === false && fst.state === 'preview-only' && fst.evidenceEligible === false && fixtureDone === null;
 
     // Failed segment (from the partial scenario): playback cannot complete; it abandons.
     if (!partialScenario || !partialText) throw new Error('the partial-generation scenario did not run');
@@ -438,7 +471,7 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
     const failedOk = noCompletion === null && failedPlay?.type === 'AudioAbandoned' && abandoned.length === 2 && completions.length === 0
       && abandoned.some((e) => (e as { speech?: boolean }).speech === false);
     const ok = fixtureOk && failedOk;
-    return { ok, detail: ok ? 'fixture voice reviewed: still isSpeech false, preview-only, evidenceEligible false, completion event speech:false; a failed segment cannot complete (AudioAbandoned, speech:false); a playback error on a ready segment is AudioAbandoned, 0 completions' : `fixture: speech=${fvoice.isSpeech} state=${fst.state} eligible=${fst.evidenceEligible} event=${fixtureDone?.type}/${fixtureDone?.speech}; failed: completion=${noCompletion === null ? 'null' : 'emitted'} abandoned=${abandoned.length} completions=${completions.length}` };
+    return { ok, detail: ok ? 'fixture voice reviewed: still isSpeech false and preview-only; unknown/pending fixture rights emit no completion; failed and interrupted playback cannot complete either' : `fixture: speech=${fvoice.isSpeech} state=${fst.state} eligible=${fst.evidenceEligible} event=${fixtureDone?.type ?? 'blocked'}; failed: completion=${noCompletion === null ? 'null' : 'emitted'} abandoned=${abandoned.length} completions=${completions.length}` };
   }, all));
 
   // ── reviewed real speech: exposure only ──
@@ -448,12 +481,12 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
     const seg = (await happy.store.audioSegments.get(manifest.segmentIds[0]))!;
     const em = emitterFor(happy, happyText.textId);
     const played = await em.played({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, view) as (DomainEvent & Listen) | null;
-    const done = await em.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, view) as (DomainEvent & Listen & { assetId?: string }) | null;
+    const done = await em.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, view, { heardCoverageRatio: 1 }) as (DomainEvent & Listen & { assetId?: string }) | null;
     const st = await happy.gl.audioStatus(happyText.textId);
     // The same playback before anyone reviewed the voice carries voiceReviewed:false.
     await happy.gl.setVoiceReview(voiceId, 'unreviewed', 'speech:check: reset to show the unreviewed flag');
     const em2 = listeningEmitter(happy.bus, { userId: 'u1', lang: 'es', session: 'speech-check-2', textId: happyText.textId, store: happy.store, clock: happy.clock.clock });
-    const unreviewed = await em2.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, view) as (DomainEvent & Listen) | null;
+    const unreviewed = await em2.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, view, { heardCoverageRatio: 1 }) as (DomainEvent & Listen) | null;
     await happy.gl.setVoiceReview(voiceId, 'reviewed', 'speech:check mock chain: NOT a human audition');
     const ok = played?.type === 'AudioPlayed' && played.speech === true && done?.type === 'AudioSegmentCompleted' && done.speech === true && done.voiceReviewed === true
       && done.assetId === seg.assetId && st.evidenceEligible === true && unreviewed?.speech === true && unreviewed.voiceReviewed === false;

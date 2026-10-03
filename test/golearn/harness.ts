@@ -6,6 +6,7 @@ import type {
 import { createGoLearn } from '../../src/golearn';
 import type { GoLearnDeps } from '../../src/golearn';
 import { createTestRegistry } from './testAdapters';
+import { canonicalTextSha256, editionIdOf, releaseIdOf } from '../../src/golisten/rights';
 
 /** Deterministic clock: every call is one second after the previous one; `advance(ms)` jumps forward. */
 export function makeClock(startMs = Date.UTC(2026, 0, 1)) {
@@ -132,33 +133,57 @@ export function createHarness(opts: {
         textId, sentenceIds: indexes.map((i) => `${textId}/s${i}`), scope: 'sentence',
       } as EventInput<DomainEvent>);
     },
-    listen: (userId: string, lang: LanguageCode, textId: string, indexes: number[], o: ListenOpts = {}) => {
+    listen: async (userId: string, lang: LanguageCode, textId: string, indexes: number[], o: ListenOpts = {}) => {
       touch(o.session ?? 'l1');
+      const sentenceIds = indexes.map((i) => `${textId}/s${i}`);
+      const segmentId = o.segmentId ?? `seg:${uniq()}`;
+      let assetId = o.assetId;
+      if (!o.legacy && !o.assetId) {
+        await api.seedAudio(segmentId, { speech: o.speech ?? true, reviewStatus: o.voiceReviewed === false ? 'unreviewed' : 'approved', textId, sentenceIds, lang });
+        assetId = (await store.audioSegments.get(segmentId))?.assetId;
+      }
+      const asset = assetId ? await store.audioAssets.get(assetId) : undefined;
+      const segment = await store.audioSegments.get(segmentId);
       return bus.emit({
         type: 'AudioSegmentCompleted', ...base(userId, lang, o.session ?? 'l1', 'listen'), dedupeKey: `done:${uniq()}`,
-        textId, segmentId: o.segmentId ?? `seg:${uniq()}`, sentenceIds: indexes.map((i) => `${textId}/s${i}`), speed: o.speed ?? 1,
+        textId, segmentId, sentenceIds, speed: o.speed ?? 1,
         transcriptVisible: false, replayCount: o.replays ?? 0, revealedTranscript: o.transcript ?? false, revealedTranslation: o.translation ?? false,
-        ...(o.legacy ? {} : { assetId: o.assetId ?? 'sha256:real', speech: o.speech ?? true, voiceReviewed: o.voiceReviewed ?? true }),
+        ...(o.legacy ? {} : { assetId, speech: o.speech ?? true, voiceReviewed: o.voiceReviewed ?? true,
+          sourceType: asset?.sourceType, audioKind: asset?.audioKind, qualityState: asset?.qualityState, rightsId: asset?.rights?.id,
+          rightsApproved: asset?.rights?.status === 'approved' && asset.rights.playInApp === true,
+          exactTextBound: !!asset?.textBinding && asset.textBinding.textId === textId,
+          textSha256: asset?.textBinding?.textSha256, contentVersion: segment?.contentVersion,
+          releaseId: asset?.textBinding?.releaseId, editionId: asset?.textBinding?.editionId,
+          heardCoverageRatio: 1, audibleCoverageVersion: 'observed-playback@1' as const }),
       } as EventInput<DomainEvent>);
     },
     /** Rows a LEGACY listening event resolves through: voice → segment → asset. Returns the segment id. */
-    seedAudio: async (segmentId: string, o: { speech: boolean; provider?: string; reviewStatus?: ReviewStatus; textId?: string; lang?: LanguageCode; flag?: boolean } = { speech: true }) => {
+    seedAudio: async (segmentId: string, o: { speech: boolean; provider?: string; reviewStatus?: ReviewStatus; textId?: string; lang?: LanguageCode; flag?: boolean; sentenceIds?: string[]; assetId?: string } = { speech: true }) => {
       const lang = o.lang ?? 'es';
       const voiceId = `voice:${segmentId}`;
-      const assetId = `asset:${segmentId}`;
+      const assetId = o.assetId;
+      const textId = o.textId ?? 't';
+      const text = await store.texts.get(textId);
+      const textSentences = text ? (await store.sentences.where('textId', textId)).filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index) : [];
+      const binding = text && textSentences.length ? { textId, contentVersion: text.contentVersion, textSha256: await canonicalTextSha256(textId, text.contentVersion, textSentences), releaseId: releaseIdOf(text), editionId: editionIdOf(text) } : undefined;
+      const bytes = new TextEncoder().encode(`test-audio:${segmentId}`);
+      const assetBytesId = await store.assets.put(bytes, 'audio/wav');
+      const resolvedAssetId = assetId ?? assetBytesId;
       await store.voices.put({
         id: voiceId, lang, providerId: o.provider ?? (o.speech ? 'azure' : 'fixture'), voiceId: 'v', requestedLocale: 'es-HN', actualLocale: 'es-MX',
         approved: true, reviewStatus: o.reviewStatus ?? 'approved', isSpeech: o.speech,
       });
       await store.audioAssets.put({
-        id: assetId, sourceType: 'generated-tts', lang, locale: 'es-MX', mime: 'audio/wav', sampleRate: 24000, channels: 1, durationMs: 1000,
-        bytes: 10, checksum: assetId, createdAt: '2026-01-01T00:00:00.000Z',
+        id: resolvedAssetId, sourceType: 'generated-tts', audioKind: 'synthetic', lang, locale: 'es-MX', mime: 'audio/wav', sampleRate: 24000, channels: 1, durationMs: 1000,
+        bytes: bytes.length, checksum: assetBytesId, createdAt: '2026-01-01T00:00:00.000Z',
         ...(o.flag === false ? {} : { isSpeech: o.speech }),
         generation: { providerId: o.provider ?? (o.speech ? 'azure' : 'fixture'), voiceId: 'v', settings: {}, sourceTextHash: 'h', speechTextHash: 'h', normalizerVersion: 'n', pronunciationLexiconVersion: 'l', softwareVersion: 't' },
+        qualityState: 'machine_checked', narratorOrVoiceId: 'v', rights: { id: `rights:${segmentId}`, status: 'approved', recordingOwner: 'test', recordingBasis: 'test-only', performanceOwner: 'test', performancePermission: 'test-only', playInApp: true, stream: true, offline: false, redistribute: false, segment: false, transform: false, textDerivative: 'allowed', providerRetention: 'none', providerId: o.provider ?? 'azure', providerTerms: 'test only' },
+        textBinding: binding,
       } as never);
       await store.audioSegments.put({
-        id: segmentId, cacheKey: segmentId, lang, sentenceIds: [], textId: o.textId ?? 't', displayText: 'x', speechText: 'x',
-        speechNormalization: [], pronunciationOverridesUsed: [], voiceConfigId: voiceId, assetId, status: 'ready', sequence: 0, contentVersion: 1,
+        id: segmentId, cacheKey: segmentId, lang, sentenceIds: o.sentenceIds ?? [], textId, displayText: 'x', speechText: 'x',
+        speechNormalization: [], pronunciationOverridesUsed: [], voiceConfigId: voiceId, assetId: resolvedAssetId, status: 'ready', sequence: 0, contentVersion: text?.contentVersion ?? 1,
       });
       return segmentId;
     },

@@ -35,7 +35,7 @@ export function createSourceFinder(store: AppStore): SourceFinder {
         if (out.length >= limit) break;
         if (seen.has(r.sentenceId)) continue;
         const [s, t] = await Promise.all([sentence(r.sentenceId), text(r.textId)]);
-        if (!s || !t) continue; // an encounter whose sentence or text is gone is not a source we can show
+        if (!s || !t || t.listeningAssessmentId !== undefined) continue; // protected transfer material is never a training source
         seen.add(r.sentenceId);
         out.push({ itemId, textId: t.id, textTitle: t.title, sentenceId: s.id, excerpt: s.text, surface: r.surface });
       }

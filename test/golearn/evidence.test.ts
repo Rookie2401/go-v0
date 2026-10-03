@@ -21,8 +21,8 @@ async function buildLuz(h: Harness) {
 const reading = async (h: Harness, itemId: string, user = U) => (await h.golearn.getItemState(user, itemId))!.reading;
 
 describe('policyVersion', () => {
-  it('is evidence@6', async () => {
-    expect(createHarness().golearn.policyVersion).toBe('evidence@6');
+  it('is evidence@7', async () => {
+    expect(createHarness().golearn.policyVersion).toBe('evidence@7');
   });
 });
 
@@ -201,8 +201,8 @@ describe('only reviewed real speech counts for listening (rule 5)', () => {
     await h.listen('ok', 'es', ES_STORY, [0], { speech: true, voiceReviewed: true });
     await h.listen('tone', 'es', ES_STORY, [0], { speech: false, voiceReviewed: true });
     await h.listen('raw', 'es', ES_STORY, [0], { speech: true, voiceReviewed: false });
-    await h.seedAudio('fx', { speech: false });
-    await h.listen('lie', 'es', ES_STORY, [0], { speech: true, voiceReviewed: true, assetId: 'asset:fx' }); // says speech, the asset says tone
+    await h.seedAudio('fx', { speech: false, textId: ES_STORY, sentenceIds: [`${ES_STORY}/s0`] });
+    await h.listen('lie', 'es', ES_STORY, [0], { speech: true, voiceReviewed: true, segmentId: 'fx', assetId: 'asset:fx' }); // says speech, the asset says tone
     expect((await h.golearn.getItemState('ok', F('creo')))?.listening.level).toBe('encountered');
     for (const u of ['tone', 'raw', 'lie']) {
       expect(await h.golearn.getItemState(u, F('creo'))).toBeUndefined();
@@ -213,11 +213,12 @@ describe('only reviewed real speech counts for listening (rule 5)', () => {
   it('legacy events are resolved segment → asset → voice', async () => {
     const h = createHarness();
     await buildSpanish(h.store);
-    const real = await h.seedAudio('real', { speech: true, reviewStatus: 'approved' });
-    const fixture = await h.seedAudio('fix', { speech: false });
-    const unreviewed = await h.seedAudio('raw', { speech: true, reviewStatus: 'unreviewed' });
-    const noFlagFixture = await h.seedAudio('old-fix', { speech: false, flag: false, provider: 'fixture' });
-    const noFlagReal = await h.seedAudio('old-real', { speech: true, flag: false, provider: 'azure' });
+    const target = { textId: ES_STORY, sentenceIds: [`${ES_STORY}/s0`] };
+    const real = await h.seedAudio('real', { ...target, speech: true, reviewStatus: 'approved' });
+    const fixture = await h.seedAudio('fix', { ...target, speech: false });
+    const unreviewed = await h.seedAudio('raw', { ...target, speech: true, reviewStatus: 'unreviewed' });
+    const noFlagFixture = await h.seedAudio('old-fix', { ...target, speech: false, flag: false, provider: 'fixture' });
+    const noFlagReal = await h.seedAudio('old-real', { ...target, speech: true, flag: false, provider: 'azure' });
     const cases: Array<[string, string | undefined, boolean]> = [
       ['real', real, true], ['fixture', fixture, false], ['unreviewed', unreviewed, false],
       ['old-fixture', noFlagFixture, false], ['old-real-unflagged', noFlagReal, false], ['unknown', 'seg:missing', false],
@@ -234,12 +235,12 @@ describe('only reviewed real speech counts for listening (rule 5)', () => {
     await h.listen(U, 'es', ES_STORY, [0], { session: 'l1' });
     await h.listen(U, 'es', ES_STORY, [1], { session: 'l2', speech: false });
     await h.listen(U, 'es', ES_STORY, [2], { session: 'l3', voiceReviewed: false });
-    const fixture = await h.seedAudio('fix', { speech: false });
+    const fixture = await h.seedAudio('fix', { speech: false, textId: ES_STORY, sentenceIds: [`${ES_STORY}/s3`] });
     await h.listen(U, 'es', ES_STORY, [3], { session: 'l4', legacy: true, segmentId: fixture });
     await h.listen(U, 'es', ES_STORY, [3], { session: 'l5', legacy: true, segmentId: 'seg:nope' });
     const events = await h.store.events.where('userId', U);
     const audit = await h.golearn.auditEvidence(U);
-    expect(audit).toMatchObject({ userId: U, policyVersion: 'evidence@6', totalEvents: events.length, rebuilt: false });
+    expect(audit).toMatchObject({ userId: U, policyVersion: 'evidence@7', totalEvents: events.length, rebuilt: false });
     expect(audit.excluded.map((x) => x.reason).sort()).toEqual(['non-speech-audio', 'non-speech-audio', 'unknown-asset', 'unreviewed-voice']);
     expect(audit.excluded.every((x) => x.type === 'AudioSegmentCompleted')).toBe(true);
     const before = (await h.store.encounters.where('userId', U)).length;
@@ -247,6 +248,20 @@ describe('only reviewed real speech counts for listening (rule 5)', () => {
     expect(again.rebuilt).toBe(true);
     expect((await h.store.encounters.where('userId', U)).length).toBe(before); // nothing excluded ever counted
     expect((await h.store.events.where('userId', U)).length).toBe(events.length); // nothing deleted from the log
+  });
+
+  it('rejects forged non-finite observed coverage ratios', async () => {
+    const h = createHarness();
+    await buildSpanish(h.store);
+    await h.listen(U, 'es', ES_STORY, [0]);
+    const event = (await h.store.events.where('userId', U)).find((e) => e.type === 'AudioSegmentCompleted');
+    expect(event?.type).toBe('AudioSegmentCompleted');
+    if (!event || event.type !== 'AudioSegmentCompleted') throw new Error('missing test completion');
+    await h.store.events.put({ ...event, heardCoverageRatio: Number.NaN });
+    const audit = await h.golearn.auditEvidence(U);
+    expect(audit.excluded.map((row) => row.reason)).toContain('insufficient-audible-coverage');
+    await h.golearn.rebuild(U);
+    expect((await h.store.encounters.where('userId', U)).filter((row) => row.modality === 'listening')).toHaveLength(0);
   });
 
   it('explainItem says how many ignored plays there were', async () => {
@@ -265,7 +280,7 @@ describe('ensureCurrent — migration from an older policy without deleting anyt
     const h = createHarness({ attach: false });
     await buildSpanish(h.store);
     // the old world: the fixture tone completed and was folded as listening evidence under the previous policy
-    const fixture = await h.seedAudio('fix', { speech: false });
+    const fixture = await h.seedAudio('fix', { speech: false, textId: ES_STORY, sentenceIds: [`${ES_STORY}/s0`] });
     await h.listen(U, 'es', ES_STORY, [0], { legacy: true, segmentId: fixture });
     await h.view(U, 'es', ES_STORY, 0);
     await h.store.learnerItems.put({
@@ -283,7 +298,7 @@ describe('ensureCurrent — migration from an older policy without deleting anyt
     expect(creo.reading.level).toBe('encountered'); // exposure only
     expect(creo.reading.evidence).toBe(0);
     expect((await h.store.events.where('userId', U)).length).toBe(events);
-    expect((await h.store.meta.get(`golearn.policy:${U}`))?.value).toBe('evidence@6');
+    expect((await h.store.meta.get(`golearn.policy:${U}`))?.value).toBe('evidence@7');
     expect(await h.golearn.ensureCurrent(U)).toBe(false); // idempotent
   });
 
@@ -298,14 +313,14 @@ describe('ensureCurrent — migration from an older policy without deleting anyt
     await h.view('a', 'es', ES_STORY, 0); // a: state predates any stamp
     const b = (await h.store.encounters.where('userId', 'b')).length;
     expect(await h.golearn.ensureCurrent('a')).toBe(true);
-    expect((await h.store.meta.get('golearn.policy:b'))?.value).toBe('evidence@6');
+    expect((await h.store.meta.get('golearn.policy:b'))?.value).toBe('evidence@7');
     expect((await h.store.encounters.where('userId', 'b')).length).toBe(b);
   });
 
   it('a brand-new learner is just stamped', async () => {
     const h = createHarness();
     expect(await h.golearn.ensureCurrent('fresh')).toBe(false);
-    expect((await h.store.meta.get('golearn.policy:fresh'))?.value).toBe('evidence@6');
+    expect((await h.store.meta.get('golearn.policy:fresh'))?.value).toBe('evidence@7');
   });
 });
 
@@ -425,7 +440,7 @@ describe('policy stamp on first write', () => {
     await buildSpanish(h.store);
     expect(await stampOf(h, U)).toBeUndefined();
     await h.view(U, 'es', ES_STORY, 0);
-    expect(await stampOf(h, U)).toBe('evidence@6');
+    expect(await stampOf(h, U)).toBe('evidence@7');
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
     expect(await stampOf(h, 'nobody')).toBeUndefined(); // other learners are not stamped
   });
@@ -441,7 +456,7 @@ describe('policy stamp on first write', () => {
     expect(await stampOf(h, U)).toBeUndefined();
     expect(await h.golearn.ensureCurrent(U)).toBe(true);
     expect((await h.store.encounters.get('legacy-enc'))).toBeUndefined(); // rebuilt from the log
-    expect(await stampOf(h, U)).toBe('evidence@6');
+    expect(await stampOf(h, U)).toBe('evidence@7');
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
   });
 

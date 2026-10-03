@@ -10,6 +10,7 @@
  * Nothing here knows about audio decoding, timing of real media, or learner evidence.
  */
 import type { PlayerState } from '../core/contracts/golisten';
+import type { AudioAlignment, AudioSourceType } from '../core/model';
 
 export const MIN_SPEED = 0.7;
 export const MAX_SPEED = 1.25;
@@ -31,6 +32,20 @@ export interface PlayerSegmentInfo {
   assetId?: string;
   durationMs?: number;
   paragraphIndex?: number;
+  rangeMs?: { startMs: number; endMs: number };
+  sourceType?: AudioSourceType;
+  audioKind?: 'human' | 'synthetic';
+  qualityState?: 'unreviewed' | 'machine_checked' | 'human_reviewed' | 'approved' | 'rejected';
+  variety?: string;
+  narratorOrVoiceId?: string;
+  playAllowed?: boolean;
+  offlineAllowed?: boolean;
+  exactTextBound?: boolean;
+  alignmentReviewState?: AudioAlignment['reviewState'];
+  /** Persisted alignment ids whose reviewed ranges passed audio bounds validation. */
+  reviewedAlignmentIds?: string[];
+  /** Reviewed phrase ranges from the active persisted asset, with exact corpus unit identity. */
+  reviewedAlignmentRanges?: Array<{ id: string; unitId: string; unit: AudioAlignment['unit']; startMs: number; endMs: number }>;
 }
 
 export interface PlayerManifestInput {
@@ -59,6 +74,13 @@ export interface PlayerModel extends PlayerState {
   prefetched: number[];
   prefetchWindow: number;
   autoAdvance: boolean;
+  /** Lowest rate used in this pass; easing back up cannot erase the fact that speech was slowed. */
+  passMinSpeed: number;
+  /** Audibly covered ranges inferred from monotonic media progress, not seeks. */
+  heardRanges: Array<{ startMs: number; endMs: number }>;
+  lastPositionAtMs?: number;
+  /** Sticky transcript exposure for the current pass. */
+  passTranscriptExposed: boolean;
 }
 
 export type PlayerAction =
@@ -72,7 +94,11 @@ export type PlayerAction =
   | { type: 'setSpeed'; speed: number } | { type: 'stepSpeed'; delta: 1 | -1 }
   | { type: 'setTranscriptMode'; mode: TranscriptMode }
   | { type: 'revealTranscript' }
-  | { type: 'position'; ms: number }
+  | { type: 'position'; ms: number; observedAtMs?: number }
+  /** User timeline seek: moves the playhead but adds no heard coverage. */
+  | { type: 'seekPosition'; ms: number }
+  /** Restore a validated checkpoint without emitting play/completion evidence. */
+  | { type: 'restorePosition'; segmentId: string; positionMs: number }
   | { type: 'ended' }
   /** The media element failed or was aborted (decode error, asset missing): the pass is abandoned, never completed. */
   | { type: 'playbackError' }
@@ -82,7 +108,7 @@ export interface EmitView { speed: number; transcriptVisible: boolean }
 
 export type PlayerEmit =
   | { event: 'played'; segmentIndex: number; view: EmitView }
-  | { event: 'completed'; segmentIndex: number; view: EmitView; replayCount: number; revealedTranscript: boolean }
+  | { event: 'completed'; segmentIndex: number; view: EmitView; replayCount: number; revealedTranscript: boolean; heardCoverageRatio: number }
   | { event: 'replayed'; segmentIndex: number; view: EmitView; count: number }
   | { event: 'phraseReplayed'; segmentIndex: number; view: EmitView; alignmentId: string; unitId: string }
   | { event: 'seeked'; fromSegmentIndex?: number; toSegmentIndex: number }
@@ -119,9 +145,9 @@ export function isTranscriptVisible(m: PlayerModel, index: number): boolean {
 }
 
 export const playableIndexes = (manifest: PlayerManifestInput): number[] =>
-  manifest.segments.flatMap((s, i) => (s.ready && !!s.assetId ? [i] : []));
+  manifest.segments.flatMap((s, i) => (s.ready && !!s.assetId && s.playAllowed !== false ? [i] : []));
 
-const isPlayable = (m: PlayerManifestInput, i: number) => !!m.segments[i]?.ready && !!m.segments[i]?.assetId;
+const isPlayable = (m: PlayerManifestInput, i: number) => !!m.segments[i]?.ready && !!m.segments[i]?.assetId && m.segments[i]?.playAllowed !== false;
 const nextPlayable = (m: PlayerManifestInput, from: number, dir: 1 | -1): number | undefined => {
   for (let i = from + dir; i >= 0 && i < m.segments.length; i += dir) if (isPlayable(m, i)) return i;
   return undefined;
@@ -129,17 +155,19 @@ const nextPlayable = (m: PlayerManifestInput, from: number, dir: 1 | -1): number
 
 export function createPlayerModel(manifest: PlayerManifestInput, opts: PlayerOptions = {}): PlayerModel {
   const first = playableIndexes(manifest)[0] ?? 0;
+  const rangeStart = manifest.segments[first]?.rangeMs?.startMs ?? 0;
   return {
     manifest, manifestId: manifest.manifestId, segmentIndex: first, playing: false, speed: clampSpeed(opts.speed ?? 1),
     transcriptMode: opts.transcriptMode ?? 'hidden', loop: { unit: 'none' },
-    positionMs: 0, started: false, completed: false, finished: false, replayCount: 0, revealed: [], prefetched: [],
+    positionMs: rangeStart, started: false, completed: false, finished: false, replayCount: 0, revealed: [], prefetched: [],
+    passMinSpeed: clampSpeed(opts.speed ?? 1), heardRanges: [], passTranscriptExposed: (opts.transcriptMode ?? 'hidden') === 'visible',
     prefetchWindow: opts.prefetchWindow ?? 2, autoAdvance: opts.autoAdvance ?? true,
   };
 }
 
 // ───────────────────────── reducer ─────────────────────────
 
-const view = (m: PlayerModel, index = m.segmentIndex): EmitView => ({ speed: m.speed, transcriptVisible: isTranscriptVisible(m, index) });
+const view = (m: PlayerModel, index = m.segmentIndex): EmitView => ({ speed: m.passMinSpeed, transcriptVisible: isTranscriptVisible(m, index) || (index === m.segmentIndex && m.passTranscriptExposed) });
 const emit = (e: PlayerEmit): PlayerEffect => ({ type: 'emit', emit: e });
 
 function prefetchEffects(m: PlayerModel): { model: PlayerModel; effects: PlayerEffect[] } {
@@ -169,10 +197,12 @@ function moveTo(m: PlayerModel, index: number, opts: { play: boolean }): { model
   effects.push(emit({ event: 'seeked', fromSegmentIndex: from, toSegmentIndex: index }));
   const seg = m.manifest.segments[index];
   let next: PlayerModel = {
-    ...m, segmentIndex: index, positionMs: 0, started: false, completed: false, finished: false, replayCount: 0,
+    ...m, segmentIndex: index, positionMs: seg.rangeMs?.startMs ?? 0, started: false, completed: false, finished: false, replayCount: 0,
+    passMinSpeed: m.speed, heardRanges: [], lastPositionAtMs: undefined, passTranscriptExposed: m.transcriptMode === 'visible',
     playing: opts.play, loopRange: m.loop.unit === 'phrase' ? m.loopRange : undefined,
   };
   effects.push({ type: 'load', segmentIndex: index, segmentId: seg.segmentId, assetId: seg.assetId });
+  if (next.positionMs > 0) effects.push({ type: 'seek', ms: next.positionMs });
   effects.push({ type: 'setRate', rate: next.speed, preservesPitch: true });
   if (opts.play) {
     next = { ...next, started: true };
@@ -195,12 +225,15 @@ export function reducePlayer(m: PlayerModel, a: PlayerAction): { model: PlayerMo
       if (idx !== m.segmentIndex) return moveTo(m, idx, { play: true });
       if (m.completed) return reducePlayer({ ...m, playing: false }, { type: 'replay' }); // play after a finished pass = deliberate replay
       if (!m.started) {
-        const started: PlayerModel = { ...m, playing: true, started: true };
+        const started: PlayerModel = { ...m, playing: true, started: true, passTranscriptExposed: m.transcriptMode === 'visible' };
         const pf = prefetchEffects(started);
         return {
           model: pf.model,
           effects: [
             { type: 'load', segmentIndex: idx, segmentId: m.manifest.segments[idx].segmentId, assetId: m.manifest.segments[idx].assetId },
+            // A paused user seek or restored checkpoint is state, not evidence; still apply it
+            // to the media element after load (including zero to clear any prior element offset).
+            { type: 'seek', ms: m.positionMs },
             { type: 'setRate', rate: m.speed, preservesPitch: true }, { type: 'play' },
             emit({ event: 'played', segmentIndex: idx, view: view(started) }), ...pf.effects,
           ],
@@ -248,19 +281,27 @@ export function reducePlayer(m: PlayerModel, a: PlayerAction): { model: PlayerMo
       if (!isPlayable(m.manifest, m.segmentIndex)) return none;
       const seg = m.manifest.segments[m.segmentIndex];
       const count = m.replayCount + 1;
-      const model: PlayerModel = { ...m, positionMs: 0, started: true, completed: false, finished: false, playing: true, replayCount: count };
+      const start = seg.rangeMs?.startMs ?? 0;
+      const model: PlayerModel = { ...m, positionMs: start, started: true, completed: false, finished: false, playing: true, replayCount: count, heardRanges: [], lastPositionAtMs: undefined, passMinSpeed: m.speed, passTranscriptExposed: m.transcriptMode === 'visible' };
       return {
         model,
         effects: [
           { type: 'load', segmentIndex: m.segmentIndex, segmentId: seg.segmentId, assetId: seg.assetId },
-          { type: 'setRate', rate: m.speed, preservesPitch: true }, { type: 'seek', ms: 0 }, { type: 'play' },
+          { type: 'setRate', rate: m.speed, preservesPitch: true }, { type: 'seek', ms: start }, { type: 'play' },
           emit({ event: 'replayed', segmentIndex: m.segmentIndex, view: view(model), count }),
         ],
       };
     }
     case 'setLoop': {
-      const range = a.unit === 'phrase' ? a.range : undefined;
-      if (a.unit === 'phrase' && (!a.alignmentId || !range || !(range.endMs > range.startMs))) return none; // a phrase loop needs a real aligned range
+      const segment = m.manifest.segments[m.segmentIndex];
+      const supplied = a.unit === 'phrase' && a.alignmentId ? segment?.reviewedAlignmentRanges?.find((r) => r.id === a.alignmentId) : undefined;
+      const lo = segment?.rangeMs?.startMs ?? 0;
+      const hi = segment?.rangeMs?.endMs ?? segment?.durationMs ?? 0;
+      if (a.unit === 'phrase' && (!supplied || supplied.unit !== 'phrase' || supplied.unitId !== a.unitId
+        || !segment?.reviewedAlignmentIds?.includes(supplied.id) || !a.range
+        || a.range.startMs !== supplied.startMs || a.range.endMs !== supplied.endMs
+        || supplied.startMs < lo || supplied.endMs > hi || !(supplied.endMs > supplied.startMs))) return none;
+      const range = a.unit === 'phrase' && supplied ? { startMs: supplied.startMs, endMs: supplied.endMs } : undefined;
       return { model: { ...m, loop: { unit: a.unit, alignmentId: a.unit === 'phrase' ? a.alignmentId : undefined }, loopRange: range, loopUnitId: a.unit === 'phrase' ? a.unitId ?? a.alignmentId : undefined }, effects: [] };
     }
     case 'setSpeed':
@@ -268,37 +309,76 @@ export function reducePlayer(m: PlayerModel, a: PlayerAction): { model: PlayerMo
       const to = clampSpeed(a.type === 'setSpeed' ? a.speed : m.speed + a.delta * SPEED_STEP);
       if (to === m.speed) return none;
       return {
-        model: { ...m, speed: to },
+        model: { ...m, speed: to, passMinSpeed: Math.min(m.passMinSpeed, to) },
         effects: [{ type: 'setRate', rate: to, preservesPitch: true }, emit({ event: 'speedChanged', from: m.speed, to })],
       };
     }
     case 'setTranscriptMode':
-      return a.mode === m.transcriptMode ? none : { model: { ...m, transcriptMode: a.mode }, effects: [] };
+      return a.mode === m.transcriptMode ? none : { model: { ...m, transcriptMode: a.mode, passTranscriptExposed: m.passTranscriptExposed || (m.started && a.mode === 'visible') }, effects: [] };
     case 'revealTranscript': {
       if (m.revealed.includes(m.segmentIndex) || m.transcriptMode === 'visible') return none;
-      const model: PlayerModel = { ...m, revealed: [...m.revealed, m.segmentIndex] };
+      const model: PlayerModel = { ...m, revealed: [...m.revealed, m.segmentIndex], passTranscriptExposed: m.started || m.passTranscriptExposed };
       return { model, effects: [emit({ event: 'transcriptRevealed', segmentIndex: m.segmentIndex, view: view(model) })] };
     }
     case 'position': {
-      const model: PlayerModel = { ...m, positionMs: Math.max(0, a.ms) };
+      const segment = m.manifest.segments[m.segmentIndex];
+      const lo = segment?.rangeMs?.startMs ?? 0;
+      const hi = segment?.rangeMs?.endMs ?? segment?.durationMs ?? Number.MAX_SAFE_INTEGER;
+      const nextMs = Math.max(lo, Math.min(hi, Number.isFinite(a.ms) ? a.ms : lo));
+      const elapsed = a.observedAtMs !== undefined && m.lastPositionAtMs !== undefined ? Math.max(0, a.observedAtMs - m.lastPositionAtMs) : undefined;
+      const delta = nextMs - m.positionMs;
+      // A progress jump must fit within elapsed wall time at the current playback rate (with a small scheduling
+      // allowance). This rejects programmatic/user seeks and a seek-to-end masquerading as heard coverage.
+      const audible = m.playing && m.started && delta > 0 && (elapsed !== undefined
+        ? delta <= elapsed * m.speed * 1.6 + 180
+        : m.lastPositionAtMs === undefined && delta <= 1500);
+      const heardRanges = audible ? mergeHeardRange(m.heardRanges, m.positionMs, nextMs) : m.heardRanges;
+      const model: PlayerModel = { ...m, positionMs: nextMs, heardRanges, lastPositionAtMs: a.observedAtMs ?? m.lastPositionAtMs };
       if (m.loop.unit === 'phrase' && m.loopRange && m.playing && a.ms >= m.loopRange.endMs) {
         return {
-          model: { ...model, positionMs: m.loopRange.startMs },
+          model: { ...model, positionMs: m.loopRange.startMs, lastPositionAtMs: undefined },
           effects: [{ type: 'seek', ms: m.loopRange.startMs }, emit({ event: 'phraseReplayed', segmentIndex: m.segmentIndex, view: view(m), alignmentId: m.loop.alignmentId!, unitId: m.loopUnitId ?? m.loop.alignmentId! })],
         };
       }
       return { model, effects: [] };
     }
+    case 'seekPosition': {
+      const seg = m.manifest.segments[m.segmentIndex];
+      if (!seg) return none;
+      const lo = seg.rangeMs?.startMs ?? 0;
+      const hi = seg.rangeMs?.endMs ?? seg.durationMs ?? Number.MAX_SAFE_INTEGER;
+      const ms = Math.max(lo, Math.min(hi, Number.isFinite(a.ms) ? a.ms : lo));
+      const newPass = m.completed || m.finished;
+      const count = newPass ? m.replayCount + 1 : m.replayCount;
+      const model: PlayerModel = { ...m, positionMs: ms, lastPositionAtMs: undefined, started: newPass ? false : m.started, completed: false, finished: false,
+        replayCount: count, heardRanges: newPass ? [] : m.heardRanges, passMinSpeed: newPass ? m.speed : m.passMinSpeed,
+        passTranscriptExposed: newPass ? m.transcriptMode === 'visible' : m.passTranscriptExposed };
+      return { model, effects: [{ type: 'seek', ms }, ...(newPass ? [emit({ event: 'replayed', segmentIndex: m.segmentIndex, view: view(model), count })] : [])] };
+    }
     case 'ended': {
       if (!m.started || m.completed) return none; // a stray/duplicate media callback
+      const segment = m.manifest.segments[m.segmentIndex];
+      const durationMs = segment?.durationMs;
+      const requiredStart = segment?.rangeMs?.startMs ?? 0;
+      const requiredEnd = segment?.rangeMs?.endMs ?? durationMs ?? 0;
+      const requiredDuration = requiredEnd - requiredStart;
+      const heard = coveredInRange(m.heardRanges, requiredStart, requiredEnd);
+      // Unknown durations and less than 80% audible coverage cannot complete listening evidence. An ended
+      // callback after seeking is recorded as an abandonment instead.
+      if (!durationMs || requiredDuration <= 0 || heard / requiredDuration < 0.8) {
+        return {
+          model: { ...m, playing: false, started: false, positionMs: segment?.rangeMs?.startMs ?? 0, completed: false, heardRanges: [], lastPositionAtMs: undefined },
+          effects: [{ type: 'pause' }, emit({ event: 'abandoned', segmentIndex: m.segmentIndex, view: view(m), positionMs: m.positionMs })],
+        };
+      }
       const completedEffects: PlayerEffect[] = [emit({
-        event: 'completed', segmentIndex: m.segmentIndex, view: view(m), replayCount: m.replayCount, revealedTranscript: isTranscriptVisible(m, m.segmentIndex),
+        event: 'completed', segmentIndex: m.segmentIndex, view: view(m), replayCount: m.replayCount, revealedTranscript: view(m).transcriptVisible, heardCoverageRatio: Math.min(1, heard / requiredDuration),
       })];
-      const done: PlayerModel = { ...m, completed: true, positionMs: 0 };
+      const done: PlayerModel = { ...m, completed: true, positionMs: requiredEnd };
       if (m.loop.unit === 'sentence' || (m.loop.unit === 'phrase' && m.loopRange)) {
-        const start = m.loop.unit === 'phrase' ? m.loopRange!.startMs : 0;
+        const start = m.loop.unit === 'phrase' ? m.loopRange!.startMs : segment?.rangeMs?.startMs ?? 0;
         const count = m.replayCount + 1;
-        const model: PlayerModel = { ...done, completed: false, started: true, playing: true, replayCount: count, positionMs: start };
+        const model: PlayerModel = { ...done, completed: false, started: true, playing: true, replayCount: count, positionMs: start, heardRanges: [], lastPositionAtMs: undefined, passMinSpeed: m.speed, passTranscriptExposed: m.transcriptMode === 'visible' };
         return {
           model,
           effects: [...completedEffects, { type: 'seek', ms: start }, { type: 'play' }, emit({ event: 'replayed', segmentIndex: m.segmentIndex, view: view(model), count })],
@@ -326,7 +406,38 @@ export function reducePlayer(m: PlayerModel, a: PlayerAction): { model: PlayerMo
       const pf = prefetchEffects(model);
       return { model: pf.model, effects: pf.effects };
     }
+    case 'restorePosition': {
+      const index = m.manifest.segments.findIndex((s) => s.segmentId === a.segmentId && isPlayable(m.manifest, m.manifest.segments.indexOf(s)));
+      if (index < 0) return none;
+      const segment = m.manifest.segments[index];
+      const duration = segment.durationMs;
+      const lo = segment.rangeMs?.startMs ?? 0;
+      const hi = segment.rangeMs?.endMs ?? duration ?? 0;
+      if (!duration || !Number.isFinite(a.positionMs) || a.positionMs <= lo || a.positionMs >= hi) return none;
+      const seg = m.manifest.segments[index];
+      const model: PlayerModel = { ...m, segmentIndex: index, positionMs: a.positionMs, playing: false, started: false, completed: false, finished: false, heardRanges: [], lastPositionAtMs: undefined, prefetched: [] };
+      const pf = prefetchEffects(model);
+      return { model: pf.model, effects: [{ type: 'load', segmentIndex: index, segmentId: seg.segmentId, assetId: seg.assetId }, { type: 'seek', ms: a.positionMs }, ...pf.effects] };
+    }
   }
+}
+
+/** Merge one actually audible monotonic interval; seeks never call this helper. */
+function mergeHeardRange(ranges: Array<{ startMs: number; endMs: number }>, startMs: number, endMs: number) {
+  if (!(endMs > startMs)) return ranges;
+  const all = [...ranges, { startMs, endMs }].sort((a, b) => a.startMs - b.startMs);
+  const out: typeof all = [];
+  for (const r of all) {
+    const last = out[out.length - 1];
+    if (last && r.startMs <= last.endMs + 80) last.endMs = Math.max(last.endMs, r.endMs);
+    else out.push({ ...r });
+  }
+  return out;
+}
+
+function coveredMs(ranges: Array<{ startMs: number; endMs: number }>) { return ranges.reduce((n, r) => n + Math.max(0, r.endMs - r.startMs), 0); }
+function coveredInRange(ranges: Array<{ startMs: number; endMs: number }>, lo: number, hi: number) {
+  return coveredMs(ranges.map((r) => ({ startMs: Math.max(lo, r.startMs), endMs: Math.min(hi, r.endMs) })));
 }
 
 /** Convenience wrapper holding the model and notifying subscribers. Pure logic stays in `reducePlayer`. */

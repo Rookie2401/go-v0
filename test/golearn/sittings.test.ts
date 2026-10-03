@@ -1,5 +1,5 @@
 /**
- * evidence@6: time-derived sittings, one exposure per sitting, explicit completion, "Seen / Understood / Finished" kept
+ * evidence@7: time-derived sittings, one exposure per sitting, explicit completion, "Seen / Understood / Finished" kept
  * apart, and evidence pinned to the content version. Every test here controls time itself (`sittingPerSession: false`).
  */
 import { describe, expect, it } from 'vitest';
@@ -303,7 +303,7 @@ describe('"Understood" on a sentence never dwelt on', () => {
   });
 });
 
-describe('derived state is rebuildable under evidence@6', () => {
+describe('derived state is rebuildable under evidence@7', () => {
   async function play(h: Harness) {
     await h.view(U, 'es', ES_STORY, 0, 's1');
     await h.help(U, 'es', ES_STORY, 0, 1, F('creo'), 2, 's2'); // reload inside the sitting
@@ -344,11 +344,27 @@ describe('derived state is rebuildable under evidence@6', () => {
     // a second GoLearn (cold memo) over the same log, via rebuild and via live replay of every event
     const h2 = createHarness({ sittingPerSession: false, attach: false });
     await buildSpanish(h2.store);
+    // This is a rebuildability test over the same local store, not a backup-restore test.
+    // Audio rows and bytes are required to revalidate lawful listening evidence.
+    for (const row of await h.store.voices.all()) await h2.store.voices.put(row);
+    for (const row of await h.store.audioSegments.all()) await h2.store.audioSegments.put(row);
+    for (const row of await h.store.audioAssets.all()) {
+      const blob = await h.store.assets.get(row.checksum);
+      if (blob) await h2.store.assets.put(blob.bytes, blob.mime);
+      await h2.store.audioAssets.put(row);
+    }
     for (const e of await h.bus.history({ userId: U })) await h2.store.events.put(e);
     await h2.golearn.rebuild(U);
     expect(await snap(h2)).toEqual(live);
     const h3 = createHarness({ sittingPerSession: false, attach: false });
     await buildSpanish(h3.store);
+    for (const row of await h.store.voices.all()) await h3.store.voices.put(row);
+    for (const row of await h.store.audioSegments.all()) await h3.store.audioSegments.put(row);
+    for (const row of await h.store.audioAssets.all()) {
+      const blob = await h.store.assets.get(row.checksum);
+      if (blob) await h3.store.assets.put(blob.bytes, blob.mime);
+      await h3.store.audioAssets.put(row);
+    }
     for (const e of await h.bus.history({ userId: U })) { await h3.store.events.put(e); await h3.golearn.handle(e); }
     expect(await snap(h3)).toEqual(live);
   });
@@ -365,7 +381,7 @@ describe('derived state is rebuildable under evidence@6', () => {
     const events = (await h.store.events.where('userId', U)).length;
     expect(await h.golearn.ensureCurrent(U)).toBe(true);
     expect((await h.store.events.where('userId', U)).length).toBe(events); // nothing deleted from the log
-    expect((await h.store.meta.get('golearn.policy:u1'))?.value).toBe('evidence@6');
+    expect((await h.store.meta.get('golearn.policy:u1'))?.value).toBe('evidence@7');
     expect(await encs(h)).toEqual(live);
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
   });

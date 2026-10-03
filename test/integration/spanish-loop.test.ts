@@ -12,15 +12,43 @@
  */
 import { beforeAll, describe, expect, it } from 'vitest';
 import type { AudioSegmentCompleted, DomainEvent, Sentence, Text } from '../../src/core';
+import type { AudioGenerationAuthorization, EnsureAudioOptions } from '../../src/core/contracts/golisten';
 import { ids } from '../../src/core';
 import { importDocuments } from '../../src/ingest';
-import { listeningEmitter } from '../../src/golisten';
+import { canonicalTextSha256, editionIdOf, listeningEmitter, releaseIdOf } from '../../src/golisten';
 import verified from '../../data/verified/scripture.json';
 import { SyntheticSpeechProvider, bundled, bundledDoc, liveSentences, makeApp, makeClock, reader, seedUser, syntheticallyReviewed, tokensOf } from './harness';
 
 const USER = 'learner-es';
 const LANG = 'es' as const;
 const sinForm = ids.form(LANG, 'pecado');
+
+/** Test-only grant for the mocked speech provider, bound to the exact current text release. */
+async function ensureAuthorizedTestSpeech(app: ReturnType<typeof makeApp>, textId: string, options: EnsureAudioOptions = {}) {
+  const text = await app.store.texts.get(textId);
+  if (!text) throw new Error(`Missing test text ${textId}`);
+  const live = (await app.store.sentences.where('textId', textId)).filter((s) => s.retiredInVersion === undefined).sort((a, b) => a.index - b.index);
+  const voice = options.voiceConfigId ? await app.store.voices.get(options.voiceConfigId) : await app.golisten.resolveVoice(text.lang);
+  if (!voice) throw new Error('The test speech provider did not resolve a voice');
+  const rights: AudioGenerationAuthorization['rights'] = {
+    id: `test-only:${voice.providerId}:${text.id}`, status: 'approved', recordingOwner: 'test-only mock provider', recordingBasis: 'explicit integration-test authorization',
+    performanceOwner: voice.providerId, performancePermission: 'Mock output only; no external retention', playInApp: true, stream: true, offline: false,
+    redistribute: false, segment: true, transform: false, textDerivative: 'allowed', providerRetention: 'none', providerId: voice.providerId,
+    providerTerms: 'Test mock only; no retention or redistribution',
+  };
+  const generationAuthorization: AudioGenerationAuthorization = { rights, textBinding: {
+    textId, contentVersion: text.contentVersion, textSha256: await canonicalTextSha256(textId, text.contentVersion, live),
+    releaseId: releaseIdOf(text), editionId: editionIdOf(text),
+  } };
+  const result = await app.golisten.ensureAudio(textId, { ...options, generationAuthorization });
+  // The mocked WAV passes technical validation; this remains test-only metadata, not an acoustic review.
+  for (const segmentId of result.manifest.segmentIds) {
+    const segment = await app.golisten.getSegment(segmentId);
+    const asset = segment?.assetId ? await app.golisten.getAsset(segment.assetId) : undefined;
+    if (asset) await app.store.audioAssets.put({ ...asset, qualityState: 'machine_checked' });
+  }
+  return result;
+}
 
 describe('Spanish end-to-end loop', () => {
   const clock = makeClock();
@@ -298,29 +326,29 @@ describe('Spanish end-to-end loop', () => {
     const emitter = listeningEmitter(dev.bus, { userId: USER, lang: LANG, session: 'fixture-listen', textId: story.id, store: dev.store });
     const view = { speed: 1, transcriptVisible: false };
     await emitter.played({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, view);
-    const done = await emitter.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, view);
-    expect(done).toMatchObject({ type: 'AudioSegmentCompleted', speech: false });
+    const done = await emitter.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, view, { heardCoverageRatio: 1 });
+    expect(done).toBeNull(); // pending fixture rights are not enough to create a listening event, even as preview audio
     // A legacy-shaped event (no speech flag) for the same fixture segment.
     await dev.bus.emit<AudioSegmentCompleted>({ type: 'AudioSegmentCompleted', userId: USER, lang: LANG, surface: 'listen', session: 'legacy', dedupeKey: `legacy:${seg.id}`, textId: story.id, segmentId: seg.id, sentenceIds: seg.sentenceIds, speed: 1, transcriptVisible: false, replayCount: 0, revealedTranscript: false, revealedTranslation: false });
     const sin = (await dev.golearn.getItemState(USER, sinForm))!;
     expect(sin.listening.level).toBe('unseen');
     expect(sin.listening.exposures).toBe(0);
     const audit = await dev.golearn.auditEvidence(USER);
-    expect(audit.excluded.length).toBe(2);
-    expect(audit.excluded.every((e) => e.reason === 'non-speech-audio')).toBe(true);
+    expect(audit.excluded.length).toBe(1); // the manually forged legacy-shaped event is rejected too
+    expect(audit.excluded[0].reason).toMatch(/rights|binding|speech/i);
     // Rebuilding keeps every legitimate reading/production fact and still ignores the fixture plays.
     const before = JSON.stringify([sin.reading, sin.writing]);
     await dev.golearn.auditEvidence(USER, { rebuild: true });
     const after = (await dev.golearn.getItemState(USER, sinForm))!;
     expect(JSON.stringify([after.reading, after.writing])).toBe(before);
     expect(after.listening.exposures).toBe(0);
-    expect((await dev.bus.history({ userId: USER, types: ['AudioSegmentCompleted'] })).length).toBe(2); // nothing deleted
+    expect((await dev.bus.history({ userId: USER, types: ['AudioSegmentCompleted'] })).length).toBe(1); // only the manually forged legacy row remains
   });
 
   it('9c — reviewed real speech (synthetic stand-in, test only) plays the exact accepted version and counts as listening exposure only', async () => {
     const speech = new SyntheticSpeechProvider();
     const live = makeApp({ store: app.store, clock, providers: [speech] });
-    const r = await live.golisten.ensureAudio(revisionTextId, { runNow: true });
+    const r = await ensureAuthorizedTestSpeech(live, revisionTextId, { runNow: true });
     expect(r.manifest.complete).toBe(true);
     const revSentences = await liveSentences(live.store, revisionTextId);
     const segs = await Promise.all(r.manifest.segmentIds.map((id) => live.golisten.getSegment(id)));
@@ -332,8 +360,9 @@ describe('Spanish end-to-end loop', () => {
     const emitter = listeningEmitter(live.bus, { userId: USER, lang: LANG, session: 'rehearse-1', textId: revisionTextId, surface: 'testimony', store: live.store });
     const before = (await live.golearn.getItemState(USER, sinForm))!;
     await emitter.played({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, { speed: 1, transcriptVisible: false });
-    const ev = await emitter.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, { speed: 1, transcriptVisible: false });
+    const ev = await emitter.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, { speed: 1, transcriptVisible: false }, { heardCoverageRatio: 1 });
     expect(ev).toMatchObject({ type: 'AudioSegmentCompleted', speech: true, voiceReviewed: true });
+    await live.golearn.settled();
     const after = (await live.golearn.getItemState(USER, sinForm))!;
     expect(after.listening.exposures).toBe(before.listening.exposures + 1);
     expect(after.listening.level).toBe('encountered'); // heard ≠ understood by ear

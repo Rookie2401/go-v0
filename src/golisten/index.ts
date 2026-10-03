@@ -9,13 +9,16 @@
 import { REVIEW_OK } from '../core/model';
 import type { AudioAlignment, AudioAsset, AudioJob, AudioManifest, AudioSegment, LanguageCode, ReviewStatus, VoiceConfig } from '../core/model';
 import type { AudioStatus, GoListen, GoListenDiagnostics, ProviderAvailability, TtsProvider } from '../core/contracts/golisten';
+import type { AudioImportManifest, AudioImportResult } from '../core/contracts/golisten';
 import { FIXTURE_PROVIDER_ID, FixtureTtsProvider } from './fixtureProvider';
 import { runEligibleJobs } from './jobs';
 import { ensureAudioForText, ensureSentenceAudioFor } from './pipeline';
 import { aggregateAvailability } from './providers';
-import { audioStatusDetail, audioStatusFor, type AudioStatusOptions, type FailedSentence } from './status';
+import { audioStatusDetail, audioStatusFor, selectAudioManifest, type AudioStatusOptions, type FailedSentence } from './status';
 import { GOLISTEN_VERSION, type GoListenDeps, type Runtime } from './types';
 import { resolveVoiceConfig } from './voices';
+import { importRecordingFor } from './import';
+import { approvedForPlay, currentBindingValid, sha256Hex } from './rights';
 
 export { computeCacheKey, type CacheKeyParts } from './cacheKey';
 export { encodeWav, validateWav, inspectWav, type EncodeWavOptions, type ValidateWavOptions, type WavInspection, DEFAULT_SAMPLE_RATE } from './wav';
@@ -32,6 +35,11 @@ export {
 } from './player';
 export { buildPlayerManifest } from './playerManifest';
 export { planSpeech, stripVerseMarkers, type SpeechPlan } from './pipeline';
+export { approvedForPlay, currentBindingValid, canonicalTextSha256, sha256Hex, releaseIdOf, editionIdOf, isThsv11 } from './rights';
+export { latestListeningCheckpoint, listeningProgress } from './progress';
+export { recommendListening } from './recommendations';
+export { listeningAssessmentAvailability, startListeningAssessment, submitListeningAssessment } from './assessment';
+export { type AudioGenerationAuthorization, type AudioImportManifest, type AudioImportResult, type OfflineAudioPackage } from '../core/contracts/golisten';
 export { GOLISTEN_VERSION, type GoListenDeps } from './types';
 
 /** Per-segment diagnostics plus the job state behind it (retries, next attempt, review status). */
@@ -127,15 +135,32 @@ export function createGoListen(deps: GoListenDeps): GoListenService {
     resolveVoice(lang: LanguageCode, courseId?: string): Promise<VoiceConfig> { return resolveVoiceConfig(rt, lang, courseId); },
     ensureAudio: (textId, opts) => ensureAudioForText(rt, textId, opts),
     ensureSentenceAudio: (args) => ensureSentenceAudioFor(rt, args),
+    importRecording: (args: { manifest: AudioImportManifest; bytes: Uint8Array }): Promise<AudioImportResult> => importRecordingFor(rt, args),
     runJobs: (opts) => runEligibleJobs(rt, opts),
 
     async getManifest(textId: string, voiceConfigId?: string): Promise<AudioManifest | undefined> {
+      if (!voiceConfigId) return selectAudioManifest(rt, textId);
       const rows = (await store.manifests.where('textId', textId)).filter((m) => !voiceConfigId || m.voiceConfigId === voiceConfigId);
       return rows.sort((a, b) => b.contentVersion - a.contentVersion || (a.updatedAt < b.updatedAt ? 1 : -1))[0];
     },
     getSegment: (id) => store.audioSegments.get(id),
     getAsset: (id) => store.audioAssets.get(id),
-    assetUrl: (id) => store.assets.url(id),
+    async assetUrl(id) {
+      const asset = await store.audioAssets.get(id);
+      if (!asset) return undefined;
+      if (asset.sourceType === 'generated-tts' && !asset.isSpeech && rt.allowFixture) return store.assets.url(id);
+      if (!approvedForPlay(asset.rights, asset.audioKind) || !(await currentBindingValid(store, asset))) return undefined;
+      return store.assets.url(id);
+    },
+    async offlinePackage(id) {
+      const asset = await store.audioAssets.get(id);
+      if (!asset || !approvedForPlay(asset.rights, asset.audioKind) || asset.rights.offline !== true || !(await currentBindingValid(store, asset))) return undefined;
+      const stored = await store.assets.get(id);
+      if (!stored) return undefined;
+      if (await sha256Hex(stored.bytes) !== asset.checksum) return undefined;
+      const alignments = (await store.alignments.where('assetId', id)).filter((a) => a.endMs <= asset.durationMs && a.startMs >= 0 && a.endMs > a.startMs);
+      return { asset, bytes: stored.bytes, rights: asset.rights, textBinding: asset.textBinding!, alignments };
+    },
     alignments: (segmentId): Promise<AudioAlignment[]> => store.alignments.where('segmentId', segmentId),
 
     async diagnostics(textId?: string): Promise<GoListenDiagnosticsV2> {

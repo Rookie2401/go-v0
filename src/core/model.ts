@@ -183,6 +183,8 @@ export interface Text {
   domains?: string[];
   /** Variety of the language the text is written in ('es-HN', 'es-ES', 'es-hist' …). */
   variety?: string;
+  /** Protected listening-assessment registry entry; implementations fail closed until exact approved IDs exist. */
+  listeningAssessmentId?: string;
   chapter?: { index: number; title?: string };
 }
 
@@ -572,6 +574,40 @@ export const ASSISTANCE: Record<string, AssistanceLevel> = {
 
 export type AudioSourceType = 'generated-tts' | 'human-recording' | 'licensed-recording' | 'user-recording';
 
+/** Audio-specific grants are independent from the rights to display the underlying words. Missing rights deny use. */
+export interface AudioRightsRecord {
+  id: string;
+  status: 'approved' | 'pending' | 'denied' | 'revoked';
+  recordingOwner: string;
+  recordingBasis: string;
+  recordingLicense?: string;
+  performanceOwner: string;
+  performancePermission: string;
+  attribution?: string;
+  playInApp: boolean;
+  stream: boolean;
+  offline: boolean;
+  redistribute: boolean;
+  segment: boolean;
+  transform: boolean;
+  /** For generated audio: exact-text derivative permission and the provider's retention terms. */
+  textDerivative?: 'allowed' | 'denied' | 'unknown';
+  providerRetention?: 'none' | 'transient' | 'stored' | 'unknown';
+  providerId?: string;
+  providerTerms?: string;
+  reviewedAt?: string;
+}
+
+export interface AudioTextBinding {
+  textId: string;
+  contentVersion: number;
+  textSha256: string;
+  releaseId: string;
+  editionId?: string;
+  scope?: 'canonical' | 'personal';
+  ownerId?: string;
+}
+
 export interface VoiceConfig {
   id: string; // e.g. "es-HN:fixture:default"
   lang: LanguageCode;
@@ -592,8 +628,9 @@ export interface VoiceConfig {
 }
 
 export interface AudioAsset {
-  id: string; // content hash of the bytes ("sha256:…")
+  id: string; // id supplied by the AssetStore (normally content-addressed)
   sourceType: AudioSourceType;
+  audioKind?: 'human' | 'synthetic';
   lang: LanguageCode;
   locale: string;
   mime: string; // "audio/wav" | "audio/mpeg" | "audio/ogg"
@@ -601,7 +638,7 @@ export interface AudioAsset {
   channels: number;
   durationMs: number;
   bytes: number;
-  checksum: string; // same as id for content-addressed assets
+  checksum: string; // SHA-256 of the bytes, independent of the AssetStore id format
   createdAt: string;
   /** False for fixture tones or any non-speech audio: such assets can never produce learner evidence. */
   isSpeech: boolean;
@@ -611,12 +648,20 @@ export interface AudioAsset {
     voiceId: string;
     settings: Record<string, string | number | boolean>;
     sourceTextHash: string;
+    sourceTextSha256?: string;
     speechTextHash: string;
     normalizerVersion: string;
     pronunciationLexiconVersion: string;
     softwareVersion: string;
   };
   validation?: AudioValidation;
+  /** Audio rights are independent from Text/source rights. Absent or revoked rights fail closed. */
+  rights?: AudioRightsRecord;
+  /** Immutable full-text binding for imported recordings; generated assets may bind by sourceTextHash. */
+  textBinding?: AudioTextBinding;
+  narratorOrVoiceId?: string;
+  variety?: string;
+  qualityState?: 'unreviewed' | 'machine_checked' | 'human_reviewed' | 'approved' | 'rejected';
 }
 
 export interface AudioValidation {
@@ -646,6 +691,9 @@ export interface AudioSegment {
   status: 'pending' | 'ready' | 'failed';
   sequence: number;
   contentVersion: number;
+  /** Exact rights grant and canonical text identity used for synthesis, when explicitly authorized. */
+  generationRights?: AudioRightsRecord;
+  textBinding?: AudioTextBinding;
 }
 
 export type AlignmentMethod = 'by-construction' | 'provider-marks' | 'forced-aligner' | 'manual';
@@ -659,9 +707,13 @@ export interface AudioAlignment {
   unitId: string;
   startMs: number;
   endMs: number;
+  /** Offsets into the canonical paragraph when available; imported ranges must match Sentence offsets exactly. */
+  sourceStart?: number;
+  sourceEnd?: number;
   method: AlignmentMethod;
   confidence: number;
   alignerVersion: string;
+  reviewState?: 'generated' | 'checked' | 'reviewed';
 }
 
 export interface AudioManifest {

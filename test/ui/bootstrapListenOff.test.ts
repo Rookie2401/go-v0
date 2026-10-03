@@ -1,7 +1,5 @@
 // @vitest-environment jsdom
-// PLAN8: with the default features (listening off) bootstrap makes no speech request, registers no provider, reads no remembered
-// Azure key, resumes no queued audio and queues no audio job when a testimony version is saved. `features: { listen: true }`
-// (the dormant path, covered by bootstrap.test.ts / bootstrapSpeech.test.ts) still does all of that.
+// Explicit feature-off behavior: no speech request, provider, remembered Azure key, queued audio resume, or testimony audio job.
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { FEATURES, createMemoryStore } from '../../src/core';
 import { bootstrap } from '../../src/app/bootstrap';
@@ -16,15 +14,15 @@ const fetchSpy = () => { const f = vi.fn(async () => reply(200, STATUS)); vi.stu
 const calls = (f: ReturnType<typeof fetchSpy>) => f.mock.calls.map((c) => String((c as unknown[])[0]));
 
 describe('the shipped default', () => {
-  it('has listening off', () => {
-    expect(FEATURES.listen).toBe(false);
+  it('has listening on', () => {
+    expect(FEATURES.listen).toBe(true);
   });
 });
 
-describe('bootstrap with listening off (the default features)', () => {
+describe('bootstrap with listening explicitly off', () => {
   it('performs no fetch to /api/speech/ (even with the proxy check left at its default) and registers no provider', async () => {
     const f = fetchSpy();
-    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true });
+    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, features: { listen: false } });
     await new Promise((res) => setTimeout(res, 20));
     expect(r.services.features.listen).toBe(false);
     expect(calls(f).filter((u) => u.includes('/api/speech/'))).toEqual([]);
@@ -36,7 +34,7 @@ describe('bootstrap with listening off (the default features)', () => {
 
   it('does not read a remembered Azure key, and never turns on the fixture for preview or the development preference', async () => {
     rememberAzure({ key: 'k-remembered', region: 'westeurope' });
-    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: false });
+    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: false, features: { listen: false } });
     expect(r.services.golisten.providers()).toEqual([]);
     expect(r.services.speech.azure()).toEqual({ configured: false, remembered: false });
     const { setPref } = await import('../../src/ui/prefs');
@@ -47,7 +45,7 @@ describe('bootstrap with listening off (the default features)', () => {
 
   it('the speech controls are inert: nothing is registered, remembered or requested', async () => {
     const f = fetchSpy();
-    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true });
+    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, features: { listen: false } });
     await r.services.speech.configureAzure({ key: 'k-1', region: 'r-1', remember: true });
     expect(r.services.golisten.providers()).toEqual([]);
     expect(JSON.stringify({ ...localStorage })).not.toContain('k-1');
@@ -57,7 +55,7 @@ describe('bootstrap with listening off (the default features)', () => {
   });
 
   it('saving a testimony version queues no audio job and writes no audio row', async () => {
-    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: false });
+    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: false, features: { listen: false } });
     const user = r.user!;
     const testimony = await r.services.gotell.getOrCreateTestimony(user.id, 'es');
     await r.services.gotell.acceptRevision(testimony.id, 'Yo creo en Dios.');
@@ -76,7 +74,7 @@ describe('bootstrap with listening off (the default features)', () => {
   });
 
   it('GoLearn is told listening is off: no listening recommendation and no listening signal', async () => {
-    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: false });
+    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: false, features: { listen: false } });
     const sr = await r.services.golearn.stageReadiness(r.user!.id, 'honduras-es');
     expect(sr.signals.map((s) => s.key)).not.toContain('listening');
     const recs = await r.services.golearn.recommend(r.user!.id, { includeUnpublished: true });
@@ -95,4 +93,3 @@ describe('bootstrap with listening opted in (the dormant code path)', () => {
     expect(r.services.speech.azure().configured).toBe(true);
   });
 });
-

@@ -11,6 +11,13 @@ const REASON_LABEL: Record<EvidenceAudit['excluded'][number]['reason'], string> 
   'non-speech-audio': 'placeholder (non-speech) audio',
   'unreviewed-voice': 'a voice nobody has auditioned',
   'unknown-asset': 'audio that could not be identified',
+  'synthetic-audio': 'synthetic voice (exposure only)',
+  'machine-checked-audio': 'audio awaiting human review',
+  'rights-not-cleared': 'audio without approved playback rights',
+  'stale-text-binding': 'audio bound to older wording or edition',
+  'insufficient-audible-coverage': 'less than 80% of the playable audio heard',
+  'sentence-mismatch': 'audio linked to different sentence identities',
+  'assessment-material': 'protected assessment material (never training evidence)',
 };
 
 export function EvidenceSection() {

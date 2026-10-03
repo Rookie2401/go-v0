@@ -121,7 +121,7 @@ describe.each(LANGS)('audioStatus state machine (%s)', (lang) => {
     expect(await gl.audioStatus(tid(lang))).toMatchObject({ state: 'ready', readySegments: 3, totalSegments: 3, evidenceEligible: true });
   });
 
-  it('even without a version bump, a live sentence whose text changed has no ready segment: stale for that sentence only', async () => {
+  it('even without a version bump, an in-place release edit invalidates every old binding until reauthorized', async () => {
     const fake = new FakeSpeechProvider();
     const { store, gl } = await makeEnv({ allowFixture: false, providers: [fake] });
     await addStory(store, lang);
@@ -130,8 +130,7 @@ describe.each(LANGS)('audioStatus state machine (%s)', (lang) => {
     const changed = s1.text + (lang === 'th' ? 'สวัสดี' : ' hola');
     await store.sentences.put({ ...s1, text: changed, textHash: hash(changed) }); // edited in place, contentVersion untouched
     const st = await gl.audioStatus(tid(lang));
-    expect(st).toMatchObject({ state: 'stale', readySegments: 2, totalSegments: 3 });
-    expect(st.reason).toMatch(/1 of 3 sentence/);
+    expect(st).toMatchObject({ state: 'not-generated', readySegments: 0, totalSegments: 3, playAllowed: false });
     const r = await gl.ensureAudio(tid(lang), { runNow: true });
     expect(r).toMatchObject({ created: 1, reused: 2 });
     expect((await gl.audioStatus(tid(lang))).state).toBe('preview-only');

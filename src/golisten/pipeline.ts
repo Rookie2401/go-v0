@@ -16,6 +16,8 @@ import { writeSentenceAlignments } from './alignment';
 import { applicableEntries, applyPronunciation } from './pronunciation';
 import { GOLISTEN_VERSION, PIPELINE_NORMALIZER_SUFFIX, type Runtime } from './types';
 import { gateVoice, planVoice } from './voices';
+import { isThsv11, sha256Hex, validateGenerationAuthorization, validatePersonalGenerationAuthorization } from './rights';
+import type { AudioGenerationAuthorization } from '../core/contracts/golisten';
 
 // ───────────────────────── speech text ─────────────────────────
 
@@ -78,7 +80,7 @@ export async function planSpeech(rt: Runtime, a: {
 
 // ───────────────────────── segments + jobs ─────────────────────────
 
-interface SegmentMeta { lang: LanguageCode; textId: string; sentenceIds: string[]; sequence: number; contentVersion: number; voice: VoiceConfig }
+interface SegmentMeta { lang: LanguageCode; textId: string; sentenceIds: string[]; sequence: number; contentVersion: number; voice: VoiceConfig; generationAuthorization?: AudioGenerationAuthorization }
 
 type Upsert = { segment: AudioSegment; created: boolean; reusable: boolean };
 
@@ -92,6 +94,7 @@ async function upsertSegment(rt: Runtime, plan: SpeechPlan, m: SegmentMeta): Pro
       pronunciationOverridesUsed: plan.overridesUsed, voiceConfigId: m.voice.id,
       status: plan.empty ? 'failed' : 'pending', // never "ready", never an assetId, until a validated asset exists
       sequence: m.sequence, contentVersion: m.contentVersion,
+      generationRights: m.generationAuthorization?.rights, textBinding: m.generationAuthorization?.textBinding,
     };
     await rt.store.audioSegments.put(segment);
     return { segment, created: true, reusable: false };
@@ -103,6 +106,7 @@ async function upsertSegment(rt: Runtime, plan: SpeechPlan, m: SegmentMeta): Pro
   let segment: AudioSegment = {
     ...existing, sentenceIds: merged,
     ...(sameText ? { sequence: m.sequence, contentVersion: m.contentVersion } : {}),
+    ...(m.generationAuthorization ? { generationRights: m.generationAuthorization.rights, textBinding: m.generationAuthorization.textBinding } : {}),
   };
   let reusable = false;
   if (existing.status === 'ready' && existing.assetId) {
@@ -151,7 +155,9 @@ async function voiceFor(rt: Runtime, lang: LanguageCode, voiceConfigId?: string)
 export async function ensureAudioForText(rt: Runtime, textId: string, opts: EnsureAudioOptions = {}): Promise<EnsureAudioResult> {
   const text: Text | undefined = await rt.store.texts.get(textId);
   if (!text) throw new Error(`GoListen: text ${textId} not found`);
+  if (isThsv11(text)) throw new Error('GoListen: THSV11 audio is prohibited and cannot be generated or imported');
   const { voice, provider } = await voiceFor(rt, text.lang, opts.voiceConfigId); // the availability gate: throws before anything is written
+  const authorization = provider.isSpeech ? await validateGenerationAuthorization(rt.store, text, provider.id, opts.generationAuthorization) : undefined;
   const all: Sentence[] = await liveSentences(rt.store, textId); // retired sentences never get audio
   const selected = opts.sentenceIds ? new Set(opts.sentenceIds) : undefined;
   const overrides = await rt.store.pronunciations.where('lang', text.lang);
@@ -162,7 +168,8 @@ export async function ensureAudioForText(rt: Runtime, textId: string, opts: Ensu
   const groups = new Map<string, Sentence[]>();
   for (const s of all) {
     const isScripture = text.kind === 'scripture' || (s.verseRefs?.length ?? 0) > 0;
-    const plan = await planSpeech(rt, { lang: text.lang, displayText: s.text, isScripture, voice, provider, overrides });
+    let plan = await planSpeech(rt, { lang: text.lang, displayText: s.text, isScripture, voice, provider, overrides });
+    if (authorization) plan = { ...plan, cacheKey: `${plan.cacheKey}:grant:${hash(JSON.stringify([authorization.rights.id, authorization.textBinding.textId]))}` };
     plans.set(plan.cacheKey, plan);
     keyOf.set(s.id, plan.cacheKey);
     groups.set(plan.cacheKey, [...(groups.get(plan.cacheKey) ?? []), s]);
@@ -174,12 +181,16 @@ export async function ensureAudioForText(rt: Runtime, textId: string, opts: Ensu
   for (const [key, sentences] of groups) {
     if (selected && !sentences.some((s) => selected.has(s.id))) continue;
     const plan = plans.get(key)!;
-    const up = await upsertSegment(rt, plan, { lang: text.lang, textId, sentenceIds: sentences.map((s) => s.id), sequence: sentences[0].index, contentVersion: text.contentVersion, voice });
+    const up = await upsertSegment(rt, plan, { lang: text.lang, textId, sentenceIds: sentences.map((s) => s.id), sequence: sentences[0].index, contentVersion: text.contentVersion, voice, generationAuthorization: authorization });
     touched.push(key);
     if (up.created) created++;
     if (up.reusable) {
       reused++;
-      const asset = up.segment.assetId ? await rt.store.audioAssets.get(up.segment.assetId) : undefined;
+      let asset = up.segment.assetId ? await rt.store.audioAssets.get(up.segment.assetId) : undefined;
+      if (asset && authorization && asset.generation?.sourceTextSha256 === await sha256Hex(new TextEncoder().encode(plan.displayText))) {
+        asset = { ...asset, rights: authorization.rights, textBinding: authorization.textBinding };
+        await rt.store.audioAssets.put(asset);
+      }
       if (asset) await writeSentenceAlignments(rt, up.segment, asset); // idempotent; covers newly attached sentences
       continue;
     }
@@ -204,14 +215,21 @@ export async function ensureAudioForText(rt: Runtime, textId: string, opts: Ensu
 
 // ───────────────────────── testimony sentences ─────────────────────────
 
-export async function ensureSentenceAudioFor(rt: Runtime, args: { lang: LanguageCode; text: string; ownerId: string; contextId: string; voiceConfigId?: string; runNow?: boolean }): Promise<AudioSegment> {
+export async function ensureSentenceAudioFor(rt: Runtime, args: { lang: LanguageCode; text: string; ownerId: string; contextId: string; voiceConfigId?: string; runNow?: boolean; generationAuthorization?: AudioGenerationAuthorization }): Promise<AudioSegment> {
   if (!args.text.trim()) throw new Error('GoListen: cannot synthesize empty text');
+  const context = await rt.store.texts.get(args.contextId);
+  if (context && isThsv11(context)) throw new Error('GoListen: THSV11 audio is prohibited and cannot be generated');
   const { voice, provider } = await voiceFor(rt, args.lang, args.voiceConfigId);
+  const authorization = provider.isSpeech ? (context
+    ? await validateGenerationAuthorization(rt.store, context, provider.id, args.generationAuthorization)
+    : await validatePersonalGenerationAuthorization(provider.id, args.ownerId, args.text, args.generationAuthorization)) : undefined;
+  if (context && !(await liveSentences(rt.store, context.id)).some((s) => s.text === args.text)) throw new Error('GoListen: testimony sentence is not part of the authorized canonical text release');
   const overrides = await rt.store.pronunciations.where('lang', args.lang);
-  const plan = await planSpeech(rt, { lang: args.lang, displayText: args.text, isScripture: false, voice, provider, overrides });
+  let plan = await planSpeech(rt, { lang: args.lang, displayText: args.text, isScripture: false, voice, provider, overrides });
+  if (authorization) plan = { ...plan, cacheKey: `${plan.cacheKey}:grant:${hash(JSON.stringify([authorization.rights.id, authorization.textBinding.textId]))}` };
   // Content-addressed: an unchanged sentence in a later revision reuses the same segment (textId stays the first context).
   // TODO(contract): AudioSegment has no ownerId, so ownership of testimony audio is enforced by the caller (GoTell.assertOwner).
-  const up = await upsertSegment(rt, plan, { lang: args.lang, textId: args.contextId, sentenceIds: [], sequence: 0, contentVersion: 1, voice });
+  const up = await upsertSegment(rt, plan, { lang: args.lang, textId: args.contextId, sentenceIds: [], sequence: 0, contentVersion: context?.contentVersion ?? 1, voice, generationAuthorization: authorization });
   if (!up.reusable) {
     const job = await ensureJob(rt, up.segment, plan);
     if (args.runNow && (job.status === 'queued' || job.status === 'failed' || job.status === 'running')) await runJob(rt, job.id, rt.clock());

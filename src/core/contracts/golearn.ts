@@ -137,7 +137,7 @@ export interface EvidenceAudit {
   userId: string;
   policyVersion: string;
   totalEvents: number;
-  excluded: Array<{ eventId: string; type: string; reason: 'non-speech-audio' | 'unreviewed-voice' | 'unknown-asset' }>;
+  excluded: Array<{ eventId: string; type: string; reason: 'non-speech-audio' | 'synthetic-audio' | 'machine-checked-audio' | 'unreviewed-voice' | 'unknown-asset' | 'rights-not-cleared' | 'stale-text-binding' | 'insufficient-audible-coverage' | 'sentence-mismatch' | 'assessment-material' }>;
   rebuilt: boolean;
 }
 

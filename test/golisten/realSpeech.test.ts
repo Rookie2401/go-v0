@@ -65,7 +65,7 @@ describe('listening evidence is unchanged', () => {
       const seg = (await env.gl.getSegment(id))!;
       const ref = { segmentId: seg.id, sentenceIds: seg.sentenceIds };
       await em.played(ref, { speed: 1, transcriptVisible: false });
-      expect(await em.completed(ref, { speed: 1, transcriptVisible: false })).toMatchObject({ type: 'AudioSegmentCompleted', speech: false });
+      expect(await em.completed(ref, { speed: 1, transcriptVisible: false }, { heardCoverageRatio: 1 })).toBeNull(); // fixture bytes have no learner-use rights; the play attempt remains non-evidence
     }
     await learn.settled();
     expect((await learn.readingProgress('u1', textId)).listenedSentences).toBe(0);

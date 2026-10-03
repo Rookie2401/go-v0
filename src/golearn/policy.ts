@@ -1,5 +1,7 @@
 /**
- * GoLearn evidence policy — `evidence@6` (stored item state is an incrementally updated AGGREGATE, agg.ts, instead of being re-derived from
+ * GoLearn evidence policy — `evidence@7` (listening eligibility now revalidates observed coverage, current lawful exact binding,
+ * reviewed source-specific quality, and protected assessment material; a policy mismatch rebuilds all derived listening state from the
+ * unchanged append-only event log. Reading and production dimensions remain governed by their existing rules. `evidence@6` stored item state is an incrementally updated AGGREGATE, agg.ts, instead of being re-derived from
  * every encounter on every fold; the numbers and rules below are unchanged from evidence@5, which added writing-system `orth` items and
  * decoding help (`DecodingRevealed`) on top of evidence@4's SCOPE of help, item-targeted vs sentence-level, and evidence@3's time-derived
  * sittings, version-pinned encounters, explicit completion). The single place where assistance discounts, modality rules and
@@ -76,7 +78,7 @@ import type { AssistanceLevel, ComfortBand, EvidencePolicy, LearnerLevel, Produc
 import { LEVEL_ORDER } from '../core';
 
 /** Version of the evidence rules; stored per user in `meta`. Bump whenever a rule above changes. */
-export const POLICY_VERSION = 'evidence@6';
+export const POLICY_VERSION = 'evidence@7';
 
 export const READING_WEIGHTS: readonly number[] = [1.0, 0.85, 0.65, 0.45, 0.3, 0.15];
 

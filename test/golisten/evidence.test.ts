@@ -4,7 +4,7 @@
  * really played to its end.
  */
 import { describe, expect, it } from 'vitest';
-import { ids, type AudioAbandoned, type AudioPlayed, type AudioSegmentCompleted, type DomainEvent, type LanguageCode } from '../../src/core';
+import { ids, type AudioAbandoned, type AudioPlayed, type DomainEvent, type LanguageCode } from '../../src/core';
 import { PlayerMachine, buildPlayerManifest, emitPlayerEffects, listeningEmitter } from '../../src/golisten';
 import { FakeSpeechProvider, LANGS, addStory, makeEnv } from './support';
 
@@ -21,13 +21,14 @@ async function firstSegment(env: Env, lang: LanguageCode) {
 }
 
 describe.each(LANGS)('listening events carry speech / voiceReviewed / assetId (%s)', (lang) => {
-  it('fixture audio: speech false, voiceReviewed false (still a real completion event; GoLearn grants no evidence)', async () => {
+  it('fixture audio: speech false, voiceReviewed false; preview playback does not create evidence events', async () => {
     const env = await makeEnv({ allowFixture: true });
     const { seg, ref } = await firstSegment(env, lang);
     const em = listeningEmitter(env.bus, { userId: 'u1', lang, session: 's', textId: ids.text(lang, 'story-01'), store: env.store });
     const played = (await em.played(ref, view0)) as AudioPlayed;
-    const done = (await em.completed(ref, view0)) as AudioSegmentCompleted;
-    for (const e of [played, done]) expect(e).toMatchObject({ assetId: seg.assetId, speech: false, voiceReviewed: false });
+    const done = await em.completed(ref, view0, { heardCoverageRatio: 1 });
+    expect(played).toMatchObject({ assetId: seg.assetId, speech: false, voiceReviewed: false });
+    expect(done).toBeNull(); // development fixtures can be played only in explicit preview; they are not evidence events
   });
 
   it('unreviewed real speech: speech true, voiceReviewed false; reviewed: both true; rejecting flips it back', async () => {
@@ -35,9 +36,9 @@ describe.each(LANGS)('listening events carry speech / voiceReviewed / assetId (%
     const { seg, ref, r } = await firstSegment(env, lang);
     let n = 0;
     const emitter = () => listeningEmitter(env.bus, { userId: 'u1', lang, session: `s${n++}`, textId: ids.text(lang, 'story-01'), store: env.store });
-    expect(await emitter().completed(ref, view0)).toMatchObject({ assetId: seg.assetId, speech: true, voiceReviewed: false });
+    expect(await emitter().completed(ref, view0, { heardCoverageRatio: 1 })).toMatchObject({ assetId: seg.assetId, speech: true, voiceReviewed: false });
     await env.gl.setVoiceReview(r.manifest.voiceConfigId, 'reviewed');
-    expect(await emitter().completed(ref, view0)).toMatchObject({ assetId: seg.assetId, speech: true, voiceReviewed: true });
+    expect(await emitter().completed(ref, view0, { heardCoverageRatio: 1 })).toMatchObject({ assetId: seg.assetId, speech: true, voiceReviewed: true });
     const em = emitter();
     expect(await em.played(ref, view0)).toMatchObject({ speech: true, voiceReviewed: true });
     expect(await em.transcriptRevealed(ref, view0)).toMatchObject({ speech: true, voiceReviewed: true });
@@ -45,13 +46,13 @@ describe.each(LANGS)('listening events carry speech / voiceReviewed / assetId (%
     expect(await em.shadowingAttempt(ref, view0)).toMatchObject({ speech: true, voiceReviewed: true });
     expect(await em.phraseReplayed(ref, view0, { alignmentId: 'al', unitId: 'u' })).toMatchObject({ speech: true, voiceReviewed: true });
     await env.gl.setVoiceReview(r.manifest.voiceConfigId, 'rejected');
-    expect(await emitter().completed(ref, view0)).toMatchObject({ speech: true, voiceReviewed: false });
+    expect(await emitter().completed(ref, view0, { heardCoverageRatio: 1 })).toMatchObject({ speech: true, voiceReviewed: false });
   });
 });
 
 describe('AudioSegmentCompleted only when playback of a ready asset finished', () => {
   it('a pending / unknown / byte-less segment completes as AudioAbandoned instead, never as a completion', async () => {
-    const env = await makeEnv({ allowFixture: true });
+    const env = await makeEnv({ allowFixture: false, providers: [new FakeSpeechProvider()] });
     const { store, bus, gl } = env;
     await addStory(store, 'es');
     const r = await gl.ensureAudio(ids.text('es', 'story-01')); // queued, nothing ready
@@ -77,7 +78,7 @@ describe('AudioSegmentCompleted only when playback of a ready asset finished', (
     expect(await em2.completed({ segmentId: ready.id, sentenceIds: ready.sentenceIds }, view0)).toBeNull();
     store.assets.has = realHas;
     const em3 = listeningEmitter(bus, { userId: 'u1', lang: 'es', session: 'ok', textId: ids.text('es', 'story-01'), store });
-    expect(await em3.completed({ segmentId: ready.id, sentenceIds: ready.sentenceIds }, view0)).toMatchObject({ type: 'AudioSegmentCompleted', assetId: ready.assetId });
+    expect(await em3.completed({ segmentId: ready.id, sentenceIds: ready.sentenceIds }, view0, { heardCoverageRatio: 1 })).toMatchObject({ type: 'AudioSegmentCompleted', assetId: ready.assetId });
   });
 
   it('without a store the emitter fails closed: no asset hint means no completion, and speech is never assumed', async () => {
@@ -87,7 +88,7 @@ describe('AudioSegmentCompleted only when playback of a ready asset finished', (
     expect(await ofType(bus, 'AudioAbandoned')).toHaveLength(1);
     expect(await em.played({ segmentId: 'seg:q', sentenceIds: [], assetId: 'asset:q', ready: true }, view0)).toMatchObject({ assetId: 'asset:q', speech: false, voiceReviewed: false });
     const vouched = await em.played({ segmentId: 'seg:r', sentenceIds: [], assetId: 'asset:r', ready: true, speech: true, voiceReviewed: true }, view0);
-    expect(vouched).toMatchObject({ speech: true, voiceReviewed: true }); // the caller may vouch explicitly
+    expect(vouched).toMatchObject({ speech: false, voiceReviewed: false }); // without a store, caller assertions do not prove speech or review
   });
 
   it('failed() records a failed or aborted play as AudioAbandoned once per pass', async () => {
@@ -101,7 +102,7 @@ describe('AudioSegmentCompleted only when playback of a ready asset finished', (
   });
 
   it('the player state machine turns a media error into an abandoned pass (never a completion) and can restart it', async () => {
-    const { store, bus, gl } = await makeEnv({ allowFixture: true });
+    const { store, bus, gl } = await makeEnv({ allowFixture: false, providers: [new FakeSpeechProvider()] });
     await addStory(store, 'th');
     const r = await gl.ensureAudio(ids.text('th', 'story-01'), { runNow: true });
     const pm = new PlayerMachine(await buildPlayerManifest(store, r.manifest));
@@ -118,6 +119,9 @@ describe('AudioSegmentCompleted only when playback of a ready asset finished', (
     await step({ type: 'playbackError' }); // nothing playing: nothing to abandon
     expect((await bus.history({ userId: 'u1' })).filter((e) => e.type === 'AudioAbandoned')).toHaveLength(1);
     await step({ type: 'play' });
+    const duration = pm.state.manifest.segments[pm.state.segmentIndex].durationMs!;
+    for (let ms = 250; ms <= duration; ms += 250) await step({ type: 'position', ms: Math.min(ms, duration), observedAtMs: ms });
+    await step({ type: 'position', ms: duration, observedAtMs: duration + 250 });
     await step({ type: 'ended' });
     expect((await bus.history({ userId: 'u1' })).filter((e) => e.type === 'AudioSegmentCompleted')).toHaveLength(1);
   });

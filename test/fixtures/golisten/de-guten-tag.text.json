@@ -1,0 +1,59 @@
+{
+  "schemaVersion": 2,
+  "id": "golisten-guten-tag-qa",
+  "lang": "de",
+  "locale": "de-DE",
+  "title": "German greeting — GoListen QA sample",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "golisten-qa-de",
+    "kind": "comprehensible-input",
+    "title": "GoListen technical QA"
+  },
+  "source": {
+    "id": "src:de:golisten-guten-tag-qa",
+    "title": "Guten Tag greeting",
+    "url": "https://commons.wikimedia.org/wiki/File:De-Guten_Tag.oga",
+    "attribution": "Recording uploaded by Beagle Beck, Wikimedia Commons, 27 February 2007; PD-self. Author is attributed as assumed in source metadata.",
+    "provenance": "Exact greeting from the source description; an end-to-end technical sample, not a reviewed course or native-speaker assessment.",
+    "rights": "public-domain",
+    "licenseNote": "The recording uploader dedicates the recording to the public domain worldwide, with unconditional any-purpose fallback. The conventional two-word greeting has no original literary authorship claim.",
+    "authorship": "public-domain"
+  },
+  "review": {
+    "status": "reviewed",
+    "reviewedBy": "source-description comparison",
+    "reviewedAt": "2026-10-03",
+    "level": "linguistic-check",
+    "notes": "Wording matches source description; no native-speaker or recording-fidelity review is claimed.",
+    "contentSignature": "e28e62dc15ea73f3"
+  },
+  "difficulty": "A0",
+  "topics": [
+    "greetings"
+  ],
+  "editorialTags": [
+    "technical-qa-sample",
+    "recording-needs-human-review"
+  ],
+  "prepTargets": [],
+  "generated": false,
+  "english": {
+    "source": "Literal English rescue supplied for this technical QA greeting."
+  },
+  "sections": [
+    {
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "id": "greeting",
+              "text": "Guten Tag!",
+              "english": "Good day!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

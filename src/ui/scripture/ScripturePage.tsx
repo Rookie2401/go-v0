@@ -85,7 +85,7 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
   const { texts: allTexts } = useLangTexts();
 
   // Resident Scripture texts, behind the publication gate.
-  const residentAll = useMemo(() => (allTexts ?? []).filter((t) => t.kind === 'scripture'), [allTexts]);
+  const residentAll = useMemo(() => (allTexts ?? []).filter((t) => t.kind === 'scripture' && t.listeningAssessmentId === undefined), [allTexts]);
   const resident = useMemo(() => residentAll.filter((t) => isVisibleText(t, preview)), [residentAll, preview]);
 
   // Library chapters, opened lazily (paged exactly as the previous page did).
@@ -115,18 +115,13 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
     }).catch((e: unknown) => { if (live) { setCatalogTexts([]); setCatalogReady(true); setCatalogError(e instanceof Error ? e.message : 'Could not load Scripture.'); } });
     return () => { live = false; };
   }, [library, course.lang, preview]);
-  // A library row is dropped when it is a resident text (same id), or the same chapter under the same title as one, or the chapter a resident
-  // text carries by its running canon number: the resident copy is the one that has the learner's progress. A partial passage with its own title stays.
+  // Only canonical identity proves that a library row is already resident. A seed passage can share
+  // a title/chapter with a complete release while containing different verses (or a different edition).
+  // Keep both identities: existing progress stays on the seed and the complete chapter remains available.
   const lazy = useMemo(() => {
     const have = new Set(residentAll.map((t) => t.id));
-    const key = (p: { book: string; chapter: number }, title: string) => `${p.book}:${p.chapter}:${title}`;
-    const same = new Set(resident.flatMap((t) => { const p = placeOf(t); return p ? [key(p, t.title)] : []; }));
-    const running = new Set(resident.flatMap((t) => (t.chapter?.index !== undefined ? [t.chapter.index] : [])));
-    return catalogTexts.filter((t) => {
-      const p = placeOf(t);
-      return !have.has(t.id) && !(p && same.has(key(p, t.title))) && !(t.chapter !== undefined && running.has(t.chapter));
-    });
-  }, [catalogTexts, residentAll, resident]);
+    return catalogTexts.filter((t) => !have.has(t.id));
+  }, [catalogTexts, residentAll]);
 
   // Progress and coverage for the resident texts, the same shared reads as before.
   const textIds = useMemo(() => resident.map((t) => t.id), [resident]);

@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { ids, type AudioPlayed, type AudioSegmentCompleted, type AudioReplayed, type DomainEvent } from '../../src/core';
 import { PlayerMachine, buildPlayerManifest, emitPlayerEffects, listeningEmitter } from '../../src/golisten';
-import { addStory, makeEnv } from './support';
+import { addStory, FakeSpeechProvider, makeEnv } from './support';
 
 // No store in these contexts: the caller vouches for the asset (assetId + ready) and nothing else, so speech/voiceReviewed stay false.
 const seg = { segmentId: 'seg:a', sentenceIds: ['text:es:x/s0'], assetId: 'asset:a', ready: true };
@@ -18,7 +18,7 @@ describe('listeningEmitter', () => {
     const e = (await em.played(seg, { speed: 0.85, transcriptVisible: true })) as AudioPlayed;
     expect(e).toMatchObject({ type: 'AudioPlayed', userId: 'u1', lang: 'es', surface: 'listen', session: 'sess1', textId: 'text:es:x', segmentId: 'seg:a', sentenceIds: ['text:es:x/s0'], speed: 0.85, transcriptVisible: true });
     expect(e.dedupeKey).toBe('AudioPlayed|sess1|seg:a|0');
-    const c = (await em.completed(seg, { speed: 0.85, transcriptVisible: true })) as AudioSegmentCompleted;
+    const c = (await em.completed(seg, { speed: 0.85, transcriptVisible: true }, { heardCoverageRatio: 1 })) as AudioSegmentCompleted;
     expect(c).toMatchObject({ type: 'AudioSegmentCompleted', speed: 0.85, transcriptVisible: true, replayCount: 0, revealedTranscript: true, revealedTranslation: false });
   });
 
@@ -27,21 +27,21 @@ describe('listeningEmitter', () => {
     const em = listeningEmitter(bus, ctx);
     expect(await em.played(seg, view)).not.toBeNull();
     expect(await em.played(seg, view)).toBeNull(); // rerender / duplicate callback
-    expect(await em.completed(seg, view)).not.toBeNull();
-    expect(await em.completed(seg, view)).toBeNull();
+    expect(await em.completed(seg, view, { heardCoverageRatio: 1 })).not.toBeNull();
+    expect(await em.completed(seg, view, { heardCoverageRatio: 1 })).toBeNull();
     expect(em.passOf('seg:a')).toBe(0);
     const r = (await em.replayed(seg, view)) as AudioReplayed;
     expect(r.count).toBe(1);
     expect(em.passOf('seg:a')).toBe(1);
-    expect(await em.completed(seg, view)).toMatchObject({ replayCount: 1 });
-    expect(await em.completed(seg, view)).toBeNull();
+    expect(await em.completed(seg, view, { heardCoverageRatio: 1 })).toMatchObject({ replayCount: 1 });
+    expect(await em.completed(seg, view, { heardCoverageRatio: 1 })).toBeNull();
     await em.replayed(seg, view);
     const completions = await ofType(bus, 'AudioSegmentCompleted');
     expect(completions).toHaveLength(2);
     expect(await ofType(bus, 'AudioReplayed')).toHaveLength(2);
     // a different segment and a different session are independent
-    expect(await em.completed({ segmentId: 'seg:b', sentenceIds: [], assetId: 'asset:b', ready: true }, view)).not.toBeNull();
-    expect(await listeningEmitter(bus, { ...ctx, session: 'sess2' }).completed(seg, view)).not.toBeNull();
+    expect(await em.completed({ segmentId: 'seg:b', sentenceIds: [], assetId: 'asset:b', ready: true }, view, { heardCoverageRatio: 1 })).not.toBeNull();
+    expect(await listeningEmitter(bus, { ...ctx, session: 'sess2' }).completed(seg, view, { heardCoverageRatio: 1 })).not.toBeNull();
   });
 
   it('every speed change is its own event carrying from/to', async () => {
@@ -63,7 +63,7 @@ describe('listeningEmitter', () => {
     expect(await em.transcriptRevealed(seg, { speed: 1, transcriptVisible: true })).toMatchObject({ type: 'TranscriptRevealed', transcriptVisible: true });
     expect(await em.transcriptRevealed(seg, { speed: 1, transcriptVisible: true })).toBeNull();
     em.translationRevealed('seg:a');
-    const c = await em.completed(seg, view);
+    const c = await em.completed(seg, view, { heardCoverageRatio: 1 });
     expect(c).toMatchObject({ revealedTranscript: true, revealedTranslation: true });
     await em.replayed(seg, view);
     expect(await em.transcriptRevealed(seg, { speed: 1, transcriptVisible: true })).not.toBeNull(); // new pass
@@ -93,7 +93,7 @@ describe('listeningEmitter', () => {
 
 describe('player + emitter integration over a real manifest', () => {
   it('drives a generated manifest and records listening events with the speed and transcript state of each action', async () => {
-    const { store, bus, gl } = await makeEnv();
+    const { store, bus, gl } = await makeEnv({ allowFixture: false, providers: [new FakeSpeechProvider()] });
     await addStory(store, 'de');
     const r = await gl.ensureAudio(ids.text('de', 'story-01'), { runNow: true });
     const pm = new PlayerMachine(await buildPlayerManifest(store, r.manifest), { transcriptMode: 'hidden' });
@@ -101,14 +101,25 @@ describe('player + emitter integration over a real manifest', () => {
     expect(pm.state.manifest.segments.every((s) => s.ready && s.assetId && s.durationMs! > 0 && s.sentenceIds.length === 1)).toBe(true);
     const em = listeningEmitter(bus, { userId: 'u1', lang: 'de', session: 's-int', textId: r.manifest.textId, store });
     const step = async (a: Parameters<PlayerMachine['dispatch']>[0]) => emitPlayerEffects(em, pm.state, pm.dispatch(a));
+    const coverCurrent = async () => {
+      const segment = pm.state.manifest.segments[pm.state.segmentIndex];
+      const start = segment.rangeMs?.startMs ?? 0;
+      const end = segment.rangeMs?.endMs ?? segment.durationMs!;
+      const middle = Math.min(end, start + 1000);
+      await step({ type: 'position', ms: middle, observedAtMs: 1000 });
+      await step({ type: 'position', ms: end, observedAtMs: 30_000 });
+    };
 
     await step({ type: 'setSpeed', speed: 0.8 });
     await step({ type: 'play' });
     await step({ type: 'revealTranscript' });
+    await coverCurrent();
     await step({ type: 'ended' }); // completes s0 (transcript revealed), auto-advances to s1
     await step({ type: 'replay' }); // replay s1
+    await coverCurrent();
     await step({ type: 'ended' }); // completes s1 after one replay, advances to s2
     await step({ type: 'next' }); // nowhere to go
+    await coverCurrent();
     await step({ type: 'ended' }); // completes s2, finishes
 
     const evs = await bus.history({ userId: 'u1' });
@@ -129,14 +140,14 @@ describe('player + emitter integration over a real manifest', () => {
     expect(pm.state.finished).toBe(true);
 
     // feeding the same effects again (a rerender that re-dispatches) does not double count
-    const dup = emitPlayerEffects(em, pm.state, [{ type: 'emit', emit: { event: 'completed', segmentIndex: 2, view: { speed: 0.8, transcriptVisible: false }, replayCount: 0, revealedTranscript: false } }]);
+    const dup = emitPlayerEffects(em, pm.state, [{ type: 'emit', emit: { event: 'completed', segmentIndex: 2, view: { speed: 0.8, transcriptVisible: false }, replayCount: 0, revealedTranscript: false, heardCoverageRatio: 1 } }]);
     await dup;
     expect(type('AudioSegmentCompleted')).toHaveLength(3);
     expect((await bus.history({ userId: 'u1' })).filter((e) => e.type === 'AudioSegmentCompleted')).toHaveLength(3);
   });
 
   it('an unfinished pass is reported as abandoned, not completed', async () => {
-    const { store, bus, gl } = await makeEnv();
+    const { store, bus, gl } = await makeEnv({ allowFixture: false, providers: [new FakeSpeechProvider()] });
     await addStory(store, 'sq');
     const r = await gl.ensureAudio(ids.text('sq', 'story-01'), { runNow: true });
     const pm = new PlayerMachine(await buildPlayerManifest(store, r.manifest));
@@ -151,7 +162,7 @@ describe('player + emitter integration over a real manifest', () => {
   });
 
   it('buildPlayerManifest marks pending segments as not playable and exposes paragraph indexes', async () => {
-    const { store, gl } = await makeEnv();
+    const { store, gl } = await makeEnv({ allowFixture: false, providers: [new FakeSpeechProvider()] });
     await addStory(store, 'hi');
     const r = await gl.ensureAudio(ids.text('hi', 'story-01'), { sentenceIds: [ids.sentence(ids.text('hi', 'story-01'), 0)], runNow: true });
     const pmi = await buildPlayerManifest(store, r.manifest);

@@ -10,7 +10,7 @@
  * sitting) scopes dedupe for view events; deliberate learner actions (tap, reveal, accept) use a
  * unique key per action.
  */
-import type { AssistanceLevel, ItemKind, LanguageCode, Modality, ProductionKind } from './model';
+import type { AssistanceLevel, AudioSourceType, ItemKind, LanguageCode, Modality, ProductionKind } from './model';
 import type { AssistanceStep, SelectionExplanation, SemanticGoal, TaskFamily, TellAttemptRecord } from './contracts/gotell-practice';
 
 export type Surface = 'corpus' | 'scripture' | 'testimony' | 'listen' | 'home';
@@ -83,6 +83,23 @@ interface Listen extends Base {
   assetId?: string;
   speech?: boolean;
   voiceReviewed?: boolean;
+  /** Immutable playback facts snapshotted when emitted; historical evidence never changes with later edits. */
+  sourceType?: AudioSourceType;
+  audioKind?: 'human' | 'synthetic';
+  qualityState?: 'unreviewed' | 'machine_checked' | 'human_reviewed' | 'approved' | 'rejected';
+  variety?: string;
+  rightsId?: string;
+  rightsApproved?: boolean;
+  exactTextBound?: boolean;
+  textSha256?: string;
+  contentVersion?: number;
+  releaseId?: string;
+  editionId?: string;
+  narratorOrVoiceId?: string;
+  locale?: string;
+  /** Fraction of the required audio range observed as audible monotonic playback in this pass. */
+  heardCoverageRatio?: number;
+  audibleCoverageVersion?: 'observed-playback@1';
 }
 export interface AudioPlayed extends Listen { type: 'AudioPlayed' }
 export interface AudioSegmentCompleted extends Listen { type: 'AudioSegmentCompleted'; replayCount: number; revealedTranscript: boolean; revealedTranslation: boolean }
@@ -92,6 +109,19 @@ export interface AudioSeeked extends Base { type: 'AudioSeeked'; textId: string;
 export interface PlaybackSpeedChanged extends Base { type: 'PlaybackSpeedChanged'; textId: string; from: number; to: number }
 export interface TranscriptRevealed extends Listen { type: 'TranscriptRevealed' }
 export interface AudioAbandoned extends Listen { type: 'AudioAbandoned'; positionMs: number }
+/** Durable resume checkpoint. This is player state only and is never folded into learner/mastery evidence. */
+export interface ListeningPositionSaved extends Base {
+  type: 'ListeningPositionSaved'; textId: string; manifestId: string; segmentId: string; positionMs: number;
+}
+/** A test-only route over a curated protected text; submissions are self-report unless separately validated. */
+export interface ListeningAssessmentStarted extends Base {
+  type: 'ListeningAssessmentStarted'; attemptId: string; textId: string; manifestId: string; contentVersion: number; sentenceIds: string[];
+  transcriptHidden: true; speed: 1; preview: false;
+}
+export interface ListeningAssessmentSubmitted extends Base {
+  type: 'ListeningAssessmentSubmitted'; attemptId: string; textId: string; report: 'understood' | 'partly-understood' | 'not-understood'; basis: 'learner-self-report';
+  validity: 'uncontaminated' | 'contaminated' | 'not-completed'; contaminationReasons: string[];
+}
 export interface ShadowingAttempt extends Listen { type: 'ShadowingAttempt'; attempt: number }
 export interface UserRecordingCreated extends Base { type: 'UserRecordingCreated'; recordingId: string; targetText: string; sentenceId?: string; testimonyRevisionId?: string }
 
@@ -141,7 +171,7 @@ export type DomainEvent =
   | SentenceExplanationRevealed | EnglishRescueRevealed | SentenceReread | DecodingRevealed | NoteOpened | ComprehensionReported | TextCompleted | PassageCompleted
   | ItemMarked | FormSearched | PhraseEncountered
   | AudioPlayed | AudioSegmentCompleted | AudioReplayed | PhraseReplayed | AudioSeeked | PlaybackSpeedChanged
-  | TranscriptRevealed | AudioAbandoned | ShadowingAttempt | UserRecordingCreated
+  | TranscriptRevealed | AudioAbandoned | ListeningPositionSaved | ListeningAssessmentStarted | ListeningAssessmentSubmitted | ShadowingAttempt | UserRecordingCreated
   | TestimonyTextSubmitted | TestimonyRevisionAccepted | GoTellSuggestionShown | GoTellSuggestionAccepted
   | GoTellSuggestionRejected | GoTellSuggestionEdited | ProductionRecorded | IndependentProductionDetected
   | TellGoalDefined | TellTaskPresented | TellInterventionShown | TellAttemptSubmitted | TellTaskClosed;

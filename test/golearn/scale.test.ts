@@ -1,5 +1,5 @@
 /**
- * evidence@6 — the cost of folding an event and of the screens' reads does not grow with the learner's history.
+ * evidence@7 — the cost of folding an event and of the screens' reads does not grow with the learner's history.
  * The fold must not read or scan an item's encounter history (or the encounter table at all); the reads the UI makes on every
  * screen must not read the learner's whole event table or all of his encounters. Writing-system items are aggregates, not rows.
  */

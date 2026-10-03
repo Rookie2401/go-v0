@@ -131,8 +131,7 @@ const MODELS: Record<LanguageCode, Record<string, string | { text: string; note:
     'goal:t.god-forgave': 'Perëndia më fali mëkatin.',
     'goal:t.saved-by-grace': 'Perëndia më shpëtoi me hirin e tij.',
     'goal:t.jesus-changed-me': 'Jezusi ma ndryshoi jetën.',
-    // no model for 'goal:t.now-trust' yet: the Albanian checker flags "mbështetem" (I lean/trust) as a misspelling of
-    // "mbështetëm" (we leaned); a model the checker objects to would mislead. Reported to the adapter's owner.
+    'goal:t.now-trust': 'Tani mbështetem te Jezusi çdo ditë.',
     'goal:t.share': 'Dua ta ndaj këtë me ty.',
     'goal:s.jesus-forgives': 'Jezusi fal mëkatet.',
     // no model for 'goal:c.church-family': "kisha" (church) is also "I had"; the concept tables cannot tell them apart

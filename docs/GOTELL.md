@@ -142,7 +142,7 @@ Regression: the full suite in a clean worktree (HEAD + only these changes) — 3
 
 ## 5. Known limits (honest)
 
-- **Every catalog model wording is unreviewed** (TODO(review)) and says so wherever it is shown. 73 wordings across es/de/hi/sq/th (15 each; Albanian 13); Hindi first-person wordings use masculine forms, with a note saying so. The Albanian `now-trust` model is omitted because the Albanian checker flags *mbështetem* (a false positive, reported to that adapter's owner); Albanian `church-family` is omitted because *kisha* is also "I had".
+- **Every catalog model wording is unreviewed** (TODO(review)) and says so wherever it is shown. 74 wordings across es/de/hi/sq/th (15 each; Albanian 14); Hindi first-person wordings use masculine forms, with a note saying so. Albanian `church-family` is omitted because *kisha* is also "I had". (The Albanian `now-trust` model was briefly left out because the checker flagged *mbështetem*; the Albanian session fixed that false positive in 4eadf65 and the model is back.)
 - Meaning is recognised through GoTell's concept word lists (starter sets, not native-reviewed). A correct paraphrase outside them is reported as a missing idea; word salad that contains the right words passes the meaning check (the checker may not catch it). Both are stated in `limits` and on the page.
 - Productive gaps are one-way hints to ranking; they are not shown on Home.
 - Each practice call refolds the log and re-reads receptive state; fine at current sizes, worth caching if logs grow large.

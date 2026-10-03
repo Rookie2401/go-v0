@@ -19,11 +19,12 @@ import { ingestDocument, testimonyDocument, testimonyDocumentId } from '../inges
 import type {
   AdapterRegistry, AnalyzedSentence, AppStore, EventBus, GoLearn, GoListen, GoTell, GoTellSuggestion, GoTellSuggestionAccepted,
   GoTellSuggestionEdited, GoTellSuggestionRejected, GoTellSuggestionShown, IndependentProductionDetected, IntentProposal,
-  IntentRequest, ItemKind, ItemKnowledge, LanguageAdapter, LanguageCode, ProductionAnalysis, ProductionKind, ProductionRecorded,
+  IntentRequest, InterpretationProvider, ItemKind, ItemKnowledge, LanguageAdapter, LanguageCode, ProductionAnalysis, ProductionKind, ProductionRecorded,
   ProductionTask, ProvenanceRef, SuggestionKind, SuggestionProvider, SuggestionSource, Testimony, TestimonyDraft, TestimonyRevision,
   TestimonyRevisionAccepted, TestimonySentence, TestimonyTextSubmitted, Text,
 } from '../core';
 import { checkerCoverage } from './coverage';
+import { createPractice } from './productive/practice';
 import { CONCEPTS, conceptsForToken, tagSection } from './concepts';
 import { diffSentences } from './diff';
 import { meaningChanges, negatorsIn } from './meaning';
@@ -56,6 +57,8 @@ export interface GoTellDeps {
    * an actor here. `forUser(userId)` returns a GoTell bound to one user.
    */
   actor?: () => string | undefined;
+  /** Optional meaning interpreter for practice attempts (e.g. an LLM): validated and advisory only, never decides. */
+  interpreter?: InterpretationProvider;
 }
 
 export interface GoTellService extends GoTell {
@@ -454,6 +457,9 @@ export function createGoTell(deps: GoTellDeps): GoTellService {
       });
 
     const gt: GoTell = {
+      // the productive engine (practice): append-only events, state folded from the log; bound to the same actor
+      practice: createPractice({ store, bus, adapters, golearn, clock, actor, ...(deps.interpreter ? { interpreter: deps.interpreter } : {}) }),
+
       async getOrCreateTestimony(userId, lang) {
         assertActor(userId);
         const id = ids.testimony(userId, lang);

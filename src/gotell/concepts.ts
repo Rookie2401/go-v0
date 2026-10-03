@@ -101,7 +101,7 @@ const TABLES: Record<LanguageCode, LangTable> = {
     forgive: { stems: ['falj', 'falur', 'faluar'], forms: ['fal', 'fali'], lexemes: ['falje'] },
     grace: { forms: ['hir', 'hiri', 'hirin', 'hirit'], lexemes: ['hir'] },
     salvation: { stems: ['shpëtim', 'shpetim', 'shpëto', 'shpeto', 'shpëtu', 'shpetu'], lexemes: ['shpëtim'] },
-    believe: { stems: ['besoj', 'besov', 'besonte', 'besues'], lexemes: ['besoj'] },
+    believe: { stems: ['besoj', 'besov', 'beson', 'besues'], lexemes: ['besoj'] },
     faith: { stems: ['besim'], lexemes: ['besim'] },
     trust: { stems: ['mbështet', 'mbeshtet'], lexemes: ['mbështetem'] },
     change: { stems: ['ndrysh'], lexemes: ['ndryshoj'] },
@@ -161,7 +161,7 @@ const TABLES: Record<LanguageCode, LangTable> = {
     conviction: { stems: ['überzeug', 'ueberzeug', 'überführ'], lexemes: ['Überzeugung'] },
     repent: { stems: ['reue', 'bereu', 'buße', 'buss', 'umkehr'], lexemes: ['bereuen'] },
     regret: { stems: ['bedauer'], forms: ['leid'], lexemes: ['bedauern'] },
-    forgive: { stems: ['vergeb', 'vergab'], lexemes: ['vergeben'] },
+    forgive: { stems: ['vergeb', 'vergab', 'vergib'], lexemes: ['vergeben'] },
     grace: { stems: ['gnade', 'gnäd'], lexemes: ['Gnade'] },
     salvation: { stems: ['erlös', 'rettung', 'gerettet', 'retten', 'erretten'], lexemes: ['Erlösung'] },
     believe: { stems: ['glaub'], lexemes: ['glauben'] },
@@ -223,6 +223,23 @@ function compile(lang: LanguageCode): Compiled[] {
     compiled.set(lang, c);
   }
   return c;
+}
+
+/**
+ * How a token matched each concept it belongs to: an exact form, the lemma, a prefix stem, or (Thai) a substring. Used by the
+ * practice engine to say how sure a meaning assessment is; conceptsForToken is the same test without the detail.
+ */
+export function conceptMatches(lang: LanguageCode, normalized: string, lemma?: string): Array<{ concept: ConceptId; via: 'form' | 'lemma' | 'stem' | 'substring' }> {
+  const form = nfc(normalized);
+  const lem = lemma ? nfc(lemma) : undefined;
+  const out: Array<{ concept: ConceptId; via: 'form' | 'lemma' | 'stem' | 'substring' }> = [];
+  for (const e of compile(lang)) {
+    const stemHit = (c: string) => e.stems.some((st) => (lang === 'th' ? c.includes(st) : c.startsWith(st)));
+    if (e.forms.has(form)) out.push({ concept: e.concept, via: 'form' });
+    else if (lem && e.forms.has(lem)) out.push({ concept: e.concept, via: 'lemma' });
+    else if (stemHit(form) || (lem && stemHit(lem))) out.push({ concept: e.concept, via: lang === 'th' ? 'substring' : 'stem' });
+  }
+  return out;
 }
 
 /** Concepts a token (normalized form + optional lemma) belongs to. */

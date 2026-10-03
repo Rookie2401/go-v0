@@ -6,7 +6,7 @@ import { deckFor } from '../../src/alphabet/decks';
 import type { AlphabetState } from '../../src/alphabet/srs';
 import { DAY, MINUTE } from '../../src/alphabet/srs';
 import { GERMAN_COURSE_ID, GERMAN_STREAMS } from '../../src/course/german';
-import { HINDI_COURSE_ID, HINDI_STREAMS, THAI_COURSE_ID, THAI_STREAMS } from '../../src/course';
+import { HINDI_COURSE_ID, HINDI_STREAMS, THAI_COURSE_ID } from '../../src/course';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { AlphabetPage, alphabetMetaId } from '../../src/ui/alphabet/AlphabetPage';
 import type { Harness, Mounted } from './harness';
@@ -20,7 +20,7 @@ let clock = T0;
 const now = () => clock;
 const page = () => <AlphabetPage now={now} />;
 const app = () => <Shell><AppRoutes /></Shell>;
-const thai = (o: Parameters<typeof makeHarness>[0] = {}) => makeHarness({ courseId: THAI_COURSE_ID, streams: THAI_STREAMS, ...o });
+const thai = (o: Parameters<typeof makeHarness>[0] = {}) => makeHarness({ courseId: THAI_COURSE_ID, ...o }); // the trainer needs no streams
 const hindi = (o: Parameters<typeof makeHarness>[0] = {}) => makeHarness({ courseId: HINDI_COURSE_ID, streams: HINDI_STREAMS, ...o });
 
 const group = (i: number) => q(mounted!.container, `[data-group="batch:${i}"]`)!;

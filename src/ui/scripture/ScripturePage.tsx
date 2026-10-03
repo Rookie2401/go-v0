@@ -115,12 +115,19 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
     }).catch((e: unknown) => { if (live) { setCatalogTexts([]); setCatalogReady(true); setCatalogError(e instanceof Error ? e.message : 'Could not load Scripture.'); } });
     return () => { live = false; };
   }, [library, course.lang, preview]);
-  // Only canonical identity proves that a library row is already resident. A seed passage can share
-  // a title/chapter with a complete release while containing different verses (or a different edition).
-  // Keep both identities: existing progress stays on the seed and the complete chapter remains available.
+  // A library row is the resident text's chapter, and is dropped, when it has the same id — or the same canon place, the
+  // same title and the same edition (work). A partial seed passage has a title of its own ("1. Johannes 1,8–9; Johannes 3,16")
+  // and a different edition is a different work, so both of those stay listed beside the complete chapter; the resident copy
+  // is the one that carries the learner's progress. (Matching on place alone listed a different passage as a duplicate;
+  // matching on id alone listed the same complete chapter twice.)
   const lazy = useMemo(() => {
     const have = new Set(residentAll.map((t) => t.id));
-    return catalogTexts.filter((t) => !have.has(t.id));
+    const same = (t: CatalogText) => residentAll.some((r) => {
+      const a = placeOf(r), b = placeOf(t);
+      return !!a && !!b && a.book === b.book && a.chapter === b.chapter && r.title.trim() === t.title.trim()
+        && (!r.workId || !t.workId || r.workId === t.workId);
+    });
+    return catalogTexts.filter((t) => !have.has(t.id) && !same(t));
   }, [catalogTexts, residentAll]);
 
   // Progress and coverage for the resident texts, the same shared reads as before.

@@ -209,6 +209,34 @@ describe('library chapters', () => {
   });
 });
 
+describe('the same chapter in the library under another id', () => {
+  it('lists a complete chapter once, but keeps a partial passage and another edition beside it', async () => {
+    const gen1 = runningNumber('GEN', 1)!;
+    const jn1 = runningNumber('1JN', 1)!;
+    const h = await german({
+      library: [
+        // the complete chapter the resident text already is: same place, same title, same work → listed once (the resident copy)
+        catalogText({ id: 'text:de:luther-gen-1', lang: 'de', title: '1. Mose 1', workId: 'work:germany-de:lutherbibel-1912', stream: 'scripture', streams: ['scripture'], chapter: gen1, rights: 'verified-public-domain' }),
+        // another edition of the same chapter: a different work → listed beside it
+        catalogText({ id: 'text:de:elb-gen-1', lang: 'de', title: '1. Mose 1', workId: 'work:germany-de:elberfelder-1905', stream: 'scripture', streams: ['scripture'], chapter: gen1, rights: 'verified-public-domain' }),
+        // the complete chapter beside a partial seed passage with its own title → listed beside it
+        catalogText({ id: 'text:de:luther-1jn-1', lang: 'de', title: '1. Johannes 1', workId: 'work:germany-de:lutherbibel-1912', stream: 'scripture', streams: ['scripture'], chapter: jn1, rights: 'verified-public-domain' }),
+      ],
+    });
+    const gen = await buildFixtureText(h.store, { lang: 'de', slug: 'gen-1', title: '1. Mose 1', kind: 'scripture', version: 'Luther 1912', scripture: { book: 'GEN', chapter: 1 }, sentences: [{ tokens: TOKENS }] });
+    await h.store.texts.put({ ...gen, workId: 'work:germany-de:lutherbibel-1912' });
+    await seed(h, '1jn-1', '1. Johannes 1,8–9; Johannes 3,16', '1JN', 1);
+    mounted = await h.mount(app(), { router: '/scripture' });
+    expect(links('b:GEN').map((a) => a.getAttribute('href'))).toEqual([
+      `/scripture/${encodeURIComponent(gen.id)}`, `/scripture/${encodeURIComponent('text:de:elb-gen-1')}`,
+    ]);
+    if (head('t:NT').getAttribute('aria-expanded') !== 'true') await click(head('t:NT'));
+    if (head('d:epistles').getAttribute('aria-expanded') !== 'true') await click(head('d:epistles'));
+    await click(head('b:1JN'));
+    expect(links('b:1JN').map((a) => a.querySelector('.entry__native')!.textContent)).toEqual(['1. Johannes 1,8–9; Johannes 3,16', '1. Johannes 1']); // the resident passage first
+  });
+});
+
 describe('continue reading', () => {
   it('links to the chapter last viewed', async () => {
     const h = await german();

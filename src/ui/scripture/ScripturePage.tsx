@@ -13,7 +13,7 @@
  * Publication gate as before: unpublished texts appear only in preview mode, each with its badges and reasons.
  * Albanian keeps the previous page (ScriptureRoute).
  */
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { memo, useEffect, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import type { MouseEvent, ReactNode } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import type { CatalogText, LanguageCode, Text } from '../../core';
@@ -167,11 +167,13 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
   }, [tree, byBook]);
   const open = stored ?? defaults;
   const toggle = (id: string) => {
-    const next = new Set(open);
-    if (next.has(id)) next.delete(id);
-    else next.add(id);
-    setStored(next);
-    try { localStorage.setItem(openKey(lang), JSON.stringify([...next])); } catch { /* private mode */ }
+    setStored((prev) => {
+      const next = new Set(prev ?? defaults);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      try { localStorage.setItem(openKey(lang), JSON.stringify([...next])); } catch { /* private mode */ }
+      return next;
+    });
   };
 
   // Continue reading: the chapter last viewed (TextViewed), among the texts listed here.
@@ -235,6 +237,7 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
   const bookGroup = (b: BookNode) => {
     const chapters = byBook.get(b.code);
     const n = chapters?.size ?? 0;
+    const rowsOf = (): ReactNode[] => {
     const rows: ReactNode[] = [];
     if (chapters) {
       for (let ch = 1; ch <= b.chapters; ch++) {
@@ -252,12 +255,15 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
         }
       }
     }
+    return rows;
+    };
+    const isOpen = open.has(`b:${b.code}`);
     return (
+      <BookSection key={b.code} open={isOpen} chapters={chapters} progress={progress} coverage={coverage} lastId={last?.id} preview={preview} render={() => (
       <Group
-        key={b.code}
         id={`b:${b.code}`}
         level={3}
-        open={open.has(`b:${b.code}`)}
+        open={isOpen}
         onToggle={toggle}
         title={b.en}
         native={b.native}
@@ -266,8 +272,9 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
         current={last?.book === b.code}
         meta={n > 0 ? `${n} ${n === 1 ? 'chapter' : 'chapters'} available` : 'not yet in GoLearn'}
       >
-        <div className="entrylist" role="list" aria-label={`${b.en} chapters`}>{rows}</div>
+        {() => <div className="entrylist" role="list" aria-label={`${b.en} chapters`}>{rowsOf()}</div>}
       </Group>
+      )} />
     );
   };
   const divisionGroup = (d: DivisionNode) => (
@@ -319,18 +326,44 @@ const CHEVRON = (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M9 6l6 6-6 6" /></svg>
 );
 
-/** Height-animated disclosure: grid-template-rows 0fr <-> 1fr; `inert` keeps a collapsed panel out of tab and assistive-technology reach. */
+/**
+ * One book's group, re-rendered only when what it shows changes: its own open state, its chapters, the learner's progress
+ * and coverage, the chapter last read, preview mode. Clicking one book then renders that book, not all 66 with their rows,
+ * so the opening animation starts at once.
+ */
+const BookSection = memo(
+  function BookSection({ render }: { open: boolean; chapters: unknown; progress: unknown; coverage: unknown; lastId?: string; preview: boolean; render: () => ReactNode }) {
+    return <>{render()}</>;
+  },
+  (a, b) => a.open === b.open && a.chapters === b.chapters && a.progress === b.progress && a.coverage === b.coverage && a.lastId === b.lastId && a.preview === b.preview,
+);
+
+/**
+ * Height-animated disclosure: grid-template-rows 0fr <-> 1fr; `inert` keeps a collapsed panel out of tab and
+ * assistive-technology reach. Content that is mounted on opening is first laid out closed and opened on the next frame,
+ * so the panel always grows from nothing instead of appearing at its full height.
+ */
 function Collapsible({ open, children }: { open: boolean; children: ReactNode }) {
+  const [shown, setShown] = useState(open);
+  const ref = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    if (!open) { setShown(false); return; }
+    // lay the newly mounted content out CLOSED (a forced layout read), then open it in the same task, before paint:
+    // the browser has a closed starting point to transition from, without waiting for animation frames
+    ref.current?.getBoundingClientRect();
+    setShown(true);
+  }, [open]);
+  const isOpen = open && shown;
   return (
-    <div className="collapsible" data-open={open ? 'true' : 'false'}>
-      <div className="collapsible__inner" inert={!open}>{children}</div>
+    <div ref={ref} className="collapsible" data-open={isOpen ? 'true' : 'false'}>
+      <div className="collapsible__inner" inert={!isOpen}>{children}</div>
     </div>
   );
 }
 
 /** One disclosure rung: a button head with a rotating (decorative) chevron and height-animated children. A group that cannot be opened is a muted, non-interactive head. */
 function Group({ id, level, open, onToggle, title, native, lang, meta, current, expandable = true, children }: {
-  id: string; level: 1 | 2 | 3; open: boolean; onToggle: (id: string) => void; title: string; native: string; lang: LanguageCode; meta?: string; current?: boolean; expandable?: boolean; children: ReactNode;
+  id: string; level: 1 | 2 | 3; open: boolean; onToggle: (id: string) => void; title: string; native: string; lang: LanguageCode; meta?: string; current?: boolean; expandable?: boolean; children: ReactNode | (() => ReactNode);
 }) {
   // A book's chapter list is mounted on first opening and then kept (so the collapse can animate); every group above it is always mounted.
   const seen = useRef(open);
@@ -350,7 +383,7 @@ function Group({ id, level, open, onToggle, title, native, lang, meta, current, 
       ) : (
         <div className="lib__head lib__head--static" data-unavailable="true">{head}</div>
       )}
-      {expandable && <Collapsible open={open}><div className="lib__children">{level < 3 || seen.current ? children : null}</div></Collapsible>}
+      {expandable && <Collapsible open={open}><div className="lib__children">{level < 3 || seen.current ? (typeof children === 'function' ? children() : children) : null}</div></Collapsible>}
     </div>
   );
 }

@@ -42,9 +42,9 @@
 .scripture .lib__group--1 > .collapsible > .collapsible__inner > .lib__children { margin-left: 0.5rem; }
 
 /* height-animated disclosure: grid-template-rows 0fr <-> 1fr composes when nested */
-.scripture .collapsible { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.28s ease; contain: layout paint style; }
+.scripture .collapsible { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.32s cubic-bezier(0.2, 0.7, 0.2, 1); contain: layout paint style; }
 .scripture .collapsible[data-open='true'] { grid-template-rows: 1fr; }
-.scripture .collapsible__inner { overflow: hidden; min-height: 0; opacity: 0; transform: translateY(-0.3rem); transition: opacity 0.22s ease, transform 0.22s ease; }
+.scripture .collapsible__inner { overflow: hidden; min-height: 0; opacity: 0; transform: translateY(-0.3rem); transition: opacity 0.26s ease, transform 0.26s ease; will-change: opacity, transform; }
 .scripture .collapsible[data-open='true'] > .collapsible__inner { opacity: 1; transform: none; }
 
 /* chapters: a vertical list of entries */
@@ -90,7 +90,12 @@
   .scripture .entry--absent .entry__preview { margin-left: auto; }
 }
 
+/*
+ * Reduced motion (also Windows with "Animation effects" off). Go's base stylesheet then switches every transition off with
+ * !important. For these dropdowns the owner asked for smooth transitions, so — as in Biblia — the height and the fade
+ * still play (a short, non-moving change), while the lift, the chevron turn and the hover slide stay off.
+ */
 @media (prefers-reduced-motion: reduce) {
-  .scripture .collapsible, .scripture .collapsible__inner, .scripture .lib__chev, .scripture .entry { transition: none; }
-  .scripture .collapsible__inner { transform: none; }
+  .scripture .collapsible { transition: grid-template-rows 0.28s ease !important; }
+  .scripture .collapsible__inner { transform: none; transition: opacity 0.24s ease !important; }
 }

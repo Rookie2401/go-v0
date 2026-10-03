@@ -123,7 +123,10 @@ Exact versions: `data/benchmarks/sq/RESOURCES.json`.
 2. **A native reviewer.** Nothing can leave preview without one. The review queue is `data/review/sq/source-agreement.json`
    (234 rows), then the 20 texts, then the word list.
 3. **The Albanian Bible.** Which translation, from which rights holder? Until a person records that, Scripture in Albanian
-   is the learner's own copy only.
+   is the learner's own copy only. Since e26e7f3 (German session, at the owner's request) the Bible access page also
+   offers an outside link to Bibla Shqip "Së bashku" 2020 on YouVersion (credited there to the Interconfessional Bible
+   Society of Albania): a link only — nothing bundled or analysed, rights stated as not established, and separate from
+   the ALB catalogue candidate.
 4. **The analyzer's lexicon as a shipped source.** It would cut the "no reading" share further (58,651 lexemes with
    English glosses, MIT). So far it is used offline only, as approved; shipping a lexicon built from it is a separate
    decision and needs the dictionary pipeline to take a second source.

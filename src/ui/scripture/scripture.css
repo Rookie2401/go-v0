@@ -1,0 +1,96 @@
+/*
+ * The Scripture page, laid out as Biblia's Home: the canon as nested disclosures (testament → division → book → chapters),
+ * each level a button head with a rotating chevron and a height-animated collapsible, children indented one rung and tied
+ * to the parent with a quiet rule, chapters as a vertical list of entries. Colour, type and spacing are Go's own variables
+ * (src/index.css). Everything is scoped under .scripture so Reading and the Albanian page keep their current .lib / .entry rules.
+ */
+.scripture .lib { max-width: 34rem; margin: 0.75rem auto 0; text-align: left; display: flex; flex-direction: column; }
+.scripture .lib__group { border-bottom: 1px solid var(--rule); }
+.scripture .lib__group--1 { margin-top: 1.25rem; }
+.scripture .lib__group--1:first-child { margin-top: 0; }
+.scripture .lib__group--3:last-child { border-bottom: none; }
+
+.scripture .lib__head {
+  display: flex; align-items: baseline; gap: 0.55rem; width: 100%; text-align: left; padding: 0.8rem 0.6rem 0.8rem 0.5rem;
+  color: var(--ink); transition: color 0.15s; min-height: 2.75rem; border-bottom: 0;
+}
+.scripture button.lib__head:hover { color: var(--accent); }
+.scripture button.lib__head:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 4px; }
+.scripture .lib__head--static { cursor: default; color: var(--ink-faint); }
+
+.scripture .lib__chev { flex: none; width: 0.8rem; height: 0.8rem; color: var(--ink-faint); transform: rotate(0deg); transition: transform 0.18s ease; align-self: center; display: inline-flex; }
+.scripture .lib__chev svg { width: 100%; height: 100%; }
+.scripture .lib__chev--open { transform: rotate(90deg); }
+.scripture .lib__chev--none { visibility: hidden; }
+
+.scripture .lib__title { min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.scripture .lib__group--1 > .lib__head .lib__title { font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 600; }
+.scripture .lib__group--2 > .lib__head .lib__title { font-size: 0.78rem; letter-spacing: 0.11em; text-transform: uppercase; font-weight: 600; }
+.scripture .lib__group--3 > .lib__head .lib__title { font-size: 1.12rem; }
+.scripture .lib__group--current > .lib__head .lib__title { color: var(--accent); }
+.scripture .lib__group--empty > .lib__head .lib__title,
+.scripture .lib__group--empty > .lib__head .lib__native { color: var(--ink-faint); }
+
+.scripture .lib__native { margin-left: auto; color: var(--ink-soft); font-size: 1.05rem; line-height: 1.4; white-space: nowrap; min-width: 0; overflow: hidden; text-overflow: ellipsis; flex: 0 1 auto; }
+.scripture .lib__native[lang='th'] { line-height: 1.6; }
+.scripture .lib__native[lang='hi'] { line-height: 1.5; }
+.scripture .lib__group--1 > .lib__head .lib__native { font-size: 1.2rem; }
+.scripture .lib__meta { color: var(--ink-faint); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; flex: none; text-align: right; margin-left: 0; min-width: 3.4rem; }
+
+/* children indented one rung and tied to the parent by a quiet rule */
+.scripture .lib__children { margin-left: 0.9rem; padding-left: 1.1rem; border-left: 1px solid var(--rule-strong); margin-bottom: 0.4rem; }
+.scripture .lib__group--1 > .collapsible > .collapsible__inner > .lib__children { margin-left: 0.5rem; }
+
+/* height-animated disclosure: grid-template-rows 0fr <-> 1fr composes when nested */
+.scripture .collapsible { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.28s ease; contain: layout paint style; }
+.scripture .collapsible[data-open='true'] { grid-template-rows: 1fr; }
+.scripture .collapsible__inner { overflow: hidden; min-height: 0; opacity: 0; transform: translateY(-0.3rem); transition: opacity 0.22s ease, transform 0.22s ease; }
+.scripture .collapsible[data-open='true'] > .collapsible__inner { opacity: 1; transform: none; }
+
+/* chapters: a vertical list of entries */
+.scripture .entrylist { display: flex; flex-direction: column; }
+.scripture .entryrow { border-bottom: 1px solid var(--rule); }
+.scripture .entrylist > .entryrow:last-child { border-bottom: none; }
+.scripture .entry { display: flex; align-items: baseline; gap: 0.9rem; width: 100%; text-align: left; padding: 0.8rem 0.5rem; border-bottom: 0; color: var(--ink); transition: padding-left 0.15s, background-color 0.15s; min-height: 2.75rem; }
+.scripture .entry__num { flex: none; min-width: 0; font-size: 1.05rem; color: var(--ink); font-weight: 400; display: flex; align-items: baseline; gap: 0.5rem; }
+.scripture .entry__native { font-size: 0.85rem; color: var(--ink-faint); }
+.scripture .entry__preview { color: var(--ink-soft); font-style: italic; font-size: 0.98rem; line-height: 1.45; overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.scripture .entry--chapter { flex-wrap: wrap; gap: 0.1rem 0.9rem; align-items: baseline; }
+.scripture .entry--chapter .entry__native { margin-left: auto; min-width: 0; max-width: 100%; font-size: 1.15rem; line-height: 1.45; color: var(--ink-soft); text-align: right; overflow-wrap: anywhere; flex: 0 1 auto; }
+.scripture .entry--chapter .entry__native[lang='th'] { line-height: 1.7; }
+.scripture .entry--chapter .entry__preview { flex-basis: 100%; font-size: 0.85rem; color: var(--ink-faint); -webkit-line-clamp: 2; }
+.scripture .entry--chapter .entry__preview.band-comfortable { color: var(--olive); }
+.scripture .entry--chapter .entry__preview.band-productive-challenge { color: var(--accent); }
+.scripture .entry--chapter .entry__preview.band-difficult, .scripture .entry--chapter .entry__preview.band-stretch { color: var(--wine); }
+.scripture .entry__badges { flex-basis: 100%; display: inline-flex; flex-wrap: wrap; gap: 0.2rem 0.5rem; }
+.scripture .entry--done .entry__num { color: var(--olive); }
+.scripture .entry--chapter.entry--done .entry__native { color: var(--olive); }
+.scripture .entry--at .entry__num { color: var(--accent); font-weight: 600; }
+.scripture .entry--chapter.entry--at .entry__native { color: var(--accent); }
+.scripture a.entry:hover { text-decoration: none; padding-left: 0.9rem; background: color-mix(in srgb, var(--ink) 3.5%, transparent); }
+.scripture a.entry:active { background: color-mix(in srgb, var(--ink) 7%, transparent); }
+.scripture a.entry:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 4px; }
+/* a chapter that is not in GoLearn: muted, not interactive */
+.scripture .entry--absent { color: var(--ink-faint); min-height: 2.25rem; padding-top: 0.55rem; padding-bottom: 0.55rem; }
+.scripture .entry--absent .entry__num { color: var(--ink-faint); font-size: 0.98rem; }
+.scripture .entry--absent .entry__preview { flex-basis: auto; margin-left: auto; font-size: 0.8rem; }
+.scripture .entryrow > .reasons { margin: 0 0.5rem 0.7rem 0.5rem; }
+
+.scripture .scripture__alert { margin: 0.5rem 0; }
+
+@media (max-width: 480px) {
+  .scripture .lib__children { margin-left: 0.4rem; padding-left: 0.8rem; }
+  .scripture .lib__group--1 > .collapsible > .collapsible__inner > .lib__children { margin-left: 0.3rem; }
+  .scripture .lib__head { flex-wrap: wrap; row-gap: 0; }
+  .scripture .lib__title { white-space: normal; flex: 1 1 55%; overflow-wrap: anywhere; }
+  .scripture .lib__meta { order: 2; }
+  .scripture .lib__native { order: 3; flex: 1 1 100%; margin-left: 1.35rem; max-width: none; font-size: 1rem; color: var(--ink-faint); white-space: normal; }
+  .scripture .lib__group--1 > .lib__head .lib__native { font-size: 1rem; }
+  .scripture .lib__meta { min-width: 0; }
+  .scripture .entry--absent .entry__preview { margin-left: auto; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scripture .collapsible, .scripture .collapsible__inner, .scripture .lib__chev, .scripture .entry { transition: none; }
+  .scripture .collapsible__inner { transform: none; }
+}

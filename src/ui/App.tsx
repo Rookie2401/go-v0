@@ -16,6 +16,7 @@ import { Settings, VocabularyPage } from './pages/Settings';
 import { TextPage } from './pages/TextPage';
 import { PreviewBanner } from './PreviewBanner';
 import { SandboxBanner } from './SandboxBanner';
+import { ScriptureRoute } from './scripture/ScripturePage';
 import { applyTheme, usePref } from './prefs';
 import { Testimony } from './testimony/Testimony';
 
@@ -41,7 +42,7 @@ export function AppRoutes() {
       <Route path="/explore" element={<ExplorePage />} />
       <Route path="/explore/:door" element={<ExplorePage />} />
       <Route path="/books" element={<BooksPage />} />
-      <Route path="/scripture" element={<Library mode="scripture" />} />
+      <Route path="/scripture" element={<ScriptureRoute />} />
       <Route path="/scripture/:textId" element={<TextPage mode="scripture" />} />
       <Route path="/testimony" element={<Testimony />} />
       <Route path="/team-texts" element={<TeamTextsPage />} />

@@ -1,17 +1,19 @@
 /**
- * The GoRead team server (contract: docs/goread/BACKEND.md).
+ * The GoRead team server on Node (contract: docs/goread/BACKEND.md).
  *
  *   npx vite-node server/goread/main.ts --port 8787 --data data/goread
  *
- * Open teams: every course of the app is a team; there are no codes and nothing to configure.
+ * A thin bridge: node:http to the web `Request`/`Response` handler (handler.ts), the sqlite store, and the FULL document
+ * check (the validator with every language adapter). Every course of the app is a team; reading is open, adding needs a
+ * contributor key (`server/goread/admin.ts` keeps the list). Nothing to configure but the port and the data directory.
  */
-import { createServer } from 'node:http';
+import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { resolve } from 'node:path';
-import { createAdapterRegistry } from '../../src/adapters/index.ts';
 import { COURSES } from '../../src/core/config.ts';
-import { createGoreadHandler } from './app.ts';
-import { openStore } from './store.ts';
+import { fullCheck } from './check-full.ts';
+import { handle } from './handler.ts';
+import { openSqliteStore } from './store-sqlite.ts';
 
 interface Args { port: number; data: string; host: string }
 
@@ -38,32 +40,69 @@ function parseArgs(argv: readonly string[]): Args {
   return out;
 }
 
+/** node:http request to a web Request. The body is a pull stream, so an unread or over-long body is never buffered. */
+function toRequest(req: IncomingMessage, host: string): Request {
+  const headers = new Headers();
+  for (const [k, v] of Object.entries(req.headers)) {
+    if (Array.isArray(v)) for (const x of v) headers.append(k, x);
+    else if (v !== undefined) headers.set(k, v);
+  }
+  const url = `http://${req.headers.host ?? host}${req.url ?? '/'}`;
+  const method = req.method ?? 'GET';
+  if (method === 'GET' || method === 'HEAD') return new Request(url, { method, headers });
+  let finished = false;
+  const body = new ReadableStream<Uint8Array>({
+    start(controller) {
+      req.on('data', (chunk: Buffer) => { if (!finished) { controller.enqueue(new Uint8Array(chunk.buffer, chunk.byteOffset, chunk.length)); req.pause(); } });
+      req.on('end', () => { if (!finished) { finished = true; controller.close(); } });
+      req.on('error', (e) => { if (!finished) { finished = true; controller.error(e); } });
+      req.pause();
+    },
+    pull() { req.resume(); },
+    cancel() { finished = true; req.removeAllListeners('data'); req.resume(); },
+  });
+  return new Request(url, { method, headers, body, duplex: 'half' } as RequestInit);
+}
+
+async function send(res: ServerResponse, response: Response): Promise<void> {
+  const headers: Record<string, string> = {};
+  response.headers.forEach((v, k) => { headers[k] = v; });
+  const payload = Buffer.from(await response.arrayBuffer());
+  res.writeHead(response.status, headers);
+  res.end(response.status === 204 ? undefined : payload);
+}
+
 function main(): void {
   const args = parseArgs(process.argv.slice(2));
-  const dir = resolve(args.data);
-  const store = openStore(dir);
+  const store = openSqliteStore(resolve(args.data));
+  const deps = { store, courses: COURSES, check: fullCheck };
 
-  const handler = createGoreadHandler({ store, registry: createAdapterRegistry(), courses: COURSES });
   const server = createServer((req, res) => {
     const started = Date.now();
     const method = req.method ?? '-';
     const path = (req.url ?? '/').split('?')[0];
     res.on('close', () => console.log(`${method} ${path} ${res.statusCode} ${Date.now() - started}ms`));
-    handler(req, res);
+    handle(toRequest(req, args.host), deps)
+      .then(async (response) => {
+        await send(res, response);
+        req.removeAllListeners('data');
+        req.resume(); // whatever of the body was not read is let go
+      })
+      .catch(() => { if (!res.headersSent) res.writeHead(500); res.end(); });
   });
 
   let closing = false;
   const shutdown = (): void => {
     if (closing) return;
     closing = true;
-    server.close(() => { store.close(); process.exit(0); });
+    server.close(() => { void store.close(); process.exit(0); });
     server.closeAllConnections();
-    setTimeout(() => { store.close(); process.exit(0); }, 2000).unref();
+    setTimeout(() => { void store.close(); process.exit(0); }, 2000).unref();
   };
   process.on('SIGINT', shutdown);
   process.on('SIGTERM', shutdown);
 
-  server.on('error', (e) => { console.error(`goread: ${e.message}`); store.close(); process.exit(1); });
+  server.on('error', (e) => { console.error(`goread: ${e.message}`); void store.close(); process.exit(1); });
   server.listen(args.port, args.host, () => {
     const { port } = server.address() as AddressInfo;
     console.log(`goread listening on http://${args.host}:${port}`);

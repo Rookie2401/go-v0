@@ -34,7 +34,7 @@ const summaryOf = (d: CorpusDocument, addedBy: string, addedAt: string): TextSum
 
 /** A fake server: lists summaries, serves documents, records what was shared. */
 function fakeClient(shared: Array<{ doc: CorpusDocument; addedBy: string; addedAt: string }>) {
-  const calls = { list: [] as Array<[string, string | undefined]>, get: [] as string[], share: [] as Array<{ course: string; id: string; addedBy: string }> };
+  const calls = { list: [] as Array<[string, string | undefined]>, get: [] as string[], share: [] as Array<{ course: string; id: string }> };
   const client: TeamClient = {
     health: async () => ({ ok: true }),
     async list(course, since) { calls.list.push([course, since]); return shared.map((s) => summaryOf(s.doc, s.addedBy, s.addedAt)); },
@@ -44,10 +44,11 @@ function fakeClient(shared: Array<{ doc: CorpusDocument; addedBy: string; addedA
       if (!s) throw new TeamServerError({ status: 404, error: 'no-such-text', message: 'No such text.' });
       return { document: s.doc, addedBy: s.addedBy, addedAt: s.addedAt, updatedAt: s.addedAt, sha256: `sha-${id}` };
     },
-    async share(course, document, addedBy) {
-      calls.share.push({ course, id: document.id, addedBy });
-      return { status: 201, summary: summaryOf(document, addedBy, '2026-10-02T12:00:00.000Z') };
+    async share(course, document) {
+      calls.share.push({ course, id: document.id });
+      return { status: 201, summary: summaryOf(document, 'Ana', '2026-10-02T12:00:00.000Z') };
     },
+    async me() { return { team: 'honduras-es', name: 'Ana' }; },
   };
   return { client, calls };
 }
@@ -147,13 +148,13 @@ describe('shareBook', () => {
     await ingestOver(store).import([doc('mio-ch01'), doc('mio-ch02')]);
     const sent: CorpusDocument[] = [];
     const { client, calls } = fakeClient([]);
-    const spy = { share: async (course: string, d: CorpusDocument, by: string) => { sent.push(d); return client.share(course, d, by); } };
-    const result = await shareBook({ client: spy, course: 'honduras-es', store, textIds: ['text:es:mio-ch01', 'text:es:mio-ch02'], addedBy: 'Ana' });
+    const spy = { share: async (course: string, d: CorpusDocument) => { sent.push(d); return client.share(course, d); } };
+    const result = await shareBook({ client: spy, course: 'honduras-es', store, textIds: ['text:es:mio-ch01', 'text:es:mio-ch02'] });
     expect(result.shared).toEqual(['text:es:mio-ch01', 'text:es:mio-ch02']);
     expect(result.refused).toEqual([]);
     expect(calls.share).toEqual([
-      { course: 'honduras-es', id: 'mio-ch01', addedBy: 'Ana' },
-      { course: 'honduras-es', id: 'mio-ch02', addedBy: 'Ana' },
+      { course: 'honduras-es', id: 'mio-ch01' },
+      { course: 'honduras-es', id: 'mio-ch02' },
     ]);
     expect(sent[0].id).toBe('mio-ch01');
     expect(sent[0].sections[0].paragraphs).toEqual([{ text: PARA }]);
@@ -163,7 +164,7 @@ describe('shareBook', () => {
     const store = createMemoryStore();
     await ingestOver(store).import([personalCopy('libro-publicado'), doc('mio')]);
     const { client, calls } = fakeClient([]);
-    const result = await shareBook({ client, course: 'honduras-es', store, textIds: ['text:es:libro-publicado', 'text:es:mio', 'text:es:no-esta'], addedBy: 'Ana' });
+    const result = await shareBook({ client, course: 'honduras-es', store, textIds: ['text:es:libro-publicado', 'text:es:mio', 'text:es:no-esta'] });
     expect(result.shared).toEqual(['text:es:mio']);
     expect(result.refused).toEqual([
       { id: 'text:es:libro-publicado', reason: PERSONAL_COPY_REASON },
@@ -178,7 +179,7 @@ describe('shareBook', () => {
     expect((await store.texts.get('text:es:maquina'))?.generated).toBe(true);
     let touched = 0;
     const client = { share: async () => { touched++; throw new Error('must not be called'); } };
-    const result = await shareBook({ client, course: 'c', store, textIds: ['text:es:maquina'], addedBy: 'Ana' });
+    const result = await shareBook({ client, course: 'c', store, textIds: ['text:es:maquina'] });
     expect(touched).toBe(0);
     expect(result.shared).toEqual([]);
     expect(result.refused).toEqual([{ id: 'text:es:maquina', reason: 'Machine-generated text is not shared with the team. Texts your team wrote can be shared.' }]);
@@ -189,7 +190,7 @@ describe('shareBook', () => {
     await ingestOver(store).import([personalCopy('solo-mio')]);
     let touched = 0;
     const client = { share: async () => { touched++; throw new Error('must not be called'); } };
-    const result = await shareBook({ client, course: 'c', store, textIds: ['text:es:solo-mio'], addedBy: 'Ana' });
+    const result = await shareBook({ client, course: 'c', store, textIds: ['text:es:solo-mio'] });
     expect(touched).toBe(0);
     expect(result.shared).toEqual([]);
     expect(result.refused[0].reason).toMatch(/stays on your device/);
@@ -202,15 +203,21 @@ describe('shareBook', () => {
     const picky = {
       share: async () => { n++; throw new TeamServerError({ status: 422, error: 'invalid-document', message: 'The text did not pass the checks.' }); },
     };
-    const r = await shareBook({ client: picky, course: 'c', store, textIds: ['text:es:uno', 'text:es:dos'], addedBy: 'Ana' });
+    const r = await shareBook({ client: picky, course: 'c', store, textIds: ['text:es:uno', 'text:es:dos'] });
     expect(n).toBe(2);
     expect(r.refused).toEqual([{ id: 'text:es:uno', reason: 'The text did not pass the checks.' }, { id: 'text:es:dos', reason: 'The text did not pass the checks.' }]);
     expect(r.alreadyThere).toEqual([]);
 
     const dead = { share: async () => { throw new TeamServerError({ status: 0, error: 'unreachable', message: 'The team server did not answer.' }); } };
-    await expect(shareBook({ client: dead, course: 'c', store, textIds: ['text:es:uno'], addedBy: 'Ana' })).rejects.toMatchObject({ status: 0 });
+    await expect(shareBook({ client: dead, course: 'c', store, textIds: ['text:es:uno'] })).rejects.toMatchObject({ status: 0 });
     const noTeam = { share: async () => { throw new TeamServerError({ status: 404, error: 'no-such-team', message: 'No such team.' }); } };
-    await expect(shareBook({ client: noTeam, course: 'c', store, textIds: ['text:es:uno'], addedBy: 'Ana' })).rejects.toMatchObject({ error: 'no-such-team' });
+    await expect(shareBook({ client: noTeam, course: 'c', store, textIds: ['text:es:uno'] })).rejects.toMatchObject({ error: 'no-such-team' });
+
+    // a key that is not on the team's list: the same answer for every text, so the call stops and rethrows
+    let tries = 0;
+    const stranger = { share: async () => { tries++; throw new TeamServerError({ status: 401, error: 'not-on-whitelist', message: 'Ask whoever keeps the team’s list for a contributor key.' }); } };
+    await expect(shareBook({ client: stranger, course: 'c', store, textIds: ['text:es:uno', 'text:es:dos'] })).rejects.toMatchObject({ status: 401, error: 'not-on-whitelist' });
+    expect(tries).toBe(1);
   });
 
   it('a 409 already-there is "already on the shelf": listed in alreadyThere, not refused, and the rest carry on', async () => {
@@ -219,13 +226,13 @@ describe('shareBook', () => {
     const held = new Set(['dos']);
     const seen: string[] = [];
     const server = {
-      async share(_course: string, d: CorpusDocument, by: string) {
+      async share(_course: string, d: CorpusDocument) {
         seen.push(d.id);
         if (held.has(d.id)) throw new TeamServerError({ status: 409, error: 'already-there', message: 'Your team already has this text.' });
-        return { status: 201 as const, summary: summaryOf(d, by, '2026-10-02T12:00:00.000Z') };
+        return { status: 201 as const, summary: summaryOf(d, 'Ana', '2026-10-02T12:00:00.000Z') };
       },
     };
-    const r = await shareBook({ client: server, course: 'c', store, textIds: ['text:es:uno', 'text:es:dos', 'text:es:tres'], addedBy: 'Ana' });
+    const r = await shareBook({ client: server, course: 'c', store, textIds: ['text:es:uno', 'text:es:dos', 'text:es:tres'] });
     expect(seen).toEqual(['uno', 'dos', 'tres']);
     expect(r.shared).toEqual(['text:es:uno', 'text:es:tres']);
     expect(r.alreadyThere).toEqual(['text:es:dos']);

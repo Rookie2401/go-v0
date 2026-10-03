@@ -57,14 +57,50 @@ describe('createTeamClient (open teams: no credential anywhere)', () => {
     expect(f.calls[0].url).toBe('http://x/teams/honduras-es/texts/el-viajero-ch01');
   });
 
-  it('share: PUT with { document, addedBy } and only a Content-Type header; 201 with the summary', async () => {
+  it('share: PUT with { document } only (no addedBy), the key as Bearer, a Content-Type; 201 with the summary', async () => {
     const f = fake({ status: 201, body: { summary } });
-    const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
-    expect(await client.share('honduras-es', doc, 'Ana')).toEqual({ status: 201, summary });
+    const client = createTeamClient({ baseUrl: 'http://x', key: ' k-ana ', fetch: f.impl });
+    expect(await client.share('honduras-es', doc)).toEqual({ status: 201, summary });
     expect(f.calls[0].url).toBe('http://x/teams/honduras-es/texts/el-viajero-ch01');
     expect(f.calls[0].init.method).toBe('PUT');
-    expect(headers(f.calls[0])).toEqual({ 'Content-Type': 'application/json' });
-    expect(JSON.parse(String(f.calls[0].init.body))).toEqual({ document: doc, addedBy: 'Ana' });
+    expect(headers(f.calls[0])).toEqual({ Authorization: 'Bearer k-ana', 'Content-Type': 'application/json' });
+    expect(JSON.parse(String(f.calls[0].init.body))).toEqual({ document: doc });
+    expect(f.calls[0].url).not.toContain('k-ana');
+  });
+
+  it('without a key, share and me send no Authorization (the server answers 401)', async () => {
+    const f = fake({ status: 401, body: { error: 'not-on-whitelist', message: 'Ask for a contributor key.' } }, { status: 401, body: { error: 'not-on-whitelist', message: 'Ask for a contributor key.' } });
+    const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
+    await expect(client.share('honduras-es', doc)).rejects.toMatchObject({ status: 401, error: 'not-on-whitelist', message: 'Ask for a contributor key.' });
+    await expect(client.me('honduras-es')).rejects.toMatchObject({ status: 401, error: 'not-on-whitelist' });
+    for (const c of f.calls) expect(headers(c)).not.toHaveProperty('Authorization');
+  });
+
+  it('me: GET /teams/:course/me with the key, returns { team, name }', async () => {
+    const f = fake({ status: 200, body: { team: 'honduras-es', name: 'Ana' } });
+    const client = createTeamClient({ baseUrl: 'http://x', key: 'k-ana', fetch: f.impl });
+    expect(await client.me('honduras-es')).toEqual({ team: 'honduras-es', name: 'Ana' });
+    expect(f.calls[0].url).toBe('http://x/teams/honduras-es/me');
+    expect(f.calls[0].init.method).toBe('GET');
+    expect(headers(f.calls[0])).toEqual({ Authorization: 'Bearer k-ana' });
+  });
+
+  it('the key goes to share and me only, never to health, list or get', async () => {
+    const f = fake(
+      { status: 200, body: { ok: true, service: 'goread' } },
+      { status: 200, body: { texts: [] } },
+      { status: 200, body: { document: doc, addedBy: 'Ana', addedAt: 'a', updatedAt: 'b', sha256: 'c' } },
+      { status: 200, body: { team: 't', name: 'Ana' } },
+      { status: 201, body: { summary } },
+    );
+    const client = createTeamClient({ baseUrl: 'http://x', key: 'k-ana', fetch: f.impl });
+    await client.health();
+    await client.list('c');
+    await client.get('c', 'i');
+    await client.me('c');
+    await client.share('c', doc);
+    expect(f.calls.map((c) => 'Authorization' in headers(c))).toEqual([false, false, false, true, true]);
+    expect(f.calls.every((c) => !c.url.includes('k-ana'))).toBe(true);
   });
 
   it('there is no remove, and nothing but GET and PUT is ever sent', async () => {
@@ -72,14 +108,14 @@ describe('createTeamClient (open teams: no credential anywhere)', () => {
     const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
     expect(client).not.toHaveProperty('remove');
     await client.list('c');
-    await client.share('c', doc, 'Ana');
+    await client.share('c', doc);
     expect(f.calls.map((c) => c.init.method)).toEqual(['GET', 'PUT']);
   });
 
   it('a 409 already-there is a TeamServerError like any other refusal', async () => {
     const f = fake({ status: 409, body: { error: 'already-there', message: 'Your team already has this text.' } });
-    const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
-    const e = await client.share('honduras-es', doc, 'Ana').catch((x: unknown) => x);
+    const client = createTeamClient({ baseUrl: 'http://x', key: 'k', fetch: f.impl });
+    const e = await client.share('honduras-es', doc).catch((x: unknown) => x);
     expect(e).toBeInstanceOf(TeamServerError);
     expect(e).toMatchObject({ status: 409, error: 'already-there', message: 'Your team already has this text.' });
   });
@@ -95,7 +131,7 @@ describe('createTeamClient (open teams: no credential anywhere)', () => {
     const e1 = await client.list('honduras-es').catch((e: unknown) => e);
     expect(e1).toBeInstanceOf(TeamServerError);
     expect(e1).toMatchObject({ status: 404, error: 'no-such-team', message: 'There is no such team.' });
-    const e2 = await client.share('honduras-es', doc, 'Ana').catch((e: unknown) => e);
+    const e2 = await client.share('honduras-es', doc).catch((e: unknown) => e);
     expect(e2).toMatchObject({ status: 422, error: 'invalid-document', message: 'The text did not pass the checks.', issues });
     const e3 = await client.get('honduras-es', 'zz').catch((e: unknown) => e);
     expect(e3).toMatchObject({ status: 404, error: 'no-such-text' });
@@ -109,9 +145,9 @@ describe('createTeamClient (open teams: no credential anywhere)', () => {
   });
 
   it('a network failure is status 0 / unreachable with the Settings sentence', async () => {
-    const f = fake('throw', 'throw', 'throw');
+    const f = fake('throw', 'throw', 'throw', 'throw');
     const client = createTeamClient({ baseUrl: 'http://x', fetch: f.impl });
-    for (const run of [() => client.list('c'), () => client.get('c', 'i'), () => client.share('c', doc, 'Ana')]) {
+    for (const run of [() => client.list('c'), () => client.get('c', 'i'), () => client.share('c', doc), () => client.me('c')]) {
       const e = await run().catch((x: unknown) => x);
       expect(e).toBeInstanceOf(TeamServerError);
       expect(e).toMatchObject({ status: 0, error: 'unreachable', message: 'The team server did not answer. Check the address in Settings → Team sharing.' });
@@ -124,6 +160,6 @@ describe('createTeamClient (open teams: no credential anywhere)', () => {
     await expect(client.list('c')).rejects.toMatchObject({ error: 'bad-response' });
     await expect(client.get('c', 'i')).rejects.toMatchObject({ error: 'bad-response' });
     // v2 knows only 201 for a share: a 200 (a replace) is not something this client accepts
-    await expect(client.share('c', doc, 'Ana')).rejects.toMatchObject({ error: 'bad-response' });
+    await expect(client.share('c', doc)).rejects.toMatchObject({ error: 'bad-response' });
   });
 });

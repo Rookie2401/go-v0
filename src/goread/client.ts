@@ -1,7 +1,9 @@
 /**
  * The GoRead team-server client (contract: docs/goread/BACKEND.md). A thin, dependency-free wrapper over `fetch`.
  *
- *  - Contract v2 (open teams): no request carries any credential, and a text once added is never replaced or removed.
+ *  - Contract v3: reading is open and carries no credential. Adding needs a personal contributor key on the team's list;
+ *    the key (when there is one) goes in `Authorization: Bearer` on `share` and `me` only, never on list / get / health.
+ *    A text once added is never replaced or removed.
  *  - Every failure is a `TeamServerError` that carries the server's own learner-facing `message`; a server that does not
  *    answer at all is `status: 0, error: 'unreachable'` with a sentence that tells the learner where to look.
  *  - Nothing is retried and nothing is cached: one call, one request.
@@ -45,7 +47,7 @@ export const UNREACHABLE_MESSAGE = 'The team server did not answer. Check the ad
 
 export class TeamServerError extends Error {
   readonly status: number;
-  /** The server's machine-readable code (`not-a-team-member`, `not-shareable`, …), or `unreachable` / `bad-response`. */
+  /** The server's machine-readable code (`not-on-whitelist`, `not-shareable`, `already-there`, …), or `unreachable` / `bad-response`. */
   readonly error: string;
   readonly issues?: TeamServerIssue[];
   constructor(init: { status: number; error: string; message: string; issues?: TeamServerIssue[] }) {
@@ -60,6 +62,8 @@ export class TeamServerError extends Error {
 export interface TeamClientOptions {
   /** The server's address, e.g. `https://goread.example.org` (a trailing slash is ignored). */
   baseUrl: string;
+  /** The learner's contributor key, if they have one. Sent only to `share` and `me`, as a Bearer token. */
+  key?: string;
   /** Defaults to the global `fetch`. */
   fetch?: typeof fetch;
 }
@@ -69,8 +73,14 @@ export interface TeamClient {
   health(): Promise<{ ok: boolean; message?: string }>;
   list(course: string, since?: string): Promise<TextSummary[]>;
   get(course: string, id: string): Promise<SharedText>;
-  /** Add a text to the team. A text once added is never replaced: an id that exists is a `409 already-there` TeamServerError. */
-  share(course: string, document: CorpusDocument, addedBy: string): Promise<{ status: 201; summary: TextSummary }>;
+  /**
+   * Add a text to the team; the server takes the name from the key's row on the team's list. A key that is missing, unknown
+   * or revoked is a `401 not-on-whitelist` TeamServerError. A text once added is never replaced: an id that exists is a
+   * `409 already-there` TeamServerError.
+   */
+  share(course: string, document: CorpusDocument): Promise<{ status: 201; summary: TextSummary }>;
+  /** Who the key is on this team's list: `{ team, name }`, or a `401 not-on-whitelist` TeamServerError. */
+  me(course: string): Promise<{ team: string; name: string }>;
 }
 
 const isObj = (v: unknown): v is Record<string, unknown> => typeof v === 'object' && v !== null && !Array.isArray(v);
@@ -107,6 +117,9 @@ export function createTeamClient(opts: TeamClientOptions): TeamClient {
     return new TeamServerError({ status: res.status, error: `http-${res.status}`, message: `The team server answered with an error (${res.status}).` });
   }
 
+  const key = opts.key?.trim();
+  /** The headers of a request that needs the key (none of the reading ones does). */
+  const withKey = (extra: Record<string, string> = {}): Record<string, string> => ({ ...(key ? { Authorization: `Bearer ${key}` } : {}), ...extra });
   const JSON_BODY = { 'Content-Type': 'application/json' };
   const team = (course: string) => `/teams/${encodeURIComponent(course)}/texts`;
 
@@ -148,9 +161,19 @@ export function createTeamClient(opts: TeamClientOptions): TeamClient {
       return body as unknown as SharedText;
     },
 
-    async share(course, document, addedBy) {
+    async me(course) {
+      const res = await send(`/teams/${encodeURIComponent(course)}/me`, { method: 'GET', headers: withKey() });
+      if (!res.ok) throw await failure(res);
+      const body = await jsonOf(res);
+      if (typeof body.team !== 'string' || typeof body.name !== 'string') {
+        throw new TeamServerError({ status: res.status, error: 'bad-response', message: 'The team server sent an answer this version of Go cannot read.' });
+      }
+      return { team: body.team, name: body.name };
+    },
+
+    async share(course, document) {
       const res = await send(`${team(course)}/${encodeURIComponent(document.id)}`, {
-        method: 'PUT', headers: JSON_BODY, body: JSON.stringify({ document, addedBy }),
+        method: 'PUT', headers: withKey(JSON_BODY), body: JSON.stringify({ document }),
       });
       if (!res.ok) throw await failure(res);
       const body = await jsonOf(res);

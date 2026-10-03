@@ -106,7 +106,6 @@ export interface ShareBookArgs {
   store: Pick<AppStore, 'texts' | 'sources' | 'corpora' | 'sections' | 'paragraphs' | 'sentences' | 'rescues' | 'notes'>;
   /** Text ids (`text:<lang>:<id>`) of the chapters to share. */
   textIds: readonly string[];
-  addedBy: string;
 }
 
 export interface ShareBookResult {
@@ -124,10 +123,12 @@ export interface ShareBookResult {
  * Send chapters to the team. Each is checked against the rights table BEFORE anything is sent; one that may not be shared
  * is refused with the reason and never reaches the client. A text the server already holds (409 `already-there`) is listed in
  * `alreadyThere`, not `refused`. The server's other refusals (`not-shareable`, `invalid-document`, …) are reported in
- * `refused`; a server that cannot be reached, or a team that does not exist, stops the whole call.
+ * `refused`; a server that cannot be reached, a team that does not exist, or a key that is not on the team's list (401
+ * `not-on-whitelist`: every further text would meet the same answer) stops the whole call, rethrowing the error. The name
+ * the text is added under is the server's: the one on the whitelist row of the client's key.
  */
 export async function shareBook(args: ShareBookArgs): Promise<ShareBookResult> {
-  const { client, course, store, addedBy } = args;
+  const { client, course, store } = args;
   const result: ShareBookResult = { shared: [], alreadyThere: [], refused: [], notes: {} };
   for (const id of args.textIds) {
     const text = await store.texts.get(id);
@@ -142,12 +143,12 @@ export async function shareBook(args: ShareBookArgs): Promise<ShareBookResult> {
       continue;
     }
     try {
-      await client.share(course, built.document, addedBy);
+      await client.share(course, built.document);
       result.shared.push(id);
       if (built.notes.length) result.notes[id] = built.notes;
     } catch (e) {
       if (e instanceof TeamServerError && e.status === 409) { result.alreadyThere.push(id); continue; }
-      if (e instanceof TeamServerError && e.status !== 0 && e.error !== 'no-such-team') { result.refused.push({ id, reason: e.message }); continue; }
+      if (e instanceof TeamServerError && e.status !== 0 && e.status !== 401 && e.error !== 'no-such-team') { result.refused.push({ id, reason: e.message }); continue; }
       throw e;
     }
   }

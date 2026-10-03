@@ -130,7 +130,11 @@ export function TeamTextsPage() {
   const [tick, setTick] = useState(0);
   const [server] = usePref('teamServer');
   const address = server.trim();
-  const client = useMemo(() => (address ? createTeamClient({ baseUrl: address }) : null), [address]);
+  const [keyPref] = usePref('teamKey');
+  const key = keyPref.trim();
+  const client = useMemo(() => (address ? createTeamClient({ baseUrl: address, ...(key ? { key } : {}) }) : null), [address, key]);
+  /** Adding to the team's shelf needs a contributor key; reading and fetching do not. */
+  const canShare = !!client && !!key;
   const [fetching, setFetching] = useState(false);
   const [fetched, setFetched] = useState<Outcome[] | undefined>(undefined);
   const [verdicts, setVerdicts] = useState<Record<string, Verdict>>({});
@@ -176,7 +180,7 @@ export function TeamTextsPage() {
 
   const share = async (textIds: string[]): Promise<Outcome[]> => {
     if (!client) return [{ ok: false, text: 'No team server is set.' }];
-    try { return shareOutcomes(await shareBook({ client, course: course.id, store, textIds, addedBy: user.displayName })); }
+    try { return shareOutcomes(await shareBook({ client, course: course.id, store, textIds })); }
     catch (e) { return [{ ok: false, text: errorMessage(e) }]; }
   };
 
@@ -190,7 +194,7 @@ export function TeamTextsPage() {
 
   // Which books may be shared: asked of the first chapter, and only when there is a server to share with.
   useEffect(() => {
-    if (!client) { setVerdicts({}); return; }
+    if (!canShare) { setVerdicts({}); return; }
     let live = true;
     void (async () => {
       const next: Record<string, Verdict> = {};
@@ -201,7 +205,7 @@ export function TeamTextsPage() {
       if (live) setVerdicts(next);
     })();
     return () => { live = false; };
-  }, [client, books, store]);
+  }, [canShare, books, store]);
 
   return (
     <div>
@@ -218,6 +222,7 @@ export function TeamTextsPage() {
               <button type="button" className="btn btn--small" disabled={fetching} onClick={() => { void fetchTexts(); }}>{fetching ? 'Fetching…' : 'Fetch team texts'}</button>
             </div>
             <Outcomes list={fetched} />
+            {!key && <p className="muted" data-testid="team-no-key">To add texts to the team's shelf you need a contributor key (Settings → Team sharing).</p>}
           </div>
         ) : (
           <p className="muted" data-testid="team-no-server">To share texts with your team on other devices, set a team server in Settings → Team sharing.</p>
@@ -229,7 +234,7 @@ export function TeamTextsPage() {
           <Disclosure label="Add a book from a text file" headingLevel={3} lazy className="copy__disclosure">
             <CopyImporter onImported={onImported} />
           </Disclosure>
-          {client && offer && (
+          {canShare && offer && (
             <div className="team-share team-share--offer" data-testid="team-share-offer">
               {!offer.outcome?.some((o) => o.ok) && (
                 <>
@@ -259,7 +264,7 @@ export function TeamTextsPage() {
                   <Link to={textPath(b.texts[0])} className="work__copy-link">{b.texts.length} {b.texts.length === 1 ? 'chapter' : 'chapters'}</Link>
                 </p>
                 <span className="work__added">Added by {b.by || 'a learner'} · {b.at ? formatDate(b.at) : 'earlier'}</span>
-                {client && <BookShare book={b} verdict={verdicts[b.key]} busy={sharing === b.key} outcome={shared[b.key]} onShare={() => {
+                {canShare && <BookShare book={b} verdict={verdicts[b.key]} busy={sharing === b.key} outcome={shared[b.key]} onShare={() => {
                   setSharing(b.key); setShared((m) => ({ ...m, [b.key]: [] }));
                   void share(b.texts.map((t) => t.id)).then((outcome) => { setShared((m) => ({ ...m, [b.key]: outcome })); setSharing(null); });
                 }} />}

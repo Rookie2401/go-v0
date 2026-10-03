@@ -26,10 +26,12 @@ export interface Prefs {
   devFixtureAudio: boolean;
   /** GoRead team sharing: the team server's address ('' = none). Stays on this device. */
   teamServer: string;
+  /** GoRead team sharing: the contributor key that lets this device add texts ('' = read only). Stays on this device. */
+  teamKey: string;
 }
 
 export const FONT_SIZE_RANGE = { min: 16, max: 34 } as const;
-export const DEFAULT_PREFS: Prefs = { highlight: 'subtle', speed: 1, transcript: 'visible', fontSize: 22, theme: 'auto', preview: false, devFixtureAudio: false, teamServer: '' };
+export const DEFAULT_PREFS: Prefs = { highlight: 'subtle', speed: 1, transcript: 'visible', fontSize: 22, theme: 'auto', preview: false, devFixtureAudio: false, teamServer: '', teamKey: '' };
 
 /**
  * Every key below goes through `scopedKey`: in sandbox mode (`?sandbox=<name>`, see sandbox.ts) it is namespaced under

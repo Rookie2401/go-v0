@@ -1,0 +1,9 @@
+# Copy this file to wrangler.toml and paste your database id (steps: docs/goread/DEPLOY.md).
+name = "goread"
+main = "server/goread/worker.ts"
+compatibility_date = "2026-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "goread"
+database_id = "<paste the id from: npx wrangler d1 create goread>"

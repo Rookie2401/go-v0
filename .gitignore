@@ -20,3 +20,6 @@ data/research/
 
 # GoRead team server data (sqlite, team codes)
 data/goread/
+# the keeper's Cloudflare config (holds the D1 database id): docs/goread/DEPLOY.md
+wrangler.toml
+.wrangler/

@@ -19,6 +19,8 @@ import { SandboxBanner } from './SandboxBanner';
 import { ScriptureRoute } from './scripture/ScripturePage';
 import { applyTheme, usePref } from './prefs';
 import { Testimony } from './testimony/Testimony';
+import { TellInspector } from './tell/Inspector';
+import { Practice } from './tell/Practice';
 
 export function Shell({ children }: { children: ReactNode }) {
   const [theme] = usePref('theme');
@@ -45,6 +47,8 @@ export function AppRoutes() {
       <Route path="/scripture" element={<ScriptureRoute />} />
       <Route path="/scripture/:textId" element={<TextPage mode="scripture" />} />
       <Route path="/testimony" element={<Testimony />} />
+      <Route path="/tell" element={<Practice />} />
+      <Route path="/tell/inspect" element={<TellInspector />} />
       <Route path="/team-texts" element={<TeamTextsPage />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/vocabulary" element={<VocabularyPage />} />

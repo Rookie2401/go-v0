@@ -1,0 +1,31 @@
+/* Practise saying it (/tell) and the GoTell inspector (/tell/inspect). */
+.tell-task { margin: 1.25rem 0 2rem; }
+.tell-prompt { font-size: 1.15rem; line-height: 1.5; margin: 0.6rem 0 0.4rem; }
+.tell-why { margin: 0.25rem 0 0.75rem; }
+.tell-steps, .tell-attempts { list-style: none; padding: 0; margin: 0.75rem 0; display: grid; gap: 0.6rem; }
+.tell-step { border-left: 3px solid var(--rule-strong); padding: 0.35rem 0.75rem; background: var(--paper-raised); }
+.tell-step--cue { border-left-color: var(--olive); }
+.tell-step--scaffold { border-left-color: var(--accent-soft); }
+.tell-step--model { border-left-color: var(--wine); }
+.tell-step__text { margin: 0.2rem 0 0; white-space: pre-line; }
+.tell-attempt { border: 1px solid var(--rule); border-radius: 6px; padding: 0.5rem 0.75rem; }
+.tell-attempt--success { border-color: var(--olive); }
+.tell-attempt__text { margin: 0.25rem 0; font-size: 1.05rem; overflow-wrap: anywhere; }
+.tell-zone { display: inline-block; font-size: 0.72rem; letter-spacing: 0.06em; color: var(--ink-faint); margin-left: 0.4rem; }
+.tell-attempt .tell-zone { margin-left: 0; }
+.tell-zone--model { color: var(--wine); }
+.tell-zone--assisted { color: var(--accent-soft); }
+.tell-states .entry { display: grid; gap: 0.3rem; }
+.tell-states .history-head { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: space-between; align-items: baseline; }
+.tell-states .chip { white-space: normal; }
+
+.tell-map { margin: 1.5rem 0; }
+.tell-map__deliveries { list-style: none; padding: 0; margin: 0.5rem 0; display: grid; gap: 0.25rem; }
+.tell-map__nodes { list-style: none; padding: 0; margin: 0.5rem 0; display: grid; gap: 0.35rem; }
+.tell-map__node { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: baseline; justify-content: space-between; border-bottom: 1px solid var(--rule); padding: 0.25rem 0; }
+
+.tell-inspect table { width: 100%; border-collapse: collapse; font-size: 0.85rem; display: block; overflow-x: auto; }
+.tell-inspect th, .tell-inspect td { text-align: left; padding: 0.25rem 0.4rem; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.tell-inspect td.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.tell-inspect pre { font-size: 0.75rem; white-space: pre-wrap; overflow-wrap: anywhere; background: var(--paper-raised); padding: 0.5rem; max-height: 24rem; overflow: auto; }
+.tell-inspect .cand { border: 1px solid var(--rule); border-radius: 6px; padding: 0.5rem 0.75rem; margin: 0.5rem 0; }

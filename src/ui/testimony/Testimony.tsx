@@ -12,6 +12,7 @@
  * built only from language the learner has met; when it cannot, it says what is missing and offers nothing to insert.
  */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import type { GoTellSuggestion, IntentProposal, ProductionAnalysis, Testimony as TestimonyRow, TestimonyRevision } from '../../core';
 import { useApp } from '../context';
 import { formatDate, itemSurface } from '../format';
@@ -20,6 +21,7 @@ import { statusText } from './draft';
 import { RevisionAudio } from './RevisionAudio';
 import { SuggestionCard } from './SuggestionCard';
 import { useDraft } from './useDraft';
+import { TestimonyMapPanel } from '../tell/TestimonyMap';
 
 type DiffRow = { kind: 'same' | 'added' | 'removed' | 'changed'; a?: string; b?: string };
 
@@ -176,6 +178,7 @@ export function Testimony() {
       <Topbar title="My Testimony" left={<BackLink to="/" label="Home" />} />
       <div className="page page--narrow testimony route-fade">
         <p className="soft">Write in {course.title.split('→')[1]?.trim() ?? 'the language you are learning'}, in your own words. Suggestions are offered, never applied for you.</p>
+        {gotell.practice && <p className="faint"><Link to="/tell">Practise saying parts of your testimony</Link>, one meaning at a time.</p>}
 
         {error && <p role="alert" className="error">{error}</p>}
 
@@ -243,6 +246,12 @@ export function Testimony() {
           <button type="button" className="btn btn--small" disabled={busy !== null || english.trim() === ''} onClick={() => { void askIntent(); }}>Help me say it</button>
           {proposal && <IntentBox proposal={proposal} lang={lang} onInsert={(text) => setDraft(draft ? `${draft}${lang === 'th' ? '' : ' '}${text}` : text)} />}
         </Disclosure>
+
+        {gotell.practice && (
+          <Disclosure className="tell-map-disclosure" label="Your testimony map" lazy>
+            <TestimonyMapPanel practice={gotell.practice} userId={userId} lang={lang} revisionKey={latest?.id} />
+          </Disclosure>
+        )}
 
         {analysis && (
           <section className="suggestions" aria-label="Suggestions">

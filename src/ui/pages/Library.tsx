@@ -13,6 +13,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import type { Text, Work } from '../../core';
 import { useApp } from '../context';
+import { BibleAccess } from '../course/BibleAccess';
 import { chapterLabel } from '../course/WorkCard';
 import { BAND_LABEL, awaitedStatement, plainReasons, isVisibleText, languageName, pct, textPath } from '../format';
 import { ProgressLine, useCoverageMany, useReadingProgress } from '../coverage';
@@ -97,6 +98,7 @@ export function Library({ mode }: { mode: 'corpus' | 'scripture' }) {
     <div>
       {bar}
       <div className="page page--narrow route-fade">
+        {mode === 'scripture' && <BibleAccess lang={course.lang} />}
         {awaited && (
           <div className="awaited" role="status" data-testid="awaited">
             <p className="muted">{awaited.headline}</p>

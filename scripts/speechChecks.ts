@@ -16,7 +16,7 @@ import type { AudioGenerationAuthorization, EnsureAudioOptions } from '../src/co
 import { createAdapterRegistry } from '../src/adapters';
 import { importDocuments, type CorpusDocument } from '../src/ingest';
 import {
-  AZURE_VOICES, ProxySpeechProvider, buildPlayerManifest, canonicalTextSha256, computeCacheKey, createGoListen, editionIdOf, encodeWav, listeningEmitter, playableIndexes, releaseIdOf, validateWav,
+  AZURE_VOICES, ProxySpeechProvider, SYNTHETIC_PRACTICE, buildPlayerManifest, canonicalTextSha256, computeCacheKey, createGoListen, editionIdOf, encodeWav, listeningEmitter, playableIndexes, releaseIdOf, validateWav,
   type CacheKeyParts, type GoListenService,
 } from '../src/golisten';
 import { createRateLimiter, handleSpeechRequest, type SpeechEnv } from '../server/speechHandler';
@@ -329,7 +329,7 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
     return { ok: failed.length === 0, detail: failed.length === 0 ? `requested ${voice.requestedLocale}, delivered ${voice.actualLocale} (fallback noted), recorded on voice, ${assets.length} distinct assets, status and diagnostics` : `failed: ${failed.join('; ')}` };
   }, all));
 
-  results.push(await guarded('voice-review', 'voice metadata + review status recorded: unreviewed => preview-only; reviewed => ready and evidence-eligible', async () => {
+  results.push(await guarded('voice-review', 'voice metadata + review status recorded: unreviewed => preview-only; reviewed => ready as synthetic practice, never evidence-eligible', async () => {
     if (!happyText || !voiceId) throw new Error('the chain did not produce a text and a voice');
     const v0 = (await happy.store.voices.get(voiceId))!;
     const s0 = await happy.gl.audioStatus(happyText.textId);
@@ -339,9 +339,10 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
     const before = s0.state === 'preview-only' && s0.evidenceEligible === false && s0.voiceReview === 'unreviewed';
     await happy.gl.setVoiceReview(voiceId, 'reviewed', 'speech:check mock chain: NOT a human audition');
     const s1 = await happy.gl.audioStatus(happyText.textId);
-    const after = s1.state === 'ready' && s1.evidenceEligible === true && s1.voiceReview === 'reviewed';
+    // Synthetic speech is practice only: a voice review makes it ready to play, never listening evidence.
+    const after = s1.state === 'ready' && s1.evidenceEligible === false && s1.reason === SYNTHETIC_PRACTICE && s1.voiceReview === 'reviewed';
     const ok = meta && before && after;
-    return { ok, detail: ok ? 'provider speech-proxy@azure-proxy@1, isSpeech true, starts unreviewed (preview-only, not eligible); after setVoiceReview(reviewed): ready, evidenceEligible true' : `metadata=${meta}; unreviewed=${s0.state}/${s0.evidenceEligible}; reviewed=${s1.state}/${s1.evidenceEligible}` };
+    return { ok, detail: ok ? 'provider speech-proxy@azure-proxy@1, isSpeech true, starts unreviewed (preview-only, not eligible); after setVoiceReview(reviewed): ready as synthetic practice, evidenceEligible still false' : `metadata=${meta}; unreviewed=${s0.state}/${s0.evidenceEligible}; reviewed=${s1.state}/${s1.evidenceEligible}` };
   }, all));
 
   results.push(await guarded('invalidation', 'content-version invalidation: one edited sentence => stale; re-ensure regenerates exactly one segment', async () => {
@@ -475,7 +476,7 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
   }, all));
 
   // ── reviewed real speech: exposure only ──
-  results.push(await guarded('real-playback', 'reviewed real-speech playback emits completion with speech:true (exposure only; GoLearn decides what it is worth)', async () => {
+  results.push(await guarded('real-playback', 'reviewed real-speech playback emits completion with speech:true (exposure only; synthetic, so never listening evidence)', async () => {
     if (!happyText || !voiceId) throw new Error('the chain did not produce a text and a voice');
     const manifest = (await happy.gl.getManifest(happyText.textId))!;
     const seg = (await happy.store.audioSegments.get(manifest.segmentIds[0]))!;
@@ -489,7 +490,7 @@ export async function runProviderIndependentChecks(): Promise<ChainOutcome> {
     const unreviewed = await em2.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, view, { heardCoverageRatio: 1 }) as (DomainEvent & Listen) | null;
     await happy.gl.setVoiceReview(voiceId, 'reviewed', 'speech:check mock chain: NOT a human audition');
     const ok = played?.type === 'AudioPlayed' && played.speech === true && done?.type === 'AudioSegmentCompleted' && done.speech === true && done.voiceReviewed === true
-      && done.assetId === seg.assetId && st.evidenceEligible === true && unreviewed?.speech === true && unreviewed.voiceReviewed === false;
+      && done.assetId === seg.assetId && st.evidenceEligible === false && unreviewed?.speech === true && unreviewed.voiceReviewed === false;
     return { ok, detail: ok ? 'AudioPlayed and AudioSegmentCompleted carry assetId, speech:true, voiceReviewed:true; the same playback with an unreviewed voice carries voiceReviewed:false (exposure only: this check asserts no learner state)' : `played=${played?.type}/${played?.speech}; completed=${done?.type}/${done?.speech}/${done?.voiceReviewed}; unreviewed=${unreviewed?.voiceReviewed}` };
   }, all));
 

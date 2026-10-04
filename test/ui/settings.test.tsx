@@ -76,6 +76,9 @@ describe('Settings → Speech', () => {
   it('the Azure form hands the key over once, clears the field, and stores nothing unless "remember" is ticked', async () => {
     await open();
     await openAdvanced();
+    // Off by default: no key form until the learner opts in to using their own key in this browser.
+    expect(q(mounted!.container, '[aria-label="Azure speech"]')).toBeNull();
+    await check(byLabel<HTMLInputElement>(mounted!.container, 'Use my own Azure key in this browser'));
     const useKey = () => button(section('Azure speech'), 'Use this key');
     expect(useKey().disabled).toBe(true); // needs both a key and a region
     await typeInto(byLabel<HTMLInputElement>(mounted!.container, 'Azure region'), 'westeurope');
@@ -95,6 +98,20 @@ describe('Settings → Speech', () => {
     expect(mounted!.container.textContent).toContain('remembered on this device');
     await click(button(mounted!.container, 'Forget the remembered key'));
     expect(h.controls.speech.forgetAzure).toHaveBeenCalled();
+  });
+
+  it('using your own Azure key in this browser is an opt-in that is off by default; switching it off forgets the stored key', async () => {
+    await open();
+    await openAdvanced();
+    const optIn = () => byLabel<HTMLInputElement>(mounted!.container, 'Use my own Azure key in this browser');
+    expect(optIn().checked).toBe(false);
+    expect(q(mounted!.container, '[data-testid="azure-direct-off"]')!.textContent).toMatch(/never reads or uses an Azure key/);
+    await check(optIn());
+    expect(q(mounted!.container, '[data-testid="azure-direct-off"]')).toBeNull();
+    expect(h.controls.speech.forgetAzure).not.toHaveBeenCalled();
+    await check(optIn(), false);
+    expect(h.controls.speech.forgetAzure).toHaveBeenCalledTimes(1);
+    expect(q(mounted!.container, '[aria-label="Azure speech"]')).toBeNull();
   });
 
   it('lists voices with their review status; "I have auditioned this voice" marks a real voice reviewed; placeholder sound can never be', async () => {

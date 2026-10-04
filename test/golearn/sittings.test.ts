@@ -303,7 +303,7 @@ describe('"Understood" on a sentence never dwelt on', () => {
   });
 });
 
-describe('derived state is rebuildable under evidence@7', () => {
+describe('derived state is rebuildable under evidence@8', () => {
   async function play(h: Harness) {
     await h.view(U, 'es', ES_STORY, 0, 's1');
     await h.help(U, 'es', ES_STORY, 0, 1, F('creo'), 2, 's2'); // reload inside the sitting
@@ -381,7 +381,7 @@ describe('derived state is rebuildable under evidence@7', () => {
     const events = (await h.store.events.where('userId', U)).length;
     expect(await h.golearn.ensureCurrent(U)).toBe(true);
     expect((await h.store.events.where('userId', U)).length).toBe(events); // nothing deleted from the log
-    expect((await h.store.meta.get('golearn.policy:u1'))?.value).toBe('evidence@7');
+    expect((await h.store.meta.get('golearn.policy:u1'))?.value).toBe('evidence@8');
     expect(await encs(h)).toEqual(live);
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
   });

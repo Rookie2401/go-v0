@@ -42,7 +42,7 @@ describe('exact recording binding with the five real adapters', () => {
       coverage:[{sentenceId:sentences[0].id,startMs:0,endMs:1000,reviewState:'checked'}],
     };
     const gl = createGoListen({store,bus:new StoreEventBus(store),adapters});
-    const imported = await gl.importRecording({manifest,bytes});
+    const imported = await gl.importRecording({manifest,bytes,origin:'curated'});
     expect((await buildPlayerManifest(store,imported.manifest)).segments[0]).toMatchObject({ready:true,exactTextBound:true,audioKind:'synthetic'});
     expect((await gl.audioStatus(text.id)).evidenceEligible).toBe(false);
     expect((await store.sentences.where('textId',text.id))[0].text).toBe(wording);

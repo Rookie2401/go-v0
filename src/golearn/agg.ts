@@ -70,6 +70,8 @@ export interface ItemAgg {
   /** Distinct texts met in, in the order first met, with the number of receptive encounters in each. */
   texts: string[];
   counts: number[];
+  /** Listening encounters per text (textId → n). Present only once something was heard, so a reading-only aggregate is unchanged. */
+  lt?: Record<string, number>;
 }
 
 /** A stored learner item: the contract row plus its aggregate. Readers outside GoLearn never see `agg` (see `publicRow`). */
@@ -183,6 +185,14 @@ export function addReceptive(agg: ItemAgg, m: 'reading' | 'listening', sitting: 
   if (!agg.first) agg.first = { textId: meeting.textId, sentenceId: meeting.sentenceId, at: meeting.at };
   const i = agg.texts.indexOf(meeting.textId);
   if (i < 0) { agg.texts.push(meeting.textId); agg.counts.push(1); } else agg.counts[i] += 1;
+  if (m === 'listening') { agg.lt ??= {}; agg.lt[meeting.textId] = (agg.lt[meeting.textId] ?? 0) + 1; }
+}
+
+/** The texts this item was READ in (a text it was only heard in is left out). Absent from the row unless something was heard. */
+export function readingTextsOf(agg: ItemAgg): string[] | undefined {
+  const lt = agg.lt;
+  if (!lt) return undefined;
+  return agg.texts.filter((t, i) => agg.counts[i] - (lt[t] ?? 0) > 0);
 }
 
 /** Record a production (writing / speaking): never changes afterwards, so it is simply counted. */
@@ -218,12 +228,16 @@ export function buildRow(
   };
   const reading = totalsOf(agg, 'reading');
   const listening = totalsOf(agg, 'listening');
+  // encounterCount / firstSeenAt / lastSeenAt describe "met in any receptive modality" (display only). READING measures never use
+  // them: coverage, forecast, ranking and recommendations read `reading.level` / the reading dimension (evidence@8).
   const seen = reading.n + listening.n;
   const row: StoredItem = {
     id: `${userId}|${itemId}`, userId, lang: meta.lang, itemId, itemKind: meta.itemKind,
     reading: dim('reading'), listening: dim('listening'), writing: dim('writing'), speaking: dim('speaking'),
     encounterCount: seen, textIds: [...agg.texts], agg,
   };
+  const readTexts = readingTextsOf(agg);
+  if (readTexts) row.readingTextIds = readTexts;
   if (seen > 0) {
     const firsts = [reading.firstAt, listening.firstAt].filter((x): x is string => !!x).sort();
     const lasts = [reading.lastAt, listening.lastAt].filter((x): x is string => !!x).sort();

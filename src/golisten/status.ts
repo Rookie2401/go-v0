@@ -11,7 +11,10 @@
  *   a live sentence's segment is failed / dead ............. failed (with the job's error)
  *   a live sentence has no segment (some others are ready) . stale      (none ready at all: not-generated)
  *   every live sentence ready, voice not reviewed real speech  preview-only
- *   every live sentence ready, reviewed real speech ......... ready      (the only state with evidenceEligible)
+ *   every live sentence ready, reviewed synthetic speech .... ready, evidenceEligible false (practice only)
+ *   every live sentence ready, reviewed HUMAN recording ..... ready      (the only case with evidenceEligible: a named
+ *                                                            person reviewed the recording, the voice is reviewed, rights
+ *                                                            are approved and the exact text binding is current)
  *
  * Partial generation: when some live sentences are ready and others failed, the reason reads
  * "x of y sentences ready; n failed: <first error>" (plus "; k still generating" / "; k more wait for the provider"),
@@ -34,6 +37,14 @@ import { FIXTURE_DISCLAIMER } from './fixtureProvider';
 import type { Runtime } from './types';
 import { planVoiceQuiet } from './voices';
 import { approvedForPlay, currentBindingValid } from './rights';
+
+/** The reason shown for synthetic speech: it plays, but it is never listening evidence. */
+export const SYNTHETIC_PRACTICE = 'Synthetic speech: practice only, not counted as listening.';
+
+/** A ready asset that may be listening evidence: human speech whose recording a person reviewed, under approved rights. */
+function isEvidenceAsset(a: AudioAsset): boolean {
+  return a.audioKind === 'human' && a.isSpeech === true && (a.qualityState === 'human_reviewed' || a.qualityState === 'approved') && a.rights?.status === 'approved';
+}
 
 export interface AudioStatusOptions {
   /** The caller is in preview mode (affects wording only: preview-only audio is never hidden or promoted). */
@@ -230,8 +241,10 @@ async function compute(rt: Runtime, textId: string, opts: AudioStatusOptions, fa
   const sampleAsset = readyAssets[0];
   const out = (state: AudioStatus['state'], reason?: string): AudioStatus => ({
     ...head, ...counts, state, reason, isSpeech: speechVoice && (readyAssets.length === 0 || allSpeech),
+    // Only HUMAN speech reviewed by a person (a reviewed voice, a human_reviewed / approved recording, approved rights; every
+    // asset in `readyAssets` also passed currentBindingValid). Synthetic speech is practice only and is never evidence.
     evidenceEligible: state === 'ready' && readyAssets.length > 0 && REVIEW_OK.includes(voice.reviewStatus ?? 'unreviewed')
-      && readyAssets.every((a) => a.audioKind === 'synthetic' || a.audioKind === 'human' && (a.qualityState === 'human_reviewed' || a.qualityState === 'approved')),
+      && readyAssets.every(isEvidenceAsset),
     playAllowed: readyN > 0 && rightsBlocked === 0, rightsStatus: sampleAsset?.rights?.status, qualityState: sampleAsset?.qualityState,
     sourceType: sampleAsset?.sourceType, narratorOrVoiceId: sampleAsset?.narratorOrVoiceId,
   });
@@ -272,13 +285,17 @@ async function compute(rt: Runtime, textId: string, opts: AudioStatusOptions, fa
   // Everything is ready: is it evidence-eligible?
   const reviewed = REVIEW_OK.includes(voice.reviewStatus ?? 'unreviewed');
   if (speechVoice && allSpeech) {
-    const qualityReviewed = readyAssets.every((a) => a.audioKind === 'synthetic' || a.audioKind === 'human' && (a.qualityState === 'human_reviewed' || a.qualityState === 'approved'));
-    if (reviewed && qualityReviewed) return out('ready');
-    const why = readyAssets.some((a) => a.audioKind === 'synthetic')
-      ? (voice.reviewStatus === 'rejected'
-        ? 'This synthetic voice was rejected in review; it remains playable as synthetic practice and earns no listening evidence.'
-        : `Synthetic speech ${voice.reviewStatus === 'in-review' ? 'is still being reviewed' : 'has not been auditioned by a person'}; it is playable as synthetic listening practice and earns no listening evidence until voice review.`)
-      : 'This human recording is playable under its rights grant, but it has not passed human audio review for listening evidence.';
+    if (reviewed && readyAssets.every(isEvidenceAsset)) return out('ready');
+    if (readyAssets.some((a) => a.audioKind === 'synthetic')) {
+      // Synthetic speech is practice only, whatever its voice review says: a voice audition decides whether it counts as
+      // synthetic practice, never as listening.
+      if (reviewed) return { ...out('ready', SYNTHETIC_PRACTICE), evidenceEligible: false, playAllowed: true };
+      const voiceWhy = voice.reviewStatus === 'rejected' ? 'This voice was rejected in review.' : voice.reviewStatus === 'in-review' ? 'This voice is still being reviewed.' : 'This voice has not been auditioned by a person.';
+      return { ...out('preview-only', `${SYNTHETIC_PRACTICE} ${voiceWhy}`), evidenceEligible: false, playAllowed: true };
+    }
+    const why = readyAssets.every((a) => a.qualityState === 'human_reviewed' || a.qualityState === 'approved')
+      ? 'This human recording is playable under its rights grant, but its voice review is missing, so it does not count as listening evidence.'
+      : 'This human recording is playable under its rights grant, but no named reviewer has approved it for the course, so it does not count as listening evidence.';
     return { ...out('preview-only', why), evidenceEligible: false, playAllowed: true };
   }
   const hearHint = opts.preview ? '' : ' Turn on preview mode to listen.';

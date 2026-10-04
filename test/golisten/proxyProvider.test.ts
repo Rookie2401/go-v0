@@ -299,7 +299,8 @@ describe('ProxySpeechProvider through GoListen (the real proxy handler, mocked A
 
     expect(await gl.audioStatus(tid(lang))).toMatchObject({ state: 'preview-only', isSpeech: true, evidenceEligible: false, providerId: 'speech-proxy', providerVersion: 'azure-proxy@1' });
     await gl.setVoiceReview(voice.id, 'reviewed', 'mocked test');
-    expect(await gl.audioStatus(tid(lang))).toMatchObject({ state: 'ready', evidenceEligible: true });
+    // The proxy's speech is synthetic: an audition makes it playable practice, never listening evidence.
+    expect(await gl.audioStatus(tid(lang))).toMatchObject({ state: 'ready', evidenceEligible: false, playAllowed: true });
     const all = await dump(store);
     expect(all).not.toContain(KEY);
     expect(JSON.stringify(net.seen)).not.toContain(KEY);

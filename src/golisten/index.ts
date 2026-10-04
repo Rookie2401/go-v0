@@ -9,7 +9,7 @@
 import { REVIEW_OK } from '../core/model';
 import type { AudioAlignment, AudioAsset, AudioJob, AudioManifest, AudioSegment, LanguageCode, ReviewStatus, VoiceConfig } from '../core/model';
 import type { AudioStatus, GoListen, GoListenDiagnostics, ProviderAvailability, TtsProvider } from '../core/contracts/golisten';
-import type { AudioImportManifest, AudioImportResult } from '../core/contracts/golisten';
+import type { AudioImportResult, ImportRecordingArgs } from '../core/contracts/golisten';
 import { FIXTURE_PROVIDER_ID, FixtureTtsProvider } from './fixtureProvider';
 import { runEligibleJobs } from './jobs';
 import { ensureAudioForText, ensureSentenceAudioFor } from './pipeline';
@@ -39,7 +39,9 @@ export { approvedForPlay, currentBindingValid, canonicalTextSha256, sha256Hex, r
 export { latestListeningCheckpoint, listeningProgress } from './progress';
 export { recommendListening } from './recommendations';
 export { listeningAssessmentAvailability, startListeningAssessment, submitListeningAssessment } from './assessment';
-export { type AudioGenerationAuthorization, type AudioImportManifest, type AudioImportResult, type OfflineAudioPackage } from '../core/contracts/golisten';
+export { type AudioGenerationAuthorization, type AudioImportManifest, type AudioImportResult, type OfflineAudioPackage, type ImportOrigin, type ImportRecord, type ImportRecordingArgs } from '../core/contracts/golisten';
+export { readImportRecord, importRecordId } from './import';
+export { SYNTHETIC_PRACTICE } from './status';
 export { GOLISTEN_VERSION, type GoListenDeps } from './types';
 
 /** Per-segment diagnostics plus the job state behind it (retries, next attempt, review status). */
@@ -69,6 +71,15 @@ export interface GoListenService extends GoListen {
   retryDead(jobId?: string): Promise<number>;
   audioStatus(textId: string, opts?: AudioStatusOptions): Promise<AudioStatus>;
   diagnostics(textId?: string): Promise<GoListenDiagnosticsV2>;
+  /**
+   * Subscribe to changes that can alter whether a text's audio is listening evidence: a recording imported or re-imported,
+   * rights revoked, a voice review changed. `textId` is the affected text, or undefined when it cannot be narrowed (a voice
+   * shared by several texts). The app wires this to GoLearn's `invalidateListening` (src/app/bootstrap.ts); the listener is
+   * awaited, after the change is stored. Returns an unsubscribe function. A failing listener never fails the change.
+   */
+  onEligibilityChange(listener: (textId?: string) => unknown): () => void;
+  /** Withdraw the rights of an audio asset (status 'revoked'): it stops playing and stops being evidence. Returns the asset. */
+  revokeRights(assetId: string): Promise<AudioAsset>;
 }
 
 export function createGoListen(deps: GoListenDeps): GoListenService {
@@ -86,6 +97,10 @@ export function createGoListen(deps: GoListenDeps): GoListenService {
     inFlight: new Set(), defaultProviderId: deps.defaultProviderId, allowFixture,
   };
   const { store } = rt;
+  const eligibilityListeners = new Set<(textId?: string) => unknown>();
+  const eligibilityChanged = async (textId?: string): Promise<void> => {
+    for (const l of [...eligibilityListeners]) { try { await l(textId); } catch { /* the change itself already happened */ } }
+  };
 
   const segmentsForText = async (textId: string): Promise<AudioSegment[]> => {
     const manifests = await store.manifests.where('textId', textId);
@@ -130,12 +145,26 @@ export function createGoListen(deps: GoListenDeps): GoListenService {
         qaNote: [row.qaNote, line].filter(Boolean).join(' '),
       };
       await store.voices.put(next);
+      await eligibilityChanged(); // a voice can serve several texts: not narrowed to one
+      return next;
+    },
+    onEligibilityChange(listener) { eligibilityListeners.add(listener); return () => { eligibilityListeners.delete(listener); }; },
+    async revokeRights(assetId: string): Promise<AudioAsset> {
+      const asset = await store.audioAssets.get(assetId);
+      if (!asset?.rights) throw new Error(`GoListen: audio asset ${assetId} has no rights record`);
+      const next: AudioAsset = { ...asset, rights: { ...asset.rights, status: 'revoked' } };
+      await store.audioAssets.put(next);
+      await eligibilityChanged(asset.textBinding?.scope === 'personal' ? undefined : asset.textBinding?.textId);
       return next;
     },
     resolveVoice(lang: LanguageCode, courseId?: string): Promise<VoiceConfig> { return resolveVoiceConfig(rt, lang, courseId); },
     ensureAudio: (textId, opts) => ensureAudioForText(rt, textId, opts),
     ensureSentenceAudio: (args) => ensureSentenceAudioFor(rt, args),
-    importRecording: (args: { manifest: AudioImportManifest; bytes: Uint8Array }): Promise<AudioImportResult> => importRecordingFor(rt, args),
+    importRecording: async (args: ImportRecordingArgs): Promise<AudioImportResult> => {
+      const result = await importRecordingFor(rt, args);
+      await eligibilityChanged(args.manifest.textId); // import or re-import can change what the text's audio is worth
+      return result;
+    },
     runJobs: (opts) => runEligibleJobs(rt, opts),
 
     async getManifest(textId: string, voiceConfigId?: string): Promise<AudioManifest | undefined> {

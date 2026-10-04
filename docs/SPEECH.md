@@ -108,13 +108,14 @@ Consequences:
 not the region, nothing about the proxy's environment. A test builds a store used with each provider and searches the
 serialized backup for the key. Generated audio is not exported at all.
 
-## 5. Voice review (how a voice becomes evidence-eligible)
+## 5. Voice review (how a voice becomes ready to play)
 
 The procedure is in `src/golisten/QA.md` ("Audition procedure"): register the provider, generate the representative QA
 texts, check `diagnostics(textId)` (every segment `ready`, `isSpeech: true`, expected provider version and locales),
 listen to every sentence at speed 1.0 and 0.7, fix defects with reviewed pronunciation entries, then record the decision
-with `setVoiceReview(voiceConfigId, 'reviewed' | 'approved' | 'rejected', note)`. Only reviewed real speech can earn
-listening evidence (evidence policy v2, rule 5). The development fixture (tone bursts, `isSpeech: false`, only with
+with `setVoiceReview(voiceConfigId, 'reviewed' | 'approved' | 'rejected', note)`. A reviewed synthetic voice becomes
+`ready` as synthetic practice and is still never listening evidence; only a human recording that a named person reviewed,
+under approved rights and with a reviewed voice, is evidence-eligible (see `docs/GOLISTEN.md`). The development fixture (tone bursts, `isSpeech: false`, only with
 "Preview unreviewed content") is preview-only and can never be made evidence-eligible by any review.
 
 ## 6. Every state the learner can see
@@ -161,7 +162,7 @@ environment, then `.env.local` / `.env`) and never prints, logs or stores the ke
    `fetch` is routed to the real `handleSpeechRequest` with a throw-away test key, and a MOCKED upstream that answers with a
    valid PCM16 WAV. Client, proxy handler and pipeline are therefore all the real code; only Azure is pretended. The table
    covers: cache-key composition; requested (`es-HN`) vs delivered (`es-MX`) locale on voice and asset; voice metadata and
-   review status (unreviewed => `preview-only`, reviewed => `ready` and evidence-eligible); content-version invalidation
+   review status (unreviewed => `preview-only`, reviewed => `ready` as synthetic practice, never evidence-eligible); content-version invalidation
    through the real importer (one edited sentence => `stale`, re-ensure regenerates exactly one segment); retry with backoff
    after 429 / 5xx then success with no duplicate asset; dead after four attempts with the reason in `audioStatus` and
    `diagnostics`; partial generation ("2 of 3 sentences ready; 1 failed", ready sentences playable); the unconfigured
@@ -193,14 +194,14 @@ status  check             detail
 PASS    cache-key         cache key composition: changes with text, voice, locale, provider version, settings; stable otherwise
 PASS    setup             real chain: import, resolve voice, generate three sentences through the proxy handler
 PASS    locale            requested vs delivered locale recorded on voice and asset (course asks es-HN)
-PASS    voice-review      voice metadata + review status recorded: unreviewed => preview-only; reviewed => ready and evidence-eligible
+PASS    voice-review      voice metadata + review status recorded: unreviewed => preview-only; reviewed => ready as synthetic practice, never evidence-eligible
 PASS    invalidation      content-version invalidation: one edited sentence => stale; re-ensure regenerates exactly one segment
 PASS    retry             retry with backoff after 429 then 5xx, then success; no duplicate asset
 PASS    dead              dead after max attempts (4) with the reason visible in audioStatus and diagnostics
 PASS    partial           partial generation visible ("x of y sentences ready; n failed") and the ready segments playable
 PASS    unconfigured      unconfigured proxy => unavailable with the exact instruction; nothing written, nothing sent
 PASS    fixture-playback  fixture audio and failed / abandoned playback are never evidence-eligible
-PASS    real-playback     reviewed real-speech playback emits completion with speech:true (exposure only; GoLearn decides what it is worth)
+PASS    real-playback     reviewed real-speech playback emits completion with speech:true (exposure only; synthetic, so never listening evidence)
 PASS    key-secrecy       the key never appears in any output, stored row, event, log line or thrown message
 
 12/12 provider-independent checks passed.

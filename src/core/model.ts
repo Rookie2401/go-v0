@@ -500,11 +500,17 @@ export interface LearnerItemState {
   listening: DimensionState;
   writing: DimensionState;
   speaking: DimensionState;
+  /**
+   * Receptive encounters in ANY modality (reading + listening), for display. READING measures must not use it: read
+   * `reading.level !== 'unseen'` (or `readingTextIds`) instead, so that what was only heard never counts as read.
+   */
   encounterCount: number;
   firstSeenAt?: string;
   lastSeenAt?: string;
   /** Explicit learner mark, kept separately from evidence. */
   manualMark?: 'known' | 'unknown';
+  /** The texts the item was READ in. Present only when something was also heard (then it can differ from `textIds`). */
+  readingTextIds?: string[];
   /** Distinct textIds where encountered (provenance for GoTell: "seen in Story 12, John 3"). */
   textIds: string[];
 }
@@ -910,7 +916,7 @@ export interface ItemKnowledge {
   speaking: DimensionState;
   /** Encountered in exactly this surface form (for forms) / this exact phrase. */
   exactFormSeen: boolean;
-  /** Some related item (same lemma, other form) has been seen. */
+  /** Some related item (same lemma, other form) has been READ (hearing one does not count). */
   relatedSeen: boolean;
   /** Counts by evidence kind (reading + listening), for explanations: "seen 7 times, needed help twice". */
   exposureCount: number;

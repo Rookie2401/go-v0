@@ -1,9 +1,11 @@
 /**
- * Event folding — events are the ONLY write path into learner state. Policy `evidence@7`.
+ * Event folding — events are the ONLY write path into learner state. Policy `evidence@8`.
  *
  *  SITTINGS: every evidence event is assigned a sitting derived from event TIME per learner (sitting.ts), never from the
  *  UI's `session` string. Within one sitting there is at most ONE encounter per (user, item, sentence, modality), whatever
  *  session ids the UI sent (reload, route revisit, scroll in/out, rerender). Help and reports are scoped to the sitting.
+ *  Sittings are per MODALITY (ModalitySittings): hearing (AudioSegmentCompleted, a listening ComprehensionReported) forms its own
+ *  `listen:`-prefixed sittings and never extends or splits a reading sitting; everything else is the reading sittings as before.
  *  Encounters are pinned to the content version: the event's `contentVersion`, else the sentence's `versionAdded`.
  *
  *  SentenceViewed        → reading EXPOSURE encounters: one per word *form*, per credited *lemma*, per phrase and per
@@ -26,8 +28,9 @@
  *                          `SentenceViewed` events. Listening reports only upgrade listening encounters that real,
  *                          reviewed speech produced. Degrees 'most' | 'some' | 'little' are NOT item evidence
  *                          (readingProgress / recommendations read them from the log). Reports never downgrade.
- *  AudioSegmentCompleted → listening encounters for the segment's sentences IF the audio is reviewed real speech (rule 5,
- *                          eligibility.ts); touches ONLY `listening`. Transcript / translation shown ⇒ `assisted`.
+ *  AudioSegmentCompleted → listening encounters for the sentences actually HEARD, IF the audio is reviewed HUMAN speech
+ *                          (rule 5, eligibility.ts; synthetic speech never counts); touches ONLY `listening`. A visible transcript or
+ *                          translation ⇒ `assisted` for the whole sentence (sentence-level help: no item-targeted estimate veto).
  *  ProductionRecorded    → writing / speaking `production` encounter; touches ONLY `writing` / `speaking`. Evidence for an
  *                          (item, sentenceHash, modality) is recorded ONCE, ever (first one wins).
  *  ItemMarked            → manualMark only (a `known` mark is an explicit demonstration of that item).
@@ -64,7 +67,33 @@ interface SentenceMemo {
 }
 interface SittingMemo { hydrated: boolean; sentences: Map<string, SentenceMemo> }
 /** One learner's time-derived sittings plus the help / report events of each (the memo's raw material). */
-interface UserSittings { index: SittingIndex; log: UserLog; memoEvents: Map<string, DomainEvent[]>; memoIds: Set<string>; lastAtByLang: Map<LanguageCode, string> }
+interface UserSittings { index: ModalitySittings; log: UserLog; memoEvents: Map<string, DomainEvent[]>; memoIds: Set<string>; lastAtByLang: Map<LanguageCode, string> }
+
+/** An event that belongs to the LISTENING sittings: a completed hearing, or a report about what was heard. */
+const isListeningEvent = (e: DomainEvent): boolean => e.type === 'AudioSegmentCompleted' || (e.type === 'ComprehensionReported' && e.modality === 'listening');
+/** Prefix of listening sitting keys: their own key space, so a hearing can never share a (user, sitting) slot with a reading. */
+const LISTEN_SITTING = 'listen:';
+
+/**
+ * Sittings per modality (evidence@8). Reading (and everything that is not listening: help, reports, production, marks) forms the
+ * reading sittings exactly as before; hearing forms its own sittings. Neither extends nor splits the other, so a listen between two
+ * readings cannot merge them into one reading sitting, and reading state is the same with or without the listens in the log.
+ */
+class ModalitySittings {
+  private readonly reading = new SittingIndex();
+  private readonly listening = new SittingIndex();
+
+  add(e: DomainEvent): string {
+    return isListeningEvent(e) ? LISTEN_SITTING + this.listening.add(e) : this.reading.add(e);
+  }
+
+  get(eventId: string): string | undefined {
+    const r = this.reading.get(eventId);
+    if (r !== undefined) return r;
+    const l = this.listening.get(eventId);
+    return l === undefined ? undefined : LISTEN_SITTING + l;
+  }
+}
 type Emission = EventInput<PhraseEncountered>;
 
 /** Events that change learner state (what `attach()` subscribes to and what `rebuild` replays). Also the events that make up a sitting. */
@@ -104,7 +133,7 @@ export class Folder {
   private async userSittings(userId: string): Promise<UserSittings> {
     let u = this.users.get(userId);
     if (u) return u;
-    const index = new SittingIndex();
+    const index = new ModalitySittings();
     u = { index, log: { events: [], sittings: index, byText: new Map() }, memoEvents: new Map(), memoIds: new Set(), lastAtByLang: new Map() };
     this.users.set(userId, u);
     const history = (await this.ctx.bus.history({ userId, types: [...FOLD_TYPES] })).sort(byAtId);
@@ -389,15 +418,16 @@ export class Folder {
 
   private async onAudioCompleted(e: Extract<DomainEvent, { type: 'AudioSegmentCompleted' }>, replay: boolean) {
     const { ctx } = this;
-    const sitting = await this.sittingOf(e); // every folded event extends the sitting, eligible or not (keeps live == rebuild)
+    const sitting = await this.sittingOf(e); // every folded event extends its LISTENING sitting, eligible or not (keeps live == rebuild)
     const verdict = await listenVerdict(ctx, e);
-    if (!verdict.eligible) return; // fixture / unreviewed / unknown audio: no evidence, ever (the log keeps the event)
+    if (!verdict.eligible) return; // fixture / synthetic / unreviewed / unknown / unobserved audio: no evidence, ever (the log keeps the event)
     await this.hydrate(e.userId, sitting);
     const transcript = e.revealedTranscript || e.transcriptVisible;
     const assistance: AssistanceLevel = e.revealedTranslation
       ? LISTEN_ASSISTANCE.translation : transcript ? LISTEN_ASSISTANCE.transcript : LISTEN_ASSISTANCE.none;
     const book = new ItemBook(ctx, e.userId);
-    for (const sentenceId of e.sentenceIds) {
+    // Only the sentences actually heard are credited (eligibility.ts: single sentence / essentially complete passage / heardSentenceIds).
+    for (const sentenceId of verdict.creditedSentenceIds) {
       await this.encounterSentence({
         userId: e.userId, lang: e.lang, sentenceId, session: e.session, sitting, at: e.at, modality: 'listening',
         listen: { assistance, speed: e.speed, replays: e.replayCount },
@@ -456,8 +486,9 @@ export class Folder {
     const createdPhrases: Array<{ occ: PhraseOccurrence; assistance: AssistanceLevel }> = [];
     for (const [itemId, itemKind] of items) {
       const assistance: AssistanceLevel = a.listen ? a.listen.assistance : this.helpOf(memo, itemId);
-      // item-targeted help: a reading encounter records it apart; a listening encounter falls back to its assistance when 1–3
-      const itemHelp = a.listen ? (assistance >= 1 && assistance <= 3 ? assistance : 0) : this.itemHelpOfMemo(memo, itemId);
+      // item-targeted help: a reading encounter records it apart. A listening encounter has NONE: a visible transcript or translation
+      // belongs to the whole sentence (sentence-level help: the encounter is assisted, no one item's estimate is vetoed).
+      const itemHelp = a.listen ? 0 : this.itemHelpOfMemo(memo, itemId);
       const j = this.judge(a.modality, assistance, demonstrated, a.listen?.speed, a.listen?.replays);
       const romanized = !a.listen && memo.roman.has(itemId);
       const entry: Entry = [kindCode(j.evidenceKind), assistance, itemHelp, Math.round(j.weight * 1e6), 0, romanized ? 1 : 0];

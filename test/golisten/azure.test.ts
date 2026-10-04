@@ -185,7 +185,8 @@ describe('AzureSpeechProvider through GoListen (mocked fetch)', () => {
 
     expect(await gl.audioStatus(tid(lang))).toMatchObject({ state: 'preview-only', isSpeech: true, evidenceEligible: false, providerId: 'azure-speech', providerVersion: 'azure-rest@1', requestedLocale: voice.requestedLocale, deliveredLocale: first.locale });
     await gl.setVoiceReview(voice.id, 'reviewed', 'mocked test');
-    expect(await gl.audioStatus(tid(lang))).toMatchObject({ state: 'ready', evidenceEligible: true });
+    // Azure speech is synthetic: an audition makes it playable practice, never listening evidence.
+    expect(await gl.audioStatus(tid(lang))).toMatchObject({ state: 'ready', evidenceEligible: false, playAllowed: true });
     expect(await dump(store)).not.toContain(KEY);
   });
 

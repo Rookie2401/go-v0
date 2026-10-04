@@ -26,6 +26,16 @@ export interface ListenOpts {
   /** Emit a legacy event (no speech / voiceReviewed / assetId): GoLearn must resolve segment → asset → voice. */
   legacy?: boolean;
   segmentId?: string; assetId?: string;
+  /** Default 'human' (a reviewed human recording, the only listening evidence); 'synthetic' seeds generated speech (practice only). */
+  kind?: 'human' | 'synthetic';
+  /** Observed share of the passage heard (default 1). */
+  ratio?: number;
+  /** Omit the observed-playback version (a legacy end-callback completion). */
+  unobserved?: boolean;
+  /** The sentence indexes actually heard (event `heardSentenceIds`). */
+  heard?: number[];
+  /** Override the asset's quality state when seeding. */
+  quality?: 'machine_checked' | 'human_reviewed' | 'approved';
 }
 
 export function createHarness(opts: {
@@ -139,7 +149,7 @@ export function createHarness(opts: {
       const segmentId = o.segmentId ?? `seg:${uniq()}`;
       let assetId = o.assetId;
       if (!o.legacy && !o.assetId) {
-        await api.seedAudio(segmentId, { speech: o.speech ?? true, reviewStatus: o.voiceReviewed === false ? 'unreviewed' : 'approved', textId, sentenceIds, lang });
+        await api.seedAudio(segmentId, { speech: o.speech ?? true, reviewStatus: o.voiceReviewed === false ? 'unreviewed' : 'approved', textId, sentenceIds, lang, ...(o.kind ? { kind: o.kind } : {}), ...(o.quality ? { quality: o.quality } : {}) });
         assetId = (await store.audioSegments.get(segmentId))?.assetId;
       }
       const asset = assetId ? await store.audioAssets.get(assetId) : undefined;
@@ -154,11 +164,16 @@ export function createHarness(opts: {
           exactTextBound: !!asset?.textBinding && asset.textBinding.textId === textId,
           textSha256: asset?.textBinding?.textSha256, contentVersion: segment?.contentVersion,
           releaseId: asset?.textBinding?.releaseId, editionId: asset?.textBinding?.editionId,
-          heardCoverageRatio: 1, audibleCoverageVersion: 'observed-playback@1' as const }),
-      } as EventInput<DomainEvent>);
+          narratorOrVoiceId: asset?.narratorOrVoiceId, locale: asset?.locale, variety: asset?.variety,
+          ...(o.unobserved ? (o.ratio !== undefined ? { heardCoverageRatio: o.ratio } : {}) : { heardCoverageRatio: o.ratio ?? 1, audibleCoverageVersion: 'observed-playback@1' as const }),
+          ...(o.heard ? { heardSentenceIds: o.heard.map((i) => `${textId}/s${i}`) } : {}) }),
+      } as unknown as EventInput<DomainEvent>);
     },
     /** Rows a LEGACY listening event resolves through: voice → segment → asset. Returns the segment id. */
-    seedAudio: async (segmentId: string, o: { speech: boolean; provider?: string; reviewStatus?: ReviewStatus; textId?: string; lang?: LanguageCode; flag?: boolean; sentenceIds?: string[]; assetId?: string } = { speech: true }) => {
+    seedAudio: async (segmentId: string, o: { speech: boolean; provider?: string; reviewStatus?: ReviewStatus; textId?: string; lang?: LanguageCode; flag?: boolean; sentenceIds?: string[]; assetId?: string; kind?: 'human' | 'synthetic'; quality?: 'machine_checked' | 'human_reviewed' | 'approved' } = { speech: true }) => {
+      // Default: a HUMAN, human_reviewed recording with approved rights and an exact binding — the only audio that is listening
+      // evidence. Pass kind: 'synthetic' for generated speech (practice only, never evidence).
+      const human = (o.kind ?? 'human') === 'human';
       const lang = o.lang ?? 'es';
       const voiceId = `voice:${segmentId}`;
       const assetId = o.assetId;
@@ -173,12 +188,15 @@ export function createHarness(opts: {
         id: voiceId, lang, providerId: o.provider ?? (o.speech ? 'azure' : 'fixture'), voiceId: 'v', requestedLocale: 'es-HN', actualLocale: 'es-MX',
         approved: true, reviewStatus: o.reviewStatus ?? 'approved', isSpeech: o.speech,
       });
+      const synthRights = { id: `rights:${segmentId}`, status: 'approved', recordingOwner: 'test', recordingBasis: 'test-only', performanceOwner: 'test', performancePermission: 'test-only', playInApp: true, stream: true, offline: false, redistribute: false, segment: false, transform: false, textDerivative: 'allowed', providerRetention: 'none', providerId: o.provider ?? 'azure', providerTerms: 'test only' };
+      const humanRights = { id: `rights:${segmentId}`, status: 'approved', recordingOwner: 'test', recordingBasis: 'test-only', performanceOwner: 'test', performancePermission: 'test-only', playInApp: true, stream: true, offline: false, redistribute: false, segment: false, transform: false };
       await store.audioAssets.put({
-        id: resolvedAssetId, sourceType: 'generated-tts', audioKind: 'synthetic', lang, locale: 'es-MX', mime: 'audio/wav', sampleRate: 24000, channels: 1, durationMs: 1000,
+        id: resolvedAssetId, lang, locale: 'es-MX', mime: 'audio/wav', sampleRate: 24000, channels: 1, durationMs: 1000,
         bytes: bytes.length, checksum: assetBytesId, createdAt: '2026-01-01T00:00:00.000Z',
+        ...(human && o.speech ? { sourceType: 'human-recording', audioKind: 'human' } : { sourceType: 'generated-tts', audioKind: 'synthetic' }),
         ...(o.flag === false ? {} : { isSpeech: o.speech }),
-        generation: { providerId: o.provider ?? (o.speech ? 'azure' : 'fixture'), voiceId: 'v', settings: {}, sourceTextHash: 'h', speechTextHash: 'h', normalizerVersion: 'n', pronunciationLexiconVersion: 'l', softwareVersion: 't' },
-        qualityState: 'machine_checked', narratorOrVoiceId: 'v', rights: { id: `rights:${segmentId}`, status: 'approved', recordingOwner: 'test', recordingBasis: 'test-only', performanceOwner: 'test', performancePermission: 'test-only', playInApp: true, stream: true, offline: false, redistribute: false, segment: false, transform: false, textDerivative: 'allowed', providerRetention: 'none', providerId: o.provider ?? 'azure', providerTerms: 'test only' },
+        ...(human && o.speech ? {} : { generation: { providerId: o.provider ?? (o.speech ? 'azure' : 'fixture'), voiceId: 'v', settings: {}, sourceTextHash: 'h', speechTextHash: 'h', normalizerVersion: 'n', pronunciationLexiconVersion: 'l', softwareVersion: 't' } }),
+        qualityState: o.quality ?? (human && o.speech ? 'human_reviewed' : 'machine_checked'), narratorOrVoiceId: 'v', rights: human && o.speech ? humanRights : synthRights,
         textBinding: binding,
       } as never);
       await store.audioSegments.put({

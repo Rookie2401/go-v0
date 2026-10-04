@@ -59,6 +59,34 @@ describe('Player', () => {
     expect(Number(slider.value)).toBe(500);
   });
 
+  it('muted or zero-volume playback is not hearing: the pass ends as an abandonment, never a completion', async () => {
+    await setup();
+    mounted = await h.mount(<Player textId={STORY_ID} />);
+    await click(button(mounted.container, 'Play'));
+    audioEl().muted = true;
+    await act(async () => { audioEl().currentTime = 0.8; audioEl().dispatchEvent(new Event('timeupdate')); });
+    await act(async () => { audioEl().dispatchEvent(new Event('ended')); });
+    await flush();
+    expect(await h.events('AudioSegmentCompleted')).toHaveLength(0);
+    expect(await h.events('AudioAbandoned')).toHaveLength(1);
+
+    audioEl().muted = false;
+    audioEl().volume = 0;
+    await click(button(mounted.container, 'Replay sentence (R)'));
+    await act(async () => { audioEl().currentTime = 0.8; audioEl().dispatchEvent(new Event('timeupdate')); });
+    await act(async () => { audioEl().dispatchEvent(new Event('ended')); });
+    await flush();
+    expect(await h.events('AudioSegmentCompleted')).toHaveLength(0); // zero volume: still not heard
+
+    // the same sentence played again with sound on does count
+    audioEl().volume = 1;
+    await click(button(mounted.container, 'Replay sentence (R)'));
+    await act(async () => { audioEl().currentTime = 0.8; audioEl().dispatchEvent(new Event('timeupdate')); });
+    await act(async () => { audioEl().dispatchEvent(new Event('ended')); });
+    await flush();
+    expect(await h.events('AudioSegmentCompleted')).toHaveLength(1);
+  });
+
   it('plays with preservesPitch and emits AudioPlayed; play/pause toggle works', async () => {
     await setup();
     mounted = await h.mount(<Player textId={STORY_ID} />);

@@ -261,7 +261,31 @@ describe('bootstrap: no fixture audio unless it is asked for', () => {
   });
 });
 
+describe('bootstrap: a direct Azure key needs an explicit opt-in (off by default)', () => {
+  it('a key stored on the device is NOT read or used while the option is off; nothing is registered', async () => {
+    rememberAzure({ key: 'k-stored', region: 'westeurope' });
+    const { services } = await bootstrap(opts({ skipCorpus: true }));
+    expect(services.golisten.providers().map((p) => p.id)).not.toContain('azure-speech');
+    expect(services.speech.azure()).toMatchObject({ configured: false, remembered: true }); // still stored, so Settings can offer to forget it
+  });
+
+  it('configureAzure is refused while the option is off, and writes nothing', async () => {
+    const { services } = await bootstrap(opts({ skipCorpus: true }));
+    await expect(services.speech.configureAzure({ key: 'k-1', region: 'westeurope', remember: true })).rejects.toThrow(/switched off/);
+    expect(recallAzure()).toBeUndefined();
+    expect(services.golisten.providers().map((p) => p.id)).not.toContain('azure-speech');
+  });
+
+  it('with the option on, a stored key is used at start', async () => {
+    rememberAzure({ key: 'k-stored', region: 'westeurope' });
+    setPref('azureDirectKey', true);
+    const { services } = await bootstrap(opts({ skipCorpus: true }));
+    expect(services.golisten.providers().map((p) => p.id)).toContain('azure-speech');
+  });
+});
+
 describe('bootstrap: the Azure key is stored only when the learner says so', () => {
+  beforeEach(() => { setPref('azureDirectKey', true); }); // the explicit opt-in these tests are about
   it('without "remember", nothing is written and the provider lives for this session', async () => {
     const { services } = await bootstrap(opts({ skipCorpus: true }));
     expect(services.speech.azure()).toEqual({ configured: false, remembered: false, region: undefined });

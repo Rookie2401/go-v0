@@ -89,7 +89,11 @@ interface SegState { pass: number; replays: number; revealedTranscript: boolean;
 export interface ListeningEmitter {
   played(seg: SegmentRef, view: EmitView): Promise<AudioPlayed | null>;
   /** Emits AudioSegmentCompleted only for a ready asset; otherwise emits AudioAbandoned and returns null. */
-  completed(seg: SegmentRef, view: EmitView, extra?: { revealedTranscript?: boolean; revealedTranslation?: boolean; replayCount?: number; positionMs?: number; heardCoverageRatio?: number }): Promise<AudioSegmentCompleted | null>;
+  /**
+   * `heardSentenceIds`: when the segment has per-sentence alignments, the sentences of which >= 80% of the aligned range was
+   * heard; the event then credits exactly those. Absent: the whole segment is credited.
+   */
+  completed(seg: SegmentRef, view: EmitView, extra?: { revealedTranscript?: boolean; revealedTranslation?: boolean; replayCount?: number; positionMs?: number; heardCoverageRatio?: number; heardSentenceIds?: string[] }): Promise<AudioSegmentCompleted | null>;
   replayed(seg: SegmentRef, view: EmitView): Promise<AudioReplayed | null>;
   phraseReplayed(seg: SegmentRef, view: EmitView, p: { alignmentId: string; unitId: string }): Promise<PhraseReplayed | null>;
   seeked(p: { fromSegmentId?: string; toSegmentId: string }): Promise<AudioSeeked | null>;
@@ -144,13 +148,18 @@ export function listeningEmitter(bus: EventBus, ctx: ListeningContext): Listenin
         await abandon(seg, view, extra?.positionMs ?? 0); return null;
       } // the asset wasn't playable or the event didn't prove meaningful audible coverage
       const playback = await listen(seg, view);
+      // `heardSentenceIds` is spread in (spreads are not excess-property checked) so that this type-checks both before and
+      // after the event type itself declares the field.
       return bus.emit<AudioSegmentCompleted>({
         type: 'AudioSegmentCompleted', ...base(key('AudioSegmentCompleted', seg.segmentId, s.pass)), ...playback,
         replayCount: extra?.replayCount ?? s.replays,
         revealedTranscript: extra?.revealedTranscript ?? (s.revealedTranscript || view.transcriptVisible),
         revealedTranslation: extra?.revealedTranslation ?? s.revealedTranslation,
         heardCoverageRatio: extra?.heardCoverageRatio,
+        // 'observed-playback@1': the ratio was measured from media ticks that carried an observation time while the player
+        // was audible (not muted, volume above zero) and whose progress fit the wall time since the previous tick.
         audibleCoverageVersion: 'observed-playback@1',
+        ...(extra?.heardSentenceIds ? { heardSentenceIds: extra.heardSentenceIds.filter((id) => playback.sentenceIds.includes(id)) } : {}),
       });
     },
     replayed: async (seg, view) => {
@@ -205,7 +214,7 @@ export async function emitPlayerEffects(emitter: ListeningEmitter, model: Pick<P
     const e = fx.emit;
     switch (e.event) {
       case 'played': await emitter.played(seg(e.segmentIndex), e.view); break;
-      case 'completed': await emitter.completed(seg(e.segmentIndex), e.view, { replayCount: e.replayCount, revealedTranscript: e.revealedTranscript, heardCoverageRatio: e.heardCoverageRatio }); break;
+      case 'completed': await emitter.completed(seg(e.segmentIndex), e.view, { replayCount: e.replayCount, revealedTranscript: e.revealedTranscript, heardCoverageRatio: e.heardCoverageRatio, ...(e.heardSentenceIds ? { heardSentenceIds: e.heardSentenceIds } : {}) }); break;
       case 'replayed': await emitter.replayed(seg(e.segmentIndex), e.view); break;
       case 'phraseReplayed': await emitter.phraseReplayed(seg(e.segmentIndex), e.view, { alignmentId: e.alignmentId, unitId: e.unitId }); break;
       case 'seeked': await emitter.seeked({ fromSegmentId: e.fromSegmentIndex === undefined ? undefined : seg(e.fromSegmentIndex).segmentId, toSegmentId: seg(e.toSegmentIndex).segmentId }); break;

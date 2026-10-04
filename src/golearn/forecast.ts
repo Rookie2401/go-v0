@@ -26,6 +26,9 @@ import { FORECAST } from './policy';
 import type { Ctx } from './state';
 import { cmp, pct1, plural, round4 } from './util';
 
+/** A reading forecast counts only what was READ: `encounterCount` also counts hearings, so the reading dimension decides. */
+const metInReading = (r: { reading: { level: string } }) => r.reading.level !== 'unseen';
+
 const byCount = (a: ForecastItem, b: ForecastItem) => b.count - a.count || cmp(a.surface, b.surface) || cmp(a.itemId, b.itemId);
 
 interface Form { itemId: string; itemKind: 'form' | 'lemma'; surface: string; count: number; proper: boolean; gloss?: string; register: Set<string> }
@@ -35,6 +38,7 @@ export async function predictDifficulty(
 ): Promise<DifficultyForecast> {
   const text = await ctx.store.texts.get(textId);
   if (!text) throw new Error(`unknown text: ${textId}`);
+  if (text.listeningAssessmentId !== undefined) throw new Error(`protected listening-assessment material has no forecast: ${textId}`);
   const a = await analyzeText(ctx, userId, textId, opts?.sentenceIds);
   const { coverage } = a;
   const n = a.classified.length;
@@ -117,7 +121,7 @@ export async function predictDifficulty(
   const weakPhrases: ForecastItem[] = [];
   for (const [phraseId, count] of phraseCounts) {
     const state = a.phrases.find((p) => p.occ.phraseId === phraseId)?.state;
-    if (!state || state.encounterCount === 0) continue;
+    if (!state || !metInReading(state)) continue;
     // the help flags of the phrase's last reading encounters are kept on its row (agg.ts): no encounter is read
     const tail = readingTail((state as StoredItem).agg).slice(-FORECAST.weakPhraseTail);
     if (tail.length < FORECAST.weakPhraseTail || !tail.every((h) => h === 1)) continue;
@@ -132,7 +136,7 @@ export async function predictDifficulty(
   const newConstructions: ForecastItem[] = [];
   for (const [patternId, count] of patternCounts) {
     const state = await ctx.store.learnerItems.get(`${userId}|${patternId}`);
-    if (state && state.encounterCount > 0) continue;
+    if (state && metInReading(state)) continue; // a construction only heard is still new to the reader
     const pattern = await ctx.store.patterns.get(patternId);
     newConstructions.push({ itemId: patternId, itemKind: 'pattern', surface: pattern?.title ?? patternId, count, ...(pattern?.explanation ? { gloss: pattern.explanation } : {}) });
   }
@@ -144,7 +148,7 @@ export async function predictDifficulty(
     limits.push(`${unanalysed} of ${plural(n, 'word')} (${pct1(unanalysed / n)} %) have no analysis, so Go cannot say which are names or what they mean; they are listed by how often they occur.`);
   }
   const lang: LanguageCode = text.lang;
-  const metForms = (await ctx.store.learnerItems.where('userId', userId)).filter((r) => r.lang === lang && r.itemKind === 'form' && r.encounterCount > 0).length;
+  const metForms = (await ctx.store.learnerItems.where('userId', userId)).filter((r) => r.lang === lang && r.itemKind === 'form' && metInReading(r)).length;
   if (metForms < FORECAST.minHistoryForms) {
     limits.push('You have read very little so far, so the estimate of which words you already know rests on very little.');
   }

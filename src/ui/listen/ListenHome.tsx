@@ -117,8 +117,9 @@ function RecordingImport({ texts, onImported }: { texts: Text[]; onImported(): v
       if (!parsed || typeof parsed !== 'object' || !('textId' in parsed) || parsed.textId !== textId) throw new Error('The manifest is for a different text. Choose that exact text release before importing.');
       const manifest = parsed as AudioImportManifest;
       const bytes = new Uint8Array(await audioFile.arrayBuffer());
-      await golisten.importRecording({ manifest, bytes });
-      setMessage('Recording checked and added. It is available for listening on this device.');
+      // A recording a learner adds is always a learner import: it plays here, and never counts as reviewed listening evidence.
+      await golisten.importRecording({ manifest, bytes, origin: 'learner' });
+      setMessage('Recording checked and added. It plays on this device. It counts toward listening progress only after a named reviewer approves it for the course.');
       setManifestFile(null); setAudioFile(null); onImported();
     } catch (err) {
       setMessage(err instanceof Error ? err.message : 'The recording could not be imported.');
@@ -126,6 +127,10 @@ function RecordingImport({ texts, onImported }: { texts: Text[]; onImported(): v
   };
 
   return <form className="stack" onSubmit={(e) => { void submit(e); }}>
+    <p className="note note--warn" role="note" data-testid="import-warning">
+      This recording plays on this device. It counts toward listening progress only after a named reviewer approves it for the course.
+      The rights stated in the manifest are your own statement; the app does not verify them.
+    </p>
     <label className="field"><span className="label">Text release</span>
       <select aria-label="Text release" value={textId} onChange={(e) => setTextId(e.target.value)}>
         <option value="">Choose the exact text</option>

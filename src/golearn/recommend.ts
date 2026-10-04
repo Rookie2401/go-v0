@@ -13,8 +13,9 @@
  *     next-input            a text in progress 0.90, or an unread published input text: productive-challenge 0.85 ·
  *                           comfortable 0.80 · difficult 0.65 · stretch 0.50 (band uses demonstrated + estimated coverage);
  *                           +0.10 per matching interest. Never empty while an unread published input text exists.
- *     listen-to-read-text   a completed text, ONLY when `deps.audioEligible?.(textId)` resolves true (reviewed real speech
- *                           exists) and not every sentence has been heard yet: 0.60
+ *     listen-to-read-text   a completed text, ONLY when `deps.audioEligible?.(textId)` resolves true AND the store holds a lawful,
+ *                           exact-bound, reviewed HUMAN recording of it (synthetic speech never qualifies), and not every
+ *                           sentence has been heard yet: 0.60
  *     reinforces-weak-items a completed text still mostly "met, not shown": 0.30 + 0.60 × partial, cap 0.55
  *     prepares-scripture    (targetTextId) published texts that really contain gap items: 0.5 + 0.45 × covered / gaps
  *     revisit-scripture     published scripture in a workable band read with help (≥ 20 % of its encounters at assistance ≥ 3)
@@ -24,6 +25,7 @@
  */
 import type { LanguageCode, PersonalizedCoverage, Recommendation, RecommendationReason, Text } from '../core';
 import { analyzeText, liveSentences, scriptureReadiness } from './coverage';
+import { hasHumanReviewedRecording } from './eligibility';
 import { HEAVY_HELP_FRACTION } from './policy';
 import { readingProgressMany } from './progress';
 import type { Degree } from './progress';
@@ -63,7 +65,8 @@ export async function recommend(
   const includeUnpublished = opts?.includeUnpublished ?? false;
   const langName = (await ctx.store.languages.get(lang))?.name ?? lang;
 
-  const texts = (await ctx.store.texts.where('lang', lang)).sort((a, b) => (a.id < b.id ? -1 : 1));
+  // Protected listening-assessment material is never recommended, nor counted as something the learner could read.
+  const texts = (await ctx.store.texts.where('lang', lang)).filter((t) => t.listeningAssessmentId === undefined).sort((a, b) => (a.id < b.id ? -1 : 1));
   const visible = (t: Text) => includeUnpublished || t.published;
   const inputAll = texts.filter((t) => INPUT_KINDS.has(t.kind));
   const input = inputAll.filter(visible);
@@ -186,14 +189,16 @@ export async function recommend(
             explanation: `${pctOf(cov.coverage.partialCoverage)} % of its words were met but not yet shown understood.`,
           });
         }
-        if (ctx.listening && ctx.audioEligible && (await ctx.audioEligible(t.id))) {
+        // Only a reviewed HUMAN recording earns this: GoListen says so (`audioEligible`) and the stored audio must agree, so a text
+        // voiced only by synthetic speech is never offered as "real recorded speech".
+        if (ctx.listening && ctx.audioEligible && (await ctx.audioEligible(t.id)) && (await hasHumanReviewedRecording(ctx, t.id))) {
           const heard = new Set((byText.get(t.id) ?? []).filter((e) => e.modality === 'listening').map((e) => e.sentenceId));
           const liveIds = new Set((await live(t.id)).map((s) => s.id));
           const heardLive = [...heard].filter((id) => liveIds.has(id)).length;
           if (heardLive < p.total) {
             offer({
               reason: 'listen-to-read-text', textId: t.id, band: cov.coverage.band, reinforces: [], score: cap(0.6 + bonus),
-              explanation: `You have read "${t.title}"; real recorded speech is available, so you can now hear the same words.`,
+              explanation: `You have read "${t.title}"; a reviewed recording by a human speaker is available, so you can now hear the same words.`,
             });
           }
         }
@@ -237,7 +242,7 @@ export async function recommend(
 
   if (opts?.targetTextId) {
     const target = await ctx.store.texts.get(opts.targetTextId);
-    if (target && (visible(target))) {
+    if (target && target.listeningAssessmentId === undefined && visible(target)) {
       const cov = (await analyzeText(ctx, userId, target.id)).coverage;
       if (cov.band !== 'comfortable') {
         const ready = await scriptureReadiness(ctx, userId, target.id, undefined, { includeUnpublished });

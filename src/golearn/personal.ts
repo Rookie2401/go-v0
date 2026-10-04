@@ -57,7 +57,8 @@ export async function rowsByItemId(ctx: Ctx, userId: string, itemIds: string[]):
   return out;
 }
 
-const met = (r?: LearnerItemState) => !!r && (r.reading.level !== 'unseen' || r.listening.level !== 'unseen');
+/** Met IN READING: scoring a text to be read counts what was read, never what was only heard (evidence@8). */
+const met = (r?: LearnerItemState) => !!r && r.reading.level !== 'unseen';
 
 function classOf(row: LearnerItemState | undefined): Cls {
   if (!row) return 'new';
@@ -140,7 +141,7 @@ export async function scoreProfile(
     ? forms.map(([f]) => formId(f)).filter((id) => opts.productiveGaps!.has(id) && met(rows.get(id))).slice(0, PERSONAL.listCap)
     : undefined;
   const weakItems = weak.sort((a, b) => b[1] - a[1] || (a[0] < b[0] ? -1 : 1)).slice(0, PERSONAL.listCap).map(([id]) => id);
-  const unmet = (list: Array<[string, number]>) => list.filter(([id]) => !(rows.get(id)?.encounterCount)).map(([id]) => id);
+  const unmet = (list: Array<[string, number]>) => list.filter(([id]) => !met(rows.get(id))).map(([id]) => id);
   const newPhrases = unmet(profile.phrases).slice(0, PERSONAL.listCap);
   const newPatterns = unmet(profile.patterns).slice(0, PERSONAL.listCap);
 
@@ -183,7 +184,7 @@ export async function scoreProfile(
       let inDomainKnown = 0;
       for (const [f, c] of forms) {
         const row = rows.get(formId(f));
-        if (!row || !row.textIds.some((x) => domainTexts.has(x))) continue;
+        if (!row || !(row.readingTextIds ?? row.textIds).some((x) => domainTexts.has(x))) continue;
         inDomain += c;
         const cls = classOf(row);
         if (cls === 'known' || cls === 'familiar') inDomainKnown += c;

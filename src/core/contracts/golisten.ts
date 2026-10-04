@@ -30,6 +30,36 @@ export interface AudioImportManifest {
 }
 
 export interface AudioImportResult { manifest: AudioManifest; asset: AudioAsset; imported: number; reused: boolean }
+
+/**
+ * Who is vouching for an imported recording.
+ *  - 'learner': a recording a learner added on this device (the /listen upload form). Everything in the manifest is the
+ *    uploader's own statement. The recording plays, but its quality state is capped at 'machine_checked', its voice stays
+ *    unreviewed, and no review is stamped: it can never be listening evidence.
+ *  - 'curated': scripts and course authoring (not reachable from the UI). A review (qualityState human_reviewed / approved)
+ *    is a fact a named person establishes, so a non-empty `reviewer` is required and is recorded with the review time.
+ */
+export type ImportOrigin = 'learner' | 'curated';
+
+/** The import arguments: the trust argument is mandatory and explicit. */
+export interface ImportRecordingArgs { manifest: AudioImportManifest; bytes: Uint8Array; origin: ImportOrigin; reviewer?: string }
+
+/**
+ * What an importer DECLARED versus what was established, kept per asset in the `meta` table under
+ * `golisten-import:<assetId>` (JSON). `declared*` are claims in the manifest, never checked by the app.
+ */
+export interface ImportRecord {
+  assetId: string;
+  manifestId: string;
+  origin: ImportOrigin;
+  declaredKind: 'human' | 'synthetic';
+  declaredQualityState: AudioImportManifest['qualityState'];
+  declaredRightsStatus: AudioRightsRecord['status'];
+  /** Only for a curated review: the named person and the time. */
+  reviewer?: string;
+  reviewedAt?: string;
+  importedAt: string;
+}
 export interface OfflineAudioPackage { asset: AudioAsset; bytes: Uint8Array; rights: AudioRightsRecord; textBinding: NonNullable<AudioAsset['textBinding']>; alignments: AudioAlignment[] }
 export interface AudioGenerationAuthorization { rights: AudioRightsRecord; textBinding: NonNullable<AudioAsset['textBinding']> }
 
@@ -103,7 +133,7 @@ export interface ProviderAvailability {
 export interface AudioStatus {
   textId: string;
   state: 'unavailable' | 'not-generated' | 'generating' | 'ready' | 'stale' | 'failed' | 'preview-only';
-  /** Human-readable reason for every non-ready state. */
+  /** Human-readable reason for every non-ready state, and for a ready state that is practice only (synthetic speech). */
   reason?: string;
   providerId?: string;
   providerVersion?: string;
@@ -118,7 +148,10 @@ export interface AudioStatus {
   readySegments: number;
   totalSegments: number;
   failedSegments: number;
-  /** True only for reviewed real speech: the sole case in which playback may earn listening evidence. */
+  /**
+   * True only for HUMAN speech whose recording was reviewed by a named person (qualityState human_reviewed / approved), with a
+   * reviewed voice, approved rights and a current exact text binding. Synthetic speech is never evidence: it is practice only.
+   */
   evidenceEligible: boolean;
   playAllowed?: boolean;
   rightsStatus?: AudioRightsRecord['status'];
@@ -166,7 +199,7 @@ export interface GoListen {
   /** Audio for an arbitrary accepted sentence (testimony). Returns a ready or pending segment. */
   ensureSentenceAudio(args: { lang: LanguageCode; text: string; ownerId: string; contextId: string; voiceConfigId?: string; runNow?: boolean; generationAuthorization?: AudioGenerationAuthorization }): Promise<AudioSegment>;
   /** Import a verified local PCM WAV bound to one exact text release; no network fetches occur. */
-  importRecording(args: { manifest: AudioImportManifest; bytes: Uint8Array }): Promise<AudioImportResult>;
+  importRecording(args: ImportRecordingArgs): Promise<AudioImportResult>;
   /** Returns bytes and the complete rights/binding metadata only when offline use is explicitly granted. */
   offlinePackage(assetId: string): Promise<OfflineAudioPackage | undefined>;
   /** Process queued/retryable jobs. Returns number processed. */

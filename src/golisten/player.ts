@@ -16,6 +16,8 @@ export const MIN_SPEED = 0.7;
 export const MAX_SPEED = 1.25;
 export const SPEED_STEP = 0.05;
 export const RESTART_THRESHOLD_MS = 2000;
+/** The most a pass's first observed position tick (no earlier tick to measure wall time against) may count as heard. */
+export const FIRST_TICK_MAX_MS = 1500;
 
 export function clampSpeed(v: number): number {
   if (!Number.isFinite(v)) return 1;
@@ -46,6 +48,11 @@ export interface PlayerSegmentInfo {
   reviewedAlignmentIds?: string[];
   /** Reviewed phrase ranges from the active persisted asset, with exact corpus unit identity. */
   reviewedAlignmentRanges?: Array<{ id: string; unitId: string; unit: AudioAlignment['unit']; startMs: number; endMs: number }>;
+  /**
+   * Reviewed per-sentence alignments of this segment's sentences on the asset timeline. Present only when EVERY sentence of
+   * the segment has one; the player then reports which sentences were actually heard.
+   */
+  sentenceRanges?: Array<{ sentenceId: string; startMs: number; endMs: number }>;
 }
 
 export interface PlayerManifestInput {
@@ -94,7 +101,11 @@ export type PlayerAction =
   | { type: 'setSpeed'; speed: number } | { type: 'stepSpeed'; delta: 1 | -1 }
   | { type: 'setTranscriptMode'; mode: TranscriptMode }
   | { type: 'revealTranscript' }
-  | { type: 'position'; ms: number; observedAtMs?: number }
+  /**
+   * A media progress tick. It counts as heard only with `observedAtMs` and while audible: `muted` / `volume` come from the
+   * media element (the UI always passes them; a tick that omits them is not treated as silent).
+   */
+  | { type: 'position'; ms: number; observedAtMs?: number; muted?: boolean; volume?: number }
   /** User timeline seek: moves the playhead but adds no heard coverage. */
   | { type: 'seekPosition'; ms: number }
   /** Restore a validated checkpoint without emitting play/completion evidence. */
@@ -108,7 +119,7 @@ export interface EmitView { speed: number; transcriptVisible: boolean }
 
 export type PlayerEmit =
   | { event: 'played'; segmentIndex: number; view: EmitView }
-  | { event: 'completed'; segmentIndex: number; view: EmitView; replayCount: number; revealedTranscript: boolean; heardCoverageRatio: number }
+  | { event: 'completed'; segmentIndex: number; view: EmitView; replayCount: number; revealedTranscript: boolean; heardCoverageRatio: number; heardSentenceIds?: string[] }
   | { event: 'replayed'; segmentIndex: number; view: EmitView; count: number }
   | { event: 'phraseReplayed'; segmentIndex: number; view: EmitView; alignmentId: string; unitId: string }
   | { event: 'seeked'; fromSegmentIndex?: number; toSegmentIndex: number }
@@ -327,11 +338,15 @@ export function reducePlayer(m: PlayerModel, a: PlayerAction): { model: PlayerMo
       const nextMs = Math.max(lo, Math.min(hi, Number.isFinite(a.ms) ? a.ms : lo));
       const elapsed = a.observedAtMs !== undefined && m.lastPositionAtMs !== undefined ? Math.max(0, a.observedAtMs - m.lastPositionAtMs) : undefined;
       const delta = nextMs - m.positionMs;
-      // A progress jump must fit within elapsed wall time at the current playback rate (with a small scheduling
-      // allowance). This rejects programmatic/user seeks and a seek-to-end masquerading as heard coverage.
-      const audible = m.playing && m.started && delta > 0 && (elapsed !== undefined
-        ? delta <= elapsed * m.speed * 1.6 + 180
-        : m.lastPositionAtMs === undefined && delta <= 1500);
+      // "Heard" means audibly played. The tick must carry the time it was observed, the player must be audible (not muted,
+      // volume above zero; the UI always passes both from the media element), and the progress jump must fit within the wall
+      // time since the previous observed tick at the current playback rate (with a small scheduling allowance). A tick without
+      // observedAtMs counts nothing. The first observed tick of a pass has no earlier tick to measure against; it may carry at
+      // most one scheduling interval (FIRST_TICK_MAX_MS), never a larger jump. This rejects programmatic/user seeks, a
+      // seek-to-end masquerading as heard coverage, and muted or zero-volume playback.
+      const audibleOutput = a.muted !== true && !(a.volume !== undefined && !(a.volume > 0));
+      const withinTime = elapsed !== undefined ? delta <= elapsed * m.speed * 1.6 + 180 : a.observedAtMs !== undefined && m.lastPositionAtMs === undefined && delta <= FIRST_TICK_MAX_MS;
+      const audible = m.playing && m.started && delta > 0 && audibleOutput && a.observedAtMs !== undefined && withinTime;
       const heardRanges = audible ? mergeHeardRange(m.heardRanges, m.positionMs, nextMs) : m.heardRanges;
       const model: PlayerModel = { ...m, positionMs: nextMs, heardRanges, lastPositionAtMs: a.observedAtMs ?? m.lastPositionAtMs };
       if (m.loop.unit === 'phrase' && m.loopRange && m.playing && a.ms >= m.loopRange.endMs) {
@@ -371,8 +386,15 @@ export function reducePlayer(m: PlayerModel, a: PlayerAction): { model: PlayerMo
           effects: [{ type: 'pause' }, emit({ event: 'abandoned', segmentIndex: m.segmentIndex, view: view(m), positionMs: m.positionMs })],
         };
       }
+      // With reviewed per-sentence alignments the completion names which sentences were heard: a sentence counts when at
+      // least 80% of its aligned range was heard. Without them the field is absent and the whole segment is credited.
+      const sentenceRanges = segment?.sentenceRanges;
+      const heardSentenceIds = sentenceRanges && sentenceRanges.length > 0 && sentenceRanges.length === segment.sentenceIds.length
+        ? sentenceRanges.filter((r) => r.endMs > r.startMs && coveredInRange(m.heardRanges, r.startMs, r.endMs) / (r.endMs - r.startMs) >= 0.8).map((r) => r.sentenceId)
+        : undefined;
       const completedEffects: PlayerEffect[] = [emit({
         event: 'completed', segmentIndex: m.segmentIndex, view: view(m), replayCount: m.replayCount, revealedTranscript: view(m).transcriptVisible, heardCoverageRatio: Math.min(1, heard / requiredDuration),
+        ...(heardSentenceIds ? { heardSentenceIds } : {}),
       })];
       const done: PlayerModel = { ...m, completed: true, positionMs: requiredEnd };
       if (m.loop.unit === 'sentence' || (m.loop.unit === 'phrase' && m.loopRange)) {

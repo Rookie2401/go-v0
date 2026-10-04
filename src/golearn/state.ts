@@ -161,7 +161,8 @@ class Acc {
     if (isReceptive(this.modality)) {
       if (enc.evidenceKind === 'demonstrated') this.demonstrated.add(`${enc.sentenceId}\u0000${sittingOf(enc)}`);
       if (enc.assistance === 0) { this.plain += 1; this.plainSittings.add(sittingOf(enc)); }
-      this.tail.push(itemHelpOf(enc) > 0);
+      // a heard sentence's transcript / translation is sentence-level help (evidence@8): never an item-targeted flag
+      this.tail.push(this.modality === 'reading' && itemHelpOf(enc) > 0);
       if (this.tail.length > ESTIMATE.cleanTail) this.tail.shift();
     }
     if (!this.last || enc.at > this.last) this.last = enc.at;
@@ -227,6 +228,10 @@ export async function referenceItemState(
     encounterCount: seen.length, textIds,
   };
   if (seen.length > 0) { row.firstSeenAt = seen[0].at; row.lastSeenAt = seen[seen.length - 1].at; }
+  if (seen.some((e) => e.modality === 'listening')) {
+    // same order as the aggregate: texts in the order a receptive encounter first met them, those with a reading encounter kept
+    row.readingTextIds = textIds.filter((t) => seen.some((e) => e.modality === 'reading' && e.textId === t));
+  }
   if (existing?.manualMark) row.manualMark = existing.manualMark;
   return row;
 }

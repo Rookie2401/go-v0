@@ -6,9 +6,11 @@
  * Order matters:
  *   1. seed languages / courses (and the first learner once a team has been chosen);
  *   2. GoListen is created WITHOUT the fixture unless preview mode or the development preference is on; a remembered
- *      Azure key (only ever stored when the learner ticked "remember on this device") is turned into a provider;
+ *      Azure key (only ever stored when the learner ticked "remember on this device", and only read when the learner has
+ *      also switched on the direct-key option in Settings, which is off by default) is turned into a provider;
  *      the app's own speech service (`ProxySpeechProvider`, same-origin /api/speech/*, key held server-side from
- *      AZURE_SPEECH_KEY / AZURE_SPEECH_REGION) is asked for its status in the background and registered when it reports
+ *      AZURE_SPEECH_KEY / AZURE_SPEECH_REGION), only when a proxy is configured (`speechProxy` option or the build flag
+ *      VITE_SPEECH_PROXY=1; otherwise no request is made), is asked for its status in the background and registered when it reports
  *      available, or reports missing credentials (it exists but has no key: GoListen then says so and audio stays honestly
  *      unavailable; Settings → Speech shows its instruction and a "Check again" button). Not reachable / no proxy on this
  *      host: not registered. No key is ever stored or bundled for that path;
@@ -73,8 +75,9 @@ export interface BootstrapOptions {
   /** Extra TTS providers (tests). */
   providers?: TtsProvider[];
   /**
-   * The app's own speech service. Default: a `ProxySpeechProvider` on the same origin. `false` skips the check (no
-   * server on this deployment, or a test that wants no request). `provider` substitutes the provider (tests);
+   * The app's own speech service. Default: NOT configured, so no request is made (a static deployment has no proxy; asking
+   * it only produces a 404). Pass an object (or build with VITE_SPEECH_PROXY=1) to check a `ProxySpeechProvider` on the same
+   * origin. `false` skips the check even when the build flag is set. `provider` substitutes the provider (tests);
    * `baseUrl` / `fetch` are passed to the real one.
    */
   speechProxy?: false | { baseUrl?: string; fetch?: typeof fetch; provider?: TtsProvider };
@@ -215,7 +218,9 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   // ── GoListen: no fixture unless preview mode or the development preference is on ──
   const wantsFixture = () => opts.allowFixture ?? (getPref('preview') || getPref('devFixtureAudio'));
   const providers: TtsProvider[] = listen ? [...(opts.providers ?? [])] : [];
-  const remembered = listen ? recallAzure() : undefined; // listening off: a remembered key is not even read
+  // A stored Azure key is read, and used from this browser, only when listening is on AND the learner has switched on the
+  // direct-key option in Settings (off by default). Otherwise it is not even read, and no Azure request is ever made.
+  const remembered = listen && getPref('azureDirectKey') ? recallAzure() : undefined;
   let azure: AzureSpeechProvider | undefined;
   if (remembered) { azure = new AzureSpeechProvider({ key: remembered.key, region: remembered.region }); providers.push(azure); }
   // Listening off: the object exists (other code holds a reference) but has no provider and never the fixture, so it is simply unavailable.
@@ -236,7 +241,10 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
     },
     () => undefined,
   );
-  if (listen && opts.speechProxy !== false) {
+  // Only when a proxy is configured: an explicit `speechProxy` option, or the build-time flag VITE_SPEECH_PROXY=1 (a deployment
+  // that serves /api/speech/*). By default the app makes no speech request at all (a static deployment has no proxy to ask).
+  const proxyConfigured = opts.speechProxy !== undefined || import.meta.env?.VITE_SPEECH_PROXY === '1';
+  if (listen && opts.speechProxy !== false && proxyConfigured) {
     const cfg = opts.speechProxy ?? {};
     proxy = cfg.provider ?? new ProxySpeechProvider({
       ...(cfg.baseUrl !== undefined ? { baseUrl: cfg.baseUrl } : {}),
@@ -257,6 +265,9 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   };
   const golearn = createGoLearn(learnDeps);
   golearn.attach();
+  // What counts as listening can change when a recording is imported, rights are revoked or a voice review changes: GoLearn's
+  // listening-derived state is then rebuilt from the event log (never inside a GoLearn fold: this runs after the change).
+  if (listen) golisten.onEligibilityChange((textId) => golearn.invalidateListening(textId));
   // No GoListen for GoTell while listening is off: a saved testimony version then queues no audio job.
   const gotell = createGoTell({ store, bus, adapters, golearn, ...(listen ? { golisten } : {}), clock });
 
@@ -361,6 +372,7 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   };
   const speech: SpeechApi = !listen ? inertSpeech : {
     azure: () => ({ configured: !!azure, remembered: !!recallAzure(), region: azure?.region ?? recallAzure()?.region }),
+    // The direct-key option is off until the learner switches it on in Settings; turning it off forgets any stored key.
     proxy: () => proxyCheck,
     async recheck() {
       if (!proxy) return undefined;
@@ -372,6 +384,7 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
       return a;
     },
     async configureAzure({ key, region, remember }) {
+      if (!getPref('azureDirectKey')) throw new Error('Direct Azure keys are switched off. Turn on "Use my own Azure key in this browser" in Settings first.');
       if (!key.trim() || !region.trim()) throw new Error('Both a key and a region are needed.');
       azure = new AzureSpeechProvider({ key, region });
       golisten.registerProvider(azure);

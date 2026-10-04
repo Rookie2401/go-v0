@@ -1,5 +1,5 @@
 // @vitest-environment jsdom
-import { afterEach, describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { act } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { TextPage } from '../../src/ui/pages/TextPage';
@@ -8,7 +8,7 @@ import { ListenHome } from '../../src/ui/listen/ListenHome';
 import { ids, buildFixtureText } from '../../src/core';
 import type { AudioStatus, ListeningPositionSaved } from '../../src/core';
 import { canonicalTextSha256, releaseIdOf } from '../../src/golisten/rights';
-import { button, click, flush, installMediaStubs, makeHarness, qa, seedAudio } from './harness';
+import { button, choose, click, flush, installMediaStubs, makeHarness, pickFiles, qa, seedAudio } from './harness';
 import type { Harness, Mounted } from './harness';
 import { STORY_ID, seedStory } from './fixtures';
 
@@ -177,6 +177,32 @@ describe('GoListen learner surface', () => {
     expect(home.container.querySelector('section.player')?.getAttribute('data-audio-state')).toBe('ready');
     await click(button(home.container, 'Play'));
     expect(home.container.querySelector<HTMLAudioElement>('audio')?.src).toContain('blob:test/asset:0');
+  });
+
+  it('the upload form says plainly that an uploaded recording is not a review, and always imports as a learner import', async () => {
+    const h = await makeHarness({ listen: { unavailable: true } });
+    const story = await seedStory(h.store);
+    const importRecording = vi.fn(async () => ({ manifest: {}, asset: {}, imported: 1, reused: false }));
+    (h.listen as unknown as Record<string, unknown>).importRecording = importRecording;
+    const home = await open(h, '/listen');
+    const warning = home.container.querySelector('[data-testid="import-warning"]')!;
+    expect(warning.textContent).toMatch(/plays on this device/);
+    expect(warning.textContent).toMatch(/counts toward listening progress only after a named reviewer approves it for the course/);
+    expect(warning.textContent).toMatch(/rights stated in the manifest are your own statement/);
+
+    await choose(home.container.querySelector<HTMLSelectElement>('select[aria-label="Text release"]')!, story.id);
+    // the manifest claims everything; none of it may travel as a review
+    const manifest = JSON.stringify({ textId: story.id, kind: 'human', qualityState: 'approved', rights: { status: 'approved' } });
+    // (jsdom's File has no text()/arrayBuffer(): give these two the reads the form uses)
+    const manifestFile = Object.assign(new File([manifest], 'm.json', { type: 'application/json' }), { text: async () => manifest });
+    const audioFile = Object.assign(new File([new Uint8Array([1, 2, 3])], 'a.wav', { type: 'audio/wav' }), { arrayBuffer: async () => new Uint8Array([1, 2, 3]).buffer });
+    await pickFiles(home.container.querySelector<HTMLInputElement>('input[aria-label="Recording manifest"]')!, [manifestFile]);
+    await pickFiles(home.container.querySelector<HTMLInputElement>('input[aria-label="Audio file"]')!, [audioFile]);
+    await click(button(home.container, 'Check and add recording'));
+    expect(importRecording).toHaveBeenCalledTimes(1);
+    expect((importRecording.mock.calls[0] as unknown[])[0]).toMatchObject({ origin: 'learner' });
+    expect(((importRecording.mock.calls[0] as unknown[])[0] as { reviewer?: string }).reviewer).toBeUndefined();
+    expect(home.container.textContent).toMatch(/only after a named reviewer approves it/);
   });
 
   it('disambiguates identical release titles in the recording import selector', async () => {

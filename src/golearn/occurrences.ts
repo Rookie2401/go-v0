@@ -101,7 +101,7 @@ export async function findOccurrences(
     batch.forEach(([sentenceId, v], j) => {
       const s = sentences[j];
       const text = texts.get(v.textId);
-      if (!s || s.retiredInVersion !== undefined || !text || (!text.published && !q.includeUnpublished)) return;
+      if (!s || s.retiredInVersion !== undefined || !text || text.listeningAssessmentId !== undefined || (!text.published && !q.includeUnpublished)) return;
       out.push({ sentenceId, textId: v.textId, tokenIds: v.tokenIds, index: s.index });
     });
   }

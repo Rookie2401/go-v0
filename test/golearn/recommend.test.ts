@@ -231,6 +231,7 @@ describe('recommend() — listening only when reviewed real speech exists', () =
 
   it('recommends listening to a read text when audioEligible says so, until every sentence has been heard', async () => {
     const h = await setup({ audioEligible: async (id) => id === ES_STORY });
+    await h.seedAudio('rec-human', { speech: true, textId: ES_STORY, sentenceIds: [0, 1, 2, 3].map((i) => `${ES_STORY}/s${i}`) }); // a reviewed HUMAN recording (the harness default)
     await readStory(h, { report: 'all' });
     let recs = await h.golearn.recommend(U, { limit: 10 });
     const rec = recs.find((r) => r.reason === 'listen-to-read-text');
@@ -241,8 +242,16 @@ describe('recommend() — listening only when reviewed real speech exists', () =
     expect(recs.find((r) => r.reason === 'listen-to-read-text')).toBeUndefined();
   });
 
+  it('a text voiced only by synthetic speech is never recommended for listening, even when audioEligible says yes (evidence@8)', async () => {
+    const h = await setup({ audioEligible: async () => true });
+    await h.seedAudio('rec-synth', { speech: true, kind: 'synthetic', textId: ES_STORY, sentenceIds: [0, 1, 2, 3].map((i) => `${ES_STORY}/s${i}`) });
+    await readStory(h, { report: 'all' });
+    expect(reasons(await h.golearn.recommend(U, { limit: 10 }))).not.toContain('listen-to-read-text');
+  });
+
   it('fixture audio that is ignored does not count as heard', async () => {
     const h = await setup({ audioEligible: async () => true });
+    await h.seedAudio('rec-human', { speech: true, textId: ES_STORY, sentenceIds: [0, 1, 2, 3].map((i) => `${ES_STORY}/s${i}`) }); // a reviewed HUMAN recording (the harness default)
     await readStory(h, { report: 'all' });
     await h.listen(U, 'es', ES_STORY, [0, 1, 2, 3], { session: 'l1', speech: false });
     expect((await h.golearn.recommend(U, { limit: 10 })).find((r) => r.reason === 'listen-to-read-text')?.textId).toBe(ES_STORY);

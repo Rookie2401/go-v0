@@ -1,6 +1,6 @@
 import { ids, hash } from '../core/ids';
 import type { AudioAsset, AudioManifest, AudioRightsRecord, AudioSegment, Sentence, Text, VoiceConfig } from '../core/model';
-import type { AudioImportManifest, AudioImportResult } from '../core/contracts/golisten';
+import type { AudioImportManifest, AudioImportResult, ImportRecord, ImportRecordingArgs } from '../core/contracts/golisten';
 import { inspectWav } from './wav';
 import { approvedForPlay, bindingFromManifest, canonicalTextSha256, editionIdOf, isThsv11, releaseIdOf, sha256Hex } from './rights';
 import type { Runtime } from './types';
@@ -9,8 +9,28 @@ function requiredText(v: unknown, name: string): asserts v is string {
   if (typeof v !== 'string' || !v.trim()) throw new Error(`GoListen import: ${name} is required`);
 }
 
-export async function importRecordingFor(rt: Runtime, args: { manifest: AudioImportManifest; bytes: Uint8Array }): Promise<AudioImportResult> {
+/** meta row holding what the importer declared and who (if anyone) reviewed; see ImportRecord. */
+export const importRecordId = (assetId: string): string => `golisten-import:${assetId}`;
+
+export async function readImportRecord(store: Runtime['store'], assetId: string): Promise<ImportRecord | undefined> {
+  try {
+    const row = await store.meta.get(importRecordId(assetId));
+    return row ? JSON.parse(row.value) as ImportRecord : undefined;
+  } catch { return undefined; }
+}
+
+/** A learner's statement is shown as such wherever the rights text surfaces. */
+const STATED = 'Stated by the uploader, not verified: ';
+
+export async function importRecordingFor(rt: Runtime, args: ImportRecordingArgs): Promise<AudioImportResult> {
   const m = args.manifest;
+  const origin = args.origin;
+  if (origin !== 'learner' && origin !== 'curated') throw new Error("GoListen import: origin must be 'learner' or 'curated'");
+  const learner = origin === 'learner';
+  const reviewer = typeof args.reviewer === 'string' ? args.reviewer.trim() : '';
+  if (learner && args.reviewer !== undefined) throw new Error('GoListen import: a learner import cannot carry a reviewer; only a curated import records a named review');
+  const claimsReview = m.qualityState === 'human_reviewed' || m.qualityState === 'approved';
+  if (!learner && claimsReview && !reviewer) throw new Error('GoListen import: a recording marked human_reviewed or approved needs the name of the person who reviewed it (reviewer)');
   for (const [v, n] of [[m.id, 'manifest id'], [m.textId, 'text id'], [m.releaseId, 'release id'], [m.lang, 'language'], [m.locale, 'locale'], [m.narrator, 'narrator'], [m.recording?.owner, 'recording owner'], [m.recording?.basis, 'recording basis'], [m.performance?.performer, 'performer'], [m.performance?.permission, 'performance permission']] as const) requiredText(v, n);
   const text: Text | undefined = await rt.store.texts.get(m.textId);
   if (!text) throw new Error(`GoListen import: text ${m.textId} not found`);
@@ -64,13 +84,20 @@ export async function importRecordingFor(rt: Runtime, args: { manifest: AudioImp
   if (requiresSegmentation && m.rights.segment !== true) throw new Error('GoListen import: segmentation permission is required for partial or cropped coverage');
   const assetId = await rt.store.assets.put(args.bytes, 'audio/wav');
   const now = rt.clock();
+  // What this import establishes. A learner's manifest is the uploader's own statement: its quality claim is capped at
+  // 'machine_checked' (the app checked the WAV, nobody reviewed it), no review is stamped, and the rights text is labelled.
+  // A curated import with a named reviewer is the only way a review is recorded.
+  const qualityState: AudioImportManifest['qualityState'] = learner && m.qualityState !== 'unreviewed' ? 'machine_checked' : m.qualityState;
+  const reviewedAt = !learner && reviewer ? now : undefined;
   const rights: AudioRightsRecord = {
+    ...m.rights, // first, so that a manifest cannot carry its own id, owner/basis labels or review stamp
     id: `rights:${hash(JSON.stringify([m.id, m.recording, m.performance, m.rights, m.syntheticProvider, m.textDerivative]))}`,
-    recordingOwner: m.recording.owner, recordingBasis: m.recording.basis,
+    recordingOwner: m.recording.owner, recordingBasis: learner ? `${STATED}${m.recording.basis}` : m.recording.basis,
     recordingLicense: m.recording.license, performanceOwner: m.performance.performer,
-    performancePermission: m.performance.permission, attribution: m.recording.attribution,
-    ...m.rights, status: m.rights.status, providerId: m.syntheticProvider?.id, providerTerms: m.syntheticProvider?.terms,
-    providerRetention: m.syntheticProvider?.retention ?? m.rights.providerRetention, textDerivative: m.textDerivative ?? m.rights.textDerivative, reviewedAt: now,
+    performancePermission: learner ? `${STATED}${m.performance.permission}` : m.performance.permission, attribution: m.recording.attribution,
+    status: m.rights.status, providerId: m.syntheticProvider?.id, providerTerms: m.syntheticProvider?.terms,
+    providerRetention: m.syntheticProvider?.retention ?? m.rights.providerRetention, textDerivative: m.textDerivative ?? m.rights.textDerivative,
+    reviewedAt,
   };
   const binding = bindingFromManifest({ textId: text.id, contentVersion: text.contentVersion, textSha256: exactHash, releaseId: releaseIdOf(text), editionId: expectedEdition });
   const prior: AudioAsset | undefined = await rt.store.audioAssets.get(assetId);
@@ -78,24 +105,46 @@ export async function importRecordingFor(rt: Runtime, args: { manifest: AudioImp
     id: assetId, sourceType: m.kind === 'synthetic' ? 'generated-tts' : (m.recording.license ? 'licensed-recording' : 'human-recording'), audioKind: m.kind, lang: text.lang, locale: m.locale, mime: 'audio/wav',
     sampleRate: wav.sampleRate, channels: wav.channels, durationMs: Math.round(wav.durationMs), bytes: args.bytes.length,
     checksum: await sha256Hex(args.bytes), createdAt: prior?.createdAt ?? now, isSpeech: true, rights, textBinding: binding,
-    narratorOrVoiceId: m.narrator, variety: m.variety, qualityState: m.qualityState, validation: { ...wav.validation, ok: true, problems: [] },
+    narratorOrVoiceId: m.narrator, variety: m.variety, qualityState, validation: { ...wav.validation, ok: true, problems: [] },
   };
+  // Identical bytes already stored: the stored asset (and its review state) is kept. A learner import never changes it, and a
+  // curated import may only raise an unreviewed / machine-checked asset to a reviewed one (with a named reviewer).
+  let asset: AudioAsset = candidate;
+  let upgraded = false;
   if (prior) {
-    if (prior.textBinding?.textId !== binding.textId || prior.textBinding.textSha256 !== binding.textSha256 || prior.textBinding.releaseId !== binding.releaseId
-      || prior.rights?.id !== rights.id || prior.audioKind !== candidate.audioKind || prior.sourceType !== candidate.sourceType
-      || prior.lang !== candidate.lang || prior.locale !== candidate.locale || prior.narratorOrVoiceId !== candidate.narratorOrVoiceId
-      || prior.variety !== candidate.variety || prior.qualityState !== candidate.qualityState) {
+    const sameFacts = prior.textBinding?.textId === binding.textId && prior.textBinding.textSha256 === binding.textSha256 && prior.textBinding.releaseId === binding.releaseId
+      && prior.rights?.id === rights.id && prior.audioKind === candidate.audioKind && prior.sourceType === candidate.sourceType
+      && prior.lang === candidate.lang && prior.locale === candidate.locale && prior.narratorOrVoiceId === candidate.narratorOrVoiceId
+      && prior.variety === candidate.variety;
+    const upgrade = !learner && prior.qualityState !== qualityState && (prior.qualityState === 'unreviewed' || prior.qualityState === 'machine_checked')
+      && (qualityState === 'human_reviewed' || qualityState === 'approved');
+    if (!sameFacts || (!learner && prior.qualityState !== qualityState && !upgrade)) {
       throw new Error('GoListen import: identical audio bytes already have different text, rights, speaker, language, or quality metadata');
     }
+    if (upgrade) { asset = { ...prior, qualityState, rights: { ...prior.rights!, reviewedAt } }; upgraded = true; await rt.store.audioAssets.put(asset); } else asset = prior;
   } else await rt.store.audioAssets.put(candidate);
-  const asset = prior ?? candidate;
 
-  const voiceId = `local-import:${hash(m.id)}`;
-  const voiceReview: VoiceConfig['reviewStatus'] = m.qualityState === 'approved' || m.qualityState === 'human_reviewed' ? 'reviewed' : 'unreviewed';
+  // The voice of a learner import is never approved or reviewed (no one auditioned it); it also never shares an id with a
+  // curated import, so a learner can neither downgrade nor impersonate a curated review.
+  const voiceId = `${learner ? 'learner-import' : 'local-import'}:${hash(m.id)}`;
+  const assetReviewed = !learner && claimsReview && asset.qualityState === qualityState;
+  const voiceReview: VoiceConfig['reviewStatus'] = assetReviewed ? 'reviewed' : 'unreviewed';
   const voice: VoiceConfig = { id: voiceId, lang: text.lang, providerId: m.syntheticProvider?.id ?? 'local-import', engine: m.kind === 'synthetic' ? 'user-supplied-synthetic-wav' : 'user-supplied-wav', voiceId: m.narrator,
     requestedLocale: m.locale, actualLocale: m.locale, approved: m.kind === 'human' && voiceReview === 'reviewed', reviewStatus: voiceReview, isSpeech: true,
-    providerVersion: 'import@1', qaNote: `Imported recording ${m.id}; ${m.performance.permission}` };
+    providerVersion: 'import@1',
+    qaNote: learner
+      ? `Added by a learner on this device; kind (${m.kind}), quality (${m.qualityState}) and rights are the uploader's own statements and have not been reviewed. ${m.performance.permission}`
+      : `Imported recording ${m.id}; ${m.performance.permission}${reviewer ? `; reviewed by ${reviewer} on ${now.slice(0, 10)}` : ''}` };
   await rt.store.voices.put(voice);
+  // What was declared versus what was established. A learner record never replaces a curated one, and a later curated
+  // import never rewrites who reviewed an asset unless it is the import that reviews it.
+  const existingRecord = await readImportRecord(rt.store, asset.id);
+  const keepExisting = !!existingRecord && existingRecord.origin === 'curated' && (learner || (!!existingRecord.reviewer && !upgraded));
+  if (!keepExisting) {
+    const record: ImportRecord = { assetId: asset.id, manifestId: m.id, origin, declaredKind: m.kind, declaredQualityState: m.qualityState, declaredRightsStatus: m.rights.status,
+      ...(reviewer && !learner ? { reviewer, reviewedAt: now } : {}), importedAt: now };
+    await rt.store.meta.put({ id: importRecordId(asset.id), value: JSON.stringify(record), updatedAt: now });
+  }
   const orderedCoverage = m.coverage.map((c) => ({ c, s: map.get(c.sentenceId)! }));
   const segmentIds: string[] = [];
   const reviewedCoverage = orderedCoverage.every(({ c }) => c.reviewState === 'reviewed');
@@ -104,7 +153,8 @@ export async function importRecordingFor(rt: Runtime, args: { manifest: AudioImp
     const { coverage, sentences: groupedSentences } = group;
     const c = coverage[0];
     const s = groupedSentences[0];
-    const cacheKey = `import:${hash(`${m.id}|${groupedSentences.map((x) => x.id).join(',')}|${assetId}`)}`;
+    // A learner import has its own segments, so it can never rewrite the voice of a curated import's segments.
+    const cacheKey = `import:${hash(`${learner ? 'learner|' : ''}${m.id}|${groupedSentences.map((x) => x.id).join(',')}|${assetId}`)}`;
     const segmentId = ids.audioSegment(cacheKey);
     const segment: AudioSegment = { id: segmentId, cacheKey, lang: text.lang, sentenceIds: groupedSentences.map((x) => x.id), textId: text.id,
       displayText: groupedSentences.map((x) => x.text).join(' '), speechText: groupedSentences.map((x) => x.text).join(' '), speechNormalization: [], pronunciationOverridesUsed: [], voiceConfigId: voiceId,

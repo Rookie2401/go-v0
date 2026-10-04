@@ -73,10 +73,12 @@ describe('Settings: sections, in-page nav, Advanced collapsed', () => {
     expect(toggle.getAttribute('aria-expanded')).toBe('true');
     const panel = panelOf();
     expect(panel.hidden).toBe(false);
-    for (const label of ['Check evidence', 'Rebuild learning state', 'Run pending audio jobs', 'Use this key']) {
+    for (const label of ['Check evidence', 'Rebuild learning state', 'Run pending audio jobs']) {
       expect(button(panel, label)).toBeTruthy();
     }
-    expect(q(panel, '[aria-label="Azure speech"]')).not.toBeNull();
+    // The direct Azure key form stays hidden until the learner opts in (off by default).
+    expect(q(panel, '[aria-label="Azure speech"]')).toBeNull();
+    expect((byLabel(panel, 'Use my own Azure key in this browser') as HTMLInputElement).checked).toBe(false);
     expect(q(panel, '[aria-label="GoListen diagnostics"]')).not.toBeNull();
     expect(byLabel(panel, 'Development fixture audio')).toBeTruthy();
     expect(q(panel, 'section[aria-label="Language support"]')).not.toBeNull();

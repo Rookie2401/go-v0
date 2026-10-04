@@ -139,7 +139,7 @@ export function SpeechSection({ refreshKey }: { refreshKey?: unknown }) {
           </table>
         </div>
       )}
-      <p className="card__note">Listen to the voice first, then say you have auditioned it. Only reviewed real speech counts toward your listening progress; placeholder sound and unreviewed voices never do.</p>
+      <p className="card__note">Listen to the voice first, then say you have auditioned it. Only human recordings that a named reviewer approved count as listening evidence. Synthetic speech is practice only, and placeholder sound never counts.</p>
       <p className="card__note">Entering your own Azure key directly, and the development fixture-audio switch, are under Advanced below.</p>
     </section>
   );
@@ -157,6 +157,7 @@ export function AdvancedSpeechControls({ onChanged }: { onChanged?: () => void }
   const [key, setKey] = useState('');
   const [remember, setRemember] = useState(false);
   const [fixture] = usePref('devFixtureAudio');
+  const [direct] = usePref('azureDirectKey');
   const [, setTick] = useState(0);
   const azure = speech.azure();
   const changed = () => { setTick((n) => n + 1); onChanged?.(); };
@@ -176,8 +177,27 @@ export function AdvancedSpeechControls({ onChanged }: { onChanged?: () => void }
       {error && <p role="alert" className="error">{error}</p>}
       {message && <p role="status" className="note">{message}</p>}
 
-      <form className="settings__new" onSubmit={(e) => { e.preventDefault(); void useKey(); }} aria-label="Azure speech">
-        <h4 className="label">Azure speech (direct key)</h4>
+      <h4 className="label">Azure speech (direct key)</h4>
+      <label className="field field--row">
+        <span>Use my own Azure key in this browser</span>
+        <input
+          type="checkbox" checked={direct} aria-label="Use my own Azure key in this browser"
+          onChange={(e) => {
+            setPref('azureDirectKey', e.target.checked);
+            if (!e.target.checked) { speech.forgetAzure(); setMessage('Direct Azure keys are off. Any key stored on this device was forgotten and Azure speech is switched off.'); }
+            else setMessage(null);
+            changed();
+          }}
+        />
+      </label>
+      {!direct && (
+        <p className="card__note" data-testid="azure-direct-off">
+          Off. The app never reads or uses an Azure key from this browser, and makes no request to Azure from this page.
+          {azure.remembered && <> A key is still stored on this device from earlier and is not used.{' '}
+            <button type="button" className="btn btn--small btn--quiet" onClick={() => { speech.forgetAzure(); setMessage('Forgotten, and Azure speech is switched off.'); changed(); }}>Forget the stored key</button></>}
+        </p>
+      )}
+      {direct && <form className="settings__new" onSubmit={(e) => { e.preventDefault(); void useKey(); }} aria-label="Azure speech">
         <p className="card__note">
           For a deployment without a server. Normally the app&rsquo;s own speech service (see Speech above) does this and no key is typed here.
           Enter your own Azure Speech key and region. The key is used from this device only. It is <strong>not stored</strong> unless you tick the box below;
@@ -197,7 +217,7 @@ export function AdvancedSpeechControls({ onChanged }: { onChanged?: () => void }
           <button type="submit" className="btn btn--small" disabled={!key.trim() || !region.trim()}>Use this key</button>
           {azure.remembered && <button type="button" className="btn btn--small btn--quiet" onClick={() => { speech.forgetAzure(); setMessage('Forgotten, and Azure speech is switched off.'); changed(); }}>Forget the remembered key</button>}
         </div>
-      </form>
+      </form>}
 
       <h4 className="label">Development</h4>
       <label className="field field--row">

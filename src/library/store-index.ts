@@ -81,7 +81,9 @@ export async function profileOfStored(store: AppStore, textId: string, now: stri
  * from the built library) is left alone. Returns the number of rows added, changed or removed.
  */
 export async function indexStoredTexts(store: AppStore, lang: LanguageCode, now: string): Promise<number> {
-  const texts = await store.texts.where('lang', lang);
+  // A listening-assessment text is protected material: it never enters the library index (and a row that an earlier
+  // index wrote for one is removed below, because the text is then "no longer in the store" as far as the index goes).
+  const texts = (await store.texts.where('lang', lang)).filter((t) => t.listeningAssessmentId === undefined);
   const existing = await store.catalog.getMany(texts.map((t) => t.id));
   const prints = await store.meta.getMany(texts.map((t) => fingerprintKey(t.id)));
   const sources = new Map<string, ContentSource | undefined>();

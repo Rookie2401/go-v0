@@ -345,7 +345,7 @@ describe('Spanish end-to-end loop', () => {
     expect((await dev.bus.history({ userId: USER, types: ['AudioSegmentCompleted'] })).length).toBe(1); // only the manually forged legacy row remains
   });
 
-  it('9c — reviewed real speech (synthetic stand-in, test only) plays the exact accepted version and counts as listening exposure only', async () => {
+  it('9c — reviewed synthetic speech (test only) plays the exact accepted version as practice and is never listening evidence', async () => {
     const speech = new SyntheticSpeechProvider();
     const live = makeApp({ store: app.store, clock, providers: [speech] });
     const r = await ensureAuthorizedTestSpeech(live, revisionTextId, { runNow: true });
@@ -355,7 +355,7 @@ describe('Spanish end-to-end loop', () => {
     expect(segs.map((s) => s!.displayText)).toEqual(revSentences.map((s) => s.text)); // the exact saved version
     expect(await live.golisten.audioStatus(revisionTextId)).toMatchObject({ state: 'preview-only', evidenceEligible: false }); // voice not auditioned yet
     await live.golisten.setVoiceReview(r.manifest.voiceConfigId, 'reviewed', 'synthetic test review');
-    expect(await live.golisten.audioStatus(revisionTextId)).toMatchObject({ state: 'ready', evidenceEligible: true, isSpeech: true });
+    expect(await live.golisten.audioStatus(revisionTextId)).toMatchObject({ evidenceEligible: false, isSpeech: true }); // synthetic: practice, never evidence (changed in evidence@8)
     const seg = segs[0]!;
     const emitter = listeningEmitter(live.bus, { userId: USER, lang: LANG, session: 'rehearse-1', textId: revisionTextId, surface: 'testimony', store: live.store });
     const before = (await live.golearn.getItemState(USER, sinForm))!;
@@ -364,9 +364,8 @@ describe('Spanish end-to-end loop', () => {
     expect(ev).toMatchObject({ type: 'AudioSegmentCompleted', speech: true, voiceReviewed: true });
     await live.golearn.settled();
     const after = (await live.golearn.getItemState(USER, sinForm))!;
-    expect(after.listening.exposures).toBe(before.listening.exposures + 1);
-    expect(after.listening.level).toBe('encountered'); // heard ≠ understood by ear
-    expect(after.listening.evidence).toBe(0);
+    expect(after.listening).toEqual(before.listening); // synthetic speech heard: no listening encounter at all
+    expect((await live.golearn.auditEvidence(USER)).excluded.map((x) => x.reason)).toContain('synthetic-audio');
     expect([after.reading, after.writing, after.speaking]).toEqual([before.reading, before.writing, before.speaking]);
   });
 });

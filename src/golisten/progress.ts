@@ -5,6 +5,7 @@
 import type { AudioAbandoned, AudioPlayed, AudioSegmentCompleted, DomainEvent, ListeningPositionSaved } from '../core/events';
 import type { AppStore } from '../core/store';
 import type { AudioSegment, Text } from '../core/model';
+import { LISTEN_CREDIT } from '../golearn/policy';
 import { approvedForPlay, currentBindingValid } from './rights';
 import { buildPlayerManifest } from './playerManifest';
 
@@ -16,7 +17,7 @@ export interface ListeningProgress {
   attemptedSentences: number;
   /** Distinct current sentences completed with >=80% observed audible coverage, including unreviewed/machine-checked audio. */
   completedExposureSentences: number;
-  /** Distinct current sentences with lawful, exact-bound speech + reviewed audio; legacy evidence is retained when stored rows prove it. */
+  /** Distinct current sentences with lawful, exact-bound, reviewed HUMAN speech (never synthetic); legacy evidence is retained when stored rows prove it. */
   masteryEligibleSentences: number;
   /** Subset from human speech, suitable for a future unseen transfer attempt. */
   humanTransferSentences: number;
@@ -95,20 +96,26 @@ export async function listeningProgress(store: AppStore, userId: string, textId:
       && segment.sentenceIds.length === e.sentenceIds.length && segment.sentenceIds.every((sid) => e.sentenceIds.includes(sid));
     if (!lawfulCurrent) continue;
     for (const id of e.sentenceIds) if (live.has(id)) exposed.add(id);
-    if (e.type !== 'AudioSegmentCompleted'
-      || (e.audibleCoverageVersion === 'observed-playback@1' && (!Number.isFinite(e.heardCoverageRatio) || e.heardCoverageRatio! < 0.8 || e.heardCoverageRatio! > 1))
-      || (e.audibleCoverageVersion === undefined && e.rightsApproved !== undefined && e.heardCoverageRatio !== undefined
-        && (!Number.isFinite(e.heardCoverageRatio) || e.heardCoverageRatio < 0 || e.heardCoverageRatio > 1 || e.heardCoverageRatio < 0.8))) continue;
-    for (const id of e.sentenceIds) if (live.has(id)) completed.add(id);
+    // A completion counts only with observed audible coverage (evidence@8): a legacy end-callback completion carries no
+    // observation and counts for nothing here, as it does in GoLearn.
+    if (e.type !== 'AudioSegmentCompleted' || e.audibleCoverageVersion !== 'observed-playback@1'
+      || !Number.isFinite(e.heardCoverageRatio) || e.heardCoverageRatio! < LISTEN_CREDIT.single || e.heardCoverageRatio! > 1) continue;
+    // Same crediting as GoLearn (evidence@8): a completion that names the sentences actually heard (>= 80% of each aligned
+    // range) credits exactly those; otherwise a one-sentence segment is credited at the single floor and a longer passage
+    // only when essentially all of it was heard.
+    const named = e.heardSentenceIds;
+    const credited = Array.isArray(named) ? named.filter((id) => e.sentenceIds.includes(id))
+      : e.sentenceIds.length > 1 && !((e.heardCoverageRatio ?? 0) >= LISTEN_CREDIT.passage) ? [] : e.sentenceIds;
+    for (const id of credited) if (live.has(id)) completed.add(id);
     if (e.narratorOrVoiceId) narrators.add(e.narratorOrVoiceId);
     if (e.variety ?? e.locale) varieties.add(e.variety ?? e.locale!);
     if (e.sourceType) sources.add(e.sourceType);
     if (e.transcriptVisible || e.revealedTranscript || e.revealedTranslation) {
-      for (const id of e.sentenceIds) if (live.has(id)) assisted.add(id);
+      for (const id of credited) if (live.has(id)) assisted.add(id);
     } else {
-      for (const id of e.sentenceIds) if (live.has(id)) listenOnly.add(id);
+      for (const id of credited) if (live.has(id)) listenOnly.add(id);
     }
-    if (e.speed < 0.999) for (const id of e.sentenceIds) if (live.has(id)) slowed.add(id);
+    if (e.speed < 0.999) for (const id of credited) if (live.has(id)) slowed.add(id);
     // Machine-checked human recordings remain exposure-only. A synthetic voice can support separate practice only after
     // the current voice itself was auditioned; it is never included in humanTransferSentences.
     const quality = asset?.qualityState;
@@ -122,9 +129,10 @@ export async function listeningProgress(store: AppStore, userId: string, textId:
       && asset?.isSpeech === true && !!audioKind && lawfulCurrent
       && (audioKind === 'synthetic' ? quality !== undefined && ['machine_checked', 'human_reviewed', 'approved'].includes(quality) : quality === 'human_reviewed' || quality === 'approved');
     if (eventProved) {
-      for (const id of e.sentenceIds) if (live.has(id)) mastery.add(id);
-      if (audioKind === 'human') for (const id of e.sentenceIds) if (live.has(id)) humanTransfer.add(id);
-      if (audioKind === 'synthetic') for (const id of e.sentenceIds) if (live.has(id)) syntheticPractice.add(id);
+      // Only reviewed HUMAN speech is quality-eligible listening evidence. Reviewed synthetic speech is counted as practice
+      // on its own line and never in masteryEligibleSentences.
+      if (audioKind === 'human') for (const id of credited) if (live.has(id)) { mastery.add(id); humanTransfer.add(id); }
+      if (audioKind === 'synthetic') for (const id of credited) if (live.has(id)) syntheticPractice.add(id);
     }
   }
   const all = await store.events.where('userId', userId);

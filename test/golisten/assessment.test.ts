@@ -19,7 +19,7 @@ async function prepared() {
   const importManifest = JSON.parse(await readFile('test/fixtures/golisten/de-guten-tag.audio.json', 'utf8')) as AudioImportManifest;
   const text = await ingestDocument(store, adapters, doc);
   const gl = createGoListen({ store, bus, adapters });
-  const imported = await gl.importRecording({ manifest: importManifest, bytes: new Uint8Array(await readFile('test/fixtures/golisten/de-guten-tag.wav')) });
+  const imported = await gl.importRecording({ manifest: importManifest, bytes: new Uint8Array(await readFile('test/fixtures/golisten/de-guten-tag.wav')), origin: 'curated' });
   // Test-only metadata exercises the reviewed-human branches. It does not claim the sample has received acoustic QA.
   await store.audioAssets.put({ ...imported.asset, audioKind: 'human', isSpeech: true, qualityState: 'human_reviewed' });
   for (const segmentId of imported.manifest.segmentIds) {

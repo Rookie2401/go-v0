@@ -34,7 +34,7 @@ async function seenForms(ctx: Ctx, userId: string, lang: LanguageCode, memo: { f
   if (!list) {
     const prefix = `form:${lang}:`;
     list = (await ctx.store.learnerItems.where('userId', userId))
-      .filter((r) => r.lang === lang && r.itemKind === 'form' && r.encounterCount > 0)
+      .filter((r) => r.lang === lang && r.itemKind === 'form' && r.reading.level !== 'unseen') // forms READ (relatedSeen is a reading fact)
       .map((r) => ({ id: r.itemId, normalized: r.itemId.slice(prefix.length) }));
     memo.forms.set(lang, list);
   }
@@ -86,7 +86,9 @@ async function queryOne(
 
 /**
  * Related = another form of the same lemma (via token → analysis → lemma tables) or an inflection /
- * compound component according to `adapter.relate`, already met by this learner.
+ * compound component according to `adapter.relate`, already READ by this learner (what was only heard does not count: it is a
+ * listening fact, and `relatedSeen` feeds reading-side judgements). `exactFormSeen` / `encounterCount` stay "met in any receptive
+ * modality" for display.
  */
 async function isRelatedSeen(
   ctx: Ctx, userId: string, lang: LanguageCode, itemId: string, itemKind: string,
@@ -109,7 +111,7 @@ async function isRelatedSeen(
   }
   if (siblings.size > 0) {
     const states = await ctx.store.learnerItems.getMany([...siblings].map((f) => ids.learnerItem(userId, f)));
-    if (states.some((s) => s && s.encounterCount > 0)) return true;
+    if (states.some((s) => s && s.reading.level !== 'unseen')) return true; // another form READ; hearing one is not reading
   }
   if (itemKind !== 'form') return false;
   // Fallback for forms the corpus has never tokenized (e.g. learner-typed): ask the adapter.

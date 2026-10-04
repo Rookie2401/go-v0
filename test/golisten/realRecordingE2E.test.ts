@@ -27,7 +27,7 @@ describe('lawful real recording through canonical ingestion and listening', () =
       dedupeKey: 'existing-reading', textId: text.id, sentenceId: sentence.id, tokenIds, dwellMs: 6000, contentVersion: 1 });
     await learning.settled();
     const readingBefore = (await store.learnerItems.all()).map((x) => ({ id: x.id, reading: x.reading }));
-    const recording = await gl.importRecording({ manifest, bytes: new Uint8Array(await readFile('test/fixtures/golisten/de-guten-tag.wav')) });
+    const recording = await gl.importRecording({ manifest, bytes: new Uint8Array(await readFile('test/fixtures/golisten/de-guten-tag.wav')), origin: 'curated' });
     expect(await gl.assetUrl(recording.asset.id)).toBeTruthy();
     expect(recording.asset).toMatchObject({ isSpeech: true, qualityState: 'machine_checked', textBinding: { textId: text.id } });
     expect((await gl.audioStatus(text.id)).evidenceEligible).toBe(false);

@@ -6,7 +6,7 @@ import { bootstrap } from '../../src/app/bootstrap';
 import { rememberAzure, resetPrefsForTests } from '../../src/ui/prefs';
 
 beforeEach(() => { resetPrefsForTests(); try { localStorage.clear(); } catch { /* jsdom */ } });
-afterEach(() => { vi.unstubAllGlobals(); resetPrefsForTests(); try { localStorage.clear(); } catch { /* jsdom */ } });
+afterEach(() => { vi.unstubAllGlobals(); vi.unstubAllEnvs(); resetPrefsForTests(); try { localStorage.clear(); } catch { /* jsdom */ } });
 
 const STATUS = { configured: true, provider: 'azure-speech', providerVersion: 'azure-proxy@1' };
 const reply = (status: number, body: unknown = {}) => ({ ok: status >= 200 && status < 300, status, json: async () => body, text: async () => JSON.stringify(body) }) as unknown as Response;
@@ -82,14 +82,61 @@ describe('bootstrap with listening explicitly off', () => {
   });
 });
 
-describe('bootstrap with listening opted in (the dormant code path)', () => {
-  it('still checks the speech service and still reads a remembered key', async () => {
+describe('bootstrap with listening on', () => {
+  it('with the defaults makes no request to /api/speech/* (no proxy is configured) and reads no stored key', async () => {
     const f = fetchSpy();
     rememberAzure({ key: 'k-remembered', region: 'westeurope' });
     const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, features: { listen: true } });
     await new Promise((res) => setTimeout(res, 20));
-    expect(calls(f).some((u) => u.includes('/api/speech/'))).toBe(true);
+    expect(calls(f).filter((u) => u.includes('/api/speech/'))).toEqual([]);
     expect(r.services.features.listen).toBe(true);
+    expect(await r.services.speech.proxy?.()).toBeUndefined();
+    expect(r.services.speech.azure().configured).toBe(false); // the direct-key option is off, so the stored key is not used
+    expect(r.services.golisten.providers()).toEqual([]);
+  });
+
+  it('checks the speech service when a proxy is configured, and reads a stored key only with the direct-key option on', async () => {
+    const f = fetchSpy();
+    const { setPref } = await import('../../src/ui/prefs');
+    setPref('azureDirectKey', true);
+    rememberAzure({ key: 'k-remembered', region: 'westeurope' });
+    const r = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: {}, features: { listen: true } });
+    await new Promise((res) => setTimeout(res, 20));
+    expect(calls(f).some((u) => u.includes('/api/speech/'))).toBe(true);
     expect(r.services.speech.azure().configured).toBe(true);
+  });
+
+  it('the build flag VITE_SPEECH_PROXY=1 configures the proxy check', async () => {
+    const f = fetchSpy();
+    vi.stubEnv('VITE_SPEECH_PROXY', '1');
+    try {
+      await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, features: { listen: true } });
+      await new Promise((res) => setTimeout(res, 20));
+      expect(calls(f).some((u) => u.includes('/api/speech/'))).toBe(true);
+    } finally { vi.unstubAllEnvs(); }
+  });
+
+  it('a voice review change invalidates GoLearn\'s listening state; with listening off nothing is wired', async () => {
+    const voice = { id: 'v:1', lang: 'es' as const, providerId: 'x', voiceId: 'x', requestedLocale: 'es', actualLocale: 'es', approved: false, reviewStatus: 'unreviewed' as const, isSpeech: true };
+    const on = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: false, features: { listen: true } });
+    const spy = vi.spyOn(on.services.golearn, 'invalidateListening');
+    await on.services.store.voices.put(voice);
+    await on.services.golisten.setVoiceReview('v:1', 'reviewed');
+    expect(spy).toHaveBeenCalledTimes(1);
+    expect(spy).toHaveBeenCalledWith(undefined);
+
+    const off = await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: false, features: { listen: false } });
+    const offSpy = vi.spyOn(off.services.golearn, 'invalidateListening');
+    await off.services.store.voices.put(voice);
+    await off.services.golisten.setVoiceReview('v:1', 'reviewed');
+    expect(offSpy).not.toHaveBeenCalled();
+  });
+
+  it('speechProxy: false makes no request even when the proxy is configured at build time', async () => {
+    const f = fetchSpy();
+    vi.stubEnv('VITE_SPEECH_PROXY', '1');
+    await bootstrap({ store: createMemoryStore(), courseId: 'honduras-es', skipCorpus: true, speechProxy: false, features: { listen: true } });
+    await new Promise((res) => setTimeout(res, 20));
+    expect(calls(f).filter((u) => u.includes('/api/speech/'))).toEqual([]);
   });
 });

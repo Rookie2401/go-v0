@@ -11,11 +11,13 @@
  * Not stored anywhere: it is rebuilt from the log on start, and it is exactly the log.
  */
 import type { DomainEvent } from '../core';
-import type { SittingIndex } from './sitting';
+
+/** The sitting of an event, by event id (reading sittings and listening sittings are separate key spaces; see fold.ts). */
+export interface SittingLookup { get(eventId: string): string | undefined }
 
 export interface UserLog {
   events: DomainEvent[];
-  sittings: SittingIndex;
+  sittings: SittingLookup;
   byText: Map<string, DomainEvent[]>;
 }
 

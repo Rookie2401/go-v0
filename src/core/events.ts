@@ -97,12 +97,25 @@ interface Listen extends Base {
   editionId?: string;
   narratorOrVoiceId?: string;
   locale?: string;
-  /** Fraction of the required audio range observed as audible monotonic playback in this pass. */
+  /**
+   * Fraction of the segment's audio range the player observed as played in this pass: only ticks that carry the wall-clock
+   * time of the observation, advance no faster than that time, and come while the media element is not muted and its volume
+   * is above zero count (src/golisten/player.ts). It is what the player saw, not proof the learner was listening.
+   */
   heardCoverageRatio?: number;
+  /** Set on every completion measured as above; a completion without it counts for nothing in GoLearn. */
   audibleCoverageVersion?: 'observed-playback@1';
 }
 export interface AudioPlayed extends Listen { type: 'AudioPlayed' }
-export interface AudioSegmentCompleted extends Listen { type: 'AudioSegmentCompleted'; replayCount: number; revealedTranscript: boolean; revealedTranslation: boolean }
+export interface AudioSegmentCompleted extends Listen {
+  type: 'AudioSegmentCompleted'; replayCount: number; revealedTranscript: boolean; revealedTranslation: boolean;
+  /**
+   * The sentences of `sentenceIds` whose own audio range was observed as heard in this pass. When present GoLearn credits exactly
+   * these (a subset of `sentenceIds`) and ignores the whole-passage ratio floors; when absent a multi-sentence passage is credited
+   * only when `heardCoverageRatio` is essentially complete (policy.ts, LISTEN_CREDIT).
+   */
+  heardSentenceIds?: string[];
+}
 export interface AudioReplayed extends Listen { type: 'AudioReplayed'; count: number }
 export interface PhraseReplayed extends Listen { type: 'PhraseReplayed'; alignmentId: string; unitId: string }
 export interface AudioSeeked extends Base { type: 'AudioSeeked'; textId: string; fromSegmentId?: string; toSegmentId: string }

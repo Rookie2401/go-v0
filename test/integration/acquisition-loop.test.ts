@@ -281,7 +281,7 @@ describe('one complete acquisition loop — Spanish', () => {
     expect((await gotell.getDraft(USER, 'de'))?.text).toBe('Jetzt glaube ich an Gott.');
   });
 
-  it('11 — speech for the accepted version: unavailable without a provider; with reviewed speech it is exposure only', async () => {
+  it('11 — speech for the accepted version: unavailable without a provider; synthetic speech plays as practice and is never listening evidence', async () => {
     expect((await app.golisten.availability()).available).toBe(false);
     expect(await app.golisten.audioStatus(revisionTextId)).toMatchObject({ state: 'unavailable', evidenceEligible: false });
     await expect(app.golisten.ensureAudio(revisionTextId, { runNow: true })).rejects.toMatchObject({ name: 'AudioUnavailable' });
@@ -292,7 +292,7 @@ describe('one complete acquisition loop — Spanish', () => {
     expect(segs.map((s) => s!.displayText)).toEqual([OWN, 'Dios ama al mundo.']); // the exact saved version
     expect((await live.golisten.audioStatus(revisionTextId)).state).toBe('preview-only'); // voice not auditioned
     await live.golisten.setVoiceReview(r.manifest.voiceConfigId, 'reviewed', 'synthetic');
-    expect(await live.golisten.audioStatus(revisionTextId)).toMatchObject({ state: 'ready', evidenceEligible: true });
+    expect(await live.golisten.audioStatus(revisionTextId)).toMatchObject({ evidenceEligible: false }); // synthetic: practice, never evidence (changed in evidence@8)
     const before = (await live.golearn.getItemState(USER, form('pecado')))!;
     const em = listeningEmitter(live.bus, { userId: USER, lang: LANG, session: 'rehearse', textId: revisionTextId, surface: 'testimony', store: live.store });
     const seg = segs[0]!;
@@ -301,8 +301,8 @@ describe('one complete acquisition loop — Spanish', () => {
     await em.completed({ segmentId: seg.id, sentenceIds: seg.sentenceIds }, { speed: 0.9, transcriptVisible: false }, { heardCoverageRatio: 1 });
     await live.golearn.settled();
     const after = (await live.golearn.getItemState(USER, form('pecado')))!;
-    expect(after.listening).toMatchObject({ level: 'encountered', evidence: 0 }); // heard ≠ understood by ear
-    expect(after.listening.exposures).toBe(before.listening.exposures + 1);
+    expect(after.listening).toEqual(before.listening); // synthetic speech heard: no listening encounter at all
+    expect((await live.golearn.auditEvidence(USER)).excluded.map((x) => x.reason)).toContain('synthetic-audio');
     expect([after.reading, after.writing]).toEqual([before.reading, before.writing]);
   });
 

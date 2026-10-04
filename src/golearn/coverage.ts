@@ -7,7 +7,8 @@
  *   estimated  — not known, but its form or lemma is "likely familiar" (≥ 4 help-free exposures over ≥ 2 sittings,
  *                no help with THAT item lately; the English shown for a sentence does not veto it — policy.ts, evidence@7).
  *                An ESTIMATE: reported separately, never merged into `knownLexicalCoverage`
- *   partial    — met (read, heard or needed help) but neither known nor estimated
+ *   partial    — met IN READING (read, or needed help while reading) but neither known nor estimated. Hearing a word is a
+ *                listening fact: it never moves a word out of `unseen` here, nor into `partial` (`listeningCoverage` is its own measure)
  *   unseen     — otherwise
  * known + estimated + partial + unseen = 1.
  * Bands (soft, lexical only) use known + estimated and say so in `explanation`:
@@ -50,7 +51,8 @@ export interface Classified {
   unitPiece?: true;
 }
 
-const met = (s?: LearnerItemState) => !!s && (s.reading.level !== 'unseen' || s.listening.level !== 'unseen');
+/** Met IN READING. Nothing heard is a reading measure: a word only heard is still new to the reader. */
+const met = (s?: LearnerItemState) => !!s && s.reading.level !== 'unseen';
 
 export async function classifyTokens(ctx: Ctx, userId: string, tokens: Token[], cache: AnalysisCache): Promise<Classified[]> {
   await cache.prefetch(tokens.map((t) => t.id));
@@ -113,7 +115,7 @@ function explain(n: number, k: number, e: number, p: number, u: number): string 
   return `Of ${n} words, ${pct(k)} % were shown understood (reported understood without help), ${pct(e)} % are likely familiar `
     + `(an estimate from help-free reading over several sittings; help with the word itself withdraws it, the English shown for a sentence does not), `
     + `${pct(p)} % were only met a few times or with help and ${pct(u)} % are new; `
-    + `seeing or hearing a word is never counted as understanding it, and the comfort band uses the first two together.`;
+    + `seeing a word is never counted as understanding it, hearing it does not change this reading measure, and the comfort band uses the first two together.`;
 }
 
 export async function analyzeText(ctx: Ctx, userId: string, textId: string, sentenceIds?: string[]): Promise<TextAnalysis> {
@@ -280,7 +282,7 @@ export async function scriptureReadiness(
   for (const [itemId, g] of groups) {
     if (!g.content) continue;
     const states = [...(g.lemmaState ? [g.lemmaState] : []), ...g.formStates.values()];
-    const needed = states.some((s) => s.reading.assisted > 0 || s.listening.assisted > 0);
+    const needed = states.some((s) => s.reading.assisted > 0); // reading gaps: help while HEARING says nothing about reading it
     const exposed = states.some(met);
     gaps.push({ itemId, itemKind: g.itemKind, surface: g.surface, count: g.count, status: needed ? 'needed-help' : exposed ? 'exposed' : 'unseen' });
   }

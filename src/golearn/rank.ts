@@ -59,7 +59,10 @@ async function workKeys(ctx: Ctx, candidates: RankCandidate[]): Promise<Map<stri
   return out;
 }
 
-export async function rankLibrary(ctx: Ctx, userId: string, candidates: RankCandidate[], opts: RankOptions = {}): Promise<RankedText[]> {
+export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandidate[], opts: RankOptions = {}): Promise<RankedText[]> {
+  // Protected listening-assessment material is never offered for reading (a candidate that is not imported has no stored text and stays).
+  const stored = await ctx.store.texts.getMany(offered.map((c) => c.profile.textId));
+  const candidates = offered.filter((_, i) => stored[i]?.listeningAssessmentId === undefined);
   const challenge: Challenge = opts.challenge ?? 'steady';
   const target = RANKING.targetCoverage[challenge];
   const interests = new Set((opts.interests ?? []).map((s) => s.toLowerCase()));

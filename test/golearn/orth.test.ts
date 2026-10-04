@@ -245,7 +245,7 @@ describe('derived state with orth items rebuilds identically from the log', () =
     expect((await snapshot(h)).items.length).toBeLessThan(full.items.length);
 
     expect(await h.golearn.ensureCurrent(U)).toBe(true);
-    expect((await h.store.meta.get(`golearn.policy:${U}`))!.value).toBe('evidence@7');
+    expect((await h.store.meta.get(`golearn.policy:${U}`))!.value).toBe('evidence@8');
     expect(await snapshot(h)).toEqual(full);
     expect(await h.golearn.ensureCurrent(U)).toBe(false);
   });

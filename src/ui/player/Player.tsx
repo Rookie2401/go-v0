@@ -437,7 +437,8 @@ function PlayerBody({ textId, onChange, controlRef, defaultTranscriptMode, allow
         onEnded={() => dispatch({ type: 'ended' })}
         onError={() => dispatch({ type: 'playbackError' })}
         onTimeUpdate={(e) => {
-          dispatch({ type: 'position', ms: e.currentTarget.currentTime * 1000, observedAtMs: performance.now() });
+          // Muted or zero-volume playback is not hearing: the machine counts a tick only while the element is audible.
+          dispatch({ type: 'position', ms: e.currentTarget.currentTime * 1000, observedAtMs: performance.now(), muted: e.currentTarget.muted, volume: e.currentTarget.volume });
           const m = machineRef.current?.state;
           const seg = m?.manifest.segments[m.segmentIndex];
           if (seg?.rangeMs && e.currentTarget.currentTime * 1000 >= seg.rangeMs.endMs - 40) dispatch({ type: 'ended' });
@@ -501,11 +502,16 @@ function PlayerBody({ textId, onChange, controlRef, defaultTranscriptMode, allow
         <p className="note note--warn" role="note" data-testid="preview-audio-note">
           {activePlayerSegment?.sourceType === 'human-recording' || activePlayerSegment?.sourceType === 'licensed-recording'
             ? 'You can record listening exposure, but this recording has not passed human review for listening evidence.'
-            : 'You can record listening exposure, but this audio has not passed quality review for listening evidence.'}
+            : activePlayerSegment?.audioKind === 'synthetic'
+              ? 'Synthetic speech: practice only, not counted as listening.'
+              : 'You can record listening exposure, but this audio has not passed quality review for listening evidence.'}
         </p>
       )}
       {audio?.state === 'preview-only' && isFixture && (
         <p className="note note--warn" role="note" data-testid="preview-audio-note">Fixture audio is not speech and does not count toward your listening progress.</p>
+      )}
+      {audio?.state === 'ready' && audio.evidenceEligible === false && activePlayerSegment?.audioKind === 'synthetic' && (
+        <p className="note" role="note" data-testid="practice-audio-note">Synthetic speech: practice only, not counted as listening.</p>
       )}
 
       <details className="player__more">

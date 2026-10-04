@@ -32,7 +32,7 @@ async function fixture(lang: LanguageCode = 'de') {
 describe('rights-aware local recording import', () => {
   it.each(LANGS)('binds only the selected %s text release and leaves its script untouched', async (lang) => {
     const f = await fixture(lang);
-    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes });
+    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes, origin: 'curated' });
     expect(result.asset.lang).toBe(lang);
     expect(result.asset.textBinding).toMatchObject({ textId: f.text.id, releaseId: `${f.text.id}@${f.text.contentVersion}`, textSha256: f.manifest.textSha256 });
     expect((await f.store.sentences.where('textId', f.text.id)).map((s) => s.text)).toEqual(f.sentences.map((s) => s.text));
@@ -40,7 +40,7 @@ describe('rights-aware local recording import', () => {
 
   it('binds reviewed WAV timing to the exact text release and exposes rights-bound sentence ranges', async () => {
     const f = await fixture();
-    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes });
+    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes, origin: 'curated' });
     expect(result.manifest.complete).toBe(true);
     expect(result.imported).toBe(3);
     expect(result.asset).toMatchObject({ audioKind: 'synthetic', sourceType: 'generated-tts', qualityState: 'machine_checked', textBinding: { textId: f.text.id, contentVersion: f.text.contentVersion, textSha256: f.manifest.textSha256 } });
@@ -53,7 +53,7 @@ describe('rights-aware local recording import', () => {
 
   it('keeps a lawful imported recording playable when a default TTS provider is registered', async () => {
     const f = await fixture();
-    const imported = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes });
+    const imported = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes, origin: 'curated' });
     f.gl.registerProvider(new FakeSpeechProvider());
     f.gl.setDefaultProvider('fake-speech');
     const status = await f.gl.audioStatus(f.text.id);
@@ -63,25 +63,25 @@ describe('rights-aware local recording import', () => {
 
   it('is idempotent for an exact same import and rejects conflicting claims over identical bytes', async () => {
     const f = await fixture();
-    const first = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes });
-    const again = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes });
+    const first = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes, origin: 'curated' });
+    const again = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes, origin: 'curated' });
     expect(again.asset.id).toBe(first.asset.id);
     expect(again.reused).toBe(true);
-    await expect(f.gl.importRecording({ manifest: { ...f.manifest, id: 'different-narrator', narrator: 'Someone else' }, bytes: f.bytes }))
+    await expect(f.gl.importRecording({ manifest: { ...f.manifest, id: 'different-narrator', narrator: 'Someone else' }, bytes: f.bytes, origin: 'curated' }))
       .rejects.toThrow(/different text, rights, speaker/);
   });
 
   it('rejects a text hash, release, Bible edition, or THSV11 mismatch', async () => {
     const f = await fixture();
-    await expect(f.gl.importRecording({ manifest: { ...f.manifest, textSha256: '0'.repeat(64) }, bytes: f.bytes })).rejects.toThrow(/SHA-256 mismatch/);
-    await expect(f.gl.importRecording({ manifest: { ...f.manifest, releaseId: 'other-release' }, bytes: f.bytes })).rejects.toThrow(/release/);
+    await expect(f.gl.importRecording({ manifest: { ...f.manifest, textSha256: '0'.repeat(64) }, bytes: f.bytes, origin: 'curated' })).rejects.toThrow(/SHA-256 mismatch/);
+    await expect(f.gl.importRecording({ manifest: { ...f.manifest, releaseId: 'other-release' }, bytes: f.bytes, origin: 'curated' })).rejects.toThrow(/release/);
     const bible = await addScripture(f.store, 'de');
     const bibleSentences = (await f.store.sentences.where('textId', bible.id)).filter((s) => s.retiredInVersion === undefined);
     const badEdition: AudioImportManifest = { ...f.manifest, id: 'wrong-edition', textId: bible.id, lang: 'de', contentVersion: bible.contentVersion,
       releaseId: releaseIdOf(bible), editionId: `${editionIdOf(bible)}-other`, textSha256: await canonicalTextSha256(bible.id, bible.contentVersion, bibleSentences), coverage: bibleSentences.map((s, i) => ({ sentenceId: s.id, startMs: i * 400, endMs: (i + 1) * 400, reviewState: 'reviewed' })) };
-    await expect(f.gl.importRecording({ manifest: badEdition, bytes: f.bytes })).rejects.toThrow(/Bible edition mismatch/);
+    await expect(f.gl.importRecording({ manifest: badEdition, bytes: f.bytes, origin: 'curated' })).rejects.toThrow(/Bible edition mismatch/);
     await f.store.texts.put({ ...f.text, version: 'THSV11' });
-    await expect(f.gl.importRecording({ manifest: { ...f.manifest, textSha256: await canonicalTextSha256(f.text.id, f.text.contentVersion, f.sentences) }, bytes: f.bytes })).rejects.toThrow(/THSV11/);
+    await expect(f.gl.importRecording({ manifest: { ...f.manifest, textSha256: await canonicalTextSha256(f.text.id, f.text.contentVersion, f.sentences) }, bytes: f.bytes, origin: 'curated' })).rejects.toThrow(/THSV11/);
   });
 
   it('rejects pending, denied, revoked, missing, and non-play rights', async () => {
@@ -91,22 +91,22 @@ describe('rights-aware local recording import', () => {
       { ...f.manifest.rights, status: 'denied' as const },
       { ...f.manifest.rights, status: 'revoked' as const },
       { ...f.manifest.rights, playInApp: false },
-    ]) await expect(f.gl.importRecording({ manifest: { ...f.manifest, id: `rights-${rights.status}`, rights }, bytes: f.bytes })).rejects.toThrow(/not approved/);
+    ]) await expect(f.gl.importRecording({ manifest: { ...f.manifest, id: `rights-${rights.status}`, rights }, bytes: f.bytes, origin: 'curated' })).rejects.toThrow(/not approved/);
   });
 
   it('requires segmentation permission for a cropped single-sentence excerpt and rejects QA-rejected audio', async () => {
     const f = await fixture();
     const one = f.manifest.coverage[0];
-    await expect(f.gl.importRecording({ manifest: { ...f.manifest, id: 'cropped-one-no-seg', rights: { ...f.manifest.rights, segment: false }, coverage: [{ ...one, startMs: 20, endMs: 400 }] }, bytes: f.bytes }))
+    await expect(f.gl.importRecording({ manifest: { ...f.manifest, id: 'cropped-one-no-seg', rights: { ...f.manifest.rights, segment: false }, coverage: [{ ...one, startMs: 20, endMs: 400 }] }, bytes: f.bytes, origin: 'curated' }))
       .rejects.toThrow(/segmentation permission/);
-    await expect(f.gl.importRecording({ manifest: { ...f.manifest, id: 'rejected-qa', qualityState: 'rejected' }, bytes: f.bytes }))
+    await expect(f.gl.importRecording({ manifest: { ...f.manifest, id: 'rejected-qa', qualityState: 'rejected' }, bytes: f.bytes, origin: 'curated' }))
       .rejects.toThrow(/marked rejected/);
   });
 
   it('keeps checked-only timing coarse and supports lawful partial passage coverage', async () => {
     const f = await fixture();
     const partial = { ...f.manifest, id: 'coarse-partial', coverage: [{ ...f.manifest.coverage[0], reviewState: 'checked' as const }] };
-    const result = await f.gl.importRecording({ manifest: partial, bytes: f.bytes });
+    const result = await f.gl.importRecording({ manifest: partial, bytes: f.bytes, origin: 'curated' });
     expect(result.manifest.complete).toBe(false);
     expect(result.manifest.segmentIds).toHaveLength(1);
     expect(await f.gl.alignments(result.manifest.segmentIds[0])).toEqual([]);
@@ -117,7 +117,7 @@ describe('rights-aware local recording import', () => {
 
   it('blocks playback and offline packaging after revocation or exact-text mutation', async () => {
     const f = await fixture();
-    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes });
+    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes, origin: 'curated' });
     const revoked = { ...result.asset, rights: { ...result.asset.rights!, status: 'revoked' as const } };
     await f.store.audioAssets.put(revoked);
     expect(await f.gl.assetUrl(revoked.id)).toBeUndefined();
@@ -130,7 +130,7 @@ describe('rights-aware local recording import', () => {
 
   it('preserves complete rights and exact text metadata in an offline package', async () => {
     const f = await fixture();
-    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes });
+    const result = await f.gl.importRecording({ manifest: f.manifest, bytes: f.bytes, origin: 'curated' });
     const offline = await f.gl.offlinePackage(result.asset.id);
     expect(offline?.bytes).toEqual(f.bytes);
     expect(offline?.textBinding).toMatchObject({ releaseId: f.manifest.releaseId, editionId: undefined, textSha256: f.manifest.textSha256 });

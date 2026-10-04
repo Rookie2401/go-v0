@@ -24,6 +24,11 @@ export interface Prefs {
   preview: boolean;
   /** Development preference: register the fixture (non-speech) audio provider even outside preview. */
   devFixtureAudio: boolean;
+  /**
+   * Opt-in, OFF by default: use an Azure Speech key typed (or remembered) in this browser to call Azure directly from the
+   * page. While off, a stored key is never read and no direct Azure request is made; the form that takes a key is hidden.
+   */
+  azureDirectKey: boolean;
   /** GoRead team sharing: the team server's address ('' = none). Stays on this device. */
   teamServer: string;
   /** GoRead team sharing: the contributor key that lets this device add texts ('' = read only). Stays on this device. */
@@ -31,7 +36,7 @@ export interface Prefs {
 }
 
 export const FONT_SIZE_RANGE = { min: 16, max: 34 } as const;
-export const DEFAULT_PREFS: Prefs = { highlight: 'subtle', speed: 1, transcript: 'visible', fontSize: 22, theme: 'auto', preview: false, devFixtureAudio: false, teamServer: '', teamKey: '' };
+export const DEFAULT_PREFS: Prefs = { highlight: 'subtle', speed: 1, transcript: 'visible', fontSize: 22, theme: 'auto', preview: false, devFixtureAudio: false, azureDirectKey: false, teamServer: '', teamKey: '' };
 
 /**
  * Every key below goes through `scopedKey`: in sandbox mode (`?sandbox=<name>`, see sandbox.ts) it is namespaced under

@@ -11,7 +11,7 @@ function sibling(env: Awaited<ReturnType<typeof makeEnv>>, deps: Partial<Paramet
 }
 
 describe.each(LANGS)('audioStatus state machine (%s)', (lang) => {
-  it('not-generated -> generating -> preview-only -> ready (only after a person reviews a real voice)', async () => {
+  it('not-generated -> generating -> preview-only -> ready (practice only: synthetic speech is never evidence)', async () => {
     const fake = new FakeSpeechProvider();
     const { store, gl } = await makeEnv({ allowFixture: false, providers: [fake] });
     await addStory(store, lang);
@@ -33,7 +33,8 @@ describe.each(LANGS)('audioStatus state machine (%s)', (lang) => {
     const s2 = await gl.audioStatus(tid(lang));
     expect(s2).toMatchObject({ state: 'preview-only', readySegments: 3, isSpeech: true, evidenceEligible: false, voiceReview: 'unreviewed', audioContentVersion: 1, textContentVersion: 1 });
     expect(s2.reason).toMatch(/has not been auditioned/);
-    expect(s2.reason).toMatch(/earns no listening evidence/);
+    expect(s2.reason).toMatch(/practice only, not counted as listening/i);
+    expect(s2.playAllowed).toBe(true);
 
     const voiceId = (await gl.getManifest(tid(lang)))!.voiceConfigId;
     await gl.setVoiceReview(voiceId, 'in-review');
@@ -46,10 +47,11 @@ describe.each(LANGS)('audioStatus state machine (%s)', (lang) => {
 
     await gl.setVoiceReview(voiceId, 'reviewed', 'listened to every sentence');
     const ready = await gl.audioStatus(tid(lang));
-    expect(ready).toMatchObject({ state: 'ready', evidenceEligible: true, voiceReview: 'reviewed', isSpeech: true, failedSegments: 0 });
-    expect(ready.reason).toBeUndefined();
+    // A reviewed synthetic voice is playable practice. It is never listening evidence, whatever its review says.
+    expect(ready).toMatchObject({ state: 'ready', evidenceEligible: false, playAllowed: true, voiceReview: 'reviewed', isSpeech: true, failedSegments: 0 });
+    expect(ready.reason).toMatch(/synthetic speech: practice only, not counted as listening/i);
     await gl.setVoiceReview(voiceId, 'approved');
-    expect((await gl.audioStatus(tid(lang))).evidenceEligible).toBe(true);
+    expect((await gl.audioStatus(tid(lang))).evidenceEligible).toBe(false);
     await gl.setVoiceReview(voiceId, 'unreviewed');
     expect((await gl.audioStatus(tid(lang))).evidenceEligible).toBe(false);
   });
@@ -88,7 +90,7 @@ describe.each(LANGS)('audioStatus state machine (%s)', (lang) => {
     const again = await gl.ensureAudio(tid(lang), { runNow: true });
     expect(again).toMatchObject({ created: 0, reused: 3 });
     expect(fake.calls.length).toBe(calls);
-    expect(await gl.audioStatus(tid(lang))).toMatchObject({ state: 'ready', audioContentVersion: 2, textContentVersion: 2, evidenceEligible: true });
+    expect(await gl.audioStatus(tid(lang))).toMatchObject({ state: 'ready', audioContentVersion: 2, textContentVersion: 2, evidenceEligible: false });
   });
 
   it('an edited sentence invalidates only itself (new sentence key, old one retired)', async () => {
@@ -118,7 +120,7 @@ describe.each(LANGS)('audioStatus state machine (%s)', (lang) => {
     const newSeg = (await gl.getSegment(after.manifest.segmentIds[1]))!;
     expect(newSeg.displayText).toBe(edited);
     expect(newSeg.sentenceIds).toEqual([ids.sentence(tid(lang), ids.sentenceKey(edited))]);
-    expect(await gl.audioStatus(tid(lang))).toMatchObject({ state: 'ready', readySegments: 3, totalSegments: 3, evidenceEligible: true });
+    expect(await gl.audioStatus(tid(lang))).toMatchObject({ state: 'ready', readySegments: 3, totalSegments: 3, evidenceEligible: false });
   });
 
   it('even without a version bump, an in-place release edit invalidates every old binding until reauthorized', async () => {
@@ -165,7 +167,7 @@ describe.each(LANGS)('audioStatus state machine (%s)', (lang) => {
     await addStory(env.store, lang);
     const r1 = await env.gl.ensureAudio(tid(lang), { runNow: true });
     await env.gl.setVoiceReview(r1.manifest.voiceConfigId, 'reviewed');
-    expect((await env.gl.audioStatus(tid(lang))).evidenceEligible).toBe(true);
+    expect(await env.gl.audioStatus(tid(lang))).toMatchObject({ state: 'ready', voiceReview: 'reviewed', evidenceEligible: false }); // synthetic: practice only
 
     const v2 = new FakeSpeechProvider({ version: '2' });
     env.gl.registerProvider(v2); // same id, new version
@@ -260,7 +262,7 @@ describe('audioStatus across sessions (stored audio vs what is configured now)',
     expect((await next.audioStatus(tid('th'))).state).toBe('preview-only');
   });
 
-  it('reviewed real-speech audio stays ready when the provider is not configured this session', async () => {
+  it('reviewed synthetic audio stays ready (as practice) when the provider is not configured this session', async () => {
     const fake = new FakeSpeechProvider();
     const env = await makeEnv({ allowFixture: false, providers: [fake] });
     await addStory(env.store, 'sq');
@@ -268,7 +270,7 @@ describe('audioStatus across sessions (stored audio vs what is configured now)',
     await env.gl.setVoiceReview(r.manifest.voiceConfigId, 'reviewed');
     const next = sibling(env, { allowFixture: false }); // no providers at all
     expect(await next.availability()).toMatchObject({ available: false, reason: 'no-provider' });
-    expect(await next.audioStatus(tid('sq'))).toMatchObject({ state: 'ready', evidenceEligible: true });
+    expect(await next.audioStatus(tid('sq'))).toMatchObject({ state: 'ready', evidenceEligible: false });
     expect(((await next.ensureAudio(tid('sq')).catch((e: unknown) => e)) as Error).name).toBe('AudioUnavailable'); // generating more needs a provider
   });
 });
@@ -284,7 +286,7 @@ describe('testimony revisions and text-less segments', () => {
     expect(r.manifest.complete).toBe(true);
     expect((await Promise.all(r.manifest.segmentIds.map((s) => gl.getSegment(s)))).map((s) => s!.displayText)).toEqual(['Dios me perdonó.', 'Entiendo mi corazón.']);
     await gl.setVoiceReview(r.manifest.voiceConfigId, 'reviewed');
-    expect(await gl.audioStatus(id)).toMatchObject({ state: 'ready', totalSegments: 2, evidenceEligible: true });
+    expect(await gl.audioStatus(id)).toMatchObject({ state: 'ready', totalSegments: 2, evidenceEligible: false });
   });
 
   it('ensureSentenceAudio records voice and asset honesty on text-less segments', async () => {

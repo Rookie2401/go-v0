@@ -137,7 +137,7 @@ export interface EvidenceAudit {
   userId: string;
   policyVersion: string;
   totalEvents: number;
-  excluded: Array<{ eventId: string; type: string; reason: 'non-speech-audio' | 'synthetic-audio' | 'machine-checked-audio' | 'unreviewed-voice' | 'unknown-asset' | 'rights-not-cleared' | 'stale-text-binding' | 'insufficient-audible-coverage' | 'sentence-mismatch' | 'assessment-material' }>;
+  excluded: Array<{ eventId: string; type: string; reason: 'non-speech-audio' | 'synthetic-audio' | 'machine-checked-audio' | 'unreviewed-voice' | 'unknown-asset' | 'rights-not-cleared' | 'stale-text-binding' | 'insufficient-audible-coverage' | 'sentence-mismatch' | 'assessment-material' | 'partial-passage' }>;
   rebuilt: boolean;
 }
 
@@ -163,6 +163,13 @@ export interface GoLearn {
   handle(event: DomainEvent): Promise<void>;
   /** Recompute all learner state for a user from the event log (derived state must be recomputable). */
   rebuild(userId: string): Promise<void>;
+  /**
+   * GoListen changed something that decides whether recorded hearing counts (rights revoked or granted, a recording re-imported or
+   * removed, a voice review changed, an asset's quality state changed). Rebuilds the listening-bearing learner state of every learner
+   * who has an AudioSegmentCompleted event (for `textId` when given) from the event log, so no stale listening encounter survives.
+   * Resolves with the user ids rebuilt. Never call from inside a GoLearn read or fold.
+   */
+  invalidateListening(textId?: string): Promise<string[]>;
 
   getItemState(userId: string, itemId: string): Promise<LearnerItemState | undefined>;
   /** GoTell's main query. `ref` may be a formId, lemmaId, phraseId, patternId, or a raw normalized surface (lang required). */

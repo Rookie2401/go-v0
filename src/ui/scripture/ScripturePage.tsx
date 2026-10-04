@@ -79,7 +79,7 @@ function readOpen(lang: string): Set<string> | null {
 }
 
 export function ScripturePage({ lang }: { lang: ScriptureLang }) {
-  const { course, library, bus, userId } = useApp();
+  const { course, library, bus, userId, store } = useApp();
   const navigate = useNavigate();
   const preview = usePreview();
   const { texts: allTexts } = useLangTexts();
@@ -115,20 +115,31 @@ export function ScripturePage({ lang }: { lang: ScriptureLang }) {
     }).catch((e: unknown) => { if (live) { setCatalogTexts([]); setCatalogReady(true); setCatalogError(e instanceof Error ? e.message : 'Could not load Scripture.'); } });
     return () => { live = false; };
   }, [library, course.lang, preview]);
-  // A library row is the resident text's chapter, and is dropped, when it has the same id — or the same canon place, the
-  // same title and the same edition (work). A partial seed passage has a title of its own ("1. Johannes 1,8–9; Johannes 3,16")
-  // and a different edition is a different work, so both of those stay listed beside the complete chapter; the resident copy
-  // is the one that carries the learner's progress. (Matching on place alone listed a different passage as a duplicate;
-  // matching on id alone listed the same complete chapter twice.)
+  // How many live sentences each resident Scripture text has: a resident text is the library chapter only when it is as long.
+  const [residentSentences, setResidentSentences] = useState<Map<string, number>>(new Map());
+  useEffect(() => {
+    let live = true;
+    void Promise.all(residentAll.map(async (t) => [t.id, (await store.sentences.where('textId', t.id)).filter((x) => x.retiredInVersion === undefined).length] as const))
+      .then((rows) => { if (live) setResidentSentences(new Map(rows)); })
+      .catch(() => { if (live) setResidentSentences(new Map()); });
+    return () => { live = false; };
+  }, [store, residentAll]);
+  // A library row is the resident text's chapter, and is dropped, when it has the same id — or when a resident text has the
+  // same canon place, the same title, the same edition (work) AND at least as many sentences (so it is the whole chapter, not
+  // a passage of it). Everything else stays listed beside it: a partial seed passage (it can carry the same title as the
+  // complete chapter — the bundled 1 John "1:8–9; John 3:16" seed and its complete chapter do), another edition, a chapter
+  // whose resident length is not known yet. The resident copy is the one that carries the learner's progress.
   const lazy = useMemo(() => {
     const have = new Set(residentAll.map((t) => t.id));
     const same = (t: CatalogText) => residentAll.some((r) => {
       const a = placeOf(r), b = placeOf(t);
+      const n = residentSentences.get(r.id);
       return !!a && !!b && a.book === b.book && a.chapter === b.chapter && r.title.trim() === t.title.trim()
-        && (!r.workId || !t.workId || r.workId === t.workId);
+        && (!r.workId || !t.workId || r.workId === t.workId)
+        && n !== undefined && n >= (t.features?.sentences ?? Number.POSITIVE_INFINITY);
     });
     return catalogTexts.filter((t) => !have.has(t.id) && !same(t));
-  }, [catalogTexts, residentAll]);
+  }, [catalogTexts, residentAll, residentSentences]);
 
   // Progress and coverage for the resident texts, the same shared reads as before.
   const textIds = useMemo(() => resident.map((t) => t.id), [resident]);

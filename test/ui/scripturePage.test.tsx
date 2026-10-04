@@ -210,13 +210,13 @@ describe('library chapters', () => {
 });
 
 describe('the same chapter in the library under another id', () => {
-  it('lists a complete chapter once, but keeps a partial passage and another edition beside it', async () => {
+  it('lists a complete chapter once (same place, title, edition and length), but keeps a partial passage and another edition beside it', async () => {
     const gen1 = runningNumber('GEN', 1)!;
     const jn1 = runningNumber('1JN', 1)!;
     const h = await german({
       library: [
         // the complete chapter the resident text already is: same place, same title, same work → listed once (the resident copy)
-        catalogText({ id: 'text:de:luther-gen-1', lang: 'de', title: '1. Mose 1', workId: 'work:germany-de:lutherbibel-1912', stream: 'scripture', streams: ['scripture'], chapter: gen1, rights: 'verified-public-domain' }),
+        catalogText({ id: 'text:de:luther-gen-1', lang: 'de', title: '1. Mose 1', workId: 'work:germany-de:lutherbibel-1912', stream: 'scripture', streams: ['scripture'], chapter: gen1, rights: 'verified-public-domain', features: { words: 2, sentences: 1, uniqueForms: 2, meanSentenceWords: 2 } }), // as long as the resident text
         // another edition of the same chapter: a different work → listed beside it
         catalogText({ id: 'text:de:elb-gen-1', lang: 'de', title: '1. Mose 1', workId: 'work:germany-de:elberfelder-1905', stream: 'scripture', streams: ['scripture'], chapter: gen1, rights: 'verified-public-domain' }),
         // the complete chapter beside a partial seed passage with its own title → listed beside it

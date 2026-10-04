@@ -13,6 +13,7 @@ import type { Harness, Mounted } from './harness';
 
 const m = vi.hoisted(() => ({
   health: vi.fn(),
+  me: vi.fn(),
   createTeamClient: vi.fn(),
   fetchTeamTexts: vi.fn(),
   shareBook: vi.fn(),
@@ -24,9 +25,9 @@ vi.mock('../../src/goread/sharing', () => ({ shareableText: m.shareableText }));
 
 let h: Harness;
 let mounted: Mounted | undefined;
-const client = { health: m.health };
+const client = { health: m.health, me: m.me };
 beforeEach(async () => {
-  m.health.mockReset(); m.createTeamClient.mockReset(); m.fetchTeamTexts.mockReset(); m.shareBook.mockReset(); m.shareableText.mockReset();
+  m.health.mockReset(); m.me.mockReset(); m.createTeamClient.mockReset(); m.fetchTeamTexts.mockReset(); m.shareBook.mockReset(); m.shareableText.mockReset();
   m.createTeamClient.mockReturnValue(client);
   m.shareableText.mockResolvedValue({ ok: true });
   h = await makeHarness(); // resets the prefs, so a server is set after this, per test
@@ -34,8 +35,10 @@ beforeEach(async () => {
 afterEach(async () => { await mounted?.unmount(); mounted = undefined; });
 
 const open = async (router: string) => { mounted = await h.mount(<Shell><AppRoutes /></Shell>, { router }); return mounted; };
-const useServer = () => { setPref('teamServer', 'https://team.example.org/api'); };
-const storedPrefs = () => JSON.parse(localStorage.getItem('go-v0:prefs') ?? '{}') as { teamServer?: string; teamCode?: string };
+/** A server is set; with `key: false` the device has no contributor key (read only). */
+const useServer = (o: { key?: boolean } = {}) => { setPref('teamServer', 'https://team.example.org/api'); if (o.key !== false) setPref('teamKey', 'ana-key'); };
+const storedPrefs = () => JSON.parse(localStorage.getItem('go-v0:prefs') ?? '{}') as { teamServer?: string; teamKey?: string; teamCode?: string };
+const unauthorized = () => Object.assign(new Error("That key is not on the Honduras team's list."), { status: 401, error: 'not-on-whitelist' });
 const listSection = () => byLabel(mounted!.container, 'Team texts');
 const addSection = () => byLabel(mounted!.container, 'Add a text');
 const json = (o: unknown, name: string) => new File([JSON.stringify(o)], name, { type: 'application/json' });
@@ -62,37 +65,67 @@ describe('Settings → Team sharing', () => {
     const sec = byLabel(mounted!.container, 'Team sharing');
     expect(sec.getAttribute('data-settings-section')).toBe('team-sharing');
     expect(q(sec, 'h2.section-head')!.textContent).toBe('Team sharing');
-    expect(sec.textContent).toContain("Your team's server holds the texts the team added. Anyone with the app can join any team, read its texts and add to them; a text once added stays. The address is kept on this device.");
+    expect(sec.textContent).toContain("Your team's server holds the texts the team added. Anyone with the app can read any team's texts; adding is open to the people on the team's list. A text once added stays. The address and your key are kept on this device.");
+    expect(sec.textContent).toContain("Optional. Ask whoever keeps your team's list. Without a key you can read everything.");
     const order = qa(mounted!.container, '[data-settings-section]').map((s) => s.getAttribute('data-settings-section'));
     expect(order.indexOf('team-sharing')).toBe(order.indexOf('you') + 1);
     expect(qa(byLabel(mounted!.container, 'Settings sections'), 'button').map((b) => b.textContent)).toContain('Team sharing');
     expect(byLabel<HTMLInputElement>(sec, 'Team server address').placeholder).toBe('https://…');
-    expect(q(sec, '[aria-label="Team code"]')).toBeNull(); // no code: the team is the course
-    expect(q(sec, 'input[type="password"]')).toBeNull();
+    const keyField = byLabel<HTMLInputElement>(sec, 'Your contributor key');
+    expect(keyField.type).toBe('password');
+    expect(keyField.getAttribute('autocomplete')).toBe('off');
+    expect(q(sec, '[aria-label="Team code"]')).toBeNull();
     expect(button(sec, 'Check the server').disabled).toBe(true);
     expect(sec.textContent).toContain('No team server set. Team Texts stays on this device.');
   });
 
-  it('typing an address keeps it in the preferences on this device (and stores no code)', async () => {
+  it('typing an address and a key keeps them in the preferences on this device', async () => {
     await open('/settings');
     const sec = byLabel(mounted!.container, 'Team sharing');
     await typeInto(byLabel<HTMLInputElement>(sec, 'Team server address'), 'https://team.example.org');
+    await typeInto(byLabel<HTMLInputElement>(sec, 'Your contributor key'), 'ana-key');
     expect(getPref('teamServer')).toBe('https://team.example.org');
-    expect(storedPrefs()).toMatchObject({ teamServer: 'https://team.example.org' });
+    expect(getPref('teamKey')).toBe('ana-key');
+    expect(storedPrefs()).toMatchObject({ teamServer: 'https://team.example.org', teamKey: 'ana-key' });
     expect(storedPrefs().teamCode).toBeUndefined();
     expect(button(sec, 'Check the server').disabled).toBe(false);
     expect(sec.textContent).not.toContain('No team server set.');
   });
 
-  it('"Check the server" shows the answer', async () => {
-    useServer();
+  it('"Check the server" without a key shows the answer and asks nothing about the key', async () => {
+    useServer({ key: false });
     m.health.mockResolvedValue({ ok: true });
     await open('/settings');
     const sec = byLabel(mounted!.container, 'Team sharing');
     await click(button(sec, 'Check the server'));
     expect(m.createTeamClient).toHaveBeenCalledWith({ baseUrl: 'https://team.example.org/api' });
+    expect(m.me).not.toHaveBeenCalled();
     expect(q(sec, '[role="status"]')!.textContent).toBe('The team server answers.');
     expect(q(sec, '[role="alert"]')).toBeNull();
+  });
+
+  it('"Check the server" with a key says who the key is for, in the learner\'s team', async () => {
+    useServer();
+    m.health.mockResolvedValue({ ok: true });
+    m.me.mockResolvedValue({ team: 'honduras-es', name: 'Ana' });
+    await open('/settings');
+    const sec = byLabel(mounted!.container, 'Team sharing');
+    await click(button(sec, 'Check the server'));
+    expect(m.createTeamClient).toHaveBeenCalledWith({ baseUrl: 'https://team.example.org/api', key: 'ana-key' });
+    expect(m.me).toHaveBeenCalledWith('honduras-es');
+    expect(q(sec, '[role="status"]')!.textContent).toBe('You can add texts to the Honduras team as Ana.');
+    expect(q(sec, '[role="alert"]')).toBeNull();
+  });
+
+  it('"Check the server" shows the 401 message for a key that is not on the list', async () => {
+    useServer();
+    m.health.mockResolvedValue({ ok: true });
+    m.me.mockRejectedValue(unauthorized());
+    await open('/settings');
+    const sec = byLabel(mounted!.container, 'Team sharing');
+    await click(button(sec, 'Check the server'));
+    expect(q(sec, '[role="alert"]')!.textContent).toBe("That key is not on the Honduras team's list.");
+    expect(q(sec, '[role="status"]')).toBeNull();
   });
 
   it('"Check the server" shows the error, whether the server refuses or cannot be reached', async () => {
@@ -129,7 +162,7 @@ describe('Team Texts with a team server: fetching', () => {
     m.fetchTeamTexts.mockImplementation(() => new Promise((resolve) => { release = () => resolve({ fetched: 5, imported: 3, skipped: 2, failed: [] }); }));
     await open('/team-texts');
     expect(q(mounted!.container, '[data-testid="team-server-line"]')!.textContent).toContain('Team server: team.example.org');
-    expect(m.createTeamClient).toHaveBeenCalledWith({ baseUrl: 'https://team.example.org/api' });
+    expect(m.createTeamClient).toHaveBeenCalledWith({ baseUrl: 'https://team.example.org/api', key: 'ana-key' });
     expect(mounted!.container.textContent).not.toContain('set a team server in Settings');
 
     await click(button(mounted!.container, 'Fetch team texts'));
@@ -184,7 +217,7 @@ describe('Team Texts with a team server: fetching', () => {
 });
 
 describe('Team Texts with a team server: sharing a book', () => {
-  it('a book row offers "Share … with the team" and sends its text ids with the learner\'s name', async () => {
+  it('a book row offers "Share … with the team" and sends its text ids (the server names the adder from the key)', async () => {
     useServer();
     await seedShelf();
     m.shareBook.mockResolvedValue({ shared: ['text:es:libro-1', 'text:es:libro-2'], refused: [] });
@@ -193,7 +226,7 @@ describe('Team Texts with a team server: sharing a book', () => {
     await click(button(book, 'Share Mi libro with the team'));
     expect(m.shareBook).toHaveBeenCalledTimes(1);
     expect(m.shareBook).toHaveBeenCalledWith({
-      client, course: 'honduras-es', store: h.store, textIds: ['text:es:libro-1', 'text:es:libro-2'], addedBy: 'Test learner',
+      client, course: 'honduras-es', store: h.store, textIds: ['text:es:libro-1', 'text:es:libro-2'],
     });
     expect(q(book, '[role="status"]')!.textContent).toBe('Shared with the team.');
     // the other book is untouched
@@ -214,6 +247,39 @@ describe('Team Texts with a team server: sharing a book', () => {
     m.shareBook.mockRejectedValueOnce(new Error('The team server did not answer.'));
     await click(button(cuento(), 'Share Un cuento with the team'));
     expect(q(cuento(), '[role="alert"]')!.textContent).toBe('The team server did not answer.');
+  });
+
+  it('a 401 (the key is not on the list) shows its message in an alert', async () => {
+    useServer();
+    await seedShelf();
+    m.shareBook.mockRejectedValueOnce(unauthorized());
+    await open('/team-texts');
+    const cuento = () => qa(listSection(), 'li.work[data-book]').find((r) => (r.textContent ?? '').includes('Un cuento'))!;
+    await click(button(cuento(), 'Share Un cuento with the team'));
+    expect(q(cuento(), '[role="alert"]')!.textContent).toBe("That key is not on the Honduras team's list.");
+    expect(q(cuento(), '[role="status"]')).toBeNull();
+  });
+
+  it('without a contributor key: no share buttons, no verdicts asked, a muted line says what is needed, and Fetch still works', async () => {
+    useServer({ key: false });
+    await seedShelf();
+    m.fetchTeamTexts.mockResolvedValue({ fetched: 0, imported: 0, skipped: 0, failed: [] });
+    await open('/team-texts');
+    const line = q(mounted!.container, '[data-testid="team-server-line"]')!;
+    expect(line.textContent).toContain("To add texts to the team's shelf you need a contributor key (Settings → Team sharing).");
+    expect(m.createTeamClient).toHaveBeenCalledWith({ baseUrl: 'https://team.example.org/api' });
+    expect(qa(listSection(), 'li.work[data-book]')).toHaveLength(2);
+    expect(qa(listSection(), 'button')).toHaveLength(0);
+    expect(m.shareableText).not.toHaveBeenCalled();
+    await click(button(mounted!.container, 'Fetch team texts'));
+    expect(m.fetchTeamTexts).toHaveBeenCalledTimes(1);
+    expect(q(line, '[role="status"]')!.textContent).toBe('0 new texts fetched, 0 already here.');
+  });
+
+  it('with a key the muted "you need a key" line is not shown', async () => {
+    useServer();
+    await open('/team-texts');
+    expect(mounted!.container.textContent).not.toContain('you need a contributor key');
   });
 
   it('says how many were already on the team\'s shelf, as part of the status line', async () => {
@@ -265,9 +331,18 @@ describe('Team Texts with a team server: sharing what was just imported', () => 
     expect(offer.textContent).toContain('Share these 1 text with the team?');
     expect(m.shareBook).not.toHaveBeenCalled(); // nothing is sent without a tap
     await click(button(offer, 'Share with the team'));
-    expect(m.shareBook).toHaveBeenCalledWith({ client, course: 'honduras-es', store: h.store, textIds: ['text:es:my-story'], addedBy: 'Test learner' });
+    expect(m.shareBook).toHaveBeenCalledWith({ client, course: 'honduras-es', store: h.store, textIds: ['text:es:my-story'] });
     expect(q(offer, '[role="status"]')!.textContent).toBe('Shared with the team.');
     expect(qa(offer, 'button')).toHaveLength(0); // sent: the question is answered
+  });
+
+  it('is not offered when the device has a server but no contributor key', async () => {
+    useServer({ key: false });
+    await open('/team-texts');
+    await pickFiles(byLabel<HTMLInputElement>(addSection(), 'Choose text files to import'), [json({ id: 'my-story', title: 'My story' }, 'my-story.json')]);
+    await click(button(addSection(), 'Import 1 document'));
+    expect(q(mounted!.container, '[data-testid="team-share-offer"]')).toBeNull();
+    expect(m.shareBook).not.toHaveBeenCalled();
   });
 
   it('is not offered when no server is set', async () => {

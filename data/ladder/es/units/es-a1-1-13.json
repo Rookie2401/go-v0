@@ -1,0 +1,415 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-13",
+  "lang": "es",
+  "title": "The lost school bag",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-13",
+    "title": "The lost school bag (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: present-tense narration; \"cipote\" (boy, Honduran, friendly; doña Marta says \"este cipote\"); \"Siempre pierdo todo\"; \"dolor de cabeza\"; \"Gracias a Dios\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "story",
+    "school",
+    "searching"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nico": "Nico",
+    "luis": "Luis",
+    "marta": "Doña Marta",
+    "carlos": "Señor Carlos",
+    "karla": "Karla",
+    "ana": "Ana",
+    "sam": "Sam"
+  },
+  "sections": [
+    {
+      "title": "The lost school bag",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es lunes en la mañana.",
+              "english": "It is Monday morning."
+            },
+            {
+              "text": "Nico está mejor, pero tiene que estudiar.",
+              "english": "Nico is better, but he has to study."
+            },
+            {
+              "text": "Hoy no tiene fiebre y no está enfermo.",
+              "english": "Today he has no fever and is not sick."
+            },
+            {
+              "text": "Sale de la casa a las siete con su mochila.",
+              "english": "He leaves the house at seven with his backpack."
+            },
+            {
+              "text": "Llega a la escuela a las ocho.",
+              "english": "He gets to school at eight."
+            },
+            {
+              "text": "En la tarde Nico no la tiene.",
+              "english": "In the afternoon Nico does not have it."
+            },
+            {
+              "text": "Nico pierde la mochila.",
+              "english": "Nico loses his backpack."
+            },
+            {
+              "speaker": "nico",
+              "text": "Luis, no tengo mi mochila.",
+              "english": "Luis, I do not have my backpack."
+            },
+            {
+              "speaker": "luis",
+              "text": "¿Y tu libro?",
+              "english": "And your book?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Está con ella.",
+              "english": "It is with it."
+            },
+            {
+              "speaker": "luis",
+              "text": "¿Dónde está?",
+              "english": "Where is it?"
+            },
+            {
+              "speaker": "nico",
+              "text": "No sé.",
+              "english": "I do not know."
+            },
+            {
+              "speaker": "nico",
+              "text": "Siempre pierdo todo.",
+              "english": "I always lose everything."
+            },
+            {
+              "text": "Nico tiene la mano en la boca.",
+              "english": "Nico has his hand over his mouth."
+            },
+            {
+              "text": "Está mal.",
+              "english": "He feels bad."
+            },
+            {
+              "speaker": "luis",
+              "text": "Vamos a buscar, Nico.",
+              "english": "Let us look, Nico."
+            },
+            {
+              "speaker": "luis",
+              "text": "Necesitas el libro para estudiar.",
+              "english": "You need the book to study."
+            },
+            {
+              "text": "Luis y Nico buscan en la escuela.",
+              "english": "Luis and Nico look at the school."
+            },
+            {
+              "speaker": "nico",
+              "text": "Aquí no está.",
+              "english": "It is not here."
+            },
+            {
+              "speaker": "luis",
+              "text": "Me duele la cabeza.",
+              "english": "My head hurts."
+            },
+            {
+              "speaker": "luis",
+              "text": "Tengo mucho trabajo hoy.",
+              "english": "I have a lot of work today."
+            },
+            {
+              "speaker": "luis",
+              "text": "Hay una reunión con el pastor.",
+              "english": "There is a meeting with the pastor."
+            },
+            {
+              "speaker": "luis",
+              "text": "No puedo estar mucho aquí.",
+              "english": "I cannot stay here long."
+            },
+            {
+              "speaker": "nico",
+              "text": "Yo voy, Luis.",
+              "english": "I will go, Luis."
+            },
+            {
+              "speaker": "luis",
+              "text": "¿Qué hora es?",
+              "english": "What time is it?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Son las cinco.",
+              "english": "It is five."
+            },
+            {
+              "text": "Ahora Nico busca en la calle.",
+              "english": "Now Nico looks in the street."
+            },
+            {
+              "text": "Los vecinos ayudan.",
+              "english": "The neighbours help."
+            },
+            {
+              "text": "Doña Marta sale de la casa.",
+              "english": "Doña Marta leaves the house."
+            },
+            {
+              "speaker": "marta",
+              "text": "Este cipote pierde todo.",
+              "english": "This boy loses everything."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hoy tengo dolor de cabeza.",
+              "english": "Today I have a headache."
+            },
+            {
+              "speaker": "marta",
+              "text": "¿Dónde buscamos?",
+              "english": "Where do we look?"
+            },
+            {
+              "speaker": "nico",
+              "text": "En la tienda del señor Carlos.",
+              "english": "At Mr. Carlos's shop."
+            },
+            {
+              "text": "Nico y doña Marta llegan a la tienda.",
+              "english": "Nico and doña Marta get to the shop."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Buenos días, cipote.",
+              "english": "Good morning, kid."
+            },
+            {
+              "speaker": "carlos",
+              "text": "¿Qué hacés aquí?",
+              "english": "What are you doing here?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Nico está mal, señor Carlos.",
+              "english": "Nico is upset, Mr. Carlos."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Aquí no hay nada, pero los catrachos siempre ayudamos.",
+              "english": "There is nothing here, but we Hondurans always help."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Voy a decir a los vecinos.",
+              "english": "I am going to tell the neighbours."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Los vecinos siempre encuentran todo.",
+              "english": "The neighbours always find everything."
+            },
+            {
+              "text": "Todos están en la calle.",
+              "english": "Everyone is in the street."
+            },
+            {
+              "text": "Ana sale del hospital a las cuatro.",
+              "english": "Ana leaves the hospital at four."
+            },
+            {
+              "text": "La enfermera llega a la calle.",
+              "english": "The nurse comes to the street."
+            },
+            {
+              "speaker": "ana",
+              "text": "¿Qué hacen?",
+              "english": "What are you doing?"
+            },
+            {
+              "speaker": "nico",
+              "text": "La buscamos, Ana.",
+              "english": "We are looking for it, Ana."
+            },
+            {
+              "speaker": "ana",
+              "text": "Yo puedo ayudar.",
+              "english": "I can help."
+            },
+            {
+              "text": "Daniel, el médico, también ayuda.",
+              "english": "Daniel, the doctor, helps too."
+            },
+            {
+              "speaker": "karla",
+              "text": "¡Nico!",
+              "english": "Nico!"
+            },
+            {
+              "speaker": "karla",
+              "text": "Aquí está tu mochila.",
+              "english": "Here is your backpack."
+            },
+            {
+              "text": "Karla la encuentra en la escuela.",
+              "english": "Karla finds it at the school."
+            },
+            {
+              "speaker": "karla",
+              "text": "Está en la mesa de Luis.",
+              "english": "It is on Luis's table."
+            },
+            {
+              "speaker": "nico",
+              "text": "¡Mi libro!",
+              "english": "My book!"
+            },
+            {
+              "speaker": "nico",
+              "text": "¡Está aquí!",
+              "english": "It is here!"
+            },
+            {
+              "text": "Nico encuentra todo.",
+              "english": "Nico finds everything."
+            },
+            {
+              "text": "Con los ojos grandes, Nico dice gracias.",
+              "english": "With wide eyes, Nico says thank you."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gracias a Dios.",
+              "english": "Thank God."
+            },
+            {
+              "speaker": "nico",
+              "text": "Gracias, Karla.",
+              "english": "Thank you, Karla."
+            },
+            {
+              "speaker": "nico",
+              "text": "Gracias, vecinos.",
+              "english": "Thank you, neighbours."
+            },
+            {
+              "speaker": "luis",
+              "text": "Mañana es un buen día.",
+              "english": "Tomorrow is a good day."
+            },
+            {
+              "speaker": "ana",
+              "text": "Cipote, esta noche tomamos café en la casa.",
+              "english": "Kid, tonight we are having coffee at home."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hola, Nico.",
+              "english": "Hello, Nico."
+            },
+            {
+              "speaker": "sam",
+              "text": "Yo también voy a la casa de doña Marta.",
+              "english": "I am going to doña Marta's house too."
+            },
+            {
+              "speaker": "nico",
+              "text": "Vení, Sam.",
+              "english": "Come, Sam."
+            },
+            {
+              "speaker": "nico",
+              "text": "Hay pan y sopa.",
+              "english": "There is bread and soup."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Tengo hambre.",
+              "english": "I am hungry."
+            },
+            {
+              "speaker": "marta",
+              "text": "Mañana vas a la escuela con Luis.",
+              "english": "Tomorrow you go to school with Luis."
+            },
+            {
+              "speaker": "nico",
+              "text": "Sí, abuela.",
+              "english": "Yes, grandma."
+            },
+            {
+              "speaker": "nico",
+              "text": "Salgo a las siete.",
+              "english": "I leave at seven."
+            },
+            {
+              "speaker": "luis",
+              "text": "Gracias a todos.",
+              "english": "Thanks to everyone."
+            },
+            {
+              "speaker": "luis",
+              "text": "Ahora Nico tiene todo para estudiar.",
+              "english": "Now Nico has everything to study."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

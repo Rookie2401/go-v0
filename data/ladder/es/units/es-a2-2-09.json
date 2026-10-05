@@ -1,0 +1,1005 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-09",
+  "lang": "es",
+  "title": "Si tenés fiebre",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-09",
+    "title": "If you have a fever (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "health"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "S": "Sam",
+    "K": "Karla",
+    "A": "Ana",
+    "L": "Luis",
+    "M": "Madre",
+    "E": "Elena"
+  },
+  "sections": [
+    {
+      "title": "Una mañana difícil",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es lunes, y Sam no se levanta.",
+              "english": "It is Monday, and Sam does not get up."
+            },
+            {
+              "text": "Karla entra en el dormitorio y no oye nada.",
+              "english": "Karla goes into the bedroom and hears nothing."
+            },
+            {
+              "text": "Entra con cuidado en la habitación.",
+              "english": "She goes carefully into the room."
+            },
+            {
+              "text": "Sam está en la cama, con la cara roja y los ojos pequeños.",
+              "english": "Sam is in bed, with his face red and his eyes small."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam, ¿qué te pasa?",
+              "english": "Sam, what's wrong?",
+              "speaker": "K"
+            },
+            {
+              "text": "Tenés las mejillas rojas y el cabello en la cara.",
+              "english": "Your cheeks are red and your hair is on your face.",
+              "speaker": "K"
+            },
+            {
+              "text": "Me duele la cabeza, y también las piernas.",
+              "english": "My head hurts, and my legs too.",
+              "speaker": "S"
+            },
+            {
+              "text": "Tengo mucha sed, y los labios me duelen.",
+              "english": "I'm very thirsty, and my lips hurt.",
+              "speaker": "S"
+            },
+            {
+              "text": "Dejame ver.",
+              "english": "Let me see.",
+              "speaker": "K"
+            },
+            {
+              "text": "Tenés la cara muy caliente.",
+              "english": "Your face is very hot.",
+              "speaker": "K"
+            },
+            {
+              "text": "Si tenés fiebre, hay que llamar a Ana.",
+              "english": "If you have a fever, we have to call Ana.",
+              "speaker": "K"
+            },
+            {
+              "text": "Estoy débil.",
+              "english": "I'm weak.",
+              "speaker": "S"
+            },
+            {
+              "text": "Casi no puedo levantar la mano.",
+              "english": "I can hardly lift my hand.",
+              "speaker": "S"
+            },
+            {
+              "text": "Un vaso de agua está pesado como una olla.",
+              "english": "A glass of water is heavy like a pot.",
+              "speaker": "S"
+            },
+            {
+              "text": "No te movás.",
+              "english": "Don't move.",
+              "speaker": "K"
+            },
+            {
+              "text": "Voy a traerte agua.",
+              "english": "I'll bring you water.",
+              "speaker": "K"
+            },
+            {
+              "text": "Si tenés sed, tomá agua fresca.",
+              "english": "If you're thirsty, drink cool water.",
+              "speaker": "K"
+            },
+            {
+              "text": "No la tomés muy fría ni muy caliente.",
+              "english": "Don't drink it too cold or too hot.",
+              "speaker": "K"
+            },
+            {
+              "text": "Mejor tibia.",
+              "english": "Better lukewarm.",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Y si el agua me cae mal?",
+              "english": "And if the water doesn't agree with me?",
+              "speaker": "S"
+            },
+            {
+              "text": "Si te cae mal, lo intentamos otra vez con menos.",
+              "english": "If it doesn't agree with you, we'll try again with less.",
+              "speaker": "K"
+            },
+            {
+              "text": "Primero tengo que llamar a Ana.",
+              "english": "First I have to call Ana.",
+              "speaker": "K"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla hace una llamada.",
+              "english": "Karla makes a call."
+            },
+            {
+              "text": "Habla poco, pero con paz.",
+              "english": "She speaks little, but calmly."
+            },
+            {
+              "text": "Después regresa con una jarra llena de agua y un vaso vacío.",
+              "english": "Then she comes back with a jug full of water and an empty glass."
+            },
+            {
+              "text": "Llena el vaso hasta la mitad.",
+              "english": "She fills the glass halfway."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ana en la casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa tarde, Luis maneja hasta la casa de Karla con Ana.",
+              "english": "That afternoon Luis drives to Karla's house with Ana."
+            },
+            {
+              "text": "Estaciona el carro en la esquina, porque la calle es pequeña.",
+              "english": "He parks the car on the corner, because the street is small."
+            },
+            {
+              "text": "Ana cruza el patio con su bolsa.",
+              "english": "Ana crosses the courtyard with her bag."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Buenas tardes, Karla.",
+              "english": "Good afternoon, Karla.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Dónde está el enfermo?",
+              "english": "Where is the patient?",
+              "speaker": "A"
+            },
+            {
+              "text": "En su habitación.",
+              "english": "In his room.",
+              "speaker": "K"
+            },
+            {
+              "text": "Tiene fiebre desde la mañana, y está muy débil.",
+              "english": "He's had a fever since the morning, and he is very weak.",
+              "speaker": "K"
+            },
+            {
+              "text": "Ana entra y mira a Sam.",
+              "english": "Ana goes in and looks at Sam."
+            },
+            {
+              "text": "Pone la mano en su mejilla y en sus manos.",
+              "english": "She puts her hand on his cheek and his hands."
+            },
+            {
+              "text": "Le mira los ojos, los labios y el aliento.",
+              "english": "She looks at his eyes, his lips and his breath."
+            },
+            {
+              "text": "Le pide que abra la boca.",
+              "english": "She asks him to open his mouth."
+            },
+            {
+              "text": "Sam, ¿qué sentís?",
+              "english": "Sam, what do you feel?",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Te duele el cuerpo?",
+              "english": "Does your body hurt?",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Te duele la pierna?",
+              "english": "Does your leg hurt?",
+              "speaker": "A"
+            },
+            {
+              "text": "Me duele todo.",
+              "english": "Everything hurts.",
+              "speaker": "S"
+            },
+            {
+              "text": "Tengo sed todo el tiempo.",
+              "english": "I'm thirsty all the time.",
+              "speaker": "S"
+            },
+            {
+              "text": "Y también me duele la vista.",
+              "english": "And my sight hurts too.",
+              "speaker": "S"
+            },
+            {
+              "text": "Eso pasa con la fiebre.",
+              "english": "That happens with a fever.",
+              "speaker": "A"
+            },
+            {
+              "text": "Podría ser dengue, o podría ser otra cosa.",
+              "english": "It could be dengue, or it could be something else.",
+              "speaker": "A"
+            },
+            {
+              "text": "Tenemos que hacer una prueba.",
+              "english": "We have to do a test.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Es peligroso?",
+              "english": "Is it dangerous?",
+              "speaker": "S"
+            },
+            {
+              "text": "Puede ser peligroso si no lo cuidás.",
+              "english": "It can be dangerous if you don't take care of it.",
+              "speaker": "A"
+            },
+            {
+              "text": "Pero si tomás agua, descansás y vas al hospital cuando te lo digo, no hay que temer.",
+              "english": "But if you drink water, rest and go to the hospital when I tell you, there is no need to fear.",
+              "speaker": "A"
+            },
+            {
+              "text": "Es importante no temer, pero tampoco hay que olvidar el cuidado.",
+              "english": "It is important not to fear, but we must also not forget to be careful.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Si tenés fiebre...",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana se sienta al lado de la cama y explica a Sam y a Karla lo que tienen que hacer.",
+              "english": "Ana sits beside the bed and explains to Sam and Karla what they have to do."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Primero, el agua.",
+              "english": "First, water.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si tenés fiebre, bebé mucha agua.",
+              "english": "If you have a fever, drink a lot of water.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si tenés sed, no esperés: bebé ahora.",
+              "english": "If you're thirsty, don't wait: drink now.",
+              "speaker": "A"
+            },
+            {
+              "text": "Es necesario tener el cuerpo lleno de agua.",
+              "english": "It is necessary to have your body full of water.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si el vaso está vacío, llenalo; si está lleno, bebé.",
+              "english": "If the glass is empty, fill it; if it is full, drink.",
+              "speaker": "A"
+            },
+            {
+              "text": "Después, la comida.",
+              "english": "Then, food.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si no tenés hambre, comé algo ligero: sopa, arroz blando, pan suave.",
+              "english": "If you're not hungry, eat something light: soup, soft rice, soft bread.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si comés cosas pesadas, te vas a sentir mal.",
+              "english": "If you eat heavy things, you'll feel bad.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Y el pan duro?",
+              "english": "And hard bread?",
+              "speaker": "S"
+            },
+            {
+              "text": "Si el pan está duro, mejor no lo comás.",
+              "english": "If the bread is hard, better not to eat it.",
+              "speaker": "A"
+            },
+            {
+              "text": "Hay que buscar lo blando.",
+              "english": "You have to look for what is soft.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si podés, comé un poco cada hora.",
+              "english": "If you can, eat a little every hour.",
+              "speaker": "A"
+            },
+            {
+              "text": "Y si el aliento te huele mal, tomá más agua.",
+              "english": "And if your breath smells bad, drink more water.",
+              "speaker": "A"
+            },
+            {
+              "text": "Luego, la habitación.",
+              "english": "Then, the room.",
+              "speaker": "A"
+            },
+            {
+              "text": "Mantené la habitación fresca.",
+              "english": "Keep the room cool.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si hace calor, abrí la cortina y movela.",
+              "english": "If it is hot, open the curtain and move it.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si hay mucha luz, apagá la luz.",
+              "english": "If there is too much light, turn off the light.",
+              "speaker": "A"
+            },
+            {
+              "text": "Colocá una manta ligera, no pesada.",
+              "english": "Put on a light blanket, not a heavy one.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si tenés frío, cubrite un poco, pero no mucho.",
+              "english": "If you're cold, cover up a bit, but not much.",
+              "speaker": "A"
+            },
+            {
+              "text": "Y si te duele la pierna, no andés mucho.",
+              "english": "And if your leg hurts, don't walk much.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Y si le sube la fiebre?",
+              "english": "And if his fever goes up?",
+              "speaker": "K"
+            },
+            {
+              "text": "Si le sube la fiebre, o si habla mal, o si el aliento le huele diferente, me llamás.",
+              "english": "If his fever goes up, or if he speaks badly, or if his breath smells different, you call me.",
+              "speaker": "A"
+            },
+            {
+              "text": "Y si hay sangre, vamos al hospital ahora.",
+              "english": "And if there is blood, we go to the hospital now.",
+              "speaker": "A"
+            },
+            {
+              "text": "Karla, si Sam duerme mucho, está bien.",
+              "english": "Karla, if Sam sleeps a lot, that's fine.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si no puede despertar, es peligroso.",
+              "english": "If he can't wake up, it's dangerous.",
+              "speaker": "A"
+            },
+            {
+              "text": "Deberías mirarlo cada hora.",
+              "english": "You should look at him every hour.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El viaje al hospital",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Al otro día, la fiebre no baja.",
+              "english": "The next day the fever does not go down."
+            },
+            {
+              "text": "Luis conduce hasta el hospital, y Ana va con ellos.",
+              "english": "Luis drives to the hospital, and Ana goes with them."
+            },
+            {
+              "text": "En la avenida hay mucha gente.",
+              "english": "On the avenue there are lots of people."
+            },
+            {
+              "text": "Un carro grande impide el camino, y Luis tiene que detenerse en la esquina.",
+              "english": "A big vehicle blocks the way, and Luis has to stop at the corner."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hoy hay un anuncio en la avenida.",
+              "english": "Today there is a notice on the avenue.",
+              "speaker": "L"
+            },
+            {
+              "text": "No se permite estacionar cerca del hospital.",
+              "english": "Parking near the hospital is not permitted.",
+              "speaker": "L"
+            },
+            {
+              "text": "Entonces dejamos el carro en el restaurante de la esquina.",
+              "english": "Then we leave the car at the restaurant on the corner.",
+              "speaker": "A"
+            },
+            {
+              "text": "Allá sí se puede estacionar.",
+              "english": "There you can park.",
+              "speaker": "A"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El hospital es público, pero hay una parte privada también.",
+              "english": "The hospital is public, but there is a private part too."
+            },
+            {
+              "text": "En la parte pública hay mucha gente esperando.",
+              "english": "In the public part there are lots of people waiting."
+            },
+            {
+              "text": "Ana conoce a una enfermera, y ella ayuda a Sam.",
+              "english": "Ana knows a nurse, and she helps Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Aquí no me obligan a esperar mucho, ¿verdad?",
+              "english": "They don't make me wait long here, do they?",
+              "speaker": "L"
+            },
+            {
+              "text": "No es para vos, Luis.",
+              "english": "It's not for you, Luis.",
+              "speaker": "A"
+            },
+            {
+              "text": "Es para Sam.",
+              "english": "It's for Sam.",
+              "speaker": "A"
+            },
+            {
+              "text": "Sam, presentá tu pasaporte y firmá aquí.",
+              "english": "Sam, show your passport and sign here.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Tengo que firmar algo?",
+              "english": "Do I have to sign something?",
+              "speaker": "S"
+            },
+            {
+              "text": "Sí.",
+              "english": "Yes.",
+              "speaker": "A"
+            },
+            {
+              "text": "Es una forma, y es necesaria.",
+              "english": "It is a form, and it is necessary.",
+              "speaker": "A"
+            },
+            {
+              "text": "Karla, vos también firmá.",
+              "english": "Karla, you sign too.",
+              "speaker": "A"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La prueba sale bien: no es dengue.",
+              "english": "The test comes out fine: it is not dengue."
+            },
+            {
+              "text": "El doctor dice que Sam solo necesita agua y tiempo, y que debe descansar.",
+              "english": "The doctor says Sam only needs water and time, and that he must rest."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La clínica y los bebés",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dos días después, Sam está mejor.",
+              "english": "Two days later Sam is better."
+            },
+            {
+              "text": "Ana lo invita a la clínica, porque tiene una reunión para madres con bebés.",
+              "english": "Ana invites him to the clinic, because she has a meeting for mothers with babies."
+            },
+            {
+              "text": "Sam quiere ayudar, pero se sienta en la sala y escucha.",
+              "english": "Sam wants to help, but he sits in the waiting room and listens."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Buenas tardes, señoras.",
+              "english": "Good afternoon, ladies.",
+              "speaker": "A"
+            },
+            {
+              "text": "Hoy vamos a hablar de los bebés.",
+              "english": "Today we are going to talk about babies.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si su bebé tiene fiebre, actúen con paz.",
+              "english": "If your baby has a fever, act calmly.",
+              "speaker": "A"
+            },
+            {
+              "text": "Primero revisen el peso y la temperatura.",
+              "english": "First check the weight and the temperature.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si el bebé está débil y no quiere comer, vengan a la clínica.",
+              "english": "If the baby is weak and doesn't want to eat, come to the clinic.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si tiene la mejilla muy caliente, mantengan el cuerpo fresco.",
+              "english": "If the cheek is very hot, keep the body cool.",
+              "speaker": "A"
+            },
+            {
+              "text": "Pueden usar agua tibia, no muy fría.",
+              "english": "You can use lukewarm water, not too cold.",
+              "speaker": "A"
+            },
+            {
+              "text": "Doctora, ¿y si el bebé tiene un golpe en la cabeza?",
+              "english": "Doctor, and what if the baby has a bump on the head?",
+              "speaker": "M"
+            },
+            {
+              "text": "Si el golpe es grande, o si el bebé llora mucho, o si no mira bien, vengan ahora.",
+              "english": "If the bump is big, or if the baby cries a lot, or if he doesn't look right, come now.",
+              "speaker": "A"
+            },
+            {
+              "text": "Su vista es muy importante.",
+              "english": "His sight is very important.",
+              "speaker": "A"
+            },
+            {
+              "text": "Es peligroso esperar.",
+              "english": "It is dangerous to wait.",
+              "speaker": "A"
+            },
+            {
+              "text": "Y los cortes, doña Ana.",
+              "english": "And cuts, doña Ana.",
+              "speaker": "E"
+            },
+            {
+              "text": "Mi niño siempre se hace cortes en las manos.",
+              "english": "My boy is always cutting his hands.",
+              "speaker": "E"
+            },
+            {
+              "text": "Si hay un corte, ponga agua limpia en la herida.",
+              "english": "If there is a cut, put clean water on the wound.",
+              "speaker": "A"
+            },
+            {
+              "text": "La limpieza es lo más útil.",
+              "english": "Cleanliness is the most useful thing.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si la herida no mejora, vengan a la clínica.",
+              "english": "If the wound doesn't get better, come to the clinic.",
+              "speaker": "A"
+            },
+            {
+              "text": "Una cosa más.",
+              "english": "One more thing.",
+              "speaker": "A"
+            },
+            {
+              "text": "Después del agua, cubran al bebé con una toalla suave y mantengan su cabello limpio.",
+              "english": "After the water, cover the baby with a soft towel and keep his hair clean.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una charla para la comunidad",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana también habla en una reunión general de la comunidad.",
+              "english": "Ana also speaks at a general meeting of the community."
+            },
+            {
+              "text": "La clínica anuncia una oferta: esta semana la prueba cuesta menos.",
+              "english": "The clinic announces an offer: this week the test costs less."
+            },
+            {
+              "text": "Hay mucha gente, y todos escuchan con cuidado.",
+              "english": "There are lots of people, and everyone listens carefully."
+            },
+            {
+              "text": "Si quieren estar sanos, necesitan tres cosas: limpieza, agua y tiempo para descansar.",
+              "english": "If you want to be healthy, you need three things: cleanliness, water and time to rest.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si no hay una, el cuerpo se pone débil.",
+              "english": "If there is not one, the body gets weak.",
+              "speaker": "A"
+            },
+            {
+              "text": "Primero, la limpieza.",
+              "english": "First, cleanliness.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si tienen un bebé, cuiden su cabello y su piel.",
+              "english": "If you have a baby, look after his hair and skin.",
+              "speaker": "A"
+            },
+            {
+              "text": "La limpieza es útil para todo.",
+              "english": "Cleanliness is useful for everything.",
+              "speaker": "A"
+            },
+            {
+              "text": "No tiren basura en la calle.",
+              "english": "Don't throw rubbish in the street.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si el bebé está sano, su peso sube cada mes.",
+              "english": "If the baby is healthy, his weight goes up every month.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si su peso no sube, vengan a la clínica.",
+              "english": "If his weight doesn't go up, come to the clinic.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ese peso es una señal importante.",
+              "english": "That weight is an important sign.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si un niño tiene un golpe en la pierna, no lo obliguen a andar.",
+              "english": "If a child has a bump on the leg, don't make him walk.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si la comida huele mal, no la coman.",
+              "english": "If the food smells bad, don't eat it.",
+              "speaker": "A"
+            },
+            {
+              "text": "Los niños no deben llevar cosas pesadas.",
+              "english": "Children should not carry heavy things.",
+              "speaker": "A"
+            },
+            {
+              "text": "Cuando hay fiebre, una comida ligera es útil.",
+              "english": "When there is a fever, a light meal is useful.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si el pan está duro, es mejor un pan blando.",
+              "english": "If the bread is hard, a soft bread is better.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si la jarra está vacía, llénenla.",
+              "english": "If the jug is empty, fill it.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si el agua está tibia, es mejor para los labios.",
+              "english": "If the water is lukewarm, it is better for the lips.",
+              "speaker": "A"
+            },
+            {
+              "text": "Para ver bien, la vista necesita luz.",
+              "english": "To see well, sight needs light.",
+              "speaker": "A"
+            },
+            {
+              "text": "Enciendan la luz de la sala, y si el niño tiene fiebre, hay que parar el juego.",
+              "english": "Turn on the living-room light, and if the child has a fever, you have to stop the game.",
+              "speaker": "A"
+            },
+            {
+              "text": "Es necesario también informar a la clínica.",
+              "english": "It is also necessary to inform the clinic.",
+              "speaker": "A"
+            },
+            {
+              "text": "En esta estación, la lluvia aumenta los insectos.",
+              "english": "In this season, the rain increases the insects.",
+              "speaker": "A"
+            },
+            {
+              "text": "Informen de toda fiebre.",
+              "english": "Report every fever.",
+              "speaker": "A"
+            },
+            {
+              "text": "No hay que temer.",
+              "english": "There is no need to fear.",
+              "speaker": "A"
+            },
+            {
+              "text": "Solo hay que actuar.",
+              "english": "We only need to act.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Karla arregla el hogar",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En casa, Karla trabaja mientras Sam descansa.",
+              "english": "At home Karla works while Sam rests."
+            },
+            {
+              "text": "Ordena la sala, mueve el sofá y barre el piso.",
+              "english": "She tidies the living room, moves the sofa and sweeps the floor."
+            },
+            {
+              "text": "Saca la almohada vieja del armario y mete una almohada suave.",
+              "english": "She takes the old pillow out of the wardrobe and puts a soft pillow in."
+            },
+            {
+              "text": "Guarda las tazas en el comedor y quita la basura.",
+              "english": "She puts the cups away in the dining room and takes out the rubbish."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam, en este hogar nadie está enfermo mucho tiempo.",
+              "english": "Sam, in this home nobody is sick for long.",
+              "speaker": "K"
+            },
+            {
+              "text": "Si te quedás en cama y bebés agua, vas a estar sano pronto.",
+              "english": "If you stay in bed and drink water, you will be healthy soon.",
+              "speaker": "K"
+            },
+            {
+              "text": "Gracias, Karla.",
+              "english": "Thanks, Karla.",
+              "speaker": "S"
+            },
+            {
+              "text": "Sos muy buena conmigo.",
+              "english": "You are very good to me.",
+              "speaker": "S"
+            },
+            {
+              "text": "Callate y descansá.",
+              "english": "Be quiet and rest.",
+              "speaker": "K"
+            },
+            {
+              "text": "Agarrá el vaso, tomá un poco de agua y no hables.",
+              "english": "Take the glass, drink some water and don't speak.",
+              "speaker": "K"
+            },
+            {
+              "text": "Está bien.",
+              "english": "All right.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pero antes dejame decir una cosa: la sopa de doña Marta me hizo mucho bien.",
+              "english": "But first let me say one thing: doña Marta's soup did me a lot of good.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ya lo sé.",
+              "english": "I know.",
+              "speaker": "K"
+            },
+            {
+              "text": "Y si querés más, te preparo otra.",
+              "english": "And if you want more, I'll make you another.",
+              "speaker": "K"
+            },
+            {
+              "text": "Ahora, si te sentís mal, me llamás.",
+              "english": "Now, if you feel bad, call me.",
+              "speaker": "K"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Los dos platican un poco.",
+              "english": "The two chat for a while."
+            },
+            {
+              "text": "Karla ríe, y Sam tiene una sonrisa.",
+              "english": "Karla laughs, and Sam has a smile."
+            },
+            {
+              "text": "Esa risa hace bien al cuerpo.",
+              "english": "That laughter does the body good."
+            },
+            {
+              "text": "En esos días de fiebre, Sam aprende algo importante: cuando uno está débil, necesita a las otras personas.",
+              "english": "In those days of fever, Sam learns something important: when you are weak, you need other people."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una oferta de la farmacia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche, Karla va al supermercado.",
+              "english": "That night Karla goes to the supermarket."
+            },
+            {
+              "text": "Allá hay una farmacia que anuncia una venta de pastillas.",
+              "english": "There is a pharmacy there that announces a sale on pills."
+            },
+            {
+              "text": "Karla presenta su tarjeta, y firman los dos.",
+              "english": "Karla presents her card, and the two of them sign."
+            },
+            {
+              "text": "Ella revisa el precio.",
+              "english": "She checks the price."
+            },
+            {
+              "text": "La compra incluye las pastillas que Ana indicó.",
+              "english": "The purchase includes the pills that Ana indicated."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ojalá que no las necesités por mucho tiempo.",
+              "english": "I hope you don't need them for long.",
+              "speaker": "K"
+            },
+            {
+              "text": "Ojalá.",
+              "english": "I hope so.",
+              "speaker": "S"
+            },
+            {
+              "text": "En la vuelta a casa, quiero comer algo caliente.",
+              "english": "On the way back home, I want to eat something warm.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

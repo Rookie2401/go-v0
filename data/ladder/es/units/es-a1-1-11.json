@@ -1,0 +1,434 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-11",
+  "lang": "es",
+  "title": "The team meeting",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-11",
+    "title": "The team meeting (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: \"¿Podés venir?\" (vos); \"No puedo, tengo que trabajar\" (polite refusal); \"Vamos a orar\" and \"Gracias a Dios\" (prayer language, kept very simple and for the reviewer to check); the PLAN says Saturday, but sábado is not yet in the word list, so the meeting is simply \"hoy\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church",
+    "team",
+    "visits",
+    "prayer"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "pastor": "Pastor Jorge",
+    "sam": "Sam",
+    "ana": "Ana",
+    "daniel": "Daniel",
+    "karla": "Karla"
+  },
+  "sections": [
+    {
+      "title": "The team meeting",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy es la reunión del equipo en la iglesia.",
+              "english": "Today is the team meeting at the church."
+            },
+            {
+              "text": "El pastor Jorge está aquí.",
+              "english": "Pastor Jorge is here."
+            },
+            {
+              "text": "Sam, Ana, Daniel y Karla están aquí.",
+              "english": "Sam, Ana, Daniel and Karla are here."
+            },
+            {
+              "text": "Hay gente en la calle que necesita comida.",
+              "english": "There are people in the street who need food."
+            },
+            {
+              "text": "Todos tienen hambre.",
+              "english": "They are all hungry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "pastor",
+              "text": "Buenas tardes a todos.",
+              "english": "Good afternoon, everyone."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Gracias por venir.",
+              "english": "Thank you for coming."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Vamos a orar.",
+              "english": "Let us pray."
+            },
+            {
+              "text": "El pastor ora a Dios.",
+              "english": "The pastor prays to God."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Dios, gracias por nuestro equipo.",
+              "english": "God, thank you for our team."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Gracias por nuestra reunión y por nuestros vecinos.",
+              "english": "Thank you for our meeting and for our neighbours."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Ahora vamos a hablar.",
+              "english": "Now let us talk."
+            },
+            {
+              "speaker": "pastor",
+              "text": "El lunes vamos a visitar a las familias.",
+              "english": "On Monday we are going to visit the families."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Tenemos que salir a las ocho.",
+              "english": "We have to leave at eight."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Dónde vamos a visitar?",
+              "english": "Where are we going to visit?"
+            },
+            {
+              "speaker": "pastor",
+              "text": "En la calle, con los vecinos.",
+              "english": "In the street, with the neighbours."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Hay familias cerca y hay familias lejos.",
+              "english": "There are families near and families far away."
+            },
+            {
+              "speaker": "karla",
+              "text": "Yo puedo visitar a las familias cerca.",
+              "english": "I can visit the families nearby."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Yo no puedo venir el lunes.",
+              "english": "I cannot come on Monday."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Tengo que trabajar en la clínica.",
+              "english": "I have to work at the clinic."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Está bien, Daniel.",
+              "english": "That is fine, Daniel."
+            },
+            {
+              "speaker": "pastor",
+              "text": "¿Podés venir en la noche?",
+              "english": "Can you come at night?"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Sí, en la noche sí.",
+              "english": "Yes, at night, yes."
+            },
+            {
+              "speaker": "ana",
+              "text": "Yo siempre estoy en el hospital los lunes.",
+              "english": "I am always at the hospital on Mondays."
+            },
+            {
+              "speaker": "ana",
+              "text": "El lunes no vengo.",
+              "english": "I am not coming on Monday."
+            },
+            {
+              "speaker": "ana",
+              "text": "Tengo que ir al hospital.",
+              "english": "I have to go to the hospital."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Está bien, Ana.",
+              "english": "That is fine, Ana."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Sam, ¿vas a ir a la casa del señor Mario?",
+              "english": "Sam, are you going to go to Mr. Mario's house?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, yo voy.",
+              "english": "Yes, I will go."
+            },
+            {
+              "speaker": "karla",
+              "text": "Yo voy con Sam.",
+              "english": "I am going with Sam."
+            },
+            {
+              "speaker": "karla",
+              "text": "El señor Mario es mi papá.",
+              "english": "Mr. Mario is my dad."
+            },
+            {
+              "speaker": "sam",
+              "text": "La familia del señor Mario es muy buena.",
+              "english": "Mr. Mario's family is very good."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Sí, y su casa está cerca.",
+              "english": "Yes, and their house is near."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "¿Cómo llegamos a las familias lejos?",
+              "english": "How do we get to the families far away?"
+            },
+            {
+              "speaker": "pastor",
+              "text": "En autobús.",
+              "english": "By bus."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Vamos a esperar el autobús en la terminal.",
+              "english": "We are going to wait for the bus at the terminal."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Tenemos que comprar los boletos.",
+              "english": "We have to buy the tickets."
+            },
+            {
+              "speaker": "karla",
+              "text": "¿Es caro?",
+              "english": "Is it expensive?"
+            },
+            {
+              "speaker": "pastor",
+              "text": "No, el boleto es barato.",
+              "english": "No, the ticket is cheap."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Los catrachos siempre dan pan y café a la gente.",
+              "english": "Hondurans always give bread and coffee to people."
+            },
+            {
+              "speaker": "sam",
+              "text": "Nosotros damos pollo y plátanos.",
+              "english": "We give chicken and plantains."
+            },
+            {
+              "speaker": "ana",
+              "text": "Compramos el pollo en la tienda del señor Carlos.",
+              "english": "We buy the chicken at Mr. Carlos's shop."
+            },
+            {
+              "speaker": "karla",
+              "text": "Y los plátanos en la pulpería de la señora Elena.",
+              "english": "And the plantains at señora Elena's shop."
+            },
+            {
+              "speaker": "pastor",
+              "text": "La pulpería está cerca de la iglesia.",
+              "english": "The shop is near the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿A qué hora llegamos?",
+              "english": "What time do we arrive?"
+            },
+            {
+              "speaker": "pastor",
+              "text": "Llegamos a las diez.",
+              "english": "We arrive at ten."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Qué hacemos ahora?",
+              "english": "What do we do now?"
+            },
+            {
+              "speaker": "pastor",
+              "text": "Ahora tenemos que orar.",
+              "english": "Now we have to pray."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Siempre decimos gracias a Dios.",
+              "english": "We always say thank you to God."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias por la reunión, pastor.",
+              "english": "Thank you for the meeting, pastor."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Adiós a todos.",
+              "english": "Goodbye, everyone."
+            },
+            {
+              "speaker": "ana",
+              "text": "Adiós, pastor.",
+              "english": "Goodbye, pastor."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Todos toman café y comen pan.",
+              "english": "Everyone has coffee and eats bread."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Mi mamá hace pan para todos.",
+              "english": "My mom makes bread for everyone."
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta el pan.",
+              "english": "I like the bread."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Mi familia no está aquí.",
+              "english": "My family is not here."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Pero el equipo es mi familia.",
+              "english": "But the team is my family."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Sí, ustedes son mi familia también.",
+              "english": "Yes, you are my family too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "karla",
+              "text": "Sam, ¿querés venir a mi casa hoy?",
+              "english": "Sam, do you want to come to my house today?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Hoy no puedo, Karla.",
+              "english": "I cannot today, Karla."
+            },
+            {
+              "speaker": "sam",
+              "text": "Tengo que estudiar español.",
+              "english": "I have to study Spanish."
+            },
+            {
+              "speaker": "karla",
+              "text": "¿Y mañana?",
+              "english": "And tomorrow?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Mañana sí.",
+              "english": "Tomorrow, yes."
+            },
+            {
+              "speaker": "sam",
+              "text": "Voy a venir a las cuatro.",
+              "english": "I am going to come at four."
+            },
+            {
+              "speaker": "karla",
+              "text": "Mi mamá hace baleadas muy buenas.",
+              "english": "My mom makes very good baleadas."
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Tengo mucha hambre.",
+              "english": "I am very hungry."
+            },
+            {
+              "speaker": "karla",
+              "text": "Mi papá dice que vos sos de la familia.",
+              "english": "My dad says you are part of the family."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

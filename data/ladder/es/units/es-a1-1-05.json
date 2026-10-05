@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-05",
+  "lang": "es",
+  "title": "Sunday lunch",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-05",
+    "title": "Sunday lunch (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: Sunday lunch with tamales and chicken soup; \"señora Isabel\"; \"Vamos a dar gracias por la comida\" as the thanks before eating; \"Adiós\" used when leaving; \"¡A la mesa!\"; doña Marta uses usted to Daniel and vos to Sam."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "food",
+    "family",
+    "meals"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "marta": "Doña Marta",
+    "ana": "Ana",
+    "nico": "Nico",
+    "sam": "Sam",
+    "daniel": "Daniel",
+    "ricardo": "Ricardo",
+    "isabel": "Señora Isabel",
+    "luis": "Luis"
+  },
+  "sections": [
+    {
+      "title": "Sunday lunch",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El domingo, la familia come en la casa de doña Marta.",
+              "english": "On Sunday the family eats at doña Marta's house."
+            },
+            {
+              "text": "La mesa es grande.",
+              "english": "The table is big."
+            },
+            {
+              "text": "Doña Marta tiene sopa de pollo.",
+              "english": "Doña Marta has chicken soup."
+            },
+            {
+              "text": "También tiene arroz, frijoles y tortillas.",
+              "english": "She also has rice, beans and tortillas."
+            },
+            {
+              "text": "Hay tamales en un plato grande.",
+              "english": "There are tamales on a big plate."
+            },
+            {
+              "text": "Sam está con su amigo Daniel.",
+              "english": "Sam is with his friend Daniel."
+            },
+            {
+              "text": "Ana, Luis y Nico también están en la casa.",
+              "english": "Ana, Luis and Nico are in the house too."
+            },
+            {
+              "text": "El papá de Ana es Ricardo, el hijo de doña Marta.",
+              "english": "Ana's dad is Ricardo, doña Marta's son."
+            },
+            {
+              "text": "Su mamá es la señora Isabel.",
+              "english": "Her mom is señora Isabel."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Buenas tardes, abuela.",
+              "english": "Good afternoon, grandma."
+            },
+            {
+              "speaker": "marta",
+              "text": "Buenas tardes, Ana.",
+              "english": "Good afternoon, Ana."
+            },
+            {
+              "speaker": "sam",
+              "text": "Doña Marta, él es mi amigo Daniel.",
+              "english": "Doña Marta, this is my friend Daniel."
+            },
+            {
+              "speaker": "marta",
+              "text": "Mucho gusto, Daniel.",
+              "english": "Nice to meet you, Daniel."
+            },
+            {
+              "speaker": "marta",
+              "text": "Aquí tiene un plato.",
+              "english": "Here is a plate."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "nico",
+              "text": "Abuela, tengo hambre.",
+              "english": "Grandma, I am hungry."
+            },
+            {
+              "speaker": "marta",
+              "text": "Vamos a dar gracias por la comida.",
+              "english": "Let us give thanks for the food."
+            },
+            {
+              "speaker": "ricardo",
+              "text": "Gracias por la familia y por la comida.",
+              "english": "Thank you for the family and for the food."
+            },
+            {
+              "text": "Nico da gracias también.",
+              "english": "Nico gives thanks too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "isabel",
+              "text": "Sam, ¿querés sopa?",
+              "english": "Sam, do you want soup?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, señora Isabel.",
+              "english": "Yes, señora Isabel."
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta la sopa.",
+              "english": "I like soup."
+            },
+            {
+              "speaker": "isabel",
+              "text": "Aquí tenés un plato.",
+              "english": "Here is a plate for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Qué buena!",
+              "english": "How good!"
+            },
+            {
+              "speaker": "nico",
+              "text": "Yo quiero pollo, abuela.",
+              "english": "I want chicken, grandma."
+            },
+            {
+              "text": "Doña Marta da pollo a Nico.",
+              "english": "Doña Marta gives chicken to Nico."
+            },
+            {
+              "speaker": "luis",
+              "text": "Yo quiero tamales.",
+              "english": "I want tamales."
+            },
+            {
+              "speaker": "marta",
+              "text": "Aquí tenés, Luis.",
+              "english": "Here you are, Luis."
+            },
+            {
+              "speaker": "daniel",
+              "text": "¿Qué es esto?",
+              "english": "What is this?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Es un tamal.",
+              "english": "It is a tamal."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Me gusta mucho.",
+              "english": "I like it a lot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nico",
+              "text": "En el desayuno Nico come huevo y tortilla.",
+              "english": "At breakfast Nico eats egg and tortilla."
+            },
+            {
+              "speaker": "luis",
+              "text": "Luis come una baleada.",
+              "english": "Luis eats a baleada."
+            },
+            {
+              "speaker": "ana",
+              "text": "Nico tiene diez años y come mucho.",
+              "english": "Nico is ten years old and eats a lot."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nico, tenés hambre hoy.",
+              "english": "Nico, you are hungry today."
+            },
+            {
+              "speaker": "nico",
+              "text": "Sí, abuela.",
+              "english": "Yes, grandma."
+            },
+            {
+              "speaker": "nico",
+              "text": "Me gusta la comida.",
+              "english": "I like the food."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta tiene café y agua.",
+              "english": "Doña Marta has coffee and water."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Para mí agua, por favor.",
+              "english": "Water for me, please."
+            },
+            {
+              "speaker": "ricardo",
+              "text": "Para mí café, por favor.",
+              "english": "Coffee for me, please."
+            },
+            {
+              "speaker": "luis",
+              "text": "A mí me gusta el café con pan.",
+              "english": "I like coffee with bread."
+            },
+            {
+              "speaker": "ana",
+              "text": "Yo también tomo café.",
+              "english": "I have coffee too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Y yo tomo agua.",
+              "english": "And I have water."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hoy llueve mucho.",
+              "english": "It is raining a lot today."
+            },
+            {
+              "speaker": "nico",
+              "text": "Pero en la casa estamos bien.",
+              "english": "But we are fine in the house."
+            },
+            {
+              "speaker": "marta",
+              "text": "Sí, estamos bien.",
+              "english": "Yes, we are fine."
+            },
+            {
+              "speaker": "ricardo",
+              "text": "El domingo es un buen día.",
+              "english": "Sunday is a good day."
+            },
+            {
+              "speaker": "daniel",
+              "text": "En mi casa también comemos los domingos.",
+              "english": "In my house we eat on Sundays too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Mi cuarto es grande.",
+              "english": "My room is big."
+            },
+            {
+              "speaker": "sam",
+              "text": "Tengo una cama grande también.",
+              "english": "I have a big bed too."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Mi cuarto también es bueno.",
+              "english": "My room is good too."
+            },
+            {
+              "speaker": "ricardo",
+              "text": "Sam, ¿tu familia está aquí?",
+              "english": "Sam, is your family here?"
+            },
+            {
+              "speaker": "sam",
+              "text": "No, mi familia está en su casa.",
+              "english": "No, my family is in their house."
+            },
+            {
+              "speaker": "ricardo",
+              "text": "Ana es mi hija.",
+              "english": "Ana is my daughter."
+            },
+            {
+              "speaker": "ricardo",
+              "text": "Luis y Nico son mis hijos.",
+              "english": "Luis and Nico are my sons."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ustedes son una familia muy buena.",
+              "english": "You are a very good family."
+            },
+            {
+              "speaker": "ricardo",
+              "text": "Y vos también, Sam.",
+              "english": "And you too, Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Adiós, señora Isabel.",
+              "english": "Goodbye, señora Isabel."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Adiós, doña Marta.",
+              "english": "Goodbye, doña Marta."
+            },
+            {
+              "speaker": "isabel",
+              "text": "Adiós, Sam y Daniel.",
+              "english": "Goodbye, Sam and Daniel."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

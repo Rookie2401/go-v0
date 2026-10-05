@@ -1,0 +1,623 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-12",
+  "lang": "es",
+  "title": "How to make baleadas",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-12",
+    "title": "How to make baleadas (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "instructions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "M": "Marta",
+    "N": "Nico",
+    "P": "Señora",
+    "A": "Ana",
+    "L": "Luis"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Una clase de doña Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es sábado por la mañana.",
+              "english": "It is Saturday morning."
+            },
+            {
+              "text": "Sam y doña Marta están en la casa.",
+              "english": "Sam and doña Marta are at the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Doña Marta, ¿puedo aprender a preparar baleadas?",
+              "english": "Doña Marta, can I learn to prepare baleadas?"
+            },
+            {
+              "speaker": "M",
+              "text": "Claro, Sam.",
+              "english": "Of course, Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "Es fácil.",
+              "english": "It is easy."
+            },
+            {
+              "speaker": "M",
+              "text": "Hoy preparamos baleadas para la familia.",
+              "english": "Today we prepare baleadas for the family."
+            },
+            {
+              "speaker": "M",
+              "text": "Nico tiene tos y la garganta mal, y necesita comer bien.",
+              "english": "Nico has a cough and a bad throat, and he needs to eat well."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Qué necesita una baleada buena?",
+              "english": "What does a good baleada need?"
+            },
+            {
+              "speaker": "M",
+              "text": "Tortilla de harina, frijoles, queso y crema.",
+              "english": "A flour tortilla, beans, cheese and cream."
+            },
+            {
+              "speaker": "M",
+              "text": "Primero vamos a la pulpería, y después hacemos la receta.",
+              "english": "First we go to the shop, and afterwards we follow the recipe."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En la pulpería",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta y Sam caminan a la pulpería.",
+              "english": "Doña Marta and Sam walk to the shop."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "P",
+              "text": "Buenos días, doña Marta.",
+              "english": "Good morning, doña Marta."
+            },
+            {
+              "speaker": "P",
+              "text": "¿Qué necesita hoy?",
+              "english": "What do you need today?"
+            },
+            {
+              "speaker": "M",
+              "text": "Necesito todo para las baleadas.",
+              "english": "I need everything for the baleadas."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cuánto cuesta todo?",
+              "english": "How much does everything cost?"
+            },
+            {
+              "speaker": "P",
+              "text": "Cuesta sesenta lempiras.",
+              "english": "It costs sixty lempiras."
+            },
+            {
+              "speaker": "P",
+              "text": "No es caro.",
+              "english": "It is not expensive."
+            },
+            {
+              "speaker": "M",
+              "text": "Sam, pagá vos.",
+              "english": "Sam, you pay."
+            },
+            {
+              "speaker": "M",
+              "text": "Tomá el dinero.",
+              "english": "Take the money."
+            },
+            {
+              "text": "Sam paga y la señora da una bolsa grande a doña Marta.",
+              "english": "Sam pays and the woman gives a big bag to doña Marta."
+            },
+            {
+              "text": "Doña Marta lleva la bolsa a la casa.",
+              "english": "Doña Marta carries the bag to the house."
+            },
+            {
+              "text": "Sam camina con ella.",
+              "english": "Sam walks with her."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La receta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam escribe la receta en su libro.",
+              "english": "Sam writes the recipe in his book."
+            },
+            {
+              "text": "Se necesita: harina, sal, aceite, agua, frijoles, queso, crema, tomate y cebolla.",
+              "english": "You need: flour, salt, oil, water, beans, cheese, cream, tomato and onion."
+            },
+            {
+              "text": "Primero se pone la harina en un plato.",
+              "english": "First, the flour is put in a plate."
+            },
+            {
+              "text": "Luego se agrega una cuchara de sal y dos cucharas de aceite.",
+              "english": "Then one spoon of salt and two spoons of oil are added."
+            },
+            {
+              "text": "Después se agrega agua, y se hacen las tortillas con las manos.",
+              "english": "Afterwards water is added, and the tortillas are made by hand."
+            },
+            {
+              "text": "Se calienta el aceite.",
+              "english": "The oil is heated."
+            },
+            {
+              "text": "Se fríe la tortilla por un momento.",
+              "english": "The tortilla is fried for a moment."
+            },
+            {
+              "text": "Mientras se fríe la tortilla, se calientan los frijoles.",
+              "english": "While the tortilla fries, the beans are heated."
+            },
+            {
+              "text": "Se corta el tomate y se corta la cebolla.",
+              "english": "The tomato is cut and the onion is cut."
+            },
+            {
+              "text": "Se pone la tortilla en un plato.",
+              "english": "The tortilla is put on a plate."
+            },
+            {
+              "text": "Se agrega el frijol, el queso y la crema.",
+              "english": "The beans, the cheese and the cream are added."
+            },
+            {
+              "text": "Por último, se pone la verdura.",
+              "english": "Last, the vegetables are put on top."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sam prueba",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ahora Sam prepara una baleada solo.",
+              "english": "Now Sam prepares a baleada alone."
+            },
+            {
+              "text": "Doña Marta mira.",
+              "english": "Doña Marta watches."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Doña Marta, ¿cuántos necesito?",
+              "english": "Doña Marta, how many do I need?"
+            },
+            {
+              "speaker": "M",
+              "text": "Dos tomates y una cebolla pequeña.",
+              "english": "Two tomatoes and one small onion."
+            },
+            {
+              "speaker": "S",
+              "text": "Primero tomo una cuchara grande.",
+              "english": "First I take a big spoon."
+            },
+            {
+              "speaker": "M",
+              "text": "Muy bien.",
+              "english": "Very good."
+            },
+            {
+              "speaker": "M",
+              "text": "Cortá la verdura.",
+              "english": "Cut the vegetables."
+            },
+            {
+              "speaker": "M",
+              "text": "Después calentá los frijoles.",
+              "english": "Then heat the beans."
+            },
+            {
+              "speaker": "M",
+              "text": "Hay que freír la tortilla un momento.",
+              "english": "You have to fry the tortilla for a moment."
+            },
+            {
+              "speaker": "M",
+              "text": "No mucho tiempo.",
+              "english": "Not too long."
+            },
+            {
+              "speaker": "M",
+              "text": "Poca sal, Sam.",
+              "english": "A little salt, Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "Es mejor para el cuerpo y para la salud.",
+              "english": "It is better for the body and for health."
+            },
+            {
+              "speaker": "S",
+              "text": "Ahora entiendo la receta.",
+              "english": "Now I understand the recipe."
+            },
+            {
+              "speaker": "S",
+              "text": "No es difícil.",
+              "english": "It is not difficult."
+            },
+            {
+              "speaker": "M",
+              "text": "Claro que no.",
+              "english": "Of course not."
+            },
+            {
+              "speaker": "M",
+              "text": "Con el tiempo, todo es fácil.",
+              "english": "With time, everything is easy."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Dónde aprendió usted?",
+              "english": "Where did you learn?"
+            },
+            {
+              "speaker": "M",
+              "text": "Aprendí con mi mamá en el pueblo.",
+              "english": "I learned with my mother in the village."
+            },
+            {
+              "speaker": "M",
+              "text": "Ella cocinó para toda la gente.",
+              "english": "She cooked for everybody."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nico y la verdura",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nico llega con la mochila y su juego.",
+              "english": "Nico arrives with his school bag and his game."
+            },
+            {
+              "text": "Tiene tos.",
+              "english": "He has a cough."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "Abuela, me duele la garganta.",
+              "english": "Grandmother, my throat hurts."
+            },
+            {
+              "speaker": "M",
+              "text": "Ya sé.",
+              "english": "I know."
+            },
+            {
+              "speaker": "M",
+              "text": "El doctor dijo que es una enfermedad pequeña.",
+              "english": "The doctor said it is a small illness."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Tomaste la pastilla?",
+              "english": "Did you take the pill?"
+            },
+            {
+              "speaker": "N",
+              "text": "Sí, tomé la pastilla en la mañana.",
+              "english": "Yes, I took the pill in the morning."
+            },
+            {
+              "speaker": "M",
+              "text": "Tu cita con el doctor es el lunes.",
+              "english": "Your appointment with the doctor is on Monday."
+            },
+            {
+              "speaker": "M",
+              "text": "Debés cuidar tu cuerpo.",
+              "english": "You must take care of your body."
+            },
+            {
+              "speaker": "M",
+              "text": "Ayer tuviste sangre en la nariz, pero ya estás mejor.",
+              "english": "Yesterday you had blood in your nose, but you are better now."
+            },
+            {
+              "speaker": "M",
+              "text": "La verdura es buena para el cuerpo.",
+              "english": "Vegetables are good for the body."
+            },
+            {
+              "speaker": "N",
+              "text": "Yo no quiero.",
+              "english": "I do not want to."
+            },
+            {
+              "speaker": "M",
+              "text": "Una baleada así es buena para la salud.",
+              "english": "A baleada like this is good for your health."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La tarde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana y Luis llegan a la casa.",
+              "english": "Ana and Luis arrive at the house."
+            },
+            {
+              "text": "Tienen hambre.",
+              "english": "They are hungry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "A",
+              "text": "Hay baleadas.",
+              "english": "There are baleadas."
+            },
+            {
+              "speaker": "L",
+              "text": "¿Las hizo doña Marta?",
+              "english": "Did doña Marta make them?"
+            },
+            {
+              "speaker": "S",
+              "text": "No, yo las hice.",
+              "english": "No, I made them."
+            },
+            {
+              "speaker": "S",
+              "text": "Doña Marta ayudó un poco.",
+              "english": "Doña Marta helped a little."
+            },
+            {
+              "speaker": "A",
+              "text": "Sam, cocinás muy bien.",
+              "english": "Sam, you cook very well."
+            },
+            {
+              "speaker": "L",
+              "text": "Ahora tenés que cocinar todos los sábados.",
+              "english": "Now you have to cook every Saturday."
+            },
+            {
+              "speaker": "S",
+              "text": "Claro.",
+              "english": "Of course."
+            },
+            {
+              "speaker": "S",
+              "text": "Me gusta cocinar.",
+              "english": "I like to cook."
+            },
+            {
+              "speaker": "N",
+              "text": "Yo también quiero aprender, abuela.",
+              "english": "I want to learn too, grandmother."
+            },
+            {
+              "speaker": "M",
+              "text": "Claro, Nico.",
+              "english": "Of course, Nico."
+            },
+            {
+              "speaker": "M",
+              "text": "Primero tenés que estar mejor.",
+              "english": "First you have to get better."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El regalo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam termina la baleada.",
+              "english": "Sam finishes the baleada."
+            },
+            {
+              "text": "Nico y Sam comen.",
+              "english": "Nico and Sam eat."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "¡Qué buena baleada, Sam!",
+              "english": "What a good baleada, Sam!"
+            },
+            {
+              "speaker": "S",
+              "text": "Gracias.",
+              "english": "Thanks."
+            },
+            {
+              "speaker": "S",
+              "text": "Es la receta de doña Marta.",
+              "english": "It is doña Marta's recipe."
+            },
+            {
+              "speaker": "S",
+              "text": "Voy a escribir la receta para el equipo.",
+              "english": "I am going to write the recipe for the team."
+            },
+            {
+              "speaker": "S",
+              "text": "Es un regalo.",
+              "english": "It is a gift."
+            },
+            {
+              "speaker": "M",
+              "text": "Claro, Sam.",
+              "english": "Of course, Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "El fin de semana vamos a hacer baleadas en el parque.",
+              "english": "This weekend we are going to make baleadas in the park."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Es posible hacer baleadas para toda la gente?",
+              "english": "Is it possible to make baleadas for all the people?"
+            },
+            {
+              "speaker": "M",
+              "text": "Sí, es posible.",
+              "english": "Yes, it is possible."
+            },
+            {
+              "speaker": "M",
+              "text": "Solo se necesita más tiempo y más ayuda.",
+              "english": "You just need more time and more help."
+            },
+            {
+              "text": "Después del paseo, todos comen y dan gracias a Dios.",
+              "english": "After the outing, everyone eats and gives thanks to God."
+            },
+            {
+              "speaker": "S",
+              "text": "Gracias, doña Marta, por todo.",
+              "english": "Thank you, doña Marta, for everything."
+            },
+            {
+              "speaker": "N",
+              "text": "Abuela, mañana también quiero baleadas.",
+              "english": "Grandmother, tomorrow I want baleadas too."
+            },
+            {
+              "speaker": "M",
+              "text": "Claro, Nico.",
+              "english": "Of course, Nico."
+            },
+            {
+              "speaker": "M",
+              "text": "Mañana comemos todos.",
+              "english": "Tomorrow we all eat."
+            },
+            {
+              "speaker": "M",
+              "text": "De nada, Sam.",
+              "english": "You are welcome, Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "Ahora sos de la familia.",
+              "english": "Now you are part of the family."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,385 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-02",
+  "lang": "es",
+  "title": "Nuestro pueblo, antes y ahora",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-02",
+    "title": "Our village before and now (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "explanation",
+    "community",
+    "change"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Un trabajo para la escuela",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis tiene un trabajo para la escuela: «Nuestro pueblo, antes y ahora».",
+              "english": "Luis has an assignment for the school: \"Our Village, Before and Now.\""
+            },
+            {
+              "text": "Quiere hablar de los cambios en su comunidad.",
+              "english": "He wants to talk about the changes in his community."
+            },
+            {
+              "text": "Para saber más, habla con doña Marta y con otros viejos del pueblo.",
+              "english": "To find out more, he talks with doña Marta and with other old people of the village."
+            },
+            {
+              "text": "Todos recuerdan mucho, y Luis escribe y escribe.",
+              "english": "Everyone remembers a lot, and Luis writes and writes."
+            },
+            {
+              "text": "Un pueblo es como un niño: crece y aprende.",
+              "english": "A village is like a child: it grows and learns."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las casas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Antes las casas eran pequeñas.",
+              "english": "Before, the houses were small."
+            },
+            {
+              "text": "Las paredes eran de tierra y el techo era viejo.",
+              "english": "The walls were made of earth and the roof was old."
+            },
+            {
+              "text": "El piso era de tierra también, y los niños jugaban en el piso.",
+              "english": "The floor was earth too, and the children played on the floor."
+            },
+            {
+              "text": "—Cuando yo era joven, mi casa tenía un solo cuarto —dice doña Marta—.",
+              "english": "\"When I was young, my house had only one room,\" says doña Marta."
+            },
+            {
+              "text": "Todos dormíamos allí.",
+              "english": "\"We all slept there.\""
+            },
+            {
+              "text": "Hoy hay casas más grandes.",
+              "english": "Today there are bigger houses."
+            },
+            {
+              "text": "Muchas tienen paredes blancas, un techo nuevo y un piso limpio.",
+              "english": "Many have white walls, a new roof and a clean floor."
+            },
+            {
+              "text": "La escuela es nueva: tiene paredes verdes y un techo rojo.",
+              "english": "The school is new: it has green walls and a red roof."
+            },
+            {
+              "text": "Hay casas con flores en el patio.",
+              "english": "There are houses with flowers in the patio."
+            },
+            {
+              "text": "Luis dice que este es un cambio muy bueno.",
+              "english": "Luis says that this is a very good change."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La luz y el agua",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Antes no había luz en el pueblo.",
+              "english": "Before, there was no electricity in the village."
+            },
+            {
+              "text": "La luz llegó en julio, hace diez años.",
+              "english": "The electricity came in July, ten years ago."
+            },
+            {
+              "text": "Cuando llegaba la noche, todos dormían.",
+              "english": "When night came, everyone slept."
+            },
+            {
+              "text": "—Nunca podíamos leer de noche —dice doña Marta—.",
+              "english": "\"We could never read at night,\" says doña Marta."
+            },
+            {
+              "text": "Por esto yo no aprendí a leer bien.",
+              "english": "\"That is why I did not learn to read well.\""
+            },
+            {
+              "text": "Hoy hay luz en muchas casas, y los niños pueden estudiar por la noche.",
+              "english": "Today there is electricity in many houses, and the children can study at night."
+            },
+            {
+              "text": "Con el agua también era difícil.",
+              "english": "With water it was also hard."
+            },
+            {
+              "text": "En marzo había poca agua, y en enero hacía mucho frío en la casa.",
+              "english": "In March there was little water, and in January it was very cold in the house."
+            },
+            {
+              "text": "Antes las mujeres iban a buscar agua lejos, y volvían con el agua en la cabeza.",
+              "english": "Before, the women went far to look for water, and came back with the water on their heads."
+            },
+            {
+              "text": "Los niños caminaban una hora para llegar a la escuela.",
+              "english": "The children walked an hour to get to school."
+            },
+            {
+              "text": "Hoy el agua llega a muchas casas.",
+              "english": "Today water reaches many houses."
+            },
+            {
+              "text": "Pero en el verano el pueblo necesita más agua.",
+              "english": "But in the summer the village needs more water."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La cocina de doña Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta cocinaba en el patio, no en la casa.",
+              "english": "Doña Marta used to cook in the patio, not in the house."
+            },
+            {
+              "text": "—Primero calentaba el aceite —dice—.",
+              "english": "\"First I heated the oil,\" she says."
+            },
+            {
+              "text": "Después cortaba la cebolla y el tomate.",
+              "english": "\"Then I cut the onion and the tomato.\""
+            },
+            {
+              "text": "Para las tortillas, preparaba la harina con sal y agua.",
+              "english": "For the tortillas, she prepared the flour with salt and water."
+            },
+            {
+              "text": "Con una cuchara, agregaba aceite y freía los frijoles.",
+              "english": "With a spoon, she added oil and fried the beans."
+            },
+            {
+              "text": "Los domingos comíamos los frijoles con queso y con crema.",
+              "english": "On Sundays we ate the beans with cheese and cream."
+            },
+            {
+              "text": "También había verdura, pero poca.",
+              "english": "There was also some vegetable, but not much."
+            },
+            {
+              "text": "Hoy doña Marta tiene un jardín pequeño en el patio.",
+              "english": "Today doña Marta has a small garden in the patio."
+            },
+            {
+              "text": "Allí hay tomates y cebollas.",
+              "english": "There are tomatoes and onions there."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El trabajo y el dinero",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Antes había poca chamba.",
+              "english": "Before, there was little work."
+            },
+            {
+              "text": "Muchos hombres trabajaban la tierra.",
+              "english": "Many men worked the land."
+            },
+            {
+              "text": "Los jefes pagaban poco.",
+              "english": "The bosses paid little."
+            },
+            {
+              "text": "Con el sueldo, la gente no podía ahorrar, y nunca había dinero en el banco.",
+              "english": "With the wage, people could not save, and there was never money in the bank."
+            },
+            {
+              "text": "Hoy hay más empleo y más negocios en el pueblo.",
+              "english": "Today there is more work and there are more businesses in the village."
+            },
+            {
+              "text": "Hay una empresa pequeña, una tienda grande y un mecánico.",
+              "english": "There is a small company, a big store and a mechanic."
+            },
+            {
+              "text": "El mecánico tiene un horario: trabaja de lunes a sábado.",
+              "english": "The mechanic has a schedule: he works from Monday to Saturday."
+            },
+            {
+              "text": "Mi tía Sofía tiene un empleo en un banco de la ciudad.",
+              "english": "My aunt Sofía has a job at a bank in the city."
+            },
+            {
+              "text": "Mi tía dice que hoy el trabajo es mejor.",
+              "english": "My aunt says that work is better today."
+            },
+            {
+              "text": "Ahora quiere ahorrar para comprar una casa, y no quiere gastar todo.",
+              "english": "Now she wants to save to buy a house."
+            },
+            {
+              "text": "Los domingos mi tía viene al pueblo, y trae pan de la ciudad.",
+              "english": "On Sundays my aunt comes to the village, and she brings bread from the city."
+            },
+            {
+              "text": "Conseguir un empleo no es fácil, pero hoy es posible.",
+              "english": "Getting a job is not easy, but today it is possible."
+            },
+            {
+              "text": "Antes nunca era posible para muchos.",
+              "english": "Before, it was never possible for many."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cómo cambió el pueblo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La escuela también es un cambio.",
+              "english": "The school is also a change."
+            },
+            {
+              "text": "El gobierno la construyó en mayo, hace veinte años.",
+              "english": "The government built it in May, twenty years ago."
+            },
+            {
+              "text": "Pero la comunidad ayudó: los vecinos trabajaron los sábados.",
+              "english": "But the community helped: the neighbors worked on Saturdays."
+            },
+            {
+              "text": "Hoy el gobierno construye una calle nueva donde antes no había calle.",
+              "english": "Today the government is building a new street where before there was no street."
+            },
+            {
+              "text": "El pueblo donde vive Luis es pequeño, y nuestro país es pequeño también.",
+              "english": "The village where Luis lives is small, and our country is small too."
+            },
+            {
+              "text": "Luis quiere vivir siempre en el pueblo donde nació.",
+              "english": "Luis wants to live always in the village where he was born."
+            },
+            {
+              "text": "Pero en nuestro país hay mucha gente joven.",
+              "english": "But in our country there are many young people."
+            },
+            {
+              "text": "Los jóvenes quieren estudiar, trabajar y mejorar la vida de su familia.",
+              "english": "The young people want to study, work and improve their families' lives."
+            },
+            {
+              "text": "Hay mucho que mejorar.",
+              "english": "There is much to improve."
+            },
+            {
+              "text": "El gobierno y la comunidad deben ayudar a todos.",
+              "english": "The government and the community must help everyone."
+            },
+            {
+              "text": "La escuela quiere mejorar el jardín, y los niños quieren ayudar.",
+              "english": "The school wants to improve the garden, and the children want to help."
+            },
+            {
+              "text": "En el jardín de la iglesia, los niños cantan.",
+              "english": "In the church garden, the children sing."
+            },
+            {
+              "text": "Los vecinos quieren construir un parque en el pueblo.",
+              "english": "The neighbors want to build a park in the village."
+            },
+            {
+              "text": "En octubre el pueblo celebra su fiesta.",
+              "english": "In October the village celebrates its festival."
+            },
+            {
+              "text": "Es una fiesta de todos, y en diciembre hay otra.",
+              "english": "It is a festival for everyone, and in December there is another one."
+            },
+            {
+              "text": "Todo el país celebra en septiembre.",
+              "english": "The whole country celebrates in September."
+            },
+            {
+              "text": "Luis termina su trabajo con las palabras de doña Marta: —Antes no teníamos nada.",
+              "english": "Luis ends his assignment with doña Marta's words: \"Before, we had nothing."
+            },
+            {
+              "text": "Hoy tenemos mucho, y siempre queremos más.",
+              "english": "Today we have a lot, and we always want more.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

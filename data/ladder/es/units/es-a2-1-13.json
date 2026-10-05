@@ -1,0 +1,533 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-13",
+  "lang": "es",
+  "title": "Honduras en pocas palabras",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-13",
+    "title": "Honduras in facts (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "nonfiction",
+    "geography",
+    "nature",
+    "society"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Un mapa en la clase",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis pone un mapa en la clase.",
+              "english": "Luis puts a map up in the class."
+            },
+            {
+              "text": "Los alumnos lo miran.",
+              "english": "The students look at it."
+            },
+            {
+              "text": "—Hoy vamos a hablar de nuestro país.",
+              "english": "\"Today we are going to talk about our country."
+            },
+            {
+              "text": "La tarea es escribir lo que ven y lo que saben.",
+              "english": "The homework is to write what you see and what you know.\""
+            },
+            {
+              "text": "Nico levanta la mano.",
+              "english": "Nico raises his hand."
+            },
+            {
+              "text": "—¿Qué es una nación, maestro?",
+              "english": "\"What is a nation, teacher?\""
+            },
+            {
+              "text": "—Una nación es un país y su gente —responde Luis.",
+              "english": "\"A nation is a country and its people,\" Luis answers."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dónde está Honduras",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Honduras es una nación pequeña.",
+              "english": "Honduras is a small nation."
+            },
+            {
+              "text": "Está en una zona con muchos países pequeños.",
+              "english": "It is in an area with many small countries."
+            },
+            {
+              "text": "En el norte hay un mar, y en el sur hay otro mar.",
+              "english": "In the north there is one sea, and in the south there is another sea."
+            },
+            {
+              "text": "La costa del norte es grande.",
+              "english": "The northern coast is big."
+            },
+            {
+              "text": "La costa del sur es pequeña.",
+              "english": "The southern coast is small."
+            },
+            {
+              "text": "Una frontera es el lugar entre dos países.",
+              "english": "A border is the place between two countries."
+            },
+            {
+              "text": "Honduras tiene fronteras con tres países.",
+              "english": "Honduras has borders with three countries."
+            },
+            {
+              "text": "Cerca de Honduras viven hondureños, guatemaltecos, salvadoreños y nicaragüenses.",
+              "english": "Near Honduras live Hondurans, Guatemalans, Salvadorans and Nicaraguans."
+            },
+            {
+              "text": "Para pasar la frontera, un guatemalteco o un salvadoreño necesita su pasaporte.",
+              "english": "To cross the border, a Guatemalan or a Salvadoran needs a passport."
+            },
+            {
+              "text": "Nicaragua es más grande que Honduras.",
+              "english": "Nicaragua is bigger than Honduras."
+            },
+            {
+              "text": "Guatemala es un poco más pequeña.",
+              "english": "Guatemala is a little smaller."
+            },
+            {
+              "text": "México es mucho más grande.",
+              "english": "Mexico is much bigger."
+            },
+            {
+              "text": "Los hondureños y los nicaragüenses son centroamericanos.",
+              "english": "Hondurans and Nicaraguans are Central Americans."
+            },
+            {
+              "text": "Los centroamericanos viajan mucho en autobús.",
+              "english": "Central Americans travel a lot by bus."
+            },
+            {
+              "text": "Todos hablan español y comparten fiestas, comidas y canciones.",
+              "english": "They all speak Spanish and share festivals, foods and songs."
+            },
+            {
+              "text": "Un guatemalteco, un salvadoreño y un nicaragüense hablan como un hondureño.",
+              "english": "A Guatemalan, a Salvadoran and a Nicaraguan speak like a Honduran."
+            },
+            {
+              "text": "Todos los centroamericanos son vecinos.",
+              "english": "All Central Americans are neighbors."
+            },
+            {
+              "text": "En Tegucigalpa vive mucha gente.",
+              "english": "Many people live in Tegucigalpa."
+            },
+            {
+              "text": "Un viaje en autobús de Tegucigalpa al valle de Sula es de cinco horas.",
+              "english": "A bus trip from Tegucigalpa to the Sula valley takes about five hours."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La naturaleza",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Honduras tiene mucha naturaleza.",
+              "english": "Honduras has a lot of nature."
+            },
+            {
+              "text": "La naturaleza de Honduras es grande y bonita.",
+              "english": "The nature of Honduras is big and beautiful."
+            },
+            {
+              "text": "Hay muchos cerros, y entre ellos hay valles.",
+              "english": "There are many hills, and between them there are valleys."
+            },
+            {
+              "text": "Los valles son buenos para las granjas.",
+              "english": "The valleys are good for farms."
+            },
+            {
+              "text": "El valle de Sula es grande y tiene mucha gente.",
+              "english": "The Sula valley is big and has many people."
+            },
+            {
+              "text": "Los campesinos cultivan frijoles, tomates y cebollas.",
+              "english": "Farmers grow beans, tomatoes and onions."
+            },
+            {
+              "text": "Los bosques de los cerros dan agua a los valles.",
+              "english": "The forests on the hills give water to the valleys."
+            },
+            {
+              "text": "Los bosques tienen árboles altos.",
+              "english": "The forests have tall trees."
+            },
+            {
+              "text": "En el bosque hay flores y abejas.",
+              "english": "In the forest there are flowers and bees."
+            },
+            {
+              "text": "En el centro del país hay un lago grande.",
+              "english": "In the center of the country there is a big lake."
+            },
+            {
+              "text": "El lago es más pequeño que el mar, pero es muy bonito.",
+              "english": "The lake is smaller than the sea, but it is very beautiful."
+            },
+            {
+              "text": "Hay aves cerca del lago.",
+              "english": "There are birds near the lake."
+            },
+            {
+              "text": "Cantan por la mañana.",
+              "english": "They sing in the morning."
+            },
+            {
+              "text": "En el mar hay islas bonitas.",
+              "english": "In the sea there are beautiful islands."
+            },
+            {
+              "text": "Las islas son pequeñas.",
+              "english": "The islands are small."
+            },
+            {
+              "text": "Muchos van a las islas en el verano.",
+              "english": "Many go to the islands in the summer."
+            },
+            {
+              "text": "Los pescadores trabajan cerca de la costa.",
+              "english": "Fishermen work near the coast."
+            },
+            {
+              "text": "En el norte hay una selva muy grande.",
+              "english": "In the north there is a very large jungle."
+            },
+            {
+              "text": "La selva es la casa de muchos animales.",
+              "english": "The jungle is the home of many animals."
+            },
+            {
+              "text": "En la selva viven aves rojas, verdes y azules.",
+              "english": "In the jungle live red, green and blue birds."
+            },
+            {
+              "text": "Un ave roja es muy bonita.",
+              "english": "A red bird is very beautiful."
+            },
+            {
+              "text": "También viven monos, y los monos duermen en los árboles.",
+              "english": "Monkeys also live there, and monkeys sleep in the trees."
+            },
+            {
+              "text": "Los monos comen y juegan todo el día.",
+              "english": "Monkeys eat and play all day."
+            },
+            {
+              "text": "La gente quiere cuidar la naturaleza.",
+              "english": "People want to take care of nature."
+            },
+            {
+              "text": "Hay culebras grandes y culebras pequeñas.",
+              "english": "There are big snakes and small snakes."
+            },
+            {
+              "text": "Una culebra grande es un peligro para un niño.",
+              "english": "A big snake is a danger for a child."
+            },
+            {
+              "text": "La zona del sur tiene menos lluvia que la otra zona.",
+              "english": "The southern zone has less rain than the other zone."
+            },
+            {
+              "text": "En los cerros hay insectos, moscas y abejas.",
+              "english": "In the hills there are insects, flies and bees."
+            },
+            {
+              "text": "Las abejas ayudan a las flores.",
+              "english": "Bees help the flowers."
+            },
+            {
+              "text": "Las moscas traen enfermedades.",
+              "english": "Flies bring illnesses."
+            },
+            {
+              "text": "Los insectos del agua traen el dengue.",
+              "english": "Insects from the water bring dengue."
+            },
+            {
+              "text": "Por eso hay brigadas de salud en los pueblos.",
+              "english": "That is why there are health brigades in the villages."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El clima",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En la playa, la temperatura es alta todo el año.",
+              "english": "On the beach, the temperature is high all year."
+            },
+            {
+              "text": "La temperatura del mar es alta también.",
+              "english": "The temperature of the sea is high too."
+            },
+            {
+              "text": "En los cerros hace más frío.",
+              "english": "In the hills it is colder."
+            },
+            {
+              "text": "En el centro, la temperatura es buena.",
+              "english": "In the center, the temperature is pleasant."
+            },
+            {
+              "text": "En el verano hay sol y poca lluvia.",
+              "english": "In the dry season there is sun and little rain."
+            },
+            {
+              "text": "En el invierno llueve mucho.",
+              "english": "In the rainy season it rains a lot."
+            },
+            {
+              "text": "Con mucho sol, la piel se puede quemar.",
+              "english": "With a lot of sun, the skin can burn."
+            },
+            {
+              "text": "Muchos niños sufren por el calor.",
+              "english": "Many children suffer from the heat."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La gente y las costumbres",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Los hondureños son amables.",
+              "english": "Hondurans are kind."
+            },
+            {
+              "text": "Cuando llega una visita, la gente da la bienvenida con un abrazo o con un beso.",
+              "english": "When a guest arrives, people give a welcome with a hug or a kiss."
+            },
+            {
+              "text": "Los hombres se abrazan, y las mujeres se dan un beso.",
+              "english": "The men hug, and the women give each other a kiss."
+            },
+            {
+              "text": "Todos se saludan.",
+              "english": "Everyone greets each other."
+            },
+            {
+              "text": "Al terminar la visita, la gente se despide y acompaña al amigo hasta la calle.",
+              "english": "When the visit ends, people say goodbye and walk the friend out to the street."
+            },
+            {
+              "text": "La gente se levanta temprano.",
+              "english": "People get up early."
+            },
+            {
+              "text": "Los alumnos van temprano a la escuela, y muchos vuelven a la casa al mediodía.",
+              "english": "The students go to school early, and many come home at noon."
+            },
+            {
+              "text": "Por la tarde los niños se sientan a hacer la tarea.",
+              "english": "In the afternoon the children sit down to do their homework."
+            },
+            {
+              "text": "Por la noche se bañan con jabón, se cepillan el pelo y se acuestan.",
+              "english": "At night they bathe with soap, brush their hair and go to bed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La salud",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En muchos pueblos no hay hospital, y la farmacia está lejos.",
+              "english": "In many villages there is no hospital, and the pharmacy is far away."
+            },
+            {
+              "text": "Las brigadas médicas ponen vacunas y tratan las heridas.",
+              "english": "Medical brigades give vaccines and treat wounds."
+            },
+            {
+              "text": "Una herida limpia puede sanar en una semana.",
+              "english": "A clean wound can heal in a week."
+            },
+            {
+              "text": "Cuando un niño se enferma, la familia busca ayuda.",
+              "english": "When a child gets sick, the family looks for help."
+            },
+            {
+              "text": "En la escuela, los alumnos aprenden el cuello, el hombro, la rodilla, el dedo, la uña, la lengua y los huesos.",
+              "english": "In school, the students learn the neck, the shoulder, the knee, the finger, the nail, the tongue and the bones."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La fe",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Muchos son creyentes.",
+              "english": "Many are believers."
+            },
+            {
+              "text": "El domingo, la congregación se reúne en el templo.",
+              "english": "On Sunday, the congregation gathers in the church."
+            },
+            {
+              "text": "Los hermanos asisten al culto y cantan, y el pastor predica.",
+              "english": "The brothers attend the service and sing, and the pastor preaches."
+            },
+            {
+              "text": "Lee un versículo de un capítulo de la Biblia.",
+              "english": "He reads a verse from a chapter of the Bible."
+            },
+            {
+              "text": "Los creyentes dan el diezmo, y otros dan su testimonio.",
+              "english": "Believers give the tithe, and others give their testimony."
+            },
+            {
+              "text": "Muchos piden el bautismo, y el pastor los bautiza.",
+              "english": "Many ask for baptism, and the pastor baptizes them."
+            },
+            {
+              "text": "Los martes y los jueves hay reuniones en la iglesia.",
+              "english": "On Tuesdays and Thursdays there are meetings at the church."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El final de la clase",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Los alumnos escriben su tarea.",
+              "english": "The students write their homework."
+            },
+            {
+              "text": "Nico lo mira un momento.",
+              "english": "Nico looks at it for a moment."
+            },
+            {
+              "text": "—Mi país es pequeño, pero tiene mar, selva y mucha gente buena —escribe.",
+              "english": "\"My country is small, but it has sea, jungle and many good people,\" he writes."
+            },
+            {
+              "text": "Luis lee la tarea de Nico y está contento.",
+              "english": "Luis reads Nico's homework and is happy."
+            },
+            {
+              "text": "—Honduras es pequeña en el mapa, pero es grande en la vida de su gente —dice.",
+              "english": "\"Honduras is small on the map, but it is big in the life of its people,\" he says."
+            },
+            {
+              "text": "Los alumnos miran el mapa de nuevo, y cada niño busca su pueblo.",
+              "english": "The students look at the map once more, and each child looks for their village."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Para los visitantes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Si querés conocer Honduras, vení en verano.",
+              "english": "If you want to get to know Honduras, come in the dry season."
+            },
+            {
+              "text": "Llevá tu pasaporte, un pantalón y zapatos buenos.",
+              "english": "Bring your passport, pants and good shoes."
+            },
+            {
+              "text": "Viajá en autobús y hablá con la gente.",
+              "english": "Travel by bus and talk with people."
+            },
+            {
+              "text": "La gente es amable y le gusta ayudar.",
+              "english": "People are kind and like to help."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

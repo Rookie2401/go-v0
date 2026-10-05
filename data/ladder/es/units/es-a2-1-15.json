@@ -1,0 +1,533 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-15",
+  "lang": "es",
+  "title": "Una carta a mi abuela",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-15",
+    "title": "A letter abroad (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence",
+    "letter",
+    "homesickness"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "L": "Luis",
+    "S": "Sam",
+    "N": "Nico"
+  },
+  "sections": [
+    {
+      "title": "Una tarea especial",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es sábado por la tarde.",
+              "english": "It is Saturday afternoon."
+            },
+            {
+              "text": "Sam está en la casa de doña Marta, en la mesa del patio.",
+              "english": "Sam is at doña Marta's house, at the table in the patio."
+            },
+            {
+              "text": "Quiere escribir una carta a su abuela.",
+              "english": "He wants to write a letter to his grandmother."
+            },
+            {
+              "text": "Luis viene a ayudarlo.",
+              "english": "Luis comes to help him."
+            },
+            {
+              "speaker": "L",
+              "text": "Escribí poco a poco.",
+              "english": "Write little by little."
+            },
+            {
+              "speaker": "L",
+              "text": "Yo te ayudo.",
+              "english": "I will help you."
+            },
+            {
+              "speaker": "S",
+              "text": "Quiero decir que extraño a mi abuela.",
+              "english": "I want to say that I miss my grandmother."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cómo se dice?",
+              "english": "How do you say it?"
+            },
+            {
+              "speaker": "L",
+              "text": "Se dice «te extraño».",
+              "english": "You say \"te extraño\"."
+            },
+            {
+              "speaker": "L",
+              "text": "Repetí conmigo.",
+              "english": "Repeat with me."
+            },
+            {
+              "speaker": "S",
+              "text": "Te extraño, te extraño.",
+              "english": "Te extraño, te extraño."
+            },
+            {
+              "speaker": "L",
+              "text": "Repetí de nuevo.",
+              "english": "Repeat again."
+            },
+            {
+              "text": "En el patio, unos niños corren con una pelota.",
+              "english": "In the patio, some children run with a ball."
+            },
+            {
+              "speaker": "N",
+              "text": "¡Sam, vení a jugar!",
+              "english": "Sam, come and play!"
+            },
+            {
+              "speaker": "S",
+              "text": "Primero la carta.",
+              "english": "First the letter."
+            },
+            {
+              "speaker": "S",
+              "text": "Después juego con ustedes.",
+              "english": "Afterwards I will play with you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La carta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Querida abuela:",
+              "english": "Dear grandmother:"
+            },
+            {
+              "text": "¿Cómo está usted?",
+              "english": "How are you?"
+            },
+            {
+              "text": "Yo estoy bien.",
+              "english": "I am well."
+            },
+            {
+              "text": "Le escribo esta carta para contarle todo.",
+              "english": "I am writing you this letter to tell you everything."
+            },
+            {
+              "text": "Hace tres meses que estoy aquí.",
+              "english": "I have been here for three months."
+            },
+            {
+              "text": "Primero no comprendía mucho.",
+              "english": "At first I did not understand much."
+            },
+            {
+              "text": "La gente hablaba y yo repetía las palabras.",
+              "english": "People talked and I repeated the words."
+            },
+            {
+              "text": "Hoy comprendo más, y estoy muy contento.",
+              "english": "Today I understand more, and I am very happy."
+            },
+            {
+              "text": "Vivo con doña Marta.",
+              "english": "I live with doña Marta."
+            },
+            {
+              "text": "Ella me trata con cariño, como a un nieto.",
+              "english": "She treats me with affection, like a grandson."
+            },
+            {
+              "text": "Mucha gente me da cariño.",
+              "english": "Many people show me affection."
+            },
+            {
+              "text": "Su nieto Nico corre conmigo todas las mañanas.",
+              "english": "Her grandson Nico runs with me every morning."
+            },
+            {
+              "text": "Los domingos, Luis me presta su carro, y vamos al templo.",
+              "english": "On Sundays, Luis lends me his car, and we go to the church."
+            },
+            {
+              "text": "Tengo muchos amigos.",
+              "english": "I have many friends."
+            },
+            {
+              "text": "Luis es maestro, y sus alumnos me enseñan palabras nuevas todos los días.",
+              "english": "Luis is a teacher, and his students teach me new words every day."
+            },
+            {
+              "text": "Ana es enfermera, y Karla trabaja con ella.",
+              "english": "Ana is a nurse, and Karla works with her."
+            },
+            {
+              "text": "Carlos es mecánico y quiere aprender mi idioma, y los sábados le enseño dos horas.",
+              "english": "Carlos is a mechanic and wants to learn my language, and on Saturdays I teach him for two hours."
+            },
+            {
+              "text": "Daniel es el jefe del equipo.",
+              "english": "Daniel is the head of the team."
+            },
+            {
+              "text": "Todos me ayudan mucho.",
+              "english": "They all help me a lot."
+            },
+            {
+              "text": "Me levanto temprano, me baño con agua fría y me cepillo el pelo.",
+              "english": "I get up early, bathe with cold water and brush my hair."
+            },
+            {
+              "text": "Después tomo café con doña Marta.",
+              "english": "Then I have coffee with doña Marta."
+            },
+            {
+              "text": "Por la mañana ayudo en la escuela, y por la tarde visito a las familias del pueblo.",
+              "english": "In the morning I help at the school, and in the afternoon I visit the families of the village."
+            },
+            {
+              "text": "Por la noche me siento en el patio y miro la luna y las estrellas.",
+              "english": "At night I sit in the patio and look at the moon and the stars."
+            },
+            {
+              "text": "Extraño su comida, pero aquí como frijoles y tortillas.",
+              "english": "I miss your food, but here I eat beans and tortillas."
+            },
+            {
+              "text": "Me gustan mucho.",
+              "english": "I like them a lot."
+            },
+            {
+              "text": "Hace un mes hicimos un viaje al norte.",
+              "english": "A month ago we took a trip to the north."
+            },
+            {
+              "text": "El autobús tuvo un retraso, pero llegamos.",
+              "english": "The bus had a delay, but we arrived."
+            },
+            {
+              "text": "Vimos el mar y una isla pequeña.",
+              "english": "We saw the sea and a small island."
+            },
+            {
+              "text": "En un valle grande hay un lago.",
+              "english": "In a big valley there is a lake."
+            },
+            {
+              "text": "También vimos una selva.",
+              "english": "We also saw a jungle."
+            },
+            {
+              "text": "Allí viven aves rojas y verdes, monos y culebras.",
+              "english": "Red and green birds, monkeys and snakes live there."
+            },
+            {
+              "text": "La naturaleza de este país es muy bonita.",
+              "english": "The nature of this country is very beautiful."
+            },
+            {
+              "text": "En la costa la temperatura es alta, pero en los cerros hace frío.",
+              "english": "On the coast the temperature is high, but in the hills it is cold."
+            },
+            {
+              "text": "Pasamos por un bosque.",
+              "english": "We passed through a forest."
+            },
+            {
+              "text": "En el mapa, Honduras es una nación pequeña.",
+              "english": "On the map, Honduras is a small nation."
+            },
+            {
+              "text": "En el sur hay otro mar.",
+              "english": "In the south there is another sea."
+            },
+            {
+              "text": "Cerca de la frontera conocí a guatemaltecos, salvadoreños y nicaragüenses.",
+              "english": "Near the border I met Guatemalans, Salvadorans and Nicaraguans."
+            },
+            {
+              "text": "Todos son centroamericanos.",
+              "english": "They are all Central Americans."
+            },
+            {
+              "text": "En esta zona hay muchos hondureños amables.",
+              "english": "In this area there are many kind Hondurans."
+            },
+            {
+              "text": "Una noche hubo un trueno muy grande.",
+              "english": "One night there was a very loud thunderclap."
+            },
+            {
+              "text": "Un rayo cayó cerca de la casa, y la luz se fue.",
+              "english": "A bolt of lightning fell near the house, and the electricity went out."
+            },
+            {
+              "text": "Tuve un susto, pero doña Marta me dijo: «No pasa nada, Sam».",
+              "english": "I got a fright, but doña Marta told me, \"It's all right, Sam.\""
+            },
+            {
+              "text": "Cada domingo la congregación se reúne en el templo.",
+              "english": "Every Sunday the congregation gathers in the church."
+            },
+            {
+              "text": "Hay alabanza, el pastor lee un versículo y predica, y todos dan su diezmo y su ofrenda.",
+              "english": "There is praise, the pastor reads a verse and preaches, and everyone gives their tithe and their offering."
+            },
+            {
+              "text": "Los hombres se abrazan, y las mujeres se dan un beso.",
+              "english": "The men hug, and the women give each other a kiss."
+            },
+            {
+              "text": "Cuando llegué, me dieron la bienvenida con un abrazo.",
+              "english": "When I arrived, they welcomed me with a hug."
+            },
+            {
+              "text": "Pronto voy a asistir a un bautismo: mi amigo Marvin va a bautizarse.",
+              "english": "Soon I am going to attend a baptism: my friend Marvin is going to be baptized."
+            },
+            {
+              "text": "Ayudé a la brigada médica.",
+              "english": "I helped the medical brigade."
+            },
+            {
+              "text": "Vi cómo ponían vacunas y trataban una herida.",
+              "english": "I saw how they gave vaccines and treated a wound."
+            },
+            {
+              "text": "Un niño tenía una herida en la rodilla.",
+              "english": "A boy had a wound on his knee."
+            },
+            {
+              "text": "Una señora tenía dolor en el cuello y en el hombro.",
+              "english": "A lady had pain in her neck and shoulder."
+            },
+            {
+              "text": "Un señor se quemó la piel con aceite.",
+              "english": "A man burned his skin with oil."
+            },
+            {
+              "text": "Había moscas, y un niño tenía dengue.",
+              "english": "There were flies, and a boy had dengue."
+            },
+            {
+              "text": "Muchas personas sufren, pero están contentas.",
+              "english": "Many people suffer, but they are happy."
+            },
+            {
+              "text": "Yo también tuve un accidente pequeño: se rompió una uña, y me quemé la lengua con el café.",
+              "english": "I also had a small accident: a nail broke, and I burned my tongue with the coffee."
+            },
+            {
+              "text": "Gracias a Dios, mis huesos están bien.",
+              "english": "Thank God, my bones are fine."
+            },
+            {
+              "text": "El domingo, el pastor contó el cuento del hijo que se fue.",
+              "english": "On Sunday, the pastor told the story of the son who left."
+            },
+            {
+              "text": "En el cuento, el joven cuidaba cerdos y quería ser un criado de su papá.",
+              "english": "In the story, the young man took care of pigs and wanted to be a servant of his dad."
+            },
+            {
+              "text": "Yo pensé en mi casa.",
+              "english": "I thought about my home."
+            },
+            {
+              "text": "Estoy en un país lejano, como el hijo joven.",
+              "english": "I am in a far-off country, like the younger son."
+            },
+            {
+              "text": "Pero no estoy solo.",
+              "english": "But I am not alone."
+            },
+            {
+              "text": "Todos pecamos, y todos necesitamos ayuda.",
+              "english": "We all sin, and we all need help."
+            },
+            {
+              "text": "Muchas personas pobres de este pueblo me dan más de lo que merezco.",
+              "english": "Many poor people in this village give me more than I deserve."
+            },
+            {
+              "text": "La verdad es que aprendo más de lo que enseño.",
+              "english": "The truth is that I learn more than I teach."
+            },
+            {
+              "text": "Mi mamá estuvo triste cuando me fui, y mi papá se enojó.",
+              "english": "My mom was sad when I left, and my dad got angry."
+            },
+            {
+              "text": "Pero ahora ellos comprenden.",
+              "english": "But now they understand."
+            },
+            {
+              "text": "El camino no es fácil, pero es bueno.",
+              "english": "The road is not easy, but it is good."
+            },
+            {
+              "text": "En diciembre voy a viajar a casa.",
+              "english": "In December I am going to travel home."
+            },
+            {
+              "text": "Mi vuelo sale del aeropuerto de Tegucigalpa.",
+              "english": "My flight leaves from the Tegucigalpa airport."
+            },
+            {
+              "text": "Tengo mi pasaporte.",
+              "english": "I have my passport."
+            },
+            {
+              "text": "Quiero descansar un poco en su casa, y después voy a decidir si vuelvo a Honduras.",
+              "english": "I want to rest a little at your house, and then I will decide whether I come back to Honduras."
+            },
+            {
+              "text": "Quiero llevar regalos de Honduras: café, una camiseta para mi papá y un vestido para mi mamá.",
+              "english": "I want to bring gifts from Honduras: coffee, a T-shirt for my dad and a dress for my mom."
+            },
+            {
+              "text": "Doña Marta me enseñó a hacer tortillas, y voy a cocinar para usted.",
+              "english": "Doña Marta taught me to make tortillas, and I am going to cook for you."
+            },
+            {
+              "text": "Va a ser una fiesta.",
+              "english": "It will be a party."
+            },
+            {
+              "text": "Recibí su correo ayer.",
+              "english": "I got your email yesterday."
+            },
+            {
+              "text": "Quiero verla pronto, y le deseo un buen día.",
+              "english": "I want to see you soon, and I wish you a good day."
+            },
+            {
+              "text": "Voy a entrar a su casa con un abrazo muy grande.",
+              "english": "I am going to walk into your house with a very big hug."
+            },
+            {
+              "text": "Hasta pronto, abuela.",
+              "english": "See you soon, grandmother."
+            },
+            {
+              "text": "Escríbame pronto.",
+              "english": "Write to me soon."
+            },
+            {
+              "text": "Con mucho cariño,",
+              "english": "With much love,"
+            },
+            {
+              "text": "Sam",
+              "english": "Sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Después de la carta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis lee la carta y dice: —Está muy bien, Sam.",
+              "english": "Luis reads the letter and says, \"It is very good, Sam."
+            },
+            {
+              "text": "Ya comprendés mucho.",
+              "english": "You already understand a lot.\""
+            },
+            {
+              "text": "Sam termina la carta.",
+              "english": "Sam finishes the letter."
+            },
+            {
+              "text": "Está contento, pero también está un poco triste.",
+              "english": "He is happy, but also a little sad."
+            },
+            {
+              "speaker": "L",
+              "text": "Mañana escribimos otra carta, para tu mamá y para tu papá.",
+              "english": "Tomorrow we will write another letter, for your mom and your dad."
+            },
+            {
+              "text": "Sam piensa en su casa, pero también piensa en este patio, en esta gente y en este país.",
+              "english": "Sam thinks about his home, but he also thinks about this patio, these people and this country."
+            },
+            {
+              "speaker": "N",
+              "text": "¡Sam, la pelota!",
+              "english": "Sam, the ball!"
+            },
+            {
+              "speaker": "N",
+              "text": "¡Vení!",
+              "english": "Come!"
+            },
+            {
+              "text": "Sam se levanta y sale corriendo al patio.",
+              "english": "Sam gets up and goes running out to the patio."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-10",
+  "lang": "es",
+  "title": "The lost sheep (Luke 15)",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-10",
+    "title": "The lost sheep (Luke 15) (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "scripture"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "M": "Mario",
+    "A": "Ana"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "scripture"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Una visita",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy Sam hace una visita al señor Mario.",
+              "english": "Today Sam pays a visit to Mr Mario."
+            },
+            {
+              "text": "El señor Mario sigue en la ciudad, en un cuarto cerca del centro.",
+              "english": "Mr Mario is still in the city, in a room near the center."
+            },
+            {
+              "text": "Ayer caminó por el parque, y anoche cenó antes de las siete.",
+              "english": "Yesterday he walked in the park, and last night he had dinner before seven."
+            },
+            {
+              "text": "Sam trae pan y una Biblia.",
+              "english": "Sam brings bread and a Bible."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Buenos días, señor Mario.",
+              "english": "Good morning, Mr Mario."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cómo está su salud?",
+              "english": "How is your health?"
+            },
+            {
+              "speaker": "M",
+              "text": "Mejor, gracias.",
+              "english": "Better, thank you."
+            },
+            {
+              "speaker": "M",
+              "text": "Tomé las pastillas anoche y esta mañana.",
+              "english": "I took the pills last night and this morning."
+            },
+            {
+              "speaker": "M",
+              "text": "La tos y la garganta están mejor.",
+              "english": "The cough and the throat are better."
+            },
+            {
+              "speaker": "M",
+              "text": "La nariz está bien.",
+              "english": "The nose is fine."
+            },
+            {
+              "speaker": "M",
+              "text": "No hay sangre.",
+              "english": "There is no blood."
+            },
+            {
+              "speaker": "S",
+              "text": "Qué bueno.",
+              "english": "Good."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Tiene la receta y la cita con el doctor?",
+              "english": "Do you have the prescription and the appointment with the doctor?"
+            },
+            {
+              "speaker": "M",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "M",
+              "text": "La cita es mañana.",
+              "english": "The appointment is tomorrow."
+            },
+            {
+              "speaker": "M",
+              "text": "Debo cuidar mi cuerpo.",
+              "english": "I must take care of my body."
+            },
+            {
+              "speaker": "M",
+              "text": "Es un lugar nuevo para mí, pero aquí conocí a una familia buena.",
+              "english": "It is a new place for me, but here I met a good family."
+            },
+            {
+              "speaker": "M",
+              "text": "Sam, ¿qué tenés en la mano?",
+              "english": "Sam, what do you have in your hand?"
+            },
+            {
+              "speaker": "S",
+              "text": "Una Biblia.",
+              "english": "A Bible."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Puedo leer con usted?",
+              "english": "May I read with you?"
+            },
+            {
+              "speaker": "M",
+              "text": "Claro.",
+              "english": "Of course."
+            },
+            {
+              "speaker": "M",
+              "text": "Primero tomá café, y luego leemos.",
+              "english": "First have some coffee, and then we read."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La oveja perdida",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam lee la Biblia.",
+              "english": "Sam reads the Bible."
+            },
+            {
+              "text": "Es un idioma difícil, pero la palabra de Jesús es fácil de entender.",
+              "english": "It is a difficult language, but the word of Jesus is easy to understand."
+            },
+            {
+              "text": "Aquí está la palabra de Jesús, con las palabras de Sam.",
+              "english": "Here is the word of Jesus, in Sam's words."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un pastor tiene cien ovejas.",
+              "english": "A shepherd has a hundred sheep."
+            },
+            {
+              "text": "Una está perdida.",
+              "english": "One is lost."
+            },
+            {
+              "text": "El pastor tiene a las otras en un lugar bueno.",
+              "english": "The shepherd has the others in a good place."
+            },
+            {
+              "text": "Camina y busca la oveja perdida.",
+              "english": "He walks and looks for the lost sheep."
+            },
+            {
+              "text": "Es tarde.",
+              "english": "It is late."
+            },
+            {
+              "text": "Hace frío, y llueve.",
+              "english": "It is cold, and it rains."
+            },
+            {
+              "text": "El pastor sigue y sigue.",
+              "english": "The shepherd keeps going and going."
+            },
+            {
+              "text": "Por fin encuentra a la oveja.",
+              "english": "At last he finds the sheep."
+            },
+            {
+              "text": "Está sola.",
+              "english": "She is alone."
+            },
+            {
+              "text": "El pastor está feliz.",
+              "english": "The shepherd is happy."
+            },
+            {
+              "text": "La pone sobre su cuerpo y la lleva a la casa.",
+              "english": "He puts her on his body and carries her home."
+            },
+            {
+              "text": "Llama a sus amigos y a sus vecinos.",
+              "english": "He calls his friends and his neighbors."
+            },
+            {
+              "text": "Dice a sus amigos: \"Estoy feliz.",
+              "english": "He says to his friends: \"I am happy."
+            },
+            {
+              "text": "Ya no está perdida.\"",
+              "english": "She is no longer lost.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Jesús dice: \"Hay fiesta entre los ángeles de Dios cuando la gente regresa a Dios.\"",
+              "english": "Jesus says: \"There is a party among the angels of God when people return to God.\""
+            },
+            {
+              "text": "Dios perdona.",
+              "english": "God forgives."
+            },
+            {
+              "text": "Dios quiere salvar a todos en el mundo.",
+              "english": "God wants to save everyone in the world."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Después de leer",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "Entendí, Sam.",
+              "english": "I understood, Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "Dios es como el pastor.",
+              "english": "God is like the shepherd."
+            },
+            {
+              "speaker": "M",
+              "text": "Yo estuve solo, y Dios me buscó.",
+              "english": "I was alone, and God looked for me."
+            },
+            {
+              "speaker": "S",
+              "text": "Dios ama al mundo.",
+              "english": "God loves the world."
+            },
+            {
+              "speaker": "S",
+              "text": "Dios perdona a la gente.",
+              "english": "God forgives people."
+            },
+            {
+              "speaker": "M",
+              "text": "Mi salud es un milagro.",
+              "english": "My health is a miracle."
+            },
+            {
+              "speaker": "M",
+              "text": "Dios hace milagros.",
+              "english": "God does miracles."
+            },
+            {
+              "speaker": "M",
+              "text": "Dios es el rey del mundo, y es mi rey.",
+              "english": "God is the king of the world, and he is my king."
+            },
+            {
+              "speaker": "S",
+              "text": "Un rey bueno que salva.",
+              "english": "A good king who saves."
+            },
+            {
+              "speaker": "S",
+              "text": "Jesús vino a salvar a la gente.",
+              "english": "Jesus came to save people."
+            },
+            {
+              "speaker": "A",
+              "text": "Sí, es un milagro.",
+              "english": "Yes, it is a miracle."
+            },
+            {
+              "speaker": "M",
+              "text": "Dios me perdona.",
+              "english": "God forgives me."
+            },
+            {
+              "speaker": "M",
+              "text": "Tengo una pregunta, Sam.",
+              "english": "I have a question, Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Dónde están las otras?",
+              "english": "Where are the others?"
+            },
+            {
+              "speaker": "S",
+              "text": "Están en un lugar bueno, con el pastor.",
+              "english": "They are in a good place, with the shepherd."
+            },
+            {
+              "speaker": "M",
+              "text": "La ciudad es diferente al pueblo.",
+              "english": "The city is different from the village."
+            },
+            {
+              "speaker": "M",
+              "text": "Allí hay mucha gente buena.",
+              "english": "There are many good people there."
+            },
+            {
+              "speaker": "M",
+              "text": "Anoche sentí frío, pero hoy estoy bien.",
+              "english": "Last night I felt cold, but today I am fine."
+            },
+            {
+              "speaker": "M",
+              "text": "La enfermedad termina.",
+              "english": "The illness is ending."
+            },
+            {
+              "speaker": "M",
+              "text": "Mañana es mi último día aquí.",
+              "english": "Tomorrow is my last day here."
+            },
+            {
+              "speaker": "M",
+              "text": "Después regreso al pueblo.",
+              "english": "Afterwards I go back to the village."
+            },
+            {
+              "speaker": "M",
+              "text": "Pido a Dios salud para todos.",
+              "english": "I ask God for health for everyone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana llega con agua y pan.",
+              "english": "Ana arrives with water and bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "Ana es como un ángel de Dios.",
+              "english": "Ana is like an angel of God."
+            },
+            {
+              "speaker": "S",
+              "text": "Los ángeles también están felices hoy.",
+              "english": "The angels are happy today too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La oración",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Los tres oran.",
+              "english": "The three of them pray."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Dios, te alabo en la mañana.",
+              "english": "God, I praise you in the morning."
+            },
+            {
+              "speaker": "M",
+              "text": "Dios, te adoro con todo el corazón.",
+              "english": "God, I worship you with all my heart."
+            },
+            {
+              "speaker": "A",
+              "text": "Gloria a Dios.",
+              "english": "Glory to God."
+            },
+            {
+              "speaker": "S",
+              "text": "Dios, bendecí a esta familia.",
+              "english": "God, bless this family."
+            },
+            {
+              "speaker": "M",
+              "text": "Alabamos a Dios en la iglesia y en la casa.",
+              "english": "We praise God in church and at home."
+            },
+            {
+              "speaker": "A",
+              "text": "Adoramos a Dios con la gente.",
+              "english": "We worship God with the people."
+            },
+            {
+              "speaker": "S",
+              "text": "Dios bendice a la gente.",
+              "english": "God blesses the people."
+            },
+            {
+              "speaker": "M",
+              "text": "La gloria es de Dios.",
+              "english": "The glory is God's."
+            },
+            {
+              "speaker": "A",
+              "text": "Alabar a Dios es bueno.",
+              "english": "Praising God is good."
+            },
+            {
+              "speaker": "M",
+              "text": "Adorar a Dios es mi vida.",
+              "english": "Worshipping God is my life."
+            },
+            {
+              "speaker": "S",
+              "text": "Dios bendice al señor Mario.",
+              "english": "God blesses Mr Mario."
+            },
+            {
+              "speaker": "A",
+              "text": "Toda la gloria es para Dios.",
+              "english": "All the glory is for God."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam termina la visita.",
+              "english": "Sam finishes the visit."
+            },
+            {
+              "text": "Regresa a la casa de doña Marta.",
+              "english": "He goes back to doña Marta's house."
+            },
+            {
+              "text": "Está feliz y tiene paz.",
+              "english": "He is happy and has peace."
+            },
+            {
+              "text": "Doña Marta cocina sopa y pollo.",
+              "english": "Doña Marta cooks soup and chicken."
+            },
+            {
+              "text": "Sam come con la familia y habla de la visita.",
+              "english": "Sam eats with the family and talks about the visit."
+            },
+            {
+              "text": "Todos están felices, y la casa tiene mucha paz.",
+              "english": "Everybody is happy, and the house has a lot of peace."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

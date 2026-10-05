@@ -1,0 +1,613 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-13",
+  "lang": "es",
+  "title": "Describing people and places",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-13",
+    "title": "Describing people and places (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "N": "Nico",
+    "M": "Marta",
+    "A": "Ana"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "El juego de Nico",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es domingo por la tarde.",
+              "english": "It is Sunday afternoon."
+            },
+            {
+              "text": "Nico y Sam juegan un juego.",
+              "english": "Nico and Sam are playing a game."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "Yo digo cómo es una mujer.",
+              "english": "I say what a woman is like."
+            },
+            {
+              "speaker": "N",
+              "text": "Vos tenés que saber el nombre.",
+              "english": "You have to know the name."
+            },
+            {
+              "speaker": "S",
+              "text": "Bueno.",
+              "english": "Good."
+            },
+            {
+              "speaker": "S",
+              "text": "Estoy seguro de que puedo.",
+              "english": "I am sure I can."
+            },
+            {
+              "speaker": "N",
+              "text": "Es una mujer alta y delgada.",
+              "english": "She is a tall, thin woman."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Es joven o es vieja?",
+              "english": "Is she young or old?"
+            },
+            {
+              "speaker": "N",
+              "text": "Es joven.",
+              "english": "She is young."
+            },
+            {
+              "speaker": "N",
+              "text": "Tiene los ojos negros.",
+              "english": "She has black eyes."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Es amable?",
+              "english": "Is she kind?"
+            },
+            {
+              "speaker": "N",
+              "text": "Sí, es muy amable y muy simpática.",
+              "english": "Yes, she is very kind and very nice."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Trabaja en la clínica?",
+              "english": "Does she work at the clinic?"
+            },
+            {
+              "speaker": "N",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "N",
+              "text": "Y anteayer bailó en la fiesta.",
+              "english": "And the day before yesterday she danced at the party."
+            },
+            {
+              "speaker": "S",
+              "text": "Entonces es Ana.",
+              "english": "Then it is Ana."
+            },
+            {
+              "speaker": "N",
+              "text": "¡Sí!",
+              "english": "Yes!"
+            },
+            {
+              "speaker": "N",
+              "text": "Ahora vos.",
+              "english": "Now you."
+            },
+            {
+              "speaker": "S",
+              "text": "Es un hombre.",
+              "english": "He is a man."
+            },
+            {
+              "speaker": "S",
+              "text": "Es alto, pero no es delgado.",
+              "english": "He is tall, but he is not thin."
+            },
+            {
+              "speaker": "N",
+              "text": "¿Es simpático?",
+              "english": "Is he nice?"
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, es simpático y es amable.",
+              "english": "Yes, he is nice and kind."
+            },
+            {
+              "speaker": "S",
+              "text": "Habla en la iglesia.",
+              "english": "He speaks at church."
+            },
+            {
+              "speaker": "N",
+              "text": "Es el pastor.",
+              "english": "It is the pastor."
+            },
+            {
+              "speaker": "N",
+              "text": "Sos muy bueno en este juego.",
+              "english": "You are very good at this game."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cosas y lugares",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "Ahora una casa.",
+              "english": "Now a house."
+            },
+            {
+              "speaker": "N",
+              "text": "Es pequeña y blanca.",
+              "english": "It is small and white."
+            },
+            {
+              "speaker": "S",
+              "text": "Es la casa de doña Marta.",
+              "english": "It is doña Marta's house."
+            },
+            {
+              "speaker": "S",
+              "text": "¡Es muy bonita!",
+              "english": "It is very pretty!"
+            },
+            {
+              "speaker": "N",
+              "text": "Ahora un autobús.",
+              "english": "Now a bus."
+            },
+            {
+              "speaker": "N",
+              "text": "Es grande y rojo.",
+              "english": "It is big and red."
+            },
+            {
+              "speaker": "S",
+              "text": "Es el autobús del equipo.",
+              "english": "It is the team's bus."
+            },
+            {
+              "speaker": "S",
+              "text": "Es un autobús limpio.",
+              "english": "It is a clean bus."
+            },
+            {
+              "speaker": "N",
+              "text": "Ahora una mochila.",
+              "english": "Now a school bag."
+            },
+            {
+              "speaker": "N",
+              "text": "Es verde.",
+              "english": "It is green."
+            },
+            {
+              "speaker": "S",
+              "text": "Tu mochila es verde, y mi mochila es azul.",
+              "english": "Your school bag is green, and my school bag is blue."
+            },
+            {
+              "speaker": "S",
+              "text": "Mi cuarto es azul y limpio.",
+              "english": "My room is blue and clean."
+            },
+            {
+              "speaker": "S",
+              "text": "Me gusta mucho.",
+              "english": "I like it a lot."
+            },
+            {
+              "speaker": "N",
+              "text": "¡Muy bien!",
+              "english": "Very good!"
+            },
+            {
+              "speaker": "N",
+              "text": "Quizás ya entendés el juego.",
+              "english": "Maybe you understand the game now."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una baleada",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta prepara baleadas.",
+              "english": "Doña Marta prepares baleadas."
+            },
+            {
+              "text": "Corta el tomate y la cebolla, calienta el aceite y fríe la tortilla de harina.",
+              "english": "She cuts the tomato and the onion, heats the oil and fries the flour tortilla."
+            },
+            {
+              "text": "Agrega sal y pone el queso y la crema con una cuchara.",
+              "english": "She adds salt and puts the cheese and the cream on with a spoon."
+            },
+            {
+              "text": "Mirá una baleada.",
+              "english": "Look at a baleada."
+            },
+            {
+              "text": "El frijol es negro y el tomate es rojo.",
+              "english": "The bean is black and the tomato is red."
+            },
+            {
+              "text": "El queso es blanco y la crema es blanca.",
+              "english": "The cheese is white and the cream is white."
+            },
+            {
+              "text": "La verdura es verde, y el plato es azul.",
+              "english": "The vegetables are green, and the plate is blue."
+            },
+            {
+              "text": "Es una baleada muy bonita.",
+              "english": "It is a very pretty baleada."
+            },
+            {
+              "text": "La noche es negra, pero la baleada es buena.",
+              "english": "The night is black, but the baleada is good."
+            },
+            {
+              "text": "Doña Marta dice: \"Una baleada es una fiesta para los ojos.\"",
+              "english": "Doña Marta says: \"A baleada is a party for the eyes.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Más que",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Nico, mirá.",
+              "english": "Nico, look."
+            },
+            {
+              "speaker": "S",
+              "text": "Luis es más alto que Ana.",
+              "english": "Luis is taller than Ana."
+            },
+            {
+              "speaker": "N",
+              "text": "Y doña Marta es más vieja que todos.",
+              "english": "And doña Marta is older than everybody."
+            },
+            {
+              "speaker": "S",
+              "text": "Vos sos más pequeño que yo, pero sos un niño.",
+              "english": "You are smaller than I am, but you are a child."
+            },
+            {
+              "speaker": "N",
+              "text": "Y vos sos más viejo que yo.",
+              "english": "And you are older than I am."
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, tengo más edad.",
+              "english": "Yes, I am older."
+            },
+            {
+              "speaker": "S",
+              "text": "Pero doña Marta tiene más edad que todos.",
+              "english": "But doña Marta is older than everybody."
+            },
+            {
+              "speaker": "N",
+              "text": "El cuarto de la abuela es más limpio que la terminal.",
+              "english": "Grandmother's room is cleaner than the terminal."
+            },
+            {
+              "speaker": "S",
+              "text": "Y el parque es más bonito que la calle.",
+              "english": "And the park is prettier than the street."
+            },
+            {
+              "speaker": "S",
+              "text": "La calle es fea.",
+              "english": "The street is ugly."
+            },
+            {
+              "speaker": "N",
+              "text": "La terminal es fea, pero el mercado es más feo.",
+              "english": "The terminal is ugly, but the market is uglier."
+            },
+            {
+              "speaker": "S",
+              "text": "Nico, el mercado tiene mucha gente buena.",
+              "english": "Nico, the market has many good people."
+            },
+            {
+              "speaker": "N",
+              "text": "Bueno, es solo un juego.",
+              "english": "Well, it is only a game."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una visita",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mañana llega Karla a la terminal.",
+              "english": "Tomorrow Karla arrives at the terminal."
+            },
+            {
+              "text": "Ana habla con Sam.",
+              "english": "Ana talks with Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Sam, mañana llega Karla.",
+              "english": "Sam, Karla arrives tomorrow."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Vas a la terminal?",
+              "english": "Are you going to the terminal?"
+            },
+            {
+              "speaker": "S",
+              "text": "Claro.",
+              "english": "Of course."
+            },
+            {
+              "speaker": "S",
+              "text": "No conozco a Karla.",
+              "english": "I do not know Karla."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cómo es?",
+              "english": "What is she like?"
+            },
+            {
+              "speaker": "A",
+              "text": "Es una mujer joven y feliz.",
+              "english": "She is a young and happy woman."
+            },
+            {
+              "speaker": "A",
+              "text": "Tiene una mochila grande y una bolsa roja.",
+              "english": "She has a big school bag and a red bag."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Es más joven que vos?",
+              "english": "Is she younger than you?"
+            },
+            {
+              "speaker": "A",
+              "text": "Sí, tiene menos edad que yo.",
+              "english": "Yes, she is younger than I am."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y cómo está?",
+              "english": "And how is she?"
+            },
+            {
+              "speaker": "A",
+              "text": "Está bien, pero quizás está cansada del viaje.",
+              "english": "She is fine, but maybe she is tired from the trip."
+            },
+            {
+              "speaker": "S",
+              "text": "Entonces llevamos agua y pan.",
+              "english": "Then we take water and bread."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La familia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta es una mujer vieja, pero tiene el corazón joven.",
+              "english": "Doña Marta is an old woman, but she has a young heart."
+            },
+            {
+              "text": "Su esposo Miguel murió hace ocho años.",
+              "english": "Her husband Miguel died eight years ago."
+            },
+            {
+              "text": "Ahora tiene dos nietos, Nico y una niña pequeña.",
+              "english": "Now she has two grandchildren, Nico and a little girl."
+            },
+            {
+              "text": "Nico es un niño delgado.",
+              "english": "Nico is a thin boy."
+            },
+            {
+              "text": "Ana nació en el pueblo y creció en la casa de su mamá.",
+              "english": "Ana was born in the village and grew up in her mother's house."
+            },
+            {
+              "text": "Luis se casó hace dos años, y su esposa trabaja en la escuela.",
+              "english": "Luis got married two years ago, and his wife works at the school."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ser y estar",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy Sam está triste.",
+              "english": "Today Sam is sad."
+            },
+            {
+              "text": "Doña Marta mira a Sam.",
+              "english": "Doña Marta looks at Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "Sam, ¿estás triste?",
+              "english": "Sam, are you sad?"
+            },
+            {
+              "speaker": "S",
+              "text": "Un poco, doña Marta.",
+              "english": "A little, doña Marta."
+            },
+            {
+              "speaker": "S",
+              "text": "Mi familia está lejos.",
+              "english": "My family is far away."
+            },
+            {
+              "speaker": "M",
+              "text": "Estar triste es solo un momento.",
+              "english": "Being sad is only for a moment."
+            },
+            {
+              "speaker": "M",
+              "text": "Dios te da paz.",
+              "english": "God gives you peace."
+            },
+            {
+              "speaker": "S",
+              "text": "Gracias.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "S",
+              "text": "Ahora estoy contento.",
+              "english": "Now I am happy."
+            },
+            {
+              "speaker": "M",
+              "text": "Yo también estoy contenta.",
+              "english": "I am happy too."
+            },
+            {
+              "speaker": "M",
+              "text": "Nico está contento también.",
+              "english": "Nico is happy too."
+            },
+            {
+              "text": "Doña Marta es buena, y Sam es feliz en su casa.",
+              "english": "Doña Marta is good, and Sam is happy in her house."
+            },
+            {
+              "text": "Después, Sam escribe un mensaje a su familia.",
+              "english": "Afterwards, Sam writes a message to his family."
+            },
+            {
+              "text": "Dice: \"Estoy bien.",
+              "english": "He says: \"I am fine."
+            },
+            {
+              "text": "Doña Marta es una mujer buena.",
+              "english": "Doña Marta is a good woman."
+            },
+            {
+              "text": "Nico es un niño feliz.\"",
+              "english": "Nico is a happy boy.\""
+            },
+            {
+              "text": "Dice también: \"Mi cuarto es pequeño, pero tiene mucha paz.\"",
+              "english": "He also says: \"My room is small, but it has a lot of peace.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

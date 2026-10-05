@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-07",
+  "lang": "es",
+  "title": "Last weekend",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-07",
+    "title": "Last weekend (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "N": "Nico",
+    "A": "Ana",
+    "L": "Luis",
+    "D": "Daniel"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "El lunes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es lunes por la mañana.",
+              "english": "It is Monday morning."
+            },
+            {
+              "text": "Sam y Nico caminan a la escuela.",
+              "english": "Sam and Nico walk to school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "Sam, ¿qué hiciste el fin de semana?",
+              "english": "Sam, what did you do over the weekend?"
+            },
+            {
+              "speaker": "S",
+              "text": "Fue un fin de semana muy bueno.",
+              "english": "It was a very good weekend."
+            },
+            {
+              "speaker": "S",
+              "text": "Anteayer fuimos a una fiesta.",
+              "english": "The day before yesterday we went to a party."
+            },
+            {
+              "speaker": "N",
+              "text": "¿Una fiesta?",
+              "english": "A party?"
+            },
+            {
+              "speaker": "N",
+              "text": "¿Dónde?",
+              "english": "Where?"
+            },
+            {
+              "speaker": "S",
+              "text": "En la casa de un vecino.",
+              "english": "At a neighbor's house."
+            },
+            {
+              "speaker": "S",
+              "text": "Es la casa de Kevin, un cipote de ocho años.",
+              "english": "It is the house of Kevin, a boy of eight."
+            },
+            {
+              "speaker": "N",
+              "text": "¿Y qué hicieron?",
+              "english": "And what did you do?"
+            },
+            {
+              "speaker": "S",
+              "text": "Mirá, te digo todo.",
+              "english": "Look, I will tell you everything."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El sábado en la mañana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anteayer fue sábado.",
+              "english": "The day before yesterday was Saturday."
+            },
+            {
+              "text": "Doña Marta y Ana cocinaron en la casa.",
+              "english": "Doña Marta and Ana cooked at the house."
+            },
+            {
+              "text": "Doña Marta cocinó pollo y frijoles para la comida de la tarde.",
+              "english": "Doña Marta cooked chicken and beans for the afternoon meal."
+            },
+            {
+              "text": "Yo ayudé con el pan.",
+              "english": "I helped with the bread."
+            },
+            {
+              "text": "Caminé a la pulpería y compré café.",
+              "english": "I walked to the shop and bought coffee."
+            },
+            {
+              "text": "Nico no ayudó.",
+              "english": "Nico did not help."
+            },
+            {
+              "text": "Jugó con su juego pequeño.",
+              "english": "He played with his small game."
+            },
+            {
+              "text": "Ana compró pan y puso el pan en la mesa.",
+              "english": "Ana bought bread and put the bread on the table."
+            },
+            {
+              "text": "Yo compré un libro para Kevin.",
+              "english": "I bought a book for Kevin."
+            },
+            {
+              "text": "Fue mi regalo.",
+              "english": "It was my present."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En la fiesta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anteayer hizo calor y hizo sol.",
+              "english": "The day before yesterday it was hot and sunny."
+            },
+            {
+              "text": "En la casa de Kevin conocí a mucha gente nueva.",
+              "english": "At Kevin's house I met many new people."
+            },
+            {
+              "text": "Daniel, el papá de Kevin, me dijo:",
+              "english": "Daniel, Kevin's father, said to me:"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "D",
+              "text": "Gracias por el regalo, Sam.",
+              "english": "Thank you for the present, Sam."
+            },
+            {
+              "speaker": "S",
+              "text": "De nada.",
+              "english": "You are welcome."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Kevin va a leer el libro?",
+              "english": "Is Kevin going to read the book?"
+            },
+            {
+              "speaker": "D",
+              "text": "Claro que sí.",
+              "english": "Of course."
+            },
+            {
+              "speaker": "D",
+              "text": "Kevin lee mucho.",
+              "english": "Kevin reads a lot."
+            },
+            {
+              "speaker": "D",
+              "text": "Hoy tiene otro regalo de su familia.",
+              "english": "Today he has another present from his family."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después de comer, la gente bailó.",
+              "english": "After eating, the people danced."
+            },
+            {
+              "text": "Ana bailó con Luis.",
+              "english": "Ana danced with Luis."
+            },
+            {
+              "text": "Yo bailé un momento.",
+              "english": "I danced for a moment."
+            },
+            {
+              "text": "Nico trajo su juego, pero jugó solo.",
+              "english": "Nico brought his game, but he played alone."
+            },
+            {
+              "text": "Daniel cocinó tamales y sopa para toda la gente.",
+              "english": "Daniel cooked tamales and soup for all the people."
+            },
+            {
+              "text": "Me sentí muy feliz.",
+              "english": "I felt very happy."
+            },
+            {
+              "text": "Quizás es la gente, quizás es la comida.",
+              "english": "Maybe it is the people, maybe it is the food."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "L",
+              "text": "Ya son las ocho.",
+              "english": "It is already eight."
+            },
+            {
+              "speaker": "L",
+              "text": "¿Regresamos?",
+              "english": "Shall we go back?"
+            },
+            {
+              "speaker": "S",
+              "text": "Un momento, Luis.",
+              "english": "One moment, Luis."
+            },
+            {
+              "speaker": "S",
+              "text": "Ahorita no puedo.",
+              "english": "I cannot right now."
+            },
+            {
+              "speaker": "L",
+              "text": "Luego regresamos.",
+              "english": "We will go back later."
+            },
+            {
+              "speaker": "L",
+              "text": "Antes de las nueve.",
+              "english": "Before nine."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pasamos un día muy bueno.",
+              "english": "We spent a very good day."
+            },
+            {
+              "text": "Anoche dormí poco, pero estoy bien.",
+              "english": "Last night I slept little, but I am fine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El domingo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El domingo dimos un paseo por el parque.",
+              "english": "On Sunday we took a walk in the park."
+            },
+            {
+              "text": "Fuimos Ana, Luis, Nico y yo.",
+              "english": "Ana, Luis, Nico and I went."
+            },
+            {
+              "text": "No es verano, pero hizo calor.",
+              "english": "It is not summer, but it was hot."
+            },
+            {
+              "text": "En este mes hay lluvia, pero el domingo hizo sol.",
+              "english": "In this month there is rain, but on Sunday it was sunny."
+            },
+            {
+              "text": "Allí hay mucha gente.",
+              "english": "There are many people there."
+            },
+            {
+              "text": "Yo miré a la gente.",
+              "english": "I looked at the people."
+            },
+            {
+              "text": "Vi a Kevin con su papá.",
+              "english": "I saw Kevin with his father."
+            },
+            {
+              "text": "Nico pidió agua.",
+              "english": "Nico asked for water."
+            },
+            {
+              "text": "Luis puso la bolsa aquí.",
+              "english": "Luis put the bag here."
+            },
+            {
+              "text": "Un señor vendió plátanos y compré uno para Nico.",
+              "english": "A man sold plantains and I bought one for Nico."
+            },
+            {
+              "text": "Me quedé allí un momento con Nico.",
+              "english": "I stayed there for a moment with Nico."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "¿Es posible jugar aquí?",
+              "english": "Is it possible to play here?"
+            },
+            {
+              "speaker": "A",
+              "text": "Claro, Nico.",
+              "english": "Of course, Nico."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Pero es seguro?",
+              "english": "But is it safe?"
+            },
+            {
+              "speaker": "L",
+              "text": "Es seguro.",
+              "english": "It is safe."
+            },
+            {
+              "speaker": "L",
+              "text": "Es un lugar bueno, y hay mucha gente.",
+              "english": "It is a good place, and there are many people."
+            },
+            {
+              "speaker": "N",
+              "text": "¿Puedo jugar solo?",
+              "english": "Can I play alone?"
+            },
+            {
+              "speaker": "L",
+              "text": "No, no es posible.",
+              "english": "No, it is not possible."
+            },
+            {
+              "speaker": "L",
+              "text": "Es mejor jugar con nosotros.",
+              "english": "It is better to play with us."
+            },
+            {
+              "speaker": "N",
+              "text": "Está bien.",
+              "english": "All right."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Fue un paseo muy bueno.",
+              "english": "It was a very good walk."
+            },
+            {
+              "text": "El paseo terminó a las cinco.",
+              "english": "The walk ended at five."
+            },
+            {
+              "text": "Así pasamos el domingo.",
+              "english": "That is how we spent Sunday."
+            },
+            {
+              "text": "Luego regresamos a la casa.",
+              "english": "Then we went back to the house."
+            },
+            {
+              "text": "Tuvimos tiempo y cocinamos todos.",
+              "english": "We had time and we all cooked."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En la escuela",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis es maestro, y hoy habla con Sam y con Nico.",
+              "english": "Luis is a teacher, and today he talks with Sam and with Nico."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "L",
+              "text": "Sam, ¿vas a escribir sobre tu fin de semana?",
+              "english": "Sam, are you going to write about your weekend?"
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, voy a escribir.",
+              "english": "Yes, I am going to write."
+            },
+            {
+              "speaker": "S",
+              "text": "Estoy seguro de que tengo mucho que escribir.",
+              "english": "I am sure I have a lot to write."
+            },
+            {
+              "speaker": "N",
+              "text": "Sam, ¿puedo ir a otra fiesta con vos?",
+              "english": "Sam, can I go to another party with you?"
+            },
+            {
+              "speaker": "S",
+              "text": "Claro, Nico.",
+              "english": "Of course, Nico."
+            },
+            {
+              "speaker": "S",
+              "text": "Es posible.",
+              "english": "It is possible."
+            },
+            {
+              "speaker": "S",
+              "text": "Quizás en el verano.",
+              "english": "Maybe in the summer."
+            },
+            {
+              "speaker": "L",
+              "text": "Bueno.",
+              "english": "Good."
+            },
+            {
+              "speaker": "L",
+              "text": "Todos tienen que escribir hoy.",
+              "english": "Everyone has to write today."
+            },
+            {
+              "speaker": "N",
+              "text": "Yo también escribo, Luis.",
+              "english": "I will write too, Luis."
+            },
+            {
+              "speaker": "N",
+              "text": "Escribo sobre el parque.",
+              "english": "I am writing about the park."
+            },
+            {
+              "speaker": "L",
+              "text": "Muy bien.",
+              "english": "Very good."
+            },
+            {
+              "speaker": "L",
+              "text": "Escribimos y después hablamos.",
+              "english": "We write and afterwards we talk."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

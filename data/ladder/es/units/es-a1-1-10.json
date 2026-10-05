@@ -1,0 +1,510 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-10",
+  "lang": "es",
+  "title": "The bus to San Pedro Sula",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-10",
+    "title": "The bus to San Pedro Sula (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: \"Vení\" (vos imperative of venir, used as a chunk); \"tenemos que comprar\" (tener que + infinitive); \"boleto\" (Latin American word for a ticket); ticket price and times are invented; \"mirá\" is planned in the PLAN but mirar is not yet in the word list, so it is not used here."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "travel",
+    "bus",
+    "tickets"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ana": "Ana",
+    "laura": "Señora Laura",
+    "daniel": "Daniel"
+  },
+  "sections": [
+    {
+      "title": "The bus to San Pedro Sula",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy Sam y Ana van a San Pedro Sula.",
+              "english": "Today Sam and Ana are going to San Pedro Sula."
+            },
+            {
+              "text": "Está lejos de la casa.",
+              "english": "It is far from the house."
+            },
+            {
+              "text": "La terminal de autobuses está cerca.",
+              "english": "The bus terminal is near."
+            },
+            {
+              "text": "Ana tiene que ayudar en un hospital.",
+              "english": "Ana has to help at a hospital."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Sam, vení.",
+              "english": "Sam, come here."
+            },
+            {
+              "speaker": "ana",
+              "text": "La terminal está aquí.",
+              "english": "The terminal is here."
+            },
+            {
+              "speaker": "sam",
+              "text": "Tenemos que comprar los boletos.",
+              "english": "We have to buy the tickets."
+            },
+            {
+              "text": "La señora Laura vende boletos.",
+              "english": "Señora Laura sells tickets."
+            },
+            {
+              "speaker": "sam",
+              "text": "Buenas tardes, señora.",
+              "english": "Good afternoon, ma'am."
+            },
+            {
+              "speaker": "laura",
+              "text": "Buenas tardes.",
+              "english": "Good afternoon."
+            },
+            {
+              "speaker": "laura",
+              "text": "¿Cuántos?",
+              "english": "How many?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Dos, por favor.",
+              "english": "Two, please."
+            },
+            {
+              "speaker": "ana",
+              "text": "Para San Pedro Sula.",
+              "english": "For San Pedro Sula."
+            },
+            {
+              "speaker": "laura",
+              "text": "¿Para hoy?",
+              "english": "For today?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Sí, para hoy.",
+              "english": "Yes, for today."
+            },
+            {
+              "speaker": "laura",
+              "text": "El autobús sale a las seis de la tarde.",
+              "english": "The bus leaves at six in the evening."
+            },
+            {
+              "speaker": "laura",
+              "text": "Llega a las diez de la noche.",
+              "english": "It arrives at ten at night."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Cuánto cuesta?",
+              "english": "How much is it?"
+            },
+            {
+              "speaker": "laura",
+              "text": "Cuesta ciento cincuenta lempiras.",
+              "english": "It costs one hundred fifty lempiras."
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Es caro!",
+              "english": "It is expensive!"
+            },
+            {
+              "speaker": "ana",
+              "text": "No, no es caro.",
+              "english": "No, it is not expensive."
+            },
+            {
+              "speaker": "ana",
+              "text": "El precio es bueno.",
+              "english": "The price is good."
+            },
+            {
+              "speaker": "laura",
+              "text": "Tienen que pagar aquí.",
+              "english": "You have to pay here."
+            },
+            {
+              "speaker": "sam",
+              "text": "Aquí tiene el dinero.",
+              "english": "Here is the money."
+            },
+            {
+              "speaker": "laura",
+              "text": "Gracias.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "laura",
+              "text": "Aquí están los boletos.",
+              "english": "Here are the tickets."
+            },
+            {
+              "speaker": "ana",
+              "text": "Gracias, señora.",
+              "english": "Thank you, ma'am."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Son las cuatro.",
+              "english": "It is four o'clock."
+            },
+            {
+              "speaker": "ana",
+              "text": "Tenemos que esperar hasta las seis.",
+              "english": "We have to wait until six."
+            },
+            {
+              "speaker": "sam",
+              "text": "Tengo hambre.",
+              "english": "I am hungry."
+            },
+            {
+              "speaker": "ana",
+              "text": "En la terminal venden sopa y tamales.",
+              "english": "They sell soup and tamales at the terminal."
+            },
+            {
+              "text": "Sam compra un plato de sopa.",
+              "english": "Sam buys a plate of soup."
+            },
+            {
+              "text": "Ana compra tamales.",
+              "english": "Ana buys tamales."
+            },
+            {
+              "speaker": "sam",
+              "text": "La sopa es barata.",
+              "english": "The soup is cheap."
+            },
+            {
+              "speaker": "ana",
+              "text": "Sí, y el plato es grande.",
+              "english": "Yes, and the plate is big."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Querés tamales?",
+              "english": "Do you want tamales?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Sí, un tamal más.",
+              "english": "Yes, one more tamal."
+            },
+            {
+              "text": "Los dos esperan hasta las seis.",
+              "english": "The two of them wait until six."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "daniel",
+              "text": "Hola, Sam.",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Hola, Ana.",
+              "english": "Hello, Ana."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Yo vengo con ustedes.",
+              "english": "I am coming with you."
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Yo también voy.",
+              "english": "I am going too."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Vamos a esperar con ustedes.",
+              "english": "We are going to wait with you."
+            },
+            {
+              "speaker": "ana",
+              "text": "¡Vení, Daniel!",
+              "english": "Come, Daniel!"
+            },
+            {
+              "speaker": "ana",
+              "text": "Aquí hay agua.",
+              "english": "Here is some water."
+            },
+            {
+              "text": "El autobús llega a las seis.",
+              "english": "The bus arrives at six."
+            },
+            {
+              "speaker": "ana",
+              "text": "¡Vamos!",
+              "english": "Let us go!"
+            },
+            {
+              "speaker": "ana",
+              "text": "Está aquí.",
+              "english": "It is here."
+            },
+            {
+              "text": "Hay mucha gente aquí.",
+              "english": "There are many people here."
+            },
+            {
+              "speaker": "sam",
+              "text": "Daniel, ¿tenés familia en Honduras?",
+              "english": "Daniel, do you have family in Honduras?"
+            },
+            {
+              "speaker": "daniel",
+              "text": "No, mi familia está muy lejos de aquí.",
+              "english": "No, my family is very far from here."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Mi papá y mi mamá están en su casa.",
+              "english": "My dad and my mom are in their house."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi familia también está lejos.",
+              "english": "My family is far too."
+            },
+            {
+              "speaker": "ana",
+              "text": "Yo tengo una familia grande.",
+              "english": "I have a big family."
+            },
+            {
+              "speaker": "ana",
+              "text": "Tengo un papá, una mamá y dos hermanos.",
+              "english": "I have a dad, a mom and two brothers."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mañana, ¿qué vamos a hacer?",
+              "english": "Tomorrow, what are we going to do?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Voy a ayudar a los médicos.",
+              "english": "I am going to help the doctors."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Yo voy a trabajar con ustedes.",
+              "english": "I am going to work with you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Yo voy a estudiar español con la gente.",
+              "english": "I am going to study Spanish with the people."
+            },
+            {
+              "speaker": "ana",
+              "text": "Vos hablás muy bien.",
+              "english": "You speak very well."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Necesito estudiar más.",
+              "english": "I need to study more."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Todos necesitamos estudiar.",
+              "english": "We all need to study."
+            },
+            {
+              "speaker": "ana",
+              "text": "Hoy llegamos.",
+              "english": "Today we arrive."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Tengo hambre.",
+              "english": "I am hungry."
+            },
+            {
+              "speaker": "daniel",
+              "text": "¿Hay pan?",
+              "english": "Is there any bread?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Aquí tenés pan y café.",
+              "english": "Here you have bread and coffee."
+            },
+            {
+              "speaker": "ana",
+              "text": "Es de doña Marta.",
+              "english": "It is from doña Marta."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Gracias.",
+              "english": "Thanks."
+            },
+            {
+              "speaker": "daniel",
+              "text": "¡Qué buena es doña Marta!",
+              "english": "How good doña Marta is!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Doña Marta da comida a la gente.",
+              "english": "Doña Marta gives food to people."
+            },
+            {
+              "speaker": "ana",
+              "text": "Esta noche estamos en la casa de un amigo.",
+              "english": "Tonight we are at a friend's house."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Cómo se llama tu amigo?",
+              "english": "What is your friend's name?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Se llama Marvin.",
+              "english": "His name is Marvin."
+            },
+            {
+              "speaker": "ana",
+              "text": "Es el hijo del señor Mario.",
+              "english": "He is Mr. Mario's son."
+            },
+            {
+              "speaker": "ana",
+              "text": "Marvin tiene una casa grande.",
+              "english": "Marvin has a big house."
+            },
+            {
+              "speaker": "ana",
+              "text": "Tiene cuartos y camas para nosotros.",
+              "english": "He has rooms and beds for us."
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Estoy muy cansado.",
+              "english": "I am very tired."
+            },
+            {
+              "speaker": "ana",
+              "text": "El hospital está cerca de la iglesia.",
+              "english": "The hospital is near the church."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Mi iglesia está cerca del hospital.",
+              "english": "My church is near the hospital."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias por la comida, Ana.",
+              "english": "Thank you for the food, Ana."
+            },
+            {
+              "speaker": "sam",
+              "text": "Es un buen día, Ana.",
+              "english": "It is a good day, Ana."
+            },
+            {
+              "speaker": "sam",
+              "text": "Buenas noches, Ana.",
+              "english": "Good night, Ana."
+            },
+            {
+              "speaker": "ana",
+              "text": "Hasta mañana, Sam.",
+              "english": "See you tomorrow, Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

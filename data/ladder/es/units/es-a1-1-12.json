@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-12",
+  "lang": "es",
+  "title": "Nico is sick",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-12",
+    "title": "Nico is sick (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: \"me duele la cabeza / me duelen los ojos\" (doler like gustar); \"tener fiebre\"; \"Dame la mano\"; \"estar enfermo / mejor / mal\"; the PLAN also wants frío and sed here, but they are not in the word list yet."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "health",
+    "body",
+    "clinic"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "carlos": "Señor Carlos",
+    "karla": "Karla",
+    "nico": "Nico",
+    "luis": "Luis",
+    "ana": "Ana",
+    "sam": "Sam",
+    "daniel": "Daniel",
+    "marta": "Doña Marta",
+    "pastor": "Pastor Jorge"
+  },
+  "sections": [
+    {
+      "title": "Nico is sick",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nico está en la escuela.",
+              "english": "Nico is at school."
+            },
+            {
+              "text": "Hoy está mal.",
+              "english": "Today he is not well."
+            },
+            {
+              "speaker": "nico",
+              "text": "Luis, me duele la cabeza.",
+              "english": "Luis, my head hurts."
+            },
+            {
+              "speaker": "luis",
+              "text": "¿Qué tenés, Nico?",
+              "english": "What is wrong, Nico?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Me duelen los ojos y me duele la boca.",
+              "english": "My eyes hurt and my mouth hurts."
+            },
+            {
+              "text": "Luis tiene la mano en la cabeza de Nico.",
+              "english": "Luis has his hand on Nico's head."
+            },
+            {
+              "speaker": "luis",
+              "text": "Tenés fiebre.",
+              "english": "You have a fever."
+            },
+            {
+              "speaker": "luis",
+              "text": "Estás enfermo, Nico.",
+              "english": "You are sick, Nico."
+            },
+            {
+              "speaker": "luis",
+              "text": "Vamos a la clínica.",
+              "english": "Let us go to the clinic."
+            },
+            {
+              "speaker": "nico",
+              "text": "No quiero estudiar hoy.",
+              "english": "I do not want to study today."
+            },
+            {
+              "speaker": "luis",
+              "text": "No tenés que estudiar.",
+              "english": "You do not have to study."
+            },
+            {
+              "speaker": "luis",
+              "text": "Tenés que ir con Ana.",
+              "english": "You have to go to Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Hola, Nico.",
+              "english": "Hello, Nico."
+            },
+            {
+              "speaker": "ana",
+              "text": "¿Cómo estás?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Estoy mal, Ana.",
+              "english": "I am not well, Ana."
+            },
+            {
+              "speaker": "ana",
+              "text": "Soy enfermera y voy a ayudar.",
+              "english": "I am a nurse and I am going to help."
+            },
+            {
+              "speaker": "ana",
+              "text": "¿Dónde está el dolor?",
+              "english": "Where is the pain?"
+            },
+            {
+              "speaker": "ana",
+              "text": "¿Y la boca?",
+              "english": "And the mouth?"
+            },
+            {
+              "speaker": "nico",
+              "text": "En la cabeza.",
+              "english": "In my head."
+            },
+            {
+              "speaker": "nico",
+              "text": "Tengo mucho dolor.",
+              "english": "I have a lot of pain."
+            },
+            {
+              "speaker": "ana",
+              "text": "Dame la mano, Nico.",
+              "english": "Give me your hand, Nico."
+            },
+            {
+              "speaker": "ana",
+              "text": "Tenés fiebre, pero no es mucha.",
+              "english": "You have a fever, but not a high one."
+            },
+            {
+              "speaker": "luis",
+              "text": "¿Necesita un médico?",
+              "english": "Does he need a doctor?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Sí, Daniel es médico.",
+              "english": "Yes, Daniel is a doctor."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Hola, Nico.",
+              "english": "Hello, Nico."
+            },
+            {
+              "speaker": "daniel",
+              "text": "¿Tenés dolor en los ojos?",
+              "english": "Do you have pain in your eyes?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Sí, y en la boca también.",
+              "english": "Yes, and in my mouth too."
+            },
+            {
+              "speaker": "ana",
+              "text": "Nico tiene los ojos cansados.",
+              "english": "Nico has tired eyes."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Nico no necesita el hospital.",
+              "english": "Nico does not need the hospital."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Necesita agua y más agua.",
+              "english": "He needs water and more water."
+            },
+            {
+              "speaker": "ana",
+              "text": "Hay mucha gente en la clínica hoy.",
+              "english": "There are many people at the clinic today."
+            },
+            {
+              "speaker": "luis",
+              "text": "¿Cuánto cuesta?",
+              "english": "How much is it?"
+            },
+            {
+              "speaker": "luis",
+              "text": "¿Tengo que pagar?",
+              "english": "Do I have to pay?"
+            },
+            {
+              "speaker": "ana",
+              "text": "El precio es barato.",
+              "english": "The price is cheap."
+            },
+            {
+              "speaker": "luis",
+              "text": "Aquí tiene el dinero.",
+              "english": "Here is the money."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nico está en la casa con doña Marta.",
+              "english": "Nico is at home with doña Marta."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nico, ¿cómo estás ahora?",
+              "english": "Nico, how are you now?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Estoy mejor, abuela.",
+              "english": "I am better, grandma."
+            },
+            {
+              "speaker": "marta",
+              "text": "Es mejor estar en la cama.",
+              "english": "It is better to be in bed."
+            },
+            {
+              "speaker": "nico",
+              "text": "Pero no tengo hambre.",
+              "english": "But I am not hungry."
+            },
+            {
+              "speaker": "marta",
+              "text": "Tenés que tomar agua.",
+              "english": "You have to drink water."
+            },
+            {
+              "speaker": "marta",
+              "text": "Luis, ¿Nico tiene fiebre?",
+              "english": "Luis, does Nico have a fever?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Doña Marta, ¿qué necesita?",
+              "english": "Doña Marta, what do you need?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Necesito pollo para la sopa de Nico.",
+              "english": "I need chicken for Nico's soup."
+            },
+            {
+              "speaker": "sam",
+              "text": "Yo voy a la tienda del señor Carlos.",
+              "english": "I am going to Mr. Carlos's shop."
+            },
+            {
+              "text": "Sam va a la tienda.",
+              "english": "Sam goes to the shop."
+            },
+            {
+              "speaker": "sam",
+              "text": "Buenos días, señor Carlos. ¿Tiene pollo?",
+              "english": "Good morning, Mr. Carlos. Do you have chicken?"
+            },
+            {
+              "speaker": "carlos",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "carlos",
+              "text": "El precio es noventa lempiras.",
+              "english": "The price is ninety lempiras."
+            },
+            {
+              "speaker": "sam",
+              "text": "Es caro, pero Nico necesita sopa.",
+              "english": "It is expensive, but Nico needs soup."
+            },
+            {
+              "speaker": "carlos",
+              "text": "¿Es para Nico?",
+              "english": "Is it for Nico?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, es para Nico.",
+              "english": "Yes, it is for Nico."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Vamos a orar por Nico.",
+              "english": "We will pray for Nico."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias, señor Carlos.",
+              "english": "Thank you, Mr. Carlos."
+            },
+            {
+              "text": "Doña Marta hace sopa de pollo.",
+              "english": "Doña Marta makes chicken soup."
+            },
+            {
+              "text": "Nico come un plato de sopa.",
+              "english": "Nico eats a plate of soup."
+            },
+            {
+              "speaker": "nico",
+              "text": "Abuela, ¡tengo hambre!",
+              "english": "Grandma, I am hungry!"
+            },
+            {
+              "speaker": "marta",
+              "text": "¡Qué bueno, Nico!",
+              "english": "How nice, Nico!"
+            },
+            {
+              "speaker": "nico",
+              "text": "Me gusta la sopa de pollo.",
+              "english": "I like chicken soup."
+            },
+            {
+              "text": "Luis tiene mucho trabajo en la escuela.",
+              "english": "Luis has a lot of work at school."
+            },
+            {
+              "speaker": "luis",
+              "text": "Voy a la escuela, abuela.",
+              "english": "I am going to school, grandma."
+            },
+            {
+              "speaker": "luis",
+              "text": "Nico está mal, abuela.",
+              "english": "Nico is not well, grandma."
+            },
+            {
+              "speaker": "luis",
+              "text": "Nico está enfermo hoy, pero va a estar mejor.",
+              "english": "Nico is sick today, but he is going to get better."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la tarde el equipo viene a visitar a Nico.",
+              "english": "In the afternoon the team comes to visit Nico."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hola, Nico.",
+              "english": "Hello, Nico."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sé que estás enfermo.",
+              "english": "I know you are sick."
+            },
+            {
+              "speaker": "sam",
+              "text": "Vamos a estar aquí con vos.",
+              "english": "We are going to be here with you."
+            },
+            {
+              "text": "Sam toma la mano de Nico.",
+              "english": "Sam takes Nico's hand."
+            },
+            {
+              "speaker": "nico",
+              "text": "Ahora estoy bien, Sam.",
+              "english": "I am fine now, Sam."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Vamos a orar por Nico.",
+              "english": "Let us pray for Nico."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias, pastor.",
+              "english": "Thank you, pastor."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Nico, mañana vas a estar bien.",
+              "english": "Nico, tomorrow you will be fine."
+            },
+            {
+              "speaker": "karla",
+              "text": "La señora Elena de la pulpería tiene pan.",
+              "english": "Señora Elena from the shop has bread."
+            },
+            {
+              "speaker": "nico",
+              "text": "Gracias, Karla.",
+              "english": "Thank you, Karla."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "luis",
+              "text": "Nico, ¿querés ir a la escuela mañana?",
+              "english": "Nico, do you want to go to school tomorrow?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Sí, quiero ir con vos.",
+              "english": "Yes, I want to go with you."
+            },
+            {
+              "speaker": "luis",
+              "text": "Tenés que comer bien y tomar agua.",
+              "english": "You have to eat well and drink water."
+            },
+            {
+              "speaker": "ana",
+              "text": "Y tenés que estar en la cama hoy.",
+              "english": "And you have to be in bed today."
+            },
+            {
+              "speaker": "nico",
+              "text": "Sí, Ana.",
+              "english": "Yes, Ana."
+            },
+            {
+              "speaker": "nico",
+              "text": "Gracias por ayudar.",
+              "english": "Thank you for helping."
+            },
+            {
+              "speaker": "ana",
+              "text": "De nada.",
+              "english": "You are welcome."
+            },
+            {
+              "speaker": "ana",
+              "text": "Yo siempre estoy en la clínica.",
+              "english": "I am always at the clinic."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gracias a Dios, Nico está bien.",
+              "english": "Thank God, Nico is fine."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

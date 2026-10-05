@@ -1,0 +1,545 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-15",
+  "lang": "es",
+  "title": "Invitations and the calendar",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-15",
+    "title": "Invitations and the calendar (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "correspondence"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "N": "Nico",
+    "A": "Ana"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Los meses",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam y Nico miran los meses del año en un libro.",
+              "english": "Sam and Nico look at the months of the year in a book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "Sam, hay doce meses en el año.",
+              "english": "Sam, there are twelve months in the year."
+            },
+            {
+              "speaker": "N",
+              "text": "Enero, febrero, marzo, abril, mayo, junio, julio, agosto, septiembre, octubre, noviembre, diciembre.",
+              "english": "January, February, March, April, May, June, July, August, September, October, November, December."
+            },
+            {
+              "speaker": "S",
+              "text": "¡Son muchas palabras nuevas!",
+              "english": "That is a lot of new words!"
+            },
+            {
+              "speaker": "N",
+              "text": "Mirá, es fácil.",
+              "english": "Look, it is easy."
+            },
+            {
+              "speaker": "N",
+              "text": "Hoy es el 3 de marzo.",
+              "english": "Today is March 3."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y tu fiesta?",
+              "english": "And your party?"
+            },
+            {
+              "speaker": "N",
+              "text": "Mi fiesta es el sábado.",
+              "english": "My party is on Saturday."
+            },
+            {
+              "speaker": "N",
+              "text": "Voy a tener once años.",
+              "english": "I am going to be eleven."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y el tiempo?",
+              "english": "And the weather?"
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cómo es en los meses?",
+              "english": "What is it like in the months?"
+            },
+            {
+              "speaker": "N",
+              "text": "En enero y febrero hace frío y hay viento.",
+              "english": "In January and February it is cold and windy."
+            },
+            {
+              "speaker": "N",
+              "text": "En mayo y junio llueve mucho.",
+              "english": "In May and June it rains a lot."
+            },
+            {
+              "speaker": "N",
+              "text": "En julio y agosto hay sol y calor.",
+              "english": "In July and August there is sun and heat."
+            },
+            {
+              "speaker": "N",
+              "text": "En septiembre y octubre hay mucha lluvia.",
+              "english": "In September and October there is a lot of rain."
+            },
+            {
+              "speaker": "N",
+              "text": "En noviembre y diciembre hace frío y hay mucho viento.",
+              "english": "In November and December it is cold and very windy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los cumpleaños de la gente",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam escribe los meses de la gente que conoce.",
+              "english": "Sam writes down the months of the people he knows."
+            },
+            {
+              "text": "Karla: el 10 de enero.",
+              "english": "Karla: January 10."
+            },
+            {
+              "text": "Sofía: el 5 de febrero.",
+              "english": "Sofía: February 5."
+            },
+            {
+              "text": "Mario: el 21 de marzo.",
+              "english": "Mario: March 21."
+            },
+            {
+              "text": "Nico: el 12 de abril.",
+              "english": "Nico: April 12."
+            },
+            {
+              "text": "La mamá de Sam: el 9 de mayo.",
+              "english": "Sam's mother: May 9."
+            },
+            {
+              "text": "Marvin: el 30 de junio.",
+              "english": "Marvin: June 30."
+            },
+            {
+              "text": "Ana: el 8 de julio.",
+              "english": "Ana: July 8."
+            },
+            {
+              "text": "Luis: el 20 de agosto.",
+              "english": "Luis: August 20."
+            },
+            {
+              "text": "Doña Marta: el 2 de septiembre.",
+              "english": "Doña Marta: September 2."
+            },
+            {
+              "text": "Daniel: el 14 de octubre.",
+              "english": "Daniel: October 14."
+            },
+            {
+              "text": "Sam: el 15 de noviembre.",
+              "english": "Sam: November 15."
+            },
+            {
+              "text": "Kevin: el 24 de diciembre.",
+              "english": "Kevin: December 24."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una invitación",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana escribe un mensaje al equipo con su celular.",
+              "english": "Ana writes a message to the team with her cell phone."
+            },
+            {
+              "text": "Hola, equipo.",
+              "english": "Hello, team."
+            },
+            {
+              "text": "El 12 de abril celebramos el cumpleaños de Nico.",
+              "english": "On April 12 we celebrate Nico's birthday."
+            },
+            {
+              "text": "Los invitamos a la casa de doña Marta a las tres.",
+              "english": "We invite you to doña Marta's house at three."
+            },
+            {
+              "text": "Vamos a preparar baleadas.",
+              "english": "We are going to prepare baleadas."
+            },
+            {
+              "text": "Doña Marta va a cortar la cebolla, calentar el aceite y freír las tortillas de harina.",
+              "english": "Doña Marta is going to cut the onion, heat the oil and fry the flour tortillas."
+            },
+            {
+              "text": "Hay que poner un poco de sal y crema.",
+              "english": "A little salt and cream have to be added."
+            },
+            {
+              "text": "Antes de la fiesta hay culto.",
+              "english": "Before the party there is a service."
+            },
+            {
+              "text": "Cantamos un himno, una canción y una alabanza.",
+              "english": "We sing a hymn, a song and a praise song."
+            },
+            {
+              "text": "Hay una ofrenda para la clínica.",
+              "english": "There is an offering for the clinic."
+            },
+            {
+              "text": "Favor escribir si venís o no venís.",
+              "english": "Please write whether you are coming or not."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las respuestas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Karla escribe: \"Hola, Ana.",
+              "english": "Karla writes: \"Hi, Ana."
+            },
+            {
+              "text": "Sí, voy.",
+              "english": "Yes, I am coming."
+            },
+            {
+              "text": "Llevo un regalo para Nico.\"",
+              "english": "I will bring a present for Nico.\""
+            },
+            {
+              "text": "\"Dios bendice a Nico.",
+              "english": "\"God blesses Nico."
+            },
+            {
+              "text": "Gloria a Dios, el rey del mundo.\"",
+              "english": "Glory to God, the king of the world.\""
+            },
+            {
+              "text": "Marvin escribe: \"Hola, Ana.",
+              "english": "Marvin writes: \"Hi, Ana."
+            },
+            {
+              "text": "El sábado tengo un viaje con el equipo.",
+              "english": "On Saturday I have a trip with the team."
+            },
+            {
+              "text": "No puedo ir.",
+              "english": "I cannot go."
+            },
+            {
+              "text": "Gracias por invitarme.\"",
+              "english": "Thanks for inviting me.\""
+            },
+            {
+              "text": "Daniel escribe: \"Quizás.",
+              "english": "Daniel writes: \"Maybe."
+            },
+            {
+              "text": "Kevin tiene tos y una enfermedad pequeña.\"",
+              "english": "Kevin has a cough and a small illness.\""
+            },
+            {
+              "text": "\"El doctor escribió una receta.",
+              "english": "\"The doctor wrote a prescription."
+            },
+            {
+              "text": "Kevin toma pastillas y debe cuidar su cuerpo.\"",
+              "english": "Kevin takes pills and must take care of his body.\""
+            },
+            {
+              "text": "\"Si está mejor, vamos.\"",
+              "english": "\"If he is better, we will come.\""
+            },
+            {
+              "text": "El señor Mario escribe: \"Sí, voy.",
+              "english": "Mr Mario writes: \"Yes, I am coming."
+            },
+            {
+              "text": "Ya no tengo sangre en la nariz.",
+              "english": "I no longer have blood in my nose."
+            },
+            {
+              "text": "Estoy mejor.\"",
+              "english": "I am better.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una nota de Sam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam escribe un mensaje a la señora de la pulpería.",
+              "english": "Sam writes a message to the woman at the shop."
+            },
+            {
+              "text": "Señora: la invito al culto del domingo.",
+              "english": "Ma'am: I invite you to the service on Sunday."
+            },
+            {
+              "text": "Vamos a cantar y a alabar a Dios.",
+              "english": "We are going to sing and to praise God."
+            },
+            {
+              "text": "Después hay comida en la casa de doña Marta.",
+              "english": "Afterwards there is food at doña Marta's house."
+            },
+            {
+              "text": "Sam",
+              "english": "Sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sam y la respuesta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Ana, ¿qué escribo si no puedo ir?",
+              "english": "Ana, what do I write if I cannot go?"
+            },
+            {
+              "speaker": "A",
+              "text": "Escribís: \"Gracias, pero no puedo.\"",
+              "english": "You write: \"Thanks, but I cannot.\""
+            },
+            {
+              "speaker": "A",
+              "text": "Si no estás seguro, escribís: \"Quizás.\"",
+              "english": "If you are not sure, you write: \"Maybe.\""
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y si quiero ir?",
+              "english": "And if I want to go?"
+            },
+            {
+              "speaker": "A",
+              "text": "Escribís: \"Sí, voy.",
+              "english": "You write: \"Yes, I am coming."
+            },
+            {
+              "speaker": "A",
+              "text": "Gracias.\"",
+              "english": "Thanks.\""
+            },
+            {
+              "speaker": "S",
+              "text": "Entiendo.",
+              "english": "I understand."
+            },
+            {
+              "speaker": "S",
+              "text": "Es fácil.",
+              "english": "It is easy."
+            },
+            {
+              "speaker": "A",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "A",
+              "text": "Y siempre tenés que dar las gracias.",
+              "english": "And you always have to say thank you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El sábado de la fiesta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El sábado, la casa de doña Marta tiene mucha gente.",
+              "english": "On Saturday, doña Marta's house has many people."
+            },
+            {
+              "text": "Llegan Karla, Daniel, Kevin y el señor Mario.",
+              "english": "Karla, Daniel, Kevin and Mr Mario arrive."
+            },
+            {
+              "text": "Kevin ya no tiene tos, y el señor Mario está contento.",
+              "english": "Kevin no longer has a cough, and Mr Mario is happy."
+            },
+            {
+              "text": "Karla trae un regalo para Nico.",
+              "english": "Karla brings a present for Nico."
+            },
+            {
+              "text": "Es un libro nuevo.",
+              "english": "It is a new book."
+            },
+            {
+              "text": "Doña Marta y Ana cortan, calientan y fríen.",
+              "english": "Doña Marta and Ana cut, heat and fry."
+            },
+            {
+              "text": "Hay comida para todos.",
+              "english": "There is food for everyone."
+            },
+            {
+              "text": "Primero la gente canta.",
+              "english": "First the people sing."
+            },
+            {
+              "text": "Después todos comen, y los jóvenes bailan.",
+              "english": "Afterwards everyone eats, and the young people dance."
+            },
+            {
+              "text": "Sam da a Nico un libro pequeño.",
+              "english": "Sam gives Nico a small book."
+            },
+            {
+              "text": "Es su regalo.",
+              "english": "It is his present."
+            },
+            {
+              "text": "Nico mira a todos y dice: \"Gracias.\"",
+              "english": "Nico looks at everyone and says: \"Thank you.\""
+            },
+            {
+              "text": "Todos cantan una canción para Nico.",
+              "english": "Everyone sings a song for Nico."
+            },
+            {
+              "text": "Es la canción de su cumpleaños.",
+              "english": "It is his birthday song."
+            },
+            {
+              "text": "Doña Marta ora y dice: \"Dios bendice a Nico.\"",
+              "english": "Doña Marta prays and says: \"God blesses Nico.\""
+            },
+            {
+              "text": "Luis y Ana hablan con el pastor y con la gente de la iglesia.",
+              "english": "Luis and Ana talk with the pastor and the people from church."
+            },
+            {
+              "text": "La fiesta termina a las seis.",
+              "english": "The party ends at six."
+            },
+            {
+              "text": "Todos regresan a sus casas con pan para el domingo.",
+              "english": "Everyone goes back home with bread for Sunday."
+            },
+            {
+              "text": "Nico está muy feliz con su fiesta y con su familia grande.",
+              "english": "Nico is very happy with his party and with his big family."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nico está contento.",
+              "english": "Nico is happy."
+            },
+            {
+              "text": "El sábado vamos a celebrar mucho.",
+              "english": "On Saturday we are going to celebrate a lot."
+            },
+            {
+              "text": "Nico dice: \"Gracias, Sam.",
+              "english": "Nico says: \"Thanks, Sam."
+            },
+            {
+              "text": "Me gusta celebrar con todos.",
+              "english": "I like to celebrate with everybody."
+            },
+            {
+              "text": "Mi cumpleaños es una fiesta para todos.\"",
+              "english": "My birthday is a party for everyone.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

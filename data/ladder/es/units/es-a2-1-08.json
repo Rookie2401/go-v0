@@ -1,0 +1,616 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-08",
+  "lang": "es",
+  "title": "La mañana de Nico",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-08",
+    "title": "Nico's morning (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "daily routine",
+    "reflexive verbs",
+    "school"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "S": "Sam",
+    "N": "Nico"
+  },
+  "sections": [
+    {
+      "title": "El despertador",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Son las cinco de la mañana.",
+              "english": "It is five in the morning."
+            },
+            {
+              "text": "Es temprano y hay poca luz.",
+              "english": "It is early and there is little light."
+            },
+            {
+              "text": "Doña Marta se levanta primero.",
+              "english": "Doña Marta gets up first."
+            },
+            {
+              "text": "Ella siempre se levanta temprano y se baña.",
+              "english": "She always gets up early and bathes."
+            },
+            {
+              "text": "Prepara el café y calienta el pan.",
+              "english": "She makes the coffee and warms the bread."
+            },
+            {
+              "text": "A las seis, va al cuarto de Nico.",
+              "english": "At six, she goes to Nico's room."
+            },
+            {
+              "text": "—Nico, despertate.",
+              "english": "\"Nico, wake up."
+            },
+            {
+              "text": "¡Son las seis!",
+              "english": "It's six o'clock!\""
+            },
+            {
+              "text": "Nico abre un ojo.",
+              "english": "Nico opens one eye."
+            },
+            {
+              "text": "No quiere levantarse.",
+              "english": "He does not want to get up."
+            },
+            {
+              "text": "—Un momento más, abuela.",
+              "english": "\"One more moment, grandma.\""
+            },
+            {
+              "text": "—Nico, vestite y vení a la mesa.",
+              "english": "\"Nico, get dressed and come to the table.\""
+            },
+            {
+              "text": "—Nada de momentos.",
+              "english": "\"No moments."
+            },
+            {
+              "text": "Hoy hay clase, y los alumnos no llegan tarde.",
+              "english": "Today there is class, and students do not arrive late.\""
+            },
+            {
+              "text": "Nico por fin se despierta.",
+              "english": "Nico finally wakes up."
+            },
+            {
+              "text": "Piensa en la luna y en las estrellas de anoche.",
+              "english": "He thinks about the moon and the stars of last night."
+            },
+            {
+              "text": "Anoche se acostó tarde.",
+              "english": "Last night he went to bed late."
+            },
+            {
+              "text": "Escuchó la lluvia mucho tiempo.",
+              "english": "He listened to the rain for a long time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La ducha",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En la casa hay una ducha pequeña, con una pared azul.",
+              "english": "In the house there is a small shower, with a blue wall."
+            },
+            {
+              "text": "La ducha está cerca del patio.",
+              "english": "The shower is near the patio."
+            },
+            {
+              "text": "Nico se baña con agua fría.",
+              "english": "Nico bathes with cold water."
+            },
+            {
+              "text": "¡Qué fría!",
+              "english": "How cold!"
+            },
+            {
+              "text": "Usa un jabón blanco.",
+              "english": "He uses a white soap."
+            },
+            {
+              "text": "El jabón se cae al piso, y Nico busca el jabón.",
+              "english": "The soap falls to the floor, and Nico looks for the soap."
+            },
+            {
+              "text": "Después toma la toalla azul.",
+              "english": "Then he takes the blue towel."
+            },
+            {
+              "text": "La toalla está en el piso.",
+              "english": "The towel is on the floor."
+            },
+            {
+              "text": "—Nico, la toalla va en el patio, no en el piso —dice doña Marta.",
+              "english": "\"Nico, the towel goes in the patio, not on the floor,\" says doña Marta."
+            },
+            {
+              "text": "Nico se mira en el espejo y se cepilla el pelo.",
+              "english": "Nico looks at himself in the mirror and brushes his hair."
+            },
+            {
+              "text": "El espejo está en la pared.",
+              "english": "The mirror is on the wall."
+            },
+            {
+              "text": "Tiene la cara limpia y el pelo negro.",
+              "english": "He has a clean face and black hair."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La ropa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ahora tiene que vestirse.",
+              "english": "Now he has to get dressed."
+            },
+            {
+              "text": "Hoy va a usar su pantalón azul y su camisa blanca.",
+              "english": "Today he is going to wear his blue pants and his white shirt."
+            },
+            {
+              "text": "Se pone los zapatos que Sam le regaló.",
+              "english": "He puts on the shoes that Sam gave him."
+            },
+            {
+              "text": "Los zapatos son nuevos.",
+              "english": "The shoes are new."
+            },
+            {
+              "text": "Quiere mostrar los zapatos a todos sus amigos.",
+              "english": "He wants to show the shoes to all his friends."
+            },
+            {
+              "text": "La camiseta del perro está en una caja, en su cuarto.",
+              "english": "The T-shirt with the dog is in a box, in his room."
+            },
+            {
+              "text": "Hoy no la usa.",
+              "english": "Today he is not wearing it."
+            },
+            {
+              "text": "Se mira la cara de nuevo en el espejo.",
+              "english": "He looks at his face in the mirror again."
+            },
+            {
+              "text": "—Estoy bien —piensa.",
+              "english": "\"I look good,\" he thinks."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El desayuno",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nico se sienta a la mesa.",
+              "english": "Nico sits at the table."
+            },
+            {
+              "text": "Doña Marta se sienta también.",
+              "english": "Doña Marta sits down too."
+            },
+            {
+              "text": "Hay frijoles, huevo, tortilla y café.",
+              "english": "There are beans, egg, tortilla and coffee."
+            },
+            {
+              "text": "Nico quiere probar el café de su abuela.",
+              "english": "Nico wants to try his grandmother's coffee."
+            },
+            {
+              "text": "—Tenés diez años, Nico —dice ella—.",
+              "english": "\"You are ten years old, Nico,\" she says."
+            },
+            {
+              "text": "Tomá agua.",
+              "english": "\"Have some water.\""
+            },
+            {
+              "text": "—¿Cómo dormiste? —pregunta doña Marta.",
+              "english": "\"How did you sleep?\" asks doña Marta."
+            },
+            {
+              "text": "—Me acosté tarde, abuela.",
+              "english": "\"I went to bed late, grandma."
+            },
+            {
+              "text": "Estaba pensando en la oscuridad.",
+              "english": "I was thinking about the darkness.\""
+            },
+            {
+              "text": "—La luna y las estrellas no se van —dice ella—.",
+              "english": "\"The moon and the stars do not go away,\" she says."
+            },
+            {
+              "text": "Esta noche las ves de nuevo.",
+              "english": "\"Tonight you will see them again.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hacia la escuela",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Kevin, un vecino, va al colegio.",
+              "english": "Kevin, a neighbor, goes to high school."
+            },
+            {
+              "text": "Hoy busca a Nico en la calle.",
+              "english": "Today he looks for Nico in the street."
+            },
+            {
+              "text": "—¿Vamos?",
+              "english": "\"Shall we go?"
+            },
+            {
+              "text": "Yo paso por tu escuela —dice Kevin.",
+              "english": "I pass by your school,\" says Kevin."
+            },
+            {
+              "text": "Los dos caminan.",
+              "english": "The two walk."
+            },
+            {
+              "text": "Kevin habla de su colegio.",
+              "english": "Kevin talks about his high school."
+            },
+            {
+              "text": "Tiene mucha tarea hoy, y tiene la cara triste.",
+              "english": "He has a lot of homework today, and he looks sad."
+            },
+            {
+              "text": "—Yo hice mi tarea anoche —dice Nico—.",
+              "english": "\"I did my homework last night,\" says Nico."
+            },
+            {
+              "text": "Nunca llego sin ella.",
+              "english": "\"I never arrive without it.\""
+            },
+            {
+              "text": "La tía de Kevin vende pan en la calle.",
+              "english": "Kevin's aunt sells bread in the street."
+            },
+            {
+              "text": "Ella les da dos panes.",
+              "english": "She gives them two loaves."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La lección de Luis",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis llega a la escuela a las seis.",
+              "english": "Luis gets to the school at six."
+            },
+            {
+              "text": "Él también llega temprano.",
+              "english": "He also arrives early."
+            },
+            {
+              "text": "Los alumnos llegan y se sientan.",
+              "english": "The students arrive and sit down."
+            },
+            {
+              "text": "La clase empieza a las siete.",
+              "english": "Class starts at seven."
+            },
+            {
+              "text": "La lección de hoy es sobre el país.",
+              "english": "Today's lesson is about the country."
+            },
+            {
+              "text": "Luis explica la lección: habla del gobierno y de la comunidad.",
+              "english": "Luis explains the lesson: he talks about the government and the community."
+            },
+            {
+              "text": "—El gobierno construyó la escuela donde estamos —dice—.",
+              "english": "\"The government built the school where we are,\" he says."
+            },
+            {
+              "text": "Pero la comunidad ayudó.",
+              "english": "\"But the community helped.\""
+            },
+            {
+              "text": "—Un país cambia cuando la gente quiere mejorar.",
+              "english": "\"A country changes when people want to improve."
+            },
+            {
+              "text": "Y la tierra también cambia.",
+              "english": "And the land changes too.\""
+            },
+            {
+              "text": "—Ahora la tarea.",
+              "english": "\"Now the homework."
+            },
+            {
+              "text": "Hablen con un viejo del pueblo.",
+              "english": "Talk with an old person from the village."
+            },
+            {
+              "text": "Pregunten cómo era la vida antes.",
+              "english": "Ask how life was before.\""
+            },
+            {
+              "text": "El techo de la escuela es rojo, y las paredes son blancas.",
+              "english": "The roof of the school is red, and the walls are white."
+            },
+            {
+              "text": "Parece que va a llover.",
+              "english": "It looks like it is going to rain."
+            },
+            {
+              "text": "Los alumnos escriben su nombre y la fecha.",
+              "english": "The students write their name and the date."
+            },
+            {
+              "text": "Nico escribe la lección en su libro.",
+              "english": "Nico writes the lesson in his book."
+            },
+            {
+              "text": "El alumno que llega primero gana un lugar cerca de Luis.",
+              "english": "The student who arrives first wins a place near Luis."
+            },
+            {
+              "text": "Hoy hay un cambio: la clase termina al mediodía.",
+              "english": "Today there is a change: class ends at noon."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Al mediodía",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam llega a la escuela al mediodía.",
+              "english": "Sam arrives at the school at noon."
+            },
+            {
+              "text": "Él y Nico se sientan en el patio, cerca del jardín.",
+              "english": "He and Nico sit in the patio, near the garden."
+            },
+            {
+              "speaker": "S",
+              "text": "Nico, ¿a qué hora te levantás?",
+              "english": "Nico, what time do you get up?"
+            },
+            {
+              "speaker": "N",
+              "text": "Me levanto a las seis.",
+              "english": "I get up at six."
+            },
+            {
+              "speaker": "N",
+              "text": "Mi abuela me despierta, y ella se levanta a las cinco.",
+              "english": "My grandmother wakes me up, and she gets up at five."
+            },
+            {
+              "speaker": "S",
+              "text": "Yo, a las cinco, como tu abuela.",
+              "english": "I, at five, like your grandmother."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y Kevin?",
+              "english": "And Kevin?"
+            },
+            {
+              "speaker": "S",
+              "text": "¿A qué hora sale del colegio?",
+              "english": "What time does he get out of high school?"
+            },
+            {
+              "speaker": "N",
+              "text": "¿Y te bañás con agua fría?",
+              "english": "And do you bathe with cold water?"
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, como vos.",
+              "english": "Yes, like you."
+            },
+            {
+              "speaker": "N",
+              "text": "En la casa todos nos bañamos con agua fría.",
+              "english": "In the house we all bathe with cold water."
+            },
+            {
+              "speaker": "N",
+              "text": "Después me visto, me cepillo el pelo y me siento a la mesa.",
+              "english": "Then I get dressed, I brush my hair and I sit down at the table."
+            },
+            {
+              "speaker": "S",
+              "text": "Yo también me cepillo el pelo, ¡pero no tengo mucho!",
+              "english": "I brush my hair too, but I do not have much!"
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y vos, te vestís antes o después del desayuno?",
+              "english": "And you, do you get dressed before or after breakfast?"
+            },
+            {
+              "speaker": "N",
+              "text": "Antes.",
+              "english": "Before."
+            },
+            {
+              "speaker": "N",
+              "text": "Al mediodía siempre tengo hambre, pero la ducha de mi casa es pequeña.",
+              "english": "At noon I am always hungry, but the shower in my house is small."
+            },
+            {
+              "speaker": "N",
+              "text": "¿A qué hora se acuestan ustedes?",
+              "english": "What time do you all go to bed?"
+            },
+            {
+              "speaker": "S",
+              "text": "Yo me acuesto a las diez.",
+              "english": "I go to bed at ten."
+            },
+            {
+              "speaker": "N",
+              "text": "Mi abuela se acuesta a las ocho.",
+              "english": "My grandmother goes to bed at eight."
+            },
+            {
+              "speaker": "N",
+              "text": "Yo, a las nueve.",
+              "english": "I, at nine."
+            },
+            {
+              "speaker": "S",
+              "text": "Los domingos, doña Marta se pone su vestido azul para el culto.",
+              "english": "On Sundays, doña Marta puts on her blue dress for the service."
+            },
+            {
+              "speaker": "N",
+              "text": "Y yo me pongo los zapatos nuevos.",
+              "english": "And I put on the new shoes."
+            },
+            {
+              "speaker": "N",
+              "text": "¡Gracias, Sam!",
+              "english": "Thank you, Sam!"
+            },
+            {
+              "text": "Los dos comen y miran el jardín.",
+              "english": "The two eat and look at the garden."
+            },
+            {
+              "text": "Ahora hay flores, y antes había solo tierra.",
+              "english": "Now there are flowers, and before there was only dirt."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Por la tarde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde, Nico vuelve a la casa.",
+              "english": "In the afternoon, Nico comes back to the house."
+            },
+            {
+              "text": "Doña Marta lo espera en el patio con pan y café.",
+              "english": "Doña Marta is waiting for him in the patio with bread and coffee."
+            },
+            {
+              "text": "La abuela quiere saber todo: qué hizo Luis, qué dijo Kevin y qué comió Nico.",
+              "english": "His grandmother wants to know everything: what Luis did, what Kevin said and what Nico ate."
+            },
+            {
+              "text": "Nico le cuenta todo.",
+              "english": "Nico tells her everything."
+            },
+            {
+              "text": "También le dice que Sam es muy simpático.",
+              "english": "He also tells her that Sam is very friendly."
+            },
+            {
+              "text": "Por la noche, los dos cenan frijoles con queso y miran la luna.",
+              "english": "At night, the two eat beans with cheese and look at the moon."
+            },
+            {
+              "text": "—Mañana llego más temprano a la mesa —dice Nico.",
+              "english": "\"Tomorrow I will get to the table earlier,\" says Nico."
+            },
+            {
+              "text": "—Vamos a ver, mi niño —dice doña Marta—.",
+              "english": "\"We will see, my boy,\" says doña Marta."
+            },
+            {
+              "text": "Ahora acostate, que mañana hay clase.",
+              "english": "\"Now go to bed, because tomorrow there is class.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

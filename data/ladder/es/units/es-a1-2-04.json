@@ -1,0 +1,544 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-04",
+  "lang": "es",
+  "title": "Yesterday after work",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-04",
+    "title": "Yesterday after work (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "A": "Ana",
+    "M": "Marta",
+    "N": "Nico",
+    "L": "Luis"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Lunes por la mañana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es lunes.",
+              "english": "It is Monday."
+            },
+            {
+              "text": "Sam y Ana toman café en la casa.",
+              "english": "Sam and Ana drink coffee at the house."
+            },
+            {
+              "text": "Sam quiere hablar de ayer.",
+              "english": "Sam wants to talk about yesterday."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Ana, ¿trabajaste ayer?",
+              "english": "Ana, did you work yesterday?"
+            },
+            {
+              "speaker": "A",
+              "text": "Sí, trabajé en la clínica hasta las cinco.",
+              "english": "Yes, I worked at the clinic until five."
+            },
+            {
+              "speaker": "A",
+              "text": "Ayudé a muchos enfermos.",
+              "english": "I helped many sick people."
+            },
+            {
+              "speaker": "A",
+              "text": "Hablé con el médico y llamé por teléfono a una señora.",
+              "english": "I talked with the doctor and called a lady on the phone."
+            },
+            {
+              "speaker": "A",
+              "text": "Un señor tomó agua y esperó con su hija.",
+              "english": "A man drank water and waited with his daughter."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y después?",
+              "english": "And afterwards?"
+            },
+            {
+              "speaker": "A",
+              "text": "Terminé tarde.",
+              "english": "I finished late."
+            },
+            {
+              "speaker": "A",
+              "text": "Entonces caminé a la pulpería.",
+              "english": "Then I walked to the shop."
+            },
+            {
+              "speaker": "A",
+              "text": "Antes de la casa, compré pan y frijoles.",
+              "english": "Before the house, I bought bread and beans."
+            },
+            {
+              "speaker": "A",
+              "text": "Pagué veinte lempiras.",
+              "english": "I paid twenty lempiras."
+            },
+            {
+              "speaker": "A",
+              "text": "Luego regresé a la casa.",
+              "english": "Then I went back to the house."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cocinaste?",
+              "english": "Did you cook?"
+            },
+            {
+              "speaker": "A",
+              "text": "Sí, cociné frijoles y arroz.",
+              "english": "Yes, I cooked beans and rice."
+            },
+            {
+              "speaker": "A",
+              "text": "Luis ayudó mucho.",
+              "english": "Luis helped a lot."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Tenés tiempo después del trabajo?",
+              "english": "Do you have time after work?"
+            },
+            {
+              "speaker": "A",
+              "text": "No, no tengo mucho tiempo.",
+              "english": "No, I do not have much time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La familia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Anoche la familia cenó en la casa.",
+              "english": "Last night the family had dinner at the house."
+            },
+            {
+              "text": "Doña Marta llegó del mercado y cenó con todos.",
+              "english": "Doña Marta came from the market and had dinner with everyone."
+            },
+            {
+              "text": "Nico habló de la escuela.",
+              "english": "Nico talked about school."
+            },
+            {
+              "text": "Luis estudió con Nico.",
+              "english": "Luis studied with Nico."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "Ana, cocinaste muy bien.",
+              "english": "Ana, you cooked very well."
+            },
+            {
+              "speaker": "A",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "A",
+              "text": "Cociné con poco tiempo.",
+              "english": "I cooked with little time."
+            },
+            {
+              "speaker": "M",
+              "text": "Anoche oré por la familia.",
+              "english": "Last night I prayed for the family."
+            },
+            {
+              "speaker": "M",
+              "text": "Oré por Sam también.",
+              "english": "I prayed for Sam too."
+            },
+            {
+              "speaker": "S",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El domingo de Luis y Nico",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El domingo Luis y Nico caminaron a la iglesia.",
+              "english": "On Sunday Luis and Nico walked to church."
+            },
+            {
+              "text": "Luis habló con el pastor.",
+              "english": "Luis talked with the pastor."
+            },
+            {
+              "text": "Nico jugó con su juego pequeño.",
+              "english": "Nico played with his small game."
+            },
+            {
+              "text": "Nico esperó y esperó.",
+              "english": "Nico waited and waited."
+            },
+            {
+              "text": "Luis y Nico regresaron a la casa a las doce.",
+              "english": "Luis and Nico went back to the house at twelve."
+            },
+            {
+              "text": "En la casa, doña Marta pagó la comida.",
+              "english": "At home, doña Marta paid for the food."
+            },
+            {
+              "text": "No quedó pan en la bolsa.",
+              "english": "No bread was left in the bag."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Nico y la mochila",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nico jugó solo en el cuarto.",
+              "english": "Nico played alone in the room."
+            },
+            {
+              "text": "Este cipote siempre pierde la mochila.",
+              "english": "This boy always loses his school bag."
+            },
+            {
+              "text": "Anoche buscó la mochila en el cuarto.",
+              "english": "Last night he looked for the bag in the room."
+            },
+            {
+              "text": "Buscó y buscó.",
+              "english": "He looked and looked."
+            },
+            {
+              "text": "Ana y Luis buscaron con Nico.",
+              "english": "Ana and Luis looked with Nico."
+            },
+            {
+              "text": "Ana encontró la mochila en la cama.",
+              "english": "Ana found the bag on the bed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "¡Gracias, Ana!",
+              "english": "Thanks, Ana!"
+            },
+            {
+              "speaker": "A",
+              "text": "De nada.",
+              "english": "You are welcome."
+            },
+            {
+              "speaker": "A",
+              "text": "Antes de dormir, tomá la mochila.",
+              "english": "Before sleeping, take the bag."
+            },
+            {
+              "speaker": "A",
+              "text": "Ya es tarde.",
+              "english": "It is already late."
+            },
+            {
+              "speaker": "A",
+              "text": "Ahorita vamos a la cama.",
+              "english": "We are going to bed right now."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La tarde de Nico",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis llamó a Nico.",
+              "english": "Luis called Nico."
+            },
+            {
+              "text": "Los dos hablaron mucho.",
+              "english": "The two of them talked a lot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "L",
+              "text": "Nico, ¿estudiaste hoy?",
+              "english": "Nico, did you study today?"
+            },
+            {
+              "speaker": "N",
+              "text": "Sí, estudié con la abuela.",
+              "english": "Yes, I studied with grandmother."
+            },
+            {
+              "speaker": "N",
+              "text": "Luego jugué solo.",
+              "english": "Then I played alone."
+            },
+            {
+              "speaker": "L",
+              "text": "¿Encontraste tu mochila?",
+              "english": "Did you find your school bag?"
+            },
+            {
+              "speaker": "N",
+              "text": "Sí, Ana encontró mi mochila.",
+              "english": "Yes, Ana found my school bag."
+            },
+            {
+              "speaker": "L",
+              "text": "Bueno.",
+              "english": "Good."
+            },
+            {
+              "speaker": "L",
+              "text": "Ahora estamos en casa.",
+              "english": "Now we are at home."
+            },
+            {
+              "speaker": "L",
+              "text": "¿Querés leer un libro?",
+              "english": "Do you want to read a book?"
+            },
+            {
+              "speaker": "L",
+              "text": "Yo leo también.",
+              "english": "I will read too."
+            },
+            {
+              "speaker": "N",
+              "text": "Sí, quiero leer.",
+              "english": "Yes, I want to read."
+            },
+            {
+              "speaker": "N",
+              "text": "Luego cenamos.",
+              "english": "Then we eat dinner."
+            },
+            {
+              "speaker": "L",
+              "text": "Terminamos antes de las siete.",
+              "english": "We will finish before seven."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Y Sam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta mira a Sam.",
+              "english": "Doña Marta looks at Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "Sam, ¿y vos?",
+              "english": "Sam, and you?"
+            },
+            {
+              "speaker": "M",
+              "text": "¿Cómo pasaste el domingo?",
+              "english": "How did you spend Sunday?"
+            },
+            {
+              "speaker": "S",
+              "text": "Ayer visité a un vecino.",
+              "english": "Yesterday I visited a neighbor."
+            },
+            {
+              "speaker": "S",
+              "text": "Después hablé con el pastor en la iglesia.",
+              "english": "Afterwards I talked with the pastor at church."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Necesitó ayuda el vecino?",
+              "english": "Did the neighbor need help?"
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, necesitó agua y pan.",
+              "english": "Yes, he needed water and bread."
+            },
+            {
+              "speaker": "S",
+              "text": "Compré pan y pagué.",
+              "english": "I bought bread and paid."
+            },
+            {
+              "speaker": "M",
+              "text": "Gracias a Dios, Sam.",
+              "english": "Thank God, Sam."
+            },
+            {
+              "speaker": "S",
+              "text": "Entonces caminé por la calle y compré agua.",
+              "english": "Then I walked along the street and bought water."
+            },
+            {
+              "speaker": "S",
+              "text": "Regresé a las cinco.",
+              "english": "I came back at five."
+            },
+            {
+              "speaker": "S",
+              "text": "Terminé de estudiar a las nueve.",
+              "english": "I finished studying at nine."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Estudiaste mucho?",
+              "english": "Did you study a lot?"
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, estudié español.",
+              "english": "Yes, I studied Spanish."
+            },
+            {
+              "speaker": "S",
+              "text": "Ahora hablo mejor.",
+              "english": "Now I speak better."
+            },
+            {
+              "speaker": "M",
+              "text": "Qué bueno.",
+              "english": "Good."
+            },
+            {
+              "speaker": "M",
+              "text": "Entonces ya hablás bien con la gente de aquí.",
+              "english": "Then you already speak well with the people here."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana ve a Sam y a doña Marta.",
+              "english": "Ana sees Sam and doña Marta."
+            },
+            {
+              "text": "Ana y doña Marta hablan y hablan.",
+              "english": "Ana and doña Marta talk and talk."
+            },
+            {
+              "text": "Así pasa el día en la casa.",
+              "english": "That is how the day passes in the house."
+            },
+            {
+              "text": "Hoy es lunes y todos tienen que trabajar.",
+              "english": "Today is Monday and everyone has to work."
+            },
+            {
+              "text": "Ana toma su bolsa y va a la clínica con Luis.",
+              "english": "Ana takes her bag and goes to the clinic with Luis."
+            },
+            {
+              "text": "Nico toma su mochila y va a la escuela.",
+              "english": "Nico takes his school bag and goes to school."
+            },
+            {
+              "text": "Doña Marta ora por todos.",
+              "english": "Doña Marta prays for everyone."
+            },
+            {
+              "text": "Sam toma café y mira el cuarto de Nico.",
+              "english": "Sam drinks coffee and looks at Nico's room."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

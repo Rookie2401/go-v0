@@ -1,0 +1,520 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-14",
+  "lang": "es",
+  "title": "A message and a notice",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-14",
+    "title": "A message and a notice (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: short messages without full sentences (\"Reunión el sábado a las tres en la iglesia\"); notices with \"Favor + infinitive\" (Favor esperar aquí, Favor no perder el boleto, Favor pagar aquí); the PLAN's \"Favor no fumar\" uses fumar, which is not in the word list; phone numbers and dates are invented; \"celular\" and \"teléfono\" are both used; message lines are marked (message) or (notice) only in the English."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "messages",
+    "notices",
+    "phone"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "pastor": "Pastor Jorge",
+    "karla": "Karla",
+    "sam": "Sam",
+    "ana": "Ana",
+    "daniel": "Daniel",
+    "marta": "Doña Marta",
+    "nico": "Nico",
+    "luis": "Luis"
+  },
+  "sections": [
+    {
+      "title": "A message and a notice",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es una semana buena para el equipo.",
+              "english": "It is a good week for the team."
+            },
+            {
+              "text": "El pastor Jorge tiene que escribir un mensaje.",
+              "english": "Pastor Jorge has to write a message."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Karla, ¿tenés el teléfono de Sam?",
+              "english": "Karla, do you have Sam's phone?"
+            },
+            {
+              "speaker": "karla",
+              "text": "No.",
+              "english": "No."
+            },
+            {
+              "speaker": "karla",
+              "text": "Sam, ¿qué número tenés?",
+              "english": "Sam, what number do you have?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi número es 9987-2345.",
+              "english": "My number is 9987-2345."
+            },
+            {
+              "speaker": "karla",
+              "text": "Gracias.",
+              "english": "Thanks."
+            },
+            {
+              "speaker": "karla",
+              "text": "Voy a escribir el número.",
+              "english": "I am going to write the number down."
+            },
+            {
+              "speaker": "sam",
+              "text": "Pero siempre pierdo mi celular.",
+              "english": "But I always lose my phone."
+            },
+            {
+              "speaker": "sam",
+              "text": "Busco mi celular y no encuentro nada.",
+              "english": "I look for my phone and find nothing."
+            },
+            {
+              "speaker": "karla",
+              "text": "¿Dónde está?",
+              "english": "Where is it?"
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Aquí está mi celular!",
+              "english": "Here is my phone!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Está en mi libro.",
+              "english": "It is in my book."
+            },
+            {
+              "speaker": "karla",
+              "text": "¡Qué bueno!",
+              "english": "How good!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "pastor",
+              "text": "Karla, vas a enviar un mensaje.",
+              "english": "Karla, you are going to send a message."
+            },
+            {
+              "text": "Karla tiene el teléfono en la mano.",
+              "english": "Karla has the phone in her hand."
+            },
+            {
+              "speaker": "karla",
+              "text": "Reunión el sábado a las tres en la iglesia.",
+              "english": "(Message) Meeting on Saturday at three at the church."
+            },
+            {
+              "speaker": "karla",
+              "text": "Favor venir.",
+              "english": "(Message) Please come."
+            },
+            {
+              "text": "Karla envía el mensaje al equipo.",
+              "english": "Karla sends the message to the team."
+            },
+            {
+              "speaker": "ana",
+              "text": "Aquí está, Karla.",
+              "english": "Here it is, Karla."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Dice: sábado, a las tres.",
+              "english": "It says: Saturday, at three."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Está cerca?",
+              "english": "Is it near?"
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Está lejos?",
+              "english": "Is it far?"
+            },
+            {
+              "speaker": "karla",
+              "text": "La iglesia está cerca.",
+              "english": "The church is near."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Yo vivo lejos.",
+              "english": "I live far away."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Puedo venir en autobús.",
+              "english": "I can come by bus."
+            },
+            {
+              "speaker": "sam",
+              "text": "Yo puedo venir con vos, Daniel.",
+              "english": "I can come with you, Daniel."
+            },
+            {
+              "speaker": "sam",
+              "text": "Voy a enviar 9987-2345 a doña Marta.",
+              "english": "I am going to send 9987-2345 to doña Marta."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Nico: pan en la mesa.",
+              "english": "(Message) Nico: bread on the table."
+            },
+            {
+              "speaker": "marta",
+              "text": "Vení a la casa.",
+              "english": "Come home."
+            },
+            {
+              "speaker": "nico",
+              "text": "Voy, abuela.",
+              "english": "(Message) I am coming, grandma."
+            },
+            {
+              "speaker": "nico",
+              "text": "Tengo hambre.",
+              "english": "I am hungry."
+            },
+            {
+              "speaker": "luis",
+              "text": "Estoy en la escuela.",
+              "english": "(Message) I am at school."
+            },
+            {
+              "speaker": "luis",
+              "text": "Llego a las cuatro.",
+              "english": "I arrive at four."
+            },
+            {
+              "speaker": "ana",
+              "text": "Estoy en el hospital.",
+              "english": "(Message) I am at the hospital."
+            },
+            {
+              "speaker": "ana",
+              "text": "Hoy no puedo comer en la casa.",
+              "english": "Today I cannot eat at home."
+            },
+            {
+              "speaker": "marta",
+              "text": "Está bien, Ana.",
+              "english": "(Message) That is fine, Ana."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hay sopa para vos.",
+              "english": "There is soup for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Doña Marta, estoy en la terminal.",
+              "english": "(Message) Doña Marta, I am at the terminal."
+            },
+            {
+              "speaker": "sam",
+              "text": "El autobús llega a las seis.",
+              "english": "The bus arrives at six."
+            },
+            {
+              "speaker": "marta",
+              "text": "Sam, ¿tenés dinero para el boleto?",
+              "english": "(Message) Sam, do you have money for the ticket?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, tengo dinero.",
+              "english": "(Message) Yes, I have money."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "marta",
+              "text": "¿Y tu teléfono?",
+              "english": "(Message) And your phone?"
+            },
+            {
+              "speaker": "marta",
+              "text": "¿Está en la casa?",
+              "english": "Is it at home?"
+            },
+            {
+              "speaker": "sam",
+              "text": "No, aquí está.",
+              "english": "(Message) No, here it is."
+            },
+            {
+              "speaker": "karla",
+              "text": "Estoy cerca de la iglesia.",
+              "english": "(Message) I am near the church."
+            },
+            {
+              "speaker": "karla",
+              "text": "¿Y ustedes?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Estoy lejos.",
+              "english": "(Message) I am far away."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Salgo a las dos.",
+              "english": "I leave at two."
+            },
+            {
+              "speaker": "ana",
+              "text": "Yo llego a las tres.",
+              "english": "(Message) I arrive at three."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Está bien.",
+              "english": "(Message) Good."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Estoy en la iglesia.",
+              "english": "I am at the church."
+            },
+            {
+              "speaker": "nico",
+              "text": "Abuela, ¿puedo ir con Sam a la iglesia?",
+              "english": "(Message) Grandma, can I go to church with Sam?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Sí, Nico.",
+              "english": "(Message) Yes, Nico."
+            },
+            {
+              "speaker": "marta",
+              "text": "Vení a la casa y comés pan.",
+              "english": "Come home and have some bread."
+            },
+            {
+              "speaker": "luis",
+              "text": "Nico, yo también voy a la iglesia.",
+              "english": "(Message) Nico, I am going to church too."
+            },
+            {
+              "speaker": "karla",
+              "text": "¡Qué bueno!",
+              "english": "(Message) How nice!"
+            },
+            {
+              "speaker": "karla",
+              "text": "Hay café para todos.",
+              "english": "There is coffee for everyone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ahora el pastor escribe un aviso para los vecinos.",
+              "english": "Now the pastor writes a notice for the neighbours."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Reunión de vecinos.",
+              "english": "(Notice) Neighbours' meeting."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Fecha: el 14.",
+              "english": "(Notice) Date: the 14th."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Hora: las tres.",
+              "english": "Time: three o'clock."
+            },
+            {
+              "speaker": "pastor",
+              "text": "En la iglesia.",
+              "english": "At the church."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Favor venir.",
+              "english": "Please come."
+            },
+            {
+              "text": "Está en la calle y en la tienda.",
+              "english": "It is in the street and at the shop."
+            },
+            {
+              "text": "Los vecinos hablan de la reunión.",
+              "english": "The neighbours talk about the meeting."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿La fecha es el 14?",
+              "english": "Is the date the 14th?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Sí, la fecha es el 14.",
+              "english": "Yes, the date is the 14th."
+            },
+            {
+              "text": "En la terminal hay un aviso para el autobús.",
+              "english": "At the terminal there is a notice about the bus."
+            },
+            {
+              "text": "Dice: Favor esperar aquí.",
+              "english": "It says: Please wait here."
+            },
+            {
+              "text": "Favor no perder el boleto.",
+              "english": "Please do not lose the ticket."
+            },
+            {
+              "speaker": "daniel",
+              "text": "¿Qué dice?",
+              "english": "What does it say?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Dice: favor esperar aquí.",
+              "english": "It says: please wait here."
+            },
+            {
+              "speaker": "sam",
+              "text": "Y favor no perder el boleto.",
+              "english": "And please do not lose the ticket."
+            },
+            {
+              "speaker": "daniel",
+              "text": "No quiero perder mi boleto.",
+              "english": "I do not want to lose my ticket."
+            },
+            {
+              "text": "En la pulpería de la señora Elena hay un aviso.",
+              "english": "In señora Elena's shop there is a notice."
+            },
+            {
+              "text": "Dice: Hoy hay pollo y plátanos.",
+              "english": "It says: Today there is chicken and plantains."
+            },
+            {
+              "text": "Favor pagar aquí.",
+              "english": "Please pay here."
+            },
+            {
+              "speaker": "karla",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "karla",
+              "text": "Tengo hambre.",
+              "english": "I am hungry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Esta semana tengo mucho trabajo.",
+              "english": "This week I have a lot of work."
+            },
+            {
+              "speaker": "sam",
+              "text": "Esta semana voy a estudiar español en la mañana.",
+              "english": "This week I am going to study Spanish in the mornings."
+            },
+            {
+              "speaker": "ana",
+              "text": "Yo trabajo en la noche.",
+              "english": "I work at night."
+            },
+            {
+              "speaker": "karla",
+              "text": "Los catrachos siempre hablamos mucho.",
+              "english": "We Hondurans always talk a lot."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Gracias a todos.",
+              "english": "Thank you, everyone."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Hasta el sábado, equipo.",
+              "english": "See you on Saturday, team."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

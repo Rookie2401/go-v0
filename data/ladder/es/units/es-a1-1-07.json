@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-07",
+  "lang": "es",
+  "title": "Luis's school day",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-07",
+    "title": "Luis's school day (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: \"a las seis y veinte\" (telling the hour); \"¿A qué hora salís?\" (vos form of salir); \"Son las cuatro y diez\"; \"los lunes\"; \"dice que\" (reported speech); Sofía is a pupil who speaks to Sam with usted (señor)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "time",
+    "school",
+    "routine"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "nico": "Nico",
+    "luis": "Luis",
+    "sofia": "Sofía",
+    "marta": "Doña Marta"
+  },
+  "sections": [
+    {
+      "title": "Luis's school day",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "nico",
+              "text": "Sam, mañana es lunes.",
+              "english": "Sam, tomorrow is Monday."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Qué hace Luis los lunes?",
+              "english": "What does Luis do on Mondays?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Luis es maestro en la escuela.",
+              "english": "Luis is a teacher at the school."
+            },
+            {
+              "speaker": "nico",
+              "text": "En la mañana toma café.",
+              "english": "In the morning he has coffee."
+            },
+            {
+              "speaker": "nico",
+              "text": "Sale de la casa a las seis y veinte.",
+              "english": "He leaves the house at six twenty."
+            },
+            {
+              "speaker": "nico",
+              "text": "Llega a la escuela a las siete.",
+              "english": "He gets to the school at seven."
+            },
+            {
+              "speaker": "nico",
+              "text": "A las ocho habla con Nico.",
+              "english": "At eight he talks with Nico."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Y a las doce?",
+              "english": "And at twelve?"
+            },
+            {
+              "speaker": "nico",
+              "text": "A las doce Luis tiene hambre.",
+              "english": "At twelve Luis is hungry."
+            },
+            {
+              "speaker": "nico",
+              "text": "Come arroz, huevo y tortilla.",
+              "english": "He eats rice, egg and tortilla."
+            },
+            {
+              "speaker": "nico",
+              "text": "Luis dice que la comida es barata.",
+              "english": "Luis says the food is cheap."
+            },
+            {
+              "speaker": "nico",
+              "text": "Dice que el precio es bueno.",
+              "english": "He says the price is good."
+            },
+            {
+              "speaker": "nico",
+              "text": "Paga veinte lempiras.",
+              "english": "He pays twenty lempiras."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Y a las tres?",
+              "english": "And at three?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Luis sale de la escuela a las tres.",
+              "english": "Luis leaves the school at three."
+            },
+            {
+              "speaker": "nico",
+              "text": "Va a la clínica.",
+              "english": "He goes to the clinic."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Por qué?",
+              "english": "Why?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Porque Ana trabaja en la clínica.",
+              "english": "Because Ana works at the clinic."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El lunes Sam llega a la escuela con Luis.",
+              "english": "On Monday Sam gets to the school with Luis."
+            },
+            {
+              "speaker": "sofia",
+              "text": "Buenos días, señor.",
+              "english": "Good morning, sir."
+            },
+            {
+              "speaker": "sofia",
+              "text": "¿Cómo se llama usted?",
+              "english": "What is your name?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi nombre es Sam.",
+              "english": "My name is Sam."
+            },
+            {
+              "speaker": "sofia",
+              "text": "¿Habla español?",
+              "english": "Do you speak Spanish?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, hablo español.",
+              "english": "Yes, I speak Spanish."
+            },
+            {
+              "speaker": "sofia",
+              "text": "Mi maestro dice que usted habla muy bien.",
+              "english": "My teacher says that you speak very well."
+            },
+            {
+              "speaker": "sofia",
+              "text": "El maestro Luis es muy bueno.",
+              "english": "Teacher Luis is very good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Muchas gracias, Sofía.",
+              "english": "Thank you very much, Sofía."
+            },
+            {
+              "speaker": "sam",
+              "text": "Luis, ¿qué hora es?",
+              "english": "Luis, what time is it?"
+            },
+            {
+              "speaker": "luis",
+              "text": "No sé.",
+              "english": "I do not know."
+            },
+            {
+              "speaker": "luis",
+              "text": "¿Sabés qué hora es, Sofía?",
+              "english": "Do you know what time it is, Sofía?"
+            },
+            {
+              "speaker": "sofia",
+              "text": "Son las nueve y diez.",
+              "english": "It is nine ten."
+            },
+            {
+              "speaker": "luis",
+              "text": "Gracias.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Qué hacés a las nueve?",
+              "english": "What do you do at nine?"
+            },
+            {
+              "speaker": "luis",
+              "text": "Hablo con las familias.",
+              "english": "I talk with the families."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la tarde Sam y Luis están en la casa.",
+              "english": "In the afternoon Sam and Luis are at home."
+            },
+            {
+              "speaker": "sam",
+              "text": "Buenas tardes, Luis.",
+              "english": "Good afternoon, Luis."
+            },
+            {
+              "speaker": "luis",
+              "text": "Buenas tardes, Sam.",
+              "english": "Good afternoon, Sam."
+            },
+            {
+              "speaker": "luis",
+              "text": "Hoy llueve mucho.",
+              "english": "It is raining a lot today."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿A qué hora estás en la casa?",
+              "english": "What time are you home?"
+            },
+            {
+              "speaker": "luis",
+              "text": "Llego a las cuatro y diez.",
+              "english": "I get home at ten past four."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Estás cansado?",
+              "english": "Are you tired?"
+            },
+            {
+              "speaker": "luis",
+              "text": "Sí, y tengo hambre.",
+              "english": "Yes, and I am hungry."
+            },
+            {
+              "speaker": "marta",
+              "text": "Luis, aquí hay sopa.",
+              "english": "Luis, here is some soup."
+            },
+            {
+              "speaker": "luis",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "marta",
+              "text": "¿Querés más?",
+              "english": "Do you want more?"
+            },
+            {
+              "speaker": "luis",
+              "text": "No, gracias.",
+              "english": "No, thank you."
+            },
+            {
+              "speaker": "marta",
+              "text": "Luis, tengo pan para vos.",
+              "english": "Luis, I have bread for you."
+            },
+            {
+              "speaker": "luis",
+              "text": "¿Cuánto cuesta?",
+              "english": "How much is it?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Para vos no cuesta nada.",
+              "english": "For you it costs nothing."
+            },
+            {
+              "speaker": "luis",
+              "text": "Gracias, abuela.",
+              "english": "Thank you, grandma."
+            },
+            {
+              "speaker": "luis",
+              "text": "Tengo dinero.",
+              "english": "I have money."
+            },
+            {
+              "speaker": "marta",
+              "text": "El pan no es caro, Luis.",
+              "english": "The bread is not expensive, Luis."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Yo salgo de la casa a las ocho.",
+              "english": "I leave the house at eight."
+            },
+            {
+              "speaker": "sam",
+              "text": "Voy a la iglesia con doña Marta.",
+              "english": "I go to church with doña Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hablo español con las familias.",
+              "english": "I speak Spanish with the families."
+            },
+            {
+              "speaker": "luis",
+              "text": "¡Qué bueno!",
+              "english": "How good!"
+            },
+            {
+              "speaker": "luis",
+              "text": "Yo hablo con las familias también.",
+              "english": "I talk with the families too."
+            },
+            {
+              "speaker": "luis",
+              "text": "Hoy es un buen día para hablar.",
+              "english": "Today is a good day for talking."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, me gusta mucho.",
+              "english": "Yes, I like it a lot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nico",
+              "text": "Me gusta la escuela, Sam.",
+              "english": "I like school, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Por qué?",
+              "english": "Why?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Porque mi maestro es mi hermano.",
+              "english": "Because my teacher is my brother."
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "nico",
+              "text": "Y mi abuela vende pan en el mercado.",
+              "english": "And my grandma sells bread at the market."
+            },
+            {
+              "speaker": "nico",
+              "text": "Me gusta el pan de mi abuela.",
+              "english": "I like my grandma's bread."
+            },
+            {
+              "speaker": "sam",
+              "text": "A mí también me gusta.",
+              "english": "I like it too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Luis, ¿qué hacés mañana?",
+              "english": "Luis, what are you doing tomorrow?"
+            },
+            {
+              "speaker": "luis",
+              "text": "Mañana también voy a la escuela.",
+              "english": "Tomorrow I am going to school too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

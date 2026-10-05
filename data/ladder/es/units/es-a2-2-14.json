@@ -1,0 +1,669 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-14",
+  "lang": "es",
+  "title": "La lluvia y los campesinos",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-14",
+    "title": "The rainy season and the farmers (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "contemporary-nonfiction"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Por qué la lluvia importa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En Honduras hay dos estaciones: el verano y el invierno.",
+              "english": "In Honduras there are two seasons: summer and winter."
+            },
+            {
+              "text": "Aunque el invierno no es frío, es la estación de las lluvias, y por eso se llama así.",
+              "english": "Although the winter is not cold, it is the season of the rains, and that is why it is called that."
+            },
+            {
+              "text": "La lluvia empieza en mayo y dura hasta octubre.",
+              "english": "The rain begins in May and lasts until October."
+            },
+            {
+              "text": "Todo el calendario de los campesinos depende de ella.",
+              "english": "The whole calendar of the farmers depends on it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Cuando llegan las primeras lluvias, los campesinos ya han preparado la tierra.",
+              "english": "When the first rains come, the farmers have already prepared the land."
+            },
+            {
+              "text": "El agua llena los ríos y baja de la montaña.",
+              "english": "The water fills the rivers and comes down from the mountain."
+            },
+            {
+              "text": "Por eso la lluvia es una bendición, aunque a veces es un problema: un río lleno puede quebrar un puente, y un terremoto también.",
+              "english": "That is why rain is a blessing, although sometimes it is a problem: a full river can break a bridge, and an earthquake too."
+            },
+            {
+              "text": "Para alcanzar el mercado, hay que atravesar el río.",
+              "english": "To reach the market, you have to cross the river."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En los últimos años, el tiempo ha cambiado.",
+              "english": "In recent years the weather has changed."
+            },
+            {
+              "text": "Hay años con tanta lluvia y años con sequía.",
+              "english": "There are years with so much rain and years with drought."
+            },
+            {
+              "text": "Por eso muchos campesinos dicen que ya no se sabe cuándo va a llover.",
+              "english": "That is why many farmers say that it is no longer known when it will rain."
+            },
+            {
+              "text": "La sequía ha durado dos años en algunas aldeas, y la tierra se ha convertido en arena.",
+              "english": "The drought has lasted two years in some villages, and the land has turned into sand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En otros países, el problema no es la sequía sino el hielo.",
+              "english": "In other countries the problem is not drought but ice."
+            },
+            {
+              "text": "Allá hay nieve en invierno, y el trigo y la cebada no crecen en esos meses.",
+              "english": "There is snow there in winter, and the wheat and barley do not grow in those months."
+            },
+            {
+              "text": "Aquí no hay nieve, y todo crece todo el año si hay agua.",
+              "english": "Here there is no snow, and everything grows all year if there is water."
+            },
+            {
+              "text": "Pero el agua tarda en llegar o llega demasiado, y eso es lo que más cuesta a los campesinos.",
+              "english": "But the water takes long to arrive or arrives in excess, and that is what costs farmers the most."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El año del campesino",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El campesino hondureño trabaja con el calendario de la lluvia.",
+              "english": "The Honduran farmer works with the rain calendar."
+            },
+            {
+              "text": "En enero y febrero prepara la tierra.",
+              "english": "In January and February he prepares the land."
+            },
+            {
+              "text": "En marzo y abril quita las hierbas y arregla las herramientas.",
+              "english": "In March and April he removes the weeds and repairs his tools."
+            },
+            {
+              "text": "En mayo, con la primera lluvia, siembra los frijoles y el arroz.",
+              "english": "In May, with the first rain, he sows the beans and rice."
+            },
+            {
+              "text": "Casi no se riega, porque la lluvia riega la tierra.",
+              "english": "Almost nothing is watered, because the rain waters the land."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En junio y julio se cuida el frijol.",
+              "english": "In June and July the bean is looked after."
+            },
+            {
+              "text": "Se protege de los insectos y de los ratones, y se quitan las hierbas otra vez.",
+              "english": "It is protected from insects and mice, and the weeds are removed again."
+            },
+            {
+              "text": "En agosto y septiembre el frijol crece.",
+              "english": "In August and September the bean grows."
+            },
+            {
+              "text": "En octubre y noviembre se saca el frijol de la tierra y se lleva al mercado.",
+              "english": "In October and November the beans are taken out of the ground and brought to the market."
+            },
+            {
+              "text": "En diciembre la familia celebra.",
+              "english": "In December the family celebrates."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El señor Miguel, un campesino de setenta años, dice: «La tierra es hermosa, pero es un oficio duro. Un campesino tiene que ser trabajador, porque un campesino perezoso pierde todo». Él cultiva frijoles y plátanos desde que era niño.",
+              "english": "Mr. Miguel, a farmer of seventy, says: \"The land is beautiful, but it is a hard trade. A farmer has to be hard-working, because a lazy farmer loses everything.\" He has grown beans and plantains since he was a boy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ganancia y pérdida",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un buen año deja ganancia.",
+              "english": "A good year leaves profit."
+            },
+            {
+              "text": "Un mal año deja pérdida.",
+              "english": "A bad year leaves loss."
+            },
+            {
+              "text": "El campesino no sabe cuál va a ser su año hasta el final, y por eso hace tratos con sus vecinos.",
+              "english": "The farmer does not know what his year will be until the end, and that is why he makes deals with his neighbours."
+            },
+            {
+              "text": "Si dos familias comparten una mula o una semilla, la pérdida es menor para las dos.",
+              "english": "If two families share a mule or a seed, the loss is smaller for both."
+            },
+            {
+              "text": "Ese tipo de trato vale más que el dinero.",
+              "english": "That kind of deal is worth more than money."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Quien vende su frijol en su puesto del mismo mercado gana más.",
+              "english": "Whoever sells his beans at his own stall in the market itself earns more."
+            },
+            {
+              "text": "Por eso muchas familias tienen un puesto en la avenida del pueblo.",
+              "english": "That is why many families have a stall on the village avenue."
+            },
+            {
+              "text": "Otras venden a una compañía que compra grandes cantidades.",
+              "english": "Others sell to a company that buys large amounts."
+            },
+            {
+              "text": "La compañía paga menos, aunque compra todo y no hay que llevar nada al mercado.",
+              "english": "The company pays less, although it buys everything and nothing has to be taken to the market."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hechos y estudios",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un estudio de la clínica y de la escuela dice que los niños de los campesinos comen mejor en los años de buena lluvia.",
+              "english": "A study by the clinic and the school says that farmers' children eat better in years of good rain."
+            },
+            {
+              "text": "Ese es un hecho.",
+              "english": "That is a fact."
+            },
+            {
+              "text": "Los hechos son importantes, porque no son opiniones.",
+              "english": "Facts are important, because they are not opinions."
+            },
+            {
+              "text": "Es un hecho también que el precio del frijol ha bajado este año, y que muchas familias han tenido una pérdida.",
+              "english": "It is also a fact that the price of beans has gone down this year, and that many families have had a loss."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La obra del puente nuevo ha sorprendido a todos.",
+              "english": "The work on the new bridge has surprised everyone."
+            },
+            {
+              "text": "Se ha hecho con el trabajo de la comunidad y con el dinero de una compañía amiga.",
+              "english": "It has been done with the community's labour and with money from a friendly company."
+            },
+            {
+              "text": "Los vecinos han sido muy corteses con los trabajadores, y los trabajadores han estado alegres.",
+              "english": "The neighbours have been very courteous to the workers, and the workers have been cheerful."
+            },
+            {
+              "text": "Los niños han hecho una copia del mapa para la escuela.",
+              "english": "The children have made a copy of the map for the school."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Animales de la finca",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En la finca hay animales útiles y animales peligrosos.",
+              "english": "On the farm there are useful animals and dangerous animals."
+            },
+            {
+              "text": "El gallo despierta a la familia a las cuatro de la mañana.",
+              "english": "The rooster wakes the family at four in the morning."
+            },
+            {
+              "text": "Los patos buscan agua.",
+              "english": "The ducks look for water."
+            },
+            {
+              "text": "Los conejos viven en una caja, y los ratones comen los frijoles si nadie los protege.",
+              "english": "The rabbits live in a box, and the mice eat the beans if nobody protects them."
+            },
+            {
+              "text": "Una serpiente puede aparecer debajo de las hierbas, y por eso hay que andar con cuidado.",
+              "english": "A snake can appear under the grass, and so you have to walk carefully."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En los cuentos de los abuelos hay un zorro que engaña, una serpiente que habla, un lobo que tiene hambre, un león que es juez y un oso perezoso que duerme.",
+              "english": "In the grandparents' tales there is a fox who deceives, a snake who talks, a wolf who is hungry, a lion who is a judge and a lazy bear who sleeps."
+            },
+            {
+              "text": "No todos existen en Honduras, pero los cuentos sí existen.",
+              "english": "Not all of them exist in Honduras, but the tales do exist."
+            },
+            {
+              "text": "Los niños los escuchan con una sonrisa.",
+              "english": "The children listen to them with a smile."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una fábula: el zorro y el gallo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Una noche, un zorro con mucha hambre vio un gallo encima de un árbol alto.",
+              "english": "One night a fox with a lot of hunger saw a rooster on top of a tall tree."
+            },
+            {
+              "text": "El zorro quiso engañar al gallo con una mentira.",
+              "english": "The fox wanted to deceive the rooster with a lie."
+            },
+            {
+              "text": "«Amigo gallo, tengo una buena noticia», dijo.",
+              "english": "\"Friend rooster, I have good news,\" he said."
+            },
+            {
+              "text": "«Los animales ya no se odian ni se pelean.",
+              "english": "\"The animals no longer hate each other or fight."
+            },
+            {
+              "text": "Baja, y vamos a celebrar».",
+              "english": "Come down, and let's celebrate.\""
+            },
+            {
+              "text": "El gallo miró despacio.",
+              "english": "The rooster looked slowly."
+            },
+            {
+              "text": "«Qué bonita noticia», dijo.",
+              "english": "\"What lovely news,\" he said."
+            },
+            {
+              "text": "«Allá vienen mis amigos, los lobos, y quieren celebrar con vos».",
+              "english": "\"Over there come my friends, the wolves, and they want to celebrate with you.\""
+            },
+            {
+              "text": "Entonces el zorro, que odiaba a los lobos, saltó y huyó.",
+              "english": "Then the fox, who hated wolves, jumped and fled."
+            },
+            {
+              "text": "El gallo se rio mucho, y los patos y los conejos se rieron también.",
+              "english": "The rooster laughed a lot, and the ducks and the rabbits laughed too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pero el zorro volvió otra noche y robó una gallina.",
+              "english": "But the fox came back another night and stole a hen."
+            },
+            {
+              "text": "Era un ladrón, y no un amigo.",
+              "english": "He was a thief, and not a friend."
+            },
+            {
+              "text": "Los animales lo rechazaron y lo llevaron a ver al león, que era el juez del bosque.",
+              "english": "The animals rejected him and took him before the lion, who was the judge of the forest."
+            },
+            {
+              "text": "Un oso que dormía debajo de un árbol se despertó para escuchar.",
+              "english": "A bear who was sleeping under a tree woke up to listen."
+            },
+            {
+              "text": "El zorro juró que no había robado nada.",
+              "english": "The fox swore he had stolen nothing."
+            },
+            {
+              "text": "Mintió, y todos lo sabían.",
+              "english": "He lied, and everyone knew it."
+            },
+            {
+              "text": "«Vos tenés la culpa», dijo el león.",
+              "english": "\"You are at fault,\" said the lion."
+            },
+            {
+              "text": "«No voy a pegarte, ni voy a quebrar tu casa.",
+              "english": "\"I am not going to hit you, nor am I going to break your home."
+            },
+            {
+              "text": "Tu castigo es cuidar a la gallina hasta el final del invierno».",
+              "english": "Your punishment is to look after the hen until the end of winter.\""
+            },
+            {
+              "text": "Al principio el zorro se sintió mal.",
+              "english": "At first the fox felt bad."
+            },
+            {
+              "text": "Pero el invierno pasó, y el zorro aprendió a ser cortés y alegre.",
+              "english": "But winter passed, and the fox learned to be courteous and cheerful."
+            },
+            {
+              "text": "Dicen los abuelos que un malvado no siempre es un enemigo: a veces solo tiene hambre y no sabe pedir.",
+              "english": "The grandparents say that a wicked one is not always an enemy: sometimes he is only hungry and does not know how to ask."
+            },
+            {
+              "text": "Quien engaña, pierde.",
+              "english": "Whoever deceives, loses."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una visita a la finca de Miguel",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un sábado, Sam y Kevin, que es extranjero, partieron temprano hacia la finca del señor Miguel. Miguel es cortés con todos. Cuando se acercaron, lo hallaron en la tierra, con las manos llenas de frijoles.",
+              "english": "One Saturday, Sam and Kevin, who is a foreigner, set out early for Mr. Miguel's farm. Miguel is courteous to everyone. When they came near, they found him on the land, with his hands full of beans."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La finca pertenece a su familia desde hace cien años.",
+              "english": "The farm has belonged to his family for a hundred years."
+            },
+            {
+              "text": "Cerca de la casa está la tumba de su abuelo.",
+              "english": "Near the house is his grandfather's tomb."
+            },
+            {
+              "text": "Fuera de la casa hay dos toros, diez cabras y un conejo, y los patos nadan dentro de un río pequeño.",
+              "english": "Outside the house there are two bulls, ten goats and a rabbit, and the ducks swim inside a small river."
+            },
+            {
+              "text": "Una serpiente pasó cerca de Kevin, que se sorprendió, saltó y gritó.",
+              "english": "A snake passed near Kevin, who was surprised, jumped and shouted."
+            },
+            {
+              "text": "Miguel se rio: «Tan pequeña, y tan peligrosa».",
+              "english": "Miguel laughed: \"So small, and so dangerous.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "«El oficio de campesino se aprende de padres a hijos», dijo Miguel.",
+              "english": "\"The farmer's trade is learned from parents to children,\" said Miguel."
+            },
+            {
+              "text": "«Mi oficio no es fácil, pero es hermoso».",
+              "english": "\"My trade is not easy, but it is beautiful.\""
+            },
+            {
+              "text": "Su esposa, guapa y trabajadora, vende rosas en un puesto del mercado, y sus rosas son la ganancia más alegre de la familia.",
+              "english": "His wife, pretty and hard-working, sells roses at a stall in the market, and her roses are the family's most cheerful profit."
+            },
+            {
+              "text": "Su hijo hizo estudios en la ciudad, y volvió con una idea: escribir cada trato y guardar una copia.",
+              "english": "His son did studies in the city, and came back with an idea: to write down every deal and keep a copy."
+            },
+            {
+              "text": "El campesino lucha con los ratones, la sequía y los precios.",
+              "english": "The farmer struggles with mice, drought and prices."
+            },
+            {
+              "text": "Los niños llaman Oso a su perro.",
+              "english": "The children call their dog Oso."
+            },
+            {
+              "text": "La obra de la tierra nunca termina.",
+              "english": "The work of the land never ends."
+            },
+            {
+              "text": "Kevin recibió una copia de un trato.",
+              "english": "Kevin received a copy of a deal."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En su finca no hay trigo ni cebada.",
+              "english": "On his farm there is no wheat or barley."
+            },
+            {
+              "text": "Miguel compra trigo para el pan, y cebada para los animales.",
+              "english": "Miguel buys wheat for bread, and barley for the animals."
+            },
+            {
+              "text": "Cuando el sacerdote del pueblo pasa a bendecir la tierra, Miguel le ofrece café.",
+              "english": "When the village priest comes by to bless the land, Miguel offers him coffee."
+            },
+            {
+              "text": "Dice que un mandamiento antiguo manda descansar la tierra, y que los profetas hablaban de una tierra gloriosa.",
+              "english": "He says that an old commandment orders the land to rest, and that the prophets spoke of a glorious land."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un avión pequeño pasó volando arriba.",
+              "english": "A small plane passed flying overhead."
+            },
+            {
+              "text": "«Cuando pasa el avión, la lluvia no está lejos», dijo Miguel, que sigue siendo guapo a los setenta años.",
+              "english": "\"When the plane passes, the rain is not far off,\" said Miguel, who is still handsome at seventy."
+            },
+            {
+              "text": "«Este mes hubo una ola de calor, y ahora la tierra tiene sed.",
+              "english": "\"This month there was a heat wave, and now the land is thirsty."
+            },
+            {
+              "text": "Tanto trabajo, y tan poco dinero.",
+              "english": "So much work, and so little money."
+            },
+            {
+              "text": "Pero una buena tierra vale más que mucho dinero».",
+              "english": "But good land is worth more than a lot of money.\""
+            },
+            {
+              "text": "Sam y Kevin volvieron al pueblo con el corazón alegre.",
+              "english": "Sam and Kevin went back to the village with cheerful hearts."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El culto de acción de gracias",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cada noviembre, la iglesia del pueblo celebra un culto de gracias por los frijoles.",
+              "english": "Every November the village church holds a service of thanks for the beans."
+            },
+            {
+              "text": "Las familias traen frijoles, arroz y rosas, y los colocan encima del altar.",
+              "english": "The families bring beans, rice and roses, and set them on top of the altar."
+            },
+            {
+              "text": "Los vecinos que van a la misa también vienen, y nadie se siente extraño.",
+              "english": "The neighbours who go to Mass come too, and nobody feels like a stranger."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El predicador, el pastor Mario, habla del cordero, de la cruz y de la promesa de Dios.",
+              "english": "The preacher, Pastor Mario, speaks of the lamb, of the cross and of God's promise."
+            },
+            {
+              "text": "Su sermón dura pocos minutos.",
+              "english": "His sermon lasts a few minutes."
+            },
+            {
+              "text": "Dice: «Dios es fiel, santo y poderoso.",
+              "english": "He says: \"God is faithful, holy and powerful."
+            },
+            {
+              "text": "Su amor es eterno, y su gloria es divina.",
+              "english": "His love is eternal, and his glory is divine."
+            },
+            {
+              "text": "Hoy no ayunamos; hoy disfrutamos.",
+              "english": "Today we do not fast; today we enjoy."
+            },
+            {
+              "text": "Pero algunos sacrificaron una comida para dar a los pobres, y eso es una señal espiritual».",
+              "english": "But some sacrificed a meal to give to the poor, and that is a spiritual sign.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después, Daniel lee una profecía y los jóvenes practican una canción de adoración. Sam traduce las palabras para Kevin. Todos se felicitan, y el señor Miguel dice: «Ojalá todos los años sean así». Se alegra, porque el año ha dejado más ganancia que pérdida.",
+              "english": "Afterwards Daniel reads a prophecy and the young people practise a song of worship. Sam translates the words for Kevin. Everyone congratulates one another, and Mr. Miguel says: \"I hope all years are like this.\" He is glad, because the year has left more profit than loss."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En el culto hay un siervo fiel en cada lugar: el campesino, el maestro, la enfermera.",
+              "english": "At the service there is a faithful servant in every place: the farmer, the teacher, the nurse."
+            },
+            {
+              "text": "El pan que se comparte es sagrado, y el vino de la comunión es bendito.",
+              "english": "The bread that is shared is sacred, and the wine of communion is blessed."
+            },
+            {
+              "text": "Nadie es perezoso aquel día.",
+              "english": "Nobody is lazy that day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nico dice que quiere hacer estudios y ser campesino, porque su abuelo es el hombre más guapo y más trabajador del pueblo.",
+              "english": "Nico says he wants to study and be a farmer, because his grandfather is the most handsome and hardest-working man in the village."
+            },
+            {
+              "text": "Karla se sorprende, y Sam, que escribe estas palabras, piensa lo mismo.",
+              "english": "Karla is surprised, and Sam, who writes this note, thinks the same."
+            },
+            {
+              "text": "Quien trabaja la tierra entiende la palabra «gracias» mejor que nadie.",
+              "english": "Whoever works the land understands the word \"thanks\" better than anyone."
+            },
+            {
+              "text": "El trabajo del campesino vale tanto como el de un doctor, y su obra es hermosa.",
+              "english": "The farmer's work is worth as much as a doctor's, and his work is beautiful."
+            },
+            {
+              "text": "Por eso, cada noviembre, el pueblo mira al Padre celestial y dice «gracias».",
+              "english": "That is why, every November, the village looks to the heavenly Father and says \"thanks.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

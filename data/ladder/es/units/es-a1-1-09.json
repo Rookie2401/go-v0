@@ -1,0 +1,416 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-09",
+  "lang": "es",
+  "title": "A Sunday morning on the street",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-09",
+    "title": "A Sunday morning on the street (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: catracho (friendly, informal word for a Honduran); pulpería (small neighbourhood shop); greetings between neighbours with usted; doña Marta uses vos with Sam and Nico."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "neighbourhood",
+    "greetings",
+    "shops"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "karla": "Karla",
+    "mario": "Señor Mario",
+    "marta": "Doña Marta",
+    "carlos": "Señor Carlos",
+    "elena": "Señora Elena",
+    "sam": "Sam",
+    "nico": "Nico"
+  },
+  "sections": [
+    {
+      "title": "A Sunday morning on the street",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es domingo en la mañana.",
+              "english": "It is Sunday morning."
+            },
+            {
+              "text": "Hay mucha gente en la calle.",
+              "english": "There are many people in the street."
+            },
+            {
+              "text": "La señora Elena tiene una pulpería.",
+              "english": "Señora Elena has a small shop."
+            },
+            {
+              "text": "Los vecinos van a la iglesia.",
+              "english": "The neighbours go to church."
+            },
+            {
+              "text": "Doña Marta sale de la casa con Sam y Nico.",
+              "english": "Doña Marta leaves the house with Sam and Nico."
+            },
+            {
+              "text": "Todos hablan en la calle.",
+              "english": "Everyone talks in the street."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "carlos",
+              "text": "Buenos días, doña Marta.",
+              "english": "Good morning, doña Marta."
+            },
+            {
+              "speaker": "marta",
+              "text": "Buenos días, señor Carlos.",
+              "english": "Good morning, Mr. Carlos."
+            },
+            {
+              "speaker": "marta",
+              "text": "¿Cómo está usted?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "carlos",
+              "text": "Muy bien, gracias.",
+              "english": "Very well, thank you."
+            },
+            {
+              "speaker": "carlos",
+              "text": "¿Y su familia?",
+              "english": "And your family?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Mi familia está bien.",
+              "english": "My family is fine."
+            },
+            {
+              "speaker": "marta",
+              "text": "Mi hijo vende pan en el mercado.",
+              "english": "My son sells bread at the market."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Mi hijo es médico en el hospital.",
+              "english": "My son is a doctor at the hospital."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Mi hija estudia en la escuela.",
+              "english": "My daughter studies at school."
+            },
+            {
+              "speaker": "marta",
+              "text": "¡Qué bueno, señor Carlos!",
+              "english": "How nice, Mr. Carlos!"
+            },
+            {
+              "speaker": "carlos",
+              "text": "Yo tengo una tienda en la calle.",
+              "english": "I have a shop in the street."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Vendo pollo en el mercado y comida en la tienda.",
+              "english": "I sell chicken at the market and food in the shop."
+            },
+            {
+              "speaker": "carlos",
+              "text": "En mi tienda hay huevos, frijoles y tortillas.",
+              "english": "In my shop there are eggs, beans and tortillas."
+            },
+            {
+              "speaker": "sam",
+              "text": "Buenos días, señor Carlos.",
+              "english": "Good morning, Mr. Carlos."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Buenos días, Sam.",
+              "english": "Good morning, Sam."
+            },
+            {
+              "speaker": "carlos",
+              "text": "¿Cómo está?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Bien, gracias.",
+              "english": "Fine, thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Tengo hambre.",
+              "english": "I am hungry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "elena",
+              "text": "Buenos días, vecinos.",
+              "english": "Good morning, neighbours."
+            },
+            {
+              "speaker": "elena",
+              "text": "Buenos días, doña Marta.",
+              "english": "Good morning, doña Marta."
+            },
+            {
+              "speaker": "elena",
+              "text": "Mi pulpería tiene desayuno para todos.",
+              "english": "My shop has breakfast for everyone."
+            },
+            {
+              "speaker": "elena",
+              "text": "Hay baleadas con huevo y frijoles.",
+              "english": "There are baleadas with egg and beans."
+            },
+            {
+              "speaker": "nico",
+              "text": "Abuela, quiero una baleada.",
+              "english": "Grandma, I want a baleada."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hoy vamos a la iglesia, Nico.",
+              "english": "Today we go to church, Nico."
+            },
+            {
+              "speaker": "nico",
+              "text": "Pero tengo hambre.",
+              "english": "But I am hungry."
+            },
+            {
+              "speaker": "elena",
+              "text": "Una baleada cuesta quince lempiras.",
+              "english": "A baleada costs fifteen lempiras."
+            },
+            {
+              "speaker": "sam",
+              "text": "Aquí tiene quince lempiras.",
+              "english": "Here are fifteen lempiras."
+            },
+            {
+              "text": "La señora Elena da una baleada a Nico.",
+              "english": "Señora Elena gives Nico a baleada."
+            },
+            {
+              "speaker": "nico",
+              "text": "Gracias, señora.",
+              "english": "Thank you, ma'am."
+            },
+            {
+              "speaker": "elena",
+              "text": "Mi trabajo es la pulpería.",
+              "english": "My job is the shop."
+            },
+            {
+              "speaker": "elena",
+              "text": "La gente necesita pan y café.",
+              "english": "People need bread and coffee."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Los vecinos ayudan a la señora Elena.",
+              "english": "The neighbours help señora Elena."
+            },
+            {
+              "speaker": "elena",
+              "text": "Mi hija es enfermera en el hospital con Ana.",
+              "english": "My daughter is a nurse at the hospital with Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Los catrachos hablan mucho.",
+              "english": "Hondurans talk a lot."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, y me gusta.",
+              "english": "Yes, and I like it."
+            },
+            {
+              "speaker": "marta",
+              "text": "Vos sos catracho también, Sam.",
+              "english": "You are a catracho too, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, soy catracho.",
+              "english": "Yes, I am a catracho."
+            },
+            {
+              "speaker": "nico",
+              "text": "Mi papá y mi mamá van a la iglesia también.",
+              "english": "My dad and my mom are going to church too."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hoy no compro plátanos.",
+              "english": "Today I am not buying plantains."
+            },
+            {
+              "speaker": "karla",
+              "text": "Buenos días, Sam.",
+              "english": "Good morning, Sam."
+            },
+            {
+              "speaker": "karla",
+              "text": "¿Vas a la iglesia?",
+              "english": "Are you going to church?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, voy con doña Marta y con Nico.",
+              "english": "Yes, I am going with doña Marta and Nico."
+            },
+            {
+              "speaker": "karla",
+              "text": "Mi papá va a la iglesia también.",
+              "english": "My dad is going to church too."
+            },
+            {
+              "speaker": "mario",
+              "text": "Buenos días, Sam.",
+              "english": "Good morning, Sam."
+            },
+            {
+              "speaker": "mario",
+              "text": "¿Hablás español con la gente?",
+              "english": "Do you speak Spanish with people?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, hablo español todos los días.",
+              "english": "Yes, I speak Spanish every day."
+            },
+            {
+              "speaker": "mario",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "mario",
+              "text": "Vos hablás muy bien.",
+              "english": "You speak very well."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Karla y mi hija estudian en la escuela.",
+              "english": "Karla and my daughter study at school."
+            },
+            {
+              "speaker": "karla",
+              "text": "Sí, somos amigas.",
+              "english": "Yes, we are friends."
+            },
+            {
+              "speaker": "nico",
+              "text": "Vamos, abuela.",
+              "english": "Let us go, grandma."
+            },
+            {
+              "speaker": "marta",
+              "text": "Sí, vamos.",
+              "english": "Yes, let us go."
+            },
+            {
+              "speaker": "marta",
+              "text": "Es la hora.",
+              "english": "It is time."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Adiós, doña Marta.",
+              "english": "Goodbye, doña Marta."
+            },
+            {
+              "speaker": "elena",
+              "text": "Adiós, Sam.",
+              "english": "Goodbye, Sam."
+            },
+            {
+              "speaker": "marta",
+              "text": "Adiós a todos.",
+              "english": "Goodbye, everyone."
+            },
+            {
+              "speaker": "nico",
+              "text": "Abuela, ¿hay café en la iglesia?",
+              "english": "Grandma, is there coffee at church?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Sí, hay café y pan en la iglesia.",
+              "english": "Yes, there is coffee and bread at church."
+            },
+            {
+              "speaker": "nico",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "nico",
+              "text": "Me gusta la iglesia.",
+              "english": "I like church."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-06",
+  "lang": "es",
+  "title": "Una semana de favores",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-06",
+    "title": "Asking, telling, lending (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "practical communication",
+    "favors",
+    "daily life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "El celular roto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El domingo por la noche hubo un trueno muy grande, y un rayo cayó cerca de la casa.",
+              "english": "On Sunday night there was a very loud thunderclap, and a bolt of lightning fell near the house."
+            },
+            {
+              "text": "Oí a un vecino gritar.",
+              "english": "I heard a neighbor shout."
+            },
+            {
+              "text": "Hubo una inundación en la calle, y un niño lloró.",
+              "english": "There was a flood in the street, and a boy cried."
+            },
+            {
+              "text": "Sin luz, la oscuridad era grande.",
+              "english": "Without electricity, the darkness was great."
+            },
+            {
+              "text": "Más tarde llegó una noticia: había un incendio pequeño en otra calle.",
+              "english": "Later the news came that there was a small fire on another street."
+            },
+            {
+              "text": "Todos escaparon, y no hubo peligro.",
+              "english": "Everyone got out, and there was no danger."
+            },
+            {
+              "text": "No fue un huracán, y no fue un accidente grande, pero todos tuvimos un susto.",
+              "english": "It was not a hurricane, and it was not a big accident, but we all got a fright."
+            },
+            {
+              "text": "Mi celular cayó al agua y se rompió.",
+              "english": "My phone fell into the water and broke."
+            },
+            {
+              "text": "Yo estaba triste, porque no podía avisar a mi familia.",
+              "english": "I was sad, because I could not let my family know."
+            },
+            {
+              "text": "El lunes por la mañana, le pregunté a doña Marta: —¿Me presta su celular?",
+              "english": "On Monday morning, I asked doña Marta, \"Will you lend me your phone?"
+            },
+            {
+              "text": "Tengo que avisar a mi jefe.",
+              "english": "I have to let my boss know.\""
+            },
+            {
+              "text": "Doña Marta me respondió: —Claro que sí.",
+              "english": "Doña Marta answered me, \"Of course."
+            },
+            {
+              "text": "Tomá.",
+              "english": "Here.\""
+            },
+            {
+              "text": "Me prestó su celular y me explicó cómo usarlo.",
+              "english": "She lent me her phone and explained how to use it."
+            },
+            {
+              "text": "Era un celular viejo, pero era bueno.",
+              "english": "It was an old phone, but it was a good one."
+            },
+            {
+              "text": "Le prometí devolverlo por la tarde.",
+              "english": "I promised her I would give it back in the afternoon."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una llamada",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Llamé a Daniel, el jefe del equipo.",
+              "english": "I called Daniel, the head of the team."
+            },
+            {
+              "text": "Él contestó.",
+              "english": "He answered."
+            },
+            {
+              "text": "—Daniel, soy Sam.",
+              "english": "\"Daniel, it's Sam."
+            },
+            {
+              "text": "Mi celular se rompió, y estoy con el celular de doña Marta.",
+              "english": "My phone broke, and I am using doña Marta's phone.\""
+            },
+            {
+              "text": "—¿Estás bien? —me preguntó.",
+              "english": "\"Are you all right?\" he asked me."
+            },
+            {
+              "text": "—Sí, estoy bien.",
+              "english": "\"Yes, I am fine.\""
+            },
+            {
+              "text": "¿Cuándo es la reunión? —le pregunté.",
+              "english": "\"When is the meeting?\" I asked him."
+            },
+            {
+              "text": "—Empieza a las ocho.",
+              "english": "\"It starts at eight."
+            },
+            {
+              "text": "Pero el lugar cambió.",
+              "english": "But the place changed."
+            },
+            {
+              "text": "Va a ser en la iglesia, no en la casa de Luis.",
+              "english": "It is going to be at the church, not at Luis's house.\""
+            },
+            {
+              "text": "—Gracias por avisarme —le dije.",
+              "english": "\"Thank you for letting me know,\" I told him."
+            },
+            {
+              "text": "Daniel me ofreció un celular viejo del equipo, en una caja.",
+              "english": "Daniel offered me an old phone from the team, in a box."
+            },
+            {
+              "text": "Le agradecí mucho.",
+              "english": "I thanked him very much."
+            },
+            {
+              "text": "—El sábado te doy el celular —dijo.",
+              "english": "\"I will give you the phone on Saturday,\" he said."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un favor para Carlos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Carlos es mecánico.",
+              "english": "Carlos is a mechanic."
+            },
+            {
+              "text": "Quiere conseguir un empleo en una empresa de la ciudad.",
+              "english": "He wants to get a job at a company in the city."
+            },
+            {
+              "text": "La empresa paga un buen sueldo, pero necesita gente que hable otro idioma.",
+              "english": "The company pays a good wage, but it needs people who speak another language."
+            },
+            {
+              "text": "Carlos me dijo: —Sam, ¿me enseñás tu idioma?",
+              "english": "Carlos said to me, \"Sam, will you teach me your language?"
+            },
+            {
+              "text": "Hablá conmigo un poco cada día.",
+              "english": "Talk with me a little each day.\""
+            },
+            {
+              "text": "Yo le respondí que sí.",
+              "english": "I answered him yes."
+            },
+            {
+              "text": "Me explicó que no quiere gastar dinero en una escuela.",
+              "english": "He explained to me that he does not want to spend money on a school."
+            },
+            {
+              "text": "Hicimos un horario: dos horas el sábado y dos horas el domingo.",
+              "english": "We made a schedule: two hours on Saturday and two hours on Sunday."
+            },
+            {
+              "text": "Carlos me ofreció arreglar mi celular.",
+              "english": "Carlos offered to fix my phone."
+            },
+            {
+              "text": "Abrió el celular, pero no pudo.",
+              "english": "He opened it, but he could not."
+            },
+            {
+              "text": "—El agua acabó con él —dijo.",
+              "english": "\"The water finished it,\" he said."
+            },
+            {
+              "text": "Le agradecí la ayuda.",
+              "english": "I thanked him for the help."
+            },
+            {
+              "text": "Le prometí enseñar mucho.",
+              "english": "I promised him I would teach him a lot."
+            },
+            {
+              "text": "Con un buen empleo, Carlos va a ahorrar en el banco.",
+              "english": "With a good job, Carlos is going to save at the bank."
+            },
+            {
+              "text": "Así puede ganar más y gastar menos.",
+              "english": "That way he can earn more and spend less."
+            },
+            {
+              "text": "Su tío tiene una chamba en la empresa, y por eso Carlos tiene ganas de aprender.",
+              "english": "His uncle has a job at the company, and that is why Carlos is eager to learn."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Con Ana y Karla",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde, Ana y Karla llegaron a la casa de doña Marta.",
+              "english": "In the afternoon, Ana and Karla came to doña Marta's house."
+            },
+            {
+              "text": "Ellas me ofrecieron café y pan.",
+              "english": "They offered me coffee and bread."
+            },
+            {
+              "text": "A ellas les agradecí el café.",
+              "english": "I thanked them for the coffee."
+            },
+            {
+              "text": "Ellas estaban contentas.",
+              "english": "They were happy."
+            },
+            {
+              "text": "Karla me dijo: —Sin celular, es difícil.",
+              "english": "Karla said to me, \"Without a phone, it is hard."
+            },
+            {
+              "text": "Yo te presto mi celular esta noche.",
+              "english": "I will lend you my phone tonight.\""
+            },
+            {
+              "text": "Ana dijo: —Vení conmigo al mercado.",
+              "english": "Ana said, \"Come with me to the market."
+            },
+            {
+              "text": "Te enseño a comprar plátanos.",
+              "english": "I'll teach you how to buy bananas.\""
+            },
+            {
+              "text": "—Con gusto —le dije—.",
+              "english": "\"With pleasure,\" I told her."
+            },
+            {
+              "text": "Pero primero tengo que hablar con Luis.",
+              "english": "\"But first I have to talk to Luis.\""
+            },
+            {
+              "text": "Luis nos dijo a todos que la reunión empieza a las ocho.",
+              "english": "Luis told all of us that the meeting starts at eight."
+            },
+            {
+              "text": "Daniel nos llamó también.",
+              "english": "Daniel called us too."
+            },
+            {
+              "text": "Karla quiere saber cuándo vuelvo al mercado.",
+              "english": "Karla wants to know when I am going back to the market."
+            },
+            {
+              "text": "Yo no sé cuándo, pero voy a ir con Ana.",
+              "english": "I do not know when, but I am going with Ana."
+            },
+            {
+              "text": "Doña Marta nos invitó a cenar.",
+              "english": "Doña Marta invited us to dinner."
+            },
+            {
+              "text": "Les prometí a todos que voy a estar en la reunión.",
+              "english": "I promised everyone that I would be at the meeting."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La primera clase",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La primera hora fue el sábado.",
+              "english": "The first hour was on Saturday."
+            },
+            {
+              "text": "Carlos llegó con un libro y un café.",
+              "english": "Carlos arrived with a book and a coffee."
+            },
+            {
+              "text": "Aprendimos las palabras de la empresa: jefe, horario, sueldo y empleo.",
+              "english": "We learned the words of the company: boss, schedule, wage and job."
+            },
+            {
+              "text": "Carlos escribía cada palabra en su libro.",
+              "english": "Carlos wrote each word in his book."
+            },
+            {
+              "text": "Yo decía la palabra, y él decía la palabra.",
+              "english": "I said the word, and he said the word."
+            },
+            {
+              "text": "Antes de irse, dijo: —Mañana más.",
+              "english": "Before leaving, he said, \"More tomorrow.\""
+            },
+            {
+              "text": "Yo estaba cansado, pero contento.",
+              "english": "I was tired, but happy."
+            },
+            {
+              "text": "Ese día, Daniel me dio el celular del equipo.",
+              "english": "That day, Daniel gave me the team phone."
+            },
+            {
+              "text": "Era viejo, pero era bueno.",
+              "english": "It was old, but it was good."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mi lista",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche escribí mi semana en el celular de Karla.",
+              "english": "That night I wrote my week on Karla's phone."
+            },
+            {
+              "text": "Hoy: devolver el celular de doña Marta.",
+              "english": "Today: return doña Marta's phone."
+            },
+            {
+              "text": "Mañana: llamar a Daniel y buscar el nuevo celular.",
+              "english": "Tomorrow: call Daniel and look for the new phone."
+            },
+            {
+              "text": "Sábado: dos horas con Carlos.",
+              "english": "Saturday: two hours with Carlos."
+            },
+            {
+              "text": "Domingo: dos horas con Carlos, y la iglesia.",
+              "english": "Sunday: two hours with Carlos, and church."
+            },
+            {
+              "text": "Les dije a todos que voy a escribir un mensaje.",
+              "english": "I told everyone that I was going to write a message."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los mensajes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Para doña Marta: «Doña Marta, aquí está su celular.",
+              "english": "For doña Marta: \"Doña Marta, here is your phone."
+            },
+            {
+              "text": "Muchas gracias por todo.»",
+              "english": "Thank you very much for everything.\""
+            },
+            {
+              "text": "Para Luis: «Luis, gracias por explicarme todo.",
+              "english": "For Luis: \"Luis, thank you for explaining everything to me."
+            },
+            {
+              "text": "Un café para ti el sábado.»",
+              "english": "A coffee for you on Saturday.\""
+            },
+            {
+              "text": "Luis contestó: «Con gusto, Sam.",
+              "english": "Luis answered: \"My pleasure, Sam."
+            },
+            {
+              "text": "Nos vemos.»",
+              "english": "See you.\""
+            },
+            {
+              "text": "Para Carlos: «Carlos, ya tengo el horario.",
+              "english": "For Carlos: \"Carlos, I have the schedule now."
+            },
+            {
+              "text": "Gracias por tu ayuda.",
+              "english": "Thank you for your help."
+            },
+            {
+              "text": "Esto es para ti: un pan.»",
+              "english": "This is for you: a bread.\""
+            },
+            {
+              "text": "Para Ana: «Ana, gracias por el café.",
+              "english": "For Ana: \"Ana, thank you for the coffee."
+            },
+            {
+              "text": "Gracias a ti, ya conozco el mercado.»",
+              "english": "Thanks to you, I already know the market.\""
+            },
+            {
+              "text": "Ana contestó: «De nada, Sam.",
+              "english": "Ana answered: \"You're welcome, Sam."
+            },
+            {
+              "text": "El sábado vamos de nuevo.»",
+              "english": "On Saturday we are going again.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Por la tarde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde devolví el celular a doña Marta.",
+              "english": "In the afternoon I returned the phone to doña Marta."
+            },
+            {
+              "text": "—Gracias, doña Marta —le dije.",
+              "english": "\"Thank you, doña Marta,\" I told her."
+            },
+            {
+              "text": "Ella agregó: —Si necesitás ayuda, hablá conmigo.",
+              "english": "She added, \"If you need help, talk with me.\""
+            },
+            {
+              "text": "Ella me respondió: —De nada, Sam.",
+              "english": "She answered me, \"You're welcome, Sam."
+            },
+            {
+              "text": "Un celular no es nada.",
+              "english": "A phone is nothing."
+            },
+            {
+              "text": "Un favor es mucho.",
+              "english": "A favor is a lot.\""
+            },
+            {
+              "text": "Parecía un buen día.",
+              "english": "It seemed like a good day."
+            },
+            {
+              "text": "Y yo tenía muchos amigos.",
+              "english": "And I had many friends."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

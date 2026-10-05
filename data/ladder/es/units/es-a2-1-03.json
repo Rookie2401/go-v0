@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-03",
+  "lang": "es",
+  "title": "El cuento de la abuela",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-03",
+    "title": "Grandmother's night story (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative",
+    "family",
+    "night"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "En el patio",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es de noche.",
+              "english": "It is night."
+            },
+            {
+              "text": "Nico no puede dormir, y sale al patio.",
+              "english": "Nico cannot sleep, and he goes out to the patio."
+            },
+            {
+              "text": "Doña Marta está allí, cerca del árbol.",
+              "english": "Doña Marta is there, near the tree."
+            },
+            {
+              "text": "Sam también está en el patio.",
+              "english": "Sam is in the patio too."
+            },
+            {
+              "text": "La luna es blanca y las estrellas son muchas.",
+              "english": "The moon is white and the stars are many."
+            },
+            {
+              "text": "—Abuela, ¿me contás un cuento? —dice Nico.",
+              "english": "\"Grandma, will you tell me a story?\" says Nico."
+            },
+            {
+              "text": "—Está bien, pero es un cuento de mi vida, no es un cuento de animales.",
+              "english": "\"All right, but it is a story from my life, not a story about animals.\""
+            },
+            {
+              "text": "Doña Marta mira a Nico un momento y habla.",
+              "english": "Doña Marta looks at Nico for a moment and speaks."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una noche en noviembre",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Cuando yo era niña, mi abuelo tenía una finca.",
+              "english": "\"When I was a girl, my grandfather had a farm."
+            },
+            {
+              "text": "Todos los años, mi tío Rafael celebraba su cumpleaños en noviembre.",
+              "english": "Every year, my uncle Rafael celebrated his birthday in November.\""
+            },
+            {
+              "text": "Mi cumpleaños era en febrero, el de mi hermano Mario era en abril y el de mi tía Carmen era en junio.",
+              "english": "\"My birthday was in February, my brother Mario's was in April and my aunt Carmen's was in June.\""
+            },
+            {
+              "text": "Pero la fiesta de noviembre era la más grande.",
+              "english": "But the November party was the biggest."
+            },
+            {
+              "text": "Mi tío invitaba a toda la familia, y todos íbamos a la finca.",
+              "english": "My uncle invited the whole family, and we all went to the farm."
+            },
+            {
+              "text": "Mi tío no tenía mucho dinero.",
+              "english": "My uncle did not have much money."
+            },
+            {
+              "text": "No era fácil conseguir chamba en el pueblo.",
+              "english": "It was not easy to get work in the village."
+            },
+            {
+              "text": "Pero siempre estaba contento.",
+              "english": "But he was always cheerful."
+            },
+            {
+              "text": "Por la tarde había un culto con alabanza, ofrenda y himnos.",
+              "english": "In the afternoon there was a service with praise, offering and hymns."
+            },
+            {
+              "text": "Después había tamales, café y pan.",
+              "english": "Afterwards there were tamales, coffee and bread."
+            },
+            {
+              "text": "Yo estaba muy contenta.",
+              "english": "I was very happy."
+            },
+            {
+              "text": "Cantábamos y cantábamos.",
+              "english": "We sang and sang."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La luna cambia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Una noche, mi hermano Mario y yo volvíamos a la casa con mi tío.",
+              "english": "\"One night, my brother Mario and I were going back to the house with my uncle.\""
+            },
+            {
+              "text": "En la finca no había luz en la calle.",
+              "english": "On the farm there was no light in the street."
+            },
+            {
+              "text": "Pero la noche era bonita.",
+              "english": "But the night was beautiful."
+            },
+            {
+              "text": "La luna era grande y blanca, y las estrellas eran como flores blancas.",
+              "english": "The moon was big and white, and the stars were like white flowers."
+            },
+            {
+              "text": "Entonces la luna cambió.",
+              "english": "Then the moon changed."
+            },
+            {
+              "text": "Ya no era blanca: era roja.",
+              "english": "It was no longer white: it was red."
+            },
+            {
+              "text": "La oscuridad llegó a la calle.",
+              "english": "The darkness came to the street."
+            },
+            {
+              "text": "Ya no veíamos la tierra.",
+              "english": "We could no longer see the ground."
+            },
+            {
+              "text": "Mario abrió los ojos y la boca.",
+              "english": "Mario opened his eyes and his mouth."
+            },
+            {
+              "text": "No quería caminar.",
+              "english": "He did not want to walk."
+            },
+            {
+              "text": "Yo pensé: «Esto no es bueno».",
+              "english": "I thought: \"This is not good.\""
+            },
+            {
+              "text": "Tenía las manos frías.",
+              "english": "My hands were cold."
+            },
+            {
+              "text": "Mi tío Rafael era alto y delgado, pero era muy amable.",
+              "english": "My uncle Rafael was tall and thin, but he was very kind."
+            },
+            {
+              "text": "Él dijo: —No pasa nada.",
+              "english": "He said: \"Nothing is wrong."
+            },
+            {
+              "text": "La luna cambia esta noche, pero va a volver.",
+              "english": "The moon is changing tonight, but it will come back.\""
+            },
+            {
+              "text": "—Miren las estrellas —dijo—.",
+              "english": "\"Look at the stars,\" he said."
+            },
+            {
+              "text": "Son más bonitas en la oscuridad.",
+              "english": "\"They are more beautiful in the dark.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El juego de las estrellas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Mario ya no estaba triste.",
+              "english": "\"Mario was no longer sad."
+            },
+            {
+              "text": "Mi tío dijo que íbamos a jugar un juego.",
+              "english": "My uncle said we were going to play a game.\""
+            },
+            {
+              "text": "—El que ve más estrellas gana —dijo mi tío.",
+              "english": "\"Whoever sees more stars wins,\" my uncle said."
+            },
+            {
+              "text": "Miramos y miramos.",
+              "english": "We looked and looked."
+            },
+            {
+              "text": "Yo veía doce, y Mario veía quince.",
+              "english": "I saw twelve, and Mario saw fifteen."
+            },
+            {
+              "text": "Mario ganó.",
+              "english": "Mario won."
+            },
+            {
+              "text": "Pero yo pensaba en las estrellas: parecían las luces de un pueblo grande.",
+              "english": "But I was thinking about the stars: they looked like the lights of a big town."
+            },
+            {
+              "text": "Mi tío cantó una canción, y todos cantamos con él.",
+              "english": "My uncle sang a song, and we all sang with him."
+            },
+            {
+              "text": "Caminamos y caminamos.",
+              "english": "We walked and walked."
+            },
+            {
+              "text": "Escuchamos las vacas en la finca, y escuchamos un perro.",
+              "english": "We heard the cows on the farm, and we heard a dog."
+            },
+            {
+              "text": "El perro era negro y feo, pero simpático.",
+              "english": "The dog was black and ugly, but friendly."
+            },
+            {
+              "text": "Parecía un caballo pequeño.",
+              "english": "He looked like a small horse."
+            },
+            {
+              "text": "Él vino a buscarnos en la oscuridad y caminó con nosotros hasta la casa de mi tía Carmen.",
+              "english": "He came to look for us in the dark and walked with us to my aunt Carmen's house."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La casa de la tía Carmen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—La casa de mi tía estaba limpia y bonita.",
+              "english": "\"My aunt's house was clean and beautiful."
+            },
+            {
+              "text": "Las paredes eran blancas, el techo era rojo y el piso era de tierra.",
+              "english": "The walls were white, the roof was red and the floor was earth.\""
+            },
+            {
+              "text": "En el jardín había flores azules, y los árboles eran verdes.",
+              "english": "In the garden there were blue flowers, and the trees were green."
+            },
+            {
+              "text": "También había gallinas y una pelota vieja.",
+              "english": "There were also hens and an old ball."
+            },
+            {
+              "text": "La luna volvió a ser blanca.",
+              "english": "The moon became white again."
+            },
+            {
+              "text": "Mario y yo dormimos muy bien.",
+              "english": "Mario and I slept very well."
+            },
+            {
+              "text": "—Hoy hay luz en todo el país.",
+              "english": "\"Today there is light all over the country."
+            },
+            {
+              "text": "Es un cambio bueno, y el pueblo también cambió.",
+              "english": "It is a good change, and the village changed too.\""
+            },
+            {
+              "text": "En la calle donde caminábamos entonces, hay casas y tiendas.",
+              "english": "On the street where we used to walk then, there are houses and shops."
+            },
+            {
+              "text": "La comunidad quiere construir más, y el gobierno quiere mejorar el país.",
+              "english": "The community wants to build more, and the government wants to improve the country."
+            },
+            {
+              "text": "En agosto y en septiembre, la gente celebra.",
+              "english": "In August and September, people celebrate."
+            },
+            {
+              "text": "Yo celebro con ellos, pero nunca olvido la luna roja.",
+              "english": "I celebrate with them, but I never forget the red moon."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Otra vez en el patio",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—¿Y la luna volvió? —dice Nico.",
+              "english": "\"And did the moon come back?\" says Nico."
+            },
+            {
+              "text": "—Sí, mi niño.",
+              "english": "\"Yes, my boy."
+            },
+            {
+              "text": "Volvió blanca, como hoy.",
+              "english": "It came back white, like today.\""
+            },
+            {
+              "text": "—Yo quiero ganar mañana —dice Nico, y abre los ojos de nuevo—.",
+              "english": "\"I want to win tomorrow,\" says Nico, and he opens his eyes again."
+            },
+            {
+              "text": "¿Y el perro negro?",
+              "english": "\"And the black dog?\""
+            },
+            {
+              "text": "—Era un perro muy bueno, y parecía un caballo —dice doña Marta.",
+              "english": "\"He was a very good dog, and he looked like a horse,\" says doña Marta."
+            },
+            {
+              "text": "Nico abre la boca para hablar, pero ya duerme.",
+              "english": "Nico opens his mouth to speak, but he is already asleep."
+            },
+            {
+              "text": "Sam escucha y piensa: «Quiero recordar este cuento».",
+              "english": "Sam listens and thinks: \"I want to remember this story.\""
+            },
+            {
+              "text": "Doña Marta mira la luna.",
+              "english": "Doña Marta looks at the moon."
+            },
+            {
+              "text": "—Es hora de dormir, Sam.",
+              "english": "\"It is time to sleep, Sam."
+            },
+            {
+              "text": "Mañana es domingo, y vamos a ir al culto.",
+              "english": "Tomorrow is Sunday, and we are going to the service.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

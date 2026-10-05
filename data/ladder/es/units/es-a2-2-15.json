@@ -1,0 +1,726 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-15",
+  "lang": "es",
+  "title": "Entrevista con una enfermera",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-15",
+    "title": "Interview with a nurse (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "work"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "K": "Karla",
+    "A": "Ana"
+  },
+  "sections": [
+    {
+      "title": "Antes de empezar",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Karla prepara unas preguntas para el periódico de la comunidad.",
+              "english": "Karla is preparing some questions for the community newspaper."
+            },
+            {
+              "text": "La persona que responde es Ana, la enfermera de la clínica.",
+              "english": "The person who answers is Ana, the clinic nurse."
+            },
+            {
+              "text": "Las dos se sientan en la sala con una jarra de café tibio.",
+              "english": "The two sit in the living room with a jug of lukewarm coffee."
+            },
+            {
+              "text": "Karla tiene un libro pequeño y escribe todo lo que Ana dice.",
+              "english": "Karla has a small book and writes down everything Ana says."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La niña de la montaña",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana, gracias por responder mis preguntas.",
+              "english": "Ana, thank you for answering my questions.",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Cómo empezó todo?",
+              "english": "How did it all begin?",
+              "speaker": "K"
+            },
+            {
+              "text": "Nací en un pueblo de la montaña.",
+              "english": "I was born in a village in the mountains.",
+              "speaker": "A"
+            },
+            {
+              "text": "Mi mamá vendía pan en el mercado, y yo la ayudaba desde niña.",
+              "english": "My mother sold bread in the market, and I helped her from childhood.",
+              "speaker": "A"
+            },
+            {
+              "text": "Soy la menor de la casa.",
+              "english": "I am the youngest in the family.",
+              "speaker": "A"
+            },
+            {
+              "text": "Mi hermano mayor, Luis, ya iba a la escuela, y yo lo seguía todos los días.",
+              "english": "My older brother, Luis, was already going to school, and I followed him every day.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Qué querías ser cuando eras niña?",
+              "english": "What did you want to be when you were a girl?",
+              "speaker": "K"
+            },
+            {
+              "text": "Quería ser maestra.",
+              "english": "I wanted to be a teacher.",
+              "speaker": "A"
+            },
+            {
+              "text": "Mi primera maestra era suave y cortés con todos, y yo la imaginaba como una madre más.",
+              "english": "My first teacher was gentle and courteous with everyone, and I imagined her as another mother.",
+              "speaker": "A"
+            },
+            {
+              "text": "Pensaba: «Cuando sea mayor, voy a enseñar».",
+              "english": "I thought: \"When I grow up, I am going to teach.\"",
+              "speaker": "A"
+            },
+            {
+              "text": "Pero hoy sos enfermera.",
+              "english": "But today you are a nurse.",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Qué pasó?",
+              "english": "What happened?",
+              "speaker": "K"
+            },
+            {
+              "text": "Un día llegó a nuestra casa una señora con un bebé muy débil.",
+              "english": "One day a neighbour arrived at our house with a very weak baby.",
+              "speaker": "A"
+            },
+            {
+              "text": "Tenía fiebre, los labios duros y el aliento caliente.",
+              "english": "He had a fever, hard lips and hot breath.",
+              "speaker": "A"
+            },
+            {
+              "text": "Mi mamá no sabía qué hacer.",
+              "english": "My mother didn't know what to do.",
+              "speaker": "A"
+            },
+            {
+              "text": "Yo tenía diez años y no pude ayudar.",
+              "english": "I was ten years old and I couldn't help.",
+              "speaker": "A"
+            },
+            {
+              "text": "Esa noche prometí que iba a aprender.",
+              "english": "That night I promised that I would learn.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Y cómo aprendiste?",
+              "english": "And how did you learn?",
+              "speaker": "K"
+            },
+            {
+              "text": "Primero con la doctora del pueblo.",
+              "english": "First with the village doctor.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ella me enseñó a mirar el peso del bebé, a reconocer una fiebre y a distinguir un golpe ligero de un golpe peligroso.",
+              "english": "She taught me to look at a baby's weight, to recognize a fever and to distinguish a light knock from a dangerous knock.",
+              "speaker": "A"
+            },
+            {
+              "text": "Después, a los dieciocho años, fui a estudiar a la universidad.",
+              "english": "Then, at eighteen, I went to study at the university.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los años de la universidad",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "¿Cómo fue ese viaje?",
+              "english": "What was that trip like?",
+              "speaker": "K"
+            },
+            {
+              "text": "Imagino que la universidad estaba lejos.",
+              "english": "I imagine the university was far away.",
+              "speaker": "K"
+            },
+            {
+              "text": "Muy lejos.",
+              "english": "Very far.",
+              "speaker": "A"
+            },
+            {
+              "text": "El primer día salí en bicicleta hasta el camino grande, después tomé un autobús y al final un taxi.",
+              "english": "The first day I left by bicycle to the main road, then I took a bus and finally a taxi.",
+              "speaker": "A"
+            },
+            {
+              "text": "Tardé casi todo un día.",
+              "english": "I took almost a whole day.",
+              "speaker": "A"
+            },
+            {
+              "text": "En los años siguientes hice el mismo viaje muchas veces, a veces en moto, y una vez en barco, cuando la lluvia cubría el camino.",
+              "english": "In the following years I made the same trip many times, sometimes on a motorbike, and once by boat, when the rain covered the road.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Y cómo era la vida en la universidad?",
+              "english": "And what was life like at the university?",
+              "speaker": "K"
+            },
+            {
+              "text": "Era dura, pero también era hermosa.",
+              "english": "It was hard, but it was also beautiful.",
+              "speaker": "A"
+            },
+            {
+              "text": "Estudiábamos de día y de noche.",
+              "english": "We studied by day and by night.",
+              "speaker": "A"
+            },
+            {
+              "text": "Mis amigos de clase eran de todo tipo.",
+              "english": "My classmates were of all kinds.",
+              "speaker": "A"
+            },
+            {
+              "text": "Uno, que era muy sincero, hoy es abogado.",
+              "english": "One, who was very sincere, is a lawyer today.",
+              "speaker": "A"
+            },
+            {
+              "text": "Una amiga es profesora de la misma universidad.",
+              "english": "A friend is a professor at the same university.",
+              "speaker": "A"
+            },
+            {
+              "text": "Otro amigo es músico, y canta en las fiestas.",
+              "english": "Another friend is a musician, and sings at parties.",
+              "speaker": "A"
+            },
+            {
+              "text": "Otra amiga se hizo piloto y vuela por todo el país.",
+              "english": "Another friend became a pilot and flies all over the country.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Y cuál fue tu primer trabajo?",
+              "english": "And what was your first job?",
+              "speaker": "K"
+            },
+            {
+              "text": "Trabajé en un hospital grande.",
+              "english": "I worked in a big hospital.",
+              "speaker": "A"
+            },
+            {
+              "text": "El cocinero del hospital era mi vecino, y el chofer de la clínica era su hermano.",
+              "english": "The hospital cook was my neighbour, and the clinic driver was his brother.",
+              "speaker": "A"
+            },
+            {
+              "text": "Los dos me cuidaban como a una hija.",
+              "english": "Both took care of me like a daughter.",
+              "speaker": "A"
+            },
+            {
+              "text": "Al principio yo era joven y no me escuchaban.",
+              "english": "At first I was young and they didn't listen to me.",
+              "speaker": "A"
+            },
+            {
+              "text": "Después vieron mi trabajo y me escucharon.",
+              "english": "Later they saw my work and listened to me.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Y qué hacen hoy todos esos amigos?",
+              "english": "And what are all those friends doing today?",
+              "speaker": "K"
+            },
+            {
+              "text": "El abogado defiende a los campesinos que pierden su tierra, y es un abogado honesto.",
+              "english": "The lawyer defends the farmers who lose their land, and he is an honest lawyer.",
+              "speaker": "A"
+            },
+            {
+              "text": "La profesora enseña a las futuras enfermeras en la universidad, y mi profesor del primer año todavía enseña ahí.",
+              "english": "The professor teaches the future nurses at the university, and my first-year teacher still teaches there.",
+              "speaker": "A"
+            },
+            {
+              "text": "La piloto vuela a las islas y trae pastillas, y el músico canta en la iglesia los domingos.",
+              "english": "The pilot flies to the islands and brings pills, and the musician sings at church on Sundays.",
+              "speaker": "A"
+            },
+            {
+              "text": "El cocinero del hospital prepara comida blanda y ligera, y nunca cocina nada pesado para los enfermos.",
+              "english": "The hospital cook prepares soft, light food, and never cooks anything heavy for the sick.",
+              "speaker": "A"
+            },
+            {
+              "text": "Su trabajo es muy útil.",
+              "english": "His work is very useful.",
+              "speaker": "A"
+            },
+            {
+              "text": "El chofer de la clínica lleva a los enfermos fuera del pueblo cuando es necesario.",
+              "english": "The clinic driver takes the sick outside the village when it is necessary.",
+              "speaker": "A"
+            },
+            {
+              "text": "Los dos son para mí como una familia.",
+              "english": "The two are like a family to me.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un día en la clínica",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ahora trabajás en nuestra clínica, cerca de la torre de la iglesia.",
+              "english": "Now you work at our clinic, near the church tower.",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Cómo es un día de trabajo?",
+              "english": "What is a working day like?",
+              "speaker": "K"
+            },
+            {
+              "text": "Empieza temprano.",
+              "english": "It starts early.",
+              "speaker": "A"
+            },
+            {
+              "text": "Antes de las siete ya hay gente fuera de la clínica, esperando.",
+              "english": "Before seven there are already people outside the clinic, waiting.",
+              "speaker": "A"
+            },
+            {
+              "text": "Primero reviso el agua y la limpieza de la sala.",
+              "english": "First I check the water and the cleanliness of the room.",
+              "speaker": "A"
+            },
+            {
+              "text": "Después recibo a los enfermos, uno por uno.",
+              "english": "Then I receive the sick, one by one.",
+              "speaker": "A"
+            },
+            {
+              "text": "Describo cada caso en mi libro, y luego hablo con el doctor.",
+              "english": "I describe each case in my book, and then I speak with the doctor.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Qué tipo de enfermos llegan?",
+              "english": "What kind of patients come?",
+              "speaker": "K"
+            },
+            {
+              "text": "De todo.",
+              "english": "All kinds.",
+              "speaker": "A"
+            },
+            {
+              "text": "Llegan bebés con fiebre, niños con un golpe en la pierna, señoras con tos y hombres con un corte en la mano.",
+              "english": "Babies with fever come, children with a bump on the leg, ladies with a cough and men with a cut on the hand.",
+              "speaker": "A"
+            },
+            {
+              "text": "En el verano, muchos llegan con sed y débiles, porque el sol es como un desierto.",
+              "english": "In the summer many come thirsty and weak, because the sun is like a desert.",
+              "speaker": "A"
+            },
+            {
+              "text": "En el invierno llegan con la nariz llena y la garganta mal.",
+              "english": "In winter they come with a blocked nose and a sore throat.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Cómo reconocés un caso peligroso?",
+              "english": "How do you recognize a dangerous case?",
+              "speaker": "K"
+            },
+            {
+              "text": "Con los años uno aprende a mirar.",
+              "english": "With the years you learn to look.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si la mejilla está muy caliente, si los labios están duros, si el aliento huele diferente o si la vista no es clara, hay que actuar ahora.",
+              "english": "If the cheek is very hot, if the lips are hard, if the breath smells different or if the sight is not clear, you have to act now.",
+              "speaker": "A"
+            },
+            {
+              "text": "Un bebé que no come, y que está muy débil y muy suave de cuerpo, es peligroso.",
+              "english": "A baby who doesn't eat, and is very weak and very soft in the body, is in danger.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Qué es lo más importante en tu trabajo?",
+              "english": "What is the most important thing in your work?",
+              "speaker": "K"
+            },
+            {
+              "text": "La prueba más importante no está en el libro, sino en la persona.",
+              "english": "The most important test is not in the book, but in the person.",
+              "speaker": "A"
+            },
+            {
+              "text": "Hay que escuchar despacio, y hay que ser honesta con el enfermo.",
+              "english": "You have to listen slowly, and you have to be honest with the patient.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si afirmo que todo está bien, y no es verdad, hago mal.",
+              "english": "If I state that everything is fine, and it is not true, I do wrong.",
+              "speaker": "A"
+            },
+            {
+              "text": "Y si niego un peligro, es peor.",
+              "english": "And if I deny a danger, it is worse.",
+              "speaker": "A"
+            },
+            {
+              "text": "Quiero decir la verdad con amor.",
+              "english": "I want to tell the truth with love.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Alguna vez has sentido que no podías ayudar?",
+              "english": "Have you ever felt that you could not help?",
+              "speaker": "K"
+            },
+            {
+              "text": "Muchas veces.",
+              "english": "Many times.",
+              "speaker": "A"
+            },
+            {
+              "text": "El mes anterior murió un niño en la clínica.",
+              "english": "The previous month a boy died at the clinic.",
+              "speaker": "A"
+            },
+            {
+              "text": "Hicimos todo lo que sabíamos, pero el niño llegó demasiado tarde.",
+              "english": "We did everything we knew, but the boy arrived too late.",
+              "speaker": "A"
+            },
+            {
+              "text": "Yo lloré esa noche.",
+              "english": "I cried that night.",
+              "speaker": "A"
+            },
+            {
+              "text": "Es natural y humano llorar.",
+              "english": "It is natural and human to cry.",
+              "speaker": "A"
+            },
+            {
+              "text": "No hay que juzgar a la madre ni a nadie, porque nadie quería ese final.",
+              "english": "We must not judge the mother or anyone, because nobody wanted that ending.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo antiguo y lo moderno",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy la clínica tiene pastillas y pruebas modernas.",
+              "english": "Today the clinic has modern pills and tests.",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Cuál querés más, lo moderno o lo antiguo?",
+              "english": "Which do you want more, the modern or the old?",
+              "speaker": "K"
+            },
+            {
+              "text": "Necesito los dos.",
+              "english": "I need both.",
+              "speaker": "A"
+            },
+            {
+              "text": "Las pastillas actuales salvan vidas.",
+              "english": "Today's pills save lives.",
+              "speaker": "A"
+            },
+            {
+              "text": "Pero lo antiguo también sirve: agua fresca, comida ligera, un abrazo y mucho amor.",
+              "english": "But the old also works: cool water, light food, a hug and a lot of love.",
+              "speaker": "A"
+            },
+            {
+              "text": "El cuerpo humano necesita lo natural.",
+              "english": "The human body needs what is natural.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Alguna vez te han rechazado en el pueblo?",
+              "english": "Has anyone ever rejected you in the village?",
+              "speaker": "K"
+            },
+            {
+              "text": "Sí.",
+              "english": "Yes.",
+              "speaker": "A"
+            },
+            {
+              "text": "Una señora me rechazó una vez, porque yo era joven.",
+              "english": "A lady rejected me once, because I was young.",
+              "speaker": "A"
+            },
+            {
+              "text": "Algunos temen a la clínica, y otros odian a los médicos, porque suponen que pedimos mucho dinero.",
+              "english": "Some fear the clinic, and others hate doctors, because they suppose we ask for a lot of money.",
+              "speaker": "A"
+            },
+            {
+              "text": "Yo no juzgo a nadie.",
+              "english": "I don't judge anyone.",
+              "speaker": "A"
+            },
+            {
+              "text": "Expreso mis ideas con paz, y reconozco que a veces tienen razón.",
+              "english": "I express my ideas in peace, and I recognize that sometimes they are right.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Qué has aprendido de Honduras?",
+              "english": "What have you learned from Honduras?",
+              "speaker": "K"
+            },
+            {
+              "text": "Que un pueblo no es peor ni mejor que otro.",
+              "english": "That one village is neither worse nor better than another.",
+              "speaker": "A"
+            },
+            {
+              "text": "Es igual de humano.",
+              "english": "It is equally human.",
+              "speaker": "A"
+            },
+            {
+              "text": "Una vez, en otro país, subí a un tren por primera vez, y me sentí como una niña.",
+              "english": "Once, in another country, I got on a train for the first time, and I felt like a girl.",
+              "speaker": "A"
+            },
+            {
+              "text": "Pero cuando volví a mi casa en la montaña, entendí que mi lugar es este.",
+              "english": "But when I returned to my house in the mountains, I understood that my place is here.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los planes de Ana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "¿Qué vas a hacer el próximo año?",
+              "english": "What are you going to do next year?",
+              "speaker": "K"
+            },
+            {
+              "text": "Quiero abrir una pequeña escuela de salud.",
+              "english": "I want to open a small health school.",
+              "speaker": "A"
+            },
+            {
+              "text": "Voy a invitar a una maestra, a un profesor y a un músico para enseñar a los niños.",
+              "english": "I am going to invite a teacher, a professor and a musician to teach the children.",
+              "speaker": "A"
+            },
+            {
+              "text": "Imagino un lugar donde las madres aprenden a reconocer una fiebre, y donde los jóvenes aprenden un oficio.",
+              "english": "I imagine a place where mothers learn to recognize a fever, and where young people learn a trade.",
+              "speaker": "A"
+            },
+            {
+              "text": "La profesora va a enseñar a leer, y el profesor a contar.",
+              "english": "The professor will teach reading, and the other professor counting.",
+              "speaker": "A"
+            },
+            {
+              "text": "El cocinero va a enseñar a hacer sopa, el chofer a llevar a los enfermos, y la piloto va a contar de las islas.",
+              "english": "The cook will teach how to make soup, the driver how to take the sick, and the pilot will tell about the islands.",
+              "speaker": "A"
+            },
+            {
+              "text": "Algunos dicen que ya no querés enseñar.",
+              "english": "Some say you no longer want to teach.",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Es cierto o es falso?",
+              "english": "Is it true or is it false?",
+              "speaker": "K"
+            },
+            {
+              "text": "Es falso.",
+              "english": "It is false.",
+              "speaker": "A"
+            },
+            {
+              "text": "Es verdadero que quería ser maestra, y todavía enseño cada día: a las madres, a los jóvenes y a los niños.",
+              "english": "It is true that I wanted to be a teacher, and I still teach every day: mothers, young people and children.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Y qué es lo que más querés?",
+              "english": "And what do you want most?",
+              "speaker": "K"
+            },
+            {
+              "text": "Ver a todos los niños sanos, con las mejillas suaves, el cabello limpio y la risa fresca.",
+              "english": "To see all the children healthy, with soft cheeks, clean hair and fresh laughter.",
+              "speaker": "A"
+            },
+            {
+              "text": "Además, quiero que cada familia tenga agua limpia y un plato lleno, y no un plato vacío.",
+              "english": "Besides, I want every family to have clean water and a full plate, and not an empty plate.",
+              "speaker": "A"
+            },
+            {
+              "text": "Aparte de eso, no pido más.",
+              "english": "Apart from that, I ask for nothing more.",
+              "speaker": "A"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla pone el libro encima de la mesa.",
+              "english": "Karla puts the book on top of the table."
+            },
+            {
+              "text": "Todo termina cuando el café ya está frío.",
+              "english": "Everything ends when the coffee is already cold."
+            },
+            {
+              "text": "Ana mira hacia arriba, a la torre de la iglesia, y tiene una sonrisa.",
+              "english": "Ana looks up at the church tower and has a smile."
+            },
+            {
+              "text": "Gracias, Ana.",
+              "english": "Thank you, Ana.",
+              "speaker": "K"
+            },
+            {
+              "text": "Mañana publico lo que dijiste.",
+              "english": "Tomorrow I publish what you said.",
+              "speaker": "K"
+            },
+            {
+              "text": "Gracias a vos, Karla.",
+              "english": "Thanks to you, Karla.",
+              "speaker": "A"
+            },
+            {
+              "text": "Pero sé honesta: ¿escribiste todo lo que dije?",
+              "english": "But be honest: did you write down everything I said?",
+              "speaker": "A"
+            },
+            {
+              "text": "Casi todo.",
+              "english": "Almost everything.",
+              "speaker": "K"
+            },
+            {
+              "text": "La verdad es que tardé en escribir, porque hablaste de una manera tan sincera que me olvidé del libro.",
+              "english": "The truth is that I was slow to write, because you spoke so sincerely that I forgot about the book.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

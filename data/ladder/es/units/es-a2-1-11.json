@@ -1,0 +1,507 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-11",
+  "lang": "es",
+  "title": "El autobús con retraso",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-11",
+    "title": "A delayed bus (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "travel",
+    "airport",
+    "bus",
+    "helping"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "El correo de Miguel",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Miguel es médico.",
+              "english": "Miguel is a doctor."
+            },
+            {
+              "text": "Viene de México para trabajar con la brigada de octubre.",
+              "english": "He is coming from Mexico to work with the October brigade."
+            },
+            {
+              "text": "Su primera tarea es dar una lección de salud en el colegio del pueblo.",
+              "english": "His first task is to give a health lesson at the high school in the village."
+            },
+            {
+              "text": "Un martes, Miguel mandó un correo al grupo del equipo.",
+              "english": "One Tuesday, Miguel sent an email to the team group."
+            },
+            {
+              "text": "«Mi vuelo llega el miércoles a las diez de la mañana.",
+              "english": "\"My flight arrives on Wednesday at ten in the morning."
+            },
+            {
+              "text": "¿Quién me recibe en el aeropuerto?»",
+              "english": "Who will meet me at the airport?\""
+            },
+            {
+              "text": "Sam contestó: «Yo te recibo.",
+              "english": "Sam answered: \"I will meet you."
+            },
+            {
+              "text": "Luis nos presta su carro.»",
+              "english": "Luis is lending us his car.\""
+            },
+            {
+              "text": "Sam prometió devolver el carro el jueves.",
+              "english": "Sam promised to return the car on Thursday."
+            },
+            {
+              "text": "Miguel respondió con una foto de su familia.",
+              "english": "Miguel replied with a photo of his family."
+            },
+            {
+              "text": "Miguel desea conocer a todos, escribió.",
+              "english": "He wrote that he wants to meet everyone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El aeropuerto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El miércoles, Sam y Luis llegaron temprano al aeropuerto.",
+              "english": "On Wednesday, Sam and Luis arrived early at the airport."
+            },
+            {
+              "text": "Luis le preguntó a una señora: —¿Cuándo llega el vuelo de México?",
+              "english": "Luis asked a lady, \"When does the flight from Mexico arrive?\""
+            },
+            {
+              "text": "—Tiene un retraso de una hora —respondió ella.",
+              "english": "\"It has a one-hour delay,\" she answered."
+            },
+            {
+              "text": "—Gracias —dijo Luis—.",
+              "english": "\"Thank you,\" said Luis."
+            },
+            {
+              "text": "Le agradezco mucho.",
+              "english": "\"I am very grateful.\""
+            },
+            {
+              "text": "—Les deseo un buen día —dijo la señora.",
+              "english": "\"I wish you a good day,\" said the lady."
+            },
+            {
+              "text": "Sam y Luis decidieron esperar sentados en el aeropuerto.",
+              "english": "Sam and Luis decided to wait seated in the airport."
+            },
+            {
+              "text": "Hablaron del viaje de Miguel.",
+              "english": "They talked about Miguel's trip."
+            },
+            {
+              "text": "—Después de muchas horas de vuelo, Miguel necesita descansar —dijo Sam.",
+              "english": "\"After many hours of flying, Miguel needs to rest,\" said Sam."
+            },
+            {
+              "text": "Por fin Miguel salió.",
+              "english": "At last Miguel came out."
+            },
+            {
+              "text": "Tenía una camisa blanca, un pantalón azul, zapatos negros y una bolsa grande.",
+              "english": "He had a white shirt, blue pants, black shoes and a big bag."
+            },
+            {
+              "text": "—¡Qué gusto verte! —dijo Sam, y lo abrazó.",
+              "english": "\"How good to see you!\" said Sam, and hugged him."
+            },
+            {
+              "text": "Miguel mostró su pasaporte a un señor y entró al país.",
+              "english": "Miguel showed his passport to a man and entered the country."
+            },
+            {
+              "text": "—Mi pasaporte está en el pantalón, no en la bolsa —dijo.",
+              "english": "\"My passport is in my pants, not in the bag,\" he said."
+            },
+            {
+              "text": "—¿Cómo fue el vuelo? —preguntó Luis.",
+              "english": "\"How was the flight?\" asked Luis."
+            },
+            {
+              "text": "—Fue un vuelo de muchas horas, pero estoy contento.",
+              "english": "\"It was a flight of many hours, but I am happy."
+            },
+            {
+              "text": "Ahora quiero descansar.",
+              "english": "Now I want to rest.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El carro se rompió",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Los tres salieron del aeropuerto y fueron al carro de Luis.",
+              "english": "The three left the airport and went to Luis's car."
+            },
+            {
+              "text": "Pero el carro se rompió en la calle.",
+              "english": "But the car broke down in the street."
+            },
+            {
+              "text": "—¡Qué mal! —dijo Luis—.",
+              "english": "\"How bad!\" said Luis."
+            },
+            {
+              "text": "El mecánico está lejos.",
+              "english": "\"The mechanic is far away.\""
+            },
+            {
+              "text": "Sam llamó a Carlos.",
+              "english": "Sam called Carlos."
+            },
+            {
+              "text": "Carlos prometió arreglarlo por la noche.",
+              "english": "Carlos promised to fix it during the night."
+            },
+            {
+              "text": "El carro se quedó en la calle, y los tres decidieron viajar en autobús.",
+              "english": "The car stayed in the street, and the three decided to travel by bus."
+            },
+            {
+              "text": "Miguel nunca viajó en autobús en Honduras.",
+              "english": "Miguel had never traveled by bus in Honduras."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La terminal",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Todos entraron a la terminal.",
+              "english": "They all went into the terminal."
+            },
+            {
+              "text": "Un señor dijo: —El autobús del pueblo tiene dos horas de retraso.",
+              "english": "A man said, \"The bus to the village has a two-hour delay.\""
+            },
+            {
+              "text": "—¿Por qué? —preguntó Sam.",
+              "english": "\"Why?\" asked Sam."
+            },
+            {
+              "text": "El señor explicó que hubo una inundación en la calle.",
+              "english": "The man explained that there was a flood in the street."
+            },
+            {
+              "text": "—Lo siento —dijo—.",
+              "english": "\"I am sorry,\" he said."
+            },
+            {
+              "text": "Les ofrezco agua mientras esperan.",
+              "english": "\"I offer you water while you wait.\""
+            },
+            {
+              "text": "Sam preguntó muy amable: —Señor, ¿puede avisarnos cuándo llega el autobús?",
+              "english": "Sam asked very kindly, \"Sir, can you let us know when the bus arrives?\""
+            },
+            {
+              "text": "—Claro que sí —respondió el señor.",
+              "english": "\"Of course,\" answered the man."
+            },
+            {
+              "text": "Mientras esperaban, Miguel mostró una foto de su familia en el celular.",
+              "english": "While they waited, Miguel showed a photo of his family on his phone."
+            },
+            {
+              "text": "Tiene una esposa y dos hijos pequeños.",
+              "english": "He has a wife and two small children."
+            },
+            {
+              "text": "En la foto, su hijo juega con una pelota.",
+              "english": "In the photo, his son is playing with a ball."
+            },
+            {
+              "text": "—Mi familia va a venir en diciembre —dijo—.",
+              "english": "\"My family is going to come in December,\" he said."
+            },
+            {
+              "text": "Mi esposa quiere conocer Honduras.",
+              "english": "\"My wife wants to see Honduras.\""
+            },
+            {
+              "text": "—Va a ser una fiesta —dijo Luis—.",
+              "english": "\"It's going to be a party,\" said Luis."
+            },
+            {
+              "text": "Doña Marta va a cocinar tamales.",
+              "english": "\"Doña Marta is going to cook tamales.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La bolsa perdida",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Miguel buscó su bolsa grande y no la encontró.",
+              "english": "Miguel looked for his big bag and did not find it."
+            },
+            {
+              "text": "—Mi bolsa no está —dijo—.",
+              "english": "\"My bag is not here,\" he said."
+            },
+            {
+              "text": "Tiene camisetas, camisas, zapatos y un vestido para los niños de la brigada.",
+              "english": "\"It has T-shirts, shirts, shoes and a dress for the children of the brigade.\""
+            },
+            {
+              "text": "Miguel va a usar todo en la brigada.",
+              "english": "Miguel is going to use it all in the brigade."
+            },
+            {
+              "text": "Sam y Luis buscaron en toda la terminal.",
+              "english": "Sam and Luis looked all over the terminal."
+            },
+            {
+              "text": "Luis habló con una señora: —¿Vio usted una bolsa grande y azul?",
+              "english": "Luis spoke with a lady: \"Did you see a big blue bag?\""
+            },
+            {
+              "text": "—No —dijo ella—.",
+              "english": "\"No,\" she said."
+            },
+            {
+              "text": "Pero hable con el señor de la terminal.",
+              "english": "\"But talk to the man at the terminal.\""
+            },
+            {
+              "text": "Un niño tenía la bolsa y jugaba con ella.",
+              "english": "A boy had the bag and was playing with it."
+            },
+            {
+              "text": "Su mamá se puso roja.",
+              "english": "His mom turned red."
+            },
+            {
+              "text": "—Lo siento mucho —dijo la mamá—.",
+              "english": "\"I am very sorry,\" said the mom."
+            },
+            {
+              "text": "Mi hijo pensó que era para él.",
+              "english": "\"My son thought it was for him.\""
+            },
+            {
+              "text": "—Mi pasaporte y mi dinero están conmigo —dijo Miguel—.",
+              "english": "\"My passport and my money are with me,\" said Miguel."
+            },
+            {
+              "text": "Gracias a Dios.",
+              "english": "\"Thank God.\""
+            },
+            {
+              "text": "Miguel abrió la bolsa para mostrar lo que tenía.",
+              "english": "Miguel opened the bag to show what it had."
+            },
+            {
+              "text": "Había una caja con pastillas y muchas camisetas.",
+              "english": "There was a box with pills and many T-shirts."
+            },
+            {
+              "text": "Miguel probó una camiseta al niño.",
+              "english": "Miguel tried a T-shirt on the boy."
+            },
+            {
+              "text": "Le quedó bien.",
+              "english": "It fit him well."
+            },
+            {
+              "text": "—Esta camiseta es para ti —dijo—.",
+              "english": "\"This T-shirt is for you,\" he said."
+            },
+            {
+              "text": "Quiero regalarte esta camiseta.",
+              "english": "\"I want to give you this T-shirt.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En la terminal",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mientras esperaban, una niña llegó llorando.",
+              "english": "While they waited, a girl came crying."
+            },
+            {
+              "text": "Tenía una herida en la rodilla, y una mosca estaba cerca.",
+              "english": "She had a wound on her knee, and a fly was nearby."
+            },
+            {
+              "text": "Miguel era médico.",
+              "english": "Miguel was a doctor."
+            },
+            {
+              "text": "Decidió descansar después.",
+              "english": "He decided to rest afterwards."
+            },
+            {
+              "text": "Miró la herida y la trató con agua y jabón.",
+              "english": "He looked at the wound and treated it with water and soap."
+            },
+            {
+              "text": "—No es una herida grande —dijo—.",
+              "english": "\"It is not a big wound,\" he said."
+            },
+            {
+              "text": "Va a sufrir un poco, pero luego va a estar bien.",
+              "english": "\"She will suffer a little, but then she will be fine.\""
+            },
+            {
+              "text": "Otro niño se quemó la lengua con el café de su papá.",
+              "english": "Another boy burned his tongue with his dad's coffee."
+            },
+            {
+              "text": "Miguel le dio agua fría.",
+              "english": "Miguel gave him cold water."
+            },
+            {
+              "text": "A Miguel le dolía el hombro, y se rompió una uña.",
+              "english": "Miguel's shoulder hurt, and a nail broke."
+            },
+            {
+              "text": "—¿Es un hueso? —preguntó Luis.",
+              "english": "\"Is it a bone?\" asked Luis."
+            },
+            {
+              "text": "—No, es solo el hombro —dijo Miguel—.",
+              "english": "\"No, it's just the shoulder,\" said Miguel."
+            },
+            {
+              "text": "Y la rodilla de la niña está mejor que mi uña.",
+              "english": "\"And the girl's knee is better than my nail.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Por fin",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El autobús llegó con tres horas de retraso.",
+              "english": "The bus arrived with a three-hour delay."
+            },
+            {
+              "text": "Los tres viajaron toda la noche.",
+              "english": "The three traveled all night."
+            },
+            {
+              "text": "Miguel descansó.",
+              "english": "Miguel rested."
+            },
+            {
+              "text": "Luis recibió un mensaje de Carlos: el carro ya estaba arreglado.",
+              "english": "Luis received a message from Carlos: the car was already fixed."
+            },
+            {
+              "text": "Doña Marta los esperaba con café y pan.",
+              "english": "Doña Marta was waiting for them with coffee and bread."
+            },
+            {
+              "text": "Miguel entró a la casa y se sentó.",
+              "english": "Miguel entered the house and sat down."
+            },
+            {
+              "text": "En el colegio, Miguel quiere enseñar a los alumnos a cuidar su salud.",
+              "english": "At the high school, Miguel wants to teach the students to take care of their health."
+            },
+            {
+              "text": "Sam compartió una foto en el grupo: «Miguel ya llegó.»",
+              "english": "Sam shared a photo in the group: \"Miguel has arrived.\""
+            },
+            {
+              "text": "El jueves por la mañana, Sam cumplió y devolvió el carro a Luis.",
+              "english": "On Thursday morning, Sam kept his word and returned the car to Luis."
+            },
+            {
+              "text": "—Les agradezco todo —dijo Miguel—.",
+              "english": "\"I thank you for everything,\" said Miguel."
+            },
+            {
+              "text": "Quiero desearles buenas noches.",
+              "english": "\"I want to wish you a good night.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

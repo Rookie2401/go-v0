@@ -1,0 +1,696 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-07",
+  "lang": "es",
+  "title": "El grupo del equipo",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-07",
+    "title": "The team's group chat (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence",
+    "group chat",
+    "plans"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "D": "Daniel",
+    "K": "Karla",
+    "L": "Luis",
+    "A": "Ana",
+    "S": "Sam",
+    "C": "Carlos"
+  },
+  "sections": [
+    {
+      "title": "Lunes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "D",
+              "text": "Buenos días, equipo.",
+              "english": "Good morning, team."
+            },
+            {
+              "speaker": "D",
+              "text": "Les mando el horario del viaje del sábado.",
+              "english": "I am sending you the schedule for Saturday's trip."
+            },
+            {
+              "speaker": "D",
+              "text": "Vamos a una finca cerca del pueblo para visitar a una familia.",
+              "english": "We are going to a farm near the village to visit a family."
+            },
+            {
+              "speaker": "K",
+              "text": "¿Cuándo salimos?",
+              "english": "When do we leave?"
+            },
+            {
+              "speaker": "K",
+              "text": "¿Cuántos van?",
+              "english": "How many are going?"
+            },
+            {
+              "speaker": "D",
+              "text": "Salimos a las seis de la mañana, de la terminal.",
+              "english": "We leave at six in the morning, from the terminal."
+            },
+            {
+              "speaker": "D",
+              "text": "Van ocho.",
+              "english": "Eight are going."
+            },
+            {
+              "speaker": "A",
+              "text": "Yo traigo el café y el pan.",
+              "english": "I will bring the coffee and the bread."
+            },
+            {
+              "speaker": "L",
+              "text": "Yo traigo la caja con los libros.",
+              "english": "I will bring the box with the books."
+            },
+            {
+              "speaker": "S",
+              "text": "Yo traigo unas camisetas para los niños.",
+              "english": "I will bring some T-shirts for the children."
+            },
+            {
+              "speaker": "S",
+              "text": "Quiero regalar una a cada niño.",
+              "english": "I want to give one to each child."
+            },
+            {
+              "speaker": "K",
+              "text": "¡Qué bien!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "K",
+              "text": "¿Hay animales en la finca?",
+              "english": "Are there animals on the farm?"
+            },
+            {
+              "speaker": "K",
+              "text": "Quiero ver las vacas y los caballos.",
+              "english": "I want to see the cows and the horses."
+            },
+            {
+              "speaker": "L",
+              "text": "Hay vacas, caballos y gallinas.",
+              "english": "There are cows, horses and hens."
+            },
+            {
+              "speaker": "L",
+              "text": "También hay un perro grande.",
+              "english": "There is also a big dog."
+            },
+            {
+              "speaker": "K",
+              "text": "Voy a tomar fotos.",
+              "english": "I am going to take photos."
+            },
+            {
+              "speaker": "D",
+              "text": "Muy bien.",
+              "english": "Very good."
+            },
+            {
+              "speaker": "D",
+              "text": "Después compartimos las fotos en el grupo.",
+              "english": "Afterwards we will share the photos in the group."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Martes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Buen día.",
+              "english": "Good day."
+            },
+            {
+              "speaker": "A",
+              "text": "Hoy es martes, y trabajo en la clínica hasta las cinco.",
+              "english": "Today is Tuesday, and I work at the clinic until five."
+            },
+            {
+              "speaker": "L",
+              "text": "Los martes yo tengo reunión con el pastor, pero hoy llego tarde.",
+              "english": "On Tuesdays I have a meeting with the pastor, but today I am arriving late."
+            },
+            {
+              "speaker": "S",
+              "text": "Yo estudio con Carlos los martes y los jueves.",
+              "english": "I study with Carlos on Tuesdays and Thursdays."
+            },
+            {
+              "speaker": "S",
+              "text": "Hoy no puedo ir.",
+              "english": "I cannot go today."
+            },
+            {
+              "speaker": "S",
+              "text": "Daniel, tengo una pregunta.",
+              "english": "Daniel, I have a question."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Qué zapatos necesitamos para la finca?",
+              "english": "What shoes do we need for the farm?"
+            },
+            {
+              "speaker": "D",
+              "text": "Zapatos viejos.",
+              "english": "Old shoes."
+            },
+            {
+              "speaker": "D",
+              "text": "Hay mucha tierra.",
+              "english": "There is a lot of dirt."
+            },
+            {
+              "speaker": "K",
+              "text": "Yo no tengo zapatos viejos.",
+              "english": "I do not have old shoes."
+            },
+            {
+              "speaker": "K",
+              "text": "¿Quién me presta unos?",
+              "english": "Who will lend me some?"
+            },
+            {
+              "speaker": "A",
+              "text": "Yo te presto unos el jueves.",
+              "english": "I will lend you some on Thursday."
+            },
+            {
+              "speaker": "K",
+              "text": "Gracias, Ana.",
+              "english": "Thanks, Ana."
+            },
+            {
+              "speaker": "K",
+              "text": "Te prometo devolver los zapatos el domingo.",
+              "english": "I promise to return the shoes on Sunday."
+            },
+            {
+              "speaker": "K",
+              "text": "Voy a cumplir.",
+              "english": "I will keep my word."
+            },
+            {
+              "speaker": "A",
+              "text": "Para el culto del domingo voy a usar un vestido azul.",
+              "english": "For Sunday's service I am going to wear a blue dress."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Y vos, Sam?",
+              "english": "And you, Sam?"
+            },
+            {
+              "speaker": "S",
+              "text": "Una camisa blanca y mi pantalón negro.",
+              "english": "A white shirt and my black pants."
+            },
+            {
+              "speaker": "L",
+              "text": "¿Quién tiene una pelota para los niños?",
+              "english": "Who has a ball for the children?"
+            },
+            {
+              "speaker": "S",
+              "text": "Yo tengo una pelota vieja.",
+              "english": "I have an old ball."
+            },
+            {
+              "speaker": "K",
+              "text": "Yo llevo flores para la mamá de la familia.",
+              "english": "I will take flowers for the mother of the family."
+            },
+            {
+              "speaker": "D",
+              "text": "La reunión del equipo es el miércoles a las siete.",
+              "english": "The team meeting is on Wednesday at seven."
+            },
+            {
+              "speaker": "D",
+              "text": "Les mando un correo con el horario.",
+              "english": "I will send you an email with the schedule."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Miércoles",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "D",
+              "text": "Buen día.",
+              "english": "Good day."
+            },
+            {
+              "speaker": "D",
+              "text": "Hoy es miércoles, y tengo una noticia.",
+              "english": "Today is Wednesday, and I have some news."
+            },
+            {
+              "speaker": "D",
+              "text": "Un vecino de la finca me contó que anoche hubo truenos.",
+              "english": "A neighbor from the farm told me that last night there were thunderclaps."
+            },
+            {
+              "speaker": "D",
+              "text": "Un rayo cayó en un árbol.",
+              "english": "A bolt of lightning fell on a tree."
+            },
+            {
+              "speaker": "D",
+              "text": "Hubo un incendio pequeño, pero los vecinos escaparon.",
+              "english": "There was a small fire, but the neighbors got out."
+            },
+            {
+              "speaker": "D",
+              "text": "No hubo accidentes.",
+              "english": "There were no accidents."
+            },
+            {
+              "speaker": "K",
+              "text": "¡Qué susto!",
+              "english": "What a fright!"
+            },
+            {
+              "speaker": "K",
+              "text": "¿Hay peligro para nosotros?",
+              "english": "Is there danger for us?"
+            },
+            {
+              "speaker": "D",
+              "text": "Si hay inundación en la calle, el autobús no puede llegar.",
+              "english": "If there is a flood in the street, the bus cannot get there."
+            },
+            {
+              "speaker": "L",
+              "text": "Yo oí en la iglesia que viene un huracán a la playa.",
+              "english": "I heard at church that a hurricane is coming to the beach."
+            },
+            {
+              "speaker": "L",
+              "text": "Pero está lejos.",
+              "english": "But it is far away."
+            },
+            {
+              "speaker": "A",
+              "text": "Daniel, no veo el correo.",
+              "english": "Daniel, I do not see the email."
+            },
+            {
+              "speaker": "A",
+              "text": "Mirá el grupo, por favor.",
+              "english": "Please look in the group."
+            },
+            {
+              "speaker": "D",
+              "text": "Lo siento.",
+              "english": "Sorry."
+            },
+            {
+              "speaker": "D",
+              "text": "Ahora lo miro.",
+              "english": "I will look at it now."
+            },
+            {
+              "speaker": "S",
+              "text": "Daniel, ¿me explicás cómo llegamos a la finca?",
+              "english": "Daniel, can you explain to me how we get to the farm?"
+            },
+            {
+              "speaker": "D",
+              "text": "Te explico en el correo.",
+              "english": "I will explain in the email."
+            },
+            {
+              "speaker": "S",
+              "text": "Yo pienso que es mejor esperar.",
+              "english": "I think it is better to wait."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cuándo vamos a saber si vamos o no?",
+              "english": "When are we going to know whether we go or not?"
+            },
+            {
+              "speaker": "D",
+              "text": "Mañana les aviso.",
+              "english": "Tomorrow I will let you know."
+            },
+            {
+              "speaker": "D",
+              "text": "Voy a hablar de nuevo con el vecino.",
+              "english": "I am going to talk to the neighbor again."
+            },
+            {
+              "speaker": "L",
+              "text": "Gracias, Daniel.",
+              "english": "Thanks, Daniel."
+            },
+            {
+              "speaker": "L",
+              "text": "Te agradezco mucho.",
+              "english": "I am very grateful to you."
+            },
+            {
+              "speaker": "A",
+              "text": "El miércoles por la noche tengo culto, así que mañana leo todo.",
+              "english": "On Wednesday night I have a service, so I will read everything tomorrow."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Jueves",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "D",
+              "text": "Buen día, equipo.",
+              "english": "Good day, team."
+            },
+            {
+              "speaker": "D",
+              "text": "Hoy es jueves, y ya tengo noticias del vecino.",
+              "english": "Today is Thursday, and I already have news from the neighbor."
+            },
+            {
+              "speaker": "D",
+              "text": "Llovió mucho, y un árbol cayó en la calle.",
+              "english": "It rained a lot, and a tree fell in the street."
+            },
+            {
+              "speaker": "D",
+              "text": "El sábado no podemos ir.",
+              "english": "We cannot go on Saturday."
+            },
+            {
+              "speaker": "D",
+              "text": "Vamos el domingo, cuando acaba el culto.",
+              "english": "We will go on Sunday, when the service ends."
+            },
+            {
+              "speaker": "K",
+              "text": "Está bien.",
+              "english": "That is fine."
+            },
+            {
+              "speaker": "K",
+              "text": "Entonces el domingo traigo la comida.",
+              "english": "Then on Sunday I will bring the food."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Quieren compartir el autobús con la otra familia?",
+              "english": "Do you want to share the bus with the other family?"
+            },
+            {
+              "speaker": "D",
+              "text": "Sí, está bien.",
+              "english": "Yes, that is fine."
+            },
+            {
+              "speaker": "A",
+              "text": "Hoy Luis cumple treinta años.",
+              "english": "Today Luis turns thirty."
+            },
+            {
+              "speaker": "A",
+              "text": "¡Feliz cumpleaños, Luis!",
+              "english": "Happy birthday, Luis!"
+            },
+            {
+              "speaker": "K",
+              "text": "¡Feliz cumpleaños!",
+              "english": "Happy birthday!"
+            },
+            {
+              "speaker": "L",
+              "text": "Gracias a todos.",
+              "english": "Thank you all."
+            },
+            {
+              "speaker": "L",
+              "text": "Les agradezco los mensajes.",
+              "english": "I am grateful for your messages."
+            },
+            {
+              "speaker": "K",
+              "text": "Daniel no contesta el celular.",
+              "english": "Daniel is not answering his phone."
+            },
+            {
+              "speaker": "K",
+              "text": "¿Quién sabe dónde está?",
+              "english": "Who knows where he is?"
+            },
+            {
+              "speaker": "D",
+              "text": "Lo siento, no pude contestar.",
+              "english": "Sorry, I could not answer."
+            },
+            {
+              "speaker": "D",
+              "text": "Estaba en la iglesia.",
+              "english": "I was at the church."
+            },
+            {
+              "speaker": "A",
+              "text": "Karla, aquí están los zapatos.",
+              "english": "Karla, here are the shoes."
+            },
+            {
+              "speaker": "A",
+              "text": "Te presto los zapatos hasta el domingo.",
+              "english": "I am lending you the shoes until Sunday."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Domingo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Ya estamos en el autobús.",
+              "english": "We are already on the bus."
+            },
+            {
+              "speaker": "S",
+              "text": "El autobús se rompió, pero Carlos lo arregló.",
+              "english": "The bus broke down, but Carlos fixed it."
+            },
+            {
+              "speaker": "C",
+              "text": "Fue un susto pequeño.",
+              "english": "It was a small scare."
+            },
+            {
+              "speaker": "C",
+              "text": "Ahora todo está bien.",
+              "english": "Now everything is fine."
+            },
+            {
+              "speaker": "K",
+              "text": "Yo voy a enseñar una canción a los niños.",
+              "english": "I am going to teach the children a song."
+            },
+            {
+              "speaker": "L",
+              "text": "Y yo voy a enseñar un juego.",
+              "english": "And I am going to teach a game."
+            },
+            {
+              "speaker": "L",
+              "text": "Yo vi el correo, Daniel.",
+              "english": "I saw the email, Daniel."
+            },
+            {
+              "speaker": "L",
+              "text": "Gracias.",
+              "english": "Thanks."
+            },
+            {
+              "speaker": "K",
+              "text": "Los niños abrieron la caja y gritaron: ¡Camisetas!",
+              "english": "The children opened the box and shouted: T-shirts!"
+            },
+            {
+              "speaker": "A",
+              "text": "Una niña lloró cuando probó la camiseta.",
+              "english": "A girl cried when she tried on the T-shirt."
+            },
+            {
+              "speaker": "L",
+              "text": "Un perro tomó una camiseta y escapó.",
+              "english": "A dog took a T-shirt and ran away."
+            },
+            {
+              "speaker": "L",
+              "text": "Todos gritaron.",
+              "english": "Everyone shouted."
+            },
+            {
+              "speaker": "K",
+              "text": "La familia nos ofreció tamales.",
+              "english": "The family offered us tamales."
+            },
+            {
+              "speaker": "K",
+              "text": "Yo les mostré una canción, y los niños cantaron.",
+              "english": "I showed them a song, and the children sang."
+            },
+            {
+              "speaker": "K",
+              "text": "Ahora estoy en la finca.",
+              "english": "Now I am on the farm."
+            },
+            {
+              "speaker": "K",
+              "text": "Los niños me preguntaron mucho, y yo les respondí contenta.",
+              "english": "The children asked me a lot, and I answered them happily."
+            },
+            {
+              "speaker": "D",
+              "text": "Sam, mandá las fotos al grupo.",
+              "english": "Sam, send the photos to the group."
+            },
+            {
+              "speaker": "S",
+              "text": "Las comparto ahora.",
+              "english": "I am sharing them now."
+            },
+            {
+              "speaker": "S",
+              "text": "Aquí están: la vaca, el caballo, las gallinas y los niños con las camisetas.",
+              "english": "Here they are: the cow, the horse, the hens and the children with the T-shirts."
+            },
+            {
+              "speaker": "A",
+              "text": "Yo recuerdo los cuentos de mi abuelo.",
+              "english": "I remember my grandfather's stories."
+            },
+            {
+              "speaker": "A",
+              "text": "Hoy no los voy a olvidar.",
+              "english": "Today I am not going to forget them."
+            },
+            {
+              "speaker": "C",
+              "text": "Yo escuché a los niños.",
+              "english": "I listened to the children."
+            },
+            {
+              "speaker": "C",
+              "text": "Cantaban muy bien.",
+              "english": "They sang very well."
+            },
+            {
+              "speaker": "K",
+              "text": "Hoy vi la luna y las estrellas en el autobús.",
+              "english": "Today I saw the moon and the stars on the bus."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Y los animales?",
+              "english": "And the animals?"
+            },
+            {
+              "speaker": "A",
+              "text": "¿Cómo estaban?",
+              "english": "How were they?"
+            },
+            {
+              "speaker": "S",
+              "text": "La vaca grande miraba a los niños, y una gallina caminaba por la mesa.",
+              "english": "The big cow watched the children, and a hen walked across the table."
+            },
+            {
+              "speaker": "K",
+              "text": "¡Y el caballo comía las flores de la señora!",
+              "english": "And the horse ate the lady's flowers!"
+            },
+            {
+              "speaker": "D",
+              "text": "Gracias a todos.",
+              "english": "Thanks to everyone."
+            },
+            {
+              "speaker": "D",
+              "text": "Cumplimos todo.",
+              "english": "We got it all done."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

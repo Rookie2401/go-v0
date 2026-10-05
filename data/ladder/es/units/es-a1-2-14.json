@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-14",
+  "lang": "es",
+  "title": "A service through a child's eyes",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-14",
+    "title": "A service through a child's eyes (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church-and-mission-life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "N": "Nico",
+    "M": "Marta",
+    "P": "Pastor",
+    "K": "Kevin"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Mi domingo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Me llamo Nico y tengo diez años.",
+              "english": "My name is Nico and I am ten years old."
+            },
+            {
+              "text": "Hoy es domingo, y voy al culto con mi abuela.",
+              "english": "Today is Sunday, and I am going to the service with my grandmother."
+            },
+            {
+              "text": "Doña Marta es vieja, pero es amable y simpática.",
+              "english": "Doña Marta is old, but she is kind and nice."
+            },
+            {
+              "text": "La iglesia es blanca y azul, y es muy bonita.",
+              "english": "The church is white and blue, and it is very pretty."
+            },
+            {
+              "text": "El pastor es alto y delgado.",
+              "english": "The pastor is tall and thin."
+            },
+            {
+              "text": "La Biblia del pastor es negra.",
+              "english": "The pastor's Bible is black."
+            },
+            {
+              "text": "Mi bolsa es verde, y la bolsa de mi abuela es roja.",
+              "english": "My bag is green, and my grandmother's bag is red."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El culto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Primero la gente canta un himno.",
+              "english": "First the people sing a hymn."
+            },
+            {
+              "text": "Es una canción difícil, pero mi abuela canta muy bien.",
+              "english": "It is a difficult song, but my grandmother sings very well."
+            },
+            {
+              "text": "No entiendo todas las palabras.",
+              "english": "I do not understand all the words."
+            },
+            {
+              "text": "El idioma de los himnos es diferente.",
+              "english": "The language of the hymns is different."
+            },
+            {
+              "text": "Yo hago una pregunta.",
+              "english": "I ask a question."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "Abuela, ¿qué quiere decir alabanza?",
+              "english": "Grandmother, what does praise song mean?"
+            },
+            {
+              "speaker": "M",
+              "text": "Una alabanza es una canción para Dios.",
+              "english": "A praise song is a song for God."
+            },
+            {
+              "speaker": "M",
+              "text": "Alabamos a Dios con ella.",
+              "english": "We praise God with it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después viene otra alabanza.",
+              "english": "Then comes another praise song."
+            },
+            {
+              "text": "Todos cantamos y adoramos a Dios.",
+              "english": "We all sing and worship God."
+            },
+            {
+              "text": "Dice la gente: \"La gloria es de Dios.\"",
+              "english": "The people say: \"The glory is God's.\""
+            },
+            {
+              "text": "Luego el pastor habla de la oveja perdida.",
+              "english": "Then the pastor talks about the lost sheep."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "P",
+              "text": "Dios busca a la gente perdida.",
+              "english": "God looks for lost people."
+            },
+            {
+              "speaker": "P",
+              "text": "Dios perdona y salva.",
+              "english": "God forgives and saves."
+            },
+            {
+              "speaker": "P",
+              "text": "Dios es el rey del mundo.",
+              "english": "God is the king of the world."
+            },
+            {
+              "speaker": "P",
+              "text": "Dios bendice a los niños y a las niñas.",
+              "english": "God blesses the boys and the girls."
+            },
+            {
+              "speaker": "P",
+              "text": "Dios hace milagros, y los ángeles alaban a Dios.",
+              "english": "God does miracles, and the angels praise God."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La ofrenda",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después viene la ofrenda.",
+              "english": "Then comes the offering."
+            },
+            {
+              "text": "Mi abuela pone dinero en la bolsa.",
+              "english": "My grandmother puts money in the bag."
+            },
+            {
+              "text": "Yo también pongo un poco de dinero.",
+              "english": "I also put in a little money."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "Abuela, ¿para qué es la ofrenda?",
+              "english": "Grandmother, what is the offering for?"
+            },
+            {
+              "speaker": "M",
+              "text": "Para cuidar la iglesia y para ayudar a la gente.",
+              "english": "To take care of the church and to help people."
+            },
+            {
+              "speaker": "M",
+              "text": "La ofrenda ayuda también a la salud de la gente, en la clínica.",
+              "english": "The offering also helps people's health, at the clinic."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hoy el pastor tiene la garganta mal.",
+              "english": "Today the pastor has a bad throat."
+            },
+            {
+              "text": "Tiene una cita con el doctor mañana.",
+              "english": "He has an appointment with the doctor tomorrow."
+            },
+            {
+              "text": "Yo tengo la nariz roja y tos, pero estoy contento.",
+              "english": "I have a red nose and a cough, but I am happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La gente de la iglesia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hay una mujer joven con su esposo.",
+              "english": "There is a young woman with her husband."
+            },
+            {
+              "text": "Se casaron hace un año.",
+              "english": "They got married a year ago."
+            },
+            {
+              "text": "Tienen una niña pequeña.",
+              "english": "They have a little girl."
+            },
+            {
+              "text": "La niña nació hace un mes.",
+              "english": "The girl was born a month ago."
+            },
+            {
+              "text": "El pastor bendice a la niña.",
+              "english": "The pastor blesses the girl."
+            },
+            {
+              "text": "También hay un hombre viejo.",
+              "english": "There is also an old man."
+            },
+            {
+              "text": "Su esposa murió, y él está triste.",
+              "english": "His wife died, and he is sad."
+            },
+            {
+              "text": "Mi abuela habla con él.",
+              "english": "My grandmother talks with him."
+            },
+            {
+              "text": "Ella tiene dos nietos, y yo soy uno.",
+              "english": "She has two grandchildren, and I am one."
+            },
+            {
+              "text": "Yo quiero crecer y ser alto como el pastor.",
+              "english": "I want to grow up and be tall like the pastor."
+            },
+            {
+              "text": "Los jóvenes terminan con la última canción.",
+              "english": "The young people finish with the last song."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Después del culto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Al fin del culto hay comida: pollo, arroz, frijoles y verdura.",
+              "english": "At the end of the service there is food: chicken, rice, beans and vegetables."
+            },
+            {
+              "text": "Yo no quiero la verdura.",
+              "english": "I do not want the vegetables."
+            },
+            {
+              "text": "Es fea.",
+              "english": "They are ugly."
+            },
+            {
+              "text": "Mi abuela dice: \"Comé la verdura.",
+              "english": "My grandmother says: \"Eat the vegetables."
+            },
+            {
+              "text": "Es buena para la salud.\"",
+              "english": "They are good for your health.\""
+            },
+            {
+              "text": "Es fácil estar con mi abuela en la iglesia.",
+              "english": "It is easy to be with my grandmother at church."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Con Kevin",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después de comer, Kevin y yo jugamos en el parque.",
+              "english": "After eating, Kevin and I play in the park."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "K",
+              "text": "Nico, ¿qué edad tenés?",
+              "english": "Nico, how old are you?"
+            },
+            {
+              "speaker": "N",
+              "text": "Tengo diez años.",
+              "english": "I am ten."
+            },
+            {
+              "speaker": "N",
+              "text": "¿Y vos?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "K",
+              "text": "Tengo ocho.",
+              "english": "I am eight."
+            },
+            {
+              "speaker": "K",
+              "text": "Soy más pequeño que vos.",
+              "english": "I am smaller than you."
+            },
+            {
+              "speaker": "K",
+              "text": "¿Te gustó la iglesia hoy?",
+              "english": "Did you like church today?"
+            },
+            {
+              "speaker": "N",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "N",
+              "text": "Me gustó la oveja perdida.",
+              "english": "I liked the lost sheep."
+            },
+            {
+              "speaker": "N",
+              "text": "El pastor habló bien.",
+              "english": "The pastor spoke well."
+            },
+            {
+              "speaker": "K",
+              "text": "Yo no entiendo todo.",
+              "english": "I do not understand everything."
+            },
+            {
+              "speaker": "K",
+              "text": "Tengo muchas preguntas.",
+              "english": "I have many questions."
+            },
+            {
+              "speaker": "N",
+              "text": "Yo también.",
+              "english": "Me too."
+            },
+            {
+              "speaker": "N",
+              "text": "Mi abuela dice que las preguntas son buenas.",
+              "english": "My grandmother says that questions are good."
+            },
+            {
+              "speaker": "K",
+              "text": "¿Qué es un milagro?",
+              "english": "What is a miracle?"
+            },
+            {
+              "speaker": "N",
+              "text": "Mi abuela dice: un milagro es cuando Dios ayuda a la gente.",
+              "english": "My grandmother says: a miracle is when God helps people."
+            },
+            {
+              "speaker": "K",
+              "text": "¿Y un ángel?",
+              "english": "And an angel?"
+            },
+            {
+              "speaker": "N",
+              "text": "Un ángel es de Dios.",
+              "english": "An angel is from God."
+            },
+            {
+              "speaker": "N",
+              "text": "Mi abuela dice que Ana es como un ángel.",
+              "english": "My grandmother says that Ana is like an angel."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En la casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Regreso a la casa con mi abuela.",
+              "english": "I go back home with my grandmother."
+            },
+            {
+              "text": "Sam llega también.",
+              "english": "Sam arrives too."
+            },
+            {
+              "text": "Mi abuela mira mi plato.",
+              "english": "My grandmother looks at my plate."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "Tu plato está limpio, Nico.",
+              "english": "Your plate is clean, Nico."
+            },
+            {
+              "speaker": "M",
+              "text": "¡Comiste la verdura!",
+              "english": "You ate the vegetables!"
+            },
+            {
+              "speaker": "N",
+              "text": "Sí, abuela.",
+              "english": "Yes, grandmother."
+            },
+            {
+              "speaker": "N",
+              "text": "Estoy feliz.",
+              "english": "I am happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam y mi abuela leen la Biblia en la mesa.",
+              "english": "Sam and my grandmother read the Bible at the table."
+            },
+            {
+              "text": "Yo miro a mi abuela y a Sam.",
+              "english": "I look at my grandmother and Sam."
+            },
+            {
+              "text": "Los dos son mi familia.",
+              "english": "The two of them are my family."
+            },
+            {
+              "text": "El culto es bonito, y el último himno es muy bueno.",
+              "english": "The service is nice, and the last hymn is very good."
+            },
+            {
+              "text": "Gracias, Dios, por mi domingo.",
+              "english": "Thank you, God, for my Sunday."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

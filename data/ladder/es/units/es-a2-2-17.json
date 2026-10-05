@@ -1,0 +1,774 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-17",
+  "lang": "es",
+  "title": "Un préstamo, con cortesía",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-17",
+    "title": "A loan, politely (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "S": "Sam",
+    "C": "Carlos",
+    "V": "Marvin",
+    "E": "Kevin"
+  },
+  "sections": [
+    {
+      "title": "Una visita al taller",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es sábado por la mañana.",
+              "english": "It is Saturday morning."
+            },
+            {
+              "text": "Carlos está en su taller, con el martillo en la mano y una mesa grande.",
+              "english": "Carlos is in his workshop, with the hammer in his hand and a big table."
+            },
+            {
+              "text": "Sobre una mesa pequeña hay un pato, un conejo, un oso y un león que él hace con sus manos y vende en el mercado.",
+              "english": "On a small table there is a duck, a rabbit, a bear and a lion that he makes with his hands and sells at the market."
+            },
+            {
+              "text": "Sam llega con una bolsa de pan, porque sabe que Carlos no come nada antes de trabajar.",
+              "english": "Sam arrives with a bag of bread, because he knows Carlos eats nothing before working."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Buenos días, Carlos.",
+              "english": "Good morning, Carlos.",
+              "speaker": "S"
+            },
+            {
+              "text": "Te traje pan.",
+              "english": "I brought you bread.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Cómo va el trabajo?",
+              "english": "How is the work going?",
+              "speaker": "S"
+            },
+            {
+              "text": "Gracias, Sam.",
+              "english": "Thank you, Sam.",
+              "speaker": "C"
+            },
+            {
+              "text": "El trabajo va despacio.",
+              "english": "The work is going slowly.",
+              "speaker": "C"
+            },
+            {
+              "text": "La compañía todavía no me ha pagado la obra de la escuela, y ya pasó un mes.",
+              "english": "The company has still not paid me for the school job, and a month has already passed.",
+              "speaker": "C"
+            },
+            {
+              "text": "Eso es triste.",
+              "english": "That is sad.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es una pérdida para vos, y es una obra muy hermosa.",
+              "english": "It is a loss for you, and it is a very beautiful job.",
+              "speaker": "S"
+            },
+            {
+              "text": "Gracias.",
+              "english": "Thanks.",
+              "speaker": "C"
+            },
+            {
+              "text": "Pero tengo que hablarte de algo, y quiero hacerlo con paz.",
+              "english": "But I have to talk to you about something, and I want to do it politely.",
+              "speaker": "C"
+            },
+            {
+              "text": "Hace un mes te presté tres mil lempiras.",
+              "english": "A month ago I lent you three thousand lempiras.",
+              "speaker": "C"
+            },
+            {
+              "text": "¿Lo recordás?",
+              "english": "Do you remember?",
+              "speaker": "C"
+            },
+            {
+              "text": "Claro que lo recuerdo.",
+              "english": "Of course I remember.",
+              "speaker": "S"
+            },
+            {
+              "text": "Me los prestaste para el cuarto y para el boleto.",
+              "english": "You lent them to me for the room and the ticket.",
+              "speaker": "S"
+            },
+            {
+              "text": "Me dijiste que ibas a devolvérmelos el día quince.",
+              "english": "You told me you were going to return them to me on the fifteenth.",
+              "speaker": "C"
+            },
+            {
+              "text": "Hoy es veintiocho.",
+              "english": "Today is the twenty-eighth.",
+              "speaker": "C"
+            },
+            {
+              "text": "Es verdad que te lo dije.",
+              "english": "It is true that I told you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pero vos también me dijiste algo: «Pagame cuando puedas».",
+              "english": "But you also told me something: \"Pay me when you can.\"",
+              "speaker": "S"
+            },
+            {
+              "text": "Por eso pensé que no había problema.",
+              "english": "That's why I thought there was no problem.",
+              "speaker": "S"
+            },
+            {
+              "text": "Eso es cierto, y no lo niego.",
+              "english": "That is true, and I don't deny it.",
+              "speaker": "C"
+            },
+            {
+              "text": "Te lo dije.",
+              "english": "I said it to you.",
+              "speaker": "C"
+            },
+            {
+              "text": "Pero lo dije cuando creía que la compañía iba a pagarme pronto.",
+              "english": "But I said it when I thought the company was going to pay me soon.",
+              "speaker": "C"
+            },
+            {
+              "text": "Ahora las cosas han cambiado.",
+              "english": "Now things have changed.",
+              "speaker": "C"
+            },
+            {
+              "text": "La semana anterior a la vez que me pediste el dinero, yo ya tenía problemas con ellos.",
+              "english": "The week before you asked me for the money, I already had problems with them.",
+              "speaker": "C"
+            },
+            {
+              "text": "Te presté el dinero porque imaginé que me lo ibas a devolver pronto.",
+              "english": "I lent you the money because I imagined you would give it back to me soon.",
+              "speaker": "C"
+            },
+            {
+              "text": "Es verdadero que no te lo dije todo, pero es falso que quise engañarte.",
+              "english": "It is true that I did not tell you everything, but it is false that I wanted to deceive you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Jamás lo quise.",
+              "english": "I never wanted to.",
+              "speaker": "S"
+            },
+            {
+              "text": "Aunque no tengo todo el dinero, quiero resolver esto hoy.",
+              "english": "Although I don't have all the money, I want to settle this today.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Cuánto necesitás?",
+              "english": "How much do you need?",
+              "speaker": "S"
+            },
+            {
+              "text": "Necesito todo, Sam.",
+              "english": "I need all of it, Sam.",
+              "speaker": "C"
+            },
+            {
+              "text": "Con ese dinero compré herramientas y clavos para la obra de la escuela.",
+              "english": "With that money I bought tools and nails for the school job.",
+              "speaker": "C"
+            },
+            {
+              "text": "Si la compañía no me paga, tengo una pérdida grande.",
+              "english": "If the company doesn't pay me, I have a big loss.",
+              "speaker": "C"
+            },
+            {
+              "text": "No puedo comprar nada más, y mis trabajadores esperan su sueldo.",
+              "english": "I can't buy anything else, and my workers are waiting for their pay.",
+              "speaker": "C"
+            },
+            {
+              "text": "No sabía que tenías trabajadores.",
+              "english": "I didn't know you had workers.",
+              "speaker": "S"
+            },
+            {
+              "text": "Me sorprende.",
+              "english": "It surprises me.",
+              "speaker": "S"
+            },
+            {
+              "text": "Tengo dos: un joven del pueblo y mi hermano.",
+              "english": "I have two: a young man from the village and my brother.",
+              "speaker": "C"
+            },
+            {
+              "text": "Los dos son muy trabajadores.",
+              "english": "Both are very hard-working.",
+              "speaker": "C"
+            },
+            {
+              "text": "El día siguiente a la fiesta de la escuela ya me preguntaron por su sueldo, y yo no tenía qué decirles.",
+              "english": "The day after the school party they already asked me about their pay, and I had nothing to tell them.",
+              "speaker": "C"
+            },
+            {
+              "text": "La compañía me dijo tres veces que me iba a pagar «pronto», pero nunca me dijo cuándo.",
+              "english": "The company told me three times that it was going to pay me \"soon\", but it never told me when.",
+              "speaker": "C"
+            },
+            {
+              "text": "Ya no creo en esa palabra.",
+              "english": "I no longer believe that word.",
+              "speaker": "C"
+            },
+            {
+              "text": "Si no les pago, no me lo van a perdonar, y tendrían razón.",
+              "english": "If I don't pay them, they won't forgive me, and they would be right.",
+              "speaker": "C"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dos versiones",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Voy a ser honesto con vos.",
+              "english": "I am going to be honest with you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Gasté parte del dinero en el cuarto y en el boleto, pero también presté una parte a Kevin, que la necesitaba para su pasaporte.",
+              "english": "I spent part of the money on the room and the ticket, but I also lent a part to Kevin, who needed it for his passport.",
+              "speaker": "S"
+            },
+            {
+              "text": "Él me dijo que me la devolvía esta semana.",
+              "english": "He told me he would return it to me this week.",
+              "speaker": "S"
+            },
+            {
+              "text": "No te lo dije, y debí hacerlo.",
+              "english": "I didn't tell you, and I should have.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Se la prestaste a Kevin sin decírmelo?",
+              "english": "You lent it to Kevin without telling me?",
+              "speaker": "C"
+            },
+            {
+              "text": "Eso me sorprende.",
+              "english": "That surprises me.",
+              "speaker": "C"
+            },
+            {
+              "text": "Reconozco que me equivoqué.",
+              "english": "I admit I made a mistake.",
+              "speaker": "S"
+            },
+            {
+              "text": "Se lo presté con buen corazón, pero no debí hacerlo sin preguntarte.",
+              "english": "I lent it to him with good intentions, but I shouldn't have done it without asking you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Aunque lo hiciste con buen corazón, ese dinero no era tu dinero.",
+              "english": "Although you did it with good intentions, that money wasn't yours.",
+              "speaker": "C"
+            },
+            {
+              "text": "Era el dinero de mi trabajo.",
+              "english": "It was the money from my work.",
+              "speaker": "C"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En ese momento llega el señor Marvin, que viene a pedirle una mesa a Carlos. Escucha lo que dicen desde fuera del taller y entra despacio.",
+              "english": "At that moment Mr. Marvin arrives; he comes to ask Carlos for a table. He hears what they say from outside the workshop and comes in slowly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Buenos días.",
+              "english": "Good morning.",
+              "speaker": "V"
+            },
+            {
+              "text": "Perdonen que entre así.",
+              "english": "Forgive me for coming in like this.",
+              "speaker": "V"
+            },
+            {
+              "text": "Se oían sus palabras desde la calle.",
+              "english": "The conversation could be heard from the street.",
+              "speaker": "V"
+            },
+            {
+              "text": "¿Hay algún problema?",
+              "english": "Is there a problem?",
+              "speaker": "V"
+            },
+            {
+              "text": "Un problema de dinero, señor Marvin. Un problema entre amigos.",
+              "english": "A money problem, Mr. Marvin. A loan between friends.",
+              "speaker": "C"
+            },
+            {
+              "text": "Los problemas de dinero se resuelven con cuidado y con paz.",
+              "english": "Money problems are solved with honesty and peace.",
+              "speaker": "V"
+            },
+            {
+              "text": "Cuéntenme cada uno lo que pasó, uno por uno.",
+              "english": "Tell me each of you your version, and don't interrupt each other.",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo le presté tres mil lempiras a Sam hace un mes.",
+              "english": "I lent Sam three thousand lempiras a month ago.",
+              "speaker": "C"
+            },
+            {
+              "text": "Me dijo que me los devolvía el quince.",
+              "english": "He told me he would give them back on the fifteenth.",
+              "speaker": "C"
+            },
+            {
+              "text": "No me los devolvió, y necesito el dinero para pagar a mis trabajadores.",
+              "english": "He didn't give them back, and I need the money to pay my workers.",
+              "speaker": "C"
+            },
+            {
+              "text": "Es cierto que se lo prometí.",
+              "english": "It is true that I promised it to him.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pero Carlos me había dicho que le pagara cuando pudiera.",
+              "english": "But Carlos had told me to pay him when I could.",
+              "speaker": "S"
+            },
+            {
+              "text": "Además, le presté una parte a Kevin, y todavía no me la ha devuelto.",
+              "english": "Besides, I lent a part to Kevin, and he still hasn't returned it to me.",
+              "speaker": "S"
+            },
+            {
+              "text": "Entonces Carlos afirma una cosa, y Sam afirma otra.",
+              "english": "So Carlos states one thing, and Sam states another.",
+              "speaker": "V"
+            },
+            {
+              "text": "Los dos suponen que el otro se olvidó.",
+              "english": "Both suppose that the other forgot.",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo distingo dos hechos: Carlos prestó el dinero, y Sam no lo devolvió el día quince.",
+              "english": "I distinguish two facts: Carlos lent the money, and Sam did not return it on the fifteenth.",
+              "speaker": "V"
+            },
+            {
+              "text": "Lo otro son opiniones, y yo no voy a juzgar a ninguno.",
+              "english": "The rest are opinions, and I am not going to judge either of you.",
+              "speaker": "V"
+            },
+            {
+              "text": "Aparte de eso, los dos quieren seguir siendo amigos, y eso también es un hecho.",
+              "english": "Apart from that, you both want to remain friends, and that is also a fact.",
+              "speaker": "V"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un trato",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Propongo un trato bueno para los dos.",
+              "english": "I propose a deal that is good for both.",
+              "speaker": "V"
+            },
+            {
+              "text": "Primero, Sam, ¿cuánto dinero tenés hoy?",
+              "english": "First, Sam, how much money do you have today?",
+              "speaker": "V"
+            },
+            {
+              "text": "Tengo mil quinientos lempiras.",
+              "english": "I have one thousand five hundred lempiras.",
+              "speaker": "S"
+            },
+            {
+              "text": "Los guardé para el próximo mes.",
+              "english": "I saved them for next month.",
+              "speaker": "S"
+            },
+            {
+              "text": "Carlos, ¿aceptás mil quinientos hoy y lo otro en dos semanas?",
+              "english": "Carlos, do you accept one thousand five hundred today and the rest in two weeks?",
+              "speaker": "V"
+            },
+            {
+              "text": "Podría aceptarlo, pero ¿cómo sé que Sam va a cumplir?",
+              "english": "I could accept it, but how do I know that Sam is going to keep his word?",
+              "speaker": "C"
+            },
+            {
+              "text": "Ya me dijo una vez que pagaba el quince, y no pagó.",
+              "english": "He already told me once that he would pay on the fifteenth, and he didn't.",
+              "speaker": "C"
+            },
+            {
+              "text": "Tenés razón en dudar.",
+              "english": "You are right to doubt.",
+              "speaker": "S"
+            },
+            {
+              "text": "Te lo prometo otra vez, aunque sé que mi promesa ya no vale tanto.",
+              "english": "I promise it to you again, although I know my promise is no longer worth as much.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pero hay algo más: puedo trabajar para vos.",
+              "english": "But there is something more: I can work for you.",
+              "speaker": "S"
+            },
+            {
+              "text": "No sé hacer una mesa, pero sé escribir cartas en buen español.",
+              "english": "I don't know how to make a table, but I know how to write letters in good Spanish.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Cartas?",
+              "english": "Letters?",
+              "speaker": "C"
+            },
+            {
+              "text": "¿Para qué?",
+              "english": "What for?",
+              "speaker": "C"
+            },
+            {
+              "text": "Para la compañía. No puede negar un hecho: vos hiciste la obra de la escuela. Te escribo una carta cortés y clara, se la leo primero al señor Marvin, y después se la mando a la compañía.",
+              "english": "For the company. It cannot deny a fact: you did the school job. I'll write you a courteous and clear letter, read it to Mr. Marvin first, and then send it to the company.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es una buena idea.",
+              "english": "It is a good idea.",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo se la leo a la gente de la comunidad también, si Carlos quiere.",
+              "english": "I will read it to the people of the community too, if Carlos wants.",
+              "speaker": "V"
+            },
+            {
+              "text": "Cuando la compañía vea que todos conocen el hecho, va a pagar más pronto.",
+              "english": "When the company sees that everyone knows the fact, it will pay sooner.",
+              "speaker": "V"
+            },
+            {
+              "text": "Y la carta debe tener una fecha clara: el próximo lunes.",
+              "english": "And the letter must have a clear date: next Monday.",
+              "speaker": "V"
+            },
+            {
+              "text": "Así «pronto» tendrá un día.",
+              "english": "That way \"soon\" will have a day.",
+              "speaker": "V"
+            },
+            {
+              "text": "Aunque dudo un poco, acepto el trato.",
+              "english": "Although I doubt a little, I accept the deal.",
+              "speaker": "C"
+            },
+            {
+              "text": "Pero quiero que lo firmemos los dos, para que nadie olvide lo que dijo.",
+              "english": "But I want us both to sign it, so that nobody forgets what he said.",
+              "speaker": "C"
+            },
+            {
+              "text": "Claro.",
+              "english": "Of course.",
+              "speaker": "S"
+            },
+            {
+              "text": "Lo escribo ahora y te lo traigo.",
+              "english": "I'll write it now and bring it to you.",
+              "speaker": "S"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En ese momento llega Kevin con una sonrisa y dinero en la mano.",
+              "english": "At that moment Kevin arrives with a smile and money in his hand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam, te traje lo que me prestaste.",
+              "english": "Sam, I brought you what you lent me.",
+              "speaker": "E"
+            },
+            {
+              "text": "Mi jefe me dijo ayer que me pagaba hoy, y me pagó.",
+              "english": "My boss told me yesterday that he would pay me today, and he paid me.",
+              "speaker": "E"
+            },
+            {
+              "text": "Aquí tenés quinientos lempiras.",
+              "english": "Here you have five hundred lempiras.",
+              "speaker": "E"
+            },
+            {
+              "text": "Gracias, Kevin.",
+              "english": "Thanks, Kevin.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ahora mismo se los doy a Carlos.",
+              "english": "I'm going to give them to Carlos right now.",
+              "speaker": "S"
+            },
+            {
+              "text": "Se los debía.",
+              "english": "I owed them to him.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Se los das a Carlos?",
+              "english": "You're giving them to Carlos?",
+              "speaker": "E"
+            },
+            {
+              "text": "Entonces llegué en el mejor momento.",
+              "english": "Then I arrived at the best moment.",
+              "speaker": "E"
+            },
+            {
+              "text": "Así es.",
+              "english": "That's right.",
+              "speaker": "S"
+            },
+            {
+              "text": "Carlos, aquí tenés dos mil lempiras: los mil quinientos de hoy y los quinientos de Kevin.",
+              "english": "Carlos, here you have two thousand lempiras: the one thousand five hundred from today and Kevin's five hundred.",
+              "speaker": "S"
+            },
+            {
+              "text": "Mil más en dos semanas, y la carta hoy.",
+              "english": "A thousand more in two weeks, and the letter today.",
+              "speaker": "S"
+            },
+            {
+              "text": "Me los das, y yo los acepto.",
+              "english": "You give them to me, and I accept them.",
+              "speaker": "C"
+            },
+            {
+              "text": "Así el trato queda más claro.",
+              "english": "That way the deal is clearer.",
+              "speaker": "C"
+            },
+            {
+              "text": "Gracias, Sam.",
+              "english": "Thank you, Sam.",
+              "speaker": "C"
+            },
+            {
+              "text": "Y gracias, Kevin.",
+              "english": "And thank you, Kevin.",
+              "speaker": "C"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo que dijo el señor Marvin",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Antes de irme, quiero decirles una cosa.",
+              "english": "Before I go, I want to tell you something.",
+              "speaker": "V"
+            },
+            {
+              "text": "Hay una forma antigua de resolver los problemas: hablar cara a cara.",
+              "english": "There is an old way of solving problems: talking face to face.",
+              "speaker": "V"
+            },
+            {
+              "text": "Es natural, es humana, y sigue siendo la mejor, aunque la vida actual es moderna y difícil.",
+              "english": "It is natural, it is human, and it is still the best, although life today is modern and complicated.",
+              "speaker": "V"
+            },
+            {
+              "text": "Hoy los dos fueron sinceros.",
+              "english": "Today you were both sincere.",
+              "speaker": "V"
+            },
+            {
+              "text": "Sam describió lo que hizo, y Carlos expresó lo que sentía, sin pelear.",
+              "english": "Sam described what he did, and Carlos expressed what he felt, without hatred.",
+              "speaker": "V"
+            },
+            {
+              "text": "El peor camino siempre es no hablar.",
+              "english": "The worst road is always silence.",
+              "speaker": "V"
+            },
+            {
+              "text": "Entre un amigo mayor y uno menor, o entre dos personas iguales, la verdad cuesta, pero ayuda.",
+              "english": "Between an older friend and a younger one, or between two equals, the truth costs, but it heals.",
+              "speaker": "V"
+            },
+            {
+              "text": "Tiene razón, señor Marvin. Sam, no quiero que pienses que soy un hombre duro. Hablé así porque necesitaba el dinero, no para enojarme.",
+              "english": "You are right, Mr. Marvin. Sam, I don't want you to think I'm a hard man. I spoke that way because I needed the money, not to get angry.",
+              "speaker": "C"
+            },
+            {
+              "text": "Lo sé, Carlos.",
+              "english": "I know, Carlos.",
+              "speaker": "S"
+            },
+            {
+              "text": "Y yo no quiero que pienses que no soy honesto.",
+              "english": "And I don't want you to think I'm not honest.",
+              "speaker": "S"
+            },
+            {
+              "text": "Me equivoqué, pero te lo dije todo.",
+              "english": "I made a mistake, but I told you everything.",
+              "speaker": "S"
+            },
+            {
+              "text": "Entonces, para terminar bien el trato, te regalo este oso.",
+              "english": "Then, to close the deal well, I'm giving you this bear.",
+              "speaker": "C"
+            },
+            {
+              "text": "No es dinero, es un regalo.",
+              "english": "It is not a payment, it is a gift.",
+              "speaker": "C"
+            },
+            {
+              "text": "Cada vez que lo mires, vas a recordar este día.",
+              "english": "Every time you look at it you will remember this day.",
+              "speaker": "C"
+            },
+            {
+              "text": "Me lo guardo con cariño.",
+              "english": "I'll keep it with affection.",
+              "speaker": "S"
+            },
+            {
+              "text": "Y cuando lo mire, voy a recordar que un amigo me dio tiempo cuando lo necesitaba.",
+              "english": "And when I look at it, I'll remember that a friend gave me time when I needed it.",
+              "speaker": "S"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Los cuatro se dan la mano.",
+              "english": "The four shake hands."
+            },
+            {
+              "text": "Carlos corta el pan que trajo Sam, todavía caliente, y todos lo comen en el taller, entre el pato, el conejo, el león y el oso.",
+              "english": "Carlos cuts the bread that Sam brought, still warm, and everyone eats it in the workshop, among the duck, the rabbit, the lion and the bear."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

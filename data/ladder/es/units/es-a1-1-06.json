@@ -1,0 +1,468 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-06",
+  "lang": "es",
+  "title": "At the market",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-06",
+    "title": "At the market (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: prices in lempiras are invented for the lesson; \"Dame cinco\" (vos imperative of dar + me, a chunk); \"¿Cuánto cuesta / cuestan?\"; \"Cinco plátanos cuestan veinte lempiras\"; address of vendors with usted; doña Marta uses vos with Sam."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "market",
+    "prices",
+    "shopping"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "juana": "Juana",
+    "sam": "Sam",
+    "marta": "Doña Marta",
+    "nico": "Nico",
+    "elena": "Señora Elena",
+    "carlos": "Señor Carlos",
+    "ana": "Ana"
+  },
+  "sections": [
+    {
+      "title": "At the market",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy Sam va al mercado con Nico.",
+              "english": "Today Sam goes to the market with Nico."
+            },
+            {
+              "text": "Doña Marta da dinero a Sam.",
+              "english": "Doña Marta gives money to Sam."
+            },
+            {
+              "speaker": "marta",
+              "text": "Sam, aquí tenés dinero.",
+              "english": "Sam, here is some money."
+            },
+            {
+              "speaker": "marta",
+              "text": "Vas a comprar pollo y plátanos.",
+              "english": "You are going to buy chicken and plantains."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Es para la sopa?",
+              "english": "Is it for the soup?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Sí, para la sopa de la familia.",
+              "english": "Yes, for the family's soup."
+            },
+            {
+              "speaker": "marta",
+              "text": "El pollo es caro, pero la sopa es muy buena.",
+              "english": "Chicken is expensive, but the soup is very good."
+            },
+            {
+              "speaker": "nico",
+              "text": "Vamos, Sam.",
+              "english": "Let us go, Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Buenos días, señora.",
+              "english": "Good morning, ma'am."
+            },
+            {
+              "speaker": "elena",
+              "text": "Buenos días.",
+              "english": "Good morning."
+            },
+            {
+              "speaker": "elena",
+              "text": "¿Qué quiere?",
+              "english": "What would you like?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Quiero plátanos.",
+              "english": "I want plantains."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Cuánto cuestan?",
+              "english": "How much are they?"
+            },
+            {
+              "speaker": "elena",
+              "text": "Cuestan cuatro lempiras.",
+              "english": "They cost four lempiras."
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Qué barato!",
+              "english": "How cheap!"
+            },
+            {
+              "speaker": "elena",
+              "text": "Sí, es muy barato.",
+              "english": "Yes, it is very cheap."
+            },
+            {
+              "speaker": "elena",
+              "text": "El precio es bueno.",
+              "english": "The price is good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dame cinco, por favor.",
+              "english": "Give me five, please."
+            },
+            {
+              "text": "La señora Elena da una bolsa a Sam.",
+              "english": "Señora Elena gives Sam a bag."
+            },
+            {
+              "speaker": "sam",
+              "text": "Y dos más, por favor.",
+              "english": "And two more, please."
+            },
+            {
+              "speaker": "elena",
+              "text": "Siete plátanos cuestan veintiocho lempiras.",
+              "english": "Seven plantains cost twenty-eight lempiras."
+            },
+            {
+              "speaker": "nico",
+              "text": "Vamos a pagar.",
+              "english": "Let us pay."
+            },
+            {
+              "speaker": "nico",
+              "text": "Quiero más pan, Sam.",
+              "english": "I want more bread, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Aquí tiene, señora.",
+              "english": "Here you are, ma'am."
+            },
+            {
+              "speaker": "elena",
+              "text": "Gracias.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "elena",
+              "text": "Adiós.",
+              "english": "Goodbye."
+            },
+            {
+              "speaker": "sam",
+              "text": "Adiós, señora Elena.",
+              "english": "Goodbye, señora Elena."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "carlos",
+              "text": "Buenos días.",
+              "english": "Good morning."
+            },
+            {
+              "speaker": "carlos",
+              "text": "¿Quieren pollo?",
+              "english": "Do you want chicken?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, señor.",
+              "english": "Yes, sir."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Cuánto cuesta el pollo?",
+              "english": "How much is the chicken?"
+            },
+            {
+              "speaker": "carlos",
+              "text": "El precio es noventa lempiras.",
+              "english": "The price is ninety lempiras."
+            },
+            {
+              "speaker": "nico",
+              "text": "¡Es muy caro!",
+              "english": "It is very expensive!"
+            },
+            {
+              "speaker": "carlos",
+              "text": "No, el precio es bueno.",
+              "english": "No, the price is good."
+            },
+            {
+              "speaker": "carlos",
+              "text": "El pollo de aquí es muy bueno.",
+              "english": "The chicken from here is very good."
+            },
+            {
+              "speaker": "carlos",
+              "text": "No es barato, pero es bueno.",
+              "english": "It is not cheap, but it is good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Voy a comprar un pollo para la sopa.",
+              "english": "I am going to buy a chicken for the soup."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Un pollo es para una familia grande.",
+              "english": "A chicken is for a big family."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi familia es grande, señor.",
+              "english": "My family is big, sir."
+            },
+            {
+              "speaker": "sam",
+              "text": "Tengo un papá, una mamá y una hermana.",
+              "english": "I have a dad, a mom and a sister."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Yo tengo un hijo y una hija.",
+              "english": "I have a son and a daughter."
+            },
+            {
+              "speaker": "carlos",
+              "text": "El hijo tiene veinte años.",
+              "english": "The son is twenty years old."
+            },
+            {
+              "speaker": "sam",
+              "text": "Voy a pagar noventa lempiras.",
+              "english": "I am going to pay ninety lempiras."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Gracias.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Aquí está el pollo.",
+              "english": "Here is the chicken."
+            },
+            {
+              "speaker": "sam",
+              "text": "Adiós, señor Carlos.",
+              "english": "Goodbye, Mr. Carlos."
+            },
+            {
+              "speaker": "carlos",
+              "text": "Adiós.",
+              "english": "Goodbye."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta vende pan y tamales en el mercado.",
+              "english": "Doña Marta sells bread and tamales at the market."
+            },
+            {
+              "speaker": "nico",
+              "text": "Abuela, aquí está el pollo.",
+              "english": "Grandma, here is the chicken."
+            },
+            {
+              "speaker": "marta",
+              "text": "¡Qué bueno!",
+              "english": "How good!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Aquí está el dinero.",
+              "english": "Here is the money."
+            },
+            {
+              "speaker": "marta",
+              "text": "Gracias, Sam.",
+              "english": "Thank you, Sam."
+            },
+            {
+              "speaker": "ana",
+              "text": "Hola.",
+              "english": "Hello."
+            },
+            {
+              "speaker": "ana",
+              "text": "¿Vendés tamales, abuela?",
+              "english": "Do you sell tamales, grandma?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "marta",
+              "text": "Un plato de tamales cuesta cuarenta lempiras.",
+              "english": "A plate of tamales costs forty lempiras."
+            },
+            {
+              "speaker": "ana",
+              "text": "Mi papá y mi mamá van a comprar tamales.",
+              "english": "My dad and my mom are going to buy tamales."
+            },
+            {
+              "speaker": "marta",
+              "text": "Aquí tienen un plato.",
+              "english": "Here you are, a plate."
+            },
+            {
+              "speaker": "ana",
+              "text": "Voy a pagar los tamales.",
+              "english": "I am going to pay for the tamales."
+            },
+            {
+              "speaker": "ana",
+              "text": "Gracias, abuela.",
+              "english": "Thank you, grandma."
+            },
+            {
+              "text": "Nico tiene hambre.",
+              "english": "Nico is hungry."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Querés una baleada, Nico?",
+              "english": "Do you want a baleada, Nico?"
+            },
+            {
+              "speaker": "juana",
+              "text": "Buenos días, Sam.",
+              "english": "Good morning, Sam."
+            },
+            {
+              "speaker": "juana",
+              "text": "¿Qué quieren?",
+              "english": "What would you like?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Una baleada con huevo, por favor.",
+              "english": "A baleada with egg, please."
+            },
+            {
+              "speaker": "sam",
+              "text": "Y una con frijoles.",
+              "english": "And one with beans."
+            },
+            {
+              "speaker": "juana",
+              "text": "Dos baleadas cuestan treinta lempiras.",
+              "english": "Two baleadas cost thirty lempiras."
+            },
+            {
+              "speaker": "sam",
+              "text": "Aquí tiene.",
+              "english": "Here you are."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias, Juana.",
+              "english": "Thank you, Juana."
+            },
+            {
+              "speaker": "nico",
+              "text": "¡Qué buena baleada!",
+              "english": "What a good baleada!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta el mercado.",
+              "english": "I like the market."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hoy vamos a comer sopa de pollo.",
+              "english": "Today we are going to eat chicken soup."
+            },
+            {
+              "speaker": "marta",
+              "text": "¿Querés más sopa, Sam?",
+              "english": "Do you want more soup, Sam?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, por favor.",
+              "english": "Yes, please."
+            },
+            {
+              "speaker": "sam",
+              "text": "El pollo es caro, pero la comida es muy buena.",
+              "english": "Chicken is expensive, but the food is very good."
+            },
+            {
+              "speaker": "marta",
+              "text": "Y hoy tenemos una familia muy grande en la casa.",
+              "english": "And today we have a very big family in the house."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

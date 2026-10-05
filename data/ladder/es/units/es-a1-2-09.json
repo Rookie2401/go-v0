@@ -1,0 +1,592 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-09",
+  "lang": "es",
+  "title": "At the clinic",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-09",
+    "title": "At the clinic (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "health"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "A": "Ana",
+    "M": "Mario",
+    "D": "Daniel",
+    "S": "Sam",
+    "P": "Señora",
+    "N": "Nico"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "En la clínica",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy es lunes.",
+              "english": "Today is Monday."
+            },
+            {
+              "text": "Hay mucha gente en la clínica.",
+              "english": "There are many people at the clinic."
+            },
+            {
+              "text": "Sam ayuda a Ana, mira y aprende.",
+              "english": "Sam helps Ana, watches and learns."
+            },
+            {
+              "text": "Ana trabaja de las ocho a las cinco con Daniel.",
+              "english": "Ana works from eight to five with Daniel."
+            },
+            {
+              "text": "Hay que esperar mucho tiempo, y Sam lleva agua a la gente.",
+              "english": "People have to wait a long time, and Sam brings water to the people."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La sala de espera",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Una señora está con un cipote.",
+              "english": "A woman is with a boy."
+            },
+            {
+              "text": "El cipote juega solo con un juego pequeño.",
+              "english": "The boy plays alone with a small game."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Buenos días, señora.",
+              "english": "Good morning, ma'am."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Quiere agua?",
+              "english": "Do you want water?"
+            },
+            {
+              "speaker": "P",
+              "text": "Sí, gracias.",
+              "english": "Yes, thank you."
+            },
+            {
+              "speaker": "P",
+              "text": "Vengo del pueblo.",
+              "english": "I come from the village."
+            },
+            {
+              "speaker": "P",
+              "text": "Subí al autobús a las cinco.",
+              "english": "I got on the bus at five."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y bajó en la ciudad?",
+              "english": "And you got off in the city?"
+            },
+            {
+              "speaker": "P",
+              "text": "Sí, y caminé hasta la clínica.",
+              "english": "Yes, and I walked to the clinic."
+            },
+            {
+              "speaker": "S",
+              "text": "Yo también aprendo mucho aquí.",
+              "english": "I also learn a lot here."
+            },
+            {
+              "speaker": "S",
+              "text": "Ahora espero con usted.",
+              "english": "Now I wait with you."
+            },
+            {
+              "speaker": "P",
+              "text": "¿Usted trabaja en la clínica?",
+              "english": "Do you work at the clinic?"
+            },
+            {
+              "speaker": "S",
+              "text": "Ayudo un poco.",
+              "english": "I help a little."
+            },
+            {
+              "speaker": "S",
+              "text": "Hoy mi trabajo es llevar agua.",
+              "english": "Today my job is bringing water."
+            },
+            {
+              "text": "El cipote mira a Sam y dice: \"Quiero agua\".",
+              "english": "The boy looks at Sam and says: \"I want water\"."
+            },
+            {
+              "text": "Sam da agua al cipote.",
+              "english": "Sam gives water to the boy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El señor Mario",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ahora Ana habla con un señor, el señor Mario.",
+              "english": "Now Ana talks with a man, Mr Mario."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Buenos días, señor Mario.",
+              "english": "Good morning, Mr Mario."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Qué tiene usted?",
+              "english": "What is wrong with you?"
+            },
+            {
+              "speaker": "M",
+              "text": "Buenos días, enfermera.",
+              "english": "Good morning, nurse."
+            },
+            {
+              "speaker": "M",
+              "text": "Tengo tos y me duele la garganta.",
+              "english": "I have a cough and my throat hurts."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Tiene fiebre?",
+              "english": "Do you have a fever?"
+            },
+            {
+              "speaker": "M",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "M",
+              "text": "Anoche tuve fiebre y no dormí.",
+              "english": "Last night I had a fever and I did not sleep."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Siente dolor en el cuerpo?",
+              "english": "Do you feel pain in your body?"
+            },
+            {
+              "speaker": "M",
+              "text": "Sí, siento dolor en todo el cuerpo.",
+              "english": "Yes, I feel pain in my whole body."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Cuánto tiempo tiene la tos?",
+              "english": "How long have you had the cough?"
+            },
+            {
+              "speaker": "M",
+              "text": "Dos días.",
+              "english": "Two days."
+            },
+            {
+              "speaker": "M",
+              "text": "Pero ahora también tengo sangre en la nariz.",
+              "english": "But now I also have blood in my nose."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana mira la nariz del señor.",
+              "english": "Ana looks at the man's nose."
+            },
+            {
+              "text": "Hay un poco de sangre.",
+              "english": "There is a little blood."
+            },
+            {
+              "text": "Luego mira la boca y la garganta.",
+              "english": "Then she looks at his mouth and throat."
+            },
+            {
+              "text": "El señor Mario vive solo en un pueblo.",
+              "english": "Mr Mario lives alone in a village."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "¿Qué pasó, señor Mario?",
+              "english": "What happened, Mr Mario?"
+            },
+            {
+              "speaker": "M",
+              "text": "Anteayer estuve en una fiesta en el pueblo.",
+              "english": "The day before yesterday I was at a party in the village."
+            },
+            {
+              "speaker": "M",
+              "text": "Bailé mucho, y llovió.",
+              "english": "I danced a lot, and it rained."
+            },
+            {
+              "speaker": "M",
+              "text": "Quizás es la lluvia.",
+              "english": "Maybe it is the rain."
+            },
+            {
+              "speaker": "A",
+              "text": "Es posible.",
+              "english": "It is possible."
+            },
+            {
+              "speaker": "A",
+              "text": "Estoy segura de que no es nada grande.",
+              "english": "I am sure it is nothing big."
+            },
+            {
+              "speaker": "A",
+              "text": "Usted tiene una cita con el doctor.",
+              "english": "You have an appointment with the doctor."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Con el doctor",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "D",
+              "text": "Buenos días, señor Mario.",
+              "english": "Good morning, Mr Mario."
+            },
+            {
+              "speaker": "D",
+              "text": "Soy el doctor Daniel.",
+              "english": "I am Doctor Daniel."
+            },
+            {
+              "speaker": "D",
+              "text": "Usted tiene tos y fiebre.",
+              "english": "You have a cough and a fever."
+            },
+            {
+              "speaker": "D",
+              "text": "Es una enfermedad pequeña.",
+              "english": "It is a small illness."
+            },
+            {
+              "speaker": "D",
+              "text": "La nariz está bien.",
+              "english": "The nose is fine."
+            },
+            {
+              "speaker": "D",
+              "text": "No hay mucha sangre.",
+              "english": "There is not much blood."
+            },
+            {
+              "speaker": "D",
+              "text": "Pero tiene la garganta mal.",
+              "english": "But your throat is bad."
+            },
+            {
+              "speaker": "D",
+              "text": "Debe cuidar su cuerpo.",
+              "english": "You must take care of your body."
+            },
+            {
+              "speaker": "D",
+              "text": "Debe quedarse en la casa y tomar mucha agua.",
+              "english": "You must stay at home and drink a lot of water."
+            },
+            {
+              "speaker": "D",
+              "text": "¿Vive usted solo?",
+              "english": "Do you live alone?"
+            },
+            {
+              "speaker": "M",
+              "text": "Sí, solo.",
+              "english": "Yes, alone."
+            },
+            {
+              "speaker": "M",
+              "text": "Mi familia vive lejos.",
+              "english": "My family lives far away."
+            },
+            {
+              "speaker": "D",
+              "text": "Entonces Ana va a llamar a su familia.",
+              "english": "Then Ana is going to call your family."
+            },
+            {
+              "speaker": "D",
+              "text": "Voy a escribir una receta.",
+              "english": "I am going to write a prescription."
+            },
+            {
+              "speaker": "D",
+              "text": "Debe tomar una pastilla en la mañana, una en la tarde y una en la noche.",
+              "english": "You must take one pill in the morning, one in the afternoon and one at night."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Cuántos días?",
+              "english": "How many days?"
+            },
+            {
+              "speaker": "D",
+              "text": "Cinco días.",
+              "english": "Five days."
+            },
+            {
+              "speaker": "D",
+              "text": "Después regresa a la clínica con otra cita.",
+              "english": "Then you come back to the clinic with another appointment."
+            },
+            {
+              "speaker": "M",
+              "text": "Gracias, doctor.",
+              "english": "Thank you, doctor."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las instrucciones",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana lee la receta con el señor Mario.",
+              "english": "Ana reads the prescription with Mr Mario."
+            },
+            {
+              "text": "Una pastilla en la mañana.",
+              "english": "One pill in the morning."
+            },
+            {
+              "text": "Una pastilla en la noche.",
+              "english": "One pill at night."
+            },
+            {
+              "text": "Tomar mucha agua.",
+              "english": "Drink a lot of water."
+            },
+            {
+              "text": "Quedarse en la casa.",
+              "english": "Stay at home."
+            },
+            {
+              "text": "No ir a la playa.",
+              "english": "Do not go to the beach."
+            },
+            {
+              "text": "No ir al paseo.",
+              "english": "Do not go on the walk."
+            },
+            {
+              "text": "No ir a la fiesta.",
+              "english": "Do not go to the party."
+            },
+            {
+              "text": "Cuidar la salud es bueno para la familia.",
+              "english": "Taking care of your health is good for the family."
+            },
+            {
+              "text": "La cita es en cinco días.",
+              "english": "The appointment is in five days."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "Enfermera, ¿puedo llevar la receta al pueblo?",
+              "english": "Nurse, can I take the prescription to the village?"
+            },
+            {
+              "speaker": "A",
+              "text": "Claro.",
+              "english": "Of course."
+            },
+            {
+              "speaker": "A",
+              "text": "Pero hoy usted se queda en la ciudad.",
+              "english": "But today you stay in the city."
+            },
+            {
+              "speaker": "A",
+              "text": "Mañana regresa.",
+              "english": "Tomorrow you go back."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Después de la clínica",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después de la clínica, Sam y Ana toman café.",
+              "english": "After the clinic, Sam and Ana drink coffee."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Ana, aprendí mucho hoy.",
+              "english": "Ana, I learned a lot today."
+            },
+            {
+              "speaker": "A",
+              "text": "Qué bueno.",
+              "english": "Good."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Qué aprendiste?",
+              "english": "What did you learn?"
+            },
+            {
+              "speaker": "S",
+              "text": "Aprendí que hay que cuidar la salud.",
+              "english": "I learned that we have to take care of our health."
+            },
+            {
+              "speaker": "S",
+              "text": "¿La enfermedad del señor Mario es difícil?",
+              "english": "Is Mr Mario's illness a hard one?"
+            },
+            {
+              "speaker": "A",
+              "text": "No, es una enfermedad pequeña.",
+              "english": "No, it is a small illness."
+            },
+            {
+              "speaker": "A",
+              "text": "Así es el trabajo de todos los días.",
+              "english": "That is how the work is every day."
+            },
+            {
+              "speaker": "A",
+              "text": "La salud es un regalo de Dios.",
+              "english": "Health is a gift from God."
+            },
+            {
+              "speaker": "S",
+              "text": "Tengo tiempo el fin de semana.",
+              "english": "I have time on the weekend."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Puedo regresar?",
+              "english": "Can I come back?"
+            },
+            {
+              "speaker": "A",
+              "text": "Claro, Sam.",
+              "english": "Of course, Sam."
+            },
+            {
+              "speaker": "A",
+              "text": "Siempre hay trabajo.",
+              "english": "There is always work."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La clínica termina a las cinco.",
+              "english": "The clinic closes at five."
+            },
+            {
+              "text": "Ana y Sam caminan a la casa de doña Marta.",
+              "english": "Ana and Sam walk to doña Marta's house."
+            },
+            {
+              "text": "Doña Marta cocina frijoles y arroz, y todos cenan.",
+              "english": "Doña Marta cooks beans and rice, and everybody has dinner."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

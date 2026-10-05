@@ -1,0 +1,462 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-04",
+  "lang": "es",
+  "title": "La noche del huracán",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-04",
+    "title": "The night of the storm (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative",
+    "storm",
+    "memory"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Un día de lluvia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy llueve mucho en el pueblo.",
+              "english": "Today it is raining a lot in the village."
+            },
+            {
+              "text": "Sam está en la casa de doña Marta con Ana.",
+              "english": "Sam is at doña Marta's house with Ana."
+            },
+            {
+              "text": "—¿Siempre llueve así en octubre? —dice Sam.",
+              "english": "\"Does it always rain like this in October?\" says Sam."
+            },
+            {
+              "text": "—No siempre —dice Ana—.",
+              "english": "\"Not always,\" says Ana."
+            },
+            {
+              "text": "Pero hace años hubo una noche muy difícil.",
+              "english": "\"But years ago there was a very hard night."
+            },
+            {
+              "text": "Voy a contarte la noche del huracán.",
+              "english": "I am going to tell you about the night of the hurricane.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Antes del huracán",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Era octubre.",
+              "english": "\"It was October."
+            },
+            {
+              "text": "Yo tenía quince años, y mi hermano Luis tenía trece.",
+              "english": "I was fifteen, and my brother Luis was thirteen.\""
+            },
+            {
+              "text": "Vivíamos en la finca con mi papá, mi mamá y mi abuelo.",
+              "english": "\"We lived on the farm with my dad, my mom and my grandfather."
+            },
+            {
+              "text": "Llovía todos los días, y había mucho viento.",
+              "english": "It rained every day, and there was a lot of wind.\""
+            },
+            {
+              "text": "El lunes, un vecino llegó con una noticia: venía un huracán a Honduras.",
+              "english": "\"On Monday, a neighbor arrived with some news: a hurricane was coming to Honduras.\""
+            },
+            {
+              "text": "Todos hablaban de la noticia.",
+              "english": "\"Everyone was talking about the news."
+            },
+            {
+              "text": "Los vecinos no sabían qué hacer.",
+              "english": "The neighbors did not know what to do.\""
+            },
+            {
+              "text": "Mi papá dijo: —No hay tiempo.",
+              "english": "\"My dad said, 'There is no time."
+            },
+            {
+              "text": "Hay que llevar la comida y el dinero a la iglesia.",
+              "english": "We have to take the food and the money to the church.'\""
+            },
+            {
+              "text": "Mi mamá y yo preparamos las bolsas.",
+              "english": "\"My mom and I packed the bags."
+            },
+            {
+              "text": "Luis buscaba a Sol, nuestro perro, porque Sol escapó de la finca por la tarde.",
+              "english": "Luis was looking for Sol, our dog, because Sol had run away from the farm in the afternoon.\""
+            },
+            {
+              "text": "Luis buscó a Sol en la calle, pero no encontró a Sol.",
+              "english": "\"Luis looked for Sol in the street, but he did not find him.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La noche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—La noche empezó con viento.",
+              "english": "\"The night began with wind."
+            },
+            {
+              "text": "Después llegó la lluvia, y la lluvia no acababa.",
+              "english": "Then the rain came, and the rain did not stop.\""
+            },
+            {
+              "text": "Yo oía el viento en el techo.",
+              "english": "\"I could hear the wind on the roof."
+            },
+            {
+              "text": "Mi mamá estaba triste.",
+              "english": "My mom was sad.\""
+            },
+            {
+              "text": "Primero veíamos el rayo, y después llegaba el trueno.",
+              "english": "\"First we saw the lightning, and then the thunder came.\""
+            },
+            {
+              "text": "Entonces oímos un trueno muy grande.",
+              "english": "\"Then we heard a very loud thunderclap."
+            },
+            {
+              "text": "Un rayo cayó cerca de la casa.",
+              "english": "A lightning bolt fell near the house.\""
+            },
+            {
+              "text": "El árbol grande cayó sobre el techo del vecino.",
+              "english": "\"The big tree fell on the neighbor's roof."
+            },
+            {
+              "text": "El techo se rompió.",
+              "english": "The roof broke.\""
+            },
+            {
+              "text": "Mi mamá gritó, y yo lloré.",
+              "english": "\"My mom screamed, and I cried."
+            },
+            {
+              "text": "Luis no lloró, pero tenía un susto muy grande.",
+              "english": "Luis did not cry, but he had a very big fright.\""
+            },
+            {
+              "text": "Otro rayo cayó en una casa, y hubo un incendio.",
+              "english": "\"Another bolt of lightning fell on a house, and there was a fire.\""
+            },
+            {
+              "text": "Gracias a Dios, la lluvia acabó con el incendio.",
+              "english": "\"Thank God, the rain put out the fire."
+            },
+            {
+              "text": "En el incendio, una familia perdió su casa.",
+              "english": "In the fire, a family lost its house.\""
+            },
+            {
+              "text": "No oíamos nada, solo la lluvia.",
+              "english": "\"We heard nothing, only the rain.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El agua",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—A las tres de la mañana, el agua subió.",
+              "english": "\"At three in the morning, the water rose."
+            },
+            {
+              "text": "Hubo una inundación en el pueblo.",
+              "english": "There was a flood in the village.\""
+            },
+            {
+              "text": "El agua llegó a la casa y llegó a la cama de mi abuelo.",
+              "english": "\"The water reached the house and reached my grandfather's bed."
+            },
+            {
+              "text": "Mi papá gritó: —¡Tenemos que escapar!",
+              "english": "My dad shouted, 'We have to get out!'\""
+            },
+            {
+              "text": "Todos sabíamos que había peligro.",
+              "english": "\"We all knew there was danger."
+            },
+            {
+              "text": "Caminamos a la iglesia.",
+              "english": "We walked to the church."
+            },
+            {
+              "text": "La inundación no llegó allí, porque la iglesia estaba más alta.",
+              "english": "The flood did not reach it, because the church was higher up.\""
+            },
+            {
+              "text": "El agua estaba fría, y la lluvia seguía.",
+              "english": "\"The water was cold, and the rain went on."
+            },
+            {
+              "text": "Luis ayudó a mi abuelo, porque mi abuelo era viejo.",
+              "english": "Luis helped my grandfather, because my grandfather was old.\""
+            },
+            {
+              "text": "En la iglesia había mucha gente que escapó del agua.",
+              "english": "\"In the church there were many people who had escaped the water."
+            },
+            {
+              "text": "Todos estábamos en peligro, pero allí estábamos con la comunidad.",
+              "english": "We were all in danger, but there we were with the community.\""
+            },
+            {
+              "text": "Una señora lloró.",
+              "english": "\"A woman cried."
+            },
+            {
+              "text": "El pastor empezó a orar, y los niños cantaron himnos.",
+              "english": "The pastor began to pray, and the children sang hymns.\""
+            },
+            {
+              "text": "Luis gritó: —¡Sol!",
+              "english": "\"Luis shouted, 'Sol!"
+            },
+            {
+              "text": "¿Dónde está Sol?",
+              "english": "Where is Sol?'"
+            },
+            {
+              "text": "Pero Sol no estaba.",
+              "english": "But Sol was not there.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La mañana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Por la mañana, la lluvia acabó.",
+              "english": "\"In the morning, the rain stopped."
+            },
+            {
+              "text": "El huracán se fue.",
+              "english": "The hurricane left."
+            },
+            {
+              "text": "Ya no había peligro.",
+              "english": "There was no more danger.\""
+            },
+            {
+              "text": "Luis salió a buscar a Sol.",
+              "english": "\"Luis went out to look for Sol."
+            },
+            {
+              "text": "Yo fui con él.",
+              "english": "I went with him.\""
+            },
+            {
+              "text": "Sol estaba en la calle, con una gallina.",
+              "english": "\"Sol was in the street, with a hen."
+            },
+            {
+              "text": "¡La gallina estaba viva!",
+              "english": "The hen was alive!\""
+            },
+            {
+              "text": "—¡Qué susto! —dijo Luis—.",
+              "english": "\"What a fright!\" said Luis."
+            },
+            {
+              "text": "Sol es un perro muy bueno.",
+              "english": "\"Sol is a very good dog.\""
+            },
+            {
+              "text": "¿Dónde está la pelota?",
+              "english": "Where is the ball?"
+            },
+            {
+              "text": "¡Sol necesita una pelota nueva!",
+              "english": "Sol needs a new ball!"
+            },
+            {
+              "text": "Mi tío Carlos subió al techo de nuestra casa para arreglarlo.",
+              "english": "\"My uncle Carlos climbed onto the roof of our house to fix it."
+            },
+            {
+              "text": "Tuvo un accidente: se rompió la mano.",
+              "english": "He had an accident: he broke his hand.\""
+            },
+            {
+              "text": "Fue un accidente pequeño, pero el susto fue grande.",
+              "english": "\"It was a small accident, but the fright was big."
+            },
+            {
+              "text": "Gracias a Dios, no hubo otro accidente.",
+              "english": "Thank God, there was no other accident.\""
+            },
+            {
+              "text": "Mi tío era carpintero, y con la mano buena arregló los techos del pueblo.",
+              "english": "\"My uncle was a carpenter, and with his good hand he fixed the roofs of the village.\""
+            },
+            {
+              "text": "El mecánico arregló el autobús, y el agua rompió la pared de una tienda.",
+              "english": "\"The mechanic fixed the bus, and the water broke the wall of a store.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Después",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Después de la inundación, había tierra en las calles y no había trabajo.",
+              "english": "\"After the flood, there was mud in the streets and there was no work."
+            },
+            {
+              "text": "Muchos negocios perdieron todo.",
+              "english": "Many businesses lost everything.\""
+            },
+            {
+              "text": "Todos empezaron a trabajar, y la comunidad construyó casas nuevas.",
+              "english": "\"Everyone began to work, and the community built new houses.\""
+            },
+            {
+              "text": "Mi abuelo contaba que nunca vio una noche así.",
+              "english": "\"My grandfather used to say that he had never seen a night like that.\""
+            },
+            {
+              "text": "Mi papá perdió su empleo en una empresa.",
+              "english": "\"My dad lost his job at a company."
+            },
+            {
+              "text": "Su jefe no podía pagar el sueldo.",
+              "english": "His boss could not pay the wages.\""
+            },
+            {
+              "text": "Mi mamá tenía una cuenta en el banco, pero el banco estaba lejos.",
+              "english": "\"My mom had an account at the bank, but the bank was far away."
+            },
+            {
+              "text": "Gastamos el dinero y no pudimos ahorrar.",
+              "english": "We spent the money and could not save.\""
+            },
+            {
+              "text": "En diciembre, la iglesia celebró una fiesta pequeña.",
+              "english": "\"In December the church celebrated a small party."
+            },
+            {
+              "text": "En enero había poco trabajo, y en febrero llegó ayuda.",
+              "english": "In January there was little work, and in February help arrived.\""
+            },
+            {
+              "text": "En marzo, mi papá consiguió un empleo nuevo.",
+              "english": "\"In March my dad got a new job."
+            },
+            {
+              "text": "En mayo volvió la lluvia, y en agosto la finca estaba verde de nuevo.",
+              "english": "In May the rain came back, and in August the farm was green again.\""
+            },
+            {
+              "text": "El mecánico trabajó sin horario por muchos meses.",
+              "english": "\"The mechanic worked without a schedule for many months.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Otra vez en la casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Hoy, cuando hay truenos, Luis y yo miramos la lluvia.",
+              "english": "\"Today, when there are thunderclaps, Luis and I watch the rain.\""
+            },
+            {
+              "text": "Cuando hay una noticia de lluvia, yo recuerdo la noche.",
+              "english": "\"When there is news of rain, I remember the night."
+            },
+            {
+              "text": "No podemos olvidar, pero podemos contar el cuento.",
+              "english": "We cannot forget, but we can tell the story.\""
+            },
+            {
+              "text": "Sam no dice nada.",
+              "english": "\"Sam says nothing."
+            },
+            {
+              "text": "Mira la lluvia y piensa en la gente de la iglesia.",
+              "english": "He watches the rain and thinks about the people in the church.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

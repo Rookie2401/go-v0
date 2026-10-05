@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-01",
+  "lang": "es",
+  "title": "Cuando yo era niño",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-01",
+    "title": "\"Cuando yo era niño\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography",
+    "childhood",
+    "farm life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Hoy en la escuela",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis es maestro.",
+              "english": "Luis is a teacher."
+            },
+            {
+              "text": "Hoy habla con los niños de la escuela.",
+              "english": "Today he talks with the children at the school."
+            },
+            {
+              "text": "Los niños quieren saber cómo era la vida antes.",
+              "english": "The children want to know what life was like before."
+            },
+            {
+              "text": "—Maestro, ¿cómo era su vida cuando usted era niño? —dice una niña.",
+              "english": "\"Teacher, what was your life like when you were a boy?\" says a girl."
+            },
+            {
+              "text": "Luis dice: —Muy bien.",
+              "english": "Luis says, \"Very well."
+            },
+            {
+              "text": "Voy a contar un cuento de mi vida.",
+              "english": "I am going to tell a story from my life.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La finca",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Yo nací en una finca, lejos del pueblo.",
+              "english": "\"I was born on a farm, far from the town."
+            },
+            {
+              "text": "Cuando era niño, vivía allí con mi papá, mi mamá, mi hermana Ana y mi abuelo.",
+              "english": "When I was a boy, I lived there with my dad, my mom, my sister Ana and my grandfather.\""
+            },
+            {
+              "text": "Mi tío Carlos vivía cerca, en otra casa.",
+              "english": "My uncle Carlos lived nearby, in another house."
+            },
+            {
+              "text": "En la finca no había teléfono, pero siempre había comida para todos.",
+              "english": "On the farm there was no telephone, but there was always food for everyone."
+            },
+            {
+              "text": "Mi abuelo tenía muchos animales, y los cuidaba bien.",
+              "english": "My grandfather had many animals, and he took good care of them."
+            },
+            {
+              "text": "Tenía un caballo grande y blanco, tres vacas y veinte gallinas.",
+              "english": "He had a big white horse, three cows and twenty hens."
+            },
+            {
+              "text": "Las vacas comían todo el día, y las gallinas daban huevos.",
+              "english": "The cows ate all day, and the hens gave eggs."
+            },
+            {
+              "text": "La vaca más grande daba más que todas.",
+              "english": "The biggest cow gave more than all the others."
+            },
+            {
+              "text": "Todos los días yo iba a ver los animales con mi hermana.",
+              "english": "Every day I went to see the animals with my sister."
+            },
+            {
+              "text": "A mí me gustaba el caballo, pero mi hermana quería más a las gallinas.",
+              "english": "I liked the horse, but my sister preferred the hens."
+            },
+            {
+              "text": "También teníamos un perro.",
+              "english": "We also had a dog."
+            },
+            {
+              "text": "El perro se llamaba Sol.",
+              "english": "The dog was called Sol."
+            },
+            {
+              "text": "Sol dormía en mi cuarto y me quería mucho.",
+              "english": "Sol slept in my room and loved me very much."
+            },
+            {
+              "text": "Yo también quería mucho a mi perro.",
+              "english": "I loved my dog very much too."
+            },
+            {
+              "text": "Los animales eran mis amigos.",
+              "english": "The animals were my friends."
+            },
+            {
+              "text": "Yo daba agua al caballo todos los días.",
+              "english": "I gave the horse water every day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Y usted jugaba, maestro? —dice otro niño.",
+              "english": "\"And did you play, teacher?\" says another boy."
+            },
+            {
+              "text": "—Claro que sí.",
+              "english": "\"Of course."
+            },
+            {
+              "text": "Mi hermana y yo jugábamos todo el día.",
+              "english": "My sister and I played all day."
+            },
+            {
+              "text": "Teníamos una pelota vieja y jugábamos cerca de un árbol grande.",
+              "english": "We had an old ball and we played near a big tree.\""
+            },
+            {
+              "text": "La pelota era vieja, pero para mí era la mejor pelota del mundo.",
+              "english": "The ball was old, but for me it was the best ball in the world."
+            },
+            {
+              "text": "El árbol era alto y bonito.",
+              "english": "The tree was tall and beautiful."
+            },
+            {
+              "text": "En abril tenía flores blancas, y las flores eran para mi mamá.",
+              "english": "In April it had white flowers, and the flowers were for my mom."
+            },
+            {
+              "text": "Mi hermana y yo comíamos el pan cerca del árbol.",
+              "english": "My sister and I ate our bread near the tree."
+            },
+            {
+              "text": "Mi tío Carlos jugaba con nosotros.",
+              "english": "My uncle Carlos played with us."
+            },
+            {
+              "text": "En el juego era muy bueno.",
+              "english": "He was very good at the game."
+            },
+            {
+              "text": "Después de jugar, llevábamos las flores a mi mamá, y ella las ponía en la mesa.",
+              "english": "After playing, we took the flowers to my mom, and she put the flowers on the table."
+            },
+            {
+              "text": "Ana puede recordar más que yo.",
+              "english": "Ana can remember more than I can."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los meses",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—En la finca, todos los meses eran diferentes.",
+              "english": "\"On the farm, every month was different.\""
+            },
+            {
+              "text": "En enero hacía frío por la mañana.",
+              "english": "In January it was cold in the morning."
+            },
+            {
+              "text": "En febrero había mucho viento.",
+              "english": "In February there was a lot of wind."
+            },
+            {
+              "text": "En marzo hacía calor, y en abril hacía más calor.",
+              "english": "In March it was hot, and in April it was hotter."
+            },
+            {
+              "text": "En mayo llegaba la lluvia.",
+              "english": "In May the rain arrived."
+            },
+            {
+              "text": "En junio llovía, en julio llovía y en agosto también.",
+              "english": "In June it rained, in July it rained and in August too."
+            },
+            {
+              "text": "En septiembre había fiestas en el pueblo.",
+              "english": "In September there were festivals in the town."
+            },
+            {
+              "text": "En octubre era mi cumpleaños, y en noviembre llegaba el verano.",
+              "english": "In October it was my birthday, and in November summer came."
+            },
+            {
+              "text": "En diciembre venía la familia de la ciudad.",
+              "english": "In December the family came from the city."
+            },
+            {
+              "text": "Cuando era el cumpleaños de un vecino, mi mamá invitaba al vecino a la casa.",
+              "english": "When it was a neighbor's birthday, my mom invited the neighbor to the house."
+            },
+            {
+              "text": "Todos celebrábamos con tamales y con café.",
+              "english": "We all celebrated with tamales and coffee."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La familia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Mi tío Carlos era joven y era carpintero.",
+              "english": "\"My uncle Carlos was young and was a carpenter."
+            },
+            {
+              "text": "Hacía mesas y camas para la gente del pueblo.",
+              "english": "He made tables and beds for the people of the town.\""
+            },
+            {
+              "text": "No tenía esposa.",
+              "english": "He did not have a wife."
+            },
+            {
+              "text": "Después se casó con una mujer del pueblo, y tuvieron dos hijos.",
+              "english": "Later he married a woman from the town, and they had two children."
+            },
+            {
+              "text": "Fue un buen esposo y un buen papá.",
+              "english": "He was a good husband and a good dad."
+            },
+            {
+              "text": "Mi abuelo no sabía leer, pero sabía hacer las cuentas del dinero.",
+              "english": "My grandfather did not know how to read, but he knew how to do the accounts of the money."
+            },
+            {
+              "text": "Su esposa, mi abuela, murió cuando yo era muy pequeño.",
+              "english": "His wife, my grandmother, died when I was very small."
+            },
+            {
+              "text": "Hoy no puedo recordarla bien.",
+              "english": "Today I cannot remember her well."
+            },
+            {
+              "text": "Mi abuelo tenía dos nietos: mi hermana y yo.",
+              "english": "My grandfather had two grandchildren: my sister and me."
+            },
+            {
+              "text": "Y quería mucho a los dos.",
+              "english": "And he loved both of us very much."
+            },
+            {
+              "text": "—¿Qué edad tenía usted entonces? —dice la niña.",
+              "english": "\"How old were you then?\" says the girl."
+            },
+            {
+              "text": "—Tenía ocho años, y mi hermana tenía diez.",
+              "english": "\"I was eight, and my sister was ten."
+            },
+            {
+              "text": "Los dos crecíamos mucho.",
+              "english": "We both grew a lot.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "—¿Cómo se llamaba su escuela? —dice la niña.",
+              "english": "\"What was your school called?\" says the girl."
+            },
+            {
+              "text": "—No tenía nombre.",
+              "english": "\"It had no name."
+            },
+            {
+              "text": "Era una casa pequeña, y el maestro era un señor joven.",
+              "english": "It was a small house, and the teacher was a young man."
+            },
+            {
+              "text": "Yo caminaba una hora para llegar.",
+              "english": "I walked an hour to get there.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los domingos y las noches",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Los domingos íbamos al culto en la iglesia del pueblo.",
+              "english": "\"On Sundays we went to the service at the church in town.\""
+            },
+            {
+              "text": "Mi mamá llevaba la ofrenda.",
+              "english": "My mom took the offering."
+            },
+            {
+              "text": "Mi abuelo cantaba los himnos, y yo cantaba también.",
+              "english": "My grandfather sang the hymns, and I sang too."
+            },
+            {
+              "text": "Había alabanza, y después el pastor hablaba.",
+              "english": "There was praise, and then the pastor spoke."
+            },
+            {
+              "text": "Yo siempre cantaba la canción de él.",
+              "english": "I always sang his song."
+            },
+            {
+              "text": "Por la noche, mi abuelo me contaba un cuento.",
+              "english": "At night my grandfather told me a story."
+            },
+            {
+              "text": "Siempre era diferente.",
+              "english": "It was always different."
+            },
+            {
+              "text": "Él contaba y yo quería más cuentos.",
+              "english": "He told stories and I wanted more stories."
+            },
+            {
+              "text": "Un día olvidé dar de comer a las vacas, y mi abuelo no estaba contento.",
+              "english": "One day I forgot to feed the cows, and my grandfather was not happy."
+            },
+            {
+              "text": "Hoy quiero olvidar el día, pero no puedo.",
+              "english": "Today I want to forget that day, but I cannot."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Luis recuerda",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "—Hoy puedo recordar mucho de mi vida allí, y no quiero olvidar nada.",
+              "english": "\"Today I can remember a lot about the farm, and I do not want to forget anything."
+            },
+            {
+              "text": "Mi abuelo siempre decía que la vida es buena.",
+              "english": "My grandfather always said that life is good.\""
+            },
+            {
+              "text": "Los niños están contentos.",
+              "english": "The children are happy."
+            },
+            {
+              "text": "Quieren otro, pero ya es tarde.",
+              "english": "They want another one, but it is already late."
+            },
+            {
+              "text": "—Mañana voy a contar otro —dice Luis.",
+              "english": "\"Tomorrow I will tell another story,\" says Luis."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

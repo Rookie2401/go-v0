@@ -1,0 +1,785 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-18",
+  "lang": "es",
+  "title": "Un cuarto para Miguel",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-18",
+    "title": "Renting a room (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation",
+    "housing",
+    "bargaining"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "M": "Miguel",
+    "C": "Señora Carmen",
+    "S": "Sam"
+  },
+  "sections": [
+    {
+      "title": "Buscando un cuarto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Miguel es médico, y quiere vivir cerca de la iglesia.",
+              "english": "Miguel is a doctor, and he wants to live near the church."
+            },
+            {
+              "text": "Hoy busca un cuarto.",
+              "english": "Today he is looking for a room."
+            },
+            {
+              "speaker": "S",
+              "text": "Miguel, la señora Carmen quiere alquilar un cuarto.",
+              "english": "Miguel, señora Carmen wants to rent out a room."
+            },
+            {
+              "speaker": "S",
+              "text": "Vive cerca del templo.",
+              "english": "She lives near the church."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Está lejos del lugar donde trabajo?",
+              "english": "Is it far from the place where I work?"
+            },
+            {
+              "speaker": "S",
+              "text": "No.",
+              "english": "No."
+            },
+            {
+              "speaker": "S",
+              "text": "Se llega caminando en un momento.",
+              "english": "You get there walking in a moment."
+            },
+            {
+              "text": "Los dos caminan hacia la casa de la señora Carmen.",
+              "english": "The two walk toward señora Carmen's house."
+            },
+            {
+              "text": "Es una casa pequeña, con un patio y un cerro cerca.",
+              "english": "It is a small house, with a patio and a hill nearby."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El cuarto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "C",
+              "text": "Buenos días, doctor.",
+              "english": "Good morning, doctor."
+            },
+            {
+              "speaker": "C",
+              "text": "Pasen, pasen.",
+              "english": "Come in, come in."
+            },
+            {
+              "speaker": "M",
+              "text": "Buenos días, señora Carmen.",
+              "english": "Good morning, señora Carmen."
+            },
+            {
+              "speaker": "M",
+              "text": "Mucho gusto.",
+              "english": "Pleased to meet you."
+            },
+            {
+              "speaker": "M",
+              "text": "Vengo a ver el cuarto.",
+              "english": "I have come to see the room."
+            },
+            {
+              "speaker": "C",
+              "text": "Acá está.",
+              "english": "Here it is."
+            },
+            {
+              "speaker": "C",
+              "text": "Es pequeño, pero es limpio y tiene luz.",
+              "english": "It is small, but it is clean and has light."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Y ahí, qué hay?",
+              "english": "And there, what is there?"
+            },
+            {
+              "speaker": "C",
+              "text": "Ahí hay una cama y una mesa.",
+              "english": "There is a bed and a table there."
+            },
+            {
+              "speaker": "C",
+              "text": "Allá, hacia el patio, está la ducha.",
+              "english": "Over there, toward the patio, is the shower."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Qué tipo de cama es?",
+              "english": "What kind of bed is it?"
+            },
+            {
+              "speaker": "M",
+              "text": "¿Es grande?",
+              "english": "Is it big?"
+            },
+            {
+              "speaker": "C",
+              "text": "Es grande y es nueva.",
+              "english": "It is big and it is new."
+            },
+            {
+              "speaker": "C",
+              "text": "Una parte del patio también es para usted.",
+              "english": "A part of the patio is also for you."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Adónde va ese camino, al lado del patio?",
+              "english": "Where does that path next to the patio go?"
+            },
+            {
+              "speaker": "C",
+              "text": "Va al cerro y a la selva.",
+              "english": "It goes to the hill and to the jungle."
+            },
+            {
+              "speaker": "C",
+              "text": "Allá hay culebras y insectos, así que hay que tener cuidado.",
+              "english": "There are snakes and insects there, so you have to be careful."
+            },
+            {
+              "speaker": "S",
+              "text": "En el mapa del pueblo, esta zona es la más bonita.",
+              "english": "On the map of the village, this zone is the prettiest."
+            },
+            {
+              "speaker": "S",
+              "text": "La naturaleza está cerca.",
+              "english": "Nature is close by."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El valor",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "¿Cuánto cuesta alquilar el cuarto?",
+              "english": "How much does it cost to rent the room?"
+            },
+            {
+              "speaker": "C",
+              "text": "El valor es mil quinientos lempiras al mes.",
+              "english": "The price is one thousand five hundred lempiras a month."
+            },
+            {
+              "speaker": "M",
+              "text": "Es mucho para mí.",
+              "english": "That is a lot for me."
+            },
+            {
+              "speaker": "M",
+              "text": "Soy empleado de la brigada, y no soy rico.",
+              "english": "I am an employee of the brigade, and I am not rich."
+            },
+            {
+              "speaker": "C",
+              "text": "Yo no soy rica, doctor.",
+              "english": "I am not rich, doctor."
+            },
+            {
+              "speaker": "C",
+              "text": "Vivo de este cuarto y de mi granja pequeña.",
+              "english": "I live from this room and from my small farm."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Una granja?",
+              "english": "A farm?"
+            },
+            {
+              "speaker": "M",
+              "text": "Qué bueno.",
+              "english": "How nice."
+            },
+            {
+              "speaker": "C",
+              "text": "Siembro frijoles y cultivo tomates.",
+              "english": "I sow beans and grow tomatoes."
+            },
+            {
+              "speaker": "C",
+              "text": "Cavo, planto y riego.",
+              "english": "I dig, plant and water."
+            },
+            {
+              "speaker": "C",
+              "text": "Tengo gallinas, un cerdo y un perro.",
+              "english": "I have hens, a pig and a dog."
+            },
+            {
+              "speaker": "C",
+              "text": "Mi esposo era pescador, pero ya murió.",
+              "english": "My husband was a fisherman, but he already died."
+            },
+            {
+              "speaker": "M",
+              "text": "Lo siento mucho.",
+              "english": "I am very sorry."
+            },
+            {
+              "speaker": "M",
+              "text": "Señora, ¿puedo pagar la mitad ahora y la mitad a fin de mes?",
+              "english": "Ma'am, can I pay half now and half at the end of the month?"
+            },
+            {
+              "speaker": "C",
+              "text": "La mitad ahora, está bien.",
+              "english": "Half now is fine."
+            },
+            {
+              "speaker": "C",
+              "text": "Pero no puedo bajar el valor.",
+              "english": "But I cannot lower the price."
+            },
+            {
+              "speaker": "C",
+              "text": "Yo alquilo este cuarto a gente buena.",
+              "english": "I rent this room to good people."
+            },
+            {
+              "speaker": "S",
+              "text": "Señora Carmen, el doctor ayuda a la gente pobre con la brigada.",
+              "english": "Señora Carmen, the doctor helps poor people with the brigade."
+            },
+            {
+              "speaker": "S",
+              "text": "Es un buen ejemplo.",
+              "english": "He is a good example."
+            },
+            {
+              "speaker": "C",
+              "text": "Lo sé.",
+              "english": "I know."
+            },
+            {
+              "speaker": "C",
+              "text": "Todos hablan bien del doctor.",
+              "english": "Everybody speaks well of the doctor."
+            },
+            {
+              "speaker": "C",
+              "text": "Acá al lado viven un hondureño, un guatemalteco y una familia nicaragüense.",
+              "english": "Next door live a Honduran, a Guatemalan and a Nicaraguan family."
+            },
+            {
+              "speaker": "C",
+              "text": "Son buenos vecinos.",
+              "english": "They are good neighbors."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Y si pago mil?",
+              "english": "And if I pay a thousand?"
+            },
+            {
+              "speaker": "C",
+              "text": "Ni mil ni mil cien, doctor.",
+              "english": "Neither a thousand nor eleven hundred, doctor."
+            },
+            {
+              "speaker": "C",
+              "text": "La cantidad es mil quinientos.",
+              "english": "The amount is fifteen hundred."
+            },
+            {
+              "speaker": "C",
+              "text": "Pero tengo una solución.",
+              "english": "But I have a solution."
+            },
+            {
+              "speaker": "C",
+              "text": "Usted paga mil cuatrocientos, y los sábados me ayuda con la granja.",
+              "english": "You pay fourteen hundred, and on Saturdays you help me with the farm."
+            },
+            {
+              "speaker": "M",
+              "text": "Esa es una buena solución.",
+              "english": "That is a good solution."
+            },
+            {
+              "speaker": "M",
+              "text": "Es una mezcla de dinero y trabajo.",
+              "english": "It is a mix of money and work."
+            },
+            {
+              "speaker": "M",
+              "text": "Los sábados puedo sembrar y regar.",
+              "english": "On Saturdays I can sow and water."
+            },
+            {
+              "speaker": "M",
+              "text": "¿De qué forma se paga?",
+              "english": "In what form is it paid?"
+            },
+            {
+              "speaker": "C",
+              "text": "La mitad ahora, y la otra mitad a fin de mes.",
+              "english": "Half now, and the other half at the end of the month."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las reglas de la casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "C",
+              "text": "En mi casa hay cosas que se deben hacer.",
+              "english": "In my house there are things that must be done."
+            },
+            {
+              "speaker": "C",
+              "text": "El agua se mantiene cubierta.",
+              "english": "The water is kept covered."
+            },
+            {
+              "speaker": "C",
+              "text": "La jarra y la olla están acá.",
+              "english": "The jug and the pot are here."
+            },
+            {
+              "speaker": "C",
+              "text": "Se evita dejar basura en el patio.",
+              "english": "Leaving garbage in the patio is avoided."
+            },
+            {
+              "speaker": "C",
+              "text": "La basura se pone allá, lejos de la casa.",
+              "english": "The garbage is put over there, far from the house."
+            },
+            {
+              "speaker": "M",
+              "text": "Eso es seguridad para todos.",
+              "english": "That is safety for everyone."
+            },
+            {
+              "speaker": "C",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "C",
+              "text": "Hay riesgo con las culebras y los insectos.",
+              "english": "There is a risk with the snakes and the insects."
+            },
+            {
+              "speaker": "C",
+              "text": "Se protege el patio con cuidado.",
+              "english": "The patio is protected carefully."
+            },
+            {
+              "speaker": "C",
+              "text": "Esta taza y este vaso son para usted.",
+              "english": "This cup and this glass are for you."
+            },
+            {
+              "speaker": "C",
+              "text": "Y esta botella es para el agua.",
+              "english": "And this bottle is for the water."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Hay herramientas?",
+              "english": "Are there tools?"
+            },
+            {
+              "speaker": "M",
+              "text": "Necesito un martillo y unos clavos para el cuarto.",
+              "english": "I need a hammer and some nails for the room."
+            },
+            {
+              "speaker": "C",
+              "text": "Hay un cubo y una escoba acá.",
+              "english": "There is a bucket and a broom here."
+            },
+            {
+              "speaker": "C",
+              "text": "La cuerda y las herramientas están ahí, en el taller de mi hijo.",
+              "english": "The rope and the tools are there, in my son's workshop."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y el uso de la ducha?",
+              "english": "And the use of the shower?"
+            },
+            {
+              "speaker": "C",
+              "text": "De seis a ocho de la mañana.",
+              "english": "From six to eight in the morning."
+            },
+            {
+              "speaker": "C",
+              "text": "Después, la ducha es de la familia.",
+              "english": "After that, the shower is for the family."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La historia de la señora Carmen",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Señora Carmen, ¿quién vivía antes en el cuarto?",
+              "english": "Señora Carmen, who lived in the room before?"
+            },
+            {
+              "speaker": "C",
+              "text": "Un joven simpático.",
+              "english": "A nice young man."
+            },
+            {
+              "speaker": "C",
+              "text": "Un día no me pagó por tres meses, y yo me enojé.",
+              "english": "One day he did not pay me for three months, and I got angry."
+            },
+            {
+              "speaker": "C",
+              "text": "Después supe la verdad: no tenía trabajo, y era pobre.",
+              "english": "Then I learned the truth: he had no job, and he was poor."
+            },
+            {
+              "speaker": "C",
+              "text": "Su familia vivía en un país lejano.",
+              "english": "His family lived in a far-off country."
+            },
+            {
+              "speaker": "C",
+              "text": "Él se arrepintió.",
+              "english": "He repented."
+            },
+            {
+              "speaker": "C",
+              "text": "Yo sentí compasión, porque él no merecía vivir en la calle.",
+              "english": "I felt compassion, because he did not deserve to live in the street."
+            },
+            {
+              "speaker": "C",
+              "text": "Lo dejé vivir otro mes.",
+              "english": "I let him live another month."
+            },
+            {
+              "speaker": "C",
+              "text": "Hoy es ingeniero.",
+              "english": "Today he is an engineer."
+            },
+            {
+              "speaker": "C",
+              "text": "Viene cada mes, me trae un regalo y me besa la mano.",
+              "english": "He comes every month, brings me a gift and kisses my hand."
+            },
+            {
+              "speaker": "C",
+              "text": "Mi papá fue criado de un patrón rico.",
+              "english": "My dad was a servant of a rich boss."
+            },
+            {
+              "speaker": "C",
+              "text": "Por eso sé lo que es ser pobre.",
+              "english": "That is why I know what it is to be poor."
+            },
+            {
+              "speaker": "C",
+              "text": "Todos tenemos un pecado, y una persona puede cambiar.",
+              "english": "We all have a sin, and a person can change."
+            },
+            {
+              "speaker": "C",
+              "text": "Esa es mi manera de ver la vida.",
+              "english": "That is my way of seeing life."
+            },
+            {
+              "speaker": "C",
+              "text": "Cada vez que lo veo, estoy contenta.",
+              "english": "Every time I see him, I am happy."
+            },
+            {
+              "speaker": "C",
+              "text": "Mi esposo decía que el que peca puede volver.",
+              "english": "My husband used to say that whoever sins can come back."
+            },
+            {
+              "speaker": "C",
+              "text": "Mi esposo me dio este anillo, y siempre lo llevo.",
+              "english": "My husband gave me this ring, and I always wear it."
+            },
+            {
+              "speaker": "M",
+              "text": "Usted tiene un corazón grande, señora.",
+              "english": "You have a big heart, señora."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Miguel cuenta su vida",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "C",
+              "text": "¿Y por qué dejó usted su país, doctor?",
+              "english": "And why did you leave your country, doctor?"
+            },
+            {
+              "speaker": "M",
+              "text": "La razón es una: quiero servir.",
+              "english": "The reason is one: I want to serve."
+            },
+            {
+              "speaker": "M",
+              "text": "Me dedico a la salud de los pueblos, con un ministerio de la iglesia.",
+              "english": "I dedicate myself to the health of villages, with a ministry of the church."
+            },
+            {
+              "speaker": "M",
+              "text": "El líder es el pastor Andrés.",
+              "english": "The leader is Pastor Andrés."
+            },
+            {
+              "speaker": "M",
+              "text": "Luché mucho y logré llegar acá.",
+              "english": "I fought hard and managed to get here."
+            },
+            {
+              "speaker": "M",
+              "text": "El esfuerzo fue grande.",
+              "english": "The effort was great."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Adónde va uno si no tiene nada?",
+              "english": "Where does one go if one has nothing?"
+            },
+            {
+              "speaker": "M",
+              "text": "Se va hacia donde hay ayuda.",
+              "english": "One goes toward where there is help."
+            },
+            {
+              "speaker": "M",
+              "text": "No busco el éxito.",
+              "english": "I am not looking for success."
+            },
+            {
+              "speaker": "M",
+              "text": "Mi causa es ayudar.",
+              "english": "My cause is to help."
+            },
+            {
+              "speaker": "M",
+              "text": "El resultado es ver bien a los niños.",
+              "english": "The result is to see the children well."
+            },
+            {
+              "speaker": "M",
+              "text": "Hay diferencias de cultura y de tradición.",
+              "english": "There are differences of culture and tradition."
+            },
+            {
+              "speaker": "M",
+              "text": "Pero la sociedad de este pueblo me recibió bien.",
+              "english": "But the society of this village welcomed me."
+            },
+            {
+              "speaker": "M",
+              "text": "El pasado es el pasado.",
+              "english": "The past is the past."
+            },
+            {
+              "speaker": "M",
+              "text": "El presente es este cuarto.",
+              "english": "The present is this room."
+            },
+            {
+              "speaker": "M",
+              "text": "El futuro, Dios lo sabe.",
+              "english": "The future, God knows it."
+            },
+            {
+              "speaker": "M",
+              "text": "Mi patrón es el director de la brigada.",
+              "english": "My boss is the director of the brigade."
+            },
+            {
+              "speaker": "M",
+              "text": "Mi problema era el valor, pero ya hay solución.",
+              "english": "My problem was the price, but now there is a solution."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El trato",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "Entonces, ¿cuándo puedo entrar al cuarto?",
+              "english": "So, when can I move into the room?"
+            },
+            {
+              "speaker": "C",
+              "text": "El jueves, si usted quiere.",
+              "english": "On Thursday, if you want."
+            },
+            {
+              "speaker": "M",
+              "text": "El jueves está bien.",
+              "english": "Thursday is fine."
+            },
+            {
+              "speaker": "M",
+              "text": "Voy a traer mi bolsa.",
+              "english": "I am going to bring my bag."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Adónde vas ahora, Miguel?",
+              "english": "Where are you going now, Miguel?"
+            },
+            {
+              "speaker": "M",
+              "text": "Voy hacia la terminal por mis cosas.",
+              "english": "I am going toward the terminal for my things."
+            },
+            {
+              "speaker": "C",
+              "text": "¿Cuánto pesa la bolsa?",
+              "english": "How much does the bag weigh?"
+            },
+            {
+              "speaker": "C",
+              "text": "Si pesa mucho, Sam lo ayuda.",
+              "english": "If it weighs a lot, Sam will help."
+            },
+            {
+              "speaker": "S",
+              "text": "Yo ayudo con gusto.",
+              "english": "I will gladly help."
+            },
+            {
+              "speaker": "C",
+              "text": "Ni el doctor ni Sam pagan el café.",
+              "english": "Neither the doctor nor Sam pays for the coffee."
+            },
+            {
+              "speaker": "C",
+              "text": "Es mi regalo.",
+              "english": "It is my gift."
+            },
+            {
+              "speaker": "M",
+              "text": "Muchas gracias, señora Carmen.",
+              "english": "Thank you very much, señora Carmen."
+            },
+            {
+              "speaker": "M",
+              "text": "Le agradezco todo.",
+              "english": "I am grateful for everything."
+            },
+            {
+              "speaker": "C",
+              "text": "Esta es su casa.",
+              "english": "This is your home."
+            },
+            {
+              "speaker": "C",
+              "text": "Que Dios lo bendiga.",
+              "english": "May God bless you."
+            },
+            {
+              "text": "Miguel y la señora Carmen se dan la mano.",
+              "english": "Miguel and señora Carmen shake hands."
+            },
+            {
+              "text": "Sam está contento: hay un cuarto para Miguel, y hay una amiga más.",
+              "english": "Sam is happy: there is a room for Miguel, and one more friend."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

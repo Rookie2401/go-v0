@@ -1,0 +1,886 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-05",
+  "lang": "es",
+  "title": "Avisos, reglas y recetas",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-05",
+    "title": "Notices, rules, recipes (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "practical-communication"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "S": "Sam",
+    "K": "Karla",
+    "C": "Cajera",
+    "L": "Luis",
+    "E": "Elena",
+    "B": "Banquero"
+  },
+  "sections": [
+    {
+      "title": "Un sábado en la avenida",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam y Karla caminan por la avenida grande del pueblo.",
+              "english": "Sam and Karla walk along the big avenue of the village."
+            },
+            {
+              "text": "Hay mucha gente, y casi todos van a la esquina, donde está el supermercado.",
+              "english": "There are lots of people, and almost all of them are going to the corner where the supermarket is."
+            },
+            {
+              "text": "Al comienzo del mes, Sam apenas comprendía un aviso.",
+              "english": "At the start of the month Sam could hardly understand a notice."
+            },
+            {
+              "text": "Ahora ha descubierto que los avisos son una buena escuela.",
+              "english": "Now he has discovered that notices are a good school."
+            },
+            {
+              "text": "Aún no lo comprende todo, y tampoco quiere dejar de intentar.",
+              "english": "He doesn't understand everything yet, and he doesn't want to stop trying either."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla, mirá ese aviso.",
+              "english": "Karla, look at that notice.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Qué dice?",
+              "english": "What does it say?",
+              "speaker": "S"
+            },
+            {
+              "text": "Dice: «Favor no estacionar aquí».",
+              "english": "It says: \"Please do not park here.\"",
+              "speaker": "K"
+            },
+            {
+              "text": "Es un aviso para los carros.",
+              "english": "It is a notice for cars.",
+              "speaker": "K"
+            },
+            {
+              "text": "Favor no estacionar aquí.",
+              "english": "Please do not park here."
+            },
+            {
+              "text": "Privado.",
+              "english": "Private."
+            },
+            {
+              "text": "No se permite estacionar.",
+              "english": "Parking is not permitted."
+            },
+            {
+              "text": "¿Y qué quiere decir «privado»?",
+              "english": "And what does \"privado\" mean?",
+              "speaker": "S"
+            },
+            {
+              "text": "Quiere decir que no es público.",
+              "english": "It means that it is not public.",
+              "speaker": "K"
+            },
+            {
+              "text": "Es solo para los empleados de la empresa.",
+              "english": "It is only for the company's employees.",
+              "speaker": "K"
+            },
+            {
+              "text": "Entonces ese carro de la esquina no puede estar ahí.",
+              "english": "Then that car on the corner can't be there.",
+              "speaker": "S"
+            },
+            {
+              "text": "No puede.",
+              "english": "It can't.",
+              "speaker": "K"
+            },
+            {
+              "text": "El aviso lo indica, y ese carro impide el camino a otros.",
+              "english": "The notice indicates it, and that car blocks the way for others.",
+              "speaker": "K"
+            },
+            {
+              "text": "Y mirá: el jefe de la empresa ya está hablando con el empleado.",
+              "english": "And look: the company's boss is already talking to the employee.",
+              "speaker": "K"
+            },
+            {
+              "text": "¡Y el empleado tiene una sonrisa!",
+              "english": "And the employee has a smile!",
+              "speaker": "S"
+            },
+            {
+              "text": "Intenta explicar algo y nadie lo escucha.",
+              "english": "He is trying to explain something and nobody listens to him.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Manejar y conducir",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis llega en su carro y se detiene en la esquina.",
+              "english": "Luis arrives in his car and stops at the corner."
+            },
+            {
+              "text": "Quiere llevarlos al supermercado.",
+              "english": "He wants to take them to the supermarket."
+            },
+            {
+              "text": "Karla se sube con Sam, y los tres platican un poco.",
+              "english": "Karla gets in with Sam, and the three of them chat a little."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hoy es sábado y hay mucha gente en la avenida.",
+              "english": "Today is Saturday and there are a lot of people on the avenue.",
+              "speaker": "L"
+            },
+            {
+              "text": "Yo manejo con cuidado, pero no quiero llegar tarde.",
+              "english": "I drive carefully, but I don't want to be late.",
+              "speaker": "L"
+            },
+            {
+              "text": "Luis, ¿se dice «manejar» o «conducir»?",
+              "english": "Luis, do you say \"manejar\" or \"conducir\"?",
+              "speaker": "S"
+            },
+            {
+              "text": "Aquí decimos «manejar».",
+              "english": "Here we say \"manejar\".",
+              "speaker": "L"
+            },
+            {
+              "text": "En otros países dicen «conducir».",
+              "english": "In other countries they say \"conducir\".",
+              "speaker": "L"
+            },
+            {
+              "text": "Los dos están bien.",
+              "english": "Both are fine.",
+              "speaker": "L"
+            },
+            {
+              "text": "Yo jamás he manejado un carro aquí.",
+              "english": "I have never driven a car here.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Se permite manejar con un pasaporte de otro país?",
+              "english": "Is it permitted to drive with a passport from another country?",
+              "speaker": "S"
+            },
+            {
+              "text": "No, con el pasaporte no se permite.",
+              "english": "No, with a passport it is not permitted.",
+              "speaker": "L"
+            },
+            {
+              "text": "Hay que obtener otra tarjeta del gobierno.",
+              "english": "You have to obtain another card from the government.",
+              "speaker": "L"
+            },
+            {
+              "text": "Conduzca con cuidado.",
+              "english": "Drive carefully."
+            },
+            {
+              "text": "Deténgase aquí.",
+              "english": "Stop here."
+            },
+            {
+              "text": "No cruce la avenida.",
+              "english": "Do not cross the avenue."
+            },
+            {
+              "text": "Cruce en la esquina.",
+              "english": "Cross at the corner."
+            },
+            {
+              "text": "¿Se permite cruzar la avenida en otro lugar?",
+              "english": "Is it permitted to cross the avenue in another place?",
+              "speaker": "S"
+            },
+            {
+              "text": "Solo en la esquina.",
+              "english": "Only at the corner.",
+              "speaker": "L"
+            },
+            {
+              "text": "Los carros están obligados a detenerse ahí.",
+              "english": "Cars are required to stop there.",
+              "speaker": "L"
+            },
+            {
+              "text": "Y hoy hay lluvia, que impide ver bien.",
+              "english": "And today there is rain, which makes it hard to see.",
+              "speaker": "L"
+            },
+            {
+              "text": "Por eso hay que cruzar con mucho cuidado.",
+              "english": "That's why you have to cross very carefully.",
+              "speaker": "K"
+            },
+            {
+              "text": "Nadie nos obliga a correr.",
+              "english": "Nobody forces us to run.",
+              "speaker": "K"
+            },
+            {
+              "text": "Luis recibe una llamada de Ana desde el hospital.",
+              "english": "Luis receives a call from Ana at the hospital."
+            },
+            {
+              "text": "Ana anuncia que va a llegar tarde, porque todavía no ha comido.",
+              "english": "Ana announces that she is going to be late, because she hasn't eaten yet."
+            },
+            {
+              "text": "Luis se ríe, y Karla también.",
+              "english": "Luis laughs, and Karla does too."
+            },
+            {
+              "text": "Continúan el viaje con la risa de Luis en el carro.",
+              "english": "They continue the trip with Luis's laughter in the car."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En el supermercado",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El supermercado tiene mucha gente.",
+              "english": "The supermarket is crowded."
+            },
+            {
+              "text": "Hay una oferta grande de arroz y de frijoles, y un anuncio rojo en la calle.",
+              "english": "There is a big offer on rice and beans, and a red notice in the street."
+            },
+            {
+              "text": "Oferta de la semana.",
+              "english": "Offer of the week."
+            },
+            {
+              "text": "Pase por la caja.",
+              "english": "Go through the checkout."
+            },
+            {
+              "text": "No deje sus bolsas aquí.",
+              "english": "Do not leave your bags here."
+            },
+            {
+              "text": "Gracias por su compra.",
+              "english": "Thank you for your purchase."
+            },
+            {
+              "text": "Karla, ¿qué es una oferta?",
+              "english": "Karla, what is an offer?",
+              "speaker": "S"
+            },
+            {
+              "text": "Es un precio mejor que el de siempre.",
+              "english": "It is a better price than usual.",
+              "speaker": "K"
+            },
+            {
+              "text": "Mirá aquí: el arroz cuesta menos hoy.",
+              "english": "Look here: the rice costs less today.",
+              "speaker": "K"
+            },
+            {
+              "text": "El supermercado anuncia la oferta cada semana.",
+              "english": "The supermarket announces the offer every week.",
+              "speaker": "K"
+            },
+            {
+              "text": "Noto que casi nadie usa tarjeta aquí.",
+              "english": "I notice that almost nobody uses a card here.",
+              "speaker": "S"
+            },
+            {
+              "text": "Yo sí la uso, porque ya no quiero andar con mucho dinero.",
+              "english": "I do, because I no longer want to walk around with a lot of money.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Y esa venta de plátanos allá, en la calle?",
+              "english": "And that banana sale over there, in the street?",
+              "speaker": "S"
+            },
+            {
+              "text": "Es una venta pequeña.",
+              "english": "It is a small sale.",
+              "speaker": "K"
+            },
+            {
+              "text": "La compra la hacés allá, no aquí.",
+              "english": "You make the purchase over there, not here.",
+              "speaker": "K"
+            },
+            {
+              "text": "Aceptan dinero, pero no tarjeta.",
+              "english": "They accept money, but not a card.",
+              "speaker": "K"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la caja, Sam presenta su tarjeta.",
+              "english": "At the checkout, Sam presents his card."
+            },
+            {
+              "text": "La mujer de la caja lo mira con una sonrisa.",
+              "english": "The woman at the register looks at him with a smile."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Buenas tardes.",
+              "english": "Good afternoon.",
+              "speaker": "C"
+            },
+            {
+              "text": "Presente su tarjeta, por favor.",
+              "english": "Present your card, please.",
+              "speaker": "C"
+            },
+            {
+              "text": "Firme aquí.",
+              "english": "Sign here.",
+              "speaker": "C"
+            },
+            {
+              "text": "Gracias.",
+              "english": "Thank you.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Dónde pongo mi nombre?",
+              "english": "Where do I put my name?",
+              "speaker": "S"
+            },
+            {
+              "text": "Firme en este lugar.",
+              "english": "Sign in this place.",
+              "speaker": "C"
+            },
+            {
+              "text": "Revise el precio antes de pagar.",
+              "english": "Check the price before you pay.",
+              "speaker": "C"
+            },
+            {
+              "text": "Está bien.",
+              "english": "That's fine.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿La compra incluye las bolsas?",
+              "english": "Does the purchase include the bags?",
+              "speaker": "S"
+            },
+            {
+              "text": "Sí, el precio incluye todo.",
+              "english": "Yes, the price includes everything.",
+              "speaker": "C"
+            },
+            {
+              "text": "Que tenga un buen día.",
+              "english": "Have a good day.",
+              "speaker": "C"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un restaurante en la esquina",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después de comprar, Karla y Sam entran en un restaurante pequeño de la avenida.",
+              "english": "After shopping, Karla and Sam go into a small restaurant on the avenue."
+            },
+            {
+              "text": "El restaurante es público: todos pueden entrar.",
+              "english": "The restaurant is public: everyone can come in."
+            },
+            {
+              "text": "En general, la comida es buena y barata.",
+              "english": "In general, the food is good and cheap."
+            },
+            {
+              "text": "Hoy: sopa de pollo, arroz y frijoles.",
+              "english": "Today: chicken soup, rice and beans."
+            },
+            {
+              "text": "Esta sopa me recuerda la sopa de doña Marta.",
+              "english": "This soup reminds me of doña Marta's soup.",
+              "speaker": "K"
+            },
+            {
+              "text": "Voy a darte la receta en casa.",
+              "english": "I'll give you the recipe at home.",
+              "speaker": "K"
+            },
+            {
+              "text": "Comen, platican y ríen mucho.",
+              "english": "They eat, chat and laugh a lot."
+            },
+            {
+              "text": "El restaurante anuncia sus precios en la calle, y hoy la comida incluye pan.",
+              "english": "The restaurant announces its prices in the street, and today the meal includes bread."
+            },
+            {
+              "text": "Después dan una vuelta por la avenida antes de volver a casa.",
+              "english": "Afterwards they take a walk along the avenue before going home."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un formulario en el banco",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después, Sam necesita ir al banco.",
+              "english": "Afterwards Sam needs to go to the bank."
+            },
+            {
+              "text": "Quiere abrir una cuenta pequeña para pagar el cuarto.",
+              "english": "He wants to open a small account to pay for the room."
+            },
+            {
+              "text": "Karla presenta a Sam al hombre del banco, que es amable y lo ayuda.",
+              "english": "Karla introduces Sam to the man at the bank, who is kind and helps him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Buenas tardes.",
+              "english": "Good afternoon.",
+              "speaker": "B"
+            },
+            {
+              "text": "Presente su pasaporte, por favor.",
+              "english": "Present your passport, please.",
+              "speaker": "B"
+            },
+            {
+              "text": "Indique su nombre y su número de teléfono.",
+              "english": "Indicate your name and your telephone number.",
+              "speaker": "B"
+            },
+            {
+              "text": "Aquí tiene.",
+              "english": "Here you are.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Algo más?",
+              "english": "Anything else?",
+              "speaker": "S"
+            },
+            {
+              "text": "Revise su nombre, y escriba su número.",
+              "english": "Check your name, and write your number.",
+              "speaker": "B"
+            },
+            {
+              "text": "Informe al banco de todo cambio.",
+              "english": "Inform the bank of every change.",
+              "speaker": "B"
+            },
+            {
+              "text": "Karla, no entiendo la palabra «informe».",
+              "english": "Karla, I don't understand the word \"informe\".",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Es una palabra como «venir»?",
+              "english": "Is it a word like \"venir\"?",
+              "speaker": "S"
+            },
+            {
+              "text": "Sí.",
+              "english": "Yes.",
+              "speaker": "K"
+            },
+            {
+              "text": "«Informe» es la forma para «usted».",
+              "english": "\"Informe\" is the form for \"usted\".",
+              "speaker": "K"
+            },
+            {
+              "text": "El banco te habla de «usted».",
+              "english": "The bank addresses you as \"usted\".",
+              "speaker": "K"
+            },
+            {
+              "text": "Entonces con dos personas tengo que cambiar la palabra.",
+              "english": "So with two people I have to change the word.",
+              "speaker": "S"
+            },
+            {
+              "text": "Así es.",
+              "english": "That's right.",
+              "speaker": "K"
+            },
+            {
+              "text": "Si hablás con muchas personas, decís «vengan», «esperen», «pasen».",
+              "english": "If you speak with many people, you say \"vengan\", \"esperen\", \"pasen\".",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una receta de la casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche, Karla le da una receta a Sam.",
+              "english": "That night Karla gives Sam a recipe."
+            },
+            {
+              "text": "Es la sopa de pollo de doña Marta, desde el comienzo hasta la olla.",
+              "english": "It is doña Marta's chicken soup, from the beginning to the pot."
+            },
+            {
+              "text": "La receta indica poca sal.",
+              "english": "The recipe indicates little salt."
+            },
+            {
+              "text": "Sopa de pollo.",
+              "english": "Chicken soup."
+            },
+            {
+              "text": "Cortar el pollo.",
+              "english": "To cut the chicken."
+            },
+            {
+              "text": "Calentar un poco de aceite en la olla.",
+              "english": "To heat a little oil in the pot."
+            },
+            {
+              "text": "Fría la cebolla y el tomate.",
+              "english": "Fry the onion and the tomato."
+            },
+            {
+              "text": "Agregue el pollo y una cuchara de sal.",
+              "english": "Add the chicken and a spoonful of salt."
+            },
+            {
+              "text": "Prepare las verduras y póngalas en la olla.",
+              "english": "Prepare the vegetables and put them in the pot."
+            },
+            {
+              "text": "No cubra la olla del todo.",
+              "english": "Do not cover the pot completely."
+            },
+            {
+              "text": "Sirva la sopa en los platos.",
+              "english": "Serve the soup on the plates."
+            },
+            {
+              "text": "Karla, esta receta es muy buena.",
+              "english": "Karla, this recipe is very good.",
+              "speaker": "S"
+            },
+            {
+              "text": "Voy a prepararla el domingo.",
+              "english": "I am going to prepare it on Sunday.",
+              "speaker": "S"
+            },
+            {
+              "text": "Y no te olvidés: la sal, poca.",
+              "english": "And don't forget: little salt.",
+              "speaker": "K"
+            },
+            {
+              "text": "Si te equivocás, la sopa no sirve.",
+              "english": "If you make a mistake, the soup is no good.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las reglas de la casa del equipo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En la pared del hogar de Karla hay un aviso.",
+              "english": "On the wall of Karla's home there is a notice."
+            },
+            {
+              "text": "Es para el equipo que llega en julio.",
+              "english": "It is for the team that arrives in July."
+            },
+            {
+              "text": "Karla lo escribió hace un año, y lo ha revisado muchas veces.",
+              "english": "Karla wrote it a year ago, and she has revised it many times."
+            },
+            {
+              "text": "El pastor Mario le ha mencionado que el equipo llega con quince personas.",
+              "english": "Pastor Mario has mentioned to her that the team is arriving with fifteen people."
+            },
+            {
+              "text": "Avisos del hogar.",
+              "english": "Notices of the home."
+            },
+            {
+              "text": "Apaguen la luz al salir.",
+              "english": "Turn off the light when leaving."
+            },
+            {
+              "text": "Enciendan solo la luz del comedor.",
+              "english": "Turn on only the dining-room light."
+            },
+            {
+              "text": "Guarden los vasos y las tazas.",
+              "english": "Put away the glasses and the cups."
+            },
+            {
+              "text": "Saquen la basura por la noche.",
+              "english": "Take out the rubbish at night."
+            },
+            {
+              "text": "Ordenen su dormitorio.",
+              "english": "Tidy your bedroom."
+            },
+            {
+              "text": "Coloquen la manta y la almohada en el armario.",
+              "english": "Put the blanket and the pillow in the wardrobe."
+            },
+            {
+              "text": "Barran la sala y muevan el sofá cada semana.",
+              "english": "Sweep the living room and move the sofa every week."
+            },
+            {
+              "text": "Llenen la jarra del agua.",
+              "english": "Fill the water jug."
+            },
+            {
+              "text": "No tiren nada en el piso.",
+              "english": "Do not throw anything on the floor."
+            },
+            {
+              "text": "Callen después de las diez.",
+              "english": "Be quiet after ten."
+            },
+            {
+              "text": "Quiten los zapatos en la sala.",
+              "english": "Take off your shoes in the living room."
+            },
+            {
+              "text": "Agarren solo sus cosas, y metan las bolsas en el armario.",
+              "english": "Take only your own things, and put the bags in the wardrobe."
+            },
+            {
+              "text": "Anden con cuidado en el patio.",
+              "english": "Walk carefully in the courtyard."
+            },
+            {
+              "text": "No paren en la sala: pasen al comedor.",
+              "english": "Do not stop in the living room: go on to the dining room."
+            },
+            {
+              "text": "Abran la cortina por la mañana.",
+              "english": "Open the curtain in the morning."
+            },
+            {
+              "text": "No impidan el camino en la habitación.",
+              "english": "Do not block the way in the room."
+            },
+            {
+              "text": "Este aviso es general.",
+              "english": "This notice is general.",
+              "speaker": "K"
+            },
+            {
+              "text": "No obliga a nadie, pero ayuda a todos.",
+              "english": "It does not oblige anyone, but it helps everyone.",
+              "speaker": "K"
+            },
+            {
+              "text": "Me gusta.",
+              "english": "I like it.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es claro.",
+              "english": "It is clear.",
+              "speaker": "S"
+            },
+            {
+              "text": "Resuelve muchos problemas, y no dudo que todos van a obedecerlo.",
+              "english": "It solves many problems, and I don't doubt that everyone will obey it.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dos estaciones y un anuncio de la iglesia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El domingo, en la iglesia, la hermana Elena lee un anuncio para todos.",
+              "english": "On Sunday, at church, sister Elena reads an announcement for everyone."
+            },
+            {
+              "text": "Hermanos, escuchen.",
+              "english": "Brothers and sisters, listen.",
+              "speaker": "E"
+            },
+            {
+              "text": "En este país hay dos estaciones: el verano y el invierno.",
+              "english": "In this country there are two seasons: summer and winter.",
+              "speaker": "E"
+            },
+            {
+              "text": "En cada estación llueve de forma diferente.",
+              "english": "In each season it rains differently.",
+              "speaker": "E"
+            },
+            {
+              "text": "En esta estación llueve mucho, y las calles se llenan de agua.",
+              "english": "In this season it rains a lot, and the streets fill with water.",
+              "speaker": "E"
+            },
+            {
+              "text": "Por eso la iglesia informa a todos: ustedes pueden dejar sus carros en el patio, pero no estacionen aquí.",
+              "english": "That's why the church informs everyone: you can leave your cars in the courtyard, but do not park here.",
+              "speaker": "E"
+            },
+            {
+              "text": "Pasen por la mesa, firmen aquí y revisen su nombre.",
+              "english": "Go to the table, sign here and check your name.",
+              "speaker": "E"
+            },
+            {
+              "text": "Presenten a los amigos nuevos.",
+              "english": "Introduce the new friends.",
+              "speaker": "E"
+            },
+            {
+              "text": "La iglesia anuncia que cada persona es bienvenida.",
+              "english": "The church announces that every person is welcome.",
+              "speaker": "E"
+            },
+            {
+              "text": "La reunión general es el sábado.",
+              "english": "The general meeting is on Saturday.",
+              "speaker": "E"
+            },
+            {
+              "text": "El inicio es a las ocho.",
+              "english": "The start is at eight.",
+              "speaker": "E"
+            },
+            {
+              "text": "La reunión es pública, pero la comida es privada, solo para el equipo, y también incluye sopa.",
+              "english": "The meeting is public, but the meal is private, only for the team, and also includes soup.",
+              "speaker": "E"
+            },
+            {
+              "text": "Anuncio nuevo: hay una venta de pan en el patio.",
+              "english": "New announcement: there is a bread sale in the courtyard.",
+              "speaker": "E"
+            },
+            {
+              "text": "La compra de cada pan ayuda a la clínica.",
+              "english": "Buying each loaf helps the clinic.",
+              "speaker": "E"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

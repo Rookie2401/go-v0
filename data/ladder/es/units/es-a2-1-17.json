@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-17",
+  "lang": "es",
+  "title": "Cómo se hace aquí",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-17",
+    "title": "How it is done (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "instructions",
+    "household",
+    "safety"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Un libro del equipo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Daniel escribe un libro pequeño para los que visitan el pueblo.",
+              "english": "Daniel is writing a small book for those who visit the village."
+            },
+            {
+              "text": "Se llama «Cómo se hace aquí».",
+              "english": "It is called \"How It Is Done Here.\""
+            },
+            {
+              "text": "Sam lo lee primero.",
+              "english": "Sam reads it first."
+            },
+            {
+              "text": "Quiere saber cómo se vive en el pueblo.",
+              "english": "He wants to know how people live in the village."
+            },
+            {
+              "text": "El libro es pequeño, pero tiene mucha ayuda.",
+              "english": "The book is small, but it has a lot of help."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El agua",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sin agua limpia, la gente se enferma.",
+              "english": "Without clean water, people get sick."
+            },
+            {
+              "text": "Por eso el agua se mantiene limpia.",
+              "english": "That is why water is kept clean."
+            },
+            {
+              "text": "El agua limpia se pone en una jarra o en una olla.",
+              "english": "Clean water is put in a jug or in a pot."
+            },
+            {
+              "text": "Se cubre con un plato o con una toalla limpia.",
+              "english": "It is covered with a plate or with a clean towel."
+            },
+            {
+              "text": "Así se protege de los insectos y de las moscas.",
+              "english": "This way it is protected from insects and flies."
+            },
+            {
+              "text": "Se pone la jarra lejos de la basura, en un lado de la casa.",
+              "english": "The jug is put far from the garbage, on one side of the house."
+            },
+            {
+              "text": "Para tomar agua se usa un vaso o una taza.",
+              "english": "To drink water, a glass or a cup is used."
+            },
+            {
+              "text": "Cada persona usa su vaso.",
+              "english": "Each person uses their own glass."
+            },
+            {
+              "text": "Una botella también sirve, pero la botella debe estar limpia.",
+              "english": "A bottle also works, but the bottle must be clean."
+            },
+            {
+              "text": "La botella se mantiene lejos del sol.",
+              "english": "The bottle is kept away from the sun."
+            },
+            {
+              "text": "Se evita el agua de la calle y el agua que no está cubierta.",
+              "english": "Water from the street and water that is not covered are avoided."
+            },
+            {
+              "text": "El riesgo es grande: el dengue viene de los insectos del agua.",
+              "english": "The risk is great: dengue comes from the insects in the water."
+            },
+            {
+              "text": "Si el agua está al sol, hay más riesgo.",
+              "english": "If the water is in the sun, there is more risk."
+            },
+            {
+              "text": "Por eso el agua de las jarras se cambia cada día.",
+              "english": "That is why the water in the jugs is changed every day."
+            },
+            {
+              "text": "El uso del agua es un cuidado de todos.",
+              "english": "The use of water is everyone's care."
+            },
+            {
+              "text": "El uso de un solo vaso para todos es un riesgo.",
+              "english": "Using a single glass for everyone is a risk."
+            },
+            {
+              "text": "Se evita tomar agua de otro vaso.",
+              "english": "Drinking water from someone else's glass is avoided."
+            },
+            {
+              "text": "Antes de comer, las manos se pasan por el agua con jabón.",
+              "english": "Before eating, the hands are passed through water with soap."
+            },
+            {
+              "text": "Se evita comer con las manos sin jabón.",
+              "english": "Eating with hands without soap is avoided."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La comida",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La comida también se protege.",
+              "english": "Food is also protected."
+            },
+            {
+              "text": "Los frijoles se ponen en una olla y se mantienen en un lado de la casa.",
+              "english": "Beans are put in a pot and kept on one side of the house."
+            },
+            {
+              "text": "El arroz se hace así.",
+              "english": "Rice is made like this."
+            },
+            {
+              "text": "Se pone una taza de arroz en la olla, se agregan dos tazas de agua y un poco de sal, y se cocina.",
+              "english": "One cup of rice is put in the pot, two cups of water and a little salt are added, and it is cooked."
+            },
+            {
+              "text": "Con esta cantidad hay arroz para cuatro personas.",
+              "english": "With this amount there is rice for four people."
+            },
+            {
+              "text": "Para más gente, la cantidad cambia: se usa más arroz y más agua.",
+              "english": "For more people, the amount changes: more rice and more water are used."
+            },
+            {
+              "text": "Si la cantidad de arroz es grande, la olla debe ser grande.",
+              "english": "If the amount of rice is large, the pot must be large."
+            },
+            {
+              "text": "En el mercado, el comerciante pesa el arroz.",
+              "english": "At the market, the merchant weighs the rice."
+            },
+            {
+              "text": "Se prepara una mezcla de cebolla y tomate.",
+              "english": "A mixture of onion and tomato is prepared."
+            },
+            {
+              "text": "La mezcla se agrega al arroz, y esta mezcla se come con tortillas.",
+              "english": "The mixture is added to the rice, and this mixture is eaten with tortillas."
+            },
+            {
+              "text": "La mitad de la comida se come hoy, y la otra mitad se deja para la noche.",
+              "english": "Half of the food is eaten today, and the other half is left for the night."
+            },
+            {
+              "text": "La parte que queda se cubre con un plato y se pone lejos del sol.",
+              "english": "The part that is left is covered with a plate and put away from the sun."
+            },
+            {
+              "text": "No se deja la comida en la mesa.",
+              "english": "Food is not left on the table."
+            },
+            {
+              "text": "Las moscas llegan pronto.",
+              "english": "Flies arrive soon."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los frijoles",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cada campesino tiene su manera de sembrar.",
+              "english": "Each farmer has their way of sowing."
+            },
+            {
+              "text": "Esta es una forma que usa mucha gente del pueblo.",
+              "english": "This is a way that many people in the village use."
+            },
+            {
+              "text": "Hay dos tipos de frijoles: rojos y negros.",
+              "english": "There are two types of beans: red and black."
+            },
+            {
+              "text": "Cada tipo necesita su tiempo.",
+              "english": "Each type needs its time."
+            },
+            {
+              "text": "El tipo rojo se siembra en mayo, y el tipo negro se siembra en agosto.",
+              "english": "The red type is sown in May, and the black type is sown in August."
+            },
+            {
+              "text": "Primero se cava la tierra.",
+              "english": "First the ground is dug."
+            },
+            {
+              "text": "Después se planta una semilla en cada lugar.",
+              "english": "Then a seed is planted in each place."
+            },
+            {
+              "text": "Una parte de la tierra se deja para los frijoles negros.",
+              "english": "One part of the land is left for the black beans."
+            },
+            {
+              "text": "La semilla se cubre con tierra, y se riega con una taza de agua.",
+              "english": "The seed is covered with earth, and it is watered with a cup of water."
+            },
+            {
+              "text": "La mitad de las semillas va en el valle, y la otra mitad va en el cerro.",
+              "english": "Half of the seeds go in the valley, and the other half go on the hill."
+            },
+            {
+              "text": "La tierra se protege de las aves y de los insectos.",
+              "english": "The land is protected from birds and insects."
+            },
+            {
+              "text": "Al lado de los frijoles se plantan tomates y cebollas.",
+              "english": "Next to the beans, tomatoes and onions are planted."
+            },
+            {
+              "text": "Cuidado con regar mucho.",
+              "english": "Careful about watering too much."
+            },
+            {
+              "text": "Si llueve mucho, hay riesgo de perder las semillas.",
+              "english": "If it rains a lot, there is a risk of losing the seeds."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Antes de un viaje",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Antes de viajar, se debe pensar en la seguridad.",
+              "english": "Before traveling, safety should be considered."
+            },
+            {
+              "text": "La seguridad empieza en la casa.",
+              "english": "Safety begins at home."
+            },
+            {
+              "text": "Se mira el pasaporte.",
+              "english": "The passport is checked."
+            },
+            {
+              "text": "Para pasar la frontera, se necesita el pasaporte.",
+              "english": "To cross the border, the passport is needed."
+            },
+            {
+              "text": "Se llega temprano al aeropuerto, porque hay vuelos con retraso.",
+              "english": "One arrives early at the airport, because there are delayed flights."
+            },
+            {
+              "text": "La bolsa se pesa antes del vuelo.",
+              "english": "The bag is weighed before the flight."
+            },
+            {
+              "text": "Si la bolsa pesa mucho, se paga más.",
+              "english": "If the bag weighs a lot, one pays more."
+            },
+            {
+              "text": "Una parte de las cosas va en una bolsa pequeña.",
+              "english": "Part of the things goes in a small bag."
+            },
+            {
+              "text": "En el carro, cada persona se sienta con cuidado.",
+              "english": "In the car, each person sits carefully."
+            },
+            {
+              "text": "Se viaja con seguridad.",
+              "english": "One travels with safety."
+            },
+            {
+              "text": "En un viaje de muchas horas, también se descansa.",
+              "english": "On a trip of many hours, one also rests."
+            },
+            {
+              "text": "Se recibe a la gente con un abrazo.",
+              "english": "People are received with a hug."
+            },
+            {
+              "text": "Se pregunta a un panadero, a un comerciante o al director de la escuela; ellos conocen bien el pueblo.",
+              "english": "One asks a baker, a merchant or the director of the school; they know the village well."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Por zonas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En el norte y en la costa se come lo que trae el mar.",
+              "english": "In the north and on the coast people eat what the sea brings."
+            },
+            {
+              "text": "En las islas se vive del mar también.",
+              "english": "On the islands people live from the sea too."
+            },
+            {
+              "text": "Cada lugar tiene su forma de cuidar el agua.",
+              "english": "Each place has its way of taking care of water."
+            },
+            {
+              "text": "En el valle y en el cerro la temperatura cambia.",
+              "english": "In the valley and on the hill the temperature changes."
+            },
+            {
+              "text": "En el bosque se cuida la naturaleza, y no se deja basura.",
+              "english": "In the forest nature is taken care of, and no garbage is left."
+            },
+            {
+              "text": "En la selva viven culebras, monos y aves.",
+              "english": "In the jungle snakes, monkeys and birds live."
+            },
+            {
+              "text": "Se camina con cuidado, y el uso del agua es diferente.",
+              "english": "People walk carefully, and the use of water is different."
+            },
+            {
+              "text": "En el mapa de la nación, el sur y el lago son otras zonas, con otra forma de hacer las cosas.",
+              "english": "On the map of the nation, the south and the lake are other zones, with another way of doing things."
+            },
+            {
+              "text": "La basura se pone en un lugar lejos de la casa.",
+              "english": "Garbage is put in a place far from the house."
+            },
+            {
+              "text": "Los hondureños, los guatemaltecos, los salvadoreños y los nicaragüenses son centroamericanos, y aprenden unos de otros.",
+              "english": "Hondurans, Guatemalans, Salvadorans and Nicaraguans are Central Americans, and they learn from one another."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Preguntas de los visitantes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "¿Se puede tomar agua de la calle?",
+              "english": "Can you drink water from the street?"
+            },
+            {
+              "text": "No, no se puede.",
+              "english": "No, you cannot."
+            },
+            {
+              "text": "¿Cómo se saluda?",
+              "english": "How do you greet?"
+            },
+            {
+              "text": "Se saluda con la mano, con un abrazo o con un beso.",
+              "english": "You greet with a handshake, with a hug or with a kiss."
+            },
+            {
+              "text": "¿Se pueden tomar fotos?",
+              "english": "Can you take photos?"
+            },
+            {
+              "text": "Se puede, pero primero se pregunta.",
+              "english": "You can, but first you ask."
+            },
+            {
+              "text": "¿Qué se lleva a un viaje?",
+              "english": "What do you take on a trip?"
+            },
+            {
+              "text": "Se lleva agua, zapatos buenos y el pasaporte.",
+              "english": "You take water, good shoes and the passport."
+            },
+            {
+              "text": "¿Dónde se paga el autobús?",
+              "english": "Where do you pay for the bus?"
+            },
+            {
+              "text": "Se paga en la terminal.",
+              "english": "You pay at the terminal."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una carta para casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche, Sam escribe una carta a su familia.",
+              "english": "That night, Sam writes a letter to his family."
+            },
+            {
+              "text": "Querida familia:",
+              "english": "Dear family:"
+            },
+            {
+              "text": "Aquí se vive de otra manera.",
+              "english": "Here people live in a different way."
+            },
+            {
+              "text": "Se cubre el agua, se protege la comida y se saluda con un abrazo.",
+              "english": "Water is covered, food is protected and people greet with a hug."
+            },
+            {
+              "text": "Se aprende mucho de la gente.",
+              "english": "You learn a lot from the people."
+            },
+            {
+              "text": "Se pregunta, se escucha y se repite.",
+              "english": "You ask, you listen and you repeat."
+            },
+            {
+              "text": "Los extraño mucho y les mando cariño.",
+              "english": "I miss you a lot and I send you affection."
+            },
+            {
+              "text": "Pronto voy a escribir otra carta.",
+              "english": "Soon I will write another letter."
+            },
+            {
+              "text": "Repito: aquí estoy bien.",
+              "english": "I repeat: I am fine here."
+            },
+            {
+              "text": "Sam",
+              "english": "Sam"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

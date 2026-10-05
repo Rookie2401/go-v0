@@ -1,0 +1,864 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-13",
+  "lang": "es",
+  "title": "Opiniones y comparaciones",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-13",
+    "title": "Opinions and comparisons (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "S": "Sam",
+    "K": "Karla",
+    "N": "Nico",
+    "M": "Doña Marta",
+    "L": "Luis",
+    "A": "Ana"
+  },
+  "sections": [
+    {
+      "title": "El mejor día y el peor día",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es domingo por la tarde, y llueve.",
+              "english": "It is Sunday afternoon, and it is raining."
+            },
+            {
+              "text": "Sam, Karla y Nico están en la sala sin nada que hacer.",
+              "english": "Sam, Karla and Nico are in the living room with nothing to do."
+            },
+            {
+              "text": "Nico propone un juego: cada uno expresa su opinión, y los otros juzgan si es cierta o falsa.",
+              "english": "Nico proposes a game: each one expresses his opinion, and the others judge whether it is true or false."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Vamos a jugar a las opiniones.",
+              "english": "Let's play the opinions game.",
+              "speaker": "N"
+            },
+            {
+              "text": "Yo pregunto, y ustedes dicen lo que piensan.",
+              "english": "I ask, and you say what you think.",
+              "speaker": "N"
+            },
+            {
+              "text": "Está bien.",
+              "english": "All right.",
+              "speaker": "K"
+            },
+            {
+              "text": "Pero hay que ser sinceros.",
+              "english": "But we have to be sincere.",
+              "speaker": "K"
+            },
+            {
+              "text": "Una opinión honesta es mejor que una opinión bonita.",
+              "english": "An honest opinion is better than a pretty opinion.",
+              "speaker": "K"
+            },
+            {
+              "text": "Primera pregunta.",
+              "english": "First question.",
+              "speaker": "N"
+            },
+            {
+              "text": "Sam, ¿cuál fue tu mejor día en Honduras?",
+              "english": "Sam, which was your best day in Honduras?",
+              "speaker": "N"
+            },
+            {
+              "text": "Creo que fue el día en la aldea.",
+              "english": "I think it was the day in the village.",
+              "speaker": "S"
+            },
+            {
+              "text": "Me parece que ese día aprendí más que en todo el año anterior.",
+              "english": "It seems to me that that day I learned more than in the whole previous year.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Y cuál fue el peor día?",
+              "english": "And which was the worst day?",
+              "speaker": "K"
+            },
+            {
+              "text": "El peor fue el día de la fiebre.",
+              "english": "The worst was the day of the fever.",
+              "speaker": "S"
+            },
+            {
+              "text": "Estaba débil, tenía sed y me dolía la pierna.",
+              "english": "I was weak, I was thirsty and my leg hurt.",
+              "speaker": "S"
+            },
+            {
+              "text": "Fue el día más difícil de todos.",
+              "english": "It was the hardest day of all.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Peor que el día del río?",
+              "english": "Worse than the day of the river?",
+              "speaker": "N"
+            },
+            {
+              "text": "Mucho peor.",
+              "english": "Much worse.",
+              "speaker": "S"
+            },
+            {
+              "text": "En el río había peligro, pero también había algo bueno.",
+              "english": "In the river there was danger, but there was also something good.",
+              "speaker": "S"
+            },
+            {
+              "text": "En la cama solo había dolor.",
+              "english": "In bed there was only pain.",
+              "speaker": "S"
+            },
+            {
+              "text": "El río no fue tan difícil como la fiebre.",
+              "english": "The river was not as hard as the fever.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hermanos mayores y menores",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam, ¿tu hermana Sofía es mayor o menor que vos?",
+              "english": "Sam, is your sister Sofía older or younger than you?",
+              "speaker": "N"
+            },
+            {
+              "text": "Es menor.",
+              "english": "She is younger.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ella tiene veinte años, y yo tengo veintitrés.",
+              "english": "She is twenty, and I am twenty-three.",
+              "speaker": "S"
+            },
+            {
+              "text": "Yo soy la mayor de mi casa.",
+              "english": "I am the oldest in my house.",
+              "speaker": "K"
+            },
+            {
+              "text": "Mi hermano menor es igual de alto que yo, pero es tan amable como yo.",
+              "english": "My younger brother is just as tall as I am, but he is as kind as I am.",
+              "speaker": "K"
+            },
+            {
+              "text": "Además, tiene el mismo cabello negro.",
+              "english": "Besides, he has the same black hair.",
+              "speaker": "K"
+            },
+            {
+              "text": "Yo soy el menor de la casa.",
+              "english": "I am the youngest in the house.",
+              "speaker": "N"
+            },
+            {
+              "text": "Mi tío Luis es el mayor de los hermanos.",
+              "english": "My uncle Luis is the oldest of the brothers.",
+              "speaker": "N"
+            },
+            {
+              "text": "Ana es menor que él, pero es más alta.",
+              "english": "Ana is younger than he is, but she is taller.",
+              "speaker": "N"
+            },
+            {
+              "text": "Eso es cierto, y no lo niego.",
+              "english": "That is true, and I don't deny it.",
+              "speaker": "L"
+            },
+            {
+              "text": "Ana es más alta que yo, aunque yo soy el mayor.",
+              "english": "Ana is taller than I am, although I am the oldest.",
+              "speaker": "L"
+            },
+            {
+              "text": "Para mí, los dos son iguales de buenos.",
+              "english": "To me, the two are equally good.",
+              "speaker": "M"
+            },
+            {
+              "text": "Ninguno es mejor ni peor.",
+              "english": "Neither is better nor worse.",
+              "speaker": "M"
+            },
+            {
+              "text": "Los quiero igual.",
+              "english": "I love them the same.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "¿Cine o balón?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ahora una pregunta difícil.",
+              "english": "Now a hard question.",
+              "speaker": "N"
+            },
+            {
+              "text": "¿Qué es mejor, un partido de balón o una película en el cine?",
+              "english": "Which is better, a ball match or a film at the cinema?",
+              "speaker": "N"
+            },
+            {
+              "text": "Yo creo que el partido es mucho mejor.",
+              "english": "I think the match is much better.",
+              "speaker": "N"
+            },
+            {
+              "text": "Un gol es más importante que cien palabras.",
+              "english": "A goal is more important than a hundred words.",
+              "speaker": "N"
+            },
+            {
+              "text": "No creo que sea así.",
+              "english": "I don't think that's so.",
+              "speaker": "K"
+            },
+            {
+              "text": "Una película es más suave, y un partido es más duro.",
+              "english": "A film is softer, and a match is harder.",
+              "speaker": "K"
+            },
+            {
+              "text": "Además, en el cine nadie recibe un golpe.",
+              "english": "Besides, at the cinema nobody gets hit.",
+              "speaker": "K"
+            },
+            {
+              "text": "Aunque el partido es más barato, es más peligroso para las piernas.",
+              "english": "Although the match is cheaper, it is more dangerous for the legs.",
+              "speaker": "S"
+            },
+            {
+              "text": "Y la película dura bastante más.",
+              "english": "And the film lasts quite a bit longer.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pero en el partido hay un premio.",
+              "english": "But in the match there is a prize.",
+              "speaker": "N"
+            },
+            {
+              "text": "En el cine no hay premio.",
+              "english": "At the cinema there is no prize.",
+              "speaker": "N"
+            },
+            {
+              "text": "Sí hay premio: la película nos da ideas.",
+              "english": "There is a prize: the film gives us ideas.",
+              "speaker": "K"
+            },
+            {
+              "text": "Leí en el periódico que el cine es tan útil como un libro.",
+              "english": "I read in the newspaper that cinema is as useful as a book.",
+              "speaker": "K"
+            },
+            {
+              "text": "Yo supongo que depende de la persona.",
+              "english": "I suppose it depends on the person.",
+              "speaker": "S"
+            },
+            {
+              "text": "Imagino que a vos te gusta correr, y a mí me gusta sentarme.",
+              "english": "I imagine you like to run, and I like to sit.",
+              "speaker": "S"
+            },
+            {
+              "text": "Aparte de eso, el baile me gusta más que los dos.",
+              "english": "Apart from that, I like dancing more than both.",
+              "speaker": "S"
+            },
+            {
+              "text": "¡El baile!",
+              "english": "Dancing!",
+              "speaker": "K"
+            },
+            {
+              "text": "Es demasiado difícil para vos, Sam.",
+              "english": "It's too hard for you, Sam.",
+              "speaker": "K"
+            },
+            {
+              "text": "Tus piernas siempre se equivocan.",
+              "english": "Your legs always get it wrong.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo moderno y lo antiguo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta entra con una jarra de café tibio.",
+              "english": "Doña Marta comes in with a jug of lukewarm coffee."
+            },
+            {
+              "text": "Escucha un poco y se sienta a escuchar mejor.",
+              "english": "She listens a little and sits down to listen better."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿De qué hablan?",
+              "english": "What are you talking about?",
+              "speaker": "M"
+            },
+            {
+              "text": "¿Quién gana?",
+              "english": "Who is winning?",
+              "speaker": "M"
+            },
+            {
+              "text": "Abuela, estamos diciendo qué es mejor.",
+              "english": "Grandmother, we're saying what is better.",
+              "speaker": "N"
+            },
+            {
+              "text": "Yo digo que lo moderno es mejor que lo antiguo.",
+              "english": "I say that the modern is better than the old.",
+              "speaker": "N"
+            },
+            {
+              "text": "Con un teléfono podés saber todo.",
+              "english": "With a phone you can know everything.",
+              "speaker": "N"
+            },
+            {
+              "text": "No niego que el teléfono es útil.",
+              "english": "I don't deny that the phone is useful.",
+              "speaker": "M"
+            },
+            {
+              "text": "Pero no afirmo que sea mejor.",
+              "english": "But I don't claim that it is better.",
+              "speaker": "M"
+            },
+            {
+              "text": "En mi tiempo la vida era más natural.",
+              "english": "In my time life was more natural.",
+              "speaker": "M"
+            },
+            {
+              "text": "El ser humano platicaba más.",
+              "english": "People talked more.",
+              "speaker": "M"
+            },
+            {
+              "text": "El café era más fresco y el pan era más suave.",
+              "english": "The coffee was fresher and the bread was softer.",
+              "speaker": "M"
+            },
+            {
+              "text": "Es cierto que la vida actual es más fácil, pero también es más pesada.",
+              "english": "It is true that life today is easier, but it is also heavier.",
+              "speaker": "L"
+            },
+            {
+              "text": "Hay demasiado trabajo y poca fuerza.",
+              "english": "There is too much work and little strength.",
+              "speaker": "L"
+            },
+            {
+              "text": "Lo antiguo y lo moderno no son enemigos.",
+              "english": "The old and the modern are not enemies.",
+              "speaker": "A"
+            },
+            {
+              "text": "Reconozco que necesito los dos: la clínica moderna y la sopa antigua de mi mamá.",
+              "english": "I recognize that I need both: the modern clinic and my mother's old soup.",
+              "speaker": "A"
+            },
+            {
+              "text": "Imaginen cómo va a ser la vida dentro de cincuenta años.",
+              "english": "Imagine what life will be like in fifty years.",
+              "speaker": "M"
+            },
+            {
+              "text": "Imagino que la vida actual va a parecer antigua.",
+              "english": "I imagine that today's life will seem old.",
+              "speaker": "S"
+            },
+            {
+              "text": "Nuestros teléfonos de hoy van a parecer muy viejos.",
+              "english": "Our phones of today will seem very old.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Describir y distinguir",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ahora algo nuevo.",
+              "english": "Now something new.",
+              "speaker": "K"
+            },
+            {
+              "text": "Sam, describí a doña Marta en tres palabras.",
+              "english": "Sam, describe doña Marta in three words.",
+              "speaker": "K"
+            },
+            {
+              "text": "Es sincera, amable y bonita.",
+              "english": "She is sincere, kind and pretty.",
+              "speaker": "S"
+            },
+            {
+              "text": "Qué bien.",
+              "english": "How nice.",
+              "speaker": "M"
+            },
+            {
+              "text": "Eso es una opinión, y me gusta.",
+              "english": "That is an opinion, and I like it.",
+              "speaker": "M"
+            },
+            {
+              "text": "Hay que distinguir entre lo que es verdadero y lo que solo es una opinión.",
+              "english": "We have to distinguish between what is true and what is only an opinion.",
+              "speaker": "K"
+            },
+            {
+              "text": "Si digo que Honduras es bonita, es una opinión.",
+              "english": "If I say Honduras is pretty, it is an opinion.",
+              "speaker": "K"
+            },
+            {
+              "text": "Si digo que Honduras tiene sol casi todo el año, es verdadero.",
+              "english": "If I say Honduras has sun almost all year, it is true.",
+              "speaker": "K"
+            },
+            {
+              "text": "Entonces «el pan duro es peor que el pan blando» es una opinión.",
+              "english": "Then \"hard bread is worse than soft bread\" is an opinion.",
+              "speaker": "S"
+            },
+            {
+              "text": "Y «el agua tibia no es agua fresca» es cierto.",
+              "english": "And \"lukewarm water is not cool water\" is true.",
+              "speaker": "S"
+            },
+            {
+              "text": "Reconocer la diferencia es importante.",
+              "english": "Recognizing the difference is important.",
+              "speaker": "A"
+            },
+            {
+              "text": "En la clínica hay que distinguir un golpe ligero de un golpe peligroso, y una fiebre pequeña de una fiebre grande.",
+              "english": "At the clinic we have to distinguish a light bump from a dangerous bump, and a small fever from a big fever.",
+              "speaker": "A"
+            },
+            {
+              "text": "Y no hay que juzgar demasiado pronto.",
+              "english": "And we must not judge too soon.",
+              "speaker": "L"
+            },
+            {
+              "text": "Primero se mira, después se juzga.",
+              "english": "First one looks, then one judges.",
+              "speaker": "L"
+            },
+            {
+              "text": "Juzgar a una persona sin conocerla es una forma de mentir.",
+              "english": "Judging a person without knowing them is a way of lying.",
+              "speaker": "L"
+            },
+            {
+              "text": "Tenés razón, hijo.",
+              "english": "You are right, son.",
+              "speaker": "M"
+            },
+            {
+              "text": "Una persona no es lo que otros dicen.",
+              "english": "A person is not what others say.",
+              "speaker": "M"
+            },
+            {
+              "text": "Hay que ser honestos con otras personas, pero también hay que ser honestos con uno mismo.",
+              "english": "We have to be honest with other people, but also honest with ourselves.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Verdad y mentira",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ahora la última pregunta.",
+              "english": "Now the last question.",
+              "speaker": "N"
+            },
+            {
+              "text": "¿Es cierto que Sam teme a los toros?",
+              "english": "Is it true that Sam is afraid of bulls?",
+              "speaker": "N"
+            },
+            {
+              "text": "Es verdad, y lo reconozco.",
+              "english": "It's true, and I admit it.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ayer vi un toro y salí corriendo.",
+              "english": "Yesterday I saw a bull and ran off.",
+              "speaker": "S"
+            },
+            {
+              "text": "Eso es falso.",
+              "english": "That's false.",
+              "speaker": "K"
+            },
+            {
+              "text": "Yo estaba ahí: caminaste despacio, y bastante lejos del toro.",
+              "english": "I was there: you walked slowly, and quite far from the bull.",
+              "speaker": "K"
+            },
+            {
+              "text": "Bueno, no lo niego.",
+              "english": "Well, I don't deny it.",
+              "speaker": "S"
+            },
+            {
+              "text": "Caminé despacio porque tenía las piernas débiles.",
+              "english": "I walked slowly because my legs were weak.",
+              "speaker": "S"
+            },
+            {
+              "text": "Eso no es temer, sino cuidar las piernas.",
+              "english": "That isn't fearing, but looking after my legs.",
+              "speaker": "S"
+            },
+            {
+              "text": "Sam, no estás siendo sincero.",
+              "english": "Sam, you are not being sincere.",
+              "speaker": "N"
+            },
+            {
+              "text": "No hay que negar la verdad.",
+              "english": "We must not deny the truth.",
+              "speaker": "N"
+            },
+            {
+              "text": "Tenés razón, Nico.",
+              "english": "You're right, Nico.",
+              "speaker": "S"
+            },
+            {
+              "text": "Quiero ser honesto.",
+              "english": "I want to be honest.",
+              "speaker": "S"
+            },
+            {
+              "text": "Afirmo que temo a los toros, y también a los perros grandes.",
+              "english": "I state that I fear bulls, and also big dogs.",
+              "speaker": "S"
+            },
+            {
+              "text": "Y ahora expreso otra verdad: me gusta este juego.",
+              "english": "And now I express another truth: I like this game.",
+              "speaker": "S"
+            },
+            {
+              "text": "No es solo un juego, sino una forma de aprender español.",
+              "english": "It is not only a game, but a way of learning Spanish.",
+              "speaker": "K"
+            },
+            {
+              "text": "Cada vez que das una opinión, practicás las palabras.",
+              "english": "Every time you give an opinion, you practise the words.",
+              "speaker": "K"
+            },
+            {
+              "text": "Y aprendemos algo más: que podemos tener opiniones diferentes sin ser enemigos.",
+              "english": "And we learn something more: that we can have different opinions without being enemies.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una nota para el periódico",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche, Karla escribe algo para el periódico de la comunidad.",
+              "english": "That night Karla writes something for the community newspaper."
+            },
+            {
+              "text": "Se llama «Cómo dar una opinión».",
+              "english": "It is called \"How to give an opinion.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Una opinión no es lo mismo que una verdad.",
+              "english": "An opinion is not the same as a truth."
+            },
+            {
+              "text": "Cuando afirmamos algo, decimos que es verdadero.",
+              "english": "When we state something, we say that it is true."
+            },
+            {
+              "text": "Cuando negamos algo, decimos que es falso.",
+              "english": "When we deny something, we say that it is false."
+            },
+            {
+              "text": "Pero cuando expresamos una opinión, decimos lo que pensamos, y otra persona puede pensar diferente.",
+              "english": "But when we express an opinion, we say what we think, and another person can think differently."
+            },
+            {
+              "text": "Es natural, porque tener opiniones es humano.",
+              "english": "It is natural, because having opinions is human."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Veamos algunos ejemplos.",
+              "english": "Let's look at some examples."
+            },
+            {
+              "text": "«Un vaso lleno pesa más que un vaso vacío» es verdadero.",
+              "english": "\"A full glass weighs more than an empty glass\" is true."
+            },
+            {
+              "text": "«El café caliente es mejor que el café tibio» es una opinión.",
+              "english": "\"Hot coffee is better than lukewarm coffee\" is an opinion."
+            },
+            {
+              "text": "«La limpieza es necesaria para estar sano» es verdad, y además es importante.",
+              "english": "\"Cleanliness is necessary to be healthy\" is true, and besides it is important."
+            },
+            {
+              "text": "«Esta sopa huele mejor que aquella» es una opinión.",
+              "english": "\"This soup smells better than that one\" is an opinion."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la clínica, Ana nos explica que se hace una prueba, se mira el peso del bebé, se revisa un corte y se mira la vista de los niños.",
+              "english": "At the clinic, Ana explains to us that a test is done, the baby's weight is looked at, a cut is checked and the children's sight is looked at."
+            },
+            {
+              "text": "Si un bebé tiene las mejillas rojas, los labios duros y mal aliento, eso no es una opinión.",
+              "english": "If a baby has red cheeks, hard lips and bad breath, that is not an opinion."
+            },
+            {
+              "text": "Es una señal que Ana sabe reconocer.",
+              "english": "It is a sign that Ana knows how to recognize."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Para dar una buena opinión hay que ser honesto y sincero.",
+              "english": "To give a good opinion you have to be honest and sincere."
+            },
+            {
+              "text": "Para describir una cosa hay que mirarla bien, y describir es otra cosa.",
+              "english": "To describe something you have to look at it well, and describing is another thing."
+            },
+            {
+              "text": "Aparte de eso, hay que distinguir lo que vemos de lo que suponemos.",
+              "english": "Apart from that, we have to distinguish what we see from what we suppose."
+            },
+            {
+              "text": "No se trata de ganar, sino de entender.",
+              "english": "It is not about winning, but about understanding."
+            },
+            {
+              "text": "Hay que imaginar cómo se siente el otro, y no decidir demasiado pronto.",
+              "english": "You have to imagine how the other person feels, and not decide too soon."
+            },
+            {
+              "text": "Si suponemos algo, debemos decir que solo suponemos.",
+              "english": "If we suppose something, we should say that we are only supposing."
+            },
+            {
+              "text": "Aunque la gente piense diferente, podemos hablar con paz.",
+              "english": "Even if people think differently, we can speak in peace."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Aparte del teléfono moderno, el ser humano de hoy necesita lo natural: el sol, el agua y las otras personas.",
+              "english": "Apart from the modern phone, the human being of today needs what is natural: the sun, water and other people."
+            },
+            {
+              "text": "Lo antiguo y lo actual pueden estar en la misma casa.",
+              "english": "The old and the current can be in the same house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La próxima vez, antes de dar una opinión, piense: ¿es verdad o es solo mi idea?",
+              "english": "Next time, before giving an opinion, think: is it true or is it only my idea?"
+            },
+            {
+              "text": "El día siguiente, vuelva a pensar.",
+              "english": "The following day, think again."
+            },
+            {
+              "text": "Y la semana anterior, ¿qué pensaba usted?",
+              "english": "And the previous week, what did you think?"
+            },
+            {
+              "text": "El número siguiente del periódico va a hablar de las opiniones sobre el agua, y el próximo número de las opiniones sobre el cine.",
+              "english": "The next issue of the newspaper will talk about opinions on water, and the one after that about opinions on the cinema."
+            },
+            {
+              "text": "Una persona sincera cambia de opinión cuando descubre la verdad.",
+              "english": "A sincere person changes his opinion when he discovers the truth."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El próximo juego",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "¿Cuándo jugamos otra vez?",
+              "english": "When do we play again?",
+              "speaker": "N"
+            },
+            {
+              "text": "El próximo domingo, si no llueve demasiado.",
+              "english": "Next Sunday, if it doesn't rain too much.",
+              "speaker": "K"
+            },
+            {
+              "text": "Pero el día siguiente tengo trabajo, y la semana anterior ya tuve bastante.",
+              "english": "But the following day I have work, and the previous week I already had enough.",
+              "speaker": "K"
+            },
+            {
+              "text": "Entonces yo gano esta vez.",
+              "english": "Then I win this time.",
+              "speaker": "N"
+            },
+            {
+              "text": "Mi premio es un pan blando con café tibio.",
+              "english": "My prize is a soft bread with lukewarm coffee.",
+              "speaker": "N"
+            },
+            {
+              "text": "Tu premio es un abrazo y una sonrisa.",
+              "english": "Your prize is a hug and a smile.",
+              "speaker": "M"
+            },
+            {
+              "text": "Eso es lo mejor de todo.",
+              "english": "That is the best of all.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

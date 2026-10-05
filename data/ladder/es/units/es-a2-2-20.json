@@ -1,0 +1,587 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-20",
+  "lang": "es",
+  "title": "Por qué vine a Honduras",
+  "contentType": "testimony",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-20",
+    "title": "Why I came to Honduras (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Quién soy",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Me llamo Sam, y voy a contarles por qué vine a Honduras.",
+              "english": "My name is Sam, and I am going to tell you why I came to Honduras."
+            },
+            {
+              "text": "No es un cuento grande ni un cuento bonito.",
+              "english": "It is not a big story or a pretty story."
+            },
+            {
+              "text": "Es el cuento de un joven que tenía una vida buena y que, un día, sintió que no tenía todo.",
+              "english": "It is the story of a young man who had a good life and who, one day, felt that he did not have everything."
+            },
+            {
+              "text": "Nací en una ciudad grande, lejos de aquí.",
+              "english": "I was born in a big city, far from here."
+            },
+            {
+              "text": "Mi mamá es maestra, y mi papá es cocinero en un restaurante.",
+              "english": "My mother is a teacher, and my father is a cook in a restaurant."
+            },
+            {
+              "text": "Mi hermana Sofía, que es menor que yo, trabaja ahora en una empresa pequeña.",
+              "english": "My sister Sofía, who is younger than I am, now works at a small company."
+            },
+            {
+              "text": "En mi casa había comida, había risa y había paz.",
+              "english": "In my house there was food, there was laughter and there was peace."
+            },
+            {
+              "text": "Yo tenía todo.",
+              "english": "I had everything."
+            },
+            {
+              "text": "Estudié en la universidad, y allí tuve una profesora que cambió mi forma de pensar.",
+              "english": "I studied at the university, and there I had a professor who changed my way of thinking."
+            },
+            {
+              "text": "Ella nos decía: «Estudiar sin servir no sirve de nada».",
+              "english": "She used to tell us: \"Studying without serving is of no use.\""
+            },
+            {
+              "text": "Yo no entendía bien esas palabras.",
+              "english": "I didn't understand those words well."
+            },
+            {
+              "text": "Hoy las entiendo.",
+              "english": "Today I do."
+            },
+            {
+              "text": "Mis amigos de la universidad siguieron sus caminos.",
+              "english": "My friends from the university followed their paths."
+            },
+            {
+              "text": "Uno es abogado, otro es músico, y una amiga es piloto y vuela por todo el mundo.",
+              "english": "One is a lawyer, another is a musician, and a friend is a pilot and flies all over the world."
+            },
+            {
+              "text": "Mi tío es chofer de autobuses.",
+              "english": "My uncle is a bus driver."
+            },
+            {
+              "text": "Todos tienen un oficio y una ganancia.",
+              "english": "All of them have a trade and a profit."
+            },
+            {
+              "text": "Yo también conseguí un buen empleo, con un sueldo bueno y un jefe amable.",
+              "english": "I also got a good job, with a good salary and a kind boss."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mi duda",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pero algo no estaba bien.",
+              "english": "But something was not right."
+            },
+            {
+              "text": "Cada domingo iba a la iglesia, cantaba los himnos y escuchaba el sermón.",
+              "english": "Every Sunday I went to church, sang the hymns and listened to the sermon."
+            },
+            {
+              "text": "Pero mi corazón estaba vacío.",
+              "english": "But my heart was empty."
+            },
+            {
+              "text": "Pensaba: «Creo en Dios, pero ¿para qué me sirve creer?",
+              "english": "I thought: \"I believe in God, but what use is believing to me?"
+            },
+            {
+              "text": "¿Es solo lo que hago los domingos?».",
+              "english": "Is it only what I do on Sundays?\""
+            },
+            {
+              "text": "Hablé con mi pastor.",
+              "english": "I spoke with my pastor."
+            },
+            {
+              "text": "Él me escuchó con cuidado y no me dijo nada fácil.",
+              "english": "He listened to me carefully and did not tell me anything easy."
+            },
+            {
+              "text": "Me dijo: «Creer sin servir se pone débil, como un cuerpo que no camina.",
+              "english": "He said to me: \"Believing without serving gets weak, like a body that does not walk."
+            },
+            {
+              "text": "Quiero que pidas a Dios un lugar donde servir».",
+              "english": "I want you to ask God for a place to serve.\""
+            },
+            {
+              "text": "Esa noche recé, y rogué: «Padre, si quieres que haga algo, muéstrame qué es».",
+              "english": "That night I prayed, and begged: \"Father, if you want me to do something, show me what it is.\""
+            },
+            {
+              "text": "No hubo una señal grande.",
+              "english": "There was no big sign."
+            },
+            {
+              "text": "No apareció un ángel, y no hubo un terremoto.",
+              "english": "No angel appeared, and there was no earthquake."
+            },
+            {
+              "text": "Solo hubo una pregunta que no se iba: «¿Qué puedo hacer yo por esa gente?».",
+              "english": "There was only a question that would not go away: \"What can I do for those people?\""
+            },
+            {
+              "text": "Esa pregunta me siguió durante tres meses.",
+              "english": "That question followed me for three months."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La decisión",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un día, en una reunión de la iglesia, un hombre habló de Honduras.",
+              "english": "One day at a church meeting a man spoke about Honduras."
+            },
+            {
+              "text": "Dijo que allá había una clínica, una escuela y mucho trabajo, y que no había bastante gente para hacerlo.",
+              "english": "He said that there was a clinic there, a school and a lot of work, and that there were not enough people to do it."
+            },
+            {
+              "text": "Contó que hay aldeas donde un niño tiene que atravesar un río para estudiar.",
+              "english": "He told how there are villages where a child has to cross a river to study."
+            },
+            {
+              "text": "Yo pensé en mis estudios, en mi empleo, en mi casa buena.",
+              "english": "I thought of my studies, my job, my quiet house."
+            },
+            {
+              "text": "Y pensé: «Esa gente no es una noticia.",
+              "english": "And I thought: \"Those people are not news."
+            },
+            {
+              "text": "Es mi vecino».",
+              "english": "They are my neighbours.\""
+            },
+            {
+              "text": "Esa noche hablé con mi familia.",
+              "english": "That night I talked with my family."
+            },
+            {
+              "text": "Mi mamá lloró.",
+              "english": "My mother cried."
+            },
+            {
+              "text": "Mi papá me abrazó y no dijo nada.",
+              "english": "My father hugged me and said nothing."
+            },
+            {
+              "text": "Sofía fue la que se rio.",
+              "english": "Sofía was the only one who laughed."
+            },
+            {
+              "text": "«Sam, vas a perder las llaves en otro país», dijo.",
+              "english": "\"Sam, you're going to lose your keys in another country,\" she said."
+            },
+            {
+              "text": "«Y yo no voy a estar para ayudarte».",
+              "english": "\"And I won't be there to help you.\""
+            },
+            {
+              "text": "Tenía razón, como siempre.",
+              "english": "She was right, as always."
+            },
+            {
+              "text": "Mi mamá no quería que me fuera.",
+              "english": "My mother did not want me to go."
+            },
+            {
+              "text": "Todavía hoy me pide que vuelva pronto, y yo le contesto que voy a volver cuando termine mi año.",
+              "english": "Even today she asks me to come back soon, and I answer that I will come back when my year ends."
+            },
+            {
+              "text": "Pero también me dijo algo que nunca voy a olvidar: «Andá, hijo.",
+              "english": "But she also told me something that I will never forget: \"Go, son."
+            },
+            {
+              "text": "Pero andá con la verdad, y escribí la verdad en tus cartas».",
+              "english": "But go honestly, and write the truth in your letters.\""
+            },
+            {
+              "text": "Dejé mi empleo, vendí mi carro y compré un boleto.",
+              "english": "I left my job, sold my car and bought a ticket."
+            },
+            {
+              "text": "Viajé en autobús, en avión y otra vez en autobús.",
+              "english": "I travelled by bus, by plane and by bus again."
+            },
+            {
+              "text": "Tardé dos días en llegar.",
+              "english": "It took me two days to arrive."
+            },
+            {
+              "text": "Cuando por fin vi las montañas de Honduras, sentí una ola de paz.",
+              "english": "When at last I saw the mountains of Honduras, I felt a wave of peace."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los primeros meses",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Los primeros meses fueron difíciles.",
+              "english": "The first months were hard."
+            },
+            {
+              "text": "No entendía casi nada.",
+              "english": "I understood almost nothing."
+            },
+            {
+              "text": "Una señora me preguntaba algo, yo contestaba otra cosa, y todos se reían.",
+              "english": "A lady would ask me something, I would answer something else, and everyone laughed."
+            },
+            {
+              "text": "Perdí una llave, y después perdí otra.",
+              "english": "I lost a key, and then I lost another."
+            },
+            {
+              "text": "Un día me enfermé y estuve tres días en cama con fiebre.",
+              "english": "One day I got sick and spent three days in bed with fever."
+            },
+            {
+              "text": "Sentí que me equivoqué de lugar.",
+              "english": "I felt that I had made a mistake about the place."
+            },
+            {
+              "text": "Pero doña Marta me recibió en su mesa.",
+              "english": "But doña Marta received me at her table."
+            },
+            {
+              "text": "Karla me abrió su casa.",
+              "english": "Karla opened her house to me."
+            },
+            {
+              "text": "Ana me ayudó cuando tuve fiebre, y el pastor Mario me enseñó que servir no es hacer cosas grandes, sino hacer cosas pequeñas con amor.",
+              "english": "Ana helped me when I had a fever, and Pastor Mario taught me that serving is not doing big things, but doing small things with love."
+            },
+            {
+              "text": "Poco a poco entendí.",
+              "english": "Little by little I understood."
+            },
+            {
+              "text": "Aprendí a decir «vos».",
+              "english": "I learned to say \"vos\"."
+            },
+            {
+              "text": "Aprendí a comer baleadas.",
+              "english": "I learned to eat baleadas."
+            },
+            {
+              "text": "Aprendí a escuchar.",
+              "english": "I learned to listen."
+            },
+            {
+              "text": "Mi primer día de trabajo fue en la clínica.",
+              "english": "My first day of work was at the clinic."
+            },
+            {
+              "text": "Ana me dio una tarea: contar las pastillas.",
+              "english": "Ana gave me a task: to count the pills."
+            },
+            {
+              "text": "Conté mal tres veces.",
+              "english": "I counted wrong three times."
+            },
+            {
+              "text": "Ana se rio y dijo: «No pasa nada, contá otra vez».",
+              "english": "Ana laughed and said: \"Never mind, count again.\""
+            },
+            {
+              "text": "Contar pastillas me enseñó algo: el trabajo pequeño, hecho con cuidado, es un trabajo grande.",
+              "english": "Counting pills taught me something: small work, done carefully, is big work."
+            },
+            {
+              "text": "Esa tarde llegó un bebé con fiebre, llorando.",
+              "english": "That afternoon a baby arrived with a fever, crying."
+            },
+            {
+              "text": "Yo no sabía qué hacer, pero me quedé con la madre, le di agua y esperé con ella.",
+              "english": "I didn't know what to do, but I stayed with the mother, gave her water and waited with her."
+            },
+            {
+              "text": "Cuando el bebé se durmió, la madre me dijo: «Gracias por quedarse».",
+              "english": "When the baby fell asleep, the mother said to me: \"Thank you for staying.\""
+            },
+            {
+              "text": "Esas palabras valieron más que mi sueldo anterior.",
+              "english": "Those words were worth more than my previous salary."
+            },
+            {
+              "text": "Una noche, doña Marta me preguntó por qué dejé mi casa.",
+              "english": "One night doña Marta asked me why I left my house."
+            },
+            {
+              "text": "Le conté mi cuento.",
+              "english": "I told her my story."
+            },
+            {
+              "text": "Ella me escuchó, tomó su café y dijo: «Hijo, vos no viniste a salvar a nadie.",
+              "english": "She listened to me, drank her coffee and said: \"Son, you did not come to save anyone."
+            },
+            {
+              "text": "Viniste a que alguien te salve a vos».",
+              "english": "You came so that someone would save you.\""
+            },
+            {
+              "text": "Yo me reí, pero esa noche no dormí.",
+              "english": "I laughed, but that night I did not sleep."
+            },
+            {
+              "text": "Doña Marta, que es mayor que mi mamá, habla poco y dice la verdad.",
+              "english": "Doña Marta, who is older than my mother, speaks little and tells the truth."
+            },
+            {
+              "text": "Tenía razón: yo vine con las manos llenas y con el corazón vacío, y Honduras me llenó el corazón.",
+              "english": "She was right: I came with full hands and an empty heart, and Honduras filled my heart."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo que he aprendido",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En este año he aprendido más de lo que enseñé.",
+              "english": "In this year I have learned more than I taught."
+            },
+            {
+              "text": "He aprendido que un río no es un final, si hay un puente.",
+              "english": "I have learned that a river is not an end, if there is a bridge."
+            },
+            {
+              "text": "He aprendido que la sequía y la lluvia son parte de la misma vida.",
+              "english": "I have learned that drought and rain are part of the same life."
+            },
+            {
+              "text": "He aprendido que ser sincero cuesta, pero ayuda.",
+              "english": "I have learned that being sincere costs, but helps."
+            },
+            {
+              "text": "He visto a una enfermera, Ana, que llora por cada niño y que sigue trabajando al día siguiente.",
+              "english": "I have seen a nurse, Ana, who cries for every child and keeps working the next day."
+            },
+            {
+              "text": "He visto a un carpintero, Carlos, que prestó dinero a un amigo y que lo perdonó con un trato.",
+              "english": "I have seen a carpenter, Carlos, who lent money to a friend and forgave him with a deal."
+            },
+            {
+              "text": "He visto a una profesora, a una maestra, a un chofer y a un cocinero que no tienen mucho, pero que lo comparten todo.",
+              "english": "I have seen a professor, a teacher, a driver and a cook who do not have much, but who share everything."
+            },
+            {
+              "text": "Un abogado honesto ha ayudado a una familia de campesinos a defender su tierra.",
+              "english": "An honest lawyer has helped a farming family defend their land."
+            },
+            {
+              "text": "Mi profesora de la universidad tenía razón, y mi profesor de español también.",
+              "english": "My university professor was right, and so was my Spanish teacher."
+            },
+            {
+              "text": "Estudiar sin servir no sirve.",
+              "english": "Studying without serving is of no use."
+            },
+            {
+              "text": "Pero servir sin estudiar tampoco sirve.",
+              "english": "But serving without studying is of no use either."
+            },
+            {
+              "text": "Aquí necesitamos los dos: la cabeza y las manos.",
+              "english": "Here we need both: the head and the hands."
+            },
+            {
+              "text": "He cambiado.",
+              "english": "I have changed."
+            },
+            {
+              "text": "Antes yo quería ayudar para sentirme bien.",
+              "english": "Before, I wanted to help in order to feel good."
+            },
+            {
+              "text": "Ahora quiero servir para que otros estén bien.",
+              "english": "Now I want to serve so that others are well."
+            },
+            {
+              "text": "Antes hablaba para que me escucharan.",
+              "english": "Before, I spoke so that they would listen to me."
+            },
+            {
+              "text": "Ahora escucho para que ellos hablen.",
+              "english": "Now I listen so that they speak."
+            },
+            {
+              "text": "Todavía me equivoco, y todavía pierdo las llaves.",
+              "english": "I still make mistakes, and I still lose keys."
+            },
+            {
+              "text": "Pero ahora sé reírme de mí mismo.",
+              "english": "But now I know how to laugh at myself."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo que quiero",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy quiero que mi mamá sepa que estoy bien.",
+              "english": "Today I want my mother to know that I am well."
+            },
+            {
+              "text": "Quiero que Sofía venga a conocer a mis amigos.",
+              "english": "I want Sofía to come and meet my friends."
+            },
+            {
+              "text": "Quiero que mi papá pruebe una baleada de doña Marta.",
+              "english": "I want my father to try one of doña Marta's baleadas."
+            },
+            {
+              "text": "Y quiero que ustedes, que leen esto, sepan algo: no tenés que ser un león para venir.",
+              "english": "And I want you, who are reading this, to know something: you do not have to be a lion to come."
+            },
+            {
+              "text": "Tenés que ser un vecino.",
+              "english": "You have to be a neighbour."
+            },
+            {
+              "text": "Muchas personas me preguntan si voy a quedarme.",
+              "english": "Many people ask me whether I am going to stay."
+            },
+            {
+              "text": "Yo les contesto que depende de tres cosas: de mi familia, de mi salud y de lo que Dios quiera.",
+              "english": "I answer that it depends on three things: on my family, on my health and on what God wants."
+            },
+            {
+              "text": "Mientras tanto, cada mañana me levanto, tomo un café con doña Marta, me pongo los zapatos y salgo a la calle.",
+              "english": "In the meantime, every morning I get up, have a coffee with doña Marta, put on my shoes and go out into the street."
+            },
+            {
+              "text": "Ahí empieza mi trabajo.",
+              "english": "There my work begins."
+            },
+            {
+              "text": "Ahí, cada día, aprendo a ser vecino.",
+              "english": "There, every day, I learn to be a neighbour."
+            },
+            {
+              "text": "Cuando termine el año, voy a decidir si me quedo o si vuelvo.",
+              "english": "When the year ends, I am going to decide whether I stay or go back."
+            },
+            {
+              "text": "No lo sé todavía.",
+              "english": "I don't know yet."
+            },
+            {
+              "text": "Si vuelvo, voy a llevar conmigo las caras de esta gente.",
+              "english": "If I go back, I am going to take with me the faces of these people."
+            },
+            {
+              "text": "Si me quedo, voy a seguir aprendiendo.",
+              "english": "If I stay, I am going to keep learning."
+            },
+            {
+              "text": "Ojalá Dios me muestre el camino, aunque no sea fácil.",
+              "english": "I hope God shows me the way, even if it is not easy."
+            },
+            {
+              "text": "Vine a Honduras para servir.",
+              "english": "I came to Honduras to serve."
+            },
+            {
+              "text": "Me quedé para aprender.",
+              "english": "I stayed to learn."
+            },
+            {
+              "text": "Y voy a volver a casa, tarde o temprano, para contar lo que he visto, para que otros se acerquen a este pueblo, y para que nadie diga que no pudo hacerlo.",
+              "english": "And I am going to go back home, sooner or later, to tell what I have seen, so that others come near to this village, and so that nobody says that he could not do it."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

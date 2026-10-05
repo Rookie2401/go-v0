@@ -1,0 +1,573 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-11",
+  "lang": "es",
+  "title": "Doña Marta's life",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-11",
+    "title": "Doña Marta's life (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "biography"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "M": "Marta"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "La pregunta de Sam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy Sam quiere conocer la vida de doña Marta.",
+              "english": "Today Sam wants to know the life of doña Marta."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Doña Marta, ¿puedo hacer una pregunta?",
+              "english": "Doña Marta, may I ask a question?"
+            },
+            {
+              "speaker": "M",
+              "text": "Claro, Sam.",
+              "english": "Of course, Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "¿Qué querés saber?",
+              "english": "What do you want to know?"
+            },
+            {
+              "speaker": "S",
+              "text": "¿Qué edad tiene usted?",
+              "english": "How old are you?"
+            },
+            {
+              "speaker": "M",
+              "text": "Tengo setenta años.",
+              "english": "I am seventy years old."
+            },
+            {
+              "speaker": "M",
+              "text": "Soy una mujer vieja, pero tengo el corazón joven.",
+              "english": "I am an old woman, but I have a young heart."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "De niña",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta nació en un pueblo pequeño cerca del mar.",
+              "english": "Doña Marta was born in a small village near the sea."
+            },
+            {
+              "text": "Nació hace setenta años.",
+              "english": "She was born seventy years ago."
+            },
+            {
+              "text": "Su papá trabajó con el café, y su mamá cocinó pan.",
+              "english": "Her father worked with coffee, and her mother baked bread."
+            },
+            {
+              "text": "Marta creció en el pueblo.",
+              "english": "Marta grew up in the village."
+            },
+            {
+              "text": "De niña, fue a la escuela y aprendió a leer.",
+              "english": "As a girl, she went to school and learned to read."
+            },
+            {
+              "text": "Leyó la Biblia.",
+              "english": "She read the Bible."
+            },
+            {
+              "text": "Fue una niña feliz.",
+              "english": "She was a happy girl."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "¿Fue fácil leer la Biblia?",
+              "english": "Was it easy to read the Bible?"
+            },
+            {
+              "speaker": "M",
+              "text": "No, fue difícil.",
+              "english": "No, it was difficult."
+            },
+            {
+              "speaker": "M",
+              "text": "Las palabras fueron diferentes, y no entendí todo.",
+              "english": "The words were different, and I did not understand everything."
+            },
+            {
+              "speaker": "M",
+              "text": "Pero seguí.",
+              "english": "But I kept going."
+            },
+            {
+              "speaker": "M",
+              "text": "Hoy es fácil para mí.",
+              "english": "Today it is easy for me."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Es otro idioma?",
+              "english": "Is it another language?"
+            },
+            {
+              "speaker": "M",
+              "text": "No, es el idioma de siempre.",
+              "english": "No, it is the usual language."
+            },
+            {
+              "speaker": "M",
+              "text": "Pero es un libro diferente.",
+              "english": "But it is a different book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un día, Marta y su papá hicieron un viaje al mar.",
+              "english": "One day, Marta and her father made a trip to the sea."
+            },
+            {
+              "text": "Subieron a un autobús y bajaron en la playa.",
+              "english": "They got on a bus and got off at the beach."
+            },
+            {
+              "text": "Fue un paseo muy bueno.",
+              "english": "It was a very good outing."
+            },
+            {
+              "text": "Fue su primer viaje.",
+              "english": "It was her first trip."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "De joven",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "A los dieciocho años, Marta llevó su bolsa y subió a otro autobús.",
+              "english": "At eighteen, Marta took her bag and got on another bus."
+            },
+            {
+              "text": "Bajó en la ciudad.",
+              "english": "She got off in the city."
+            },
+            {
+              "text": "Allí trabajó en el centro y vendió pan.",
+              "english": "There she worked downtown and sold bread."
+            },
+            {
+              "text": "Marta fue joven en la ciudad, y allí conoció a Miguel en un parque.",
+              "english": "Marta was young in the city, and there she met Miguel in a park."
+            },
+            {
+              "text": "Miguel nació en la ciudad y creció allí.",
+              "english": "Miguel was born in the city and grew up there."
+            },
+            {
+              "text": "Fue un hombre bueno.",
+              "english": "He was a good man."
+            },
+            {
+              "text": "Miguel pidió la mano de Marta.",
+              "english": "Miguel asked for Marta's hand."
+            },
+            {
+              "text": "Marta sintió paz.",
+              "english": "Marta felt peace."
+            },
+            {
+              "text": "Miguel puso un regalo en la mesa.",
+              "english": "Miguel put a present on the table."
+            },
+            {
+              "text": "Se casaron en la iglesia.",
+              "english": "They got married in church."
+            },
+            {
+              "text": "La fiesta fue grande, y la gente bailó hasta la noche.",
+              "english": "The party was big, and the people danced until night."
+            },
+            {
+              "text": "Miguel fue su esposo, y Marta fue su esposa por cuarenta años.",
+              "english": "Miguel was her husband, and Marta was his wife for forty years."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "¿Se casó usted en la iglesia?",
+              "english": "Did you get married in church?"
+            },
+            {
+              "speaker": "M",
+              "text": "Sí, me casé a la edad de veinte años.",
+              "english": "Yes, I got married at the age of twenty."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cómo fue su esposo?",
+              "english": "What was your husband like?"
+            },
+            {
+              "speaker": "M",
+              "text": "Fue un hombre bueno, y trabajó mucho.",
+              "english": "He was a good man, and he worked a lot."
+            },
+            {
+              "speaker": "M",
+              "text": "Yo fui una esposa feliz.",
+              "english": "I was a happy wife."
+            },
+            {
+              "speaker": "M",
+              "text": "Ser esposa de Miguel fue un regalo de Dios.",
+              "english": "Being Miguel's wife was a gift from God."
+            },
+            {
+              "speaker": "M",
+              "text": "Mi esposo me llevó al mar.",
+              "english": "My husband took me to the sea."
+            },
+            {
+              "speaker": "M",
+              "text": "Fue un momento bueno.",
+              "english": "It was a good moment."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los hijos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marta y Miguel tuvieron dos hijos: Ana y Luis.",
+              "english": "Marta and Miguel had two children: Ana and Luis."
+            },
+            {
+              "text": "Ana y Luis crecieron en la casa de doña Marta.",
+              "english": "Ana and Luis grew up in doña Marta's house."
+            },
+            {
+              "text": "Cuando Luis fue niño, jugó en el parque con Ana.",
+              "english": "When Luis was a boy, he played in the park with Ana."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los años difíciles",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Miguel murió hace ocho años.",
+              "english": "Miguel died eight years ago."
+            },
+            {
+              "text": "Doña Marta sintió mucho dolor.",
+              "english": "Doña Marta felt a lot of pain."
+            },
+            {
+              "text": "Antes, también murió su papá.",
+              "english": "Before that, her father also died."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "¿Fue difícil, doña Marta?",
+              "english": "Was it hard, doña Marta?"
+            },
+            {
+              "speaker": "M",
+              "text": "Sí, Sam.",
+              "english": "Yes, Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "Todos tenemos que morir.",
+              "english": "We all have to die."
+            },
+            {
+              "speaker": "M",
+              "text": "Pero Dios quiere salvar y perdonar.",
+              "english": "But God wants to save and to forgive."
+            },
+            {
+              "speaker": "M",
+              "text": "Yo fui una oveja perdida, y Dios me buscó.",
+              "english": "I was a lost sheep, and God looked for me."
+            },
+            {
+              "speaker": "M",
+              "text": "Los ángeles de Dios cuidan a la gente.",
+              "english": "God's angels take care of people."
+            },
+            {
+              "speaker": "M",
+              "text": "Dios es mi rey.",
+              "english": "God is my king."
+            },
+            {
+              "speaker": "M",
+              "text": "Es el rey del mundo.",
+              "english": "He is the king of the world."
+            },
+            {
+              "speaker": "M",
+              "text": "Yo alabo a Dios, y adoro a Dios.",
+              "english": "I praise God, and I worship God."
+            },
+            {
+              "speaker": "M",
+              "text": "La gloria es de Dios.",
+              "english": "The glory is God's."
+            },
+            {
+              "speaker": "M",
+              "text": "Dios bendice a mi familia.",
+              "english": "God blesses my family."
+            },
+            {
+              "speaker": "M",
+              "text": "Es un milagro.",
+              "english": "It is a miracle."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hoy",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy doña Marta tiene una casa, una familia y dos nietos.",
+              "english": "Today doña Marta has a house, a family and two grandchildren."
+            },
+            {
+              "text": "Nico es un niño de diez años.",
+              "english": "Nico is a boy of ten."
+            },
+            {
+              "text": "Su nieto es un cipote feliz.",
+              "english": "Her grandson is a happy little boy."
+            },
+            {
+              "text": "La otra es una niña pequeña que vive lejos.",
+              "english": "The other is a little girl who lives far away."
+            },
+            {
+              "text": "Doña Marta quiere mucho a sus nietos.",
+              "english": "Doña Marta loves her grandchildren very much."
+            },
+            {
+              "text": "Los niños de la iglesia juegan en su casa los domingos.",
+              "english": "The children from church play at her house on Sundays."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "¿Qué edad tiene Nico?",
+              "english": "How old is Nico?"
+            },
+            {
+              "speaker": "M",
+              "text": "Diez años.",
+              "english": "Ten years."
+            },
+            {
+              "speaker": "M",
+              "text": "Y las mujeres de la iglesia me visitan.",
+              "english": "And the women from church visit me."
+            },
+            {
+              "speaker": "M",
+              "text": "Los hombres ayudan con la casa.",
+              "english": "The men help with the house."
+            },
+            {
+              "speaker": "M",
+              "text": "Los jóvenes traen pan y café.",
+              "english": "The young people bring bread and coffee."
+            },
+            {
+              "speaker": "M",
+              "text": "Una señora vieja me dio un regalo anteayer.",
+              "english": "An old lady gave me a present the day before yesterday."
+            },
+            {
+              "speaker": "M",
+              "text": "Los viejos son buenos amigos.",
+              "english": "The old people are good friends."
+            },
+            {
+              "speaker": "M",
+              "text": "Soy una mujer de Dios.",
+              "english": "I am a woman of God."
+            },
+            {
+              "speaker": "M",
+              "text": "Ya no estoy sola.",
+              "english": "I am no longer alone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta volvió al pueblo.",
+              "english": "Doña Marta went back to the village."
+            },
+            {
+              "text": "Fue una visita buena, un lugar diferente.",
+              "english": "It was a good visit, a different place."
+            },
+            {
+              "text": "El último día, doña Marta oró y dijo: \"Gracias, Dios.\"",
+              "english": "On the last day, doña Marta prayed and said: \"Thank you, God.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "S",
+              "text": "Voy a escribir su vida.",
+              "english": "I am going to write your life."
+            },
+            {
+              "speaker": "M",
+              "text": "Claro, Sam.",
+              "english": "Of course, Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "Anteayer Nico me dijo: \"Abuela, su vida es un libro.\"",
+              "english": "The day before yesterday Nico told me: \"Grandmother, your life is a book.\""
+            },
+            {
+              "speaker": "S",
+              "text": "Quizás, doña Marta.",
+              "english": "Maybe, doña Marta."
+            },
+            {
+              "speaker": "S",
+              "text": "Estoy seguro de que sí.",
+              "english": "I am sure of it."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Es posible escribir toda su vida en un libro?",
+              "english": "Is it possible to write your whole life in a book?"
+            },
+            {
+              "speaker": "M",
+              "text": "Es difícil, pero claro que sí.",
+              "english": "It is hard, but of course."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam escribe todo el fin de semana.",
+              "english": "Sam writes all weekend."
+            },
+            {
+              "text": "Es un libro pequeño, pero es una vida grande.",
+              "english": "It is a small book, but it is a big life."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

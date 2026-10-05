@@ -1,0 +1,870 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-03",
+  "lang": "es",
+  "title": "Una llamada larga",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-03",
+    "title": "A long phone call (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "S": "Sam",
+    "F": "Sofía"
+  },
+  "sections": [
+    {
+      "title": "El comienzo de la llamada",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es sábado por la tarde.",
+              "english": "It is Saturday afternoon."
+            },
+            {
+              "text": "Sam está sentado en su cuarto, con el teléfono en la mano.",
+              "english": "Sam is sitting in his room with the phone in his hand."
+            },
+            {
+              "text": "Hoy hace una llamada de mucho tiempo a su hermana Sofía.",
+              "english": "Today he makes a call of a long time to his sister Sofía."
+            },
+            {
+              "text": "Ya no quiere escribir un mensaje, porque quiere hablar con ella.",
+              "english": "He doesn't want to write a message any more, because he wants to talk with her."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¡Sam!",
+              "english": "Sam!",
+              "speaker": "F"
+            },
+            {
+              "text": "Por fin.",
+              "english": "At last.",
+              "speaker": "F"
+            },
+            {
+              "text": "Hace casi una semana que espero tu llamada.",
+              "english": "I have been waiting almost a week for your call.",
+              "speaker": "F"
+            },
+            {
+              "text": "Perdón, Sofía.",
+              "english": "Sorry, Sofía.",
+              "speaker": "S"
+            },
+            {
+              "text": "Esta semana ha sido muy difícil.",
+              "english": "This week has been very hard.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Cómo estás?",
+              "english": "How are you?",
+              "speaker": "S"
+            },
+            {
+              "text": "Bien, bien.",
+              "english": "Fine, fine.",
+              "speaker": "F"
+            },
+            {
+              "text": "Mamá y papá también están bien y te mandan un abrazo.",
+              "english": "Mom and Dad are also fine and send you a hug.",
+              "speaker": "F"
+            },
+            {
+              "text": "¿Estás contento allá?",
+              "english": "Are you happy over there?",
+              "speaker": "F"
+            },
+            {
+              "text": "Cansado, pero contento.",
+              "english": "Tired, but happy.",
+              "speaker": "S"
+            },
+            {
+              "text": "Tengo mil cosas que contar.",
+              "english": "I have a thousand things to tell.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es una llamada cara, porque el uso del teléfono cuesta mucho aquí, pero hoy quiero platicar mucho.",
+              "english": "It is an expensive call, because using the phone costs a lot here, but today I want to chat a lot.",
+              "speaker": "S"
+            },
+            {
+              "text": "Me gusta platicar con la gente de este pueblo, y hoy quiero platicar con mi hermana.",
+              "english": "I like chatting with the people of this village, and today I want to chat with my sister.",
+              "speaker": "S"
+            },
+            {
+              "text": "Entonces vamos a platicar.",
+              "english": "Then let's chat.",
+              "speaker": "F"
+            },
+            {
+              "text": "Primero, ¿qué has comido hoy?",
+              "english": "First, what have you eaten today?",
+              "speaker": "F"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo que Sam ha aprendido",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy comí frijoles, huevos y plátano.",
+              "english": "Today I ate beans, eggs and plantain.",
+              "speaker": "S"
+            },
+            {
+              "text": "Doña Marta cocina muy bien.",
+              "english": "Doña Marta cooks very well.",
+              "speaker": "S"
+            },
+            {
+              "text": "Cada día ha preparado algo diferente.",
+              "english": "Each day she has prepared something different.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Y el agua?",
+              "english": "And the water?",
+              "speaker": "F"
+            },
+            {
+              "text": "Mamá pregunta siempre por el agua.",
+              "english": "Mom always asks about the water.",
+              "speaker": "F"
+            },
+            {
+              "text": "Aquí hay mucho cuidado con el agua.",
+              "english": "Here they are very careful with the water.",
+              "speaker": "S"
+            },
+            {
+              "text": "Doña Marta mantiene el agua limpia en una jarra grande.",
+              "english": "Doña Marta keeps the water clean in a big jug.",
+              "speaker": "S"
+            },
+            {
+              "text": "Esa jarra pesa mucho cuando tiene agua, pero siempre la cubre con un plato.",
+              "english": "That jug weighs a lot when it has water, but she always covers it with a plate.",
+              "speaker": "S"
+            },
+            {
+              "text": "También cubre la olla del arroz.",
+              "english": "She also covers the rice pot.",
+              "speaker": "S"
+            },
+            {
+              "text": "Así evita los insectos.",
+              "english": "That way she avoids the insects.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Es verdad que hay mucho riesgo de enfermarse?",
+              "english": "Is it true that there is a lot of risk of getting sick?",
+              "speaker": "F"
+            },
+            {
+              "text": "No mucho, si hay seguridad en la casa.",
+              "english": "Not much, if there is safety in the house.",
+              "speaker": "S"
+            },
+            {
+              "text": "Hay que cuidar el agua y proteger a los niños.",
+              "english": "You have to take care of the water and protect the children.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ana, la enfermera, nos ha enseñado a todos.",
+              "english": "Ana, the nurse, has taught us all.",
+              "speaker": "S"
+            },
+            {
+              "text": "Dice que una botella limpia cuesta menos que una pastilla cara.",
+              "english": "She says a clean bottle costs less than an expensive pill.",
+              "speaker": "S"
+            },
+            {
+              "text": "En la mesa hay un vaso para el agua y una taza para el café.",
+              "english": "On the table there is a glass for water and a cup for coffee.",
+              "speaker": "S"
+            },
+            {
+              "text": "Cada uno tiene su vaso, y nadie usa el de otro.",
+              "english": "Each one has his own glass, and nobody uses another's.",
+              "speaker": "S"
+            },
+            {
+              "text": "Me gusta eso.",
+              "english": "I like that.",
+              "speaker": "F"
+            },
+            {
+              "text": "¿Y qué tipo de comida comen?",
+              "english": "And what kind of food do you eat?",
+              "speaker": "F"
+            },
+            {
+              "text": "Casi siempre comemos una mezcla de arroz y frijoles.",
+              "english": "Almost always we eat a mixture of rice and beans.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es una parte de cada comida.",
+              "english": "It is a part of every meal.",
+              "speaker": "S"
+            },
+            {
+              "text": "Doña Marta pone la mitad del arroz en mi plato y la otra mitad en el plato de Nico.",
+              "english": "Doña Marta puts half of the rice on my plate and the other half on Nico's plate.",
+              "speaker": "S"
+            },
+            {
+              "text": "Siempre tiene una cantidad grande, porque cocina para todos.",
+              "english": "She always has a large quantity, because she cooks for everybody.",
+              "speaker": "S"
+            },
+            {
+              "text": "Entonces vas a volver con mucha hambre.",
+              "english": "Then you are going to come back very hungry.",
+              "speaker": "F"
+            },
+            {
+              "text": "¡Seguro!",
+              "english": "Sure!",
+              "speaker": "S"
+            },
+            {
+              "text": "Jamás he comido así.",
+              "english": "I have never eaten like this.",
+              "speaker": "S"
+            },
+            {
+              "text": "Todos van a reír al verme comer.",
+              "english": "Everybody is going to laugh when they see me eat.",
+              "speaker": "S"
+            },
+            {
+              "text": "Y Nico corre por toda la casa y quiere comer más que yo.",
+              "english": "And Nico runs all over the house and wants to eat more than I do.",
+              "speaker": "S"
+            },
+            {
+              "text": "Doña Marta siempre tiene razón: en esta casa nadie queda con hambre.",
+              "english": "Doña Marta is always right: in this house nobody stays hungry.",
+              "speaker": "S"
+            },
+            {
+              "text": "A veces notamos que hay mucha basura en la calle.",
+              "english": "Sometimes we notice that there is a lot of rubbish in the street.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ana dice que es un problema de toda la comunidad.",
+              "english": "Ana says it is a problem for the whole community.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ayer hicimos algo.",
+              "english": "Yesterday we did something.",
+              "speaker": "S"
+            },
+            {
+              "text": "Con los vecinos pusimos la basura en bolsas, y el resultado fue muy bueno.",
+              "english": "With the neighbours we put the rubbish in bags, and the result was very good.",
+              "speaker": "S"
+            },
+            {
+              "text": "Resolvimos una parte del problema.",
+              "english": "We solved a part of the problem.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Risas y noticias",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Me río ya de pensarlo.",
+              "english": "I am laughing just thinking about it.",
+              "speaker": "F"
+            },
+            {
+              "text": "La verdad, todos en casa nos hemos reído mucho esta semana.",
+              "english": "Honestly, we have all laughed a lot at home this week.",
+              "speaker": "F"
+            },
+            {
+              "text": "¿Por qué?",
+              "english": "Why?",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Qué ha pasado?",
+              "english": "What has happened?",
+              "speaker": "S"
+            },
+            {
+              "text": "Papá intentó usar el teléfono nuevo, y el teléfono empezó a hablar en otro idioma.",
+              "english": "Dad tried to use the new phone, and the phone began to speak in another language.",
+              "speaker": "F"
+            },
+            {
+              "text": "Pobre papá.",
+              "english": "Poor Dad.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Y qué hizo?",
+              "english": "And what did he do?",
+              "speaker": "S"
+            },
+            {
+              "text": "Nada.",
+              "english": "Nothing.",
+              "speaker": "F"
+            },
+            {
+              "text": "Se quedó con el teléfono en la mano y una sonrisa en la cara.",
+              "english": "He stayed with the phone in his hand and a smile on his face.",
+              "speaker": "F"
+            },
+            {
+              "text": "Mamá lloró de risa.",
+              "english": "Mom cried with laughter.",
+              "speaker": "F"
+            },
+            {
+              "text": "Extraño esa risa.",
+              "english": "I miss that laughter.",
+              "speaker": "S"
+            },
+            {
+              "text": "Aquí extraño muchas cosas, pero la risa de mamá es lo que más extraño.",
+              "english": "Here I miss many things, but Mom's laughter is what I miss most.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ella también te extraña.",
+              "english": "She misses you too.",
+              "speaker": "F"
+            },
+            {
+              "text": "Cada día me pregunta por ti, y ya está pensando en tu vuelta.",
+              "english": "Every day she asks me about you, and she is already thinking about your return.",
+              "speaker": "F"
+            },
+            {
+              "text": "Y ayer recibió tu carta.",
+              "english": "And yesterday she received your letter.",
+              "speaker": "F"
+            },
+            {
+              "text": "¿Y qué dijo?",
+              "english": "And what did she say?",
+              "speaker": "S"
+            },
+            {
+              "text": "Con esa carta quise mandar mi cariño a todos.",
+              "english": "With that letter I wanted to send my love to everyone.",
+              "speaker": "S"
+            },
+            {
+              "text": "Cuando pienso en casa, siempre tengo una sonrisa.",
+              "english": "When I think of home, I always have a smile.",
+              "speaker": "S"
+            },
+            {
+              "text": "Lloró otra vez.",
+              "english": "She cried again.",
+              "speaker": "F"
+            },
+            {
+              "text": "Pero esa vez fue de felicidad.",
+              "english": "But that time it was from happiness.",
+              "speaker": "F"
+            },
+            {
+              "text": "Dice que no se equivocó cuando te dejó ir.",
+              "english": "She says she was not wrong when she let you go.",
+              "speaker": "F"
+            },
+            {
+              "text": "Ahora tengo yo una noticia.",
+              "english": "Now I have some news.",
+              "speaker": "F"
+            },
+            {
+              "text": "He conseguido empleo en una empresa pequeña.",
+              "english": "I have found a job at a small company.",
+              "speaker": "F"
+            },
+            {
+              "text": "¡Sofía!",
+              "english": "Sofía!",
+              "speaker": "S"
+            },
+            {
+              "text": "¿De verdad?",
+              "english": "Really?",
+              "speaker": "S"
+            },
+            {
+              "text": "Eso es una bendición.",
+              "english": "That is a blessing.",
+              "speaker": "S"
+            },
+            {
+              "text": "Sí.",
+              "english": "Yes.",
+              "speaker": "F"
+            },
+            {
+              "text": "Mi jefe es amable.",
+              "english": "My boss is kind.",
+              "speaker": "F"
+            },
+            {
+              "text": "El sueldo no es grande, pero para empezar está bien.",
+              "english": "The salary is not big, but it is fine to begin with.",
+              "speaker": "F"
+            },
+            {
+              "text": "Dios te ha ayudado.",
+              "english": "God has helped you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Qué buena noticia.",
+              "english": "What good news.",
+              "speaker": "S"
+            },
+            {
+              "text": "Gracias.",
+              "english": "Thanks.",
+              "speaker": "F"
+            },
+            {
+              "text": "Pero no todo es fácil.",
+              "english": "But not everything is easy.",
+              "speaker": "F"
+            },
+            {
+              "text": "Tengo un problema.",
+              "english": "I have a problem.",
+              "speaker": "F"
+            },
+            {
+              "text": "Todavía no he encontrado un lugar para vivir cerca del trabajo.",
+              "english": "I still haven't found a place to live near work.",
+              "speaker": "F"
+            },
+            {
+              "text": "Pronto vas a descubrir una solución.",
+              "english": "You will soon discover a solution.",
+              "speaker": "S"
+            },
+            {
+              "text": "Hay que continuar buscando con paz, y no dudar.",
+              "english": "You have to keep looking in peace and not doubt.",
+              "speaker": "S"
+            },
+            {
+              "text": "Eso espero.",
+              "english": "I hope so.",
+              "speaker": "F"
+            },
+            {
+              "text": "Aún no sé cómo voy a pagar el cuarto.",
+              "english": "I still don't know how I am going to pay for the room.",
+              "speaker": "F"
+            },
+            {
+              "text": "Aquí una persona me dijo algo bueno: \"El que busca con esfuerzo, encuentra\".",
+              "english": "Here a person told me something good: \"He who seeks with effort, finds.\"",
+              "speaker": "S"
+            },
+            {
+              "text": "Es un ejemplo de la gente de aquí, que lucha cada día.",
+              "english": "It is an example of the people here, who struggle every day.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Tradiciones y recuerdos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ahora quiero saber de tu trabajo.",
+              "english": "Now I want to know about your work.",
+              "speaker": "F"
+            },
+            {
+              "text": "¿Cómo es un día?",
+              "english": "What is a day like?",
+              "speaker": "F"
+            },
+            {
+              "text": "Al comienzo no entendía casi nada del idioma ni de la cultura de aquí.",
+              "english": "At the start I understood almost nothing of the language or the culture here.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ahora pido que repitan las palabras, y todos me ayudan.",
+              "english": "Now I ask them to repeat the words, and everyone helps me.",
+              "speaker": "S"
+            },
+            {
+              "text": "Trabajo con un equipo de la iglesia.",
+              "english": "I work with a church team.",
+              "speaker": "S"
+            },
+            {
+              "text": "Nuestro líder se llama Mario.",
+              "english": "Our leader is called Mario.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es un pastor muy bueno.",
+              "english": "He is a very good pastor.",
+              "speaker": "S"
+            },
+            {
+              "text": "Visitamos familias, ayudamos en la clínica y tenemos reuniones.",
+              "english": "We visit families, help at the clinic and have meetings.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ana dedica su vida a ayudar a los enfermos, y es un ejemplo para mí.",
+              "english": "Ana dedicates her life to helping the sick, and she is an example to me.",
+              "speaker": "S"
+            },
+            {
+              "text": "Esta semana fui a un grupo pequeño.",
+              "english": "This week I went to a small group.",
+              "speaker": "S"
+            },
+            {
+              "text": "Hoy di una vuelta por el parque con Ana y recé por ti.",
+              "english": "Today I took a walk in the park with Ana and prayed for you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Escuché testimonios muy buenos.",
+              "english": "I heard very good testimonies.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Qué tipo de testimonios?",
+              "english": "What kind of testimonies?",
+              "speaker": "F"
+            },
+            {
+              "text": "Una mujer, Karla, contó cómo perdonó a su padre.",
+              "english": "A woman, Karla, told how she forgave her father.",
+              "speaker": "S"
+            },
+            {
+              "text": "Un hombre habló de su salvación.",
+              "english": "A man spoke of his salvation.",
+              "speaker": "S"
+            },
+            {
+              "text": "Otro abandonó su casa y regresó.",
+              "english": "Another left his home and came back.",
+              "speaker": "S"
+            },
+            {
+              "text": "Un señor viejo dijo que él es un discípulo, no un maestro.",
+              "english": "An old man said that he is a disciple, not a teacher.",
+              "speaker": "S"
+            },
+            {
+              "text": "Mario dice que todos somos pecadores y que hay que obedecer a Dios.",
+              "english": "Mario says we are all sinners and that we must obey God.",
+              "speaker": "S"
+            },
+            {
+              "text": "Todos hablaron de tristeza, pero también de oración.",
+              "english": "They all spoke of sadness, but also of prayer.",
+              "speaker": "S"
+            },
+            {
+              "text": "Qué bonito.",
+              "english": "How beautiful.",
+              "speaker": "F"
+            },
+            {
+              "text": "Aquí también rezamos por ti.",
+              "english": "We pray for you here, too.",
+              "speaker": "F"
+            },
+            {
+              "text": "Mamá dice que tu nombre está en la oración de la familia.",
+              "english": "Mom says your name is in the family's prayer.",
+              "speaker": "F"
+            },
+            {
+              "text": "Gracias.",
+              "english": "Thank you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Yo siento que Dios me ha liberado de muchas cosas.",
+              "english": "I feel that God has freed me from many things.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pensaba que tenía que hacerlo todo bien, y ahora sé que no.",
+              "english": "I thought I had to do everything right, and now I know I don't.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pienso en las tradiciones de nuestra familia.",
+              "english": "I think of our family traditions.",
+              "speaker": "F"
+            },
+            {
+              "text": "En diciembre, la comida era una fiesta.",
+              "english": "In December, dinner was a party.",
+              "speaker": "F"
+            },
+            {
+              "text": "Papá cantaba, y mamá cubría la mesa de platos.",
+              "english": "Dad sang, and Mom covered the table with plates.",
+              "speaker": "F"
+            },
+            {
+              "text": "Y yo dejaba los zapatos al lado de la cama...",
+              "english": "And I left my shoes beside the bed...",
+              "speaker": "S"
+            },
+            {
+              "text": "¡Y siempre los perdías!",
+              "english": "And you always lost them!",
+              "speaker": "F"
+            },
+            {
+              "text": "Ese es el pasado.",
+              "english": "That is the past.",
+              "speaker": "F"
+            },
+            {
+              "text": "Pero este año vamos a hacer algo nuevo.",
+              "english": "But this year we are going to do something new.",
+              "speaker": "F"
+            },
+            {
+              "text": "Vamos a continuar la tradición, pero con una llamada.",
+              "english": "We are going to continue the tradition, but with a call.",
+              "speaker": "S"
+            },
+            {
+              "text": "Si no puedo estar en casa, estoy en el teléfono.",
+              "english": "If I can't be home, I'll be on the phone.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es una buena forma de estar cerca.",
+              "english": "It is a good way of being close.",
+              "speaker": "F"
+            },
+            {
+              "text": "Estás lejos, pero entiendo tu ministerio.",
+              "english": "You are far away, but I understand your ministry.",
+              "speaker": "F"
+            },
+            {
+              "text": "Yo tampoco he comprendido todo.",
+              "english": "I haven't understood everything either.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pero aquí estoy en paz, y eso es todo lo que necesito.",
+              "english": "But here I am at peace, and that is all I need.",
+              "speaker": "S"
+            },
+            {
+              "text": "El espíritu de esta gente me enseña cada día.",
+              "english": "The spirit of these people teaches me every day.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La vuelta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Quiero ver tu sonrisa otra vez.",
+              "english": "I want to see your smile again.",
+              "speaker": "F"
+            },
+            {
+              "text": "¿Cuándo es tu vuelta a casa?",
+              "english": "When is your return home?",
+              "speaker": "F"
+            },
+            {
+              "text": "Todavía no sé.",
+              "english": "I don't know yet.",
+              "speaker": "S"
+            },
+            {
+              "text": "Quizás en junio.",
+              "english": "Maybe in June.",
+              "speaker": "S"
+            },
+            {
+              "text": "Hay que ahorrar dinero.",
+              "english": "I have to save money.",
+              "speaker": "S"
+            },
+            {
+              "text": "Un boleto cuesta mucho.",
+              "english": "A ticket costs a lot.",
+              "speaker": "S"
+            },
+            {
+              "text": "Voy a ayudarte con una parte del boleto.",
+              "english": "I am going to help you with part of the ticket.",
+              "speaker": "F"
+            },
+            {
+              "text": "Papá ya lo ha mencionado.",
+              "english": "Dad has already mentioned it.",
+              "speaker": "F"
+            },
+            {
+              "text": "No, no puedo aceptar.",
+              "english": "No, I can't accept that.",
+              "speaker": "S"
+            },
+            {
+              "text": "Mi iglesia me ayuda con la mitad.",
+              "english": "My church helps me with half.",
+              "speaker": "S"
+            },
+            {
+              "text": "La otra mitad la he ahorrado yo.",
+              "english": "I have saved the other half myself.",
+              "speaker": "S"
+            },
+            {
+              "text": "Bueno, pero no hay que dejar de intentar.",
+              "english": "Well, but we must not stop trying.",
+              "speaker": "F"
+            },
+            {
+              "text": "Mientras esperamos, vamos a llamar más.",
+              "english": "While we wait, we are going to call more.",
+              "speaker": "F"
+            },
+            {
+              "text": "Voy a llamar cada sábado.",
+              "english": "I am going to call every Saturday.",
+              "speaker": "S"
+            },
+            {
+              "text": "Mamá y papá van a hablar conmigo otra vez.",
+              "english": "Mom and Dad will talk with me again.",
+              "speaker": "S"
+            },
+            {
+              "text": "Un abrazo, Sam.",
+              "english": "A hug, Sam.",
+              "speaker": "F"
+            },
+            {
+              "text": "Te quiero mucho.",
+              "english": "I love you very much.",
+              "speaker": "F"
+            },
+            {
+              "text": "Y yo a ti, Sofía.",
+              "english": "And I you, Sofía.",
+              "speaker": "S"
+            },
+            {
+              "text": "Adiós, hasta el sábado.",
+              "english": "Goodbye, until Saturday.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,561 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-09",
+  "lang": "es",
+  "title": "El domingo en el templo",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-09",
+    "title": "Getting ready for church (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "church life",
+    "greetings",
+    "reflexive verbs"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "D": "Daniel",
+    "M": "Marvin",
+    "R": "Roberto"
+  },
+  "sections": [
+    {
+      "title": "El sábado por la noche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es sábado por la noche, y en la casa de doña Marta todos se preparan para el domingo.",
+              "english": "It is Saturday night, and in doña Marta's house everyone is getting ready for Sunday."
+            },
+            {
+              "text": "Nico se acuesta temprano.",
+              "english": "Nico goes to bed early."
+            },
+            {
+              "text": "Doña Marta cepilla los zapatos de él.",
+              "english": "Doña Marta brushes his shoes."
+            },
+            {
+              "text": "Ana y Karla llegan con el pan.",
+              "english": "Ana and Karla arrive with the bread."
+            },
+            {
+              "text": "—Nosotras llevamos el pan y el café al templo —dice Ana.",
+              "english": "\"We are taking the bread and the coffee to the church,\" says Ana."
+            },
+            {
+              "text": "Sam lee el grupo del equipo en su celular.",
+              "english": "Sam reads the team group on his phone."
+            },
+            {
+              "text": "Daniel mandó un correo.",
+              "english": "Daniel sent an email."
+            },
+            {
+              "speaker": "D",
+              "text": "Mañana nos reunimos en el templo a las ocho y treinta.",
+              "english": "Tomorrow we meet at the church at eight thirty."
+            },
+            {
+              "speaker": "D",
+              "text": "Hay una familia nueva, y quiero darles una buena bienvenida.",
+              "english": "There is a new family, and I want to give them a good welcome."
+            },
+            {
+              "text": "Sam contesta: —Voy a asistir con Nico.",
+              "english": "Sam answers, \"I am going to attend with Nico."
+            },
+            {
+              "text": "Me voy a sentar con él.",
+              "english": "I am going to sit with him.\""
+            },
+            {
+              "text": "Sam se acuesta tarde, porque estudia el versículo de la semana.",
+              "english": "Sam goes to bed late, because he studies the verse of the week."
+            },
+            {
+              "text": "Es del capítulo tres de Juan.",
+              "english": "It is from chapter three of John."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El domingo por la mañana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta se levanta a las cinco.",
+              "english": "Doña Marta gets up at five."
+            },
+            {
+              "text": "Se baña y se cepilla el pelo.",
+              "english": "She bathes and brushes her hair."
+            },
+            {
+              "text": "Nico se despierta a las siete.",
+              "english": "Nico wakes up at seven."
+            },
+            {
+              "text": "—¡Levantate! —dice su abuela.",
+              "english": "\"Get up!\" says his grandmother."
+            },
+            {
+              "text": "Los dos salen de la casa.",
+              "english": "The two leave the house."
+            },
+            {
+              "text": "Caminan a la iglesia con Sam, Ana y Karla.",
+              "english": "They walk to the church with Sam, Ana and Karla."
+            },
+            {
+              "text": "La iglesia tiene un techo rojo y paredes blancas.",
+              "english": "The church has a red roof and white walls."
+            },
+            {
+              "text": "La semana pasada llovió mucho.",
+              "english": "Last week it rained a lot."
+            },
+            {
+              "text": "Un rayo cayó cerca de la iglesia, y el techo se rompió.",
+              "english": "A bolt of lightning fell near the church, and the roof broke."
+            },
+            {
+              "text": "Todos tuvimos un susto, pero no hubo peligro.",
+              "english": "We all got a fright, but there was no danger."
+            },
+            {
+              "text": "Luis y Carlos arreglaron el techo el sábado.",
+              "english": "Luis and Carlos fixed the roof on Saturday."
+            },
+            {
+              "text": "Ahora está bien.",
+              "english": "Now it is fine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Antes del culto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Antes del culto, en el patio, la gente se saluda.",
+              "english": "Before the service, in the patio, people greet each other."
+            },
+            {
+              "text": "Los hombres se abrazan, y las mujeres se dan un beso.",
+              "english": "The men hug, and the women give each other a kiss."
+            },
+            {
+              "text": "Un abrazo y un beso son la bienvenida de esta gente.",
+              "english": "A hug and a kiss are the welcome of these people."
+            },
+            {
+              "text": "—Buenos días, hermano Sam —dice el señor Mario—.",
+              "english": "\"Good morning, brother Sam,\" says don Mario."
+            },
+            {
+              "text": "Que Dios lo bendiga.",
+              "english": "\"May God bless you.\""
+            },
+            {
+              "text": "El señor Mario abraza a Sam con mucho gusto.",
+              "english": "Señor Mario hugs Sam gladly."
+            },
+            {
+              "text": "Ana y Karla se saludan con un abrazo.",
+              "english": "Ana and Karla greet each other with a hug."
+            },
+            {
+              "text": "Una familia llega a la iglesia.",
+              "english": "A family arrives at the church."
+            },
+            {
+              "text": "El pastor Andrés la saluda: —Les damos la bienvenida.",
+              "english": "Pastor Andrés greets them: \"We welcome you.\""
+            },
+            {
+              "speaker": "R",
+              "text": "Gracias, pastor.",
+              "english": "Thank you, pastor."
+            },
+            {
+              "speaker": "R",
+              "text": "Yo soy creyente, pero mi familia no.",
+              "english": "I am a believer, but my family is not."
+            },
+            {
+              "speaker": "R",
+              "text": "Hoy vienen conmigo.",
+              "english": "Today they are coming with me."
+            },
+            {
+              "text": "Sam presta su Biblia a Roberto.",
+              "english": "Sam lends his Bible to Roberto."
+            },
+            {
+              "text": "Roberto promete devolverla después del culto.",
+              "english": "Roberto promises to return it after the service."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El culto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La congregación se sienta.",
+              "english": "The congregation sits down."
+            },
+            {
+              "text": "Hay mucha gente en el templo: hombres, mujeres y niños.",
+              "english": "There are many people in the church: men, women and children."
+            },
+            {
+              "text": "Primero hay alabanza.",
+              "english": "First there is praise."
+            },
+            {
+              "text": "La congregación canta, y Sam canta también.",
+              "english": "The congregation sings, and Sam sings too."
+            },
+            {
+              "text": "Después el pastor lee un versículo del capítulo tres.",
+              "english": "Then the pastor reads a verse from chapter three."
+            },
+            {
+              "text": "Todos lo leen.",
+              "english": "Everyone reads it."
+            },
+            {
+              "text": "—Este versículo habla de cómo Dios ama a su gente —dice el pastor.",
+              "english": "\"This verse speaks of how God loves his people,\" says the pastor."
+            },
+            {
+              "text": "Cuando el pastor predica, Nico escucha.",
+              "english": "When the pastor preaches, Nico listens."
+            },
+            {
+              "text": "El pastor habla con palabras fáciles.",
+              "english": "The pastor speaks in easy words."
+            },
+            {
+              "text": "Hoy predica sobre una oveja perdida.",
+              "english": "Today he preaches about a lost sheep."
+            },
+            {
+              "text": "Dice que Dios busca a todos.",
+              "english": "He says that God looks for everyone."
+            },
+            {
+              "text": "Después hay un momento para el diezmo y la ofrenda.",
+              "english": "Then there is a moment for the tithe and the offering."
+            },
+            {
+              "text": "Doña Marta pone su diezmo en la caja.",
+              "english": "Doña Marta puts her tithe in the box."
+            },
+            {
+              "text": "El pastor explica que el diezmo es para agradecer a Dios.",
+              "english": "The pastor explains that the tithe is for thanking God."
+            },
+            {
+              "text": "Cada familia da lo que puede.",
+              "english": "Each family gives what it can."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El testimonio",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después hay un testimonio.",
+              "english": "Then there is a testimony."
+            },
+            {
+              "text": "Marvin se levanta y habla a la congregación.",
+              "english": "Marvin stands up and speaks to the congregation."
+            },
+            {
+              "speaker": "M",
+              "text": "Hace años, una noche de lluvia, perdí mi casa en una inundación.",
+              "english": "Years ago, one rainy night, I lost my house in a flood."
+            },
+            {
+              "speaker": "M",
+              "text": "Hubo truenos, y un rayo cayó cerca.",
+              "english": "There were thunderclaps, and lightning fell nearby."
+            },
+            {
+              "speaker": "M",
+              "text": "Después hubo un incendio.",
+              "english": "Then there was a fire."
+            },
+            {
+              "speaker": "M",
+              "text": "Yo gritaba, y mi familia lloraba.",
+              "english": "I was shouting, and my family was crying."
+            },
+            {
+              "speaker": "M",
+              "text": "Escapamos a la iglesia.",
+              "english": "We escaped to the church."
+            },
+            {
+              "speaker": "M",
+              "text": "Los hermanos nos ofrecieron comida y camas.",
+              "english": "The brothers offered us food and beds."
+            },
+            {
+              "speaker": "M",
+              "text": "Yo no era creyente.",
+              "english": "I was not a believer."
+            },
+            {
+              "speaker": "M",
+              "text": "Pero la iglesia me enseñó que Dios cuida a su gente.",
+              "english": "But the church taught me that God takes care of his people."
+            },
+            {
+              "speaker": "M",
+              "text": "Hoy soy creyente, y quiero bautizarme en septiembre.",
+              "english": "Today I am a believer, and I want to be baptized in September."
+            },
+            {
+              "speaker": "M",
+              "text": "Gracias a Dios y gracias a ustedes.",
+              "english": "Thanks be to God and thanks to you."
+            },
+            {
+              "text": "El pastor responde: —Gracias, Marvin.",
+              "english": "The pastor answers, \"Thank you, Marvin."
+            },
+            {
+              "text": "El bautismo es para los que creen en Dios.",
+              "english": "Baptism is for those who believe in God.\""
+            },
+            {
+              "text": "Otros dos hermanos también quieren bautizarse.",
+              "english": "Two other brothers also want to be baptized."
+            },
+            {
+              "text": "Hay tres bautismos en septiembre.",
+              "english": "There are three baptisms in September."
+            },
+            {
+              "text": "—Voy a avisar en el grupo —dice el pastor—.",
+              "english": "\"I will announce it in the group,\" says the pastor."
+            },
+            {
+              "text": "Y mando un correo con el horario.",
+              "english": "\"And I will send an email with the schedule.\""
+            },
+            {
+              "text": "Karla comparte una foto de la congregación en el celular.",
+              "english": "Karla shares a photo of the congregation on her phone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Después del culto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cuando acaba el culto, la gente se despide, pero muchos se quedan en el patio.",
+              "english": "When the service ends, people say goodbye, but many stay in the patio."
+            },
+            {
+              "text": "—Nosotras preparamos el café y el pan —dice Ana.",
+              "english": "\"We are preparing the coffee and the bread,\" says Ana."
+            },
+            {
+              "text": "Roberto habla con Sam.",
+              "english": "Roberto talks with Sam."
+            },
+            {
+              "speaker": "R",
+              "text": "Le devuelvo su Biblia.",
+              "english": "I am giving you back your Bible."
+            },
+            {
+              "speaker": "R",
+              "text": "Gracias.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "R",
+              "text": "Mi esposa quiere asistir de nuevo.",
+              "english": "My wife wants to attend again."
+            },
+            {
+              "text": "—Prometo asistir todos los domingos —dice la esposa de Roberto.",
+              "english": "\"I promise to attend every Sunday,\" says Roberto's wife."
+            },
+            {
+              "text": "El pastor abraza a Roberto.",
+              "english": "The pastor hugs Roberto."
+            },
+            {
+              "text": "—Quiero dar mi testimonio en septiembre —dice Roberto—.",
+              "english": "\"I want to give my testimony in September,\" says Roberto."
+            },
+            {
+              "text": "Pero primero necesito aprender.",
+              "english": "\"But first I need to learn.\""
+            },
+            {
+              "text": "—Gracias por tu testimonio, Marvin —dice el pastor—.",
+              "english": "\"Thank you for your testimony, Marvin,\" says the pastor."
+            },
+            {
+              "text": "El día del bautismo es una fiesta para todos.",
+              "english": "\"The day of baptism is a celebration for everyone."
+            },
+            {
+              "text": "Voy a bautizar a los tres.",
+              "english": "I am going to baptize the three of you.\""
+            },
+            {
+              "text": "Ana dice: —El pastor cumple cuarenta años en octubre.",
+              "english": "Ana says, \"The pastor turns forty in October."
+            },
+            {
+              "text": "Vamos a celebrar.",
+              "english": "We are going to celebrate.\""
+            },
+            {
+              "text": "Los jóvenes se reúnen los martes, y los hermanos estudian la Biblia el miércoles.",
+              "english": "The young people meet on Tuesdays, and the brothers study the Bible on Wednesdays."
+            },
+            {
+              "text": "—¿Cuándo nos vemos de nuevo? —pregunta Sam.",
+              "english": "\"When do we see each other again?\" asks Sam."
+            },
+            {
+              "text": "—El jueves nos reunimos con el equipo —responde Ana.",
+              "english": "\"On Thursday we meet with the team,\" answers Ana."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El camino a casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta está cansada.",
+              "english": "Doña Marta is tired."
+            },
+            {
+              "text": "—Nosotras la acompañamos a la casa —dice Karla.",
+              "english": "\"We will accompany her to the house,\" says Karla."
+            },
+            {
+              "text": "Sam, Ana y Karla la acompañan.",
+              "english": "Sam, Ana and Karla accompany her."
+            },
+            {
+              "text": "Nico va con ellos.",
+              "english": "Nico goes with them."
+            },
+            {
+              "text": "Él también acompaña a su abuela.",
+              "english": "He also accompanies his grandmother."
+            },
+            {
+              "text": "En la casa, Nico se despide de Sam con un abrazo.",
+              "english": "At the house, Nico says goodbye to Sam with a hug."
+            },
+            {
+              "text": "Doña Marta se despide con un beso.",
+              "english": "Doña Marta says goodbye with a kiss."
+            },
+            {
+              "text": "—Que Dios te bendiga, Sam —dice.",
+              "english": "\"May God bless you, Sam,\" she says."
+            },
+            {
+              "text": "Sam camina solo por la calle.",
+              "english": "Sam walks alone down the street."
+            },
+            {
+              "text": "Piensa en la bienvenida de esta gente y está feliz.",
+              "english": "He thinks about the welcome of these people and is happy."
+            },
+            {
+              "text": "El pastor predica muy bien.",
+              "english": "The pastor preaches very well."
+            },
+            {
+              "text": "Esta noche Sam va a leer el capítulo tres de nuevo.",
+              "english": "Tonight Sam is going to read chapter three again."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,772 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-02",
+  "lang": "es",
+  "title": "Testimonios en el grupo pequeño",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-02",
+    "title": "Small-group testimonies (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "P": "Pastor Mario",
+    "K": "Karla",
+    "C": "Carlos",
+    "V": "Marvin",
+    "E": "Elena",
+    "S": "Sam",
+    "M": "Doña Marta"
+  },
+  "sections": [
+    {
+      "title": "Una noche de testimonios",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es jueves por la noche.",
+              "english": "It is Thursday night."
+            },
+            {
+              "text": "El grupo pequeño de la iglesia se reúne en la casa de doña Marta.",
+              "english": "The small group from the church meets at doña Marta's house."
+            },
+            {
+              "text": "Hay café, pan y una mesa grande.",
+              "english": "There is coffee, bread and a big table."
+            },
+            {
+              "text": "Todos están cansados, pero nadie quiere perder la reunión.",
+              "english": "Everyone is tired, but nobody wants to miss the meeting."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hermanos, gracias por venir.",
+              "english": "Brothers and sisters, thank you for coming.",
+              "speaker": "P"
+            },
+            {
+              "text": "Esta noche no vamos a estudiar.",
+              "english": "Tonight we are not going to study.",
+              "speaker": "P"
+            },
+            {
+              "text": "Vamos a contar lo que Dios ha hecho en nuestra vida este año.",
+              "english": "We are going to tell what God has done in our lives this year.",
+              "speaker": "P"
+            },
+            {
+              "text": "Primero vamos a orar.",
+              "english": "First we are going to pray.",
+              "speaker": "P"
+            },
+            {
+              "text": "Yo empiezo, y después cada uno puede hacer su petición.",
+              "english": "I will begin, and then each one can make a request.",
+              "speaker": "P"
+            },
+            {
+              "text": "Padre, te damos gracias por esta casa y por esta gente.",
+              "english": "Father, we thank you for this house and for these people.",
+              "speaker": "P"
+            },
+            {
+              "text": "Tu amor es más grande que nuestros problemas, y sabemos que escuchas nuestra oración.",
+              "english": "Your love is greater than our problems, and we know that you hear our prayer.",
+              "speaker": "P"
+            },
+            {
+              "text": "Soy líder de este grupo, pero esta noche escucho.",
+              "english": "I am the leader of this group, but tonight I listen.",
+              "speaker": "P"
+            },
+            {
+              "text": "Todos hemos pecado, y todos necesitamos la misericordia de Dios.",
+              "english": "We have all sinned, and we all need God's mercy.",
+              "speaker": "P"
+            },
+            {
+              "text": "El evangelio habla de gracia, de perdón y de salvación.",
+              "english": "The gospel speaks of grace, forgiveness and salvation.",
+              "speaker": "P"
+            },
+            {
+              "text": "Cuando llega al corazón, un pecador se convierte.",
+              "english": "When it reaches the heart, a sinner is converted.",
+              "speaker": "P"
+            },
+            {
+              "text": "Confiesa, abandona su camino y empieza a obedecer.",
+              "english": "He confesses, leaves his road and begins to obey.",
+              "speaker": "P"
+            },
+            {
+              "text": "Eso es una bendición, y es también libertad.",
+              "english": "That is a blessing, and it is also freedom.",
+              "speaker": "P"
+            },
+            {
+              "text": "Dios quiere liberar el alma y dar felicidad a su discípulo.",
+              "english": "God wants to free the soul and give happiness to his disciple.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El testimonio de Karla",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Karla es la primera.",
+              "english": "Karla is first."
+            },
+            {
+              "text": "Tiene una carta en la mano y habla poco.",
+              "english": "She has a letter in her hand and speaks little."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mi padre dejó nuestra casa hace diez años.",
+              "english": "My father left our house ten years ago.",
+              "speaker": "K"
+            },
+            {
+              "text": "Yo era una niña y no comprendía la razón.",
+              "english": "I was a girl and I did not understand the reason.",
+              "speaker": "K"
+            },
+            {
+              "text": "Mi madre trabajó mucho para darnos comida.",
+              "english": "My mother worked a lot to give us food.",
+              "speaker": "K"
+            },
+            {
+              "text": "Ella fue un ejemplo para mí, pero yo me enojaba con mi padre.",
+              "english": "She was an example for me, but I was angry with my father.",
+              "speaker": "K"
+            },
+            {
+              "text": "Durante muchos años no quise hablar de él.",
+              "english": "For many years I did not want to talk about him.",
+              "speaker": "K"
+            },
+            {
+              "text": "En nuestra cultura, un hijo no habla mal de su padre, y yo sentía que no podía hacerlo.",
+              "english": "In our culture a child does not speak badly of his father, and I felt that I could not do it.",
+              "speaker": "K"
+            },
+            {
+              "text": "Este año ha cambiado algo.",
+              "english": "This year something has changed.",
+              "speaker": "K"
+            },
+            {
+              "text": "Una noche, en la iglesia, escuché una oración sobre el perdón.",
+              "english": "One night, in church, I heard a prayer about forgiveness.",
+              "speaker": "K"
+            },
+            {
+              "text": "Esa noche lloré mucho.",
+              "english": "That night I cried a lot.",
+              "speaker": "K"
+            },
+            {
+              "text": "No he podido olvidar el pasado, pero he aprendido una cosa.",
+              "english": "I have not been able to forget the past, but I have learned one thing.",
+              "speaker": "K"
+            },
+            {
+              "text": "El perdón es un camino, y todavía estoy en él.",
+              "english": "Forgiveness is a road, and I am still on it.",
+              "speaker": "K"
+            },
+            {
+              "text": "Hace dos semanas escribí una carta a mi padre.",
+              "english": "Two weeks ago I wrote a letter to my father.",
+              "speaker": "K"
+            },
+            {
+              "text": "Todavía no ha respondido, pero ya no tengo tristeza en el corazón.",
+              "english": "He has not answered yet, but I no longer have sadness in my heart.",
+              "speaker": "K"
+            },
+            {
+              "text": "Dios me ha dado paz.",
+              "english": "God has given me peace.",
+              "speaker": "K"
+            },
+            {
+              "text": "Esa paz es una bendición, y no es el resultado de mi esfuerzo.",
+              "english": "That peace is a blessing, and it is not the result of my effort.",
+              "speaker": "K"
+            },
+            {
+              "text": "Es una gracia.",
+              "english": "It is grace.",
+              "speaker": "K"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Gracias, Karla.",
+              "english": "Thank you, Karla.",
+              "speaker": "P"
+            },
+            {
+              "text": "Tus palabras nos ayudan a todos.",
+              "english": "Your words help all of us.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El testimonio de Carlos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Carlos es carpintero.",
+              "english": "Carlos is a carpenter."
+            },
+            {
+              "text": "Es un hombre grande, pero esta noche habla poco y mira la mesa.",
+              "english": "He is a big man, but tonight he speaks little and looks at the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Yo crecí en esta iglesia, pero a los veinte años abandoné todo.",
+              "english": "I grew up in this church, but at twenty I abandoned everything.",
+              "speaker": "C"
+            },
+            {
+              "text": "Quería ser rico y tener éxito.",
+              "english": "I wanted to be rich and to be successful.",
+              "speaker": "C"
+            },
+            {
+              "text": "Obtuve un buen empleo en una empresa, y gané dinero.",
+              "english": "I got a good job in a company, and I earned money.",
+              "speaker": "C"
+            },
+            {
+              "text": "Pero perdí a Dios, y también perdí a mi familia.",
+              "english": "But I lost God, and I also lost my family.",
+              "speaker": "C"
+            },
+            {
+              "text": "Un día gasté todo mi dinero y me quedé solo.",
+              "english": "One day I spent all my money and I was left alone.",
+              "speaker": "C"
+            },
+            {
+              "text": "Me sentí como el hijo que cuidaba cerdos y no tenía nada.",
+              "english": "I felt like the son who looked after pigs and had nothing.",
+              "speaker": "C"
+            },
+            {
+              "text": "Ese día pensé en mi casa lejana.",
+              "english": "That day I thought of my distant house.",
+              "speaker": "C"
+            },
+            {
+              "text": "Regresé mirando el piso.",
+              "english": "I came back looking at the floor.",
+              "speaker": "C"
+            },
+            {
+              "text": "No merecía nada, y lo sabía.",
+              "english": "I deserved nothing, and I knew it.",
+              "speaker": "C"
+            },
+            {
+              "text": "Pero mi madre salió a la calle, me besó y lloró.",
+              "english": "But my mother came out into the street, kissed me and cried.",
+              "speaker": "C"
+            },
+            {
+              "text": "Aquella noche me convertí otra vez.",
+              "english": "That night I was converted again.",
+              "speaker": "C"
+            },
+            {
+              "text": "Confesé mi pecado, y le rogué a Dios su misericordia.",
+              "english": "I confessed my sin and begged God for his mercy.",
+              "speaker": "C"
+            },
+            {
+              "text": "Él no me trató como a un criado.",
+              "english": "He did not treat me as a servant.",
+              "speaker": "C"
+            },
+            {
+              "text": "Me trató como a un hijo.",
+              "english": "He treated me as a son.",
+              "speaker": "C"
+            },
+            {
+              "text": "Hoy, diez años después, todavía me arrepiento de aquel camino.",
+              "english": "Today, ten years later, I still regret that road.",
+              "speaker": "C"
+            },
+            {
+              "text": "Pero he descubierto algo.",
+              "english": "But I have discovered something.",
+              "speaker": "C"
+            },
+            {
+              "text": "La gracia es más grande que mi pecado.",
+              "english": "Grace is greater than my sin.",
+              "speaker": "C"
+            },
+            {
+              "text": "Ahora soy pecador, pero un pecador perdonado.",
+              "english": "I am still a sinner, but a forgiven sinner.",
+              "speaker": "C"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El testimonio de Marvin",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marvin es un señor viejo.",
+              "english": "Marvin is an old man."
+            },
+            {
+              "text": "Lleva un anillo en la mano, y todos lo quieren mucho.",
+              "english": "He wears a ring on his hand, and everybody loves him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Yo no fui un hijo perdido.",
+              "english": "I was not a lost son.",
+              "speaker": "V"
+            },
+            {
+              "text": "Fui un pecador bueno, como dicen.",
+              "english": "I was a good sinner, as they say.",
+              "speaker": "V"
+            },
+            {
+              "text": "Iba a la iglesia por tradición, pero no tenía amor en el corazón.",
+              "english": "I went to church out of tradition, but I had no love in my heart.",
+              "speaker": "V"
+            },
+            {
+              "text": "Hace veinte años, un hombre predicó el evangelio en la calle.",
+              "english": "Twenty years ago a man preached the gospel in the street.",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo me quedé a escuchar.",
+              "english": "I stayed to listen.",
+              "speaker": "V"
+            },
+            {
+              "text": "Tenía un libro pequeño en la mano.",
+              "english": "He had a small book in his hand.",
+              "speaker": "V"
+            },
+            {
+              "text": "Él dijo una sola cosa: \"Dios te ama, y quiere salvar tu alma\".",
+              "english": "He said just one thing: \"God loves you and wants to save your soul.\"",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo no entendía mucho, pero esas palabras se quedaron en mi espíritu.",
+              "english": "I did not understand much, but those words stayed in my spirit.",
+              "speaker": "V"
+            },
+            {
+              "text": "Después de esa noche, empecé a leer la Biblia.",
+              "english": "After that night I began to read the Bible.",
+              "speaker": "V"
+            },
+            {
+              "text": "Quería obedecer, pero no sabía la manera.",
+              "english": "I wanted to obey, but I did not know how.",
+              "speaker": "V"
+            },
+            {
+              "text": "Entonces recé cada día durante un año.",
+              "english": "So I prayed every day for a year.",
+              "speaker": "V"
+            },
+            {
+              "text": "Un día confesé mi pecado, y ese día me convertí.",
+              "english": "One day I confessed my sin, and that day I was converted.",
+              "speaker": "V"
+            },
+            {
+              "text": "Hoy soy discípulo de Jesús.",
+              "english": "Today I am a disciple of Jesus.",
+              "speaker": "V"
+            },
+            {
+              "text": "No soy un buen discípulo, pero sirvo en el ministerio de los jóvenes.",
+              "english": "I am not a good disciple, but I serve in the youth ministry.",
+              "speaker": "V"
+            },
+            {
+              "text": "Los jóvenes son nuestro futuro, y quiero dedicar mis años a ellos.",
+              "english": "Young people are our future, and I want to dedicate my years to them.",
+              "speaker": "V"
+            },
+            {
+              "text": "Aquí está la diferencia: antes yo tenía tradición.",
+              "english": "Here is the difference: before I had tradition.",
+              "speaker": "V"
+            },
+            {
+              "text": "Ahora tengo vida.",
+              "english": "Now I have life.",
+              "speaker": "V"
+            },
+            {
+              "text": "La salvación no es una cosa que ganamos.",
+              "english": "Salvation is not something we earn.",
+              "speaker": "V"
+            },
+            {
+              "text": "Es un regalo.",
+              "english": "It is a gift.",
+              "speaker": "V"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El testimonio de Elena",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Elena es madre de tres hijos.",
+              "english": "Elena is a mother of three children."
+            },
+            {
+              "text": "Llega tarde, con el pan en una bolsa.",
+              "english": "She arrives late, with the bread in a bag."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Perdón por llegar tarde.",
+              "english": "Sorry for being late.",
+              "speaker": "E"
+            },
+            {
+              "text": "Hoy apenas puedo hablar sin llorar, pero lo voy a intentar.",
+              "english": "Today I can hardly speak without crying, but I am going to try.",
+              "speaker": "E"
+            },
+            {
+              "text": "Hace un año mi esposo perdió su empleo.",
+              "english": "A year ago my husband lost his job.",
+              "speaker": "E"
+            },
+            {
+              "text": "La causa fue la empresa, no él.",
+              "english": "The cause was the company, not him.",
+              "speaker": "E"
+            },
+            {
+              "text": "Aquel mes no tuvimos dinero ni para el pan.",
+              "english": "That month we had no money even for bread.",
+              "speaker": "E"
+            },
+            {
+              "text": "Yo pensaba que la solución era más dinero, pero me equivocaba.",
+              "english": "I thought the solution was more money, but I was wrong.",
+              "speaker": "E"
+            },
+            {
+              "text": "Una noche recé y le rogué a Dios por mis hijos.",
+              "english": "One night I prayed and begged God for my children.",
+              "speaker": "E"
+            },
+            {
+              "text": "Mi alma estaba triste, y mi espíritu estaba cansado.",
+              "english": "My soul was sad and my spirit was tired.",
+              "speaker": "E"
+            },
+            {
+              "text": "Esa noche sentí algo nuevo.",
+              "english": "That night I felt something new.",
+              "speaker": "E"
+            },
+            {
+              "text": "No fue un milagro grande.",
+              "english": "It was not a great miracle.",
+              "speaker": "E"
+            },
+            {
+              "text": "Fue la felicidad de saber que Dios no nos ha abandonado.",
+              "english": "It was the happiness of knowing that God has not abandoned us.",
+              "speaker": "E"
+            },
+            {
+              "text": "Dios me ha liberado, y me ha dado libertad.",
+              "english": "God has freed me and given me freedom.",
+              "speaker": "E"
+            },
+            {
+              "text": "Ya no pienso siempre en el futuro.",
+              "english": "I no longer always think about the future.",
+              "speaker": "E"
+            },
+            {
+              "text": "En nuestra sociedad todos piensan en el dinero, pero esa noche empezó un camino diferente.",
+              "english": "In our society everyone thinks about money, but that night a different road began.",
+              "speaker": "E"
+            },
+            {
+              "text": "Fue el inicio de una vida nueva.",
+              "english": "It was the beginning of a new life.",
+              "speaker": "E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo que Sam no ha podido hacer",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam levanta la mano.",
+              "english": "Sam raises his hand."
+            },
+            {
+              "text": "Todos lo miran con cariño.",
+              "english": "Everyone looks at him with affection."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "No tengo mucho que contar, pero quiero decir algo.",
+              "english": "I don't have much to tell, but I want to say something.",
+              "speaker": "S"
+            },
+            {
+              "text": "Este año ha sido difícil.",
+              "english": "This year has been hard.",
+              "speaker": "S"
+            },
+            {
+              "text": "No he logrado hablar bien español.",
+              "english": "I haven't managed to speak Spanish well.",
+              "speaker": "S"
+            },
+            {
+              "text": "No he podido entender cuando todos hablan a la vez.",
+              "english": "I haven't been able to follow when everyone speaks at once.",
+              "speaker": "S"
+            },
+            {
+              "text": "Todavía me equivoco mucho.",
+              "english": "I still make a lot of mistakes.",
+              "speaker": "S"
+            },
+            {
+              "text": "A veces siento tristeza, porque estoy lejos de mi familia.",
+              "english": "Sometimes I feel sadness, because I am far from my family.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pero ustedes, cada persona de este grupo, me han dado felicidad.",
+              "english": "But you, each person in this group, have given me happiness.",
+              "speaker": "S"
+            },
+            {
+              "text": "Me han recibido sin pedir nada.",
+              "english": "You have received me without asking for anything.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ayer luché con una pregunta: ¿por qué estoy aquí?",
+              "english": "Yesterday I wrestled with a question: why am I here?",
+              "speaker": "S"
+            },
+            {
+              "text": "Hoy lo sé.",
+              "english": "Today I know.",
+              "speaker": "S"
+            },
+            {
+              "text": "Estoy aquí para servir, para compartir el evangelio con mi vida y para aprender de ustedes.",
+              "english": "I am here to serve, to share the gospel with my life and to learn from you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Mi petición de oración es pequeña.",
+              "english": "My prayer request is small.",
+              "speaker": "S"
+            },
+            {
+              "text": "Quiero amar a esta gente con más esfuerzo cada día, y obedecer lo que Dios me dice.",
+              "english": "I want to love these people with more effort each day, and to obey what God tells me.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La oración final",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Gracias, Sam.",
+              "english": "Thank you, Sam.",
+              "speaker": "P"
+            },
+            {
+              "text": "Tu petición es buena para todos.",
+              "english": "Your request is good for all of us.",
+              "speaker": "P"
+            },
+            {
+              "text": "¿Alguien más tiene una petición?",
+              "english": "Does anyone else have a request?",
+              "speaker": "P"
+            },
+            {
+              "text": "Sí.",
+              "english": "Yes.",
+              "speaker": "M"
+            },
+            {
+              "text": "Pido por mi nieto Nico, y por todos los jóvenes de este pueblo.",
+              "english": "I ask for my grandson Nico, and for all the young people of this village.",
+              "speaker": "M"
+            },
+            {
+              "text": "Son el presente y el futuro.",
+              "english": "They are the present and the future.",
+              "speaker": "M"
+            },
+            {
+              "text": "Es una bendición tener este grupo en mi casa.",
+              "english": "It is a blessing to have this group in my house.",
+              "speaker": "M"
+            },
+            {
+              "text": "Padre, has liberado a Karla de la tristeza.",
+              "english": "Father, you have freed Karla from sadness.",
+              "speaker": "P"
+            },
+            {
+              "text": "Has dado libertad a Carlos, y a Marvin le has dado una vida nueva.",
+              "english": "You have given freedom to Carlos, and to Marvin you have given a new life.",
+              "speaker": "P"
+            },
+            {
+              "text": "Te rogamos por Elena y su familia.",
+              "english": "We beg you for Elena and her family.",
+              "speaker": "P"
+            },
+            {
+              "text": "Vamos a rezar todos, con el espíritu en paz.",
+              "english": "Let us all pray, with our spirits at peace.",
+              "speaker": "P"
+            },
+            {
+              "text": "Nos has dado compasión, y queremos compartirla.",
+              "english": "You have given us compassion, and we want to share it.",
+              "speaker": "P"
+            },
+            {
+              "text": "Gracias por tu amor, por tu misericordia y por la salvación.",
+              "english": "Thank you for your love, your mercy and salvation.",
+              "speaker": "P"
+            },
+            {
+              "text": "En el nombre de Jesús.",
+              "english": "In the name of Jesus.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

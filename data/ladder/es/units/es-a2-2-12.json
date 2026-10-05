@@ -1,0 +1,718 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-12",
+  "lang": "es",
+  "title": "Diario del viaje a la aldea",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-12",
+    "title": "Diary of the mission trip (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "travel"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Domingo catorce: la partida",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En el calendario, hoy es catorce de julio.",
+              "english": "On the calendar, today is the fourteenth of July."
+            },
+            {
+              "text": "Escribí esta fecha en el calendario hace un mes, y por fin llegó.",
+              "english": "I wrote this date on the calendar a month ago, and at last it has come."
+            },
+            {
+              "text": "Escribo estas palabras de noche, cansado, pero con el corazón lleno.",
+              "english": "I am writing these words at night, tired, but with a full heart."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Antes de partir, el equipo se reunió en el patio de la iglesia.",
+              "english": "Before leaving, the team met in the church courtyard."
+            },
+            {
+              "text": "El pastor Mario oró por nosotros, y Daniel leyó una promesa de la Biblia.",
+              "english": "Pastor Mario prayed for us, and Daniel read a promise from the Bible."
+            },
+            {
+              "text": "Karla preparó sopa para el camino.",
+              "english": "Karla prepared soup for the road."
+            },
+            {
+              "text": "Doña Marta nos despidió con un abrazo y dijo: «Dios es fiel, y va con ustedes».",
+              "english": "Doña Marta saw us off with a hug and said: \"God is faithful, and he goes with you.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Tomamos un taxi hasta la terminal y partimos a las cinco de la mañana.",
+              "english": "We took a taxi to the terminal and left at five in the morning."
+            },
+            {
+              "text": "Éramos quince personas en un autobús viejo.",
+              "english": "There were fifteen of us in an old bus."
+            },
+            {
+              "text": "Llevábamos dos horas viajando cuando el autobús se detuvo de pronto.",
+              "english": "We had been travelling for two hours when the bus suddenly stopped."
+            },
+            {
+              "text": "Al principio pensé que era un problema del carro, pero era otra cosa: en el camino ya no había puente.",
+              "english": "At first I thought it was a problem with the vehicle, but it was something else: there was no longer a bridge on the road."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hace años, un terremoto quebró el puente.",
+              "english": "Years ago an earthquake broke the bridge."
+            },
+            {
+              "text": "Desde el terremoto, la gente atraviesa el río de otra manera.",
+              "english": "Since the earthquake people have crossed the river another way."
+            },
+            {
+              "text": "Aquella mañana el río estaba muy lleno, porque llovió toda la noche.",
+              "english": "That morning the river was very full, because it rained all night."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un hombre de la aldea apareció con tres mulas.",
+              "english": "A man from the village appeared with three mules."
+            },
+            {
+              "text": "Dijo que se podía atravesar el río por un lugar donde el agua no era tan alta.",
+              "english": "He said the river could be crossed at a place where the water was not so high."
+            },
+            {
+              "text": "Atravesamos de dos en dos, encima de las mulas.",
+              "english": "We crossed two by two, on top of the mules."
+            },
+            {
+              "text": "Los jóvenes saltaron al agua para ayudar.",
+              "english": "The young men jumped into the water to help."
+            },
+            {
+              "text": "Luis dijo que iba a nadar hasta el otro lado, pero el agua estaba fría y no pudo nadar ni un minuto.",
+              "english": "Luis said he was going to swim to the other side, but the water was cold and he could not swim even a minute."
+            },
+            {
+              "text": "Salió riendo.",
+              "english": "He came out laughing."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Yo llevaba mi bolsa encima de la cabeza.",
+              "english": "I was carrying my bag on top of my head."
+            },
+            {
+              "text": "En el río el agua me llegaba a las rodillas.",
+              "english": "In the river the water came up to my knees."
+            },
+            {
+              "text": "No temí, pero recé: «Padre celestial, no me dejes caer».",
+              "english": "I was not afraid, but I prayed: \"Heavenly Father, don't let me fall.\""
+            },
+            {
+              "text": "Los minutos pasaron despacio.",
+              "english": "The minutes passed slowly."
+            },
+            {
+              "text": "Al final alcancé el otro lado con los zapatos llenos de agua y una gran sonrisa.",
+              "english": "In the end I reached the other side with my shoes full of water and a big smile."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después del río caminamos cuatro horas por la montaña.",
+              "english": "After the river we walked for four hours through the mountains."
+            },
+            {
+              "text": "Las montañas son altas, y el camino sube y sube.",
+              "english": "The mountains are high, and the road goes up and up."
+            },
+            {
+              "text": "Llevábamos tres horas subiendo cuando hallamos una tumba al lado del camino.",
+              "english": "We had been climbing for three hours when we found a tomb beside the road."
+            },
+            {
+              "text": "Ana dijo que pertenece a un siervo de Dios, que murió ahí hace mucho tiempo, cuando iba a la aldea.",
+              "english": "Ana said that it belongs to a servant of God, who died there a long time ago, on his way to the village."
+            },
+            {
+              "text": "La tumba y el templo pertenecen a la aldea.",
+              "english": "The tomb and the church belong to the village."
+            },
+            {
+              "text": "Nos quedamos un minuto sin hablar, cerca de la tumba.",
+              "english": "We stayed a minute without speaking, near the tomb."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Alcanzamos la aldea al caer la tarde.",
+              "english": "We reached the village as evening fell."
+            },
+            {
+              "text": "Un perro huyó cuando nos acercamos, y las cabras huyeron también.",
+              "english": "A dog fled when we approached, and the goats fled too."
+            },
+            {
+              "text": "El presidente de la aldea se acercó a nosotros.",
+              "english": "The president of the village came up to us."
+            },
+            {
+              "text": "Al principio nos miró con cuidado, porque somos extranjeros.",
+              "english": "At first he looked at us warily, because we are foreigners."
+            },
+            {
+              "text": "Después tuvo una sonrisa.",
+              "english": "Then he smiled."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lunes quince: la aldea",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La noche duró poco.",
+              "english": "The night lasted a short time."
+            },
+            {
+              "text": "Llevo un día en la aldea y ya he aprendido mucho.",
+              "english": "I have been in the village for a day and I have already learned a lot."
+            },
+            {
+              "text": "La aldea es pequeña, con unas treinta casas, una escuela y un templo.",
+              "english": "The village is small, with some thirty houses, a school and a church."
+            },
+            {
+              "text": "Hay toros y cabras en la montaña, y las mulas descansan debajo de los árboles.",
+              "english": "There are bulls and goats on the mountain, and the mules rest under the trees."
+            },
+            {
+              "text": "Un toro grande descansaba en la arena, y una cabra saltó sobre el toro.",
+              "english": "A big bull was resting on the sand, and a goat jumped over the bull."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El agua es el problema más grande.",
+              "english": "Water is the biggest problem."
+            },
+            {
+              "text": "Este año hay sequía.",
+              "english": "This year there is a drought."
+            },
+            {
+              "text": "El río de la aldea está casi sin agua, y solo queda arena.",
+              "english": "The village's river is almost without water, and only sand remains."
+            },
+            {
+              "text": "Los niños saltan en la arena, porque ya no pueden nadar ahí.",
+              "english": "The children jump on the sand, because they can no longer swim there."
+            },
+            {
+              "text": "La gente depende de la lluvia, y la lluvia casi no llega.",
+              "english": "People depend on the rain, and the rain hardly comes."
+            },
+            {
+              "text": "La sequía dura dos años, y los frijoles no crecieron.",
+              "english": "The drought has lasted two years, and the beans did not grow."
+            },
+            {
+              "text": "El presidente de la aldea declaró que la sequía aumenta cada año.",
+              "english": "The president of the village declared that the drought grows every year."
+            },
+            {
+              "text": "La tierra se convierte en un desierto.",
+              "english": "The land is turning into a desert."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Los niños me hicieron preguntas.",
+              "english": "The children asked me questions."
+            },
+            {
+              "text": "Querían saber si existe la nieve.",
+              "english": "They wanted to know whether snow exists."
+            },
+            {
+              "text": "Les expliqué que en mi país hay nieve en invierno, y que la nieve es como el hielo que cae de arriba.",
+              "english": "I explained that in my country there is snow in winter, and that snow is like ice that falls from above."
+            },
+            {
+              "text": "Nunca vieron hielo, y les mostré un vaso de agua fría: el hielo es agua muy fría que se vuelve dura.",
+              "english": "They had never seen ice, and I showed them a glass of cold water: ice is very cold water that becomes hard."
+            },
+            {
+              "text": "Una niña se acercó y preguntó si en mi país hay olas.",
+              "english": "A girl came up and asked whether in my country there are waves."
+            },
+            {
+              "text": "Le dije que sí, y que las olas del mar son altas.",
+              "english": "I told her yes, and that the sea's waves are high."
+            },
+            {
+              "text": "Ella nunca vio una ola.",
+              "english": "She has never seen a wave."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Daniel, el predicador, y yo practicamos el sermón antes de comer.",
+              "english": "Daniel, the preacher, and I practised the sermon before eating."
+            },
+            {
+              "text": "Disfruté la comida de la aldea.",
+              "english": "I enjoyed the village food."
+            },
+            {
+              "text": "Yo traduzco poco a poco.",
+              "english": "I translate little by little."
+            },
+            {
+              "text": "Daniel dice que mi manera de traducir mejora cada día.",
+              "english": "Daniel says that my way of translating improves every day."
+            },
+            {
+              "text": "Eso me alegra, y hallo mucho en qué pensar.",
+              "english": "That makes me glad, and I find a lot to think about."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla propuso una idea: que cada persona del equipo ayune un día y sacrifique una comida para la aldea.",
+              "english": "Karla proposed an idea: that each person on the team fast for a day and sacrifice a meal for the village."
+            },
+            {
+              "text": "Votamos, y casi todos apoyaron la idea.",
+              "english": "We voted, and almost everyone supported the idea."
+            },
+            {
+              "text": "Ana nos felicitó.",
+              "english": "Ana congratulated us."
+            },
+            {
+              "text": "Luis sugirió que usemos el dinero de esas comidas para comprar semillas.",
+              "english": "Luis suggested that we use the money from those meals to buy seeds."
+            },
+            {
+              "text": "Me parece una buena forma de actuar.",
+              "english": "It seems to me a good way to act."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Martes dieciséis: un ladrón y una decisión",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy ocurrió algo que no esperaba.",
+              "english": "Today something happened that I did not expect."
+            },
+            {
+              "text": "Por la mañana no hallamos la bolsa de Ana.",
+              "english": "In the morning we could not find Ana's bag."
+            },
+            {
+              "text": "Tenía dinero para las pastillas.",
+              "english": "It had money for the pills."
+            },
+            {
+              "text": "Un ladrón la robó durante la noche.",
+              "english": "A thief stole it during the night."
+            },
+            {
+              "text": "Un joven de la aldea apareció con ella en la mano, y huyó cuando nos vio.",
+              "english": "A young man from the village appeared with it in his hand, and fled when he saw us."
+            },
+            {
+              "text": "Luis lo alcanzó cerca del río y lo trajo de vuelta.",
+              "english": "Luis caught up with him near the river and brought him back."
+            },
+            {
+              "text": "No tardó mucho.",
+              "english": "It did not take long."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la aldea no hay juez.",
+              "english": "In the village there is no judge."
+            },
+            {
+              "text": "El presidente de la aldea tardó en hablar, y escuchó a todos.",
+              "english": "The president of the village took his time to speak, and listened to everyone."
+            },
+            {
+              "text": "Algunos querían pegarle al joven.",
+              "english": "Some wanted to hit the young man."
+            },
+            {
+              "text": "Otros decían que era un malvado y pedían un castigo grande.",
+              "english": "Others said he was wicked and asked for a heavy punishment."
+            },
+            {
+              "text": "Los jóvenes de la aldea rechazaron nuestra ayuda al principio, y los hombres empezaron a pelear entre ellos.",
+              "english": "The young people of the village rejected our help at first, and the men began to fight among themselves."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El joven juró que no robó nada, pero mintió, y todos lo sabíamos.",
+              "english": "The young man swore he had stolen nothing, but he lied, and we all knew it."
+            },
+            {
+              "text": "Quiso engañarnos con otro cuento, y todos vimos la mentira.",
+              "english": "He tried to deceive us with another story, and we all saw the lie."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nadie quería defender al joven, pero Ana lo defendió.",
+              "english": "Nobody wanted to defend the young man, but Ana defended him."
+            },
+            {
+              "text": "Dijo: «No quiero castigo.",
+              "english": "She said: \"I don't want punishment."
+            },
+            {
+              "text": "Quiero saber por qué lo hizo».",
+              "english": "I want to know why he did it.\""
+            },
+            {
+              "text": "Al final el joven confesó: su madre estaba enferma y no tenía pastillas.",
+              "english": "In the end the young man confessed: his mother was sick and had no pills."
+            },
+            {
+              "text": "No era malvado; tenía una madre enferma y ninguna ayuda.",
+              "english": "He was not wicked; he had a sick mother and no help."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Recordé el cuento del extranjero que ayudó a su enemigo.",
+              "english": "I remembered the story of the foreigner who helped his enemy."
+            },
+            {
+              "text": "Ana no odió y no peleó.",
+              "english": "Ana did not hate and did not fight."
+            },
+            {
+              "text": "Le dio pastillas a la madre del joven.",
+              "english": "She gave pills to the young man's mother."
+            },
+            {
+              "text": "El presidente de la aldea dijo que la justicia no es solo dar un castigo, y declaró que la culpa también era de todos, porque nadie ayudó antes.",
+              "english": "The president of the village said that justice is not only giving a punishment, and declared that the fault was also everyone's, because nobody helped before."
+            },
+            {
+              "text": "Esa noche discutimos mucho, pero con paz.",
+              "english": "That night we argued a lot, but in peace."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Miércoles diecisiete: el culto y la comunión",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy fue el día más importante.",
+              "english": "Today was the most important day."
+            },
+            {
+              "text": "Antes del culto, el equipo se reunió para orar.",
+              "english": "Before the service, the team gathered to pray."
+            },
+            {
+              "text": "Hasta que apareció el sol estuvimos de rodillas.",
+              "english": "Until the sun came up we were on our knees."
+            },
+            {
+              "text": "Después caminamos al templo de la aldea, que es pequeño pero tiene una torre y una cruz arriba.",
+              "english": "Then we walked to the village church, which is small but has a tower and a cross on top."
+            },
+            {
+              "text": "El sacerdote del pueblo vecino llegó ese día y se sentó con nosotros.",
+              "english": "The priest from the neighbouring village arrived that day and sat with us."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Dentro del templo había más de cien personas.",
+              "english": "Inside the church there were more than a hundred people."
+            },
+            {
+              "text": "Muchos van a la misa, pero hoy vinieron también a nuestro culto.",
+              "english": "Many go to Mass, but today they also came to our service."
+            },
+            {
+              "text": "Fue un día espiritual.",
+              "english": "It was a spiritual day."
+            },
+            {
+              "text": "Es un ejemplo de que la religión no tiene que hacer enemigos.",
+              "english": "It is an example that religion does not have to make enemies."
+            },
+            {
+              "text": "Cantamos con fuerza himnos de adoración.",
+              "english": "We sang hymns of worship with strength."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Daniel predicó el sermón.",
+              "english": "Daniel preached the sermon."
+            },
+            {
+              "text": "Leyó los mandamientos y habló de los profetas, del cordero y de la cruz.",
+              "english": "He read the commandments and spoke about the prophets, the lamb and the cross."
+            },
+            {
+              "text": "«La profecía se cumple», dijo, «y la señal es el amor».",
+              "english": "\"The prophecy is fulfilled,\" he said, \"and the sign is love.\""
+            },
+            {
+              "text": "Yo traduje para tres hermanos del equipo, y todos entendieron.",
+              "english": "I translated for three brothers on the team, and everyone understood."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después el pastor Mario sirvió el pan y el vino sobre un altar pequeño.",
+              "english": "Afterwards Pastor Mario served the bread and the wine on a small altar."
+            },
+            {
+              "text": "Dijo: «Este altar es sagrado porque recuerda al Dios santo, glorioso y poderoso.",
+              "english": "He said: \"This altar is sacred because it reminds us of the holy, glorious and powerful God."
+            },
+            {
+              "text": "Su amor es divino y eterno».",
+              "english": "His love is divine and eternal.\""
+            },
+            {
+              "text": "Todos pasaron, y fue una comunión bendita.",
+              "english": "Everyone came forward, and it was a blessed communion."
+            },
+            {
+              "text": "Un señor viejo lloró.",
+              "english": "An old man cried."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Al final, el presidente de la aldea se levantó y habló.",
+              "english": "At the end, the president of the village stood up and spoke."
+            },
+            {
+              "text": "Dijo que esta patria les pertenece y que la quieren cuidar.",
+              "english": "He said that this homeland belongs to them and that they want to take care of it."
+            },
+            {
+              "text": "Tiene una idea: construir un puente nuevo con la ayuda de todos.",
+              "english": "He has an idea: to build a new bridge with everyone's help."
+            },
+            {
+              "text": "Dijo que ese puente es una señal de que Dios no abandona a la aldea.",
+              "english": "He said that bridge is a sign that God does not abandon the village."
+            },
+            {
+              "text": "Dijo también que va a haber una elección.",
+              "english": "He also said that there is going to be an election."
+            },
+            {
+              "text": "Luego explicó qué sucedió con el viejo puente: el terremoto quebró el puente y también una pared del templo.",
+              "english": "Then he explained what happened to the old bridge: the earthquake broke the bridge and also a wall of the church."
+            },
+            {
+              "text": "«Ojalá vuelvan pronto», dijo.",
+              "english": "\"I hope you come back soon,\" he said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un joven nos llevó en moto con las bolsas hasta el río.",
+              "english": "A young man took us on a motorbike with the bags as far as the river."
+            },
+            {
+              "text": "Los jóvenes de la aldea no tienen bicicleta, ni taxi, ni tren.",
+              "english": "The young people of the village have no bicycle, no taxi, no train."
+            },
+            {
+              "text": "Caminan.",
+              "english": "They walk."
+            },
+            {
+              "text": "Pensé en el barco y en el avión de otros viajes, y me di cuenta de cuánto tenemos.",
+              "english": "I thought of the boat and the plane of other trips, and I realized how much we have."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Jueves dieciocho: el regreso",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Partimos a las cuatro de la mañana.",
+              "english": "We left at four in the morning."
+            },
+            {
+              "text": "El regreso duró todo el día.",
+              "english": "The return lasted the whole day."
+            },
+            {
+              "text": "Esta vez el río tenía menos agua, y atravesamos caminando.",
+              "english": "This time the river had less water, and we crossed walking."
+            },
+            {
+              "text": "Tardamos seis horas en llegar al autobús, y caminamos sin parar hasta que lo vimos.",
+              "english": "We took six hours to reach the bus, and we walked without stopping until we saw it."
+            },
+            {
+              "text": "Un avión pasó volando arriba, y las aves volaban debajo.",
+              "english": "A plane passed flying overhead, and the birds flew beneath it."
+            },
+            {
+              "text": "Miré el calendario: hoy es dieciocho.",
+              "english": "I looked at the calendar: today is the eighteenth."
+            },
+            {
+              "text": "Yo pensé en el avión de mi vuelta a casa.",
+              "english": "I thought of the plane for my journey home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Esta noche, en el autobús, escribo mis últimas palabras.",
+              "english": "Tonight, on the bus, I write my last words."
+            },
+            {
+              "text": "He aprendido que viajar es más que llegar.",
+              "english": "I have learned that travelling is more than arriving."
+            },
+            {
+              "text": "Antes de venir pensaba que iba a enseñar, y ahora sé que voy a aprender toda la vida.",
+              "english": "Before coming I thought I was going to teach, and now I know I am going to learn all my life."
+            },
+            {
+              "text": "Daniel me convenció de escribir estas palabras, y la semana que viene voy a publicarlo en el periódico de la comunidad.",
+              "english": "Daniel convinced me to write this diary, and next week I am going to publish it in the community newspaper."
+            },
+            {
+              "text": "Ojalá alguien lo lea y decida venir un día, volando o caminando, a esta aldea.",
+              "english": "I hope someone reads it and decides to come one day, flying or walking, to this village."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,449 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-02",
+  "lang": "es",
+  "title": "Rainy season, dry season",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-02",
+    "title": "Rainy season, dry season (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "explanation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "L": "Luis",
+    "M": "Marta"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "En la escuela",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam y Luis están en la escuela.",
+              "english": "Sam and Luis are at the school."
+            },
+            {
+              "text": "Hoy hablan de Honduras.",
+              "english": "Today they talk about Honduras."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Luis, ¿cómo es aquí?",
+              "english": "Luis, what is it like here?"
+            },
+            {
+              "speaker": "S",
+              "text": "¿Hace calor siempre?",
+              "english": "Is it hot all the time?"
+            },
+            {
+              "speaker": "L",
+              "text": "No, Sam.",
+              "english": "No, Sam."
+            },
+            {
+              "speaker": "L",
+              "text": "Aquí hay verano y hay invierno.",
+              "english": "Here there is a summer and there is a winter."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cuántos meses tiene el verano?",
+              "english": "How many months does the summer have?"
+            },
+            {
+              "speaker": "L",
+              "text": "Seis meses.",
+              "english": "Six months."
+            },
+            {
+              "speaker": "L",
+              "text": "El invierno también tiene seis meses.",
+              "english": "The winter also has six months."
+            },
+            {
+              "speaker": "L",
+              "text": "En verano hace sol y hace calor.",
+              "english": "In summer it is sunny and hot."
+            },
+            {
+              "speaker": "L",
+              "text": "Llueve poco.",
+              "english": "It rains little."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y hace viento?",
+              "english": "And is it windy?"
+            },
+            {
+              "speaker": "L",
+              "text": "Sí, hace un poco de viento.",
+              "english": "Yes, it is a little windy."
+            },
+            {
+              "speaker": "L",
+              "text": "En la noche hace frío.",
+              "english": "At night it is cold."
+            },
+            {
+              "speaker": "S",
+              "text": "Y en invierno, ¿llueve mucho?",
+              "english": "And in winter, does it rain a lot?"
+            },
+            {
+              "speaker": "L",
+              "text": "Sí, hay mucha lluvia.",
+              "english": "Yes, there is a lot of rain."
+            },
+            {
+              "speaker": "L",
+              "text": "Hay menos sol y hace menos calor.",
+              "english": "There is less sun and it is less hot."
+            },
+            {
+              "speaker": "L",
+              "text": "Hay mucho viento, y en la noche hace más frío.",
+              "english": "There is a lot of wind, and at night it is colder."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Qué es mejor para vos?",
+              "english": "What is better for you?"
+            },
+            {
+              "speaker": "L",
+              "text": "Para mí, la lluvia es mejor.",
+              "english": "For me, the rain is better."
+            },
+            {
+              "speaker": "L",
+              "text": "Hay menos gente en la calle.",
+              "english": "There are fewer people in the street."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La gente y el agua",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mucha gente de Honduras trabaja con el café, el frijol, el arroz y el plátano.",
+              "english": "Many people in Honduras work with coffee, beans, rice and plantains."
+            },
+            {
+              "text": "Esta gente siempre necesita agua.",
+              "english": "These people always need water."
+            },
+            {
+              "text": "El agua es una ayuda grande para la familia.",
+              "english": "Water is a big help for the family."
+            },
+            {
+              "text": "Con agua hay mucho frijol, y el precio es barato.",
+              "english": "With water there is a lot of beans, and the price is cheap."
+            },
+            {
+              "text": "No hay agua, el frijol es caro y la gente no compra mucho.",
+              "english": "There is no water, the beans are expensive and people do not buy much."
+            },
+            {
+              "text": "Doña Marta es cristiana.",
+              "english": "Doña Marta is a Christian."
+            },
+            {
+              "text": "Ella cree en Dios y ora siempre.",
+              "english": "She believes in God and always prays."
+            },
+            {
+              "text": "El pastor ora por el agua en la reunión de la iglesia.",
+              "english": "The pastor prays for water at the church meeting."
+            },
+            {
+              "text": "Doña Marta tiene paz en el corazón porque Dios ayuda a su familia.",
+              "english": "Doña Marta has peace in her heart because God helps her family."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En el mercado",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Marta vende pan en el mercado.",
+              "english": "Doña Marta sells bread at the market."
+            },
+            {
+              "text": "Sam está con ella hoy.",
+              "english": "Sam is with her today."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Doña Marta, ¿usted trabaja todos los días?",
+              "english": "Doña Marta, do you work every day?"
+            },
+            {
+              "speaker": "M",
+              "text": "No, Sam.",
+              "english": "No, Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "Trabajo seis días.",
+              "english": "I work six days."
+            },
+            {
+              "speaker": "M",
+              "text": "El domingo voy a la iglesia con mi familia.",
+              "english": "On Sunday I go to church with my family."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cuánto cuesta el pan?",
+              "english": "How much does the bread cost?"
+            },
+            {
+              "speaker": "M",
+              "text": "Un pan cuesta cinco lempiras.",
+              "english": "A loaf costs five lempiras."
+            },
+            {
+              "speaker": "M",
+              "text": "El precio es bueno.",
+              "english": "The price is good."
+            },
+            {
+              "speaker": "S",
+              "text": "¿La gente compra mucho pan?",
+              "english": "Do people buy a lot of bread?"
+            },
+            {
+              "speaker": "M",
+              "text": "Sí, la gente siempre compra pan, plátano y frijol.",
+              "english": "Yes, people always buy bread, plantain and beans."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Puedo ayudar, doña Marta?",
+              "english": "Can I help, doña Marta?"
+            },
+            {
+              "speaker": "M",
+              "text": "Sí, Sam.",
+              "english": "Yes, Sam."
+            },
+            {
+              "speaker": "M",
+              "text": "Tomá el dinero y pagá aquí.",
+              "english": "Take the money and pay here."
+            },
+            {
+              "speaker": "M",
+              "text": "Gracias.",
+              "english": "Thanks."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Después de la escuela",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luis y Sam salen de la escuela.",
+              "english": "Luis and Sam leave the school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "L",
+              "text": "Sam, ¿podés venir a la reunión del equipo?",
+              "english": "Sam, can you come to the team meeting?"
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, puedo.",
+              "english": "Yes, I can."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Es el sábado?",
+              "english": "Is it Saturday?"
+            },
+            {
+              "speaker": "L",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "L",
+              "text": "Tenés que enviar un mensaje al pastor.",
+              "english": "You have to send a message to the pastor."
+            },
+            {
+              "speaker": "L",
+              "text": "Te doy su número de teléfono.",
+              "english": "I will give you his phone number."
+            },
+            {
+              "speaker": "L",
+              "text": "Es nuevo.",
+              "english": "It is new."
+            },
+            {
+              "speaker": "S",
+              "text": "Gracias, Luis.",
+              "english": "Thanks, Luis."
+            },
+            {
+              "speaker": "S",
+              "text": "Ahorita escribo el número.",
+              "english": "Right now I write down the number."
+            },
+            {
+              "speaker": "L",
+              "text": "De nada, Sam.",
+              "english": "You are welcome, Sam."
+            },
+            {
+              "speaker": "L",
+              "text": "Mañana hablamos más.",
+              "english": "Tomorrow we talk more."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un mensaje de Sam",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam escribe un mensaje a su familia.",
+              "english": "Sam writes a message to his family."
+            },
+            {
+              "text": "La fecha de hoy es buena.",
+              "english": "Today's date is a good one."
+            },
+            {
+              "text": "Sam está feliz.",
+              "english": "Sam is happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hola, familia.",
+              "english": "Hello, family."
+            },
+            {
+              "text": "Aquí hace sol, pero en la noche hace frío y hay lluvia.",
+              "english": "Here it is sunny, but at night it is cold and there is rain."
+            },
+            {
+              "text": "Tengo un cuarto pequeño en la casa de doña Marta.",
+              "english": "I have a small room in doña Marta's house."
+            },
+            {
+              "text": "Tengo poco dinero, pero estoy bien.",
+              "english": "I have little money, but I am fine."
+            },
+            {
+              "text": "Mi vida aquí es nueva.",
+              "english": "My life here is new."
+            },
+            {
+              "text": "Amo a la gente de aquí.",
+              "english": "I love the people here."
+            },
+            {
+              "text": "Doña Marta cocina muy bien.",
+              "english": "Doña Marta cooks very well."
+            },
+            {
+              "text": "Todos los días comemos frijoles, arroz y pan.",
+              "english": "Every day we eat beans, rice and bread."
+            },
+            {
+              "text": "Gracias por todo.",
+              "english": "Thanks for everything."
+            },
+            {
+              "text": "Sam",
+              "english": "Sam"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

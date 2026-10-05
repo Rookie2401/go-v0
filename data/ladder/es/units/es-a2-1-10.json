@@ -1,0 +1,612 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-10",
+  "lang": "es",
+  "title": "La brigada médica",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-10",
+    "title": "The medical brigade (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "health",
+    "medical brigade",
+    "village"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "La brigada llega",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es temprano en el pueblo.",
+              "english": "It is early in the village."
+            },
+            {
+              "text": "Un autobús llega al templo con la brigada médica.",
+              "english": "A bus arrives at the church with the medical brigade."
+            },
+            {
+              "text": "Ana viene en la brigada, con Karla, Luis y cinco enfermeras y médicos.",
+              "english": "Ana comes with the brigade, along with Karla, Luis and five nurses and doctors."
+            },
+            {
+              "text": "Traen cajas con vacunas, pastillas y jabón.",
+              "english": "They bring boxes with vaccines, pills and soap."
+            },
+            {
+              "text": "El pastor Andrés les da la bienvenida.",
+              "english": "Pastor Andrés welcomes them."
+            },
+            {
+              "text": "Abraza a Ana y saluda a todos.",
+              "english": "He hugs Ana and greets everyone."
+            },
+            {
+              "text": "La noticia de la brigada llegó hace una semana, y muchos llegaron temprano.",
+              "english": "The news of the brigade arrived a week ago, and many came early."
+            },
+            {
+              "text": "Después del huracán, muchas familias escaparon del agua y hoy viven en casas pequeñas.",
+              "english": "After the hurricane, many families escaped the water and today they live in small houses."
+            },
+            {
+              "text": "Hay enfermedades en el pueblo, y por eso vienen hoy los médicos.",
+              "english": "There are illnesses in the village, and that is why the doctors are coming today."
+            },
+            {
+              "text": "El templo es hoy una clínica pequeña.",
+              "english": "The church is a small clinic today."
+            },
+            {
+              "text": "Hay una mesa para los nombres y otra para los niños.",
+              "english": "There is one table for names and another for the children."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La fila",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Karla escribe el nombre y la edad de todos.",
+              "english": "Karla writes down everyone's name and age."
+            },
+            {
+              "text": "Kevin, del colegio, la ayuda.",
+              "english": "Kevin, from the high school, helps her."
+            },
+            {
+              "text": "Los alumnos de Luis traen agua.",
+              "english": "Luis's students bring water."
+            },
+            {
+              "text": "Es una lección de salud para ellos.",
+              "english": "It is a health lesson for them."
+            },
+            {
+              "text": "—Esta clase es mejor que un libro —dice Luis.",
+              "english": "\"This class is better than a book,\" says Luis."
+            },
+            {
+              "text": "La gente espera sentada en el patio.",
+              "english": "The people wait seated in the patio."
+            },
+            {
+              "text": "Hay niños, mamás y viejos.",
+              "english": "There are children, moms and old people."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Diego y la herida",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Una mamá llega con su hijo Diego.",
+              "english": "A mom arrives with her son Diego."
+            },
+            {
+              "text": "—Diego se cayó ayer —dice—.",
+              "english": "\"Diego fell yesterday,\" she says."
+            },
+            {
+              "text": "Tiene una herida en la rodilla.",
+              "english": "\"He has a wound on his knee.\""
+            },
+            {
+              "text": "—Vení, Diego.",
+              "english": "\"Come, Diego."
+            },
+            {
+              "text": "Sentate aquí —dice Ana.",
+              "english": "Sit here,\" says Ana."
+            },
+            {
+              "text": "Ana mira la herida.",
+              "english": "Ana looks at the wound."
+            },
+            {
+              "text": "—¿Tenías fiebre ayer? —le pregunta a Diego.",
+              "english": "\"Did you have a fever yesterday?\" she asks Diego."
+            },
+            {
+              "text": "—No, pero me dolía mucho, y lloraba.",
+              "english": "\"No, but it hurt a lot, and I was crying.\""
+            },
+            {
+              "text": "Ana trata la herida con agua limpia y jabón.",
+              "english": "Ana treats the wound with clean water and soap."
+            },
+            {
+              "text": "Diego ya no llora.",
+              "english": "Diego is not crying anymore."
+            },
+            {
+              "text": "—Señora, dele mucha agua y cuídelo en la casa —dice Ana.",
+              "english": "\"Ma'am, give him lots of water and take care of him at home,\" says Ana."
+            },
+            {
+              "text": "—Va a sanar en una semana.",
+              "english": "\"It will heal in a week."
+            },
+            {
+              "text": "Póngale esta crema en la mañana y en la noche.",
+              "english": "Put this cream on it in the morning and at night.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El señor Rafael",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El señor Rafael llega con la mano roja.",
+              "english": "Señor Rafael arrives with a red hand."
+            },
+            {
+              "text": "Se quemó con aceite ayer por la tarde.",
+              "english": "He burned himself with oil yesterday afternoon."
+            },
+            {
+              "text": "—Fue un accidente —dice—.",
+              "english": "\"It was an accident,\" he says."
+            },
+            {
+              "text": "Estaba cocinando, y el aceite cayó en mi dedo.",
+              "english": "\"I was cooking, and the oil fell on my finger.\""
+            },
+            {
+              "text": "Ana mira la piel.",
+              "english": "Ana looks at the skin."
+            },
+            {
+              "text": "La piel está roja, y se rompió una uña.",
+              "english": "The skin is red, and a nail broke."
+            },
+            {
+              "text": "—No se ponga nada en la piel.",
+              "english": "\"Do not put anything on the skin."
+            },
+            {
+              "text": "Ponga el dedo en agua fría —dice Ana.",
+              "english": "Put your finger in cold water,\" says Ana."
+            },
+            {
+              "text": "—Cuando se quema la piel, se trata con agua fría.",
+              "english": "\"When skin is burned, it is treated with cold water."
+            },
+            {
+              "text": "La uña va a crecer de nuevo.",
+              "english": "The nail will grow back.\""
+            },
+            {
+              "text": "—No quiero quemarme de nuevo —dice el señor Rafael.",
+              "english": "\"I do not want to burn myself again,\" says Señor Rafael."
+            },
+            {
+              "text": "—Hoy empieza a sanar, pero va a doler un poco.",
+              "english": "\"Today it begins to heal, but it is going to hurt a little.\""
+            },
+            {
+              "text": "Karla pone crema en el dedo del señor Rafael.",
+              "english": "Karla puts cream on Señor Rafael's finger."
+            },
+            {
+              "text": "—Compre más crema en la farmacia —dice.",
+              "english": "\"Buy more cream at the pharmacy,\" she says."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una niña con fiebre",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Una mamá trae a su hija.",
+              "english": "A mother brings her daughter."
+            },
+            {
+              "text": "—Mi hija tenía fiebre hace tres días.",
+              "english": "\"My daughter had a fever three days ago."
+            },
+            {
+              "text": "Le dolían los huesos y la cabeza.",
+              "english": "Her bones and head hurt.\""
+            },
+            {
+              "text": "—Abra la boca, por favor.",
+              "english": "\"Open your mouth, please."
+            },
+            {
+              "text": "Muéstreme la lengua —dice Ana.",
+              "english": "Show me your tongue,\" says Ana."
+            },
+            {
+              "text": "Ana mira la lengua de la niña.",
+              "english": "Ana looks at the girl's tongue."
+            },
+            {
+              "text": "—La lengua está bien, pero la fiebre es alta.",
+              "english": "\"The tongue is fine, but the fever is high."
+            },
+            {
+              "text": "Puede ser dengue —dice—.",
+              "english": "It could be dengue,\" she says."
+            },
+            {
+              "text": "El dengue viene de un insecto pequeño.",
+              "english": "\"Dengue comes from a small insect.\""
+            },
+            {
+              "text": "—¿Es una enfermedad grande? —pregunta la mamá.",
+              "english": "\"Is it a serious illness?\" asks the mother."
+            },
+            {
+              "text": "—Es una enfermedad, pero se trata.",
+              "english": "\"It is an illness, but it can be treated."
+            },
+            {
+              "text": "Llévela a la clínica del pueblo y quédese con ella.",
+              "english": "Take her to the clinic in the village and stay with her.\""
+            },
+            {
+              "text": "Karla le da una pastilla para la fiebre.",
+              "english": "Karla gives her a pill for the fever."
+            },
+            {
+              "text": "La mamá agradece a Ana con un abrazo.",
+              "english": "The mother thanks Ana with a hug."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La lección de Ana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Al mediodía, Ana habla a todos en el templo.",
+              "english": "At noon, Ana speaks to everyone in the church."
+            },
+            {
+              "text": "—Los insectos viven en el agua que no se usa.",
+              "english": "\"Insects live in water that is not used."
+            },
+            {
+              "text": "Cambien el agua cada día.",
+              "english": "Change the water every day.\""
+            },
+            {
+              "text": "—Las moscas están en la comida y traen enfermedades.",
+              "english": "\"Flies are on the food and bring illnesses."
+            },
+            {
+              "text": "Muchos niños se enferman cuando el agua no es limpia.",
+              "english": "Many children get sick when the water is not clean."
+            },
+            {
+              "text": "Si un niño se enferma, avísenme.",
+              "english": "If a child gets sick, let me know."
+            },
+            {
+              "text": "Con agua limpia, las heridas sanan mejor.",
+              "english": "With clean water, wounds heal better.\""
+            },
+            {
+              "text": "—Cuando hay dengue, el niño sufre.",
+              "english": "\"When there is dengue, the child suffers."
+            },
+            {
+              "text": "Le duelen los huesos.",
+              "english": "His bones hurt."
+            },
+            {
+              "text": "Vayan a la clínica.",
+              "english": "Go to the clinic.\""
+            },
+            {
+              "text": "—No quiero enfermarme —dice un niño—.",
+              "english": "\"I don't want to get sick,\" says a boy."
+            },
+            {
+              "text": "Karla le muestra la lengua, y los niños también muestran la lengua.",
+              "english": "Karla sticks out her tongue at him, and the children stick out their tongues too."
+            },
+            {
+              "text": "—Báñense con jabón todos los días, en la ducha o con agua, y usen una toalla limpia.",
+              "english": "\"Bathe with soap every day, in the shower or with water, and use a clean towel."
+            },
+            {
+              "text": "Cepillen el pelo de los niños.",
+              "english": "Brush the children's hair.\""
+            },
+            {
+              "text": "—Los niños deben acostarse temprano.",
+              "english": "\"The children should go to bed early."
+            },
+            {
+              "text": "Despiértenlos con una canción, levántenlos y vístanlos.",
+              "english": "Wake them with a song, get them up and dress them.\""
+            },
+            {
+              "text": "Luis dice a sus alumnos: —Miren su cara en el espejo.",
+              "english": "Luis says to his students, \"Look at your face in the mirror."
+            },
+            {
+              "text": "¿Está limpia?",
+              "english": "Is it clean?"
+            },
+            {
+              "text": "¿Y el pelo?",
+              "english": "And your hair?"
+            },
+            {
+              "text": "Ahora, la lección del cuerpo: el cuello, el hombro, el dedo, la uña, la rodilla.",
+              "english": "Now, the lesson on the body: the neck, the shoulder, the finger, the nail, the knee."
+            },
+            {
+              "text": "Un hueso se puede romper en un accidente.",
+              "english": "A bone can break in an accident.\""
+            },
+            {
+              "text": "—Esta es la tarea: hablen con su familia sobre lo que oyeron hoy.",
+              "english": "\"This is the homework: talk with your family about what you heard today.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las vacunas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después, los niños van a la mesa de la vacuna.",
+              "english": "Afterwards, the children go to the vaccine table."
+            },
+            {
+              "text": "Karla la pone en el hombro de cada niño.",
+              "english": "Karla gives it in each child's shoulder."
+            },
+            {
+              "text": "Una niña llora.",
+              "english": "A girl cries."
+            },
+            {
+              "text": "Su mamá la abraza y le da un beso.",
+              "english": "Her mom hugs her and gives her a kiss."
+            },
+            {
+              "text": "—No duele mucho —dice Karla—.",
+              "english": "\"It does not hurt much,\" says Karla."
+            },
+            {
+              "text": "Después de la vacuna, viene el pan.",
+              "english": "\"After the vaccine, comes the bread."
+            },
+            {
+              "text": "Cuiden el pan por las moscas.",
+              "english": "Take care of the bread because of the flies.\""
+            },
+            {
+              "text": "Los niños sufren un momento, pero luego están contentos.",
+              "english": "The children suffer for a moment, but then they are happy."
+            },
+            {
+              "text": "Ana y Karla tratan a mucha gente, y hoy hay muchos insectos y moscas en el templo.",
+              "english": "Ana and Karla treat a lot of people, and today there are many insects and flies in the church."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una abuela y una abeja",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Una abuela llega con dolor en el cuello y en el hombro.",
+              "english": "A grandmother arrives with pain in her neck and shoulder."
+            },
+            {
+              "text": "—¿Sufre mucho? —pregunta Ana.",
+              "english": "\"Do you suffer a lot?\" asks Ana."
+            },
+            {
+              "text": "—Sí, sufro mucho.",
+              "english": "\"Yes, I suffer a lot."
+            },
+            {
+              "text": "Llevo el agua lejos cada día.",
+              "english": "I carry water far every day."
+            },
+            {
+              "text": "Me duele el cuello, y me duele la rodilla.",
+              "english": "My neck hurts, and my knee hurts.\""
+            },
+            {
+              "text": "—Siéntese.",
+              "english": "\"Sit down."
+            },
+            {
+              "text": "No lleve mucha agua.",
+              "english": "Do not carry so much water."
+            },
+            {
+              "text": "Que sus nietos la ayuden.",
+              "english": "Let your grandchildren help you.\""
+            },
+            {
+              "text": "Ana da una receta.",
+              "english": "Ana gives a prescription."
+            },
+            {
+              "text": "—En la farmacia del pueblo venden estas pastillas.",
+              "english": "\"In the village pharmacy they sell these pills."
+            },
+            {
+              "text": "La farmacia está lejos, pero hoy tenemos pastillas.",
+              "english": "The pharmacy is far, but today we have pills.\""
+            },
+            {
+              "text": "Entonces una abeja llega al templo.",
+              "english": "Then a bee comes into the church."
+            },
+            {
+              "text": "Los niños gritan, y muchos escapan.",
+              "english": "The children shout, and many run away."
+            },
+            {
+              "text": "—No pasa nada —dice Luis—.",
+              "english": "\"It's all right,\" says Luis."
+            },
+            {
+              "text": "La abeja es amiga de las flores.",
+              "english": "\"The bee is a friend of the flowers.\""
+            },
+            {
+              "text": "La abeja se va, y todos están contentos.",
+              "english": "The bee leaves, and everyone is happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Por la tarde",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde, la congregación se reúne en el templo para dar gracias.",
+              "english": "In the afternoon, the congregation gathers in the church to give thanks."
+            },
+            {
+              "text": "Hoy el pastor no predica.",
+              "english": "Today the pastor does not preach."
+            },
+            {
+              "text": "Lee un versículo del capítulo diez, y todos oran.",
+              "english": "He reads a verse from chapter ten, and everyone prays."
+            },
+            {
+              "text": "Una mamá da su testimonio: —Hoy mi hija tiene ayuda, y yo estoy feliz.",
+              "english": "A mother gives her testimony: \"Today my daughter has help, and I am happy.\""
+            },
+            {
+              "text": "El diezmo de la congregación ayudó a comprar las pastillas.",
+              "english": "The congregation's tithe helped buy the pills."
+            },
+            {
+              "text": "El domingo, el pastor va a bautizar a tres creyentes.",
+              "english": "On Sunday, the pastor is going to baptize three believers."
+            },
+            {
+              "text": "El bautismo es una fiesta.",
+              "english": "Baptism is a celebration."
+            },
+            {
+              "text": "Ana, Karla y Luis se despiden de la gente con abrazos y besos.",
+              "english": "Ana, Karla and Luis say goodbye to the people with hugs and kisses."
+            },
+            {
+              "text": "Muchos asisten a la despedida.",
+              "english": "Many attend the farewell."
+            },
+            {
+              "text": "El pastor los acompaña hasta el autobús.",
+              "english": "The pastor accompanies them to the bus."
+            },
+            {
+              "text": "—Vuelvan en septiembre —dice.",
+              "english": "\"Come back in September,\" he says."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

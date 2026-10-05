@@ -1,0 +1,400 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-01",
+  "lang": "es",
+  "title": "Meeting in the street",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-01",
+    "title": "Meeting in the street (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: vos with friends (¿Cómo te llamás? ¿Dónde vivís?), usted with doña Marta and señor Mario; \"en la tarde\" (Honduran/Latin American, not \"por la tarde\"); doña Marta using vos to Sam while he uses usted to her."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "greetings",
+    "introductions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ana": "Ana",
+    "karla": "Karla",
+    "marta": "Doña Marta",
+    "mario": "Mario"
+  },
+  "sections": [
+    {
+      "title": "Meeting in the street",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Buenos días, Sam.",
+              "english": "Good morning, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hola, Ana.",
+              "english": "Hello, Ana."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hoy estoy cansado.",
+              "english": "Today I am tired."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Y vos?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Yo estoy muy cansada.",
+              "english": "I am very tired."
+            },
+            {
+              "speaker": "ana",
+              "text": "Hoy voy a trabajar en la tarde.",
+              "english": "Today I am going to work in the afternoon."
+            },
+            {
+              "speaker": "ana",
+              "text": "Aquí tenés café.",
+              "english": "Here, you have some coffee."
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta el café, gracias.",
+              "english": "I like coffee, thank you."
+            },
+            {
+              "speaker": "ana",
+              "text": "De nada.",
+              "english": "You are welcome."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Tenés agua también?",
+              "english": "Do you have water too?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Sí, aquí tenés agua.",
+              "english": "Yes, here you have water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Sam, aquí está mi amiga.",
+              "english": "Sam, here is my friend."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hola.",
+              "english": "Hello."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Cómo te llamás?",
+              "english": "What is your name? (literally: how do you call yourself?)"
+            },
+            {
+              "speaker": "karla",
+              "text": "Mi nombre es Karla.",
+              "english": "My name is Karla."
+            },
+            {
+              "speaker": "karla",
+              "text": "Mucho gusto, Sam.",
+              "english": "Nice to meet you, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mucho gusto, Karla.",
+              "english": "Nice to meet you, Karla."
+            },
+            {
+              "speaker": "karla",
+              "text": "Ana es mi amiga.",
+              "english": "Ana is my friend."
+            },
+            {
+              "speaker": "karla",
+              "text": "Hoy voy con Ana a la clínica.",
+              "english": "Today I am going to the clinic with Ana."
+            },
+            {
+              "speaker": "karla",
+              "text": "En la tarde estoy en la escuela.",
+              "english": "In the afternoon I am at the school."
+            },
+            {
+              "speaker": "karla",
+              "text": "¿Y vos, Sam?",
+              "english": "And you, Sam?"
+            },
+            {
+              "speaker": "karla",
+              "text": "¿Dónde vivís?",
+              "english": "Where do you live?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Aquí, en la casa de doña Marta.",
+              "english": "Here, in doña Marta's house."
+            },
+            {
+              "speaker": "karla",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "karla",
+              "text": "¿Te gusta Honduras?",
+              "english": "Do you like Honduras?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, me gusta mucho.",
+              "english": "Yes, I like it a lot."
+            },
+            {
+              "speaker": "karla",
+              "text": "¿Y te gusta el café?",
+              "english": "And do you like coffee?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, ¡y me gusta el pan!",
+              "english": "Yes, and I like the bread!"
+            },
+            {
+              "speaker": "karla",
+              "text": "Doña Marta vende pan en el mercado.",
+              "english": "Doña Marta sells bread in the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, me gusta el pan de doña Marta.",
+              "english": "Yes, I like doña Marta's bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Aquí está doña Marta.",
+              "english": "Here is doña Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hola, doña Marta.",
+              "english": "Hello, doña Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Cómo está usted?",
+              "english": "How are you? (formal)"
+            },
+            {
+              "speaker": "marta",
+              "text": "Bien, gracias, Sam.",
+              "english": "Fine, thank you, Sam."
+            },
+            {
+              "speaker": "marta",
+              "text": "¿Y vos?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Estoy bien, gracias.",
+              "english": "I am fine, thank you."
+            },
+            {
+              "speaker": "marta",
+              "text": "Aquí tengo pan y arroz.",
+              "english": "Here I have bread and rice."
+            },
+            {
+              "speaker": "marta",
+              "text": "¿Qué querés?",
+              "english": "What do you want?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Quiero pan, por favor.",
+              "english": "I want bread, please."
+            },
+            {
+              "speaker": "marta",
+              "text": "Aquí está el pan.",
+              "english": "Here is the bread."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "marta",
+              "text": "De nada.",
+              "english": "You are welcome."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Sam, el señor se llama Mario.",
+              "english": "Sam, the gentleman's name is Mario."
+            },
+            {
+              "speaker": "mario",
+              "text": "Hola.",
+              "english": "Hello."
+            },
+            {
+              "speaker": "mario",
+              "text": "¿Cómo se llama usted?",
+              "english": "What is your name? (formal)"
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi nombre es Sam.",
+              "english": "My name is Sam."
+            },
+            {
+              "speaker": "mario",
+              "text": "Mucho gusto, Sam.",
+              "english": "Nice to meet you, Sam."
+            },
+            {
+              "speaker": "mario",
+              "text": "Mi nombre es Mario.",
+              "english": "My name is Mario."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mucho gusto, señor Mario.",
+              "english": "Nice to meet you, Mr. Mario."
+            },
+            {
+              "speaker": "mario",
+              "text": "¿Habla usted español?",
+              "english": "Do you speak Spanish? (formal)"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, señor, hablo español.",
+              "english": "Yes, sir, I speak Spanish."
+            },
+            {
+              "speaker": "mario",
+              "text": "¡Qué bueno!",
+              "english": "How good!"
+            },
+            {
+              "speaker": "marta",
+              "text": "En mi casa se habla español.",
+              "english": "In my house, Spanish is spoken."
+            },
+            {
+              "speaker": "marta",
+              "text": "Sam vive en mi casa.",
+              "english": "Sam lives in my house."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hoy en la tarde voy a la iglesia.",
+              "english": "This afternoon I am going to church."
+            },
+            {
+              "speaker": "mario",
+              "text": "Yo también voy a la iglesia.",
+              "english": "I am going to church too."
+            },
+            {
+              "speaker": "mario",
+              "text": "Sam, ¿vas con nosotros?",
+              "english": "Sam, are you coming with us?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, voy con ustedes.",
+              "english": "Yes, I am going with you."
+            },
+            {
+              "speaker": "mario",
+              "text": "Yo voy con mi hermana.",
+              "english": "I am going with my sister."
+            },
+            {
+              "speaker": "marta",
+              "text": "Mi casa es tu casa, Sam.",
+              "english": "My house is your house, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta mucho Honduras.",
+              "english": "I like Honduras very much."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

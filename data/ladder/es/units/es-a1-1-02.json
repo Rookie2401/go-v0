@@ -1,0 +1,395 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-02",
+  "lang": "es",
+  "title": "Sam's room",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-02",
+    "title": "Sam's room (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: \"cuarto\" as the usual Honduran word for a room in a house; \"tu cuarto\" is the vos possessive; doña Marta uses vos to Sam and usted to the visitor; \"Aquí tiene\" is the usted form; \"en las tardes\" for habitual afternoons."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "home",
+    "rooms"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "marta": "Doña Marta",
+    "nico": "Nico",
+    "daniel": "Daniel",
+    "ana": "Ana"
+  },
+  "sections": [
+    {
+      "title": "Sam's room",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Sam, este es tu cuarto.",
+              "english": "Sam, this is your room."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Es grande?",
+              "english": "Is it big?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Sí, es un cuarto grande.",
+              "english": "Yes, it is a big room."
+            },
+            {
+              "speaker": "marta",
+              "text": "Aquí hay una cama.",
+              "english": "Here there is a bed."
+            },
+            {
+              "speaker": "marta",
+              "text": "Y hay una mesa.",
+              "english": "And there is a table."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Y la llave?",
+              "english": "And the key?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Aquí está la llave de tu cuarto.",
+              "english": "Here is the key to your room."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta mucho.",
+              "english": "I like it a lot."
+            },
+            {
+              "speaker": "marta",
+              "text": "De nada, Sam.",
+              "english": "You are welcome, Sam."
+            },
+            {
+              "speaker": "marta",
+              "text": "Mi casa es tu casa.",
+              "english": "My house is your house."
+            },
+            {
+              "speaker": "marta",
+              "text": "Los domingos vamos a la iglesia.",
+              "english": "On Sundays we go to church."
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta ir a la iglesia.",
+              "english": "I like going to church."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nico",
+              "text": "Hola, Sam.",
+              "english": "Hello, Sam."
+            },
+            {
+              "speaker": "nico",
+              "text": "¿Cómo estás?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Estoy bien, gracias.",
+              "english": "I am fine, thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Y vos?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Estoy muy bien.",
+              "english": "I am very well."
+            },
+            {
+              "speaker": "nico",
+              "text": "Mi cama es grande.",
+              "english": "My bed is big."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi cama es buena también.",
+              "english": "My bed is good too."
+            },
+            {
+              "speaker": "nico",
+              "text": "¿Dónde está mi llave?",
+              "english": "Where is my key?"
+            },
+            {
+              "speaker": "sam",
+              "text": "No sé, Nico.",
+              "english": "I do not know, Nico."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Está en una bolsa?",
+              "english": "Is it in a bag?"
+            },
+            {
+              "speaker": "nico",
+              "text": "No, no está en la bolsa.",
+              "english": "No, it is not in the bag."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Está en la mesa?",
+              "english": "Is it on the table?"
+            },
+            {
+              "speaker": "nico",
+              "text": "¡Sí!",
+              "english": "Yes!"
+            },
+            {
+              "speaker": "nico",
+              "text": "Aquí está.",
+              "english": "Here it is."
+            },
+            {
+              "speaker": "nico",
+              "text": "Las bolsas están en la casa.",
+              "english": "The bags are in the house."
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Qué bueno, Nico!",
+              "english": "How good, Nico!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "En las tardes vendo pan en el mercado.",
+              "english": "In the afternoons I sell bread at the market."
+            },
+            {
+              "speaker": "nico",
+              "text": "Hoy voy con la abuela al mercado.",
+              "english": "Today I am going to the market with grandma."
+            },
+            {
+              "speaker": "marta",
+              "text": "Sam, ¿vas al mercado?",
+              "english": "Sam, are you going to the market?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, voy al mercado con ustedes.",
+              "english": "Yes, I am going to the market with you."
+            },
+            {
+              "speaker": "marta",
+              "text": "Vamos en la tarde, Sam.",
+              "english": "We go in the afternoon, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ana trabaja en la clínica.",
+              "english": "Ana works at the clinic."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ella es mi amiga.",
+              "english": "She is my friend."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ana y Karla son las amigas de Sam.",
+              "english": "Ana and Karla are Sam's friends."
+            },
+            {
+              "speaker": "nico",
+              "text": "Los dos vamos con la abuela.",
+              "english": "The two of us go with grandma."
+            },
+            {
+              "speaker": "marta",
+              "text": "Nico come arroz en la casa.",
+              "english": "Nico eats rice at home."
+            },
+            {
+              "speaker": "nico",
+              "text": "Me gusta el arroz, pero hoy quiero pan.",
+              "english": "I like rice, but today I want bread."
+            },
+            {
+              "speaker": "marta",
+              "text": "Pan y café para vos y para mí.",
+              "english": "Bread and coffee for you and for me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nico",
+              "text": "Abuela, aquí hay un señor.",
+              "english": "Grandma, here is a gentleman."
+            },
+            {
+              "speaker": "marta",
+              "text": "¿Cómo se llama el señor?",
+              "english": "What is the gentleman's name?"
+            },
+            {
+              "speaker": "nico",
+              "text": "Su nombre es Daniel.",
+              "english": "His name is Daniel."
+            },
+            {
+              "speaker": "marta",
+              "text": "Buenas tardes, señor Daniel.",
+              "english": "Good afternoon, Mr. Daniel."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Buenas tardes, doña Marta.",
+              "english": "Good afternoon, doña Marta."
+            },
+            {
+              "speaker": "marta",
+              "text": "¿Habla usted español?",
+              "english": "Do you speak Spanish?"
+            },
+            {
+              "speaker": "daniel",
+              "text": "No hablo mucho español.",
+              "english": "I do not speak much Spanish."
+            },
+            {
+              "speaker": "marta",
+              "text": "Está bien, señor.",
+              "english": "That is fine, sir."
+            },
+            {
+              "speaker": "marta",
+              "text": "Los domingos vamos a la iglesia.",
+              "english": "On Sundays we go to church."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Me gusta la iglesia.",
+              "english": "I like church."
+            },
+            {
+              "speaker": "marta",
+              "text": "Esta casa es buena para usted.",
+              "english": "This house is good for you."
+            },
+            {
+              "speaker": "marta",
+              "text": "Aquí tiene un café.",
+              "english": "Here is a coffee."
+            },
+            {
+              "speaker": "marta",
+              "text": "Este café es bueno.",
+              "english": "This coffee is good."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Me gusta el café.",
+              "english": "I like coffee."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Mi nombre es Daniel.",
+              "english": "My name is Daniel."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hola, señor Daniel.",
+              "english": "Hello, Mr. Daniel."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Cómo está usted?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Estoy muy cansado.",
+              "english": "I am very tired."
+            },
+            {
+              "speaker": "sam",
+              "text": "Yo también, señor.",
+              "english": "Me too, sir."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

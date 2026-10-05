@@ -1,0 +1,525 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-06",
+  "lang": "es",
+  "title": "Ana's weekend in Tegucigalpa",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-06",
+    "title": "Ana's weekend in Tegucigalpa (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "A": "Ana",
+    "K": "Karla",
+    "Z": "Sofía",
+    "Y": "Mario"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "El lunes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es lunes por la mañana.",
+              "english": "It is Monday morning."
+            },
+            {
+              "text": "Ana volvió de Tegucigalpa.",
+              "english": "Ana came back from Tegucigalpa."
+            },
+            {
+              "text": "Sam habla con ella en la casa.",
+              "english": "Sam talks with her at the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Ana, ¿cómo estuvo tu viaje?",
+              "english": "Ana, how was your trip?"
+            },
+            {
+              "speaker": "A",
+              "text": "Muy bueno.",
+              "english": "Very good."
+            },
+            {
+              "speaker": "A",
+              "text": "Fue una visita buena.",
+              "english": "It was a good visit."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Saliste el sábado?",
+              "english": "Did you leave on Saturday?"
+            },
+            {
+              "speaker": "A",
+              "text": "Sí, salí a las seis y subí al autobús.",
+              "english": "Yes, I left at six and got on the bus."
+            },
+            {
+              "speaker": "A",
+              "text": "Llevé mi bolsa y pan.",
+              "english": "I took my bag and bread."
+            },
+            {
+              "speaker": "A",
+              "text": "Llegué a Tegucigalpa a las diez.",
+              "english": "I arrived in Tegucigalpa at ten."
+            },
+            {
+              "speaker": "A",
+              "text": "Bajé en la terminal.",
+              "english": "I got off at the terminal."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El sábado en la ciudad",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Karla esperó a Ana en la terminal.",
+              "english": "Karla waited for Ana at the terminal."
+            },
+            {
+              "text": "Karla es amiga de Ana.",
+              "english": "Karla is Ana's friend."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "K",
+              "text": "Hola, Ana.",
+              "english": "Hi, Ana."
+            },
+            {
+              "speaker": "K",
+              "text": "¿Cómo estuvo el viaje?",
+              "english": "How was the trip?"
+            },
+            {
+              "speaker": "A",
+              "text": "Bien, pero sentí frío en el autobús.",
+              "english": "Fine, but I felt cold on the bus."
+            },
+            {
+              "speaker": "K",
+              "text": "Mirá, te traje café y pan.",
+              "english": "Look, I brought you coffee and bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana tomó el café.",
+              "english": "Ana drank the coffee."
+            },
+            {
+              "text": "Luego Karla y Ana siguieron por la calle hasta el centro.",
+              "english": "Then Karla and Ana went on along the street to the downtown."
+            },
+            {
+              "text": "En el centro hay mucha gente.",
+              "english": "In the downtown there are many people."
+            },
+            {
+              "text": "Ana vio una iglesia grande y un parque pequeño.",
+              "english": "Ana saw a big church and a small park."
+            },
+            {
+              "text": "Ana conoció el parque nuevo.",
+              "english": "Ana got to know the new park."
+            },
+            {
+              "text": "Allí hay un lugar para comer.",
+              "english": "There is a place to eat there."
+            },
+            {
+              "text": "Karla y Ana pidieron comida.",
+              "english": "Karla and Ana ordered food."
+            },
+            {
+              "text": "Ana pidió una baleada y Karla pidió sopa.",
+              "english": "Ana ordered a baleada and Karla ordered soup."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "K",
+              "text": "¿Te gusta el lugar?",
+              "english": "Do you like the place?"
+            },
+            {
+              "speaker": "A",
+              "text": "Sí, me gusta mucho.",
+              "english": "Yes, I like it a lot."
+            },
+            {
+              "speaker": "K",
+              "text": "Entre la iglesia y el parque hay otro lugar bueno, pero está lejos.",
+              "english": "Between the church and the park there is another good place, but it is far."
+            },
+            {
+              "speaker": "A",
+              "text": "Hoy no tengo tiempo.",
+              "english": "I do not have time today."
+            },
+            {
+              "speaker": "A",
+              "text": "Seguimos mañana.",
+              "english": "We will go on tomorrow."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla vive cerca del centro, en una casa pequeña.",
+              "english": "Karla lives near the downtown, in a small house."
+            },
+            {
+              "text": "Karla trajo pan para cenar.",
+              "english": "Karla brought bread for dinner."
+            },
+            {
+              "text": "Karla puso la bolsa de Ana en su cuarto.",
+              "english": "Karla put Ana's bag in her room."
+            },
+            {
+              "text": "Ana puso el celular en la mesa.",
+              "english": "Ana put the cell phone on the table."
+            },
+            {
+              "text": "Karla puso café en la mesa.",
+              "english": "Karla put coffee on the table."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El domingo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El domingo Ana fue a la iglesia con Karla.",
+              "english": "On Sunday Ana went to church with Karla."
+            },
+            {
+              "text": "Karla es cristiana.",
+              "english": "Karla is a Christian."
+            },
+            {
+              "text": "Ella cree en Dios y ama a todos.",
+              "english": "She believes in God and loves everyone."
+            },
+            {
+              "text": "Entre la gente de la iglesia hay mucha paz.",
+              "english": "Among the people at church there is a lot of peace."
+            },
+            {
+              "text": "Allí Ana conoció a la familia de Karla.",
+              "english": "There Ana met Karla's family."
+            },
+            {
+              "text": "Se llaman Sofía y Mario.",
+              "english": "They are called Sofía and Mario."
+            },
+            {
+              "text": "Fue una visita grande, con mucha comida.",
+              "english": "It was a big visit, with a lot of food."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "K",
+              "text": "Mamá, papá, ella es Ana.",
+              "english": "Mom, dad, this is Ana."
+            },
+            {
+              "speaker": "K",
+              "text": "Es enfermera.",
+              "english": "She is a nurse."
+            },
+            {
+              "speaker": "Z",
+              "text": "Hola, Ana.",
+              "english": "Hello, Ana."
+            },
+            {
+              "speaker": "Z",
+              "text": "Comé pollo y tomá café.",
+              "english": "Eat some chicken and drink some coffee."
+            },
+            {
+              "speaker": "A",
+              "text": "Gracias, doña Sofía.",
+              "english": "Thank you, doña Sofía."
+            },
+            {
+              "speaker": "A",
+              "text": "La comida está muy buena.",
+              "english": "The food is very good."
+            },
+            {
+              "speaker": "Y",
+              "text": "Karla habla mucho de vos.",
+              "english": "Karla talks about you a lot."
+            },
+            {
+              "speaker": "A",
+              "text": "Yo también hablo mucho de Karla.",
+              "english": "I talk about Karla a lot too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana conoció también al pastor.",
+              "english": "Ana also met the pastor."
+            },
+            {
+              "text": "El pastor dijo: \"Dios da paz a todos.\"",
+              "english": "The pastor said: \"God gives peace to everyone.\""
+            },
+            {
+              "text": "Allí Ana sintió paz en el corazón.",
+              "english": "There Ana felt peace in her heart."
+            },
+            {
+              "text": "Se sintió muy feliz.",
+              "english": "She felt very happy."
+            },
+            {
+              "text": "Entre amigos, el corazón está feliz.",
+              "english": "Among friends, the heart is happy."
+            },
+            {
+              "text": "Ana siguió con Karla hasta la noche.",
+              "english": "Ana stayed with Karla until night."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "De nuevo en la casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "¿Hizo sol?",
+              "english": "Was it sunny?"
+            },
+            {
+              "speaker": "A",
+              "text": "Sí, hizo sol y hizo calor.",
+              "english": "Yes, it was sunny and hot."
+            },
+            {
+              "speaker": "A",
+              "text": "Pero en la noche llovió.",
+              "english": "But at night it rained."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Comiste bien?",
+              "english": "Did you eat well?"
+            },
+            {
+              "speaker": "A",
+              "text": "Sí, comimos pollo, frijoles y tortilla.",
+              "english": "Yes, we ate chicken, beans and tortilla."
+            },
+            {
+              "speaker": "A",
+              "text": "Me gustó mucho.",
+              "english": "I liked it a lot."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cuánto pagaste?",
+              "english": "How much did you pay?"
+            },
+            {
+              "speaker": "A",
+              "text": "Nada.",
+              "english": "Nothing."
+            },
+            {
+              "speaker": "A",
+              "text": "La familia de Karla pagó todo.",
+              "english": "Karla's family paid for everything."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Es verano en Tegucigalpa?",
+              "english": "Is it summer in Tegucigalpa?"
+            },
+            {
+              "speaker": "A",
+              "text": "No, es el mes de la lluvia.",
+              "english": "No, it is the month of the rain."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Qué aprendiste?",
+              "english": "What did you learn?"
+            },
+            {
+              "speaker": "A",
+              "text": "Aprendí que Karla tiene una vida nueva en la ciudad.",
+              "english": "I learned that Karla has a new life in the city."
+            },
+            {
+              "speaker": "A",
+              "text": "Su familia vive en un pueblo pequeño.",
+              "english": "Her family lives in a small village."
+            },
+            {
+              "speaker": "A",
+              "text": "En Tegucigalpa no hay mar y no hay playa.",
+              "english": "In Tegucigalpa there is no sea and no beach."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Karla vino con vos a la terminal?",
+              "english": "Did Karla come with you to the terminal?"
+            },
+            {
+              "speaker": "A",
+              "text": "No, no pudo venir.",
+              "english": "No, she could not come."
+            },
+            {
+              "speaker": "A",
+              "text": "Tuvo que trabajar.",
+              "english": "She had to work."
+            },
+            {
+              "speaker": "A",
+              "text": "Pero me dio pan para la familia.",
+              "english": "But she gave me bread for the family."
+            },
+            {
+              "speaker": "A",
+              "text": "Volví el domingo en la noche.",
+              "english": "I came back on Sunday night."
+            },
+            {
+              "speaker": "A",
+              "text": "Quiero hacer otra visita.",
+              "english": "I want to make another visit."
+            },
+            {
+              "speaker": "S",
+              "text": "Qué bien, Ana.",
+              "english": "How nice, Ana."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Trajiste el celular?",
+              "english": "Did you bring the cell phone?"
+            },
+            {
+              "speaker": "A",
+              "text": "Sí, aquí está.",
+              "english": "Yes, here it is."
+            },
+            {
+              "speaker": "A",
+              "text": "Tengo mucho que decir.",
+              "english": "I have a lot to tell."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam está feliz por Ana.",
+              "english": "Sam is happy for Ana."
+            },
+            {
+              "text": "Ana toma su café y habla un poco más.",
+              "english": "Ana drinks her coffee and talks a little more."
+            },
+            {
+              "text": "Es lunes, y hay mucho trabajo en la clínica.",
+              "english": "It is Monday, and there is a lot of work at the clinic."
+            },
+            {
+              "text": "Ana tiene que ir ahora.",
+              "english": "Ana has to go now."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

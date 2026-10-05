@@ -1,0 +1,574 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-16",
+  "lang": "es",
+  "title": "La vida de una enfermera",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-16",
+    "title": "A nurse's life (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "La aldea donde nací",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Me llamo Ana, y esta es mi vida, contada por mí.",
+              "english": "My name is Ana, and this is my life, told by me."
+            },
+            {
+              "text": "Nací en una aldea de la montaña, en una casa pequeña donde vivíamos mi mamá, mi hermano Luis y yo.",
+              "english": "I was born in a village in the mountains, in a small house where my mother, my brother Luis and I lived."
+            },
+            {
+              "text": "Mi mamá era trabajadora y alegre, y siempre decía que el pan de cada día es una obra de amor.",
+              "english": "My mother was hard-working and cheerful, and she always said that daily bread is a work of love."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En nuestra casa había un gallo, dos patos y un conejo.",
+              "english": "In our house there was a rooster, two ducks and a rabbit."
+            },
+            {
+              "text": "El gallo nos despertaba a las cuatro de la mañana.",
+              "english": "The rooster woke us at four in the morning."
+            },
+            {
+              "text": "Los patos nadaban en el río, y el conejo vivía debajo de un árbol.",
+              "english": "The ducks swam in the river, and the rabbit lived under a tree."
+            },
+            {
+              "text": "A veces un ratón entraba en la casa, y mi hermano lo buscaba por toda la casa.",
+              "english": "Sometimes a mouse came into the house, and my brother searched the whole house for it."
+            },
+            {
+              "text": "Más lejos, en el cerro, estaban los toros y las cabras de los vecinos.",
+              "english": "Farther away, on the hill, the neighbours' bulls and goats stood."
+            },
+            {
+              "text": "Mi mamá tenía un puesto en el mercado, donde vendía pan de trigo y rosas.",
+              "english": "My mother had a stall in the market, where she sold wheat bread and roses."
+            },
+            {
+              "text": "Era buena amiga de todos, y todos la querían.",
+              "english": "She was a good friend to everyone, and everyone loved her."
+            },
+            {
+              "text": "Usaba una hierba tibia para la fiebre.",
+              "english": "She used a lukewarm herb for fever."
+            },
+            {
+              "text": "Cuando el negocio dejaba ganancia, comprábamos cebada para los animales.",
+              "english": "When the business left a profit, we bought barley for the animals."
+            },
+            {
+              "text": "Cuando dejaba pérdida, comíamos menos, pero nunca pedíamos ayuda sin trabajar.",
+              "english": "When it left a loss, we ate less, but we never asked for help without working."
+            },
+            {
+              "text": "Ese fue mi primer estudio: el estudio de una casa que sabe vivir con poco.",
+              "english": "That was my first study: the study of a house that knows how to live on little."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El río y el terremoto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En mi aldea había un río y un puente.",
+              "english": "In my village there was a river and a bridge."
+            },
+            {
+              "text": "Para ir a la escuela teníamos que atravesar el puente cada día.",
+              "english": "To go to school we had to cross the bridge every day."
+            },
+            {
+              "text": "Era un puente de cuerdas, hermoso pero viejo.",
+              "english": "It was a rope bridge, beautiful but old."
+            },
+            {
+              "text": "Un día, cuando yo tenía ocho años, llegó un terremoto.",
+              "english": "One day, when I was eight years old, an earthquake came."
+            },
+            {
+              "text": "Duró solo un minuto, pero ese minuto cambió nuestra vida.",
+              "english": "It lasted only a minute, but that minute changed our life."
+            },
+            {
+              "text": "El puente se quebró, y muchas casas se rompieron.",
+              "english": "The bridge broke, and several houses fell apart."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mi mamá nos tomó de la mano y huimos hacia el cerro.",
+              "english": "My mother took us by the hand and we fled toward the hill."
+            },
+            {
+              "text": "Arriba pasamos la noche sin agua y sin comida.",
+              "english": "Up there we spent the night without water and without food."
+            },
+            {
+              "text": "Al final del día siguiente, un hombre con una mula nos halló y nos llevó a otra aldea.",
+              "english": "At the end of the next day a man with a mule found us and took us to another village."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Desde entonces no tuvimos puente.",
+              "english": "Since then we had no bridge."
+            },
+            {
+              "text": "Para alcanzar la escuela tenía que atravesar el río, y cuando había sequía caminaba por la arena.",
+              "english": "To reach school I had to cross the river, and when there was drought I walked on the sand."
+            },
+            {
+              "text": "Aprendí a nadar a los nueve años.",
+              "english": "I learned to swim at nine."
+            },
+            {
+              "text": "Un día salté al agua para alcanzar un pato, y mi hermano Luis, que era mayor, tuvo que sacarme.",
+              "english": "One day I jumped into the water to catch a duck, and my brother Luis, who was older, had to pull me out."
+            },
+            {
+              "text": "Luego me enseñó: «Mové las piernas y mirá hacia arriba».",
+              "english": "Then he taught me: \"Move your legs and look upward.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El viaje a la universidad",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "A los dieciocho años partí a la universidad.",
+              "english": "At eighteen I left for the university."
+            },
+            {
+              "text": "Salí de la aldea en bicicleta, y en el camino grande tomé un taxi.",
+              "english": "I left the village by bicycle, and on the main road I took a taxi."
+            },
+            {
+              "text": "Después viajé en un autobús, en una moto y, una vez, en un barco.",
+              "english": "Then I travelled on a bus, on a motorbike and, once, on a boat."
+            },
+            {
+              "text": "Tardé casi un día.",
+              "english": "It took me almost a day."
+            },
+            {
+              "text": "Cuando por fin alcancé la ciudad, vi una torre muy alta, y me pareció un milagro.",
+              "english": "When I finally reached the city, I saw a very tall tower, and it seemed a miracle to me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la universidad tenía una profesora muy cortés y un profesor perezoso que llegaba tarde.",
+              "english": "At the university I had a very courteous professor and a lazy professor who arrived late."
+            },
+            {
+              "text": "Mis amigos se reían del profesor, pero yo pensaba que cada persona tiene sus razones.",
+              "english": "My friends laughed at the professor, but I thought that each person has his reasons."
+            },
+            {
+              "text": "Aprendí que un oficio se aprende con estudio y con trabajo.",
+              "english": "I learned that a trade is learned with study and work."
+            },
+            {
+              "text": "Un amigo, que hoy es abogado, decía: «El trabajo honesto vale más que el dinero».",
+              "english": "A friend of mine, who is a lawyer today, used to say: \"Honest work is worth more than money.\""
+            },
+            {
+              "text": "Hoy sé que tenía razón.",
+              "english": "Today I know he was right."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En el año tres, una compañía me dio un premio y un viaje a otro país para estudiar un mes.",
+              "english": "In the third year a company gave me a prize and a trip to another country to study for a month."
+            },
+            {
+              "text": "Fue mi primer viaje en avión y en tren.",
+              "english": "It was my first trip by plane and by train."
+            },
+            {
+              "text": "Allá vi nieve por primera vez.",
+              "english": "There I saw snow for the first time."
+            },
+            {
+              "text": "Agarré el hielo con las manos y me sorprendí, porque quemaba.",
+              "english": "I picked up the ice with my hands and was surprised, because it burned."
+            },
+            {
+              "text": "En la costa vi las olas del mar, que eran muy altas, y en un viaje lejano atravesé un desierto de arena.",
+              "english": "On the coast I saw the sea's waves, which were very high, and on a long trip I crossed a desert of sand."
+            },
+            {
+              "text": "Pensé en mi aldea y en la sequía.",
+              "english": "I thought of my village and the drought."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Al volver, hallé a mi mamá débil y triste.",
+              "english": "When I came back, I found my mother weak and tired."
+            },
+            {
+              "text": "Había trabajado demasiado.",
+              "english": "She had worked too much."
+            },
+            {
+              "text": "Me quedé con ella tres semanas, y le preparé sopa tibia y pan blando cada día.",
+              "english": "I stayed with her three weeks, and I prepared lukewarm soup and soft bread for her every day."
+            },
+            {
+              "text": "Ella me dijo: «Hija, el mundo es hermoso, pero tu lugar es donde te necesitan».",
+              "english": "She said to me: \"Daughter, the world is beautiful, but your place is where you are needed.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Mi primera noche de turno",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mi primera noche de trabajo fue en la clínica de este pueblo, hace doce años.",
+              "english": "My first night shift was at the clinic in this village, twelve years ago."
+            },
+            {
+              "text": "Yo estaba sola con el chofer, que dormía en la sala.",
+              "english": "I was alone with the driver, who was sleeping in the living room."
+            },
+            {
+              "text": "A la una de la noche apareció un hombre extranjero con un corte grande en la pierna.",
+              "english": "At one in the night a foreign man appeared with a big cut on his leg."
+            },
+            {
+              "text": "Tenía mucha sangre y no hablaba bien español.",
+              "english": "He had a lot of blood and did not speak Spanish well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Algunos vecinos decían que los extranjeros venían a robar, y yo pensé por un momento que ese hombre era un enemigo del pueblo.",
+              "english": "Some neighbours said that foreigners came to steal, and for a moment I thought that man was an enemy of the village."
+            },
+            {
+              "text": "Pero estaba débil, y no pude rechazarlo.",
+              "english": "But he was weak, and I could not turn him away."
+            },
+            {
+              "text": "Lo senté, le puse agua tibia en el corte y le cubrí la pierna.",
+              "english": "I sat him down, put lukewarm water on the cut and covered his leg."
+            },
+            {
+              "text": "Tenía las manos frías, pero hice lo que sabía.",
+              "english": "My hands were cold, but I did what I knew."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mientras tanto, un ladrón entró por la otra sala y robó las pastillas.",
+              "english": "Meanwhile a thief came in through the other room and stole the pills."
+            },
+            {
+              "text": "Quebró un vaso, le pegó al chofer en la cara y huyó hacia el río.",
+              "english": "He broke a glass, hit the driver in the face and fled toward the river."
+            },
+            {
+              "text": "El chofer, que se despertó con el golpe, lo siguió y lo alcanzó en la arena.",
+              "english": "The driver, who woke up with the blow, followed him and caught him on the sand."
+            },
+            {
+              "text": "Era un joven, casi un niño.",
+              "english": "He was a young man, almost a child."
+            },
+            {
+              "text": "Tenía las mejillas rojas y las manos vacías.",
+              "english": "He had red cheeks and empty hands."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Por la mañana, el juez del pueblo, un hombre cortés pero triste, preguntó quién tenía la culpa.",
+              "english": "In the morning the village judge, a courteous but sad man, asked who was at fault."
+            },
+            {
+              "text": "El joven juró que no robó nada.",
+              "english": "The young man swore he had stolen nothing."
+            },
+            {
+              "text": "Mintió, y todos lo sabíamos.",
+              "english": "He lied, and we all knew it."
+            },
+            {
+              "text": "Quiso engañarnos con otra mentira, pero el extranjero lo reconoció y dijo la verdad.",
+              "english": "He tried to deceive us with another lie, but the foreigner recognized him and told the truth."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Muchos pedían un castigo grande.",
+              "english": "Many asked for a heavy punishment."
+            },
+            {
+              "text": "Yo no quería castigo.",
+              "english": "I did not want punishment."
+            },
+            {
+              "text": "Propuse un trato: el joven iba a trabajar en la clínica durante un año, y nadie iba a pegarle ni a odiarlo.",
+              "english": "I proposed a deal: the young man was going to work at the clinic for a year, and nobody was going to hit him or hate him."
+            },
+            {
+              "text": "El sacerdote del pueblo llegó entonces y dijo: «Un mandamiento dice que no hay que robar, pero otro dice que hay que amar.",
+              "english": "The village priest arrived then and said: \"One commandment says that one must not steal, but another says that one must love."
+            },
+            {
+              "text": "Los profetas hablaron de una justicia que no es solo castigo».",
+              "english": "The prophets spoke of a justice that is not only punishment.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El joven aceptó.",
+              "english": "The young man accepted."
+            },
+            {
+              "text": "No era malvado; era un joven con hambre y sin ayuda.",
+              "english": "He was not wicked; he was a young man with hunger and without help."
+            },
+            {
+              "text": "Durante ese año fue un trabajador cortés y alegre, y hoy es mi mejor amigo en la clínica.",
+              "english": "During that year he was a courteous and cheerful worker, and today he is my best companion at the clinic."
+            },
+            {
+              "text": "El extranjero mejoró, volvió a su país y me mandó una copia de su carta de gracias.",
+              "english": "The foreigner got better, went back to his country and sent me a copy of his letter of thanks."
+            },
+            {
+              "text": "Aquella noche fue el principio de mi oficio.",
+              "english": "That night was the beginning of my trade."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Por qué me quedé",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Muchas personas me han preguntado por qué no me fui a un hospital grande de la ciudad.",
+              "english": "Many people have asked me why I did not go to a big hospital in the city."
+            },
+            {
+              "text": "Una compañía me ofreció un puesto con un buen sueldo y una casa.",
+              "english": "A company offered me a position with a good salary and a house."
+            },
+            {
+              "text": "Mi amigo abogado dijo que era una gran ganancia, y mi amiga profesora me dijo que lo pensara bien.",
+              "english": "My lawyer friend said it was a great gain, and my professor friend told me to think it over well."
+            },
+            {
+              "text": "Pensé mucho, y recé muchas noches.",
+              "english": "I thought a lot, and prayed many nights."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Lo que me decidió fue algo pequeño.",
+              "english": "What decided me was something small."
+            },
+            {
+              "text": "Una niña de la aldea, con una rosa en la mano, me dijo: «Doña Ana, aquí usted vale mucho».",
+              "english": "A girl from the village, with a rose in her hand, said to me: \"Doña Ana, here you are worth a lot.\""
+            },
+            {
+              "text": "Esa niña no sabía de compañías ni de sueldos.",
+              "english": "That girl did not know about companies or salaries."
+            },
+            {
+              "text": "Sabía solo que yo había llegado una noche, y que me había quedado.",
+              "english": "She knew only that I had arrived one night, and that I had stayed."
+            },
+            {
+              "text": "Rechacé el puesto.",
+              "english": "I turned down the position."
+            },
+            {
+              "text": "No fue una pérdida; fue una ganancia.",
+              "english": "It was not a loss; it was a gain."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hoy, después de doce años, he ayudado a nacer a muchos bebés, y he visto morir a algunos.",
+              "english": "Today, after twelve years, I have helped many babies be born, and I have seen some die."
+            },
+            {
+              "text": "He aprendido que mi trabajo no es hacer milagros, sino acompañar.",
+              "english": "I have learned that my work is not to make miracles, but to accompany."
+            },
+            {
+              "text": "Cuando un niño llega a la clínica llorando, le cuento un cuento de animales: el zorro que engaña, el lobo con hambre, el león que es juez, el oso perezoso y la serpiente que habla.",
+              "english": "When a child comes to the clinic afraid, I tell him an animal story: the fox who deceives, the hungry wolf, the lion who is a judge, the lazy bear and the snake who talks."
+            },
+            {
+              "text": "Los niños se ríen, y aprenden sin saberlo.",
+              "english": "The children laugh, and learn without knowing it."
+            },
+            {
+              "text": "Cuando hay una fiesta en la clínica, el cocinero prepara la comida, el músico canta y la piloto llega volando con regalos de las islas.",
+              "english": "When there is a party at the clinic, the cook prepares the food, the musician sings and the pilot arrives flying with gifts from the islands."
+            },
+            {
+              "text": "La maestra trae a los niños, que se acercan a la mesa.",
+              "english": "The teacher brings the children, who come up to the table."
+            },
+            {
+              "text": "Es un hecho que en este pueblo ya nadie pelea por el agua.",
+              "english": "It is a fact that in this village nobody fights over water any more."
+            },
+            {
+              "text": "Y en la comunión, dentro de la iglesia, comparto el pan y el vino con mi gente, y mi amigo más guapo del mundo, el chofer, se ríe conmigo.",
+              "english": "And at communion, inside the church, I share the bread and the wine with my people, and my handsomest friend in the world, the driver, laughs with me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Mi mamá ya no está con nosotros.",
+              "english": "My mother is no longer with us."
+            },
+            {
+              "text": "Su tumba está en la aldea donde nací, en la montaña, cerca del río.",
+              "english": "Her tomb is in the village where I was born, in the mountains, near the river."
+            },
+            {
+              "text": "Cada año subo a visitarla en un día que escribo en el calendario.",
+              "english": "Every year I go up to visit her on a day that I mark on the calendar."
+            },
+            {
+              "text": "Llevo una rosa y un pan de trigo, y le cuento lo que ha pasado en el pueblo.",
+              "english": "I take a rose and a loaf of wheat bread, and I tell her what has happened in the village."
+            },
+            {
+              "text": "Luis dice que soy tan trabajadora como ella.",
+              "english": "Luis says that I am as hard-working as she was."
+            },
+            {
+              "text": "No sé si es verdad, pero me gusta oírlo.",
+              "english": "I don't know if it is true, but I like to hear it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Esta es mi vida.",
+              "english": "This is my life."
+            },
+            {
+              "text": "No ha sido una vida fácil, pero ha sido una vida hermosa.",
+              "english": "It has not been an easy life, but it has been a beautiful life."
+            },
+            {
+              "text": "Y si alguien me pregunta qué es lo más importante que he aprendido, le contesto con una sola cosa: el lugar donde uno es necesario es el lugar donde uno pertenece.",
+              "english": "And if someone asks me what is the most important thing I have learned, I answer with a single phrase: the place where one is needed is the place where one belongs."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,602 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-14",
+  "lang": "es",
+  "title": "El hijo que se fue",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-14",
+    "title": "The son who left (Luke 15) (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "scripture retelling",
+    "forgiveness",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "scripture"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "H": "El hijo joven",
+    "F": "El papá",
+    "G": "El hijo grande",
+    "M": "Marvin",
+    "N": "Nico",
+    "P": "Pastor Andrés"
+  },
+  "sections": [
+    {
+      "title": "En el templo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es domingo, y la congregación se reúne en el templo.",
+              "english": "It is Sunday, and the congregation gathers in the church."
+            },
+            {
+              "text": "Sam se sienta con doña Marta y con Nico.",
+              "english": "Sam sits down with doña Marta and Nico."
+            },
+            {
+              "text": "Doña Marta pone su diezmo en la caja, y Kevin, del colegio, saluda a todos.",
+              "english": "Doña Marta puts her tithe in the box, and Kevin, from the high school, greets everyone."
+            },
+            {
+              "text": "Después de la alabanza, el pastor Andrés lee en la Biblia el capítulo quince, versículo once.",
+              "english": "After the praise, Pastor Andrés reads in the Bible chapter fifteen, verse eleven."
+            },
+            {
+              "text": "Hoy el pastor no predica con palabras difíciles.",
+              "english": "Today the pastor does not preach with difficult words."
+            },
+            {
+              "text": "Cuenta el cuento de un papá, de sus dos hijos y de un país lejano.",
+              "english": "He tells the story of a dad, his two sons and a far-off country."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El hijo joven",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Una vez, un señor rico tenía dos hijos.",
+              "english": "Once, a rich man had two sons."
+            },
+            {
+              "text": "El hijo joven quería ver el mundo.",
+              "english": "The younger son wanted to see the world."
+            },
+            {
+              "text": "Un día habló con su papá.",
+              "english": "One day he talked to his dad."
+            },
+            {
+              "speaker": "H",
+              "text": "Papá, quiero mi dinero ahora.",
+              "english": "Dad, I want my money now."
+            },
+            {
+              "speaker": "H",
+              "text": "Me voy lejos.",
+              "english": "I am going far away."
+            },
+            {
+              "text": "El papá se puso triste, pero le dio el dinero.",
+              "english": "The dad was sad, but he gave him the money."
+            },
+            {
+              "text": "A los pocos días, el hijo joven se fue a un país lejano.",
+              "english": "A few days later, the younger son went to a far-off country."
+            },
+            {
+              "text": "El camino fue difícil, pero él estaba contento.",
+              "english": "The road was hard, but he was happy."
+            },
+            {
+              "text": "En el país lejano conoció a ingenieros, directores, pescadores, panaderos y comerciantes.",
+              "english": "In the far-off country he met engineers, directors, fishermen, bakers and merchants."
+            },
+            {
+              "text": "Todos querían ser sus amigos, porque tenía dinero.",
+              "english": "Everyone wanted to be his friend, because he had money."
+            },
+            {
+              "text": "Gastó el dinero en fiestas y en cosas que no necesitaba.",
+              "english": "He spent the money on parties and on things he did not need."
+            },
+            {
+              "text": "Mientras tuvo dinero, tuvo amigos.",
+              "english": "While he had money, he had friends."
+            },
+            {
+              "text": "Cuando el dinero acabó, los amigos se fueron.",
+              "english": "When the money ran out, the friends left."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El hambre",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Entonces llegó el hambre a aquel país.",
+              "english": "Then hunger came to that country."
+            },
+            {
+              "text": "El joven ya no tenía nada.",
+              "english": "The young man had nothing anymore."
+            },
+            {
+              "text": "Antes era rico; ahora era pobre.",
+              "english": "Before, he was rich; now he was poor."
+            },
+            {
+              "text": "Buscó trabajo con un campesino.",
+              "english": "He looked for work with a farmer."
+            },
+            {
+              "text": "El patrón le dio una chamba: cuidar cerdos en su granja.",
+              "english": "The boss gave him a job: taking care of pigs on his farm."
+            },
+            {
+              "text": "Fue un empleado más.",
+              "english": "He was one more employee."
+            },
+            {
+              "text": "Cavaba la tierra, sembraba las semillas y regaba con un cubo.",
+              "english": "He dug the ground, sowed the seeds and watered with a bucket."
+            },
+            {
+              "text": "También usaba las herramientas del patrón: un martillo, clavos y una cuerda, para arreglar la casa de los cerdos en el taller.",
+              "english": "He also used the boss's tools: a hammer, nails and a rope, to fix the pigs' house in the workshop."
+            },
+            {
+              "text": "Su patrón cultivaba frijoles, y el joven plantaba y usaba la escoba.",
+              "english": "His boss grew beans, and the young man planted and used the broom."
+            },
+            {
+              "text": "Pero tenía mucha hambre.",
+              "english": "But he was very hungry."
+            },
+            {
+              "text": "Quería comer lo que comían los cerdos, pero no le daban nada.",
+              "english": "He wanted to eat what the pigs ate, but they gave him nothing."
+            },
+            {
+              "text": "No veía otra manera de vivir.",
+              "english": "He saw no other way to live."
+            },
+            {
+              "text": "Entonces pensó en su casa, y se arrepintió.",
+              "english": "Then he thought of his home, and he repented."
+            },
+            {
+              "speaker": "H",
+              "text": "En la casa de mi papá, hasta los criados tienen pan.",
+              "english": "In my dad's house, even the servants have bread."
+            },
+            {
+              "speaker": "H",
+              "text": "Y yo estoy aquí con hambre.",
+              "english": "And here I am hungry."
+            },
+            {
+              "speaker": "H",
+              "text": "Voy a volver con mi papá.",
+              "english": "I am going to go back to my dad."
+            },
+            {
+              "speaker": "H",
+              "text": "Le voy a decir: Papá, pequé.",
+              "english": "I am going to tell him: Dad, I sinned."
+            },
+            {
+              "speaker": "H",
+              "text": "Hice mal a Dios y a ti.",
+              "english": "I did wrong to God and to you."
+            },
+            {
+              "speaker": "H",
+              "text": "Ya no merezco ser tu hijo.",
+              "english": "I no longer deserve to be your son."
+            },
+            {
+              "speaker": "H",
+              "text": "Tratame como a uno de tus criados.",
+              "english": "Treat me like one of your servants."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El camino a casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El joven se levantó y volvió.",
+              "english": "The young man got up and went back."
+            },
+            {
+              "text": "El camino a casa fue difícil.",
+              "english": "The road home was hard."
+            },
+            {
+              "text": "Estaba arrepentido.",
+              "english": "He was repentant."
+            },
+            {
+              "text": "Pensaba en lo que iba a decir.",
+              "english": "He thought about what he was going to say."
+            },
+            {
+              "text": "Mientras, el papá miraba el camino todos los días.",
+              "english": "Meanwhile, the dad watched the road every day."
+            },
+            {
+              "text": "Un día vio a un hombre en el camino.",
+              "english": "One day he saw a man on the road."
+            },
+            {
+              "text": "Estaba lejos, pero el papá supo que era su hijo.",
+              "english": "He was far away, but the dad knew it was his son."
+            },
+            {
+              "text": "El papá sintió compasión.",
+              "english": "The dad felt compassion."
+            },
+            {
+              "text": "Fue donde estaba su hijo, lo abrazó y lo besó.",
+              "english": "He went to where his son was, hugged him and kissed him."
+            },
+            {
+              "speaker": "H",
+              "text": "Papá, pequé.",
+              "english": "Dad, I sinned."
+            },
+            {
+              "speaker": "H",
+              "text": "Hice mal a Dios y a ti.",
+              "english": "I did wrong to God and to you."
+            },
+            {
+              "speaker": "H",
+              "text": "Ya no merezco ser tu hijo.",
+              "english": "I no longer deserve to be your son."
+            },
+            {
+              "text": "El papá no escuchó todo lo que el hijo quería decir.",
+              "english": "The dad did not hear all that the son wanted to say."
+            },
+            {
+              "text": "Tenía compasión, y besaba la cara y el pelo de su hijo.",
+              "english": "He had compassion, and he kissed his son's face and hair."
+            },
+            {
+              "text": "Llamó a los criados.",
+              "english": "He called the servants."
+            },
+            {
+              "speaker": "F",
+              "text": "Traigan una camisa limpia, zapatos y un anillo.",
+              "english": "Bring a clean shirt, shoes and a ring."
+            },
+            {
+              "speaker": "F",
+              "text": "Mi hijo estaba perdido y ahora lo encontramos.",
+              "english": "My son was lost and now we have found him."
+            },
+            {
+              "speaker": "F",
+              "text": "Vamos a comer y a celebrar.",
+              "english": "Let us eat and celebrate."
+            },
+            {
+              "text": "El hijo se bañó en la ducha y usó una toalla limpia.",
+              "english": "The son bathed in the shower and used a clean towel."
+            },
+            {
+              "text": "Se vistió y se miró la cara en el espejo.",
+              "english": "He got dressed and looked at his face in the mirror."
+            },
+            {
+              "text": "Los criados le dieron el anillo, y él se puso el anillo en el dedo.",
+              "english": "The servants gave him the ring, and he put the ring on his finger."
+            },
+            {
+              "text": "El papá lo besó otra vez.",
+              "english": "The dad kissed him again."
+            },
+            {
+              "text": "Esa noche el joven se despertó en su cuarto, y por primera vez en muchos días estaba en paz.",
+              "english": "That night the young man woke up in his room, and for the first time in many days he was at peace."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El hijo grande",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mientras, el hijo grande trabajaba en la granja.",
+              "english": "Meanwhile, the older son was working on the farm."
+            },
+            {
+              "text": "Cultivaba la tierra todo el día.",
+              "english": "He worked the land all day."
+            },
+            {
+              "text": "Cuando volvió a la casa, oyó canciones y vio a la gente en el patio.",
+              "english": "When he came back to the house, he heard songs and saw the people in the patio."
+            },
+            {
+              "text": "Llamó a un criado y le preguntó qué pasaba.",
+              "english": "He called a servant and asked what was happening."
+            },
+            {
+              "text": "El criado respondió:",
+              "english": "The servant answered:"
+            },
+            {
+              "text": "Tu hermano volvió, y tu papá hizo una fiesta, porque está bien y está en casa.",
+              "english": "Your brother came back, and your dad made a party, because he is well and he is home."
+            },
+            {
+              "text": "El hijo grande se enojó y no quiso entrar.",
+              "english": "The older son got angry and did not want to go in."
+            },
+            {
+              "text": "El papá salió a buscarlo.",
+              "english": "The dad went out to look for him."
+            },
+            {
+              "speaker": "G",
+              "text": "Papá, yo trabajo para vos todos los años.",
+              "english": "Dad, I work for you every year."
+            },
+            {
+              "speaker": "G",
+              "text": "Nunca te dije que no.",
+              "english": "I never told you no."
+            },
+            {
+              "speaker": "G",
+              "text": "Y nunca me diste una fiesta con mis amigos.",
+              "english": "And you never gave me a party with my friends."
+            },
+            {
+              "speaker": "G",
+              "text": "Pero tu hijo gastó tu dinero, y hoy hay una fiesta para él.",
+              "english": "But your son spent your money, and today there is a party for him."
+            },
+            {
+              "speaker": "G",
+              "text": "Por eso me enojé.",
+              "english": "That is why I got angry."
+            },
+            {
+              "speaker": "F",
+              "text": "Hijo, vos siempre estás conmigo.",
+              "english": "Son, you are always with me."
+            },
+            {
+              "speaker": "F",
+              "text": "Todo lo que tengo es para vos.",
+              "english": "Everything I have is for you."
+            },
+            {
+              "speaker": "F",
+              "text": "Teníamos que celebrar.",
+              "english": "We had to celebrate."
+            },
+            {
+              "speaker": "F",
+              "text": "Tu hermano estaba perdido, y ahora lo encontramos.",
+              "english": "Your brother was lost, and now we have found him."
+            },
+            {
+              "text": "Aquí termina el cuento de Jesús.",
+              "english": "Here the story of Jesus ends."
+            },
+            {
+              "text": "No sabemos si el hijo grande entró a la fiesta.",
+              "english": "We do not know whether the older son went in to the party."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Después del culto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El pastor termina de leer.",
+              "english": "The pastor finishes reading."
+            },
+            {
+              "speaker": "P",
+              "text": "Este cuento es una lección para todos.",
+              "english": "This story is a lesson for everyone."
+            },
+            {
+              "speaker": "P",
+              "text": "Dios es como el papá: tiene compasión de cada persona.",
+              "english": "God is like the dad: he has compassion on each person."
+            },
+            {
+              "speaker": "P",
+              "text": "Jesús tenía una manera de enseñar: con cuentos.",
+              "english": "Jesus had a way of teaching: with stories."
+            },
+            {
+              "speaker": "P",
+              "text": "Una persona rica o una persona pobre, Dios las ama a todas.",
+              "english": "A rich person or a poor person, God loves them all."
+            },
+            {
+              "speaker": "P",
+              "text": "El joven dijo la verdad, y su papá lo recibió.",
+              "english": "The young man told the truth, and his dad received him."
+            },
+            {
+              "speaker": "P",
+              "text": "Todos pecamos.",
+              "english": "We all sin."
+            },
+            {
+              "speaker": "P",
+              "text": "No es bueno enojarse con el hermano.",
+              "english": "It is not good to get angry with your brother."
+            },
+            {
+              "speaker": "P",
+              "text": "Dios tiene cosas buenas para todos, y nos espera.",
+              "english": "God has good things for everyone, and he waits for us."
+            },
+            {
+              "text": "Marvin se levanta y da su testimonio.",
+              "english": "Marvin gets up and gives his testimony."
+            },
+            {
+              "speaker": "M",
+              "text": "Yo también me fui lejos de Dios.",
+              "english": "I too went far from God."
+            },
+            {
+              "speaker": "M",
+              "text": "Era pobre, gasté mi dinero y perdí mi casa.",
+              "english": "I was poor, I spent my money and lost my house."
+            },
+            {
+              "speaker": "M",
+              "text": "Pero la iglesia me dio la bienvenida.",
+              "english": "But the church gave me a welcome."
+            },
+            {
+              "speaker": "M",
+              "text": "Hoy estoy arrepentido de mi pecado.",
+              "english": "Today I am repentant of my sin."
+            },
+            {
+              "speaker": "M",
+              "text": "Es verdad que no merecía nada, pero Dios me dio todo.",
+              "english": "It is true that I did not deserve anything, but God gave me everything."
+            },
+            {
+              "speaker": "M",
+              "text": "El domingo voy a bautizarme.",
+              "english": "On Sunday I am going to be baptized."
+            },
+            {
+              "speaker": "M",
+              "text": "El bautismo es una fiesta, y muchos van a asistir.",
+              "english": "Baptism is a celebration, and many will attend."
+            },
+            {
+              "speaker": "M",
+              "text": "Ya soy creyente.",
+              "english": "I am a believer now."
+            },
+            {
+              "speaker": "N",
+              "text": "Pastor, hay una cosa que no entiendo.",
+              "english": "Pastor, there is something I do not understand."
+            },
+            {
+              "speaker": "N",
+              "text": "¿Qué es el pecado?",
+              "english": "What is sin?"
+            },
+            {
+              "speaker": "N",
+              "text": "¿Es verdad que Dios perdona todo?",
+              "english": "Is it true that God forgives everything?"
+            },
+            {
+              "speaker": "P",
+              "text": "El pecado es vivir lejos de Dios, como el hijo joven.",
+              "english": "Sin is living far from God, like the younger son."
+            },
+            {
+              "speaker": "P",
+              "text": "Pero cada uno ve la vida de una manera diferente.",
+              "english": "But each one sees life in a different way."
+            },
+            {
+              "text": "Al terminar, la gente se saluda con abrazos y besos.",
+              "english": "When it ends, people greet each other with hugs and kisses."
+            },
+            {
+              "text": "Los hermanos acompañan a Marvin hasta su casa.",
+              "english": "The brothers walk Marvin home."
+            },
+            {
+              "text": "Sam se despide de doña Marta y de Nico.",
+              "english": "Sam says goodbye to doña Marta and Nico."
+            },
+            {
+              "text": "En la clase de Luis, el lunes, los niños van a escuchar este cuento.",
+              "english": "In Luis's class on Monday, the children are going to hear this story."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

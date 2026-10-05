@@ -1,0 +1,562 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-07",
+  "lang": "es",
+  "title": "Noticias de la comunidad",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-07",
+    "title": "Neighbourhood news (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "contemporary-nonfiction"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "El periódico del pueblo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cada mes, Karla y Ana preparan un periódico pequeño para la comunidad.",
+              "english": "Every month Karla and Ana prepare a small newspaper for the community."
+            },
+            {
+              "text": "No es un periódico grande, pero todos lo leen.",
+              "english": "It is not a big newspaper, but everybody reads it."
+            },
+            {
+              "text": "Lo publican en la tienda, en la iglesia y en el supermercado.",
+              "english": "They publish it in the shop, at the church and in the supermarket."
+            },
+            {
+              "text": "Esta semana Sam también ayuda, y escribe una parte en español.",
+              "english": "This week Sam also helps, and writes a part in Spanish."
+            },
+            {
+              "text": "Estas son las noticias del mes.",
+              "english": "Here are the month's news items."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La carta ha tenido resultado",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El gobierno ha respondido a la carta de la comunidad.",
+              "english": "The government has answered the community's letter."
+            },
+            {
+              "text": "Esta semana una persona del gobierno ha visitado el pueblo.",
+              "english": "This week a person from the government has visited the village."
+            },
+            {
+              "text": "Ha mirado el camino de la escuela, y ha hablado con los vecinos.",
+              "english": "She has looked at the road to the school, and has talked with the neighbours."
+            },
+            {
+              "text": "Ha escuchado la opinión de todos.",
+              "english": "She has listened to everyone's opinion."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El presidente de la comunidad, el señor Marvin, ha dicho: «La carta ha servido. Los ciudadanos han actuado con paz, y el gobierno ha indicado que va a arreglar el camino».",
+              "english": "The president of the community, Mr. Marvin, has said: \"The letter has worked. The citizens have acted in peace, and the government has indicated that it will fix the road.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El gobierno también ha informado que no se permite estacionar carros grandes en el camino nuevo, porque impiden el camino a los niños.",
+              "english": "The government has also informed us that parking big vehicles on the new road is not permitted, because they block the way for the children."
+            },
+            {
+              "text": "Ha anunciado que va a revisar el valor del agua.",
+              "english": "It has announced that it will review the price of water."
+            },
+            {
+              "text": "Karla, que llevó la carta, ha dicho que está contenta, pero que todavía hay mucho trabajo.",
+              "english": "Karla, who took the letter, has said that she is happy, but that there is still a lot of work."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un techo nuevo para la escuela",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La escuela del pueblo ha tenido un techo viejo durante muchos años.",
+              "english": "The village school has had an old roof for many years."
+            },
+            {
+              "text": "Cuando llueve, el agua entra, y los niños no pueden estudiar.",
+              "english": "When it rains, the water comes in, and the children cannot study."
+            },
+            {
+              "text": "En esta estación, el invierno, el problema es más difícil.",
+              "english": "In this season, the winter, the problem is harder."
+            },
+            {
+              "text": "Esta semana, Carlos y muchos vecinos han empezado a construir un techo nuevo.",
+              "english": "This week Carlos and many neighbours have started to build a new roof."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Primero han quitado el techo viejo.",
+              "english": "First they removed the old roof."
+            },
+            {
+              "text": "Luego han sacado las mesas y las han colocado en el patio.",
+              "english": "Then they took out the tables and put them in the courtyard."
+            },
+            {
+              "text": "Han tirado la basura, han barrido el piso y han ordenado todo.",
+              "english": "They threw out the rubbish, swept the floor and tidied everything."
+            },
+            {
+              "text": "Una señora ha traído café, y otra ha traído pan.",
+              "english": "One lady has brought coffee, and another has brought bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El trabajo no ha terminado.",
+              "english": "The work is not finished."
+            },
+            {
+              "text": "La iglesia ha mandado una oferta de ayuda, y el anuncio está en la tienda.",
+              "english": "The church has sent an offer of help, and the notice is in the shop."
+            },
+            {
+              "text": "La comunidad ha puesto una caja en la tienda, y cada persona puede dejar algo de dinero.",
+              "english": "The community has put a box in the shop, and each person can leave some money."
+            },
+            {
+              "text": "Todos pueden ayudar, pero nadie está obligado.",
+              "english": "Everyone can help, but nobody is required to."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un partido en la avenida",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El domingo hubo un partido de balón entre los jóvenes del pueblo y un equipo de otra ciudad.",
+              "english": "On Sunday there was a ball match between the young people of the village and a team from another city."
+            },
+            {
+              "text": "Más de cien personas llegaron a la avenida para mirar el partido.",
+              "english": "More than a hundred people came to the avenue to watch the match."
+            },
+            {
+              "text": "El juego empezó a las cuatro y terminó a las seis.",
+              "english": "The game began at four and ended at six."
+            },
+            {
+              "text": "El balón era nuevo: la iglesia lo regaló a los jóvenes.",
+              "english": "The ball was new: the church gave it to the young people."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nico, que tiene diez años, vendió agua y pan a todos.",
+              "english": "Nico, who is ten years old, sold water and bread to everyone."
+            },
+            {
+              "text": "Dice que ha ganado más dinero que todos los jóvenes del equipo.",
+              "english": "He says he has earned more money than all the young people on the team."
+            },
+            {
+              "text": "Su abuela, doña Marta, se ha reído mucho.",
+              "english": "His grandmother, doña Marta, has laughed a lot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El partido fue muy bueno.",
+              "english": "The match was very good."
+            },
+            {
+              "text": "Los jóvenes del pueblo hicieron un gol al comienzo, y otro gol cuando terminó el juego.",
+              "english": "The young people of the village scored one goal at the start, and another when the game ended."
+            },
+            {
+              "text": "El otro equipo hizo solo un gol.",
+              "english": "The other team scored only one goal."
+            },
+            {
+              "text": "El presidente de la comunidad dio un premio pequeño a cada joven: una botella de agua y un abrazo.",
+              "english": "The president of the community gave a small prize to each young person: a bottle of water and a hug."
+            },
+            {
+              "text": "El mejor premio fue el balón, porque ahora el pueblo tiene un balón para todos los domingos.",
+              "english": "The best prize was the ball, because now the village has a ball for every Sunday."
+            },
+            {
+              "text": "Y el premio de Nico fue un pan grande.",
+              "english": "And Nico's prize was a big loaf of bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Después del partido, no se permitió estacionar carros en la avenida.",
+              "english": "After the match, parking cars on the avenue was not permitted."
+            },
+            {
+              "text": "Un señor intentó dejar su carro en la esquina, pero un vecino le dijo que no podía.",
+              "english": "A man tried to leave his car on the corner, but a neighbour told him he could not."
+            },
+            {
+              "text": "El señor lo entendió y se fue con una sonrisa.",
+              "english": "The man understood and left with a smile."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cine en el patio de la iglesia",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El sábado que viene va a haber cine en el patio de la iglesia.",
+              "english": "Next Saturday there will be cinema in the church courtyard."
+            },
+            {
+              "text": "La película es de una familia que cruza una frontera y busca una casa nueva.",
+              "english": "The film is about a family that crosses a border and looks for a new house."
+            },
+            {
+              "text": "Es para niños y para grandes.",
+              "english": "It is for children and for grown-ups."
+            },
+            {
+              "text": "La película es de dos horas, y después hay café.",
+              "english": "The film is two hours long, and afterwards there is coffee."
+            },
+            {
+              "text": "La compra de un pan ayuda a la escuela.",
+              "english": "Buying a loaf of bread helps the school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El cine es público.",
+              "english": "The cinema is public."
+            },
+            {
+              "text": "La iglesia ofrece café y pan, y nadie tiene que pagar.",
+              "english": "The church offers coffee and bread, and nobody has to pay."
+            },
+            {
+              "text": "Hay que traer algo para sentarse.",
+              "english": "You have to bring something to sit on."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana ha dicho que ve cine cada mes en el pueblo vecino.",
+              "english": "Ana has said that she goes to the cinema every month in the neighbouring town."
+            },
+            {
+              "text": "Esta vez, el cine viene a nosotros.",
+              "english": "This time the cinema comes to us."
+            },
+            {
+              "text": "Hay que apagar los teléfonos y callar durante la película.",
+              "english": "You have to turn off your phones and be quiet during the film."
+            },
+            {
+              "text": "Esto es para todos.",
+              "english": "This is for everyone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un baile para la fiesta del pueblo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La fiesta del pueblo es el mes que viene.",
+              "english": "The village festival is next month."
+            },
+            {
+              "text": "La comunidad ha decidido preparar un baile en la avenida.",
+              "english": "The community has decided to prepare a dance on the avenue."
+            },
+            {
+              "text": "Va a haber comida y mucha gente.",
+              "english": "There will be food and lots of people."
+            },
+            {
+              "text": "Las familias del pueblo han preparado tamales y baleadas para vender.",
+              "english": "The village families have prepared tamales and baleadas to sell."
+            },
+            {
+              "text": "El baile empieza a las seis.",
+              "english": "The dance starts at six."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Los vecinos que viven en la esquina han pedido un favor.",
+              "english": "The neighbours who live on the corner have asked for a favour."
+            },
+            {
+              "text": "No quieren que se baile después de las diez.",
+              "english": "They do not want people dancing after ten."
+            },
+            {
+              "text": "El presidente ha respondido que va a escuchar su opinión.",
+              "english": "The president has replied that he will listen to their opinion."
+            },
+            {
+              "text": "«La fiesta es de todos, pero la paz también», ha dicho.",
+              "english": "\"The festival is for everyone, but so is peace,\" he has said."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El baile no es privado.",
+              "english": "The dance is not private."
+            },
+            {
+              "text": "Cada persona puede venir.",
+              "english": "Every person can come."
+            },
+            {
+              "text": "Karla ha dicho que Sam ya ha aprendido a bailar un poco, y Sam se ha reído.",
+              "english": "Karla has said that Sam has already learned to dance a little, and Sam has laughed."
+            },
+            {
+              "text": "«Todavía me equivoco al bailar», dice.",
+              "english": "\"I still get it wrong when I dance,\" he says."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La elección del nuevo presidente",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En tres semanas va a haber una elección en la comunidad. El señor Marvin ha servido dos años como presidente, y ahora quiere descansar. Dos personas han presentado su nombre: Elena y Carlos.",
+              "english": "In three weeks there will be an election in the community. Mr. Marvin has served two years as president and now wants to rest. Two people have put forward their names: Elena and Carlos."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Todos los ciudadanos pueden votar.",
+              "english": "All citizens can vote."
+            },
+            {
+              "text": "La ley dice que cada persona tiene un voto.",
+              "english": "The law says that each person has one vote."
+            },
+            {
+              "text": "No hay que pagar, y no hay que firmar nada.",
+              "english": "You don't have to pay, and you don't have to sign anything."
+            },
+            {
+              "text": "Solo hay que llevar la tarjeta.",
+              "english": "You only have to bring your card."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Elena dice que quiere un pueblo con agua buena.",
+              "english": "Elena says she wants a village with good water."
+            },
+            {
+              "text": "Carlos dice que quiere un camino bueno y una escuela grande.",
+              "english": "Carlos says he wants a good road and a big school."
+            },
+            {
+              "text": "Carlos habla de la guerra, que su abuelo vivió, y dice que el pueblo quiere paz.",
+              "english": "Carlos talks about the war, which his grandfather lived through, and says that the village wants peace."
+            },
+            {
+              "text": "Los dos hablan de la patria y de la justicia.",
+              "english": "Both talk about the homeland and about justice."
+            },
+            {
+              "text": "Ana ha escrito: «Que cada ciudadano vote con su opinión y con su corazón».",
+              "english": "Ana has written: \"May every citizen vote with their opinion and with their heart.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Avisos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Venta de pan en el patio de la iglesia, cada sábado.",
+              "english": "Bread sale in the church courtyard, every Saturday."
+            },
+            {
+              "text": "La oferta incluye un pan más si comprás dos.",
+              "english": "The offer includes one more loaf if you buy two."
+            },
+            {
+              "text": "El restaurante de la esquina ha anunciado una oferta: sopa de pollo, arroz y frijoles por cien lempiras.",
+              "english": "The restaurant on the corner has announced an offer: chicken soup, rice and beans for a hundred lempiras."
+            },
+            {
+              "text": "El supermercado informa que ya no se permite dejar bolsas en la caja.",
+              "english": "The supermarket informs us that leaving bags at the checkout is no longer permitted."
+            },
+            {
+              "text": "Presente su tarjeta, revise el precio y firme aquí.",
+              "english": "Present your card, check the price and sign here."
+            },
+            {
+              "text": "Cuidado, los que manejan: hay que detenerse y parar en la esquina.",
+              "english": "Careful, those who drive: you must stop and halt at the corner."
+            },
+            {
+              "text": "En general, la avenida es para todos.",
+              "english": "In general, the avenue is for everyone."
+            },
+            {
+              "text": "Los que andan por la avenida deben mirar a los dos lados.",
+              "english": "Those who walk along the avenue should look to both sides."
+            },
+            {
+              "text": "Conducir con cuidado es una forma de proteger a los niños.",
+              "english": "Driving carefully is a way of protecting the children."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una idea para el hogar",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Cada semana, el periódico publica una idea para el hogar.",
+              "english": "Every week the newspaper publishes an idea for the home."
+            },
+            {
+              "text": "Esta semana, Karla ha escrito sobre la sala, el comedor y el dormitorio.",
+              "english": "This week Karla has written about the living room, the dining room and the bedroom."
+            },
+            {
+              "text": "Sugiere agarrar una escoba y barrer cada día.",
+              "english": "She suggests taking a broom and sweeping every day."
+            },
+            {
+              "text": "Hay que mover el sofá, ordenar el armario y abrir la cortina de la habitación.",
+              "english": "You should move the sofa, tidy the wardrobe and open the curtain in the room."
+            },
+            {
+              "text": "Hay que guardar la almohada y la manta, meter los zapatos en el armario, y llenar la jarra de agua.",
+              "english": "You should put away the pillow and the blanket, put the shoes in the wardrobe, and fill the water jug."
+            },
+            {
+              "text": "También hay que apagar la luz, y encender solo la luz del comedor.",
+              "english": "You should also turn off the light, and turn on only the dining-room light."
+            },
+            {
+              "text": "Karla ha escrito: «Un hogar limpio es un hogar con paz».",
+              "english": "Karla has written: \"A clean home is a home with peace.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

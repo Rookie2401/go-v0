@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-03",
+  "lang": "es",
+  "title": "A family photograph",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-03",
+    "title": "A family photograph (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: age with tener (\"tiene cincuenta y ocho años\"); papá / mamá as the everyday words; \"foto\" is not in the word list, so the photograph appears only in the English notes; \"Somos dos hijos y una hija.\""
+  },
+  "difficulty": "A1",
+  "topics": [
+    "family",
+    "ages"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "ana": "Ana",
+    "nico": "Nico",
+    "marta": "Doña Marta"
+  },
+  "sections": [
+    {
+      "title": "A family photograph",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Sam, aquí está mi familia.",
+              "english": "Sam, here is my family. (She shows him a photograph.)"
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "ana",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "ana",
+              "text": "Aquí están mi papá y mi mamá.",
+              "english": "Here are my dad and my mom."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Cómo se llama él?",
+              "english": "What is his name?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Se llama Ricardo.",
+              "english": "His name is Ricardo."
+            },
+            {
+              "speaker": "ana",
+              "text": "Ella se llama Isabel.",
+              "english": "Her name is Isabel."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Cuántos años tiene él?",
+              "english": "How old is he?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Tiene cincuenta y ocho años.",
+              "english": "He is fifty-eight years old."
+            },
+            {
+              "speaker": "ana",
+              "text": "Ella tiene cincuenta y cinco.",
+              "english": "She is fifty-five."
+            },
+            {
+              "speaker": "ana",
+              "text": "Él trabaja en el mercado con doña Marta.",
+              "english": "He works at the market with doña Marta."
+            },
+            {
+              "speaker": "ana",
+              "text": "Ella trabaja en la escuela.",
+              "english": "She works at the school."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Y doña Marta?",
+              "english": "And doña Marta?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Doña Marta es la mamá de mi papá.",
+              "english": "Doña Marta is my dad's mother."
+            },
+            {
+              "speaker": "ana",
+              "text": "Mi papá es hijo de doña Marta.",
+              "english": "My dad is doña Marta's son."
+            },
+            {
+              "speaker": "ana",
+              "text": "Ella es mi abuela.",
+              "english": "She is my grandmother."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Aquí está Luis, mi hermano.",
+              "english": "Here is Luis, my brother."
+            },
+            {
+              "speaker": "ana",
+              "text": "Luis tiene veintiocho años.",
+              "english": "Luis is twenty-eight years old."
+            },
+            {
+              "speaker": "ana",
+              "text": "Luis también trabaja en la escuela.",
+              "english": "Luis works at the school too."
+            },
+            {
+              "speaker": "ana",
+              "text": "Y aquí estamos Nico y yo.",
+              "english": "And here are Nico and me."
+            },
+            {
+              "speaker": "ana",
+              "text": "Somos tres.",
+              "english": "There are three of us."
+            },
+            {
+              "speaker": "ana",
+              "text": "Somos dos hijos y una hija.",
+              "english": "We are two sons and one daughter."
+            },
+            {
+              "speaker": "ana",
+              "text": "Yo soy la hermana de Luis y Nico.",
+              "english": "I am Luis and Nico's sister."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Y cuántos tiene Nico?",
+              "english": "And how old is Nico?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Nico tiene diez.",
+              "english": "Nico is ten."
+            },
+            {
+              "speaker": "ana",
+              "text": "Los domingos comemos en la casa de doña Marta.",
+              "english": "On Sundays we eat at doña Marta's house."
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta la casa de doña Marta.",
+              "english": "I like doña Marta's house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Mi familia no está aquí.",
+              "english": "My family is not here."
+            },
+            {
+              "speaker": "sam",
+              "text": "Tengo un hermano.",
+              "english": "I have a brother."
+            },
+            {
+              "speaker": "ana",
+              "text": "¿Cómo se llama tu hermano?",
+              "english": "What is your brother's name?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Se llama Jorge.",
+              "english": "His name is Jorge."
+            },
+            {
+              "speaker": "sam",
+              "text": "Él tiene una hija.",
+              "english": "He has a daughter."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi mamá se llama Sara.",
+              "english": "My mom's name is Sara."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi familia está en su casa.",
+              "english": "My family is in their house."
+            },
+            {
+              "speaker": "ana",
+              "text": "¿Es grande su casa?",
+              "english": "Is their house big?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, es grande.",
+              "english": "Yes, it is big."
+            },
+            {
+              "speaker": "sam",
+              "text": "En mi cuarto hay una cama grande.",
+              "english": "In my room there is a big bed."
+            },
+            {
+              "speaker": "ana",
+              "text": "Aquí también hay una cama grande.",
+              "english": "Here there is also a big bed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nico",
+              "text": "Sam, ¿Karla es tu amiga?",
+              "english": "Sam, is Karla your friend?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, Karla es mi amiga.",
+              "english": "Yes, Karla is my friend."
+            },
+            {
+              "speaker": "ana",
+              "text": "Karla es hija del señor Mario.",
+              "english": "Karla is Mr. Mario's daughter."
+            },
+            {
+              "speaker": "ana",
+              "text": "Marvin es el hijo del señor Mario.",
+              "english": "Marvin is Mr. Mario's son."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿La casa del señor Mario es grande?",
+              "english": "Is Mr. Mario's house big?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Sí, es una casa grande.",
+              "english": "Yes, it is a big house."
+            },
+            {
+              "speaker": "ana",
+              "text": "Karla vive en la casa con Marvin.",
+              "english": "Karla lives in the house with Marvin."
+            },
+            {
+              "speaker": "nico",
+              "text": "Mi casa también es grande.",
+              "english": "My house is big too."
+            },
+            {
+              "speaker": "nico",
+              "text": "Y me gusta mucho.",
+              "english": "And I like it a lot."
+            },
+            {
+              "speaker": "ana",
+              "text": "Hoy vamos a la casa de la abuela.",
+              "english": "Today we are going to grandma's house."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Vamos con Luis?",
+              "english": "Are we going with Luis?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Sí, y con Nico también.",
+              "english": "Yes, and with Nico too."
+            },
+            {
+              "speaker": "nico",
+              "text": "La abuela tiene café y pan.",
+              "english": "Grandma has coffee and bread."
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta el café de doña Marta.",
+              "english": "I like doña Marta's coffee."
+            },
+            {
+              "speaker": "nico",
+              "text": "A mí me gusta el pan.",
+              "english": "I like the bread."
+            },
+            {
+              "speaker": "ana",
+              "text": "A mí me gusta el arroz.",
+              "english": "I like the rice."
+            },
+            {
+              "speaker": "marta",
+              "text": "Sam, Ana, ¡a la mesa!",
+              "english": "Sam, Ana, to the table!"
+            },
+            {
+              "speaker": "marta",
+              "text": "Hay arroz, pan y café.",
+              "english": "There is rice, bread and coffee."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta el arroz.",
+              "english": "I like rice."
+            },
+            {
+              "speaker": "nico",
+              "text": "A mí me gusta el pan.",
+              "english": "I like bread."
+            },
+            {
+              "speaker": "marta",
+              "text": "Mi casa es grande, y hay café para vos y para mí.",
+              "english": "My house is big, and there is coffee for you and for me."
+            },
+            {
+              "speaker": "ana",
+              "text": "Gracias, abuela.",
+              "english": "Thank you, grandma."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

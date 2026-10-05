@@ -1,0 +1,905 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-10",
+  "lang": "es",
+  "title": "El buen vecino",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-10",
+    "title": "The Good Samaritan (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "scripture"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "scripture"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "P": "Pastor Mario",
+    "J": "Jesús",
+    "H": "Un hombre",
+    "S": "Sam",
+    "K": "Karla",
+    "L": "Luis",
+    "A": "Ana",
+    "N": "Nico",
+    "V": "Marvin",
+    "E": "Elena"
+  },
+  "sections": [
+    {
+      "title": "Un cuento en el grupo pequeño",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es jueves, y el grupo pequeño se reúne otra vez en la casa de doña Marta.",
+              "english": "It is Thursday, and the small group meets again at doña Marta's house."
+            },
+            {
+              "text": "Esta noche el pastor Mario quiere contar un cuento de Jesús.",
+              "english": "Tonight Pastor Mario wants to tell a story of Jesus."
+            },
+            {
+              "text": "Sam lo va a traducir para su amigo Kevin, que habla otro idioma, pero primero lo escucha en español.",
+              "english": "Sam is going to translate it for his friend Kevin, who speaks another language, but first he listens to it in Spanish."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Este cuento es muy conocido, pero no es fácil.",
+              "english": "This story is very well known, but it is not easy.",
+              "speaker": "P"
+            },
+            {
+              "text": "Escuchen con cuidado, y después hablamos.",
+              "english": "Listen carefully, and afterwards we'll talk.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La pregunta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un día, un hombre que conocía la ley fue a hablar con Jesús.",
+              "english": "One day a man who knew the law went to talk with Jesus.",
+              "speaker": "P"
+            },
+            {
+              "text": "No quería aprender.",
+              "english": "He did not want to learn.",
+              "speaker": "P"
+            },
+            {
+              "text": "Quería ver si Jesús sabía más que él.",
+              "english": "He wanted to see whether Jesus knew more than he did.",
+              "speaker": "P"
+            },
+            {
+              "text": "Maestro, ¿qué tengo que hacer para tener vida eterna?",
+              "english": "Teacher, what do I have to do to have eternal life?",
+              "speaker": "H"
+            },
+            {
+              "text": "¿Qué dice la ley?",
+              "english": "What does the law say?",
+              "speaker": "J"
+            },
+            {
+              "text": "¿Cómo la leés vos?",
+              "english": "How do you read it?",
+              "speaker": "J"
+            },
+            {
+              "text": "Dice que debo amar a Dios con todo el corazón, y a mi vecino como a mí.",
+              "english": "It says I must love God with all my heart, and my neighbour as myself.",
+              "speaker": "H"
+            },
+            {
+              "text": "Bien dicho.",
+              "english": "Well said.",
+              "speaker": "J"
+            },
+            {
+              "text": "Hacé eso, y vas a vivir.",
+              "english": "Do that, and you will live.",
+              "speaker": "J"
+            },
+            {
+              "text": "Pero el hombre quería defender su opinión.",
+              "english": "But the man wanted to defend his opinion.",
+              "speaker": "P"
+            },
+            {
+              "text": "Entonces preguntó otra cosa.",
+              "english": "So he asked something else.",
+              "speaker": "P"
+            },
+            {
+              "text": "¿Y quién es mi vecino?",
+              "english": "And who is my neighbour?",
+              "speaker": "H"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El camino",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Jesús no discutió con él.",
+              "english": "Jesus did not argue with him.",
+              "speaker": "P"
+            },
+            {
+              "text": "Contó un cuento.",
+              "english": "He told a story.",
+              "speaker": "P"
+            },
+            {
+              "text": "Un hombre bajaba por el camino de Jerusalén a Jericó.",
+              "english": "A man was going down the road from Jerusalem to Jericho.",
+              "speaker": "J"
+            },
+            {
+              "text": "Era un camino lejano y peligroso, fuera de la ciudad, con cerros y pocos árboles.",
+              "english": "It was a distant and dangerous road, outside the city, with hills and few trees.",
+              "speaker": "J"
+            },
+            {
+              "text": "Había lugares donde los ladrones esperaban debajo de los árboles.",
+              "english": "There were places where robbers waited under the trees.",
+              "speaker": "J"
+            },
+            {
+              "text": "De pronto salieron unos ladrones.",
+              "english": "Suddenly some robbers came out.",
+              "speaker": "J"
+            },
+            {
+              "text": "Eran malvados.",
+              "english": "They were wicked.",
+              "speaker": "J"
+            },
+            {
+              "text": "Le robaron todo, le pegaron mucho y le quebraron una pierna.",
+              "english": "They robbed him of everything, beat him badly and broke a leg.",
+              "speaker": "J"
+            },
+            {
+              "text": "Después se fueron, y lo dejaron encima de la tierra, casi sin vida.",
+              "english": "Then they left, and they left him on top of the ground, almost lifeless.",
+              "speaker": "J"
+            },
+            {
+              "text": "Nadie vio nada.",
+              "english": "Nobody saw anything.",
+              "speaker": "P"
+            },
+            {
+              "text": "El hombre estaba tan solo, con sed y con dolor.",
+              "english": "The man was so alone, thirsty and in pain.",
+              "speaker": "P"
+            },
+            {
+              "text": "El sol estaba encima de él, y estaba debajo del sol sin agua.",
+              "english": "The sun was above him, and he lay under the sun without water.",
+              "speaker": "P"
+            },
+            {
+              "text": "Tenía cortes por todo el cuerpo, y olía a sangre.",
+              "english": "He had cuts all over his body, and he smelled of blood.",
+              "speaker": "P"
+            },
+            {
+              "text": "No tenía culpa, y no merecía ese castigo.",
+              "english": "He was not at fault, and he did not deserve that punishment.",
+              "speaker": "P"
+            },
+            {
+              "text": "Los ladrones robaron su dinero, quebraron su paz y se fueron.",
+              "english": "The robbers stole his money, broke his peace and left.",
+              "speaker": "P"
+            },
+            {
+              "text": "Los pueblos pelean, y los vecinos pelean por el agua.",
+              "english": "Peoples fight, and neighbours fight over water.",
+              "speaker": "P"
+            },
+            {
+              "text": "Los que pegan no piensan en el dolor de otro.",
+              "english": "Those who beat others do not think about another's pain.",
+              "speaker": "P"
+            },
+            {
+              "text": "Los malvados no siempre se ven malvados.",
+              "english": "The wicked do not always look wicked.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Dos hombres que pasaron",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pasó por ahí un sacerdote.",
+              "english": "A priest came by.",
+              "speaker": "J"
+            },
+            {
+              "text": "Vio al hombre en el piso, pero no se detuvo.",
+              "english": "He saw the man on the ground, but did not stop.",
+              "speaker": "J"
+            },
+            {
+              "text": "Se fue por el otro lado del camino, fuera del peligro, lejos del hombre.",
+              "english": "He went by the other side of the road, out of danger, far from the man.",
+              "speaker": "J"
+            },
+            {
+              "text": "Poco después llegó otro hombre, que trabajaba en el templo.",
+              "english": "A little later another man came, who worked in the temple.",
+              "speaker": "J"
+            },
+            {
+              "text": "También lo vio, y también siguió su camino.",
+              "english": "He also saw him, and he also kept going on his way.",
+              "speaker": "J"
+            },
+            {
+              "text": "Los dos tenían razones, y eran tan buenas como las nuestras.",
+              "english": "The two had reasons, and they were as good as ours.",
+              "speaker": "J"
+            },
+            {
+              "text": "Quizás el sacerdote pensó: «Tengo que llegar temprano al templo».",
+              "english": "Perhaps the priest thought: \"I have to get to the temple early.\"",
+              "speaker": "P"
+            },
+            {
+              "text": "Esa fue una mentira.",
+              "english": "That was a lie.",
+              "speaker": "P"
+            },
+            {
+              "text": "Cuando uno dice «no tengo tiempo», muchas veces miente.",
+              "english": "When one says \"I don't have time,\" one often lies.",
+              "speaker": "P"
+            },
+            {
+              "text": "A veces uno se engaña con buenas razones.",
+              "english": "Sometimes one deceives oneself with good reasons.",
+              "speaker": "P"
+            },
+            {
+              "text": "Es verdad.",
+              "english": "It's true.",
+              "speaker": "K"
+            },
+            {
+              "text": "Yo una vez mentí así.",
+              "english": "I once lied like that.",
+              "speaker": "K"
+            },
+            {
+              "text": "Dije «no puedo», y era mentira.",
+              "english": "I said \"I can't,\" and it was a lie.",
+              "speaker": "K"
+            },
+            {
+              "text": "Me engañé yo sola.",
+              "english": "I deceived myself.",
+              "speaker": "K"
+            },
+            {
+              "text": "Las mentiras pequeñas también hacen mal.",
+              "english": "Small lies also do wrong.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El extranjero",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después pasó otro hombre, de Samaria.",
+              "english": "Then another man passed, from Samaria.",
+              "speaker": "J"
+            },
+            {
+              "text": "Era extranjero.",
+              "english": "He was a foreigner.",
+              "speaker": "J"
+            },
+            {
+              "text": "Los de Jerusalén lo rechazaban, y los de Samaria rechazaban a los de Jerusalén.",
+              "english": "The people of Jerusalem rejected him, and the people of Samaria rejected the people of Jerusalem.",
+              "speaker": "J"
+            },
+            {
+              "text": "Eran enemigos.",
+              "english": "They were enemies.",
+              "speaker": "J"
+            },
+            {
+              "text": "Se odiaban, y a veces se peleaban.",
+              "english": "They hated one another, and sometimes they fought.",
+              "speaker": "J"
+            },
+            {
+              "text": "Pero este hombre vio al hombre y tuvo compasión.",
+              "english": "But this man saw the wounded man and had compassion.",
+              "speaker": "J"
+            },
+            {
+              "text": "Fue hasta él despacio, para no hacerle más mal.",
+              "english": "He went to him slowly, so as not to hurt him any more.",
+              "speaker": "J"
+            },
+            {
+              "text": "Le puso aceite y vino en los cortes, y lo cubrió con su camisa.",
+              "english": "He put oil and wine on the cuts, and covered him with his shirt.",
+              "speaker": "J"
+            },
+            {
+              "text": "Lo puso encima de su animal, y lo llevó hasta un lugar para dormir.",
+              "english": "He put him on top of his animal, and took him to a place to sleep.",
+              "speaker": "J"
+            },
+            {
+              "text": "Anduvo despacio toda la noche, porque el hombre estaba muy débil.",
+              "english": "He walked slowly all night, because the man was very weak.",
+              "speaker": "J"
+            },
+            {
+              "text": "Dentro del lugar, lo cuidó con agua, pan y vino.",
+              "english": "Inside the place, he took care of him with water, bread and wine.",
+              "speaker": "J"
+            },
+            {
+              "text": "Al otro día sacó dinero y habló con el señor del lugar: «Cuidalo bien.",
+              "english": "The next day he took out money and spoke to the man of the place: \"Take good care of him.",
+              "speaker": "J"
+            },
+            {
+              "text": "Si gastás más, yo te lo pago cuando vuelva».",
+              "english": "If you spend more, I'll pay you back when I return.\"",
+              "speaker": "J"
+            },
+            {
+              "text": "Miren: el extranjero, que era el enemigo, hizo lo que el sacerdote no hizo.",
+              "english": "Look: the foreigner, who was the enemy, did what the priest did not do.",
+              "speaker": "P"
+            },
+            {
+              "text": "No juró ayudar; ayudó.",
+              "english": "He did not swear to help; he helped.",
+              "speaker": "P"
+            },
+            {
+              "text": "No mintió, y no pidió nada.",
+              "english": "He did not lie, and he asked for nothing.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La respuesta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Decime, ¿quién de los tres fue el vecino del hombre?",
+              "english": "Tell me, which of the three was the wounded man's neighbour?",
+              "speaker": "J"
+            },
+            {
+              "text": "El que tuvo compasión de él.",
+              "english": "The one who had compassion on him.",
+              "speaker": "H"
+            },
+            {
+              "text": "Andá, entonces, y hacé como él.",
+              "english": "Go, then, and do as he did.",
+              "speaker": "J"
+            },
+            {
+              "text": "Ese es el cuento.",
+              "english": "That is the story.",
+              "speaker": "P"
+            },
+            {
+              "text": "El mandamiento más grande es amar a Dios y al vecino.",
+              "english": "The greatest commandment is to love God and your neighbour.",
+              "speaker": "P"
+            },
+            {
+              "text": "Los mandamientos y los profetas dicen una sola cosa.",
+              "english": "The commandments and the prophets say one thing.",
+              "speaker": "P"
+            },
+            {
+              "text": "Pero Jesús agrega algo: el vecino no es solo el que vive cerca.",
+              "english": "But Jesus adds something: the neighbour is not only the one who lives nearby.",
+              "speaker": "P"
+            },
+            {
+              "text": "Es el que necesita de mí.",
+              "english": "It is the one who needs me.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hablamos del cuento",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pastor, yo soy presidente de la comunidad, pero no soy juez.",
+              "english": "Pastor, I am president of the community, but I'm not a judge.",
+              "speaker": "V"
+            },
+            {
+              "text": "¿Quién tiene la culpa en este cuento?",
+              "english": "Who is at fault in this story?",
+              "speaker": "V"
+            },
+            {
+              "text": "¿Solo los ladrones?",
+              "english": "Only the robbers?",
+              "speaker": "V"
+            },
+            {
+              "text": "¿Y cuál es el castigo para el que pasa sin ayudar?",
+              "english": "And what is the punishment for the one who walks past?",
+              "speaker": "V"
+            },
+            {
+              "text": "Un juez daría el castigo a los ladrones.",
+              "english": "A judge would punish the robbers.",
+              "speaker": "E"
+            },
+            {
+              "text": "Pero la culpa de otros es no hacer nada.",
+              "english": "But the others' fault is doing nothing.",
+              "speaker": "E"
+            },
+            {
+              "text": "Los dos hombres que pasaron también robaron: robaron el tiempo del hombre.",
+              "english": "The two men who passed also robbed: they robbed the wounded man's time.",
+              "speaker": "E"
+            },
+            {
+              "text": "Y los mandamientos dicen: «No robes, no mientas, no jures, no engañes».",
+              "english": "And the commandments say: \"Do not steal, do not lie, do not swear, do not deceive.\"",
+              "speaker": "A"
+            },
+            {
+              "text": "Pero ningún mandamiento dice: «Parate y ayudá».",
+              "english": "But no commandment says: \"Stop and help.\"",
+              "speaker": "A"
+            },
+            {
+              "text": "Eso lo dice el amor.",
+              "english": "Love says that.",
+              "speaker": "A"
+            },
+            {
+              "text": "En la política también pasa esto.",
+              "english": "In politics this happens too.",
+              "speaker": "L"
+            },
+            {
+              "text": "Muchos ciudadanos ven un problema y siguen su camino.",
+              "english": "Many citizens see a problem and go on their way.",
+              "speaker": "L"
+            },
+            {
+              "text": "Dicen: «Eso no depende de mí».",
+              "english": "They say: \"That doesn't depend on me.\"",
+              "speaker": "L"
+            },
+            {
+              "text": "Depende de cada uno.",
+              "english": "It depends on each one.",
+              "speaker": "V"
+            },
+            {
+              "text": "Los profetas ya hablaban de justicia.",
+              "english": "The prophets already spoke about justice.",
+              "speaker": "V"
+            },
+            {
+              "text": "Un ciudadano tiene derechos, pero también tiene algo que hacer.",
+              "english": "A citizen has rights, but also has something to do.",
+              "speaker": "V"
+            },
+            {
+              "text": "Si votamos y después no actuamos, la justicia no existe solo con votos.",
+              "english": "If we vote and then don't act, justice does not exist with votes alone.",
+              "speaker": "V"
+            },
+            {
+              "text": "Pastor, ¿y en una guerra?",
+              "english": "Pastor, and in a war?",
+              "speaker": "N"
+            },
+            {
+              "text": "¿También hay vecinos y enemigos?",
+              "english": "Are there neighbours and enemies there too?",
+              "speaker": "N"
+            },
+            {
+              "text": "Mi amigo y yo nos peleamos ayer por el balón.",
+              "english": "My friend and I fought yesterday over the ball.",
+              "speaker": "N"
+            },
+            {
+              "text": "Sí, Nico.",
+              "english": "Yes, Nico.",
+              "speaker": "P"
+            },
+            {
+              "text": "En una guerra cada patria llama «enemigo» a la otra.",
+              "english": "In a war each homeland calls the other \"enemy\".",
+              "speaker": "P"
+            },
+            {
+              "text": "Pero el que odia a su vecino no ama a Dios.",
+              "english": "But whoever hates his neighbour does not love God.",
+              "speaker": "P"
+            },
+            {
+              "text": "Jesús nos enseña a ver primero a la persona.",
+              "english": "Jesus teaches us to see the person first.",
+              "speaker": "P"
+            },
+            {
+              "text": "Esas cosas suceden hoy en muchos lugares.",
+              "english": "Those things happen today in many places.",
+              "speaker": "P"
+            },
+            {
+              "text": "No hay que odiar a nadie.",
+              "english": "We must not hate anyone.",
+              "speaker": "K"
+            },
+            {
+              "text": "Muchas veces rechazamos a los extranjeros sin conocerlos.",
+              "english": "We often reject foreigners without knowing them.",
+              "speaker": "K"
+            },
+            {
+              "text": "Yo sugiero que publiquemos este cuento en el periódico.",
+              "english": "I suggest that we publish this story in the newspaper.",
+              "speaker": "E"
+            },
+            {
+              "text": "Así lo leen personas de todas las religiones.",
+              "english": "That way people of all religions will read it.",
+              "speaker": "E"
+            },
+            {
+              "text": "Y propongo que votemos un día de ayuda para el pueblo.",
+              "english": "And I propose that we vote for a day of help for the village.",
+              "speaker": "K"
+            },
+            {
+              "text": "Cada ciudadano puede apoyar con su fuerza.",
+              "english": "Each citizen can support with their strength.",
+              "speaker": "K"
+            },
+            {
+              "text": "Podemos convencer a la comunidad.",
+              "english": "We can convince the community.",
+              "speaker": "A"
+            },
+            {
+              "text": "La justicia no ocurre sola.",
+              "english": "Justice doesn't happen by itself.",
+              "speaker": "A"
+            },
+            {
+              "text": "Hay que actuar.",
+              "english": "We have to act.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si más personas ayudan, la ayuda aumenta.",
+              "english": "If more people help, the help grows.",
+              "speaker": "A"
+            },
+            {
+              "text": "Yo declaro que esa idea es muy buena.",
+              "english": "I declare that idea is very good.",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo no juro, pero prometo ayudar.",
+              "english": "I don't swear, but I promise to help.",
+              "speaker": "V"
+            },
+            {
+              "text": "En la elección que viene, cada voto va a decir qué pueblo queremos.",
+              "english": "In the coming election, every vote will say what kind of village we want.",
+              "speaker": "V"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Hoy en nuestro camino",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pastor, ¿y hoy?",
+              "english": "Pastor, and today?",
+              "speaker": "N"
+            },
+            {
+              "text": "¿Existen ladrones en el camino?",
+              "english": "Are there robbers on the road?",
+              "speaker": "N"
+            },
+            {
+              "text": "Claro que sí, Nico.",
+              "english": "Of course, Nico.",
+              "speaker": "P"
+            },
+            {
+              "text": "Pero a veces el ladrón no lleva nada en la mano.",
+              "english": "But sometimes the robber carries nothing in his hand.",
+              "speaker": "P"
+            },
+            {
+              "text": "A veces es el dinero, o el trabajo.",
+              "english": "Sometimes it is money, or work.",
+              "speaker": "P"
+            },
+            {
+              "text": "Dentro de nosotros hay algo que nos dice: «No es tu problema».",
+              "english": "Inside us there is something that tells us: \"It's not your problem.\"",
+              "speaker": "P"
+            },
+            {
+              "text": "Yo viví algo parecido.",
+              "english": "I lived something similar.",
+              "speaker": "L"
+            },
+            {
+              "text": "Hace un mes manejaba por el camino y vi a un joven.",
+              "english": "A month ago I was driving along the road and saw a young man.",
+              "speaker": "L"
+            },
+            {
+              "text": "Su carro estaba fuera del camino.",
+              "english": "His car was off the road.",
+              "speaker": "L"
+            },
+            {
+              "text": "Él estaba debajo de un árbol, con la cara llena de sangre y una pierna quebrada.",
+              "english": "He was under a tree, with his face full of blood and a broken leg.",
+              "speaker": "L"
+            },
+            {
+              "text": "Alguien le pegó y se fue.",
+              "english": "Someone had beaten him and left.",
+              "speaker": "L"
+            },
+            {
+              "text": "¿Y qué hiciste?",
+              "english": "And what did you do?",
+              "speaker": "A"
+            },
+            {
+              "text": "Al comienzo no me detuve.",
+              "english": "At first I didn't stop.",
+              "speaker": "L"
+            },
+            {
+              "text": "Pensé en mi trabajo y en la hora.",
+              "english": "I thought about my work and the time.",
+              "speaker": "L"
+            },
+            {
+              "text": "Pero después di la vuelta.",
+              "english": "But then I turned around.",
+              "speaker": "L"
+            },
+            {
+              "text": "Era tan joven que me dolió el corazón.",
+              "english": "He was so young that it hurt my heart.",
+              "speaker": "L"
+            },
+            {
+              "text": "Lo puse dentro de mi carro y lo llevé despacio al hospital.",
+              "english": "I put him inside my car and took him slowly to the hospital.",
+              "speaker": "L"
+            },
+            {
+              "text": "Yo no soy juez de nadie.",
+              "english": "I'm nobody's judge.",
+              "speaker": "L"
+            },
+            {
+              "text": "Entonces usted fue el extranjero, Luis, y no el sacerdote.",
+              "english": "Then you were the foreigner, Luis, and not the priest.",
+              "speaker": "S"
+            },
+            {
+              "text": "Casi fui el sacerdote.",
+              "english": "I almost was the priest.",
+              "speaker": "L"
+            },
+            {
+              "text": "Por eso entiendo este cuento.",
+              "english": "That's why I understand this story.",
+              "speaker": "L"
+            },
+            {
+              "text": "Si ves a alguien en el camino con cortes, no esperés.",
+              "english": "If you see someone on the road with cuts, don't wait.",
+              "speaker": "L"
+            },
+            {
+              "text": "Pará, ayudalo y llamá a alguien.",
+              "english": "Stop, help him and call someone.",
+              "speaker": "L"
+            },
+            {
+              "text": "Luis, te felicito.",
+              "english": "Luis, congratulations.",
+              "speaker": "A"
+            },
+            {
+              "text": "Me alegra tener un hermano así.",
+              "english": "I am glad to have a brother like that.",
+              "speaker": "A"
+            },
+            {
+              "text": "Sam, si practicás con nosotros esta noche, vas a traducir bien la idea de «vecino» para Kevin.",
+              "english": "Sam, if you practise with us tonight, you will translate the idea of \"vecino\" well for Kevin.",
+              "speaker": "K"
+            },
+            {
+              "text": "Es lo más importante del cuento.",
+              "english": "It's the most important thing in the story.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una oración",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esta semana quiero que hagamos algo.",
+              "english": "This week I want us to do something.",
+              "speaker": "P"
+            },
+            {
+              "text": "Vamos a ayunar un día y a dar la comida de ese día a una familia.",
+              "english": "We are going to fast for a day and give that day's food to a family.",
+              "speaker": "P"
+            },
+            {
+              "text": "Vamos a sacrificar una comida, y vamos a disfrutar de ver a esa familia contenta.",
+              "english": "We are going to sacrifice one meal, and we will enjoy seeing that family happy.",
+              "speaker": "P"
+            },
+            {
+              "text": "El sacerdote de la misa del pueblo me dijo ayer lo que dice el pastor: el altar, la comunión con pan y vino y el sermón no sirven si el corazón no ayuda.",
+              "english": "The priest at the village Mass told me yesterday what the pastor says: the altar, communion with bread and wine and the sermon are of no use if the heart does not help.",
+              "speaker": "K"
+            },
+            {
+              "text": "El predicador de nuestra iglesia y el sacerdote dicen lo que dijeron los profetas.",
+              "english": "The preacher of our church and the priest say what the prophets said.",
+              "speaker": "K"
+            },
+            {
+              "text": "Padre celestial, Dios santo, poderoso y fiel, tu nombre es sagrado y bendito.",
+              "english": "Heavenly Father, holy, powerful and faithful God, your name is sacred and blessed.",
+              "speaker": "P"
+            },
+            {
+              "text": "Eres más poderoso que los malvados.",
+              "english": "You are more powerful than the wicked.",
+              "speaker": "P"
+            },
+            {
+              "text": "Jesús, siervo fiel y cordero de Dios, tu cruz es la señal de tu amor divino.",
+              "english": "Jesus, faithful servant and lamb of God, your cross is the sign of your divine love.",
+              "speaker": "P"
+            },
+            {
+              "text": "Tu promesa es eterna, y la profecía se cumple en ti.",
+              "english": "Your promise is eternal, and the prophecy is fulfilled in you.",
+              "speaker": "P"
+            },
+            {
+              "text": "Que nuestra vida sea una adoración espiritual, y que tu nombre sea glorioso en este pueblo.",
+              "english": "May our life be a spiritual worship, and may your name be glorious in this village.",
+              "speaker": "P"
+            },
+            {
+              "text": "En el nombre de Jesús.",
+              "english": "In the name of Jesus.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

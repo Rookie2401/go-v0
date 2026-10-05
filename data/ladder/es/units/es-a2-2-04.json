@@ -1,0 +1,1071 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-04",
+  "lang": "es",
+  "title": "Vení, mirá, decime",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-04",
+    "title": "Vení, mirá, decime (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "instructions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "S": "Sam",
+    "K": "Karla",
+    "N": "Nico",
+    "L": "Luis",
+    "M": "Marvin",
+    "A": "Kevin"
+  },
+  "sections": [
+    {
+      "title": "La llegada",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es lunes por la mañana.",
+              "english": "It is Monday morning."
+            },
+            {
+              "text": "Sam llega acá con una bolsa grande y una caja.",
+              "english": "Sam arrives here with a big bag and a box."
+            },
+            {
+              "text": "Luis y Nico vienen con él para ayudar.",
+              "english": "Luis and Nico come with him to help."
+            },
+            {
+              "text": "La casa de Karla está cerca de la clínica, en una calle pequeña.",
+              "english": "Karla's house is near the clinic, in a small street."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¡Vení, Sam!",
+              "english": "Come, Sam!",
+              "speaker": "K"
+            },
+            {
+              "text": "Entrá, entrá.",
+              "english": "Come in, come in.",
+              "speaker": "K"
+            },
+            {
+              "text": "Esta es tu casa ahora.",
+              "english": "This is your house now.",
+              "speaker": "K"
+            },
+            {
+              "text": "Gracias, Karla.",
+              "english": "Thanks, Karla.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Dónde pongo la caja?",
+              "english": "Where do I put the box?",
+              "speaker": "S"
+            },
+            {
+              "text": "Agarrá la caja con las dos manos, que pesa.",
+              "english": "Take the box with both hands, because it weighs a lot.",
+              "speaker": "K"
+            },
+            {
+              "text": "Metela en el dormitorio y colocala al lado de la cama.",
+              "english": "Put it in the bedroom and set it next to the bed.",
+              "speaker": "K"
+            },
+            {
+              "text": "¡Mirá, Sam!",
+              "english": "Look, Sam!",
+              "speaker": "N"
+            },
+            {
+              "text": "Yo llevo tu bolsa.",
+              "english": "I'm carrying your bag.",
+              "speaker": "N"
+            },
+            {
+              "text": "Gracias, Nico.",
+              "english": "Thanks, Nico.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pero no corrás, que la bolsa también pesa.",
+              "english": "But don't run, because the bag is also heavy.",
+              "speaker": "S"
+            },
+            {
+              "text": "Nico, callate un momento y dejá pasar a Sam.",
+              "english": "Nico, be quiet for a moment and let Sam pass.",
+              "speaker": "L"
+            },
+            {
+              "text": "Parate aquí, a mi lado.",
+              "english": "Stand here, beside me.",
+              "speaker": "L"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un recorrido por la casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Te muestro la casa.",
+              "english": "I'll show you the house.",
+              "speaker": "K"
+            },
+            {
+              "text": "Esta es la sala, y ahí está el sofá.",
+              "english": "This is the living room, and there is the sofa.",
+              "speaker": "K"
+            },
+            {
+              "text": "Es viejo, pero está limpio.",
+              "english": "It is old, but it is clean.",
+              "speaker": "K"
+            },
+            {
+              "text": "Allá está el comedor.",
+              "english": "Over there is the dining room.",
+              "speaker": "K"
+            },
+            {
+              "text": "Ahí comemos todos, cuando estamos en casa.",
+              "english": "We all eat there when we are at home.",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Y mi cuarto?",
+              "english": "And my room?",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Adónde voy primero?",
+              "english": "Where do I go first?",
+              "speaker": "S"
+            },
+            {
+              "text": "Tu dormitorio es el último.",
+              "english": "Your bedroom is the last one.",
+              "speaker": "K"
+            },
+            {
+              "text": "Mirá, es pequeño, pero tiene una cama, una mesa y un armario.",
+              "english": "Look, it is small, but it has a bed, a table and a wardrobe.",
+              "speaker": "K"
+            },
+            {
+              "text": "Está muy bien.",
+              "english": "It's very good.",
+              "speaker": "S"
+            },
+            {
+              "text": "Hay una cortina azul.",
+              "english": "There is a blue curtain.",
+              "speaker": "S"
+            },
+            {
+              "text": "Sí.",
+              "english": "Yes.",
+              "speaker": "K"
+            },
+            {
+              "text": "Si hay mucho sol, movela un poco.",
+              "english": "If there is a lot of sun, move it a bit.",
+              "speaker": "K"
+            },
+            {
+              "text": "En el armario hay una almohada y una manta.",
+              "english": "In the wardrobe there is a pillow and a blanket.",
+              "speaker": "K"
+            },
+            {
+              "text": "Muy bien.",
+              "english": "Very good.",
+              "speaker": "S"
+            },
+            {
+              "text": "Karla, ¿cuánto es el valor del cuarto?",
+              "english": "Karla, how much is the rent for the room?",
+              "speaker": "S"
+            },
+            {
+              "text": "Ana no me lo dijo.",
+              "english": "Ana didn't tell me.",
+              "speaker": "S"
+            },
+            {
+              "text": "Mil quinientos lempiras al mes.",
+              "english": "One thousand five hundred lempiras a month.",
+              "speaker": "K"
+            },
+            {
+              "text": "Podés pagar la mitad hoy y la otra mitad el día quince.",
+              "english": "You can pay half today and the other half on the fifteenth.",
+              "speaker": "K"
+            },
+            {
+              "text": "Está bien.",
+              "english": "That's fine.",
+              "speaker": "S"
+            },
+            {
+              "text": "Gracias por alquilarme el cuarto.",
+              "english": "Thank you for renting me the room.",
+              "speaker": "S"
+            },
+            {
+              "text": "De nada.",
+              "english": "You're welcome.",
+              "speaker": "K"
+            },
+            {
+              "text": "Para mí, esta casa no es solo una casa.",
+              "english": "For me, this house is not just a house.",
+              "speaker": "K"
+            },
+            {
+              "text": "Es un hogar, y me gusta compartirlo.",
+              "english": "It is a home, and I like to share it.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las reglas de la casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ahora lo que más hay que saber.",
+              "english": "Now what you most need to know.",
+              "speaker": "K"
+            },
+            {
+              "text": "Escuchá bien, porque lo digo una sola vez.",
+              "english": "Listen well, because I'll say it only once.",
+              "speaker": "K"
+            },
+            {
+              "text": "Cuando salgás de tu cuarto, apagá la luz.",
+              "english": "When you leave your room, turn off the light.",
+              "speaker": "K"
+            },
+            {
+              "text": "Cuando llegués de noche, encendé solo la luz del comedor.",
+              "english": "When you come in at night, turn on only the dining-room light.",
+              "speaker": "K"
+            },
+            {
+              "text": "El agua se mantiene siempre en la jarra grande.",
+              "english": "The water is always kept in the big jug.",
+              "speaker": "K"
+            },
+            {
+              "text": "Llená la jarra cada noche, y cubrila.",
+              "english": "Fill the jug every night, and cover it.",
+              "speaker": "K"
+            },
+            {
+              "text": "Protegé el agua, porque hay riesgo de enfermarse.",
+              "english": "Protect the water, because there is a risk of getting sick.",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Y los vasos?",
+              "english": "And the glasses?",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Y las tazas?",
+              "english": "And the cups?",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Y las botellas?",
+              "english": "And the bottles?",
+              "speaker": "S"
+            },
+            {
+              "text": "Guardá los vasos y las tazas al lado de la olla.",
+              "english": "Put the glasses and the cups away next to the pot.",
+              "speaker": "K"
+            },
+            {
+              "text": "Evitá tomar agua de una botella que no conocés, de ningún tipo.",
+              "english": "Avoid drinking water from a bottle you don't know, of any kind.",
+              "speaker": "K"
+            },
+            {
+              "text": "Sacá solo lo que necesités.",
+              "english": "Take out only what you need.",
+              "speaker": "K"
+            },
+            {
+              "text": "Entendido.",
+              "english": "Understood.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Y la basura?",
+              "english": "And the rubbish?",
+              "speaker": "S"
+            },
+            {
+              "text": "La basura va en una bolsa.",
+              "english": "The rubbish goes in a bag.",
+              "speaker": "K"
+            },
+            {
+              "text": "No la tirés en la calle.",
+              "english": "Don't throw it in the street.",
+              "speaker": "K"
+            },
+            {
+              "text": "Sacala por la noche, y quitá la bolsa vieja cuando haya mucha basura.",
+              "english": "Take it out at night, and remove the old bag when there is a lot of rubbish.",
+              "speaker": "K"
+            },
+            {
+              "text": "Y una cosa más.",
+              "english": "And one more thing.",
+              "speaker": "K"
+            },
+            {
+              "text": "Con el uso, el piso necesita cuidado.",
+              "english": "With use, the floor needs care.",
+              "speaker": "K"
+            },
+            {
+              "text": "Barré la sala y ordená tus cosas cada semana.",
+              "english": "Sweep the living room and tidy your things every week.",
+              "speaker": "K"
+            },
+            {
+              "text": "Es una forma de seguridad.",
+              "english": "It is a form of safety.",
+              "speaker": "K"
+            },
+            {
+              "text": "Voy a hacerlo.",
+              "english": "I'll do it.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Algo más?",
+              "english": "Anything else?",
+              "speaker": "S"
+            },
+            {
+              "text": "Sí.",
+              "english": "Yes.",
+              "speaker": "K"
+            },
+            {
+              "text": "Si necesitás algo, decime.",
+              "english": "If you need something, tell me.",
+              "speaker": "K"
+            },
+            {
+              "text": "Si no entendés algo, preguntame.",
+              "english": "If you don't understand something, ask me.",
+              "speaker": "K"
+            },
+            {
+              "text": "Y no te olvidés de las llaves.",
+              "english": "And don't forget the keys.",
+              "speaker": "K"
+            },
+            {
+              "text": "Mi problema con las llaves ya lo sabe todo el mundo, ¿verdad?",
+              "english": "Everybody already knows about my problem with keys, don't they?",
+              "speaker": "S"
+            },
+            {
+              "text": "¡Todos lo saben!",
+              "english": "Everybody knows!",
+              "speaker": "K"
+            },
+            {
+              "text": "Mejor guardala vos.",
+              "english": "You'd better keep it yourself.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un juego con Nico",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Más tarde, Nico quiere jugar.",
+              "english": "Later Nico wants to play."
+            },
+            {
+              "text": "Tiene una pelota en la mano y una sonrisa grande.",
+              "english": "He has a ball in his hand and a big smile."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Vamos a jugar, Sam.",
+              "english": "Let's play, Sam.",
+              "speaker": "N"
+            },
+            {
+              "text": "Yo digo qué hacer, y vos lo hacés.",
+              "english": "I say what to do, and you do it.",
+              "speaker": "N"
+            },
+            {
+              "text": "¿Empezamos?",
+              "english": "Shall we start?",
+              "speaker": "N"
+            },
+            {
+              "text": "Sí, empezá.",
+              "english": "Yes, start.",
+              "speaker": "S"
+            },
+            {
+              "text": "Agarrá la almohada.",
+              "english": "Pick up the pillow.",
+              "speaker": "N"
+            },
+            {
+              "text": "Metela en el armario.",
+              "english": "Put it in the wardrobe.",
+              "speaker": "N"
+            },
+            {
+              "text": "¡Sacala otra vez!",
+              "english": "Take it out again!",
+              "speaker": "N"
+            },
+            {
+              "text": "¡Muy bien, Nico!",
+              "english": "Very good, Nico!",
+              "speaker": "S"
+            },
+            {
+              "text": "Ya la tengo en la mano.",
+              "english": "I already have it in my hand.",
+              "speaker": "S"
+            },
+            {
+              "text": "Colocala en el sofá.",
+              "english": "Put it on the sofa.",
+              "speaker": "N"
+            },
+            {
+              "text": "Quitá la manta de la cama y tirala al piso.",
+              "english": "Take the blanket off the bed and throw it on the floor.",
+              "speaker": "N"
+            },
+            {
+              "text": "Ahora movela hasta el comedor.",
+              "english": "Now move it to the dining room.",
+              "speaker": "N"
+            },
+            {
+              "text": "Pará.",
+              "english": "Stop.",
+              "speaker": "N"
+            },
+            {
+              "text": "¡Callate!",
+              "english": "Be quiet!",
+              "speaker": "N"
+            },
+            {
+              "text": "No digás nada.",
+              "english": "Don't say anything.",
+              "speaker": "N"
+            },
+            {
+              "text": "Sam no dice nada.",
+              "english": "Sam says nothing.",
+              "speaker": "S"
+            },
+            {
+              "text": "¡Perdiste!",
+              "english": "You lost!",
+              "speaker": "N"
+            },
+            {
+              "text": "Hablaste.",
+              "english": "You talked.",
+              "speaker": "N"
+            },
+            {
+              "text": "Ahora andá a la sala.",
+              "english": "Now go to the living room.",
+              "speaker": "N"
+            },
+            {
+              "text": "Apagá la luz y encendela otra vez.",
+              "english": "Turn off the light and turn it on again.",
+              "speaker": "N"
+            },
+            {
+              "text": "¡Ya está!",
+              "english": "Done!",
+              "speaker": "S"
+            },
+            {
+              "text": "Ahora decime vos qué hago.",
+              "english": "Now you tell me what to do.",
+              "speaker": "S"
+            },
+            {
+              "text": "Llená el vaso de agua.",
+              "english": "Fill the glass with water.",
+              "speaker": "N"
+            },
+            {
+              "text": "Ordená los zapatos.",
+              "english": "Tidy the shoes.",
+              "speaker": "N"
+            },
+            {
+              "text": "Barré el piso.",
+              "english": "Sweep the floor.",
+              "speaker": "N"
+            },
+            {
+              "text": "Andá a la cortina y movela.",
+              "english": "Go to the curtain and move it.",
+              "speaker": "N"
+            },
+            {
+              "text": "Nico, esto ya no es un juego.",
+              "english": "Nico, this is not a game any more.",
+              "speaker": "S"
+            },
+            {
+              "text": "Es trabajo.",
+              "english": "It is work.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Sábado de limpieza",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Karla entra en la sala y ve a Sam con la manta en una mano y la escoba en la otra.",
+              "english": "Karla comes into the living room and sees Sam with the blanket in one hand and the broom in the other."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Qué hacen?",
+              "english": "What are you doing?",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Un juego o el trabajo de la semana?",
+              "english": "A game or the week's work?",
+              "speaker": "K"
+            },
+            {
+              "text": "Las dos cosas, Karla.",
+              "english": "Both, Karla.",
+              "speaker": "N"
+            },
+            {
+              "text": "Sam obedece muy bien.",
+              "english": "Sam obeys very well.",
+              "speaker": "N"
+            },
+            {
+              "text": "Entonces ayudame, Sam.",
+              "english": "Then help me, Sam.",
+              "speaker": "K"
+            },
+            {
+              "text": "Sacá la almohada del sofá y colocala en tu habitación.",
+              "english": "Take the pillow off the sofa and put it in your room.",
+              "speaker": "K"
+            },
+            {
+              "text": "Quitá la manta vieja y barré cerca de la mesa.",
+              "english": "Take off the old blanket and sweep near the table.",
+              "speaker": "K"
+            },
+            {
+              "text": "Después andá al comedor y ordená las tazas.",
+              "english": "Then go to the dining room and tidy the cups.",
+              "speaker": "K"
+            },
+            {
+              "text": "Llená la jarra, cubrila y movela al lado de la olla.",
+              "english": "Fill the jug, cover it and move it next to the pot.",
+              "speaker": "K"
+            },
+            {
+              "text": "Hay una mezcla de arroz y frijoles en la olla, y es una buena parte de la comida de hoy.",
+              "english": "There is a mixture of rice and beans in the pot, and it is a good part of today's meal.",
+              "speaker": "K"
+            },
+            {
+              "text": "No la tirés.",
+              "english": "Don't throw it away.",
+              "speaker": "K"
+            },
+            {
+              "text": "Me pongo a trabajar.",
+              "english": "I'll get to work.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Y la cantidad de agua?",
+              "english": "And the amount of water?",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Cuánta tengo que llenar?",
+              "english": "How much do I have to fill?",
+              "speaker": "S"
+            },
+            {
+              "text": "Llená la jarra hasta la boca, pero con cuidado.",
+              "english": "Fill the jug to the brim, but carefully.",
+              "speaker": "K"
+            },
+            {
+              "text": "Pesa mucho.",
+              "english": "It weighs a lot.",
+              "speaker": "K"
+            },
+            {
+              "text": "Nico, pará de jugar y agarrá la escoba.",
+              "english": "Nico, stop playing and take the broom.",
+              "speaker": "K"
+            },
+            {
+              "text": "Callate y ayudá.",
+              "english": "Be quiet and help.",
+              "speaker": "K"
+            },
+            {
+              "text": "Después guardala en el armario.",
+              "english": "Then put it away in the wardrobe.",
+              "speaker": "K"
+            },
+            {
+              "text": "Sam, abrí la cortina de tu habitación y andá a tu dormitorio a ordenar las cosas.",
+              "english": "Sam, open the curtain in your room and go to your bedroom to tidy your things.",
+              "speaker": "K"
+            },
+            {
+              "text": "Apagá el teléfono mientras trabajás, y encendé la luz del comedor.",
+              "english": "Turn off your phone while you work, and turn on the dining-room light.",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Y yo?",
+              "english": "And me?",
+              "speaker": "N"
+            },
+            {
+              "text": "¿Dónde meto la pelota?",
+              "english": "Where do I put the ball?",
+              "speaker": "N"
+            },
+            {
+              "text": "Metela en la caja, y dejá la caja en el sofá.",
+              "english": "Put it in the box, and leave the box on the sofa.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Kevin habla con «tú»",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde, un amigo de Karla llega de otro país.",
+              "english": "In the afternoon a friend of Karla's arrives from another country."
+            },
+            {
+              "text": "Se llama Kevin.",
+              "english": "His name is Kevin."
+            },
+            {
+              "text": "Él habla de otra forma: dice «tú» y no «vos».",
+              "english": "He speaks a different way: he says \"tú\" and not \"vos\"."
+            },
+            {
+              "text": "Sam escucha con cuidado.",
+              "english": "Sam listens carefully."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hola, Sam.",
+              "english": "Hello, Sam.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ven, mira esta foto.",
+              "english": "Come, look at this photo.",
+              "speaker": "A"
+            },
+            {
+              "text": "Dime, ¿quién es esta persona?",
+              "english": "Tell me, who is this person?",
+              "speaker": "A"
+            },
+            {
+              "text": "Es mi hermana.",
+              "english": "It's my sister.",
+              "speaker": "S"
+            },
+            {
+              "text": "Kevin, ¿por qué dices «ven» y no «vení»?",
+              "english": "Kevin, why do you say \"ven\" and not \"vení\"?",
+              "speaker": "S"
+            },
+            {
+              "text": "Porque en mi país hablamos con tú.",
+              "english": "Because in my country we speak with tú.",
+              "speaker": "A"
+            },
+            {
+              "text": "Tú dices «ven», y tú dices «ven aquí».",
+              "english": "You say \"ven\", and you say \"ven aquí\".",
+              "speaker": "A"
+            },
+            {
+              "text": "Ustedes dicen «vení».",
+              "english": "You all say \"vení\".",
+              "speaker": "A"
+            },
+            {
+              "text": "Acá decimos «vos».",
+              "english": "Here we say \"vos\".",
+              "speaker": "K"
+            },
+            {
+              "text": "Pero no te equivoqués: los dos están bien.",
+              "english": "But don't make a mistake: both are fine.",
+              "speaker": "K"
+            },
+            {
+              "text": "Es verdad.",
+              "english": "True.",
+              "speaker": "A"
+            },
+            {
+              "text": "La diferencia no es un problema.",
+              "english": "The difference is not a problem.",
+              "speaker": "A"
+            },
+            {
+              "text": "Solo es una forma diferente de hablar.",
+              "english": "It is just a different way of speaking.",
+              "speaker": "A"
+            },
+            {
+              "text": "Entonces yo digo «vení» a Nico, y tú dices «ven» a tus amigos.",
+              "english": "So I say \"vení\" to Nico, and you say \"ven\" to your friends.",
+              "speaker": "S"
+            },
+            {
+              "text": "Así es.",
+              "english": "That's right.",
+              "speaker": "A"
+            },
+            {
+              "text": "Y a una señora que no conocés le decís «venga».",
+              "english": "And to a lady you do not know you say \"venga\".",
+              "speaker": "A"
+            },
+            {
+              "text": "Pero eso es para otro día.",
+              "english": "But that is for another day.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un consejo del vecino",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Por la noche, el vecino, el señor Marvin, pasa por la casa. Trae unas palabras para Sam.",
+              "english": "At night the neighbour, Mr. Marvin, comes by the house. He brings some words for Sam."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam, escuchame.",
+              "english": "Sam, listen to me.",
+              "speaker": "M"
+            },
+            {
+              "text": "Cuando vivís en un pueblo nuevo, no busqués éxito.",
+              "english": "When you live in a new village, don't look for success.",
+              "speaker": "M"
+            },
+            {
+              "text": "En nuestra sociedad todos lo buscan.",
+              "english": "In our society everyone looks for it.",
+              "speaker": "M"
+            },
+            {
+              "text": "Serví a la gente, y todo lo otro viene solo.",
+              "english": "Serve the people, and everything else comes by itself.",
+              "speaker": "M"
+            },
+            {
+              "text": "Esta casa es un buen hogar, y es un buen comienzo.",
+              "english": "This house is a good home, and it is a good start.",
+              "speaker": "M"
+            },
+            {
+              "text": "¿Cómo logro eso?",
+              "english": "How do I achieve that?",
+              "speaker": "S"
+            },
+            {
+              "text": "Salí cada día, mirá a las personas, preguntá cómo están.",
+              "english": "Go out every day, look at people, ask how they are.",
+              "speaker": "M"
+            },
+            {
+              "text": "Rogá por ellas.",
+              "english": "Pray for them.",
+              "speaker": "M"
+            },
+            {
+              "text": "No pierdas tiempo en cosas pequeñas.",
+              "english": "Don't waste time on small things.",
+              "speaker": "M"
+            },
+            {
+              "text": "Hay una causa en cada problema, pero no siempre hay una solución.",
+              "english": "There is a cause in every problem, but there is not always a solution.",
+              "speaker": "M"
+            },
+            {
+              "text": "A veces solo hay amor, y el amor es lo que más ayuda.",
+              "english": "Sometimes there is only love, and love is what helps most.",
+              "speaker": "M"
+            },
+            {
+              "text": "Gracias, señor Marvin. ¿Qué más?",
+              "english": "Thank you, Mr. Marvin. What else?",
+              "speaker": "S"
+            },
+            {
+              "text": "Pedí perdón cuando te equivoqués.",
+              "english": "Ask for forgiveness when you are wrong.",
+              "speaker": "M"
+            },
+            {
+              "text": "Perdoná cuando alguien te trate mal.",
+              "english": "Forgive when someone treats you badly.",
+              "speaker": "M"
+            },
+            {
+              "text": "Esa es la libertad que da el evangelio.",
+              "english": "That is the freedom the gospel gives.",
+              "speaker": "M"
+            },
+            {
+              "text": "No pensés siempre en el futuro.",
+              "english": "Don't always think about the future.",
+              "speaker": "M"
+            },
+            {
+              "text": "Vivir el presente con gracia es la mejor forma de tener felicidad.",
+              "english": "Living the present with grace is the best way to have happiness.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Antes de dormir",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche, Sam está en su habitación.",
+              "english": "That night Sam is in his room."
+            },
+            {
+              "text": "Karla le habla desde la sala.",
+              "english": "Karla speaks to him from the living room."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam, antes de dormir, hablá con Dios.",
+              "english": "Sam, before sleeping, talk with God.",
+              "speaker": "K"
+            },
+            {
+              "text": "En este hogar todos lo hacemos.",
+              "english": "In this home we all do it.",
+              "speaker": "K"
+            },
+            {
+              "text": "Confesá lo que hiciste mal.",
+              "english": "Confess what you did wrong.",
+              "speaker": "K"
+            },
+            {
+              "text": "Rogá por tu familia.",
+              "english": "Pray for your family.",
+              "speaker": "K"
+            },
+            {
+              "text": "Hacé tu petición.",
+              "english": "Make your request.",
+              "speaker": "K"
+            },
+            {
+              "text": "Dale gracias por el día.",
+              "english": "Thank him for the day.",
+              "speaker": "K"
+            },
+            {
+              "text": "Pensá en su misericordia.",
+              "english": "Think of his mercy.",
+              "speaker": "K"
+            },
+            {
+              "text": "Él convierte la tristeza en felicidad, y cuida tu alma mientras dormís.",
+              "english": "He turns sadness into happiness, and takes care of your soul while you sleep.",
+              "speaker": "K"
+            },
+            {
+              "text": "Voy a hacerlo.",
+              "english": "I will.",
+              "speaker": "S"
+            },
+            {
+              "text": "Hoy tengo mucho por qué dar gracias.",
+              "english": "Today I have a lot to be thankful for.",
+              "speaker": "S"
+            },
+            {
+              "text": "Y mañana, no te quedés dormido.",
+              "english": "And tomorrow, don't oversleep.",
+              "speaker": "K"
+            },
+            {
+              "text": "Dormí bien, hermano.",
+              "english": "Sleep well, brother.",
+              "speaker": "K"
+            },
+            {
+              "text": "Buenas noches, Karla.",
+              "english": "Good night, Karla.",
+              "speaker": "S"
+            },
+            {
+              "text": "Mi madre dice siempre: «Que Dios te cuide».",
+              "english": "My mother always says: \"May God take care of you.\"",
+              "speaker": "S"
+            },
+            {
+              "text": "Y a vos también, Sam.",
+              "english": "And you too, Sam.",
+              "speaker": "K"
+            },
+            {
+              "text": "Buenas noches.",
+              "english": "Good night.",
+              "speaker": "K"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-08",
+  "lang": "es",
+  "title": "Who works where",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-08",
+    "title": "Who works where (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: \"¿En qué trabajás?\" (vos); \"Soy médico\" / \"Sos enfermera\" (no article before a profession); \"ellos trabajan\"; \"todos los días\"; \"Mi trabajo es...\" (the noun); Sam says \"estudio español\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "jobs",
+    "workplaces"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "karla": "Karla",
+    "nico": "Nico",
+    "sam": "Sam",
+    "ana": "Ana",
+    "daniel": "Daniel",
+    "luis": "Luis",
+    "marta": "Doña Marta"
+  },
+  "sections": [
+    {
+      "title": "Who works where",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana es enfermera.",
+              "english": "Ana is a nurse."
+            },
+            {
+              "text": "Trabaja en el hospital.",
+              "english": "She works at the hospital."
+            },
+            {
+              "text": "El hospital es grande.",
+              "english": "The hospital is big."
+            },
+            {
+              "text": "Tiene cuartos grandes y camas.",
+              "english": "It has big rooms and beds."
+            },
+            {
+              "text": "Ana sale de la casa a las seis.",
+              "english": "Ana leaves the house at six."
+            },
+            {
+              "text": "Llega al hospital a las siete.",
+              "english": "She gets to the hospital at seven."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Ana, ¿en qué trabajás?",
+              "english": "Ana, what is your job?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Soy enfermera.",
+              "english": "I am a nurse."
+            },
+            {
+              "speaker": "ana",
+              "text": "Mi trabajo es ayudar a los médicos.",
+              "english": "My job is to help the doctors."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Qué hacés todos los días?",
+              "english": "What do you do every day?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Ayudo a las familias.",
+              "english": "I help the families."
+            },
+            {
+              "speaker": "ana",
+              "text": "Honduras necesita enfermeras.",
+              "english": "Honduras needs nurses."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿A qué hora llegás?",
+              "english": "What time do you arrive?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Llego a las siete.",
+              "english": "I arrive at seven."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Y los lunes?",
+              "english": "And on Mondays?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Los lunes también llego a las siete.",
+              "english": "On Mondays I also arrive at seven."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Daniel es médico.",
+              "english": "Daniel is a doctor."
+            },
+            {
+              "text": "Trabaja con Ana en la clínica.",
+              "english": "He works with Ana at the clinic."
+            },
+            {
+              "speaker": "sam",
+              "text": "Daniel, ¿vos sos médico?",
+              "english": "Daniel, are you a doctor?"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Sí, estoy con Ana en la clínica.",
+              "english": "Yes, I am with Ana at the clinic."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Nosotros ayudamos a las familias.",
+              "english": "We help families."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Ellos necesitan clínicas en Honduras.",
+              "english": "They need clinics in Honduras."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Cuántos años tenés?",
+              "english": "How old are you?"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Tengo treinta y dos años.",
+              "english": "I am thirty-two."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Ana y yo trabajamos aquí.",
+              "english": "Ana and I work here."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "luis",
+              "text": "Yo soy maestro en la escuela.",
+              "english": "I am a teacher at the school."
+            },
+            {
+              "speaker": "luis",
+              "text": "Mi trabajo es todos los días.",
+              "english": "My job is every day."
+            },
+            {
+              "speaker": "luis",
+              "text": "Ana y yo trabajamos mucho.",
+              "english": "Ana and I work a lot."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ellos tienen hambre en la tarde.",
+              "english": "They are hungry in the afternoon."
+            },
+            {
+              "speaker": "marta",
+              "text": "Ellos comen mi sopa con arroz y frijoles.",
+              "english": "They eat my soup with rice and beans."
+            },
+            {
+              "speaker": "marta",
+              "text": "Un plato de sopa cuesta diez lempiras.",
+              "english": "A plate of soup costs ten lempiras."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Doña Marta, ¿y usted?",
+              "english": "Doña Marta, and you?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Yo vendo comida en el mercado.",
+              "english": "I sell food at the market."
+            },
+            {
+              "speaker": "marta",
+              "text": "Vendo tamales, sopa y baleadas.",
+              "english": "I sell tamales, soup and baleadas."
+            },
+            {
+              "speaker": "marta",
+              "text": "A las seis hago el desayuno.",
+              "english": "At six I make breakfast."
+            },
+            {
+              "speaker": "marta",
+              "text": "Los lunes compro plátanos.",
+              "english": "On Mondays I buy plantains."
+            },
+            {
+              "speaker": "marta",
+              "text": "La señora Elena dice que son baratos.",
+              "english": "Señora Elena says they are cheap."
+            },
+            {
+              "speaker": "marta",
+              "text": "Necesito plátanos para la sopa.",
+              "english": "I need plantains for the soup."
+            },
+            {
+              "speaker": "marta",
+              "text": "Mi trabajo es vender comida.",
+              "english": "My job is selling food."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Y vos, Sam, ¿qué hacés?",
+              "english": "And you, Sam, what do you do?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Yo estudio español.",
+              "english": "I study Spanish."
+            },
+            {
+              "speaker": "sam",
+              "text": "Estudio en la tarde.",
+              "english": "I study in the afternoon."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi maestro dice que hablo bien.",
+              "english": "My teacher says I speak well."
+            },
+            {
+              "speaker": "luis",
+              "text": "Sam estudia mucho.",
+              "english": "Sam studies a lot."
+            },
+            {
+              "speaker": "ana",
+              "text": "Sam y Nico están en la casa.",
+              "english": "Sam and Nico are at home."
+            },
+            {
+              "speaker": "daniel",
+              "text": "Todos trabajamos.",
+              "english": "We all work."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, nosotros también.",
+              "english": "Yes, we do too."
+            },
+            {
+              "speaker": "luis",
+              "text": "Daniel, ¿qué hacés hoy?",
+              "english": "Daniel, what are you doing today?"
+            },
+            {
+              "speaker": "daniel",
+              "text": "Hoy voy a la clínica con Ana.",
+              "english": "Today I am going to the clinic with Ana."
+            },
+            {
+              "speaker": "luis",
+              "text": "Yo voy a la escuela.",
+              "english": "I am going to the school."
+            },
+            {
+              "speaker": "sam",
+              "text": "Y yo voy al mercado con doña Marta.",
+              "english": "And I am going to the market with doña Marta."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla trabaja en la escuela con Luis.",
+              "english": "Karla works at the school with Luis."
+            },
+            {
+              "text": "El señor Mario trabaja en la iglesia.",
+              "english": "Mr. Mario works at the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "Karla, ¿qué hacés en la escuela?",
+              "english": "Karla, what do you do at the school?"
+            },
+            {
+              "speaker": "karla",
+              "text": "Hablo español con Nico.",
+              "english": "I speak Spanish with Nico."
+            },
+            {
+              "speaker": "karla",
+              "text": "Nico habla mucho.",
+              "english": "Nico talks a lot."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Y tu papá?",
+              "english": "And your dad?"
+            },
+            {
+              "speaker": "karla",
+              "text": "El señor Mario sale de la casa a las ocho.",
+              "english": "Mr. Mario leaves the house at eight."
+            },
+            {
+              "speaker": "karla",
+              "text": "Llega a la iglesia a las nueve.",
+              "english": "He gets to the church at nine."
+            },
+            {
+              "speaker": "karla",
+              "text": "Mi mamá vende pan en el mercado.",
+              "english": "My mom sells bread at the market."
+            },
+            {
+              "speaker": "sam",
+              "text": "Los lunes voy al mercado con Nico.",
+              "english": "On Mondays I go to the market with Nico."
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Qué buena familia!",
+              "english": "What a good family!"
+            },
+            {
+              "speaker": "karla",
+              "text": "Gracias, Sam.",
+              "english": "Thank you, Sam."
+            },
+            {
+              "speaker": "nico",
+              "text": "Sam, ¿qué hora es?",
+              "english": "Sam, what time is it?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Son las cinco y diez.",
+              "english": "It is ten past five."
+            },
+            {
+              "speaker": "nico",
+              "text": "Tengo hambre.",
+              "english": "I am hungry."
+            },
+            {
+              "speaker": "nico",
+              "text": "¿Hay comida?",
+              "english": "Is there food?"
+            },
+            {
+              "speaker": "marta",
+              "text": "Sí, hay arroz y pollo.",
+              "english": "Yes, there is rice and chicken."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta."
+            },
+            {
+              "speaker": "marta",
+              "text": "De nada.",
+              "english": "You are welcome."
+            },
+            {
+              "speaker": "marta",
+              "text": "Hoy hay café para todos.",
+              "english": "Today there is coffee for everyone."
+            },
+            {
+              "speaker": "nico",
+              "text": "Y yo voy a la escuela con Luis.",
+              "english": "And I go to school with Luis."
+            },
+            {
+              "speaker": "luis",
+              "text": "Sí, y Nico habla mucho en la casa.",
+              "english": "Yes, and Nico talks a lot at home."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

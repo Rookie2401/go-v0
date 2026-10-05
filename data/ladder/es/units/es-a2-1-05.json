@@ -1,0 +1,705 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-05",
+  "lang": "es",
+  "title": "Un regalo para Nico",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-05",
+    "title": "Buying clothes (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation",
+    "shopping",
+    "clothes"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "S": "Sam",
+    "A": "Ana",
+    "E": "Doña Elena"
+  },
+  "sections": [
+    {
+      "title": "Una idea",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es sábado por la mañana.",
+              "english": "It is Saturday morning."
+            },
+            {
+              "text": "Sam y Ana van al centro del pueblo.",
+              "english": "Sam and Ana go to the center of the village."
+            },
+            {
+              "speaker": "S",
+              "text": "Ana, ¿qué podemos regalar a Nico?",
+              "english": "Ana, what can we give Nico as a gift?"
+            },
+            {
+              "speaker": "S",
+              "text": "Su cumpleaños es en septiembre.",
+              "english": "His birthday is in September."
+            },
+            {
+              "speaker": "A",
+              "text": "Mi cumpleaños es en abril, y el de Luis es en junio.",
+              "english": "My birthday is in April, and Luis's is in June."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Y vos, Sam?",
+              "english": "And you, Sam?"
+            },
+            {
+              "speaker": "S",
+              "text": "Yo nací en julio.",
+              "english": "I was born in July."
+            },
+            {
+              "speaker": "A",
+              "text": "Bueno, Nico necesita unos zapatos.",
+              "english": "Well, Nico needs some shoes."
+            },
+            {
+              "speaker": "A",
+              "text": "Los usa cada día, y ya están muy viejos.",
+              "english": "He wears them every day, and they are already very old."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y una camisa?",
+              "english": "And a shirt?"
+            },
+            {
+              "speaker": "A",
+              "text": "Nico no la usa.",
+              "english": "Nico does not wear one."
+            },
+            {
+              "speaker": "A",
+              "text": "Quiere una camiseta azul con un perro.",
+              "english": "He wants a blue T-shirt with a dog."
+            },
+            {
+              "speaker": "A",
+              "text": "Siempre habla de perros.",
+              "english": "He is always talking about dogs."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Quién la vende aquí?",
+              "english": "Who sells them here?"
+            },
+            {
+              "speaker": "A",
+              "text": "Doña Elena.",
+              "english": "Doña Elena."
+            },
+            {
+              "speaker": "A",
+              "text": "Tiene un negocio pequeño cerca de la iglesia.",
+              "english": "She has a small business near the church."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En la tienda",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La tienda de doña Elena tiene paredes blancas, un techo alto, mucha luz y un piso limpio.",
+              "english": "Doña Elena's store has white walls, a high roof, a lot of light and a clean floor."
+            },
+            {
+              "speaker": "E",
+              "text": "Buenos días.",
+              "english": "Good morning."
+            },
+            {
+              "speaker": "E",
+              "text": "¿Qué buscan?",
+              "english": "What are you looking for?"
+            },
+            {
+              "speaker": "S",
+              "text": "Buenos días, señora.",
+              "english": "Good morning, ma'am."
+            },
+            {
+              "speaker": "S",
+              "text": "Buscamos unos zapatos y una camiseta para un niño.",
+              "english": "We are looking for some shoes and a T-shirt for a boy."
+            },
+            {
+              "speaker": "E",
+              "text": "¿Para quién son?",
+              "english": "Who are they for?"
+            },
+            {
+              "speaker": "A",
+              "text": "Son para Nico.",
+              "english": "They are for Nico."
+            },
+            {
+              "speaker": "A",
+              "text": "Tiene diez años, pero en septiembre va a tener once.",
+              "english": "He is ten, but in September he will be eleven."
+            },
+            {
+              "text": "Doña Elena mostró unos zapatos negros y los puso en la mesa.",
+              "english": "Doña Elena showed some black shoes and put them on the table."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cuál es mejor?",
+              "english": "Which one is better?"
+            },
+            {
+              "speaker": "A",
+              "text": "Los negros.",
+              "english": "The black ones."
+            },
+            {
+              "speaker": "A",
+              "text": "Nico juega mucho, y los blancos no quedan limpios.",
+              "english": "Nico plays a lot, and white ones do not stay clean."
+            },
+            {
+              "speaker": "S",
+              "text": "Nico no está aquí.",
+              "english": "Nico is not here."
+            },
+            {
+              "speaker": "S",
+              "text": "No podemos probarlos.",
+              "english": "We cannot try them on."
+            },
+            {
+              "speaker": "E",
+              "text": "No pasa nada.",
+              "english": "Don't worry."
+            },
+            {
+              "speaker": "E",
+              "text": "Si no quedan bien, usted puede cambiarlos.",
+              "english": "If they do not fit, you can exchange them."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cuánto cuestan?",
+              "english": "How much do they cost?"
+            },
+            {
+              "speaker": "E",
+              "text": "Cuestan trescientos lempiras.",
+              "english": "They cost three hundred lempiras."
+            },
+            {
+              "speaker": "E",
+              "text": "Tengo unas con animales.",
+              "english": "I have some with animals."
+            },
+            {
+              "speaker": "E",
+              "text": "Unas tienen caballos, otras tienen gallinas.",
+              "english": "Some have horses, others have hens."
+            },
+            {
+              "speaker": "E",
+              "text": "Cuestan ciento veinte lempiras cada una.",
+              "english": "They cost one hundred twenty lempiras each."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La camiseta del perro",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "¿Tiene una con un perro?",
+              "english": "Do you have one with a dog?"
+            },
+            {
+              "speaker": "E",
+              "text": "Creo que sí.",
+              "english": "I think so."
+            },
+            {
+              "speaker": "E",
+              "text": "No la veo aquí.",
+              "english": "I do not see it here."
+            },
+            {
+              "speaker": "E",
+              "text": "Está en esa caja.",
+              "english": "It is in that box."
+            },
+            {
+              "text": "Doña Elena la abre y busca.",
+              "english": "Doña Elena opens it and looks."
+            },
+            {
+              "speaker": "E",
+              "text": "Aquí está.",
+              "english": "Here it is."
+            },
+            {
+              "speaker": "E",
+              "text": "Es azul, y el perro es blanco y negro.",
+              "english": "It is blue, and the dog is black and white."
+            },
+            {
+              "speaker": "S",
+              "text": "¡Es muy bonita!",
+              "english": "It is very pretty!"
+            },
+            {
+              "speaker": "S",
+              "text": "La quiero.",
+              "english": "I want it."
+            },
+            {
+              "speaker": "E",
+              "text": "¿Es para regalar?",
+              "english": "Is it for a gift?"
+            },
+            {
+              "speaker": "S",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "S",
+              "text": "Es un regalo para un niño.",
+              "english": "It is a gift for a boy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El vestido",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Sam, mirá aquel vestido con unas flores.",
+              "english": "Sam, look at that dress with some flowers."
+            },
+            {
+              "speaker": "E",
+              "text": "Tengo dos azules.",
+              "english": "I have two blue ones."
+            },
+            {
+              "speaker": "E",
+              "text": "¿Cuál quiere probar?",
+              "english": "Which one do you want to try on?"
+            },
+            {
+              "speaker": "A",
+              "text": "Aquel, el de las flores.",
+              "english": "That one, the one with the flowers."
+            },
+            {
+              "text": "Doña Elena mostró el cuarto pequeño, y Ana fue allí.",
+              "english": "Doña Elena showed the small room, and Ana went there."
+            },
+            {
+              "text": "Sam espera.",
+              "english": "Sam waits."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Cómo me veo?",
+              "english": "How do I look?"
+            },
+            {
+              "speaker": "S",
+              "text": "Te ves muy bien.",
+              "english": "You look very good."
+            },
+            {
+              "speaker": "S",
+              "text": "Te queda muy bien.",
+              "english": "It fits you very well."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Cuánto cuesta ese vestido?",
+              "english": "How much does that dress cost?"
+            },
+            {
+              "speaker": "E",
+              "text": "Cuesta ciento cincuenta lempiras.",
+              "english": "It costs one hundred fifty lempiras."
+            },
+            {
+              "speaker": "A",
+              "text": "Es caro.",
+              "english": "It is expensive."
+            },
+            {
+              "speaker": "A",
+              "text": "Pero cada domingo voy al culto, y quiero un vestido nuevo.",
+              "english": "But every Sunday I go to the service, and I want a new dress."
+            },
+            {
+              "speaker": "A",
+              "text": "Estoy ahorrando para un viaje.",
+              "english": "I am saving for a trip."
+            },
+            {
+              "speaker": "A",
+              "text": "Voy a pensar.",
+              "english": "I am going to think about it."
+            },
+            {
+              "speaker": "E",
+              "text": "Puede venir en noviembre.",
+              "english": "You can come in November."
+            },
+            {
+              "speaker": "E",
+              "text": "Entonces va a estar más barato.",
+              "english": "Then it will be cheaper."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El negocio de doña Elena",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Doña Elena, ¿hace mucho que tiene este negocio?",
+              "english": "Doña Elena, have you had this business for a long time?"
+            },
+            {
+              "speaker": "E",
+              "text": "Hace veinte años.",
+              "english": "Twenty years."
+            },
+            {
+              "speaker": "E",
+              "text": "Aquel señor viejo es mi papá.",
+              "english": "That old man is my dad."
+            },
+            {
+              "speaker": "E",
+              "text": "Era carpintero y construyó esta tienda.",
+              "english": "He was a carpenter and he built this store."
+            },
+            {
+              "speaker": "E",
+              "text": "Mi abuelo tenía una finca, pero mi papá quería trabajar en el pueblo.",
+              "english": "My grandfather had a farm, but my dad wanted to work in the village."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cómo cambió el pueblo?",
+              "english": "How has the village changed?"
+            },
+            {
+              "speaker": "E",
+              "text": "Mucho.",
+              "english": "A lot."
+            },
+            {
+              "speaker": "E",
+              "text": "Hubo muchos cambios.",
+              "english": "There were many changes."
+            },
+            {
+              "speaker": "E",
+              "text": "Antes aquí había tierra y no había calle.",
+              "english": "Before, there was dirt here and no street."
+            },
+            {
+              "speaker": "E",
+              "text": "El gobierno construyó la calle, y la comunidad ayudó.",
+              "english": "The government built the street, and the community helped."
+            },
+            {
+              "speaker": "E",
+              "text": "Hoy quiero mejorar el negocio.",
+              "english": "Today I want to improve the business."
+            },
+            {
+              "speaker": "E",
+              "text": "En este país, un negocio crece poco a poco.",
+              "english": "In this country, a business grows little by little."
+            },
+            {
+              "speaker": "S",
+              "text": "Su tienda es muy bonita.",
+              "english": "Your store is very nice."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un pantalón para el culto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Yo también necesito un pantalón negro y una camisa blanca para el culto.",
+              "english": "I also need a pair of black pants and a white shirt for the service."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Los tiene?",
+              "english": "Do you have them?"
+            },
+            {
+              "speaker": "E",
+              "text": "Sí, los tengo.",
+              "english": "Yes, I have them."
+            },
+            {
+              "speaker": "E",
+              "text": "La camisa está aquí.",
+              "english": "The shirt is here."
+            },
+            {
+              "speaker": "E",
+              "text": "Ese pantalón es bueno, pero no sé si queda bien.",
+              "english": "Those pants are good, but I do not know if they fit well."
+            },
+            {
+              "speaker": "S",
+              "text": "Quiero ver si me queda bien.",
+              "english": "I want to see if it fits me."
+            },
+            {
+              "text": "Sam probó el pantalón.",
+              "english": "Sam tried on the pants."
+            },
+            {
+              "text": "Era muy grande.",
+              "english": "They were too big."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Puede mostrarme otro más pequeño?",
+              "english": "Can you show me a smaller pair?"
+            },
+            {
+              "speaker": "E",
+              "text": "Sí, un momento.",
+              "english": "Yes, one moment."
+            },
+            {
+              "speaker": "E",
+              "text": "Este queda bien.",
+              "english": "This one fits well."
+            },
+            {
+              "speaker": "E",
+              "text": "Cuesta doscientos lempiras.",
+              "english": "It costs two hundred lempiras."
+            },
+            {
+              "speaker": "S",
+              "text": "Quiero pagar todo.",
+              "english": "I want to pay for everything."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cuál es la cuenta?",
+              "english": "What is the bill?"
+            },
+            {
+              "speaker": "E",
+              "text": "La cuenta es de seiscientos veinte lempiras.",
+              "english": "The bill is six hundred twenty lempiras."
+            },
+            {
+              "speaker": "A",
+              "text": "Sam, ¿querés ahorrar?",
+              "english": "Sam, do you want to save?"
+            },
+            {
+              "speaker": "A",
+              "text": "Comprá primero el regalo.",
+              "english": "Buy the gift first."
+            },
+            {
+              "speaker": "A",
+              "text": "Lo otro lo podés comprar en octubre.",
+              "english": "You can buy the rest in October."
+            },
+            {
+              "speaker": "S",
+              "text": "Está bien.",
+              "english": "All right."
+            },
+            {
+              "speaker": "S",
+              "text": "Hoy quiero el regalo para Nico.",
+              "english": "Today I want the gift for Nico."
+            },
+            {
+              "speaker": "E",
+              "text": "Entonces paguen en la caja, por favor.",
+              "english": "Then please pay at the register."
+            },
+            {
+              "speaker": "E",
+              "text": "¿Quién va a pagar?",
+              "english": "Who is going to pay?"
+            },
+            {
+              "speaker": "S",
+              "text": "Yo.",
+              "english": "I am."
+            },
+            {
+              "speaker": "S",
+              "text": "Y me gusta regalar.",
+              "english": "And I like giving gifts."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El cumpleaños de Nico",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Doña Elena puso el regalo en una caja grande.",
+              "english": "Doña Elena put the gift in a big box."
+            },
+            {
+              "text": "Sam pagó, y los dos salieron contentos.",
+              "english": "Sam paid, and the two left happy."
+            },
+            {
+              "text": "El cumpleaños de Nico fue en septiembre, en el patio de la casa donde vive.",
+              "english": "Nico's birthday was in September, in the patio of the house where he lives."
+            },
+            {
+              "text": "Ana invitó a los vecinos y a la tía Carmen.",
+              "english": "Ana invited the neighbors and aunt Carmen."
+            },
+            {
+              "text": "Había flores en el jardín y luces en el árbol.",
+              "english": "There were flowers in the garden and lights in the tree."
+            },
+            {
+              "text": "La tía Carmen trajo un cuento para los niños: el cuento de una vaca y una gallina en una finca.",
+              "english": "Aunt Carmen brought a story for the children: the story of a cow and a hen on a farm."
+            },
+            {
+              "text": "Los niños escucharon sin hablar.",
+              "english": "The children listened without speaking."
+            },
+            {
+              "text": "Nico abrió el regalo.",
+              "english": "Nico opened the gift."
+            },
+            {
+              "text": "Lo miró y no dijo nada.",
+              "english": "He looked at it and said nothing."
+            },
+            {
+              "text": "Después dijo: —Nunca tuve un regalo así.",
+              "english": "Then he said, \"I have never had a gift like this."
+            },
+            {
+              "text": "¡Es el mejor regalo del país!",
+              "english": "It is the best gift in the country!\""
+            },
+            {
+              "text": "Se puso la camiseta del perro, y parecía muy contento.",
+              "english": "He put on the T-shirt with the dog, and he looked very happy."
+            },
+            {
+              "text": "—Voy a usar mi regalo mañana en la escuela —dijo.",
+              "english": "\"I am going to wear my gift tomorrow at school,\" he said."
+            },
+            {
+              "text": "Los niños jugaron con una pelota, y Nico ganó.",
+              "english": "The children played with a ball, and Nico won."
+            },
+            {
+              "text": "Por la noche, Nico miró la luna y las estrellas.",
+              "english": "At night, Nico looked at the moon and the stars."
+            },
+            {
+              "text": "Ya no había oscuridad en el patio, porque había luces.",
+              "english": "There was no darkness in the patio anymore, because there were lights."
+            },
+            {
+              "text": "—Nico va a recordar este día —dijo doña Marta.",
+              "english": "\"Nico is going to remember this day,\" said doña Marta."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

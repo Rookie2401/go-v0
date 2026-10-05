@@ -1,0 +1,559 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-11",
+  "lang": "es",
+  "title": "El cuaderno de viaje de Sam",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-11",
+    "title": "A traveller's blog (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "travel"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Antes de salir",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hola a todos.",
+              "english": "Hello everyone."
+            },
+            {
+              "text": "Soy Sam.",
+              "english": "I'm Sam."
+            },
+            {
+              "text": "Después de muchos meses en Honduras, por fin he tenido tiempo para viajar.",
+              "english": "After many months in Honduras, I have finally had time to travel."
+            },
+            {
+              "text": "Karla me ha dicho: «Si no salís ahora, jamás conocés el país».",
+              "english": "Karla said to me: \"If you don't go out now, you'll never get to know the country.\""
+            },
+            {
+              "text": "Tiene razón.",
+              "english": "She's right."
+            },
+            {
+              "text": "Así que he hecho una bolsa ligera y he comprado un boleto para Copán.",
+              "english": "So I packed a light bag and bought a ticket to Copán."
+            },
+            {
+              "text": "Esto es lo que vi, comí y aprendí.",
+              "english": "This is what I saw, ate and learned."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la terminal había mucha gente.",
+              "english": "At the terminal there were lots of people."
+            },
+            {
+              "text": "Presenté mi boleto, firmé mi nombre y revisé la hora: el autobús salía a las seis.",
+              "english": "I showed my ticket, signed my name and checked the time: the bus left at six."
+            },
+            {
+              "text": "No estaba lleno, y viajé tres horas con la bolsa pesada en las piernas.",
+              "english": "It was not full, and I travelled three hours with the heavy bag on my legs."
+            },
+            {
+              "text": "Una señora llevaba un bebé, y el bebé tenía una sonrisa suave.",
+              "english": "A lady was carrying a baby, and the baby had a soft smile."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Primer día: el taxi y el pueblo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Llegué a Copán a las nueve de la mañana.",
+              "english": "I arrived in Copán at nine in the morning."
+            },
+            {
+              "text": "En mi país hay trenes, pero aquí no hay tren.",
+              "english": "In my country there are trains, but here there is no train."
+            },
+            {
+              "text": "Por eso tomé un taxi, porque mi bolsa estaba muy pesada.",
+              "english": "So I took a taxi, because my bag was very heavy."
+            },
+            {
+              "text": "El taxi tenía un precio claro: cien lempiras.",
+              "english": "The taxi had a clear price: a hundred lempiras."
+            },
+            {
+              "text": "El hombre del taxi manejaba despacio y no se detuvo hasta la avenida.",
+              "english": "The man in the taxi drove slowly and did not stop until the avenue."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El pueblo de Copán es pequeño, con calles pequeñas y casas blancas.",
+              "english": "The town of Copán is small, with small streets and white houses."
+            },
+            {
+              "text": "En la esquina hay un restaurante público y un supermercado.",
+              "english": "On the corner there is a public restaurant and a supermarket."
+            },
+            {
+              "text": "Pagué mi compra con tarjeta, porque no tenía mucho dinero.",
+              "english": "I paid for my purchase with a card, because I didn't have much money."
+            },
+            {
+              "text": "Comí sopa caliente, tortilla blanda y agua fresca.",
+              "english": "I ate hot soup, soft tortilla and cool water."
+            },
+            {
+              "text": "Estaba débil y con mucha sed, porque en el viaje no bebí nada.",
+              "english": "I was weak and very thirsty, because I drank nothing on the trip."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Esa noche vi una película en un cine pequeño.",
+              "english": "That night I watched a film in a small cinema."
+            },
+            {
+              "text": "No entendí todo, pero me gustó.",
+              "english": "I didn't understand everything, but I liked it."
+            },
+            {
+              "text": "Pensé en el tren de mi ciudad, que siempre llega a su hora.",
+              "english": "I thought of the train in my city, which always arrives on time."
+            },
+            {
+              "text": "Después caminé hacia mi cuarto y dormí como un niño.",
+              "english": "Afterwards I walked to my room and slept like a child."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Segundo día: una bicicleta y una torre",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Al otro día alquilé una bicicleta.",
+              "english": "The next day I rented a bicycle."
+            },
+            {
+              "text": "Una señora me presentó la bicicleta y me informó del precio.",
+              "english": "A lady showed me the bicycle and told me the price."
+            },
+            {
+              "text": "La oferta incluía una botella de agua.",
+              "english": "The offer included a bottle of water."
+            },
+            {
+              "text": "Presenté mi pasaporte y firmé aquí.",
+              "english": "I showed my passport and signed here."
+            },
+            {
+              "text": "En la avenida vi un anuncio: «Venta de bicicletas y motos».",
+              "english": "On the avenue I saw a notice: \"Sale of bicycles and motorbikes.\""
+            },
+            {
+              "text": "El anuncio decía que la venta era solo ese mes.",
+              "english": "The notice said that the sale was only that month."
+            },
+            {
+              "text": "También encontré el mapa del pueblo, y fue muy útil.",
+              "english": "I also found the map of the town, and it was very useful."
+            },
+            {
+              "text": "La limpieza del pueblo es tarea de todos, y se nota en las calles.",
+              "english": "Cleaning the town is everyone's task, and you can tell in the streets."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la avenida hay muchas motos.",
+              "english": "On the avenue there are many motorbikes."
+            },
+            {
+              "text": "Pasan muy cerca, y es peligroso.",
+              "english": "They pass very close, and it is dangerous."
+            },
+            {
+              "text": "Un aviso decía: «Conduzca con cuidado.",
+              "english": "A notice said: \"Drive carefully."
+            },
+            {
+              "text": "Los ciudadanos tienen derecho a caminar».",
+              "english": "Citizens have the right to walk.\""
+            },
+            {
+              "text": "En la esquina hay que detenerse y mirar.",
+              "english": "At the corner you must stop and look."
+            },
+            {
+              "text": "La ley obliga a los carros a parar, pero no siempre pasa.",
+              "english": "The law obliges cars to stop, but it doesn't always happen."
+            },
+            {
+              "text": "Mi opinión es que aquí es mejor ir despacio.",
+              "english": "My opinion is that here it is better to go slowly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Antes de subir, un señor viejo me indicó el camino: «Cruce la avenida y siga hasta la torre».",
+              "english": "Before climbing, an old man pointed out the way to me: \"Cross the avenue and keep going to the tower.\""
+            },
+            {
+              "text": "También me habló de la guerra, que él vivió de joven.",
+              "english": "He also told me about the war, which he lived through as a young man."
+            },
+            {
+              "text": "Me dijo que ahora el pueblo vive en paz, y que eso es lo más importante.",
+              "english": "He said that now the village lives in peace, and that that is the most important thing."
+            },
+            {
+              "text": "Al mediodía llegué a una torre.",
+              "english": "At midday I reached a tower."
+            },
+            {
+              "text": "No era grande, pero desde arriba la vista era muy bonita: verde, azul y blanco.",
+              "english": "It was not big, but from up there the view was very beautiful: green, blue and white."
+            },
+            {
+              "text": "Arriba hacía viento, y mi cabello se movía.",
+              "english": "Up there it was windy, and my hair moved."
+            },
+            {
+              "text": "No temí subir.",
+              "english": "I wasn't afraid to climb."
+            },
+            {
+              "text": "No se permite estacionar bicicletas cerca de la torre, y tuve que dejar mi bicicleta lejos.",
+              "english": "Parking bicycles near the tower is not permitted, and I had to leave my bicycle far away."
+            },
+            {
+              "text": "Cuando bajé, miré hacia arriba otra vez.",
+              "english": "When I came down, I looked up again."
+            },
+            {
+              "text": "Hay otra torre, la de la iglesia, y también es muy bonita.",
+              "english": "There is another tower, the church one, and it is also very beautiful."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde mis mejillas estaban rojas del sol, y mis labios estaban duros.",
+              "english": "In the afternoon my cheeks were red from the sun, and my lips were hard."
+            },
+            {
+              "text": "Compré un pan blando y una botella tibia de agua.",
+              "english": "I bought a soft bread and a lukewarm bottle of water."
+            },
+            {
+              "text": "No era lo mejor, pero era necesario.",
+              "english": "It wasn't the best, but it was necessary."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Tercer día: calor, sed y un partido",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Dos días después hizo mucho calor.",
+              "english": "Two days later it was very hot."
+            },
+            {
+              "text": "Era como un desierto: el sol caliente, la calle vacía y nadie fuera.",
+              "english": "It was like a desert: the hot sun, the empty street and nobody outside."
+            },
+            {
+              "text": "En mi país hay un desierto cerca de la ciudad donde vivo, y el calor de Copán me lo recordó.",
+              "english": "In my country there is a desert near the city where I live, and Copán's heat reminded me of it."
+            },
+            {
+              "text": "Sentí sed todo el tiempo, y mi aliento olía a sol.",
+              "english": "I felt thirsty all the time, and my breath smelled of sun."
+            },
+            {
+              "text": "Aprendí la lección: hay que llevar agua fresca y beber poco a poco.",
+              "english": "I learned the lesson: you have to carry cool water and drink little by little."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde, en la calle, había un partido de balón entre jóvenes de dos calles.",
+              "english": "In the afternoon, in the street, there was a ball match between young people from two streets."
+            },
+            {
+              "text": "Un gol, otro gol, y mucha risa.",
+              "english": "One goal, another goal, and lots of laughter."
+            },
+            {
+              "text": "El premio era un pan grande.",
+              "english": "The prize was a big loaf of bread."
+            },
+            {
+              "text": "Un hombre ofrecía periódicos; compré uno.",
+              "english": "A man was offering newspapers; I bought one."
+            },
+            {
+              "text": "Leí una noticia sobre la política del país y sobre el voto de la semana que viene.",
+              "english": "I read a news item about the country's politics and about next week's vote."
+            },
+            {
+              "text": "No entendí todo, pero me gustó.",
+              "english": "I didn't understand everything, but I liked it."
+            },
+            {
+              "text": "Después del partido conocí a una familia.",
+              "english": "After the match I met a family."
+            },
+            {
+              "text": "El padre me invitó a comer, y la madre puso una mesa pequeña con sopa caliente, frijoles y tortillas blandas.",
+              "english": "The father invited me to eat, and the mother set a small table with hot soup, beans and soft tortillas."
+            },
+            {
+              "text": "Los niños me miraban con una sonrisa.",
+              "english": "The children looked at me with a smile."
+            },
+            {
+              "text": "Hablamos del trabajo, de la lluvia y de la escuela.",
+              "english": "We talked about work, rain and school."
+            },
+            {
+              "text": "Fue una de las mejores comidas del viaje, y no me costó nada.",
+              "english": "It was one of the best meals of the trip, and it cost me nothing."
+            },
+            {
+              "text": "Esa tarde, la calle parecía un desierto de calor, pero la casa de esa familia era fresca y bonita.",
+              "english": "That afternoon the street looked like a desert of heat, but that family's house was cool and pretty."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Esa noche hubo un baile en la esquina.",
+              "english": "That night there was a dance on the corner."
+            },
+            {
+              "text": "Un joven me invitó, y bailé un poco.",
+              "english": "A young man invited me, and I danced a little."
+            },
+            {
+              "text": "Me hice un golpe en la pierna y un pequeño corte en la mano, pero estaba contento.",
+              "english": "I got a bump on my leg and a small cut on my hand, but I was happy."
+            },
+            {
+              "text": "Me sentí sano y feliz.",
+              "english": "I felt healthy and happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cuarto día: el barco y la isla",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El cuarto día volví a la costa en autobús y tomé un barco hasta la isla de Roatán.",
+              "english": "On the fourth day I went back to the coast by bus and took a boat to the island of Roatán."
+            },
+            {
+              "text": "El hombre del barco anunció: «¡Nos vamos!».",
+              "english": "The man from the boat announced: \"We're off!\""
+            },
+            {
+              "text": "El barco era público y salió a las nueve.",
+              "english": "The boat was public and left at nine."
+            },
+            {
+              "text": "El mar estaba tibio, y la playa estaba limpia.",
+              "english": "The sea was warm, and the beach was clean."
+            },
+            {
+              "text": "Después del calor de Copán, el mar fue como salir de un desierto.",
+              "english": "After Copán's heat, the sea was like leaving a desert."
+            },
+            {
+              "text": "Una parte de la playa es privada y otra es pública, y yo caminé por la parte pública.",
+              "english": "One part of the beach is private and another is public, and I walked on the public part."
+            },
+            {
+              "text": "Cerca de la playa no se permite manejar motos, y eso me gustó.",
+              "english": "Near the beach riding motorbikes is not permitted, and I liked that."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "En la isla tomé otro taxi, pero esta vez era una moto: el hombre me llevó con mi bolsa ligera.",
+              "english": "On the island I took another taxi, but this time it was a motorbike: the man took me with my light bag."
+            },
+            {
+              "text": "Fue una prueba difícil, pero llegué bien.",
+              "english": "It was a hard test, but I arrived safely."
+            },
+            {
+              "text": "Esa tarde se puso feo el día.",
+              "english": "That afternoon the day turned ugly."
+            },
+            {
+              "text": "La lluvia impidió caminar, porque en esta estación llueve casi todos los días.",
+              "english": "The rain stopped me from walking, because in this season it rains almost every day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hablé con un hombre del restaurante de la playa.",
+              "english": "I spoke with a man from the beach restaurant."
+            },
+            {
+              "text": "Me informó que, en general, los que viajan llegan en barco, pasan un día y vuelven a casa.",
+              "english": "He told me that, in general, travellers arrive by boat, spend a day and go home."
+            },
+            {
+              "text": "Yo me quedé hasta la noche.",
+              "english": "I stayed until night."
+            },
+            {
+              "text": "Me senté y miré el mar, sin hacer nada.",
+              "english": "I sat and looked at the sea, doing nothing."
+            },
+            {
+              "text": "Fue la mejor parte del viaje.",
+              "english": "It was the best part of the trip."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Consejos para viajeros",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Si usted va a viajar por Honduras, estas son mis ideas.",
+              "english": "If you are going to travel in Honduras, here are my ideas."
+            },
+            {
+              "text": "Lleve poca cosa: el peso de la bolsa cuenta.",
+              "english": "Carry little: the weight of the bag counts."
+            },
+            {
+              "text": "Revise el precio antes de subir a un taxi.",
+              "english": "Check the price before getting into a taxi."
+            },
+            {
+              "text": "Presente su pasaporte cuando lo pidan.",
+              "english": "Show your passport when they ask for it."
+            },
+            {
+              "text": "Beba agua fresca, y mantenga las manos limpias.",
+              "english": "Drink cool water, and keep your hands clean."
+            },
+            {
+              "text": "Si tiene un corte o un golpe, cúbralo y busque ayuda.",
+              "english": "If you have a cut or a bump, cover it and look for help."
+            },
+            {
+              "text": "Informe a su familia dónde está.",
+              "english": "Tell your family where you are."
+            },
+            {
+              "text": "En general, los hondureños son amables: pregunte si necesita ayuda.",
+              "english": "In general, Hondurans are kind: ask if you need help."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Volví a casa cansado, pero sano.",
+              "english": "I went home tired, but healthy."
+            },
+            {
+              "text": "En la terminal estaba Karla, con una sonrisa y una oferta: «¿Querés sopa caliente?».",
+              "english": "At the terminal Karla was waiting, with a smile and an offer: \"Do you want hot soup?\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,428 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-04",
+  "lang": "es",
+  "title": "Breakfast at the comedor",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-04",
+    "title": "Breakfast at the comedor (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: baleada (a Honduran dish); \"tengo hambre\"; \"¿Qué quieren?\" (ustedes, not vosotros); \"comedor\" is not in the word list, so the place is just \"aquí\"; \"Una también\" for \"one too\"; \"Cuesta veinte lempiras\" (prices are invented for the lesson)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "food",
+    "ordering"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "Sam",
+    "luis": "Luis",
+    "juana": "Juana",
+    "ana": "Ana"
+  },
+  "sections": [
+    {
+      "title": "Breakfast at the comedor",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "luis",
+              "text": "Buenos días, Sam.",
+              "english": "Good morning, Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Buenos días, Luis.",
+              "english": "Good morning, Luis."
+            },
+            {
+              "speaker": "sam",
+              "text": "Tengo hambre.",
+              "english": "I am hungry."
+            },
+            {
+              "speaker": "luis",
+              "text": "Yo también tengo hambre.",
+              "english": "I am hungry too."
+            },
+            {
+              "speaker": "luis",
+              "text": "Vamos a tomar el desayuno aquí.",
+              "english": "Let us have breakfast here."
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta el desayuno de Honduras.",
+              "english": "I like the Honduran breakfast."
+            },
+            {
+              "speaker": "luis",
+              "text": "Aquí hay baleadas muy buenas.",
+              "english": "They have very good baleadas here."
+            },
+            {
+              "speaker": "sam",
+              "text": "¿Qué es una baleada?",
+              "english": "What is a baleada?"
+            },
+            {
+              "speaker": "luis",
+              "text": "Es una tortilla grande con frijoles.",
+              "english": "It is a big tortilla with beans."
+            },
+            {
+              "speaker": "luis",
+              "text": "Hay con huevo también.",
+              "english": "There are some with egg too."
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta el huevo.",
+              "english": "I like egg."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "juana",
+              "text": "Buenos días.",
+              "english": "Good morning."
+            },
+            {
+              "speaker": "juana",
+              "text": "¿Qué quieren?",
+              "english": "What would you like?"
+            },
+            {
+              "speaker": "luis",
+              "text": "Una baleada con huevo y frijoles, por favor.",
+              "english": "A baleada with egg and beans, please."
+            },
+            {
+              "speaker": "juana",
+              "text": "¿Y usted, señor?",
+              "english": "And you, sir?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Yo quiero una también.",
+              "english": "I want one too."
+            },
+            {
+              "speaker": "juana",
+              "text": "¿Qué quieren beber?",
+              "english": "What would you like to drink?"
+            },
+            {
+              "speaker": "luis",
+              "text": "Café, por favor.",
+              "english": "Coffee, please."
+            },
+            {
+              "speaker": "sam",
+              "text": "Para mí agua, por favor.",
+              "english": "Water for me, please."
+            },
+            {
+              "speaker": "juana",
+              "text": "Cuesta veinte lempiras.",
+              "english": "It costs twenty lempiras."
+            },
+            {
+              "speaker": "sam",
+              "text": "Muy bien.",
+              "english": "Very good."
+            },
+            {
+              "speaker": "juana",
+              "text": "Aquí tienen.",
+              "english": "Here you are."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "¡Qué buena comida!",
+              "english": "What good food!"
+            },
+            {
+              "speaker": "luis",
+              "text": "Me gusta la comida de Honduras.",
+              "english": "I like Honduran food."
+            },
+            {
+              "speaker": "sam",
+              "text": "Los frijoles de aquí son muy buenos.",
+              "english": "The beans here are very good."
+            },
+            {
+              "speaker": "luis",
+              "text": "La tortilla también es buena.",
+              "english": "The tortilla is good too."
+            },
+            {
+              "speaker": "sam",
+              "text": "La tortilla de doña Marta es muy buena.",
+              "english": "Doña Marta's tortilla is very good."
+            },
+            {
+              "speaker": "luis",
+              "text": "Sí, y la comida de doña Marta también.",
+              "english": "Yes, and doña Marta's food too."
+            },
+            {
+              "speaker": "sam",
+              "text": "A mí me gusta mucho el café de Honduras.",
+              "english": "I like Honduran coffee a lot."
+            },
+            {
+              "speaker": "luis",
+              "text": "A mí no me gusta el agua.",
+              "english": "I do not like water."
+            },
+            {
+              "speaker": "luis",
+              "text": "Me gusta el café con pan.",
+              "english": "I like coffee with bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ana",
+              "text": "Buenos días, Luis.",
+              "english": "Good morning, Luis."
+            },
+            {
+              "speaker": "ana",
+              "text": "Buenos días, Sam.",
+              "english": "Good morning, Sam."
+            },
+            {
+              "speaker": "luis",
+              "text": "Hola, Ana.",
+              "english": "Hello, Ana."
+            },
+            {
+              "speaker": "luis",
+              "text": "¿Cómo estás?",
+              "english": "How are you?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Estoy bien, gracias.",
+              "english": "I am fine, thank you."
+            },
+            {
+              "speaker": "ana",
+              "text": "Hoy voy a trabajar en la clínica.",
+              "english": "Today I am going to work at the clinic."
+            },
+            {
+              "speaker": "juana",
+              "text": "¿Qué quiere usted?",
+              "english": "What would you like?"
+            },
+            {
+              "speaker": "ana",
+              "text": "Quiero café y pan, por favor.",
+              "english": "I want coffee and bread, please."
+            },
+            {
+              "speaker": "juana",
+              "text": "El pan cuesta diez lempiras.",
+              "english": "The bread costs ten lempiras."
+            },
+            {
+              "speaker": "ana",
+              "text": "Gracias.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Ana, ¿querés agua?",
+              "english": "Ana, do you want water?"
+            },
+            {
+              "speaker": "ana",
+              "text": "No, gracias.",
+              "english": "No, thank you."
+            },
+            {
+              "speaker": "ana",
+              "text": "Me gusta el café.",
+              "english": "I like coffee."
+            },
+            {
+              "speaker": "luis",
+              "text": "Mi papá bebe café en la mañana.",
+              "english": "My dad drinks coffee in the morning."
+            },
+            {
+              "speaker": "luis",
+              "text": "Mi mamá toma café también.",
+              "english": "My mom has coffee too."
+            },
+            {
+              "speaker": "ana",
+              "text": "Y mi hermano Nico toma agua.",
+              "english": "And my brother Nico drinks water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "juana",
+              "text": "Mi nombre es Juana.",
+              "english": "My name is Juana."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mucho gusto, Juana.",
+              "english": "Nice to meet you, Juana."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi nombre es Sam.",
+              "english": "My name is Sam."
+            },
+            {
+              "speaker": "juana",
+              "text": "¿Cómo se llama su amigo?",
+              "english": "What is your friend's name?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Se llama Luis.",
+              "english": "His name is Luis."
+            },
+            {
+              "speaker": "juana",
+              "text": "¿Habla español, Sam?",
+              "english": "Do you speak Spanish, Sam?"
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, hablo español.",
+              "english": "Yes, I speak Spanish."
+            },
+            {
+              "speaker": "juana",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "juana",
+              "text": "En la tarde tenemos arroz y pan.",
+              "english": "In the afternoon we have rice and bread."
+            },
+            {
+              "speaker": "luis",
+              "text": "¿Tenés hambre, Sam?",
+              "english": "Are you hungry, Sam?"
+            },
+            {
+              "speaker": "sam",
+              "text": "No, gracias.",
+              "english": "No, thank you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Estoy bien.",
+              "english": "I am fine."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias por el desayuno, Luis.",
+              "english": "Thank you for the breakfast, Luis."
+            },
+            {
+              "speaker": "luis",
+              "text": "De nada.",
+              "english": "You are welcome."
+            },
+            {
+              "speaker": "luis",
+              "text": "Hoy voy a la escuela con Nico.",
+              "english": "Today I am going to school with Nico."
+            },
+            {
+              "speaker": "sam",
+              "text": "Y yo voy a la casa de doña Marta.",
+              "english": "And I am going to doña Marta's house."
+            },
+            {
+              "speaker": "luis",
+              "text": "La casa de doña Marta es buena para vos.",
+              "english": "Doña Marta's house is good for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Sí, tengo un cuarto grande y una cama grande.",
+              "english": "Yes, I have a big room and a big bed."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi familia está en su casa, pero aquí también tengo una familia.",
+              "english": "My family is in their house, but here I also have a family."
+            },
+            {
+              "speaker": "luis",
+              "text": "Sí, nosotros somos tu familia.",
+              "english": "Yes, we are your family."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

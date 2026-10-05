@@ -1,0 +1,849 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-08",
+  "lang": "es",
+  "title": "Planes para la visita",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-08",
+    "title": "Planning the next visit (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "church-and-mission-life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "P": "Pastor Mario",
+    "S": "Sam",
+    "A": "Ana",
+    "K": "Karla",
+    "L": "Luis",
+    "D": "Daniel",
+    "E": "Elena",
+    "V": "Marvin"
+  },
+  "sections": [
+    {
+      "title": "La reunión de planes",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es martes por la noche.",
+              "english": "It is Tuesday night."
+            },
+            {
+              "text": "El equipo se reúne en el patio de la iglesia para hablar de la visita al pueblo vecino.",
+              "english": "The team meets in the church courtyard to talk about the visit to the neighbouring village."
+            },
+            {
+              "text": "Hay café, pan y un libro grande para escribir las ideas.",
+              "english": "There is coffee, bread and a big book for writing down ideas."
+            },
+            {
+              "text": "El pastor Mario abre la reunión con una oración.",
+              "english": "Pastor Mario opens the meeting with a prayer."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Padre celestial, tú eres santo y fiel.",
+              "english": "Heavenly Father, you are holy and faithful.",
+              "speaker": "P"
+            },
+            {
+              "text": "Te pedimos que nos des fuerza para servir.",
+              "english": "We ask that you give us strength to serve.",
+              "speaker": "P"
+            },
+            {
+              "text": "Queremos que tu amor llegue a esa gente, y que tu nombre sea bendito.",
+              "english": "We want your love to reach those people, and your name to be blessed.",
+              "speaker": "P"
+            },
+            {
+              "text": "En el nombre de Jesús.",
+              "english": "In the name of Jesus.",
+              "speaker": "P"
+            },
+            {
+              "text": "Hermanos, voy a explicar lo que vamos a hacer.",
+              "english": "Brothers and sisters, I am going to explain what we are going to do.",
+              "speaker": "P"
+            },
+            {
+              "text": "Cuando lleguemos al pueblo, vamos a visitar primero a las familias.",
+              "english": "When we arrive in the village we are going to visit the families first.",
+              "speaker": "P"
+            },
+            {
+              "text": "Después, el sábado, vamos a tener un culto.",
+              "english": "Then, on Saturday, we are going to have a service.",
+              "speaker": "P"
+            },
+            {
+              "text": "Ojalá que venga mucha gente.",
+              "english": "I hope many people come.",
+              "speaker": "P"
+            },
+            {
+              "text": "Ojalá también que podamos escuchar a todos.",
+              "english": "I hope too that we can listen to everyone.",
+              "speaker": "P"
+            },
+            {
+              "text": "Pero antes de que empecemos, necesitamos ordenar muchas cosas.",
+              "english": "But before we begin, we need to arrange many things.",
+              "speaker": "P"
+            },
+            {
+              "text": "Me alegra verlos aquí.",
+              "english": "I am glad to see you here.",
+              "speaker": "P"
+            },
+            {
+              "text": "La misa de los domingos es a las siete, y la comunión de nuestra iglesia es el último domingo del mes.",
+              "english": "The Sunday Mass is at seven, and our church's communion is the last Sunday of the month.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "¿Quién va a traducir?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Mario, yo voy a ser el predicador del sábado, pero hay un problema.",
+              "english": "Mario, I am going to be the preacher on Saturday, but there is a problem.",
+              "speaker": "D"
+            },
+            {
+              "text": "Algunos hermanos del equipo hablan otro idioma, y la gente del pueblo habla español.",
+              "english": "Some brothers of the team speak another language, and the people of the village speak Spanish.",
+              "speaker": "D"
+            },
+            {
+              "text": "Entonces necesitamos a alguien que traduzca.",
+              "english": "Then we need someone who can translate.",
+              "speaker": "P"
+            },
+            {
+              "text": "Quiero que la gente entienda el sermón, y que el equipo entienda a la gente.",
+              "english": "I want the people to understand the sermon, and the team to understand the people.",
+              "speaker": "P"
+            },
+            {
+              "text": "Sugiero que Sam traduzca.",
+              "english": "I suggest that Sam translate.",
+              "speaker": "A"
+            },
+            {
+              "text": "Cada semana habla mejor.",
+              "english": "He speaks better each week.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Yo?",
+              "english": "Me?",
+              "speaker": "S"
+            },
+            {
+              "text": "Todavía me equivoco mucho.",
+              "english": "I still make lots of mistakes.",
+              "speaker": "S"
+            },
+            {
+              "text": "No sé si voy a poder traducir todo un sermón.",
+              "english": "I don't know if I'll be able to translate a whole sermon.",
+              "speaker": "S"
+            },
+            {
+              "text": "Podés practicar con nosotros.",
+              "english": "You can practice with us.",
+              "speaker": "K"
+            },
+            {
+              "text": "Cada noche, antes de que te acostés, practicamos una parte.",
+              "english": "Every night, before you go to bed, we'll practice a part.",
+              "speaker": "K"
+            },
+            {
+              "text": "Está bien.",
+              "english": "All right.",
+              "speaker": "S"
+            },
+            {
+              "text": "Voy a practicar con Daniel esta semana.",
+              "english": "I'll practice with Daniel this week.",
+              "speaker": "S"
+            },
+            {
+              "text": "Quiero que me mande el sermón antes de que lo prediquemos.",
+              "english": "I want him to send me the sermon before we preach it.",
+              "speaker": "S"
+            },
+            {
+              "text": "Te lo mando mañana.",
+              "english": "I'll send it to you tomorrow.",
+              "speaker": "D"
+            },
+            {
+              "text": "No te sintás mal.",
+              "english": "Don't feel bad.",
+              "speaker": "D"
+            },
+            {
+              "text": "Los hermanos van a disfrutar el culto si te equivocás alguna vez.",
+              "english": "The brothers will enjoy the service if you make a mistake once in a while.",
+              "speaker": "D"
+            },
+            {
+              "text": "Sam, te felicito por tu esfuerzo.",
+              "english": "Sam, I congratulate you on your effort.",
+              "speaker": "P"
+            },
+            {
+              "text": "Y me alegra que el equipo te apoye.",
+              "english": "And I am glad that the team supports you.",
+              "speaker": "P"
+            },
+            {
+              "text": "Yo también felicito a Sam.",
+              "english": "I congratulate Sam too.",
+              "speaker": "E"
+            },
+            {
+              "text": "Y felicito a Karla, porque lo ayuda cada noche, y felicito al predicador.",
+              "english": "And I congratulate Karla, because she helps him every night, and I congratulate the preacher.",
+              "speaker": "E"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un borrador del sermón",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Al otro día, Daniel manda su sermón.",
+              "english": "The next day Daniel sends his sermon."
+            },
+            {
+              "text": "Sam lo lee con Karla, y practican cada parte dos veces.",
+              "english": "Sam reads it with Karla, and they practice each part twice."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "«Hermanos, hoy hablamos de una promesa.",
+              "english": "\"Brothers and sisters, today we speak about a promise.",
+              "speaker": "D"
+            },
+            {
+              "text": "Hace mucho tiempo, Dios habló por una profecía: iba a enviar a un siervo fiel, un cordero.",
+              "english": "A long time ago God spoke through a prophecy: he was going to send a faithful servant, a lamb.",
+              "speaker": "D"
+            },
+            {
+              "text": "Ese siervo es Jesús.»",
+              "english": "That servant is Jesus.\"",
+              "speaker": "D"
+            },
+            {
+              "text": "«La cruz es la señal de su amor divino.",
+              "english": "\"The cross is the sign of his divine love.",
+              "speaker": "D"
+            },
+            {
+              "text": "En la cruz, el cordero de Dios llevó el pecado de todos.",
+              "english": "On the cross, the lamb of God carried everyone's sin.",
+              "speaker": "D"
+            },
+            {
+              "text": "Somos pecadores, pero él nos libera.",
+              "english": "We are sinners, but he frees us.",
+              "speaker": "D"
+            },
+            {
+              "text": "La salvación no depende de nosotros.",
+              "english": "Salvation does not depend on us.",
+              "speaker": "D"
+            },
+            {
+              "text": "Depende de su gracia.»",
+              "english": "It depends on his grace.\"",
+              "speaker": "D"
+            },
+            {
+              "text": "«Jesús es santo, glorioso y poderoso.",
+              "english": "\"Jesus is holy, glorious and powerful.",
+              "speaker": "D"
+            },
+            {
+              "text": "Su amor es eterno.",
+              "english": "His love is eternal.",
+              "speaker": "D"
+            },
+            {
+              "text": "Cuando una persona se convierte, confiesa su pecado, abandona su tristeza y recibe libertad.",
+              "english": "When a person is converted, he confesses his sin, abandons his sadness and receives freedom.",
+              "speaker": "D"
+            },
+            {
+              "text": "Su alma encuentra paz, y su espíritu encuentra felicidad.»",
+              "english": "His soul finds peace, and his spirit finds happiness.\"",
+              "speaker": "D"
+            },
+            {
+              "text": "«Un discípulo quiere obedecer.",
+              "english": "\"A disciple wants to obey.",
+              "speaker": "D"
+            },
+            {
+              "text": "Reza por su madre, por su vecino y por su pueblo.",
+              "english": "He prays for his mother, for his neighbour and for his village.",
+              "speaker": "D"
+            },
+            {
+              "text": "Su adoración no es solo una canción.",
+              "english": "His worship is not only a song.",
+              "speaker": "D"
+            },
+            {
+              "text": "Es una vida espiritual con Dios.»",
+              "english": "It is a spiritual life with God.\"",
+              "speaker": "D"
+            },
+            {
+              "text": "Karla, esta parte me gusta mucho.",
+              "english": "Karla, I like this part a lot.",
+              "speaker": "S"
+            },
+            {
+              "text": "«Una vida espiritual con Dios».",
+              "english": "\"A spiritual life with God.\"",
+              "speaker": "S"
+            },
+            {
+              "text": "Ojalá pueda decirla bien el sábado.",
+              "english": "I hope I can say it well on Saturday.",
+              "speaker": "S"
+            },
+            {
+              "text": "Vas a poder.",
+              "english": "You will be able to.",
+              "speaker": "K"
+            },
+            {
+              "text": "Hace un mes no podías pedir pan.",
+              "english": "A month ago you couldn't ask for bread.",
+              "speaker": "K"
+            },
+            {
+              "text": "Hoy traducís una parte sobre la adoración.",
+              "english": "Today you translate a part about worship.",
+              "speaker": "K"
+            },
+            {
+              "text": "Daniel es un buen predicador.",
+              "english": "Daniel is a good preacher.",
+              "speaker": "S"
+            },
+            {
+              "text": "Cada parte tiene una promesa y una señal.",
+              "english": "Each part has a promise and a sign.",
+              "speaker": "S"
+            },
+            {
+              "text": "Eso me alegra.",
+              "english": "That makes me glad.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El orden del culto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ahora hablemos de lo que vamos a hacer.",
+              "english": "Now let's talk about what we are going to do.",
+              "speaker": "L"
+            },
+            {
+              "text": "¿Cómo empezamos el culto?",
+              "english": "How do we begin the service?",
+              "speaker": "L"
+            },
+            {
+              "text": "Con la adoración.",
+              "english": "With worship.",
+              "speaker": "P"
+            },
+            {
+              "text": "Vamos a cantar algunas canciones, y después vamos a leer una promesa de la Biblia.",
+              "english": "We are going to sing some songs, and then we will read a promise from the Bible.",
+              "speaker": "P"
+            },
+            {
+              "text": "Hay un himno que a todos les gusta: «Cordero de Dios».",
+              "english": "There is a hymn everyone likes: \"Lamb of God\".",
+              "speaker": "E"
+            },
+            {
+              "text": "Quiero que lo cantemos para que la gente lo conozca.",
+              "english": "I want us to sing it so that people will know it.",
+              "speaker": "E"
+            },
+            {
+              "text": "Y luego la comunión.",
+              "english": "And then communion.",
+              "speaker": "V"
+            },
+            {
+              "text": "La iglesia tiene una mesa pequeña, un altar pequeño para el pan.",
+              "english": "The church has a small table, a small altar for the bread.",
+              "speaker": "V"
+            },
+            {
+              "text": "Cuando todos estemos en paz, el pastor sirve el pan.",
+              "english": "When we are all at peace, the pastor serves the bread.",
+              "speaker": "V"
+            },
+            {
+              "text": "Ese altar es solo una mesa.",
+              "english": "That altar is just a table.",
+              "speaker": "P"
+            },
+            {
+              "text": "Lo sagrado no está en el altar.",
+              "english": "What is sacred is not in the altar.",
+              "speaker": "P"
+            },
+            {
+              "text": "Está en lo que recordamos cuando comemos el pan.",
+              "english": "It is in what we remember when we eat the bread.",
+              "speaker": "P"
+            },
+            {
+              "text": "Hay también una cruz sobre la mesa.",
+              "english": "There is also a cross on the table.",
+              "speaker": "V"
+            },
+            {
+              "text": "La cruz recuerda el amor divino y la profecía cumplida.",
+              "english": "The cross recalls the divine love and the fulfilled prophecy.",
+              "speaker": "V"
+            },
+            {
+              "text": "En el pueblo también hay una misa los domingos.",
+              "english": "In the village there is also a Mass on Sundays.",
+              "speaker": "K"
+            },
+            {
+              "text": "No queremos que nadie se enoje.",
+              "english": "We don't want anyone to get angry.",
+              "speaker": "K"
+            },
+            {
+              "text": "Queremos que cada persona venga sin que nadie la obligue.",
+              "english": "We want each person to come without anyone forcing them.",
+              "speaker": "K"
+            },
+            {
+              "text": "Antes de la comunión, vamos a rezar por la misa del pueblo y por las familias que van ahí.",
+              "english": "Before communion, we are going to pray for the village's Mass and for the families who go there.",
+              "speaker": "K"
+            },
+            {
+              "text": "Tenés razón, Karla.",
+              "english": "You're right, Karla.",
+              "speaker": "P"
+            },
+            {
+              "text": "En religión, nadie tiene que obligar a nadie.",
+              "english": "In religion, nobody has to force anybody.",
+              "speaker": "P"
+            },
+            {
+              "text": "Cada persona tiene derecho a decidir, y ese derecho existe también en la iglesia.",
+              "english": "Each person has the right to decide, and that right also exists in the church.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Ayunar, sacrificar y disfrutar",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Yo propongo que ayunemos el martes antes de salir.",
+              "english": "I propose that we fast on Tuesday before leaving.",
+              "speaker": "A"
+            },
+            {
+              "text": "Quiero que oremos para que Dios prepare el camino.",
+              "english": "I want us to pray so that God prepares the way.",
+              "speaker": "A"
+            },
+            {
+              "text": "Yo apoyo la idea, pero hay que ayunar con cuidado.",
+              "english": "I support the idea, but we have to fast carefully.",
+              "speaker": "L"
+            },
+            {
+              "text": "Algunos del equipo tienen que trabajar ese día.",
+              "english": "Some of the team have to work that day.",
+              "speaker": "L"
+            },
+            {
+              "text": "Cada uno decide.",
+              "english": "Each one decides.",
+              "speaker": "P"
+            },
+            {
+              "text": "Ayunar cuesta, pero nadie tiene que hacerlo.",
+              "english": "Fasting is hard, but nobody has to do it.",
+              "speaker": "P"
+            },
+            {
+              "text": "No quiero que nadie sacrifique su salud.",
+              "english": "I don't want anyone to sacrifice their health.",
+              "speaker": "P"
+            },
+            {
+              "text": "Algo sí vamos a sacrificar: el sábado, el domingo y el dinero del autobús.",
+              "english": "We will sacrifice something: Saturday, Sunday and the bus money.",
+              "speaker": "E"
+            },
+            {
+              "text": "Pero cuando regresemos, vamos a disfrutar de todo lo que hemos visto.",
+              "english": "But when we return, we will enjoy everything we have seen.",
+              "speaker": "E"
+            },
+            {
+              "text": "Un siervo fiel sacrifica su tiempo con gusto.",
+              "english": "A faithful servant sacrifices his time gladly.",
+              "speaker": "P"
+            },
+            {
+              "text": "Quiero que disfruten el viaje.",
+              "english": "I want you to enjoy the trip.",
+              "speaker": "P"
+            },
+            {
+              "text": "Eso me alegra y me hace dar gracias a Dios.",
+              "english": "That makes me glad and makes me give thanks to God.",
+              "speaker": "P"
+            },
+            {
+              "text": "Ojalá que haya también tiempo para jugar.",
+              "english": "I hope there is also time to play.",
+              "speaker": "S"
+            },
+            {
+              "text": "Los jóvenes quieren un partido de balón, con premio.",
+              "english": "The young people want a ball match with a prize.",
+              "speaker": "S"
+            },
+            {
+              "text": "Eso me alegra.",
+              "english": "That makes me glad.",
+              "speaker": "V"
+            },
+            {
+              "text": "Después del partido, un baile pequeño.",
+              "english": "After the match, a small dance.",
+              "speaker": "V"
+            },
+            {
+              "text": "Si Ana publica un aviso en el periódico, vienen todos.",
+              "english": "If Ana publishes a notice in the newspaper, everyone comes.",
+              "speaker": "V"
+            },
+            {
+              "text": "Y en la noche, una película en el cine.",
+              "english": "And at night, a film in the cinema.",
+              "speaker": "A"
+            },
+            {
+              "text": "Cuando la gente vea la película, va a pensar en las cosas de la Biblia.",
+              "english": "When people see the film, they will think about the things in the Bible.",
+              "speaker": "A"
+            },
+            {
+              "text": "Un gol en la tarde y una película en la noche.",
+              "english": "A goal in the afternoon and a film at night.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La fecha",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pero todavía tenemos que decidir la fecha.",
+              "english": "But we still have to decide the date.",
+              "speaker": "L"
+            },
+            {
+              "text": "Hay dos propuestas: el catorce y el veintiuno.",
+              "english": "There are two proposals: the fourteenth and the twenty-first.",
+              "speaker": "L"
+            },
+            {
+              "text": "Propongo el catorce.",
+              "english": "I propose the fourteenth.",
+              "speaker": "E"
+            },
+            {
+              "text": "Hay una razón: en esas semanas aumenta la lluvia.",
+              "english": "There is a reason: in those weeks the rain increases.",
+              "speaker": "E"
+            },
+            {
+              "text": "Si dejamos el viaje para después, puede suceder que el camino no exista.",
+              "english": "If we leave the trip for later, it may happen that the road doesn't exist.",
+              "speaker": "E"
+            },
+            {
+              "text": "Todo depende del tiempo.",
+              "english": "Everything depends on the weather.",
+              "speaker": "V"
+            },
+            {
+              "text": "Eso ocurre cada año.",
+              "english": "That happens every year.",
+              "speaker": "V"
+            },
+            {
+              "text": "¿Alguien quiere discutir la fecha?",
+              "english": "Does anyone want to argue about the date?",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo no la discuto, pero tengo que convencer a mi jefe.",
+              "english": "I'm not going to argue about it, but I have to convince my boss.",
+              "speaker": "A"
+            },
+            {
+              "text": "Necesito saber cuándo vamos a salir.",
+              "english": "I need to know when we're going to leave.",
+              "speaker": "A"
+            },
+            {
+              "text": "Entonces vamos a votar.",
+              "english": "Then we are going to vote.",
+              "speaker": "P"
+            },
+            {
+              "text": "Los que quieren el catorce, levanten la mano.",
+              "english": "Those who want the fourteenth, raise your hands.",
+              "speaker": "P"
+            },
+            {
+              "text": "Casi todos levantan la mano.",
+              "english": "Almost everyone raises a hand."
+            },
+            {
+              "text": "El pastor cuenta los votos.",
+              "english": "The pastor counts the votes."
+            },
+            {
+              "text": "Declaro que el viaje es el catorce.",
+              "english": "I declare the trip is on the fourteenth.",
+              "speaker": "P"
+            },
+            {
+              "text": "Como en una elección pequeña, la gente ha hablado, y esta vez no hay política.",
+              "english": "As in a small election, the people have spoken, and this time there is no politics.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La oración final",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hermanos, antes de salir, vamos a orar.",
+              "english": "Brothers and sisters, before leaving, let's pray.",
+              "speaker": "P"
+            },
+            {
+              "text": "Padre celestial, Dios santo, poderoso y fiel, tu amor es eterno.",
+              "english": "Heavenly Father, holy, powerful and faithful God, your love is eternal.",
+              "speaker": "P"
+            },
+            {
+              "text": "Tu nombre es sagrado y bendito.",
+              "english": "Your name is sacred and blessed.",
+              "speaker": "P"
+            },
+            {
+              "text": "Te damos gracias por tu perdón, por tu misericordia y por tu salvación.",
+              "english": "We thank you for your forgiveness, your mercy and your salvation.",
+              "speaker": "P"
+            },
+            {
+              "text": "Recibe nuestra petición: que cada madre y cada padre del pueblo conozca tu bendición.",
+              "english": "Receive our petition: that every mother and father in the village know your blessing.",
+              "speaker": "P"
+            },
+            {
+              "text": "Una última palabra.",
+              "english": "One last word.",
+              "speaker": "P"
+            },
+            {
+              "text": "Vamos a defender la paz del pueblo, y vamos a llevar el evangelio con amor.",
+              "english": "We are going to defend the peace of the village, and we are going to bring the gospel with love.",
+              "speaker": "P"
+            },
+            {
+              "text": "Dios es poderoso, y su gloria es divina, pero nosotros somos siervos.",
+              "english": "God is powerful, and his glory is divine, but we are servants.",
+              "speaker": "P"
+            },
+            {
+              "text": "El que predica, el que traduce y el que cocina son todos siervos.",
+              "english": "The one who preaches, the one who translates and the one who cooks are all servants.",
+              "speaker": "P"
+            },
+            {
+              "text": "Ojalá que cada uno disfrute su trabajo, y que el nombre glorioso de Dios sea conocido.",
+              "english": "I hope each one enjoys their work, and that God's glorious name is known.",
+              "speaker": "P"
+            },
+            {
+              "text": "La señal más grande de un cristiano es el amor.",
+              "english": "The greatest sign of a Christian is love.",
+              "speaker": "E"
+            },
+            {
+              "text": "Todo lo espiritual empieza ahí.",
+              "english": "Everything spiritual begins there.",
+              "speaker": "E"
+            },
+            {
+              "text": "Felicito al pastor por sus palabras.",
+              "english": "I congratulate the pastor on his words.",
+              "speaker": "E"
+            },
+            {
+              "text": "Lo sagrado y lo bendito no están lejos.",
+              "english": "What is sacred and blessed is not far away.",
+              "speaker": "V"
+            },
+            {
+              "text": "Están en el pan, en la mesa y en el vecino.",
+              "english": "It is in the bread, at the table and in the neighbour.",
+              "speaker": "V"
+            },
+            {
+              "text": "El Dios eterno nos conoce, y su promesa es fiel.",
+              "english": "The eternal God knows us, and his promise is faithful.",
+              "speaker": "A"
+            },
+            {
+              "text": "Cada profecía se cumple en él, y todo lo que hace es glorioso.",
+              "english": "Every prophecy is fulfilled in him, and everything he does is glorious.",
+              "speaker": "A"
+            },
+            {
+              "text": "Y el cordero de Dios camina con nosotros.",
+              "english": "And the lamb of God walks with us.",
+              "speaker": "L"
+            },
+            {
+              "text": "Nuestro Padre celestial nunca nos deja.",
+              "english": "Our heavenly Father never leaves us.",
+              "speaker": "L"
+            },
+            {
+              "text": "Te rogamos que seas con nosotros cuando vayamos al pueblo, para que la gente conozca tu gloria.",
+              "english": "We ask that you be with us when we go to the village, so that the people may know your glory.",
+              "speaker": "P"
+            },
+            {
+              "text": "Ojalá que ninguno de nosotros discuta sin amor, y que todos actuemos con justicia.",
+              "english": "May none of us argue without love, and may we all act with justice.",
+              "speaker": "P"
+            },
+            {
+              "text": "En el nombre de Jesús.",
+              "english": "In the name of Jesus.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

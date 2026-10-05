@@ -1,0 +1,898 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-01",
+  "lang": "es",
+  "title": "¿Ya has desayunado?",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-01",
+    "title": "\"¿Ya has desayunado?\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "S": "Sam",
+    "A": "Ana",
+    "M": "Doña Marta",
+    "N": "Nico",
+    "L": "Luis",
+    "D": "Daniel"
+  },
+  "sections": [
+    {
+      "title": "Una mañana en casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Buenos días, Sam.",
+              "english": "Good morning, Sam.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Ya has comido algo?",
+              "english": "Have you eaten anything yet?",
+              "speaker": "A"
+            },
+            {
+              "text": "Todavía no, Ana.",
+              "english": "Not yet, Ana.",
+              "speaker": "S"
+            },
+            {
+              "text": "Apenas me he levantado.",
+              "english": "I have only just got up.",
+              "speaker": "S"
+            },
+            {
+              "text": "Doña Marta ha hecho frijoles y tortillas, y hay café en la mesa.",
+              "english": "Doña Marta has made beans and tortillas, and there is coffee on the table.",
+              "speaker": "A"
+            },
+            {
+              "text": "Gracias.",
+              "english": "Thanks.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pero primero tengo que buscar mi llave.",
+              "english": "But first I have to look for my key.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿La has visto?",
+              "english": "Have you seen it?",
+              "speaker": "S"
+            },
+            {
+              "text": "No, no la he visto.",
+              "english": "No, I haven't seen it.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Dónde la has puesto?",
+              "english": "Where have you put it?",
+              "speaker": "A"
+            },
+            {
+              "text": "No lo sé.",
+              "english": "I don't know.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ayer la tenía en la bolsa, pero ahora no hay nada en la bolsa.",
+              "english": "Yesterday I had it in my bag, but now there is nothing in the bag.",
+              "speaker": "S"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "¿Qué pasa, hijos?",
+              "english": "What is going on, children?",
+              "speaker": "M"
+            },
+            {
+              "text": "¿Por qué todos hablan a la vez?",
+              "english": "Why is everybody talking at once?",
+              "speaker": "M"
+            },
+            {
+              "text": "Sam ha perdido su llave, doña Marta.",
+              "english": "Sam has lost his key, doña Marta.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Alguien la ha visto?",
+              "english": "Has anybody seen it?",
+              "speaker": "A"
+            },
+            {
+              "text": "Yo no, hija.",
+              "english": "Not I, dear.",
+              "speaker": "M"
+            },
+            {
+              "text": "Pobre Sam.",
+              "english": "Poor Sam.",
+              "speaker": "M"
+            },
+            {
+              "text": "¿Ya has buscado en tu cuarto?",
+              "english": "Have you already looked in your room?",
+              "speaker": "M"
+            },
+            {
+              "text": "Aún no.",
+              "english": "Not yet.",
+              "speaker": "S"
+            },
+            {
+              "text": "Primero quería tomar un café.",
+              "english": "First I wanted to have a coffee.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Aceptás un café?",
+              "english": "Will you accept a coffee?",
+              "speaker": "M"
+            },
+            {
+              "text": "Tomá el café y comé un poco.",
+              "english": "Have your coffee and eat a little.",
+              "speaker": "M"
+            },
+            {
+              "text": "Después buscamos otra vez.",
+              "english": "Afterwards we'll look again.",
+              "speaker": "M"
+            },
+            {
+              "text": "Acepto, doña Marta.",
+              "english": "I accept, doña Marta.",
+              "speaker": "S"
+            },
+            {
+              "text": "Usted siempre tiene razón.",
+              "english": "You are always right.",
+              "speaker": "S"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Abuela, yo no he visto nada.",
+              "english": "Grandmother, I haven't seen anything.",
+              "speaker": "N"
+            },
+            {
+              "text": "¿Puedo ayudar?",
+              "english": "Can I help?",
+              "speaker": "N"
+            },
+            {
+              "text": "Sí, Nico.",
+              "english": "Yes, Nico.",
+              "speaker": "M"
+            },
+            {
+              "text": "Preguntá a tu tío Luis si ha visto la llave.",
+              "english": "Ask your uncle Luis whether he has seen the key.",
+              "speaker": "M"
+            },
+            {
+              "text": "Yo tampoco la he visto, Nico.",
+              "english": "I haven't seen it either, Nico.",
+              "speaker": "L"
+            },
+            {
+              "text": "Ninguno de nosotros la ha visto.",
+              "english": "None of us has seen it.",
+              "speaker": "L"
+            },
+            {
+              "text": "Pero casi siempre la dejás en la bolsa, Sam, ¿verdad?",
+              "english": "But you almost always leave it in your bag, Sam, don't you?",
+              "speaker": "L"
+            },
+            {
+              "text": "Sí, casi siempre.",
+              "english": "Yes, almost always.",
+              "speaker": "S"
+            },
+            {
+              "text": "Jamás he perdido una llave en mi vida.",
+              "english": "I have never lost a key in my life.",
+              "speaker": "S"
+            },
+            {
+              "text": "Jamás he conocido a nadie que no pierda algo, hijo.",
+              "english": "I have never met anybody who doesn't lose something, son.",
+              "speaker": "M"
+            },
+            {
+              "text": "Todos perdemos una llave alguna vez.",
+              "english": "We all lose a key sometime.",
+              "speaker": "M"
+            },
+            {
+              "text": "Bueno, hay que intentar otra vez.",
+              "english": "Well, we must try again.",
+              "speaker": "A"
+            },
+            {
+              "text": "Vamos a buscar en tu cuarto.",
+              "english": "Let's look in your room.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La llave",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam, Ana y Nico entran en el cuarto.",
+              "english": "Sam, Ana and Nico go into the room."
+            },
+            {
+              "text": "La cama está sin hacer, porque Sam apenas se ha levantado.",
+              "english": "The bed is unmade, because Sam has only just got up."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Aquí no hay nada, Sam.",
+              "english": "There is nothing here, Sam.",
+              "speaker": "N"
+            },
+            {
+              "text": "¿Has buscado en el pantalón de ayer?",
+              "english": "Have you looked in yesterday's trousers?",
+              "speaker": "N"
+            },
+            {
+              "text": "No.",
+              "english": "No.",
+              "speaker": "S"
+            },
+            {
+              "text": "Aún no he mirado el pantalón.",
+              "english": "I haven't looked at the trousers yet.",
+              "speaker": "S"
+            },
+            {
+              "text": "Un momento...",
+              "english": "Just a moment...",
+              "speaker": "S"
+            },
+            {
+              "text": "¡Aquí está!",
+              "english": "Here it is!",
+              "speaker": "S"
+            },
+            {
+              "text": "La llave estaba en el pantalón.",
+              "english": "The key was in the trousers.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Ves?",
+              "english": "You see?",
+              "speaker": "A"
+            },
+            {
+              "text": "Cuando buscamos con paz, alguien siempre descubre algo.",
+              "english": "When we search in peace, somebody always discovers something.",
+              "speaker": "A"
+            },
+            {
+              "text": "Me he equivocado, Ana.",
+              "english": "I made a mistake, Ana.",
+              "speaker": "S"
+            },
+            {
+              "text": "Creía que la llave estaba en la bolsa, pero no era verdad.",
+              "english": "I thought the key was in the bag, but it wasn't true.",
+              "speaker": "S"
+            },
+            {
+              "text": "Sam, ¿has notado que el pantalón tiene una bolsa grande?",
+              "english": "Sam, have you noticed that the trousers have a big pocket?",
+              "speaker": "N"
+            },
+            {
+              "text": "Ahí pusiste la llave.",
+              "english": "There you put the key.",
+              "speaker": "N"
+            },
+            {
+              "text": "Es verdad, Nico.",
+              "english": "That's true, Nico.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ya hemos resuelto el problema.",
+              "english": "We have already solved the problem.",
+              "speaker": "S"
+            },
+            {
+              "text": "Gracias a los dos.",
+              "english": "Thanks to you both.",
+              "speaker": "S"
+            },
+            {
+              "text": "Yo he descubierto la llave, ¿verdad?",
+              "english": "I discovered the key, didn't I?",
+              "speaker": "N"
+            },
+            {
+              "text": "Entonces quiero un plátano.",
+              "english": "Then I want a banana.",
+              "speaker": "N"
+            },
+            {
+              "text": "He notado que siempre pedís un plátano cuando ayudás.",
+              "english": "I have noticed that you always ask for a banana when you help.",
+              "speaker": "A"
+            },
+            {
+              "text": "Pero está bien.",
+              "english": "But that's fine.",
+              "speaker": "A"
+            },
+            {
+              "text": "De nada.",
+              "english": "You're welcome.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ahora sí, a comer.",
+              "english": "Now, let's eat.",
+              "speaker": "A"
+            },
+            {
+              "text": "Doña Marta no ha comido todavía y nos espera.",
+              "english": "Doña Marta hasn't eaten yet and is waiting for us.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un amigo de otra nación",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después del desayuno, Luis llega con un amigo.",
+              "english": "After breakfast, Luis arrives with a friend."
+            },
+            {
+              "text": "El amigo es salvadoreño y se llama Daniel.",
+              "english": "The friend is Salvadoran and is called Daniel."
+            },
+            {
+              "text": "Hoy ha venido a Honduras por primera vez y quiere conocer el país.",
+              "english": "Today he has come to Honduras for the first time and wants to get to know the country."
+            },
+            {
+              "text": "Luis ha mencionado a Daniel muchas veces en casa, pero nadie lo conoce.",
+              "english": "Luis has mentioned Daniel several times at home, but nobody knows him."
+            },
+            {
+              "text": "Apenas ha llegado, y ya quiere intentar hablar como los hondureños.",
+              "english": "He has only just arrived, and he already wants to try to speak like the Hondurans."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Daniel, ¿has estado alguna vez en Honduras?",
+              "english": "Daniel, have you ever been in Honduras?",
+              "speaker": "L"
+            },
+            {
+              "text": "No, jamás he venido por aquí.",
+              "english": "No, I have never come this way.",
+              "speaker": "D"
+            },
+            {
+              "text": "Solo conozco la frontera.",
+              "english": "I only know the border.",
+              "speaker": "D"
+            },
+            {
+              "text": "Entonces tenés mucho que ver.",
+              "english": "Then you have a lot to see.",
+              "speaker": "L"
+            },
+            {
+              "text": "Honduras es una nación de Centroamérica, como tu país.",
+              "english": "Honduras is a nation in Central America, just like your country.",
+              "speaker": "L"
+            },
+            {
+              "text": "Sí, somos dos naciones centroamericanas.",
+              "english": "Yes, we are two Central American nations.",
+              "speaker": "D"
+            },
+            {
+              "text": "He notado que aquí todos saludan a todos, y he descubierto que me gusta.",
+              "english": "I have noticed that here everybody greets everybody, and I have discovered that I like it.",
+              "speaker": "D"
+            },
+            {
+              "text": "Pero aún no sé nada del norte, y mi hermano tampoco.",
+              "english": "But I still know nothing about the north, and my brother doesn't either.",
+              "speaker": "D"
+            },
+            {
+              "text": "En el norte hay una costa muy bonita.",
+              "english": "In the north there is a very pretty coast.",
+              "speaker": "L"
+            },
+            {
+              "text": "Y hay islas, también.",
+              "english": "And there are islands, too.",
+              "speaker": "L"
+            },
+            {
+              "text": "¿Y en el sur?",
+              "english": "And in the south?",
+              "speaker": "D"
+            },
+            {
+              "text": "¿Hay valles y bosques?",
+              "english": "Are there valleys and forests?",
+              "speaker": "D"
+            },
+            {
+              "text": "Sí.",
+              "english": "Yes.",
+              "speaker": "L"
+            },
+            {
+              "text": "En el sur hace más calor.",
+              "english": "In the south it is hotter.",
+              "speaker": "L"
+            },
+            {
+              "text": "La temperatura sube mucho en verano.",
+              "english": "The temperature rises a lot in summer.",
+              "speaker": "L"
+            },
+            {
+              "text": "He oído que hay un lago grande.",
+              "english": "I have heard there is a big lake.",
+              "speaker": "D"
+            },
+            {
+              "text": "¿Alguno de ustedes lo ha visto?",
+              "english": "Has any of you seen it?",
+              "speaker": "D"
+            },
+            {
+              "text": "Yo sí.",
+              "english": "I have.",
+              "speaker": "A"
+            },
+            {
+              "text": "Lo he visto con mi familia.",
+              "english": "I have seen it with my family.",
+              "speaker": "A"
+            },
+            {
+              "text": "Allí hay aves y hasta monos en el bosque.",
+              "english": "There are birds there and even monkeys in the forest.",
+              "speaker": "A"
+            },
+            {
+              "text": "¡Monos!",
+              "english": "Monkeys!",
+              "speaker": "D"
+            },
+            {
+              "text": "Yo nunca he visto un mono de cerca.",
+              "english": "I have never seen a monkey up close.",
+              "speaker": "D"
+            },
+            {
+              "text": "Quiero ver uno pronto.",
+              "english": "I want to see one soon.",
+              "speaker": "D"
+            },
+            {
+              "text": "Vení con nosotros el sábado.",
+              "english": "Come with us on Saturday.",
+              "speaker": "L"
+            },
+            {
+              "text": "Hemos pensado ir al lago.",
+              "english": "We have thought of going to the lake.",
+              "speaker": "L"
+            },
+            {
+              "text": "Gracias, acepto con gusto.",
+              "english": "Thank you, I accept gladly.",
+              "speaker": "D"
+            },
+            {
+              "text": "No dudo que va a ser un día muy bueno.",
+              "english": "I don't doubt it is going to be a very good day.",
+              "speaker": "D"
+            },
+            {
+              "text": "Yo tampoco lo dudo.",
+              "english": "I don't doubt it either.",
+              "speaker": "A"
+            },
+            {
+              "text": "Pero nadie ha mirado la hora todavía.",
+              "english": "But nobody has looked at the time yet.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿A qué hora salimos?",
+              "english": "At what time do we leave?",
+              "speaker": "A"
+            },
+            {
+              "text": "Ninguno de nosotros quiere llegar tarde.",
+              "english": "None of us wants to arrive late.",
+              "speaker": "L"
+            },
+            {
+              "text": "Salimos a las seis.",
+              "english": "We leave at six.",
+              "speaker": "L"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las noticias de doña Marta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde, doña Marta y Ana hablan en la mesa.",
+              "english": "In the afternoon, doña Marta and Ana talk at the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ana, ¿has hablado con el doctor?",
+              "english": "Ana, have you spoken with the doctor?",
+              "speaker": "M"
+            },
+            {
+              "text": "Sí, doña Marta.",
+              "english": "Yes, doña Marta.",
+              "speaker": "A"
+            },
+            {
+              "text": "Al comienzo de la semana nadie me dijo nada, pero hoy el doctor me ha mencionado una buena cosa.",
+              "english": "At the start of the week nobody told me anything, but today the doctor has mentioned a good thing to me.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Qué te ha dicho?",
+              "english": "What has he told you?",
+              "speaker": "M"
+            },
+            {
+              "text": "Ha obtenido más pastillas para el pueblo.",
+              "english": "He has obtained more pills for the village.",
+              "speaker": "A"
+            },
+            {
+              "text": "Hay que continuar con el trabajo, dice.",
+              "english": "We must continue with the work, he says.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Y quién las ha pagado?",
+              "english": "And who has paid for them?",
+              "speaker": "M"
+            },
+            {
+              "text": "Una iglesia de otra ciudad.",
+              "english": "A church in another city.",
+              "speaker": "A"
+            },
+            {
+              "text": "El doctor ha obtenido el dinero con una carta.",
+              "english": "The doctor obtained the money with a letter.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ninguno de los vecinos ha dudado de ese doctor.",
+              "english": "None of the neighbours has doubted that doctor.",
+              "speaker": "M"
+            },
+            {
+              "text": "Es un hombre bueno.",
+              "english": "He is a good man.",
+              "speaker": "M"
+            },
+            {
+              "text": "Es verdad.",
+              "english": "It's true.",
+              "speaker": "A"
+            },
+            {
+              "text": "Al inicio del año yo quería cambiar de trabajo, pero ahora voy a continuar.",
+              "english": "At the beginning of the year I wanted to change jobs, but now I am going to continue.",
+              "speaker": "A"
+            },
+            {
+              "text": "Desde el comienzo he aprendido mucho.",
+              "english": "Since the start I have learned a lot.",
+              "speaker": "A"
+            },
+            {
+              "text": "Qué bueno.",
+              "english": "How good.",
+              "speaker": "M"
+            },
+            {
+              "text": "Nadie ayuda como vos.",
+              "english": "Nobody helps like you.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una carta a casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche, Sam escribe una carta.",
+              "english": "That night Sam writes a letter."
+            },
+            {
+              "text": "Está en su cuarto, con la mesa y una taza de café.",
+              "english": "He is in his room, with the table and a cup of coffee."
+            },
+            {
+              "text": "Escribe con cuidado, porque aún no quiere equivocarse en español.",
+              "english": "He writes carefully, because he doesn't want to make mistakes in Spanish yet."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Querida Sofía:",
+              "english": "Dear Sofía,"
+            },
+            {
+              "text": "Te extraño mucho.",
+              "english": "I miss you a lot."
+            },
+            {
+              "text": "Todavía no he recibido tu carta, pero sé que vas a escribir pronto.",
+              "english": "I haven't received your letter yet, but I know you will write soon."
+            },
+            {
+              "text": "Hoy ha sido un día difícil.",
+              "english": "Today has been a difficult day."
+            },
+            {
+              "text": "Primero perdí mi llave, y después la encontré en el pantalón.",
+              "english": "First I lost my key, and then I found it in my trousers."
+            },
+            {
+              "text": "Resolví el problema con la ayuda de Nico.",
+              "english": "I solved the problem with Nico's help."
+            },
+            {
+              "text": "Él me ha dicho que casi todos los días alguien pierde algo en esta casa.",
+              "english": "He told me that almost every day somebody loses something in this house."
+            },
+            {
+              "text": "Ya he vuelto a trabajar con el equipo, y esta semana he conocido a muchas personas.",
+              "english": "I have already gone back to working with the team, and this week I have met many people."
+            },
+            {
+              "text": "Algunos hablan mucho y yo entiendo poco.",
+              "english": "Some talk a lot and I understand little."
+            },
+            {
+              "text": "Les pido que repitan las palabras, y todos me ayudan.",
+              "english": "I ask them to repeat the words, and everyone helps me."
+            },
+            {
+              "text": "He intentado hablar solo en español durante dos días.",
+              "english": "I have tried to speak only Spanish for two days."
+            },
+            {
+              "text": "Todavía no comprendo todo, pero ya entiendo más que antes.",
+              "english": "I don't understand everything yet, but I already understand more than before."
+            },
+            {
+              "text": "Voy a continuar así.",
+              "english": "I am going to continue like this."
+            },
+            {
+              "text": "Al inicio de la semana no entendía nada, y jamás he trabajado así con un idioma.",
+              "english": "At the start of the week I understood nothing, and I have never worked like this on a language."
+            },
+            {
+              "text": "Un abrazo y mucho cariño para mamá y papá.",
+              "english": "A hug and lots of love for Mom and Dad."
+            },
+            {
+              "text": "Tu hermano, Sam",
+              "english": "Your brother, Sam"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un cuarto para alquilar",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Al otro día, Ana llega a la casa con una noticia.",
+              "english": "The next day, Ana comes to the house with some news."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam, mi amiga Karla ha obtenido un cuarto cerca de la clínica y lo ha alquilado.",
+              "english": "Sam, my friend Karla has got a room near the clinic and has rented it.",
+              "speaker": "A"
+            },
+            {
+              "text": "Dice que desde el comienzo del mes hay lugar para otra persona.",
+              "english": "She says that since the start of the month there is room for another person.",
+              "speaker": "A"
+            },
+            {
+              "text": "Así resolvemos tu problema.",
+              "english": "That way we solve your problem.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Cuál es el valor?",
+              "english": "What is the price?",
+              "speaker": "S"
+            },
+            {
+              "text": "Desde el inicio quiero pagar poco, porque no tengo mucho dinero todavía.",
+              "english": "From the start I want to pay little, because I don't have much money yet.",
+              "speaker": "S"
+            },
+            {
+              "text": "No lo sé.",
+              "english": "I don't know.",
+              "speaker": "A"
+            },
+            {
+              "text": "Ella no me ha mencionado el valor.",
+              "english": "She hasn't mentioned the price to me.",
+              "speaker": "A"
+            },
+            {
+              "text": "Pero yo no creo que sea caro.",
+              "english": "But I don't think it is expensive.",
+              "speaker": "A"
+            },
+            {
+              "text": "¿Adónde tengo que ir?",
+              "english": "Where do I have to go?",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Acá, o allá, cerca del mercado?",
+              "english": "Here, or over there, near the market?",
+              "speaker": "S"
+            },
+            {
+              "text": "Allá, cerca del mercado.",
+              "english": "Over there, near the market.",
+              "speaker": "A"
+            },
+            {
+              "text": "Corré a buscar tu bolsa y vamos ahora.",
+              "english": "Run and get your bag and we'll go now.",
+              "speaker": "A"
+            },
+            {
+              "text": "Un momento.",
+              "english": "One moment.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Y la llave?",
+              "english": "What about the key?",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Dónde la he puesto?",
+              "english": "Where have I put it?",
+              "speaker": "S"
+            },
+            {
+              "text": "Sam, la llave la tenés en la mano.",
+              "english": "Sam, you have the key in your hand.",
+              "speaker": "A"
+            },
+            {
+              "text": "Me he equivocado otra vez.",
+              "english": "I've made a mistake again.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,685 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-16",
+  "lang": "es",
+  "title": "Carlos looks for work",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-16",
+    "title": "Carlos looks for work (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "work"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "C": "Carlos",
+    "P": "Señora",
+    "E": "Esposa",
+    "J": "Señor",
+    "B": "Banco",
+    "Z": "Pastor",
+    "S": "Sam"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "El aviso",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Carlos es un hombre joven.",
+              "english": "Carlos is a young man."
+            },
+            {
+              "text": "Tiene veinticinco años y una niña pequeña.",
+              "english": "He is twenty-five and has a little girl."
+            },
+            {
+              "text": "Carlos es carpintero, pero ahora no tiene empleo.",
+              "english": "Carlos is a carpenter, but now he has no job."
+            },
+            {
+              "text": "Está triste.",
+              "english": "He is sad."
+            },
+            {
+              "text": "Busca chamba todos los días.",
+              "english": "He looks for work every day."
+            },
+            {
+              "text": "Hoy camina a la pulpería.",
+              "english": "Today he walks to the shop."
+            },
+            {
+              "text": "Allí hay un aviso.",
+              "english": "There is a notice there."
+            },
+            {
+              "text": "El aviso dice: \"Se necesita mecánico.",
+              "english": "The notice says: \"Mechanic needed."
+            },
+            {
+              "text": "Empresa de autobuses.",
+              "english": "Bus company."
+            },
+            {
+              "text": "Horario: de las siete a las cinco.",
+              "english": "Hours: from seven to five."
+            },
+            {
+              "text": "Sueldo: tres mil lempiras al mes.",
+              "english": "Wage: three thousand lempiras a month."
+            },
+            {
+              "text": "Hablar con el jefe.\"",
+              "english": "Speak with the boss.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Con la señora de la pulpería",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "P",
+              "text": "Buenos días, Carlos.",
+              "english": "Good morning, Carlos."
+            },
+            {
+              "speaker": "P",
+              "text": "¿Conseguiste chamba?",
+              "english": "Did you get work?"
+            },
+            {
+              "speaker": "C",
+              "text": "No, señora.",
+              "english": "No, ma'am."
+            },
+            {
+              "speaker": "C",
+              "text": "Pero hoy hay un aviso.",
+              "english": "But today there is a notice."
+            },
+            {
+              "speaker": "P",
+              "text": "Qué bueno.",
+              "english": "How good."
+            },
+            {
+              "speaker": "P",
+              "text": "Es una empresa buena.",
+              "english": "It is a good company."
+            },
+            {
+              "speaker": "C",
+              "text": "Soy carpintero, pero también soy mecánico.",
+              "english": "I am a carpenter, but I am also a mechanic."
+            },
+            {
+              "speaker": "P",
+              "text": "Entonces hablá con el jefe.",
+              "english": "Then talk to the boss."
+            },
+            {
+              "speaker": "P",
+              "text": "Es un hombre alto y amable.",
+              "english": "He is a tall and kind man."
+            },
+            {
+              "speaker": "C",
+              "text": "Gracias, señora.",
+              "english": "Thank you, ma'am."
+            },
+            {
+              "speaker": "C",
+              "text": "Dios la bendice.",
+              "english": "God bless you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En la casa de Carlos",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Carlos vive con su esposa y su niña.",
+              "english": "Carlos lives with his wife and his little girl."
+            },
+            {
+              "text": "Su esposa vende baleadas en la calle.",
+              "english": "His wife sells baleadas in the street."
+            },
+            {
+              "text": "Ella agrega queso, tomate y verdura con una cuchara, y fríe la tortilla con aceite.",
+              "english": "She adds cheese, tomato and vegetables with a spoon, and fries the tortilla with oil."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "C",
+              "text": "Hay trabajo para mí.",
+              "english": "There is work for me."
+            },
+            {
+              "speaker": "C",
+              "text": "Quiero conseguir el empleo.",
+              "english": "I want to get the job."
+            },
+            {
+              "speaker": "E",
+              "text": "Dios te ayuda, Carlos.",
+              "english": "God helps you, Carlos."
+            },
+            {
+              "speaker": "E",
+              "text": "Mañana es el cumpleaños de nuestra niña.",
+              "english": "Tomorrow is our little girl's birthday."
+            },
+            {
+              "speaker": "E",
+              "text": "Necesitamos dinero.",
+              "english": "We need money."
+            },
+            {
+              "speaker": "C",
+              "text": "Pues, mañana hablo con el jefe.",
+              "english": "Well, tomorrow I talk with the boss."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La entrevista",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Por la mañana, Carlos llega a la empresa.",
+              "english": "In the morning, Carlos arrives at the company."
+            },
+            {
+              "text": "Los autobuses son rojos y verdes.",
+              "english": "The buses are red and green."
+            },
+            {
+              "text": "El lugar es limpio, blanco y azul.",
+              "english": "The place is clean, white and blue."
+            },
+            {
+              "text": "El señor es delgado y simpático.",
+              "english": "The man is thin and nice."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "J",
+              "text": "Buenos días.",
+              "english": "Good morning."
+            },
+            {
+              "speaker": "J",
+              "text": "¿Cómo se llama usted?",
+              "english": "What is your name?"
+            },
+            {
+              "speaker": "C",
+              "text": "Me llamo Carlos.",
+              "english": "My name is Carlos."
+            },
+            {
+              "speaker": "C",
+              "text": "Soy carpintero y mecánico.",
+              "english": "I am a carpenter and a mechanic."
+            },
+            {
+              "speaker": "J",
+              "text": "¿Qué hizo usted ayer?",
+              "english": "What did you do yesterday?"
+            },
+            {
+              "speaker": "C",
+              "text": "Ayer ayudé a un señor con un autobús viejo.",
+              "english": "Yesterday I helped a man with an old bus."
+            },
+            {
+              "speaker": "J",
+              "text": "¿Cuánto tiempo trabajó usted allí?",
+              "english": "How long did you work there?"
+            },
+            {
+              "speaker": "C",
+              "text": "Trabajé ocho meses en el negocio de un amigo.",
+              "english": "I worked eight months at a friend's business."
+            },
+            {
+              "speaker": "C",
+              "text": "Pero ahora el negocio no tiene dinero.",
+              "english": "But now the business has no money."
+            },
+            {
+              "speaker": "J",
+              "text": "¿Por qué quiere trabajar aquí?",
+              "english": "Why do you want to work here?"
+            },
+            {
+              "speaker": "C",
+              "text": "Tengo una niña pequeña.",
+              "english": "I have a little girl."
+            },
+            {
+              "speaker": "C",
+              "text": "No quiero gastar todo el dinero.",
+              "english": "I do not want to spend all the money."
+            },
+            {
+              "speaker": "C",
+              "text": "Necesito ahorrar en el banco.",
+              "english": "I need to save at the bank."
+            },
+            {
+              "speaker": "C",
+              "text": "Tengo una cuenta, pero no tiene mucho.",
+              "english": "I have an account, but it does not have much."
+            },
+            {
+              "speaker": "J",
+              "text": "¿Y el horario?",
+              "english": "And the schedule?"
+            },
+            {
+              "speaker": "J",
+              "text": "¿Puede trabajar de las siete a las cinco?",
+              "english": "Can you work from seven to five?"
+            },
+            {
+              "speaker": "C",
+              "text": "Claro.",
+              "english": "Of course."
+            },
+            {
+              "speaker": "C",
+              "text": "Pues, necesito trabajar.",
+              "english": "Well, I need to work."
+            },
+            {
+              "speaker": "J",
+              "text": "El sueldo es tres mil lempiras al mes.",
+              "english": "The wage is three thousand lempiras a month."
+            },
+            {
+              "speaker": "C",
+              "text": "Es muy bueno para mí.",
+              "english": "That is very good for me."
+            },
+            {
+              "speaker": "J",
+              "text": "¿Es usted cristiano?",
+              "english": "Are you a Christian?"
+            },
+            {
+              "speaker": "C",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "C",
+              "text": "Yo fui una oveja perdida.",
+              "english": "I was a lost sheep."
+            },
+            {
+              "speaker": "C",
+              "text": "Dios me salvó.",
+              "english": "God saved me."
+            },
+            {
+              "speaker": "C",
+              "text": "Fue un milagro.",
+              "english": "It was a miracle."
+            },
+            {
+              "speaker": "C",
+              "text": "Adoro a Dios y leo la Biblia.",
+              "english": "I worship God and I read the Bible."
+            },
+            {
+              "speaker": "C",
+              "text": "Dios perdona a todos en el mundo.",
+              "english": "God forgives everyone in the world."
+            },
+            {
+              "speaker": "C",
+              "text": "Mi esposa es un ángel de Dios.",
+              "english": "My wife is an angel of God."
+            },
+            {
+              "speaker": "J",
+              "text": "Qué bien, Carlos.",
+              "english": "Very good, Carlos."
+            },
+            {
+              "speaker": "J",
+              "text": "El lunes trabaja con nosotros.",
+              "english": "On Monday you work with us."
+            },
+            {
+              "speaker": "C",
+              "text": "¡Gracias!",
+              "english": "Thank you!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una chamba buena",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Carlos consiguió el empleo.",
+              "english": "Carlos got the job."
+            },
+            {
+              "text": "Es una chamba buena.",
+              "english": "It is a good job."
+            },
+            {
+              "text": "El lunes llega a las siete, como dice el horario.",
+              "english": "On Monday he arrives at seven, as the schedule says."
+            },
+            {
+              "text": "Trabaja con otros hombres, y todos son amables.",
+              "english": "He works with other men, and they are all kind."
+            },
+            {
+              "text": "Un día, Carlos quiere tener un negocio.",
+              "english": "Someday, Carlos wants to have a business."
+            },
+            {
+              "text": "El autobús viejo es negro y feo, pero Carlos va a trabajar con él.",
+              "english": "The old bus is black and ugly, but Carlos is going to work on it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El domingo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El domingo Carlos va al culto con su esposa y su niña.",
+              "english": "On Sunday Carlos goes to the service with his wife and his little girl."
+            },
+            {
+              "text": "Cantan un himno y una canción.",
+              "english": "They sing a hymn and a song."
+            },
+            {
+              "text": "La niña canta también.",
+              "english": "The little girl sings too."
+            },
+            {
+              "text": "Después del culto, el pastor habla con Carlos.",
+              "english": "After the service, the pastor talks with Carlos."
+            },
+            {
+              "text": "Sam también está allí.",
+              "english": "Sam is there too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "Z",
+              "text": "Carlos, ¿cómo está tu familia?",
+              "english": "Carlos, how is your family?"
+            },
+            {
+              "speaker": "C",
+              "text": "Bien, pastor.",
+              "english": "Fine, pastor."
+            },
+            {
+              "speaker": "C",
+              "text": "Ahora tengo trabajo.",
+              "english": "Now I have work."
+            },
+            {
+              "speaker": "Z",
+              "text": "Dios es bueno.",
+              "english": "God is good."
+            },
+            {
+              "speaker": "Z",
+              "text": "Hoy es un buen día para dar gracias.",
+              "english": "Today is a good day to give thanks."
+            },
+            {
+              "speaker": "C",
+              "text": "Sí.",
+              "english": "Yes."
+            },
+            {
+              "speaker": "C",
+              "text": "Voy a poner una ofrenda en la bolsa.",
+              "english": "I am going to put an offering in the bag."
+            },
+            {
+              "speaker": "S",
+              "text": "Buenos días, Carlos.",
+              "english": "Good morning, Carlos."
+            },
+            {
+              "speaker": "S",
+              "text": "Qué bueno que ya tenés trabajo.",
+              "english": "How good that you have work now."
+            },
+            {
+              "speaker": "C",
+              "text": "Gracias, Sam.",
+              "english": "Thank you, Sam."
+            },
+            {
+              "speaker": "C",
+              "text": "Vení a mi casa.",
+              "english": "Come to my house."
+            },
+            {
+              "speaker": "C",
+              "text": "Mi esposa prepara baleadas.",
+              "english": "My wife prepares baleadas."
+            },
+            {
+              "speaker": "S",
+              "text": "Claro, voy con gusto.",
+              "english": "Of course, I will gladly come."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El primer sueldo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Al fin del mes, Carlos tiene su primer sueldo.",
+              "english": "At the end of the month, Carlos has his first wage."
+            },
+            {
+              "text": "Primero paga la comida y la casa.",
+              "english": "First he pays for the food and the house."
+            },
+            {
+              "text": "Luego va al banco con su esposa.",
+              "english": "Then he goes to the bank with his wife."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "B",
+              "text": "Buenos días.",
+              "english": "Good morning."
+            },
+            {
+              "speaker": "B",
+              "text": "¿Qué necesitan?",
+              "english": "What do you need?"
+            },
+            {
+              "speaker": "C",
+              "text": "Queremos poner dinero en una cuenta.",
+              "english": "We want to put money in an account."
+            },
+            {
+              "speaker": "B",
+              "text": "¿Tienen una cuenta en el banco?",
+              "english": "Do you have an account at the bank?"
+            },
+            {
+              "speaker": "E",
+              "text": "No.",
+              "english": "No."
+            },
+            {
+              "speaker": "E",
+              "text": "Es para la niña.",
+              "english": "It is for the little girl."
+            },
+            {
+              "speaker": "C",
+              "text": "Queremos ahorrar.",
+              "english": "We want to save."
+            },
+            {
+              "speaker": "C",
+              "text": "Gastamos mucho.",
+              "english": "We spend a lot."
+            },
+            {
+              "speaker": "E",
+              "text": "Ahora vamos a gastar menos.",
+              "english": "Now we are going to spend less."
+            },
+            {
+              "speaker": "B",
+              "text": "Es muy bueno ahorrar.",
+              "english": "It is very good to save."
+            },
+            {
+              "speaker": "B",
+              "text": "Dios bendice a su familia.",
+              "english": "God bless your family."
+            },
+            {
+              "speaker": "C",
+              "text": "Gracias, señora.",
+              "english": "Thank you, ma'am."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Carlos y su esposa salen de allí.",
+              "english": "Carlos and his wife leave."
+            },
+            {
+              "text": "Están contentos.",
+              "english": "They are happy."
+            },
+            {
+              "text": "Carlos lleva pan y un regalo para su niña.",
+              "english": "Carlos takes bread and a present for his little girl."
+            },
+            {
+              "text": "Su casa es pequeña, pero es bonita.",
+              "english": "Their house is small, but it is pretty."
+            },
+            {
+              "text": "En la casa, la familia celebra el cumpleaños de la niña.",
+              "english": "At home, the family celebrates the little girl's birthday."
+            },
+            {
+              "text": "Carlos dice: \"Pues, todo está bien.",
+              "english": "Carlos says: \"Well, everything is fine."
+            },
+            {
+              "text": "Dios es bueno.\"",
+              "english": "God is good.\""
+            },
+            {
+              "text": "Su esposa dice: \"Sí.",
+              "english": "His wife says: \"Yes."
+            },
+            {
+              "text": "Gracias a Dios.\"",
+              "english": "Thank God.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

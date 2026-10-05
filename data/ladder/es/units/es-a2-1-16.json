@@ -1,0 +1,541 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-16",
+  "lang": "es",
+  "title": "David y Laura",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-16",
+    "title": "A missionary couple (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography",
+    "mission",
+    "culture"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Una entrevista",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam quiere escribir la vida de David y Laura para el grupo del equipo.",
+              "english": "Sam wants to write the life story of David and Laura for the team group."
+            },
+            {
+              "text": "Los dos viven en el pueblo desde hace ocho años.",
+              "english": "The two have lived in the village for eight years."
+            },
+            {
+              "text": "Hoy son líderes de un ministerio con jóvenes.",
+              "english": "Today they are leaders of a ministry with young people."
+            },
+            {
+              "text": "Hoy el ministerio tiene un taller y una granja.",
+              "english": "Today the ministry has a workshop and a farm."
+            },
+            {
+              "text": "Una tarde, Sam llega a su casa con su celular y muchas preguntas.",
+              "english": "One afternoon, Sam arrives at their house with his phone and many questions."
+            },
+            {
+              "text": "—Pasá, Sam —dice Laura—.",
+              "english": "\"Come in, Sam,\" says Laura."
+            },
+            {
+              "text": "Primero el café.",
+              "english": "\"Coffee first.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Antes de Honduras",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hace diez años, David era ingeniero y Laura era directora de una escuela.",
+              "english": "Ten years ago, David was an engineer and Laura was the director of a school."
+            },
+            {
+              "text": "No eran ricos, pero tenían una casa, un carro y buenos amigos.",
+              "english": "They were not rich, but they had a house, a car and good friends."
+            },
+            {
+              "text": "Un día, una brigada médica de su iglesia viajó a Honduras, y ellos fueron con el grupo.",
+              "english": "One day, a medical brigade from their church traveled to Honduras, and they went with the group."
+            },
+            {
+              "text": "Durante dos semanas trabajaron en un pueblo pequeño.",
+              "english": "For two weeks they worked in a small village."
+            },
+            {
+              "text": "Allí vieron a mucha gente pobre.",
+              "english": "There they saw many poor people."
+            },
+            {
+              "text": "David trabajó con los campesinos y arregló un camino.",
+              "english": "David worked with the farmers and fixed a road."
+            },
+            {
+              "text": "Laura ayudó en la clínica.",
+              "english": "Laura helped in the clinic."
+            },
+            {
+              "text": "—Volvimos a casa, pero no podíamos olvidar el pueblo —dice Laura.",
+              "english": "\"We went back home, but we could not forget the village,\" says Laura."
+            },
+            {
+              "text": "—Esa fue la razón —dice David—.",
+              "english": "\"That was the reason,\" says David."
+            },
+            {
+              "text": "Tenían razón los vecinos: el pueblo nos necesitaba.",
+              "english": "\"The neighbors were right: the village needed us."
+            },
+            {
+              "text": "No hay una sola solución, pero siempre hay una.",
+              "english": "There is no single solution, but there is always one.\""
+            },
+            {
+              "text": "Teníamos buenos empleos, pero queríamos servir.",
+              "english": "\"We had good jobs, but we wanted to serve.\""
+            },
+            {
+              "text": "Hablaron con su familia y con su pastor, y oraron muchos meses.",
+              "english": "They talked with their family and their pastor, and they prayed for many months."
+            },
+            {
+              "text": "Por esta razón, por fin decidieron dejar su país.",
+              "english": "For this reason, at last they decided to leave their country."
+            },
+            {
+              "text": "David dejó su empleo, y Laura dejó su escuela.",
+              "english": "David left his job, and Laura left her school."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El primer año",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Llegaron a Honduras en enero.",
+              "english": "They arrived in Honduras in January."
+            },
+            {
+              "text": "Entraron a la casa de una familia del pueblo.",
+              "english": "They went into the house of a family in the village."
+            },
+            {
+              "text": "No hablaban bien el idioma.",
+              "english": "They did not speak the language well."
+            },
+            {
+              "text": "El primer problema fue el idioma.",
+              "english": "The first problem was the language."
+            },
+            {
+              "text": "—Yo quería decir «gracias» y decía otra palabra —cuenta Laura—.",
+              "english": "\"I wanted to say 'thank you' and I said another word,\" Laura tells."
+            },
+            {
+              "text": "La gente me miraba y no comprendía.",
+              "english": "\"People looked at me and did not understand.\""
+            },
+            {
+              "text": "La solución fue estudiar todos los días y hablar con los vecinos.",
+              "english": "The solution was to study every day and talk with the neighbors."
+            },
+            {
+              "text": "Lucharon mucho.",
+              "english": "They struggled a lot."
+            },
+            {
+              "text": "Cada noche estudiaban hasta tarde, y el esfuerzo fue grande.",
+              "english": "Every night they studied until late, and the effort was great."
+            },
+            {
+              "text": "—Luchamos con el idioma y luchamos con el calor —dice Laura—.",
+              "english": "\"We fought with the language and we fought with the heat,\" says Laura."
+            },
+            {
+              "text": "Con esfuerzo, todo se puede.",
+              "english": "\"With effort, everything is possible.\""
+            },
+            {
+              "text": "Un año después lograron hablar sin problemas.",
+              "english": "A year later they managed to speak without problems."
+            },
+            {
+              "text": "Hubo problemas con el agua, y la solución fue ayudar entre todos.",
+              "english": "There were problems with the water, and the solution was to help one another."
+            },
+            {
+              "text": "Hubo otras cosas difíciles: la comida, el calor y los insectos.",
+              "english": "There were other hard things: the food, the heat and the insects."
+            },
+            {
+              "text": "En marzo, Laura se enfermó de dengue.",
+              "english": "In March, Laura got sick with dengue."
+            },
+            {
+              "text": "Tuvo fiebre durante una semana.",
+              "english": "She had a fever for a week."
+            },
+            {
+              "text": "La farmacia estaba lejos, pero doña Marta la cuidó.",
+              "english": "The pharmacy was far away, but doña Marta took care of her."
+            },
+            {
+              "text": "Laura sanó, pero el susto fue grande.",
+              "english": "Laura healed, but the fright was big."
+            },
+            {
+              "text": "David se rompió un dedo con un martillo.",
+              "english": "David broke a finger with a hammer."
+            },
+            {
+              "text": "Una abeja entró a la casa, y los dos gritaron.",
+              "english": "A bee came into the house, and the two of them shouted."
+            },
+            {
+              "text": "—Aprendimos poco a poco —dice David.",
+              "english": "\"We learned little by little,\" says David."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Cultura y tradiciones",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "La diferencia más grande fue la cultura.",
+              "english": "The biggest difference was the culture."
+            },
+            {
+              "text": "En su país, la gente llegaba a la hora.",
+              "english": "In their country, people arrived on time."
+            },
+            {
+              "text": "En el pueblo, la hora era diferente.",
+              "english": "In the village, time was different."
+            },
+            {
+              "text": "Una tradición del pueblo es el abrazo y el beso al llegar y al despedirse.",
+              "english": "A tradition of the village is the hug and the kiss when arriving and when saying goodbye."
+            },
+            {
+              "text": "David y Laura no tenían esa tradición, pero la aprendieron.",
+              "english": "David and Laura did not have that tradition, but they learned it."
+            },
+            {
+              "text": "—Una cultura no es mejor que otra: es diferente —dice Laura.",
+              "english": "\"One culture is not better than another: it is different,\" says Laura."
+            },
+            {
+              "text": "Hay diferencias entre las culturas, pero la gente es gente.",
+              "english": "There are differences between cultures, but people are people."
+            },
+            {
+              "text": "Aprender una cultura toma tiempo.",
+              "english": "Learning a culture takes time."
+            },
+            {
+              "text": "La sociedad del pueblo era pequeña, pero todos se conocían.",
+              "english": "The society of the village was small, but everyone knew each other."
+            },
+            {
+              "text": "Los vecinos les dieron la bienvenida.",
+              "english": "The neighbors welcomed them."
+            },
+            {
+              "text": "La sociedad del pueblo los recibió como a una familia.",
+              "english": "The society of the village received them like a family."
+            },
+            {
+              "text": "En esa sociedad, un patrón y un empleado se saludaban como amigos.",
+              "english": "In that society, a boss and an employee greeted each other like friends."
+            },
+            {
+              "text": "La tradición del domingo es comer con toda la familia, y ellos también la aprendieron.",
+              "english": "The Sunday tradition is eating with the whole family, and they learned that too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo que construyeron",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después del primer año, David y Laura se dedicaron al ministerio con los jóvenes.",
+              "english": "After the first year, David and Laura dedicated themselves to the ministry with the young people."
+            },
+            {
+              "text": "Dedicaron sus mañanas a la escuela y sus tardes a los jóvenes.",
+              "english": "They dedicated their mornings to the school and their afternoons to the young people."
+            },
+            {
+              "text": "Durante tres años, con ayuda de los campesinos, lograron abrir un taller.",
+              "english": "For three years, with the help of the farmers, they managed to open a workshop."
+            },
+            {
+              "text": "David enseñó a usar las herramientas: un martillo, clavos, una cuerda, un cubo y una escoba.",
+              "english": "David taught how to use the tools: a hammer, nails, a rope, a bucket and a broom."
+            },
+            {
+              "text": "Los jóvenes aprendieron a cavar, sembrar y plantar.",
+              "english": "The young people learned to dig, sow and plant."
+            },
+            {
+              "text": "Con una granja pequeña, cultivaron frijoles y tomates.",
+              "english": "With a small farm, they grew beans and tomatoes."
+            },
+            {
+              "text": "Regaban las semillas con cubos de agua.",
+              "english": "They watered the seeds with buckets of water."
+            },
+            {
+              "text": "Un panadero les enseñó a hacer pan, y un pescador les contó cómo trabaja el mar.",
+              "english": "A baker taught them to make bread, and a fisherman told them how the sea works."
+            },
+            {
+              "text": "Un comerciante les enseñó a vender, y el director del colegio los visitó.",
+              "english": "A merchant taught them to sell, and the director of the high school visited them."
+            },
+            {
+              "text": "El resultado fue muy bueno, y fue el resultado del esfuerzo de todos.",
+              "english": "The result was very good, and it was the result of everyone's effort."
+            },
+            {
+              "text": "Durante el día, los jóvenes trabajan en el taller.",
+              "english": "During the day, the young people work in the workshop."
+            },
+            {
+              "text": "Muchos jóvenes tienen trabajo: un joven es hoy empleado, y otro es patrón.",
+              "english": "Many young people have work: one young man is today an employee, and another is a boss."
+            },
+            {
+              "text": "Otro resultado es el agua limpia.",
+              "english": "Another result is the clean water."
+            },
+            {
+              "text": "Un ejemplo es Diego, que hoy es empleado de Carlos.",
+              "english": "One example is Diego, who is today Carlos's employee."
+            },
+            {
+              "text": "Otro ejemplo es Rafael, el panadero.",
+              "english": "Another example is Rafael, the baker."
+            },
+            {
+              "text": "El éxito no llegó pronto.",
+              "english": "Success did not come soon."
+            },
+            {
+              "text": "Llegó poco a poco.",
+              "english": "It came little by little."
+            },
+            {
+              "text": "—No buscábamos el éxito —dice David—.",
+              "english": "\"We were not looking for success,\" says David."
+            },
+            {
+              "text": "Buscábamos servir.",
+              "english": "\"We were looking to serve."
+            },
+            {
+              "text": "Pero el éxito llegó.",
+              "english": "But success came.\""
+            },
+            {
+              "text": "—La causa era una: amar a la gente.",
+              "english": "\"The cause was one: to love people."
+            },
+            {
+              "text": "Logramos más de lo que pensamos.",
+              "english": "We achieved more than we thought."
+            },
+            {
+              "text": "Muchas personas trabajan por esta causa.",
+              "english": "Many people work for this cause."
+            },
+            {
+              "text": "Es una buena causa.",
+              "english": "It is a good cause.\""
+            },
+            {
+              "text": "Laura se dedica a las mujeres de la iglesia, y es su líder, y David es líder de los jóvenes.",
+              "english": "Laura dedicates herself to the women of the church, and is their leader, and David is the leader of the young people."
+            },
+            {
+              "text": "Un buen líder escucha primero.",
+              "english": "A good leader listens first."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Lo que aprendieron",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Una vez, en el culto, el pastor contó el cuento del hijo que se fue.",
+              "english": "Once, at the service, the pastor told the story of the son who left."
+            },
+            {
+              "text": "Laura lloró.",
+              "english": "Laura cried."
+            },
+            {
+              "text": "Laura habló del pecado y de la compasión.",
+              "english": "Laura spoke about sin and compassion."
+            },
+            {
+              "text": "Se vio en el joven que pecó, se arrepintió y volvió.",
+              "english": "She saw herself in the young man who sinned, repented and returned."
+            },
+            {
+              "text": "Desde el primer día deseaban servir.",
+              "english": "From the first day they wanted to serve."
+            },
+            {
+              "text": "El papá tuvo compasión, le puso un anillo y lo besó.",
+              "english": "The dad had compassion, put a ring on him and kissed him."
+            },
+            {
+              "text": "—Yo también necesito compasión —dijo Laura—.",
+              "english": "\"I also need compassion,\" said Laura."
+            },
+            {
+              "text": "Todos la necesitamos.",
+              "english": "\"We all need it.\""
+            },
+            {
+              "text": "—No somos ricos, pero tenemos todo —dice David—.",
+              "english": "\"We are not rich, but we have everything,\" says David."
+            },
+            {
+              "text": "Hay cosas que el dinero no compra.",
+              "english": "\"There are things money does not buy.\""
+            },
+            {
+              "text": "—Hay una manera de vivir: servir a la gente.",
+              "english": "\"There is a way of living: serving people."
+            },
+            {
+              "text": "La diferencia es grande.",
+              "english": "The difference is big.\""
+            },
+            {
+              "text": "Laura habla del pasado, del presente y del futuro.",
+              "english": "Laura talks about the past, the present and the future."
+            },
+            {
+              "text": "—El pasado fue difícil, pero aprendimos mucho.",
+              "english": "\"The past was hard, but we learned a lot."
+            },
+            {
+              "text": "No olvidamos el pasado.",
+              "english": "We do not forget the past.\""
+            },
+            {
+              "text": "—En el presente tenemos veinte jóvenes.",
+              "english": "\"In the present we have twenty young people."
+            },
+            {
+              "text": "Los niños corren por el patio, y la casa siempre tiene gente.",
+              "english": "The children run through the patio, and the house always has people.\""
+            },
+            {
+              "text": "—Trabajamos desde la mañana hasta la noche, pero estamos contentos.",
+              "english": "\"We work from morning until night, but we are happy."
+            },
+            {
+              "text": "Desde ese día, Laura cuenta el cuento a los jóvenes.",
+              "english": "Since that day, Laura tells the story to the young people.\""
+            },
+            {
+              "text": "—En el futuro queremos abrir otro taller.",
+              "english": "\"In the future we want to open another workshop."
+            },
+            {
+              "text": "Pensamos en el futuro de los jóvenes.",
+              "english": "We think about the future of the young people."
+            },
+            {
+              "text": "El presente es lo que tenemos, y es bueno.",
+              "english": "The present is what we have, and it is good.\""
+            },
+            {
+              "text": "Sam termina de escribir.",
+              "english": "Sam finishes writing."
+            },
+            {
+              "text": "Piensa: «David y Laura son un ejemplo para todos nosotros».",
+              "english": "He thinks: \"David and Laura are an example for all of us.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,528 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-05",
+  "lang": "es",
+  "title": "By bus to the coast",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-05",
+    "title": "By bus to the coast (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "travel"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "A": "Ana",
+    "N": "Nico",
+    "L": "Luis",
+    "M": "Marta"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "El aviso",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana lee el aviso de la semana en la iglesia.",
+              "english": "Ana reads the notice for the week at church."
+            },
+            {
+              "text": "Dice: \"El sábado hay un viaje a la playa.\"",
+              "english": "It says: \"On Saturday there is a trip to the beach.\""
+            },
+            {
+              "text": "También dice: \"Favor escribir su nombre y su número.",
+              "english": "It also says: \"Please write your name and your number."
+            },
+            {
+              "text": "La fecha es el sábado.\"",
+              "english": "The date is Saturday.\""
+            },
+            {
+              "text": "Sam escribe su nombre y su número.",
+              "english": "Sam writes his name and his number."
+            },
+            {
+              "text": "Luego envía un mensaje con el celular.",
+              "english": "Then he sends a message with the cell phone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Ana, ¿vamos todos?",
+              "english": "Ana, are we all going?"
+            },
+            {
+              "speaker": "A",
+              "text": "Vamos Nico, Luis, vos y yo.",
+              "english": "Nico, Luis, you and I are going."
+            },
+            {
+              "speaker": "A",
+              "text": "Doña Marta ayuda con el pan.",
+              "english": "Doña Marta helps with the bread."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El sábado",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Antes de salir, llamé a doña Marta por teléfono.",
+              "english": "Before leaving, I called doña Marta on the phone."
+            },
+            {
+              "text": "Anoche llevé mi bolsa al cuarto.",
+              "english": "Last night I took my bag to my room."
+            },
+            {
+              "text": "Llevé agua, pan y un libro sobre el mar.",
+              "english": "I took water, bread and a book about the sea."
+            },
+            {
+              "text": "Luis llevó dinero.",
+              "english": "Luis took money."
+            },
+            {
+              "text": "Salimos de la ciudad a las seis de la mañana.",
+              "english": "We left the city at six in the morning."
+            },
+            {
+              "text": "Subimos al autobús en la terminal.",
+              "english": "We got on the bus at the terminal."
+            },
+            {
+              "text": "Nico subió con su mochila.",
+              "english": "Nico got on with his school bag."
+            },
+            {
+              "text": "Hay viento y hace frío, porque es invierno.",
+              "english": "There is wind and it is cold, because it is winter."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "N",
+              "text": "Sam, ¿comiste?",
+              "english": "Sam, did you eat?"
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, comí pan y bebí café.",
+              "english": "Yes, I ate bread and drank coffee."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y vos?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "N",
+              "text": "Yo comí frijoles y bebí agua.",
+              "english": "I ate beans and drank water."
+            },
+            {
+              "speaker": "S",
+              "text": "Entonces estamos bien.",
+              "english": "Then we are fine."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El autobús salió de la terminal.",
+              "english": "The bus left the terminal."
+            },
+            {
+              "text": "Una señora subió y vendió plátanos.",
+              "english": "A woman got on and sold plantains."
+            },
+            {
+              "text": "Compré un plátano y pagué cinco lempiras.",
+              "english": "I bought a plantain and paid five lempiras."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En el autobús",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En el autobús hablamos sobre el viaje y la gente de aquí.",
+              "english": "On the bus we talked about the trip and the people here."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Sam, ¿qué te gusta de Honduras?",
+              "english": "Sam, what do you like about Honduras?"
+            },
+            {
+              "speaker": "S",
+              "text": "Me gusta la gente y me gusta la comida.",
+              "english": "I like the people and I like the food."
+            },
+            {
+              "speaker": "S",
+              "text": "Me gusta el café de doña Marta.",
+              "english": "I like doña Marta's coffee."
+            },
+            {
+              "speaker": "A",
+              "text": "A mí también.",
+              "english": "Me too."
+            },
+            {
+              "speaker": "A",
+              "text": "Ella siempre ayuda a todos.",
+              "english": "She always helps everybody."
+            },
+            {
+              "speaker": "A",
+              "text": "Es una ayuda grande para la familia.",
+              "english": "She is a big help for the family."
+            },
+            {
+              "speaker": "A",
+              "text": "Y ella ora por todos nosotros.",
+              "english": "And she prays for all of us."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Y qué no te gusta?",
+              "english": "And what do you not like?"
+            },
+            {
+              "speaker": "S",
+              "text": "Nada.",
+              "english": "Nothing."
+            },
+            {
+              "speaker": "S",
+              "text": "Estoy muy feliz aquí.",
+              "english": "I am very happy here."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En el pueblo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después de tres horas, bajamos en un pueblo.",
+              "english": "After three hours, we got off in a village."
+            },
+            {
+              "text": "Es pequeño, con una tienda y una iglesia.",
+              "english": "It is small, with a shop and a church."
+            },
+            {
+              "text": "Hay poca gente en la calle.",
+              "english": "There are few people in the street."
+            },
+            {
+              "text": "Nico bajó del autobús sin su mochila.",
+              "english": "Nico got off the bus without his school bag."
+            },
+            {
+              "text": "Este cipote perdió la mochila.",
+              "english": "This boy lost his school bag."
+            },
+            {
+              "text": "Luis volvió al autobús y encontró la mochila.",
+              "english": "Luis went back to the bus and found the bag."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "L",
+              "text": "Nico, encontré tu mochila en el autobús.",
+              "english": "Nico, I found your school bag on the bus."
+            },
+            {
+              "speaker": "N",
+              "text": "Gracias, Luis.",
+              "english": "Thanks, Luis."
+            },
+            {
+              "speaker": "N",
+              "text": "Tengo hambre.",
+              "english": "I am hungry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Comimos pollo y tortilla en la tienda.",
+              "english": "We ate chicken and tortilla at the shop."
+            },
+            {
+              "text": "Una señora vendió el pollo y el precio es barato.",
+              "english": "A woman sold the chicken and the price is cheap."
+            },
+            {
+              "text": "Pagamos con el dinero de Luis, porque Nico salió de la casa sin dinero.",
+              "english": "We paid with Luis's money, because Nico left the house without money."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La playa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Caminamos a la playa.",
+              "english": "We walked to the beach."
+            },
+            {
+              "text": "Hoy hay menos sol y mucho viento.",
+              "english": "Today there is less sun and a lot of wind."
+            },
+            {
+              "text": "Sin gente, todo es muy grande.",
+              "english": "Without people, everything is very big."
+            },
+            {
+              "text": "Vimos el mar.",
+              "english": "We saw the sea."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Sam, ¿viste?",
+              "english": "Sam, did you see?"
+            },
+            {
+              "speaker": "A",
+              "text": "Es muy grande.",
+              "english": "It is very big."
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, vi todo.",
+              "english": "Yes, I saw everything."
+            },
+            {
+              "speaker": "S",
+              "text": "Me gusta mucho.",
+              "english": "I like it a lot."
+            },
+            {
+              "speaker": "L",
+              "text": "¿Aprendiste nombres nuevos?",
+              "english": "Did you learn new names?"
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, aprendí mar, playa y pueblo.",
+              "english": "Yes, I learned sea, beach and village."
+            },
+            {
+              "speaker": "N",
+              "text": "Yo también aprendí mucho.",
+              "english": "I learned a lot too."
+            },
+            {
+              "text": "Luis escribió los nombres en su celular.",
+              "english": "Luis wrote the names on his cell phone."
+            },
+            {
+              "text": "Nico bebió agua y comió un plátano.",
+              "english": "Nico drank water and ate a plantain."
+            },
+            {
+              "text": "Ana miró el agua con Sam.",
+              "english": "Ana looked at the water with Sam."
+            },
+            {
+              "text": "Luis habló con una señora y compró pan para doña Marta.",
+              "english": "Luis talked with a woman and bought bread for doña Marta."
+            },
+            {
+              "text": "Terminamos el día muy felices.",
+              "english": "We ended the day very happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El regreso",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Volvimos a la ciudad a las siete.",
+              "english": "We went back to the city at seven."
+            },
+            {
+              "text": "Bajamos del autobús y caminamos a la casa.",
+              "english": "We got off the bus and walked to the house."
+            },
+            {
+              "text": "Regresé a las ocho.",
+              "english": "I got home at eight."
+            },
+            {
+              "text": "Cené con doña Marta.",
+              "english": "I had dinner with doña Marta."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "Sam, ¿comiste bien?",
+              "english": "Sam, did you eat well?"
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, comimos pollo.",
+              "english": "Yes, we ate chicken."
+            },
+            {
+              "speaker": "S",
+              "text": "Nico perdió su mochila, pero Luis la encontró.",
+              "english": "Nico lost his school bag, but Luis found it."
+            },
+            {
+              "speaker": "M",
+              "text": "Gracias a Dios.",
+              "english": "Thank God."
+            },
+            {
+              "speaker": "M",
+              "text": "Mañana hablamos con todos.",
+              "english": "Tomorrow we talk with everyone."
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, doña Marta.",
+              "english": "Yes, doña Marta."
+            },
+            {
+              "speaker": "S",
+              "text": "Tengo mucho que decir.",
+              "english": "I have a lot to say."
+            },
+            {
+              "speaker": "M",
+              "text": "Entonces ahora tomá agua y comé pan.",
+              "english": "Then now drink water and eat bread."
+            },
+            {
+              "speaker": "M",
+              "text": "Estás cansado.",
+              "english": "You are tired."
+            },
+            {
+              "speaker": "S",
+              "text": "Gracias.",
+              "english": "Thank you."
+            },
+            {
+              "speaker": "S",
+              "text": "Estoy cansado, pero estoy muy feliz.",
+              "english": "I am tired, but I am very happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Hoy es domingo.",
+              "english": "Today is Sunday."
+            },
+            {
+              "text": "Ayer volví tarde, pero hoy tengo tiempo.",
+              "english": "Yesterday I came back late, but today I have time."
+            },
+            {
+              "text": "Escribo sobre el viaje.",
+              "english": "I am writing about the trip."
+            },
+            {
+              "text": "El pueblo es pequeño y la ciudad es grande.",
+              "english": "The village is small and the city is big."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

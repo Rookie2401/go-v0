@@ -1,0 +1,489 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-08",
+  "lang": "es",
+  "title": "Sam's first week",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-08",
+    "title": "Sam's first week (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "M": "Marta",
+    "L": "Luis",
+    "A": "Ana",
+    "N": "Nico",
+    "P": "Señora"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "El primer día",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy escribo sobre mi primera semana en Honduras.",
+              "english": "Today I am writing about my first week in Honduras."
+            },
+            {
+              "text": "El lunes fue mi primer día en la casa de doña Marta.",
+              "english": "Monday was my first day at doña Marta's house."
+            },
+            {
+              "text": "Todo es diferente: la comida, la gente, la lluvia y el idioma.",
+              "english": "Everything is different: the food, the people, the rain and the language."
+            },
+            {
+              "text": "Mi vida aquí es diferente.",
+              "english": "My life here is different."
+            },
+            {
+              "text": "La casa es diferente.",
+              "english": "The house is different."
+            },
+            {
+              "text": "Cuando llegué, no entendí nada.",
+              "english": "When I arrived, I did not understand anything."
+            },
+            {
+              "text": "Doña Marta habló mucho, y yo miré a doña Marta.",
+              "english": "Doña Marta talked a lot, and I looked at doña Marta."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "Sam, ¿querés café o agua?",
+              "english": "Sam, do you want coffee or water?"
+            },
+            {
+              "speaker": "S",
+              "text": "Café, gracias, doña Marta.",
+              "english": "Coffee, thank you, doña Marta."
+            },
+            {
+              "speaker": "M",
+              "text": "Entonces, aquí estás en tu casa.",
+              "english": "So, here you are at home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Anoche cené con la familia.",
+              "english": "Last night I had dinner with the family."
+            },
+            {
+              "text": "Terminé de cenar muy cansado, pero feliz.",
+              "english": "I finished eating dinner very tired, but happy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las palabras",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El idioma es difícil.",
+              "english": "The language is difficult."
+            },
+            {
+              "text": "Hay muchas palabras nuevas.",
+              "english": "There are many new words."
+            },
+            {
+              "text": "Hay mucho que no entiendo.",
+              "english": "There is a lot that I do not understand."
+            },
+            {
+              "text": "Luis es maestro, y Luis me ayuda.",
+              "english": "Luis is a teacher, and Luis helps me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Luis, tengo una pregunta.",
+              "english": "Luis, I have a question."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Qué quiere decir \"ahorita\"?",
+              "english": "What does \"ahorita\" mean?"
+            },
+            {
+              "speaker": "L",
+              "text": "Quiere decir \"en un momento\".",
+              "english": "It means \"in a moment\"."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y \"luego\"?",
+              "english": "And \"luego\"?"
+            },
+            {
+              "speaker": "L",
+              "text": "\"Luego\" quiere decir \"después\".",
+              "english": "\"Luego\" means \"afterwards\"."
+            },
+            {
+              "speaker": "S",
+              "text": "Ahora entiendo.",
+              "english": "Now I understand."
+            },
+            {
+              "speaker": "S",
+              "text": "¡Qué difícil!",
+              "english": "How difficult!"
+            },
+            {
+              "speaker": "L",
+              "text": "Si tenés una pregunta, hacela.",
+              "english": "If you have a question, ask it."
+            },
+            {
+              "speaker": "L",
+              "text": "Claro que es difícil, pero vas a aprender.",
+              "english": "Of course it is difficult, but you are going to learn."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las preguntas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hago preguntas todos los días.",
+              "english": "I ask questions every day."
+            },
+            {
+              "text": "Luis o Ana me ayuda cuando hablo mal.",
+              "english": "Luis or Ana helps me when I speak badly."
+            },
+            {
+              "text": "Hablo con doña Marta, y ella dice: \"Seguí, Sam, seguí.\"",
+              "english": "I talk with doña Marta, and she says: \"Keep going, Sam, keep going.\""
+            },
+            {
+              "text": "Es fácil hablar con ella, porque ella me ayuda.",
+              "english": "It is easy to talk with her, because she helps me."
+            },
+            {
+              "text": "Doña Marta cocina como mi mamá.",
+              "english": "Doña Marta cooks like my mom."
+            },
+            {
+              "text": "Aquí me siento como en mi casa.",
+              "english": "Here I feel like I am at home."
+            },
+            {
+              "text": "Quiero aprender el idioma.",
+              "english": "I want to learn the language."
+            },
+            {
+              "text": "Hablo como un cipote: poco y mal.",
+              "english": "I speak like a little kid: little and badly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En la pulpería",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un día fui a la pulpería con Nico.",
+              "english": "One day I went to the shop with Nico."
+            },
+            {
+              "text": "Nico es mi amigo.",
+              "english": "Nico is my friend."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Buenos días, señora.",
+              "english": "Good morning, ma'am."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Cuánto cuesta el pan?",
+              "english": "How much does the bread cost?"
+            },
+            {
+              "speaker": "P",
+              "text": "Cuesta cinco lempiras.",
+              "english": "It costs five lempiras."
+            },
+            {
+              "speaker": "S",
+              "text": "Dame dos, por favor.",
+              "english": "Give me two, please."
+            },
+            {
+              "speaker": "P",
+              "text": "¿Nada más?",
+              "english": "Nothing else?"
+            },
+            {
+              "speaker": "S",
+              "text": "Nada más, gracias.",
+              "english": "Nothing else, thank you."
+            },
+            {
+              "speaker": "N",
+              "text": "Sam, hablás bien.",
+              "english": "Sam, you speak well."
+            },
+            {
+              "speaker": "S",
+              "text": "Hablo poco, pero hablo.",
+              "english": "I speak little, but I speak."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Aquí me gustan los frijoles, el arroz, el plátano y la tortilla.",
+              "english": "Here I like beans, rice, plantain and tortilla."
+            },
+            {
+              "text": "Tomo café y bebo agua.",
+              "english": "I drink coffee and I drink water."
+            },
+            {
+              "text": "Ana, Luis y Nico son mis amigos.",
+              "english": "Ana, Luis and Nico are my friends."
+            },
+            {
+              "text": "Ellos me ayudan mucho.",
+              "english": "They help me a lot."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En el centro",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El sábado caminé al centro con Ana.",
+              "english": "On Saturday I walked to the center with Ana."
+            },
+            {
+              "text": "Allí hablé con una señora.",
+              "english": "There I talked with a woman."
+            },
+            {
+              "text": "La señora vendió pan, y yo compré pan.",
+              "english": "The woman sold bread, and I bought bread."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Sam, tengo un regalo para vos.",
+              "english": "Sam, I have a present for you."
+            },
+            {
+              "speaker": "A",
+              "text": "Es un libro pequeño de palabras.",
+              "english": "It is a small book of words."
+            },
+            {
+              "speaker": "S",
+              "text": "¡Gracias, Ana!",
+              "english": "Thanks, Ana!"
+            },
+            {
+              "speaker": "S",
+              "text": "¿Es posible leer ahora?",
+              "english": "Is it possible to read now?"
+            },
+            {
+              "speaker": "A",
+              "text": "Claro, pero primero tomá café.",
+              "english": "Of course, but first have some coffee."
+            },
+            {
+              "speaker": "S",
+              "text": "Está bien.",
+              "english": "All right."
+            },
+            {
+              "speaker": "S",
+              "text": "Tomo café y leo.",
+              "english": "I drink coffee and read."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El último día",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El domingo fue el último día de la semana.",
+              "english": "Sunday was the last day of the week."
+            },
+            {
+              "text": "Fuimos a la iglesia.",
+              "english": "We went to church."
+            },
+            {
+              "text": "Después, doña Marta cocinó frijoles o pollo.",
+              "english": "Afterwards, doña Marta cooked beans or chicken."
+            },
+            {
+              "text": "Cenamos todos.",
+              "english": "We all had dinner."
+            },
+            {
+              "text": "Hoy aprendí una palabra nueva: pulpería.",
+              "english": "Today I learned a new word: pulpería."
+            },
+            {
+              "text": "No es fácil, pero es fácil hacer amigos aquí.",
+              "english": "It is not easy, but it is easy to make friends here."
+            },
+            {
+              "text": "Si llueve, me quedo en la casa.",
+              "english": "If it rains, I stay at the house."
+            },
+            {
+              "text": "Si hace sol, voy al centro.",
+              "english": "If it is sunny, I walk to the center."
+            },
+            {
+              "text": "Cuando llega el viento y el frío del invierno, quiero estar con doña Marta.",
+              "english": "When the wind and the cold of winter come, I want to be with doña Marta."
+            },
+            {
+              "text": "Después de la lluvia, hay sol y hay menos frío.",
+              "english": "After the rain, there is sun and less cold."
+            },
+            {
+              "text": "Ayer escribí a mi familia sobre el viaje al mar.",
+              "english": "Yesterday I wrote to my family about the trip to the sea."
+            },
+            {
+              "text": "Quiero volver al mar y seguir con mis visitas.",
+              "english": "I want to go back to the sea and keep making my visits."
+            },
+            {
+              "text": "Es posible, claro.",
+              "english": "It is possible, of course."
+            },
+            {
+              "text": "Escribo esto en el último momento del domingo.",
+              "english": "I am writing this in the last moment of Sunday."
+            },
+            {
+              "text": "La última noche de la semana, doña Marta oró por mí.",
+              "english": "On the last night of the week, doña Marta prayed for me."
+            },
+            {
+              "text": "Ya tengo una semana en Honduras, y tengo mucho que aprender.",
+              "english": "I already have a week in Honduras, and I have a lot to learn."
+            },
+            {
+              "text": "Mañana es lunes de nuevo, y voy a trabajar con el equipo.",
+              "english": "Tomorrow is Monday again, and I am going to work with the team."
+            },
+            {
+              "text": "Voy a visitar a una familia con el pastor y con Ana.",
+              "english": "I am going to visit a family with the pastor and with Ana."
+            },
+            {
+              "text": "Luis dice que el equipo es grande, y que todos necesitan ayuda.",
+              "english": "Luis says the team is big, and that everybody needs help."
+            },
+            {
+              "text": "Yo también necesito ayuda, pero ahora tengo amigos y tengo paz.",
+              "english": "I need help too, but now I have friends and I have peace."
+            },
+            {
+              "text": "Quiero hablar más, escribir más y ayudar más.",
+              "english": "I want to speak more, write more and help more."
+            },
+            {
+              "text": "Gracias, Dios, por esta semana.",
+              "english": "Thank you, God, for this week."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

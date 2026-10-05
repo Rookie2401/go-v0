@@ -1,0 +1,577 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-2-01",
+  "lang": "es",
+  "title": "\"¿Qué estás haciendo?\"",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-2-01",
+    "title": "\"¿Qué estás haciendo?\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed"
+  },
+  "difficulty": "A1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "speakers": {
+    "S": "Sam",
+    "A": "Ana",
+    "L": "Luis",
+    "N": "Nico",
+    "M": "Marvin"
+  },
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "En la terminal",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Es sábado.",
+              "english": "It is Saturday."
+            },
+            {
+              "text": "Sam está en la terminal.",
+              "english": "Sam is at the terminal."
+            },
+            {
+              "text": "Está esperando el autobús.",
+              "english": "He is waiting for the bus."
+            },
+            {
+              "text": "Ya tiene el boleto en la mano.",
+              "english": "He already has the ticket in his hand."
+            },
+            {
+              "text": "Sam llama a Ana por teléfono.",
+              "english": "Sam calls Ana on the phone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "Hola, Ana.",
+              "english": "Hi, Ana."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Qué estás haciendo?",
+              "english": "What are you doing?"
+            },
+            {
+              "speaker": "A",
+              "text": "Hola, Sam.",
+              "english": "Hi, Sam."
+            },
+            {
+              "speaker": "A",
+              "text": "Estoy cocinando en la casa.",
+              "english": "I am cooking at the house."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Y vos?",
+              "english": "And you?"
+            },
+            {
+              "speaker": "A",
+              "text": "¿Dónde estás?",
+              "english": "Where are you?"
+            },
+            {
+              "speaker": "S",
+              "text": "Estoy en la terminal.",
+              "english": "I am at the terminal."
+            },
+            {
+              "speaker": "S",
+              "text": "Estoy esperando el autobús.",
+              "english": "I am waiting for the bus."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Ya tenés el boleto?",
+              "english": "Do you already have the ticket?"
+            },
+            {
+              "speaker": "S",
+              "text": "Sí, tengo el boleto.",
+              "english": "Yes, I have the ticket."
+            },
+            {
+              "speaker": "S",
+              "text": "Pero el autobús está tarde.",
+              "english": "But the bus is late."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "¿Qué hace el equipo hoy?",
+              "english": "What is the team doing today?"
+            },
+            {
+              "speaker": "S",
+              "text": "El equipo va a visitar a una familia.",
+              "english": "The team is going to visit a family."
+            },
+            {
+              "speaker": "S",
+              "text": "La casa está lejos.",
+              "english": "The house is far away."
+            },
+            {
+              "speaker": "A",
+              "text": "¿Y ahora?",
+              "english": "And right now?"
+            },
+            {
+              "speaker": "A",
+              "text": "¿Qué estás mirando?",
+              "english": "What are you looking at?"
+            },
+            {
+              "speaker": "S",
+              "text": "Estoy mirando a la gente.",
+              "english": "I am looking at the people."
+            },
+            {
+              "speaker": "S",
+              "text": "Hay mucha gente aquí.",
+              "english": "There are many people here."
+            },
+            {
+              "speaker": "S",
+              "text": "Un señor está durmiendo.",
+              "english": "A man is sleeping."
+            },
+            {
+              "speaker": "S",
+              "text": "Una señora está vendiendo plátanos.",
+              "english": "A woman is selling plantains."
+            },
+            {
+              "speaker": "S",
+              "text": "Hay otros del equipo.",
+              "english": "There are others from the team."
+            },
+            {
+              "speaker": "S",
+              "text": "Marvin está comprando agua.",
+              "english": "Marvin is buying water."
+            },
+            {
+              "speaker": "S",
+              "text": "Karla está hablando con el pastor.",
+              "english": "Karla is talking with the pastor."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "En la casa de Ana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "S",
+              "text": "¿Y Nico?",
+              "english": "And Nico?"
+            },
+            {
+              "speaker": "S",
+              "text": "¿Qué está haciendo?",
+              "english": "What is he doing?"
+            },
+            {
+              "speaker": "A",
+              "text": "Mientras yo cocino, Nico está leyendo un libro.",
+              "english": "While I cook, Nico is reading a book."
+            },
+            {
+              "speaker": "A",
+              "text": "No, no está leyendo.",
+              "english": "No, he is not reading."
+            },
+            {
+              "speaker": "A",
+              "text": "Está jugando con mi celular.",
+              "english": "He is playing with my cell phone."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Con tu celular?",
+              "english": "With your cell phone?"
+            },
+            {
+              "speaker": "S",
+              "text": "¿Y Luis?",
+              "english": "And Luis?"
+            },
+            {
+              "speaker": "A",
+              "text": "Luis está durmiendo porque está enfermo.",
+              "english": "Luis is sleeping because he is sick."
+            },
+            {
+              "speaker": "A",
+              "text": "Tiene fiebre y dolor de cabeza.",
+              "english": "He has a fever and a headache."
+            },
+            {
+              "speaker": "S",
+              "text": "A mí también me duele la cabeza hoy.",
+              "english": "My head hurts today too."
+            },
+            {
+              "speaker": "S",
+              "text": "Me duelen los ojos porque estoy mirando mucho el teléfono.",
+              "english": "My eyes hurt because I am looking at the phone a lot."
+            },
+            {
+              "speaker": "A",
+              "text": "Sam, no es bueno.",
+              "english": "Sam, it is not good."
+            },
+            {
+              "speaker": "A",
+              "text": "Tomá agua ahorita.",
+              "english": "Drink water right now."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Luis habla por teléfono",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana no ve a Luis.",
+              "english": "Ana does not see Luis."
+            },
+            {
+              "text": "Ana llama a Luis.",
+              "english": "Ana calls Luis."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Luis, ¿qué estás haciendo?",
+              "english": "Luis, what are you doing?"
+            },
+            {
+              "speaker": "L",
+              "text": "Estoy durmiendo, Ana.",
+              "english": "I am sleeping, Ana."
+            },
+            {
+              "speaker": "L",
+              "text": "Estoy muy mal.",
+              "english": "I am very sick."
+            },
+            {
+              "speaker": "L",
+              "text": "Me duele la cabeza, me duele la boca y tengo fiebre.",
+              "english": "My head hurts, my mouth hurts and I have a fever."
+            },
+            {
+              "speaker": "A",
+              "text": "Voy a verte.",
+              "english": "I am coming to see you."
+            },
+            {
+              "speaker": "A",
+              "text": "Tenés que tomar agua.",
+              "english": "You have to drink water."
+            },
+            {
+              "speaker": "L",
+              "text": "Mientras cocinás, ¿qué hace Nico?",
+              "english": "While you cook, what is Nico doing?"
+            },
+            {
+              "speaker": "A",
+              "text": "Nico está jugando.",
+              "english": "Nico is playing."
+            },
+            {
+              "speaker": "A",
+              "text": "Está en el cuarto.",
+              "english": "He is in the room."
+            },
+            {
+              "speaker": "L",
+              "text": "Ahorita no puedo hablar mucho.",
+              "english": "I cannot talk much right now."
+            },
+            {
+              "speaker": "L",
+              "text": "Adiós.",
+              "english": "Goodbye."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un cipote en la casa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Nico es un cipote de diez años.",
+              "english": "Nico is a ten-year-old boy."
+            },
+            {
+              "text": "Ahora no está jugando.",
+              "english": "Now he is not playing."
+            },
+            {
+              "text": "Está buscando su mochila.",
+              "english": "He is looking for his school bag."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Nico, ¿qué estás haciendo?",
+              "english": "Nico, what are you doing?"
+            },
+            {
+              "speaker": "N",
+              "text": "Estoy buscando mi mochila.",
+              "english": "I am looking for my school bag."
+            },
+            {
+              "speaker": "N",
+              "text": "No veo mi mochila.",
+              "english": "I do not see my school bag."
+            },
+            {
+              "speaker": "A",
+              "text": "Este cipote siempre pierde su mochila.",
+              "english": "This boy always loses his school bag."
+            },
+            {
+              "speaker": "A",
+              "text": "Buscá en la cama.",
+              "english": "Look on the bed."
+            },
+            {
+              "speaker": "A",
+              "text": "Ahorita encontrás la mochila.",
+              "english": "You will find the bag in a moment."
+            },
+            {
+              "speaker": "N",
+              "text": "Ya encuentro mi mochila.",
+              "english": "I am finding my bag now."
+            },
+            {
+              "speaker": "N",
+              "text": "Está en la cama.",
+              "english": "It is on the bed."
+            },
+            {
+              "speaker": "A",
+              "text": "Qué bueno.",
+              "english": "Good."
+            },
+            {
+              "speaker": "A",
+              "text": "Tomá el otro libro y leé.",
+              "english": "Take the other book and read."
+            },
+            {
+              "speaker": "N",
+              "text": "Sí, Ana.",
+              "english": "Yes, Ana."
+            },
+            {
+              "speaker": "N",
+              "text": "Gracias.",
+              "english": "Thanks."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Un mensaje",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "A",
+              "text": "Voy a enviar un mensaje al equipo.",
+              "english": "I am going to send a message to the team."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Qué estás escribiendo?",
+              "english": "What are you writing?"
+            },
+            {
+              "speaker": "A",
+              "text": "Estoy escribiendo el aviso de la semana.",
+              "english": "I am writing the notice for the week."
+            },
+            {
+              "speaker": "S",
+              "text": "Mientras escribís, yo espero.",
+              "english": "While you write, I wait."
+            },
+            {
+              "speaker": "A",
+              "text": "La reunión es el sábado.",
+              "english": "The meeting is on Saturday."
+            },
+            {
+              "speaker": "A",
+              "text": "Es la fecha buena.",
+              "english": "It is a good date."
+            },
+            {
+              "speaker": "S",
+              "text": "¿Tenés mi número?",
+              "english": "Do you have my number?"
+            },
+            {
+              "speaker": "S",
+              "text": "Es el número de siempre.",
+              "english": "It is the usual number."
+            },
+            {
+              "speaker": "A",
+              "text": "Sí, tengo el número en el celular.",
+              "english": "Yes, I have the number on the cell phone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El equipo",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Marvin llega a la terminal.",
+              "english": "Marvin arrives at the terminal."
+            },
+            {
+              "text": "El autobús también llega.",
+              "english": "The bus arrives too."
+            },
+            {
+              "text": "Es un autobús grande.",
+              "english": "It is a big bus."
+            },
+            {
+              "text": "No es el autobús de otra familia.",
+              "english": "It is not the bus of some other family."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "M",
+              "text": "Sam, ¿qué estás haciendo?",
+              "english": "Sam, what are you doing?"
+            },
+            {
+              "speaker": "S",
+              "text": "Estoy hablando con Ana.",
+              "english": "I am talking with Ana."
+            },
+            {
+              "speaker": "S",
+              "text": "Ana está en la casa.",
+              "english": "Ana is at the house."
+            },
+            {
+              "speaker": "M",
+              "text": "Vení, el equipo está aquí.",
+              "english": "Come, the team is here."
+            },
+            {
+              "speaker": "M",
+              "text": "Tenemos que ir.",
+              "english": "We have to go."
+            },
+            {
+              "speaker": "S",
+              "text": "Voy ahora.",
+              "english": "I am coming now."
+            },
+            {
+              "speaker": "S",
+              "text": "Gracias, Ana.",
+              "english": "Thanks, Ana."
+            },
+            {
+              "speaker": "S",
+              "text": "Adiós.",
+              "english": "Goodbye."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

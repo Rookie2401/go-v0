@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-1-12",
+  "lang": "es",
+  "title": "Un día de trabajo",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-1-12",
+    "title": "A day at the workshop and the farm (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Spanish written for learners and may contain unnatural phrasing; Honduran usage is the drafter's reading, not a native's. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "work",
+    "workshop",
+    "farm",
+    "jobs"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Muy temprano",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Carlos invitó a Sam a pasar un día con él.",
+              "english": "Carlos invited Sam to spend a day with him."
+            },
+            {
+              "text": "Sam se despertó a las cinco y se levantó temprano.",
+              "english": "Sam woke up at five and got up early."
+            },
+            {
+              "text": "Se bañó en la ducha con jabón y usó la toalla de doña Marta.",
+              "english": "He bathed in the shower with soap and used doña Marta's towel."
+            },
+            {
+              "text": "Se miró la cara en el espejo, se cepilló el pelo y se vistió.",
+              "english": "He looked at his face in the mirror, brushed his hair and got dressed."
+            },
+            {
+              "text": "Carlos ya lo esperaba en la calle.",
+              "english": "Carlos was already waiting for him in the street."
+            },
+            {
+              "text": "—Hoy vas a ver cómo trabaja la gente del pueblo —dijo.",
+              "english": "\"Today you are going to see how the people of the village work,\" he said."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El panadero y el comerciante",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Primero fueron a ver al panadero, un hombre joven que se llamaba Rafael.",
+              "english": "First they went to see the baker, a young man named Rafael."
+            },
+            {
+              "text": "Él se levantaba a las tres de la mañana para hacer el pan.",
+              "english": "He used to get up at three in the morning to make the bread."
+            },
+            {
+              "text": "Tenía harina en la cara y en el pelo.",
+              "english": "He had flour on his face and in his hair."
+            },
+            {
+              "text": "—Hago quinientos panes cada día —dijo—.",
+              "english": "\"I make five hundred loaves every day,\" he said."
+            },
+            {
+              "text": "Mi trabajo empieza cuando todos duermen.",
+              "english": "\"My work begins when everyone is asleep."
+            },
+            {
+              "text": "Me duele el cuello, pero me gusta.",
+              "english": "My neck hurts, but I like it.\""
+            },
+            {
+              "text": "Doña Marta compraba pan del panadero y lo vendía en el mercado.",
+              "english": "Doña Marta bought bread from the baker and sold it in the market."
+            },
+            {
+              "text": "En el mercado trabajaba un comerciante que se llamaba Mario.",
+              "english": "In the market worked a merchant named Mario."
+            },
+            {
+              "text": "Vendía arroz, frijoles y plátanos.",
+              "english": "He sold rice, beans and bananas."
+            },
+            {
+              "text": "El comerciante dice que ganar dinero es difícil, pero que le gusta su trabajo.",
+              "english": "The merchant says that making money is hard, but that he likes his work."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El taller",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Después llegaron al taller de Carlos.",
+              "english": "Then they arrived at Carlos's workshop."
+            },
+            {
+              "text": "Era un cuarto grande, con paredes viejas y un techo alto.",
+              "english": "It was a big room, with old walls and a high roof."
+            },
+            {
+              "text": "Allí había muchas herramientas.",
+              "english": "There were many tools there."
+            },
+            {
+              "text": "Carlos tenía un martillo, clavos, una cuerda, un cubo y una escoba.",
+              "english": "Carlos had a hammer, nails, a rope, a bucket and a broom."
+            },
+            {
+              "text": "—Las herramientas son mi vida —dijo Carlos—.",
+              "english": "\"Tools are my life,\" said Carlos."
+            },
+            {
+              "text": "Sin ellas, no tengo trabajo.",
+              "english": "\"Without them, I have no work.\""
+            },
+            {
+              "text": "Antes Carlos era empleado de una empresa de la ciudad.",
+              "english": "Before, Carlos was an employee of a company in the city."
+            },
+            {
+              "text": "Su patrón le pagaba poco.",
+              "english": "His boss paid him little."
+            },
+            {
+              "text": "Ahora Carlos es patrón de su taller.",
+              "english": "Now Carlos is the boss of his workshop."
+            },
+            {
+              "text": "Tiene un empleado joven que se llama Diego.",
+              "english": "He has a young employee named Diego."
+            },
+            {
+              "text": "—Un buen patrón escucha a sus empleados —dijo Carlos—.",
+              "english": "\"A good boss listens to his employees,\" said Carlos."
+            },
+            {
+              "text": "Diego es un buen empleado.",
+              "english": "\"Diego is a good employee.\""
+            },
+            {
+              "text": "Diego cantaba mientras trabajaba.",
+              "english": "Diego sang while he worked."
+            },
+            {
+              "text": "Usó el martillo y los clavos para arreglar una mesa.",
+              "english": "He used the hammer and the nails to fix a table."
+            },
+            {
+              "text": "Sam quiso ayudar.",
+              "english": "Sam wanted to help."
+            },
+            {
+              "text": "Tomó el martillo, pero este cayó en su dedo.",
+              "english": "He took the hammer, but it fell on his finger."
+            },
+            {
+              "text": "—¡Qué dolor! —gritó Sam.",
+              "english": "\"What pain!\" shouted Sam."
+            },
+            {
+              "text": "Fue un accidente pequeño.",
+              "english": "It was a small accident."
+            },
+            {
+              "text": "—No pasa nada —dijo Carlos—.",
+              "english": "\"It's nothing,\" said Carlos."
+            },
+            {
+              "text": "Ahora ya eres uno de nosotros.",
+              "english": "\"Now you're one of us.\""
+            },
+            {
+              "text": "Sam trabajó con la escoba y con un cubo de agua.",
+              "english": "Sam worked with the broom and with a bucket of water."
+            },
+            {
+              "text": "Una cuerda se rompió, y Carlos buscó otra.",
+              "english": "A rope broke, and Carlos looked for another."
+            },
+            {
+              "text": "Un clavo cuesta poco, pero sin clavos no hay mesa.",
+              "english": "A nail costs little, but without nails there is no table."
+            },
+            {
+              "text": "Después, Diego usó la escoba.",
+              "english": "Afterwards, Diego used the broom."
+            },
+            {
+              "text": "Por la mañana, Carlos arregló el carro de un señor que venía del aeropuerto.",
+              "english": "In the morning, Carlos fixed the car of a man who was coming from the airport."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El ingeniero y el director",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "A las diez llegó un ingeniero en el autobús.",
+              "english": "At ten an engineer arrived on the bus."
+            },
+            {
+              "text": "Venía a ver el agua del pueblo.",
+              "english": "He came to look at the village's water."
+            },
+            {
+              "text": "Su vuelo tuvo un retraso, pero él llegó.",
+              "english": "His flight was delayed, but he arrived."
+            },
+            {
+              "text": "Recibió un correo de su empresa y entró a un cuarto para leerlo.",
+              "english": "He received an email from his company and went into a room to read it."
+            },
+            {
+              "text": "El director del colegio lo esperaba.",
+              "english": "The director of the high school was waiting for him."
+            },
+            {
+              "text": "—Nuestra comunidad necesita agua limpia —dijo el director.",
+              "english": "\"Our community needs clean water,\" said the director."
+            },
+            {
+              "text": "El ingeniero miró la tierra y el agua.",
+              "english": "The engineer looked at the land and the water."
+            },
+            {
+              "text": "Dijo que el trabajo es grande, pero que se puede hacer.",
+              "english": "He said that the job is big, but that it can be done."
+            },
+            {
+              "text": "—Necesitamos herramientas, cuerdas y muchos hombres —dijo.",
+              "english": "\"We need tools, ropes and many men,\" he said."
+            },
+            {
+              "text": "—Mis alumnos y yo ayudamos —dijo el director.",
+              "english": "\"My students and I will help,\" said the director."
+            },
+            {
+              "text": "Él decidió quedarse tres días.",
+              "english": "He decided to stay three days."
+            },
+            {
+              "text": "Él mandó un correo con el horario de la semana.",
+              "english": "He sent an email with the schedule for the week."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La granja",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Al mediodía fueron a una granja cerca del pueblo.",
+              "english": "At noon they went to a farm near the village."
+            },
+            {
+              "text": "Un campesino llamado Andrés los esperaba.",
+              "english": "A farmer named Andrés was waiting for them."
+            },
+            {
+              "text": "En la granja, el campesino cultivaba frijoles, tomates y cebollas.",
+              "english": "On the farm, the farmer grew beans, tomatoes and onions."
+            },
+            {
+              "text": "—Hoy voy a sembrar frijoles —dijo Andrés.",
+              "english": "\"Today I am going to sow beans,\" said Andrés."
+            },
+            {
+              "text": "Tenía una bolsa con semillas.",
+              "english": "He had a bag of seeds."
+            },
+            {
+              "text": "Carlos y Sam cavaron la tierra.",
+              "english": "Carlos and Sam dug the earth."
+            },
+            {
+              "text": "Andrés plantó las semillas, una por una.",
+              "english": "Andrés planted the seeds, one by one."
+            },
+            {
+              "text": "Sam cavó un poco más y también plantó.",
+              "english": "Sam dug a little more and also planted."
+            },
+            {
+              "text": "Los campesinos cultivan lo que comemos.",
+              "english": "Farmers grow what we eat."
+            },
+            {
+              "text": "Para cultivar frijoles, primero hay que cavar.",
+              "english": "\"To grow beans, first you have to dig,\" said Andrés."
+            },
+            {
+              "text": "Después se siembra, se planta cada semilla y hay que regar la tierra.",
+              "english": "\"Then you sow, you plant each seed and you have to water the ground.\""
+            },
+            {
+              "text": "Sam sembró sus primeras semillas, y regó la tierra con un cubo de agua.",
+              "english": "Sam sowed his first seeds, and watered the ground with a bucket of water."
+            },
+            {
+              "text": "Andrés se cortó el dedo.",
+              "english": "Andrés cut his finger."
+            },
+            {
+              "text": "Sam trató la herida con jabón, como Ana le enseñó.",
+              "english": "Sam treated the wound with soap, as Ana had taught him."
+            },
+            {
+              "text": "—La piel va a sanar en una semana —dijo Sam.",
+              "english": "\"The skin will heal in a week,\" said Sam."
+            },
+            {
+              "text": "Carlos fue a la farmacia por una crema.",
+              "english": "Carlos went to the pharmacy for a cream."
+            },
+            {
+              "text": "Había abejas en las flores, y también había insectos.",
+              "english": "There were bees on the flowers, and there were also insects."
+            },
+            {
+              "text": "—Hay que cambiar el agua por el dengue —dijo Andrés—.",
+              "english": "\"We have to change the water because of dengue,\" said Andrés."
+            },
+            {
+              "text": "Yo no quiero enfermarme.",
+              "english": "\"I don't want to get sick.\""
+            },
+            {
+              "text": "Andrés nunca viajó a la ciudad.",
+              "english": "Andrés never traveled to the city."
+            },
+            {
+              "text": "No tiene pasaporte, pero tiene tierra y desea una granja más grande.",
+              "english": "He has no passport, but he has land and wants a bigger farm."
+            },
+            {
+              "text": "Andrés dice que la lluvia viene mañana y que va a regar menos.",
+              "english": "Andrés says that the rain is coming tomorrow and that he is going to water less."
+            },
+            {
+              "text": "Comieron frijoles, tortillas y queso cerca de un árbol.",
+              "english": "They ate beans, tortillas and cheese near a tree."
+            },
+            {
+              "text": "Sam descansó un momento.",
+              "english": "Sam rested for a moment."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El mercado",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Por la tarde volvieron al mercado.",
+              "english": "In the afternoon they went back to the market."
+            },
+            {
+              "text": "Un pescador de la playa vendía lo que trajo del mar.",
+              "english": "A fisherman from the beach was selling what he brought from the sea."
+            },
+            {
+              "text": "—El pescador sale a las cuatro de la mañana —dijo Carlos—.",
+              "english": "\"The fisherman leaves at four in the morning,\" said Carlos."
+            },
+            {
+              "text": "Trabaja más que nosotros.",
+              "english": "\"He works more than we do.\""
+            },
+            {
+              "text": "Sam habló con él.",
+              "english": "Sam talked with him."
+            },
+            {
+              "text": "Dijo que su vida es difícil, pero buena.",
+              "english": "He said that his life is hard, but good."
+            },
+            {
+              "text": "Ana pasó por el mercado con una caja de vacunas para los niños.",
+              "english": "Ana came through the market with a box of vaccines for the children."
+            },
+            {
+              "text": "Luis llegó del colegio después de su clase.",
+              "english": "Luis arrived from the high school after his class."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La noche",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam volvió a la casa muy cansado.",
+              "english": "Sam went back to the house very tired."
+            },
+            {
+              "text": "Se sentó a la mesa, comió y se acostó.",
+              "english": "He sat at the table, ate and went to bed."
+            },
+            {
+              "text": "Antes de dormir, mandó una foto al grupo del equipo con un correo.",
+              "english": "Before sleeping, he sent a photo to the team group with an email."
+            },
+            {
+              "text": "«Hoy vi trabajar a un panadero, un comerciante, un ingeniero, un campesino y un pescador», escribió.",
+              "english": "\"Today I saw a baker, a merchant, an engineer, a farmer and a fisherman at work,\" he wrote."
+            },
+            {
+              "text": "«El miércoles vuelvo al taller.",
+              "english": "\"On Wednesday I am going back to the workshop."
+            },
+            {
+              "text": "Carlos cumplió lo que dijo: me enseñó todo.»",
+              "english": "Carlos did what he said: he taught me everything.\""
+            },
+            {
+              "text": "—Trabajar es difícil, pero es bueno —pensó Sam.",
+              "english": "\"Working is hard, but it is good,\" thought Sam."
+            },
+            {
+              "text": "Doña Marta le deseó buenas noches.",
+              "english": "Doña Marta wished him good night."
+            },
+            {
+              "text": "Sam quiso descansar, y durmió muy bien.",
+              "english": "Sam wanted to rest, and he slept very well."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

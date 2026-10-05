@@ -1,0 +1,622 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-18",
+  "lang": "es",
+  "title": "La llave que volvió",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-18",
+    "title": "The key that came back (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "es-HN",
+  "sections": [
+    {
+      "title": "Una llave con una rosa",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Karla tenía una idea: ponía una rosa roja en cada cosa de ella.",
+              "english": "Karla had an idea: she put a red rose on each of her things."
+            },
+            {
+              "text": "Al principio solo tenía una llave.",
+              "english": "At first she had only one key."
+            },
+            {
+              "text": "Una rosa en su libro, una rosa en su bolsa, y una rosa en la llave de su casa.",
+              "english": "A rose on her book, a rose on her bag, and a rose on her house key."
+            },
+            {
+              "text": "«Así nadie se equivoca», decía.",
+              "english": "\"That way nobody makes a mistake,\" she said."
+            },
+            {
+              "text": "«Y así siempre sé que algo me pertenece».",
+              "english": "\"And that way I always know that something belongs to me.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Cuando Sam llegó a vivir a su casa, Karla le dio una copia de la llave, también con una rosa.",
+              "english": "When Sam came to live in her house, Karla gave him a copy of the key, also with a rose."
+            },
+            {
+              "text": "Sam la miró con cuidado y prometió: «Esta vez no la voy a perder».",
+              "english": "Sam looked at it carefully and promised: \"This time I am not going to lose it.\""
+            },
+            {
+              "text": "Karla se rio.",
+              "english": "Karla laughed."
+            },
+            {
+              "text": "Ella conocía bien a Sam y sus llaves.",
+              "english": "She knew Sam and his keys well."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El río",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "En julio, el equipo fue a la aldea de la montaña.",
+              "english": "In July the team went to the village in the mountains."
+            },
+            {
+              "text": "El primer día llegaron al río.",
+              "english": "The first day they reached the river."
+            },
+            {
+              "text": "No había puente, y el río estaba lleno.",
+              "english": "There was no bridge, and the river was full."
+            },
+            {
+              "text": "Un hombre de la aldea apareció con tres mulas, y las personas atravesaron el agua de dos en dos.",
+              "english": "A man from the village appeared with three mules, and the people crossed the water two by two."
+            },
+            {
+              "text": "En el río, la mula de Sam se detuvo de pronto.",
+              "english": "In the river, Sam's mule stopped suddenly."
+            },
+            {
+              "text": "Sam saltó al agua para ayudarla, y en ese momento la llave, que llevaba en la bolsa del pantalón, se cayó al río.",
+              "english": "Sam jumped into the water to help it, and at that moment the key, which he was carrying in his trouser pocket, fell into the river."
+            },
+            {
+              "text": "Nadie la vio.",
+              "english": "Nobody saw it."
+            },
+            {
+              "text": "El agua la cubrió, y la llave quedó debajo del agua, entre la arena.",
+              "english": "The water covered it, and the key stayed under the water, among the sand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam no notó nada.",
+              "english": "Sam noticed nothing."
+            },
+            {
+              "text": "Llegaron a la aldea, pasaron tres días con la gente, y el domingo hubo un culto en el templo.",
+              "english": "They reached the village, spent three days with the people, and on Sunday there was a service in the church."
+            },
+            {
+              "text": "Cuando volvieron a casa, Sam buscó la llave en su bolsa, en su pantalón y en todas partes.",
+              "english": "When they came back home, Sam looked for the key in his bag, in his trousers and everywhere."
+            },
+            {
+              "text": "No estaba.",
+              "english": "It was not there."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "«No puede ser», dijo.",
+              "english": "\"It can't be,\" he said."
+            },
+            {
+              "text": "«Otra vez».",
+              "english": "\"Again.\""
+            },
+            {
+              "text": "Karla no se enojó.",
+              "english": "Karla did not get angry."
+            },
+            {
+              "text": "Se rio, sacó otra copia de un armario y se la dio.",
+              "english": "She laughed, took another copy out of a wardrobe and gave it to him."
+            },
+            {
+              "text": "«Esta es otra copia», dijo.",
+              "english": "\"This is another copy,\" she said."
+            },
+            {
+              "text": "«Y esta no tiene rosa, porque ya no tengo tiempo para rosas.",
+              "english": "\"And this one has no rose, because I have no time left for roses."
+            },
+            {
+              "text": "Cuidala bien».",
+              "english": "Take good care of it.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El río de arena",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pasaron los meses.",
+              "english": "The months passed."
+            },
+            {
+              "text": "El invierno terminó, y llegó el verano.",
+              "english": "The winter ended, and summer came."
+            },
+            {
+              "text": "Ese año hubo sequía otra vez.",
+              "english": "That year there was drought again."
+            },
+            {
+              "text": "El río de la aldea se convirtió en un río de arena, y casi no quedó agua.",
+              "english": "The village river turned into a river of sand, and almost no water remained."
+            },
+            {
+              "text": "Cada semana, Sam miraba la bolsa, el armario y el pantalón.",
+              "english": "Every week Sam looked in the bag, the wardrobe and the trousers."
+            },
+            {
+              "text": "Nada.",
+              "english": "Nothing."
+            },
+            {
+              "text": "Karla lo veía y se reía.",
+              "english": "Karla saw him and laughed."
+            },
+            {
+              "text": "«La llave está bien», decía.",
+              "english": "\"The key is fine,\" she said."
+            },
+            {
+              "text": "«Está de viaje».",
+              "english": "\"It is on a trip.\""
+            },
+            {
+              "text": "Sam también se reía, pero en su corazón sentía que no estaba todo.",
+              "english": "Sam laughed too, but in his heart he felt that not everything was there."
+            },
+            {
+              "text": "Los patos ya no nadaban, y el calendario de la aldea mostraba un día más sin lluvia.",
+              "english": "The ducks no longer swam, and the village calendar showed one more day without rain."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Un día, un niño de la aldea buscaba una cabra perdida en el río sin agua.",
+              "english": "One day a boy from the village was looking for a lost goat in the dry river."
+            },
+            {
+              "text": "Entre la arena vio algo pequeño y rojo.",
+              "english": "Among the sand he saw something small and red."
+            },
+            {
+              "text": "Cavó con las manos y halló una llave.",
+              "english": "He dug with his hands and found a key."
+            },
+            {
+              "text": "Tenía una rosa roja en la cabeza.",
+              "english": "It had a red rose on its head."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El niño, que era muy cortés, llevó la llave al presidente de la aldea.",
+              "english": "The boy, who was very courteous, took the key to the president of the village."
+            },
+            {
+              "text": "El presidente la miró despacio y dijo: «Yo conozco esta rosa.",
+              "english": "The president looked at it slowly and said: \"I know this rose."
+            },
+            {
+              "text": "Esta llave pertenece a la amiga de Sam, la que escribe cartas».",
+              "english": "This key belongs to Sam's friend, the one who writes letters.\""
+            },
+            {
+              "text": "Después recordó el terremoto: «Aquel año perdimos un puente, pero hallamos amigos.",
+              "english": "Then he remembered the earthquake: \"That year we lost a bridge, but we found friends."
+            },
+            {
+              "text": "Las cosas perdidas a veces vuelven».",
+              "english": "Lost things sometimes come back.\""
+            },
+            {
+              "text": "Y guardó la llave en una caja.",
+              "english": "And he put the key in a box."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Esa semana, un hombre del pueblo salió con sus mulas hacia el mercado.",
+              "english": "That week a man from the village set out with his mules toward the market."
+            },
+            {
+              "text": "Partió muy temprano.",
+              "english": "He left very early."
+            },
+            {
+              "text": "Llevaba trigo, cebada y dos gallos para vender en su puesto.",
+              "english": "He was carrying wheat, barley and two roosters to sell at his stall."
+            },
+            {
+              "text": "El presidente le dijo: «Llevá esta llave a Karla, en la casa cerca de la clínica».",
+              "english": "The president said to him: \"Take this key to Karla, in the house near the clinic.\""
+            },
+            {
+              "text": "El hombre aceptó, porque quería una ganancia pequeña y también hacer un favor a la aldea.",
+              "english": "The man accepted, because he wanted a small profit and also to do a favour for the village."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El viaje duró tres días.",
+              "english": "The trip lasted three days."
+            },
+            {
+              "text": "El hombre atravesó la montaña con las mulas.",
+              "english": "The man crossed the mountain with the mules."
+            },
+            {
+              "text": "Pasó cerca de la tumba del siervo de Dios, y se detuvo un minuto.",
+              "english": "He passed near the servant of God's tomb, and stopped for a minute."
+            },
+            {
+              "text": "Entre la hierba apareció una serpiente, y una cabra saltó.",
+              "english": "A snake appeared in the grass, and a goat jumped."
+            },
+            {
+              "text": "En el camino un toro miró a las mulas y no se movió.",
+              "english": "On the road a bull looked at the mules and did not move."
+            },
+            {
+              "text": "Una mula perezosa quería parar cada minuto, pero el hombre la alcanzó y siguió.",
+              "english": "A lazy mule wanted to stop at every step, but the man caught up with it and went on."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Al final del viaje, el hombre llegó al pueblo con las mulas cansadas.",
+              "english": "At the end of the trip the man reached the village with his tired mules."
+            },
+            {
+              "text": "Preguntó por una casa con una rosa, y todos le dijeron lo mismo: «Es la casa de Karla».",
+              "english": "He asked about a house with a rose, and everyone told him the same thing: \"It is Karla's house.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La llave vuelve",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El hombre se acercó a la casa y llamó.",
+              "english": "The man approached the house and called."
+            },
+            {
+              "text": "Karla abrió.",
+              "english": "Karla opened."
+            },
+            {
+              "text": "Él sacó la llave de una bolsa pequeña y dijo: «Esto es de ustedes.",
+              "english": "He took the key out of a small bag and said: \"This is yours."
+            },
+            {
+              "text": "Un niño lo halló en el río sin agua, y el presidente de la aldea me pidió que lo trajera».",
+              "english": "A boy found it in the dry river, and the village president asked me to bring it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla miró la rosa roja y se puso alegre.",
+              "english": "Karla looked at the red rose and became cheerful."
+            },
+            {
+              "text": "«¡Sam!», gritó.",
+              "english": "\"Sam!\" she shouted."
+            },
+            {
+              "text": "«¡Vení!",
+              "english": "\"Come!"
+            },
+            {
+              "text": "¡Mirá lo que ha vuelto!».",
+              "english": "Look what has come back!\""
+            },
+            {
+              "text": "Sam salió corriendo, con una taza de café en la mano.",
+              "english": "Sam came out running, with a cup of coffee in his hand."
+            },
+            {
+              "text": "Cuando vio la llave, la taza casi se cayó.",
+              "english": "When he saw the key, the cup almost fell."
+            },
+            {
+              "text": "«¡Mi llave!",
+              "english": "\"My key!"
+            },
+            {
+              "text": "¡Después de seis meses!».",
+              "english": "After six months!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "«La llave valía muy poco», dijo Karla, «pero esta vez valió mucho.",
+              "english": "\"The key was worth very little,\" said Karla, \"but this time it was worth a lot."
+            },
+            {
+              "text": "Un niño, un presidente y un hombre con mulas la trajeron por la montaña.",
+              "english": "A boy, a president and a man with mules brought it over the mountain."
+            },
+            {
+              "text": "Eso no es poca cosa».",
+              "english": "That is no small thing.\""
+            },
+            {
+              "text": "El hombre, guapo y cansado, tuvo una sonrisa.",
+              "english": "The man, handsome and tired, smiled."
+            },
+            {
+              "text": "«Tardé tres días», dijo.",
+              "english": "\"It took me three days,\" he said."
+            },
+            {
+              "text": "«Pero el camino me gustó».",
+              "english": "\"But I liked the road.\""
+            },
+            {
+              "text": "Sam tomó la llave.",
+              "english": "Sam took the key."
+            },
+            {
+              "text": "La miró.",
+              "english": "He looked at it."
+            },
+            {
+              "text": "Tenía un poco de arena en la rosa.",
+              "english": "It had a little sand on the rose."
+            },
+            {
+              "text": "La sacó con cuidado, y la rosa seguía roja.",
+              "english": "He took it out carefully, and the rose was still red."
+            },
+            {
+              "text": "«Qué bonito es el rojo», dijo.",
+              "english": "\"How beautiful the red is,\" he said."
+            },
+            {
+              "text": "«Nunca más voy a perderla».",
+              "english": "\"I am never going to lose it again.\""
+            },
+            {
+              "text": "Karla se rio.",
+              "english": "Karla laughed."
+            },
+            {
+              "text": "«Ya lo dijiste una vez», contestó.",
+              "english": "\"You already said that once,\" she answered."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla le dio al hombre pan de trigo, una rosa y una carta para el presidente.",
+              "english": "Karla gave the man wheat bread, a rose and a letter for the president."
+            },
+            {
+              "text": "Esa misma noche, Sam escribió otra carta, y mandó una copia a la aldea por el mismo camino.",
+              "english": "That same night Sam wrote another letter, and sent a copy to the village by the same road."
+            },
+            {
+              "text": "Escribió: «Gracias por traer lo que se perdió.",
+              "english": "He wrote: \"Thank you for bringing back what was lost."
+            },
+            {
+              "text": "En mi país el hielo y la nieve se van, pero aquí lo bueno vuelve».",
+              "english": "In my country the ice and snow go away, but here kindness comes back.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una ola de risas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Esa noche, Nico, que había escuchado todo desde la sala, quiso saber más.",
+              "english": "That night Nico, who had heard everything from the living room, wanted to know more."
+            },
+            {
+              "text": "«¿Y el niño?», preguntó.",
+              "english": "\"And the boy?\" he asked."
+            },
+            {
+              "text": "«¿Cómo se llama?",
+              "english": "\"What is his name?"
+            },
+            {
+              "text": "¿Qué quiere ser?».",
+              "english": "What does he want to be?\""
+            },
+            {
+              "text": "Karla no lo sabía.",
+              "english": "Karla did not know."
+            },
+            {
+              "text": "Al otro día, Sam escribió al presidente de la aldea, y el presidente contestó en dos semanas: el niño quería aprender un oficio y hacer estudios, pero la escuela de la aldea era muy pequeña.",
+              "english": "The next day Sam wrote to the village president, and the president answered within two weeks: the boy wanted to learn a trade and to study, but the village school was very small."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Karla y Sam hablaron con el pastor Mario y con Carlos, el carpintero.",
+              "english": "Karla and Sam spoke with Pastor Mario and with Carlos, the carpenter."
+            },
+            {
+              "text": "Entre todos hicieron un trato: el niño iba a pasar los inviernos con Carlos para aprender un oficio, y iba a ir a la escuela del pueblo.",
+              "english": "Together they made a plan: the boy was going to spend the winters with Carlos to learn a trade, and was going to go to the village school."
+            },
+            {
+              "text": "Nadie tenía que pagar mucho, porque la comunidad ayudó.",
+              "english": "Nobody had to pay much, because the community helped."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Cuando el niño llegó por primera vez, un avión pasó volando arriba.",
+              "english": "When the boy arrived for the first time, a plane passed flying overhead."
+            },
+            {
+              "text": "Él lo miró con los ojos grandes.",
+              "english": "He looked at it with his mouth open."
+            },
+            {
+              "text": "«Algún día voy a volar», dijo.",
+              "english": "\"Someday I am going to fly,\" he said."
+            },
+            {
+              "text": "Nico le contó el cuento del zorro y del lobo, y el niño se rio.",
+              "english": "Nico told him the tale of the fox and the wolf, and the boy laughed."
+            },
+            {
+              "text": "Un ratón pasó corriendo, y los dos se rieron más.",
+              "english": "A mouse ran past, and the two laughed more."
+            },
+            {
+              "text": "Una ola de risas llenó la casa.",
+              "english": "A wave of laughter filled the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Sam puso la llave en la mano del niño.",
+              "english": "Sam put the key in the boy's hand."
+            },
+            {
+              "text": "«Esta llave ya no es solo mi llave», dijo.",
+              "english": "\"This key is no longer only mine,\" he said."
+            },
+            {
+              "text": "«Un poco es de la aldea, y un poco es de vos».",
+              "english": "\"A little of it belongs to the village, and a little to you.\""
+            },
+            {
+              "text": "El niño la miró dos veces, y después la devolvió con una sonrisa.",
+              "english": "The boy looked at it twice, and then gave it back with a smile."
+            },
+            {
+              "text": "«Es de ustedes», dijo.",
+              "english": "\"It's yours,\" he said."
+            },
+            {
+              "text": "«Pero gracias por dejarme tenerla un minuto».",
+              "english": "\"But thank you for letting me hold it for a minute.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Y la llave, que huyó una vez en el río y alcanzó su casa seis meses después, no se volvió a perder.",
+              "english": "And the key, which fled once in the river and reached its home six months later, was never lost again."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

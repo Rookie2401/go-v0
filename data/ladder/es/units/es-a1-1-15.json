@@ -1,0 +1,486 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a1-1-15",
+  "lang": "es",
+  "title": "Sam's first testimony",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a1-1-15",
+    "title": "Sam's first testimony (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. For the Honduran reviewer: first-person present testimonies in very simple Spanish (\"Creo en Dios\", \"Dios me ama\", \"tengo paz\"); the faith statements are the drafter's own simple wording and need a church-competent Honduran reviewer; \"cristiano / cristiana\"; \"Gracias a Dios\"."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "testimony",
+    "faith",
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "variety": "es-HN",
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "mario": "Señor Mario",
+    "karla": "Karla",
+    "pastor": "Pastor Jorge",
+    "sam": "Sam",
+    "elena": "Señora Elena",
+    "nico": "Nico",
+    "marta": "Doña Marta"
+  },
+  "sections": [
+    {
+      "title": "Sam's first testimony",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hoy hay una reunión en la iglesia.",
+              "english": "Today there is a meeting at the church."
+            },
+            {
+              "text": "La iglesia es pequeña, pero viene mucha gente.",
+              "english": "The church is small, but many people come."
+            },
+            {
+              "text": "Hay café y pan para todos.",
+              "english": "There is coffee and bread for everyone."
+            },
+            {
+              "text": "El pastor Jorge está aquí.",
+              "english": "Pastor Jorge is here."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Buenas noches a todos.",
+              "english": "Good evening, everyone."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Hoy hablamos de nuestra vida.",
+              "english": "Today we talk about our lives."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Sam va a hablar.",
+              "english": "Sam is going to speak."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Vamos a orar.",
+              "english": "Let us pray."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Dios, gracias por la gente de esta iglesia.",
+              "english": "God, thank you for the people of this church."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Gracias por tu ayuda.",
+              "english": "Thank you for your help."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "Me llamo Sam.",
+              "english": "My name is Sam."
+            },
+            {
+              "speaker": "sam",
+              "text": "Soy cristiano.",
+              "english": "I am a Christian."
+            },
+            {
+              "speaker": "sam",
+              "text": "Creo en Dios.",
+              "english": "I believe in God."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi familia está lejos de aquí.",
+              "english": "My family is far from here."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi papá y mi mamá están en su casa.",
+              "english": "My dad and my mom are at their house."
+            },
+            {
+              "speaker": "sam",
+              "text": "Hablo con mi mamá en el teléfono.",
+              "english": "I talk with my mom on the phone."
+            },
+            {
+              "speaker": "sam",
+              "text": "Escribo mensajes a mi hermano.",
+              "english": "I write messages to my brother."
+            },
+            {
+              "speaker": "sam",
+              "text": "Pero tengo paz.",
+              "english": "But I have peace."
+            },
+            {
+              "speaker": "sam",
+              "text": "Dios me ama.",
+              "english": "God loves me."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi vida es nueva en Honduras.",
+              "english": "My life is new in Honduras."
+            },
+            {
+              "speaker": "sam",
+              "text": "Tengo amigos nuevos.",
+              "english": "I have new friends."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi cuarto nuevo está cerca de la iglesia.",
+              "english": "My new room is near the church."
+            },
+            {
+              "speaker": "sam",
+              "text": "El equipo es mi familia.",
+              "english": "The team is my family."
+            },
+            {
+              "speaker": "sam",
+              "text": "Estoy feliz.",
+              "english": "I am happy."
+            },
+            {
+              "speaker": "sam",
+              "text": "Mi corazón está feliz.",
+              "english": "My heart is happy."
+            },
+            {
+              "speaker": "sam",
+              "text": "Necesito ayuda con el español.",
+              "english": "I need help with Spanish."
+            },
+            {
+              "speaker": "sam",
+              "text": "Pero la gente es muy buena.",
+              "english": "But the people are very good."
+            },
+            {
+              "speaker": "sam",
+              "text": "Doña Marta hace sopa y pan para mí.",
+              "english": "Doña Marta makes soup and bread for me."
+            },
+            {
+              "speaker": "sam",
+              "text": "Luis y Ana me ayudan con el español.",
+              "english": "Luis and Ana help me with Spanish."
+            },
+            {
+              "speaker": "sam",
+              "text": "Los vecinos hablan español todos los días.",
+              "english": "The neighbours speak Spanish every day."
+            },
+            {
+              "speaker": "sam",
+              "text": "Doña Marta y Nico son mi familia aquí.",
+              "english": "Doña Marta and Nico are my family here."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias a Dios.",
+              "english": "Thanks be to God."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "elena",
+              "text": "Me llamo Elena.",
+              "english": "My name is Elena."
+            },
+            {
+              "speaker": "elena",
+              "text": "Tengo una pulpería cerca de la terminal.",
+              "english": "I have a shop near the terminal."
+            },
+            {
+              "speaker": "elena",
+              "text": "Mi pulpería es pequeña.",
+              "english": "My shop is small."
+            },
+            {
+              "speaker": "elena",
+              "text": "Soy cristiana.",
+              "english": "I am a Christian."
+            },
+            {
+              "speaker": "elena",
+              "text": "Hoy estoy enferma.",
+              "english": "Today I am sick."
+            },
+            {
+              "speaker": "elena",
+              "text": "Tengo dolor en las manos.",
+              "english": "My hands hurt."
+            },
+            {
+              "speaker": "elena",
+              "text": "Pero creo en Dios.",
+              "english": "But I believe in God."
+            },
+            {
+              "speaker": "elena",
+              "text": "Mi corazón está en paz.",
+              "english": "My heart is at peace."
+            },
+            {
+              "speaker": "elena",
+              "text": "Dios ama a los vecinos.",
+              "english": "God loves the neighbours."
+            },
+            {
+              "speaker": "elena",
+              "text": "El pastor y el equipo vienen a visitar.",
+              "english": "The pastor and the team come to visit."
+            },
+            {
+              "speaker": "elena",
+              "text": "Ahora estoy mejor.",
+              "english": "Now I am better."
+            },
+            {
+              "speaker": "elena",
+              "text": "Mi vida es buena.",
+              "english": "My life is good."
+            },
+            {
+              "speaker": "elena",
+              "text": "Los vecinos vienen a mi pulpería.",
+              "english": "The neighbours come to my shop."
+            },
+            {
+              "speaker": "elena",
+              "text": "Siempre hay gente en la calle.",
+              "english": "There are always people in the street."
+            },
+            {
+              "speaker": "elena",
+              "text": "El pastor y el equipo oran por mí.",
+              "english": "The pastor and the team pray for me."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nico",
+              "text": "Me llamo Nico.",
+              "english": "My name is Nico."
+            },
+            {
+              "speaker": "nico",
+              "text": "Soy un cipote pequeño.",
+              "english": "I am a small boy."
+            },
+            {
+              "speaker": "nico",
+              "text": "Creo en Dios.",
+              "english": "I believe in God."
+            },
+            {
+              "speaker": "nico",
+              "text": "Dios, gracias por mi mochila.",
+              "english": "God, thank you for my backpack."
+            },
+            {
+              "speaker": "nico",
+              "text": "Gracias por mi libro.",
+              "english": "Thank you for my book."
+            },
+            {
+              "speaker": "nico",
+              "text": "Necesito tu ayuda en la escuela.",
+              "english": "I need your help at school."
+            },
+            {
+              "speaker": "nico",
+              "text": "Soy feliz en mi casa.",
+              "english": "I am happy at home."
+            },
+            {
+              "speaker": "nico",
+              "text": "Mi hermano Luis es maestro.",
+              "english": "My brother Luis is a teacher."
+            },
+            {
+              "speaker": "nico",
+              "text": "Mi hermana Ana es enfermera.",
+              "english": "My sister Ana is a nurse."
+            },
+            {
+              "speaker": "nico",
+              "text": "Mi abuela vende pan y tamales.",
+              "english": "My grandma sells bread and tamales."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "marta",
+              "text": "Dios es bueno.",
+              "english": "God is good."
+            },
+            {
+              "speaker": "marta",
+              "text": "Dios me da paz.",
+              "english": "God gives me peace."
+            },
+            {
+              "speaker": "marta",
+              "text": "Tengo una familia grande.",
+              "english": "I have a big family."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Dios ama a todos.",
+              "english": "God loves everyone."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Dios es bueno con los cristianos y con los vecinos.",
+              "english": "God is good to Christians and to neighbours."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Dios está en nuestro corazón.",
+              "english": "God is in our hearts."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Gracias, Sam.",
+              "english": "Thank you, Sam."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Gracias, señora Elena.",
+              "english": "Thank you, señora Elena."
+            },
+            {
+              "speaker": "pastor",
+              "text": "Ahora vamos a orar.",
+              "english": "Now let us pray."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Ahora todos toman café y comen pan.",
+              "english": "Now everyone has coffee and eats bread."
+            },
+            {
+              "speaker": "mario",
+              "text": "Sam, hablás muy bien.",
+              "english": "Sam, you speak very well."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias, señor Mario.",
+              "english": "Thank you, Mr. Mario."
+            },
+            {
+              "speaker": "sam",
+              "text": "Tengo que estudiar más.",
+              "english": "I have to study more."
+            },
+            {
+              "speaker": "mario",
+              "text": "Mi familia quiere hablar con vos.",
+              "english": "My family wants to talk with you."
+            },
+            {
+              "speaker": "sam",
+              "text": "Voy a visitar a su familia.",
+              "english": "I am going to visit your family."
+            },
+            {
+              "speaker": "karla",
+              "text": "Mi mamá hace baleadas muy buenas.",
+              "english": "My mom makes very good baleadas."
+            },
+            {
+              "speaker": "sam",
+              "text": "¡Qué bueno!",
+              "english": "How nice!"
+            },
+            {
+              "speaker": "sam",
+              "text": "Me gusta mucho Honduras.",
+              "english": "I like Honduras a lot."
+            },
+            {
+              "speaker": "marta",
+              "text": "Sam, Honduras es tu casa.",
+              "english": "Sam, Honduras is your home."
+            },
+            {
+              "speaker": "sam",
+              "text": "Gracias a todos.",
+              "english": "Thanks to everyone."
+            },
+            {
+              "speaker": "marta",
+              "text": "Vamos a la casa, Sam.",
+              "english": "Let us go home, Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

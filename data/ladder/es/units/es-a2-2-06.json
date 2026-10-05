@@ -1,0 +1,882 @@
+{
+  "schemaVersion": 2,
+  "id": "es-a2-2-06",
+  "lang": "es",
+  "title": "La reunión de la comunidad",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-es",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Spanish"
+  },
+  "source": {
+    "id": "src:es:es-a2-2-06",
+    "title": "The neighbourhood meeting (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Spanish. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course; not reviewed by a native speaker. It is controlled, deliberately repetitive Spanish written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "community"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "variety": "es-HN",
+  "speakers": {
+    "S": "Sam",
+    "K": "Karla",
+    "V": "Marvin",
+    "M": "Doña Marta",
+    "C": "Carlos",
+    "E": "Elena",
+    "L": "Luis",
+    "A": "Ana",
+    "P": "Pastor Mario",
+    "X": "Miguel",
+    "N": "Nico"
+  },
+  "sections": [
+    {
+      "title": "El aviso",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El jueves, Karla llega a casa con un aviso en la mano.",
+              "english": "On Thursday Karla arrives home with a notice in her hand."
+            },
+            {
+              "text": "Lo ha quitado de la pared de la tienda.",
+              "english": "She has taken it off the wall of the shop."
+            },
+            {
+              "text": "Sam lo lee con cuidado, porque apenas entiende algunas palabras.",
+              "english": "Sam reads it carefully, because he can hardly understand some of the words."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Es una reunión de la comunidad.",
+              "english": "It is a community meeting.",
+              "speaker": "K"
+            },
+            {
+              "text": "Ahí, en la iglesia, vamos a platicar sobre el agua, el camino y la luz.",
+              "english": "There, at the church, we will talk about the water, the road and the light.",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Cuándo es?",
+              "english": "When is it?",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Adónde tenemos que ir?",
+              "english": "Where do we have to go?",
+              "speaker": "S"
+            },
+            {
+              "text": "El sábado a las cuatro, acá cerca, en el patio de la iglesia.",
+              "english": "Saturday at four, near here, in the church courtyard.",
+              "speaker": "K"
+            },
+            {
+              "text": "No hay que pagar nada.",
+              "english": "You don't have to pay anything.",
+              "speaker": "K"
+            },
+            {
+              "text": "Nadie alquila el lugar, porque la iglesia lo ofrece.",
+              "english": "Nobody rents the place, because the church offers it.",
+              "speaker": "K"
+            },
+            {
+              "text": "Aún no sé mucho de política.",
+              "english": "I still don't know much about politics.",
+              "speaker": "S"
+            },
+            {
+              "text": "¿Puedo ir?",
+              "english": "May I go?",
+              "speaker": "S"
+            },
+            {
+              "text": "Claro.",
+              "english": "Of course.",
+              "speaker": "K"
+            },
+            {
+              "text": "No es política grande.",
+              "english": "It isn't big politics.",
+              "speaker": "K"
+            },
+            {
+              "text": "Es la política de los vecinos: queremos que el gobierno nos escuche.",
+              "english": "It is the politics of the neighbours: we want the government to listen to us.",
+              "speaker": "K"
+            },
+            {
+              "text": "Entonces voy con vos.",
+              "english": "Then I'll go with you.",
+              "speaker": "S"
+            },
+            {
+              "text": "Quiero escuchar las opiniones de todos.",
+              "english": "I want to hear everyone's opinions.",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "La reunión comienza",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "El sábado, en el patio de la iglesia hay mucha gente.",
+              "english": "On Saturday there are lots of people in the church courtyard."
+            },
+            {
+              "text": "Hay niños, jóvenes, señoras y hombres.",
+              "english": "There are children, young people, women and men."
+            },
+            {
+              "text": "Doña Marta trae café para todos, y Nico lleva el pan de mesa en mesa.",
+              "english": "Doña Marta brings coffee for everyone, and Nico takes the bread from table to table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "El señor Marvin es el presidente de la comunidad. Se levanta, mira a la gente con una sonrisa y declara abierta la reunión.",
+              "english": "Mr. Marvin is the president of the community. He stands up, looks at the people with a smile and declares the meeting open."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Buenas tardes, hermanos y vecinos.",
+              "english": "Good afternoon, brothers and neighbours.",
+              "speaker": "V"
+            },
+            {
+              "text": "Antes de empezar, el pastor Mario va a rezar por nosotros.",
+              "english": "Before we begin, Pastor Mario is going to pray for us.",
+              "speaker": "V"
+            },
+            {
+              "text": "Padre, te damos gracias por esta comunidad.",
+              "english": "Father, we thank you for this community.",
+              "speaker": "P"
+            },
+            {
+              "text": "Te rogamos que haya amor y justicia en nuestras palabras.",
+              "english": "We beg you that there may be love and justice in our words.",
+              "speaker": "P"
+            },
+            {
+              "text": "Queremos que tu espíritu nos ayude y que tu misericordia nos acompañe.",
+              "english": "We want your spirit to help us and your mercy to accompany us.",
+              "speaker": "P"
+            },
+            {
+              "text": "En el nombre de Jesús.",
+              "english": "In the name of Jesus.",
+              "speaker": "P"
+            },
+            {
+              "text": "Ahora quiero que cada uno diga su idea con paz.",
+              "english": "Now I want each person to say their idea in peace.",
+              "speaker": "V"
+            },
+            {
+              "text": "En esta comunidad hay personas de muchas religiones, y todos tienen derecho a hablar.",
+              "english": "In this community there are people of many religions, and everyone has the right to speak.",
+              "speaker": "V"
+            },
+            {
+              "text": "Ninguna religión está sobre otra.",
+              "english": "No religion is above another.",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo declaro que aquí nadie va a discutir con enojo.",
+              "english": "I declare that here nobody is going to argue in anger.",
+              "speaker": "V"
+            },
+            {
+              "text": "Podemos discutir los problemas, pero no a las personas.",
+              "english": "We can argue about the problems, but not about the people.",
+              "speaker": "V"
+            },
+            {
+              "text": "Desde el comienzo, esta reunión es para todos.",
+              "english": "From the start, this meeting is for everyone.",
+              "speaker": "V"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Los problemas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Quiero que Carlos hable primero, porque conoce bien el camino.",
+              "english": "I want Carlos to speak first, because he knows the road well.",
+              "speaker": "V"
+            },
+            {
+              "text": "Gracias, señor Marvin. El camino a la escuela existe solo en el nombre. No existe un camino bueno hasta allá. En invierno, el agua lo cubre, y los niños no pueden pasar.",
+              "english": "Thank you, Mr. Marvin. The road to the school exists only in name. There is no good road all the way there. In winter the water covers it, and the children can't get through.",
+              "speaker": "C"
+            },
+            {
+              "text": "Esto ocurre cada invierno.",
+              "english": "This happens every winter.",
+              "speaker": "C"
+            },
+            {
+              "text": "Ocurre también en todo el valle.",
+              "english": "It also happens in the whole valley.",
+              "speaker": "C"
+            },
+            {
+              "text": "Ya intentamos hablar con ellos dos veces.",
+              "english": "We already tried to speak with them twice.",
+              "speaker": "C"
+            },
+            {
+              "text": "Pedimos que el gobierno arregle el camino antes de la lluvia.",
+              "english": "We ask that the government fix the road before the rain.",
+              "speaker": "C"
+            },
+            {
+              "text": "Y el agua, señor Marvin. El valor del agua aumenta cada mes. Esta semana pagué más que la semana pasada.",
+              "english": "And the water, Mr. Marvin. The price of water goes up every month. This week I paid more than last week.",
+              "speaker": "E"
+            },
+            {
+              "text": "Mi esposo y yo ahorramos, pero el sueldo no aumenta.",
+              "english": "My husband and I save, but the salary doesn't go up.",
+              "speaker": "E"
+            },
+            {
+              "text": "Todo depende del dinero, y el dinero no llega.",
+              "english": "Everything depends on money, and the money doesn't reach.",
+              "speaker": "E"
+            },
+            {
+              "text": "Yo recuerdo otro tiempo.",
+              "english": "I remember another time.",
+              "speaker": "M"
+            },
+            {
+              "text": "Cuando era niña, el agua era un derecho de todos.",
+              "english": "When I was a girl, water was a right for everybody.",
+              "speaker": "M"
+            },
+            {
+              "text": "Nadie pagaba así por beber.",
+              "english": "Nobody paid like this for a drink.",
+              "speaker": "M"
+            },
+            {
+              "text": "¿Qué ocurrió con esos años?",
+              "english": "What happened to those years?",
+              "speaker": "M"
+            },
+            {
+              "text": "Gracias, doña Marta.",
+              "english": "Thank you, doña Marta.",
+              "speaker": "V"
+            },
+            {
+              "text": "Karla, ¿qué sugerís vos?",
+              "english": "Karla, what do you suggest?",
+              "speaker": "V"
+            },
+            {
+              "text": "Sugiero que el gobierno nos explique por qué aumenta el valor del agua.",
+              "english": "I suggest the government explain to us why the price of water goes up.",
+              "speaker": "K"
+            },
+            {
+              "text": "Eso sucede cada año, y nadie dice por qué.",
+              "english": "This happens every year, and nobody says why.",
+              "speaker": "K"
+            },
+            {
+              "text": "Ayer recibimos una llamada del gobierno, pero no explicaron nada.",
+              "english": "Yesterday we received a call from the government, but they explained nothing.",
+              "speaker": "K"
+            },
+            {
+              "text": "¿Y qué sucede cuando una calle se rompe?",
+              "english": "And what happens when a street breaks?",
+              "speaker": "C"
+            },
+            {
+              "text": "Casi siempre nadie la arregla.",
+              "english": "Almost always nobody fixes it.",
+              "speaker": "C"
+            },
+            {
+              "text": "Todo depende de nosotros.",
+              "english": "Everything depends on us.",
+              "speaker": "C"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Las propuestas",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Propongo tres cosas.",
+              "english": "I propose three things.",
+              "speaker": "K"
+            },
+            {
+              "text": "Primero, que el gobierno arregle el camino.",
+              "english": "First, that the government fix the road.",
+              "speaker": "K"
+            },
+            {
+              "text": "Luego, que nos explique el valor del agua.",
+              "english": "Then, that it explain the price of water to us.",
+              "speaker": "K"
+            },
+            {
+              "text": "Por último, que visite la comunidad.",
+              "english": "Finally, that it visit the community.",
+              "speaker": "K"
+            },
+            {
+              "text": "Es una buena idea, pero dudo un poco.",
+              "english": "It is a good idea, but I have some doubts.",
+              "speaker": "L"
+            },
+            {
+              "text": "No creo que el gobierno nos escuche solo porque se lo pedimos.",
+              "english": "I don't think the government will listen to us just because we ask.",
+              "speaker": "L"
+            },
+            {
+              "text": "Entonces hay que actuar.",
+              "english": "Then we have to act.",
+              "speaker": "A"
+            },
+            {
+              "text": "Sugiero que escribamos una carta y que todos la firmen.",
+              "english": "I suggest that we write a letter and that everybody sign it.",
+              "speaker": "A"
+            },
+            {
+              "text": "Si queremos obtener ayuda, hay que publicar la carta en la tienda.",
+              "english": "If we want to get help, we have to publish the letter in the shop.",
+              "speaker": "A"
+            },
+            {
+              "text": "Mi religión me enseña a servir.",
+              "english": "My religion teaches me to serve.",
+              "speaker": "A"
+            },
+            {
+              "text": "Yo propongo algo más.",
+              "english": "I propose something more.",
+              "speaker": "C"
+            },
+            {
+              "text": "Si nadie responde, quiero que vayamos todos a hablar con el gobierno.",
+              "english": "If nobody answers, I want all of us to go and speak with the government.",
+              "speaker": "C"
+            },
+            {
+              "text": "Tenemos la fuerza de la comunidad.",
+              "english": "We have the strength of the community.",
+              "speaker": "C"
+            },
+            {
+              "text": "¿Y cómo convencemos a los vecinos que no vienen?",
+              "english": "And how do we convince the neighbours who don't come?",
+              "speaker": "E"
+            },
+            {
+              "text": "Muchos todavía dudan de que esto sirva.",
+              "english": "Many still doubt that this will work.",
+              "speaker": "E"
+            },
+            {
+              "text": "Yo voy a convencer a un vecino, y Ana va a convencer a su jefe.",
+              "english": "I am going to convince a neighbour, and Ana is going to convince her boss.",
+              "speaker": "K"
+            },
+            {
+              "text": "El futuro de la comunidad depende de todos.",
+              "english": "The future of the community depends on everyone.",
+              "speaker": "K"
+            },
+            {
+              "text": "Nada sucede si nadie actúa.",
+              "english": "Nothing happens if nobody acts.",
+              "speaker": "M"
+            },
+            {
+              "text": "Los ciudadanos tenemos que actuar con paz.",
+              "english": "We citizens have to act in peace.",
+              "speaker": "M"
+            },
+            {
+              "text": "Si me permiten, yo no soy de aquí.",
+              "english": "If you'll allow me, I'm not from here.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pero espero que me ayuden a entender.",
+              "english": "But I hope you will help me understand.",
+              "speaker": "S"
+            },
+            {
+              "text": "Claro, Sam.",
+              "english": "Of course, Sam.",
+              "speaker": "V"
+            },
+            {
+              "text": "Hablá.",
+              "english": "Speak.",
+              "speaker": "V"
+            },
+            {
+              "text": "En mi país también se discute mucho sobre el agua.",
+              "english": "In my country there is also a lot of discussion about water.",
+              "speaker": "S"
+            },
+            {
+              "text": "Existe una ley que dice que el agua es un derecho.",
+              "english": "There is a law that says water is a right.",
+              "speaker": "S"
+            },
+            {
+              "text": "Pero la ley no resuelve nada si los ciudadanos no actúan.",
+              "english": "But the law solves nothing if citizens don't act.",
+              "speaker": "S"
+            },
+            {
+              "text": "Noto que aquí todos hablan con paz.",
+              "english": "I notice that here everyone speaks in peace.",
+              "speaker": "S"
+            },
+            {
+              "text": "Muy bien dicho.",
+              "english": "Well said.",
+              "speaker": "V"
+            },
+            {
+              "text": "Eso es defender la justicia.",
+              "english": "That is defending justice.",
+              "speaker": "V"
+            },
+            {
+              "text": "Hay que cumplir la ley, defender nuestro derecho con paz y defender a los niños.",
+              "english": "We must obey the law, defend our right in peace and defend the children.",
+              "speaker": "V"
+            },
+            {
+              "text": "Defender la patria también es cuidar el agua.",
+              "english": "Defending the homeland is also taking care of the water.",
+              "speaker": "V"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una opinión distinta",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Un señor viejo levanta la mano.",
+              "english": "An old man raises his hand."
+            },
+            {
+              "text": "Se llama Miguel, y es un vecino de la otra calle.",
+              "english": "His name is Miguel, and he is a neighbour from the other street."
+            },
+            {
+              "text": "Su cara es triste.",
+              "english": "His face is sad."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "No me gusta la idea de la carta.",
+              "english": "I don't like the idea of the letter.",
+              "speaker": "X"
+            },
+            {
+              "text": "No quiero que discutamos así.",
+              "english": "I don't want us to argue like that.",
+              "speaker": "X"
+            },
+            {
+              "text": "Yo viví una guerra cuando era joven.",
+              "english": "I lived through a war when I was young.",
+              "speaker": "X"
+            },
+            {
+              "text": "La guerra deja tristeza.",
+              "english": "War leaves sadness.",
+              "speaker": "X"
+            },
+            {
+              "text": "Después de la guerra, mi madre me dijo: «Hijo, el perdón es más grande que la fuerza».",
+              "english": "After the war, my mother said to me: \"Son, forgiveness is greater than force.\"",
+              "speaker": "X"
+            },
+            {
+              "text": "Jamás olvidé esas palabras.",
+              "english": "I never forgot those words.",
+              "speaker": "X"
+            },
+            {
+              "text": "Gracias por su opinión, señor Miguel. Todos queremos paz. Pero discutir con paz no es una guerra. Es una forma de amar a la patria. En la reunión Elena mencionó el agua, y Carlos mencionó el camino.",
+              "english": "Thank you for your opinion, Mr. Miguel. We all want peace. But arguing in peace is not war. It is a way of loving the homeland. In the meeting Elena mentioned the water, and Carlos mentioned the road.",
+              "speaker": "V"
+            },
+            {
+              "text": "La patria es la casa de todos. Yo estoy con la carta, y estoy también con el señor Miguel. Los dos tienen razón.",
+              "english": "The homeland is everyone's house. I am with the letter, and I am also with Mr. Miguel. Both are right.",
+              "speaker": "M"
+            },
+            {
+              "text": "Estoy con la carta.",
+              "english": "I am with the letter.",
+              "speaker": "L"
+            },
+            {
+              "text": "Quiero que cada ciudadano sienta que su opinión cuenta.",
+              "english": "I want every citizen to feel that their opinion counts.",
+              "speaker": "L"
+            },
+            {
+              "text": "Luis apoya la carta, y Karla apoya a Luis.",
+              "english": "Luis supports the letter, and Karla supports Luis."
+            },
+            {
+              "text": "Doña Marta apoya a todos.",
+              "english": "Doña Marta supports everyone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "El voto",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Entonces vamos a votar.",
+              "english": "Then we are going to vote.",
+              "speaker": "V"
+            },
+            {
+              "text": "Votar es un derecho.",
+              "english": "Voting is a right.",
+              "speaker": "V"
+            },
+            {
+              "text": "Los que apoyan la carta, levanten la mano.",
+              "english": "Those who support the letter, raise your hands.",
+              "speaker": "V"
+            },
+            {
+              "text": "Casi todos levantan la mano.",
+              "english": "Almost everyone raises a hand."
+            },
+            {
+              "text": "Solo dos personas se quedan sentadas.",
+              "english": "Only two people stay seated."
+            },
+            {
+              "text": "Nico cuenta los votos con mucho cuidado.",
+              "english": "Nico counts the votes very carefully."
+            },
+            {
+              "text": "¡Sesenta y un votos, señor presidente! ¡Y dos nada más!",
+              "english": "Sixty-one votes, Mr. President! And only two others!",
+              "speaker": "N"
+            },
+            {
+              "text": "La carta gana.",
+              "english": "The letter wins.",
+              "speaker": "V"
+            },
+            {
+              "text": "Ahora hay que votar otra vez, para saber quién la lleva.",
+              "english": "Now we have to vote again, to know who takes it.",
+              "speaker": "V"
+            },
+            {
+              "text": "En la elección que viene vamos a votar también por un nuevo presidente de la comunidad.",
+              "english": "In the next election we will also vote for a new president of the community.",
+              "speaker": "V"
+            },
+            {
+              "text": "En esa elección, cada voto cuenta.",
+              "english": "In that election, every vote counts.",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo propongo a Karla.",
+              "english": "I propose Karla.",
+              "speaker": "E"
+            },
+            {
+              "text": "Es joven, escribe bien y sabe hablar.",
+              "english": "She is young, she writes well and knows how to speak.",
+              "speaker": "E"
+            },
+            {
+              "text": "La elección de hoy es solo el inicio.",
+              "english": "Today's election is only the start.",
+              "speaker": "E"
+            },
+            {
+              "text": "Acepto con gusto.",
+              "english": "I accept gladly.",
+              "speaker": "K"
+            },
+            {
+              "text": "Voy a publicar la carta en la iglesia y en la tienda, pero quiero que Ana y Luis me acompañen.",
+              "english": "I am going to publish the letter at the church and in the shop, but I want Ana and Luis to go with me.",
+              "speaker": "K"
+            },
+            {
+              "text": "Karla, la carta va con vos.",
+              "english": "Karla, the letter goes with you.",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo declaro que vos la llevás.",
+              "english": "I declare that you carry it.",
+              "speaker": "V"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Una palabra de fe",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Hermanos, una palabra más.",
+              "english": "Brothers and sisters, one more word.",
+              "speaker": "P"
+            },
+            {
+              "text": "Desde el inicio de esta reunión pienso en esto.",
+              "english": "Since the beginning of this meeting I have been thinking of this.",
+              "speaker": "P"
+            },
+            {
+              "text": "El evangelio nos llama a la justicia.",
+              "english": "The gospel calls us to justice.",
+              "speaker": "P"
+            },
+            {
+              "text": "Un discípulo no vive solo para él.",
+              "english": "A disciple does not live only for himself.",
+              "speaker": "P"
+            },
+            {
+              "text": "Todos somos pecadores, y todos necesitamos perdón.",
+              "english": "We are all sinners, and we all need forgiveness.",
+              "speaker": "P"
+            },
+            {
+              "text": "Pero la salvación no es solo para el alma.",
+              "english": "But salvation is not only for the soul.",
+              "speaker": "P"
+            },
+            {
+              "text": "También es para el pueblo: Dios quiere liberar a los pobres, y nos da la libertad de servir.",
+              "english": "It is also for the people: God wants to free the poor, and gives us the freedom to serve.",
+              "speaker": "P"
+            },
+            {
+              "text": "Su gracia trae felicidad.",
+              "english": "His grace brings happiness.",
+              "speaker": "P"
+            },
+            {
+              "text": "Podemos obedecer con gusto.",
+              "english": "We can obey gladly.",
+              "speaker": "P"
+            },
+            {
+              "text": "Podemos confesar nuestros pecados, abandonar el pecado y convertir la tristeza en oración.",
+              "english": "We can confess our sins, abandon sin and turn sadness into prayer.",
+              "speaker": "P"
+            },
+            {
+              "text": "Esa es la bendición que pedimos hoy en esta petición.",
+              "english": "That is the blessing we ask for today in this petition.",
+              "speaker": "P"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "Quién trae qué",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ahora, lo que tenemos que hacer.",
+              "english": "Now, what we have to do.",
+              "speaker": "V"
+            },
+            {
+              "text": "El sábado que viene vamos a hablar con el gobierno.",
+              "english": "Next Saturday we go to speak with the government.",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo publico el aviso en la iglesia.",
+              "english": "I will publish the notice at the church.",
+              "speaker": "V"
+            },
+            {
+              "text": "Pido que cada familia traiga algo.",
+              "english": "I ask each family to bring something.",
+              "speaker": "V"
+            },
+            {
+              "text": "Yo quiero que mi nieto lleve el pan y que alguien traiga agua.",
+              "english": "I want my grandson to take the bread and someone to bring water.",
+              "speaker": "M"
+            },
+            {
+              "text": "Yo traigo la mesa.",
+              "english": "I'll bring the table.",
+              "speaker": "C"
+            },
+            {
+              "text": "Yo escribo la carta en buen español.",
+              "english": "I'll write the letter in good Spanish.",
+              "speaker": "S"
+            },
+            {
+              "text": "Ana, quiero que la revises antes de enviarla.",
+              "english": "Ana, I want you to check it before sending it.",
+              "speaker": "S"
+            },
+            {
+              "text": "Con gusto, Sam.",
+              "english": "Gladly, Sam.",
+              "speaker": "A"
+            },
+            {
+              "text": "Quiero que no te equivoqués, pero tampoco que te sientas mal.",
+              "english": "I want you not to make a mistake, but also not to feel bad.",
+              "speaker": "A"
+            },
+            {
+              "text": "Un problema pequeño no es un pecado.",
+              "english": "A small problem is not a sin.",
+              "speaker": "A"
+            },
+            {
+              "text": "Hermanos, la reunión continúa mañana, después del culto.",
+              "english": "Brothers and sisters, the meeting continues tomorrow, after the service.",
+              "speaker": "V"
+            },
+            {
+              "text": "Gracias a todos.",
+              "english": "Thanks to all.",
+              "speaker": "V"
+            },
+            {
+              "text": "Que Dios nos bendiga.",
+              "english": "May God bless us.",
+              "speaker": "V"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "La gente se despide con abrazos y sonrisas.",
+              "english": "People say goodbye with hugs and smiles."
+            },
+            {
+              "text": "Karla y Sam vuelven a casa platicando.",
+              "english": "Karla and Sam go home chatting."
+            },
+            {
+              "text": "A veces hay risa, a veces todos ríen.",
+              "english": "Sometimes there is laughter, sometimes everyone laughs."
+            },
+            {
+              "text": "En la vuelta, Sam descubre algo: una comunidad se construye con ideas, con fuerza y con paz.",
+              "english": "On the way back, Sam discovers something: a community is built with ideas, with strength and with peace."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  }
+}

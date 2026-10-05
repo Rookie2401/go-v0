@@ -1,0 +1,9 @@
+.path__title { margin-bottom: 0.25rem; }
+.path__group { margin-top: 1.5rem; }
+.path__units { list-style: none; margin: 0; padding: 0; }
+.path__unit { padding: 0.5rem 0; border-bottom: 1px solid var(--line, rgba(128, 128, 128, 0.25)); }
+.path__line { display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; }
+.path__unit--done .path__line a { opacity: 0.75; }
+.path__unit--next .path__line a { font-weight: 600; }
+.path__closed { color: var(--muted, inherit); opacity: 0.8; }
+.path__stage0 { margin-top: 1rem; }

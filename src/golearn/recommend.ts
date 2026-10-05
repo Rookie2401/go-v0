@@ -24,6 +24,8 @@
  *  nothing to offer        an honest note (no textId) when nothing is published, or everything published has been read.
  */
 import type { LanguageCode, PersonalizedCoverage, Recommendation, RecommendationReason, Text } from '../core';
+import { learnerSnapshot, rankWholeLibrary, storePager } from './candidates';
+import type { WholeLibraryDeps } from './candidates';
 import { analyzeText, liveSentences, scriptureReadiness } from './coverage';
 import { hasHumanReviewedRecording } from './eligibility';
 import { HEAVY_HELP_FRACTION } from './policy';
@@ -42,6 +44,34 @@ const REPORT_SCORE: Record<Degree, number> = { all: 0, most: 0.72, some: 0.88, l
 const REPORT_WORD: Record<Degree, string> = { all: 'all', most: 'most', some: 'some', little: 'little' };
 const BAND_SCORE = { 'productive-challenge': 0.85, comfortable: 0.8, difficult: 0.65, stretch: 0.5 } as const;
 
+// ───────────────────────────── seams: the ladder and the whole library ─────────────────────────────
+//
+// "Next on your path" and "the best next thing from the whole library" are both offered from here, but neither source is owned by
+// GoLearn: the ladder is data (docs/LADDER.md) and the library is the app's (Library.search / Library.profile). Each is a
+// registered source, absent by default (then recommendations come from the store alone, exactly as before).
+
+/** One unit of a language's ladder (`data/ladder/<lang>/ladder.json`), as far as a recommendation needs to know it. */
+export interface LadderStep { unitId: string; textId: string; title: string; stage: string; published: boolean }
+export interface LadderPosition {
+  /** The units the learner has not completed, in ladder order (the first few are enough). */
+  steps: LadderStep[];
+  /** The learner has completed the ladder: the whole library is then the only source. */
+  finished: boolean;
+}
+export type LadderPathSource = (args: { userId: string; lang: LanguageCode; completed: ReadonlySet<string> }) => Promise<LadderPosition | undefined>;
+
+let ladderSource: LadderPathSource | undefined;
+/**
+ * TODO(ladder): `src/ladder` does not exist yet (docs/LADDER.md describes it). When it lands, the app's bootstrap registers
+ * its reader here — load `data/ladder/<lang>/ladder.json`, walk the units in order, skip those whose `textId` is in `completed`,
+ * and return the rest (`finished` when none is left). Until then no ladder step is offered and nothing else changes.
+ */
+export function setLadderPathSource(source: LadderPathSource | undefined): void { ladderSource = source; }
+
+let librarySource: WholeLibraryDeps | undefined;
+/** The app registers its library here (`{ pager: (q) => library.search(q), profileOf: (id) => library.profile(id) }`) so that recommendations reach texts that are not imported. */
+export function setWholeLibrarySource(source: WholeLibraryDeps | undefined): void { librarySource = source; }
+
 async function learnerLang(ctx: Ctx, userId: string, targetTextId?: string): Promise<LanguageCode | undefined> {
   const user = await ctx.store.users.get(userId);
   const course = user ? await ctx.store.courses.get(user.courseId) : undefined;
@@ -56,7 +86,11 @@ const cap = (n: number) => Math.round(Math.min(1, Math.max(0, n)) * 1e4) / 1e4;
 
 export async function recommend(
   ctx: Ctx, userId: string,
-  opts?: { limit?: number; targetTextId?: string; interests?: string[]; includeUnpublished?: boolean; lang?: LanguageCode },
+  opts?: {
+    limit?: number; targetTextId?: string; interests?: string[]; includeUnpublished?: boolean; lang?: LanguageCode;
+    /** The whole-library step (default: the registered source, else the store's own catalogue); `false` turns it off. */
+    wholeLibrary?: WholeLibraryDeps | false;
+  },
 ): Promise<Recommendation[]> {
   const lang = opts?.lang ?? (await learnerLang(ctx, userId, opts?.targetTextId));
   if (!lang) return [];
@@ -258,6 +292,45 @@ export async function recommend(
     }
   }
 
+  // ── the ladder, then the whole library ──
+  // The ladder is the default route: the next unit he may open comes first ("Next on your path"). Whatever is not on the path is
+  // chosen from the WHOLE catalogue by personal mastery (candidates.ts: prefilter, then rankLibrary), not from a sample.
+  let whole: Awaited<ReturnType<typeof rankWholeLibrary>> | undefined;
+  let onPath = false;
+  let wholeWanted = false;
+  if (opts?.wholeLibrary !== false) {
+    const deps = opts?.wholeLibrary ?? librarySource ?? {};
+    let total = 0;
+    try { total = (await (deps.pager ?? storePager(ctx))({ lang, limit: 1, publishedOnly: !includeUnpublished })).total; } catch { total = 0; }
+    const snap = (total > 0 || ladderSource) ? await learnerSnapshot(ctx, userId, lang, [...interests]) : undefined;
+    if (snap && ladderSource) {
+      try {
+        const position = await ladderSource({ userId, lang, completed: snap.completed });
+        const step = position?.finished ? undefined : position?.steps.find((s) => !snap.completed.has(s.textId) && (s.published || includeUnpublished));
+        if (step) {
+          onPath = true;
+          offer({
+            reason: 'next-input', textId: step.textId, reinforces: [], score: 0.99,
+            explanation: `Next on your path: "${step.title}" (${step.stage})${step.published ? '' : ' (in preview, not published)'}.`,
+          });
+        }
+      } catch { /* a ladder that cannot be read is no ladder: the library still answers */ }
+    }
+    if (snap && total > 0) {
+      wholeWanted = true;
+      try {
+        whole = await rankWholeLibrary(ctx, userId, deps, { lang, ...(interests.size ? { interests: [...interests] } : {}), includeUnpublished, limit: Math.max(limit, 5), snapshot: snap });
+      } catch { whole = undefined; /* no ranking is not an error the learner can act on */ }
+      for (const p of whole?.picks ?? []) {
+        if (p.alreadyRead) continue; // a text he has read is for `reread` / `reinforces-weak-items`, which judge it by what he did
+        offer({
+          reason: 'next-input', textId: p.ranked.textId, reinforces: p.ranked.profile.weakItems.slice(0, 8), score: cap(p.ranked.score),
+          explanation: p.ranked.reasons.join(' '),
+        });
+      }
+    }
+  }
+
   const inputs = [...best.values()]
     .sort((a, b) => b.score - a.score || REASON_ORDER.indexOf(a.reason) - REASON_ORDER.indexOf(b.reason)
       || ((a.textId ?? '') < (b.textId ?? '') ? -1 : 1));
@@ -277,11 +350,30 @@ export async function recommend(
       reason: 'next-input', reinforces: [], score: 0,
       explanation: input.length === 0
         ? noneExplanation(langName, withheld, includeUnpublished, scripturePublished)
-        : `You have read every published ${langName} text so far; more will appear here as they are reviewed and published.`,
+        : `You have read every published ${langName} text so far. ${whatToDo(ctx, [...progress.values()].some((p) => p.finishedAt), withheld.length > 0 && !includeUnpublished)}`
+          + ' More will appear here as they are reviewed and published.',
+    });
+  }
+  // The library was searched and nothing could be scored (no profile yet, or everything excluded): say what to do, never an empty Home.
+  if (inputs.length === 0 && notes.length === 0 && wholeWanted && (whole?.picks.length ?? 0) === 0 && !onPath) {
+    notes.push({
+      reason: 'next-input', reinforces: [], score: 0,
+      explanation: `No ${langName} text in the library could be matched to you yet. ${whatToDo(ctx, [...progress.values()].some((p) => p.finishedAt), withheld.length > 0 && !includeUnpublished)}`,
     });
   }
 
   return [...inputs, ...notes, ...rehearse].slice(0, limit);
+}
+
+/** What the learner can do when nothing new fits: reread, listen (only where recordings can exist), a harder shelf, preview. */
+function whatToDo(ctx: Ctx, hasFinished: boolean, canPreview: boolean): string {
+  const options: string[] = [];
+  if (hasFinished) options.push('reread a text you found hard');
+  if (ctx.listening && ctx.audioEligible) options.push('listen to one that has a recording by a human speaker');
+  options.push('try a harder shelf (Explore, or the stretch setting)');
+  if (canPreview) options.push('turn on preview to see texts still awaiting review');
+  const last = options.pop()!;
+  return `To keep going, ${options.length ? `${options.join(', ')} or ${last}` : last}.`;
 }
 
 function noneExplanation(langName: string, withheld: Text[], includeUnpublished: boolean, scripturePublished = false): string {

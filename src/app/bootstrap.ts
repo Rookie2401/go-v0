@@ -25,7 +25,7 @@
  * The UI never imports the engines' extras directly: the importer, backup and speech-provider controls reach it as
  * small interfaces in `AppServices` (ingest / backup / speech), bound to the real modules here.
  */
-import { COURSES, FEATURES, LANGUAGE_ROWS, StoreEventBus, hash } from '../core';
+import { COURSES, FEATURES, LANGUAGE_ROWS, StoreEventBus, hash, ids } from '../core';
 import type { AppStore, Course, EventBus, Features, GoListen, LanguageCode, Library, LexiconSource, ProviderAvailability, TtsProvider, User } from '../core';
 import { createCourseCatalog } from '../course';
 import { createDexieStore } from '../db/dexie';
@@ -35,6 +35,9 @@ import { createAdapterRegistry } from '../adapters';
 import { exportLearner, restoreLearner, validateBackup } from '../backup';
 import type { BackupFile } from '../backup';
 import { createGoLearn } from '../golearn';
+import { setLadderPathSource } from '../golearn/recommend';
+import { ladderUnitDocuments } from '../ladder/bundle';
+import { createLadderPath } from '../ladder/path';
 import { AZURE_PROVIDER_ID, AzureSpeechProvider, ProxySpeechProvider, createGoListen } from '../golisten';
 import { createGoTell } from '../gotell';
 import { createStage0 } from '../stage0';
@@ -106,6 +109,8 @@ export { DEFAULT_USER_ID };
 export const BUNDLE_META_ID = 'bundled-corpus';
 /** meta row of one language's built-in texts: importer version + content fingerprint + that language's analyzer version. */
 export const bundleMetaId = (lang: LanguageCode): string => `${BUNDLE_META_ID}:${lang}`;
+/** meta row of one language's reading-ladder unit documents (data/ladder/<lang>/units/): signature of the units + analyzer version. */
+export const ladderMetaId = (lang: LanguageCode): string => `bundled-ladder:${lang}`;
 
 /**
  * Seed languages and courses (idempotent), and the first learner once a course has been chosen —
@@ -273,6 +278,8 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   const gotell = createGoTell({ store, bus, adapters, golearn, ...(listen ? { golisten } : {}), clock });
   // Stage 0: scenes are imported on demand (when the Stage 0 page first opens for a language), never at startup.
   const stage0 = createStage0({ store, bus, adapters, clock, golearn });
+  // The ladder is the default route: "Next on your path" in GoLearn's recommendations reads it from here (src/ladder/path.ts).
+  setLadderPathSource(createLadderPath({ store, golearn, stage0 }).source());
 
   // ── the reading ladder and the dictionaries ──
   // One lazy source per language: createFetchLexiconSource makes no request until it is first asked something.
@@ -305,15 +312,41 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
     if (running) return running;
     const run = (async () => {
       const docs = (bundle ??= loadBundledCorpus()).filter((d) => d.lang === lang);
-      if (docs.length === 0) return undefined;
-      const signature = `${INGEST_TOOL}|${docs.length}|${hash(JSON.stringify(docs))}|${lang}@${adapters.get(lang).version}`;
-      const last = await store.meta.get(bundleMetaId(lang));
-      const haveTexts = (await store.texts.where('lang', lang)).length > 0;
-      if (last?.value === signature && haveTexts) return undefined;
-      const report = await importDocuments(store, adapters, docs, { clock });
-      if (report.ok) await store.meta.put({ id: bundleMetaId(lang), value: signature, updatedAt: clock() });
-      else startup.warnings = [...(startup.warnings ?? []), `${report.documents.filter((d) => d.action === 'rejected').length} built-in text(s) were rejected by the importer, so none were imported. See Settings → Content.`];
-      return report.documents.map((d, i) => toView(d, titleOf(docs[i])));
+      const reports: ImportDocView[] = [];
+      if (docs.length > 0) {
+        const signature = `${INGEST_TOOL}|${docs.length}|${hash(JSON.stringify(docs))}|${lang}@${adapters.get(lang).version}`;
+        const last = await store.meta.get(bundleMetaId(lang));
+        const haveTexts = (await store.texts.where('lang', lang)).length > 0;
+        if (!(last?.value === signature && haveTexts)) {
+          const report = await importDocuments(store, adapters, docs, { clock });
+          if (report.ok) await store.meta.put({ id: bundleMetaId(lang), value: signature, updatedAt: clock() });
+          else startup.warnings = [...(startup.warnings ?? []), `${report.documents.filter((d) => d.action === 'rejected').length} built-in text(s) were rejected by the importer, so none were imported. See Settings → Content.`];
+          reports.push(...report.documents.map((d, i) => toView(d, titleOf(docs[i]))));
+        }
+      }
+      // The ladder's own unit documents (data/ladder/<lang>/units/; units that point at a corpus document in place are already in `docs`).
+      // Their own batch and signature: a draft unit that fails the importer must never take the language's corpus down with it, and a
+      // unit that changes changes this signature. If the batch is rejected, each unit is tried alone, so one bad draft hides only itself.
+      const units = ladderUnitDocuments(lang, undefined, docs);
+      if (units.length > 0) {
+        const signature = `${INGEST_TOOL}|${units.length}|${hash(JSON.stringify(units))}|${lang}@${adapters.get(lang).version}`;
+        const last = await store.meta.get(ladderMetaId(lang));
+        const haveUnits = (await store.texts.get(ids.text(lang, units[0]!.id))) !== undefined;
+        if (!(last?.value === signature && haveUnits)) {
+          let views: ImportDocView[];
+          const batch = await importDocuments(store, adapters, units, { clock });
+          if (batch.ok) views = batch.documents.map((d, i) => toView(d, titleOf(units[i])));
+          else {
+            views = [];
+            for (const u of units) views.push(...(await importDocuments(store, adapters, [u], { clock })).documents.map((d) => toView(d, titleOf(u))));
+            const bad = views.filter((v) => v.action === 'rejected').length;
+            startup.warnings = [...(startup.warnings ?? []), `${bad} unit(s) of the reading ladder were rejected by the importer and are not available yet. See Settings → Content.`];
+          }
+          await store.meta.put({ id: ladderMetaId(lang), value: signature, updatedAt: clock() });
+          reports.push(...views);
+        }
+      }
+      return reports.length > 0 ? reports : undefined;
     })().finally(() => { inFlight.delete(lang); });
     inFlight.set(lang, run);
     return run;

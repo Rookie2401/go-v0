@@ -24,6 +24,7 @@ import { SandboxBanner } from './SandboxBanner';
 import { ScriptureRoute } from './scripture/ScripturePage';
 import { applyTheme, usePref } from './prefs';
 import { Testimony } from './testimony/Testimony';
+import { PathPage } from './ladder/PathPage';
 import { TellInspector } from './tell/Inspector';
 import { Practice } from './tell/Practice';
 
@@ -59,6 +60,7 @@ export function AppRoutes() {
       <Route path="/tell" element={<Practice />} />
       <Route path="/tell/inspect" element={<TellInspector />} />
       <Route path="/team-texts" element={<TeamTextsPage />} />
+      <Route path="/path" element={<PathPage />} />
       <Route path="/alphabet" element={<AlphabetPage />} />
       <Route path="/settings" element={<Settings />} />
       <Route path="/vocabulary" element={<VocabularyPage />} />

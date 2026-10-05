@@ -363,6 +363,59 @@ export const RANKING = {
 } as const;
 
 /**
+ * Whole-library candidate search (candidates.ts). PROVISIONAL, not calibrated on learners: they decide only which few texts
+ * are looked at closely (profiled and personally ranked), never which text is good. Every prefilter part works on catalogue-index
+ * features alone, so that all of a large library can be walked page by page without loading any profile.
+ */
+export const CANDIDATES = {
+  /** How many texts survive the cheap prefilter and are profiled and ranked in full. */
+  shortlist: 120,
+  /** Rows per catalogue page while walking (the catalogue's own maximum is 200). Memory is one page plus the pools. */
+  pageSize: 200,
+  /** At most this share of the shortlist is Scripture (while enough other texts exist; with nothing else it may fill the rest). */
+  scriptureShare: 0.25,
+  /** At most this share of the shortlist comes from one domain (first domain, else genre, else stream). */
+  domainShare: 0.4,
+  /** Distinct domain groups kept apart while walking (more fall into one "other" group), so the pools stay bounded. */
+  maxGroups: 48,
+  /** Reserved places: texts matching a stated interest, and texts of works the learner has not touched. */
+  minInterest: 6,
+  minUnreadWorks: 6,
+  /** Texts chosen by a stable hash of (text id, how much he has read): a few that the prefilter would never favour. */
+  wildcards: 8,
+  /** How many of the most recently read texts count as "recent" (down-weighted) and set the current stage. */
+  recentTexts: 10,
+  /** The last this many texts read set the domains that variety steps away from. */
+  lastDomains: 2,
+  /** Prefilter weights (sum 1). */
+  weights: { stage: 0.3, length: 0.15, unread: 0.2, interest: 0.15, notRecent: 0.1, era: 0.05, quality: 0.05 },
+  /** Stage fit: 1 within this many stage steps of the current stage, falling by `stageStep` per step beyond; unknown = neutral. */
+  stageNear: 1,
+  stageStep: 0.2,
+  stageUnknown: 0.6,
+  /** Length fit: texts between these word counts are a comfortable sitting; much shorter or much longer fit less. */
+  lengthIdeal: { min: 150, max: 6000 },
+  lengthTooLong: 40000,
+} as const;
+
+/**
+ * The factors added to the personal ranking when the caller supplies signals (rank.ts, `RankSignals`). PROVISIONAL.
+ * Each is a part in 0..1 times its weight; the score is divided by (1 + the weights of the factors that had data), so a
+ * ranking without signals is exactly the old one.
+ */
+export const WHOLE_RANKING = {
+  weights: { usefulUnknown: 0.08, overdue: 0.05, variety: 0.06, listening: 0.03 },
+  /** Useful unknown vocabulary: a lemma never met in reading that occurs in at least this many of the unread candidates. */
+  usefulMinTexts: 3,
+  /** Share of a text's words that are such lemmas at which the part reaches 1. */
+  usefulFullShare: 0.03,
+  /** Overdue vocabulary: a lemma met in reading whose latest READING evidence is older than this many days. */
+  overdueDays: 21,
+  /** Share of a text's words that are such lemmas at which the part reaches 1. */
+  overdueFullShare: 0.05,
+} as const;
+
+/**
  * Rescue dependence (rescue.ts): provisional values, not calibrated on learners. A trend is stated only from
  * `minUnitsForTrend` sentence readings; a change counts when the later rate differs from the earlier one by `change`
  * (relative) and by at least `minAbsoluteChange` (per 100), so that 1 → 0 on a handful of sentences is not "falling".

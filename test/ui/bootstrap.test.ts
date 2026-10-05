@@ -1,6 +1,6 @@
 // @vitest-environment jsdom
 import 'fake-indexeddb/auto';
-import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { COURSES, createMemoryStore } from '../../src/core';
 import type { DomainEvent } from '../../src/core';
 import { BUNDLE_META_ID, bootstrap, bundleMetaId } from '../../src/app/bootstrap';
@@ -8,6 +8,10 @@ import { loadBundledCorpus } from '../../src/ingest';
 import { chooseTeam } from '../../src/ui/Onboarding';
 import { createDexieStore } from '../../src/db/dexie';
 import { forgetAzure, recallAzure, rememberAzure, resetPrefsForTests, setPref } from '../../src/ui/prefs';
+
+// These tests are about the built-in CORPUS going through the importer (counts, signatures, one row per language). The ladder's unit documents
+// (data/ladder/<lang>/units/) have their own batch and signature in bootstrap, tested in test/ui/pathPage.test.tsx; drafts being written must not move these counts.
+vi.mock('../../src/ladder/bundle', async (orig) => ({ ...(await orig<typeof import('../../src/ladder/bundle')>()), ladderUnitDocuments: () => [] }));
 
 beforeEach(() => { resetPrefsForTests(); localStorage.clear(); });
 afterEach(() => { resetPrefsForTests(); localStorage.clear(); });

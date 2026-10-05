@@ -22,9 +22,9 @@
  *      and a result by the same author as the one before keeps only 90 % of its score
  * Every result carries its reasons in plain words, the most important first. Deterministic: ties are broken by text id.
  */
-import type { RankCandidate, RankOptions, RankedText } from '../core';
-import { RANKING } from './policy';
-import { scoreProfile } from './personal';
+import type { LearnerItemState, RankCandidate, RankOptions, RankedText } from '../core';
+import { RANKING, WHOLE_RANKING } from './policy';
+import { rowsByItemId, scoreProfile } from './personal';
 import { productiveGaps } from './productive';
 import type { LemmaReadings } from './personal';
 import type { Ctx } from './state';
@@ -59,7 +59,80 @@ async function workKeys(ctx: Ctx, candidates: RankCandidate[]): Promise<Map<stri
   return out;
 }
 
-export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandidate[], opts: RankOptions = {}): Promise<RankedText[]> {
+/**
+ * WHOLE-LIBRARY SIGNALS (optional; a ranking without them is exactly the one described above). Four more factors, each added with
+ * its weight from policy.ts (WHOLE_RANKING, provisional); the score is divided by 1 + the weights of the factors that had data, so
+ * a missing signal never lowers or raises a score. All of them follow the READING-ONLY rules of evidence@8: what was only heard is
+ * never read, and synthetic speech is never a listening signal (the caller passes `listenEligible` only for a learner whose
+ * listening has been credited, and only for texts whose recording is a reviewed human one).
+ *   usefulUnknown  words (lemmas) never met in reading that recur in at least WHOLE_RANKING.usefulMinTexts of the UNREAD candidates:
+ *                  learning them pays off again in the next texts
+ *   overdue        words met in reading whose latest READING evidence is older than WHOLE_RANKING.overdueDays
+ *   variety        steps away from the domain of the last texts read (`recentGroups`, most recent first)
+ *   listening      a reviewed human recording exists (`listenEligible`)
+ */
+export interface RankSignals {
+  recentGroups?: readonly string[];
+  listenEligible?: ReadonlySet<string>;
+}
+export type ExtraKey = keyof typeof WHOLE_RANKING.weights;
+export type RankOptionsWhole = RankOptions & { signals?: RankSignals };
+export type RankedTextWhole = RankedText & { extra?: Partial<Record<ExtraKey, number>> };
+
+/** The group a text belongs to for "variety of domain": its first domain, else its stream. */
+export const domainOf = (x: { domains?: readonly string[]; stream?: string }): string | undefined => x.domains?.[0] ?? x.stream;
+
+const DAY_MS = 86_400_000;
+
+async function extraParts(ctx: Ctx, userId: string, candidates: RankCandidate[], sig: RankSignals) {
+  const X = WHOLE_RANKING;
+  const unread = candidates.filter((c) => !c.alreadyRead);
+  const lemmas = new Set<string>();
+  for (const c of candidates) for (const [l] of c.profile.lemmas) lemmas.add(l);
+  const rows = lemmas.size > 0 ? await rowsByItemId(ctx, userId, [...lemmas]) : new Map<string, LearnerItemState>();
+  // reading-only: a lemma that was only heard is still unknown for reading
+  const unknown = (l: string) => { const r = rows.get(l); return !r || (r.reading.level === 'unseen' && !r.manualMark); };
+  const df = new Map<string, number>();
+  for (const c of unread) for (const [l] of c.profile.lemmas) if (unknown(l)) df.set(l, (df.get(l) ?? 0) + 1);
+  const cutoff = Date.parse(ctx.clock()) - X.overdueDays * DAY_MS;
+  let anyDated = false;
+  for (const r of rows.values()) if (r.reading.level !== 'unseen' && r.reading.lastEvidenceAt) { anyDated = true; break; }
+
+  const active: Record<ExtraKey, boolean> = {
+    usefulUnknown: unread.length >= X.usefulMinTexts,
+    overdue: anyDated,
+    variety: (sig.recentGroups?.length ?? 0) > 0,
+    listening: sig.listenEligible !== undefined,
+  };
+  const recent = sig.recentGroups ?? [];
+  const per = new Map<string, { parts: Partial<Record<ExtraKey, number>>; useful: number; overdue: number }>();
+  for (const c of candidates) {
+    const words = Math.max(1, c.profile.words);
+    let useful = 0;
+    let overdue = 0;
+    for (const [l, n] of c.profile.lemmas) {
+      if (!c.alreadyRead && (df.get(l) ?? 0) >= X.usefulMinTexts) useful += n;
+      const r = rows.get(l);
+      const at = r && r.reading.level !== 'unseen' ? r.reading.lastEvidenceAt : undefined;
+      if (at && Date.parse(at) < cutoff) overdue += n;
+    }
+    const parts: Partial<Record<ExtraKey, number>> = {};
+    if (active.usefulUnknown) parts.usefulUnknown = clamp01(useful / words / X.usefulFullShare);
+    if (active.overdue) parts.overdue = clamp01(overdue / words / X.overdueFullShare);
+    if (active.variety) {
+      const g = domainOf(c);
+      const i = g === undefined ? -1 : recent.indexOf(g);
+      parts.variety = i < 0 ? 1 : i / Math.max(2, recent.length);
+    }
+    if (active.listening) parts.listening = sig.listenEligible!.has(c.profile.textId) ? 1 : 0;
+    for (const k of Object.keys(parts) as ExtraKey[]) parts[k] = round4(parts[k]!);
+    per.set(c.profile.textId, { parts, useful, overdue });
+  }
+  const norm = 1 + (Object.keys(active) as ExtraKey[]).filter((k) => active[k]).reduce((s, k) => s + X.weights[k], 0);
+  return { per, norm };
+}
+
+export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandidate[], opts: RankOptionsWhole = {}): Promise<RankedTextWhole[]> {
   // Protected listening-assessment material is never offered for reading (a candidate that is not imported has no stored text and stays).
   const stored = await ctx.store.texts.getMany(offered.map((c) => c.profile.textId));
   const candidates = offered.filter((_, i) => stored[i]?.listeningAssessmentId === undefined);
@@ -69,6 +142,7 @@ export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandida
   const memo: LemmaReadings = new Map();
   const W = RANKING.weights;
   const gaps = await productiveGaps(ctx, userId);
+  const extras = opts.signals && candidates.length > 0 ? await extraParts(ctx, userId, candidates, opts.signals) : undefined;
 
   const scored = [];
   for (const c of candidates) {
@@ -87,7 +161,10 @@ export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandida
       quality: (c.published === false ? 0 : 0.7) + (c.rights && RELIABLE_RIGHTS.has(c.rights) ? 0.3 : c.rights ? 0.1 : 0.15),
     };
     for (const k of Object.keys(parts) as Array<keyof typeof parts>) parts[k] = round4(clamp01(parts[k]));
-    scored.push({ c, profile, coverage, parts, matched, base: (Object.keys(W) as Array<keyof typeof W>).reduce((s, k) => s + W[k] * parts[k], 0) });
+    const extra = extras?.per.get(c.profile.textId);
+    const core = (Object.keys(W) as Array<keyof typeof W>).reduce((s, k) => s + W[k] * parts[k], 0);
+    const added = extra ? (Object.keys(extra.parts) as ExtraKey[]).reduce((s, k) => s + WHOLE_RANKING.weights[k] * extra.parts[k]!, 0) : 0;
+    scored.push({ c, profile, coverage, parts, matched, extra, base: extras ? (core + added) / extras.norm : core });
   }
 
   // 2. controlled texts are a ramp: their weight falls as authentic candidates become comprehensible
@@ -132,6 +209,17 @@ export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandida
   return picked.map((r) => {
     const contributions = (Object.keys(W) as Array<keyof typeof W>).map((k) => [k, W[k] * r.parts[k]] as const).sort((a, b) => b[1] - a[1]);
     const reasons: string[] = [];
+    const ex = r.extra;
+    const exContrib = ex ? (Object.keys(ex.parts) as ExtraKey[]).map((k) => [k, WHOLE_RANKING.weights[k] * ex.parts[k]!] as const).filter(([, v]) => v > 0).sort((a, b) => b[1] - a[1]) : [];
+    const extraReason = (k: ExtraKey): string | undefined => {
+      if (!ex) return undefined;
+      if (k === 'usefulUnknown' && ex.useful > 0) return 'Its new words come up again in other texts you could read, so learning them pays off.';
+      if (k === 'overdue' && ex.overdue > 0) return `It brings back words you have not met in reading for over ${Math.round(WHOLE_RANKING.overdueDays / 7)} weeks.`;
+      if (k === 'variety') return 'It is on a different subject from what you read last.';
+      if (k === 'listening') return 'A recording by a human speaker is available, so you can also hear it.';
+      return undefined;
+    };
+    for (const [k, v] of exContrib) { if (v >= RANKING.reasonMin || k === 'listening') { const why = extraReason(k); if (why) reasons.push(why); } }
     for (const [k, v] of contributions) {
       // interest and reinforcement are told whenever they apply: they are the reasons the learner can act on
       if (v < RANKING.reasonMin && k !== 'interest' && k !== 'reinforcement') continue;
@@ -149,6 +237,9 @@ export async function rankLibrary(ctx: Ctx, userId: string, offered: RankCandida
     }
     if (r.c.controlled && authShare > 0) reasons.push('It was written for the course; it counts for less as ordinary texts become readable for you.');
     if (reasons.length === 0) reasons.push('It is the best match among the texts offered.');
-    return { textId: r.c.profile.textId, score: round4(clamp01(r.final)), parts: r.parts, reasons, profile: r.profile };
+    return {
+      textId: r.c.profile.textId, score: round4(clamp01(r.final)), parts: r.parts, reasons, profile: r.profile,
+      ...(ex && Object.keys(ex.parts).length > 0 ? { extra: ex.parts } : {}),
+    };
   });
 }

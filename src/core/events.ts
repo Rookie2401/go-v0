@@ -12,6 +12,7 @@
  */
 import type { AssistanceLevel, AudioSourceType, ItemKind, LanguageCode, Modality, ProductionKind } from './model';
 import type { AssistanceStep, SelectionExplanation, SemanticGoal, TaskFamily, TellAttemptRecord } from './contracts/gotell-practice';
+import type { Stage0AudioSource, Stage0Channel, Stage0DecodeKind, Stage0ExitResult, Stage0ExitSection, Stage0ProductionKind, Stage0Support } from './contracts/stage0';
 
 export type Surface = 'corpus' | 'scripture' | 'testimony' | 'listen' | 'home';
 
@@ -179,6 +180,39 @@ export interface TellAttemptSubmitted extends Base { type: 'TellAttemptSubmitted
 /** The task ended: said successfully, reproduced after the model, or left. */
 export interface TellTaskClosed extends Base { type: 'TellTaskClosed'; taskId: string; goalId: string; outcome: 'success' | 'model-reproduced' | 'abandoned'; finalAttemptId?: string }
 
+// ── Stage 0 (the zero-to-language bootstrap). Folded by src/stage0/state.ts only; the ordinary reading, rescue, decoding and
+// production evidence of a Stage 0 scene is emitted as the ordinary events above, so GoLearn's own rules decide it. ──
+interface Stage0Base extends Base { stepId: string }
+/** A comprehension check answered: the channel it came through, the audio source, and whether English was revealed first. */
+export interface Stage0CheckAnswered extends Stage0Base {
+  type: 'Stage0CheckAnswered'; sceneId: string; checkId: string; lineIds: string[]; choice: number; correct: boolean;
+  channel: Stage0Channel; audio: Stage0AudioSource; rescuedBefore: boolean; supportsBefore: Stage0Support[];
+  /** Orth/sound features of the words he READ (channel 'read' only) with no transliteration shown, when the answer was right unaided. */
+  unaidedFeatures: string[];
+}
+/** A decoding / tone / segmentation check answered, with the orth or sound features it exercises. */
+export interface Stage0DecodeAnswered extends Stage0Base {
+  type: 'Stage0DecodeAnswered'; checkId: string; kind: Stage0DecodeKind; word: string; features: string[]; correct: boolean;
+  transliterationShown: boolean; audio: Stage0AudioSource;
+}
+/** A support used inside Stage 0 (each one also reaches GoLearn as its ordinary event where one exists). */
+export interface Stage0SupportUsed extends Stage0Base { type: 'Stage0SupportUsed'; support: Stage0Support; lineIds: string[]; features?: string[] }
+/** One production attempt, immutable: the text as typed, what was on screen, whether it was accepted. */
+export interface Stage0ProductionAttempted extends Stage0Base {
+  type: 'Stage0ProductionAttempted'; taskId: string; kind: Stage0ProductionKind; text: string; accepted: boolean; matched?: string; shown: Stage0Support[];
+}
+/** A spoken attempt: recorded (or not) and compared with the model by the learner himself. Never machine-scored. */
+export interface Stage0SpeakingRecorded extends Stage0Base { type: 'Stage0SpeakingRecorded'; itemId: string; recordingId?: string; selfCheck: 'like-model' | 'different' | 'unsure' }
+export interface Stage0StepCompleted extends Stage0Base { type: 'Stage0StepCompleted' }
+export interface Stage0SettingsChanged extends Stage0Base { type: 'Stage0SettingsChanged'; speakerForm?: 'm' | 'f' }
+/** An exit attempt began: the form's material counts as seen from this moment, even if it is abandoned. */
+export interface Stage0ExitStarted extends Stage0Base { type: 'Stage0ExitStarted'; attemptId: string; formId: string; unseen: boolean; unavailable: Stage0ExitSection[] }
+export interface Stage0ExitAnswered extends Stage0Base {
+  type: 'Stage0ExitAnswered'; attemptId: string; section: Stage0ExitSection; itemId: string;
+  correct?: boolean; accepted?: boolean; text?: string; recordingId?: string; selfCheck?: 'like-model' | 'different' | 'unsure'; lookups?: number;
+}
+export interface Stage0ExitFinished extends Stage0Base { type: 'Stage0ExitFinished'; attemptId: string; result: Stage0ExitResult }
+
 export type DomainEvent =
   | TextViewed | SentenceViewed | TokenHelpOpened | PhraseHelpOpened | GrammarHelpOpened
   | SentenceExplanationRevealed | EnglishRescueRevealed | SentenceReread | DecodingRevealed | NoteOpened | ComprehensionReported | TextCompleted | PassageCompleted
@@ -187,7 +221,9 @@ export type DomainEvent =
   | TranscriptRevealed | AudioAbandoned | ListeningPositionSaved | ListeningAssessmentStarted | ListeningAssessmentSubmitted | ShadowingAttempt | UserRecordingCreated
   | TestimonyTextSubmitted | TestimonyRevisionAccepted | GoTellSuggestionShown | GoTellSuggestionAccepted
   | GoTellSuggestionRejected | GoTellSuggestionEdited | ProductionRecorded | IndependentProductionDetected
-  | TellGoalDefined | TellTaskPresented | TellInterventionShown | TellAttemptSubmitted | TellTaskClosed;
+  | TellGoalDefined | TellTaskPresented | TellInterventionShown | TellAttemptSubmitted | TellTaskClosed
+  | Stage0CheckAnswered | Stage0DecodeAnswered | Stage0SupportUsed | Stage0ProductionAttempted | Stage0SpeakingRecorded
+  | Stage0StepCompleted | Stage0SettingsChanged | Stage0ExitStarted | Stage0ExitAnswered | Stage0ExitFinished;
 
 export type EventType = DomainEvent['type'];
 export type EventOf<T extends EventType> = Extract<DomainEvent, { type: T }>;

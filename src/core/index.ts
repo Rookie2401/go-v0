@@ -15,3 +15,4 @@ export type * from './contracts/gotell';
 export type * from './contracts/course';
 export type * from './contracts/lexicon';
 export type * from './contracts/library';
+export type * from './contracts/stage0';

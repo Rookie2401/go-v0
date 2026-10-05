@@ -37,7 +37,7 @@ import { segmentSpanishSentences } from './spanish/sentences';
 import { capitalInside, disambiguateSpanish } from './spanish/disambiguate';
 
 const LANG = 'es' as const;
-const VERSION = '7';
+const VERSION = '8';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
@@ -94,6 +94,8 @@ const ENTRIES = [
   E('casa', 'NOUN', 'house', ['casa:f sg', 'casas:f pl']),
   E('libro', 'NOUN', 'book', ['libro:m sg', 'libros:m pl']),
   E('Ana', 'PROPN', 'Ana (name)'), E('Pedro', 'PROPN', 'Pedro (name)'),
+  // the names of Stage 0's people (data/stage0/es): Nico was read as a form of "nicar"
+  E('Sam', 'PROPN', 'Sam (name)'), E('Nico', 'PROPN', 'Nico (name)'),
   // pronouns / determiners
   E('yo', 'PRON', 'I', ['yo:1s nom prs']),
   E('tú', 'PRON', 'you (informal)', ['tú:2s nom prs']),

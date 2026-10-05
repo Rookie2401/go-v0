@@ -37,7 +37,7 @@ describe('Spanish adapter wiring: hand lexicon → engine → nothing', () => {
     expect(c.notes).toMatchObject({ lemmaStatus: 'inferred by the rules' });
     expect(c.gloss).toBeUndefined();
     expect(c).toMatchObject({ origin: 'rule', sourceId: ES_SOURCE_IDS.rules });
-    expect(c.sourceId).toBe('adapter-es@7:rules');
+    expect(c.sourceId).toBe('adapter-es@8:rules');
   });
 
   it('nothing the engine and the lexicon both lack is guessed; non-words and punctuation have no candidates', () => {

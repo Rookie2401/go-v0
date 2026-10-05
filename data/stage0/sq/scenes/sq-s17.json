@@ -54,10 +54,10 @@
       "speak": true,
       "accept": [
         {
-          "text": "Ana punon në spital"
+          "text": "Ana punon në klinikë"
         },
         {
-          "text": "Ana punon në një spital"
+          "text": "Ana punon në një klinikë"
         }
       ]
     }
@@ -112,8 +112,8 @@
     },
     {
       "id": "l4",
-      "text": "Ana punon në spital.",
-      "en": "Ana works at the hospital.",
+      "text": "Ana punon në klinikë.",
+      "en": "Ana works at the clinic.",
       "speaker": "sam",
       "picture": "👩‍⚕️🏥",
       "audio": {

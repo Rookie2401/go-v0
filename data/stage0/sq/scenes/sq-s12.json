@@ -103,8 +103,8 @@
   "lines": [
     {
       "id": "l1",
-      "text": "Ana punon në spital.",
-      "en": "Ana works at the hospital.",
+      "text": "Ana punon në klinikë.",
+      "en": "Ana works at the clinic.",
       "picture": "👩‍⚕️🏥",
       "audio": {
         "status": "needed"
@@ -162,7 +162,7 @@
   "introduces": {
     "words": [
       "punon",
-      "spital",
+      "klinikë",
       "lodhur",
       "gjithashtu",
       "por",
@@ -193,7 +193,7 @@
       },
       "options": [
         {
-          "en": "at the hospital",
+          "en": "at the clinic",
           "picture": "🏥"
         },
         {

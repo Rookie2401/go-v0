@@ -147,8 +147,8 @@ tens of thousands of reviewed words before any engine optimisation.
 earlier encounters). Every form of the written units is known to the word list and the analyzer (`sq:check-texts`;
 `vdiq` is the one recorded difference). Write in `data/ladder/sq/authoring/a1.txt`, then `npm run sq:ladder-build`,
 `npm run sq:ladder-author` (what each unit still lacks) and the gate. Against the A1 target of 15–30 k words, A1-1 is
-about 3.7 k. The 20 corpus drafts carry no `pipeline` block yet: adding one changes their unpublished reason, which two
-tests (one shared, one with an uncommitted outside edit) still pin; to be done with the owner's go-ahead.
+about 3.7 k. All 72 units, the 20 corpus drafts included, carry the
+pipeline block (machine-draft by a tool): one road to publication for every unit.
 
 Cast: the Stage 0 world (Sam, Ana, Luan, Drita, Ardi) plus Elira, Dritan, Mira (his wife), Gjergj (their son) and Marku.
 Known inconsistency for a reviewer: the Udha drafts have their own family (Beni and his sister Ana), so the ladder has

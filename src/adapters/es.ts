@@ -37,7 +37,7 @@ import { segmentSpanishSentences } from './spanish/sentences';
 import { capitalInside, disambiguateSpanish } from './spanish/disambiguate';
 
 const LANG = 'es' as const;
-const VERSION = '6';
+const VERSION = '7';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */

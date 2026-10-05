@@ -197,6 +197,7 @@ dolor/m = pain, ache
 fiebre/f = fever
 medicina/f = medicine
 hospital/m = hospital
+clínica/f = clinic
 // ── home and things
 hogar/m = home, household
 cuarto/m = room; quarter

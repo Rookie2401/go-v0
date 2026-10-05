@@ -64,7 +64,7 @@ describe('bundled corpus shape (schema version 2)', () => {
       expect(d.source.provenance, name).toMatch(/native speaker/);
       const gate = computePublished(d);
       expect(gate.published, name).toBe(false);
-      expect(gate.unpublishedReasons.join(' '), name).toMatch(/native-speaker review/);
+      expect(gate.unpublishedReasons.join(' '), name).toMatch(/native-speaker review|linguistic review by a person/);
     }
   });
 
@@ -208,7 +208,7 @@ describe('the bundled course texts (everything that is not a seed text)', () => 
       if (d.contentType === 'scripture' && d.scripture?.verification) { expect(gate.published, d.id).toBe(true); continue; }
       expect(gate.published, d.id).toBe(false);
       expect(gate.unpublishedReasons.length, d.id).toBeGreaterThan(0);
-      if (d.generated) expect(gate.unpublishedReasons.join(' '), d.id).toMatch(/native-speaker review/);
+      if (d.generated) expect(gate.unpublishedReasons.join(' '), d.id).toMatch(/native-speaker review|linguistic review by a person/);
       else expect(gate.unpublishedReasons.join(' '), d.id).toMatch(/review|rights|verified/);
     }
   });

@@ -1,0 +1,137 @@
+{
+  "lang": "hi",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "hi-snd1",
+  "title": {
+    "en": "First letters, and the long sounds ा and ी"
+  },
+  "features": [
+    "letter:प",
+    "letter:न",
+    "letter:म",
+    "letter:र",
+    "matra:ा",
+    "matra:ी"
+  ],
+  "words": [
+    {
+      "text": "पानी",
+      "en": "water",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "पापा",
+      "en": "dad",
+      "picture": "👨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "नानी",
+      "en": "grandmother (mother's mother)",
+      "picture": "👵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "मीरा",
+      "en": "Meera",
+      "picture": "👩",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Hindi is written in small blocks: a letter plus a vowel sign. Each letter (प न म र) carries a short \"a\" inside it; the stroke ा after a letter makes it a long \"aa\", and ी makes it a long \"ee\". So पानी is pā-nī, \"water\".",
+    "more": "The signs ा and ी are written after the letter they belong to. The little reading under a word, while you are learning, uses a bar over a long vowel: ā is a long \"aa\", ī a long \"ee\". A few more of its letters: c is the \"ch\" of \"church\", ś is \"sh\", and ṁ is the nose sound. Listen to each word, then look at where the strokes sit."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "पानी",
+      "prompt": "How is \"पानी\" said?",
+      "options": [
+        "pānī",
+        "panī",
+        "pāni"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "पापा",
+      "prompt": "How is \"पापा\" said?",
+      "options": [
+        "pāpā",
+        "pāpa",
+        "papā"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "नानी",
+      "prompt": "How is \"नानी\" said?",
+      "options": [
+        "nānī",
+        "nāni",
+        "nanī"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "मीरा",
+      "prompt": "How is \"मीरा\" said?",
+      "options": [
+        "mīrā",
+        "mirā",
+        "mīra"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-word",
+      "word": "पानी",
+      "prompt": "Which word means \"water\"?",
+      "options": [
+        "नानी",
+        "पानी",
+        "पापा"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "पापा",
+      "prompt": "Which word means \"dad\"?",
+      "options": [
+        "नानी",
+        "पापा",
+        "पानी"
+      ],
+      "answer": 1
+    }
+  ]
+}

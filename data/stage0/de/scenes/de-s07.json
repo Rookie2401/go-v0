@@ -1,0 +1,249 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "Ich weiß nicht, dein",
+      "text": "\"Ich weiß nicht\" means \"I don't know\". \"Dein\" (your) works like \"mein\": dein Schlüssel, deine Tasche.",
+      "explains": [
+        "de.wissen-nicht",
+        "de.possessive-dein"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Ben asks: \"Wo ist mein Schlüssel?\" It is in his bag. Answer him.",
+      "basedOn": [
+        "l4",
+        "de.wo-ist"
+      ],
+      "accept": [
+        {
+          "text": "Er ist in deiner Tasche"
+        },
+        {
+          "text": "In deiner Tasche"
+        },
+        {
+          "text": "Er ist in der Tasche"
+        },
+        {
+          "text": "Dein Schlüssel ist in deiner Tasche"
+        },
+        {
+          "text": "Ist er in deiner Tasche"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Someone asks you something and you do not know. Say \"I don't know.\"",
+      "basedOn": [
+        "l2",
+        "de.wissen-nicht"
+      ],
+      "accept": [
+        {
+          "text": "Ich weiß nicht"
+        },
+        {
+          "text": "Ich weiß es nicht"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "de-s07",
+  "title": {
+    "en": "Where is my key?",
+    "target": "Wo ist mein Schlüssel?"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "marta"
+    ],
+    "things": [
+      "key",
+      "bag"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Wo ist mein Schlüssel?",
+      "en": "Where is my key?",
+      "speaker": "nico",
+      "picture": "🔑❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ich weiß nicht, Ben.",
+      "en": "I don't know, Ben.",
+      "speaker": "marta",
+      "picture": "🤷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Er ist nicht im Haus.",
+      "en": "It is not in the house.",
+      "speaker": "nico",
+      "picture": "🚫🔑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ist er in deiner Tasche?",
+      "en": "Is it in your bag?",
+      "speaker": "marta",
+      "picture": "👜❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Ja! Hier ist er.",
+      "en": "Yes! Here it is.",
+      "speaker": "nico",
+      "picture": "🔑🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Sehr gut.",
+      "en": "Very good.",
+      "speaker": "marta",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "wo",
+      "Schlüssel",
+      "weiß",
+      "er",
+      "dein",
+      "deiner",
+      "Tasche",
+      "hier",
+      "gut"
+    ],
+    "constructions": [
+      "de.wo-ist",
+      "de.w-question",
+      "de.wissen-nicht",
+      "de.possessive-dein"
+    ]
+  },
+  "represents": [
+    "de.wo-ist",
+    "de.w-question",
+    "de.wissen-nicht",
+    "de.possessive-dein",
+    "de.possessive-mein",
+    "de.sein-location",
+    "de.dative-chunks",
+    "de.negation-nicht",
+    "de.yes-no-question"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is Ben looking for?"
+      },
+      "options": [
+        {
+          "en": "his key",
+          "picture": "🔑"
+        },
+        {
+          "en": "his bag",
+          "picture": "👜"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Marta know where it is?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where was the key?"
+      },
+      "options": [
+        {
+          "en": "in his bag",
+          "picture": "👜"
+        },
+        {
+          "en": "in the house",
+          "picture": "🏠"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

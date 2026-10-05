@@ -1,0 +1,244 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "flas pak shqip",
+      "text": "\"Flas pak shqip\" means \"I speak a little Albanian\". Shqip is the word for the language in a sentence like this one; Shqipëri is the country.",
+      "explains": [
+        "sq.jetoj-ne"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "describe",
+      "prompt": "Say where you live.",
+      "basedOn": [
+        "l2",
+        "sq.jetoj-ne"
+      ],
+      "personal": "your town or country",
+      "speak": true,
+      "accept": [
+        {
+          "text": "Jetoj në {x}"
+        },
+        {
+          "text": "Unë jetoj në {x}"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "retell",
+      "prompt": "Tell about Ana in one sentence: where she works.",
+      "basedOn": [
+        "l4"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Ana punon në spital"
+        },
+        {
+          "text": "Ana punon në një spital"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s17",
+  "title": {
+    "en": "Sam tells about himself",
+    "target": "Sam tregon"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "places": [
+      "clinic",
+      "school",
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Unë quhem Sam.",
+      "en": "My name is Sam.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Jetoj në Shqipëri.",
+      "en": "I live in Albania.",
+      "speaker": "sam",
+      "picture": "🇦🇱",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Flas pak shqip.",
+      "en": "I speak a little Albanian.",
+      "speaker": "sam",
+      "picture": "🗣️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ana punon në spital.",
+      "en": "Ana works at the hospital.",
+      "speaker": "sam",
+      "picture": "👩‍⚕️🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Luan është mësues në shkollë. Ardi është nxënës.",
+      "en": "Luan is a teacher at the school. Ardi is a pupil.",
+      "speaker": "sam",
+      "picture": "👨‍🏫👦",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Të dielën ne shkojmë në kishë.",
+      "en": "On Sunday we go to church.",
+      "speaker": "sam",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Më pëlqen shumë Shqipëria.",
+      "en": "I like Albania very much.",
+      "speaker": "sam",
+      "picture": "❤️🇦🇱",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "jetoj",
+      "shqipëri",
+      "flas",
+      "pak",
+      "shqip",
+      "mësues",
+      "nxënës"
+    ],
+    "constructions": [
+      "sq.jetoj-ne"
+    ]
+  },
+  "represents": [
+    "sq.quhem",
+    "sq.jetoj-ne",
+    "sq.shkoj-ne",
+    "sq.me-pelqen",
+    "sq.verb-persons",
+    "sq.time-words",
+    "sq.ne-place",
+    "sq.definite"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where does Sam live?"
+      },
+      "options": [
+        {
+          "en": "In Albania"
+        },
+        {
+          "en": "In Italy"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much Albanian does Sam speak?"
+      },
+      "options": [
+        {
+          "en": "A little"
+        },
+        {
+          "en": "A lot"
+        },
+        {
+          "en": "None"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who is a teacher?"
+      },
+      "options": [
+        {
+          "en": "Luan"
+        },
+        {
+          "en": "Ana"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

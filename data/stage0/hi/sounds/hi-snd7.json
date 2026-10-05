@@ -1,0 +1,148 @@
+{
+  "lang": "hi",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "hi-snd7",
+  "title": {
+    "en": "Two kinds of t and d: त द and ट ड"
+  },
+  "features": [
+    "letter:ट",
+    "letter:त",
+    "letter:द",
+    "letter:ड"
+  ],
+  "words": [
+    {
+      "text": "रोटी",
+      "en": "flatbread",
+      "picture": "🫓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "तीन",
+      "en": "three",
+      "picture": "3️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "एक टीन",
+      "en": "a tin can",
+      "picture": "🥫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "दाल",
+      "en": "lentils (dal)",
+      "picture": "🍲",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "एक डाल",
+      "en": "a branch",
+      "picture": "🌿",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Hindi has two kinds of t and two kinds of d. For त and द the tongue touches the back of the top teeth. For ट and ड the tongue tip curls up and back and taps the roof of the mouth. तीन (three) and टीन (a tin) are different words; so are दाल (lentils) and डाल (a branch).",
+    "more": "English t and d are in between, and Hindi ears usually hear them as the curled ones, ट ड. In the letters under the words, a dot under the letter marks the curled ones: ṭ ḍ. Try saying तीन, then टीन."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "तीन",
+      "prompt": "How is \"तीन\" said?",
+      "options": [
+        "tīn",
+        "ṭīn"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "टीन",
+      "prompt": "How is \"टीन\" said?",
+      "options": [
+        "tīn",
+        "ṭīn"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "दाल",
+      "prompt": "How is \"दाल\" said?",
+      "options": [
+        "dāl",
+        "ḍāl"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "डाल",
+      "prompt": "How is \"डाल\" said?",
+      "options": [
+        "dāl",
+        "ḍāl"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "रोटी",
+      "prompt": "How is \"रोटी\" said?",
+      "options": [
+        "rotī",
+        "roṭī"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "दाल",
+      "prompt": "Which word means \"lentils\"?",
+      "options": [
+        "डाल",
+        "दाल"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d7",
+      "kind": "which-word",
+      "word": "तीन",
+      "prompt": "Which word means \"three\"?",
+      "options": [
+        "टीन",
+        "तीन"
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,294 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "Time words come first",
+      "text": "วันนี้ (today) goes at the start of the sentence: วันนี้ผมไปตลาด. Thai verbs never change for time: ไป is \"go\", \"went\" or \"will go\", and the time word tells you which.",
+      "explains": [
+        "th.time-today"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Today you are at home. Finish the sentence.",
+      "basedOn": [
+        "l5",
+        "th.time-today"
+      ],
+      "frame": "วันนี้___อยู่ที่___",
+      "accept": [
+        {
+          "text": "วันนี้ผมอยู่ที่บ้านครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "วันนี้ฉันอยู่ที่บ้านค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "วันนี้อยู่ที่บ้านครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "วันนี้อยู่ที่บ้านค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "วันนี้อยู่ที่บ้าน"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Mali asks วันนี้ไปตลาดไหมคะ. Say no, you are not going.",
+      "basedOn": [
+        "l1",
+        "th.negation-mai"
+      ],
+      "accept": [
+        {
+          "text": "ไม่ไป"
+        },
+        {
+          "text": "ไม่ไปครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ไม่ไปค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "วันนี้ไม่ไป"
+        },
+        {
+          "text": "วันนี้ไม่ไปครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "วันนี้ไม่ไปค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "วันนี้ไม่ไป"
+        },
+        {
+          "text": "วันนี้ไม่ไปครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "วันนี้ไม่ไปค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมวันนี้ไม่ไป",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันวันนี้ไม่ไป",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมวันนี้ไม่ไปครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันวันนี้ไม่ไปค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s12",
+  "title": {
+    "en": "Today",
+    "target": "วันนี้"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "sam",
+      "luis",
+      "marta"
+    ],
+    "places": [
+      "market",
+      "school",
+      "home",
+      "clinic"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "วันนี้ไปตลาดไหมคะ",
+      "en": "Are you going to the market today?",
+      "speaker": "ana",
+      "picture": "🛒❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ไปครับ",
+      "en": "Yes, I am.",
+      "speaker": "sam",
+      "picture": "🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "วันนี้ผมไปโรงเรียนครับ",
+      "en": "Today I am going to school.",
+      "speaker": "luis",
+      "picture": "🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "วันนี้ฉันทำงานที่โรงพยาบาลค่ะ",
+      "en": "Today I work at the hospital.",
+      "speaker": "ana",
+      "picture": "🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "วันนี้ผมอยู่ที่บ้านครับ",
+      "en": "Today I am at home.",
+      "speaker": "sam",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "วันนี้ป้าขายขนมที่ตลาดค่ะ",
+      "en": "Today I am selling sweets at the market.",
+      "speaker": "marta",
+      "picture": "👵🍡",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "วันนี้",
+      "ตลาด",
+      "ทำงาน",
+      "โรงพยาบาล",
+      "ขาย"
+    ],
+    "constructions": [
+      "th.time-today",
+      "th.place-go",
+      "th.work-place"
+    ]
+  },
+  "represents": [
+    "th.time-today",
+    "th.place-go",
+    "th.work-place",
+    "th.location-yu-thi",
+    "th.go-come",
+    "th.mai-question"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Ton go today?"
+      },
+      "options": [
+        {
+          "en": "to school",
+          "picture": "🏫"
+        },
+        {
+          "en": "to the market",
+          "picture": "🛒"
+        },
+        {
+          "en": "to the hospital",
+          "picture": "🏥"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Mali work today?"
+      },
+      "options": [
+        {
+          "en": "at the hospital",
+          "picture": "🏥"
+        },
+        {
+          "en": "at school",
+          "picture": "🏫"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Marta do at the market?"
+      },
+      "options": [
+        {
+          "en": "She sells sweets"
+        },
+        {
+          "en": "She buys rice"
+        },
+        {
+          "en": "She drinks tea"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,259 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "แล้ว means already",
+      "text": "แล้ว after a verb shows that it has happened or is done: เจอแล้ว (found already). Thai verbs never change form, so small words like แล้ว do the work of a past tense.",
+      "explains": [
+        "th.done-laeo"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Where is the book? (It is on the table.)",
+      "basedOn": [
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "หนังสืออยู่ที่โต๊ะ"
+        },
+        {
+          "text": "หนังสืออยู่ที่โต๊ะครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "หนังสืออยู่ที่โต๊ะค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "อยู่ที่โต๊ะ"
+        },
+        {
+          "text": "อยู่ที่โต๊ะครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "อยู่ที่โต๊ะค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ที่โต๊ะ"
+        },
+        {
+          "text": "ที่โต๊ะครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ที่โต๊ะค่ะ",
+          "speakerForm": "f"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you found it.",
+      "basedOn": [
+        "l6",
+        "th.done-laeo"
+      ],
+      "accept": [
+        {
+          "text": "เจอแล้ว"
+        },
+        {
+          "text": "เจอแล้วครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "เจอแล้วค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s15",
+  "title": {
+    "en": "The lost book",
+    "target": "หนังสืออยู่ที่ไหน"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "luis",
+      "sam"
+    ],
+    "things": [
+      "book"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "หนังสืออยู่ที่ไหนครับ",
+      "en": "Where is my book?",
+      "speaker": "nico",
+      "picture": "📖❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ไม่เห็นครับ",
+      "en": "I do not see it.",
+      "speaker": "luis",
+      "picture": "🤷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "หนังสืออยู่ที่โต๊ะครับ",
+      "en": "The book is on the table.",
+      "speaker": "sam",
+      "picture": "📖🪑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ที่ไหนครับ",
+      "en": "Where?",
+      "speaker": "nico",
+      "picture": "😮❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "ที่โต๊ะครับ",
+      "en": "On the table.",
+      "speaker": "sam",
+      "picture": "🪑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "เจอแล้วครับ",
+      "en": "Found it!",
+      "speaker": "nico",
+      "picture": "🎉",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "หนังสือ",
+      "เจอ",
+      "แล้ว"
+    ],
+    "constructions": [
+      "th.done-laeo"
+    ]
+  },
+  "represents": [
+    "th.done-laeo",
+    "th.location-yu-thi",
+    "th.where-thi-nai",
+    "th.not-see",
+    "th.negation-mai"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1",
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is Ball looking for?"
+      },
+      "options": [
+        {
+          "en": "his book",
+          "picture": "📖"
+        },
+        {
+          "en": "his phone",
+          "picture": "📱"
+        },
+        {
+          "en": "his key",
+          "picture": "🔑"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is it?"
+      },
+      "options": [
+        {
+          "en": "On the table"
+        },
+        {
+          "en": "At school"
+        },
+        {
+          "en": "At home"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Did Ball find it?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,181 @@
+{
+  "lang": "hi",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "hi-snd2",
+  "title": {
+    "en": "The \"a\" that goes quiet at the end of a word"
+  },
+  "features": [
+    "rule:final-a-dropped",
+    "letter:घ",
+    "letter:च",
+    "letter:य",
+    "letter:ह",
+    "letter:ज",
+    "vowel:आ",
+    "vowel:औ"
+  ],
+  "words": [
+    {
+      "text": "नाम",
+      "en": "name",
+      "picture": "🏷️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "घर",
+      "en": "house, home",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "चाय",
+      "en": "tea",
+      "picture": "🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "यह",
+      "en": "this",
+      "picture": "👉",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "आप",
+      "en": "you (polite)",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "आज",
+      "en": "today",
+      "picture": "📅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "और",
+      "en": "and",
+      "picture": "➕",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Every letter has a short \"a\" inside it, but at the end of a word that \"a\" is not said: नाम is nām (not \"nāma\"), घर is ghar, चाय is cāy. A vowel at the very start of a word is written with its own letter: आ is the long \"aa\" of आप and आज, and औ is the \"au\" of और.",
+    "more": "In the middle of a word the short \"a\" is usually said (नमक is na-mak) — only the last one falls silent. Hindi never pronounces a letter you cannot hear in everyday speech: you learn which \"a\" to drop by hearing words."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "नाम",
+      "prompt": "How is \"नाम\" said?",
+      "options": [
+        "nām",
+        "nāma"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "घर",
+      "prompt": "How is \"घर\" said?",
+      "options": [
+        "ghara",
+        "ghar"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "चाय",
+      "prompt": "How is \"चाय\" said?",
+      "options": [
+        "cāy",
+        "cāya"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "आप",
+      "prompt": "How is \"आप\" said?",
+      "options": [
+        "āpa",
+        "āp"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d7",
+      "kind": "which-reading",
+      "word": "आज",
+      "prompt": "How is \"आज\" said?",
+      "options": [
+        "āja",
+        "āj"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d8",
+      "kind": "which-reading",
+      "word": "और",
+      "prompt": "How is \"और\" said?",
+      "options": [
+        "aur",
+        "or"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-word",
+      "word": "घर",
+      "prompt": "Which word means \"house\"?",
+      "options": [
+        "चाय",
+        "घर",
+        "नाम"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "आप",
+      "prompt": "Which word means \"you\" (polite)?",
+      "options": [
+        "यह",
+        "आप",
+        "नाम"
+      ],
+      "answer": 1
+    }
+  ]
+}

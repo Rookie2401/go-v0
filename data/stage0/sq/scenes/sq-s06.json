@@ -1,0 +1,233 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "ky, kjo and një",
+      "text": "Nearly every Albanian noun is masculine or feminine. Ky points at a masculine word (ky libër), kjo at a feminine one (kjo çantë). Një means \"a\" or \"one\". Learn each new word together with ky or kjo.",
+      "explains": [
+        "sq.gender-ky-kjo"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "choose",
+      "prompt": "Which sentence says \"This is a bag\"?",
+      "basedOn": [
+        "l2"
+      ],
+      "options": [
+        "Kjo është një çantë.",
+        "Ky është një çantë.",
+        "Kjo është një libër."
+      ],
+      "accept": [
+        {
+          "text": "Kjo është një çantë."
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Ardi asks: \"Çfarë është ky?\" It is a book. Answer him.",
+      "basedOn": [
+        "l4",
+        "sq.cfare-eshte"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Ky është një libër"
+        },
+        {
+          "text": "Është një libër"
+        },
+        {
+          "text": "Një libër"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s06",
+  "title": {
+    "en": "What is this?",
+    "target": "Çfarë është kjo?"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "luis"
+    ],
+    "things": [
+      "bag",
+      "book",
+      "coffee"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Çfarë është kjo, Luan?",
+      "en": "What is this, Luan?",
+      "speaker": "nico",
+      "picture": "👜❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Kjo është një çantë.",
+      "en": "This is a bag.",
+      "speaker": "luis",
+      "picture": "👜",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Dhe ky?",
+      "en": "And this one?",
+      "speaker": "nico",
+      "picture": "📖❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ky është një libër.",
+      "en": "This is a book.",
+      "speaker": "luis",
+      "picture": "📖",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Dhe kjo, Luan?",
+      "en": "And this one, Luan?",
+      "speaker": "nico",
+      "picture": "☕❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Kjo është një kafe.",
+      "en": "This is a coffee.",
+      "speaker": "luis",
+      "picture": "☕",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "çfarë",
+      "kjo",
+      "një",
+      "çantë",
+      "libër"
+    ],
+    "constructions": [
+      "sq.cfare-eshte",
+      "sq.gender-ky-kjo"
+    ]
+  },
+  "represents": [
+    "sq.cfare-eshte",
+    "sq.gender-ky-kjo",
+    "sq.ky-eshte"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Luan say it is?"
+      },
+      "options": [
+        {
+          "en": "a bag",
+          "picture": "👜"
+        },
+        {
+          "en": "a book",
+          "picture": "📖"
+        },
+        {
+          "en": "a coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is the second thing?"
+      },
+      "options": [
+        {
+          "en": "a book",
+          "picture": "📖"
+        },
+        {
+          "en": "a bag",
+          "picture": "👜"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is the third thing?"
+      },
+      "options": [
+        {
+          "en": "a coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "a book",
+          "picture": "📖"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "มี and ไม่มี",
+      "text": "มี means \"to have\" and also \"there is\": มีชา (there is tea). ไม่มี is \"do not have; there is none\". ไม่ always comes just before the word it makes negative.",
+      "explains": [
+        "th.have-mi"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "usage",
+      "title": "ขอ … ครับ",
+      "text": "ขอ means \"to ask for\". ขอชาครับ is a polite way to ask for tea: \"could I have tea?\". It works for anything you want to be given.",
+      "explains": [
+        "th.request-kho"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Ask whether there is tea.",
+      "basedOn": [
+        "l1",
+        "l3",
+        "th.have-mi"
+      ],
+      "frame": "มี___ไหม",
+      "accept": [
+        {
+          "text": "มีชาไหมครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "มีชาไหมคะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "มีชาไหม"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Ask for water, politely.",
+      "basedOn": [
+        "l6",
+        "th.request-kho"
+      ],
+      "accept": [
+        {
+          "text": "ขอน้ำ"
+        },
+        {
+          "text": "ขอน้ำครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ขอน้ำค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s07",
+  "title": {
+    "en": "Do you have any?",
+    "target": "มีไหม"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana"
+    ],
+    "things": [
+      "water",
+      "coffee",
+      "tea"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "มีน้ำไหมครับ",
+      "en": "Is there any water?",
+      "speaker": "sam",
+      "picture": "💧❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "มีค่ะ",
+      "en": "Yes, there is.",
+      "speaker": "ana",
+      "picture": "✅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "มีกาแฟไหมครับ",
+      "en": "Is there any coffee?",
+      "speaker": "sam",
+      "picture": "☕❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ไม่มีค่ะ",
+      "en": "No, there is not.",
+      "speaker": "ana",
+      "picture": "❌",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "มีชาค่ะ",
+      "en": "There is tea.",
+      "speaker": "ana",
+      "picture": "🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ขอชาครับ",
+      "en": "Tea, please.",
+      "speaker": "sam",
+      "picture": "🙏🍵",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ขอ",
+      "ไม่มี"
+    ],
+    "constructions": [
+      "th.have-mi",
+      "th.request-kho"
+    ]
+  },
+  "represents": [
+    "th.have-mi",
+    "th.request-kho",
+    "th.negation-mai",
+    "th.mai-question",
+    "th.eat-drink",
+    "th.answer-with-verb"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3",
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is there coffee?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5",
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam ask for?"
+      },
+      "options": [
+        {
+          "en": "tea",
+          "picture": "🍵"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Mali mean by มีค่ะ?"
+      },
+      "options": [
+        {
+          "en": "Yes, there is"
+        },
+        {
+          "en": "There is none"
+        },
+        {
+          "en": "Thank you"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

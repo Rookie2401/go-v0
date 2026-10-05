@@ -1,0 +1,170 @@
+{
+  "lang": "hi",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "hi-snd4",
+  "title": {
+    "en": "Vowel signs on top: े ै ो ौ"
+  },
+  "features": [
+    "matra:े",
+    "matra:ै",
+    "matra:ो",
+    "matra:ौ",
+    "letter:क",
+    "letter:स",
+    "letter:ब",
+    "letter:ग",
+    "letter:ल"
+  ],
+  "words": [
+    {
+      "text": "मेरा",
+      "en": "my",
+      "picture": "🙋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "है",
+      "en": "is",
+      "picture": "✔️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "कैसे",
+      "en": "how",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "को",
+      "en": "to; for (marks the person)",
+      "picture": "➡️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "कौन",
+      "en": "who",
+      "picture": "👤❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "बैग",
+      "en": "bag",
+      "picture": "👜",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "लेकिन",
+      "en": "but",
+      "picture": "↔️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Four vowel signs sit above the letter. One stroke is e (े, as in मेरा) and two strokes is ai (ै, as in है, कैसे). The curved stroke with a bar is o (ो, as in को) and a bar with two strokes is au (ौ, as in कौन).",
+    "more": "ै sounds like the \"a\" in \"hat\" followed by a little \"i\"; ौ is like \"aw\" followed by a little \"u\". े and ो are pure single sounds. Count the strokes on the letter: one is e or o, two is ai or au."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "मेरा",
+      "prompt": "How is \"मेरा\" said?",
+      "options": [
+        "merā",
+        "mairā"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "है",
+      "prompt": "How is \"है\" said?",
+      "options": [
+        "hai",
+        "he"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "को",
+      "prompt": "How is \"को\" said?",
+      "options": [
+        "ko",
+        "kau"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "कौन",
+      "prompt": "How is \"कौन\" said?",
+      "options": [
+        "kon",
+        "kaun"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "कैसे",
+      "prompt": "How is \"कैसे\" said?",
+      "options": [
+        "kaise",
+        "kese"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "which-reading",
+      "word": "लेकिन",
+      "prompt": "How is \"लेकिन\" said?",
+      "options": [
+        "laikin",
+        "lekin"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "कौन",
+      "prompt": "Which word means \"who\"?",
+      "options": [
+        "को",
+        "कौन",
+        "कैसे"
+      ],
+      "answer": 1
+    }
+  ]
+}

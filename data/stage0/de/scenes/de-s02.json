@@ -1,0 +1,175 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "mein, meine",
+      "text": "The little word \"my\" changes a little with the noun: mein Bruder, meine Schwester. Learn the two together. Notice too that every noun starts with a capital letter: Bruder, Schwester.",
+      "explains": [
+        "de.possessive-mein",
+        "de.noun-capital"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "choose",
+      "prompt": "Which sentence says \"Lukas is my brother\"?",
+      "basedOn": [
+        "l4"
+      ],
+      "options": [
+        "Lukas ist mein Bruder.",
+        "Lukas ist meine Bruder.",
+        "Anna ist mein Bruder."
+      ],
+      "accept": [
+        {
+          "text": "Lukas ist mein Bruder."
+        }
+      ]
+    }
+  ],
+  "id": "de-s02",
+  "title": {
+    "en": "This is Lukas",
+    "target": "Das ist Lukas"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Das ist Lukas.",
+      "en": "This is Lukas.",
+      "speaker": "ana",
+      "picture": "👨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Hallo, Sam.",
+      "en": "Hello, Sam.",
+      "speaker": "luis",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Hallo, Lukas. Freut mich.",
+      "en": "Hello, Lukas. Nice to meet you.",
+      "speaker": "sam",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Lukas ist mein Bruder.",
+      "en": "Lukas is my brother.",
+      "speaker": "ana",
+      "picture": "👨‍👩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Und Anna ist meine Schwester.",
+      "en": "And Anna is my sister.",
+      "speaker": "luis",
+      "picture": "👩",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "das",
+      "ist",
+      "mein",
+      "Bruder",
+      "und",
+      "Schwester"
+    ],
+    "constructions": [
+      "de.sein-identity",
+      "de.possessive-mein"
+    ]
+  },
+  "represents": [
+    "de.greeting",
+    "de.sein-identity",
+    "de.possessive-mein",
+    "de.noun-capital"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who is Lukas?"
+      },
+      "options": [
+        {
+          "en": "Anna's brother"
+        },
+        {
+          "en": "Anna's father"
+        },
+        {
+          "en": "Sam's brother"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Anna is Lukas's sister."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

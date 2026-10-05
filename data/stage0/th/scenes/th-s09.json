@@ -1,0 +1,256 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "ชอบ and มาก",
+      "text": "ชอบ means \"to like\", and ไม่ชอบ means \"do not like\". Put มาก after a word to say \"a lot\": ชอบมาก.",
+      "explains": [
+        "th.like-chop",
+        "th.degree-mak"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "แต่ means but",
+      "text": "แต่ joins two ideas that pull against each other, with no comma and no space: ชอบขนมแต่ไม่ชอบกาแฟ. In Thai the whole sentence is one run of letters.",
+      "explains": [
+        "th.but-tae"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "choose",
+      "prompt": "Which sentence says \"I like tea\" for a man?",
+      "basedOn": [
+        "l3"
+      ],
+      "options": [
+        "ผมชอบชาครับ",
+        "ผมไม่ชอบชาครับ",
+        "ผมดื่มชาครับ"
+      ],
+      "accept": [
+        {
+          "text": "ผมชอบชาครับ"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Say something you like.",
+      "basedOn": [
+        "l3",
+        "l6",
+        "th.like-chop"
+      ],
+      "frame": "ชอบ___",
+      "accept": [
+        {
+          "text": "ผมชอบ{x}ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันชอบ{x}ค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ชอบ{x}ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ชอบ{x}ค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ชอบ{x}"
+        }
+      ],
+      "personal": "something you like",
+      "speak": true
+    }
+  ],
+  "id": "th-s09",
+  "title": {
+    "en": "What do you like?",
+    "target": "ชอบอะไร"
+  },
+  "world": {
+    "characters": [
+      "luis",
+      "sam",
+      "ana"
+    ],
+    "things": [
+      "coffee",
+      "tea",
+      "rain"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "ชอบกาแฟไหมครับ",
+      "en": "Do you like coffee?",
+      "speaker": "luis",
+      "picture": "☕❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ไม่ชอบครับ",
+      "en": "No, I do not.",
+      "speaker": "sam",
+      "picture": "🙅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ผมชอบชาครับ",
+      "en": "I like tea.",
+      "speaker": "sam",
+      "picture": "🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ผมชอบฝนครับ",
+      "en": "I like the rain.",
+      "speaker": "luis",
+      "picture": "🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "ฉันไม่ชอบฝนค่ะ",
+      "en": "I do not like the rain.",
+      "speaker": "ana",
+      "picture": "🌧️🙅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ฉันชอบขนมมากแต่ไม่ชอบกาแฟค่ะ",
+      "en": "I like sweets a lot, but I do not like coffee.",
+      "speaker": "ana",
+      "picture": "🍡☕🙅",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ชอบ",
+      "ขนม",
+      "มาก",
+      "แต่"
+    ],
+    "constructions": [
+      "th.like-chop",
+      "th.degree-mak",
+      "th.but-tae"
+    ]
+  },
+  "represents": [
+    "th.like-chop",
+    "th.degree-mak",
+    "th.but-tae",
+    "th.negation-mai",
+    "th.pronoun-i",
+    "th.mai-question",
+    "th.answer-with-verb"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Sam like coffee?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who likes the rain?"
+      },
+      "options": [
+        {
+          "en": "Ton"
+        },
+        {
+          "en": "Mali"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Mali like a lot, and what does she not like?"
+      },
+      "options": [
+        {
+          "en": "Likes sweets, not coffee"
+        },
+        {
+          "en": "Likes coffee, not sweets"
+        },
+        {
+          "en": "Likes both"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

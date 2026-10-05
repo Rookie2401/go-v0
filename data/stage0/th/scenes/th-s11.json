@@ -1,0 +1,264 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "A number needs a counting word",
+      "text": "After a number, Thai puts a counting word: สองอัน (two items). กี่ (\"how many\") takes the same slot: กี่อัน? The money word บาท counts itself: ห้าบาท.",
+      "explains": [
+        "th.counting-ki",
+        "th.numbers"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "culture",
+      "title": "ป้า, auntie",
+      "text": "Thai people call an older woman ป้า (aunt) even when she is a stranger, and the name ป้าแดง means \"Auntie Daeng\". It is warm and respectful.",
+      "explains": [
+        "th.address-pa"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "recall",
+      "prompt": "Ask how much the sweets cost.",
+      "basedOn": [
+        "l2",
+        "th.how-much"
+      ],
+      "accept": [
+        {
+          "text": "ขนมเท่าไร"
+        },
+        {
+          "text": "ขนมเท่าไรครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ขนมเท่าไรคะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Marta asks เอากี่อันคะ. You want two.",
+      "basedOn": [
+        "l4",
+        "l5",
+        "th.counting-ki"
+      ],
+      "accept": [
+        {
+          "text": "เอาสองอัน"
+        },
+        {
+          "text": "เอาสองอันครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "เอาสองอันค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "สองอัน"
+        },
+        {
+          "text": "สองอันครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "สองอันค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s11",
+  "title": {
+    "en": "At the market",
+    "target": "ที่ตลาด"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "money"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "สวัสดีครับป้า",
+      "en": "Hello, auntie.",
+      "speaker": "sam",
+      "picture": "👋👵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ขนมเท่าไรครับ",
+      "en": "How much are the sweets?",
+      "speaker": "sam",
+      "picture": "🍡❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ห้าบาทค่ะ",
+      "en": "Five baht.",
+      "speaker": "marta",
+      "picture": "5️⃣💵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "เอากี่อันคะ",
+      "en": "How many do you want?",
+      "speaker": "marta",
+      "picture": "🔢❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "เอาสองอันครับ",
+      "en": "Two, please.",
+      "speaker": "sam",
+      "picture": "2️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "สิบบาทค่ะ",
+      "en": "Ten baht.",
+      "speaker": "marta",
+      "picture": "🔟💵",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "เท่าไร",
+      "บาท",
+      "เอา",
+      "กี่",
+      "อัน",
+      "สิบ"
+    ],
+    "constructions": [
+      "th.how-much",
+      "th.counting-ki",
+      "th.numbers",
+      "th.address-pa"
+    ]
+  },
+  "represents": [
+    "th.how-much",
+    "th.counting-ki",
+    "th.numbers",
+    "th.address-pa",
+    "th.greeting",
+    "th.polite-particle"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much is one sweet?"
+      },
+      "options": [
+        {
+          "en": "5 baht"
+        },
+        {
+          "en": "10 baht"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How many does Sam take?"
+      },
+      "options": [
+        {
+          "en": "Two"
+        },
+        {
+          "en": "Five"
+        },
+        {
+          "en": "Ten"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much does Sam pay in all?"
+      },
+      "options": [
+        {
+          "en": "10 baht"
+        },
+        {
+          "en": "5 baht"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

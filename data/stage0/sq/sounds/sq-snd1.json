@@ -1,0 +1,108 @@
+{
+  "id": "sq-snd1",
+  "lang": "sq",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "ë, ç, and the letters sh, dh, th"
+  },
+  "features": [
+    "sq:ë",
+    "sq:ç",
+    "sq:sh",
+    "sq:dh",
+    "sq:th"
+  ],
+  "words": [
+    {
+      "text": "shtëpi",
+      "en": "house",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "çaj",
+      "en": "tea",
+      "picture": "🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "dhe",
+      "en": "and",
+      "picture": "➕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "thotë",
+      "en": "says",
+      "picture": "💬",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Albanian has letters of its own. ë is a short, weak \"uh\" (and at the end of a word it is often hardly said). ç is ch as in \"church\". sh is as in \"ship\"; dh is the th of \"this\"; th is the th of \"think\".",
+    "more": "sh, dh and th are single letters of the Albanian alphabet, not two letters stuck together: dhe starts with one sound, dh. Albanian is spelled as it sounds, so once you know these letters you can say any word you see."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "shtëpi",
+      "prompt": "How is \"shtëpi\" said?",
+      "options": [
+        "SHTUH-pee — sh as in \"ship\", ë a weak \"uh\"",
+        "STEH-pee — with a plain s"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "çaj",
+      "prompt": "How is \"çaj\" said?",
+      "options": [
+        "CHAI — ç as in \"church\"",
+        "KAI — a hard k"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "dhe",
+      "prompt": "How does \"dhe\" start?",
+      "options": [
+        "with the th of \"this\": DHEH",
+        "with a d, then an h: D-heh"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "thotë",
+      "prompt": "How does \"thotë\" start?",
+      "options": [
+        "with the th of \"think\": THOH-tuh",
+        "with a plain t: TOH-tuh"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  }
+}

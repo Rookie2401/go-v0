@@ -1,0 +1,231 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "कितने की है?",
+      "text": "कितने की है? asks the price: \"of how much is it?\". The answer is a number, then रुपये: पाँच रुपये की है. Numbers so far: एक 1, दो 2, पाँच 5, दस 10.",
+      "explains": [
+        "hi.kitne-ka",
+        "hi.numbers"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write the question: \"रोटी कितने की है?\"",
+      "basedOn": [
+        "l1"
+      ],
+      "accept": [
+        {
+          "text": "रोटी कितने की है"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "You want to know the price of the roti. Ask.",
+      "basedOn": [
+        "l1",
+        "hi.kitne-ka"
+      ],
+      "accept": [
+        {
+          "text": "रोटी कितने की है"
+        },
+        {
+          "text": "एक रोटी कितने की है"
+        },
+        {
+          "text": "नानी, रोटी कितने की है"
+        },
+        {
+          "text": "नमस्ते, नानी। रोटी कितने की है"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s11",
+  "title": {
+    "en": "How much is the bread?",
+    "target": "रोटी कितने की है?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread",
+      "money"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "नमस्ते, नानी। रोटी कितने की है?",
+      "en": "Hello, Nani. How much is the roti?",
+      "speaker": "sam",
+      "picture": "🫓💵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "एक रोटी पाँच रुपये की है।",
+      "en": "One roti is five rupees.",
+      "speaker": "marta",
+      "picture": "🫓5️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "मुझे दो रोटी चाहिए।",
+      "en": "I want two rotis.",
+      "speaker": "sam",
+      "picture": "🫓🫓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "दो रोटी, दस रुपये।",
+      "en": "Two rotis, ten rupees.",
+      "speaker": "marta",
+      "picture": "🔟💵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "यह लीजिए।",
+      "en": "Here you are.",
+      "speaker": "sam",
+      "picture": "💵🤲",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "धन्यवाद!",
+      "en": "Thank you!",
+      "speaker": "marta",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "कितने",
+      "एक",
+      "रुपये",
+      "दो",
+      "दस",
+      "धन्यवाद"
+    ],
+    "constructions": [
+      "hi.kitne-ka",
+      "hi.numbers"
+    ]
+  },
+  "represents": [
+    "hi.kitne-ka",
+    "hi.numbers",
+    "hi.ka-ki",
+    "hi.chahiye",
+    "hi.greeting",
+    "hi.imperative-chalo"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much is one roti?"
+      },
+      "options": [
+        {
+          "en": "5 rupees"
+        },
+        {
+          "en": "10 rupees"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much are two rotis?"
+      },
+      "options": [
+        {
+          "en": "10 rupees"
+        },
+        {
+          "en": "5 rupees"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How many rotis does Sam want?"
+      },
+      "options": [
+        {
+          "en": "Two"
+        },
+        {
+          "en": "One"
+        },
+        {
+          "en": "Five"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

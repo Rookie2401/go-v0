@@ -1,0 +1,197 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd3",
+  "title": {
+    "en": "More letters: ม น ร ล ว ย ง and ค ช ท พ ฟ"
+  },
+  "features": [
+    "class:low",
+    "ending:live",
+    "final:m",
+    "final:n",
+    "vowel:◌",
+    "vowel:◌ำ",
+    "rule:low+live=mid"
+  ],
+  "words": [
+    {
+      "text": "มี",
+      "en": "to have; there is",
+      "picture": "🤲",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ยา",
+      "en": "medicine",
+      "picture": "💊",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "งู",
+      "en": "snake",
+      "picture": "🐍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "นม",
+      "en": "milk",
+      "picture": "🥛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ลม",
+      "en": "wind",
+      "picture": "💨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "งาน",
+      "en": "work, a job",
+      "picture": "💼",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ชา",
+      "en": "tea",
+      "picture": "🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "คน",
+      "en": "person",
+      "picture": "🧍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ทำ",
+      "en": "to do, to make",
+      "picture": "🔨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ฟัน",
+      "en": "tooth",
+      "picture": "🦷",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "These letters are the \"low class\": ม น ร ล ว ย ง (the smooth sounds) and also ค ช ท พ ฟ. A live syllable with a low-class first letter and no mark is also said in the plain mid tone, so มี, ยา and งาน sound level, just like ดี and ตา.",
+    "more": "The sound of the letters: ม m, น n, ร r (a quick tap, often said like l), ล l, ว w, ย y, ง ng (as at the end of \"sing\", and it can also start a Thai word: งู). ค ช ท พ are k, ch, t and p with a puff of air, and ฟ is f. When no vowel is written between two consonants (นม, ลม, คน) the vowel is a short \"o\". The vowel ำ is \"am\". The class of the first letter matters from now on: the same mark or ending gives different tones for different classes."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-tone",
+      "word": "มี",
+      "prompt": "Which tone does มี have?",
+      "options": [
+        "mid",
+        "falling",
+        "rising"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-tone",
+      "word": "งาน",
+      "prompt": "Which tone does งาน have?",
+      "options": [
+        "low",
+        "high",
+        "mid"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "งู",
+      "prompt": "How is งู said? (It starts with the ng sound of \"sing\".)",
+      "options": [
+        "ngu",
+        "nu",
+        "gu"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "นม",
+      "prompt": "How is นม said?",
+      "options": [
+        "nom",
+        "nam",
+        "nem"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "ฟัน",
+      "prompt": "How is ฟัน said?",
+      "options": [
+        "fan",
+        "fun",
+        "phan"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "คน",
+      "prompt": "How is คน said?",
+      "options": [
+        "khon",
+        "kon",
+        "khan"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "segment",
+      "word": "ผมมีงานครับ",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        2,
+        4,
+        7
+      ]
+    }
+  ]
+}

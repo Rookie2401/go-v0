@@ -1,0 +1,241 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "ไหม makes a question",
+      "text": "Put ไหม at the end to turn a statement into a yes/no question: สบายดี (I am well) becomes สบายดีไหม (are you well?). A woman says คะ in a question and ค่ะ in a statement; a man says ครับ both times.",
+      "explains": [
+        "th.mai-question"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Someone asks สบายดีไหม and you are fine. Finish your answer.",
+      "basedOn": [
+        "l2",
+        "th.how-are-you"
+      ],
+      "frame": "สบายดี___",
+      "accept": [
+        {
+          "text": "สบายดีครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "สบายดีค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ดีครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ดีค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "สบายดี"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say thank you, politely.",
+      "basedOn": [
+        "l3",
+        "th.thanks"
+      ],
+      "accept": [
+        {
+          "text": "ขอบคุณครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ขอบคุณค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ขอบคุณ"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s03",
+  "title": {
+    "en": "How are you?",
+    "target": "สบายดีไหม"
+  },
+  "world": {
+    "characters": [
+      "luis",
+      "sam",
+      "ana"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "สบายดีไหมครับ",
+      "en": "How are you? (Are you well?)",
+      "speaker": "luis",
+      "picture": "😊❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "สบายดีครับ",
+      "en": "I am well.",
+      "speaker": "sam",
+      "picture": "😊",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ขอบคุณครับ",
+      "en": "Thank you.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "คุณสบายดีไหมครับ",
+      "en": "And you? Are you well?",
+      "speaker": "sam",
+      "picture": "😊❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "ดีครับ",
+      "en": "Good.",
+      "speaker": "luis",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "สบายดีไหมคะ",
+      "en": "How are you?",
+      "speaker": "ana",
+      "picture": "😊❓",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "สบาย",
+      "ไหม",
+      "ขอบคุณ",
+      "คะ"
+    ],
+    "constructions": [
+      "th.how-are-you",
+      "th.mai-question",
+      "th.thanks"
+    ]
+  },
+  "represents": [
+    "th.how-are-you",
+    "th.mai-question",
+    "th.thanks",
+    "th.polite-particle"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Ton ask Sam?"
+      },
+      "options": [
+        {
+          "en": "Are you well?"
+        },
+        {
+          "en": "Are you hungry?"
+        },
+        {
+          "en": "Are you going?"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam say after \"I am well\"?"
+      },
+      "options": [
+        {
+          "en": "Thank you"
+        },
+        {
+          "en": "Sorry"
+        },
+        {
+          "en": "Goodbye"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Mali is asking a question."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

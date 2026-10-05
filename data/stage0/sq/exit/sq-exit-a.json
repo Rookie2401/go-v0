@@ -1,0 +1,270 @@
+{
+  "id": "sq-exit-a",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "Sot Luan është në treg.",
+        "en": "Today Luan is at the market.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "Luan do bukë dhe kafe.",
+        "en": "Luan wants bread and coffee.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "Drita ka bukë, por nuk ka kafe.",
+        "en": "Drita has bread, but she does not have coffee.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "Luan ka njëzet lekë.",
+        "en": "Luan has twenty lekë.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "Luan është i lodhur dhe shkon në shtëpi.",
+        "en": "Luan is tired and goes home.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Luan today?"
+        },
+        "options": [
+          {
+            "en": "at the market"
+          },
+          {
+            "en": "at school"
+          },
+          {
+            "en": "at church"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r3"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Drita NOT have?"
+        },
+        "options": [
+          {
+            "en": "coffee"
+          },
+          {
+            "en": "bread"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r4"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How much money does Luan have?"
+        },
+        "options": [
+          {
+            "en": "20 lekë"
+          },
+          {
+            "en": "10 lekë"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r5"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How is Luan, and where does he go?"
+        },
+        "options": [
+          {
+            "en": "Tired; home"
+          },
+          {
+            "en": "Tired; to church"
+          },
+          {
+            "en": "Happy; to school"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "Ardi është në shtëpi.",
+        "en": "Ardi is at home.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "Ardi do ujë.",
+        "en": "Ardi wants water.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Ardi?"
+        },
+        "options": [
+          {
+            "en": "at home"
+          },
+          {
+            "en": "at the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Ardi want?"
+        },
+        "options": [
+          {
+            "en": "water"
+          },
+          {
+            "en": "coffee"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Where is Luan today? Answer in Albanian.",
+      "basedOn": [
+        "r1"
+      ],
+      "accept": [
+        {
+          "text": "Luan është në treg"
+        },
+        {
+          "text": "Ai është në treg"
+        },
+        {
+          "text": "Është në treg"
+        },
+        {
+          "text": "Në treg"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Give your name and say where you live.",
+      "basedOn": [
+        "sq.quhem",
+        "sq.jetoj-ne"
+      ],
+      "personal": "your name, your town",
+      "accept": [
+        {
+          "text": "Unë quhem {x}. Jetoj në {x}."
+        },
+        {
+          "text": "Quhem {x}. Jetoj në {x}."
+        },
+        {
+          "text": "Unë quhem {x} dhe jetoj në {x}"
+        },
+        {
+          "text": "Quhem {x} dhe jetoj në {x}"
+        }
+      ]
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Ask, politely, for water.",
+      "basedOn": [
+        "sq.politeness"
+      ],
+      "accept": [
+        {
+          "text": "Dua ujë, ju lutem"
+        },
+        {
+          "text": "Ujë, ju lutem"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say your name, and that you would like coffee, please.",
+      "model": "Unë quhem Sam. Dua kafe, ju lutem."
+    }
+  ]
+}

@@ -1,0 +1,261 @@
+{
+  "entries": [
+    {
+      "id": "de.greeting",
+      "kind": "pragmatics",
+      "label": "greeting and meeting (Hallo, Freut mich, Guten Morgen)",
+      "prerequisites": []
+    },
+    {
+      "id": "de.ich-heisse",
+      "kind": "construction",
+      "label": "Ich heiße + name",
+      "prerequisites": []
+    },
+    {
+      "id": "de.present-ich",
+      "kind": "grammar",
+      "label": "present tense, I (-e)",
+      "prerequisites": []
+    },
+    {
+      "id": "de.sein-identity",
+      "kind": "construction",
+      "label": "X ist Y (identity)",
+      "prerequisites": []
+    },
+    {
+      "id": "de.possessive-mein",
+      "kind": "grammar",
+      "label": "mein / meine (my) — changes with the noun",
+      "prerequisites": []
+    },
+    {
+      "id": "de.possessive-dein",
+      "kind": "grammar",
+      "label": "dein / deine (your)",
+      "prerequisites": [
+        "de.possessive-mein"
+      ]
+    },
+    {
+      "id": "de.possessive-ihr",
+      "kind": "grammar",
+      "label": "ihr (her)",
+      "prerequisites": [
+        "de.possessive-mein"
+      ]
+    },
+    {
+      "id": "de.noun-capital",
+      "kind": "orth",
+      "label": "every noun starts with a capital letter",
+      "prerequisites": []
+    },
+    {
+      "id": "de.haben-object",
+      "kind": "construction",
+      "label": "haben + thing",
+      "prerequisites": []
+    },
+    {
+      "id": "de.present-er-sie",
+      "kind": "grammar",
+      "label": "present tense, he/she/it (-t)",
+      "prerequisites": []
+    },
+    {
+      "id": "de.present-du",
+      "kind": "grammar",
+      "label": "present tense, you (-st)",
+      "prerequisites": [
+        "de.present-ich"
+      ]
+    },
+    {
+      "id": "de.negation-kein",
+      "kind": "grammar",
+      "label": "kein + thing (not any)",
+      "prerequisites": [
+        "de.haben-object"
+      ]
+    },
+    {
+      "id": "de.negation-nicht",
+      "kind": "grammar",
+      "label": "nicht (not)",
+      "prerequisites": [
+        "de.sein-identity"
+      ]
+    },
+    {
+      "id": "de.accusative-chunks",
+      "kind": "grammar",
+      "label": "accusative as chunks only (keinen Kaffee, einen Tee, den Tisch)",
+      "prerequisites": [
+        "de.haben-object"
+      ]
+    },
+    {
+      "id": "de.moechten",
+      "kind": "construction",
+      "label": "ich möchte / möchtest du (would like)",
+      "prerequisites": []
+    },
+    {
+      "id": "de.yes-no-question",
+      "kind": "construction",
+      "label": "yes/no question: verb first (Möchtest du …?)",
+      "prerequisites": []
+    },
+    {
+      "id": "de.politeness",
+      "kind": "pragmatics",
+      "label": "danke, bitte (schön), gern",
+      "prerequisites": []
+    },
+    {
+      "id": "de.gern-verb",
+      "kind": "construction",
+      "label": "verb + gern (like to)",
+      "prerequisites": [
+        "de.politeness"
+      ]
+    },
+    {
+      "id": "de.sein-location",
+      "kind": "construction",
+      "label": "sein + place (im Haus, in der Schule)",
+      "prerequisites": [
+        "de.sein-identity"
+      ]
+    },
+    {
+      "id": "de.dative-chunks",
+      "kind": "grammar",
+      "label": "small place phrases: im, in der, auf dem, zu Hause, bei",
+      "prerequisites": [
+        "de.sein-location"
+      ]
+    },
+    {
+      "id": "de.article-der-die-das",
+      "kind": "grammar",
+      "label": "der / die / das (every noun has one)",
+      "prerequisites": [
+        "de.possessive-mein"
+      ]
+    },
+    {
+      "id": "de.adjective-state",
+      "kind": "construction",
+      "label": "sein + state (müde)",
+      "prerequisites": [
+        "de.sein-location"
+      ]
+    },
+    {
+      "id": "de.verb-second",
+      "kind": "grammar",
+      "label": "the verb is the second item (Heute ist Anna müde)",
+      "prerequisites": [
+        "de.sein-identity"
+      ]
+    },
+    {
+      "id": "de.w-question",
+      "kind": "construction",
+      "label": "question words (wo, was)",
+      "prerequisites": []
+    },
+    {
+      "id": "de.wo-ist",
+      "kind": "construction",
+      "label": "Wo ist …?",
+      "prerequisites": [
+        "de.sein-location",
+        "de.w-question"
+      ]
+    },
+    {
+      "id": "de.wissen-nicht",
+      "kind": "construction",
+      "label": "Ich weiß nicht",
+      "prerequisites": []
+    },
+    {
+      "id": "de.sie-formal",
+      "kind": "pragmatics",
+      "label": "Sie to a stranger or shopkeeper (Was möchten Sie?)",
+      "prerequisites": [
+        "de.politeness",
+        "de.moechten"
+      ]
+    },
+    {
+      "id": "de.separable-verb",
+      "kind": "grammar",
+      "label": "separable verbs (einkaufen, mitgehen, aufräumen)",
+      "prerequisites": [
+        "de.present-er-sie"
+      ]
+    },
+    {
+      "id": "de.es-gibt",
+      "kind": "construction",
+      "label": "es gibt (there is / are)",
+      "prerequisites": []
+    },
+    {
+      "id": "de.numbers",
+      "kind": "grammar",
+      "label": "numbers (zwei, drei, zehn)",
+      "prerequisites": []
+    },
+    {
+      "id": "de.time-days",
+      "kind": "grammar",
+      "label": "heute, morgen, am Sonntag",
+      "prerequisites": []
+    },
+    {
+      "id": "de.gehen-place",
+      "kind": "construction",
+      "label": "gehen + in die Kirche (gehe, gehst, geht, gehen)",
+      "prerequisites": [
+        "de.sein-location"
+      ]
+    },
+    {
+      "id": "de.nach-hause",
+      "kind": "construction",
+      "label": "nach Hause (going home) vs zu Hause (at home)",
+      "prerequisites": [
+        "de.gehen-place"
+      ]
+    },
+    {
+      "id": "de.weil",
+      "kind": "construction",
+      "label": "weil (because) — verb at the end",
+      "prerequisites": [
+        "de.sein-identity",
+        "de.adjective-state"
+      ]
+    },
+    {
+      "id": "de.aber-und",
+      "kind": "construction",
+      "label": "aber (but), und (and)",
+      "prerequisites": []
+    },
+    {
+      "id": "de.haben-state",
+      "kind": "construction",
+      "label": "Ich habe Hunger",
+      "prerequisites": [
+        "de.haben-object"
+      ]
+    }
+  ]
+}

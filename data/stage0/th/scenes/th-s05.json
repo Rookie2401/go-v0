@@ -1,0 +1,253 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "ข้าว is rice, and a meal",
+      "text": "ข้าว means rice, and Thai also uses it for a meal in general: กินข้าว is \"to eat\" (a meal). The verb ดื่ม is for drinks only.",
+      "explains": [
+        "th.eat-drink"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write what Sam drinks: ผมดื่มชาครับ",
+      "basedOn": [
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "ผมดื่มชาครับ"
+        },
+        {
+          "text": "ดื่มชาครับ"
+        },
+        {
+          "text": "ดื่มชา"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "You drink water. Write it.",
+      "basedOn": [
+        "l1",
+        "l5"
+      ],
+      "frame": "ดื่ม___",
+      "accept": [
+        {
+          "text": "ดื่มน้ำ"
+        },
+        {
+          "text": "ดื่มน้ำครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ดื่มน้ำค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมดื่มน้ำ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันดื่มน้ำ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมดื่มน้ำครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันดื่มน้ำค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s05",
+  "title": {
+    "en": "Eat and drink",
+    "target": "กินและดื่ม"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "sam",
+      "luis"
+    ],
+    "things": [
+      "water",
+      "coffee",
+      "tea",
+      "rice"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "ดื่มน้ำไหมคะ",
+      "en": "Would you like some water?",
+      "speaker": "ana",
+      "picture": "💧❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ดื่มครับ",
+      "en": "Yes, please.",
+      "speaker": "sam",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ผมดื่มกาแฟครับ",
+      "en": "I drink coffee.",
+      "speaker": "luis",
+      "picture": "☕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ผมไม่ดื่มกาแฟครับ",
+      "en": "I do not drink coffee.",
+      "speaker": "sam",
+      "picture": "🙅☕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "ผมดื่มชาครับ",
+      "en": "I drink tea.",
+      "speaker": "sam",
+      "picture": "🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "กินข้าวไหมคะ",
+      "en": "Shall we eat?",
+      "speaker": "ana",
+      "picture": "🍚❓",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ดื่ม",
+      "น้ำ",
+      "กาแฟ",
+      "ชา",
+      "ข้าว"
+    ],
+    "constructions": [
+      "th.eat-drink"
+    ]
+  },
+  "represents": [
+    "th.eat-drink",
+    "th.negation-mai",
+    "th.mai-question",
+    "th.answer-with-verb"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Ton drink?"
+      },
+      "options": [
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "tea",
+          "picture": "🍵"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam drink?"
+      },
+      "options": [
+        {
+          "en": "tea",
+          "picture": "🍵"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Mali offer?"
+      },
+      "options": [
+        {
+          "en": "A meal"
+        },
+        {
+          "en": "A drink"
+        },
+        {
+          "en": "A walk"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

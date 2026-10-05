@@ -1,0 +1,218 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "shkoj, shkon, shkojnë",
+      "text": "You have now met three forms of \"go\": shkoj (I go), shkon (you go, or she or he goes), shkojnë (they go). Verbs change at the end for each person. Të dielën means \"on Sunday\".",
+      "explains": [
+        "sq.verb-persons",
+        "sq.shkoj-ne",
+        "sq.time-words"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "recall",
+      "prompt": "Say \"Tomorrow is Sunday.\"",
+      "basedOn": [
+        "l1",
+        "sq.time-words"
+      ],
+      "accept": [
+        {
+          "text": "Nesër është e diel"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Ana asks: \"A shkon me ne?\" Say yes, you are going with them.",
+      "basedOn": [
+        "l5",
+        "sq.shkoj-ne"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Po, shkoj me ju"
+        },
+        {
+          "text": "Po, nesër shkoj me ju"
+        },
+        {
+          "text": "Po, shkoj"
+        },
+        {
+          "text": "Shkoj me ju"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s15",
+  "title": {
+    "en": "On Sunday",
+    "target": "E diel"
+  },
+  "world": {
+    "characters": [
+      "marta",
+      "ana",
+      "luis",
+      "sam"
+    ],
+    "places": [
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Nesër është e diel.",
+      "en": "Tomorrow is Sunday.",
+      "picture": "📅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Të dielën Drita shkon në kishë.",
+      "en": "On Sunday Drita goes to church.",
+      "picture": "👵⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Edhe Ana dhe Luan shkojnë në kishë.",
+      "en": "Ana and Luan go to church too.",
+      "picture": "👩👨⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Sam, a shkon me ne?",
+      "en": "Sam, are you coming with us?",
+      "speaker": "ana",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Po, nesër shkoj me ju.",
+      "en": "Yes, tomorrow I am going with you.",
+      "speaker": "sam",
+      "picture": "🙂👍",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "nesër",
+      "diel",
+      "kishë",
+      "shkojnë",
+      "me",
+      "ne"
+    ],
+    "constructions": [
+      "sq.shkoj-ne",
+      "sq.time-words",
+      "sq.verb-persons"
+    ]
+  },
+  "represents": [
+    "sq.shkoj-ne",
+    "sq.time-words",
+    "sq.verb-persons",
+    "sq.yes-no-a",
+    "sq.ne-place",
+    "sq.definite"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What day is tomorrow?"
+      },
+      "options": [
+        {
+          "en": "Sunday"
+        },
+        {
+          "en": "Monday"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Drita go on Sunday?"
+      },
+      "options": [
+        {
+          "en": "to church",
+          "picture": "⛪"
+        },
+        {
+          "en": "to the market",
+          "picture": "🛒"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is Sam going with them?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

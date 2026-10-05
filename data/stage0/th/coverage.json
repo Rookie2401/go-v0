@@ -1,0 +1,399 @@
+{
+  "entries": [
+    {
+      "id": "th.greeting",
+      "kind": "pragmatics",
+      "label": "greeting (สวัสดี)",
+      "prerequisites": []
+    },
+    {
+      "id": "th.polite-particle",
+      "kind": "pragmatics",
+      "label": "polite endings ครับ (men) and ค่ะ / คะ (women)",
+      "prerequisites": []
+    },
+    {
+      "id": "th.name-chue",
+      "kind": "construction",
+      "label": "ชื่อ + name (my name is …)",
+      "prerequisites": [
+        "th.greeting"
+      ]
+    },
+    {
+      "id": "th.pronoun-i",
+      "kind": "grammar",
+      "label": "ผม (man) and ฉัน (woman): I",
+      "prerequisites": [
+        "th.name-chue"
+      ]
+    },
+    {
+      "id": "th.what-name",
+      "kind": "construction",
+      "label": "คุณชื่ออะไร (what is your name?)",
+      "prerequisites": [
+        "th.name-chue"
+      ]
+    },
+    {
+      "id": "th.how-are-you",
+      "kind": "construction",
+      "label": "สบายดีไหม (how are you?)",
+      "prerequisites": [
+        "th.greeting"
+      ]
+    },
+    {
+      "id": "th.mai-question",
+      "kind": "construction",
+      "label": "yes/no question with ไหม",
+      "prerequisites": [
+        "th.polite-particle"
+      ]
+    },
+    {
+      "id": "th.thanks",
+      "kind": "pragmatics",
+      "label": "ขอบคุณ (thank you)",
+      "prerequisites": []
+    },
+    {
+      "id": "th.go-come",
+      "kind": "construction",
+      "label": "ไป / มา (go, come)",
+      "prerequisites": []
+    },
+    {
+      "id": "th.negation-mai",
+      "kind": "grammar",
+      "label": "ไม่ before a verb (not)",
+      "prerequisites": []
+    },
+    {
+      "id": "th.answer-with-verb",
+      "kind": "construction",
+      "label": "answering yes/no by repeating the verb (ไป / ไม่ไป)",
+      "prerequisites": [
+        "th.go-come",
+        "th.mai-question"
+      ]
+    },
+    {
+      "id": "th.eat-drink",
+      "kind": "construction",
+      "label": "กิน / ดื่ม + thing",
+      "prerequisites": []
+    },
+    {
+      "id": "th.identity-pen",
+      "kind": "construction",
+      "label": "X เป็น Y (X is a Y)",
+      "prerequisites": [
+        "th.pronoun-i"
+      ]
+    },
+    {
+      "id": "th.yes-no-chai",
+      "kind": "construction",
+      "label": "ใช่ / ไม่ใช่ (yes, that is right / no, it is not)",
+      "prerequisites": [
+        "th.identity-pen"
+      ]
+    },
+    {
+      "id": "th.have-mi",
+      "kind": "construction",
+      "label": "มี / ไม่มี (have, there is)",
+      "prerequisites": [
+        "th.negation-mai"
+      ]
+    },
+    {
+      "id": "th.request-kho",
+      "kind": "construction",
+      "label": "ขอ + thing (could I have …)",
+      "prerequisites": [
+        "th.polite-particle"
+      ]
+    },
+    {
+      "id": "th.location-yu-thi",
+      "kind": "construction",
+      "label": "อยู่ที่ + place (is at)",
+      "prerequisites": [
+        "th.pronoun-i"
+      ]
+    },
+    {
+      "id": "th.where-thi-nai",
+      "kind": "construction",
+      "label": "ที่ไหน (where?) in the place slot",
+      "prerequisites": [
+        "th.location-yu-thi"
+      ]
+    },
+    {
+      "id": "th.not-see",
+      "kind": "construction",
+      "label": "ไม่เห็น (I do not see it): ไม่ before a verb",
+      "prerequisites": [
+        "th.negation-mai"
+      ]
+    },
+    {
+      "id": "th.like-chop",
+      "kind": "construction",
+      "label": "ชอบ (like)",
+      "prerequisites": [
+        "th.negation-mai"
+      ]
+    },
+    {
+      "id": "th.degree-mak",
+      "kind": "grammar",
+      "label": "มาก after a word (a lot)",
+      "prerequisites": [
+        "th.like-chop"
+      ]
+    },
+    {
+      "id": "th.want-yak",
+      "kind": "construction",
+      "label": "อยาก + verb (want to)",
+      "prerequisites": [
+        "th.eat-drink"
+      ]
+    },
+    {
+      "id": "th.how-much",
+      "kind": "construction",
+      "label": "เท่าไร (how much?)",
+      "prerequisites": []
+    },
+    {
+      "id": "th.numbers",
+      "kind": "grammar",
+      "label": "numbers (สอง ห้า สิบ)",
+      "prerequisites": []
+    },
+    {
+      "id": "th.counting-ki",
+      "kind": "grammar",
+      "label": "a number or กี่ + counting word (สองอัน, กี่อัน)",
+      "prerequisites": [
+        "th.numbers"
+      ]
+    },
+    {
+      "id": "th.address-pa",
+      "kind": "pragmatics",
+      "label": "ป้า: calling an older woman \"auntie\"",
+      "prerequisites": []
+    },
+    {
+      "id": "th.time-today",
+      "kind": "grammar",
+      "label": "วันนี้ (today) at the start",
+      "prerequisites": [
+        "th.go-come"
+      ]
+    },
+    {
+      "id": "th.place-go",
+      "kind": "construction",
+      "label": "ไป + place",
+      "prerequisites": [
+        "th.go-come",
+        "th.location-yu-thi"
+      ]
+    },
+    {
+      "id": "th.work-place",
+      "kind": "construction",
+      "label": "ทำงานที่ + place",
+      "prerequisites": [
+        "th.location-yu-thi"
+      ]
+    },
+    {
+      "id": "th.feelings",
+      "kind": "construction",
+      "label": "feelings as verbs (หิว เหนื่อย หนาว ร้อน)",
+      "prerequisites": [
+        "th.pronoun-i"
+      ]
+    },
+    {
+      "id": "th.also-ko",
+      "kind": "grammar",
+      "label": "ก็ (also, too)",
+      "prerequisites": [
+        "th.feelings"
+      ]
+    },
+    {
+      "id": "th.time-tomorrow",
+      "kind": "grammar",
+      "label": "พรุ่งนี้ (tomorrow)",
+      "prerequisites": [
+        "th.time-today"
+      ]
+    },
+    {
+      "id": "th.why-because",
+      "kind": "construction",
+      "label": "ทำไม … เพราะ … (why, because)",
+      "prerequisites": [
+        "th.negation-mai"
+      ]
+    },
+    {
+      "id": "th.done-laeo",
+      "kind": "grammar",
+      "label": "แล้ว after a verb (already)",
+      "prerequisites": []
+    },
+    {
+      "id": "th.but-tae",
+      "kind": "grammar",
+      "label": "แต่ (but)",
+      "prerequisites": [
+        "th.negation-mai"
+      ]
+    },
+    {
+      "id": "th.narrate-day",
+      "kind": "construction",
+      "label": "telling about your day (วันนี้ … พรุ่งนี้ …)",
+      "prerequisites": [
+        "th.time-today",
+        "th.time-tomorrow"
+      ]
+    },
+    {
+      "id": "th.orth.mid-class",
+      "kind": "orth",
+      "label": "mid-class consonants ก จ ด ต บ ป อ",
+      "prerequisites": []
+    },
+    {
+      "id": "th.orth.long-vowels",
+      "kind": "orth",
+      "label": "long vowels า ี ู",
+      "prerequisites": [
+        "th.orth.mid-class"
+      ]
+    },
+    {
+      "id": "th.sound.tones",
+      "kind": "sound",
+      "label": "five tones; the plain mid tone",
+      "prerequisites": [
+        "th.orth.long-vowels"
+      ]
+    },
+    {
+      "id": "th.sound.live-dead",
+      "kind": "sound",
+      "label": "live and dead syllables; finals",
+      "prerequisites": [
+        "th.sound.tones"
+      ]
+    },
+    {
+      "id": "th.orth.low-class",
+      "kind": "orth",
+      "label": "low-class consonants ม น ร ล ว ย ง ค ช ท พ ฟ",
+      "prerequisites": [
+        "th.orth.mid-class"
+      ]
+    },
+    {
+      "id": "th.orth.high-class",
+      "kind": "orth",
+      "label": "high-class consonants ข ส ห ฝ ถ ผ",
+      "prerequisites": [
+        "th.orth.low-class"
+      ]
+    },
+    {
+      "id": "th.sound.tone-by-class",
+      "kind": "sound",
+      "label": "the class of the first letter sets the tone",
+      "prerequisites": [
+        "th.orth.high-class"
+      ]
+    },
+    {
+      "id": "th.sound.tone-marks",
+      "kind": "sound",
+      "label": "tone marks ่ ้ on mid-class letters",
+      "prerequisites": [
+        "th.sound.live-dead"
+      ]
+    },
+    {
+      "id": "th.sound.marks-by-class",
+      "kind": "sound",
+      "label": "tone marks on low-class and high-class letters",
+      "prerequisites": [
+        "th.sound.tone-marks",
+        "th.orth.high-class"
+      ]
+    },
+    {
+      "id": "th.orth.leading-vowels",
+      "kind": "orth",
+      "label": "vowels written before the consonant เ แ โ ไ ใ",
+      "prerequisites": []
+    },
+    {
+      "id": "th.orth.other-vowels",
+      "kind": "orth",
+      "label": "ือ ัว เ◌ีย and อ as a vowel",
+      "prerequisites": [
+        "th.orth.long-vowels"
+      ]
+    },
+    {
+      "id": "th.sound.dead-by-class",
+      "kind": "sound",
+      "label": "dead syllables with low-class and high-class letters",
+      "prerequisites": [
+        "th.sound.marks-by-class"
+      ]
+    },
+    {
+      "id": "th.orth.ho-nam",
+      "kind": "orth",
+      "label": "a silent leading ห (and อ)",
+      "prerequisites": [
+        "th.orth.high-class"
+      ]
+    },
+    {
+      "id": "th.orth.clusters",
+      "kind": "orth",
+      "label": "two consonants together (กร กล พร คร)",
+      "prerequisites": [
+        "th.sound.dead-by-class"
+      ]
+    },
+    {
+      "id": "th.sound.tone-rules",
+      "kind": "sound",
+      "label": "the whole tone system from the spelling",
+      "prerequisites": [
+        "th.sound.dead-by-class",
+        "th.sound.marks-by-class"
+      ]
+    },
+    {
+      "id": "th.script.no-spaces",
+      "kind": "pragmatics",
+      "label": "Thai has no spaces between words: finding where each word begins",
+      "prerequisites": []
+    }
+  ]
+}

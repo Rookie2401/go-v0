@@ -1,0 +1,279 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "No past tense",
+      "text": "ผมไปตลาด can mean \"I go\", \"I went\" or \"I will go\": the verb never changes. The time word (วันนี้, พรุ่งนี้) and the situation tell you when. A short story is just a row of simple sentences.",
+      "explains": [
+        "th.narrate-day"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "retell",
+      "prompt": "Tell in one sentence where you went today and what you bought (use the sweets).",
+      "basedOn": [
+        "l1",
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "วันนี้ผมไปตลาดแล้วครับผมซื้อขนมครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "วันนี้ฉันไปตลาดแล้วค่ะฉันซื้อขนมค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "วันนี้ผมไปตลาดครับผมซื้อขนมครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "วันนี้ผมไปตลาดซื้อขนมครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "วันนี้ไปตลาดซื้อขนมครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "วันนี้ฉันไปตลาดค่ะฉันซื้อขนมค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "วันนี้ฉันไปตลาดซื้อขนมค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "วันนี้ไปตลาดซื้อขนมค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say that you are tired but it was fun.",
+      "basedOn": [
+        "l4",
+        "th.but-tae"
+      ],
+      "accept": [
+        {
+          "text": "ผมเหนื่อยแต่สนุกครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ผมเหนื่อยแต่สนุกมากครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "เหนื่อยแต่สนุกครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันเหนื่อยแต่สนุกค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ฉันเหนื่อยแต่สนุกมากค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "เหนื่อยแต่สนุกค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s16",
+  "title": {
+    "en": "Sam tells about his day",
+    "target": "วันนี้ของแซม"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market",
+      "church"
+    ],
+    "things": [
+      "coffee"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "วันนี้ผมไปตลาดแล้วครับ",
+      "en": "I already went to the market today.",
+      "speaker": "sam",
+      "picture": "🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ผมซื้อขนมสีขาวสามอันครับ",
+      "en": "I bought three white sweets.",
+      "speaker": "sam",
+      "picture": "🍡",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ผมเจอป้าแดงที่ตลาดครับ",
+      "en": "I met Auntie Daeng at the market.",
+      "speaker": "sam",
+      "picture": "👵🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ผมเหนื่อยแต่สนุกมากครับ",
+      "en": "I was tired but it was a lot of fun.",
+      "speaker": "sam",
+      "picture": "😓😄",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "พรุ่งนี้ผมอยากไปโบสถ์ครับ",
+      "en": "Tomorrow I want to go to church.",
+      "speaker": "sam",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ผมชอบตลาดเพราะสนุกครับ",
+      "en": "I like the market because it is fun.",
+      "speaker": "sam",
+      "picture": "🛒🙂",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "สนุก"
+    ],
+    "constructions": [
+      "th.narrate-day"
+    ]
+  },
+  "represents": [
+    "th.narrate-day",
+    "th.but-tae",
+    "th.time-today",
+    "th.time-tomorrow",
+    "th.like-chop",
+    "th.want-yak",
+    "th.feelings",
+    "th.degree-mak",
+    "th.why-because",
+    "th.counting-ki",
+    "th.done-laeo"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What did Sam buy?"
+      },
+      "options": [
+        {
+          "en": "Three white sweets"
+        },
+        {
+          "en": "Two red sweets"
+        },
+        {
+          "en": "Three books"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How was Sam?"
+      },
+      "options": [
+        {
+          "en": "Tired, but he had fun"
+        },
+        {
+          "en": "Sad and angry"
+        },
+        {
+          "en": "Hungry and cold"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5",
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam want to do tomorrow, and what does he like?"
+      },
+      "options": [
+        {
+          "en": "Go to church; he likes the market"
+        },
+        {
+          "en": "Go to the market; he likes church"
+        },
+        {
+          "en": "Stay at home; he likes rain"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

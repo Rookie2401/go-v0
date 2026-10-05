@@ -1,0 +1,230 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Seeta Nani asks if you like rice. Say that you like it a lot.",
+      "basedOn": [
+        "l3",
+        "hi.pasand"
+      ],
+      "accept": [
+        {
+          "text": "मुझे चावल बहुत पसंद है"
+        },
+        {
+          "text": "हाँ, मुझे चावल बहुत पसंद है"
+        },
+        {
+          "text": "मुझे चावल पसंद है"
+        },
+        {
+          "text": "हाँ, मुझे चावल पसंद है"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say what Aman wants.",
+      "basedOn": [
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "अमन को तीन रोटी चाहिए"
+        },
+        {
+          "text": "अमन को रोटी चाहिए"
+        },
+        {
+          "text": "अमन को तीन रोटी चाहिए!"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s16",
+  "title": {
+    "en": "Lunch at Seeta Nani's",
+    "target": "खाना"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "marta",
+      "nico"
+    ],
+    "things": [
+      "rice",
+      "bread"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "आज हम चावल खाते हैं।",
+      "en": "Today we eat rice.",
+      "speaker": "marta",
+      "picture": "🍚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "चावल गरम है।",
+      "en": "The rice is hot.",
+      "speaker": "marta",
+      "picture": "🍚♨️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "मुझे चावल बहुत पसंद है।",
+      "en": "I like rice a lot.",
+      "speaker": "sam",
+      "picture": "🍚❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "मुझे चावल पसंद नहीं है, लेकिन रोटी पसंद है।",
+      "en": "I don't like rice, but I like roti.",
+      "speaker": "nico",
+      "picture": "🍚🚫🫓❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "मुझे तीन रोटी चाहिए!",
+      "en": "I want three rotis!",
+      "speaker": "nico",
+      "picture": "🫓🫓🫓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ठीक है, अमन। दाल भी है।",
+      "en": "All right, Aman. There is dal too.",
+      "speaker": "marta",
+      "picture": "🍲",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "और मेज़ पर फल भी है।",
+      "en": "And there is fruit on the table too.",
+      "speaker": "ana",
+      "picture": "🍎",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "चावल"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "hi.pasand",
+    "hi.chahiye",
+    "hi.negation-nahin",
+    "hi.present-habitual",
+    "hi.hum-aap-main",
+    "hi.aur-lekin",
+    "hi.numbers"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam like?"
+      },
+      "options": [
+        {
+          "en": "rice",
+          "picture": "🍚"
+        },
+        {
+          "en": "roti",
+          "picture": "🫓"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Aman like rice?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How many rotis does Aman want?"
+      },
+      "options": [
+        {
+          "en": "Three"
+        },
+        {
+          "en": "Two"
+        },
+        {
+          "en": "Five"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

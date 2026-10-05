@@ -1,0 +1,255 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "dua të pi, le të pimë",
+      "text": "To say \"I want to drink\", put të before the second verb: dua të pi. \"Le të pimë\" means \"let us drink\". Learn these two as pieces for now; the little word të does the work of English \"to\".",
+      "explains": [
+        "sq.te-subjunctive"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "usage",
+      "title": "sepse",
+      "text": "Sepse means \"because\": it joins two parts, like por (but) and dhe (and).",
+      "explains": [
+        "sq.sepse"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say you want to drink water.",
+      "basedOn": [
+        "l4",
+        "sq.te-subjunctive"
+      ],
+      "frame": "Dua të pi ___.",
+      "accept": [
+        {
+          "text": "Dua të pi ujë"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say you are going to church, and why: you like it.",
+      "basedOn": [
+        "l6",
+        "sq.sepse"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Shkoj në kishë, sepse më pëlqen"
+        },
+        {
+          "text": "Shkoj në kishë sepse më pëlqen"
+        },
+        {
+          "text": "Unë shkoj në kishë, sepse më pëlqen"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s16",
+  "title": {
+    "en": "The rain changes the plan",
+    "target": "Ka shi"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "sam",
+      "marta",
+      "nico"
+    ],
+    "things": [
+      "rain",
+      "coffee",
+      "water"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Sot është e diel dhe ka shumë shi.",
+      "en": "Today is Sunday and there is a lot of rain.",
+      "picture": "🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Jam e lodhur dhe ka shi.",
+      "en": "I am tired and it is raining.",
+      "speaker": "ana",
+      "picture": "😩🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Le të pimë kafe në shtëpi.",
+      "en": "Let us have coffee at home.",
+      "speaker": "luis",
+      "picture": "☕🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Jo, faleminderit. Unë nuk pi kafe. Dua të pi ujë.",
+      "en": "No, thank you. I do not drink coffee. I want to drink water.",
+      "speaker": "sam",
+      "picture": "🙅☕ 💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Mirë. Unë dua çaj. Le të pimë çaj dhe ujë.",
+      "en": "Fine. I want tea. Let us have tea and water.",
+      "speaker": "ana",
+      "picture": "🍵💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Unë shkoj në kishë, sepse më pëlqen.",
+      "en": "I am going to church, because I like it.",
+      "speaker": "marta",
+      "picture": "👵⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Unë shkoj me gjyshen.",
+      "en": "I am going with my grandmother.",
+      "speaker": "nico",
+      "picture": "👦👵",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "shi",
+      "le",
+      "sepse"
+    ],
+    "constructions": [
+      "sq.te-subjunctive",
+      "sq.sepse"
+    ]
+  },
+  "represents": [
+    "sq.te-subjunctive",
+    "sq.sepse",
+    "sq.shkoj-ne",
+    "sq.adjective-article",
+    "sq.me-pelqen",
+    "sq.ka-there-is",
+    "sq.dua-object",
+    "sq.negation-nuk"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is the weather like?"
+      },
+      "options": [
+        {
+          "en": "rainy",
+          "picture": "🌧️"
+        },
+        {
+          "en": "sunny",
+          "picture": "☀️"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What do Luan and Ana want to do?"
+      },
+      "options": [
+        {
+          "en": "Have something to drink at home"
+        },
+        {
+          "en": "Go to church"
+        },
+        {
+          "en": "Go to the market"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6",
+        "l7"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who goes to church in the rain?"
+      },
+      "options": [
+        {
+          "en": "Drita and Ardi"
+        },
+        {
+          "en": "Ana and Luan"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

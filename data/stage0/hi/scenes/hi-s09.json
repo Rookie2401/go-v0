@@ -1,0 +1,245 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "अमन का बैग",
+      "text": "का is the Hindi \"'s\": अमन का बैग is \"Aman's bag\". It also changes to match the thing owned: का for a masculine word, की for a feminine one (अमन की किताब), के for several.",
+      "explains": [
+        "hi.ka-ki"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "usage",
+      "title": "आप or तुम",
+      "text": "Ravi, a teacher, says तुम and तुम्हारी to Aman, a child. Sam says आप and आपका to adults. तुम is for friends, family and children; use आप until you are invited to say तुम.",
+      "explains": [
+        "hi.tum-informal"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "This is Aman's bag. Write it.",
+      "basedOn": [
+        "l4",
+        "l5"
+      ],
+      "frame": "यह ___ का बैग है।",
+      "accept": [
+        {
+          "text": "यह अमन का बैग है"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Aman asks \"मेरा बैग कहाँ है?\" Tell him it is on the chair.",
+      "basedOn": [
+        "l1",
+        "hi.kahaan"
+      ],
+      "accept": [
+        {
+          "text": "तुम्हारा बैग कुर्सी पर है"
+        },
+        {
+          "text": "आपका बैग कुर्सी पर है"
+        },
+        {
+          "text": "बैग कुर्सी पर है"
+        },
+        {
+          "text": "कुर्सी पर है"
+        },
+        {
+          "text": "कुर्सी पर"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s09",
+  "title": {
+    "en": "Aman's bag",
+    "target": "अमन का बैग"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "luis",
+      "ana"
+    ],
+    "things": [
+      "bag",
+      "book"
+    ],
+    "places": [
+      "school"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "अमन, तुम्हारी किताब कहाँ है?",
+      "en": "Aman, where is your book?",
+      "speaker": "luis",
+      "picture": "📖❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "मुझे नहीं पता।",
+      "en": "I don't know.",
+      "speaker": "nico",
+      "picture": "🤷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "मेरा बैग भी नहीं है।",
+      "en": "My bag is not here either.",
+      "speaker": "nico",
+      "picture": "👜🚫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "कुर्सी पर अमन का बैग है!",
+      "en": "Aman's bag is on the chair!",
+      "speaker": "ana",
+      "picture": "👜🪑😮",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "हाँ! यह मेरा बैग है।",
+      "en": "Yes! This is my bag.",
+      "speaker": "nico",
+      "picture": "👦👜",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "शुक्रिया, दीदी।",
+      "en": "Thanks, Didi (big sister).",
+      "speaker": "nico",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "तुम्हारी",
+      "पता",
+      "का",
+      "दीदी"
+    ],
+    "constructions": [
+      "hi.ka-ki",
+      "hi.tum-informal"
+    ]
+  },
+  "represents": [
+    "hi.ka-ki",
+    "hi.tum-informal",
+    "hi.kahaan",
+    "hi.mera-meri",
+    "hi.negation-nahin",
+    "hi.greeting"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1",
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Aman know where his book is?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Whose bag is it?"
+      },
+      "options": [
+        {
+          "en": "Aman's"
+        },
+        {
+          "en": "Ravi's"
+        },
+        {
+          "en": "Sam's"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who does Aman thank?"
+      },
+      "options": [
+        {
+          "en": "Meera"
+        },
+        {
+          "en": "Ravi"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

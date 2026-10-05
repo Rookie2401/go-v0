@@ -1,0 +1,302 @@
+{
+  "entries": [
+    {
+      "id": "hi.greeting",
+      "kind": "pragmatics",
+      "label": "greeting and thanks (नमस्ते, शुक्रिया, धन्यवाद, लीजिए)",
+      "prerequisites": []
+    },
+    {
+      "id": "hi.mera-naam",
+      "kind": "construction",
+      "label": "मेरा नाम X है (my name is X)",
+      "prerequisites": []
+    },
+    {
+      "id": "hi.yah-vah-hai",
+      "kind": "construction",
+      "label": "यह / वह X है (this / that is X)",
+      "prerequisites": []
+    },
+    {
+      "id": "hi.mera-meri",
+      "kind": "grammar",
+      "label": "मेरा / मेरी / मेरे (my) agrees with the thing",
+      "prerequisites": [
+        "hi.yah-vah-hai"
+      ]
+    },
+    {
+      "id": "hi.hai-hain",
+      "kind": "grammar",
+      "label": "है / हैं / हूँ",
+      "prerequisites": [
+        "hi.yah-vah-hai"
+      ]
+    },
+    {
+      "id": "hi.kya-question",
+      "kind": "construction",
+      "label": "क्या (what) in a question",
+      "prerequisites": [
+        "hi.yah-vah-hai"
+      ]
+    },
+    {
+      "id": "hi.yes-no-question",
+      "kind": "construction",
+      "label": "yes/no question by voice; हाँ / नहीं",
+      "prerequisites": [
+        "hi.hai-hain"
+      ]
+    },
+    {
+      "id": "hi.mein-place",
+      "kind": "construction",
+      "label": "X में है (in / at)",
+      "prerequisites": [
+        "hi.hai-hain"
+      ]
+    },
+    {
+      "id": "hi.negation-nahin",
+      "kind": "grammar",
+      "label": "नहीं (not, no)",
+      "prerequisites": [
+        "hi.hai-hain"
+      ]
+    },
+    {
+      "id": "hi.hum-aap-main",
+      "kind": "grammar",
+      "label": "मैं, हम, आप — who goes with है / हैं / हूँ",
+      "prerequisites": [
+        "hi.hai-hain"
+      ]
+    },
+    {
+      "id": "hi.postposition-ko",
+      "kind": "grammar",
+      "label": "को (to, for) after the person",
+      "prerequisites": [
+        "hi.hai-hain"
+      ]
+    },
+    {
+      "id": "hi.chahiye",
+      "kind": "construction",
+      "label": "X को Y चाहिए (X wants / needs Y)",
+      "prerequisites": [
+        "hi.postposition-ko",
+        "hi.negation-nahin"
+      ]
+    },
+    {
+      "id": "hi.pasand",
+      "kind": "construction",
+      "label": "X को Y पसंद है (X likes Y)",
+      "prerequisites": [
+        "hi.chahiye"
+      ]
+    },
+    {
+      "id": "hi.aur-lekin",
+      "kind": "grammar",
+      "label": "और (and), लेकिन (but)",
+      "prerequisites": []
+    },
+    {
+      "id": "hi.kaisa",
+      "kind": "pragmatics",
+      "label": "आप कैसे हैं? मैं ठीक हूँ",
+      "prerequisites": [
+        "hi.hum-aap-main"
+      ]
+    },
+    {
+      "id": "hi.adjective-verb-gender",
+      "kind": "grammar",
+      "label": "थका / थकी: the ending follows the speaker or the person",
+      "prerequisites": [
+        "hi.kaisa"
+      ]
+    },
+    {
+      "id": "hi.kahaan",
+      "kind": "construction",
+      "label": "X कहाँ है? X ... पर है",
+      "prerequisites": [
+        "hi.mein-place"
+      ]
+    },
+    {
+      "id": "hi.par-location",
+      "kind": "grammar",
+      "label": "पर (on)",
+      "prerequisites": [
+        "hi.mein-place"
+      ]
+    },
+    {
+      "id": "hi.ka-ki",
+      "kind": "grammar",
+      "label": "का / की / के (of, 's) and आपका",
+      "prerequisites": [
+        "hi.mera-meri"
+      ]
+    },
+    {
+      "id": "hi.tum-informal",
+      "kind": "pragmatics",
+      "label": "तुम / तुम्हारा with friends and children",
+      "prerequisites": [
+        "hi.hum-aap-main"
+      ]
+    },
+    {
+      "id": "hi.present-habitual",
+      "kind": "construction",
+      "label": "जाता / जाती / जाते हैं; करता / करती हूँ",
+      "prerequisites": [
+        "hi.adjective-verb-gender",
+        "hi.hum-aap-main"
+      ]
+    },
+    {
+      "id": "hi.third-person-habitual",
+      "kind": "grammar",
+      "label": "रवि काम करता है; मीरा करती है",
+      "prerequisites": [
+        "hi.present-habitual"
+      ]
+    },
+    {
+      "id": "hi.negation-habitual",
+      "kind": "grammar",
+      "label": "नहीं before the verb (नहीं जाते)",
+      "prerequisites": [
+        "hi.present-habitual",
+        "hi.negation-nahin"
+      ]
+    },
+    {
+      "id": "hi.imperative-chalo",
+      "kind": "pragmatics",
+      "label": "चलो (let's go)",
+      "prerequisites": []
+    },
+    {
+      "id": "hi.numbers",
+      "kind": "grammar",
+      "label": "एक, दो, तीन, पाँच, दस",
+      "prerequisites": []
+    },
+    {
+      "id": "hi.kitne-ka",
+      "kind": "construction",
+      "label": "X कितने का / की है? (the price)",
+      "prerequisites": [
+        "hi.ka-ki",
+        "hi.numbers"
+      ]
+    },
+    {
+      "id": "hi.time-days",
+      "kind": "grammar",
+      "label": "आज, कल, रविवार, दस बजे",
+      "prerequisites": []
+    },
+    {
+      "id": "hi.church-words",
+      "kind": "pragmatics",
+      "label": "चर्च, बाइबल (and गिरजाघर, कलीसिया)",
+      "prerequisites": []
+    },
+    {
+      "id": "hi.laga",
+      "kind": "construction",
+      "label": "मुझे … अच्छा लगता है",
+      "prerequisites": [
+        "hi.pasand"
+      ]
+    },
+    {
+      "id": "hi.language-bolna",
+      "kind": "construction",
+      "label": "हिंदी बोलना (to speak a language)",
+      "prerequisites": [
+        "hi.present-habitual"
+      ]
+    },
+    {
+      "id": "hi.orth-aa-ii",
+      "kind": "orth",
+      "label": "ा and ी: long aa, long ee",
+      "prerequisites": []
+    },
+    {
+      "id": "hi.orth-silent-a",
+      "kind": "orth",
+      "label": "the inherent a, silent at the end of a word",
+      "prerequisites": [
+        "hi.orth-aa-ii"
+      ]
+    },
+    {
+      "id": "hi.orth-nasal-dots",
+      "kind": "orth",
+      "label": "ं and ँ: the nasal",
+      "prerequisites": [
+        "hi.orth-aa-ii"
+      ]
+    },
+    {
+      "id": "hi.orth-e-ai-o-au",
+      "kind": "orth",
+      "label": "े ै ो ौ",
+      "prerequisites": [
+        "hi.orth-aa-ii"
+      ]
+    },
+    {
+      "id": "hi.orth-i-u",
+      "kind": "orth",
+      "label": "ि ु ू: short and long",
+      "prerequisites": [
+        "hi.orth-e-ai-o-au"
+      ]
+    },
+    {
+      "id": "hi.orth-aspirates",
+      "kind": "orth",
+      "label": "ख भ फ छ ठ: the puff of air",
+      "prerequisites": [
+        "hi.orth-silent-a"
+      ]
+    },
+    {
+      "id": "hi.orth-dental-retroflex",
+      "kind": "orth",
+      "label": "त द and ट ड",
+      "prerequisites": [
+        "hi.orth-aspirates"
+      ]
+    },
+    {
+      "id": "hi.orth-nukta",
+      "kind": "orth",
+      "label": "ज़ फ़ ड़",
+      "prerequisites": [
+        "hi.orth-dental-retroflex"
+      ]
+    },
+    {
+      "id": "hi.orth-conjuncts",
+      "kind": "orth",
+      "label": "joined letters: क्य स्क स्त च्छ र्च",
+      "prerequisites": [
+        "hi.orth-nukta"
+      ]
+    }
+  ]
+}

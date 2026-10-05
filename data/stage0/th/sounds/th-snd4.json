@@ -1,0 +1,209 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd4",
+  "title": {
+    "en": "High-class letters: ข ส ห ฝ ถ ผ"
+  },
+  "features": [
+    "class:high",
+    "ending:live",
+    "final:m",
+    "final:n",
+    "final:ŋ",
+    "final:w",
+    "vowel:◌อ",
+    "rule:high+live=rising"
+  ],
+  "words": [
+    {
+      "text": "ขา",
+      "en": "leg",
+      "picture": "🦵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "สี",
+      "en": "colour",
+      "picture": "🎨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "หู",
+      "en": "ear",
+      "picture": "👂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ผม",
+      "en": "hair; also \"I\" for a man",
+      "picture": "💇",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ฝน",
+      "en": "rain",
+      "picture": "🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "สอง",
+      "en": "two",
+      "picture": "2️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "สาม",
+      "en": "three",
+      "picture": "3️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "หิว",
+      "en": "hungry",
+      "picture": "🤤",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ขาว",
+      "en": "white",
+      "picture": "⬜",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ถาม",
+      "en": "to ask (a question)",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "The letters ข ส ห ฝ ถ ผ (and a few rare ones) are the \"high class\". A live syllable that starts with a high-class letter and has no mark rises, like the end of a question: ขา, หู and สอง go up, while ตา and ดี stay level.",
+    "more": "The sounds: ข and ถ and ผ are k, t and p with a puff of air (kh, th, ph), ส is s, ห is h, ฝ is f. Rising starts a little low and climbs, like a curious \"Oh?\". Compare ตา (eye, mid tone) with ขา (leg, rising tone): the vowel is the same, only the class of the first letter differs. The letter อ here is a vowel: สอง is \"sawng\". The word ผม is both \"hair\" and a man's word for \"I\", and it rises."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-tone",
+      "word": "ขา",
+      "prompt": "Which tone does ขา have?",
+      "options": [
+        "mid",
+        "rising",
+        "low"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d2",
+      "kind": "which-tone",
+      "word": "สอง",
+      "prompt": "Which tone does สอง have?",
+      "options": [
+        "rising",
+        "falling",
+        "mid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-tone",
+      "word": "หิว",
+      "prompt": "Which tone does หิว have?",
+      "options": [
+        "high",
+        "low",
+        "rising"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "d4",
+      "kind": "which-tone",
+      "word": "ผม",
+      "prompt": "Which tone does ผม have?",
+      "options": [
+        "mid",
+        "rising",
+        "high"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d5",
+      "kind": "which-tone",
+      "word": "ตา",
+      "prompt": "Which tone does ตา have? (Mid-class letter, live syllable.)",
+      "options": [
+        "mid",
+        "rising",
+        "low"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "ฝน",
+      "prompt": "How is ฝน said?",
+      "options": [
+        "fon",
+        "fan",
+        "phon"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "which-reading",
+      "word": "ถาม",
+      "prompt": "How is ถาม said?",
+      "options": [
+        "tham",
+        "tam",
+        "thaam"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "segment",
+      "word": "ผมหิวครับ",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        2,
+        5
+      ]
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "Days and times",
+      "text": "आज is \"today\" and कल is both \"tomorrow\" and \"yesterday\" — the rest of the sentence shows which. \"At ten o'clock\" is दस बजे; रविवार को is \"on Sunday\".",
+      "explains": [
+        "hi.time-days"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "culture",
+      "title": "चर्च",
+      "text": "In everyday speech people say चर्च for a church. You will also hear गिरजाघर (the church building) and कलीसिया (the church as the people of God).",
+      "explains": [
+        "hi.church-words"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say: \"On Sunday we go to church.\"",
+      "basedOn": [
+        "l2"
+      ],
+      "frame": "रविवार को हम ___ जाते हैं।",
+      "accept": [
+        {
+          "text": "रविवार को हम चर्च जाते हैं"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Meera asks you: \"कल रविवार है?\" Say yes, tomorrow is Sunday.",
+      "basedOn": [
+        "l1",
+        "hi.time-days"
+      ],
+      "accept": [
+        {
+          "text": "हाँ, कल रविवार है"
+        },
+        {
+          "text": "हाँ, कल रविवार है।"
+        },
+        {
+          "text": "कल रविवार है"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s13",
+  "title": {
+    "en": "Sunday",
+    "target": "रविवार"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis",
+      "nico",
+      "marta"
+    ],
+    "places": [
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "आज शनिवार है। कल रविवार है।",
+      "en": "Today is Saturday. Tomorrow is Sunday.",
+      "speaker": "ana",
+      "picture": "📅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "रविवार को हम चर्च जाते हैं।",
+      "en": "On Sunday we go to church.",
+      "speaker": "ana",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "मैं भी चर्च जाता हूँ। यह मेरी बाइबल है।",
+      "en": "I go to church too. This is my Bible.",
+      "speaker": "sam",
+      "picture": "🙂⛪📖",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "अमन और सीता नानी भी चर्च जाती हैं।",
+      "en": "Aman and Seeta Nani go to church too.",
+      "speaker": "luis",
+      "picture": "👦👵⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "चर्च सुबह दस बजे है।",
+      "en": "Church is at ten in the morning.",
+      "speaker": "ana",
+      "picture": "🕙",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ठीक है। हम कल सुबह चलते हैं!",
+      "en": "All right. We will go tomorrow morning!",
+      "speaker": "sam",
+      "picture": "👍🌅",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "शनिवार",
+      "कल",
+      "रविवार",
+      "बजे",
+      "बाइबल"
+    ],
+    "constructions": [
+      "hi.time-days",
+      "hi.church-words"
+    ]
+  },
+  "represents": [
+    "hi.time-days",
+    "hi.church-words",
+    "hi.present-habitual",
+    "hi.hai-hain",
+    "hi.hum-aap-main",
+    "hi.postposition-ko"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What day is it today?"
+      },
+      "options": [
+        {
+          "en": "Saturday"
+        },
+        {
+          "en": "Sunday"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "When is church?"
+      },
+      "options": [
+        {
+          "en": "Ten in the morning"
+        },
+        {
+          "en": "Five in the evening"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who else goes to church?"
+      },
+      "options": [
+        {
+          "en": "Aman and Seeta Nani"
+        },
+        {
+          "en": "Nobody"
+        },
+        {
+          "en": "Ravi's father"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

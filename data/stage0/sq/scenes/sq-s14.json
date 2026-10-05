@@ -1,0 +1,246 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "unë, ti, ai",
+      "text": "The little words for the person: unë (I), ti (you), ai (he), ajo (she). With them the \"to be\" word changes: unë jam, ti je, ai është. Albanian often leaves them out, because jam, je and është already say who it is.",
+      "explains": [
+        "sq.pronoun-ai"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Ardi asks: \"Ku është Luan?\" He is on the street. Answer him.",
+      "basedOn": [
+        "l2",
+        "sq.pronoun-ai"
+      ],
+      "accept": [
+        {
+          "text": "Ai është në rrugë"
+        },
+        {
+          "text": "Luan është në rrugë"
+        },
+        {
+          "text": "Është në rrugë"
+        },
+        {
+          "text": "Në rrugë"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "You arrive late. Say \"Hello! I am late.\"",
+      "basedOn": [
+        "l6"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Përshëndetje! Jam vonë"
+        },
+        {
+          "text": "Jam vonë"
+        },
+        {
+          "text": "Mirëdita, jam vonë"
+        },
+        {
+          "text": "Përshëndetje, jam vonë"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s14",
+  "title": {
+    "en": "The bus is late",
+    "target": "Luan është vonë"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "ana",
+      "luis"
+    ],
+    "places": [
+      "school",
+      "street",
+      "bus-stop"
+    ],
+    "things": [
+      "bus"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ku është Luan?",
+      "en": "Where is Luan?",
+      "speaker": "nico",
+      "picture": "👨❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ai thotë: Jam në rrugë.",
+      "en": "He says: I am on my way.",
+      "speaker": "ana",
+      "picture": "👨🛣️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Autobusi nuk është këtu.",
+      "en": "The bus is not here.",
+      "speaker": "ana",
+      "picture": "🚌🚫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Luan është vonë.",
+      "en": "Luan is late.",
+      "speaker": "nico",
+      "picture": "⏰",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Po. Ja, autobusi është këtu!",
+      "en": "Yes. Look, the bus is here!",
+      "speaker": "ana",
+      "picture": "🚌",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Përshëndetje! Jam vonë.",
+      "en": "Hello! I am late.",
+      "speaker": "luis",
+      "picture": "😅",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ai",
+      "rrugë",
+      "autobusi",
+      "këtu",
+      "vonë"
+    ],
+    "constructions": [
+      "sq.pronoun-ai"
+    ]
+  },
+  "represents": [
+    "sq.pronoun-ai",
+    "sq.ku-eshte",
+    "sq.jam-je",
+    "sq.negation-nuk",
+    "sq.ne-place",
+    "sq.definite",
+    "sq.greeting"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Luan say he is?"
+      },
+      "options": [
+        {
+          "en": "on the street",
+          "picture": "🛣️"
+        },
+        {
+          "en": "at school",
+          "picture": "🏫"
+        },
+        {
+          "en": "at home",
+          "picture": "🏠"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is not here?"
+      },
+      "options": [
+        {
+          "en": "the bus",
+          "picture": "🚌"
+        },
+        {
+          "en": "the school",
+          "picture": "🏫"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is Luan on time?"
+      },
+      "options": [
+        {
+          "en": "No, he is late"
+        },
+        {
+          "en": "Yes, he is early"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,251 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "i lodhur, e lodhur",
+      "text": "A man says \"jam i lodhur\", a woman \"jam e lodhur\". The little word i or e goes with the word it describes, and it follows the person: Ana është e lodhur, Luan është i lodhur — like ky and kjo, masculine and feminine.",
+      "explains": [
+        "sq.adjective-article"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Say that you are tired.",
+      "basedOn": [
+        "l5",
+        "sq.adjective-article"
+      ],
+      "frame": "Jam ___.",
+      "speak": true,
+      "accept": [
+        {
+          "text": "Jam i lodhur",
+          "speakerForm": "m"
+        },
+        {
+          "text": "Jam e lodhur",
+          "speakerForm": "f"
+        },
+        {
+          "text": "Unë jam i lodhur",
+          "speakerForm": "m"
+        },
+        {
+          "text": "Unë jam e lodhur",
+          "speakerForm": "f"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Sam asks you: \"A je i lodhur?\" (a woman is asked \"A je e lodhur?\"). Say yes, you are tired.",
+      "basedOn": [
+        "l4",
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "Po, jam i lodhur",
+          "speakerForm": "m"
+        },
+        {
+          "text": "Po, jam e lodhur",
+          "speakerForm": "f"
+        },
+        {
+          "text": "Po, i lodhur",
+          "speakerForm": "m"
+        },
+        {
+          "text": "Po, e lodhur",
+          "speakerForm": "f"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s12",
+  "title": {
+    "en": "Ana is tired",
+    "target": "Ana është e lodhur"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "sam"
+    ],
+    "places": [
+      "clinic"
+    ],
+    "things": [
+      "coffee"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ana punon në spital.",
+      "en": "Ana works at the hospital.",
+      "picture": "👩‍⚕️🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Sot Ana është e lodhur.",
+      "en": "Today Ana is tired.",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Luan gjithashtu është i lodhur.",
+      "en": "Luan is tired too.",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ana, a je e lodhur?",
+      "en": "Ana, are you tired?",
+      "speaker": "sam",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Po, jam e lodhur.",
+      "en": "Yes, I am tired.",
+      "speaker": "ana",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Jam i lodhur, por kam kafe.",
+      "en": "I am tired, but I have coffee.",
+      "speaker": "luis",
+      "picture": "😩☕",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "punon",
+      "spital",
+      "lodhur",
+      "gjithashtu",
+      "por",
+      "kam"
+    ],
+    "constructions": [
+      "sq.adjective-article",
+      "sq.por"
+    ]
+  },
+  "represents": [
+    "sq.adjective-article",
+    "sq.por",
+    "sq.jam-je",
+    "sq.yes-no-a",
+    "sq.kam-object",
+    "sq.ne-place"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Ana work?"
+      },
+      "options": [
+        {
+          "en": "at the hospital",
+          "picture": "🏥"
+        },
+        {
+          "en": "at school",
+          "picture": "🏫"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How are Ana and Luan today?"
+      },
+      "options": [
+        {
+          "en": "Tired"
+        },
+        {
+          "en": "Happy"
+        },
+        {
+          "en": "Hungry"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Luan have?"
+      },
+      "options": [
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "tea",
+          "picture": "🍵"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

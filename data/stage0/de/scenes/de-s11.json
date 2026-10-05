@@ -1,0 +1,220 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "gehe, gehst, geht, gehen",
+      "text": "You have now met four forms of \"to go\": ich gehe, du gehst, Marta geht, Anna und Lukas gehen.",
+      "explains": [
+        "de.gehen-place",
+        "de.present-ich",
+        "de.present-du"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "gehst du mit?",
+      "text": "Some verbs have a small word that jumps to the end: mitgehen (to go along) becomes \"Gehst du mit?\", and einkaufen (to shop) became \"Sam kauft Brot ein\". You will meet more of these.",
+      "explains": [
+        "de.separable-verb"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Anna asks: \"Gehst du mit?\" Say yes, you are coming along.",
+      "basedOn": [
+        "l5",
+        "de.gehen-place"
+      ],
+      "accept": [
+        {
+          "text": "Ja, ich gehe mit"
+        },
+        {
+          "text": "Ja, ich gehe"
+        },
+        {
+          "text": "Ich gehe mit"
+        },
+        {
+          "text": "Ja, gern"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "de-s11",
+  "title": {
+    "en": "On Sunday",
+    "target": "Am Sonntag"
+  },
+  "world": {
+    "characters": [
+      "marta",
+      "ana",
+      "luis",
+      "sam"
+    ],
+    "places": [
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Morgen ist Sonntag.",
+      "en": "Tomorrow is Sunday.",
+      "picture": "📅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Am Sonntag verkauft Marta kein Brot. Sie geht in die Kirche.",
+      "en": "On Sunday Marta does not sell bread. She goes to church.",
+      "picture": "👵🚫🍞 ⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Anna und Lukas gehen auch in die Kirche.",
+      "en": "Anna and Lukas go to church too.",
+      "picture": "👩👨⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Sam, gehst du mit?",
+      "en": "Sam, are you coming along?",
+      "speaker": "ana",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Ja, ich gehe mit.",
+      "en": "Yes, I am coming along.",
+      "speaker": "sam",
+      "picture": "🙂👍",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "morgen",
+      "am",
+      "geht",
+      "Kirche",
+      "gehen",
+      "gehst",
+      "mit",
+      "mitgehen",
+      "gehe"
+    ],
+    "constructions": [
+      "de.gehen-place",
+      "de.time-days"
+    ]
+  },
+  "represents": [
+    "de.negation-kein",
+    "de.time-days",
+    "de.gehen-place",
+    "de.verb-second",
+    "de.separable-verb",
+    "de.present-du",
+    "de.present-ich",
+    "de.present-er-sie",
+    "de.yes-no-question",
+    "de.dative-chunks"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What day is tomorrow?"
+      },
+      "options": [
+        {
+          "en": "Sunday"
+        },
+        {
+          "en": "Monday"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Marta go on Sunday?"
+      },
+      "options": [
+        {
+          "en": "to church",
+          "picture": "⛪"
+        },
+        {
+          "en": "to the market",
+          "picture": "🛒"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is Sam going along?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

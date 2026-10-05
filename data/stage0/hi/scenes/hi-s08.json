@@ -1,0 +1,255 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "पर is \"on\", में is \"in\"",
+      "text": "Both come after the thing: मेज़ पर (on the table), घर में (in the house). कहाँ है? asks \"where is it?\" and the answer fills the same place: मेज़ पर है.",
+      "explains": [
+        "hi.par-location",
+        "hi.kahaan"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "आपका, मेरा",
+      "text": "\"Your\" for आप is आपका. Like मेरा it changes to match the thing owned: आपका बैग, आपकी चाबी.",
+      "explains": [
+        "hi.ka-ki"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "The key is on the chair. Write it.",
+      "basedOn": [
+        "l4"
+      ],
+      "frame": "चाबी ___ पर है।",
+      "accept": [
+        {
+          "text": "चाबी कुर्सी पर है"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Sam asks \"मेरा बैग कहाँ है?\" Tell him it is on the table.",
+      "basedOn": [
+        "l2",
+        "hi.kahaan"
+      ],
+      "accept": [
+        {
+          "text": "आपका बैग मेज़ पर है"
+        },
+        {
+          "text": "बैग मेज़ पर है"
+        },
+        {
+          "text": "मेज़ पर है"
+        },
+        {
+          "text": "मेज़ पर"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s08",
+  "title": {
+    "en": "Where is my bag?",
+    "target": "मेरा बैग कहाँ है?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "things": [
+      "bag",
+      "key"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "मेरा बैग कहाँ है?",
+      "en": "Where is my bag?",
+      "speaker": "sam",
+      "picture": "👜❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "आपका बैग मेज़ पर है।",
+      "en": "Your bag is on the table.",
+      "speaker": "ana",
+      "picture": "👜🟫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "और मेरी चाबी?",
+      "en": "And my key?",
+      "speaker": "sam",
+      "picture": "🔑❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "चाबी कुर्सी पर है।",
+      "en": "The key is on the chair.",
+      "speaker": "luis",
+      "picture": "🔑🪑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "और मेरा फ़ोन?",
+      "en": "And my phone?",
+      "speaker": "sam",
+      "picture": "📱❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "आपका फ़ोन बैग में है।",
+      "en": "Your phone is in the bag.",
+      "speaker": "ana",
+      "picture": "📱👜",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "शुक्रिया!",
+      "en": "Thanks!",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "मेज़",
+      "पर",
+      "चाबी",
+      "कुर्सी",
+      "फ़ोन"
+    ],
+    "constructions": [
+      "hi.kahaan",
+      "hi.par-location"
+    ]
+  },
+  "represents": [
+    "hi.kahaan",
+    "hi.par-location",
+    "hi.mera-meri",
+    "hi.ka-ki",
+    "hi.hai-hain",
+    "hi.mein-place"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is the bag?"
+      },
+      "options": [
+        {
+          "en": "On the table"
+        },
+        {
+          "en": "On the chair"
+        },
+        {
+          "en": "At home"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is the key?"
+      },
+      "options": [
+        {
+          "en": "On the chair"
+        },
+        {
+          "en": "On the table"
+        },
+        {
+          "en": "At the market"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is Sam's phone?"
+      },
+      "options": [
+        {
+          "en": "In the bag"
+        },
+        {
+          "en": "On the table"
+        },
+        {
+          "en": "On the chair"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

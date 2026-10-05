@@ -1,0 +1,236 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "culture",
+      "title": "du and Sie",
+      "text": "With friends and family you say \"du\". To a shopkeeper or a stranger you say \"Sie\" (always with a capital S): \"Was möchten Sie?\" Marta says \"Sie\" to Sam here because they do not know each other yet.",
+      "explains": [
+        "de.sie-formal"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Ask for water, politely.",
+      "basedOn": [
+        "l4"
+      ],
+      "frame": "Ich möchte ___ Wasser.",
+      "accept": [
+        {
+          "text": "Ich möchte bitte Wasser"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "It is morning. Greet Marta.",
+      "basedOn": [
+        "l2",
+        "de.greeting"
+      ],
+      "accept": [
+        {
+          "text": "Guten Morgen, Marta"
+        },
+        {
+          "text": "Guten Morgen"
+        },
+        {
+          "text": "Hallo, guten Morgen"
+        },
+        {
+          "text": "Guten Morgen, Frau Marta"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "de-s09",
+  "title": {
+    "en": "Good morning at the market",
+    "target": "Guten Morgen"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Sam kauft Brot ein.",
+      "en": "Sam is buying bread. (doing the shopping)",
+      "picture": "🙂🛒🍞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Guten Morgen.",
+      "en": "Good morning.",
+      "speaker": "sam",
+      "picture": "🌞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Guten Morgen. Was möchten Sie?",
+      "en": "Good morning. What would you like?",
+      "speaker": "marta",
+      "picture": "👵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ich möchte bitte ein Brot.",
+      "en": "I would like a bread, please.",
+      "speaker": "sam",
+      "picture": "🍞🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Hier ist das Brot. Möchten Sie auch Kaffee?",
+      "en": "Here is the bread. Would you like coffee too?",
+      "speaker": "marta",
+      "picture": "🍞☕❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Nein, danke.",
+      "en": "No, thank you.",
+      "speaker": "sam",
+      "picture": "🙅☕",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "kauft",
+      "einkaufen",
+      "ein",
+      "Morgen",
+      "was",
+      "Sie"
+    ],
+    "constructions": [
+      "de.sie-formal",
+      "de.separable-verb"
+    ]
+  },
+  "represents": [
+    "de.greeting",
+    "de.politeness",
+    "de.moechten",
+    "de.sie-formal",
+    "de.separable-verb",
+    "de.w-question",
+    "de.present-er-sie"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "When is this?"
+      },
+      "options": [
+        {
+          "en": "In the morning"
+        },
+        {
+          "en": "At night"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam ask for?"
+      },
+      "options": [
+        {
+          "en": "bread",
+          "picture": "🍞"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "rice",
+          "picture": "🍚"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Marta says \"Was möchten Sie?\" She asks:"
+      },
+      "options": [
+        {
+          "en": "What would you like?"
+        },
+        {
+          "en": "Where are you from?"
+        },
+        {
+          "en": "How are you?"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

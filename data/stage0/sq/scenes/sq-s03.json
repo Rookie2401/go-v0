@@ -1,0 +1,211 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "ka, pi and nuk",
+      "text": "Ka means \"has\": Ana ka ujë. Put nuk in front of the verb to say no: Sam nuk ka kafe. The verb pi (drink) keeps the same shape for \"I\", \"you\" and \"she or he\": unë pi, ti pi, ai pi.",
+      "explains": [
+        "sq.kam-object",
+        "sq.negation-nuk"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Ana ka ujë.\"",
+      "basedOn": [
+        "l1"
+      ],
+      "accept": [
+        {
+          "text": "Ana ka ujë"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Now Luan has water. Write it.",
+      "basedOn": [
+        "l1",
+        "l2"
+      ],
+      "frame": "Luan ka ___.",
+      "accept": [
+        {
+          "text": "Luan ka ujë"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s03",
+  "title": {
+    "en": "Water and coffee",
+    "target": "Ujë, kafe"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "sam"
+    ],
+    "things": [
+      "water",
+      "coffee"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ana ka ujë.",
+      "en": "Ana has water.",
+      "picture": "👩💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Luan ka kafe.",
+      "en": "Luan has coffee.",
+      "picture": "👨☕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Ana pi ujë.",
+      "en": "Ana drinks water.",
+      "picture": "👩💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Luan pi kafe.",
+      "en": "Luan drinks coffee.",
+      "picture": "👨☕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Sam nuk ka kafe.",
+      "en": "Sam does not have coffee.",
+      "picture": "🙂🚫☕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Unë nuk pi kafe. Unë pi ujë.",
+      "en": "I do not drink coffee. I drink water.",
+      "speaker": "sam",
+      "picture": "🙂💧",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ka",
+      "ujë",
+      "kafe",
+      "pi",
+      "nuk"
+    ],
+    "constructions": [
+      "sq.kam-object",
+      "sq.negation-nuk"
+    ]
+  },
+  "represents": [
+    "sq.kam-object",
+    "sq.negation-nuk"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Luan have?"
+      },
+      "options": [
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Ana drink?"
+      },
+      "options": [
+        {
+          "en": "water",
+          "picture": "💧"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Sam have coffee?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 1
+    }
+  ]
+}

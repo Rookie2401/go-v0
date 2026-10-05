@@ -1,0 +1,217 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd6",
+  "title": {
+    "en": "The same marks on low-class and high-class letters"
+  },
+  "features": [
+    "class:low",
+    "class:high",
+    "mark:mai-ek",
+    "mark:mai-tho",
+    "rule:low+mai-ek=falling",
+    "rule:low+mai-tho=high",
+    "rule:high+mai-ek=low",
+    "rule:high+mai-tho=falling"
+  ],
+  "words": [
+    {
+      "text": "น้ำ",
+      "en": "water",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ม้า",
+      "en": "horse",
+      "picture": "🐴",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ร้อน",
+      "en": "hot",
+      "picture": "🔥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ค่ะ",
+      "en": "polite word for a woman's statement",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ข่าว",
+      "en": "news",
+      "picture": "📰",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "สี่",
+      "en": "four",
+      "picture": "4️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ห้า",
+      "en": "five",
+      "picture": "5️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ข้าว",
+      "en": "rice; a meal",
+      "picture": "🍚",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "The marks work differently for each class. On a low-class letter ่ gives a falling tone and ้ gives a high tone; on a high-class letter ่ gives a low tone and ้ gives a falling tone.",
+    "more": "All together, with ่ and ้: mid class gives low and falling; low class gives falling and high; high class gives low and falling. The famous pair is ข่าว (news, low) and ข้าว (rice, falling). Spoken Thai really does keep them apart. High is higher than mid and often a little sharp, like a bright \"Hey!\". The word ค่ะ at the end of a woman's polite sentence is falling for this reason (low-class ค with ่), and ครับ is high, as you will see."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-tone",
+      "word": "น้ำ",
+      "prompt": "Which tone does น้ำ have?",
+      "options": [
+        "high",
+        "falling",
+        "low"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-tone",
+      "word": "ค่ะ",
+      "prompt": "Which tone does ค่ะ have?",
+      "options": [
+        "low",
+        "falling",
+        "high"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-tone",
+      "word": "ข่าว",
+      "prompt": "Which tone does ข่าว have?",
+      "options": [
+        "low",
+        "falling",
+        "mid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-tone",
+      "word": "ข้าว",
+      "prompt": "Which tone does ข้าว have?",
+      "options": [
+        "low",
+        "falling",
+        "rising"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d5",
+      "kind": "which-tone",
+      "word": "ร้อน",
+      "prompt": "Which tone does ร้อน have?",
+      "options": [
+        "falling",
+        "high",
+        "low"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d6",
+      "kind": "which-tone",
+      "word": "สี่",
+      "prompt": "Which tone does สี่ have?",
+      "options": [
+        "rising",
+        "low",
+        "falling"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d7",
+      "kind": "which-tone",
+      "word": "ห้า",
+      "prompt": "Which tone does ห้า have?",
+      "options": [
+        "falling",
+        "low",
+        "high"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "which-reading",
+      "word": "ข่าว",
+      "prompt": "How is ข่าว said?",
+      "options": [
+        "khao",
+        "kao",
+        "khaw"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d9",
+      "kind": "which-reading",
+      "word": "ร้อน",
+      "prompt": "How is ร้อน said?",
+      "options": [
+        "ron",
+        "rawn",
+        "lon"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d10",
+      "kind": "segment",
+      "word": "ขอน้ำครับ",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        2,
+        5
+      ]
+    }
+  ]
+}

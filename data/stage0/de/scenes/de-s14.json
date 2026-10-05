@@ -1,0 +1,230 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "zu Hause, nach Hause",
+      "text": "\"Zu Hause\" means \"at home\" (you are there). \"Nach Hause\" means \"(going) home\" (you are on your way): Sam ist zu Hause. Ben geht nach Hause.",
+      "explains": [
+        "de.nach-hause"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Lukas asks you: \"Gehst du nach Hause?\" Say yes, you are going home.",
+      "basedOn": [
+        "l7",
+        "de.nach-hause"
+      ],
+      "accept": [
+        {
+          "text": "Ja, ich gehe nach Hause"
+        },
+        {
+          "text": "Ich gehe nach Hause"
+        },
+        {
+          "text": "Ja, ich gehe"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "de-s14",
+  "title": {
+    "en": "Ben at school",
+    "target": "In der Schule"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "luis"
+    ],
+    "places": [
+      "school"
+    ],
+    "things": [
+      "book"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Lukas ist Lehrer in der Schule.",
+      "en": "Lukas is a teacher at the school.",
+      "picture": "👨‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ben, wo ist dein Buch?",
+      "en": "Ben, where is your book?",
+      "speaker": "luis",
+      "picture": "📖❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Ich weiß nicht. Es ist nicht auf dem Tisch.",
+      "en": "I don't know. It is not on the table.",
+      "speaker": "nico",
+      "picture": "🤷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Dein Buch ist bei deiner Oma.",
+      "en": "Your book is at your grandma's.",
+      "speaker": "luis",
+      "picture": "📖👵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Sehr gut! Danke.",
+      "en": "Great! Thank you.",
+      "speaker": "nico",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Gern. Es ist spät, Ben. Gehst du nach Hause?",
+      "en": "You're welcome. It is late, Ben. Are you going home?",
+      "speaker": "luis",
+      "picture": "🌙🏠❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Ja, ich gehe nach Hause.",
+      "en": "Yes, I am going home.",
+      "speaker": "nico",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "Buch",
+      "Tisch",
+      "nach",
+      "bei",
+      "spät"
+    ],
+    "constructions": [
+      "de.nach-hause"
+    ]
+  },
+  "represents": [
+    "de.wo-ist",
+    "de.wissen-nicht",
+    "de.possessive-dein",
+    "de.negation-nicht",
+    "de.sein-identity",
+    "de.dative-chunks",
+    "de.nach-hause",
+    "de.gehen-place",
+    "de.yes-no-question",
+    "de.politeness"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is Lukas?"
+      },
+      "options": [
+        {
+          "en": "a teacher"
+        },
+        {
+          "en": "a nurse"
+        },
+        {
+          "en": "a baker"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is Ben's book?"
+      },
+      "options": [
+        {
+          "en": "at his grandma's"
+        },
+        {
+          "en": "on the table"
+        },
+        {
+          "en": "in his bag"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6",
+        "l7"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Ben go at the end?"
+      },
+      "options": [
+        {
+          "en": "home",
+          "picture": "🏠"
+        },
+        {
+          "en": "to church",
+          "picture": "⛪"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

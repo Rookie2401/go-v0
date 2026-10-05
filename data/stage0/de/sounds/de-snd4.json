@@ -1,0 +1,118 @@
+{
+  "id": "de-snd4",
+  "lang": "de",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "sp and st, ä, and d, g at the end"
+  },
+  "features": [
+    "de:sp-st",
+    "de:ä",
+    "de:final-devoicing",
+    "de:noun-capital"
+  ],
+  "words": [
+    {
+      "text": "Sonntag",
+      "en": "Sunday",
+      "picture": "📅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "Stadt",
+      "en": "city, town",
+      "picture": "🏙️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "spät",
+      "en": "late",
+      "picture": "🌙",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "Abend",
+      "en": "evening",
+      "picture": "🌆",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "At the start of a word, sp and st sound like \"shp\" and \"sht\": Stadt is SHTAT, spät is SHPAYT. ä is like the e in \"bed\", but long in spät. At the end of a word, b, d and g are said p, t and k: Sonntag ends like \"tahk\", Abend like \"bent\".",
+    "more": "This \"hardening\" only happens at the end: in the plural Abende the d is soft again. You will hear it, not have to think about it."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "Stadt",
+      "prompt": "How does \"Stadt\" start?",
+      "options": [
+        "\"sht\": SHTAT",
+        "\"st\" as in \"stop\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "spät",
+      "prompt": "How does \"spät\" start?",
+      "options": [
+        "\"shp\": SHPAYT",
+        "\"sp\" as in \"spot\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "spät",
+      "prompt": "How is \"ä\" said in \"spät\"?",
+      "options": [
+        "like \"e\" in \"bed\", but long",
+        "like \"a\" in \"cat\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "Sonntag",
+      "prompt": "The last letter g in \"Sonntag\" is said:",
+      "options": [
+        "like \"k\"",
+        "like English \"g\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "Abend",
+      "prompt": "The d at the end of \"Abend\" is said:",
+      "options": [
+        "like \"t\"",
+        "like English \"d\""
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  }
+}

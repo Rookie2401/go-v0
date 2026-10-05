@@ -1,0 +1,249 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "पसंद है is built like चाहिए",
+      "text": "\"To me, tea is a liking\": मुझे चाय पसंद है. The person takes को (मुझे for \"me\", रवि को for Ravi), the thing comes next, then पसंद है. To say no, put नहीं before है: पसंद नहीं है.",
+      "explains": [
+        "hi.pasand"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "culture",
+      "title": "चाय",
+      "text": "Tea (चाय) is the everyday drink in Hindi-speaking homes, usually sweet and made with milk. Offering it is a way of saying welcome.",
+      "explains": [
+        "hi.pasand"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Say that Sam likes milk.",
+      "basedOn": [
+        "l5"
+      ],
+      "frame": "सैम को ___ पसंद है।",
+      "accept": [
+        {
+          "text": "सैम को दूध पसंद है"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Do you like tea? Answer in Hindi.",
+      "basedOn": [
+        "l1",
+        "l2",
+        "hi.pasand"
+      ],
+      "accept": [
+        {
+          "text": "मुझे चाय पसंद है"
+        },
+        {
+          "text": "मुझे चाय बहुत पसंद है"
+        },
+        {
+          "text": "मुझे चाय पसंद नहीं है"
+        },
+        {
+          "text": "हाँ, मुझे चाय पसंद है"
+        },
+        {
+          "text": "नहीं, मुझे चाय पसंद नहीं है"
+        },
+        {
+          "text": "हाँ, मुझे चाय बहुत पसंद है"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s06",
+  "title": {
+    "en": "What I like",
+    "target": "पसंद है"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "things": [
+      "tea",
+      "water"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "मुझे चाय बहुत पसंद है।",
+      "en": "I like tea a lot.",
+      "speaker": "luis",
+      "picture": "🍵❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "मुझे चाय पसंद नहीं है।",
+      "en": "I don't like tea.",
+      "speaker": "sam",
+      "picture": "🍵🚫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "लेकिन मुझे दूध पसंद है।",
+      "en": "But I like milk.",
+      "speaker": "sam",
+      "picture": "🥛❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "रवि को चाय पसंद है।",
+      "en": "Ravi likes tea.",
+      "speaker": "ana",
+      "picture": "👨🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "सैम को दूध पसंद है।",
+      "en": "Sam likes milk.",
+      "speaker": "ana",
+      "picture": "🙂🥛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "मुझे पानी पसंद है।",
+      "en": "I like water.",
+      "speaker": "ana",
+      "picture": "💧❤️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "पसंद",
+      "बहुत",
+      "लेकिन",
+      "दूध"
+    ],
+    "constructions": [
+      "hi.pasand",
+      "hi.aur-lekin"
+    ]
+  },
+  "represents": [
+    "hi.pasand",
+    "hi.postposition-ko",
+    "hi.negation-nahin",
+    "hi.aur-lekin",
+    "hi.chahiye"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Ravi like tea?"
+      },
+      "options": [
+        {
+          "en": "Yes, a lot"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam like?"
+      },
+      "options": [
+        {
+          "en": "milk",
+          "picture": "🥛"
+        },
+        {
+          "en": "tea",
+          "picture": "🍵"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who likes water?"
+      },
+      "options": [
+        {
+          "en": "Meera"
+        },
+        {
+          "en": "Ravi"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,248 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "हिंदी बोलना",
+      "text": "\"To speak a language\" is बोलना: आप हिंदी बोलते हैं? — \"do you speak Hindi?\". The language is named without any small word before it.",
+      "explains": [
+        "hi.language-bolna"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Seeta Nani asks \"आप हिंदी बोलते हैं?\" Say: a little.",
+      "basedOn": [
+        "l2",
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "थोड़ी-थोड़ी"
+        },
+        {
+          "text": "थोड़ी थोड़ी"
+        },
+        {
+          "text": "थोड़ी"
+        },
+        {
+          "text": "हाँ, थोड़ी-थोड़ी"
+        },
+        {
+          "text": "थोड़ा-थोड़ा"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say that you like Hindi a lot.",
+      "basedOn": [
+        "l6",
+        "hi.pasand"
+      ],
+      "accept": [
+        {
+          "text": "मुझे हिंदी बहुत पसंद है"
+        },
+        {
+          "text": "मुझे हिंदी पसंद है"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s17",
+  "title": {
+    "en": "At church",
+    "target": "चर्च में"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "marta",
+      "nico"
+    ],
+    "places": [
+      "church"
+    ],
+    "things": [
+      "bible"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "मेरी बाइबल हिंदी में है।",
+      "en": "My Bible is in Hindi.",
+      "speaker": "sam",
+      "picture": "📖✝️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "सैम, आप हिंदी बोलते हैं?",
+      "en": "Sam, do you speak Hindi?",
+      "speaker": "marta",
+      "picture": "🗣️❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "थोड़ी-थोड़ी।",
+      "en": "A little.",
+      "speaker": "sam",
+      "picture": "🤏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "सैम मेरा दोस्त है। वह यहाँ रहता है।",
+      "en": "Sam is my friend. He lives here.",
+      "speaker": "ana",
+      "picture": "🙂🤝📍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "सैम यहाँ हिंदी बोलना सीखता है।",
+      "en": "Sam is learning to speak Hindi here.",
+      "speaker": "ana",
+      "picture": "🙂📚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "मुझे हिंदी बहुत पसंद है। मुझे यहाँ अच्छा लगता है।",
+      "en": "I like Hindi a lot. I like it here.",
+      "speaker": "sam",
+      "picture": "🗣️❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "धन्यवाद, सीता नानी।",
+      "en": "Thank you, Seeta Nani.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "बोलते",
+      "थोड़ी"
+    ],
+    "constructions": [
+      "hi.language-bolna"
+    ]
+  },
+  "represents": [
+    "hi.language-bolna",
+    "hi.church-words",
+    "hi.pasand",
+    "hi.present-habitual",
+    "hi.third-person-habitual",
+    "hi.mera-meri",
+    "hi.greeting"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What language is Sam's Bible in?"
+      },
+      "options": [
+        {
+          "en": "Hindi"
+        },
+        {
+          "en": "English"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much Hindi does Sam speak?"
+      },
+      "options": [
+        {
+          "en": "A little"
+        },
+        {
+          "en": "A lot"
+        },
+        {
+          "en": "None"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is Sam doing here?"
+      },
+      "options": [
+        {
+          "en": "Learning to speak Hindi"
+        },
+        {
+          "en": "Selling roti"
+        },
+        {
+          "en": "Working at a school"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

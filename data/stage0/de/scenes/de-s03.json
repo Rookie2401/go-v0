@@ -1,0 +1,222 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [
+    "de.accusative-chunks"
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "hat, trinkt",
+      "text": "With Anna, Lukas, er or sie the verb ends in -t: hat (has), trinkt (drinks), ist (is). \"Keinen\" means \"not any\": keinen Kaffee. For now, learn it as it is.",
+      "explains": [
+        "de.present-er-sie",
+        "de.negation-kein"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Anna hat Wasser.\"",
+      "basedOn": [
+        "l1"
+      ],
+      "accept": [
+        {
+          "text": "Anna hat Wasser"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Now Lukas has water. Write it.",
+      "basedOn": [
+        "l1",
+        "l2"
+      ],
+      "frame": "Lukas hat ___.",
+      "accept": [
+        {
+          "text": "Lukas hat Wasser"
+        }
+      ]
+    }
+  ],
+  "id": "de-s03",
+  "title": {
+    "en": "Water and coffee",
+    "target": "Wasser und Kaffee"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "sam"
+    ],
+    "things": [
+      "water",
+      "coffee"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Anna hat Wasser.",
+      "en": "Anna has water.",
+      "picture": "👩💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Lukas hat Kaffee.",
+      "en": "Lukas has coffee.",
+      "picture": "👨☕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Anna trinkt Wasser.",
+      "en": "Anna drinks water.",
+      "picture": "👩💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Lukas trinkt Kaffee.",
+      "en": "Lukas drinks coffee.",
+      "picture": "👨☕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Sam hat keinen Kaffee.",
+      "en": "Sam does not have coffee.",
+      "picture": "🙂🚫☕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Möchtest du Kaffee, Sam?",
+      "en": "Do you want coffee, Sam?",
+      "speaker": "luis",
+      "picture": "☕❓",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "hat",
+      "Kaffee",
+      "trinkt",
+      "keinen",
+      "Möchtest",
+      "du"
+    ],
+    "constructions": [
+      "de.haben-object",
+      "de.present-er-sie",
+      "de.negation-kein",
+      "de.moechten",
+      "de.yes-no-question"
+    ]
+  },
+  "represents": [
+    "de.haben-object",
+    "de.present-er-sie",
+    "de.negation-kein",
+    "de.moechten",
+    "de.yes-no-question",
+    "de.accusative-chunks",
+    "de.noun-capital"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Lukas have?"
+      },
+      "options": [
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Anna drink?"
+      },
+      "options": [
+        {
+          "en": "water",
+          "picture": "💧"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Sam have coffee?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,206 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "der, die, das — and little phrases",
+      "text": "Every noun is der, die or das (\"the\"): der Markt, die Schule, das Haus. After \"in\" or \"auf\" the little word changes (die becomes der, der becomes dem). Do not worry about why yet: learn each place as a small phrase — im Haus, in der Schule, auf dem Markt, zu Hause.",
+      "explains": [
+        "de.article-der-die-das",
+        "de.dative-chunks"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Anna is at the market now. Write it.",
+      "basedOn": [
+        "l1",
+        "l5"
+      ],
+      "frame": "Anna ist auf dem ___.",
+      "accept": [
+        {
+          "text": "Anna ist auf dem Markt"
+        }
+      ]
+    }
+  ],
+  "id": "de-s05",
+  "title": {
+    "en": "Where everyone is",
+    "target": "Zu Hause"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "nico",
+      "sam"
+    ],
+    "places": [
+      "home",
+      "school",
+      "market"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Anna ist im Haus.",
+      "en": "Anna is at home. (in the house)",
+      "picture": "👩🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Lukas ist in der Schule.",
+      "en": "Lukas is at the school.",
+      "picture": "👨🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Ben ist auch in der Schule.",
+      "en": "Ben is at the school too.",
+      "picture": "👦🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Sam ist nicht zu Hause.",
+      "en": "Sam is not at home.",
+      "picture": "🙂🚫🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Sam ist auf dem Markt.",
+      "en": "Sam is at the market.",
+      "picture": "🙂🛒",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "im",
+      "Haus",
+      "in",
+      "Schule",
+      "zu",
+      "Hause",
+      "auf",
+      "Markt"
+    ],
+    "constructions": [
+      "de.sein-location",
+      "de.dative-chunks",
+      "de.article-der-die-das",
+      "de.negation-nicht"
+    ]
+  },
+  "represents": [
+    "de.sein-location",
+    "de.dative-chunks",
+    "de.article-der-die-das",
+    "de.negation-nicht",
+    "de.noun-capital"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is Lukas?"
+      },
+      "options": [
+        {
+          "en": "at the school",
+          "picture": "🏫"
+        },
+        {
+          "en": "at home",
+          "picture": "🏠"
+        },
+        {
+          "en": "at the market",
+          "picture": "🛒"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who else is at the school?"
+      },
+      "options": [
+        {
+          "en": "Ben"
+        },
+        {
+          "en": "Anna"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is Sam?"
+      },
+      "options": [
+        {
+          "en": "at the market",
+          "picture": "🛒"
+        },
+        {
+          "en": "at home",
+          "picture": "🏠"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

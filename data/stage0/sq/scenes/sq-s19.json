@@ -1,0 +1,254 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "te Drita",
+      "text": "Te means \"at someone's place\" or \"to someone\": te Drita is \"at Drita's\". Use te with a person, and në with a place. Albanian children often call their grandmother gjyshe, also when they speak to her.",
+      "explains": [
+        "sq.te-person"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "retell",
+      "prompt": "Tell what Sam wants for lunch, in one sentence.",
+      "basedOn": [
+        "l4"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Sam do oriz"
+        },
+        {
+          "text": "Sam dëshiron oriz"
+        },
+        {
+          "text": "Sam do oriz, sepse më pëlqen shumë"
+        },
+        {
+          "text": "Sam do oriz sepse i pëlqen shumë"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Drita asks you: \"Çfarë doni për drekë?\" Say that you want rice and salad.",
+      "basedOn": [
+        "l3",
+        "l4"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Dua oriz dhe sallatë"
+        },
+        {
+          "text": "Dua oriz dhe sallatë, ju lutem"
+        },
+        {
+          "text": "Oriz dhe sallatë, ju lutem"
+        },
+        {
+          "text": "Unë dua oriz dhe sallatë"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s19",
+  "title": {
+    "en": "Lunch at Drita's",
+    "target": "Dreka"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis",
+      "marta",
+      "nico"
+    ],
+    "things": [
+      "rice",
+      "bread",
+      "money"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Sot hamë drekë te Drita.",
+      "en": "Today we eat lunch at Drita's.",
+      "speaker": "ana",
+      "picture": "🏠🍽️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Drita shet bukë, por sot ka oriz dhe sallatë.",
+      "en": "Drita sells bread, but today there is rice and salad.",
+      "picture": "🍞🍚🥗",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Çfarë doni për drekë?",
+      "en": "What would you all like for lunch?",
+      "speaker": "marta",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Unë dua oriz, sepse më pëlqen shumë.",
+      "en": "I would like rice, because I like it a lot.",
+      "speaker": "sam",
+      "picture": "🍚❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Sam jeton në Shqipëri. Ai flet pak shqip.",
+      "en": "Sam lives in Albania. He speaks a little Albanian.",
+      "speaker": "luis",
+      "picture": "🙂🇦🇱",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Gjyshe, sa kushton buka sot?",
+      "en": "Grandma, how much is the bread today?",
+      "speaker": "nico",
+      "picture": "🍞💵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Për ty nuk kushton asgjë, Ardi.",
+      "en": "For you it costs nothing, Ardi.",
+      "speaker": "marta",
+      "picture": "😄",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "hamë",
+      "drekë",
+      "te",
+      "sallatë",
+      "për",
+      "asgjë"
+    ],
+    "constructions": [
+      "sq.te-person"
+    ]
+  },
+  "represents": [
+    "sq.te-person",
+    "sq.ka-there-is",
+    "sq.por",
+    "sq.sepse",
+    "sq.me-pelqen",
+    "sq.sa-kushton",
+    "sq.jetoj-ne",
+    "sq.pronoun-ai",
+    "sq.dua-object",
+    "sq.negation-nuk",
+    "sq.verb-persons"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where do they eat today?"
+      },
+      "options": [
+        {
+          "en": "At Drita's house"
+        },
+        {
+          "en": "At the market"
+        },
+        {
+          "en": "At school"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam want, and why?"
+      },
+      "options": [
+        {
+          "en": "Rice — he likes it a lot"
+        },
+        {
+          "en": "Bread — it costs nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l7"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much does the bread cost for Ardi?"
+      },
+      "options": [
+        {
+          "en": "Nothing"
+        },
+        {
+          "en": "Ten lekë"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

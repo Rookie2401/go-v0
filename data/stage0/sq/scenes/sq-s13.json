@@ -1,0 +1,231 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "dhomë, dhoma",
+      "text": "One room is një dhomë; several rooms are dy dhoma. Plural words change their ending, and not always in the same way, so learn them as they come. \"Big\" is i madh for a masculine word and e madhe for a feminine one: shtëpia është e madhe.",
+      "explains": [
+        "sq.plural-forms",
+        "sq.adjective-article"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Say there is a lamp on the table.",
+      "basedOn": [
+        "l5",
+        "sq.ka-there-is"
+      ],
+      "frame": "Mbi tavolinë ka një ___.",
+      "accept": [
+        {
+          "text": "Mbi tavolinë ka një llambë"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say that your house is big, in one sentence.",
+      "basedOn": [
+        "l2"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Shtëpia ime është e madhe"
+        },
+        {
+          "text": "Shtëpia është e madhe"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s13",
+  "title": {
+    "en": "At home",
+    "target": "Në shtëpi"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis"
+    ],
+    "places": [
+      "home",
+      "kitchen"
+    ],
+    "things": [
+      "bag"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Kjo është shtëpia ime.",
+      "en": "This is my house.",
+      "speaker": "ana",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Shtëpia është e madhe.",
+      "en": "The house is big.",
+      "speaker": "ana",
+      "picture": "🏠⬆️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Në shtëpi ka një kuzhinë dhe dy dhoma.",
+      "en": "In the house there is a kitchen and two rooms.",
+      "speaker": "ana",
+      "picture": "🍳🛏️🛏️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Në kuzhinë ka një tavolinë.",
+      "en": "In the kitchen there is a table.",
+      "speaker": "ana",
+      "picture": "🍳🪑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Mbi tavolinë ka një llambë.",
+      "en": "On the table there is a lamp.",
+      "speaker": "ana",
+      "picture": "💡",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Dhe xhaketa ime është në dhomë.",
+      "en": "And my jacket is in the room.",
+      "speaker": "luis",
+      "picture": "🧥",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "madhe",
+      "kuzhinë",
+      "dhomë",
+      "llambë",
+      "xhaketa"
+    ],
+    "constructions": [
+      "sq.plural-forms"
+    ]
+  },
+  "represents": [
+    "sq.ka-there-is",
+    "sq.adjective-article",
+    "sq.possessive-im",
+    "sq.ne-place",
+    "sq.plural-forms",
+    "sq.numbers",
+    "sq.definite"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is the house like?"
+      },
+      "options": [
+        {
+          "en": "Big"
+        },
+        {
+          "en": "Small"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is in the house?"
+      },
+      "options": [
+        {
+          "en": "A kitchen and two rooms"
+        },
+        {
+          "en": "A kitchen and one room"
+        },
+        {
+          "en": "Two kitchens"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is on the table?"
+      },
+      "options": [
+        {
+          "en": "a lamp",
+          "picture": "💡"
+        },
+        {
+          "en": "a book",
+          "picture": "📖"
+        },
+        {
+          "en": "a bag",
+          "picture": "👜"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

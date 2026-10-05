@@ -1,0 +1,264 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "Feelings are verbs",
+      "text": "In Thai, a word like เหนื่อย (tired), หนาว (cold) or หิว (hungry) needs no \"am/is\": ผมเหนื่อย is just \"I tired\". Put ก็ after the person to say \"also\": ผมก็เหนื่อย (I am tired too).",
+      "explains": [
+        "th.feelings",
+        "th.also-ko"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "recall",
+      "prompt": "Say that you are tired.",
+      "basedOn": [
+        "l4",
+        "th.feelings"
+      ],
+      "accept": [
+        {
+          "text": "เหนื่อย"
+        },
+        {
+          "text": "เหนื่อยครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "เหนื่อยค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมเหนื่อย",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันเหนื่อย",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมเหนื่อยครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันเหนื่อยค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "complete",
+      "prompt": "Say that it is cold today.",
+      "basedOn": [
+        "l3",
+        "th.time-today"
+      ],
+      "frame": "วันนี้___",
+      "accept": [
+        {
+          "text": "วันนี้หนาว"
+        },
+        {
+          "text": "วันนี้หนาวครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "วันนี้หนาวค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "วันนี้ผมหนาวครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "วันนี้ฉันหนาวค่ะ",
+          "speakerForm": "f"
+        }
+      ]
+    }
+  ],
+  "id": "th-s13",
+  "title": {
+    "en": "Hot, cold, tired",
+    "target": "ร้อน หนาว เหนื่อย"
+  },
+  "world": {
+    "characters": [
+      "luis",
+      "ana",
+      "sam"
+    ],
+    "things": [
+      "rain"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "วันนี้ร้อนไหมครับ",
+      "en": "Is it hot today?",
+      "speaker": "luis",
+      "picture": "🔥❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ไม่ร้อนค่ะ",
+      "en": "No, it is not hot.",
+      "speaker": "ana",
+      "picture": "🙅🔥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ฉันหนาวค่ะ",
+      "en": "I am cold.",
+      "speaker": "ana",
+      "picture": "🥶",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ผมเหนื่อยครับ",
+      "en": "I am tired.",
+      "speaker": "sam",
+      "picture": "😓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "ผมก็เหนื่อยครับ",
+      "en": "I am tired too.",
+      "speaker": "luis",
+      "picture": "😓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ไปนอนไหมคะ",
+      "en": "Shall we go to bed?",
+      "speaker": "ana",
+      "picture": "🛏️❓",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ก็",
+      "นอน"
+    ],
+    "constructions": [
+      "th.feelings",
+      "th.also-ko"
+    ]
+  },
+  "represents": [
+    "th.feelings",
+    "th.also-ko",
+    "th.time-today",
+    "th.negation-mai",
+    "th.mai-question",
+    "th.go-come"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "How does Mali feel?"
+      },
+      "options": [
+        {
+          "en": "cold",
+          "picture": "🥶"
+        },
+        {
+          "en": "hot",
+          "picture": "🔥"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who is tired?"
+      },
+      "options": [
+        {
+          "en": "Sam and Ton"
+        },
+        {
+          "en": "Only Sam"
+        },
+        {
+          "en": "Only Mali"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Mali suggest?"
+      },
+      "options": [
+        {
+          "en": "Going to bed"
+        },
+        {
+          "en": "Going to eat"
+        },
+        {
+          "en": "Going to the market"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

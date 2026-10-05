@@ -1,0 +1,228 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "यह and वह",
+      "text": "यह points at something near, वह at something farther away. यह चाय है — \"this is tea\"; वह पानी है — \"that is water\".",
+      "explains": [
+        "hi.yah-vah-hai"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "usage",
+      "title": "क्या …?",
+      "text": "क्या means \"what\". In यह क्या है? the word क्या sits where the answer will go: यह चाय है.",
+      "explains": [
+        "hi.kya-question"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"यह चाय है।\"",
+      "basedOn": [
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "यह चाय है"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Meera points at a glass of water and asks \"यह क्या है?\" Answer her.",
+      "basedOn": [
+        "l5",
+        "hi.kya-question"
+      ],
+      "accept": [
+        {
+          "text": "यह पानी है"
+        },
+        {
+          "text": "वह पानी है"
+        },
+        {
+          "text": "पानी है"
+        },
+        {
+          "text": "पानी"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s03",
+  "title": {
+    "en": "What is this?",
+    "target": "यह क्या है?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "things": [
+      "tea",
+      "water"
+    ],
+    "places": [
+      "home"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "यह मेरा घर है।",
+      "en": "This is my house.",
+      "speaker": "luis",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "यह क्या है?",
+      "en": "What is this?",
+      "speaker": "sam",
+      "picture": "🤔",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "यह चाय है।",
+      "en": "This is tea.",
+      "speaker": "ana",
+      "picture": "🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "और वह क्या है?",
+      "en": "And what is that?",
+      "speaker": "sam",
+      "picture": "👉❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "वह पानी है।",
+      "en": "That is water.",
+      "speaker": "ana",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "क्या",
+      "वह",
+      "और"
+    ],
+    "constructions": [
+      "hi.kya-question"
+    ]
+  },
+  "represents": [
+    "hi.yah-vah-hai",
+    "hi.mera-meri",
+    "hi.kya-question"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is this? (Meera answers)"
+      },
+      "options": [
+        {
+          "en": "tea",
+          "picture": "🍵"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is that?"
+      },
+      "options": [
+        {
+          "en": "water",
+          "picture": "💧"
+        },
+        {
+          "en": "tea",
+          "picture": "🍵"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Whose house is it?"
+      },
+      "options": [
+        {
+          "en": "Ravi's"
+        },
+        {
+          "en": "Sam's"
+        },
+        {
+          "en": "Meera's father's"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

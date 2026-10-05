@@ -1,0 +1,243 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "es gibt",
+      "text": "\"Es gibt\" means \"there is\" or \"there are\": Heute gibt es Brot — \"today there is bread\". Numbers so far: zwei, drei, zehn.",
+      "explains": [
+        "de.es-gibt",
+        "de.numbers"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Ask how much the bread is.",
+      "basedOn": [
+        "l2",
+        "de.es-gibt"
+      ],
+      "frame": "Was kostet ___ ___?",
+      "accept": [
+        {
+          "text": "Was kostet das Brot"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Marta asks you: \"Was möchten Sie?\" You want rice.",
+      "basedOn": [
+        "l6"
+      ],
+      "accept": [
+        {
+          "text": "Ich möchte Reis"
+        },
+        {
+          "text": "Ich möchte Reis, bitte"
+        },
+        {
+          "text": "Reis, bitte"
+        },
+        {
+          "text": "Ich möchte bitte Reis"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "de-s10",
+  "title": {
+    "en": "How much is it?",
+    "target": "Was kostet das?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread",
+      "rice",
+      "money"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Heute gibt es Brot und Reis.",
+      "en": "Today there is bread and rice.",
+      "speaker": "marta",
+      "picture": "🍞🍚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Was kostet der Reis?",
+      "en": "How much is the rice?",
+      "speaker": "sam",
+      "picture": "🍚💵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Der Reis kostet drei Euro.",
+      "en": "The rice costs three euros.",
+      "speaker": "marta",
+      "picture": "🍚 3",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Und das Brot?",
+      "en": "And the bread?",
+      "speaker": "sam",
+      "picture": "🍞❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Das Brot kostet zwei Euro.",
+      "en": "The bread costs two euros.",
+      "speaker": "marta",
+      "picture": "🍞 2",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Ich möchte bitte Brot und Reis.",
+      "en": "I would like bread and rice, please.",
+      "speaker": "sam",
+      "picture": "🍞🍚🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Ich habe zehn Euro.",
+      "en": "I have ten euros.",
+      "speaker": "sam",
+      "picture": "💵 10",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "gibt",
+      "es",
+      "Reis",
+      "kostet"
+    ],
+    "constructions": [
+      "de.es-gibt",
+      "de.numbers"
+    ]
+  },
+  "represents": [
+    "de.es-gibt",
+    "de.numbers",
+    "de.verb-second",
+    "de.w-question",
+    "de.moechten",
+    "de.politeness",
+    "de.haben-object",
+    "de.article-der-die-das"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much is the rice?"
+      },
+      "options": [
+        {
+          "en": "3 euros"
+        },
+        {
+          "en": "2 euros"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much is the bread?"
+      },
+      "options": [
+        {
+          "en": "2 euros"
+        },
+        {
+          "en": "3 euros"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam buy?"
+      },
+      "options": [
+        {
+          "en": "Bread and rice"
+        },
+        {
+          "en": "Only bread"
+        },
+        {
+          "en": "Only rice"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

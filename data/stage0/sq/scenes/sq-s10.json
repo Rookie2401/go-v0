@@ -1,0 +1,242 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "ka means \"there is\"",
+      "text": "Ka also means \"there is\": Sot ka bukë — today there is bread. It is the same word as \"has\" (Ana ka ujë).",
+      "explains": [
+        "sq.ka-there-is"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "culture",
+      "title": "lekë",
+      "text": "The money of Albania is the lek; several of them are lekë. After a number the word is lekë: njëzet lekë.",
+      "explains": [
+        "sq.numbers"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Ask how much the bread is.",
+      "basedOn": [
+        "l2",
+        "sq.sa-kushton"
+      ],
+      "frame": "Sa kushton ___?",
+      "accept": [
+        {
+          "text": "Sa kushton buka"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Drita asks you: \"Çfarë dëshiron?\" You want rice.",
+      "basedOn": [
+        "l6"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Dua oriz"
+        },
+        {
+          "text": "Dua oriz, ju lutem"
+        },
+        {
+          "text": "Oriz, ju lutem"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s10",
+  "title": {
+    "en": "How much is it?",
+    "target": "Sa kushton?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread",
+      "rice",
+      "money"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Sot ka bukë dhe oriz. Çfarë dëshiron, Sam?",
+      "en": "Today there is bread and rice. What would you like, Sam?",
+      "speaker": "marta",
+      "picture": "🍞🍚❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Sa kushton orizi?",
+      "en": "How much is the rice?",
+      "speaker": "sam",
+      "picture": "🍚💵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Orizi kushton njëzet lekë.",
+      "en": "The rice costs twenty lekë.",
+      "speaker": "marta",
+      "picture": "🍚 20",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Dhe buka?",
+      "en": "And the bread?",
+      "speaker": "sam",
+      "picture": "🍞❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Buka kushton dhjetë lekë.",
+      "en": "The bread costs ten lekë.",
+      "speaker": "marta",
+      "picture": "🍞 10",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Dua dy bukë dhe oriz, ju lutem.",
+      "en": "I would like two breads and rice, please.",
+      "speaker": "sam",
+      "picture": "🍞🍞🍚🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "sot",
+      "oriz",
+      "sa",
+      "kushton",
+      "njëzet",
+      "lekë",
+      "dhjetë",
+      "dy"
+    ],
+    "constructions": [
+      "sq.ka-there-is",
+      "sq.sa-kushton",
+      "sq.numbers"
+    ]
+  },
+  "represents": [
+    "sq.ka-there-is",
+    "sq.sa-kushton",
+    "sq.numbers",
+    "sq.politeness",
+    "sq.definite",
+    "sq.dua-object"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much is the rice?"
+      },
+      "options": [
+        {
+          "en": "20 lekë"
+        },
+        {
+          "en": "10 lekë"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much is the bread?"
+      },
+      "options": [
+        {
+          "en": "10 lekë"
+        },
+        {
+          "en": "20 lekë"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam buy?"
+      },
+      "options": [
+        {
+          "en": "Two breads and rice"
+        },
+        {
+          "en": "Only bread"
+        },
+        {
+          "en": "Only rice"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

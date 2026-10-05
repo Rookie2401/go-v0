@@ -1,0 +1,240 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "weil sends the verb to the end",
+      "text": "After \"weil\" (because) the verb goes to the very end of the part: \"…, weil ich müde bin.\" Compare the normal order: \"Ich bin müde.\"",
+      "explains": [
+        "de.weil"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say you would like a tea.",
+      "basedOn": [
+        "l3",
+        "de.accusative-chunks"
+      ],
+      "frame": "Ich möchte einen ___.",
+      "accept": [
+        {
+          "text": "Ich möchte einen Tee"
+        },
+        {
+          "text": "Ich möchte einen Kaffee"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say that you are not going to church, because you are tired.",
+      "basedOn": [
+        "l2",
+        "de.weil"
+      ],
+      "accept": [
+        {
+          "text": "Ich gehe nicht in die Kirche, weil ich müde bin"
+        },
+        {
+          "text": "Ich gehe nicht in die Kirche weil ich müde bin"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "de-s12",
+  "title": {
+    "en": "The rain changes the plan",
+    "target": "Es regnet"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "sam",
+      "marta",
+      "nico"
+    ],
+    "things": [
+      "rain",
+      "tea"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Es ist Sonntag, aber heute regnet es.",
+      "en": "It is Sunday, but today it is raining.",
+      "picture": "🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ich gehe nicht in die Kirche, weil ich müde bin.",
+      "en": "I am not going to church, because I am tired.",
+      "speaker": "ana",
+      "picture": "😩🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Wir bleiben zu Hause. Möchtest du einen Tee, Sam?",
+      "en": "We are staying at home. Would you like a tea, Sam?",
+      "speaker": "luis",
+      "picture": "🏠🍵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ja, gern.",
+      "en": "Yes, gladly.",
+      "speaker": "sam",
+      "picture": "🍵🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Ich gehe in die Kirche.",
+      "en": "I am going to church.",
+      "speaker": "marta",
+      "picture": "👵⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Ich gehe mit meiner Oma.",
+      "en": "I am going with my grandma.",
+      "speaker": "nico",
+      "picture": "👦👵",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "aber",
+      "regnet",
+      "weil",
+      "wir",
+      "bleiben",
+      "einen",
+      "mit"
+    ],
+    "constructions": [
+      "de.weil",
+      "de.aber-und"
+    ]
+  },
+  "represents": [
+    "de.weil",
+    "de.aber-und",
+    "de.adjective-state",
+    "de.negation-nicht",
+    "de.gehen-place",
+    "de.moechten",
+    "de.yes-no-question",
+    "de.accusative-chunks",
+    "de.verb-second",
+    "de.politeness",
+    "de.dative-chunks",
+    "de.time-days"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is the weather like?"
+      },
+      "options": [
+        {
+          "en": "rainy",
+          "picture": "🌧️"
+        },
+        {
+          "en": "sunny",
+          "picture": "☀️"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who offers Sam a tea?"
+      },
+      "options": [
+        {
+          "en": "Lukas"
+        },
+        {
+          "en": "Marta"
+        },
+        {
+          "en": "Ben"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Why does Anna not go to church?"
+      },
+      "options": [
+        {
+          "en": "She is tired"
+        },
+        {
+          "en": "It is Monday"
+        },
+        {
+          "en": "She does not like it"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

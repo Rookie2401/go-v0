@@ -1,0 +1,260 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "नहीं before the verb",
+      "text": "To say \"not\" with a verb like जाते, put नहीं right before it: हम बाज़ार नहीं जाते (the हैं drops away). With है, नहीं goes before है or after the thing: पसंद नहीं है.",
+      "explains": [
+        "hi.negation-habitual"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say: \"We are not going to the market.\"",
+      "basedOn": [
+        "l2",
+        "hi.negation-habitual"
+      ],
+      "frame": "हम बाज़ार ___ जाते।",
+      "accept": [
+        {
+          "text": "हम बाज़ार नहीं जाते"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say what Meera does.",
+      "basedOn": [
+        "l6"
+      ],
+      "accept": [
+        {
+          "text": "मीरा चाय बनाती है"
+        },
+        {
+          "text": "मीरा गरम चाय बनाती है"
+        },
+        {
+          "text": "मीरा चाय बनाती हैं"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s14",
+  "title": {
+    "en": "Rain",
+    "target": "आज बारिश है"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "things": [
+      "rain",
+      "tea"
+    ],
+    "places": [
+      "home",
+      "market"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "आज शनिवार है और बारिश है।",
+      "en": "Today is Saturday and it is raining.",
+      "speaker": "luis",
+      "picture": "🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "हम बाज़ार नहीं जाते।",
+      "en": "We are not going to the market.",
+      "speaker": "luis",
+      "picture": "🛒🚫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "मैं थकी हूँ।",
+      "en": "I am tired.",
+      "speaker": "ana",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "सीता नानी भी आज रोटी नहीं बेचती हैं।",
+      "en": "Seeta Nani is not selling roti today either.",
+      "speaker": "ana",
+      "picture": "👵🫓🚫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "मैं दूध पीता हूँ।",
+      "en": "I will have milk.",
+      "speaker": "sam",
+      "picture": "🥛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "मैं गरम चाय बनाती हूँ।",
+      "en": "I will make hot tea.",
+      "speaker": "ana",
+      "picture": "🍵♨️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "मेज़ पर दाल और रोटी है।",
+      "en": "There is dal and roti on the table.",
+      "speaker": "luis",
+      "picture": "🍲🫓",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "बारिश",
+      "पीता",
+      "बनाती",
+      "गरम"
+    ],
+    "constructions": [
+      "hi.negation-habitual"
+    ]
+  },
+  "represents": [
+    "hi.negation-habitual",
+    "hi.present-habitual",
+    "hi.adjective-verb-gender",
+    "hi.mein-place",
+    "hi.aur-lekin"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is the weather like?"
+      },
+      "options": [
+        {
+          "en": "rainy",
+          "picture": "🌧️"
+        },
+        {
+          "en": "sunny",
+          "picture": "☀️"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Do they go to the market?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who makes the tea?"
+      },
+      "options": [
+        {
+          "en": "Meera"
+        },
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Ravi"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam drink?"
+      },
+      "options": [
+        {
+          "en": "milk",
+          "picture": "🥛"
+        },
+        {
+          "en": "tea",
+          "picture": "🍵"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

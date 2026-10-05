@@ -1,0 +1,166 @@
+{
+  "lang": "sq",
+  "version": 1,
+  "steps": [
+    {
+      "id": "s01",
+      "kind": "scene",
+      "ref": "sq-s01"
+    },
+    {
+      "id": "s02",
+      "kind": "scene",
+      "ref": "sq-s02"
+    },
+    {
+      "id": "s03",
+      "kind": "scene",
+      "ref": "sq-s03"
+    },
+    {
+      "id": "snd1",
+      "kind": "sounds",
+      "ref": "sq-snd1"
+    },
+    {
+      "id": "s04",
+      "kind": "scene",
+      "ref": "sq-s04"
+    },
+    {
+      "id": "s05",
+      "kind": "scene",
+      "ref": "sq-s05"
+    },
+    {
+      "id": "s06",
+      "kind": "scene",
+      "ref": "sq-s06"
+    },
+    {
+      "id": "r1",
+      "kind": "review",
+      "ref": "sq-s02",
+      "channel": "listen-first"
+    },
+    {
+      "id": "s07",
+      "kind": "scene",
+      "ref": "sq-s07"
+    },
+    {
+      "id": "s08",
+      "kind": "scene",
+      "ref": "sq-s08"
+    },
+    {
+      "id": "snd2",
+      "kind": "sounds",
+      "ref": "sq-snd2"
+    },
+    {
+      "id": "s09",
+      "kind": "scene",
+      "ref": "sq-s09"
+    },
+    {
+      "id": "s10",
+      "kind": "scene",
+      "ref": "sq-s10"
+    },
+    {
+      "id": "s11",
+      "kind": "scene",
+      "ref": "sq-s11"
+    },
+    {
+      "id": "r2",
+      "kind": "review",
+      "ref": "sq-s10",
+      "channel": "listen-first"
+    },
+    {
+      "id": "s12",
+      "kind": "scene",
+      "ref": "sq-s12"
+    },
+    {
+      "id": "s13",
+      "kind": "scene",
+      "ref": "sq-s13"
+    },
+    {
+      "id": "snd3",
+      "kind": "sounds",
+      "ref": "sq-snd3"
+    },
+    {
+      "id": "s14",
+      "kind": "scene",
+      "ref": "sq-s14"
+    },
+    {
+      "id": "s15",
+      "kind": "scene",
+      "ref": "sq-s15"
+    },
+    {
+      "id": "s16",
+      "kind": "scene",
+      "ref": "sq-s16"
+    },
+    {
+      "id": "r3",
+      "kind": "review",
+      "ref": "sq-s15",
+      "channel": "listen-only"
+    },
+    {
+      "id": "s17",
+      "kind": "scene",
+      "ref": "sq-s17"
+    },
+    {
+      "id": "s18",
+      "kind": "scene",
+      "ref": "sq-s18"
+    },
+    {
+      "id": "s19",
+      "kind": "scene",
+      "ref": "sq-s19"
+    },
+    {
+      "id": "r4",
+      "kind": "review",
+      "ref": "sq-s19",
+      "channel": "listen-only"
+    },
+    {
+      "id": "exit",
+      "kind": "exit"
+    }
+  ],
+  "next": [
+    {
+      "textId": "text:sq:udha-0-01",
+      "title": "Udha 0 — story 1",
+      "note": "The first controlled story of the Albanian course (an unpublished draft awaiting review)."
+    },
+    {
+      "textId": "text:sq:udha-0-02",
+      "title": "Udha 0 — story 2",
+      "note": "An unpublished draft awaiting review."
+    },
+    {
+      "textId": "text:sq:udha-0-03",
+      "title": "Udha 0 — story 3",
+      "note": "An unpublished draft awaiting review."
+    },
+    {
+      "textId": "text:sq:misioni-1-01",
+      "title": "Misioni 1 — the first mission",
+      "note": "The mission option: a first real conversation (an unpublished draft awaiting review)."
+    }
+  ]
+}

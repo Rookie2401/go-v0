@@ -1,0 +1,215 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd9",
+  "title": {
+    "en": "Dead syllables: the last tone rules"
+  },
+  "features": [
+    "class:low",
+    "class:high",
+    "ending:dead",
+    "final:k",
+    "final:t",
+    "final:p",
+    "rule:low+dead-short=high",
+    "rule:low+dead-long=falling",
+    "rule:high+dead-short=low"
+  ],
+  "words": [
+    {
+      "text": "รัก",
+      "en": "to love",
+      "picture": "❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "วัด",
+      "en": "temple",
+      "picture": "🛕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "นก",
+      "en": "bird",
+      "picture": "🐦",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ลูก",
+      "en": "child (of someone)",
+      "picture": "👶",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "มาก",
+      "en": "very, a lot",
+      "picture": "➕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ชอบ",
+      "en": "to like",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "รถ",
+      "en": "car",
+      "picture": "🚗",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ยาก",
+      "en": "difficult",
+      "picture": "😓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "สิบ",
+      "en": "ten",
+      "picture": "🔟",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "A dead syllable that starts with a low-class letter has a high tone if its vowel is short (รัก, วัด, นก, รถ) and a falling tone if its vowel is long (ลูก, มาก, ชอบ). With a high-class letter, a dead syllable is simply low (สิบ).",
+    "more": "This completes the system. Mid class: live syllables are mid, dead syllables are low. High class: live syllables rise, dead syllables are low. Low class: live syllables are mid; dead ones are high when short and falling when long. The marks ่ and ้ then override all of this, as you learned. The word ครับ follows the rule too: a low-class ค, a short vowel and a closing p make it high."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-tone",
+      "word": "รัก",
+      "prompt": "Which tone does รัก have?",
+      "options": [
+        "high",
+        "falling",
+        "mid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-tone",
+      "word": "ลูก",
+      "prompt": "Which tone does ลูก have?",
+      "options": [
+        "high",
+        "falling",
+        "low"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-tone",
+      "word": "สิบ",
+      "prompt": "Which tone does สิบ have?",
+      "options": [
+        "rising",
+        "mid",
+        "low"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "d4",
+      "kind": "which-tone",
+      "word": "วัด",
+      "prompt": "Which tone does วัด have?",
+      "options": [
+        "high",
+        "low",
+        "falling"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-tone",
+      "word": "มาก",
+      "prompt": "Which tone does มาก have?",
+      "options": [
+        "falling",
+        "high",
+        "mid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-tone",
+      "word": "รถ",
+      "prompt": "Which tone does รถ have?",
+      "options": [
+        "falling",
+        "high",
+        "low"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d7",
+      "kind": "which-reading",
+      "word": "รัก",
+      "prompt": "How is รัก said?",
+      "options": [
+        "rak",
+        "lak",
+        "rok"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "which-reading",
+      "word": "รถ",
+      "prompt": "How is รถ said? (ถ at the end closes the syllable with a t.)",
+      "options": [
+        "rot",
+        "rop",
+        "rok"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d9",
+      "kind": "segment",
+      "word": "ผมรักแม่ครับ",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        2,
+        5,
+        8
+      ]
+    }
+  ]
+}

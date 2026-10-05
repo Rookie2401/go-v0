@@ -1,0 +1,109 @@
+{
+  "id": "de-snd3",
+  "lang": "de",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "z, w, ei, eu — the numbers"
+  },
+  "features": [
+    "de:z",
+    "de:w-v",
+    "de:ei",
+    "de:eu",
+    "de:long-vowel",
+    "de:noun-capital"
+  ],
+  "words": [
+    {
+      "text": "zwei",
+      "en": "two",
+      "picture": "2️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "drei",
+      "en": "three",
+      "picture": "3️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "zehn",
+      "en": "ten",
+      "picture": "🔟",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "Euro",
+      "en": "euro",
+      "picture": "💶",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "z is always \"ts\": zwei is TSVY and zehn is TSAYN. w is said like \"v\", and ei like \"eye\" (zwei, drei). eu is \"oy\": Euro is OY-ro.",
+    "more": "The h in zehn is not said; it makes the e long. The word for 4, \"vier\", looks like ei turned round: ie is a long \"ee\" and v is said like f — FEER."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "zwei",
+      "prompt": "How does \"zwei\" start?",
+      "options": [
+        "like \"ts\": TSVY",
+        "like English \"z\": ZWAY"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "drei",
+      "prompt": "How is \"drei\" said?",
+      "options": [
+        "DRY",
+        "DRAY"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "zehn",
+      "prompt": "In \"zehn\" the h is:",
+      "options": [
+        "not said — the e is long: TSAYN",
+        "said: TSEH-hn"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "Euro",
+      "prompt": "How does \"eu\" sound in \"Euro\"?",
+      "options": [
+        "like \"oy\": OY-ro",
+        "like \"you\": YOO-ro"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  }
+}

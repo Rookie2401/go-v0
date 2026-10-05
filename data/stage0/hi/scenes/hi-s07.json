@@ -1,0 +1,238 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "थका or थकी",
+      "text": "A man says मैं थका हूँ, a woman says मैं थकी हूँ: the last sound of the word follows the speaker, -ा for a man and -ी for a woman. Your own form follows the choice you made in Go's settings.",
+      "explains": [
+        "hi.adjective-verb-gender"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "usage",
+      "title": "आप कैसे हैं?",
+      "text": "आप कैसे हैं? is the everyday \"how are you?\". The usual answer is मैं ठीक हूँ — \"I am fine\".",
+      "explains": [
+        "hi.kaisa"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Someone asks you \"आप कैसे हैं?\" Say that you are fine.",
+      "basedOn": [
+        "l1",
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "मैं ठीक हूँ"
+        },
+        {
+          "text": "ठीक हूँ"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "complete",
+      "prompt": "Say that you are tired.",
+      "basedOn": [
+        "l3",
+        "l5",
+        "hi.adjective-verb-gender"
+      ],
+      "frame": "मैं ___ हूँ।",
+      "accept": [
+        {
+          "text": "मैं थका हूँ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "मैं थकी हूँ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s07",
+  "title": {
+    "en": "How are you?",
+    "target": "आप कैसे हैं?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "सैम, आप कैसे हैं?",
+      "en": "Sam, how are you?",
+      "speaker": "luis",
+      "picture": "🙂❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "मैं ठीक हूँ।",
+      "en": "I am fine.",
+      "speaker": "sam",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "मैं थका हूँ।",
+      "en": "I am tired.",
+      "speaker": "luis",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "आज बहुत काम है।",
+      "en": "There is a lot of work today.",
+      "speaker": "luis",
+      "picture": "💼",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "मैं भी थकी हूँ।",
+      "en": "I am tired too.",
+      "speaker": "ana",
+      "picture": "😮‍💨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "मैं थका नहीं हूँ।",
+      "en": "I am not tired.",
+      "speaker": "sam",
+      "picture": "🙂🚫😩",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ठीक",
+      "थका",
+      "आज",
+      "काम"
+    ],
+    "constructions": [
+      "hi.kaisa",
+      "hi.adjective-verb-gender"
+    ]
+  },
+  "represents": [
+    "hi.kaisa",
+    "hi.adjective-verb-gender",
+    "hi.hum-aap-main",
+    "hi.negation-nahin",
+    "hi.hai-hain"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3",
+        "l5"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who is tired?"
+      },
+      "options": [
+        {
+          "en": "Ravi and Meera"
+        },
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Nobody"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How is Sam?"
+      },
+      "options": [
+        {
+          "en": "Fine"
+        },
+        {
+          "en": "Tired"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is there a lot of today?"
+      },
+      "options": [
+        {
+          "en": "Work"
+        },
+        {
+          "en": "Rain"
+        },
+        {
+          "en": "Tea"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

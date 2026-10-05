@@ -1,0 +1,249 @@
+{
+  "entries": [
+    {
+      "id": "sq.greeting",
+      "kind": "pragmatics",
+      "label": "greeting and meeting (përshëndetje, gëzohem, mirëmëngjes, mirëdita)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.quhem",
+      "kind": "construction",
+      "label": "unë quhem + name",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.ky-eshte",
+      "kind": "construction",
+      "label": "ky / kjo është … (identity)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.possessive-im",
+      "kind": "grammar",
+      "label": "im / ime (my), after the noun",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.possessive-yt",
+      "kind": "grammar",
+      "label": "yt / jote (your), after the noun",
+      "prerequisites": [
+        "sq.possessive-im"
+      ]
+    },
+    {
+      "id": "sq.definite",
+      "kind": "grammar",
+      "label": "the definite ending (ujë / uji, bukë / buka)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.kam-object",
+      "kind": "construction",
+      "label": "kam + thing (has)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.negation-nuk",
+      "kind": "grammar",
+      "label": "nuk before the verb",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.yes-no-a",
+      "kind": "construction",
+      "label": "a … ? yes/no questions, po / jo",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.politeness",
+      "kind": "pragmatics",
+      "label": "faleminderit, ju lutem, s'ka përse",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.dua-object",
+      "kind": "construction",
+      "label": "dua / do + thing (want)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.ne-place",
+      "kind": "construction",
+      "label": "në + place (in, at)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.cfare-eshte",
+      "kind": "construction",
+      "label": "çfarë është kjo? një + noun",
+      "prerequisites": [
+        "sq.ky-eshte"
+      ]
+    },
+    {
+      "id": "sq.gender-ky-kjo",
+      "kind": "grammar",
+      "label": "masculine and feminine: ky / kjo",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.ku-eshte",
+      "kind": "construction",
+      "label": "ku është …? (where is)",
+      "prerequisites": [
+        "sq.ne-place"
+      ]
+    },
+    {
+      "id": "sq.nuk-e-di",
+      "kind": "construction",
+      "label": "nuk e di (I do not know) as a chunk",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.me-pelqen",
+      "kind": "construction",
+      "label": "më pëlqen + thing (I like)",
+      "prerequisites": [
+        "sq.definite"
+      ]
+    },
+    {
+      "id": "sq.ka-there-is",
+      "kind": "construction",
+      "label": "ka = there is",
+      "prerequisites": [
+        "sq.kam-object"
+      ]
+    },
+    {
+      "id": "sq.sa-kushton",
+      "kind": "construction",
+      "label": "sa kushton …? (how much)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.numbers",
+      "kind": "grammar",
+      "label": "numbers (një, dy, dhjetë, njëzet) and lekë",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.si-je",
+      "kind": "pragmatics",
+      "label": "si je? jam mirë, po ti?",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.jam-je",
+      "kind": "grammar",
+      "label": "jam / je / është (to be)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.adjective-article",
+      "kind": "grammar",
+      "label": "adjective with i / e (i lodhur, e lodhur, e madhe)",
+      "prerequisites": [
+        "sq.jam-je",
+        "sq.gender-ky-kjo"
+      ]
+    },
+    {
+      "id": "sq.por",
+      "kind": "construction",
+      "label": "por (but)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.plural-forms",
+      "kind": "grammar",
+      "label": "plural forms (dhomë / dhoma)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.pronoun-ai",
+      "kind": "grammar",
+      "label": "unë, ti, ai (the person words)",
+      "prerequisites": [
+        "sq.jam-je"
+      ]
+    },
+    {
+      "id": "sq.time-words",
+      "kind": "grammar",
+      "label": "sot, nesër, e diel / të dielën",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.verb-persons",
+      "kind": "grammar",
+      "label": "verb endings by person (shkoj, shkon, shkojnë)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.shkoj-ne",
+      "kind": "construction",
+      "label": "shkoj në + place (go to)",
+      "prerequisites": [
+        "sq.ne-place"
+      ]
+    },
+    {
+      "id": "sq.te-subjunctive",
+      "kind": "construction",
+      "label": "dua të pi, le të pimë (të + verb) as chunks",
+      "prerequisites": [
+        "sq.dua-object"
+      ]
+    },
+    {
+      "id": "sq.sepse",
+      "kind": "construction",
+      "label": "sepse (because)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.jetoj-ne",
+      "kind": "construction",
+      "label": "jetoj në + place",
+      "prerequisites": [
+        "sq.ne-place"
+      ]
+    },
+    {
+      "id": "sq.cili-eshte",
+      "kind": "construction",
+      "label": "cili / cila është …? (which is)",
+      "prerequisites": [
+        "sq.cfare-eshte"
+      ]
+    },
+    {
+      "id": "sq.te-person",
+      "kind": "construction",
+      "label": "te + person (at someone's)",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.sound-digraphs",
+      "kind": "sound",
+      "label": "ë, ç, sh, dh, th",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.sound-palatals",
+      "kind": "sound",
+      "label": "nj, gj, q",
+      "prerequisites": []
+    },
+    {
+      "id": "sq.sound-rest",
+      "kind": "sound",
+      "label": "rr, ll, y, x, c, xh, zh, j",
+      "prerequisites": []
+    }
+  ]
+}

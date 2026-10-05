@@ -1,0 +1,268 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "ทำไม and เพราะ",
+      "text": "ทำไม means \"why?\" and เพราะ starts the reason: เพราะป้าเหนื่อย (because I am tired). The reason can stand alone as the answer.",
+      "explains": [
+        "th.why-because"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Why is Marta not going to church? Answer starting with เพราะ.",
+      "basedOn": [
+        "l5",
+        "th.why-because"
+      ],
+      "accept": [
+        {
+          "text": "เพราะป้าเหนื่อย"
+        },
+        {
+          "text": "เพราะเหนื่อย"
+        },
+        {
+          "text": "เพราะป้าเหนื่อยค่ะ"
+        },
+        {
+          "text": "เพราะเหนื่อยค่ะ"
+        },
+        {
+          "text": "เพราะป้าเหนื่อยครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "เพราะเหนื่อยครับ",
+          "speakerForm": "m"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you are going to church tomorrow.",
+      "basedOn": [
+        "l6",
+        "l1",
+        "th.time-tomorrow"
+      ],
+      "accept": [
+        {
+          "text": "พรุ่งนี้ไปโบสถ์"
+        },
+        {
+          "text": "พรุ่งนี้ไปโบสถ์ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "พรุ่งนี้ไปโบสถ์ค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "พรุ่งนี้ผมไปโบสถ์ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "พรุ่งนี้ฉันไปโบสถ์ค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "พรุ่งนี้ไป"
+        },
+        {
+          "text": "พรุ่งนี้ไปครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "พรุ่งนี้ไปค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s14",
+  "title": {
+    "en": "Tomorrow",
+    "target": "พรุ่งนี้"
+  },
+  "world": {
+    "characters": [
+      "luis",
+      "ana",
+      "marta",
+      "sam"
+    ],
+    "places": [
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "พรุ่งนี้ไปโบสถ์ไหมครับ",
+      "en": "Are you going to church tomorrow?",
+      "speaker": "luis",
+      "picture": "⛪❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ไปค่ะ",
+      "en": "Yes, I am.",
+      "speaker": "ana",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "พรุ่งนี้ป้าไม่ไปค่ะ",
+      "en": "Tomorrow I am not going.",
+      "speaker": "marta",
+      "picture": "🙅⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ทำไมครับ",
+      "en": "Why?",
+      "speaker": "luis",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "เพราะป้าเหนื่อยค่ะ",
+      "en": "Because I am tired.",
+      "speaker": "marta",
+      "picture": "😓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "พรุ่งนี้ผมก็ไปครับ",
+      "en": "Tomorrow I am going too.",
+      "speaker": "sam",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ทำไม",
+      "เพราะ"
+    ],
+    "constructions": [
+      "th.time-tomorrow",
+      "th.why-because"
+    ]
+  },
+  "represents": [
+    "th.time-tomorrow",
+    "th.why-because",
+    "th.time-today",
+    "th.negation-mai",
+    "th.go-come",
+    "th.feelings",
+    "th.also-ko",
+    "th.mai-question"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1",
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is Mali going to church tomorrow?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Why is Marta not going?"
+      },
+      "options": [
+        {
+          "en": "She is tired"
+        },
+        {
+          "en": "It is raining"
+        },
+        {
+          "en": "It is far"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Ton ask?"
+      },
+      "options": [
+        {
+          "en": "Why?"
+        },
+        {
+          "en": "Where?"
+        },
+        {
+          "en": "How much?"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

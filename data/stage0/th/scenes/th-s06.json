@@ -1,0 +1,240 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "เป็น and ไม่ใช่",
+      "text": "To say who someone is, put เป็น in the middle: ผมเป็นครู (I am a teacher). To say they are not, use ไม่ใช่: ผมไม่ใช่ครู. ใช่ alone means \"yes, that is right\".",
+      "explains": [
+        "th.identity-pen",
+        "th.yes-no-chai"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "choose",
+      "prompt": "Which sentence says \"I am a teacher\" for a man?",
+      "basedOn": [
+        "l3"
+      ],
+      "options": [
+        "ผมเป็นครูครับ",
+        "ผมไม่ใช่ครูครับ",
+        "คุณเป็นครูครับ"
+      ],
+      "accept": [
+        {
+          "text": "ผมเป็นครูครับ"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Someone asks คุณเป็นครูไหม and you are not a teacher. Answer.",
+      "basedOn": [
+        "l5",
+        "l6",
+        "th.yes-no-chai"
+      ],
+      "accept": [
+        {
+          "text": "ไม่ใช่"
+        },
+        {
+          "text": "ไม่ใช่ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ไม่ใช่ค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมไม่ใช่ครูครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันไม่ใช่ครูค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ไม่ใช่ครู"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s06",
+  "title": {
+    "en": "Who is who?",
+    "target": "ใครเป็นอะไร"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "luis",
+      "ana"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "คุณเป็นครูไหมครับ",
+      "en": "Are you a teacher? (Sam to Ton)",
+      "speaker": "sam",
+      "picture": "👨‍🏫❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ใช่ครับ",
+      "en": "Yes.",
+      "speaker": "luis",
+      "picture": "✅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ผมเป็นครูครับ",
+      "en": "I am a teacher.",
+      "speaker": "luis",
+      "picture": "👨‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "คุณเป็นหมอไหมครับ",
+      "en": "Are you a doctor? (Sam to Mali)",
+      "speaker": "sam",
+      "picture": "👩‍⚕️❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "ไม่ใช่ค่ะ",
+      "en": "No, I am not.",
+      "speaker": "ana",
+      "picture": "❌",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ผมไม่ใช่ครูครับ",
+      "en": "I am not a teacher.",
+      "speaker": "sam",
+      "picture": "🙅👨‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "เป็น",
+      "ครู",
+      "ใช่",
+      "หมอ",
+      "ไม่ใช่"
+    ],
+    "constructions": [
+      "th.identity-pen",
+      "th.yes-no-chai"
+    ]
+  },
+  "represents": [
+    "th.identity-pen",
+    "th.yes-no-chai",
+    "th.mai-question",
+    "th.pronoun-i"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is Ton's job?"
+      },
+      "options": [
+        {
+          "en": "Teacher"
+        },
+        {
+          "en": "Doctor"
+        },
+        {
+          "en": "Student"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is Mali a doctor?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Sam is a teacher."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 1
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "id": "de-snd1",
+  "lang": "de",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "ei, sch, w, ß, eu — and capital letters"
+  },
+  "features": [
+    "de:ei",
+    "de:sch",
+    "de:w-v",
+    "de:ß",
+    "de:eu",
+    "de:noun-capital"
+  ],
+  "words": [
+    {
+      "text": "heiße",
+      "en": "I am called",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "Schwester",
+      "en": "sister",
+      "picture": "👩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "freut",
+      "en": "pleases (Freut mich: nice to meet you)",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "Wasser",
+      "en": "water",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "In German, ei sounds like English \"eye\" (heiße), sch like \"sh\" (Schwester), w like English \"v\" (Wasser) and eu like \"oy\" (freut). ß is a sharp s. Every noun starts with a capital letter: Schwester, Wasser.",
+    "more": "ie is the opposite of ei: it is a long \"ee\" (vier). German spelling is regular: once you know a few patterns, you can say any new word you read."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "heiße",
+      "prompt": "How does \"ei\" sound in \"heiße\"?",
+      "options": [
+        "like \"eye\": HY-seh",
+        "like \"ee\": HEE-seh"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "Schwester",
+      "prompt": "How does \"sch\" sound in \"Schwester\"?",
+      "options": [
+        "like \"sh\": SHVES-ter",
+        "like \"sk\": SKVES-ter"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "Wasser",
+      "prompt": "How is the \"w\" in \"Wasser\" said?",
+      "options": [
+        "like English \"v\": VAS-ser",
+        "like English \"w\": WAS-ser"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "freut",
+      "prompt": "How does \"eu\" sound in \"freut\"?",
+      "options": [
+        "like \"oy\": FROYT",
+        "like \"you\": FREWT"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-word",
+      "word": "Wasser",
+      "prompt": "Which one is the correct spelling of \"water\"?",
+      "options": [
+        "Wasser",
+        "wasser"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  }
+}

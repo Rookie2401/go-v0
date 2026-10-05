@@ -1,0 +1,414 @@
+{
+  "id": "th-exit-b",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "วันนี้ต้นไม่ไปโรงเรียน",
+        "en": "Today Ton does not go to school.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "ต้นเหนื่อยมากเพราะไม่นอน",
+        "en": "Ton is very tired because he did not sleep.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "มะลิทำงานที่โรงพยาบาลวันนี้",
+        "en": "Mali works at the hospital today.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "พรุ่งนี้ป้าแดงไปโบสถ์",
+        "en": "Tomorrow Auntie Daeng goes to church.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "มะลิกินข้าวสองจาน",
+        "en": "Mali eats two plates of rice.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Does Ton go to school today?"
+        },
+        "options": [
+          {
+            "en": "No"
+          },
+          {
+            "en": "Yes"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Why is Ton very tired?"
+        },
+        "options": [
+          {
+            "en": "He did not sleep"
+          },
+          {
+            "en": "He ran a lot"
+          },
+          {
+            "en": "He is ill"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r4"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Who goes to church tomorrow?"
+        },
+        "options": [
+          {
+            "en": "Auntie Daeng"
+          },
+          {
+            "en": "Mali"
+          },
+          {
+            "en": "Sam"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r5"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How many plates of rice does Mali eat?"
+        },
+        "options": [
+          {
+            "en": "Two"
+          },
+          {
+            "en": "Five"
+          },
+          {
+            "en": "Ten"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "ป้าแดงอยู่ที่บ้านค่ะ",
+        "en": "Auntie Daeng is at home.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "ผมอยากดื่มชาครับ",
+        "en": "I want to drink tea.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Auntie Daeng?"
+        },
+        "options": [
+          {
+            "en": "At home"
+          },
+          {
+            "en": "At the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does the man want to drink?"
+        },
+        "options": [
+          {
+            "en": "Tea"
+          },
+          {
+            "en": "Coffee"
+          },
+          {
+            "en": "Water"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Why is Ton very tired? Answer with เพราะ.",
+      "basedOn": [
+        "r2"
+      ],
+      "accept": [
+        {
+          "text": "เพราะไม่นอน"
+        },
+        {
+          "text": "เพราะต้นไม่นอน"
+        },
+        {
+          "text": "เพราะไม่นอนครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "เพราะไม่นอนค่ะ",
+          "speakerForm": "f"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Say something you like.",
+      "basedOn": [
+        "th.like-chop"
+      ],
+      "accept": [
+        {
+          "text": "ผมชอบ{x}ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันชอบ{x}ค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ชอบ{x}ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ชอบ{x}ค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมชอบ{x}",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันชอบ{x}",
+          "speakerForm": "f"
+        }
+      ],
+      "personal": "something you like"
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Ask how much the sweets cost.",
+      "basedOn": [
+        "th.how-much"
+      ],
+      "accept": [
+        {
+          "text": "ขนมเท่าไร"
+        },
+        {
+          "text": "ขนมเท่าไรครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ขนมเท่าไรคะ",
+          "speakerForm": "f"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say that you are hungry and want to eat rice.",
+      "model": "ผมหิวครับ อยากกินข้าวครับ"
+    }
+  ],
+  "decoding": [
+    {
+      "id": "x1",
+      "kind": "which-reading",
+      "word": "ปลา",
+      "prompt": "How is ปลา said?",
+      "options": [
+        "pla",
+        "bla",
+        "phla"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x2",
+      "kind": "which-reading",
+      "word": "เร็ว",
+      "prompt": "How is เร็ว said?",
+      "options": [
+        "reo",
+        "rao",
+        "leo"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x3",
+      "kind": "which-reading",
+      "word": "แก้ว",
+      "prompt": "How is แก้ว said?",
+      "options": [
+        "kaeo",
+        "kao",
+        "keo"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x4",
+      "kind": "which-reading",
+      "word": "ดอก",
+      "prompt": "How is ดอก said?",
+      "options": [
+        "dok",
+        "dop",
+        "dot"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x5",
+      "kind": "which-tone",
+      "word": "เก่า",
+      "prompt": "Which tone does เก่า have?",
+      "options": [
+        "low",
+        "falling",
+        "mid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x6",
+      "kind": "which-tone",
+      "word": "ช้าง",
+      "prompt": "Which tone does ช้าง have?",
+      "options": [
+        "high",
+        "falling",
+        "mid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x7",
+      "kind": "which-tone",
+      "word": "เจ็ด",
+      "prompt": "Which tone does เจ็ด have?",
+      "options": [
+        "low",
+        "high",
+        "rising"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x8",
+      "kind": "which-tone",
+      "word": "มด",
+      "prompt": "Which tone does มด have?",
+      "options": [
+        "high",
+        "falling",
+        "low"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x9",
+      "kind": "segment",
+      "word": "ป้าไม่มีหนังสือ",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        3,
+        8
+      ]
+    },
+    {
+      "id": "x10",
+      "kind": "segment",
+      "word": "วันนี้ผมไม่กลับบ้าน",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        6,
+        8,
+        11,
+        15
+      ]
+    }
+  ]
+}

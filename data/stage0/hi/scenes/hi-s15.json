@@ -1,0 +1,286 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "मुझे अच्छा लगता है",
+      "text": "\"I like it\" is also said मुझे अच्छा लगता है — \"to me it seems good\". Like पसंद है, the person gets मुझे or को. Use it for a place, a person or a situation you like to be in.",
+      "explains": [
+        "hi.laga"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "रहता है, करती है",
+      "text": "For one other person the helper is है: रवि काम करता है, मीरा काम करती है. For \"I\" it is हूँ and for \"we\" or आप it is हैं. The -ता / -ती part follows the person who does it.",
+      "explains": [
+        "hi.third-person-habitual"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "describe",
+      "prompt": "Say where you live.",
+      "basedOn": [
+        "l1",
+        "hi.present-habitual"
+      ],
+      "accept": [
+        {
+          "text": "मैं {x} में रहता हूँ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "मैं {x} में रहती हूँ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "मैं यहाँ रहता हूँ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "मैं यहाँ रहती हूँ",
+          "speakerForm": "f"
+        }
+      ],
+      "personal": "your town or country",
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "retell",
+      "prompt": "Tell where Ravi works.",
+      "basedOn": [
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "रवि स्कूल में काम करता है"
+        },
+        {
+          "text": "रवि स्कूल में काम करते हैं"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s15",
+  "title": {
+    "en": "Sam tells about himself",
+    "target": "सैम बताता है"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "places": [
+      "home",
+      "school",
+      "clinic",
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "मैं सैम हूँ। मैं यहाँ रहता हूँ।",
+      "en": "I am Sam. I live here.",
+      "speaker": "sam",
+      "picture": "🙂📍🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "मैं हिंदी बोलना सीखता हूँ।",
+      "en": "I am learning to speak Hindi.",
+      "speaker": "sam",
+      "picture": "🗣️📚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "मीरा और रवि मेरे दोस्त हैं।",
+      "en": "Meera and Ravi are my friends.",
+      "speaker": "sam",
+      "picture": "👩👨🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "मीरा रवि की बहन है। वह अस्पताल में काम करती है।",
+      "en": "Meera is Ravi's sister. She works at a hospital.",
+      "speaker": "sam",
+      "picture": "👩🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "रवि मीरा का भाई है। वह स्कूल में काम करता है।",
+      "en": "Ravi is Meera's brother. He works at a school.",
+      "speaker": "sam",
+      "picture": "👨🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "रविवार को हम दस बजे चर्च जाते हैं।",
+      "en": "On Sunday we go to church at ten.",
+      "speaker": "sam",
+      "picture": "⛪🕙",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "मुझे यहाँ अच्छा लगता है।",
+      "en": "I like it here.",
+      "speaker": "sam",
+      "picture": "❤️📍",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "यहाँ",
+      "रहता",
+      "बोलना",
+      "सीखता",
+      "दोस्त",
+      "लगता"
+    ],
+    "constructions": [
+      "hi.laga",
+      "hi.third-person-habitual"
+    ]
+  },
+  "represents": [
+    "hi.laga",
+    "hi.third-person-habitual",
+    "hi.present-habitual",
+    "hi.adjective-verb-gender",
+    "hi.mein-place",
+    "hi.time-days",
+    "hi.church-words"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where does Sam live?"
+      },
+      "options": [
+        {
+          "en": "Here"
+        },
+        {
+          "en": "At the market"
+        },
+        {
+          "en": "At the school"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who works at a school?"
+      },
+      "options": [
+        {
+          "en": "Ravi"
+        },
+        {
+          "en": "Meera"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c4",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is Sam learning?"
+      },
+      "options": [
+        {
+          "en": "Hindi"
+        },
+        {
+          "en": "Cooking"
+        },
+        {
+          "en": "Driving"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l7"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Sam like it here?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

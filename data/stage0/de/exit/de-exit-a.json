@@ -1,0 +1,266 @@
+{
+  "id": "de-exit-a",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "Heute ist Lukas auf dem Markt.",
+        "en": "Today Lukas is at the market.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "Er möchte Brot und Kaffee.",
+        "en": "He would like bread and coffee.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "Marta hat Brot, aber sie hat keinen Kaffee.",
+        "en": "Marta has bread, but she does not have coffee.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "Lukas hat zehn Euro.",
+        "en": "Lukas has ten euros.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "Er ist müde und geht nach Hause.",
+        "en": "He is tired and goes home.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Lukas today?"
+        },
+        "options": [
+          {
+            "en": "at the market"
+          },
+          {
+            "en": "at the school"
+          },
+          {
+            "en": "at church"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r3"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Marta NOT have?"
+        },
+        "options": [
+          {
+            "en": "coffee"
+          },
+          {
+            "en": "bread"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r4"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How much money does Lukas have?"
+        },
+        "options": [
+          {
+            "en": "10 euros"
+          },
+          {
+            "en": "2 euros"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r5"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How is Lukas, and where does he go?"
+        },
+        "options": [
+          {
+            "en": "Tired; home"
+          },
+          {
+            "en": "Tired; to church"
+          },
+          {
+            "en": "Happy; to school"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "Ben ist zu Hause.",
+        "en": "Ben is at home.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "Ben möchte Wasser.",
+        "en": "Ben would like water.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Ben?"
+        },
+        "options": [
+          {
+            "en": "at home"
+          },
+          {
+            "en": "at the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Ben want?"
+        },
+        "options": [
+          {
+            "en": "water"
+          },
+          {
+            "en": "coffee"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Where is Lukas today? Answer in German.",
+      "basedOn": [
+        "r1"
+      ],
+      "accept": [
+        {
+          "text": "Lukas ist auf dem Markt"
+        },
+        {
+          "text": "Er ist auf dem Markt"
+        },
+        {
+          "text": "Auf dem Markt"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Give your name and say where you live.",
+      "basedOn": [
+        "de.ich-heisse"
+      ],
+      "accept": [
+        {
+          "text": "Ich heiße {x} ich wohne in {x}"
+        },
+        {
+          "text": "Ich heiße {x} und ich wohne in {x}"
+        },
+        {
+          "text": "Ich heiße {x} und wohne in {x}"
+        }
+      ],
+      "personal": "your name, your town"
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Ask, politely, for water.",
+      "basedOn": [
+        "de.politeness"
+      ],
+      "accept": [
+        {
+          "text": "Ich möchte Wasser, bitte"
+        },
+        {
+          "text": "Wasser, bitte"
+        },
+        {
+          "text": "Ich möchte bitte Wasser"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say your name, and that you would like coffee, please.",
+      "model": "Ich heiße Sam. Ich möchte Kaffee, bitte."
+    }
+  ]
+}

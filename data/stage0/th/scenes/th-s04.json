@@ -1,0 +1,226 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "Answering with the verb",
+      "text": "Thai has no single word for \"yes\" or \"no\" in answer to a question like ไปไหม. You say the verb back for yes (ไป) and put ไม่ before it for no (ไม่ไป).",
+      "explains": [
+        "th.answer-with-verb",
+        "th.negation-mai"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write Mali's answer: ไม่ไปค่ะ",
+      "basedOn": [
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "ไม่ไปค่ะ"
+        },
+        {
+          "text": "ไม่ไป"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Ton asks you: ไปไหมครับ. Say yes, you go.",
+      "basedOn": [
+        "l2",
+        "th.answer-with-verb"
+      ],
+      "accept": [
+        {
+          "text": "ไป"
+        },
+        {
+          "text": "ไปครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ไปค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "th-s04",
+  "title": {
+    "en": "Go or come",
+    "target": "ไป มา"
+  },
+  "world": {
+    "characters": [
+      "luis",
+      "sam",
+      "ana"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "ไปไหมครับ",
+      "en": "Shall we go?",
+      "speaker": "luis",
+      "picture": "🚶❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ไปครับ",
+      "en": "Yes, let us go.",
+      "speaker": "sam",
+      "picture": "🚶",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ไม่ไปค่ะ",
+      "en": "I am not going.",
+      "speaker": "ana",
+      "picture": "🙅🚶",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "มาไหมครับ",
+      "en": "Are you coming?",
+      "speaker": "luis",
+      "picture": "👋❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "ไม่มาค่ะ",
+      "en": "I am not coming.",
+      "speaker": "ana",
+      "picture": "🙅👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ไปดูไหมครับ",
+      "en": "Shall we go and have a look?",
+      "speaker": "sam",
+      "picture": "🚶👀",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ไป",
+      "ไม่",
+      "มา"
+    ],
+    "constructions": [
+      "th.go-come",
+      "th.negation-mai",
+      "th.answer-with-verb"
+    ]
+  },
+  "represents": [
+    "th.go-come",
+    "th.negation-mai",
+    "th.answer-with-verb",
+    "th.mai-question"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam answer?"
+      },
+      "options": [
+        {
+          "en": "Yes, he will go"
+        },
+        {
+          "en": "No, he will not go"
+        },
+        {
+          "en": "He is coming"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Mali go?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Mali say?"
+      },
+      "options": [
+        {
+          "en": "I am not coming"
+        },
+        {
+          "en": "I am coming"
+        },
+        {
+          "en": "I am not well"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

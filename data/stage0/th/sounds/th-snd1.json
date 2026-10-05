@@ -1,0 +1,150 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd1",
+  "title": {
+    "en": "Seven calm letters and three long vowels"
+  },
+  "features": [
+    "class:mid",
+    "vowel:◌า",
+    "vowel:◌ี",
+    "vowel:◌ู",
+    "ending:live",
+    "rule:mid+live=mid"
+  ],
+  "words": [
+    {
+      "text": "ดี",
+      "en": "good",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ปี",
+      "en": "year",
+      "picture": "📅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ตา",
+      "en": "eye",
+      "picture": "👁️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ปู",
+      "en": "crab",
+      "picture": "🦀",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ดู",
+      "en": "to look, to watch",
+      "picture": "👀",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "อา",
+      "en": "aunt or uncle (father's younger brother or sister)",
+      "picture": "🧑",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Thai words are built from consonant letters with vowel signs around them. Here are seven consonants (ก จ ด ต บ ป อ) and three long vowels (า as in \"father\", ี as in \"see\", ู as in \"moon\"): ดี sounds like \"dee\", ปู like \"poo\".",
+    "more": "These seven consonants are called the \"mid class\", and the class of the first letter will decide the tone later. Every Thai syllable has a tone (mid, low, falling, high or rising). A syllable that ends in a long vowel, like these, is said in the plain mid tone: level, like your calm speaking voice. Note that ต is a t with no puff of air (between d and t), and ป is a p with no puff (between b and p); the letter อ is a silent holder when it starts a word, so อา is just \"aa\"."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "ดี",
+      "prompt": "How is ดี said? (It starts with the d sound.)",
+      "options": [
+        "di",
+        "ti",
+        "bi"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "ปู",
+      "prompt": "How is ปู said? (ป is a p without a puff of air.)",
+      "options": [
+        "pu",
+        "phu",
+        "bu"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "ตา",
+      "prompt": "How is ตา said?",
+      "options": [
+        "ta",
+        "da",
+        "pa"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-word",
+      "word": "ตา",
+      "prompt": "Which one means \"eye\"?",
+      "options": [
+        "ปี",
+        "ตา",
+        "ปู"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d5",
+      "kind": "segment",
+      "word": "ผมชื่อแซมครับ",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        2,
+        6,
+        9
+      ]
+    },
+    {
+      "id": "d6",
+      "kind": "segment",
+      "word": "คุณชื่ออะไร",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        3,
+        7
+      ]
+    }
+  ]
+}

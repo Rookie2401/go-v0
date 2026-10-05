@@ -1,0 +1,436 @@
+{
+  "id": "th-exit-a",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "วันนี้บอลอยู่ที่บ้าน",
+        "en": "Today Ball is at home.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "บอลหิวมากแต่ไม่มีข้าว",
+        "en": "Ball is very hungry, but there is no rice.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "ป้าแดงขายขนมที่ตลาด",
+        "en": "Auntie Daeng sells sweets at the market.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "บอลมีสิบบาท",
+        "en": "Ball has ten baht.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "บอลอยากซื้อขนมสองอัน",
+        "en": "Ball wants to buy two sweets.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Ball today?"
+        },
+        "options": [
+          {
+            "en": "At home"
+          },
+          {
+            "en": "At school"
+          },
+          {
+            "en": "At the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What is Ball's problem?"
+        },
+        "options": [
+          {
+            "en": "He is hungry and there is no rice"
+          },
+          {
+            "en": "He is tired and there is no bed"
+          },
+          {
+            "en": "He is cold and there is no tea"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r4"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How much money does Ball have?"
+        },
+        "options": [
+          {
+            "en": "10 baht"
+          },
+          {
+            "en": "5 baht"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r5"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Ball want to buy?"
+        },
+        "options": [
+          {
+            "en": "Two sweets"
+          },
+          {
+            "en": "Two books"
+          },
+          {
+            "en": "Two cups of tea"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "ต้นอยู่ที่ตลาดครับ",
+        "en": "Ton is at the market.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "วันนี้ฉันหิวมากค่ะ",
+        "en": "Today I am very hungry.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Ton?"
+        },
+        "options": [
+          {
+            "en": "At the market"
+          },
+          {
+            "en": "At home"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How does the woman feel today?"
+        },
+        "options": [
+          {
+            "en": "Very hungry"
+          },
+          {
+            "en": "Very tired"
+          },
+          {
+            "en": "Very cold"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Where is Ball today? Answer in Thai.",
+      "basedOn": [
+        "r1"
+      ],
+      "accept": [
+        {
+          "text": "บอลอยู่ที่บ้าน"
+        },
+        {
+          "text": "บอลอยู่ที่บ้านครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "บอลอยู่ที่บ้านค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "อยู่ที่บ้าน"
+        },
+        {
+          "text": "อยู่ที่บ้านครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "อยู่ที่บ้านค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ที่บ้าน"
+        },
+        {
+          "text": "ที่บ้านครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ที่บ้านค่ะ",
+          "speakerForm": "f"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Give your name and say that you are hungry.",
+      "basedOn": [
+        "th.name-chue",
+        "th.feelings"
+      ],
+      "accept": [
+        {
+          "text": "ผมชื่อ{x}ครับผมหิวครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ผมชื่อ{x}ครับหิวครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ชื่อ{x}ครับหิวครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันชื่อ{x}ค่ะฉันหิวค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ฉันชื่อ{x}ค่ะหิวค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ชื่อ{x}ค่ะหิวค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "personal": "your name"
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Ask politely whether there is coffee.",
+      "basedOn": [
+        "th.have-mi",
+        "th.mai-question"
+      ],
+      "accept": [
+        {
+          "text": "มีกาแฟไหม"
+        },
+        {
+          "text": "มีกาแฟไหมครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "มีกาแฟไหมคะ",
+          "speakerForm": "f"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say your name, and that you would like some tea, please.",
+      "model": "ผมชื่อแซมครับ ขอชาครับ"
+    }
+  ],
+  "decoding": [
+    {
+      "id": "x1",
+      "kind": "which-reading",
+      "word": "ลิง",
+      "prompt": "How is ลิง said?",
+      "options": [
+        "ling",
+        "ring",
+        "ning"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x2",
+      "kind": "which-reading",
+      "word": "แขน",
+      "prompt": "How is แขน said?",
+      "options": [
+        "khaen",
+        "kaen",
+        "khen"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x3",
+      "kind": "which-reading",
+      "word": "ไฟ",
+      "prompt": "How is ไฟ said?",
+      "options": [
+        "fai",
+        "pai",
+        "phai"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x4",
+      "kind": "which-reading",
+      "word": "เท้า",
+      "prompt": "How is เท้า said?",
+      "options": [
+        "thao",
+        "tao",
+        "thaw"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x5",
+      "kind": "which-tone",
+      "word": "เก้า",
+      "prompt": "Which tone does เก้า have?",
+      "options": [
+        "falling",
+        "low",
+        "mid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x6",
+      "kind": "which-tone",
+      "word": "ไข่",
+      "prompt": "Which tone does ไข่ have?",
+      "options": [
+        "low",
+        "falling",
+        "rising"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x7",
+      "kind": "which-tone",
+      "word": "เล็ก",
+      "prompt": "Which tone does เล็ก have?",
+      "options": [
+        "high",
+        "low",
+        "falling"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x8",
+      "kind": "which-tone",
+      "word": "ใหญ่",
+      "prompt": "Which tone does ใหญ่ have?",
+      "options": [
+        "low",
+        "falling",
+        "high"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x9",
+      "kind": "segment",
+      "word": "ผมกินข้าวสองจาน",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        2,
+        5,
+        9,
+        12
+      ]
+    },
+    {
+      "id": "x10",
+      "kind": "segment",
+      "word": "บอลไม่กินขนม",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        3,
+        6,
+        9
+      ]
+    }
+  ]
+}

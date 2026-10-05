@@ -1,0 +1,207 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd12",
+  "title": {
+    "en": "Reading the tone from the spelling: all the rules together"
+  },
+  "features": [
+    "sign:thanthakhat",
+    "mark:mai-tri",
+    "class:mid",
+    "class:low",
+    "class:high",
+    "ending:live",
+    "ending:dead",
+    "mark:mai-ek",
+    "rule:low+mai-ek=falling"
+  ],
+  "words": [
+    {
+      "text": "นั่ง",
+      "en": "to sit",
+      "picture": "🪑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "อ่าน",
+      "en": "to read",
+      "picture": "📖",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ฟัง",
+      "en": "to listen",
+      "picture": "👂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "นอน",
+      "en": "to sleep",
+      "picture": "🛏️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "โต๊ะ",
+      "en": "table",
+      "picture": "🪑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ขับ",
+      "en": "to drive",
+      "picture": "🚗",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "วิ่ง",
+      "en": "to run",
+      "picture": "🏃",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "โบสถ์",
+      "en": "church",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Now you can read a Thai syllable like a puzzle: find the class of the first letter, see whether the syllable is live or dead, then look for a tone mark. A mark always beats the plain rule, and ์ above a letter means that letter is silent (โบสถ์ is \"bot\").",
+    "more": "Quick table. No mark, live: mid class mid, high class rising, low class mid. No mark, dead: mid class low, high class low, low class high (short) or falling (long). With ่: mid low, high low, low falling. With ้: mid falling, high falling, low high. The rare marks ๊ and ๋ only appear on mid-class letters and give high and rising: โต๊ะ is high. A tone is a property of the whole syllable, so a word with two syllables has two tones: ถนน, สบาย. You will need this table less and less: after enough Thai you simply know the tone of each word."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-tone",
+      "word": "นั่ง",
+      "prompt": "Which tone does นั่ง have?",
+      "options": [
+        "falling",
+        "low",
+        "mid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-tone",
+      "word": "อ่าน",
+      "prompt": "Which tone does อ่าน have?",
+      "options": [
+        "low",
+        "falling",
+        "rising"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-tone",
+      "word": "ฟัง",
+      "prompt": "Which tone does ฟัง have?",
+      "options": [
+        "mid",
+        "rising",
+        "high"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-tone",
+      "word": "นอน",
+      "prompt": "Which tone does นอน have?",
+      "options": [
+        "mid",
+        "falling",
+        "low"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-tone",
+      "word": "โต๊ะ",
+      "prompt": "Which tone does โต๊ะ have?",
+      "options": [
+        "high",
+        "low",
+        "mid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-tone",
+      "word": "ขับ",
+      "prompt": "Which tone does ขับ have?",
+      "options": [
+        "low",
+        "rising",
+        "high"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "which-tone",
+      "word": "วิ่ง",
+      "prompt": "Which tone does วิ่ง have?",
+      "options": [
+        "falling",
+        "high",
+        "low"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "which-reading",
+      "word": "โบสถ์",
+      "prompt": "How is โบสถ์ said? (The ์ marks a silent letter.)",
+      "options": [
+        "bot",
+        "bosot",
+        "bos"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d9",
+      "kind": "segment",
+      "word": "ผมขับรถครับ",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        2,
+        5,
+        7
+      ]
+    }
+  ]
+}

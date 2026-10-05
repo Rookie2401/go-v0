@@ -1,0 +1,231 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "मुझे … चाहिए",
+      "text": "Hindi does not say \"I want tea\". It says, word for word, \"to me, tea is needed\": मुझे चाय चाहिए. For someone else the person gets को: रवि को चाय चाहिए.",
+      "explains": [
+        "hi.chahiye",
+        "hi.postposition-ko"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "usage",
+      "title": "आप",
+      "text": "आप is the respectful \"you\", used with adults you do not know well. It takes the same verb as \"they\": आपको, आप कैसे हैं.",
+      "explains": [
+        "hi.hum-aap-main"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write what Sam says: \"मुझे पानी चाहिए।\"",
+      "basedOn": [
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "मुझे पानी चाहिए"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Now you want tea. Say it.",
+      "basedOn": [
+        "l3",
+        "hi.chahiye"
+      ],
+      "frame": "मुझे ___ चाहिए।",
+      "accept": [
+        {
+          "text": "मुझे चाय चाहिए"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s05",
+  "title": {
+    "en": "Tea?",
+    "target": "चाय चाहिए?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "things": [
+      "tea",
+      "water"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "सैम, क्या आपको चाय चाहिए?",
+      "en": "Sam, would you like tea? (do you need tea?)",
+      "speaker": "luis",
+      "picture": "🍵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "नहीं, मुझे चाय नहीं चाहिए।",
+      "en": "No, I don't want tea.",
+      "speaker": "sam",
+      "picture": "🙅🍵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "मुझे पानी चाहिए।",
+      "en": "I want water.",
+      "speaker": "sam",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "यह लीजिए, पानी।",
+      "en": "Here you are, water.",
+      "speaker": "ana",
+      "picture": "💧🤲",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "शुक्रिया!",
+      "en": "Thanks!",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "रवि को चाय चाहिए।",
+      "en": "Ravi wants tea.",
+      "speaker": "ana",
+      "picture": "👨🍵",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "आपको",
+      "चाहिए",
+      "लीजिए",
+      "शुक्रिया"
+    ],
+    "constructions": [
+      "hi.chahiye",
+      "hi.postposition-ko"
+    ]
+  },
+  "represents": [
+    "hi.greeting",
+    "hi.kya-question",
+    "hi.negation-nahin",
+    "hi.postposition-ko",
+    "hi.chahiye",
+    "hi.hum-aap-main"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam want?"
+      },
+      "options": [
+        {
+          "en": "water",
+          "picture": "💧"
+        },
+        {
+          "en": "tea",
+          "picture": "🍵"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l6"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who wants tea?"
+      },
+      "options": [
+        {
+          "en": "Ravi"
+        },
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Meera"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Sam want tea?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 1
+    }
+  ]
+}

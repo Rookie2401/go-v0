@@ -1,0 +1,170 @@
+{
+  "lang": "hi",
+  "version": 1,
+  "steps": [
+    {
+      "id": "snd1",
+      "kind": "sounds",
+      "ref": "hi-snd1"
+    },
+    {
+      "id": "s01",
+      "kind": "scene",
+      "ref": "hi-s01"
+    },
+    {
+      "id": "s02",
+      "kind": "scene",
+      "ref": "hi-s02"
+    },
+    {
+      "id": "snd2",
+      "kind": "sounds",
+      "ref": "hi-snd2"
+    },
+    {
+      "id": "s03",
+      "kind": "scene",
+      "ref": "hi-s03"
+    },
+    {
+      "id": "snd3",
+      "kind": "sounds",
+      "ref": "hi-snd3"
+    },
+    {
+      "id": "s04",
+      "kind": "scene",
+      "ref": "hi-s04"
+    },
+    {
+      "id": "snd4",
+      "kind": "sounds",
+      "ref": "hi-snd4"
+    },
+    {
+      "id": "s05",
+      "kind": "scene",
+      "ref": "hi-s05"
+    },
+    {
+      "id": "s06",
+      "kind": "scene",
+      "ref": "hi-s06"
+    },
+    {
+      "id": "snd5",
+      "kind": "sounds",
+      "ref": "hi-snd5"
+    },
+    {
+      "id": "s07",
+      "kind": "scene",
+      "ref": "hi-s07"
+    },
+    {
+      "id": "snd6",
+      "kind": "sounds",
+      "ref": "hi-snd6"
+    },
+    {
+      "id": "s08",
+      "kind": "scene",
+      "ref": "hi-s08"
+    },
+    {
+      "id": "snd7",
+      "kind": "sounds",
+      "ref": "hi-snd7"
+    },
+    {
+      "id": "s09",
+      "kind": "scene",
+      "ref": "hi-s09"
+    },
+    {
+      "id": "snd8",
+      "kind": "sounds",
+      "ref": "hi-snd8"
+    },
+    {
+      "id": "s10",
+      "kind": "scene",
+      "ref": "hi-s10"
+    },
+    {
+      "id": "s11",
+      "kind": "scene",
+      "ref": "hi-s11"
+    },
+    {
+      "id": "r1",
+      "kind": "review",
+      "ref": "hi-s11",
+      "channel": "listen-first"
+    },
+    {
+      "id": "snd9",
+      "kind": "sounds",
+      "ref": "hi-snd9"
+    },
+    {
+      "id": "s12",
+      "kind": "scene",
+      "ref": "hi-s12"
+    },
+    {
+      "id": "s13",
+      "kind": "scene",
+      "ref": "hi-s13"
+    },
+    {
+      "id": "s14",
+      "kind": "scene",
+      "ref": "hi-s14"
+    },
+    {
+      "id": "r2",
+      "kind": "review",
+      "ref": "hi-s14",
+      "channel": "listen-first"
+    },
+    {
+      "id": "s15",
+      "kind": "scene",
+      "ref": "hi-s15"
+    },
+    {
+      "id": "s16",
+      "kind": "scene",
+      "ref": "hi-s16"
+    },
+    {
+      "id": "s17",
+      "kind": "scene",
+      "ref": "hi-s17"
+    },
+    {
+      "id": "r3",
+      "kind": "review",
+      "ref": "hi-s09",
+      "channel": "listen-only"
+    },
+    {
+      "id": "exit",
+      "kind": "exit"
+    }
+  ],
+  "next": [
+    {
+      "textId": "text:hi:s0a-01",
+      "title": "Stage 0A — story 1",
+      "note": "The first controlled story of the Hindi course (a draft awaiting review)."
+    },
+    {
+      "textId": "text:hi:s0a-02",
+      "title": "Stage 0A — story 2",
+      "note": "A draft awaiting review."
+    }
+  ]
+}

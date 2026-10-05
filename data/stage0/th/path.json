@@ -1,0 +1,181 @@
+{
+  "lang": "th",
+  "version": 1,
+  "steps": [
+    {
+      "id": "s01",
+      "kind": "scene",
+      "ref": "th-s01"
+    },
+    {
+      "id": "s02",
+      "kind": "scene",
+      "ref": "th-s02"
+    },
+    {
+      "id": "snd1",
+      "kind": "sounds",
+      "ref": "th-snd1"
+    },
+    {
+      "id": "s03",
+      "kind": "scene",
+      "ref": "th-s03"
+    },
+    {
+      "id": "s04",
+      "kind": "scene",
+      "ref": "th-s04"
+    },
+    {
+      "id": "snd2",
+      "kind": "sounds",
+      "ref": "th-snd2"
+    },
+    {
+      "id": "s05",
+      "kind": "scene",
+      "ref": "th-s05"
+    },
+    {
+      "id": "snd3",
+      "kind": "sounds",
+      "ref": "th-snd3"
+    },
+    {
+      "id": "s06",
+      "kind": "scene",
+      "ref": "th-s06"
+    },
+    {
+      "id": "snd4",
+      "kind": "sounds",
+      "ref": "th-snd4"
+    },
+    {
+      "id": "s07",
+      "kind": "scene",
+      "ref": "th-s07"
+    },
+    {
+      "id": "r1",
+      "kind": "review",
+      "ref": "th-s06",
+      "channel": "listen-first"
+    },
+    {
+      "id": "snd5",
+      "kind": "sounds",
+      "ref": "th-snd5"
+    },
+    {
+      "id": "s08",
+      "kind": "scene",
+      "ref": "th-s08"
+    },
+    {
+      "id": "snd6",
+      "kind": "sounds",
+      "ref": "th-snd6"
+    },
+    {
+      "id": "s09",
+      "kind": "scene",
+      "ref": "th-s09"
+    },
+    {
+      "id": "snd7",
+      "kind": "sounds",
+      "ref": "th-snd7"
+    },
+    {
+      "id": "s10",
+      "kind": "scene",
+      "ref": "th-s10"
+    },
+    {
+      "id": "r2",
+      "kind": "review",
+      "ref": "th-s07",
+      "channel": "listen-first"
+    },
+    {
+      "id": "snd8",
+      "kind": "sounds",
+      "ref": "th-snd8"
+    },
+    {
+      "id": "s11",
+      "kind": "scene",
+      "ref": "th-s11"
+    },
+    {
+      "id": "snd9",
+      "kind": "sounds",
+      "ref": "th-snd9"
+    },
+    {
+      "id": "s12",
+      "kind": "scene",
+      "ref": "th-s12"
+    },
+    {
+      "id": "snd10",
+      "kind": "sounds",
+      "ref": "th-snd10"
+    },
+    {
+      "id": "s13",
+      "kind": "scene",
+      "ref": "th-s13"
+    },
+    {
+      "id": "r3",
+      "kind": "review",
+      "ref": "th-s12",
+      "channel": "listen-only"
+    },
+    {
+      "id": "snd11",
+      "kind": "sounds",
+      "ref": "th-snd11"
+    },
+    {
+      "id": "snd12",
+      "kind": "sounds",
+      "ref": "th-snd12"
+    },
+    {
+      "id": "s14",
+      "kind": "scene",
+      "ref": "th-s14"
+    },
+    {
+      "id": "s15",
+      "kind": "scene",
+      "ref": "th-s15"
+    },
+    {
+      "id": "s16",
+      "kind": "scene",
+      "ref": "th-s16"
+    },
+    {
+      "id": "r4",
+      "kind": "review",
+      "ref": "th-s14",
+      "channel": "listen-only"
+    },
+    {
+      "id": "exit",
+      "kind": "exit"
+    }
+  ],
+  "next": [
+    {
+      "textId": "text:th:bridge-thai-bridge-01",
+      "title": "First Thai bridge story",
+      "note": "A draft awaiting native review; present only when installed."
+    }
+  ]
+}

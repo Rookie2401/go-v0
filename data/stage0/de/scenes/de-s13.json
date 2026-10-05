@@ -1,0 +1,228 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "ihr Bruder",
+      "text": "\"Ihr\" (her) works like mein and dein: ihr Bruder. Sam says \"Ihr Bruder Lukas\" because Lukas is Anna's brother, not his.",
+      "explains": [
+        "de.possessive-ihr"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "describe",
+      "prompt": "Say where you live.",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Ich wohne in {x}"
+        }
+      ],
+      "personal": "your town or country",
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "retell",
+      "prompt": "Tell about Anna in one sentence: where she works.",
+      "basedOn": [
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "Anna arbeitet in der Klinik"
+        },
+        {
+          "text": "Meine Freundin Anna arbeitet in der Klinik"
+        },
+        {
+          "text": "Sie arbeitet in der Klinik"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "de-s13",
+  "title": {
+    "en": "Sam tells about himself",
+    "target": "Ich bin Sam"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "places": [
+      "clinic",
+      "school",
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ich heiße Sam.",
+      "en": "My name is Sam.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ich wohne in der Stadt.",
+      "en": "I live in the city.",
+      "speaker": "sam",
+      "picture": "🏙️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Meine Freundin Anna arbeitet in der Klinik.",
+      "en": "My friend Anna works at the clinic.",
+      "speaker": "sam",
+      "picture": "👩‍⚕️🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ihr Bruder Lukas ist Lehrer in der Schule.",
+      "en": "Her brother Lukas is a teacher at the school.",
+      "speaker": "sam",
+      "picture": "👨‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Am Sonntag gehe ich mit Anna und Lukas in die Kirche.",
+      "en": "On Sunday I go to church with Anna and Lukas.",
+      "speaker": "sam",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Ich mag die Stadt sehr.",
+      "en": "I like the city a lot.",
+      "speaker": "sam",
+      "picture": "❤️🏙️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "wohne",
+      "Freundin",
+      "Ihr",
+      "Lehrer"
+    ],
+    "constructions": [
+      "de.possessive-ihr"
+    ]
+  },
+  "represents": [
+    "de.ich-heisse",
+    "de.present-ich",
+    "de.present-er-sie",
+    "de.possessive-ihr",
+    "de.possessive-mein",
+    "de.gehen-place",
+    "de.time-days",
+    "de.dative-chunks",
+    "de.verb-second"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where does Sam live?"
+      },
+      "options": [
+        {
+          "en": "In the city"
+        },
+        {
+          "en": "At the school"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3",
+        "l4"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who is a teacher?"
+      },
+      "options": [
+        {
+          "en": "Lukas"
+        },
+        {
+          "en": "Anna"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Sam like the city?"
+      },
+      "options": [
+        {
+          "en": "Yes, a lot"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

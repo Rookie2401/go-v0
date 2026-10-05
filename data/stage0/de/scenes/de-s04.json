@@ -1,0 +1,233 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "Bitte schön, danke, gern",
+      "text": "\"Bitte schön\" is what you say when you hand something over. \"Danke\" thanks, and the answer is \"gern\" (gladly). \"Möchte\" is a polite \"would like\": Ich möchte Wasser.",
+      "explains": [
+        "de.politeness",
+        "de.moechten"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "You don't want coffee — you want water.",
+      "basedOn": [
+        "l2"
+      ],
+      "frame": "Nein, danke. Ich möchte ___.",
+      "accept": [
+        {
+          "text": "Nein danke ich möchte Wasser"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Someone offers you coffee, but you want water. What do you say?",
+      "basedOn": [
+        "l2",
+        "de.politeness"
+      ],
+      "accept": [
+        {
+          "text": "Nein, danke. Ich möchte Wasser."
+        },
+        {
+          "text": "Ich möchte Wasser, danke."
+        },
+        {
+          "text": "Nein, danke, ich möchte Wasser."
+        },
+        {
+          "text": "Ich möchte Wasser."
+        },
+        {
+          "text": "Ich möchte Wasser, bitte."
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "de-s04",
+  "title": {
+    "en": "No, thank you",
+    "target": "Nein, danke"
+  },
+  "world": {
+    "characters": [
+      "luis",
+      "sam",
+      "ana"
+    ],
+    "things": [
+      "water",
+      "coffee"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Möchtest du Kaffee, Sam?",
+      "en": "Do you want coffee, Sam?",
+      "speaker": "luis",
+      "picture": "☕❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Nein, danke. Ich möchte Wasser.",
+      "en": "No, thank you. I would like water.",
+      "speaker": "sam",
+      "picture": "🙅☕ 💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Bitte schön.",
+      "en": "Here you are.",
+      "speaker": "luis",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Danke, Lukas.",
+      "en": "Thank you, Lukas.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Gern.",
+      "en": "You're welcome.",
+      "speaker": "luis",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Ich möchte Kaffee.",
+      "en": "I would like coffee.",
+      "speaker": "ana",
+      "picture": "👩☕",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "nein",
+      "danke",
+      "bitte",
+      "schön",
+      "gern"
+    ],
+    "constructions": [
+      "de.politeness"
+    ]
+  },
+  "represents": [
+    "de.moechten",
+    "de.yes-no-question",
+    "de.politeness",
+    "de.present-ich"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam want?"
+      },
+      "options": [
+        {
+          "en": "water",
+          "picture": "💧"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Lukas says \"Gern\". He means:"
+      },
+      "options": [
+        {
+          "en": "You're welcome"
+        },
+        {
+          "en": "I don't have any"
+        },
+        {
+          "en": "Goodbye"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Anna want?"
+      },
+      "options": [
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

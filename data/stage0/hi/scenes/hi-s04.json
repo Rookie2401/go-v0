@@ -1,0 +1,255 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "The small word comes after",
+      "text": "Hindi puts the little word after the place: घर में is \"house in\" — \"at home\". The same is true of the other small words you will meet, such as को and पर.",
+      "explains": [
+        "hi.mein-place"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "है, हैं, हूँ",
+      "text": "है goes with one person or thing (रवि है). हैं goes with more than one, and also with people you respect — पापा हैं, आप हैं. हूँ goes only with मैं.",
+      "explains": [
+        "hi.hai-hain",
+        "hi.hum-aap-main"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n3",
+      "kind": "usage",
+      "title": "Yes-no questions",
+      "text": "A question without a question word is the same words said with a rising voice: पापा घर में हैं? Answer हाँ or नहीं.",
+      "explains": [
+        "hi.yes-no-question"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say that Ravi is at home.",
+      "basedOn": [
+        "l2"
+      ],
+      "frame": "रवि ___ में है।",
+      "accept": [
+        {
+          "text": "रवि घर में है"
+        },
+        {
+          "text": "रवि भी घर में है"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Sam asks \"पापा घर में हैं?\" Say no, and that Dad is at the market.",
+      "basedOn": [
+        "l4",
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "नहीं, पापा घर में नहीं हैं। पापा बाज़ार में हैं।"
+        },
+        {
+          "text": "नहीं, पापा बाज़ार में हैं।"
+        },
+        {
+          "text": "नहीं, पापा घर में नहीं हैं।"
+        },
+        {
+          "text": "पापा बाज़ार में हैं।"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s04",
+  "title": {
+    "en": "At home",
+    "target": "घर में"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "places": [
+      "home",
+      "market"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "मैं घर में हूँ।",
+      "en": "I am at home.",
+      "speaker": "ana",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "रवि भी घर में है।",
+      "en": "Ravi is at home too.",
+      "speaker": "ana",
+      "picture": "👨🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "पापा घर में हैं?",
+      "en": "Is Dad at home?",
+      "speaker": "sam",
+      "picture": "👨❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "नहीं, पापा घर में नहीं हैं।",
+      "en": "No, Dad is not at home.",
+      "speaker": "ana",
+      "picture": "🚫🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "पापा बाज़ार में हैं।",
+      "en": "Dad is at the market.",
+      "speaker": "ana",
+      "picture": "🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "हाँ, पापा बाज़ार में हैं।",
+      "en": "Yes, Dad is at the market.",
+      "speaker": "luis",
+      "picture": "👍🛒",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "भी",
+      "बाज़ार"
+    ],
+    "constructions": [
+      "hi.hai-hain",
+      "hi.mein-place",
+      "hi.negation-nahin",
+      "hi.yes-no-question"
+    ]
+  },
+  "represents": [
+    "hi.yah-vah-hai",
+    "hi.hai-hain",
+    "hi.mein-place",
+    "hi.negation-nahin",
+    "hi.yes-no-question",
+    "hi.hum-aap-main"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3",
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is Dad at home?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 1
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where is Dad?"
+      },
+      "options": [
+        {
+          "en": "At the market"
+        },
+        {
+          "en": "At school"
+        },
+        {
+          "en": "At church"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l2"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who else is at home with Meera?"
+      },
+      "options": [
+        {
+          "en": "Ravi"
+        },
+        {
+          "en": "Dad"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

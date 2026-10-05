@@ -1,0 +1,357 @@
+{
+  "id": "hi-exit-a",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "रवि आज बाज़ार जाता है।",
+        "en": "Ravi goes to the market today.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "सीता नानी बाज़ार में रोटी और चावल बेचती हैं।",
+        "en": "Seeta Nani sells roti and rice at the market.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "रवि को रोटी पसंद है, चावल नहीं।",
+        "en": "Ravi likes roti, not rice.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "रवि दस रुपये की रोटी लेता है।",
+        "en": "Ravi buys roti for ten rupees.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "रवि थका है, लेकिन अमन थका नहीं है।",
+        "en": "Ravi is tired, but Aman is not tired.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where does Ravi go today?"
+        },
+        "options": [
+          {
+            "en": "To the market"
+          },
+          {
+            "en": "To school"
+          },
+          {
+            "en": "To church"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r3"
+        ],
+        "kind": "picture-choice",
+        "question": {
+          "en": "What does Ravi like?"
+        },
+        "options": [
+          {
+            "en": "roti",
+            "picture": "🫓"
+          },
+          {
+            "en": "rice",
+            "picture": "🍚"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r4"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How much is the roti?"
+        },
+        "options": [
+          {
+            "en": "10 rupees"
+          },
+          {
+            "en": "5 rupees"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r5"
+        ],
+        "kind": "who",
+        "question": {
+          "en": "Who is not tired?"
+        },
+        "options": [
+          {
+            "en": "Aman"
+          },
+          {
+            "en": "Ravi"
+          },
+          {
+            "en": "Meera"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "अमन घर में है।",
+        "en": "Aman is at home.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "अमन को दूध चाहिए।",
+        "en": "Aman wants milk.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Aman?"
+        },
+        "options": [
+          {
+            "en": "At home"
+          },
+          {
+            "en": "At the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Aman want?"
+        },
+        "options": [
+          {
+            "en": "Milk"
+          },
+          {
+            "en": "Tea"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Where does Ravi go today? Answer in Hindi.",
+      "basedOn": [
+        "r1"
+      ],
+      "accept": [
+        {
+          "text": "रवि बाज़ार जाता है"
+        },
+        {
+          "text": "बाज़ार जाता है"
+        },
+        {
+          "text": "बाज़ार"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Give your name and say where you live.",
+      "basedOn": [
+        "hi.mera-naam",
+        "hi.present-habitual"
+      ],
+      "accept": [
+        {
+          "text": "मेरा नाम {x} है। मैं {x} में रहता हूँ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "मेरा नाम {x} है। मैं {x} में रहती हूँ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "मेरा नाम {x} है। मैं यहाँ रहता हूँ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "मेरा नाम {x} है। मैं यहाँ रहती हूँ",
+          "speakerForm": "f"
+        }
+      ],
+      "personal": "your name, your town"
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Say that you want water.",
+      "basedOn": [
+        "hi.chahiye"
+      ],
+      "accept": [
+        {
+          "text": "मुझे पानी चाहिए"
+        },
+        {
+          "text": "पानी चाहिए"
+        },
+        {
+          "text": "मुझे पानी चाहिए, शुक्रिया"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say your name, and that you like water.",
+      "model": "मेरा नाम सैम है। मुझे पानी पसंद है।"
+    }
+  ],
+  "decoding": [
+    {
+      "id": "x1",
+      "kind": "which-reading",
+      "word": "रानी",
+      "prompt": "How is \"रानी\" said?",
+      "options": [
+        "ranī",
+        "rānī",
+        "rāni"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "x2",
+      "kind": "which-reading",
+      "word": "चाकू",
+      "prompt": "How is \"चाकू\" said?",
+      "options": [
+        "cāku",
+        "cākū",
+        "cakū"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "x3",
+      "kind": "which-reading",
+      "word": "चाँद",
+      "prompt": "How is \"चाँद\" said?",
+      "options": [
+        "cād",
+        "cāṁd"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "x4",
+      "kind": "which-reading",
+      "word": "घड़ी",
+      "prompt": "How is \"घड़ी\" said?",
+      "options": [
+        "ghaḍī",
+        "ghaṛī"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "x5",
+      "kind": "which-reading",
+      "word": "पैर",
+      "prompt": "How is \"पैर\" said?",
+      "options": [
+        "per",
+        "pair"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "x6",
+      "kind": "which-reading",
+      "word": "ठंडा",
+      "prompt": "How is \"ठंडा\" said?",
+      "options": [
+        "ṭaṇḍā",
+        "ṭhaṇḍā"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "x7",
+      "kind": "which-reading",
+      "word": "दिल",
+      "prompt": "How is \"दिल\" said?",
+      "options": [
+        "dil",
+        "ḍil"
+      ],
+      "answer": 0
+    }
+  ]
+}

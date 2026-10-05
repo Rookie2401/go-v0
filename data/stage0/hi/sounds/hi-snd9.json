@@ -1,0 +1,172 @@
+{
+  "lang": "hi",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "hi-snd9",
+  "title": {
+    "en": "When two letters join: क्य स्क स्त च्छ र्च"
+  },
+  "features": [
+    "conjunct:क्य",
+    "conjunct:स्क",
+    "conjunct:स्त",
+    "conjunct:च्छ",
+    "conjunct:र्च",
+    "conjunct:क्र",
+    "sign:reph",
+    "sign:rakar"
+  ],
+  "words": [
+    {
+      "text": "क्या",
+      "en": "what",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "स्कूल",
+      "en": "school",
+      "picture": "🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "नमस्ते",
+      "en": "hello",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "अच्छा",
+      "en": "good; I see",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "चर्च",
+      "en": "church",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "शुक्रिया",
+      "en": "thanks",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "When two sounds come together with no vowel between them, Hindi joins the letters into one shape: स and त make स्त (na-mas-te), क and य make क्य (kyā), स and क make स्क (skūl). The first letter often loses its vertical bar. A small hook above a letter, as in चर्च, means an r said before it.",
+    "more": "A letter with a small slanted stroke (्) at its foot has lost its vowel; the next letter then joins it. You have already met these shapes in नमस्ते and क्या. Look for the join, say the first sound without a vowel, then the second."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "क्या",
+      "prompt": "How is \"क्या\" said?",
+      "options": [
+        "kayā",
+        "kyā"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "स्कूल",
+      "prompt": "How is \"स्कूल\" said?",
+      "options": [
+        "skūl",
+        "sakūl"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "नमस्ते",
+      "prompt": "How is \"नमस्ते\" said?",
+      "options": [
+        "namaste",
+        "namasate"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "अच्छा",
+      "prompt": "How is \"अच्छा\" said?",
+      "options": [
+        "acchā",
+        "achā"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "चर्च",
+      "prompt": "How is \"चर्च\" said?",
+      "options": [
+        "carac",
+        "carc"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d8",
+      "kind": "which-reading",
+      "word": "शुक्रिया",
+      "prompt": "How is \"शुक्रिया\" said?",
+      "options": [
+        "śukriyā",
+        "śukariyā"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "क्या",
+      "prompt": "Which word means \"what\"?",
+      "options": [
+        "क्या",
+        "कहाँ",
+        "कौन"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "which-word",
+      "word": "स्कूल",
+      "prompt": "Which word means \"school\"?",
+      "options": [
+        "सुबह",
+        "स्कूल"
+      ],
+      "answer": 1
+    }
+  ]
+}

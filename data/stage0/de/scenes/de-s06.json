@@ -1,0 +1,213 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "ich bin, du bist, er ist",
+      "text": "The word for \"to be\" changes with who: ich bin (I am), du bist (you are), Anna ist (she is). You have now met all three.",
+      "explains": [
+        "de.present-du",
+        "de.present-ich",
+        "de.sein-identity"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "Heute ist Anna müde",
+      "text": "In a German statement the verb is the second item: \"Anna ist müde.\" If you put \"heute\" first, the verb stays second and Anna moves behind it: \"Heute ist Anna müde.\"",
+      "explains": [
+        "de.verb-second"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Say that you are tired.",
+      "basedOn": [
+        "l5",
+        "de.adjective-state"
+      ],
+      "frame": "Ich bin ___.",
+      "accept": [
+        {
+          "text": "Ich bin müde"
+        },
+        {
+          "text": "Ich bin sehr müde"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "de-s06",
+  "title": {
+    "en": "Anna is tired",
+    "target": "Anna ist müde"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "sam"
+    ],
+    "places": [
+      "clinic"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Anna arbeitet in der Klinik.",
+      "en": "Anna works at the clinic.",
+      "picture": "👩‍⚕️🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Heute ist Anna müde.",
+      "en": "Today Anna is tired.",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Lukas ist auch müde.",
+      "en": "Lukas is tired too.",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Bist du müde, Anna?",
+      "en": "Are you tired, Anna?",
+      "speaker": "sam",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Ja, ich bin sehr müde.",
+      "en": "Yes, I am very tired.",
+      "speaker": "ana",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "arbeitet",
+      "Klinik",
+      "heute",
+      "Bist",
+      "ja",
+      "bin"
+    ],
+    "constructions": [
+      "de.adjective-state",
+      "de.verb-second",
+      "de.present-du"
+    ]
+  },
+  "represents": [
+    "de.adjective-state",
+    "de.verb-second",
+    "de.present-du",
+    "de.present-ich",
+    "de.present-er-sie",
+    "de.yes-no-question",
+    "de.sein-location"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Anna work?"
+      },
+      "options": [
+        {
+          "en": "at the clinic",
+          "picture": "🏥"
+        },
+        {
+          "en": "at the school",
+          "picture": "🏫"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How are Anna and Lukas today?"
+      },
+      "options": [
+        {
+          "en": "Tired"
+        },
+        {
+          "en": "Happy"
+        },
+        {
+          "en": "Hungry"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Is Anna tired?"
+      },
+      "options": [
+        {
+          "en": "Yes, very"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

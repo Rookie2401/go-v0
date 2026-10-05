@@ -1,0 +1,189 @@
+{
+  "lang": "hi",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "hi-snd6",
+  "title": {
+    "en": "A puff of air: ख भ फ छ ठ"
+  },
+  "features": [
+    "letter:ख",
+    "letter:भ",
+    "letter:ठ",
+    "letter:फ",
+    "letter:छ",
+    "letter:थ",
+    "letter:झ"
+  ],
+  "words": [
+    {
+      "text": "खाना",
+      "en": "food; to eat",
+      "picture": "🍛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "मेरा भाई",
+      "en": "my brother",
+      "picture": "👨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ठीक",
+      "en": "fine, all right",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "एक फल",
+      "en": "a fruit",
+      "picture": "🍎",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "छोटा",
+      "en": "small",
+      "picture": "🐣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "थका",
+      "en": "tired (a man)",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "मुझे",
+      "en": "to me",
+      "picture": "🙋",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Some letters come in pairs: one plain, one with a puff of air. क and ख, प and फ, ब and भ, च and छ, ट and ठ. Hold your hand in front of your mouth: ख, फ, भ, छ and ठ push out a little breath. English speakers hear a \"k\" in both क and ख, but Hindi does not.",
+    "more": "The puffed letters are the plain letter with an h: kh, ph, bh, ch (as in \"church\" with a puff), ṭh. Compare काम (kām, work) with खाना (khānā, food), and बहन (bahan) with भाई (bhāī)."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "खाना",
+      "prompt": "How is \"खाना\" said?",
+      "options": [
+        "khānā",
+        "kānā"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "भाई",
+      "prompt": "How is \"भाई\" said?",
+      "options": [
+        "bāī",
+        "bhāī"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "ठीक",
+      "prompt": "How is \"ठीक\" said?",
+      "options": [
+        "ṭhīk",
+        "ṭīk"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "फल",
+      "prompt": "How is \"फल\" said?",
+      "options": [
+        "pal",
+        "phal"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "छोटा",
+      "prompt": "How is \"छोटा\" said?",
+      "options": [
+        "choṭā",
+        "coṭā"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "which-reading",
+      "word": "थका",
+      "prompt": "How is \"थका\" said?",
+      "options": [
+        "takā",
+        "thakā"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d9",
+      "kind": "which-reading",
+      "word": "मुझे",
+      "prompt": "How is \"मुझे\" said?",
+      "options": [
+        "mujhe",
+        "muje"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "खाना",
+      "prompt": "Which word means \"food\"?",
+      "options": [
+        "खाना",
+        "काम"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "which-word",
+      "word": "भाई",
+      "prompt": "Which word means \"brother\"?",
+      "options": [
+        "बहन",
+        "भाई"
+      ],
+      "answer": 1
+    }
+  ]
+}

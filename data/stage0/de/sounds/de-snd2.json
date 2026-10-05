@@ -1,0 +1,145 @@
+{
+  "id": "de-snd2",
+  "lang": "de",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "ö, ü, ch — and long vowels"
+  },
+  "features": [
+    "de:ö",
+    "de:ü",
+    "de:ch",
+    "de:long-vowel"
+  ],
+  "words": [
+    {
+      "text": "schön",
+      "en": "nice, beautiful",
+      "picture": "🌸",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "müde",
+      "en": "tired",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "nicht",
+      "en": "not",
+      "picture": "🚫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "auch",
+      "en": "also, too",
+      "picture": "➕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "sehr",
+      "en": "very",
+      "picture": "❗",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "Tee",
+      "en": "tea",
+      "picture": "🍵",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "ö is like e with rounded lips; ü is like i with rounded lips. ch is a soft hiss after e and i (nicht) and a rougher sound from the back of the throat after a, o, u (auch). A vowel followed by h, or doubled, is long: sehr, Tee.",
+    "more": "ö and ü have no English match: say e (or i) and then round your lips as for \"oo\". The h after a vowel is not said; it only shows that the vowel is long."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "schön",
+      "prompt": "How is \"ö\" said in \"schön\"?",
+      "options": [
+        "say \"e\" and round your lips",
+        "like English \"o\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "müde",
+      "prompt": "How is \"ü\" said in \"müde\"?",
+      "options": [
+        "say \"i\" and round your lips",
+        "like \"oo\" in \"moon\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "nicht",
+      "prompt": "How is \"ch\" said in \"nicht\"?",
+      "options": [
+        "a soft hiss, not a \"k\"",
+        "like \"k\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "auch",
+      "prompt": "And \"ch\" in \"auch\"?",
+      "options": [
+        "rougher, from the back of the throat",
+        "a soft hiss as in \"nicht\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "sehr",
+      "prompt": "In \"sehr\", the h is:",
+      "options": [
+        "not said — it makes the e long",
+        "said like English \"h\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "Tee",
+      "prompt": "How is \"Tee\" said?",
+      "options": [
+        "one long \"ay\": TAY",
+        "two syllables: TAY-eh"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  }
+}

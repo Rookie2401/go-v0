@@ -1,0 +1,182 @@
+{
+  "lang": "hi",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "hi-snd5",
+  "title": {
+    "en": "Short and long: ि ु ू"
+  },
+  "features": [
+    "matra:ि",
+    "matra:ु",
+    "matra:ू",
+    "vowel:इ",
+    "letter:व",
+    "letter:त",
+    "letter:द",
+    "letter:ध",
+    "letter:श"
+  ],
+  "words": [
+    {
+      "text": "रवि",
+      "en": "Ravi",
+      "picture": "👨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "किताब",
+      "en": "book",
+      "picture": "📖",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "सुबह",
+      "en": "morning",
+      "picture": "🌅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "दूध",
+      "en": "milk",
+      "picture": "🥛",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "रुपये",
+      "en": "rupees",
+      "picture": "💵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "बारिश",
+      "en": "rain",
+      "picture": "🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "बाइबल",
+      "en": "the Bible",
+      "picture": "📖",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "The sign ि is a short \"i\" and it is written BEFORE its letter, though you say it after: रवि is ra-vi and किताब is ki-tāb. The signs ु and ू sit under the letter: ु is a short \"u\" (सुबह) and ू is a long \"oo\" (दूध).",
+    "more": "Short and long vowels are different sounds in Hindi: ि and ी, ु and ू. Look at the length of the sign: the longer sign is the longer sound. In रुपये the middle \"a\" is hardly said: rup-ye. A vowel at the start of a word, or after another vowel, has its own letter: इ is the short \"i\" of बाइबल."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "रवि",
+      "prompt": "How is \"रवि\" said?",
+      "options": [
+        "ravi",
+        "ravī"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "किताब",
+      "prompt": "How is \"किताब\" said?",
+      "options": [
+        "kitāb",
+        "kītāb"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "सुबह",
+      "prompt": "How is \"सुबह\" said?",
+      "options": [
+        "subah",
+        "sūbah"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "दूध",
+      "prompt": "How is \"दूध\" said?",
+      "options": [
+        "dudh",
+        "dūdh"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d7",
+      "kind": "which-reading",
+      "word": "बारिश",
+      "prompt": "How is \"बारिश\" said?",
+      "options": [
+        "bāriś",
+        "bārīś"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "which-reading",
+      "word": "बाइबल",
+      "prompt": "How is \"बाइबल\" said?",
+      "options": [
+        "bāibal",
+        "bābal"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-word",
+      "word": "किताब",
+      "prompt": "Which word means \"book\"?",
+      "options": [
+        "किताब",
+        "चाबी",
+        "दूध"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "दूध",
+      "prompt": "Which word means \"milk\"?",
+      "options": [
+        "सुबह",
+        "दूध",
+        "पानी"
+      ],
+      "answer": 1
+    }
+  ]
+}

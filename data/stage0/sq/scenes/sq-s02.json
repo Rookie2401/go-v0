@@ -1,0 +1,190 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "vëllai im, motra ime",
+      "text": "Albanian puts \"my\" after the word: vëllai im (my brother), motra ime (my sister). The little word for \"my\" has two shapes: im after a masculine word, ime after a feminine one. The -i and -a at the end of vëllai and motra mean \"the\".",
+      "explains": [
+        "sq.possessive-im",
+        "sq.definite"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "choose",
+      "prompt": "Which sentence says \"Luan is my brother\"?",
+      "basedOn": [
+        "l4"
+      ],
+      "options": [
+        "Luan është vëllai im.",
+        "Luan është motra ime.",
+        "Ana është vëllai im."
+      ],
+      "accept": [
+        {
+          "text": "Luan është vëllai im."
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "complete",
+      "prompt": "Say \"Ana is my sister\".",
+      "basedOn": [
+        "l5",
+        "sq.possessive-im"
+      ],
+      "frame": "Ana është ___ ime.",
+      "accept": [
+        {
+          "text": "Ana është motra ime"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s02",
+  "title": {
+    "en": "This is Luan",
+    "target": "Ky është Luan"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ky është Luan.",
+      "en": "This is Luan. (He is Luan.)",
+      "speaker": "ana",
+      "picture": "👨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Përshëndetje, Sam.",
+      "en": "Hello, Sam.",
+      "speaker": "luis",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Përshëndetje, Luan. Gëzohem.",
+      "en": "Hello, Luan. Nice to meet you.",
+      "speaker": "sam",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Luan është vëllai im.",
+      "en": "Luan is my brother.",
+      "speaker": "ana",
+      "picture": "👨‍👩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Ana është motra ime.",
+      "en": "Ana is my sister.",
+      "speaker": "luis",
+      "picture": "👩",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ky",
+      "është",
+      "vëllai",
+      "im",
+      "motra"
+    ],
+    "constructions": [
+      "sq.ky-eshte",
+      "sq.possessive-im",
+      "sq.definite"
+    ]
+  },
+  "represents": [
+    "sq.greeting",
+    "sq.ky-eshte",
+    "sq.possessive-im",
+    "sq.definite"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who is Luan?"
+      },
+      "options": [
+        {
+          "en": "Ana's brother"
+        },
+        {
+          "en": "Ana's father"
+        },
+        {
+          "en": "Sam's brother"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Ana is Luan's sister."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

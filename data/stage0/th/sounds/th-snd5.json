@@ -1,0 +1,204 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd5",
+  "title": {
+    "en": "Two small marks bend the tone: ่ and ้"
+  },
+  "features": [
+    "class:mid",
+    "mark:mai-ek",
+    "mark:mai-tho",
+    "rule:mid+mai-ek=low",
+    "rule:mid+mai-tho=falling",
+    "vowel:◌า"
+  ],
+  "words": [
+    {
+      "text": "บ้าน",
+      "en": "house, home",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ป่า",
+      "en": "forest",
+      "picture": "🌲",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ต้น",
+      "en": "a tree, a trunk",
+      "picture": "🌳",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ก่อน",
+      "en": "before",
+      "picture": "⏮️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "จ่าย",
+      "en": "to pay",
+      "picture": "💵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ด้วย",
+      "en": "also, with",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ป้า",
+      "en": "aunt, an older woman",
+      "picture": "👵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ตู้",
+      "en": "cupboard",
+      "picture": "🗄️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Two small marks sit above a consonant and bend the tone: ่ (mai ek) and ้ (mai tho). On a mid-class letter, ่ makes the tone low and ้ makes it fall.",
+    "more": "Low is a low, flat voice. Falling starts high and drops, like an emphatic \"No!\". Look at ป่า (forest, low) and ป้า (aunt, falling): the letters are the same and only the mark differs, so the mark is the whole difference between two words. The tone mark is written over the first consonant or over the vowel that follows it (ตู้, บ้าน). The rule you have just learned is only for mid-class letters; low-class and high-class letters will treat the marks differently."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-tone",
+      "word": "บ้าน",
+      "prompt": "Which tone does บ้าน have?",
+      "options": [
+        "falling",
+        "low",
+        "mid"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-tone",
+      "word": "ป่า",
+      "prompt": "Which tone does ป่า have?",
+      "options": [
+        "mid",
+        "low",
+        "falling"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-tone",
+      "word": "ก่อน",
+      "prompt": "Which tone does ก่อน have?",
+      "options": [
+        "low",
+        "falling",
+        "rising"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-tone",
+      "word": "ป้า",
+      "prompt": "Which tone does ป้า have?",
+      "options": [
+        "low",
+        "mid",
+        "falling"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "d5",
+      "kind": "which-tone",
+      "word": "จ่าย",
+      "prompt": "Which tone does จ่าย have?",
+      "options": [
+        "high",
+        "low",
+        "mid"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "ต้น",
+      "prompt": "How is ต้น said?",
+      "options": [
+        "ton",
+        "don",
+        "tan"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "which-reading",
+      "word": "ด้วย",
+      "prompt": "How is ด้วย said?",
+      "options": [
+        "duai",
+        "dui",
+        "tuai"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "which-word",
+      "word": "ป่า",
+      "prompt": "Which one is \"forest\" (low tone)?",
+      "options": [
+        "ป้า",
+        "ป่า",
+        "ปา"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d9",
+      "kind": "segment",
+      "word": "ผมไปบ้านครับ",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        2,
+        4,
+        8
+      ]
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "lang": "hi",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "hi-snd8",
+  "title": {
+    "en": "Letters with a dot below: ज़ फ़ ड़"
+  },
+  "features": [
+    "sign:nukta",
+    "letter:ड़",
+    "letter:ज़",
+    "letter:फ़",
+    "rule:medial-a-dropped"
+  ],
+  "words": [
+    {
+      "text": "बड़ा",
+      "en": "big",
+      "picture": "🐘",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "लड़का",
+      "en": "boy",
+      "picture": "👦",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "बाज़ार",
+      "en": "market",
+      "picture": "🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "फ़ोन",
+      "en": "phone",
+      "picture": "📱",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "A dot under a letter slightly changes its sound. ज़ is the \"z\" of बाज़ार, फ़ is the \"f\" of फ़ोन, and ड़ is a quick flap of the tongue, a little like a fast \"r\": बड़ा, लड़का.",
+    "more": "ज़ and फ़ are found in words that came from Persian, Arabic and English; some speakers say ज and फ instead, and everyone understands. ड़ is never at the start of a word. In लड़का the middle \"a\" is not said: laṛ-kā."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "बड़ा",
+      "prompt": "How is \"बड़ा\" said?",
+      "options": [
+        "baḍā",
+        "baṛā"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "बाज़ार",
+      "prompt": "How is \"बाज़ार\" said?",
+      "options": [
+        "bājār",
+        "bāzār"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "फ़ोन",
+      "prompt": "How is \"फ़ोन\" said?",
+      "options": [
+        "fon",
+        "phon"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "लड़का",
+      "prompt": "How is \"लड़का\" said?",
+      "options": [
+        "laṛkā",
+        "laḍkā"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-word",
+      "word": "लड़का",
+      "prompt": "Which word means \"boy\"?",
+      "options": [
+        "बड़ा",
+        "लड़का",
+        "फल"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "फ़ोन",
+      "prompt": "Which word means \"phone\"?",
+      "options": [
+        "फल",
+        "फ़ोन"
+      ],
+      "answer": 1
+    }
+  ]
+}

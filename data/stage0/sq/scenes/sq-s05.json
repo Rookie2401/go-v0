@@ -1,0 +1,195 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "në",
+      "text": "Në means \"in\", \"at\" or \"to\": në shtëpi (at home), në shkollë (at school). Notice there is no word for \"the\" in these: \"në shtëpi\" is just \"at home\".",
+      "explains": [
+        "sq.ne-place"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Ana is at the market now. Write it.",
+      "basedOn": [
+        "l1",
+        "l5"
+      ],
+      "frame": "Ana është në ___.",
+      "accept": [
+        {
+          "text": "Ana është në treg"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s05",
+  "title": {
+    "en": "Where everyone is",
+    "target": "Në shtëpi, në shkollë"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "nico",
+      "sam"
+    ],
+    "places": [
+      "home",
+      "school",
+      "market"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ana është në shtëpi.",
+      "en": "Ana is at home.",
+      "picture": "👩🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Luan është në shkollë.",
+      "en": "Luan is at school.",
+      "picture": "👨🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Edhe Ardi është në shkollë.",
+      "en": "Ardi is at school too.",
+      "picture": "👦🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Sam nuk është në shtëpi.",
+      "en": "Sam is not at home.",
+      "picture": "🙂🚫🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Sam është në treg.",
+      "en": "Sam is at the market.",
+      "picture": "🙂🛒",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "në",
+      "shkollë",
+      "edhe",
+      "treg"
+    ],
+    "constructions": [
+      "sq.ne-place"
+    ]
+  },
+  "represents": [
+    "sq.ne-place",
+    "sq.negation-nuk"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is Luan?"
+      },
+      "options": [
+        {
+          "en": "at school",
+          "picture": "🏫"
+        },
+        {
+          "en": "at home",
+          "picture": "🏠"
+        },
+        {
+          "en": "at the market",
+          "picture": "🛒"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who else is at school?"
+      },
+      "options": [
+        {
+          "en": "Ardi"
+        },
+        {
+          "en": "Ana"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is Sam?"
+      },
+      "options": [
+        {
+          "en": "at the market",
+          "picture": "🛒"
+        },
+        {
+          "en": "at home",
+          "picture": "🏠"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

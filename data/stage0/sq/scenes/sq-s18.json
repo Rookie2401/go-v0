@@ -1,0 +1,238 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "yt, jote",
+      "text": "\"Your\" works like \"my\": yt after a masculine word (çelësi yt, your key), jote after a feminine word (çanta jote, your bag) — just like im and ime. Cila is \"which\" for a feminine word, cili for a masculine one.",
+      "explains": [
+        "sq.possessive-yt",
+        "sq.cili-eshte"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Luan asks you: \"A të pëlqen shkolla?\" Say yes, a lot.",
+      "basedOn": [
+        "l7",
+        "sq.me-pelqen"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Po, më pëlqen shumë"
+        },
+        {
+          "text": "Më pëlqen shumë"
+        },
+        {
+          "text": "Po, më pëlqen"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "retell",
+      "prompt": "Say who Luan is, in one sentence.",
+      "basedOn": [
+        "l1"
+      ],
+      "accept": [
+        {
+          "text": "Luan është mësues"
+        },
+        {
+          "text": "Luan është mësues në shkollë"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s18",
+  "title": {
+    "en": "Ardi at school",
+    "target": "Në shkollë"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "luis",
+      "marta"
+    ],
+    "places": [
+      "school"
+    ],
+    "things": [
+      "bag",
+      "book"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Luan është mësues. Ardi është nxënës.",
+      "en": "Luan is a teacher. Ardi is a pupil.",
+      "picture": "👨‍🏫👦",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ardi, cila është çanta jote?",
+      "en": "Ardi, which is your bag?",
+      "speaker": "luis",
+      "picture": "👜❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Nuk e di. Nuk është mbi tavolinë.",
+      "en": "I do not know. It is not on the table.",
+      "speaker": "nico",
+      "picture": "🤷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Gjyshja ka çantën. Çanta jote është në shtëpi.",
+      "en": "Your grandmother has the bag. Your bag is at home.",
+      "speaker": "luis",
+      "picture": "👵👜",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Shumë mirë! Faleminderit.",
+      "en": "Very good! Thank you.",
+      "speaker": "nico",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "S'ka gjë, Ardi. A të pëlqen shkolla?",
+      "en": "No problem, Ardi. Do you like school?",
+      "speaker": "luis",
+      "picture": "🏫❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Po, më pëlqen shumë. Lexoj një libër.",
+      "en": "Yes, I like it a lot. I am reading a book.",
+      "speaker": "nico",
+      "picture": "❤️📖",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "cili",
+      "jote"
+    ],
+    "constructions": [
+      "sq.possessive-yt",
+      "sq.cili-eshte"
+    ]
+  },
+  "represents": [
+    "sq.possessive-yt",
+    "sq.cili-eshte",
+    "sq.nuk-e-di",
+    "sq.me-pelqen",
+    "sq.politeness",
+    "sq.definite",
+    "sq.negation-nuk"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who is the teacher?"
+      },
+      "options": [
+        {
+          "en": "Luan"
+        },
+        {
+          "en": "Ardi"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who has Ardi's bag?"
+      },
+      "options": [
+        {
+          "en": "His grandmother"
+        },
+        {
+          "en": "Luan"
+        },
+        {
+          "en": "Nobody"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l7"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Ardi like school?"
+      },
+      "options": [
+        {
+          "en": "Yes, a lot"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

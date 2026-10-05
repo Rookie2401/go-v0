@@ -1,0 +1,235 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [
+    "de.accusative-chunks"
+  ],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "Hunger haben",
+      "text": "To say you are hungry, German says \"I have hunger\": Ich habe Hunger. In \"Ich räume den Tisch auf\" the verb räumen…auf splits in two, just like einkaufen did.",
+      "explains": [
+        "de.haben-state",
+        "de.separable-verb"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "retell",
+      "prompt": "Tell what Sam wants for dinner, and why, in one sentence.",
+      "basedOn": [
+        "l3",
+        "de.weil"
+      ],
+      "accept": [
+        {
+          "text": "Sam möchte Reis, weil er Hunger hat"
+        },
+        {
+          "text": "Sam möchte Reis weil er Hunger hat"
+        },
+        {
+          "text": "Sam möchte Reis"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "de-s15",
+  "title": {
+    "en": "Dinner at Marta's",
+    "target": "Heute Abend"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis",
+      "marta",
+      "nico"
+    ],
+    "things": [
+      "rice",
+      "bread",
+      "money"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Es regnet. Heute Abend essen wir bei Marta.",
+      "en": "It is raining. Tonight we are eating at Marta's.",
+      "speaker": "ana",
+      "picture": "🌧️🌆🍽️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Heute gibt es Reis und Brot. Was möchtet ihr?",
+      "en": "Today there is rice and bread. What would you all like?",
+      "speaker": "marta",
+      "picture": "🍚🍞❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Ich möchte Reis, weil ich Hunger habe.",
+      "en": "I would like rice, because I am hungry.",
+      "speaker": "sam",
+      "picture": "🍚😋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ich habe auch Hunger. Oma, was kostet das Brot heute?",
+      "en": "I am hungry too. Grandma, how much is the bread today?",
+      "speaker": "nico",
+      "picture": "😋🍞💵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Für dich kostet es nichts, Ben.",
+      "en": "For you it costs nothing, Ben.",
+      "speaker": "marta",
+      "picture": "😄",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Und für mich? Auch nichts?",
+      "en": "And for me? Nothing either?",
+      "speaker": "sam",
+      "picture": "🙂❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Danke, Oma! Ich räume den Tisch auf.",
+      "en": "Thank you, Grandma! I will clear the table.",
+      "speaker": "nico",
+      "picture": "🙏🍽️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "Hunger",
+      "habe",
+      "für",
+      "nichts",
+      "räume",
+      "aufräumen",
+      "den",
+      "dich",
+      "möchtet"
+    ],
+    "constructions": [
+      "de.haben-state"
+    ]
+  },
+  "represents": [
+    "de.haben-state",
+    "de.weil",
+    "de.separable-verb",
+    "de.accusative-chunks",
+    "de.verb-second",
+    "de.w-question",
+    "de.moechten",
+    "de.politeness",
+    "de.dative-chunks",
+    "de.present-ich",
+    "de.es-gibt"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "When do they eat at Marta's?"
+      },
+      "options": [
+        {
+          "en": "In the evening"
+        },
+        {
+          "en": "In the morning"
+        },
+        {
+          "en": "On Monday"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam want, and why?"
+      },
+      "options": [
+        {
+          "en": "Rice — he is hungry"
+        },
+        {
+          "en": "Bread — it costs nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much does the bread cost for Ben?"
+      },
+      "options": [
+        {
+          "en": "Nothing"
+        },
+        {
+          "en": "Two euros"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

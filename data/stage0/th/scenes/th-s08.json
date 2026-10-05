@@ -1,0 +1,281 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "อยู่ที่ and ที่ไหน",
+      "text": "อยู่ที่ means \"is at / lives at\": ต้นอยู่ที่บ้าน. For a question, put ที่ไหน (where) in the place slot: ต้นอยู่ที่ไหน? Thai does not move the question word to the front.",
+      "explains": [
+        "th.location-yu-thi",
+        "th.where-thi-nai"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "usage",
+      "title": "ไม่เห็น, and \"I don't know\"",
+      "text": "ไม่เห็นครับ means \"I do not see (him)\": ไม่ comes just before the verb. To say \"I don't know\", Thai says ไม่รู้ครับ, a phrase you will hear all the time; learn it as one piece.",
+      "explains": [
+        "th.not-see"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Where is Ton? Answer in Thai.",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "ต้นอยู่ที่บ้าน"
+        },
+        {
+          "text": "ต้นอยู่ที่บ้านครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ต้นอยู่ที่บ้านค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "อยู่ที่บ้าน"
+        },
+        {
+          "text": "อยู่ที่บ้านครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "อยู่ที่บ้านค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ที่บ้าน"
+        },
+        {
+          "text": "ที่บ้านครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ที่บ้านค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Ball is at school. Finish the sentence.",
+      "basedOn": [
+        "l5",
+        "th.location-yu-thi"
+      ],
+      "frame": "บอลอยู่ที่___",
+      "accept": [
+        {
+          "text": "บอลอยู่ที่โรงเรียน"
+        },
+        {
+          "text": "บอลอยู่ที่โรงเรียนครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "บอลอยู่ที่โรงเรียนค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "อยู่ที่โรงเรียน"
+        },
+        {
+          "text": "อยู่ที่โรงเรียนครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "อยู่ที่โรงเรียนค่ะ",
+          "speakerForm": "f"
+        }
+      ]
+    }
+  ],
+  "id": "th-s08",
+  "title": {
+    "en": "Where is…?",
+    "target": "อยู่ที่ไหน"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "sam",
+      "luis",
+      "nico"
+    ],
+    "places": [
+      "home",
+      "school"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "ต้นอยู่ที่ไหนคะ",
+      "en": "Where is Ton?",
+      "speaker": "ana",
+      "picture": "👨❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ต้นอยู่ที่บ้านครับ",
+      "en": "Ton is at home.",
+      "speaker": "sam",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "บอลอยู่ที่ไหนคะ",
+      "en": "Where is Ball?",
+      "speaker": "ana",
+      "picture": "🧒❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ไม่เห็นครับ",
+      "en": "I do not see him.",
+      "speaker": "sam",
+      "picture": "🤷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "บอลอยู่ที่โรงเรียนครับ",
+      "en": "Ball is at school.",
+      "speaker": "luis",
+      "picture": "🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ขอบคุณค่ะ",
+      "en": "Thank you.",
+      "speaker": "ana",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "อยู่",
+      "ที่ไหน",
+      "ที่",
+      "เห็น",
+      "โรงเรียน"
+    ],
+    "constructions": [
+      "th.location-yu-thi",
+      "th.where-thi-nai",
+      "th.not-see"
+    ]
+  },
+  "represents": [
+    "th.location-yu-thi",
+    "th.where-thi-nai",
+    "th.not-see",
+    "th.negation-mai",
+    "th.thanks"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is Ton?"
+      },
+      "options": [
+        {
+          "en": "at home",
+          "picture": "🏠"
+        },
+        {
+          "en": "at school",
+          "picture": "🏫"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Can Sam see Ball?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is Ball?"
+      },
+      "options": [
+        {
+          "en": "at school",
+          "picture": "🏫"
+        },
+        {
+          "en": "at home",
+          "picture": "🏠"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

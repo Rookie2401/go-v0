@@ -1,0 +1,263 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "อยาก + verb",
+      "text": "อยาก in front of a verb means \"want to\": อยากกิน (want to eat), อยากดื่ม (want to drink), อยากไป (want to go). It works the same for everyone.",
+      "explains": [
+        "th.want-yak"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "You want to eat rice.",
+      "basedOn": [
+        "l3",
+        "th.want-yak"
+      ],
+      "frame": "อยากกิน___",
+      "accept": [
+        {
+          "text": "อยากกินข้าว"
+        },
+        {
+          "text": "อยากกินข้าวครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "อยากกินข้าวค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมอยากกินข้าว",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันอยากกินข้าว",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมอยากกินข้าวครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันอยากกินข้าวค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say you are hungry, and what you want to eat.",
+      "basedOn": [
+        "l2",
+        "l3",
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "หิวครับอยากกิน{x}ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ผมหิวครับอยากกิน{x}ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ผมหิวครับผมอยากกิน{x}ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "หิวค่ะอยากกิน{x}ค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ฉันหิวค่ะอยากกิน{x}ค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ฉันหิวค่ะฉันอยากกิน{x}ค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "personal": "something to eat"
+    }
+  ],
+  "id": "th-s10",
+  "title": {
+    "en": "Hungry",
+    "target": "หิว"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "sam",
+      "luis"
+    ],
+    "things": [
+      "rice",
+      "coffee"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "หิวไหมคะ",
+      "en": "Are you hungry?",
+      "speaker": "ana",
+      "picture": "🤤❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "หิวครับ",
+      "en": "Yes, I am hungry.",
+      "speaker": "sam",
+      "picture": "🤤",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "อยากกินข้าวครับ",
+      "en": "I want to eat.",
+      "speaker": "sam",
+      "picture": "🍚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "อยากกินอะไรคะ",
+      "en": "What do you want to eat?",
+      "speaker": "ana",
+      "picture": "🍽️❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "อยากกินขนมครับ",
+      "en": "I want to eat sweets.",
+      "speaker": "sam",
+      "picture": "🍡",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ผมอยากดื่มกาแฟครับ",
+      "en": "I want to drink coffee.",
+      "speaker": "luis",
+      "picture": "☕",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "อยาก"
+    ],
+    "constructions": [
+      "th.want-yak"
+    ]
+  },
+  "represents": [
+    "th.want-yak",
+    "th.feelings",
+    "th.eat-drink",
+    "th.mai-question",
+    "th.answer-with-verb",
+    "th.pronoun-i"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is Sam hungry?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam want to eat?"
+      },
+      "options": [
+        {
+          "en": "sweets",
+          "picture": "🍡"
+        },
+        {
+          "en": "rice",
+          "picture": "🍚"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Ton want to drink?"
+      },
+      "options": [
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "tea",
+          "picture": "🍵"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,254 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "जाते हैं, बेचती हैं",
+      "text": "These are the \"do it regularly\" forms: a verb stem + -ता, -ती or -ते, then है / हैं / हूँ. The ending follows who does it: हम जाते हैं; a man says मैं जाता हूँ and a woman मैं जाती हूँ; Seeta Nani (a woman, respected) बेचती हैं. The same form is used for something happening now or soon.",
+      "explains": [
+        "hi.present-habitual"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "usage",
+      "title": "चलो",
+      "text": "चलो is \"come on, let's go\". It is an easy, friendly request to people you call तुम; to someone you call आप you would say चलिए.",
+      "explains": [
+        "hi.imperative-chalo"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say: \"Today we go to the market.\"",
+      "basedOn": [
+        "l1",
+        "hi.present-habitual"
+      ],
+      "frame": "आज हम ___ जाते हैं।",
+      "accept": [
+        {
+          "text": "आज हम बाज़ार जाते हैं"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say what Seeta Nani does.",
+      "basedOn": [
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "सीता नानी रोटी बेचती हैं"
+        },
+        {
+          "text": "नानी रोटी बेचती हैं"
+        },
+        {
+          "text": "सीता नानी रोटी बेचती है"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s10",
+  "title": {
+    "en": "To the market",
+    "target": "बाज़ार"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "आज हम बाज़ार जाते हैं।",
+      "en": "Today we go to the market.",
+      "speaker": "luis",
+      "picture": "🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "बाज़ार में क्या है?",
+      "en": "What is at the market?",
+      "speaker": "sam",
+      "picture": "🛒❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "बाज़ार बड़ा है।",
+      "en": "The market is big.",
+      "speaker": "ana",
+      "picture": "🏪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "बाज़ार में सीता नानी हैं।",
+      "en": "Seeta Nani is at the market.",
+      "speaker": "ana",
+      "picture": "👵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "सीता नानी रोटी बेचती हैं।",
+      "en": "Seeta Nani sells roti (bread).",
+      "speaker": "ana",
+      "picture": "👵🫓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "मुझे रोटी चाहिए।",
+      "en": "I want roti.",
+      "speaker": "sam",
+      "picture": "🫓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "चलो!",
+      "en": "Let's go!",
+      "speaker": "luis",
+      "picture": "🚶",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "हम",
+      "जाते",
+      "रोटी",
+      "बेचती",
+      "चलो"
+    ],
+    "constructions": [
+      "hi.present-habitual",
+      "hi.imperative-chalo"
+    ]
+  },
+  "represents": [
+    "hi.present-habitual",
+    "hi.hum-aap-main",
+    "hi.imperative-chalo",
+    "hi.mein-place",
+    "hi.kya-question",
+    "hi.chahiye"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where do they go today?"
+      },
+      "options": [
+        {
+          "en": "To the market"
+        },
+        {
+          "en": "To church"
+        },
+        {
+          "en": "To school"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Seeta Nani sell?"
+      },
+      "options": [
+        {
+          "en": "roti (bread)",
+          "picture": "🫓"
+        },
+        {
+          "en": "milk",
+          "picture": "🥛"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam want?"
+      },
+      "options": [
+        {
+          "en": "Roti"
+        },
+        {
+          "en": "Tea"
+        },
+        {
+          "en": "A bag"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

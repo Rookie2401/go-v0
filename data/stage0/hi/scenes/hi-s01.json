@@ -1,0 +1,215 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "मेरा नाम … है",
+      "text": "This is how you give your name: word for word, \"my name … is\". In Hindi the little word है, \"is\", comes last.",
+      "explains": [
+        "hi.mera-naam"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "culture",
+      "title": "नमस्ते",
+      "text": "नमस्ते is \"hello\", and it is also said when you part. People often press their palms together when they say it.",
+      "explains": [
+        "hi.greeting"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write what Sam says: \"मेरा नाम सैम है।\"",
+      "basedOn": [
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "मेरा नाम सैम है"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Now give your own name.",
+      "basedOn": [
+        "l5",
+        "hi.mera-naam"
+      ],
+      "frame": "मेरा नाम ___ है।",
+      "accept": [
+        {
+          "text": "मेरा नाम {x} है"
+        }
+      ],
+      "personal": "your name",
+      "speak": true
+    }
+  ],
+  "id": "hi-s01",
+  "title": {
+    "en": "Hello, I am Sam",
+    "target": "नमस्ते"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "नमस्ते।",
+      "en": "Hello.",
+      "speaker": "ana",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "नमस्ते।",
+      "en": "Hello.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "मेरा नाम मीरा है।",
+      "en": "My name is Meera.",
+      "speaker": "ana",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "आपका नाम?",
+      "en": "And your name?",
+      "speaker": "ana",
+      "picture": "🙂❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "मेरा नाम सैम है।",
+      "en": "My name is Sam.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "नमस्ते",
+      "मेरा",
+      "नाम",
+      "है",
+      "आपका"
+    ],
+    "constructions": [
+      "hi.greeting",
+      "hi.mera-naam"
+    ]
+  },
+  "represents": [
+    "hi.greeting",
+    "hi.mera-naam"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is the man's name?"
+      },
+      "options": [
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Meera"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Meera asks Sam something. What?"
+      },
+      "options": [
+        {
+          "en": "His name"
+        },
+        {
+          "en": "Where he lives"
+        },
+        {
+          "en": "Whether he is tired"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l1",
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What are Meera and Sam doing?"
+      },
+      "options": [
+        {
+          "en": "Meeting and greeting"
+        },
+        {
+          "en": "Eating"
+        },
+        {
+          "en": "Saying sorry"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

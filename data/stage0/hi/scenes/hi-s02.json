@@ -1,0 +1,214 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "मेरा and मेरी",
+      "text": "\"My\" changes its ending to match the thing it describes: मेरा भाई (brother), मेरी बहन (sister). Listen for -ा and -ी. Words like भाई take मेरा; words like बहन take मेरी.",
+      "explains": [
+        "hi.mera-meri"
+      ],
+      "afterScenes": 1
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "यह … है",
+      "text": "यह means \"this\" (or \"he, she, it\" close by). \"यह रवि है\" — \"this Ravi is\": the sentence names who or what something is.",
+      "explains": [
+        "hi.yah-vah-hai"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"मीरा मेरी बहन है।\"",
+      "basedOn": [
+        "l5"
+      ],
+      "accept": [
+        {
+          "text": "मीरा मेरी बहन है"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "choose",
+      "prompt": "Which sentence says \"Ravi is my brother\"?",
+      "basedOn": [
+        "l2"
+      ],
+      "options": [
+        "रवि मेरा भाई है।",
+        "रवि मेरी बहन है।",
+        "मीरा मेरा भाई है।"
+      ],
+      "accept": [
+        {
+          "text": "रवि मेरा भाई है।"
+        }
+      ]
+    }
+  ],
+  "id": "hi-s02",
+  "title": {
+    "en": "This is Ravi",
+    "target": "यह रवि है"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "यह रवि है।",
+      "en": "This is Ravi.",
+      "speaker": "ana",
+      "picture": "👨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "रवि मेरा भाई है।",
+      "en": "Ravi is my brother.",
+      "speaker": "ana",
+      "picture": "👩👨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "नमस्ते, सैम।",
+      "en": "Hello, Sam.",
+      "speaker": "luis",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "नमस्ते, रवि।",
+      "en": "Hello, Ravi.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "मीरा मेरी बहन है।",
+      "en": "Meera is my sister.",
+      "speaker": "luis",
+      "picture": "👨👩",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "यह",
+      "भाई",
+      "बहन"
+    ],
+    "constructions": [
+      "hi.yah-vah-hai",
+      "hi.mera-meri"
+    ]
+  },
+  "represents": [
+    "hi.greeting",
+    "hi.mera-naam",
+    "hi.yah-vah-hai",
+    "hi.mera-meri"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who is Ravi to Meera?"
+      },
+      "options": [
+        {
+          "en": "Her brother"
+        },
+        {
+          "en": "Her father"
+        },
+        {
+          "en": "Her friend"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Meera is Ravi's sister."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l1",
+        "l3"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who is Sam meeting?"
+      },
+      "options": [
+        {
+          "en": "Ravi"
+        },
+        {
+          "en": "Meera's father"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

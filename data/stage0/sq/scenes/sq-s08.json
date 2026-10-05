@@ -1,0 +1,231 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "Më pëlqen …",
+      "text": "\"Më pëlqen buka\" works the other way round from English: \"the bread pleases me\". Më means \"to me\", pëlqen means \"pleases\", and the thing you like comes last with its \"the\" ending: buka, kafeja, uji. For \"you like\" say të pëlqen.",
+      "explains": [
+        "sq.me-pelqen"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Say what you like: bread, coffee or water.",
+      "basedOn": [
+        "l2",
+        "sq.me-pelqen"
+      ],
+      "frame": "Më pëlqen ___.",
+      "speak": true,
+      "accept": [
+        {
+          "text": "Më pëlqen buka"
+        },
+        {
+          "text": "Më pëlqen kafeja"
+        },
+        {
+          "text": "Më pëlqen uji"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you do not like coffee.",
+      "basedOn": [
+        "l4"
+      ],
+      "accept": [
+        {
+          "text": "Nuk më pëlqen kafeja"
+        },
+        {
+          "text": "Mua nuk më pëlqen kafeja"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s08",
+  "title": {
+    "en": "I like bread",
+    "target": "Më pëlqen buka"
+  },
+  "world": {
+    "characters": [
+      "marta",
+      "nico",
+      "luis",
+      "sam",
+      "ana"
+    ],
+    "things": [
+      "bread",
+      "coffee",
+      "water"
+    ],
+    "places": [
+      "market"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Drita shet bukë në treg.",
+      "en": "Drita sells bread at the market.",
+      "picture": "👵🍞🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Më pëlqen buka.",
+      "en": "I like bread.",
+      "speaker": "nico",
+      "picture": "👦🍞❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Më pëlqen kafeja.",
+      "en": "I like coffee.",
+      "speaker": "luis",
+      "picture": "👨☕❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Nuk më pëlqen kafeja.",
+      "en": "I do not like coffee.",
+      "speaker": "sam",
+      "picture": "🙂☕🚫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "A të pëlqen uji, Sam?",
+      "en": "Do you like water, Sam?",
+      "speaker": "ana",
+      "picture": "💧❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Po, më pëlqen shumë.",
+      "en": "Yes, I like it a lot.",
+      "speaker": "sam",
+      "picture": "💧❤️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "shet",
+      "bukë",
+      "më",
+      "pëlqen",
+      "të",
+      "shumë"
+    ],
+    "constructions": [
+      "sq.me-pelqen"
+    ]
+  },
+  "represents": [
+    "sq.me-pelqen",
+    "sq.definite",
+    "sq.negation-nuk",
+    "sq.yes-no-a"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Drita sell?"
+      },
+      "options": [
+        {
+          "en": "bread",
+          "picture": "🍞"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3",
+        "l4"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who does NOT like coffee?"
+      },
+      "options": [
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Luan"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Sam like water?"
+      },
+      "options": [
+        {
+          "en": "Yes, a lot"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

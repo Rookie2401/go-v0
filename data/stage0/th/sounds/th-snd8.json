@@ -1,0 +1,222 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd8",
+  "title": {
+    "en": "More vowels: ือ ัว เ◌ีย and อ"
+  },
+  "features": [
+    "vowel:◌ือ",
+    "vowel:◌ัว",
+    "vowel:เ◌ีย",
+    "vowel:◌อ",
+    "class:low",
+    "class:high",
+    "mark:mai-ek",
+    "mark:mai-tho"
+  ],
+  "words": [
+    {
+      "text": "ชื่อ",
+      "en": "name",
+      "picture": "🏷️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ดื่ม",
+      "en": "to drink",
+      "picture": "🥤",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "มือ",
+      "en": "hand",
+      "picture": "🤚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ซื้อ",
+      "en": "to buy",
+      "picture": "🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ตัว",
+      "en": "body; counting word for animals",
+      "picture": "🐕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "วัว",
+      "en": "cow",
+      "picture": "🐄",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "เรียน",
+      "en": "to study",
+      "picture": "📚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "เขียน",
+      "en": "to write",
+      "picture": "✍️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ขอ",
+      "en": "to ask for",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "รอ",
+      "en": "to wait",
+      "picture": "⏳",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Four more vowel shapes you will see everywhere: ือ (a throaty \"uh\"), ัว (like \"oo-a\"), เ◌ีย (like \"ee-a\") and อ on its own (like \"aw\" in \"saw\").",
+    "more": "The shapes wrap around the consonant: in ชื่อ and ดื่ม the vowel sign ื sits above and the tone mark goes above it, so it can look crowded. In ซื้อ the mark ้ sits on a low-class ซ and so gives a high tone. The letter อ is two things: a silent consonant that holds a vowel (อา, อ่าน) and, after another consonant, the vowel \"aw\" (ขอ, รอ). Same letter, but you can tell which by where it stands."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "เรียน",
+      "prompt": "How is เรียน said?",
+      "options": [
+        "rian",
+        "ren",
+        "rin"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "ตัว",
+      "prompt": "How is ตัว said?",
+      "options": [
+        "tua",
+        "tao",
+        "tuo"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "ขอ",
+      "prompt": "How is ขอ said?",
+      "options": [
+        "kho",
+        "kha",
+        "khoe"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-tone",
+      "word": "ชื่อ",
+      "prompt": "Which tone does ชื่อ have?",
+      "options": [
+        "falling",
+        "low",
+        "high"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-tone",
+      "word": "ซื้อ",
+      "prompt": "Which tone does ซื้อ have?",
+      "options": [
+        "high",
+        "falling",
+        "low"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-tone",
+      "word": "ดื่ม",
+      "prompt": "Which tone does ดื่ม have?",
+      "options": [
+        "low",
+        "mid",
+        "falling"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "which-tone",
+      "word": "เขียน",
+      "prompt": "Which tone does เขียน have?",
+      "options": [
+        "rising",
+        "mid",
+        "low"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "which-word",
+      "word": "มือ",
+      "prompt": "Which one is \"hand\"?",
+      "options": [
+        "มา",
+        "มือ",
+        "มี"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d9",
+      "kind": "segment",
+      "word": "ผมซื้อข้าวครับ",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        2,
+        6,
+        10
+      ]
+    }
+  ]
+}

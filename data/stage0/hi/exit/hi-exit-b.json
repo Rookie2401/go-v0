@@ -1,0 +1,344 @@
+{
+  "id": "hi-exit-b",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "आज रविवार है।",
+        "en": "Today is Sunday.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "मीरा और रवि सुबह चर्च जाते हैं।",
+        "en": "Meera and Ravi go to church in the morning.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "सैम घर में है।",
+        "en": "Sam is at home.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "सैम थका है, लेकिन पानी पीता है।",
+        "en": "Sam is tired, but he drinks water.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "सैम को बहुत दूध पसंद है।",
+        "en": "Sam likes milk very much.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What day is it today?"
+        },
+        "options": [
+          {
+            "en": "Sunday"
+          },
+          {
+            "en": "Saturday"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r2"
+        ],
+        "kind": "who",
+        "question": {
+          "en": "Who goes to church?"
+        },
+        "options": [
+          {
+            "en": "Meera and Ravi"
+          },
+          {
+            "en": "Sam"
+          },
+          {
+            "en": "Aman"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r4"
+        ],
+        "kind": "picture-choice",
+        "question": {
+          "en": "What does Sam drink?"
+        },
+        "options": [
+          {
+            "en": "water",
+            "picture": "💧"
+          },
+          {
+            "en": "tea",
+            "picture": "🍵"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r3",
+          "r4"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How is Sam, and where is he?"
+        },
+        "options": [
+          {
+            "en": "Tired, at home"
+          },
+          {
+            "en": "Fine, at church"
+          },
+          {
+            "en": "Tired, at the market"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "रवि बाज़ार में है।",
+        "en": "Ravi is at the market.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "रोटी पाँच रुपये की है।",
+        "en": "The roti is five rupees.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Ravi?"
+        },
+        "options": [
+          {
+            "en": "At the market"
+          },
+          {
+            "en": "At home"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How much is the roti?"
+        },
+        "options": [
+          {
+            "en": "5 rupees"
+          },
+          {
+            "en": "10 rupees"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Where is Sam? Answer in Hindi.",
+      "basedOn": [
+        "r3"
+      ],
+      "accept": [
+        {
+          "text": "सैम घर में है"
+        },
+        {
+          "text": "घर में है"
+        },
+        {
+          "text": "घर में"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Say what you like: tea, milk or water.",
+      "basedOn": [
+        "hi.pasand"
+      ],
+      "accept": [
+        {
+          "text": "मुझे {x} पसंद है"
+        },
+        {
+          "text": "मुझे {x} बहुत पसंद है"
+        }
+      ],
+      "personal": "something you like"
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Say that you are tired.",
+      "basedOn": [
+        "hi.adjective-verb-gender"
+      ],
+      "accept": [
+        {
+          "text": "मैं थका हूँ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "मैं थकी हूँ",
+          "speakerForm": "f"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say where you live, and that you like it here.",
+      "model": "मैं यहाँ रहता हूँ। मुझे यहाँ अच्छा लगता है।"
+    }
+  ],
+  "decoding": [
+    {
+      "id": "x1",
+      "kind": "which-reading",
+      "word": "माँ",
+      "prompt": "How is \"माँ\" said?",
+      "options": [
+        "mā",
+        "māṁ"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "x2",
+      "kind": "which-reading",
+      "word": "नदी",
+      "prompt": "How is \"नदी\" said?",
+      "options": [
+        "nadī",
+        "nādī"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "x3",
+      "kind": "which-reading",
+      "word": "फूल",
+      "prompt": "How is \"फूल\" said?",
+      "options": [
+        "pūl",
+        "phūl"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "x4",
+      "kind": "which-reading",
+      "word": "तेल",
+      "prompt": "How is \"तेल\" said?",
+      "options": [
+        "ṭel",
+        "tel"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "x5",
+      "kind": "which-reading",
+      "word": "आँख",
+      "prompt": "How is \"आँख\" said?",
+      "options": [
+        "ākh",
+        "āṁkh"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "x6",
+      "kind": "which-reading",
+      "word": "सड़क",
+      "prompt": "How is \"सड़क\" said?",
+      "options": [
+        "saḍak",
+        "saṛak"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "x7",
+      "kind": "which-reading",
+      "word": "भालू",
+      "prompt": "How is \"भालू\" said?",
+      "options": [
+        "bālū",
+        "bhālū"
+      ],
+      "answer": 1
+    }
+  ]
+}

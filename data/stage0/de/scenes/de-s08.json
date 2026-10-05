@@ -1,0 +1,249 @@
+{
+  "lang": "de",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "German drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "gern",
+      "text": "Put \"gern\" after the verb to say you like doing something: Ich trinke gern Kaffee — \"I drink coffee gladly\". Ben isst gern Brot.",
+      "explains": [
+        "de.gern-verb"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "kein and nicht",
+      "text": "\"Kein\" says \"not any\" about a thing: Ich trinke keinen Kaffee. For other words use \"nicht\": Sam ist nicht zu Hause.",
+      "explains": [
+        "de.negation-kein",
+        "de.negation-nicht"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Say what you like to drink: coffee, tea or water.",
+      "basedOn": [
+        "l3",
+        "de.gern-verb"
+      ],
+      "frame": "Ich trinke gern ___.",
+      "accept": [
+        {
+          "text": "Ich trinke gern Wasser"
+        },
+        {
+          "text": "Ich trinke gern Kaffee"
+        },
+        {
+          "text": "Ich trinke gern Tee"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you don't drink coffee.",
+      "basedOn": [
+        "l4"
+      ],
+      "accept": [
+        {
+          "text": "Ich trinke keinen Kaffee"
+        },
+        {
+          "text": "Ich mag keinen Kaffee"
+        },
+        {
+          "text": "Ich mag Kaffee nicht"
+        }
+      ]
+    }
+  ],
+  "id": "de-s08",
+  "title": {
+    "en": "I like to eat bread",
+    "target": "Ich esse gern Brot"
+  },
+  "world": {
+    "characters": [
+      "marta",
+      "nico",
+      "luis",
+      "sam",
+      "ana"
+    ],
+    "things": [
+      "bread",
+      "coffee",
+      "water"
+    ],
+    "places": [
+      "market"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Meine Oma verkauft Brot auf dem Markt.",
+      "en": "My grandma sells bread at the market.",
+      "speaker": "nico",
+      "picture": "👵🍞🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Und Ben isst gern Brot.",
+      "en": "And Ben likes to eat bread.",
+      "speaker": "marta",
+      "picture": "👦🍞❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Ich trinke gern Kaffee.",
+      "en": "I like to drink coffee.",
+      "speaker": "luis",
+      "picture": "👨☕❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ich trinke keinen Kaffee.",
+      "en": "I don't drink coffee.",
+      "speaker": "sam",
+      "picture": "🙂☕🚫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Trinkst du gern Wasser, Sam?",
+      "en": "Do you like to drink water, Sam?",
+      "speaker": "ana",
+      "picture": "💧❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Ja, sehr gern.",
+      "en": "Yes, very much.",
+      "speaker": "sam",
+      "picture": "💧❤️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "Oma",
+      "verkauft",
+      "Brot",
+      "isst"
+    ],
+    "constructions": [
+      "de.gern-verb"
+    ]
+  },
+  "represents": [
+    "de.gern-verb",
+    "de.negation-kein",
+    "de.present-ich",
+    "de.present-du",
+    "de.present-er-sie",
+    "de.yes-no-question",
+    "de.possessive-mein",
+    "de.accusative-chunks",
+    "de.dative-chunks"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Ben's grandma sell?"
+      },
+      "options": [
+        {
+          "en": "bread",
+          "picture": "🍞"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3",
+        "l4"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who does NOT drink coffee?"
+      },
+      "options": [
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Lukas"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Sam like to drink water?"
+      },
+      "options": [
+        {
+          "en": "Yes, very much"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

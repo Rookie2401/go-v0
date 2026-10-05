@@ -1,0 +1,185 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "Unë quhem …",
+      "text": "This is how you give your name. Word for word it is \"I am called …\". The little word unë (I) can be left out: \"Quhem Sam\" is just as good.",
+      "explains": [
+        "sq.quhem"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write what Sam says: \"Unë quhem Sam.\"",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Unë quhem Sam"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Now give your own name.",
+      "basedOn": [
+        "l2",
+        "sq.quhem"
+      ],
+      "frame": "Unë quhem ___.",
+      "personal": "your name",
+      "speak": true,
+      "accept": [
+        {
+          "text": "Unë quhem {x}"
+        },
+        {
+          "text": "Quhem {x}"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s01",
+  "title": {
+    "en": "Hello, I am Sam",
+    "target": "Përshëndetje"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Përshëndetje!",
+      "en": "Hello!",
+      "speaker": "ana",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Përshëndetje. Unë quhem Sam.",
+      "en": "Hello. My name is Sam.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Unë quhem Ana.",
+      "en": "My name is Ana.",
+      "speaker": "ana",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Gëzohem, Ana.",
+      "en": "Nice to meet you, Ana.",
+      "speaker": "sam",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Gëzohem, Sam.",
+      "en": "Nice to meet you, Sam.",
+      "speaker": "ana",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "përshëndetje",
+      "unë",
+      "quhem",
+      "gëzohem"
+    ],
+    "constructions": [
+      "sq.greeting",
+      "sq.quhem"
+    ]
+  },
+  "represents": [
+    "sq.greeting",
+    "sq.quhem"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is the man's name?"
+      },
+      "options": [
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Ana"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What are Sam and Ana doing?"
+      },
+      "options": [
+        {
+          "en": "Meeting for the first time"
+        },
+        {
+          "en": "Saying goodbye"
+        },
+        {
+          "en": "Ordering food"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

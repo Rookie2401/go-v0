@@ -1,0 +1,106 @@
+{
+  "id": "sq-snd2",
+  "lang": "sq",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "nj, gj and q"
+  },
+  "features": [
+    "sq:nj",
+    "sq:gj",
+    "sq:q"
+  ],
+  "words": [
+    {
+      "text": "një",
+      "en": "one, a",
+      "picture": "1️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "gjyshe",
+      "en": "grandmother",
+      "picture": "👵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "shqip",
+      "en": "Albanian (the language)",
+      "picture": "🇦🇱",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "gjithashtu",
+      "en": "also",
+      "picture": "➕",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "nj is the ny of \"canyon\": një starts with one sound, ny. gj is a soft j-like sound made with the middle of the tongue (not a hard g). q is a soft ch, close to \"ky\": shqip.",
+    "more": "These are single letters too. gj and q are among the hardest Albanian sounds for English speakers; nobody expects them to be perfect at once. A native recording will show them better than any description."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "një",
+      "prompt": "How is \"një\" said?",
+      "options": [
+        "NYUH — nj as the ny of \"canyon\"",
+        "N-juh — n and j said apart"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "gjyshe",
+      "prompt": "How does \"gjyshe\" start?",
+      "options": [
+        "with a soft j-like sound (not a hard g)",
+        "with a hard g, as in \"go\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "shqip",
+      "prompt": "How does \"shqip\" end?",
+      "options": [
+        "with a soft ch, close to \"ky\": shchip",
+        "with \"kw\", as in English q"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "gjithashtu",
+      "prompt": "How does \"gjithashtu\" start?",
+      "options": [
+        "with a soft j-like gj, then th as in \"think\"",
+        "with a hard g, then a plain t"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  }
+}

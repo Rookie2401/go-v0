@@ -1,0 +1,241 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "ผม and ฉัน",
+      "text": "ผม is \"I\" for a man; ฉัน is \"I\" for a woman. Thai often leaves \"I\" out when it is clear who is speaking, as in ชื่อแซมครับ. คุณ is the polite \"you\".",
+      "explains": [
+        "th.pronoun-i"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "choose",
+      "prompt": "Which sentence says \"I am Sam\" for a man?",
+      "basedOn": [
+        "l4"
+      ],
+      "options": [
+        "ผมชื่อแซมครับ",
+        "ฉันชื่อแซมค่ะ",
+        "คุณชื่อแซมครับ"
+      ],
+      "accept": [
+        {
+          "text": "ผมชื่อแซมครับ"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Say your own name in full, with the word for \"I\".",
+      "basedOn": [
+        "l4",
+        "l6",
+        "th.pronoun-i"
+      ],
+      "frame": "ชื่อ___",
+      "accept": [
+        {
+          "text": "ผมชื่อ{x}ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันชื่อ{x}ค่ะ",
+          "speakerForm": "f"
+        },
+        {
+          "text": "ผมชื่อ{x}",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ฉันชื่อ{x}",
+          "speakerForm": "f"
+        }
+      ],
+      "personal": "your name",
+      "speak": true
+    }
+  ],
+  "id": "th-s02",
+  "title": {
+    "en": "What is your name?",
+    "target": "คุณชื่ออะไร"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "สวัสดีครับ",
+      "en": "Hello.",
+      "speaker": "luis",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "ผมชื่อต้นครับ",
+      "en": "I am Ton.",
+      "speaker": "luis",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "คุณชื่ออะไรครับ",
+      "en": "What is your name?",
+      "speaker": "luis",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ผมชื่อแซมครับ",
+      "en": "I am Sam.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "คุณชื่ออะไรครับ",
+      "en": "What is your name? (Sam to Mali)",
+      "speaker": "sam",
+      "picture": "👩❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "ฉันชื่อมะลิค่ะ",
+      "en": "I am Mali.",
+      "speaker": "ana",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ผม",
+      "คุณ",
+      "อะไร",
+      "ฉัน"
+    ],
+    "constructions": [
+      "th.pronoun-i",
+      "th.what-name"
+    ]
+  },
+  "represents": [
+    "th.greeting",
+    "th.name-chue",
+    "th.pronoun-i",
+    "th.what-name",
+    "th.polite-particle"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is Ton asking Sam?"
+      },
+      "options": [
+        {
+          "en": "What is your name?"
+        },
+        {
+          "en": "Where are you from?"
+        },
+        {
+          "en": "How are you?"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5",
+        "l6"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who is the woman?"
+      },
+      "options": [
+        {
+          "en": "Mali"
+        },
+        {
+          "en": "Ton"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l2",
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Ton (a man) says ผม and Mali (a woman) says ฉัน. What do both words mean?"
+      },
+      "options": [
+        {
+          "en": "I"
+        },
+        {
+          "en": "you"
+        },
+        {
+          "en": "my"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

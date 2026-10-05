@@ -1,0 +1,206 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd11",
+  "title": {
+    "en": "Two consonants together: ครับ, กลับ, ไกล"
+  },
+  "features": [
+    "cluster:คร",
+    "cluster:กล",
+    "cluster:พร",
+    "cluster:ปล",
+    "class:mid",
+    "class:low",
+    "rule:low+dead-short=high",
+    "rule:mid+dead-short=low"
+  ],
+  "words": [
+    {
+      "text": "ครับ",
+      "en": "polite word for a man",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ครู",
+      "en": "teacher",
+      "picture": "👩‍🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "กลับ",
+      "en": "to return, to go back",
+      "picture": "↩️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ไกล",
+      "en": "far",
+      "picture": "📏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ใกล้",
+      "en": "near",
+      "picture": "📍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "กลัว",
+      "en": "to be afraid",
+      "picture": "😨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "เปล่า",
+      "en": "no, not so",
+      "picture": "🙅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "พรุ่งนี้",
+      "en": "tomorrow",
+      "picture": "📆",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Some Thai words start with two consonants said together: ครู (kru), กลับ (klap), พรุ่งนี้ (phrung-nee). The first letter decides the tone class: the ค of ครับ is low-class, so a short dead syllable gets the high tone.",
+    "more": "The pairs you will meet most are กร กล ปร ปล พร คร ขว. Only the first consonant counts for the tone, so กลับ (mid class, dead) is low, while ครับ (low class, short, dead) is high. Remember the marks too: ใกล้ has ้ and falls, while ไกล has no mark and is mid. It is easy to write them wrong, so this pair is a good one to say aloud. In ordinary speech the ร in these pairs is often dropped: ครับ is said \"khráp\" or even \"kháp\"."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-tone",
+      "word": "ครับ",
+      "prompt": "Which tone does ครับ have?",
+      "options": [
+        "high",
+        "low",
+        "falling"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-tone",
+      "word": "กลับ",
+      "prompt": "Which tone does กลับ have?",
+      "options": [
+        "mid",
+        "low",
+        "high"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-tone",
+      "word": "ใกล้",
+      "prompt": "Which tone does ใกล้ have?",
+      "options": [
+        "falling",
+        "mid",
+        "low"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-tone",
+      "word": "ไกล",
+      "prompt": "Which tone does ไกล have?",
+      "options": [
+        "rising",
+        "mid",
+        "high"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d5",
+      "kind": "which-tone",
+      "word": "กลัว",
+      "prompt": "Which tone does กลัว have?",
+      "options": [
+        "mid",
+        "falling",
+        "low"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "ครู",
+      "prompt": "How is ครู said?",
+      "options": [
+        "khru",
+        "kru",
+        "khlu"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "which-reading",
+      "word": "กลับ",
+      "prompt": "How is กลับ said?",
+      "options": [
+        "klap",
+        "klab",
+        "kap"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "which-word",
+      "word": "ไกล",
+      "prompt": "Which one is \"near\" (falling tone)?",
+      "options": [
+        "ไกล",
+        "ใกล้",
+        "กลัว"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d9",
+      "kind": "segment",
+      "word": "พรุ่งนี้ผมกลับบ้าน",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        8,
+        10,
+        14
+      ]
+    }
+  ]
+}

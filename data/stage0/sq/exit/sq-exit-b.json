@@ -1,0 +1,254 @@
+{
+  "id": "sq-exit-b",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "Sot është e diel dhe Ana nuk punon.",
+        "en": "Today is Sunday and Ana does not work.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "Ana shkon në kishë me Luan.",
+        "en": "Ana goes to church with Luan.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "Ardi nuk shkon, sepse është i lodhur.",
+        "en": "Ardi does not go, because he is tired.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "Ardi është në shtëpi me gjyshen.",
+        "en": "Ardi is at home with his grandmother.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "Ardi dhe gjyshja pinë çaj.",
+        "en": "Ardi and his grandmother drink tea.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Why does Ana not work today?"
+        },
+        "options": [
+          {
+            "en": "It is Sunday"
+          },
+          {
+            "en": "She is tired"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where does Ana go?"
+        },
+        "options": [
+          {
+            "en": "to church"
+          },
+          {
+            "en": "to the hospital"
+          },
+          {
+            "en": "to the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r3"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Why does Ardi not go?"
+        },
+        "options": [
+          {
+            "en": "He is tired"
+          },
+          {
+            "en": "He does not like it"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r5"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What do Ardi and his grandmother drink?"
+        },
+        "options": [
+          {
+            "en": "tea"
+          },
+          {
+            "en": "coffee"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "Drita shet oriz.",
+        "en": "Drita sells rice.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "Orizi kushton dhjetë lekë.",
+        "en": "The rice costs ten lekë.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Drita sell?"
+        },
+        "options": [
+          {
+            "en": "rice"
+          },
+          {
+            "en": "coffee"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How much is it?"
+        },
+        "options": [
+          {
+            "en": "10 lekë"
+          },
+          {
+            "en": "20 lekë"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Where does Ana go? Answer in Albanian.",
+      "basedOn": [
+        "r2"
+      ],
+      "accept": [
+        {
+          "text": "Ana shkon në kishë"
+        },
+        {
+          "text": "Shkon në kishë"
+        },
+        {
+          "text": "Në kishë"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Say what you like (bread, coffee or water).",
+      "basedOn": [
+        "sq.me-pelqen"
+      ],
+      "personal": "something you like",
+      "accept": [
+        {
+          "text": "Më pëlqen {x}"
+        }
+      ]
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Someone offers you coffee and you do not want it. Say no, politely.",
+      "basedOn": [
+        "sq.politeness"
+      ],
+      "accept": [
+        {
+          "text": "Jo, faleminderit"
+        },
+        {
+          "text": "Jo, faleminderit. Dua ujë."
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say where you live, and that you like it a lot.",
+      "model": "Jetoj në Shqipëri. Më pëlqen shumë."
+    }
+  ]
+}

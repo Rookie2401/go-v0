@@ -1,0 +1,236 @@
+{
+  "lang": "hi",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "काम करता हूँ, काम करती हूँ",
+      "text": "\"I work\" is \"I do work\": मैं काम करता हूँ (a man) or करती हूँ (a woman). For someone else the helper changes: रवि काम करता है, मीरा काम करती है; and for आप: आप काम करते हैं.",
+      "explains": [
+        "hi.present-habitual",
+        "hi.adjective-verb-gender"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say that you work at a school.",
+      "basedOn": [
+        "l2",
+        "l4",
+        "hi.present-habitual"
+      ],
+      "frame": "मैं स्कूल में काम ___ हूँ।",
+      "accept": [
+        {
+          "text": "मैं स्कूल में काम करता हूँ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "मैं स्कूल में काम करती हूँ",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "retell",
+      "prompt": "Tell where Meera works.",
+      "basedOn": [
+        "l4"
+      ],
+      "accept": [
+        {
+          "text": "मीरा अस्पताल में काम करती है"
+        },
+        {
+          "text": "मीरा अस्पताल में काम करती हैं"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "hi-s12",
+  "title": {
+    "en": "What work do you do?",
+    "target": "आप क्या काम करते हैं?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "places": [
+      "school",
+      "clinic"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "रवि, आप क्या काम करते हैं?",
+      "en": "Ravi, what work do you do?",
+      "speaker": "sam",
+      "picture": "💼❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "मैं स्कूल में काम करता हूँ।",
+      "en": "I work at a school.",
+      "speaker": "luis",
+      "picture": "🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "और मीरा, आप?",
+      "en": "And Meera, you?",
+      "speaker": "sam",
+      "picture": "👩❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "मैं अस्पताल में काम करती हूँ।",
+      "en": "I work at a hospital.",
+      "speaker": "ana",
+      "picture": "🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "और अमन कौन है?",
+      "en": "And who is Aman?",
+      "speaker": "sam",
+      "picture": "👦❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "अमन मेरे स्कूल में है।",
+      "en": "Aman is at my school.",
+      "speaker": "luis",
+      "picture": "👦🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "अमन छोटा लड़का है।",
+      "en": "Aman is a little boy.",
+      "speaker": "luis",
+      "picture": "👦",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "करते",
+      "अस्पताल"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "hi.present-habitual",
+    "hi.adjective-verb-gender",
+    "hi.kya-question",
+    "hi.hum-aap-main",
+    "hi.mein-place",
+    "hi.mera-meri",
+    "hi.yah-vah-hai"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where does Ravi work?"
+      },
+      "options": [
+        {
+          "en": "At a school"
+        },
+        {
+          "en": "At a hospital"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where does Meera work?"
+      },
+      "options": [
+        {
+          "en": "At a hospital"
+        },
+        {
+          "en": "At a school"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6",
+        "l7"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who is at Ravi's school?"
+      },
+      "options": [
+        {
+          "en": "Aman, a little boy"
+        },
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Seeta Nani"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,211 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd10",
+  "title": {
+    "en": "A silent ห in front: หมา, หนาว, ไหม"
+  },
+  "features": [
+    "lead:ho-nam",
+    "lead:o-nam",
+    "class:high",
+    "class:mid",
+    "rule:high+live=rising",
+    "rule:high+mai-ek=low"
+  ],
+  "words": [
+    {
+      "text": "หมา",
+      "en": "dog",
+      "picture": "🐕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "หมู",
+      "en": "pig; pork",
+      "picture": "🐖",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "หนาว",
+      "en": "cold (weather)",
+      "picture": "🥶",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ไหม",
+      "en": "yes/no question word",
+      "picture": "🤔",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ใหม่",
+      "en": "new",
+      "picture": "🆕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "เหนื่อย",
+      "en": "tired",
+      "picture": "😓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "หนึ่ง",
+      "en": "one",
+      "picture": "1️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "อยู่",
+      "en": "to be at; to live",
+      "picture": "🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "อยาก",
+      "en": "to want to",
+      "picture": "💭",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "A silent ห in front of ม น ง ย ล ว is not said: it only turns the low-class letter into a high-class one. So หมา is just \"maa\", but it rises like ขา, and ไหม is \"mai\" with a rising tone.",
+    "more": "The silent ห is how Thai spells the same smooth sounds in a high tone: compare มา (come, mid) with หมา (dog, rising). The tone mark after it follows the high class too: ใหม่ is low, like ข่าว. The letter อ does the same job for just four words: อยู่, อยาก, อย่า and อย่าง. It is silent and gives ย the mid class, so อยู่ (stay) and อยาก (want) are low."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-tone",
+      "word": "หมา",
+      "prompt": "Which tone does หมา have?",
+      "options": [
+        "rising",
+        "mid",
+        "falling"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-tone",
+      "word": "ใหม่",
+      "prompt": "Which tone does ใหม่ have?",
+      "options": [
+        "low",
+        "falling",
+        "rising"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-tone",
+      "word": "หนึ่ง",
+      "prompt": "Which tone does หนึ่ง have?",
+      "options": [
+        "low",
+        "mid",
+        "high"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-tone",
+      "word": "หนาว",
+      "prompt": "Which tone does หนาว have?",
+      "options": [
+        "mid",
+        "rising",
+        "low"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d5",
+      "kind": "which-tone",
+      "word": "อยู่",
+      "prompt": "Which tone does อยู่ have?",
+      "options": [
+        "low",
+        "mid",
+        "high"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-tone",
+      "word": "ไหม",
+      "prompt": "Which tone does ไหม have?",
+      "options": [
+        "mid",
+        "rising",
+        "falling"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d7",
+      "kind": "which-reading",
+      "word": "หมู",
+      "prompt": "How is หมู said? (The ห is silent.)",
+      "options": [
+        "mu",
+        "hu",
+        "nu"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "which-reading",
+      "word": "หนาว",
+      "prompt": "How is หนาว said?",
+      "options": [
+        "nao",
+        "hao",
+        "nuo"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d9",
+      "kind": "segment",
+      "word": "ไม่หนาวครับ",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        3,
+        7
+      ]
+    }
+  ]
+}

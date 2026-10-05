@@ -1,0 +1,159 @@
+{
+  "lang": "hi",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Hindi drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "hi-snd3",
+  "title": {
+    "en": "Little dots: the nose sounds in मैं, हाँ, नहीं"
+  },
+  "features": [
+    "sign:anusvara",
+    "sign:chandrabindu",
+    "rule:anusvara-nasal",
+    "letter:म",
+    "letter:ह",
+    "letter:न",
+    "letter:द",
+    "matra:े",
+    "matra:ै"
+  ],
+  "words": [
+    {
+      "text": "मैं",
+      "en": "I",
+      "picture": "🙋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "हाँ",
+      "en": "yes",
+      "picture": "✅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "नहीं",
+      "en": "no; not",
+      "picture": "❌",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "में",
+      "en": "in",
+      "picture": "📦",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "कहाँ",
+      "en": "where",
+      "picture": "❓📍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "हिंदी",
+      "en": "Hindi",
+      "picture": "🗣️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "पाँच",
+      "en": "five",
+      "picture": "5️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "A dot (ं) or a moon-with-dot (ँ) above a letter adds a soft \"n\" through the nose: मैं, हाँ, नहीं all end in a nasal sound, said through the nose, with the mouth open. Before another letter the dot says the nasal that belongs to it: हिंदी is hin-dī.",
+    "more": "The two marks sound almost the same. ँ is usual on a long ā at the end of a word (हाँ, कहाँ, पाँच), and ं on most other words. The nasal sound is soft: you do not close your mouth on it."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "मैं",
+      "prompt": "How is \"मैं\" said?",
+      "options": [
+        "maiṁ",
+        "mai"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "हाँ",
+      "prompt": "How is \"हाँ\" said?",
+      "options": [
+        "hā",
+        "hāṁ"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "नहीं",
+      "prompt": "How is \"नहीं\" said?",
+      "options": [
+        "nahīṁ",
+        "nahī"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "हिंदी",
+      "prompt": "How is \"हिंदी\" said?",
+      "options": [
+        "hindī",
+        "hidī"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-word",
+      "word": "हाँ",
+      "prompt": "Which word means \"yes\"?",
+      "options": [
+        "नहीं",
+        "हाँ"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d6",
+      "kind": "which-word",
+      "word": "कहाँ",
+      "prompt": "Which word means \"where\"?",
+      "options": [
+        "कहाँ",
+        "में",
+        "मैं"
+      ],
+      "answer": 0
+    }
+  ]
+}

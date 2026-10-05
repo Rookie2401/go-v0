@@ -1,0 +1,244 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "A do kafe?",
+      "text": "A at the start turns a sentence into a yes-or-no question: \"A do kafe?\" means \"Do you want coffee?\". Do means \"you want\" and also \"she or he wants\"; dua is \"I want\".",
+      "explains": [
+        "sq.yes-no-a",
+        "sq.dua-object"
+      ],
+      "afterScenes": 0
+    },
+    {
+      "id": "n2",
+      "kind": "grammar",
+      "title": "ujë, uji",
+      "text": "The same word in two shapes: ujë (water) and uji (the water). Albanian puts \"the\" at the end of the word.",
+      "explains": [
+        "sq.definite"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "You do not want coffee — you want water.",
+      "basedOn": [
+        "l2"
+      ],
+      "frame": "Jo, faleminderit. Dua ___.",
+      "accept": [
+        {
+          "text": "Jo faleminderit dua ujë"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Someone offers you coffee, but you want water. What do you say?",
+      "basedOn": [
+        "l2",
+        "sq.politeness"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Jo, faleminderit. Dua ujë."
+        },
+        {
+          "text": "Faleminderit, dua ujë."
+        },
+        {
+          "text": "Jo, faleminderit, dua ujë."
+        },
+        {
+          "text": "Dua ujë."
+        }
+      ]
+    }
+  ],
+  "id": "sq-s04",
+  "title": {
+    "en": "No, thank you",
+    "target": "Jo, faleminderit"
+  },
+  "world": {
+    "characters": [
+      "luis",
+      "sam",
+      "ana"
+    ],
+    "things": [
+      "water",
+      "coffee"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "A do kafe, Sam?",
+      "en": "Do you want coffee, Sam?",
+      "speaker": "luis",
+      "picture": "☕❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Jo, faleminderit. Dua ujë.",
+      "en": "No, thank you. I want water.",
+      "speaker": "sam",
+      "picture": "🙅☕ 💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Ky është uji, Sam.",
+      "en": "This is the water, Sam.",
+      "speaker": "luis",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Faleminderit, Luan.",
+      "en": "Thank you, Luan.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Ana, a do kafe?",
+      "en": "Ana, do you want coffee?",
+      "speaker": "luis",
+      "picture": "👩☕❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Po, dua kafe.",
+      "en": "Yes, I want coffee.",
+      "speaker": "ana",
+      "picture": "👩☕",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "a",
+      "do",
+      "jo",
+      "faleminderit",
+      "dua",
+      "po"
+    ],
+    "constructions": [
+      "sq.yes-no-a",
+      "sq.dua-object",
+      "sq.politeness"
+    ]
+  },
+  "represents": [
+    "sq.yes-no-a",
+    "sq.dua-object",
+    "sq.politeness",
+    "sq.definite",
+    "sq.ky-eshte"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam want?"
+      },
+      "options": [
+        {
+          "en": "water",
+          "picture": "💧"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Sam says \"Faleminderit\". He means:"
+      },
+      "options": [
+        {
+          "en": "Thank you"
+        },
+        {
+          "en": "Goodbye"
+        },
+        {
+          "en": "I am sorry"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Ana want?"
+      },
+      "options": [
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "jam, je, është",
+      "text": "The word for \"to be\" changes with the person: jam (I am), je (you are), është (she, he or it is). You have now met all three. Po ti? means \"and you?\".",
+      "explains": [
+        "sq.jam-je",
+        "sq.si-je"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write: \"Jam mirë, faleminderit.\"",
+      "basedOn": [
+        "l6"
+      ],
+      "accept": [
+        {
+          "text": "Jam mirë, faleminderit"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Luan asks you: \"Si je?\" Say you are well, and ask him.",
+      "basedOn": [
+        "l2",
+        "sq.si-je"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Jam mirë, faleminderit. Po ti?"
+        },
+        {
+          "text": "Jam mirë. Po ti?"
+        },
+        {
+          "text": "Jam mirë, po ti?"
+        },
+        {
+          "text": "Jam mirë, faleminderit, po ti?"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s11",
+  "title": {
+    "en": "How are you?",
+    "target": "Si je?"
+  },
+  "world": {
+    "characters": [
+      "luis",
+      "sam",
+      "nico"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Mirëdita, Sam. Si je?",
+      "en": "Good day, Sam. How are you?",
+      "speaker": "luis",
+      "picture": "☀️❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Jam mirë, faleminderit. Po ti?",
+      "en": "I am well, thank you. And you?",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Edhe unë jam mirë.",
+      "en": "I am well too.",
+      "speaker": "luis",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Mirëdita!",
+      "en": "Good day!",
+      "speaker": "nico",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Mirëdita, Ardi. Si je?",
+      "en": "Good day, Ardi. How are you?",
+      "speaker": "sam",
+      "picture": "☀️❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Jam mirë, faleminderit.",
+      "en": "I am well, thank you.",
+      "speaker": "nico",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "mirëdita",
+      "si",
+      "je",
+      "jam",
+      "mirë",
+      "ti"
+    ],
+    "constructions": [
+      "sq.si-je",
+      "sq.jam-je"
+    ]
+  },
+  "represents": [
+    "sq.si-je",
+    "sq.jam-je",
+    "sq.greeting",
+    "sq.politeness"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Luan ask?"
+      },
+      "options": [
+        {
+          "en": "How Sam is"
+        },
+        {
+          "en": "Where Sam is"
+        },
+        {
+          "en": "What Sam's name is"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How is Sam?"
+      },
+      "options": [
+        {
+          "en": "Well"
+        },
+        {
+          "en": "Tired"
+        },
+        {
+          "en": "Hungry"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Ardi says \"Mirëdita\". It is a:"
+      },
+      "options": [
+        {
+          "en": "greeting for the daytime"
+        },
+        {
+          "en": "way to say goodbye"
+        },
+        {
+          "en": "way to say thank you"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

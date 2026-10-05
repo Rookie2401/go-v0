@@ -1,0 +1,212 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd7",
+  "title": {
+    "en": "Five vowels written before the consonant"
+  },
+  "features": [
+    "vowel:ไ◌",
+    "vowel:ใ◌",
+    "vowel:แ◌",
+    "vowel:เ◌็",
+    "vowel:โ◌",
+    "rule:low+mai-ek=falling",
+    "rule:mid+dead-short=low"
+  ],
+  "words": [
+    {
+      "text": "ไป",
+      "en": "to go",
+      "picture": "🚶",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ไม่",
+      "en": "not",
+      "picture": "🚫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "แม่",
+      "en": "mother",
+      "picture": "👩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "เป็น",
+      "en": "to be (a person or thing)",
+      "picture": "🧑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "เด็ก",
+      "en": "child",
+      "picture": "🧒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "แดง",
+      "en": "red",
+      "picture": "🟥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ใน",
+      "en": "in, inside",
+      "picture": "📦",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "โลก",
+      "en": "the world",
+      "picture": "🌍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ใจ",
+      "en": "heart, mind",
+      "picture": "❤️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Five vowel letters are written before the consonant but said after it: เ แ โ ไ ใ. So ไป is p + ai (\"pai\"), and แม่ is m + ae (\"mae\").",
+    "more": "ไ and ใ are the same sound (\"ai\", like \"eye\"), and there are only about twenty words with ใ, so you learn those by heart; everything else with this sound is ไ. เ is \"ay\", and with a ็ above it or a closing sound it turns short (เด็ก is \"dek\", เป็น is \"pen\"), แ is \"ae\" as in \"cat\", โ is \"oh\". Your eye jumps ahead to the consonant first, then back to the vowel. The tone still comes from the first consonant: ไม่ is a low-class ม with ่, so it falls."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "ไป",
+      "prompt": "How is ไป said?",
+      "options": [
+        "pai",
+        "pi",
+        "ip"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "แม่",
+      "prompt": "How is แม่ said?",
+      "options": [
+        "mae",
+        "mam",
+        "mai"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "เป็น",
+      "prompt": "How is เป็น said?",
+      "options": [
+        "pen",
+        "pet",
+        "pan"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-tone",
+      "word": "ไม่",
+      "prompt": "Which tone does ไม่ have?",
+      "options": [
+        "falling",
+        "low",
+        "high"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-tone",
+      "word": "เด็ก",
+      "prompt": "Which tone does เด็ก have?",
+      "options": [
+        "mid",
+        "low",
+        "rising"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d6",
+      "kind": "which-tone",
+      "word": "เป็น",
+      "prompt": "Which tone does เป็น have?",
+      "options": [
+        "mid",
+        "low",
+        "falling"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "which-tone",
+      "word": "โลก",
+      "prompt": "Which tone does โลก have?",
+      "options": [
+        "falling",
+        "mid",
+        "high"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "which-word",
+      "word": "เด็ก",
+      "prompt": "Which one is \"child\"?",
+      "options": [
+        "เป็น",
+        "เด็ก",
+        "แดง"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d9",
+      "kind": "segment",
+      "word": "ไม่ไปครับ",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        3,
+        5
+      ]
+    }
+  ]
+}

@@ -1,0 +1,237 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "Nuk e di",
+      "text": "Nuk e di means \"I do not know\". Learn it as one piece for now; the little e is not translated word for word.",
+      "explains": [
+        "sq.nuk-e-di"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Ardi asks: \"Ku është çelësi?\" It is on the table. Answer him.",
+      "basedOn": [
+        "l3",
+        "sq.ku-eshte"
+      ],
+      "accept": [
+        {
+          "text": "Është mbi tavolinë"
+        },
+        {
+          "text": "Çelësi është mbi tavolinë"
+        },
+        {
+          "text": "Mbi tavolinë"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Someone asks you something and you do not know. Say \"I do not know.\"",
+      "basedOn": [
+        "l2",
+        "sq.nuk-e-di"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Nuk e di"
+        },
+        {
+          "text": "Unë nuk e di"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s07",
+  "title": {
+    "en": "Where is my key?",
+    "target": "Ku është çelësi im?"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "marta"
+    ],
+    "things": [
+      "key",
+      "bag"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ku është çelësi im?",
+      "en": "Where is my key?",
+      "speaker": "nico",
+      "picture": "🔑❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Nuk e di, Ardi.",
+      "en": "I do not know, Ardi.",
+      "speaker": "marta",
+      "picture": "🤷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Nuk është mbi tavolinë.",
+      "en": "It is not on the table.",
+      "speaker": "nico",
+      "picture": "🚫🔑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "A është në çantë?",
+      "en": "Is it in the bag?",
+      "speaker": "marta",
+      "picture": "👜❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Po, ja çelësi. Është në çantë!",
+      "en": "Yes, here is the key. It is in the bag!",
+      "speaker": "nico",
+      "picture": "🔑🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Faleminderit, gjyshe.",
+      "en": "Thank you, Grandma.",
+      "speaker": "nico",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "ku",
+      "çelësi",
+      "e",
+      "di",
+      "mbi",
+      "tavolinë",
+      "ja",
+      "gjyshe"
+    ],
+    "constructions": [
+      "sq.ku-eshte",
+      "sq.nuk-e-di"
+    ]
+  },
+  "represents": [
+    "sq.ku-eshte",
+    "sq.nuk-e-di",
+    "sq.possessive-im",
+    "sq.ne-place",
+    "sq.negation-nuk",
+    "sq.yes-no-a",
+    "sq.definite"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is Ardi looking for?"
+      },
+      "options": [
+        {
+          "en": "his key",
+          "picture": "🔑"
+        },
+        {
+          "en": "his bag",
+          "picture": "👜"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Drita know where it is?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where was the key?"
+      },
+      "options": [
+        {
+          "en": "in the bag",
+          "picture": "👜"
+        },
+        {
+          "en": "on the table",
+          "picture": "🪑"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

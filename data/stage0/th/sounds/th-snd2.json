@@ -1,0 +1,205 @@
+{
+  "lang": "th",
+  "kind": "sounds",
+  "version": 1,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "id": "th-snd2",
+  "title": {
+    "en": "Endings: live syllables and dead syllables"
+  },
+  "features": [
+    "class:mid",
+    "ending:live",
+    "ending:dead",
+    "final:n",
+    "final:k",
+    "final:p",
+    "final:t",
+    "vowel:◌ิ",
+    "vowel:◌ะ",
+    "rule:mid+live=mid",
+    "rule:mid+dead-short=low",
+    "rule:mid+dead-long=low"
+  ],
+  "words": [
+    {
+      "text": "กิน",
+      "en": "to eat",
+      "picture": "🍴",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "บิน",
+      "en": "to fly",
+      "picture": "✈️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "จาน",
+      "en": "plate, dish",
+      "picture": "🍽️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ดิน",
+      "en": "soil, earth",
+      "picture": "🌱",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ปาก",
+      "en": "mouth",
+      "picture": "👄",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "กบ",
+      "en": "frog",
+      "picture": "🐸",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "ปิด",
+      "en": "to close",
+      "picture": "🚪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "จับ",
+      "en": "to catch, to grab",
+      "picture": "✋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "จะ",
+      "en": "will (about to)",
+      "picture": "⏭️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "A syllable can end in an open vowel or a nasal sound (n, m, ng) and ring on: that is a \"live\" syllable (กิน, จาน). Or it can stop short with a short vowel or a closed p, t, k sound: that is a \"dead\" syllable (ปาก, ปิด, จะ).",
+    "more": "With a mid-class letter, a live syllable is said in the mid tone (กิน), but a dead syllable drops to the low tone (ปาก, กบ, จะ). The letters ก ด บ at the end of a word are not said as g, d, b: they close the syllable with a k, t or p. So ปิด ends in t, จับ in p and ปาก in k. There are only these three stops at the end of a Thai syllable."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-tone",
+      "word": "กิน",
+      "prompt": "Which tone does กิน have?",
+      "options": [
+        "mid",
+        "low",
+        "rising"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-tone",
+      "word": "ปาก",
+      "prompt": "Which tone does ปาก have?",
+      "options": [
+        "mid",
+        "low",
+        "falling"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d3",
+      "kind": "which-tone",
+      "word": "ปิด",
+      "prompt": "Which tone does ปิด have?",
+      "options": [
+        "low",
+        "mid",
+        "high"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-tone",
+      "word": "จะ",
+      "prompt": "Which tone does จะ have?",
+      "options": [
+        "mid",
+        "high",
+        "low"
+      ],
+      "answer": 2
+    },
+    {
+      "id": "d5",
+      "kind": "which-tone",
+      "word": "ดิน",
+      "prompt": "Which tone does ดิน have?",
+      "options": [
+        "rising",
+        "mid",
+        "low"
+      ],
+      "answer": 1
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "กบ",
+      "prompt": "How is กบ said? (The last letter closes the syllable.)",
+      "options": [
+        "kop",
+        "kob",
+        "kot"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "which-reading",
+      "word": "จับ",
+      "prompt": "How is จับ said?",
+      "options": [
+        "chap",
+        "chab",
+        "chak"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "segment",
+      "word": "ไปกินไหม",
+      "prompt": "Tap where each new word begins.",
+      "boundaries": [
+        2,
+        5
+      ]
+    }
+  ]
+}

@@ -1,0 +1,224 @@
+{
+  "lang": "sq",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "ju lutem, S'ka gjë",
+      "text": "Ju lutem is \"please\" (word for word, \"I ask you\"). S'ka gjë is what you say after \"thank you\": word for word \"there is nothing\", so \"no problem\". Albanians often add the first name when they greet a neighbour: Mirëmëngjes, Drita.",
+      "explains": [
+        "sq.politeness"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Ask for water, politely.",
+      "basedOn": [
+        "l3"
+      ],
+      "frame": "Dua ujë, ___ ___.",
+      "accept": [
+        {
+          "text": "Dua ujë ju lutem"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "It is morning. Greet Drita.",
+      "basedOn": [
+        "l1",
+        "sq.greeting"
+      ],
+      "speak": true,
+      "accept": [
+        {
+          "text": "Mirëmëngjes, Drita"
+        },
+        {
+          "text": "Mirëmëngjes"
+        }
+      ]
+    }
+  ],
+  "id": "sq-s09",
+  "title": {
+    "en": "Good morning at the market",
+    "target": "Mirëmëngjes"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Mirëmëngjes, Drita.",
+      "en": "Good morning, Drita.",
+      "speaker": "sam",
+      "picture": "🌞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Mirëmëngjes, Sam. Çfarë dëshiron?",
+      "en": "Good morning, Sam. What would you like?",
+      "speaker": "marta",
+      "picture": "👵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Dua bukë, ju lutem.",
+      "en": "I would like bread, please.",
+      "speaker": "sam",
+      "picture": "🍞🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Ja buka, Sam.",
+      "en": "Here is the bread, Sam.",
+      "speaker": "marta",
+      "picture": "🍞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Faleminderit, Drita.",
+      "en": "Thank you, Drita.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "S'ka gjë.",
+      "en": "You are welcome. (It is nothing.)",
+      "speaker": "marta",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "mirëmëngjes",
+      "dëshiron",
+      "ju",
+      "lutem",
+      "gjë"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "sq.greeting",
+    "sq.politeness",
+    "sq.dua-object",
+    "sq.definite"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "When is this?"
+      },
+      "options": [
+        {
+          "en": "In the morning"
+        },
+        {
+          "en": "At night"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam ask for?"
+      },
+      "options": [
+        {
+          "en": "bread",
+          "picture": "🍞"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Drita says \"S'ka gjë\". She means:"
+      },
+      "options": [
+        {
+          "en": "You are welcome"
+        },
+        {
+          "en": "I do not have any"
+        },
+        {
+          "en": "Goodbye"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

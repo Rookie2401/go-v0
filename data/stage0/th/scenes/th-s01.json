@@ -1,0 +1,199 @@
+{
+  "lang": "th",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Spoken contemporary Thai drafted for Stage 0; needs a native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "ครับ and ค่ะ",
+      "text": "Men end a polite sentence with ครับ; women end it with ค่ะ. Both also work as a polite \"yes\". There are no spaces between Thai words, so a word like ชื่อมะลิค่ะ is read as ชื่อ + มะลิ + ค่ะ.",
+      "explains": [
+        "th.polite-particle"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write what Sam says to greet Mali: สวัสดีครับ",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "สวัสดีครับ"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Now give your own name, the way Sam does.",
+      "basedOn": [
+        "l4",
+        "th.name-chue"
+      ],
+      "frame": "ชื่อ___",
+      "accept": [
+        {
+          "text": "ชื่อ{x}ครับ",
+          "speakerForm": "m"
+        },
+        {
+          "text": "ชื่อ{x}ค่ะ",
+          "speakerForm": "f"
+        }
+      ],
+      "personal": "your name",
+      "speak": true
+    }
+  ],
+  "id": "th-s01",
+  "title": {
+    "en": "Hello, I am Sam",
+    "target": "สวัสดี"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "สวัสดีค่ะ",
+      "en": "Hello.",
+      "speaker": "ana",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "สวัสดีครับ",
+      "en": "Hello.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "ชื่อมะลิค่ะ",
+      "en": "My name is Mali.",
+      "speaker": "ana",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "ชื่อแซมครับ",
+      "en": "My name is Sam.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "สวัสดี",
+      "ครับ",
+      "ค่ะ",
+      "ชื่อ"
+    ],
+    "constructions": [
+      "th.greeting",
+      "th.polite-particle",
+      "th.name-chue"
+    ]
+  },
+  "represents": [
+    "th.greeting",
+    "th.polite-particle",
+    "th.name-chue"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is the man's name?"
+      },
+      "options": [
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Mali"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l1",
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What are Mali and Sam doing?"
+      },
+      "options": [
+        {
+          "en": "Greeting each other"
+        },
+        {
+          "en": "Saying goodbye"
+        },
+        {
+          "en": "Buying something"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l3",
+        "l4"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Sam and Mali have the same name."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 1
+    }
+  ]
+}

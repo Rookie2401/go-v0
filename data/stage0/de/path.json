@@ -1,0 +1,136 @@
+{
+  "lang": "de",
+  "version": 1,
+  "steps": [
+    {
+      "id": "s01",
+      "kind": "scene",
+      "ref": "de-s01"
+    },
+    {
+      "id": "s02",
+      "kind": "scene",
+      "ref": "de-s02"
+    },
+    {
+      "id": "snd1",
+      "kind": "sounds",
+      "ref": "de-snd1"
+    },
+    {
+      "id": "s03",
+      "kind": "scene",
+      "ref": "de-s03"
+    },
+    {
+      "id": "s04",
+      "kind": "scene",
+      "ref": "de-s04"
+    },
+    {
+      "id": "snd2",
+      "kind": "sounds",
+      "ref": "de-snd2"
+    },
+    {
+      "id": "s05",
+      "kind": "scene",
+      "ref": "de-s05"
+    },
+    {
+      "id": "s06",
+      "kind": "scene",
+      "ref": "de-s06"
+    },
+    {
+      "id": "r1",
+      "kind": "review",
+      "ref": "de-s04",
+      "channel": "listen-first"
+    },
+    {
+      "id": "s07",
+      "kind": "scene",
+      "ref": "de-s07"
+    },
+    {
+      "id": "s08",
+      "kind": "scene",
+      "ref": "de-s08"
+    },
+    {
+      "id": "s09",
+      "kind": "scene",
+      "ref": "de-s09"
+    },
+    {
+      "id": "snd3",
+      "kind": "sounds",
+      "ref": "de-snd3"
+    },
+    {
+      "id": "s10",
+      "kind": "scene",
+      "ref": "de-s10"
+    },
+    {
+      "id": "r2",
+      "kind": "review",
+      "ref": "de-s07",
+      "channel": "listen-first"
+    },
+    {
+      "id": "snd4",
+      "kind": "sounds",
+      "ref": "de-snd4"
+    },
+    {
+      "id": "s11",
+      "kind": "scene",
+      "ref": "de-s11"
+    },
+    {
+      "id": "s12",
+      "kind": "scene",
+      "ref": "de-s12"
+    },
+    {
+      "id": "s13",
+      "kind": "scene",
+      "ref": "de-s13"
+    },
+    {
+      "id": "s14",
+      "kind": "scene",
+      "ref": "de-s14"
+    },
+    {
+      "id": "s15",
+      "kind": "scene",
+      "ref": "de-s15"
+    },
+    {
+      "id": "r3",
+      "kind": "review",
+      "ref": "de-s12",
+      "channel": "listen-only"
+    },
+    {
+      "id": "r4",
+      "kind": "review",
+      "ref": "de-s13",
+      "channel": "listen-only"
+    },
+    {
+      "id": "exit",
+      "kind": "exit"
+    }
+  ],
+  "next": [
+    {
+      "textId": "text:de:weg-1-01",
+      "title": "Weg 1 — first story",
+      "note": "The first controlled story of the German course (a draft awaiting review)."
+    }
+  ]
+}

@@ -1,0 +1,187 @@
+{
+  "id": "sq-snd3",
+  "lang": "sq",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "rr, ll, y, x, c, xh, zh and j"
+  },
+  "features": [
+    "sq:rr",
+    "sq:ll",
+    "sq:y",
+    "sq:x",
+    "sq:c",
+    "sq:xh",
+    "sq:zh",
+    "sq:j"
+  ],
+  "words": [
+    {
+      "text": "rrugë",
+      "en": "street",
+      "picture": "🛣️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "llambë",
+      "en": "lamp",
+      "picture": "💡",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "dy",
+      "en": "two",
+      "picture": "2️⃣",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "lexon",
+      "en": "reads",
+      "picture": "📖",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "cili",
+      "en": "which",
+      "picture": "👉",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "xhaketë",
+      "en": "jacket",
+      "picture": "🧥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "kuzhinë",
+      "en": "kitchen",
+      "picture": "🍳",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "jetoj",
+      "en": "I live",
+      "picture": "🏡",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "rr is a rolled r (a single r is one quick tap); ll is a heavy, dark l; y is an i said with round lips, like German ü. c is ts, x is dz, xh is the j of \"jam\", zh is the s of \"measure\", and j is the y of \"yes\".",
+    "more": "The tricky pairs are c and ç (ts versus ch) and x and xh (dz versus j). Albanian j is not English j: jam is \"yam\", not \"jam\". Every letter has one sound, so these are rules you can trust."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "rrugë",
+      "prompt": "How does \"rrugë\" start?",
+      "options": [
+        "with a rolled r",
+        "with a quick tap of the tongue"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "llambë",
+      "prompt": "How is the \"ll\" in \"llambë\" said?",
+      "options": [
+        "a dark, heavy l",
+        "a light l, as in English \"lamp\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "dy",
+      "prompt": "How is the \"y\" in \"dy\" said?",
+      "options": [
+        "an i with round lips, like German ü",
+        "like the y of English \"yes\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "lexon",
+      "prompt": "How is the \"x\" in \"lexon\" said?",
+      "options": [
+        "dz: leh-DZOHN",
+        "ks: LEK-son"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d5",
+      "kind": "which-reading",
+      "word": "cili",
+      "prompt": "How does \"cili\" start?",
+      "options": [
+        "with ts: TSEE-lee",
+        "with s: SEE-lee"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d6",
+      "kind": "which-reading",
+      "word": "xhaketë",
+      "prompt": "How does \"xhaketë\" start?",
+      "options": [
+        "with the j of \"jam\": JAH-keh-tuh",
+        "with a z: ZAH-keh-tuh"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d7",
+      "kind": "which-reading",
+      "word": "kuzhinë",
+      "prompt": "How is the \"zh\" in \"kuzhinë\" said?",
+      "options": [
+        "like the s of \"measure\"",
+        "like a plain z"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d8",
+      "kind": "which-reading",
+      "word": "jetoj",
+      "prompt": "How does \"jetoj\" start?",
+      "options": [
+        "with the y of \"yes\": YEH-toy",
+        "with the j of \"jam\": JEH-toy"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Contemporary Standard Albanian drafted for Stage 0; needs a native speaker."
+    }
+  }
+}

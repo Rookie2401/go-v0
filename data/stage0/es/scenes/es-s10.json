@@ -1,0 +1,230 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "hay",
+      "text": "Hay (said \"eye\") means \"there is\" or \"there are\": hay pan — there is bread.",
+      "explains": [
+        "es.hay"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Ask how much the bread is.",
+      "basedOn": [
+        "l2",
+        "es.cuanto-cuesta"
+      ],
+      "frame": "¿Cuánto cuesta ___ ___?",
+      "accept": [
+        {
+          "text": "Cuánto cuesta el pan"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "answer",
+      "prompt": "Doña Marta asks you: \"¿Qué querés?\" You want rice.",
+      "basedOn": [
+        "l6"
+      ],
+      "accept": [
+        {
+          "text": "Quiero arroz"
+        },
+        {
+          "text": "Quiero arroz, por favor"
+        },
+        {
+          "text": "Arroz, por favor"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "es-s10",
+  "title": {
+    "en": "How much is it?",
+    "target": "¿Cuánto cuesta?"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread",
+      "rice",
+      "money"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Hoy hay pan y arroz.",
+      "en": "Today there is bread and rice.",
+      "speaker": "marta",
+      "picture": "🍞🍚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "¿Cuánto cuesta el arroz?",
+      "en": "How much is the rice?",
+      "speaker": "sam",
+      "picture": "🍚💵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "El arroz cuesta veinte lempiras.",
+      "en": "The rice costs twenty lempiras.",
+      "speaker": "marta",
+      "picture": "🍚 20",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "¿Y el pan?",
+      "en": "And the bread?",
+      "speaker": "sam",
+      "picture": "🍞❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "El pan cuesta diez lempiras.",
+      "en": "The bread costs ten lempiras.",
+      "speaker": "marta",
+      "picture": "🍞 10",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Quiero pan y arroz, por favor.",
+      "en": "I would like bread and rice, please.",
+      "speaker": "sam",
+      "picture": "🍞🍚🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "hay",
+      "arroz",
+      "cuánto",
+      "cuesta",
+      "veinte",
+      "lempiras",
+      "diez"
+    ],
+    "constructions": [
+      "es.hay",
+      "es.cuanto-cuesta",
+      "es.numbers"
+    ]
+  },
+  "represents": [
+    "es.hay",
+    "es.cuanto-cuesta",
+    "es.numbers",
+    "es.present-1sg",
+    "es.politeness"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much is the rice?"
+      },
+      "options": [
+        {
+          "en": "20 lempiras"
+        },
+        {
+          "en": "10 lempiras"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much is the bread?"
+      },
+      "options": [
+        {
+          "en": "10 lempiras"
+        },
+        {
+          "en": "20 lempiras"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam buy?"
+      },
+      "options": [
+        {
+          "en": "Bread and rice"
+        },
+        {
+          "en": "Only bread"
+        },
+        {
+          "en": "Only rice"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

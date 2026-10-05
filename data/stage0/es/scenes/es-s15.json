@@ -1,0 +1,228 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "abuela",
+      "text": "Nico calls doña Marta \"abuela\" (grandmother) because she is his grandmother.",
+      "explains": [
+        "es.politeness"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "retell",
+      "prompt": "Tell what Sam wants for lunch, and why, in one sentence.",
+      "basedOn": [
+        "l4",
+        "es.porque"
+      ],
+      "accept": [
+        {
+          "text": "Sam quiere arroz porque le gusta mucho"
+        },
+        {
+          "text": "Sam quiere arroz porque le gusta"
+        },
+        {
+          "text": "Sam quiere arroz, porque le gusta mucho"
+        },
+        {
+          "text": "Sam quiere arroz"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "es-s15",
+  "title": {
+    "en": "Lunch with friends",
+    "target": "El almuerzo"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis",
+      "marta",
+      "nico"
+    ],
+    "things": [
+      "rice",
+      "bread",
+      "water",
+      "money"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Hoy nosotros comemos en la casa de doña Marta.",
+      "en": "Today we eat at Doña Marta's house.",
+      "speaker": "ana",
+      "picture": "🏠🍽️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ella vende pan, pero hoy hay arroz.",
+      "en": "She sells bread, but today there is rice.",
+      "picture": "🍞🍚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "¿Qué quieren ustedes?",
+      "en": "What would you all like?",
+      "speaker": "marta",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Yo quiero arroz, porque me gusta mucho.",
+      "en": "I would like rice, because I like it a lot.",
+      "speaker": "sam",
+      "picture": "🍚❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Él es mi amigo Sam. Vive en Honduras.",
+      "en": "This is my friend Sam. He lives in Honduras.",
+      "speaker": "luis",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Mucho gusto, Sam. ¿Cuánto cuesta el pan hoy, abuela?",
+      "en": "Nice to meet you, Sam. How much is the bread today, Grandma?",
+      "speaker": "nico",
+      "picture": "🍞💵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Para vos no cuesta nada, Nico.",
+      "en": "For you it costs nothing, Nico.",
+      "speaker": "marta",
+      "picture": "😄",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "comemos",
+      "ella",
+      "quieren",
+      "amigo",
+      "vive",
+      "para"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "es.hay",
+    "es.pero",
+    "es.porque",
+    "es.cuanto-cuesta",
+    "es.possessive-su",
+    "es.voseo-2sg",
+    "es.gustar",
+    "es.present-3sg",
+    "es.ser-identity"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where do they eat today?"
+      },
+      "options": [
+        {
+          "en": "At Doña Marta's house"
+        },
+        {
+          "en": "At the market"
+        },
+        {
+          "en": "At the school"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Sam want, and why?"
+      },
+      "options": [
+        {
+          "en": "Rice — he likes it a lot"
+        },
+        {
+          "en": "Bread — it costs nothing"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l7"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How much does the bread cost for Nico?"
+      },
+      "options": [
+        {
+          "en": "Nothing"
+        },
+        {
+          "en": "Ten lempiras"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

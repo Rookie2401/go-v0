@@ -1,0 +1,49 @@
+{
+  "$comment": "The Stage 0 world: the same small cast, places and things in every language, so that meaning stays familiar while the language grows. Names are local to each language (Hindi keeps Ravi and Mira from the Stage 0A stories). Sam is a newcomer learning the language, the learner's stand-in. Language-neutral meaning only; no target-language sentences here.",
+  "version": 1,
+  "characters": [
+    { "id": "ana", "role": "a nurse at the clinic, about thirty; Luis's sister; organised, often tired after work", "names": { "es": "Ana", "de": "Anna", "sq": "Ana", "hi": "मीरा", "th": "มะลิ" } },
+    { "id": "luis", "role": "a teacher at the school, about thirty; Ana's brother; likes coffee, often late", "names": { "es": "Luis", "de": "Lukas", "sq": "Luan", "hi": "रवि", "th": "ต้น" } },
+    { "id": "marta", "role": "an older neighbour, a grandmother; sells bread at the market; goes to church", "names": { "es": "Marta", "de": "Marta", "sq": "Drita", "hi": "सीता", "th": "ป้าแดง" } },
+    { "id": "nico", "role": "Marta's grandson, ten years old; goes to Luis's school; loses things", "names": { "es": "Nico", "de": "Ben", "sq": "Ardi", "hi": "अमन", "th": "บอล" } },
+    { "id": "sam", "role": "a newcomer who has just arrived and is learning the language — the learner's stand-in; written as a man in the scenes (Hindi verbs, Spanish and Albanian adjectives and Thai polite particles need a gender). The learner's OWN first-person forms follow the speaker forms the learner chose, never Sam's", "names": { "es": "Sam", "de": "Sam", "sq": "Sam", "hi": "सैम", "th": "แซม" } }
+  ],
+  "places": [
+    { "id": "home", "gloss": "home / the house" },
+    { "id": "kitchen", "gloss": "the kitchen" },
+    { "id": "market", "gloss": "the market" },
+    { "id": "shop", "gloss": "the small shop" },
+    { "id": "school", "gloss": "the school" },
+    { "id": "clinic", "gloss": "the clinic" },
+    { "id": "church", "gloss": "the church" },
+    { "id": "bus-stop", "gloss": "the bus stop" },
+    { "id": "street", "gloss": "the street" }
+  ],
+  "things": [
+    { "id": "water", "gloss": "water", "picture": "💧" },
+    { "id": "coffee", "gloss": "coffee", "picture": "☕" },
+    { "id": "tea", "gloss": "tea", "picture": "🍵" },
+    { "id": "bread", "gloss": "bread", "picture": "🍞" },
+    { "id": "rice", "gloss": "rice", "picture": "🍚" },
+    { "id": "phone", "gloss": "phone", "picture": "📱" },
+    { "id": "bag", "gloss": "bag", "picture": "👜" },
+    { "id": "key", "gloss": "key", "picture": "🔑" },
+    { "id": "book", "gloss": "book", "picture": "📖" },
+    { "id": "bible", "gloss": "Bible", "picture": "📖" },
+    { "id": "bus", "gloss": "bus", "picture": "🚌" },
+    { "id": "money", "gloss": "money", "picture": "💵" },
+    { "id": "rain", "gloss": "rain", "picture": "🌧️" }
+  ],
+  "arc": [
+    "Sam arrives and meets Ana and Luis: names, greetings, who is who.",
+    "Simple states and possessions: Ana has water, Luis has coffee; Ana is tired; the house is big.",
+    "Places: where people are (home, school, clinic, market).",
+    "Wants and likes: Luis wants coffee, Nico likes bread, Sam does not like coffee.",
+    "Questions and answers: where is the key? what is this? who is that?",
+    "A small problem: Nico loses his bag; Marta helps; they find it.",
+    "Buying: Sam buys bread from Marta at the market; numbers and money.",
+    "Time and plans: today, tomorrow, Sunday; going to church; the bus.",
+    "A changed plan: it rains, Ana is tired, they stay home and drink tea.",
+    "Sam tells a short story about the week (retelling)."
+  ]
+}

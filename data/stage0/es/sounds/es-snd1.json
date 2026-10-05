@@ -1,0 +1,95 @@
+{
+  "id": "es-snd1",
+  "lang": "es",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "Five clear vowels, and a silent h"
+  },
+  "features": [
+    "es:vowels",
+    "es:h",
+    "es:accent"
+  ],
+  "words": [
+    {
+      "text": "hola",
+      "en": "hello",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "agua",
+      "en": "water",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "café",
+      "en": "coffee",
+      "picture": "☕",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "hermano",
+      "en": "brother",
+      "picture": "👨",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "Spanish has five vowels — a, e, i, o, u — and each always sounds the same. The letter h is never said: hola sounds like \"ola\".",
+    "more": "An accent mark (á, é, í, ó, ú) shows the strong syllable: café is ca-FÉ. Without a mark, a word ending in a vowel is strong on the next-to-last syllable: A-gua, her-MA-no."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "hola",
+      "prompt": "How is \"hola\" said?",
+      "options": [
+        "OH-la — the h is silent",
+        "HOH-la — with an English h"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "café",
+      "prompt": "Which syllable is strong in \"café\"?",
+      "options": [
+        "ca-FÉ (the end)",
+        "CA-fé (the start)"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "agua",
+      "prompt": "Which syllable is strong in \"agua\"?",
+      "options": [
+        "A-gua",
+        "a-GUA"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  }
+}

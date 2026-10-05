@@ -1,0 +1,175 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "hermano, hermana",
+      "text": "Many words end in -o for a man and -a for a woman: hermano (brother), hermana (sister).",
+      "explains": [
+        "es.gender-o-a"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "choose",
+      "prompt": "Which sentence says \"Luis is my brother\"?",
+      "basedOn": [
+        "l4"
+      ],
+      "options": [
+        "Luis es mi hermano.",
+        "Luis es mi hermana.",
+        "Ana es mi hermano."
+      ],
+      "accept": [
+        {
+          "text": "Luis es mi hermano."
+        }
+      ]
+    }
+  ],
+  "id": "es-s02",
+  "title": {
+    "en": "This is Luis",
+    "target": "Él es Luis"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Él es Luis.",
+      "en": "This is Luis. (He is Luis.)",
+      "speaker": "ana",
+      "picture": "👨",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Hola, Sam.",
+      "en": "Hello, Sam.",
+      "speaker": "luis",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Hola, Luis. Mucho gusto.",
+      "en": "Hello, Luis. Nice to meet you.",
+      "speaker": "sam",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Luis es mi hermano.",
+      "en": "Luis is my brother.",
+      "speaker": "ana",
+      "picture": "👨‍👩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Y Ana es mi hermana.",
+      "en": "And Ana is my sister.",
+      "speaker": "luis",
+      "picture": "👩",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "él",
+      "es",
+      "mi",
+      "hermano",
+      "y",
+      "hermana"
+    ],
+    "constructions": [
+      "es.ser-identity",
+      "es.possessive-mi",
+      "es.gender-o-a"
+    ]
+  },
+  "represents": [
+    "es.greeting",
+    "es.ser-identity",
+    "es.possessive-mi",
+    "es.gender-o-a"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l4"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who is Luis?"
+      },
+      "options": [
+        {
+          "en": "Ana's brother"
+        },
+        {
+          "en": "Ana's father"
+        },
+        {
+          "en": "Sam's brother"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "true-false",
+      "question": {
+        "en": "Ana is Luis's sister."
+      },
+      "options": [
+        {
+          "en": "True"
+        },
+        {
+          "en": "False"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

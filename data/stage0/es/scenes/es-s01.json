@@ -1,0 +1,183 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "Me llamo …",
+      "text": "This is how you give your name. Word for word it is \"I call myself …\".",
+      "explains": [
+        "es.me-llamo"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "copy",
+      "prompt": "Write what Sam says: \"Me llamo Sam.\"",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Me llamo Sam"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "substitute",
+      "prompt": "Now give your own name.",
+      "basedOn": [
+        "l2",
+        "es.me-llamo"
+      ],
+      "frame": "Me llamo ___.",
+      "accept": [
+        {
+          "text": "Me llamo {x}"
+        }
+      ],
+      "personal": "your name",
+      "speak": true
+    }
+  ],
+  "id": "es-s01",
+  "title": {
+    "en": "Hello, I am Sam",
+    "target": "Hola"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Hola.",
+      "en": "Hello.",
+      "speaker": "ana",
+      "picture": "👋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Hola. Me llamo Sam.",
+      "en": "Hello. My name is Sam.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Me llamo Ana.",
+      "en": "My name is Ana.",
+      "speaker": "ana",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Mucho gusto, Ana.",
+      "en": "Nice to meet you, Ana.",
+      "speaker": "sam",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Mucho gusto, Sam.",
+      "en": "Nice to meet you, Sam.",
+      "speaker": "ana",
+      "picture": "🤝",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "hola",
+      "me",
+      "llamo",
+      "mucho",
+      "gusto"
+    ],
+    "constructions": [
+      "es.greeting",
+      "es.me-llamo"
+    ]
+  },
+  "represents": [
+    "es.greeting",
+    "es.me-llamo"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What is the man's name?"
+      },
+      "options": [
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Ana"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What are Sam and Ana doing?"
+      },
+      "options": [
+        {
+          "en": "Meeting for the first time"
+        },
+        {
+          "en": "Saying goodbye"
+        },
+        {
+          "en": "Ordering food"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

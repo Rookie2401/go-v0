@@ -1,0 +1,183 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "cansado, cansada",
+      "text": "A man says \"estoy cansado\", a woman \"estoy cansada\" — like hermano and hermana.",
+      "explains": [
+        "es.adjective-agreement"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Say that you are tired.",
+      "basedOn": [
+        "l5",
+        "es.adjective-agreement"
+      ],
+      "frame": "Estoy ___.",
+      "accept": [
+        {
+          "text": "Estoy cansado",
+          "speakerForm": "m"
+        },
+        {
+          "text": "Estoy cansada",
+          "speakerForm": "f"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "es-s06",
+  "title": {
+    "en": "Ana is tired",
+    "target": "Ana está cansada"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "sam"
+    ],
+    "places": [
+      "clinic"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ana trabaja en la clínica.",
+      "en": "Ana works at the clinic.",
+      "picture": "👩‍⚕️🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Hoy Ana está cansada.",
+      "en": "Today Ana is tired.",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Luis también está cansado.",
+      "en": "Luis is tired too.",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "¿Estás cansada, Ana?",
+      "en": "Are you tired, Ana?",
+      "speaker": "sam",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Sí, estoy cansada.",
+      "en": "Yes, I am tired.",
+      "speaker": "ana",
+      "picture": "😩",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "trabaja",
+      "clínica",
+      "hoy",
+      "cansada",
+      "cansado",
+      "sí",
+      "estás",
+      "estoy"
+    ],
+    "constructions": [
+      "es.estar-state",
+      "es.adjective-agreement"
+    ]
+  },
+  "represents": [
+    "es.estar-state",
+    "es.adjective-agreement",
+    "es.present-1sg",
+    "es.present-3sg",
+    "es.yes-no-question"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Ana work?"
+      },
+      "options": [
+        {
+          "en": "at the clinic",
+          "picture": "🏥"
+        },
+        {
+          "en": "at the school",
+          "picture": "🏫"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2",
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "How are Ana and Luis today?"
+      },
+      "options": [
+        {
+          "en": "Tired"
+        },
+        {
+          "en": "Happy"
+        },
+        {
+          "en": "Hungry"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

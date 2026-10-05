@@ -1,0 +1,195 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "describe",
+      "prompt": "Say where you live.",
+      "basedOn": [
+        "l2"
+      ],
+      "accept": [
+        {
+          "text": "Vivo en {x}"
+        }
+      ],
+      "personal": "your town or country",
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "retell",
+      "prompt": "Tell about Ana in one sentence: where she works.",
+      "basedOn": [
+        "l3"
+      ],
+      "accept": [
+        {
+          "text": "Ana trabaja en la clínica"
+        },
+        {
+          "text": "Ana trabaja en una clínica"
+        },
+        {
+          "text": "Mi amiga Ana trabaja en la clínica"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "es-s13",
+  "title": {
+    "en": "Sam tells about the week",
+    "target": "Sam habla"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "ana",
+      "luis"
+    ],
+    "places": [
+      "clinic",
+      "school",
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Me llamo Sam.",
+      "en": "My name is Sam.",
+      "speaker": "sam",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Vivo en Honduras.",
+      "en": "I live in Honduras.",
+      "speaker": "sam",
+      "picture": "🇭🇳",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Mi amiga Ana trabaja en la clínica.",
+      "en": "My friend Ana works at the clinic.",
+      "speaker": "sam",
+      "picture": "👩‍⚕️🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Su hermano Luis trabaja en la escuela.",
+      "en": "Her brother Luis works at the school.",
+      "speaker": "sam",
+      "picture": "👨🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "El domingo vamos a la iglesia.",
+      "en": "On Sunday we go to church.",
+      "speaker": "sam",
+      "picture": "⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Me gusta mucho Honduras.",
+      "en": "I like Honduras very much.",
+      "speaker": "sam",
+      "picture": "❤️🇭🇳",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "vivo",
+      "honduras",
+      "amiga",
+      "su"
+    ],
+    "constructions": [
+      "es.possessive-su"
+    ]
+  },
+  "represents": [
+    "es.me-llamo",
+    "es.present-1sg",
+    "es.present-3sg",
+    "es.possessive-su",
+    "es.ir-a-place",
+    "es.gustar"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Where does Sam live?"
+      },
+      "options": [
+        {
+          "en": "In Honduras"
+        },
+        {
+          "en": "In Spain"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3",
+        "l4"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who works at the school?"
+      },
+      "options": [
+        {
+          "en": "Luis"
+        },
+        {
+          "en": "Ana"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "lang": "es",
+  "version": 1,
+  "steps": [
+    {
+      "id": "s01",
+      "kind": "scene",
+      "ref": "es-s01"
+    },
+    {
+      "id": "s02",
+      "kind": "scene",
+      "ref": "es-s02"
+    },
+    {
+      "id": "snd1",
+      "kind": "sounds",
+      "ref": "es-snd1"
+    },
+    {
+      "id": "s03",
+      "kind": "scene",
+      "ref": "es-s03"
+    },
+    {
+      "id": "s04",
+      "kind": "scene",
+      "ref": "es-s04"
+    },
+    {
+      "id": "snd2",
+      "kind": "sounds",
+      "ref": "es-snd2"
+    },
+    {
+      "id": "s05",
+      "kind": "scene",
+      "ref": "es-s05"
+    },
+    {
+      "id": "s06",
+      "kind": "scene",
+      "ref": "es-s06"
+    },
+    {
+      "id": "r1",
+      "kind": "review",
+      "ref": "es-s03",
+      "channel": "listen-first"
+    },
+    {
+      "id": "s07",
+      "kind": "scene",
+      "ref": "es-s07"
+    },
+    {
+      "id": "s08",
+      "kind": "scene",
+      "ref": "es-s08"
+    },
+    {
+      "id": "snd3",
+      "kind": "sounds",
+      "ref": "es-snd3"
+    },
+    {
+      "id": "s09",
+      "kind": "scene",
+      "ref": "es-s09"
+    },
+    {
+      "id": "s10",
+      "kind": "scene",
+      "ref": "es-s10"
+    },
+    {
+      "id": "r2",
+      "kind": "review",
+      "ref": "es-s07",
+      "channel": "listen-first"
+    },
+    {
+      "id": "s11",
+      "kind": "scene",
+      "ref": "es-s11"
+    },
+    {
+      "id": "s12",
+      "kind": "scene",
+      "ref": "es-s12"
+    },
+    {
+      "id": "s13",
+      "kind": "scene",
+      "ref": "es-s13"
+    },
+    {
+      "id": "s14",
+      "kind": "scene",
+      "ref": "es-s14"
+    },
+    {
+      "id": "s15",
+      "kind": "scene",
+      "ref": "es-s15"
+    },
+    {
+      "id": "r3",
+      "kind": "review",
+      "ref": "es-s05",
+      "channel": "listen-only"
+    },
+    {
+      "id": "r4",
+      "kind": "review",
+      "ref": "es-s10",
+      "channel": "listen-only"
+    },
+    {
+      "id": "exit",
+      "kind": "exit"
+    }
+  ],
+  "next": [
+    {
+      "textId": "text:es:camino-1-01",
+      "title": "Camino 1 — first story",
+      "note": "The first controlled story of the Spanish course (a draft awaiting review)."
+    },
+    {
+      "textId": "text:es:camino-1-02",
+      "title": "Camino 1 — second story"
+    }
+  ]
+}

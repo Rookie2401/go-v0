@@ -1,0 +1,197 @@
+{
+  "entries": [
+    {
+      "id": "es.greeting",
+      "kind": "pragmatics",
+      "label": "greeting and meeting (hola, mucho gusto, buenos días)",
+      "prerequisites": []
+    },
+    {
+      "id": "es.me-llamo",
+      "kind": "construction",
+      "label": "me llamo + name",
+      "prerequisites": []
+    },
+    {
+      "id": "es.ser-identity",
+      "kind": "construction",
+      "label": "X es Y (identity)",
+      "prerequisites": []
+    },
+    {
+      "id": "es.possessive-mi",
+      "kind": "grammar",
+      "label": "mi (my)",
+      "prerequisites": []
+    },
+    {
+      "id": "es.possessive-tu",
+      "kind": "grammar",
+      "label": "tu (your)",
+      "prerequisites": [
+        "es.possessive-mi"
+      ]
+    },
+    {
+      "id": "es.possessive-su",
+      "kind": "grammar",
+      "label": "su (his/her)",
+      "prerequisites": [
+        "es.possessive-mi"
+      ]
+    },
+    {
+      "id": "es.gender-o-a",
+      "kind": "grammar",
+      "label": "gender in nouns: -o / -a",
+      "prerequisites": []
+    },
+    {
+      "id": "es.article-el-la",
+      "kind": "grammar",
+      "label": "el / la",
+      "prerequisites": [
+        "es.gender-o-a"
+      ]
+    },
+    {
+      "id": "es.tener-object",
+      "kind": "construction",
+      "label": "tener + thing",
+      "prerequisites": []
+    },
+    {
+      "id": "es.present-3sg",
+      "kind": "grammar",
+      "label": "present tense, she/he",
+      "prerequisites": []
+    },
+    {
+      "id": "es.present-1sg",
+      "kind": "grammar",
+      "label": "present tense, I (-o)",
+      "prerequisites": [
+        "es.present-3sg"
+      ]
+    },
+    {
+      "id": "es.voseo-2sg",
+      "kind": "grammar",
+      "label": "vos forms (querés, tenés, vas)",
+      "prerequisites": []
+    },
+    {
+      "id": "es.negation-no",
+      "kind": "grammar",
+      "label": "no before the verb",
+      "prerequisites": []
+    },
+    {
+      "id": "es.yes-no-question",
+      "kind": "construction",
+      "label": "yes/no question by intonation (¿…?)",
+      "prerequisites": []
+    },
+    {
+      "id": "es.politeness",
+      "kind": "pragmatics",
+      "label": "gracias, de nada, por favor, doña",
+      "prerequisites": []
+    },
+    {
+      "id": "es.estar-location",
+      "kind": "construction",
+      "label": "estar en + place",
+      "prerequisites": []
+    },
+    {
+      "id": "es.estar-state",
+      "kind": "construction",
+      "label": "estar + state (cansado)",
+      "prerequisites": [
+        "es.estar-location"
+      ]
+    },
+    {
+      "id": "es.adjective-agreement",
+      "kind": "grammar",
+      "label": "adjective agreement (cansado / cansada)",
+      "prerequisites": [
+        "es.gender-o-a",
+        "es.estar-state"
+      ]
+    },
+    {
+      "id": "es.donde-esta",
+      "kind": "construction",
+      "label": "¿Dónde está …?",
+      "prerequisites": [
+        "es.estar-location"
+      ]
+    },
+    {
+      "id": "es.no-se",
+      "kind": "construction",
+      "label": "No sé (I don't know)",
+      "prerequisites": []
+    },
+    {
+      "id": "es.gustar",
+      "kind": "construction",
+      "label": "(a mí) me gusta + thing",
+      "prerequisites": [
+        "es.article-el-la"
+      ]
+    },
+    {
+      "id": "es.hay",
+      "kind": "construction",
+      "label": "hay (there is / are)",
+      "prerequisites": []
+    },
+    {
+      "id": "es.cuanto-cuesta",
+      "kind": "construction",
+      "label": "¿Cuánto cuesta …?",
+      "prerequisites": []
+    },
+    {
+      "id": "es.numbers",
+      "kind": "grammar",
+      "label": "numbers (diez, veinte)",
+      "prerequisites": []
+    },
+    {
+      "id": "es.time-days",
+      "kind": "grammar",
+      "label": "mañana, domingo, hoy",
+      "prerequisites": []
+    },
+    {
+      "id": "es.ir-a-place",
+      "kind": "construction",
+      "label": "ir a + place (voy, vas, va, van)",
+      "prerequisites": []
+    },
+    {
+      "id": "es.ir-a-infinitive",
+      "kind": "construction",
+      "label": "ir a + verb (about to do)",
+      "prerequisites": [
+        "es.ir-a-place"
+      ]
+    },
+    {
+      "id": "es.porque",
+      "kind": "construction",
+      "label": "porque (because)",
+      "prerequisites": []
+    },
+    {
+      "id": "es.pero",
+      "kind": "construction",
+      "label": "pero (but)",
+      "prerequisites": []
+    }
+  ]
+}

@@ -1,0 +1,260 @@
+{
+  "id": "es-exit-b",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "Hoy es domingo y Ana no trabaja.",
+        "en": "Today is Sunday and Ana does not work.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "Ana va a la iglesia con doña Marta.",
+        "en": "Ana goes to church with Doña Marta.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "Nico no va, porque está cansado.",
+        "en": "Nico does not go, because he is tired.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "Nico está en la casa con Luis.",
+        "en": "Nico is at home with Luis.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "Luis y Nico toman agua.",
+        "en": "Luis and Nico drink water.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Why does Ana not work today?"
+        },
+        "options": [
+          {
+            "en": "It is Sunday"
+          },
+          {
+            "en": "She is tired"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where does Ana go?"
+        },
+        "options": [
+          {
+            "en": "to church"
+          },
+          {
+            "en": "to the clinic"
+          },
+          {
+            "en": "to the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r3"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Why does Nico not go?"
+        },
+        "options": [
+          {
+            "en": "He is tired"
+          },
+          {
+            "en": "He does not like it"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r5"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What do Luis and Nico drink?"
+        },
+        "options": [
+          {
+            "en": "water"
+          },
+          {
+            "en": "coffee"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "Doña Marta vende arroz.",
+        "en": "Doña Marta sells rice.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "El arroz cuesta diez lempiras.",
+        "en": "The rice costs ten lempiras.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Doña Marta sell?"
+        },
+        "options": [
+          {
+            "en": "rice"
+          },
+          {
+            "en": "coffee"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How much is it?"
+        },
+        "options": [
+          {
+            "en": "10 lempiras"
+          },
+          {
+            "en": "20 lempiras"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Where does Ana go? Answer in Spanish.",
+      "basedOn": [
+        "r2"
+      ],
+      "accept": [
+        {
+          "text": "Ana va a la iglesia"
+        },
+        {
+          "text": "Va a la iglesia"
+        },
+        {
+          "text": "A la iglesia"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Say what you like (bread, coffee or water).",
+      "basedOn": [
+        "es.gustar"
+      ],
+      "accept": [
+        {
+          "text": "Me gusta el {x}"
+        },
+        {
+          "text": "Me gusta la {x}"
+        },
+        {
+          "text": "Me gusta {x}"
+        }
+      ],
+      "personal": "something you like"
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Someone offers you coffee and you don't want it. Say no, politely.",
+      "basedOn": [
+        "es.politeness"
+      ],
+      "accept": [
+        {
+          "text": "No, gracias"
+        },
+        {
+          "text": "No, gracias. Quiero agua."
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say where you live, and that you like it a lot.",
+      "model": "Vivo en Honduras. Me gusta mucho."
+    }
+  ]
+}

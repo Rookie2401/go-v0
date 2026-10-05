@@ -1,0 +1,208 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Luis asks you: \"¿Te gusta la escuela?\" Say yes, a lot.",
+      "basedOn": [
+        "l7",
+        "es.gustar"
+      ],
+      "accept": [
+        {
+          "text": "Sí, me gusta mucho"
+        },
+        {
+          "text": "Me gusta mucho"
+        },
+        {
+          "text": "Sí, me gusta"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "es-s14",
+  "title": {
+    "en": "Nico at school",
+    "target": "En la escuela"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "luis",
+      "ana"
+    ],
+    "places": [
+      "school"
+    ],
+    "things": [
+      "bag",
+      "book"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Luis es el maestro de Nico.",
+      "en": "Luis is Nico's teacher.",
+      "picture": "👨‍🏫👦",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Nico, ¿dónde está tu bolsa?",
+      "en": "Nico, where is your bag?",
+      "speaker": "luis",
+      "picture": "👜❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "No sé. No está en la mesa.",
+      "en": "I don't know. It is not on the table.",
+      "speaker": "nico",
+      "picture": "🤷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Tu hermana tiene tu bolsa.",
+      "en": "Your sister has your bag.",
+      "speaker": "luis",
+      "picture": "👧👜",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "¡Muy bien! Gracias.",
+      "en": "Great! Thank you.",
+      "speaker": "nico",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "De nada, Nico. ¿Te gusta la escuela?",
+      "en": "You're welcome, Nico. Do you like school?",
+      "speaker": "luis",
+      "picture": "🏫❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Sí, me gusta mucho.",
+      "en": "Yes, I like it a lot.",
+      "speaker": "nico",
+      "picture": "❤️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "maestro"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "es.donde-esta",
+    "es.no-se",
+    "es.possessive-tu",
+    "es.gustar",
+    "es.politeness",
+    "es.ser-identity"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who is Luis to Nico?"
+      },
+      "options": [
+        {
+          "en": "his teacher"
+        },
+        {
+          "en": "his brother"
+        },
+        {
+          "en": "his father"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l4"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who has Nico's bag?"
+      },
+      "options": [
+        {
+          "en": "his sister"
+        },
+        {
+          "en": "Luis"
+        },
+        {
+          "en": "nobody"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l7"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Nico like school?"
+      },
+      "options": [
+        {
+          "en": "Yes, a lot"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

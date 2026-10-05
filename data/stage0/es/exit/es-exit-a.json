@@ -1,0 +1,260 @@
+{
+  "id": "es-exit-a",
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "reading": {
+    "lines": [
+      {
+        "id": "r1",
+        "text": "Hoy Luis está en el mercado.",
+        "en": "Today Luis is at the market.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r2",
+        "text": "Luis quiere pan y café.",
+        "en": "Luis wants bread and coffee.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r3",
+        "text": "Doña Marta tiene pan, pero no tiene café.",
+        "en": "Doña Marta has bread, but she does not have coffee.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r4",
+        "text": "Luis tiene veinte lempiras.",
+        "en": "Luis has twenty lempiras.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "r5",
+        "text": "Luis está cansado y va a la casa.",
+        "en": "Luis is tired and goes home.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "q1",
+        "lines": [
+          "r1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Luis today?"
+        },
+        "options": [
+          {
+            "en": "at the market"
+          },
+          {
+            "en": "at the school"
+          },
+          {
+            "en": "at church"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q2",
+        "lines": [
+          "r3"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Doña Marta NOT have?"
+        },
+        "options": [
+          {
+            "en": "coffee"
+          },
+          {
+            "en": "bread"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q3",
+        "lines": [
+          "r4"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How much money does Luis have?"
+        },
+        "options": [
+          {
+            "en": "20 lempiras"
+          },
+          {
+            "en": "10 lempiras"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "q4",
+        "lines": [
+          "r5"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "How is Luis, and where does he go?"
+        },
+        "options": [
+          {
+            "en": "Tired; home"
+          },
+          {
+            "en": "Tired; to church"
+          },
+          {
+            "en": "Happy; to school"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "listening": {
+    "lines": [
+      {
+        "id": "h1",
+        "text": "Nico está en la casa.",
+        "en": "Nico is at home.",
+        "audio": {
+          "status": "needed"
+        }
+      },
+      {
+        "id": "h2",
+        "text": "Nico quiere agua.",
+        "en": "Nico wants water.",
+        "audio": {
+          "status": "needed"
+        }
+      }
+    ],
+    "checks": [
+      {
+        "id": "lq1",
+        "lines": [
+          "h1"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "Where is Nico?"
+        },
+        "options": [
+          {
+            "en": "at home"
+          },
+          {
+            "en": "at the market"
+          }
+        ],
+        "answer": 0
+      },
+      {
+        "id": "lq2",
+        "lines": [
+          "h2"
+        ],
+        "kind": "meaning-choice",
+        "question": {
+          "en": "What does Nico want?"
+        },
+        "options": [
+          {
+            "en": "water"
+          },
+          {
+            "en": "coffee"
+          }
+        ],
+        "answer": 0
+      }
+    ]
+  },
+  "writing": [
+    {
+      "id": "w1",
+      "kind": "answer",
+      "prompt": "Where is Luis today? Answer in Spanish.",
+      "basedOn": [
+        "r1"
+      ],
+      "accept": [
+        {
+          "text": "Luis está en el mercado"
+        },
+        {
+          "text": "Está en el mercado"
+        },
+        {
+          "text": "En el mercado"
+        }
+      ]
+    },
+    {
+      "id": "w2",
+      "kind": "describe",
+      "prompt": "Give your name and say where you live.",
+      "basedOn": [
+        "es.me-llamo"
+      ],
+      "accept": [
+        {
+          "text": "Me llamo {x} vivo en {x}"
+        },
+        {
+          "text": "Me llamo {x} y vivo en {x}"
+        }
+      ],
+      "personal": "your name, your town"
+    },
+    {
+      "id": "w3",
+      "kind": "recall",
+      "prompt": "Ask, politely, for water.",
+      "basedOn": [
+        "es.politeness"
+      ],
+      "accept": [
+        {
+          "text": "Quiero agua, por favor"
+        },
+        {
+          "text": "Agua, por favor"
+        }
+      ]
+    }
+  ],
+  "speaking": [
+    {
+      "id": "sp1",
+      "prompt": "Say your name, and that you would like coffee, please.",
+      "model": "Me llamo Sam. Quiero café, por favor."
+    }
+  ]
+}

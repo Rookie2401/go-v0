@@ -1,0 +1,241 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "voy a + a verb",
+      "text": "\"Voy a tomar\" — I am going to have. Ir a + a verb talks about what you are about to do.",
+      "explains": [
+        "es.ir-a-infinitive"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Say you are going to have coffee.",
+      "basedOn": [
+        "l3",
+        "es.ir-a-infinitive"
+      ],
+      "frame": "Voy a tomar ___.",
+      "accept": [
+        {
+          "text": "Voy a tomar café"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "describe",
+      "prompt": "Say what you are going to drink, and why: you like it.",
+      "basedOn": [
+        "l4",
+        "l5",
+        "es.porque"
+      ],
+      "accept": [
+        {
+          "text": "Voy a tomar agua porque me gusta"
+        },
+        {
+          "text": "Voy a tomar café porque me gusta"
+        },
+        {
+          "text": "Voy a tomar agua, porque me gusta"
+        },
+        {
+          "text": "Voy a tomar café, porque me gusta"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "es-s12",
+  "title": {
+    "en": "The rain changes the plan",
+    "target": "Llueve"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "sam",
+      "marta",
+      "nico"
+    ],
+    "things": [
+      "rain",
+      "coffee",
+      "water"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Es domingo, pero hoy llueve mucho.",
+      "en": "It is Sunday, but today it is raining a lot.",
+      "picture": "🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Estoy cansada y llueve.",
+      "en": "I am tired and it is raining.",
+      "speaker": "ana",
+      "picture": "😩🌧️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Vamos a tomar café en la casa.",
+      "en": "Let's have coffee at home.",
+      "speaker": "luis",
+      "picture": "☕🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Yo no tomo café. Voy a tomar agua.",
+      "en": "I don't drink coffee. I am going to have water.",
+      "speaker": "sam",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Yo voy a la iglesia, porque me gusta.",
+      "en": "I am going to church, because I like it.",
+      "speaker": "marta",
+      "picture": "👵⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Yo voy con mi abuela.",
+      "en": "I am going with my grandmother.",
+      "speaker": "nico",
+      "picture": "👦👵",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "pero",
+      "llueve",
+      "vamos",
+      "tomar",
+      "tomo",
+      "porque",
+      "abuela"
+    ],
+    "constructions": [
+      "es.ir-a-infinitive",
+      "es.porque",
+      "es.pero"
+    ]
+  },
+  "represents": [
+    "es.ir-a-infinitive",
+    "es.porque",
+    "es.pero",
+    "es.estar-state",
+    "es.gustar",
+    "es.ir-a-place"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is the weather like?"
+      },
+      "options": [
+        {
+          "en": "rainy",
+          "picture": "🌧️"
+        },
+        {
+          "en": "sunny",
+          "picture": "☀️"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What does Luis want to do?"
+      },
+      "options": [
+        {
+          "en": "Have coffee at home"
+        },
+        {
+          "en": "Go to church"
+        },
+        {
+          "en": "Go to the market"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5",
+        "l6"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who goes to church in the rain?"
+      },
+      "options": [
+        {
+          "en": "Marta and Nico"
+        },
+        {
+          "en": "Ana and Luis"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,232 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "usage",
+      "title": "querés, tenés",
+      "text": "To a friend, Hondurans say vos: querés (you want), tenés (you have). You will also hear quieres and tienes; both are right.",
+      "explains": [
+        "es.voseo-2sg"
+      ],
+      "afterScenes": 1
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "You don't want coffee — you want water.",
+      "basedOn": [
+        "l2"
+      ],
+      "frame": "No, gracias. Quiero ___.",
+      "accept": [
+        {
+          "text": "No gracias quiero agua"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Someone offers you coffee, but you want water. What do you say?",
+      "basedOn": [
+        "l2",
+        "es.politeness"
+      ],
+      "accept": [
+        {
+          "text": "No, gracias. Quiero agua."
+        },
+        {
+          "text": "Quiero agua, gracias."
+        },
+        {
+          "text": "No, gracias, quiero agua."
+        },
+        {
+          "text": "Quiero agua."
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "es-s04",
+  "title": {
+    "en": "No, thank you",
+    "target": "No, gracias"
+  },
+  "world": {
+    "characters": [
+      "luis",
+      "sam",
+      "ana"
+    ],
+    "things": [
+      "water",
+      "coffee"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "¿Querés café, Sam?",
+      "en": "Do you want coffee, Sam?",
+      "speaker": "luis",
+      "picture": "☕❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "No, gracias. Quiero agua.",
+      "en": "No, thank you. I want water.",
+      "speaker": "sam",
+      "picture": "🙅☕ 💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Aquí tenés agua.",
+      "en": "Here is water for you.",
+      "speaker": "luis",
+      "picture": "💧",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Gracias, Luis.",
+      "en": "Thank you, Luis.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "De nada.",
+      "en": "You're welcome.",
+      "speaker": "luis",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Yo quiero café.",
+      "en": "I want coffee.",
+      "speaker": "ana",
+      "picture": "👩☕",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "gracias",
+      "quiero",
+      "aquí",
+      "tenés",
+      "de",
+      "nada",
+      "yo"
+    ],
+    "constructions": [
+      "es.present-1sg",
+      "es.politeness"
+    ]
+  },
+  "represents": [
+    "es.voseo-2sg",
+    "es.present-1sg",
+    "es.politeness",
+    "es.negation-no"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam want?"
+      },
+      "options": [
+        {
+          "en": "water",
+          "picture": "💧"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Luis says \"De nada\". He means:"
+      },
+      "options": [
+        {
+          "en": "You're welcome"
+        },
+        {
+          "en": "I don't have any"
+        },
+        {
+          "en": "Goodbye"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Ana want?"
+      },
+      "options": [
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "id": "es-snd3",
+  "lang": "es",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "r and rr, qu, b and v"
+  },
+  "features": [
+    "es:r",
+    "es:qu",
+    "es:v-b"
+  ],
+  "words": [
+    {
+      "text": "arroz",
+      "en": "rice",
+      "picture": "🍚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "quiero",
+      "en": "I want",
+      "picture": "🙋",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "bebe",
+      "en": "drinks",
+      "picture": "🥤",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "vos",
+      "en": "you (to a friend)",
+      "picture": "👉",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "A single r is one quick tap of the tongue (pero). rr — and an r at the start of a word — is rolled. qu is a plain k: quiero is KYEH-ro. b and v sound the same.",
+    "more": "The u in qu (and in gue, gui) is not said: que is \"keh\"."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "arroz",
+      "prompt": "How is \"arroz\" said?",
+      "options": [
+        "a-RROS, with a rolled r",
+        "like English \"arrows\""
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "quiero",
+      "prompt": "How does \"quiero\" start?",
+      "options": [
+        "KYEH-",
+        "KWEE-"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "bebe",
+      "prompt": "In \"bebe\" and \"vos\", b and v sound:",
+      "options": [
+        "the same",
+        "different, as in English"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  }
+}

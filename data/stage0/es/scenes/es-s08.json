@@ -1,0 +1,232 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "Me gusta …",
+      "text": "\"Me gusta el pan\" works the other way round from English: \"the bread pleases me\". So it is gusta (pleases), with the thing you like after it.",
+      "explains": [
+        "es.gustar"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Say what you like: bread, coffee or water.",
+      "basedOn": [
+        "l2",
+        "es.gustar"
+      ],
+      "frame": "Me gusta el ___.",
+      "accept": [
+        {
+          "text": "Me gusta el pan"
+        },
+        {
+          "text": "Me gusta el café"
+        },
+        {
+          "text": "Me gusta el agua"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Say that you don't like coffee.",
+      "basedOn": [
+        "l4"
+      ],
+      "accept": [
+        {
+          "text": "No me gusta el café"
+        },
+        {
+          "text": "A mí no me gusta el café"
+        }
+      ]
+    }
+  ],
+  "id": "es-s08",
+  "title": {
+    "en": "I like bread",
+    "target": "Me gusta el pan"
+  },
+  "world": {
+    "characters": [
+      "marta",
+      "nico",
+      "luis",
+      "sam",
+      "ana"
+    ],
+    "things": [
+      "bread",
+      "coffee",
+      "water"
+    ],
+    "places": [
+      "market"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Yo vendo pan en el mercado.",
+      "en": "I sell bread at the market.",
+      "speaker": "marta",
+      "picture": "👵🍞🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Me gusta el pan.",
+      "en": "I like bread.",
+      "speaker": "nico",
+      "picture": "👦🍞❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "A mí me gusta el café.",
+      "en": "I like coffee.",
+      "speaker": "luis",
+      "picture": "👨☕❤️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "A mí no me gusta el café.",
+      "en": "I don't like coffee.",
+      "speaker": "sam",
+      "picture": "🙂☕🚫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "¿Te gusta el agua, Sam?",
+      "en": "Do you like water, Sam?",
+      "speaker": "ana",
+      "picture": "💧❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Sí, me gusta mucho.",
+      "en": "Yes, I like it a lot.",
+      "speaker": "sam",
+      "picture": "💧❤️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "vendo",
+      "pan",
+      "gusta",
+      "a",
+      "mí",
+      "te"
+    ],
+    "constructions": [
+      "es.gustar"
+    ]
+  },
+  "represents": [
+    "es.gustar",
+    "es.negation-no",
+    "es.present-1sg",
+    "es.article-el-la"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Marta sell?"
+      },
+      "options": [
+        {
+          "en": "bread",
+          "picture": "🍞"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3",
+        "l4"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who does NOT like coffee?"
+      },
+      "options": [
+        {
+          "en": "Sam"
+        },
+        {
+          "en": "Luis"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Sam like water?"
+      },
+      "options": [
+        {
+          "en": "Yes, a lot"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

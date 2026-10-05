@@ -1,0 +1,201 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "el, la",
+      "text": "Every noun is \"el\" or \"la\": el mercado, la casa, la escuela. Learn the word with its el or la.",
+      "explains": [
+        "es.article-el-la"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "substitute",
+      "prompt": "Ana is at the market now. Write it.",
+      "basedOn": [
+        "l1",
+        "l5"
+      ],
+      "frame": "Ana está en ___.",
+      "accept": [
+        {
+          "text": "Ana está en el mercado"
+        }
+      ]
+    }
+  ],
+  "id": "es-s05",
+  "title": {
+    "en": "Where everyone is",
+    "target": "En la casa"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "luis",
+      "nico",
+      "sam"
+    ],
+    "places": [
+      "home",
+      "school",
+      "market"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Ana está en la casa.",
+      "en": "Ana is at home. (in the house)",
+      "picture": "👩🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Luis está en la escuela.",
+      "en": "Luis is at the school.",
+      "picture": "👨🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Nico también está en la escuela.",
+      "en": "Nico is at the school too.",
+      "picture": "👦🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Sam no está en la casa.",
+      "en": "Sam is not at home.",
+      "picture": "🙂🚫🏠",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Sam está en el mercado.",
+      "en": "Sam is at the market.",
+      "picture": "🙂🛒",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "está",
+      "en",
+      "la",
+      "casa",
+      "escuela",
+      "también",
+      "el",
+      "mercado"
+    ],
+    "constructions": [
+      "es.estar-location",
+      "es.article-el-la"
+    ]
+  },
+  "represents": [
+    "es.estar-location",
+    "es.article-el-la",
+    "es.negation-no"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is Luis?"
+      },
+      "options": [
+        {
+          "en": "at the school",
+          "picture": "🏫"
+        },
+        {
+          "en": "at home",
+          "picture": "🏠"
+        },
+        {
+          "en": "at the market",
+          "picture": "🛒"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who else is at the school?"
+      },
+      "options": [
+        {
+          "en": "Nico"
+        },
+        {
+          "en": "Ana"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where is Sam?"
+      },
+      "options": [
+        {
+          "en": "at the market",
+          "picture": "🛒"
+        },
+        {
+          "en": "at home",
+          "picture": "🏠"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

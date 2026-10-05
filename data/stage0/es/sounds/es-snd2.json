@@ -1,0 +1,107 @@
+{
+  "id": "es-snd2",
+  "lang": "es",
+  "kind": "sounds",
+  "version": 1,
+  "title": {
+    "en": "ll, ñ, j — and z said as s"
+  },
+  "features": [
+    "es:ll",
+    "es:ñ",
+    "es:j",
+    "es:c-z"
+  ],
+  "words": [
+    {
+      "text": "llave",
+      "en": "key",
+      "picture": "🔑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "mañana",
+      "en": "tomorrow",
+      "picture": "🌅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "Jesús",
+      "en": "Jesus",
+      "picture": "✝️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "text": "gracias",
+      "en": "thank you",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "explanation": {
+    "short": "ll sounds like the y in \"yes\". ñ is like the ny in \"canyon\". j is a breathy h from the throat. In Honduras, z — and c before e or i — sound like s.",
+    "more": "g before e or i is the same breathy sound as j (gente). Elsewhere g is like English g (agua)."
+  },
+  "checks": [
+    {
+      "id": "d1",
+      "kind": "which-reading",
+      "word": "llave",
+      "prompt": "How is \"llave\" said?",
+      "options": [
+        "YAH-veh",
+        "LAH-veh"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d2",
+      "kind": "which-reading",
+      "word": "mañana",
+      "prompt": "How is \"mañana\" said?",
+      "options": [
+        "ma-NYA-na",
+        "ma-NA-na"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d3",
+      "kind": "which-reading",
+      "word": "Jesús",
+      "prompt": "How does \"Jesús\" start?",
+      "options": [
+        "with a breathy h: heh-SOOS",
+        "like English \"Jesus\": JEE-zus"
+      ],
+      "answer": 0
+    },
+    {
+      "id": "d4",
+      "kind": "which-reading",
+      "word": "gracias",
+      "prompt": "In Honduras, \"gracias\" ends like:",
+      "options": [
+        "GRAH-syahs (c as s)",
+        "GRAH-thyahs (c as th)"
+      ],
+      "answer": 0
+    }
+  ],
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  }
+}

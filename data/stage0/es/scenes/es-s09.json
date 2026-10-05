@@ -1,0 +1,198 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "culture",
+      "title": "doña",
+      "text": "Doña (and don for a man) is a warm, respectful way to address an older person by first name: doña Marta.",
+      "explains": [
+        "es.politeness"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "complete",
+      "prompt": "Ask for water, politely.",
+      "basedOn": [
+        "l3"
+      ],
+      "frame": "Quiero agua, ___ ___.",
+      "accept": [
+        {
+          "text": "Quiero agua por favor"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "It is morning. Greet doña Marta.",
+      "basedOn": [
+        "l1",
+        "es.greeting"
+      ],
+      "accept": [
+        {
+          "text": "Buenos días, doña Marta"
+        },
+        {
+          "text": "Buenos días"
+        },
+        {
+          "text": "Hola, buenos días"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "es-s09",
+  "title": {
+    "en": "Good morning at the market",
+    "target": "Buenos días"
+  },
+  "world": {
+    "characters": [
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "market"
+    ],
+    "things": [
+      "bread"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Buenos días, doña Marta.",
+      "en": "Good morning, Doña Marta.",
+      "speaker": "sam",
+      "picture": "🌞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Buenos días, Sam. ¿Qué querés?",
+      "en": "Good morning, Sam. What would you like?",
+      "speaker": "marta",
+      "picture": "👵❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Quiero pan, por favor.",
+      "en": "I would like bread, please.",
+      "speaker": "sam",
+      "picture": "🍞🙏",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Aquí está el pan.",
+      "en": "Here is the bread.",
+      "speaker": "marta",
+      "picture": "🍞",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Gracias, doña Marta.",
+      "en": "Thank you, Doña Marta.",
+      "speaker": "sam",
+      "picture": "🙏",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "buenos",
+      "días",
+      "doña",
+      "qué",
+      "por",
+      "favor"
+    ],
+    "constructions": [
+      "es.politeness"
+    ]
+  },
+  "represents": [
+    "es.greeting",
+    "es.politeness",
+    "es.voseo-2sg",
+    "es.present-1sg"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "When is this?"
+      },
+      "options": [
+        {
+          "en": "In the morning"
+        },
+        {
+          "en": "At night"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Sam ask for?"
+      },
+      "options": [
+        {
+          "en": "bread",
+          "picture": "🍞"
+        },
+        {
+          "en": "coffee",
+          "picture": "☕"
+        },
+        {
+          "en": "rice",
+          "picture": "🍚"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

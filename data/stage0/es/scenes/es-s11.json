@@ -1,0 +1,201 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [
+    {
+      "id": "n1",
+      "kind": "grammar",
+      "title": "voy, vas, va, van",
+      "text": "You have now met four forms of \"go\": voy (I go), vas (you go), va (she/he goes), van (they go).",
+      "explains": [
+        "es.ir-a-place"
+      ],
+      "afterScenes": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Ana asks: \"¿Vas con nosotros?\" Say yes, you are going with them.",
+      "basedOn": [
+        "l5",
+        "es.ir-a-place"
+      ],
+      "accept": [
+        {
+          "text": "Sí, voy con ustedes"
+        },
+        {
+          "text": "Sí, voy"
+        },
+        {
+          "text": "Voy con ustedes"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "es-s11",
+  "title": {
+    "en": "On Sunday",
+    "target": "El domingo"
+  },
+  "world": {
+    "characters": [
+      "marta",
+      "ana",
+      "luis",
+      "sam"
+    ],
+    "places": [
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Mañana es domingo.",
+      "en": "Tomorrow is Sunday.",
+      "picture": "📅",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "El domingo doña Marta va a la iglesia.",
+      "en": "On Sunday Doña Marta goes to church.",
+      "picture": "👵⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Ana y Luis también van a la iglesia.",
+      "en": "Ana and Luis go to church too.",
+      "picture": "👩👨⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Sam, ¿vas con nosotros?",
+      "en": "Sam, are you coming with us?",
+      "speaker": "ana",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Sí, voy con ustedes.",
+      "en": "Yes, I am going with you.",
+      "speaker": "sam",
+      "picture": "🙂👍",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "mañana",
+      "domingo",
+      "va",
+      "iglesia",
+      "van",
+      "vas",
+      "con",
+      "nosotros",
+      "voy",
+      "ustedes"
+    ],
+    "constructions": [
+      "es.ir-a-place",
+      "es.time-days"
+    ]
+  },
+  "represents": [
+    "es.ir-a-place",
+    "es.time-days",
+    "es.voseo-2sg",
+    "es.present-1sg",
+    "es.yes-no-question"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "What day is tomorrow?"
+      },
+      "options": [
+        {
+          "en": "Sunday"
+        },
+        {
+          "en": "Monday"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where does Marta go on Sunday?"
+      },
+      "options": [
+        {
+          "en": "to church",
+          "picture": "⛪"
+        },
+        {
+          "en": "to the market",
+          "picture": "🛒"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l5"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Is Sam going with them?"
+      },
+      "options": [
+        {
+          "en": "Yes"
+        },
+        {
+          "en": "No"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

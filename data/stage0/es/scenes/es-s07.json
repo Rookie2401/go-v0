@@ -1,0 +1,222 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-04",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "notes": [],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Nico asks: \"¿Dónde está la llave?\" It is on the table. Answer him.",
+      "basedOn": [
+        "l3",
+        "es.donde-esta"
+      ],
+      "accept": [
+        {
+          "text": "Está en la mesa"
+        },
+        {
+          "text": "La llave está en la mesa"
+        },
+        {
+          "text": "En la mesa"
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "kind": "recall",
+      "prompt": "Someone asks you something and you do not know. Say \"I don't know.\"",
+      "basedOn": [
+        "l2",
+        "es.no-se"
+      ],
+      "accept": [
+        {
+          "text": "No sé"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "id": "es-s07",
+  "title": {
+    "en": "Where is my key?",
+    "target": "¿Dónde está mi llave?"
+  },
+  "world": {
+    "characters": [
+      "nico",
+      "marta"
+    ],
+    "things": [
+      "key",
+      "bag"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "¿Dónde está mi llave?",
+      "en": "Where is my key?",
+      "speaker": "nico",
+      "picture": "🔑❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "No sé, Nico.",
+      "en": "I don't know, Nico.",
+      "speaker": "marta",
+      "picture": "🤷",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "No está en la mesa.",
+      "en": "It is not on the table.",
+      "speaker": "nico",
+      "picture": "🚫🔑",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "¿Está en tu bolsa?",
+      "en": "Is it in your bag?",
+      "speaker": "marta",
+      "picture": "👜❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "¡Sí! Aquí está.",
+      "en": "Yes! Here it is.",
+      "speaker": "nico",
+      "picture": "🔑🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "Muy bien.",
+      "en": "Very good.",
+      "speaker": "marta",
+      "picture": "👍",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "dónde",
+      "llave",
+      "sé",
+      "mesa",
+      "tu",
+      "bolsa",
+      "muy",
+      "bien"
+    ],
+    "constructions": [
+      "es.donde-esta",
+      "es.no-se",
+      "es.possessive-tu"
+    ]
+  },
+  "represents": [
+    "es.donde-esta",
+    "es.no-se",
+    "es.possessive-tu",
+    "es.estar-location",
+    "es.possessive-mi"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What is Nico looking for?"
+      },
+      "options": [
+        {
+          "en": "his key",
+          "picture": "🔑"
+        },
+        {
+          "en": "his bag",
+          "picture": "👜"
+        },
+        {
+          "en": "water",
+          "picture": "💧"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Does Marta know where it is?"
+      },
+      "options": [
+        {
+          "en": "No"
+        },
+        {
+          "en": "Yes"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l4",
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "Where was the key?"
+      },
+      "options": [
+        {
+          "en": "in his bag",
+          "picture": "👜"
+        },
+        {
+          "en": "on the table",
+          "picture": "🪑"
+        }
+      ],
+      "answer": 0
+    }
+  ]
+}

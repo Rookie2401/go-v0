@@ -37,6 +37,7 @@ import type { BackupFile } from '../backup';
 import { createGoLearn } from '../golearn';
 import { AZURE_PROVIDER_ID, AzureSpeechProvider, ProxySpeechProvider, createGoListen } from '../golisten';
 import { createGoTell } from '../gotell';
+import { createStage0 } from '../stage0';
 import { INGEST_TOOL, contentHistory, epubToDocuments, importDocuments, loadBundledCorpus, previewDocuments } from '../ingest';
 import type { ImportOptions } from '../ingest';
 import type { DocumentReport } from '../ingest';
@@ -270,6 +271,8 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   if (listen) golisten.onEligibilityChange((textId) => golearn.invalidateListening(textId));
   // No GoListen for GoTell while listening is off: a saved testimony version then queues no audio job.
   const gotell = createGoTell({ store, bus, adapters, golearn, ...(listen ? { golisten } : {}), clock });
+  // Stage 0: scenes are imported on demand (when the Stage 0 page first opens for a language), never at startup.
+  const stage0 = createStage0({ store, bus, adapters, clock, golearn });
 
   // ── the reading ladder and the dictionaries ──
   // One lazy source per language: createFetchLexiconSource makes no request until it is first asked something.
@@ -399,7 +402,7 @@ export async function bootstrap(opts: BootstrapOptions = {}): Promise<BootstrapR
   };
 
   const services: AppServices = {
-    store, bus, adapters, golearn, golisten, gotell,
+    store, bus, adapters, golearn, golisten, gotell, stage0,
     ingest: createIngestApi(store, adapters, clock, lexicon),
     catalog, lexicon, library,
     content: { ensureCourse },

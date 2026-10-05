@@ -12,6 +12,8 @@ import { BooksPage } from './pages/Books';
 import { CoursePage } from './pages/Course';
 import { ExplorePage } from './pages/Explore';
 import { Home } from './pages/Home';
+import { Stage0Home } from './stage0/Stage0Home';
+import { StepPage as Stage0StepPage } from './stage0/StepPage';
 import { ListenHome } from './listen/ListenHome';
 import { ListenPage } from './listen/ListenPage';
 import { Settings, VocabularyPage } from './pages/Settings';
@@ -46,6 +48,8 @@ export function AppRoutes() {
       <Route path="/listen" element={<ListenHome />} />
       <Route path="/listen/:textId" element={<ListenPage />} />
       <Route path="/course" element={<CoursePage />} />
+      <Route path="/start" element={<Stage0Home />} />
+      <Route path="/start/:stepId" element={<Stage0StepPage />} />
       <Route path="/explore" element={<ExplorePage />} />
       <Route path="/explore/:door" element={<ExplorePage />} />
       <Route path="/books" element={<BooksPage />} />

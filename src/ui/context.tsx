@@ -9,7 +9,7 @@ import { createContext, useCallback, useContext, useEffect, useMemo, useRef, use
 import type { ReactNode } from 'react';
 import { rememberActiveUser } from './prefs';
 import { newSession, sittingSession, touchSitting } from './sitting';
-import type { AdapterRegistry, AppStore, Course, CourseCatalog, EventBus, Features, GoLearn, GoListen, GoTell, LanguageCode, Library, LexiconSource, ProviderAvailability, Text, User } from '../core';
+import type { AdapterRegistry, AppStore, Course, CourseCatalog, EventBus, Features, GoLearn, GoListen, GoTell, LanguageCode, Library, LexiconSource, ProviderAvailability, Stage0Service, Text, User } from '../core';
 import type { PlainTextOptions, PlainTextResult } from '../ingest/plaintext';
 
 export { newSession };
@@ -110,6 +110,8 @@ export interface AppServices {
   golearn: GoLearn;
   golisten: GoListen;
   gotell: GoTell;
+  /** Stage 0, the zero-to-language bootstrap (src/stage0). Optional: a harness without it shows no Stage 0. */
+  stage0?: Stage0Service & { forUser?(userId: string): Stage0Service };
   ingest: IngestApi;
   /** The reading ladder of a course (stages, works, the learner's own copies). A course without a ladder has no stages. */
   catalog: CourseCatalog;
@@ -215,9 +217,16 @@ export function AppProvider({ services, user: initialUser, course: initialCourse
     return typeof g.forUser === 'function' ? g.forUser(who.user.id) : services.gotell;
   }, [services.gotell, who.user.id]);
 
+  // Stage 0 is bound to the learner the same way.
+  const stage0 = useMemo<Stage0Service | undefined>(() => {
+    const s = services.stage0;
+    return s && typeof s.forUser === 'function' ? s.forUser(who.user.id) : s;
+  }, [services.stage0, who.user.id]);
+
   const value = useMemo<AppContextValue>(() => ({
     ...services,
     gotell,
+    ...(stage0 ? { stage0 } : {}),
     userId: who.user.id,
     session,
     currentSession,
@@ -226,7 +235,7 @@ export function AppProvider({ services, user: initialUser, course: initialCourse
     lang: who.course.lang,
     selectUser,
     refreshUser,
-  }), [services, gotell, who, session, currentSession, selectUser, refreshUser]);
+  }), [services, gotell, stage0, who, session, currentSession, selectUser, refreshUser]);
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

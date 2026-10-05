@@ -1,0 +1,57 @@
+/* Stage 0 — Start from zero (#/start). */
+.stage0-title { font-size: 1.5rem; margin: 0.5rem 0 0.25rem; }
+.stage0-draft { margin: 0.75rem 0; }
+.stage0-draft-line { margin: 0 0 0.75rem; }
+.stage0-card { border: 1px solid var(--rule); border-radius: 8px; padding: 0.6rem 0.85rem; margin: 0.75rem 0; background: var(--paper-raised); }
+.stage0-toggle { white-space: nowrap; margin-left: 0.25rem; }
+.stage0-meters dl { display: grid; gap: 0.25rem; margin: 0.5rem 0 1rem; }
+.stage0-meter { display: flex; justify-content: space-between; gap: 1rem; border-bottom: 1px solid var(--rule); padding: 0.2rem 0; }
+.stage0-meter dt { color: var(--ink-soft); }
+.stage0-meter dd { margin: 0; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.stage0-steps { list-style: none; padding: 0; margin: 0.5rem 0; display: grid; gap: 0.35rem; }
+.stage0-step { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: baseline; }
+.stage0-step .card__note { flex-basis: 100%; }
+.stage0-step--secure .chip { color: var(--olive); border-color: var(--olive); }
+.stage0-next { padding-left: 1.1rem; }
+
+.stage0-lines { list-style: none; padding: 0; margin: 1rem 0; display: grid; gap: 0.8rem; }
+.stage0-line { display: flex; gap: 0.75rem; align-items: flex-start; }
+.stage0-picture { font-size: 2rem; line-height: 1; min-width: 2.5rem; text-align: center; }
+.stage0-line__body { display: grid; gap: 0.3rem; flex: 1; min-width: 0; }
+.stage0-line__actions { gap: 0.4rem; }
+.stage0-english { color: var(--ink-soft); font-style: italic; }
+.stage0-text { font-size: 1.35rem; line-height: 2; overflow-wrap: anywhere; }
+.stage0-text--hi { font-family: var(--deva); }
+.stage0-text--th { font-family: var(--thai); }
+.stage0-word { font: inherit; color: inherit; background: none; border: 0; padding: 0 1px; border-radius: 3px; cursor: pointer; }
+.stage0-word:hover, .stage0-word:focus-visible { background: var(--selection); }
+.stage0-word--new { text-decoration: underline; text-decoration-color: var(--accent-soft); text-underline-offset: 0.3em; }
+.stage0-roman { font-size: 0.6em; color: var(--ink-faint); font-family: system-ui, sans-serif; }
+.stage0-gap { display: inline-block; width: 0.45em; border-left: 1px dotted var(--rule-strong); height: 1em; vertical-align: middle; }
+.stage0-sheet { border: 1px solid var(--rule-strong); border-radius: 8px; padding: 0.6rem 0.85rem; background: var(--paper-raised); box-shadow: var(--shadow-raised); margin: 0.5rem 0; }
+.stage0-sheet__word { font-size: 1.6rem; margin: 0; }
+.stage0-sheet__units { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.35rem 0; }
+.stage0-unit { border: 1px solid var(--rule); border-radius: 4px; padding: 0.1rem 0.4rem; font-size: 1.2rem; }
+.stage0-features { margin: 0.25rem 0; }
+.stage0-play { white-space: nowrap; }
+
+.stage0-check { margin: 0.75rem 0; }
+.stage0-options { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.stage0-option.is-right { border-color: var(--olive); color: var(--olive); }
+.stage0-option.is-wrong { border-color: var(--wine); color: var(--wine); }
+.stage0-option.is-chosen { border-color: var(--accent); }
+.stage0-task { margin: 0.9rem 0; }
+.stage0-model { font-size: 1.2rem; margin: 0.2rem 0; }
+.stage0-write { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+.stage0-write input { flex: 1 1 14rem; min-width: 0; font-size: 1.1rem; padding: 0.35rem 0.5rem; }
+.stage0-ok { color: var(--olive); }
+.stage0-speak { border-left: 3px solid var(--accent-soft); padding: 0.25rem 0.75rem; margin: 0.5rem 0; }
+
+.stage0-soundwords { list-style: none; padding: 0; display: grid; gap: 0.6rem; }
+.stage0-soundword { display: grid; gap: 0.25rem; }
+.stage0-big { font-size: 1.8rem; }
+.stage0-segment { font-size: 1.8rem; font-family: var(--thai); line-height: 2.2; overflow-wrap: anywhere; }
+.stage0-cut { font: inherit; font-size: 1rem; background: none; border: 0; color: var(--ink-faint); padding: 0 2px; cursor: pointer; vertical-align: middle; }
+.stage0-cut.is-on { color: var(--accent); font-weight: 700; }
+.stage0-passage p { margin: 0.25rem 0; }
+.stage0-sections { padding-left: 1.1rem; }

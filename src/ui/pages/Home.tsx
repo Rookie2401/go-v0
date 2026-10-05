@@ -24,6 +24,7 @@ import { useLangTexts } from '../library';
 import { usePreview } from '../prefs';
 import { HelpNeeded } from '../rescue';
 import { I } from '../ui';
+import { Stage0Entry } from '../stage0/Stage0Entry';
 
 
 interface Item { rec: Recommendation; text?: Text }
@@ -192,6 +193,7 @@ export function Home() {
       )}
 
       <nav className="home__list" aria-label="Start here">
+        <Stage0Entry />
         {entries.map((e) => (
           <Link key={e.to} to={e.to} className="home__entry">
             <span className="home__entry-body">

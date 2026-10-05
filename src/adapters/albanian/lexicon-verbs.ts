@@ -179,6 +179,8 @@ const J_VERBS: SqLexeme[] = [
   V('ruaj', 'oj', 'ruajta', 'ruajtur', 'to guard, to keep'),
   V('vuaj', 'oj', 'vuajta', 'vuajtur', 'to suffer'),
   V('mbaj', 'oj', 'mbajta', 'mbajtur', 'to hold, to keep', { nonActive: true }),
+  // its non-active is listed apart, as quhem (to be called)
+  V('quaj', 'oj', 'quajta', 'quajtur', 'to call, to name'),
   V('paguaj', 'oj', 'pagova', 'paguar', 'to pay'),
   V('gatuaj', 'oj', 'gatova', 'gatuar', 'to cook'),
   V('laj', 'oj', 'lava', 'larë', 'to wash', { aorist3: 'lau', nonActive: true }),
@@ -335,6 +337,7 @@ const REGULAR_OJ: SqLexeme[] = [
   oj('falënderoj', 'to thank'),
   oj('lavdëroj', 'to praise'),
   oj('pagëzoj', 'to baptise'),
+  oj('urdhëroj', 'to order, to command; urdhëro / urdhëroni: here you are, please, go ahead'),
   oj('mashtroj', 'to deceive'),
   oj('kushtoj', 'to cost; to dedicate'),
   oj('shenjtëroj', 'to make holy, to sanctify'),

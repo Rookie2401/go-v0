@@ -80,6 +80,7 @@ export const QUESTION_WORDS: SqLexeme[] = [
   F('kur', 'ADV', 'when', ['kur: int']),
   F('si', 'ADV', 'how', ['si: int']),
   F('pse', 'ADV', 'why', ['pse: int']),
+  F('përse', 'ADV', 'why; what for', ['përse: int']),
   F('që', 'PRON', 'who, which, that (relative)', ['që: rel']),
 ];
 

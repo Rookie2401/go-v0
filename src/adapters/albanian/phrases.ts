@@ -44,6 +44,7 @@ export const SQ_PHRASE_UNITS: readonly Unit[] = [
   ['gjithë të mirat', 'all the best', 'formula'],
   ['mirë se vini|erdhët|erdhe', 'welcome', 'formula', 'mirë se vini'],
   ['shumë faleminderit', 'thank you very much', 'formula'],
+  ["s'ka përse", "you're welcome (there is no reason)", 'formula'],
   ['ju lutem', 'please; I beg you (polite)', 'formula'],
   ['të lutem', 'please; I beg you (to one person you know well)', 'formula'],
   ['më vjen keq', 'I am sorry', 'formula'],

@@ -23,6 +23,7 @@ const PEOPLE: SqLexeme[] = [
   N('fëmijë', 'm', 'fëmija', 'fëmijë', 'child'),
   N('familje', 'f', 'familja', 'familje', 'family'),
   N('nënë', 'f', 'nëna', 'nëna', 'mother'),
+  N('zonjë', 'f', 'zonja', 'zonja', 'lady; Mrs., madam'),
   N('baba', 'm', 'babai', 'baballarë', 'father (family word)'),
   N('motër', 'f', 'motra', 'motra', 'sister'),
   N('vëlla', 'm', 'vëllai', 'vëllezër', 'brother'),
@@ -142,6 +143,7 @@ const HOME: SqLexeme[] = [
   N('shishe', 'f', 'shishja', 'shishe', 'bottle'),
   N('tenxhere', 'f', 'tenxherja', 'tenxhere', 'pot'),
   N('çantë', 'f', 'çanta', 'çanta', 'bag'),
+  N('xhep', 'm', 'xhepi', 'xhepa', 'pocket'),
   N('orë', 'f', 'ora', 'orë', 'hour; clock, watch'),
   N('këmishë', 'f', 'këmisha', 'këmisha', 'shirt'),
   N('fustan', 'm', 'fustani', 'fustane', 'dress'),
@@ -206,6 +208,7 @@ const TOWN: SqLexeme[] = [
   N('shkollë', 'f', 'shkolla', 'shkolla', 'school'),
   N('universitet', 'm', 'universiteti', 'universitete', 'university'),
   N('spital', 'm', 'spitali', 'spitale', 'hospital'),
+  N('klinikë', 'f', 'klinika', 'klinika', 'clinic'),
   N('kishë', 'f', 'kisha', 'kisha', 'church'),
   N('xhami', 'f', 'xhamia', 'xhami', 'mosque'),
   N('dyqan', 'm', 'dyqani', 'dyqane', 'shop'),
@@ -506,6 +509,8 @@ const FAITH: SqLexeme[] = [
 
 const NAMES: SqLexeme[] = [
   P('Beni', 'm', 'Beni', 'Beni (man\'s name)'),
+  P('Ardi', 'm', 'Ardi', 'Ardi (man\'s name)'),
+  P('Sam', 'm', 'Sami', 'Sam (man\'s name)'),
   P('Ana', 'f', 'Ana', 'Ana (woman\'s name)'),
   P('Arta', 'f', 'Arta', 'Arta (woman\'s name)'),
   P('Dritan', 'm', 'Dritani', 'Dritan (man\'s name)'),

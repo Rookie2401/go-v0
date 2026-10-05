@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h17",
+  "lang": "sq",
+  "title": "Mëngjesi i Samit",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h17",
+    "title": "Albanian ladder, a1-1: Mëngjesi i Samit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Mëngjesi i Samit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Është mëngjes.",
+              "english": "It is morning."
+            },
+            {
+              "text": "Sam zgjohet herët.",
+              "english": "Sam wakes up early."
+            },
+            {
+              "text": "Ai shkon në kuzhinë.",
+              "english": "He goes to the kitchen."
+            },
+            {
+              "text": "Kuzhina ka një dritare të madhe.",
+              "english": "The kitchen has a big window."
+            },
+            {
+              "text": "Sam pi ujë dhe ha bukë.",
+              "english": "Sam drinks water and eats bread."
+            },
+            {
+              "text": "Pastaj ai lahet.",
+              "english": "Then he washes."
+            },
+            {
+              "text": "Tani Sam nuk është i lodhur.",
+              "english": "Now Sam is not tired."
+            },
+            {
+              "text": "Ai lexon pak në shqip.",
+              "english": "He reads a little in Albanian."
+            },
+            {
+              "text": "Pastaj Sam shkon në treg.",
+              "english": "Then Sam goes to the market."
+            },
+            {
+              "text": "Rruga e tregut nuk është e gjatë.",
+              "english": "The road to the market is not long."
+            },
+            {
+              "text": "Në treg është gjyshi i Ardit.",
+              "english": "Ardi's grandfather is at the market."
+            },
+            {
+              "text": "Gjyshi i jep një bukë.",
+              "english": "The grandfather gives him a loaf of bread."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h13",
+  "lang": "sq",
+  "title": "Rruga e shkollës",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h13",
+    "title": "Albanian ladder, a1-1: Rruga e shkollës (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Rruga e shkollës",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ardi shkon në shkollë me gjyshin.",
+              "english": "Ardi goes to school with his grandfather."
+            },
+            {
+              "text": "Rruga e shkollës është e gjatë.",
+              "english": "The road to the school is long."
+            },
+            {
+              "text": "Ardi ka një çantë të madhe.",
+              "english": "Ardi has a big bag."
+            },
+            {
+              "text": "Në çantë ka libra dhe bukë.",
+              "english": "In the bag there are books and bread."
+            },
+            {
+              "text": "Ardi nuk është i lodhur.",
+              "english": "Ardi is not tired."
+            },
+            {
+              "text": "Ai është i lumtur, sepse sot ka shkollë.",
+              "english": "He is happy, because today there is school."
+            },
+            {
+              "text": "Luan është në shkollë.",
+              "english": "Luan is at the school."
+            },
+            {
+              "text": "— Mirëmëngjes, Ardi!",
+              "english": "\"Good morning, Ardi!\""
+            },
+            {
+              "text": "— Mirëmëngjes, mësues!",
+              "english": "\"Good morning, teacher!\""
+            },
+            {
+              "text": "Ardi shkon në shkollë.",
+              "english": "Ardi goes into the school."
+            },
+            {
+              "text": "Pastaj gjyshi shkon në treg.",
+              "english": "Then the grandfather goes to the market."
+            },
+            {
+              "text": "Në treg ai pi kafe me Samin.",
+              "english": "At the market he drinks coffee with Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

@@ -31,6 +31,8 @@
     "sq:agreement": "vite-node scripts/sq-agreement.mts",
     "sq:check-analyzer": "vite-node scripts/sq-check-analyzer.mts",
     "sq:check-texts": "vite-node scripts/sq-check-texts.mts",
+    "sq:ladder-build": "vite-node scripts/sq-ladder-build.mts",
+    "sq:ladder-author": "vite-node scripts/sq-ladder-author.mts",
     "sq:dict-expand": "vite-node scripts/sq-dict-expand.mts",
     "sq:eval-ud": "vite-node scripts/sq-eval-ud.mts",
     "sq:gold": "vite-node scripts/sq-gold.mts",

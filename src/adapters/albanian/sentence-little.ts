@@ -40,9 +40,22 @@ export function formUnits(cx: Ctx): void {
   for (let a = 0; a < cx.tokens.length; a++) {
     const j = nextWord(cx, a);
     if (!cx.tokens[a].isWord || j === undefined || !ARTICLE_FORMS.has(norm(cx, a)) || cx.inUnit.has(a)) continue;
-    if (!adjLike(cx, j) || verbLike(cx, j) || !cx.cur[a].some(isArticle)) continue;
+    if (!adjLike(cx, j) || !cx.cur[a].some(isArticle)) continue;
+    if (verbLike(cx, j) && !nounBefore(cx, a)) continue;
     formUnit(cx, a, j);
   }
+}
+
+/**
+ * A word that is both an articulated adjective and a conjugated verb ("re": fem. of i ri, or "you fell") forms the unit
+ * only when the article stands right after a noun it agrees with and that is nothing but a noun: "një xhaketë të re" (a
+ * new jacket). Elsewhere ("punon e lexon", a short pronoun before a verb) the word is left to the other rules.
+ */
+function nounBefore(cx: Ctx, a: number): boolean {
+  const p = prevWord(cx, a);
+  if (p === undefined || cx.cur[p].length === 0 || !cx.cur[p].every(isNominal)) return false;
+  const head = headOf(cx, a, norm(cx, a));
+  return head !== undefined && head.idx === p && head.reading !== undefined;
 }
 
 function formUnit(cx: Ctx, a: number, j: number): void {

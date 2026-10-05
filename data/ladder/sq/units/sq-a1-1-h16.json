@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h16",
+  "lang": "sq",
+  "title": "Në shtëpinë e Dritës",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h16",
+    "title": "Albanian ladder, a1-1: Në shtëpinë e Dritës (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Në shtëpinë e Dritës",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "— Mirëdita, Drita!",
+              "english": "\"Good afternoon, Drita!\""
+            },
+            {
+              "text": "— Mirëdita, Sam! A do kafe?",
+              "english": "\"Good afternoon, Sam! Do you want coffee?\""
+            },
+            {
+              "text": "— Po, faleminderit.",
+              "english": "\"Yes, thank you.\""
+            },
+            {
+              "text": "— Ja kafeja. A do qumësht?",
+              "english": "\"Here is the coffee. Do you want milk?\""
+            },
+            {
+              "text": "— Jo, faleminderit.",
+              "english": "\"No, thank you.\""
+            },
+            {
+              "text": "— Ky është qeni im.",
+              "english": "\"This is my dog.\""
+            },
+            {
+              "text": "— Qeni është shumë i madh!",
+              "english": "\"The dog is very big!\""
+            },
+            {
+              "text": "— Po. Dhe ja macja e Ardit.",
+              "english": "\"Yes. And here is Ardi's cat.\""
+            },
+            {
+              "text": "— Ku është Ardi?",
+              "english": "\"Where is Ardi?\""
+            },
+            {
+              "text": "— Ardi është në shkollë.",
+              "english": "\"Ardi is at school.\""
+            },
+            {
+              "text": "— Macja është shumë e bukur.",
+              "english": "\"The cat is very beautiful.\""
+            },
+            {
+              "text": "— Po. Ardit i pëlqen shumë.",
+              "english": "\"Yes. Ardi likes it very much.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

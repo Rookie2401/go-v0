@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h11",
+  "lang": "sq",
+  "title": "E diela",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h11",
+    "title": "Albanian ladder, a1-1: E diela (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "E diela",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot është e diel.",
+              "english": "Today is Sunday."
+            },
+            {
+              "text": "Babai i Ardit është në shtëpi.",
+              "english": "Ardi's father is at home."
+            },
+            {
+              "text": "Edhe nëna e Ardit është në shtëpi.",
+              "english": "Ardi's mother is at home too."
+            },
+            {
+              "text": "Familja është në shtëpi.",
+              "english": "The family is at home."
+            },
+            {
+              "text": "Ardi është shumë i lumtur.",
+              "english": "Ardi is very happy."
+            },
+            {
+              "text": "Nëna ka bukë dhe oriz.",
+              "english": "The mother has bread and rice."
+            },
+            {
+              "text": "Babai pi kafe.",
+              "english": "The father drinks coffee."
+            },
+            {
+              "text": "Gjyshja Drita pi çaj.",
+              "english": "Grandmother Drita drinks tea."
+            },
+            {
+              "text": "Ardi pi ujë.",
+              "english": "Ardi drinks water."
+            },
+            {
+              "text": "Pastaj familja shkon në kishë.",
+              "english": "Then the family goes to church."
+            },
+            {
+              "text": "Në kishë është edhe Sam.",
+              "english": "Sam is at church too."
+            },
+            {
+              "text": "Ana dhe Luan janë në kishë.",
+              "english": "Ana and Luan are at church."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

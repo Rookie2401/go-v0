@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h10",
+  "lang": "sq",
+  "title": "Familja e Samit",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h10",
+    "title": "Albanian ladder, a1-1: Familja e Samit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Familja e Samit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Luan dhe Sam pinë kafe.",
+              "english": "Luan and Sam drink coffee."
+            },
+            {
+              "text": "— Sam, a ke familje?",
+              "english": "\"Sam, do you have a family?\""
+            },
+            {
+              "text": "— Po. Kam një motër dhe një vëlla.",
+              "english": "\"Yes. I have a sister and a brother.\""
+            },
+            {
+              "text": "— Ku janë ata?",
+              "english": "\"Where are they?\""
+            },
+            {
+              "text": "— Ata nuk janë këtu.",
+              "english": "\"They are not here.\""
+            },
+            {
+              "text": "— A ke nënë dhe baba?",
+              "english": "\"Do you have a mother and a father?\""
+            },
+            {
+              "text": "— Po, kam nënë dhe baba.",
+              "english": "\"Yes, I have a mother and a father.\""
+            },
+            {
+              "text": "— Edhe ata nuk janë këtu?",
+              "english": "\"Are they not here either?\""
+            },
+            {
+              "text": "— Jo, nuk janë këtu. Por unë jam mirë.",
+              "english": "\"No, they are not here. But I am well.\""
+            },
+            {
+              "text": "— Ti ke shumë shokë këtu!",
+              "english": "\"You have many friends here!\""
+            },
+            {
+              "text": "— Po! Ana, ti dhe Drita.",
+              "english": "\"Yes! Ana, you and Drita.\""
+            },
+            {
+              "text": "Luan është shumë i lumtur.",
+              "english": "Luan is very happy."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

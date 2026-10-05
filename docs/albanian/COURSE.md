@@ -48,7 +48,7 @@ and `docs/albanian/CANDIDATES.md`. Everything described here is machine-drafted 
    as the dictionary's.
 
 Stored with each token (`TokenAnalysis`): the first reading, the alternatives, confidence, the method and source
-(`origin`, `sourceId`, `analyzer` = `adapter-sq@5`), and any human correction, which supersedes the machine's.
+(`origin`, `sourceId`, `analyzer` = `adapter-sq@6`), and any human correction, which supersedes the machine's.
 
 ## 3. Construction memory and writing checks
 

@@ -511,6 +511,10 @@ const NAMES: SqLexeme[] = [
   P('Beni', 'm', 'Beni', 'Beni (man\'s name)'),
   P('Ardi', 'm', 'Ardi', 'Ardi (man\'s name)'),
   P('Sam', 'm', 'Sami', 'Sam (man\'s name)'),
+  // the names of the Stage 0 cast (data/stage0/world.json): without them "Luan" is read as a form of luaj (he plays) and
+  // "Drita" as dritë (the light)
+  P('Luan', 'm', 'Luani', 'Luan (man\'s name)'),
+  P('Drita', 'f', 'Drita', 'Drita (woman\'s name)'),
   P('Ana', 'f', 'Ana', 'Ana (woman\'s name)'),
   P('Arta', 'f', 'Arta', 'Arta (woman\'s name)'),
   P('Dritan', 'm', 'Dritani', 'Dritan (man\'s name)'),

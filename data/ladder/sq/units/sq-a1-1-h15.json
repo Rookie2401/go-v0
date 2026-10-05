@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h15",
+  "lang": "sq",
+  "title": "Qeni dhe macja",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h15",
+    "title": "Albanian ladder, a1-1: Qeni dhe macja (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Qeni dhe macja",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Gjyshja Drita ka një qen të madh.",
+              "english": "Grandmother Drita has a big dog."
+            },
+            {
+              "text": "Ardi ka një mace të vogël.",
+              "english": "Ardi has a small cat."
+            },
+            {
+              "text": "Sot Ardi është në shtëpi.",
+              "english": "Today Ardi is at home."
+            },
+            {
+              "text": "Ai nuk shkon në shkollë, sepse është e diel.",
+              "english": "He does not go to school, because it is Sunday."
+            },
+            {
+              "text": "Gjyshja ha bukë dhe pi çaj.",
+              "english": "Grandmother eats bread and drinks tea."
+            },
+            {
+              "text": "Ardi ha oriz dhe pi ujë.",
+              "english": "Ardi eats rice and drinks water."
+            },
+            {
+              "text": "Qeni pi ujë në kuzhinë.",
+              "english": "The dog drinks water in the kitchen."
+            },
+            {
+              "text": "Macja pi qumësht.",
+              "english": "The cat drinks milk."
+            },
+            {
+              "text": "Pastaj gjyshja dhe Ardi shkojnë në kishë.",
+              "english": "Then grandmother and Ardi go to church."
+            },
+            {
+              "text": "Në kishë janë Ana, Luan dhe Sam.",
+              "english": "Ana, Luan and Sam are at church."
+            },
+            {
+              "text": "Ardi është shumë i lumtur sot.",
+              "english": "Ardi is very happy today."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

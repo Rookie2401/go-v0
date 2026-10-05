@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h20",
+  "lang": "sq",
+  "title": "Nga je?",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h20",
+    "title": "Albanian ladder, a1-1: Nga je? (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Nga je?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam është në kishë.",
+              "english": "Sam is at church."
+            },
+            {
+              "text": "Një burrë thotë: — Mirëdita! Nga je?",
+              "english": "A man says: \"Good afternoon! Where are you from?\""
+            },
+            {
+              "text": "— Mirëdita! Jam nga Amerika.",
+              "english": "\"Good afternoon! I am from America.\""
+            },
+            {
+              "text": "— A flet shqip?",
+              "english": "\"Do you speak Albanian?\""
+            },
+            {
+              "text": "— Flas pak. Mësoj shqip.",
+              "english": "\"I speak a little. I am learning Albanian.\""
+            },
+            {
+              "text": "— Shumë mirë! Unë quhem Dritan.",
+              "english": "\"Very good! My name is Dritan.\""
+            },
+            {
+              "text": "— Gëzohem, Dritan. Unë quhem Sam.",
+              "english": "\"Pleased to meet you, Dritan. My name is Sam.\""
+            },
+            {
+              "text": "— Ku jeton, Sam?",
+              "english": "\"Where do you live, Sam?\""
+            },
+            {
+              "text": "— Jetoj këtu, në një shtëpi të vogël.",
+              "english": "\"I live here, in a small house.\""
+            },
+            {
+              "text": "— Mirë. A je i lumtur këtu?",
+              "english": "\"Good. Are you happy here?\""
+            },
+            {
+              "text": "— Po, jam shumë i lumtur.",
+              "english": "\"Yes, I am very happy.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

@@ -63,6 +63,9 @@ const ROWS: Array<[string, string, number, Want]> = [
   ['Djali i mirë lexon.', 'i', 0, { lemma: 'i mirë', pos: 'ADJ', unit: 'article', morph: { PronType: 'Art', Gender: 'Masc' }, context: true }],
   ['Djali i mirë lexon.', 'mirë', 0, { lemma: 'i mirë', pos: 'ADJ', unit: 'head', morph: { Gender: 'Masc' }, context: true }],
   ['Djali i mirë lexon.', 'djali', 0, { lemma: 'djalë', morph: { Case: 'Nom', Definite: 'Def', Number: 'Sing' }, context: true }],
+  // "re" is also "you fell" (bie): after a noun the article agrees with, it is the adjective of the unit
+  ['Ana ka një xhaketë të re.', 'të', 0, { lemma: 'i ri', pos: 'ADJ', unit: 'article', context: true }],
+  ['Ana ka një xhaketë të re.', 're', 0, { lemma: 'i ri', pos: 'ADJ', unit: 'head', morph: { Gender: 'Fem' }, context: true }],
   ['Vajza e mirë punon.', 'e', 0, { lemma: 'i mirë', pos: 'ADJ', unit: 'article', morph: { Gender: 'Fem', Number: 'Sing', PronType: 'Art' } }],
   ['Vajza e mirë punon.', 'mirë', 0, { unit: 'head', morph: { Gender: 'Fem' } }],
   ['Vajza e mirë punon.', 'vajza', 0, { lemma: 'vajzë', morph: { Number: 'Sing', Definite: 'Def', Case: 'Nom' }, context: true }],

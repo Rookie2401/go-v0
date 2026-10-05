@@ -1,0 +1,131 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h01",
+  "lang": "sq",
+  "title": "Në treg",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h01",
+    "title": "Albanian ladder, a1-1: Në treg (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Në treg",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam shkon në treg.",
+              "english": "Sam goes to the market."
+            },
+            {
+              "text": "Ai ka një çantë.",
+              "english": "He has a bag."
+            },
+            {
+              "text": "Gjyshja Drita shet bukë.",
+              "english": "Grandmother Drita sells bread."
+            },
+            {
+              "text": "— Mirëmëngjes, Drita!",
+              "english": "\"Good morning, Drita!\""
+            },
+            {
+              "text": "— Përshëndetje, Sam! Si je?",
+              "english": "\"Hello, Sam! How are you?\""
+            },
+            {
+              "text": "— Jam mirë, faleminderit.",
+              "english": "\"I am well, thank you.\""
+            },
+            {
+              "text": "— Çfarë dëshiron sot?",
+              "english": "\"What would you like today?\""
+            },
+            {
+              "text": "— Dua bukë, ju lutem.",
+              "english": "\"I want bread, please.\""
+            },
+            {
+              "text": "— Ja buka. Buka sot është shumë e mirë.",
+              "english": "\"Here is the bread. The bread is very good today.\""
+            },
+            {
+              "text": "— Sa kushton?",
+              "english": "\"How much is it?\""
+            },
+            {
+              "text": "— Dhjetë lekë.",
+              "english": "\"Ten lek.\""
+            },
+            {
+              "text": "— Faleminderit, Drita.",
+              "english": "\"Thank you, Drita.\""
+            },
+            {
+              "text": "— S'ka përse, Sam.",
+              "english": "\"You're welcome, Sam.\""
+            },
+            {
+              "text": "Sam ka bukë në çantë.",
+              "english": "Sam has bread in the bag."
+            },
+            {
+              "text": "Ai shkon në shtëpi.",
+              "english": "He goes home."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

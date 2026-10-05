@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h24",
+  "lang": "sq",
+  "title": "Libri i Samit",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h24",
+    "title": "Albanian ladder, a1-1: Libri i Samit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Libri i Samit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam ka një libër në shqip.",
+              "english": "Sam has a book in Albanian."
+            },
+            {
+              "text": "Ai e lexon çdo ditë.",
+              "english": "He reads it every day."
+            },
+            {
+              "text": "Sot Sam nuk e gjen librin.",
+              "english": "Today Sam cannot find the book."
+            },
+            {
+              "text": "— Luan, ku është libri im? — pyet Sam.",
+              "english": "\"Luan, where is my book?\" asks Sam."
+            },
+            {
+              "text": "— Nuk e di, — thotë Luan.",
+              "english": "\"I don't know,\" says Luan."
+            },
+            {
+              "text": "Sam shkon në kuzhinë.",
+              "english": "Sam goes to the kitchen."
+            },
+            {
+              "text": "Ai e sheh librin mbi tavolinë.",
+              "english": "He sees the book on the table."
+            },
+            {
+              "text": "— Ja libri!",
+              "english": "\"Here is the book!\""
+            },
+            {
+              "text": "Sam e lexon librin në kuzhinë.",
+              "english": "Sam reads the book in the kitchen."
+            },
+            {
+              "text": "Libri është shumë i mirë.",
+              "english": "The book is very good."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

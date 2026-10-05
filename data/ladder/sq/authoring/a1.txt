@@ -1,0 +1,367 @@
+// The Albanian reading ladder, A1 — authoring file (npm run sq:ladder-build turns it into data/ladder/sq/).
+// Machine-drafted Standard Albanian; NOT reviewed by a native speaker. Cast as in Stage 0 (data/stage0/world.json):
+// Sam (the newcomer), Ana (a nurse at the clinic), Luan (her brother, a teacher), Drita (an older neighbour who sells
+// bread, Ardi's grandmother), Ardi (ten, a pupil). Beni and his family come from the Udha texts.
+// Each unit is measured by `npm run sq:ladder-author` and the gate (`npm run ladder:check -- sq`) before it stays.
+// Rule of thumb that keeps the gate green: a word met only once or twice before is used ONCE in a unit; at most four
+// new words per unit; every other word is one already met three times.
+
+# sq-a1-1-h01 | a1-1 | practical | dialogue | Në treg
+Sam shkon në treg. || Sam goes to the market.
+Ai ka një çantë. || He has a bag.
+Gjyshja Drita shet bukë. || Grandmother Drita sells bread.
+— Mirëmëngjes, Drita! || "Good morning, Drita!"
+— Përshëndetje, Sam! Si je? || "Hello, Sam! How are you?"
+— Jam mirë, faleminderit. || "I am well, thank you."
+— Çfarë dëshiron sot? || "What would you like today?"
+— Dua bukë, ju lutem. || "I want bread, please."
+— Ja buka. Buka sot është shumë e mirë. || "Here is the bread. The bread is very good today."
+— Sa kushton? || "How much is it?"
+— Dhjetë lekë. || "Ten lek."
+— Faleminderit, Drita. || "Thank you, Drita."
+— S'ka përse, Sam. || "You're welcome, Sam."
+Sam ka bukë në çantë. || Sam has bread in the bag.
+Ai shkon në shtëpi. || He goes home.
+
+# sq-a1-1-h02 | a1-1 | narrative | story | Ku është Ardi?
+Luan është mësues. || Luan is a teacher.
+Ardi është nxënës. || Ardi is a pupil.
+Sot Ardi nuk është në shkollë. || Today Ardi is not at school.
+Ku është Ardi? || Where is Ardi?
+Luan nuk e di. || Luan does not know.
+Ardi është në shtëpi. || Ardi is at home.
+Ai është i lodhur. || He is tired.
+Gjyshja thotë: — Ardi, a je mirë? || Grandmother says: "Ardi, are you well?"
+— Jo, gjyshe. Jam i lodhur. || "No, grandmother. I am tired."
+— Pi ujë dhe çaj. || "Drink water and tea."
+Ardi pi ujë. || Ardi drinks water.
+Gjyshja ka bukë dhe oriz. || Grandmother has bread and rice.
+Ardi ha bukë dhe oriz. || Ardi eats bread and rice.
+Nesër Ardi shkon në shkollë. || Tomorrow Ardi goes to school.
+
+# sq-a1-1-h03 | a1-1 | narrative | story | Ana punon
+Ana punon në klinikë. || Ana works at the clinic.
+Klinika është e madhe. || The clinic is big.
+Sot Ana është e lodhur. || Today Ana is tired.
+Ajo do kafe, por nuk ka kafe. || She wants coffee, but she has no coffee.
+Luan ka kafe. || Luan has coffee.
+Ai i jep kafe. || He gives her coffee.
+— Faleminderit, Luan! || "Thank you, Luan!"
+— S'ka përse, Ana. || "You're welcome, Ana."
+Ana pi kafe. || Ana drinks coffee.
+Kafeja është shumë e mirë. || The coffee is very good.
+Tani Ana nuk është e lodhur. || Now Ana is not tired.
+Luan shkon në shkollë. || Luan goes to school.
+Ana shkon në shtëpi. || Ana goes home.
+
+# sq-a1-1-h04 | a1-1 | narrative | story | Në shkollë
+Kjo është shkolla. || This is the school.
+Shkolla është e madhe. || The school is big.
+Luan është mësues këtu. || Luan is a teacher here.
+Në shkollë ka djem dhe vajza. || At the school there are boys and girls.
+Ardi është nxënës. || Ardi is a pupil.
+Ardi ka një libër të ri. || Ardi has a new book.
+Sam shkon në shkollë me Luanin. || Sam goes to the school with Luan.
+— Kush është ky? || "Who is this?"
+— Ky është Ardi. || "This is Ardi."
+— Përshëndetje, Ardi! || "Hello, Ardi!"
+— Përshëndetje, Sam! || "Hello, Sam!"
+Ardi lexon. || Ardi reads.
+Sam pi kafe me Luanin. || Sam drinks coffee with Luan.
+Ardit i pëlqen shkolla shumë. || Ardi likes the school very much.
+Mësuesi ka kafe mbi tavolinë. || The teacher has coffee on the table.
+
+# sq-a1-1-h05 | a1-1 | narrative | story | Motër dhe vëlla
+Ana dhe Luan janë motër dhe vëlla. || Ana and Luan are sister and brother.
+Ata jetojnë në një shtëpi të vogël. || They live in a small house.
+Sot është e diel. || Today is Sunday.
+Luan është në kuzhinë. || Luan is in the kitchen.
+Ai pi kafe dhe lexon një libër. || He drinks coffee and reads a book.
+Ana është në dhomë. || Ana is in the room.
+Ajo është e lodhur. || She is tired.
+— Ana, a do kafe? || "Ana, do you want coffee?"
+— Jo, faleminderit. Dua ujë. || "No, thank you. I want water."
+Ana pi ujë. || Ana drinks water.
+Luan pi kafe. || Luan drinks coffee.
+Pastaj Ana dhe Luan shkojnë në kishë. || Then Ana and Luan go to church.
+Në kishë është edhe gjyshja Drita. || Grandmother Drita is at church too.
+
+# sq-a1-1-h06 | a1-1 | narrative | story | Djali dhe vajza
+Sam është në rrugë. || Sam is in the street.
+Ai ka një çantë me bukë. || He has a bag with bread.
+Ardi është me një vajzë. || Ardi is with a girl.
+Kush është ajo? || Who is she?
+Sam nuk e di. || Sam does not know.
+— Përshëndetje, Ardi! || "Hello, Ardi!"
+— Përshëndetje, Sam! Kjo është Elira. || "Hello, Sam! This is Elira."
+— Gëzohem, Elira! || "Pleased to meet you, Elira!"
+— Gëzohem, Sam! || "Pleased to meet you, Sam!"
+Ardi dhe Elira shkojnë në shkollë. || Ardi and Elira go to school.
+Ardi është djalë i mirë. || Ardi is a good boy.
+Edhe Elira është shumë e mirë. || Elira is very good too.
+Sam shkon në shtëpi me bukë. || Sam goes home with bread.
+
+# sq-a1-1-h07 | a1-1 | narrative | story | Gjyshja e Ardit
+Gjyshja e Ardit është Drita. || Ardi's grandmother is Drita.
+Ardi jeton me gjyshen. || Ardi lives with his grandmother.
+Shtëpia e gjyshes është e vogël. || The grandmother's house is small.
+Nëna e Ardit nuk është këtu. || Ardi's mother is not here.
+Ajo punon në Tiranë. || She works in Tirana.
+Sot gjyshja ka bukë dhe oriz. || Today grandmother has bread and rice.
+Ardi ha oriz. || Ardi eats rice.
+Gjyshja pi kafe. || Grandmother drinks coffee.
+— Ardi, a të pëlqen orizi? || "Ardi, do you like the rice?"
+— Po, gjyshe, më pëlqen shumë. || "Yes, grandmother, I like it very much."
+Ardi është i lodhur. || Ardi is tired.
+Ai nuk shkon në shkollë sot. || He does not go to school today.
+
+# sq-a1-1-h08 | a1-1 | narrative | story | Në klinikë
+Sot Ana punon në klinikë. || Today Ana works at the clinic.
+Në klinikë ka një djalë me nënën. || At the clinic there is a boy with his mother.
+Ai është i lodhur. || He is tired.
+— Kush je ti? — thotë Ana. || "Who are you?" says Ana.
+— Jam nëna. Ai nuk pi ujë. || "I am the mother. He does not drink water."
+— A do ujë? A do çaj? || "Do you want water? Do you want tea?"
+Ai pi pak ujë. || He drinks a little water.
+— Faleminderit shumë! || "Thank you very much!"
+— S'ka përse. || "You're welcome."
+Në klinikë ka edhe një vajzë. || At the clinic there is also a girl.
+Ajo është e lodhur, por është mirë. || She is tired, but she is well.
+Ana pi kafe me Luanin. || Ana drinks coffee with Luan.
+Luan ka bukë dhe oriz. || Luan has bread and rice.
+Ana nuk është e lodhur tani. || Ana is not tired now.
+
+@ udha-0-01 | a1-1 | narrative
+
+# sq-a1-1-h09 | a1-1 | narrative | story | Libri i ri
+Ardi ka një libër të ri. || Ardi has a new book.
+Libri është i madh. || The book is big.
+Elira ka një libër të vogël. || Elira has a small book.
+Ardi dhe Elira lexojnë në shkollë. || Ardi and Elira read at school.
+Luan është mësues. || Luan is the teacher.
+— A ju pëlqen libri? — thotë Luan. || "Do you like the book?" says Luan.
+— Po, na pëlqen shumë! || "Yes, we like it very much!"
+Ardi lexon shumë. || Ardi reads a lot.
+Elira lexon pak. || Elira reads a little.
+Libri i Ardit është shumë i mirë. || Ardi's book is very good.
+Elira ka një libër të mirë. || Elira has a good book.
+Ardi dhe Elira janë në shkollë sot. || Ardi and Elira are at school today.
+
+@ udha-0-02 | a1-1 | narrative
+
+# sq-a1-1-h10 | a1-1 | conversation | dialogue | Familja e Samit
+Luan dhe Sam pinë kafe. || Luan and Sam drink coffee.
+— Sam, a ke familje? || "Sam, do you have a family?"
+— Po. Kam një motër dhe një vëlla. || "Yes. I have a sister and a brother."
+— Ku janë ata? || "Where are they?"
+— Ata nuk janë këtu. || "They are not here."
+— A ke nënë dhe baba? || "Do you have a mother and a father?"
+— Po, kam nënë dhe baba. || "Yes, I have a mother and a father."
+— Edhe ata nuk janë këtu? || "Are they not here either?"
+— Jo, nuk janë këtu. Por unë jam mirë. || "No, they are not here. But I am well."
+— Ti ke shumë shokë këtu! || "You have many friends here!"
+— Po! Ana, ti dhe Drita. || "Yes! Ana, you and Drita."
+Luan është shumë i lumtur. || Luan is very happy.
+
+# sq-a1-1-h11 | a1-1 | narrative | story | E diela
+Sot është e diel. || Today is Sunday.
+Babai i Ardit është në shtëpi. || Ardi's father is at home.
+Edhe nëna e Ardit është në shtëpi. || Ardi's mother is at home too.
+Familja është në shtëpi. || The family is at home.
+Ardi është shumë i lumtur. || Ardi is very happy.
+Nëna ka bukë dhe oriz. || The mother has bread and rice.
+Babai pi kafe. || The father drinks coffee.
+Gjyshja Drita pi çaj. || Grandmother Drita drinks tea.
+Ardi pi ujë. || Ardi drinks water.
+Pastaj familja shkon në kishë. || Then the family goes to church.
+Në kishë është edhe Sam. || Sam is at church too.
+Ana dhe Luan janë në kishë. || Ana and Luan are at church.
+
+@ udha-0-03 | a1-1 | narrative
+
+# sq-a1-1-h12 | a1-1 | description | story | Dhoma e Samit
+Sam jeton në një shtëpi të vogël. || Sam lives in a small house.
+Shtëpia ka një dhomë dhe një kuzhinë. || The house has a room and a kitchen.
+Në dhomë ka një tavolinë. || In the room there is a table.
+Mbi tavolinë ka një libër dhe një llambë. || On the table there are a book and a lamp.
+Dhoma ka një dritare. || The room has a window.
+Sam pi kafe në kuzhinë. || Sam drinks coffee in the kitchen.
+Pastaj ai lexon në dhomë. || Then he reads in the room.
+Libri është në shqip. || The book is in Albanian.
+Sam lexon pak. || Sam reads a little.
+Ai është i lodhur. || He is tired.
+Dhoma e Samit është e vogël, por është e mirë. || Sam's room is small, but it is good.
+
+# sq-a1-1-h13 | a1-1 | narrative | story | Rruga e shkollës
+Ardi shkon në shkollë me gjyshin. || Ardi goes to school with his grandfather.
+Rruga e shkollës është e gjatë. || The road to the school is long.
+Ardi ka një çantë të madhe. || Ardi has a big bag.
+Në çantë ka libra dhe bukë. || In the bag there are books and bread.
+Ardi nuk është i lodhur. || Ardi is not tired.
+Ai është i lumtur, sepse sot ka shkollë. || He is happy, because today there is school.
+Luan është në shkollë. || Luan is at the school.
+— Mirëmëngjes, Ardi! || "Good morning, Ardi!"
+— Mirëmëngjes, mësues! || "Good morning, teacher!"
+Ardi shkon në shkollë. || Ardi goes into the school.
+Pastaj gjyshi shkon në treg. || Then the grandfather goes to the market.
+Në treg ai pi kafe me Samin. || At the market he drinks coffee with Sam.
+
+@ udha-0-04 | a1-1 | description
+
+# sq-a1-1-h14 | a1-1 | description | story | Xhaketa e re
+Ana ka një xhaketë të re. || Ana has a new jacket.
+Ajo shkon në klinikë. || She goes to the clinic.
+Në rrugë është gjyshi i Ardit. || In the street is Ardi's grandfather.
+— Mirëmëngjes, Ana! Si je? || "Good morning, Ana! How are you?"
+— Jam mirë, faleminderit. || "I am well, thank you."
+— Xhaketa jote është e bukur! || "Your jacket is beautiful!"
+— Faleminderit! || "Thank you!"
+Ai ka një çantë me bukë. || He has a bag with bread.
+Ai shkon në shtëpi. || He goes home.
+Ana shkon në klinikë. || Ana goes to the clinic.
+Sot ajo punon shumë, por nuk është e lodhur. || Today she works a lot, but she is not tired.
+Rruga e klinikës nuk është e gjatë. || The road to the clinic is not long.
+
+@ udha-0-05 | a1-1 | description
+
+# sq-a1-1-h15 | a1-1 | narrative | story | Qeni dhe macja
+Gjyshja Drita ka një qen të madh. || Grandmother Drita has a big dog.
+Ardi ka një mace të vogël. || Ardi has a small cat.
+Sot Ardi është në shtëpi. || Today Ardi is at home.
+Ai nuk shkon në shkollë, sepse është e diel. || He does not go to school, because it is Sunday.
+Gjyshja ha bukë dhe pi çaj. || Grandmother eats bread and drinks tea.
+Ardi ha oriz dhe pi ujë. || Ardi eats rice and drinks water.
+Qeni pi ujë në kuzhinë. || The dog drinks water in the kitchen.
+Macja pi qumësht. || The cat drinks milk.
+Pastaj gjyshja dhe Ardi shkojnë në kishë. || Then grandmother and Ardi go to church.
+Në kishë janë Ana, Luan dhe Sam. || Ana, Luan and Sam are at church.
+Ardi është shumë i lumtur sot. || Ardi is very happy today.
+
+# sq-a1-1-h16 | a1-1 | conversation | dialogue | Në shtëpinë e Dritës
+— Mirëdita, Drita! || "Good afternoon, Drita!"
+— Mirëdita, Sam! A do kafe? || "Good afternoon, Sam! Do you want coffee?"
+— Po, faleminderit. || "Yes, thank you."
+— Ja kafeja. A do qumësht? || "Here is the coffee. Do you want milk?"
+— Jo, faleminderit. || "No, thank you."
+— Ky është qeni im. || "This is my dog."
+— Qeni është shumë i madh! || "The dog is very big!"
+— Po. Dhe ja macja e Ardit. || "Yes. And here is Ardi's cat."
+— Ku është Ardi? || "Where is Ardi?"
+— Ardi është në shkollë. || "Ardi is at school."
+— Macja është shumë e bukur. || "The cat is very beautiful."
+— Po. Ardit i pëlqen shumë. || "Yes. Ardi likes it very much."
+
+@ udha-0-06 | a1-1 | narrative
+@ udha-0-07 | a1-1 | narrative
+@ udha-0-08 | a1-1 | conversation
+
+# sq-a1-1-h17 | a1-1 | narrative | story | Mëngjesi i Samit
+Është mëngjes. || It is morning.
+Sam zgjohet herët. || Sam wakes up early.
+Ai shkon në kuzhinë. || He goes to the kitchen.
+Kuzhina ka një dritare të madhe. || The kitchen has a big window.
+Sam pi ujë dhe ha bukë. || Sam drinks water and eats bread.
+Pastaj ai lahet. || Then he washes.
+Tani Sam nuk është i lodhur. || Now Sam is not tired.
+Ai lexon pak në shqip. || He reads a little in Albanian.
+Pastaj Sam shkon në treg. || Then Sam goes to the market.
+Rruga e tregut nuk është e gjatë. || The road to the market is not long.
+Në treg është gjyshi i Ardit. || Ardi's grandfather is at the market.
+Gjyshi i jep një bukë. || The grandfather gives him a loaf of bread.
+
+# sq-a1-1-h18 | a1-1 | narrative | story | Mëngjesi i Anës
+Ana zgjohet herët. || Ana wakes up early.
+Ajo punon në klinikë sot. || She works at the clinic today.
+Ana lahet dhe vishet. || Ana washes and gets dressed.
+Pastaj ajo shkon në kuzhinë. || Then she goes to the kitchen.
+Luan është në kuzhinë. || Luan is in the kitchen.
+Ai përgatit kafe. || He makes coffee.
+— Mirëmëngjes, Ana! || "Good morning, Ana!"
+— Mirëmëngjes, Luan! || "Good morning, Luan!"
+Luan i jep kafe. || Luan gives her coffee.
+Ana pi kafe dhe ha bukë. || Ana drinks coffee and eats bread.
+Është mëngjes i bukur. || It is a beautiful morning.
+Tani Ana shkon në klinikë. || Now Ana goes to the clinic.
+
+# sq-a1-1-h19 | a1-1 | narrative | story | Mëngjesi i Ardit
+Në mëngjes Ardi zgjohet herët. || In the morning Ardi wakes up early.
+Ai lahet dhe vishet. || He washes and gets dressed.
+Gjyshja përgatit çaj në kuzhinë. || Grandmother makes tea in the kitchen.
+Ajo i jep çaj dhe bukë. || She gives him tea and bread.
+Ardi pi çaj dhe ha bukë. || Ardi drinks tea and eats bread.
+Macja pi qumësht. || The cat drinks milk.
+Qeni është në kuzhinë. || The dog is in the kitchen.
+Pastaj Ardi shkon në shkollë me gjyshin. || Then Ardi goes to school with his grandfather.
+Rruga është e gjatë. || The road is long.
+Tani Ardi është në shkollë. || Now Ardi is at school.
+Ai është i lumtur. || He is happy.
+
+@ udha-1-01 | a1-1 | narrative
+
+# sq-a1-1-h20 | a1-1 | conversation | dialogue | Nga je?
+Sam është në kishë. || Sam is at church.
+Një burrë thotë: — Mirëdita! Nga je? || A man says: "Good afternoon! Where are you from?"
+— Mirëdita! Jam nga Amerika. || "Good afternoon! I am from America."
+— A flet shqip? || "Do you speak Albanian?"
+— Flas pak. Mësoj shqip. || "I speak a little. I am learning Albanian."
+— Shumë mirë! Unë quhem Dritan. || "Very good! My name is Dritan."
+— Gëzohem, Dritan. Unë quhem Sam. || "Pleased to meet you, Dritan. My name is Sam."
+— Ku jeton, Sam? || "Where do you live, Sam?"
+— Jetoj këtu, në një shtëpi të vogël. || "I live here, in a small house."
+— Mirë. A je i lumtur këtu? || "Good. Are you happy here?"
+— Po, jam shumë i lumtur. || "Yes, I am very happy."
+
+# sq-a1-1-h21 | a1-1 | conversation | dialogue | Ana dhe Dritani
+Pastaj Ana vjen në kishë. || Then Ana comes to church.
+— Ana, ky është Dritani. || "Ana, this is Dritan."
+— Gëzohem që të njoh, Dritan! || "I am glad to meet you, Dritan!"
+— Edhe unë gëzohem. Nga je, Ana? || "I am glad too. Where are you from, Ana?"
+— Jam nga Tirana. Po ti? || "I am from Tirana. And you?"
+— Edhe unë jam nga Tirana. || "I am from Tirana too."
+— Sam flet pak shqip, por mëson shumë. || "Sam speaks a little Albanian, but he is learning a lot."
+— Po, Sam flet mirë! || "Yes, Sam speaks well!"
+— Faleminderit! — thotë Sam. || "Thank you!" says Sam.
+Pastaj ata pinë kafe. || Then they drink coffee.
+
+# sq-a1-1-h22 | a1-1 | narrative | story | Sam mëson shqip
+Sam mëson shqip çdo ditë. || Sam learns Albanian every day.
+Ai lexon libra në shqip. || He reads books in Albanian.
+Luan është mësuesi i Samit. || Luan is Sam's teacher.
+Sam njeh shumë njerëz këtu. || Sam knows many people here.
+Ai njeh Anën, Luanin, Dritën dhe Ardin. || He knows Ana, Luan, Drita and Ardi.
+Dritani është nga Tirana. || Dritan is from Tirana.
+Sam thotë: — Më pëlqen që jetoj këtu. || Sam says: "I like that I live here."
+Në mëngjes Sam pi kafe. || In the morning Sam drinks coffee.
+Pastaj ai lexon dhe shkruan. || Then he reads and writes.
+Sam flet pak, por flet mirë. || Sam speaks a little, but he speaks well.
+Ai është i lumtur. || He is happy.
+
+@ misioni-1-01 | a1-1 | conversation
+
+# sq-a1-1-h23 | a1-1 | narrative | story | Ku është çelësi?
+Çdo ditë Ardi shkon në shkollë. || Every day Ardi goes to school.
+Sot Ardi nuk gjen çelësin. || Today Ardi cannot find the key.
+— Gjyshe, ku është? — pyet Ardi. || "Grandmother, where is it?" asks Ardi.
+— Nuk e di, Ardi. || "I don't know, Ardi."
+Ai nuk është mbi tavolinë. || It is not on the table.
+Ai nuk është në çantë. || It is not in the bag.
+Ai nuk është në dhomë. || It is not in the room.
+Macja është në kuzhinë. || The cat is in the kitchen.
+Ardi e sheh macen. || Ardi sees the cat.
+Ja, macja ka çelësin! || Look, the cat has the key!
+Ardi është i lumtur. || Ardi is happy.
+Ai shkon në shkollë me gjyshin. || He goes to school with his grandfather.
+
+# sq-a1-1-h24 | a1-1 | narrative | story | Libri i Samit
+Sam ka një libër në shqip. || Sam has a book in Albanian.
+Ai e lexon çdo ditë. || He reads it every day.
+Sot Sam nuk e gjen librin. || Today Sam cannot find the book.
+— Luan, ku është libri im? — pyet Sam. || "Luan, where is my book?" asks Sam.
+— Nuk e di, — thotë Luan. || "I don't know," says Luan.
+Sam shkon në kuzhinë. || Sam goes to the kitchen.
+Ai e sheh librin mbi tavolinë. || He sees the book on the table.
+— Ja libri! || "Here is the book!"
+Sam e lexon librin në kuzhinë. || Sam reads the book in the kitchen.
+Libri është shumë i mirë. || The book is very good.
+
+@ udha-1-02 | a1-1 | narrative

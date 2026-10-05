@@ -49,7 +49,10 @@
     "library:audit": "vite-node scripts/library-audit.mts",
     "library:order": "vite-node scripts/library-order.mts",
     "library:sync-catalogue": "vite-node scripts/sync-library-catalogue.mts",
-    "stage0:validate": "vite-node scripts/stage0-validate.mts"
+    "stage0:validate": "vite-node scripts/stage0-validate.mts",
+    "ladder:check": "vite-node scripts/ladder-check.mts",
+    "ladder:place": "vite-node scripts/ladder-place.mts",
+    "audio:packet": "vite-node scripts/audio-packet.mts"
   },
   "dependencies": {
     "dexie": "^4",

@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h27",
+  "lang": "sq",
+  "title": "Sam dhe fshati",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h27",
+    "title": "Albanian ladder, a1-1: Sam dhe fshati (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Sam dhe fshati",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "— Sam, a do të shkosh në fshat? — pyet Luan.",
+              "english": "\"Sam, do you want to go to the village?\" asks Luan."
+            },
+            {
+              "text": "— Po! Ku është fshati?",
+              "english": "\"Yes! Where is the village?\""
+            },
+            {
+              "text": "— Fshati nuk është në Tiranë. Rruga është e gjatë.",
+              "english": "\"The village is not in Tirana. The road is long.\""
+            },
+            {
+              "text": "— Çfarë bëjmë në fshat?",
+              "english": "\"What do we do in the village?\""
+            },
+            {
+              "text": "— Pimë kafe me gjyshin e Ardit.",
+              "english": "\"We drink coffee with Ardi's grandfather.\""
+            },
+            {
+              "text": "— A ka shtëpi të vjetër?",
+              "english": "\"Are there old houses?\""
+            },
+            {
+              "text": "— Po, ka shumë shtëpi të vjetra.",
+              "english": "\"Yes, there are many old houses.\""
+            },
+            {
+              "text": "— Shumë mirë. Më pëlqen!",
+              "english": "\"Very good. I like it!\""
+            },
+            {
+              "text": "Në verë Sam dhe Luan shkojnë në fshat.",
+              "english": "In summer Sam and Luan go to the village."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

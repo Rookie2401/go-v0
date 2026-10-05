@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h48",
+  "lang": "sq",
+  "title": "Fjala e Perëndisë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h48",
+    "title": "Albanian ladder, a1-1: Fjala e Perëndisë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Fjala e Perëndisë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam lexon Biblën me Luanin.",
+              "english": "Sam reads the Bible with Luan."
+            },
+            {
+              "text": "Ata lexojnë për Jezusin.",
+              "english": "They read about Jesus."
+            },
+            {
+              "text": "Luan thotë: — Jezusi është Biri i Perëndisë.",
+              "english": "Luan says: \"Jesus is the Son of God.\""
+            },
+            {
+              "text": "— Ai na do shumë.",
+              "english": "\"He loves us very much.\""
+            },
+            {
+              "text": "Sam pyet: — Çfarë është mëkati?",
+              "english": "Sam asks: \"What is sin?\""
+            },
+            {
+              "text": "Luan i thotë diçka për mëkatin.",
+              "english": "Luan tells him something about sin."
+            },
+            {
+              "text": "Sam dëgjon dhe mendon.",
+              "english": "Sam listens and thinks."
+            },
+            {
+              "text": "Pastaj ata luten bashkë.",
+              "english": "Then they pray together."
+            },
+            {
+              "text": "Sam është i lumtur.",
+              "english": "Sam is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

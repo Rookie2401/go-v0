@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h42",
+  "lang": "sq",
+  "title": "Letra e Samit",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h42",
+    "title": "Albanian ladder, a1-1: Letra e Samit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Letra e Samit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam i shkruan nënës:",
+              "english": "Sam writes to his mother:"
+            },
+            {
+              "text": "«E dashur nënë, jam mirë.",
+              "english": "\"Dear mother, I am well."
+            },
+            {
+              "text": "Jetoj në një shtëpi të vogël.",
+              "english": "I live in a small house."
+            },
+            {
+              "text": "Mësoj shqip çdo ditë.",
+              "english": "I learn Albanian every day."
+            },
+            {
+              "text": "Njoh shumë njerëz këtu.",
+              "english": "I know many people here."
+            },
+            {
+              "text": "Pi kafe me Luanin dhe Anën.",
+              "english": "I drink coffee with Luan and Ana."
+            },
+            {
+              "text": "Dje shkova në kishë.",
+              "english": "Yesterday I went to church."
+            },
+            {
+              "text": "Të dua shumë. Sam.»",
+              "english": "I love you very much. Sam.\""
+            },
+            {
+              "text": "Pastaj Sam e lexon letrën.",
+              "english": "Then Sam reads the letter."
+            },
+            {
+              "text": "Ai është i lumtur.",
+              "english": "He is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

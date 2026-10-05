@@ -1,0 +1,107 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h32",
+  "lang": "sq",
+  "title": "Mollët",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h32",
+    "title": "Albanian ladder, a1-1: Mollët (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Mollët",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ana shkon në treg me Samin.",
+              "english": "Ana goes to the market with Sam."
+            },
+            {
+              "text": "— Mirëdita! Sa kushtojnë mollët? — pyet Ana.",
+              "english": "\"Good afternoon! How much do the apples cost?\" asks Ana."
+            },
+            {
+              "text": "— Nuk kushtojnë shumë, — thotë shitësi.",
+              "english": "\"They don't cost much,\" says the seller."
+            },
+            {
+              "text": "— Mirë. Dua mollë, ju lutem.",
+              "english": "\"Good. I want apples, please.\""
+            },
+            {
+              "text": "Ana i blen.",
+              "english": "Ana buys them."
+            },
+            {
+              "text": "Sam blen djathë.",
+              "english": "Sam buys cheese."
+            },
+            {
+              "text": "— Janë shumë të mira! — thotë Ana.",
+              "english": "\"They are very good!\" says Ana."
+            },
+            {
+              "text": "Ana i jep Samit një mollë.",
+              "english": "Ana gives Sam an apple."
+            },
+            {
+              "text": "— Faleminderit, Ana!",
+              "english": "\"Thank you, Ana!\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

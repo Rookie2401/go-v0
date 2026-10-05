@@ -1,0 +1,115 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h39",
+  "lang": "sq",
+  "title": "Bibla e Samit",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h39",
+    "title": "Albanian ladder, a1-1: Bibla e Samit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Bibla e Samit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam ka një Bibël në shqip.",
+              "english": "Sam has a Bible in Albanian."
+            },
+            {
+              "text": "Ai lexon pak çdo ditë.",
+              "english": "He reads a little every day."
+            },
+            {
+              "text": "Sot ai lexon me Luanin.",
+              "english": "Today he reads with Luan."
+            },
+            {
+              "text": "Luan thotë: — Kjo është fjala e Perëndisë.",
+              "english": "Luan says: \"This is the word of God.\""
+            },
+            {
+              "text": "Sam dëgjon dhe mëson.",
+              "english": "Sam listens and learns."
+            },
+            {
+              "text": "Ai mendon për dashurinë.",
+              "english": "He thinks about love."
+            },
+            {
+              "text": "Pastaj Sam dhe Luan pinë kafe.",
+              "english": "Then Sam and Luan drink coffee."
+            },
+            {
+              "text": "Luan ha bukë.",
+              "english": "Luan eats bread."
+            },
+            {
+              "text": "Sam ha një mollë.",
+              "english": "Sam eats an apple."
+            },
+            {
+              "text": "Sam është i lumtur.",
+              "english": "Sam is happy."
+            },
+            {
+              "text": "Ai mund të lexojë shumë tani.",
+              "english": "He can read a lot now."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

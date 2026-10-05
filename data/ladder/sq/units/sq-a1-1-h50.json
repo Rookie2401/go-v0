@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h50",
+  "lang": "sq",
+  "title": "Sam pyet",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h50",
+    "title": "Albanian ladder, a1-1: Sam pyet (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Sam pyet",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "— Luan, a mund të të pyes diçka?",
+              "english": "\"Luan, may I ask you something?\""
+            },
+            {
+              "text": "— Po, pyet.",
+              "english": "\"Yes, ask.\""
+            },
+            {
+              "text": "— Jezusi vdiq. Po pastaj?",
+              "english": "\"Jesus died. And then?\""
+            },
+            {
+              "text": "— Pastaj Ai u ringjall.",
+              "english": "\"Then He rose again.\""
+            },
+            {
+              "text": "— Dua të di më shumë.",
+              "english": "\"I want to know more.\""
+            },
+            {
+              "text": "— Mirë. Mund të lexojmë Biblën bashkë.",
+              "english": "\"Good. We can read the Bible together.\""
+            },
+            {
+              "text": "Sam buzëqesh.",
+              "english": "Sam smiles."
+            },
+            {
+              "text": "— Faleminderit, Luan.",
+              "english": "\"Thank you, Luan.\""
+            },
+            {
+              "text": "— S'ka përse, Sam.",
+              "english": "\"You're welcome, Sam.\""
+            },
+            {
+              "text": "Ata lexojnë dhe pinë kafe.",
+              "english": "They read and drink coffee."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

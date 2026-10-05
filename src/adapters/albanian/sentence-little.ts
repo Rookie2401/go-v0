@@ -94,12 +94,20 @@ export function littleWords(cx: Ctx): void {
     else if (w === 'më') more(cx, i);
     else if (w === 'u') nonActive(cx, i);
     else if (w === 'ju') you(cx, i);
+    else if (MODAL_FORMS.has(w)) modal(cx, i);
     else if (ARTICLE_FORMS.has(w) || cx.cur[i].some((c) => isTeParticle(c) && c.parts !== undefined)) articleOrPronoun(cx, i);
   }
 }
 
 /** The written forms of the two modal words (function-minor.ts MODALS). */
 const MODAL_FORMS = new Set(['mund', 'duhet', 'duhen', 'duhej']);
+
+/** mund / duhet right before të: the modal (mund të vij), not the full verb (mundem, to be able; duhem, to be needed). */
+function modal(cx: Ctx, i: number): void {
+  const k = nextWord(cx, i);
+  if (k === undefined || norm(cx, k) !== 'të') return;
+  pick(cx, i, { pred: (c) => c.lemma === 'mund' || c.lemma === 'duhem', why: `before "të": the modal "${norm(cx, i)}" (+ të + a verb)` });
+}
 
 /** Did the sentence open (or a new clause begin after a comma) just before this word? */
 function clauseStart(cx: Ctx, i: number): 'start' | 'comma' | undefined {

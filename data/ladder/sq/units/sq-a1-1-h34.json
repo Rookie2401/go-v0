@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-1-h34",
+  "lang": "sq",
+  "title": "Bie shi",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-1-h34",
+    "title": "Albanian ladder, a1-1: Bie shi (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Bie shi",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot bie shi.",
+              "english": "Today it is raining."
+            },
+            {
+              "text": "Sam nuk del nga shtëpia.",
+              "english": "Sam does not go out of the house."
+            },
+            {
+              "text": "Ai është në dhomë.",
+              "english": "He is in the room."
+            },
+            {
+              "text": "Ai shikon nga dritarja.",
+              "english": "He looks out of the window."
+            },
+            {
+              "text": "Në rrugë nuk ka njerëz.",
+              "english": "There are no people in the street."
+            },
+            {
+              "text": "Sam mund të lexojë.",
+              "english": "Sam can read."
+            },
+            {
+              "text": "Ai pi kafe dhe lexon një libër.",
+              "english": "He drinks coffee and reads a book."
+            },
+            {
+              "text": "Libri është në shqip.",
+              "english": "The book is in Albanian."
+            },
+            {
+              "text": "Sam lexon shumë sot.",
+              "english": "Sam reads a lot today."
+            },
+            {
+              "text": "Pastaj ai pi çaj.",
+              "english": "Then he drinks tea."
+            },
+            {
+              "text": "Ai është i lumtur në shtëpi.",
+              "english": "He is happy at home."
+            },
+            {
+              "text": "Shtëpia është e vogël, por e mirë.",
+              "english": "The house is small, but good."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-05",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), scripts/sq-ladder-build.mts"
+        }
+      }
+    ]
+  }
+}

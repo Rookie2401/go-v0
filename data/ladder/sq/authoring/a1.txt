@@ -365,3 +365,372 @@ Sam e lexon librin në kuzhinë. || Sam reads the book in the kitchen.
 Libri është shumë i mirë. || The book is very good.
 
 @ udha-1-02 | a1-1 | narrative
+
+# sq-a1-1-h25 | a1-1 | narrative | story | Fshati i gjyshit
+Gjyshi i Ardit ka një shtëpi në fshat. || Ardi's grandfather has a house in a village.
+Shtëpia është e vjetër. || The house is old.
+Ardi shkon në fshat me gjyshin. || Ardi goes to the village with his grandfather.
+Rruga është e gjatë. || The road is long.
+Në shtëpi ka një kuzhinë të madhe. || In the house there is a big kitchen.
+Gjyshi bën kafe. || The grandfather makes coffee.
+Ardi pi ujë. || Ardi drinks water.
+Pastaj Ardi lexon një libër. || Then Ardi reads a book.
+Ai është i lumtur. || He is happy.
+Gjyshi është i lodhur. || The grandfather is tired.
+
+# sq-a1-1-h26 | a1-1 | narrative | story | Në verë
+Në verë Ardi nuk shkon në shkollë. || In summer Ardi does not go to school.
+Ai shkon te gjyshi çdo ditë. || He goes to his grandfather every day.
+Gjyshi jeton në fshat. || The grandfather lives in the village.
+Shtëpia e gjyshit është e vjetër, por e bukur. || The grandfather's house is old, but beautiful.
+Gjyshi i jep Ardit bukë dhe çaj. || The grandfather gives Ardi bread and tea.
+Ardi ha bukë dhe pi çaj. || Ardi eats bread and drinks tea.
+Pastaj ai lexon një libër. || Then he reads a book.
+Gjyshi pi kafe dhe lexon. || The grandfather drinks coffee and reads.
+Në shtëpi ka shumë libra. || In the house there are many books.
+Ardit i pëlqen shumë vera në shtëpinë e gjyshit. || Ardi likes the summer at his grandfather's house very much.
+Ai është shumë i lumtur. || He is very happy.
+
+# sq-a1-1-h27 | a1-1 | conversation | dialogue | Sam dhe fshati
+— Sam, a do të shkosh në fshat? — pyet Luan. || "Sam, do you want to go to the village?" asks Luan.
+— Po! Ku është fshati? || "Yes! Where is the village?"
+— Fshati nuk është në Tiranë. Rruga është e gjatë. || "The village is not in Tirana. The road is long."
+— Çfarë bëjmë në fshat? || "What do we do in the village?"
+— Pimë kafe me gjyshin e Ardit. || "We drink coffee with Ardi's grandfather."
+— A ka shtëpi të vjetër? || "Are there old houses?"
+— Po, ka shumë shtëpi të vjetra. || "Yes, there are many old houses."
+— Shumë mirë. Më pëlqen! || "Very good. I like it!"
+Në verë Sam dhe Luan shkojnë në fshat. || In summer Sam and Luan go to the village.
+
+@ udha-1-03 | a1-1 | narrative
+
+# sq-a1-1-h28 | a1-1 | conversation | dialogue | Mirë se vini!
+Sam shkon në shtëpinë e Dritanit. || Sam goes to Dritan's house.
+— Mirë se vjen, Sam! Hyr, të lutem. || "Welcome, Sam! Come in, please."
+— Faleminderit, Dritan. || "Thank you, Dritan."
+— Ulu. A do kafe? || "Sit down. Do you want coffee?"
+— Po, faleminderit. || "Yes, thank you."
+Dritani sjell kafe. || Dritan brings coffee.
+— Shtëpia jote është shumë e bukur. || "Your house is very beautiful."
+— Faleminderit. Është e vjetër, por e mirë. || "Thank you. It is old, but good."
+Sam dhe Dritani pinë kafe. || Sam and Dritan drink coffee.
+Ata flasin shqip. || They speak Albanian.
+
+# sq-a1-1-h29 | a1-1 | narrative | story | Gruaja e Dritanit
+Dritani ka një grua. || Dritan has a wife.
+Ajo quhet Mira. || She is called Mira.
+Mira punon në shkollë me Luanin. || Mira works at the school with Luan.
+Dritani dhe Mira kanë dy fëmijë. || Dritan and Mira have two children.
+Ata shkojnë në shkollë çdo ditë. || They go to school every day.
+Sot Mira vjen në shtëpi herët. || Today Mira comes home early.
+Ajo sjell bukë. || She brings bread.
+— Përshëndetje, Mira! — thotë Dritani. || "Hello, Mira!" says Dritan.
+Mira ulet dhe pi çaj. || Mira sits down and drinks tea.
+Dritani pi kafe. || Dritan drinks coffee.
+Ajo është e lodhur, por e lumtur. || She is tired, but happy.
+Pastaj Mira lexon një libër. || Then Mira reads a book.
+
+# sq-a1-1-h30 | a1-1 | conversation | dialogue | Te Ana
+Mira dhe Dritani vijnë te Ana dhe Luan. || Mira and Dritan come to Ana and Luan's.
+— Mirë se vini! Hyni, ju lutem. || "Welcome! Come in, please."
+— Faleminderit, Ana. || "Thank you, Ana."
+— Uluni. A doni kafe? || "Sit down. Do you want coffee?"
+— Unë dua kafe, — thotë Dritani. || "I want coffee," says Dritan.
+— Unë dua çaj, — thotë Mira. || "I want tea," says Mira.
+Luan sjell kafe dhe çaj. || Luan brings coffee and tea.
+— Ku janë fëmijët? — pyet Ana. || "Where are the children?" asks Ana.
+— Janë me gjyshen. || "They are with their grandmother."
+— Shumë mirë. || "Very good."
+Ata pinë kafe dhe çaj. || They drink coffee and tea.
+Ata flasin shumë dhe janë të lumtur. || They talk a lot and are happy.
+
+@ misioni-1-02 | a1-1 | conversation
+
+# sq-a1-1-h31 | a1-1 | practical | story | Drita në treg
+Çdo ditë Drita shkon në treg. || Every day Drita goes to the market.
+Ajo shet bukë. || She sells bread.
+Në treg ka shumë njerëz. || At the market there are many people.
+Sam shkon në treg. || Sam goes to the market.
+Ai blen bukë te Drita. || He buys bread from Drita.
+— Sa kushton buka sot? || "How much does the bread cost today?"
+— Dhjetë lekë, Sam. || "Ten lek, Sam."
+Sam blen dy bukë. || Sam buys two loaves.
+Pastaj ai blen djathë. || Then he buys cheese.
+Djathi është i mirë. || The cheese is good.
+Sam shkon në shtëpi me bukë dhe djathë. || Sam goes home with bread and cheese.
+
+# sq-a1-1-h32 | a1-1 | practical | dialogue | Mollët
+Ana shkon në treg me Samin. || Ana goes to the market with Sam.
+— Mirëdita! Sa kushtojnë mollët? — pyet Ana. || "Good afternoon! How much do the apples cost?" asks Ana.
+— Nuk kushtojnë shumë, — thotë shitësi. || "They don't cost much," says the seller.
+— Mirë. Dua mollë, ju lutem. || "Good. I want apples, please."
+Ana i blen. || Ana buys them.
+Sam blen djathë. || Sam buys cheese.
+— Janë shumë të mira! — thotë Ana. || "They are very good!" says Ana.
+Ana i jep Samit një mollë. || Ana gives Sam an apple.
+— Faleminderit, Ana! || "Thank you, Ana!"
+
+# sq-a1-1-h33 | a1-1 | narrative | story | Molla e kuqe
+Ardi do një mollë. || Ardi wants an apple.
+Gjyshja ka mollë në kuzhinë. || Grandmother has apples in the kitchen.
+Ardi do një mollë të kuqe. || Ardi wants a red apple.
+Gjyshja i jep një mollë të kuqe. || Grandmother gives him a red apple.
+Ardi ha mollën. || Ardi eats the apple.
+— A është e mirë? — pyet gjyshja. || "Is it good?" asks grandmother.
+— Po, gjyshe, është shumë e mirë! || "Yes, grandmother, it is very good!"
+Pastaj gjyshja blen djathë në treg. || Then grandmother buys cheese at the market.
+Shitësi është gjyshi i Elirës. || The seller is Elira's grandfather.
+Ai ka shumë njerëz sot. || He has many people today.
+
+@ udha-1-04 | a1-1 | practical
+
+# sq-a1-1-h34 | a1-1 | narrative | story | Bie shi
+Sot bie shi. || Today it is raining.
+Sam nuk del nga shtëpia. || Sam does not go out of the house.
+Ai është në dhomë. || He is in the room.
+Ai shikon nga dritarja. || He looks out of the window.
+Në rrugë nuk ka njerëz. || There are no people in the street.
+Sam mund të lexojë. || Sam can read.
+Ai pi kafe dhe lexon një libër. || He drinks coffee and reads a book.
+Libri është në shqip. || The book is in Albanian.
+Sam lexon shumë sot. || Sam reads a lot today.
+Pastaj ai pi çaj. || Then he drinks tea.
+Ai është i lumtur në shtëpi. || He is happy at home.
+Shtëpia është e vogël, por e mirë. || The house is small, but good.
+
+# sq-a1-1-h35 | a1-1 | narrative | story | Ardi do të luajë
+Ardi do të luajë në rrugë. || Ardi wants to play in the street.
+Por sot bie shi. || But today it is raining.
+— Gjyshe, a mund të dal? — pyet Ardi. || "Grandmother, may I go out?" asks Ardi.
+— Jo, Ardi. Sot jo. || "No, Ardi. Not today."
+Ardi shikon nga dritarja. || Ardi looks out of the window.
+Ai është në dhomë me macen. || He is in the room with the cat.
+Pastaj ai merr një libër. || Then he takes a book.
+Ardi lexon me macen. || Ardi reads with the cat.
+Gjyshja i jep çaj dhe bukë. || Grandmother gives him tea and bread.
+Ardi pi çaj dhe ha bukë. || Ardi drinks tea and eats bread.
+Macja pi qumësht. || The cat drinks milk.
+Ardi është mirë në shtëpi. || Ardi is fine at home.
+
+# sq-a1-1-h36 | a1-1 | narrative | story | Pas shiut
+Tani nuk ka shi. || Now there is no rain.
+Ardi mendon: Mund të dal! || Ardi thinks: I can go out!
+Ai merr çantën. || He takes his bag.
+Elira është në rrugë. || Elira is in the street.
+Ardi është në rrugë me Elirën. || Ardi is in the street with Elira.
+— Elira, a luajmë? — pyet Ardi. || "Elira, shall we play?" asks Ardi.
+— Po, Ardi! || "Yes, Ardi!"
+Ardi dhe Elira fillojnë të luajnë. || Ardi and Elira begin to play.
+Gjyshja është në shtëpi. || Grandmother is at home.
+Ajo pi kafe dhe është e lumtur. || She drinks coffee and is happy.
+Pastaj Ardi shkon në shtëpi. || Then Ardi goes home.
+Gjyshja i jep një mollë. || Grandmother gives him an apple.
+Ardi ha mollën. || Ardi eats the apple.
+
+# sq-a1-1-h37 | a1-1 | narrative | story | Sam mendon
+Sam mendon për Shqipërinë. || Sam thinks about Albania.
+Ai jeton këtu dhe mëson shqip. || He lives here and is learning Albanian.
+Ai mund të lexojë pak. || He can read a little.
+Ai mund të flasë pak. || He can speak a little.
+Ai fillon të kuptojë shumë. || He begins to understand a lot.
+Ai luan me Ardin dhe Elirën. || He plays with Ardi and Elira.
+Ai pi kafe me Luanin dhe Anën. || He drinks coffee with Luan and Ana.
+Ai blen bukë te Drita. || He buys bread from Drita.
+Sam mendon: Jam i lumtur këtu. || Sam thinks: I am happy here.
+
+@ udha-1-05 | a1-1 | narrative
+
+# sq-a1-1-h38 | a1-1 | narrative | story | E diela në kishë
+Të dielën Drita shkon në kishë. || On Sunday Drita goes to church.
+Ardi shkon me gjyshen. || Ardi goes with his grandmother.
+Në kishë ka shumë njerëz. || At church there are many people.
+Edhe Sam, Ana dhe Luan janë në kishë. || Sam, Ana and Luan are at church too.
+Njerëzit këndojnë për Perëndinë. || The people sing to God.
+Ardit i pëlqen të këndojë. || Ardi likes to sing.
+Pastaj një burrë flet. || Then a man speaks.
+Sam dëgjon. || Sam listens.
+Ai kupton pak. || He understands a little.
+Ana i thotë: — Shumë mirë, Sam! || Ana says to him: "Very good, Sam!"
+
+# sq-a1-1-h39 | a1-1 | narrative | story | Bibla e Samit
+Sam ka një Bibël në shqip. || Sam has a Bible in Albanian.
+Ai lexon pak çdo ditë. || He reads a little every day.
+Sot ai lexon me Luanin. || Today he reads with Luan.
+Luan thotë: — Kjo është fjala e Perëndisë. || Luan says: "This is the word of God."
+Sam dëgjon dhe mëson. || Sam listens and learns.
+Ai mendon për dashurinë. || He thinks about love.
+Pastaj Sam dhe Luan pinë kafe. || Then Sam and Luan drink coffee.
+Luan ha bukë. || Luan eats bread.
+Sam ha një mollë. || Sam eats an apple.
+Sam është i lumtur. || Sam is happy.
+Ai mund të lexojë shumë tani. || He can read a lot now.
+
+# sq-a1-1-h40 | a1-1 | narrative | story | Pas kishës
+Pas kishës njerëzit pinë kafe. || After church the people drink coffee.
+Gjyshja Drita ka bukë për të gjithë. || Grandmother Drita has bread for everyone.
+Ardi këndon me Elirën. || Ardi sings with Elira.
+Dritani flet me Samin. || Dritan talks with Sam.
+— Sam, a e lexon Biblën? || "Sam, do you read the Bible?"
+— Po, pak çdo ditë. || "Yes, a little every day."
+— Shumë mirë. Ajo flet për dashurinë e Perëndisë. || "Very good. It speaks of the love of God."
+Ana pi kafe me Luanin. || Ana drinks coffee with Luan.
+Sam dëgjon. || Sam listens.
+Pastaj Sam shkon në shtëpi. || Then Sam goes home.
+Ai lutet dhe lexon. || He prays and reads.
+
+@ misioni-1-03 | a1-1 | church
+
+# sq-a1-1-h41 | a1-1 | narrative | story | Dje
+Dje ishte e diel. || Yesterday was Sunday.
+Sam shkoi në kishë. || Sam went to church.
+Pastaj ai shkoi në shtëpinë e Dritës. || Then he went to Drita's house.
+Ai piu kafe me Dritën. || He drank coffee with Drita.
+Ardi lexoi një libër. || Ardi read a book.
+Sot Sam është në shtëpi. || Today Sam is at home.
+Ai pi kafe në kuzhinë. || He drinks coffee in the kitchen.
+Pastaj ai shkruan një letër. || Then he writes a letter.
+Sam është i lumtur. || Sam is happy.
+Ai mendon për Ardin dhe Dritën. || He thinks about Ardi and Drita.
+
+# sq-a1-1-h42 | a1-1 | narrative | story | Letra e Samit
+Sam i shkruan nënës: || Sam writes to his mother:
+«E dashur nënë, jam mirë. || "Dear mother, I am well.
+Jetoj në një shtëpi të vogël. || I live in a small house.
+Mësoj shqip çdo ditë. || I learn Albanian every day.
+Njoh shumë njerëz këtu. || I know many people here.
+Pi kafe me Luanin dhe Anën. || I drink coffee with Luan and Ana.
+Dje shkova në kishë. || Yesterday I went to church.
+Të dua shumë. Sam.» || I love you very much. Sam."
+Pastaj Sam e lexon letrën. || Then Sam reads the letter.
+Ai është i lumtur. || He is happy.
+
+# sq-a1-1-h43 | a1-1 | narrative | story | Letra e gjyshit
+Ardi ka një letër nga gjyshi. || Ardi has a letter from his grandfather.
+Gjyshi shkruan: «I dashur Ardi, si je? || The grandfather writes: "Dear Ardi, how are you?
+Unë jam mirë në fshat. || I am well in the village.
+Të dua shumë. Gjyshi.» || I love you very much. Grandfather."
+Ardi e lexon dhe buzëqesh. || Ardi reads it and smiles.
+Pastaj ai ia jep gjyshes. || Then he gives it to his grandmother.
+Gjyshja pi kafe në kuzhinë. || Grandmother is drinking coffee in the kitchen.
+Gjyshja e lexon dhe buzëqesh. || Grandmother reads it and smiles.
+Ajo është shumë e lumtur. || She is very happy.
+
+@ udha-1-06 | a1-1 | correspondence
+
+# sq-a1-1-h44 | a1-1 | narrative | story | Pas punës
+Ana vjen nga puna. || Ana comes home from work.
+Ajo punon shumë në klinikë. || She works a lot at the clinic.
+Ajo është e lodhur. || She is tired.
+Luan është në kuzhinë. || Luan is in the kitchen.
+Ai bën darkë. || He makes dinner.
+Ana ulet në tavolinë. || Ana sits down at the table.
+Mbi tavolinë ka dy pjata. || On the table there are two plates.
+Luan i jep çaj. || Luan gives her tea.
+Ana pi çaj dhe lexon. || Ana drinks tea and reads.
+Pastaj Luan dhe Ana hanë. || Then Luan and Ana eat.
+Orizi dhe buka janë të mira. || The rice and the bread are good.
+Ana thotë: — Faleminderit, Luan! || Ana says: "Thank you, Luan!"
+
+# sq-a1-1-h45 | a1-1 | narrative | story | Darka te Drita
+Sot Sam ha darkë te Drita. || Today Sam has dinner at Drita's.
+Gjyshja Drita bën bukë dhe oriz. || Grandmother Drita makes bread and rice.
+Pjatat janë mbi tavolinë. || The plates are on the table.
+Të gjithë ulen në tavolinë. || Everyone sits down at the table.
+— Mirë se vjen, Sam! || "Welcome, Sam!"
+Ata hanë dhe flasin. || They eat and talk.
+Orizi është shumë i mirë. || The rice is very good.
+Pastaj Ardi dhe Sam lajnë pjatat. || Then Ardi and Sam wash the plates.
+Gjyshja pi kafe dhe buzëqesh. || Grandmother drinks coffee and smiles.
+Ajo është e lumtur. || She is happy.
+
+@ udha-1-07 | a1-1 | narrative
+
+# sq-a1-1-h46 | a1-1 | conversation | dialogue | Çfarë beson?
+Sam dhe Luan pinë kafe. || Sam and Luan drink coffee.
+— Luan, a beson te Perëndia? — pyet Sam. || "Luan, do you believe in God?" asks Sam.
+— Po, besoj. || "Yes, I believe."
+— Edhe unë besoj. || "I believe too."
+— Ana gjithashtu beson. || "Ana believes too."
+— Po Drita? || "And Drita?"
+— Drita shkon në kishë çdo të diel. || "Drita goes to church every Sunday."
+— Mirë. Unë dua të lexoj Biblën me ty. || "Good. I want to read the Bible with you."
+— Shumë mirë, Sam. || "Very good, Sam."
+Pastaj ata lexojnë bashkë. || Then they read together.
+
+# sq-a1-1-h47 | a1-1 | narrative | story | Dritani dhe biri
+Dritani dhe Mira kanë një bir. || Dritan and Mira have a son.
+Ai quhet Gjergj. || He is called Gjergj.
+Gjergji është nxënës. || Gjergj is a pupil.
+Ai shkon në shkollë me Ardin. || He goes to school with Ardi.
+Luan është mësuesi i tij. || Luan is his teacher.
+Gjergji lexon shumë. || Gjergj reads a lot.
+Ai ka shumë libra në shtëpi. || He has many books at home.
+Dritani e do shumë birin. || Dritan loves his son very much.
+Të dielën ata shkojnë në kishë. || On Sunday they go to church.
+Gjergji këndon në kishë. || Gjergj sings at church.
+Dritani dhe Mira buzëqeshin. || Dritan and Mira smile.
+Ata janë shumë të lumtur. || They are very happy.
+
+# sq-a1-1-h48 | a1-1 | church | story | Fjala e Perëndisë
+Sam lexon Biblën me Luanin. || Sam reads the Bible with Luan.
+Ata lexojnë për Jezusin. || They read about Jesus.
+Luan thotë: — Jezusi është Biri i Perëndisë. || Luan says: "Jesus is the Son of God."
+— Ai na do shumë. || "He loves us very much."
+Sam pyet: — Çfarë është mëkati? || Sam asks: "What is sin?"
+Luan i thotë diçka për mëkatin. || Luan tells him something about sin.
+Sam dëgjon dhe mendon. || Sam listens and thinks.
+Pastaj ata luten bashkë. || Then they pray together.
+Sam është i lumtur. || Sam is happy.
+
+# sq-a1-1-h49 | a1-1 | church | story | E diela në kishë
+Sot është e diel. || Today is Sunday.
+Në kishë ka shumë njerëz. || At church there are many people.
+Ata këndojnë për Jezusin. || They sing about Jesus.
+Një burrë lexon nga Bibla e tij. || A man reads from his Bible.
+Ai thotë: — Jezusi vdiq për mëkatet tona. || He says: "Jesus died for our sins."
+Sam dëgjon. || Sam listens.
+Ai kupton pak. || He understands a little.
+Pastaj njerëzit pinë kafe. || Then the people drink coffee.
+Gjyshja Drita ka bukë për të gjithë. || Grandmother Drita has bread for everyone.
+Ardi dhe Gjergji luajnë. || Ardi and Gjergj play.
+Sam pi kafe me Luanin. || Sam drinks coffee with Luan.
+
+# sq-a1-1-h50 | a1-1 | church | dialogue | Sam pyet
+— Luan, a mund të të pyes diçka? || "Luan, may I ask you something?"
+— Po, pyet. || "Yes, ask."
+— Jezusi vdiq. Po pastaj? || "Jesus died. And then?"
+— Pastaj Ai u ringjall. || "Then He rose again."
+— Dua të di më shumë. || "I want to know more."
+— Mirë. Mund të lexojmë Biblën bashkë. || "Good. We can read the Bible together."
+Sam buzëqesh. || Sam smiles.
+— Faleminderit, Luan. || "Thank you, Luan."
+— S'ka përse, Sam. || "You're welcome, Sam."
+Ata lexojnë dhe pinë kafe. || They read and drink coffee.
+
+@ misioni-1-04 | a1-1 | church
+
+# sq-a1-1-h51 | a1-1 | narrative | story | Natën
+Është natë. || It is night.
+Ardi është i lodhur. || Ardi is tired.
+Ai lahet dhe shkon në dhomë. || He washes and goes to his room.
+Gjyshja i lexon një histori. || Grandmother reads him a story.
+Macja është në dhomë me Ardin. || The cat is in the room with Ardi.
+Pastaj gjyshja thotë: — Natën e mirë, Ardi! || Then grandmother says: "Good night, Ardi!"
+— Natën e mirë, gjyshe! || "Good night, grandmother!"
+Ardi fle. || Ardi sleeps.
+Gjyshja pi çaj në kuzhinë. || Grandmother drinks tea in the kitchen.
+Ajo lexon pak dhe pastaj fle. || She reads a little and then sleeps.
+
+# sq-a1-1-h52 | a1-1 | narrative | story | Koha për të fjetur
+Sam lexon një histori në shqip. || Sam reads a story in Albanian.
+Historia është e bukur. || The story is beautiful.
+Ai lexon shumë. || He reads a lot.
+Pastaj Luan i thotë: — Sam, është natë! || Then Luan says to him: "Sam, it is night!"
+— Po, është koha për të fjetur. || "Yes, it is time to sleep."
+Sam pi ujë dhe lahet. || Sam drinks water and washes.
+— Natën e mirë, Luan! || "Good night, Luan!"
+— Natën e mirë, Sam! || "Good night, Sam!"
+Sam fle. || Sam sleeps.
+Nesër ai lexon më shumë. || Tomorrow he will read more.
+
+@ udha-1-08 | a1-1 | narrative

@@ -31,6 +31,9 @@ export const SCHWA_EXCEPTIONS: readonly SchwaException[] = [
   { word: 'जनवरी', pronounced: [0, 2], reading: 'janvarī' },
   { word: 'दोपहर', pronounced: [1, 2], reading: 'dopahar' },
   { word: 'सहायता', pronounced: [0, 2], reading: 'sahāyatā' },
+  // found by the Stage 0 content check (2026-10-04): the rules drop the a after the conjunct / before ये
+  { word: 'अस्पताल', pronounced: [1], reading: 'aspatāl' },
+  { word: 'रुपये', pronounced: [1], reading: 'rupaye' },
 ];
 
 /** Known Sanskrit-derived prefixes, by the akṣaras they are written with (after them the rules are least reliable). */

@@ -172,6 +172,8 @@ function ergative(c: Ctx): Out {
 // ───────────────────────────── the verb agrees with its subject ─────────────────────────────
 
 const FEELINGS = new Set(['भूख', 'प्यास', 'डर', 'ठंड', 'सर्दी', 'गर्मी', 'नींद', 'शर्म', 'चोट', 'पता', 'मालूम']);
+/** Time words used as adverbs ("कल सुबह चलते हैं"): never the subject a verb agrees with. */
+const TIME_WORDS = new Set(['सुबह', 'शाम', 'रात', 'दोपहर', 'आज', 'कल', 'परसों', 'अभी', 'हफ़्ता', 'महीना', 'साल', 'दिन', 'रोज़']);
 
 function bareNominals(c: Ctx, from: number, to: number): Array<{ i: number; c: C }> {
   const out: Array<{ i: number; c: C }> = [];
@@ -181,6 +183,7 @@ function bareNominals(c: Ctx, from: number, to: number): Array<{ i: number; c: C
     // a word that can be in the direct case (a form shared by the direct and the oblique counts)
     const r = c.cands(k).find((x) => (x.pos === 'NOUN' || x.pos === 'PROPN' || x.pos === 'PRON') && x.morph.Poss === undefined && (!x.morph.Case || hasF(x, 'Case', 'Dir')));
     if (!r) continue;
+    if (TIME_WORDS.has(c.n(k).normalize('NFC')) || (r.lemma && TIME_WORDS.has(r.lemma.normalize('NFC')))) continue;
     const j = c.after(k);
     if (j >= 0 && (isPostposition(c, j) || (isGenitive(c, j) && !c.pos(j, 'NOUN')))) continue;
     out.push({ i: k, c: r });
@@ -241,6 +244,13 @@ function subjectAgreement(c: Ctx): Out {
       }
       return;
     }
+    // coordination with the subject said once: "मैं यहाँ रहता हूँ और हिंदी सीखता हूँ" — the pronoun before the earlier verb is the
+    // subject of both, so a bare noun after that verb is the object (हिंदी), not a subject the verb must agree with. Known
+    // miss, accepted: a second clause with a NEW noun subject and a wrong verb ("… और लड़की जाता है") is not caught here — a
+    // checker learners trust must first stay silent on correct Hindi.
+    if (from > clauseFrom && personal.length === 0 && bareNominals(c, clauseFrom, from).some(personalOf)) return;
+    // a word with no reading before the verb may be its subject (a name: "सैम हिंदी सीखता है"): no ground to correct
+    for (let k = clauseFrom; k < g.start; k++) if (c.isWord(k) && c.cands(k).length === 0) return;
     if (bare.length === 1 && bare[0].c.pos === 'NOUN') {
       const ni = bare[0].i;
       const readings = c.cands(ni).filter((x) => x.pos === 'NOUN' && (!x.morph.Case || hasF(x, 'Case', 'Dir')));

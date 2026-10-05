@@ -38,6 +38,13 @@ const CORRECT = [
   'यह मेरी छोटी बहन की किताब है।',
   'जब मैं छोटा था, तब मैं गाँव में रहता था।',
   'मैं उससे रोज़ बात करता हूँ।',
+  // the subject said once for two verbs: हिंदी is the object of सीखता, not its subject (found by the Stage 0 validator)
+  'मैं यहाँ रहता हूँ और हिंदी सीखता हूँ।',
+  'मैं घर में रहती हूँ और चाय पीती हूँ।',
+  // a name the word list does not know may be the subject; a time word is never the subject
+  'सैम हिंदी सीखता है।',
+  'सैम चाय नहीं पीता।',
+  'कल सुबह हम चर्च चलते हैं।',
   'उन्होंने मेरी बहुत मदद की।',
   'मुझे डर लगता था, पर अब नहीं लगता।',
   'हमें एक दूसरे से प्रेम करना चाहिए।',

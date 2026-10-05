@@ -5,8 +5,17 @@ import { inspectWav } from './wav';
 import { approvedForPlay, bindingFromManifest, canonicalTextSha256, editionIdOf, isThsv11, releaseIdOf, sha256Hex } from './rights';
 import type { Runtime } from './types';
 
+/** A template's unfilled slot ("<name of the speaker>"): the whole value is one bracketed placeholder. */
+const PLACEHOLDER = /^<[^<>]*>$/;
+
 function requiredText(v: unknown, name: string): asserts v is string {
   if (typeof v !== 'string' || !v.trim()) throw new Error(`GoListen import: ${name} is required`);
+  if (PLACEHOLDER.test(v.trim())) throw new Error(`GoListen import: ${name} is still the template placeholder ${v.trim()}; fill it in`);
+}
+
+/** An optional statement (licence, attribution) may be absent, but never left as the template's placeholder. */
+function optionalText(v: unknown, name: string): void {
+  if (typeof v === 'string' && PLACEHOLDER.test(v.trim())) throw new Error(`GoListen import: ${name} is still the template placeholder ${v.trim()}; fill it in or leave it out`);
 }
 
 /** meta row holding what the importer declared and who (if anyone) reviewed; see ImportRecord. */
@@ -32,6 +41,7 @@ export async function importRecordingFor(rt: Runtime, args: ImportRecordingArgs)
   const claimsReview = m.qualityState === 'human_reviewed' || m.qualityState === 'approved';
   if (!learner && claimsReview && !reviewer) throw new Error('GoListen import: a recording marked human_reviewed or approved needs the name of the person who reviewed it (reviewer)');
   for (const [v, n] of [[m.id, 'manifest id'], [m.textId, 'text id'], [m.releaseId, 'release id'], [m.lang, 'language'], [m.locale, 'locale'], [m.narrator, 'narrator'], [m.recording?.owner, 'recording owner'], [m.recording?.basis, 'recording basis'], [m.performance?.performer, 'performer'], [m.performance?.permission, 'performance permission']] as const) requiredText(v, n);
+  for (const [v, n] of [[m.variety, 'variety'], [m.recording?.license, 'recording licence'], [m.recording?.attribution, 'attribution'], [args.reviewer, 'reviewer']] as const) optionalText(v, n);
   const text: Text | undefined = await rt.store.texts.get(m.textId);
   if (!text) throw new Error(`GoListen import: text ${m.textId} not found`);
   if (m.kind !== 'human' && m.kind !== 'synthetic') throw new Error('GoListen import: audio kind must be human or synthetic');

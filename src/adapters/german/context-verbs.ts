@@ -270,9 +270,27 @@ function decideMoodTwins(s: Sent, t: Tok): void {
   }
 }
 
+/**
+ * A word that is also an uninflected word of the list (bitte), in a clause with no subject pronoun, where every third-person
+ * finite reading is Konjunktiv I (bitten: er bittet, Konjunktiv I er bitte): outside reported speech that is the uninflected word,
+ * before a noun phrase can be taken as its subject (Ein Brot, bitte. Zwei Kaffee bitte! — not "the bread would ask").
+ * A word heading a clause of more than one word is left to the imperative rules (Bitte ihn um Hilfe!).
+ */
+function demoteStrayKonjunktivI(s: Sent, cl: Clause): void {
+  const w = cl.words;
+  if (w.some((k) => pronounSubject(s.toks[k]))) return;
+  for (let k = 0; k < w.length; k++) {
+    const t = s.toks[w[k]];
+    if (!t.word || (k === 0 && w.length > 1) || !t.rs.some((r) => !r.down && ordinaryWord(r.c))) continue;
+    const third = t.rs.filter((r) => !r.down && isFin(r.c) && !has(r.c, 'Mood', 'Imp') && has(r.c, 'Person', '3'));
+    if (!third.length || !third.every((r) => r.c.morph.Mood === 'Sub' && r.c.morph.Tense === 'Pres') || reportedAfter(s, t)) continue;
+    prefer(t, (r) => ordinaryWord(r.c), 'no subject pronoun and no reported speech: the uninflected word, not the Konjunktiv I of the verb it is spelled like');
+  }
+}
+
 /** The step, over a whole sentence. */
 export function decideVerbs(s: Sent): void {
-  for (const cl of s.clauses) demoteStrayImperatives(s, cl);
+  for (const cl of s.clauses) { demoteStrayImperatives(s, cl); demoteStrayKonjunktivI(s, cl); }
   decideRelatives(s);
   if (decideDatives(s)) settlePhrases(s);
   decideSubjects(s);

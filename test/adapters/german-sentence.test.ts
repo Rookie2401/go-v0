@@ -1030,6 +1030,16 @@ describe('E. je … desto, and the imperative', () => {
     expect(first(parse('Hör mal zu!'), 'Hör').morph.Mood).toBe('Imp');
     expect(first(parse('Er geht weg.'), 'weg').pos).not.toBe('VERB');
   });
+
+  it('bitte after a noun phrase with no verb is the word bitte, not the Konjunktiv I of bitten (found by the Stage 0 German pack)', () => {
+    for (const text of ['Ein Brot, bitte.', 'Zwei Kaffee bitte!', 'Wasser, bitte.']) {
+      expect(first(parse(text), 'bitte').lemma, text).toBe('bitte');
+      expect(first(parse(text), 'bitte').pos, text).not.toBe('VERB');
+    }
+    // with its subject pronoun it is still the verb
+    expect(first(parse('Ich bitte dich.'), 'bitte')).toMatchObject({ lemma: 'bitten', morph: { Mood: 'Ind', Person: '1' } });
+    expect(first(parse('Bitte ich dich darum?'), 'Bitte').lemma).toBe('bitten');
+  });
 });
 
 describe('F. two nouns, one spelling', () => {

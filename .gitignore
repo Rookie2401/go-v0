@@ -23,3 +23,5 @@ data/goread/
 # the keeper's Cloudflare config (holds the D1 database id): docs/goread/DEPLOY.md
 wrangler.toml
 .wrangler/
+# reviewer and recording packets (docs/LADDER.md)
+data/review/*/packets/

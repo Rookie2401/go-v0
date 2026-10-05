@@ -13,6 +13,7 @@ import type {
 import { COURSES, LANGUAGES, LANGUAGE_ROWS, courseForLang, ids } from '../core';
 import { analysisCoverage, type AnalysisCoverage } from '../adapters/shared';
 import { contentSignatureOf } from './publish';
+import { pipelineProblems } from './pipeline';
 
 export const CORPUS_SCHEMA_VERSION = 2 as const;
 
@@ -161,6 +162,43 @@ export interface DocSection {
   paragraphs: DocParagraph[];
 }
 
+// ── the review pipeline of a ladder unit (docs/LADDER.md, "The pipeline"; logic in ./pipeline) ──
+
+export type PipelineState = 'machine-draft' | 'in-review' | 'corrections-pending' | 'reviewed' | 'audio-ready' | 'published';
+export type ReviewerCompetence = 'native' | 'near-native' | 'professional';
+export type ChecklistItem =
+  | 'naturalness' | 'contemporaryUsage' | 'register' | 'grammar' | 'dialect' | 'soundsTranslated' | 'culturalOddities' | 'unnaturalSimplification';
+export type ChecklistResult = 'ok' | 'changed' | 'problem';
+
+/** Who moved a unit. A tool can draft and check; only a person can move a unit past `in-review`. */
+export type PipelineActor =
+  | { kind: 'tool'; name: string }
+  | { kind: 'person'; name: string; competence: ReviewerCompetence; variety?: string; role: string };
+
+/** The review checklist as recorded: the items the reviewer answered. */
+export type PipelineChecklist = Partial<Record<ChecklistItem, { result: ChecklistResult; note?: string }>>;
+
+export interface PipelineEntry {
+  state: PipelineState;
+  /** The day the unit moved (YYYY-MM-DD). */
+  at: string;
+  /** Required except on `published`. */
+  by?: PipelineActor;
+  checklist?: PipelineChecklist;
+  /** How many sentences the review changed. */
+  corrections?: number;
+  /** Where the reviewed human recording is (on `audio-ready`). */
+  recordings?: string;
+  /** On `reviewed`: the wording signature (`contentSignatureOf`) the review covers; written by `npm run review:apply`. */
+  contentSignature?: string;
+}
+
+export interface Pipeline {
+  /** The state of the last history entry. */
+  state: PipelineState;
+  history: PipelineEntry[];
+}
+
 export interface CorpusDocument {
   schemaVersion: typeof CORPUS_SCHEMA_VERSION;
   /** Stable id (slug); the text id is `text:<lang>:<id>`. */
@@ -203,6 +241,11 @@ export interface CorpusDocument {
   teamText?: true;
   /** Notes anchored by matching sentence text (see `DocDocumentNote`); notes on a declared sentence go in its `notes`. */
   notes?: DocDocumentNote[];
+  /**
+   * A ladder unit's review pipeline (docs/LADDER.md). A document with this block is published only from `audio-ready` /
+   * `published`, after a review by a person with every correction resolved (`computePublished`); without it, nothing changes.
+   */
+  pipeline?: Pipeline;
   /** Ignored by the validator (templates use it for inline comments). */
   _comment?: unknown;
 }
@@ -223,7 +266,8 @@ export type ValidationCode =
   | 'missing-provenance' | 'unverified-without-note' | 'review-missing-reviewer'
   | 'review-signature-mismatch' | 'not-nfc' | 'edge-whitespace' | 'adapter-would-split' | 'low-analysis-coverage'
   | 'unknown-work' | 'note-anchor-missing' | 'note-not-on-token'
-  | 'personal-copy-scripture' | 'personal-copy-generated' | 'personal-copy-authorship' | 'source-damaged' | 'team-text-rights';
+  | 'personal-copy-scripture' | 'personal-copy-generated' | 'personal-copy-authorship' | 'source-damaged' | 'team-text-rights'
+  | 'pipeline-tool-cannot-review' | 'pipeline-illegal-move' | 'pipeline-state-mismatch';
 
 export interface ValidationIssue {
   /** JSON path of the offending value, e.g. `sections[0].paragraphs[1].sentences[2].spans[0]`. */
@@ -286,7 +330,7 @@ const DOC_ID = /^[a-z0-9][a-z0-9-]*$/;
 const SENTENCE_ID = /^[A-Za-z0-9][A-Za-z0-9._-]*$/;
 const LOCALE = /^[a-z]{2,3}(-[A-Za-z0-9]{2,8})*$/;
 
-const DOC_KEYS = ['schemaVersion', 'id', 'lang', 'locale', 'title', 'contentType', 'corpus', 'source', 'review', 'difficulty', 'topics', 'editorialTags', 'prepTargets', 'speakers', 'generated', 'scripture', 'english', 'sections', 'work', 'notes', 'streams', 'domains', 'variety', 'quality', 'teamText'];
+const DOC_KEYS = ['schemaVersion', 'id', 'lang', 'locale', 'title', 'contentType', 'corpus', 'source', 'review', 'difficulty', 'topics', 'editorialTags', 'prepTargets', 'speakers', 'generated', 'scripture', 'english', 'sections', 'work', 'notes', 'streams', 'domains', 'variety', 'quality', 'teamText', 'pipeline'];
 const SOURCE_KEYS = ['id', 'title', 'author', 'publisher', 'url', 'edition', 'attribution', 'provenance', 'rights', 'licenseNote', 'authorship'];
 const SENTENCE_KEYS = ['id', 'text', 'english', 'verseRefs', 'speaker', 'spans', 'corrections', 'notes'];
 const WORK_SLUG = /^[a-z0-9-]+$/;
@@ -486,6 +530,9 @@ export function validateDocumentDetailed(input: unknown, ctx: ValidateContext): 
         'Add a sentence to source.provenance (or licenseNote) such as "unverified sample — replace with a licensed text before release".');
     }
   }
+
+  // the review pipeline of a ladder unit (shape, who may move it, the order of states)
+  if (d.pipeline !== undefined) for (const p of pipelineProblems(d.pipeline)) add(p.severity, p.path, p.code, p.message, p.hint);
 
   // review
   const review = d.review;

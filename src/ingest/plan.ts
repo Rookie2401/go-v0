@@ -903,6 +903,8 @@ export function planDocument(doc: CorpusDocument, registry: AdapterRegistry, opt
       streams: doc.streams, domains: doc.domains, variety: doc.variety, quality: doc.quality,
       // only when set, so the signature of every other document is what it was before the flag existed
       ...(doc.teamText ? { teamText: true } : {}),
+      // a pipeline move (reviewed → audio-ready → published) must re-decide publication on re-import
+      ...(doc.pipeline ? { pipeline: doc.pipeline } : {}),
     },
     paragraphs,
     sentences: sentences.map((s) => ({

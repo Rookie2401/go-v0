@@ -56,6 +56,7 @@ const nonEmpty = (v: unknown): v is string => typeof v === 'string' && v.trim().
 /** Tolerant of a partially valid document: missing pieces simply count as "not established". */
 export function computePublished(doc: Pick<CorpusDocument, 'contentType' | 'review' | 'source' | 'generated' | 'scripture'> | Record<string, unknown>): PublicationDecision {
   const d = doc as Partial<CorpusDocument>;
+  if (d.pipeline !== undefined) return computePublishedWithPipeline(doc as Record<string, unknown>);
   const reasons: string[] = [];
 
   // A personal copy is the learner's own copy of a published native work: readable on this device without a review
@@ -125,4 +126,50 @@ export function computePublished(doc: Pick<CorpusDocument, 'contentType' | 'revi
   }
 
   return { published: reasons.length === 0, unpublishedReasons: reasons };
+}
+
+// ───────────────────────────── ladder units: the pipeline (docs/LADDER.md) ─────────────────────────────
+
+/** The plain reasons a unit's pipeline gives for not publishing (the wording is part of the contract). */
+export const PIPELINE_REASONS = {
+  review: 'waiting for a linguistic review by a person',
+  corrections: 'corrections from the review are not resolved yet',
+  recording: 'waiting for a reviewed human recording',
+  changed: 'the text changed after the review by a person: it must be reviewed again',
+} as const;
+
+/**
+ * What a `pipeline` block still waits for, in plain sentences (empty ⇒ the pipeline lets the unit through):
+ * the state is `audio-ready` or `published`, the history holds a `reviewed` entry by a person, no `corrections-pending`
+ * comes after the last such entry, and the wording is still the one that review signed off (when it recorded it).
+ * Tolerant of a malformed block: whatever cannot be established counts as not done. `signature` is `contentSignatureOf(doc)`.
+ */
+export function pipelineHoldReasons(pipeline: unknown, signature: string): string[] {
+  const p = typeof pipeline === 'object' && pipeline !== null && !Array.isArray(pipeline) ? pipeline as { state?: unknown; history?: unknown } : {};
+  type Entry = { state?: unknown; by?: { kind?: unknown; name?: unknown }; contentSignature?: unknown };
+  const history = (Array.isArray(p.history) ? p.history : []).filter((e): e is Entry => typeof e === 'object' && e !== null);
+  let lastReviewed = -1;
+  history.forEach((e, i) => { if (e.state === 'reviewed' && e.by?.kind === 'person' && nonEmpty(e.by.name)) lastReviewed = i; });
+  const reasons: string[] = [];
+  if (lastReviewed < 0) reasons.push(PIPELINE_REASONS.review);
+  else if (nonEmpty(history[lastReviewed].contentSignature) && history[lastReviewed].contentSignature !== signature) reasons.push(PIPELINE_REASONS.changed);
+  if (history.some((e, i) => i > lastReviewed && e.state === 'corrections-pending')) reasons.push(PIPELINE_REASONS.corrections);
+  if (p.state !== 'audio-ready' && p.state !== 'published') reasons.push(PIPELINE_REASONS.recording);
+  return reasons;
+}
+
+/**
+ * A document with a `pipeline` block: the pipeline decides whether the review is enough (a person's review, corrections
+ * resolved, a reviewed recording), in place of the single `review` block; every other rule (rights, curriculum, Scripture
+ * verification, a rejected review) still applies, so this is the road through the machine-draft rule, not around it.
+ */
+function computePublishedWithPipeline(doc: Record<string, unknown>): PublicationDecision {
+  const { pipeline, ...rest } = doc;
+  const hold = pipelineHoldReasons(pipeline, contentSignatureOf(doc));
+  const prior = rest.review as { status?: unknown } | undefined;
+  // the pipeline stands in for the review block: present it to the ordinary rules as a review of the current wording by the person named in it
+  const standIn = { status: prior?.status === 'rejected' ? 'rejected' : 'reviewed', reviewedBy: 'pipeline review by a person', reviewedAt: '1970-01-01', level: 'native', contentSignature: contentSignatureOf(doc) };
+  const base = computePublished({ ...rest, review: standIn });
+  const reasons = [...hold, ...base.unpublishedReasons];
+  return { ...base, published: reasons.length === 0, unpublishedReasons: reasons };
 }

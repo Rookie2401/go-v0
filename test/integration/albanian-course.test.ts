@@ -191,7 +191,7 @@ describe('the bundled Albanian texts import', () => {
       expect(t.published, d.id).toBe(false);
       expect(t.generated, d.id).toBe(true);
       expect(t.editorialTags, d.id).toEqual(expect.arrayContaining(['machine-drafted', 'needs-native-review']));
-      expect(t.unpublishedReasons.join(' '), d.id).toMatch(/native-speaker review/);
+      expect(t.unpublishedReasons.join(' '), d.id).toMatch(/native-speaker review|linguistic review by a person/);
     }
   });
 

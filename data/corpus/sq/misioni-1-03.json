@@ -121,5 +121,18 @@
         }
       ]
     }
-  ]
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-01",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian seed drafting (Claude), data/private/sq/make-seed.mjs"
+        }
+      }
+    ]
+  }
 }

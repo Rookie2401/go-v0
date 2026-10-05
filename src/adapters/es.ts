@@ -37,7 +37,7 @@ import { segmentSpanishSentences } from './spanish/sentences';
 import { capitalInside, disambiguateSpanish } from './spanish/disambiguate';
 
 const LANG = 'es' as const;
-const VERSION = '9';
+const VERSION = '10';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
@@ -96,6 +96,8 @@ const ENTRIES = [
   E('Ana', 'PROPN', 'Ana (name)'), E('Pedro', 'PROPN', 'Pedro (name)'),
   // the names of Stage 0's people (data/stage0/es): Nico was read as a form of "nicar"
   E('Sam', 'PROPN', 'Sam (name)'), E('Nico', 'PROPN', 'Nico (name)'),
+  // the first word of a place or saint's name (San Pedro Sula, San Juan): read as the adjective "santo" without it
+  E('San', 'PROPN', 'San, Saint (in names: San Pedro Sula)'),
   // pronouns / determiners
   E('yo', 'PRON', 'I', ['yo:1s nom prs']),
   E('tú', 'PRON', 'you (informal)', ['tú:2s nom prs']),

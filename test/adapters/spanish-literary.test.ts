@@ -235,3 +235,12 @@ describe('a sentence that opens with a first-person verb whose only rival is an 
     expect(first('Mi abuelo está vivo.', 'vivo')).toMatchObject({ lemma: 'vivo', pos: 'ADJ' });
   });
 });
+
+describe('a name that opens the sentence, then a verb-or-adjective word, and no other verb', () => {
+  it('Jesús salva.: the verb; with another verb in the sentence the adjective stays; San Pedro Sula is a name', () => {
+    expect(first('Jesús salva.', 'salva')).toMatchObject({ lemma: 'salvar', pos: 'VERB' });
+    expect(first('Pedro salvo es una buena noticia.', 'salvo')).toMatchObject({ lemma: 'salvo', pos: 'ADJ' });
+    expect(first('Marta está cansada.', 'cansada')).toMatchObject({ pos: 'ADJ' });
+    expect(first('Fuimos a San Pedro Sula.', 'San')).toMatchObject({ lemma: 'San', pos: 'PROPN' });
+  });
+});

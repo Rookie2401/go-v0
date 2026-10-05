@@ -389,7 +389,7 @@ describe('a plural in -es after -or, -ón: no noun in -ore, -one is guessed', ()
 
 describe('the flag and the version', () => {
   it('every guess the engine adds is unconfirmed, and the adapter is version 5', () => {
-    expect(es.version).toBe('9');
+    expect(es.version).toBe('10');
     for (const f of ['inspectora', 'lombrices', 'podcasts', 'esparcírselo', 'aúna', 'litografían']) {
       for (const c of read(f)) if (c.notes?.lemmaStatus === 'inferred by the rules') expect(c.unconfirmed, `${f} ${c.lemma}`).toBe(true);
     }

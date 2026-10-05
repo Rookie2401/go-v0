@@ -512,6 +512,13 @@ function verbOrNot(i: number, tokens: RawToken[], base: C[][]): C[] {
       const r = choose((c) => isStatement(c) && hasPerson(c, subject.person) && hasNumber(c, subject.number), `after its subject "${p}": a verb`);
       if (r) return r;
     }
+    // Jesús salva. Marta canta. — a name that opens the sentence, then a word that is a verb or an adjective, and no
+    // other verb in the sentence: the sentence needs its verb, so this is it (Jesús salvo would not be a sentence)
+    if (!subject && prev2 === undefined && top(prev)?.pos === 'PROPN' && other.length > 0 && other.every((c) => c.pos === 'ADJ')
+      && !tokens.some((t, j) => j > i && t.isWord && solid(base[j]).length > 0 && isFinite(solid(base[j])[0]))) {
+      const r = choose((c) => isStatement(c) && hasPerson(c, '3') && hasNumber(c, 'Sing'), 'after a name that opens the sentence, with no other verb: the verb', false, 'weak');
+      if (r) return r;
+    }
     if (PROCLITICS.has(p)) {
       // nothing but a verb (or another pronoun) follows me, te, se, le: even "para" is parar here (el autobús se para)
       const r = choose(isStatement, `after the pronoun "${p}": a verb`, false, 'certain');

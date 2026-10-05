@@ -210,7 +210,7 @@ The exit gate uses unseen controlled material built from the path's own language
   - Hindi: the lemmatizer reads isolated *भाई*, *फल* and *सीता* as verbs. In sentences the noun wins; Stage 0 shows cast names as names.
   - Thai: the segmenter splits *เหรอ*, and *ไม่รู้* has no gloss.
   - German: sentence-final *, bitte* is read as *bitten*.
-  - Missing words: Albanian *klinikë*, Hindi *क्लिनिक*; content used other words. (Spanish *clínica* was added in adapter-es@7, 27b84fc.)
+  - Missing word: Hindi *क्लिनिक* (the content uses अस्पताल). Spanish *clínica* (adapter-es@7, 27b84fc) and Albanian *klinikë*, *s'ka përse* and others (adapter-sq@5, 0bf3496) were added and are now used.
 
 **For native reviewers (beyond reading everything).**
 - Spanish: Honduran usage throughout; *doña* use.

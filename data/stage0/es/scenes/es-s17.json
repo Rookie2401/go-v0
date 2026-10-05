@@ -1,0 +1,242 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-05",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "id": "es-s17",
+  "title": {
+    "en": "Grandma's bread",
+    "target": "El pan de la abuela"
+  },
+  "world": {
+    "characters": [
+      "marta",
+      "nico",
+      "luis",
+      "ana"
+    ],
+    "places": [
+      "market",
+      "school",
+      "clinic"
+    ],
+    "things": [
+      "bread",
+      "rice"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Doña Marta vende pan en el mercado.",
+      "en": "Doña Marta sells bread at the market.",
+      "picture": "👵🍞🛒",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Ella vende pan para la clínica y para la escuela.",
+      "en": "She sells bread for the clinic and for the school.",
+      "picture": "🍞🏥🏫",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Abuela, ¿te gusta vender pan?",
+      "en": "Grandma, do you like selling bread?",
+      "speaker": "nico",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "Sí, me gusta mucho. Y a vos, ¿qué te gusta comer?",
+      "en": "Yes, I like it a lot. And you, what do you like to eat?",
+      "speaker": "marta",
+      "picture": "🙂",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Me gusta comer arroz.",
+      "en": "I like to eat rice.",
+      "speaker": "nico",
+      "picture": "🍚",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "El pan cuesta diez lempiras y el arroz veinte, pero para vos no cuesta nada.",
+      "en": "The bread costs ten lempiras and the rice twenty, but for you it costs nothing.",
+      "speaker": "marta",
+      "picture": "🍞10 🍚20 😄",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Luis es el maestro de Nico. Su hermana Ana trabaja en la clínica.",
+      "en": "Luis is Nico's teacher. His sister Ana works at the clinic.",
+      "picture": "👨‍🏫 👩‍⚕️🏥",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "Luis vive con su hermana.",
+      "en": "Luis lives with his sister.",
+      "picture": "👨👩🏠",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [],
+    "constructions": []
+  },
+  "represents": [
+    "es.gustar",
+    "es.voseo-2sg",
+    "es.cuanto-cuesta",
+    "es.numbers",
+    "es.pero",
+    "es.possessive-su",
+    "es.present-3sg"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who does Marta sell bread for?"
+      },
+      "options": [
+        {
+          "en": "The clinic and the school"
+        },
+        {
+          "en": "The church"
+        },
+        {
+          "en": "Only Nico"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l5"
+      ],
+      "kind": "picture-choice",
+      "question": {
+        "en": "What does Nico like to eat?"
+      },
+      "options": [
+        {
+          "en": "rice",
+          "picture": "🍚"
+        },
+        {
+          "en": "bread",
+          "picture": "🍞"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l8"
+      ],
+      "kind": "who",
+      "question": {
+        "en": "Who does Luis live with?"
+      },
+      "options": [
+        {
+          "en": "His sister Ana"
+        },
+        {
+          "en": "Doña Marta"
+        },
+        {
+          "en": "Sam"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "describe",
+      "prompt": "Say what you like to eat (rice or bread).",
+      "basedOn": [
+        "l5",
+        "es.gustar"
+      ],
+      "accept": [
+        {
+          "text": "Me gusta comer arroz"
+        },
+        {
+          "text": "Me gusta comer pan"
+        },
+        {
+          "text": "Me gusta el arroz"
+        },
+        {
+          "text": "Me gusta el pan"
+        }
+      ],
+      "speak": true
+    },
+    {
+      "id": "p2",
+      "kind": "retell",
+      "prompt": "Tell, in one sentence, who Luis lives with.",
+      "basedOn": [
+        "l8",
+        "es.possessive-su"
+      ],
+      "accept": [
+        {
+          "text": "Luis vive con su hermana"
+        },
+        {
+          "text": "Luis vive con su hermana Ana"
+        },
+        {
+          "text": "Luis vive con Ana"
+        }
+      ]
+    }
+  ],
+  "notes": []
+}

@@ -11,6 +11,7 @@ import type { BootstrapResult } from '../../src/app/bootstrap';
 import { AppRoutes, Shell } from '../../src/ui/App';
 import { AppProvider } from '../../src/ui/context';
 import { resetPrefsForTests } from '../../src/ui/prefs';
+import { bundledStage0 } from '../../src/stage0';
 import { button, click, flush, installMediaStubs, q, qa } from './harness';
 
 /** Stage 0 from a blank Spanish profile, over the REAL engines: Home's way in, the path, one scene, the exit's promise. */
@@ -54,7 +55,7 @@ describe('Start from zero (Spanish)', () => {
     await flush(20);
     expect(page.textContent).not.toMatch(/which forms should Go teach you/);
     expect(q(page, '[aria-label="Your independence"]')!.textContent).toMatch(/Sentences understood before any English/);
-    expect(qa(page, '[data-step]').length).toBe(23);
+    expect(qa(page, '[data-step]').length).toBe(bundledStage0().packs.get('es')!.path.steps.length);
     expect(q(page, '[data-testid="stage0-continue"]')!.textContent).toMatch(/Begin: Hello, I am Sam/);
   });
 

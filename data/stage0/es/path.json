@@ -105,6 +105,16 @@
       "ref": "es-s15"
     },
     {
+      "id": "s16",
+      "kind": "scene",
+      "ref": "es-s16"
+    },
+    {
+      "id": "s17",
+      "kind": "scene",
+      "ref": "es-s17"
+    },
+    {
       "id": "r3",
       "kind": "review",
       "ref": "es-s05",

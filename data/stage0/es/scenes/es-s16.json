@@ -1,0 +1,225 @@
+{
+  "lang": "es",
+  "kind": "scene",
+  "version": 1,
+  "listening": true,
+  "provenance": {
+    "authoring": "ai-drafted",
+    "drafter": "AI model (Claude), 2026-10-05",
+    "review": {
+      "status": "unreviewed",
+      "notes": "Honduran Spanish (voseo) drafted for Stage 0; needs a Honduran native speaker."
+    }
+  },
+  "intentional": [],
+  "id": "es-s16",
+  "title": {
+    "en": "Tomorrow at church",
+    "target": "Mañana en la iglesia"
+  },
+  "world": {
+    "characters": [
+      "ana",
+      "sam",
+      "marta"
+    ],
+    "places": [
+      "church"
+    ]
+  },
+  "lines": [
+    {
+      "id": "l1",
+      "text": "Buenos días, Sam. ¿Vos vas a la iglesia mañana?",
+      "en": "Good morning, Sam. Are you going to church tomorrow?",
+      "speaker": "ana",
+      "picture": "🌞⛪❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l2",
+      "text": "Sí, mañana voy con ustedes.",
+      "en": "Yes, tomorrow I am going with you.",
+      "speaker": "sam",
+      "picture": "🙂👍",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l3",
+      "text": "Doña Marta es mi amiga de la iglesia.",
+      "en": "Doña Marta is my friend from church.",
+      "speaker": "ana",
+      "picture": "👵⛪",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l4",
+      "text": "¿Y Sam es tu amigo?",
+      "en": "And is Sam your friend?",
+      "speaker": "marta",
+      "picture": "❓",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l5",
+      "text": "Sí. Él vive en Honduras con nosotros.",
+      "en": "Yes. He lives in Honduras with us.",
+      "speaker": "ana",
+      "picture": "🇭🇳",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l6",
+      "text": "¡Qué bien! Mañana llueve, pero yo voy.",
+      "en": "How nice! Tomorrow it is raining, but I am going.",
+      "speaker": "marta",
+      "picture": "🌧️👵",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l7",
+      "text": "Voy porque amo a Jesús.",
+      "en": "I go because I love Jesus.",
+      "speaker": "marta",
+      "picture": "❤️✝️",
+      "audio": {
+        "status": "needed"
+      }
+    },
+    {
+      "id": "l8",
+      "text": "A mí también me gusta la iglesia.",
+      "en": "I like church too.",
+      "speaker": "sam",
+      "picture": "⛪❤️",
+      "audio": {
+        "status": "needed"
+      }
+    }
+  ],
+  "introduces": {
+    "words": [
+      "amo"
+    ],
+    "constructions": []
+  },
+  "represents": [
+    "es.greeting",
+    "es.voseo-2sg",
+    "es.ir-a-place",
+    "es.possessive-tu",
+    "es.porque",
+    "es.pero",
+    "es.gustar",
+    "es.ser-identity"
+  ],
+  "checks": [
+    {
+      "id": "c1",
+      "lines": [
+        "l1",
+        "l2"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "When is Sam going to church?"
+      },
+      "options": [
+        {
+          "en": "Tomorrow"
+        },
+        {
+          "en": "Today"
+        },
+        {
+          "en": "On Monday"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c2",
+      "lines": [
+        "l3"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Who is Doña Marta to Ana?"
+      },
+      "options": [
+        {
+          "en": "Her friend from church"
+        },
+        {
+          "en": "Her sister"
+        },
+        {
+          "en": "Her teacher"
+        }
+      ],
+      "answer": 0
+    },
+    {
+      "id": "c3",
+      "lines": [
+        "l6",
+        "l7"
+      ],
+      "kind": "meaning-choice",
+      "question": {
+        "en": "Why does Marta go even in the rain?"
+      },
+      "options": [
+        {
+          "en": "She loves Jesus"
+        },
+        {
+          "en": "She sells bread there"
+        },
+        {
+          "en": "She is tired"
+        }
+      ],
+      "answer": 0
+    }
+  ],
+  "production": [
+    {
+      "id": "p1",
+      "kind": "answer",
+      "prompt": "Ana asks you: \"¿Vos vas a la iglesia mañana?\" Say yes, you are going with them.",
+      "basedOn": [
+        "l2",
+        "es.ir-a-place"
+      ],
+      "accept": [
+        {
+          "text": "Sí, mañana voy con ustedes"
+        },
+        {
+          "text": "Sí, voy con ustedes"
+        },
+        {
+          "text": "Sí, voy"
+        },
+        {
+          "text": "Sí, mañana voy"
+        }
+      ],
+      "speak": true
+    }
+  ],
+  "notes": []
+}

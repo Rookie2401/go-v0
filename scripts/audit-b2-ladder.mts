@@ -2,7 +2,7 @@
 /**
  * B2-ladder measurement probe (audit, READ-ONLY on the repository; writes only data/research/audit-b2/, which is git-ignored).
  *
- *   npx vite-node --config scripts/vite.config.ts scripts/audit-b2-ladder.mts [-- es de sq th hi]
+ *   npx vite-node scripts/audit-b2-ladder.mts [-- es de sq th hi]
  *
  * Question: starting from zero, how far does the reading ladder of each course carry a learner in vocabulary and known-word
  * coverage? For each language it walks the texts in LEARNER ORDER and tracks, cumulatively, running words, distinct lemmas

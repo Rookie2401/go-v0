@@ -8,7 +8,7 @@ nothing a learner can see.
 What was done: three read-only audits run in parallel (the reading ladder measured with the real adapters; the content
 and its rights and review state; the engine and the four skills), then the headline figures recomputed independently
 from the probe's output. Nothing in the app was changed. The probe is `scripts/audit-b2-ladder.mts`
-(`npx vite-node --config scripts/vite.config.ts scripts/audit-b2-ladder.mts`, ~2½ min; output in the git-ignored
+(`npx vite-node scripts/audit-b2-ladder.mts`, ~2½ min; output in the git-ignored
 `data/research/audit-b2/`, `summary.md` has every table). Measured on the working tree of 2026-10-05, including the
 built library in `public/library/` (git-ignored, built 2026-10-04) and many uncommitted course files from another
 tool — **a clean checkout of the repository has none of that library**.

@@ -226,3 +226,12 @@ describe('plain-text editions: italics in underscores, the dash as two hyphens',
     expect(spans.map((s) => s.text)).toEqual(['--¿Quién es?--preguntó Marvin.', 'Nadie contestó.']);
   });
 });
+
+describe('a sentence that opens with a first-person verb whose only rival is an adjective', () => {
+  it('Vivo en Honduras. Trabajo con mi hermano.: the verb, even in a short sentence; está vivo stays the adjective', () => {
+    expect(first('Vivo en Honduras.', 'Vivo')).toMatchObject({ lemma: 'vivir', pos: 'VERB' });
+    expect(first('Vivo con mi familia.', 'Vivo')).toMatchObject({ lemma: 'vivir', pos: 'VERB' });
+    expect(first('Yo vivo en una casa.', 'vivo')).toMatchObject({ lemma: 'vivir', pos: 'VERB' });
+    expect(first('Mi abuelo está vivo.', 'vivo')).toMatchObject({ lemma: 'vivo', pos: 'ADJ' });
+  });
+});

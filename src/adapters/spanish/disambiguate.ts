@@ -609,7 +609,10 @@ function verbOrNot(i: number, tokens: RawToken[], base: C[][]): C[] {
     const words = tokens.filter((t) => t.isWord).length;
     const otherVerb = tokens.some((t, j) => j > i && t.isWord && solid(base[j]).length > 0 && isFinite(solid(base[j])[0]));
     const verbFits = n === 'que' || (complement.length > 0 && (['ADV', 'PRON'].includes(complement[0].pos ?? '') || complement.some((c) => isVerbal(c) && c.morph.VerbForm === 'Inf')))
-      || (words >= 4 && !otherVerb);
+      || (words >= 4 && !otherVerb)
+      // Vivo en Honduras. Trabajo con mi hermano. — the only rival is an adjective (vivo, cierto, junto…), which does not
+      // open a sentence before a preposition, while a first-person verb does: then even a short sentence is the verb
+      || (!otherVerb && other.every((c) => c.pos === 'ADJ') && cands.some((c) => isFinite(c) && c.morph.Person === '1'));
     if (verbFits) {
       const r = choose(isFinite, 'opens the sentence, with its complement after it: the likelier reading is the verb', true);
       if (r) return r;

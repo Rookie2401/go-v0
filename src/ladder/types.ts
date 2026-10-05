@@ -62,7 +62,7 @@ export interface HeadText {
 
 export interface LoadedLadder {
   ladder: Ladder;
-  /** Stage 0's scenes in path order (each once; review steps repeat a scene and add no text). Empty unless `after` is "stage0". */
+  /** Stage 0's scenes in path order, a review step counted as a re-reading of its scene. Empty unless `after` is "stage0". */
   head: HeadText[];
   units: LoadedUnit[];
 }
@@ -197,14 +197,14 @@ export function loadStage0Head(lang: LanguageCode, root: string): HeadText[] {
   const { world, packs } = packsFrom(modules);
   const pack = packs.get(lang);
   if (!pack) return [];
+  // a review step shows its scene again, so the learner meets its words again: it counts as a re-reading
   const head: HeadText[] = [];
-  const done = new Set<string>();
   for (const step of pack.path.steps) {
-    if (step.kind !== 'scene' || !step.ref || done.has(step.ref)) continue;
+    if ((step.kind !== 'scene' && step.kind !== 'review') || !step.ref) continue;
     const scene = pack.scenes.get(step.ref);
     if (!scene) continue;
-    done.add(step.ref);
-    head.push({ id: `stage0:${scene.id}`, title: scene.title.en, doc: sceneDocument(scene, world) });
+    const review = step.kind === 'review';
+    head.push({ id: `stage0:${scene.id}${review ? `:review-${step.id}` : ''}`, title: `${scene.title.en}${review ? ' (review)' : ''}`, doc: sceneDocument(scene, world) });
   }
   return head;
 }

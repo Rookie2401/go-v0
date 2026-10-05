@@ -132,11 +132,32 @@ Exact versions: `data/benchmarks/sq/RESOURCES.json`.
    decision and needs the dictionary pipeline to take a second source.
 5. **The third-party works** (21 unverified): a verifier per `docs/albanian/RIGHTS.md`.
 
+## The reading ladder (docs/LADDER.md; 2026-10-05)
+
+The owner's line for Albanian: content first — Stage 0 → controlled A1 → controlled A2 → graded B1 → authentic corpus,
+tens of thousands of reviewed words before any engine optimisation.
+
+| | units | words | state |
+| --- | --- | --- | --- |
+| Stage 0 (`data/stage0/sq`, the Hindi session's) | 23 scenes | 624 | AI-drafted, unreviewed |
+| A1-1 (`data/ladder/sq`) | 72 (52 written for the ladder + the 20 Udha / Misioni drafts placed in place) | 3,651 | machine-draft, nothing reviewed |
+| A1-2, A2-1, A2-2, B1 bridge | — | — | not started |
+
+`npm run ladder:check -- sq`: 0 errors; mean curriculum coverage of A1-1 90.7 % (a lemma counts as known after three
+earlier encounters). Every form of the written units is known to the word list and the analyzer (`sq:check-texts`;
+`vdiq` is the one recorded difference). Write in `data/ladder/sq/authoring/a1.txt`, then `npm run sq:ladder-build`,
+`npm run sq:ladder-author` (what each unit still lacks) and the gate. Against the A1 target of 15–30 k words, A1-1 is
+about 3.7 k. The 20 corpus drafts carry no `pipeline` block yet: adding one changes their unpublished reason, which two
+tests (one shared, one with an uncommitted outside edit) still pin; to be done with the owner's go-ahead.
+
+Cast: the Stage 0 world (Sam, Ana, Luan, Drita, Ardi) plus Elira, Dritan, Mira (his wife), Gjergj (their son) and Marku.
+Known inconsistency for a reviewer: the Udha drafts have their own family (Beni and his sister Ana), so the ladder has
+two characters called Ana.
+
 ## Next steps (in order)
 
-1. Native review of the disputed readings, then of the 20 texts (states move by `npm run authoring:check`).
-2. Stage 0 and Stage 1 texts to their targets, written against the recurrence report; each batch through
-   `sq:check-texts` before anyone sees it.
+1. Native review: `npm run review:packet -- --lang sq --unit <id>` for the A1-1 units, then the disputed readings.
+2. A1-2 and A2 units on the same method; each batch through `sq:check-texts` and the gate before anyone sees it.
 3. Gold set: draft 100 sentences per category with `npm run sq:gold`, to be accepted by a reviewer.
 4. Word list growth from the "no reading" lists of `sq:eval-ud` (dev half only), each addition through `sq:agreement`.
 5. The Gheg bridge as texts with correspondences (the correspondences exist; no Gheg text is bundled).

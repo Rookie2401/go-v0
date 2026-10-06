@@ -1,5 +1,5 @@
 /**
- * What the words around a noun or a verb decide (rules 2–6 of the sentence layer): a name against a common word; the case
+ * What the words around a noun or a verb decide (rules 3–6 of the sentence layer; names are in sentence-names.ts): the case
  * a preposition asks for; a verb against another reading after the particles, and its mood; the person a subject
  * pronoun asks for; the non-active aorist after "u". Machine-drafted rules, not checked by a native speaker.
  * Anything the neighbours do not decide is left as the word-form engine gave it.
@@ -10,34 +10,24 @@ import {
   anyParticleAt, cliticAt, decided, hasVal, isClitic, isFin, isNominal, nextWord, norm, particleAt, pick, wordAt,
   type C, type Ctx,
 } from './sentence-core';
+import { nameDecided } from './sentence-names';
 import { phraseHead } from './sentence-look';
-
-// ───────────────────────────── names ─────────────────────────────
-
-/** A word with a name reading and another: a capital inside the sentence is the name, a small letter is not. */
-export function names(cx: Ctx): void {
-  const words = cx.tokens.map((_, i) => i).filter((i) => cx.tokens[i].isWord);
-  // a heading in capitals says nothing about names
-  if (words.length > 1 && words.every((i) => cx.tokens[i].surface === cx.tokens[i].surface.toLocaleUpperCase('sq'))) return;
-  for (const i of words) {
-    const list = cx.cur[i];
-    if (!list.some((c) => c.pos === 'PROPN') || list.every((c) => c.pos === 'PROPN')) continue;
-    const surface = cx.tokens[i].surface;
-    if (/^\p{Lu}/u.test(surface)) {
-      const before = i > 0 ? cx.tokens[i - 1] : undefined;
-      // after a full stop, a dash or a quotation mark a capital says nothing: only after a word, a comma or a semicolon
-      if (before && (before.isWord || /^[,;]$/u.test(before.surface.trim()))) {
-        pick(cx, i, { pred: (c) => c.pos === 'PROPN', why: 'written with a capital letter inside the sentence: a name' });
-      }
-    } else if (/^\p{Ll}/u.test(surface)) {
-      pick(cx, i, { pred: (c) => c.pos !== 'PROPN', why: 'written with a small letter: not a name' });
-    }
-  }
-}
 
 // ───────────────────────────── case after a preposition ─────────────────────────────
 
 const CASE_WORD: Record<string, string> = { Nom: 'nominative', Acc: 'accusative', Abl: 'ablative', Gen: 'genitive' };
+
+/** Words that may follow a noun and no noun phrase: a conjunction or a preposition ("nuk kam para për të blerë"). "se" is not among them: "para se të vij". */
+const AFTER_NOUN = new Set(['dhe', 'edhe', 'por', 'ose', 'apo', 'që', 'sepse', 'për', 'në', 'me', 'nga', 'te', 'tek', 'pa']);
+
+/** The clause ends at token i, or a conjunction, a preposition or an adverb follows it. */
+function endsPhrase(cx: Ctx, i: number): boolean {
+  const next = cx.tokens[i + 1];
+  if (!next) return true;
+  if (!next.isWord) return !/\d/u.test(next.surface);
+  // an adverb (sot, tani, shumë) is no noun phrase either
+  return AFTER_NOUN.has(norm(cx, i + 1)) || (cx.base[i + 1].length > 0 && cx.base[i + 1].every((c) => c.pos === 'ADV'));
+}
 
 /** After a preposition the head of the next noun phrase has the case the preposition asks for. */
 export function prepositions(cx: Ctx): void {
@@ -51,10 +41,15 @@ export function prepositions(cx: Ctx): void {
       // afër, larg, pranë … with no noun phrase after them are adverbs
       if (cx.cur[i].some((c) => c.pos === 'ADV') && !cx.tokens[i + 1]?.isWord) {
         pick(cx, i, { pred: (c) => c.pos === 'ADV', why: 'with no noun phrase after it: an adverb' });
+      } else if (cx.cur[i].some(isNominal) && endsPhrase(cx, i)) {
+        // para (money) is also the preposition para (before): the preposition needs a noun phrase after it
+        pick(cx, i, { pred: isNominal, why: 'with no noun phrase after it, at the end of the clause or before a conjunction: the noun, not the preposition' });
       }
       continue;
     }
     pick(cx, i, { pred: (c) => c.pos === 'ADP', why: 'before a noun phrase: a preposition' });
+    // a name written with a capital letter stays a name, whatever case the preposition asks for (me Drita, te Luan)
+    if (nameDecided(cx, head.idx)) continue;
     const governs = String(adp.notes?.governs);
     pick(cx, head.idx, {
       pred: (c) => (isNominal(c) || (c.pos === 'PRON' && !isClitic(c))) && sqAgree(c.morph.Case, governs),

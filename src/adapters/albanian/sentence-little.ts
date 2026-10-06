@@ -16,6 +16,7 @@ import {
   isTeParticle, lowered, narrowed, nextWord, norm, pick, prevWord, vals, withContext,
   type C, type Ctx,
 } from './sentence-core';
+import { nameDecided } from './sentence-names';
 import { adjLike, agreeWith, genitiveAhead, headOf, phraseHead, verbAhead, verbLike } from './sentence-look';
 import type { SqLexeme } from './types';
 
@@ -40,7 +41,8 @@ export function formUnits(cx: Ctx): void {
   for (let a = 0; a < cx.tokens.length; a++) {
     const j = nextWord(cx, a);
     if (!cx.tokens[a].isWord || j === undefined || !ARTICLE_FORMS.has(norm(cx, a)) || cx.inUnit.has(a)) continue;
-    if (!adjLike(cx, j) || !cx.cur[a].some(isArticle)) continue;
+    // a name written with a capital letter is not an adjective (Drita e Mira)
+    if (!adjLike(cx, j) || !cx.cur[a].some(isArticle) || nameDecided(cx, j)) continue;
     if (verbLike(cx, j) && !nounBefore(cx, a)) continue;
     formUnit(cx, a, j);
   }

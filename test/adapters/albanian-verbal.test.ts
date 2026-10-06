@@ -339,7 +339,10 @@ describe('laj / lahem, pendohem', () => {
     expect(reads(f, 'pendohuni', { Mood: 'Imp', Voice: 'Mid', Person: '2', Number: 'Plur' })).toBe(true);
     expect(reads(f, 'penduar', { VerbForm: 'Part' })).toBe(true);
     expect(reads(f, 'pendua', { Voice: 'Mid', Tense: 'Past', Person: '3', Number: 'Sing' })).toBe(true);
-    expect(f.some((x) => x.form === 'pendoj' || x.form === 'pendon' || x.form === 'pendova')).toBe(false); // no active forms
+    expect(f.some((x) => x.form === 'pendoj' || x.form === 'pendon')).toBe(false); // no active present
+    // the aorist is written with the active endings (u pendova, u penduam) and is non-active all the same
+    expect(reads(f, 'pendova', { Voice: 'Mid', Tense: 'Past', Person: '1', Number: 'Sing' })).toBe(true);
+    expect(reads(f, 'penduam', { Voice: 'Mid', Tense: 'Past', Person: '1', Number: 'Plur' })).toBe(true);
     expect(f.every((x) => x.morph.Voice !== 'Act')).toBe(true);
   });
 

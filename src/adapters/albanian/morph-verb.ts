@@ -214,6 +214,14 @@ function generate(lex: SqLexeme, ex: Slot[]): Slot[] {
     if (aor) fin6(out, aor.forms, { Tense: 'Past', Mood: 'Ind', Voice: 'Act' });
   }
 
+  // A verb that exists only in the non-active (lindem, mbetem, ndodhem, nisem, ulem): its aorist is written with the active
+  // endings, with "u" before it (u ula, u nisëm, u lindën) or without (mbeti, lindi, ndodhi); both are the non-active aorist.
+  // The third person singular is generated only when the list states it (aorist3: mbeti, lindi, ndodhi); the special
+  // non-active third person (u ul, u nis) follows below as mid3.
+  if (only && aor) {
+    fin6(out, aor.forms.map((f, i) => (i === 2 && !lex.aorist3 ? undefined : f)), { Tense: 'Past', Mood: 'Ind', Voice: 'Mid' });
+  }
+
   if (lex.participle) out.push({ form: lex.participle, morph: { VerbForm: 'Part' } });
 
   let naStem: string | undefined;

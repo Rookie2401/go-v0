@@ -19,6 +19,7 @@ import { SQ_FUNCTION_READINGS } from './function-words';
 import { cliticReadings } from './clitics';
 import { ghegToStandard } from './gheg';
 import { historicalToModern } from './historical';
+import { SQ_LADDER_ADJECTIVES, SQ_LADDER_ADVERBS, SQ_LADDER_NOUNS, SQ_LADDER_VERBS } from './lexicon-ladder';
 import { SQ_ADJECTIVES, SQ_ADVERBS } from './lexicon-modifiers';
 import { SQ_NOUNS } from './lexicon-nouns';
 import { SQ_VERBS } from './lexicon-verbs';
@@ -32,8 +33,10 @@ const GENDER: Record<string, string> = { m: 'Masc', f: 'Fem', n: 'Neut' };
 const isVerbal = (r: SqReading): boolean => r.pos === 'VERB' || r.pos === 'AUX';
 const keyOf = (r: SqReading): string => `${r.lemma}|${r.pos}|${Object.keys(r.morph).sort().map((k) => `${k}=${r.morph[k]}`).join(';')}|${(r.parts ?? []).map((p) => p.text).join('+')}`;
 
-/** The word list as one array, in a fixed order (nouns and names, adjectives, adverbs, verbs). */
-export const SQ_LEXEMES: readonly SqLexeme[] = [...SQ_NOUNS, ...SQ_ADJECTIVES, ...SQ_ADVERBS, ...SQ_VERBS];
+/** The word list as one array, in a fixed order (nouns and names, adjectives, adverbs, verbs), each class followed by the ladder plan's additions to it: a noun is read before a verb form of the same spelling (lidhja). */
+export const SQ_LEXEMES: readonly SqLexeme[] = [
+  ...SQ_NOUNS, ...SQ_LADDER_NOUNS, ...SQ_ADJECTIVES, ...SQ_LADDER_ADJECTIVES, ...SQ_ADVERBS, ...SQ_LADDER_ADVERBS, ...SQ_VERBS, ...SQ_LADDER_VERBS,
+];
 
 function readingOf(lex: SqLexeme, f: SqForm, listed: boolean): SqReading {
   const morph = { ...f.morph };

@@ -51,6 +51,11 @@ export const PREPOSITIONS: SqLexeme[] = [
   PREP('para', 'before, in front of', 'Abl'), PREP('pas', 'after, behind', 'Abl'), PREP('përpara', 'in front of, before', 'Abl'),
   PREP('gjatë', 'during, along', 'Abl'), PREP('rreth', 'around, about', 'Abl'), PREP('drejt', 'towards', 'Abl'),
   PREP('kundër', 'against', 'Abl'), PREP('midis', 'between, among', 'Abl'), PREP('ndërmjet', 'between', 'Abl'),
+  // the ladder plan's additions (data/ladder/sq/PLAN-A1-2-A2.md section 6.1)
+  PREP('mes', 'in the middle of, between', 'Abl'), PREP('përmes', 'through, by means of', 'Abl'),
+  PREP('përgjatë', 'along', 'Abl'), PREP('përveç', 'except, besides', 'Abl'),
+  // deri: "deri në Tiranë", "deri sot": it stands before another preposition or an adverb, so it names no case of its own
+  F('deri', 'ADP', 'until, up to, as far as'),
 ];
 
 /** The prepositions that are also adverbs (afër = near, as in "jam afër"). Read after the preposition. */
@@ -67,6 +72,8 @@ export const CONJUNCTIONS: SqLexeme[] = [
   F('se', 'SCONJ', 'that; than'), F('që', 'SCONJ', 'that'), F('sepse', 'SCONJ', 'because'), F('kur', 'SCONJ', 'when'),
   F('nëse', 'SCONJ', 'if'), F('megjithëse', 'SCONJ', 'although'), F('ndërsa', 'SCONJ', 'while, whereas'),
   F('sa', 'SCONJ', 'as much as, as many as'), F('si', 'SCONJ', 'as, like'), F('derisa', 'SCONJ', 'until, while'),
+  // the ladder plan's additions (data/ladder/sq/PLAN-A1-2-A2.md section 6.1)
+  F('mirëpo', 'CONJ', 'but, however'), F('siç', 'CONJ', 'as, the way (siç thotë: as he says)'), F('pasi', 'SCONJ', 'after, since (conjunction)'),
 ];
 
 export const PARTICLES: SqLexeme[] = [
@@ -112,4 +119,20 @@ export const GREETINGS: SqLexeme[] = [
   F('mirëmëngjes', 'INTJ', 'good morning'), F('mirëdita', 'INTJ', 'good day, hello'), F('mirëmbrëma', 'INTJ', 'good evening'),
   F('mirupafshim', 'INTJ', 'goodbye'), F('tungjatjeta', 'INTJ', 'hello; goodbye (a long life to you)'),
   F('faleminderit', 'INTJ', 'thank you'), F('përshëndetje', 'INTJ', 'hello, greetings'),
+];
+
+/**
+ * Abbreviations of running text, read as the words they stand for. They are not words of the language, but they are not
+ * unknown either: a learner does not "learn" km or etj. Part of speech 'X', `role` 'abbreviation', no inflection. The
+ * letter m (metre) is read only after a figure, by the sentence layer (sentence-clause.ts): a bare m is no abbreviation.
+ * The full stop after an abbreviation is a separate token; p.sh and p.e.s are single tokens.
+ */
+const ABBR = (lemma: string, gloss: string): SqLexeme => F(lemma, 'X', gloss, undefined, { role: 'abbreviation' });
+
+export const ABBREVIATIONS: SqLexeme[] = [
+  ABBR('km', 'km, kilometre(s)'), ABBR('cm', 'cm, centimetre(s)'), ABBR('mm', 'mm, millimetre(s)'), ABBR('kg', 'kg, kilogram(s)'),
+  ABBR('shek', 'shek., century (shekulli)'), ABBR('etj', 'etj., and so on (e të tjera)'),
+  ABBR('p.sh', 'p.sh., for example (për shembull)'), ABBR('p.e.s', 'p.e.s., before our era (para erës sonë)'),
+  ABBR('e.s', 'e.s., of our era (erës sonë)'), ABBR('vj', 'vj., years (vjet)'), ABBR('nr', 'nr., number (numri)'),
+  ABBR('fq', 'fq., page (faqe)'), ABBR('prof', 'prof., professor'), ABBR('dr', 'Dr., doctor'),
 ];

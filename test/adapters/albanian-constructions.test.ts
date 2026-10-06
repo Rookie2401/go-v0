@@ -299,7 +299,7 @@ describe('Albanian constructions: the confidence is never more than the readings
   });
 
   it('a word the list does not have (a guess by its ending) gives a pattern of 0.5 at most', () => {
-    const r = run('Ai ka vizituar Nartën.');
+    const r = run('Ai ka vizituar ujvarën.');
     expect(r.find('definite-noun-ending')?.confidence).toBeLessThanOrEqual(0.5);
     const lone = run('Ai ka lëvduar.');
     expect(lone.find('perfect')?.confidence).toBeLessThanOrEqual(0.5);

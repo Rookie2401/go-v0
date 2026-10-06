@@ -21,15 +21,9 @@ import { SQ_DISPUTED, SQ_MAJORITY } from './disputed';
 import { analyzeSqForm } from './morphology';
 import { orderSqSentence } from './sentence';
 import { sqCitation, type SqReading } from './types';
+import { SQ_ANALYZER, SQ_SOURCE_IDS, SQ_VERSION } from './version';
 
-export const SQ_VERSION = '7';
-export const SQ_ANALYZER = `adapter-sq@${SQ_VERSION}`;
-export const SQ_SOURCE_IDS = {
-  hand: `${SQ_ANALYZER}:hand`,
-  rules: `${SQ_ANALYZER}:rules`,
-  phrases: `${SQ_ANALYZER}:phrases`,
-  constructions: `${SQ_ANALYZER}:constructions`,
-} as const;
+export { SQ_ANALYZER, SQ_SOURCE_IDS, SQ_VERSION };
 
 /** A reading the sources disagree about, or that only the word list knows, is not presented as certain. */
 export const DISPUTED_MAX_CONFIDENCE = 0.55;

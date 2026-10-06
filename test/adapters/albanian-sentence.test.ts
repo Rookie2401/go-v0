@@ -98,7 +98,7 @@ const ROWS: Array<[string, string, number, Want]> = [
   ['Libri e lapsi.', 'e', 0, { pos: 'PRON', context: false }],
   ['Ai punon, e lexon.', 'e', 0, { pos: 'PRON', context: false }],
   ['Të shoh.', 'të', 0, { pos: 'PART', context: false }],
-  ['Mira është këtu.', 'mira', 0, { lemma: 'Mira', pos: 'PROPN', context: false }],
+  ['Mira është këtu.', 'mira', 0, { lemma: 'Mira', pos: 'PROPN', context: /capital letter before a verb/ }],
   // ── 1. e / i before a conjugated verb: the object pronoun ──
   ['Unë e shoh djalin.', 'e', 0, { lemma: 'ai', pos: 'PRON', morph: { Clitic: 'Yes', Case: 'Acc' }, context: true }],
   ['Ai i dha librin djalit.', 'i', 0, { pos: 'PRON', morph: { Clitic: 'Yes' }, context: true }],

@@ -12,7 +12,7 @@ import type { SqLexeme, SqReading } from './types';
 import { buildReadings } from './function-build';
 import { LINKING_ARTICLE } from './function-article';
 import { DEMONSTRATIVES, INDEFINITES, PERSONAL, POSSESSIVES, QUESTION_WORDS } from './function-pronouns';
-import { CONJUNCTIONS, DEICTIC_ADVERBS, GREETINGS, MODALS, NUMERALS, ORDINALS, PARTICLES, PREPOSITION_ADVERBS, PREPOSITIONS } from './function-minor';
+import { ABBREVIATIONS, CONJUNCTIONS, DEICTIC_ADVERBS, GREETINGS, MODALS, NUMERALS, ORDINALS, PARTICLES, PREPOSITION_ADVERBS, PREPOSITIONS } from './function-minor';
 
 export { linkingArticle, linkingArticleReadings } from './function-article';
 
@@ -24,7 +24,7 @@ export { linkingArticle, linkingArticleReadings } from './function-article';
 export const SQ_FUNCTION_WORDS: SqLexeme[] = [
   ...POSSESSIVES, ...PERSONAL, ...DEMONSTRATIVES, ...QUESTION_WORDS, ...INDEFINITES, LINKING_ARTICLE,
   ...NUMERALS, ...ORDINALS, ...PREPOSITIONS, ...PREPOSITION_ADVERBS, ...CONJUNCTIONS, ...PARTICLES,
-  ...DEICTIC_ADVERBS, ...GREETINGS, ...MODALS,
+  ...DEICTIC_ADVERBS, ...GREETINGS, ...MODALS, ...ABBREVIATIONS,
 ];
 
 /** Competing parts of speech of one form, best first when the form is read alone. */
@@ -33,6 +33,7 @@ const POS_FIRST: Record<string, PartOfSpeech[]> = {
   'u': ['PART', 'PRON'], // non-active particle, object pronoun (3pl dative)
   'më': ['PRON', 'ADV', 'ADP'], // object pronoun, "more", "on (a date)"
   'një': ['NUM', 'DET'],
+  'para': ['ADP', 'ADJ'], // the preposition (before); the ordinal "të para" needs its linking article, and para = money is a noun of the word list
 };
 
 /** Forms that ALSO have a reading in another word list (do = a form of dua, pa = aorist of shoh, dhe = soil, para = money). */

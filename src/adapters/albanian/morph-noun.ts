@@ -77,7 +77,8 @@ function definitePlural(pl: string, defSg: string): string {
   const d = defSg.toLowerCase();
   if (/[aë]$/.test(p)) return `${pl}t`;
   if (p.endsWith('e')) return `${pl}${/[eë]ja$/.test(d) ? 'të' : 't'}`; // lulet, malet · kafetë, retë
-  if (/[iuyo]$/.test(p)) return `${pl}të`; // shtëpitë, sytë
+  if (/o$/.test(p)) return `${pl}t`; // palltot, teatrot, eurot
+  if (/[iuy]$/.test(p)) return `${pl}të`; // shtëpitë, sytë
   if (/ër$/.test(p) || /[zs]$/.test(p)) return `${pl}it`; // vëllezërit, njerëzit, mësuesit
   if (/[aeouëy]j$/.test(p)) return `${pl}t`; // muajt, kuajt, apostujt
   return `${pl}të`; // djemtë, miqtë, zogjtë, lumenjtë

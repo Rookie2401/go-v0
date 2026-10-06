@@ -104,6 +104,7 @@ export const INDEFINITES: SqLexeme[] = [
   F('kushdo', 'PRON', 'whoever, anyone', ['kushdo: nom pind']),
   F('vete', 'PRON', 'oneself, self (vetja ime: myself)', ['vetja: sg nom', 'veten: sg acc', 'vetes: sg gen dat abl']),
   F('diçka', 'PRON', 'something', ['diçka: pind']),
+  F('tilla', 'DET', 'such, of that kind (një i tillë, e tillë, të tillë, të tilla)', ['tillë: pind', 'tilla: pind']),
   F('tjetër', 'DET', 'other, another', ['tjetër: pind', 'tjerë: m pl pind', 'tjera: f pl pind']),
   F('vetë', 'PRON', 'self (emphatic or reflexive): myself, yourself, himself', undefined, {
     role: 'emphatic or reflexive: stands after the word it stresses (unë vetë: I myself)',

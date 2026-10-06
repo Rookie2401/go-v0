@@ -18,7 +18,8 @@
  */
 import type { AnalysisCandidate, RawToken } from '../../core';
 import type { Ctx } from './sentence-core';
-import { names, prepositions, verbs } from './sentence-clause';
+import { prepositions, verbs } from './sentence-clause';
+import { names } from './sentence-names';
 import { formUnits, littleWords } from './sentence-little';
 import { perfect } from './sentence-perfect';
 

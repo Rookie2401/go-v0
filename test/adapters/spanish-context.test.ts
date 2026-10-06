@@ -206,7 +206,7 @@ describe('after a preposition with no article: the noun rather than the adjectiv
 
   it('not when a noun or a name follows (the word qualifies it), and never against our adverb or a function word', () => {
     // de buen humor, a San Pedro
-    expect(read('Hoy vamos a San Pedro.', { beside: { San: [d('san', 'NOUN', ['masculine', 'singular'], 'saint')] } }).first('San')).toBe('San/PROPN'); // our word list's name (adapter-es@10), still ahead of the dictionary's noun
+    expect(read('Hoy vamos a San Pedro.', { beside: { San: [d('san', 'NOUN', ['masculine', 'singular'], 'saint')] } }).first('San')).toBe('San/PROPN'); // our word list's name (adapter-es@11), still ahead of the dictionary's noun
     expect(read('Vendrá en cuanto pueda.', { beside: { cuanto: [d('cuanto', 'NOUN', ['masculine', 'singular'], 'quantum')] } }).first('cuanto')).toBe('cuanto/ADV');
     expect(read('Habló de cómo ayudar.', { beside: { cómo: [d('cómo', 'NOUN', ['masculine', 'singular'], 'the how')] } }).first('cómo')).toBe('cómo/ADV');
     expect(read('Es la casa de mi padre.', { beside: { mi: [d('mi', 'NOUN', ['masculine', 'singular'], 'mi (musical note)')] } }).first('mi')).toBe('mi/DET');

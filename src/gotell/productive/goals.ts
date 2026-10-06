@@ -81,10 +81,10 @@ const MODELS: Record<LanguageCode, Record<string, string | { text: string; note:
     'goal:t.saved-by-grace': 'Dios me salvó por su gracia.',
     'goal:t.jesus-changed-me': 'Jesús cambió mi vida.',
     'goal:t.now-trust': 'Ahora confío en Jesús cada día.',
-    'goal:t.share': 'Quiero compartir esto contigo.',
+    'goal:t.share': 'Quiero compartir esto con vos.',
     'goal:s.jesus-forgives': 'Jesús perdona el pecado.',
     'goal:c.church-family': 'La iglesia es mi familia.',
-    'goal:m.do-you-believe': '¿Crees en Jesús?',
+    'goal:m.do-you-believe': '¿Creés en Jesús?',
     'goal:d.understand-now': 'Ahora entiendo.',
   },
   de: {

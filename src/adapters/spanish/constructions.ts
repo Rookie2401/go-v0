@@ -47,6 +47,19 @@ const isSubj = (c: AnalysisCandidate) => has(c, 'Mood', 'Sub');
 const afterConjugated = (c: AnalysisCandidate) =>
   isVerb(c) && c.morph.VerbForm === 'Fin' && (c.morph.Mood === 'Ind' || c.morph.Mood === 'Cnd') && (c.parts ?? []).some((p) => /pronoun|reflexive/u.test(p.role ?? ''));
 
+/**
+ * A reading tagged with variety `v`, unless a better reading stands in front of it: a reading of clearly higher
+ * confidence (sed the noun, not the vosotros command of ser), or, where the word is spelled alike in the other
+ * variety `other` (vivís: voseo or vosotros), that other reading. The construction belongs to the reading the sentence chose.
+ */
+function sharedForm(c: Ctx, i: number, v: string, other: string): AnalysisCandidate | undefined {
+  const a = c.find(i, (x) => (x.varieties ?? []).includes(v));
+  const top = c.cands(i)[0];
+  if (!a || !top || top === a) return a;
+  if (a.confidence < top.confidence) return undefined;
+  return (top.varieties ?? []).includes(other) && !(top.varieties ?? []).includes(v) ? undefined : a;
+}
+
 function makeCtx(tokens: RawToken[], analyses: AnalyzedToken[]): Ctx {
   const cands = (i: number): AnalysisCandidate[] => (tokens[i]?.isWord ? analyses[i]?.candidates ?? [] : []);
   const find = (i: number, pred: (c: AnalysisCandidate) => boolean) => cands(i).filter(pred).sort((a, b) => b.confidence - a.confidence)[0];
@@ -392,7 +405,7 @@ export const SPANISH_CONSTRUCTIONS: readonly SpanishConstruction[] = [
     example: { es: 'Vos tenés razón.', en: 'You are right.' },
     nearMiss: ['Tú tienes razón.', 'Ellos tienen razón.'],
     detect: (c) => each(c, (i) => {
-      const a = c.find(i, (x) => (x.varieties ?? []).includes('voseo'));
+      const a = sharedForm(c, i, 'voseo', 'vosotros');
       return a ? hit('voseo', 'Voseo: vos and its verb forms', 'In Honduras and much of Central America "vos" replaces "tú" in everyday speech, with its own verb forms: "vos tenés", "vos hablás".', a.confidence, [i]) : undefined;
     }),
   },
@@ -403,7 +416,7 @@ export const SPANISH_CONSTRUCTIONS: readonly SpanishConstruction[] = [
     example: { es: 'Vosotros tenéis razón.', en: 'You (all) are right.' },
     nearMiss: ['Ustedes tienen razón.', 'Nosotros tenemos razón.'],
     detect: (c) => each(c, (i) => {
-      const a = c.find(i, (x) => (x.varieties ?? []).includes('vosotros'));
+      const a = sharedForm(c, i, 'vosotros', 'voseo');
       return a ? hit('vosotros', 'Vosotros (used in Spain)', 'In Spain "vosotros" is the informal plural of "tú"; Latin America uses "ustedes" instead.', a.confidence, [i]) : undefined;
     }),
   },

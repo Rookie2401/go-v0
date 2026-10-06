@@ -196,6 +196,48 @@ function beforeNounPhrase(next: number | undefined, tokens: RawToken[], base: C[
  * alone between pauses and can be an interjection; "qué" before a noun or an adjective; "lo" before an adjective.
  */
 export function disambiguateSpanish(i: number, tokens: RawToken[], base: C[][]): C[] {
+  return voseoOverVosotros(i, tokens, base, disambiguateContext(i, tokens, base));
+}
+
+const isVosotrosReading = (c: C): boolean => isFinite(c) && !!c.varieties?.includes('vosotros') && hasPerson(c, '2') && c.morph.Number === 'Plur';
+const isVoseoReading = (c: C): boolean => isFinite(c) && !!c.varieties?.includes('voseo') && hasPerson(c, '2') && c.morph.Number === 'Sing';
+/** Words of the second person singular: with them in the sentence the -ís form is the voseo one beyond doubt. */
+const SINGULAR_YOU = new Set(['vos', 'tú', 'te', 'ti', 'tu', 'tus', 'tuyo', 'tuya', 'contigo']);
+
+/**
+ * Vivís, escribís, decís, venís: the voseo present of -ir verbs (vos vivís) is spelled exactly like the vosotros one
+ * (vosotros vivís), so the word list holds both readings at one confidence. Which stood first was an accident of
+ * the order they were generated in, and it made the course's own voice (voseo, the target variety of es-HN) read as
+ * Spain's. Here the voseo reading goes first unless the sentence shows a plural "you": vosotros / vosotras, the
+ * clitic os, a possessive vuestro, a vosotros form that is not shared with voseo (tenéis, sois, mirad), or a plural
+ * antecedent (los que decís, quienes decís). A sentence with vos, tú, te or tu names the one person addressed, so
+ * there the vosotros reading is marked down as well. Without either sign the two stay at one confidence, voseo first.
+ * Only the order changes: the vosotros reading stays on the word sheet, and Scripture (RV1909), which does use
+ * vosotros, keeps reading it wherever the verse itself says so.
+ */
+function voseoOverVosotros(i: number, tokens: RawToken[], base: C[][], cands: C[]): C[] {
+  if (cands.length < 2 || !isVosotrosReading(cands[0])) return cands;
+  const k = cands.findIndex((c) => isVoseoReading(c) && c.lemma === cands[0].lemma);
+  if (k < 0) return cands;
+  const word = (j: number): string | undefined => (j >= 0 && j < tokens.length && tokens[j].isWord ? tokens[j].normalized : undefined);
+  let singular = false;
+  let plural = false;
+  tokens.forEach((t, j) => {
+    if (!t.isWord || j === i) return;
+    if (SINGULAR_YOU.has(t.normalized)) singular = true;
+    const own = solid(base[j]);
+    if (own.some(isVosotrosReading) && !own.some(isVoseoReading)) plural = true; // tenéis, sois, mirad
+    if (own.some((c) => c.varieties?.includes('vosotros') && !isFinite(c))) plural = true; // vosotros, vosotras, os, vuestro
+  });
+  const before = word(i - 1);
+  if ((before === 'que' && ['los', 'las', 'aquellos', 'aquellas', 'todos', 'todas'].includes(word(i - 2) ?? '')) || before === 'quienes') plural = true;
+  if (plural) return cands;
+  const why = singular ? 'with vos, tú or te in the sentence: voseo, one person' : 'no plural "you" in the sentence: voseo, the course variety';
+  const rest = cands.filter((_, j) => j !== k).map((c) => (singular && isVosotrosReading(c) ? { ...c, confidence: Math.min(c.confidence, 0.4) } : c));
+  return [{ ...cands[k], notes: { ...(cands[k].notes ?? {}), context: why } }, ...rest];
+}
+
+function disambiguateContext(i: number, tokens: RawToken[], base: C[][]): C[] {
   const cands = base[i];
   if (cands.length < 2) return cands;
   const lead = (pred: (c: C) => boolean, why: string, cue: Cue): C[] | undefined => {

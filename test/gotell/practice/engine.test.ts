@@ -35,6 +35,13 @@ describe('catalog', () => {
     }
   });
 
+  it('the Spanish model wordings address "you" in the course voice (voseo), never tú', () => {
+    const texts = catalogGoals('es').map((g) => catalogModel(g.id, 'es')!.text);
+    expect(texts).toContain('¿Creés en Jesús?');
+    expect(texts).toContain('Quiero compartir esto con vos.');
+    for (const t of texts) expect(t).not.toMatch(/(crees|tienes|eres|quieres|puedes|contigo|tú|tu|ti)/iu);
+  });
+
   it('meaning is judged apart from language: polarity, missing ideas, key-term substitution, English words', () => {
     const es = reg.get('es');
     const notSin = CATALOG_GOALS.find((g) => g.id === 'goal:t.not-understand-sin')!;

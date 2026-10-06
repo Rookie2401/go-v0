@@ -517,8 +517,8 @@ describe('candidates carry their provenance', () => {
 });
 
 describe('the adapter', () => {
-  it('is wired: version 5, sources, varieties, honest support', () => {
-    expect(de.version).toBe('5');
+  it('is wired: version 6, sources, varieties, honest support', () => {
+    expect(de.version).toBe('6');
     expect(Object.keys(de.sources ?? {}).sort()).toEqual(Object.values(DE_SOURCE_IDS).sort());
     expect(de.varieties?.['de-1901']?.kind).toBe('historical');
     expect(de.support.lemmatization).toBe('seed-only');
@@ -714,8 +714,10 @@ describe('refine', () => {
   it('a dictionary verb with a separable prefix is never joined to an own particle: no unit is invented on a list somebody else gave', () => {
     const { tokens, analyzed } = withDictionary('Er steht früh auf.', { steht: [dictReading('stehen', 'VERB', ['third-person', 'singular', 'present', 'indicative'])] });
     const out = refine(tokens, analyzed, both);
-    for (const a of out) for (const c of a.candidates) expect(c.unit).toBeUndefined();
+    // the dictionary's token gets no unit; and no token's readings change (refine only orders): the particle keeps what its first analysis said
+    for (const c of out[at(tokens, 'steht')].candidates) expect(c.unit).toBeUndefined();
     expect(multiset(out[at(tokens, 'steht')])).toEqual(multiset(analyzed[at(tokens, 'steht')]));
+    for (const [k, a] of out.entries()) expect(multiset(a)).toEqual(multiset(analyzed[k]));
   });
 });
 
@@ -850,9 +852,11 @@ describe('government conflicts, given tokens, headword variants', () => {
     const out = de.refine!(tokens, mine, new Set([OWN]), new Set([i]));
     expect(JSON.stringify(out[i])).toBe(before);
     expect(out[i]).toBe(mine[i]);
-    // without given the same token is started again from the context-free readings
+    // without given the same token is started again from the context-free readings, but refine may only order: a list that would
+    // lose the reading somebody put beside ours (it is not marked given) stays as it was, so the importer's check holds
     const again = de.refine!(tokens, mine, new Set([OWN]));
-    expect(again[i].candidates[0].origin).not.toBe('dictionary');
+    const ms = (a: AnalyzedToken): string[] => a.candidates.map((c) => `${c.lemma}/${c.pos}`).sort();
+    expect(ms(again[i])).toEqual(ms(mine[i]));
     // the neighbours are still ordered
     expect(out[tokens.findIndex((t) => t.surface === 'Er')].candidates.length).toBeGreaterThan(0);
   });

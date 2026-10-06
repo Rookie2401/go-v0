@@ -226,7 +226,8 @@ function unrealAround(s: Sent, t: Tok): string | undefined {
   // another verb that can only be Konjunktiv II (hätte, käme, würde): a form that is also the preterite does not count
   const other = s.toks.find((o) => {
     if (!o.word || o === t) return false;
-    const fin = o.rs.filter((r) => !r.down && isFin(r.c) && !has(r.c, 'Mood', 'Imp'));
+    // a reading a dictionary put on the word (Garten as a form of garen) is no evidence of the unreal mood; the engine's own are
+    const fin = o.rs.filter((r) => !r.down && (r.own || r.c.origin !== 'dictionary') && isFin(r.c) && !has(r.c, 'Mood', 'Imp'));
     return fin.length > 0 && fin.every((r) => r.c.morph.Mood === 'Sub' && r.c.morph.Tense === 'Past');
   });
   return other ? `beside the Konjunktiv II ${other.raw.surface}` : undefined;

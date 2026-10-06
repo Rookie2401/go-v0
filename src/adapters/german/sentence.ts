@@ -73,8 +73,22 @@ export function refineGermanSentence(tokens: RawToken[], analyzed: AnalyzedToken
     if (!t.isWord || given?.has(i)) return analyzed[i];
     if (analyzed[i].analyzer !== DE_ANALYZER && !analyzers.has(analyzed[i].analyzer)) return analyzed[i];
     if (analyzed[i].analyzer === DE_ANALYZER && !analyzers.has(DE_ANALYZER)) return analyzed[i];
+    // The contract: only order, a lowered confidence and notes.context may change. A token of ours was started again from its
+    // context-free readings, and a neighbour whose readings the dictionary replaced may no longer show what its first analysis
+    // saw (a participle the engine guessed, now a dictionary entry that names no form): where that would add, drop, merge or
+    // change a reading (the perfect auxiliary haben as a plain verb again, the indicative and Konjunktiv II twins of suchte
+    // merged), the first analysis stands, which saw every neighbour as the engine read it.
+    if (!sameReadings(out[i], analyzed[i].candidates)) return analyzed[i];
     return { ...analyzed[i], candidates: out[i] };
   });
+}
+
+/** The (lemma, part of speech) pairs of two lists of readings are the same, whatever the order: what refine must keep (plan.ts compares exactly this). */
+function sameReadings(a: readonly AnalysisCandidate[], b: readonly AnalysisCandidate[]): boolean {
+  const key = (l: readonly AnalysisCandidate[]): string[] => l.map((c) => JSON.stringify([c.lemma ?? null, c.pos ?? null])).sort();
+  const x = key(a);
+  const y = key(b);
+  return x.length === y.length && x.every((v, k) => v === y[k]);
 }
 
 // ───────────────────────────── relate ─────────────────────────────

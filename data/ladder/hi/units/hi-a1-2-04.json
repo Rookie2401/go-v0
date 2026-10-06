@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-04",
+  "lang": "hi",
+  "title": "पानी का घड़ा और कंकड़",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-04",
+    "title": "A pot of water and pebbles (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A bridge narrative that prepares the in-place crow story (s0c-02) without retelling it: Aman prepares a school game with a water pot and pebbles, and Nani promises a story. Present tense with a few perfective forms (अमन ने घड़ा देखा; कंकड़ डाले). फिर is read correctly in running text (\"फिर वह ...\"). ढूँढ़ना is written with the nukta in the lemma; the adapter reads ढूँढता / ढूँढा as the same lemma. Words outside the plan (measured): none."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "school",
+    "science game",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "पानी का घड़ा और कंकड़",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अमन के स्कूल में परसों एक सभा है।",
+              "english": "Aman has a school event the day after tomorrow."
+            },
+            {
+              "text": "अमन उसकी तैयारी करता है।",
+              "english": "Aman is preparing for it."
+            },
+            {
+              "text": "वह रसोई में जाता है।",
+              "english": "He goes to the kitchen."
+            },
+            {
+              "text": "रसोई में एक घड़ा है।",
+              "english": "There is a water pot in the kitchen."
+            },
+            {
+              "text": "घड़े में आधा पानी है।",
+              "english": "The pot is half full of water."
+            },
+            {
+              "text": "सैम बोलता है, \"अमन, तुम्हारी योजना क्या है?\"",
+              "english": "Sam says, \"Aman, what is your plan?\""
+            },
+            {
+              "text": "अमन बोलता है, \"मैं घड़े में कंकड़ डालूँगा।\"",
+              "english": "Aman says, \"I will put pebbles into the pot.\""
+            },
+            {
+              "text": "सैम बोलता है, \"कंकड़ कहाँ हैं?\"",
+              "english": "Sam says, \"Where are the pebbles?\""
+            },
+            {
+              "text": "अमन बोलता है, \"मैं ढूँढता हूँ।\"",
+              "english": "Aman says, \"I will look for them.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन मैदान जाता है।",
+              "english": "Aman goes to the field."
+            },
+            {
+              "text": "वह ढूँढता है।",
+              "english": "He searches."
+            },
+            {
+              "text": "मैदान में नहीं हैं।",
+              "english": "There are none in the field."
+            },
+            {
+              "text": "फिर वह गली में जाता है।",
+              "english": "Then he goes into the lane."
+            },
+            {
+              "text": "गली में एक मकान है।",
+              "english": "There is a house in the lane."
+            },
+            {
+              "text": "यह मोहल्ला बड़ा नहीं है।",
+              "english": "This neighbourhood is not big."
+            },
+            {
+              "text": "मकान की दीवार सफ़ेद है।",
+              "english": "The wall of the house is white."
+            },
+            {
+              "text": "अमन ढूँढ़ता है, लेकिन वहाँ भी नहीं हैं।",
+              "english": "Aman looks, but there are none there either."
+            },
+            {
+              "text": "फिर वह पुल के सामने जाता है।",
+              "english": "Then he goes to the front of the bridge."
+            },
+            {
+              "text": "पुल के पीछे बहुत कंकड़ हैं!",
+              "english": "Behind the bridge there are many pebbles!"
+            },
+            {
+              "text": "अमन ने बहुत उठाए।",
+              "english": "Aman picked up a lot."
+            },
+            {
+              "text": "वह थैले में बहुत डालता है।",
+              "english": "He puts a lot into the bag."
+            },
+            {
+              "text": "वह घर आता है।",
+              "english": "He comes home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "घड़ी में चार बजे हैं।",
+              "english": "The clock says four."
+            },
+            {
+              "text": "नानी रसोई में हैं।",
+              "english": "Nani is in the kitchen."
+            },
+            {
+              "text": "अमन थैला मेज़ पर लाता है।",
+              "english": "Aman brings the bag to the table."
+            },
+            {
+              "text": "उसने देखा।",
+              "english": "He looked."
+            },
+            {
+              "text": "अमन ने उसमें डाले।",
+              "english": "Aman put them in."
+            },
+            {
+              "text": "पानी बहुत हो जाता है।",
+              "english": "The water becomes more."
+            },
+            {
+              "text": "सैम बोलता है, \"अमन, यह बहुत अच्छी योजना है!\"",
+              "english": "Sam says, \"Aman, this is a very good plan!\""
+            },
+            {
+              "text": "अमन बोलता है, \"सैम, मेरे पास समय नहीं है। मैं रवि सर को फ़ोन करता हूँ।\"",
+              "english": "Aman says, \"Sam, I do not have time. I am phoning Ravi sir.\""
+            },
+            {
+              "text": "सैम बोलता है, \"यह मेरा मोबाइल है।\"",
+              "english": "Sam says, \"This is my mobile.\""
+            },
+            {
+              "text": "अमन नंबर देखता है।",
+              "english": "Aman looks at the number."
+            },
+            {
+              "text": "अमन फ़ोन करता है।",
+              "english": "Aman makes the call."
+            },
+            {
+              "text": "अमन बोलता है, \"सर, कल आप आइए।\"",
+              "english": "Aman says, \"Sir, come tomorrow.\""
+            },
+            {
+              "text": "रवि सर अगले हफ़्ते ट्रेन से गाँव जाएँगे।",
+              "english": "Ravi sir will go to the village by train next week."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी बोलती हैं, \"अमन, यह बहुत अच्छा है।\"",
+              "english": "Nani says, \"Aman, this is very good.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"मैं तुम्हें एक कहानी सुनाऊँगी।\"",
+              "english": "Nani says, \"I will tell you a story.\""
+            },
+            {
+              "text": "अमन बोलता है, \"कहानी क्या है?\"",
+              "english": "Aman says, \"What is the story?\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"एक कौए की कहानी।\"",
+              "english": "Nani says, \"A story about a crow.\""
+            },
+            {
+              "text": "सैम बोलता है, \"नानी, कहानी सुनाइए!\"",
+              "english": "Sam says, \"Nani, tell the story!\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"शाम को मैं कहानी सुनाऊँगी।\"",
+              "english": "Nani says, \"In the evening I will tell the story.\""
+            },
+            {
+              "text": "अमन आज भी जागता है।",
+              "english": "Aman stays awake today too."
+            },
+            {
+              "text": "वह कहानी सुनता है।",
+              "english": "He listens to the story."
+            },
+            {
+              "text": "फिर वह सो जाता है।",
+              "english": "Then he falls asleep."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

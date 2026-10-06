@@ -1,0 +1,570 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-04",
+  "lang": "hi",
+  "title": "भेजने वाली कलीसिया को पत्र",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-04",
+    "title": "Letter to the sending church (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. This is a letter (contentType letter in the plan), but the schema rejects \"letter\" (it allows story, dialogue, nonfiction, scripture, transcript, testimony, generated-prep), so the draft carries nonfiction. One voice (Sam), no speaker lines. Salutation आदरणीय पास्टर जी और कलीसिया के प्रिय परिवार; closing परमेश्वर की शांति के साथ, आपका प्रिय भाई सैम. Honorific plurals for रवि जी, सीता नानी, मीरा दीदी and the lawyer. Ravi's title सर is deliberately not used: the adapter has no known lemma सर for the learner, so he is called रवि जी here; the reviewer may wish to restore रवि सर and schedule सर. The neighbours' mandir is mentioned only as a landmark, with respect. Nani's husband is not mentioned. No Scripture is quoted. The story of the fat king is the children's story of the next text in the ladder, mentioned only as a story Aman's class reads. Outside word kept: सुई (needle, ×1). Please check: \"पैर छूना\" (touching an elder feet), \"भेंट\" meaning a gift or offering, \"सरकार के दफ़्तर\" (a government office), \"डाक से भेजना\", and that Meera didi works at the \"अस्पताल\" here (world facts say clinic; क्लिनिक is not in the palette)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "letter",
+    "mission",
+    "first months",
+    "market",
+    "village",
+    "healing"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "नमस्ते",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आदरणीय पास्टर जी और कलीसिया के प्रिय परिवार, नमस्ते।",
+              "english": "Respected Pastor and dear church family, greetings."
+            },
+            {
+              "text": "यह पत्र मैं आपको इस शहर से लिख रहा हूँ।",
+              "english": "I am writing this letter to you from this city."
+            },
+            {
+              "text": "मुझे यहाँ आए तीन महीने हो गए हैं।",
+              "english": "It has been three months since I came here."
+            },
+            {
+              "text": "आप सबकी याद मुझे रोज़ आती है।",
+              "english": "I remember all of you every day."
+            },
+            {
+              "text": "लेकिन आपकी प्रार्थना से मैं ठीक हूँ और बहुत ख़ुश हूँ।",
+              "english": "But through your prayers I am well and very happy."
+            },
+            {
+              "text": "सबसे पहले मैं आपकी भेंट के लिए धन्यवाद करना चाहता हूँ।",
+              "english": "First of all, I want to thank you for your gift."
+            },
+            {
+              "text": "उस भेंट से हमने मीरा दीदी के अस्पताल के लिए दवा ख़रीदी।",
+              "english": "With that gift we bought medicine for Meera didi's hospital."
+            },
+            {
+              "text": "नानी ने भी आपकी भेंट के लिए आपको धन्यवाद कहा है।",
+              "english": "Nani has also said thank you to you for your gift."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मेरे दिन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैं रोज़ सुबह अध्यापक रवि जी से हिंदी पढ़ता हूँ।",
+              "english": "Every morning I study Hindi with my teacher, Ravi ji."
+            },
+            {
+              "text": "वे मेरे लिए रोज़ एक अख़बार लाते हैं।",
+              "english": "He brings me a newspaper every day."
+            },
+            {
+              "text": "मैं अख़बार की एक छोटी ख़बर पढ़ता हूँ, और नए शब्द अपनी किताब में लिखता हूँ।",
+              "english": "I read one short piece of news in the paper, and write the new words in my book."
+            },
+            {
+              "text": "कई बार मैं ग़लती करता हूँ, पर वे हँसकर कहते हैं, \"ठीक है, आगे पढ़ो।\"",
+              "english": "Many times I make a mistake, but he says with a laugh, \"All right, read on.\""
+            },
+            {
+              "text": "एक दिन उन्होंने मुझे अमन की किताब से एक राजा की कहानी पढ़ाई।",
+              "english": "One day he read me a story about a king from Aman's book."
+            },
+            {
+              "text": "वह राजा बहुत मोटा था, और अमन के स्कूल के बच्चों को वह बहुत पसंद है।",
+              "english": "The king was very fat, and the children at Aman's school like him very much."
+            },
+            {
+              "text": "राजा की बात पर हम सब ख़ूब हँसे।",
+              "english": "We all laughed a great deal at what happened to the king."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी के घर में एक पुराना रेडियो है।",
+              "english": "In Nani's house there is an old radio."
+            },
+            {
+              "text": "शाम को हम चाय पीते हैं और रेडियो पर गीत सुनते हैं।",
+              "english": "In the evening we drink tea and listen to songs on the radio."
+            },
+            {
+              "text": "मैं ख़ूब ध्यान से सुनता हूँ।",
+              "english": "I listen very carefully."
+            },
+            {
+              "text": "फिर भी हिंदी बोलने में मुझे मज़ा आता है।",
+              "english": "Even so, I enjoy speaking Hindi."
+            },
+            {
+              "text": "जैसे आपने कहा था, मैं रोज़ बाइबल भी पढ़ता हूँ।",
+              "english": "As you said, I also read the Bible every day."
+            },
+            {
+              "text": "अभी मैं न जल्दी बोल पाता हूँ, न सब समझ पाता हूँ।",
+              "english": "For now I can neither speak quickly nor understand everything."
+            },
+            {
+              "text": "पर नानी जैसा प्यार मुझे यहाँ बहुत मिला है।",
+              "english": "But I have received here a love like Nani's, a great deal of it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मंडी की सुबह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक सुबह मैं नानी के साथ मंडी गया।",
+              "english": "One morning I went to the market with Nani."
+            },
+            {
+              "text": "जैसे ही हम पहुँचे, एक दुकान पर रेडियो बजने लगा।",
+              "english": "As soon as we arrived, a radio started playing at a shop."
+            },
+            {
+              "text": "मंडी में इतनी भीड़ थी कि मेरे आगे एक बूढ़ा आदमी भी ठीक से नहीं चल पा रहा था।",
+              "english": "There was such a crowd in the market that even an old man ahead of me could not walk properly."
+            },
+            {
+              "text": "एक आदमी अपने ठेले पर भिंडी और मटर बेच रहा था।",
+              "english": "A man was selling okra and peas from his cart."
+            },
+            {
+              "text": "नानी ने भिंडी ख़रीदी।",
+              "english": "Nani bought okra."
+            },
+            {
+              "text": "उसने उसे तौला और अख़बार में रख दिया।",
+              "english": "He weighed it and put it in newspaper."
+            },
+            {
+              "text": "ठेले का मालिक कोई और है, और वह उसे रोज़ किराया देता है।",
+              "english": "Someone else owns the cart, and he pays him rent every day."
+            },
+            {
+              "text": "उसका एक भाई भी वहाँ मज़दूर है।",
+              "english": "A brother of his also works there as a labourer."
+            },
+            {
+              "text": "वे दोनों बहुत मेहनत करते हैं, पर उनकी कमाई ज़्यादा नहीं है।",
+              "english": "Both work very hard, but their earnings are not large."
+            },
+            {
+              "text": "फिर भी वे ग्राहकों से हँसकर बात करते हैं, और ख़ुश दिखते हैं।",
+              "english": "Even so, they talk to customers with a smile, and look happy."
+            },
+            {
+              "text": "उन्हें देखकर मैं भी मेहनत करके कमाना चाहता हूँ।",
+              "english": "Seeing them I too want to work hard and earn."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "वह चोरी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उसी भीड़ में किसी ने मेरी जेब से बटुआ निकाल लिया।",
+              "english": "In that same crowd someone took the wallet out of my pocket."
+            },
+            {
+              "text": "उसमें ज़्यादा पैसे नहीं थे, पर मैं बहुत परेशान हुआ।",
+              "english": "There was not much money in it, but I was very upset."
+            },
+            {
+              "text": "मेरे सवाल पर नानी ने कहा, \"डरो मत, हम पुलिस के पास चलते हैं।\"",
+              "english": "To my question Nani said, \"Do not be afraid, let us go to the police.\""
+            },
+            {
+              "text": "पुलिस वाले ने चोरी की रिपोर्ट लिखी और मुझे साफ़ शब्दों में सब बताया।",
+              "english": "The policeman wrote the theft report and told me everything in clear words."
+            },
+            {
+              "text": "रवि जी के एक दोस्त वकील हैं।",
+              "english": "A friend of Ravi ji is a lawyer."
+            },
+            {
+              "text": "उन्होंने मुझे सरकार के दफ़्तर में भी मदद दी।",
+              "english": "He also helped me at the government office."
+            },
+            {
+              "text": "ऐसा काम मैंने पहले कभी नहीं किया था।",
+              "english": "I had never done such a thing before."
+            },
+            {
+              "text": "मैं यहाँ अकेला हूँ, पर उस दिन मैं अकेला नहीं था।",
+              "english": "I am alone here, but that day I was not alone."
+            },
+            {
+              "text": "जहाँ भी मैं जाता हूँ, लोग मुझे नमस्ते करते हैं।",
+              "english": "Wherever I go, people greet me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "नानी के गाँव में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक रविवार अमन और मैं ट्रेन से नानी के गाँव गए।",
+              "english": "One Sunday Aman and I went by train to Nani's village."
+            },
+            {
+              "text": "वहाँ एक पुराना कुआँ है, और खेतों में फ़सल तैयार थी।",
+              "english": "There is an old well there, and the harvest was ready in the fields."
+            },
+            {
+              "text": "एक किसान के पास दो बैल थे।",
+              "english": "A farmer had two oxen."
+            },
+            {
+              "text": "एक बैल मेरी ओर आया, और मैं डरकर पीछे कूद गया।",
+              "english": "One ox came toward me, and I jumped back in fear."
+            },
+            {
+              "text": "अमन हँसकर बोला, \"भैया, बैल किसी को नहीं मारता।\"",
+              "english": "Aman said with a laugh, \"Brother, an ox does not hit anyone.\""
+            },
+            {
+              "text": "उस कुएँ से मैंने घड़े में पानी भरा।",
+              "english": "From that well I filled a pot with water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "गाँव के तालाब में बच्चे रोज़ तैरते हैं।",
+              "english": "The village children swim in the pond every day."
+            },
+            {
+              "text": "मैं भी तैरना चाहता था, इसलिए मैं पानी में उतरा।",
+              "english": "I wanted to swim too, so I went down into the water."
+            },
+            {
+              "text": "तालाब में एक बड़ी मछली थी।",
+              "english": "There was a big fish in the pond."
+            },
+            {
+              "text": "वह मछली अचानक मेरे पैर को छू गई।",
+              "english": "The fish suddenly touched my foot."
+            },
+            {
+              "text": "ओह, मैं ज़ोर से चिल्लाया, और बच्चे ख़ूब हँसे।",
+              "english": "Oh, I shouted loudly, and the children laughed a great deal."
+            },
+            {
+              "text": "बच्चे उसे पकड़ने लगे, पर मछली भाग गई।",
+              "english": "The children began to try to catch it, but the fish ran off."
+            },
+            {
+              "text": "ओह, उस दिन मैं कितना डर गया था!",
+              "english": "Oh, how frightened I was that day!"
+            },
+            {
+              "text": "फिर भी तालाब में बहुत मज़ा आया।",
+              "english": "Even so, I had a lot of fun in the pond."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "नानी की कहानी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उसी रात नानी ने अपने बचपन की बात बताई।",
+              "english": "That same night Nani told me about her childhood."
+            },
+            {
+              "text": "उनका जन्म गाँव में हुआ था, पर उन्हें अपने जन्म की तारीख़ याद नहीं है।",
+              "english": "She was born in the village, but she does not remember the date of her birth."
+            },
+            {
+              "text": "उनकी शादी तब हुई, जब वे सोलह साल की थीं।",
+              "english": "She was married when she was sixteen."
+            },
+            {
+              "text": "उनकी बुआ पास के गाँव में रहती थीं और रोज़ उन्हें कहानी सुनाती थीं।",
+              "english": "Her father's sister lived in a nearby village and told her a story every day."
+            },
+            {
+              "text": "आज उनका पोता और अमन की मौसी भी उनसे मिलने आई हैं।",
+              "english": "Today her grandson and Aman's aunt have also come to see her."
+            },
+            {
+              "text": "नानी ने उन्हें अपना पुराना कैलेंडर दिखाया।",
+              "english": "Nani showed them her old calendar."
+            },
+            {
+              "text": "उस पर वे आज भी हर तारीख़ लाल रंग से लिखती हैं।",
+              "english": "On it she still writes every date in red."
+            },
+            {
+              "text": "नानी ने कभी उम्मीद नहीं छोड़ी, और वे हमेशा ख़ुशी से बात करती हैं।",
+              "english": "Nani never gave up hope, and she always speaks with joy."
+            },
+            {
+              "text": "नानी की यही बात मुझे सबसे अच्छी लगती है।",
+              "english": "This very quality of Nani is what I like best."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "घर और मोहल्ला",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हमारा इलाक़ा बड़ा है, और उसमें एक मंदिर भी है।",
+              "english": "Our area is big, and there is a temple in it too."
+            },
+            {
+              "text": "सुबह उस ओर से लोगों की आवाज़ और भजन आते हैं, और हम उन्हें सुनते हैं।",
+              "english": "In the morning the voices and hymns of the people come from that direction, and we listen to them."
+            },
+            {
+              "text": "पड़ोसी हमारे यहाँ मिठाई भेजते हैं, जैसे हम उनके यहाँ दिवाली पर भेजते हैं।",
+              "english": "The neighbours send us sweets, just as we send theirs at Diwali."
+            },
+            {
+              "text": "नानी के घर का नल बंद था, इसलिए मैंने उसे कसा।",
+              "english": "The tap in Nani's house was shut, so I tightened it."
+            },
+            {
+              "text": "फिर पंखा भी ठीक नहीं चलता था, और अलमारी का दरवाज़ा भी बंद नहीं होता था।",
+              "english": "Then the fan did not work properly either, and the door of the cupboard would not close."
+            },
+            {
+              "text": "नानी ने मुझे सुई और धागा दिया, और मैंने अपनी कमीज़ ठीक की।",
+              "english": "Nani gave me a needle and thread, and I mended my shirt."
+            },
+            {
+              "text": "फिर उन्होंने मुझे रोटियों का एक डिब्बा दिया।",
+              "english": "Then she gave me a box of rotis."
+            },
+            {
+              "text": "नानी की रोटी खाने में मुझे बहुत मज़ा आता है।",
+              "english": "I enjoy eating Nani's roti very much."
+            },
+            {
+              "text": "अमन की मामी भी हमारे लिए रोज़ दाल भेजती हैं।",
+              "english": "Aman's aunt also sends us dal every day."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मेरा प्रिय दोस्त अमन रोज़ नानी के पैर छूता है।",
+              "english": "My dear friend Aman touches Nani's feet every day."
+            },
+            {
+              "text": "जब दिवाली आती है, तब गली के दीये चमकते हैं।",
+              "english": "When Diwali comes, the lamps of the lane shine."
+            },
+            {
+              "text": "शाम को मैं थका हुआ घर लौटता हूँ, पर मैं ख़ुश रहता हूँ।",
+              "english": "In the evening I return home tired, but I stay happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मैं साइकिल चलाकर पूरे इलाक़े में घूमता हूँ।",
+              "english": "I ride my bicycle and go around the whole area."
+            },
+            {
+              "text": "एक रिक्शा ड्राइवर रोज़ मुझे सलाम करता है।",
+              "english": "A rickshaw driver greets me every day."
+            },
+            {
+              "text": "मैं आगे भी यहाँ ठहरूँगा, क्योंकि मेरा काम बढ़ रहा है।",
+              "english": "I will stay on here ahead too, because my work is growing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "कलीसिया की बात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हर रविवार हम चर्च की ओर चलते हैं।",
+              "english": "Every Sunday we walk toward the church."
+            },
+            {
+              "text": "इस रविवार हमने बीमार लोगों की चंगाई के लिए प्रार्थना की।",
+              "english": "This Sunday we prayed for the healing of the sick people."
+            },
+            {
+              "text": "मीरा दीदी ने बताया कि अस्पताल में कई मरीज़ बहुत उदास हैं।",
+              "english": "Meera didi said that many patients in the hospital are very sad."
+            },
+            {
+              "text": "उन सबकी चंगाई के लिए हम रोज़ प्रार्थना करते हैं।",
+              "english": "We pray every day for the healing of all of them."
+            },
+            {
+              "text": "वे डॉक्टर के साथ उनके पास जाती हैं, और मैं हफ़्ते में एक या दो बार साथ जाता हूँ।",
+              "english": "She goes to them with the doctor, and I go along once or twice a week."
+            },
+            {
+              "text": "चंगाई परमेश्वर के हाथ में है, पर हम उनके लिए प्रार्थना ज़रूर कर सकते हैं।",
+              "english": "Healing is in God's hands, but we can certainly pray for them."
+            },
+            {
+              "text": "उस दिन मुझे बड़ी शांति और ख़ुशी मिली।",
+              "english": "That day I found great peace and joy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "आपसे कुछ बातें",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आदरणीय पास्टर जी, आपने कहा था कि मैं आपको सब कुछ बताऊँ।",
+              "english": "Respected Pastor, you had said that I should tell you everything."
+            },
+            {
+              "text": "इसलिए मैं अपने अगले पत्र में और बातें लिखूँगा।",
+              "english": "So in my next letter I will write more."
+            },
+            {
+              "text": "मैं चाहता हूँ कि आप मेरे लिए इन बातों की प्रार्थना करें।",
+              "english": "I want you to pray for these things for me."
+            },
+            {
+              "text": "मेरी हिंदी जल्दी अच्छी हो, और मैं लोगों की बात अच्छी तरह समझूँ।",
+              "english": "May my Hindi get good quickly, and may I understand people well."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "यही मेरी आशा है, और यही मेरी प्रार्थना भी है।",
+              "english": "This is my hope, and this is also my prayer."
+            },
+            {
+              "text": "जब मुझे घर की याद आती है, तब मैं नानी या अमन से बात करता हूँ।",
+              "english": "When I miss home, I talk to Nani or Aman."
+            },
+            {
+              "text": "आप मुझे चिट्ठी या फ़ोन से बताइए कि आपका परिवार कैसा है।",
+              "english": "Please tell me by letter or phone how your family is."
+            },
+            {
+              "text": "आपका पत्र जब भी मिलता है, मुझे बहुत ख़ुशी होती है।",
+              "english": "Whenever I get your letter, I am very glad."
+            },
+            {
+              "text": "मैं इसे एक लिफ़ाफ़े में रखकर डाक से भेज रहा हूँ।",
+              "english": "I am putting it in an envelope and sending it by post."
+            },
+            {
+              "text": "उसमें नानी का एक छोटा ख़त भी है।",
+              "english": "In it there is also a short note from Nani."
+            },
+            {
+              "text": "आदरणीय पास्टर जी और सबको मेरा प्यार।",
+              "english": "My love to Pastor and to all."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "परमेश्वर की शांति के साथ,",
+              "english": "With the peace of God,"
+            },
+            {
+              "text": "आपका प्रिय भाई सैम",
+              "english": "Your dear brother, Sam"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

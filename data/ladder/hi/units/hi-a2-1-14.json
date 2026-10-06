@@ -1,0 +1,521 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-14",
+  "lang": "hi",
+  "title": "मानसून और किसान",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-14",
+    "title": "The monsoon and the farmers (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप and \"सुरेश जी\" to the farmer; Suresh answers in the polite आप form (पूछिए, रुकिए, आइए) and uses the plain \"सैम\" with the mild imperative \"सावधान रहना\". Facts to check: in North India the monsoon arrives in late June or July and lasts until September; paddy and maize are sown with the rain, wheat and chickpea in winter; canal water is requested by an application, a form and a fee. The figures (200 rupees, 22 and 60 rupees a kilo, \"3 years ago\") are Suresh's own illustration, not statistics. Outside words kept on purpose, all ordinary words: जून ×1, सितंबर ×1 (month names, read as nouns). Homographs watched: गीला (road, soil, grain), उगना (maize grows, grass comes up, the sun rises), तारे (direct plural of तारा), जूते (जूता). सीता नानी is mentioned only as the woman who sells roti at the market."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "monsoon",
+    "farming",
+    "drought",
+    "flood"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "सैम",
+    "suresh": "सुरेश"
+  },
+  "sections": [
+    {
+      "title": "खेत की ओर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शनिवार की सुबह सैम सुरेश के खेत की ओर चला।",
+              "english": "On Saturday morning Sam set out toward Suresh's field."
+            },
+            {
+              "text": "सुरेश शहर के पास रहते हैं, और उनका एक छोटा खेत है।",
+              "english": "Suresh lives near the city, and he has a small field."
+            },
+            {
+              "text": "वे बचपन से खेती करते हैं।",
+              "english": "He has farmed since childhood."
+            },
+            {
+              "text": "सैम अपने चर्च के दोस्तों के लिए एक रिपोर्ट लिख रहा था।",
+              "english": "Sam was writing a report for his friends at church."
+            },
+            {
+              "text": "रिपोर्ट मानसून के बारे में थी।",
+              "english": "The report was about the monsoon."
+            },
+            {
+              "text": "सुरेश अपने स्कूटर पर उसे लेने आए।",
+              "english": "Suresh came on his scooter to pick him up."
+            },
+            {
+              "text": "रात को बारिश हुई थी, इसलिए सड़क गीली थी।",
+              "english": "It had rained in the night, so the road was wet."
+            },
+            {
+              "text": "सुरेश: सैम, सावधान रहना, आज रास्ता ठीक नहीं है।",
+              "english": "Sam, be careful, the road is not good today."
+            },
+            {
+              "text": "सैम: ठीक है, मैं ध्यान रखूँगा।",
+              "english": "All right, I will be careful."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रास्ते में सैम का पैर एक पत्थर से टकराया।",
+              "english": "On the way Sam's foot hit a stone."
+            },
+            {
+              "text": "खेत की मिट्टी गीली थी, इसलिए सैम ने अपने जूते बाहर रख दिए।",
+              "english": "The soil of the field was wet, so Sam left his shoes outside."
+            },
+            {
+              "text": "सुरेश हमेशा बिना जूते के खेत में चलते हैं।",
+              "english": "Suresh always walks in the field without shoes."
+            },
+            {
+              "text": "सैम ने अपनी छोटी किताब निकाली।",
+              "english": "Sam took out his small notebook."
+            },
+            {
+              "text": "सैम: सुरेश जी, ज़रा रुकिए, मैं पहले यह लिख लूँ।",
+              "english": "Suresh ji, wait a moment, let me write this down first."
+            },
+            {
+              "text": "सैम: क्या मैं आपसे कुछ सवाल पूछ सकता हूँ?",
+              "english": "May I ask you a few questions?"
+            },
+            {
+              "text": "सुरेश: बिलकुल पूछिए, आज मेरे पास बहुत समय है।",
+              "english": "Of course, ask; I have a lot of time today."
+            },
+            {
+              "text": "सुरेश: मेरे पास ज़मीन थोड़ी है, इसलिए पानी की हर बूँद मुझे बहुत प्यारी है।",
+              "english": "I have only a little land, so every drop of water is very dear to me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मानसून क्या है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम: सबसे पहले बताइए, मानसून क्या है?",
+              "english": "First of all, tell me, what is the monsoon?"
+            },
+            {
+              "text": "सुरेश: मानसून एक मौसम है, और वह हर साल हमारे लिए बारिश लाता है।",
+              "english": "The monsoon is a season, and every year it brings rain for us."
+            },
+            {
+              "text": "सुरेश: गर्मी के दिनों में सूरज बहुत गरम होता है।",
+              "english": "In the hot days the sun is very hot."
+            },
+            {
+              "text": "सुरेश: ज़मीन में पानी नहीं रहता, और तालाब का पानी भी कम हो जाता है।",
+              "english": "There is no water left in the land, and the water in the pond goes down too."
+            },
+            {
+              "text": "सुरेश: फिर एक दिन आसमान में बादल दिखने लगते हैं।",
+              "english": "Then one day clouds begin to appear in the sky."
+            },
+            {
+              "text": "सुरेश: बादल गरजते हैं, बिजली चमकती है, और पहली बूँद मिट्टी पर गिरती है।",
+              "english": "The clouds thunder, the lightning flashes, and the first drop falls on the soil."
+            },
+            {
+              "text": "सुरेश: उस दिन हम सब घर से बाहर निकलकर भीगते हैं।",
+              "english": "That day we all go out of the house and get wet."
+            },
+            {
+              "text": "सुरेश: घर में लड्डू बनते हैं, क्योंकि बारिश हमारे लिए ख़ुशी की ख़बर है।",
+              "english": "Laddus are made at home, because rain is happy news for us."
+            },
+            {
+              "text": "सैम: बारिश का यह मौसम कितने दिन चलता है?",
+              "english": "How many days does this rainy season last?"
+            },
+            {
+              "text": "सुरेश: यह जून के आख़िर में शुरू होता है और सितंबर तक चलता है।",
+              "english": "It begins at the end of June and lasts until September."
+            },
+            {
+              "text": "सुरेश: साल की बहुत सारी बारिश इन्हीं महीनों में होती है।",
+              "english": "A great deal of the year's rain comes in these months."
+            },
+            {
+              "text": "सुरेश: इसलिए हमारी खेती बादलों का इंतज़ार करती है।",
+              "english": "That is why our farming waits for the clouds."
+            },
+            {
+              "text": "सैम: बारिश रुकने के बाद आसमान कैसा दिखता है?",
+              "english": "How does the sky look after the rain stops?"
+            },
+            {
+              "text": "सुरेश: साफ़ और नीला, और पेड़ों के पत्ते चमकते हैं।",
+              "english": "Clear and blue, and the leaves of the trees shine."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "क्या बोया जाता है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम: बारिश के दिनों में कौन-सी फ़सल बोई जाती है?",
+              "english": "Which crop is sown in the rainy days?"
+            },
+            {
+              "text": "सुरेश: बारिश के साथ धान बोया जाता है।",
+              "english": "Paddy is sown with the rain."
+            },
+            {
+              "text": "सुरेश: इसे बहुत पानी चाहिए, इसलिए खेत में पानी खड़ा रहता है।",
+              "english": "It needs a lot of water, so water stands in the field."
+            },
+            {
+              "text": "सुरेश: जितना पानी धान को मिलता है, वह उतना ही अच्छा बढ़ता है।",
+              "english": "The more water the paddy gets, the better it grows."
+            },
+            {
+              "text": "सुरेश: मक्का भी इन्हीं दिनों बोया जाता है।",
+              "english": "Maize is also sown in these days."
+            },
+            {
+              "text": "सुरेश: मक्का कम पानी में भी उग जाता है।",
+              "english": "Maize grows even with little water."
+            },
+            {
+              "text": "सैम: और सर्दी में?",
+              "english": "And in winter?"
+            },
+            {
+              "text": "सुरेश: सर्दी में गेहूँ बोया जाता है, और कुछ लोग चना भी बोते हैं।",
+              "english": "In winter wheat is sown, and some people sow chickpeas too."
+            },
+            {
+              "text": "सुरेश: सीता नानी बाज़ार में जो रोटी बेचती हैं, वह भी गेहूँ से बनती है।",
+              "english": "The roti that Seeta Nani sells in the market is also made from wheat."
+            },
+            {
+              "text": "सुरेश: धान, मक्का और गेहूँ को हम अनाज कहते हैं।",
+              "english": "We call paddy, maize and wheat grain."
+            },
+            {
+              "text": "सैम: क्या हर फ़सल का मौसम अलग होता है?",
+              "english": "Does every crop have a different season?"
+            },
+            {
+              "text": "सुरेश: हाँ, और हर खेत की मिट्टी भी अलग होती है।",
+              "english": "Yes, and the soil of every field is different too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सुरेश: बीज बोने से पहले हम खेत से पत्थर चुनते हैं।",
+              "english": "Before sowing the seed we pick stones out of the field."
+            },
+            {
+              "text": "सुरेश: फिर खेत में पानी भरा जाता है, और छोटे पौधे लगाए जाते हैं।",
+              "english": "Then the field is filled with water and small plants are set in it."
+            },
+            {
+              "text": "सुरेश: बारिश के बाद घास भी उग आती है, इसलिए खेत से घास निकालनी पड़ती है।",
+              "english": "After the rain grass also comes up, so grass has to be pulled out of the field."
+            },
+            {
+              "text": "सुरेश: सूरज उगते ही मैं खेत में आ जाता हूँ।",
+              "english": "As soon as the sun rises I come to the field."
+            },
+            {
+              "text": "सुरेश: गाँव के पीछे एक छोटा जंगल है।",
+              "english": "Behind the village there is a small forest."
+            },
+            {
+              "text": "सुरेश: बारिश में उसके पौधे हरे हो जाते हैं, हर पत्ता चमकता है, और कुछ पौधे फूलने लगते हैं।",
+              "english": "In the rain its plants turn green, every leaf shines, and some plants begin to flower."
+            },
+            {
+              "text": "सुरेश: नई पत्ती को देखकर हम जान लेते हैं कि पानी ठीक है।",
+              "english": "Looking at a new leaf we know that the water is all right."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "जब बारिश नहीं आती",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम: अगर बारिश न आए तो क्या होता है?",
+              "english": "If the rain does not come, what happens?"
+            },
+            {
+              "text": "सुरेश: तब सूखा पड़ता है, और किसान के लिए यह सबसे बड़ा डर है।",
+              "english": "Then there is a drought, and for a farmer this is the biggest fear."
+            },
+            {
+              "text": "सुरेश: खेत को पानी देने को सिंचाई कहते हैं।",
+              "english": "Giving water to a field is called irrigation."
+            },
+            {
+              "text": "सुरेश: हमारे खेत के पास से एक नहर बहती है।",
+              "english": "A canal flows past our field."
+            },
+            {
+              "text": "सुरेश: लेकिन सिंचाई के लिए नहर का पानी लेने में बहुत समय लगता है।",
+              "english": "But taking canal water for irrigation takes a lot of time."
+            },
+            {
+              "text": "सुरेश: पहले दफ़्तर में एक आवेदन देना पड़ता है।",
+              "english": "First an application has to be given at the office."
+            },
+            {
+              "text": "सुरेश: अफ़सर एक फ़ॉर्म देता है, और उसे भरकर साथ में कुछ काग़ज़ लगाने पड़ते हैं।",
+              "english": "The officer gives a form, and after filling it some papers have to be attached."
+            },
+            {
+              "text": "सुरेश: सुबह से कतार लग जाती है, और कभी-कभी पूरा दिन निकल जाता है।",
+              "english": "From morning a queue forms, and sometimes the whole day goes by."
+            },
+            {
+              "text": "सुरेश: हर साल 200 रुपये फ़ीस भी देनी होती है।",
+              "english": "Every year a fee of 200 rupees also has to be paid."
+            },
+            {
+              "text": "सैम: और फिर नतीजा क्या होता है?",
+              "english": "And then what is the result?"
+            },
+            {
+              "text": "सुरेश: अगर काग़ज़ पूरे हों, तो एक हफ़्ते में नहर का पानी खेत तक आ जाता है।",
+              "english": "If the papers are complete, in a week the canal water reaches the field."
+            },
+            {
+              "text": "सुरेश: लेकिन जितना पानी हमें चाहिए, वह हमेशा उतना नहीं देती।",
+              "english": "But it does not always give as much water as we need."
+            },
+            {
+              "text": "सैम: तब आप क्या करते हैं?",
+              "english": "Then what do you do?"
+            },
+            {
+              "text": "सुरेश: तब मैं कुएँ से पानी निकालता हूँ।",
+              "english": "Then I draw water from the well."
+            },
+            {
+              "text": "सुरेश: मेरे दादा ने खेत के पत्थर से उस कुएँ की दीवार बनाई थी।",
+              "english": "My grandfather built the wall of that well from the stones of the field."
+            },
+            {
+              "text": "सुरेश: सिंचाई में ख़र्च होता है, और अलग से मज़दूर भी रखने पड़ते हैं।",
+              "english": "Irrigation costs money, and workers also have to be hired separately."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "जब बारिश बहुत आती है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम: और जब बारिश बहुत ज़्यादा आती है?",
+              "english": "And when the rain comes too much?"
+            },
+            {
+              "text": "सुरेश: तब बाढ़ आती है।",
+              "english": "Then a flood comes."
+            },
+            {
+              "text": "सुरेश: 3 साल पहले नदी का पानी खेतों में आ गया।",
+              "english": "Three years ago the river water came into the fields."
+            },
+            {
+              "text": "सुरेश: सिपाही गाँव में आकर बता गए कि नदी ऊपर आ रही है।",
+              "english": "A constable came to the village and told us that the river was rising."
+            },
+            {
+              "text": "सुरेश: हम तीन दिन स्कूल में रुके रहे।",
+              "english": "We stayed in the school for three days."
+            },
+            {
+              "text": "सुरेश: ज़मीन पानी के नीचे चली गई, और फ़सल के पौधे नहीं बचे।",
+              "english": "The land went under water, and the crop plants did not survive."
+            },
+            {
+              "text": "सुरेश: गीला अनाज कोई नहीं ख़रीदता।",
+              "english": "Nobody buys wet grain."
+            },
+            {
+              "text": "सुरेश: उस साल मुझे बैंक से पैसे लेने पड़े।",
+              "english": "That year I had to take money from the bank."
+            },
+            {
+              "text": "सुरेश: बीज का, मज़दूरी का और खाने का ख़र्च बहुत था।",
+              "english": "The cost of seed, of wages and of food was very high."
+            },
+            {
+              "text": "सुरेश: मेरा बेटा ट्रक चलाता है, और उसकी तनख़्वाह से घर चला।",
+              "english": "My son drives a truck, and the house ran on his salary."
+            },
+            {
+              "text": "सैम: क्या सरकार मदद करती है?",
+              "english": "Does the government help?"
+            },
+            {
+              "text": "सुरेश: करती है, लेकिन उसके लिए भी फ़ॉर्म भरना पड़ता है।",
+              "english": "It does, but for that too a form has to be filled."
+            },
+            {
+              "text": "सुरेश: कई किसानों के पास अपने खेत के काग़ज़ पूरे नहीं होते, और उन्हें बार-बार अदालत जाना पड़ता है।",
+              "english": "Many farmers do not have complete papers for their field, and they have to go to court again and again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "रात और मंडी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम: कटाई के बाद फ़सल का क्या होता है?",
+              "english": "After the harvest, what happens to the crop?"
+            },
+            {
+              "text": "सुरेश: अनाज ट्रक में रखकर मंडी भेजा जाता है, और वहीं बेचा जाता है।",
+              "english": "The grain is loaded into a truck, sent to the market and sold there."
+            },
+            {
+              "text": "सुरेश: इस साल मुझे 22 रुपये किलो दाम मिला, और चने का दाम 60 रुपये किलो था।",
+              "english": "This year I got 22 rupees a kilo, and the price of chickpeas was 60 rupees a kilo."
+            },
+            {
+              "text": "सैम: क्या आप रात को खेत में रुकते हैं?",
+              "english": "Do you stay in the field at night?"
+            },
+            {
+              "text": "सुरेश: हाँ, जब फ़सल तैयार होने लगती है, तब मैं रात को खेत पर सोता हूँ।",
+              "english": "Yes, when the crop begins to ripen I sleep in the field at night."
+            },
+            {
+              "text": "सुरेश: आसमान साफ़ हो तो चाँद और तारे बहुत सुंदर दिखते हैं।",
+              "english": "If the sky is clear, the moon and the stars look very beautiful."
+            },
+            {
+              "text": "सुरेश: पूरे चाँद की रात में खेत में दिन जैसी रोशनी होती है।",
+              "english": "On a full-moon night there is light in the field like day."
+            },
+            {
+              "text": "सुरेश: बारिश के दिनों में कई रात चाँद नहीं दिखता, और बादलों के पीछे सूरज भी नहीं दिखता।",
+              "english": "In the rainy days for many nights the moon is not seen, and behind the clouds the sun is not seen either."
+            },
+            {
+              "text": "सुरेश: मेरे दादा तारे देखकर बता देते थे कि बारिश कब आएगी।",
+              "english": "My grandfather could tell by looking at the stars when the rain would come."
+            },
+            {
+              "text": "सुरेश: शहर में तारे कम दिखते हैं।",
+              "english": "In the city fewer stars are seen."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम ने रिपोर्ट के लिए बहुत कुछ लिखा।",
+              "english": "Sam wrote a great deal for his report."
+            },
+            {
+              "text": "सैम: आप जितना बताते हैं, मैं उतना और जानना चाहता हूँ।",
+              "english": "The more you tell me, the more I want to know."
+            },
+            {
+              "text": "सुरेश: तो अगली बार कटाई में आइए।",
+              "english": "Then come next time for the harvest."
+            },
+            {
+              "text": "सैम: ज़रूर आऊँगा, आपको नई फ़सल मुबारक!",
+              "english": "I will surely come, and congratulations on the new crop!"
+            },
+            {
+              "text": "सुरेश: आपको भी मुबारक!",
+              "english": "And congratulations to you too!"
+            },
+            {
+              "text": "लौटते समय सुरेश ने स्कूटर पर फिर कहा, \"सैम, सावधान रहना।\"",
+              "english": "On the way back Suresh said again on the scooter, \"Sam, be careful.\""
+            },
+            {
+              "text": "घर पहुँचकर सैम ने अपने जूते धोए।",
+              "english": "Reaching home, Sam washed his shoes."
+            },
+            {
+              "text": "उसने रिपोर्ट के नीचे लिखा: हर रोटी के पीछे खेती है, एक किसान है, और बारिश का इंतज़ार है।",
+              "english": "Under his report he wrote: behind every roti there is farming, a farmer, and the wait for the rain."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

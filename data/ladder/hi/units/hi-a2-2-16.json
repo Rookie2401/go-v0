@@ -1,0 +1,601 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-16",
+  "lang": "hi",
+  "title": "ऑटो चालक से बातचीत",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-16",
+    "title": "\"ऑटो चालक से बातचीत\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Sam's interview with दीपक, the auto-rickshaw driver of the lane, written in plain question-and-answer. The money (loan, petrol, receipts) is told in digits; दीपक is a hard-working man who is not pitied and not idealised. Points for the reviewer: दीपक speaks to Sam with आप and Sam to him with आप, with जी after the name; the saying at the back of the auto (\"यह जगत सराय है\") is a common type of auto slogan, invented here; the political talk is kept neutral (no party is named); the word सराय is outside the plan. Sam and Deepak use आप; 'ऑटो वाले' (oblique plural 'वालों') is avoided because the adapter does not read it. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "work",
+    "interview",
+    "auto-rickshaw",
+    "money"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "S": "सैम",
+    "D": "दीपक"
+  },
+  "sections": [
+    {
+      "title": "सुबह का स्टैंड",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैंने दीपक जी से कहा था कि मैं उनके दिन के बारे में लिखना चाहता हूँ, और वे हँसकर मान गए।",
+              "english": "I had told Deepak ji that I wanted to write about his day, and he laughed and agreed."
+            },
+            {
+              "text": "हम सुबह 6 बजे ऑटो चलाने वाले लोगों की जगह पर चाय पीते हुए बात करने लगे।",
+              "english": "At 6 in the morning we began to talk at the place of the auto men while drinking tea."
+            },
+            {
+              "text": "दीपक जी, आपका दिन कब शुरू होता है?",
+              "english": "Deepak ji, when does your day begin?",
+              "speaker": "S"
+            },
+            {
+              "text": "मेरा दिन सुबह 5 बजे शुरू होता है, सैम जी।",
+              "english": "My day begins at 5 in the morning, Sam ji.",
+              "speaker": "D"
+            },
+            {
+              "text": "पहले मैं ऑटो साफ़ करता हूँ, फिर सीट के कपड़े ठीक करता हूँ, और तब चाय पीता हूँ।",
+              "english": "First I clean the auto, then I set the cloths of the seat right, and then I drink tea.",
+              "speaker": "D"
+            },
+            {
+              "text": "मैं कभी किसी सवारी को नहीं भगाता, चाहे वह पास की ही सवारी क्यों न हो।",
+              "english": "I never send any passenger away, even if it is only a near passenger.",
+              "speaker": "D"
+            },
+            {
+              "text": "कल रात मिट्टी बहुत थी, इसलिए मैंने पुराने कपड़े उखाड़कर नए लगा दिए।",
+              "english": "There was a lot of dust last night, so I tore off the old cloths and put new ones.",
+              "speaker": "D"
+            },
+            {
+              "text": "आपका ऑटो तो बहुत सुंदर है।",
+              "english": "Your auto is very beautiful.",
+              "speaker": "S"
+            },
+            {
+              "text": "धन्यवाद।",
+              "english": "Thank you.",
+              "speaker": "D"
+            },
+            {
+              "text": "देखिए, आगे मैंने लाल फीता बाँध रखा है, और उसके साथ एक छोटा खिलौना झूलता रहता है।",
+              "english": "Look, in front I have tied a red ribbon, and a small toy keeps swinging with it.",
+              "speaker": "D"
+            },
+            {
+              "text": "बच्चों ने यह फीता बाँधा था, और मैं उसे कभी नहीं उतारता।",
+              "english": "The children tied this ribbon, and I never take it off.",
+              "speaker": "D"
+            },
+            {
+              "text": "और पीछे जो लिखा है, उसका क्या मतलब है?",
+              "english": "And the thing that is written at the back, what does it mean?",
+              "speaker": "S"
+            },
+            {
+              "text": "वहाँ लिखा है, \"यह जगत कुछ दिन का मेला है\", मतलब हम सब यहाँ कुछ दिनों के मेहमान हैं।",
+              "english": "It is written there, \"This world is a fair of a few days\", meaning we are all guests here for a few days.",
+              "speaker": "D"
+            },
+            {
+              "text": "मेरे पापा कहते थे कि आदमी को हमेशा सीधा रहना चाहिए, और मैंने यह बात ऑटो पर लिख दी।",
+              "english": "My father used to say that a man should always stay straight, and I wrote this on the auto.",
+              "speaker": "D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पेट्रोल और मीटर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आपका ऑटो पेट्रोल से चलता है न?",
+              "english": "Your auto runs on petrol, doesn't it?",
+              "speaker": "S"
+            },
+            {
+              "text": "हाँ, और पेट्रोल के दाम इतने बढ़ गए हैं कि मेरी आधी कमाई उसी में चली जाती है।",
+              "english": "Yes, and the price of petrol has gone up so much that half of my earning goes in that.",
+              "speaker": "D"
+            },
+            {
+              "text": "पहले हम 400 रुपये का पेट्रोल भरते थे और पूरा दिन चलता था।",
+              "english": "Earlier we used to fill 400 rupees of petrol and it lasted the whole day.",
+              "speaker": "D"
+            },
+            {
+              "text": "आज उसी पेट्रोल के लिए 700 रुपये देने पड़ते हैं।",
+              "english": "Today for the same petrol one has to give 700 rupees.",
+              "speaker": "D"
+            },
+            {
+              "text": "क्या आप मीटर से चलते हैं?",
+              "english": "Do you run by meter?",
+              "speaker": "S"
+            },
+            {
+              "text": "हाँ, मैं मीटर से ही चलता हूँ, क्योंकि क़ानून यही कहता है।",
+              "english": "Yes, I run only by the meter, because the law says so.",
+              "speaker": "D"
+            },
+            {
+              "text": "पर कई ऑटो वाले मीटर बंद रखते हैं, और अपने मन से दाम बताते हैं।",
+              "english": "But many auto men keep the meter off and tell the price at their own mind.",
+              "speaker": "D"
+            },
+            {
+              "text": "मैं कहता हूँ कि जो आदमी मीटर बंद रखता है, वह बाद में परेशान होता है।",
+              "english": "I say that the man who keeps the meter off becomes troubled later.",
+              "speaker": "D"
+            },
+            {
+              "text": "सवारी को भरोसा नहीं होता, और मीटर का भरोसा सबसे अच्छा भरोसा है।",
+              "english": "The passenger has no trust, and the trust of the meter is the best trust.",
+              "speaker": "D"
+            },
+            {
+              "text": "क्या सवारी आपसे कभी ऊँची आवाज़ में बात करती है?",
+              "english": "Does a passenger ever speak to you in a raised voice?",
+              "speaker": "S"
+            },
+            {
+              "text": "कभी-कभी।",
+              "english": "Sometimes.",
+              "speaker": "D"
+            },
+            {
+              "text": "कोई कहता है कि मीटर तेज़ भाग रहा है।",
+              "english": "Someone says the meter is running fast.",
+              "speaker": "D"
+            },
+            {
+              "text": "तब मैं शांति से मीटर दिखाता हूँ, और जो पैसे बनते हैं, उनकी रसीद दे देता हूँ।",
+              "english": "Then I calmly show the meter, and give a receipt for the money that is due.",
+              "speaker": "D"
+            },
+            {
+              "text": "रसीद पर तारीख़ और रास्ता लिखा होता है, और सवारी ख़ुश हो जाती है।",
+              "english": "On the receipt the date and the route are written, and the passenger becomes happy.",
+              "speaker": "D"
+            },
+            {
+              "text": "बहुत लोग रसीद माँगते हैं?",
+              "english": "Do many people ask for a receipt?",
+              "speaker": "S"
+            },
+            {
+              "text": "ज़्यादा नहीं।",
+              "english": "Not many.",
+              "speaker": "D"
+            },
+            {
+              "text": "पर जो माँगता है, उसे मैं रसीद ज़रूर देता हूँ।",
+              "english": "But whoever asks, I certainly give him a receipt.",
+              "speaker": "D"
+            },
+            {
+              "text": "पिछले महीने एक बूढ़ी माँ ने रसीद ली, और बोली, \"बेटा, तुम बेवक़ूफ़ नहीं हो।\"",
+              "english": "Last month an old mother took a receipt, and said, \"Son, you are not a fool.\"",
+              "speaker": "D"
+            },
+            {
+              "text": "मैं हँस पड़ा, क्योंकि मैंने सोचा कि बेवक़ूफ़ तो वह होता है, जो सच बोलने को नुकसान समझता है।",
+              "english": "I burst out laughing, because I thought that a fool is he who considers speaking the truth a loss.",
+              "speaker": "D"
+            },
+            {
+              "text": "कुछ सवारियाँ मुझे बेवक़ूफ़ बनाने की कोशिश भी करती हैं, पर मीटर और रसीद मेरी मदद करते हैं।",
+              "english": "Some passengers try to make a fool of me too, but the meter and the receipt help me.",
+              "speaker": "D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ट्रैफ़िक और चक्कर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शहर का ट्रैफ़िक कैसा रहता है?",
+              "english": "How is the traffic of the city?",
+              "speaker": "S"
+            },
+            {
+              "text": "बहुत बुरा।",
+              "english": "Very bad.",
+              "speaker": "D"
+            },
+            {
+              "text": "सुबह 9 बजे से लेकर 11 बजे तक सड़कें गाड़ियों से भरी रहती हैं।",
+              "english": "From 9 in the morning to 11 the roads stay full of vehicles.",
+              "speaker": "D"
+            },
+            {
+              "text": "कई बार मैं एक ही सवारी को बैठाकर पूरे शहर के चक्कर काटता हूँ।",
+              "english": "Many times I take just one passenger and make rounds of the whole city.",
+              "speaker": "D"
+            },
+            {
+              "text": "ट्रैफ़िक में रुककर मेरा पेट्रोल भी ख़र्च होता है और समय भी।",
+              "english": "Stopped in traffic both my petrol and my time are spent.",
+              "speaker": "D"
+            },
+            {
+              "text": "ट्रैफ़िक वाले सिपाही कभी-कभी हाथ दिखाकर रुकने को कहते हैं, और मैं उनसे कुछ नहीं कहता।",
+              "english": "The traffic policemen sometimes stop me by showing a hand, and I say nothing to them.",
+              "speaker": "D"
+            },
+            {
+              "text": "इसलिए मैं अब छोटे रास्ते चुनता हूँ, चाहे वे कितने भी छोटे हों।",
+              "english": "That is why now I choose short ways, however small they may be.",
+              "speaker": "D"
+            },
+            {
+              "text": "क्या यह समस्या कभी हल होगी?",
+              "english": "Will this problem ever be solved?",
+              "speaker": "S"
+            },
+            {
+              "text": "मुझे लगता है कि इसका हल सिर्फ़ सरकार के पास नहीं है।",
+              "english": "I think that the solution to it is not only with the government.",
+              "speaker": "D"
+            },
+            {
+              "text": "अगर लोग क़ानून मानें, और ऑटो वाले भी अपनी जगह पर चलें, तो आधी समस्या वहीं रुक जाए।",
+              "english": "If people obey the law, and auto men also go in their places, half the problem would stop right there.",
+              "speaker": "D"
+            },
+            {
+              "text": "एक बार हमने ऑटो चलाने वाले सब लोगों को इकट्ठा किया और तय किया कि हम सड़क के किनारे ही सवारी बैठाएँगे।",
+              "english": "Once we gathered all the auto men and decided that we would pick up passengers only at the side of the road.",
+              "speaker": "D"
+            },
+            {
+              "text": "पहले हफ़्ते सब ठीक चला, फिर दो-तीन लोग भाग निकले, और बात वहीं रुक गई।",
+              "english": "The first week everything went well, then two or three people ran off, and the matter stopped there.",
+              "speaker": "D"
+            },
+            {
+              "text": "क्या पुलिस आपसे कभी कुछ कहती है?",
+              "english": "Does the police ever say anything to you?",
+              "speaker": "S"
+            },
+            {
+              "text": "हाँ, कभी-कभी।",
+              "english": "Yes, sometimes.",
+              "speaker": "D"
+            },
+            {
+              "text": "और मैं सबके सामने कहता हूँ कि मेरे सब काग़ज़ पूरे हैं।",
+              "english": "And I say before everybody that all my papers are complete.",
+              "speaker": "D"
+            },
+            {
+              "text": "जिस आदमी के काग़ज़ पूरे होते हैं, वह किसी से नहीं डरता।",
+              "english": "The man whose papers are complete is afraid of no one.",
+              "speaker": "D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "क़र्ज़ और परिवार",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आपका ऑटो आपका अपना है?",
+              "english": "Is your auto your own?",
+              "speaker": "S"
+            },
+            {
+              "text": "अभी पूरा मेरा नहीं है।",
+              "english": "It is not entirely mine yet.",
+              "speaker": "D"
+            },
+            {
+              "text": "इसके लिए मैंने बैंक से क़र्ज़ लिया था।",
+              "english": "For it I took a loan from the bank.",
+              "speaker": "D"
+            },
+            {
+              "text": "क़र्ज़ 2 लाख रुपये का था, और हर महीने 6,000 रुपये देने पड़ते हैं।",
+              "english": "The loan was of 2 lakh rupees, and every month 6,000 rupees have to be paid.",
+              "speaker": "D"
+            },
+            {
+              "text": "इसमें से अब भी 1 लाख रुपये बाक़ी हैं।",
+              "english": "Of this 1 lakh rupees are still left.",
+              "speaker": "D"
+            },
+            {
+              "text": "कभी-कभी क़र्ज़ की चिंता से मुझे नींद नहीं आती।",
+              "english": "Sometimes because of the worry of the loan I cannot sleep.",
+              "speaker": "D"
+            },
+            {
+              "text": "पर सुनीता कहती है कि चिंता करने से क़र्ज़ नहीं उतरता, मेहनत करने से उतरता है।",
+              "english": "But Sunita says that the loan is not paid off by worrying, it is paid off by hard work.",
+              "speaker": "D"
+            },
+            {
+              "text": "आपके कितने बच्चे हैं?",
+              "english": "How many children do you have?",
+              "speaker": "S"
+            },
+            {
+              "text": "दो हैं, एक बेटा और एक बेटी।",
+              "english": "Two, a son and a daughter.",
+              "speaker": "D"
+            },
+            {
+              "text": "बेटा 10 साल का है, और बेटी 7 साल की।",
+              "english": "The son is 10 years old and the daughter 7.",
+              "speaker": "D"
+            },
+            {
+              "text": "बेटा रोज़ कहता है, \"पापा, मैं बड़ा होकर आपके ऑटो में बैठकर शहर के चक्कर लगाऊँगा।\"",
+              "english": "The son says every day, \"Papa, when I grow up I will sit in your auto and make rounds of the city.\"",
+              "speaker": "D"
+            },
+            {
+              "text": "मैं कहता हूँ, \"नहीं बेटा, तुम पढ़कर अपना ऑटो नहीं, अपनी कुर्सी ख़रीदना।\"",
+              "english": "I say, \"No, son, by studying you should buy not your auto but your own chair.\"",
+              "speaker": "D"
+            },
+            {
+              "text": "गाँव में आपके माँ-पापा कैसे हैं?",
+              "english": "How are your mother and father in the village?",
+              "speaker": "S"
+            },
+            {
+              "text": "वे ठीक हैं।",
+              "english": "They are well.",
+              "speaker": "D"
+            },
+            {
+              "text": "मैं हर साल होली पर उनके पास जाता हूँ।",
+              "english": "Every year at Holi I go to them.",
+              "speaker": "D"
+            },
+            {
+              "text": "वहाँ ढोल बजता है, नाच होता है, गुलाल उड़ता है, और पकवान बनते हैं।",
+              "english": "There the drum plays, there is dancing, gulaal flies and festive dishes are made.",
+              "speaker": "D"
+            },
+            {
+              "text": "बच्चे पिचकारी लेकर मुझे ढूँढ़ते हैं, और मुझे भी दो-चार रंग लगाकर ही छोड़ते हैं।",
+              "english": "The children look for me with pichkaris, and let me go only after putting a few colours on me.",
+              "speaker": "D"
+            },
+            {
+              "text": "फिर शहर लौटकर वही मीटर, वही पेट्रोल और वही क़र्ज़।",
+              "english": "Then returning to the city, the same meter, the same petrol and the same loan.",
+              "speaker": "D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "रात, फ़िल्म और चुनाव",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "काम के बाद आप क्या करते हैं?",
+              "english": "What do you do after work?",
+              "speaker": "S"
+            },
+            {
+              "text": "रात 9 बजे घर लौटता हूँ।",
+              "english": "I return home at 9 at night.",
+              "speaker": "D"
+            },
+            {
+              "text": "गर्मी में हमारे छोटे कमरे में कूलर चलता है, और बच्चे उसके सामने बैठकर मेरा इंतज़ार करते हैं।",
+              "english": "In summer in our small room the cooler runs, and the children sit before it waiting for me.",
+              "speaker": "D"
+            },
+            {
+              "text": "हम सब खाना खाकर कभी-कभी फ़ोन पर एक फ़िल्म देखते हैं।",
+              "english": "After eating we sometimes watch a film on the phone.",
+              "speaker": "D"
+            },
+            {
+              "text": "मेरी बेटी को हँसी वाली फ़िल्में पसंद हैं, और बेटे को तेज़ फ़िल्में।",
+              "english": "My daughter likes films with laughter, and my son fast ones.",
+              "speaker": "D"
+            },
+            {
+              "text": "बारिश में मैं ऑटो को कपड़े से ढककर रखता हूँ, ताकि सीट गीली न हो।",
+              "english": "In the rain I keep the auto covered with cloth so that the seat does not get wet.",
+              "speaker": "D"
+            },
+            {
+              "text": "एक रात किसी चोर ने ऑटो का बैग और मेरा थैला चोरी कर लिया था।",
+              "english": "One night a thief stole the bag of the auto and my sack.",
+              "speaker": "D"
+            },
+            {
+              "text": "मुझे बहुत बुरा लगा, पर मैंने रिपोर्ट लिखी और फिर काम पर चला गया।",
+              "english": "I felt very bad, but I wrote a report and then went to work.",
+              "speaker": "D"
+            },
+            {
+              "text": "क्या आप वोट के बारे में भी सोचते हैं?",
+              "english": "Do you think about voting too?",
+              "speaker": "S"
+            },
+            {
+              "text": "कभी-कभी।",
+              "english": "Sometimes.",
+              "speaker": "D"
+            },
+            {
+              "text": "वोट के दिनों में प्रचार करने वाले लोग मेरे ऑटो में बैठते हैं और मुझे बहुत उपदेश देते हैं।",
+              "english": "In the days of the vote people who campaign sit in my auto and give me many sermons.",
+              "speaker": "D"
+            },
+            {
+              "text": "मैं मुस्कुराकर सुन लेता हूँ, पर मैं वही बात ग्रहण करता हूँ, जो मेरे अनुभव से मिलती है।",
+              "english": "I listen with a smile, but I receive only that which agrees with my experience.",
+              "speaker": "D"
+            },
+            {
+              "text": "मैंने उनसे भी कहा, \"आप जगत की बड़ी बातें कीजिए, पर पहले मेरी गली की सड़क ठीक कर दीजिए।\"",
+              "english": "I said to them too, \"Talk of the big things of the world, but first set right the road of my lane.\"",
+              "speaker": "D"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ऑटो वालों की सूचना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "जाने से पहले दीपक जी ने मुझे अपनी जगह पर लगी एक सूचना दिखाई।",
+              "english": "Before leaving Deepak ji showed me a notice put up at their place."
+            },
+            {
+              "text": "उस पर लिखा था: \"सब ऑटो वाले सूचित किए जाते हैं कि वे मीटर से ही चलें।\"",
+              "english": "On it was written: \"All auto men are informed that they should run by the meter only.\""
+            },
+            {
+              "text": "नीचे लिखा था: \"महोदय सवारी जी, कृपया रसीद ज़रूर माँगें।\"",
+              "english": "Below was written: \"Honoured passenger, please do ask for a receipt.\""
+            },
+            {
+              "text": "और सबसे नीचे था: \"किसी का भी निवेदन हम ध्यान से सुनेंगे, और उसे स्वीकार करना हमारा काम है।\"",
+              "english": "And at the bottom was: \"We will listen carefully to anybody's request, and accepting it is our duty.\""
+            },
+            {
+              "text": "मैंने पूछा कि यह किसने लिखा।",
+              "english": "I asked who wrote it."
+            },
+            {
+              "text": "दीपक जी बोले, \"हमने मिलकर लिखा है, और रवि सर ने हिंदी ठीक की।\"",
+              "english": "Deepak ji said, \"We wrote it together, and Ravi sir corrected the Hindi.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "आख़िरी प्रश्न",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आख़िर में एक प्रश्न और: आपका सपना क्या है?",
+              "english": "One last question: what is your dream?",
+              "speaker": "S"
+            },
+            {
+              "text": "मेरा सपना बहुत छोटा है, सैम जी।",
+              "english": "My dream is very small, Sam ji.",
+              "speaker": "D"
+            },
+            {
+              "text": "मैं चाहता हूँ कि क़र्ज़ उतर जाए, बच्चे पढ़ जाएँ, और मेरा ऑटो मेरा अपना हो जाए।",
+              "english": "I want that the loan be paid off, the children finish their studies, and my auto become my own.",
+              "speaker": "D"
+            },
+            {
+              "text": "उसके बाद मैं गाँव जाऊँगा, और अपने खेत में फिर से खेती करूँगा।",
+              "english": "After that I will go to the village and farm again in my own field.",
+              "speaker": "D"
+            },
+            {
+              "text": "आपका धन्यवाद, दीपक जी।",
+              "english": "Thank you, Deepak ji.",
+              "speaker": "S"
+            },
+            {
+              "text": "धन्यवाद तो आपका, जो आप मेरा दिन सुनने आए।",
+              "english": "Thanks are yours, that you came to hear my day.",
+              "speaker": "D"
+            },
+            {
+              "text": "चलिए, मैं आपको मोड़ तक छोड़ देता हूँ, और आज मीटर नहीं चलाऊँगा।",
+              "english": "Come, I will drop you up to the turn, and today I will not run the meter.",
+              "speaker": "D"
+            },
+            {
+              "text": "नहीं, दीपक जी, आप मीटर चलाइए, और मुझे रसीद दीजिए।",
+              "english": "No, Deepak ji, you run the meter, and give me a receipt.",
+              "speaker": "S"
+            },
+            {
+              "text": "सुनकर दीपक जी हँस पड़े, और उन्होंने सच में मुझे रसीद दी।",
+              "english": "Hearing this Deepak ji burst out laughing, and he really gave me a receipt."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

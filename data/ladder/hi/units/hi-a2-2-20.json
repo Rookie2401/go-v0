@@ -1,0 +1,426 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-20",
+  "lang": "hi",
+  "title": "चर्च की दावत की तैयारी",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-20",
+    "title": "\"चर्च की दावत की तैयारी\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Instructions and narrative together: the women of the church cook for 100 guests after a Sunday of two baptisms; Sam helps. Quantities are in digits. The passive (पकाया जाता है) and obligation forms (-ना चाहिए) carry the instructions; the conjunctive participle (धोकर, काटकर) carries the sequence. The recipes are plausible North Indian feast dishes but are not a tested recipe: a reviewer who cooks should check amounts and order. The sermon is mentioned only as \"about light in darkness\", in the drafter's words. The planned top-up words पकना and स्वादिष्ट are used 4 and 2 times; 'सुनीता जी' is written where the plan says 'सुनीता आंटी' (आंटी is not in the plan's word list; some earlier drafts do use it, so the reviewer may prefer आंटी). No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "food",
+    "cooking",
+    "church",
+    "instructions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "food"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "दावत का दिन तय हुआ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रविवार को हमारे चर्च में 2 लोगों का बपतिस्मा हुआ, और पास्टर अनिल ने कहा कि अगले शनिवार को सबके लिए एक दावत रखी जाए।",
+              "english": "On Sunday in our church two people were baptised, and Pastor Anil said that a feast should be held for everybody next Saturday."
+            },
+            {
+              "text": "उन्होंने उपदेश में अंधकार और ज्योति की बात की थी, और सब लोग उसी की संगति में बहुत ख़ुश थे।",
+              "english": "In the sermon he had spoken about darkness and light, and everybody was very happy in just that fellowship."
+            },
+            {
+              "text": "सुनीता जी ने खड़े होकर कहा, \"दावत का खाना हम औरतें बनाएँगी।\"",
+              "english": "Sunita ji stood up and said, \"We women will cook the food of the feast.\""
+            },
+            {
+              "text": "सीता नानी ने कहा, \"100 लोगों का खाना कोई छोटा काम नहीं है, पर हम सब मिलकर कर लेंगे।\"",
+              "english": "Seeta Nani said, \"The food of 100 people is not a small job, but we will do it all together.\""
+            },
+            {
+              "text": "मैंने पूछा, \"क्या मैं भी मदद कर सकता हूँ?\"",
+              "english": "I asked, \"May I help too?\""
+            },
+            {
+              "text": "सुनीता जी हँस पड़ीं और बोलीं, \"सैम, तुम सबसे पहले पूरा काम समझ लो, फिर हाथ लगाना।\"",
+              "english": "Sunita ji burst out laughing and said, \"Sam, first understand the whole work, then lay a hand on it.\""
+            },
+            {
+              "text": "मैंने अपनी कॉपी निकाली, और अमन मेरे पास बैठकर सब कुछ सुनने लगा।",
+              "english": "I took out my notebook, and Aman sat beside me and began to listen to everything."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "क्या-क्या चाहिए",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सुनीता जी ने बताया कि 100 लोगों के लिए पुलाव, दाल, पनीर की सब्ज़ी और रायता बनाया जाएगा।",
+              "english": "Sunita ji said that for 100 people pulao, dal, a paneer curry and raita would be made."
+            },
+            {
+              "text": "पहले सामान के नाम लिखे गए, और मैंने उन्हें कॉपी में उतार लिया।",
+              "english": "First the names of the things were written, and I copied them in my notebook."
+            },
+            {
+              "text": "चावल 15 किलो, दाल 8 किलो, पनीर 5 किलो और दही 10 किलो चाहिए था।",
+              "english": "15 kilos of rice, 8 kilos of dal, 5 kilos of paneer and 10 kilos of curd were needed."
+            },
+            {
+              "text": "इसके अलावा 2 किलो घी, 1 किलो धनिया, नमक, मिर्च, हल्दी और प्याज़ भी चाहिए था।",
+              "english": "Besides that 2 kilos of ghee, 1 kilo of coriander, salt, chilli, turmeric and onions were needed."
+            },
+            {
+              "text": "नानी ने कहा, \"हर चीज़ का जोड़ा बनता है: दाल के साथ चावल, पुलाव के साथ रायता, और पनीर के साथ रोटी।\"",
+              "english": "Nani said, \"Everything has a pair: rice with dal, raita with pulao, and roti with paneer.\""
+            },
+            {
+              "text": "सामान लाने का काम दीपक जी ने अपने ऑटो से किया।",
+              "english": "The job of bringing the things was done by Deepak ji with his auto."
+            },
+            {
+              "text": "उन्होंने मीटर नहीं चलाया, पर मैंने उन्हें पैसे दिए, और उन्होंने रसीद भी दी।",
+              "english": "He did not run the meter, but I gave him money, and he gave a receipt too."
+            },
+            {
+              "text": "उन्होंने हँसकर कहा कि पेट्रोल बहुत महँगा है, और शनिवार को शहर के ट्रैफ़िक में उन्हें देर हो गई।",
+              "english": "He said with a laugh that petrol is very dear, and on Saturday he was late in the traffic of the city."
+            },
+            {
+              "text": "दुकानदार ने भी मुझे बेवक़ूफ़ नहीं बनाया, क्योंकि उसने हर चीज़ मेरे सामने तौली।",
+              "english": "The shopkeeper too did not make a fool of me, because he weighed everything in front of me."
+            },
+            {
+              "text": "नानी ने कहा, \"पैसे का क़र्ज़ मत लेना, जितने पैसे हों, उतना ही सामान लो।\"",
+              "english": "Nani said, \"Do not take a loan of money, take just as much as you have money.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पहली तैयारी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक दिन पहले सब औरतें आँगन में इकट्ठा हुईं, और काम बाँटा गया।",
+              "english": "One day before all the women gathered in the courtyard, and the work was shared out."
+            },
+            {
+              "text": "हर आदमी को उसका हिस्सा मिला, और किसी को ज़्यादा या कम काम नहीं दिया गया।",
+              "english": "Every person got his share, and nobody was given more or less work."
+            },
+            {
+              "text": "कुछ औरतों के हिस्से में प्याज़ काटना आया, कुछ के हिस्से में धनिया धोना।",
+              "english": "In the share of some women came cutting onions, in the share of some washing coriander."
+            },
+            {
+              "text": "मेरे हिस्से में बर्तन धोना आया, और मैंने सोचा कि यह सबसे छोटा काम होगा।",
+              "english": "In my share came washing pots, and I thought that this would be the smallest work."
+            },
+            {
+              "text": "पर बर्तन इतने बड़े थे कि मेरा माथा गीला हो गया, और अमन मुझे देखकर हँसता रहा।",
+              "english": "But the pots were so big that my forehead became wet, and Aman kept laughing seeing me."
+            },
+            {
+              "text": "सुनीता जी ने समझाया कि बर्तन साबुन से धोए जाने चाहिए, और फिर उबले पानी से साफ़ किए जाने चाहिए।",
+              "english": "Sunita ji explained that pots should be washed with soap, and then cleaned with boiled water."
+            },
+            {
+              "text": "उन्होंने कहा, \"खाना बनाते समय सफ़ाई सबसे पहले आती है, क्योंकि 100 लोगों का पेट हमारे हाथ में है।\"",
+              "english": "She said, \"While cooking cleanliness comes first, because the stomachs of 100 people are in our hands.\""
+            },
+            {
+              "text": "जो औरतें प्याज़ काट रही थीं, उन्होंने पहले साबुन से हाथ धोए, और फिर काम शुरू किया।",
+              "english": "The women who were cutting onions first washed their hands with soap, and then began work."
+            },
+            {
+              "text": "शाम को सब सामान की जाँच की गई, और सब कुछ ढककर रखा गया, ताकि रात में मच्छर और मिट्टी से बचा रहे।",
+              "english": "In the evening all the things were checked, and everything was kept covered so that it should stay safe from mosquitoes and dust at night."
+            },
+            {
+              "text": "मैंने देखा कि कुछ बड़े घड़ों पर मच्छरदानी जैसा कपड़ा भी डाला गया था।",
+              "english": "I saw that on some big pitchers a cloth like a mosquito net had also been put."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दावत की सुबह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दावत की सुबह 4 बजे ही रसोई में काम शुरू हो गया।",
+              "english": "On the morning of the feast the work began in the kitchen at four o'clock."
+            },
+            {
+              "text": "आँगन में तीन बड़े चूल्हे लगे थे, और उन पर बड़े-बड़े बर्तन चढ़ी हुई थीं।",
+              "english": "In the courtyard three big hearths were set, and big vessels were placed on them."
+            },
+            {
+              "text": "बाहर कूलर चल रहा था, पर चूल्हों की गर्मी के सामने वह भी कम पड़ रहा था।",
+              "english": "Outside a cooler was running, but before the heat of the hearths even that was falling short."
+            },
+            {
+              "text": "सबसे पहले दाल पकाई गई।",
+              "english": "First of all the dal was cooked."
+            },
+            {
+              "text": "दाल को अच्छी तरह धोकर पानी में उबाला जाता है, और जब वह पक जाए, तो उसमें नमक और हल्दी डाली जाती है।",
+              "english": "The dal is washed well and boiled in water, and when it has cooked, salt and turmeric are put in it."
+            },
+            {
+              "text": "फिर घी में प्याज़ और मसाले डालकर वह दाल में डाला जाता है।",
+              "english": "Then onions and spices are put in ghee and that is put in the dal."
+            },
+            {
+              "text": "दाल को ढककर थोड़ी देर पकने दिया जाता है, और बीच-बीच में चम्मच से हिलाया जाता है।",
+              "english": "The dal is covered and allowed to cook a little while, and stirred now and then with a spoon."
+            },
+            {
+              "text": "सुनीता जी हर थोड़ी देर में नमक की जाँच करती थीं, और कहती थीं कि बिना जाँच के खाना कभी स्वादिष्ट नहीं बनता।",
+              "english": "Sunita ji checked the salt every little while, and said that without checking food never becomes tasty."
+            },
+            {
+              "text": "फिर पुलाव का काम आया।",
+              "english": "Then came the work of the pulao."
+            },
+            {
+              "text": "चावल को 2 बार धोया गया, और उसे आधे घंटे पानी में रखा गया।",
+              "english": "The rice was washed 2 times, and kept in water for half an hour."
+            },
+            {
+              "text": "बड़े बर्तन में घी गरम किया गया, और उसमें प्याज़ और धनिया डाला गया।",
+              "english": "In the big pot ghee was heated, and onions and coriander were put in it."
+            },
+            {
+              "text": "फिर चावल और उबला हुआ पानी डालकर बर्तन ढक दिया गया।",
+              "english": "Then rice and boiled water were put and the pot was covered."
+            },
+            {
+              "text": "चावल को पकने में क़रीब आधा घंटा लगा, और पुलाव का पता पूरे मोहल्ले को चल गया।",
+              "english": "The rice took about half an hour to cook, and the whole neighbourhood came to know of the pulao."
+            },
+            {
+              "text": "जब चावल पक गया, तो सुनीता जी ने थोड़ा खाकर देखा और कहा, \"बिलकुल ठीक।\"",
+              "english": "When the rice had cooked, Sunita ji ate a little to see and said, \"Quite right.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पनीर और रायता",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पनीर की सब्ज़ी सबसे ज़्यादा ध्यान माँगती है।",
+              "english": "The paneer curry asks for the most attention."
+            },
+            {
+              "text": "पनीर को छोटे टुकड़ों में काटा जाता है, और घी में हल्का-सा गरम किया जाता है।",
+              "english": "The paneer is cut in small pieces, and lightly heated in ghee."
+            },
+            {
+              "text": "फिर प्याज़, टमाटर और मसाले अलग से पकाए जाते हैं, और उनमें पनीर डाला जाता है।",
+              "english": "Then onions, tomatoes and spices are cooked separately, and the paneer is put in them."
+            },
+            {
+              "text": "नानी ने कहा, \"पनीर को ज़्यादा पकाना नहीं चाहिए, नहीं तो वह बुरा बन जाता है।\"",
+              "english": "Nani said, \"Paneer should not be cooked too much, otherwise it turns out bad.\""
+            },
+            {
+              "text": "सावधानी की बात यह है कि गरम घी में पानी की एक बूँद भी गिर जाए, तो बहुत बुरा होता है।",
+              "english": "The matter of care is that if even one drop of water falls into hot ghee, it is very bad."
+            },
+            {
+              "text": "इसलिए अमन को चूल्हे से दूर रखा गया, और उसने बैठकर आराम से रायता बनाने का काम लिया।",
+              "english": "So Aman was kept away from the hearth, and sitting down he took up the work of making raita comfortably."
+            },
+            {
+              "text": "रायते के लिए 10 किलो दही एक बड़े बर्तन में डाला गया, और उसमें नमक और धनिया डाला गया।",
+              "english": "For the raita 10 kilos of curd were put in a big vessel, and salt and coriander were put in it."
+            },
+            {
+              "text": "दही हमेशा ठंडा रखना चाहिए, इसलिए उसे छाया में रखा गया और कपड़े से ढक दिया गया।",
+              "english": "Curd should always be kept cold, so it was kept in the shade and covered with a cloth."
+            },
+            {
+              "text": "कहीं-कहीं रायते में और चीज़ें भी डाली जाती हैं, पर हमारे यहाँ सिर्फ़ धनिया डाला जाता है।",
+              "english": "In some places other things are also put in raita, but here only coriander is put."
+            },
+            {
+              "text": "इसी बीच एक औरत घबराकर रसोई में आई और बोली, \"मेरी अंगूठी कहाँ गई?\"",
+              "english": "Meanwhile a woman came into the kitchen in a flurry and said, \"Where has my ring gone?\""
+            },
+            {
+              "text": "सब लोग ढूँढ़ने लगे, और आख़िर में अंगूठी दाल के डिब्बे में मिली।",
+              "english": "Everybody began to look, and finally the ring was found in the tin of dal."
+            },
+            {
+              "text": "सब हँस पड़े, और नानी ने कहा, \"आज की दावत में यह भी एक छोटा चमत्कार हो गया।\"",
+              "english": "Everybody burst out laughing, and Nani said, \"In today's feast this too has become a small miracle.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "परोसना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "11 बजे तक सब खाना तैयार था, और चर्च के आँगन में बैठने की जगह बन चुकी थी।",
+              "english": "By 11 all the food was ready, and in the church courtyard the sitting place had been made."
+            },
+            {
+              "text": "मेहमान आने लगे: पास्टर अनिल, गीता, सरदार जी, मीरा दीदी, और मोहल्ले के बहुत-से लोग।",
+              "english": "Guests began to come: Pastor Anil, Geeta, Sardar ji, Meera didi, and many people of the neighbourhood."
+            },
+            {
+              "text": "सरकारी अस्पताल के एक डॉक्टर भी आए, जो मीरा दीदी के पुराने दोस्त हैं।",
+              "english": "A doctor of the government hospital also came, who is an old friend of Meera didi."
+            },
+            {
+              "text": "दावत में नए बपतिस्मा वाले दोनों लोग भी थे, और सबने उन्हें गले लगाकर बधाई दी।",
+              "english": "In the feast the two newly baptised people were also present, and everybody embraced them and congratulated them."
+            },
+            {
+              "text": "परोसने का काम भी बाँटा गया: कुछ लोग पुलाव परोसते थे, कुछ दाल, कुछ पनीर और कुछ रायता।",
+              "english": "The work of serving was also shared: some served pulao, some dal, some paneer and some raita."
+            },
+            {
+              "text": "सुनीता जी ने कहा, \"परोसते समय हर थाली में सबका हिस्सा एक-सा होना चाहिए।\"",
+              "english": "Sunita ji said, \"While serving, everybody's share in every plate should be the same.\""
+            },
+            {
+              "text": "मैंने भी थाली लेकर परोसना शुरू किया, और मुझे सचमुच अच्छा लगा।",
+              "english": "I too took a plate and began to serve, and I really liked it."
+            },
+            {
+              "text": "हर आदमी ने मुस्कुराकर थाली ली, और कई लोगों ने कहा कि खाना बहुत स्वादिष्ट है।",
+              "english": "Every person took a plate with a smile, and many people said that the food is very tasty."
+            },
+            {
+              "text": "पास्टर अनिल ने खाने से पहले एक छोटी प्रार्थना की, और सबने आमीन कहा।",
+              "english": "Pastor Anil said a short prayer before eating, and everybody said amen."
+            },
+            {
+              "text": "उसके बाद सब लोग बैठकर खाने लगे, और दावत की संगति में सबका मन खुल गया।",
+              "english": "After that everybody sat and began to eat, and in the fellowship of the feast everybody's heart opened."
+            },
+            {
+              "text": "किसी ने कहा कि इस दावत से अच्छा कोई प्रचार नहीं हो सकता, क्योंकि लोग खाने और प्यार को ग्रहण करते हैं।",
+              "english": "Someone said that no preaching could be better than this feast, because people receive food and love."
+            },
+            {
+              "text": "नानी ने अपने अनुभव से कहा, \"जिसे भूख लगी हो, उसे सबसे पहले रोटी चाहिए, बाक़ी बातें बाद में।\"",
+              "english": "Nani said from her experience, \"He who is hungry first needs bread, other matters later.\""
+            },
+            {
+              "text": "मैंने इससे बड़ी सीख ली कि बुरा लगे या अच्छा, खाना सबको साथ लाता है।",
+              "english": "From this I took a big lesson, that whether it seems bad or good, food brings everybody together."
+            },
+            {
+              "text": "जगत में बहुत-सी बातों पर लोग अलग हो जाते हैं, पर भूख और ख़ुशी सबकी एक-सी होती है।",
+              "english": "In the world people part on many matters, but hunger and joy are the same for everybody."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दावत के बाद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "खाने के बाद पास्टर अनिल की बेटी ने फ़ोन पर पूरी दावत की एक छोटी फ़िल्म बनाई।",
+              "english": "After the meal Pastor Anil's daughter made a short film of the whole feast on the phone."
+            },
+            {
+              "text": "उसमें बच्चे बाघ बनकर भागते दिखे, और बड़े-बूढ़े हाथ से रोटी खाते हुए हँसते दिखे।",
+              "english": "In it the children were seen running as tigers, and the elders were seen laughing as they ate roti with their hands."
+            },
+            {
+              "text": "हमें पता चला कि पिछले हफ़्ते की शादी के दूल्हा-दुल्हन भी जोड़े में दावत में आए थे।",
+              "english": "We came to know that the bridegroom and bride of last week's wedding had also come to the feast as a couple."
+            },
+            {
+              "text": "उनकी अंगूठी देखकर बच्चे ख़ुश हुए, और दुल्हन ने बारात की बातें सुनाईं।",
+              "english": "Seeing their ring the children were happy, and the bride told stories of the wedding procession."
+            },
+            {
+              "text": "इस बार हमने बारात की तरह पुलाव और रायता बनाया था, और दूल्हे ने कहा कि दावत का पुलाव शादी से भी अच्छा है।",
+              "english": "This time we had made pulao and raita like the wedding procession's, and the bridegroom said that the pulao of the feast is even better than the wedding's."
+            },
+            {
+              "text": "सब ख़ाली बर्तन धोए गए, और बचा हुआ खाना पड़ोस के ग़रीब घरों में बाँटा गया।",
+              "english": "All the empty pots were washed, and the leftover food was shared among poor houses of the neighbourhood."
+            },
+            {
+              "text": "मैंने नानी से पूछा कि क्या मैंने सब ठीक किया।",
+              "english": "I asked Nani whether I had done everything right."
+            },
+            {
+              "text": "उन्होंने मेरे माथे पर हाथ रखकर कहा, \"ठीक किया, बेटा, और अगली बार तुम पुलाव भी बनाना।\"",
+              "english": "She put her hand on my forehead and said, \"You did right, son, and next time you make the pulao too.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-15",
+  "lang": "hi",
+  "title": "एक साल बाद सैम की गवाही",
+  "contentType": "testimony",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-15",
+    "title": "\"एक साल बाद सैम की गवाही\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A reflective first-person testimony by Sam a year after he came. It collects the stories of the previous units (the lane, the meeting, Holi, the illness) as things remembered, and carries the faith words the plan reserves for it (चमत्कार, अनुभव, सीख, प्रचार, संगति, बपतिस्मा, उपदेश, ज्योति, अंधकार, ग्रहण, जगत). Points for the reviewer: the sermon of Pastor Anil on light and darkness is written in the drafter's own words (not a quotation of any Bible text, although it echoes John 1); \"प्रचार\" is used for the team's way of living and serving, never for polemic; the baptisms are of unnamed neighbours and the unit says nothing against any other faith; the sentence about the neighbours' festival speaks only thanks. A Christian reader should check the whole unit for tone. Faith words for John 1 / Mark 1; check tone with a Christian reader. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony",
+    "faith",
+    "neighbours",
+    "learning"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "एक साल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज मुझे इस शहर में आए पूरा एक साल हो गया है।",
+              "english": "Today a whole year has passed since I came to this city."
+            },
+            {
+              "text": "पास्टर अनिल ने मुझसे कहा कि मैं अपने अनुभव लिखूँ, ताकि भेजने वाली कलीसिया को भी पता चले कि हमारा समय कैसा बीता।",
+              "english": "Pastor Anil asked me to write my experience so that the sending church would also know how our time has gone."
+            },
+            {
+              "text": "मैंने बहुत सोचा कि कहाँ से शुरू करूँ, और आख़िर में तय किया कि शुरू से ही शुरू करूँगा।",
+              "english": "I thought a great deal about where to begin, and finally decided that I would begin from the very beginning."
+            },
+            {
+              "text": "एक साल पहले मैं बस से उतरा था, और मेरे पास दो बैग और बहुत सारी चिंता थी।",
+              "english": "A year ago I got down from a bus, and I had two bags and a great deal of worry."
+            },
+            {
+              "text": "मुझे हिंदी नहीं आती थी, और मुझे लगता था कि मैं किसी की बात कभी नहीं समझ पाऊँगा।",
+              "english": "I did not know Hindi, and I used to feel that I would never be able to understand anybody."
+            },
+            {
+              "text": "मेरा माथा गीला और मेरा दिल भरा हुआ था, और मैंने मन में कहा, \"परमेश्वर, मुझे यहाँ क्यों भेजा?\"",
+              "english": "My forehead was wet and my heart was full, and I said in my heart, \"God, why did You send me here?\""
+            },
+            {
+              "text": "उस दिन मुझे जवाब नहीं मिला, पर आज मिल गया है।",
+              "english": "That day I got no answer, but today I have got it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पहली सीख",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पहले कुछ महीनों में मैंने हर दिन कोई न कोई नई सीख पाई।",
+              "english": "In the first few months I got some new lesson every day."
+            },
+            {
+              "text": "सबसे पहली सीख यह थी कि हिंदी सिर्फ़ शब्द नहीं हैं, वह लोगों से मिलने का रास्ता है।",
+              "english": "The first lesson was that Hindi is not just words, it is the way of meeting people."
+            },
+            {
+              "text": "जब मैं ठीक नहीं बोल पाता था, तो लोग हँसते थे, पर उनकी हँसी बुरी नहीं थी।",
+              "english": "When I could not speak properly people would laugh, but their laughter was not bad."
+            },
+            {
+              "text": "उसमें प्यार था, और धीरे-धीरे मुझे भी हँसना आ गया।",
+              "english": "There was love in it, and slowly I learnt to laugh too."
+            },
+            {
+              "text": "सुबह चाय की दुकान पर बैठकर मैंने पहली बार किसी से पूरी बात की, और वह दिन मेरे लिए छोटा-सा चमत्कार था।",
+              "english": "Sitting at a tea shop in the morning I talked fully with somebody for the first time, and that day was a small miracle for me."
+            },
+            {
+              "text": "चमत्कार हमेशा बड़े नहीं होते, कभी-कभी वे एक चाय की मुस्कान जितने छोटे होते हैं।",
+              "english": "Miracles are not always big, sometimes they are as small as the smile over a cup of tea."
+            },
+            {
+              "text": "यह अनुभव मेरे लिए बिलकुल नया था।",
+              "english": "This experience was quite new for me."
+            },
+            {
+              "text": "मुझे सचमुच लगा कि कोई मेरा हाथ पकड़कर मुझे आगे ले जा रहा है।",
+              "english": "I truly felt that someone was holding my hand and leading me forward."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मोहल्ले से सीखना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दूसरी बड़ी सीख मुझे अपने मोहल्ले से मिली।",
+              "english": "The second big lesson I got from my neighbourhood."
+            },
+            {
+              "text": "हमारी गली में गंदा पानी, टंकी, नाली और गंदगी की समस्या थी, और मैं सोचता था कि यह मेरा काम नहीं है।",
+              "english": "In our lane there was the problem of dirty water, tanks, drains and filth, and I used to think that it was not my work."
+            },
+            {
+              "text": "फिर गीता ने शहर के दफ़्तर में शिकायत लिखी, और सबने मिलकर उस पर नाम लिखे।",
+              "english": "Then Geeta wrote a complaint to the town office, and everybody wrote names on it together."
+            },
+            {
+              "text": "उसके बाद मोहल्ले की बैठक हुई, जिसमें सब लोग इकट्ठा हुए।",
+              "english": "After that a meeting of the neighbourhood took place, in which everybody gathered."
+            },
+            {
+              "text": "पास्टर अनिल को अध्यक्ष चुना गया, और सब लोग उनके प्रस्ताव से सहमत हुए।",
+              "english": "Pastor Anil was chosen chairman, and all people agreed with his proposal."
+            },
+            {
+              "text": "वहाँ मैंने देखा कि हर किसी की राय सुनी जाती है, चाहे वह छोटा हो या बड़ा।",
+              "english": "There I saw that everybody's opinion is heard, whether he is small or big."
+            },
+            {
+              "text": "हमने वोट से तय किया कि हर घर थोड़ा चंदा देगा, और सबके सुझाव एक काग़ज़ पर लिखे गए।",
+              "english": "We decided by vote that every house would give a little contribution, and everybody's suggestions were written on a paper."
+            },
+            {
+              "text": "उस दिन मैंने सीखा कि सुधार हमेशा बड़े आदमियों से नहीं आता, वह पड़ोसियों के मिलने से आता है।",
+              "english": "That day I learnt that improvement does not always come from big people, it comes from neighbours meeting."
+            },
+            {
+              "text": "पिछले महीने नाली साफ़ हुई, पर्दे और प्लेटें साफ़ हुए, और गली में सचमुच सुधार दिखता है।",
+              "english": "Last month the drain was cleaned, curtains and plates were cleaned, and there is really an improvement visible in the lane."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "होली और मेहमान",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इस साल सुरेश के गाँव में मैंने होली देखी।",
+              "english": "This year I saw Holi in Suresh's village."
+            },
+            {
+              "text": "वहाँ ढोल बजा, गुलाल उड़ा और पकवान बने।",
+              "english": "There the drum played, gulaal flew and festive dishes were made."
+            },
+            {
+              "text": "मैं रंग से दूर रहा, पर किसी ने बुरा नहीं माना, और सबने मुझे अपना मेहमान समझा।",
+              "english": "I stayed away from colour, but nobody took offence, and everybody regarded me as their guest."
+            },
+            {
+              "text": "मैं उस परिवार का आभार मानता हूँ, जिसने मुझे बिना कुछ माँगे अपने घर में जगह दी।",
+              "english": "I give thanks to that family which gave me a place in their house without asking anything."
+            },
+            {
+              "text": "मैंने उनसे सीखा कि प्रेम का मतलब यह नहीं कि सब एक जैसे हों, पर यह कि सब एक-दूसरे की बात सुनें।",
+              "english": "I learnt from them that love does not mean that all are alike, but that all listen to one another."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "जब मैं बीमार पड़ा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक और सीख मेरी अपनी बीमारी ने दी।",
+              "english": "Another lesson was given by my own illness."
+            },
+            {
+              "text": "बारिश के बाद मुझे तेज़ बुखार हुआ, और मैंने मच्छरदानी में सोना भी शुरू नहीं किया था।",
+              "english": "After the rains I got a high fever, and I had not even begun to sleep in a mosquito net."
+            },
+            {
+              "text": "मैं ख़ुद दूसरों को सावधानी की बात बताता था, पर अपने लिए ध्यान नहीं देता था।",
+              "english": "I myself told others about care, but for myself I did not pay attention."
+            },
+            {
+              "text": "रात को मुझे चक्कर आया, और मैं गिरते-गिरते बचा।",
+              "english": "At night I got dizzy and just escaped falling."
+            },
+            {
+              "text": "अमन दौड़कर मीरा दीदी को बुला लाया।",
+              "english": "Aman ran and called Meera didi."
+            },
+            {
+              "text": "उन्होंने मेरे माथे पर हाथ रखा और कहा, \"तुम्हें तेज़ बुखार है।\"",
+              "english": "She put her hand on my forehead and said, \"You have a high fever.\""
+            },
+            {
+              "text": "अगले दिन जाँच हुई, और डॉक्टर ने कहा कि मुझे डेंगू है।",
+              "english": "The next day the test was done, and the doctor said that I had dengue."
+            },
+            {
+              "text": "कई दिन मुझे नींद नहीं आई, और मेरी ताक़त बिलकुल चली गई।",
+              "english": "For many days I could not sleep, and my strength was completely gone."
+            },
+            {
+              "text": "उन दिनों मुझे अपनी चिंता भी हुई, और घर की भी।",
+              "english": "In those days I worried about myself and about home too."
+            },
+            {
+              "text": "पर मोहल्ले के लोग रोज़ आते थे: कोई खाना लाता, कोई दवा, और कोई सिर्फ़ बैठकर मुझसे बात करता।",
+              "english": "But the neighbourhood people came every day: one brought food, another medicine, and another only sat and talked with me."
+            },
+            {
+              "text": "मैंने साबुन से हाथ धोकर, पानी उबालकर और मच्छरदानी में सोकर वह समय काटा।",
+              "english": "I passed that time washing hands with soap, boiling water and sleeping in a mosquito net."
+            },
+            {
+              "text": "उस बीमारी से मैंने जाना कि मैं कमज़ोर हूँ, और यह कि कमज़ोर होना कोई बुरी बात नहीं है।",
+              "english": "From that illness I learnt that I am weak, and that being weak is nothing bad."
+            },
+            {
+              "text": "अगर मैं अकेला होता, तो शायद ठीक न हो पाता, पर मेरे पास पूरा एक परिवार था।",
+              "english": "If I had been alone, perhaps I would not have recovered, but I had a whole family."
+            },
+            {
+              "text": "अमन ने मेरे माथे पर गीला कपड़ा रखा, और मीरा दीदी हर शाम मुझे देखने आती थीं।",
+              "english": "Aman put a wet cloth on my forehead, and Meera didi came to see me every evening."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "प्रार्थना और संगति",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "यह एक साल मेरे लिए प्रार्थना सीखने का भी साल रहा।",
+              "english": "This year was for me a year of learning prayer too."
+            },
+            {
+              "text": "पहले मैं प्रार्थना में सिर्फ़ माँगता था, और अब मैं ज़्यादा सुनता हूँ।",
+              "english": "Earlier I only asked in prayer, and now I listen more."
+            },
+            {
+              "text": "रविवार को हमारी कलीसिया की संगति मुझे नई ताक़त देती है।",
+              "english": "On Sunday the fellowship of our church gives me new strength."
+            },
+            {
+              "text": "अच्छी संगति में आदमी ख़ुद भी अच्छा बनता है, यह मैंने अपने अनुभव से जाना है।",
+              "english": "In good fellowship a man becomes good himself, this I have known from my experience."
+            },
+            {
+              "text": "हर रविवार संगति के बाद हम सब मिलकर चाय पीते हैं, और उसी संगति में मैंने अपने सबसे अच्छे दोस्त पाए।",
+              "english": "Every Sunday after the fellowship we all drink tea together, and in that fellowship I found my best friends."
+            },
+            {
+              "text": "वहाँ बड़े और छोटे, बूढ़े और बच्चे, सब साथ बैठकर गीत सुनाते हैं।",
+              "english": "There big and small, old and children, all sit together and sing songs."
+            },
+            {
+              "text": "पास्टर अनिल का हर उपदेश छोटा होता है, पर पिछले साल का एक उपदेश मैं कभी नहीं भूलूँगा।",
+              "english": "Every sermon of Pastor Anil is short, but one sermon of last year I will never forget."
+            },
+            {
+              "text": "उन्होंने कहा कि अंधकार चाहे कितना गहरा हो, एक छोटी-सी ज्योति भी उसे दूर कर देती है।",
+              "english": "He said that however deep the darkness is, even a small light drives it away."
+            },
+            {
+              "text": "उन्होंने कहा कि ज्योति अंधकार से नहीं डरती, और अंधकार ज्योति के सामने रुक नहीं पाता।",
+              "english": "He said that the light is not afraid of the darkness, and the darkness cannot stand before the light."
+            },
+            {
+              "text": "उन्होंने यह भी कहा कि वह ज्योति इस जगत में सबके लिए आई है, और जो उसे ग्रहण करता है, उसे जीवन मिलता है।",
+              "english": "He also said that that light has come into this world for everybody, and whoever receives it gets life."
+            },
+            {
+              "text": "इस जगत में बहुत-से लोग अपना दर्द अकेले सहते हैं, और वे इस ज्योति का रास्ता देखते हैं।",
+              "english": "In this world many people bear their pain alone, and they wait for the way of this light."
+            },
+            {
+              "text": "मैंने उस उपदेश को अपने मन में ग्रहण किया, और मुझे लगा कि मेरा अंधकार भी कम हो गया है।",
+              "english": "I received that sermon in my heart, and I felt that my darkness too had grown less."
+            },
+            {
+              "text": "मैंने मीरा दीदी की मदद और गीता की दोस्ती भी ग्रहण की, और हर बार मुझे लगा कि लेना देने से बड़ा काम है।",
+              "english": "I received Meera didi's help and Geeta's friendship too, and every time it seemed to me that receiving is a greater work than giving."
+            },
+            {
+              "text": "इस साल हमारी कलीसिया में 3 लोगों का बपतिस्मा हुआ।",
+              "english": "This year in our church 3 people were baptised."
+            },
+            {
+              "text": "बपतिस्मा के दिन सब नदी के किनारे इकट्ठा हुए, और मैं उन सबकी ख़ुशी में साथ था।",
+              "english": "On the day of baptism everybody gathered at the river bank, and I was with all of them in their joy."
+            },
+            {
+              "text": "मेरा अपना बपतिस्मा बहुत साल पहले हुआ था, पर उस दिन मुझे वह दिन फिर याद आ गया।",
+              "english": "My own baptism was many years ago, but that day I remembered that day again."
+            },
+            {
+              "text": "हम अपने मोहल्ले में कभी ज़ोर से प्रचार नहीं करते, क्योंकि हमारा प्रचार हमारा जीना है।",
+              "english": "In our neighbourhood we never preach loudly, because our preaching is our living."
+            },
+            {
+              "text": "रवि सर कहते हैं कि सबसे अच्छा प्रचार वह है जो शब्दों के बिना हो।",
+              "english": "Ravi sir says that the best preaching is that which is without words."
+            },
+            {
+              "text": "हम सेवा करते हैं, सुनते हैं और साथ रहते हैं, और जिसे सवाल हों, वह हमारे घर आकर पूछता है।",
+              "english": "We serve, listen and stay with people, and whoever has questions comes to our house and asks."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "अगर मैं न आता",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "कभी-कभी मैं सोचता हूँ कि अगर मैं न आता, तो मेरी ज़िंदगी कैसी होती।",
+              "english": "Sometimes I think what my life would have been if I had not come."
+            },
+            {
+              "text": "अगर मैं न आता, तो मैं सचमुच बहुत कुछ खो देता।",
+              "english": "If I had not come, I would truly have lost a great deal."
+            },
+            {
+              "text": "मैं मीरा दीदी की मेहनत नहीं देखता, सरदार जी की हँसी नहीं सुनता, और गीता के साथ वह बैठक नहीं करता।",
+              "english": "I would not see Meera didi's hard work, would not hear Sardar ji's laughter, and would not have held that meeting with Geeta."
+            },
+            {
+              "text": "और अगर पास्टर अनिल मुझे उस पहले दिन बस-स्टेशन पर लेने न आते, तो शायद मैं लौट जाता।",
+              "english": "And if Pastor Anil had not come to receive me at the bus stand on that first day, perhaps I would have gone back."
+            },
+            {
+              "text": "इसलिए मैं सोचता हूँ कि परमेश्वर ने मुझे यहाँ इसलिए भेजा कि मैं देने से ज़्यादा लेना सीखूँ।",
+              "english": "That is why I think God sent me here so that I might learn to receive more than to give."
+            },
+            {
+              "text": "मेरे लिए सबसे बड़ा चमत्कार यही है कि अजनबी अपने बन गए।",
+              "english": "For me the biggest miracle is just this, that strangers became my own."
+            },
+            {
+              "text": "आज मुझे यह जवाब मिल गया है, और मेरा मन शांत है।",
+              "english": "Today I have got this answer, and my heart is at peace."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "आगे",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैंने अपनी कॉपी में इस साल की सब बातें लिखी हैं, और मैं उन्हें पढ़कर बार-बार हँस पड़ता हूँ।",
+              "english": "I have written all the things of this year in my notebook, and reading them I burst out laughing again and again."
+            },
+            {
+              "text": "मुझे नहीं पता कि अगला साल कैसा होगा, पर मैं अब डरता नहीं हूँ।",
+              "english": "I do not know how next year will be, but I am no longer afraid."
+            },
+            {
+              "text": "मैंने सीखा है कि जगत बड़ा है, पर उसमें अपने लोगों को ढूँढ़ना मुश्किल नहीं है।",
+              "english": "I have learnt that the world is big, but finding one's own people in it is not hard."
+            },
+            {
+              "text": "मैं भेजने वाली कलीसिया को धन्यवाद देता हूँ, और आपसे विनती करता हूँ कि आप हमारे लिए प्रार्थना करते रहें।",
+              "english": "I thank the sending church, and I request you to keep praying for us."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

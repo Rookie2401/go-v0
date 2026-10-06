@@ -1,0 +1,543 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-14",
+  "lang": "hi",
+  "title": "डेंगू और साफ़ पानी",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-14",
+    "title": "\"डेंगू और साफ़ पानी\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A health talk after the rains, given by मीरा दीदी in the yard of the church to the lane, with questions from Sam, गीता and Aman. The medical content is general public-health advice of the kind found on government posters (cover water, change cooler water weekly, use nets and curtains, get a test when fever comes, boil drinking water, wash hands with soap) and is NOT a clinical guide: a reviewer with health competence should check every sentence before the unit is published. The negative commands (मत) are taught here on purpose. Medical content is general advice only; needs a reviewer with health competence. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "health",
+    "dengue",
+    "clean water",
+    "prevention"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "M": "मीरा दीदी",
+    "S": "सैम",
+    "G": "गीता",
+    "A": "अमन"
+  },
+  "sections": [
+    {
+      "title": "बारिश के बाद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रविवार की शाम को चर्च के आँगन में मीरा दीदी ने मोहल्ले के लोगों से बात की।",
+              "english": "On Sunday evening in the yard of the church Meera didi spoke to the people of the neighbourhood."
+            },
+            {
+              "text": "उनके पीछे दीवार पर एक सफ़ेद कपड़ा लगा था, और बच्चे उस पर दिखाई जाने वाली फ़िल्म का इंतज़ार कर रहे थे।",
+              "english": "Behind her a white cloth was fixed on the wall, and the children were waiting for the film to be shown on it."
+            },
+            {
+              "text": "बारिश को बीते 2 हफ़्ते हुए थे, और मोहल्ले में कई लोग बीमार पड़े थे।",
+              "english": "It was two weeks since the rains had passed, and in the neighbourhood many people had fallen ill."
+            },
+            {
+              "text": "नमस्ते, आज मैं आपसे एक ऐसी बीमारी की बात करूँगी, जो हर साल बारिश के बाद आती है।",
+              "english": "Namaste, today I will talk to you about an illness which comes every year after the rains.",
+              "speaker": "M"
+            },
+            {
+              "text": "उस बीमारी का नाम डेंगू है।",
+              "english": "That illness is called dengue.",
+              "speaker": "M"
+            },
+            {
+              "text": "मैं चाहती हूँ कि आप चिंता न करें, पर सावधानी ज़रूर रखें।",
+              "english": "I want you not to worry, but certainly to take care.",
+              "speaker": "M"
+            },
+            {
+              "text": "चिंता करने से कुछ नहीं होता, पर सावधानी से बहुत कुछ होता है।",
+              "english": "Nothing comes of worrying, but much comes of care.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "डेंगू कैसे फैलता है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दीदी, डेंगू मच्छर से होता है, यह तो मैंने सुना है।",
+              "english": "Didi, I have heard that dengue comes from the mosquito.",
+              "speaker": "S"
+            },
+            {
+              "text": "हाँ, पर हर मच्छर से नहीं।",
+              "english": "Yes, but not from every mosquito.",
+              "speaker": "M"
+            },
+            {
+              "text": "यह मच्छर साफ़ और रुके हुए पानी में रहता है, गंदे पानी में नहीं।",
+              "english": "This mosquito lives in clean, standing water, not in dirty water.",
+              "speaker": "M"
+            },
+            {
+              "text": "इसलिए यह हमारे घरों के अंदर और घरों के पास रहता है।",
+              "english": "That is why it lives inside our houses and near them.",
+              "speaker": "M"
+            },
+            {
+              "text": "तो यह पानी कहाँ रुकता है, दीदी?",
+              "english": "So where does this water stand, didi?",
+              "speaker": "G"
+            },
+            {
+              "text": "टंकी में, घड़े में, पुराने डिब्बों में, और कूलर में।",
+              "english": "In the tank, in the pitcher, in old tins, and in the cooler.",
+              "speaker": "M"
+            },
+            {
+              "text": "पौधों के नीचे जो प्लेट होती है, उसमें भी पानी रुक जाता है।",
+              "english": "Water stops also in the plate that is under plants.",
+              "speaker": "M"
+            },
+            {
+              "text": "अगर एक हफ़्ते तक वही पानी रुका रहे, तो उसमें नए मच्छर बड़े हो जाते हैं।",
+              "english": "If the same water stays standing for a week, new mosquitoes grow up in it.",
+              "speaker": "M"
+            },
+            {
+              "text": "दीदी, डर किससे ज़्यादा होना चाहिए, मच्छर से या बाघ से?",
+              "english": "Didi, which should one fear more, the mosquito or the tiger?",
+              "speaker": "A"
+            },
+            {
+              "text": "अमन, तुमने अच्छा प्रश्न पूछा।",
+              "english": "Aman, you asked a good question.",
+              "speaker": "M"
+            },
+            {
+              "text": "दुनिया में बाघ से बहुत कम लोग बीमार होते हैं, और मच्छर से बहुत ज़्यादा।",
+              "english": "In the world very few people fall ill from a tiger, and very many from the mosquito.",
+              "speaker": "M"
+            },
+            {
+              "text": "इसलिए बाघ से डरने से बड़ी बात यह है कि हम मच्छर से सावधान रहें।",
+              "english": "So bigger than fearing the tiger is that we are careful of the mosquito.",
+              "speaker": "M"
+            },
+            {
+              "text": "सब बच्चे हँस पड़े, और अमन ने मुस्कुराकर सिर उठाया।",
+              "english": "All the children burst out laughing, and Aman smiled and raised his head."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "डेंगू के लक्षण",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अगर किसी को डेंगू हो जाए, तो क्या होता है?",
+              "english": "If somebody gets dengue, what happens?",
+              "speaker": "S"
+            },
+            {
+              "text": "पहले तेज़ बुखार आता है, और सिर में बहुत दर्द होता है।",
+              "english": "First a high fever comes, and there is a lot of pain in the head.",
+              "speaker": "M"
+            },
+            {
+              "text": "हाथ-पैर में, आँखों में और पेट में भी दर्द हो सकता है।",
+              "english": "There can be pain in the arms and legs, in the eyes and in the stomach too.",
+              "speaker": "M"
+            },
+            {
+              "text": "कुछ लोगों को चक्कर आते हैं, और वे खड़े भी नहीं हो पाते।",
+              "english": "Some people get dizzy spells, and cannot even stand.",
+              "speaker": "M"
+            },
+            {
+              "text": "चक्कर आना अच्छी बात नहीं है, और ऐसे मरीज़ को जल्दी अस्पताल ले जाना चाहिए।",
+              "english": "Dizziness is not a good thing, and such a patient should be taken to the hospital quickly.",
+              "speaker": "M"
+            },
+            {
+              "text": "कभी-कभी बुखार तो उतर जाता है, पर चक्कर आते रहते हैं।",
+              "english": "Sometimes the fever goes down but the dizziness keeps coming.",
+              "speaker": "M"
+            },
+            {
+              "text": "इसलिए बुखार उतरने के बाद भी आराम करो, और जाँच कराना मत भूलो।",
+              "english": "So even after the fever goes down, rest, and do not forget to get the test done.",
+              "speaker": "M"
+            },
+            {
+              "text": "और अगर बुखार हो, तो सबसे पहले क्या करना चाहिए?",
+              "english": "And if there is fever, what should be done first?",
+              "speaker": "G"
+            },
+            {
+              "text": "बुखार को घर की दवा से ठीक करने की कोशिश मत करो।",
+              "english": "Do not try to cure the fever with home medicine.",
+              "speaker": "M"
+            },
+            {
+              "text": "पहले जाँच कराओ, क्योंकि जाँच से ही पता चलता है कि बीमारी कौन-सी है।",
+              "english": "First get a test done, because it is only through the test that it is known which illness it is.",
+              "speaker": "M"
+            },
+            {
+              "text": "जाँच कराने का फ़ैसला जल्दी लो।",
+              "english": "Take the decision to get the test done quickly.",
+              "speaker": "M"
+            },
+            {
+              "text": "जाँच के लिए पैसे कम हैं, तो हमारे पास आइए, यहाँ जाँच बिना पैसे की जाती है।",
+              "english": "If you have little money for the test, come to us, the test is done here without money.",
+              "speaker": "M"
+            },
+            {
+              "text": "महँगाई के इस समय में मैं जानती हूँ कि दवा और जाँच दोनों भारी पड़ते हैं।",
+              "english": "In this time of high prices I know that both medicine and tests weigh heavy.",
+              "speaker": "M"
+            },
+            {
+              "text": "पर देर से जाने का नुकसान इससे कहीं बड़ा होता है।",
+              "english": "But the harm of going late is far greater than this.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "क्या किया जाना चाहिए",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "तो डेंगू से बचने के लिए क्या किया जाए?",
+              "english": "So what should be done to be safe from dengue?",
+              "speaker": "S"
+            },
+            {
+              "text": "सबसे पहली बात: पानी को ढककर रखा जाए।",
+              "english": "The first thing: water should be kept covered.",
+              "speaker": "M"
+            },
+            {
+              "text": "जब पानी ढककर रखा जाता है, तो हमें मच्छरों से आज़ादी मिल जाती है।",
+              "english": "When water stays covered, we get freedom from mosquitoes.",
+              "speaker": "M"
+            },
+            {
+              "text": "टंकी, घड़े और बाल्टी, सबको ऊपर से ढककर रखो।",
+              "english": "Tank, pitcher and bucket, keep all of them covered from above.",
+              "speaker": "M"
+            },
+            {
+              "text": "पानी ढकना सबसे सीधा काम है, पर लोग यही भूल जाते हैं।",
+              "english": "To cover water is the simplest job, but people forget just this.",
+              "speaker": "M"
+            },
+            {
+              "text": "दूसरी बात: कूलर का पानी हर हफ़्ते बदला जाए।",
+              "english": "The second thing: the water of the cooler should be changed every week.",
+              "speaker": "M"
+            },
+            {
+              "text": "जब बदलने का दिन आए, तो कूलर को धोकर साफ़ किया जाए, और तब पानी भरा जाए।",
+              "english": "When the day for changing comes, the cooler should be washed and cleaned, and then the water filled.",
+              "speaker": "M"
+            },
+            {
+              "text": "फिर: पौधे की प्लेट में पानी रुकने मत दो।",
+              "english": "Then: do not let water stand in the plate of a plant.",
+              "speaker": "M"
+            },
+            {
+              "text": "पुराने डिब्बे और बर्तन, जिनमें बारिश का पानी भर जाता है, घर के पास मत रखो।",
+              "english": "Old tins and pots, in which rain water fills, do not keep near the house.",
+              "speaker": "M"
+            },
+            {
+              "text": "मोहल्ले की नाली का क्या करें?",
+              "english": "What should we do about the drain of the neighbourhood?",
+              "speaker": "G"
+            },
+            {
+              "text": "नाली और गंदगी से सीधा डेंगू नहीं होता, पर वहाँ दूसरी बीमारियाँ होती हैं।",
+              "english": "Dengue does not come straight from the drain and filth, but other illnesses occur there.",
+              "speaker": "M"
+            },
+            {
+              "text": "और अगर नाली का पानी रुके, तो घर के पास की डाल और घास भी उखाड़ दी जानी चाहिए।",
+              "english": "And if the drain's water stops, the branches and grass nearby should be pulled up too.",
+              "speaker": "M"
+            },
+            {
+              "text": "मोहल्ले की सफ़ाई का सुधार एक घर से नहीं, सब घरों से होता है।",
+              "english": "The improvement of the neighbourhood's cleanliness does not happen from one house but from all houses.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मच्छरदानी, पर्दा और साबुन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इसके बाद: रात को मच्छरदानी में सोओ।",
+              "english": "After that: sleep in a mosquito net at night.",
+              "speaker": "M"
+            },
+            {
+              "text": "मच्छरदानी में नींद भी अच्छी आती है, क्योंकि कोई काटता नहीं है।",
+              "english": "In a mosquito net sleep comes well too, because nobody bites.",
+              "speaker": "M"
+            },
+            {
+              "text": "खिड़कियों पर पर्दा लगाओ, ताकि मच्छर अंदर न आ सकें।",
+              "english": "Put a curtain on the windows, so that mosquitoes cannot come in.",
+              "speaker": "M"
+            },
+            {
+              "text": "बच्चे के हाथ-पैर कपड़े से ढककर रखो, और उसे शाम को बाहर मत बैठाओ।",
+              "english": "Keep the child's arms and legs covered with cloth, and do not make him sit outside in the evening.",
+              "speaker": "M"
+            },
+            {
+              "text": "कुछ लोग कहते हैं कि मच्छरदानी महँगी है।",
+              "english": "Some people say that the mosquito net is dear.",
+              "speaker": "M"
+            },
+            {
+              "text": "मैं कहती हूँ कि बीमारी उससे कहीं महँगी है।",
+              "english": "I say that illness is far dearer than that.",
+              "speaker": "M"
+            },
+            {
+              "text": "जिन घरों के पास मच्छरदानी नहीं है, वे हमें बताएँ, हम चंदे से कुछ लाने की कोशिश करेंगे।",
+              "english": "Houses that do not have a net should tell us, we will try to bring some with contributions.",
+              "speaker": "M"
+            },
+            {
+              "text": "और पीने के पानी का क्या?",
+              "english": "And what about drinking water?",
+              "speaker": "S"
+            },
+            {
+              "text": "पीने का पानी उबालकर पिया जाए, और उबला पानी ढककर रखा जाए।",
+              "english": "Drinking water should be boiled and drunk, and the boiled water should be kept covered.",
+              "speaker": "M"
+            },
+            {
+              "text": "उबला पानी पीने से पेट की बीमारी भी कम होती है।",
+              "english": "Drinking boiled water lessens stomach illness too.",
+              "speaker": "M"
+            },
+            {
+              "text": "दीदी, उबला पानी ठंडा करके पीना चाहिए या गरम?",
+              "english": "Didi, should boiled water be drunk cold or hot?",
+              "speaker": "G"
+            },
+            {
+              "text": "उबला पानी ठंडा करके ही पिया जाए, और बच्चे के लिए तो ज़रूर।",
+              "english": "Boiled water should be drunk only after cooling it, and for a child certainly.",
+              "speaker": "M"
+            },
+            {
+              "text": "खाना खाने से पहले और बाहर से आने के बाद साबुन से हाथ धोना चाहिए।",
+              "english": "Before eating and after coming in from outside one should wash hands with soap.",
+              "speaker": "M"
+            },
+            {
+              "text": "साबुन महँगा नहीं होता, और उससे बहुत-सी बीमारियाँ रुक जाती हैं।",
+              "english": "Soap is not dear, and many illnesses are stopped by it.",
+              "speaker": "M"
+            },
+            {
+              "text": "बच्चों को यह बात जल्दी सिखाओ, और ख़ुद भी साबुन लगाओ।",
+              "english": "Teach children this early, and apply soap yourselves too.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "फ़िल्म और सवाल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इसके बाद बच्चों ने दो मिनट की एक फ़िल्म देखी।",
+              "english": "After this the children watched a two-minute film."
+            },
+            {
+              "text": "उसमें एक छोटी लड़की सबको बता रही थी कि पानी कैसे ढका जाता है।",
+              "english": "In it a small girl was telling everybody how water is covered."
+            },
+            {
+              "text": "फ़िल्म में जब भालू का नाच आया, और वह मच्छर को भगाता हुआ दौड़ा, तो सब बच्चे ख़ूब हँसे।",
+              "english": "When in the film the dance of the bear came, and he ran chasing the mosquito away, all the children laughed a lot."
+            },
+            {
+              "text": "उन बच्चों की हँसी देखकर मीरा दीदी भी मुस्कुरा दीं।",
+              "english": "Seeing the laughter of those children Meera didi smiled too."
+            },
+            {
+              "text": "पिछली होली पर कई बच्चों ने पिचकारी में टंकी का पानी भरा था, और उसके बाद कई बच्चे बीमार पड़े थे।",
+              "english": "Last Holi many children had filled their pichkaris with tank water, and after that many children fell ill."
+            },
+            {
+              "text": "तो पिचकारी का पानी भी साफ़ होना चाहिए।",
+              "english": "So the water of the pichkari should be clean too.",
+              "speaker": "S"
+            },
+            {
+              "text": "बिलकुल, और ऐसे मौक़े पर बच्चों को साबुन से हाथ धोना सिखाओ।",
+              "english": "Certainly, and on such an occasion teach children to wash hands with soap.",
+              "speaker": "M"
+            },
+            {
+              "text": "दीदी, जब कोई घर में बीमार हो, तो पड़ोसी को क्या करना चाहिए?",
+              "english": "Didi, when somebody is ill in a house, what should the neighbour do?",
+              "speaker": "G"
+            },
+            {
+              "text": "उसे अकेलापन मत लगने दो।",
+              "english": "Do not let loneliness come over him.",
+              "speaker": "M"
+            },
+            {
+              "text": "बीमार आदमी को दवा के साथ-साथ अपने लोगों की भी ज़रूरत होती है।",
+              "english": "A sick man needs his own people along with medicine.",
+              "speaker": "M"
+            },
+            {
+              "text": "मोहल्ले के साथ रिश्ता ऐसे ही मौक़ों पर अच्छा बनता है।",
+              "english": "The relation with the neighbourhood is made good on just such occasions.",
+              "speaker": "M"
+            },
+            {
+              "text": "और कभी हम सब चिंता में पड़ जाएँ तो?",
+              "english": "And if ever all of us fall into worry?",
+              "speaker": "S"
+            },
+            {
+              "text": "तब सबसे पहले समस्या को पहचानो, और फिर सब मिलकर उसे हल करो।",
+              "english": "Then first recognise the problem, and then all together solve it.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "आख़िर में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैं आपको एक बात और बताती हूँ।",
+              "english": "I will tell you one thing more.",
+              "speaker": "M"
+            },
+            {
+              "text": "अस्पताल में हम हर मरीज़ के हाथ पर उसके नाम का एक पतला फीता बाँधते हैं।",
+              "english": "In the hospital we tie a thin ribbon with his name on the hand of every patient.",
+              "speaker": "M"
+            },
+            {
+              "text": "मैं चाहती हूँ कि आपके घर में कभी वह फीता बाँधने की ज़रूरत न पड़े।",
+              "english": "I want that in your house there never be a need to tie that ribbon.",
+              "speaker": "M"
+            },
+            {
+              "text": "इसलिए आज ही घर जाकर देखिए कि कहाँ पानी रुका है।",
+              "english": "So go home today itself and see where water is standing.",
+              "speaker": "M"
+            },
+            {
+              "text": "उसे ढकिए, बदलिए या बाहर डाल दीजिए।",
+              "english": "Cover it, change it or put it out.",
+              "speaker": "M"
+            },
+            {
+              "text": "थोड़ी-सी सावधानी से हम बहुत बड़े नुकसान से बच सकते हैं।",
+              "english": "By a little care we can be saved from a very big harm.",
+              "speaker": "M"
+            },
+            {
+              "text": "धन्यवाद, दीदी।",
+              "english": "Thank you, didi.",
+              "speaker": "S"
+            },
+            {
+              "text": "हम कल से ही शुरू करेंगे।",
+              "english": "We will start from tomorrow itself.",
+              "speaker": "S"
+            },
+            {
+              "text": "कल नहीं, आज ही।",
+              "english": "Not tomorrow, today itself.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

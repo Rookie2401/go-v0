@@ -1,0 +1,542 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-18",
+  "lang": "hi",
+  "title": "गाँव में स्वास्थ्य शिविर",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-18",
+    "title": "The medical camp in the village (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Cast: Meera didi (nurse; addressed as दीदी and आप), Dr Sunita (an invented doctor, a women's name from the adapter list), Seeta Nani (born in this village), Suresh (farmer; addressed as सुरेश जी and takes plural verbs). Nani says तू only to a small crying child. टीका is used in both of its everyday senses: a vaccination (twice) and the red tilak on a woman's forehead (once), the tilak described respectfully as part of a villager's life. The plan glosses टीका only as the tilak. The camp is open to everyone and the faith talk at the end is short and plain (God, soul, gospel, grace); no one is pressed. Medical advice is general and everyday (clean standing water, cover pots, long clothes at dusk, see a doctor at once for fever); no dosages. Please have a clinician read the malaria and dengue paragraph."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "health camp",
+    "malaria",
+    "dengue",
+    "village"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nani": "सीता नानी",
+    "sam": "सैम",
+    "meera": "मीरा दीदी",
+    "doc": "डॉक्टर सुनीता",
+    "suresh": "सुरेश"
+  },
+  "sections": [
+    {
+      "title": "सुबह गाँव में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शनिवार की सुबह सैम, मीरा दीदी और डॉक्टर सुनीता सीता नानी के गाँव पहुँचे।",
+              "english": "On Saturday morning Sam, Meera didi and Dr Sunita reached Seeta Nani's village."
+            },
+            {
+              "text": "नानी भी उनके साथ आई थीं, क्योंकि इसी गाँव में उनका बचपन बीता था।",
+              "english": "Nani had come with them too, because she had spent her childhood in this very village."
+            },
+            {
+              "text": "आज गाँव के स्कूल में स्वास्थ्य शिविर लगना था।",
+              "english": "Today a health camp was to be held at the village school."
+            },
+            {
+              "text": "बच्चों की परीक्षा हो चुकी थी, इसलिए स्कूल ख़ाली था।",
+              "english": "The children's exams were over, so the school was empty."
+            },
+            {
+              "text": "मास्टर जी ने शिविर के लिए सुबह ही कमरे की सफ़ाई की थी।",
+              "english": "For the camp the teacher had cleaned the room early that morning."
+            },
+            {
+              "text": "कमरे की दीवार पर मच्छर का एक बड़ा चित्र टाँगा गया।",
+              "english": "A big picture of a mosquito was hung on the wall of the room."
+            },
+            {
+              "text": "एक गोल मेज़ पर दवा, पट्टी और गोलियाँ रखी गईं।",
+              "english": "Medicine, bandages and tablets were put on a round table."
+            },
+            {
+              "text": "मीरा दीदी अस्पताल में नर्स हैं, इसलिए सारा सामान उन्होंने ही तैयार किया था।",
+              "english": "Meera didi is a nurse at the hospital, so she herself had got all the things ready."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी: जब मैं यहाँ पढ़ती थी, तब मास्टर के हाथ में हमेशा छड़ी रहती थी।",
+              "english": "When I studied here, the teacher always had a stick in his hand."
+            },
+            {
+              "text": "सैम: और आज मास्टर जी के पास कंप्यूटर है, नानी।",
+              "english": "And today the teacher has a computer, Nani."
+            },
+            {
+              "text": "नानी: कंप्यूटर तो है, मगर गाँव में इंटरनेट बहुत कम चलता है।",
+              "english": "There is a computer, but the internet works very little in the village."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "कौन-कौन आया",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आठ बजे से पहले ही स्कूल के बाहर कतार लग गई।",
+              "english": "Even before eight o'clock a queue had formed outside the school."
+            },
+            {
+              "text": "लोग अपनी चप्पल दरवाज़े पर उतारकर कमरे में आ रहे थे।",
+              "english": "People were taking off their sandals at the door and coming into the room."
+            },
+            {
+              "text": "सबसे पहले सिर पर सफ़ेद दुपट्टा डाले एक बूढ़ी औरत आई, जिसे कई दिन से खाँसी थी।",
+              "english": "First came an old woman with a white scarf on her head, who had had a cough for several days."
+            },
+            {
+              "text": "उसके बाद एक जवान लड़का आया, जो घोड़े से गिर गया था, और उसके पैर में बहुत चोट लगी थी।",
+              "english": "After her came a young man who had fallen from a horse, and his leg was badly hurt."
+            },
+            {
+              "text": "एक माँ अपनी छोटी बच्ची को लाई, जिसका बुखार तीन दिन से नहीं उतरा था।",
+              "english": "A mother brought her little girl, whose fever had not come down for three days."
+            },
+            {
+              "text": "एक और बच्चा बस्ता लिए खड़ा था, और वह दाँत के दर्द से रो रहा था।",
+              "english": "One more child stood with his school bag, crying with toothache."
+            },
+            {
+              "text": "दीवार पर एक बिल्ली बैठकर सबको देख रही थी।",
+              "english": "A cat sat on the wall, watching everyone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सुरेश इस गाँव के किसान हैं, और उनके पास धान और मक्का के खेत हैं।",
+              "english": "Suresh is a farmer of this village, and he has fields of rice and maize."
+            },
+            {
+              "text": "आज वे अपनी पोती के साथ आए थे।",
+              "english": "Today he had come with his granddaughter."
+            },
+            {
+              "text": "उनकी उँगली पर एक गहरा घाव था।",
+              "english": "He had a deep wound on his finger."
+            },
+            {
+              "text": "सुरेश: कल खेत में मेरी उँगली एक पत्थर से टकरा गई।",
+              "english": "Yesterday in the field my finger struck against a stone."
+            },
+            {
+              "text": "मीरा दीदी: छोटी चोट को भी साफ़ पानी से धोना चाहिए, सुरेश जी।",
+              "english": "Even a small hurt should be washed with clean water, Suresh ji."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मीरा दीदी की जाँच",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मीरा दीदी ने सबसे पहले सबका बुखार देखा।",
+              "english": "First of all Meera didi checked everyone's fever."
+            },
+            {
+              "text": "बच्ची की आँख में दवा की 2 बूँद डाली गईं।",
+              "english": "Two drops of medicine were put in the girl's eye."
+            },
+            {
+              "text": "मीरा दीदी ने माँ को दवा का समय अच्छी तरह समझाया।",
+              "english": "Meera didi explained the time of the medicine to the mother carefully."
+            },
+            {
+              "text": "एक बच्चे की नाक बंद थी, और उसकी नाक से पानी बह रहा था, क्योंकि उसे ज़ुकाम था।",
+              "english": "One child's nose was blocked and water was running from his nose, because he had a cold."
+            },
+            {
+              "text": "मीरा दीदी: ज़रा मुँह खोलो, मैं तुम्हारा दाँत देखती हूँ।",
+              "english": "Open your mouth a little, I will look at your tooth."
+            },
+            {
+              "text": "फिर उन्होंने सुरेश के घाव को धोया और उँगली पर पट्टी लगाई।",
+              "english": "Then she washed Suresh's wound and put a bandage on the finger."
+            },
+            {
+              "text": "सैम सबका नाम और उम्र एक कॉपी में लिखता गया।",
+              "english": "Sam kept writing everyone's name and age in a notebook."
+            },
+            {
+              "text": "उसने कुछ फ़ोटो भी ली, मगर पहले सबसे पूछा।",
+              "english": "He also took a few photos, but first he asked everyone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "डॉक्टर सुनीता की सलाह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "डॉक्टर: आपको गरम पानी पीना चाहिए, और रात को ठंड से बचना चाहिए।",
+              "english": "You should drink hot water, and you should keep away from the cold at night."
+            },
+            {
+              "text": "डॉक्टर: यह दवा खाने के बाद ली जाती है।",
+              "english": "This medicine is taken after eating."
+            },
+            {
+              "text": "जवान लड़के से उन्होंने कहा कि पैर पर ज़ोर नहीं डालना है।",
+              "english": "To the young man she said that he must not put weight on the foot."
+            },
+            {
+              "text": "डॉक्टर: चोट पर पट्टी हर दिन बदली जाएगी, और आपको तीन दिन आराम करना पड़ेगा।",
+              "english": "The bandage on the hurt will be changed every day, and you will have to rest for three days."
+            },
+            {
+              "text": "बच्ची की माँ बहुत घबराई हुई थी।",
+              "english": "The girl's mother was very worried."
+            },
+            {
+              "text": "डॉक्टर: घबराइए मत, इसे सोने दीजिए।",
+              "english": "Do not worry, let her sleep."
+            },
+            {
+              "text": "डॉक्टर: बुखार उतर जाए तो इसे खेलने जाने दीजिए।",
+              "english": "When the fever is gone, let her go out to play."
+            },
+            {
+              "text": "डॉक्टर: जिस बच्चे को ज़ुकाम है, उसे स्कूल जाने दीजिए, मगर गरम कपड़े पहनकर।",
+              "english": "A child who has a cold, let him go to school, but in warm clothes."
+            },
+            {
+              "text": "सुरेश से उन्होंने कहा कि घाव को रोज़ साफ़ करना है।",
+              "english": "To Suresh she said that the wound must be cleaned every day."
+            },
+            {
+              "text": "डॉक्टर: पट्टी को गीली मिट्टी से दूर रखिए।",
+              "english": "Keep the bandage away from wet soil."
+            },
+            {
+              "text": "दाँत वाले बच्चे को यह गोली दी जाएगी, और दो दिन बाद उसे अस्पताल आना है।",
+              "english": "The child with the tooth will be given this tablet, and he has to come to the hospital after two days."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दवा और टीका",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "कमरे के एक कोने में मीरा दीदी छोटे बच्चों को टीका लगा रही थीं।",
+              "english": "In one corner of the room Meera didi was giving the small children their injection."
+            },
+            {
+              "text": "एक बच्ची डर के मारे रो रही थी।",
+              "english": "One little girl was crying with fear."
+            },
+            {
+              "text": "नानी: तू मत रो, बेटी, बस एक मिनट की बात है।",
+              "english": "Don't cry, my girl, it is only a minute."
+            },
+            {
+              "text": "सैम ने जेब से एक गोल गेंद निकाली और उसे अपनी नाक पर रखकर दिखाया।",
+              "english": "Sam took a round ball out of his pocket and showed it to her, balanced on his nose."
+            },
+            {
+              "text": "बच्ची हँस पड़ी, और उसकी आँखों में एक नई चमक थी।",
+              "english": "The girl burst out laughing, and her eyes had a new sparkle."
+            },
+            {
+              "text": "लाल टीका लगाए एक औरत भी आई थी।",
+              "english": "A woman with a red tilak had also come."
+            },
+            {
+              "text": "मीरा दीदी ने उसे भी उतने ही प्यार से देखा, जितने से सबको।",
+              "english": "Meera didi looked at her with just as much kindness as at everyone."
+            },
+            {
+              "text": "बच्चों को गोल सफ़ेद गोलियाँ दी गईं।",
+              "english": "Round white tablets were given to the children."
+            },
+            {
+              "text": "दवा के अलावा हर मरीज़ को एक काग़ज़ दिया गया, जिस पर लिखा था कि दवा कैसे खानी है।",
+              "english": "Besides the medicine, every patient was given a paper on which was written how to take the medicine."
+            },
+            {
+              "text": "इसके लिए किसी को पैसा नहीं देना पड़ा।",
+              "english": "Nobody had to pay any money for it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मच्छर, मलेरिया और डेंगू",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दोपहर को स्कूल के आँगन में सब लोग छाया में बैठ गए।",
+              "english": "At noon everyone sat down in the shade in the school courtyard."
+            },
+            {
+              "text": "डॉक्टर सुनीता ने कहा कि अच्छा स्वास्थ्य पानी और सफ़ाई से शुरू होता है।",
+              "english": "Dr Sunita said that good health begins with water and cleanliness."
+            },
+            {
+              "text": "फिर वे मलेरिया और डेंगू के बारे में बताने लगीं।",
+              "english": "Then she began to tell them about malaria and dengue."
+            },
+            {
+              "text": "सुरेश: इस साल बादलों ने ख़ूब पानी बरसाया, इसलिए धान अच्छा हुआ है।",
+              "english": "This year the clouds poured down plenty of water, so the rice has done well."
+            },
+            {
+              "text": "नानी: जब मैं छोटी थी, तब भी बादल ऐसे ही पानी बरसाते थे।",
+              "english": "When I was small, the clouds poured down water like this then too."
+            },
+            {
+              "text": "डॉक्टर: मानसून में बादल पानी बरसाते हैं, और खेतों और गलियों में पानी भर जाता है।",
+              "english": "In the monsoon the clouds pour down water, and water fills the fields and lanes."
+            },
+            {
+              "text": "डॉक्टर: खेतों को सिंचाई चाहिए, इसके बिना धान नहीं उगता।",
+              "english": "The fields need irrigation; without it rice does not grow."
+            },
+            {
+              "text": "डॉक्टर: मगर घर के पास खड़ा पानी ठीक नहीं है।",
+              "english": "But standing water near the house is not good."
+            },
+            {
+              "text": "डॉक्टर: इसकी वजह यह है कि मलेरिया और डेंगू दोनों मच्छरों से होते हैं।",
+              "english": "The reason is that both malaria and dengue come from mosquitoes."
+            },
+            {
+              "text": "डॉक्टर: मलेरिया का मच्छर रात को काटता है, और डेंगू का दिन में।",
+              "english": "The malaria mosquito bites at night, and the dengue one in the daytime."
+            },
+            {
+              "text": "डॉक्टर: दोनों में तेज़ बुखार आता है, और कभी-कभी मरीज़ की मौत भी हो सकती है।",
+              "english": "Both bring a high fever, and sometimes the patient can even die."
+            },
+            {
+              "text": "डॉक्टर: मगर इनका इलाज है, और इनसे बचा जा सकता है।",
+              "english": "But there is a treatment for them, and they can be avoided."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम ने अपने फ़ोन पर एक छोटा वीडियो चलाया।",
+              "english": "Sam played a short video on his phone."
+            },
+            {
+              "text": "वीडियो में दिखाया गया कि इनकी ज़िंदगी पानी में शुरू होती है।",
+              "english": "The video showed that their life begins in the water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "डॉक्टर: एक ख़ास बात यह है कि पानी को खड़ा नहीं रहने देना है।",
+              "english": "One special point is that we must not let water stand."
+            },
+            {
+              "text": "डॉक्टर: पुराने डिब्बे में पानी हो, तो उसे निकाल दीजिए।",
+              "english": "If there is water in an old tin, pour it out."
+            },
+            {
+              "text": "डॉक्टर: घड़े और बाल्टी का पानी हफ़्ते में एक बार बदलना चाहिए, और घड़े पर थाली रखनी चाहिए।",
+              "english": "The water of the pot and bucket should be changed once a week, and a plate should be kept on the pot."
+            },
+            {
+              "text": "डॉक्टर: दूसरी बात यह है कि शाम को लंबे कपड़े पहनने चाहिए, और खिड़की-दरवाज़े बंद रखने चाहिए।",
+              "english": "The second thing is that in the evening long clothes should be worn, and the windows and doors should be kept shut."
+            },
+            {
+              "text": "डॉक्टर: और बुखार आए तो तुरंत अस्पताल आइए।",
+              "english": "And if a fever comes, come to the hospital at once."
+            },
+            {
+              "text": "डॉक्टर: बिना पूछे कोई भी दवा मत खाइए।",
+              "english": "Do not take any medicine without asking."
+            },
+            {
+              "text": "मीरा दीदी: सफ़ाई सबसे बड़ी दवा है, और जितना पानी साफ़ रहेगा, उतने ही कम लोग बीमार पड़ेंगे।",
+              "english": "Cleanliness is the best medicine, and the cleaner the water stays, the fewer people will fall ill."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "बच्चे दिन भर खड़े पानी की खोज में घूमते रहे।",
+              "english": "The children went around all day in search of standing water."
+            },
+            {
+              "text": "ज़मीन पर एक पत्थर के पास पुराना डिब्बा पड़ा था, जिसमें बारिश का पानी था।",
+              "english": "On the ground near a stone lay an old tin with rainwater in it."
+            },
+            {
+              "text": "उस डिब्बे का पानी तुरंत निकाला गया।",
+              "english": "The water of that tin was poured out at once."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पिल्ला",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "तभी एक पिल्ला आँगन में आ गया, और बच्चे हँस पड़े।",
+              "english": "Just then a puppy came into the courtyard, and the children laughed."
+            },
+            {
+              "text": "सैम ने उसे हाथ में उठा लिया।",
+              "english": "Sam picked him up."
+            },
+            {
+              "text": "नानी: यह तो गाँव के हर घर का पिल्ला है।",
+              "english": "This is the puppy of every house in the village."
+            },
+            {
+              "text": "मीरा दीदी: चाहे पिल्ला हो या बच्चा, छूने के बाद हाथ ज़रूर धो लीजिए।",
+              "english": "Whether it is a puppy or a child, be sure to wash your hands after touching."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "शाम की बात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "गाँव के कई रिश्तेदार नानी से मिलने भी आए थे।",
+              "english": "Many of the village relatives had also come to meet Nani."
+            },
+            {
+              "text": "गाँव के लोग मीरा दीदी को अब नर्स दीदी कहने लगे थे।",
+              "english": "The village people had begun to call Meera didi \"Nurse didi\"."
+            },
+            {
+              "text": "नानी: हमारे गाँव में पहली बार कोई नर्स आई है।",
+              "english": "A nurse has come to our village for the first time."
+            },
+            {
+              "text": "सुरेश जाते समय मीरा दीदी के लिए गेहूँ और मक्का का एक थैला लाए।",
+              "english": "On leaving, Suresh brought a bag of wheat and maize for Meera didi."
+            },
+            {
+              "text": "सुरेश: यह मेरे खेत का अनाज है, इसे रख लीजिए।",
+              "english": "This is grain from my field, please keep it."
+            },
+            {
+              "text": "मास्टर जी ने ऊँची आवाज़ में कहा कि यह शिविर अगले महीने फिर लगेगा, ताकि सबका टीका पूरा हो सके।",
+              "english": "The teacher said in a loud voice that this camp would be held again next month, so that everyone's vaccination can be completed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम और नानी स्कूल के बाहर बैठे थे।",
+              "english": "Sam and Nani were sitting outside the school."
+            },
+            {
+              "text": "सैम: नानी, आज मैंने सच में बहुत कुछ सीखा।",
+              "english": "Nani, today I really learned a great deal."
+            },
+            {
+              "text": "नानी: वैसे, तुम्हारे लोग सिर्फ़ दवा नहीं लाए।",
+              "english": "By the way, your people did not bring only medicine."
+            },
+            {
+              "text": "नानी: बीमार होने पर आदमी का दिल भी उदास हो जाता है, और आत्मा को भी शांति चाहिए।",
+              "english": "When one is ill the heart also grows sad, and the soul needs peace too."
+            },
+            {
+              "text": "सैम: जी हाँ, और परमेश्वर के अनुग्रह से हम यहाँ आ सके।",
+              "english": "Yes, and it is by God's grace that we could come here."
+            },
+            {
+              "text": "सैम: हम किसी पर ज़ोर नहीं डालते, लेकिन जो पूछता है, उसे यीशु का सुसमाचार ज़रूर सुनाते हैं।",
+              "english": "We do not press anyone, but whoever asks, we do tell him the good news of Jesus."
+            },
+            {
+              "text": "नानी: मैंने भी जब यह सुसमाचार सुना, तब मेरी ज़िंदगी बदल गई।",
+              "english": "When I too heard this gospel, my life changed."
+            },
+            {
+              "text": "नानी: आओ, शुद्ध पानी और अच्छे स्वास्थ्य के लिए प्रार्थना करें।",
+              "english": "Come, let us pray for clean water and good health."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

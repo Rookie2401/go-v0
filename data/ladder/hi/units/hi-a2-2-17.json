@@ -1,0 +1,394 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-17",
+  "lang": "hi",
+  "title": "स्कूल का साल कैसे चलता है",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-17",
+    "title": "\"स्कूल का साल कैसे चलता है\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A contemporary explanatory text: how a school year runs in an Indian city, as explained by रवि सर (a teacher) and written down by Sam. The school system is described in general terms (government and private schools, the right to education, admission, syllabus, exams, holidays, the parents' meeting, home speech and school speech); figures are illustrative and a reviewer should correct anything that does not match the user's own region. The festivals are named only as school holidays and without any explanation. Months are not named (the ladder has not taught them); dates and amounts are in digits. 'सरकारी' (government, adjective) is not in the plan's word list: it is used 5 times here and once each in the next three units so that it becomes known; it should be added to the list. Outside the plan (1 lemma, 5 tokens, 0.5 per 100 words): सरकारी×5. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "school",
+    "education",
+    "admission",
+    "exams"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "साल की शुरुआत",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रवि सर ने मुझे बताया कि स्कूल का साल हर जगह एक जैसा चलता है, पर हर स्कूल की अपनी बातें होती हैं।",
+              "english": "Ravi sir told me that the school year runs alike everywhere, but every school has its own matters."
+            },
+            {
+              "text": "मैंने सोचा कि मैं उनकी बातें लिख लूँ, ताकि बाद में अपने साथियों को भी बता सकूँ।",
+              "english": "I thought I would write down his words, so that I could tell my companions later too."
+            },
+            {
+              "text": "रवि सर कहते हैं कि साल की पहली बात दाख़िला है।",
+              "english": "Ravi sir says that the first matter of the year is admission."
+            },
+            {
+              "text": "हर बच्चे के लिए दाख़िला एक बड़ा दिन होता है, और माँ-बाप के लिए तो उससे भी बड़ा।",
+              "english": "For every child admission is a big day, and for the parents even bigger."
+            },
+            {
+              "text": "दाख़िले के लिए एक फ़ॉर्म भरा जाता है, जिसमें बच्चे का नाम, जन्म की तारीख़ और घर का पता लिखा जाता है।",
+              "english": "For admission a form is filled, in which the child's name, date of birth and home address are written."
+            },
+            {
+              "text": "भरा हुआ फ़ॉर्म स्कूल के दफ़्तर में दिया जाता है, और उसके साथ कुछ काग़ज़ भी दिए जाते हैं।",
+              "english": "The filled form is given in the school office, and some papers are also given with it."
+            },
+            {
+              "text": "कभी-कभी माँ-बाप को एक छोटा-सा निवेदन-पत्र भी लिखना पड़ता है।",
+              "english": "Sometimes parents also have to write a short letter of request."
+            },
+            {
+              "text": "उसमें लिखा जाता है, \"महोदय, कृपया मेरे बच्चे को अपने स्कूल में दाख़िला दें।\"",
+              "english": "In it is written, \"Sir, please give my child admission in your school.\""
+            },
+            {
+              "text": "कुछ दिन बाद स्कूल की ओर से सूचित किया जाता है कि निवेदन स्वीकार हुआ या नहीं।",
+              "english": "After a few days the school informs whether the request was accepted or not."
+            },
+            {
+              "text": "भारत का क़ानून कहता है कि 6 से 14 साल के हर बच्चे को स्कूल जाने का अधिकार है।",
+              "english": "The law of India says that every child from 6 to 14 years has the right to go to school."
+            },
+            {
+              "text": "इसका मतलब यह है कि किसी बच्चे को सिर्फ़ पैसे न होने की वजह से स्कूल से नहीं भेजा जाना चाहिए।",
+              "english": "This means that no child should be sent away from school merely because of having no money."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "क्लास और पाठ्यक्रम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दाख़िले के बाद बच्चा अपनी क्लास में जाता है।",
+              "english": "After admission the child goes to his class."
+            },
+            {
+              "text": "छोटे बच्चे पहली क्लास में बैठते हैं, और बड़े बच्चे आख़िर की क्लासों में।",
+              "english": "Small children sit in the first class, and bigger children in the last classes."
+            },
+            {
+              "text": "हर क्लास का अपना पाठ्यक्रम होता है, मतलब साल भर में कौन-से पाठ पढ़ाए जाएँगे, यह पहले से तय होता है।",
+              "english": "Every class has its own syllabus, meaning which lessons will be taught during the year is fixed beforehand."
+            },
+            {
+              "text": "पाठ्यक्रम में हिंदी, खेल, चित्र और दूसरी चीज़ें होती हैं।",
+              "english": "In the syllabus there are Hindi, games, pictures and other things."
+            },
+            {
+              "text": "पाठ्यक्रम बनाने का काम सरकार के लोग करते हैं, पर अध्यापक भी अपनी राय देते हैं।",
+              "english": "The work of making the syllabus is done by people of the government, but teachers also give their opinion."
+            },
+            {
+              "text": "रवि सर कहते हैं कि अच्छे पाठ्यक्रम में किताब की बातों के साथ ज़िंदगी की बातें भी होनी चाहिए।",
+              "english": "Ravi sir says that in a good syllabus along with the things of the book there should be things of life too."
+            },
+            {
+              "text": "उन्होंने बताया कि उनकी क्लास की किताब में बाघ की एक कहानी है, और बच्चे उसे बहुत पसंद से पढ़ते हैं।",
+              "english": "He told me that in his class book there is a story of a tiger, and children read it with great liking."
+            },
+            {
+              "text": "वह कहानी सिर्फ़ बाघ की नहीं, जंगल को बचाने की भी है, इसलिए उसमें कुछ सावधानी की सीख भी है।",
+              "english": "That story is not only of the tiger but also of saving the forest, so there is also some lesson of care in it."
+            },
+            {
+              "text": "स्कूल में रोज़ 5 से 7 क्लासें लगती हैं, और हर क्लास में क़रीब 40 मिनट होते हैं।",
+              "english": "In school 5 to 7 classes are held every day, and in every class there are about 40 minutes."
+            },
+            {
+              "text": "सुबह सब बच्चे मैदान में इकट्ठा होते हैं, और प्रार्थना और गीत के बाद अपनी क्लास में जाते हैं।",
+              "english": "In the morning all the children gather in the field, and after prayer and song they go to their classes."
+            },
+            {
+              "text": "बच्चे वर्दी पहनते हैं, जूते के फीते बाँधते हैं, और बस्ता लेकर आते हैं।",
+              "english": "Children wear uniforms, tie their shoelaces, and come with a bag."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सरकारी और निजी स्कूल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शहर में 2 तरह के स्कूल होते हैं: सरकारी स्कूल और निजी स्कूल।",
+              "english": "In the city there are two kinds of schools: government schools and private schools."
+            },
+            {
+              "text": "सरकारी स्कूल की फ़ीस बहुत कम होती है, या बिलकुल नहीं होती।",
+              "english": "The fee of a government school is very small, or there is none at all."
+            },
+            {
+              "text": "निजी स्कूल की फ़ीस ज़्यादा होती है, पर वहाँ क्लास में बच्चे कम होते हैं और पढ़ाई पर ज़्यादा ध्यान दिया जाता है।",
+              "english": "The fee of a private school is higher, but there are fewer children in the class and more attention is given to study."
+            },
+            {
+              "text": "इसलिए बहुत-से माँ-बाप क़र्ज़ लेकर भी अपने बच्चे को निजी स्कूल में भेजते हैं।",
+              "english": "That is why many parents send their child to a private school even by taking a loan."
+            },
+            {
+              "text": "रवि सर कहते हैं कि यह हमेशा ठीक नहीं है, क्योंकि अच्छे सरकारी स्कूल भी बहुत हैं।",
+              "english": "Ravi sir says that this is not always right, because there are many good government schools too."
+            },
+            {
+              "text": "उन्होंने अपना अनुभव बताया: \"मैं ख़ुद सरकारी स्कूल में पढ़ा हूँ, और मुझे कभी बुरा नहीं लगा।\"",
+              "english": "He told his experience: \"I myself studied in a government school, and I never felt bad.\""
+            },
+            {
+              "text": "मुझे सचमुच लगा कि उन्हें इस बात की ख़ुशी है, पर वे उसे कहते नहीं।",
+              "english": "I truly felt that he is happy about this, but he does not say it."
+            },
+            {
+              "text": "उनका कहना है कि सबसे बड़ी बात स्कूल का नाम नहीं, अध्यापक का मन और बच्चे की मेहनत है।",
+              "english": "His saying is that the biggest matter is not the name of the school but the teacher's heart and the child's hard work."
+            },
+            {
+              "text": "कई निजी स्कूलों में सुबह से बसें चलती हैं, और स्कूल के पास ट्रैफ़िक की समस्या हो जाती है।",
+              "english": "In many private schools buses run from the morning, and near the school a problem of traffic arises."
+            },
+            {
+              "text": "इस समस्या का हल कई जगह यह निकाला गया है कि बसें अलग-अलग वक़्त पर बुलाई जाती हैं।",
+              "english": "In many places the solution found for this problem is that the buses are called at different times."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "परीक्षा और छुट्टियाँ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "साल में 2-3 बार परीक्षा होती है।",
+              "english": "During the year there is an exam two or three times."
+            },
+            {
+              "text": "परीक्षा के दिनों में बच्चों को सावधानी से तैयारी करनी चाहिए, और माँ-बाप को भी उनका साथ देना चाहिए।",
+              "english": "In exam days children should prepare carefully, and parents should also support them."
+            },
+            {
+              "text": "हर प्रश्न-पत्र में कुछ प्रश्न छोटे होते हैं और कुछ मुश्किल।",
+              "english": "In every question paper some questions are short and some difficult."
+            },
+            {
+              "text": "रवि सर कहते हैं कि बच्चों को पहले छोटे प्रश्न हल करने चाहिए, और फिर मुश्किल प्रश्न पर वक़्त लगाना चाहिए।",
+              "english": "Ravi sir says that children should solve the short questions first, and then spend time on the difficult questions."
+            },
+            {
+              "text": "परीक्षा के बाद नतीजा आता है, और जो बच्चा पास होता है, वह अगली क्लास में जाता है।",
+              "english": "After the exam the result comes, and the child who passes goes to the next class."
+            },
+            {
+              "text": "कभी-कभी कोई बच्चा फ़ेल हो जाता है, और तब उसे बुरा लगता है।",
+              "english": "Sometimes a child fails, and then he feels bad."
+            },
+            {
+              "text": "रवि सर समझाते हैं कि फ़ेल होना कोई बुरी बात नहीं, बच्चा उससे बहुत सीखता है।",
+              "english": "Ravi sir explains that failing is nothing bad, the child learns a great deal from it."
+            },
+            {
+              "text": "साल के आख़िर की परीक्षा के बाद छुट्टियाँ होती हैं, और बच्चे बहुत ख़ुश होते हैं।",
+              "english": "After the last exam of the year there are holidays, and the children are very happy."
+            },
+            {
+              "text": "साल भर में स्कूल क़रीब 200 दिन खुलता है, और बाक़ी दिन छुट्टी रहती है।",
+              "english": "Through the year the school opens for about 200 days, and the other days are holidays."
+            },
+            {
+              "text": "होली, दिवाली और क्रिसमस की छुट्टियाँ सबको मिलती हैं, और गर्मी की छुट्टियाँ सबसे लंबी होती हैं।",
+              "english": "Holi, Diwali and Christmas holidays are given to all, and the summer holidays are the longest."
+            },
+            {
+              "text": "छुट्टियों में बच्चे नानी के घर जाते हैं, खेलते हैं और कहानियाँ सुनते हैं।",
+              "english": "In the holidays children go to their nani's house, play and hear stories."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "घर की बोली, स्कूल की भाषा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रवि सर ने एक बहुत बड़ी बात बताई।",
+              "english": "Ravi sir told me one very big matter."
+            },
+            {
+              "text": "बहुत-से बच्चे घर में एक बोली बोलते हैं, और स्कूल में हिंदी पढ़ते हैं।",
+              "english": "Many children speak one dialect at home, and study Hindi at school."
+            },
+            {
+              "text": "घर की बोली माँ के प्यार जैसी होती है, और स्कूल की हिंदी बाहर की दुनिया जैसी।",
+              "english": "The dialect of home is like a mother's love, and the Hindi of school like the outside world."
+            },
+            {
+              "text": "अगर अध्यापक बच्चे की बोली को ध्यान से नहीं सुनता, तो बच्चे के मन को चोट लगती है।",
+              "english": "If the teacher does not listen carefully to the child's dialect, the child's heart is hurt."
+            },
+            {
+              "text": "पर अगर वह उस बोली से शुरू करके धीरे-धीरे हिंदी तक ले जाता है, तो बच्चा बहुत जल्दी सीखता है।",
+              "english": "But if he starts with that dialect and slowly takes him to Hindi, the child learns very quickly."
+            },
+            {
+              "text": "इस वक़्त स्कूलों में कई जगह यही रास्ता चुना जा रहा है।",
+              "english": "At this time in many places in schools this very way is being chosen."
+            },
+            {
+              "text": "मैंने कहा कि मेरे लिए तो यह बात सचमुच एक चमत्कार जैसी है, क्योंकि मैं ख़ुद हिंदी सीख रहा हूँ।",
+              "english": "I said that for me this matter is really like a miracle, because I am myself learning Hindi."
+            },
+            {
+              "text": "रवि सर हँसे और बोले, \"तुम्हारी बोली भी अब बदल रही है, सैम।\"",
+              "english": "Ravi sir laughed and said, \"Your dialect is changing now too, Sam.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "अभिभावकों की बैठक",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हर स्कूल में साल में कुछ बार माँ-बाप की बैठक होती है।",
+              "english": "In every school a meeting of parents takes place a few times in the year."
+            },
+            {
+              "text": "उसमें माँ-बाप इकट्ठा होते हैं, और वे अपना एक अध्यक्ष चुनते हैं।",
+              "english": "In it parents gather, and they choose a chairman of their own."
+            },
+            {
+              "text": "फिर कोई सुझाव देता है, कोई प्रस्ताव रखता है, और कोई अपनी राय बताता है।",
+              "english": "Then somebody gives a suggestion, somebody makes a proposal, and somebody states his opinion."
+            },
+            {
+              "text": "अगर सब सहमत हों, तो उस पर वोट लिया जाता है।",
+              "english": "If all are agreed, a vote is taken on it."
+            },
+            {
+              "text": "कभी स्कूल के कमरों के लिए चंदा तय होता है, और कभी मैदान की घास उखाड़कर नया मैदान बनाने का फ़ैसला किया जाता है।",
+              "english": "Sometimes a contribution for the school building is fixed, and sometimes the decision is made to pull up the grass of the field and make a new field."
+            },
+            {
+              "text": "एक बार एक स्कूल में बंदर और कुत्ते इतने बढ़ गए थे कि माँ-बाप को उन्हें भगाने की योजना बनानी पड़ी।",
+              "english": "Once in a school monkeys and dogs had increased so much that the parents had to make a plan to drive them away."
+            },
+            {
+              "text": "एक और स्कूल में किसी चोर ने बस्ते चोरी कर लिए थे, और बैठक में सबने मिलकर ताला लगाने की बात की।",
+              "english": "In another school some thief had stolen bags, and in the meeting everybody together talked of putting locks."
+            },
+            {
+              "text": "रवि सर कहते हैं कि अच्छे स्कूल की ख़ास बात यह है कि वहाँ माँ-बाप, अध्यापक और बच्चे, सबकी संगति अच्छी हो।",
+              "english": "Ravi sir says the special mark of a good school is that there the fellowship of parents, teachers and children, all, is good."
+            },
+            {
+              "text": "जहाँ यह संगति होती है, वहाँ स्कूल सचमुच एक ज्योति बन जाता है।",
+              "english": "Where this fellowship exists, the school truly becomes a light."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बच्चों के लिए",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "स्कूल में बच्चों को हर दिन कुछ-न-कुछ काम मिलता है: पाठ, लिखना, परीक्षा और डर।",
+              "english": "In school children get some work every day: lessons, writing, exams and fear."
+            },
+            {
+              "text": "पर स्कूल में उन्हें दोस्त भी मिलते हैं, और खेलने का मौक़ा भी।",
+              "english": "But in school they also get friends, and the chance to play."
+            },
+            {
+              "text": "रवि सर चाहते हैं कि कोई बच्चा स्कूल से डरकर न लौटे।",
+              "english": "Ravi sir wants that no child should return from school in fear."
+            },
+            {
+              "text": "वे कहते हैं कि बच्चे को खाने के लिए उबले आलू या चावल मिलें, तो वह ज़्यादा ध्यान लगा पाता है।",
+              "english": "He says that if the child gets boiled potatoes or rice to eat, he is able to pay more attention."
+            },
+            {
+              "text": "इसलिए बहुत-से सरकारी स्कूलों में दोपहर का खाना दिया जाता है, और इससे 1,000 से ज़्यादा बच्चों को ताक़त मिलती है।",
+              "english": "That is why in many government schools a midday meal is given, and more than 1,000 children get strength from it."
+            },
+            {
+              "text": "मैंने सब कुछ अपनी कॉपी में लिख लिया, और रवि सर से कहा कि मैं उसे गली के बच्चों को पढ़कर सुनाऊँगा।",
+              "english": "I wrote everything in my notebook, and told Ravi sir that I would read it out to the children of the lane."
+            },
+            {
+              "text": "उन्होंने मुस्कुराकर कहा, \"ज़रूर सुनाओ, पर पहले अपने वक़्त पर स्कूल जाना सीखो।\"",
+              "english": "He said with a smile, \"Do read it out, but first learn to go to school on time.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

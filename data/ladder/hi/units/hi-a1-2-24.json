@@ -1,0 +1,433 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-24",
+  "lang": "hi",
+  "title": "घर के नाम चिट्ठी",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-24",
+    "title": "A letter home (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Sam writes a letter to his elder brother David and the family at home: salutation (प्यारे भैया), closing (आपका भाई), the envelope and address; present perfect (पहुँच चुका हूँ, आ गया हूँ) and future (मैं जल्दी लिखूँगा). \"भैया\" is used for the elder brother. याद (याद आती है) is not in the plan's lists and is used twice; \"सारा\" avoided. थका is used only in the masculine form because the adapter reads थकी as a verb. The neighbours, clinic, birthday and prayer words come back through the news Sam gives. Words outside the plan (measured, adapter lemmas x tokens): आसान×1, याद×1."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "letter",
+    "family",
+    "daily life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "चिट्ठी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "प्यारे भैया, नमस्ते!",
+              "english": "Dear brother, hello!"
+            },
+            {
+              "text": "मैं यह चिट्ठी आपको भेजता हूँ।",
+              "english": "I am sending you this letter."
+            },
+            {
+              "text": "मुझे आशा है कि आप सब ठीक हैं।",
+              "english": "I hope that you are all well."
+            },
+            {
+              "text": "मैं भी ठीक हूँ।",
+              "english": "I am well too."
+            },
+            {
+              "text": "यहाँ पहुँचे मुझे एक महीना हो चुका है।",
+              "english": "It has been a month since I arrived here."
+            },
+            {
+              "text": "मैं कभी-कभी बहुत थका हूँ, लेकिन मैं ख़ुश हूँ।",
+              "english": "Sometimes I am very tired, but I am happy."
+            },
+            {
+              "text": "मैं सीता नानी के घर में रहता हूँ।",
+              "english": "I live in Seeta Nani's house."
+            },
+            {
+              "text": "यह मेरा नया परिवार है।",
+              "english": "This is my new family."
+            },
+            {
+              "text": "नानी हमेशा मुस्कुराती हैं।",
+              "english": "Nani always smiles."
+            },
+            {
+              "text": "रवि सर मुझे हिंदी पढ़ाते हैं।",
+              "english": "Ravi sir teaches me Hindi."
+            },
+            {
+              "text": "मैं रोज़ बाज़ार जाता हूँ, और लोगों से बात करता हूँ।",
+              "english": "I go to the market every day, and talk to people."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "यहाँ की ख़बर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पड़ोसी बहुत अच्छे हैं।",
+              "english": "The neighbours are very good."
+            },
+            {
+              "text": "सुरेश जी सबसे पुराने हैं।",
+              "english": "Suresh ji is the oldest."
+            },
+            {
+              "text": "वह चारपाई पर बैठते हैं, और उनके पास कंबल है।",
+              "english": "He sits on a cot, and he has a blanket."
+            },
+            {
+              "text": "वह सबको जानते हैं।",
+              "english": "He knows everyone."
+            },
+            {
+              "text": "अमन के जन्मदिन की पार्टी में मामा ने मुझे बुलाया।",
+              "english": "At Aman's birthday party Mama invited me."
+            },
+            {
+              "text": "मैंने अमन को एक कमीज़ दी।",
+              "english": "I gave Aman a shirt."
+            },
+            {
+              "text": "मामा लंबा सफ़र करके आए थे।",
+              "english": "Mama had come after a long journey."
+            },
+            {
+              "text": "मामी भी आईं, और उनका नाम बहुत प्यारा है।",
+              "english": "Mami came too, and her name is very lovely."
+            },
+            {
+              "text": "मामी ने मुझे मिठाई दी।",
+              "english": "Mami gave me sweets."
+            },
+            {
+              "text": "यहाँ जीना बहुत अच्छा है।",
+              "english": "Life here is very good."
+            },
+            {
+              "text": "मुझे भूख लगती है, और नानी खाना देती हैं।",
+              "english": "I get hungry, and Nani gives me food."
+            },
+            {
+              "text": "मैं चुपचाप बैठता हूँ, और सब शांत है।",
+              "english": "I sit quietly, and everything is calm."
+            },
+            {
+              "text": "नानी चुपचाप चाय लाती हैं।",
+              "english": "Nani quietly brings tea."
+            },
+            {
+              "text": "घर बहुत शांत है।",
+              "english": "The house is very quiet."
+            },
+            {
+              "text": "सुबह मुझे भूख नहीं लगती।",
+              "english": "In the morning I do not feel hungry."
+            },
+            {
+              "text": "यहाँ जीना आसान है।",
+              "english": "Living here is easy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मेरी तबीयत",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक दिन मुझे ज़ुकाम हुआ।",
+              "english": "One day I got a cold."
+            },
+            {
+              "text": "मेरे गले में दर्द था, और कान में भी।",
+              "english": "My throat hurt, and my ear too."
+            },
+            {
+              "text": "मैं अस्पताल गया।",
+              "english": "I went to the hospital."
+            },
+            {
+              "text": "वहाँ बहुत मरीज़ थे।",
+              "english": "There were many patients there."
+            },
+            {
+              "text": "डॉक्टर ने मुझे गोली दी।",
+              "english": "The doctor gave me a tablet."
+            },
+            {
+              "text": "मैंने इंजेक्शन नहीं लिया।",
+              "english": "I did not take an injection."
+            },
+            {
+              "text": "मीरा दीदी ने एक बच्चे के हाथ पर पट्टी लगाई।",
+              "english": "Meera didi put a bandage on a child's hand."
+            },
+            {
+              "text": "इलाज बहुत अच्छा था।",
+              "english": "The treatment was very good."
+            },
+            {
+              "text": "सभी लोग अच्छे थे।",
+              "english": "Everyone was kind."
+            },
+            {
+              "text": "बच्चे अस्पताल में दौड़ते हैं।",
+              "english": "Children run around in the hospital."
+            },
+            {
+              "text": "दवा बन गई, और मैं ठीक हो गया।",
+              "english": "The medicine was made, and I got well."
+            },
+            {
+              "text": "आप परेशान मत होइए।",
+              "english": "Do not worry."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मेरा दिल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "परमेश्वर का आभार है।",
+              "english": "Thanks be to God."
+            },
+            {
+              "text": "मैं उसकी सेवा करना चाहता हूँ।",
+              "english": "I want to serve him."
+            },
+            {
+              "text": "मुझे माफ़ कीजिए, मैं देर से लिख रहा हूँ।",
+              "english": "Forgive me, I am writing late."
+            },
+            {
+              "text": "मुझे शर्म आती है।",
+              "english": "I feel ashamed."
+            },
+            {
+              "text": "सच्चाई यह है कि मुझे आपकी बहुत याद आती है।",
+              "english": "The truth is that I miss you very much."
+            },
+            {
+              "text": "मैं डरता नहीं हूँ, और मैं सब सहता हूँ।",
+              "english": "I am not afraid, and I bear everything."
+            },
+            {
+              "text": "मुझे आशा है कि आप जल्दी जवाब देंगे।",
+              "english": "I hope you will answer soon."
+            },
+            {
+              "text": "मुझे आशा है कि आपको यह ख़त अच्छा लगेगा।",
+              "english": "I hope you will like this letter."
+            },
+            {
+              "text": "आपके परिवार को मेरा नमस्ते।",
+              "english": "My greetings to your family."
+            },
+            {
+              "text": "भैया, आप माँ को मेरा नमस्ते कहिए।",
+              "english": "Brother, please give Mother my greetings."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मेरे सवाल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मेरे तीन सवाल हैं।",
+              "english": "I have three questions."
+            },
+            {
+              "text": "पहला सवाल: माँ कैसी हैं?",
+              "english": "First question: how is Mother?"
+            },
+            {
+              "text": "दूसरा सवाल: आपका परिवार कैसा है?",
+              "english": "Second question: how is your family?"
+            },
+            {
+              "text": "और एक बात: आप कब आएँगे?",
+              "english": "And one more thing: when will you come?"
+            },
+            {
+              "text": "माँ परेशान होती हैं, मैं जानता हूँ।",
+              "english": "Mother gets worried, I know."
+            },
+            {
+              "text": "मैं परेशान नहीं हूँ।",
+              "english": "I am not worried."
+            },
+            {
+              "text": "भैया, जवाब दीजिए।",
+              "english": "Brother, please answer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "तस्वीर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "चिट्ठी में एक तस्वीर है।",
+              "english": "There is a picture in the letter."
+            },
+            {
+              "text": "तस्वीर में नानी दिखती हैं।",
+              "english": "Nani can be seen in the picture."
+            },
+            {
+              "text": "मैं भी तस्वीर में दिखता हूँ।",
+              "english": "I can be seen in the picture too."
+            },
+            {
+              "text": "आप भी मेरे पास दिखेंगे, जब आप आएँगे।",
+              "english": "You will be seen next to me when you come."
+            },
+            {
+              "text": "मैं अमन को आपकी तस्वीर दिखाऊँगा।",
+              "english": "I will show Aman your picture."
+            },
+            {
+              "text": "मैं सुरेश जी को भी दिखाऊँगा।",
+              "english": "I will show Suresh ji too."
+            },
+            {
+              "text": "आप माँ को यह तस्वीर दिखाइए।",
+              "english": "Please show this picture to Mother."
+            },
+            {
+              "text": "मामी बहुत अच्छी हैं, और उनकी तस्वीर भी है।",
+              "english": "Mami is very kind, and her picture is there too."
+            },
+            {
+              "text": "आज भी मैं थका हूँ, लेकिन ख़ुश हूँ।",
+              "english": "I am tired today too, but happy."
+            },
+            {
+              "text": "थका होकर भी मैं मुस्कुराता हूँ।",
+              "english": "Even tired, I smile."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "लिफ़ाफ़ा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "यह ख़त डाक से जाएगा।",
+              "english": "This letter will go by post."
+            },
+            {
+              "text": "डाक का दफ़्तर सुबह खुलता है।",
+              "english": "The post office opens in the morning."
+            },
+            {
+              "text": "डाक बहुत जल्दी पहुँचती है।",
+              "english": "The post arrives very quickly."
+            },
+            {
+              "text": "वह दोपहर को खुलता भी है।",
+              "english": "It is open at noon too."
+            },
+            {
+              "text": "मैं लिफ़ाफ़ा भरता हूँ।",
+              "english": "I fill in the envelope."
+            },
+            {
+              "text": "लिफ़ाफ़े पर आपका पता है।",
+              "english": "On the envelope is your address."
+            },
+            {
+              "text": "मैं लिफ़ाफ़े में तस्वीर भरता हूँ।",
+              "english": "I put the picture into the envelope."
+            },
+            {
+              "text": "यह बंद होता है।",
+              "english": "It gets closed."
+            },
+            {
+              "text": "मैं सब भर चुका हूँ।",
+              "english": "I have filled in everything."
+            },
+            {
+              "text": "आपका ख़त मुझे जल्दी मिलेगा।",
+              "english": "Your letter will reach me soon."
+            },
+            {
+              "text": "मैं यहीं रहूँगा, और चिट्ठी जल्दी लिखूँगा।",
+              "english": "I will stay right here, and write a letter soon."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

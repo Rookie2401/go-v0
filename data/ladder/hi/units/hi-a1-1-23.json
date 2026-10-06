@@ -1,0 +1,227 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-1-23",
+  "lang": "hi",
+  "title": "रवि सर की कक्षा",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-1-23",
+    "title": "Ravi sir's class (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A village child (not named; the plan has no name for him) speaks in the first person in Ravi sir's class; Sam is visiting. बच्चो (vocative) and \"बच्चों को\" are the first plural forms. Honorific plural for रवि सर. Words outside the plan (measured): none."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "school",
+    "village",
+    "animals"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "रवि सर की कक्षा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम आज रवि सर की कक्षा में है।",
+              "english": "Today Sam is in Ravi sir's class."
+            },
+            {
+              "text": "कक्षा बड़ी है।",
+              "english": "The class is big."
+            },
+            {
+              "text": "अमन भी कक्षा में है।",
+              "english": "Aman is in the class too."
+            },
+            {
+              "text": "आज एक नया बच्चा भी है।",
+              "english": "Today there is a new child too."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"बच्चो, यह नया दोस्त है।\"",
+              "english": "Ravi sir says, \"Children, this is a new friend.\""
+            },
+            {
+              "text": "वह बोलते हैं, \"आप बैठिए।\"",
+              "english": "He says, \"Please sit down.\""
+            },
+            {
+              "text": "नया बच्चा अमन के पास बैठता है।",
+              "english": "The new child sits next to Aman."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"आप हिंदी में बोलिए।\"",
+              "english": "Ravi sir says, \"Please speak in Hindi.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "वह बोलता है, \"नमस्ते, सर!\"",
+              "english": "He says, \"Hello, sir!\""
+            },
+            {
+              "text": "\"मैं गाँव में रहता हूँ।\"",
+              "english": "\"I live in a village.\""
+            },
+            {
+              "text": "\"मेरा गाँव बहुत अच्छा है।\"",
+              "english": "\"My village is very nice.\""
+            },
+            {
+              "text": "\"मेरा घर बड़ा है।\"",
+              "english": "\"My house is big.\""
+            },
+            {
+              "text": "\"घर में एक आँगन है।\"",
+              "english": "\"There is a courtyard in the house.\""
+            },
+            {
+              "text": "\"आँगन में एक गाय है।\"",
+              "english": "\"There is a cow in the courtyard.\""
+            },
+            {
+              "text": "\"गाय सफ़ेद है।\"",
+              "english": "\"The cow is white.\""
+            },
+            {
+              "text": "\"सुबह मैं आँगन में जाता हूँ।\"",
+              "english": "\"In the morning I go to the courtyard.\""
+            },
+            {
+              "text": "\"मैं गाय का दूध पीता हूँ।\"",
+              "english": "\"I drink the cow's milk.\""
+            },
+            {
+              "text": "\"दूध बहुत मीठा है।\"",
+              "english": "\"The milk is very sweet.\""
+            },
+            {
+              "text": "\"शहर बड़ा है, गाँव छोटा है।\"",
+              "english": "\"The city is big, the village is small.\""
+            },
+            {
+              "text": "\"एक आदमी रोज़ शहर जाता है।\"",
+              "english": "\"A man goes to the city every day.\""
+            },
+            {
+              "text": "\"वह सब्ज़ी बेचता है।\"",
+              "english": "\"He sells vegetables.\""
+            },
+            {
+              "text": "\"मेरे घर में दादी हैं, माँ हैं और पापा हैं।\"",
+              "english": "\"In my house there are my grandmother, my mother and my father.\""
+            },
+            {
+              "text": "\"माँ रसोई में खाना बनाती हैं।\"",
+              "english": "\"Mother makes food in the kitchen.\""
+            },
+            {
+              "text": "\"पापा रोज़ काम पर जाते हैं।\"",
+              "english": "\"Father goes to work every day.\""
+            },
+            {
+              "text": "\"मैं स्कूल में पढ़ता हूँ। मुझे हिंदी पसंद है।\"",
+              "english": "\"I study at school. I like Hindi.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि सर बोलते हैं, \"बहुत अच्छा! अमन, आप बोलिए।\"",
+              "english": "Ravi sir says, \"Very good! Aman, you speak.\""
+            },
+            {
+              "text": "अमन बोलता है, \"सर, मैं यहाँ बैठता हूँ। मैं ख़ुश हूँ!\"",
+              "english": "Aman says, \"Sir, I sit here. I am happy!\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"आज कौन बीमार है?\"",
+              "english": "Ravi sir says, \"Who is ill today?\""
+            },
+            {
+              "text": "अमन बोलता है, \"सर, मुझे खाँसी है।\"",
+              "english": "Aman says, \"Sir, I have a cough.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"आपको आराम चाहिए।\"",
+              "english": "Ravi sir says, \"You need rest.\""
+            },
+            {
+              "text": "वह बोलते हैं, \"आप डॉक्टर के पास जाइए।\"",
+              "english": "He says, \"Go to the doctor.\""
+            },
+            {
+              "text": "\"डॉक्टर दवा देते हैं।\"",
+              "english": "\"The doctor gives medicine.\""
+            },
+            {
+              "text": "सैम बोलता है, \"सर, मेरे सिर में दर्द है।\"",
+              "english": "Sam says, \"Sir, I have a headache.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"सैम, आपको बुखार है?\"",
+              "english": "Ravi sir says, \"Sam, do you have a fever?\""
+            },
+            {
+              "text": "सैम बोलता है, \"नहीं, सर। मेरे पेट में भी दर्द नहीं है।\"",
+              "english": "Sam says, \"No, sir. I have no stomach ache either.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मेरी आँख भी ठीक है।\"",
+              "english": "Sam says, \"My eye is fine too.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"बीमार को आराम चाहिए।\"",
+              "english": "Ravi sir says, \"A sick person needs rest.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

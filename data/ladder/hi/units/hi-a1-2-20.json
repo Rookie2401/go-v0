@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-20",
+  "lang": "hi",
+  "title": "गुरुवार की प्रार्थना सभा",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-20",
+    "title": "Prayer meeting on Thursday (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A small prayer meeting in Pastor Anil's house. The prayers use plain Christian Hindi (हे परमेश्वर, हमें आशीष दीजिए, हमें माफ़ कीजिए, आपका आभार, आपका धन्यवाद हो) in the polite imperative and subjunctive. \"सुनीता आंटी\" is written सुनीता जी because आंटी has no reading in the word list. \"हे\" and \"गुरुवार\" and \"परीक्षा\" are not in the plan's lists for this unit (हे is needed later for John 14). The reviewer should check the prayers for naturalness and doctrine. \"मोटा\" is used for the thick Bible (मोटी बाइबल). Honorific plural for पास्टर अनिल and सुनीता जी. Words outside the plan (measured, adapter lemmas x tokens): हे×4 (needed for John 14 later), किरण×4, गुरुवार×1, परीक्षा×1."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "prayer",
+    "church",
+    "community"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "गुरुवार की प्रार्थना सभा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज गुरुवार है।",
+              "english": "Today is Thursday."
+            },
+            {
+              "text": "शाम को प्रार्थना सभा पास्टर अनिल के घर में है।",
+              "english": "In the evening the prayer meeting is at Pastor Anil's house."
+            },
+            {
+              "text": "सैम वहाँ जाता है।",
+              "english": "Sam goes there."
+            },
+            {
+              "text": "सुनीता जी और किरण भी आते हैं।",
+              "english": "Sunita ji and Kiran come too."
+            },
+            {
+              "text": "सब कुर्सी पर बैठते हैं।",
+              "english": "Everyone sits on chairs."
+            },
+            {
+              "text": "पास्टर अनिल की बाइबल बड़ी और मोटी है।",
+              "english": "Pastor Anil's Bible is big and thick."
+            },
+            {
+              "text": "वह बोलते हैं, \"आइए, हम शुरू करते हैं।\"",
+              "english": "He says, \"Come, let us begin.\""
+            },
+            {
+              "text": "बाहर एक चिड़िया है।",
+              "english": "Outside there is a bird."
+            },
+            {
+              "text": "वह प्यारा गीत गाती है।",
+              "english": "It sings a lovely song."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "पास्टर अनिल बोलते हैं, \"आज आप अपनी बात बताइए।\"",
+              "english": "Pastor Anil says, \"Today tell us what is on your mind.\""
+            },
+            {
+              "text": "सुनीता जी बोलती हैं, \"मेरी पड़ोसी बीमार हैं।\"",
+              "english": "Sunita ji says, \"My neighbour is ill.\""
+            },
+            {
+              "text": "\"मेरी पड़ोसी को बुखार है। आप प्रार्थना कीजिए।\"",
+              "english": "\"My neighbour has a fever. Please pray.\""
+            },
+            {
+              "text": "किरण बोलता है, \"मेरी नौकरी में बहुत काम है।\"",
+              "english": "Kiran says, \"There is a lot of work in my job.\""
+            },
+            {
+              "text": "सैम बोलता है, \"अमन की परीक्षा है।\"",
+              "english": "Sam says, \"Aman has an exam.\""
+            },
+            {
+              "text": "पास्टर अनिल मुस्कुराते हैं।",
+              "english": "Pastor Anil smiles."
+            },
+            {
+              "text": "वह बोलते हैं, \"हम सबके लिए प्रार्थना करेंगे।\"",
+              "english": "He says, \"We will pray for everyone.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सब खड़े होते हैं।",
+              "english": "Everyone stands."
+            },
+            {
+              "text": "पास्टर अनिल बोलते हैं, \"हे परमेश्वर, हम आपका आभार करते हैं।\"",
+              "english": "Pastor Anil says, \"O God, we give you thanks.\""
+            },
+            {
+              "text": "\"आपने हमें बारिश दी, बादल दिए, धूप दी और हवा दी।\"",
+              "english": "\"You gave us rain, clouds, sunshine and wind.\""
+            },
+            {
+              "text": "\"आपने हमें ठंड और सर्दी का मौसम भी दिया।\"",
+              "english": "\"You gave us the cold and the winter season too.\""
+            },
+            {
+              "text": "\"बिजली की आवाज़ में भी हम डरते नहीं हैं।\"",
+              "english": "\"Even in the sound of lightning we are not afraid.\""
+            },
+            {
+              "text": "\"बारिश में हम भीगते हैं, लेकिन हमारे पास छाता है।\"",
+              "english": "\"We get wet in the rain, but we have an umbrella.\""
+            },
+            {
+              "text": "\"हमें आप पर भरोसा है।\"",
+              "english": "\"We trust in you.\""
+            },
+            {
+              "text": "सब बोलते हैं, \"आमीन।\"",
+              "english": "Everyone says, \"Amen.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम भी प्रार्थना करता है।",
+              "english": "Sam prays too."
+            },
+            {
+              "text": "वह बोलता है, \"हे परमेश्वर, आपने मुझे बचाया।\"",
+              "english": "He says, \"O God, you saved me.\""
+            },
+            {
+              "text": "\"मेरा जीवन आपका है।\"",
+              "english": "\"My life is yours.\""
+            },
+            {
+              "text": "\"मुझे शर्म आती है, क्योंकि मेरे पाप बहुत थे।\"",
+              "english": "\"I feel shame, because my sins were many.\""
+            },
+            {
+              "text": "\"आप माफ़ करते हैं।\"",
+              "english": "\"You forgive.\""
+            },
+            {
+              "text": "\"मैं आपसे शांति माँगता हूँ।\"",
+              "english": "\"I ask you for peace.\""
+            },
+            {
+              "text": "\"आपका प्रेम मैं मानता हूँ।\"",
+              "english": "\"I accept your love.\""
+            },
+            {
+              "text": "\"यह मेरी दुआ है।\"",
+              "english": "\"This is my prayer.\""
+            },
+            {
+              "text": "\"मेरी गवाही अच्छी हो।\"",
+              "english": "\"May my testimony be good.\""
+            },
+            {
+              "text": "सब बोलते हैं, \"आमीन।\"",
+              "english": "Everyone says, \"Amen.\""
+            },
+            {
+              "text": "\"हम आपका आभार मानते हैं।\"",
+              "english": "\"We give you our thanks.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सुनीता जी बोलती हैं, \"हे परमेश्वर, हमारी कलीसिया को आशीष दीजिए।\"",
+              "english": "Sunita ji says, \"O God, give our church your blessing.\""
+            },
+            {
+              "text": "\"हम आपके सेवक हैं।\"",
+              "english": "\"We are your servants.\""
+            },
+            {
+              "text": "\"पास्टर अनिल भी आपके सेवक हैं।\"",
+              "english": "\"Pastor Anil is your servant too.\""
+            },
+            {
+              "text": "\"हम आपकी सेवा करना चाहते हैं।\"",
+              "english": "\"We want to serve you.\""
+            },
+            {
+              "text": "\"आपकी सेवा हमारा काम है।\"",
+              "english": "\"Serving you is our work.\""
+            },
+            {
+              "text": "\"हमें आपका आशीष चाहिए।\"",
+              "english": "\"We need your blessing.\""
+            },
+            {
+              "text": "\"हमें सच्चाई दीजिए।\"",
+              "english": "\"Give us truth.\""
+            },
+            {
+              "text": "\"आपकी सच्चाई बड़ी है।\"",
+              "english": "\"Your truth is great.\""
+            },
+            {
+              "text": "\"आपका प्यार बहुत बड़ा है।\"",
+              "english": "\"Your love is very great.\""
+            },
+            {
+              "text": "\"हम दर्द सहते हैं, पर आप हमारे साथ हैं।\"",
+              "english": "\"We bear pain, but you are with us.\""
+            },
+            {
+              "text": "\"डरो मत, सब ठीक होगा।\"",
+              "english": "\"Do not be afraid, all will be well.\""
+            },
+            {
+              "text": "\"यह मेरी भी दुआ है।\"",
+              "english": "\"This is my prayer too.\""
+            },
+            {
+              "text": "किरण बोलता है, \"हे परमेश्वर, मेरे दिल का ग़ुस्सा निकाल दीजिए।\"",
+              "english": "Kiran says, \"O God, take the anger out of my heart.\""
+            },
+            {
+              "text": "\"मुझे हर दिन माफ़ कीजिए।\"",
+              "english": "\"Forgive me every day.\""
+            },
+            {
+              "text": "\"हमें माफ़ कर दीजिए।\"",
+              "english": "\"Forgive us.\""
+            },
+            {
+              "text": "\"मुझे शर्म नहीं है, लेकिन मैं डरता हूँ।\"",
+              "english": "\"I am not ashamed, but I am afraid.\""
+            },
+            {
+              "text": "\"मैं यह सहता हूँ।\"",
+              "english": "\"I bear this.\""
+            },
+            {
+              "text": "एक मिनट सब शांति से बैठते हैं।",
+              "english": "For one minute everyone sits in peace."
+            },
+            {
+              "text": "सब दुआ करते हैं।",
+              "english": "Everyone prays."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सब वही गीत गाते हैं।",
+              "english": "Everyone sings the same song."
+            },
+            {
+              "text": "गीत प्यारा है।",
+              "english": "The song is lovely."
+            },
+            {
+              "text": "वही गीत फिर शुरू होता है।",
+              "english": "The same song begins again."
+            },
+            {
+              "text": "चिड़िया फिर गाती है।",
+              "english": "The bird sings again."
+            },
+            {
+              "text": "पास्टर अनिल बोलते हैं, \"परमेश्वर आपको आशीष दे।\"",
+              "english": "Pastor Anil says, \"May God bless you.\""
+            },
+            {
+              "text": "वह बोलते हैं, \"आपका आभार, और आपका धन्यवाद हो।\"",
+              "english": "He says, \"Our thanks to you, and may thanks be to you.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मुझे आप पर भरोसा है।\"",
+              "english": "Sam says, \"I trust you.\""
+            },
+            {
+              "text": "सुनीता जी बोलती हैं, \"हमारा भरोसा परमेश्वर में है।\"",
+              "english": "Sunita ji says, \"Our trust is in God.\""
+            },
+            {
+              "text": "सब मुस्कुराते हैं।",
+              "english": "Everyone smiles."
+            },
+            {
+              "text": "सैम मुस्कुराता है।",
+              "english": "Sam smiles."
+            },
+            {
+              "text": "सैम बोलता है, \"मेरी बाइबल छोटी है, आपकी मोटी है।\"",
+              "english": "Sam says, \"My Bible is small, yours is thick.\""
+            },
+            {
+              "text": "पास्टर अनिल बोलते हैं, \"आप भी एक मोटी बाइबल पढ़ेंगे।\"",
+              "english": "Pastor Anil says, \"You will read a thick Bible too.\""
+            },
+            {
+              "text": "सब हँसते हैं।",
+              "english": "Everyone laughs."
+            },
+            {
+              "text": "सैम बोलता है, \"पास्टर अनिल, आपकी सेवा बहुत अच्छी है।\"",
+              "english": "Sam says, \"Pastor Anil, your service is very good.\""
+            },
+            {
+              "text": "वह बोलते हैं, \"हम सब एक हैं।\"",
+              "english": "He says, \"We are all one.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं भी आपका सेवक हूँ।\"",
+              "english": "Sam says, \"I am your servant too.\""
+            },
+            {
+              "text": "पास्टर अनिल के घर में चाय है।",
+              "english": "There is tea in Pastor Anil's house."
+            },
+            {
+              "text": "सुनीता जी चाय लाती हैं।",
+              "english": "Sunita ji brings tea."
+            },
+            {
+              "text": "सब चाय पीते हैं और बात करते हैं।",
+              "english": "Everyone drinks tea and talks."
+            },
+            {
+              "text": "सैम को चाय पसंद नहीं है, लेकिन आज वह चाय पीता है।",
+              "english": "Sam does not like tea, but today he drinks tea."
+            },
+            {
+              "text": "वह बोलता है, \"यह चाय बहुत अच्छी है!\"",
+              "english": "He says, \"This tea is very good!\""
+            },
+            {
+              "text": "सब घर जाते हैं।",
+              "english": "Everyone goes home."
+            },
+            {
+              "text": "सैम बोलता है, \"सच्चाई बोलिए, यह शर्म की बात नहीं है।\"",
+              "english": "Sam says, \"Speak the truth, it is nothing to be ashamed of.\""
+            },
+            {
+              "text": "किरण बोलता है, \"मुझे सब कुछ सहना पड़ता है, लेकिन मैं ख़ुश हूँ।\"",
+              "english": "Kiran says, \"I have to bear everything, but I am happy.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

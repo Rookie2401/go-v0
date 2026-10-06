@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-15",
+  "lang": "hi",
+  "title": "छत पर बारिश",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-15",
+    "title": "Rain on the roof (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Explanation with an anecdote; habitual present, progressive (बारिश हो रही है), जब ... तब. \"बिजली\" is used for lightning once and for electric power twice (बिजली चली गई है), the second use is a pun for the reviewer to check. The recycled words come back through a rainy-day message from Pastor Anil and a short kitchen scene. Words outside the plan (measured, adapter lemmas x tokens): ठंडा×1, खिड़की×1 (under-met), किरण×1."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "weather",
+    "rain",
+    "seasons"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "explanation"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "छत पर बारिश",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज सुबह से बारिश हो रही है।",
+              "english": "Since morning it has been raining."
+            },
+            {
+              "text": "आसमान में बादल हैं।",
+              "english": "There are clouds in the sky."
+            },
+            {
+              "text": "धूप नहीं है।",
+              "english": "There is no sunshine."
+            },
+            {
+              "text": "मौसम ठंडा है।",
+              "english": "The weather is cold."
+            },
+            {
+              "text": "हवा चल रही है।",
+              "english": "The wind is blowing."
+            },
+            {
+              "text": "सैम खिड़की से बाहर देखता है।",
+              "english": "Sam looks outside from the window."
+            },
+            {
+              "text": "छत पर आवाज़ है।",
+              "english": "There is a sound on the roof."
+            },
+            {
+              "text": "अमन बोलता है, \"सैम, यह बहुत ज़ोर की है!\"",
+              "english": "Aman says, \"Sam, it is very heavy!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि सर आज नानी के घर आते हैं।",
+              "english": "Ravi sir comes to Nani's house today."
+            },
+            {
+              "text": "अमन बोलता है, \"सर, बारिश क्यों होती है?\"",
+              "english": "Aman says, \"Sir, why does it rain?\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"बादल पानी लाते हैं।\"",
+              "english": "Ravi sir says, \"The clouds bring water.\""
+            },
+            {
+              "text": "\"जब हवा आती है, तब वे आते हैं।\"",
+              "english": "\"When the wind comes, then they come.\""
+            },
+            {
+              "text": "\"जब बादल बड़े होते हैं, तब पानी आता है।\"",
+              "english": "\"When the clouds are big, then water comes.\""
+            },
+            {
+              "text": "सैम बोलता है, \"और बिजली, सर?\"",
+              "english": "Sam says, \"And lightning, sir?\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"बिजली भी आसमान में होती है।\"",
+              "english": "Ravi sir says, \"Lightning is in the sky too.\""
+            },
+            {
+              "text": "सैम बोलता है, \"आज आवाज़ बहुत है।\"",
+              "english": "Sam says, \"There is a lot of noise today.\""
+            },
+            {
+              "text": "वे दोनों देखते हैं।",
+              "english": "The two of them watch."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन बोलता है, \"सर, यह मौसम मुझे पसंद है।\"",
+              "english": "Aman says, \"Sir, I like this weather.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"क्यों, अमन?\"",
+              "english": "Ravi sir says, \"Why, Aman?\""
+            },
+            {
+              "text": "अमन बोलता है, \"क्योंकि मुझे छाता पसंद है।\"",
+              "english": "Aman says, \"Because I like my umbrella.\""
+            },
+            {
+              "text": "\"मेरा छाता नया है।\"",
+              "english": "\"My umbrella is new.\""
+            },
+            {
+              "text": "अमन उसे लेता है और बाहर जाता है।",
+              "english": "Aman takes it and goes outside."
+            },
+            {
+              "text": "हवा बहुत ज़ोर की है।",
+              "english": "The wind is very strong."
+            },
+            {
+              "text": "छाता उड़ता है!",
+              "english": "The umbrella flies away!"
+            },
+            {
+              "text": "अमन भीगता है।",
+              "english": "Aman gets wet."
+            },
+            {
+              "text": "वह भीगकर घर आता है।",
+              "english": "He comes home soaked."
+            },
+            {
+              "text": "नानी बोलती हैं, \"अमन! तुम भीग गए!\"",
+              "english": "Nani says, \"Aman! You got wet!\""
+            },
+            {
+              "text": "अमन को ग़ुस्सा आता है।",
+              "english": "Aman gets angry."
+            },
+            {
+              "text": "वह बोलता है, \"मुझे ग़ुस्सा है!\"",
+              "english": "He says, \"I am angry!\""
+            },
+            {
+              "text": "उसके दिल में ग़ुस्सा है।",
+              "english": "There is anger in his heart."
+            },
+            {
+              "text": "नानी बोलती हैं, \"पाँच मिनट आराम कीजिए।\"",
+              "english": "Nani says, \"Rest for five minutes.\""
+            },
+            {
+              "text": "\"दस मिनट में दूध गरम होगा।\"",
+              "english": "\"In ten minutes the milk will be hot.\""
+            },
+            {
+              "text": "अमन उदास बैठता है।",
+              "english": "Aman sits there sad."
+            },
+            {
+              "text": "सैम उसका साथी है।",
+              "english": "Sam is his friend."
+            },
+            {
+              "text": "सैम बोलता है, \"अमन, दिवाली में बहुत रोशनी थी।\"",
+              "english": "Sam says, \"Aman, at Diwali there was a lot of light.\""
+            },
+            {
+              "text": "\"गली में रोशनी थी, और दीया भी।\"",
+              "english": "\"There was light in the lane, and lamps too.\""
+            },
+            {
+              "text": "\"पड़ोसी घर सजाते हैं, और मिठाई लाते हैं।\"",
+              "english": "\"The neighbours decorate their houses and bring sweets.\""
+            },
+            {
+              "text": "\"त्योहार में सब बधाई देते हैं, और उपहार भी।\"",
+              "english": "\"At the festival everyone gives good wishes, and gifts too.\""
+            },
+            {
+              "text": "अमन तकिया लेता है।",
+              "english": "Aman takes a pillow."
+            },
+            {
+              "text": "वह हँसता है, और उसका दिल ख़ुश है।",
+              "english": "He laughs, and his heart is happy."
+            },
+            {
+              "text": "सैम का दिल भी ख़ुश है।",
+              "english": "Sam's heart is happy too."
+            },
+            {
+              "text": "अमन गीत गाता है।",
+              "english": "Aman sings a song."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आज ठंड बहुत है।",
+              "english": "It is very cold today."
+            },
+            {
+              "text": "ठंड में नानी दाल बनाती हैं।",
+              "english": "In the cold Nani makes dal."
+            },
+            {
+              "text": "ठंड में चाय अच्छी लगती है।",
+              "english": "Tea is nice in the cold."
+            },
+            {
+              "text": "सर्दी में दाल अच्छी लगती है।",
+              "english": "Dal is nice in winter."
+            },
+            {
+              "text": "सैम के घर में सर्दी बहुत होती है।",
+              "english": "At Sam's home the winters are long."
+            },
+            {
+              "text": "अमन को सर्दी लगती है।",
+              "english": "Aman feels cold."
+            },
+            {
+              "text": "सैम पालक धोता है और काटता है।",
+              "english": "Sam washes and cuts the spinach."
+            },
+            {
+              "text": "नानी बर्तन चूल्हे पर रखती हैं।",
+              "english": "Nani puts the pot on the stove."
+            },
+            {
+              "text": "वह तेल, हल्दी, नमक और मसाला डालती हैं।",
+              "english": "She adds oil, turmeric, salt and spice."
+            },
+            {
+              "text": "\"बीस मिनट में दाल तैयार होगी।\"",
+              "english": "\"In twenty minutes the dal will be ready.\""
+            },
+            {
+              "text": "सैम पानी उबालता है और चम्मच से देखता है।",
+              "english": "Sam boils the water and checks with a spoon."
+            },
+            {
+              "text": "नानी बोलती हैं, \"चूल्हे के पास मत जाओ।\"",
+              "english": "Nani says, \"Do not go near the stove.\""
+            },
+            {
+              "text": "नानी दाल पकाती हैं।",
+              "english": "Nani cooks the dal."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "बाहर बहुत आवाज़ होती है।",
+              "english": "There is a lot of noise outside."
+            },
+            {
+              "text": "घर में बिजली चली गई है।",
+              "english": "The power has gone off in the house."
+            },
+            {
+              "text": "अमन चिल्लाता है।",
+              "english": "Aman shouts."
+            },
+            {
+              "text": "सैम बोलता है, \"मैं यहाँ हूँ, अमन।\"",
+              "english": "Sam says, \"I am here, Aman.\""
+            },
+            {
+              "text": "फ़ोन बजता है।",
+              "english": "The phone rings."
+            },
+            {
+              "text": "यह पास्टर अनिल का संदेश है।",
+              "english": "This is Pastor Anil's message."
+            },
+            {
+              "text": "सूचना: बैठक कल होगी।",
+              "english": "Notice: the meeting will be tomorrow."
+            },
+            {
+              "text": "मेहमान कल आएँगे।",
+              "english": "The guests will come tomorrow."
+            },
+            {
+              "text": "किरण को नौकरी पर जाना है।",
+              "english": "Kiran has to go to work."
+            },
+            {
+              "text": "वह जवाब भेजता है।",
+              "english": "He sends a reply."
+            },
+            {
+              "text": "यह अच्छी ख़बर है, क्योंकि कल धूप होगी।",
+              "english": "This is good news, because tomorrow there will be sunshine."
+            },
+            {
+              "text": "सैम बोलता है, \"इस साल बारिश जल्दी आई।\"",
+              "english": "Sam says, \"This year the rain came early.\""
+            },
+            {
+              "text": "वह फ़ोन लगाता है और जवाब देता है।",
+              "english": "He calls and gives an answer."
+            },
+            {
+              "text": "अमन बोलता है, \"मौसम कल अच्छा होगा, और मैं उसे नहीं लूँगा!\"",
+              "english": "Aman says, \"The weather will be good tomorrow, and I will not take it!\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं धूप में बैठूँगा।\"",
+              "english": "Sam says, \"I will sit in the sun.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

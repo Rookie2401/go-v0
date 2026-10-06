@@ -1,0 +1,375 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-06",
+  "lang": "hi",
+  "title": "गाँव की रेलगाड़ी",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-06",
+    "title": "The train to the village (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Present and future narration with dialogue. \"रेलगाड़ी\" is in the plan's title but the text says ट्रेन (the word the plan teaches). Purpose with -ने के लिए (टिकट लेने के लिए), ability with सकना, future. The farmer is not named. प्लेटफ़ॉर्म is a loanword that the adapter now reads. Honorific plural for रवि सर and the farmer. Words outside the plan (measured, adapter lemmas x tokens): खेत×1 (under-met)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "travel",
+    "train",
+    "village"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "गाँव की रेलगाड़ी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज हम गाँव जाते हैं।",
+              "english": "Today we are going to the village."
+            },
+            {
+              "text": "परसों रवि सर ने कहा, \"अगले हफ़्ते हम गाँव जाएँगे।\"",
+              "english": "The day before yesterday Ravi sir said, \"Next week we will go to the village.\""
+            },
+            {
+              "text": "यह हम सबकी योजना है।",
+              "english": "This is everyone's plan."
+            },
+            {
+              "text": "कल सैम ने अपने बैग की तैयारी की।",
+              "english": "Yesterday Sam got his bag ready."
+            },
+            {
+              "text": "अमन आज बहुत जल्दी जागता है।",
+              "english": "Aman wakes up very early today."
+            },
+            {
+              "text": "वह बोलता है, \"सर, हम ज़रूर पहुँचेंगे!\"",
+              "english": "He says, \"Sir, we will surely arrive!\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"हाँ, अमन। ट्रेन नौ बजे है।\"",
+              "english": "Ravi sir says, \"Yes, Aman. The train is at nine.\""
+            },
+            {
+              "text": "सैम बोलता है, \"सर, शायद ट्रेन देर से आएगी।\"",
+              "english": "Sam says, \"Sir, perhaps the train will come late.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"नहीं, मेरे पास समय है।\"",
+              "english": "Ravi sir says, \"No, we have time.\""
+            },
+            {
+              "text": "वह बोलते हैं, \"आज का सफ़र आधा दिन का है।\"",
+              "english": "He says, \"Today's journey is half a day.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "हम स्टेशन जाते हैं।",
+              "english": "We go to the station."
+            },
+            {
+              "text": "स्टेशन बड़ा है।",
+              "english": "The station is big."
+            },
+            {
+              "text": "स्टेशन में बहुत लोग हैं।",
+              "english": "There are many people in the station."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"टिकट लेने के लिए आप यहाँ आइए।\"",
+              "english": "Ravi sir says, \"Come here to buy the tickets.\""
+            },
+            {
+              "text": "वह तीन टिकट लेते हैं।",
+              "english": "He buys three tickets."
+            },
+            {
+              "text": "सैम बोलता है, \"सर, मेरे पास पैसा है।\"",
+              "english": "Sam says, \"Sir, I have money.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"आज मैं पैसा देता हूँ।\"",
+              "english": "Ravi sir says, \"Today I pay.\""
+            },
+            {
+              "text": "अमन बोलता है, \"सर, टिकट मुझे दीजिए!\"",
+              "english": "Aman says, \"Sir, give the tickets to me!\""
+            },
+            {
+              "text": "सैम बोलता है, \"कौन सी ट्रेन है?\"",
+              "english": "Sam says, \"Which train is it?\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"प्लेटफ़ॉर्म नंबर 3 पर।\"",
+              "english": "Ravi sir says, \"On platform number 3.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "प्लेटफ़ॉर्म पर बहुत लोग हैं।",
+              "english": "There are many people on the platform."
+            },
+            {
+              "text": "हम इंतज़ार करते हैं।",
+              "english": "We wait."
+            },
+            {
+              "text": "हम सबके पास बैग हैं।",
+              "english": "We all have bags."
+            },
+            {
+              "text": "सैम का सामान बड़ा है।",
+              "english": "Sam's things are big."
+            },
+            {
+              "text": "एक किसान भी इंतज़ार करता है।",
+              "english": "A farmer is waiting too."
+            },
+            {
+              "text": "वह सैम को देखता है।",
+              "english": "He looks at Sam."
+            },
+            {
+              "text": "वह बोलता है, \"आप कहाँ जाते हैं?\"",
+              "english": "He says, \"Where are you going?\""
+            },
+            {
+              "text": "सैम बोलता है, \"हम गाँव जाते हैं।\"",
+              "english": "Sam says, \"We are going to the village.\""
+            },
+            {
+              "text": "वह बोलता है, \"मैं भी वहाँ तक जाता हूँ।\"",
+              "english": "He says, \"I am going that far too.\""
+            },
+            {
+              "text": "वह सैम का सामान उठाता है।",
+              "english": "He picks up Sam's things."
+            },
+            {
+              "text": "सैम बोलता है, \"धन्यवाद! मैं उठा सकता हूँ।\"",
+              "english": "Sam says, \"Thank you! I can lift it.\""
+            },
+            {
+              "text": "वह बोलता है, \"नहीं, नहीं। मैं उठा सकता हूँ।\"",
+              "english": "He says, \"No, no. I can lift it.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "घड़ी में नौ बजे हैं।",
+              "english": "The clock says nine."
+            },
+            {
+              "text": "कुछ देर बाद ट्रेन आती है।",
+              "english": "A little later the train comes."
+            },
+            {
+              "text": "प्लेटफ़ॉर्म के सामने ट्रेन है।",
+              "english": "The train is in front of the platform."
+            },
+            {
+              "text": "हम ट्रेन में चढ़ते हैं।",
+              "english": "We get on the train."
+            },
+            {
+              "text": "अमन चढ़ता है।",
+              "english": "Aman gets on."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"सीट नंबर 12 और 13।\"",
+              "english": "Ravi sir says, \"Seats number 12 and 13.\""
+            },
+            {
+              "text": "हम अपनी सीट पर बैठते हैं।",
+              "english": "We sit on our seats."
+            },
+            {
+              "text": "सीट बहुत बड़ी है।",
+              "english": "The seat is very big."
+            },
+            {
+              "text": "किसान भी वहाँ बैठता है।",
+              "english": "The farmer sits there too."
+            },
+            {
+              "text": "सामान नीचे है।",
+              "english": "The things are down below."
+            },
+            {
+              "text": "सैम बोलता है, \"सर, मैं भी चढ़ सकता हूँ।\"",
+              "english": "Sam says, \"Sir, I can get on too.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ट्रेन चलती है।",
+              "english": "The train moves."
+            },
+            {
+              "text": "शहर पीछे रह जाता है।",
+              "english": "The city is left behind."
+            },
+            {
+              "text": "ट्रेन पुल पर चलती है।",
+              "english": "The train goes over a bridge."
+            },
+            {
+              "text": "सैम का मोबाइल बजता है।",
+              "english": "Sam's mobile rings."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"सैम, यह मेरा फ़ोन है, आपका नहीं!\"",
+              "english": "Ravi sir says, \"Sam, that is my phone, not yours!\""
+            },
+            {
+              "text": "सैम बाहर देखता है।",
+              "english": "Sam looks outside."
+            },
+            {
+              "text": "खेत में पेड़ हैं, और गाय भी।",
+              "english": "There are trees in the fields, and cows too."
+            },
+            {
+              "text": "एक कौआ उड़ता है।",
+              "english": "A crow flies."
+            },
+            {
+              "text": "अमन बोलता है, \"सर, गाँव तक कितना समय है?\"",
+              "english": "Aman says, \"Sir, how long is it to the village?\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"थोड़ी देर बाद गाँव आएगा।\"",
+              "english": "Ravi sir says, \"The village will come in a little while.\""
+            },
+            {
+              "text": "सैम बोलता है, \"सर, सफ़र बहुत अच्छा है।\"",
+              "english": "Sam says, \"Sir, the journey is very good.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "वह बोलता है, \"मैं एक महीना शहर में रहता हूँ।\"",
+              "english": "He says, \"I stay in the city for a month.\""
+            },
+            {
+              "text": "वह बोलता है, \"अगले महीने मैं गाँव में रहूँगा।\"",
+              "english": "He says, \"Next month I will stay in the village.\""
+            },
+            {
+              "text": "वह बोलता है, \"एक महीना जल्दी जाता है।\"",
+              "english": "He says, \"A month goes quickly.\""
+            },
+            {
+              "text": "गाँव की गली छोटी है, मोहल्ला भी छोटा है।",
+              "english": "The village lane is small, the neighbourhood is small too."
+            },
+            {
+              "text": "वहाँ मकान छोटे हैं।",
+              "english": "The houses there are small."
+            },
+            {
+              "text": "मकान की दीवार सफ़ेद है।",
+              "english": "The wall of the house is white."
+            },
+            {
+              "text": "ट्रेन गाँव पहुँचती है।",
+              "english": "The train reaches the village."
+            },
+            {
+              "text": "हम उतरते हैं।",
+              "english": "We get down."
+            },
+            {
+              "text": "अमन बोलता है, \"सर, यह कौन सा गाँव है?\"",
+              "english": "Aman says, \"Sir, which village is this?\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"यह नानी का गाँव है।\"",
+              "english": "Ravi sir says, \"This is Nani's village.\""
+            },
+            {
+              "text": "सब उतरते हैं।",
+              "english": "Everyone gets down."
+            },
+            {
+              "text": "सैम भी उतरता है।",
+              "english": "Sam gets down too."
+            },
+            {
+              "text": "सैम बोलता है, \"धन्यवाद, किसान भाई!\"",
+              "english": "Sam says, \"Thank you, farmer brother!\""
+            },
+            {
+              "text": "वह बोलता है, \"फिर मिलेंगे!\"",
+              "english": "He says, \"We will meet again!\""
+            },
+            {
+              "text": "वहाँ रवि सर का दोस्त इंतज़ार करता है।",
+              "english": "Ravi sir's friend is waiting there."
+            },
+            {
+              "text": "अमन बोलता है, \"सर, हम गाँव आ गए!\"",
+              "english": "Aman says, \"Sir, we have come to the village!\""
+            },
+            {
+              "text": "सैम बोलता है, \"यह सफ़र बहुत अच्छा था!\"",
+              "english": "Sam says, \"This journey was very good!\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

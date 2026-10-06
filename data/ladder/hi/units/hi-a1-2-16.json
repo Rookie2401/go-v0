@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-16",
+  "lang": "hi",
+  "title": "मेरी कहानी: सैम की गवाही",
+  "contentType": "testimony",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-16",
+    "title": "My story (Sam) (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "First-person testimony in simple language. The perfective with ने (मैंने ... माँगी; उसने कहा कि ...) and कि-clauses; habitual past (करते थे, पढ़ता था). Christian words as Hindi churches say them (परमेश्वर, यीशु, क्षमा, शांति, कलीसिया). परमेश्वर and यीशु are read as names by the adapter and count as known. \"मेरी गवाही\" is the plan's word for testimony; a Hindi Christian reviewer should confirm that गवाही is the natural everyday word. The last third brings back the Diwali, kitchen and message words as the story of the first year in this city. Sam's personal history here (a quiet home, work, money, an empty heart) is invented for the course and must be checked by the owner. Words outside the plan (measured, adapter lemmas x tokens): कपड़ा×2 (under-met)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "testimony",
+    "faith",
+    "life story"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "मेरी कहानी: सैम की गवाही",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "यह मेरी गवाही है।",
+              "english": "This is my testimony."
+            },
+            {
+              "text": "मैं सैम हूँ।",
+              "english": "I am Sam."
+            },
+            {
+              "text": "जब मैं छोटा था, मेरा घर अच्छा था।",
+              "english": "When I was small, my home was good."
+            },
+            {
+              "text": "मेरी माँ और मेरे पापा मुझसे प्यार करते थे।",
+              "english": "My mother and my father loved me."
+            },
+            {
+              "text": "मेरा भाई और मेरी बहन भी अच्छे थे।",
+              "english": "My brother and my sister were good too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "लेकिन जब मैं बड़ा हुआ, मेरा दिल उदास था।",
+              "english": "But when I grew up, my heart was sad."
+            },
+            {
+              "text": "मैंने बहुत काम किया।",
+              "english": "I worked a lot."
+            },
+            {
+              "text": "मुझे नौकरी मिली, और मेरे पास पैसा भी था।",
+              "english": "I got a job, and I had money too."
+            },
+            {
+              "text": "मैं अच्छे कपड़े पहनता था।",
+              "english": "I wore good clothes."
+            },
+            {
+              "text": "लेकिन मेरे दिल में शांति नहीं थी।",
+              "english": "But there was no peace in my heart."
+            },
+            {
+              "text": "मैंने दुनिया में शांति ढूँढी।",
+              "english": "I looked for peace in the world."
+            },
+            {
+              "text": "मैं रोया।",
+              "english": "I wept."
+            },
+            {
+              "text": "मैं बहुत रोता था।",
+              "english": "I wept a lot."
+            },
+            {
+              "text": "मेरे जीवन में प्रेम नहीं था।",
+              "english": "There was no love in my life."
+            },
+            {
+              "text": "मुझे प्यार चाहिए था।",
+              "english": "I needed love."
+            },
+            {
+              "text": "मेरे पाप बहुत थे, और मैं यह समझता था।",
+              "english": "My sins were many, and I knew it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "एक दिन एक अजनबी मेरे पास आया।",
+              "english": "One day a stranger came to me."
+            },
+            {
+              "text": "उसने मेरा हाथ पकड़ा।",
+              "english": "He took my hand."
+            },
+            {
+              "text": "उसने कहा कि परमेश्वर तुमसे प्रेम करता है।",
+              "english": "He said that God loves you."
+            },
+            {
+              "text": "मैंने उसकी बात नहीं मानी।",
+              "english": "I did not accept his words."
+            },
+            {
+              "text": "मैंने पूछा, \"परमेश्वर कहाँ है?\"",
+              "english": "I asked, \"Where is God?\""
+            },
+            {
+              "text": "अजनबी ने मुझे एक बाइबल दी।",
+              "english": "The stranger gave me a Bible."
+            },
+            {
+              "text": "मैंने बाइबल पढ़ी।",
+              "english": "I read the Bible."
+            },
+            {
+              "text": "मैंने पढ़ा कि परमेश्वर ने दुनिया से प्रेम किया।",
+              "english": "I read that God loved the world."
+            },
+            {
+              "text": "मैंने यह बात मानी।",
+              "english": "I accepted this."
+            },
+            {
+              "text": "मैंने भी उसका हाथ पकड़ा।",
+              "english": "I took his hand too."
+            },
+            {
+              "text": "मैंने अपना पाप समझा।",
+              "english": "I understood my sin."
+            },
+            {
+              "text": "अगर आप चाहें, तो आप भी बाइबल पढ़िए।",
+              "english": "If you want, you too, read the Bible."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "तब मैंने परमेश्वर से क्षमा माँगी।",
+              "english": "Then I asked God for forgiveness."
+            },
+            {
+              "text": "मैंने और भी बहुत कुछ माँगा।",
+              "english": "I asked for much more as well."
+            },
+            {
+              "text": "यीशु ने मुझे बचाया।",
+              "english": "Jesus saved me."
+            },
+            {
+              "text": "मेरा पाप क्षमा हुआ।",
+              "english": "My sin was forgiven."
+            },
+            {
+              "text": "मेरे दिल में शांति आई।",
+              "english": "Peace came into my heart."
+            },
+            {
+              "text": "मेरा जीवन नया हुआ।",
+              "english": "My life became new."
+            },
+            {
+              "text": "अब मैं उदास नहीं हूँ।",
+              "english": "Now I am not sad."
+            },
+            {
+              "text": "परमेश्वर ने मुझे प्यार दिया।",
+              "english": "God gave me love."
+            },
+            {
+              "text": "मैंने नए कपड़े पहने, और मैं हँसा।",
+              "english": "I put on new clothes, and I laughed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मैं पास्टर अनिल की कलीसिया में गया।",
+              "english": "I went to Pastor Anil's church."
+            },
+            {
+              "text": "कलीसिया के लोग अच्छे हैं।",
+              "english": "The people of the church are good."
+            },
+            {
+              "text": "मैं हर रविवार कलीसिया जाता हूँ।",
+              "english": "I go to the church every Sunday."
+            },
+            {
+              "text": "वहाँ मैं अजनबी नहीं हूँ।",
+              "english": "There I am not a stranger."
+            },
+            {
+              "text": "परमेश्वर सबको क्षमा करता है।",
+              "english": "God forgives everyone."
+            },
+            {
+              "text": "वह दुनिया को बचाता है।",
+              "english": "He saves the world."
+            },
+            {
+              "text": "वह आपको भी बचाता है।",
+              "english": "He saves you too."
+            },
+            {
+              "text": "आप भी माँगिए, और मानिए।",
+              "english": "You too, ask, and believe."
+            },
+            {
+              "text": "मैं अपनी गवाही सबको देता हूँ।",
+              "english": "I give my testimony to everyone."
+            },
+            {
+              "text": "मैं इस शहर में अपनी गवाही के लिए आया।",
+              "english": "I came to this city to give my testimony."
+            },
+            {
+              "text": "यह मेरा नया जीवन है।",
+              "english": "This is my new life."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "इस साल मैं नानी के घर में मेहमान हूँ।",
+              "english": "This year I am a guest at Nani's house."
+            },
+            {
+              "text": "नानी बहुत अच्छी हैं।",
+              "english": "Nani is very kind."
+            },
+            {
+              "text": "अमन मेरा दोस्त है।",
+              "english": "Aman is my friend."
+            },
+            {
+              "text": "रवि सर मुझे हिंदी पढ़ाते हैं।",
+              "english": "Ravi sir teaches me Hindi."
+            },
+            {
+              "text": "मैं रोज़ बाज़ार जाता हूँ, और लोगों से बात करता हूँ।",
+              "english": "I go to the market every day and talk with people."
+            },
+            {
+              "text": "मैं यहाँ बहुत ख़ुश हूँ।",
+              "english": "I am very happy here."
+            },
+            {
+              "text": "नानी पालक धोती हैं और काटती हैं।",
+              "english": "Nani washes and cuts the spinach."
+            },
+            {
+              "text": "वह बर्तन चूल्हे पर रखती हैं।",
+              "english": "She puts the pot on the stove."
+            },
+            {
+              "text": "वह तेल, हल्दी, नमक और मसाला डालती हैं।",
+              "english": "She adds oil, turmeric, salt and spice."
+            },
+            {
+              "text": "मैं चम्मच से देखता हूँ।",
+              "english": "I check with a spoon."
+            },
+            {
+              "text": "नानी पानी उबालती हैं और दाल पकाती हैं।",
+              "english": "Nani boils water and cooks the dal."
+            },
+            {
+              "text": "नानी बोलती हैं, \"मत भागो।\"",
+              "english": "Nani says, \"Don't run.\""
+            },
+            {
+              "text": "दिवाली में पड़ोसी घर सजाते हैं।",
+              "english": "At Diwali the neighbours decorate their houses."
+            },
+            {
+              "text": "गली में रोशनी है, और दीया भी।",
+              "english": "There is light in the lane, and lamps too."
+            },
+            {
+              "text": "मैंने त्योहार की बधाई दी।",
+              "english": "I wished them well for the festival."
+            },
+            {
+              "text": "उन्होंने मुझे मिठाई दी।",
+              "english": "They gave me sweets."
+            },
+            {
+              "text": "मैंने उपहार में एक तकिया दिया।",
+              "english": "I gave a pillow as a gift."
+            },
+            {
+              "text": "एक बच्चा उदास था, और अमन उसका साथी है।",
+              "english": "A child was sad, and Aman is his friend."
+            },
+            {
+              "text": "पास्टर अनिल ने संदेश भेजा।",
+              "english": "Pastor Anil sent a message."
+            },
+            {
+              "text": "उसमें बैठक की सूचना थी।",
+              "english": "There was a notice of the meeting in it."
+            },
+            {
+              "text": "मैंने जवाब दिया।",
+              "english": "I gave a reply."
+            },
+            {
+              "text": "यह अच्छी ख़बर थी।",
+              "english": "It was good news."
+            },
+            {
+              "text": "बैठक में बच्चे चिल्लाते हैं।",
+              "english": "At the meeting the children shout."
+            },
+            {
+              "text": "मैंने फ़ोन लगाया।",
+              "english": "I made the call."
+            },
+            {
+              "text": "परमेश्वर ने मेरी नौकरी और मेरा साल अच्छा किया।",
+              "english": "God made my job and my year good."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

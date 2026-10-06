@@ -1,0 +1,503 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-16",
+  "lang": "hi",
+  "title": "परीक्षा का हफ़्ता",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-16",
+    "title": "Exam week (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: the children say आप to रवि सर and तुम to each other; रवि सर says तुम to the children; Aman says आप to Nani, who says तुम to him. Sam says तुम to Aman. The friends are दीपक and आरती (two names from the adapter name list), classmates of Aman; they are deliberately not प्रिया and रोहन, who run the phone shop in the neighbouring units. आरती is शर्मा जी की पोती, the old neighbour of the world facts. Outside word: सर (x4, always in \"रवि सर\", the name the cast uses; the adapter has no lemma for it). Please consider adding सर to a list. Contrary-to-fact: अगर मैंने ... पढ़ा होता तो ... नहीं लगता (Aman) and अगर मैंने ... पढ़ा होता तो ... पास होता (Deepak). Please check that the -ता ... -ता frames read naturally. Ravi sir's goat story is an original mini-fable (no source). मास्टर जी with a stick is told as the teacher's own school memory, not as something he does. The exam is a Hindi paper with multiple-choice parts (चार जवाबों में से सही जवाब चुनो), which is the reviewer's call."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "school",
+    "exam",
+    "advice",
+    "hopes and fears"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "aman": "अमन",
+    "ravi": "रवि सर",
+    "deepak": "दीपक",
+    "aarti": "आरती",
+    "sam": "सैम",
+    "nani": "सीता नानी"
+  },
+  "sections": [
+    {
+      "title": "कक्षा में सुबह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अगले हफ़्ते से स्कूल में परीक्षा शुरू होनी थी।",
+              "english": "The exams at school were to begin next week."
+            },
+            {
+              "text": "आज सुबह कक्षा में सब बच्चे चुपचाप बैठे थे।",
+              "english": "This morning all the children sat quietly in the classroom."
+            },
+            {
+              "text": "अमन अपने बस्ते में पेंसिल खोज रहा था।",
+              "english": "Aman was looking for a pencil in his school bag."
+            },
+            {
+              "text": "उसके पास एक कॉपी थी, पर कलम नहीं मिल रही थी।",
+              "english": "He had an exercise book, but he could not find a pen."
+            },
+            {
+              "text": "दीपक कक्षा के पीछे वाले कोने में बैठा था, और वह उदास था।",
+              "english": "Deepak sat in the back corner of the classroom, and he was sad."
+            },
+            {
+              "text": "आरती शर्मा जी की पोती है, और वह कक्षा की सबसे छोटी बच्ची है।",
+              "english": "Aarti is Sharma ji's granddaughter, and she is the smallest child in the class."
+            },
+            {
+              "text": "उसकी वर्दी साफ़ थी, और उसका दुपट्टा हरा था।",
+              "english": "Her uniform was clean, and her scarf was green."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन: दीपक, तुम इतने उदास क्यों हो?",
+              "english": "Deepak, why are you so sad?"
+            },
+            {
+              "text": "दीपक: अगर मैं फ़ेल हो गया तो पापा को बहुत ग़ुस्सा आएगा।",
+              "english": "If I fail, Papa will be very angry."
+            },
+            {
+              "text": "दीपक: मैंने पूरे साल पढ़ाई नहीं की।",
+              "english": "I did not study all year."
+            },
+            {
+              "text": "आरती: सच कहूँ तो मुझे भी डर लग रहा है।",
+              "english": "To tell the truth, I am afraid too."
+            },
+            {
+              "text": "अमन: मुझे सबसे ज़्यादा इस बात का डर है कि मुझे कुछ याद नहीं आएगा।",
+              "english": "What I fear most is that I will not remember anything."
+            },
+            {
+              "text": "अमन: पर अगर मैं पास हो गया तो नानी बहुत ख़ुश होंगी।",
+              "english": "But if I pass, Nani will be very happy."
+            },
+            {
+              "text": "आरती: पास वही होगा जो रोज़ पढ़ता है।",
+              "english": "The one who studies every day will be the one to pass."
+            },
+            {
+              "text": "तभी घंटी बजी, और रवि सर कक्षा में आए।",
+              "english": "Just then the bell rang, and Ravi sir came into the classroom."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "रवि सर की सलाह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रवि: बच्चो, अपनी कॉपी बंद करो और मेरी बात सुनो।",
+              "english": "Children, close your books and listen to me."
+            },
+            {
+              "text": "रवि: परीक्षा से इतना डरना नहीं चाहिए।",
+              "english": "You should not be so afraid of the exam."
+            },
+            {
+              "text": "रवि: यह सिर्फ़ एक इम्तिहान है, और ज़िंदगी में हर दिन एक नया इम्तिहान आता है।",
+              "english": "This is only one test, and in life a new test comes every day."
+            },
+            {
+              "text": "दीपक: हमारे पुराने मास्टर तो हाथ में छड़ी रखते थे।",
+              "english": "Our old teachers used to keep a stick in their hands."
+            },
+            {
+              "text": "रवि: मेरे मास्टर जी भी छड़ी रखते थे।",
+              "english": "My teacher also kept a stick."
+            },
+            {
+              "text": "रवि: उस छड़ी की वजह से मुझे स्कूल से डर लगता था।",
+              "english": "Because of that stick I was afraid of school."
+            },
+            {
+              "text": "रवि: मैं चाहता हूँ कि तुम न डरो, मैं तुम्हें सिखाता हूँ।",
+              "english": "I want you not to be afraid; I teach you."
+            },
+            {
+              "text": "रवि: अब मेरी तीन ख़ास बातें सुनो।",
+              "english": "Now listen to my three special points."
+            },
+            {
+              "text": "रवि: पहली बात: रात को जल्दी सोना चाहिए, और सुबह सात बजे स्कूल पहुँचना है।",
+              "english": "First: you should go to sleep early at night, and you have to reach school at seven in the morning."
+            },
+            {
+              "text": "रवि: अपना बस्ता रात को ही तैयार करो।",
+              "english": "Get your school bag ready the night before."
+            },
+            {
+              "text": "रवि: साफ़ वर्दी पहनकर आओ, और काली या नीली कलम लाओ।",
+              "english": "Come in a clean uniform, and bring a black or blue pen."
+            },
+            {
+              "text": "रवि: पेंसिल सिर्फ़ चित्र के लिए है।",
+              "english": "The pencil is only for the drawing."
+            },
+            {
+              "text": "रवि: दूसरी बात: हर सवाल दो बार पढ़ो।",
+              "english": "Second: read every question twice."
+            },
+            {
+              "text": "रवि: जहाँ चार जवाब हों, वहाँ ठीक जवाब चुनो।",
+              "english": "Where there are four answers, choose the right one."
+            },
+            {
+              "text": "रवि: पहला जवाब बिना वजह मत बदलो, और शब्द शुद्ध लिखो।",
+              "english": "Do not change your first answer without reason, and write the words correctly."
+            },
+            {
+              "text": "रवि: और सबसे ख़ास बात यह है: जवाब खुद लिखो, किसी और की कॉपी में मत देखो।",
+              "english": "And the most special point is this: write the answers yourself, and do not look into anyone else's book."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दीपक: क्या हमें आज रात भर पढ़ना चाहिए?",
+              "english": "Should we study all night tonight?"
+            },
+            {
+              "text": "रवि: पढ़ाई खेत जैसी होती है।",
+              "english": "Studying is like a field."
+            },
+            {
+              "text": "रवि: पहले मिट्टी तैयार करो, फिर बीज बोओ, और रोज़ सिंचाई करो।",
+              "english": "First prepare the soil, then sow the seed, and water it every day."
+            },
+            {
+              "text": "रवि: एक रात की सिंचाई से फ़सल नहीं उगती।",
+              "english": "One night of watering does not make the crop grow."
+            },
+            {
+              "text": "अमन: यह बात बहुत गहरी है।",
+              "english": "That is a very deep thing to say."
+            },
+            {
+              "text": "दीपक: ज़रा फिर समझाइए।",
+              "english": "Please explain once more."
+            },
+            {
+              "text": "रवि: ठीक है, मैं एक कहानी से समझाता हूँ।",
+              "english": "All right, I will explain with a story."
+            },
+            {
+              "text": "रवि: एक जंगल में एक चालाक बकरी और एक सयानी बकरी रहती थीं।",
+              "english": "In a forest there lived a clever goat and a wise goat."
+            },
+            {
+              "text": "रवि: दोनों घास खाने निकलीं।",
+              "english": "Both set out to eat grass."
+            },
+            {
+              "text": "रवि: रास्ते में किसी ने जाल लगाया था।",
+              "english": "On the way someone had set a net."
+            },
+            {
+              "text": "रवि: चालाक बकरी तुरंत आगे दौड़ी और जाल में आ गई।",
+              "english": "The clever goat ran ahead at once and got caught in the net."
+            },
+            {
+              "text": "रवि: सयानी बकरी रुकी, उसने नीचे देखा, और दूसरे रास्ते से निकल गई।",
+              "english": "The wise goat stopped, looked down, and went out by another path."
+            },
+            {
+              "text": "रवि: जिसका दिल शांत होता है, वह हर सवाल में रास्ता ढूँढ़ लेता है।",
+              "english": "One whose heart is calm finds a way in every question."
+            },
+            {
+              "text": "रवि: सवाल पढ़ो, सोचो, फिर लिखो।",
+              "english": "Read the question, think, then write."
+            },
+            {
+              "text": "रवि: और अगर डर लगे तो प्रार्थना करो, क्योंकि परमेश्वर शांति देता है।",
+              "english": "And if you feel afraid, pray, because God gives peace."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "परीक्षा की रात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उस रात नानी रसोई में लहसुन और हरी मिर्च वाली दाल बना रही थीं।",
+              "english": "That night Nani was making dal with garlic and green chilli in the kitchen."
+            },
+            {
+              "text": "सैम आँगन में बैठकर अमन से सवाल पूछ रहा था।",
+              "english": "Sam sat in the courtyard and asked Aman questions."
+            },
+            {
+              "text": "सैम: अमन, तुम खुद एक सवाल बनाओ, मैं जवाब दूँगा।",
+              "english": "Aman, make up a question yourself, and I will answer."
+            },
+            {
+              "text": "अमन: नहीं, आज मुझे कुछ याद नहीं आ रहा।",
+              "english": "No, I cannot remember anything today."
+            },
+            {
+              "text": "अमन: अगर मैंने पूरे साल रोज़ पढ़ा होता तो आज इतना डर नहीं लगता।",
+              "english": "If I had studied every day all year, I would not be so afraid today."
+            },
+            {
+              "text": "सैम: मैं भी अपनी हिंदी की परीक्षा से डरता था।",
+              "english": "I was afraid of my Hindi exam too."
+            },
+            {
+              "text": "सैम: रवि सर ने मुझे सिखाया कि ग़लती से भी सीखते हैं।",
+              "english": "Ravi sir taught me that we learn from mistakes too."
+            },
+            {
+              "text": "नानी: चलो, पहले चाय पी लो।",
+              "english": "Come, first have some tea."
+            },
+            {
+              "text": "नानी ने पत्ती, चीनी, अदरक और इलायची डालकर चाय बनाई।",
+              "english": "Nani made tea with tea leaves, sugar, ginger and cardamom."
+            },
+            {
+              "text": "फिर उन्होंने चाय छानकर तीन कप भरे।",
+              "english": "Then she strained the tea and filled three cups."
+            },
+            {
+              "text": "नानी: अमन, रोटी का यह टुकड़ा भी खा लो।",
+              "english": "Aman, eat this piece of roti too."
+            },
+            {
+              "text": "नानी: भूख लगी हो तो पढ़ाई नहीं होती।",
+              "english": "Studying does not go well when you are hungry."
+            },
+            {
+              "text": "अमन: नानी, अगर मैं फ़ेल हो गया तो?",
+              "english": "Nani, what if I fail?"
+            },
+            {
+              "text": "नानी: तो क्या हुआ, हम तुम्हें फिर भी प्यार करेंगे।",
+              "english": "So what, we will still love you."
+            },
+            {
+              "text": "नानी: तुमने जो मेहनत की है, उसे परमेश्वर देखता है।",
+              "english": "God sees the effort you have made."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रात गहरी हो गई थी, और खिड़की के बाहर चाँद चमक रहा था।",
+              "english": "The night had grown deep, and outside the window the moon was shining."
+            },
+            {
+              "text": "अमन ने अपना बस्ता तैयार किया, और उसमें दो कलम और एक पेंसिल रखी।",
+              "english": "Aman got his school bag ready, and put two pens and a pencil in it."
+            },
+            {
+              "text": "फिर उसने अपनी वर्दी कुर्सी पर रखी।",
+              "english": "Then he put his uniform on the chair."
+            },
+            {
+              "text": "उस रात तेज़ हवा चल रही थी, पर इस बार अमन जल्दी सो गया।",
+              "english": "The wind was strong that night, but this time Aman fell asleep early."
+            },
+            {
+              "text": "सुबह नानी को पाँच बजे उठना पड़ा।",
+              "english": "In the morning Nani had to get up at five."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "नतीजे का दिन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक हफ़्ते बाद नतीजे का काग़ज़ स्कूल की दीवार पर लगा था।",
+              "english": "A week later the paper with the results was put up on the school wall."
+            },
+            {
+              "text": "बारिश की वजह से बच्चे भीग गए थे, और आरती का दुपट्टा भी गीला था।",
+              "english": "The children were wet because of the rain, and Aarti's scarf was damp too."
+            },
+            {
+              "text": "अमन ने काग़ज़ में अपना नाम खोजा।",
+              "english": "Aman looked for his name on the paper."
+            },
+            {
+              "text": "अमन: मैं पास हो गया!",
+              "english": "I passed!"
+            },
+            {
+              "text": "आरती: मैं भी पास हूँ, और हिंदी में मेरे सबसे ज़्यादा नंबर हैं।",
+              "english": "I passed too, and I have the most marks in Hindi."
+            },
+            {
+              "text": "दीपक देर तक काग़ज़ में अपना नाम खोजता रहा।",
+              "english": "Deepak kept looking for his name on the paper for a long time."
+            },
+            {
+              "text": "दीपक: मेरा नाम नहीं है।",
+              "english": "My name is not there."
+            },
+            {
+              "text": "दीपक: मैं फ़ेल हो गया।",
+              "english": "I failed."
+            },
+            {
+              "text": "जिसका नाम काग़ज़ में नहीं था, वह दीपक दीवार के कोने में चला गया।",
+              "english": "Deepak, whose name was not on the paper, went to the corner of the wall."
+            },
+            {
+              "text": "आरती ने दुपट्टे का कोना पकड़ा, और वह कुछ नहीं बोली।",
+              "english": "Aarti held the corner of her scarf, and she said nothing."
+            },
+            {
+              "text": "अमन उसके पास गया।",
+              "english": "Aman went up to him."
+            },
+            {
+              "text": "दीपक: अगर मैंने तुम्हारे साथ रोज़ पढ़ा होता तो मैं भी पास हो जाता।",
+              "english": "If I had studied with you every day, I would have passed too."
+            },
+            {
+              "text": "अमन: हाँ, पर अभी रास्ता बंद नहीं हुआ है।",
+              "english": "Yes, but the way is not closed yet."
+            },
+            {
+              "text": "तभी रवि सर वहाँ आए।",
+              "english": "Just then Ravi sir came there."
+            },
+            {
+              "text": "रवि: दीपक, मैंने तुम्हारे जवाब देखे हैं।",
+              "english": "Deepak, I have seen your answers."
+            },
+            {
+              "text": "रवि: तुम्हारे सिर्फ़ तीन नंबर कम हैं।",
+              "english": "You are short by only three marks."
+            },
+            {
+              "text": "रवि: अगला इम्तिहान दो महीने बाद है।",
+              "english": "The next test is two months from now."
+            },
+            {
+              "text": "रवि: जिसका नाम इस बार नहीं है, वह अगली बार ज़रूर पास हो सकता है।",
+              "english": "One whose name is not there this time can certainly pass next time."
+            },
+            {
+              "text": "रवि: अगर तुम रोज़ एक घंटा पढ़ोगे तो ज़रूर पास होगे।",
+              "english": "If you study an hour every day, you will certainly pass."
+            },
+            {
+              "text": "रवि: मैं तुम्हें हर बात समझाऊँगा, और खुद पढ़ना भी सिखाऊँगा।",
+              "english": "I will explain everything to you, and I will teach you how to study on your own too."
+            },
+            {
+              "text": "दीपक ने आँखें साफ़ कीं और पहली बार मुस्कुराया।",
+              "english": "Deepak dried his eyes and smiled for the first time."
+            },
+            {
+              "text": "आरती: रवि सर जैसे मास्टर कम मिलते हैं।",
+              "english": "Teachers like Ravi sir are rare."
+            },
+            {
+              "text": "अमन और दीपक की दोस्ती बहुत गहरी है।",
+              "english": "The friendship of Aman and Deepak is very deep."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शाम को अमन दौड़ता हुआ घर पहुँचा।",
+              "english": "In the evening Aman came running home."
+            },
+            {
+              "text": "अमन: नानी, मैं पास हो गया!",
+              "english": "Nani, I passed!"
+            },
+            {
+              "text": "नानी ने उसे गले लगाया और उसके लिए लड्डू खिलाए।",
+              "english": "Nani hugged him and fed him laddus."
+            },
+            {
+              "text": "नानी: परमेश्वर का धन्यवाद!",
+              "english": "Thank God!"
+            },
+            {
+              "text": "नानी: आज का दिन हमारे घर के लिए ख़ास है।",
+              "english": "Today is a special day for our house."
+            },
+            {
+              "text": "नानी: मेहनत का फल परमेश्वर ज़रूर देता है।",
+              "english": "God surely gives the fruit of hard work."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

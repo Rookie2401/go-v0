@@ -1,0 +1,403 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-23",
+  "lang": "hi",
+  "title": "हमारे पड़ोसी",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-23",
+    "title": "Our neighbours (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Descriptive text with सबसे and से ... ज़्यादा / कम. Sam describes the lane: Suresh (the oldest neighbour), Geeta (the youngest children), Aarti (the quietest). The lane also has a mosque; it is mentioned only as the oldest building and Sam greets with सलाम (as the plan says: respectful guest, no rite described, no comparison). \"सलाम\" as a greeting between neighbours should be checked by the reviewer, and the sentence about the mosque too. The health words come back because Suresh has a cold and the neighbours visit him; the thanks and prayer words come back when they thank each other. The adapter reads \"X जी के\" as a verb, so the text avoids that frame. Words outside the plan (measured, adapter lemmas x tokens): शांत×1 (under-met)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "neighbours",
+    "community",
+    "comparison"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "हमारे पड़ोसी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हमारा पड़ोस बहुत अच्छा है।",
+              "english": "Our neighbourhood is very nice."
+            },
+            {
+              "text": "पड़ोस में सब मिलते हैं।",
+              "english": "In the neighbourhood everyone meets."
+            },
+            {
+              "text": "यहाँ सब एक दूसरे को जानते हैं।",
+              "english": "Here everyone knows each other."
+            },
+            {
+              "text": "सैम को यहाँ आए बहुत दिन नहीं हुए, लेकिन वह सबको जानता है।",
+              "english": "Sam has not been here many days, but he knows everyone."
+            },
+            {
+              "text": "यहाँ बहुत लोग बसते हैं।",
+              "english": "Many people live here."
+            },
+            {
+              "text": "सुबह सब सलाम करते हैं।",
+              "english": "In the morning everyone greets each other."
+            },
+            {
+              "text": "यह दोस्ती बहुत अच्छी चीज़ है।",
+              "english": "This friendship is a very good thing."
+            },
+            {
+              "text": "सैम की सबके साथ दोस्ती है।",
+              "english": "Sam is friends with everyone."
+            },
+            {
+              "text": "दोस्ती यहाँ हमेशा रहती है।",
+              "english": "Friendship always stays here."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सुरेश जी सबसे पुराने पड़ोसी हैं।",
+              "english": "Suresh ji is the oldest neighbour."
+            },
+            {
+              "text": "सुरेश जी का घर भी बहुत पुराना है।",
+              "english": "Suresh ji's house is very old too."
+            },
+            {
+              "text": "आँगन में एक चारपाई है।",
+              "english": "There is a cot in the courtyard."
+            },
+            {
+              "text": "सुरेश जी रोज़ चारपाई पर बैठते हैं।",
+              "english": "Suresh ji sits on the cot every day."
+            },
+            {
+              "text": "सर्दी में चारपाई पर कंबल होता है।",
+              "english": "In winter there is a blanket on the cot."
+            },
+            {
+              "text": "कंबल मोटा और गरम है।",
+              "english": "The blanket is thick and warm."
+            },
+            {
+              "text": "हवा ठंडी है, तो सुरेश जी कंबल लेते हैं।",
+              "english": "When the wind is cold, Suresh ji takes the blanket."
+            },
+            {
+              "text": "वह सबको देखते हैं।",
+              "english": "He looks at everyone."
+            },
+            {
+              "text": "वह हमेशा बोलते हैं, \"सलाम!\"",
+              "english": "He always says, \"Salaam!\""
+            },
+            {
+              "text": "सैम बोलता है, \"नमस्ते, सुरेश जी!\"",
+              "english": "Sam says, \"Hello, Suresh ji!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आज सुरेश जी को ज़ुकाम है।",
+              "english": "Today Suresh ji has a cold."
+            },
+            {
+              "text": "गले में दर्द है, और कान में भी।",
+              "english": "His throat hurts, and his ear too."
+            },
+            {
+              "text": "वह आज मरीज़ हैं।",
+              "english": "Today he is a patient."
+            },
+            {
+              "text": "सभी पड़ोसी उन्हें देखने आते हैं।",
+              "english": "All the neighbours come to see him."
+            },
+            {
+              "text": "उन्होंने दवा ले ली है, और गोली भी ले चुके हैं।",
+              "english": "He has taken medicine, and has already taken the tablet too."
+            },
+            {
+              "text": "डॉक्टर ने इलाज बताया है।",
+              "english": "The doctor has told him the treatment."
+            },
+            {
+              "text": "सुरेश जी बोलते हैं, \"मुझे इंजेक्शन नहीं चाहिए!\"",
+              "english": "Suresh ji says, \"I don't want an injection!\""
+            },
+            {
+              "text": "वह इंजेक्शन से डरते हैं।",
+              "english": "He is afraid of injections."
+            },
+            {
+              "text": "वह दर्द सहते हैं।",
+              "english": "He bears the pain."
+            },
+            {
+              "text": "दवा बन गई है।",
+              "english": "The medicine has been made."
+            },
+            {
+              "text": "गीता बोलती हैं, \"पट्टी भी नहीं चाहिए।\"",
+              "english": "Geeta says, \"No bandage either.\""
+            },
+            {
+              "text": "सब हँसते हैं।",
+              "english": "Everyone laughs."
+            },
+            {
+              "text": "सुरेश जी बोलते हैं, \"आपका आभार, और आपकी दुआ।\"",
+              "english": "Suresh ji says, \"My thanks, and your good wishes.\""
+            },
+            {
+              "text": "सैम बोलता है, \"परमेश्वर आपको आशीष दे।\"",
+              "english": "Sam says, \"May God bless you.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "गीता के बच्चे सबसे छोटे हैं।",
+              "english": "Geeta's children are the youngest."
+            },
+            {
+              "text": "गीता का घर बड़ा है, और बच्चे बहुत हैं।",
+              "english": "Geeta's house is big, and there are many children."
+            },
+            {
+              "text": "वे बगीचे में दौड़ते हैं।",
+              "english": "They run in the garden."
+            },
+            {
+              "text": "बच्चों के पास गुब्बारे हैं।",
+              "english": "The children have balloons."
+            },
+            {
+              "text": "एक बच्चा गिरता है।",
+              "english": "A child falls."
+            },
+            {
+              "text": "गीता घबराती हैं।",
+              "english": "Geeta gets worried."
+            },
+            {
+              "text": "बच्चे घबराते नहीं हैं।",
+              "english": "The children do not get worried."
+            },
+            {
+              "text": "गीता हैरान होती हैं: बच्चे नहीं रोते।",
+              "english": "Geeta is astonished: the children do not cry."
+            },
+            {
+              "text": "वह बोलती हैं, \"मुझे हमेशा डर लगता है।\"",
+              "english": "She says, \"I am always afraid.\""
+            },
+            {
+              "text": "बच्चा गिरता है, लेकिन रोता नहीं।",
+              "english": "The child falls, but does not cry."
+            },
+            {
+              "text": "वह उठता है और मुस्कुराता है।",
+              "english": "He gets up and smiles."
+            },
+            {
+              "text": "सैम यह सब देख नहीं पाता।",
+              "english": "Sam cannot take all this in."
+            },
+            {
+              "text": "बच्चे सैम से ज़्यादा दौड़ते हैं।",
+              "english": "The children run more than Sam."
+            },
+            {
+              "text": "गीता आरती से ज़्यादा बोलती हैं।",
+              "english": "Geeta talks more than Aarti."
+            },
+            {
+              "text": "सैम को यहाँ ज़्यादा दोस्त मिले हैं।",
+              "english": "Sam has found more friends here."
+            },
+            {
+              "text": "सुरेश जी कम खाते हैं।",
+              "english": "Suresh ji eats little."
+            },
+            {
+              "text": "सैम बच्चों से कम दौड़ता है।",
+              "english": "Sam runs less than the children."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आरती सबसे शांत हैं।",
+              "english": "Aarti is the quietest."
+            },
+            {
+              "text": "वह गीता से कम बोलती हैं।",
+              "english": "She speaks less than Geeta."
+            },
+            {
+              "text": "आरती की छोटी-सी दुकान है।",
+              "english": "Aarti has a little shop."
+            },
+            {
+              "text": "वहाँ मोमबत्ती और गुब्बारे मिलते हैं।",
+              "english": "Candles and balloons are sold there."
+            },
+            {
+              "text": "दुकान में बहुत चीज़ें हैं।",
+              "english": "There are many things in the shop."
+            },
+            {
+              "text": "आरती के पास भीड़ हमेशा रहती है।",
+              "english": "There is always a crowd at Aarti's."
+            },
+            {
+              "text": "बच्चे भीड़ में खड़े होते हैं।",
+              "english": "The children stand in the crowd."
+            },
+            {
+              "text": "आरती बोलती हैं, \"माफ़ कीजिए, आप कब आए?\"",
+              "english": "Aarti says, \"Excuse me, when did you come?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं अभी आया।\"",
+              "english": "Sam says, \"I have just come.\""
+            },
+            {
+              "text": "आरती हमेशा मुस्कुराती हैं।",
+              "english": "Aarti always smiles."
+            },
+            {
+              "text": "वह सच्चाई बोलती हैं, और उन्हें शर्म नहीं आती।",
+              "english": "She speaks the truth, and she is not ashamed."
+            },
+            {
+              "text": "सैम सोचता है, \"मैं आरती का नाम बोल नहीं पाता।\"",
+              "english": "Sam thinks, \"I cannot say Aarti's name properly.\""
+            },
+            {
+              "text": "वह हैरान है, क्योंकि सब उसे जानते हैं।",
+              "english": "He is astonished, because everyone knows him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "गली में चौराहे पर एक रिक्शा है।",
+              "english": "At the crossroads in the lane there is a rickshaw."
+            },
+            {
+              "text": "मोड़ के पास एक दुकानदार बैठता है।",
+              "english": "Near the bend a shopkeeper sits."
+            },
+            {
+              "text": "घाट गली से दूर नहीं है।",
+              "english": "The ghat is not far from the lane."
+            },
+            {
+              "text": "गली में एक मस्जिद भी है।",
+              "english": "There is also a mosque in the lane."
+            },
+            {
+              "text": "मस्जिद गली में बहुत पुरानी है।",
+              "english": "The mosque in the lane is very old."
+            },
+            {
+              "text": "मस्जिद के सामने एक पेड़ है।",
+              "english": "In front of the mosque there is a tree."
+            },
+            {
+              "text": "वहाँ लोग रोज़ आते हैं।",
+              "english": "People come there every day."
+            },
+            {
+              "text": "सैम लोगों को नमस्ते करता है।",
+              "english": "Sam greets the people."
+            },
+            {
+              "text": "वे सैम को सलाम का जवाब देते हैं।",
+              "english": "They answer Sam's greeting with salaam."
+            },
+            {
+              "text": "सैम हैरान होता है, और ख़ुश भी।",
+              "english": "Sam is astonished, and happy too."
+            },
+            {
+              "text": "सैम बोलता है, \"ठंडा पानी पीजिए।\"",
+              "english": "Sam says, \"Have some cold water.\""
+            },
+            {
+              "text": "सैम खिड़की से गली देखता है।",
+              "english": "Sam looks at the lane from the window."
+            },
+            {
+              "text": "उसे यह पड़ोस बहुत पसंद है।",
+              "english": "He likes this neighbourhood very much."
+            },
+            {
+              "text": "बारिश में गेंद छत से गिरती है।",
+              "english": "In the rain the ball falls from the roof."
+            },
+            {
+              "text": "सैम कहता है, \"मैं हर चीज़ पा सकता हूँ।\"",
+              "english": "Sam says, \"I can find everything.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

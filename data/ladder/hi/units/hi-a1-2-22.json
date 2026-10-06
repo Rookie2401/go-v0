@@ -1,0 +1,411 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-22",
+  "lang": "hi",
+  "title": "अमन का जन्मदिन",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-22",
+    "title": "Aman's birthday (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Planning, shopping and party. Future (कल पार्टी होगी), perfective (केक आया), habitual past (वह हमेशा रोता था). Aman turns 11 (a digit). मामा is Aman's mother's brother (मामा जी not used: जी + verb traps). The gift is a shirt (कमीज़). The recycled testimony words come back in Nani's short prayer; the auto words in Sam's shopping trip; मोती is the comic danger for the cake (केक को मोती से बचाओ). Honorific plural for नानी, मीरा दीदी does not apply to children. Words outside the plan (measured): none."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "birthday",
+    "family",
+    "party"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "अमन का जन्मदिन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "कल अमन का जन्मदिन है।",
+              "english": "Tomorrow is Aman's birthday."
+            },
+            {
+              "text": "वह ग्यारह साल का होगा।",
+              "english": "He will be eleven years old."
+            },
+            {
+              "text": "नानी बोलती हैं, \"कल घर में पार्टी होगी।\"",
+              "english": "Nani says, \"Tomorrow there will be a party at home.\""
+            },
+            {
+              "text": "\"सबको बुलाओ, और मामा को भी।\"",
+              "english": "\"Call everyone, and Mama too.\""
+            },
+            {
+              "text": "अमन बोलता है, \"नानी, मुझे केक चाहिए!\"",
+              "english": "Aman says, \"Nani, I want a cake!\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"केक बनेगा, और गोभी की सब्ज़ी भी।\"",
+              "english": "Nani says, \"There will be a cake, and cauliflower too.\""
+            },
+            {
+              "text": "अमन बोलता है, \"मुझे गोभी पसंद है!\"",
+              "english": "Aman says, \"I like cauliflower!\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं अमन के लिए उपहार लाऊँगा।\"",
+              "english": "Sam says, \"I will bring a present for Aman.\""
+            },
+            {
+              "text": "सैम अभी बाज़ार जाता है।",
+              "english": "Sam goes to the market right now."
+            },
+            {
+              "text": "वह घर से निकलता है।",
+              "english": "He leaves the house."
+            },
+            {
+              "text": "सैम गोभी भी लाता है।",
+              "english": "Sam brings cauliflower too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "वह सड़क पर ऑटो लेता है।",
+              "english": "He takes an auto on the road."
+            },
+            {
+              "text": "सवारी सैम है, और ऑटो छोटा है।",
+              "english": "The passenger is Sam, and the auto is small."
+            },
+            {
+              "text": "वह बोलता है, \"सीधा चलिए, फिर बाएँ।\"",
+              "english": "He says, \"Go straight, then left.\""
+            },
+            {
+              "text": "क़ीमत सैम को ठीक लगती है।",
+              "english": "The price seems fine to Sam."
+            },
+            {
+              "text": "बाज़ार में वह फिरता है और देखता है।",
+              "english": "In the market he wanders and looks."
+            },
+            {
+              "text": "दुकान में एक कमीज़ है।",
+              "english": "In a shop there is a shirt."
+            },
+            {
+              "text": "वह नई कमीज़ लेता है।",
+              "english": "He buys a new shirt."
+            },
+            {
+              "text": "वह गुब्बारा भी लेता है।",
+              "english": "He buys a balloon too."
+            },
+            {
+              "text": "सैम बोलता है, \"मैं ही अमन को उपहार दूँगा।\"",
+              "english": "Sam says, \"I myself will give Aman the present.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी रसोई में जाती हैं।",
+              "english": "Nani goes to the kitchen."
+            },
+            {
+              "text": "वह बोलती हैं, \"आज ही बनाऊँगी।\"",
+              "english": "She says, \"I will make it today itself.\""
+            },
+            {
+              "text": "\"मोमबत्ती कहाँ है?\"",
+              "english": "\"Where is the candle?\""
+            },
+            {
+              "text": "अमन बोलता है, \"नानी, मैं ग्यारह मोमबत्ती चाहता हूँ।\"",
+              "english": "Aman says, \"Nani, I want eleven candles.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"ठीक है। पहली मोमबत्ती तुम लगाओ।\"",
+              "english": "Nani says, \"All right. You put on the first candle.\""
+            },
+            {
+              "text": "\"यह लंबी है, धीरे लगाओ।\"",
+              "english": "\"It is long, put it on slowly.\""
+            },
+            {
+              "text": "सैम बोलता है, \"नानी, मैं सबको बुलाता हूँ।\"",
+              "english": "Sam says, \"Nani, I am calling everyone.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"मैंने मामा को भी बुलाया है।\"",
+              "english": "Nani says, \"I have called Mama too.\""
+            },
+            {
+              "text": "अमन बोलता है, \"तुम ही काटना!\"",
+              "english": "Aman says, \"You cut it!\""
+            },
+            {
+              "text": "सैम बोलता है, \"अभी देर है, अमन।\"",
+              "english": "Sam says, \"There is still time, Aman.\""
+            },
+            {
+              "text": "वह फ़ोन लगाता है।",
+              "english": "He makes the calls."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अगले दिन सुबह सब उठते हैं।",
+              "english": "The next day everyone gets up in the morning."
+            },
+            {
+              "text": "नानी सबको नाश्ता खिलाती हैं।",
+              "english": "Nani feeds everyone breakfast."
+            },
+            {
+              "text": "अमन बोलता है, \"मैं अभी आता हूँ!\"",
+              "english": "Aman says, \"I am coming right now!\""
+            },
+            {
+              "text": "अमन बोलता है, \"आज मेरा जन्मदिन है!\"",
+              "english": "Aman says, \"Today is my birthday!\""
+            },
+            {
+              "text": "सैम बोलता है, \"जन्मदिन की बधाई, अमन!\"",
+              "english": "Sam says, \"Happy birthday, Aman!\""
+            },
+            {
+              "text": "वह उपहार देता है।",
+              "english": "He gives the present."
+            },
+            {
+              "text": "अमन उसे देखता है, और ख़ुश होता है।",
+              "english": "Aman looks at it, and is happy."
+            },
+            {
+              "text": "वह कमीज़ पहनता है।",
+              "english": "He puts on the shirt."
+            },
+            {
+              "text": "वह बोलता है, \"यह मेरी पहली नई है!\"",
+              "english": "He says, \"This is my first new one!\""
+            },
+            {
+              "text": "जब अमन छोटा था, वह हमेशा रोता था।",
+              "english": "When Aman was small, he always used to cry."
+            },
+            {
+              "text": "वह गुब्बारा देखता था, और रोता था।",
+              "english": "He would look at a balloon, and cry."
+            },
+            {
+              "text": "आज वह गुब्बारे से खेलता है।",
+              "english": "Today he plays with the balloons."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दोपहर को मेहमान आते हैं।",
+              "english": "In the afternoon the guests come."
+            },
+            {
+              "text": "मामा लंबा सफ़र करके आते हैं।",
+              "english": "Mama comes after a long journey."
+            },
+            {
+              "text": "वह स्टेशन से निकलते हैं और घर आते हैं।",
+              "english": "He comes out of the station and arrives home."
+            },
+            {
+              "text": "वह लंबे हैं, और अमन छोटा है।",
+              "english": "He is tall, and Aman is small."
+            },
+            {
+              "text": "मीरा दीदी और रवि सर भी आते हैं।",
+              "english": "Meera didi and Ravi sir come too."
+            },
+            {
+              "text": "पड़ोसी भी आते हैं।",
+              "english": "The neighbours come too."
+            },
+            {
+              "text": "एक अजनबी बच्चा दरवाज़े पर है।",
+              "english": "A stranger child is at the door."
+            },
+            {
+              "text": "नानी बोलती हैं, \"अंदर आओ!\"",
+              "english": "Nani says, \"Come in!\""
+            },
+            {
+              "text": "सब बच्चे पार्टी में दौड़ते हैं।",
+              "english": "All the children run around at the party."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"अमन, तुम ग्यारह साल के हो गए।\"",
+              "english": "Ravi sir says, \"Aman, you have turned eleven.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"अब वह आएगा।\"",
+              "english": "Nani says, \"Now it will come.\""
+            },
+            {
+              "text": "केक मेज़ पर आता है।",
+              "english": "The cake comes to the table."
+            },
+            {
+              "text": "वह बड़ा और सफ़ेद है।",
+              "english": "It is big and white."
+            },
+            {
+              "text": "उस पर ग्यारह हैं।",
+              "english": "There are eleven on it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अचानक मोती दौड़ता है।",
+              "english": "Suddenly Moti runs."
+            },
+            {
+              "text": "वह घर में फिरता है, और उसकी तरफ़ जाता है।",
+              "english": "He wanders in the house, and goes towards it."
+            },
+            {
+              "text": "सैम बोलता है, \"उसे मोती से बचाओ!\"",
+              "english": "Sam says, \"Save it from Moti!\""
+            },
+            {
+              "text": "अमन हँसता है, और मोती को रोटी खिलाता है।",
+              "english": "Aman laughs, and feeds Moti a roti."
+            },
+            {
+              "text": "मोती धीरे से बैठता है।",
+              "english": "Moti sits down quietly."
+            },
+            {
+              "text": "रवि सर दरवाज़ा बंद करते हैं।",
+              "english": "Ravi sir closes the door."
+            },
+            {
+              "text": "मोती बंद कमरे में बैठता है।",
+              "english": "Moti sits in the closed room."
+            },
+            {
+              "text": "फिर वह दरवाज़े से निकलता है।",
+              "english": "Then he comes out through the door."
+            },
+            {
+              "text": "दो घंटे बाद सब खाते हैं।",
+              "english": "Two hours later everyone eats."
+            },
+            {
+              "text": "नानी सबको मिठाई खिलाती हैं।",
+              "english": "Nani feeds everyone sweets."
+            },
+            {
+              "text": "मोती को एक घंटा बाहर रहना पड़ता है।",
+              "english": "Moti has to stay outside for an hour."
+            },
+            {
+              "text": "अचानक सब हँसते हैं।",
+              "english": "Suddenly everyone laughs."
+            },
+            {
+              "text": "मीरा दीदी बोलती हैं, \"अमन, तुम बहुत बड़े हो गए!\"",
+              "english": "Meera didi says, \"Aman, you have grown so big!\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"हे परमेश्वर, आपका धन्यवाद।\"",
+              "english": "Nani says, \"O God, thank you.\""
+            },
+            {
+              "text": "\"अमन पर आपका प्यार है।\"",
+              "english": "\"Your love is on Aman.\""
+            },
+            {
+              "text": "\"उसका जीवन आपकी गवाही बने।\"",
+              "english": "\"May his life be your witness.\""
+            },
+            {
+              "text": "\"हमें शांति दीजिए, और कलीसिया को भी।\"",
+              "english": "\"Give us peace, and the church too.\""
+            },
+            {
+              "text": "\"हम आप पर भरोसा करते हैं, और आपके सेवक हैं।\"",
+              "english": "\"We trust in you, and are your servants.\""
+            },
+            {
+              "text": "\"आप दुनिया को बचाते हैं। हम आपसे यह माँगते हैं।\"",
+              "english": "\"You save the world. We ask this of you.\""
+            },
+            {
+              "text": "सब बोलते हैं, \"आमीन!\"",
+              "english": "Everyone says, \"Amen!\""
+            },
+            {
+              "text": "अमन बोलता है, \"मैं यह मानता हूँ।\"",
+              "english": "Aman says, \"I believe this.\""
+            },
+            {
+              "text": "उसने मोटी किताब देखी।",
+              "english": "He looked at the thick book."
+            },
+            {
+              "text": "सब ख़ुश हैं, और पार्टी बहुत अच्छी है।",
+              "english": "Everyone is happy, and the party is very good."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

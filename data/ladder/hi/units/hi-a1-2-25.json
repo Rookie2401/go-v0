@@ -1,0 +1,395 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-25",
+  "lang": "hi",
+  "title": "सब्ज़ी वाले का दिन",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-25",
+    "title": "The vegetable seller's day (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Ramesh tells Sam his day in the first person, habitual present and habitual past (मैं ... उठता हूँ; पहले मैं मज़दूर था). The -वाला suffix is written as a separate word (सब्ज़ी वाला, जाने वाला) because the adapter reads the fused form सब्ज़ीवाला as an adjective and loses वाला; the reviewer should say which spelling is standard in print. कमाई is used in the frame \"मेरी कमाई\" (the bare form is a trap). Ramesh's religion is never stated. The clinic story brings back the health words; the rest of the plan's recycle list comes in through ordinary talk. Words outside the plan (measured, adapter lemmas x tokens): आसान×1."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "work",
+    "market",
+    "daily life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "सब्ज़ी वाले का दिन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम रमेश के ठेले पर जाता है।",
+              "english": "Sam goes to Ramesh's handcart."
+            },
+            {
+              "text": "ठेले पर भिंडी, मटर और गोभी हैं।",
+              "english": "On the cart there are okra, peas and cauliflower."
+            },
+            {
+              "text": "सैम पूछता है, \"रमेश जी, आपका दिन कैसा होता है?\"",
+              "english": "Sam asks, \"Ramesh ji, what is your day like?\""
+            },
+            {
+              "text": "रमेश हँसता है, और बोलता है, \"बैठिए, मैं बताता हूँ।\"",
+              "english": "Ramesh laughs, and says, \"Sit down, I will tell you.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सुबह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैं सब्ज़ी वाला हूँ।",
+              "english": "I am a vegetable seller."
+            },
+            {
+              "text": "सब्ज़ी वाला हमेशा सुबह उठता है।",
+              "english": "The vegetable seller always gets up in the morning."
+            },
+            {
+              "text": "मैं सुबह चार बजे उठता हूँ।",
+              "english": "I get up at four in the morning."
+            },
+            {
+              "text": "मंडी जल्दी खुलती है।",
+              "english": "The wholesale market opens early."
+            },
+            {
+              "text": "मैं मंडी जाने वाला ऑटो लेता हूँ।",
+              "english": "I take the auto that goes to the market."
+            },
+            {
+              "text": "मैं किराया देता हूँ, और वहाँ पहुँचता हूँ।",
+              "english": "I pay the fare, and get there."
+            },
+            {
+              "text": "मंडी में बहुत भीड़ होती है।",
+              "english": "There is a big crowd in the market."
+            },
+            {
+              "text": "वहाँ मैं भिंडी ख़रीदता हूँ।",
+              "english": "There I buy okra."
+            },
+            {
+              "text": "मैं मटर भी ख़रीदता हूँ।",
+              "english": "I buy peas too."
+            },
+            {
+              "text": "मैं फल भी ख़रीदता हूँ।",
+              "english": "I buy fruit too."
+            },
+            {
+              "text": "मज़दूर सामान उठाते हैं।",
+              "english": "The labourers lift the loads."
+            },
+            {
+              "text": "मज़दूर की मेहनत बड़ी है।",
+              "english": "A labourer's hard work is great."
+            },
+            {
+              "text": "पहले मैं भी मज़दूर था।",
+              "english": "I too used to be a labourer."
+            },
+            {
+              "text": "तब मैं हमेशा थका रहता था।",
+              "english": "Then I was always tired."
+            },
+            {
+              "text": "अब मेरा अपना ठेला है।",
+              "english": "Now I have my own cart."
+            },
+            {
+              "text": "मैं ही अपना मालिक हूँ।",
+              "english": "I am my own master."
+            },
+            {
+              "text": "वहाँ का मालिक मुझे जानता है।",
+              "english": "The owner there knows me."
+            },
+            {
+              "text": "मालिक बहुत अच्छा है।",
+              "english": "The owner is very good."
+            },
+            {
+              "text": "वह मुझे भिंडी की अच्छी क़ीमत बताता है।",
+              "english": "He tells me a good price for okra."
+            },
+            {
+              "text": "मोटे मटर महँगे हैं, लेकिन अच्छे हैं।",
+              "english": "Thick peas are expensive, but good."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दिन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैं उसे गली में लाता हूँ।",
+              "english": "I bring it into the lane."
+            },
+            {
+              "text": "वह दाएँ तरफ़ खड़ा होता है।",
+              "english": "It stands on the right."
+            },
+            {
+              "text": "सुबह ग्राहक आते हैं।",
+              "english": "In the morning the customers come."
+            },
+            {
+              "text": "हर ग्राहक को मैं सलाम करता हूँ।",
+              "english": "I greet every customer."
+            },
+            {
+              "text": "मैं सब्ज़ी तौलता हूँ।",
+              "english": "I weigh the vegetables."
+            },
+            {
+              "text": "एक किलो, आधा किलो, ज़्यादा नहीं।",
+              "english": "One kilo, half a kilo, not more."
+            },
+            {
+              "text": "मैं ठीक तौलता हूँ।",
+              "english": "I weigh correctly."
+            },
+            {
+              "text": "तौलने के बाद मैं पैसा लेता हूँ।",
+              "english": "After weighing I take the money."
+            },
+            {
+              "text": "ग्राहक का भरोसा बड़ी चीज़ है।",
+              "english": "The customer's trust is a big thing."
+            },
+            {
+              "text": "मैं उनका सेवक हूँ।",
+              "english": "I am their servant."
+            },
+            {
+              "text": "बड़े लोग मुझे आशीष देते हैं।",
+              "english": "Elders give me their blessing."
+            },
+            {
+              "text": "कोई फ़ोन पर बोलता है, \"हैलो, रमेश जी!\"",
+              "english": "Someone says on the phone, \"Hello, Ramesh ji!\""
+            },
+            {
+              "text": "सब मुझे हैलो बोलते हैं।",
+              "english": "Everyone says hello to me."
+            },
+            {
+              "text": "मैं हमेशा कहता हूँ, \"मेहनत करो।\"",
+              "english": "I always say, \"Work hard.\""
+            },
+            {
+              "text": "मेहनत से मैं कमाता हूँ।",
+              "english": "I earn by hard work."
+            },
+            {
+              "text": "मेरी कमाई ज़्यादा नहीं है।",
+              "english": "My earnings are not much."
+            },
+            {
+              "text": "आज की कमाई अच्छी है।",
+              "english": "Today's earnings are good."
+            },
+            {
+              "text": "मेरी कमाई मेरे थैले में है।",
+              "english": "My earnings are in my bag."
+            },
+            {
+              "text": "कमाना आसान नहीं है।",
+              "english": "Earning is not easy."
+            },
+            {
+              "text": "मैं रोज़ 300 रुपये कमाता हूँ।",
+              "english": "I earn 300 rupees a day."
+            },
+            {
+              "text": "यह इतना कम भी नहीं है।",
+              "english": "That is not so little either."
+            },
+            {
+              "text": "इतना पैसा मेरे थैले में आता है।",
+              "english": "That much money comes into my bag."
+            },
+            {
+              "text": "ऐसा दिन अच्छा होता है।",
+              "english": "A day like this is good."
+            },
+            {
+              "text": "सब ऐसा नहीं करते।",
+              "english": "Not everyone does so."
+            },
+            {
+              "text": "मैं ऐसा काम करता हूँ, और ख़ुश रहता हूँ।",
+              "english": "I do work like this, and I stay happy."
+            },
+            {
+              "text": "दोपहर को अभी थोड़ी धूप है, तो मैं पेड़ की छाया में बैठता हूँ।",
+              "english": "At noon it is still a little sunny, so I sit in the shade of a tree."
+            },
+            {
+              "text": "मुझे प्यास लगती है, और मैं पानी पीता हूँ।",
+              "english": "I get thirsty, and I drink water."
+            },
+            {
+              "text": "शाम को मैं घर लौटता हूँ।",
+              "english": "In the evening I return home."
+            },
+            {
+              "text": "मैं बच्चों को फल खिलाता हूँ।",
+              "english": "I feed the children fruit."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मेरी बेटी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मेरी लड़की की पढ़ाई बड़ी चीज़ है।",
+              "english": "My daughter's studies are a big matter."
+            },
+            {
+              "text": "वह पढ़ाई करती है, और मुझे ख़त लिखती है।",
+              "english": "She studies, and writes me letters."
+            },
+            {
+              "text": "एक दिन उसे ज़ुकाम हुआ।",
+              "english": "One day she got a cold."
+            },
+            {
+              "text": "उसके गले में दर्द था, और कान में भी।",
+              "english": "Her throat hurt, and her ear too."
+            },
+            {
+              "text": "मैं परेशान था।",
+              "english": "I was worried."
+            },
+            {
+              "text": "मैं उसे अस्पताल ले गया।",
+              "english": "I took her to the hospital."
+            },
+            {
+              "text": "वहाँ बहुत मरीज़ थे, और सभी परेशान थे।",
+              "english": "There were many patients there, and all were worried."
+            },
+            {
+              "text": "डॉक्टर ने गोली दी, इंजेक्शन भी दिया।",
+              "english": "The doctor gave a tablet, and an injection too."
+            },
+            {
+              "text": "मीरा दीदी ने पट्टी लगाई।",
+              "english": "Meera didi put on a bandage."
+            },
+            {
+              "text": "उन्होंने इलाज में बहुत सेवा की।",
+              "english": "She gave a lot of care in the treatment."
+            },
+            {
+              "text": "मैं हैरान था: इलाज इतना महँगा नहीं था।",
+              "english": "I was astonished: the treatment was not so expensive."
+            },
+            {
+              "text": "उनकी दुआ आज भी मेरे साथ है।",
+              "english": "Her good wishes are with me even today."
+            },
+            {
+              "text": "अब मेरी लड़की दौड़ती है, और कभी कभी गिरती भी है।",
+              "english": "Now my daughter runs, and sometimes falls too."
+            },
+            {
+              "text": "वह दवा ले चुकी है, और ठीक हो चुकी है।",
+              "english": "She has taken the medicine, and has got well."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "आज",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम बोलता है, \"रमेश जी, आप थके दिखते हैं।\"",
+              "english": "Sam says, \"Ramesh ji, you look tired.\""
+            },
+            {
+              "text": "रमेश बोलता है, \"हाँ, मैं पूरा दिन काम करता हूँ।\"",
+              "english": "Ramesh says, \"Yes, I work all day.\""
+            },
+            {
+              "text": "\"मैं सब कुछ नहीं पा सकता, लेकिन मेरे पास काम है।\"",
+              "english": "\"I cannot have everything, but I have work.\""
+            },
+            {
+              "text": "सैम सब्ज़ी लेता है।",
+              "english": "Sam takes vegetables."
+            },
+            {
+              "text": "नानी केक के लिए आम और गोभी लेती हैं।",
+              "english": "Nani takes mangoes and cauliflower for the cake."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,438 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-18",
+  "lang": "hi",
+  "title": "परिवार में शादी",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-18",
+    "title": "\"परिवार में शादी\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Sam's account of the wedding of Aman's cousin (the daughter of Aman's mausi) as a guest of Seeta Nani's family, from the invitation card to the farewell (विदा). Written as a respectful observer. The religion of the family is left open on purpose: no rite is described (only the procession, the ring, the food, the songs, the blessing with a hand on the forehead and the playful game of the stolen shoes), and Meera didi's one remark about her own baptism is a personal aside. Points for the reviewer: the invitation-card wording is a school-textbook form, to be corrected by a native reader; the foods (पुलाव, रायता, घी) are North Indian wedding foods; आप for the elders and तुम for Aman; the word जोड़ा is used in the sense of \"the couple\" and also of the wedding outfit. Adapter traps: 'सीख दी' is read as the verb सीखना (the planned recycle of the noun सीख misses); the past participle 'सजा/सजी' of सजना is read as the noun सजा (punishment). दर्ज़ी (a planned word of the next unit) appears once early, in the sentence about the tailor for Sam's trousers. Outside the plan (1 lemma, 1 tokens, 0.1 per 100 words): सजा. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "wedding",
+    "family",
+    "food",
+    "farewell"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "निमंत्रण",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पिछले महीने सीता नानी के घर एक सुंदर-सी चिट्ठी आई।",
+              "english": "Last month a beautiful letter came to Seeta Nani's house."
+            },
+            {
+              "text": "वह अमन की मौसी की बेटी की शादी की चिट्ठी थी।",
+              "english": "It was the letter of the wedding of the daughter of Aman's mausi."
+            },
+            {
+              "text": "सीता नानी ने मुझे वह चिट्ठी पढ़कर सुनाई, और मैंने उसे अपनी कॉपी में लिख लिया।",
+              "english": "Seeta Nani read that letter out to me, and I wrote it in my notebook."
+            },
+            {
+              "text": "उसमें लिखा था: \"आदरणीय महोदय, हमारे घर में ख़ुशी का मौक़ा आया है।",
+              "english": "In it was written: \"Respected Sir, an occasion of joy has come in our house."
+            },
+            {
+              "text": "आपको सूचित करते हुए हमें बहुत ख़ुशी है कि हमारी बेटी की शादी अगले रविवार को होगी।",
+              "english": "It is a great happiness to inform you that our daughter's wedding will take place next Sunday."
+            },
+            {
+              "text": "हमारा निवेदन है कि आप परिवार के साथ आएँ और हमारी ख़ुशी में साथ रहें।",
+              "english": "Our request is that you come with your family and be with us in our joy."
+            },
+            {
+              "text": "कृपया हमारा निवेदन स्वीकार करें।\"",
+              "english": "Please accept our request.\""
+            },
+            {
+              "text": "अमन ने पूछा, \"नानी, हम भी जाएँगे न?\"",
+              "english": "Aman asked, \"Nani, we will go too, won't we?\""
+            },
+            {
+              "text": "मैंने भी नानी से एक प्रश्न पूछा: \"शादी का मतलब आपके लिए क्या है?\"",
+              "english": "I too asked Nani a question: \"What does a wedding mean for you?\""
+            },
+            {
+              "text": "नानी ने कहा, \"दो परिवारों का एक हो जाना, बेटा।\"",
+              "english": "Nani said, \"Two families becoming one, son.\""
+            },
+            {
+              "text": "नानी ने हँसकर कहा, \"हाँ, पूरा परिवार जाएगा, और सैम भी हमारे साथ चलेगा।\"",
+              "english": "Nani said with a laugh, \"Yes, the whole family will go, and Sam will come with us too.\""
+            },
+            {
+              "text": "उन्होंने बताया कि दूल्हे के पिता सरकारी दफ़्तर में काम करते हैं, और बहुत अच्छे आदमी हैं।",
+              "english": "She told me that the bridegroom's father works in a government office, and is a very good man."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "तैयारी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शादी से पहले के दिन घर में बहुत काम रहा।",
+              "english": "In the days before the wedding there was a great deal of work in the house."
+            },
+            {
+              "text": "सीता नानी रोज़ सुबह उठकर मिठाई के डिब्बे सजाती थीं, ताकि मेहमानों में बाँटे जा सकें।",
+              "english": "Seeta Nani would get up every morning and arrange boxes of sweets, so that they could be shared among the guests."
+            },
+            {
+              "text": "शादी के दिन तक पूरा घर फूलों से सजा हुआ था, और आँगन भी सजा हुआ था।",
+              "english": "By the wedding day the whole house was decorated with flowers, and the courtyard was decorated too."
+            },
+            {
+              "text": "मीरा दीदी ने अपने लिए एक नई साड़ी ख़रीदी, और नानी ने अपनी पुरानी साड़ी निकालकर रखी।",
+              "english": "Meera didi bought herself a new sari, and Nani took out and kept her old sari."
+            },
+            {
+              "text": "मैंने भी एक नई पैंट और कमीज़ ख़रीदी, और अमन ने मुझसे कहा, \"सैम भैया, आप तो दूल्हे जैसे लग रहे हैं।\"",
+              "english": "I too bought new trousers and a shirt, and Aman said to me, \"Sam brother, you look just like a bridegroom.\""
+            },
+            {
+              "text": "पैंट थोड़ी लंबी निकली, इसलिए मुझे उसे दर्ज़ी के पास ले जाना पड़ा, और उसने पैंट ठीक कर दी।",
+              "english": "The trousers turned out a little long, so I had to take them to the tailor, and he set the trousers right."
+            },
+            {
+              "text": "मैं हँस पड़ा, और मैंने कहा कि दूल्हा तो कोई और होगा, मैं सिर्फ़ मेहमान हूँ।",
+              "english": "I burst out laughing and said that the bridegroom would be somebody else, I am only a guest."
+            },
+            {
+              "text": "घर में हर शाम गीत सुनाए जाते थे, और औरतें ढोल के साथ नाच भी करती थीं।",
+              "english": "In the house songs were sung every evening, and the women danced with the drum too."
+            },
+            {
+              "text": "दो औरतें सुबह से रसोई में पुलाव बना रही थीं, और उसमें घी और हरा धनिया डाल रही थीं।",
+              "english": "Two women had been making pulao in the kitchen since morning, and putting ghee and green coriander in it."
+            },
+            {
+              "text": "रायता भी बन रहा था, और उसके लिए भी बहुत-सा धनिया और घी चाहिए था।",
+              "english": "Raita was also being made, and for it too a lot of coriander and ghee were needed."
+            },
+            {
+              "text": "घर के बड़े चाचा हर चीज़ की जाँच करते थे कि कुछ कम तो नहीं पड़ेगा।",
+              "english": "The eldest uncle of the house checked everything that nothing would run short."
+            },
+            {
+              "text": "बाग़ में बच्चे दिन भर झूलते रहे, और उनकी हँसी दूर तक सुनाई देती थी।",
+              "english": "In the garden the children kept swinging all day, and their laughter could be heard far away."
+            },
+            {
+              "text": "मीरा दीदी ने सबसे कहा कि सावधानी रखनी चाहिए।",
+              "english": "Meera didi told everybody that care should be taken."
+            },
+            {
+              "text": "उन्होंने कहा कि खाना ढककर रखा जाए, उबला पानी रखा जाए, और बच्चे खाने से पहले साबुन से हाथ धोएँ।",
+              "english": "She said that food should be kept covered, boiled water should be kept, and children should wash hands with soap before eating."
+            },
+            {
+              "text": "रात को मेहमानों के लिए कूलर और मच्छरदानी भी रखी गई, क्योंकि सबको नींद अच्छी आनी चाहिए थी।",
+              "english": "At night coolers and mosquito nets were kept for the guests too, because everybody should get good sleep."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बारात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रविवार की शाम को बारात आई।",
+              "english": "On Sunday evening the wedding procession came."
+            },
+            {
+              "text": "दूर से ही ढोल की आवाज़ आने लगी, और बच्चे दौड़कर गली के मोड़ तक गए।",
+              "english": "From far away the sound of the drum began to come, and the children ran to the turn of the lane."
+            },
+            {
+              "text": "आगे-आगे ढोल था, फिर नाच करते हुए लड़के, और सबसे पीछे सजे हुए घोड़े पर दूल्हा बैठा था।",
+              "english": "In front was the drum, then boys dancing, and at the very back on a decorated horse the bridegroom sat."
+            },
+            {
+              "text": "उसने सफ़ेद कपड़े पहने थे, और वह थोड़ा घबराया हुआ भी लग रहा था।",
+              "english": "He had put on white clothes, and he also looked a little nervous."
+            },
+            {
+              "text": "बारात के आगे छोटे बच्चे बाघ बनकर भाग रहे थे, और सब हँस रहे थे।",
+              "english": "In front of the procession small children were running as tigers, and everybody was laughing."
+            },
+            {
+              "text": "कुछ लोगों ने गुलाल उड़ाया, और बच्चे पिचकारी लेकर आए, पर मीरा दीदी ने उन्हें हँसकर समझा दिया।",
+              "english": "Some people threw gulaal, and the children came with pichkaris, but Meera didi explained to them with a smile."
+            },
+            {
+              "text": "उन्होंने कहा, \"पिछली होली अलग थी, आज कपड़े नए हैं, रंग नहीं।\"",
+              "english": "She said, \"Last Holi was different, today the clothes are new, not the colours.\""
+            },
+            {
+              "text": "दरवाज़े पर घर की औरतों ने दूल्हे को अंदर बुलाया, और बड़ों ने उसके माथे पर हाथ रखकर उसे आशीर्वाद दिया।",
+              "english": "At the door the women of the house called the bridegroom in, and the elders put a hand on his forehead and blessed him."
+            },
+            {
+              "text": "जब बारात अंदर आई, तभी बिजली चली गई और हर तरफ़ अंधकार हो गया।",
+              "english": "When the procession came in, just then the electricity went and there was darkness everywhere."
+            },
+            {
+              "text": "कुछ देर कोई नहीं बोला, फिर किसी ने मोबाइल की रोशनी की, और धीरे-धीरे सबके मोबाइल की रोशनी हो गई।",
+              "english": "For a while nobody spoke, then someone made the light of a mobile, and slowly there was the light of everybody's mobile."
+            },
+            {
+              "text": "सीता नानी बोलीं, \"देखा, एक छोटी ज्योति भी अंधकार को हरा देती है।\"",
+              "english": "Seeta Nani said, \"See, even a small light beats the darkness.\""
+            },
+            {
+              "text": "थोड़ी देर में बिजली आ गई, और सब हँस पड़े।",
+              "english": "In a little while the electricity came, and everybody burst out laughing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "जोड़ा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "फिर दुल्हन आई, और सब उसी को देखने लगे।",
+              "english": "Then the bride came, and everybody began to look at her only."
+            },
+            {
+              "text": "वह सजी हुई थी, और उसने लाल रंग की साड़ी पहनी थी।",
+              "english": "She was dressed up, and she had put on a red sari."
+            },
+            {
+              "text": "वह थोड़ी घबराई हुई थी, पर उसकी आँखों में ख़ुशी भी थी।",
+              "english": "She was a little nervous, but there was joy in her eyes too."
+            },
+            {
+              "text": "दूल्हा और दुल्हन पास-पास खड़े हुए, और दोनों का जोड़ा बहुत सुंदर लग रहा था।",
+              "english": "The bridegroom and bride stood close together, and the couple of the two looked very beautiful."
+            },
+            {
+              "text": "दोनों ने एक-दूसरे को अंगूठी दी, और घर के लोगों ने फूल बरसाए।",
+              "english": "The two gave each other a ring, and the people of the house showered flowers."
+            },
+            {
+              "text": "अंगूठी बहुत छोटी और सुंदर थी, और अंगूठी देखने के लिए सब बच्चे दुल्हन के पास आ गए।",
+              "english": "The ring was very small and beautiful, and all the children came to the bride to see the ring."
+            },
+            {
+              "text": "मेरे पास खड़ी मीरा दीदी ने धीरे से कहा, \"जब मेरा बपतिस्मा हुआ था, तब भी ऐसी ही भीड़ थी, और ऐसी ही ख़ुशी।\"",
+              "english": "Meera didi, standing near me, said softly, \"When I was baptised, there was just such a crowd then too, and just such joy.\""
+            },
+            {
+              "text": "मैं समझ गया कि हर बड़ी ख़ुशी के पीछे लोगों का साथ होता है।",
+              "english": "I understood that behind every big joy there is the company of people."
+            },
+            {
+              "text": "बड़े-बूढ़ों ने जोड़े को कुछ सीख दी: \"एक-दूसरे की बात सुनना, और ग़ुस्से में कभी रात मत सोना।\"",
+              "english": "The elders gave the couple some lessons: \"Listen to each other, and never sleep a night in anger.\""
+            },
+            {
+              "text": "दूल्हा और दुल्हन का जोड़ा सबके सामने हँसता रहा, और सबने कहा कि यह जोड़ा बहुत अच्छा है।",
+              "english": "The couple of bridegroom and bride kept laughing before everybody, and everybody said that this couple is very good."
+            },
+            {
+              "text": "नानी ने भी कहा, \"प्यार के साथ-साथ मेहनत भी चाहिए।\"",
+              "english": "Nani also said, \"Along with love, hard work is also needed.\""
+            },
+            {
+              "text": "भोज से पहले एक बूढ़े चाचा को अचानक चक्कर आ गया।",
+              "english": "Before the feast an old uncle suddenly became dizzy."
+            },
+            {
+              "text": "मीरा दीदी ने उनकी जाँच की, उन्हें उबला हुआ पानी दिया, और वे थोड़ी देर में ठीक हो गए।",
+              "english": "Meera didi examined him, gave him boiled water, and in a little while he was well."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "भोज",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अब भोज शुरू हुआ।",
+              "english": "Now the feast began."
+            },
+            {
+              "text": "आँगन में लंबी क़तारों में सब लोग ज़मीन पर बैठे, और खाने लगे।",
+              "english": "In the courtyard in long rows everybody sat on the ground, and began to eat."
+            },
+            {
+              "text": "थालियों में गरम पुलाव दिया गया, जिसमें घी पड़ा था।",
+              "english": "Hot pulao was given in plates, in which ghee was put."
+            },
+            {
+              "text": "साथ में रायता था, जिसमें हरा धनिया पड़ा हुआ था।",
+              "english": "With it was raita, in which green coriander was put."
+            },
+            {
+              "text": "मैंने रायता खाया, और मुझे वह इतना अच्छा लगा कि मैंने 2 बार माँगा।",
+              "english": "I ate the raita, and I liked it so much that I asked for it twice."
+            },
+            {
+              "text": "कई पकवान थे: दाल, आलू की सब्ज़ी, पुलाव और मिठाई, और सबका मज़ा अलग था।",
+              "english": "There were many festive dishes: dal, potato curry, pulao and sweets, and each had its own taste."
+            },
+            {
+              "text": "मीरा दीदी हर बच्चे से पूछती थीं कि उसने हाथ धोए या नहीं, और बच्चे हँसकर \"हाँ दीदी\" कहते थे।",
+              "english": "Meera didi asked every child whether he had washed his hands or not, and the children would say \"yes didi\" with a laugh."
+            },
+            {
+              "text": "भोज के बीच में दुल्हन की दोस्तों ने दूल्हे के जूते ग़ायब कर दिए।",
+              "english": "In the middle of the feast the bride's friends made the bridegroom's shoes disappear."
+            },
+            {
+              "text": "यह खेल चलता रहा, और जूतों का चोर कौन था, यह दूल्हा कभी नहीं ढूँढ़ पाया।",
+              "english": "This game went on, and the bridegroom could never find out who was the thief of the shoes."
+            },
+            {
+              "text": "आख़िर में उसने हँसकर सबको कुछ पैसे दिए, और जूते दे दिए गए।",
+              "english": "Finally he gave everybody a little money with a laugh, and the shoes were given back."
+            },
+            {
+              "text": "खाने के बाद सीता नानी ने सबको मिठाई बाँटी, और मैंने भी उनके साथ कुछ डिब्बे बाँटे।",
+              "english": "After eating Seeta Nani distributed sweets to everybody, and I too distributed a few boxes with her."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "विदा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रात बहुत हो चुकी थी, और अब विदा का समय आ गया था।",
+              "english": "It was very late at night, and now the time of farewell had come."
+            },
+            {
+              "text": "दुल्हन ने अपनी माँ को गले लगाया, और दोनों रो पड़ीं।",
+              "english": "The bride embraced her mother, and both began to weep."
+            },
+            {
+              "text": "उसके पिता दूर खड़े होकर रो पड़े, और सबका मन भारी हो गया।",
+              "english": "Her father, standing at a distance, burst into tears, and everybody's heart became heavy."
+            },
+            {
+              "text": "मैंने सोचा कि शादी की सबसे मुश्किल घड़ी शायद यही है, जब बेटी दूसरे घर जाती है।",
+              "english": "I thought that the hardest moment of a wedding is perhaps just this, when a daughter goes to another house."
+            },
+            {
+              "text": "पर नानी ने मुझसे कहा, \"बेटा, वह दूसरा घर नहीं, उसका अपना घर है, और हम सब उससे मिलने जाएँगे।\"",
+              "english": "But Nani said to me, \"Son, that is not another house, it is her own house, and we will all go to meet her.\""
+            },
+            {
+              "text": "दुल्हन गाड़ी में बैठी, और घर के बच्चे गाड़ी के पीछे दौड़ते हुए हाथ हिलाते रहे।",
+              "english": "The bride sat in the car, and the children of the house kept waving their hands running behind the car."
+            },
+            {
+              "text": "गाड़ी पर लाल फीता बाँध दिया गया था, और फूल हवा में झूल रहे थे।",
+              "english": "On the car a red ribbon had been tied, and flowers were swaying in the air."
+            },
+            {
+              "text": "गाड़ी मोड़ पर मुड़ी, और सब लोग देर तक वहीं खड़े रहे।",
+              "english": "The car turned at the turn, and everybody stood there a long time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "अगले हफ़्ते",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "घर लौटते समय मैंने अमन से पूछा कि उसे सबसे अच्छा क्या लगा।",
+              "english": "On returning home I asked Aman what he liked best."
+            },
+            {
+              "text": "उसने कहा, \"बाघ बनकर भागना, और पुलाव, और रायता!\"",
+              "english": "He said, \"Running about as a tiger, and the pulao, and the raita!\""
+            },
+            {
+              "text": "मीरा दीदी ने कहा कि अगले हफ़्ते वे सब दुल्हन के नए घर मिलने जाएँगे।",
+              "english": "Meera didi said that next week they would all go to meet at the bride's new house."
+            },
+            {
+              "text": "नानी ने बताया कि वहाँ भी भोज होगा, और इस बार पास्टर अनिल भी आएँगे।",
+              "english": "Nani told me that there too there would be a feast, and this time Pastor Anil would come too."
+            },
+            {
+              "text": "शादी की फ़िल्म अगले महीने बनकर आएगी, और सब उसे साथ बैठकर देखेंगे।",
+              "english": "The film of the wedding will be ready next month, and all will sit and watch it together."
+            },
+            {
+              "text": "मैंने कॉपी में लिखा कि आज मैंने एक परिवार को सिर्फ़ मेहमान बनकर नहीं, अपना बनकर देखा।",
+              "english": "I wrote in my notebook that today I saw a family not just as a guest, but as one of its own."
+            },
+            {
+              "text": "और जब मैं सोने गया, तो मेरे मन में कोई चिंता नहीं थी, सिर्फ़ ढोल की आवाज़ थी।",
+              "english": "And when I went to sleep, there was no worry in my heart, only the sound of the drum."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

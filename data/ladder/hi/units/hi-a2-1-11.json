@@ -1,0 +1,527 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-11",
+  "lang": "hi",
+  "title": "चाय कैसे बनती है",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-11",
+    "title": "How tea is made, and why we drink it (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप to Nani and Nani says तुम to Sam. Nani speaks of the hills from one trip she once made; the tea-garden details (leaves picked by hand, weighing in the evening, wages paid into a bank, tax on a garden) are general and should be checked by a native reviewer. The recipe is the ordinary North Indian kitchen chai (water, ginger, cardamom, tea leaves, milk, sugar). Garlic and chilli are mentioned only to say that they do not go into tea. Hospitality is described without any religious comment; the church tea at the end is plain. Where a planned noun would have been repeated too often (पत्ती, पौधा, कप) the text uses pronouns and चाय itself. Nani's childhood mother appears once (scolding), as in unit 1."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "tea",
+    "instructions",
+    "hospitality"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nani": "सीता नानी",
+    "sam": "सैम"
+  },
+  "sections": [
+    {
+      "title": "सुबह की रसोई",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सुबह का समय था, और सीता नानी रसोई में चाय बना रही थीं।",
+              "english": "It was morning, and Seeta Nani was making tea in the kitchen."
+            },
+            {
+              "text": "सैम चुपचाप दरवाज़े के पास खड़ा देख रहा था।",
+              "english": "Sam stood quietly near the door, watching."
+            },
+            {
+              "text": "सैम: नानी, मैं रोज़ चाय पीता हूँ, लेकिन मुझे पता नहीं कि चाय कैसे बनती है।",
+              "english": "Nani, I drink tea every day, but I don't know how tea is made."
+            },
+            {
+              "text": "नानी: तो आओ, आज तुम्हें सब बताती हूँ।",
+              "english": "Then come, today I will tell you everything."
+            },
+            {
+              "text": "नानी: पहले पहाड़ की बात सुनो, फिर घर की बात।",
+              "english": "First hear about the hills, then about the home."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पहाड़ पर चाय",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी: चाय एक पौधे की पत्ती से बनती है।",
+              "english": "Tea is made from the leaf of a plant."
+            },
+            {
+              "text": "नानी: चाय पहाड़ पर होती है, जहाँ बारिश बहुत होती है।",
+              "english": "Tea grows in the hills, where there is a lot of rain."
+            },
+            {
+              "text": "नानी: मैं एक बार कार से पहाड़ पर गई थी और वहाँ चाय का बाग़ देखा।",
+              "english": "Once I went to the hills by car and saw a tea garden there."
+            },
+            {
+              "text": "नानी: रास्ते के दोनों तरफ़ घास थी, सब तरफ़ हरा रंग था, और ऊपर आसमान नीला था।",
+              "english": "On both sides of the road there was grass, green was everywhere, and the sky above was blue."
+            },
+            {
+              "text": "नानी: पहाड़ की हर जगह सुंदर थी।",
+              "english": "Every place in the hills was beautiful."
+            },
+            {
+              "text": "नानी: पहाड़ के उधर एक नदी भी थी।",
+              "english": "On the other side of the hill there was a river too."
+            },
+            {
+              "text": "सैम: वाह, वह तो बहुत सुंदर जगह होगी!",
+              "english": "Wow, that must be a very beautiful place!"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी: पहले चाय जंगल में अपने आप होती थी।",
+              "english": "In the old days tea grew by itself in the forest."
+            },
+            {
+              "text": "नानी: लोग जंगल में उसे खोजते थे।",
+              "english": "People used to search for it in the forest."
+            },
+            {
+              "text": "नानी: जंगल की घास के बीच कहीं एक छोटा पौधा मिलता था।",
+              "english": "Somewhere among the grass of the forest, a small plant would be found."
+            },
+            {
+              "text": "नानी: आज चाय बाग़ में लगाई जाती है।",
+              "english": "Today tea is planted in gardens."
+            },
+            {
+              "text": "नानी: पहले बीज बोया जाता है, और जब वह बड़ा होता है, तब उसे पहाड़ पर लगाया जाता है।",
+              "english": "First a seed is sown, and when it grows bigger, then it is planted on the hill."
+            },
+            {
+              "text": "नानी: बीज को बोने से पहले पानी में रखा जाता है।",
+              "english": "Before it is sown, the seed is kept in water."
+            },
+            {
+              "text": "नानी: पहाड़ पर पानी रुकता नहीं, वह नीचे बहता है, और चाय को यही पसंद है।",
+              "english": "On the hill water does not stay, it flows down, and tea likes exactly that."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी: बारिश में नदी फूलकर बहने लगती है, और कभी बाढ़ आ जाती है।",
+              "english": "In the rains the river swells and begins to flow wildly, and sometimes a flood comes."
+            },
+            {
+              "text": "नानी: कभी सूखा पड़ता है, तो पहाड़ की घास भी हरी नहीं रहती।",
+              "english": "Sometimes a drought comes, and then even the grass of the hills does not stay green."
+            },
+            {
+              "text": "नानी: बाढ़ आती है तो चाय बह जाती है, और सूखा पड़ता है तो चाय कम होती है।",
+              "english": "When a flood comes the tea is washed away, and when a drought comes there is less tea."
+            },
+            {
+              "text": "नानी: तूफ़ान आता है तो छोटे और कमज़ोर पौधे गिर जाते हैं।",
+              "english": "When a storm comes, the small and weak plants fall."
+            },
+            {
+              "text": "नानी: एक बार आँधी आई, और हम कमरे में बंद थे।",
+              "english": "Once a gale came, and we were shut in a room."
+            },
+            {
+              "text": "नानी: आँधी के बाद सब तूफ़ान की बात करते रहे।",
+              "english": "After the gale everyone kept talking about the storm."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "चाय की कटाई",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी: चाय की कटाई बहुत सुबह शुरू होती है।",
+              "english": "The tea harvest begins very early in the morning."
+            },
+            {
+              "text": "नानी: कभी अँधेरा होता है, जब औरतें बाग़ पहुँच जाती हैं।",
+              "english": "Sometimes it is still dark when the women reach the garden."
+            },
+            {
+              "text": "नानी: बाग़ में ऊपर की छोटी पत्तियाँ ही चुनी जाती हैं।",
+              "english": "In the garden only the small leaves at the top are picked."
+            },
+            {
+              "text": "नानी: उन्हें हाथ से ही चुना जाता है।",
+              "english": "They are picked by hand alone."
+            },
+            {
+              "text": "नानी: सयाने हाथ ही ठीक पत्ते चुनते हैं।",
+              "english": "Only experienced hands pick the right leaves."
+            },
+            {
+              "text": "नानी: वे हरे पत्ते थैले में डाले जाते हैं।",
+              "english": "Those green leaves are put into a bag."
+            },
+            {
+              "text": "सैम: क्या वे सारा दिन खड़ी रहती हैं?",
+              "english": "Do they stand all day?"
+            },
+            {
+              "text": "नानी: हाँ, कटाई के दिन बहुत लंबे होते हैं।",
+              "english": "Yes, the days of the harvest are very long."
+            },
+            {
+              "text": "नानी: शाम को अँधेरा होने से पहले सब कतार में खड़े होते हैं, और उनके थैले तौले जाते हैं।",
+              "english": "In the evening before it gets dark they all stand in a line, and their bags are weighed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी: वहाँ एक अफ़सर काग़ज़ के एक टुकड़े पर नंबर लिखता है।",
+              "english": "There an officer writes a number on a piece of paper."
+            },
+            {
+              "text": "नानी: कुछ लोगों की मज़दूरी हर किलो पर मिलती है।",
+              "english": "Some people's wages are paid for every kilo."
+            },
+            {
+              "text": "नानी: महीने के आख़िर में तनख़्वाह बैंक में डाली जाती है।",
+              "english": "At the end of the month the salary is put into the bank."
+            },
+            {
+              "text": "नानी: बाग़ के मालिक पर सरकार का कर भी लगता है।",
+              "english": "The government's tax is also levied on the owner of the garden."
+            },
+            {
+              "text": "नानी: फिर पत्ते धूप में रखे जाते हैं।",
+              "english": "Then the leaves are kept in the sun."
+            },
+            {
+              "text": "नानी: उन्हें डिब्बे में बंद करके बाज़ार भेजा जाता है।",
+              "english": "Having been shut in a box, they are sent to the market."
+            },
+            {
+              "text": "नानी: वही चाय बाज़ार से मेरी रसोई तक आती है।",
+              "english": "That same tea comes from the market to my kitchen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "घर में चाय",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी: अब घर की चाय देखो।",
+              "english": "Now look at the tea at home."
+            },
+            {
+              "text": "नानी: मैं पहले बाल्टी से पानी निकालकर बर्तन में डालती हूँ।",
+              "english": "First I take water out of the bucket and put it in a pot."
+            },
+            {
+              "text": "नानी: जब पानी गरम होता है, तब उसमें अदरक का एक टुकड़ा डाला जाता है।",
+              "english": "When the water is hot, then a piece of ginger is put in it."
+            },
+            {
+              "text": "नानी: अदरक पहले काटा जाता है, और इलायची भी डाली जाती है।",
+              "english": "The ginger is cut first, and cardamom is put in too."
+            },
+            {
+              "text": "नानी: मेहमान आते हैं तो मैं इलायची ज़्यादा डालती हूँ।",
+              "english": "When guests come I put in more cardamom."
+            },
+            {
+              "text": "नानी: एक दिन घर में अदरक नहीं था, तो मैं पड़ोस में खोजने गई।",
+              "english": "One day there was no ginger at home, so I went to look for ginger in the neighbourhood."
+            },
+            {
+              "text": "नानी: वह न हो, तो इलायची से भी काम चल जाता है।",
+              "english": "If there is none, cardamom will do the job too."
+            },
+            {
+              "text": "नानी: पानी को एक बार उबाला जाता है, तब उसमें चाय की पत्ती डाली जाती है।",
+              "english": "The water is boiled once, then the tea leaf is put in."
+            },
+            {
+              "text": "नानी: पानी में वह फूलने लगती है, और पानी लाल होने लगता है।",
+              "english": "In the water it begins to swell, and the water begins to turn red."
+            },
+            {
+              "text": "सैम: दूध कब डाला जाता है?",
+              "english": "When is the milk put in?"
+            },
+            {
+              "text": "नानी: जब पानी लाल हो जाता है, तब दूध डालो।",
+              "english": "When the water turns red, then add the milk."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी: दूध डालकर चाय को और उबालो।",
+              "english": "After adding the milk, boil the tea a little more."
+            },
+            {
+              "text": "नानी: चीनी आख़िर में डाली जाती है, और सबकी पसंद एक सी नहीं होती।",
+              "english": "Sugar is put in at the end, and everyone's liking is not the same."
+            },
+            {
+              "text": "सैम: मुझे ज़्यादा चीनी पसंद है।",
+              "english": "I like a lot of sugar."
+            },
+            {
+              "text": "नानी: तो चीनी का डिब्बा वहाँ है, ले लो।",
+              "english": "Then the sugar tin is over there, take it."
+            },
+            {
+              "text": "नानी: मुझे ज़रा सी चाहिए।",
+              "english": "I need just a little."
+            },
+            {
+              "text": "नानी: पानी ज़्यादा हो, तो चाय कमज़ोर बनती है।",
+              "english": "If there is too much water, the tea comes out weak."
+            },
+            {
+              "text": "नानी: चाय को छानना मत छोड़ो।",
+              "english": "Don't skip straining the tea."
+            },
+            {
+              "text": "नानी: चाय छानकर गिलास या कप में डाली जाती है, और छानी हुई चाय साफ़ होती है।",
+              "english": "Tea is strained and poured into a glass or cup, and strained tea is clean."
+            },
+            {
+              "text": "सैम: नानी, आपकी चाय में लहसुन या मिर्च नहीं डाली जाती?",
+              "english": "Nani, are garlic or chilli not put in your tea?"
+            },
+            {
+              "text": "नानी: नहीं, नहीं!",
+              "english": "No, no!"
+            },
+            {
+              "text": "नानी: लहसुन और मिर्च दाल और सब्ज़ी में डालते हैं, चाय में नहीं।",
+              "english": "Garlic and chilli go into dal and vegetables, not into tea."
+            },
+            {
+              "text": "सैम: सर्दी में कुछ लोग मिर्च डालते हैं, है न?",
+              "english": "In winter some people add chilli, don't they?"
+            },
+            {
+              "text": "नानी: डालते हैं, पर लहसुन कोई नहीं डालता।",
+              "english": "They do, but nobody adds garlic."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी: एक दिन अमन अपनी खिलौना कार लेकर रसोई में दौड़ रहा था।",
+              "english": "One day Aman was running in the kitchen with his toy car."
+            },
+            {
+              "text": "नानी: खिलौना पहले दरवाज़े से टकराया, फिर मेरे चमकीले गिलास से टकराया।",
+              "english": "The toy knocked against the door, then against my shiny glass."
+            },
+            {
+              "text": "नानी: चाय फ़र्श पर गिर गई, और वह डर गया।",
+              "english": "The tea fell on the floor, and he got frightened."
+            },
+            {
+              "text": "नानी: मैंने उसे डाँटा नहीं, क्योंकि बचपन में मुझे भी माँ डाँटती थीं।",
+              "english": "I didn't scold him, because my mother used to scold me too in my childhood."
+            },
+            {
+              "text": "नानी: मैंने बाल्टी से पानी डालकर फ़र्श साफ़ किया।",
+              "english": "I poured water from the bucket and cleaned the floor."
+            },
+            {
+              "text": "नानी: फिर मैंने उसका खाली गिलास भरा, और हम हँस पड़े।",
+              "english": "Then I filled his empty glass, and we laughed."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मेहमान को चाय क्यों",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम: नानी, घर में कोई आता है तो सबसे पहले चाय क्यों दी जाती है?",
+              "english": "Nani, when someone comes to the house, why is tea given first of all?"
+            },
+            {
+              "text": "नानी: क्योंकि चाय केवल पानी और दूध नहीं है।",
+              "english": "Because tea is not only water and milk."
+            },
+            {
+              "text": "नानी: जब कोई मेहमान आता है, तब हम कहते हैं, \"बैठिए, आप हमारे अपने हैं।\"",
+              "english": "When a guest comes, then we say, \"Please sit, you are one of our own.\""
+            },
+            {
+              "text": "नानी: सबके बीच हाथ में चमकीला कप हो, तो बात अपने आप शुरू हो जाती है।",
+              "english": "With a shiny cup in your hand in the middle of everyone, the conversation starts by itself."
+            },
+            {
+              "text": "नानी: सयाने लोग कहते हैं कि चाय पीने के बाद अजनबी भी अपना लगता है।",
+              "english": "Wise people say that after drinking tea even a stranger feels like one of ours."
+            },
+            {
+              "text": "नानी: सयाने लोग पहले ही पूछ लेते हैं कि मेहमान कैसी चाय पिएगा।",
+              "english": "Wise people ask in advance what kind of tea the guest will drink."
+            },
+            {
+              "text": "नानी: मेहमान घर से खाली पेट नहीं लौटता।",
+              "english": "A guest does not go back from the house on an empty stomach."
+            },
+            {
+              "text": "नानी: बड़े खाने के लिए थाली और कटोरी निकालनी पड़ती है, पर चाय के लिए बस एक कप।",
+              "english": "For a big meal you have to take out a thali and a bowl, but for tea just one cup."
+            },
+            {
+              "text": "नानी: त्योहार पर मेहमान के सामने थाली में मिठाई रखी जाती है, और कटोरी में दाल।",
+              "english": "At a festival sweets are put on a thali in front of the guest, and dal in a bowl."
+            },
+            {
+              "text": "नानी: चाय का ख़र्च बहुत कम होता है, पर उसकी क़ीमत बहुत बड़ी है।",
+              "english": "The expense of tea is very small, but its worth is very great."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी: पास के दफ़्तर में भी अफ़सर आवेदन लेने से पहले चाय देता है।",
+              "english": "Even in the office nearby the officer gives tea before taking an application."
+            },
+            {
+              "text": "सैम: हाँ, मैं भी एक बार फ़ॉर्म भरने गया था।",
+              "english": "Yes, I too went once to fill in a form."
+            },
+            {
+              "text": "सैम: कतार लंबी थी, मैंने बैंक में फ़ीस दी, और फिर एक सिपाही ने मुझे अंदर जाने दिया।",
+              "english": "The line was long, I paid the fee in the bank, and then a soldier let me go in."
+            },
+            {
+              "text": "सैम: उधर एक आदमी सबको चाय दे रहा था, तब मुझे अच्छा लगा।",
+              "english": "Over there a man was giving tea to everybody, and then I felt good."
+            },
+            {
+              "text": "सैम: नतीजा अच्छा आया, और मैंने बाद में उसे धन्यवाद कहा।",
+              "english": "The result came out well, and I thanked him afterwards."
+            },
+            {
+              "text": "नानी: अदालत के बाहर भी चाय की दुकान होती है, जहाँ लोग इंतज़ार में साथ बैठते हैं।",
+              "english": "Outside the court too there is a tea stall, where people sit together while waiting."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी: मेले में चाय की दुकान पर सब बैठकर चाय पीते हैं, और कोई जल्दी में नहीं होता।",
+              "english": "At a fair everybody sits at the tea stall and drinks tea, and nobody is in a hurry."
+            },
+            {
+              "text": "नानी: मुझे मेले की चाय में रोटी का एक टुकड़ा डालकर खाना पसंद है।",
+              "english": "I like to eat a piece of roti put into the tea at the fair."
+            },
+            {
+              "text": "नानी: मेरे घर का ताला दिन में कम बंद रहता है, क्योंकि कोई कभी भी आ सकता है।",
+              "english": "The lock on my house is rarely locked during the day, because anyone can come at any time."
+            },
+            {
+              "text": "नानी: रोटी चाय में फूलकर बड़ी हो जाती है, और बच्चे हँसते हैं।",
+              "english": "Roti swells and grows big in tea, and the children laugh."
+            },
+            {
+              "text": "नानी: रात को हम ताला लगाते हैं, पर सुबह दरवाज़ा फिर खुल जाता है।",
+              "english": "At night we put the lock on, but in the morning the door opens again."
+            },
+            {
+              "text": "नानी: रविवार को चर्च के बाद हम पास्टर अनिल को भी चाय पर बुलाते हैं।",
+              "english": "On Sunday after church we also invite Pastor Anil for tea."
+            },
+            {
+              "text": "नानी: हम परमेश्वर का धन्यवाद करते हैं, और चाय पर सबकी बात सुनते हैं।",
+              "english": "We thank God, and over tea we hear everyone's news."
+            },
+            {
+              "text": "सैम: वाह, नानी, आज की चाय बहुत अच्छी है!",
+              "english": "Wow, Nani, today's tea is very good!"
+            },
+            {
+              "text": "सैम: मैं बाज़ार में भी ऐसी अच्छी चाय खोजूँगा।",
+              "english": "I will look for such good tea in the market too."
+            },
+            {
+              "text": "नानी: अच्छा, पर पहले यह चाय ले लो।",
+              "english": "Good, but first take this tea."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

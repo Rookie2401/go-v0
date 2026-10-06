@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-20",
+  "lang": "hi",
+  "title": "हम क्रिसमस क्यों मनाते हैं",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-20",
+    "title": "Why we celebrate Christmas (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Pastor Anil retells the Christmas story in the course's own plain words (no Scripture quotation; the angel's message is given as reported speech). Church words for the reviewer: उद्धारकर्ता (saviour), स्वर्गदूत and दूत (angel / messenger), भविष्यवक्ता (prophet), परमेश्वर, पाप, मनुष्य, राज्य (state in one place, kingdom in another), मरियम, यूसुफ़, बेतलेहेम (names). Pastor Anil is addressed as पास्टर जी and takes honorific plural verbs. The plan did not list मनाना (to celebrate); it is used three times as an outside word because the unit's own title needs it. The Christmas play with animals and the cat at the samosas are invented for the unit. The recycle words जाल, बिल and बरसाना (3 of 73) could not be placed naturally in a Christmas text and are left out."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "church",
+    "Christmas",
+    "children"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "anil": "पास्टर अनिल",
+    "aman": "अमन",
+    "sam": "सैम"
+  },
+  "sections": [
+    {
+      "title": "रविवार की कक्षा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रविवार को चर्च के बरामदे में बच्चों की कक्षा थी।",
+              "english": "On Sunday there was a children's class on the church veranda."
+            },
+            {
+              "text": "सब बच्चों ने अपनी चप्पल दरवाज़े पर उतारी थी।",
+              "english": "All the children had taken off their sandals at the door."
+            },
+            {
+              "text": "अमन का एक जूता खोया हुआ था, इसलिए वह कोने में उसे ढूँढ़ने लगा।",
+              "english": "One of Aman's shoes was missing, so he began to look for it in the corner."
+            },
+            {
+              "text": "पास्टर अनिल चश्मा लगाकर हाथ में एक किताब लेकर आए।",
+              "english": "Pastor Anil came in wearing his glasses with a book in his hand."
+            },
+            {
+              "text": "सब बच्चे अलग उम्र के थे, लेकिन सब चुपचाप बैठ गए।",
+              "english": "The children were all of different ages, but they all sat down quietly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "aman",
+              "text": "पास्टर जी, हम क्रिसमस क्यों मनाते हैं?",
+              "english": "Pastor ji, why do we celebrate Christmas?"
+            },
+            {
+              "speaker": "anil",
+              "text": "बहुत अच्छा सवाल है, अमन।",
+              "english": "That is a very good question, Aman."
+            },
+            {
+              "speaker": "anil",
+              "text": "आज मैं तुम सबको इसकी वजह बताता हूँ।",
+              "english": "Today I will tell you all the reason for it."
+            },
+            {
+              "speaker": "anil",
+              "text": "कोशिश करना कि सब ध्यान से सुनो।",
+              "english": "Try to listen carefully, all of you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सर्दी के दिन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "क्रिसमस सर्दी में आता है।",
+              "english": "Christmas comes in winter."
+            },
+            {
+              "speaker": "anil",
+              "text": "तब तक मानसून जा चुका होता है, और खेतों में धान काटा जा चुका होता है।",
+              "english": "By then the monsoon has gone, and the paddy has already been harvested in the fields."
+            },
+            {
+              "speaker": "anil",
+              "text": "गाँव में किसान खेती करते हैं और गेहूँ बोते हैं, और नहर का पानी खेतों तक जाता है।",
+              "english": "In the village the farmers farm and sow wheat, and canal water goes to the fields."
+            },
+            {
+              "speaker": "anil",
+              "text": "ज़मीन की मिट्टी अभी गीली होती है, और जितना पानी मिलता है, उतना गेहूँ उगता है।",
+              "english": "The soil of the land is still wet, and the more water there is, the more wheat grows."
+            },
+            {
+              "speaker": "anil",
+              "text": "कुछ घरों में मक्का और अनाज भी रखा जाता है।",
+              "english": "In some houses maize and grain are also stored."
+            },
+            {
+              "speaker": "anil",
+              "text": "ऐसे ही दिनों में हम यह त्योहार मनाते हैं, जब रात बड़ी और ठंडी होती है।",
+              "english": "It is in just such days that we celebrate this festival, when the night is long and cold."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बहुत साल पहले",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "बहुत साल पहले परमेश्वर ने एक भविष्यवक्ता से कहा कि एक उद्धारकर्ता आएगा।",
+              "english": "Many years ago God told a prophet that a saviour would come."
+            },
+            {
+              "speaker": "anil",
+              "text": "उद्धारकर्ता वह है जो हमें हमारे पाप से बचाता है।",
+              "english": "A saviour is the one who saves us from our sins."
+            },
+            {
+              "speaker": "anil",
+              "text": "एक और भविष्यवक्ता ने कहा था कि वह राजा की तरह आएगा, लेकिन उसका राज्य शांति का राज्य होगा।",
+              "english": "Another prophet had said that he would come like a king, but his kingdom would be a kingdom of peace."
+            },
+            {
+              "speaker": "anil",
+              "text": "उन भविष्यवक्ताओं की बात सच हुई।",
+              "english": "What those prophets said came true."
+            },
+            {
+              "speaker": "anil",
+              "text": "परमेश्वर के एक दूत ने पहले मरियम को बताया कि उसका एक बेटा होगा।",
+              "english": "First an angel of God told Mary that she would have a son."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "फिर यूसुफ़ और मरियम बेतलेहेम गए।",
+              "english": "Then Joseph and Mary went to Bethlehem."
+            },
+            {
+              "speaker": "anil",
+              "text": "वहाँ कोई कमरा ख़ाली नहीं था, इसलिए वे एक छोटी-सी जगह में रुके।",
+              "english": "There was no empty room there, so they stayed in a small place."
+            },
+            {
+              "speaker": "anil",
+              "text": "उसी रात मरियम के बेटे का जन्म हुआ।",
+              "english": "That same night Mary's son was born."
+            },
+            {
+              "speaker": "anil",
+              "text": "उसका नाम यीशु रखा गया।",
+              "english": "He was named Jesus."
+            },
+            {
+              "speaker": "anil",
+              "text": "यीशु ने भी हमारी तरह एक मनुष्य का जीवन जिया।",
+              "english": "Jesus too lived the life of a human being, as we do."
+            },
+            {
+              "speaker": "anil",
+              "text": "परमेश्वर मनुष्य बनकर हमारे बीच आया, और यही क्रिसमस की सबसे बड़ी बात है।",
+              "english": "God became a human being and came among us, and this is the greatest thing about Christmas."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "चरवाहों की रात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "उस रात पास के खेत में कुछ चरवाहे थे।",
+              "english": "That night there were some shepherds in a nearby field."
+            },
+            {
+              "speaker": "anil",
+              "text": "कुछ पत्थरों पर बैठे थे, और उनके साथ भेड़ें और बकरियाँ थीं।",
+              "english": "Some were sitting on stones, and they had sheep and goats with them."
+            },
+            {
+              "speaker": "anil",
+              "text": "इनका काम भेड़ों को देखना था।",
+              "english": "Their work was to look after the sheep."
+            },
+            {
+              "speaker": "anil",
+              "text": "उस रात चाँद नहीं था, और हर तरफ़ गहरा अँधेरा था।",
+              "english": "There was no moon that night, and deep darkness lay everywhere."
+            },
+            {
+              "speaker": "anil",
+              "text": "अचानक आसमान में तेज़ रोशनी हुई, और एक स्वर्गदूत उनके सामने खड़ा हो गया।",
+              "english": "Suddenly a bright light came in the sky, and an angel stood before them."
+            },
+            {
+              "speaker": "anil",
+              "text": "वे डर गए।",
+              "english": "They were frightened."
+            },
+            {
+              "speaker": "anil",
+              "text": "उस दूत ने कहा कि डरो मत, आज एक बच्चे का जन्म हुआ है, और वही तुम्हारा उद्धारकर्ता है।",
+              "english": "That messenger said not to be afraid: a child had been born today, and he is your saviour."
+            },
+            {
+              "speaker": "anil",
+              "text": "फिर परमेश्वर के और भी कई दूत आए, और उन्होंने परमेश्वर के लिए गीत गाया।",
+              "english": "Then many more messengers of God came, and they sang a song for God."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "चरवाहे तुरंत गए और उन्होंने बच्चे को देखा।",
+              "english": "The shepherds went at once and saw the child."
+            },
+            {
+              "speaker": "anil",
+              "text": "उनके चेहरे ख़ुशी से चमक रहे थे।",
+              "english": "Their faces were shining with joy."
+            },
+            {
+              "speaker": "anil",
+              "text": "उन्होंने मरियम का चेहरा देखा, और बच्चे का चेहरा भी।",
+              "english": "They saw Mary's face, and the child's face too."
+            },
+            {
+              "speaker": "anil",
+              "text": "जब सूरज निकला, तब उन्होंने सबको बताया कि हमने उसे देखा है।",
+              "english": "When the sun came up, they told everyone that they had seen him."
+            },
+            {
+              "speaker": "aman",
+              "text": "और तारा, पास्टर जी?",
+              "english": "And the star, pastor ji?"
+            },
+            {
+              "speaker": "anil",
+              "text": "हाँ, दूर से कुछ लोगों ने आसमान में एक नया तारा देखा।",
+              "english": "Yes, some people from far away saw a new star in the sky."
+            },
+            {
+              "speaker": "anil",
+              "text": "उस तारे की चमक सबसे तेज़ थी।",
+              "english": "The shine of that star was the brightest."
+            },
+            {
+              "speaker": "anil",
+              "text": "उन्हें उम्मीद थी कि वह तारा उन्हें राजा के पास ले जाएगा।",
+              "english": "They hoped that the star would take them to the king."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "क्रिसमस की तैयारी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "इस बार हम क्या करेंगे?",
+              "english": "What will we do this time?"
+            },
+            {
+              "speaker": "anil",
+              "text": "चर्च की सफ़ाई की जाएगी, और बरामदे में झाड़ू लगाई जाएगी।",
+              "english": "The church will be cleaned, and the veranda will be swept."
+            },
+            {
+              "speaker": "anil",
+              "text": "सीढ़ी पर सावधान रहना, क्योंकि चोट लग सकती है।",
+              "english": "Be careful on the stairs, because you can get hurt."
+            },
+            {
+              "speaker": "anil",
+              "text": "एक बार एक बच्चे की उँगली में छोटा-सा घाव हो गया था।",
+              "english": "Once a child got a small wound on his finger."
+            },
+            {
+              "speaker": "aman",
+              "text": "हाय, मैं सीढ़ी पर नहीं चढ़ूँगा!",
+              "english": "Oh dear, I will not climb the stairs!"
+            },
+            {
+              "speaker": "anil",
+              "text": "कोने में कागज़ का तारा टाँगा जाएगा।",
+              "english": "A paper star will be hung up in the corner."
+            },
+            {
+              "speaker": "anil",
+              "text": "बच्चे खुद कलम से सबके लिए बधाई की चिट्ठी लिखेंगे, और मैं उन्हें गीत सिखाऊँगा।",
+              "english": "The children will themselves write greeting letters for everyone with a pen, and I will teach them a song."
+            },
+            {
+              "speaker": "anil",
+              "text": "बच्चों के स्वास्थ्य का ध्यान रखना, क्योंकि सर्दी में ज़ुकाम जल्दी होता है।",
+              "english": "Take care of the children's health, because in winter colds come quickly."
+            },
+            {
+              "speaker": "anil",
+              "text": "डेंगू का मौसम चला गया है, और गाँव में सबको टीका लग चुका है।",
+              "english": "The dengue season has gone, and everyone in the village has had the injection."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "कहानी का खेल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "aman",
+              "text": "क्या हम इसका खेल भी करेंगे, पास्टर जी?",
+              "english": "Will we also act this out as a game, pastor ji?"
+            },
+            {
+              "speaker": "anil",
+              "text": "हाँ, सबका काम अलग है।",
+              "english": "Yes, everyone's part is different."
+            },
+            {
+              "speaker": "anil",
+              "text": "किसी को चरवाहा बनना है, किसी को भेड़, और सबसे छोटी बच्ची स्वर्गदूत बनेगी।",
+              "english": "Someone has to be a shepherd, someone a sheep, and the smallest girl will be the angel."
+            },
+            {
+              "speaker": "anil",
+              "text": "दो और बच्चे भी स्वर्गदूत बनेंगे।",
+              "english": "Two more children will also be angels."
+            },
+            {
+              "speaker": "anil",
+              "text": "मरियम बनने वाली लड़की के सिर पर दुपट्टा होगा।",
+              "english": "The girl who plays Mary will have a scarf on her head."
+            },
+            {
+              "speaker": "aman",
+              "text": "मैं शेर बनूँगा!",
+              "english": "I will be a lion!"
+            },
+            {
+              "speaker": "anil",
+              "text": "उस रात शेर नहीं था, अमन, सिर्फ़ भेड़ें, बकरियाँ और एक गधा था।",
+              "english": "There was no lion that night, Aman, only sheep, goats and a donkey."
+            },
+            {
+              "speaker": "aman",
+              "text": "मगर मैं भैंस भी नहीं बनना चाहता।",
+              "english": "But I don't want to be a buffalo either."
+            },
+            {
+              "speaker": "sam",
+              "text": "तब तुम घोड़ा बन जाओ।",
+              "english": "Then become a horse."
+            },
+            {
+              "text": "सब बच्चे हँस पड़े।",
+              "english": "All the children burst out laughing."
+            },
+            {
+              "text": "एक चालाक बिल्ली बरामदे में आकर बच्चों के समोसे की तरफ़ देखने लगी।",
+              "english": "A clever cat came into the veranda and started looking at the children's samosas."
+            },
+            {
+              "text": "अमन की बोतल का पानी गिर गया, और बच्चे फिर हँसे।",
+              "english": "The water from Aman's bottle spilled, and the children laughed again."
+            },
+            {
+              "speaker": "anil",
+              "text": "यह कोई इम्तिहान नहीं है कि कोई फ़ेल हो जाए।",
+              "english": "This is not an exam in which someone could fail."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "आज के दिन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "मेरे शहर में कुछ लोग इस त्योहार पर समुद्र के किनारे जाते हैं।",
+              "english": "In my city some people go to the seashore at this festival."
+            },
+            {
+              "speaker": "aman",
+              "text": "मैंने समुद्र कभी नहीं देखा।",
+              "english": "I have never seen the sea."
+            },
+            {
+              "speaker": "anil",
+              "text": "हमारे पास नदी है, और नदी के किनारे भी बच्चे यह त्योहार मनाते हैं।",
+              "english": "We have a river, and children celebrate this festival on the river bank too."
+            },
+            {
+              "speaker": "aman",
+              "text": "समुद्र की लहर बहुत ऊँची होती है, मैं किनारे पर बैठूँगा।",
+              "english": "The waves of the sea are very high; I will sit on the shore."
+            },
+            {
+              "speaker": "anil",
+              "text": "आज कुछ बच्चे घर पर टीवी पर यह त्योहार देखते हैं।",
+              "english": "Today some children watch this festival on TV at home."
+            },
+            {
+              "speaker": "anil",
+              "text": "कुछ लोग इंटरनेट पर वीडियो भेजते हैं, और कंप्यूटर से भी बधाई देते हैं।",
+              "english": "Some people send videos over the internet and also send greetings from a computer."
+            },
+            {
+              "speaker": "anil",
+              "text": "राज्य के मंत्री भी अख़बार में बधाई देते हैं।",
+              "english": "The ministers of the state also give their greetings in the newspaper."
+            },
+            {
+              "speaker": "anil",
+              "text": "हम यहाँ चर्च में समोसे और मिठाई खाएँगे, ताकि सब लोग साथ बैठें।",
+              "english": "Here in church we will eat samosas and sweets, so that everyone sits together."
+            },
+            {
+              "speaker": "anil",
+              "text": "लेकिन बात यह है कि हर मनुष्य को परमेश्वर के प्रेम की ज़रूरत है।",
+              "english": "But the point is that every human being needs God's love."
+            },
+            {
+              "speaker": "anil",
+              "text": "जो इस बात की समझ पाता है, उसके मन में शांति आती है।",
+              "english": "The one who gains an understanding of this has peace in his heart."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

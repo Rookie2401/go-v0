@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-1-14",
+  "lang": "hi",
+  "title": "सब्ज़ी और दाम",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-1-14",
+    "title": "Vegetables and prices (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Prices are written in digits (30, 40, 20 रुपये किलो) as the plan says. Ramesh the vegetable seller is addressed as रमेश जी by Sam, and calls Sam सैम जी. Aman's ball in the bag is the reason for the three uses of गेंद (a word the later in-place text needs). प्याज़ is treated as feminine (सस्ती). \"बहुत महँगे हैं!\" drops the subject (टमाटर) on purpose, spoken style. Words outside the plan (measured): none."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "market",
+    "food",
+    "money"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "सब्ज़ी और दाम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज नानी रसोई में हैं।",
+              "english": "Today Nani is in the kitchen."
+            },
+            {
+              "text": "वह सब्ज़ी बनाती हैं।",
+              "english": "She is making vegetables."
+            },
+            {
+              "text": "नानी बोलती हैं, \"सैम, आप बाज़ार जाइए।\"",
+              "english": "Nani says, \"Sam, please go to the market.\""
+            },
+            {
+              "text": "\"मुझे आलू, प्याज़ और टमाटर चाहिए।\"",
+              "english": "\"I need potatoes, onions and tomatoes.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"यह थैला लीजिए।\"",
+              "english": "Nani says, \"Take this bag.\""
+            },
+            {
+              "text": "\"यह पैसा भी लीजिए।\"",
+              "english": "\"Take this money too.\""
+            },
+            {
+              "text": "सैम बोलता है, \"ठीक है, नानी।\"",
+              "english": "Sam says, \"All right, Nani.\""
+            },
+            {
+              "text": "सैम थैला लेता है।",
+              "english": "Sam takes the bag."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन बोलता है, \"सैम, मैं भी बाज़ार चलता हूँ!\"",
+              "english": "Aman says, \"Sam, I am coming to the market too!\""
+            },
+            {
+              "text": "सैम बोलता है, \"अमन, तुम्हारी गेंद कहाँ है?\"",
+              "english": "Sam says, \"Aman, where is your ball?\""
+            },
+            {
+              "text": "अमन बोलता है, \"मेरी गेंद? मुझे पता नहीं है।\"",
+              "english": "Aman says, \"My ball? I don't know.\""
+            },
+            {
+              "text": "सैम बोलता है, \"आपकी गेंद थैले में है!\"",
+              "english": "Sam says, \"Your ball is in the bag!\""
+            },
+            {
+              "text": "अमन बोलता है, \"हाँ, यह मेरी है!\"",
+              "english": "Aman says, \"Yes, it is mine!\""
+            },
+            {
+              "text": "चाचा जी बाज़ार में हैं।",
+              "english": "Chacha ji is at the market."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "बाज़ार बड़ा है।",
+              "english": "The market is big."
+            },
+            {
+              "text": "बाज़ार में बहुत लोग हैं।",
+              "english": "There are many people at the market."
+            },
+            {
+              "text": "रमेश बाज़ार में सब्ज़ी बेचता है।",
+              "english": "Ramesh sells vegetables at the market."
+            },
+            {
+              "text": "रमेश की सब्ज़ी बहुत अच्छी है।",
+              "english": "Ramesh's vegetables are very good."
+            },
+            {
+              "text": "सैम बोलता है, \"नमस्ते, रमेश जी।\"",
+              "english": "Sam says, \"Hello, Ramesh ji.\""
+            },
+            {
+              "text": "रमेश बोलता है, \"नमस्ते, सैम जी! आइए!\"",
+              "english": "Ramesh says, \"Hello, Sam ji! Come!\""
+            },
+            {
+              "text": "रमेश बोलता है, \"यहाँ केला है, आलू है और टमाटर है।\"",
+              "english": "Ramesh says, \"Here there are bananas, potatoes and tomatoes.\""
+            },
+            {
+              "text": "रमेश बोलता है, \"आप कौन हैं?\"",
+              "english": "Ramesh asks, \"Who are you?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं सीता नानी का दोस्त हूँ।\"",
+              "english": "Sam says, \"I am Seeta Nani's friend.\""
+            },
+            {
+              "text": "रमेश बोलता है, \"अच्छा! और यह कौन है?\"",
+              "english": "Ramesh says, \"I see! And who is this?\""
+            },
+            {
+              "text": "सैम बोलता है, \"यह अमन है।\"",
+              "english": "Sam says, \"This is Aman.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम बोलता है, \"आलू का दाम क्या है?\"",
+              "english": "Sam says, \"What is the price of the potatoes?\""
+            },
+            {
+              "text": "रमेश बोलता है, \"30 रुपये किलो।\"",
+              "english": "Ramesh says, \"30 rupees a kilo.\""
+            },
+            {
+              "text": "सैम बोलता है, \"और टमाटर?\"",
+              "english": "Sam says, \"And the tomatoes?\""
+            },
+            {
+              "text": "रमेश बोलता है, \"40 रुपये किलो।\"",
+              "english": "Ramesh says, \"40 rupees a kilo.\""
+            },
+            {
+              "text": "सैम बोलता है, \"बहुत महँगे हैं!\"",
+              "english": "Sam says, \"They are very expensive!\""
+            },
+            {
+              "text": "रमेश बोलता है, \"हाँ, आज महँगे हैं।\"",
+              "english": "Ramesh says, \"Yes, they are expensive today.\""
+            },
+            {
+              "text": "सैम बोलता है, \"और प्याज़?\"",
+              "english": "Sam says, \"And onions?\""
+            },
+            {
+              "text": "रमेश बोलता है, \"प्याज़ सस्ती है। 20 रुपये किलो।\"",
+              "english": "Ramesh says, \"Onions are cheap. 20 rupees a kilo.\""
+            },
+            {
+              "text": "सैम बोलता है, \"दाम ठीक है।\"",
+              "english": "Sam says, \"The price is fine.\""
+            },
+            {
+              "text": "रमेश बोलता है, \"केला भी महँगा है, लेकिन बहुत मीठा है।\"",
+              "english": "Ramesh says, \"The bananas are expensive too, but very sweet.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन बोलता है, \"मुझे केला चाहिए!\"",
+              "english": "Aman says, \"I want a banana!\""
+            },
+            {
+              "text": "सैम बोलता है, \"ठीक है।\"",
+              "english": "Sam says, \"All right.\""
+            },
+            {
+              "text": "सैम सब लेता है।",
+              "english": "Sam takes everything."
+            },
+            {
+              "text": "सैम बोलता है, \"रमेश जी, यह लीजिए, आपका पैसा।\"",
+              "english": "Sam says, \"Ramesh ji, here you are, your money.\""
+            },
+            {
+              "text": "रमेश बोलता है, \"पैसा ठीक है। धन्यवाद!\"",
+              "english": "Ramesh says, \"The money is right. Thank you!\""
+            },
+            {
+              "text": "सैम और अमन घर जाते हैं।",
+              "english": "Sam and Aman go home."
+            },
+            {
+              "text": "सैम बोलता है, \"चाचा जी, आप भी आइए!\"",
+              "english": "Sam says, \"Chacha ji, you come too!\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"सैम, दाम कितना है?\"",
+              "english": "Nani says, \"Sam, what is the price?\""
+            },
+            {
+              "text": "सैम बोलता है, \"नानी, यह सस्ता है।\"",
+              "english": "Sam says, \"Nani, this is cheap.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"सस्ता और अच्छा! बहुत अच्छा।\"",
+              "english": "Nani says, \"Cheap and good! Very good.\""
+            },
+            {
+              "text": "नानी रसोई में सब्ज़ी बनाती हैं।",
+              "english": "Nani makes vegetables in the kitchen."
+            },
+            {
+              "text": "अमन को आम पसंद है, लेकिन आज घर में आम नहीं है।",
+              "english": "Aman likes mangoes, but today there are no mangoes in the house."
+            },
+            {
+              "text": "अमन बोलता है, \"नानी, मुझे आम चाहिए।\"",
+              "english": "Aman says, \"Nani, I want a mango.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"आम बाज़ार में हैं, अमन। हम बाज़ार जाते हैं।\"",
+              "english": "Nani says, \"The mangoes are at the market, Aman. We go to the market.\""
+            },
+            {
+              "text": "अमन आज दूध पीता है।",
+              "english": "Today Aman drinks milk."
+            },
+            {
+              "text": "दूध बहुत मीठा है।",
+              "english": "The milk is very sweet."
+            },
+            {
+              "text": "सैम चाय पीता है।",
+              "english": "Sam drinks tea."
+            },
+            {
+              "text": "नानी बोलती हैं, \"आज हम रोटी, दाल और चावल खाते हैं।\"",
+              "english": "Nani says, \"Today we eat roti, dal and rice.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

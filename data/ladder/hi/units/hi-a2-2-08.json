@@ -1,0 +1,675 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-08",
+  "lang": "hi",
+  "title": "शहर या गाँव?",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-08",
+    "title": "\"शहर या गाँव?\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A relaxed Sunday-evening conversation on a roof among रवि सर (a city man), सुरेश (a farmer who has come to town for a wedding) and Sam. The point of view is balanced on purpose: neither city nor village wins. Points for the reviewer: जी after names (सुरेश जी), आप among the three, तुम from रवि सर to Sam; पुत्र in सुरेश's mouth (a bookish word, planned as a top-up word from the Bible texts: it is used in the sense of the \"son of\" line on a government form); विनती and अधिकार are formal words used by सुरेश in mock-solemn tones. जैसा … वैसा is the construction the plan wants here; 'वैसा' itself is not in the word list (only वैसे). जड़ (root) is used for the proverb of the branch and the root. Outside the plan (3 lemmas, 7 tokens, 0.6 per 100 words): मुश्किल×3, वैसा×2, जड़×2. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "conversation",
+    "opinions",
+    "city and village"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "S": "सैम",
+    "R": "रवि सर",
+    "U": "सुरेश"
+  },
+  "sections": [
+    {
+      "title": "छत पर एक शाम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज रविवार की शाम कितनी अच्छी है!",
+              "english": "What a good Sunday evening it is today!",
+              "speaker": "S"
+            },
+            {
+              "text": "हाँ, सैम।",
+              "english": "Yes, Sam.",
+              "speaker": "R"
+            },
+            {
+              "text": "चाय पियो और सुरेश जी से बात करो।",
+              "english": "Drink your tea and talk with Suresh ji.",
+              "speaker": "R"
+            },
+            {
+              "text": "ये हमारे पुराने दोस्त हैं, और शादी के लिए अपने गाँव से शहर आए हैं।",
+              "english": "He is an old friend of ours, and has come from his village to the city for a wedding.",
+              "speaker": "R"
+            },
+            {
+              "text": "नमस्ते, सैम जी।",
+              "english": "Namaste, Sam ji.",
+              "speaker": "U"
+            },
+            {
+              "text": "रवि मेरे साथ स्कूल में पढ़ता था।",
+              "english": "Ravi studied with me at school.",
+              "speaker": "U"
+            },
+            {
+              "text": "बाद में वह शहर चला गया, और मैं अपने खेत में रह गया।",
+              "english": "Later he went to the city, and I stayed on in my field.",
+              "speaker": "U"
+            },
+            {
+              "text": "आप दोनों के रास्ते अलग हो गए।",
+              "english": "Your two paths became different.",
+              "speaker": "S"
+            },
+            {
+              "text": "हाँ, और आज हम रोज़ यही बात करते हैं कि शहर अच्छा है या गाँव।",
+              "english": "Yes, and today we talk about this every day: whether the city is better or the village.",
+              "speaker": "U"
+            },
+            {
+              "text": "तो मैं पूछ सकता हूँ कि आप क्या सोचते हैं?",
+              "english": "Then may I ask what you think?",
+              "speaker": "S"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "शोर और हवा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैं सीधी बात कहूँगा, मैं एक किसान का पुत्र हूँ, इसलिए खेत मेरे लिए सिर्फ़ ज़मीन नहीं है।",
+              "english": "I will speak plainly: I am a farmer's son, so the field is not just land for me.",
+              "speaker": "U"
+            },
+            {
+              "text": "मुझे शहर का शोर बिलकुल पसंद नहीं है।",
+              "english": "I do not like the noise of the city at all.",
+              "speaker": "U"
+            },
+            {
+              "text": "रात को भी गाड़ियों का शोर, दुकानों का शोर और भीड़ का शोर रहता है।",
+              "english": "Even at night there is the noise of vehicles, the noise of shops and the noise of the crowd.",
+              "speaker": "U"
+            },
+            {
+              "text": "हमारे गाँव में रात को सिर्फ़ हवा चलती है और कभी-कभी पास के जंगल से भालू की आवाज़ आती है।",
+              "english": "In our village at night only the wind blows, and sometimes the sound of a bear comes from the nearby forest.",
+              "speaker": "U"
+            },
+            {
+              "text": "भालू की आवाज़ से तो मैं डर जाऊँगा।",
+              "english": "I would be frightened by a bear's sound.",
+              "speaker": "R"
+            },
+            {
+              "text": "डरने की ज़रूरत नहीं है, भालू गाँव में नहीं आता, वह तो जंगल का है।",
+              "english": "There is no need to be afraid, the bear does not come into the village, it belongs to the forest.",
+              "speaker": "U"
+            },
+            {
+              "text": "ठीक है, पर शहर की सुविधाएँ भी तो देखो।",
+              "english": "All right, but look at the facilities of the city too.",
+              "speaker": "R"
+            },
+            {
+              "text": "यहाँ अस्पताल पास है, स्कूल पास है, और बिजली कभी नहीं जाती।",
+              "english": "Here the hospital is near, the school is near, and the electricity never goes.",
+              "speaker": "R"
+            },
+            {
+              "text": "गाँव के लोग इलाज कराने भी शहर ही आते हैं।",
+              "english": "Village people come to the city even to get treatment.",
+              "speaker": "R"
+            },
+            {
+              "text": "यह बात सच है, पर सरकार द्वारा हमारे गाँव में भी नया अस्पताल बन रहा है।",
+              "english": "That is true, but a new hospital is being built in our village too by the government.",
+              "speaker": "U"
+            },
+            {
+              "text": "बिजली जैसी सुविधा शहर में ज़्यादा है, यह मैं मानता हूँ।",
+              "english": "I admit that a facility like electricity is greater in the city.",
+              "speaker": "U"
+            },
+            {
+              "text": "पर गाँव में आसमान साफ़ है, और हवा शहर से कहीं अच्छी है।",
+              "english": "But in the village the sky is clear, and the air is far better than in the city.",
+              "speaker": "U"
+            },
+            {
+              "text": "मैंने आज सुबह शहर की बस देखी, उसमें लोग दरवाज़े पर लटके हुए थे।",
+              "english": "This morning I saw the city bus; people were hanging at its door.",
+              "speaker": "S"
+            },
+            {
+              "text": "हाँ, भीड़ के कारण लोग लटककर जाते हैं, और यह मुझे भी पसंद नहीं।",
+              "english": "Yes, because of the crowd people travel hanging, and I do not like it either.",
+              "speaker": "R"
+            },
+            {
+              "text": "इसी कारण मैं शहर में नहीं रह सकता, चाहे बाक़ी सुविधाएँ कितनी भी हों।",
+              "english": "That is why I cannot live in the city, however many other facilities there are.",
+              "speaker": "U"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "काम और मौक़ा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "और काम का क्या?",
+              "english": "And what about work?",
+              "speaker": "S"
+            },
+            {
+              "text": "काम का मौक़ा शहर में बहुत है।",
+              "english": "There are many chances of work in the city.",
+              "speaker": "R"
+            },
+            {
+              "text": "मैं गाँव में रहता, तो शायद आज अध्यापक न होता।",
+              "english": "If I had stayed in the village, perhaps I would not be a teacher today.",
+              "speaker": "R"
+            },
+            {
+              "text": "शहर ने मुझे पढ़ने और आगे बढ़ने का मौक़ा दिया।",
+              "english": "The city gave me the chance to study and to go ahead.",
+              "speaker": "R"
+            },
+            {
+              "text": "शहर आने के लिए बहुत हौसला चाहिए, और पढ़ाई की सुविधा भी यहाँ बहुत है।",
+              "english": "To come to the city one needs a lot of courage, and the facility for study is also great here.",
+              "speaker": "R"
+            },
+            {
+              "text": "यह तो मैं भी जानता हूँ, रवि।",
+              "english": "This I know too, Ravi.",
+              "speaker": "U"
+            },
+            {
+              "text": "पर तरक़्क़ी सिर्फ़ शहर में नहीं होती, और गाँव में रहने के लिए भी हिम्मत चाहिए।",
+              "english": "But progress does not happen only in the city, and to live in the village one needs courage too.",
+              "speaker": "U"
+            },
+            {
+              "text": "हमारे गाँव में भी अब मोबाइल है, नई सड़क है, और लोग बच्चों को पढ़ाई कराना चाहते हैं।",
+              "english": "In our village too there are mobiles now, a new road, and people want to have their children educated.",
+              "speaker": "U"
+            },
+            {
+              "text": "मेरा पुत्र शहर में पढ़ता है, पर वह हर महीने गाँव आता है।",
+              "english": "My son studies in the city, but he comes to the village every month.",
+              "speaker": "U"
+            },
+            {
+              "text": "मेरी बेटी नर्स की ट्रेनिंग ले रही है, और उसका सपना अपने गाँव में अस्पताल चलाना है।",
+              "english": "My daughter is taking nurse training, and her dream is to run a hospital in her own village.",
+              "speaker": "U"
+            },
+            {
+              "text": "यह तो बड़ी सफलता होगी।",
+              "english": "That would be a great success.",
+              "speaker": "R"
+            },
+            {
+              "text": "तुम्हारे खेत से कितनी कमाई होती है?",
+              "english": "How much income does your field bring?",
+              "speaker": "R"
+            },
+            {
+              "text": "कभी ज़्यादा, कभी कम।",
+              "english": "Sometimes more, sometimes less.",
+              "speaker": "U"
+            },
+            {
+              "text": "बारिश अच्छी हो तो फ़सल अच्छी होती है, और बारिश न हो तो मुश्किल हो जाती है।",
+              "english": "If the rain is good the crop is good, and if there is no rain it becomes hard.",
+              "speaker": "U"
+            },
+            {
+              "text": "इसके अलावा बंदर भी हमारी फ़सल का नुकसान करते हैं।",
+              "english": "Besides that, monkeys also do harm to our crop.",
+              "speaker": "U"
+            },
+            {
+              "text": "बंदर?",
+              "english": "Monkeys?",
+              "speaker": "S"
+            },
+            {
+              "text": "हाँ, सैम जी।",
+              "english": "Yes, Sam ji.",
+              "speaker": "U"
+            },
+            {
+              "text": "वे बहुत चालाक हैं, और दिन में आकर खेत से मक्का ले जाते हैं।",
+              "english": "They are very clever, and in the daytime they come and take cobs of corn from the field.",
+              "speaker": "U"
+            },
+            {
+              "text": "देखा, गाँव में भी नुकसान है।",
+              "english": "See, there is loss in the village too.",
+              "speaker": "R"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "महँगाई और ख़र्च",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पर शहर में सबसे बड़ी बात महँगाई है।",
+              "english": "But in the city the biggest thing is high prices.",
+              "speaker": "R"
+            },
+            {
+              "text": "किराया ज़्यादा है, सब्ज़ी महँगी है, और हर चीज़ के लिए पैसे देने पड़ते हैं।",
+              "english": "The rent is high, vegetables are dear, and one has to pay money for everything.",
+              "speaker": "R"
+            },
+            {
+              "text": "मेरी तनख़्वाह का आधा पैसा मकान के किराए में चला जाता है।",
+              "english": "Half of my salary money goes on the rent of the house.",
+              "speaker": "R"
+            },
+            {
+              "text": "महँगाई बढ़ती जाती है, पर तनख़्वाह उतनी नहीं बढ़ती।",
+              "english": "High prices keep rising, but salary does not rise as much.",
+              "speaker": "R"
+            },
+            {
+              "text": "गाँव में भी महँगाई आ गई है, पर वहाँ हम अपनी सब्ज़ी ख़ुद बोते हैं।",
+              "english": "In the village too high prices have come, but there we sow our own vegetables.",
+              "speaker": "U"
+            },
+            {
+              "text": "और गाँव में अपना घर है, अपना खेत है।",
+              "english": "And in the village there is one's own house, one's own field.",
+              "speaker": "U"
+            },
+            {
+              "text": "वहाँ पानी, दूध और सब्ज़ी के लिए इतना ख़र्च नहीं करना पड़ता।",
+              "english": "There one does not have to spend so much on water, milk and vegetables.",
+              "speaker": "U"
+            },
+            {
+              "text": "तो गाँव का फ़ायदा यह है कि ख़र्च कम है।",
+              "english": "So the benefit of the village is that expenses are low.",
+              "speaker": "S"
+            },
+            {
+              "text": "हाँ, और शहर का फ़ायदा यह है कि कमाई ज़्यादा है।",
+              "english": "Yes, and the benefit of the city is that earnings are higher.",
+              "speaker": "U"
+            },
+            {
+              "text": "जैसा काम, वैसा दाम।",
+              "english": "As is the work, so is the price.",
+              "speaker": "R"
+            },
+            {
+              "text": "शहर में काम ज़्यादा है, इसलिए दाम भी ज़्यादा मिलता है।",
+              "english": "In the city there is more work, so the price one gets is higher too.",
+              "speaker": "R"
+            },
+            {
+              "text": "पर जैसा मौक़ा तुम्हें मिला, वैसा हर किसी को नहीं मिलता।",
+              "english": "But the kind of chance you got, not everybody gets.",
+              "speaker": "U"
+            },
+            {
+              "text": "हर आदमी तरक़्क़ी चाहता है, चाहे शहर में रहे या गाँव में।",
+              "english": "Every man wants progress, whether he lives in the city or the village.",
+              "speaker": "R"
+            },
+            {
+              "text": "और तरक़्क़ी वह है जिसमें सब साथ चलें।",
+              "english": "And progress is that in which everybody goes along together.",
+              "speaker": "U"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "आज़ादी और अकेलापन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "क्या आपको गाँव में ज़्यादा आज़ादी लगती है?",
+              "english": "Do you feel more freedom in the village?",
+              "speaker": "S"
+            },
+            {
+              "text": "बिलकुल।",
+              "english": "Absolutely.",
+              "speaker": "U"
+            },
+            {
+              "text": "सुबह उठता हूँ, खेत में जाता हूँ, और अपने समय पर काम करता हूँ।",
+              "english": "I get up in the morning, go to the field, and work in my own time.",
+              "speaker": "U"
+            },
+            {
+              "text": "न कोई घड़ी मुझे डाँटती है, न कोई मालिक।",
+              "english": "No clock scolds me, and no boss either.",
+              "speaker": "U"
+            },
+            {
+              "text": "आज़ादी तो है, पर गाँव में कभी-कभी अकेलापन भी होता होगा।",
+              "english": "There is freedom, but in the village there must be some loneliness too.",
+              "speaker": "R"
+            },
+            {
+              "text": "नहीं, रवि, अकेलापन तो शहर में ज़्यादा है।",
+              "english": "No, Ravi, loneliness is greater in the city.",
+              "speaker": "U"
+            },
+            {
+              "text": "बूढ़े लोगों को शहर में सबसे ज़्यादा अकेलापन लगता है, यह मैं मानता हूँ।",
+              "english": "Old people feel the most loneliness in the city, I admit that.",
+              "speaker": "R"
+            },
+            {
+              "text": "यहाँ तुम्हारे पड़ोसी भी तुम्हारा नाम नहीं जानते।",
+              "english": "Here even your neighbours do not know your name.",
+              "speaker": "U"
+            },
+            {
+              "text": "हमारे गाँव में हर किसी से कोई न कोई रिश्ता है।",
+              "english": "In our village there is some relationship with everybody.",
+              "speaker": "U"
+            },
+            {
+              "text": "कोई चाचा है, कोई बुआ है, और शादी हो या मौत, सब साथ खड़े होते हैं।",
+              "english": "One is an uncle, another an aunt, and whether it is a wedding or a death, everyone stands together.",
+              "speaker": "U"
+            },
+            {
+              "text": "तुम ठीक कहते हो।",
+              "english": "You are right.",
+              "speaker": "R"
+            },
+            {
+              "text": "मेरे पड़ोसी मुझे सिर्फ़ तब बुलाते हैं जब कोई चीज़ चाहिए होती है।",
+              "english": "My neighbours call me only when they need something.",
+              "speaker": "R"
+            },
+            {
+              "text": "पर मेरी कक्षा में रोज़ पचास बच्चे आते हैं, और उन्हीं से मेरा रिश्ता बनता है।",
+              "english": "But fifty children come to my class every day, and my relationship is with them.",
+              "speaker": "R"
+            },
+            {
+              "text": "तो रिश्ते शहर में भी बनते हैं।",
+              "english": "So relationships form in the city too.",
+              "speaker": "S"
+            },
+            {
+              "text": "बनते हैं, पर बनाने पड़ते हैं।",
+              "english": "They form, but one has to make them.",
+              "speaker": "R"
+            },
+            {
+              "text": "हमारे गाँव की छोटी दुकान पर बच्चे दो रुपये की टॉफ़ी लेकर ख़ुश हो जाते हैं।",
+              "english": "At the small shop of our village the children are happy with a toffee for two rupees.",
+              "speaker": "U"
+            },
+            {
+              "text": "शहर के बच्चों को टॉफ़ी से ज़्यादा फ़ोन चाहिए।",
+              "english": "City children want a phone more than a toffee.",
+              "speaker": "R"
+            },
+            {
+              "text": "मेरा एक शौक़ है, मैं हर साल खेत के किनारे पेड़ लगाता हूँ।",
+              "english": "I have one hobby: every year I plant trees at the edge of the field.",
+              "speaker": "U"
+            },
+            {
+              "text": "मेरा शौक़ किताबें हैं, और शहर में किताबों की दुकानें बहुत हैं।",
+              "english": "My hobby is books, and in the city there are many bookshops.",
+              "speaker": "R"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "फ़ैसला",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इस सवाल का उत्तर आप दोनों के पास अलग है।",
+              "english": "The answer to this question is different with each of you.",
+              "speaker": "S"
+            },
+            {
+              "text": "शायद इसका उत्तर एक नहीं, दो हैं।",
+              "english": "Perhaps the answer is not one but two.",
+              "speaker": "R"
+            },
+            {
+              "text": "अगर आपको फ़ैसला करना होता, तो आप कहाँ रहते?",
+              "english": "If you had to decide, where would you live?",
+              "speaker": "S"
+            },
+            {
+              "text": "अगर मुझे चुनना होता, तो मैं गाँव ही चुनता।",
+              "english": "If I had to choose, I would choose the village.",
+              "speaker": "U"
+            },
+            {
+              "text": "पर अगर मेरे पास बड़ा सपना होता, तो शायद मैं भी शहर जाता।",
+              "english": "But if I had a big dream, perhaps I would go to the city too.",
+              "speaker": "U"
+            },
+            {
+              "text": "और अगर मैं बूढ़ा होकर शांति चाहता, तो शायद गाँव लौट जाता।",
+              "english": "And if I wanted peace when I am old, perhaps I would go back to the village.",
+              "speaker": "R"
+            },
+            {
+              "text": "तो आप दोनों का फ़ैसला उम्र के साथ भी बदलता है।",
+              "english": "So your decision changes with age too.",
+              "speaker": "S"
+            },
+            {
+              "text": "हर रास्ते में कुछ फ़ायदा है और कुछ नुकसान।",
+              "english": "Every road has some benefit and some loss.",
+              "speaker": "U"
+            },
+            {
+              "text": "शायद।",
+              "english": "Perhaps.",
+              "speaker": "U"
+            },
+            {
+              "text": "और एक बात, सैम जी।",
+              "english": "And one thing, Sam ji.",
+              "speaker": "U"
+            },
+            {
+              "text": "मेरी एक विनती है, कभी ऐसा मत सोचना कि गाँव के लोग ग़रीब हैं तो वे पीछे हैं।",
+              "english": "I have one request: never think that because village people are poor they are behind.",
+              "speaker": "U"
+            },
+            {
+              "text": "हर बच्चे को पढ़ने का अधिकार है, और हर किसान को अपनी मेहनत का दाम पाने का अधिकार।",
+              "english": "Every child has the right to study, and every farmer has the right to get a price for his labour.",
+              "speaker": "U"
+            },
+            {
+              "text": "और मेरी भी एक विनती है, सुरेश।",
+              "english": "And I too have a request, Suresh.",
+              "speaker": "R"
+            },
+            {
+              "text": "शहर के लोगों को भी ठीक से समझो।",
+              "english": "Do not misunderstand city people either.",
+              "speaker": "R"
+            },
+            {
+              "text": "यहाँ भी लोग हिम्मत करके आते हैं, और कई बार उन्हें अपने गाँव को विदा कहना पड़ता है।",
+              "english": "Here too people come having taken courage, and many times they have to say goodbye to their village.",
+              "speaker": "R"
+            },
+            {
+              "text": "विदा के दिन माँ रोती है, और मन भारी हो जाता है।",
+              "english": "On the day of farewell Mother weeps and the heart becomes heavy.",
+              "speaker": "R"
+            },
+            {
+              "text": "यह सच है, मेरा बेटा भी जब गया, तो मैं रात भर सो नहीं सका।",
+              "english": "This is true, when my son went too, I could not sleep all night.",
+              "speaker": "U"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सोच बदलती है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आप दोनों की बातें सुनकर मेरी सोच बदल रही है।",
+              "english": "Hearing the two of you, my thinking is changing.",
+              "speaker": "S"
+            },
+            {
+              "text": "पहले मैं सोचता था कि शहर में सफलता है और गाँव में सिर्फ़ मुश्किल।",
+              "english": "Earlier I used to think that there is success in the city and only hardship in the village.",
+              "speaker": "S"
+            },
+            {
+              "text": "अब क्या सोचते हो?",
+              "english": "What do you think now?",
+              "speaker": "R"
+            },
+            {
+              "text": "अब मैं सोचता हूँ कि हर जगह की अपनी सोच, अपना फ़ायदा और अपना नुकसान है।",
+              "english": "Now I think that every place has its own way of thinking, its own strength and its own loss.",
+              "speaker": "S"
+            },
+            {
+              "text": "बहुत ठीक।",
+              "english": "Very good.",
+              "speaker": "U"
+            },
+            {
+              "text": "हम गाँव के लोग कहते हैं कि पेड़ की डाल जितनी ऊँची हो, जड़ उतनी गहरी होनी चाहिए।",
+              "english": "We village people say that the higher the branch of a tree, the deeper the root must be.",
+              "speaker": "U"
+            },
+            {
+              "text": "यह तो मैंने पहली बार सुना।",
+              "english": "This I have heard for the first time.",
+              "speaker": "R"
+            },
+            {
+              "text": "हम किसान जड़ों की बात करते हैं, और तुम पढ़ने वाले लोग डाल की।",
+              "english": "We farmers talk of roots, and you educated people of the branch.",
+              "speaker": "U"
+            },
+            {
+              "text": "तो सपना ऊँची डाल का हो, पर पैर गाँव की मिट्टी में हों।",
+              "english": "So let the dream be of the high branch, but the feet in the soil of the village.",
+              "speaker": "R"
+            },
+            {
+              "text": "बस यही बात है।",
+              "english": "That is just it.",
+              "speaker": "U"
+            },
+            {
+              "text": "मुझे लगता है कि घर वहाँ है, जहाँ अपने लोग हैं।",
+              "english": "It seems to me that home is where one's own people are.",
+              "speaker": "S"
+            },
+            {
+              "text": "आज़ादी और सुविधा, दोनों एक साथ मिलना मुश्किल लगता है।",
+              "english": "It seems hard to get freedom and facility together.",
+              "speaker": "S"
+            },
+            {
+              "text": "बात जगह की नहीं, सोच की है।",
+              "english": "It is not a matter of place, but of thinking.",
+              "speaker": "R"
+            },
+            {
+              "text": "यह फ़ैसला हर आदमी अपने लिए ख़ुद करता है, सैम।",
+              "english": "Each man makes this decision for himself, Sam.",
+              "speaker": "R"
+            },
+            {
+              "text": "चलो, अब नीचे चलते हैं, सीता नानी ने खाना बना लिया होगा, और बाक़ी बातें खाने के बाद करेंगे।",
+              "english": "Come, let us go down now, Seeta Nani will have cooked the meal.",
+              "speaker": "R"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,405 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-13",
+  "lang": "hi",
+  "title": "टीम का संदेश",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-13",
+    "title": "A message from the team (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A notice and short text messages (Pastor Anil, Sam, Kiran, Ravi sir). Times and numbers are digits. कि-clauses (रवि सर ने कहा कि ...; मैंने सुना कि ...). Pastor Anil writes आप to Sam; Kiran writes तुम to Sam as a friend. The plan's polite word \"कृपया\" has no reading in the word list, so the polite requests use -इए forms (भेजिए, निकालिए). The potluck dal brings back the kitchen words; Sam's report brings back the lesson and Diwali words. Adapter trap: किरण is read as a noun (a ray), not as a name, so it is used only once in a sentence. Words outside the plan (measured, adapter lemmas x tokens): किरण×1 (the adapter reads किरण as a noun, not a name)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "messages",
+    "notice",
+    "team",
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "सूचना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सूचना: शनिवार की बैठक शाम 5 बजे है।",
+              "english": "Notice: Saturday's meeting is at 5 in the evening."
+            },
+            {
+              "text": "बैठक गिरजा के पास मैदान में होगी।",
+              "english": "The meeting will be in the field near the church."
+            },
+            {
+              "text": "सब लोग आइए।",
+              "english": "Everyone, please come."
+            },
+            {
+              "text": "मेहमान भी आएँगे।",
+              "english": "Guests will come too."
+            },
+            {
+              "text": "बैठक के बाद खाना है।",
+              "english": "There is a meal after the meeting."
+            },
+            {
+              "text": "खाने में दाल, रोटी और चावल होंगे।",
+              "english": "There will be dal, roti and rice."
+            },
+            {
+              "text": "दाल के लिए हल्दी, नमक, मसाला, तेल और पालक चाहिए।",
+              "english": "For the dal we need turmeric, salt, spice, oil and spinach."
+            },
+            {
+              "text": "बर्तन और चम्मच भी चाहिए।",
+              "english": "Pots and spoons are needed too."
+            },
+            {
+              "text": "हम चूल्हा लाएँगे और दाल पकाएँगे।",
+              "english": "We will bring a stove and cook the dal."
+            },
+            {
+              "text": "एक और सूचना: पहले पालक धोइए और काटिए।",
+              "english": "One more notice: first wash and cut the spinach."
+            },
+            {
+              "text": "फिर पानी उबालिए।",
+              "english": "Then boil the water."
+            },
+            {
+              "text": "आप सब समय निकालिए।",
+              "english": "Please all make time."
+            },
+            {
+              "text": "हर शनिवार हम मिलते हैं।",
+              "english": "Every Saturday we meet."
+            },
+            {
+              "text": "सूचना पढ़िए और जवाब दीजिए।",
+              "english": "Read the notice and answer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पास्टर अनिल का संदेश",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नमस्ते, सैम!",
+              "english": "Hello, Sam!"
+            },
+            {
+              "text": "मैं आपको यह संदेश भेजता हूँ।",
+              "english": "I am sending you this message."
+            },
+            {
+              "text": "मैंने सुना कि आप हिंदी सीखना चाहते हैं।",
+              "english": "I heard that you want to learn Hindi."
+            },
+            {
+              "text": "यह बहुत अच्छी ख़बर है।",
+              "english": "This is very good news."
+            },
+            {
+              "text": "आप शनिवार को ज़रूर आइए।",
+              "english": "Please do come on Saturday."
+            },
+            {
+              "text": "आप अपना जवाब भेजिए।",
+              "english": "Please send your reply."
+            },
+            {
+              "text": "धन्यवाद।",
+              "english": "Thank you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सैम का जवाब",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नमस्ते, पास्टर अनिल!",
+              "english": "Hello, Pastor Anil!"
+            },
+            {
+              "text": "आपका संदेश मिला।",
+              "english": "I got your message."
+            },
+            {
+              "text": "मैं शनिवार को ज़रूर आऊँगा।",
+              "english": "I will certainly come on Saturday."
+            },
+            {
+              "text": "रवि सर ने कहा कि मैं हर दिन अभ्यास करूँ।",
+              "english": "Ravi sir said that I should practise every day."
+            },
+            {
+              "text": "मुझे रोज़ पढ़ना पड़ता है।",
+              "english": "I have to read every day."
+            },
+            {
+              "text": "वह मुझे पाठ पढ़ाते हैं।",
+              "english": "He teaches me the lessons."
+            },
+            {
+              "text": "आज मैंने एक नया शब्द सीखा।",
+              "english": "Today I learned a new word."
+            },
+            {
+              "text": "मैं अक्षर समझता हूँ, लेकिन वाक्य में ग़लती करता हूँ।",
+              "english": "I understand the letters, but I make mistakes in sentences."
+            },
+            {
+              "text": "वह मुझे बताते हैं: यह ग़लती सब करते हैं।",
+              "english": "He tells me: everyone makes this mistake."
+            },
+            {
+              "text": "नानी ने बताया कि मैं दाल बना सकता हूँ।",
+              "english": "Nani said that I can make dal."
+            },
+            {
+              "text": "मैं शनिवार को पालक धोऊँगा और काटूँगा।",
+              "english": "On Saturday I will wash and cut the spinach."
+            },
+            {
+              "text": "नानी की ख़बर: वह ठीक हैं।",
+              "english": "News of Nani: she is well."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "किरण का संदेश",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम, अरे! तुम कहाँ हो?",
+              "english": "Sam, hey! Where are you?"
+            },
+            {
+              "text": "मुझे नई नौकरी मिली है।",
+              "english": "I have got a new job."
+            },
+            {
+              "text": "मुझे नौकरी करते एक साल हो गया है।",
+              "english": "It has been a year since I started the job."
+            },
+            {
+              "text": "यह अच्छी ख़बर है, लेकिन अब मेरे पास समय नहीं है।",
+              "english": "That is good news, but now I have no time."
+            },
+            {
+              "text": "तुम्हारा जवाब क्या है?",
+              "english": "What is your answer?"
+            },
+            {
+              "text": "तुम्हारी नौकरी अच्छी है?",
+              "english": "Is your job good?"
+            },
+            {
+              "text": "शनिवार को मेरे मेहमान भी आएँगे।",
+              "english": "My guests will come on Saturday too."
+            },
+            {
+              "text": "मैं दाल के लिए नमक और मसाला भेजता हूँ।",
+              "english": "I am sending salt and spice for the dal."
+            },
+            {
+              "text": "हल्दी और तेल तुम लाना।",
+              "english": "You bring the turmeric and oil."
+            },
+            {
+              "text": "मैं चूल्हा और बर्तन लाऊँगा।",
+              "english": "I will bring the stove and pots."
+            },
+            {
+              "text": "तुम्हारा फ़ोन नंबर क्या है?",
+              "english": "What is your phone number?"
+            },
+            {
+              "text": "मैं फ़ोन लगाता हूँ।",
+              "english": "I will phone you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सैम का दूसरा जवाब",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "किरण, मेरा नंबर यह है: 98765 43210।",
+              "english": "Kiran, my number is: 98765 43210."
+            },
+            {
+              "text": "इस साल हम बहुत लोग हैं।",
+              "english": "This year there are a lot of us."
+            },
+            {
+              "text": "मैं यहाँ एक साल रहूँगा।",
+              "english": "I will stay here for a year."
+            },
+            {
+              "text": "शनिवार को बच्चे चिल्लाएँगे और खेलेंगे।",
+              "english": "On Saturday the children will shout and play."
+            },
+            {
+              "text": "अमन भी चिल्लाता है, जब वह ख़ुश है।",
+              "english": "Aman shouts too, when he is happy."
+            },
+            {
+              "text": "मैं चिल्लाता नहीं हूँ।",
+              "english": "I don't shout."
+            },
+            {
+              "text": "मैं समय निकालूँगा।",
+              "english": "I will make time."
+            },
+            {
+              "text": "मैं बर्तन रखूँगा और चम्मच लाऊँगा।",
+              "english": "I will put the pots down and bring the spoons."
+            },
+            {
+              "text": "चूल्हा यहाँ रखिए।",
+              "english": "Put the stove here."
+            },
+            {
+              "text": "खाने से पहले हाथ धोइए।",
+              "english": "Wash your hands before eating."
+            },
+            {
+              "text": "मैं अपने हाथ से दाल बनाऊँगा।",
+              "english": "I will make the dal with my own hands."
+            },
+            {
+              "text": "अरे, यह क्या है?",
+              "english": "Oh, what is this?"
+            },
+            {
+              "text": "देर मत कीजिए।",
+              "english": "Do not be late."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सैम का एक और संदेश",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पास्टर अनिल, एक और बात।",
+              "english": "Pastor Anil, one more thing."
+            },
+            {
+              "text": "दिवाली का त्योहार बहुत अच्छा था।",
+              "english": "The festival of Diwali was very good."
+            },
+            {
+              "text": "गली में बहुत रोशनी थी।",
+              "english": "There was a lot of light in the lane."
+            },
+            {
+              "text": "हमारे पड़ोसी घर सजाते हैं।",
+              "english": "Our neighbours decorate their houses."
+            },
+            {
+              "text": "मैंने त्योहार की बधाई दी।",
+              "english": "I wished them well for the festival."
+            },
+            {
+              "text": "वहाँ एक बच्चा उदास था।",
+              "english": "A child was sad there."
+            },
+            {
+              "text": "वह तकिया लेता है और बैठता है।",
+              "english": "He takes a pillow and sits down."
+            },
+            {
+              "text": "अमन उसका साथी है।",
+              "english": "Aman is his friend."
+            },
+            {
+              "text": "अमन उसके साथ खेलता है।",
+              "english": "Aman plays with him."
+            },
+            {
+              "text": "नंबर लगाइए और मुझे बताइए।",
+              "english": "Ring the number and tell me."
+            },
+            {
+              "text": "तस्वीर लगाइए।",
+              "english": "Attach the picture."
+            },
+            {
+              "text": "आप शनिवार को ज़रूर आइए।",
+              "english": "Please do come on Saturday."
+            },
+            {
+              "text": "रवि सर का संदेश भी आ गया।",
+              "english": "Ravi sir's message has come too."
+            },
+            {
+              "text": "रवि सर और मीरा दीदी भी मेहमान हैं।",
+              "english": "Ravi sir and Meera didi are guests too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

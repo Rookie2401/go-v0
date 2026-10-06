@@ -1,0 +1,586 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-06",
+  "lang": "hi",
+  "title": "तूफ़ान की रात",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-06",
+    "title": "The night of the storm (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप to Nani and to Suresh; Nani says तुम to the boys and आप to Suresh. Suresh is a farmer neighbour who came to the city from a village near the hills; his talk about seeds, flood, drought, harvest and the tax is plain village talk, nothing political. The temple appears only as a landmark. The prayer for healing is ordinary church language. Words used outside the plan: जलाना (to light a lamp), माचिस (matches). Please check \"दीया जलाना\", the oblique forms ताले, बाल्टियाँ and शादियाँ, and the about-to forms (आने वाली है, गिरने वाला था). The word कर (tax) is read as the noun only in the frames \"सरकार का कर\", \"कर की तारीख़\" and \"पिता कर देते थे\"; elsewhere the adapter reads it as करना."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "storm",
+    "neighbours",
+    "farming",
+    "memory"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nani": "सीता नानी",
+    "aman": "अमन",
+    "sam": "सैम",
+    "suresh": "सुरेश"
+  },
+  "sections": [
+    {
+      "title": "शाम की सैर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उस दिन सारा दिन बहुत गर्मी थी।",
+              "english": "That whole day it was very hot."
+            },
+            {
+              "text": "शाम को सैम और अमन सैर के लिए मैदान की तरफ़ गए।",
+              "english": "In the evening Sam and Aman went toward the field for a walk."
+            },
+            {
+              "text": "अमन लड़कों के साथ खेलने लगा, और सैम एक पेड़ के नीचे बैठ गया।",
+              "english": "Aman began to play with the boys, and Sam sat down under a tree."
+            },
+            {
+              "text": "आसमान में बादल थे, और हवा अचानक ठंडी हो गई थी।",
+              "english": "There were clouds in the sky, and the wind had suddenly turned cold."
+            },
+            {
+              "text": "सैम: अमन, घर चलो।",
+              "english": "Aman, let's go home."
+            },
+            {
+              "text": "सैम: मुझे लगता है कि आँधी आने वाली है।",
+              "english": "I think a dust storm is about to come."
+            },
+            {
+              "text": "अमन को खेलना छोड़ना अच्छा नहीं लगा, लेकिन वह मान गया।",
+              "english": "Aman did not like to stop playing, but he agreed."
+            },
+            {
+              "text": "दोनों ने घर तक दौड़ लगाई।",
+              "english": "The two of them ran all the way home."
+            },
+            {
+              "text": "रास्ते में ज़ोर की हवा चलने लगी, और आसमान बादलों से भर गया।",
+              "english": "On the way a strong wind began to blow, and the sky filled with clouds."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "अँधेरा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "घर पहुँचे तो नानी आँगन से कपड़े उठा रही थीं।",
+              "english": "When they reached home, Nani was picking up the clothes from the courtyard."
+            },
+            {
+              "text": "नानी: जल्दी अंदर आओ, तूफ़ान आने वाला है!",
+              "english": "Come inside quickly, a storm is about to come!"
+            },
+            {
+              "text": "थोड़ी देर में बारिश होने लगी, और तूफ़ान पूरे मोहल्ले में आ गया।",
+              "english": "After a little while it began to rain, and the storm swept over the whole neighbourhood."
+            },
+            {
+              "text": "जैसे ही बिजली ज़ोर से चमकी, पूरे इलाक़े की बिजली चली गई, और पंखा बंद हो गया।",
+              "english": "As soon as lightning flashed loudly, the electricity of the whole area went off and the fan stopped."
+            },
+            {
+              "text": "कमरे में बहुत अँधेरा हो गया।",
+              "english": "The room became very dark."
+            },
+            {
+              "text": "अमन: मुझे अँधेरे से बहुत डर लगता है।",
+              "english": "I am very afraid of the dark."
+            },
+            {
+              "text": "अमन: अगर मैं अकेला होता, तो बहुत डर जाता।",
+              "english": "If I were alone, I would be terribly scared."
+            },
+            {
+              "text": "नानी: डरो मत, मैं अभी दीया जलाती हूँ।",
+              "english": "Don't be afraid, I will light a lamp right now."
+            },
+            {
+              "text": "उन्होंने अलमारी से दीया और माचिस निकाली।",
+              "english": "She took a lamp and matches out of the cupboard."
+            },
+            {
+              "text": "दीया जलाते ही कमरे में थोड़ी रोशनी हो गई।",
+              "english": "As soon as the lamp was lit, there was a little light in the room."
+            },
+            {
+              "text": "नानी ने खिड़की कसकर बंद कर दी।",
+              "english": "Nani shut the window tight."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "नानी की बात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी: मेरे बचपन में भी ऐसी आँधी आती थी।",
+              "english": "In my childhood too, such dust storms used to come."
+            },
+            {
+              "text": "नानी: बुआ का घर कमज़ोर था, इसलिए वे हमारे घर आ जाती थीं।",
+              "english": "My aunt's house was weak, so she used to come to our house."
+            },
+            {
+              "text": "नानी: मेरे जन्म के साल भी बहुत बारिश हुई थी।",
+              "english": "In the year I was born there was also a great deal of rain."
+            },
+            {
+              "text": "नानी: मुझे उस समय की बहुत याद आती है।",
+              "english": "I remember those times very much."
+            },
+            {
+              "text": "उन्होंने थाली में रोटी और कटोरी में दाल रखी।",
+              "english": "She put roti on a plate and dal in a small bowl."
+            },
+            {
+              "text": "फिर गिलास में पानी भरकर उन्होंने अमन को दिया।",
+              "english": "Then she filled a glass with water and gave it to Aman."
+            },
+            {
+              "text": "अमन ने रोटी खाई, और उसका डर धीरे-धीरे कम होने लगा।",
+              "english": "Aman ate the roti, and his fear slowly began to lessen."
+            },
+            {
+              "text": "नानी: डर सबको लगता है, पर परमेश्वर हमारे साथ है।",
+              "english": "Everyone feels fear, but God is with us."
+            },
+            {
+              "text": "तभी फ़ोन बजा।",
+              "english": "Just then the phone rang."
+            },
+            {
+              "text": "अमन की मौसी पूछ रही थीं कि सब ठीक हैं या नहीं।",
+              "english": "Aman's aunt was asking whether everyone was all right or not."
+            },
+            {
+              "text": "नानी का पोता भी फ़ोन पर बात करना चाहता था।",
+              "english": "Nani's grandson wanted to talk on the phone too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दरवाज़े पर आवाज़",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "बारिश और बढ़ गई थी, और तभी दरवाज़ा ज़ोर से बजा।",
+              "english": "The rain had grown heavier, and just then the door was knocked on loudly."
+            },
+            {
+              "text": "सैम ने दीया उठाया और दरवाज़ा खोला।",
+              "english": "Sam picked up the lamp and opened the door."
+            },
+            {
+              "text": "बाहर सुरेश खड़े थे, और वे पूरे भीग गए थे।",
+              "english": "Suresh was standing outside, and he had got completely wet."
+            },
+            {
+              "text": "सुरेश: नानी, माफ़ कीजिए।",
+              "english": "Nani, excuse me."
+            },
+            {
+              "text": "सुरेश: मेरे घर में पानी आ गया है।",
+              "english": "Water has come into my house."
+            },
+            {
+              "text": "सुरेश: मैं बच्चों को लेकर आया हूँ।",
+              "english": "I have come with the children."
+            },
+            {
+              "text": "सुरेश: क्या हम यहाँ ठहर सकते हैं?",
+              "english": "Can we stay here?"
+            },
+            {
+              "text": "नानी: आइए, अंदर आइए।",
+              "english": "Come, come inside."
+            },
+            {
+              "text": "नानी ने सुरेश को सूखे कपड़े दिए।",
+              "english": "Nani gave Suresh dry clothes."
+            },
+            {
+              "text": "नानी ने सबको गिलास में चाय दी, और बच्चों के लिए कटोरी में दूध रखा।",
+              "english": "Nani gave everyone tea in a glass, and put milk in a small bowl for the children."
+            },
+            {
+              "text": "सुरेश की माँ बहुत कमज़ोर थीं, और उन्हें बुखार था।",
+              "english": "Suresh's mother was very weak, and she had a fever."
+            },
+            {
+              "text": "नानी ने उनकी चंगाई के लिए प्रार्थना की।",
+              "english": "Nani prayed for her healing."
+            },
+            {
+              "text": "फिर उन्होंने धागे का डिब्बा निकाला और एक बच्चे की कमीज़ ठीक की।",
+              "english": "Then she took out the box of thread and mended a child's shirt."
+            },
+            {
+              "text": "ये बच्चे थाली में चावल खाकर सो गए।",
+              "english": "These children ate rice from a plate and went to sleep."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "गली में पेड़",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "तभी गली में बहुत ज़ोर की आवाज़ आई।",
+              "english": "Just then a very loud noise came from the lane."
+            },
+            {
+              "text": "सैम और सुरेश दीया लेकर दरवाज़े की ओर दौड़े, पर गली में बहुत अँधेरा था।",
+              "english": "Sam and Suresh ran toward the door with the lamp, but it was very dark in the lane."
+            },
+            {
+              "text": "मंदिर के पास का बूढ़ा पेड़ गली में गिर गया था।",
+              "english": "The old tree near the temple had fallen in the lane."
+            },
+            {
+              "text": "वह पेड़ कई दिन से गिरने वाला था, क्योंकि वह बहुत कमज़ोर था।",
+              "english": "That tree had been about to fall for several days, because it was very weak."
+            },
+            {
+              "text": "पेड़ वकील की कार पर गिरा था, पर कार में कोई नहीं था।",
+              "english": "The tree had fallen on the lawyer's car, but there was no one in the car."
+            },
+            {
+              "text": "सुरेश: कार का ड्राइवर कल से छुट्टी पर है।",
+              "english": "The car's driver has been on leave since yesterday."
+            },
+            {
+              "text": "जहाँ पेड़ गिरा था, वहाँ गली बंद हो गई थी।",
+              "english": "Where the tree had fallen the lane was blocked."
+            },
+            {
+              "text": "अमन: सैम भैया, चोरी का डर है।",
+              "english": "Sam bhaiya, there is a fear of theft."
+            },
+            {
+              "text": "अमन: दरवाज़े पर ताला लगा दो।",
+              "english": "Put a lock on the door."
+            },
+            {
+              "text": "सैम हँसा और बोला, \"आज हम सब घर के अंदर हैं, फिर भी मैं ताला लगा देता हूँ।\"",
+              "english": "Sam laughed and said, \"Today we are all inside the house, but still I will put the lock on.\""
+            },
+            {
+              "text": "सैम ने ताले की चाबी और बटुआ जेब में रखा।",
+              "english": "Sam put the key of the lock and his wallet in his pocket."
+            },
+            {
+              "text": "सैम को उम्मीद थी कि सुबह तक बिजली आ जाएगी।",
+              "english": "Sam hoped that the electricity would come back by morning."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सुबह का पानी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सुबह तक बारिश रुक गई थी।",
+              "english": "By morning the rain had stopped."
+            },
+            {
+              "text": "सैम सैर के लिए बाहर निकला, तो बच्चे सड़क पर बहते पानी में कूद रहे थे।",
+              "english": "When Sam went out for a walk, children were jumping in the water flowing on the road."
+            },
+            {
+              "text": "बच्चे पानी में दौड़ लगा रहे थे, और उन्हें बहुत मज़ा आ रहा था।",
+              "english": "The children were racing in the water, and they were having great fun."
+            },
+            {
+              "text": "मोहल्ले में कई लोग सड़क साफ़ कर रहे थे, और किसी ने पुलिस को ख़बर दे दी।",
+              "english": "In the neighbourhood many people were clearing the road, and someone had informed the police."
+            },
+            {
+              "text": "रेडियो पर ख़बर थी कि पूरे शहर में तूफ़ान आया था।",
+              "english": "On the radio there was news that a storm had come over the whole city."
+            },
+            {
+              "text": "सुबह सैम ने थाली, कटोरी और गिलास धोए।",
+              "english": "In the morning Sam washed the plate, the bowl and the glass."
+            },
+            {
+              "text": "नल में न पानी था, न बिजली।",
+              "english": "There was neither water in the tap nor electricity."
+            },
+            {
+              "text": "सुरेश: मैं कुएँ से पानी लाता हूँ।",
+              "english": "I will bring water from the well."
+            },
+            {
+              "text": "सैम: मैं भी आपकी तरह पानी ला सकता हूँ।",
+              "english": "I can bring water like you too."
+            },
+            {
+              "text": "सड़क पर पानी था, इसलिए सुरेश साइकिल चला नहीं सके।",
+              "english": "There was water on the road, so Suresh could not ride the bicycle."
+            },
+            {
+              "text": "सुरेश ने साइकिल पर बाल्टियाँ रखीं, और सैम ने एक बाल्टी हाथ में उठाई।",
+              "english": "Suresh put buckets on the bicycle, and Sam picked up one bucket in his hand."
+            },
+            {
+              "text": "सुरेश: गाँव में हम रोज़ ऐसे ही पानी लाते थे।",
+              "english": "In the village we used to bring water just like this every day."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सुरेश का गाँव",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम: आपका गाँव कैसा था?",
+              "english": "What was your village like?"
+            },
+            {
+              "text": "सुरेश: हमारा गाँव पहाड़ के पास था, और पहाड़ से एक नदी बहती थी।",
+              "english": "Our village was near a hill, and a river used to flow from the hill."
+            },
+            {
+              "text": "सुरेश: पहाड़ के ऊपर बादल आते थे, तो हम समझ जाते थे कि बारिश होगी।",
+              "english": "When clouds came above the hill, we understood that it would rain."
+            },
+            {
+              "text": "सुरेश: मेरे पिता किसान थे।",
+              "english": "My father was a farmer."
+            },
+            {
+              "text": "सुरेश: वे हर साल बीज बोते थे।",
+              "english": "Every year he sowed seeds."
+            },
+            {
+              "text": "सुरेश: उनके पास दो बैल थे, और वे बैल को कभी नहीं मारते थे।",
+              "english": "He had two oxen, and he never hit the ox."
+            },
+            {
+              "text": "सुरेश: कटाई के बाद गाँव में मेला लगता था।",
+              "english": "After the harvest a fair was held in the village."
+            },
+            {
+              "text": "सुरेश: मेला देखने के लिए मेरी बुआ भी आती थीं।",
+              "english": "My aunt used to come to see the fair too."
+            },
+            {
+              "text": "सैम: आपके पिता को बारिश से डर लगता था?",
+              "english": "Was your father afraid of the rain?"
+            },
+            {
+              "text": "सुरेश: जिस साल बाढ़ आती थी, सारे बीज पानी में बह जाते थे।",
+              "english": "The year a flood came, all the seeds were washed away in the water."
+            },
+            {
+              "text": "सुरेश: बाढ़ के साल फ़सल बहुत कम होती थी।",
+              "english": "In flood years the crop was very small."
+            },
+            {
+              "text": "सुरेश: जिस साल पानी नहीं आता था, खेत सूखा रहता था।",
+              "english": "The year the water did not come, the field stayed dry."
+            },
+            {
+              "text": "सुरेश: सूखे के साल पानी बहुत दूर से लाना पड़ता था।",
+              "english": "In a year of drought water had to be brought from very far away."
+            },
+            {
+              "text": "सुरेश: सरकार का कर साल में एक बार देना पड़ता था।",
+              "english": "We had to pay the government's tax once a year."
+            },
+            {
+              "text": "सुरेश: कर की तारीख़ आती थी, तो पिता जी बहुत परेशान हो जाते थे।",
+              "english": "When the date for the tax came, Father would become very worried."
+            },
+            {
+              "text": "सुरेश: बाढ़ के साल भी कर की तारीख़ वही रहती थी।",
+              "english": "Even in flood years the date for the tax stayed the same."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "गाँव की याद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सुरेश: मुझे गाँव की बहुत याद आती है।",
+              "english": "I miss the village very much."
+            },
+            {
+              "text": "सुरेश: अब मैं शहर में ख़ूब मेहनत करता हूँ।",
+              "english": "Now I work very hard in the city."
+            },
+            {
+              "text": "सुरेश: कटाई के दिनों में हम बच्चे भी खेत में काम करते थे।",
+              "english": "In the days of the harvest we children worked in the field too."
+            },
+            {
+              "text": "सुरेश: कटाई के बाद लोग फ़सल बेचकर शादियाँ करते थे।",
+              "english": "After the harvest people sold the crop and held weddings."
+            },
+            {
+              "text": "सुरेश: मैं आज भी गाँव से बीज लाता हूँ, और छत पर भिंडी बोता हूँ।",
+              "english": "Even today I bring seeds from the village and sow okra on the roof."
+            },
+            {
+              "text": "सुरेश: बारिश के बाद हम खेत में मटर बोते थे।",
+              "english": "After the rain we used to sow peas in the field."
+            },
+            {
+              "text": "सुरेश: इस महीने भी मेला लगेगा, आप ज़रूर चलिए।",
+              "english": "This month too a fair will be held; please do come."
+            },
+            {
+              "text": "सुरेश: यह कुआँ मेरे गाँव के कुएँ जैसा है।",
+              "english": "This well is like the well of my village."
+            },
+            {
+              "text": "सुरेश ने कुएँ से पानी निकाला, और सैम ने भी पानी भरा।",
+              "english": "Suresh drew water from the well, and Sam filled water too."
+            },
+            {
+              "text": "बाल्टी का ठंडा पानी छूते ही सैम को बहुत मज़ा आया।",
+              "english": "As soon as he touched the cold water of the bucket, Sam had great fun."
+            },
+            {
+              "text": "सैम: मैं रोज़ शहर में घूमता हूँ, पर कुएँ का पानी पहली बार निकाला।",
+              "english": "I walk around the city every day, but I drew well water for the first time."
+            },
+            {
+              "text": "आख़िरकार दोनों घर लौटे।",
+              "english": "At last the two of them returned home."
+            },
+            {
+              "text": "नानी: यही तो पड़ोस है।",
+              "english": "This is exactly what being neighbours is."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "आज की तारीख़",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दोपहर को पुलिस आई, और उसने गली के पेड़ की रिपोर्ट लिखी।",
+              "english": "In the afternoon the police came and wrote a report of the tree in the lane."
+            },
+            {
+              "text": "आख़िरकार बिजली भी आ गई, और पंखा फिर चलने लगा।",
+              "english": "At last the electricity came too, and the fan began to run again."
+            },
+            {
+              "text": "अख़बार में गली के पेड़ की ख़बर थी।",
+              "english": "There was news of the tree in the lane in the newspaper."
+            },
+            {
+              "text": "नानी ने कैलेंडर में आज की तारीख़ पर लाल रंग से लिखा, \"आँधी की रात।\"",
+              "english": "Nani wrote \"The night of the dust storm\" in red on today's date in the calendar."
+            },
+            {
+              "text": "सैम ने उसी रात अपने चर्च के लिए एक पत्र लिखा।",
+              "english": "That same night Sam wrote a letter to his church."
+            },
+            {
+              "text": "आदरणीय पास्टर अनिल,",
+              "english": "Respected Pastor Anil,"
+            },
+            {
+              "text": "आज मैंने सीखा कि पड़ोसी एक-दूसरे की मदद करते हैं।",
+              "english": "Today I learned that neighbours help one another."
+            },
+            {
+              "text": "परमेश्वर ने हमें बचाया, और मुझे इस परिवार के साथ बहुत ख़ुशी मिली।",
+              "english": "God kept us safe, and I found great joy with this family."
+            },
+            {
+              "text": "कलीसिया के सब प्रिय लोगों को मेरा नमस्ते।",
+              "english": "My greetings to all the dear people of the church."
+            },
+            {
+              "text": "जब मैं लौटूँगा, तब आपसे मेरी भेंट होगी।",
+              "english": "When I return, I will meet you."
+            },
+            {
+              "text": "आपका, सैम",
+              "english": "Yours, Sam"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

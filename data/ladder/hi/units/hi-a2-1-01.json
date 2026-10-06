@@ -1,0 +1,754 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-01",
+  "lang": "hi",
+  "title": "सीता नानी की ज़िंदगी",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-01",
+    "title": "Seeta Nani's life (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Aman says आप to Nani and Sam calls Nani's husband नाना जी; Nani says तुम to the boys. The biography is told in the first person by Nani (feminine forms). Christian vocabulary kept plain (परमेश्वर, पाप, क्षमा, प्रेम, शांति). The neighbours' mosque appears only as a landmark and a greeting. Please check पोता (a son's son: the child of Nani's son, not Aman, who is her daughter's son), बैल ने मारा, \"रिक्शा वाला\" and \"सब्ज़ी वाला\", and कुएँ से पानी भरना. Words used outside the plan: बैलों is avoided on purpose; see the review file."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography",
+    "childhood",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nani": "सीता नानी",
+    "aman": "अमन",
+    "sam": "सैम"
+  },
+  "sections": [
+    {
+      "title": "शाम की बात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज शाम अमन स्कूल से जल्दी घर आया।",
+              "english": "This evening Aman came home from school early."
+            },
+            {
+              "text": "वह बहुत ख़ुश था, क्योंकि उसे एक नया काम मिला था।",
+              "english": "He was very happy, because he had been given a new task."
+            },
+            {
+              "speaker": "aman",
+              "text": "नानी, आज कक्षा में अध्यापक ने कहा कि अपने घर के किसी बड़े से उसकी कहानी पूछो।",
+              "english": "Nani, today in class the teacher said to ask someone older at home for their story."
+            },
+            {
+              "speaker": "aman",
+              "text": "मेरा एक सवाल है।",
+              "english": "I have a question."
+            },
+            {
+              "speaker": "aman",
+              "text": "मैं आपकी कहानी पूछना चाहता हूँ।",
+              "english": "I want to ask for your story."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी रसोई से बाहर आईं और हँसकर बोलीं, \"मेरी कहानी बहुत लंबी है, अमन।\"",
+              "english": "Nani came out of the kitchen and said with a laugh, \"My story is very long, Aman.\""
+            },
+            {
+              "text": "आँगन में सैम चाय पी रहा था।",
+              "english": "Sam was drinking tea in the courtyard."
+            },
+            {
+              "speaker": "sam",
+              "text": "नानी, मैं भी सुनना चाहता हूँ।",
+              "english": "Nani, I want to listen too."
+            },
+            {
+              "speaker": "nani",
+              "text": "ठीक है, दोनों बैठो।",
+              "english": "All right, you both sit down."
+            },
+            {
+              "speaker": "nani",
+              "text": "आज मैं तुम्हें सब बताती हूँ।",
+              "english": "Today I will tell you everything."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "गाँव में मेरा बचपन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "मेरा जन्म एक छोटे गाँव में हुआ था।",
+              "english": "I was born in a small village."
+            },
+            {
+              "speaker": "nani",
+              "text": "वहाँ बहुत खेत थे, और हमारे घर के पास एक बड़ा कुआँ था।",
+              "english": "There were many fields there, and near our house there was a big well."
+            },
+            {
+              "speaker": "nani",
+              "text": "मैं रोज़ सुबह उस कुएँ से पानी भरती थी।",
+              "english": "Every morning I drew water from that well."
+            },
+            {
+              "speaker": "nani",
+              "text": "मैं बचपन में सारा दिन खेतों में खेलती थी, और हम बच्चे पानी में कूदते थे।",
+              "english": "In my childhood I played in the fields all day, and we children used to jump into the water."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "पापा के पास दो बैल थे।",
+              "english": "My father had two oxen."
+            },
+            {
+              "speaker": "nani",
+              "text": "वे सुबह से शाम तक खेत में काम करते थे।",
+              "english": "They worked in the field from morning till evening."
+            },
+            {
+              "speaker": "nani",
+              "text": "शाम को मैं बैल को नदी पर ले जाती थी।",
+              "english": "In the evening I took the ox to the river."
+            },
+            {
+              "speaker": "nani",
+              "text": "एक दिन एक बैल ने मेरे भैया को मारा, और भैया रोने लगे।",
+              "english": "One day an ox hit my elder brother, and he started to cry."
+            },
+            {
+              "speaker": "nani",
+              "text": "भैया कुएँ की दीवार पर चढ़कर कूदता था, और माँ चिल्लाती थीं।",
+              "english": "My brother used to climb on the wall of the well and jump, and Mother would shout."
+            },
+            {
+              "speaker": "nani",
+              "text": "माँ मुझे कभी नहीं मारती थीं, वे बस हँसकर कहती थीं, \"ध्यान रखो।\"",
+              "english": "Mother never hit me; she would just say with a laugh, \"Be careful.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "जब फ़सल अच्छी होती थी, तब घर में मिठाई बनती थी।",
+              "english": "When the harvest was good, then sweets were made at home."
+            },
+            {
+              "speaker": "nani",
+              "text": "फ़सल बेचकर पापा हम सबके लिए नए कपड़े लाते थे, और भैया के लिए नई कमीज़।",
+              "english": "After selling the harvest Father brought new clothes for all of us, and a new shirt for my brother."
+            },
+            {
+              "speaker": "nani",
+              "text": "जब बारिश कम होती थी, तब फ़सल अच्छी नहीं होती थी।",
+              "english": "When there was little rain, the harvest was not good."
+            },
+            {
+              "speaker": "nani",
+              "text": "भैया की चिट्ठी आज भी मुझे गाँव की बात बताती है।",
+              "english": "My brother's letter still tells me news of the village today."
+            },
+            {
+              "speaker": "nani",
+              "text": "माँ रोज़ सबके लिए रोटी बनाती थीं।",
+              "english": "Mother made roti for everyone every day."
+            },
+            {
+              "speaker": "nani",
+              "text": "घर आए हर आदमी को वे रोटी खिलाती थीं।",
+              "english": "She fed roti to every person who came to the house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "हम पाँच भाई-बहन थे, और मैं सबसे छोटी थी।",
+              "english": "There were five of us brothers and sisters, and I was the youngest."
+            },
+            {
+              "speaker": "nani",
+              "text": "हम सब एक ही चारपाई पर सोते थे।",
+              "english": "We all slept on one cot."
+            },
+            {
+              "speaker": "nani",
+              "text": "मेरी बुआ हमारे गाँव के पास रहती थीं।",
+              "english": "My father's sister lived near our village."
+            },
+            {
+              "speaker": "nani",
+              "text": "बुआ मुझे रोज़ कहानी सुनाती थीं।",
+              "english": "My aunt used to tell me a story every day."
+            },
+            {
+              "speaker": "nani",
+              "text": "मुझे स्कूल जाना बहुत पसंद था, लेकिन लड़कियों के लिए स्कूल बहुत दूर था।",
+              "english": "I loved going to school, but for girls the school was very far."
+            },
+            {
+              "speaker": "nani",
+              "text": "मैं बस दो साल पढ़ पाई, फिर मैंने स्कूल छोड़ दिया।",
+              "english": "I could study for only two years, and then I left school."
+            },
+            {
+              "speaker": "nani",
+              "text": "मुझे उम्मीद थी कि मैं एक दिन फिर पढ़ूँगी।",
+              "english": "I hoped that one day I would study again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मेरी शादी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "aman",
+              "text": "नानी, आप कितने साल की थीं जब आपकी शादी हुई?",
+              "english": "Nani, how old were you when you got married?"
+            },
+            {
+              "speaker": "nani",
+              "text": "मैं सोलह साल की थी।",
+              "english": "I was sixteen."
+            },
+            {
+              "speaker": "nani",
+              "text": "तारीख़ तो मैं अब नहीं बता सकती, लेकिन वह रविवार का दिन था।",
+              "english": "I can't tell you the date now, but it was a Sunday."
+            },
+            {
+              "speaker": "nani",
+              "text": "तुम्हारे नाना शहर से आए थे।",
+              "english": "Your Nana had come from the city."
+            },
+            {
+              "speaker": "nani",
+              "text": "वे वहाँ रिक्शा चलाते थे।",
+              "english": "He drove a rickshaw there."
+            },
+            {
+              "speaker": "nani",
+              "text": "शादी के बाद मैं उनके साथ शहर आ गई।",
+              "english": "After the wedding I came to the city with him."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "नाना हर साल कैलेंडर में उस तारीख़ को लाल रंग से लिखते थे।",
+              "english": "Every year Nana wrote that date in red in the calendar."
+            },
+            {
+              "speaker": "nani",
+              "text": "वह पुराना कैलेंडर आज भी दीवार पर लगा है।",
+              "english": "That old calendar still hangs on the wall today."
+            },
+            {
+              "speaker": "sam",
+              "text": "क्या आपको अपने जन्म का दिन पता है?",
+              "english": "Do you know the day you were born?"
+            },
+            {
+              "speaker": "nani",
+              "text": "नहीं, गाँव में कोई तारीख़ नहीं लिखता था।",
+              "english": "No, in the village nobody wrote down dates."
+            },
+            {
+              "speaker": "nani",
+              "text": "मुझे अपना जन्मदिन भी नहीं पता।",
+              "english": "I don't even know my own birthday."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "शहर की नई दुनिया",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "शुरू में मुझे शहर अच्छा नहीं लगा।",
+              "english": "At first I did not like the city."
+            },
+            {
+              "speaker": "nani",
+              "text": "यहाँ बहुत भीड़ थी, बहुत आवाज़ें थीं, और मैं किसी को नहीं जानती थी।",
+              "english": "There were big crowds and a lot of noise here, and I did not know anyone."
+            },
+            {
+              "speaker": "nani",
+              "text": "मुझे अपने बचपन का गाँव, अपना घर और गाँव की हर चीज़ बहुत अच्छी लगती थी।",
+              "english": "I missed the village of my childhood, my house and everything in the village very much."
+            },
+            {
+              "speaker": "nani",
+              "text": "मैं रात को अकेली रोती थी।",
+              "english": "At night I used to cry alone."
+            },
+            {
+              "speaker": "nani",
+              "text": "एक बार मैंने सड़क पर लोगों को एक-दूसरे को मारते देखा, और मैं डर गई।",
+              "english": "Once I saw people hitting each other on the road, and I got frightened."
+            },
+            {
+              "speaker": "nani",
+              "text": "पहले दिन हम एक दूर की बुआ के घर ठहरे।",
+              "english": "On the first day we stayed at the house of a distant aunt."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "फिर हम किराए के एक छोटे कमरे में रहने लगे।",
+              "english": "Then we began to live in a small rented room."
+            },
+            {
+              "speaker": "nani",
+              "text": "एक बार हमारे कमरे में चोरी हुई, तब पड़ोसियों ने हमारी मदद की।",
+              "english": "Once there was a theft in our room, and then the neighbours helped us."
+            },
+            {
+              "speaker": "nani",
+              "text": "हमारे पड़ोस में एक मस्जिद थी।",
+              "english": "There was a mosque in our neighbourhood."
+            },
+            {
+              "speaker": "nani",
+              "text": "पड़ोसी सुबह हमें सलाम करते थे, और सर्दी में एक औरत ने मुझे कंबल दिया।",
+              "english": "The neighbours greeted us in the morning, and in winter one woman gave me a blanket."
+            },
+            {
+              "speaker": "nani",
+              "text": "ऐसे ही हमारी दोस्ती हुई।",
+              "english": "That is how our friendship began."
+            },
+            {
+              "speaker": "nani",
+              "text": "जो कुछ हमारे पास था, हम उसी में ख़ुश थे।",
+              "english": "Whatever we had, we were happy with it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "और नाना जी क्या करते थे?",
+              "english": "And what did Nana ji do?"
+            },
+            {
+              "speaker": "nani",
+              "text": "वे रोज़ सुबह रिक्शा लेकर निकलते थे।",
+              "english": "Every morning he went out with his rickshaw."
+            },
+            {
+              "speaker": "nani",
+              "text": "चौराहे पर खड़े होकर वे सवारी का इंतज़ार करते थे।",
+              "english": "Standing at the crossroads, he waited for passengers."
+            },
+            {
+              "speaker": "nani",
+              "text": "वे शहर की हर सड़क जानते थे: कहाँ सीधा जाना है, किस मोड़ पर दाएँ और किस मोड़ पर बाएँ।",
+              "english": "He knew every road in the city: where to go straight, at which turning to go right and at which left."
+            },
+            {
+              "speaker": "nani",
+              "text": "वह रिक्शा उनका नहीं था।",
+              "english": "That rickshaw was not his."
+            },
+            {
+              "speaker": "nani",
+              "text": "मालिक रोज़ उनसे किराया लेता था।",
+              "english": "The owner took rent from him every day."
+            },
+            {
+              "speaker": "nani",
+              "text": "नाना को उम्मीद थी कि एक दिन हमारा अपना रिक्शा होगा।",
+              "english": "Nana hoped that one day we would have a rickshaw of our own."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "वे हमेशा कहते थे, \"आशा रखो, सब ठीक होगा।\"",
+              "english": "He always said, \"Keep hope, everything will be all right.\""
+            },
+            {
+              "speaker": "nani",
+              "text": "शाम को वे घर लौटते थे, और रविवार को मुझे घाट पर ले जाते थे।",
+              "english": "In the evening he came back home, and on Sundays he took me to the river steps."
+            },
+            {
+              "speaker": "nani",
+              "text": "घाट के पास एक बगीचा था, और वहाँ बैठकर हम नदी देखते थे।",
+              "english": "Near the river steps there was a garden, and sitting there we watched the river."
+            },
+            {
+              "speaker": "nani",
+              "text": "नाना ने मुझे पूरा शहर दिखाया।",
+              "english": "Nana showed me the whole city."
+            },
+            {
+              "speaker": "nani",
+              "text": "एक बार वे रिक्शा से गिर गए, लेकिन उन्होंने काम नहीं छोड़ा।",
+              "english": "Once he fell from the rickshaw, but he did not give up his work."
+            },
+            {
+              "speaker": "nani",
+              "text": "आज शहर में रिक्शा वाले कम हैं और ऑटो ज़्यादा हैं।",
+              "english": "Today there are fewer rickshaw drivers in the city and more autos."
+            },
+            {
+              "speaker": "nani",
+              "text": "कई साल हम ऐसे ही रहे।",
+              "english": "For many years we lived just like that."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मेरा काम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "क्या आपने भी काम किया?",
+              "english": "Did you work too?"
+            },
+            {
+              "speaker": "nani",
+              "text": "हाँ।",
+              "english": "Yes."
+            },
+            {
+              "speaker": "nani",
+              "text": "कुछ दिन बाद मैंने घर पर रोटियाँ बनाईं और बाज़ार में बेचना शुरू किया।",
+              "english": "After a few days I made rotis at home and began to sell them in the market."
+            },
+            {
+              "speaker": "nani",
+              "text": "पहले कोई ग्राहक नहीं आता था।",
+              "english": "At first no customers came."
+            },
+            {
+              "speaker": "nani",
+              "text": "फिर लोग आने लगे, और वे कहने लगे कि नानी की रोटी सबसे अच्छी है।",
+              "english": "Then people began to come, and they began to say that Nani's roti is the best."
+            },
+            {
+              "speaker": "nani",
+              "text": "जो ग्राहक एक बार आता था, वह फिर आता था।",
+              "english": "A customer who came once came again."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "मैं सुबह जल्दी मंडी जाती थी और वहाँ से गोभी और दूसरी सब्ज़ियाँ लाती थी।",
+              "english": "I went to the wholesale market early in the morning and brought cauliflower and other vegetables from there."
+            },
+            {
+              "speaker": "nani",
+              "text": "मंडी का एक दुकानदार मुझे कम दाम में सब्ज़ी देता था।",
+              "english": "One shopkeeper at the market gave me vegetables at a lower price."
+            },
+            {
+              "speaker": "nani",
+              "text": "तब रोटी की क़ीमत भी बहुत कम थी।",
+              "english": "The price of roti was also very low then."
+            },
+            {
+              "speaker": "nani",
+              "text": "कई बार मुझे सुबह से रात तक काम करना पड़ा।",
+              "english": "Many times I had to work from morning till night."
+            },
+            {
+              "speaker": "nani",
+              "text": "नाना भी एक मज़दूर थे, और मैंने उनके साथ बहुत मेहनत की।",
+              "english": "Nana was a labourer too, and I worked very hard with him."
+            },
+            {
+              "speaker": "nani",
+              "text": "धीरे-धीरे हमारी कमाई बढ़ने लगी।",
+              "english": "Slowly our earnings began to grow."
+            },
+            {
+              "speaker": "nani",
+              "text": "हमने पैसे बचाए, और एक दिन अपना छोटा-सा मकान ख़रीदा।",
+              "english": "We saved money, and one day we bought a little house of our own."
+            },
+            {
+              "speaker": "nani",
+              "text": "मैं ख़ुश होकर कूदने लगी।",
+              "english": "I was so happy that I began to jump."
+            },
+            {
+              "speaker": "nani",
+              "text": "आज भी बाज़ार के कई लोग मुझे नानी कहकर बुलाते हैं।",
+              "english": "Even today many people in the market call me Nani."
+            },
+            {
+              "speaker": "nani",
+              "text": "मैं आज भी इतना ही काम करती हूँ, अमन!",
+              "english": "I still do just as much work today, Aman!"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मेरा परिवार",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "हमारे घर पहले एक लड़की हुई, फिर एक लड़का, फिर एक और लड़की।",
+              "english": "First a girl was born in our house, then a boy, then another girl."
+            },
+            {
+              "speaker": "nani",
+              "text": "बड़ी लड़की तुम्हारी माँ है।",
+              "english": "The elder girl is your mother."
+            },
+            {
+              "speaker": "nani",
+              "text": "अमन, तुम्हारे जन्म के दिन मैं अस्पताल में थी।",
+              "english": "Aman, on the day you were born I was in the hospital."
+            },
+            {
+              "speaker": "nani",
+              "text": "मैं तुम्हारी माँ को भी ऐसे ही कहानियाँ सुनाती थी।",
+              "english": "I used to tell your mother stories in just this way too."
+            },
+            {
+              "speaker": "nani",
+              "text": "छोटी लड़की तुम्हारी मौसी है।",
+              "english": "The younger girl is your mother's sister."
+            },
+            {
+              "speaker": "nani",
+              "text": "तुम्हारी मौसी हर साल दिवाली पर आती है।",
+              "english": "Your aunt comes every year at Diwali."
+            },
+            {
+              "speaker": "nani",
+              "text": "उसका घर दूर है, इसलिए वह कम आती है।",
+              "english": "Her house is far, so she does not come often."
+            },
+            {
+              "speaker": "nani",
+              "text": "मौसी तुम्हारे लिए हमेशा मिठाई लाती है।",
+              "english": "Your aunt always brings sweets for you."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "लड़का तुम्हारे मामा हैं, और तुम्हारी मामी बहुत अच्छी हैं।",
+              "english": "The boy is your uncle, and your uncle's wife is very nice."
+            },
+            {
+              "speaker": "nani",
+              "text": "तुम्हारे मामा की शादी भी इस शहर में ही हुई।",
+              "english": "Your uncle was married in this very city too."
+            },
+            {
+              "speaker": "nani",
+              "text": "तुम्हारे मामा के घर भी एक लड़का है, वह मेरा पोता है।",
+              "english": "At your uncle's house there is also a boy; he is my grandson."
+            },
+            {
+              "speaker": "nani",
+              "text": "मेरा पोता तुमसे बड़ा है, लेकिन तुम दोनों मेरे प्यारे हो।",
+              "english": "My grandson is older than you, but you are both dear to me."
+            },
+            {
+              "speaker": "nani",
+              "text": "कल मेरा पोता भी आएगा।",
+              "english": "Tomorrow my grandson will come too."
+            },
+            {
+              "speaker": "aman",
+              "text": "नानी, मुझे आपकी हर बात बहुत अच्छी लगती है।",
+              "english": "Nani, I like every word you say very much."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "वह दिन जब मैंने सुना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "उसी औरत ने एक दिन मुझे चर्च बुलाया।",
+              "english": "One day that same woman invited me to church."
+            },
+            {
+              "speaker": "nani",
+              "text": "मैं पहली बार चर्च गई तो मैं हैरान थी।",
+              "english": "When I went to church for the first time I was astonished."
+            },
+            {
+              "speaker": "nani",
+              "text": "पास्टर ने कहा कि परमेश्वर हम सबसे प्रेम करता है।",
+              "english": "The pastor said that God loves us all."
+            },
+            {
+              "speaker": "nani",
+              "text": "मैंने पहली बार सुना कि मेरे सब पाप क्षमा हो सकते हैं।",
+              "english": "For the first time I heard that all my sins could be forgiven."
+            },
+            {
+              "speaker": "nani",
+              "text": "उस दिन मुझे शांति मिली।",
+              "english": "That day I found peace."
+            },
+            {
+              "speaker": "nani",
+              "text": "जो आदमी और औरत यह बात सुनते हैं, उन्हें भी शांति मिलती है।",
+              "english": "The men and women who hear this also find peace."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "मैं स्कूल जा नहीं सकी थी, पर बाइबल पढ़ने के लिए मैंने फिर पढ़ना सीखा।",
+              "english": "I had not been able to go to school, but to read the Bible I learned to read again."
+            },
+            {
+              "speaker": "nani",
+              "text": "तब से मैं हर रविवार चर्च जाती हूँ।",
+              "english": "Since then I go to church every Sunday."
+            },
+            {
+              "speaker": "sam",
+              "text": "नानी, आपकी कहानी बहुत अच्छी है।",
+              "english": "Nani, your story is very good."
+            },
+            {
+              "speaker": "nani",
+              "text": "कहानी अभी पूरी नहीं हुई है।",
+              "english": "The story is not finished yet."
+            },
+            {
+              "speaker": "nani",
+              "text": "अगले महीने तुम्हारा जन्मदिन है, अमन।",
+              "english": "Next month is your birthday, Aman."
+            },
+            {
+              "speaker": "nani",
+              "text": "मैं केक लाऊँगी, और हम मोमबत्ती और गुब्बारे भी लगाएँगे।",
+              "english": "I will bring a cake, and we will also put up candles and balloons."
+            },
+            {
+              "speaker": "nani",
+              "text": "पार्टी में पूरा परिवार आएगा।",
+              "english": "The whole family will come to the party."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "nani",
+              "text": "अपने अध्यापक को मेरे बचपन की कहानी सुनाना।",
+              "english": "Tell your teacher the story of my childhood."
+            },
+            {
+              "speaker": "nani",
+              "text": "और अपना जन्मदिन कैलेंडर पर ज़रूर लिख लेना।",
+              "english": "And be sure to write your birthday on the calendar."
+            },
+            {
+              "speaker": "nani",
+              "text": "कभी उम्मीद मत छोड़ना, और परमेश्वर पर भरोसा रखना।",
+              "english": "Never give up hope, and keep trusting God."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

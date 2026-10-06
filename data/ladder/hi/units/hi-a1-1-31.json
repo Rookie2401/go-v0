@@ -1,0 +1,312 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-1-31",
+  "lang": "hi",
+  "title": "आप कहाँ रहते हैं? पता और फ़ोन नंबर",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-1-31",
+    "title": "Where do you live? Address and phone number (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Digits are used for the house number, lane number and phone numbers (they count as known). ने appears three times in the formula \"X ने कहा\" (the in-place drafts use it next). The plan's \"auto driver Deepak\" is simply दीपक with a गाड़ी, because ऑटो is not in the palette yet. बाग़ मोहल्ला is an invented locality name made from a known word; the reviewer may prefer a real-sounding one. \"के लिए\" appears once (\"आपके लिए\"). Words outside the plan (measured): none."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "address",
+    "phone",
+    "directions",
+    "community"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "आप कहाँ रहते हैं? पता और फ़ोन नंबर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज सैम बाज़ार में है।",
+              "english": "Today Sam is at the market."
+            },
+            {
+              "text": "बाज़ार में दीपक है।",
+              "english": "Deepak is at the market."
+            },
+            {
+              "text": "वह रोज़ लोगों को घर ले जाते हैं।",
+              "english": "Every day he takes people home."
+            },
+            {
+              "text": "सैम बोलता है, \"नमस्ते, दीपक भाई।\"",
+              "english": "Sam says, \"Hello, Deepak bhai.\""
+            },
+            {
+              "text": "दीपक बोलता है, \"नमस्ते, सैम! आप कहाँ जाते हैं?\"",
+              "english": "Deepak says, \"Hello, Sam! Where are you going?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं घर जाता हूँ।\"",
+              "english": "Sam says, \"I am going home.\""
+            },
+            {
+              "text": "दीपक पूछता है, \"आप कहाँ रहते हैं?\"",
+              "english": "Deepak asks, \"Where do you live?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं बाग़ मोहल्ला में रहता हूँ।\"",
+              "english": "Sam says, \"I live in Bagh mohalla.\""
+            },
+            {
+              "text": "दीपक पूछता है, \"आपका मकान नंबर क्या है?\"",
+              "english": "Deepak asks, \"What is your house number?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मकान 12 है, गली 5।\"",
+              "english": "Sam says, \"It is house 12, lane 5.\""
+            },
+            {
+              "text": "दीपक पूछता है, \"वहाँ पुल है?\"",
+              "english": "Deepak asks, \"Is there a bridge there?\""
+            },
+            {
+              "text": "सैम बोलता है, \"हाँ, मकान पुल के सामने है।\"",
+              "english": "Sam says, \"Yes, the house is in front of the bridge.\""
+            },
+            {
+              "text": "\"घर की दीवार सफ़ेद है।\"",
+              "english": "\"The wall of the house is white.\""
+            },
+            {
+              "text": "दीपक ने कहा, \"ठीक है, चलिए!\"",
+              "english": "Deepak said, \"All right, let's go!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम दीपक के साथ चलता है।",
+              "english": "Sam goes along with Deepak."
+            },
+            {
+              "text": "दीपक और सैम चलते हैं।",
+              "english": "Deepak and Sam set off."
+            },
+            {
+              "text": "सैम बोलता है, \"दीपक भाई, आपका मोबाइल नंबर क्या है?\"",
+              "english": "Sam says, \"Deepak bhai, what is your mobile number?\""
+            },
+            {
+              "text": "दीपक बोलता है, \"मेरा 98765 43210 है।\"",
+              "english": "Deepak says, \"Mine is 98765 43210.\""
+            },
+            {
+              "text": "सैम ने कहा, \"धन्यवाद! अब मैं आपको फ़ोन करता हूँ।\"",
+              "english": "Sam said, \"Thank you! Now I will phone you.\""
+            },
+            {
+              "text": "दीपक पूछता है, \"आप चर्च क्यों जाते हैं?\"",
+              "english": "Deepak asks, \"Why do you go to church?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मुझे प्रार्थना पसंद है।\"",
+              "english": "Sam says, \"I like prayer.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम बोलता है, \"मेरा गिरजा घर के सामने है।\"",
+              "english": "Sam says, \"My church is in front of the house.\""
+            },
+            {
+              "text": "\"गिरजा के पीछे गली है।\"",
+              "english": "\"Behind the church there is a lane.\""
+            },
+            {
+              "text": "\"रविवार को वहाँ सभा होती है।\"",
+              "english": "\"On Sunday there is a meeting there.\""
+            },
+            {
+              "text": "\"भजन और गीत होते हैं।\"",
+              "english": "\"There are hymns and songs.\""
+            },
+            {
+              "text": "\"आराधना बहुत अच्छी है।\"",
+              "english": "\"The worship is very good.\""
+            },
+            {
+              "text": "\"औरत और आदमी आते हैं।\"",
+              "english": "\"Women and men come.\""
+            },
+            {
+              "text": "\"सब आमीन बोलते हैं।\"",
+              "english": "\"Everyone says amen.\""
+            },
+            {
+              "text": "\"पास्टर अनिल सबको आशीर्वाद देते हैं।\"",
+              "english": "\"Pastor Anil gives everyone a blessing.\""
+            },
+            {
+              "text": "सैम बोलता है, \"दीपक भाई, आप क्यों नहीं आते?\"",
+              "english": "Sam says, \"Deepak bhai, why don't you come?\""
+            },
+            {
+              "text": "दीपक बोलता है, \"मैं रविवार को काम करता हूँ।\"",
+              "english": "Deepak says, \"I work on Sundays.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "वह घर के पास आते हैं।",
+              "english": "They come near the house."
+            },
+            {
+              "text": "घर के सामने पुल है।",
+              "english": "There is a bridge in front of the house."
+            },
+            {
+              "text": "घर के पीछे बाग़ है।",
+              "english": "There is a garden behind the house."
+            },
+            {
+              "text": "गली में अमन खेलता है।",
+              "english": "Aman plays in the lane."
+            },
+            {
+              "text": "मोहल्ला बहुत अच्छा है।",
+              "english": "The neighbourhood is very nice."
+            },
+            {
+              "text": "सैम बोलता है, \"यह मेरा मोहल्ला है।\"",
+              "english": "Sam says, \"This is my neighbourhood.\""
+            },
+            {
+              "text": "दीवार के पीछे बाग़ है।",
+              "english": "Behind the wall there is a garden."
+            },
+            {
+              "text": "दीवार पर एक तस्वीर है।",
+              "english": "There is a picture on the wall."
+            },
+            {
+              "text": "सैम दीपक को पैसा देता है।",
+              "english": "Sam gives Deepak the money."
+            },
+            {
+              "text": "दीपक कहता है, \"यह आपके लिए है।\"",
+              "english": "Deepak says, \"This is for you.\""
+            },
+            {
+              "text": "सैम बोलता है, \"नहीं, यह आपका पैसा है।\"",
+              "english": "Sam says, \"No, this is your money.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम घर में रवि सर को फ़ोन करता है।",
+              "english": "Sam phones Ravi sir at home."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"नमस्ते, सैम!\"",
+              "english": "Ravi sir says, \"Hello, Sam!\""
+            },
+            {
+              "text": "सैम बोलता है, \"सर, आपका मोबाइल नंबर क्या है?\"",
+              "english": "Sam says, \"Sir, what is your mobile number?\""
+            },
+            {
+              "text": "रवि सर ने कहा, \"98123 45678।\"",
+              "english": "Ravi sir said, \"98123 45678.\""
+            },
+            {
+              "text": "सैम बोलता है, \"धन्यवाद, सर।\"",
+              "english": "Sam says, \"Thank you, sir.\""
+            },
+            {
+              "text": "सैम का मोबाइल मेज़ पर है।",
+              "english": "Sam's mobile is on the table."
+            },
+            {
+              "text": "अमन आधा केला खाता है।",
+              "english": "Aman eats half a banana."
+            },
+            {
+              "text": "सैम आधा किलो आलू लेता है।",
+              "english": "Sam takes half a kilo of potatoes."
+            },
+            {
+              "text": "वह आधा किलो प्याज़ भी लेता है।",
+              "english": "He takes half a kilo of onions too."
+            },
+            {
+              "text": "अब सैम घर में है।",
+              "english": "Now Sam is at home."
+            },
+            {
+              "text": "घर में नानी हैं।",
+              "english": "Nani is at home."
+            },
+            {
+              "text": "नानी बोलती हैं, \"सैम, आपका फ़ोन कहाँ है?\"",
+              "english": "Nani says, \"Sam, where is your phone?\""
+            },
+            {
+              "text": "सैम बोलता है, \"नानी, मेरा फ़ोन मेज़ पर है।\"",
+              "english": "Sam says, \"Nani, my phone is on the table.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"चाय लीजिए, सैम।\"",
+              "english": "Nani says, \"Have some tea, Sam.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-23",
+  "lang": "hi",
+  "title": "मैं क्यों रुका",
+  "contentType": "testimony",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-23",
+    "title": "\"मैं क्यों रुका\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "The closing testimony of the stage: Sam explains to the sending church why he has decided to stay for another year. It gathers the people and events of the whole stage (the wedding, the feast, the school, the clinic, the parable) and carries the last planned words (विदेश, पराया, नगर, झील, नाव, उत्पन्न, आराधनालय, अशुद्ध, बल, परेशानी). It opens the b1 stage: the \"आराधनालय\" appears only as one of the places of worship of the city (church, temple, mosque, gurdwara and a small synagogue), mentioned with respect and without comparison; \"अशुद्ध\" is used for impure water and for Sam's own impure thoughts (pride, anger). The unit mentions the parable (hi-a2-2-22) as something Sam heard about himself. A Christian reader and a Hindi reader should check tone and facts. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony",
+    "staying",
+    "faith",
+    "people",
+    "work"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "सवाल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "कल पास्टर अनिल ने मुझसे पूछा कि मैं अगले साल भी यहाँ रहूँगा या नहीं।",
+              "english": "Yesterday Pastor Anil asked me whether I would stay here next year too or not."
+            },
+            {
+              "text": "उन्होंने कहा कि फ़ैसला मेरा है, और वे मुझसे कुछ नहीं कहेंगे।",
+              "english": "He said that the decision is mine, and that they would say nothing to me."
+            },
+            {
+              "text": "भेजने वाली कलीसिया भी जानना चाहती है कि मैं क्या सोचता हूँ, इसलिए मैं यह गवाही लिख रहा हूँ।",
+              "english": "The sending church also wants to know what I think, so I am writing this testimony."
+            },
+            {
+              "text": "सच कहूँ तो मैंने बहुत सोचा, और कई रात मुझे नींद नहीं आई।",
+              "english": "To tell the truth I thought a great deal, and for many nights I could not sleep."
+            },
+            {
+              "text": "आख़िर में मैंने तय किया कि मैं रुकूँगा, और मैं बताता हूँ क्यों।",
+              "english": "In the end I decided that I would stay, and I will tell why."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पहला कारण: लोग",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैं पहले इसलिए रुक रहा हूँ कि यहाँ अब मुझे कोई पराया नहीं लगता।",
+              "english": "First, I am staying because here now nobody seems strange to me."
+            },
+            {
+              "text": "जब मैं आया था, तो मैं विदेश में अकेला था, और हर चेहरा मेरे लिए नया और पराया था।",
+              "english": "When I came, I was alone in a foreign country, and every face was new and strange to me."
+            },
+            {
+              "text": "विदेश में रहने वाले को सबसे ज़्यादा अपने घर की याद आती है।",
+              "english": "One who lives in a foreign country misses his own home most."
+            },
+            {
+              "text": "पर मैंने सीखा कि विदेश में भी घर बन सकता है, अगर लोग दरवाज़ा खोल दें।",
+              "english": "But I learnt that a home can be made even in a foreign country, if people open the door."
+            },
+            {
+              "text": "आज मैं सुबह घर से निकलता हूँ, तो चाय वाले से लेकर पास्टर जी तक सब मुझे नाम से बुलाते हैं।",
+              "english": "Today when I go out from home in the morning, everybody from the tea man to Pastor ji calls me by name."
+            },
+            {
+              "text": "मैं उन लोगों को कैसे भूल सकता हूँ, जिन्होंने मुझे अपना बना लिया?",
+              "english": "How can I forget those people who made me their own?"
+            },
+            {
+              "text": "मैंने सीता नानी के परिवार में एक शादी देखी, जिसमें दूल्हा और दुल्हन का जोड़ा सबने मिलकर सजाया।",
+              "english": "I saw a wedding in Seeta Nani's family, in which everybody together decorated the couple of bridegroom and bride."
+            },
+            {
+              "text": "बारात आई, साड़ी और पैंट पहने मेहमान आए, घर सजा हुआ था, और पुलाव, धनिया वाले रायते और घी से पूरा घर भर गया।",
+              "english": "The procession came, guests in saris and trousers came, the house was decorated, and the whole house was filled with pulao, raita with coriander and ghee."
+            },
+            {
+              "text": "दुल्हन की अंगूठी जब हँसी में आँगन के बच्चों के हाथ से हाथ घूमती रही, तो मुझे लगा कि मैं इसी परिवार का एक हिस्सा हूँ।",
+              "english": "When the bride's ring went from hand to hand among the children of the courtyard in laughter, I felt that I am a part of this very family."
+            },
+            {
+              "text": "फिर चर्च की दावत हुई, जिसमें मैंने पहली बार थालियाँ परोसीं, दही बाँटा और पनीर का हिस्सा हर थाली में रखा।",
+              "english": "Then the church feast took place, in which for the first time I served plates, shared curd and put a share of paneer on every plate."
+            },
+            {
+              "text": "उस दिन मुझे लगा कि इंसान की सबसे बड़ी ख़ुशी दूसरों को खिलाने में है।",
+              "english": "That day I felt that the biggest happiness of a human being is in feeding others."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दूसरा कारण: काम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैं दूसरा कारण यह मानता हूँ कि अभी मेरा काम पूरा नहीं हुआ।",
+              "english": "The second reason I hold is that my work is not yet complete."
+            },
+            {
+              "text": "जब कोई नई परेशानी उत्पन्न होती है, तो हम सब मिलकर उसका हल निकालते हैं, और मैं इस मिलकर काम करने से अलग नहीं होना चाहता।",
+              "english": "When any new trouble arises, we all together find its solution, and I do not want to part from this working together."
+            },
+            {
+              "text": "हमारी शाम की क्लास में हर हफ़्ते नए बच्चे आते हैं, और उनमें से कुछ को स्कूल में दाख़िला चाहिए।",
+              "english": "In our evening class new children come every week, and some of them need admission in a school."
+            },
+            {
+              "text": "एक बच्चे का निजी स्कूल में दाख़िला हुआ है, और मैंने उसके पाठ्यक्रम की किताबें उसके साथ पढ़ी हैं।",
+              "english": "One child has got admission in a private school, and I have read the books of his syllabus with him."
+            },
+            {
+              "text": "अगर मैं चला जाता, तो वह बच्चा अकेला रह जाता, और वह शायद पढ़ाई छोड़ देता।",
+              "english": "If I went away, that child would be left alone, and he would perhaps give up studying."
+            },
+            {
+              "text": "मुझे यह भी याद है कि अस्पताल में कितने लोग आते हैं: दर्ज़ी, मछुआरे, खिलाड़ी और छोटे बच्चे।",
+              "english": "I also remember how many people come to the hospital: tailors, fishermen, sportsmen and small children."
+            },
+            {
+              "text": "मैंने बरसात में उनके घर देखे हैं, और मैंने वादा किया है कि मैं उनके साथ रहूँगा।",
+              "english": "In the rainy season I have seen their houses, and I have promised that I will stay with them."
+            },
+            {
+              "text": "एक माँ की बच्ची के बाल साफ़ करते समय मैंने जाना कि छोटी मदद भी बड़ी परेशानी को कम कर देती है।",
+              "english": "While cleaning a mother's little girl's hair I learnt that even a small help lessens a big trouble."
+            },
+            {
+              "text": "मैंने किसी की रोती आँखें भी पोंछी हैं, और उस एक पल में मैंने सेवा का मतलब सीखा है।",
+              "english": "I have also wiped somebody's weeping eyes, and in that one moment I have learnt the meaning of service."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "तीसरा कारण: हिंदी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अब हिंदी की बात करूँ।",
+              "english": "Now let me speak of Hindi."
+            },
+            {
+              "text": "मैंने जो हिंदी सीखी है, वह किताब की हिंदी कम और गली की हिंदी ज़्यादा है।",
+              "english": "The Hindi that I have learnt is less the Hindi of books and more the Hindi of the lane."
+            },
+            {
+              "text": "मैं हर किसी की बोली को ध्यान से सुनता हूँ, चाहे वह दीपक जी की हो या मछुआरों की।",
+              "english": "I listen carefully to everybody's dialect, whether it is Deepak ji's or the fishermen's."
+            },
+            {
+              "text": "अभी मेरी हिंदी में बहुत ग़लतियाँ हैं, और अगर मैं अभी चला गया, तो मैं उसे सीखना बीच में छोड़ दूँगा।",
+              "english": "There are still many mistakes in my Hindi, and if I go now, I will leave learning it in the middle."
+            },
+            {
+              "text": "नगर के हर आदमी के पास मेरे लिए थोड़ा वक़्त है, और मेरे पास उनके लिए पूरा वक़्त होना चाहिए।",
+              "english": "Every man of the city has a little time for me, and I should have full time for them."
+            },
+            {
+              "text": "कई बार मुझे शर्म आती है, पर सब लोग हँसकर मेरी बात ठीक कर देते हैं।",
+              "english": "Many times I feel shame, but everybody sets my speech right with a laugh."
+            },
+            {
+              "text": "हिंदी सीखना सच में एक ऐसा काम है, जो कभी पूरा नहीं होता, और शायद यही उसकी सबसे सुंदर बात है।",
+              "english": "Learning Hindi is truly a work that is never complete, and perhaps just this is its most beautiful thing."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "विश्वास",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक और कारण मेरे विश्वास की बात है।",
+              "english": "One more reason is a matter of my faith."
+            },
+            {
+              "text": "हमारे नगर में चर्च भी है, मंदिर भी, मस्जिद भी, और एक छोटा-सा आराधनालय भी है।",
+              "english": "In our city there is a church, a temple, a mosque, and a small synagogue as well."
+            },
+            {
+              "text": "मैं रोज़ उस आराधनालय के पास से निकलता हूँ, और वहाँ का एक आदमी मुझे हर सुबह नमस्ते करता है।",
+              "english": "Every day I pass by that synagogue, and a man there greets me every morning."
+            },
+            {
+              "text": "वह आराधनालय वाला आदमी हमारी दावत में भी आया था, और उसने कहा कि अच्छे पड़ोसी से बड़ी कोई प्रार्थना नहीं।",
+              "english": "That man of the synagogue came to our feast too, and he said that there is no prayer greater than a good neighbour."
+            },
+            {
+              "text": "मैंने सोचा कि प्रार्थना के इतने घर एक-दूसरे के पास हों, और लोग फिर भी एक-दूसरे को नमस्ते कहें, तो यह कितनी बड़ी बात है।",
+              "english": "I thought that so many houses of prayer should be near each other, and still people say namaste to one another, how great a thing this is."
+            },
+            {
+              "text": "मैं ईसाई हूँ, और मेरे लिए यीशु सबसे बड़ी बात हैं, पर मैं किसी को छोटा नहीं समझता।",
+              "english": "I am a Christian, and for me Jesus is the greatest thing, but I do not regard anybody as small."
+            },
+            {
+              "text": "हमारे गिरजाघर में पादरी जी हर रविवार सीधी बात कहते हैं, और उसे समझने के लिए मुझे अब किसी से पूछना नहीं पड़ता।",
+              "english": "In our church building the padri ji says a plain thing every Sunday, and to understand it I no longer have to ask anybody."
+            },
+            {
+              "text": "कुछ दिन पहले मैंने अपने बारे में वही कहानी सुनी, जो सीता नानी ने अमन को सुनाई थी।",
+              "english": "A few days ago I heard about myself that same story which Seeta Nani told Aman."
+            },
+            {
+              "text": "मैं भी एक परदेस में था, और मैं भी एक जायदाद छोड़कर आया था: मेरा घर, मेरे सपने और मेरा आराम।",
+              "english": "I too was in a foreign land, and I too had come leaving a property: my home, my dreams and my ease."
+            },
+            {
+              "text": "कभी-कभी मुझे लगता था कि मैं सूअरों के बीच बैठे उस बेटे जैसा हूँ, जिसके पास न पैसा है, न मित्र।",
+              "english": "Sometimes I felt that I was like that son sitting among the pigs, who has neither money nor friend."
+            },
+            {
+              "text": "मैंने भी कई बार अशुद्ध बातें सोचीं: ग़ुस्सा और डर।",
+              "english": "I too thought impure things many times: anger and fear."
+            },
+            {
+              "text": "अशुद्ध पानी से जैसे बच्चे बीमार होते हैं, वैसे ही अशुद्ध मन से रिश्ते कमज़ोर होते हैं।",
+              "english": "As children become ill from impure water, so relationships become weak from an impure heart."
+            },
+            {
+              "text": "मैंने दोनों से बचना सीखा है, और इसमें भी मुझे अपने दोस्तों की मदद मिली।",
+              "english": "I have learnt to avoid both, and in this too I got the help of my friends."
+            },
+            {
+              "text": "मैं पापी हूँ, यह मैं जानता हूँ, और मुझे सबसे बड़ा आनंद यही जानकर मिला कि पिता मुझे लौटने पर भोज देते हैं।",
+              "english": "I am a sinner, this I know, and the greatest joy came to me in knowing that the Father gives a feast on our return."
+            },
+            {
+              "text": "मैं यहाँ दास बनकर सेवा करने आया था, और यहाँ मुझे मित्र मिले, जिन्होंने मुझे घर दिया।",
+              "english": "I came here to serve as a servant, and here I found friends who gave me a home."
+            },
+            {
+              "text": "मुझे बल उन्हीं मित्रों से मिलता है, और उसी बल से मेरा विश्वास फिर नया हो जाता है।",
+              "english": "I get strength from those very friends, and by that strength my faith becomes new again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मुझे किस बात का डर है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैं यह भी लिखना चाहता हूँ कि मुझे किस बात का डर है।",
+              "english": "I also want to write what I am afraid of."
+            },
+            {
+              "text": "मुझे डर है कि कभी बीमारी, पैसे की परेशानी या अकेलापन फिर से उत्पन्न हो जाएगा।",
+              "english": "I am afraid that sometime illness, trouble of money or loneliness will arise again."
+            },
+            {
+              "text": "पिछले साल जब डेंगू हुआ, तब मुझे सचमुच डर लगा था, और मेरे सामने कई सवाल उत्पन्न हो गए थे।",
+              "english": "Last year when I had dengue I was really afraid, and many questions had arisen before me."
+            },
+            {
+              "text": "अगर मैं अकेला होता, तो शायद मैं लौट जाता, पर मेरे पास इतने लोग थे कि डर रुक नहीं पाया।",
+              "english": "If I had been alone perhaps I would have gone back, but I had so many people that fear could not stay."
+            },
+            {
+              "text": "मुझे यह भी डर है कि मैं यहाँ से जाने के बाद इन लोगों की याद में रोऊँगा, और वहाँ के लोग मुझे पराया समझेंगे।",
+              "english": "I am also afraid that after going from here I will weep in memory of these people, and the people there will regard me as strange."
+            },
+            {
+              "text": "पर मैंने जाना है कि जो आदमी अपने डर के बारे में सच बोलता है, उसका डर आधा रह जाता है।",
+              "english": "But I have learnt that the man who speaks the truth about his fear, his fear is halved."
+            },
+            {
+              "text": "मुझे परेशानी होती है, तो मैं किसी से कह देता हूँ, और परेशानी अकेले मेरी नहीं रहती।",
+              "english": "When I am in trouble I tell somebody, and the trouble is not mine alone."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मैं किसकी आशा करता हूँ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मुझे आशा है कि अगले साल हम सब मिलकर और बहुत कुछ करेंगे।",
+              "english": "I hope that next year all of us together will do much more."
+            },
+            {
+              "text": "पास्टर जी ने कहा है कि हम सब चर्च के साथ नगर की झील पर एक दिन रहेंगे।",
+              "english": "Pastor ji has said that we will all stay a day on the lake of the city with the church."
+            },
+            {
+              "text": "झील बहुत बड़ी है, और उसके बीच एक छोटी-सी जगह भी है, जहाँ नाव से पहुँचा जाता है।",
+              "english": "The lake is very big, and in the middle of it there is also a small place, which is reached by boat."
+            },
+            {
+              "text": "झील पर बच्चे नाव में बैठेंगे, और जो बड़े हैं, वे किनारे पर खाना परोसेंगे।",
+              "english": "On the lake the children will sit in a boat, and the grown-ups will serve food on the bank."
+            },
+            {
+              "text": "मैं सोचता हूँ कि उस नाव में अमन सबसे आगे बैठेगा, और मीरा दीदी उसे बार-बार पीछे बुलाएँगी।",
+              "english": "I think that in that boat Aman will sit in front of everybody, and Meera didi will call him back again and again."
+            },
+            {
+              "text": "मुझे यह भी आशा है कि मैं अगली बार जब कोई शादी देखूँ, तो थोड़ा-थोड़ा गीत भी सुना सकूँ।",
+              "english": "I also hope that the next time I see a wedding, I will be able to render a little of the song too."
+            },
+            {
+              "text": "और अगर मैं कभी अपने घर लौटूँ, तो मैं यहाँ का एक हिस्सा अपने साथ ले जाऊँगा।",
+              "english": "And if I ever return to my home, I will take a part of this place with me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "आख़िर में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इसलिए मैं रुक रहा हूँ।",
+              "english": "That is why I am staying."
+            },
+            {
+              "text": "मैं रुक रहा हूँ, क्योंकि जिस जगह मुझे बाँटना, सुनना और सीखना मिला, वही मेरा घर है।",
+              "english": "I am staying because the place where I found sharing, listening and learning, that is my home."
+            },
+            {
+              "text": "मैं रुक रहा हूँ, क्योंकि जो परमेश्वर मुझे यहाँ लाया, वही मुझे यहाँ बल भी देगा।",
+              "english": "I am staying because the God who brought me here will give me strength here too."
+            },
+            {
+              "text": "आपसे विनती है कि आप हमारे लिए प्रार्थना करें, और हम आपके लिए प्रार्थना करेंगे।",
+              "english": "I request you to pray for us, and we will pray for you."
+            },
+            {
+              "text": "आपका भाई, सैम",
+              "english": "Your brother, Sam"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

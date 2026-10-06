@@ -1,0 +1,663 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-13",
+  "lang": "hi",
+  "title": "पास्टर अनिल की कहानी",
+  "contentType": "testimony",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-13",
+    "title": "Pastor Anil's story (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Sam says आप to Pastor Anil; Pastor Anil says तुम to Sam; the narration uses plural verbs for him. In his own story Anil uses plural verbs for his father (मेरे बाप), his mother (माँ), his uncle and the old pastor. Please check बाप (blunt but natural in a testimony; पिता is used elsewhere) and तू (his mother to the child Anil, and Anil to God in prayer: only these three uses). Christian vocabulary kept plain (परमेश्वर, प्रार्थना, क्षमा, शांति, सुसमाचार, अनुग्रह, आत्मा); no Scripture quoted. The story is invented for the course: the court case about the shop papers is told simply and is not a legal account (please check अदालत, वकील, सिपाही and the fee-waiver forms). Frames chosen for the adapter: \"रात भर\", \"दिन भर\", \"ज़िंदगी भर\" (भर); \"मेरी पोती\" with the possessive (पोती); \"शुद्ध दिल\", \"शुद्ध पानी\" (शुद्ध)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "testimony",
+    "forgiveness",
+    "childhood",
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "testimony"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "anil": "पास्टर अनिल",
+    "sam": "सैम"
+  },
+  "sections": [
+    {
+      "title": "रविवार की सभा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रविवार की सभा के बाद सब लोग चर्च के आँगन में बैठे थे।",
+              "english": "After the Sunday gathering everyone was sitting in the church courtyard."
+            },
+            {
+              "text": "सैम पास्टर अनिल के पास बैठा था, और दोनों के हाथ में चाय थी।",
+              "english": "Sam was sitting beside Pastor Anil, and both had tea in hand."
+            },
+            {
+              "speaker": "sam",
+              "text": "पास्टर जी, आप पास्टर कैसे बने?",
+              "english": "Pastor, how did you become a pastor?"
+            },
+            {
+              "text": "पास्टर अनिल हँसे और बोले कि यह कहानी बहुत लंबी है।",
+              "english": "Pastor Anil laughed and said that this story is very long."
+            },
+            {
+              "speaker": "anil",
+              "text": "ज़रा चाय पी लो, फिर मैं तुम्हें अपनी पूरी कहानी बताता हूँ।",
+              "english": "Drink your tea first, then I will tell you my whole story."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मेरा बचपन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "मेरा जन्म इसी शहर के एक पुराने मोहल्ले में हुआ था।",
+              "english": "I was born in an old neighbourhood of this very city."
+            },
+            {
+              "speaker": "anil",
+              "text": "हमारा घर बस एक छोटा-सा कमरा था।",
+              "english": "Our home was just one small room."
+            },
+            {
+              "speaker": "anil",
+              "text": "रात भर चूहे हमारे बर्तनों में दौड़ते थे, और एक चूहा मेरे पैर के ऊपर से भी निकल गया।",
+              "english": "All night long rats ran about among our pots, and one rat even ran over my foot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "मेरे बाप नाई थे, और चौराहे के पास एक पेड़ के नीचे उनकी छोटी-सी दुकान थी।",
+              "english": "My father was a barber, and he had a little shop under a tree near the crossroads."
+            },
+            {
+              "speaker": "anil",
+              "text": "मेरी माँ गली-गली में लहसुन बेचती थीं।",
+              "english": "My mother sold garlic from lane to lane."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "स्कूल की घंटी बजती थी, और मैं सबसे पहले कक्षा में पहुँचता था।",
+              "english": "The school bell rang, and I was the first to reach the classroom."
+            },
+            {
+              "speaker": "anil",
+              "text": "हमारे शिक्षक कहते थे कि अनिल एक दिन बड़ा आदमी बनेगा।",
+              "english": "Our teacher used to say that Anil would be a great man one day."
+            },
+            {
+              "speaker": "anil",
+              "text": "कभी-कभी गली से एक मोटर निकलती थी, और मैं सोचता था कि एक दिन मेरे पास भी मोटर होगी।",
+              "english": "Sometimes a motor car passed through the lane, and I used to think that one day I too would have a car."
+            },
+            {
+              "speaker": "anil",
+              "text": "माँ हँसकर कहती थीं, \"तू पहले ख़ूब पढ़, बेटा।\"",
+              "english": "Mother would say with a laugh, \"First study hard, son.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बाप की मौत",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "जब मैं बारह साल का था, मेरे बाप बीमार पड़ गए।",
+              "english": "When I was twelve years old, my father fell ill."
+            },
+            {
+              "speaker": "anil",
+              "text": "डॉक्टर ने कहा कि अगर वे पहले आ जाते, तो बच जाते।",
+              "english": "The doctor said that if he had come earlier, he would have been saved."
+            },
+            {
+              "speaker": "anil",
+              "text": "तीन दिन बाद मेरे बाप की मौत हो गई।",
+              "english": "Three days later my father died."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैं बहुत रोया, और कई दिन मेरे मुँह से एक शब्द नहीं निकला।",
+              "english": "I cried a lot, and for many days not a word came out of my mouth."
+            },
+            {
+              "speaker": "anil",
+              "text": "सब रिश्तेदार आए, रोए और चले गए।",
+              "english": "All the relatives came, wept and went away."
+            },
+            {
+              "speaker": "anil",
+              "text": "माँ ने मुझे गले लगाकर कहा कि अब घर का ख़र्च हम दोनों को मिलकर चलाना है।",
+              "english": "Mother hugged me and said that now the two of us must run the household expenses together."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "स्कूल और मज़दूरी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "किसी ने बताया कि सरकार से स्कूल की फ़ीस माफ़ हो सकती है, पर आवेदन देना होगा।",
+              "english": "Someone told me that the school fee could be waived by the government, but an application had to be made."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैंने सारे काग़ज़ लिए, फ़ॉर्म भरकर सुबह से कतार में खड़ा हो गया।",
+              "english": "I took all the papers, filled in the form and stood in the queue from morning."
+            },
+            {
+              "speaker": "anil",
+              "text": "दोपहर को एक अफ़सर ने मेरे काग़ज़ देखे और कहा कि कल फिर आना।",
+              "english": "In the afternoon an officer looked at my papers and told me to come again tomorrow."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैं पाँच दिन गया, और नतीजा हर बार वही था।",
+              "english": "I went for five days, and the result was the same every time."
+            },
+            {
+              "speaker": "anil",
+              "text": "आख़िर मुझे स्कूल छोड़ना पड़ा।",
+              "english": "In the end I had to leave school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "मैं तेरह साल का था, अभी जवान भी नहीं।",
+              "english": "I was thirteen, not even a young man yet."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैंने मंडी में मज़दूरी शुरू की।",
+              "english": "I started working as a labourer in the market."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैं दिन भर सामान उठाता था, और शाम को 20 रुपये मिलते थे।",
+              "english": "I carried loads all day long, and in the evening I got 20 rupees."
+            },
+            {
+              "speaker": "anil",
+              "text": "कई रात मैं बिना खाए सो गया, क्योंकि मेरी छोटी बहन अभी बच्ची थी।",
+              "english": "Many nights I went to sleep without eating, because my little sister was still a little girl."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मेरे चाचा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "उसी समय मेरे चाचा हमारे घर आए।",
+              "english": "At that time my uncle came to our house."
+            },
+            {
+              "speaker": "anil",
+              "text": "उन्होंने कहा कि नाई की वह दुकान अब उनकी है।",
+              "english": "He said that the barber's shop was now his."
+            },
+            {
+              "speaker": "anil",
+              "text": "दुकान के काग़ज़ घर से ग़ायब हो गए थे, और हमारे पास कुछ दिखाने को नहीं था।",
+              "english": "The papers of the shop had disappeared from the house, and we had nothing to show."
+            },
+            {
+              "speaker": "anil",
+              "text": "माँ और मैं अदालत गए।",
+              "english": "Mother and I went to the court."
+            },
+            {
+              "speaker": "anil",
+              "text": "दरवाज़े पर एक जवान सिपाही खड़ा था।",
+              "english": "A young soldier stood at the door."
+            },
+            {
+              "speaker": "anil",
+              "text": "उसने कहा कि बिना वकील के कोई अंदर नहीं जाता।",
+              "english": "He said that nobody goes in without a lawyer."
+            },
+            {
+              "speaker": "anil",
+              "text": "छह महीने बाद नतीजा यह हुआ कि दुकान चाचा के पास रह गई।",
+              "english": "Six months later the result was that the shop stayed with my uncle."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैंने बिलकुल नहीं सोचा था कि कोई रिश्तेदार ऐसा करेगा।",
+              "english": "I had not thought at all that a relative would do such a thing."
+            },
+            {
+              "speaker": "anil",
+              "text": "मेरे दिल में बहुत ग़ुस्सा था, और मैंने सोचा कि मैं उन्हें कभी माफ़ नहीं करूँगा।",
+              "english": "There was a lot of anger in my heart, and I thought that I would never forgive him."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैं हर किसी पर चिल्लाता था, और माँ रोज़ कहती थीं, \"तू ऐसे मत बन।\"",
+              "english": "I shouted at everyone, and Mother said every day, \"Don't be like this.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "वह रात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "जब मैं सोलह साल का था, एक रात मैं घर से निकल गया।",
+              "english": "When I was sixteen, one night I left the house."
+            },
+            {
+              "speaker": "anil",
+              "text": "मुझे नहीं पता था कि मैं कहाँ जा रहा हूँ, और उस रात मुझे मौत का भी डर नहीं था।",
+              "english": "I did not know where I was going, and that night I was not even afraid of death."
+            },
+            {
+              "speaker": "anil",
+              "text": "अचानक बादल गरजे।",
+              "english": "Suddenly the clouds thundered."
+            },
+            {
+              "speaker": "anil",
+              "text": "एक बूँद मेरे मुँह पर गिरी, और फिर ज़ोर की बारिश होने लगी।",
+              "english": "A drop fell on my face, and then it began to rain hard."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैं भागकर एक छोटे चर्च की छत के नीचे चला गया, और उसका दरवाज़ा नीला था।",
+              "english": "I ran and went under the roof of a small church, and its door was blue."
+            },
+            {
+              "speaker": "anil",
+              "text": "अंदर से एक बूढ़े पास्टर बाहर आए।",
+              "english": "An old pastor came out from inside."
+            },
+            {
+              "speaker": "anil",
+              "text": "उन्होंने तुरंत मुझे एक कंबल दिया।",
+              "english": "At once he gave me a blanket."
+            },
+            {
+              "speaker": "anil",
+              "text": "उन्होंने कहा कि तुम भीग गए हो, कपड़े बदल लो।",
+              "english": "He said that I was soaked and should change my clothes."
+            },
+            {
+              "speaker": "anil",
+              "text": "फिर उन्होंने बिना कुछ पूछे मुझे चाय और एक गिलास शुद्ध पानी दिया।",
+              "english": "Then without asking anything he gave me tea and a glass of pure water."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैं वहीं बैठ गया, और सारी रात बादल गरजते रहे।",
+              "english": "I sat down right there, and all night the clouds kept thundering."
+            },
+            {
+              "speaker": "anil",
+              "text": "हर बूँद के साथ मेरा ग़ुस्सा भी बह रहा था।",
+              "english": "With every drop my anger was also flowing away."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैंने उन्हें अपनी पूरी कहानी बताई, और वे चुपचाप सुनते रहे।",
+              "english": "I told him my whole story, and he listened in silence."
+            },
+            {
+              "speaker": "anil",
+              "text": "आख़िर में वे बोले कि परमेश्वर तुम्हें जानता है।",
+              "english": "In the end he said that God knows you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मैंने क्या सुना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "उन्होंने मुझे पहली बार सुसमाचार सुनाया।",
+              "english": "For the first time he told me the good news."
+            },
+            {
+              "speaker": "anil",
+              "text": "उन्होंने कहा कि परमेश्वर का अनुग्रह हमारी मेहनत से नहीं मिलता।",
+              "english": "He said that God's grace is not got by our effort."
+            },
+            {
+              "speaker": "anil",
+              "text": "उस रात मेरी आत्मा को पहली बार शांति मिली।",
+              "english": "That night my soul found peace for the first time."
+            },
+            {
+              "speaker": "anil",
+              "text": "सुबह तक बारिश रुक चुकी थी, और घास पर एक बूँद चमक रही थी।",
+              "english": "By morning the rain had stopped, and a drop was shining on the grass."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "मैं घर लौटा, और माँ सारी रात जागी थीं।",
+              "english": "I came back home, and Mother had stayed awake all night."
+            },
+            {
+              "speaker": "anil",
+              "text": "माँ तुरंत उठकर आईं और मुझे देखकर रो पड़ीं।",
+              "english": "Mother got up at once and burst into tears on seeing me."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैंने तुरंत उनसे माफ़ी माँगी।",
+              "english": "At once I asked her forgiveness."
+            },
+            {
+              "speaker": "anil",
+              "text": "उसी रविवार मैं माँ के साथ उस चर्च में गया, और वहीं मैंने पहली बार प्रार्थना की।",
+              "english": "That same Sunday I went with Mother to that church, and right there I prayed for the first time."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बदलती ज़िंदगी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "धीरे-धीरे मेरी ज़िंदगी बदलने लगी।",
+              "english": "Slowly my life began to change."
+            },
+            {
+              "speaker": "anil",
+              "text": "मेरा दिल बदल रहा था, इसलिए मैं सच बोलने लगा और मैंने चिल्लाना छोड़ दिया।",
+              "english": "My heart was changing, so I began to speak the truth and gave up shouting."
+            },
+            {
+              "speaker": "anil",
+              "text": "बूढ़े पास्टर कहते थे कि ग़ुस्से से बचो और प्रार्थना शुद्ध दिल से करो।",
+              "english": "The old pastor used to say: keep away from anger and pray with a pure heart."
+            },
+            {
+              "speaker": "anil",
+              "text": "वे कहते थे कि पेट की तरह आत्मा को भी रोटी चाहिए।",
+              "english": "He used to say that, like the stomach, the soul also needs bread."
+            },
+            {
+              "speaker": "anil",
+              "text": "ज़िंदगी में पहली बार मैंने सबके साथ गीत गाए।",
+              "english": "For the first time in my life I sang songs with everyone."
+            },
+            {
+              "speaker": "anil",
+              "text": "फिर मुझे बैंक के सामने एक दुकान में काम मिला, और पहली तनख़्वाह मैंने माँ के हाथ में रखी।",
+              "english": "Then I got work in a shop in front of a bank, and I put my first salary in Mother's hand."
+            },
+            {
+              "speaker": "anil",
+              "text": "चर्च के पीछे एक हरा बगीचा था, जहाँ हम रविवार को बैठते थे।",
+              "english": "Behind the church there was a green garden where we sat on Sundays."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "क्षमा का दिन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "पर एक बात मुझे अब भी परेशान करती थी।",
+              "english": "But one thing still troubled me."
+            },
+            {
+              "speaker": "anil",
+              "text": "वह मेरे चाचा थे।",
+              "english": "It was my uncle."
+            },
+            {
+              "speaker": "anil",
+              "text": "प्रार्थना में उनका नाम याद आते ही मेरा ग़ुस्सा लौट आता था।",
+              "english": "When I remembered his name in prayer, my anger would come back."
+            },
+            {
+              "speaker": "anil",
+              "text": "बूढ़े पास्टर ने कहा कि क्षमा लेना और क्षमा देना साथ चलते हैं।",
+              "english": "The old pastor said that receiving forgiveness and giving forgiveness go together."
+            },
+            {
+              "speaker": "anil",
+              "text": "उस रात मैंने शुद्ध दिल से प्रार्थना की, \"परमेश्वर, तू मेरी मदद कर।\"",
+              "english": "That night I prayed with a pure heart, \"God, help me.\""
+            },
+            {
+              "speaker": "anil",
+              "text": "कुछ दिन बाद चाचा की बेटी हमारे घर आई।",
+              "english": "A few days later my uncle's daughter came to our house."
+            },
+            {
+              "speaker": "anil",
+              "text": "उसने कहा कि उसके पिता बीमार हैं और मुझसे मिलना चाहते हैं।",
+              "english": "She said that her father was ill and wanted to meet me."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैं गया।",
+              "english": "I went."
+            },
+            {
+              "speaker": "anil",
+              "text": "वे बिस्तर पर थे, बहुत कमज़ोर, और मौत से डरते थे।",
+              "english": "He was in bed, very weak, and afraid of death."
+            },
+            {
+              "speaker": "anil",
+              "text": "उन्होंने रोते हुए मुझसे माफ़ी माँगी।",
+              "english": "Weeping, he asked my forgiveness."
+            },
+            {
+              "speaker": "anil",
+              "text": "उन्होंने सच बताया कि दुकान के काग़ज़ उन्हीं के पास थे।",
+              "english": "He told me the truth, that the shop papers had been with him."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैंने कहा, \"मैंने आपको माफ़ कर दिया है।\"",
+              "english": "I said, \"I have forgiven you.\""
+            },
+            {
+              "speaker": "anil",
+              "text": "उसी समय मेरा सारा ग़ुस्सा ग़ायब हो गया।",
+              "english": "At that moment all my anger disappeared."
+            },
+            {
+              "speaker": "anil",
+              "text": "मुझे ऐसी शांति मिली, जो मेरी आत्मा को पहले कभी नहीं मिली थी।",
+              "english": "I found a peace that my soul had never found before."
+            },
+            {
+              "speaker": "anil",
+              "text": "आज वही रिश्तेदार हर रविवार हमारे साथ चर्च आते हैं।",
+              "english": "Today that same relative comes to church with us every Sunday."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मैं पास्टर कैसे बना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "एक दिन बूढ़े पास्टर ने कहा कि अनिल, अब तुम लोगों को सुसमाचार सुनाओ।",
+              "english": "One day the old pastor said, Anil, now you should tell people the good news."
+            },
+            {
+              "speaker": "anil",
+              "text": "उन्होंने कहा कि परमेश्वर का अनुग्रह कमज़ोर आदमी में भी काम करता है।",
+              "english": "He said that God's grace works even in a weak man."
+            },
+            {
+              "speaker": "anil",
+              "text": "मैं शाम को फिर पढ़ने लगा, और पाँच साल बाद मैं पास्टर बना।",
+              "english": "In the evenings I began to study again, and five years later I became a pastor."
+            },
+            {
+              "speaker": "anil",
+              "text": "जब मैं जवान था, मैंने गाँव-गाँव जाकर सुसमाचार सुनाया।",
+              "english": "When I was young, I went from village to village telling the good news."
+            },
+            {
+              "speaker": "anil",
+              "text": "मेरी शादी हुई, और अब मेरी एक बेटी है।",
+              "english": "I got married, and now I have a daughter."
+            },
+            {
+              "speaker": "anil",
+              "text": "मेरी बेटी की एक छोटी बच्ची है, और वह मेरी पोती है।",
+              "english": "My daughter has a little girl, and she is my granddaughter."
+            },
+            {
+              "speaker": "anil",
+              "text": "मेरी पोती हर रविवार मेरे साथ चर्च आती है।",
+              "english": "My granddaughter comes to church with me every Sunday."
+            },
+            {
+              "speaker": "anil",
+              "text": "कल मेरी पोती ने पूछा, \"दादा जी, आपने उन्हें माफ़ कैसे किया?\"",
+              "english": "Yesterday my granddaughter asked, \"Grandfather, how did you forgive him?\""
+            },
+            {
+              "speaker": "anil",
+              "text": "मैंने कहा कि यह मैंने नहीं किया, यह परमेश्वर का अनुग्रह था।",
+              "english": "I said that I did not do it, it was God's grace."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "आख़िरी बात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "anil",
+              "text": "अगर उस रात बारिश न होती, तो मैं उस नीले दरवाज़े तक नहीं पहुँचता।",
+              "english": "If it had not rained that night, I would not have reached that blue door."
+            },
+            {
+              "speaker": "anil",
+              "text": "अगर वे बूढ़े पास्टर न होते, तो मैं शायद बच नहीं पाता।",
+              "english": "If that old pastor had not been there, I might not have survived."
+            },
+            {
+              "speaker": "anil",
+              "text": "आज भी जब बादल गरजते हैं, मुझे वही रात याद आती है।",
+              "english": "Even today when the clouds thunder, I remember that night."
+            },
+            {
+              "speaker": "sam",
+              "text": "पास्टर जी, यह कहानी सच है, इसलिए मुझे इतनी अच्छी लगी।",
+              "english": "Pastor, this story is true, so I liked it so much."
+            },
+            {
+              "speaker": "anil",
+              "text": "बेटा, परमेश्वर ज़िंदगी भर हमारे साथ रहता है।",
+              "english": "Son, God stays with us all our life."
+            },
+            {
+              "text": "तभी चर्च की घंटी बजी, और एक छोटी बच्ची दौड़कर सैम के पास आई।",
+              "english": "Just then the church bell rang, and a little girl came running to Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

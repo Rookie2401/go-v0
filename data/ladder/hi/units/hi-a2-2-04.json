@@ -1,0 +1,642 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-04",
+  "lang": "hi",
+  "title": "मीरा दीदी कैसे नर्स बनीं",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-04",
+    "title": "\"मीरा दीदी कैसे नर्स बनीं\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Meera didi's life told to Sam in her own words (she speaks, Sam asks a few questions). The hills of her childhood echo the trip diary (hi-a2-2-01), so the unit recycles those words naturally. Points for the reviewer: दीदी and आप between Sam and Meera; पापा for her father (not पिताजी, to keep to the plan's list); the Christmas play at the hospital (क्रिसमस, चरवाहा, स्वर्गदूत, उद्धारकर्ता, दूत, भविष्यवक्ता, राज्य, मनुष्य) is told in the drafter's words and needs a Christian reader; the mission hospital is unnamed on purpose; the family is poor (ग़रीब) but never pitiable. Adapter traps met: चार (numeral) counts as a known number, so the planned top-up चार×2 has no effect; 'पूरी' (feminine of पूरा) is read as the food पूरी, so the unit uses only the masculine पूरा. Outside the plan (1 lemma, 2 tokens, 0.2 per 100 words): मुश्किल×2. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "biography",
+    "health",
+    "family"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "S": "सैम",
+    "M": "मीरा दीदी"
+  },
+  "sections": [
+    {
+      "title": "एक शाम बरामदे में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दीदी, आज अस्पताल में बहुत काम था, फिर भी आप ज़रा भी नहीं थकीं।",
+              "english": "Didi, there was a lot of work at the hospital today, and still you did not get tired at all.",
+              "speaker": "S"
+            },
+            {
+              "text": "थकती तो हूँ, सैम, पर काम करना मुझे अच्छा लगता है।",
+              "english": "I do get tired, Sam, but I like doing the work.",
+              "speaker": "M"
+            },
+            {
+              "text": "आप नर्स कैसे बनीं?",
+              "english": "How did you become a nurse?",
+              "speaker": "S"
+            },
+            {
+              "text": "यह लंबी कहानी है।",
+              "english": "It is a long story.",
+              "speaker": "M"
+            },
+            {
+              "text": "आओ, बरामदे की सीढ़ी पर बैठो, मैं बोतल से गरम पानी लेकर चाय बनाती हूँ।",
+              "english": "Come, sit on the verandah step, I will make tea with the hot water from the bottle.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पहाड़ का गाँव",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मेरा जन्म पहाड़ के एक छोटे गाँव में हुआ था।",
+              "english": "I was born in a small village in the hills.",
+              "speaker": "M"
+            },
+            {
+              "text": "हमारा घर एक घाटी के किनारे था, और पास में एक झरना बहता था।",
+              "english": "Our house was at the edge of a valley, and a waterfall flowed nearby.",
+              "speaker": "M"
+            },
+            {
+              "text": "सर्दी में वहाँ बर्फ़ पड़ती थी, और सुबह घर के बाहर बस धुंध ही धुंध दिखती थी।",
+              "english": "In winter snow fell there, and in the morning nothing but mist could be seen outside the house.",
+              "speaker": "M"
+            },
+            {
+              "text": "झरने के पास का दृश्य सुबह बहुत सुंदर लगता था।",
+              "english": "The view near the waterfall looked very beautiful in the morning.",
+              "speaker": "M"
+            },
+            {
+              "text": "मेरे स्कूल तक हर दिन चार घंटे की चढ़ाई थी, और रास्ता हर थोड़ी दूर पर मुड़ता था।",
+              "english": "The climb to my school was four hours every day, and the path turned every little while.",
+              "speaker": "M"
+            },
+            {
+              "text": "मैं अपनी दोस्त रानी के साथ जाती थी, और हम गीत सुनाते हुए चलते थे ताकि थकान कम लगे।",
+              "english": "I went with my friend Rani, and we walked telling songs so that the tiredness would seem less.",
+              "speaker": "M"
+            },
+            {
+              "text": "रास्ते में एक विशाल पेड़ था, जिसके नीचे हम रुककर बर्फ़ में ठंडे हुए पैर गरम करते थे।",
+              "english": "On the way there was a vast tree, under which we stopped to warm our feet, cold from the snow.",
+              "speaker": "M"
+            },
+            {
+              "text": "आपका बचपन तो मुश्किल रहा होगा।",
+              "english": "Your childhood must have been hard.",
+              "speaker": "S"
+            },
+            {
+              "text": "मुश्किल भी था और सुंदर भी।",
+              "english": "It was hard and beautiful too.",
+              "speaker": "M"
+            },
+            {
+              "text": "सुबह मैं चार बजे उठकर झरने से पानी लाती थी, और बाल्टी बहुत भारी होती थी।",
+              "english": "In the morning I got up at four and fetched water from the waterfall, and the bucket was very heavy.",
+              "speaker": "M"
+            },
+            {
+              "text": "मैं रोज़ लाल टोपी पहनती थी, पर तेज़ हवा रोज़ मेरी टोपी उड़ा ले जाती थी।",
+              "english": "I wore a red cap every day, but the strong wind blew my cap away every day.",
+              "speaker": "M"
+            },
+            {
+              "text": "एक बार एक बंदर मेरी टोपी लेकर पेड़ पर चढ़ गया।",
+              "english": "Once a monkey took my cap and climbed a tree.",
+              "speaker": "M"
+            },
+            {
+              "text": "वह बंदर बहुत चालाक था, रोटी की चोरी भी करता था।",
+              "english": "That monkey was very clever, and it stole roti too.",
+              "speaker": "M"
+            },
+            {
+              "text": "बच्चे बंदर को देखकर चिल्लाते थे, पर वह हँसता हुआ ऊपर बैठा रहता था।",
+              "english": "The children shouted when they saw it, but it sat up there as if laughing.",
+              "speaker": "M"
+            },
+            {
+              "text": "हम ग़रीब थे, पर घर में प्रेम और ख़ुशी थी।",
+              "english": "We were poor, but there was love and happiness in the house.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पापा की बीमारी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "जब मैं चौदह साल की थी, पापा बहुत बीमार पड़ गए।",
+              "english": "When I was fourteen, Papa fell very ill.",
+              "speaker": "M"
+            },
+            {
+              "text": "पहले उन्हें खाँसी हुई, फिर तेज़ बुखार आया, और यह सब मेरी समझ में नहीं आता था।",
+              "english": "First he got a cough, then a high fever came, and I could not understand any of it.",
+              "speaker": "M"
+            },
+            {
+              "text": "हमारे गाँव में कोई डॉक्टर नहीं था, और अस्पताल नीचे शहर में था।",
+              "english": "There was no doctor in our village, and the hospital was down in the town.",
+              "speaker": "M"
+            },
+            {
+              "text": "गाँव के लोग उन्हें चारपाई पर रखकर घाटी के रास्ते से नीचे ले गए।",
+              "english": "The village people put him on a charpoy and carried him down the valley path.",
+              "speaker": "M"
+            },
+            {
+              "text": "वह अस्पताल कितनी दूर था?",
+              "english": "How far was that hospital?",
+              "speaker": "S"
+            },
+            {
+              "text": "पूरा दिन लग गया।",
+              "english": "It took the whole day.",
+              "speaker": "M"
+            },
+            {
+              "text": "चलते-चलते मैंने मुड़कर पहाड़ को देखा, और मुझे बहुत डर लगा।",
+              "english": "As we walked I turned and looked back at the mountain, and I felt very afraid.",
+              "speaker": "M"
+            },
+            {
+              "text": "माँ ने मेरा हाथ पकड़कर कहा, \"हौसला रखो, मीरा, परमेश्वर हमारे साथ है।\"",
+              "english": "Mother took my hand and said, \"Keep up your courage, Meera, God is with us.\"",
+              "speaker": "M"
+            },
+            {
+              "text": "अस्पताल में एक नर्स थी, जिसने रात-दिन पापा की सेवा की।",
+              "english": "In the hospital there was a nurse, who served Papa day and night.",
+              "speaker": "M"
+            },
+            {
+              "text": "वह बार-बार उनके सिर पर हाथ रखती थी और मुझे समझाती थी कि घबराओ मत।",
+              "english": "Again and again she put her hand on his head and explained to me not to worry.",
+              "speaker": "M"
+            },
+            {
+              "text": "उसके चेहरे पर इतनी शांति थी कि मेरा डर कम हो गया।",
+              "english": "There was so much peace on her face that my fear grew less.",
+              "speaker": "M"
+            },
+            {
+              "text": "मेरे लिए उस समय संसार में उस नर्स से बड़ा कोई नहीं था।",
+              "english": "For me at that time there was no one in the world greater than that nurse.",
+              "speaker": "M"
+            },
+            {
+              "text": "दस दिन बाद पापा ठीक हो गए।",
+              "english": "After ten days Papa was well.",
+              "speaker": "M"
+            },
+            {
+              "text": "अगर वह नर्स न होती, तो शायद पापा आज हमारे साथ न होते।",
+              "english": "If that nurse had not been there, perhaps Papa would not be with us today.",
+              "speaker": "M"
+            },
+            {
+              "text": "उसी दिन मैंने पहली बार अपने मन में एक सपना देखा।",
+              "english": "That very day, for the first time, I saw a dream in my heart.",
+              "speaker": "M"
+            },
+            {
+              "text": "मैंने सोचा, \"मैं भी नर्स बनूँगी।\"",
+              "english": "I thought, \"I will become a nurse too.\"",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "ट्रेनिंग के साल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पर आपके पास तो पैसे नहीं थे।",
+              "english": "But you had no money.",
+              "speaker": "S"
+            },
+            {
+              "text": "ट्रेनिंग की फ़ीस बहुत ज़्यादा थी, और हम ग़रीब थे।",
+              "english": "The fee for the training was very high, and we were poor.",
+              "speaker": "M"
+            },
+            {
+              "text": "उस अस्पताल के पास्टर ने मेरी बात सुनी और कहा कि वे मदद करेंगे।",
+              "english": "The pastor of that hospital heard me out and said that he would help.",
+              "speaker": "M"
+            },
+            {
+              "text": "उन्होंने मेरी हिम्मत बढ़ाई और कहा, \"तुम बस पढ़ाई करो, हम तुम्हारी मदद करेंगे।\"",
+              "english": "He raised my courage and said, \"You just study, we will help you.\"",
+              "speaker": "M"
+            },
+            {
+              "text": "कुछ दिन बाद मैं माँ और पापा से विदा लेकर शहर आ गई।",
+              "english": "A few days later I took leave of Mother and Papa and came to the city.",
+              "speaker": "M"
+            },
+            {
+              "text": "विदा के समय माँ बहुत रोई, और मेरा मन भारी था।",
+              "english": "At the farewell Mother wept a great deal, and my heart was heavy.",
+              "speaker": "M"
+            },
+            {
+              "text": "वह हमारी पहली विदा नहीं थी, पर सबसे लंबी थी।",
+              "english": "It was not our first parting, but it was the longest.",
+              "speaker": "M"
+            },
+            {
+              "text": "शुरू में मैं बहुत अकेली और खोई-खोई रहती थी, पर मेरा संसार धीरे-धीरे बड़ा होता गया।",
+              "english": "At first I was very lonely and always seemed lost, but my world grew bigger little by little.",
+              "speaker": "M"
+            },
+            {
+              "text": "तीन साल की ट्रेनिंग में हमें सब सिखाया गया: टीका लगाना, पट्टी लगाना, घाव धोना और मरीज़ की बात समझना।",
+              "english": "In the three years of training we were taught everything: giving injections, putting on bandages, washing wounds and understanding a patient.",
+              "speaker": "M"
+            },
+            {
+              "text": "हर दिन कोई नई चोट या नया दर्द देखने को मिलता था।",
+              "english": "Every day we saw some new injury or new pain.",
+              "speaker": "M"
+            },
+            {
+              "text": "किसी की उँगली में चोट होती थी, किसी की नाक में, और किसी बच्चे के दाँत में दर्द।",
+              "english": "One had hurt a finger, another a nose, and some child had a pain in a tooth.",
+              "speaker": "M"
+            },
+            {
+              "text": "रानी मेरा सपना जानती थी, और उसकी चिट्ठी आती थी, \"मीरा, हिम्मत मत छोड़ना।\"",
+              "english": "Rani knew my dream, and her letter would come: \"Meera, don't lose heart.\"",
+              "speaker": "M"
+            },
+            {
+              "text": "उसकी चिट्ठियाँ मेरा हौसला बढ़ाती थीं, और मैं तीन साल पूरे कर सकी।",
+              "english": "Her letters raised my courage, and I was able to finish the three years.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "समुद्र के किनारे",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उन्हीं दिनों हम सब दोस्त एक यात्रा पर समुद्र देखने गए।",
+              "english": "In those days we friends all went on a trip to see the sea.",
+              "speaker": "M"
+            },
+            {
+              "text": "मैंने ज़िंदगी में पहली बार इतना विशाल समुद्र देखा।",
+              "english": "For the first time in my life I saw such a vast sea.",
+              "speaker": "M"
+            },
+            {
+              "text": "वहाँ हल्की हवा चल रही थी, और लहरें किनारे तक आकर लौट जाती थीं।",
+              "english": "A light breeze was blowing there, and the waves came up to the shore and went back.",
+              "speaker": "M"
+            },
+            {
+              "text": "वह दृश्य मेरे पहाड़ से बिलकुल अलग था, पर मुझे उसमें भी घर जैसा लगा।",
+              "english": "That view was quite different from my hills, but even in it I felt at home.",
+              "speaker": "M"
+            },
+            {
+              "text": "लौटते समय बस में हम सब यात्रा की थकान से सो गए।",
+              "english": "On the way back in the bus we all fell asleep from the tiredness of the trip.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पहली रात का काम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "ट्रेनिंग के बाद मुझे पहली बार रात का काम मिला।",
+              "english": "After the training I was given night work for the first time.",
+              "speaker": "M"
+            },
+            {
+              "text": "मैं बहुत घबराई हुई थी, और मेरे हाथ ठंडे थे।",
+              "english": "I was very nervous, and my hands were cold.",
+              "speaker": "M"
+            },
+            {
+              "text": "रात के 2 बजे एक औरत अपने छोटे बच्चे को लेकर आई।",
+              "english": "At 2 in the night a woman came with her small child.",
+              "speaker": "M"
+            },
+            {
+              "text": "बच्चे को तेज़ बुखार था, और उसका चेहरा लाल हो गया था।",
+              "english": "The child had a high fever, and his face had turned red.",
+              "speaker": "M"
+            },
+            {
+              "text": "डॉक्टर दूसरी जगह काम कर रहे थे, इसलिए मुझे अकेले ही सब करना पड़ा।",
+              "english": "The doctor was working in another place, so I had to do everything alone.",
+              "speaker": "M"
+            },
+            {
+              "text": "मैंने बच्चे के सिर पर ठंडे पानी की पट्टी रखी और उसकी माँ को समझाया कि वह घबराए नहीं।",
+              "english": "I put a cold-water bandage on the child's head and explained to his mother that she should not panic.",
+              "speaker": "M"
+            },
+            {
+              "text": "सुबह तक बुखार उतर गया, और वह बच्चा मुस्कुराया।",
+              "english": "By morning the fever had gone down, and that child smiled.",
+              "speaker": "M"
+            },
+            {
+              "text": "उसकी माँ ने मेरे दोनों हाथ पकड़कर कहा, \"बहन, तुमने मेरे बेटे को बचाया।\"",
+              "english": "His mother took both my hands and said, \"Sister, you saved my son.\"",
+              "speaker": "M"
+            },
+            {
+              "text": "मेरे लिए वह मेरी पहली सफलता थी।",
+              "english": "For me it was my first success.",
+              "speaker": "M"
+            },
+            {
+              "text": "पर उसी रात मैंने सीखा कि इस संसार में कोई भी सफलता अकेले किसी की नहीं होती।",
+              "english": "But that same night I learnt that in this world no success belongs to anyone alone.",
+              "speaker": "M"
+            },
+            {
+              "text": "इस सफलता के पीछे डॉक्टर, दूसरी नर्सें और परमेश्वर का आशीर्वाद भी था।",
+              "english": "Behind this success there were the doctor, the other nurses and God's blessing as well.",
+              "speaker": "M"
+            },
+            {
+              "text": "उस रात मैंने अपने से कहा कि अब मेरा हौसला कभी कम नहीं होना चाहिए।",
+              "english": "That night I told myself that my courage must never fall again.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "क्रिसमस का खेल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उस अस्पताल में हर साल क्रिसमस पर एक छोटा खेल होता था।",
+              "english": "In that hospital a small play took place every Christmas.",
+              "speaker": "M"
+            },
+            {
+              "text": "उस साल मैं चरवाहा बनी और मैंने पापा की पुरानी टोपी पहनी।",
+              "english": "That year I played a shepherd and wore Papa's old cap.",
+              "speaker": "M"
+            },
+            {
+              "text": "एक डॉक्टर ने स्वर्गदूत का काम किया, और उन्होंने सफ़ेद कपड़ा पहन रखा था।",
+              "english": "One doctor played the angel, and he wore a white cloth.",
+              "speaker": "M"
+            },
+            {
+              "text": "उन्होंने हम चरवाहों से कहा, \"मैं परमेश्वर का दूत हूँ। डरो मत, आज तुम्हारे लिए उद्धारकर्ता का जन्म हुआ है।\"",
+              "english": "He said to us shepherds, \"I am a messenger of God. Do not be afraid, today a Saviour has been born for you.\"",
+              "speaker": "M"
+            },
+            {
+              "text": "फिर एक बूढ़े मरीज़ ने भविष्यवक्ता का काम किया और कहा, \"भविष्यवक्ताओं ने बहुत पहले कहा था कि वह आएगा, और उसका राज्य हमेशा रहेगा।\"",
+              "english": "Then an old patient played the prophet and said, \"The prophets said long ago that he would come, and that his kingdom would last for ever.\"",
+              "speaker": "M"
+            },
+            {
+              "text": "दूसरे स्वर्गदूत ने गीत सुनाया, और परमेश्वर के दूत की आवाज़ बरामदे में दूर तक पहुँची।",
+              "english": "The second angel sang a song, and the voice of the messenger of God reached far along the verandah.",
+              "speaker": "M"
+            },
+            {
+              "text": "उस रात मैंने समझा कि जो उद्धारकर्ता मनुष्य बनकर आया, वह हर बीमार के पास आता है।",
+              "english": "That night I understood that the Saviour who came as a man comes close to every sick person.",
+              "speaker": "M"
+            },
+            {
+              "text": "उसके राज्य में हर ग़रीब के लिए जगह है, और हर मनुष्य की क़ीमत है।",
+              "english": "In his kingdom there is room for every poor person, and every human being is of worth.",
+              "speaker": "M"
+            },
+            {
+              "text": "क्रिसमस मेरे लिए बदल गया, और मेरा सपना और बड़ा हो गया।",
+              "english": "The meaning of Christmas changed for me, and my dream grew bigger.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मैं क्यों रुकी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आप चाहतीं तो बड़े अस्पताल में काम कर सकती थीं।",
+              "english": "If you had wished you could have worked in a big hospital.",
+              "speaker": "S"
+            },
+            {
+              "text": "हाँ, मुझे वहाँ काम मिल सकता था।",
+              "english": "Yes, I could have got work there.",
+              "speaker": "M"
+            },
+            {
+              "text": "पर मैंने सोचा कि अगर मैं भी शहर में रह गई, तो गाँव के लोगों की ज़रूरत कौन देखेगा?",
+              "english": "But I thought: if I too stayed in the city, who would look after the needs of the village people?",
+              "speaker": "M"
+            },
+            {
+              "text": "इसलिए अब मैं हर महीने गाँव-गाँव में स्वास्थ्य शिविर लगाती हूँ।",
+              "english": "That is why now every month I hold health camps from village to village.",
+              "speaker": "M"
+            },
+            {
+              "text": "वहाँ हम टीका लगाते हैं, मलेरिया और डेंगू के बारे में बताते हैं, और समझाते हैं कि मच्छर से कैसे बचें।",
+              "english": "There we give injections, talk about malaria and dengue, and explain how to be safe from mosquitoes.",
+              "speaker": "M"
+            },
+            {
+              "text": "सफ़ाई की बात हम सबसे पहले करते हैं, क्योंकि साफ़ पानी पीने से लोग कम बीमार पड़ते हैं।",
+              "english": "We talk about cleanliness first of all, because people fall less ill when they drink clean water.",
+              "speaker": "M"
+            },
+            {
+              "text": "एक शिविर में एक पिल्ला हमारे साथ घूमता रहा, और बच्चे उसी के साथ खेलते रहे।",
+              "english": "At one camp a puppy kept going round with us, and the children kept playing with it.",
+              "speaker": "M"
+            },
+            {
+              "text": "एक बार भारी बारिश हुई, और बादलों ने इतना पानी बरसाया कि हम सब गीले हो गए, फिर भी लोग दवा लेने आए।",
+              "english": "Once the clouds poured down so much water that we all got wet, and still people came to take medicine.",
+              "speaker": "M"
+            },
+            {
+              "text": "एक बार एक मंत्री भी शिविर देखने आए, और गाँव के लोगों ने झाड़ू लेकर सारा रास्ता साफ़ किया।",
+              "english": "Once a minister also came to see the camp, and the village people cleaned the whole path with brooms.",
+              "speaker": "M"
+            },
+            {
+              "text": "वहीं हमें एक खोया हुआ बच्चा मिला, और हम उसे उसके घर तक ले गए।",
+              "english": "There we found a lost child, and we took him all the way home.",
+              "speaker": "M"
+            },
+            {
+              "text": "उसकी माँ ने गोल चश्मे में से हमें देखा और रो पड़ी।",
+              "english": "His mother looked at us through her round glasses and burst into tears.",
+              "speaker": "M"
+            },
+            {
+              "text": "हम सबकी कोशिश थी कि कोई बीमार इलाज के बिना न रहे।",
+              "english": "It was the effort of all of us that no sick person should be left without treatment.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "घर की यात्रा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "कुछ महीने पहले मैं बहुत दिनों बाद अपने गाँव गई।",
+              "english": "A few months ago I went to my village after a very long time.",
+              "speaker": "M"
+            },
+            {
+              "text": "वह यात्रा मुझे हमेशा याद रहेगी।",
+              "english": "I will always remember that trip.",
+              "speaker": "M"
+            },
+            {
+              "text": "चढ़ाई वही थी, पर अब मेरी थकान कम थी, क्योंकि मेरा मन हल्का था।",
+              "english": "The climb was the same, but now my tiredness was less, because my heart was light.",
+              "speaker": "M"
+            },
+            {
+              "text": "ऊपर घाटी में हल्की बर्फ़ पड़ी थी, और झरने के पास धुंध उठ रही थी।",
+              "english": "Up in the valley a light snow had fallen, and mist was rising near the waterfall.",
+              "speaker": "M"
+            },
+            {
+              "text": "विशाल पहाड़ों का वह दृश्य देखकर मेरी आँखें भर आईं।",
+              "english": "Seeing that view of the vast mountains, my eyes filled.",
+              "speaker": "M"
+            },
+            {
+              "text": "पापा दरवाज़े पर खड़े थे, और उन्होंने मुझे बहुत देर तक गले लगाया।",
+              "english": "Papa was standing at the door, and he held me in his arms for a long time.",
+              "speaker": "M"
+            },
+            {
+              "text": "अगले दिन रानी आई, और उसने हँसकर मेरी पुरानी टोपी हवा में उड़ा दी।",
+              "english": "The next day Rani came, and laughing she threw my old cap up into the air.",
+              "speaker": "M"
+            },
+            {
+              "text": "दीदी, आपकी कहानी सुनकर मुझे भी हिम्मत मिली।",
+              "english": "Didi, hearing your story gave me courage too.",
+              "speaker": "S"
+            },
+            {
+              "text": "सैम, हर आदमी की कहानी में कोई न कोई पहाड़ होता है।",
+              "english": "Sam, in every person's story there is some mountain.",
+              "speaker": "M"
+            },
+            {
+              "text": "बस इतना याद रखो कि हर चढ़ाई में कोई न कोई हाथ पकड़ने वाला ज़रूर मिलता है।",
+              "english": "Just remember that on every climb you always find someone to hold your hand.",
+              "speaker": "M"
+            },
+            {
+              "text": "और आप किसी का हाथ पकड़ लेती हैं।",
+              "english": "And you take someone's hand.",
+              "speaker": "S"
+            },
+            {
+              "text": "हाँ, क्योंकि किसी ने मेरा भी हाथ पकड़ा था।",
+              "english": "Yes, because someone took my hand too.",
+              "speaker": "M"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

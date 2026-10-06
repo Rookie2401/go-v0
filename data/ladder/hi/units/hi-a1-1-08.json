@@ -1,0 +1,263 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-1-08",
+  "lang": "hi",
+  "title": "अमन की नई किताब",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-1-08",
+    "title": "Aman's new book (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "\"रवि सर\" (Ravi the teacher, Meera's brother) is called सर by Aman and Sam; सर is not in the plan's lists (it counts as unknown for its three uses here, then known). \"यह लो\" is the informal give-and-take imperative to a child (तुम form); तुम-forms are used to Aman. Honorific plural for रवि सर (बोलते हैं, जाते हैं, वह ... हैं). Words outside the plan (measured, adapter lemmas x tokens): सर×3 (the address term for Ravi sir; not on any list), लेकिन×1, तुम्हारा×1 (under-met)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "daily-life",
+    "school",
+    "home"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "अमन की नई किताब",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज सुबह अमन बिस्तर पर है।",
+              "english": "This morning Aman is in bed."
+            },
+            {
+              "text": "नानी अमन को जगाती हैं।",
+              "english": "Nani wakes Aman."
+            },
+            {
+              "text": "अमन उठता है।",
+              "english": "Aman gets up."
+            },
+            {
+              "text": "वह नहाता है।",
+              "english": "He takes a bath."
+            },
+            {
+              "text": "सैम भी नहाता है।",
+              "english": "Sam takes a bath too."
+            },
+            {
+              "text": "तौलिया कुर्सी पर है।",
+              "english": "The towel is on the chair."
+            },
+            {
+              "text": "अमन को देर होती है।",
+              "english": "Aman is late."
+            },
+            {
+              "text": "अमन तैयार है, लेकिन नाश्ता तैयार नहीं है।",
+              "english": "Aman is ready, but breakfast is not ready."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आज रवि सर नानी के घर में हैं।",
+              "english": "Today Ravi sir is at Nani's house."
+            },
+            {
+              "text": "वह अमन के कमरे में जाते हैं।",
+              "english": "He goes to Aman's room."
+            },
+            {
+              "text": "वह बोलते हैं, \"अमन, यह तुम्हारी नई किताब है। यह लो।\"",
+              "english": "He says, \"Aman, this is your new book. Take it.\""
+            },
+            {
+              "text": "अमन बोलता है, \"धन्यवाद, सर!\"",
+              "english": "Aman says, \"Thank you, sir!\""
+            },
+            {
+              "text": "यह किताब बड़ी है।",
+              "english": "This book is big."
+            },
+            {
+              "text": "यह बहुत अच्छी है।",
+              "english": "It is very good."
+            },
+            {
+              "text": "अमन बोलता है, \"सर, मेरी किताब हिंदी में है?\"",
+              "english": "Aman says, \"Sir, is my book in Hindi?\""
+            },
+            {
+              "text": "वह बोलते हैं, \"हाँ, अमन।\"",
+              "english": "He says, \"Yes, Aman.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी रसोई में नाश्ता बनाती हैं।",
+              "english": "Nani makes breakfast in the kitchen."
+            },
+            {
+              "text": "मेज़ पर रोटी है, दाल है और आम है।",
+              "english": "On the table there is roti, dal and a mango."
+            },
+            {
+              "text": "आम मीठा है।",
+              "english": "The mango is sweet."
+            },
+            {
+              "text": "सैम आम खाता है।",
+              "english": "Sam eats the mango."
+            },
+            {
+              "text": "नानी चाय पीती हैं।",
+              "english": "Nani drinks tea."
+            },
+            {
+              "text": "चाय भी मीठी है।",
+              "english": "The tea is sweet too."
+            },
+            {
+              "text": "सैम पानी पीता है।",
+              "english": "Sam drinks water."
+            },
+            {
+              "text": "अमन दूध पीता है।",
+              "english": "Aman drinks milk."
+            },
+            {
+              "text": "दूध मीठा नहीं है।",
+              "english": "The milk is not sweet."
+            },
+            {
+              "text": "मीरा दीदी भी रसोई में हैं।",
+              "english": "Meera didi is in the kitchen too."
+            },
+            {
+              "text": "वह चावल बनाती हैं।",
+              "english": "She makes rice."
+            },
+            {
+              "text": "चावल गरम है।",
+              "english": "The rice is hot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन बोलता है, \"मुझे नाश्ता नहीं चाहिए।\"",
+              "english": "Aman says, \"I don't want breakfast.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"अमन, आपको नाश्ता चाहिए।\"",
+              "english": "Nani says, \"Aman, you need breakfast.\""
+            },
+            {
+              "text": "अमन बोलता है, \"मेरा बैग कहाँ है?\"",
+              "english": "Aman says, \"Where is my bag?\""
+            },
+            {
+              "text": "सैम बोलता है, \"आपका बैग कुर्सी पर है।\"",
+              "english": "Sam says, \"Your bag is on the chair.\""
+            },
+            {
+              "text": "अमन थोड़ी देर पढ़ता है।",
+              "english": "Aman reads for a little while."
+            },
+            {
+              "text": "सैम भी हिंदी पढ़ता है।",
+              "english": "Sam reads Hindi too."
+            },
+            {
+              "text": "अमन बोलता है, \"सैम, आप भी पढ़ते हैं! बहुत अच्छा!\"",
+              "english": "Aman says, \"Sam, you read too! Very good!\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं थोड़ी हिंदी बोलता हूँ।\"",
+              "english": "Sam says, \"I speak a little Hindi.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नाना जी का कमरा बड़ा है।",
+              "english": "Nana ji's room is big."
+            },
+            {
+              "text": "अमन का कमरा छोटा है।",
+              "english": "Aman's room is small."
+            },
+            {
+              "text": "कमरे में बिस्तर है।",
+              "english": "There is a bed in the room."
+            },
+            {
+              "text": "बिस्तर पर तौलिया नहीं है।",
+              "english": "There is no towel on the bed."
+            },
+            {
+              "text": "अमन का नया बैग कुर्सी पर है।",
+              "english": "Aman's new bag is on the chair."
+            },
+            {
+              "text": "सैम का बैग भी नया है।",
+              "english": "Sam's bag is new too."
+            },
+            {
+              "text": "रविवार को हम चर्च जाते हैं।",
+              "english": "On Sunday we go to church."
+            },
+            {
+              "text": "अमन चर्च भी जाता है।",
+              "english": "Aman goes to church too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

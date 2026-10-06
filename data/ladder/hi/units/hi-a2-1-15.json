@@ -1,0 +1,471 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-15",
+  "lang": "hi",
+  "title": "चालाक चूहा: नानी की कहानी",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-15",
+    "title": "The clever mouse (Nani's story) (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Aman says आप to Nani; Nani says तुम to Aman. The tale is told by Nani in the narrative past, with the habitual past (-ता था) for what the animals and the farmer did every day. The mouse calls the cat बहन (sister) as a polite address between animals. बिल is used in the sense \"burrow, mouse-hole\" (the plan glosses it \"bill\"); the adapter has one lemma for both. Please check that the learner is not misled: the unit only uses the burrow sense. Because every planned word may occur exactly three times, the cat and the net are often named by a pronoun (उसने, उसे) after their introduction; the reviewer may find the pronouns slightly ambiguous in places. The tale is a generic folk tale, not a quotation from any one collection. The moral (who makes a trap for others falls into it himself) is spoken by the lion in the plain wording of the course. The closing remark about the सुसमाचार is Nani's: it separates a bedtime story from the good news she believes; no Scripture is quoted. \"धागों का ढेर\" stands for the thrown net after the first mention (to avoid a fourth use of जाल). सयानी (the wise goat) and \"फूल गई\" (swelled with pride) are idioms of the plan's recycle list."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "folk tale",
+    "animals",
+    "bedtime",
+    "moral"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "nani": "सीता नानी",
+    "aman": "अमन"
+  },
+  "sections": [
+    {
+      "title": "बारिश की रात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज रात बहुत बारिश हो रही थी।",
+              "english": "It was raining very hard tonight."
+            },
+            {
+              "text": "काले बादल गरज रहे थे, और छत पर बूँदें तेज़ आवाज़ कर रही थीं।",
+              "english": "The black clouds were thundering, and the drops made a loud noise on the roof."
+            },
+            {
+              "text": "अमन आँगन में बारिश देखने गया था, और अब उसकी चप्पल गीली थी।",
+              "english": "Aman had gone to watch the rain in the courtyard, and now his sandals were wet."
+            },
+            {
+              "text": "नानी रसोई में अपने लिए चाय बना रही थीं।",
+              "english": "Nani was making tea for herself in the kitchen."
+            },
+            {
+              "text": "पानी में पत्ती, चीनी, अदरक और इलायची डालकर उन्होंने चाय उबाली।",
+              "english": "Putting tea leaves, sugar, ginger and cardamom into the water, she boiled the tea."
+            },
+            {
+              "text": "फिर उन्होंने चाय को कप में छाना।",
+              "english": "Then she strained the tea into a cup."
+            },
+            {
+              "text": "अमन: नानी, मैं सो नहीं पा रहा हूँ।",
+              "english": "Nani, I can't get to sleep."
+            },
+            {
+              "text": "अमन: आप मुझे कोई कहानी सुनाइए।",
+              "english": "Please tell me a story."
+            },
+            {
+              "text": "नानी: पहले अपनी चप्पल उतारो और गीली कमीज़ दीवार पर टाँग दो।",
+              "english": "First take off your sandals and hang your wet shirt on the wall."
+            },
+            {
+              "text": "अमन ने कमीज़ दीवार पर रखी और नानी के पास बैठ गया।",
+              "english": "Aman put the shirt on the wall and sat down next to Nani."
+            },
+            {
+              "text": "नानी ने चाय पी और बोलीं, \"आज मैं तुम्हें एक चालाक चूहे की कहानी सुनाती हूँ।\"",
+              "english": "Nani drank her tea and said, \"Today I will tell you the story of a clever mouse.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "गाँव और जंगल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी: बहुत पुरानी बात है।",
+              "english": "It is a very old story."
+            },
+            {
+              "text": "नानी: एक गाँव के पास बड़ा जंगल था।",
+              "english": "Near a village there was a big forest."
+            },
+            {
+              "text": "नानी: गाँव के लोग धान की खेती करते थे।",
+              "english": "The people of the village grew rice."
+            },
+            {
+              "text": "नानी: जब मानसून आता था, तब खेतों में रात भर पानी भर जाता था।",
+              "english": "When the monsoon came, the fields filled with water all night."
+            },
+            {
+              "text": "नानी: जब मानसून नहीं आता था, तब किसान नहर से खेतों की सिंचाई करता था।",
+              "english": "When the monsoon did not come, the farmer used to water the fields from the canal."
+            },
+            {
+              "text": "नानी: खेत की मिट्टी में घास उगती थी, और छोटे पौधों के पत्ते सूरज में चमकते थे।",
+              "english": "Grass grew in the soil of the field, and the leaves of the small plants shone in the sun."
+            },
+            {
+              "text": "नानी: उसी गाँव में भैंस, बकरी, भेड़, घोड़ा और गधा रहते थे।",
+              "english": "In that same village lived the buffalo, the goat, the sheep, the horse and the donkey."
+            },
+            {
+              "text": "नानी: जंगल में शेर रहता था, और सब जानवर उसे अपना राजा मानते थे।",
+              "english": "In the forest lived the lion, and all the animals accepted him as their king."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी: खेत के पास एक बड़े पत्थर के नीचे ज़मीन में चूहे का बिल था।",
+              "english": "Near the field, under a big stone, in the ground, was the mouse's burrow."
+            },
+            {
+              "text": "नानी: चूहा बहुत छोटा था, मगर बहुत चालाक था।",
+              "english": "The mouse was very small, but he was very clever."
+            },
+            {
+              "text": "नानी: वह रोज़ खेत में जाकर धान चुनता था।",
+              "english": "Every day he went into the field and picked up rice."
+            },
+            {
+              "text": "नानी: शाम को वह घर लौट आता था।",
+              "english": "In the evening he used to come back home."
+            },
+            {
+              "text": "नानी: गाँव में एक काली बिल्ली भी रहती थी।",
+              "english": "In the village there also lived a black cat."
+            },
+            {
+              "text": "नानी: वह रोज़ चूहे को खोजती थी, मगर चूहा हमेशा बच जाता था।",
+              "english": "Every day she looked for the mouse, but the mouse always escaped."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पहली रात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी: एक दिन उसने सोचा, \"अब मैं चूहे के लिए जाल बनाऊँगी।\"",
+              "english": "One day she thought, \"Now I will make a trap for the mouse.\""
+            },
+            {
+              "text": "नानी: उसने बहुत से धागे लिए और कई दिन तक उसे बनाती रही।",
+              "english": "She took a lot of thread and went on making it for several days."
+            },
+            {
+              "text": "नानी: रात को उसने उसे चूहे के घर के सामने रखा।",
+              "english": "At night she put it in front of the mouse's house."
+            },
+            {
+              "text": "नानी: बीच में उसने रोटी का एक टुकड़ा भी रख दिया।",
+              "english": "In the middle she also put a piece of roti."
+            },
+            {
+              "text": "नानी: फिर वह पेड़ के पीछे बैठ गई।",
+              "english": "Then she sat down behind the tree."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी: जब चूहा बाहर आया, तब उसने यह सब देखा।",
+              "english": "When the mouse came out, he saw all this."
+            },
+            {
+              "text": "नानी: चूहा बोला, \"इतना बड़ा टुकड़ा, और वह भी मेरे बिल के सामने, ज़रूर कोई मुझे पकड़ना चाहता है।\"",
+              "english": "The mouse said, \"Such a big piece, and right in front of my burrow, surely someone wants to catch me.\""
+            },
+            {
+              "text": "नानी: वह पीछे के रास्ते से खेत चला गया।",
+              "english": "He went to the field by the back way."
+            },
+            {
+              "text": "नानी: वह रात भर इंतज़ार करती रही, पर चूहा नहीं आया।",
+              "english": "She waited all night, but the mouse did not come."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सब जानवरों से सवाल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी: सुबह वह बहुत उदास थी।",
+              "english": "In the morning she was very sad."
+            },
+            {
+              "text": "नानी: उसने सब जानवरों से पूछा, \"मैं चूहे को कैसे पकड़ूँ?\"",
+              "english": "She asked all the animals, \"How can I catch the mouse?\""
+            },
+            {
+              "text": "नानी: भैंस ने कहा, \"मुझे नहीं पता, मैं तो सारा दिन पानी में बैठती हूँ।\"",
+              "english": "The buffalo said, \"I don't know, I sit in the water all day.\""
+            },
+            {
+              "text": "नानी: सयानी बकरी ने कहा, \"मैं सिर्फ़ घास खाती हूँ, मुझे चूहों की बात नहीं पता।\"",
+              "english": "The wise goat said, \"I only eat grass, I know nothing about mice.\""
+            },
+            {
+              "text": "नानी: भेड़ ने कहा, \"मैं तो डरती हूँ, मैं किसी से कुछ नहीं कहती।\"",
+              "english": "The sheep said, \"I am afraid, I don't say anything to anyone.\""
+            },
+            {
+              "text": "नानी: घोड़े ने कहा, \"तुम तेज़ दौड़ो, तो शायद पकड़ लो।\"",
+              "english": "The horse said, \"If you run fast, perhaps you will catch him.\""
+            },
+            {
+              "text": "नानी: गधे ने हँसकर कहा, \"जाल ऊँचा टाँग दो, चूहा ऊपर नहीं देखेगा।\"",
+              "english": "The donkey said with a laugh, \"Hang the net up high, the mouse will not look up.\""
+            },
+            {
+              "text": "नानी: आख़िर में उसने राजा से भी पूछा।",
+              "english": "At last she asked the king too."
+            },
+            {
+              "text": "नानी: शेर ने कहा, \"मैं राजा हूँ, मैं चूहों के पीछे नहीं भागता।\"",
+              "english": "The lion said, \"I am the king, I do not run after mice.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दूसरी रात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी: उसे यह बात अच्छी लगी।",
+              "english": "She liked this idea."
+            },
+            {
+              "text": "नानी: अगली रात उसने उसे पेड़ पर ऊँचा टाँगा।",
+              "english": "The next night she hung it high up in the tree."
+            },
+            {
+              "text": "नानी: नीचे ज़मीन पर उसने रोटी का टुकड़ा और एक हरी मिर्च रखी।",
+              "english": "Below on the ground she put a piece of roti and a green chilli."
+            },
+            {
+              "text": "नानी: उसने सोचा, \"जब चूहा रोटी उठाएगा, तब मैं धागा छोड़ दूँगी।\"",
+              "english": "She thought, \"When the mouse picks up the roti, I will let go of the thread.\""
+            },
+            {
+              "text": "नानी: मगर इस बार भी चूहे ने सब देख लिया।",
+              "english": "But this time too the mouse saw everything."
+            },
+            {
+              "text": "नानी: वह हँसकर बोला, \"रोटी के साथ मिर्च, बहन, चूहे को मिर्च पसंद नहीं है।\"",
+              "english": "He laughed and said, \"A chilli with the roti, sister, mice do not like chillies.\""
+            },
+            {
+              "text": "नानी: वह फिर बच गया, और वह फिर ग़ुस्से से घर गई।",
+              "english": "He escaped again, and she went home angry again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "तीसरी रात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी: फिर एक दिन चूहे ने सोचा, \"रोज़ भागना ठीक नहीं है, आज मैं कुछ करूँगा।\"",
+              "english": "Then one day the mouse thought, \"It is not good to run away every day, today I will do something.\""
+            },
+            {
+              "text": "नानी: वह उसके पास गया और बोला, \"बहन, तुमने बहुत सुंदर चीज़ बनाई है।\"",
+              "english": "He went to her and said, \"Sister, you have made something very beautiful.\""
+            },
+            {
+              "text": "नानी: वह ख़ुशी से फूल गई।",
+              "english": "She swelled with pride."
+            },
+            {
+              "text": "नानी: चूहे ने कहा, \"लेकिन यह मेरे जैसे तेज़ चूहे को नहीं पकड़ेगा।\"",
+              "english": "The mouse said, \"But it will not catch a quick mouse like me.\""
+            },
+            {
+              "text": "नानी: वह बोली, \"क्यों नहीं, तुम सिर्फ़ एक बार इस रोटी को उठाकर देखो।\"",
+              "english": "She said, \"Why not, just pick up this roti once and see.\""
+            },
+            {
+              "text": "नानी: चूहे ने कहा, \"पहले तुम दिखाओ कि मुझे कहाँ खड़ा होना है, मैं ऊपर से देखूँगा कि सब ठीक है या नहीं।\"",
+              "english": "The mouse said, \"First show me where I must stand, I will look from above to see whether everything is all right.\""
+            },
+            {
+              "text": "नानी: उसने सोचा, \"आज चूहा अपने आप मेरे पास आया है।\"",
+              "english": "She thought, \"Today the mouse has come to me of his own accord.\""
+            },
+            {
+              "text": "नानी: वह रोटी के पास खड़ी हो गई।",
+              "english": "She stood by the roti."
+            },
+            {
+              "text": "नानी: उस रात न चाँद था, न तारे।",
+              "english": "That night there was neither moon nor stars."
+            },
+            {
+              "text": "नानी: रात बहुत काली थी, और उसे कुछ नहीं दिख रहा था।",
+              "english": "The night was very black, and she could not see anything."
+            },
+            {
+              "text": "नानी: चूहा ऊँचे पेड़ पर चढ़ गया।",
+              "english": "The mouse climbed the high tree."
+            },
+            {
+              "text": "नानी: वहाँ उसे सिर्फ़ एक धागा काटना था।",
+              "english": "There he had only to cut one thread."
+            },
+            {
+              "text": "नानी: उसने धागा काट दिया, और धागों का ढेर उसके ऊपर गिर गया।",
+              "english": "He cut the thread, and the heap of threads fell on top of her."
+            },
+            {
+              "text": "नानी: वह ज़ोर से चिल्लाई, \"मुझे बचाओ।\"",
+              "english": "She cried out loudly, \"Save me.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सुबह का फ़ैसला",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "नानी: आवाज़ सुनकर सब जानवर आए: भैंस, बकरी, भेड़, घोड़ा और गधा।",
+              "english": "Hearing the noise, all the animals came: the buffalo, the goat, the sheep, the horse and the donkey."
+            },
+            {
+              "text": "नानी: जब सूरज निकला, तब सबने देखा कि वह अपने ही धागों में है।",
+              "english": "When the sun rose, everyone saw that she was caught in her own threads."
+            },
+            {
+              "text": "नानी: तभी शेर आया।",
+              "english": "Just then the lion came."
+            },
+            {
+              "text": "नानी: उसने कहा, \"जो दूसरों के लिए जाल बनाता है, वह अपने आप उसमें गिरता है।\"",
+              "english": "He said, \"Whoever makes a trap for others falls into it by himself.\""
+            },
+            {
+              "text": "नानी: बिल्ली ने चूहे से माफ़ी माँगी।",
+              "english": "The cat asked the mouse for forgiveness."
+            },
+            {
+              "text": "नानी: चूहे ने धागे उतारे और उसे जाने दिया।",
+              "english": "The mouse took the threads down and let her go."
+            },
+            {
+              "text": "नानी: फिर वह अपने बिल में लौट गया।",
+              "english": "Then he went back into his burrow."
+            },
+            {
+              "text": "नानी: उस दिन के बाद बिल्ली चूहे के पीछे कभी नहीं भागी।",
+              "english": "After that day the cat never ran after the mouse again."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "कहानी के बाद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अमन: नानी, मुझे चूहा बहुत पसंद आया।",
+              "english": "Nani, I liked the mouse very much."
+            },
+            {
+              "text": "अमन: कल मैं अपनी चप्पल बाहर उतारूँगा, नहीं तो चूहा उसे ले जाएगा।",
+              "english": "Tomorrow I will take my sandals off outside, or the mouse will carry them off."
+            },
+            {
+              "text": "नानी हँस पड़ीं।",
+              "english": "Nani burst out laughing."
+            },
+            {
+              "text": "नानी: यह कहानी मुझे मेरी नानी ने सुनाई थी।",
+              "english": "My own nani told me this story."
+            },
+            {
+              "text": "नानी: चालाक होना अच्छा है, लेकिन किसी को परेशान मत करो।",
+              "english": "It is good to be clever, but do not trouble anyone."
+            },
+            {
+              "text": "अमन: नानी, रविवार को पास्टर अनिल जो सुसमाचार सुनाते हैं, क्या वह भी कहानी है?",
+              "english": "Nani, on Sunday the good news that Pastor Anil tells, is that a story too?"
+            },
+            {
+              "text": "नानी: नहीं, अमन, वह कहानी नहीं है।",
+              "english": "No, Aman, that is not a story."
+            },
+            {
+              "text": "नानी: वह सच है, और वह सबके लिए है।",
+              "english": "It is true, and it is for everyone."
+            },
+            {
+              "text": "नानी: अब आँखें बंद करो, बारिश भी धीरे-धीरे रुक रही है।",
+              "english": "Now close your eyes, the rain is slowly stopping too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

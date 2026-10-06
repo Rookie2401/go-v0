@@ -1,0 +1,566 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-01",
+  "lang": "hi",
+  "title": "पहाड़ की यात्रा की डायरी",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-01",
+    "title": "\"पहाड़ की यात्रा की डायरी\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Sam's diary of a four-day trip to the hills with Ravi sir and Aman (first person, past tense, short entries). Words outside the plan are listed for the plan owner at the end of the draft report. Points for the reviewer: यदि is in Ravi sir's mouth only (it is the \"John 14\" word of the plan, bookish in speech); the Christmas entry (day 3) retells the shepherds in the drafter's own words and needs a Scripture-competent reader; \"गेस्ट हाउस\" is a loan word written as two words; a teacher \"with a stick\" was avoided on purpose. Honorific choices: रवि सर addressed with आप and plural verbs. गेस्ट हाउस is a loan written as two words (two unknown tokens each time; the plan owner may prefer a listed word). Outside the plan (2 lemmas, 6 tokens, 0.5 per 100 words): गेस्ट×3, हाउस×3. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "travel",
+    "diary",
+    "mission-life"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "पहला दिन: बस की यात्रा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज सुबह छह बजे हम बस से पहाड़ की ओर निकले।",
+              "english": "Today at six in the morning we set out by bus towards the hills."
+            },
+            {
+              "text": "मेरे साथ रवि सर और अमन हैं।",
+              "english": "Ravi sir and Aman are with me."
+            },
+            {
+              "text": "यह मेरी पहाड़ की पहली यात्रा है, इसलिए मैं सुबह से ही बहुत ख़ुश हूँ।",
+              "english": "This is my first trip to the hills, so I have been very happy since the morning."
+            },
+            {
+              "text": "सीता नानी ने हमारे थैले में रोटी और आलू की सब्ज़ी रख दी थी।",
+              "english": "Seeta Nani had put roti and potato curry in our bag."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "बस में भीड़ थी, मगर मुझे खिड़की के पास जगह मिल गई।",
+              "english": "The bus was crowded, but I got a place by the window."
+            },
+            {
+              "text": "शहर धीरे-धीरे पीछे रह गया।",
+              "english": "The city slowly stayed behind us."
+            },
+            {
+              "text": "पहले सड़क के दोनों ओर खेत थे, फिर जंगल शुरू हो गया।",
+              "english": "First there were fields on both sides of the road, then the forest began."
+            },
+            {
+              "text": "एक जगह सड़क पर भैंसें खड़ी थीं, इसलिए बस को रुकना पड़ा।",
+              "english": "At one place buffaloes were standing on the road, so the bus had to stop."
+            },
+            {
+              "text": "आगे गाँव के लोग अपने जानवर लेकर जा रहे थे, और इनका सारा दिन इन्हीं जानवरों के साथ बीतता है।",
+              "english": "Further on, village people were walking along with their animals, and their whole day passes with these animals."
+            },
+            {
+              "text": "किसी के पास बकरियाँ और भेड़ें थीं, किसी के पास घोड़ा था, और एक आदमी अपने गधे के साथ धीरे-धीरे चल रहा था।",
+              "english": "One had goats and sheep, another had a horse, and a man was walking slowly with his donkey."
+            },
+            {
+              "text": "अमन को घोड़ा बहुत पसंद आया, और वह खिड़की से हाथ हिलाता रहा।",
+              "english": "Aman liked the horse very much and kept waving his hand from the window."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दोपहर बाद हम एक छोटी दुकान पर रुके।",
+              "english": "In the afternoon we stopped at a small shop."
+            },
+            {
+              "text": "वहाँ गरम चाय और वहाँ के ख़ास समोसे मिल रहे थे।",
+              "english": "Hot tea and the local special samosas were available there."
+            },
+            {
+              "text": "दुकान के बाहर एक मोटी बिल्ली बैठी थी।",
+              "english": "A fat cat was sitting outside the shop."
+            },
+            {
+              "text": "दुकानदार ने हँसकर कहा, \"यह बिल्ली बहुत चालाक है, रोज़ दूध की चोरी करती है।\"",
+              "english": "The shopkeeper said with a laugh, \"This cat is very clever; it steals milk every day.\""
+            },
+            {
+              "text": "अमन ने उसे रोटी का एक टुकड़ा दिया, और वह चुपचाप खाकर चली गई।",
+              "english": "Aman gave her a piece of roti, and she ate it quietly and left."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शाम तक ठंड बहुत बढ़ गई।",
+              "english": "By evening the cold had grown a great deal."
+            },
+            {
+              "text": "रवि सर ने मुझे अपना हल्का कंबल दे दिया, फिर भी मुझे ठंड लग रही थी।",
+              "english": "Ravi sir gave me his light blanket, but I was still cold."
+            },
+            {
+              "text": "दूर पहाड़ों पर मैंने पहली बार बर्फ़ देखी।",
+              "english": "Far away on the mountains I saw snow for the first time."
+            },
+            {
+              "text": "शाम के रंग में वह बहुत सुंदर लग रही थी, जैसे किसी ने पहाड़ों पर सफ़ेद कपड़ा डाल दिया हो।",
+              "english": "In the colours of the evening it looked very beautiful, as if someone had laid a white cloth over the mountains."
+            },
+            {
+              "text": "रात आठ बजे हम गेस्ट हाउस पहुँचे।",
+              "english": "At eight in the evening we reached the guest house."
+            },
+            {
+              "text": "कमरा छोटा है, पर साफ़ है, और कोने में एक पुरानी अलमारी रखी है।",
+              "english": "The room is small but clean, and an old cupboard stands in the corner."
+            },
+            {
+              "text": "खाना खाने के बाद सफ़र की थकान इतनी थी कि मैं तुरंत सो गया।",
+              "english": "After dinner the tiredness of the journey was so great that I fell asleep at once."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दूसरा दिन: चढ़ाई",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सुबह मैं जागा तो खिड़की के बाहर सफ़ेद धुंध थी।",
+              "english": "When I woke in the morning there was white mist outside the window."
+            },
+            {
+              "text": "मुझे लगा कि बादल कमरे के अंदर आ गए हैं।",
+              "english": "I felt as if the clouds had come inside the room."
+            },
+            {
+              "text": "हाय! कितनी ठंड है!",
+              "english": "Oh! How cold it is!"
+            },
+            {
+              "text": "मैंने गीले कपड़े अलमारी के पास टाँग दिए और चप्पलें दरवाज़े पर उतार दीं।",
+              "english": "I hung the wet clothes near the cupboard and took off my sandals at the door."
+            },
+            {
+              "text": "नाश्ते में हमें गरम चाय, रोटी और दाल मिली।",
+              "english": "For breakfast we got hot tea, roti and dal."
+            },
+            {
+              "text": "फिर हम चढ़ाई पर निकल पड़े।",
+              "english": "Then we set out on the climb."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रास्ता पतला और ऊँचा था, और हर मोड़ पर घाटी और गहरी दिखती थी।",
+              "english": "The path was narrow and high, and at every turn the valley looked deeper."
+            },
+            {
+              "text": "रवि सर आगे-आगे हाथ में छड़ी लेकर चल रहे थे।",
+              "english": "Ravi sir walked in front with a stick in his hand."
+            },
+            {
+              "text": "ऊपर से बर्फ़ और पास दिखती थी।",
+              "english": "From up there the snow looked nearer."
+            },
+            {
+              "text": "फिर एक बार वे मुझसे बोले, \"यदि तुम थक गए हो, तो थोड़ा रुक जाओ।\"",
+              "english": "Once he said to me, \"If you are tired, stop for a little while.\""
+            },
+            {
+              "text": "ऊपर जाते-जाते मेरी थकान बढ़ती जा रही थी, पर मैं रुका नहीं।",
+              "english": "As we went up my tiredness kept growing, but I did not stop."
+            },
+            {
+              "text": "ठंड से अमन की नाक लाल हो गई थी, और मेरी उँगलियाँ इतनी ठंडी थीं कि मैं पेंसिल भी ठीक से नहीं पकड़ पा रहा था।",
+              "english": "Aman's nose had turned red with cold, and my fingers were so cold that I could not even hold a pencil properly."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "ऊपर पहुँचकर मैंने सामने एक विशाल घाटी देखी।",
+              "english": "Having reached the top, I saw a vast valley in front of me."
+            },
+            {
+              "text": "नीचे नदी की चमक दूर तक दिखती थी।",
+              "english": "Down below the shine of the river could be seen far away."
+            },
+            {
+              "text": "वह दृश्य इतना सुंदर था कि मैं कुछ देर कुछ कह ही नहीं सका।",
+              "english": "The view was so beautiful that for a while I could not say anything at all."
+            },
+            {
+              "text": "मैंने मोबाइल से कई फ़ोटो लिए, और अमन ने एक छोटा वीडियो भी बनाया।",
+              "english": "I took several photos with my mobile, and Aman also made a short video."
+            },
+            {
+              "text": "यहाँ इंटरनेट बिलकुल नहीं चलता, इसलिए हम घर कोई संदेश नहीं भेज सके।",
+              "english": "The internet does not work here at all, so we could not send any message home."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शाम को गेस्ट हाउस के मालिक ने पूछा, \"आज की चढ़ाई कैसी रही?\"",
+              "english": "In the evening the owner of the guest house asked, \"How was today's climb?\""
+            },
+            {
+              "text": "मैंने कहा, \"थका हुआ हूँ, पर बहुत ख़ुश हूँ।\"",
+              "english": "I said, \"I am tired, but very happy.\""
+            },
+            {
+              "text": "बरामदे में एक पुराना टीवी रखा था, पर उसकी तस्वीर बार-बार चली जाती थी, इसलिए किसी ने उसे नहीं देखा।",
+              "english": "An old TV stood in the verandah, but its picture kept going, so nobody watched it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "तीसरा दिन: झरने की ओर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज हम झरने की ओर गए।",
+              "english": "Today we went towards the waterfall."
+            },
+            {
+              "text": "चलने से पहले रवि सर ने कहा, \"यदि मौसम ठीक रहा, तो हम दोपहर तक झरने पर पहुँच जाएँगे।\"",
+              "english": "Before we left Ravi sir said, \"If the weather stays fine, we will reach the waterfall by noon.\""
+            },
+            {
+              "text": "रास्ते में एक छोटा-सा स्कूल मिला, और सुबह की घंटी बज रही थी।",
+              "english": "On the way we came across a small school, and the morning bell was ringing."
+            },
+            {
+              "text": "बच्चे वर्दी पहनकर और बस्ता लेकर दौड़ते हुए आ रहे थे।",
+              "english": "The children were coming running, wearing uniforms and carrying school bags."
+            },
+            {
+              "text": "मास्टर जी हाथ में कॉपियाँ लिए बरामदे में खड़े थे।",
+              "english": "The master stood in the verandah with exercise books in his hand."
+            },
+            {
+              "text": "उन्होंने बताया कि आज वहाँ परीक्षा है।",
+              "english": "He told us that there was an examination there today."
+            },
+            {
+              "text": "एक लड़की ने दुपट्टा ठीक किया, कलम निकाली और कॉपी खोल ली।",
+              "english": "One girl straightened her scarf, took out her pen and opened her exercise book."
+            },
+            {
+              "text": "मास्टर जी ने हँसकर कहा, \"पहले इम्तिहान में आधे बच्चे फ़ेल हो जाते थे, पर अब बहुत कम होते हैं।\"",
+              "english": "The master said with a laugh, \"Earlier half the children used to fail the exam, but now very few do.\""
+            },
+            {
+              "text": "मैंने पूछा, \"इसकी वजह क्या है?\"",
+              "english": "I asked, \"What is the reason for this?\""
+            },
+            {
+              "text": "उन्होंने कहा, \"बच्चे अब मन लगाकर पढ़ते हैं, और मैं उन्हें हर बात धीरे-धीरे समझाता हूँ और सिखाता हूँ।\"",
+              "english": "He said, \"The children study with attention now, and I explain and teach them everything slowly.\""
+            },
+            {
+              "text": "उनके पास कंप्यूटर तो नहीं है, पर उनकी कोशिश से बच्चे रोज़ अख़बार पढ़ते हैं।",
+              "english": "They have no computer, but because of his effort the children read the newspaper every day."
+            },
+            {
+              "text": "स्कूल के फाटक पर एक पिल्ला सोया हुआ था।",
+              "english": "A puppy was asleep at the school gate."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रास्ते में एक विशाल पेड़ था, जिसके नीचे एक बस खड़ी हो सकती थी।",
+              "english": "On the way there was a vast tree under which a bus could have stood."
+            },
+            {
+              "text": "लोग कहते हैं कि पहले इन जंगलों में शेर रहते थे।",
+              "english": "People say that lions used to live in these forests once."
+            },
+            {
+              "text": "फिर दूर से पानी की आवाज़ आई, और हमने पहला झरना देखा।",
+              "english": "Then the sound of water came from far away, and we saw the first waterfall."
+            },
+            {
+              "text": "ऊँचे पत्थरों से सफ़ेद पानी नीचे गिर रहा था, और उसकी बूँदें हम तक आ रही थीं।",
+              "english": "White water was falling from the high rocks, and its drops were reaching us."
+            },
+            {
+              "text": "ऐसा लगा कि आसमान ने हम पर ठंडी बूँदें बरसाई हैं।",
+              "english": "It felt as if the sky had showered cold drops on us."
+            },
+            {
+              "text": "हम झरने के किनारे गोल पत्थरों पर बैठे।",
+              "english": "We sat on round stones at the edge of the waterfall."
+            },
+            {
+              "text": "ठंडी हवा से हमारे चेहरे लाल हो गए थे।",
+              "english": "Our faces had turned red with the cold wind."
+            },
+            {
+              "text": "पानी इतना ठंडा था कि मैंने सिर्फ़ उँगली से उसे छुआ और हँस पड़ा।",
+              "english": "The water was so cold that I only touched it with a finger and burst out laughing."
+            },
+            {
+              "text": "पास में एक चरवाहा अपनी भेड़ों के साथ बैठा था।",
+              "english": "A shepherd was sitting nearby with his sheep."
+            },
+            {
+              "text": "उसकी उम्र शायद 70 साल थी।",
+              "english": "He was perhaps 70 years old."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "उसे देखकर मुझे क्रिसमस की कहानी याद आई।",
+              "english": "Seeing him I remembered the Christmas story."
+            },
+            {
+              "text": "रात के समय चरवाहे अपनी भेड़ों के पास जाग रहे थे, तब परमेश्वर का एक दूत उनके पास आया।",
+              "english": "At night shepherds were awake beside their sheep, when an angel of God came to them."
+            },
+            {
+              "text": "स्वर्गदूत ने उनसे कहा, \"डरो मत।\"",
+              "english": "The angel said to them, \"Do not be afraid.\""
+            },
+            {
+              "text": "उसने बताया कि उद्धारकर्ता का जन्म हो गया है।",
+              "english": "He told them that the Saviour had been born."
+            },
+            {
+              "text": "भविष्यवक्ताओं ने बहुत पहले कहा था कि उसका राज्य हमेशा रहेगा।",
+              "english": "The prophets had said long before that his kingdom would last for ever."
+            },
+            {
+              "text": "मैंने सोचा कि वह मनुष्य बनकर हमारे बीच आया, और हमारी तरह ही ठंड और भूख जानता था।",
+              "english": "I thought that he came among us as a man, and knew cold and hunger just as we do."
+            },
+            {
+              "text": "बादल हमारे नीचे समुद्र की लहरों जैसे दिखते थे, और उस समय मुझे लगा कि यह दुनिया परमेश्वर के हाथ में है।",
+              "english": "The clouds below us looked like the waves of the sea, and at that moment it seemed to me that this world is in God's hand."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "उस दिन दोपहर में काले बादल आए थे और हल्की बारिश भी हुई थी।",
+              "english": "That day at noon black clouds had come and there had also been a light rain."
+            },
+            {
+              "text": "शाम को आँगन में अमन और दूसरे बच्चे खेल रहे थे।",
+              "english": "In the evening Aman and the other children were playing in the courtyard."
+            },
+            {
+              "text": "उन्होंने लाल और नीले गुब्बारे हवा में उड़ाए, पर तेज़ हवा उन्हें घाटी की ओर उड़ा ले गई।",
+              "english": "They sent coloured balloons up into the air, but the strong wind carried them off towards the valley."
+            },
+            {
+              "text": "यहाँ की हवा इतनी तेज़ है कि वह छोटी-छोटी चीज़ें, यहाँ तक कि काग़ज़ भी, उड़ा देती है।",
+              "english": "The wind here is so strong that it blows away small things, even paper."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "चौथा दिन: वापसी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज सुबह हम गेस्ट हाउस से निकले।",
+              "english": "This morning we left the guest house."
+            },
+            {
+              "text": "मालिक ने हमें बिल दिया, और मैंने पैसे दे दिए।",
+              "english": "The owner gave us the bill, and I paid the money."
+            },
+            {
+              "text": "इसके अलावा उन्होंने थोड़ी मिठाई भी दी।",
+              "english": "Besides that, he also gave us a little sweet."
+            },
+            {
+              "text": "जाते समय मैंने एक बार फिर घाटी की ओर देखा, और धुंध में वह अब दिख नहीं रही थी।",
+              "english": "As we left I looked once more towards the valley, and in the mist it could no longer be seen."
+            },
+            {
+              "text": "वैसे तो मैं पहाड़ से जाना नहीं चाहता था, पर घर भी बहुत याद आ रहा था।",
+              "english": "To tell the truth I did not want to leave the hills, but I was also missing home a lot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सीढ़ियों से उतरते समय अमन गिर गया।",
+              "english": "Aman fell as he came down the steps."
+            },
+            {
+              "text": "उसके हाथ में चोट आई, और एक हल्का-सा घाव हो गया।",
+              "english": "He got a hurt in his hand, and a small, light wound appeared."
+            },
+            {
+              "text": "वह रोया नहीं, उसके दाँत ज़ोर से बंद थे, और उसने कहा कि वह खुद चल सकता है।",
+              "english": "He did not cry, his teeth were tightly closed, and he said that he could walk by himself."
+            },
+            {
+              "text": "रवि सर ने घाव साफ़ किया और उस पर पट्टी लगा दी।",
+              "english": "Ravi sir cleaned the wound and put a bandage on it."
+            },
+            {
+              "text": "रास्ते में एक गाँव में स्वास्थ्य शिविर लगा था।",
+              "english": "On the way, a health camp had been set up in a village."
+            },
+            {
+              "text": "नर्सें बच्चों को टीका लगा रही थीं, और लोग कतार में खड़े थे।",
+              "english": "Nurses were giving children injections, and people were standing in a line."
+            },
+            {
+              "text": "एक नर्स ने बताया कि पहाड़ पर मच्छर बहुत कम हैं, इसलिए यहाँ मलेरिया और डेंगू का डर कम है।",
+              "english": "One nurse told us that mosquitoes are very few in the hills, so there is less fear of malaria and dengue here."
+            },
+            {
+              "text": "पर उसने कहा कि सफ़ाई की ज़रूरत हर जगह है, चाहे पहाड़ हो या शहर।",
+              "english": "But she said that cleanliness is needed everywhere, whether hills or city."
+            },
+            {
+              "text": "उसी गाँव में कल कोई मंत्री आने वाले थे, इसलिए लोग झाड़ू लेकर सड़क साफ़ कर रहे थे।",
+              "english": "In the same village some minister was due to come tomorrow, so people were cleaning the road with brooms."
+            },
+            {
+              "text": "रवि सर ने कहा, \"रोज़ ऐसी सफ़ाई होनी चाहिए, ताकि मंत्री के बिना भी गाँव साफ़ रहे।\"",
+              "english": "Ravi sir said, \"There should be such cleaning every day, so that the village stays clean even without a minister.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "बस स्टेशन पर एक आदमी खोया हुआ बैग ढूँढ़ रहा था।",
+              "english": "At the bus station a man was looking for a lost bag."
+            },
+            {
+              "text": "हम अपनी बस की खोज में इधर-उधर घूमते रहे, और फिर बहुत इंतज़ार करना पड़ा।",
+              "english": "We wandered here and there in search of our bus, and then had to wait a long time."
+            },
+            {
+              "text": "रवि सर ने अपना चश्मा साफ़ किया और बोतल से थोड़ा पानी पिया।",
+              "english": "Ravi sir cleaned his glasses and drank a little water from the bottle."
+            },
+            {
+              "text": "अमन ने बस में बैठते ही \"पहाड़ और घाटी\" का एक नया खेल बनाया।",
+              "english": "As soon as he sat in the bus, Aman invented a new game, \"Hill and Valley\"."
+            },
+            {
+              "text": "उसके खेल की बात मुझे समझ में नहीं आई, पर मैं हँसता रहा।",
+              "english": "I could not understand his game, but I kept laughing."
+            },
+            {
+              "text": "पूरे रास्ते दृश्य बदलते रहे, और मैं बस की खिड़की से सब देखता रहा।",
+              "english": "All the way the scenes kept changing, and I kept looking at everything from the bus window."
+            },
+            {
+              "text": "एक जगह नदी के किनारे एक आदमी मछली पकड़ने का जाल ठीक कर रहा था।",
+              "english": "At one place on the river bank a man was mending a fishing net."
+            },
+            {
+              "text": "ऐसा ही एक दृश्य मैं हमेशा याद रखूँगा।",
+              "english": "I will always remember a scene like that one."
+            },
+            {
+              "text": "उतरते समय धुंध फिर आ गई, और हमारे पीछे विशाल पहाड़ सफ़ेद बादलों में खो गए।",
+              "english": "As we went down the mist came again, and behind us the vast mountains were lost in white clouds."
+            },
+            {
+              "text": "बस में बैठे-बैठे मैं बर्फ़ वाले पहाड़ों को देखता रहा।",
+              "english": "Sitting in the bus I kept looking at the snowy mountains."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रात को घर पहुँचते-पहुँचते थकान से मेरी आँखें बंद हो रही थीं।",
+              "english": "By the time we reached home at night my eyes were closing with tiredness."
+            },
+            {
+              "text": "रवि सर ने कहा, \"यदि अगले साल हम फिर आए, तो इससे भी ऊँची चढ़ाई करेंगे।\"",
+              "english": "Ravi sir said, \"If we come again next year, we will make an even higher climb.\""
+            },
+            {
+              "text": "यह यात्रा मुझे हमेशा याद रहेगी।",
+              "english": "I will always remember this trip."
+            },
+            {
+              "text": "मैंने सीखा कि पहाड़ की यात्रा सिर्फ़ चलने का नाम नहीं है, वह देखना, रुकना और सोचना भी है।",
+              "english": "I learnt that a trip to the hills is not just walking; it is also seeing, stopping and thinking."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

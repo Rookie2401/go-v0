@@ -1,0 +1,645 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-02",
+  "lang": "hi",
+  "title": "हमारा शहर",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-02",
+    "title": "Our city, street by street (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Register: Ravi sir speaks to the team in आप and in a guide's present tense; the narration is in the past, in the third person about Sam. The speaker label is plain रवि because the label is tokenized and सर is not on the palette (सर is used only a few times, in narration and when Sam addresses him). The temple, the mosque and the church appear only as landmarks, described by a respectful guest (quiet voices, not touching anything, an honest \"I know very little about it\"). Outside the plan: पूजा (worship at the temple, read by the adapter as पूजना), दर्ज़ी (tailor, 3 uses), सर. Please check the invented but typical details (the cot-maker, the cupboard street, the party-goods lane, the 400 rupees a day), \"ठेला चलाना\", \"रिपोर्ट दे देना\", and सैम as the narrated third person. The pronoun इन is read by the adapter as ये; the three uses of ये include it. जैसी is read as जैसा; जैसे is avoided (read first as another word)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "city",
+    "walking tour",
+    "landmarks",
+    "markets"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "ravi": "रवि",
+    "sam": "सैम"
+  },
+  "sections": [
+    {
+      "title": "शनिवार की सुबह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शनिवार की सुबह सैम और उसके साथी स्टेशन के सामने मिले।",
+              "english": "On Saturday morning Sam and his companions met in front of the station."
+            },
+            {
+              "text": "रवि सर पहले से वहाँ खड़े थे।",
+              "english": "Ravi sir was already standing there."
+            },
+            {
+              "speaker": "ravi",
+              "text": "नमस्ते, आज मैं आपको अपना शहर दिखाऊँगा।",
+              "english": "Hello, today I will show you my city."
+            },
+            {
+              "speaker": "ravi",
+              "text": "मैं इस शहर में बड़ा हुआ हूँ, और मैं इसकी हर गली जानता हूँ।",
+              "english": "I grew up in this city, and I know every street of it."
+            },
+            {
+              "speaker": "ravi",
+              "text": "जैसा मैंने कल बताया था, आज हम पुल और घाट देखेंगे।",
+              "english": "As I told you yesterday, today we will see the bridge and the river steps."
+            },
+            {
+              "speaker": "ravi",
+              "text": "जहाँ हम खड़े हैं, वहाँ से पुराना शहर दस मिनट दूर है।",
+              "english": "Where we are standing, from there the old city is ten minutes away."
+            },
+            {
+              "speaker": "ravi",
+              "text": "पुराना इलाक़ा यहीं से शुरू होता है।",
+              "english": "The old area begins right from here."
+            },
+            {
+              "speaker": "sam",
+              "text": "सर, आज हम और क्या-क्या देखेंगे?",
+              "english": "Sir, what else will we see today?"
+            },
+            {
+              "speaker": "ravi",
+              "text": "बाज़ार, चर्च, और एक मंदिर और एक मस्जिद भी।",
+              "english": "The market, the church, and also a temple and a mosque."
+            },
+            {
+              "speaker": "ravi",
+              "text": "हम मेहमान की तरह चलेंगे, इसलिए इन जगहों को दूर से देखेंगे।",
+              "english": "We will walk like guests, so we will look at these places from a distance."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "स्टेशन के बाहर बहुत भीड़ थी।",
+              "english": "There was a big crowd outside the station."
+            },
+            {
+              "text": "ऑटो और रिक्शा वाले सवारी को बुलाते थे।",
+              "english": "The auto and rickshaw men were calling out to passengers."
+            },
+            {
+              "text": "एक ऑटो ड्राइवर ने सैम से पूछा, \"भैया, कहाँ जाना है?\"",
+              "english": "An auto driver asked Sam, \"Brother, where do you want to go?\""
+            },
+            {
+              "text": "सैम ने हँसकर कहा, \"आज हम शहर घूमने निकले हैं।\"",
+              "english": "Sam said with a laugh, \"Today we have come out to tour the city.\""
+            },
+            {
+              "text": "ड्राइवर भी हँसने लगा।",
+              "english": "The driver began to laugh too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पतली गली",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "थोड़ी देर बाद वे एक पतली गली में पहुँचे।",
+              "english": "After a short while they reached a narrow lane."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यह पुराने शहर की सबसे पतली गली है।",
+              "english": "This is the narrowest lane of the old city."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यहाँ दर्ज़ी बैठते हैं, और हर दुकान में हर रंग का धागा मिलता है।",
+              "english": "Tailors sit here, and in every shop you get thread of every colour."
+            },
+            {
+              "text": "एक दुकान में लाल धागे का एक बड़ा डिब्बा रखा था।",
+              "english": "In one shop a big box of red thread was kept."
+            },
+            {
+              "text": "दुकान का मालिक एक बूढ़ा दर्ज़ी था।",
+              "english": "The owner of the shop was an old tailor."
+            },
+            {
+              "text": "वह पतले धागे से एक कमीज़ बना रहा था।",
+              "english": "He was making a shirt with thin thread."
+            },
+            {
+              "text": "सैम ने पूछा, \"आप कितने साल से यहाँ काम करते हैं?\"",
+              "english": "Sam asked, \"For how many years have you been working here?\""
+            },
+            {
+              "text": "दर्ज़ी ने कहा, \"मेरा जन्म इस गली में हुआ, और मैं 40 साल से वही काम करता हूँ।\"",
+              "english": "The tailor said, \"I was born in this lane, and I have done the same work for 40 years.\""
+            },
+            {
+              "speaker": "ravi",
+              "text": "जब कोई ग्राहक आता है, तब वे पहले चाय के लिए पूछते हैं।",
+              "english": "When a customer comes, he first asks about tea."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "गली के पीछे एक बूढ़ा आदमी बैठकर चारपाई कस रहा था।",
+              "english": "At the back of the lane an old man sat tightening a cot."
+            },
+            {
+              "speaker": "sam",
+              "text": "चाचा, आप चारपाई कैसे कसते हैं?",
+              "english": "Uncle, how do you tighten a cot?"
+            },
+            {
+              "text": "उसने हँसकर कहा, \"भाई, पहले हाथ में ज़ोर चाहिए, फिर बहुत धीरे काम करना पड़ता है।\"",
+              "english": "He said with a laugh, \"Brother, first you need strength in your hands, then you have to work very slowly.\""
+            },
+            {
+              "text": "उस बूढ़े आदमी ने यह भी कहा, \"कसी हुई चारपाई कई साल चलती है।\"",
+              "english": "That old man also said, \"A tightened cot lasts many years.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "अलमारी, पंखा और वकील",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ravi",
+              "text": "यह इलाक़ा अलमारी के लिए जाना जाता है।",
+              "english": "This area is known for cupboards."
+            },
+            {
+              "text": "हर दुकान के बाहर एक बड़ी अलमारी खड़ी थी।",
+              "english": "Outside every shop a big cupboard was standing."
+            },
+            {
+              "text": "एक नई अलमारी का रंग धूप में चमक रहा था।",
+              "english": "The colour of a new cupboard was shining in the sun."
+            },
+            {
+              "speaker": "ravi",
+              "text": "लोग शादी के लिए ये चीज़ें यहीं से ख़रीदते हैं।",
+              "english": "People buy these things from here for a wedding."
+            },
+            {
+              "text": "उसके बाद बिजली की दुकानें आईं।",
+              "english": "After that came the electrical shops."
+            },
+            {
+              "speaker": "ravi",
+              "text": "गर्मी में लोग पंखा ख़रीदने यहाँ आते हैं।",
+              "english": "In the heat people come here to buy a fan."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यहाँ हर तरह का पंखा मिलता है, और पुराना पंखा ठीक भी होता है।",
+              "english": "Every kind of fan is available here, and an old fan also gets repaired."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यहाँ इतने ग्राहक आते हैं कि हर चीज़ कम दाम में मिलती है।",
+              "english": "So many customers come here that everything is available at a low price."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सड़क की दूसरी तरफ़ कई दफ़्तर थे।",
+              "english": "On the other side of the road there were many offices."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यहाँ कई घरों में किसी वकील का दफ़्तर है।",
+              "english": "Here in many houses there is some lawyer's office."
+            },
+            {
+              "speaker": "ravi",
+              "text": "लोग वकील के पास अपने सवाल लेकर आते हैं।",
+              "english": "People come to a lawyer with their questions."
+            },
+            {
+              "speaker": "ravi",
+              "text": "मेरे मामा भी वकील हैं।",
+              "english": "My maternal uncle is a lawyer too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पुल और घाट",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "कुछ देर बाद सब पुल पर पहुँचे।",
+              "english": "After a while everyone reached the bridge."
+            },
+            {
+              "text": "यह पुल बहुत लंबा था, और वहाँ से पूरा घाट दिखता था।",
+              "english": "The bridge was very long, and from there the whole river step could be seen."
+            },
+            {
+              "text": "पुल के पास एक रिक्शा ड्राइवर सवारी का इंतज़ार कर रहा था।",
+              "english": "Near the bridge a rickshaw driver was waiting for a passenger."
+            },
+            {
+              "speaker": "ravi",
+              "text": "इस पुल के बारे में मैं आपको एक बात बताता हूँ।",
+              "english": "Let me tell you one thing about this bridge."
+            },
+            {
+              "speaker": "ravi",
+              "text": "सरकार ने बहुत साल पहले यह पुल बनाया था।",
+              "english": "The government built this bridge many years ago."
+            },
+            {
+              "speaker": "ravi",
+              "text": "जहाँ पुल पर भीड़ ज़्यादा होती है, वहाँ बटुआ अपनी जेब में रखिए।",
+              "english": "Where the crowd on the bridge is bigger, keep your wallet in your pocket."
+            },
+            {
+              "speaker": "ravi",
+              "text": "बटुआ खो जाए, तो चौराहे पर पुलिस है, वहाँ रिपोर्ट दे दीजिए।",
+              "english": "If you lose your wallet, there are police at the crossroads; give a report there."
+            },
+            {
+              "text": "एक लड़का साइकिल लेकर हमारे पास से निकला।",
+              "english": "A boy went past us on a bicycle."
+            },
+            {
+              "text": "सैम थोड़ा घबरा गया, पर वह गिरा नहीं।",
+              "english": "Sam got a little scared, but he did not fall."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "घाट पर पहुँचकर सबने नदी देखी।",
+              "english": "Reaching the river steps, everyone looked at the river."
+            },
+            {
+              "speaker": "ravi",
+              "text": "अभी घाट थोड़ा दूर है, पर वहाँ मुझे अपना घर लगता है।",
+              "english": "The river steps are still a little far, but there I feel at home."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यह घाट मेरा पुराना दोस्त है, मैं बचपन में रोज़ सुबह यहाँ आता था।",
+              "english": "This river step is my old friend; in my childhood I came here every morning."
+            },
+            {
+              "speaker": "ravi",
+              "text": "मेरी बुआ का घर यहीं पास में है।",
+              "english": "My aunt's house is right near here."
+            },
+            {
+              "speaker": "ravi",
+              "text": "सुबह यहाँ नल पर लोग पानी भरते हैं।",
+              "english": "In the morning people fill water at the tap here."
+            },
+            {
+              "text": "छोटे बच्चे नल के नीचे नहा रहे थे।",
+              "english": "Small children were bathing under the tap."
+            },
+            {
+              "text": "एक बच्चा नल खोलकर पानी पीने लगा।",
+              "english": "One child opened the tap and began to drink water."
+            },
+            {
+              "speaker": "ravi",
+              "text": "सैम, इस पानी को छूकर देखिए, यह बहुत ठंडा है।",
+              "english": "Sam, touch this water and see, it is very cold."
+            },
+            {
+              "text": "सैम ने पानी को छुआ और हँस पड़ा।",
+              "english": "Sam touched the water and burst out laughing."
+            },
+            {
+              "text": "घाट पर कुछ बच्चे पानी में कूद रहे थे।",
+              "english": "Some children were jumping into the water at the river steps."
+            },
+            {
+              "speaker": "ravi",
+              "text": "जैसा आप देख रहे हैं, यहाँ सब कुछ धीरे चलता है।",
+              "english": "As you can see, everything moves slowly here."
+            },
+            {
+              "speaker": "ravi",
+              "text": "शाम को यहाँ दीये चमकते हैं, और नदी का पानी भी चमकता है।",
+              "english": "In the evening lamps shine here, and the river water shines too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "घाट के ऊपर एक छोटा मंदिर था।",
+              "english": "Above the river steps there was a small temple."
+            },
+            {
+              "text": "उसके बाहर एक आदमी फूल बेच रहा था।",
+              "english": "A man was selling flowers outside it."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यहाँ लोग रोज़ पूजा करने आते हैं, इसलिए हम धीरे बोलेंगे।",
+              "english": "People come here every day to worship, so we will speak softly."
+            },
+            {
+              "speaker": "ravi",
+              "text": "हम किसी चीज़ को छुएँगे नहीं, और बाहर से ही देखेंगे।",
+              "english": "We will not touch anything, and we will look only from outside."
+            },
+            {
+              "text": "सैम ने फूल वाले को नमस्ते कहा।",
+              "english": "Sam greeted the flower seller."
+            },
+            {
+              "text": "उसने मुस्कुराकर नमस्ते का जवाब दिया।",
+              "english": "He smiled and returned the greeting."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बाज़ार और मंडी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ravi",
+              "text": "अब हम मंडी की तरफ़ बढ़ते हैं।",
+              "english": "Now we move towards the wholesale market."
+            },
+            {
+              "speaker": "ravi",
+              "text": "ये किसान अपनी फ़सल सुबह यहाँ लाते हैं।",
+              "english": "These farmers bring their harvest here in the morning."
+            },
+            {
+              "text": "ठेले पर भिंडी, मटर और गोभी रखी थी।",
+              "english": "Okra, peas and cauliflower were kept on the cart."
+            },
+            {
+              "text": "एक दुकानदार भिंडी तौल रहा था, और उनका पोता पास में खड़ा था।",
+              "english": "A shopkeeper was weighing okra, and his grandson was standing nearby."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यहाँ हर तरह की सब्ज़ी सस्ती मिलती है, और साफ़ भी।",
+              "english": "Every kind of vegetable is cheap here, and clean too."
+            },
+            {
+              "speaker": "ravi",
+              "text": "मज़दूर सुबह से रात तक ठेला चलाते हैं।",
+              "english": "Labourers push their carts from morning till night."
+            },
+            {
+              "speaker": "ravi",
+              "text": "वे बहुत मेहनत करते हैं, पर उनकी कमाई कम है।",
+              "english": "They work very hard, but their earnings are low."
+            },
+            {
+              "speaker": "sam",
+              "text": "वे एक दिन में कितना कमाते हैं?",
+              "english": "How much do they earn in a day?"
+            },
+            {
+              "speaker": "ravi",
+              "text": "शायद 400 रुपये।",
+              "english": "Perhaps 400 rupees."
+            },
+            {
+              "text": "सड़क पर एक बैल खड़ा था।",
+              "english": "A bull was standing on the road."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यह किसी को मारता नहीं, बस सबके रास्ते में खड़ा रहता है।",
+              "english": "He does not hit anyone, he just stands in everyone's way."
+            },
+            {
+              "speaker": "ravi",
+              "text": "अपना बैग यहाँ मत छोड़िए, और कोई अकेला न घूमे।",
+              "english": "Do not leave your bag here, and let no one wander alone."
+            },
+            {
+              "speaker": "ravi",
+              "text": "सर्दी में लोग यहाँ से कंबल ख़रीदते हैं।",
+              "english": "In winter people buy blankets from here."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यहाँ की रोटी अच्छी है, पर सीता नानी की रोटी जैसी नहीं।",
+              "english": "The roti here is good, but not like Seeta Nani's roti."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मंडी के बाद एक छोटी गली आई।",
+              "english": "After the market a small lane came."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यह जन्मदिन और पार्टी की गली है।",
+              "english": "This is the lane of birthdays and parties."
+            },
+            {
+              "text": "दुकानों में केक, मोमबत्ती और गुब्बारे रखे थे, और कहीं मिठाई के डिब्बे भी।",
+              "english": "Cakes, candles and balloons were kept in the shops, and somewhere also boxes of sweets."
+            },
+            {
+              "speaker": "ravi",
+              "text": "मेरी मामी का जन्मदिन अगले हफ़्ते है, मैं उनके लिए केक यहीं से लूँगा।",
+              "english": "My aunt's birthday is next week; I will take a cake for her from here."
+            },
+            {
+              "speaker": "ravi",
+              "text": "वे पूरे परिवार को बुलाती हैं, और सबको बहुत खिलाती हैं।",
+              "english": "She invites the whole family, and feeds everyone a lot."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "उसके पास डाक घर था।",
+              "english": "Next to it was the post office."
+            },
+            {
+              "speaker": "ravi",
+              "text": "आज लोग फ़ोन करते हैं, पर कुछ लोग अब भी चिट्ठी लिखते हैं।",
+              "english": "Today people phone, but some people still write letters."
+            },
+            {
+              "speaker": "ravi",
+              "text": "मेरी मौसी हर महीने गाँव से एक ख़त भेजती हैं।",
+              "english": "My mother's sister sends a letter from the village every month."
+            },
+            {
+              "text": "बाहर चिट्ठी डालने का एक लाल डिब्बा लगा था।",
+              "english": "Outside a red box for dropping letters was fixed."
+            },
+            {
+              "text": "लोग लिफ़ाफ़े पर पता लिखकर उसमें डालते थे।",
+              "english": "People wrote the address on the envelope and dropped it in."
+            },
+            {
+              "text": "दीवार पर एक बड़ा कैलेंडर लगा था।",
+              "english": "A big calendar was on the wall."
+            },
+            {
+              "text": "सैम ने उसमें आज की तारीख़ देखी।",
+              "english": "Sam looked at today's date on it."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "चर्च, मस्जिद और पड़ोस",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ravi",
+              "text": "जहाँ यह चर्च है, वहाँ पहले एक कुआँ था।",
+              "english": "Where this church is, there used to be a well."
+            },
+            {
+              "speaker": "ravi",
+              "text": "आज वहाँ उसकी पुरानी दीवार ही है।",
+              "english": "Today only its old wall is there."
+            },
+            {
+              "speaker": "ravi",
+              "text": "हर रविवार यहाँ प्रार्थना होती है, और पास्टर अनिल सबसे मिलते हैं।",
+              "english": "Every Sunday there is prayer here, and Pastor Anil meets everyone."
+            },
+            {
+              "text": "बाज़ार के पास एक मस्जिद भी थी।",
+              "english": "There was also a mosque near the market."
+            },
+            {
+              "speaker": "ravi",
+              "text": "मस्जिद के बारे में मैं बहुत कम जानता हूँ।",
+              "english": "I know very little about the mosque."
+            },
+            {
+              "speaker": "ravi",
+              "text": "पर मैं यह जानता हूँ कि वहाँ के लोग मेरे पड़ोस के दोस्त हैं।",
+              "english": "But I know that the people there are my friends in the neighbourhood."
+            },
+            {
+              "speaker": "ravi",
+              "text": "वे सुबह मुझे सलाम करते हैं, और मैं उन्हें नमस्ते कहता हूँ।",
+              "english": "They greet me with salaam in the morning, and I say namaste to them."
+            },
+            {
+              "speaker": "ravi",
+              "text": "ऐसी दोस्ती इस शहर की सबसे अच्छी चीज़ है।",
+              "english": "Such friendship is the best thing in this city."
+            },
+            {
+              "text": "सैम हैरान था कि चर्च, मंदिर और मस्जिद एक ही इलाक़े में पास-पास हैं।",
+              "english": "Sam was surprised that the church, the temple and the mosque are all close together in one area."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दोपहर तक सैम थका हुआ था, पर वह ख़ुश था।",
+              "english": "By afternoon Sam was tired, but he was happy."
+            },
+            {
+              "speaker": "ravi",
+              "text": "अगर आप कभी घूमते हुए परेशान हो जाएँ, तो किसी से पूछ लीजिए।",
+              "english": "If you ever get troubled while walking around, ask someone."
+            },
+            {
+              "speaker": "ravi",
+              "text": "जो चीज़ आप कहीं नहीं पा सकते, वह शायद यहाँ मिल जाए।",
+              "english": "The thing you cannot find anywhere, perhaps you will get it here."
+            },
+            {
+              "speaker": "ravi",
+              "text": "आप इस शहर के बारे में जो पूछना चाहें, पूछिए।",
+              "english": "Ask whatever you want to know about this city."
+            },
+            {
+              "speaker": "ravi",
+              "text": "मुझे उम्मीद है कि अब आपको यह शहर अपना लगेगा।",
+              "english": "I hope that now this city will feel like your own."
+            },
+            {
+              "text": "सैम ने कहा, \"धन्यवाद, सर, कल रविवार को चर्च में मिलेंगे।\"",
+              "english": "Sam said, \"Thank you, sir, we will meet at church tomorrow, on Sunday.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

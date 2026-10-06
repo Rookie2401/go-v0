@@ -1,0 +1,550 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-19",
+  "lang": "hi",
+  "title": "अमन का खोया बैग",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-19",
+    "title": "Aman's lost bag (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Cast: Aman, Nani, Sam, Meera didi, Ravi sir, a little neighbour girl Geeta (granddaughter of Sharma ji, from the name list), a tea seller and a constable. Meera didi says तू to the small girl (about five) and तुम to Aman; Nani says तुम to Aman. Words the plan gave to this unit that are hard to place in a lost-bag story and were left out: आत्मा, सुसमाचार. Please check: \"बैग का खोना कोई मौत नहीं है\" (a mild proverb-like remark by Nani), \"शेर वाला बैग\", \"बादल गरज रहे थे\", the use of शुद्ध for drinking water, and नहर and the farmers at the edge of the city. Outside words: the adapter has no lemma for सर (as in रवि सर, 5 times; known by the later a1 units)."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "school",
+    "neighbours",
+    "searching"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "aman": "अमन",
+    "nani": "सीता नानी",
+    "sam": "सैम",
+    "meera": "मीरा दीदी",
+    "geeta": "गीता",
+    "ravi": "रवि सर"
+  },
+  "sections": [
+    {
+      "title": "शाम का घर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उस दिन अमन स्कूल से बस में लौटा।",
+              "english": "That day Aman came back from school by bus."
+            },
+            {
+              "text": "बस में बहुत भीड़ थी, क्योंकि सड़क पर मंत्री की गाड़ी आने वाली थी और आगे का रास्ता बंद था।",
+              "english": "The bus was very crowded, because a minister's car was about to come along the road and the road ahead was closed."
+            },
+            {
+              "text": "घर पहुँचकर अमन ने देखा कि उसके हाथ में बैग नहीं था।",
+              "english": "When he reached home Aman saw that there was no bag in his hand."
+            },
+            {
+              "text": "वह घबरा गया और रोते हुए नानी के पास गया।",
+              "english": "He got frightened and went to Nani, crying."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "aman",
+              "text": "नानी, मेरा बैग खो गया!",
+              "english": "Nani, my bag is lost!"
+            },
+            {
+              "speaker": "nani",
+              "text": "बैग में क्या था?",
+              "english": "What was in the bag?"
+            },
+            {
+              "speaker": "aman",
+              "text": "कॉपी, कलम, पेंसिल और पानी की बोतल थी।",
+              "english": "There was an exercise book, a pen, a pencil and a bottle of water."
+            },
+            {
+              "speaker": "aman",
+              "text": "कल मेरा इम्तिहान है।",
+              "english": "Tomorrow I have my exam."
+            },
+            {
+              "speaker": "aman",
+              "text": "अगर कॉपी न मिली तो मैं फ़ेल हो जाऊँगा।",
+              "english": "If I don't find the book, I will fail."
+            },
+            {
+              "speaker": "nani",
+              "text": "रोने से कुछ नहीं होगा।",
+              "english": "Crying will not help."
+            },
+            {
+              "speaker": "nani",
+              "text": "बैग का खोना कोई मौत नहीं है, चलो ढूँढ़ते हैं।",
+              "english": "Losing a bag is no death; come, let us look for it."
+            },
+            {
+              "speaker": "nani",
+              "text": "मन छोटा मत करो, और ज़रूरत हो तो मुझे बताना।",
+              "english": "Don't lose heart, and tell me if you need anything."
+            },
+            {
+              "speaker": "aman",
+              "text": "मेरा मन बहुत घबरा रहा है।",
+              "english": "My heart is very anxious."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "खोज शुरू हुई",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम और मीरा दीदी भी अमन के साथ खोया हुआ बैग ढूँढ़ने चल पड़े।",
+              "english": "Sam and Meera didi also set off with Aman to look for the lost bag."
+            },
+            {
+              "text": "मीरा दीदी नर्स हैं, और वे उसी समय अस्पताल से लौटी थीं।",
+              "english": "Meera didi is a nurse, and she had just come back from the hospital."
+            },
+            {
+              "speaker": "meera",
+              "text": "जितना जल्दी ढूँढ़ेंगे, उतना अच्छा होगा।",
+              "english": "The sooner we search, the better."
+            },
+            {
+              "speaker": "meera",
+              "text": "अमन, तुम्हें याद है कि तुमने बैग कहाँ रखा था?",
+              "english": "Aman, do you remember where you had put the bag?"
+            },
+            {
+              "speaker": "aman",
+              "text": "बस में मेरे पास था, मगर मुझे ठीक से याद नहीं।",
+              "english": "It was with me on the bus, but I don't remember properly."
+            },
+            {
+              "text": "सैम के फ़ोन में बैग की एक फ़ोटो थी, इसलिए उन्होंने वह सबको दिखाई।",
+              "english": "There was a photo of the bag on Sam's phone, so he showed it to everyone."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "बस के रुकने की जगह एक चाय वाला बैठा था।",
+              "english": "A tea seller was sitting where the bus stops."
+            },
+            {
+              "text": "उसने चश्मा ठीक किया और पूछा, \"क्या यह कोई खोया हुआ बैग है?\"",
+              "english": "He adjusted his glasses and asked, \"Is it some lost bag?\""
+            },
+            {
+              "text": "उसने कहा, \"मैंने ऐसा बैग नहीं देखा।\"",
+              "english": "He said, \"I have not seen such a bag.\""
+            },
+            {
+              "speaker": "aman",
+              "text": "उस पर शेर की तस्वीर बनी थी।",
+              "english": "There was a picture of a lion on it."
+            },
+            {
+              "text": "चाय वाला: तब तो मैं ज़रूर देखता।",
+              "english": "Then I would certainly have seen it."
+            },
+            {
+              "text": "सैम ने समोसे ख़रीदे और सबको दिए, क्योंकि अमन ने दिन भर कुछ नहीं खाया था।",
+              "english": "Sam bought samosas and gave them to everyone, because Aman had eaten nothing all day."
+            },
+            {
+              "text": "अमन का मन नहीं लग रहा था।",
+              "english": "Aman had no heart for it."
+            },
+            {
+              "text": "उनकी खोज में एक घंटा बीत गया।",
+              "english": "An hour passed in their search."
+            },
+            {
+              "text": "सबने बहुत कोशिश की, लेकिन बैग नहीं मिला।",
+              "english": "Everyone tried hard, but the bag was not found."
+            },
+            {
+              "speaker": "aman",
+              "text": "बिना बैग के मैं कल परीक्षा कैसे दूँगा?",
+              "english": "Without the bag how will I take the exam tomorrow?"
+            },
+            {
+              "speaker": "aman",
+              "text": "मेरे पास सिर्फ़ यही कॉपी थी।",
+              "english": "I had only this one exercise book."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "नहर के रास्ते",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "फिर वे नहर के पास वाले रास्ते पर गए, जहाँ से अमन रोज़ स्कूल जाता था।",
+              "english": "Then they went along the path by the canal, which Aman took to school every day."
+            },
+            {
+              "text": "वहाँ किसान खेती करते हैं और मक्का और अनाज बोते हैं।",
+              "english": "The farmers cultivate there and sow maize and grain."
+            },
+            {
+              "text": "ज़मीन गीली थी, और अमन के जूते मिट्टी से भर गए।",
+              "english": "The ground was wet, and Aman's shoes filled with mud."
+            },
+            {
+              "text": "सड़क के बीच एक भैंस बैठी थी, और एक गधा गाड़ी ले जा रहा था।",
+              "english": "A buffalo was sitting in the middle of the road, and a donkey was carrying a cart along."
+            },
+            {
+              "text": "सूरज नीचे जा रहा था, और नहर में एक छोटी-सी लहर उठ रही थी।",
+              "english": "The sun was going down, and a small wave was rising in the canal."
+            },
+            {
+              "text": "मीरा ने कहा कि शाम को यहाँ मच्छर बहुत होते हैं।",
+              "english": "Meera said that there are a lot of mosquitoes here in the evening."
+            },
+            {
+              "speaker": "meera",
+              "text": "उस शिविर में मैंने बताया था कि मलेरिया से बचना चाहिए।",
+              "english": "In that camp I told you that one should avoid malaria."
+            },
+            {
+              "text": "एक मच्छर अमन की नाक पर बैठ गया, और अमन चिल्लाया, \"हाय!\"",
+              "english": "A mosquito sat on Aman's nose, and Aman shouted, \"Oh!\""
+            },
+            {
+              "text": "सैम ने कोशिश की कि अमन थोड़ा हँसे।",
+              "english": "Sam tried to make Aman laugh a little."
+            },
+            {
+              "speaker": "sam",
+              "text": "वैसे, तुम्हारा बैग गोल चश्मे वाले आदमी ने तो नहीं देखा?",
+              "english": "By the way, hasn't the man with the round glasses seen your bag?"
+            },
+            {
+              "speaker": "aman",
+              "text": "नहीं, चाहे कितनी देर हो जाए, मैं ढूँढ़ूँगा।",
+              "english": "No, however late it gets, I will search."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "फाटक के पास",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "स्कूल का ऊँचा फाटक बंद हो चुका था, और उसके पास एक सिपाही खड़ा था।",
+              "english": "The high school gate had closed, and a constable stood near it."
+            },
+            {
+              "text": "वह एक जवान सिपाही था, और उसने सब ध्यान से सुना।",
+              "english": "He was a young constable, and he listened to everything carefully."
+            },
+            {
+              "text": "सिपाही ने पूछा कि बैग के अलावा और क्या खोया है।",
+              "english": "The constable asked what else was lost besides the bag."
+            },
+            {
+              "speaker": "aman",
+              "text": "बस वही, लेकिन उसमें मेरी परीक्षा की कॉपी थी।",
+              "english": "Just that, but my exam notebook was in it."
+            },
+            {
+              "text": "सिपाही ने कहा कि रिपोर्ट लिखी जा सकती है, मगर पहले यहीं पास में ढूँढ़ लो।",
+              "english": "The constable said that a report could be written, but first look around right here."
+            },
+            {
+              "text": "शाम हो गई थी, और बादल गरज रहे थे।",
+              "english": "It had become evening, and the clouds were thundering."
+            },
+            {
+              "text": "अमन को डर लगा कि बारिश में बैग भीग जाएगा।",
+              "english": "Aman was afraid that the bag would get soaked in the rain."
+            },
+            {
+              "text": "जितना उन्होंने ढूँढ़ा, उतना उसका डर बढ़ा।",
+              "english": "The more they searched, the more his fear grew."
+            },
+            {
+              "text": "सबने बारिश से बचने के लिए एक दुकान में जगह ली, जहाँ टीवी पर कोई मंत्री बोल रहे थे।",
+              "english": "To get out of the rain everyone took shelter in a shop where a minister was speaking on TV."
+            },
+            {
+              "text": "अमन को मंत्री की बात समझ नहीं आ रही थी, और उसकी समझ में अपना बैग ही था।",
+              "english": "Aman could not follow what the minister said; all he understood was his own bag."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "गली का सुराग़",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "बारिश रुकी तो गली में बच्चे खेल रहे थे।",
+              "english": "When the rain stopped, children were playing in the lane."
+            },
+            {
+              "text": "उनका खेल देखकर अमन को अचानक एक बात याद आई।",
+              "english": "Watching their game, Aman suddenly remembered something."
+            },
+            {
+              "speaker": "aman",
+              "text": "मैं बस से उतरकर शर्मा जी के बरामदे में पानी पीने रुका था!",
+              "english": "After getting off the bus I had stopped on Sharma ji's veranda to drink water!"
+            },
+            {
+              "speaker": "aman",
+              "text": "मैंने बैग सीढ़ी पर रखा था।",
+              "english": "I had put the bag on the stairs."
+            },
+            {
+              "text": "सब लोग शर्मा जी के घर की तरफ़ दौड़े।",
+              "english": "Everyone ran towards Sharma ji's house."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "बरामदे में एक छोटी बच्ची झाड़ू से सीढ़ी साफ़ कर रही थी।",
+              "english": "A small girl was cleaning the stairs with a broom on the veranda."
+            },
+            {
+              "text": "उसने झाड़ू रखी और पिल्ले की तरफ़ देखा।",
+              "english": "She put the broom down and looked at the puppy."
+            },
+            {
+              "text": "वह झाड़ू उससे भी लंबी थी।",
+              "english": "That broom was even taller than she was."
+            },
+            {
+              "text": "फिर वह बरामदे के एक कोने में बैठ गई।",
+              "english": "Then she sat down in a corner of the veranda."
+            },
+            {
+              "text": "वह शर्मा जी की पोती गीता थी।",
+              "english": "She was Sharma ji's granddaughter Geeta."
+            },
+            {
+              "text": "पिल्ला बैग को पकड़कर इधर-उधर भाग रहा था।",
+              "english": "and the puppy was holding a bag and running this way and that."
+            },
+            {
+              "speaker": "aman",
+              "text": "मेरा बैग!",
+              "english": "My bag!"
+            },
+            {
+              "speaker": "meera",
+              "text": "गीता, तू यह बैग कहाँ से लाई?",
+              "english": "Geeta, where did you get this bag from?"
+            },
+            {
+              "speaker": "geeta",
+              "text": "यह सीढ़ी पर पड़ा था।",
+              "english": "It was lying on the stairs."
+            },
+            {
+              "speaker": "geeta",
+              "text": "मैंने सोचा कि यह मेरे खेल के लिए है, इसलिए मैंने इसे रख लिया।",
+              "english": "I thought it was for my game, so I kept it."
+            },
+            {
+              "speaker": "geeta",
+              "text": "मैं सच कहती हूँ, मैंने कुछ बाहर नहीं निकाला।",
+              "english": "I tell the truth, I took nothing out."
+            },
+            {
+              "text": "शर्मा जी बाहर आए और बोले, \"बेटी, पहले मुझे बताना चाहिए था।\"",
+              "english": "Sharma ji came out and said, \"Daughter, you should have told me first.\""
+            },
+            {
+              "text": "वे बोले कि आज गीता के रिश्तेदार आए हैं, इसलिए घर में बहुत आवाज़ है।",
+              "english": "He said that Geeta's relatives have come today, so there is a lot of noise in the house."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बैग मिल गया",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अमन ने अपना खोया हुआ बैग खोला और कॉपी देखी।",
+              "english": "Aman opened his lost bag and looked at the exercise book."
+            },
+            {
+              "text": "कॉपी, कलम, पेंसिल, सब ठीक था, और बोतल में शुद्ध पानी भी था।",
+              "english": "The book, pen, pencil, everything was fine, and there was clean water in the bottle too."
+            },
+            {
+              "text": "अमन ने बोतल खोलकर थोड़ा पानी पिया।",
+              "english": "Aman opened the bottle and drank a little water."
+            },
+            {
+              "text": "बस पिल्ले ने बैग के एक कोने पर अपने दाँत लगा दिए थे।",
+              "english": "Only the puppy had put its teeth on one corner of the bag."
+            },
+            {
+              "text": "सब हँस पड़े।",
+              "english": "Everyone burst out laughing."
+            },
+            {
+              "text": "अमन ने गीता से कहा, \"धन्यवाद, तुमने मेरा बैग बचा लिया।\"",
+              "english": "Aman told Geeta, \"Thank you, you saved my bag.\""
+            },
+            {
+              "text": "गीता ने पिल्ले को उठाया और हँस दी।",
+              "english": "Geeta picked up the puppy and laughed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "घर आकर अमन ने भीगी वर्दी बदलकर चाय पी।",
+              "english": "Back home Aman changed his wet uniform and drank tea."
+            },
+            {
+              "text": "नानी ने कहा कि यह परमेश्वर का अनुग्रह है कि बैग मिल गया।",
+              "english": "Nani said that it is God's grace that the bag was found."
+            },
+            {
+              "speaker": "nani",
+              "text": "आज तुमने ज़िंदगी का एक छोटा-सा पाठ सीखा।",
+              "english": "Today you learned a small lesson of life."
+            },
+            {
+              "speaker": "nani",
+              "text": "चीज़ कहीं भी रखने से पहले सोचना चाहिए।",
+              "english": "One should think before putting a thing down anywhere."
+            },
+            {
+              "speaker": "aman",
+              "text": "हाँ नानी, अब मैं कोशिश करूँगा कि बैग हमेशा मेरे हाथ में रहे।",
+              "english": "Yes Nani, now I will try to keep the bag always in my hand."
+            },
+            {
+              "speaker": "nani",
+              "text": "ढूँढ़ना बच्चों का खेल नहीं है।",
+              "english": "Searching is not child's play."
+            },
+            {
+              "text": "अमन ने तुरंत कॉपी खोलकर पढ़ना शुरू किया।",
+              "english": "Aman at once opened his book and began to read."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "कल का इम्तिहान",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अगले दिन रवि सर ने चश्मा उतारकर कक्षा में अमन का बस्ता देखा।",
+              "english": "The next day Ravi sir took off his glasses and saw Aman's school bag in class."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यह बैग कुछ अलग लग रहा है, अमन।",
+              "english": "This bag looks a bit different, Aman."
+            },
+            {
+              "text": "अमन ने उन्हें पूरी बात बताई।",
+              "english": "Aman told him the whole story."
+            },
+            {
+              "speaker": "ravi",
+              "text": "क्या बात तुम्हारी समझ में आ गई?",
+              "english": "Has the point sunk in?"
+            },
+            {
+              "speaker": "aman",
+              "text": "जी, अब मुझे अपनी कॉपी की बहुत ज़रूरत लगती है।",
+              "english": "Yes sir, now I feel I really need my exercise book."
+            },
+            {
+              "text": "रवि सर ने हँसकर कहा कि ऐसे समय में छड़ी की नहीं, समझ की ज़रूरत होती है।",
+              "english": "Ravi sir said with a laugh that at such times one needs not a stick but understanding."
+            },
+            {
+              "text": "रवि सर ने बच्चों को समझाया कि हर चीज़ की जगह तय करनी चाहिए।",
+              "english": "Ravi sir explained to the children that every thing should have its place."
+            },
+            {
+              "text": "उन्होंने सिखाया कि इम्तिहान से पहले सब सामान तैयार रखना चाहिए।",
+              "english": "He taught them that one should keep everything ready before an exam."
+            },
+            {
+              "text": "अमन ने पूरे ध्यान से कलम उठाई और लिखना शुरू किया।",
+              "english": "Aman picked up his pen with full attention and began to write."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

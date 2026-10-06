@@ -1,0 +1,472 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-03",
+  "lang": "hi",
+  "title": "कल क्या करेंगे?",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-03",
+    "title": "Tomorrow's plans (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "First future-tense unit (-ऊँगा / -ऊँगी / -एगा / -एँगे / -ओगे). रवि सर and मीरा दीदी use आप to Sam and तुम to Aman; Aman says तुम-forms never to adults. \"अगले हफ़्ते\" is the oblique of अगला before a noun. \"छुट्टी\" is used for Ravi sir's day off and the school holiday. The word आदमी/औरत pair recycles the church unit. Words outside the plan (measured, adapter lemmas x tokens): बारिश×2, तब×1 (under-met)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "plans",
+    "future",
+    "week"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "सैम",
+    "ravi": "रवि सर",
+    "meera": "मीरा दीदी",
+    "aman": "अमन"
+  },
+  "sections": [
+    {
+      "title": "कल क्या करेंगे?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "sam",
+              "text": "नमस्ते, सर। नमस्ते, दीदी।",
+              "english": "Hello, sir. Hello, didi."
+            },
+            {
+              "speaker": "ravi",
+              "text": "नमस्ते, सैम! आइए, चाय लीजिए।",
+              "english": "Hello, Sam! Come in, have some tea."
+            },
+            {
+              "speaker": "sam",
+              "text": "धन्यवाद, सर।",
+              "english": "Thank you, sir."
+            },
+            {
+              "speaker": "meera",
+              "text": "सैम, कल आपकी क्या योजना है?",
+              "english": "Sam, what is your plan for tomorrow?"
+            },
+            {
+              "speaker": "sam",
+              "text": "कल मैं घर में रहूँगा।",
+              "english": "Tomorrow I will stay at home."
+            },
+            {
+              "speaker": "sam",
+              "text": "शायद मैं थोड़ा काम करूँगा।",
+              "english": "Perhaps I will do a little work."
+            },
+            {
+              "speaker": "ravi",
+              "text": "मैं तो कल बाज़ार जाऊँगा।",
+              "english": "I will go to the market tomorrow."
+            },
+            {
+              "speaker": "ravi",
+              "text": "अमन भी मेरे साथ आएगा।",
+              "english": "Aman will come with me too."
+            },
+            {
+              "speaker": "aman",
+              "text": "हाँ! कल मैं बाज़ार जाऊँगा!",
+              "english": "Yes! Tomorrow I will go to the market!"
+            },
+            {
+              "speaker": "aman",
+              "text": "मुझे कल स्कूल नहीं जाना है।",
+              "english": "I do not have to go to school tomorrow."
+            },
+            {
+              "speaker": "ravi",
+              "text": "कल छुट्टी है।",
+              "english": "Tomorrow is a holiday."
+            },
+            {
+              "speaker": "meera",
+              "text": "मेरी छुट्टी नहीं है।",
+              "english": "I do not have a holiday."
+            },
+            {
+              "speaker": "meera",
+              "text": "कल सुबह मैं अस्पताल जाऊँगी।",
+              "english": "Tomorrow morning I will go to the hospital."
+            },
+            {
+              "speaker": "meera",
+              "text": "मुझे वहाँ बहुत काम है।",
+              "english": "I have a lot of work there."
+            },
+            {
+              "speaker": "sam",
+              "text": "आप कल शाम घर आएँगी?",
+              "english": "Will you come home tomorrow evening?"
+            },
+            {
+              "speaker": "meera",
+              "text": "हाँ, मैं शाम को आऊँगी।",
+              "english": "Yes, I will come in the evening."
+            },
+            {
+              "speaker": "sam",
+              "text": "सर, मैं भी आऊँगा?",
+              "english": "Sir, shall I come too?"
+            },
+            {
+              "speaker": "ravi",
+              "text": "हाँ, आप ज़रूर आइए।",
+              "english": "Yes, please do come."
+            },
+            {
+              "speaker": "sam",
+              "text": "मैं सुबह जल्दी जागूँगा।",
+              "english": "I will wake up early in the morning."
+            },
+            {
+              "speaker": "aman",
+              "text": "मैं भी जागूँगा!",
+              "english": "I will wake up too!"
+            },
+            {
+              "speaker": "meera",
+              "text": "अमन, तुम तो रोज़ देर से जागते हो!",
+              "english": "Aman, you always wake up late!"
+            },
+            {
+              "speaker": "aman",
+              "text": "कल मैं ज़रूर जल्दी उठूँगा।",
+              "english": "Tomorrow I will surely get up early."
+            },
+            {
+              "speaker": "ravi",
+              "text": "अच्छा। कल का दिन अच्छा होगा।",
+              "english": "Good. Tomorrow will be a good day."
+            },
+            {
+              "speaker": "sam",
+              "text": "और परसों?",
+              "english": "And the day after tomorrow?"
+            },
+            {
+              "speaker": "ravi",
+              "text": "परसों रविवार है। हम गिरजा जाएँगे।",
+              "english": "The day after tomorrow is Sunday. We will go to church."
+            },
+            {
+              "speaker": "meera",
+              "text": "परसों गिरजा में सभा है।",
+              "english": "The day after tomorrow there is a meeting at church."
+            },
+            {
+              "speaker": "meera",
+              "text": "पास्टर अनिल प्रार्थना करेंगे।",
+              "english": "Pastor Anil will pray."
+            },
+            {
+              "speaker": "aman",
+              "text": "और गीत भी होगा!",
+              "english": "And there will be a song too!"
+            },
+            {
+              "speaker": "sam",
+              "text": "मुझे भजन पसंद है।",
+              "english": "I like the hymn."
+            },
+            {
+              "speaker": "ravi",
+              "text": "आराधना बहुत अच्छी होगी।",
+              "english": "The worship will be very good."
+            },
+            {
+              "speaker": "meera",
+              "text": "सब \"आमीन\" बोलेंगे।",
+              "english": "Everyone will say \"Amen\"."
+            },
+            {
+              "speaker": "ravi",
+              "text": "पास्टर सबको आशीर्वाद देंगे।",
+              "english": "The pastor will give everyone a blessing."
+            },
+            {
+              "speaker": "sam",
+              "text": "औरत और आदमी सब आएँगे?",
+              "english": "Will all the women and men come?"
+            },
+            {
+              "speaker": "meera",
+              "text": "हाँ, बहुत लोग आएँगे।",
+              "english": "Yes, many people will come."
+            },
+            {
+              "speaker": "sam",
+              "text": "और अगला हफ़्ता?",
+              "english": "And next week?"
+            },
+            {
+              "speaker": "ravi",
+              "text": "अगले हफ़्ते स्कूल की छुट्टी है।",
+              "english": "Next week there is a school holiday."
+            },
+            {
+              "speaker": "ravi",
+              "text": "हम ट्रेन से गाँव जाएँगे।",
+              "english": "We will go to the village by train."
+            },
+            {
+              "speaker": "ravi",
+              "text": "ट्रेन सुबह नौ बजे आती है।",
+              "english": "The train comes at nine in the morning."
+            },
+            {
+              "speaker": "sam",
+              "text": "मैं सभा की तैयारी करूँगा।",
+              "english": "I will prepare for the meeting."
+            },
+            {
+              "speaker": "ravi",
+              "text": "आज का दिन भी अच्छा है।",
+              "english": "Today is a good day too."
+            },
+            {
+              "speaker": "aman",
+              "text": "ट्रेन से! मैं बहुत ख़ुश हूँ।",
+              "english": "By train! I am very happy."
+            },
+            {
+              "speaker": "meera",
+              "text": "मेरे पास भी समय होगा।",
+              "english": "I will have time too."
+            },
+            {
+              "speaker": "sam",
+              "text": "अगले हफ़्ते की तैयारी कौन करेगा?",
+              "english": "Who will make the preparations for next week?"
+            },
+            {
+              "speaker": "ravi",
+              "text": "हम सब तैयारी करेंगे।",
+              "english": "We will all prepare."
+            },
+            {
+              "speaker": "meera",
+              "text": "सैम, क्या आपके पास समय है?",
+              "english": "Sam, do you have time?"
+            },
+            {
+              "speaker": "sam",
+              "text": "हाँ, मेरे पास बहुत समय है।",
+              "english": "Yes, I have plenty of time."
+            },
+            {
+              "speaker": "meera",
+              "text": "अच्छा। कल शाम हम योजना बनाएँगे।",
+              "english": "Good. Tomorrow evening we will make a plan."
+            },
+            {
+              "speaker": "ravi",
+              "text": "यह अच्छी योजना है।",
+              "english": "That is a good plan."
+            },
+            {
+              "speaker": "sam",
+              "text": "सर, कल क्या क्या लेंगे?",
+              "english": "Sir, what will we buy tomorrow?"
+            },
+            {
+              "speaker": "ravi",
+              "text": "हम आलू, प्याज़ और केला लेंगे।",
+              "english": "We will buy potatoes, onions and bananas."
+            },
+            {
+              "speaker": "meera",
+              "text": "नानी रोटी और सब्ज़ी बनाएँगी।",
+              "english": "Nani will make roti and vegetables."
+            },
+            {
+              "speaker": "aman",
+              "text": "मैं भी नानी के साथ रसोई में रहूँगा!",
+              "english": "I will be in the kitchen with Nani too!"
+            },
+            {
+              "speaker": "meera",
+              "text": "अमन, तुम रसोई में नहीं रहते!",
+              "english": "Aman, you never stay in the kitchen!"
+            },
+            {
+              "speaker": "aman",
+              "text": "कल मैं रहूँगा। मुझे चावल पसंद है।",
+              "english": "Tomorrow I will. I like rice."
+            },
+            {
+              "speaker": "ravi",
+              "text": "और मैदान में तुम गेंद से खेलोगे।",
+              "english": "And in the field you will play with the ball."
+            },
+            {
+              "speaker": "aman",
+              "text": "हाँ! सैम भी खेलेगा?",
+              "english": "Yes! Will Sam play too?"
+            },
+            {
+              "speaker": "sam",
+              "text": "मैं तस्वीर लूँगा, अमन।",
+              "english": "I will take pictures, Aman."
+            },
+            {
+              "speaker": "sam",
+              "text": "शायद मैं भी खेलूँगा।",
+              "english": "Perhaps I will play too."
+            },
+            {
+              "speaker": "meera",
+              "text": "आप ज़रूर खेलिए, सैम।",
+              "english": "Do play, Sam."
+            },
+            {
+              "speaker": "ravi",
+              "text": "जब सैम खेलेगा, अमन बहुत ख़ुश होगा!",
+              "english": "When Sam plays, Aman will be very happy!"
+            },
+            {
+              "speaker": "aman",
+              "text": "हाँ, मैं बहुत ख़ुश होऊँगा!",
+              "english": "Yes, I will be very happy!"
+            },
+            {
+              "speaker": "sam",
+              "text": "कल बारिश होगी?",
+              "english": "Will it rain tomorrow?"
+            },
+            {
+              "speaker": "meera",
+              "text": "शायद। जब बारिश होगी, तब हम घर में रहेंगे।",
+              "english": "Perhaps. When it rains, we will stay at home."
+            },
+            {
+              "speaker": "ravi",
+              "text": "गली में पानी होगा।",
+              "english": "There will be water in the lane."
+            },
+            {
+              "speaker": "meera",
+              "text": "मोहल्ले में बहुत पानी होता है।",
+              "english": "There is a lot of water in the neighbourhood."
+            },
+            {
+              "speaker": "ravi",
+              "text": "लेकिन हम पुल के सामने से जाएँगे।",
+              "english": "But we will go past the front of the bridge."
+            },
+            {
+              "speaker": "aman",
+              "text": "और बाज़ार में हम आधा किलो आम लेंगे!",
+              "english": "And at the market we will buy half a kilo of mangoes!"
+            },
+            {
+              "speaker": "ravi",
+              "text": "ठीक है, अमन।",
+              "english": "All right, Aman."
+            },
+            {
+              "speaker": "meera",
+              "text": "सैम, आप और चाय लेंगे?",
+              "english": "Sam, will you have more tea?"
+            },
+            {
+              "speaker": "sam",
+              "text": "नहीं, दीदी, धन्यवाद। मैं अब घर जाऊँगा।",
+              "english": "No, didi, thank you. I will go home now."
+            },
+            {
+              "speaker": "meera",
+              "text": "नानी आपके लिए खाना बनाएँगी।",
+              "english": "Nani will make food for you."
+            },
+            {
+              "speaker": "sam",
+              "text": "हाँ, नानी रोटी और दाल बनाएँगी।",
+              "english": "Yes, Nani will make roti and dal."
+            },
+            {
+              "speaker": "aman",
+              "text": "और मैं दूध पिऊँगा।",
+              "english": "And I will drink milk."
+            },
+            {
+              "speaker": "ravi",
+              "text": "और मैं चाय पिऊँगा।",
+              "english": "And I will drink tea."
+            },
+            {
+              "speaker": "meera",
+              "text": "मैं पानी पिऊँगी।",
+              "english": "I will drink water."
+            },
+            {
+              "speaker": "sam",
+              "text": "कल सब ठीक होगा।",
+              "english": "Tomorrow everything will be fine."
+            },
+            {
+              "speaker": "ravi",
+              "text": "सैम, यह मेरा मोबाइल नंबर है।",
+              "english": "Sam, this is my mobile number."
+            },
+            {
+              "speaker": "sam",
+              "text": "धन्यवाद, सर। मैं कल आपसे मिलूँगा।",
+              "english": "Thank you, sir. I will meet you tomorrow."
+            },
+            {
+              "speaker": "ravi",
+              "text": "हम बाज़ार में मिलेंगे।",
+              "english": "We will meet at the market."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

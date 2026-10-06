@@ -1,0 +1,251 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-01",
+  "lang": "hi",
+  "title": "घड़ी बजती है",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-01",
+    "title": "The alarm clock (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A short present-tense narrative with the first past forms as chunks (उसने देखी, उठा, भागा). The plan has the crow wake the neighbours; here it sits on the wall of the house and wakes Nani. \"देर हो गई!\" is the title phrase of the next in-place story. Honorific plural for नानी and पास्टर अनिल. Words outside the plan (measured, adapter lemmas x tokens): गाना×1 (to sing)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "morning",
+    "church",
+    "humour"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "घड़ी बजती है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज रविवार है।",
+              "english": "Today is Sunday."
+            },
+            {
+              "text": "गिरजा में आठ बजे सभा है।",
+              "english": "There is a meeting in the church at eight."
+            },
+            {
+              "text": "सैम और अमन सो रहे हैं।",
+              "english": "Sam and Aman are asleep."
+            },
+            {
+              "text": "आज घड़ी नहीं बजती।",
+              "english": "Today the clock does not ring."
+            },
+            {
+              "text": "एक कौआ मकान की दीवार पर बैठता है।",
+              "english": "A crow sits on the wall of the house."
+            },
+            {
+              "text": "कौआ बोलता है।",
+              "english": "The crow calls."
+            },
+            {
+              "text": "नानी कौए को देखती हैं।",
+              "english": "Nani looks at the crow."
+            },
+            {
+              "text": "नानी अमन के कमरे में जाती हैं।",
+              "english": "Nani goes to Aman's room."
+            },
+            {
+              "text": "वह बोलती हैं, \"अमन! सैम! उठो!\"",
+              "english": "She says, \"Aman! Sam! Get up!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन उठता है।",
+              "english": "Aman gets up."
+            },
+            {
+              "text": "उसने घड़ी देखी।",
+              "english": "He looked at the clock."
+            },
+            {
+              "text": "घड़ी में नौ बजे हैं।",
+              "english": "The clock says nine."
+            },
+            {
+              "text": "अमन बोलता है, \"नानी! देर हो गई!\"",
+              "english": "Aman says, \"Nani! We are late!\""
+            },
+            {
+              "text": "सैम भी उठता है।",
+              "english": "Sam gets up too."
+            },
+            {
+              "text": "सैम देखता है और हँसता है।",
+              "english": "Sam looks and laughs."
+            },
+            {
+              "text": "अमन भी हँसता है।",
+              "english": "Aman laughs too."
+            },
+            {
+              "text": "सैम बोलता है, \"देखो, वह हमें उठाता है!\"",
+              "english": "Sam says, \"Look, he wakes us up!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन बैग उठाता है।",
+              "english": "Aman picks up his bag."
+            },
+            {
+              "text": "सैम भी अपना बैग उठाता है।",
+              "english": "Sam picks up his bag too."
+            },
+            {
+              "text": "सैम और अमन नहीं नहाते।",
+              "english": "Sam and Aman do not take a bath."
+            },
+            {
+              "text": "अमन भागा, और सैम भी भागा।",
+              "english": "Aman ran, and Sam ran too."
+            },
+            {
+              "text": "नानी बोलती हैं, \"चाय लीजिए!\"",
+              "english": "Nani says, \"Have some tea!\""
+            },
+            {
+              "text": "अमन बोलता है, \"नानी, देर हो गई है!\"",
+              "english": "Aman says, \"Nani, we are late!\""
+            },
+            {
+              "text": "वह भागता है।",
+              "english": "He runs."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन बोलता है, \"गिरजा में आराधना है। वहाँ भजन होता है, और गीत भी।\"",
+              "english": "Aman says, \"There is worship in the church. There is a hymn there, and a song too.\""
+            },
+            {
+              "text": "सैम बोलता है, \"पास्टर अनिल प्रार्थना करते हैं, और सब आमीन बोलते हैं।\"",
+              "english": "Sam says, \"Pastor Anil prays, and everyone says amen.\""
+            },
+            {
+              "text": "अमन बोलता है, \"वह सबको आशीर्वाद भी देते हैं।\"",
+              "english": "Aman says, \"He gives everyone a blessing too.\""
+            },
+            {
+              "text": "सैम बोलता है, \"औरत और आदमी वहाँ बैठते हैं।\"",
+              "english": "Sam says, \"Women and men sit there.\""
+            },
+            {
+              "text": "अमन बोलता है, \"चलो!\"",
+              "english": "Aman says, \"Come on!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी घर में चाय बनाती हैं।",
+              "english": "Nani makes tea at home."
+            },
+            {
+              "text": "गिरजा बड़ा है।",
+              "english": "The church is big."
+            },
+            {
+              "text": "गिरजा के बाहर पास्टर अनिल हैं।",
+              "english": "Pastor Anil is outside the church."
+            },
+            {
+              "text": "वह बोलते हैं, \"नमस्ते, सैम! नमस्ते, अमन!\"",
+              "english": "He says, \"Hello, Sam! Hello, Aman!\""
+            },
+            {
+              "text": "अमन बोलता है, \"नमस्ते, पास्टर! आज हमें देर हो गई।\"",
+              "english": "Aman says, \"Hello, Pastor! Today we were late.\""
+            },
+            {
+              "text": "वह बोलते हैं, \"ठीक है। आइए, बैठिए।\"",
+              "english": "He says, \"That's all right. Come in, sit down.\""
+            },
+            {
+              "text": "सैम और अमन गिरजा में आते हैं।",
+              "english": "Sam and Aman come into the church."
+            },
+            {
+              "text": "सब लोग गीत गाते हैं।",
+              "english": "Everyone sings a song."
+            },
+            {
+              "text": "एक औरत अमन को देखती है।",
+              "english": "A woman looks at Aman."
+            },
+            {
+              "text": "वह हँसने लगती है।",
+              "english": "She starts to laugh."
+            },
+            {
+              "text": "अमन बोलता है, \"मैं भी!\"",
+              "english": "Aman says, \"Me too!\""
+            },
+            {
+              "text": "सैम बोलता है, \"आज देर हो गई, लेकिन हम यहाँ हैं।\"",
+              "english": "Sam says, \"Today we were late, but we are here.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

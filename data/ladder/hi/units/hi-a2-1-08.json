@@ -1,0 +1,691 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-08",
+  "lang": "hi",
+  "title": "सरकारी दफ़्तर में",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-08",
+    "title": "At the government office (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Honorifics: Ravi is called रवि जी here, not रवि सर, on purpose: the adapter has no known lemma सर for the learner (24 unknown tokens in this unit), the same choice as hi-a2-1-04; the reviewer may restore रवि सर and the plan owner schedule सर. Ravi says तुम to Sam and आप to Ramesh, the old woman and the guard (Ramesh, a clerk and old friend, says आप to Sam); Sam says आप to everyone. The old woman is called अम्मा जी and calls Sam बेटा, as an elderly woman would a young stranger. The office is deliberately not named (visa or police registration); please check that \"ठहरने का आवेदन\" and \"ठहरने की सूचना\" are the right plain words for a guest's registration, and that a small fee paid at a bank, then a receipt, is plausible. The text says plainly that nobody should pay anything beyond the fee. The old woman says the church people once prayed for her son (चंगाई की प्रार्थना); respectful, no claim beyond her own words. सिपाही is glossed \"guard\". चित्र is used for the passport-size photo (a clerk's formal word). Passive uses: फ़ॉर्म भरा जाता है, फ़ीस दी जाती है, चित्र लगाया जाता है, आवेदन नहीं लिया जा सकता. \"सीधा जाइए\" (adverbial सीधा) and \"रसीद पर नीले रंग से तारीख़ लिखना\" please check. Words used outside the plan (kept): रसीद (the receipt, the unit's key object), पासपोर्ट, सरकारी, बदलना, मामला; the last two were avoided where possible."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "government office",
+    "forms",
+    "queue",
+    "fee",
+    "receipt",
+    "documents"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical-communication"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "सैम",
+    "ravi": "रवि जी",
+    "ramesh": "रमेश",
+    "amma": "बूढ़ी औरत",
+    "kisan": "किसान",
+    "vakil": "वकील",
+    "mazdoor": "मज़दूर",
+    "sipahi": "सिपाही"
+  },
+  "sections": [
+    {
+      "title": "फाटक पर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज सुबह सैम और रवि जी सरकारी दफ़्तर पहुँचे।",
+              "english": "This morning Sam and Ravi went to the government office."
+            },
+            {
+              "text": "दफ़्तर इस इलाक़े के पुराने मंदिर के पास था।",
+              "english": "The office was near the old temple of this area."
+            },
+            {
+              "text": "दरवाज़े पर एक सिपाही खड़ा था।",
+              "english": "A guard was standing at the door."
+            },
+            {
+              "speaker": "sipahi",
+              "text": "आप लोग कहाँ जा रहे हैं?",
+              "english": "Where are you people going?"
+            },
+            {
+              "speaker": "ravi",
+              "text": "हम सैम का आवेदन देने आए हैं।",
+              "english": "We have come to submit Sam's application."
+            },
+            {
+              "text": "सिपाही ने दोनों के नाम और नंबर लिखे।",
+              "english": "The guard wrote down both their names and numbers."
+            },
+            {
+              "speaker": "sipahi",
+              "text": "सीधा जाइए, खिड़की नंबर 3 दाएँ हाथ पर है।",
+              "english": "Go straight; window number 3 is on the right-hand side."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रास्ते में सैम ने पूछा कि यह काम कैसे होता है।",
+              "english": "On the way Sam asked how this work is done."
+            },
+            {
+              "speaker": "ravi",
+              "text": "पहले एक फ़ॉर्म भरा जाता है, फिर पासपोर्ट दिखाया जाता है।",
+              "english": "First a form is filled, then the passport is shown."
+            },
+            {
+              "speaker": "ravi",
+              "text": "आख़िर में फ़ीस दी जाती है, और उसकी रसीद मिलती है।",
+              "english": "In the end the fee is paid, and you get a receipt for it."
+            },
+            {
+              "speaker": "ravi",
+              "text": "तुम ज़रा भी मत घबराओ, मैं तुम्हारे साथ हूँ।",
+              "english": "Don't worry even a little, I am with you."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "कतार में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अंदर एक बड़े कमरे में मेले जैसी भीड़ थी।",
+              "english": "Inside, in a big room, there was a crowd like a fair."
+            },
+            {
+              "text": "कतार साँप की तरह लंबी थी।",
+              "english": "The queue was long like a snake."
+            },
+            {
+              "text": "छत पर पंखा धीरे धीरे घूम रहा था, और एक तरफ़ रेडियो पर पुराना गीत चल रहा था।",
+              "english": "A fan was turning slowly on the ceiling, and on one side an old song was playing on the radio."
+            },
+            {
+              "text": "कुर्सी पर बैठा एक आदमी अख़बार पढ़ रहा था।",
+              "english": "A man sitting on a chair was reading a newspaper."
+            },
+            {
+              "text": "सैम ने भी अख़बार उठाया और बड़े अक्षर पढ़ने लगा।",
+              "english": "Sam too picked up the newspaper and began to read the big letters."
+            },
+            {
+              "text": "सैम: हमें कितना इंतज़ार करना पड़ेगा?",
+              "english": "How long will we have to wait?"
+            },
+            {
+              "speaker": "ravi",
+              "text": "यहाँ इंतज़ार तो करना ही पड़ता है, पर आज शायद ज़्यादा देर नहीं लगेगी।",
+              "english": "One does have to wait here, but today perhaps it will not take very long."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "हमारे आगे एक बूढ़ी औरत खड़ी थी।",
+              "english": "An old woman was standing in front of us."
+            },
+            {
+              "text": "वह बहुत कमज़ोर लग रही थी, और हाथ में कपड़े का एक थैला था।",
+              "english": "She looked very weak, and there was a cloth bag in her hand."
+            },
+            {
+              "text": "सैम: अम्मा जी, आप कुर्सी पर बैठ जाइए, मैं आपकी जगह खड़ा रहता हूँ।",
+              "english": "Mother, please sit on the chair, I will stand in your place."
+            },
+            {
+              "text": "बूढ़ी औरत ने सैम के सिर को छूकर कहा, \"जीते रहो, बेटा।\"",
+              "english": "The old woman touched Sam's head and said, \"May you live long, son.\""
+            },
+            {
+              "speaker": "amma",
+              "text": "मेरा बेटा आज तनख़्वाह के दिन छुट्टी नहीं ले सका, इसलिए मैं अकेले आई हूँ।",
+              "english": "My son could not take leave today, on his salary day, so I have come alone."
+            },
+            {
+              "speaker": "amma",
+              "text": "घर का ख़र्च वही चलाता है।",
+              "english": "He is the one who runs the household expenses."
+            },
+            {
+              "speaker": "amma",
+              "text": "एक साल पहले तुम्हारी कलीसिया ने उसके लिए चंगाई की प्रार्थना की थी।",
+              "english": "A year ago your church prayed for his healing."
+            },
+            {
+              "speaker": "amma",
+              "text": "मैं उस ख़ुशी को हमेशा याद रखूँगी।",
+              "english": "I will always remember that joy."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "किसान, वकील और मज़दूर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हमारे पीछे एक किसान खड़ा था, और वह बहुत उदास लग रहा था।",
+              "english": "Behind us stood a farmer, and he looked very sad."
+            },
+            {
+              "speaker": "kisan",
+              "text": "इस बार बाढ़ में मेरा सारा खेत बह गया।",
+              "english": "This time the flood washed away my whole field."
+            },
+            {
+              "speaker": "kisan",
+              "text": "मैंने अच्छे बीज बोए थे, और कटाई में केवल एक महीना रह गया था।",
+              "english": "I had sown good seed, and only a month was left till the harvest."
+            },
+            {
+              "speaker": "kisan",
+              "text": "गए साल सूखा पड़ा था, और इस साल पहाड़ से इतना पानी आया।",
+              "english": "Last year there was a drought, and this year so much water came down from the mountain."
+            },
+            {
+              "speaker": "kisan",
+              "text": "कई जानवर भी बह गए, और जानवर गए तो दूध भी गया।",
+              "english": "Many animals were also washed away, and when the animals went the milk went too."
+            },
+            {
+              "speaker": "kisan",
+              "text": "जब फ़सल नहीं होती, तब किसान को तनख़्वाह भी नहीं मिलती।",
+              "english": "When there is no harvest, a farmer gets no salary either."
+            },
+            {
+              "speaker": "kisan",
+              "text": "एक रात घर में पानी आ गया, और एक साँप नीली बाल्टी पर चढ़कर बैठा था।",
+              "english": "One night water came into the house, and a snake had climbed onto a blue bucket and was sitting there."
+            },
+            {
+              "speaker": "kisan",
+              "text": "मैंने साँप को मारा नहीं, बस दरवाज़ा खोल दिया।",
+              "english": "I did not kill the snake, I just opened the door."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "किसान के पीछे एक वकील था, और वह बार बार घड़ी देख रहा था।",
+              "english": "Behind the farmer there was a lawyer, and he kept looking at his watch."
+            },
+            {
+              "text": "उसे आज अदालत भी लौटना था।",
+              "english": "He also had to go back to the court today."
+            },
+            {
+              "speaker": "vakil",
+              "text": "अदालत एक बजे खुलेगी, इसलिए मुझे जल्दी है।",
+              "english": "The court will open at one, so I am in a hurry."
+            },
+            {
+              "text": "उसके हाथ में काग़ज़ों का एक ढेर था, जिसे धागे से कसा गया था।",
+              "english": "In his hand he had a heap of papers, which had been tied tight with a thread."
+            },
+            {
+              "speaker": "vakil",
+              "text": "मेरे ग्राहक का नया घर है, इसलिए नया पता यहाँ भी बताना पड़ेगा।",
+              "english": "My client has a new house, so the new address has to be told here too."
+            },
+            {
+              "text": "उसके पास एक मज़दूर खड़ा था, और उसके कपड़े पुराने थे।",
+              "english": "A labourer stood near him, and his clothes were old."
+            },
+            {
+              "speaker": "mazdoor",
+              "text": "आज की मज़दूरी गई, पर यह काम करना ही था।",
+              "english": "Today's wages are gone, but this work had to be done."
+            },
+            {
+              "speaker": "mazdoor",
+              "text": "मुझे तनख़्वाह नहीं मिलती, केवल रोज़ की मज़दूरी मिलती है।",
+              "english": "I do not get a salary, I get only the daily wage."
+            },
+            {
+              "speaker": "mazdoor",
+              "text": "रोज़ का ख़र्च उसी से चलता है, इसलिए मज़दूरी छोड़कर आना छोटी बात नहीं थी।",
+              "english": "The daily expenses run on that, so leaving my wages to come was no small matter."
+            },
+            {
+              "speaker": "ravi",
+              "text": "इसलिए सब कुछ पूरा लेकर आना चाहिए।",
+              "english": "That is why one should bring everything complete."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "धीरे धीरे आधा घंटा बीत गया।",
+              "english": "Slowly half an hour went by."
+            },
+            {
+              "text": "अम्मा जी का नंबर आया, और रमेश ने उनका काम जल्दी कर दिया।",
+              "english": "Mother's turn came, and Ramesh did her work quickly."
+            },
+            {
+              "text": "जाते समय उन्होंने सैम की ओर देखा और मुस्कुराईं।",
+              "english": "While leaving she looked towards Sam and smiled."
+            },
+            {
+              "speaker": "ravi",
+              "text": "जैसे ही कतार आगे बढ़े, हमें खिड़की पर पहुँचना है।",
+              "english": "As soon as the queue moves ahead, we have to reach the window."
+            },
+            {
+              "text": "जहाँ बूढ़ी औरत खड़ी थी, वहाँ अब सैम खड़ा था।",
+              "english": "Where the old woman had been standing, Sam now stood."
+            },
+            {
+              "speaker": "sam",
+              "text": "अब मैं बिलकुल तैयार हूँ।",
+              "english": "Now I am quite ready."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "खिड़की नंबर 3",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आख़िर सैम का नंबर आया।",
+              "english": "Now it was Sam's turn."
+            },
+            {
+              "text": "खिड़की के पीछे रमेश बैठा था, और उसके पीछे नीले रंग की एक अलमारी थी।",
+              "english": "Ramesh sat behind the window, and behind him was a blue cupboard."
+            },
+            {
+              "text": "अलमारी पर एक बड़ा ताला लगा था, और मेज़ पर किताबों और पत्रों का ढेर था।",
+              "english": "A big lock hung on the cupboard, and on the table there was a heap of books and letters."
+            },
+            {
+              "speaker": "ravi",
+              "text": "रमेश, नमस्ते।",
+              "english": "Ramesh, hello."
+            },
+            {
+              "speaker": "ravi",
+              "text": "ये सैम हैं, हमारी कलीसिया के मेहमान।",
+              "english": "This is Sam, a guest of our church."
+            },
+            {
+              "speaker": "ravi",
+              "text": "इन्हें अपने ठहरने का आवेदन देना है।",
+              "english": "He has to submit his application to stay."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "बिलकुल, आइए।",
+              "english": "Of course, come."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "पहले यह फ़ॉर्म लीजिए।",
+              "english": "First take this form."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "नाम, पता और पासपोर्ट का नंबर बिलकुल साफ़ अक्षरों में लिखिए।",
+              "english": "Write the name, address and passport number in quite clear letters."
+            },
+            {
+              "text": "सैम फ़ॉर्म भरने लगा, और रमेश ने पास्टर अनिल का पत्र पढ़ा।",
+              "english": "Sam began to fill the form, and Ramesh read Pastor Anil's letter."
+            },
+            {
+              "text": "पत्र में लिखा था, \"आदरणीय अफ़सर, सैम हमारी कलीसिया का मेहमान है, और हम उसका ध्यान रखेंगे।\"",
+              "english": "The letter said, \"Respected officer, Sam is a guest of our church, and we will look after him.\""
+            },
+            {
+              "speaker": "ramesh",
+              "text": "अच्छा पत्र है, आप जैसे मेहमान यहाँ रोज़ आते हैं।",
+              "english": "It is a good letter; guests like you come here every day."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "इसके ऊपर एक चित्र लगाया जाता है, और उससे आपको पहचाना जाता है।",
+              "english": "A picture is put on top of it, and you are recognized by it."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "आपके पास दो चित्र हैं?",
+              "english": "Do you have two pictures?"
+            },
+            {
+              "text": "सैम ने अपना थैला खोला, फिर घबराकर बोला, \"मेरे पास केवल एक चित्र है।\"",
+              "english": "Sam opened his bag, then said nervously, \"I have only one picture.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "speaker": "ramesh",
+              "text": "कोई बात नहीं, पर ज़रा ध्यान से सुनिए।",
+              "english": "Never mind, but please listen carefully."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "अगर कोई काग़ज़ कम हो, तो आज रसीद नहीं मिलती।",
+              "english": "If any paper is short, then you do not get a receipt today."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "अगर दो चित्र न हों, तो आवेदन नहीं लिया जा सकता।",
+              "english": "If there are not two pictures, the application cannot be accepted."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "और अगर कोई काग़ज़ ग़लत निकले, तो बात अदालत तक जाती है।",
+              "english": "And if a paper turns out to be wrong, the matter goes to court."
+            },
+            {
+              "speaker": "ravi",
+              "text": "कोई बात नहीं, सामने एक दुकान है।",
+              "english": "Don't worry, there is a shop opposite."
+            },
+            {
+              "speaker": "ravi",
+              "text": "वहाँ पाँच मिनट में चित्र निकल जाते हैं।",
+              "english": "There pictures are taken in five minutes."
+            },
+            {
+              "speaker": "sam",
+              "text": "मैं अकेले जाऊँ या आप भी चलेंगे?",
+              "english": "Shall I go alone or will you come too?"
+            },
+            {
+              "speaker": "ravi",
+              "text": "तुम अकेले जाओ, यही हिंदी बोलने का समय है।",
+              "english": "You go alone, this is the time to speak Hindi."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बाहर का तूफ़ान",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम दुकान की ओर गया, और तभी बाहर तूफ़ान आ गया।",
+              "english": "Sam went towards the shop, and just then a storm came outside."
+            },
+            {
+              "text": "आँधी चली, बिजली चली गई, और दफ़्तर में अँधेरा हो गया।",
+              "english": "A gale blew, the electricity went, and it became dark in the office."
+            },
+            {
+              "text": "पंखा रुक गया, और रेडियो भी बंद हो गया।",
+              "english": "The fan stopped, and the radio went off too."
+            },
+            {
+              "text": "एक आदमी नल से पानी लाकर बाल्टी में डाल रहा था, क्योंकि फ़र्श पर पानी आ गया था।",
+              "english": "A man was bringing water from the tap and pouring it into a bucket, because water had come onto the floor."
+            },
+            {
+              "text": "थोड़ी देर बाद वह फ़र्श साफ़ करने लगा, और फ़र्श फिर चमकने लगा।",
+              "english": "After a while he began to clean the floor, and the floor began to shine again."
+            },
+            {
+              "text": "बाहर एक कार रुकी, और ड्राइवर ने छाता खोला।",
+              "english": "A car stopped outside, and the driver opened an umbrella."
+            },
+            {
+              "text": "उसमें से अफ़सर उतरे, और सब लोग खड़े हो गए।",
+              "english": "The officer got out of it, and everyone stood up."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "अफ़सर से भेंट दोपहर के बाद ही होती है, इसलिए आप लोग आराम कीजिए।",
+              "english": "The meeting with the officer takes place only after noon, so you people rest."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "तब तक मैं खाना खा लेता हूँ।",
+              "english": "Till then I will eat my meal."
+            },
+            {
+              "text": "रमेश के घर से एक डिब्बा आया था।",
+              "english": "A tiffin box had come from Ramesh's house."
+            },
+            {
+              "text": "उसने थाली में रोटी रखी, कटोरी में दाल निकाली, और गिलास में नल का पानी डाला।",
+              "english": "He put roti on a plate, took dal in a bowl, and poured tap water in a glass."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम भीगा हुआ लौटा, और उसके हाथ में एक नया चित्र था।",
+              "english": "Sam came back drenched, with a new picture in his hand."
+            },
+            {
+              "text": "रमेश ने भीगे हुए सैम को देखा, पर उसे पहचाना ही नहीं।",
+              "english": "Ramesh looked at the drenched Sam, but did not recognize him at all."
+            },
+            {
+              "text": "सैम: मैं ज़रा देर से आया, माफ़ कीजिए।",
+              "english": "I came a little late, sorry."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "अब सब पूरा है।",
+              "english": "Now everything is complete."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "फ़ीस और रसीद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "speaker": "ramesh",
+              "text": "अब फ़ीस 500 रुपये है।",
+              "english": "Now the fee is 500 rupees."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "यह फ़ीस यहाँ नहीं, बैंक में दी जाती है।",
+              "english": "This fee is not paid here, but at the bank."
+            },
+            {
+              "speaker": "ravi",
+              "text": "बैंक पुल के पास है, हम अभी चलते हैं।",
+              "english": "The bank is near the bridge, we will go right now."
+            },
+            {
+              "speaker": "ravi",
+              "text": "इसके बाद कोई और ख़र्च नहीं है।",
+              "english": "After this there is no other expense."
+            },
+            {
+              "speaker": "ravi",
+              "text": "अगर कोई और पैसे माँगे, तो हमें रमेश को बताना चाहिए।",
+              "english": "If anyone asks for more money, we should tell Ramesh."
+            },
+            {
+              "text": "बैंक में सैम ने पैसे दिए, और उसे उनकी रसीद मिली।",
+              "english": "At the bank Sam gave the money, and got a receipt for it."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "लौटते समय सिपाही ने सैम को सलाम किया।",
+              "english": "On the way back the guard greeted Sam."
+            },
+            {
+              "text": "दफ़्तर लौटकर सैम ने रसीद खिड़की पर रखी।",
+              "english": "Back at the office Sam put the receipt on the window."
+            },
+            {
+              "text": "रमेश ने उस पर नीले रंग से तारीख़ लिखी।",
+              "english": "Ramesh wrote the date on it in blue."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "आपका नतीजा सात दिन में फ़ोन या चिट्ठी से बताया जाएगा।",
+              "english": "Your result will be told by phone or by letter in seven days."
+            },
+            {
+              "speaker": "sam",
+              "text": "अगर नतीजा देर से आया तो?",
+              "english": "If the result comes late?"
+            },
+            {
+              "speaker": "ramesh",
+              "text": "तब इसी रसीद के साथ यहाँ आइए।",
+              "english": "Then come here with this same receipt."
+            },
+            {
+              "speaker": "ramesh",
+              "text": "इसे खोना मत, नहीं तो फिर आना पड़ेगा।",
+              "english": "Don't lose it, or you will have to come again."
+            },
+            {
+              "speaker": "ravi",
+              "text": "नतीजा जो भी हो, हम परमेश्वर पर भरोसा रखेंगे।",
+              "english": "Whatever the result, we will trust in God."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "शाम का पत्र",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शाम को सैम ने दो पत्र लिखे।",
+              "english": "In the evening Sam wrote two letters."
+            },
+            {
+              "text": "पहला पत्र पास्टर अनिल के लिए था।",
+              "english": "The first letter was for Pastor Anil."
+            },
+            {
+              "speaker": "sam",
+              "text": "आदरणीय पास्टर अनिल, आज मेरा काम हो गया।",
+              "english": "Respected Pastor Anil, my work is done today."
+            },
+            {
+              "speaker": "sam",
+              "text": "रवि जी की मदद से मुझे रसीद मिल गई।",
+              "english": "With Ravi's help I got the receipt."
+            },
+            {
+              "speaker": "sam",
+              "text": "अम्मा जी ने चंगाई की प्रार्थना की बात बताई, और मुझे बहुत ख़ुशी हुई।",
+              "english": "Mother told me about the prayer for healing, and I was very glad."
+            },
+            {
+              "speaker": "sam",
+              "text": "रविवार को आपसे भेंट होगी।",
+              "english": "I will meet you on Sunday."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दूसरा पत्र उसने अपनी माँ को लिखा।",
+              "english": "The second letter he wrote to his mother."
+            },
+            {
+              "speaker": "sam",
+              "text": "प्रिय माँ, आपकी बहुत याद आती है।",
+              "english": "Dear Mother, I miss you very much."
+            },
+            {
+              "speaker": "sam",
+              "text": "आज मैंने कतार में खड़े होकर बहुत कुछ सीखा।",
+              "english": "Today I learned a lot standing in the queue."
+            },
+            {
+              "speaker": "sam",
+              "text": "रवि जी मेरे प्रिय दोस्त बन गए हैं, और हम ख़ूब बात करते हैं।",
+              "english": "Ravi has become my dear friend, and we talk a lot."
+            },
+            {
+              "speaker": "sam",
+              "text": "यहाँ हर दिन थोड़ा मज़ा है और थोड़ा डर।",
+              "english": "Here every day has a little fun and a little fear."
+            },
+            {
+              "speaker": "sam",
+              "text": "आपका बेटा सैम",
+              "english": "Your son Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

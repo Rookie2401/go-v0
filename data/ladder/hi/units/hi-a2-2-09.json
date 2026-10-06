@@ -1,0 +1,459 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-09",
+  "lang": "hi",
+  "title": "पानी और कचरा",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-09",
+    "title": "\"पानी और कचरा\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Contemporary public-health nonfiction written by Sam as a short report on his lane, with sayings of गीता and सुरेश. The lane is unnamed. Points for the reviewer: सरदार जी is a neighbouring shopkeeper (a Sikh gentleman), mentioned respectfully and only by title; the poster text uses formal words (सर्वदा, स्मरण) on purpose, as municipal posters do, and the planned Bible-register top-up words (पवित्र, सत्य, जीवित, महिमा, वास, अर्थात्) are given natural homes here: a saying about holy rivers, a proverb, a definition. पवित्र is said without any comparison of religions. Adapter trap: planned top-up words (सरदार, महिमा, पवित्र, वास, स्थान, तोहफ़ा, सर्वदा, स्मरण) are unknown by design and are used exactly twice. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "public health",
+    "water",
+    "rubbish",
+    "neighbourhood"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "contemporary-nonfiction"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "हमारी गली",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हमारी गली में 40 घर हैं, और उनमें 200 लोग रहते हैं।",
+              "english": "There are 40 houses in our lane, and 200 people live in them."
+            },
+            {
+              "text": "सुबह की गली बहुत अच्छी लगती है: दुकानें खुलती हैं, बच्चे स्कूल जाते हैं, और हर घर में चाय बनती है।",
+              "english": "The lane looks very nice in the morning: shops open, children go to school, and tea is made in every house."
+            },
+            {
+              "text": "पर कुछ महीनों से हमारी गली की 2 बड़ी बातें सामने आई हैं: पानी और कचरा।",
+              "english": "But for a few months two big matters of our lane have come to the front: water and rubbish."
+            },
+            {
+              "text": "मैंने सोचा कि मैं इन दोनों के बारे में लिखूँ, ताकि सब लोग समझ सकें कि क्या हो रहा है।",
+              "english": "I thought I would write about both of them so that everybody could understand what is happening."
+            },
+            {
+              "text": "मेरी मदद गीता और सुरेश ने की, जो इसी गली में रहते हैं।",
+              "english": "Geeta and Suresh, who live in this very lane, helped me."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पानी कहाँ से आता है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हमारे घरों में पानी नल से आता है।",
+              "english": "The water in our houses comes from the tap."
+            },
+            {
+              "text": "यह पानी हर सुबह छह बजे छोड़ा जाता है, और 2 घंटे बाद बंद कर दिया जाता है।",
+              "english": "This water is released every morning at six, and is shut off two hours later."
+            },
+            {
+              "text": "इसलिए हर घर की छत पर एक टंकी रखी जाती है।",
+              "english": "That is why a tank is kept on the roof of every house."
+            },
+            {
+              "text": "सुबह का पानी उस टंकी में भरा जाता है, और दिन भर उसी से काम चलता है।",
+              "english": "The morning water is filled in that tank, and all day the work goes on with it."
+            },
+            {
+              "text": "सुरेश ने मुझे बताया कि पानी की टंकी साल में 2 बार साफ़ की जानी चाहिए, तभी बच्चों में ताक़त रहती है।",
+              "english": "Suresh told me that the water tank should be cleaned twice a year, only then do the children keep their strength."
+            },
+            {
+              "text": "पर बहुत-से लोग उसे कई साल तक साफ़ नहीं करते।",
+              "english": "But many people do not clean it for many years."
+            },
+            {
+              "text": "नतीजा यह होता है कि टंकी का पानी गंदा हो जाता है।",
+              "english": "The result is that the water of the tank becomes dirty."
+            },
+            {
+              "text": "उसमें मच्छर रहने लगते हैं, और गंदा पानी पीने से लोग बीमार पड़ते हैं।",
+              "english": "Mosquitoes begin to live in it, and people fall ill from drinking dirty water."
+            },
+            {
+              "text": "इस तरह की बीमारी बच्चों को जल्दी लग जाती है।",
+              "english": "This kind of illness catches children quickly."
+            },
+            {
+              "text": "जो पानी हम पीते हैं, वह साफ़ होना चाहिए।",
+              "english": "The water that we drink should be clean."
+            },
+            {
+              "text": "इसी बात पर गीता ने एक पुरानी बात सुनाई: पानी के बिना कोई जीवित नहीं रह सकता।",
+              "english": "On this very point Geeta repeated an old saying: without water nobody can stay alive."
+            },
+            {
+              "text": "लोग गीतों में पानी की महिमा गाते हैं, और बारिश की महिमा भी।",
+              "english": "People sing the glory of water in songs, and the glory of the rain too."
+            },
+            {
+              "text": "लोग कई नदियों को पवित्र मानते हैं।",
+              "english": "People regard many rivers as holy."
+            },
+            {
+              "text": "गीता कहती हैं कि जिसे हम पवित्र मानते हैं, उसे साफ़ भी रखना चाहिए।",
+              "english": "Geeta says that what we regard as holy we should keep clean as well."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "कचरा कहाँ जाता है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हर सुबह शहर की गाड़ी हमारी गली में आती है, और कचरा उठाया जाता है।",
+              "english": "Every morning the town's vehicle comes to our lane, and the rubbish is picked up."
+            },
+            {
+              "text": "पर गाड़ी सिर्फ़ एक बार आती है, और बहुत-से लोग उस समय घर पर नहीं होते।",
+              "english": "But the vehicle comes only once, and many people are not at home at that time."
+            },
+            {
+              "text": "इसलिए कई लोग कचरा बाहर रख देते हैं, या सीधा नाली में डाल देते हैं।",
+              "english": "So many people leave the rubbish outside, or throw it straight into the drain."
+            },
+            {
+              "text": "शादी के बाद काग़ज़ की प्लेट और बोतलें भी नाली में चली जाती हैं।",
+              "english": "After a wedding, paper plates and bottles also go into the drain."
+            },
+            {
+              "text": "कभी-कभी नाली में सूखी डाली भी मिलती है, जो आँधी में पेड़ से गिरती है।",
+              "english": "Sometimes a dry branch which falls from a tree in a storm is also found in the drain."
+            },
+            {
+              "text": "उस बारिश के बाद नाली से 50 प्लेटें, बोतलें और एक सूखी डाली निकाली गईं।",
+              "english": "After that rain 50 plates, bottles and a dry branch were taken out of the drain."
+            },
+            {
+              "text": "जब नाली बंद हो जाती है, तो बारिश का पानी सड़क पर भर जाता है।",
+              "english": "When the drain gets blocked, the rain water fills the road."
+            },
+            {
+              "text": "एक महीने पहले भारी बारिश हुई, और गली में पैरों तक पानी आ गया।",
+              "english": "A month ago there was heavy rain, and water came up to the feet in the lane."
+            },
+            {
+              "text": "उस पानी में प्लेटें, बोतलें और गंदगी तैर रही थी।",
+              "english": "In that water plates, bottles and filth were floating."
+            },
+            {
+              "text": "बच्चों ने उसी पानी में खेलना शुरू कर दिया, और हम सब को डर लगा।",
+              "english": "The children began to play in that very water, and all of us were afraid."
+            },
+            {
+              "text": "बंदर भी हमारी गली में आने लगे हैं।",
+              "english": "Monkeys have also begun to come to our lane."
+            },
+            {
+              "text": "वे पेड़ की डाल पर बैठकर देखते हैं, और कचरे में खाना ढूँढ़ते हैं।",
+              "english": "They sit on the branch of a tree and watch, and look for food in the rubbish."
+            },
+            {
+              "text": "सरदार जी की दुकान के सामने कल एक बंदर ने कचरे का पूरा थैला खोल दिया।",
+              "english": "In front of Sardar ji's shop yesterday a monkey opened a whole bag of rubbish."
+            },
+            {
+              "text": "सरदार जी ने हँसकर कहा कि इस गंदगी का नतीजा यही है।",
+              "english": "Sardar ji said with a laugh that this is the result of this filth."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "यह क्यों ज़रूरी है",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "गंदगी बीमारी भी लाती है।",
+              "english": "Filth brings illness too."
+            },
+            {
+              "text": "मच्छर गंदे पानी में रहते हैं, और उनसे मलेरिया और डेंगू होते हैं।",
+              "english": "Mosquitoes live in dirty water, and malaria and dengue spread from them."
+            },
+            {
+              "text": "मीरा दीदी के पास हर हफ़्ते कई बच्चे इसी वजह से आते हैं।",
+              "english": "Every week several children come to Meera didi for just this reason."
+            },
+            {
+              "text": "बीमार बच्चे की ताक़त कम हो जाती है, और वह कई दिन स्कूल नहीं जा सकता।",
+              "english": "A sick child's strength grows less, and he cannot go to school for many days."
+            },
+            {
+              "text": "ग़रीब परिवारों के लिए यह और भी भारी पड़ता है, क्योंकि उन्हें दवा के पैसे भी देने पड़ते हैं।",
+              "english": "For poor families it is even heavier, because they also have to pay money for medicine."
+            },
+            {
+              "text": "गंदगी से नींद भी नहीं आती।",
+              "english": "With filth even sleep does not come."
+            },
+            {
+              "text": "रात को नाली की वजह से गीता को नींद नहीं आती थी, इसलिए उन्होंने खिड़की पर मोटा पर्दा लगा लिया।",
+              "english": "At night Geeta could not sleep because of the drain, so she put a thick curtain on the window."
+            },
+            {
+              "text": "सुरेश कहते हैं कि जिस घर में नींद कम होती है, वहाँ काम की ताक़त भी कम होती है।",
+              "english": "Suresh says that in a house where sleep is short, the strength for work is also short."
+            },
+            {
+              "text": "कई लोग कहते हैं कि यह सरकार का काम है, हमारा नहीं।",
+              "english": "Many people say that this is the government's work, not ours."
+            },
+            {
+              "text": "पर जो काम सब का है, वह सब को करना पड़ता है।",
+              "english": "But work that belongs to all has to be done by all."
+            },
+            {
+              "text": "जहाँ सफ़ाई होती है, वहाँ ख़ुशी का वास होता है, और जहाँ गंदगी होती है, वहाँ बीमारी का वास होता है।",
+              "english": "Where there is cleanliness, happiness dwells, and where there is filth, illness dwells."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सरदार जी की बात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सरदार जी इस गली में 25 साल से दुकान चला रहे हैं।",
+              "english": "Sardar ji has been running a shop in this lane for 25 years."
+            },
+            {
+              "text": "उन्होंने बताया कि पहले गली में एक कुआँ था, और सब लोग उसका पानी पीते थे।",
+              "english": "He told me that earlier there was a well in the lane, and everybody drank its water."
+            },
+            {
+              "text": "तब कचरा कम था, और लोग मिलकर कुएँ की सफ़ाई करते थे।",
+              "english": "Then there was less rubbish, and people cleaned the well together."
+            },
+            {
+              "text": "आज हर घर में अपना नल है, पर सफ़ाई का काम कोई अपना नहीं समझता।",
+              "english": "Today every house has its own tap, but nobody regards the work of cleaning as his own."
+            },
+            {
+              "text": "उन्होंने कहा, \"सुविधा बढ़ी है, पर मिलकर काम करने की बात कम हुई है।\"",
+              "english": "He said, \"Facilities have grown, but the habit of working together has become less.\""
+            },
+            {
+              "text": "मैंने पूछा कि क्या वे फिर से मिलकर काम करने के लिए तैयार हैं।",
+              "english": "I asked whether they were ready to work together again."
+            },
+            {
+              "text": "उन्होंने कहा, \"क्यों नहीं? सबसे पहले मैं 500 रुपये दूँगा।\"",
+              "english": "He said, \"Why not? First of all I will give 500 rupees.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "शिकायत और सुधार",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक दिन गीता ने खिड़की का पर्दा उठाकर बाहर देखा और कहा, \"बस, अब बहुत हुआ।\"",
+              "english": "One day Geeta lifted the curtain of the window, looked outside and said, \"Enough, now it is too much.\""
+            },
+            {
+              "text": "उसी दिन उन्होंने शहर के दफ़्तर में शिकायत लिखी।",
+              "english": "That same day she wrote a complaint at the town office."
+            },
+            {
+              "text": "उस शिकायत में गली के 30 लोगों के नाम लिखे गए।",
+              "english": "On that complaint the names of 30 people of the lane were written."
+            },
+            {
+              "text": "सत्य यह है कि पहले कई लोग शिकायत करने से डरते थे।",
+              "english": "The truth is that earlier many people were afraid of making a complaint."
+            },
+            {
+              "text": "पर जब गीता ने हिम्मत की, तो बाक़ी लोगों का हौसला भी बढ़ा।",
+              "english": "But when Geeta found courage, the courage of the others rose too."
+            },
+            {
+              "text": "2 हफ़्ते बाद दफ़्तर से एक आदमी आया, और उसने नाली देखी।",
+              "english": "Two weeks later a man came from the office, and he looked at the drain."
+            },
+            {
+              "text": "उसने कहा कि नाली साफ़ की जाएगी और कचरे के लिए एक स्थान तय किया जाएगा।",
+              "english": "He said that the drain would be cleaned and a place would be fixed for the rubbish."
+            },
+            {
+              "text": "सुधार धीरे-धीरे होता है, यह सब जानते हैं, पर पहला सुधार हो चुका है।",
+              "english": "Improvement happens slowly, everybody knows that, but the first improvement has been made."
+            },
+            {
+              "text": "कचरे का स्थान गली के कोने पर है, और अगला सुधार वह होगा जब हर घर वहाँ कचरा डालेगा।",
+              "english": "The place for rubbish is at the corner of the lane, and the next improvement will be when every house puts its rubbish there."
+            },
+            {
+              "text": "गली के कोने पर कचरे के 2 नए डिब्बे रखे गए हैं, और बच्चों को एक छोटा-सा तोहफ़ा भी मिला।",
+              "english": "Two new rubbish bins have been placed at the corner of the lane, and the children also got a small gift."
+            },
+            {
+              "text": "वह तोहफ़ा एक सुंदर थैला था, जिस पर लिखा था: \"मेरी गली, मेरा काम।\"",
+              "english": "That gift was a pretty bag on which was written: \"My lane, my work.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "गीता की ट्रेनिंग",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "गीता ने गली की औरतों के लिए सफ़ाई की एक छोटी ट्रेनिंग रखी।",
+              "english": "Geeta arranged a small cleanliness training for the women of the lane."
+            },
+            {
+              "text": "उसमें मीरा दीदी ने बताया कि टंकी कैसे साफ़ की जाती है और बीमारी से कैसे बचा जाता है।",
+              "english": "In it Meera didi explained how the tank is cleaned and how illness is avoided."
+            },
+            {
+              "text": "25 औरतें और कुछ आदमी आए, और सबने कॉपी में लिखा।",
+              "english": "25 women and a few men came, and everybody wrote in a notebook."
+            },
+            {
+              "text": "उस ट्रेनिंग की सफलता यह रही कि अगले हफ़्ते 20 घरों की टंकी साफ़ की गई।",
+              "english": "The success of that training was that the next week the tanks of 20 houses were cleaned."
+            },
+            {
+              "text": "सरदार जी ने भी अपनी दुकान की नाली साफ़ की, और सबसे कहा कि सफ़ाई ग़रीब के लिए भी है और बड़े आदमी के लिए भी।",
+              "english": "Sardar ji also cleaned the drain of his shop, and told everybody that cleanliness is for the poor man as well as the great man."
+            },
+            {
+              "text": "ट्रेनिंग के बाद गीता ने सबको चाय दी और हँसकर सबको विदा किया।",
+              "english": "After the training Geeta gave everybody tea and saw everybody off with a laugh."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "हम क्या कर सकते हैं",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सुरेश ने कुछ बातें बताईं, जिन्हें मैं यहाँ लिख रहा हूँ।",
+              "english": "Suresh told some points, which I am writing down here."
+            },
+            {
+              "text": "पहली बात: हर टंकी साल में 2 बार साफ़ की जानी चाहिए।",
+              "english": "First: every tank should be cleaned twice a year."
+            },
+            {
+              "text": "दूसरी बात: कचरा नाली में नहीं, डिब्बे में डालना चाहिए।",
+              "english": "Second: rubbish should be put in a bin, not in the drain."
+            },
+            {
+              "text": "इसके बाद: बारिश से पहले नाली देखनी चाहिए, ताकि पानी रुके नहीं।",
+              "english": "After that: before the rains the drain should be looked at, so that the water does not stop."
+            },
+            {
+              "text": "आख़िर में: खिड़कियों पर पर्दे लगाने चाहिए, ताकि मच्छर अंदर न आएँ।",
+              "english": "Finally: curtains should be put on the windows, so that mosquitoes do not come in."
+            },
+            {
+              "text": "गीता ने गली की दीवार पर एक बड़ा काग़ज़ लगाया है।",
+              "english": "Geeta has put up a big sheet of paper on the wall of the lane."
+            },
+            {
+              "text": "उस पर लिखा है: \"पानी बचाएँ, कचरा ठीक जगह डालें, और अपनी गली को सर्वदा साफ़ रखें।\"",
+              "english": "On it is written: \"Save water, put rubbish in the right place, and keep your lane clean always.\""
+            },
+            {
+              "text": "नीचे छोटे अक्षरों में लिखा है: \"स्मरण रखें, साफ़ गली सबसे बड़ी सुविधा है।\"",
+              "english": "Below in small letters it is written: \"Remember, a clean lane is the greatest facility.\""
+            },
+            {
+              "text": "मुझे वह बात बहुत अच्छी लगी, क्योंकि महँगाई के इस समय में यह सुविधा बिना पैसे की है।",
+              "english": "I liked that very much, because in this time of high prices this facility costs no money."
+            },
+            {
+              "text": "सर्वदा साफ़ रहना मुश्किल है, पर हर आदमी थोड़ी कोशिश करे, तो पूरे मोहल्ले को उसका फ़ायदा मिलता है।",
+              "english": "To be clean always is hard, but if each man makes a little effort, the whole neighbourhood gets its benefit."
+            },
+            {
+              "text": "अर्थात् सफ़ाई एक की नहीं, सबकी है, और स्मरण रखना चाहिए कि सब मिलकर ही इसे कर सकते हैं।",
+              "english": "That is, cleanliness belongs not to one but to all, and it must be remembered that only all together can do it."
+            },
+            {
+              "text": "यह कोई बड़ा सपना नहीं है, और इसके लिए बड़ी तरक़्क़ी भी नहीं चाहिए।",
+              "english": "This is no big dream, and no great progress is needed for it."
+            },
+            {
+              "text": "चाहिए तो बस एक छोटा-सा हौसला, और यह फ़ैसला कि हम अपनी गली को साफ़ रखेंगे।",
+              "english": "What is needed is just a little courage, and the decision that we will keep our lane clean."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,407 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-21",
+  "lang": "hi",
+  "title": "टीम की साप्ताहिक रिपोर्ट",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-21",
+    "title": "\"टीम की साप्ताहिक रिपोर्ट\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "The weekly report that Sam and Kiran write for Pastor Anil: patients, visits, the evening class, money, promises and prayer subjects. Report register: the present perfect (-ा है / -े हैं), the passive (रखी गई है) and कि-clauses carry the unit. Points for the reviewer: Kiran is written without gendered verbs on purpose (the plan does not fix Kiran's sex); \"पादरी\" is explained once as a word that many neighbours use for a pastor; \"ईसाई\" is used as an ordinary adjective and noun; the figures (patients, rupees) are invented and in digits. The report mentions prayer and testimony words (संगति, उपदेश, बपतिस्मा, ज्योति, अंधकार) as in earlier units. Adapter trap: the name किरण is first read as the common noun किरण (ray), not as a proper noun (the plan counted it as a name); it is known here only because earlier units use it three times. 'क्लिनिक' (used in hi-a1-1-22) is replaced by अस्पताल so that Meera didi's workplace has one name across this stage. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "report",
+    "mission team",
+    "clinic",
+    "finance",
+    "prayer"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "रिपोर्ट का शीर्षक",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इस हफ़्ते की रिपोर्ट",
+              "english": "This week's report"
+            },
+            {
+              "text": "पास्टर अनिल जी के नाम",
+              "english": "To Pastor Anil ji"
+            },
+            {
+              "text": "भेजने वाले: सैम और किरण",
+              "english": "Sent by: Sam and Kiran"
+            },
+            {
+              "text": "आदरणीय पास्टर जी, इस हफ़्ते का हमारा काम नीचे लिखा गया है।",
+              "english": "Respected Pastor ji, our work of this week is written below."
+            },
+            {
+              "text": "इसे हम दोनों ने मिलकर लिखा है, और हर पैसे की रसीद हमारे पास रखी गई है।",
+              "english": "We both have written it together, and a receipt of every rupee has been kept with us."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "अस्पताल में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इस हफ़्ते अस्पताल में 45 मरीज़ आए हैं, जो पिछले हफ़्ते से 10 ज़्यादा हैं।",
+              "english": "This week 45 patients have come to the hospital, which is 10 more than last week."
+            },
+            {
+              "text": "बरसात के कारण बहुत-से लोग बुखार, खाँसी और पेट की बीमारी लेकर आए हैं।",
+              "english": "Because of the rainy season many people have come with fever, cough and stomach illness."
+            },
+            {
+              "text": "मीरा दीदी ने सबकी जाँच की है, और 6 बच्चों को टीका भी लगाया गया है।",
+              "english": "Meera didi has examined everybody, and 6 children have also been given injections."
+            },
+            {
+              "text": "एक दर्ज़ी अपनी आँखों के दर्द के साथ आया है, क्योंकि वह रात-रात भर काम करता है।",
+              "english": "A tailor has come with pain in his eyes, because he works all night."
+            },
+            {
+              "text": "उस दर्ज़ी ने बताया कि बरसात में उसकी दुकान में रोशनी कम रहती है।",
+              "english": "That tailor told us that in the rainy season the light in his shop is low."
+            },
+            {
+              "text": "मीरा दीदी ने उसके लिए चश्मे की बात की है, और किरण ने सस्ते चश्मे का पता लगाया है।",
+              "english": "Meera didi has talked about glasses for him, and Kiran has found out about cheap glasses."
+            },
+            {
+              "text": "एक मछुआरे के पैर में गहरा घाव था, और मीरा दीदी ने उसे पोंछकर साफ़ किया और पट्टी लगाई है।",
+              "english": "A fisherman had a deep wound in his foot, and Meera didi wiped it clean and put a bandage on."
+            },
+            {
+              "text": "उसने अपना माथा पोंछा और कहा कि इतनी सेवा उसे पहले कभी नहीं मिली।",
+              "english": "He wiped his forehead and said that he had never got so much service before."
+            },
+            {
+              "text": "वह बार-बार कहता रहा कि वह कल से काम पर जाएगा, पर हमने उसे 3 दिन आराम करने को कहा है।",
+              "english": "He kept saying that he would go to work from tomorrow, but we have told him to rest for 3 days."
+            },
+            {
+              "text": "कल एक खिलाड़ी भी आया था, जिसके पैर में चोट लगी थी।",
+              "english": "Yesterday a sportsman had also come, whose foot was hurt."
+            },
+            {
+              "text": "वह एक पल के लिए भी रुकना नहीं चाहता था, क्योंकि उसका खेल 2 दिन बाद था।",
+              "english": "He did not want to stop even for a moment, because his match was 2 days later."
+            },
+            {
+              "text": "कुछ पल बाद वह मान गया, और आज वह फिर आया है, और उसका पैर पहले से ठीक है।",
+              "english": "After a few moments he agreed, and today he has come again, and his foot is better than before."
+            },
+            {
+              "text": "वह खिलाड़ी अब हर दिन पट्टी दिखाने आता है, और उसकी हँसी लौट आई है।",
+              "english": "That sportsman now comes every day to show the bandage, and his laughter has returned."
+            },
+            {
+              "text": "मीरा दीदी ने उससे कहा कि पैर बचेगा, तो खेल भी बचेगा, और वह मान गया।",
+              "english": "Meera didi told him that if the foot is saved, the game will be saved too, and he agreed."
+            },
+            {
+              "text": "एक माँ अपनी बच्ची को लेकर आई है, जिसके बाल गंदे थे और सिर में दर्द था।",
+              "english": "A mother has come with her little girl, whose hair was dirty and who had pain in the head."
+            },
+            {
+              "text": "मीरा दीदी ने बच्ची के बाल साफ़ किए, और माँ को समझाया कि बालों को हफ़्ते में 2 बार साबुन से धोना चाहिए।",
+              "english": "Meera didi cleaned the girl's hair, and explained to the mother that hair should be washed with soap twice a week."
+            },
+            {
+              "text": "माँ रो पड़ी, और बच्ची ने अपनी माँ की आँखें पोंछीं।",
+              "english": "The mother burst into tears, and the girl wiped her mother's eyes."
+            },
+            {
+              "text": "उस दिन हमने देखा कि हर इंसान को, चाहे वह कितना भी छोटा हो, किसी दूसरे इंसान की ज़रूरत होती है।",
+              "english": "That day we saw that every human being, however small, needs another human being."
+            },
+            {
+              "text": "दर्ज़ी, मछुआरे और खिलाड़ी, ये सब अलग लोग हैं, पर इंसान के नाते एक-से हैं।",
+              "english": "The tailor, the fisherman and the sportsman, these are all different people, but as human beings they are alike."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "घर-घर की मुलाक़ात",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इस हफ़्ते हम 12 घरों में गए हैं।",
+              "english": "This week we have gone to 12 houses."
+            },
+            {
+              "text": "इनमें से 3 घर नदी के किनारे मछुआरों के गाँव में हैं, जहाँ बरसात में पानी घरों के अंदर आ जाता है।",
+              "english": "Of these 3 houses are in the village of fishermen on the river bank, where in the rainy season water comes inside the houses."
+            },
+            {
+              "text": "वहाँ के लोगों ने हमें चाय दी, और अपने बच्चों के बारे में बहुत-सी बातें बताईं।",
+              "english": "The people there gave us tea, and told us many things about their children."
+            },
+            {
+              "text": "उन्होंने पूछा कि अस्पताल नदी तक कब आएगा, और हमने वादा किया है कि हम अगले हफ़्ते वहाँ जाएँगे।",
+              "english": "They asked when the hospital would come as far as the river, and we have promised that we will go there next week."
+            },
+            {
+              "text": "यह वादा हमने सोच-समझकर किया है, क्योंकि पेट्रोल का ख़र्च बढ़ गया है, और ट्रैफ़िक के कारण रास्ता लंबा हो जाता है।",
+              "english": "We have made this promise after thinking, because the expense of petrol has increased, and because of traffic the way becomes long."
+            },
+            {
+              "text": "पर हम जानते हैं कि वादा करके न जाना सबसे बुरा है, इसलिए जाएँगे ज़रूर।",
+              "english": "But we know that to promise and not go is the worst, so we will certainly go."
+            },
+            {
+              "text": "जिन मरीज़ों को बड़े इलाज की ज़रूरत है, उन्हें हम सरकारी अस्पताल भेजते हैं, और वहाँ हमारा एक आदमी उनके साथ जाता है।",
+              "english": "The patients who need big treatment we send to the government hospital, and there one of our men goes with them."
+            },
+            {
+              "text": "जिस गिरजाघर में रविवार को हम इकट्ठा होते हैं, वह एक सदी से भी ज़्यादा पुराना है।",
+              "english": "The church building in which we gather on Sunday is more than a century old."
+            },
+            {
+              "text": "वह पिछली सदी में बना था, और उसकी घंटी आज भी पूरे मोहल्ले में सुनाई देती है।",
+              "english": "It was built in the last century, and its bell is heard even today in the whole neighbourhood."
+            },
+            {
+              "text": "इस सदी में हर तरफ़ सब कुछ बदल गया, पर गिरजाघर की घंटी नहीं बदली, और उस घंटी के पल हमें याद कराते हैं कि सब लोग साथ हैं।",
+              "english": "In this century everything around has changed, but the bell of the church building has not changed, and the moments of that bell remind us that all people are together."
+            },
+            {
+              "text": "गिरजाघर के आँगन में आज भी बच्चे खेलते हैं।",
+              "english": "In the courtyard of the church building children play even today."
+            },
+            {
+              "text": "उसकी दीवारें बदल चुकी हैं, पर उसकी संगति वही है, और यह बात हमें सचमुच अच्छी लगी।",
+              "english": "Its walls have changed, but its fellowship is the same, and we really liked this."
+            },
+            {
+              "text": "इस गिरजाघर में ईसाई परिवारों के 15 घर आते हैं, और बाक़ी लोग दोस्त बनकर आते हैं।",
+              "english": "To this church building 15 houses of Christian families come, and the other people come as friends."
+            },
+            {
+              "text": "पास के एक आदमी ने हमसे कहा, \"आप पादरी के साथी हैं, इसलिए मैं आपसे खुलकर बात करता हूँ।\"",
+              "english": "A man nearby said to us, \"You are companions of the pastor, so I speak to you freely.\""
+            },
+            {
+              "text": "सरदार जी भी पास्टर अनिल को पादरी जी कहकर बुलाते हैं।",
+              "english": "Sardar ji also calls Pastor Anil by saying padri ji."
+            },
+            {
+              "text": "हमने समझाया कि पास्टर को कई लोग पादरी कहते हैं, और हम ईसाई ज़रूर हैं, पर सबके दोस्त हैं।",
+              "english": "We explained that many people call a pastor a padri, and that we are Christian, certainly, but friends of all."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "शाम की क्लास",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इस हफ़्ते शाम की क्लास में 18 बच्चे आए हैं, और उनमें से 4 बच्चे नए हैं।",
+              "english": "This week 18 children have come to the evening class, and 4 of them are new."
+            },
+            {
+              "text": "एक बच्चे के लिए हमने पास के निजी स्कूल में दाख़िले की बात की है।",
+              "english": "For one child we have talked about admission in the nearby private school."
+            },
+            {
+              "text": "स्कूल के दफ़्तर ने कहा कि दाख़िले के लिए पहले बच्चे का पाठ्यक्रम देखना पड़ेगा।",
+              "english": "The office of the school said that for admission the syllabus will have to be seen first."
+            },
+            {
+              "text": "किरण ने बच्चे के साथ बैठकर पाठ्यक्रम की किताबें देखी हैं, और बच्चा हर पाठ को ध्यान से पढ़ रहा है।",
+              "english": "Kiran has sat with the child and looked at the syllabus books, and the child is reading every lesson with attention."
+            },
+            {
+              "text": "कुछ बच्चे घर में दूसरी बोली बोलते हैं, इसलिए उन्हें हिंदी के शब्द समझने में वक़्त लगता है।",
+              "english": "Some children speak another dialect at home, so they take time to understand Hindi words."
+            },
+            {
+              "text": "हमने तय किया है कि हम उनकी बोली को ध्यान से सुनेंगे, और धीरे-धीरे हिंदी सिखाएँगे।",
+              "english": "We have decided that we will listen carefully to their dialect, and teach Hindi slowly."
+            },
+            {
+              "text": "शाम की क्लास में हम बच्चों को कहानी सुनाते हैं, उन्हें गीत सुनाते हैं, और एक छोटी-सी प्रार्थना भी करते हैं।",
+              "english": "In the evening class we tell stories to children, sing songs to them, and say a short prayer too."
+            },
+            {
+              "text": "जिन बच्चों के घर के लोग ईसाई नहीं हैं, उनके बारे में हमने सबसे पूछ लिया है कि क्या वे प्रार्थना से ख़ुश हैं।",
+              "english": "About the children whose family people are not Christian, we have asked everybody whether they are happy with the prayer."
+            },
+            {
+              "text": "किसी ने बुरा नहीं माना है, और एक पिता ने तो कहा कि प्रार्थना से बच्चे शांत रहते हैं।",
+              "english": "Nobody has taken it badly, and one father even said that children stay calm with prayer."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सभा और भोज",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "रविवार को चर्च में सभा हुई, जिसमें 70 लोग आए।",
+              "english": "On Sunday there was a meeting in the church, in which 70 people came."
+            },
+            {
+              "text": "पास्टर जी का उपदेश अंधकार और ज्योति के बारे में था, और सबने उसे ध्यान से सुना है, और अपने मन में ग्रहण किया है।",
+              "english": "Pastor ji's sermon was about darkness and light, and everybody has listened to it carefully, and received it in their hearts."
+            },
+            {
+              "text": "उसके बाद एक बपतिस्मा भी हुआ, और सबने नए भाई को गले लगाया।",
+              "english": "After that a baptism also took place, and everybody embraced the new brother."
+            },
+            {
+              "text": "सभा के बाद चर्च का आँगन सजा हुआ था, और वहाँ भोज रखा गया था।",
+              "english": "After the meeting the courtyard of the church was decorated, and a feast was held there."
+            },
+            {
+              "text": "खाना 80 लोगों में बाँटा गया है, और जो बच गया, वह पास के ग़रीब घरों में भेज दिया गया।",
+              "english": "The food has been shared among 80 people, and what was left has been sent to poor houses nearby."
+            },
+            {
+              "text": "इसी दिन कपड़ों का एक छोटा-सा बाज़ार भी लगा था, जहाँ पुराने कपड़े बाँटे गए।",
+              "english": "On the same day a small market of clothes was also held, where old clothes were distributed."
+            },
+            {
+              "text": "एक ग़रीब लड़के को एक ठीक-सी पैंट मिली, और वह उसे पहनकर इतना ख़ुश हुआ कि बार-बार अपने माथे के बाल पीछे करता रहा।",
+              "english": "A poor boy got a decent pair of trousers, and wearing them he was so happy that he kept putting the hair of his forehead back again and again."
+            },
+            {
+              "text": "हमें लगता है कि यह भी एक तरह का प्रचार है, जो शब्दों के बिना होता है।",
+              "english": "It seems to us that this too is a kind of preaching, which is without words."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पैसे का हिसाब",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "इस हफ़्ते 4,200 रुपये ख़र्च हुए हैं, और हर ख़र्च की रसीद रखी गई है।",
+              "english": "This week 4,200 rupees have been spent, and a receipt of every expense has been kept."
+            },
+            {
+              "text": "इसमें 1,500 रुपये दवा और पट्टी पर, 900 रुपये पेट्रोल पर और 600 रुपये ऑटो के किराये पर लगे हैं।",
+              "english": "Of this 1,500 rupees went on medicine and bandages, 900 rupees on petrol and 600 rupees on the fare of the auto."
+            },
+            {
+              "text": "दीपक जी का ऑटो मीटर से चलता है, और उन्होंने इस बार भी हमें रसीद दी है।",
+              "english": "Deepak ji's auto runs by the meter, and this time too he has given us a receipt."
+            },
+            {
+              "text": "अस्पताल के नए सामान का क़र्ज़ अब भी 8,000 रुपये बाक़ी है, और इस हफ़्ते उसमें से 1,000 रुपये दिए गए हैं।",
+              "english": "The loan on the hospital's new equipment is still 8,000 rupees left, and this week 1,000 rupees of it have been paid."
+            },
+            {
+              "text": "किसी ने हमसे कहा था कि जो क़र्ज़ से बचता है, वह बेवक़ूफ़ है, पर हमने उसे समझाया कि बिना क़र्ज़ के यह सामान कभी नहीं आता।",
+              "english": "Somebody had told us that he who avoids debt is a fool, but we explained to him that without the loan this equipment would never have come."
+            },
+            {
+              "text": "सब पैसा लोगों की मदद से आया है, और हम उसे ठीक से ख़र्च कर रहे हैं।",
+              "english": "All the money has come from people's help, and we are spending it properly."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "प्रार्थना और धन्यवाद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हम इस हफ़्ते इन बातों के लिए धन्यवाद देते हैं: मछुआरे का घाव भर रहा है, खिलाड़ी का पैर बच गया है, और 4 नए बच्चे शाम की क्लास में आए हैं।",
+              "english": "This week we give thanks for these things: the fisherman's wound is healing, the sportsman's foot has been saved, and 4 new children have come to the evening class."
+            },
+            {
+              "text": "हमने इस हफ़्ते जो अनुभव पाए हैं, उनसे यह सीख मिली है कि छोटी मदद भी बड़ा चमत्कार बन जाती है।",
+              "english": "From the experiences that we have received this week we have got the lesson that even small help becomes a great miracle."
+            },
+            {
+              "text": "हमें यह भी लगा है कि जगत में बहुत-से लोग अपना दर्द किसी से नहीं कहते, और हमारा काम उन्हें सुनना है।",
+              "english": "It has also seemed to us that in the world many people tell their pain to no one, and our work is to listen to them."
+            },
+            {
+              "text": "हम इन बातों के लिए प्रार्थना की विनती करते हैं: मछुआरों के गाँव के लिए, दर्ज़ी की आँखों के लिए, और बरसात में बीमार होने वाले बच्चों के लिए।",
+              "english": "We request prayer for these things: for the fishermen's village, for the tailor's eyes, and for the children who fall ill in the rainy season."
+            },
+            {
+              "text": "और यह भी कि हम जो वादे करते हैं, उन्हें पूरा करने की ताक़त हमें मिलती रहे।",
+              "english": "And this too, that we may keep getting the strength to fulfil the promises that we make."
+            },
+            {
+              "text": "आपका सेवक,",
+              "english": "Your servant,"
+            },
+            {
+              "text": "सैम और किरण",
+              "english": "Sam and Kiran"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

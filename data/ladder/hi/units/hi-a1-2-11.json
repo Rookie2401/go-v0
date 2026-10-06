@@ -1,0 +1,351 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-11",
+  "lang": "hi",
+  "title": "सीता नानी की दाल",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-11",
+    "title": "Seeta Nani's dal (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Instructions in the तुम imperative (धोओ, काटो, डालो) to Aman and the आप imperative (सीखिए) to Sam; negative commands with मत; the conjunctive participle (धोकर, काटकर, उबालकर). Nani is honorific plural (बोलती हैं, बताती हैं). रखना is used once and is not in the plan's lists. The recycle list of the plan is woven into Sam's journey the next day (the food Nani packs) and the cooking lesson. Words outside the plan (measured): none."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "cooking",
+    "instructions",
+    "kitchen"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "सीता नानी की दाल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज नानी दाल बनाती हैं।",
+              "english": "Today Nani is making dal."
+            },
+            {
+              "text": "अमन रसोई में आता है।",
+              "english": "Aman comes into the kitchen."
+            },
+            {
+              "text": "वह बोलता है, \"नानी, मैं भी दाल पकाना चाहता हूँ।\"",
+              "english": "He says, \"Nani, I want to cook dal too.\""
+            },
+            {
+              "text": "सैम भी रसोई में आता है।",
+              "english": "Sam comes into the kitchen too."
+            },
+            {
+              "text": "वह बोलता है, \"नानी, मैं भी सीखना चाहता हूँ।\"",
+              "english": "He says, \"Nani, I want to learn too.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"आप दोनों ध्यान से सुनिए।\"",
+              "english": "Nani says, \"Both of you, listen carefully.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी बोलती हैं, \"पहले दाल धोओ।\"",
+              "english": "Nani says, \"First wash the dal.\""
+            },
+            {
+              "text": "\"दो बार धोओ।\"",
+              "english": "\"Wash it twice.\""
+            },
+            {
+              "text": "\"फिर दाल धोकर बर्तन में डालो।\"",
+              "english": "\"Then wash the dal and put it in the pot.\""
+            },
+            {
+              "text": "\"दूसरा बर्तन लाओ और पानी उबालो।\"",
+              "english": "\"Bring a second pot and boil the water.\""
+            },
+            {
+              "text": "\"पानी उबालकर दाल में डालो।\"",
+              "english": "\"Boil the water and pour it onto the dal.\""
+            },
+            {
+              "text": "\"बर्तन को चूल्हे पर लाओ।\"",
+              "english": "\"Bring the pot to the stove.\""
+            },
+            {
+              "text": "\"अब दाल पकाओ।\"",
+              "english": "\"Now cook the dal.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन बोलता है, \"नानी, इसका नाम क्या है?\"",
+              "english": "Aman says, \"Nani, what is this called?\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"इसका नाम हल्दी है।\"",
+              "english": "Nani says, \"This is called turmeric.\""
+            },
+            {
+              "text": "\"थोड़ी हल्दी डालो।\"",
+              "english": "\"Add a little turmeric.\""
+            },
+            {
+              "text": "\"थोड़ा नमक डालो।\"",
+              "english": "\"Add a little salt.\""
+            },
+            {
+              "text": "\"और यह मसाला डालो।\"",
+              "english": "\"And add this spice.\""
+            },
+            {
+              "text": "\"नमक मेज़ पर है।\"",
+              "english": "\"The salt is on the table.\""
+            },
+            {
+              "text": "\"मसाला भी थोड़ा डालो।\"",
+              "english": "\"Add only a little of the spice too.\""
+            },
+            {
+              "text": "\"नमक देखो, मसाला भी देखो।\"",
+              "english": "\"Taste the salt, check the spice too.\""
+            },
+            {
+              "text": "सैम बोलता है, \"नानी, तेल कितना डालूँ?\"",
+              "english": "Sam says, \"Nani, how much oil should I add?\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"एक चम्मच तेल।\"",
+              "english": "Nani says, \"One spoon of oil.\""
+            },
+            {
+              "text": "\"चम्मच से तेल डालो।\"",
+              "english": "\"Add the oil with the spoon.\""
+            },
+            {
+              "text": "\"एक बार ध्यान से देखो।\"",
+              "english": "\"Look once, carefully.\""
+            },
+            {
+              "text": "\"यह रसोई बड़ी है।\"",
+              "english": "\"This kitchen is big.\""
+            },
+            {
+              "text": "\"दूसरा चम्मच यहाँ है।\"",
+              "english": "\"The second spoon is here.\""
+            },
+            {
+              "text": "\"हल्दी भी देखो।\"",
+              "english": "\"Look at the turmeric too.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी बोलती हैं, \"अब प्याज़ और टमाटर काटो।\"",
+              "english": "Nani says, \"Now cut the onions and tomatoes.\""
+            },
+            {
+              "text": "\"प्याज़ काटकर डालो।\"",
+              "english": "\"Cut the onions and put them in.\""
+            },
+            {
+              "text": "\"पालक भी काटो।\"",
+              "english": "\"Cut the spinach too.\""
+            },
+            {
+              "text": "\"पालक दाल में डालो।\"",
+              "english": "\"Put the spinach in the dal.\""
+            },
+            {
+              "text": "\"पालक बहुत अच्छा है।\"",
+              "english": "\"Spinach is very good.\""
+            },
+            {
+              "text": "अमन बोलता है, \"नानी, यह चूल्हा बहुत गरम है।\"",
+              "english": "Aman says, \"Nani, this stove is very hot.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"हाँ, चूल्हे के पास मत जाओ।\"",
+              "english": "Nani says, \"Yes, do not go near the stove.\""
+            },
+            {
+              "text": "\"मत भागो, अमन!\"",
+              "english": "\"Don't run, Aman!\""
+            },
+            {
+              "text": "\"दाल बनाते समय बात मत करो।\"",
+              "english": "\"Do not talk while making dal.\""
+            },
+            {
+              "text": "सैम बोलता है, \"नानी, हमारा घर बहुत बड़ा है।\"",
+              "english": "Sam says, \"Nani, our house is very big.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"हाँ, हमारी रसोई भी बड़ी है।\"",
+              "english": "Nani says, \"Yes, our kitchen is big too.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी बोलती हैं, \"अब दाल उबालो।\"",
+              "english": "Nani says, \"Now boil the dal.\""
+            },
+            {
+              "text": "दाल गरम है।",
+              "english": "The dal is hot."
+            },
+            {
+              "text": "अमन बोलता है, \"सैम, आप कितना समझ गए?\"",
+              "english": "Aman says, \"Sam, how much have you understood?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं सब समझ गया। मुझे अब दाल बनानी पड़ेगी!\"",
+              "english": "Sam says, \"I have understood everything. Now I will have to make dal!\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"मैं आपको बताती हूँ: ग़लती कीजिए, फिर सीखिए।\"",
+              "english": "Nani says, \"I will tell you: make mistakes, then learn.\""
+            },
+            {
+              "text": "सैम बोलता है, \"यह दाल का पाठ है। यह अच्छा पाठ है।\"",
+              "english": "Sam says, \"This is a dal lesson. It is a good lesson.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"रसोई में मैं पढ़ाती हूँ, और रवि सर कमरे में पढ़ाते हैं।\"",
+              "english": "Nani says, \"I teach in the kitchen, and Ravi sir teaches in the room.\""
+            },
+            {
+              "text": "सैम एक वाक्य बोलता है: \"मैं दाल पकाऊँगा।\"",
+              "english": "Sam says a sentence: \"I will cook dal.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"बहुत अच्छा! यह वाक्य अच्छा है।\"",
+              "english": "Nani says, \"Very good! This sentence is good.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं रोज़ शब्द का अभ्यास करूँगा।\"",
+              "english": "Sam says, \"I will practise words every day.\""
+            },
+            {
+              "text": "अमन बोलता है, \"और अक्षर भी?\"",
+              "english": "Aman says, \"And the letters too?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "कल सैम सफ़र पर जाता है।",
+              "english": "Tomorrow Sam goes on a journey."
+            },
+            {
+              "text": "वह स्टेशन जाएगा।",
+              "english": "He will go to the station."
+            },
+            {
+              "text": "नानी बोलती हैं, \"सैम, आप टिकट लेकर जाइए।\"",
+              "english": "Nani says, \"Sam, go with a ticket.\""
+            },
+            {
+              "text": "\"सीट नंबर देखिए।\"",
+              "english": "\"Look at your seat number.\""
+            },
+            {
+              "text": "\"थोड़ा सामान लीजिए।\"",
+              "english": "\"Take only a little luggage.\""
+            },
+            {
+              "text": "सैम बोलता है, \"नानी, मैं प्लेटफ़ॉर्म पर इंतज़ार करूँगा।\"",
+              "english": "Sam says, \"Nani, I will wait on the platform.\""
+            },
+            {
+              "text": "\"मैं ट्रेन में चढ़ सकता हूँ, और गाँव में उतर सकता हूँ।\"",
+              "english": "\"I can get on the train, and get off in the village.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"एक किसान वहाँ आपका साथ देगा।\"",
+              "english": "Nani says, \"A farmer there will help you.\""
+            },
+            {
+              "text": "\"वह एक महीना शहर में रहते हैं।\"",
+              "english": "\"He stays in the city for a month, and everyone knows him.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"यह लीजिए। यह दिवाली की मिठाई है।\"",
+              "english": "Nani says, \"Here you are. This is the Diwali sweet.\""
+            },
+            {
+              "text": "\"यह एक दीया भी लीजिए।\"",
+              "english": "\"Take a lamp too.\""
+            },
+            {
+              "text": "\"यह मेरा उपहार है।\"",
+              "english": "\"This is my gift.\""
+            },
+            {
+              "text": "सैम बोलता है, \"और तकिया?\"",
+              "english": "Sam says, \"And the pillow?\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"तकिया आपके पास है, सैम!\"",
+              "english": "Nani says, \"You already have the pillow, Sam!\""
+            },
+            {
+              "text": "सैम बोलता है, \"धन्यवाद, नानी!\"",
+              "english": "Sam says, \"Thank you, Nani!\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

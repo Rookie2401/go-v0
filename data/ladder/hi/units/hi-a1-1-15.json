@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-1-15",
+  "lang": "hi",
+  "title": "मैदान में लड़के और लड़कियाँ",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-1-15",
+    "title": "Boys and girls in the park (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "There is no word for \"park\" in the plan, so the children play in a मैदान (open field). Plural forms लड़के / लड़कियाँ are used once the singular is also in the text. Honorific plural for रवि सर and चाचा जी. Words outside the plan (measured): none."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "play",
+    "community",
+    "market"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "मैदान में लड़के और लड़कियाँ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज शनिवार है।",
+              "english": "Today is Saturday."
+            },
+            {
+              "text": "सैम और अमन मैदान जाते हैं।",
+              "english": "Sam and Aman go to the field."
+            },
+            {
+              "text": "मैदान बड़ा है।",
+              "english": "The field is big."
+            },
+            {
+              "text": "मैदान में बहुत लोग हैं।",
+              "english": "There are many people in the field."
+            },
+            {
+              "text": "लड़के खेलते हैं।",
+              "english": "The boys play."
+            },
+            {
+              "text": "लड़कियाँ भी खेलती हैं।",
+              "english": "The girls play too."
+            },
+            {
+              "text": "अमन बोलता है, \"सैम, मैं भी खेलता हूँ!\"",
+              "english": "Aman says, \"Sam, I am going to play too!\""
+            },
+            {
+              "text": "सैम बोलता है, \"ठीक है, अमन।\"",
+              "english": "Sam says, \"All right, Aman.\""
+            },
+            {
+              "text": "सैम अमन का थैला लेता है।",
+              "english": "Sam takes Aman's bag."
+            },
+            {
+              "text": "थैले में गेंद है।",
+              "english": "The ball is in the bag."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "एक लड़का गेंद लेता है।",
+              "english": "A boy takes the ball."
+            },
+            {
+              "text": "गेंद बड़ी है। गेंद सफ़ेद है।",
+              "english": "The ball is big. The ball is white."
+            },
+            {
+              "text": "एक लड़की भी गेंद लेती है।",
+              "english": "A girl takes the ball too."
+            },
+            {
+              "text": "अमन बोलता है, \"मेरी गेंद कहाँ है?\"",
+              "english": "Aman says, \"Where is my ball?\""
+            },
+            {
+              "text": "सैम बोलता है, \"गेंद थैले में नहीं है।\"",
+              "english": "Sam says, \"The ball is not in the bag.\""
+            },
+            {
+              "text": "सब बोलते हैं, \"गेंद छत पर है!\"",
+              "english": "Everyone says, \"The ball is on the roof!\""
+            },
+            {
+              "text": "यह छत शर्मा जी की है।",
+              "english": "This roof is Sharma ji's."
+            },
+            {
+              "text": "अमन बोलता है, \"मेरी गेंद शर्मा जी की छत पर है!\"",
+              "english": "Aman says, \"My ball is on Sharma ji's roof!\""
+            },
+            {
+              "text": "रवि सर भी आते हैं।",
+              "english": "Ravi sir comes too."
+            },
+            {
+              "text": "वह जाते हैं और गेंद लेते हैं।",
+              "english": "He goes and takes the ball."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"अमन, यह लो, आपकी गेंद।\"",
+              "english": "Ravi sir says, \"Aman, here you are, your ball.\""
+            },
+            {
+              "text": "अमन बोलता है, \"धन्यवाद, सर!\"",
+              "english": "Aman says, \"Thank you, sir!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम तस्वीर लेता है।",
+              "english": "Sam takes a picture."
+            },
+            {
+              "text": "तस्वीर में बहुत लोग हैं।",
+              "english": "There are many people in the picture."
+            },
+            {
+              "text": "सैम बोलता है, \"क्या यह आपका दोस्त है?\"",
+              "english": "Sam says, \"Is this your friend?\""
+            },
+            {
+              "text": "अमन बोलता है, \"हाँ, यह मेरा दोस्त है।\"",
+              "english": "Aman says, \"Yes, this is my friend.\""
+            },
+            {
+              "text": "सैम बोलता है, \"यह लड़का कौन है?\"",
+              "english": "Sam says, \"Who is this boy?\""
+            },
+            {
+              "text": "अमन बोलता है, \"यह मेरा दोस्त है।\"",
+              "english": "Aman says, \"This is my friend.\""
+            },
+            {
+              "text": "सैम बोलता है, \"और यह लड़की कौन है?\"",
+              "english": "Sam says, \"And who is this girl?\""
+            },
+            {
+              "text": "अमन बोलता है, \"यह भी मेरी दोस्त है।\"",
+              "english": "Aman says, \"She is my friend too.\""
+            },
+            {
+              "text": "सैम बोलता है, \"यह तस्वीर बहुत अच्छी है!\"",
+              "english": "Sam says, \"This picture is very good!\""
+            },
+            {
+              "text": "अमन बोलता है, \"क्या मैं भी लेता हूँ?\"",
+              "english": "Aman says, \"Shall I take one too?\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि सर बोलते हैं, \"चलिए, बाज़ार चलते हैं।\"",
+              "english": "Ravi sir says, \"Come, let's go to the market.\""
+            },
+            {
+              "text": "बाज़ार में रमेश सब्ज़ी बेचता है।",
+              "english": "Ramesh sells vegetables at the market."
+            },
+            {
+              "text": "रमेश बोलता है, \"आइए, आइए!\"",
+              "english": "Ramesh says, \"Come, come!\""
+            },
+            {
+              "text": "आज टमाटर महँगे हैं।",
+              "english": "Tomatoes are expensive today."
+            },
+            {
+              "text": "आलू सस्ते हैं।",
+              "english": "Potatoes are cheap."
+            },
+            {
+              "text": "प्याज़ भी सस्ती है।",
+              "english": "Onions are cheap too."
+            },
+            {
+              "text": "सर बोलते हैं, \"प्याज़ और आलू एक किलो।\"",
+              "english": "Sir says, \"One kilo of onions and potatoes.\""
+            },
+            {
+              "text": "रमेश बोलता है, \"यह लीजिए, एक किलो।\"",
+              "english": "Ramesh says, \"Here you are, one kilo.\""
+            },
+            {
+              "text": "अमन बोलता है, \"दाम क्या है?\"",
+              "english": "Aman says, \"What is the price?\""
+            },
+            {
+              "text": "रमेश बोलता है, \"दाम ठीक है।\"",
+              "english": "Ramesh says, \"The price is fine.\""
+            },
+            {
+              "text": "सर पैसा लेते हैं।",
+              "english": "Sir takes the money."
+            },
+            {
+              "text": "थैला मेज़ पर है।",
+              "english": "The bag is on the table."
+            },
+            {
+              "text": "सैम केला लेता है।",
+              "english": "Sam takes a banana."
+            },
+            {
+              "text": "केला महँगा है, लेकिन अच्छा है।",
+              "english": "The banana is expensive, but good."
+            },
+            {
+              "text": "चाचा जी भी बाज़ार में हैं।",
+              "english": "Chacha ji is at the market too."
+            },
+            {
+              "text": "चाचा जी का थैला बड़ा है।",
+              "english": "Chacha ji's bag is big."
+            },
+            {
+              "text": "सैम बोलता है, \"चाचा जी, नमस्ते!\"",
+              "english": "Sam says, \"Chacha ji, hello!\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

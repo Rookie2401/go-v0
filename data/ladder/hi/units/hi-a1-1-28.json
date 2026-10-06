@@ -1,0 +1,347 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-1-28",
+  "lang": "hi",
+  "title": "रविवार को चर्च में",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-1-28",
+    "title": "Sunday at church (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Church words are the ones Hindi churches use (प्रार्थना, भजन, आराधना, आशीर्वाद, आमीन; गिरजा beside चर्च); the reviewer should say which of गिरजा / चर्च / कलीसिया is natural for this community. \"सुनीता आंटी\": आंटी has no reading in the word list (it counts as an unknown word each time). गाना (to sing) is used twice and is not in the plan's lists for this unit. पास्टर अनिल is named only three times; after that \"वह\". The prayer for the sick brings back the clinic words. The adapter reads सोता as a noun (a spring), so सोना is used in progressive and other forms here. Honorific plurals for पास्टर, सुनीता आंटी, नानी. Words outside the plan (measured, adapter lemmas x tokens): गाना×2 (to sing; first use here), आंटी×1 (no reading in the word list; \"सुनीता आंटी\" once, then सुनीता जी)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church",
+    "worship",
+    "prayer"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church-and-mission-life"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "रविवार को चर्च में",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज रविवार है।",
+              "english": "Today is Sunday."
+            },
+            {
+              "text": "सैम, नानी और अमन गिरजा जाते हैं।",
+              "english": "Sam, Nani and Aman go to the church."
+            },
+            {
+              "text": "कुछ लोग चर्च को गिरजा कहते हैं।",
+              "english": "Some people call a church a girja."
+            },
+            {
+              "text": "गिरजा के बाहर बहुत लोग हैं।",
+              "english": "There are many people outside the church."
+            },
+            {
+              "text": "पास्टर अनिल भी बाहर हैं।",
+              "english": "Pastor Anil is outside too."
+            },
+            {
+              "text": "वह बोलते हैं, \"नमस्ते, सैम! आइए!\"",
+              "english": "He says, \"Hello, Sam! Come in!\""
+            },
+            {
+              "text": "सैम बोलता है, \"नमस्ते, पास्टर।\"",
+              "english": "Sam says, \"Hello, Pastor.\""
+            },
+            {
+              "text": "सुनीता आंटी भी यहाँ हैं।",
+              "english": "Sunita aunty is here too."
+            },
+            {
+              "text": "वह बोलती हैं, \"सैम, आप कैसे हैं?\"",
+              "english": "She says, \"Sam, how are you?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं ठीक हूँ, सुनीता जी।\"",
+              "english": "Sam says, \"I am fine, Sunita ji.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "हम अंदर जाते हैं।",
+              "english": "We go inside."
+            },
+            {
+              "text": "अंदर बहुत लोग हैं।",
+              "english": "There are many people inside."
+            },
+            {
+              "text": "लोग कुर्सी पर बैठते हैं।",
+              "english": "The people sit on chairs."
+            },
+            {
+              "text": "सुनीता जी बोलती हैं, \"सैम, यहाँ बैठिए।\"",
+              "english": "Sunita ji says, \"Sam, sit here.\""
+            },
+            {
+              "text": "अमन भी बैठता है।",
+              "english": "Aman sits too."
+            },
+            {
+              "text": "आज सभा में बहुत लोग हैं।",
+              "english": "There are many people at the meeting today."
+            },
+            {
+              "text": "औरत और आदमी बैठते हैं।",
+              "english": "Women and men sit down."
+            },
+            {
+              "text": "एक औरत के पास एक छोटा बच्चा है।",
+              "english": "A woman has a small child with her."
+            },
+            {
+              "text": "बच्चा सो रहा है।",
+              "english": "The child is sleeping."
+            },
+            {
+              "text": "औरत बच्चे को देखती है।",
+              "english": "The woman looks at the child."
+            },
+            {
+              "text": "बच्चा सो गया है।",
+              "english": "The child has fallen asleep."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "पास्टर अनिल बोलते हैं, \"आइए, हम प्रार्थना करते हैं।\"",
+              "english": "Pastor Anil says, \"Come, let us pray.\""
+            },
+            {
+              "text": "सब लोग प्रार्थना करते हैं।",
+              "english": "Everyone prays."
+            },
+            {
+              "text": "सब बोलते हैं, \"आमीन!\"",
+              "english": "Everyone says, \"Amen!\""
+            },
+            {
+              "text": "हम सब गीत गाते हैं।",
+              "english": "We all sing a song."
+            },
+            {
+              "text": "यह भजन हिंदी में है।",
+              "english": "This hymn is in Hindi."
+            },
+            {
+              "text": "सैम कुछ नहीं बोलता, वह सुनता है।",
+              "english": "Sam says nothing, he listens."
+            },
+            {
+              "text": "भजन बहुत अच्छा है।",
+              "english": "The hymn is very good."
+            },
+            {
+              "text": "सैम को यह गीत बहुत पसंद है।",
+              "english": "Sam likes this song very much."
+            },
+            {
+              "text": "अमन भी भजन गाता है।",
+              "english": "Aman sings the hymn too."
+            },
+            {
+              "text": "अमन सुनता भी है।",
+              "english": "Aman listens too."
+            },
+            {
+              "text": "यह आराधना बहुत अच्छी है।",
+              "english": "This worship is very good."
+            },
+            {
+              "text": "नानी को आराधना पसंद है।",
+              "english": "Nani likes worship."
+            },
+            {
+              "text": "सैम को प्रार्थना अच्छी लगती है।",
+              "english": "Sam likes the prayer."
+            },
+            {
+              "text": "सैम को आराधना अच्छी लगती है।",
+              "english": "Sam likes the worship."
+            },
+            {
+              "text": "सभा में लोग अपनी बात बोलते हैं।",
+              "english": "At the meeting people say what is on their mind."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "एक आदमी बोलता है, \"मेरी माँ बीमार हैं।\"",
+              "english": "A man says, \"My mother is ill.\""
+            },
+            {
+              "text": "\"माँ को बुखार है।\"",
+              "english": "\"Mother has a fever.\""
+            },
+            {
+              "text": "\"माँ के पेट में दर्द है।\"",
+              "english": "\"Mother has a pain in her stomach.\""
+            },
+            {
+              "text": "सब बोलते हैं, \"आमीन।\"",
+              "english": "Everyone says, \"Amen.\""
+            },
+            {
+              "text": "सुनीता जी बोलती हैं, \"मुझे खाँसी है, और मेरे सिर में दर्द है।\"",
+              "english": "Sunita ji says, \"I have a cough, and a pain in my head.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"अमन कल बीमार था। उसे बुखार था।\"",
+              "english": "Nani says, \"Aman was ill yesterday. He had a fever.\""
+            },
+            {
+              "text": "\"आज अमन ठीक है। वह ख़ुश है।\"",
+              "english": "\"Today Aman is well. He is happy.\""
+            },
+            {
+              "text": "अमन बोलता है, \"मुझे खाँसी नहीं है। मेरा सिर ठीक है।\"",
+              "english": "Aman says, \"I have no cough. My head is fine.\""
+            },
+            {
+              "text": "एक आदमी बोलता है, \"मेरी आँख लाल है। मेरी आँख में पानी है।\"",
+              "english": "A man says, \"My eye is red. There is water in my eye.\""
+            },
+            {
+              "text": "सभा में एक डॉक्टर भी हैं।",
+              "english": "There is a doctor at the meeting too."
+            },
+            {
+              "text": "वह बोलते हैं, \"आप दवा लीजिए, और आराम कीजिए।\"",
+              "english": "He says, \"Take medicine, and rest.\""
+            },
+            {
+              "text": "डॉक्टर दवा देते हैं।",
+              "english": "The doctor gives medicine."
+            },
+            {
+              "text": "सैम बोलता है, \"मेरा पेट ठीक है। मैं ख़ुश हूँ।\"",
+              "english": "Sam says, \"My stomach is fine. I am happy.\""
+            },
+            {
+              "text": "अमन बोलता है, \"नानी, मैं सो नहीं रहा हूँ!\"",
+              "english": "Aman says, \"Nani, I am not sleeping!\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सब बोलते हैं, \"आमीन!\"",
+              "english": "Everyone says, \"Amen!\""
+            },
+            {
+              "text": "वह सबको आशीर्वाद देते हैं।",
+              "english": "He gives everyone a blessing."
+            },
+            {
+              "text": "सैम बोलता है, \"मुझे भी आशीर्वाद चाहिए।\"",
+              "english": "Sam says, \"I need a blessing too.\""
+            },
+            {
+              "text": "यह आशीर्वाद बहुत अच्छा है।",
+              "english": "This blessing is very good."
+            },
+            {
+              "text": "आज का गीत हिंदी में है।",
+              "english": "Today's song is in Hindi."
+            },
+            {
+              "text": "नानी बोलती हैं, \"सैम, आप कल भी आइए।\"",
+              "english": "Nani says, \"Sam, come tomorrow too.\""
+            },
+            {
+              "text": "हम घर जाते हैं।",
+              "english": "We go home."
+            },
+            {
+              "text": "घर में चाय तैयार है।",
+              "english": "Tea is ready at home."
+            },
+            {
+              "text": "नानी चाय बनाती हैं।",
+              "english": "Nani makes tea."
+            },
+            {
+              "text": "अमन बोलता है, \"नानी, मुझे दूध चाहिए।\"",
+              "english": "Aman says, \"Nani, I want milk.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मुझे चाय पसंद है!\"",
+              "english": "Sam says, \"I like tea!\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"सैम, आपको चाय पसंद है, और अमन को दूध।\"",
+              "english": "Nani says, \"Sam, you like tea, and Aman likes milk.\""
+            },
+            {
+              "text": "हम खाना खाते हैं।",
+              "english": "We eat."
+            },
+            {
+              "text": "चावल, दाल और रोटी मेज़ पर हैं।",
+              "english": "Rice, dal and roti are on the table."
+            },
+            {
+              "text": "सैम बोलता है, \"धन्यवाद, नानी!\"",
+              "english": "Sam says, \"Thank you, Nani!\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,371 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-19",
+  "lang": "hi",
+  "title": "क्लिनिक का एक दिन",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-19",
+    "title": "A day at the clinic (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A day at the hospital in the simple past with ने (मीरा दीदी ने कहा), obligation (देना पड़ेगा, आना पड़ेगा) and future. The nurse says आराम कीजिए, दवा लीजिए, कल फिर आइए. \"क्लिनिक\" is in the plan's title; the text says अस्पताल because क्लिनिक has no reading. The doctor is spoken of with the honorific plural; the child and the woman are not named. Weather and message words are brought back in the story. Words outside the plan (measured, adapter lemmas x tokens): ठंडा×1, थका×1, तभी×1 (under-met)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "health",
+    "hospital",
+    "patients"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "क्लिनिक का एक दिन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज सैम मीरा दीदी के साथ अस्पताल गया।",
+              "english": "Today Sam went to the hospital with Meera didi."
+            },
+            {
+              "text": "सुबह बहुत ठंड थी।",
+              "english": "The morning was very cold."
+            },
+            {
+              "text": "मौसम अच्छा नहीं था।",
+              "english": "The weather was not good."
+            },
+            {
+              "text": "रात को बारिश हो चुकी थी, और आसमान में बादल थे।",
+              "english": "It had already rained in the night, and there were clouds in the sky."
+            },
+            {
+              "text": "हवा ठंडी थी।",
+              "english": "The wind was cold."
+            },
+            {
+              "text": "मीरा दीदी ने कहा, \"आज बहुत मरीज़ आएँगे।\"",
+              "english": "Meera didi said, \"Many patients will come today.\""
+            },
+            {
+              "text": "उन्होंने कहा, \"सर्दी में लोग बीमार होते हैं, और ज़ुकाम भी होता है।\"",
+              "english": "She said, \"In the cold season people fall ill, and get colds too.\""
+            },
+            {
+              "text": "\"गर्मी में भी लोग बीमार होते हैं।\"",
+              "english": "\"In the hot season people fall ill too.\""
+            },
+            {
+              "text": "सैम ने पूछा, \"दीदी, मैं क्या करूँ?\"",
+              "english": "Sam asked, \"Didi, what should I do?\""
+            },
+            {
+              "text": "उन्होंने कहा, \"आप सबको पानी दीजिए।\"",
+              "english": "She said, \"Give everyone water.\""
+            },
+            {
+              "text": "दीवार पर एक सूचना थी।",
+              "english": "There was a notice on the wall."
+            },
+            {
+              "text": "उसमें बैठक का समय था।",
+              "english": "It gave the time of a meeting."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "एक आदमी आया।",
+              "english": "A man came."
+            },
+            {
+              "text": "वह बहुत थका था।",
+              "english": "He was very tired."
+            },
+            {
+              "text": "उसे खाँसी थी, और ज़ुकाम भी।",
+              "english": "He had a cough, and a cold too."
+            },
+            {
+              "text": "उसके गले में दर्द था।",
+              "english": "His throat hurt."
+            },
+            {
+              "text": "उसने कहा, \"मैं बारिश में भीग गया।\"",
+              "english": "He said, \"I got wet in the rain.\""
+            },
+            {
+              "text": "\"मेरे कपड़े भीगे थे, और मेरे पास छाता नहीं था।\"",
+              "english": "\"My clothes were wet, and I had no umbrella.\""
+            },
+            {
+              "text": "मीरा दीदी ने उसका गला देखा।",
+              "english": "Meera didi looked at his throat."
+            },
+            {
+              "text": "डॉक्टर ने कहा, \"यह गोली लीजिए।\"",
+              "english": "The doctor said, \"Take this tablet.\""
+            },
+            {
+              "text": "\"गले के लिए यह दवा बनी है।\"",
+              "english": "\"This medicine is made for the throat.\""
+            },
+            {
+              "text": "\"आप पूरा आराम कीजिए।\"",
+              "english": "\"Please rest completely.\""
+            },
+            {
+              "text": "मरीज़ ने कहा, \"मैं दवा ले चुका हूँ।\"",
+              "english": "The patient said, \"I have already taken medicine.\""
+            },
+            {
+              "text": "डॉक्टर ने कहा, \"कल फिर आइए।\"",
+              "english": "The doctor said, \"Come again tomorrow.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "फिर एक बच्चा आया।",
+              "english": "Then a child came."
+            },
+            {
+              "text": "उसकी माँ भी साथ थी।",
+              "english": "His mother was with him."
+            },
+            {
+              "text": "बच्चे को बुखार था, और ज़ुकाम भी।",
+              "english": "The child had a fever, and a cold too."
+            },
+            {
+              "text": "उसके कान में दर्द था।",
+              "english": "His ear hurt."
+            },
+            {
+              "text": "बच्चा रोया।",
+              "english": "The child cried."
+            },
+            {
+              "text": "डॉक्टर ने उसके कान देखे।",
+              "english": "The doctor looked at his ears."
+            },
+            {
+              "text": "डॉक्टर ने कहा, \"इंजेक्शन देना पड़ेगा।\"",
+              "english": "The doctor said, \"We will have to give an injection.\""
+            },
+            {
+              "text": "बच्चा इंजेक्शन से बहुत चिल्लाया।",
+              "english": "The child shouted a lot at the injection."
+            },
+            {
+              "text": "सैम ने उसका हाथ पकड़ा।",
+              "english": "Sam held his hand."
+            },
+            {
+              "text": "सैम पट्टी लाया।",
+              "english": "Sam brought a bandage."
+            },
+            {
+              "text": "इंजेक्शन के बाद मीरा दीदी ने पट्टी लगाई।",
+              "english": "After the injection Meera didi put on a bandage."
+            },
+            {
+              "text": "बच्चा हँसा।",
+              "english": "The child laughed."
+            },
+            {
+              "text": "वह दौड़ा।",
+              "english": "He ran."
+            },
+            {
+              "text": "उसकी माँ ने कहा, \"इलाज अच्छा है।\"",
+              "english": "His mother said, \"The treatment is good.\""
+            },
+            {
+              "text": "\"कान की दवा भी दीजिए।\"",
+              "english": "\"Give medicine for the ear too.\""
+            },
+            {
+              "text": "डॉक्टर ने कहा, \"यहाँ इलाज हो गया।\"",
+              "english": "The doctor said, \"The treatment is done here.\""
+            },
+            {
+              "text": "सैम बोला, \"यह इलाज बहुत अच्छा है।\"",
+              "english": "Sam said, \"This treatment is very good.\""
+            },
+            {
+              "text": "सैम गोली लाया।",
+              "english": "Sam brought a tablet."
+            },
+            {
+              "text": "माँ ने पूछा, \"क्या गोली चाहिए?\"",
+              "english": "The mother asked, \"Is a tablet needed?\""
+            },
+            {
+              "text": "बच्चे मैदान में दौड़ते हैं।",
+              "english": "Children run in the field."
+            },
+            {
+              "text": "सभी हँसे।",
+              "english": "Everyone laughed."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "कमरे में गर्मी थी।",
+              "english": "It was warm in the room."
+            },
+            {
+              "text": "दोपहर को धूप थी।",
+              "english": "At noon there was sunshine."
+            },
+            {
+              "text": "एक औरत आई।",
+              "english": "A woman came."
+            },
+            {
+              "text": "उसे ग़ुस्सा था, क्योंकि उसे बहुत इंतज़ार करना पड़ा।",
+              "english": "She was angry, because she had to wait a long time."
+            },
+            {
+              "text": "मीरा दीदी ने कहा, \"रुकिए, आप यहाँ बैठिए।\"",
+              "english": "Meera didi said, \"Wait, sit here.\""
+            },
+            {
+              "text": "औरत के हाथ में पट्टी थी।",
+              "english": "The woman had a bandage on her hand."
+            },
+            {
+              "text": "मीरा दीदी ने पूछा, \"आपको कहीं और दर्द है?\"",
+              "english": "Meera didi asked, \"Do you have pain anywhere else?\""
+            },
+            {
+              "text": "औरत ने कहा, \"नहीं, दीदी।\"",
+              "english": "The woman said, \"No, didi.\""
+            },
+            {
+              "text": "\"आपको कल फिर आना पड़ेगा।\"",
+              "english": "\"You will have to come again tomorrow.\""
+            },
+            {
+              "text": "उसने जवाब दिया, \"मैं पूरा दिन काम करती हूँ। मैं आज बहुत काम कर चुकी हूँ।\"",
+              "english": "She answered, \"I work all day. I have already done a lot of work today.\""
+            },
+            {
+              "text": "\"मेरी नौकरी में बहुत काम है।\"",
+              "english": "\"In my job there is a lot of work.\""
+            },
+            {
+              "text": "मीरा दीदी ने कहा, \"दस मिनट आराम कीजिए।\"",
+              "english": "Meera didi said, \"Rest for ten minutes.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "तभी बाहर एक अजनबी चिल्लाया।",
+              "english": "Just then outside a stranger shouted."
+            },
+            {
+              "text": "सभी दौड़े।",
+              "english": "Everyone ran."
+            },
+            {
+              "text": "बाहर बिजली चली गई थी।",
+              "english": "The power had gone off outside."
+            },
+            {
+              "text": "सैम के कपड़े भी भीग गए थे।",
+              "english": "Sam's clothes had got wet too."
+            },
+            {
+              "text": "सैम ने फ़ोन लगाया।",
+              "english": "Sam made a call."
+            },
+            {
+              "text": "उसने संदेश भेजा, और ख़बर दी।",
+              "english": "He sent a message and gave the news."
+            },
+            {
+              "text": "मीरा दीदी इस अस्पताल में दस साल से काम करती हैं।",
+              "english": "Meera didi has worked in this hospital for ten years."
+            },
+            {
+              "text": "शाम को मेहमान आए, और बैठक भी हुई।",
+              "english": "In the evening guests came, and the meeting took place too."
+            },
+            {
+              "text": "मीरा दीदी ने कहा, \"आज सभी मरीज़ ठीक हैं।\"",
+              "english": "Meera didi said, \"Today all the patients are well.\""
+            },
+            {
+              "text": "वह हमेशा हँसती हैं।",
+              "english": "She always smiles."
+            },
+            {
+              "text": "डॉक्टर हमेशा कहते हैं, \"आराम कीजिए।\"",
+              "english": "The doctor always says, \"Please rest.\""
+            },
+            {
+              "text": "सैम बोला, \"मैं हमेशा यहाँ आऊँगा।\"",
+              "english": "Sam said, \"I will always come here.\""
+            },
+            {
+              "text": "उसने कहा, \"मैं डॉक्टर नहीं बनूँगा, लेकिन मैं सीखूँगा।\"",
+              "english": "He said, \"I will not become a doctor, but I will learn.\""
+            },
+            {
+              "text": "मीरा दीदी हँसीं, और चाय बनी।",
+              "english": "Meera didi laughed, and tea was made."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

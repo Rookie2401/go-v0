@@ -1,0 +1,414 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-13",
+  "lang": "hi",
+  "title": "गाँव की होली",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-13",
+    "title": "\"गाँव की होली\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Sam's account, as a guest, of Holi in सुरेश's village. Written as the plan asks: a respectful observer, never an imitator and never a judge. Sam stays dry on the roof, helps with the food and is thanked by his hosts; no ritual is performed, taught or compared; no deity is named and no religious explanation is given (only what a host would say to a guest: that people forgive old quarrels and embrace). Points for the reviewer: this unit must be read by a Hindi reader from the region before use (the plan names it with hi-a1-2-10, hi-a1-2-23 and hi-a2-1-02 as the units to read first); the foods are described by words the ladder has taught (पूरी is not yet taught, so \"पकवान\" and \"मिठाई\" are used); the boy dressed as a bear is a village-play detail invented by the drafter; सुरेश's mother is called माँजी and speaks to Sam with आप. Respectful-guest unit: read it first (see the plan, section 8, item 9). 'नाच' (the noun) is sometimes read as the verb नाचना by the adapter; the unit keeps the noun forms. Outside the plan (1 lemma, 1 tokens, 0.1 per 100 words): नाचना. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "festival",
+    "village",
+    "neighbours",
+    "hospitality"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "न्योता",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पिछले महीने सुरेश ने फ़ोन पर मुझे अपने गाँव बुलाया।",
+              "english": "Last month Suresh invited me on the phone to his village."
+            },
+            {
+              "text": "उन्होंने कहा, \"सैम जी, इस बार होली पर आप हमारे साथ रहिए, यह मेरा प्रस्ताव है।\"",
+              "english": "He said, \"Sam ji, this time stay with us for Holi, that is my proposal.\""
+            },
+            {
+              "text": "यह मेरे लिए बड़ा मौक़ा था, क्योंकि मैंने सिर्फ़ सुना था कि गाँव की होली कैसी होती है।",
+              "english": "This was a big chance for me, because I had only heard what Holi in a village is like."
+            },
+            {
+              "text": "मैंने रवि सर से पूछा कि क्या मुझे जाना चाहिए।",
+              "english": "I asked Ravi sir whether I should go."
+            },
+            {
+              "text": "उन्होंने कहा, \"ज़रूर जाओ, पर याद रखना कि तुम मेहमान हो, और मेहमान घर के लोगों की बात का ध्यान रखता है।\"",
+              "english": "He said, \"Do go, but remember that you are a guest, and a guest pays heed to the word of the people of the house.\""
+            },
+            {
+              "text": "मैंने सोचा कि यह बात ठीक है, और मैंने मन में तय किया कि मैं हर बात ध्यान से देखूँगा और कई प्रश्न पूछूँगा।",
+              "english": "I thought that this was right, and I decided in my mind that I would watch everything carefully and ask many questions."
+            },
+            {
+              "text": "अमन भी मेरे साथ आना चाहता था, और सुरेश ने ख़ुशी से उसे भी बुला लिया।",
+              "english": "Aman also wanted to come with me, and Suresh gladly invited him as well."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "गाँव पहुँचना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हम शनिवार की शाम बस से गाँव पहुँचे।",
+              "english": "We reached the village by bus on Saturday evening."
+            },
+            {
+              "text": "गाँव में सब कुछ बहुत शांत था, और शहर के शोर के बाद वह शांति मुझे अजीब लगी।",
+              "english": "In the village everything was very quiet, and after the noise of the city that quiet felt strange to me."
+            },
+            {
+              "text": "सुरेश ने बताया कि अब गाँव में बिजली की सुविधा भी है, पर रात को सब जल्दी सो जाते हैं।",
+              "english": "Suresh told me that now there is the facility of electricity in the village too, but at night everybody goes to sleep early."
+            },
+            {
+              "text": "सुरेश की माँ दरवाज़े पर खड़ी थीं, और उन्होंने हमें देखते ही कहा, \"आइए, आइए, बच्चों, अंदर आइए।\"",
+              "english": "Suresh's mother was standing at the door, and as soon as she saw us she said, \"Come, come, children, come in.\""
+            },
+            {
+              "text": "उन्होंने हमें गरम पानी और चाय दी, और रात का खाना भी खिलाया।",
+              "english": "She gave us hot water and tea, and fed us dinner too."
+            },
+            {
+              "text": "खाने के बाद सुरेश ने कहा कि कल का दिन बहुत लंबा होगा, इसलिए जल्दी सो जाइए।",
+              "english": "After the meal Suresh said that tomorrow would be a very long day, so go to sleep early."
+            },
+            {
+              "text": "रात को मैंने खिड़की से देखा कि गाँव के बच्चे गली के कोने पर इकट्ठा थे, और उनके हाथ में लाल, हरे और नीले रंग थे।",
+              "english": "At night I saw from the window that the village children were gathered at the corner of the lane, and they had red, green and blue colours in their hands."
+            },
+            {
+              "text": "वे बहुत ख़ुश थे, और उनकी हँसी दूर तक सुनाई देती थी।",
+              "english": "They were very happy, and their laughter could be heard far away."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "होली की सुबह",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सुबह मैं जल्दी उठा, तो घर में पहले से बहुत काम चल रहा था।",
+              "english": "When I got up early in the morning, a lot of work was already going on in the house."
+            },
+            {
+              "text": "सुरेश की माँ और घर की दूसरी औरतें पकवान बना रही थीं।",
+              "english": "Suresh's mother and the other women of the house were making festive dishes."
+            },
+            {
+              "text": "आँगन में बड़ी-बड़ी थालियाँ रखी थीं, और उनमें मिठाई सजाई जा रही थी।",
+              "english": "Big plates were placed in the courtyard, and sweets were being arranged in them."
+            },
+            {
+              "text": "मैंने पूछा, \"माँ जी, मैं क्या मदद करूँ?\"",
+              "english": "I asked, \"Mother, how may I help?\""
+            },
+            {
+              "text": "उन्होंने हँसकर कहा, \"आप तो मेहमान हैं, आप बैठिए।\"",
+              "english": "She said with a laugh, \"You are a guest, you sit.\""
+            },
+            {
+              "text": "पर जब मैंने फिर से कहा, तो उन्होंने मुझे प्लेटें दे दीं और कहा, \"तो आप इन्हें लगा दीजिए।\"",
+              "english": "But when I said it again, she gave me plates and said, \"Then you lay these out.\""
+            },
+            {
+              "text": "मैं प्लेटें लगाता रहा, और अमन हर पकवान को देखता हुआ इधर-उधर घूमता रहा।",
+              "english": "I kept laying out the plates, and Aman went round here and there looking at every festive dish."
+            },
+            {
+              "text": "सुरेश ने बताया कि होली का मतलब सिर्फ़ रंग नहीं है।",
+              "english": "Suresh told me that the meaning of Holi is not only colours."
+            },
+            {
+              "text": "उन्होंने कहा कि इस दिन लोग पिछली पुरानी बातें भूलकर एक-दूसरे को गले लगाते हैं।",
+              "english": "He said that on this day people forget the old matters of last time and embrace one another."
+            },
+            {
+              "text": "यह सुनकर मुझे लगा कि इस त्योहार का मतलब मेरी सोच से कहीं बड़ा है।",
+              "english": "Hearing this, it seemed to me that the meaning of this festival is far bigger than my thinking."
+            },
+            {
+              "text": "मैंने सुरेश से एक प्रश्न और पूछा: \"क्या हर गाँव में होली ऐसी ही होती है?\"",
+              "english": "I asked Suresh one more question: \"Is Holi like this in every village?\""
+            },
+            {
+              "text": "उन्होंने कहा, \"हर गाँव की होली अलग होती है, पर हँसी हर जगह एक-सी होती है।\"",
+              "english": "He said, \"Every village's Holi is different, but laughter is the same everywhere.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "रंग और पिचकारी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दस बजे के क़रीब बच्चे हाथ में गुलाल लेकर गली में निकल आए।",
+              "english": "Around ten o'clock the children came out into the lane with gulaal in their hands."
+            },
+            {
+              "text": "किसी के पास लाल गुलाल था, किसी के पास हरा, और किसी के पास नीला।",
+              "english": "One had red gulaal, one had green, and one had blue."
+            },
+            {
+              "text": "कुछ बच्चों के हाथ में पिचकारियाँ थीं, और वे उन्हें टंकी के पानी से भरते थे।",
+              "english": "Some children had pichkaris in their hands, and they used to fill them with water from the tank."
+            },
+            {
+              "text": "अमन को भी एक पिचकारी मिली, पर वह उसे सिर्फ़ ज़मीन पर चलाता रहा, क्योंकि मैंने उससे कहा था कि बिना पूछे किसी पर रंग मत डालना।",
+              "english": "Aman was also given a pichkari, but he kept using it only on the ground, because I had told him not to throw colour on anybody without asking."
+            },
+            {
+              "text": "हर बच्चा अपनी पिचकारी को सबसे अच्छी बता रहा था, और सबके पास उसकी कोई न कोई कहानी थी।",
+              "english": "Every child was calling his own pichkari the best, and everybody had some story about it."
+            },
+            {
+              "text": "एक लड़का भालू बनकर नाच रहा था, और बाक़ी बच्चे उसके पीछे दौड़ रहे थे।",
+              "english": "A boy was dancing dressed as a bear, and the other children were running behind him."
+            },
+            {
+              "text": "गली में ढोल बज रहा था, और ढोल का शोर इतना ज़ोर का था कि बात करना मुश्किल हो गया।",
+              "english": "A drum was playing in the lane, and the sound of the drum was so loud that it became hard to talk."
+            },
+            {
+              "text": "सुरेश ने हँसकर कहा कि इसी शोर से बंदर भगाए जाते हैं, और यही उनका सबसे पुराना हल है।",
+              "english": "Suresh said with a laugh that monkeys are driven away with just this noise, and that this is their oldest solution."
+            },
+            {
+              "text": "ढोल वाले आदमी की ताक़त देखकर मैं हैरान रह गया।",
+              "english": "I was amazed to see the strength of the man with the drum."
+            },
+            {
+              "text": "ढोल की आवाज़ पर गाँव का नाच शुरू हुआ।",
+              "english": "To the sound of the drum the dance of the village began."
+            },
+            {
+              "text": "औरतें और आदमी, छोटे और बड़े, सब नाच में लगे थे, और हर चेहरे पर रंग और हँसी थी।",
+              "english": "Women and men, young and old, were all busy in the dance, and on every face there were colours and laughter."
+            },
+            {
+              "text": "उस नाच में कोई भी अकेला नहीं था, और किसी को सिखाने की ज़रूरत नहीं थी।",
+              "english": "In that dance nobody was alone, and nobody needed to be taught."
+            },
+            {
+              "text": "बच्चों को उस दिन खेलने की पूरी आज़ादी थी, और बड़े उन्हें डाँट नहीं रहे थे।",
+              "english": "The children had full freedom to play that day, and the grown-ups were not scolding them."
+            },
+            {
+              "text": "बच्चों ने वोट लिया कि पहले किस पर गुलाल डाला जाए, और सबने कहा कि पहले सुरेश पर।",
+              "english": "The children took a vote on whom to throw colour on first, and everybody said, first on Suresh."
+            },
+            {
+              "text": "सुरेश हँसते हुए भागे, पर बच्चों ने उन्हें पेड़ की डाल के नीचे पकड़ लिया।",
+              "english": "Suresh ran laughing, but the children caught him under the branch of a tree."
+            },
+            {
+              "text": "उस डाल पर छोटे बच्चे एक-एक करके झूल रहे थे।",
+              "english": "On that branch the small children were swinging one by one."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "छत से देखना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "मैंने सुरेश की माँ के सुझाव पर छत पर बैठना तय किया।",
+              "english": "On the suggestion of Suresh's mother I decided to sit on the roof."
+            },
+            {
+              "text": "उन्होंने कहा था, \"आप कपड़ों को नुकसान से बचाइए, और ऊपर से सब देखिए।\"",
+              "english": "She had said, \"Save your clothes from harm, and watch everything from above.\""
+            },
+            {
+              "text": "मैंने उनसे प्रश्न किया, \"क्या यह ठीक रहेगा?\"",
+              "english": "I asked her a question, \"Will this be all right?\""
+            },
+            {
+              "text": "उन्होंने कहा, \"बिलकुल, मेहमान की बात सबसे पहले मानी जाती है।\"",
+              "english": "She said, \"Certainly, the guest's word is accepted first of all.\""
+            },
+            {
+              "text": "यही हल मुझे भी ठीक लगा, क्योंकि मैं रंग से दूर रहना चाहता था।",
+              "english": "This solution seemed right to me too, because I wanted to keep away from the colour."
+            },
+            {
+              "text": "मैंने सुरेश से कह दिया था कि मैं रंग नहीं खेलूँगा, और उन्होंने बिना कुछ कहे मेरी बात मान ली थी।",
+              "english": "I had told Suresh that I would not play with colour, and he had accepted my word without saying anything."
+            },
+            {
+              "text": "छत से सारा गाँव दिखता था: रंग उड़ाते बच्चे, नाच में लगी औरतें और ढोल के साथ चलते लोग।",
+              "english": "From the roof the whole village could be seen: children throwing colour, women absorbed in the dance and people walking with the drum."
+            },
+            {
+              "text": "कुछ बच्चे सीढ़ी से ऊपर आए और मेरे सामने गुलाल की थाली लेकर खड़े हो गए।",
+              "english": "Some children came up by the stairs and stood in front of me with a plate of gulaal."
+            },
+            {
+              "text": "मैंने हाथ उठाकर कहा कि मैं आज रंग से दूर रहूँगा।",
+              "english": "I raised my hand and said that I would stay away from colour today."
+            },
+            {
+              "text": "एक छोटी लड़की ने बड़ी आँखों से पूछा, \"क्यों?\"",
+              "english": "A small girl asked with big eyes, \"Why?\""
+            },
+            {
+              "text": "मैंने कहा, \"मेरे यहाँ ऐसा नहीं होता, पर मुझे तुम्हारी होली देखकर बहुत अच्छा लग रहा है।\"",
+              "english": "I said, \"It is not done where I come from, but seeing your Holi I am feeling very happy.\""
+            },
+            {
+              "text": "वह कुछ देर सोचती रही, फिर मुस्कुराई, और अपनी थाली लेकर नीचे चली गई।",
+              "english": "She thought for a while, then smiled, and went down with her plate."
+            },
+            {
+              "text": "किसी ने कोई शिकायत नहीं की, और किसी ने मुझसे दूसरी बार नहीं कहा।",
+              "english": "Nobody made any complaint, and nobody asked me a second time."
+            },
+            {
+              "text": "यह देखकर मुझे लगा कि अच्छा मेहमान और अच्छा घर वाला एक-दूसरे का दिल रखते हैं।",
+              "english": "Seeing this I felt that a good guest and a good householder keep each other's hearts."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "खाने की दोपहर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दोपहर में सब लोग रंग धोकर आँगन में आए, और खाना शुरू हुआ।",
+              "english": "In the afternoon everybody washed off the colours and came to the courtyard, and the meal began."
+            },
+            {
+              "text": "पकवान इतने थे कि प्लेटें कम पड़ गईं, और मैं बार-बार उठकर प्लेटें लाता रहा।",
+              "english": "There were so many festive dishes that the plates ran short, and I kept getting up again and again to bring plates."
+            },
+            {
+              "text": "सुरेश की माँ ने मुझे अपने हाथ से मिठाई दी और बोलीं, \"आज आपने बहुत काम किया है, अब आप भी खाइए।\"",
+              "english": "Suresh's mother gave me sweets with her own hand and said, \"Today you have done a lot of work, now you eat too.\""
+            },
+            {
+              "text": "अमन तो इतना खा चुका था कि वह चारपाई पर लेटकर हँसने लगा।",
+              "english": "Aman had eaten so much that he lay down on a charpoy and began to laugh."
+            },
+            {
+              "text": "बड़े-बूढ़े बैठकर गाँव की पुरानी बातें करते थे, और बच्चे आँगन में खेलते थे।",
+              "english": "The elders sat and talked of old matters of the village, and the children played in the courtyard."
+            },
+            {
+              "text": "मेरा अकेलापन, जो मुझे शहर में कभी-कभी परेशान करता था, उस दिन कहीं नहीं था।",
+              "english": "My loneliness, which sometimes used to trouble me in the city, was nowhere that day."
+            },
+            {
+              "text": "यहाँ मुझे ऐसा लगा जैसे मैं इस घर का ही कोई बेटा हूँ।",
+              "english": "Here it seemed to me as if I were some son of this very house."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "शाम और वापसी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शाम तक गली में बहुत गंदगी हो गई थी: काग़ज़, रंग और पुराने बर्तन।",
+              "english": "By evening there was a lot of mess in the lane: paper, colour and broken pots."
+            },
+            {
+              "text": "पर सबने मिलकर उसे साफ़ किया, और एक घंटे में गली पहले जैसी हो गई।",
+              "english": "But everybody cleaned it together, and in an hour the lane became as before."
+            },
+            {
+              "text": "मैंने सोचा कि अगर हमारी गली में भी ऐसे मिलकर काम होता, तो फ़ायदा कितना होता।",
+              "english": "I thought that if work were done together like this in our lane too, how great the benefit would be."
+            },
+            {
+              "text": "सुरेश ने कहा कि ठंड अब चली जाएगी, और होली के बाद गाँव में गर्मी आती है।",
+              "english": "Suresh said that the cold would now go, and after Holi warmth comes to the village."
+            },
+            {
+              "text": "रात को वे हमें बस तक छोड़ने आए, और उनकी माँ ने हमें मिठाई का एक बड़ा डिब्बा दिया।",
+              "english": "At night they came to see us off to the bus, and his mother gave us a big box of sweets."
+            },
+            {
+              "text": "बस में बैठकर मैंने खिड़की से हाथ हिलाया, और मुझे लगा कि मैंने एक नया रिश्ता पाया है।",
+              "english": "Sitting in the bus I waved my hand from the window, and it seemed to me that I had found a new relationship."
+            },
+            {
+              "text": "पिछले साल मैं इस गाँव का नाम भी नहीं जानता था, और आज वहाँ मेरा एक घर है।",
+              "english": "Last year I did not even know the name of this village, and today I have a home there."
+            },
+            {
+              "text": "यही त्योहार का सबसे बड़ा मतलब है, ऐसा मैंने मन में कहा।",
+              "english": "This is the biggest meaning of a festival, so I said in my heart."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

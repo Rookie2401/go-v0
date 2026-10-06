@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-1-02",
+  "lang": "hi",
+  "title": "सीता नानी का घर",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-1-02",
+    "title": "Seeta Nani's house (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Bridge unit written from the Stage 0 palette (56 lemmas) plus six new words; it reads like Stage 0 on purpose. Moti is Nani's little dog but the word कुत्ता is not yet known (the next drafts teach it), so the English lines say what Moti is. Honorific plural verbs for नानी, दादा जी and दादी (हैं, बोलती हैं). \"मेरे दादा जी\" has the oblique/plural form of मेरा before a respected person: reviewer to confirm. Words outside the plan (measured, adapter lemmas x tokens): बनाना×1 (under-met), कौन×1 (under-met)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "family",
+    "home"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "family"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "सीता नानी का घर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "यह सीता नानी का घर है।",
+              "english": "This is Seeta Nani's house."
+            },
+            {
+              "text": "घर बड़ा है।",
+              "english": "The house is big."
+            },
+            {
+              "text": "आज शनिवार है।",
+              "english": "Today is Saturday."
+            },
+            {
+              "text": "सैम आज नानी के घर में है।",
+              "english": "Today Sam is at Nani's house."
+            },
+            {
+              "text": "अमन भी घर में है।",
+              "english": "Aman is at home too."
+            },
+            {
+              "text": "अमन आज स्कूल नहीं जाता है।",
+              "english": "Aman does not go to school today."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन बोलता है, \"सैम, यह रसोई है।\"",
+              "english": "Aman says, \"Sam, this is the kitchen.\""
+            },
+            {
+              "text": "रसोई में दाल है।",
+              "english": "There is dal in the kitchen."
+            },
+            {
+              "text": "चावल भी है।",
+              "english": "There is rice too."
+            },
+            {
+              "text": "नानी रसोई में हैं।",
+              "english": "Nani is in the kitchen."
+            },
+            {
+              "text": "नानी रोटी बनाती हैं।",
+              "english": "Nani makes rotis."
+            },
+            {
+              "text": "रोटी गरम है।",
+              "english": "The roti is hot."
+            },
+            {
+              "text": "सैम बोलता है, \"नानी, आपकी रोटी बहुत अच्छी है।\"",
+              "english": "Sam says, \"Nani, your roti is very good.\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"धन्यवाद, सैम!\"",
+              "english": "Nani says, \"Thank you, Sam!\""
+            },
+            {
+              "text": "सैम को रोटी पसंद है।",
+              "english": "Sam likes roti."
+            },
+            {
+              "text": "सैम को गरम दूध भी पसंद है।",
+              "english": "Sam likes hot milk too."
+            },
+            {
+              "text": "मेज़ पर दूध है।",
+              "english": "There is milk on the table."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम बोलता है, \"कुर्सी पर कौन है?\"",
+              "english": "Sam says, \"Who is on the chair?\""
+            },
+            {
+              "text": "अमन बोलता है, \"वह मेरे दादा जी हैं।\"",
+              "english": "Aman says, \"That is my grandfather.\""
+            },
+            {
+              "text": "दादा जी कुर्सी पर हैं।",
+              "english": "Grandfather is on the chair."
+            },
+            {
+              "text": "दादा जी बहुत अच्छे हैं।",
+              "english": "Grandfather is very kind."
+            },
+            {
+              "text": "अमन बोलता है, \"और वह मेरी दादी हैं।\"",
+              "english": "Aman says, \"And that is my grandmother.\""
+            },
+            {
+              "text": "दादी घर में हैं।",
+              "english": "Grandmother is at home."
+            },
+            {
+              "text": "दादी भी बहुत अच्छी हैं।",
+              "english": "Grandmother is very kind too."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम बोलता है, \"मोती कहाँ है?\"",
+              "english": "Sam says, \"Where is Moti?\" (Moti is Nani's little dog.)"
+            },
+            {
+              "text": "अमन बोलता है, \"मोती घर में नहीं है।\"",
+              "english": "Aman says, \"Moti is not in the house.\""
+            },
+            {
+              "text": "मोती बाज़ार में नहीं है।",
+              "english": "Moti is not at the market."
+            },
+            {
+              "text": "अमन बोलता है, \"मेरा बैग मेज़ पर है।\"",
+              "english": "Aman says, \"My bag is on the table.\""
+            },
+            {
+              "text": "सैम बोलता है, \"हाँ, यह आपका बैग है।\"",
+              "english": "Sam says, \"Yes, this is your bag.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "मेज़ पर चावल है।",
+              "english": "There is rice on the table."
+            },
+            {
+              "text": "मेज़ पर दाल भी है।",
+              "english": "There is dal on the table too."
+            },
+            {
+              "text": "सैम बोलता है, \"मुझे पानी चाहिए।\"",
+              "english": "Sam says, \"I want water.\""
+            },
+            {
+              "text": "अमन बोलता है, \"यह लीजिए, पानी।\"",
+              "english": "Aman says, \"Here you are, water.\""
+            },
+            {
+              "text": "सैम बोलता है, \"शुक्रिया, अमन!\"",
+              "english": "Sam says, \"Thanks, Aman!\""
+            },
+            {
+              "text": "अमन बोलता है, \"आपको रोटी चाहिए?\"",
+              "english": "Aman says, \"Do you want roti?\""
+            },
+            {
+              "text": "सैम बोलता है, \"हाँ, मुझे रोटी चाहिए।\"",
+              "english": "Sam says, \"Yes, I want roti.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "आज रविवार नहीं है।",
+              "english": "Today is not Sunday."
+            },
+            {
+              "text": "रविवार को हम चर्च जाते हैं।",
+              "english": "On Sunday we go to church."
+            },
+            {
+              "text": "नानी भी चर्च जाती हैं।",
+              "english": "Nani goes to church too."
+            },
+            {
+              "text": "सैम भी चर्च जाता है।",
+              "english": "Sam goes to church too."
+            },
+            {
+              "text": "आज नानी बाज़ार जाती हैं।",
+              "english": "Today Nani goes to the market."
+            },
+            {
+              "text": "नानी बाज़ार में रोटी बेचती हैं।",
+              "english": "Nani sells rotis at the market."
+            },
+            {
+              "text": "सैम और अमन घर में हैं।",
+              "english": "Sam and Aman are at home."
+            },
+            {
+              "text": "सैम काम करता है।",
+              "english": "Sam does some work."
+            },
+            {
+              "text": "अमन भी काम करता है।",
+              "english": "Aman works too."
+            },
+            {
+              "text": "यह लीजिए, चाय!",
+              "english": "Here you are, tea!"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

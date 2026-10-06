@@ -1,0 +1,427 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-21",
+  "lang": "hi",
+  "title": "ऑटो रिक्शा",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-21",
+    "title": "The auto-rickshaw (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Sam bargains the fare with the driver Deepak and gives directions (सीधा चलो, दाएँ मुड़ो, यहाँ रुकिए); commands, future, comparison with से (सस्ता). The plan has \"से कम\"; कम is taught later, so the comparison uses से ... सस्ता. मोड़ is only used in frames the adapter reads as a noun (एक मोड़ है; मोड़ पर). \"बारिश में भीगना पड़ता है\" reuses the weather words. The testimony words come back in the talk between Sam and Deepak. Honorific plural is not used for दीपक भाई (peer). Words outside the plan (measured, adapter lemmas x tokens): मुड़ना×3 (to turn; needed for directions), बंद×1, यहीं×1 (under-met)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "transport",
+    "directions",
+    "bargaining"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "travel"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "ऑटो रिक्शा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज सैम को स्टेशन जाना है।",
+              "english": "Today Sam has to go to the station."
+            },
+            {
+              "text": "उसे देर हो रही है।",
+              "english": "He is running late."
+            },
+            {
+              "text": "बाहर बारिश हो रही है।",
+              "english": "It is raining outside."
+            },
+            {
+              "text": "आज मौसम ठंडा है।",
+              "english": "The weather is cold today."
+            },
+            {
+              "text": "हवा चल रही है, और सर्दी लगती है।",
+              "english": "The wind is blowing, and it feels chilly."
+            },
+            {
+              "text": "ठंड बहुत है।",
+              "english": "It is very cold."
+            },
+            {
+              "text": "कल धूप थी।",
+              "english": "Yesterday there was sunshine."
+            },
+            {
+              "text": "आसमान में बादल हैं।",
+              "english": "There are clouds in the sky."
+            },
+            {
+              "text": "बिजली की आवाज़ भी है।",
+              "english": "There is the sound of lightning too."
+            },
+            {
+              "text": "उसके पास छाता नहीं है।",
+              "english": "He has no umbrella."
+            },
+            {
+              "text": "सैम भीगता है।",
+              "english": "Sam gets wet."
+            },
+            {
+              "text": "सड़क पर एक ऑटो है।",
+              "english": "There is an auto on the road."
+            },
+            {
+              "text": "ऑटो के पास एक आदमी खड़ा है।",
+              "english": "A man is standing near the auto."
+            },
+            {
+              "text": "उसका नाम दीपक है।",
+              "english": "His name is Deepak."
+            },
+            {
+              "text": "सैम बोलता है, \"नमस्ते, दीपक भाई! मुझे स्टेशन जाना है।\"",
+              "english": "Sam says, \"Hello, Deepak bhai! I have to go to the station.\""
+            },
+            {
+              "text": "दीपक बोलता है, \"आइए, बैठिए। यह ऑटो अच्छा है।\"",
+              "english": "Deepak says, \"Come, sit. This auto is good.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम बोलता है, \"स्टेशन का किराया क्या है?\"",
+              "english": "Sam says, \"What is the fare to the station?\""
+            },
+            {
+              "text": "दीपक बोलता है, \"80 रुपये।\"",
+              "english": "Deepak says, \"80 rupees.\""
+            },
+            {
+              "text": "सैम बोलता है, \"यह बहुत महँगा है! क़ीमत ठीक नहीं है।\"",
+              "english": "Sam says, \"That is very expensive! The price is not right.\""
+            },
+            {
+              "text": "दीपक बोलता है, \"बारिश में क़ीमत महँगी होती है।\"",
+              "english": "Deepak says, \"In the rain the price is high.\""
+            },
+            {
+              "text": "दीपक बोलता है, \"आज बारिश है, तो किराया महँगा है।\"",
+              "english": "Deepak says, \"Today it is raining, so the fare is high.\""
+            },
+            {
+              "text": "सैम बोलता है, \"कल का किराया इससे सस्ता था।\"",
+              "english": "Sam says, \"Yesterday's fare was cheaper than this.\""
+            },
+            {
+              "text": "दीपक बोलता है, \"ठीक है, 60 रुपये।\"",
+              "english": "Deepak says, \"All right, 60 rupees.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं 50 रुपये दूँगा।\"",
+              "english": "Sam says, \"I will give 50 rupees.\""
+            },
+            {
+              "text": "दीपक बोलता है, \"55।\"",
+              "english": "Deepak says, \"55.\""
+            },
+            {
+              "text": "सैम बोलता है, \"ठीक है। अब ठीक है।\"",
+              "english": "Sam says, \"All right. Now it is fine.\""
+            },
+            {
+              "text": "सैम को यह क़ीमत पसंद आती है।",
+              "english": "Sam likes this price."
+            },
+            {
+              "text": "दीपक दरवाज़ा खोलता है।",
+              "english": "Deepak opens the door."
+            },
+            {
+              "text": "सैम अंदर बैठता है।",
+              "english": "Sam sits inside."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम रास्ता बताता है।",
+              "english": "Sam tells the way."
+            },
+            {
+              "text": "सैम बोलता है, \"सीधा चलो।\"",
+              "english": "Sam says, \"Go straight.\""
+            },
+            {
+              "text": "\"सामने चौराहा है।\"",
+              "english": "\"There is a crossroads ahead.\""
+            },
+            {
+              "text": "\"चौराहे से दाएँ मुड़ो।\"",
+              "english": "\"Turn right at the crossroads.\""
+            },
+            {
+              "text": "\"वहाँ एक मोड़ है।\"",
+              "english": "\"There is a bend there.\""
+            },
+            {
+              "text": "\"इस मोड़ से बाएँ मुड़ो।\"",
+              "english": "\"Turn left at this bend.\""
+            },
+            {
+              "text": "\"फिर बाएँ मुड़ो।\"",
+              "english": "\"Then turn left.\""
+            },
+            {
+              "text": "\"दाएँ हाथ पर दुकान है।\"",
+              "english": "\"There is a shop on the right.\""
+            },
+            {
+              "text": "\"बाएँ तरफ़ बगीचा है।\"",
+              "english": "\"There is a garden on the left.\""
+            },
+            {
+              "text": "\"बगीचे के सामने एक दुकान है।\"",
+              "english": "\"In front of the garden there is a shop.\""
+            },
+            {
+              "text": "दुकानदार बोलता है, \"रुकिए!\"",
+              "english": "The shopkeeper says, \"Stop!\""
+            },
+            {
+              "text": "मोड़ पर दुकानदार हँसता है।",
+              "english": "At the bend the shopkeeper laughs."
+            },
+            {
+              "text": "दुकानदार बोलता है, \"आप कहाँ जाते हैं?\"",
+              "english": "The shopkeeper says, \"Where are you going?\""
+            },
+            {
+              "text": "दीपक बोलता है, \"सीधा चलिए।\"",
+              "english": "Deepak says, \"Go straight.\""
+            },
+            {
+              "text": "\"सीधा रास्ता अच्छा है।\"",
+              "english": "\"The straight road is good.\""
+            },
+            {
+              "text": "बगीचे में बच्चे खेलते हैं।",
+              "english": "Children play in the garden."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दाएँ तरफ़ घाट है।",
+              "english": "On the right there is the ghat."
+            },
+            {
+              "text": "घाट पर बहुत लोग हैं।",
+              "english": "There are many people at the ghat."
+            },
+            {
+              "text": "घाट के पास नदी है।",
+              "english": "Near the ghat there is the river."
+            },
+            {
+              "text": "तभी गाड़ी रुकती है।",
+              "english": "Just then the car stops."
+            },
+            {
+              "text": "चौराहे पर बहुत गाड़ियाँ हैं।",
+              "english": "There are many cars at the crossroads."
+            },
+            {
+              "text": "सैम को ग़ुस्सा आता है।",
+              "english": "Sam gets angry."
+            },
+            {
+              "text": "दस मिनट हो जाते हैं।",
+              "english": "Ten minutes pass."
+            },
+            {
+              "text": "दीपक बोलता है, \"रास्ता बंद है।\"",
+              "english": "Deepak says, \"The road is closed.\""
+            },
+            {
+              "text": "\"इधर से चलिए।\"",
+              "english": "\"Go this way.\""
+            },
+            {
+              "text": "\"इधर सब अच्छा है।\"",
+              "english": "\"Everything is fine this way.\""
+            },
+            {
+              "text": "दीपक बोलता है, \"मेरी सवारी स्टेशन जाती है।\"",
+              "english": "Deepak says, \"My passenger is going to the station.\""
+            },
+            {
+              "text": "\"आज बारिश में सवारी बहुत हैं।\"",
+              "english": "\"Today in the rain there are many passengers.\""
+            },
+            {
+              "text": "\"एक सवारी रिक्शा लेती है।\"",
+              "english": "\"A passenger takes a rickshaw.\""
+            },
+            {
+              "text": "सैम बोलता है, \"रिक्शा सस्ता है, लेकिन बारिश में भीगना पड़ता है।\"",
+              "english": "Sam says, \"A rickshaw is cheap, but you have to get wet in the rain.\""
+            },
+            {
+              "text": "दीपक बोलता है, \"हाँ, रिक्शा भीग जाता है।\"",
+              "english": "Deepak says, \"Yes, a rickshaw gets wet.\""
+            },
+            {
+              "text": "सैम बोलता है, \"कल मैं भी नहीं लूँगा।\"",
+              "english": "Sam says, \"Tomorrow I will not take one either.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "दीपक पूछता है, \"आप कहाँ से हैं, सैम भाई?\"",
+              "english": "Deepak asks, \"Where are you from, Sam bhai?\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं दूर से हूँ। यहाँ मैं अजनबी था।\"",
+              "english": "Sam says, \"I am from far away. Here I was a stranger.\""
+            },
+            {
+              "text": "दीपक बोलता है, \"अब आप अजनबी नहीं हैं।\"",
+              "english": "Deepak says, \"Now you are not a stranger.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं कलीसिया जाता हूँ। वहाँ प्यार है।\"",
+              "english": "Sam says, \"I go to the church. There is love there.\""
+            },
+            {
+              "text": "\"परमेश्वर ने मेरा जीवन बचाया।\"",
+              "english": "\"God saved my life.\""
+            },
+            {
+              "text": "\"मैं अपनी गवाही सबको देता हूँ।\"",
+              "english": "\"I give my testimony to everyone.\""
+            },
+            {
+              "text": "दीपक बोलता है, \"दुनिया में सब यह नहीं मानते।\"",
+              "english": "Deepak says, \"Not everyone in the world believes this.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं किसी से कुछ नहीं माँगता, भाई।\"",
+              "english": "Sam says, \"I do not ask anything from anyone, brother.\""
+            },
+            {
+              "text": "दीपक हँसता है।",
+              "english": "Deepak laughs."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "गाड़ी स्टेशन के पास पहुँचती है।",
+              "english": "The car reaches the station."
+            },
+            {
+              "text": "दीपक बोलता है, \"यहाँ से मैं लौटूँगा।\"",
+              "english": "Deepak says, \"From here I will turn back.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं शाम को लौटूँगा। आप आएँगे?\"",
+              "english": "Sam says, \"I will come back in the evening. Will you come?\""
+            },
+            {
+              "text": "दीपक बोलता है, \"हाँ, मैं यहीं लौटूँगा।\"",
+              "english": "Deepak says, \"Yes, I will come back right here.\""
+            },
+            {
+              "text": "सैम पैसा देता है।",
+              "english": "Sam pays."
+            },
+            {
+              "text": "वह बोलता है, \"धन्यवाद, दीपक भाई!\"",
+              "english": "He says, \"Thank you, Deepak bhai!\""
+            },
+            {
+              "text": "दरवाज़ा खोलकर सैम उतरता है।",
+              "english": "Sam opens the door and gets out."
+            },
+            {
+              "text": "स्टेशन पर रवि सर इंतज़ार करते हैं।",
+              "english": "Ravi sir is waiting at the station."
+            },
+            {
+              "text": "वह बोलते हैं, \"सैम, आप भीग गए!\"",
+              "english": "He says, \"Sam, you are wet!\""
+            },
+            {
+              "text": "सैम बोलता है, \"हाँ, सर, लेकिन मैं ख़ुश हूँ।\"",
+              "english": "Sam says, \"Yes, sir, but I am happy.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"आइए, पहले चाय पीजिए।\"",
+              "english": "Ravi sir says, \"Come, have tea first.\""
+            },
+            {
+              "text": "सैम चाय पीता है।",
+              "english": "Sam drinks tea."
+            },
+            {
+              "text": "चाय गरम है, और सैम बहुत ख़ुश है।",
+              "english": "The tea is hot, and Sam is very happy."
+            },
+            {
+              "text": "दोनों ट्रेन का इंतज़ार करते हैं।",
+              "english": "The two of them wait for the train."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

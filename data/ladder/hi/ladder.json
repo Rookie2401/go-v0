@@ -1,0 +1,801 @@
+{
+  "lang": "hi",
+  "version": 1,
+  "after": "stage0",
+  "units": [
+    {
+      "id": "hi-a1-1-01",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-01.json",
+      "domain": "narrative",
+      "title": "रवि और मीरा"
+    },
+    {
+      "id": "hi-a1-1-02",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/hi-a1-1-02.json",
+      "domain": "family",
+      "title": "सीता नानी का घर"
+    },
+    {
+      "id": "hi-a1-1-03",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-02.json",
+      "domain": "family",
+      "title": "माँ और पापा"
+    },
+    {
+      "id": "hi-a1-1-04",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-03.json",
+      "domain": "family",
+      "title": "दादी और दादा जी"
+    },
+    {
+      "id": "hi-a1-1-05",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-04.json",
+      "domain": "narrative",
+      "title": "मोती"
+    },
+    {
+      "id": "hi-a1-1-06",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/hi-a1-1-06.json",
+      "domain": "daily-life",
+      "title": "सीता नानी के घर की सुबह"
+    },
+    {
+      "id": "hi-a1-1-07",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-05.json",
+      "domain": "narrative",
+      "title": "दोस्त"
+    },
+    {
+      "id": "hi-a1-1-08",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/hi-a1-1-08.json",
+      "domain": "daily-life",
+      "title": "अमन की नई किताब"
+    },
+    {
+      "id": "hi-a1-1-09",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-06.json",
+      "domain": "community",
+      "title": "शर्मा जी"
+    },
+    {
+      "id": "hi-a1-1-10",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-07.json",
+      "domain": "food",
+      "title": "मेज़ पर खाना"
+    },
+    {
+      "id": "hi-a1-1-11",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/hi-a1-1-11.json",
+      "domain": "food",
+      "title": "सीता नानी की मेज़ पर दोपहर का खाना"
+    },
+    {
+      "id": "hi-a1-1-12",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-08.json",
+      "domain": "food",
+      "title": "रवि रोटी खाता है"
+    },
+    {
+      "id": "hi-a1-1-13",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-09.json",
+      "domain": "daily-life",
+      "title": "स्कूल जाते हैं"
+    },
+    {
+      "id": "hi-a1-1-14",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/hi-a1-1-14.json",
+      "domain": "community",
+      "title": "सब्ज़ी और दाम"
+    },
+    {
+      "id": "hi-a1-1-15",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/hi-a1-1-15.json",
+      "domain": "community",
+      "title": "मैदान में लड़के और लड़कियाँ"
+    },
+    {
+      "id": "hi-a1-1-16",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-10.json",
+      "domain": "narrative",
+      "title": "मैदान में"
+    },
+    {
+      "id": "hi-a1-1-17",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-11.json",
+      "domain": "narrative",
+      "title": "गेंद कहाँ है?"
+    },
+    {
+      "id": "hi-a1-1-18",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0a-12.json",
+      "domain": "conversation",
+      "title": "यह कौन है?"
+    },
+    {
+      "id": "hi-a1-1-19",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/hi-a1-1-19.json",
+      "domain": "community",
+      "title": "गली में शाम"
+    },
+    {
+      "id": "hi-a1-1-20",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0b-01.json",
+      "domain": "conversation",
+      "title": "मेरा नाम रवि है"
+    },
+    {
+      "id": "hi-a1-1-21",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0b-02.json",
+      "domain": "conversation",
+      "title": "यह किसकी किताब है?"
+    },
+    {
+      "id": "hi-a1-1-22",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/hi-a1-1-22.json",
+      "domain": "health",
+      "title": "मीरा दीदी का क्लिनिक"
+    },
+    {
+      "id": "hi-a1-1-23",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/hi-a1-1-23.json",
+      "domain": "daily-life",
+      "title": "रवि सर की कक्षा"
+    },
+    {
+      "id": "hi-a1-1-24",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0b-03.json",
+      "domain": "daily-life",
+      "title": "स्कूल का दिन"
+    },
+    {
+      "id": "hi-a1-1-25",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0b-04.json",
+      "domain": "family",
+      "title": "दादी का गाँव"
+    },
+    {
+      "id": "hi-a1-1-26",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0b-05.json",
+      "domain": "conversation",
+      "title": "आइए, बैठिए"
+    },
+    {
+      "id": "hi-a1-1-27",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0b-06.json",
+      "domain": "conversation",
+      "title": "फ़ोन पर"
+    },
+    {
+      "id": "hi-a1-1-28",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/hi-a1-1-28.json",
+      "domain": "church-and-mission-life",
+      "title": "रविवार को चर्च में"
+    },
+    {
+      "id": "hi-a1-1-29",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0b-07.json",
+      "domain": "narrative",
+      "title": "मोती का दिन"
+    },
+    {
+      "id": "hi-a1-1-30",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0b-08.json",
+      "domain": "community",
+      "title": "शहर में"
+    },
+    {
+      "id": "hi-a1-1-31",
+      "stage": "a1-1",
+      "kind": "controlled",
+      "document": "units/hi-a1-1-31.json",
+      "domain": "practical-communication",
+      "title": "आप कहाँ रहते हैं? पता और फ़ोन नंबर"
+    },
+    {
+      "id": "hi-a1-2-01",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-01.json",
+      "domain": "narrative",
+      "title": "घड़ी बजती है"
+    },
+    {
+      "id": "hi-a1-2-02",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0c-01.json",
+      "domain": "narrative",
+      "title": "देर हो गई"
+    },
+    {
+      "id": "hi-a1-2-03",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-03.json",
+      "domain": "conversation",
+      "title": "कल क्या करेंगे?"
+    },
+    {
+      "id": "hi-a1-2-04",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-04.json",
+      "domain": "narrative",
+      "title": "पानी का घड़ा और कंकड़"
+    },
+    {
+      "id": "hi-a1-2-05",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0c-02.json",
+      "domain": "narrative",
+      "title": "दादी की कहानी"
+    },
+    {
+      "id": "hi-a1-2-06",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-06.json",
+      "domain": "travel",
+      "title": "गाँव की रेलगाड़ी"
+    },
+    {
+      "id": "hi-a1-2-07",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0c-03.json",
+      "domain": "narrative",
+      "title": "गाँव का सफ़र"
+    },
+    {
+      "id": "hi-a1-2-08",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-08.json",
+      "domain": "daily-life",
+      "title": "रवि सर के साथ हिंदी का पाठ"
+    },
+    {
+      "id": "hi-a1-2-09",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0c-04.json",
+      "domain": "narrative",
+      "title": "मोती कहाँ गया?"
+    },
+    {
+      "id": "hi-a1-2-10",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-10.json",
+      "domain": "community",
+      "title": "गली में दिवाली के दीये"
+    },
+    {
+      "id": "hi-a1-2-11",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-11.json",
+      "domain": "instructions",
+      "title": "सीता नानी की दाल"
+    },
+    {
+      "id": "hi-a1-2-12",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0c-05.json",
+      "domain": "narrative",
+      "title": "आम के पेड़ के नीचे"
+    },
+    {
+      "id": "hi-a1-2-13",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-13.json",
+      "domain": "correspondence",
+      "title": "टीम का संदेश"
+    },
+    {
+      "id": "hi-a1-2-14",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "../../corpus/hi/s0c-06.json",
+      "domain": "narrative",
+      "title": "शर्मा जी का सवाल"
+    },
+    {
+      "id": "hi-a1-2-15",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-15.json",
+      "domain": "explanation",
+      "title": "छत पर बारिश"
+    },
+    {
+      "id": "hi-a1-2-16",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-16.json",
+      "domain": "testimony",
+      "title": "मेरी कहानी: सैम की गवाही"
+    },
+    {
+      "id": "hi-a1-2-17",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "../../corpus/hi/story-01.json",
+      "domain": "testimony",
+      "title": "मेरी कहानी"
+    },
+    {
+      "id": "hi-a1-2-18",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "../../corpus/hi/dialogue-01.json",
+      "domain": "conversation",
+      "title": "एक बातचीत"
+    },
+    {
+      "id": "hi-a1-2-19",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-19.json",
+      "domain": "health",
+      "title": "क्लिनिक का एक दिन"
+    },
+    {
+      "id": "hi-a1-2-20",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-20.json",
+      "domain": "church-and-mission-life",
+      "title": "गुरुवार की प्रार्थना सभा"
+    },
+    {
+      "id": "hi-a1-2-21",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-21.json",
+      "domain": "travel",
+      "title": "ऑटो रिक्शा"
+    },
+    {
+      "id": "hi-a1-2-22",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-22.json",
+      "domain": "family",
+      "title": "अमन का जन्मदिन"
+    },
+    {
+      "id": "hi-a1-2-23",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-23.json",
+      "domain": "community",
+      "title": "हमारे पड़ोसी"
+    },
+    {
+      "id": "hi-a1-2-24",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-24.json",
+      "domain": "correspondence",
+      "title": "घर के नाम चिट्ठी"
+    },
+    {
+      "id": "hi-a1-2-25",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-25.json",
+      "domain": "work",
+      "title": "सब्ज़ी वाले का दिन"
+    },
+    {
+      "id": "hi-a1-2-26",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/hi-a1-2-26.json",
+      "domain": "narrative",
+      "title": "खोया हुआ फ़ोन"
+    },
+    {
+      "id": "hi-a2-1-01",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-01.json",
+      "domain": "biography",
+      "title": "सीता नानी की ज़िंदगी"
+    },
+    {
+      "id": "hi-a2-1-02",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-02.json",
+      "domain": "contemporary-nonfiction",
+      "title": "हमारा शहर"
+    },
+    {
+      "id": "hi-a2-1-03",
+      "stage": "a2-1",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-104-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-1-04",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-04.json",
+      "domain": "correspondence",
+      "title": "भेजने वाली कलीसिया को पत्र"
+    },
+    {
+      "id": "hi-a2-1-05",
+      "stage": "a2-1",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-20-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-1-06",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-06.json",
+      "domain": "narrative",
+      "title": "तूफ़ान की रात"
+    },
+    {
+      "id": "hi-a2-1-07",
+      "stage": "a2-1",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-64-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-1-08",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-08.json",
+      "domain": "practical-communication",
+      "title": "सरकारी दफ़्तर में"
+    },
+    {
+      "id": "hi-a2-1-09",
+      "stage": "a2-1",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-63-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-1-10",
+      "stage": "a2-1",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-1-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-1-11",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-11.json",
+      "domain": "instructions",
+      "title": "चाय कैसे बनती है"
+    },
+    {
+      "id": "hi-a2-1-12",
+      "stage": "a2-1",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-3-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-1-13",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-13.json",
+      "domain": "testimony",
+      "title": "पास्टर अनिल की कहानी"
+    },
+    {
+      "id": "hi-a2-1-14",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-14.json",
+      "domain": "contemporary-nonfiction",
+      "title": "मानसून और किसान"
+    },
+    {
+      "id": "hi-a2-1-15",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-15.json",
+      "domain": "narrative",
+      "title": "चालाक चूहा: नानी की कहानी"
+    },
+    {
+      "id": "hi-a2-1-16",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-16.json",
+      "domain": "conversation",
+      "title": "परीक्षा का हफ़्ता"
+    },
+    {
+      "id": "hi-a2-1-17",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-17.json",
+      "domain": "work",
+      "title": "प्रिया की मोबाइल की दुकान"
+    },
+    {
+      "id": "hi-a2-1-18",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-18.json",
+      "domain": "health",
+      "title": "गाँव में स्वास्थ्य शिविर"
+    },
+    {
+      "id": "hi-a2-1-19",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-19.json",
+      "domain": "narrative",
+      "title": "अमन का खोया बैग"
+    },
+    {
+      "id": "hi-a2-1-20",
+      "stage": "a2-1",
+      "kind": "controlled",
+      "document": "units/hi-a2-1-20.json",
+      "domain": "church-and-mission-life",
+      "title": "हम क्रिसमस क्यों मनाते हैं"
+    },
+    {
+      "id": "hi-a2-2-01",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-01.json",
+      "domain": "travel",
+      "title": "पहाड़ की यात्रा की डायरी"
+    },
+    {
+      "id": "hi-a2-2-02",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-122-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-2-03",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-105-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-2-04",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-04.json",
+      "domain": "biography",
+      "title": "मीरा दीदी कैसे नर्स बनीं"
+    },
+    {
+      "id": "hi-a2-2-05",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:hi:bible-jhn-14",
+      "domain": "scripture"
+    },
+    {
+      "id": "hi-a2-2-06",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-66-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-2-07",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-65-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-2-08",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-08.json",
+      "domain": "conversation",
+      "title": "शहर या गाँव?"
+    },
+    {
+      "id": "hi-a2-2-09",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-09.json",
+      "domain": "contemporary-nonfiction",
+      "title": "पानी और कचरा"
+    },
+    {
+      "id": "hi-a2-2-10",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-79-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-2-11",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-11.json",
+      "domain": "community",
+      "title": "मोहल्ले की बैठक"
+    },
+    {
+      "id": "hi-a2-2-12",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-12.json",
+      "domain": "correspondence",
+      "title": "औपचारिक पत्र और उसका उत्तर"
+    },
+    {
+      "id": "hi-a2-2-13",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-13.json",
+      "domain": "narrative",
+      "title": "गाँव की होली"
+    },
+    {
+      "id": "hi-a2-2-14",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-14.json",
+      "domain": "health",
+      "title": "डेंगू और साफ़ पानी"
+    },
+    {
+      "id": "hi-a2-2-15",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-15.json",
+      "domain": "testimony",
+      "title": "एक साल बाद सैम की गवाही"
+    },
+    {
+      "id": "hi-a2-2-16",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-16.json",
+      "domain": "work",
+      "title": "ऑटो चालक से बातचीत"
+    },
+    {
+      "id": "hi-a2-2-17",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-17.json",
+      "domain": "contemporary-nonfiction",
+      "title": "स्कूल का साल कैसे चलता है"
+    },
+    {
+      "id": "hi-a2-2-18",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-18.json",
+      "domain": "family",
+      "title": "परिवार में शादी"
+    },
+    {
+      "id": "hi-a2-2-19",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-101-ch01",
+      "domain": "narrative"
+    },
+    {
+      "id": "hi-a2-2-20",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-20.json",
+      "domain": "food",
+      "title": "चर्च की दावत की तैयारी"
+    },
+    {
+      "id": "hi-a2-2-21",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-21.json",
+      "domain": "church-and-mission-life",
+      "title": "टीम की साप्ताहिक रिपोर्ट"
+    },
+    {
+      "id": "hi-a2-2-22",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-22.json",
+      "domain": "scripture",
+      "title": "खोया हुआ बेटा"
+    },
+    {
+      "id": "hi-a2-2-23",
+      "stage": "a2-2",
+      "kind": "controlled",
+      "document": "units/hi-a2-2-23.json",
+      "domain": "testimony",
+      "title": "मैं क्यों रुका"
+    },
+    {
+      "id": "hi-a2-2-24",
+      "stage": "a2-2",
+      "kind": "authentic",
+      "textId": "text:hi:gdl-93-ch01",
+      "domain": "narrative"
+    }
+  ]
+}

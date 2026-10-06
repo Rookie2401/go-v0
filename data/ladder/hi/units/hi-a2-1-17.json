@@ -1,0 +1,529 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-1-17",
+  "lang": "hi",
+  "title": "प्रिया की मोबाइल की दुकान",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-1-17",
+    "title": "Priya's mobile-phone shop (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted by an AI model; awaiting native-speaker review. Priya runs the shop and Rohan is her partner and repairer (the plan only says \"Priya and Rohan\"; their exact relation is kept open). The old customer is called दादा जी by everyone and takes honorific plural verbs; Priya and Rohan say आप to him, he says तुम to them. Priya is a believer and offers to pray for the dead brother of the old man in a plain, respectful way; she does not press it and the old man simply thanks her. The old man's village (canal, wheat fields, a sheep) is invented for the unit. Outside words kept: सिम (5 uses; the adapter has no reading, it is the word people use for a SIM card) and दुख (once, in the condolence). सयाना (clever for his age) and फूलना (the plant is coming into flower) are recycle words used in their natural senses. \"वैसे\" is used both for \"by the way\" and for \"in that way (वैसे ही)\". Please check \"आत्मा की शांति के लिए प्रार्थना करूँगी\": Priya offers to pray for the dead brother, respectfully and without pressing."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "work",
+    "shop",
+    "mobile phones",
+    "kindness"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "work"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "sam": "सैम",
+    "priya": "प्रिया",
+    "rohan": "रोहन",
+    "dada": "दादा जी",
+    "bachcha": "वीडियो का बच्चा"
+  },
+  "sections": [
+    {
+      "title": "सुबह की दुकान",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम को एक नया सिम चाहिए था, इसलिए वह सुबह बाज़ार की एक छोटी दुकान में गया।",
+              "english": "Sam needed a new SIM, so in the morning he went to a small shop in the market."
+            },
+            {
+              "text": "दुकान का नाम \"प्रिया मोबाइल\" था।",
+              "english": "The shop was called \"Priya Mobile\"."
+            },
+            {
+              "text": "प्रिया ने अभी फाटक खोला था, और उसका साथी रोहन कोने की मेज़ पर कंप्यूटर खोल रहा था।",
+              "english": "Priya had just opened the gate, and her partner Rohan was switching on the computer at the table in the corner."
+            },
+            {
+              "text": "दीवार पर एक टीवी लगा था, जिस पर सुबह की ख़बर आ रही थी।",
+              "english": "A television was fixed on the wall, on which the morning news was playing."
+            },
+            {
+              "text": "दुकान के बाहर एक छोटा पौधा था, जो बारिश के बाद हरा हो गया था और अब फूलने लगा था।",
+              "english": "Outside the shop there was a small plant, which had turned green after the rain and had now begun to flower."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम: नमस्ते, मुझे एक नया सिम चाहिए।",
+              "english": "Hello, I need a new SIM."
+            },
+            {
+              "text": "प्रिया: आइए, हमारी दुकान में सिम बेचे जाते हैं।",
+              "english": "Come in, SIMs are sold in our shop."
+            },
+            {
+              "text": "प्रिया: इसके अलावा फ़ोन भी ठीक किए जाते हैं।",
+              "english": "Besides that, phones are also repaired."
+            },
+            {
+              "text": "प्रिया: चाहे आप सिम लें, चाहे नया फ़ोन, यहाँ सब मिल जाएगा।",
+              "english": "Whether you take a SIM or a new phone, you will find everything here."
+            },
+            {
+              "text": "रोहन: पहले आपका नाम और नंबर लिखा जाएगा, फिर सिम दिया जाएगा।",
+              "english": "First your name and number will be written down, then the SIM will be given."
+            },
+            {
+              "text": "सैम: मैं कई दिन से एक अच्छी दुकान की खोज में था।",
+              "english": "For several days I was looking for a good shop."
+            },
+            {
+              "text": "प्रिया: तब आपकी खोज यहाँ पूरी हुई।",
+              "english": "Then your search ended here."
+            },
+            {
+              "text": "सैम: वैसे, आप लोग यहाँ कब से काम करते हैं?",
+              "english": "By the way, since when do you two work here?"
+            },
+            {
+              "text": "प्रिया: मैं 5 साल से यहाँ हूँ।",
+              "english": "I have been here for 5 years."
+            },
+            {
+              "text": "प्रिया: जब मैंने यह दुकान शुरू की थी, तब मेरी उम्र सिर्फ़ 22 साल थी।",
+              "english": "When I started this shop, my age was only 22."
+            },
+            {
+              "text": "रोहन: और मैं तीन साल पहले आया था।",
+              "english": "And I came three years ago."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सैम का पुराना फ़ोन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम ने अपना पुराना फ़ोन मेज़ पर रखा।",
+              "english": "Sam put his old phone on the table."
+            },
+            {
+              "text": "सैम: इस फ़ोन में इंटरनेट बहुत धीरे चलता है।",
+              "english": "The internet on this phone runs very slowly."
+            },
+            {
+              "text": "रोहन: लाइए, मैं कंप्यूटर से इसकी ग़लती खोजता हूँ।",
+              "english": "Give it here, I will look for its fault with the computer."
+            },
+            {
+              "text": "रोहन: इसकी चमक भी कम है।",
+              "english": "Its brightness is low too."
+            },
+            {
+              "text": "रोहन: इसके अलावा यह बहुत गरम भी होता है।",
+              "english": "Besides that, it also gets very hot."
+            },
+            {
+              "text": "सैम: क्या आप इसे ठीक कर सकते हैं?",
+              "english": "Can you fix it?"
+            },
+            {
+              "text": "रोहन: हाँ, पर कल तक का समय लगेगा।",
+              "english": "Yes, but it will take until tomorrow."
+            },
+            {
+              "text": "रोहन: मैं बिल बना देता हूँ, ताकि आप कल जल्दी फ़ोन ले जा सकें।",
+              "english": "I will make out the bill so that you can take the phone quickly tomorrow."
+            },
+            {
+              "text": "सैम ने इसी बीच अपने लिए एक नंबर चुना।",
+              "english": "Meanwhile Sam chose a number for himself."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दादा जी",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "तभी फाटक पर एक बूढ़े आदमी आकर रुके।",
+              "english": "Just then an old man came and stopped at the gate."
+            },
+            {
+              "text": "उनके हाथ में एक छोटा-सा फ़ोन था, और वे बहुत परेशान लग रहे थे।",
+              "english": "There was a small phone in his hand, and he looked very worried."
+            },
+            {
+              "text": "दादा जी: बेटी, मेरी मदद करो।",
+              "english": "Daughter, help me."
+            },
+            {
+              "text": "दादा जी: हाय, मुझसे कुछ पढ़ा नहीं जाता!",
+              "english": "Oh dear, I cannot read anything!"
+            },
+            {
+              "text": "प्रिया: आइए, दादा जी, कुर्सी पर बैठिए।",
+              "english": "Come, Dada ji, please sit on the chair."
+            },
+            {
+              "text": "प्रिया: घबराइए मत।",
+              "english": "Do not worry."
+            },
+            {
+              "text": "प्रिया ने खुद उनके लिए एक कुर्सी रखी।",
+              "english": "Priya herself put out a chair for him."
+            },
+            {
+              "text": "रोहन ने प्रिया से धीरे से कहा, \"इनका फ़ोन बहुत पुराना है।\"",
+              "english": "Rohan said quietly to Priya, \"His phone is very old.\""
+            },
+            {
+              "text": "दादा जी: मेरी बेटी ने इसमें एक वीडियो भेजा है, पर मुझे अक्षर दिखते ही नहीं।",
+              "english": "My daughter has sent a video on it, but I cannot see the letters at all."
+            },
+            {
+              "text": "दादा जी: मेरी उम्र 78 साल है, और अब आँखें भी कमज़ोर हैं।",
+              "english": "I am 78 years old, and now my eyes are weak too."
+            },
+            {
+              "text": "दादा जी: हाय, इस उम्र में कौन सीखता है?",
+              "english": "Oh dear, who learns at this age?"
+            },
+            {
+              "text": "प्रिया: कोई बात नहीं, दादा जी।",
+              "english": "Never mind, Dada ji."
+            },
+            {
+              "text": "प्रिया: रोहन, इनका नंबर भी लिख लो।",
+              "english": "Rohan, write down his number too."
+            },
+            {
+              "text": "रोहन: दादा जी के फ़ोन में इंटरनेट भी बंद था, इसलिए नए संदेश नहीं खुल रहे थे।",
+              "english": "The internet on his phone was off too, so new messages were not opening."
+            },
+            {
+              "text": "प्रिया ने फ़ोन लिया और उसकी चमक तेज़ कर दी।",
+              "english": "Priya took the phone and turned its brightness up."
+            },
+            {
+              "text": "फिर उसने अक्षर बड़े कर दिए, ताकि दादा जी उन्हें ठीक से पढ़ सकें।",
+              "english": "Then she made the letters bigger so that Dada ji could read them properly."
+            },
+            {
+              "text": "प्रिया: देखिए, जो अक्षर छोटे थे, वे अब बड़े हो गए हैं।",
+              "english": "Look, the letters that were small have become big now."
+            },
+            {
+              "text": "दादा जी: अरे वाह, अब मुझे सब दिखता है!",
+              "english": "Oh, wonderful, now I can see everything!"
+            },
+            {
+              "text": "दादा जी की आँखों में एक नई चमक आ गई।",
+              "english": "A new shine came into his eyes."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "वीडियो में गाँव और स्कूल",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "प्रिया: आइए, अब आपकी बेटी का वीडियो देखते हैं।",
+              "english": "Come, now let us watch your daughter's video."
+            },
+            {
+              "text": "वीडियो में उनकी बेटी का छोटा बच्चा स्कूल की नई वर्दी पहने खड़ा था।",
+              "english": "In the video his daughter's little boy was standing in his new school uniform."
+            },
+            {
+              "text": "उसके पैरों में काले जूते थे, और हाथ में एक कॉपी और पेंसिल थी।",
+              "english": "There were black shoes on his feet, and a notebook and pencil in his hand."
+            },
+            {
+              "text": "बच्चा: नाना जी, आज मेरा पहला दिन है।",
+              "english": "Nana ji, today is my first day."
+            },
+            {
+              "text": "बच्चा: मेरे मास्टर जी बहुत अच्छे हैं।",
+              "english": "My master ji is very nice."
+            },
+            {
+              "text": "पीछे स्कूल का फाटक भी दिख रहा था।",
+              "english": "The school gate could be seen behind him too."
+            },
+            {
+              "text": "दादा जी: अरे, तू तो कितना बड़ा हो गया!",
+              "english": "Oh, how big you have grown!"
+            },
+            {
+              "text": "दादा जी के दिल में ख़ुशी की एक लहर दौड़ गई।",
+              "english": "A wave of joy ran through his heart."
+            },
+            {
+              "text": "दादा जी: यह बच्चा बड़ा सयाना है; खुद फ़ोन चला लेता है।",
+              "english": "This child is very clever; he runs a phone by himself."
+            },
+            {
+              "text": "सैम: दादा जी, इनका गाँव कहाँ है?",
+              "english": "Dada ji, where is your village?"
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सैम ने यह बात दादा जी से पूछी।",
+              "english": "Sam asked Dada ji this."
+            },
+            {
+              "text": "दादा जी: मेरा गाँव नहर के पास है।",
+              "english": "My village is near the canal."
+            },
+            {
+              "text": "दादा जी: गाँव के रिश्तेदार ने भी एक संदेश भेजा है, वह भी खोलिए।",
+              "english": "A relative in the village has also sent a message, please open that one too."
+            },
+            {
+              "text": "उसमें नहर के पास गेहूँ का खेत दिखा, और खेत में एक भेड़ बैठी थी।",
+              "english": "In it a wheat field was seen near the canal, and a sheep was sitting in the field."
+            },
+            {
+              "text": "नहर के पानी की एक लहर धूप में चमक रही थी।",
+              "english": "A ripple of the canal water was shining in the sun."
+            },
+            {
+              "text": "दादा जी: जब मैं जवान था, तब इसी नहर से हमारे खेतों में पानी आता था।",
+              "english": "When I was young, the water came to our fields from this very canal."
+            },
+            {
+              "text": "दादा जी: अब गाँव अलग दिखता है, पर नहर वही है।",
+              "english": "Now the village looks different, but the canal is the same."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "फ़ोटो और चाय",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "प्रिया: दादा जी, अब मैं आपकी एक फ़ोटो उतारती हूँ।",
+              "english": "Dada ji, now I will take a photo of you."
+            },
+            {
+              "text": "प्रिया: आप इसे अपनी बेटी को भेज सकते हैं।",
+              "english": "You can send it to your daughter."
+            },
+            {
+              "text": "रोहन: इस फ़ोटो में आप बहुत अच्छे लगते हैं।",
+              "english": "You look very nice in this photo."
+            },
+            {
+              "text": "रोहन ने वह फ़ोटो बेटी के नंबर पर भेज दी।",
+              "english": "Rohan sent that photo to his daughter's number."
+            },
+            {
+              "text": "रोहन: इंटरनेट पर इस खोज से पुराने भजन मिल जाते हैं।",
+              "english": "On the internet, old hymns can be found with this search."
+            },
+            {
+              "text": "दादा जी: बेटा, मैं भजन सुनना पसंद करता हूँ।",
+              "english": "Son, I like to listen to hymns."
+            },
+            {
+              "text": "दादा जी: एक साल पहले मेरे बड़े भाई की मौत हो गई थी।",
+              "english": "A year ago my elder brother died."
+            },
+            {
+              "text": "दादा जी: तब से मैं बहुत अकेला हूँ।",
+              "english": "Since then I have been very lonely."
+            },
+            {
+              "text": "प्रिया: मुझे बहुत दुख है, दादा जी।",
+              "english": "I am very sorry, Dada ji."
+            },
+            {
+              "text": "प्रिया: मैं उनकी आत्मा की शांति के लिए प्रार्थना करूँगी।",
+              "english": "I will pray for the peace of his soul."
+            },
+            {
+              "text": "दादा जी: धन्यवाद, बेटी।",
+              "english": "Thank you, daughter."
+            },
+            {
+              "text": "प्रिया ने चाय बनाई।",
+              "english": "Priya made tea."
+            },
+            {
+              "text": "उसने पानी में अदरक और इलायची डाली, चाय छानकर कप में रखी, और चीनी कम रखी।",
+              "english": "She put ginger and cardamom in the water, strained the tea into a cup, and kept the sugar low."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दोपहर के समोसे",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दोपहर को रोहन ने कहा, \"मैं सबके लिए समोसे लाता हूँ।\"",
+              "english": "At noon Rohan said, \"I will bring samosas for everyone.\""
+            },
+            {
+              "text": "वह जल्दी लौटा।",
+              "english": "He came back quickly."
+            },
+            {
+              "text": "उसके हाथ में एक पत्ता था, और उस पर गरम समोसे रखे थे।",
+              "english": "He had a leaf in his hand, and hot samosas were laid on it."
+            },
+            {
+              "text": "उसमें आलू, हरी मिर्च और लहसुन था।",
+              "english": "It had potato, green chilli and garlic in it."
+            },
+            {
+              "text": "टीवी पर कोई गाना आ रहा था, पर आज किसी ने उसे नहीं देखा।",
+              "english": "A song was on the television, but today nobody watched it."
+            },
+            {
+              "text": "दादा जी ने समोसे का एक छोटा टुकड़ा खाया।",
+              "english": "Dada ji ate a small piece of the samosa."
+            },
+            {
+              "text": "दादा जी: यह तो बहुत ख़ास चीज़ है।",
+              "english": "This is really something special."
+            },
+            {
+              "text": "प्रिया: वैसे तो मेरा काम फ़ोन बेचना है, पर चाहे कोई भी आए, मुझे उसकी मदद करना अच्छा लगता है।",
+              "english": "Actually my work is selling phones, but whoever comes, I like helping them."
+            },
+            {
+              "text": "सैम: मैं भी लोगों की मदद करना चाहता हूँ, और वैसे ही सीखना चाहता हूँ।",
+              "english": "I too want to help people, and to learn in just that way."
+            },
+            {
+              "text": "इतने में बाहर से भीड़ की एक लहर आई, और दुकान में कई ग्राहक आ गए।",
+              "english": "Just then a wave of crowd came in from outside, and several customers entered the shop."
+            },
+            {
+              "text": "रोहन: हाय, हमारी चाय ठंडी हो जाएगी!",
+              "english": "Oh no, our tea will get cold!"
+            },
+            {
+              "text": "दादा जी: जिसका काम अच्छा होता है, उसकी दुकान में भीड़ रहती है।",
+              "english": "A person whose work is good has a crowd in the shop."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "शाम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शाम को सैम का फ़ोन ठीक हो गया था।",
+              "english": "In the evening Sam's phone had been repaired."
+            },
+            {
+              "text": "रोहन ने कंप्यूटर बंद किया और टीवी भी बंद कर दिया।",
+              "english": "Rohan shut down the computer and switched off the television as well."
+            },
+            {
+              "text": "रोहन ने उनकी बेटी का नंबर बड़े अक्षर में लिखा, ताकि वे जब चाहें फ़ोन कर सकें।",
+              "english": "Rohan wrote his daughter's number in big letters so that he could call whenever he liked."
+            },
+            {
+              "text": "दादा जी: चाय के अलावा तुम लोगों ने मुझे बहुत कुछ दिया है।",
+              "english": "Besides the tea you have given me a great deal."
+            },
+            {
+              "text": "दादा जी: मैं घर जाकर उसे फिर देखूँगा।",
+              "english": "I will go home and watch it again."
+            },
+            {
+              "text": "प्रिया उन्हें दरवाज़े तक छोड़ने गई।",
+              "english": "Priya went to see him off at the door."
+            },
+            {
+              "text": "प्रिया: आज आपसे कुछ नहीं लूँगी।",
+              "english": "Today I will not take anything from you."
+            },
+            {
+              "text": "प्रिया: कभी चाय पीने आइए।",
+              "english": "Come for tea sometime."
+            },
+            {
+              "text": "सैम ने बाहर जाते समय कहा, \"आज का दिन बहुत अच्छा रहा।\"",
+              "english": "As he went out, Sam said, \"Today was a very good day.\""
+            },
+            {
+              "text": "बाहर आसमान में शाम का पहला तारा दिख रहा था।",
+              "english": "Outside, the first star of the evening was showing in the sky."
+            },
+            {
+              "text": "प्रिया: यह सब परमेश्वर का अनुग्रह है।",
+              "english": "All of this is God's grace."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

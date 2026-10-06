@@ -1,0 +1,442 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-11",
+  "lang": "hi",
+  "title": "मोहल्ले की बैठक",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-11",
+    "title": "\"मोहल्ले की बैठक\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A lane meeting told by Sam, with direct and reported speech and short minutes at the end. Cast: पास्टर अनिल (elected chairman by vote), सुरेश, गीता, सरदार जी and Sam. It follows the water-and-rubbish report (hi-a2-2-09). Points for the reviewer: the meeting is held in the yard of the church but the whole lane (many faiths) is present and nothing religious happens in it; आप for everybody, जी after names; the form of the proposals (मैं प्रस्ताव रखता हूँ ...) and the word अध्यक्ष follow what a lane committee would say; the planned top-up words (फेंकना, भूलना, क़रीब, अजीब, क़िस्म, लेटना, घूरना, ख़ूबसूरत, मुस्कान, ओढ़ना, नज़दीक, ताकना, दवाई) are spread through the story as ordinary words. Planned 'भरा' is read as भरना in 'भरी'; the masculine 'भरा हुआ' counts correctly. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "community",
+    "meeting",
+    "neighbours",
+    "rubbish"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "बैठक की शाम",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "शनिवार की शाम को हमारे मोहल्ले की बैठक थी।",
+              "english": "On Saturday evening there was a meeting of our neighbourhood."
+            },
+            {
+              "text": "यह बैठक पास्टर अनिल के चर्च के आँगन में रखी गई थी, क्योंकि वहाँ क़रीब 60 लोग आराम से बैठ सकते थे।",
+              "english": "The meeting was held in the yard of Pastor Anil's church, because about 60 people could sit there comfortably."
+            },
+            {
+              "text": "वहाँ अलग-अलग क़िस्म के लोग थे: दुकानदार, मज़दूर, अध्यापक और बच्चे।",
+              "english": "There were different kinds of people there: shopkeepers, labourers, teachers and children."
+            },
+            {
+              "text": "हर घर से कोई न कोई आया था, और कुछ लोग कंबल ओढ़कर बैठे थे, क्योंकि शाम की हवा ठंडी थी।",
+              "english": "Somebody had come from every house, and some people sat wrapped in blankets because the evening wind was cold."
+            },
+            {
+              "text": "चाचा ने भी कंबल ओढ़ रखा था।",
+              "english": "Uncle had a blanket around him too."
+            },
+            {
+              "text": "एक बूढ़े चाचा चारपाई पर लेटे-लेटे सब कुछ सुन रहे थे, और उनके पास उनकी दवाई का थैला रखा था।",
+              "english": "An old uncle listened to everything lying on a charpoy, and his bag of medicine was kept beside him."
+            },
+            {
+              "text": "वे मोहल्ले के सबसे नज़दीक वाले घर से आए थे, और उन्होंने कहा कि वे लेटकर भी सुन सकते हैं।",
+              "english": "He had come from the nearest house of the neighbourhood, and he said that he could listen even lying down."
+            },
+            {
+              "text": "दवाई लेने उन्हें नज़दीक की दुकान तक जाना पड़ता है, इसलिए गली की गंदगी से वे बहुत परेशान थे।",
+              "english": "To get medicine he has to go to the nearby shop, so he was very troubled by the filth of the lane."
+            },
+            {
+              "text": "आँगन के पास एक छोटा-सा पेड़ था, और उस पर लाल फूल थे।",
+              "english": "Near the yard there was a small tree, and red flowers had bloomed on it."
+            },
+            {
+              "text": "मैंने सोचा कि हमारा मोहल्ला कितना ख़ूबसूरत हो सकता है, अगर हम सब मिलकर उसे साफ़ रखें, और गली के सब पेड़ ख़ूबसूरत फूलों से भर जाएँ।",
+              "english": "I thought how beautiful our neighbourhood could be, if we all kept it clean together, and all the trees of the lane were filled with beautiful flowers."
+            },
+            {
+              "text": "मेरी सोच यह थी कि यह बोलने का अच्छा मौक़ा है, और इसका फ़ायदा सबको होगा।",
+              "english": "My thought was that this was a good chance to speak, and everybody would have the benefit of it."
+            },
+            {
+              "text": "गीता सबसे पहले आईं, और उन्होंने मुझे देखकर मुस्कान के साथ कहा, \"सैम, आज तुम भी बोलोगे।\"",
+              "english": "Geeta came first, and seeing me she said with a smile, \"Sam, you will speak today as well.\""
+            },
+            {
+              "text": "मैं थोड़ा घबरा गया, पर मैंने कहा कि मैं कोशिश करूँगा।",
+              "english": "I was a little nervous, but I said that I would try."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "अध्यक्ष का चुनाव",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "जब सब लोग इकट्ठा हो गए, तो सुरेश ने खड़े होकर कहा, \"हमें पहले एक अध्यक्ष चुनना चाहिए।\"",
+              "english": "When everybody had gathered, Suresh stood up and said, \"First we should choose a chairman.\""
+            },
+            {
+              "text": "गीता ने प्रस्ताव रखा कि पास्टर अनिल को अध्यक्ष बनाया जाए।",
+              "english": "Geeta proposed that Pastor Anil be made chairman."
+            },
+            {
+              "text": "सुरेश ने कहा कि वे इस प्रस्ताव से सहमत हैं।",
+              "english": "Suresh said that he agreed with this proposal."
+            },
+            {
+              "text": "सरदार जी ने पूछा, \"क्या किसी और के पास कोई राय है?\"",
+              "english": "Sardar ji asked, \"Does anyone else have an opinion?\""
+            },
+            {
+              "text": "कुछ देर कोई कुछ नहीं बोला, और सब एक-दूसरे का मुँह ताकते रहे।",
+              "english": "For a while nobody spoke, and everybody kept looking at one another's faces."
+            },
+            {
+              "text": "मुझे अजीब लगा कि इतने लोग होकर भी कोई नहीं बोल रहा था।",
+              "english": "It seemed strange to me that with so many people nobody was speaking."
+            },
+            {
+              "text": "फिर एक औरत ने कहा, \"मैं भी सहमत हूँ, क्योंकि पास्टर जी हमेशा सबकी सुनते हैं।\"",
+              "english": "Then a woman said, \"I agree too, because the pastor always listens to everyone.\""
+            },
+            {
+              "text": "उसके बाद वोट लिया गया, और सबने हाथ उठाए।",
+              "english": "After that a vote was taken, and everybody raised their hands."
+            },
+            {
+              "text": "एक भी हाथ नीचे नहीं रहा, और पास्टर अनिल अध्यक्ष चुने गए।",
+              "english": "Not a single hand stayed down, and Pastor Anil was chosen chairman."
+            },
+            {
+              "text": "उन्होंने सबको धन्यवाद दिया और कहा, \"मैं आज कोई फ़ैसला नहीं करूँगा, फ़ैसला आप सब करेंगे।\"",
+              "english": "He thanked everybody and said, \"I will make no decision today; you all will decide.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पहली समस्या: कचरा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पास्टर अनिल ने बैठक शुरू की और कहा, \"आज की सबसे बड़ी समस्या कचरे और नाली की है।\"",
+              "english": "Pastor Anil began the meeting and said, \"The biggest problem today is that of the rubbish and the drain.\""
+            },
+            {
+              "text": "उनके पीछे दीवार पर एक बड़ा काग़ज़ लगा था, जिस पर नाली की तस्वीरें थीं।",
+              "english": "Behind him on the wall a large sheet of paper was put up, on which there were pictures of the drain."
+            },
+            {
+              "text": "नाली कचरे से भरी हुई थी, और उसमें गंदा पानी रुका हुआ था।",
+              "english": "The drain was full of rubbish, and dirty water was standing in it."
+            },
+            {
+              "text": "सब लोग तस्वीरें देखकर कुछ नहीं बोले।",
+              "english": "Everyone saw the pictures and said nothing."
+            },
+            {
+              "text": "एक आदमी ने कहा, \"पर यह कचरा हम नहीं डालते, यह बाहर के लोग फेंकते हैं।\"",
+              "english": "A man said, \"But we do not throw this rubbish, outsiders throw it.\""
+            },
+            {
+              "text": "गीता ने जवाब दिया, \"अजीब बात है, भाई, कि हमारे घर के बाहर का कचरा हमेशा बाहर के लोगों का होता है।\"",
+              "english": "Geeta replied, \"It is a strange thing, brother, that the rubbish outside our own house is always that of outsiders.\""
+            },
+            {
+              "text": "कुछ लोग हँस पड़े, और वह आदमी भी मुस्कुरा दिया।",
+              "english": "Some people burst out laughing, and that man smiled too."
+            },
+            {
+              "text": "गीता ने कहा, \"मेरा प्रस्ताव है कि हर घर महीने में 50 रुपये का चंदा दे।\"",
+              "english": "Geeta said, \"My proposal is that every house give a contribution of 50 rupees a month.\""
+            },
+            {
+              "text": "\"उस चंदे से हम एक आदमी को रखेंगे, जो हर सुबह घर-घर से कचरा इकट्ठा करे।\"",
+              "english": "\"With that contribution we will hire a man who will collect the rubbish from house to house every morning.\""
+            },
+            {
+              "text": "सरदार जी ने सुझाव दिया कि चंदा सिर्फ़ 30 रुपये हो, क्योंकि महँगाई के इस समय में कई परिवारों के लिए 50 रुपये ज़्यादा हैं।",
+              "english": "Sardar ji suggested that the contribution should be only 30 rupees, because in this time of high prices 50 rupees is too much for many families."
+            },
+            {
+              "text": "उन्होंने मुझे घूरकर देखा, फिर हँस दिए, क्योंकि मैं उनकी बात पर सिर हिला रहा था।",
+              "english": "He stared at me, then laughed, because I was nodding my head at his point."
+            },
+            {
+              "text": "सुरेश ने एक और सुझाव दिया: जो घर चंदा नहीं दे सकते, वे हफ़्ते में एक दिन ख़ुद सफ़ाई करें।",
+              "english": "Suresh gave one more suggestion: houses that cannot pay should clean for one day a week themselves."
+            },
+            {
+              "text": "पास्टर अनिल ने कहा, \"दोनों सुझाव अच्छे हैं। अब सब अपनी राय बताएँ।\"",
+              "english": "Pastor Anil said, \"Both suggestions are good. Now let everybody tell his opinion.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सबकी राय",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "बहुत-से लोगों ने राय दी, और बैठक में थोड़ा शोर होने लगा।",
+              "english": "Many people gave their opinion, and a little noise began in the meeting."
+            },
+            {
+              "text": "क़रीब आधे घंटे तक बात चलती रही, और सब मिलकर बोलें तो बहुत ताक़त होती है।",
+              "english": "For about half an hour the talk went on, and when all speak together there is great strength."
+            },
+            {
+              "text": "एक औरत ने कहा, \"मैं चंदे के लिए सहमत हूँ, पर पैसा कहाँ गया, यह सबको बताया जाना चाहिए।\"",
+              "english": "A woman said, \"I agree to the contribution, but everybody should be told where the money went.\""
+            },
+            {
+              "text": "एक लड़के ने कहा, \"मैं सहमत नहीं हूँ। हमारा अकेला घर इतने पैसे नहीं दे सकता।\"",
+              "english": "A young man said, \"I do not agree. Our single house cannot give so much money.\""
+            },
+            {
+              "text": "पास्टर अनिल ने उसे शांति से सुना और कहा, \"आपकी बात ठीक है, और हम उस पर ध्यान देंगे।\"",
+              "english": "Pastor Anil heard him calmly and said, \"What you say is right, and we will give attention to it.\""
+            },
+            {
+              "text": "सरदार जी ने कहा कि वे 2 महीने का चंदा एक साथ देंगे, ताकि जिनके पास कम पैसे हैं, उन्हें सुविधा हो।",
+              "english": "Sardar ji said he would give two months' contribution at once, so that those who have less money would be at ease."
+            },
+            {
+              "text": "उनकी इस बात से लोगों के चेहरे पर मुस्कान आ गई।",
+              "english": "At this remark of his, smiles came on the faces of the people."
+            },
+            {
+              "text": "अब मेरे बोलने का समय था, और मैंने धीरे से कहा, \"मेरी राय में हमें कचरे की हर क़िस्म के लिए अलग डिब्बा रखना चाहिए।\"",
+              "english": "Now it was time for me to speak, and I said softly, \"In my opinion we should keep a separate bin for each kind of rubbish.\""
+            },
+            {
+              "text": "कुछ लोग मुझे घूर रहे थे, और सब मेरा मुँह ताक रहे थे, क्योंकि वे समझ नहीं पाए कि मैं क्या कह रहा हूँ।",
+              "english": "Some people were staring at me, and everybody was watching my face, because they could not understand what I was saying."
+            },
+            {
+              "text": "गीता ने मेरी बात समझाई कि सूखा कचरा एक डिब्बे में, और गीला कचरा दूसरे डिब्बे में जाना चाहिए।",
+              "english": "Geeta explained my point: dry rubbish should go in one bin and wet rubbish in another."
+            },
+            {
+              "text": "सुरेश ने सिर हिलाकर कहा, \"यह बहुत अच्छा सुझाव है, पर लोग भूल जाते हैं।\"",
+              "english": "Suresh nodded and said, \"This is a very good suggestion, but people forget.\""
+            },
+            {
+              "text": "गीता बोलीं, \"तो हम डिब्बों पर बड़े-बड़े अक्षरों में लिख देंगे, ताकि कोई न भूले।\"",
+              "english": "Geeta said, \"Then we will write on the bins in big letters, so that nobody forgets.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दूसरी समस्या: नल और बंदर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "दूसरी समस्या नल के पानी की थी।",
+              "english": "The second problem was that of the tap water."
+            },
+            {
+              "text": "लोगों का कहना था कि पानी सिर्फ़ सुबह आता है, और बहुत-से घरों की टंकी ठीक से नहीं भरती।",
+              "english": "People's complaint was that the water comes only in the morning, and the tanks of many houses do not fill properly."
+            },
+            {
+              "text": "सुरेश ने कहा कि इस समस्या का हल सब मिलकर निकाल सकते हैं, अगर वे दफ़्तर को फिर से शिकायत लिखें।",
+              "english": "Suresh said that everybody together could find the solution to this problem, if they wrote a complaint to the office again."
+            },
+            {
+              "text": "गीता ने कहा कि हल मुश्किल नहीं है, बस हर घर को अपना नाम लिखना होगा।",
+              "english": "Geeta said that the solution is not hard, every house only has to write its name."
+            },
+            {
+              "text": "पास्टर अनिल ने कहा कि क़ानून में लिखा है कि हर मोहल्ले को ठीक पानी मिलना चाहिए।",
+              "english": "Pastor Anil said that it is written in the law that every neighbourhood should get proper water."
+            },
+            {
+              "text": "सरदार जी बोले कि क़ानून सबके लिए है, और क़ानून की बात सबको बताई जानी चाहिए।",
+              "english": "Sardar ji said that the law is for all, and the word of the law should be told to everybody."
+            },
+            {
+              "text": "एक आदमी ने पूछा, \"अगर दफ़्तर ने नहीं सुना, तो?\"",
+              "english": "A man asked, \"And if the office does not listen?\""
+            },
+            {
+              "text": "गीता ने कहा, \"तब हम सबके नाम के साथ फिर से जाएँगे, क्योंकि जहाँ बहुत-से लोग इकट्ठा होते हैं, वहाँ आवाज़ भी बड़ी होती है।\"",
+              "english": "Geeta said, \"Then we will go again with everybody's name, because where many people gather, the voice is big too.\""
+            },
+            {
+              "text": "फिर किसी ने बंदरों की बात उठाई, जो रोज़ कचरे के डिब्बे खोल देते हैं।",
+              "english": "Then somebody raised the matter of the monkeys, which open the rubbish bins every day."
+            },
+            {
+              "text": "सब लोग इस बात पर सहमत थे कि बंदरों को भगाना चाहिए, पर कैसे, यह किसी को नहीं पता था।",
+              "english": "Everybody agreed on this point that the monkeys should be driven away, but how, nobody knew."
+            },
+            {
+              "text": "एक बच्चे ने कहा कि वह चिल्लाकर बंदरों को भगा देगा, और सब हँस पड़े।",
+              "english": "One child said that he would shout and drive the monkeys away, and everybody burst out laughing."
+            },
+            {
+              "text": "सरदार जी ने कहा कि अगर कचरा बंद डिब्बों में रखा जाए, तो बंदर खाना नहीं ढूँढ़ पाएँगे और अपने आप चले जाएँगे।",
+              "english": "Sardar ji said that if the rubbish was kept in closed bins, the monkeys would not be able to find food and would go away by themselves."
+            },
+            {
+              "text": "एक लड़के ने दीवार के पास उगी घास और पौधे दिखाए और कहा कि बंदर वहीं बैठते हैं।",
+              "english": "A boy pointed out the grass and plants grown near the wall and said that the monkeys sit there."
+            },
+            {
+              "text": "सुरेश ने कहा, \"अगर हम सब मिलकर एक दिन इन पौधों को उखाड़ दें, तो बंदर भी कम होंगे और नाली के पास की जगह भी साफ़ होगी।\"",
+              "english": "Suresh said, \"If we all together pull up these plants in one day, the monkeys will be fewer and the place near the drain will be clean too.\""
+            },
+            {
+              "text": "कचरे से भरा डिब्बा, घास से भरी नाली और रास्ते में भरा पानी, इन सबका हल यही है कि सब मिलकर हाथ लगाएँ।",
+              "english": "A bin full of rubbish, a drain full of grass and water filled up on the road, the solution to all these is just that everybody puts a hand to it together."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "वोट और फ़ैसला",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पास्टर अनिल ने कहा, \"अब सब सुझावों पर वोट होगा।\"",
+              "english": "Pastor Anil said, \"Now there will be a vote on all the suggestions.\""
+            },
+            {
+              "text": "पहले चंदे पर वोट लिया गया: 38 हाथ उठे और 6 हाथ नीचे रहे।",
+              "english": "First the vote was taken on the contribution: 38 hands went up and 6 hands stayed down."
+            },
+            {
+              "text": "चंदा 40 रुपये महीना तय हुआ, और जो घर न दे सकें, वे हफ़्ते में एक बार सफ़ाई करेंगे।",
+              "english": "The contribution was fixed at 40 rupees a month, and houses that cannot pay will do cleaning once a week."
+            },
+            {
+              "text": "फिर पौधे उखाड़ने और अलग-अलग डिब्बे रखने पर वोट हुआ, और इन दोनों प्रस्तावों पर सब सहमत हुए।",
+              "english": "Then the vote came on pulling up the plants and keeping different bins, and everybody agreed on both these proposals."
+            },
+            {
+              "text": "आख़िर में पानी की शिकायत पर वोट हुआ, और यह भी तय हुआ कि गीता और सुरेश दफ़्तर जाएँगे।",
+              "english": "Finally the vote came on the complaint about water, and it was also fixed that Geeta and Suresh would go to the office."
+            },
+            {
+              "text": "पास्टर अनिल ने कहा, \"यह फ़ैसला किसी एक आदमी का नहीं, पूरे मोहल्ले का है।\"",
+              "english": "Pastor Anil said, \"This decision is not of one man, but of the whole neighbourhood.\""
+            },
+            {
+              "text": "उन्होंने यह भी कहा कि अगर हम इन सब बातों पर चलें, तो हमारे रिश्ते भी अच्छे होंगे, और मोहल्ले की तरक़्क़ी भी होगी, और अकेलापन भी कम होगा।",
+              "english": "He also said that if we follow all these things, our relationships will be good too, the neighbourhood will progress, and the loneliness will lessen."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बैठक का सार",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "बैठक के बाद मैंने कॉपी में लिखा कि क्या तय हुआ।",
+              "english": "After the meeting I wrote in my notebook what had been decided."
+            },
+            {
+              "text": "पहला: हर घर 40 रुपये महीना चंदा देगा।",
+              "english": "First proposal: every house will give a contribution of 40 rupees a month."
+            },
+            {
+              "text": "दूसरा: कचरा अलग-अलग डिब्बों में रखा जाएगा, और डिब्बे बंद रहेंगे।",
+              "english": "Second proposal: rubbish will be kept in separate bins, and the bins will stay closed."
+            },
+            {
+              "text": "फिर: अगले रविवार को सब लोग मिलकर घास और पौधे उखाड़ेंगे और नाली साफ़ करेंगे।",
+              "english": "Then: next Sunday all people together will pull up the grass and plants and clean the drain."
+            },
+            {
+              "text": "आख़िर में: गीता और सुरेश पानी के बारे में दफ़्तर जाएँगे, और बंदरों को भगाने का काम बच्चों को दिया जाएगा।",
+              "english": "Finally: Geeta and Suresh will go to the office about the water, and the job of driving the monkeys away will be given to the children."
+            },
+            {
+              "text": "कचरा सड़क पर फेंकना अब किसी को अच्छा नहीं लगेगा, ऐसी हमारी उम्मीद है, और लोग अब यह नहीं भूलेंगे।",
+              "english": "Throwing rubbish on the road will not seem good to anyone now, such is our hope, and people will not forget it now."
+            },
+            {
+              "text": "मैं बैठक से लौटते समय बहुत ख़ुश था, क्योंकि मैंने पहली बार देखा कि एक पूरा मोहल्ला मिलकर कोई फ़ैसला कर रहा है।",
+              "english": "I was very happy returning from the meeting, because I saw for the first time a whole neighbourhood making a decision together."
+            },
+            {
+              "text": "घर के रास्ते में गीता ने कहा, \"देखा, सैम? सुधार बात करने से शुरू होता है।\"",
+              "english": "On the way home Geeta said, \"See, Sam? Improvement starts with talking.\""
+            },
+            {
+              "text": "रात को नींद आने से पहले मैंने सोचा कि जिस गली में लोग एक-दूसरे की राय सुनते हैं, वह गली कभी अकेली नहीं होती।",
+              "english": "At night before sleep came I thought that a lane where people listen to each other's opinion is never lonely."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

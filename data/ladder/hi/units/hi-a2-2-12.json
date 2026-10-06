@@ -1,0 +1,412 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-12",
+  "lang": "hi",
+  "title": "औपचारिक पत्र और उसका उत्तर",
+  "contentType": "nonfiction",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-12",
+    "title": "\"औपचारिक पत्र और उसका उत्तर\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A formal request (Sam, writing for the lane committee of hi-a2-2-11) to the town office for the garden for a two-day children's camp, the office's reply, a thank-you, a neighbourhood notice and a short report of the camp. It teaches the formal letter register: आदरणीय महोदय, निवेदन, कृपया, स्वीकार, सूचित, आपका. Points for the reviewer: the layout of the address block and the closing lines (सेवा में / आपका) is the common school-textbook layout and may need a native fix (भवदीय was avoided because it is a word the ladder has not taught); the office's reply uses the passive on purpose (the passive is the register of offices, not of speech); फीता (ribbon-cutting at an opening, and shoelaces), बाँधना, झूलना (swinging), चोर (the children's game \"thief and policeman\") and ख़ज़ाना (a treasure hunt) belong to the camp story; the camp is for children of every faith and nothing religious is planned in it. No word outside the plan. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "correspondence",
+    "formal letter",
+    "children's camp",
+    "notice"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "सैम का पत्र",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सेवा में,",
+              "english": "To,"
+            },
+            {
+              "text": "शहर का दफ़्तर।",
+              "english": "The Town Office."
+            },
+            {
+              "text": "आदरणीय महोदय,",
+              "english": "Respected Sir,"
+            },
+            {
+              "text": "निवेदन है कि हम अपने मोहल्ले के बच्चों के लिए 2 दिन का एक खेल शिविर रखना चाहते हैं।",
+              "english": "It is requested that we wish to hold a two-day play camp for the children of our neighbourhood."
+            },
+            {
+              "text": "यह शिविर शहर के बीच वाले बगीचे में रखा जाएगा, जो हमारी गली से बहुत पास है।",
+              "english": "This camp would be held in the garden in the middle of the city, which is very near our lane."
+            },
+            {
+              "text": "हमारा निवेदन है कि हमें अगले महीने के पहले शनिवार और रविवार को वह बगीचा दिया जाए।",
+              "english": "Our request is that we be given that garden on the first Saturday and Sunday of next month."
+            },
+            {
+              "text": "शिविर सुबह 8 बजे से दोपहर 12 बजे तक चलेगा, ताकि बच्चों की नींद और पढ़ाई, दोनों का नुकसान न हो।",
+              "english": "The camp will run from 8 in the morning until 12 noon, so that neither the children's sleep nor their study suffers any harm."
+            },
+            {
+              "text": "उसमें 60 के क़रीब बच्चे आएँगे, जिनकी उम्र 6 से 14 साल के बीच होगी।",
+              "english": "About 60 children will come, whose age will be between 6 and 14 years."
+            },
+            {
+              "text": "बच्चों को खेलने, गीत सुनाने, कहानी सुनने और चित्र बनाने का मौक़ा मिलेगा।",
+              "english": "The children will get the chance to play, to sing songs, to hear stories and to draw pictures."
+            },
+            {
+              "text": "शिविर में हमारे साथ 10 बड़े लोग रहेंगे, और मीरा दीदी बच्चों के पास रहेंगी, ताकि कोई बच्चा गिरे या बीमार हो, तो उसका इलाज किया जा सके।",
+              "english": "Ten grown-ups will be with us in the camp, and Meera didi will stay near the children, so that if some child falls or is ill, he can be treated."
+            },
+            {
+              "text": "वे बिना किसी डर के आज़ादी से खेल सकेंगे, और बगीचे में झूलते हुए नए दोस्त बनाएँगे।",
+              "english": "They will be able to play freely without any fear, and while swinging in the garden they will make new friends."
+            },
+            {
+              "text": "हम आपको भरोसा देते हैं कि बगीचे को गंदा नहीं किया जाएगा।",
+              "english": "We assure you that the garden will not be made dirty."
+            },
+            {
+              "text": "हर शाम सब लोग मिलकर बगीचा साफ़ करेंगे, और कचरा बड़े डिब्बों में डाला जाएगा।",
+              "english": "Every evening everybody will clean the garden together, and the rubbish will be put in big bins."
+            },
+            {
+              "text": "शिविर में कोई शोर नहीं होगा, और हम क़ानून की सब बातों का ध्यान रखेंगे।",
+              "english": "There will be no noise in the camp, and we will keep in mind all the points of the law."
+            },
+            {
+              "text": "अगर किसी को हमारे शिविर के बारे में कोई शिकायत हो, तो कृपया हमें तुरंत सूचित करें।",
+              "english": "If anyone has any complaint about our camp, please inform us at once."
+            },
+            {
+              "text": "मोहल्ले की बैठक में अध्यक्ष पास्टर अनिल और सब लोग इस प्रस्ताव से सहमत हुए हैं।",
+              "english": "In the meeting of the neighbourhood, the chairman Pastor Anil and everybody agreed with this proposal."
+            },
+            {
+              "text": "शिविर का सारा ख़र्च हम चंदे से उठाएँगे, और आपसे कोई पैसा नहीं माँगेंगे।",
+              "english": "We will bear the whole expense of the camp from contributions, and will ask no money from you."
+            },
+            {
+              "text": "हमारी राय है कि इसका फ़ायदा सिर्फ़ हमारे मोहल्ले को नहीं, पूरे शहर को होगा, क्योंकि बच्चे एक-दूसरे से मिलकर नए रिश्ते बनाएँगे।",
+              "english": "It is our opinion that the benefit of it will go not only to our neighbourhood but to the whole city, because the children will make new relationships by meeting one another."
+            },
+            {
+              "text": "हमें लगता है कि ऐसे शिविर बच्चों की तरक़्क़ी में भी मदद करते हैं।",
+              "english": "It seems to us that such camps help in the progress of the children too."
+            },
+            {
+              "text": "कृपया हमारे इस निवेदन को स्वीकार करें और अपने फ़ैसले से हमें जल्दी सूचित करें।",
+              "english": "Please accept this request of ours and inform us of your decision soon."
+            },
+            {
+              "text": "धन्यवाद।",
+              "english": "Thank you."
+            },
+            {
+              "text": "आपका,",
+              "english": "Yours,"
+            },
+            {
+              "text": "सैम",
+              "english": "Sam"
+            },
+            {
+              "text": "(मोहल्ले की ओर से)",
+              "english": "(on behalf of the neighbourhood)"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दफ़्तर का उत्तर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "प्रिय सैम जी,",
+              "english": "Dear Sam ji,"
+            },
+            {
+              "text": "आपका पत्र हमें मिल गया है।",
+              "english": "We have received your letter."
+            },
+            {
+              "text": "आपको सूचित किया जाता है कि आपका निवेदन स्वीकार कर लिया गया है।",
+              "english": "You are informed that your request has been accepted."
+            },
+            {
+              "text": "आपको दोनों दिन के लिए बगीचा दिया जाता है, पर इसके लिए कुछ बातों का ध्यान रखा जाना चाहिए।",
+              "english": "The garden is given to you for both days, but for this some things should be kept in mind."
+            },
+            {
+              "text": "पहली बात यह है कि बगीचे के पेड़ों और चीज़ों को कोई नुकसान नहीं पहुँचना चाहिए।",
+              "english": "The first thing is that no harm should come to the trees and things of the garden."
+            },
+            {
+              "text": "दूसरी बात यह है कि शिविर के बाद बगीचा पहले जैसा साफ़ मिलना चाहिए।",
+              "english": "The second thing is that after the camp the garden should be found as clean as before."
+            },
+            {
+              "text": "फिर यह भी होना चाहिए कि हर बच्चे के साथ कोई बड़ा आदमी रहे।",
+              "english": "Then it should also be that some grown-up is with every child."
+            },
+            {
+              "text": "हम चाहते हैं कि बच्चों को बीमारी से बचाने के लिए पानी साफ़ रखा जाए, और अगर कोई बच्चा बीमार हो, तो उसे घर भेज दिया जाए।",
+              "english": "We want that, to save children from illness, the water should be kept clean, and if any child is ill, he should be sent home."
+            },
+            {
+              "text": "एक साल पहले उसी बगीचे में एक चोर ने बहुत-सा सामान चोरी कर लिया था।",
+              "english": "A year ago in that very garden a thief had stolen a lot of things."
+            },
+            {
+              "text": "इसलिए कृपया रात को कोई सामान बगीचे में न छोड़ें।",
+              "english": "So please do not leave any things in the garden at night."
+            },
+            {
+              "text": "हमारे दफ़्तर की ओर से एक आदमी शिविर के पहले दिन आपसे मिलने आएगा।",
+              "english": "A man from our office will come to meet you on the first day of the camp."
+            },
+            {
+              "text": "अध्यक्ष महोदय ने भी आपका पत्र पढ़ा और कहा कि ऐसे पत्र हमें कम मिलते हैं।",
+              "english": "The chairman, sir, also read your letter and said that we receive such letters rarely."
+            },
+            {
+              "text": "अगर आपको कोई मदद चाहिए, तो कृपया हमें लिखें।",
+              "english": "If you need any help, please write to us."
+            },
+            {
+              "text": "हमें आशा है कि आपका शिविर अच्छा रहेगा, और हमें आपकी यह सोच बहुत पसंद आई।",
+              "english": "We hope that your camp will go well, and we liked this thinking of yours very much."
+            },
+            {
+              "text": "आपका,",
+              "english": "Yours,"
+            },
+            {
+              "text": "शहर का दफ़्तर",
+              "english": "The Town Office"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "सैम का दूसरा पत्र",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आदरणीय महोदय,",
+              "english": "Respected Sir,"
+            },
+            {
+              "text": "आपका उत्तर पाकर हमें बहुत ख़ुशी हुई।",
+              "english": "We were very happy to receive your reply."
+            },
+            {
+              "text": "महोदय, हम आपका बहुत आभार मानते हैं।",
+              "english": "Sir, we are very thankful to you."
+            },
+            {
+              "text": "हम आपकी सब बातें स्वीकार करते हैं, और हर बात का ध्यान रखा जाएगा।",
+              "english": "We accept all your points, and every point will be kept in mind."
+            },
+            {
+              "text": "एक और निवेदन है: क्या शिविर के पहले दिन बगीचे के फाटक पर फीता काटा जा सकता है?",
+              "english": "One more request: can a ribbon be cut at the gate of the garden on the first day of the camp?"
+            },
+            {
+              "text": "हम चाहते हैं कि कोई छोटा बच्चा फीता काटे, ताकि सब बच्चे समझें कि यह शिविर उन्हीं का है।",
+              "english": "We want some small child to cut the ribbon, so that all the children understand that this camp is theirs."
+            },
+            {
+              "text": "कृपया हमें यह भी सूचित करें कि क्या हम बच्चों के खेल के लिए आँखों पर पट्टी बाँध सकते हैं।",
+              "english": "Please also inform us whether we can tie a cloth over the eyes for the children's game."
+            },
+            {
+              "text": "दफ़्तर ने 2 दिन बाद लिखा कि फीता काटा जा सकता है, और खेल में कोई मुश्किल नहीं है।",
+              "english": "After 2 days the office wrote that the ribbon can be cut, and that there is no difficulty in the game."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "मोहल्ले की सूचना",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सूचना",
+              "english": "Notice"
+            },
+            {
+              "text": "मोहल्ले के सब माँ-पापा को सूचित किया जाता है कि शनिवार और रविवार को बच्चों का खेल शिविर होगा।",
+              "english": "All mothers and fathers of the neighbourhood are informed that there will be a children's play camp on Saturday and Sunday."
+            },
+            {
+              "text": "शिविर सुबह 8 बजे से दोपहर 12 बजे तक चलेगा।",
+              "english": "The camp will run from 8 in the morning to 12 noon."
+            },
+            {
+              "text": "हर बच्चा अपने साथ पानी की बोतल और एक टोपी लाए।",
+              "english": "Every child should bring a bottle of water and a cap."
+            },
+            {
+              "text": "कृपया बच्चे को नाश्ता खिलाकर भेजें।",
+              "english": "Please send the child after giving him breakfast."
+            },
+            {
+              "text": "जिन परिवारों के पास पैसे कम हैं, वे चंदा न दें, उनके बच्चे भी आएँगे।",
+              "english": "Families who have less money should not give the contribution, their children will come too."
+            },
+            {
+              "text": "अगर कोई बच्चा बीमार हो, तो वह घर पर रहे।",
+              "english": "If any child is ill, he should stay at home."
+            },
+            {
+              "text": "हमें आपकी राय भी चाहिए, इसलिए कृपया इस काग़ज़ पर अपना नाम और सुझाव लिखें।",
+              "english": "We also want your opinion, so please write your name and suggestion on this paper."
+            },
+            {
+              "text": "अध्यक्ष, पास्टर अनिल",
+              "english": "Chairman, Pastor Anil"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "शिविर के बाद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "पहले मुझे डर था कि दफ़्तर नहीं कहेगा।",
+              "english": "At first I was afraid that the office would refuse."
+            },
+            {
+              "text": "पर रवि सर ने कहा कि अच्छे पत्र की ख़ास बात उसकी सीधी बात होती है।",
+              "english": "But Ravi sir said that the mark of a good letter is its plain speech."
+            },
+            {
+              "text": "मैंने वह पत्र 3 बार लिखा, और हर बार उन्हें दिखाया।",
+              "english": "I wrote that letter 3 times, and showed it to him each time."
+            },
+            {
+              "text": "शिविर बहुत अच्छा रहा।",
+              "english": "The camp went very well."
+            },
+            {
+              "text": "पहले दिन 7 साल की एक छोटी लड़की ने लाल फीता काटा, और सब बच्चे हँस पड़े।",
+              "english": "On the first day a small girl of 7 cut the red ribbon, and all the children burst out laughing."
+            },
+            {
+              "text": "बगीचे में बच्चे एक-एक करके झूलते रहे, और जो थक जाता था, वह पेड़ के नीचे बैठ जाता था।",
+              "english": "In the garden the children kept swinging one by one, and whoever got tired would sit under the tree."
+            },
+            {
+              "text": "झूलना सबको पसंद था।",
+              "english": "Everybody liked swinging."
+            },
+            {
+              "text": "रवि सर ने बच्चों को सिखाया कि जूते के फीते कैसे बाँधते हैं, और कई बच्चे पहली बार अपने फीते ख़ुद बाँध पाए।",
+              "english": "Ravi sir taught the children how shoelaces are tied, and many children could tie their own laces for the first time."
+            },
+            {
+              "text": "शाम को उन्होंने सबको भालू की एक कहानी सुनाई।",
+              "english": "In the evening he told everybody a story of a bear."
+            },
+            {
+              "text": "दूसरे दिन हमने \"चोर और सिपाही\" का खेल खेला।",
+              "english": "On the second day we played the game of \"thief and policeman\"."
+            },
+            {
+              "text": "अमन चोर बना, और वह इतना तेज़ भागा कि सिपाही उसे पकड़ नहीं पाए।",
+              "english": "Aman became the thief, and he ran so fast that the policemen could not catch him."
+            },
+            {
+              "text": "फिर हमने ख़ज़ाने की खोज रखी।",
+              "english": "Then we held a treasure hunt."
+            },
+            {
+              "text": "बच्चों को एक काग़ज़ दिया गया, जिस पर रास्ता बना था, और जो सबसे पहले ख़ज़ाना ढूँढ़ ले, उसे टॉफ़ी मिलनी थी।",
+              "english": "The children were given a paper on which a way was drawn, and whoever found the treasure first was to get a toffee."
+            },
+            {
+              "text": "ख़ज़ाना सच में एक पुराना डिब्बा था, जिसमें टॉफ़ियाँ और एक छोटी-सी किताब रखी थी।",
+              "english": "The treasure was really an old box, in which toffees and a small book were kept."
+            },
+            {
+              "text": "शाम को सबने मिलकर बगीचा साफ़ किया, और दफ़्तर का आदमी यह देखकर हँस पड़ा।",
+              "english": "In the evening everybody cleaned the garden together, and the man from the office laughed on seeing this."
+            },
+            {
+              "text": "उसने कहा, \"मैंने इतना साफ़ बगीचा कभी नहीं देखा।\"",
+              "english": "He said, \"I have never seen such a clean garden.\""
+            },
+            {
+              "text": "अमन ने दफ़्तर के लिए एक चित्र बनाया, जिसमें एक भालू झूल रहा था।",
+              "english": "Aman drew a picture for the office, in which a bear was swinging."
+            },
+            {
+              "text": "चित्र के नीचे उसने लिखा, \"झूलता हुआ भालू, सबका दोस्त।\"",
+              "english": "Under the picture he wrote, \"The swinging bear, everybody's friend.\""
+            },
+            {
+              "text": "मैंने दफ़्तर को फिर एक पत्र लिखा, जिसमें हमने उन्हें धन्यवाद दिया और अगले साल फिर से निवेदन करने की बात लिखी।",
+              "english": "I wrote one more letter to the office, in which we thanked them and wrote that we would make a request again next year."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

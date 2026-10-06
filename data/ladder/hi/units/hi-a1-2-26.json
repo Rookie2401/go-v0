@@ -1,0 +1,496 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-26",
+  "lang": "hi",
+  "title": "खोया हुआ फ़ोन",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-26",
+    "title": "The lost phone (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A mystery in the past. Perfective with ने (सैम ने देखा; पुलिस ने रिपोर्ट लिखी), pluperfect (मैंने फ़ोन जेब में रखा था), inceptive -ने लगा (घबराने लगा, रोने लगा). Sam retraces his way (bringing back the auto, lane and neighbourhood words), goes to the police, is helped by Aman and Meera didi, and finds the phone at Ramesh's cart. The plan's recycle list is long (44 words once each) and is woven into the retracing and the final thanks. आगे is avoided (not in the palette); the adapter reads some compound verbs as separate lemmas. Honorific plural for the police officer and Meera didi. Words outside the plan (measured): none."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "lost phone",
+    "police",
+    "helping",
+    "city"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "खोया हुआ फ़ोन",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज सैम पास के डाक के दफ़्तर गया।",
+              "english": "Today Sam went to the nearby post office."
+            },
+            {
+              "text": "उसने वहाँ अपना ख़त डाला।",
+              "english": "He put his letter there."
+            },
+            {
+              "text": "उसने लिफ़ाफ़े पर पता देखा, और ख़ुश हुआ।",
+              "english": "He looked at the address on the envelope, and was pleased."
+            },
+            {
+              "text": "उसे आशा थी कि चिट्ठी जल्दी जाएगी।",
+              "english": "He hoped the letter would go quickly."
+            },
+            {
+              "text": "वह रिक्शे से घर लौटा।",
+              "english": "He came back home by rickshaw."
+            },
+            {
+              "text": "घर पहुँचकर उसने जेब में हाथ डाला।",
+              "english": "On reaching home he put his hand in his pocket."
+            },
+            {
+              "text": "जेब में फ़ोन नहीं था।",
+              "english": "The phone was not in his pocket."
+            },
+            {
+              "text": "उसने दूसरी जेब देखी।",
+              "english": "He looked in the other pocket."
+            },
+            {
+              "text": "वहाँ भी फ़ोन नहीं था।",
+              "english": "The phone was not there either."
+            },
+            {
+              "text": "बटुआ बैग में था, लेकिन फ़ोन नहीं।",
+              "english": "The wallet was in the bag, but the phone was not."
+            },
+            {
+              "text": "बटुआ ठीक था, यह अच्छी बात थी।",
+              "english": "The wallet was fine, which was good."
+            },
+            {
+              "text": "सैम घबराने लगा।",
+              "english": "Sam began to panic."
+            },
+            {
+              "text": "वह सोचने लगा, \"मैंने फ़ोन अपने पास रखा था।\"",
+              "english": "He began to think, \"I had kept the phone with me.\""
+            },
+            {
+              "text": "\"शायद चोरी हो गई।\"",
+              "english": "\"Perhaps it has been stolen.\""
+            },
+            {
+              "text": "वह चारपाई पर बैठ गया, अकेला और उदास।",
+              "english": "He sat down on the cot, alone and sad."
+            },
+            {
+              "text": "फ़ोन न ऑटो में था, न रिक्शे में।",
+              "english": "The phone was neither in the auto nor in the rickshaw."
+            },
+            {
+              "text": "वह घबराया, पर रोया न।",
+              "english": "He panicked, but did not cry."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अमन ने सैम को देखा।",
+              "english": "Aman saw Sam."
+            },
+            {
+              "text": "उसने पूछा, \"सैम, क्या हुआ?\"",
+              "english": "He asked, \"Sam, what happened?\""
+            },
+            {
+              "text": "सैम ने कहा, \"मेरा फ़ोन खो गया।\"",
+              "english": "Sam said, \"My phone is lost.\""
+            },
+            {
+              "text": "अमन ने कहा, \"मैं आपकी मदद करूँगा।\"",
+              "english": "Aman said, \"I will help you.\""
+            },
+            {
+              "text": "उसने नानी को बुलाया।",
+              "english": "He called Nani."
+            },
+            {
+              "text": "नानी ने सैम को पानी दिया, और बैठाया।",
+              "english": "Nani gave Sam water, and made him sit down."
+            },
+            {
+              "text": "उन्होंने कहा, \"डरो मत। पहले साफ़ बात सोचो।\"",
+              "english": "She said, \"Don't be afraid. First think it through clearly.\""
+            },
+            {
+              "text": "\"साफ़ पानी पीजिए, और आराम कीजिए।\"",
+              "english": "\"Drink clean water, and rest.\""
+            },
+            {
+              "text": "अमन ने सैम को साइकिल पर बैठाया।",
+              "english": "Aman made Sam sit on the bicycle."
+            },
+            {
+              "text": "सैम अब अकेला नहीं था।",
+              "english": "Sam was not alone now."
+            },
+            {
+              "text": "\"आप सुबह कहाँ गए थे?\"",
+              "english": "\"Where did you go in the morning?\""
+            },
+            {
+              "text": "सैम ने कहा, \"पहले ऑटो, फिर डाक का दफ़्तर।\"",
+              "english": "Sam said, \"First the auto, then the post office.\""
+            },
+            {
+              "text": "अमन ने कहा, \"हम वही रास्ता देखेंगे।\"",
+              "english": "Aman said, \"We will look at the same road.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "वही रास्ता",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अमन ने अपनी साइकिल निकाली।",
+              "english": "Aman took out his bicycle."
+            },
+            {
+              "text": "वह उसे चलाने लगा।",
+              "english": "He began to ride it."
+            },
+            {
+              "text": "अमन की साइकिल पुरानी है।",
+              "english": "Aman's bicycle is old."
+            },
+            {
+              "text": "वह घर से निकला, और वे पहले दीपक के पास गए।",
+              "english": "He left the house, and first they went to Deepak."
+            },
+            {
+              "text": "सैम ने पूछा, \"दीपक भाई, क्या मेरा फ़ोन ऑटो में है?\"",
+              "english": "Sam asked, \"Deepak bhai, is my phone in the auto?\""
+            },
+            {
+              "text": "दीपक ने देखा, लेकिन फ़ोन नहीं मिला।",
+              "english": "Deepak looked, but the phone was not found."
+            },
+            {
+              "text": "उसने कहा, \"सवारी बहुत थीं। किराया मैंने लिया, लेकिन फ़ोन नहीं देखा।\"",
+              "english": "He said, \"There were many passengers. I took the fare, but I did not see the phone.\""
+            },
+            {
+              "text": "वे चौराहे पर गए।",
+              "english": "They went to the crossroads."
+            },
+            {
+              "text": "वहाँ से सीधा बढ़े, और मोड़ पर ठहरे।",
+              "english": "From there they moved straight, and stopped at the bend."
+            },
+            {
+              "text": "दाएँ बगीचा था, और बाएँ घाट।",
+              "english": "On the right was the garden, and on the left the ghat."
+            },
+            {
+              "text": "दुकानदार ने कहा, \"मैंने कोई फ़ोन नहीं देखा।\"",
+              "english": "The shopkeeper said, \"I have not seen any phone.\""
+            },
+            {
+              "text": "सैम और अमन दोनों घूमे, बहुत घूमे।",
+              "english": "Sam and Aman both wandered, wandered a lot."
+            },
+            {
+              "text": "वे तालाब के पास भी गए, और सब जगह घूमे।",
+              "english": "They went to the pond too, and wandered everywhere."
+            },
+            {
+              "text": "भीड़ बढ़ने लगी।",
+              "english": "The crowd began to grow."
+            },
+            {
+              "text": "वे चौराहे की तरफ़ बढ़े।",
+              "english": "They moved towards the crossroads."
+            },
+            {
+              "text": "अमन ने कहा, \"ठहरिए, सैम!\"",
+              "english": "Aman said, \"Wait, Sam!\""
+            },
+            {
+              "text": "वे पड़ोस में गए, और सुरेश जी से पूछा।",
+              "english": "They went to the neighbourhood, and asked Suresh ji."
+            },
+            {
+              "text": "सुरेश जी ने कहा, \"यहाँ ऐसी कोई चीज़ नहीं आई।\"",
+              "english": "Suresh ji said, \"No such thing came here.\""
+            },
+            {
+              "text": "वे मस्जिद के पास भी ठहरे।",
+              "english": "They stopped near the mosque too."
+            },
+            {
+              "text": "वहाँ के लोगों ने कहा, \"हम देखेंगे। हम मदद करेंगे।\"",
+              "english": "The people there said, \"We will look. We will help.\""
+            },
+            {
+              "text": "अमन ने कहा, \"यह दोस्ती है।\"",
+              "english": "Aman said, \"This is friendship.\""
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पुलिस",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "फिर वे पुलिस के पास गए।",
+              "english": "Then they went to the police."
+            },
+            {
+              "text": "यह सरकार का दफ़्तर है।",
+              "english": "This is a government office."
+            },
+            {
+              "text": "उनका दफ़्तर साफ़ है।",
+              "english": "Their office is clean."
+            },
+            {
+              "text": "वे सेवा करते हैं।",
+              "english": "They give service."
+            },
+            {
+              "text": "सरकार का दफ़्तर बड़ा है।",
+              "english": "The government office is big."
+            },
+            {
+              "text": "पुलिस ने सैम को देखा, और कहा, \"बैठिए।\"",
+              "english": "The police officer looked at Sam, and said, \"Sit down.\""
+            },
+            {
+              "text": "सैम ने कहा, \"मेरा फ़ोन चोरी हो गया।\"",
+              "english": "Sam said, \"My phone has been stolen.\""
+            },
+            {
+              "text": "उन्होंने कहा, \"चोरी की रिपोर्ट लिखिए।\"",
+              "english": "He said, \"Write a report of the theft.\""
+            },
+            {
+              "text": "सैम ने रिपोर्ट लिखी।",
+              "english": "Sam wrote the report."
+            },
+            {
+              "text": "पुलिस ने रिपोर्ट पढ़ी।",
+              "english": "The police read the report."
+            },
+            {
+              "text": "उन्होंने कहा, \"फ़ोन का रंग क्या है?\"",
+              "english": "He asked, \"What is the colour of the phone?\""
+            },
+            {
+              "text": "सैम ने कहा, \"रंग लाल है।\"",
+              "english": "Sam said, \"The colour is red.\""
+            },
+            {
+              "text": "\"किसका फ़ोन? मेरा।\"",
+              "english": "\"Whose phone? Mine.\""
+            },
+            {
+              "text": "उन्होंने कहा, \"ठीक है। हम सरकार की तरफ़ से देखेंगे।\"",
+              "english": "He said, \"All right. We will look on behalf of the government.\""
+            },
+            {
+              "text": "उन्होंने कहा, \"लाल रंग का फ़ोन, ठीक?\"",
+              "english": "He said, \"A red-coloured phone, right?\""
+            },
+            {
+              "text": "सैम का दिल बैठने लगा।",
+              "english": "Sam's heart began to sink."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "रमेश का ठेला",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "तभी अमन ने कहा, \"देखो, रमेश जी का ठेला!\"",
+              "english": "Just then Aman said, \"Look, Ramesh ji's cart!\""
+            },
+            {
+              "text": "रमेश भिंडी और मटर तौल रहा था।",
+              "english": "Ramesh was weighing okra and peas."
+            },
+            {
+              "text": "वह कमाने के लिए सुबह उठता है।",
+              "english": "He gets up in the morning to earn."
+            },
+            {
+              "text": "उसने सैम को देखा, और मुस्कुराया।",
+              "english": "He saw Sam, and smiled."
+            },
+            {
+              "text": "उसने कहा, \"सैम जी, यह लाल फ़ोन आपका है?\"",
+              "english": "He said, \"Sam ji, is this red phone yours?\""
+            },
+            {
+              "text": "सैम ने कहा, \"हाँ! यह मेरा है!\"",
+              "english": "Sam said, \"Yes! This is mine!\""
+            },
+            {
+              "text": "रमेश ने कहा, \"आप सुबह ठेले पर आए थे।\"",
+              "english": "Ramesh said, \"You came to the cart in the morning.\""
+            },
+            {
+              "text": "\"आपने बटुआ और फ़ोन थैले में रखा था।\"",
+              "english": "\"You had put the wallet and the phone in the bag.\""
+            },
+            {
+              "text": "\"फ़ोन मटर के पास गिरा।\"",
+              "english": "\"The phone fell near the peas.\""
+            },
+            {
+              "text": "\"मैंने उसे दिन भर रखा, और आपके पास भेजना चाहा।\"",
+              "english": "\"I kept it all day, and wanted to send it to you.\""
+            },
+            {
+              "text": "सैम हैरान था, और बहुत ख़ुश।",
+              "english": "Sam was astonished, and very happy."
+            },
+            {
+              "text": "मोती भी वहाँ भौंका।",
+              "english": "Moti barked there too."
+            },
+            {
+              "text": "सैम की बाइबल और चाबी भी बैग में थीं।",
+              "english": "Sam's Bible and key were in the bag too."
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "धन्यवाद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "सैम ने रमेश से कहा, \"धन्यवाद! मैं कैसे आपका आभार मानूँ?\"",
+              "english": "Sam said to Ramesh, \"Thank you! How can I thank you?\""
+            },
+            {
+              "text": "रमेश ने कहा, \"कोई बात नहीं, मैं आपका सेवक हूँ।\"",
+              "english": "Ramesh said, \"It's nothing, I am your servant.\""
+            },
+            {
+              "text": "उसने सैम को भिंडी दी, और कहा, \"यह लीजिए।\"",
+              "english": "He gave Sam some okra, and said, \"Take this.\""
+            },
+            {
+              "text": "सैम ने पैसा दिया, और कहा, \"यह आपकी कमाई है।\"",
+              "english": "Sam gave the money, and said, \"This is your earnings.\""
+            },
+            {
+              "text": "सैम को शर्म आई।",
+              "english": "Sam felt ashamed."
+            },
+            {
+              "text": "मैं अब अकेला नहीं हूँ।",
+              "english": "I am not alone now."
+            },
+            {
+              "text": "अमन चलाता है, और सैम भी चलाएगा।",
+              "english": "Aman rides, and Sam will ride too."
+            },
+            {
+              "text": "उसने कहा, \"मुझे माफ़ कीजिए, मैं डर गया था।\"",
+              "english": "He said, \"Forgive me, I had been afraid.\""
+            },
+            {
+              "text": "\"मैंने सच्चाई सोची: सब लोग अच्छे भी होते हैं।\"",
+              "english": "\"I thought the truth: all people can be good too.\""
+            },
+            {
+              "text": "\"मैंने दुआ माँगी, और परमेश्वर ने मदद की।\"",
+              "english": "\"I asked in prayer, and God helped.\""
+            },
+            {
+              "text": "\"मुझे परमेश्वर पर भरोसा है। यह उसका आशीष है।\"",
+              "english": "\"I trust God. This is his blessing.\""
+            },
+            {
+              "text": "मीरा दीदी ने कहा, \"सैम, हम सहते हैं, और परमेश्वर हमें बचाता है।\"",
+              "english": "Meera didi said, \"Sam, we bear things, and God saves us.\""
+            },
+            {
+              "text": "घर में सब हँसे।",
+              "english": "At home everyone laughed."
+            },
+            {
+              "text": "नानी ने सैम को चाय दी, और मोटा कंबल दिया।",
+              "english": "Nani gave Sam tea, and a thick blanket."
+            },
+            {
+              "text": "उसने कहा, \"यह दिन जन्मदिन से कम नहीं है।\"",
+              "english": "She said, \"This day is no less than a birthday.\""
+            },
+            {
+              "text": "सैम मुस्कुराया।",
+              "english": "Sam smiled."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,355 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-10",
+  "lang": "hi",
+  "title": "गली में दिवाली के दीये",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-10",
+    "title": "Diwali lamps in the lane (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Written from the point of view of a respectful guest: Sam and Nani are invited to the neighbours' Diwali, Sam brings a gift and greets, nobody performs any rite and there is no comparison. गीता जी and सुरेश जी are the neighbours. The reviewer should check the greeting \"आपको त्योहार की बधाई\" (a Christian guest would say it this way) and the sentence about the lamps. तकिया as a gift and the sad child are the plan's words; the story ties them to a child whose friend is ill. The farmer relative recycles the train vocabulary. Trap: the adapter reads \"जी के\" (e.g. गीता जी के घर) as जीना + का, so the text avoids that frame. Words outside the plan (measured): none."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "festival",
+    "neighbours",
+    "guests"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "community"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "गली में दिवाली के दीये",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज दिवाली है।",
+              "english": "Today is Diwali."
+            },
+            {
+              "text": "गली में बहुत रोशनी है।",
+              "english": "There is a lot of light in the lane."
+            },
+            {
+              "text": "पड़ोसी अपने घर सजाते हैं।",
+              "english": "The neighbours decorate their houses."
+            },
+            {
+              "text": "गीता जी और सुरेश जी नानी के पड़ोसी हैं।",
+              "english": "Geeta ji and Suresh ji are Nani's neighbours."
+            },
+            {
+              "text": "गीता जी का घर बड़ा है।",
+              "english": "Geeta ji's house is big."
+            },
+            {
+              "text": "उसकी दीवार पर दीये हैं।",
+              "english": "There are lamps on its wall."
+            },
+            {
+              "text": "सुरेश जी घर सजाते हैं।",
+              "english": "Suresh ji decorates the house."
+            },
+            {
+              "text": "गीता जी भी घर सजाती हैं।",
+              "english": "Geeta ji decorates the house too."
+            },
+            {
+              "text": "सब पड़ोसी बाहर आते हैं।",
+              "english": "All the neighbours come out."
+            },
+            {
+              "text": "बच्चे दीये देखते हैं।",
+              "english": "The children look at the lamps."
+            },
+            {
+              "text": "यह दिवाली का त्योहार है।",
+              "english": "This is the festival of Diwali."
+            },
+            {
+              "text": "रोशनी बहुत अच्छी है।",
+              "english": "The light is very beautiful."
+            },
+            {
+              "text": "सैम रोशनी में तस्वीर लेता है।",
+              "english": "Sam takes a picture in the light."
+            },
+            {
+              "text": "बाहर कुछ आवाज़ है।",
+              "english": "There is some noise outside."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "नानी बोलती हैं, \"आज हम गीता जी से मिलेंगे।\"",
+              "english": "Nani says, \"Today we will visit Geeta ji.\""
+            },
+            {
+              "text": "पहले वह रसोई में मिठाई बनाती हैं।",
+              "english": "First she makes sweets in the kitchen."
+            },
+            {
+              "text": "सैम बोलता है, \"नानी, मिठाई बहुत अच्छी है!\"",
+              "english": "Sam says, \"Nani, the sweets are very good!\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"यह मेरा उपहार है।\"",
+              "english": "Nani says, \"This is my gift.\""
+            },
+            {
+              "text": "सैम सोचता है, \"मैं भी उपहार लाऊँगा।\"",
+              "english": "Sam thinks, \"I will bring a gift too.\""
+            },
+            {
+              "text": "सैम बाज़ार जाता है।",
+              "english": "Sam goes to the market."
+            },
+            {
+              "text": "वह एक तकिया लेता है।",
+              "english": "He buys a pillow."
+            },
+            {
+              "text": "यह सैम का उपहार है।",
+              "english": "This is Sam's gift."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "शाम को हम गीता जी से मिलने जाते हैं।",
+              "english": "In the evening we go to see Geeta ji."
+            },
+            {
+              "text": "गीता जी बोलती हैं, \"आइए! आपको दिवाली की बधाई!\"",
+              "english": "Geeta ji says, \"Come in! Happy Diwali to you!\""
+            },
+            {
+              "text": "नानी बोलती हैं, \"आपको भी बधाई!\"",
+              "english": "Nani says, \"To you too!\""
+            },
+            {
+              "text": "सैम बोलता है, \"आपको त्योहार की बधाई।\"",
+              "english": "Sam says, \"Best wishes on the festival.\""
+            },
+            {
+              "text": "सुरेश जी बोलते हैं, \"धन्यवाद, सैम! आप हिंदी बोलते हैं!\"",
+              "english": "Suresh ji says, \"Thank you, Sam! You speak Hindi!\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं थोड़ी हिंदी बोलता हूँ।\"",
+              "english": "Sam says, \"I speak a little Hindi.\""
+            },
+            {
+              "text": "गीता जी देखती हैं।",
+              "english": "Geeta ji looks."
+            },
+            {
+              "text": "वह बोलती हैं, \"यह मिठाई बहुत अच्छी है!\"",
+              "english": "She says, \"These sweets are very good!\""
+            },
+            {
+              "text": "सैम तकिया देता है।",
+              "english": "Sam gives the pillow."
+            },
+            {
+              "text": "गीता जी बोलती हैं, \"यह बहुत अच्छा है।\"",
+              "english": "Geeta ji says, \"This is very nice.\""
+            },
+            {
+              "text": "गीता जी चाय लाती हैं।",
+              "english": "Geeta ji brings tea."
+            },
+            {
+              "text": "हम सब कुर्सी पर बैठते हैं।",
+              "english": "We all sit on chairs."
+            },
+            {
+              "text": "सुरेश जी बोलते हैं, \"सैम, आप चाय पीजिए।\"",
+              "english": "Suresh ji says, \"Sam, have some tea.\""
+            },
+            {
+              "text": "सैम बोलता है, \"धन्यवाद, लेकिन मुझे दूध पसंद है।\"",
+              "english": "Sam says, \"Thank you, but I like milk.\""
+            },
+            {
+              "text": "गीता जी हँसती हैं और दूध लाती हैं।",
+              "english": "Geeta ji laughs and brings milk."
+            },
+            {
+              "text": "नानी बोलती हैं, \"सैम को चाय पसंद नहीं है!\"",
+              "english": "Nani says, \"Sam does not like tea!\""
+            },
+            {
+              "text": "अमन आम खाता है और बहुत ख़ुश है।",
+              "english": "Aman eats a mango and is very happy."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "एक छोटा बच्चा उदास है।",
+              "english": "A small child is sad."
+            },
+            {
+              "text": "वह कभी नहीं खेलता। वह तकिया लेता है और बैठता है।",
+              "english": "He never plays. He takes a pillow and sits down."
+            },
+            {
+              "text": "अमन बोलता है, \"आप उदास क्यों हैं?\"",
+              "english": "Aman says, \"Why are you sad?\""
+            },
+            {
+              "text": "बच्चा बोलता है, \"मेरा साथी बीमार है।\"",
+              "english": "The child says, \"My friend is ill.\""
+            },
+            {
+              "text": "अमन बोलता है, \"मैं आपका साथी हूँ।\"",
+              "english": "Aman says, \"I am your friend.\""
+            },
+            {
+              "text": "दोनों खेलते हैं।",
+              "english": "The two of them play."
+            },
+            {
+              "text": "अमन और बच्चा दोनों ख़ुश हैं।",
+              "english": "Aman and the child are both happy."
+            },
+            {
+              "text": "उदास बच्चा अब ख़ुश है।",
+              "english": "The sad child is happy now."
+            },
+            {
+              "text": "सुरेश जी बोलते हैं, \"आप सब साथी हैं।\"",
+              "english": "Suresh ji says, \"You are all friends.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "सुरेश जी का भाई गाँव से आता है।",
+              "english": "Suresh ji's brother comes from the village."
+            },
+            {
+              "text": "वह किसान हैं।",
+              "english": "He is a farmer."
+            },
+            {
+              "text": "सुरेश जी स्टेशन पर इंतज़ार करते हैं।",
+              "english": "Suresh ji waits at the station."
+            },
+            {
+              "text": "ट्रेन प्लेटफ़ॉर्म पर आती है।",
+              "english": "The train arrives at the platform."
+            },
+            {
+              "text": "किसान ट्रेन से उतरते हैं।",
+              "english": "The farmer gets off the train."
+            },
+            {
+              "text": "किसान के पास सामान बहुत है।",
+              "english": "The farmer has a lot of luggage."
+            },
+            {
+              "text": "वह सामान उठा सकते हैं।",
+              "english": "He can lift the luggage."
+            },
+            {
+              "text": "सफ़र बहुत अच्छा था।",
+              "english": "The journey was very good."
+            },
+            {
+              "text": "टिकट मेज़ पर है।",
+              "english": "The ticket is on the table."
+            },
+            {
+              "text": "सीट नहीं मिली, इसलिए चढ़ना पड़ा।",
+              "english": "There was no seat, so he had to stand on the train."
+            },
+            {
+              "text": "वह एक महीना यहाँ रहते हैं।",
+              "english": "He stays here for a month."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि सर सैम को आज का पाठ पढ़ाते हैं।",
+              "english": "Ravi sir teaches Sam today's lesson."
+            },
+            {
+              "text": "पाठ त्योहार का है।",
+              "english": "The lesson is about the festival."
+            },
+            {
+              "text": "सैम शब्द सीखना चाहता है।",
+              "english": "Sam wants to learn words."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"यह वाक्य बोलिए: दीया बहुत अच्छा है।\"",
+              "english": "Ravi sir says, \"Say this sentence: the lamp is very good.\""
+            },
+            {
+              "text": "सैम अक्षर समझता है।",
+              "english": "Sam understands the letters."
+            },
+            {
+              "text": "वह ग़लती करता है।",
+              "english": "He makes a mistake."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"अभ्यास कीजिए।\"",
+              "english": "Ravi sir says, \"Practise.\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,303 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a1-2-08",
+  "lang": "hi",
+  "title": "रवि सर के साथ हिंदी का पाठ",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a1-2-08",
+    "title": "Hindi lessons with Ravi sir (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled, deliberately repetitive Hindi written for learners and may contain unnatural phrasing, wrong agreement or wrong spelling. The English lines are the drafter’s own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "A lesson scene. Ravi sir's example sentences recycle the train vocabulary. Obligation (सीखने पड़ेंगे, अभ्यास करना पड़ेगा), wanting (चाहता हूँ), ability (सकते हैं). लिखना (to write) is used three times and is not in the plan's lists for this unit (the plan has it only in the in-place text s0c-06). \"बाइबल\" is an under-met Stage 0 word. Honorific plural for रवि सर; he says आप to Sam and तुम to Aman. Words outside the plan (measured, adapter lemmas x tokens): लिखना×3 (to write; the plan has it only in the in-place text s0c-06), बाइबल×2, पहले×1 (under-met)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "language learning",
+    "lesson",
+    "school"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "daily-life"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent (Sonnet)"
+        }
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "रवि सर के साथ हिंदी का पाठ",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज सैम का हिंदी का पाठ है।",
+              "english": "Today is Sam's Hindi lesson."
+            },
+            {
+              "text": "रवि सर सैम को हिंदी पढ़ाते हैं।",
+              "english": "Ravi sir teaches Sam Hindi."
+            },
+            {
+              "text": "अमन भी कमरे में है।",
+              "english": "Aman is in the room too."
+            },
+            {
+              "text": "रवि सर अमन को भी पढ़ाते हैं।",
+              "english": "Ravi sir teaches Aman too."
+            },
+            {
+              "text": "सैम बोलता है, \"सर, मुझे अक्षर सीखने पड़ेंगे।\"",
+              "english": "Sam says, \"Sir, I will have to learn the letters.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"हाँ, आपको अक्षर सीखने पड़ेंगे।\"",
+              "english": "Ravi sir says, \"Yes, you will have to learn the letters.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं हिंदी में बाइबल पढ़ना चाहता हूँ।\"",
+              "english": "Sam says, \"I want to read the Bible in Hindi.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"आप और क्या सीखना चाहते हैं?\"",
+              "english": "Ravi sir says, \"What else do you want to learn?\""
+            },
+            {
+              "text": "सैम बोलता है, \"अक्षर बहुत हैं, सर!\"",
+              "english": "Sam says, \"There are so many letters, sir!\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"यह अच्छी बात है! पहले शब्द, फिर वाक्य।\"",
+              "english": "Ravi sir says, \"That is a good thing! First words, then sentences.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि सर एक शब्द लिखते हैं।",
+              "english": "Ravi sir writes a word."
+            },
+            {
+              "text": "वह बोलते हैं, \"यह शब्द है: ट्रेन।\"",
+              "english": "He says, \"This word is: train.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं यह समझता हूँ।\"",
+              "english": "Sam says, \"I understand this.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"बहुत अच्छा! अब एक वाक्य बोलिए।\"",
+              "english": "Ravi sir says, \"Very good! Now say a sentence.\""
+            },
+            {
+              "text": "वह बोलते हैं, \"मैं परसों स्टेशन जाऊँगा।\"",
+              "english": "He says, \"I will go to the station the day after tomorrow.\""
+            },
+            {
+              "text": "सैम किताब में वाक्य लिखता है।",
+              "english": "Sam writes the sentence in his book."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"ज़ोर से बोलिए।\"",
+              "english": "Ravi sir says, \"Say it aloud.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं परसों स्टेशन जाऊँगा।\"",
+              "english": "Sam says, \"I will go to the station the day after tomorrow.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"बहुत अच्छा। यहाँ कोई ग़लती नहीं है।\"",
+              "english": "Ravi sir says, \"Very good. There is no mistake here.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "अगली बात यह है, \"आप टिकट ले सकते हैं।\"",
+              "english": "The next point is, \"You can buy a ticket.\""
+            },
+            {
+              "text": "सैम बोलता है, \"सर, मैं सीट ले सकता हूँ?\"",
+              "english": "Sam says, \"Sir, can I take a seat?\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"हाँ, मैं बताता हूँ: आप ले सकते हैं।\"",
+              "english": "Ravi sir says, \"Yes, I will tell you: you can take one.\""
+            },
+            {
+              "text": "सैम बोलता है, \"यह सीट मेरी है।\"",
+              "english": "Sam says, \"This seat is mine.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"यहाँ एक ग़लती है।\"",
+              "english": "Ravi sir says, \"There is a mistake here.\""
+            },
+            {
+              "text": "सैम बोलता है, \"कहाँ, सर?\"",
+              "english": "Sam says, \"Where, sir?\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"ऊपर देखिए। यह इस जगह नहीं आता।\"",
+              "english": "Ravi sir says, \"Look above. This does not come in this place.\""
+            },
+            {
+              "text": "सैम बोलता है, \"अच्छा, अब मैं समझ गया। यह मेरी ग़लती है।\"",
+              "english": "Sam says, \"I see, now I understand. This is my mistake.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"कोई बात नहीं।\"",
+              "english": "Ravi sir says, \"Never mind.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि सर बोलते हैं, \"अब किसान की बात बोलिए।\"",
+              "english": "Ravi sir says, \"Now say the farmer's sentence.\""
+            },
+            {
+              "text": "वह बोलते हैं, \"किसान प्लेटफ़ॉर्म पर इंतज़ार करता है।\"",
+              "english": "He says, \"The farmer waits on the platform.\""
+            },
+            {
+              "text": "सैम बोलता है, और अमन देखता है।",
+              "english": "Sam speaks, and Aman watches."
+            },
+            {
+              "text": "अमन बोलता है, \"सर, मैं भी लिखना चाहता हूँ!\"",
+              "english": "Aman says, \"Sir, I want to write too!\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"अमन, तुम सारा पाठ सुनो।\"",
+              "english": "Ravi sir says, \"Aman, listen to the whole lesson.\""
+            },
+            {
+              "text": "अमन ज़ोर से हँसता है।",
+              "english": "Aman laughs loudly."
+            },
+            {
+              "text": "सैम बोलता है, \"सर, बताइए, मैं यहाँ क्या बोलूँ?\"",
+              "english": "Sam says, \"Sir, tell me, what should I say here?\""
+            },
+            {
+              "text": "सैम की किताब में जगह नहीं है।",
+              "english": "There is no room in Sam's book."
+            },
+            {
+              "text": "अमन बोलता है, \"सर, आप सब बताते हैं!\"",
+              "english": "Aman says, \"Sir, you tell everything!\""
+            },
+            {
+              "text": "सैम का बैग मेज़ के ऊपर है।",
+              "english": "Sam's bag is on top of the table."
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"सैम, यह सुनाइए।\"",
+              "english": "Ravi sir says, \"Sam, recite this.\""
+            },
+            {
+              "text": "सैम बोलता है, \"हम ट्रेन में चढ़ते हैं और गाँव में उतरते हैं।\"",
+              "english": "Sam says, \"We get on the train and get off in the village.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"सामान सीट के नीचे है।\"",
+              "english": "Ravi sir says, \"The luggage is under the seat.\""
+            },
+            {
+              "text": "वह बोलते हैं, \"यह सफ़र बहुत अच्छा था।\"",
+              "english": "He says, \"This journey was very good.\""
+            },
+            {
+              "text": "वह बोलते हैं, \"एक महीना जल्दी जाता है।\"",
+              "english": "He says, \"A month goes quickly.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "रवि सर बोलते हैं, \"सैम, अगले हफ़्ते हम फिर पाठ करेंगे।\"",
+              "english": "Ravi sir says, \"Sam, next week we will have another lesson.\""
+            },
+            {
+              "text": "सैम बोलता है, \"सर, क्या अगले हफ़्ते छुट्टी नहीं है?\"",
+              "english": "Sam says, \"Sir, isn't there a holiday next week?\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"छुट्टी है, लेकिन अभ्यास की छुट्टी नहीं है।\"",
+              "english": "Ravi sir says, \"There is a holiday, but there is no holiday from practice.\""
+            },
+            {
+              "text": "वह बोलते हैं, \"आपको रोज़ अभ्यास करना पड़ेगा।\"",
+              "english": "He says, \"You will have to practise every day.\""
+            },
+            {
+              "text": "सैम बोलता है, \"ज़रूर, सर। मैं सारा दिन अभ्यास करूँगा।\"",
+              "english": "Sam says, \"Certainly, sir. I will practise all day.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"मेरे पास समय है। मैं आपको पढ़ाऊँगा।\"",
+              "english": "Ravi sir says, \"I have time. I will teach you.\""
+            },
+            {
+              "text": "सैम बोलता है, \"मैं सुबह जल्दी जागूँगा।\"",
+              "english": "Sam says, \"I will wake up early in the morning.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"यह अच्छी योजना है। तैयारी रोज़ कीजिए।\"",
+              "english": "Ravi sir says, \"That is a good plan. Prepare every day.\""
+            },
+            {
+              "text": "सैम बोलता है, \"शायद मैं हिंदी में बाइबल पढ़ सकूँगा।\"",
+              "english": "Sam says, \"Perhaps I will be able to read the Bible in Hindi.\""
+            },
+            {
+              "text": "रवि सर बोलते हैं, \"आप ज़रूर पढ़ सकेंगे।\"",
+              "english": "Ravi sir says, \"You will certainly be able to read it.\""
+            },
+            {
+              "text": "अमन बोलता है, \"सर, मैं सब समझ गया!\"",
+              "english": "Aman says, \"Sir, I understood everything!\""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

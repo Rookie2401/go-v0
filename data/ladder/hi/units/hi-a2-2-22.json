@@ -1,0 +1,539 @@
+{
+  "schemaVersion": 2,
+  "id": "hi-a2-2-22",
+  "lang": "hi",
+  "title": "खोया हुआ बेटा",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-hi",
+    "kind": "comprehensible-input",
+    "title": "Ladder — Hindi"
+  },
+  "source": {
+    "id": "src:hi:hi-a2-2-22",
+    "title": "\"खोया हुआ बेटा\" (ladder unit, machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Hindi. Drafted by an AI model; not yet reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model for the course ladder; not reviewed by a native speaker. It is controlled Hindi written for learners and may contain unnatural phrasing. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "SCRIPTURE RETELLING (the parable of Luke 15:11-32) told by Seeta Nani to Aman in the drafter's own simple words; it is NOT a quotation of the IRV or of any translation, and it uses everyday words (the Bible-register words of the neighbouring units are used sparingly: पापी, तेरा, दास, आनंद, नाराज़, अकाल, परदेस, जायदाद, मित्र, सूअर). It needs a Scripture-competent reviewer as well as a linguistic one: the details to check are the father's running, the ring and the new clothes, the elder brother's anger, and the closing line. The frame (Aman has spent his pocket money in advance) and the modern comparisons (meter, petrol, traffic, receipt, school admission) are the drafter's own devices for recycling the words of the last units. Scripture retelling: Scripture-competent review needed. The adapter reads feminine 'पूरी' as the food पूरी (one token). Outside the plan (1 lemma, 1 tokens, 0.1 per 100 words): पूरी. Measured 2026-10-06 with adapter-hi@4 against the units of hi-a1-1, hi-a1-2 (24-26 not yet written) and hi-a2-1 that were in the repository that day (plan stand-ins for the missing ones: planned lemmas assumed known after their three uses); re-measure when the whole ladder exists."
+  },
+  "difficulty": "A2",
+  "topics": [
+    "parable",
+    "family",
+    "forgiveness"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "scripture"
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "ladder drafting agent"
+        }
+      }
+    ]
+  },
+  "speakers": {
+    "N": "सीता नानी",
+    "A": "अमन"
+  },
+  "sections": [
+    {
+      "title": "शाम का क़िस्सा",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "आज अमन ने अपना सारा जेब-ख़र्च एक ही दिन में ख़र्च कर दिया था।",
+              "english": "Today Aman had spent all his pocket money in a single day."
+            },
+            {
+              "text": "शाम को वह सीता नानी के पास आकर बैठ गया, और उसका चेहरा उतरा हुआ था।",
+              "english": "In the evening he came and sat beside Seeta Nani, and his face was fallen."
+            },
+            {
+              "text": "नानी, मुझे लगता है कि मैं बहुत बेवक़ूफ़ हूँ।",
+              "english": "Nani, I think I am very foolish.",
+              "speaker": "A"
+            },
+            {
+              "text": "अरे, ऐसा क्यों कहते हो?",
+              "english": "Oh, why do you say so?",
+              "speaker": "N"
+            },
+            {
+              "text": "मैंने सारे पैसे आज ही ख़र्च कर दिए, और अब मेरे पास कुछ नहीं है।",
+              "english": "I spent all the money today itself, and now I have nothing.",
+              "speaker": "A"
+            },
+            {
+              "text": "तो आओ, मैं तुम्हें एक कहानी सुनाती हूँ।",
+              "english": "Then come, I will tell you a story.",
+              "speaker": "N"
+            },
+            {
+              "text": "यह कहानी बहुत पुरानी है, और सदियों से लोग इसे सुनाते आए हैं।",
+              "english": "This story is very old, and for centuries people have been telling it.",
+              "speaker": "N"
+            },
+            {
+              "text": "हमारे पादरी जी ने इसे गिरजाघर में कई बार सुनाया है, और यीशु ने इसे ख़ुद सुनाया था।",
+              "english": "Our padri ji has told it in the church building many times, and Jesus himself had told it.",
+              "speaker": "N"
+            },
+            {
+              "text": "यीशु ने? किसको?",
+              "english": "Jesus? To whom?",
+              "speaker": "A"
+            },
+            {
+              "text": "उन लोगों को, जो उनसे नाराज़ थे, क्योंकि वे पापी लोगों के साथ बैठकर खाना खाते थे।",
+              "english": "To those people who were angry with him, because he sat and ate with sinful people.",
+              "speaker": "N"
+            },
+            {
+              "text": "ईसाई लोग इसे बेटे और पिता की कहानी कहते हैं, पर इसमें हम सबकी बात है।",
+              "english": "Christians call it the story of the son and the father, but in it there is the matter of all of us.",
+              "speaker": "N"
+            },
+            {
+              "text": "अब सुनो।",
+              "english": "Now listen.",
+              "speaker": "N"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "दो बेटे",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक आदमी के 2 बेटे थे।",
+              "english": "A man had two sons."
+            },
+            {
+              "text": "बड़ा बेटा पिता के साथ रहता था और खेत में काम करता था, और छोटा बेटा घर में बहुत परेशान रहता था।",
+              "english": "The elder son lived with his father and worked in the field, and the younger son was very troubled in the house."
+            },
+            {
+              "text": "एक दिन छोटे बेटे ने अपने पिता से कहा, \"पिता जी, मेरी जायदाद का जो हिस्सा है, वह मुझे अभी दे दीजिए।\"",
+              "english": "One day the younger son said to his father, \"Father, give me now the share of the property that is mine.\""
+            },
+            {
+              "text": "लेकिन नानी, यह तो बहुत बुरी बात है!",
+              "english": "But Nani, this is a very bad thing!",
+              "speaker": "A"
+            },
+            {
+              "text": "हाँ, बेटा, पिता का मन बहुत भारी हुआ होगा।",
+              "english": "Yes, son, the father's heart must have been very heavy.",
+              "speaker": "N"
+            },
+            {
+              "text": "पर पिता ने कुछ नहीं कहा, और अपनी जायदाद दोनों बेटों में बाँट दी।",
+              "english": "But the father said nothing, and shared his property between both sons.",
+              "speaker": "N"
+            },
+            {
+              "text": "कुछ दिन बाद छोटे बेटे ने अपना सब सामान बेचा, अपना निजी सामान भी, और सारा पैसा लेकर दूर परदेस चला गया।",
+              "english": "A few days later the younger son sold all his things, his personal things too, and taking all the money went far away to a foreign land.",
+              "speaker": "N"
+            },
+            {
+              "text": "परदेस में वह क्या करता था?",
+              "english": "What did he do in the foreign land?",
+              "speaker": "A"
+            },
+            {
+              "text": "पहले तो उसने ख़ूब मज़े किए।",
+              "english": "At first he enjoyed himself a great deal.",
+              "speaker": "N"
+            },
+            {
+              "text": "उसके बहुत-से मित्र बन गए, और रोज़ भोज होते थे, जिनमें पुलाव, धनिया वाला रायता, मिठाई और घी ख़ूब होता था।",
+              "english": "He made very many friends, and there were feasts every day, in which pulao, raita with coriander, sweets and ghee were plentiful.",
+              "speaker": "N"
+            },
+            {
+              "text": "वह दावत देता था, और मित्र उसकी जेब से पैसे बाँटकर ले जाते थे।",
+              "english": "He gave feasts, and friends took away the money from his pocket by dividing it.",
+              "speaker": "N"
+            },
+            {
+              "text": "ऐसा लगता था कि हर दिन कोई बारात निकली है, और हर शाम घर दुल्हन की तरह सजा हुआ है, और औरतें नई साड़ियाँ पहनकर आती हैं।",
+              "english": "It seemed as if a wedding procession had come out every day, and every evening the house was decorated like a bride, and women come in new saris.",
+              "speaker": "N"
+            },
+            {
+              "text": "वह तो बहुत बड़ा आदमी बन गया होगा।",
+              "english": "He must have become a very great man.",
+              "speaker": "A"
+            },
+            {
+              "text": "नहीं, उसका पैसा तो पेट्रोल की तरह ख़र्च हो रहा था।",
+              "english": "No, his money was being spent like petrol.",
+              "speaker": "N"
+            },
+            {
+              "text": "ख़र्च का मीटर घूमता रहा, और उसने कभी रसीद नहीं रखी, कभी कुछ नहीं लिखा।",
+              "english": "The meter of expense kept running, and he never kept a receipt, never wrote anything.",
+              "speaker": "N"
+            },
+            {
+              "text": "वक़्त बीतता गया, और एक दिन जेब में कुछ नहीं बचा।",
+              "english": "Time kept passing, and one day nothing remained in his pocket.",
+              "speaker": "N"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "अकाल और सूअर",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "उसी समय उस परदेस में अकाल पड़ गया।",
+              "english": "At that very time a famine fell in that foreign land."
+            },
+            {
+              "text": "अकाल के कारण लोग भूख से परेशान थे, और अकाल में किसी के पास किसी के लिए वक़्त नहीं था।",
+              "english": "Because of the famine people were troubled by hunger, and in the famine nobody had time for anybody."
+            },
+            {
+              "text": "अनाज महँगा हो गया, और मित्र, जो कल तक साथ हँस रहे थे, सब ग़ायब हो गए।",
+              "english": "Grain became dear, and the friends who till yesterday were laughing along disappeared."
+            },
+            {
+              "text": "अब उसे बहुत भूख लगी थी, और उसके पास रहने की जगह भी नहीं थी।",
+              "english": "Now he was very hungry, and he did not even have a place to live.",
+              "speaker": "N"
+            },
+            {
+              "text": "उसने एक आदमी से काम माँगा, और उसने उसे अपने खेत में सूअरों के पास भेज दिया।",
+              "english": "He asked a man for work, and he sent him to his field to the pigs.",
+              "speaker": "N"
+            },
+            {
+              "text": "सूअरों के पास? यह तो बहुत गंदा काम होगा।",
+              "english": "Near pigs? That must be very dirty work.",
+              "speaker": "A"
+            },
+            {
+              "text": "हाँ, और उसे इतनी भूख थी कि वह सूअरों का खाना भी खाना चाहता था।",
+              "english": "Yes, and he was so hungry that he wanted to eat even the pigs' food.",
+              "speaker": "N"
+            },
+            {
+              "text": "उस पापी जैसे दिखने वाले आदमी को कोई देखना भी नहीं चाहता था, और वह ख़ुद को पापी समझने लगा।",
+              "english": "Nobody wanted even to look at that man who looked like a sinner, and he began to consider himself a sinner.",
+              "speaker": "N"
+            },
+            {
+              "text": "पर उसे वह भी कोई नहीं देता था।",
+              "english": "But nobody gave him even that.",
+              "speaker": "N"
+            },
+            {
+              "text": "उसने क़र्ज़ माँगा, पर किसी ने उसे क़र्ज़ नहीं दिया, क्योंकि वह किसी को जानता नहीं था।",
+              "english": "He asked for a loan, but nobody gave him a loan, because he knew nobody.",
+              "speaker": "N"
+            },
+            {
+              "text": "उसे वहाँ की बोली भी ठीक से नहीं आती थी, और कोई उसकी बात नहीं समझता था।",
+              "english": "He did not know the dialect there properly either, and nobody understood his speech.",
+              "speaker": "N"
+            },
+            {
+              "text": "भूख ने उसे वह पाठ पढ़ाया, जो किसी स्कूल के पाठ्यक्रम में नहीं था।",
+              "english": "Hunger taught him that lesson which was in no school's syllabus.",
+              "speaker": "N"
+            },
+            {
+              "text": "जैसे भूख की एक क्लास हो, और उसमें उसका दाख़िला हो गया हो।",
+              "english": "As if there were a class of hunger, and he had been given admission in it.",
+              "speaker": "N"
+            },
+            {
+              "text": "फिर क्या हुआ, नानी?",
+              "english": "Then what happened, Nani?",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "लौटने का फ़ैसला",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "एक दिन, सूअरों के बीच बैठे-बैठे, उसे अपने पिता का घर याद आया।",
+              "english": "One day, sitting among the pigs, he remembered his father's house.",
+              "speaker": "N"
+            },
+            {
+              "text": "उसने सोचा, \"पिता के घर में तो दास को भी भूख नहीं लगती, और मैं यहाँ भूख से परेशान हूँ।\"",
+              "english": "He thought, \"In my father's house even the servant does not feel hunger, and I am troubled by hunger here.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "उसने मन में कहा, \"मैं उठूँगा और पिता के पास जाऊँगा, और उनसे कहूँगा कि मैंने परमेश्वर के और आपके सामने पाप किया है।\"",
+              "english": "He said in his heart, \"I will get up and go to my father, and say to him that I have sinned before God and before you.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "\"अब मैं आपका बेटा नहीं रहा, मुझे अपने दासों में से एक बना लीजिए।\"",
+              "english": "\"Now I am no longer your son, make me one of your servants.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "\"मैं आपका दास बनकर काम करूँगा, और सिर्फ़ रोटी माँगूँगा।\"",
+              "english": "\"I will work as your servant, and ask only for bread.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "उसने अपने आप से वादा किया कि वह सारी बात साफ़-साफ़ कहेगा।",
+              "english": "He made a promise to himself that he would say the whole matter plainly.",
+              "speaker": "N"
+            },
+            {
+              "text": "मन में सोच का ऐसा ट्रैफ़िक चल रहा था कि वह बहुत देर तक रास्ते में सोचता रहा।",
+              "english": "In his heart such traffic of thinking was running that he kept thinking for a long time on the road.",
+              "speaker": "N"
+            },
+            {
+              "text": "कभी वह कहता, \"वे मुझे घर में आने भी नहीं देंगे।\"",
+              "english": "Sometimes he said, \"They will not even let me come into the house.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "कभी कहता, \"अगर मैं उस दिन घर न छोड़ता, तो आज यह दिन न देखता।\"",
+              "english": "Sometimes he said, \"If I had not left home that day, I would not see this day today.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "पर उसने रुकना नहीं चाहा, और वह चलता रहा।",
+              "english": "But he did not want to stop, and he kept walking.",
+              "speaker": "N"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "पिता दौड़ पड़े",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "अब पिता क्या कर रहे थे, जानते हो?",
+              "english": "Now what was the father doing, do you know?",
+              "speaker": "N"
+            },
+            {
+              "text": "शायद नाराज़ होंगे।",
+              "english": "Perhaps he was angry.",
+              "speaker": "A"
+            },
+            {
+              "text": "नहीं, वे हर शाम उसी रास्ते की ओर देखा करते थे, जिससे उनका बेटा गया था।",
+              "english": "No, every evening he used to look towards that very road by which his son had gone.",
+              "speaker": "N"
+            },
+            {
+              "text": "और एक दिन उन्होंने दूर से एक आदमी को आते हुए देखा।",
+              "english": "And one day he saw from far away a man coming.",
+              "speaker": "N"
+            },
+            {
+              "text": "उसके कपड़े बहुत पुराने थे, पर पिता ने उसे तुरंत पहचान लिया।",
+              "english": "His clothes were very old, but the father recognised him at once.",
+              "speaker": "N"
+            },
+            {
+              "text": "वे बूढ़े थे, पर वे दौड़ पड़े, और दौड़कर बेटे के गले लग गए।",
+              "english": "He was old, but he ran, and running, embraced his son.",
+              "speaker": "N"
+            },
+            {
+              "text": "दौड़कर? पिता जी तो बड़े होते हैं, वे दौड़ते नहीं।",
+              "english": "Running? Fathers are grown-up, they do not run.",
+              "speaker": "A"
+            },
+            {
+              "text": "यही तो इस कहानी की सबसे सुंदर बात है, अमन।",
+              "english": "That is just the most beautiful thing of this story, Aman.",
+              "speaker": "N"
+            },
+            {
+              "text": "बेटा रोने लगा, और उसने अपनी सारी बात कहनी चाही: \"पिता जी, मैंने पाप किया है, अब मैं...\"",
+              "english": "The son began to cry, and wanted to say his whole matter: \"Father, I have sinned, now I...\"",
+              "speaker": "N"
+            },
+            {
+              "text": "पर पिता ने उसकी बात पूरी नहीं होने दी।",
+              "english": "But the father did not let his speech be completed.",
+              "speaker": "N"
+            },
+            {
+              "text": "उन्होंने अपने सेवकों से कहा, \"जल्दी से सबसे अच्छी पैंट और कमीज़ लाओ, और मेरे बेटे को दो।\"",
+              "english": "He said to his servants, \"Quickly bring the best trousers and shirt, and give them to my son.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "\"उसकी उँगली में अंगूठी डालो, और उसके पैरों में नए जूतों का एक जोड़ा रख दो।\"",
+              "english": "\"Put a ring on his finger, and place a pair of new shoes at his feet.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "\"सबसे अच्छा खाना बनाओ, और आज भोज रखो, क्योंकि मेरा यह बेटा खो गया था, और अब मिल गया है।\"",
+              "english": "\"Make the best food, and hold a feast today, because this son of mine was lost, and is found now.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "\"मैंने सोचा था कि वह मुझे कभी नहीं मिलेगा, पर देखो, वह लौट आया है।\"",
+              "english": "\"I had thought that I would never find him, but look, he has come back.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "घर सजा, ढोल बजे, पुलाव बना, और सबने आनंद किया।",
+              "english": "The house was decorated, drums played, pulao was made, and everyone made merry.",
+              "speaker": "N"
+            },
+            {
+              "text": "ऐसा लगता था कि घर में फिर से कोई बारात आई है, और दूल्हे की जगह वह बेटा बैठा है।",
+              "english": "It seemed as if a wedding procession had come again into the house, and in the place of the bridegroom that son sat.",
+              "speaker": "N"
+            },
+            {
+              "text": "और बड़ा भाई? वह तो खेत में काम कर रहा था।",
+              "english": "And the elder brother? He was working in the field.",
+              "speaker": "A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "बड़ा भाई",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "हाँ, बड़ा बेटा शाम को खेत से लौटा, तो घर से गीत की आवाज़ आ रही थी।",
+              "english": "Yes, the elder son returned from the field in the evening, and from the house the sound of a song was coming.",
+              "speaker": "N"
+            },
+            {
+              "text": "उसने एक सेवक से पूछा कि यह क्या हो रहा है, और सेवक ने सारी बात बताई।",
+              "english": "He asked a servant what was happening, and the servant told the whole matter.",
+              "speaker": "N"
+            },
+            {
+              "text": "बड़ा बेटा बहुत नाराज़ हो गया, और वह अंदर जाना भी नहीं चाहता था।",
+              "english": "The elder son became very angry, and did not even want to go inside.",
+              "speaker": "N"
+            },
+            {
+              "text": "पिता ख़ुद बाहर आए और उसे अंदर बुलाने लगे।",
+              "english": "The father himself came out and began to call him inside.",
+              "speaker": "N"
+            },
+            {
+              "text": "बड़े बेटे ने कहा, \"इतने सालों से मैं आपकी सेवा करता आया हूँ, मैंने आपकी हर बात मानी है, फिर भी आपने मुझे कभी एक बकरी भी नहीं दी कि मैं अपने मित्रों के साथ आनंद करूँ।\"",
+              "english": "The elder son said, \"For so many years I have been serving you, I never put off your word, yet you never even gave me a kid of a goat that I might make merry with my friends.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "\"और जब आपका यह बेटा आया, जिसने आपकी जायदाद उड़ा दी, तो आपने उसके लिए बड़ा भोज रख दिया।\"",
+              "english": "\"And when this son of yours came, who squandered your property, you held a big feast for him.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "पिता ने बड़े प्यार से कहा, \"बेटा, तू तो हमेशा मेरे पास है, और मेरा जो कुछ है, वह सब तेरा ही है।\"",
+              "english": "The father said with great love, \"Son, you are always with me, and whatever is mine is all yours.\"",
+              "speaker": "N"
+            },
+            {
+              "text": "\"तेरे सारे दिन मेरे साथ बीते हैं, और तेरी मेहनत मैं कैसे भूल सकता हूँ?\"",
+              "english": "\"All your days have passed with me, and how could I forget your hard work?\"",
+              "speaker": "N"
+            },
+            {
+              "text": "\"पर आज आनंद करना ठीक था, क्योंकि तेरा यह भाई खो गया था, और अब मिल गया है।\"",
+              "english": "\"But today it was right to make merry, because this brother of yours was lost, and now is found.\"",
+              "speaker": "N"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "title": "कहानी के बाद",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "कहानी पूरी हुई, तो कुछ देर अमन कुछ नहीं बोला।",
+              "english": "When the story was complete, for a while Aman said nothing."
+            },
+            {
+              "text": "फिर उसने पूछा, \"नानी, अगर मैं भी वह बेटा होता, तो क्या पिता जी मुझे भी माफ़ कर देते?\"",
+              "english": "Then he asked, \"Nani, if I too were that son, would Father forgive me too?\""
+            },
+            {
+              "text": "नानी ने उसके सिर पर हाथ रखकर कहा, \"पिता ने तो उसकी बात सुने बिना ही उसे माफ़ कर दिया था।\"",
+              "english": "Nani put her hand on his head and said, \"The father had forgiven him even without hearing his speech.\""
+            },
+            {
+              "text": "अमन ने कहा, \"तो मेरी तरह जिसके पास कुछ नहीं बचता, वह भी घर लौट सकता है?\"",
+              "english": "Aman said, \"Then one who is left with nothing, like me, can also return home?\""
+            },
+            {
+              "text": "नानी हँस पड़ीं और बोलीं, \"बेटा, तुम्हारा पैसा तो ख़र्च हुआ है, घर तो कहीं नहीं गया है।\"",
+              "english": "Nani burst out laughing and said, \"Son, your money has been spent, the house has not gone anywhere.\""
+            },
+            {
+              "text": "उस रात अमन ने सोने से पहले एक नया वादा किया कि अब वह अपना पैसा थोड़ा-थोड़ा करके ख़र्च करेगा, और अपने ख़र्च की रसीद अपनी कॉपी में रखेगा।",
+              "english": "That night before sleeping Aman made a new promise, that now he would spend his money little by little, and keep the receipt of his expenses in his notebook."
+            },
+            {
+              "text": "और सीता नानी ने मन में सोचा कि कहानी ने अपना काम कर दिया है, क्योंकि सुनने वाले को सिर्फ़ पैसे की नहीं, घर की भी याद आ गई है।",
+              "english": "And Seeta Nani thought in her heart that the story had done its work, because the listener had remembered not only the money but home too."
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

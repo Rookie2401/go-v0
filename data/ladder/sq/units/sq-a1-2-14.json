@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-14",
+  "lang": "sq",
+  "title": "Një ditë në mal",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-14",
+    "title": "Albanian ladder, a1-2: Një ditë në mal (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një ditë në mal",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën në mbrëmje Luani, Ana, Sam, Ardi dhe Elira flasin për të dielën.",
+              "english": "On Saturday evening Luan, Ana, Sam, Ardi and Elira talk about Sunday."
+            },
+            {
+              "text": "— Nesër do të shkojmë në mal, thotë Luani.",
+              "english": "\"Tomorrow we will go to the mountain,\" says Luan."
+            },
+            {
+              "text": "— Mali është afër Tiranës. Atje ka një pyll të madh.",
+              "english": "\"The mountain is near Tirana. There is a big forest there.\""
+            },
+            {
+              "text": "— Do të ketë diell? pyet Ana.",
+              "english": "\"Will there be sun?\" asks Ana."
+            },
+            {
+              "text": "— Po, thotë Luani. Nesër do të ketë diell dhe qielli do të jetë i bukur.",
+              "english": "\"Yes,\" says Luan. \"Tomorrow there will be sun and the sky will be beautiful.\""
+            },
+            {
+              "text": "— Por lart do të jetë ftohtë.",
+              "english": "\"But up there it will be cold.\""
+            },
+            {
+              "text": "— Duhet të veshim palltot, thotë Ana.",
+              "english": "\"We have to put on our coats,\" says Ana."
+            },
+            {
+              "text": "— Dhe këpucë të mira, thotë Luani.",
+              "english": "\"And good shoes,\" says Luan."
+            },
+            {
+              "text": "Elira ka një pallto të zezë. Madhësia e saj është e vogël.",
+              "english": "Elira has a black coat. Its size is small."
+            },
+            {
+              "text": "— Nuk e dua këtë pallto të vogël, thotë ajo.",
+              "english": "\"I do not want this small coat,\" she says."
+            },
+            {
+              "text": "— Do të marrësh një pallto nga Ana, thotë Luani.",
+              "english": "\"You will take a coat from Ana,\" says Luan."
+            },
+            {
+              "text": "Të dielën në mëngjes ata janë të gjithë në makinën e Anës.",
+              "english": "On Sunday morning they are all in Ana's car."
+            },
+            {
+              "text": "Makina shkon në drejtim të malit.",
+              "english": "The car goes in the direction of the mountain."
+            },
+            {
+              "text": "Rruga është e gjatë. Në makinë Ardi pyet: — Sa orë shkojmë?",
+              "english": "The road is long. In the car Ardi asks: \"How many hours do we drive?\""
+            },
+            {
+              "text": "— Një orë, thotë Ana.",
+              "english": "\"One hour,\" says Ana."
+            },
+            {
+              "text": "Sam shikon qytetin nga makina. — Tirana është e bukur! thotë ai.",
+              "english": "Sam looks at the city from the car. \"Tirana is beautiful!\" he says."
+            },
+            {
+              "text": "— Në Amerikë nuk kam një shtëpi si këtu, por këtu kam shumë gjëra të mira.",
+              "english": "\"In America I do not have a house like this, but here I have many good things.\""
+            },
+            {
+              "text": "Në kodër ka lule të bukura.",
+              "english": "On the hill there are beautiful flowers."
+            },
+            {
+              "text": "— Shikoni lulet! thotë Elira.",
+              "english": "\"Look at the flowers!\" says Elira."
+            },
+            {
+              "text": "— Ato janë të kuqe dhe të bardha, thotë Ardi.",
+              "english": "\"They are red and white,\" says Ardi."
+            },
+            {
+              "text": "Pylli është i gjelbër dhe i madh.",
+              "english": "The forest is green and big."
+            },
+            {
+              "text": "Dielli është i ngrohtë, por lart është ftohtë.",
+              "english": "The sun is warm, but up there it is cold."
+            },
+            {
+              "text": "Ata zbresin nga makina dhe shkojnë në pyll.",
+              "english": "They get out of the car and go into the forest."
+            },
+            {
+              "text": "Ka shumë gurë. Ardi ngre një gur të madh.",
+              "english": "There are many stones. Ardi lifts a big stone."
+            },
+            {
+              "text": "— Ky është shumë i madh! thotë ai.",
+              "english": "\"This one is very big!\" he says."
+            },
+            {
+              "text": "Elira shikon një gur të vogël dhe të bardhë.",
+              "english": "Elira looks at a small white stone."
+            },
+            {
+              "text": "Ajo ka edhe një lule në çantë.",
+              "english": "She also has a flower in her bag."
+            },
+            {
+              "text": "Nga kodra ata shikojnë qytetin. Kodra është e gjelbër.",
+              "english": "From the hill they look at the city. The hill is green."
+            },
+            {
+              "text": "— Çdo stinë ka ngjyrën e saj, thotë Luani.",
+              "english": "\"Every season has its colour,\" says Luan."
+            },
+            {
+              "text": "— Stina e ngrohtë është e gjelbër.",
+              "english": "\"The warm season is green.\""
+            },
+            {
+              "text": "— Stina e ftohtë është e bardhë.",
+              "english": "\"The cold season is white.\""
+            },
+            {
+              "text": "— Lart ka borë, thotë Ana.",
+              "english": "\"Up there is snow,\" says Ana."
+            },
+            {
+              "text": "— Do të shkojmë lart? pyet Ardi.",
+              "english": "\"Will we go up?\" asks Ardi."
+            },
+            {
+              "text": "— Po, por pak, thotë Luani.",
+              "english": "\"Yes, but only a little,\" says Luan."
+            },
+            {
+              "text": "Ata shkojnë lart. Ka erë të madhe.",
+              "english": "They go up. There is a strong wind."
+            },
+            {
+              "text": "— Vishni palltot! thotë Ana.",
+              "english": "\"Put on your coats!\" says Ana."
+            },
+            {
+              "text": "Sam shikon qiellin. Në qiell ka një re.",
+              "english": "Sam looks at the sky. In the sky there is a cloud."
+            },
+            {
+              "text": "Ajo është e zezë dhe e madhe.",
+              "english": "It is black and big."
+            },
+            {
+              "text": "— Kjo re nuk është e mirë, thotë Luani.",
+              "english": "\"This cloud is not good,\" says Luan."
+            },
+            {
+              "text": "Pastaj vjen një erë e madhe. Retë janë të zeza.",
+              "english": "Then a big wind comes. The clouds are black."
+            },
+            {
+              "text": "Stuhia vjen!",
+              "english": "The storm is coming!"
+            },
+            {
+              "text": "— Stuhia është afër! thotë Ana. Duhet të zbresim tani!",
+              "english": "\"The storm is near!\" says Ana. \"We have to go down now!\""
+            },
+            {
+              "text": "Ata shkojnë me Anën te makina. Bie borë dhe shi.",
+              "english": "They go with Ana to the car. Snow and rain fall."
+            },
+            {
+              "text": "Në makinë Elira ka ftohtë.",
+              "english": "In the car Elira is cold."
+            },
+            {
+              "text": "— Do të shkojmë në një restorant, thotë Ana. Atje është mirë.",
+              "english": "\"We will go to a restaurant,\" says Ana. \"It is nice there.\""
+            },
+            {
+              "text": "— Jam shumë i uritur! thotë Ardi.",
+              "english": "\"I am very hungry!\" says Ardi."
+            },
+            {
+              "text": "Në restorant kamarieri vjen te tavolina.",
+              "english": "In the restaurant the waiter comes to the table."
+            },
+            {
+              "text": "Luani porosit supë, mish dhe peshk. Porosia e Ardit është supë me gjalpë.",
+              "english": "Luan orders soup, meat and fish. Ardi's order is soup with butter."
+            },
+            {
+              "text": "— Çfarë pije dëshironi? pyet kamarieri.",
+              "english": "\"What would you like to drink?\" asks the waiter."
+            },
+            {
+              "text": "— Çaj, ju lutem, thotë Ana.",
+              "english": "\"Tea, please,\" says Ana."
+            },
+            {
+              "text": "Pas pak ata janë të ngopur.",
+              "english": "After a while they are full."
+            },
+            {
+              "text": "Ardi dhe Elira porositin edhe një ëmbëlsirë.",
+              "english": "Ardi and Elira also order a dessert."
+            },
+            {
+              "text": "Jashtë ka shumë erë dhe bie borë, por brenda është e ngrohtë.",
+              "english": "Outside there is a lot of wind and snow is falling, but inside it is warm."
+            },
+            {
+              "text": "Luani paguan faturën në arkë. Çmimi është i lirë.",
+              "english": "Luan pays the bill at the cash desk. The price is cheap."
+            },
+            {
+              "text": "Pas një ore stuhia nuk është më këtu.",
+              "english": "After an hour the storm is no longer here."
+            },
+            {
+              "text": "Sam është shumë i lumtur.",
+              "english": "Sam is very happy."
+            },
+            {
+              "text": "— Kjo është një ditë e mirë! thotë ai.",
+              "english": "\"This is a good day!\" he says."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

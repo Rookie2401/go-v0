@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-04",
+  "lang": "sq",
+  "title": "Çfarë bën zakonisht?",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-04",
+    "title": "Albanian ladder, a1-2: Çfarë bën zakonisht? (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Çfarë bën zakonisht?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot Luani pyet Samin çfarë bën zakonisht.",
+              "english": "Today Luan asks Sam what he usually does."
+            },
+            {
+              "text": "— Zakonisht ngrihem në orën shtatë, — thotë Sam.",
+              "english": "\"Usually I get up at seven,\" says Sam."
+            },
+            {
+              "text": "— Gjithmonë ngrihesh në orën shtatë?",
+              "english": "\"Do you always get up at seven?\""
+            },
+            {
+              "text": "— Jo gjithmonë. Të hënën ngrihem në orën gjashtë.",
+              "english": "\"Not always. On Monday I get up at six.\""
+            },
+            {
+              "text": "— Pse?",
+              "english": "\"Why?\""
+            },
+            {
+              "text": "— Sepse shkolla fillon në orën tetë, por unë jam i lodhur në mëngjes.",
+              "english": "\"Because school starts at eight, but I am tired in the morning.\""
+            },
+            {
+              "text": "— Çfarë bën në mëngjes?",
+              "english": "\"What do you do in the morning?\""
+            },
+            {
+              "text": "— Pi çaj dhe lexoj një libër. Mësoj shqip.",
+              "english": "\"I drink tea and read a book. I learn Albanian.\""
+            },
+            {
+              "text": "— Sa herë në javë shkon te gjyshja Drita?",
+              "english": "\"How many times a week do you go to grandmother Drita's?\""
+            },
+            {
+              "text": "— Shkoj shpesh te ajo. Zakonisht shkoj dy herë në javë, të martën dhe të premten.",
+              "english": "\"I go to her often. Usually I go twice a week, on Tuesday and on Friday.\""
+            },
+            {
+              "text": "— Sa herë shkon në klinikë?",
+              "english": "\"How many times do you go to the clinic?\""
+            },
+            {
+              "text": "— Rrallë. Të mërkurën, ndonjëherë të enjten.",
+              "english": "\"Rarely. On Wednesday, sometimes on Thursday.\""
+            },
+            {
+              "text": "— A pi kafe në mëngjes?",
+              "english": "\"Do you drink coffee in the morning?\""
+            },
+            {
+              "text": "— Ndonjëherë pi kafe, por gjithmonë pi ujë.",
+              "english": "\"Sometimes I drink coffee, but I always drink water.\""
+            },
+            {
+              "text": "— Dhe pasdite?",
+              "english": "\"And in the afternoon?\""
+            },
+            {
+              "text": "— Pasdite rrallë pi çaj. Ndonjëherë shkoj në treg.",
+              "english": "\"In the afternoon I rarely drink tea. Sometimes I go to the market.\""
+            },
+            {
+              "text": "— A lexon shpesh në mbrëmje?",
+              "english": "\"Do you often read in the evening?\""
+            },
+            {
+              "text": "— Po, lexoj shpesh. Shkruaj një letër për nënën.",
+              "english": "\"Yes, I read often. I write a letter to my mother.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj Sam pyet Luanin: — Po ti? Çfarë bën pas shkollës?",
+              "english": "Then Sam asks Luan: \"And you? What do you do after school?\""
+            },
+            {
+              "text": "— Jam shumë i lodhur, thotë Luani. Pastaj lexoj një libër dhe fle.",
+              "english": "\"I am very tired,\" says Luan. \"Then I read a book and sleep.\""
+            },
+            {
+              "text": "Pastaj Luani pyet: — Çfarë bën në fundjavë?",
+              "english": "Then Luan asks: \"What do you do at the weekend?\""
+            },
+            {
+              "text": "— Të shtunën jam te Dritani. Të dielën jam në kishë.",
+              "english": "\"On Saturday I am at Dritan's. On Sunday I am at church.\""
+            },
+            {
+              "text": "— Dhe ti, Ardi? Çfarë bën ti në fundjavë?",
+              "english": "\"And you, Ardi? What do you do at the weekend?\""
+            },
+            {
+              "text": "Ardi thotë: — Në fundjavë nuk kam shkollë.",
+              "english": "Ardi says: \"At the weekend I have no school.\""
+            },
+            {
+              "text": "— Luaj me qenin dhe me macen.",
+              "english": "\"I play with the dog and with the cat.\""
+            },
+            {
+              "text": "— Ne nuk punojmë shumë. Jemi bashkë.",
+              "english": "\"We do not work much. We are together.\""
+            },
+            {
+              "text": "— Sa herë në javë lexon ti?",
+              "english": "\"How many times a week do you read?\""
+            },
+            {
+              "text": "— Rrallë, mësues. Pse?",
+              "english": "\"Rarely, teacher. Why?\""
+            },
+            {
+              "text": "— Sepse duhet të lexosh shumë. Libri është shoku yt.",
+              "english": "\"Because you have to read a lot. The book is your friend.\""
+            },
+            {
+              "text": "— Mirë, mësues. Do të lexoj çdo ditë.",
+              "english": "\"Good, teacher. I will read every day.\""
+            },
+            {
+              "text": "— Kur lexon ti më shumë?",
+              "english": "\"When do you read most?\""
+            },
+            {
+              "text": "— Në mesditë lexoj dhjetë minuta. Pastaj shkoj në treg.",
+              "english": "\"At midday I read for ten minutes. Then I go to the market.\""
+            },
+            {
+              "text": "Luani i thotë gjyshes: — Si është shtëpia juaj? A është e madhe?",
+              "english": "Luan says to grandmother: \"How is your house? Is it big?\""
+            },
+            {
+              "text": "— Shtëpia jonë është e vogël, por është e bukur.",
+              "english": "\"Our house is small, but it is beautiful.\""
+            },
+            {
+              "text": "— Familja juaj është e lumtur?",
+              "english": "\"Is your family happy?\""
+            },
+            {
+              "text": "— Po, jemi shumë të lumtur. Ardi është me ne.",
+              "english": "\"Yes, we are very happy. Ardi is with us.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

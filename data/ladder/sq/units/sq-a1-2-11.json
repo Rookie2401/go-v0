@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-11",
+  "lang": "sq",
+  "title": "Në restorant",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-11",
+    "title": "Albanian ladder, a1-2: Në restorant (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Reviewer notes: do të dëshiroja is used as a set polite phrase (conditional, not yet taught)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Në restorant",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën pas kishës Ana, Luani dhe Sam shkojnë në një restorant në Tiranë.",
+              "english": "On Sunday after church Ana, Luan and Sam go to a restaurant in Tirana."
+            },
+            {
+              "text": "Sam është shumë i uritur.",
+              "english": "Sam is very hungry."
+            },
+            {
+              "text": "— Ky është i vjetër, por është shumë i mirë, thotë Luani.",
+              "english": "\"This one is old, but it is very good,\" says Luan."
+            },
+            {
+              "text": "— Emri i tij është \"Familja\", thotë Ana.",
+              "english": "\"Its name is 'The Family',\" says Ana."
+            },
+            {
+              "text": "Kamarieri vjen te tavolina.",
+              "english": "The waiter comes to the table."
+            },
+            {
+              "text": "— Mirëdita! Mirë se vini! A jeni të uritur? pyet ai.",
+              "english": "\"Good day! Welcome! Are you hungry?\" he asks."
+            },
+            {
+              "text": "— Po, jemi shumë të uritur, thotë Luani.",
+              "english": "\"Yes, we are very hungry,\" says Luan."
+            },
+            {
+              "text": "— Çfarë keni sot? pyet Ana.",
+              "english": "\"What do you have today?\" asks Ana."
+            },
+            {
+              "text": "— Sot kemi supë me perime, mish me patate dhe peshk, thotë ai.",
+              "english": "\"Today we have vegetable soup, meat with potatoes and fish,\" he says."
+            },
+            {
+              "text": "— Kemi edhe sallatë me domate dhe qepë.",
+              "english": "\"We also have salad with tomatoes and onions.\""
+            },
+            {
+              "text": "— Ju lutem, mund të porositim? pyet Sam.",
+              "english": "\"Please, may we order?\" asks Sam."
+            },
+            {
+              "text": "— Po, ju lutem. Çfarë porositni?",
+              "english": "\"Yes, please. What do you order?\""
+            },
+            {
+              "text": "— Unë do të dëshiroja mish me patate, thotë Luani.",
+              "english": "\"I would like meat with potatoes,\" says Luan."
+            },
+            {
+              "text": "— Dhe unë dua peshk, thotë Ana.",
+              "english": "\"And I want fish,\" says Ana."
+            },
+            {
+              "text": "— Ne porositim edhe një supë, thotë Sam.",
+              "english": "\"We also order a soup,\" says Sam."
+            },
+            {
+              "text": "— Çfarë pije dëshironi? pyet ai.",
+              "english": "\"What would you like to drink?\" he asks."
+            },
+            {
+              "text": "— Ujë për mua, thotë Sam.",
+              "english": "\"Water for me,\" says Sam."
+            },
+            {
+              "text": "— Edhe për mua, thotë Ana. Luani pi një çaj.",
+              "english": "\"And for me,\" says Ana. Luan has a tea."
+            },
+            {
+              "text": "Ai shkruan porosinë dhe shkon.",
+              "english": "He writes the order and goes."
+            },
+            {
+              "text": "Ata flasin pak.",
+              "english": "They talk a little."
+            },
+            {
+              "text": "— Fustani yt i gjelbër është shumë i bukur, thotë Sam.",
+              "english": "\"Your green dress is very beautiful,\" says Sam."
+            },
+            {
+              "text": "— Faleminderit. Ai është nga një dyqan i vogël, thotë Ana.",
+              "english": "\"Thank you. It is from a small shop,\" says Ana."
+            },
+            {
+              "text": "— Këpucët e mia janë të reja, por nuk janë të shtrenjta.",
+              "english": "\"My shoes are new, but they are not expensive.\""
+            },
+            {
+              "text": "— Luani ka një këmishë të bardhë. Ai e pëlqen shumë.",
+              "english": "\"Luan has a white shirt. He likes it a lot.\""
+            },
+            {
+              "text": "Ana tregon: — Tezja ime ka një bijë. Kushëriri im punon në një restorant.",
+              "english": "Ana tells: \"My aunt has a daughter. My cousin works in a restaurant.\""
+            },
+            {
+              "text": "— Halla ime jeton në fshat dhe ka një kopsht me perime.",
+              "english": "\"My other aunt lives in the village and has a garden with vegetables.\""
+            },
+            {
+              "text": "Pas dhjetë minutash ai sjell pijet.",
+              "english": "After ten minutes he brings the drinks."
+            },
+            {
+              "text": "— Porosia juaj është këtu, thotë ai.",
+              "english": "\"Your order is here,\" he says."
+            },
+            {
+              "text": "— E dua supën! thotë Sam.",
+              "english": "\"I love the soup!\" says Sam."
+            },
+            {
+              "text": "Në të ka perime, qepë dhe pak hudhër.",
+              "english": "In it there are vegetables, onions and a little garlic."
+            },
+            {
+              "text": "Pastaj ai sjell edhe pjatat tona.",
+              "english": "Then he also brings our plates."
+            },
+            {
+              "text": "— A e do peshkun? pyet Luani.",
+              "english": "\"Do you want the fish?\" asks Luan."
+            },
+            {
+              "text": "— Po, e dua. Porosia ime është shumë e mirë, thotë Ana.",
+              "english": "\"Yes, I do. My order is very good,\" says Ana."
+            },
+            {
+              "text": "Luani ha mishin dhe patatet.",
+              "english": "Luan eats the meat and the potatoes."
+            },
+            {
+              "text": "Pas pak Sam është i ngopur.",
+              "english": "After a little while Sam is full."
+            },
+            {
+              "text": "— Unë jam e ngopur, por dua një ëmbëlsirë, thotë Ana.",
+              "english": "\"I am full, but I want a dessert,\" says Ana."
+            },
+            {
+              "text": "— Sot kemi ëmbëlsirë me frutë dhe sheqer, thotë ai.",
+              "english": "\"Today we have a dessert with fruit and sugar,\" he says."
+            },
+            {
+              "text": "— Edhe unë dua një ëmbëlsirë, thotë Luani.",
+              "english": "\"I want a dessert too,\" says Luan."
+            },
+            {
+              "text": "— Unë jo, faleminderit. Jam shumë i ngopur. Një kafe, ju lutem.",
+              "english": "\"Not me, thank you. I am very full. A coffee, please.\""
+            },
+            {
+              "text": "Ata pinë pijet e tyre dhe flasin.",
+              "english": "They drink their drinks and talk."
+            },
+            {
+              "text": "Pastaj Luani pyet: — Si është java jote, Sam?",
+              "english": "Then Luan asks: \"How is your week, Sam?\""
+            },
+            {
+              "text": "— Është e mirë, thotë Sam. Të hënën jam në shkollë dhe të premten jam në treg.",
+              "english": "\"It is good,\" says Sam. \"On Monday I am at school and on Friday I am at the market.\""
+            },
+            {
+              "text": "— Të shtunën shkojmë te Dritani, thotë Ana. Ai ka një shtëpi të bukur.",
+              "english": "\"On Saturday we go to Dritan's,\" says Ana. \"He has a beautiful house.\""
+            },
+            {
+              "text": "— Familja jonë dhe familja e tyre janë shumë të lumtura, thotë Luani.",
+              "english": "\"Our family and their family are very happy,\" says Luan."
+            },
+            {
+              "text": "Ajo është shumë e mirë, por ka shumë gjalpë.",
+              "english": "It is very good, but it has a lot of butter."
+            },
+            {
+              "text": "Luani i thotë kamarierit: — Fatura, ju lutem.",
+              "english": "Luan says to the waiter: \"The bill, please.\""
+            },
+            {
+              "text": "Ai sjell faturën.",
+              "english": "He brings the bill."
+            },
+            {
+              "text": "— Sa gjëra të mira! thotë Sam. Çmimi është i mirë?",
+              "english": "\"So many good things!\" says Sam. \"Is the price good?\""
+            },
+            {
+              "text": "— Po, çmimi është i mirë për këtë ditë, thotë Ana.",
+              "english": "\"Yes, the price is good for such a day,\" says Ana."
+            },
+            {
+              "text": "Luani paguan faturën dhe i jep kusur kamarierit.",
+              "english": "Luan pays the bill and gives the waiter the change."
+            },
+            {
+              "text": "— Faleminderit, Luan! thotë Sam. Sot është një ditë e mirë.",
+              "english": "\"Thank you, Luan!\" says Sam. \"Today is a good day.\""
+            },
+            {
+              "text": "— Të dielën gjithmonë shkojmë në restorant, thotë Ana.",
+              "english": "\"On Sunday we always go to a restaurant,\" says Ana."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

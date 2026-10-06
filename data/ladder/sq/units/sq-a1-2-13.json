@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-13",
+  "lang": "sq",
+  "title": "Sam humbet rrugën",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-13",
+    "title": "Albanian ladder, a1-2: Sam humbet rrugën (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Sam humbet rrugën",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën pasdite Sam duhet të shkojë te një shok i Dritanit.",
+              "english": "On Saturday afternoon Sam has to go to a friend of Dritan."
+            },
+            {
+              "text": "Ai ka një adresë dhe një hartë të vogël.",
+              "english": "He has an address and a small map."
+            },
+            {
+              "text": "Adresa është: Rruga e Kishës, tetë.",
+              "english": "The address is: Church Street, number eight."
+            },
+            {
+              "text": "Sam del nga shtëpia dhe shkon te stacioni.",
+              "english": "Sam leaves the house and goes to the station."
+            },
+            {
+              "text": "Ai merr furgonin në drejtim të qendrës.",
+              "english": "He takes the minibus in the direction of the centre."
+            },
+            {
+              "text": "Furgoni ka vonesë, por shoferi është i shpejtë.",
+              "english": "The minibus is late, but the driver is fast."
+            },
+            {
+              "text": "Sam paguan biletën dhe zbret në ndalesën e qendrës.",
+              "english": "Sam pays for the ticket and gets off at the stop for the centre."
+            },
+            {
+              "text": "Ai shikon hartën.",
+              "english": "He looks at the map."
+            },
+            {
+              "text": "— Ku jam unë? thotë ai. Kjo nuk është Rruga e Kishës.",
+              "english": "\"Where am I?\" he says. \"This is not Church Street.\""
+            },
+            {
+              "text": "Sam e humbet rrugën.",
+              "english": "Sam loses his way."
+            },
+            {
+              "text": "Ai nuk e kupton hartën.",
+              "english": "He does not understand the map."
+            },
+            {
+              "text": "Në qytet ka shumë rrugë dhe shumë njerëz.",
+              "english": "In the city there are many streets and many people."
+            },
+            {
+              "text": "Sam shkon drejt. Ai shikon një treg të vogël.",
+              "english": "Sam goes straight. He sees a small market."
+            },
+            {
+              "text": "Në treg ka perime, frutë, domate, patate, qepë dhe hudhër.",
+              "english": "At the market there are vegetables, fruit, tomatoes, potatoes, onions and garlic."
+            },
+            {
+              "text": "Sa gjëra! Pranë tregut ka një dyqan me sheqer dhe gjalpë.",
+              "english": "So many things! Next to the market there is a shop with sugar and butter."
+            },
+            {
+              "text": "Pastaj Sam është pranë një restoranti.",
+              "english": "Then Sam is next to a restaurant."
+            },
+            {
+              "text": "Në restorant ka supë dhe ëmbëlsirë.",
+              "english": "In the restaurant there is soup and dessert."
+            },
+            {
+              "text": "Sam është i uritur, por duhet të gjejë adresën.",
+              "english": "Sam is hungry, but he has to find the address."
+            },
+            {
+              "text": "Ai është larg nga stacioni dhe larg nga ndalesa e linjës tetë.",
+              "english": "He is far from the station and far from the stop of line eight."
+            },
+            {
+              "text": "Sam kërkon rrugën.",
+              "english": "Sam looks for the street."
+            },
+            {
+              "text": "Një burrë është pranë kryqëzimit.",
+              "english": "A man is near the crossroads."
+            },
+            {
+              "text": "— Më thuaj, ju lutem, ku është Rruga e Kishës? pyet Sam.",
+              "english": "\"Tell me, please, where is Church Street?\" asks Sam."
+            },
+            {
+              "text": "— Është afër, thotë burri. Shko drejt.",
+              "english": "\"It is near,\" says the man. \"Go straight.\""
+            },
+            {
+              "text": "— Në kryqëzim bëj një kthesë djathtas. Kisha është majtas.",
+              "english": "\"At the crossroads turn right. The church is on the left.\""
+            },
+            {
+              "text": "— Atje është rruga, pranë kishës.",
+              "english": "\"There is the street, next to the church.\""
+            },
+            {
+              "text": "— Faleminderit! thotë Sam.",
+              "english": "\"Thank you!\" says Sam."
+            },
+            {
+              "text": "Sam shkon drejt dhe vjen në një kryqëzim.",
+              "english": "Sam goes straight and comes to a crossroads."
+            },
+            {
+              "text": "Ai bën një kthesë majtas, jo djathtas.",
+              "english": "He turns left, not right."
+            },
+            {
+              "text": "— Jam i lodhur, thotë ai. Ku është kisha?",
+              "english": "\"I am tired,\" he says. \"Where is the church?\""
+            },
+            {
+              "text": "Sam kërkon kishën dhe nuk e gjen.",
+              "english": "Sam looks for the church and does not find it."
+            },
+            {
+              "text": "Rruga është e gjatë dhe e vogël.",
+              "english": "The street is long and small."
+            },
+            {
+              "text": "Sam pret pak pranë një makine.",
+              "english": "Sam waits a little next to a car."
+            },
+            {
+              "text": "Një makinë vjen në rrugë. Në makinë është Dritani!",
+              "english": "A car comes along the street. Dritan is in the car!"
+            },
+            {
+              "text": "— Sam! Çfarë bën këtu? pyet Dritani.",
+              "english": "\"Sam! What are you doing here?\" asks Dritan."
+            },
+            {
+              "text": "— Kërkoj shtëpinë e shokut tënd, thotë Sam. Jam larg nga shtëpia.",
+              "english": "\"I am looking for your friend's house,\" says Sam. \"I am far from home.\""
+            },
+            {
+              "text": "— Rruga është atje, thotë Dritani. Është afër.",
+              "english": "\"The street is there,\" says Dritan. \"It is near.\""
+            },
+            {
+              "text": "— Jo majtas, por djathtas!",
+              "english": "\"Not left, but right!\""
+            },
+            {
+              "text": "Sam buzëqesh. — Unë jam i lodhur, por ti ke një makinë!",
+              "english": "Sam smiles. \"I am tired, but you have a car!\""
+            },
+            {
+              "text": "— Hyr në makinë, thotë Dritani.",
+              "english": "\"Get in the car,\" says Dritan."
+            },
+            {
+              "text": "Pas një kthese ata janë në Rrugën e Kishës.",
+              "english": "After a turn they are on Church Street."
+            },
+            {
+              "text": "Dritani pret një minutë. Sam hyn në shtëpinë e shokut.",
+              "english": "Dritan waits a minute. Sam goes into the friend's house."
+            },
+            {
+              "text": "Shoku i Dritanit pret atje, pranë derës.",
+              "english": "Dritan's friend waits there, next to the door."
+            },
+            {
+              "text": "Shtëpia e tij ka një oborr të madh.",
+              "english": "His house has a big yard."
+            },
+            {
+              "text": "Shtëpia e shokut është lart, por është afër. Shtëpia e Dritanit është poshtë.",
+              "english": "The friend's house is up there, but it is near. Dritan's house is down there."
+            },
+            {
+              "text": "— Mirë se vini! thotë shoku.",
+              "english": "\"Welcome!\" says the friend."
+            },
+            {
+              "text": "Ata pinë çaj në oborr.",
+              "english": "They drink tea in the yard."
+            },
+            {
+              "text": "Sam tregon një histori për rrugën. Të gjithë buzëqeshin.",
+              "english": "Sam tells a story about the way. Everyone smiles."
+            },
+            {
+              "text": "— Më thuaj, Sam, a e do këtë qytet? pyet Dritani.",
+              "english": "\"Tell me, Sam, do you like this city?\" asks Dritan."
+            },
+            {
+              "text": "— Po, e dua. Por duhet të mësoj më shumë rrugët.",
+              "english": "\"Yes, I do. But I have to learn the streets better.\""
+            },
+            {
+              "text": "— Ti je një shok i mirë, thotë Dritani.",
+              "english": "\"You are a good friend,\" says Dritan."
+            },
+            {
+              "text": "— Faleminderit, thotë Sam. Sot jam i lodhur, por jam shumë i lumtur.",
+              "english": "\"Thank you,\" says Sam. \"Today I am tired, but I am very happy.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

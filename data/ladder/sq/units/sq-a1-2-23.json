@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-23",
+  "lang": "sq",
+  "title": "Jeta e gjyshes Drita",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-23",
+    "title": "Albanian ladder, a1-2: Jeta e gjyshes Drita (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Reviewer notes: Biography of the fictional grandmother Drita: every date and fact (born 1956, married at eighteen, moved to Tirana, widowed) is invented for the course."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "biography"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "biography"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Jeta e gjyshes Drita",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën Ardi i dërgon Samit një mesazh në celular.",
+              "english": "On Saturday Ardi sends Sam a message on his phone."
+            },
+            {
+              "text": "\"Gjyshja të fton te ne. Ajo do të të tregojë jetën e saj.\"",
+              "english": "\"Grandmother invites you to us. She will tell you her life.\""
+            },
+            {
+              "text": "Sam e telefonon Ardin.",
+              "english": "Sam phones Ardi."
+            },
+            {
+              "text": "— Faleminderit për ftesën! Do të vij në orën katër.",
+              "english": "\"Thank you for the invitation! I will come at four o'clock.\""
+            },
+            {
+              "text": "Ai merr një çokollatë dhe lëng për gjyshen.",
+              "english": "He takes a chocolate and juice for grandmother."
+            },
+            {
+              "text": "Tashmë gjyshja pret Samin në kuzhinë.",
+              "english": "Grandmother is already waiting for Sam in the kitchen."
+            },
+            {
+              "text": "— Rri këtu, Sam, thotë ajo. Pi një çaj.",
+              "english": "\"Stay here, Sam,\" she says. \"Have a tea.\""
+            },
+            {
+              "text": "— Gjyshe, trego jetën tënde, thotë Ardi.",
+              "english": "\"Grandmother, tell your life,\" says Ardi."
+            },
+            {
+              "text": "Gjyshja ulet dhe fillon:",
+              "english": "Grandmother sits down and begins:"
+            },
+            {
+              "text": "— Linda në një fshat afër malit, në vitin 1956.",
+              "english": "\"I was born in a village near the mountain, in 1956.\""
+            },
+            {
+              "text": "— Babai im ishte bujk. Ai pati tokë, lopë, dele dhe një kalë.",
+              "english": "\"My father was a farmer. He had land, cows, sheep and a horse.\""
+            },
+            {
+              "text": "— Ai mbolli dhe korri çdo vit.",
+              "english": "\"He sowed and reaped every year.\""
+            },
+            {
+              "text": "— Fëmijëria ime kaloi në fshat, me kafshët dhe me zogjtë.",
+              "english": "\"My childhood passed in the village, with the animals and the birds.\""
+            },
+            {
+              "text": "— Atje u rrita. Shkova në shkollë dhe mësova të lexoj dhe të shkruaj.",
+              "english": "\"There I grew up. I went to school and learned to read and write.\""
+            },
+            {
+              "text": "— Rinia ime ishte e bukur. Takova një djalë të mirë në një festë.",
+              "english": "\"My youth was beautiful. I met a good boy at a party.\""
+            },
+            {
+              "text": "Ardi pyet: — Gjyshe, kur u martove? Kur lindi babai im?",
+              "english": "Ardi asks: \"Grandmother, when did you marry? When was my father born?\""
+            },
+            {
+              "text": "— Në moshën tetëmbëdhjetë vjeç u martova me burrin tim.",
+              "english": "\"At the age of eighteen I married my husband.\""
+            },
+            {
+              "text": "— Festa jonë ishte e madhe. Ne ftuam shumë njerëz dhe dërguam ftesa.",
+              "english": "\"Our party was big. We invited many people and sent invitations.\""
+            },
+            {
+              "text": "— Mora shumë urime nga fshati.",
+              "english": "\"I received many good wishes from the village.\""
+            },
+            {
+              "text": "— Pas dy vitesh burri im shkoi në Tiranë për punë.",
+              "english": "\"After two years my husband went to Tirana for work.\""
+            },
+            {
+              "text": "— Unë mbeta në fshat me fëmijën tonë. Ai lindi atje.",
+              "english": "\"I stayed in the village with our child. He was born there.\""
+            },
+            {
+              "text": "— Pastaj u nisa edhe unë. Arrita në Tiranë në mbrëmje.",
+              "english": "\"Then I set out too. I arrived in Tirana in the evening.\""
+            },
+            {
+              "text": "— Eca shumë me çantën në dorë.",
+              "english": "\"I walked a lot with the bag in my hand.\""
+            },
+            {
+              "text": "— Atëherë nuk kam pasur celular. Nuk kam telefonuar dhe nuk kam dërguar mesazh.",
+              "english": "\"Then I did not have a mobile phone. I did not phone and I did not send a message.\""
+            },
+            {
+              "text": "— Ai më priti te stacioni dhe më shpjegoi rrugën shpejt.",
+              "english": "\"He waited for me at the station and quickly explained the way to me.\""
+            },
+            {
+              "text": "— Shtëpia ku jetoj tani ndodhet afër tregut.",
+              "english": "\"The house where I live now is near the market.\""
+            },
+            {
+              "text": "— Atje fillova të shes bukë. Unë rri në treg gjithë ditën.",
+              "english": "\"There I began to sell bread. I stay at the market all day.\""
+            },
+            {
+              "text": "— Pata dy fëmijë. Unë i rrita me bukë dhe me dashuri.",
+              "english": "\"I had two children. I raised them with bread and with love.\""
+            },
+            {
+              "text": "— Ata u rritën në Tiranë dhe u martuan atje.",
+              "english": "\"They grew up in Tirana and married there.\""
+            },
+            {
+              "text": "Ardi dëgjon dhe buzëqesh. Sam shkruan diçka në librin e tij.",
+              "english": "Ardi listens and smiles. Sam writes something in his book."
+            },
+            {
+              "text": "— Burri im vdiq, thotë gjyshja.",
+              "english": "\"My husband died,\" says grandmother."
+            },
+            {
+              "text": "— Vdekja e tij ishte një ditë e keqe.",
+              "english": "\"His death was a bad day.\""
+            },
+            {
+              "text": "— Atëherë pushova nga puna për një kohë.",
+              "english": "\"Then I stopped work for a while.\""
+            },
+            {
+              "text": "— Ruaj kujtimet e tij në një libër. Nuk i harroj.",
+              "english": "\"I keep his memories in a book. I do not forget them.\""
+            },
+            {
+              "text": "— Ruaj edhe kujtimet e fëmijërisë dhe të fshatit. Këto kujtime janë çdo gjë për mua.",
+              "english": "\"I also keep the memories of childhood and of the village. These memories are everything to me.\""
+            },
+            {
+              "text": "— Fëmijëria është një kohë e bukur, thotë ajo. Rinia është e bukur edhe ajo.",
+              "english": "\"Childhood is a beautiful time,\" she says. \"Youth is beautiful too.\""
+            },
+            {
+              "text": "— Në rini njeriu ka shumë ëndrra dhe shumë punë.",
+              "english": "\"In youth a person has many dreams and a lot of work.\""
+            },
+            {
+              "text": "— Çdo ditë kujtoj festën tonë. Kujtoj edhe ditën e vdekjes.",
+              "english": "\"Every day I remember our party. I also remember the day of his death.\""
+            },
+            {
+              "text": "— Pas vdekjes së tij ruaj shtëpinë dhe çelësin e vjetër.",
+              "english": "\"After his death I keep the house and the old key.\""
+            },
+            {
+              "text": "— Mbaj zakonet e vjetra. Mbaj gjithmonë një libër në çantë.",
+              "english": "\"I keep the old customs. I always carry a book in my bag.\""
+            },
+            {
+              "text": "— Çdo të diel shkoj në kishë. Ardi e mban çantën time.",
+              "english": "\"Every Sunday I go to church. Ardi carries my bag.\""
+            },
+            {
+              "text": "— Ky është një zakon i mirë. Çdo zakon dhe çdo traditë ka një histori. Edhe tradita jonë është e mirë:",
+              "english": "\"This is a good custom. Every custom and every tradition has a story. Our tradition is good too:\""
+            },
+            {
+              "text": "— të japim bukë dhe kafe çdo mysafiri.",
+              "english": "\"to give bread and coffee to every guest.\""
+            },
+            {
+              "text": "— Çdo mysafir është një dhuratë, thotë ajo.",
+              "english": "\"Every guest is a gift,\" she says."
+            },
+            {
+              "text": "Sam pyet: — Gjyshe, çfarë ndërroi më shumë?",
+              "english": "Sam asks: \"Grandmother, what changed the most?\""
+            },
+            {
+              "text": "— Shumë gjëra ndërruan, thotë ajo. Tradita nuk ndërron.",
+              "english": "\"Many things changed,\" she says. \"Tradition does not change.\""
+            },
+            {
+              "text": "— Tani kam celular. Numri im është në librin tënd.",
+              "english": "\"Now I have a phone. My number is in your book.\""
+            },
+            {
+              "text": "— Telefonatat e tua janë një dhuratë. Mund të më telefonosh çdo javë. Do të kemi edhe një takim të ri.",
+              "english": "\"Your phone calls are a gift. You can phone me every week. We will have another meeting.\""
+            },
+            {
+              "text": "— Rri me ne edhe për darkë, Sam!",
+              "english": "\"Stay with us for dinner too, Sam!\""
+            },
+            {
+              "text": "— Në çfarë moshe ke ti, Sam? pyet ajo.",
+              "english": "\"What age are you, Sam?\" she asks."
+            },
+            {
+              "text": "— Jam tridhjetë vjeç. Në moshën time shumë njerëz kanë punë dhe familje.",
+              "english": "\"I am thirty. At my age many people have work and a family.\""
+            },
+            {
+              "text": "— Edhe ti do të kesh një jetë të bukur, thotë gjyshja.",
+              "english": "\"You will have a beautiful life too,\" says grandmother."
+            },
+            {
+              "text": "Pas një ore Sam kthehet në shtëpi. Ai mbaron një letër për nënën.",
+              "english": "After an hour Sam goes back home. He finishes a letter to his mother."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-10",
+  "lang": "sq",
+  "title": "Në treg me Dritën",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-10",
+    "title": "Albanian ladder, a1-2: Në treg me Dritën (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Në treg me Dritën",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën në mëngjes gjyshja Drita shkon në treg me Ardin dhe Samin.",
+              "english": "On Saturday morning grandmother Drita goes to the market with Ardi and Sam."
+            },
+            {
+              "text": "Ardi ka një çantë të madhe. Ai ngre çantën dhe buzëqesh.",
+              "english": "Ardi has a big bag. He lifts the bag and smiles."
+            },
+            {
+              "text": "— Sa shumë njerëz! thotë Sam.",
+              "english": "\"So many people!\" says Sam."
+            },
+            {
+              "text": "— Çdo të shtunë këtu ka shumë njerëz, thotë gjyshja.",
+              "english": "\"Every Saturday there are many people here,\" says grandmother."
+            },
+            {
+              "text": "Në treg ka perime dhe frutë.",
+              "english": "At the market there are vegetables and fruit."
+            },
+            {
+              "text": "Poshtë janë perimet, lart janë frutat.",
+              "english": "Downstairs are the vegetables, upstairs is the fruit."
+            },
+            {
+              "text": "— Çfarë dëshironi? Pak ose shumë? pyet shitësi.",
+              "english": "\"What would you like? A little or a lot?\" asks the seller."
+            },
+            {
+              "text": "— Domate, patate dhe qepë, thotë gjyshja.",
+              "english": "\"Tomatoes, potatoes and onions,\" says grandmother."
+            },
+            {
+              "text": "— Sa kushtojnë domatet? pyet Sam.",
+              "english": "\"How much are the tomatoes?\" asks Sam."
+            },
+            {
+              "text": "— Njëqind lekë një kg, thotë shitësi.",
+              "english": "\"A hundred lek a kilo,\" says the seller."
+            },
+            {
+              "text": "— Njëqind lekë? Është shtrenjtë, thotë gjyshja.",
+              "english": "\"A hundred lek? That is expensive,\" says grandmother."
+            },
+            {
+              "text": "— Për ju ka zbritje, thotë shitësi. Tetëdhjetë lekë.",
+              "english": "\"For you there is a discount,\" says the seller. \"Eighty lek.\""
+            },
+            {
+              "text": "— Mirë. Dy kg domate dhe tre kg patate, thotë ajo.",
+              "english": "\"Good. Two kilos of tomatoes and three kilos of potatoes,\" she says."
+            },
+            {
+              "text": "Gjyshja i jep paratë shitësit. Shitësi i jep kusurin.",
+              "english": "Grandmother gives the seller the money. The seller gives her the change."
+            },
+            {
+              "text": "Sam shikon një gjë të vogël dhe të bardhë.",
+              "english": "Sam looks at a small white thing."
+            },
+            {
+              "text": "— Gjyshe, çfarë është kjo? Sot apo nesër e blejmë? pyet ai.",
+              "english": "\"Grandmother, what is this? Do we buy it today or tomorrow?\" he asks."
+            },
+            {
+              "text": "— Kjo është hudhër, thotë ajo. Hudhra është shumë e mirë.",
+              "english": "\"This is garlic,\" she says. \"Garlic is very good.\""
+            },
+            {
+              "text": "— Nuk më pëlqen hudhra, thotë Ardi.",
+              "english": "\"I do not like garlic,\" says Ardi."
+            },
+            {
+              "text": "— Po qepa? pyet gjyshja. Ardi mendon pak.",
+              "english": "\"And onions?\" asks grandmother. Ardi thinks for a moment."
+            },
+            {
+              "text": "— Qepët janë mirë, thotë ai.",
+              "english": "\"Onions are fine,\" he says."
+            },
+            {
+              "text": "Gjyshja blen shumë perime dhe pak frutë. Patatet janë në çantën e Ardit.",
+              "english": "Grandmother buys many vegetables and a little fruit. The potatoes are in Ardi's bag."
+            },
+            {
+              "text": "Ardi është dhjetë vjeç, por ai ngre çantën si një burrë.",
+              "english": "Ardi is ten years old, but he lifts the bag like a man."
+            },
+            {
+              "text": "Pranë tregut ka një dyqan me këmisha, fustane, këpucë dhe pallto.",
+              "english": "Next to the market there is a shop with shirts, dresses, shoes and coats."
+            },
+            {
+              "text": "— Gjyshe, shiko këpucët e zeza! thotë Ardi.",
+              "english": "\"Grandmother, look at the black shoes!\" says Ardi."
+            },
+            {
+              "text": "— Ato janë shumë të bukura, por janë të shtrenjta.",
+              "english": "\"They are very beautiful, but they are expensive.\""
+            },
+            {
+              "text": "Në dyqan ka edhe një këmishë të bardhë dhe një fustan të gjelbër.",
+              "english": "In the shop there is also a white shirt and a green dress."
+            },
+            {
+              "text": "— Cila ngjyrë të pëlqen? pyet gjyshja.",
+              "english": "\"Which colour do you like?\" asks grandmother."
+            },
+            {
+              "text": "— Madhësia ime është e vogël, thotë Ardi. Dua këpucët e zeza.",
+              "english": "\"My size is small,\" says Ardi. \"I want the black shoes.\""
+            },
+            {
+              "text": "— Jo sot, Ardi. Ne kemi shumë gjëra për shtëpinë.",
+              "english": "\"Not today, Ardi. We have many things for the house.\""
+            },
+            {
+              "text": "Ata shkojnë në një dyqan të vogël.",
+              "english": "They go to a small shop."
+            },
+            {
+              "text": "Gjyshja duhet të blejë edhe diçka.",
+              "english": "Grandmother also has to buy something else."
+            },
+            {
+              "text": "— Një kg sheqer dhe pak gjalpë, ju lutem, thotë ajo.",
+              "english": "\"A kilo of sugar and a little butter, please,\" she says."
+            },
+            {
+              "text": "Sheqeri është i lirë, por gjalpi është i shtrenjtë.",
+              "english": "The sugar is cheap, but the butter is expensive."
+            },
+            {
+              "text": "— Bukë me gjalpë është shumë e mirë, thotë Ardi.",
+              "english": "\"Bread with butter is very good,\" says Ardi."
+            },
+            {
+              "text": "— Edhe çaj me sheqer, thotë Sam.",
+              "english": "\"And tea with sugar,\" says Sam."
+            },
+            {
+              "text": "Gjyshja paguan në arkë.",
+              "english": "Grandmother pays at the cash desk."
+            },
+            {
+              "text": "Sam ka dhjetë euro në çantë, por gjyshja paguan me lekë.",
+              "english": "Sam has ten euros in his bag, but grandmother pays with lek."
+            },
+            {
+              "text": "Gjyshja shkon në treg dy herë në javë.",
+              "english": "Grandmother goes to the market twice a week."
+            },
+            {
+              "text": "Ajo ka një hallë në fshat dhe i tregon çdo gjë.",
+              "english": "She has an aunt in the village and tells her everything."
+            },
+            {
+              "text": "Ardi humbet gjyshen për pesë minuta.",
+              "english": "Ardi loses grandmother for five minutes."
+            },
+            {
+              "text": "Ai shkon lart, pastaj poshtë.",
+              "english": "He goes upstairs, then downstairs."
+            },
+            {
+              "text": "— Gjyshe, ku je? thotë ai.",
+              "english": "\"Grandmother, where are you?\" he says."
+            },
+            {
+              "text": "Gjyshja është në oborr të dyqanit.",
+              "english": "Grandmother is in the yard of the shop."
+            },
+            {
+              "text": "— Ja ku jam, Ardi! thotë ajo.",
+              "english": "\"Here I am, Ardi!\" she says."
+            },
+            {
+              "text": "Në shtëpi ata hanë bukë dhe pinë çaj.",
+              "english": "At home they eat bread and drink tea."
+            },
+            {
+              "text": "Sam shkruan në librin e tij fjalët e reja.",
+              "english": "Sam writes the new words in his book."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

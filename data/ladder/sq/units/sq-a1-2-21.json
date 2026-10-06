@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-21",
+  "lang": "sq",
+  "title": "E diela në bashkësi",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-21",
+    "title": "Albanian ladder, a1-2: E diela në bashkësi (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Reviewer notes: Church life in the drafter's own words; no Scripture quotation or paraphrase. Needs a theological reviewer (prayer for the sick, sermon on mercy, offering, testimony)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "church"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-theological-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "church"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "E diela në bashkësi",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën në mëngjes Sam shkon në kishë me gjyshen Drita.",
+              "english": "On Sunday morning Sam goes to church with grandmother Drita."
+            },
+            {
+              "text": "Ata u nisën herët, por Sam harroi librin në shtëpi.",
+              "english": "They set out early, but Sam forgot his book at home."
+            },
+            {
+              "text": "Ata arritën shpejt në kishë.",
+              "english": "They arrived quickly at the church."
+            },
+            {
+              "text": "Atje ishin Dritani, Mira dhe pastor Pjetër.",
+              "english": "Dritan, Mira and Pastor Pjetër were there."
+            },
+            {
+              "text": "Bashkësia është e vogël, por është e ngrohtë.",
+              "english": "The congregation is small, but it is warm."
+            },
+            {
+              "text": "Njerëzit që vijnë çdo të diel janë të lumtur.",
+              "english": "The people who come every Sunday are happy."
+            },
+            {
+              "text": "Mbledhja e së dielës fillon në orën dhjetë.",
+              "english": "The Sunday meeting begins at ten o'clock."
+            },
+            {
+              "text": "Pastori thotë: — Mirë se vini, të gjithë!",
+              "english": "The pastor says: \"Welcome, everyone!\""
+            },
+            {
+              "text": "Pastaj kori këndon një këngë të bukur.",
+              "english": "Then the choir sings a beautiful song."
+            },
+            {
+              "text": "Njerëzit që këndojnë në kor janë shumë të mirë.",
+              "english": "The people who sing in the choir are very good."
+            },
+            {
+              "text": "Kënga flet për dashurinë e Perëndisë.",
+              "english": "The song speaks about God's love."
+            },
+            {
+              "text": "Të gjithë këndojnë bashkë. Sam e dëgjon dhe buzëqesh.",
+              "english": "Everyone sings together. Sam listens and smiles."
+            },
+            {
+              "text": "Pastaj fillon adhurimi.",
+              "english": "Then the worship begins."
+            },
+            {
+              "text": "Pastori lutet: — Perëndi, faleminderit për këtë ditë.",
+              "english": "The pastor prays: \"God, thank you for this day.\""
+            },
+            {
+              "text": "Lutja e tij është e gjatë, por të gjithë dëgjojnë.",
+              "english": "His prayer is long, but everyone listens."
+            },
+            {
+              "text": "Pastaj Pjetri thotë: — Tani lutemi për njerëzit që janë të sëmurë.",
+              "english": "Then Pjetër says: \"Now we pray for the people who are ill.\""
+            },
+            {
+              "text": "— Lutemi për ata që kanë ftohje, kollë, hundë të kuqe dhe temperaturë.",
+              "english": "\"We pray for those who have a cold, a cough, a red nose and a temperature.\""
+            },
+            {
+              "text": "— Lutemi për ata që nuk kanë gjumë dhe që kanë dhimbje në kokë, në gojë, në shpinë, në gjoks dhe në stomak.",
+              "english": "\"We pray for those who cannot sleep and who have pain in the head, in the mouth, in the back, in the chest and in the stomach.\""
+            },
+            {
+              "text": "— Lutemi për një burrë që nuk ec shumë: dora dhe këmba e tij dhembin.",
+              "english": "\"We pray for a man who does not walk much: his hand and his foot hurt.\""
+            },
+            {
+              "text": "— Perëndia ka mëshirë për të gjithë, thotë Pjetri.",
+              "english": "\"God has mercy for everyone,\" says Pjetër."
+            },
+            {
+              "text": "Kjo lutje është edhe për ata që janë larg.",
+              "english": "This prayer is also for those who are far away."
+            },
+            {
+              "text": "— Mjeku, ilaçi dhe receta janë të mira. Perëndia e shëron njeriun me mëshirën e tij.",
+              "english": "\"The doctor, the medicine and the prescription are good. God heals a person with his mercy.\""
+            },
+            {
+              "text": "Pas lutjes kori këndon edhe një këngë.",
+              "english": "After the prayer the choir sings one more song."
+            },
+            {
+              "text": "Pastaj vjen predikimi.",
+              "english": "Then comes the sermon."
+            },
+            {
+              "text": "Predikimi i Pjetrit është për mëshirën.",
+              "english": "Pjetër's sermon is about mercy."
+            },
+            {
+              "text": "— Perëndia na do çdo ditë, thotë ai.",
+              "english": "\"God loves us every day,\" he says."
+            },
+            {
+              "text": "Pjetri tregon një histori: — Një burrë është i sëmurë. Ai nuk ka shumë para. Ai nuk ka ilaç.",
+              "english": "Pjetër tells a story: \"A man is ill. He does not have much money. He has no medicine.\""
+            },
+            {
+              "text": "— Një grua që jeton afër e shikon. Ajo i sjell supë dhe ilaç.",
+              "english": "\"A woman who lives nearby sees him. She brings him soup and medicine.\""
+            },
+            {
+              "text": "— Kështu bashkësia është një familje, thotë Pjetri.",
+              "english": "\"That is how the congregation is a family,\" says Pjetër."
+            },
+            {
+              "text": "Predikimi mbaron shpejt.",
+              "english": "The sermon ends quickly."
+            },
+            {
+              "text": "— Pra, çfarë duhet të bëjmë? pyet Pjetri.",
+              "english": "\"So, what do we have to do?\" asks Pjetër."
+            },
+            {
+              "text": "— Pra, duhet të shkojmë te ata që janë të sëmurë, t'i takojmë dhe t'i dëgjojmë.",
+              "english": "\"So we have to go to those who are ill, meet them and listen to them.\""
+            },
+            {
+              "text": "Pastaj vjen oferta.",
+              "english": "Then comes the offering."
+            },
+            {
+              "text": "Dritani merr një çantë të vogël dhe e sjell te çdo njeri.",
+              "english": "Dritan takes a small bag and brings it to every person."
+            },
+            {
+              "text": "— Oferta është për njerëzit e sëmurë, thotë ai.",
+              "english": "\"The offering is for the ill people,\" he says."
+            },
+            {
+              "text": "Çdo njeri jep një ofertë. Gjyshja Drita jep lekë dhe Sam jep euro.",
+              "english": "Every person gives an offering. Grandmother Drita gives lek and Sam gives euros."
+            },
+            {
+              "text": "Pastaj Dritani dëshmon.",
+              "english": "Then Dritan gives his testimony."
+            },
+            {
+              "text": "— Unë dëshmoj se Perëndia është i mirë me mua, thotë ai.",
+              "english": "\"I testify that God is good to me,\" he says."
+            },
+            {
+              "text": "— Kam një familje, kam punë dhe kam shokë. Kjo është një dhuratë.",
+              "english": "\"I have a family, I have work and I have friends. This is a gift.\""
+            },
+            {
+              "text": "— Mos harroni: çdo gjë që kemi është një dhuratë.",
+              "english": "\"Do not forget: everything we have is a gift.\""
+            },
+            {
+              "text": "Sam dëgjon dhe mendon: — Një ditë do të dëshmoj edhe unë.",
+              "english": "Sam listens and thinks: \"One day I will give my testimony too.\""
+            },
+            {
+              "text": "— Shpresoj që do të kem mundësi.",
+              "english": "\"I hope that I will have the chance.\""
+            },
+            {
+              "text": "Pjetri e mbyll shërbimin me një bekim.",
+              "english": "Pjetër closes the service with a blessing."
+            },
+            {
+              "text": "— Bekimi i Perëndisë është me ju, thotë ai.",
+              "english": "\"God's blessing is with you,\" he says."
+            },
+            {
+              "text": "Të gjithë e marrin bekimin dhe buzëqeshin.",
+              "english": "Everyone receives the blessing and smiles."
+            },
+            {
+              "text": "Shërbimi mbaron në mesditë.",
+              "english": "The service ends at midday."
+            },
+            {
+              "text": "Atëherë Mira i jep Samit një dhuratë: një libër të ri.",
+              "english": "Then Mira gives Sam a gift: a new book."
+            },
+            {
+              "text": "— Faleminderit, Mira! Ky shërbim është shumë i mirë, thotë Sam.",
+              "english": "\"Thank you, Mira! This service is very good,\" says Sam."
+            },
+            {
+              "text": "— Më dhemb pak koka, thotë Mira, por jam e lumtur.",
+              "english": "\"My head hurts a little,\" says Mira, \"but I am happy.\""
+            },
+            {
+              "text": "Sam e kaloi të dielën me ta. Adhurimi i bashkësisë është i bukur.",
+              "english": "Sam spent Sunday with them. The congregation's worship is beautiful."
+            },
+            {
+              "text": "Mbledhja e së dielës është një ditë e mirë për të gjithë.",
+              "english": "The Sunday meeting is a good day for everyone."
+            },
+            {
+              "text": "— Pra, kjo është shtëpia ime e re, thotë Sam. Kjo mbledhje është shumë e bukur.",
+              "english": "\"So this is my new home,\" says Sam. \"This meeting is very beautiful.\""
+            },
+            {
+              "text": "Sam e do adhurimin dhe është shumë i lumtur.",
+              "english": "Sam loves the worship and is very happy."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

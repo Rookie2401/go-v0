@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-17",
+  "lang": "sq",
+  "title": "Një mesazh, një telefonatë",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-17",
+    "title": "Albanian ladder, a1-2: Një mesazh, një telefonatë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një mesazh, një telefonatë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të enjten në mbrëmje Sam është në shtëpi.",
+              "english": "On Thursday evening Sam is at home."
+            },
+            {
+              "text": "Celulari i tij bie. Është një mesazh nga Mira.",
+              "english": "His mobile phone rings. It is a message from Mira."
+            },
+            {
+              "text": "Ai lexon mesazhin:",
+              "english": "He reads the message:"
+            },
+            {
+              "text": "\"Përshëndetje, Sam! Të ftojmë në festën e Gjergjit.",
+              "english": "\"Hello, Sam! We invite you to Gjergj's party."
+            },
+            {
+              "text": "Festa është të shtunën, në orën katër.",
+              "english": "The party is on Saturday, at four o'clock."
+            },
+            {
+              "text": "Gjergji është dymbëdhjetë vjeç. Do të jetë një ditë e bukur!\"",
+              "english": "Gjergj is twelve years old. It will be a beautiful day!\""
+            },
+            {
+              "text": "Sam është shumë i lumtur për ftesën.",
+              "english": "Sam is very happy about the invitation."
+            },
+            {
+              "text": "Ai e telefonon Mirën. Telefonata është e gjatë.",
+              "english": "He phones Mira. The call is long."
+            },
+            {
+              "text": "— Përshëndetje, Mira! Jam Sam. Faleminderit për mesazhin dhe për ftesën!",
+              "english": "\"Hello, Mira! It is Sam. Thank you for the message and for the invitation!\""
+            },
+            {
+              "text": "— S'ka përse, Sam! Faleminderit për telefonatën. Do të vish?",
+              "english": "\"You're welcome, Sam! Thank you for the call. Will you come?\""
+            },
+            {
+              "text": "— Po, do të vij. Ku do të jemi? A është në shtëpi ose në restorant?",
+              "english": "\"Yes, I will come. Where will we be? Is it at home or in a restaurant?\""
+            },
+            {
+              "text": "— Në një restorant në mal. Dritani do të shpjegojë rrugën.",
+              "english": "\"In a restaurant in the mountains. Dritan will explain the way.\""
+            },
+            {
+              "text": "— Ne ftojmë edhe Anën dhe Luanin, thotë Mira. Pastaj Dritani flet me Samin.",
+              "english": "\"We also invite Ana and Luan,\" says Mira. Then Dritan talks with Sam."
+            },
+            {
+              "text": "— Përshëndetje, Sam! Tashmë e di që vjen, thotë Dritani.",
+              "english": "\"Hello, Sam! I already know that you are coming,\" says Dritan."
+            },
+            {
+              "text": "— Restoranti është mbi një kodër, pranë pyllit.",
+              "english": "\"The restaurant is on a hill, next to the forest.\""
+            },
+            {
+              "text": "— Do të bjerë borë? pyet Sam. Ka stuhi?",
+              "english": "\"Will it snow?\" asks Sam. \"Is there a storm?\""
+            },
+            {
+              "text": "— Jo. Në këtë stinë qielli është i bukur. Dielli është i ngrohtë.",
+              "english": "\"No. In this season the sky is beautiful. The sun is warm.\""
+            },
+            {
+              "text": "— Nuk ka re dhe nuk ka erë.",
+              "english": "\"There are no clouds and there is no wind.\""
+            },
+            {
+              "text": "— Shpjegoje rrugën, ju lutem, thotë Sam.",
+              "english": "\"Explain the way, please,\" says Sam."
+            },
+            {
+              "text": "— Do të të takoj te stacioni, thotë Dritani. Takimi është në orën tre.",
+              "english": "\"I will meet you at the station,\" says Dritan. \"The meeting is at three o'clock.\""
+            },
+            {
+              "text": "— Takimi te stacioni është mirë, thotë Sam. Dritani më shpjegon rrugën shumë mirë.",
+              "english": "\"The meeting at the station is fine,\" says Sam. \"Dritan explains the way to me very well.\""
+            },
+            {
+              "text": "— Do të të dërgoj adresën në celular.",
+              "english": "\"I will send you the address on your phone.\""
+            },
+            {
+              "text": "— Dritani dërgon adresën edhe për Anën, thotë Mira.",
+              "english": "\"Dritan also sends the address to Ana,\" says Mira."
+            },
+            {
+              "text": "— Ja numri im: 069 234 5678.",
+              "english": "\"Here is my number: 069 234 5678.\""
+            },
+            {
+              "text": "— Dhe numri i Mirës është 069 876 5432.",
+              "english": "\"And Mira's number is 069 876 5432.\""
+            },
+            {
+              "text": "— Faleminderit, Dritan. Dua të dërgoj edhe një urim për Gjergjin.",
+              "english": "\"Thank you, Dritan. I also want to send a greeting to Gjergj.\""
+            },
+            {
+              "text": "— Mirë, thotë Dritani. Dhe ti ke shumë shokë këtu.",
+              "english": "\"Good,\" says Dritan. \"And you have many friends here.\""
+            },
+            {
+              "text": "Pas telefonatës Sam është shumë i lumtur.",
+              "english": "After the call Sam is very happy."
+            },
+            {
+              "text": "Të shtunën në orën tre Sam është te stacioni.",
+              "english": "On Saturday at three o'clock Sam is at the station."
+            },
+            {
+              "text": "Dritani e takon me makinë.",
+              "english": "Dritan meets him with the car."
+            },
+            {
+              "text": "— Mirë se vjen! Hyr, ju lutem. Tani shkojmë në mal, thotë ai.",
+              "english": "\"Welcome! Get in, please. Now we go to the mountain,\" he says."
+            },
+            {
+              "text": "— Si është dora jote? pyet Sam.",
+              "english": "\"How is your hand?\" asks Sam."
+            },
+            {
+              "text": "— Më dhemb dora, por jam mirë, thotë Dritani.",
+              "english": "\"My hand hurts, but I am fine,\" says Dritan."
+            },
+            {
+              "text": "— Mjeku thotë: pak ilaç dhe pak gjumë. Ashtu është mirë.",
+              "english": "\"The doctor says: a little medicine and a little sleep. That is fine.\""
+            },
+            {
+              "text": "Makina shkon lart. Në mal ka pak borë, por qielli është i bukur.",
+              "english": "The car goes up. On the mountain there is a little snow, but the sky is beautiful."
+            },
+            {
+              "text": "Restoranti është mbi kodër, afër pyllit.",
+              "english": "The restaurant is on the hill, near the forest."
+            },
+            {
+              "text": "Atje janë Mira, Gjergji dhe shumë shokë. Sam takon të gjithë.",
+              "english": "Mira, Gjergj and many friends are there. Sam meets everyone."
+            },
+            {
+              "text": "Gjergji i fton shokët e tij nga shkolla.",
+              "english": "Gjergj invites his friends from school."
+            },
+            {
+              "text": "— Urime, Gjergj! thotë Sam. Ky është një urim nga unë.",
+              "english": "\"Congratulations, Gjergj!\" says Sam. \"This is a good wish from me.\""
+            },
+            {
+              "text": "— Faleminderit, Sam! thotë Gjergji. Ti je një shok i mirë.",
+              "english": "\"Thank you, Sam!\" says Gjergj. \"You are a good friend.\""
+            },
+            {
+              "text": "Kamarieri vjen te tavolina e madhe.",
+              "english": "The waiter comes to the big table."
+            },
+            {
+              "text": "— Çfarë porositni? pyet ai.",
+              "english": "\"What do you order?\" he asks."
+            },
+            {
+              "text": "— Porosia jonë është e madhe, thotë Mira. Supë, mish dhe peshk për të gjithë.",
+              "english": "\"Our order is big,\" says Mira. \"Soup, meat and fish for everyone.\""
+            },
+            {
+              "text": "— Dhe pije për fëmijët, thotë Dritani.",
+              "english": "\"And drinks for the children,\" says Dritan."
+            },
+            {
+              "text": "Gjergji është shumë i uritur.",
+              "english": "Gjergj is very hungry."
+            },
+            {
+              "text": "— Mos ha shumë, Gjergj! thotë Mira. Pastaj vjen ëmbëlsira.",
+              "english": "\"Do not eat too much, Gjergj!\" says Mira. \"Then the dessert comes.\""
+            },
+            {
+              "text": "Gjergji ka kollë dhe i dhemb pak gjoksi.",
+              "english": "Gjergj has a cough and his chest hurts a little."
+            },
+            {
+              "text": "— Mjeku thotë: pak ilaç, ashtu është mirë, thotë Mira.",
+              "english": "\"The doctor says: a little medicine, that is how it is fine,\" says Mira."
+            },
+            {
+              "text": "Tashmë të gjithë janë të ngopur.",
+              "english": "By now everyone is full."
+            },
+            {
+              "text": "Dritani paguan faturën.",
+              "english": "Dritan pays the bill."
+            },
+            {
+              "text": "— Sa e bukur është festa! thotë Sam. Faleminderit për ftesën!",
+              "english": "\"How beautiful the party is!\" says Sam. \"Thank you for the invitation!\""
+            },
+            {
+              "text": "Tashmë është mbrëmje. Sam e shkruan takimin në librin e tij.",
+              "english": "It is already evening. Sam writes the meeting down in his book."
+            },
+            {
+              "text": "— Çdo javë të telefonojmë, thotë Mira. Dhe ti telefono ne!",
+              "english": "\"Every week we phone you,\" says Mira. \"And you phone us!\""
+            },
+            {
+              "text": "— Mirë, thotë Sam. Numri juaj është në celular.",
+              "english": "\"Good,\" says Sam. \"Your number is on my phone.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

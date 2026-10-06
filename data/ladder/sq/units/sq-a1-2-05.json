@@ -1,0 +1,215 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-05",
+  "lang": "sq",
+  "title": "Familja e Anës dhe e Luanit",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-05",
+    "title": "Albanian ladder, a1-2: Familja e Anës dhe e Luanit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Reviewer notes: The names Besa, Arben and Agim are invented and are not in the adapter word list. Ages are simple numerals: compound numerals such as pesëdhjetë e tetë are avoided because the adapter reads e + unit as an adjective."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "description"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "description"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Familja e Anës dhe e Luanit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën Sam është te Ana.",
+              "english": "On Saturday Sam is at Ana's."
+            },
+            {
+              "text": "Ata pinë kafe në kuzhinë.",
+              "english": "They drink coffee in the kitchen."
+            },
+            {
+              "text": "Ana tregon familjen e saj.",
+              "english": "Ana tells about her family."
+            },
+            {
+              "text": "Babai i saj është mësues në fshat, si Luani në Tiranë. Ai është gjashtëdhjetë vjeç.",
+              "english": "Her father is a teacher in the village, like Luan in Tirana. He is sixty years old."
+            },
+            {
+              "text": "Nëna e saj punon në shtëpi. Ajo është pesëdhjetë vjeç.",
+              "english": "Her mother works at home. She is fifty years old."
+            },
+            {
+              "text": "— Familja jonë është e vogël, thotë Ana, por është e lumtur.",
+              "english": "\"Our family is small,\" says Ana, \"but it is happy.\""
+            },
+            {
+              "text": "Sam pyet: — A ke motër?",
+              "english": "Sam asks: \"Do you have a sister?\""
+            },
+            {
+              "text": "— Jo, kam vëlla. Ai është Luani.",
+              "english": "\"No, I have a brother. He is Luan.\""
+            },
+            {
+              "text": "— Luani punon shumë. Unë jam gjithmonë e lodhur në fundjavë.",
+              "english": "\"Luan works a lot. I am always tired at the weekend.\""
+            },
+            {
+              "text": "— Po babai yt? Çfarë bën ai në shtëpi?",
+              "english": "\"And your father? What does he do at home?\""
+            },
+            {
+              "text": "— Çdo ditë ai lexon një libër dhe pi çaj. Ai është njeri shumë i mirë.",
+              "english": "\"Every day he reads a book and drinks tea. He is a very good man.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Pastaj Ana tregon hallën dhe tezen.",
+              "english": "Then Ana tells about her aunt and her other aunt."
+            },
+            {
+              "text": "— Halla ime është motra e babait tim. Ajo jeton në fshat.",
+              "english": "\"My aunt is my father's sister. She lives in the village.\""
+            },
+            {
+              "text": "— Shtëpia e tyre është e vjetër, por është shumë e bukur.",
+              "english": "\"Their house is old, but it is very beautiful.\""
+            },
+            {
+              "text": "— Halla ka një bijë dhe një djalë.",
+              "english": "\"My aunt has a daughter and a son.\""
+            },
+            {
+              "text": "— Emri i bijës është Besa. Emri i djalit është Arben.",
+              "english": "\"The daughter's name is Besa. The son's name is Arben.\""
+            },
+            {
+              "text": "— Kushëriri im Arben është tetë vjeç. Bija vjen shpesh te ne, zakonisht të hënën.",
+              "english": "\"My cousin Arben is eight years old. The daughter often comes to us, usually on Monday.\""
+            },
+            {
+              "text": "— Tezja ime jeton në Durrës.",
+              "english": "\"My other aunt lives in Durrës.\""
+            },
+            {
+              "text": "— Ajo ka një djalë, Agim. Ai është gjithashtu kushëriri im.",
+              "english": "\"She has a son, Agim. He is also my cousin.\""
+            },
+            {
+              "text": "— Emri i tij është shumë i bukur.",
+              "english": "\"His name is very beautiful.\""
+            },
+            {
+              "text": "— Tezja vjen rrallë, ndonjëherë të mërkurën.",
+              "english": "\"My aunt comes rarely, sometimes on Wednesday.\""
+            },
+            {
+              "text": "— Fëmijët e tyre vijnë të premten në mbrëmje. Ata luajnë bashkë me ne.",
+              "english": "\"Their children come on Friday evening. They play together with us.\""
+            },
+            {
+              "text": "— Në verë ne shkojmë në fshat. Në fshat ka shumë mollë, qen dhe mace.",
+              "english": "\"In summer we go to the village. In the village there are many apples, dogs and cats.\""
+            },
+            {
+              "text": "— Fshati i tyre është i vogël, por njerëzit janë shumë të mirë.",
+              "english": "\"Their village is small, but the people are very good.\""
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Nëna e Anës vjen në kuzhinë. Ajo le çantën në dhomë.",
+              "english": "Ana's mother comes into the kitchen. She leaves her bag in the room."
+            },
+            {
+              "text": "Sam thotë: — Mirëdita! Si jeni ju?",
+              "english": "Sam says: \"Good day! How are you?\""
+            },
+            {
+              "text": "— Jam mirë, faleminderit, thotë nëna e Anës. Po ju?",
+              "english": "\"I am well, thank you,\" says Ana's mother. \"And you?\""
+            },
+            {
+              "text": "— Edhe unë jam mirë. Familja juaj është shumë e bukur.",
+              "english": "\"I am well too. Your family is very beautiful.\""
+            },
+            {
+              "text": "Pastaj Sam tregon familjen e tij.",
+              "english": "Then Sam tells about his family."
+            },
+            {
+              "text": "— Nëna ime dhe babai im jetojnë në Amerikë.",
+              "english": "\"My mother and my father live in America.\""
+            },
+            {
+              "text": "— Kam një motër. Ajo punon në një shkollë.",
+              "english": "\"I have a sister. She works in a school.\""
+            },
+            {
+              "text": "— Ata janë në Amerikë, por ne flasim shpesh.",
+              "english": "\"They are in America, but we talk often.\""
+            },
+            {
+              "text": "Sam shkruan një fjalë të re: kushëri.",
+              "english": "Sam writes a new word: cousin."
+            },
+            {
+              "text": "Ana buzëqesh: — Tani je njeri në familjen tonë.",
+              "english": "Ana smiles: \"Now you are a person in our family.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

@@ -578,6 +578,206 @@
       "document": "../../corpus/sq/udha-1-08.json",
       "domain": "narrative",
       "title": "Nata"
+    },
+    {
+      "id": "sq-a1-2-01",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-01.json",
+      "domain": "conversation",
+      "title": "Një telefonatë"
+    },
+    {
+      "id": "sq-a1-2-02",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-02.json",
+      "domain": "narrative",
+      "title": "Një ditë te Drita"
+    },
+    {
+      "id": "sq-a1-2-03",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-03.json",
+      "domain": "narrative",
+      "title": "Java e Samit"
+    },
+    {
+      "id": "sq-a1-2-04",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-04.json",
+      "domain": "narrative",
+      "title": "Çfarë bën zakonisht?"
+    },
+    {
+      "id": "sq-a1-2-05",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-05.json",
+      "domain": "description",
+      "title": "Familja e Anës dhe e Luanit"
+    },
+    {
+      "id": "sq-a1-2-06",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-06.json",
+      "domain": "conversation",
+      "title": "Shtëpia e Samit"
+    },
+    {
+      "id": "sq-a1-2-07",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-07.json",
+      "domain": "narrative",
+      "title": "Macja e humbur"
+    },
+    {
+      "id": "sq-a1-2-08",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-08.json",
+      "domain": "practical",
+      "title": "Në dyqan"
+    },
+    {
+      "id": "sq-a1-2-09",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-09.json",
+      "domain": "practical",
+      "title": "Sa kushton?"
+    },
+    {
+      "id": "sq-a1-2-10",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-10.json",
+      "domain": "narrative",
+      "title": "Në treg me Dritën"
+    },
+    {
+      "id": "sq-a1-2-11",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-11.json",
+      "domain": "conversation",
+      "title": "Në restorant"
+    },
+    {
+      "id": "sq-a1-2-12",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-12.json",
+      "domain": "practical",
+      "title": "Me autobus në qendër"
+    },
+    {
+      "id": "sq-a1-2-13",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-13.json",
+      "domain": "narrative",
+      "title": "Sam humbet rrugën"
+    },
+    {
+      "id": "sq-a1-2-14",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-14.json",
+      "domain": "narrative",
+      "title": "Një ditë në mal"
+    },
+    {
+      "id": "sq-a1-2-15",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-15.json",
+      "domain": "health",
+      "title": "Te mjeku"
+    },
+    {
+      "id": "sq-a1-2-16",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-16.json",
+      "domain": "narrative",
+      "title": "Ardi është i sëmurë"
+    },
+    {
+      "id": "sq-a1-2-17",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-17.json",
+      "domain": "conversation",
+      "title": "Një mesazh, një telefonatë"
+    },
+    {
+      "id": "sq-a1-2-18",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-18.json",
+      "domain": "narrative",
+      "title": "Çfarë bëre dje?"
+    },
+    {
+      "id": "sq-a1-2-19",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-19.json",
+      "domain": "narrative",
+      "title": "Një ditë në fshat"
+    },
+    {
+      "id": "sq-a1-2-20",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-20.json",
+      "domain": "correspondence",
+      "title": "Një letër nga Tirana"
+    },
+    {
+      "id": "sq-a1-2-21",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-21.json",
+      "domain": "church",
+      "title": "E diela në bashkësi"
+    },
+    {
+      "id": "sq-a1-2-22",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-22.json",
+      "domain": "narrative",
+      "title": "Pas shërbimit"
+    },
+    {
+      "id": "sq-a1-2-23",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-23.json",
+      "domain": "biography",
+      "title": "Jeta e gjyshes Drita"
+    },
+    {
+      "id": "sq-a1-2-24",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-24.json",
+      "domain": "instructions",
+      "title": "Si bëhet byreku"
+    },
+    {
+      "id": "sq-a1-2-25",
+      "stage": "a1-2",
+      "kind": "controlled",
+      "document": "units/sq-a1-2-25.json",
+      "domain": "description",
+      "title": "Tirana dhe fshati"
     }
   ]
 }

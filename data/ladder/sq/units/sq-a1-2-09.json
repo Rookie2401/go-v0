@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-09",
+  "lang": "sq",
+  "title": "Sa kushton?",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-09",
+    "title": "Albanian ladder, a1-2: Sa kushton? (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Sa kushton?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën Sam dhe gjyshja Drita shkojnë në treg.",
+              "english": "On Saturday Sam and grandmother Drita go to the market."
+            },
+            {
+              "text": "Sam duhet të blejë një pallto të mirë.",
+              "english": "Sam has to buy a good coat."
+            },
+            {
+              "text": "Gjyshja e di çmimin e çdo gjëje.",
+              "english": "Grandmother knows the price of everything."
+            },
+            {
+              "text": "— Në treg është më mirë se në dyqan, thotë ajo.",
+              "english": "\"At the market it is better than in a shop,\" she says."
+            },
+            {
+              "text": "Ata shikojnë një pallto të zezë.",
+              "english": "They look at a black coat."
+            },
+            {
+              "text": "— Sa kushton kjo pallto? pyet Sam.",
+              "english": "\"How much is this coat?\" asks Sam."
+            },
+            {
+              "text": "— Njëqind euro, thotë shitësi.",
+              "english": "\"A hundred euros,\" says the seller."
+            },
+            {
+              "text": "— Njëqind? Është shumë e shtrenjtë! thotë gjyshja.",
+              "english": "\"A hundred? It is very expensive!\" says grandmother."
+            },
+            {
+              "text": "— Kjo pallto e gjelbër është më e lirë, thotë shitësi.",
+              "english": "\"This green coat is cheaper,\" says the seller."
+            },
+            {
+              "text": "Sam vesh një pallto të gjelbër.",
+              "english": "Sam puts on a green coat."
+            },
+            {
+              "text": "— Madhësia është e mirë, thotë shitësi.",
+              "english": "\"The size is good,\" says the seller."
+            },
+            {
+              "text": "— Më pëlqen kjo ngjyrë, thotë Sam.",
+              "english": "\"I like this colour,\" says Sam."
+            },
+            {
+              "text": "— A ka zbritje? pyet gjyshja.",
+              "english": "\"Is there a discount?\" asks grandmother."
+            },
+            {
+              "text": "— Për ju ka zbritje, thotë shitësi. Shtatëdhjetë euro.",
+              "english": "\"For you there is a discount,\" says the seller. \"Seventy euros.\""
+            },
+            {
+              "text": "— Pesëdhjetë euro, thotë gjyshja.",
+              "english": "\"Fifty euros,\" says grandmother."
+            },
+            {
+              "text": "Shitësi buzëqesh. — Mirë, pesëdhjetë.",
+              "english": "The seller smiles. \"All right, fifty.\""
+            },
+            {
+              "text": "— Faleminderit! Zbritja është e mirë, thotë Sam.",
+              "english": "\"Thank you! The discount is good,\" says Sam."
+            },
+            {
+              "text": "Sam paguan shitësin. Ai ka paratë në çantë. Paratë janë këtu.",
+              "english": "Sam pays the seller. He has the money in his bag. The money is here."
+            },
+            {
+              "text": "Shitësi i jep Samit kusurin.",
+              "english": "The seller gives Sam the change."
+            },
+            {
+              "text": "— Sa e lirë është kjo pallto! thotë Sam.",
+              "english": "\"How cheap this coat is!\" says Sam."
+            },
+            {
+              "text": "— Po, por është e mirë, thotë gjyshja. Gjithmonë pyet për çmimin!",
+              "english": "\"Yes, but it is good,\" says grandmother. \"Always ask about the price!\""
+            },
+            {
+              "text": "Në treg ka këmisha, fustane dhe këpucë.",
+              "english": "At the market there are shirts, dresses and shoes."
+            },
+            {
+              "text": "— Tezja ime në Amerikë ka një pallto të bardhë, thotë Sam.",
+              "english": "\"My aunt in America has a white coat,\" says Sam."
+            },
+            {
+              "text": "— Ajo është shumë e bukur, thotë gjyshja.",
+              "english": "\"It is very beautiful,\" says grandmother."
+            },
+            {
+              "text": "Pastaj ata shkojnë në një dyqan të vogël pranë tregut.",
+              "english": "Then they go to a small shop near the market."
+            },
+            {
+              "text": "Sam duhet të blejë dy karrige për kopsht.",
+              "english": "Sam has to buy two chairs for the garden."
+            },
+            {
+              "text": "Në dyqan ka karrige, një dollap dhe një shtrat.",
+              "english": "In the shop there are chairs, a cupboard and a bed."
+            },
+            {
+              "text": "— Ky shtrat është shumë i shtrenjtë, thotë Sam.",
+              "english": "\"This bed is very expensive,\" says Sam."
+            },
+            {
+              "text": "— Karrigia është dy herë më e lirë se shtrati, thotë gjyshja.",
+              "english": "\"A chair is twice as cheap as the bed,\" says grandmother."
+            },
+            {
+              "text": "— Çmimi i dollapit është i mirë, por dollapi është më i shtrenjtë se shtrati.",
+              "english": "\"The price of the cupboard is good, but the cupboard is more expensive than the bed.\""
+            },
+            {
+              "text": "Sam blen dy karrige të bardha.",
+              "english": "Sam buys two white chairs."
+            },
+            {
+              "text": "— Sa kushtojnë? Njëqind ose pesëdhjetë lekë? pyet ai. — Dy mijë lekë, thotë shitësi.",
+              "english": "\"How much are they? A hundred or fifty lek?\" he asks. \"Two thousand lek,\" says the seller."
+            },
+            {
+              "text": "— Ku paguaj? Në arkë apo te shitësi? pyet Sam.",
+              "english": "\"Where do I pay? At the cash desk or to the seller?\" asks Sam."
+            },
+            {
+              "text": "— Pranë derës, në arkë, thotë shitësi.",
+              "english": "\"Next to the door, at the cash desk,\" says the seller."
+            },
+            {
+              "text": "Në arkë është bija e shitësit. Ajo është dymbëdhjetë vjeç.",
+              "english": "At the cash desk is the seller's daughter. She is twelve years old."
+            },
+            {
+              "text": "Gjyshja pyet vajzën: — Ku është banja?",
+              "english": "Grandmother asks the girl: \"Where is the bathroom?\""
+            },
+            {
+              "text": "— Poshtë, pas derës, thotë vajza.",
+              "english": "\"Downstairs, behind the door,\" says the girl."
+            },
+            {
+              "text": "Sam paguan dy mijë lekë në arkë.",
+              "english": "Sam pays two thousand lek at the cash desk."
+            },
+            {
+              "text": "Karriget janë jashtë, dollapi dhe shtrati janë brenda.",
+              "english": "The chairs are outside, the cupboard and the bed are inside."
+            },
+            {
+              "text": "— Nuk kam kusur, thotë vajza. Shkoj poshtë dhe vij.",
+              "english": "\"I have no change,\" says the girl. \"I go downstairs and come back.\""
+            },
+            {
+              "text": "Ajo vjen me kusurin.",
+              "english": "She comes back with the change."
+            },
+            {
+              "text": "— Faleminderit shumë, thotë Sam. Karriget janë të bukura.",
+              "english": "\"Thank you very much,\" says Sam. \"The chairs are beautiful.\""
+            },
+            {
+              "text": "Sam i ngre karriget dhe del jashtë. Gjyshja dhe ai shkojnë në shtëpi.",
+              "english": "Sam lifts the chairs and goes outside. He and grandmother go home."
+            },
+            {
+              "text": "Sot Sam ka pak para, por shumë gjëra të reja.",
+              "english": "Today Sam has little money, but many new things."
+            },
+            {
+              "text": "Në mbrëmje Ardi vjen te Sami.",
+              "english": "In the evening Ardi comes to Sam's."
+            },
+            {
+              "text": "Ata ulen në kopsht, në karriget e reja, dhe pinë çaj.",
+              "english": "They sit in the garden, on the new chairs, and drink tea."
+            },
+            {
+              "text": "Gjyshja Drita është e lumtur.",
+              "english": "Grandmother Drita is happy."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

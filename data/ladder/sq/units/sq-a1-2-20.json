@@ -1,0 +1,283 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-20",
+  "lang": "sq",
+  "title": "Një letër nga Tirana",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-20",
+    "title": "Albanian ladder, a1-2: Një letër nga Tirana (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "correspondence"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "correspondence"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një letër nga Tirana",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën në mbrëmje Sam shkruan një letër për nënën e tij.",
+              "english": "On Sunday evening Sam writes a letter to his mother."
+            },
+            {
+              "text": "Ai ka një zarf, një kartolinë dhe një shënim të vogël.",
+              "english": "He has an envelope, a postcard and a small note."
+            },
+            {
+              "text": "Letra do të shkojë me postë.",
+              "english": "The letter will go by post."
+            },
+            {
+              "text": "Tiranë, të dielën në mbrëmje",
+              "english": "Tirana, Sunday evening"
+            },
+            {
+              "text": "E dashur nënë,",
+              "english": "Dear mother,"
+            },
+            {
+              "text": "Shpresoj që je mirë. Unë jam mirë dhe jam shumë i lumtur.",
+              "english": "I hope you are well. I am well and very happy."
+            },
+            {
+              "text": "Prandaj kam shumë gjëra për të të shkruar.",
+              "english": "So I have many things to write to you."
+            },
+            {
+              "text": "Kam mësuar shumë fjalë shqip. Kam lexuar një libër dhe kam shkruar shumë letra.",
+              "english": "I have learned many Albanian words. I have read a book and written many letters."
+            },
+            {
+              "text": "Kam takuar shumë njerëz të mirë: Anën, Luanin, Dritanin dhe Mirën.",
+              "english": "I have met many good people: Ana, Luan, Dritan and Mira."
+            },
+            {
+              "text": "Ana punon në klinikë. Ajo është shumë e mirë me mua.",
+              "english": "Ana works at the clinic. She is very good to me."
+            },
+            {
+              "text": "Ana më ka shpjeguar shumë gjëra. Luani më ka dërguar një mesazh çdo ditë.",
+              "english": "Ana has explained many things to me. Luan has sent me a message every day."
+            },
+            {
+              "text": "Mira më ka dërguar një ftesë për festën e Gjergjit.",
+              "english": "Mira has sent me an invitation to Gjergj's party."
+            },
+            {
+              "text": "Dritani dhe Mira më kanë ftuar edhe në kishë.",
+              "english": "Dritan and Mira have invited me to church too."
+            },
+            {
+              "text": "Kam telefonuar Mirën. Telefonata ishte e gjatë dhe e mirë.",
+              "english": "I phoned Mira. The call was long and good."
+            },
+            {
+              "text": "Kam dërguar një urim për Gjergjin.",
+              "english": "I sent a good wish for Gjergj."
+            },
+            {
+              "text": "Kam numrin e Anës dhe të Dritanit në celular.",
+              "english": "I have Ana's and Dritan's numbers on my phone."
+            },
+            {
+              "text": "Tashmë kam shumë shokë këtu. Çdo javë kam një takim me ta.",
+              "english": "By now I have many friends here. Every week I have a meeting with them."
+            },
+            {
+              "text": "Kam parë edhe malin mbi Tiranë. Kam parë pyllin, kodrat dhe lulet.",
+              "english": "I have also seen the mountain above Tirana. I have seen the forest, the hills and the flowers."
+            },
+            {
+              "text": "Në dhomën time kam një gur nga mali. Ai është i bardhë.",
+              "english": "In my room I have a stone from the mountain. It is white."
+            },
+            {
+              "text": "Në qiell kam parë një re të zezë. Pastaj ka ardhur një erë e madhe.",
+              "english": "In the sky I saw a black cloud. Then a big wind came."
+            },
+            {
+              "text": "Ka pasur stuhi dhe borë, por ne kemi qenë në restorant.",
+              "english": "There was a storm and snow, but we were in the restaurant."
+            },
+            {
+              "text": "Dielli nuk është i ngrohtë lart, por stina e ftohtë është e bukur.",
+              "english": "The sun is not warm up there, but the cold season is beautiful."
+            },
+            {
+              "text": "Ardi ka pasur temperaturë. Ka pasur dhimbje në kokë, në shpinë dhe në stomak.",
+              "english": "Ardi had a temperature. He had pain in his head, his back and his stomach."
+            },
+            {
+              "text": "Tani ai është mirë. Nuk është një ftohje e keqe.",
+              "english": "Now he is well. It is not a bad cold."
+            },
+            {
+              "text": "Kështu kam kaluar një ditë të gjatë dhe të mirë në mal.",
+              "english": "That is how I spent a long and good day in the mountains."
+            },
+            {
+              "text": "Prandaj jam i lumtur.",
+              "english": "That is why I am happy."
+            },
+            {
+              "text": "Kam një dëshirë: dua që të vish në Tiranë.",
+              "english": "I have a wish: I want you to come to Tirana."
+            },
+            {
+              "text": "Kam edhe një ëndërr: të shohim malin bashkë. Kjo ëndërr është e bukur.",
+              "english": "I also have a dream: that we see the mountain together. This dream is beautiful."
+            },
+            {
+              "text": "Nëse ke mundësi, eja në verë. Kjo është dëshira ime e madhe.",
+              "english": "If you have the possibility, come in summer. This is my big wish."
+            },
+            {
+              "text": "Kam edhe një pyetje për ty: si është babai?",
+              "english": "I also have a question for you: how is father?"
+            },
+            {
+              "text": "Prandaj të dërgoj një shënim të vogël. Kujdesu për babanë!",
+              "english": "That is why I am sending you a small note. Take care of father!"
+            },
+            {
+              "text": "Ti përgjigju shpejt, të lutem! Shpresoj të të shoh shpejt.",
+              "english": "Answer quickly, please! I hope to see you soon."
+            },
+            {
+              "text": "Kujdesu shumë, nënë.",
+              "english": "Take good care, mother."
+            },
+            {
+              "text": "Me dashuri,",
+              "english": "With love,"
+            },
+            {
+              "text": "Sam",
+              "english": "Sam"
+            },
+            {
+              "text": "Sam hap zarfin dhe merr letrën.",
+              "english": "Sam opens the envelope and takes the letter."
+            },
+            {
+              "text": "Ai e lexon edhe një herë dhe e mbyll në zarf.",
+              "english": "He reads it once more and closes it in the envelope."
+            },
+            {
+              "text": "Kartolina është nga mali. Ajo ka diell, qiell dhe lule.",
+              "english": "The postcard is from the mountain. It has sun, sky and flowers."
+            },
+            {
+              "text": "Në shënim Sam shkruan: \"Faleminderit për pyetjet e tua!\"",
+              "english": "In the note Sam writes: \"Thank you for your questions!\""
+            },
+            {
+              "text": "Ana hap derën. Ajo e pyet: — Sa letra ke?",
+              "english": "Ana opens the door. She asks him: \"How many letters do you have?\""
+            },
+            {
+              "text": "— Po. Mbylle derën, ju lutem, sepse bie shi.",
+              "english": "\"Yes. Close the door, please, because it is raining.\""
+            },
+            {
+              "text": "Të hënën ai shkon në postë.",
+              "english": "On Monday he goes to the post office."
+            },
+            {
+              "text": "Në postë ka shumë njerëz. Ai hap çantën, paguan dhe e mbyll letrën.",
+              "english": "At the post office there are many people. He opens his bag, pays and closes the letter."
+            },
+            {
+              "text": "Pas dy javësh vjen një përgjigje nga Amerika. Sam e lexon përgjigjen.",
+              "english": "After two weeks an answer comes from America. Sam reads the answer."
+            },
+            {
+              "text": "Nëna e Samit shkruan:",
+              "english": "Sam's mother writes:"
+            },
+            {
+              "text": "E dashur Sam,",
+              "english": "Dear Sam,"
+            },
+            {
+              "text": "Faleminderit për letrën dhe për kartolinën! Jam shumë e lumtur. Pyetja jote është e bukur.",
+              "english": "Thank you for the letter and for the postcard! I am very happy. Your question is lovely."
+            },
+            {
+              "text": "Kjo është përgjigjja ime. Babai është mirë dhe të dërgon një urim.",
+              "english": "This is my answer. Father is well and sends you a good wish."
+            },
+            {
+              "text": "Edhe unë kam një ëndërr: të të shoh në Tiranë. Kjo është edhe dëshira ime.",
+              "english": "I have a dream too: to see you in Tirana. This is also my wish."
+            },
+            {
+              "text": "Do të kem mundësi në verë. Është një mundësi e mirë për mua. Kujdesem për shtëpinë.",
+              "english": "I will have the possibility in summer. It is a good chance for me. I am taking care of the house."
+            },
+            {
+              "text": "Shpresoj që ti të përgjigjesh edhe këtë herë.",
+              "english": "I hope that you will answer this time too."
+            },
+            {
+              "text": "Me dashuri, nëna",
+              "english": "With love, mother"
+            },
+            {
+              "text": "Sam është shumë i lumtur. Ai thotë: — Do të përgjigjem sot!",
+              "english": "Sam is very happy. He says: \"I will answer today!\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

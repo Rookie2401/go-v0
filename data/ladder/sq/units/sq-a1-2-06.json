@@ -1,0 +1,243 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-06",
+  "lang": "sq",
+  "title": "Shtëpia e Samit",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-06",
+    "title": "Albanian ladder, a1-2: Shtëpia e Samit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Shtëpia e Samit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sam ka një shtëpi të vogël në Tiranë.",
+              "english": "Sam has a small house in Tirana."
+            },
+            {
+              "text": "Të shtunën Luani dhe Ardi vijnë te ai.",
+              "english": "On Saturday Luan and Ardi come to him."
+            },
+            {
+              "text": "Sam u thotë: — Hyni, ju lutem! Hyni brenda!",
+              "english": "Sam says to them: \"Come in, please! Come inside!\""
+            },
+            {
+              "text": "— Sa e bukur është shtëpia! thotë Luani.",
+              "english": "\"How beautiful the house is!\" says Luan."
+            },
+            {
+              "text": "— Jo, është shumë e vogël. Ka një dhomë, një kuzhinë dhe një banjë.",
+              "english": "\"No, it is very small. It has a room, a kitchen and a bathroom.\""
+            },
+            {
+              "text": "Ardi pyet: — Cili është shtrati yt?",
+              "english": "Ardi asks: \"Which is your bed?\""
+            },
+            {
+              "text": "— Shtrati im është në dhomë, nën dritare.",
+              "english": "\"My bed is in the room, under the window.\""
+            },
+            {
+              "text": "— Dhe cila është banja?",
+              "english": "\"And which one is the bathroom?\""
+            },
+            {
+              "text": "— Banja është pas kuzhinës, pranë derës.",
+              "english": "\"The bathroom is behind the kitchen, next to the door.\""
+            },
+            {
+              "text": "— E vogël, por shumë e mirë! thotë Ardi dhe buzëqesh.",
+              "english": "\"Small, but very good!\" says Ardi and smiles."
+            },
+            {
+              "text": "— Ku është tavolina? pyet Luani.",
+              "english": "\"Where is the table?\" asks Luan."
+            },
+            {
+              "text": "— Tavolina është pranë dritares. Karrigia është nën tavolinë.",
+              "english": "\"The table is next to the window. The chair is under the table.\""
+            },
+            {
+              "text": "— Ke edhe një karrige?",
+              "english": "\"Do you have another chair?\""
+            },
+            {
+              "text": "— Jo, nuk kam. Duhet të blej dy karrige të reja.",
+              "english": "\"No, I do not. I have to buy two new chairs.\""
+            },
+            {
+              "text": "— Të premten shkojmë bashkë në treg, thotë Luani.",
+              "english": "\"On Friday we go to the market together,\" says Luan."
+            },
+            {
+              "text": "— Mirë, thotë Sam. Të premten jam në shtëpi.",
+              "english": "\"Good,\" says Sam. \"On Friday I am at home.\""
+            },
+            {
+              "text": "Luani ngre tavolinën. Ardi ngre një libër.",
+              "english": "Luan lifts the table. Ardi lifts a book."
+            },
+            {
+              "text": "Sam ngre një çantë të madhe dhe e sjell në dhomë. Çanta është nën tavolinë.",
+              "english": "Sam lifts a big bag and brings it into the room. The bag is under the table."
+            },
+            {
+              "text": "— Ku është dollapi? pyet Ardi.",
+              "english": "\"Where is the cupboard?\" asks Ardi."
+            },
+            {
+              "text": "— Dollapi është jashtë, pranë derës.",
+              "english": "\"The cupboard is outside, next to the door.\""
+            },
+            {
+              "text": "— Pse është jashtë?",
+              "english": "\"Why is it outside?\""
+            },
+            {
+              "text": "— Sepse brenda dhoma është shumë e vogël.",
+              "english": "\"Because inside the room is very small.\""
+            },
+            {
+              "text": "— Ai është i madh, por duhet të jetë brenda, thotë Luani.",
+              "english": "\"It is big, but it has to be inside,\" says Luan."
+            },
+            {
+              "text": "Luani dhe Ardi e ngrenë në dhomë.",
+              "english": "Luan and Ardi lift it into the room."
+            },
+            {
+              "text": "— Tani dollapi është te shtrati, thotë Ardi.",
+              "english": "\"Now the cupboard is by the bed,\" says Ardi."
+            },
+            {
+              "text": "— Sa mirë! Tani dhoma është e bukur.",
+              "english": "\"How good! Now the room is beautiful.\""
+            },
+            {
+              "text": "Ardi del jashtë. Pas derës është një kopsht.",
+              "english": "Ardi goes outside. Behind the door there is a garden."
+            },
+            {
+              "text": "— Sam, ke edhe një kopsht! thotë Ardi.",
+              "english": "\"Sam, you have a garden too!\" says Ardi."
+            },
+            {
+              "text": "— Po, kopshti është pas shtëpisë. Ka mollë të vogla dhe të kuqe.",
+              "english": "\"Yes, the garden is behind the house. There are small and red apples.\""
+            },
+            {
+              "text": "Luani vjen me një çaj.",
+              "english": "Luan comes with a tea."
+            },
+            {
+              "text": "Ata shkojnë në kuzhinë. Sam përgatit çaj dhe kafe.",
+              "english": "They go into the kitchen. Sam prepares tea and coffee."
+            },
+            {
+              "text": "Ardi pi qumësht dhe ha bukë me djathë.",
+              "english": "Ardi drinks milk and eats bread with cheese."
+            },
+            {
+              "text": "Mbi tavolinë ka një llambë dhe një libër të madh.",
+              "english": "On the table there is a lamp and a big book."
+            },
+            {
+              "text": "— Çfarë libri është ky? pyet Ardi.",
+              "english": "\"What book is this?\" asks Ardi."
+            },
+            {
+              "text": "— Është libri im për shqip. Lexoj një orë çdo ditë.",
+              "english": "\"It is my book for Albanian. I read for an hour every day.\""
+            },
+            {
+              "text": "— Sam mëson shumë, thotë Luani. Ai është një nxënës i mirë.",
+              "english": "\"Sam learns a lot,\" says Luan. \"He is a good pupil.\""
+            },
+            {
+              "text": "— Ti je shumë i mirë, Luan. Faleminderit për punën!",
+              "english": "\"You are very good, Luan. Thank you for the work!\""
+            },
+            {
+              "text": "— S'ka përse, Sam. Unë vij zakonisht të martën dhe të enjten.",
+              "english": "\"You're welcome, Sam. I usually come on Tuesday and Thursday.\""
+            },
+            {
+              "text": "— Ardi vjen shpesh, por gjyshja Drita vjen rrallë.",
+              "english": "\"Ardi comes often, but grandmother Drita comes rarely.\""
+            },
+            {
+              "text": "— Ndonjëherë ajo vjen me bukë. Gjithmonë sjell diçka.",
+              "english": "\"Sometimes she comes with bread. She always brings something.\""
+            },
+            {
+              "text": "— Një ditë kushëriri im Agim vjen te ti. Ai është mësues.",
+              "english": "\"One day my cousin Agim comes to you. He is a teacher.\""
+            },
+            {
+              "text": "— Emri i tij është i vjetër, por ai është i ri.",
+              "english": "\"His name is old, but he is young.\""
+            },
+            {
+              "text": "— Mirë. Ju jeni gjithmonë këtu te unë.",
+              "english": "\"Good. You are always here with me.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,219 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-02",
+  "lang": "sq",
+  "title": "Një ditë te Drita",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-02",
+    "title": "Albanian ladder, a1-2: Një ditë te Drita (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një ditë te Drita",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot Ardi është te gjyshja Drita.",
+              "english": "Today Ardi is at grandmother Drita's."
+            },
+            {
+              "text": "Ai fle në dhomën e vogël.",
+              "english": "He sleeps in the small room."
+            },
+            {
+              "text": "Në orën shtatë gjyshja e zgjon.",
+              "english": "At seven o'clock grandmother wakes him."
+            },
+            {
+              "text": "— Mirëmëngjes, Ardi! Si je?",
+              "english": "\"Good morning, Ardi! How are you?\""
+            },
+            {
+              "text": "— Jam mirë, gjyshe. Jam pak i lodhur.",
+              "english": "\"I am well, grandmother. I am a little tired.\""
+            },
+            {
+              "text": "Gjyshja përgatit bukë dhe çaj.",
+              "english": "Grandmother prepares bread and tea."
+            },
+            {
+              "text": "Ardi ha bukë dhe pi qumësht.",
+              "english": "Ardi eats bread and drinks milk."
+            },
+            {
+              "text": "Shkolla fillon në orën tetë.",
+              "english": "School starts at eight o'clock."
+            },
+            {
+              "text": "Autobusi nuk është këtu.",
+              "english": "The bus is not here."
+            },
+            {
+              "text": "Ardi është vonë!",
+              "english": "Ardi is late!"
+            },
+            {
+              "text": "Pas pesë minutash autobusi vjen.",
+              "english": "After five minutes the bus comes."
+            },
+            {
+              "text": "Ardi shkon në shkollë.",
+              "english": "Ardi goes to school."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Në mesditë Ardi vjen në shtëpi.",
+              "english": "At midday Ardi comes home."
+            },
+            {
+              "text": "Gjyshja ka drekë: oriz dhe djathë.",
+              "english": "Grandmother has lunch: rice and cheese."
+            },
+            {
+              "text": "Në mesditë ajo nuk është në treg.",
+              "english": "At midday she is not at the market."
+            },
+            {
+              "text": "Në orën një ata hanë drekë bashkë.",
+              "english": "At one o'clock they eat lunch together."
+            },
+            {
+              "text": "— Sot kam shkollë, gjyshe.",
+              "english": "\"Today I have school, grandmother.\""
+            },
+            {
+              "text": "— Çfarë mëson, Ardi?",
+              "english": "\"What do you learn, Ardi?\""
+            },
+            {
+              "text": "— Mësoj shqip dhe lexoj një libër të madh.",
+              "english": "\"I learn Albanian and I read a big book.\""
+            },
+            {
+              "text": "Pasdite Ardi lexon një libër.",
+              "english": "In the afternoon Ardi reads a book."
+            },
+            {
+              "text": "Gjyshja shkon në treg. Ardi shkon me të.",
+              "english": "Grandmother goes to the market. Ardi goes with her."
+            },
+            {
+              "text": "Pasdite shumë njerëz blejnë bukë.",
+              "english": "In the afternoon many people buy bread."
+            },
+            {
+              "text": "Gjyshja shet bukë. Ardi ka një çantë.",
+              "english": "Grandmother sells bread. Ardi has a bag."
+            },
+            {
+              "text": "Një grua pyet: — Sa kushton buka?",
+              "english": "A woman asks: \"How much is the bread?\""
+            },
+            {
+              "text": "Pas një minute gruaja ka bukë në çantë.",
+              "english": "After a minute the woman has bread in her bag."
+            },
+            {
+              "text": "Pasdite ata shkojnë në shtëpi.",
+              "english": "In the afternoon they go home."
+            },
+            {
+              "text": "Pas dhjetë minutash ata ulen në tavolinë.",
+              "english": "After ten minutes they sit down at the table."
+            },
+            {
+              "text": "Në mesditë ata flasin shumë.",
+              "english": "At midday they talk a lot."
+            },
+            {
+              "text": "Në mbrëmje ata janë në kuzhinë.",
+              "english": "In the evening they are in the kitchen."
+            },
+            {
+              "text": "Mbi tavolinë ka një llambë.",
+              "english": "On the table there is a lamp."
+            },
+            {
+              "text": "Ardi pyet: — Gjyshe, kur vjen ti te ne? Pse nuk vjen çdo javë?",
+              "english": "Ardi asks: \"Grandmother, when do you come to us? Why do you not come every week?\""
+            },
+            {
+              "text": "Gjyshja thotë: — Duhet të punoj, Ardi.",
+              "english": "Grandmother says: \"I have to work, Ardi.\""
+            },
+            {
+              "text": "Mbrëmje, gjyshja i thotë Ardit një histori nga kisha.",
+              "english": "In the evening grandmother tells Ardi a story from church."
+            },
+            {
+              "text": "— Ai vdiq për ne dhe u ringjall.",
+              "english": "\"He died for us and rose again.\""
+            },
+            {
+              "text": "Ardi dëgjon dhe buzëqesh.",
+              "english": "Ardi listens and smiles."
+            },
+            {
+              "text": "Në mbrëmje Ardi fle.",
+              "english": "In the evening Ardi sleeps."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

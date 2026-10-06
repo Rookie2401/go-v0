@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-25",
+  "lang": "sq",
+  "title": "Tirana dhe fshati",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-25",
+    "title": "Albanian ladder, a1-2: Tirana dhe fshati (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Reviewer notes: Comparisons of Tirana and the village are general statements, not statistics."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "description"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "description"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Tirana dhe fshati",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën pasdite Sam dhe Luani pinë çaj në kopshtin e Samit.",
+              "english": "On Sunday afternoon Sam and Luan drink tea in Sam's garden."
+            },
+            {
+              "text": "Sam ka një letër për nënën dhe një kartolinë të shkurtër.",
+              "english": "Sam has a letter for his mother and a short postcard."
+            },
+            {
+              "text": "— Çfarë shkruan për Tiranën? pyet Luani.",
+              "english": "\"What are you writing about Tirana?\" asks Luan."
+            },
+            {
+              "text": "— Shkruaj për qytetin dhe për fshatin, thotë Sam.",
+              "english": "\"I am writing about the city and about the village,\" says Sam."
+            },
+            {
+              "text": "— Tirana është më e madhe se fshati. Fshati nuk është aq i madh.",
+              "english": "\"Tirana is bigger than the village. The village is not as big.\""
+            },
+            {
+              "text": "— Fshati nuk është aq i madh sa Tirana.",
+              "english": "\"The village is not as big as Tirana.\""
+            },
+            {
+              "text": "— Po, thotë Luani. Sa më i madh qyteti, aq më shumë makina ka.",
+              "english": "\"Yes,\" says Luan. \"The bigger the city, the more cars it has.\""
+            },
+            {
+              "text": "— Rrugët e Tiranës janë të gjera. Edhe oborri i shtëpisë time është i gjerë.",
+              "english": "\"The streets of Tirana are wide. The yard of my house is wide too.\""
+            },
+            {
+              "text": "— Tavolina jote është e ulët, thotë Luani. Çmimet në Tiranë janë të larta.",
+              "english": "\"Your table is low,\" says Luan. \"Prices in Tirana are high.\""
+            },
+            {
+              "text": "— Rruga e fshatit është e ngushtë, por është e bukur.",
+              "english": "\"The village road is narrow, but it is beautiful.\""
+            },
+            {
+              "text": "— Në Tiranë shtëpitë janë të larta.",
+              "english": "\"In Tirana the houses are tall.\""
+            },
+            {
+              "text": "— Në fshat shtëpitë janë të ulëta.",
+              "english": "\"In the village the houses are low.\""
+            },
+            {
+              "text": "— Edhe dera e shtëpisë së gjyshit është e ulët, thotë Luani.",
+              "english": "\"The door of grandfather's house is low too,\" says Luan."
+            },
+            {
+              "text": "— Dera e vjetër është e ngushtë.",
+              "english": "\"The old door is narrow.\""
+            },
+            {
+              "text": "— Mali mbi fshat është shumë i lartë. Gurët e tij janë të rëndë.",
+              "english": "\"The mountain above the village is very high. Its stones are heavy.\""
+            },
+            {
+              "text": "— Çanta e Ardit është e rëndë kur ai shkon atje. Ai e ngre me dorë.",
+              "english": "\"Ardi's bag is heavy when he goes there. He lifts it by hand.\""
+            },
+            {
+              "text": "— Puna e bujkut është e rëndë, thotë Luani. Ai mbjell dhe korr çdo vit.",
+              "english": "\"A farmer's work is heavy,\" says Luan. \"He sows and reaps every year.\""
+            },
+            {
+              "text": "— Fshatari ka tokë, lopë, dele dhe një kalë.",
+              "english": "\"The villager has land, cows, sheep and a horse.\""
+            },
+            {
+              "text": "— Kafshët janë shumë të dashura. Zogjtë këndojnë aty çdo mëngjes.",
+              "english": "\"The animals are very dear. The birds sing there every morning.\""
+            },
+            {
+              "text": "— Në qytet puna është më e lehtë.",
+              "english": "\"In the city work is easier.\""
+            },
+            {
+              "text": "— Por jeta nuk është e lehtë për çdo njeri, thotë Sam.",
+              "english": "\"But life is not easy for everyone,\" says Sam."
+            },
+            {
+              "text": "— Rruga për në fshat është e gjatë. Rruga për në qendër është e shkurtër.",
+              "english": "\"The road to the village is long. The road to the centre is short.\""
+            },
+            {
+              "text": "— Mënyra e jetës në qytet është e shpejtë, thotë Luani.",
+              "english": "\"The way of life in the city is fast,\" says Luan."
+            },
+            {
+              "text": "— Në fshat çdo njeri ka kohë për një çaj dhe për një fjalë.",
+              "english": "\"In the village everyone has time for a tea and for a word.\""
+            },
+            {
+              "text": "— Në këtë mënyrë njerëzit janë më afër, thotë Sam.",
+              "english": "\"In this way people are closer,\" says Sam."
+            },
+            {
+              "text": "— Tirana është një vend i madh, por fshati është një vend i mirë.",
+              "english": "\"Tirana is a big place, but the village is a good place.\""
+            },
+            {
+              "text": "— Çdo qytet ka një pjesë të bukur, thotë Luani.",
+              "english": "\"Every city has a beautiful part,\" says Luan."
+            },
+            {
+              "text": "— Një pjesë e Tiranës është e re dhe një pjesë është e vjetër.",
+              "english": "\"One part of Tirana is new and one part is old.\""
+            },
+            {
+              "text": "— Edhe unë jam i këtij qyteti tani, thotë Sam.",
+              "english": "\"I too belong to this city now,\" says Sam."
+            },
+            {
+              "text": "— Ti je një njeri i dashur për ne, thotë Luani.",
+              "english": "\"You are a dear person to us,\" says Luan."
+            },
+            {
+              "text": "Sam buzëqesh. Ai mbyll letrën me një shënim të vogël në një zarf dhe e dërgon me postë.",
+              "english": "Sam smiles. He closes the letter with a small note in an envelope and sends it by post."
+            },
+            {
+              "text": "Luani pyet: — Çfarë shkruan në shënim?",
+              "english": "Luan asks: \"What do you write in the note?\""
+            },
+            {
+              "text": "— Shkruaj: \"Shpresoj që të vish në verë. Kjo është dëshira ime.\"",
+              "english": "\"I write: 'I hope that you will come in summer. This is my wish.'\""
+            },
+            {
+              "text": "— Kam një ëndërr: të shoh nënën time në Tiranë dhe në fshat.",
+              "english": "\"I have a dream: to see my mother in Tirana and in the village.\""
+            },
+            {
+              "text": "— Do të ketë mundësi, thotë Luani. Nëna jote do të të përgjigjet shpejt me një përgjigje të gjatë.",
+              "english": "\"There will be a chance,\" says Luan. \"Your mother will answer you quickly with a long answer.\""
+            },
+            {
+              "text": "— Kujdesem shumë për të, thotë Sam. Ajo është larg.",
+              "english": "\"I care about her a lot,\" says Sam. \"She is far away.\""
+            },
+            {
+              "text": "Luani mendon pak. Ky vend ka shumë gjëra të mira. Ai thotë: — Në fshat gjyshja Drita bën një lloj byreku të mirë.",
+              "english": "Luan thinks a little. This place has many good things. He says: \"In the village grandmother Drita makes a good kind of byrek.\""
+            },
+            {
+              "text": "— Po, thotë Sam. Ajo e bën në mënyrën e vjetër.",
+              "english": "\"Yes,\" says Sam. \"She makes it in the old way.\""
+            },
+            {
+              "text": "— Ajo përzien miellin me lugë dhe shton spinaq.",
+              "english": "\"She mixes the flour with a spoon and adds spinach.\""
+            },
+            {
+              "text": "— Hedh pak vaj dhe e pjek në furrë.",
+              "english": "\"She pours a little oil and bakes it in the oven.\""
+            },
+            {
+              "text": "— Byreku është i hollë, jo i trashë.",
+              "english": "\"The byrek is thin, not thick.\""
+            },
+            {
+              "text": "— Ajo gatuan çdo lloj gjëje të mirë. Në treg ka çdo lloj perimesh.",
+              "english": "\"She cooks every kind of good thing. At the market there is every kind of vegetable.\""
+            },
+            {
+              "text": "— Këpucët e mia janë të ngushta për fshatin, thotë Sam.",
+              "english": "\"My shoes are narrow for the village,\" says Sam."
+            },
+            {
+              "text": "— Në fshat duhen këpucë të gjera dhe të lehta, thotë Luani.",
+              "english": "\"In the village you need wide and light shoes,\" says Luan."
+            },
+            {
+              "text": "— Atëherë do të blej këpucë të reja, thotë Sam.",
+              "english": "\"Then I will buy new shoes,\" says Sam."
+            },
+            {
+              "text": "Letra është e shkurtër, por e bukur.",
+              "english": "The letter is short, but beautiful."
+            },
+            {
+              "text": "Ata pinë çajin dhe flasin edhe pak.",
+              "english": "They drink the tea and talk a little more."
+            },
+            {
+              "text": "— Qyteti dhe fshati janë dy gjëra të bukura, thotë Luani.",
+              "english": "\"The city and the village are two beautiful things,\" says Luan."
+            },
+            {
+              "text": "— Unë i dua të dy, thotë Sam.",
+              "english": "\"I love both,\" says Sam."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

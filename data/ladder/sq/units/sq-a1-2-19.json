@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-19",
+  "lang": "sq",
+  "title": "Një ditë në fshat",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-19",
+    "title": "Albanian ladder, a1-2: Një ditë në fshat (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një ditë në fshat",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën Ardi shkoi në fshat te gjyshi i tij.",
+              "english": "On Saturday Ardi went to the village, to his grandfather."
+            },
+            {
+              "text": "Ai u nis herët nga Tirana. Gjyshi i dërgoi një mesazh me adresën.",
+              "english": "He set out early from Tirana. His grandfather sent him a message with the address."
+            },
+            {
+              "text": "Ardi kërkoi hartën në celular.",
+              "english": "Ardi looked for the map on his phone."
+            },
+            {
+              "text": "Ardi zbriti nga furgoni në një kryqëzim pas kthesës. Fshati është larg nga qyteti. Ardi shkon atje çdo verë.",
+              "english": "Ardi got off the minibus at a crossroads after the bend. The village is far from the city. Ardi goes there every summer."
+            },
+            {
+              "text": "Gjyshi e priti aty. Ai kishte një kalë të vjetër.",
+              "english": "Grandfather waited for him there. He had an old horse."
+            },
+            {
+              "text": "— Mirë se vjen, Ardi! tha gjyshi. Fshati është afër malit.",
+              "english": "\"Welcome, Ardi!\" said grandfather. \"The village is near the mountain.\""
+            },
+            {
+              "text": "Gjyshi është bujk. Ai ka një shtëpi të vogël, një oborr dhe shumë tokë.",
+              "english": "Grandfather is a farmer. He has a small house, a yard and a lot of land."
+            },
+            {
+              "text": "Në oborr ka kafshë: lopë, dele dhe një kalë.",
+              "english": "In the yard there are animals: cows, sheep and a horse."
+            },
+            {
+              "text": "Ardi pa lopët dhe delet.",
+              "english": "Ardi saw the cows and the sheep."
+            },
+            {
+              "text": "— Kjo lopë është e sëmurë, tha gjyshi.",
+              "english": "\"This cow is ill,\" said grandfather."
+            },
+            {
+              "text": "— Ajo ka ftohje dhe kollë. Hunda e saj është e kuqe.",
+              "english": "\"She has a cold and a cough. Her nose is red.\""
+            },
+            {
+              "text": "Gjyshi shikoi gojën e saj. Mjeku erdhi dje dhe shkroi një recetë.",
+              "english": "Grandfather looked at the cow's mouth. The doctor came yesterday and wrote a prescription."
+            },
+            {
+              "text": "— Gjumi është ilaç i mirë edhe për kafshët, tha ai.",
+              "english": "\"Sleep is good medicine for animals too,\" he said."
+            },
+            {
+              "text": "Një fshatar erdhi në oborr.",
+              "english": "A villager came into the yard."
+            },
+            {
+              "text": "— Si është ajo? pyeti fshatari.",
+              "english": "\"How is the cow?\" asked the villager."
+            },
+            {
+              "text": "— Nuk është keq, tha gjyshi. Ajo është e dobët, por nëse pi ujë dhe fle, shërohet ashtu.",
+              "english": "\"She is not bad,\" said grandfather. \"She is weak, but if she drinks water and sleeps, she gets well that way.\""
+            },
+            {
+              "text": "— Nëse ka dhimbje, do të të telefonoj, tha ai.",
+              "english": "\"If she has pain, I will phone you,\" he said."
+            },
+            {
+              "text": "— Nëse nesër bie shi, nuk punojmë, tha gjyshi.",
+              "english": "\"If it rains tomorrow, we do not work,\" said grandfather."
+            },
+            {
+              "text": "Pastaj gjyshi dhe Ardi shkuan në tokë.",
+              "english": "Then grandfather and Ardi went to the land."
+            },
+            {
+              "text": "Dielli ishte i ngrohtë dhe qielli ishte shumë i bukur.",
+              "english": "The sun was warm and the sky was very beautiful."
+            },
+            {
+              "text": "— Në stinën e ngrohtë bujqit mbjellin, tha gjyshi.",
+              "english": "\"In the warm season farmers sow,\" said grandfather."
+            },
+            {
+              "text": "— Në verë ata korrin. Në stinën e ftohtë ka borë dhe toka fle.",
+              "english": "\"In summer they reap. In the cold season there is snow and the land sleeps.\""
+            },
+            {
+              "text": "— Të gjithë fshatarët korrin me makinë, por unë korr me dorë.",
+              "english": "\"All the villagers reap with a machine, but I reap by hand.\""
+            },
+            {
+              "text": "Gjyshi mbolli me dorë. Ardi mbolli edhe ai pak.",
+              "english": "Grandfather sowed by hand. Ardi sowed a little too."
+            },
+            {
+              "text": "Pastaj erdhi një re e zezë dhe një erë e madhe.",
+              "english": "Then a black cloud came and a big wind."
+            },
+            {
+              "text": "— Kjo nuk është stuhi, tha gjyshi. Stuhia është në mal, me borë.",
+              "english": "\"This is not a storm,\" said grandfather. \"The storm is in the mountains, with snow.\""
+            },
+            {
+              "text": "Delet shkuan majtas, kali shkoi djathtas.",
+              "english": "The sheep went to the left, the horse went to the right."
+            },
+            {
+              "text": "Aty ishte një pyll i vogël. Zogjtë këndojnë në pyll.",
+              "english": "There was a small forest. Birds sing in the forest."
+            },
+            {
+              "text": "Një zog i vogël erdhi te Ardi. Ardi dëgjoi zogun dhe buzëqeshi.",
+              "english": "A small bird came to Ardi. Ardi listened to the bird and smiled."
+            },
+            {
+              "text": "Në kodër ka lule të bukura. Ardi gjeti një gur të bardhë.",
+              "english": "On the hill there are beautiful flowers. Ardi found a white stone."
+            },
+            {
+              "text": "— Ky gur është për ty, gjysh, tha ai.",
+              "english": "\"This stone is for you, grandfather,\" he said."
+            },
+            {
+              "text": "Në mesditë ata hëngrën bukë, djathë dhe qumësht.",
+              "english": "At midday they ate bread, cheese and milk."
+            },
+            {
+              "text": "Pasdite Ardi dhe gjyshi pushuan në oborr. Gjyshi është një bujk i mirë dhe i do shumë kafshët e tij.",
+              "english": "In the afternoon Ardi and grandfather rested in the yard. Grandfather is a good farmer and loves his animals a lot."
+            },
+            {
+              "text": "— A të pëlqen fshati? pyeti gjyshi.",
+              "english": "\"Do you like the village?\" asked grandfather."
+            },
+            {
+              "text": "— Po, më pëlqen shumë. Këtu nuk ka shumë makina dhe shumë njerëz.",
+              "english": "\"Yes, I like it a lot. Here there are not many cars and many people.\""
+            },
+            {
+              "text": "— Në qytet ka shumë gjëra, tha gjyshi, por këtu çdo gjë është afër.",
+              "english": "\"In the city there are many things,\" said grandfather, \"but here everything is near.\""
+            },
+            {
+              "text": "— Do të vish çdo verë?",
+              "english": "\"Will you come every summer?\""
+            },
+            {
+              "text": "— Do të vij çdo verë, gjysh! tha Ardi.",
+              "english": "\"I will come every summer, grandfather!\" said Ardi."
+            },
+            {
+              "text": "Ata pritën edhe pak aty. Pastaj gjyshi tha: — Duhet të shkojmë.",
+              "english": "They waited there a little longer. Then grandfather said: \"We have to go.\""
+            },
+            {
+              "text": "Në mbrëmje ata u kthyen në shtëpi.",
+              "english": "In the evening they went back to the house."
+            },
+            {
+              "text": "Gjyshja Drita erdhi nga Tirana dhe e kërkoi Ardin.",
+              "english": "Grandmother Drita came from Tirana and looked for Ardi."
+            },
+            {
+              "text": "— Ja ku jam, gjyshe! tha ai. Sa ditë e bukur!",
+              "english": "\"Here I am, grandmother!\" he said. \"What a beautiful day!\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

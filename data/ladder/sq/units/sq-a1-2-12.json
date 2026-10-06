@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-12",
+  "lang": "sq",
+  "title": "Me autobus në qendër",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-12",
+    "title": "Albanian ladder, a1-2: Me autobus në qendër (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Me autobus në qendër",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën Sam dhe Ardi duan të shkojnë në qendër të qytetit.",
+              "english": "On Sunday Sam and Ardi want to go to the centre of the city."
+            },
+            {
+              "text": "Sam nuk ka makinë. Ai shkon gjithmonë me autobus.",
+              "english": "Sam has no car. He always goes by bus."
+            },
+            {
+              "text": "Ata dalin nga oborri dhe shkojnë te ndalesa.",
+              "english": "They go out of the yard and go to the stop."
+            },
+            {
+              "text": "— Cila linjë shkon në qendër? pyet Sam.",
+              "english": "\"Which line goes to the centre?\" asks Sam."
+            },
+            {
+              "text": "— Linja tetë, thotë Ardi.",
+              "english": "\"Line eight,\" says Ardi."
+            },
+            {
+              "text": "Ata janë në ndalesë dhjetë minuta.",
+              "english": "They are at the stop for ten minutes."
+            },
+            {
+              "text": "Autobusi nuk vjen. Ka vonesë.",
+              "english": "The bus does not come. It is late."
+            },
+            {
+              "text": "— Sa vonesë! thotë Sam.",
+              "english": "\"What a delay!\" says Sam."
+            },
+            {
+              "text": "— Furgoni është më i shpejtë, thotë Ardi.",
+              "english": "\"The minibus is faster,\" says Ardi."
+            },
+            {
+              "text": "— Po, por ai është më i shtrenjtë, thotë Sam.",
+              "english": "\"Yes, but it is more expensive,\" says Sam."
+            },
+            {
+              "text": "— Për mua çmimi është i lirë. Unë kam zbritje, thotë Ardi.",
+              "english": "\"For me the price is cheap. I have a discount,\" says Ardi."
+            },
+            {
+              "text": "Furgoni vjen. Shoferi është një burrë i ri.",
+              "english": "The minibus comes. The driver is a young man."
+            },
+            {
+              "text": "— Në drejtim të qendrës? pyet Sam.",
+              "english": "\"In the direction of the centre?\" asks Sam."
+            },
+            {
+              "text": "— Po, hyni brenda! thotë shoferi.",
+              "english": "\"Yes, get in!\" says the driver."
+            },
+            {
+              "text": "Ata hyjnë brenda. Sam ulet pranë derës.",
+              "english": "They get in. Sam sits next to the door."
+            },
+            {
+              "text": "— Sa kushton bileta? pyet ai.",
+              "english": "\"How much is the ticket?\" he asks."
+            },
+            {
+              "text": "— Njëqind lekë, thotë shoferi.",
+              "english": "\"A hundred lek,\" says the driver."
+            },
+            {
+              "text": "Sam jep dy euro dhe merr kusurin.",
+              "english": "Sam gives two euros and takes the change."
+            },
+            {
+              "text": "Ai paguan dy bileta.",
+              "english": "He pays for two tickets."
+            },
+            {
+              "text": "Ardi ka zbritje, sepse është nxënës.",
+              "english": "Ardi has a discount, because he is a pupil."
+            },
+            {
+              "text": "Sam i jep Ardit biletën e tij.",
+              "english": "Sam gives Ardi his ticket."
+            },
+            {
+              "text": "Sam ka paratë në çantë. Ai paguan edhe për Ardin.",
+              "english": "Sam has the money in his bag. He also pays for Ardi."
+            },
+            {
+              "text": "Furgoni është i vjetër, por është shumë i shpejtë.",
+              "english": "The minibus is old, but it is very fast."
+            },
+            {
+              "text": "— Mos fle, Ardi! thotë Sam. Je një djalë i madh.",
+              "english": "\"Do not sleep, Ardi!\" says Sam. \"You are a big boy.\""
+            },
+            {
+              "text": "Sam shikon rrugët e Tiranës. Ato janë të gjata dhe të bukura.",
+              "english": "Sam looks at the streets of Tirana. They are long and beautiful."
+            },
+            {
+              "text": "— Tirana është një qytet i madh, thotë ai.",
+              "english": "\"Tirana is a big city,\" he says."
+            },
+            {
+              "text": "— Po, por në fshat nuk ka shumë makina, thotë Ardi.",
+              "english": "\"Yes, but in the village there are not many cars,\" says Ardi."
+            },
+            {
+              "text": "Pas pesë minutash ai shkon në drejtim të stacionit.",
+              "english": "After five minutes it goes in the direction of the station."
+            },
+            {
+              "text": "— Zbritni këtu! thotë ai. Kjo është ndalesa jonë.",
+              "english": "\"Get off here!\" he says. \"This is our stop.\""
+            },
+            {
+              "text": "Ata zbresin dhe dalin jashtë.",
+              "english": "They get off and go outside."
+            },
+            {
+              "text": "Këtu ka shumë makina dhe shumë njerëz.",
+              "english": "Here there are many cars and many people."
+            },
+            {
+              "text": "Ardi tregon një shkollë të madhe.",
+              "english": "Ardi shows a big school."
+            },
+            {
+              "text": "— Kjo është shkolla e Luanit, thotë ai. Luani punon këtu çdo ditë.",
+              "english": "\"This is Luan's school,\" he says. \"Luan works here every day.\""
+            },
+            {
+              "text": "Pranë shkollës ka një kishë të vjetër.",
+              "english": "Next to the school there is an old church."
+            },
+            {
+              "text": "Sam shikon çdo gjë dhe buzëqesh.",
+              "english": "Sam looks at everything and smiles."
+            },
+            {
+              "text": "Ata shkojnë në një restorant pranë stacionit.",
+              "english": "They go to a restaurant near the station."
+            },
+            {
+              "text": "Kamarieri vjen te tavolina.",
+              "english": "The waiter comes to the table."
+            },
+            {
+              "text": "— Çfarë porositni? pyet ai.",
+              "english": "\"What do you order?\" he asks."
+            },
+            {
+              "text": "— Ne porositim peshk dhe sallatë, thotë Sam.",
+              "english": "\"We order fish and salad,\" says Sam."
+            },
+            {
+              "text": "Kamarieri sjell peshkun. Porosia e Ardit është shumë e madhe!",
+              "english": "The waiter brings the fish. Ardi's order is very big!"
+            },
+            {
+              "text": "Ardi ha shumë.",
+              "english": "Ardi eats a lot."
+            },
+            {
+              "text": "— Mos ha shumë ëmbëlsirë, Ardi! thotë Sam.",
+              "english": "\"Do not eat too much dessert, Ardi!\" says Sam."
+            },
+            {
+              "text": "— Jam i ngopur, thotë Ardi. Dua një kafe.",
+              "english": "\"I am full,\" says Ardi. \"I want a coffee.\""
+            },
+            {
+              "text": "— Mos pi shumë kafe! Je fëmijë! thotë Sam dhe buzëqesh.",
+              "english": "\"Do not drink much coffee! You are a child!\" says Sam and smiles."
+            },
+            {
+              "text": "Sam shkon në arkë dhe paguan.",
+              "english": "Sam goes to the cash desk and pays."
+            },
+            {
+              "text": "Çmimi është mirë, por kusuri është i vogël.",
+              "english": "The price is fine, but the change is small."
+            },
+            {
+              "text": "Pas drekës ata shkojnë te stacioni.",
+              "english": "After lunch they go to the station."
+            },
+            {
+              "text": "Tani linja tetë vjen. Autobusi nuk ka vonesë.",
+              "english": "Now line eight comes. The bus is not late."
+            },
+            {
+              "text": "— Autobusi është i shpejtë sot! thotë Ardi.",
+              "english": "\"The bus is fast today!\" says Ardi."
+            },
+            {
+              "text": "Autobusi shkon në drejtim të shtëpisë.",
+              "english": "The bus goes in the direction of home."
+            },
+            {
+              "text": "Ata zbresin dhe shkojnë në shtëpi.",
+              "english": "They get off and go home."
+            },
+            {
+              "text": "Tirana është qyteti ku jeton Sam.",
+              "english": "Tirana is the city where Sam lives."
+            },
+            {
+              "text": "Në shtëpi Ardi është shumë i lodhur. Ai fle në shtrat.",
+              "english": "At home Ardi is very tired. He sleeps in the bed."
+            },
+            {
+              "text": "Sam ulet në kopsht, në një karrige, dhe lexon një libër.",
+              "english": "Sam sits in the garden, on a chair, and reads a book."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

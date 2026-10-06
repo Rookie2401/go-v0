@@ -1,0 +1,259 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-08",
+  "lang": "sq",
+  "title": "Në dyqan",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-08",
+    "title": "Albanian ladder, a1-2: Në dyqan (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "practical"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "practical"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Në dyqan",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën Sam dhe Ana shkojnë në një dyqan të madh.",
+              "english": "On Saturday Sam and Ana go to a big shop."
+            },
+            {
+              "text": "Në fundjavë ka shumë njerëz. Jashtë bie shi, por brenda është mirë.",
+              "english": "At the weekend there are many people. Outside it is raining, but inside it is nice."
+            },
+            {
+              "text": "Sam duhet të blejë një këmishë dhe këpucë.",
+              "english": "Sam has to buy a shirt and shoes."
+            },
+            {
+              "text": "Ana duhet të blejë një fustan për gjyshen Drita.",
+              "english": "Ana has to buy a dress for grandmother Drita."
+            },
+            {
+              "text": "Një shitës vjen te ata.",
+              "english": "A seller comes to them."
+            },
+            {
+              "text": "— Mirëdita! Çfarë dëshironi? pyet shitësi.",
+              "english": "\"Good day! What would you like?\" asks the seller."
+            },
+            {
+              "text": "— Mirëdita! Dua një këmishë, ju lutem, thotë Sam.",
+              "english": "\"Good day! I want a shirt, please,\" says Sam."
+            },
+            {
+              "text": "— Sa është madhësia juaj?",
+              "english": "\"What is your size?\""
+            },
+            {
+              "text": "— Nuk e di madhësinë time, thotë Sam.",
+              "english": "\"I do not know my size,\" says Sam."
+            },
+            {
+              "text": "Ana thotë: — Madhësia e tij është e madhe.",
+              "english": "Ana says: \"His size is big.\""
+            },
+            {
+              "text": "Shitësi buzëqesh dhe tregon një këmishë të bardhë.",
+              "english": "The seller smiles and shows a white shirt."
+            },
+            {
+              "text": "— Zakonisht Sam blen të bardha, thotë Ana.",
+              "english": "\"Sam usually buys white ones,\" says Ana."
+            },
+            {
+              "text": "— Po, por sot dua një ngjyrë të re, thotë Sam.",
+              "english": "\"Yes, but today I want a new colour,\" says Sam."
+            },
+            {
+              "text": "Shitësi tregon edhe një të gjelbër dhe një të zezë.",
+              "english": "The seller also shows a green one and a black one."
+            },
+            {
+              "text": "— Cila ngjyrë të pëlqen më shumë? pyet Ana.",
+              "english": "\"Which colour do you like more?\" asks Ana."
+            },
+            {
+              "text": "— Më pëlqen kjo ngjyrë. Ajo është shumë e bukur, thotë Sam.",
+              "english": "\"I like this colour. It is very beautiful,\" says Sam."
+            },
+            {
+              "text": "Sam e blen.",
+              "english": "Sam buys it."
+            },
+            {
+              "text": "— Tani duhet të shoh këpucët, thotë ai.",
+              "english": "\"Now I have to look at the shoes,\" he says."
+            },
+            {
+              "text": "Shitësi tregon këpucë të zeza.",
+              "english": "The seller shows black shoes."
+            },
+            {
+              "text": "— Këto janë të vogla për mua. A keni më të mëdha?",
+              "english": "\"These are small for me. Do you have bigger ones?\""
+            },
+            {
+              "text": "— Po, janë lart, në dollapin e madh, thotë shitësi.",
+              "english": "\"Yes, they are upstairs, in the big cupboard,\" says the seller."
+            },
+            {
+              "text": "Ata shkojnë lart. Lart ka edhe fustane.",
+              "english": "They go upstairs. Upstairs there are dresses too."
+            },
+            {
+              "text": "Ana shikon fustanet.",
+              "english": "Ana looks at the dresses."
+            },
+            {
+              "text": "Ajo shikon një të zi dhe një të gjelbër.",
+              "english": "She looks at a black one and a green one."
+            },
+            {
+              "text": "— Gjyshja Drita e pëlqen këtë, thotë Ana.",
+              "english": "\"Grandmother Drita likes this one,\" says Ana."
+            },
+            {
+              "text": "Pastaj Ana shikon një pallto të gjelbër.",
+              "english": "Then Ana looks at a green coat."
+            },
+            {
+              "text": "— Kjo pallto është për tezen time, thotë ajo.",
+              "english": "\"This coat is for my aunt,\" she says."
+            },
+            {
+              "text": "— Tezja ime jeton në fshat dhe ka një kopsht të madh.",
+              "english": "\"My aunt lives in the village and has a big garden.\""
+            },
+            {
+              "text": "— Palltoja është e madhe dhe e mirë.",
+              "english": "\"The coat is big and good.\""
+            },
+            {
+              "text": "Ana blen edhe një xhaketë për hallën e saj.",
+              "english": "Ana also buys a jacket for her other aunt."
+            },
+            {
+              "text": "Ajo blen një xhaketë të vogël për kushëririn e saj Arben. Ai është tetë vjeç.",
+              "english": "She buys a small jacket for her cousin Arben. He is eight years old."
+            },
+            {
+              "text": "— Sa gjëra! thotë Sam.",
+              "english": "\"So many things!\" says Sam."
+            },
+            {
+              "text": "Pas dhjetë minutash Sam humbet Anën në dyqan.",
+              "english": "After ten minutes Sam loses Ana in the shop."
+            },
+            {
+              "text": "Ku është ajo? Ai e gjen pranë derës.",
+              "english": "Where is she? He finds her next to the door."
+            },
+            {
+              "text": "Ana ka një çantë të bardhë. Ajo pyet shitësin: — Ku është banja?",
+              "english": "Ana has a white bag. She asks the seller: \"Where is the bathroom?\""
+            },
+            {
+              "text": "— Pas derës, thotë shitësi. Unë kam një bijë dymbëdhjetë vjeç.",
+              "english": "\"Behind the door,\" says the seller. \"I have a twelve-year-old daughter.\""
+            },
+            {
+              "text": "— Cili është emri i dyqanit? pyet Sam.",
+              "english": "\"What is the name of the shop?\" asks Sam."
+            },
+            {
+              "text": "— Quhet \"Dita e mirë\", thotë shitësi.",
+              "english": "\"It is called 'The Good Day',\" says the seller."
+            },
+            {
+              "text": "— Paguan ti apo paguaj unë? pyet Sam.",
+              "english": "\"Do you pay or do I pay?\" asks Sam."
+            },
+            {
+              "text": "Ana i jep shitësit lekët.",
+              "english": "Ana gives the seller the money."
+            },
+            {
+              "text": "— Faleminderit shumë! thotë Sam.",
+              "english": "\"Thank you very much!\" says Sam."
+            },
+            {
+              "text": "— S'ka përse! Ditë të mirë! thotë shitësi.",
+              "english": "\"You're welcome! Have a good day!\" says the seller."
+            },
+            {
+              "text": "Ata dalin jashtë. Bie shi, por Sam është i lumtur me gjërat e reja.",
+              "english": "They go outside. It is raining, but Sam is happy with the new things."
+            },
+            {
+              "text": "— Kur shkojmë te gjyshja Drita? Të dielën ose të hënën? pyet Sam.",
+              "english": "\"When do we go to grandmother Drita's? On Sunday or on Monday?\" asks Sam."
+            },
+            {
+              "text": "— Të dielën, pas kishës, thotë Ana. Ajo është shumë e lumtur kur vjen familja.",
+              "english": "\"On Sunday, after church,\" says Ana. \"She is very happy when the family comes.\""
+            },
+            {
+              "text": "— Edhe unë jam i lumtur. Kjo është një ditë e mirë.",
+              "english": "\"I am happy too. This is a good day.\""
+            },
+            {
+              "text": "Në mbrëmje ata pinë kafe në kuzhinën e Anës dhe flasin për gjyshen.",
+              "english": "In the evening they drink coffee in Ana's kitchen and talk about grandmother."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

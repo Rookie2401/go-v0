@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-24",
+  "lang": "sq",
+  "title": "Si bëhet byreku",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-24",
+    "title": "Albanian ladder, a1-2: Si bëhet byreku (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Reviewer notes: The recipe is the drafter's own; quantities are deliberately vague. byrek is an unscheduled word (three uses)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "instructions"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "instructions"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Si bëhet byreku",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën në mbrëmje gjyshja Drita gatuan byrek.",
+              "english": "On Saturday evening grandmother Drita cooks byrek."
+            },
+            {
+              "text": "Të dielën pas adhurimit vijnë mysafirë në shtëpinë e saj: fqinjët, shoqet, zonja Besa dhe një mik nga fshati.",
+              "english": "On Sunday after the worship guests come to her house: the neighbours, the friends, Mrs Besa and a friend from the village."
+            },
+            {
+              "text": "Sam dhe Ardi janë me të në kuzhinë.",
+              "english": "Sam and Ardi are with her in the kitchen."
+            },
+            {
+              "text": "— Si bëhet ai? pyet Ardi.",
+              "english": "\"How is it made?\" asks Ardi."
+            },
+            {
+              "text": "— Do ta shihni, thotë gjyshja. Dëgjoni mirë!",
+              "english": "\"You will see,\" says grandmother. \"Listen well!\""
+            },
+            {
+              "text": "Ai bëhet me miell, spinaq, vezë, djathë dhe kos.",
+              "english": "It is made with flour, spinach, eggs, cheese and yoghurt."
+            },
+            {
+              "text": "Në një pjatë të madhe hidhni miellin.",
+              "english": "Pour the flour into a big dish."
+            },
+            {
+              "text": "Shtoni dy vezë, një lugë vaj dhe pak kripë.",
+              "english": "Add two eggs, a spoon of oil and a little salt."
+            },
+            {
+              "text": "Përzieni mirë me lugën.",
+              "english": "Mix well with the spoon."
+            },
+            {
+              "text": "— Mos harroni kripën! thotë gjyshja. Por mos shtoni shumë kripë.",
+              "english": "\"Do not forget the salt!\" says grandmother. \"But do not add too much salt.\""
+            },
+            {
+              "text": "Pastaj pastroni spinaqin me ujë.",
+              "english": "Then wash the spinach with water."
+            },
+            {
+              "text": "Sam merr një thikë.",
+              "english": "Sam takes a knife."
+            },
+            {
+              "text": "— Ardi, mos merr thikën! Është e madhe, thotë gjyshja.",
+              "english": "\"Ardi, do not take the knife! It is big,\" says grandmother."
+            },
+            {
+              "text": "Hidhni spinaqin në miell.",
+              "english": "Put the spinach into the flour."
+            },
+            {
+              "text": "Shtoni djathë dhe pak kos.",
+              "english": "Add cheese and a little yoghurt."
+            },
+            {
+              "text": "Përzieni edhe një herë, por mos e përzieni shumë shpejt.",
+              "english": "Mix once more, but do not mix it too fast."
+            },
+            {
+              "text": "Ai i hollë është më i mirë se ai i trashë.",
+              "english": "The thin one is better than the thick one."
+            },
+            {
+              "text": "— Duhet të jetë i hollë, thotë gjyshja, jo i trashë.",
+              "english": "\"It has to be thin,\" says grandmother, \"not thick.\""
+            },
+            {
+              "text": "— Fshatarët e bëjnë të hollë, thotë Ardi. Ai është nga fshati i gjyshit.",
+              "english": "\"The villagers make it thin,\" says Ardi. \"That is from grandfather's village.\""
+            },
+            {
+              "text": "— Mos e bëni të trashë! thotë gjyshja dhe buzëqesh. Ajo gatuan shumë mirë.",
+              "english": "\"Do not make it thick!\" says grandmother and smiles. She cooks very well."
+            },
+            {
+              "text": "— Vezët, vaji dhe kosi janë nga fshati, thotë ajo.",
+              "english": "\"The eggs, the oil and the yoghurt are from the village,\" she says."
+            },
+            {
+              "text": "Hidhni edhe pak vaj.",
+              "english": "Pour in a little more oil."
+            },
+            {
+              "text": "Furra ndodhet pas derës.",
+              "english": "The oven is behind the door."
+            },
+            {
+              "text": "— Mos hapni furrën shpesh! thotë ajo.",
+              "english": "\"Do not open the oven often!\" she says."
+            },
+            {
+              "text": "Kujdesuni, ajo është shumë e ngrohtë!",
+              "english": "Be careful, it is very hot!"
+            },
+            {
+              "text": "Ai piqet në furrë dyzet minuta.",
+              "english": "It is baked in the oven for forty minutes."
+            },
+            {
+              "text": "Piqeni mirë. Kur piqet, ai është shumë i bukur.",
+              "english": "Bake it well. When it is baked, it is very beautiful."
+            },
+            {
+              "text": "Kur mbaroni, pastroni thikën dhe lugën.",
+              "english": "When you finish, wash the knife and the spoon."
+            },
+            {
+              "text": "Pastroni edhe tavolinën.",
+              "english": "Wash the table too."
+            },
+            {
+              "text": "Atëherë pushoni pak. Kujtoni: mirë, jo shpejt, jo shumë.",
+              "english": "Then rest a little. Remember: well, not fast, not much."
+            },
+            {
+              "text": "— Gatuajmë çdo të diel për bashkësinë, thotë gjyshja.",
+              "english": "\"We cook every Sunday for the congregation,\" says grandmother."
+            },
+            {
+              "text": "— Mbledhja e së dielës është te unë.",
+              "english": "\"The Sunday meeting is at my house.\""
+            },
+            {
+              "text": "— Pjetri ka një predikim për mëshirën dhe një lutje.",
+              "english": "\"Pjetër has a sermon about mercy and a prayer.\""
+            },
+            {
+              "text": "— Kori do të këndojë një këngë. Pastaj vjen oferta.",
+              "english": "\"The choir will sing a song. Then comes the offering.\""
+            },
+            {
+              "text": "— Pas mbledhjes të gjithë hanë dhe pinë lëng. Ka edhe tortë.",
+              "english": "\"After the meeting everyone eats and drinks juice. There is cake too.\""
+            },
+            {
+              "text": "— Ardi pëlqen akulloren, thotë Sam.",
+              "english": "\"Ardi likes ice cream,\" says Sam."
+            },
+            {
+              "text": "— Po, ka edhe akullore, thotë gjyshja.",
+              "english": "\"Yes, there is ice cream too,\" says grandmother."
+            },
+            {
+              "text": "Ardi thotë: — Kam një pyetje, gjyshe. Kur vjen miku nga fshati?",
+              "english": "Ardi says: \"I have a question, grandmother. When does the friend from the village come?\""
+            },
+            {
+              "text": "— Ai niset sot në mbrëmje dhe arrin nesër në mëngjes, thotë ajo.",
+              "english": "\"He sets out this evening and arrives tomorrow morning,\" she says."
+            },
+            {
+              "text": "— Ai kalon një ditë në qytet. Pastaj kthehet në fshat shpejt.",
+              "english": "\"He spends a day in the city. Then he goes back to the village quickly.\""
+            },
+            {
+              "text": "— Këtë natë ai do të mbetet te unë.",
+              "english": "\"Tonight he will stay with me.\""
+            },
+            {
+              "text": "— Ardi, ec në dhomë dhe shiko shtratin e mikut.",
+              "english": "\"Ardi, go to the room and look at the guest's bed.\""
+            },
+            {
+              "text": "Ardi shkon në dhomë dhe kthehet shpejt.",
+              "english": "Ardi goes to the room and comes back quickly."
+            },
+            {
+              "text": "Gjyshja shkruan një shënim për shoqen e saj.",
+              "english": "Grandmother writes a note for her friend."
+            },
+            {
+              "text": "Ajo e mbyll në një zarf me një kartolinë dhe e dërgon me postë.",
+              "english": "She closes it in an envelope with a postcard and sends it by post."
+            },
+            {
+              "text": "— Të hënën vjen një përgjigje, thotë ajo.",
+              "english": "\"On Monday an answer comes,\" she says."
+            },
+            {
+              "text": "— Çfarë ëndrre ke, gjyshe? pyet Sam.",
+              "english": "\"What dream do you have, grandmother?\" asks Sam."
+            },
+            {
+              "text": "— Ëndrra ime është një shtëpi me shumë mysafirë dhe vizitorë.",
+              "english": "\"My dream is a house with many guests and visitors.\""
+            },
+            {
+              "text": "— Aty çdo njeri është një mik, thotë gjyshja.",
+              "english": "\"There every person is a friend,\" says grandmother."
+            },
+            {
+              "text": "Të dielën në mëngjes ai është mbi tavolinë.",
+              "english": "On Sunday morning it is on the table."
+            },
+            {
+              "text": "Ai është shumë i bukur.",
+              "english": "It is very beautiful."
+            },
+            {
+              "text": "Mysafirët vijnë. Zonja Besa thotë: — Sa byrek i mirë!",
+              "english": "The guests come. Mrs Besa says: \"What a good byrek!\""
+            },
+            {
+              "text": "— Ky është një byrek nga fshati, thotë gjyshja.",
+              "english": "\"This is a byrek from the village,\" says grandmother."
+            },
+            {
+              "text": "Sam e shkruan recetën në librin e tij.",
+              "english": "Sam writes the recipe in his book."
+            },
+            {
+              "text": "Të dielën në mëngjes Sam dhe Ardi shkojnë te gjyshja shumë herët.",
+              "english": "On Sunday morning Sam and Ardi go to grandmother's very early."
+            },
+            {
+              "text": "Ardi ka pjata dhe karrige në dhomë. Sam ka çajin dhe kafenë.",
+              "english": "Ardi has plates and chairs in the room. Sam has the tea and the coffee."
+            },
+            {
+              "text": "— Ku është çanta ime? pyet Ardi.",
+              "english": "\"Where is my bag?\" asks Ardi."
+            },
+            {
+              "text": "— Është në kuzhinë, pranë dritares, thotë Sam.",
+              "english": "\"It is in the kitchen, next to the window,\" says Sam."
+            },
+            {
+              "text": "Gjyshja është e lumtur sepse ka shumë njerëz në shtëpi.",
+              "english": "Grandmother is happy because there are many people in the house."
+            },
+            {
+              "text": "Pas adhurimit mysafirët vijnë shpejt.",
+              "english": "After the worship the guests come quickly."
+            },
+            {
+              "text": "Vjen edhe Pjetri me gruan e tij.",
+              "english": "Pjetër also comes with his wife."
+            },
+            {
+              "text": "— Mirë se vini! thotë gjyshja. Urdhëroni!",
+              "english": "\"Welcome!\" says grandmother. \"Please, help yourselves!\""
+            },
+            {
+              "text": "— Është një ditë e bukur, thotë Pjetri.",
+              "english": "\"It is a beautiful day,\" says Pjetër."
+            },
+            {
+              "text": "Mira dhe Dritani sjellin një tortë të madhe.",
+              "english": "Mira and Dritan bring a big cake."
+            },
+            {
+              "text": "Ardi ha shumë. Ai pi edhe një lëng.",
+              "english": "Ardi eats a lot. He also drinks a juice."
+            },
+            {
+              "text": "— Faleminderit për recetën, gjyshe! thotë Sam.",
+              "english": "\"Thank you for the recipe, grandmother!\" says Sam."
+            },
+            {
+              "text": "— S'ka përse, thotë ajo. Ju dy do ta bëni bashkë çdo javë.",
+              "english": "\"You're welcome,\" she says. \"You two will make it together every week.\""
+            },
+            {
+              "text": "Sam buzëqesh. Sot ai ka mësuar shumë fjalë të reja.",
+              "english": "Sam smiles. Today he has learned many new words."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

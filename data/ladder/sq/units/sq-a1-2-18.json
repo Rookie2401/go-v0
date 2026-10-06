@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-18",
+  "lang": "sq",
+  "title": "Çfarë bëre dje?",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-18",
+    "title": "Albanian ladder, a1-2: Çfarë bëre dje? (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Çfarë bëre dje?",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të dielën në mëngjes Luani është te Sami. Ata pinë çaj.",
+              "english": "On Sunday morning Luan is at Sam's. They drink tea."
+            },
+            {
+              "text": "— Sam, çfarë bëre dje? pyet Luani. Si e kalove ditën?",
+              "english": "\"Sam, what did you do yesterday?\" asks Luan. \"How did you spend the day?\""
+            },
+            {
+              "text": "— E kalova mirë! Dje isha në festën e Gjergjit, thotë Sam.",
+              "english": "\"I spent it well! Yesterday I was at Gjergj's party,\" says Sam."
+            },
+            {
+              "text": "— Mira më dërgoi një mesazh dhe më ftoi me një ftesë.",
+              "english": "\"Mira sent me a message and invited me with an invitation.\""
+            },
+            {
+              "text": "— Pastaj e telefonova. Pas telefonatës Dritani më shpjegoi rrugën.",
+              "english": "\"Then I phoned her. After the call Dritan explained the way to me.\""
+            },
+            {
+              "text": "— Si u nise? pyet Luani.",
+              "english": "\"How did you set out?\" asks Luan."
+            },
+            {
+              "text": "— U nisa në orën dy. Prej shtëpisë te ndalesa eca dhjetë minuta.",
+              "english": "\"I set out at two o'clock. From the house to the stop I walked ten minutes.\""
+            },
+            {
+              "text": "— Linja tetë pati vonesë. Prita dhjetë minuta atje.",
+              "english": "\"Line eight was late. I waited ten minutes there.\""
+            },
+            {
+              "text": "— Pastaj erdhi furgoni. Shoferi ishte i shpejtë.",
+              "english": "\"Then the minibus came. The driver was fast.\""
+            },
+            {
+              "text": "— Mora biletën dhe zbrita në stacion. Arrita në qendër të qytetit në orën tre.",
+              "english": "\"I took the ticket and got off at the station. I arrived in the centre of the city at three.\""
+            },
+            {
+              "text": "— Dritani më priti me makinë. Ai më takoi te stacioni.",
+              "english": "\"Dritan waited for me with his car. He met me at the station.\""
+            },
+            {
+              "text": "— Si arritët në mal? pyet Luani.",
+              "english": "\"How did you get to the mountain?\" asks Luan."
+            },
+            {
+              "text": "— Dritani më tregoi hartën. Kërkuam adresën bashkë.",
+              "english": "\"Dritan showed me the map. We looked for the address together.\""
+            },
+            {
+              "text": "— Restoranti ndodhet mbi një kodër, afër pyllit.",
+              "english": "\"The restaurant is on a hill, near the forest.\""
+            },
+            {
+              "text": "— Makina shkoi drejt, pastaj bëri një kthesë majtas.",
+              "english": "\"The car went straight, then made a turn to the left.\""
+            },
+            {
+              "text": "— Në kryqëzim ne shikuam adresën. Ajo ishte djathtas.",
+              "english": "\"At the crossroads we looked at the address. It was on the right.\""
+            },
+            {
+              "text": "— Dritani u nis shpejt në drejtim të pyllit.",
+              "english": "\"Dritan set off quickly in the direction of the forest.\""
+            },
+            {
+              "text": "— Nuk ishte larg. Arrita shpejt.",
+              "english": "\"It was not far. I arrived quickly.\""
+            },
+            {
+              "text": "Luani pyet: — Kush ishte atje?",
+              "english": "Luan asks: \"Who was there?\""
+            },
+            {
+              "text": "— Mira, Dritani, Gjergji dhe shumë shokë. Takova shumë njerëz.",
+              "english": "\"Mira, Dritan, Gjergj and many friends. I met many people.\""
+            },
+            {
+              "text": "— Dërgova një urim për Gjergjin. Ai ishte shumë i lumtur.",
+              "english": "\"I sent a good wish for Gjergj. He was very happy.\""
+            },
+            {
+              "text": "— Si ishte festa? pyet Luani.",
+              "english": "\"How was the party?\" asks Luan."
+            },
+            {
+              "text": "— E bukur! Hëngrëm supë, mish dhe peshk. Piva një çaj.",
+              "english": "\"Beautiful! We ate soup, meat and fish. I drank a tea.\""
+            },
+            {
+              "text": "— Gjergji më tregoi shokët e tij. Ai më pyeti: A flet shqip?",
+              "english": "\"Gjergj showed me his friends. He asked me: Do you speak Albanian?\""
+            },
+            {
+              "text": "— Unë thashë: Po, flas pak. Të gjithë dëgjuan dhe buzëqeshën.",
+              "english": "\"I said: Yes, I speak a little. Everyone listened and smiled.\""
+            },
+            {
+              "text": "— Mira më dha një pjatë me ëmbëlsirë.",
+              "english": "\"Mira gave me a plate with dessert.\""
+            },
+            {
+              "text": "— Dritani foli me mua për punën dhe për shkollën.",
+              "english": "\"Dritan talked with me about work and about school.\""
+            },
+            {
+              "text": "— Pas drekës eca pak në pyll me Gjergjin.",
+              "english": "\"After lunch I walked a little in the forest with Gjergj.\""
+            },
+            {
+              "text": "— Mira mbeti në restorant me shokët e saj.",
+              "english": "\"Mira stayed in the restaurant with her friends.\""
+            },
+            {
+              "text": "— Festa mbaroi në orën gjashtë.",
+              "english": "\"The party ended at six.\""
+            },
+            {
+              "text": "— Si u ktheve në shtëpi? pyet Luani.",
+              "english": "\"How did you get back home?\" asks Luan."
+            },
+            {
+              "text": "— Prej festës shkova me Dritanin. Ai më dërgoi te stacioni.",
+              "english": "\"From the party I went with Dritan. He took me to the station.\""
+            },
+            {
+              "text": "— U ktheva me furgon.",
+              "english": "\"I went back by minibus.\""
+            },
+            {
+              "text": "— Por kur u ktheva te shtëpia, mbeta jashtë. Harrova çelësin brenda!",
+              "english": "\"But when I got back to the house, I stayed outside. I had forgotten the key inside!\""
+            },
+            {
+              "text": "— Atëherë kujtova Anën. Ajo ka një çelës.",
+              "english": "\"Then I remembered Ana. She has a key.\""
+            },
+            {
+              "text": "— Telefonova numrin e saj në celular.",
+              "english": "\"I phoned her number on my phone.\""
+            },
+            {
+              "text": "— Atëherë Ana erdhi shpejt me çelësin.",
+              "english": "\"Then Ana came quickly with the key.\""
+            },
+            {
+              "text": "— Mbeta atje edhe një orë me të. Atëherë pushova në kopsht.",
+              "english": "\"I stayed there another hour with her. Then I rested in the garden.\""
+            },
+            {
+              "text": "— Prej Dritanit kam edhe një mesazh. Ai e harroi librin tim në makinë.",
+              "english": "\"I also have a message from Dritan. He forgot my book in the car.\""
+            },
+            {
+              "text": "Luani buzëqesh: — Kalove një ditë të gjatë!",
+              "english": "Luan smiles: \"You spent a long day!\""
+            },
+            {
+              "text": "— Po. Sot jam i dobët dhe kam dhimbje në këmbë.",
+              "english": "\"Yes. Today I am weak and my feet hurt.\""
+            },
+            {
+              "text": "— Pi një ilaç dhe fle, thotë Luani.",
+              "english": "\"Take a medicine and sleep,\" says Luan."
+            },
+            {
+              "text": "— Mos harro: nesër ke një takim në orën tetë.",
+              "english": "\"Do not forget: tomorrow you have a meeting at eight.\""
+            },
+            {
+              "text": "— Po, e kujtoj, thotë Sam.",
+              "english": "\"Yes, I remember,\" says Sam."
+            },
+            {
+              "text": "— Ku ndodhet takimi? pyet Luani.",
+              "english": "\"Where is the meeting?\" asks Luan."
+            },
+            {
+              "text": "— Në qendër, afër stacionit. Nuk e kujtoj rrugën.",
+              "english": "\"In the centre, near the station. I do not remember the street.\""
+            },
+            {
+              "text": "— Ku ndodhesh ti pasdite? pyet Sam. Mund të vish me mua?",
+              "english": "\"Where are you in the afternoon?\" asks Sam. \"Can you come with me?\""
+            },
+            {
+              "text": "— Po, vij me ty. Unë mbaroj në orën pesë. Kur mbaroj punën, pushoj pak.",
+              "english": "\"Yes, I will come with you. I finish at five. When I finish work, I rest a little.\""
+            },
+            {
+              "text": "— Pse nuk pushon edhe ti, Sam?",
+              "english": "\"Why do you not rest too, Sam?\""
+            },
+            {
+              "text": "— Në mbrëmje do të fle. Sot nuk dua të ec shumë.",
+              "english": "\"In the evening I will sleep. Today I do not want to walk much.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,195 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-01",
+  "lang": "sq",
+  "title": "Një telefonatë",
+  "contentType": "dialogue",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-01",
+    "title": "Albanian ladder, a1-2: Një telefonatë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Reviewer notes: Zot/Zoti is used in a short expression of thanks; punë, kohë, shok are top-up words of a1-1."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "conversation"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "conversation"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Një telefonatë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "— Përshëndetje, Luan! Jam unë, Sam.",
+              "english": "\"Hello, Luan! It is me, Sam.\""
+            },
+            {
+              "text": "— Përshëndetje, Sam! Si je?",
+              "english": "\"Hello, Sam! How are you?\""
+            },
+            {
+              "text": "— Jam mirë, faleminderit. Po ti?",
+              "english": "\"I am well, thank you. And you?\""
+            },
+            {
+              "text": "— Edhe unë jam mirë, por sot kam shumë punë.",
+              "english": "\"I am well too, but today I have a lot of work.\""
+            },
+            {
+              "text": "— Pse je i lodhur?",
+              "english": "\"Why are you tired?\""
+            },
+            {
+              "text": "— Sepse kjo javë është e gjatë. Duhet të punoj çdo ditë.",
+              "english": "\"Because this week is long. I have to work every day.\""
+            },
+            {
+              "text": "— Edhe unë duhet të shkoj në shkollë çdo ditë.",
+              "english": "\"I too have to go to school every day.\""
+            },
+            {
+              "text": "— Ti mëson shumë shqip. Je një shok i mirë.",
+              "english": "\"You learn a lot of Albanian. You are a good friend.\""
+            },
+            {
+              "text": "— Faleminderit, Luan. Kur vjen te unë?",
+              "english": "\"Thank you, Luan. When are you coming to me?\""
+            },
+            {
+              "text": "— Nesër punoj në shkollë. Tani nuk kam kohë.",
+              "english": "\"Tomorrow I work at school. Now I have no time.\""
+            },
+            {
+              "text": "— Po të dielën?",
+              "english": "\"And on Sunday?\""
+            },
+            {
+              "text": "— Të dielën shkojmë në kishë. Ti vjen me ne?",
+              "english": "\"On Sunday we go to church. Are you coming with us?\""
+            },
+            {
+              "text": "— Po, vij me ju. Zoti është i mirë.",
+              "english": "\"Yes, I am coming with you. The Lord is good.\""
+            },
+            {
+              "text": "— Pse e thua këtë?",
+              "english": "\"Why do you say that?\""
+            },
+            {
+              "text": "— Sepse kjo javë është e gjatë, por unë jam i lumtur. Faleminderit Zotit!",
+              "english": "\"Because this week is long, but I am happy. Thank God!\""
+            },
+            {
+              "text": "— Kur do të vish pastaj te unë?",
+              "english": "\"When will you come to me after that?\""
+            },
+            {
+              "text": "— Pastaj vij te ti, me Anën dhe me Dritanin.",
+              "english": "\"After that I come to you, with Ana and with Dritan.\""
+            },
+            {
+              "text": "— Ana dhe Dritani vijnë me ju?",
+              "english": "\"Ana and Dritan come with you?\""
+            },
+            {
+              "text": "— Po, ata vijnë me ne. Ne pimë kafe bashkë.",
+              "english": "\"Yes, they come with us. We drink coffee together.\""
+            },
+            {
+              "text": "— Mirë. Pse nuk vjen edhe Ardi?",
+              "english": "\"Good. Why is Ardi not coming too?\""
+            },
+            {
+              "text": "— Ardi duhet të shkojë te gjyshja. Ajo është në treg.",
+              "english": "\"Ardi has to go to his grandmother. She is at the market.\""
+            },
+            {
+              "text": "— Ai shkon sot dhe nesër. Ju vini të dielën.",
+              "english": "\"He goes today and tomorrow. You come on Sunday.\""
+            },
+            {
+              "text": "— Mirë, Luan. Çdo javë ti je shoku im i mirë.",
+              "english": "\"Good, Luan. Every week you are my good friend.\""
+            },
+            {
+              "text": "— Edhe ti je një njeri i mirë. Faleminderit për çajin!",
+              "english": "\"You too are a good person. Thank you for the tea!\""
+            },
+            {
+              "text": "— S'ka përse. Ja, kafe dhe çaj për ne.",
+              "english": "\"You're welcome. Here, coffee and tea for us.\""
+            },
+            {
+              "text": "— Tani shkoj. Kur flasim nesër?",
+              "english": "\"Now I go. When do we talk tomorrow?\""
+            },
+            {
+              "text": "— Nesër pas shkollës. Ti më thua çfarë bën.",
+              "english": "\"Tomorrow after school. You tell me what you do.\""
+            },
+            {
+              "text": "— Mirë. Dëshiroj të di çfarë mëson ti.",
+              "english": "\"Good. I want to know what you learn.\""
+            },
+            {
+              "text": "— Unë mësoj shqip dhe ti më thua çfarë mendon.",
+              "english": "\"I learn Albanian and you tell me what you think.\""
+            },
+            {
+              "text": "— Mirë, Luan. Faleminderit për ditën e mirë!",
+              "english": "\"Good, Luan. Thank you for the good day!\""
+            },
+            {
+              "text": "— Faleminderit edhe ty, Sam!",
+              "english": "\"Thank you too, Sam!\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

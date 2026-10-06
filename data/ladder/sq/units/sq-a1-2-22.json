@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-22",
+  "lang": "sq",
+  "title": "Pas shërbimit",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-22",
+    "title": "Albanian ladder, a1-2: Pas shërbimit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Reviewer notes: Church-community hospitality in the drafter's own words; the explanation of mercy is the drafter's own. Needs a theological reviewer. urdhëroni is an unscheduled word (three uses)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "needs-theological-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Pas shërbimit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Pas shërbimit shumë njerëz vijnë te gjyshja Drita.",
+              "english": "After the service many people come to grandmother Drita's."
+            },
+            {
+              "text": "Shtëpia e saj ndodhet pranë kishës.",
+              "english": "Her house is near the church."
+            },
+            {
+              "text": "Gjyshja ka kafe, çaj, lëng molle, tortë, çokollatë dhe akullore për Ardin.",
+              "english": "Grandmother has coffee, tea, apple juice, cake, chocolate and ice cream for Ardi."
+            },
+            {
+              "text": "Ardi hap derën për mysafirët.",
+              "english": "Ardi opens the door for the guests."
+            },
+            {
+              "text": "— Mirë se vini! Urdhëroni! thotë Drita.",
+              "english": "\"Welcome! Please come in!\" says Drita."
+            },
+            {
+              "text": "— Uluni, ju lutem. Urdhëroni një kafe dhe urdhëroni tortë!",
+              "english": "\"Sit down, please. Have a coffee and have some cake!\""
+            },
+            {
+              "text": "Mysafirët ulen në dhomë. Gjyshja e do shumë shtëpinë me njerëz.",
+              "english": "The guests sit in the room. Grandmother loves the house with people in it."
+            },
+            {
+              "text": "Fqinji i gjyshes vjen me gruan e tij.",
+              "english": "Grandmother's neighbour comes with his wife."
+            },
+            {
+              "text": "Zonja Besa është shoqja e gjyshes.",
+              "english": "Mrs Besa is grandmother's friend."
+            },
+            {
+              "text": "— Mirëdita, zonja Besa! Si jeni? pyet Sam.",
+              "english": "\"Good day, Mrs Besa! How are you?\" asks Sam."
+            },
+            {
+              "text": "— Tashmë jam më mirë, thotë zonja Besa.",
+              "english": "\"Now I am better,\" says Mrs Besa."
+            },
+            {
+              "text": "— Kam pasur ftohje dhe kollë. Hunda ime ka qenë e kuqe dhe goja e ftohtë.",
+              "english": "\"I have had a cold and a cough. My nose was red and my mouth cold.\""
+            },
+            {
+              "text": "— Nuk ka qenë një ftohje e keqe, por kam qenë shumë e dobët.",
+              "english": "\"It was not a bad cold, but I was very weak.\""
+            },
+            {
+              "text": "— Mjeku më shkroi një recetë dhe më tha: gjumë dhe çaj. Ashtu u shërova.",
+              "english": "\"The doctor wrote me a prescription and said: sleep and tea. That is how I got well.\""
+            },
+            {
+              "text": "— Mirë që je mirë! thotë Drita.",
+              "english": "\"Good that you are well!\" says Drita."
+            },
+            {
+              "text": "Shoqet e gjyshes flasin për kishën.",
+              "english": "Grandmother's friends talk about the church."
+            },
+            {
+              "text": "— Si e pëlqeve predikimin e pastorit? pyet burri.",
+              "english": "\"How did you like the pastor's sermon?\" asks the man."
+            },
+            {
+              "text": "— Ishte shumë i mirë, thotë Mira. Kori këndoi një këngë të bukur.",
+              "english": "\"It was very good,\" says Mira. \"The choir sang a beautiful song.\""
+            },
+            {
+              "text": "— Mbledhja ishte e gjatë, por lutja ishte e mirë, thotë Dritani.",
+              "english": "\"The meeting was long, but the prayer was good,\" says Dritan."
+            },
+            {
+              "text": "— Oferta është për njerëzit e sëmurë, thotë Mira. Bekimi pas predikimit ishte i bukur.",
+              "english": "\"The offering is for ill people,\" says Mira. \"The blessing after the sermon was beautiful.\""
+            },
+            {
+              "text": "Ardi pyet: — Gjyshe, çfarë është mëshira?",
+              "english": "Ardi asks: \"Grandmother, what is mercy?\""
+            },
+            {
+              "text": "Gjyshja nuk përgjigjet shpejt. Ajo buzëqesh dhe thotë:",
+              "english": "Grandmother does not answer quickly. She smiles and says:"
+            },
+            {
+              "text": "— Mëshira është kur njeriu të do edhe kur ti nuk je i mirë.",
+              "english": "\"Mercy is when a person loves you even when you are not good.\""
+            },
+            {
+              "text": "— Kjo është një përgjigje e bukur, thotë Mira.",
+              "english": "\"That is a beautiful answer,\" says Mira."
+            },
+            {
+              "text": "Ardi ha tortë me çokollatë dhe pi lëng.",
+              "english": "Ardi eats chocolate cake and drinks juice."
+            },
+            {
+              "text": "— Kam një dëshirë, thotë ai. Dua edhe një akullore!",
+              "english": "\"I have a wish,\" he says. \"I want an ice cream too!\""
+            },
+            {
+              "text": "— Ajo ka shumë çokollatë, thotë Ardi. Ai ha shpejt dhe nuk flet.",
+              "english": "\"It has a lot of chocolate,\" says Ardi. He eats quickly and does not talk."
+            },
+            {
+              "text": "Pas pak vjen një mik nga fshati.",
+              "english": "After a while a friend from the village comes."
+            },
+            {
+              "text": "Ai është bujk. Ai ka tokë dhe kafshë.",
+              "english": "He is a farmer. He has land and animals."
+            },
+            {
+              "text": "— Mirëdita! Jam miku i gjyshit të Ardit, thotë ai.",
+              "english": "\"Good day! I am a friend of Ardi's grandfather,\" he says."
+            },
+            {
+              "text": "— Mirë se vini, mik i vjetër! thotë gjyshja.",
+              "english": "\"Welcome, old friend!\" says grandmother."
+            },
+            {
+              "text": "Ai sjell një dhuratë: djathë nga lopët e tij.",
+              "english": "He brings a gift: cheese from his cows."
+            },
+            {
+              "text": "— Kam lopë, dele dhe një kalë, thotë bujku.",
+              "english": "\"I have cows, sheep and a horse,\" says the farmer."
+            },
+            {
+              "text": "— Zogjtë këndojnë në oborrin tim çdo mëngjes.",
+              "english": "\"The birds sing in my yard every morning.\""
+            },
+            {
+              "text": "— Në stinën e ngrohtë unë mbjell, dhe në verë korr.",
+              "english": "\"In the warm season I sow, and in summer I reap.\""
+            },
+            {
+              "text": "— Një fshatar e di: toka të jep çdo gjë, por duhet punë.",
+              "english": "\"A villager knows: the land gives you everything, but it needs work.\""
+            },
+            {
+              "text": "— Aty çdo gjë është afër, por unë kam shumë punë.",
+              "english": "\"There everything is near, but I have a lot of work.\""
+            },
+            {
+              "text": "Sam ulet pranë tij. Gjyshja thotë: — Ky është Sami, një shok i ri.",
+              "english": "Sam sits next to him. Grandmother says: \"This is Sam, a new friend.\""
+            },
+            {
+              "text": "— Sa vizitorë sot! thotë bujku.",
+              "english": "\"So many visitors today!\" says the farmer."
+            },
+            {
+              "text": "— Po, thotë gjyshja. Kur vjen një vizitor, unë bëj kafe.",
+              "english": "\"Yes,\" says grandmother. \"When a visitor comes, I make coffee.\""
+            },
+            {
+              "text": "— Sam është një vizitor i ri në bashkësi, thotë Dritani.",
+              "english": "\"Sam is a new visitor in the congregation,\" says Dritan."
+            },
+            {
+              "text": "— Bashkësia jonë është e vogël, por është një familje.",
+              "english": "\"Our congregation is small, but it is a family.\""
+            },
+            {
+              "text": "Mira sjell një dhuratë për gjyshen: një libër të mirë.",
+              "english": "Mira brings a gift for grandmother: a good book."
+            },
+            {
+              "text": "— Faleminderit, Mira! Sa dhuratë e bukur! thotë Drita.",
+              "english": "\"Thank you, Mira! What a beautiful gift!\" says Drita."
+            },
+            {
+              "text": "Dritani thotë: — Pas adhurimit gjithmonë vijmë te gjyshja.",
+              "english": "Dritan says: \"After the worship we always come to grandmother's.\""
+            },
+            {
+              "text": "— Dritani dëshmoi shumë mirë sot, thotë fqinji.",
+              "english": "\"Dritan gave his testimony very well today,\" says the neighbour."
+            },
+            {
+              "text": "— Një ditë do të dëshmoj edhe unë, thotë Sam.",
+              "english": "\"One day I will give my testimony too,\" says Sam."
+            },
+            {
+              "text": "Ardi ka një pyetje për bujkun: — A kujtoni gjyshin tim?",
+              "english": "Ardi has a question for the farmer: \"Do you remember my grandfather?\""
+            },
+            {
+              "text": "— E kujtoj shumë mirë, thotë bujku. Ai ishte shok i mirë.",
+              "english": "\"I remember him very well,\" says the friend. \"He was a good friend.\""
+            },
+            {
+              "text": "Gjyshja ulet dhe pushon pak. Ajo është shumë e lumtur.",
+              "english": "Grandmother sits down and rests a little. She is very happy."
+            },
+            {
+              "text": "Në orën katër mysafirët kthehen në shtëpi.",
+              "english": "At four o'clock the guests go back home."
+            },
+            {
+              "text": "Bujku mbetet edhe pak, pastaj shkon në fshat.",
+              "english": "The farmer stays a little longer, then goes to the village."
+            },
+            {
+              "text": "Sam mbetet te gjyshja dhe lan pjatat me Ardin.",
+              "english": "Sam stays with grandmother and washes the dishes with Ardi."
+            },
+            {
+              "text": "Ardi ha një akullore dhe pi edhe një lëng.",
+              "english": "Ardi eats an ice cream and drinks another juice."
+            },
+            {
+              "text": "— Sa njerëz të mirë! thotë ai.",
+              "english": "\"What good people!\" he says."
+            },
+            {
+              "text": "— Po, thotë Sam. Fqinjët dhe shoqet janë shumë të dashura.",
+              "english": "\"Yes,\" says Sam. \"The neighbours and the friends are very dear.\""
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

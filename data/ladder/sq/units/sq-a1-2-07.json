@@ -1,0 +1,239 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-07",
+  "lang": "sq",
+  "title": "Macja e humbur",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-07",
+    "title": "Albanian ladder, a1-2: Macja e humbur (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Macja e humbur",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Sot është e shtunë. Ardi dhe Elira janë te gjyshja Drita.",
+              "english": "Today is Saturday. Ardi and Elira are at grandmother Drita's."
+            },
+            {
+              "text": "Macja e Ardit nuk është këtu.",
+              "english": "Ardi's cat is not here."
+            },
+            {
+              "text": "Çdo javë ajo është këtu: të hënën, të martën, të mërkurën, të enjten.",
+              "english": "Every week she is here: on Monday, Tuesday, Wednesday, Thursday."
+            },
+            {
+              "text": "Zakonisht macja fle në dhomën e Ardit, shpesh mbi shtrat.",
+              "english": "Usually the cat sleeps in Ardi's room, often on the bed."
+            },
+            {
+              "text": "Ndonjëherë ajo del jashtë, por gjithmonë vjen në mbrëmje.",
+              "english": "Sometimes she goes outside, but she always comes back in the evening."
+            },
+            {
+              "text": "Rrallë ajo humbet. Sot, në mesditë, ajo nuk është këtu.",
+              "english": "She is rarely lost. Today, at midday, she is not here."
+            },
+            {
+              "text": "Ardi nuk është i lumtur.",
+              "english": "Ardi is not happy."
+            },
+            {
+              "text": "— Macja ime humbet çdo herë në fundjavë! thotë ai.",
+              "english": "\"My cat gets lost every time at the weekend!\" he says."
+            },
+            {
+              "text": "Elira thotë: — Macja është në shtëpi ose në oborr. Ne duhet ta gjejmë.",
+              "english": "Elira says: \"The cat is in the house or in the yard. We have to find her.\""
+            },
+            {
+              "text": "— Ku është ajo? Në dhomë ose në kuzhinë? pyet Ardi.",
+              "english": "\"Where is she? In the room or in the kitchen?\" asks Ardi."
+            },
+            {
+              "text": "— Shiko në dhomë! thotë Elira.",
+              "english": "\"Look in the room!\" says Elira."
+            },
+            {
+              "text": "Ardi shikon nën shtrat. A është macja nën shtrat apo mbi shtrat?",
+              "english": "Ardi looks under the bed. Is the cat under the bed or on the bed?"
+            },
+            {
+              "text": "Ai shikon pas derës dhe pas dollapit.",
+              "english": "He looks behind the door and behind the cupboard."
+            },
+            {
+              "text": "Elira shikon në banjë. Macja nuk është në banjë.",
+              "english": "Elira looks in the bathroom. The cat is not in the bathroom."
+            },
+            {
+              "text": "— A është lart apo poshtë? pyet Ardi.",
+              "english": "\"Is she upstairs or downstairs?\" asks Ardi."
+            },
+            {
+              "text": "— Nuk e di, thotë Elira. Në shtëpi ka një dhomë lart.",
+              "english": "\"I do not know,\" says Elira. \"In the house there is a room upstairs.\""
+            },
+            {
+              "text": "Ardi ngre një karrige dhe shikon mbi dollap.",
+              "english": "Ardi lifts a chair and looks on top of the cupboard."
+            },
+            {
+              "text": "Ai nuk gjen asgjë.",
+              "english": "He finds nothing."
+            },
+            {
+              "text": "Elira shkon lart. Ardi shkon poshtë.",
+              "english": "Elira goes upstairs. Ardi goes downstairs."
+            },
+            {
+              "text": "Poshtë nuk ka macen.",
+              "english": "Downstairs there is no cat."
+            },
+            {
+              "text": "— Nuk është këtu! thotë Elira.",
+              "english": "\"She is not here!\" says Elira."
+            },
+            {
+              "text": "— Pyet gjyshen! thotë Ardi.",
+              "english": "\"Ask grandmother!\" says Ardi."
+            },
+            {
+              "text": "Ardi shkon në oborr. Oborri është i madh.",
+              "english": "Ardi goes into the yard. The yard is big."
+            },
+            {
+              "text": "Pranë derës ka një qen. Qeni është i vjetër.",
+              "english": "Next to the door there is a dog. The dog is old."
+            },
+            {
+              "text": "Ardi pyet qenin: — A është macja jashtë ose brenda?",
+              "english": "Ardi asks the dog: \"Is the cat outside or inside?\""
+            },
+            {
+              "text": "Qeni nuk flet.",
+              "english": "The dog does not speak."
+            },
+            {
+              "text": "Elira vjen këtu. Ajo ka një gjë për macen: djathë.",
+              "english": "Elira comes here. She has something for the cat: cheese."
+            },
+            {
+              "text": "— Mace, mace! Ke një gjë të mirë! thotë ajo.",
+              "english": "\"Cat, cat! You have something good!\" she says."
+            },
+            {
+              "text": "Macja nuk vjen. Ardi pyet: — Vjen apo nuk vjen?",
+              "english": "The cat does not come. Ardi asks: \"Are you coming or not?\""
+            },
+            {
+              "text": "Ardi është shumë i lodhur.",
+              "english": "Ardi is very tired."
+            },
+            {
+              "text": "Gjyshja del nga kuzhina dhe buzëqesh.",
+              "english": "Grandmother comes out of the kitchen and smiles."
+            },
+            {
+              "text": "— Çfarë keni, fëmijë? pyet ajo.",
+              "english": "\"What is the matter, children?\" she asks."
+            },
+            {
+              "text": "— Gjyshe, nuk e gjejmë macen! thotë Ardi.",
+              "english": "\"Grandmother, we cannot find the cat!\" says Ardi."
+            },
+            {
+              "text": "— Ejani me mua në kuzhinë, thotë gjyshja.",
+              "english": "\"Come with me into the kitchen,\" says grandmother."
+            },
+            {
+              "text": "Pranë dritares, mbi një karrige, është macja.",
+              "english": "Next to the window, on a chair, is the cat."
+            },
+            {
+              "text": "Ajo fle!",
+              "english": "She is asleep!"
+            },
+            {
+              "text": "— Ja ku është! thotë Elira.",
+              "english": "\"Here she is!\" says Elira."
+            },
+            {
+              "text": "— Sa mirë! Macja nuk humbet më, thotë Ardi.",
+              "english": "\"How good! The cat is not lost any more,\" says Ardi."
+            },
+            {
+              "text": "— Tani çdo gjë është mirë, thotë gjyshja.",
+              "english": "\"Now everything is fine,\" says grandmother."
+            },
+            {
+              "text": "Pas dhjetë minutash macja ha djathë.",
+              "english": "After ten minutes the cat eats cheese."
+            },
+            {
+              "text": "Pasdite fëmijët pinë qumësht dhe luajnë.",
+              "english": "In the afternoon the children drink milk and play."
+            },
+            {
+              "text": "Në orën katër Ardi shkon në shtëpi me macen.",
+              "english": "At four o'clock Ardi goes home with the cat."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

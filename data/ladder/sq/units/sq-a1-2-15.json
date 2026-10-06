@@ -1,0 +1,287 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-15",
+  "lang": "sq",
+  "title": "Te mjeku",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-15",
+    "title": "Albanian ladder, a1-2: Te mjeku (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Reviewer notes: Dr Arta is a woman; the text says Arta është mjek because the adapter has no reading for mjekja. A reviewer should say whether mjeke or mjekja is better."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "health"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "health"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Te mjeku",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Të hënën në mëngjes Ardi nuk është mirë.",
+              "english": "On Monday morning Ardi is not well."
+            },
+            {
+              "text": "Ai nuk dëshiron të ngrihet nga shtrati.",
+              "english": "He does not want to get up from bed."
+            },
+            {
+              "text": "— Më dhemb stomaku, gjyshe, thotë ai.",
+              "english": "\"My stomach hurts, grandmother,\" he says."
+            },
+            {
+              "text": "— Më dhemb edhe koka.",
+              "english": "\"My head hurts too.\""
+            },
+            {
+              "text": "Gjyshja Drita vjen te shtrati dhe e shikon.",
+              "english": "Grandmother Drita comes to the bed and looks at him."
+            },
+            {
+              "text": "Ajo ka dorën mbi kokën e tij.",
+              "english": "She has her hand on his head."
+            },
+            {
+              "text": "— Ke temperaturë, Ardi! thotë ajo.",
+              "english": "\"You have a temperature, Ardi!\" she says."
+            },
+            {
+              "text": "— Kështu nuk shkon në shkollë. Do të shkojmë te mjeku.",
+              "english": "\"Like this you do not go to school. We will go to the doctor.\""
+            },
+            {
+              "text": "Ata shkojnë në klinikën ku punon Ana.",
+              "english": "They go to the clinic where Ana works."
+            },
+            {
+              "text": "Klinika është në qendër të qytetit.",
+              "english": "The clinic is in the centre of the city."
+            },
+            {
+              "text": "Në stacion ata presin furgonin.",
+              "english": "At the station they wait for the minibus."
+            },
+            {
+              "text": "Ka vonesë. Linja tetë nuk vjen.",
+              "english": "It is late. Line eight does not come."
+            },
+            {
+              "text": "Pas dhjetë minutash furgoni vjen në drejtim të qendrës.",
+              "english": "After ten minutes the minibus comes in the direction of the centre."
+            },
+            {
+              "text": "— Sa kushton bileta? pyet gjyshja.",
+              "english": "\"How much is the ticket?\" asks grandmother."
+            },
+            {
+              "text": "— Njëqind lekë, thotë shoferi.",
+              "english": "\"A hundred lek,\" says the driver."
+            },
+            {
+              "text": "Ardi ulet pranë gjyshes. Ai ka shumë dhimbje.",
+              "english": "Ardi sits next to grandmother. He is in a lot of pain."
+            },
+            {
+              "text": "Në ndalesën e klinikës ata zbresin.",
+              "english": "At the stop of the clinic they get off."
+            },
+            {
+              "text": "Ana është atje. Ajo punon me Dr Artën.",
+              "english": "Ana is there. She works with Dr Arta."
+            },
+            {
+              "text": "— Mirëdita, Ardi! Si je? pyet Arta.",
+              "english": "\"Good day, Ardi! How are you?\" asks Arta."
+            },
+            {
+              "text": "— Stomaku im nuk është mirë, thotë Ardi. Nuk dua të ha.",
+              "english": "\"My stomach is not well,\" says Ardi. \"I do not want to eat.\""
+            },
+            {
+              "text": "Arta është mjek. Ajo shikon Ardin.",
+              "english": "Arta is a doctor. She looks at Ardi."
+            },
+            {
+              "text": "— Ku të dhemb? pyet ajo.",
+              "english": "\"Where does it hurt?\" she asks."
+            },
+            {
+              "text": "— Këtu, thotë Ardi. Dhe këtu, në shpinë.",
+              "english": "\"Here,\" says Ardi. \"And here, in my back.\""
+            },
+            {
+              "text": "Arta shikon gjoksin dhe shpinën e tij.",
+              "english": "Arta looks at his chest and his back."
+            },
+            {
+              "text": "— Ngre dorën, Ardi. Ngre këmbën.",
+              "english": "\"Lift your hand, Ardi. Lift your foot.\""
+            },
+            {
+              "text": "— Dora dhe këmba janë mirë, thotë Ardi.",
+              "english": "\"My hand and my foot are fine,\" says Ardi."
+            },
+            {
+              "text": "— Gjoksi dhe shpina janë mirë, thotë Arta. Nuk ka dhimbje në gjoks.",
+              "english": "\"The chest and the back are fine,\" says Arta. \"There is no pain in the chest.\""
+            },
+            {
+              "text": "— Edhe koka është shumë e ngrohtë.",
+              "english": "\"The head is very warm too.\""
+            },
+            {
+              "text": "Arta thotë: — Ardi ka temperaturë dhe dhimbje stomaku.",
+              "english": "Arta says: \"Ardi has a temperature and a stomach ache.\""
+            },
+            {
+              "text": "— Nuk është një gjë e madhe.",
+              "english": "\"It is not a big thing.\""
+            },
+            {
+              "text": "— Duhet të pish ilaç dy herë në ditë, thotë ajo.",
+              "english": "\"You have to take medicine twice a day,\" she says."
+            },
+            {
+              "text": "— Pi shumë ujë dhe çaj të ngrohtë.",
+              "english": "\"Drink a lot of water and warm tea.\""
+            },
+            {
+              "text": "— Mos ha shumë. Mos shko në shkollë dy ditë.",
+              "english": "\"Do not eat much. Do not go to school for two days.\""
+            },
+            {
+              "text": "— Duhet të fle në shtrat. Kështu je më mirë.",
+              "english": "\"You have to sleep in bed. That way you are better.\""
+            },
+            {
+              "text": "Gjyshja thotë: — Faleminderit, Dr Arta. Mjeku është shumë i mirë.",
+              "english": "Grandmother says: \"Thank you, Dr Arta. The doctor is very good.\""
+            },
+            {
+              "text": "— Kam një lule për ju.",
+              "english": "\"I have a flower for you.\""
+            },
+            {
+              "text": "Arta buzëqesh: — Faleminderit, Drita! Ju jeni shumë e mirë.",
+              "english": "Arta smiles: \"Thank you, Drita! You are very kind.\""
+            },
+            {
+              "text": "Ana shkruan emrin e ilaçit në një letër.",
+              "english": "Ana writes the name of the medicine on a letter."
+            },
+            {
+              "text": "Pranë klinikës ka një dyqan të vogël.",
+              "english": "Next to the clinic there is a small shop."
+            },
+            {
+              "text": "Ilaçi kushton pesë euro.",
+              "english": "The medicine costs five euros."
+            },
+            {
+              "text": "Gjyshja ka paratë në çantë. Ajo paguan dhe merr kusurin.",
+              "english": "Grandmother has the money in her bag. She pays and takes the change."
+            },
+            {
+              "text": "— A ka zbritje? pyet ajo. — Jo, thotë shitësi.",
+              "english": "\"Is there a discount?\" she asks. \"No,\" says the seller."
+            },
+            {
+              "text": "— Çmimi është i mirë, thotë gjyshja.",
+              "english": "\"The price is good,\" says grandmother."
+            },
+            {
+              "text": "Ardi është shumë i lodhur dhe nuk është i uritur.",
+              "english": "Ardi is very tired and is not hungry."
+            },
+            {
+              "text": "Ata hyjnë në një restorant të vogël.",
+              "english": "They go into a small restaurant."
+            },
+            {
+              "text": "Gjyshja porosit çaj dhe një pije për Ardin.",
+              "english": "Grandmother orders tea and a drink for Ardi."
+            },
+            {
+              "text": "Ardi nuk ha, por pi pak. Kështu është mirë.",
+              "english": "Ardi does not eat, but he drinks a little. That way is fine."
+            },
+            {
+              "text": "Në shtëpi Ardi fle në shtrat. Këmbët e tij janë të ngrohta.",
+              "english": "At home Ardi sleeps in bed. His feet are warm."
+            },
+            {
+              "text": "Gjyshja ulet pranë shtratit dhe lexon një libër.",
+              "english": "Grandmother sits next to the bed and reads a book."
+            },
+            {
+              "text": "Në mbrëmje vjen Ana. Ajo pyet: — Si je, Ardi?",
+              "english": "In the evening Ana comes. She asks: \"How are you, Ardi?\""
+            },
+            {
+              "text": "— Jam më mirë, thotë ai. Faleminderit për çajin!",
+              "english": "\"I am better,\" he says. \"Thank you for the tea!\""
+            },
+            {
+              "text": "Ana dhe gjyshja pinë kafe në kuzhinë.",
+              "english": "Ana and grandmother drink coffee in the kitchen."
+            },
+            {
+              "text": "Të mërkurën ai nuk ka më temperaturë.",
+              "english": "On Wednesday he no longer has a temperature."
+            },
+            {
+              "text": "Ai është i lumtur dhe shkon në shkollë të enjten.",
+              "english": "He is happy and goes to school on Thursday."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

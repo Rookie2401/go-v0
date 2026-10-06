@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-03",
+  "lang": "sq",
+  "title": "Java e Samit",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-03",
+    "title": "Albanian ladder, a1-2: Java e Samit (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet)."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Java e Samit",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Kjo është java e Samit.",
+              "english": "This is Sam's week."
+            },
+            {
+              "text": "Çdo javë ai ka shumë punë, por është i lumtur.",
+              "english": "Every week he has a lot of work, but he is happy."
+            },
+            {
+              "text": "Të hënën Sam shkon në shkollë.",
+              "english": "On Monday Sam goes to school."
+            },
+            {
+              "text": "Në orën tetë ai është te Luani.",
+              "english": "At eight o'clock he is with Luan."
+            },
+            {
+              "text": "Ai mëson shqip me nxënësit.",
+              "english": "He learns Albanian with the pupils."
+            },
+            {
+              "text": "Të hënën pasdite ai lexon një libër në dhomë.",
+              "english": "On Monday afternoon he reads a book in his room."
+            },
+            {
+              "text": "Të hënën në mbrëmje ai shkruan një letër për nënën.",
+              "english": "On Monday evening he writes a letter to his mother."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të martën Sam shkon te gjyshja Drita.",
+              "english": "On Tuesday Sam goes to grandmother Drita's."
+            },
+            {
+              "text": "Gjyshja ka bukë dhe djathë.",
+              "english": "Grandmother has bread and cheese."
+            },
+            {
+              "text": "Të martën në mesditë ata hanë drekë bashkë.",
+              "english": "On Tuesday at midday they eat lunch together."
+            },
+            {
+              "text": "Ardi vjen pasdite nga shkolla.",
+              "english": "Ardi comes from school in the afternoon."
+            },
+            {
+              "text": "Të martën pasdite Sam lexon një libër me Ardin.",
+              "english": "On Tuesday afternoon Sam reads a book with Ardi."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të mërkurën Sam shkon në klinikë me Anën.",
+              "english": "On Wednesday Sam goes to the clinic with Ana."
+            },
+            {
+              "text": "Ana punon në klinikë. Ajo ka shumë punë.",
+              "english": "Ana works at the clinic. She has a lot of work."
+            },
+            {
+              "text": "Të mërkurën pasdite Ana ka dhjetë minuta për Samin.",
+              "english": "On Wednesday afternoon Ana has ten minutes for Sam."
+            },
+            {
+              "text": "Ajo pyet: — Çfarë bën sot? Si je?",
+              "english": "She asks: \"What are you doing today? How are you?\""
+            },
+            {
+              "text": "Sam thotë: — Jam mirë, faleminderit.",
+              "english": "Sam says: \"I am well, thank you.\""
+            },
+            {
+              "text": "Të mërkurën Sam ha sallatë me Anën.",
+              "english": "On Wednesday Sam eats salad with Ana."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të enjten Sam është në shtëpi.",
+              "english": "On Thursday Sam is at home."
+            },
+            {
+              "text": "Ai nuk bën asgjë në mëngjes. Ai fle.",
+              "english": "He does nothing in the morning. He sleeps."
+            },
+            {
+              "text": "Pastaj Sam mëson shqip. Ai lexon dhe shkruan shumë.",
+              "english": "Then Sam learns Albanian. He reads and writes a lot."
+            },
+            {
+              "text": "Të enjten pasdite Luani vjen te Sami.",
+              "english": "On Thursday afternoon Luan comes to Sam's."
+            },
+            {
+              "text": "Luani pyet: — Pse je i lodhur? Kur fle ti?",
+              "english": "Luan asks: \"Why are you tired? When do you sleep?\""
+            },
+            {
+              "text": "Sam thotë: — Duhet të fle më shumë.",
+              "english": "Sam says: \"I have to sleep more.\""
+            },
+            {
+              "text": "Ata pinë çaj dhe flasin shqip.",
+              "english": "They drink tea and speak Albanian."
+            },
+            {
+              "text": "Të enjten në mbrëmje ai është me Ardin.",
+              "english": "On Thursday evening he is with Ardi."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të premten Sam shkon në treg.",
+              "english": "On Friday Sam goes to the market."
+            },
+            {
+              "text": "Gjyshja shet bukë, mollë dhe qumësht.",
+              "english": "Grandmother sells bread, apples and milk."
+            },
+            {
+              "text": "Sam blen mollë dhe djathë.",
+              "english": "Sam buys apples and cheese."
+            },
+            {
+              "text": "Të premten ai gjithashtu pi një kafe me gjyshen.",
+              "english": "On Friday he also drinks a coffee with grandmother."
+            },
+            {
+              "text": "Të premten në mbrëmje Sam është i lodhur.",
+              "english": "On Friday evening Sam is tired."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të shtunën Sam është te Dritani.",
+              "english": "On Saturday Sam is at Dritan's."
+            },
+            {
+              "text": "Mira, gruaja e Dritanit, ka një çaj të mirë.",
+              "english": "Mira, Dritan's wife, has a good tea."
+            },
+            {
+              "text": "Në mbrëmje Gjergji vjen nga shkolla.",
+              "english": "In the evening Gjergj comes from school."
+            },
+            {
+              "text": "Të shtunën ata flasin shumë dhe këndojnë.",
+              "english": "On Saturday they talk a lot and sing."
+            },
+            {
+              "text": "Të shtunën pasdite Ardi luan me Gjergjin.",
+              "english": "On Saturday afternoon Ardi plays with Gjergj."
+            }
+          ]
+        },
+        {
+          "sentences": [
+            {
+              "text": "Të dielën Sam shkon në kishë.",
+              "english": "On Sunday Sam goes to church."
+            },
+            {
+              "text": "Ai duhet të vijë në orën dhjetë.",
+              "english": "He has to come at ten o'clock."
+            },
+            {
+              "text": "Pastaj ai është me gjyshen dhe me Ardin.",
+              "english": "Then he is with grandmother and with Ardi."
+            },
+            {
+              "text": "Kjo është java e Samit. Ai është shumë i lumtur.",
+              "english": "This is Sam's week. He is very happy."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 2,
+  "id": "sq-a1-2-16",
+  "lang": "sq",
+  "title": "Ardi është i sëmurë",
+  "contentType": "story",
+  "corpus": {
+    "id": "ladder-sq",
+    "kind": "comprehensible-input",
+    "title": "Albanian ladder"
+  },
+  "source": {
+    "id": "src:sq:sq-a1-2-16",
+    "title": "Albanian ladder, a1-2: Ardi është i sëmurë (machine-drafted)",
+    "author": "Go course authors (drafted by an AI model)",
+    "attribution": "Course-authored controlled Standard Albanian for the reading ladder. Drafted by an AI model; not reviewed by a native speaker.",
+    "provenance": "Drafted by an AI model against the ladder gate (coverage and new words measured by npm run ladder:check) and the word-form checks of npm run sq:check-texts. Not reviewed by a native speaker: it may contain unnatural or incorrect Albanian. The English lines are the drafter's own.",
+    "rights": "owner-authored",
+    "licenseNote": "Owned by the course authors; machine-drafted, not yet native-reviewed.",
+    "authorship": "generated"
+  },
+  "review": {
+    "status": "unreviewed",
+    "notes": "Machine-drafted ladder unit; awaiting a named native reviewer (npm run review:packet). Reviewer notes: The participle humbur is read by the adapter as humb, so the unit avoids it."
+  },
+  "difficulty": "A1",
+  "topics": [
+    "narrative"
+  ],
+  "editorialTags": [
+    "machine-drafted",
+    "needs-native-review",
+    "ladder"
+  ],
+  "prepTargets": [],
+  "generated": true,
+  "english": {
+    "source": "drafted with the text; not reviewed"
+  },
+  "streams": [
+    "acquisition"
+  ],
+  "domains": [
+    "narrative"
+  ],
+  "variety": "sq",
+  "sections": [
+    {
+      "title": "Ardi është i sëmurë",
+      "paragraphs": [
+        {
+          "sentences": [
+            {
+              "text": "Ardi është i sëmurë. Tre ditë ai është në shtrat.",
+              "english": "Ardi is ill. For three days he is in bed."
+            },
+            {
+              "text": "Ka ftohje dhe kollë.",
+              "english": "He has a cold and a cough."
+            },
+            {
+              "text": "Hunda e tij është e kuqe dhe goja e tij është e ftohtë.",
+              "english": "His nose is red and his mouth is cold."
+            },
+            {
+              "text": "Gjyshja Drita është me të çdo ditë.",
+              "english": "Grandmother Drita is with him every day."
+            },
+            {
+              "text": "Të martën në mëngjes ajo pyet: — Si je, Ardi?",
+              "english": "On Tuesday morning she asks: \"How are you, Ardi?\""
+            },
+            {
+              "text": "— Jam shumë i sëmurë, gjyshe, thotë Ardi.",
+              "english": "\"I am very ill, grandmother,\" says Ardi."
+            },
+            {
+              "text": "— Më dhemb koka, goja dhe stomaku. Kam dhimbje në shpinë.",
+              "english": "\"My head, my mouth and my stomach hurt. I have a pain in my back.\""
+            },
+            {
+              "text": "Gjyshja shikon gojën e tij: është shumë e kuqe.",
+              "english": "Grandmother looks at his mouth: it is very red."
+            },
+            {
+              "text": "— Ke temperaturë dhe ftohje, thotë gjyshja. Kështu je i dobët.",
+              "english": "\"You have a temperature and a cold,\" says grandmother. \"That way you are weak.\""
+            },
+            {
+              "text": "Ajo po përgatit çaj dhe supë me perime.",
+              "english": "She is preparing tea and a soup with vegetables."
+            },
+            {
+              "text": "Në supë ka patate, qepë, hudhër, domate dhe mish.",
+              "english": "In the soup there are potatoes, onions, garlic, tomatoes and meat."
+            },
+            {
+              "text": "— Nuk dua supë, thotë Ardi. Dua frutë dhe çaj me sheqer.",
+              "english": "\"I do not want soup,\" says Ardi. \"I want fruit and tea with sugar.\""
+            },
+            {
+              "text": "— Pi çajin, ha pak supë dhe fle, thotë gjyshja.",
+              "english": "\"Drink the tea, eat a little soup and sleep,\" says grandmother."
+            },
+            {
+              "text": "Në mbrëmje Ana po vjen nga klinika.",
+              "english": "In the evening Ana is coming from the clinic."
+            },
+            {
+              "text": "Ajo sjell një recetë nga Dr Arta.",
+              "english": "She brings a prescription from Dr Arta."
+            },
+            {
+              "text": "— Ky është ilaçi për Ardin, thotë ajo. Ja edhe fatura.",
+              "english": "\"This is the medicine for Ardi,\" she says. \"And here is the bill.\""
+            },
+            {
+              "text": "— Mjeku thotë: dy herë në ditë.",
+              "english": "\"The doctor says: twice a day.\""
+            },
+            {
+              "text": "Gjyshja lexon recetën. Në recetë është emri i ilaçit.",
+              "english": "Grandmother reads the prescription. On the prescription is the name of the medicine."
+            },
+            {
+              "text": "Ardi po pi ilaçin ashtu si thotë mjeku.",
+              "english": "Ardi is taking the medicine the way the doctor says."
+            },
+            {
+              "text": "— Jo ashtu, Ardi! thotë gjyshja. Pije me ujë! Ashtu është mirë.",
+              "english": "\"Not like that, Ardi!\" says grandmother. \"Take it with water! That is better.\""
+            },
+            {
+              "text": "Natën Ardi nuk ka gjumë. Kolla është e madhe.",
+              "english": "At night Ardi cannot sleep. The cough is big."
+            },
+            {
+              "text": "Gjyshja ulet pranë tij.",
+              "english": "Grandmother sits next to him."
+            },
+            {
+              "text": "— Gjumi është ilaç i mirë, thotë ajo.",
+              "english": "\"Sleep is good medicine,\" she says."
+            },
+            {
+              "text": "Ardi po fle pak. Gjyshja po lexon një libër.",
+              "english": "Ardi is sleeping a little. Grandmother is reading a book."
+            },
+            {
+              "text": "Të mërkurën është një ditë e keqe për Ardin. Ai është i lodhur nga shtrati.",
+              "english": "On Wednesday it is a bad day for Ardi. He is tired of the bed."
+            },
+            {
+              "text": "Ai po shikon një hartë të Tiranës.",
+              "english": "He is looking at a map of Tirana."
+            },
+            {
+              "text": "— Ku është shkolla ime? Po kërkoj adresën.",
+              "english": "\"Where is my school? I am looking for the address.\""
+            },
+            {
+              "text": "— Shkolla është në kryqëzim, djathtas, thotë ai. Atje është kisha, majtas.",
+              "english": "\"The school is at the crossroads, on the right,\" he says. \"There is the church, on the left.\""
+            },
+            {
+              "text": "— Pastaj ka një kthesë të madhe.",
+              "english": "\"Then there is a big turn.\""
+            },
+            {
+              "text": "— Shkolla është larg nga shtëpia jonë, thotë gjyshja.",
+              "english": "\"The school is far from our house,\" says grandmother."
+            },
+            {
+              "text": "— Por Elira është e shpejtë. Ajo vjen nga shkolla në pesë minuta.",
+              "english": "\"But Elira is fast. She comes from school in five minutes.\""
+            },
+            {
+              "text": "Pasdite Elira po hyn në dhomë.",
+              "english": "In the afternoon Elira is coming into the room."
+            },
+            {
+              "text": "— Hunda jote është e kuqe! thotë Elira.",
+              "english": "\"Your nose is red!\" says Elira."
+            },
+            {
+              "text": "— Ardi, kam një gur për ty! thotë ajo.",
+              "english": "\"Ardi, I have a stone for you!\" she says."
+            },
+            {
+              "text": "— Ai është nga mali. Është shumë i bukur.",
+              "english": "\"It is from the mountain. It is very beautiful.\""
+            },
+            {
+              "text": "— Faleminderit, Elira! thotë Ardi.",
+              "english": "\"Thank you, Elira!\" says Ardi."
+            },
+            {
+              "text": "Ai ka gurin pranë shtratit.",
+              "english": "He has the stone next to his bed."
+            },
+            {
+              "text": "Elira nuk pret shumë. Ajo shkon në shtëpi.",
+              "english": "Elira does not stay long. She goes home."
+            },
+            {
+              "text": "Ardi është më i dobët se dje, por nuk ka shumë dhimbje.",
+              "english": "Ardi is weaker than yesterday, but he does not have much pain."
+            },
+            {
+              "text": "Dora dhe këmba e tij janë të ftohta.",
+              "english": "His hand and his foot are cold."
+            },
+            {
+              "text": "Gjoksi i tij nuk dhemb më. Hunda nuk është më e kuqe.",
+              "english": "His chest does not hurt any more. His nose is no longer red."
+            },
+            {
+              "text": "Të enjten Ardi ka më pak temperaturë dhe më pak kollë.",
+              "english": "On Thursday Ardi has less of a temperature and less of a cough."
+            },
+            {
+              "text": "Ilaçi dhe gjumi e shërojnë.",
+              "english": "The medicine and sleep heal him."
+            },
+            {
+              "text": "Ai nuk është më i dobët. Ai po shërohet.",
+              "english": "He is no longer weak. He is getting well."
+            },
+            {
+              "text": "— Kjo nuk është një ftohje e keqe, thotë Ana.",
+              "english": "\"This is not a bad cold,\" says Ana."
+            },
+            {
+              "text": "Të premten Ardi shërohet.",
+              "english": "On Friday Ardi gets well."
+            },
+            {
+              "text": "— Jam mirë! thotë ai. Nuk jam më i sëmurë!",
+              "english": "\"I am well!\" he says. \"I am not ill any more!\""
+            },
+            {
+              "text": "Gjyshja buzëqesh. Në shtëpi çdo gjë është mirë.",
+              "english": "Grandmother smiles. At home everything is well."
+            },
+            {
+              "text": "Ardi nuk është keq, por është i uritur.",
+              "english": "Ardi is not bad, but he is hungry."
+            },
+            {
+              "text": "— Dua supë, gjyshe! thotë ai.",
+              "english": "\"I want soup, grandmother!\" he says."
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "pipeline": {
+    "state": "machine-draft",
+    "history": [
+      {
+        "state": "machine-draft",
+        "at": "2026-10-06",
+        "by": {
+          "kind": "tool",
+          "name": "Albanian ladder drafting (Claude), a1-2 drafting agent"
+        }
+      }
+    ]
+  }
+}

@@ -101,9 +101,15 @@ for (const e of entries) {
   units.push({ id: w.id, stage: w.stage, kind: 'controlled', document: `units/${w.id}.json`, domain: w.domain, title: w.title });
 }
 
-// units written earlier and no longer in the file are removed (they were drafts of this file, nothing else refers to them)
-for (const f of fs.readdirSync(path.join(DIR, 'units'))) if (f.endsWith('.json') && !ids.has(f.slice(0, -5))) fs.rmSync(path.join(DIR, 'units', f));
+// This file authors a1-1 only. Units of later stages (a1-2 … b1-bridge: their own unit files, drafted from
+// data/ladder/sq/PLAN-A1-2-A2.md) are kept: in the ladder, after these, and on disk.
+const ladderFile = path.join(DIR, 'ladder.json');
+const later: Array<{ id: string; stage: string }> = fs.existsSync(ladderFile)
+  ? (JSON.parse(fs.readFileSync(ladderFile, 'utf8')) as { units: Array<{ id: string; stage: string }> }).units.filter((u) => u.stage !== 'a1-1')
+  : [];
+// a1-1 units written earlier and no longer in the file are removed (they were drafts of this file, nothing else refers to them)
+for (const f of fs.readdirSync(path.join(DIR, 'units'))) if (f.endsWith('.json') && f.startsWith('sq-a1-1-') && !ids.has(f.slice(0, -5))) fs.rmSync(path.join(DIR, 'units', f));
 
-fs.writeFileSync(path.join(DIR, 'ladder.json'), `${JSON.stringify({ lang: 'sq', version: 1, after: 'stage0', units }, null, 2)}\n`, 'utf8');
+fs.writeFileSync(ladderFile, `${JSON.stringify({ lang: 'sq', version: 1, after: 'stage0', units: [...units, ...later] }, null, 2)}\n`, 'utf8');
 const written = entries.filter((e) => 'written' in e).length;
 console.log(`sq:ladder-build - ${units.length} units (${written} written in ${SRC}, ${units.length - written} course texts placed in place) -> ${DIR}/ladder.json`);

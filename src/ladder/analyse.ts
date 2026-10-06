@@ -2,7 +2,7 @@
  * Running-word analysis of one document, the way the B2 audit probe does it (scripts/audit-b2-ladder.mts): the real adapter
  * tokenises each declared sentence (raw paragraphs go through `segmentSentences` first); the FIRST candidate's lemma
  * (lowercased, NFC) stands for the word, or the normalized form when the adapter has no candidate. PROPN and numerals count
- * as known and stay out of the lemma inventory. Constructions are the adapter's `detectPatterns` keys.
+ * as known and stay out of the lemma inventory — except a name the adapter only GUESSED (see `isNameGuess`). Constructions are the adapter's `detectPatterns` keys.
  *
  * Note this is the adapter alone: the app's importer also consults the installed dictionary, so inflected forms the adapter
  * cannot lemmatize count here as separate lemmas, which UNDER-states coverage a little.
@@ -33,6 +33,18 @@ export function documentSentences(adapter: LanguageAdapter, doc: CorpusDocument)
   return out;
 }
 
+/**
+ * A proper noun the adapter only guessed from the text's own word marks (Thai: one U+200B-delimited chunk the word list does
+ * not know, `unconfirmed` and `notes.nameGuess`). Such a chunk is often an ordinary word the list happens to lack (จง, สาวก,
+ * ชาย …), so counting it as "known by definition" would let a text look about eight points easier than it is (Mark 1: 89 %
+ * honest, 97.9 % with the guesses). It counts as an ordinary lemma instead: the learner has to meet it three times. A name
+ * that is on the adapter's word list (PROPN, not unconfirmed) and the other adapters' capitalisation guesses (Spanish: a
+ * capital inside a sentence, `unconfirmed` but with no `nameGuess`) still count as known: they are real evidence of a name.
+ */
+export function isNameGuess(c: { unconfirmed?: boolean; notes?: Record<string, unknown> } | undefined): boolean {
+  return c?.unconfirmed === true && c.notes?.nameGuess === 'yes';
+}
+
 export function analyseDocument(adapter: LanguageAdapter, doc: CorpusDocument): UnitStat {
   const lemmas = new Map<string, number>();
   const patterns = new Set<string>();
@@ -45,7 +57,7 @@ export function analyseDocument(adapter: LanguageAdapter, doc: CorpusDocument): 
       words++;
       const c = x.candidates[0];
       const norm = x.token.normalized.toLowerCase();
-      if (c?.pos === 'PROPN' || c?.pos === 'NUM' || /^\p{N}+$/u.test(norm)) { auto++; continue; }
+      if ((c?.pos === 'PROPN' && !isNameGuess(c)) || c?.pos === 'NUM' || /^\p{N}+$/u.test(norm)) { auto++; continue; }
       const l = (c?.lemma ?? norm).normalize('NFC').toLowerCase();
       lemmas.set(l, (lemmas.get(l) ?? 0) + 1);
     }

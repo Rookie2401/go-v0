@@ -8,6 +8,7 @@
  * normalized form. This is the adapter alone, as in the probe: the importer's dictionary pass is not consulted here.
  */
 import type { LanguageAdapter } from '../core';
+import { isNameGuess } from '../ladder/analyse';
 
 export const KNOWN_AFTER = 3;
 /** Interned id of a word that is known from the start (a proper noun or a numeral). */
@@ -46,7 +47,9 @@ export function analyseSentence(adapter: LanguageAdapter, text: string, lemmas: 
     if (!x.token.isWord) continue;
     const c = x.candidates[0];
     const norm = x.token.normalized.toLowerCase();
-    if (c?.pos === 'PROPN' || c?.pos === 'NUM' || /^\p{N}+$/u.test(norm)) { out.push({ tokenIndex: i, lemma: AUTO }); continue; }
+    // names and numerals are known from the start, as at the ladder gate — but not an unconfirmed name GUESS (a Thai Bible chunk the
+    // adapter does not know): that is a word still to be learned (src/ladder/analyse.ts isNameGuess)
+    if ((c?.pos === 'PROPN' && !isNameGuess(c)) || c?.pos === 'NUM' || /^\p{N}+$/u.test(norm)) { out.push({ tokenIndex: i, lemma: AUTO }); continue; }
     out.push({ tokenIndex: i, lemma: lemmas.intern((c?.lemma ?? norm).normalize('NFC').toLowerCase()) });
   }
   return out;

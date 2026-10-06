@@ -2,7 +2,7 @@
  * The thresholds of the ladder gate (docs/LADDER.md, "The gate"). One place; provisional, like the document says.
  *
  * Coverage is a fraction (0.92 = 92 %) of a unit's running words whose lemma appeared at least COVERAGE_MIN_ENCOUNTERS times
- * in the texts before it (Stage 0 included); PROPN and numerals count as known.
+ * in the texts before it (Stage 0 included); PROPN and numerals count as known (a name only guessed from word marks does not: analyse.ts `isNameGuess`).
  */
 
 /** Encounters in earlier texts after which a lemma counts as "known" for the audit. An audit threshold, not mastery. */

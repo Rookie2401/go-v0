@@ -24,18 +24,20 @@ import { FUNCTION_ANNOTATIONS, FUNCTION_ENTRIES } from './thai/function-words';
 import { CLASSIFIER_ANNOTATIONS, CLASSIFIER_ENTRIES } from './thai/classifiers';
 import { EVERYDAY_ANNOTATIONS, EVERYDAY_ENTRIES } from './thai/lexicon-everyday';
 import { BIBLE_ANNOTATIONS, BIBLE_ENTRIES } from './thai/lexicon-bible';
+import { LADDER_ANNOTATIONS, LADDER_ENTRIES } from './thai/lexicon-ladder';
+import { CAST_NAMES, readsAsName } from './thai/names';
 import { buildPhraseRules } from './thai/phrases';
 import { detectThaiConstructions } from './thai/constructions';
 import { segmentThaiProse } from './thai/prose';
 import {
-  SENTENCE_FINAL_PARTICLES, THAI_COMPOUNDS, isChunkToken, makeThaiTokenizer, normalizeThai, segmentThaiSentences, thaiTokenize,
+  SENTENCE_FINAL_PARTICLES, THAI_COMPOUNDS, isChunkToken, makeThaiTokenizer, normalizeThai, segmentThaiSentences,
 } from './thai/text';
 import {
   decodeThai, decodeThaiRespelling, describeThaiOrthFeature, thaiOrthFeatures, tonesFromIpa,
 } from './thai/orthography';
 
 const LANG = 'th' as const;
-const VERSION = '3';
+const VERSION = '4';
 const ANALYZER = `adapter-${LANG}@${VERSION}`;
 
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
@@ -177,7 +179,7 @@ const ENTRIES = [
  * Order matters: when a surface is ambiguous the earlier entry is listed first. The seed list above keeps its
  * place so analyses of the bundled texts do not change; the later lists only add words and second readings.
  */
-export const thLexicon = new Lexicon([...ENTRIES, ...CORE_ENTRIES, ...FUNCTION_ENTRIES, ...CLASSIFIER_ENTRIES, ...EVERYDAY_ENTRIES, ...BIBLE_ENTRIES], normalize);
+export const thLexicon = new Lexicon([...ENTRIES, ...CORE_ENTRIES, ...FUNCTION_ENTRIES, ...CLASSIFIER_ENTRIES, ...EVERYDAY_ENTRIES, ...BIBLE_ENTRIES, ...LADDER_ENTRIES], normalize);
 
 /**
  * The adapter's tokenizer: ICU's segmentation of the text, except that a text which marks its words with U+200B (the Open
@@ -186,7 +188,7 @@ export const thLexicon = new Lexicon([...ENTRIES, ...CORE_ENTRIES, ...FUNCTION_E
 const tokenizeThai = makeThaiTokenizer((w) => thLexicon.has(w));
 
 /** Role / register / what-a-classifier-counts for lexicon entries, keyed lemma|pos (copied onto the candidates). */
-const ANNOTATIONS = mergeAnnotations(CORE_ANNOTATIONS, FUNCTION_ANNOTATIONS, CLASSIFIER_ANNOTATIONS, EVERYDAY_ANNOTATIONS, BIBLE_ANNOTATIONS);
+const ANNOTATIONS = mergeAnnotations(CORE_ANNOTATIONS, FUNCTION_ANNOTATIONS, CLASSIFIER_ANNOTATIONS, EVERYDAY_ANNOTATIONS, BIBLE_ANNOTATIONS, LADDER_ANNOTATIONS);
 
 const DEMONSTRATIVES = new Set(['นี้', 'นั้น', 'โน้น']);
 // neighbours that decide a few everyday words whose common meanings differ (see lexicon-everyday.ts)
@@ -197,7 +199,24 @@ const CHOPPED = new Set(['ผัก', 'หอม', 'กระเทียม', '
 const SCOOPED = new Set(['ขึ้น', 'ปลา', 'ลูกน้ำ']); // ช้อนปลา "scoop up fish"
 const DIGITS = /^[\d๐-๙]+$/u;
 
+/**
+ * A cast name that is also an everyday word (ต้น, มะลิ, บอล, แดง, เล็ก; names.ts has the rule): where the text shows a name the PROPN
+ * reading is first, otherwise the everyday readings are ordered as ever and the name stays last, below them.
+ */
 function contextual(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[] {
+  const cands = base[i];
+  const name = CAST_NAMES.has(tokens[i].normalized) ? cands.find((c) => c.pos === 'PROPN') : undefined;
+  if (!name) return contextualWord(i, tokens, base);
+  const rest = cands.filter((c) => c !== name);
+  if (readsAsName(i, tokens, base)) {
+    return [{ ...name, confidence: 0.8 }, ...rest.map((c) => ({ ...c, confidence: Math.min(c.confidence, 0.3) }))];
+  }
+  const own = base.slice();
+  own[i] = rest;
+  return [...contextualWord(i, tokens, own), { ...name, confidence: Math.min(name.confidence, 0.3) }];
+}
+
+function contextualWord(i: number, tokens: RawToken[], base: AnalysisCandidate[][]): AnalysisCandidate[] {
   const cands = base[i];
   const w = tokens[i].normalized;
   // ตกลง is "to agree" (ตกลงกัน) and, after rain and the like or before มา / ไป, ตก + ลง "to fall down" (ฝนตกลงมา): ICU keeps it whole
@@ -280,7 +299,8 @@ function annotate(a: AnalyzedToken): AnalyzedToken {
   return { ...a, candidates };
 }
 
-const PHRASES = buildPhraseRules(thaiTokenize);
+// phrase units are matched on the adapter's own tokens (so ทั้งๆที่ is ทั้ง + ๆ + ที่ here as in running text)
+const PHRASES = buildPhraseRules(tokenizeThai);
 
 const PARTICLES: readonly string[] = SENTENCE_FINAL_PARTICLES;
 const POLITE = new Set(['ครับ', 'ค่ะ', 'คะ']);
@@ -311,6 +331,7 @@ const SUPPORT: AdapterSupport = {
     'Canonical text is never given spaces: segmentation reads the text as written and adds none.',
     'Word segmentation uses the ICU dictionary plus a short list of course compounds; other compounds may come out as parts. It has not been measured on running prose.',
     'A text that marks its word boundaries with U+200B (the Open Thai Common Version) is read with the publisher word division where ICU would cut a name into fragments: a chunk the word list knows, or whose ICU pieces are not all known and include a fragment (under three letters, a final เอล, or an ending in ห์), stays one word. A name the list does not have is then a guess (proper noun, no gloss, low confidence) that a dictionary entry replaces; an ordinary word the dictionary lacks may be guessed a name too, and a name made of pieces that each look like a word may still come out in parts.',
+    'Given names that are also everyday words (ต้น tree, มะลิ jasmine, บอล ball, แดง red, เล็ก small) are read as names only after a title or ชื่อ, joined to another name, or as the subject of a clause (names.ts); elsewhere they keep the everyday reading, so a name in an object position may be read as the word. A handful of loanwords, church words and names (ซิม, แชท, โอเค, เหรอ, ศิษยาภิบาล, มิชชันนารี, the tens …) are kept whole wherever they stand; หน้าที่ and ตากลม are cut or kept by their neighbours; ๆ glued to a word the list lacks is cut from it.',
     'Tone comes from the spelling rules (consonant class, vowel length, final, tone mark) and, when a dictionary is installed, from its pronunciation. A spelling the rules cannot settle is reported with low confidence and no tone, never a guess.',
     'Lemmatization is seed-only: the built-in word list is a machine-drafted seed (about 600 entries: content words, function words and classifiers) that has not been checked by a native speaker, and words outside it show as not analysed.',
     'Constructions and phrase units are listed patterns, found only where the neighbouring words are in the word list; they are not a grammar check.',

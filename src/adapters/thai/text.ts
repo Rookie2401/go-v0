@@ -7,20 +7,114 @@ import { makeWordTokenizer, nfc } from '../shared';
 
 export const normalizeThai = (s: string) => nfc(s).replace(/ํา/gu, 'ำ').replace(/[​﻿]/gu, '');
 
-/** Words ICU splits but the course treats as one lexical unit. */
-export const THAI_COMPOUNDS = ['นิรันดร์', 'พระบุตร', 'ตอนนี้', 'ทุกคน', 'วันหนึ่ง', 'หลอกลวง', 'สัตย์ซื่อ', 'ทั้งสิ้น',
+/** Words ICU splits but the course treats as one lexical unit (matched on ICU's own pieces of the word). */
+const BASE_COMPOUNDS = ['นิรันดร์', 'พระบุตร', 'ตอนนี้', 'ทุกคน', 'วันหนึ่ง', 'หลอกลวง', 'สัตย์ซื่อ', 'ทั้งสิ้น',
   'ผู้หญิง', 'โรงพยาบาล', 'ผลไม้', 'วันนี้', 'พรุ่งนี้', 'เมื่อวาน', 'พระเยซู', 'พระคัมภีร์', 'คริสตจักร', 'น่าจะ', 'ดังนั้น', 'ดังนี้', 'ของขวัญ'];
 
-const icuTokenize = makeWordTokenizer({ locale: 'th', normalize: normalizeThai, compounds: THAI_COMPOUNDS });
+/**
+ * Words that stay ONE token wherever they stand in the text (adapter-th@4). ICU cuts these differently from one context to
+ * the next (ซิม is one token alone and ซิ + ม in ซื้อซิมที่ร้าน; โอเคครับ is โอ + เค + ครับ; คุณไปเหรอคะ is เห + รอ), or into
+ * junk pieces in every context (ศิษยาภิบาล → ศิษ ยา ภิ บาล, มิชชันนารี → มิช ชัน นารี), so the ICU pieces cannot be matched as
+ * for BASE_COMPOUNDS: the text itself is searched, and an occurrence not glued to a following vowel or tone mark (ซิมา is
+ * ซิ + มา) and not preceded by a leading vowel (the เ of เซิม is part of ซ) becomes one token. Loanwords and names the
+ * Thai ladder plan (data/ladder/th/PLAN.md, sections 6-7) found unstable, the tens (one NUM token each, so ยี่สิบห้า is
+ * ยี่สิบ + ห้า in every context) and the three Scripture words the lexicon holds whole (พระบิดา, พระวจนะ, พระวิญญาณ: one
+ * lemma in a ladder unit as it already is in the OTCV). NOT here: compounds the plan lists as their parts (รถ + สอง + แถว,
+ * ผู้ใหญ่ + บ้าน, ไม่ + เป็นไร …); a pinned word must have a lexicon row (lexicon-ladder.ts, lexicon-bible.ts).
+ */
+export const THAI_PINNED = [
+  // the plan's ICU-unstable everyday loanwords
+  'ซิมการ์ด', 'ซิม', 'แชท', 'โอเค', 'เหรอ', 'ไซส์',
+  // church and mission words, junk pieces in every context
+  'ศิษยาภิบาล', 'มิชชันนารี', 'อีสเตอร์', 'บัพติศมา', 'ฟาริสี',
+  // names a ladder text may need (the plan lists them under "avoided")
+  'สะมาเรีย', 'เยริโค', 'เยรีโค', 'อับราฮัม', 'เปโตร', 'ดาวิด', 'เอมี่', 'มาร์ค', 'สมชาย',
+  // the Father, the Word and the Spirit as one lemma, as in the OTCV
+  'พระบิดา', 'พระวจนะ', 'พระวิญญาณ',
+  // the tens: one NUM token each (สิบเอ็ด is สิบ + เอ็ด, both NUM)
+  'ยี่สิบ', 'สามสิบ', 'สี่สิบ', 'ห้าสิบ', 'หกสิบ', 'เจ็ดสิบ', 'แปดสิบ', 'เก้าสิบ',
+];
+
+/** Words ICU splits but the course treats as one lexical unit: BASE_COMPOUNDS and THAI_PINNED. */
+export const THAI_COMPOUNDS: string[] = [...BASE_COMPOUNDS, ...THAI_PINNED];
+
+const icuTokenize = makeWordTokenizer({ locale: 'th', normalize: normalizeThai, compounds: BASE_COMPOUNDS });
+
+const PIN_AFTER_MARK = 'ะัาำิีึืฺุู็่้๊๋์ํ';
+const PINNED_RE = new RegExp(
+  '(?<![เแโใไ])(?:' + [...THAI_PINNED].sort((a, b) => b.length - a.length).join('|') + ')(?![' + PIN_AFTER_MARK + '])', 'gu');
+
+/**
+ * ICU's tokens, except that every occurrence of a THAI_PINNED word is one token. The text between two pinned words keeps the
+ * tokens ICU gave it in the whole text where its edges are also token edges there (ICU saw the context); where a token of
+ * ICU's runs across an edge (แช|ทก|ลุ่ม around the pinned แชท) that stretch is segmented on its own (กลุ่ม).
+ */
+function icuWithPins(text: string): RawToken[] {
+  const hits = [...text.matchAll(PINNED_RE)];
+  const whole = icuTokenize(text);
+  if (!hits.length) return whole;
+  const out: RawToken[] = [];
+  const cuts = (at: number) => !whole.some((t) => t.start < at && at < t.end); // no ICU token runs across `at`
+  const gap = (a: number, b: number) => {
+    if (b <= a) return;
+    if (cuts(a) && cuts(b)) { out.push(...whole.filter((t) => t.start >= a && t.end <= b)); return; }
+    for (const t of icuTokenize(text.slice(a, b))) out.push({ ...t, start: t.start + a, end: t.end + a });
+  };
+  let at = 0;
+  for (const m of hits) {
+    const start = m.index ?? 0, end = start + m[0].length;
+    gap(at, start);
+    out.push({ surface: m[0], start, end, isWord: true, normalized: normalizeThai(m[0]) });
+    at = end;
+  }
+  gap(at, text.length);
+  return out;
+}
 
 /**
  * ICU joins across a word boundary here: ครูให้การบ้าน is ให้การ + บ้าน ("to testify" + "house"), never ให้ + การบ้าน
  * ("to give" + "homework"). A pair of ICU tokens that is always the second reading is cut again at the right place.
  */
-const REPAIRS: ReadonlyArray<{ first: string; second: string; cut: number }> = [{ first: 'ให้การ', second: 'บ้าน', cut: 'ให้'.length }];
+const REPAIRS: ReadonlyArray<{ first: string; second: string; cut: number }> = [
+  { first: 'ให้การ', second: 'บ้าน', cut: 'ให้'.length },
+  // ICU reads คุณมีหน้าที่อะไร as มีหน้า ("to have a face") + ที่; after มี the word is หน้าที่ "duty" (adapter-th@4)
+  { first: 'มีหน้า', second: 'ที่', cut: 'มี'.length },
+];
+
+/**
+ * ICU also JOINS across a word boundary where a beginner needs the pieces. Each rule below cuts a token it makes, by its
+ * neighbours (adapter-th@4); where the neighbours show the other reading the token stays whole:
+ *  - หน้าที่ is "duty" after มี / ทำ / เป็น / ตาม … and before ของ / คือ / หลัก …; anywhere else (ไปหน้าที่ตลาด, ผมเห็นหน้าที่ครู)
+ *    it is หน้า + ที่ ("in front of; the place that");
+ *  - ตากลม is "to take the air" after ไป / นั่ง / ออก / มา; anywhere else it is ตา + กลม ("round eyes").
+ * Both whole tokens are lexicon words (lexicon-ladder.ts).
+ */
+const WORD_MARK = String.fromCharCode(0x200b);
+const DUTY_BEFORE = new Set(['มี', 'ไม่มี', 'ทำ', 'เป็น', 'ตาม', 'ปฏิบัติ', 'รับ', 'ละเลย', 'มอบ', 'ขาด', 'หมด', 'สิ้น', 'ผิด']);
+const DUTY_AFTER = new Set(['ของ', 'คือ', 'หลัก', 'ประจำ', 'ต่อ']);
+const AIR_BEFORE = new Set(['ไป', 'นั่ง', 'ออก', 'มา', 'ออกไป']);
+const CONTEXT_SPLITS: ReadonlyArray<{ word: string; cut: number; keep: (prev: string, next: string) => boolean }> = [
+  { word: 'หน้าที่', cut: 'หน้า'.length, keep: (p, n) => DUTY_BEFORE.has(p) || DUTY_AFTER.has(n) },
+  { word: 'ตากลม', cut: 'ตา'.length, keep: (p) => AIR_BEFORE.has(p) },
+];
 
 export const thaiTokenize: (text: string) => RawToken[] = (text) => {
-  const out = icuTokenize(text);
+  const out = icuWithPins(text);
+  for (let i = 0; i < out.length; i++) {
+    const rule = CONTEXT_SPLITS.find((x) => x.word === out[i].normalized);
+    if (!rule) continue;
+    // a text with the publisher's U+200B word marks has already decided where the words end
+    if (text[out[i].start - 1] === WORD_MARK || text[out[i].end] === WORD_MARK) continue;
+    const near = (a: RawToken | undefined, from: number, to: number) => (a?.isWord && /^s*$/u.test(text.slice(from, to)) ? a.normalized : '');
+    const prev = near(out[i - 1], out[i - 1]?.end ?? 0, out[i].start);
+    const next = near(out[i + 1], out[i].end, out[i + 1]?.start ?? 0);
+    if (rule.keep(prev, next)) continue;
+    const t = out[i], mid = t.start + rule.cut;
+    const left = text.slice(t.start, mid), right = text.slice(mid, t.end);
+    out.splice(i, 1,
+      { surface: left, start: t.start, end: mid, isWord: true, normalized: normalizeThai(left) },
+      { surface: right, start: mid, end: t.end, isWord: true, normalized: normalizeThai(right) });
+  }
   for (let i = 0; i + 1 < out.length; i++) {
     const r = REPAIRS.find((x) => out[i].normalized === x.first && out[i + 1].normalized === x.second && out[i].end === out[i + 1].start);
     if (!r) continue;
@@ -58,8 +152,23 @@ export const isChunkToken = (t: RawToken): t is ThaiChunkToken => (t as Partial<
  */
 export function makeThaiTokenizer(known: (normalized: string) => boolean): (text: string) => RawToken[] {
   const isKnown = (t: RawToken) => known(t.normalized) || THAI_COMPOUNDS.includes(t.normalized) || t.normalized === 'ๆ';
+  /**
+   * The repetition mark. Written with a space (ช้า ๆ) it is a token of its own; glued to a word the list knows (เด็กๆ, ช้าๆ) the
+   * two stay ONE token, which the analyzer reads as the stem; glued to a word the list does NOT know (ว่าวๆ) ICU makes one
+   * unreadable token, which would count as a lemma of its own (ว่าวๆ) apart from the word itself: it is cut into the stem and
+   * ๆ, exactly as if it were written with a space.
+   */
+  const splitRepeat = (toks: RawToken[]): RawToken[] => toks.flatMap((t) => {
+    if (!t.isWord || t.normalized.length < 2 || !t.surface.endsWith('ๆ')) return [t];
+    const stem = t.surface.slice(0, -1);
+    if (!THAI_PIECE.test(stem) || known(normalizeThai(stem)) || THAI_COMPOUNDS.includes(normalizeThai(stem))) return [t];
+    return [
+      { surface: stem, start: t.start, end: t.end - 1, isWord: true, normalized: normalizeThai(stem) },
+      { surface: 'ๆ', start: t.end - 1, end: t.end, isWord: true, normalized: 'ๆ' },
+    ];
+  });
   return (text) => {
-    const base = thaiTokenize(text);
+    const base = splitRepeat(thaiTokenize(text));
     if (!text.includes(ZWSP)) return base;
     const chunkOf = (at: number): [number, number] => {
       let a = at; while (a > 0 && !CHUNK_CUTS.test(text[a - 1])) a--;

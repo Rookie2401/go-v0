@@ -1,6 +1,6 @@
 /**
  * `ladder:place` logic: where could a candidate text enter the ladder? Measures the candidate's coverage (>= 3 earlier
- * encounters, PROPN and numerals known) after Stage 0 and after each unit in turn, and finds the first point at which it
+ * encounters, PROPN and numerals known, a guessed name not) after Stage 0 and after each unit in turn, and finds the first point at which it
  * reaches the placement threshold (95 %). If it never does, the text is library material, not ladder material.
  */
 import type { LanguageAdapter } from '../core';

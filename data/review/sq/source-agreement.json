@@ -65,10 +65,10 @@
   ]
  },
  "totals": {
-  "unanimous": 11000,
-  "majority": 38,
-  "disputed": 160,
-  "single-source": 36,
+  "unanimous": 13444,
+  "majority": 44,
+  "disputed": 364,
+  "single-source": 84,
   "name-unlisted": 41
  },
  "counts": {
@@ -87,38 +87,38 @@
    "name-unlisted": 41
   },
   "NOUN": {
-   "unanimous": 3780,
-   "majority": 14,
-   "disputed": 60,
-   "single-source": 24,
+   "unanimous": 5340,
+   "majority": 16,
+   "disputed": 94,
+   "single-source": 41,
    "name-unlisted": 0
   },
   "VERB": {
-   "unanimous": 6407,
-   "majority": 23,
-   "disputed": 95,
-   "single-source": 10,
+   "unanimous": 7165,
+   "majority": 27,
+   "disputed": 262,
+   "single-source": 31,
+   "name-unlisted": 0
+  },
+  "ADJ": {
+   "unanimous": 440,
+   "majority": 0,
+   "disputed": 2,
+   "single-source": 1,
    "name-unlisted": 0
   },
   "ADV": {
-   "unanimous": 81,
+   "unanimous": 89,
    "majority": 0,
    "disputed": 0,
    "single-source": 0,
    "name-unlisted": 0
   },
   "ADP": {
-   "unanimous": 27,
+   "unanimous": 32,
    "majority": 0,
    "disputed": 0,
    "single-source": 0,
-   "name-unlisted": 0
-  },
-  "ADJ": {
-   "unanimous": 334,
-   "majority": 0,
-   "disputed": 1,
-   "single-source": 1,
    "name-unlisted": 0
   },
   "PRON": {
@@ -131,19 +131,26 @@
   "DET": {
    "unanimous": 70,
    "majority": 1,
-   "disputed": 0,
+   "disputed": 2,
    "single-source": 0,
    "name-unlisted": 0
   },
   "CONJ": {
-   "unanimous": 8,
+   "unanimous": 10,
    "majority": 0,
    "disputed": 0,
    "single-source": 0,
    "name-unlisted": 0
   },
+  "X": {
+   "unanimous": 4,
+   "majority": 0,
+   "disputed": 0,
+   "single-source": 10,
+   "name-unlisted": 0
+  },
   "SCONJ": {
-   "unanimous": 10,
+   "unanimous": 11,
    "majority": 0,
    "disputed": 0,
    "single-source": 0,
@@ -166,36 +173,517 @@
  },
  "bySource": {
   "uniparser": {
-   "agree": 11071,
-   "silent": 115,
-   "other": 64,
-   "differ": 25
+   "agree": 13528,
+   "silent": 176,
+   "other": 210,
+   "differ": 63
   },
   "wiktionary": {
-   "agree": 8376,
-   "silent": 2457,
-   "other": 325,
-   "differ": 117
+   "agree": 9796,
+   "silent": 3489,
+   "other": 536,
+   "differ": 156
   },
   "ud-tsa": {
-   "silent": 11115,
-   "agree": 107,
-   "differ": 17,
-   "other": 36
+   "silent": 13785,
+   "agree": 130,
+   "differ": 22,
+   "other": 40
   },
   "ud-staf": {
-   "agree": 304,
-   "silent": 10744,
-   "other": 150,
-   "differ": 77
+   "agree": 326,
+   "silent": 13399,
+   "other": 166,
+   "differ": 86
   },
   "corpus": {
-   "silent": 11229,
-   "differ": 10,
-   "agree": 36
+   "silent": 13912,
+   "differ": 22,
+   "agree": 43
   }
  },
  "findings": [
+  {
+   "form": "afrova",
+   "lemma": "afrohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "afroj [V,vt,vi,alb,deriv,1,sg,aor,ind,act]",
+     "afroj [V,med,alb,deriv,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "afroj/VERB Tense=Past",
+     "afroj/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "afrova 340"
+    ]
+   }
+  },
+  {
+   "form": "afrove",
+   "lemma": "afrohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "afroj [V,med,alb,deriv,2,sg,aor,ind,act]",
+     "afroj [V,vt,vi,alb,deriv,2,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "afroj/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "afrove 29"
+    ]
+   }
+  },
+  {
+   "form": "afruam",
+   "lemma": "afrohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "afroj [V,med,alb,deriv,1,pl,aor,ind,act]",
+     "afroj [V,vt,vi,alb,deriv,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "afroj/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "afruam 163"
+    ]
+   }
+  },
+  {
+   "form": "afruan",
+   "lemma": "afrohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "afroj [V,med,alb,deriv,3,pl,aor,ind,act]",
+     "afroj [V,vt,vi,alb,deriv,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "afroj/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "afruan 777"
+    ]
+   }
+  },
+  {
+   "form": "afruat",
+   "lemma": "afrohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "afroj [V,med,alb,deriv,2,pl,aor,ind,act]",
+     "afroj [V,vt,vi,alb,deriv,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "afroj/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "afruat 19"
+    ]
+   }
+  },
+  {
+   "form": "ana",
+   "lemma": "anë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary"
+   ],
+   "evidence": {
+    "uniparser": [
+     "anë [NOUN,f,inanim,alb,sg,nom,def]"
+    ],
+    "wiktionary": [
+     "its table has here: anë"
+    ],
+    "corpus": [
+     "ana 67047",
+     "anë 23477"
+    ]
+   }
+  },
+  {
+   "form": "anash",
+   "lemma": "anë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary"
+   ],
+   "evidence": {
+    "uniparser": [
+     "anash [ADV,alb,deriv]"
+    ],
+    "wiktionary": [
+     "its table has here: anësh"
+    ],
+    "corpus": [
+     "anash 2292",
+     "anësh 152"
+    ]
+   }
+  },
+  {
+   "form": "anat",
+   "lemma": "anë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [],
+   "dissent": [
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: anët"
+    ],
+    "corpus": [
+     "anat 9",
+     "anët 5484"
+    ]
+   }
+  },
+  {
+   "form": "anave",
+   "lemma": "anë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [],
+   "dissent": [
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: anësh, anëve"
+    ],
+    "corpus": [
+     "anave 4",
+     "anësh 152",
+     "anëve 544"
+    ]
+   }
+  },
+  {
+   "form": "ankova",
+   "lemma": "ankohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ankoj [V,med,alb,deriv,1,sg,aor,ind,act]",
+     "ankoj [V,vt,vi,alb,deriv,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "ankoj/VERB Tense=Past",
+     "ankoj/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ankova 39"
+    ]
+   }
+  },
+  {
+   "form": "ankove",
+   "lemma": "ankohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ankoj [V,med,alb,deriv,2,sg,aor,ind,act]",
+     "ankoj [V,vt,vi,alb,deriv,2,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "ankoj/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ankove 11"
+    ]
+   }
+  },
+  {
+   "form": "ankuam",
+   "lemma": "ankohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ankoj [V,vt,vi,alb,deriv,1,pl,aor,ind,act]",
+     "ankoj [V,med,alb,deriv,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "ankoj/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ankuam 18"
+    ]
+   }
+  },
+  {
+   "form": "ankuan",
+   "lemma": "ankohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ankoj [V,vt,vi,alb,deriv,3,pl,aor,ind,act]",
+     "ankoj [V,med,alb,deriv,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "ankoj/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ankuan 320"
+    ]
+   }
+  },
+  {
+   "form": "ankuat",
+   "lemma": "ankohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ankoj [V,med,alb,deriv,2,pl,aor,ind,act]",
+     "ankoj [V,vt,vi,alb,deriv,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "ankoj/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ankuat 8"
+    ]
+   }
+  },
+  {
+   "form": "arsyenë",
+   "lemma": "arsye",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Acc Number=Sing Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "uniparser": [
+     "arsye [NOUN,f,inanim,borr,lat,deriv,sg,acc,def,nonst]"
+    ],
+    "wiktionary": [
+     "its table has here: arsyen"
+    ],
+    "corpus": [
+     "arsyenë 0",
+     "arsyen 3429"
+    ]
+   }
+  },
+  {
+   "form": "arsyesë",
+   "lemma": "arsye",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [],
+   "dissent": [
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: arsyes"
+    ],
+    "corpus": [
+     "arsyesë 1",
+     "arsyes 1022"
+    ]
+   }
+  },
   {
    "form": "ati",
    "lemma": "atë",
@@ -246,10 +734,10 @@
    ],
    "evidence": {
     "uniparser": [
-     "ai [PRO,alb,f,sg,acc]",
-     "ai [PRO,alb,m,sg,acc]",
+     "ajo [PRO,3,sg,f,alb,acc]",
      "ai [PRO,3,sg,m,alb,acc]",
-     "ajo [PRO,3,sg,f,alb,acc]"
+     "ai [PRO,alb,m,sg,acc]",
+     "ai [PRO,alb,f,sg,acc]"
     ],
     "ud-staf": [
      "ai/PRON Case=Acc Number=Sing Gender=Masc Person=3",
@@ -285,6 +773,235 @@
     "corpus": [
      "bieni 2",
      "bini 778"
+    ]
+   }
+  },
+  {
+   "form": "binda",
+   "lemma": "bindem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "bind [V,med,alb,1,sg,aor,ind,act]",
+     "bind [V,vt,alb,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "bind/VERB Tense=Past",
+     "bind/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "binda 279"
+    ]
+   }
+  },
+  {
+   "form": "binde",
+   "lemma": "bindem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "bind [V,vt,alb,2,sg,pres,ind,pass,nonst]",
+     "bind [V,med,alb,2,sg,pres,ind,pass,nonst]"
+    ],
+    "wiktionary": [
+     "bind/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "binde 65"
+    ]
+   }
+  },
+  {
+   "form": "bindëm",
+   "lemma": "bindem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "bind [V,med,alb,1,pl,aor,ind,act]",
+     "bind [V,vt,alb,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "bind/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "bindëm 57"
+    ]
+   }
+  },
+  {
+   "form": "bindën",
+   "lemma": "bindem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "bind [V,vt,alb,3,pl,aor,ind,act]",
+     "bind [V,med,alb,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "bind/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "bindën 443"
+    ]
+   }
+  },
+  {
+   "form": "bindët",
+   "lemma": "bindem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "bind [V,med,alb,2,pl,aor,ind,act]",
+     "bind [V,vt,alb,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "bind/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "bindët 15"
+    ]
+   }
+  },
+  {
+   "form": "bujqsh",
+   "lemma": "bujk",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: bujqish"
+    ],
+    "corpus": [
+     "bujqsh 0",
+     "bujqish 29"
+    ]
+   }
+  },
+  {
+   "form": "bërtitte",
+   "lemma": "bërtas",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [
+    "uniparser"
+   ],
+   "dissent": [
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: bërtiste"
+    ],
+    "corpus": [
+     "bërtitte 2",
+     "bërtiste 686"
+    ]
+   }
+  },
+  {
+   "form": "cm",
+   "lemma": "cm",
+   "pos": "X",
+   "status": "single-source",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "cm 2508"
     ]
    }
   },
@@ -438,6 +1155,1082 @@
    }
   },
   {
+   "form": "dokumente",
+   "lemma": "dokument",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Masc",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,acc,indef]",
+     "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,nom,indef]"
+    ],
+    "corpus": [
+     "dokumente 8942"
+    ]
+   }
+  },
+  {
+   "form": "dokumentesh",
+   "lemma": "dokument",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,abl2,indef]"
+    ],
+    "corpus": [
+     "dokumentesh 729"
+    ]
+   }
+  },
+  {
+   "form": "dokumentet",
+   "lemma": "dokument",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Masc",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,acc,def]",
+     "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,nom,def]"
+    ],
+    "corpus": [
+     "dokumentet 9860"
+    ]
+   }
+  },
+  {
+   "form": "dokumenteve",
+   "lemma": "dokument",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Masc",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,gen_dat,indef]",
+     "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,abl,indef]",
+     "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,gen_dat,def]",
+     "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,abl,def]"
+    ],
+    "corpus": [
+     "dokumenteve 5988"
+    ]
+   }
+  },
+  {
+   "form": "e.s",
+   "lemma": "e.s",
+   "pos": "X",
+   "status": "single-source",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "e.s 0"
+    ]
+   }
+  },
+  {
+   "form": "ec",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,3,sg,aor,ind,pass]",
+     "eci [V,vi,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "ec 1655"
+    ]
+   }
+  },
+  {
+   "form": "ec",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Mood=Imp Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,3,sg,aor,ind,pass]",
+     "eci [V,vi,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "ec 1655"
+    ]
+   }
+  },
+  {
+   "form": "eca",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Tense=Past",
+     "eci/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "eca 289"
+    ]
+   }
+  },
+  {
+   "form": "ece",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,2,sg,aor,ind,act]",
+     "eci [V,vi,alb,2,sg,imp,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ece 34"
+    ]
+   }
+  },
+  {
+   "form": "eci",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,2,sg,imp,act]",
+     "eci [V,vi,alb,3,sg,aor,ind,act]",
+     "eci [V,vi,alb,1,sg,pres,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB",
+     "eci/VERB Number=Sing Person=1 Tense=Pres Mood=Ind",
+     "eci/VERB Number=Sing Person=1 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "eci 1274"
+    ]
+   }
+  },
+  {
+   "form": "eci",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Pres Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,2,sg,imp,act]",
+     "eci [V,vi,alb,3,sg,aor,ind,act]",
+     "eci [V,vi,alb,1,sg,pres,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB",
+     "eci/VERB Number=Sing Person=1 Tense=Pres Mood=Ind",
+     "eci/VERB Number=Sing Person=1 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "eci 1274"
+    ]
+   }
+  },
+  {
+   "form": "ecim",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,1,pl,pres,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Plur Person=1 Tense=Pres Mood=Ind",
+     "eci/VERB Number=Plur Person=1 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "ecim 2163"
+    ]
+   }
+  },
+  {
+   "form": "ecin",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,3,pl,pres,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Plur Person=3 Tense=Pres Mood=Ind",
+     "eci/VERB Number=Plur Person=3 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "ecin 2709"
+    ]
+   }
+  },
+  {
+   "form": "ecja",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,2,sg,imp,act]",
+     "eci [V,vi,alb,1,sg,ipf,ind,act]",
+     "ecje [NOUN,f,inanim,alb,deriv,sg,nom,def]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Sing Person=1 Tense=Imp Mood=Ind",
+     "eci/VERB Number=Sing Person=1 Tense=Imp"
+    ],
+    "corpus": [
+     "ecja 1158"
+    ]
+   }
+  },
+  {
+   "form": "ecje",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ecje [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+     "ecje [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
+     "eci [V,vi,alb,2,sg,ipf,ind,act]",
+     "ecje [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+     "ecje [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Sing Person=2 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ecje 1259"
+    ]
+   }
+  },
+  {
+   "form": "ecni",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Mood=Imp Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,2,pl,pres,ind,act]",
+     "eci [V,vi,alb,2,pl,imp,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Plur Person=2 Tense=Pres Mood=Ind",
+     "eci/VERB Number=Plur Person=2 Tense=Pres Mood=Sub",
+     "eci/VERB Number=Plur Person=2 Tense=Pres Mood=Imp",
+     "eci/VERB Number=Plur Person=2 Mood=Imp"
+    ],
+    "corpus": [
+     "ecni 672"
+    ]
+   }
+  },
+  {
+   "form": "ecni",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,2,pl,pres,ind,act]",
+     "eci [V,vi,alb,2,pl,imp,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Plur Person=2 Tense=Pres Mood=Ind",
+     "eci/VERB Number=Plur Person=2 Tense=Pres Mood=Sub",
+     "eci/VERB Number=Plur Person=2 Tense=Pres Mood=Imp",
+     "eci/VERB Number=Plur Person=2 Mood=Imp"
+    ],
+    "corpus": [
+     "ecni 672"
+    ]
+   }
+  },
+  {
+   "form": "ecnim",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,1,pl,ipf,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Plur Person=1 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ecnim 290"
+    ]
+   }
+  },
+  {
+   "form": "ecnin",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,3,pl,ipf,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Plur Person=3 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ecnin 763"
+    ]
+   }
+  },
+  {
+   "form": "ecnit",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,2,pl,ipf,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Plur Person=2 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ecnit 16"
+    ]
+   }
+  },
+  {
+   "form": "ecte",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,3,sg,ipf,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Sing Person=3 Tense=Imp Mood=Ind",
+     "eci/VERB Number=Sing Person=3 Tense=Imp"
+    ],
+    "corpus": [
+     "ecte 2060"
+    ]
+   }
+  },
+  {
+   "form": "ecur",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "VerbForm=Part",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ecur [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
+     "ecur [NOUN,n,inanim,alb,deriv,sg,acc,indef]",
+     "ecur [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+     "ecur [NOUN,n,inanim,alb,deriv,sg,unmkd,indef]",
+     "eci [V,vi,alb,ptcp]"
+    ],
+    "wiktionary": [
+     "eci/VERB VerbForm=Part",
+     "ecur/NOUN"
+    ],
+    "corpus": [
+     "ecur 5339"
+    ]
+   }
+  },
+  {
+   "form": "ecë",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Pres Mood=Sub Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,ptcp,nonst,Gheg]",
+     "eci [V,vi,alb,3,sg,pres,sbjv,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Sing Person=3 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "ecë 2487"
+    ]
+   }
+  },
+  {
+   "form": "ecëm",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ecëm 135"
+    ]
+   }
+  },
+  {
+   "form": "ecën",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2,3 Tense=Pres Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,3,sg,pres,ind,act]",
+     "eci [V,vi,alb,3,pl,aor,ind,act]",
+     "eci [V,vi,alb,2,sg,pres,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ecën 3136"
+    ]
+   }
+  },
+  {
+   "form": "ecën",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,3,sg,pres,ind,act]",
+     "eci [V,vi,alb,3,pl,aor,ind,act]",
+     "eci [V,vi,alb,2,sg,pres,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ecën 3136"
+    ]
+   }
+  },
+  {
+   "form": "ecësh",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Pres Mood=Sub Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,2,sg,pres,sbjv,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Sing Person=2 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "ecësh 413"
+    ]
+   }
+  },
+  {
+   "form": "ecët",
+   "lemma": "ec",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "eci [V,vi,alb,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "eci/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ecët 21"
+    ]
+   }
+  },
+  {
+   "form": "email",
+   "lemma": "email",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Nom,Acc Number=Sing Definite=Ind Gender=Masc",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "email 819"
+    ]
+   }
+  },
+  {
+   "form": "emaile",
+   "lemma": "email",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Masc",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "emaile 107"
+    ]
+   }
+  },
+  {
+   "form": "emailesh",
+   "lemma": "email",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "emailesh 8"
+    ]
+   }
+  },
+  {
+   "form": "emailet",
+   "lemma": "email",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Masc",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "emailet 84"
+    ]
+   }
+  },
+  {
+   "form": "emaileve",
+   "lemma": "email",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Masc",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "emaileve 76"
+    ]
+   }
+  },
+  {
+   "form": "emaili",
+   "lemma": "email",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Nom Number=Sing Definite=Def Gender=Masc",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "emaili 100"
+    ]
+   }
+  },
+  {
+   "form": "emaili",
+   "lemma": "email",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Ind Gender=Masc",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "emaili 100"
+    ]
+   }
+  },
+  {
+   "form": "emailin",
+   "lemma": "email",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Acc Number=Sing Definite=Def Gender=Masc",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "emailin 111"
+    ]
+   }
+  },
+  {
+   "form": "emailit",
+   "lemma": "email",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Masc",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "emailit 107"
+    ]
+   }
+  },
+  {
+   "form": "eurosë",
+   "lemma": "euro",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "eurosë 0"
+    ]
+   }
+  },
+  {
+   "form": "fiki",
+   "lemma": "fik",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary"
+   ],
+   "evidence": {
+    "uniparser": [
+     "fik [V,vt,alb,2,sg,imp,act]"
+    ],
+    "wiktionary": [
+     "its table has here: fiku"
+    ],
+    "corpus": [
+     "fiki 15",
+     "fiku 422"
+    ]
+   }
+  },
+  {
    "form": "flitu",
    "lemma": "flas",
    "pos": "VERB",
@@ -481,6 +2274,220 @@
     ],
     "corpus": [
      "flituni 0"
+    ]
+   }
+  },
+  {
+   "form": "fq",
+   "lemma": "fq",
+   "pos": "X",
+   "status": "single-source",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "fq 776"
+    ]
+   }
+  },
+  {
+   "form": "ftohja",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom Number=Sing Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ftoh [V,vt,alb,1,sg,ipf,ind,act]",
+     "ftoh [V,vt,alb,2,sg,imp,act]"
+    ],
+    "wiktionary": [
+     "ftoh/VERB Number=Sing Person=1 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ftohja 335"
+    ]
+   }
+  },
+  {
+   "form": "ftohje",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Sing Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ftoh [V,vt,alb,2,sg,ipf,ind,act]"
+    ],
+    "wiktionary": [
+     "ftoh/VERB Number=Sing Person=2 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ftohje 587"
+    ]
+   }
+  },
+  {
+   "form": "ftohje",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ftoh [V,vt,alb,2,sg,ipf,ind,act]"
+    ],
+    "wiktionary": [
+     "ftoh/VERB Number=Sing Person=2 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ftohje 587"
+    ]
+   }
+  },
+  {
+   "form": "ftohjen",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Acc Number=Sing Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "ftohjen 286"
+    ]
+   }
+  },
+  {
+   "form": "ftohjes",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "ftohjes 481"
+    ]
+   }
+  },
+  {
+   "form": "ftohjesh",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "ftohjesh 0"
+    ]
+   }
+  },
+  {
+   "form": "ftohjet",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "ftohjet 131"
+    ]
+   }
+  },
+  {
+   "form": "ftohjeve",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "ftohjeve 64"
     ]
    }
   },
@@ -538,12 +2545,143 @@
    ],
    "evidence": {
     "uniparser": [
-     "gjellë [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
      "gjellë [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
-     "gjellë [NOUN,f,inanim,alb,deriv,sg,nom,indef]"
+     "gjellë [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+     "gjellë [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
     ],
     "corpus": [
      "gjellë 375"
+    ]
+   }
+  },
+  {
+   "form": "gjenda",
+   "lemma": "gjendem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "gjendem [V,vi,alb,deriv,1,sg,aor,ind,act]"
+    ],
+    "corpus": [
+     "gjenda 209"
+    ]
+   }
+  },
+  {
+   "form": "gjende",
+   "lemma": "gjendem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "gjendem [V,vi,alb,deriv,2,sg,pres,ind,pass,nonst]",
+     "gjendem [V,vi,alb,deriv,2,sg,aor,ind,act]"
+    ],
+    "corpus": [
+     "gjende 77"
+    ]
+   }
+  },
+  {
+   "form": "gjendëm",
+   "lemma": "gjendem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "gjendem [V,vi,alb,deriv,1,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "gjendëm 118"
+    ]
+   }
+  },
+  {
+   "form": "gjendën",
+   "lemma": "gjendem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "gjendem [V,vi,alb,deriv,3,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "gjendën 597"
+    ]
+   }
+  },
+  {
+   "form": "gjendët",
+   "lemma": "gjendem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "gjendem [V,vi,alb,deriv,2,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "gjendët 34"
     ]
    }
   },
@@ -602,6 +2740,308 @@
     "corpus": [
      "gjermanisë 13373",
      "gjermanit 310"
+    ]
+   }
+  },
+  {
+   "form": "gëzova",
+   "lemma": "gëzohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "gëzoj [V,med,alb,deriv,1,sg,aor,ind,act]",
+     "gëzoj [V,vt,vi,alb,deriv,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "gëzoj/VERB Tense=Past",
+     "gëzoj/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "gëzova 273"
+    ]
+   }
+  },
+  {
+   "form": "gëzove",
+   "lemma": "gëzohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "gëzoj [V,med,alb,deriv,2,sg,aor,ind,act]",
+     "gëzoj [V,vt,vi,alb,deriv,2,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "gëzoj/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "gëzove 36"
+    ]
+   }
+  },
+  {
+   "form": "gëzuam",
+   "lemma": "gëzohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "gëzoj [V,med,alb,deriv,1,pl,aor,ind,act]",
+     "gëzoj [V,vt,vi,alb,deriv,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "gëzoj/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "gëzuam 100"
+    ]
+   }
+  },
+  {
+   "form": "gëzuan",
+   "lemma": "gëzohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "gëzoj [V,vt,vi,alb,deriv,3,pl,aor,ind,act]",
+     "gëzoj [V,med,alb,deriv,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "gëzoj/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "gëzuan 302"
+    ]
+   }
+  },
+  {
+   "form": "gëzuat",
+   "lemma": "gëzohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "gëzoj [V,vt,vi,alb,deriv,2,pl,aor,ind,act]",
+     "gëzoj [V,med,alb,deriv,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "gëzoj/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "gëzuat 7"
+    ]
+   }
+  },
+  {
+   "form": "habita",
+   "lemma": "habitem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "habit [V,vt,borr,slav,1,sg,aor,ind,act]",
+     "habit [V,med,borr,slav,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "habit/VERB Tense=Past",
+     "habit/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "habita 264"
+    ]
+   }
+  },
+  {
+   "form": "habite",
+   "lemma": "habitem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "habit [V,vt,borr,slav,2,sg,pres,ind,pass,nonst]",
+     "habit [V,med,borr,slav,2,sg,pres,ind,pass,nonst]"
+    ],
+    "wiktionary": [
+     "habit/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "habite 2"
+    ]
+   }
+  },
+  {
+   "form": "habitëm",
+   "lemma": "habitem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "habit [V,med,borr,slav,1,pl,aor,ind,act]",
+     "habit [V,vt,borr,slav,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "habit/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "habitëm 48"
+    ]
+   }
+  },
+  {
+   "form": "habitën",
+   "lemma": "habitem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "habit [V,med,borr,slav,3,pl,aor,ind,act]",
+     "habit [V,vt,borr,slav,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "habit/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "habitën 204"
+    ]
+   }
+  },
+  {
+   "form": "habitët",
+   "lemma": "habitem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "habit [V,vt,borr,slav,2,pl,aor,ind,act]",
+     "habit [V,med,borr,slav,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "habit/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "habitët 11"
     ]
    }
   },
@@ -807,8 +3247,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,2,sg,imp,act]",
-     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]"
+     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]",
+     "hipi [V,vt,vi,alb,2,sg,imp,act]"
     ],
     "corpus": [
      "hip 335"
@@ -836,8 +3276,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,2,sg,imp,act]",
-     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]"
+     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]",
+     "hipi [V,vt,vi,alb,2,sg,imp,act]"
     ],
     "corpus": [
      "hip 335"
@@ -865,8 +3305,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,2,sg,imp,act]",
-     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]"
+     "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]",
+     "hipi [V,vt,vi,alb,2,sg,imp,act]"
     ],
     "corpus": [
      "hip 335"
@@ -951,11 +3391,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+     "hipi [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
+     "hipi [V,vt,vi,alb,3,sg,aor,ind,act]",
      "hipi [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
-     "hipi [V,vt,vi,alb,2,sg,imp,act]",
-     "hipi [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
-     "hipi [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]"
+     "hipi [V,vt,vi,alb,1,sg,pres,ind,act]",
+     "hipi [NOUN,f,inanim,alb,deriv,pl,nom,indef]"
     ],
     "corpus": [
      "hipi 647"
@@ -1069,11 +3509,11 @@
    ],
    "evidence": {
     "uniparser": [
+     "hipje [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
      "hipje [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
-     "hipje [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
      "hipi [V,vt,vi,alb,2,sg,ipf,ind,act]",
-     "hipje [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
-     "hipje [NOUN,f,inanim,alb,deriv,sg,nom,indef]"
+     "hipje [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+     "hipje [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
     ],
     "corpus": [
      "hipje 14"
@@ -1101,8 +3541,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,2,pl,pres,ind,act]",
-     "hipi [V,vt,vi,alb,2,pl,imp,act]"
+     "hipi [V,vt,vi,alb,2,pl,imp,act]",
+     "hipi [V,vt,vi,alb,2,pl,pres,ind,act]"
     ],
     "corpus": [
      "hipni 63"
@@ -1130,8 +3570,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "hipi [V,vt,vi,alb,2,pl,pres,ind,act]",
-     "hipi [V,vt,vi,alb,2,pl,imp,act]"
+     "hipi [V,vt,vi,alb,2,pl,imp,act]",
+     "hipi [V,vt,vi,alb,2,pl,pres,ind,act]"
     ],
     "corpus": [
      "hipni 63"
@@ -1358,8 +3798,8 @@
    "evidence": {
     "uniparser": [
      "hipi [V,vt,vi,alb,3,sg,pres,ind,act]",
-     "hipi [V,vt,vi,alb,2,sg,pres,ind,act]",
-     "hipi [V,vt,vi,alb,3,pl,aor,ind,act]"
+     "hipi [V,vt,vi,alb,3,pl,aor,ind,act]",
+     "hipi [V,vt,vi,alb,2,sg,pres,ind,act]"
     ],
     "corpus": [
      "hipën 420"
@@ -1689,6 +4129,56 @@
    }
   },
   {
+   "form": "kalatë",
+   "lemma": "kala",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "kala [NOUN,f,inanim,borr,turk,pl,acc,def,nonst]",
+     "kala [NOUN,f,inanim,borr,turk,pl,nom,def,nonst]"
+    ],
+    "corpus": [
+     "kalatë 192"
+    ]
+   }
+  },
+  {
+   "form": "kg",
+   "lemma": "kg",
+   "pos": "X",
+   "status": "single-source",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "kg 9876"
+    ]
+   }
+  },
+  {
    "form": "koka",
    "lemma": "kokë",
    "pos": "NOUN",
@@ -1928,6 +4418,364 @@
    }
   },
   {
+   "form": "komunash",
+   "lemma": "komunë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "uniparser"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: komunës"
+    ],
+    "corpus": [
+     "komunash 756",
+     "komunës 25002"
+    ]
+   }
+  },
+  {
+   "form": "komunave",
+   "lemma": "komunë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "uniparser"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: komunavet, komunës"
+    ],
+    "corpus": [
+     "komunave 12506",
+     "komunavet 0",
+     "komunës 25002"
+    ]
+   }
+  },
+  {
+   "form": "komunën",
+   "lemma": "komunë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Acc Number=Sing Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "uniparser"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: komunave"
+    ],
+    "corpus": [
+     "komunën 13331",
+     "komunave 12506"
+    ]
+   }
+  },
+  {
+   "form": "komunës",
+   "lemma": "komunë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "uniparser"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: komunave"
+    ],
+    "corpus": [
+     "komunës 25002",
+     "komunave 12506"
+    ]
+   }
+  },
+  {
+   "form": "ktheva",
+   "lemma": "kthehem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "kthej [V,vt,vi,alb,1,sg,aor,ind,act]",
+     "kthej [V,med,alb,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "kthej/VERB Tense=Past",
+     "kthej/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ktheva 1625"
+    ]
+   }
+  },
+  {
+   "form": "ktheve",
+   "lemma": "kthehem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "kthej [V,vt,vi,alb,2,sg,aor,ind,act]",
+     "kthej [V,med,alb,2,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "kthej/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ktheve 173"
+    ]
+   }
+  },
+  {
+   "form": "kthyem",
+   "lemma": "kthehem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "kthej [V,vt,vi,alb,1,pl,aor,ind,act]",
+     "kthej [V,med,alb,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "kthej/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "kthyem 646"
+    ]
+   }
+  },
+  {
+   "form": "kthyen",
+   "lemma": "kthehem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "kthej [V,vt,vi,alb,3,pl,aor,ind,act]",
+     "kthej [V,med,alb,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "kthej/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "kthyen 3414"
+    ]
+   }
+  },
+  {
+   "form": "kthyet",
+   "lemma": "kthehem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "kthej [V,vt,vi,alb,2,pl,aor,ind,act]",
+     "kthej [V,med,alb,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "kthej/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "kthyet 133"
+    ]
+   }
+  },
+  {
+   "form": "kufij",
+   "lemma": "kufi",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Masc",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "uniparser"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: kufijt"
+    ],
+    "corpus": [
+     "kufij 2655",
+     "kufijt 105"
+    ]
+   }
+  },
+  {
+   "form": "kufijsh",
+   "lemma": "kufi",
+   "pos": "NOUN",
+   "status": "majority",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "agree"
+   },
+   "support": [
+    "uniparser",
+    "corpus"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: kufijtsh"
+    ],
+    "corpus": [
+     "kufijsh 516",
+     "kufijtsh 0"
+    ]
+   }
+  },
+  {
+   "form": "kufijve",
+   "lemma": "kufi",
+   "pos": "NOUN",
+   "status": "majority",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Masc",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "agree"
+   },
+   "support": [
+    "uniparser",
+    "corpus"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: kufijtsh, kufijtve"
+    ],
+    "corpus": [
+     "kufijve 10039",
+     "kufijtsh 0",
+     "kufijtve 1"
+    ]
+   }
+  },
+  {
    "form": "këmisha",
    "lemma": "këmishë",
    "pos": "NOUN",
@@ -2045,6 +4893,162 @@
    }
   },
   {
+   "form": "kënaqa",
+   "lemma": "kënaqem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "kënaqë [NOUN,f,inanim,alb,deriv,sg,nom,def]",
+     "kënaq [V,med,alb,1,sg,aor,ind,act]",
+     "kënaqë [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+     "kënaqë [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
+     "kënaq [V,vt,alb,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "kënaq/VERB Tense=Past",
+     "kënaq/VERB Number=Sing Person=1 Tense=Past Mood=Ind",
+     "kënaq/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "kënaqa 71"
+    ]
+   }
+  },
+  {
+   "form": "kënaqe",
+   "lemma": "kënaqem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "kënaq [V,vt,alb,2,sg,pres,ind,pass,nonst]",
+     "kënaq [V,med,alb,2,sg,pres,ind,pass,nonst]"
+    ],
+    "wiktionary": [
+     "kënaq/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "kënaqe 37"
+    ]
+   }
+  },
+  {
+   "form": "kënaqëm",
+   "lemma": "kënaqem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "kënaq [V,med,alb,1,pl,aor,ind,act]",
+     "kënaq [V,vt,alb,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "kënaq/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "kënaqëm 52"
+    ]
+   }
+  },
+  {
+   "form": "kënaqën",
+   "lemma": "kënaqem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "kënaq [V,vt,alb,3,pl,aor,ind,act]",
+     "kënaq [V,med,alb,3,pl,aor,ind,act]",
+     "kënaqë [NOUN,f,inanim,alb,deriv,sg,acc,def]"
+    ],
+    "wiktionary": [
+     "kënaq/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "kënaqën 87"
+    ]
+   }
+  },
+  {
+   "form": "kënaqët",
+   "lemma": "kënaqem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "kënaq [V,vt,alb,2,pl,aor,ind,act]",
+     "kënaq [V,med,alb,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "kënaq/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "kënaqët 13"
+    ]
+   }
+  },
+  {
    "form": "la",
    "lemma": "lë",
    "pos": "VERB",
@@ -2065,12 +5069,358 @@
    ],
    "evidence": {
     "uniparser": [
-     "lë [V,vt,alb,ptcp,nonst]",
      "lë [V,vt,alb,2,sg,aor,ind,act]",
-     "lë [V,vt,alb,3,sg,aor,ind,pass]"
+     "lë [V,vt,alb,3,sg,aor,ind,pass]",
+     "lë [V,vt,alb,ptcp,nonst]"
     ],
     "corpus": [
      "la 23462"
+    ]
+   }
+  },
+  {
+   "form": "largova",
+   "lemma": "largohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "other",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "largoj [V,med,borr,lat,deriv,1,sg,aor,ind,act]",
+     "largoj [V,vt,vi,borr,lat,deriv,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "largoj/VERB Tense=Past",
+     "largoj/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "ud-staf": [
+     "largoj/VERB"
+    ],
+    "corpus": [
+     "largova 657"
+    ]
+   }
+  },
+  {
+   "form": "largove",
+   "lemma": "largohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "largoj [V,med,borr,lat,deriv,2,sg,aor,ind,act]",
+     "largoj [V,vt,vi,borr,lat,deriv,2,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "largoj/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "largove 61"
+    ]
+   }
+  },
+  {
+   "form": "larguam",
+   "lemma": "largohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "largoj [V,vt,vi,borr,lat,deriv,1,pl,aor,ind,act]",
+     "largoj [V,med,borr,lat,deriv,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "largoj/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "larguam 268"
+    ]
+   }
+  },
+  {
+   "form": "larguan",
+   "lemma": "largohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "largoj [V,vt,vi,borr,lat,deriv,3,pl,aor,ind,act]",
+     "largoj [V,med,borr,lat,deriv,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "largoj/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "larguan 3180"
+    ]
+   }
+  },
+  {
+   "form": "larguat",
+   "lemma": "largohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "largoj [V,vt,vi,borr,lat,deriv,2,pl,aor,ind,act]",
+     "largoj [V,med,borr,lat,deriv,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "largoj/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "larguat 109"
+    ]
+   }
+  },
+  {
+   "form": "linda",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "other",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lind [V,med,alb,1,sg,aor,ind,act]",
+     "lind [NOUN,m,inanim,pl,acc,indef]",
+     "lind [V,vt,vi,alb,1,sg,aor,ind,act]",
+     "lind [NOUN,m,inanim,pl,nom,indef]"
+    ],
+    "wiktionary": [
+     "lind/VERB Tense=Past",
+     "lind/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "ud-staf": [
+     "lindë/PROPN Case=Nom Number=Sing Definite=Def Gender=Masc"
+    ],
+    "corpus": [
+     "linda 1550"
+    ]
+   }
+  },
+  {
+   "form": "linde",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lind [V,vt,vi,alb,2,sg,pres,ind,pass,nonst]",
+     "lind [V,med,alb,2,sg,pres,ind,pass,nonst]"
+    ],
+    "wiktionary": [
+     "lind/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "linde 221"
+    ]
+   }
+  },
+  {
+   "form": "lindi",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lind [V,vt,vi,alb,3,sg,aor,ind,act]",
+     "lind [NOUN,m,inanim,sg,abl,indef]",
+     "lind [V,vt,vi,alb,2,sg,imp,act]",
+     "lind [NOUN,m,inanim,sg,gen_dat,indef]",
+     "lind [NOUN,m,inanim,sg,nom,def]"
+    ],
+    "wiktionary": [
+     "lind/VERB Number=Sing Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lindi 6560"
+    ]
+   }
+  },
+  {
+   "form": "lindëm",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lind [V,med,alb,1,pl,aor,ind,act]",
+     "lind [V,vt,vi,alb,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "lind/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lindëm 72"
+    ]
+   }
+  },
+  {
+   "form": "lindën",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "other",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lind [V,vt,vi,alb,3,pl,aor,ind,act]",
+     "lind [V,med,alb,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "lind/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "ud-staf": [
+     "lindën/PROPN"
+    ],
+    "corpus": [
+     "lindën 1051"
+    ]
+   }
+  },
+  {
+   "form": "lindët",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lind [V,med,alb,2,pl,aor,ind,act]",
+     "lind [V,vt,vi,alb,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "lind/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lindët 20"
     ]
    }
   },
@@ -2102,6 +5452,160 @@
      "lini 2347",
      "liheni 8",
      "lëni 36"
+    ]
+   }
+  },
+  {
+   "form": "lodha",
+   "lemma": "lodhem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lodh [V,vt,alb,1,sg,aor,ind,act]",
+     "lodh [V,med,alb,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "lodh/VERB Tense=Past",
+     "lodh/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lodha 150"
+    ]
+   }
+  },
+  {
+   "form": "lodhe",
+   "lemma": "lodhem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lodh [V,vt,alb,2,sg,pres,ind,pass,nonst]",
+     "lodh [V,med,alb,2,sg,pres,ind,pass,nonst]"
+    ],
+    "wiktionary": [
+     "lodh/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lodhe 92"
+    ]
+   }
+  },
+  {
+   "form": "lodhëm",
+   "lemma": "lodhem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lodh [V,med,alb,1,pl,aor,ind,act]",
+     "lodh [V,vt,alb,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "lodh/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lodhëm 44"
+    ]
+   }
+  },
+  {
+   "form": "lodhën",
+   "lemma": "lodhem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lodh [V,med,alb,3,pl,aor,ind,act]",
+     "lodh [V,vt,alb,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "lodh/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lodhën 119"
+    ]
+   }
+  },
+  {
+   "form": "lodhët",
+   "lemma": "lodhem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lodhët [A,alb,deriv,m,sg]",
+     "lodhët [A,alb,deriv,m,pl]",
+     "lodhët [A,alb,deriv,m,pl,nom,indef]",
+     "lodhët [A,alb,deriv,m,sg,acc,indef]",
+     "lodhët [A,alb,deriv,m,sg,nom,indef]"
+    ],
+    "wiktionary": [
+     "lodh/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lodhët 42"
     ]
    }
   },
@@ -2308,9 +5812,9 @@
    ],
    "evidence": {
     "uniparser": [
+     "lugë [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
      "lugë [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
-     "lugë [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
-     "lugë [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]"
+     "lugë [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
     ],
     "corpus": [
      "lugë 4077"
@@ -2339,13 +5843,170 @@
    "evidence": {
     "uniparser": [
      "lugët [A,alb,deriv,f,sg,acc,indef]",
-     "lugët [A,alb,deriv,m,pl,nom,indef]",
+     "lugët [A,alb,deriv,f,sg]",
+     "lugët [A,alb,deriv,m,sg,acc,indef]",
      "lugët [A,alb,deriv,m,pl,acc,indef]",
-     "lugët [A,alb,deriv,m,pl]",
-     "lugët [A,alb,deriv,m,sg,nom,indef]"
+     "lugët [A,alb,deriv,m,pl]"
     ],
     "corpus": [
      "lugët 74"
+    ]
+   }
+  },
+  {
+   "form": "luta",
+   "lemma": "lutem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lut [V,med,alb,1,sg,aor,ind,act]",
+     "lut [V,vt,alb,1,sg,aor,ind,act]",
+     "lutë [NOUN,f,anim,sg,nom,def]",
+     "lutë [NOUN,f,anim,pl,nom,indef]",
+     "lutë [NOUN,f,anim,pl,acc,indef]"
+    ],
+    "wiktionary": [
+     "lus/VERB Tense=Past",
+     "lut/VERB Tense=Past",
+     "lut/VERB Number=Sing Person=1 Tense=Past Mood=Ind",
+     "lut/VERB Number=Sing Person=1 Tense=Past"
+    ],
+    "corpus": [
+     "luta 594"
+    ]
+   }
+  },
+  {
+   "form": "lute",
+   "lemma": "lutem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lut [V,vt,alb,2,sg,pres,ind,pass,nonst]",
+     "lut [V,med,alb,2,sg,pres,ind,pass,nonst]"
+    ],
+    "wiktionary": [
+     "lut/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lute 29"
+    ]
+   }
+  },
+  {
+   "form": "lutëm",
+   "lemma": "lutem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lut [V,vt,alb,1,pl,aor,ind,act]",
+     "lut [V,med,alb,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "lut/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lutëm 106"
+    ]
+   }
+  },
+  {
+   "form": "lutën",
+   "lemma": "lutem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lut [V,med,alb,3,pl,aor,ind,act]",
+     "lut [V,vt,alb,3,pl,aor,ind,act]",
+     "lutë [NOUN,f,anim,sg,acc,def]"
+    ],
+    "wiktionary": [
+     "lut/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lutën 188"
+    ]
+   }
+  },
+  {
+   "form": "lutët",
+   "lemma": "lutem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "lut [V,vt,alb,2,pl,aor,ind,act]",
+     "lut [V,med,alb,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "lut/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "lutët 7"
     ]
    }
   },
@@ -2522,6 +6183,339 @@
     "corpus": [
      "maceje 57",
      "mace 686"
+    ]
+   }
+  },
+  {
+   "form": "martova",
+   "lemma": "martohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "martoj [V,med,borr,lat,1,sg,aor,ind,act]",
+     "martoj [V,vt,borr,lat,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "martoj/VERB Tense=Past",
+     "martoj/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "martova 175"
+    ]
+   }
+  },
+  {
+   "form": "martove",
+   "lemma": "martohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "martoj [V,med,borr,lat,2,sg,aor,ind,act]",
+     "martoj [V,vt,borr,lat,2,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "martoj/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "martove 26"
+    ]
+   }
+  },
+  {
+   "form": "martuam",
+   "lemma": "martohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "martoj [V,vt,borr,lat,1,pl,aor,ind,act]",
+     "martoj [V,med,borr,lat,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "martoj/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "martuam 71"
+    ]
+   }
+  },
+  {
+   "form": "martuan",
+   "lemma": "martohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "martoj [V,vt,borr,lat,3,pl,aor,ind,act]",
+     "martoj [V,med,borr,lat,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "martoj/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "martuan 442"
+    ]
+   }
+  },
+  {
+   "form": "martuat",
+   "lemma": "martohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "martoj [V,vt,borr,lat,2,pl,aor,ind,act]",
+     "martoj [V,med,borr,lat,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "martoj/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "martuat 10"
+    ]
+   }
+  },
+  {
+   "form": "mbeta",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "mbet [V,med,alb,1,sg,aor,ind,act]",
+     "mbet [V,vi,alb,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "mbet/VERB Tense=Past",
+     "mbet/VERB Number=Sing Person=1 Tense=Past Mood=Ind",
+     "mbes/VERB Tense=Past"
+    ],
+    "corpus": [
+     "mbeta 691"
+    ]
+   }
+  },
+  {
+   "form": "mbete",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "mbet [V,med,alb,2,sg,pres,ind,pass,nonst]",
+     "mbet [V,vi,alb,2,sg,pres,ind,pass,nonst]"
+    ],
+    "wiktionary": [
+     "mbet/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "mbete 279"
+    ]
+   }
+  },
+  {
+   "form": "mbeti",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "mbet [V,vi,alb,2,sg,imp,act]",
+     "mbet [V,vi,alb,3,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "mbet/VERB Number=Sing Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "mbeti 9233"
+    ]
+   }
+  },
+  {
+   "form": "mbetëm",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "mbet [V,med,alb,1,pl,aor,ind,act]",
+     "mbet [V,vi,alb,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "mbet/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "mbetëm 439"
+    ]
+   }
+  },
+  {
+   "form": "mbetën",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "mbet [V,vi,alb,3,pl,aor,ind,act]",
+     "mbet [V,med,alb,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "mbet/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "mbetën 5425"
+    ]
+   }
+  },
+  {
+   "form": "mbetët",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "mbet [V,med,alb,2,pl,aor,ind,act]",
+     "mbet [V,vi,alb,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "mbet/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "mbetët 324"
     ]
    }
   },
@@ -2849,6 +6843,121 @@
    }
   },
   {
+   "form": "moshë",
+   "lemma": "moshë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "moshë [NOUN,f,inanim,alb,sg,nom,indef]",
+     "moshë [NOUN,f,inanim,alb,sg,acc,indef]",
+     "moshë [NOUN,f,inanim,alb,sg,unmkd,indef]"
+    ],
+    "corpus": [
+     "moshë 8794"
+    ]
+   }
+  },
+  {
+   "form": "moshësh",
+   "lemma": "moshë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [],
+   "dissent": [
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: moshash"
+    ],
+    "corpus": [
+     "moshësh 3",
+     "moshash 62"
+    ]
+   }
+  },
+  {
+   "form": "moshët",
+   "lemma": "moshë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [],
+   "dissent": [
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: moshat"
+    ],
+    "corpus": [
+     "moshët 0",
+     "moshat 1936"
+    ]
+   }
+  },
+  {
+   "form": "moshëve",
+   "lemma": "moshë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [],
+   "dissent": [
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: moshash, moshave"
+    ],
+    "corpus": [
+     "moshëve 0",
+     "moshash 62",
+     "moshave 2572"
+    ]
+   }
+  },
+  {
    "form": "muajt",
    "lemma": "muaj",
    "pos": "NOUN",
@@ -2876,6 +6985,157 @@
     "corpus": [
      "muajt 12002",
      "muajtë 26"
+    ]
+   }
+  },
+  {
+   "form": "munda",
+   "lemma": "mundem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "mund [V,vt,alb,1,sg,aor,ind,act]",
+     "mund [V,med,alb,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "mund/VERB Tense=Past",
+     "mund/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "munda 781"
+    ]
+   }
+  },
+  {
+   "form": "munde",
+   "lemma": "mundem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "mund [V,med,alb,2,sg,pres,ind,pass,nonst]",
+     "mund [V,vt,alb,2,sg,pres,ind,pass,nonst]"
+    ],
+    "wiktionary": [
+     "mund/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "munde 158"
+    ]
+   }
+  },
+  {
+   "form": "mundëm",
+   "lemma": "mundem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "mund [V,vt,alb,1,pl,aor,ind,act]",
+     "mund [V,med,alb,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "mund/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "mundëm 545"
+    ]
+   }
+  },
+  {
+   "form": "mundën",
+   "lemma": "mundem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "mund [V,med,alb,3,pl,aor,ind,act]",
+     "mund [V,vt,alb,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "mund/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "mundën 1943"
+    ]
+   }
+  },
+  {
+   "form": "mundët",
+   "lemma": "mundem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "mund [V,vt,alb,2,pl,aor,ind,act]",
+     "mund [V,med,alb,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "mund/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "mundët 92"
     ]
    }
   },
@@ -2928,8 +7188,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "muzeum [NOUN,mf,inanim,pl,nom,indef]",
-     "muzeum [NOUN,mf,inanim,pl,acc,indef]"
+     "muzeum [NOUN,mf,inanim,pl,acc,indef]",
+     "muzeum [NOUN,mf,inanim,pl,nom,indef]"
     ],
     "wiktionary": [
      "its table has here: muze"
@@ -3039,6 +7299,804 @@
    }
   },
   {
+   "form": "ndihej",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndiej [V,vt,alb,3,sg,ipf,ind,pass]",
+     "ndiej [V,med,alb,3,sg,ipf,ind,pass]",
+     "ndih [V,vt,alb,3,sg,ipf,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB Number=Sing Person=3 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ndihej 1796"
+    ]
+   }
+  },
+  {
+   "form": "ndihem",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "other",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndih [V,vt,alb,1,sg,pres,ind,pass]",
+     "ndiej [V,med,alb,1,sg,pres,ind,pass]",
+     "ndiej [V,vt,alb,1,sg,pres,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB",
+     "ndihem/VERB Number=Sing Person=1 Tense=Pres Mood=Ind",
+     "ndihem/VERB Number=Sing Person=1 Tense=Pres Mood=Sub"
+    ],
+    "ud-staf": [
+     "ndihem/VERB Number=Sing Person=3 Tense=Pres Mood=Ind Voice=Mid VerbForm=Fin"
+    ],
+    "corpus": [
+     "ndihem 3593"
+    ]
+   }
+  },
+  {
+   "form": "ndihemi",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndih [V,vt,alb,1,pl,pres,ind,pass]",
+     "ndiej [V,vt,alb,1,pl,pres,ind,pass]",
+     "ndiej [V,med,alb,1,pl,pres,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB Number=Plur Person=1 Tense=Pres Mood=Ind",
+     "ndihem/VERB Number=Plur Person=1 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "ndihemi 1314"
+    ]
+   }
+  },
+  {
+   "form": "ndihen",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndiej [V,med,alb,3,pl,pres,ind,pass]",
+     "ndiej [V,vt,alb,3,pl,pres,ind,pass]",
+     "ndih [V,vt,alb,3,pl,pres,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB Number=Plur Person=3 Tense=Pres Mood=Ind",
+     "ndihem/VERB Number=Plur Person=3 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "ndihen 4127"
+    ]
+   }
+  },
+  {
+   "form": "ndiheni",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndih [V,vt,alb,2,pl,imp,act]",
+     "ndih [V,vt,alb,2,pl,pres,ind,pass]",
+     "ndiej [V,med,alb,2,pl,pres,ind,pass]",
+     "ndiej [V,vt,alb,2,pl,pres,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB Number=Plur Person=2 Tense=Pres Mood=Ind",
+     "ndihem/VERB Number=Plur Person=2 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "ndiheni 3697"
+    ]
+   }
+  },
+  {
+   "form": "ndihesh",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "other",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndiej [V,vt,alb,2,sg,pres,ind,pass]",
+     "ndih [V,vt,alb,3,sg,ipf,ind,pass]",
+     "ndiej [V,vt,alb,3,sg,ipf,ind,pass]",
+     "ndih [V,vt,alb,2,sg,pres,ind,pass]",
+     "ndiej [V,med,alb,3,sg,ipf,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB Number=Sing Person=2 Tense=Pres Mood=Ind",
+     "ndihem/VERB Number=Sing Person=3 Tense=Imp Mood=Ind",
+     "ndihem/VERB Number=Sing Person=2 Tense=Pres Mood=Sub"
+    ],
+    "ud-staf": [
+     "ndihem/VERB Number=Sing Person=2 Tense=Pres Mood=Ind Voice=Act VerbForm=Fin"
+    ],
+    "corpus": [
+     "ndihesh 1023"
+    ]
+   }
+  },
+  {
+   "form": "ndihesha",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndiej [V,med,alb,1,sg,ipf,ind,pass]",
+     "ndiej [V,vt,alb,1,sg,ipf,ind,pass]",
+     "ndih [V,vt,alb,1,sg,ipf,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB Number=Sing Person=1 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ndihesha 591"
+    ]
+   }
+  },
+  {
+   "form": "ndiheshe",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndiej [V,vt,alb,2,sg,ipf,ind,pass]",
+     "ndih [V,vt,alb,2,sg,ipf,ind,pass]",
+     "ndiej [V,med,alb,2,sg,ipf,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB Number=Sing Person=2 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ndiheshe 56"
+    ]
+   }
+  },
+  {
+   "form": "ndiheshim",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndih [V,vt,alb,1,pl,ipf,ind,pass]",
+     "ndiej [V,vt,alb,1,pl,ipf,ind,pass]",
+     "ndiej [V,med,alb,1,pl,ipf,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB Number=Plur Person=1 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ndiheshim 119"
+    ]
+   }
+  },
+  {
+   "form": "ndiheshin",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndiej [V,vt,alb,3,pl,ipf,ind,pass]",
+     "ndih [V,vt,alb,3,pl,ipf,ind,pass]",
+     "ndiej [V,med,alb,3,pl,ipf,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB Number=Plur Person=3 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ndiheshin 512"
+    ]
+   }
+  },
+  {
+   "form": "ndiheshit",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndiej [V,med,alb,2,pl,ipf,ind,pass]",
+     "ndiej [V,vt,alb,2,pl,ipf,ind,pass]",
+     "ndih [V,vt,alb,2,pl,ipf,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB Number=Plur Person=2 Tense=Imp Mood=Ind"
+    ],
+    "corpus": [
+     "ndiheshit 45"
+    ]
+   }
+  },
+  {
+   "form": "ndihet",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndiej [V,vt,alb,3,sg,pres,ind,pass]",
+     "ndih [V,vt,alb,3,sg,pres,ind,pass]",
+     "ndiej [V,med,alb,3,sg,pres,ind,pass]"
+    ],
+    "wiktionary": [
+     "ndihem/VERB Number=Sing Person=3 Tense=Pres Mood=Ind",
+     "ndihem/VERB Number=Sing Person=3 Tense=Pres Mood=Sub"
+    ],
+    "corpus": [
+     "ndihet 5834"
+    ]
+   }
+  },
+  {
+   "form": "ndihu",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Mood=Imp Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndih [V,vt,alb,2,sg,imp,act]",
+     "ndih [V,vt,alb,3,sg,aor,ind,act]",
+     "ndih [V,vt,alb,2,sg,imp,pass]",
+     "ndiej [V,med,alb,2,sg,imp,pass]",
+     "ndiej [V,vt,alb,2,sg,imp,pass]"
+    ],
+    "wiktionary": [
+     "ndih/VERB Number=Sing Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ndihu 29"
+    ]
+   }
+  },
+  {
+   "form": "ndihuni",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Mood=Imp Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndih [V,vt,alb,2,pl,imp,pass]",
+     "ndih [V,vt,alb,2,pl,imp,act]",
+     "ndiej [V,med,alb,2,pl,imp,pass]",
+     "ndiej [V,vt,alb,2,pl,imp,pass]"
+    ],
+    "corpus": [
+     "ndihuni 37"
+    ]
+   }
+  },
+  {
+   "form": "ndodha",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndodh [V,vi,alb,1,sg,aor,ind,act]",
+     "ndodh [V,med,alb,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "ndodh/VERB Tense=Past",
+     "ndodh/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ndodha 163"
+    ]
+   }
+  },
+  {
+   "form": "ndodhe",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndodh [V,med,alb,2,sg,pres,ind,pass,nonst]",
+     "ndodh [V,vi,alb,2,sg,pres,ind,pass,nonst]"
+    ],
+    "wiktionary": [
+     "ndodh/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ndodhe 259"
+    ]
+   }
+  },
+  {
+   "form": "ndodhi",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndodhi [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
+     "ndodhi [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
+     "ndodhi [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+     "ndodh [V,vi,alb,2,sg,imp,act]",
+     "ndodhi [NOUN,f,inanim,alb,deriv,sg,nom,indef]"
+    ],
+    "wiktionary": [
+     "ndodhi/NOUN",
+     "ndodhi/NOUN Number=Plur",
+     "ndodhi/NOUN Case=Nom Number=Sing Definite=Ind",
+     "ndodhi/NOUN Case=Nom Number=Plur Definite=Ind",
+     "ndodhi/NOUN Case=Acc Number=Sing Definite=Ind"
+    ],
+    "corpus": [
+     "ndodhi 25759"
+    ]
+   }
+  },
+  {
+   "form": "ndodhëm",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndodh [V,vi,alb,1,pl,aor,ind,act]",
+     "ndodh [V,med,alb,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "ndodh/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ndodhëm 61"
+    ]
+   }
+  },
+  {
+   "form": "ndodhën",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndodh [V,vi,alb,3,pl,aor,ind,act]",
+     "ndodh [V,med,alb,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "ndodh/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ndodhën 2574"
+    ]
+   }
+  },
+  {
+   "form": "ndodhët",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ndodh [V,med,alb,2,pl,aor,ind,act]",
+     "ndodh [V,vi,alb,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "ndodh/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "ndodhët 22"
+    ]
+   }
+  },
+  {
+   "form": "ngita",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "ngita 0"
+    ]
+   }
+  },
+  {
+   "form": "ngite",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ngas [V,med,alb,2,sg,pres,ind,pass,nonst]",
+     "ngas [V,vt,alb,2,sg,pres,ind,pass,nonst]",
+     "ngas [V,vt,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "ngite 1"
+    ]
+   }
+  },
+  {
+   "form": "ngiti",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ngas [V,vt,alb,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "ngiti 9"
+    ]
+   }
+  },
+  {
+   "form": "ngitur",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "VerbForm=Part",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "ngitur 22"
+    ]
+   }
+  },
+  {
+   "form": "ngitëm",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "ngitëm 0"
+    ]
+   }
+  },
+  {
+   "form": "ngitën",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "ngitën 4"
+    ]
+   }
+  },
+  {
+   "form": "ngitët",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "ngitët 0"
+    ]
+   }
+  },
+  {
    "form": "nipërish",
    "lemma": "nip",
    "pos": "NOUN",
@@ -3064,6 +8122,182 @@
     "corpus": [
      "nipërish 1",
      "nipërsh 0"
+    ]
+   }
+  },
+  {
+   "form": "nisa",
+   "lemma": "nisem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "nisë [NOUN,f,inanim,unknwn,deriv,pl,nom,indef]",
+     "nisë [NOUN,f,inanim,unknwn,deriv,pl,acc,indef]",
+     "nisë [NOUN,f,inanim,unknwn,deriv,sg,nom,def]",
+     "nis [V,med,unknwn,1,sg,aor,ind,act]",
+     "nis [V,vt,vi,unknwn,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "nis/VERB Tense=Past",
+     "nis/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "nisa 1639"
+    ]
+   }
+  },
+  {
+   "form": "nise",
+   "lemma": "nisem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "nis [V,med,unknwn,2,sg,pres,ind,pass,nonst]",
+     "nis [V,vt,vi,unknwn,2,sg,pres,ind,pass,nonst]"
+    ],
+    "wiktionary": [
+     "nis/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "nise 225"
+    ]
+   }
+  },
+  {
+   "form": "nisëm",
+   "lemma": "nisem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "nis [V,vt,vi,unknwn,1,pl,aor,ind,act]",
+     "nis [V,med,unknwn,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "nis/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "nisëm 1545"
+    ]
+   }
+  },
+  {
+   "form": "nisën",
+   "lemma": "nisem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "nis [V,vt,vi,unknwn,3,pl,aor,ind,act]",
+     "nisë [NOUN,f,inanim,unknwn,deriv,sg,acc,def]",
+     "nis [V,med,unknwn,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "nis/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "nisën 6164"
+    ]
+   }
+  },
+  {
+   "form": "nisët",
+   "lemma": "nisem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "nis [V,med,unknwn,2,pl,aor,ind,act]",
+     "nis [V,vt,vi,unknwn,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "nis/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "nisët 140"
+    ]
+   }
+  },
+  {
+   "form": "nr",
+   "lemma": "nr",
+   "pos": "X",
+   "status": "single-source",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "nr 38629"
     ]
    }
   },
@@ -4038,6 +9272,48 @@
    }
   },
   {
+   "form": "p.e.s",
+   "lemma": "p.e.s",
+   "pos": "X",
+   "status": "single-source",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "p.e.s 0"
+    ]
+   }
+  },
+  {
+   "form": "p.sh",
+   "lemma": "p.sh",
+   "pos": "X",
+   "status": "single-source",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "p.sh 0"
+    ]
+   }
+  },
+  {
    "form": "pa",
    "lemma": "shoh",
    "pos": "VERB",
@@ -4058,8 +9334,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "shoh [V,vt,alb,3,sg,aor,ind,pass]",
      "shoh [V,vt,alb,ptcp,nonst]",
+     "shoh [V,vt,alb,3,sg,aor,ind,pass]",
      "shoh [V,vt,alb,2,sg,aor,ind,act]"
     ],
     "ud-staf": [
@@ -4069,6 +9345,199 @@
     ],
     "corpus": [
      "pa 278785"
+    ]
+   }
+  },
+  {
+   "form": "pajtova",
+   "lemma": "pajtohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "pajtoj [V,med,borr,lat,deriv,1,sg,aor,ind,act]",
+     "pajtoj [V,vt,vi,borr,lat,deriv,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "pajtoj/VERB Tense=Past",
+     "pajtoj/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "pajtova 36"
+    ]
+   }
+  },
+  {
+   "form": "pajtove",
+   "lemma": "pajtohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "pajtoj [V,med,borr,lat,deriv,2,sg,aor,ind,act]",
+     "pajtoj [V,vt,vi,borr,lat,deriv,2,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "pajtoj/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "pajtove 3"
+    ]
+   }
+  },
+  {
+   "form": "pajtuam",
+   "lemma": "pajtohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "pajtoj [V,med,borr,lat,deriv,1,pl,aor,ind,act]",
+     "pajtoj [V,vt,vi,borr,lat,deriv,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "pajtoj/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "pajtuam 259"
+    ]
+   }
+  },
+  {
+   "form": "pajtuan",
+   "lemma": "pajtohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "pajtoj [V,vt,vi,borr,lat,deriv,3,pl,aor,ind,act]",
+     "pajtoj [V,med,borr,lat,deriv,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "pajtoj/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "pajtuan 1075"
+    ]
+   }
+  },
+  {
+   "form": "pajtuat",
+   "lemma": "pajtohem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "pajtoj [V,vt,vi,borr,lat,deriv,2,pl,aor,ind,act]",
+     "pajtoj [V,med,borr,lat,deriv,2,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "pajtoj/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "pajtuat 16"
+    ]
+   }
+  },
+  {
+   "form": "palltonë",
+   "lemma": "pallto",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Acc Number=Sing Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "palltonë 0"
+    ]
+   }
+  },
+  {
+   "form": "palltosë",
+   "lemma": "pallto",
+   "pos": "NOUN",
+   "status": "single-source",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "palltosë 0"
     ]
    }
   },
@@ -4113,10 +9582,10 @@
    "evidence": {
     "uniparser": [
      "pasdite [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
-     "pasdite [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+     "pasdite [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
      "pasdite [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
-     "pasdite [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
-     "pasdite [NOUN,f,inanim,alb,deriv,sg,nom,indef]"
+     "pasdite [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+     "pasdite [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
     ],
     "wiktionary": [
      "pasdite/ADV"
@@ -4336,11 +9805,226 @@
    ],
    "evidence": {
     "uniparser": [
-     "perime [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
-     "perime [NOUN,f,inanim,alb,deriv,pl,nom,indef]"
+     "perime [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+     "perime [NOUN,f,inanim,alb,deriv,pl,acc,indef]"
     ],
     "corpus": [
      "perime 2761"
+    ]
+   }
+  },
+  {
+   "form": "peshqsh",
+   "lemma": "peshk",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [],
+   "dissent": [
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: peshqish"
+    ],
+    "corpus": [
+     "peshqsh 0",
+     "peshqish 148"
+    ]
+   }
+  },
+  {
+   "form": "pjeka",
+   "lemma": "pjek",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary"
+   ],
+   "evidence": {
+    "uniparser": [
+     "pjekë [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+     "pjekë [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
+     "pjekë [NOUN,f,inanim,alb,deriv,sg,nom,def]"
+    ],
+    "wiktionary": [
+     "its table has here: poqa"
+    ],
+    "corpus": [
+     "pjeka 2",
+     "poqa 32"
+    ]
+   }
+  },
+  {
+   "form": "pjeke",
+   "lemma": "pjek",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary"
+   ],
+   "evidence": {
+    "uniparser": [
+     "pjekë [NOUN,f,inanim,alb,deriv,sg,gen_dat,indef]",
+     "pjekë [NOUN,f,inanim,alb,deriv,sg,abl,indef]"
+    ],
+    "wiktionary": [
+     "its table has here: poqe"
+    ],
+    "corpus": [
+     "pjeke 1",
+     "poqe 21"
+    ]
+   }
+  },
+  {
+   "form": "pjeki",
+   "lemma": "pjek",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: poqi"
+    ],
+    "corpus": [
+     "pjeki 2",
+     "poqi 47"
+    ]
+   }
+  },
+  {
+   "form": "pjekëm",
+   "lemma": "pjek",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary"
+   ],
+   "evidence": {
+    "uniparser": [
+     "pjekëm [A,alb,deriv,m,pl,acc,indef]",
+     "pjekëm [A,alb,deriv,m,sg]",
+     "pjekëm [A,alb,deriv,m,pl]",
+     "pjekëm [A,alb,deriv,m,pl,nom,indef]",
+     "pjekëm [A,alb,deriv,m,sg,nom,indef]"
+    ],
+    "wiktionary": [
+     "its table has here: poqëm"
+    ],
+    "corpus": [
+     "pjekëm 2",
+     "poqëm 20"
+    ]
+   }
+  },
+  {
+   "form": "pjekën",
+   "lemma": "pjek",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary"
+   ],
+   "evidence": {
+    "uniparser": [
+     "pjekë [NOUN,f,inanim,alb,deriv,sg,acc,def]"
+    ],
+    "wiktionary": [
+     "its table has here: poqën"
+    ],
+    "corpus": [
+     "pjekën 7",
+     "poqën 50"
+    ]
+   }
+  },
+  {
+   "form": "pjekët",
+   "lemma": "pjek",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "uniparser"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: poqët"
+    ],
+    "corpus": [
+     "pjekët 1",
+     "poqët 1"
     ]
    }
   },
@@ -4404,6 +10088,534 @@
    }
   },
   {
+   "form": "prof",
+   "lemma": "prof",
+   "pos": "X",
+   "status": "single-source",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "prof 12749"
+    ]
+   }
+  },
+  {
+   "form": "përula",
+   "lemma": "përulem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "përul [V,med,1,sg,aor,ind,act]",
+     "përul [V,vt,1,sg,aor,ind,act]"
+    ],
+    "corpus": [
+     "përula 17"
+    ]
+   }
+  },
+  {
+   "form": "përule",
+   "lemma": "përulem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "përul [V,vt,2,sg,pres,ind,pass,nonst]",
+     "përul [V,med,2,sg,pres,ind,pass,nonst]"
+    ],
+    "corpus": [
+     "përule 2"
+    ]
+   }
+  },
+  {
+   "form": "përulëm",
+   "lemma": "përulem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "përul [V,med,1,pl,aor,ind,act]",
+     "përul [V,vt,1,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "përulëm 4"
+    ]
+   }
+  },
+  {
+   "form": "përulën",
+   "lemma": "përulem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "përul [V,med,3,pl,aor,ind,act]",
+     "përul [V,vt,3,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "përulën 44"
+    ]
+   }
+  },
+  {
+   "form": "përulët",
+   "lemma": "përulem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "përul [V,med,2,pl,aor,ind,act]",
+     "përul [V,vt,2,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "përulët 3"
+    ]
+   }
+  },
+  {
+   "form": "përziehej",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Sing Person=3 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përziehej 0"
+    ]
+   }
+  },
+  {
+   "form": "përziehem",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Sing Person=1 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përziehem 0"
+    ]
+   }
+  },
+  {
+   "form": "përziehemi",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=1 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përziehemi 0"
+    ]
+   }
+  },
+  {
+   "form": "përziehen",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=3 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përziehen 7"
+    ]
+   }
+  },
+  {
+   "form": "përzieheni",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përzieheni 0"
+    ]
+   }
+  },
+  {
+   "form": "përziehesh",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Sing Person=2 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përziehesh 0"
+    ]
+   }
+  },
+  {
+   "form": "përziehesha",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Sing Person=1 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përziehesha 0"
+    ]
+   }
+  },
+  {
+   "form": "përzieheshe",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Sing Person=2 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përzieheshe 0"
+    ]
+   }
+  },
+  {
+   "form": "përzieheshim",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=1 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përzieheshim 0"
+    ]
+   }
+  },
+  {
+   "form": "përzieheshin",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=3 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përzieheshin 1"
+    ]
+   }
+  },
+  {
+   "form": "përzieheshit",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=2 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përzieheshit 0"
+    ]
+   }
+  },
+  {
+   "form": "përziehet",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Sing Person=3 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përziehet 1"
+    ]
+   }
+  },
+  {
+   "form": "përziehu",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Sing Person=2 Mood=Imp Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përziehu 0"
+    ]
+   }
+  },
+  {
+   "form": "përziehuni",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=2 Mood=Imp Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përziehuni 0"
+    ]
+   }
+  },
+  {
+   "form": "përzjemë",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "përziej [V,vt,alb,deriv,2,sg,imp,act]"
+    ],
+    "corpus": [
+     "përzjemë 1"
+    ]
+   }
+  },
+  {
+   "form": "përzjenë",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përzjenë 21"
+    ]
+   }
+  },
+  {
+   "form": "përzjetë",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "status": "single-source",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "përzjetë 0"
+    ]
+   }
+  },
+  {
    "form": "qepë",
    "lemma": "qepë",
    "pos": "NOUN",
@@ -4424,8 +10636,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "qepë [NOUN,f,inanim,borr,lat,sg,nom,indef]",
      "qepë [NOUN,f,inanim,borr,lat,sg,unmkd,indef]",
+     "qepë [NOUN,f,inanim,borr,lat,sg,nom,indef]",
      "qepë [NOUN,f,inanim,borr,lat,sg,acc,indef]"
     ],
     "corpus": [
@@ -4482,8 +10694,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "qep [V,med,alb,deriv,2,pl,aor,ind,act]",
-     "qep [V,vt,alb,deriv,2,pl,aor,ind,act]"
+     "qep [V,vt,alb,deriv,2,pl,aor,ind,act]",
+     "qep [V,med,alb,deriv,2,pl,aor,ind,act]"
     ],
     "corpus": [
      "qepët 343"
@@ -4549,6 +10761,139 @@
     ],
     "corpus": [
      "ra 12383"
+    ]
+   }
+  },
+  {
+   "form": "radha",
+   "lemma": "radhë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary"
+   ],
+   "evidence": {
+    "uniparser": [
+     "radhë [NOUN,f,inanim,nonst,borr,greek,pl,nom,indef]",
+     "radhë [NOUN,f,inanim,nonst,borr,greek,pl,acc,indef]",
+     "radhë [NOUN,f,inanim,borr,greek,sg,nom,def]"
+    ],
+    "wiktionary": [
+     "its table has here: radhë"
+    ],
+    "corpus": [
+     "radha 1941",
+     "radhë 23402"
+    ]
+   }
+  },
+  {
+   "form": "radhash",
+   "lemma": "radhë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary"
+   ],
+   "evidence": {
+    "uniparser": [
+     "radhë [NOUN,f,inanim,nonst,borr,greek,pl,abl2,indef]"
+    ],
+    "wiktionary": [
+     "its table has here: radhësh"
+    ],
+    "corpus": [
+     "radhash 0",
+     "radhësh 12"
+    ]
+   }
+  },
+  {
+   "form": "radhat",
+   "lemma": "radhë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "uniparser": [
+     "radhë [NOUN,f,inanim,nonst,borr,greek,pl,acc,def]",
+     "radhë [NOUN,f,inanim,nonst,borr,greek,pl,nom,def]"
+    ],
+    "wiktionary": [
+     "its table has here: radhët"
+    ],
+    "corpus": [
+     "radhat 5",
+     "radhët 9704"
+    ]
+   }
+  },
+  {
+   "form": "radhave",
+   "lemma": "radhë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser",
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "uniparser": [
+     "radhë [NOUN,f,inanim,nonst,borr,greek,pl,gen_dat,def]",
+     "radhë [NOUN,f,inanim,nonst,borr,greek,pl,abl,indef]",
+     "radhë [NOUN,f,inanim,nonst,borr,greek,pl,abl,def]",
+     "radhë [NOUN,f,inanim,nonst,borr,greek,pl,gen_dat,indef]"
+    ],
+    "wiktionary": [
+     "its table has here: radhësh, radhëve"
+    ],
+    "corpus": [
+     "radhave 7",
+     "radhësh 12",
+     "radhëve 901"
     ]
    }
   },
@@ -4674,6 +11019,141 @@
    }
   },
   {
+   "form": "ringjalla",
+   "lemma": "ringjallem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ringjall [V,med,alb,deriv,1,sg,aor,ind,act]",
+     "ringjall [V,vt,alb,deriv,1,sg,aor,ind,act]"
+    ],
+    "corpus": [
+     "ringjalla 2"
+    ]
+   }
+  },
+  {
+   "form": "ringjalle",
+   "lemma": "ringjallem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ringjall [V,vt,alb,deriv,2,sg,pres,ind,pass,nonst]",
+     "ringjall [V,med,alb,deriv,2,sg,pres,ind,pass,nonst]"
+    ],
+    "corpus": [
+     "ringjalle 7"
+    ]
+   }
+  },
+  {
+   "form": "ringjallëm",
+   "lemma": "ringjallem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ringjall [V,med,alb,deriv,1,pl,aor,ind,act]",
+     "ringjall [V,vt,alb,deriv,1,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "ringjallëm 9"
+    ]
+   }
+  },
+  {
+   "form": "ringjallën",
+   "lemma": "ringjallem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ringjall [V,vt,alb,deriv,3,pl,aor,ind,act]",
+     "ringjall [V,med,alb,deriv,3,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "ringjallën 42"
+    ]
+   }
+  },
+  {
+   "form": "ringjallët",
+   "lemma": "ringjallem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ringjall [V,med,alb,deriv,2,pl,aor,ind,act]",
+     "ringjall [V,vt,alb,deriv,2,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "ringjallët 4"
+    ]
+   }
+  },
+  {
    "form": "romane",
    "lemma": "roman",
    "pos": "NOUN",
@@ -4692,11 +11172,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "roman [A,f,pl]",
      "roman [A,f,pl,nom,indef]",
-     "roman [A,f,sg,nom,indef]",
+     "roman [A,f,pl]",
+     "roman [A,f,sg,acc,indef]",
      "roman [A,f,sg]",
-     "roman [A,f,pl,acc,indef]"
+     "roman [A,f,sg,nom,indef]"
     ],
     "corpus": [
      "romane 747"
@@ -4777,8 +11257,8 @@
     "uniparser": [
      "roman [A,f,pl,abl,def]",
      "roman [A,f,pl,gen_dat,indef]",
-     "roman [A,f,pl,abl,indef]",
-     "roman [A,f,pl,gen_dat,def]"
+     "roman [A,f,pl,gen_dat,def]",
+     "roman [A,f,pl,abl,indef]"
     ],
     "corpus": [
      "romaneve 251"
@@ -4835,8 +11315,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "ajo [PRO,3,sg,f,alb,abl]",
-     "saj [PRO,alb]"
+     "saj [PRO,alb]",
+     "ajo [PRO,3,sg,f,alb,abl]"
     ],
     "wiktionary": [
      "saj/DET",
@@ -5022,6 +11502,181 @@
    "evidence": {
     "corpus": [
      "salatës 0"
+    ]
+   }
+  },
+  {
+   "form": "shek",
+   "lemma": "shek",
+   "pos": "X",
+   "status": "single-source",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "shek 3488"
+    ]
+   }
+  },
+  {
+   "form": "shfaqa",
+   "lemma": "shfaqem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "shfaq [V,med,borr,lat,deriv,1,sg,aor,ind,act]",
+     "shfaq [V,vt,borr,lat,deriv,1,sg,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "shfaq/VERB Tense=Past",
+     "shfaq/VERB Number=Sing Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "shfaqa 81"
+    ]
+   }
+  },
+  {
+   "form": "shfaqe",
+   "lemma": "shfaqem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "shfaq [V,med,borr,lat,deriv,2,sg,pres,ind,pass,nonst]",
+     "shfaq [V,vt,borr,lat,deriv,2,sg,pres,ind,pass,nonst]"
+    ],
+    "wiktionary": [
+     "shfaq/VERB Number=Sing Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "shfaqe 246"
+    ]
+   }
+  },
+  {
+   "form": "shfaqëm",
+   "lemma": "shfaqem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "shfaq [V,med,borr,lat,deriv,1,pl,aor,ind,act]",
+     "shfaq [V,vt,borr,lat,deriv,1,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "shfaq/VERB Number=Plur Person=1 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "shfaqëm 43"
+    ]
+   }
+  },
+  {
+   "form": "shfaqën",
+   "lemma": "shfaqem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "shfaq [V,vt,borr,lat,deriv,3,pl,aor,ind,act]",
+     "shfaq [V,med,borr,lat,deriv,3,pl,aor,ind,act]"
+    ],
+    "wiktionary": [
+     "shfaq/VERB Number=Plur Person=3 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "shfaqën 1734"
+    ]
+   }
+  },
+  {
+   "form": "shfaqët",
+   "lemma": "shfaqem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "shfaqët [A,borr,lat,deriv,m,sg]",
+     "shfaqët [A,borr,lat,deriv,m,pl,nom,indef]",
+     "shfaq [V,med,borr,lat,deriv,2,pl,aor,ind,act]",
+     "shfaq [V,vt,borr,lat,deriv,2,pl,aor,ind,act]",
+     "shfaqët [A,borr,lat,deriv,f,sg]"
+    ],
+    "wiktionary": [
+     "shfaq/VERB Number=Plur Person=2 Tense=Past Mood=Ind"
+    ],
+    "corpus": [
+     "shfaqët 18"
     ]
    }
   },
@@ -5526,10 +12181,10 @@
    ],
    "evidence": {
     "uniparser": [
-     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
      "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,pass]",
+     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
+     "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
+     "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
      "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]"
     ],
     "wiktionary": [
@@ -5563,10 +12218,10 @@
    ],
    "evidence": {
     "uniparser": [
-     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
      "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,pass]",
+     "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
+     "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
+     "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
      "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]"
     ],
     "wiktionary": [
@@ -5661,8 +12316,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,act]",
-     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]"
+     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]",
+     "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,act]"
     ],
     "wiktionary": [
      "shëtit/VERB Number=Sing Person=3 Tense=Past Mood=Ind"
@@ -5691,11 +12346,11 @@
    ],
    "evidence": {
     "uniparser": [
-     "shëtitur [A,borr,slav,deriv,m,sg]",
+     "shëtitur [A,borr,slav,deriv,f,sg]",
      "shëtitur [A,borr,slav,deriv,m,pl]",
+     "shëtitur [A,borr,slav,deriv,m,pl,acc,indef]",
      "shëtitur [A,borr,slav,deriv,m,sg,acc,indef]",
-     "shëtitur [A,borr,slav,deriv,f,sg,acc,indef]",
-     "shëtitur [A,borr,slav,deriv,m,pl,acc,indef]"
+     "shëtitur [A,borr,slav,deriv,m,sg]"
     ],
     "wiktionary": [
      "shëtit/VERB VerbForm=Part"
@@ -5964,12 +12619,255 @@
    ],
    "evidence": {
     "uniparser": [
-     "them [V,vt,alb,nonst,3,sg,aor,ind,act]",
+     "them [V,vt,alb,nonst,ptcp]",
      "them [V,vt,alb,nonst,3,sg,aor,ind,pass]",
-     "them [V,vt,alb,nonst,ptcp]"
+     "them [V,vt,alb,nonst,3,sg,aor,ind,act]"
     ],
     "corpus": [
      "tha 322138"
+    ]
+   }
+  },
+  {
+   "form": "thirr",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Mood=Imp Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "differ",
+    "corpus": "agree"
+   },
+   "support": [
+    "corpus"
+   ],
+   "dissent": [
+    "uniparser",
+    "wiktionary"
+   ],
+   "evidence": {
+    "uniparser": [
+     "thërras [V,vt,vi,alb,3,sg,aor,ind,pass]"
+    ],
+    "wiktionary": [
+     "its table has here: thërrit"
+    ],
+    "ud-staf": [
+     "thërras/VERB Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin"
+    ],
+    "corpus": [
+     "thirr 1166",
+     "thërrit 39"
+    ]
+   }
+  },
+  {
+   "form": "thirra",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "status": "majority",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "agree"
+   },
+   "support": [
+    "uniparser",
+    "corpus"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: thërrita"
+    ],
+    "corpus": [
+     "thirra 502",
+     "thërrita 25"
+    ]
+   }
+  },
+  {
+   "form": "thirre",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "status": "majority",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "agree"
+   },
+   "support": [
+    "uniparser",
+    "corpus"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: thërrite"
+    ],
+    "corpus": [
+     "thirre 111",
+     "thërrite 4"
+    ]
+   }
+  },
+  {
+   "form": "thirri",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "uniparser"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: thërriti"
+    ],
+    "corpus": [
+     "thirri 3888",
+     "thërriti 132"
+    ]
+   }
+  },
+  {
+   "form": "thirrur",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "VerbForm=Part",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "uniparser"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: thërritur"
+    ],
+    "corpus": [
+     "thirrur 6775",
+     "thërritur 240"
+    ]
+   }
+  },
+  {
+   "form": "thirrëm",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "status": "majority",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "agree"
+   },
+   "support": [
+    "uniparser",
+    "corpus"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: thërritëm"
+    ],
+    "corpus": [
+     "thirrëm 82",
+     "thërritëm 8"
+    ]
+   }
+  },
+  {
+   "form": "thirrën",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "status": "majority",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "agree"
+   },
+   "support": [
+    "uniparser",
+    "corpus"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: thërritën"
+    ],
+    "corpus": [
+     "thirrën 898",
+     "thërritën 41"
+    ]
+   }
+  },
+  {
+   "form": "thirrët",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "uniparser"
+   ],
+   "dissent": [
+    "wiktionary"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: thërritët"
+    ],
+    "corpus": [
+     "thirrët 34",
+     "thërritët 1"
     ]
    }
   },
@@ -6037,6 +12935,132 @@
    }
   },
   {
+   "form": "thërrit",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Mood=Imp Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "thërras [V,vt,vi,alb,3,sg,aor,ind,pass]"
+    ],
+    "corpus": [
+     "thërrit 39"
+    ]
+   }
+  },
+  {
+   "form": "thërritte",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=3 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "said": {
+    "uniparser": "agree",
+    "wiktionary": "differ",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "differ"
+   },
+   "support": [
+    "uniparser"
+   ],
+   "dissent": [
+    "wiktionary",
+    "corpus"
+   ],
+   "evidence": {
+    "wiktionary": [
+     "its table has here: thërriste"
+    ],
+    "corpus": [
+     "thërritte 0",
+     "thërriste 1053"
+    ]
+   }
+  },
+  {
+   "form": "tilla",
+   "lemma": "tilla",
+   "pos": "DET",
+   "status": "disputed",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "tillë [PRO,alb,f,pl,acc,indef]",
+     "tillë [PRO,alb,f,sg,nom,def]",
+     "tillë [PRO,alb,f,pl,nom,indef]",
+     "tillë [PRO,alb,f,pl]"
+    ],
+    "wiktionary": [
+     "tillë/DET Gender=Fem"
+    ],
+    "corpus": [
+     "tilla 40130"
+    ]
+   }
+  },
+  {
+   "form": "tillë",
+   "lemma": "tilla",
+   "pos": "DET",
+   "status": "disputed",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "other",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "tillë [PRO,alb,m,pl,acc,indef]",
+     "tillë [PRO,alb,f,sg]",
+     "tillë [PRO,alb,m,sg,acc,indef]",
+     "tillë [PRO,alb,m,sg]",
+     "tillë [PRO,alb,m,pl,nom,indef]"
+    ],
+    "wiktionary": [
+     "tillë/DET"
+    ],
+    "ud-tsa": [
+     "tillë/PRON Case=Acc Number=Sing Gender=Masc"
+    ],
+    "corpus": [
+     "tillë 73856"
+    ]
+   }
+  },
+  {
    "form": "tyre",
    "lemma": "ai",
    "pos": "PRON",
@@ -6055,8 +13079,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "ato [PRO,3,pl,f,alb,abl]",
      "tyre [PRO,alb]",
+     "ato [PRO,3,pl,f,alb,abl]",
      "ata [PRO,3,pl,m,alb,abl]"
     ],
     "wiktionary": [
@@ -6071,6 +13095,154 @@
     ],
     "corpus": [
      "tyre 413249"
+    ]
+   }
+  },
+  {
+   "form": "ula",
+   "lemma": "ulem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ul [V,med,alb,1,sg,aor,ind,act]",
+     "ul [V,vt,alb,1,sg,aor,ind,act]"
+    ],
+    "corpus": [
+     "ula 505"
+    ]
+   }
+  },
+  {
+   "form": "ule",
+   "lemma": "ulem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ul [V,med,alb,2,sg,pres,ind,pass,nonst]",
+     "ul [V,vt,alb,2,sg,pres,ind,pass,nonst]"
+    ],
+    "corpus": [
+     "ule 129"
+    ]
+   }
+  },
+  {
+   "form": "ulëm",
+   "lemma": "ulem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ul [V,vt,alb,1,pl,aor,ind,act]",
+     "ul [V,med,alb,1,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "ulëm 345"
+    ]
+   }
+  },
+  {
+   "form": "ulën",
+   "lemma": "ulem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ul [V,vt,alb,3,pl,aor,ind,act]",
+     "ul [V,med,alb,3,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "ulën 1131"
+    ]
+   }
+  },
+  {
+   "form": "ulët",
+   "lemma": "ulem",
+   "pos": "VERB",
+   "status": "disputed",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "agree",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "ulët [A,alb,deriv,m,pl,acc,indef]",
+     "ulët [A,alb,deriv,m,sg,nom,indef]",
+     "ulët [A,alb,deriv,f,sg,acc,indef]",
+     "ulët [A,alb,deriv,m,pl,nom,indef]",
+     "ul [V,vt,alb,2,pl,aor,ind,act]"
+    ],
+    "corpus": [
+     "ulët 24394"
     ]
    }
   },
@@ -6100,6 +13272,168 @@
     "corpus": [
      "ungjijtë 30",
      "ungjijt 0"
+    ]
+   }
+  },
+  {
+   "form": "valle",
+   "lemma": "vallë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "valle [NOUN,f,inanim,alb,sg,acc,indef]",
+     "valle [NOUN,f,inanim,alb,sg,nom,indef]",
+     "valle [NOUN,f,inanim,alb,sg,unmkd,indef]",
+     "valle [NOUN,f,inanim,alb,pl,nom,indef]",
+     "valle [NOUN,f,inanim,alb,pl,acc,indef]"
+    ],
+    "wiktionary": [
+     "valle/NOUN",
+     "valle/NOUN Number=Plur",
+     "valle/NOUN Case=Nom Number=Sing Definite=Ind",
+     "valle/NOUN Case=Nom Number=Plur Definite=Ind",
+     "valle/NOUN Case=Acc Number=Sing Definite=Ind"
+    ],
+    "corpus": [
+     "valle 1451"
+    ]
+   }
+  },
+  {
+   "form": "vallesh",
+   "lemma": "vallë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "valle [NOUN,f,inanim,alb,pl,abl2,indef]"
+    ],
+    "wiktionary": [
+     "valle/NOUN Case=Abl Number=Plur Definite=Ind"
+    ],
+    "corpus": [
+     "vallesh 27"
+    ]
+   }
+  },
+  {
+   "form": "vallet",
+   "lemma": "vallë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "valle [NOUN,f,inanim,alb,pl,nom,def]",
+     "valle [NOUN,f,inanim,alb,pl,acc,def]"
+    ],
+    "wiktionary": [
+     "valle/NOUN Number=Plur Definite=Def",
+     "valle/NOUN Case=Nom Number=Plur Definite=Def",
+     "valle/NOUN Case=Acc Number=Plur Definite=Def"
+    ],
+    "corpus": [
+     "vallet 428"
+    ]
+   }
+  },
+  {
+   "form": "valleve",
+   "lemma": "vallë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "valle [NOUN,f,inanim,alb,pl,abl,def]",
+     "valle [NOUN,f,inanim,alb,pl,gen_dat,indef]",
+     "valle [NOUN,f,inanim,alb,pl,gen_dat,def]",
+     "valle [NOUN,f,inanim,alb,pl,abl,indef]"
+    ],
+    "wiktionary": [
+     "valle/NOUN Case=Gen,Dat Number=Plur Definite=Ind",
+     "valle/NOUN Case=Gen,Dat Number=Plur Definite=Def",
+     "valle/NOUN Case=Abl Number=Plur Definite=Def"
+    ],
+    "corpus": [
+     "valleve 667"
+    ]
+   }
+  },
+  {
+   "form": "vallja",
+   "lemma": "vallë",
+   "pos": "NOUN",
+   "status": "disputed",
+   "ours": "Case=Nom Number=Sing Definite=Def Gender=Fem",
+   "said": {
+    "uniparser": "other",
+    "wiktionary": "other",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "valle [NOUN,f,inanim,alb,sg,nom,def]"
+    ],
+    "wiktionary": [
+     "valle/NOUN Definite=Def",
+     "valle/NOUN Case=Nom Number=Sing Definite=Def"
+    ],
+    "corpus": [
+     "vallja 453"
     ]
    }
   },
@@ -6366,6 +13700,60 @@
    }
   },
   {
+   "form": "vj",
+   "lemma": "vj",
+   "pos": "X",
+   "status": "single-source",
+   "ours": "(no features)",
+   "said": {
+    "uniparser": "silent",
+    "wiktionary": "silent",
+    "ud-tsa": "silent",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [],
+   "dissent": [],
+   "evidence": {
+    "corpus": [
+     "vj 99"
+    ]
+   }
+  },
+  {
+   "form": "vjeç",
+   "lemma": "vjeç",
+   "pos": "ADJ",
+   "status": "disputed",
+   "ours": "Number=Plur Gender=Masc,Fem",
+   "said": {
+    "uniparser": "differ",
+    "wiktionary": "agree",
+    "ud-tsa": "differ",
+    "ud-staf": "silent",
+    "corpus": "silent"
+   },
+   "support": [
+    "wiktionary"
+   ],
+   "dissent": [
+    "uniparser"
+   ],
+   "evidence": {
+    "uniparser": [
+     "vjeç [A,alb,deriv,m,sg,nom,indef]",
+     "vjeç [A,alb,deriv,m,sg,acc,indef]",
+     "vjeç [A,alb,deriv,m,sg]"
+    ],
+    "ud-tsa": [
+     "vjeç/ADJ Number=Sing Gender=Masc"
+    ],
+    "corpus": [
+     "vjeç 59341"
+    ]
+   }
+  },
+  {
    "form": "vrisni",
    "lemma": "vras",
    "pos": "VERB",
@@ -6587,8 +13975,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]"
+     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]"
     ],
     "wiktionary": [
      "çorap/NOUN Number=Plur",
@@ -6620,8 +14008,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]"
+     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]"
     ],
     "wiktionary": [
      "çorap/NOUN Number=Plur",
@@ -6745,8 +14133,8 @@
    ],
    "evidence": {
     "uniparser": [
-     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,def]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,def]"
+     "çorap [NOUN,mf,inanim,borr,turk,pl,acc,def]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,nom,def]"
     ],
     "wiktionary": [
      "çorap/NOUN Case=Nom Number=Plur Definite=Def",
@@ -6777,10 +14165,10 @@
    ],
    "evidence": {
     "uniparser": [
-     "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,indef]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,abl,indef]",
      "çorap [NOUN,mf,inanim,borr,turk,pl,abl,def]",
-     "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,def]"
+     "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,def]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,indef]",
+     "çorap [NOUN,mf,inanim,borr,turk,pl,abl,indef]"
     ],
     "wiktionary": [
      "çorap/NOUN Case=Gen,Dat Number=Plur Definite=Ind",

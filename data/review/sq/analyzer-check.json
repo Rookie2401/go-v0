@@ -45,48 +45,48 @@
    "name-unknown": 54
   },
   "NOUN": {
-   "agree": 3805,
-   "nonstandard": 1,
-   "features-differ": 7,
-   "other-lemma": 17,
-   "unknown-form": 39,
-   "pos-differs": 9,
+   "agree": 5358,
+   "nonstandard": 11,
+   "features-differ": 9,
+   "other-lemma": 26,
+   "unknown-form": 68,
+   "pos-differs": 19,
    "name-unknown": 0
   },
   "VERB": {
-   "agree": 6457,
+   "agree": 7224,
    "nonstandard": 1,
-   "features-differ": 15,
-   "other-lemma": 44,
-   "unknown-form": 18,
-   "pos-differs": 0,
-   "name-unknown": 0
-  },
-  "ADV": {
-   "agree": 79,
-   "nonstandard": 0,
-   "features-differ": 0,
-   "other-lemma": 0,
-   "unknown-form": 0,
-   "pos-differs": 2,
-   "name-unknown": 0
-  },
-  "ADP": {
-   "agree": 27,
-   "nonstandard": 0,
-   "features-differ": 0,
-   "other-lemma": 0,
-   "unknown-form": 0,
-   "pos-differs": 0,
+   "features-differ": 40,
+   "other-lemma": 179,
+   "unknown-form": 40,
+   "pos-differs": 1,
    "name-unknown": 0
   },
   "ADJ": {
-   "agree": 327,
+   "agree": 433,
    "nonstandard": 0,
-   "features-differ": 0,
+   "features-differ": 1,
    "other-lemma": 1,
    "unknown-form": 1,
    "pos-differs": 7,
+   "name-unknown": 0
+  },
+  "ADV": {
+   "agree": 86,
+   "nonstandard": 0,
+   "features-differ": 0,
+   "other-lemma": 0,
+   "unknown-form": 0,
+   "pos-differs": 3,
+   "name-unknown": 0
+  },
+  "ADP": {
+   "agree": 32,
+   "nonstandard": 0,
+   "features-differ": 0,
+   "other-lemma": 0,
+   "unknown-form": 0,
+   "pos-differs": 0,
    "name-unknown": 0
   },
   "PRON": {
@@ -102,13 +102,13 @@
    "agree": 70,
    "nonstandard": 0,
    "features-differ": 1,
-   "other-lemma": 0,
+   "other-lemma": 2,
    "unknown-form": 0,
    "pos-differs": 0,
    "name-unknown": 0
   },
   "CONJ": {
-   "agree": 8,
+   "agree": 10,
    "nonstandard": 0,
    "features-differ": 0,
    "other-lemma": 0,
@@ -116,8 +116,17 @@
    "pos-differs": 0,
    "name-unknown": 0
   },
+  "X": {
+   "agree": 1,
+   "nonstandard": 0,
+   "features-differ": 0,
+   "other-lemma": 0,
+   "unknown-form": 10,
+   "pos-differs": 3,
+   "name-unknown": 0
+  },
   "SCONJ": {
-   "agree": 10,
+   "agree": 11,
    "nonstandard": 0,
    "features-differ": 0,
    "other-lemma": 0,
@@ -146,16 +155,180 @@
  },
  "findings": [
   {
+   "form": "afrova",
+   "lemma": "afrohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "afroj [V,vt,vi,alb,deriv,1,sg,aor,ind,act]",
+    "afroj [V,med,alb,deriv,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "afrove",
+   "lemma": "afrohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "afroj [V,med,alb,deriv,2,sg,aor,ind,act]",
+    "afroj [V,vt,vi,alb,deriv,2,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "afruam",
+   "lemma": "afrohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "afroj [V,med,alb,deriv,1,pl,aor,ind,act]",
+    "afroj [V,vt,vi,alb,deriv,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "afruan",
+   "lemma": "afrohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "afroj [V,med,alb,deriv,3,pl,aor,ind,act]",
+    "afroj [V,vt,vi,alb,deriv,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "afruat",
+   "lemma": "afrohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "afroj [V,med,alb,deriv,2,pl,aor,ind,act]",
+    "afroj [V,vt,vi,alb,deriv,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ana",
+   "lemma": "anë",
+   "pos": "NOUN",
+   "verdict": "features-differ",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
+   "theirs": [
+    "anë [NOUN,f,inanim,alb,sg,nom,def]"
+   ]
+  },
+  {
+   "form": "anash",
+   "lemma": "anë",
+   "pos": "NOUN",
+   "verdict": "other-lemma",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
+   "theirs": [
+    "anash [ADV,alb,deriv]"
+   ]
+  },
+  {
+   "form": "anat",
+   "lemma": "anë",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "theirs": []
+  },
+  {
+   "form": "anave",
+   "lemma": "anë",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
+   "theirs": []
+  },
+  {
+   "form": "ankova",
+   "lemma": "ankohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ankoj [V,med,alb,deriv,1,sg,aor,ind,act]",
+    "ankoj [V,vt,vi,alb,deriv,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ankove",
+   "lemma": "ankohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ankoj [V,med,alb,deriv,2,sg,aor,ind,act]",
+    "ankoj [V,vt,vi,alb,deriv,2,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ankuam",
+   "lemma": "ankohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ankoj [V,vt,vi,alb,deriv,1,pl,aor,ind,act]",
+    "ankoj [V,med,alb,deriv,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ankuan",
+   "lemma": "ankohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ankoj [V,vt,vi,alb,deriv,3,pl,aor,ind,act]",
+    "ankoj [V,med,alb,deriv,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ankuat",
+   "lemma": "ankohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ankoj [V,med,alb,deriv,2,pl,aor,ind,act]",
+    "ankoj [V,vt,vi,alb,deriv,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "arsyenë",
+   "lemma": "arsye",
+   "pos": "NOUN",
+   "verdict": "nonstandard",
+   "ours": "Case=Acc Number=Sing Definite=Def Gender=Fem",
+   "theirs": [
+    "arsye [NOUN,f,inanim,borr,lat,deriv,sg,acc,def,nonst]"
+   ]
+  },
+  {
+   "form": "arsyesë",
+   "lemma": "arsye",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Fem",
+   "theirs": []
+  },
+  {
    "form": "atë",
    "lemma": "atë",
    "pos": "NOUN",
    "verdict": "other-lemma",
    "ours": "Case=Nom,Acc Number=Sing Definite=Ind Gender=Masc",
    "theirs": [
-    "ai [PRO,alb,f,sg,acc]",
-    "ai [PRO,alb,m,sg,acc]",
+    "ajo [PRO,3,sg,f,alb,acc]",
     "ai [PRO,3,sg,m,alb,acc]",
-    "ajo [PRO,3,sg,f,alb,acc]"
+    "ai [PRO,alb,m,sg,acc]",
+    "ai [PRO,alb,f,sg,acc]"
    ]
   },
   {
@@ -164,6 +337,77 @@
    "pos": "VERB",
    "verdict": "unknown-form",
    "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "binda",
+   "lemma": "bindem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "bind [V,med,alb,1,sg,aor,ind,act]",
+    "bind [V,vt,alb,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "binde",
+   "lemma": "bindem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "bind [V,vt,alb,2,sg,pres,ind,pass,nonst]",
+    "bind [V,med,alb,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "bindëm",
+   "lemma": "bindem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "bind [V,med,alb,1,pl,aor,ind,act]",
+    "bind [V,vt,alb,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "bindën",
+   "lemma": "bindem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "bind [V,vt,alb,3,pl,aor,ind,act]",
+    "bind [V,med,alb,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "bindët",
+   "lemma": "bindem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "bind [V,med,alb,2,pl,aor,ind,act]",
+    "bind [V,vt,alb,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "bujqsh",
+   "lemma": "bujk",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "cm",
+   "lemma": "cm",
+   "pos": "X",
+   "verdict": "unknown-form",
+   "ours": "(no features)",
    "theirs": []
   },
   {
@@ -199,6 +443,405 @@
    ]
   },
   {
+   "form": "dokumente",
+   "lemma": "dokument",
+   "pos": "NOUN",
+   "verdict": "nonstandard",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Masc",
+   "theirs": [
+    "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,acc,indef]",
+    "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,nom,indef]"
+   ]
+  },
+  {
+   "form": "dokumentesh",
+   "lemma": "dokument",
+   "pos": "NOUN",
+   "verdict": "nonstandard",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
+   "theirs": [
+    "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,abl2,indef]"
+   ]
+  },
+  {
+   "form": "dokumentet",
+   "lemma": "dokument",
+   "pos": "NOUN",
+   "verdict": "nonstandard",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Masc",
+   "theirs": [
+    "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,acc,def]",
+    "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,nom,def]"
+   ]
+  },
+  {
+   "form": "dokumenteve",
+   "lemma": "dokument",
+   "pos": "NOUN",
+   "verdict": "nonstandard",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Masc",
+   "theirs": [
+    "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,gen_dat,indef]",
+    "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,abl,indef]",
+    "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,gen_dat,def]",
+    "dokument [NOUN,mf,inanim,nonst,borr,rom,new,pl,abl,def]"
+   ]
+  },
+  {
+   "form": "e.s",
+   "lemma": "e.s",
+   "pos": "X",
+   "verdict": "unknown-form",
+   "ours": "(no features)",
+   "theirs": []
+  },
+  {
+   "form": "ec",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,3,sg,aor,ind,pass]",
+    "eci [V,vi,alb,2,sg,imp,act]"
+   ]
+  },
+  {
+   "form": "ec",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Mood=Imp Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,3,sg,aor,ind,pass]",
+    "eci [V,vi,alb,2,sg,imp,act]"
+   ]
+  },
+  {
+   "form": "eca",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ece",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,2,sg,aor,ind,act]",
+    "eci [V,vi,alb,2,sg,imp,act]"
+   ]
+  },
+  {
+   "form": "eci",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,2,sg,imp,act]",
+    "eci [V,vi,alb,3,sg,aor,ind,act]",
+    "eci [V,vi,alb,1,sg,pres,ind,act]"
+   ]
+  },
+  {
+   "form": "eci",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Pres Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,2,sg,imp,act]",
+    "eci [V,vi,alb,3,sg,aor,ind,act]",
+    "eci [V,vi,alb,1,sg,pres,ind,act]"
+   ]
+  },
+  {
+   "form": "ecim",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,1,pl,pres,ind,act]"
+   ]
+  },
+  {
+   "form": "ecin",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,3,pl,pres,ind,act]"
+   ]
+  },
+  {
+   "form": "ecja",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,2,sg,imp,act]",
+    "eci [V,vi,alb,1,sg,ipf,ind,act]",
+    "ecje [NOUN,f,inanim,alb,deriv,sg,nom,def]"
+   ]
+  },
+  {
+   "form": "ecje",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "ecje [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+    "ecje [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
+    "eci [V,vi,alb,2,sg,ipf,ind,act]",
+    "ecje [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+    "ecje [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+    "ecje [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
+   ]
+  },
+  {
+   "form": "ecni",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Mood=Imp Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,2,pl,pres,ind,act]",
+    "eci [V,vi,alb,2,pl,imp,act]"
+   ]
+  },
+  {
+   "form": "ecni",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,2,pl,pres,ind,act]",
+    "eci [V,vi,alb,2,pl,imp,act]"
+   ]
+  },
+  {
+   "form": "ecnim",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,1,pl,ipf,ind,act]"
+   ]
+  },
+  {
+   "form": "ecnin",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,3,pl,ipf,ind,act]"
+   ]
+  },
+  {
+   "form": "ecnit",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,2,pl,ipf,ind,act]"
+   ]
+  },
+  {
+   "form": "ecte",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=3 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,3,sg,ipf,ind,act]"
+   ]
+  },
+  {
+   "form": "ecur",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "VerbForm=Part",
+   "theirs": [
+    "ecur [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
+    "ecur [NOUN,n,inanim,alb,deriv,sg,acc,indef]",
+    "ecur [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+    "ecur [NOUN,n,inanim,alb,deriv,sg,unmkd,indef]",
+    "eci [V,vi,alb,ptcp]",
+    "ecur [NOUN,f,inanim,alb,deriv,sg,nom,indef]"
+   ]
+  },
+  {
+   "form": "ecë",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=3 Tense=Pres Mood=Sub Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,ptcp,nonst,Gheg]",
+    "eci [V,vi,alb,3,sg,pres,sbjv,act]"
+   ]
+  },
+  {
+   "form": "ecëm",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ecën",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2,3 Tense=Pres Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,3,sg,pres,ind,act]",
+    "eci [V,vi,alb,3,pl,aor,ind,act]",
+    "eci [V,vi,alb,2,sg,pres,ind,act]"
+   ]
+  },
+  {
+   "form": "ecën",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,3,sg,pres,ind,act]",
+    "eci [V,vi,alb,3,pl,aor,ind,act]",
+    "eci [V,vi,alb,2,sg,pres,ind,act]"
+   ]
+  },
+  {
+   "form": "ecësh",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Pres Mood=Sub Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,2,sg,pres,sbjv,act]"
+   ]
+  },
+  {
+   "form": "ecët",
+   "lemma": "ec",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "eci [V,vi,alb,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "email",
+   "lemma": "email",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Nom,Acc Number=Sing Definite=Ind Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "emaile",
+   "lemma": "email",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "emailesh",
+   "lemma": "email",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "emailet",
+   "lemma": "email",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "emaileve",
+   "lemma": "email",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "emaili",
+   "lemma": "email",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Nom Number=Sing Definite=Def Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "emaili",
+   "lemma": "email",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Ind Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "emailin",
+   "lemma": "email",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Acc Number=Sing Definite=Def Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "emailit",
+   "lemma": "email",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "eurosë",
+   "lemma": "euro",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Fem",
+   "theirs": []
+  },
+  {
+   "form": "fiki",
+   "lemma": "fik",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "fik [V,vt,alb,2,sg,imp,act]"
+   ]
+  },
+  {
    "form": "flitu",
    "lemma": "flas",
    "pos": "VERB",
@@ -215,6 +858,85 @@
    "theirs": [
     "flas [V,vt,vi,borr,lat,deriv,2,pl,imp,act]"
    ]
+  },
+  {
+   "form": "fq",
+   "lemma": "fq",
+   "pos": "X",
+   "verdict": "unknown-form",
+   "ours": "(no features)",
+   "theirs": []
+  },
+  {
+   "form": "ftohja",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "verdict": "other-lemma",
+   "ours": "Case=Nom Number=Sing Definite=Def Gender=Fem",
+   "theirs": [
+    "ftoh [V,vt,alb,1,sg,ipf,ind,act]",
+    "ftoh [V,vt,alb,2,sg,imp,act]"
+   ]
+  },
+  {
+   "form": "ftohje",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "verdict": "other-lemma",
+   "ours": "Case=Nom,Acc Number=Sing Definite=Ind Gender=Fem",
+   "theirs": [
+    "ftoh [V,vt,alb,2,sg,ipf,ind,act]"
+   ]
+  },
+  {
+   "form": "ftohje",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "verdict": "other-lemma",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
+   "theirs": [
+    "ftoh [V,vt,alb,2,sg,ipf,ind,act]"
+   ]
+  },
+  {
+   "form": "ftohjen",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Acc Number=Sing Definite=Def Gender=Fem",
+   "theirs": []
+  },
+  {
+   "form": "ftohjes",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Fem",
+   "theirs": []
+  },
+  {
+   "form": "ftohjesh",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
+   "theirs": []
+  },
+  {
+   "form": "ftohjet",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "theirs": []
+  },
+  {
+   "form": "ftohjeve",
+   "lemma": "ftohje",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
+   "theirs": []
   },
   {
    "form": "fundit",
@@ -234,9 +956,9 @@
    "verdict": "features-differ",
    "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
    "theirs": [
-    "gjellë [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
     "gjellë [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
-    "gjellë [NOUN,f,inanim,alb,deriv,sg,nom,indef]"
+    "gjellë [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+    "gjellë [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
    ]
   },
   {
@@ -264,14 +986,175 @@
    "theirs": []
   },
   {
+   "form": "gjenda",
+   "lemma": "gjendem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "gjendem [V,vi,alb,deriv,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "gjende",
+   "lemma": "gjendem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "gjendem [V,vi,alb,deriv,2,sg,pres,ind,pass,nonst]",
+    "gjendem [V,vi,alb,deriv,2,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "gjendëm",
+   "lemma": "gjendem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "gjendem [V,vi,alb,deriv,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "gjendën",
+   "lemma": "gjendem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "gjendem [V,vi,alb,deriv,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "gjendët",
+   "lemma": "gjendem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "gjendem [V,vi,alb,deriv,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "gëzova",
+   "lemma": "gëzohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "gëzoj [V,med,alb,deriv,1,sg,aor,ind,act]",
+    "gëzoj [V,vt,vi,alb,deriv,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "gëzove",
+   "lemma": "gëzohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "gëzoj [V,med,alb,deriv,2,sg,aor,ind,act]",
+    "gëzoj [V,vt,vi,alb,deriv,2,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "gëzuam",
+   "lemma": "gëzohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "gëzoj [V,med,alb,deriv,1,pl,aor,ind,act]",
+    "gëzoj [V,vt,vi,alb,deriv,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "gëzuan",
+   "lemma": "gëzohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "gëzoj [V,vt,vi,alb,deriv,3,pl,aor,ind,act]",
+    "gëzoj [V,med,alb,deriv,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "gëzuat",
+   "lemma": "gëzohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "gëzoj [V,vt,vi,alb,deriv,2,pl,aor,ind,act]",
+    "gëzoj [V,med,alb,deriv,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "habita",
+   "lemma": "habitem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "habit [V,vt,borr,slav,1,sg,aor,ind,act]",
+    "habit [V,med,borr,slav,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "habite",
+   "lemma": "habitem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "habit [V,vt,borr,slav,2,sg,pres,ind,pass,nonst]",
+    "habit [V,med,borr,slav,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "habitëm",
+   "lemma": "habitem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "habit [V,med,borr,slav,1,pl,aor,ind,act]",
+    "habit [V,vt,borr,slav,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "habitën",
+   "lemma": "habitem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "habit [V,med,borr,slav,3,pl,aor,ind,act]",
+    "habit [V,vt,borr,slav,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "habitët",
+   "lemma": "habitem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "habit [V,vt,borr,slav,2,pl,aor,ind,act]",
+    "habit [V,med,borr,slav,2,pl,aor,ind,act]"
+   ]
+  },
+  {
    "form": "hip",
    "lemma": "hip",
    "pos": "VERB",
    "verdict": "other-lemma",
    "ours": "Number=Sing Person=1 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
    "theirs": [
-    "hipi [V,vt,vi,alb,2,sg,imp,act]",
-    "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]"
+    "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]",
+    "hipi [V,vt,vi,alb,2,sg,imp,act]"
    ]
   },
   {
@@ -281,8 +1164,8 @@
    "verdict": "other-lemma",
    "ours": "Number=Sing Person=2,3 Tense=Pres Mood=Ind Voice=Act VerbForm=Fin",
    "theirs": [
-    "hipi [V,vt,vi,alb,2,sg,imp,act]",
-    "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]"
+    "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]",
+    "hipi [V,vt,vi,alb,2,sg,imp,act]"
    ]
   },
   {
@@ -292,8 +1175,8 @@
    "verdict": "other-lemma",
    "ours": "Number=Sing Person=2 Mood=Imp Voice=Act VerbForm=Fin",
    "theirs": [
-    "hipi [V,vt,vi,alb,2,sg,imp,act]",
-    "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]"
+    "hipi [V,vt,vi,alb,3,sg,aor,ind,pass]",
+    "hipi [V,vt,vi,alb,2,sg,imp,act]"
    ]
   },
   {
@@ -324,12 +1207,12 @@
    "verdict": "other-lemma",
    "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
    "theirs": [
-    "hipi [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+    "hipi [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
+    "hipi [V,vt,vi,alb,3,sg,aor,ind,act]",
     "hipi [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
-    "hipi [V,vt,vi,alb,2,sg,imp,act]",
+    "hipi [V,vt,vi,alb,1,sg,pres,ind,act]",
     "hipi [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
-    "hipi [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
-    "hipi [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
+    "hipi [NOUN,f,inanim,alb,deriv,sg,nom,indef]"
    ]
   },
   {
@@ -371,12 +1254,12 @@
    "verdict": "other-lemma",
    "ours": "Number=Sing Person=2 Tense=Imp Mood=Ind Voice=Act VerbForm=Fin",
    "theirs": [
-    "hipje [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
-    "hipje [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
-    "hipi [V,vt,vi,alb,2,sg,ipf,ind,act]",
-    "hipje [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
     "hipje [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
-    "hipje [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]"
+    "hipje [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
+    "hipi [V,vt,vi,alb,2,sg,ipf,ind,act]",
+    "hipje [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+    "hipje [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
+    "hipje [NOUN,f,inanim,alb,deriv,pl,nom,indef]"
    ]
   },
   {
@@ -386,8 +1269,8 @@
    "verdict": "other-lemma",
    "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Act VerbForm=Fin",
    "theirs": [
-    "hipi [V,vt,vi,alb,2,pl,pres,ind,act]",
-    "hipi [V,vt,vi,alb,2,pl,imp,act]"
+    "hipi [V,vt,vi,alb,2,pl,imp,act]",
+    "hipi [V,vt,vi,alb,2,pl,pres,ind,act]"
    ]
   },
   {
@@ -397,8 +1280,8 @@
    "verdict": "other-lemma",
    "ours": "Number=Plur Person=2 Mood=Imp Voice=Act VerbForm=Fin",
    "theirs": [
-    "hipi [V,vt,vi,alb,2,pl,pres,ind,act]",
-    "hipi [V,vt,vi,alb,2,pl,imp,act]"
+    "hipi [V,vt,vi,alb,2,pl,imp,act]",
+    "hipi [V,vt,vi,alb,2,pl,pres,ind,act]"
    ]
   },
   {
@@ -481,8 +1364,8 @@
    "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
    "theirs": [
     "hipi [V,vt,vi,alb,3,sg,pres,ind,act]",
-    "hipi [V,vt,vi,alb,2,sg,pres,ind,act]",
-    "hipi [V,vt,vi,alb,3,pl,aor,ind,act]"
+    "hipi [V,vt,vi,alb,3,pl,aor,ind,act]",
+    "hipi [V,vt,vi,alb,2,sg,pres,ind,act]"
    ]
   },
   {
@@ -604,15 +1487,333 @@
    ]
   },
   {
+   "form": "kalatë",
+   "lemma": "kala",
+   "pos": "NOUN",
+   "verdict": "nonstandard",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "theirs": [
+    "kala [NOUN,f,inanim,borr,turk,pl,acc,def,nonst]",
+    "kala [NOUN,f,inanim,borr,turk,pl,nom,def,nonst]"
+   ]
+  },
+  {
+   "form": "kg",
+   "lemma": "kg",
+   "pos": "X",
+   "verdict": "unknown-form",
+   "ours": "(no features)",
+   "theirs": []
+  },
+  {
+   "form": "ktheva",
+   "lemma": "kthehem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "kthej [V,vt,vi,alb,1,sg,aor,ind,act]",
+    "kthej [V,med,alb,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ktheve",
+   "lemma": "kthehem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "kthej [V,vt,vi,alb,2,sg,aor,ind,act]",
+    "kthej [V,med,alb,2,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "kthyem",
+   "lemma": "kthehem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "kthej [V,vt,vi,alb,1,pl,aor,ind,act]",
+    "kthej [V,med,alb,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "kthyen",
+   "lemma": "kthehem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "kthej [V,vt,vi,alb,3,pl,aor,ind,act]",
+    "kthej [V,med,alb,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "kthyet",
+   "lemma": "kthehem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "kthej [V,vt,vi,alb,2,pl,aor,ind,act]",
+    "kthej [V,med,alb,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "kënaqa",
+   "lemma": "kënaqem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "kënaqë [NOUN,f,inanim,alb,deriv,sg,nom,def]",
+    "kënaq [V,med,alb,1,sg,aor,ind,act]",
+    "kënaqë [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+    "kënaqë [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
+    "kënaq [V,vt,alb,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "kënaqe",
+   "lemma": "kënaqem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "kënaq [V,vt,alb,2,sg,pres,ind,pass,nonst]",
+    "kënaq [V,med,alb,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "kënaqëm",
+   "lemma": "kënaqem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "kënaq [V,med,alb,1,pl,aor,ind,act]",
+    "kënaq [V,vt,alb,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "kënaqën",
+   "lemma": "kënaqem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "kënaq [V,vt,alb,3,pl,aor,ind,act]",
+    "kënaq [V,med,alb,3,pl,aor,ind,act]",
+    "kënaqë [NOUN,f,inanim,alb,deriv,sg,acc,def]"
+   ]
+  },
+  {
+   "form": "kënaqët",
+   "lemma": "kënaqem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "kënaq [V,vt,alb,2,pl,aor,ind,act]",
+    "kënaq [V,med,alb,2,pl,aor,ind,act]"
+   ]
+  },
+  {
    "form": "la",
    "lemma": "lë",
    "pos": "VERB",
    "verdict": "features-differ",
    "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
    "theirs": [
-    "lë [V,vt,alb,ptcp,nonst]",
     "lë [V,vt,alb,2,sg,aor,ind,act]",
-    "lë [V,vt,alb,3,sg,aor,ind,pass]"
+    "lë [V,vt,alb,3,sg,aor,ind,pass]",
+    "lë [V,vt,alb,ptcp,nonst]"
+   ]
+  },
+  {
+   "form": "largova",
+   "lemma": "largohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "largoj [V,med,borr,lat,deriv,1,sg,aor,ind,act]",
+    "largoj [V,vt,vi,borr,lat,deriv,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "largove",
+   "lemma": "largohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "largoj [V,med,borr,lat,deriv,2,sg,aor,ind,act]",
+    "largoj [V,vt,vi,borr,lat,deriv,2,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "larguam",
+   "lemma": "largohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "largoj [V,vt,vi,borr,lat,deriv,1,pl,aor,ind,act]",
+    "largoj [V,med,borr,lat,deriv,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "larguan",
+   "lemma": "largohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "largoj [V,vt,vi,borr,lat,deriv,3,pl,aor,ind,act]",
+    "largoj [V,med,borr,lat,deriv,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "larguat",
+   "lemma": "largohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "largoj [V,vt,vi,borr,lat,deriv,2,pl,aor,ind,act]",
+    "largoj [V,med,borr,lat,deriv,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "linda",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lind [V,med,alb,1,sg,aor,ind,act]",
+    "lind [NOUN,m,inanim,pl,acc,indef]",
+    "lind [V,vt,vi,alb,1,sg,aor,ind,act]",
+    "lind [NOUN,m,inanim,pl,nom,indef]"
+   ]
+  },
+  {
+   "form": "linde",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lind [V,vt,vi,alb,2,sg,pres,ind,pass,nonst]",
+    "lind [V,med,alb,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "lindi",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lind [V,vt,vi,alb,3,sg,aor,ind,act]",
+    "lind [NOUN,m,inanim,sg,abl,indef]",
+    "lind [V,vt,vi,alb,2,sg,imp,act]",
+    "lind [NOUN,m,inanim,sg,gen_dat,indef]",
+    "lind [NOUN,m,inanim,sg,nom,def]"
+   ]
+  },
+  {
+   "form": "lindëm",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lind [V,med,alb,1,pl,aor,ind,act]",
+    "lind [V,vt,vi,alb,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "lindën",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lind [V,vt,vi,alb,3,pl,aor,ind,act]",
+    "lind [V,med,alb,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "lindët",
+   "lemma": "lindem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lind [V,med,alb,2,pl,aor,ind,act]",
+    "lind [V,vt,vi,alb,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "lodha",
+   "lemma": "lodhem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lodh [V,vt,alb,1,sg,aor,ind,act]",
+    "lodh [V,med,alb,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "lodhe",
+   "lemma": "lodhem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lodh [V,vt,alb,2,sg,pres,ind,pass,nonst]",
+    "lodh [V,med,alb,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "lodhëm",
+   "lemma": "lodhem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lodh [V,med,alb,1,pl,aor,ind,act]",
+    "lodh [V,vt,alb,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "lodhën",
+   "lemma": "lodhem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lodh [V,med,alb,3,pl,aor,ind,act]",
+    "lodh [V,vt,alb,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "lodhët",
+   "lemma": "lodhem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lodhët [A,alb,deriv,m,sg]",
+    "lodhët [A,alb,deriv,m,pl]",
+    "lodhët [A,alb,deriv,m,pl,nom,indef]",
+    "lodhët [A,alb,deriv,m,sg,acc,indef]",
+    "lodhët [A,alb,deriv,m,sg,nom,indef]",
+    "lodh [V,vt,alb,2,pl,aor,ind,act]"
    ]
   },
   {
@@ -646,9 +1847,9 @@
    "verdict": "features-differ",
    "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
    "theirs": [
+    "lugë [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
     "lugë [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
-    "lugë [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
-    "lugë [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]"
+    "lugë [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
    ]
   },
   {
@@ -667,11 +1868,11 @@
    "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
    "theirs": [
     "lugët [A,alb,deriv,f,sg,acc,indef]",
-    "lugët [A,alb,deriv,m,pl,nom,indef]",
+    "lugët [A,alb,deriv,f,sg]",
+    "lugët [A,alb,deriv,m,sg,acc,indef]",
     "lugët [A,alb,deriv,m,pl,acc,indef]",
     "lugët [A,alb,deriv,m,pl]",
-    "lugët [A,alb,deriv,m,sg,nom,indef]",
-    "lugët [A,alb,deriv,m,sg,acc,indef]"
+    "lugët [A,alb,deriv,m,sg]"
    ]
   },
   {
@@ -681,6 +1882,186 @@
    "verdict": "unknown-form",
    "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
    "theirs": []
+  },
+  {
+   "form": "luta",
+   "lemma": "lutem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lut [V,med,alb,1,sg,aor,ind,act]",
+    "lut [V,vt,alb,1,sg,aor,ind,act]",
+    "lutë [NOUN,f,anim,sg,nom,def]",
+    "lutë [NOUN,f,anim,pl,nom,indef]",
+    "lutë [NOUN,f,anim,pl,acc,indef]"
+   ]
+  },
+  {
+   "form": "lute",
+   "lemma": "lutem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lut [V,vt,alb,2,sg,pres,ind,pass,nonst]",
+    "lut [V,med,alb,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "lutëm",
+   "lemma": "lutem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lut [V,vt,alb,1,pl,aor,ind,act]",
+    "lut [V,med,alb,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "lutën",
+   "lemma": "lutem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lut [V,med,alb,3,pl,aor,ind,act]",
+    "lut [V,vt,alb,3,pl,aor,ind,act]",
+    "lutë [NOUN,f,anim,sg,acc,def]"
+   ]
+  },
+  {
+   "form": "lutët",
+   "lemma": "lutem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "lut [V,vt,alb,2,pl,aor,ind,act]",
+    "lut [V,med,alb,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "martova",
+   "lemma": "martohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "martoj [V,med,borr,lat,1,sg,aor,ind,act]",
+    "martoj [V,vt,borr,lat,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "martove",
+   "lemma": "martohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "martoj [V,med,borr,lat,2,sg,aor,ind,act]",
+    "martoj [V,vt,borr,lat,2,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "martuam",
+   "lemma": "martohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "martoj [V,vt,borr,lat,1,pl,aor,ind,act]",
+    "martoj [V,med,borr,lat,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "martuan",
+   "lemma": "martohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "martoj [V,vt,borr,lat,3,pl,aor,ind,act]",
+    "martoj [V,med,borr,lat,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "martuat",
+   "lemma": "martohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "martoj [V,vt,borr,lat,2,pl,aor,ind,act]",
+    "martoj [V,med,borr,lat,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "mbeta",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "mbet [V,med,alb,1,sg,aor,ind,act]",
+    "mbet [V,vi,alb,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "mbete",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "mbet [V,med,alb,2,sg,pres,ind,pass,nonst]",
+    "mbet [V,vi,alb,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "mbeti",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "mbet [V,vi,alb,2,sg,imp,act]",
+    "mbet [V,vi,alb,3,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "mbetëm",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "mbet [V,med,alb,1,pl,aor,ind,act]",
+    "mbet [V,vi,alb,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "mbetën",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "mbet [V,vi,alb,3,pl,aor,ind,act]",
+    "mbet [V,med,alb,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "mbetët",
+   "lemma": "mbetem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "mbet [V,med,alb,2,pl,aor,ind,act]",
+    "mbet [V,vi,alb,2,pl,aor,ind,act]"
+   ]
   },
   {
    "form": "mbro",
@@ -747,14 +2128,105 @@
    "theirs": []
   },
   {
+   "form": "moshë",
+   "lemma": "moshë",
+   "pos": "NOUN",
+   "verdict": "features-differ",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
+   "theirs": [
+    "moshë [NOUN,f,inanim,alb,sg,nom,indef]",
+    "moshë [NOUN,f,inanim,alb,sg,acc,indef]",
+    "moshë [NOUN,f,inanim,alb,sg,unmkd,indef]"
+   ]
+  },
+  {
+   "form": "moshësh",
+   "lemma": "moshë",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
+   "theirs": []
+  },
+  {
+   "form": "moshët",
+   "lemma": "moshë",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "theirs": []
+  },
+  {
+   "form": "moshëve",
+   "lemma": "moshë",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
+   "theirs": []
+  },
+  {
+   "form": "munda",
+   "lemma": "mundem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "mund [V,vt,alb,1,sg,aor,ind,act]",
+    "mund [V,med,alb,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "munde",
+   "lemma": "mundem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "mund [V,med,alb,2,sg,pres,ind,pass,nonst]",
+    "mund [V,vt,alb,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "mundëm",
+   "lemma": "mundem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "mund [V,vt,alb,1,pl,aor,ind,act]",
+    "mund [V,med,alb,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "mundën",
+   "lemma": "mundem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "mund [V,med,alb,3,pl,aor,ind,act]",
+    "mund [V,vt,alb,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "mundët",
+   "lemma": "mundem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "mund [V,vt,alb,2,pl,aor,ind,act]",
+    "mund [V,med,alb,2,pl,aor,ind,act]"
+   ]
+  },
+  {
    "form": "muzeume",
    "lemma": "muze",
    "pos": "NOUN",
    "verdict": "other-lemma",
    "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Masc",
    "theirs": [
-    "muzeum [NOUN,mf,inanim,pl,nom,indef]",
-    "muzeum [NOUN,mf,inanim,pl,acc,indef]"
+    "muzeum [NOUN,mf,inanim,pl,acc,indef]",
+    "muzeum [NOUN,mf,inanim,pl,nom,indef]"
    ]
   },
   {
@@ -792,9 +2264,399 @@
    ]
   },
   {
+   "form": "ndihej",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=3 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndiej [V,vt,alb,3,sg,ipf,ind,pass]",
+    "ndiej [V,med,alb,3,sg,ipf,ind,pass]",
+    "ndih [V,vt,alb,3,sg,ipf,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndihem",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndih [V,vt,alb,1,sg,pres,ind,pass]",
+    "ndiej [V,med,alb,1,sg,pres,ind,pass]",
+    "ndiej [V,vt,alb,1,sg,pres,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndihemi",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndih [V,vt,alb,1,pl,pres,ind,pass]",
+    "ndiej [V,vt,alb,1,pl,pres,ind,pass]",
+    "ndiej [V,med,alb,1,pl,pres,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndihen",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndiej [V,med,alb,3,pl,pres,ind,pass]",
+    "ndiej [V,vt,alb,3,pl,pres,ind,pass]",
+    "ndih [V,vt,alb,3,pl,pres,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndiheni",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndih [V,vt,alb,2,pl,imp,act]",
+    "ndih [V,vt,alb,2,pl,pres,ind,pass]",
+    "ndiej [V,med,alb,2,pl,pres,ind,pass]",
+    "ndiej [V,vt,alb,2,pl,pres,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndihesh",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndiej [V,vt,alb,2,sg,pres,ind,pass]",
+    "ndih [V,vt,alb,3,sg,ipf,ind,pass]",
+    "ndiej [V,vt,alb,3,sg,ipf,ind,pass]",
+    "ndih [V,vt,alb,2,sg,pres,ind,pass]",
+    "ndiej [V,med,alb,3,sg,ipf,ind,pass]",
+    "ndiej [V,med,alb,2,sg,pres,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndihesha",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndiej [V,med,alb,1,sg,ipf,ind,pass]",
+    "ndiej [V,vt,alb,1,sg,ipf,ind,pass]",
+    "ndih [V,vt,alb,1,sg,ipf,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndiheshe",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndiej [V,vt,alb,2,sg,ipf,ind,pass]",
+    "ndih [V,vt,alb,2,sg,ipf,ind,pass]",
+    "ndiej [V,med,alb,2,sg,ipf,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndiheshim",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndih [V,vt,alb,1,pl,ipf,ind,pass]",
+    "ndiej [V,vt,alb,1,pl,ipf,ind,pass]",
+    "ndiej [V,med,alb,1,pl,ipf,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndiheshin",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndiej [V,vt,alb,3,pl,ipf,ind,pass]",
+    "ndih [V,vt,alb,3,pl,ipf,ind,pass]",
+    "ndiej [V,med,alb,3,pl,ipf,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndiheshit",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndiej [V,med,alb,2,pl,ipf,ind,pass]",
+    "ndiej [V,vt,alb,2,pl,ipf,ind,pass]",
+    "ndih [V,vt,alb,2,pl,ipf,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndihet",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=3 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndiej [V,vt,alb,3,sg,pres,ind,pass]",
+    "ndih [V,vt,alb,3,sg,pres,ind,pass]",
+    "ndiej [V,med,alb,3,sg,pres,ind,pass]"
+   ]
+  },
+  {
+   "form": "ndihu",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Mood=Imp Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndih [V,vt,alb,2,sg,imp,act]",
+    "ndih [V,vt,alb,3,sg,aor,ind,act]",
+    "ndih [V,vt,alb,2,sg,imp,pass]",
+    "ndiej [V,med,alb,2,sg,imp,pass]",
+    "ndiej [V,vt,alb,2,sg,imp,pass]"
+   ]
+  },
+  {
+   "form": "ndihuni",
+   "lemma": "ndjej",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Mood=Imp Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndih [V,vt,alb,2,pl,imp,pass]",
+    "ndih [V,vt,alb,2,pl,imp,act]",
+    "ndiej [V,med,alb,2,pl,imp,pass]",
+    "ndiej [V,vt,alb,2,pl,imp,pass]"
+   ]
+  },
+  {
+   "form": "ndodha",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndodh [V,vi,alb,1,sg,aor,ind,act]",
+    "ndodh [V,med,alb,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ndodhe",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndodh [V,med,alb,2,sg,pres,ind,pass,nonst]",
+    "ndodh [V,vi,alb,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "ndodhi",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndodhi [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
+    "ndodhi [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
+    "ndodhi [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+    "ndodh [V,vi,alb,2,sg,imp,act]",
+    "ndodhi [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
+    "ndodh [V,vi,alb,3,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ndodhëm",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndodh [V,vi,alb,1,pl,aor,ind,act]",
+    "ndodh [V,med,alb,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ndodhën",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndodh [V,vi,alb,3,pl,aor,ind,act]",
+    "ndodh [V,med,alb,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ndodhët",
+   "lemma": "ndodhem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ndodh [V,med,alb,2,pl,aor,ind,act]",
+    "ndodh [V,vi,alb,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ngita",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "ngite",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "ngas [V,med,alb,2,sg,pres,ind,pass,nonst]",
+    "ngas [V,vt,alb,2,sg,pres,ind,pass,nonst]",
+    "ngas [V,vt,alb,2,sg,imp,act]"
+   ]
+  },
+  {
+   "form": "ngiti",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "ngas [V,vt,alb,2,sg,imp,act]"
+   ]
+  },
+  {
+   "form": "ngitur",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "VerbForm=Part",
+   "theirs": []
+  },
+  {
+   "form": "ngitëm",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "ngitën",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "ngitët",
+   "lemma": "ngas",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "nisa",
+   "lemma": "nisem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "nisë [NOUN,f,inanim,unknwn,deriv,pl,nom,indef]",
+    "nisë [NOUN,f,inanim,unknwn,deriv,pl,acc,indef]",
+    "nisë [NOUN,f,inanim,unknwn,deriv,sg,nom,def]",
+    "nis [V,med,unknwn,1,sg,aor,ind,act]",
+    "nis [V,vt,vi,unknwn,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "nise",
+   "lemma": "nisem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "nis [V,med,unknwn,2,sg,pres,ind,pass,nonst]",
+    "nis [V,vt,vi,unknwn,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "nisëm",
+   "lemma": "nisem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "nis [V,vt,vi,unknwn,1,pl,aor,ind,act]",
+    "nis [V,med,unknwn,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "nisën",
+   "lemma": "nisem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "nis [V,vt,vi,unknwn,3,pl,aor,ind,act]",
+    "nisë [NOUN,f,inanim,unknwn,deriv,sg,acc,def]",
+    "nis [V,med,unknwn,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "nisët",
+   "lemma": "nisem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "nis [V,med,unknwn,2,pl,aor,ind,act]",
+    "nis [V,vt,vi,unknwn,2,pl,aor,ind,act]"
+   ]
+  },
+  {
    "form": "njëqind",
    "lemma": "njëqind",
    "pos": "NUM",
+   "verdict": "unknown-form",
+   "ours": "(no features)",
+   "theirs": []
+  },
+  {
+   "form": "nr",
+   "lemma": "nr",
+   "pos": "X",
+   "verdict": "unknown-form",
+   "ours": "(no features)",
+   "theirs": []
+  },
+  {
+   "form": "p.e.s",
+   "lemma": "p.e.s",
+   "pos": "X",
+   "verdict": "unknown-form",
+   "ours": "(no features)",
+   "theirs": []
+  },
+  {
+   "form": "p.sh",
+   "lemma": "p.sh",
+   "pos": "X",
    "verdict": "unknown-form",
    "ours": "(no features)",
    "theirs": []
@@ -806,10 +2668,81 @@
    "verdict": "features-differ",
    "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
    "theirs": [
-    "shoh [V,vt,alb,3,sg,aor,ind,pass]",
     "shoh [V,vt,alb,ptcp,nonst]",
+    "shoh [V,vt,alb,3,sg,aor,ind,pass]",
     "shoh [V,vt,alb,2,sg,aor,ind,act]"
    ]
+  },
+  {
+   "form": "pajtova",
+   "lemma": "pajtohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "pajtoj [V,med,borr,lat,deriv,1,sg,aor,ind,act]",
+    "pajtoj [V,vt,vi,borr,lat,deriv,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "pajtove",
+   "lemma": "pajtohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "pajtoj [V,med,borr,lat,deriv,2,sg,aor,ind,act]",
+    "pajtoj [V,vt,vi,borr,lat,deriv,2,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "pajtuam",
+   "lemma": "pajtohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "pajtoj [V,med,borr,lat,deriv,1,pl,aor,ind,act]",
+    "pajtoj [V,vt,vi,borr,lat,deriv,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "pajtuan",
+   "lemma": "pajtohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "pajtoj [V,vt,vi,borr,lat,deriv,3,pl,aor,ind,act]",
+    "pajtoj [V,med,borr,lat,deriv,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "pajtuat",
+   "lemma": "pajtohem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "pajtoj [V,vt,vi,borr,lat,deriv,2,pl,aor,ind,act]",
+    "pajtoj [V,med,borr,lat,deriv,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "palltonë",
+   "lemma": "pallto",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Acc Number=Sing Definite=Def Gender=Fem",
+   "theirs": []
+  },
+  {
+   "form": "palltosë",
+   "lemma": "pallto",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Fem",
+   "theirs": []
   },
   {
    "form": "pasdita",
@@ -827,10 +2760,10 @@
    "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Ind Gender=Fem",
    "theirs": [
     "pasdite [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
-    "pasdite [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+    "pasdite [NOUN,f,inanim,alb,deriv,sg,nom,indef]",
     "pasdite [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
-    "pasdite [NOUN,f,inanim,alb,deriv,sg,acc,indef]",
-    "pasdite [NOUN,f,inanim,alb,deriv,sg,nom,indef]"
+    "pasdite [NOUN,f,inanim,alb,deriv,sg,unmkd,indef]",
+    "pasdite [NOUN,f,inanim,alb,deriv,sg,acc,indef]"
    ]
   },
   {
@@ -912,8 +2845,8 @@
    "verdict": "features-differ",
    "ours": "Case=Nom,Acc Number=Sing Definite=Ind Gender=Fem",
    "theirs": [
-    "perime [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
-    "perime [NOUN,f,inanim,alb,deriv,pl,nom,indef]"
+    "perime [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+    "perime [NOUN,f,inanim,alb,deriv,pl,acc,indef]"
    ]
   },
   {
@@ -949,14 +2882,311 @@
    "theirs": []
   },
   {
+   "form": "peshqsh",
+   "lemma": "peshk",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "pjeka",
+   "lemma": "pjek",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "pjekë [NOUN,f,inanim,alb,deriv,pl,nom,indef]",
+    "pjekë [NOUN,f,inanim,alb,deriv,pl,acc,indef]",
+    "pjekë [NOUN,f,inanim,alb,deriv,sg,nom,def]"
+   ]
+  },
+  {
+   "form": "pjeke",
+   "lemma": "pjek",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "pjekë [NOUN,f,inanim,alb,deriv,sg,gen_dat,indef]",
+    "pjekë [NOUN,f,inanim,alb,deriv,sg,abl,indef]"
+   ]
+  },
+  {
+   "form": "pjeki",
+   "lemma": "pjek",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "pjekëm",
+   "lemma": "pjek",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "pjekëm [A,alb,deriv,m,pl,acc,indef]",
+    "pjekëm [A,alb,deriv,m,sg]",
+    "pjekëm [A,alb,deriv,m,pl]",
+    "pjekëm [A,alb,deriv,m,pl,nom,indef]",
+    "pjekëm [A,alb,deriv,m,sg,nom,indef]",
+    "pjekëm [A,alb,deriv,m,sg,acc,indef]"
+   ]
+  },
+  {
+   "form": "pjekën",
+   "lemma": "pjek",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "pjekë [NOUN,f,inanim,alb,deriv,sg,acc,def]"
+   ]
+  },
+  {
+   "form": "prof",
+   "lemma": "prof",
+   "pos": "X",
+   "verdict": "unknown-form",
+   "ours": "(no features)",
+   "theirs": []
+  },
+  {
+   "form": "përrenj",
+   "lemma": "përrua",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "përrenjsh",
+   "lemma": "përrua",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "përrenjtë",
+   "lemma": "përrua",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "përrenjve",
+   "lemma": "përrua",
+   "pos": "NOUN",
+   "verdict": "unknown-form",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Masc",
+   "theirs": []
+  },
+  {
+   "form": "përula",
+   "lemma": "përulem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "përul [V,med,1,sg,aor,ind,act]",
+    "përul [V,vt,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "përule",
+   "lemma": "përulem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "përul [V,vt,2,sg,pres,ind,pass,nonst]",
+    "përul [V,med,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "përulëm",
+   "lemma": "përulem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "përul [V,med,1,pl,aor,ind,act]",
+    "përul [V,vt,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "përulën",
+   "lemma": "përulem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "përul [V,med,3,pl,aor,ind,act]",
+    "përul [V,vt,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "përulët",
+   "lemma": "përulem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "përul [V,med,2,pl,aor,ind,act]",
+    "përul [V,vt,2,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "përziehej",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Sing Person=3 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përziehem",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Sing Person=1 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përziehemi",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=1 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përziehen",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=3 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përzieheni",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=2 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përziehesh",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Sing Person=2 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përziehesha",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Sing Person=1 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përzieheshe",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Sing Person=2 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përzieheshim",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=1 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përzieheshin",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=3 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përzieheshit",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=2 Tense=Imp Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përziehet",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Sing Person=3 Tense=Pres Mood=Ind,Sub Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përziehu",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Sing Person=2 Mood=Imp Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përziehuni",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=2 Mood=Imp Voice=Mid VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përzjemë",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": [
+    "përziej [V,vt,alb,deriv,2,sg,imp,act]"
+   ]
+  },
+  {
+   "form": "përzjenë",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": []
+  },
+  {
+   "form": "përzjetë",
+   "lemma": "përziej",
+   "pos": "VERB",
+   "verdict": "unknown-form",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
+   "theirs": []
+  },
+  {
    "form": "qepë",
    "lemma": "qepë",
    "pos": "NOUN",
    "verdict": "features-differ",
    "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
    "theirs": [
-    "qepë [NOUN,f,inanim,borr,lat,sg,nom,indef]",
     "qepë [NOUN,f,inanim,borr,lat,sg,unmkd,indef]",
+    "qepë [NOUN,f,inanim,borr,lat,sg,nom,indef]",
     "qepë [NOUN,f,inanim,borr,lat,sg,acc,indef]"
    ]
   },
@@ -977,8 +3207,8 @@
    "verdict": "other-lemma",
    "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
    "theirs": [
-    "qep [V,med,alb,deriv,2,pl,aor,ind,act]",
-    "qep [V,vt,alb,deriv,2,pl,aor,ind,act]"
+    "qep [V,vt,alb,deriv,2,pl,aor,ind,act]",
+    "qep [V,med,alb,deriv,2,pl,aor,ind,act]"
    ]
   },
   {
@@ -1002,18 +3232,119 @@
    ]
   },
   {
+   "form": "radha",
+   "lemma": "radhë",
+   "pos": "NOUN",
+   "verdict": "nonstandard",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
+   "theirs": [
+    "radhë [NOUN,f,inanim,nonst,borr,greek,pl,nom,indef]",
+    "radhë [NOUN,f,inanim,nonst,borr,greek,pl,acc,indef]",
+    "radhë [NOUN,f,inanim,borr,greek,sg,nom,def]"
+   ]
+  },
+  {
+   "form": "radhash",
+   "lemma": "radhë",
+   "pos": "NOUN",
+   "verdict": "nonstandard",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
+   "theirs": [
+    "radhë [NOUN,f,inanim,nonst,borr,greek,pl,abl2,indef]"
+   ]
+  },
+  {
+   "form": "radhat",
+   "lemma": "radhë",
+   "pos": "NOUN",
+   "verdict": "nonstandard",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "theirs": [
+    "radhë [NOUN,f,inanim,nonst,borr,greek,pl,acc,def]",
+    "radhë [NOUN,f,inanim,nonst,borr,greek,pl,nom,def]"
+   ]
+  },
+  {
+   "form": "radhave",
+   "lemma": "radhë",
+   "pos": "NOUN",
+   "verdict": "nonstandard",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
+   "theirs": [
+    "radhë [NOUN,f,inanim,nonst,borr,greek,pl,gen_dat,def]",
+    "radhë [NOUN,f,inanim,nonst,borr,greek,pl,abl,indef]",
+    "radhë [NOUN,f,inanim,nonst,borr,greek,pl,abl,def]",
+    "radhë [NOUN,f,inanim,nonst,borr,greek,pl,gen_dat,indef]"
+   ]
+  },
+  {
+   "form": "ringjalla",
+   "lemma": "ringjallem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ringjall [V,med,alb,deriv,1,sg,aor,ind,act]",
+    "ringjall [V,vt,alb,deriv,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ringjalle",
+   "lemma": "ringjallem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ringjall [V,vt,alb,deriv,2,sg,pres,ind,pass,nonst]",
+    "ringjall [V,med,alb,deriv,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "ringjallëm",
+   "lemma": "ringjallem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ringjall [V,med,alb,deriv,1,pl,aor,ind,act]",
+    "ringjall [V,vt,alb,deriv,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ringjallën",
+   "lemma": "ringjallem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ringjall [V,vt,alb,deriv,3,pl,aor,ind,act]",
+    "ringjall [V,med,alb,deriv,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ringjallët",
+   "lemma": "ringjallem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ringjall [V,med,alb,deriv,2,pl,aor,ind,act]",
+    "ringjall [V,vt,alb,deriv,2,pl,aor,ind,act]"
+   ]
+  },
+  {
    "form": "romane",
    "lemma": "roman",
    "pos": "NOUN",
    "verdict": "other-lemma",
    "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Masc",
    "theirs": [
-    "roman [A,f,pl]",
     "roman [A,f,pl,nom,indef]",
-    "roman [A,f,sg,nom,indef]",
+    "roman [A,f,pl]",
+    "roman [A,f,sg,acc,indef]",
     "roman [A,f,sg]",
-    "roman [A,f,pl,acc,indef]",
-    "roman [A,f,sg,acc,indef]"
+    "roman [A,f,sg,nom,indef]",
+    "roman [A,f,pl,acc,indef]"
    ]
   },
   {
@@ -1046,8 +3377,8 @@
    "theirs": [
     "roman [A,f,pl,abl,def]",
     "roman [A,f,pl,gen_dat,indef]",
-    "roman [A,f,pl,abl,indef]",
-    "roman [A,f,pl,gen_dat,def]"
+    "roman [A,f,pl,gen_dat,def]",
+    "roman [A,f,pl,abl,indef]"
    ]
   },
   {
@@ -1065,8 +3396,8 @@
    "verdict": "other-lemma",
    "ours": "Case=Abl Number=Sing Gender=Fem Person=3",
    "theirs": [
-    "ajo [PRO,3,sg,f,alb,abl]",
-    "saj [PRO,alb]"
+    "saj [PRO,alb]",
+    "ajo [PRO,3,sg,f,alb,abl]"
    ]
   },
   {
@@ -1132,6 +3463,73 @@
    "verdict": "unknown-form",
    "ours": "Case=Gen,Dat,Abl Number=Sing Definite=Def Gender=Fem",
    "theirs": []
+  },
+  {
+   "form": "shek",
+   "lemma": "shek",
+   "pos": "X",
+   "verdict": "unknown-form",
+   "ours": "(no features)",
+   "theirs": []
+  },
+  {
+   "form": "shfaqa",
+   "lemma": "shfaqem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "shfaq [V,med,borr,lat,deriv,1,sg,aor,ind,act]",
+    "shfaq [V,vt,borr,lat,deriv,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "shfaqe",
+   "lemma": "shfaqem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "shfaq [V,med,borr,lat,deriv,2,sg,pres,ind,pass,nonst]",
+    "shfaq [V,vt,borr,lat,deriv,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "shfaqëm",
+   "lemma": "shfaqem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "shfaq [V,med,borr,lat,deriv,1,pl,aor,ind,act]",
+    "shfaq [V,vt,borr,lat,deriv,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "shfaqën",
+   "lemma": "shfaqem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "shfaq [V,vt,borr,lat,deriv,3,pl,aor,ind,act]",
+    "shfaq [V,med,borr,lat,deriv,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "shfaqët",
+   "lemma": "shfaqem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "shfaqët [A,borr,lat,deriv,m,sg]",
+    "shfaqët [A,borr,lat,deriv,m,pl,nom,indef]",
+    "shfaq [V,med,borr,lat,deriv,2,pl,aor,ind,act]",
+    "shfaq [V,vt,borr,lat,deriv,2,pl,aor,ind,act]",
+    "shfaqët [A,borr,lat,deriv,f,sg]",
+    "shfaqët [A,borr,lat,deriv,m,pl]"
+   ]
   },
   {
    "form": "shihu",
@@ -1290,10 +3688,10 @@
    "verdict": "other-lemma",
    "ours": "Number=Sing Person=2,3 Tense=Pres Mood=Ind Voice=Act VerbForm=Fin",
    "theirs": [
-    "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
-    "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
-    "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
     "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,pass]",
+    "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
+    "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
+    "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]"
    ]
   },
@@ -1304,10 +3702,10 @@
    "verdict": "other-lemma",
    "ours": "Number=Sing Person=2 Mood=Imp Voice=Act VerbForm=Fin",
    "theirs": [
-    "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
-    "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
-    "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
     "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,pass]",
+    "shëtit [V,vt,vi,borr,slav,2,sg,pres,ind,act]",
+    "shëtit [V,vt,vi,borr,slav,3,sg,pres,ind,act]",
+    "shëtit [V,vt,vi,borr,slav,1,sg,pres,ind,act]",
     "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]"
    ]
   },
@@ -1340,8 +3738,8 @@
    "verdict": "other-lemma",
    "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
    "theirs": [
-    "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,act]",
-    "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]"
+    "shëtit [V,vt,vi,borr,slav,2,sg,imp,act]",
+    "shëtit [V,vt,vi,borr,slav,3,sg,aor,ind,act]"
    ]
   },
   {
@@ -1351,12 +3749,12 @@
    "verdict": "other-lemma",
    "ours": "VerbForm=Part",
    "theirs": [
-    "shëtitur [A,borr,slav,deriv,m,sg]",
+    "shëtitur [A,borr,slav,deriv,f,sg]",
     "shëtitur [A,borr,slav,deriv,m,pl]",
-    "shëtitur [A,borr,slav,deriv,m,sg,acc,indef]",
-    "shëtitur [A,borr,slav,deriv,f,sg,acc,indef]",
     "shëtitur [A,borr,slav,deriv,m,pl,acc,indef]",
-    "shëtitur [A,borr,slav,deriv,f,sg]"
+    "shëtitur [A,borr,slav,deriv,m,sg,acc,indef]",
+    "shëtitur [A,borr,slav,deriv,m,sg]",
+    "shëtitur [A,borr,slav,deriv,f,sg,nom,indef]"
    ]
   },
   {
@@ -1396,9 +3794,19 @@
    "verdict": "nonstandard",
    "ours": "Number=Sing Person=3 Tense=Past Mood=Ind Voice=Act VerbForm=Fin",
    "theirs": [
-    "them [V,vt,alb,nonst,3,sg,aor,ind,act]",
+    "them [V,vt,alb,nonst,ptcp]",
     "them [V,vt,alb,nonst,3,sg,aor,ind,pass]",
-    "them [V,vt,alb,nonst,ptcp]"
+    "them [V,vt,alb,nonst,3,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "thirr",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Mood=Imp Voice=Act VerbForm=Fin",
+   "theirs": [
+    "thërras [V,vt,vi,alb,3,sg,aor,ind,pass]"
    ]
   },
   {
@@ -1426,15 +3834,170 @@
    "theirs": []
   },
   {
+   "form": "thërrit",
+   "lemma": "thërras",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Mood=Imp Voice=Act VerbForm=Fin",
+   "theirs": [
+    "thërras [V,vt,vi,alb,3,sg,aor,ind,pass]"
+   ]
+  },
+  {
+   "form": "tilla",
+   "lemma": "tilla",
+   "pos": "DET",
+   "verdict": "other-lemma",
+   "ours": "(no features)",
+   "theirs": [
+    "tillë [PRO,alb,f,pl,acc,indef]",
+    "tillë [PRO,alb,f,sg,nom,def]",
+    "tillë [PRO,alb,f,pl,nom,indef]",
+    "tillë [PRO,alb,f,pl]"
+   ]
+  },
+  {
+   "form": "tillë",
+   "lemma": "tilla",
+   "pos": "DET",
+   "verdict": "other-lemma",
+   "ours": "(no features)",
+   "theirs": [
+    "tillë [PRO,alb,m,pl,acc,indef]",
+    "tillë [PRO,alb,f,sg]",
+    "tillë [PRO,alb,m,sg,acc,indef]",
+    "tillë [PRO,alb,m,sg]",
+    "tillë [PRO,alb,m,pl,nom,indef]",
+    "tillë [PRO,alb,f,sg,nom,indef]"
+   ]
+  },
+  {
    "form": "tyre",
    "lemma": "ai",
    "pos": "PRON",
    "verdict": "other-lemma",
    "ours": "Case=Abl Number=Plur Person=3",
    "theirs": [
-    "ato [PRO,3,pl,f,alb,abl]",
     "tyre [PRO,alb]",
+    "ato [PRO,3,pl,f,alb,abl]",
     "ata [PRO,3,pl,m,alb,abl]"
+   ]
+  },
+  {
+   "form": "ula",
+   "lemma": "ulem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Sing Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ul [V,med,alb,1,sg,aor,ind,act]",
+    "ul [V,vt,alb,1,sg,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ule",
+   "lemma": "ulem",
+   "pos": "VERB",
+   "verdict": "features-differ",
+   "ours": "Number=Sing Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ul [V,med,alb,2,sg,pres,ind,pass,nonst]",
+    "ul [V,vt,alb,2,sg,pres,ind,pass,nonst]"
+   ]
+  },
+  {
+   "form": "ulëm",
+   "lemma": "ulem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=1 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ul [V,vt,alb,1,pl,aor,ind,act]",
+    "ul [V,med,alb,1,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ulën",
+   "lemma": "ulem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=3 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ul [V,vt,alb,3,pl,aor,ind,act]",
+    "ul [V,med,alb,3,pl,aor,ind,act]"
+   ]
+  },
+  {
+   "form": "ulët",
+   "lemma": "ulem",
+   "pos": "VERB",
+   "verdict": "other-lemma",
+   "ours": "Number=Plur Person=2 Tense=Past Mood=Ind Voice=Mid VerbForm=Fin",
+   "theirs": [
+    "ulët [A,alb,deriv,m,pl,acc,indef]",
+    "ulët [A,alb,deriv,m,sg,nom,indef]",
+    "ulët [A,alb,deriv,f,sg,acc,indef]",
+    "ulët [A,alb,deriv,m,pl,nom,indef]",
+    "ul [V,vt,alb,2,pl,aor,ind,act]",
+    "ulët [ADV,alb,deriv]"
+   ]
+  },
+  {
+   "form": "valle",
+   "lemma": "vallë",
+   "pos": "NOUN",
+   "verdict": "other-lemma",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
+   "theirs": [
+    "valle [NOUN,f,inanim,alb,sg,acc,indef]",
+    "valle [NOUN,f,inanim,alb,sg,nom,indef]",
+    "valle [NOUN,f,inanim,alb,sg,unmkd,indef]",
+    "valle [NOUN,f,inanim,alb,pl,nom,indef]",
+    "valle [NOUN,f,inanim,alb,pl,acc,indef]"
+   ]
+  },
+  {
+   "form": "vallesh",
+   "lemma": "vallë",
+   "pos": "NOUN",
+   "verdict": "other-lemma",
+   "ours": "Case=Abl Number=Plur Definite=Ind Gender=Fem",
+   "theirs": [
+    "valle [NOUN,f,inanim,alb,pl,abl2,indef]"
+   ]
+  },
+  {
+   "form": "vallet",
+   "lemma": "vallë",
+   "pos": "NOUN",
+   "verdict": "other-lemma",
+   "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
+   "theirs": [
+    "valle [NOUN,f,inanim,alb,pl,nom,def]",
+    "valle [NOUN,f,inanim,alb,pl,acc,def]"
+   ]
+  },
+  {
+   "form": "valleve",
+   "lemma": "vallë",
+   "pos": "NOUN",
+   "verdict": "other-lemma",
+   "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
+   "theirs": [
+    "valle [NOUN,f,inanim,alb,pl,abl,def]",
+    "valle [NOUN,f,inanim,alb,pl,gen_dat,indef]",
+    "valle [NOUN,f,inanim,alb,pl,gen_dat,def]",
+    "valle [NOUN,f,inanim,alb,pl,abl,indef]"
+   ]
+  },
+  {
+   "form": "vallja",
+   "lemma": "vallë",
+   "pos": "NOUN",
+   "verdict": "other-lemma",
+   "ours": "Case=Nom Number=Sing Definite=Def Gender=Fem",
+   "theirs": [
+    "valle [NOUN,f,inanim,alb,sg,nom,def]"
    ]
   },
   {
@@ -1455,6 +4018,26 @@
    "verdict": "unknown-form",
    "ours": "Number=Sing,Plur Gender=Masc,Fem",
    "theirs": []
+  },
+  {
+   "form": "vj",
+   "lemma": "vj",
+   "pos": "X",
+   "verdict": "unknown-form",
+   "ours": "(no features)",
+   "theirs": []
+  },
+  {
+   "form": "vjeç",
+   "lemma": "vjeç",
+   "pos": "ADJ",
+   "verdict": "features-differ",
+   "ours": "Number=Plur Gender=Masc,Fem",
+   "theirs": [
+    "vjeç [A,alb,deriv,m,sg,nom,indef]",
+    "vjeç [A,alb,deriv,m,sg,acc,indef]",
+    "vjeç [A,alb,deriv,m,sg]"
+   ]
   },
   {
    "form": "vritu",
@@ -1535,8 +4118,8 @@
    "verdict": "other-lemma",
    "ours": "Case=Nom,Acc Number=Sing Definite=Ind Gender=Fem",
    "theirs": [
-    "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]",
-    "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]"
+    "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]",
+    "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]"
    ]
   },
   {
@@ -1546,8 +4129,8 @@
    "verdict": "other-lemma",
    "ours": "Case=Nom,Acc Number=Plur Definite=Ind Gender=Fem",
    "theirs": [
-    "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]",
-    "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]"
+    "çorap [NOUN,mf,inanim,borr,turk,pl,nom,indef]",
+    "çorap [NOUN,mf,inanim,borr,turk,pl,acc,indef]"
    ]
   },
   {
@@ -1591,8 +4174,8 @@
    "verdict": "other-lemma",
    "ours": "Case=Nom,Acc Number=Plur Definite=Def Gender=Fem",
    "theirs": [
-    "çorap [NOUN,mf,inanim,borr,turk,pl,nom,def]",
-    "çorap [NOUN,mf,inanim,borr,turk,pl,acc,def]"
+    "çorap [NOUN,mf,inanim,borr,turk,pl,acc,def]",
+    "çorap [NOUN,mf,inanim,borr,turk,pl,nom,def]"
    ]
   },
   {
@@ -1602,10 +4185,10 @@
    "verdict": "other-lemma",
    "ours": "Case=Gen,Dat,Abl Number=Plur Definite=Def,Ind Gender=Fem",
    "theirs": [
-    "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,indef]",
-    "çorap [NOUN,mf,inanim,borr,turk,pl,abl,indef]",
     "çorap [NOUN,mf,inanim,borr,turk,pl,abl,def]",
-    "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,def]"
+    "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,def]",
+    "çorap [NOUN,mf,inanim,borr,turk,pl,gen_dat,indef]",
+    "çorap [NOUN,mf,inanim,borr,turk,pl,abl,indef]"
    ]
   },
   {

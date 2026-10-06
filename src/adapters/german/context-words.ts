@@ -63,10 +63,55 @@ function nextInClause(s: Sent, t: Tok): Tok | undefined {
 
 const subjectPronoun = (t: Tok | undefined): boolean => anyLive(t, (c) => c.pos === 'PRON' && has(c, 'Case', 'Nom') && (has(c, 'PronType', 'Prs') || has(c, 'PronType', 'Ind')));
 
+/** The adjective lieb in the salutation of a letter: Liebe Anna, Lieber Paul, Liebes Team, Liebe Gemeinde. */
+const GREETING_FORMS = new Set(['liebe', 'lieber', 'liebes', 'lieben', 'liebem']);
+const isNameOrNoun = (c: C): boolean => c.pos === 'PROPN' || c.pos === 'NOUN';
+const adjLieb = (r: R): boolean => r.c.pos === 'ADJ' && r.c.lemma === 'lieb';
+
+/**
+ * Liebe Anna, … (a capital at the start, a capitalised noun or name right behind it): the adjective lieb of the salutation, never the
+ * verb lieben (Liebe deinen Nächsten has an article, a pronoun or a lower-case word behind it) and not the noun Liebe, which has its
+ * own article or a verb behind it (Die Liebe ist groß. Liebe ist stark.).
+ */
+function decideGreeting(s: Sent, t: Tok): boolean {
+  if (!GREETING_FORMS.has(t.raw.normalized) || !t.rs.some((r) => !r.down && adjLieb(r))) return false;
+  const nx = nextInClause(s, t);
+  if (!nx || !nx.cap || nx.caps || !anyLive(nx, isNameOrNoun)) return false;
+  if (anyLive(nx, (c) => isFin(c) && !nx.cap)) return false;
+  prefer(t, adjLieb, `opens a sentence before the name or noun ${nx.raw.surface}: the adjective of a salutation (Liebe Anna)`);
+  return true;
+}
+
+/** meine liebe Anna, mein lieber Paul: an adjective between a determiner and a name; a name is no noun of the phrase step, so the verb must not win. */
+function decideAdjectiveBeforeName(s: Sent, t: Tok): void {
+  if (t.cap || !GREETING_FORMS.has(t.raw.normalized) || !t.rs.some((r) => !r.down && adjLieb(r))) return;
+  const prev = s.toks[t.i - 1];
+  const nx = s.toks[t.i + 1];
+  if (!prev?.word || !nx?.word || !nx.cap || !anyLive(prev, (c) => c.pos === 'DET') || !anyLive(nx, isNameOrNoun)) return;
+  prefer(t, adjLieb, `between ${prev.raw.surface} and the name ${nx.raw.surface}: the adjective`);
+}
+
+/**
+ * nächste Woche, der nächste Zug, am nächsten Tag: nächst "next" is a word of its own; the superlative of nah ("nearest") spells
+ * alike and stays right behind it. The order moves, nothing is marked down or removed.
+ */
+function decideNext(t: Tok): void {
+  const own = t.rs.filter((r) => !r.down && r.c.pos === 'ADJ' && r.c.lemma === 'nächst');
+  const sup = t.rs.filter((r) => !r.down && r.c.pos === 'ADJ' && r.c.lemma === 'nah');
+  if (!own.length || !sup.length || t.frozen) return;
+  const firstOwn = t.rs.indexOf(own[0]);
+  const firstSup = t.rs.indexOf(sup[0]);
+  if (firstOwn < firstSup) return;
+  t.rs = [...own, ...t.rs.filter((r) => !own.includes(r))];
+  for (const r of own) addContext(r, 'nächst "next" (nächste Woche, der nächste Zug); the superlative of nah, "nearest", is the reading behind it');
+  settle(t);
+}
+
 /** The first word of a sentence that is both a noun and something else. */
 export function decideInitial(s: Sent): void {
   for (const t of s.toks) {
     if (!t.word || !t.cap || !t.start || t.caps) continue;
+    if (decideGreeting(s, t)) continue;
     const nounR = t.rs.filter((r) => !r.down && isNounLike(r.c));
     const other = t.rs.filter((r) => !r.down && !isNounLike(r.c));
     if (!nounR.length || !other.length) continue;
@@ -285,6 +330,8 @@ export function decideWords(s: Sent): void {
     decideZu(s, t);
     decidePossessive(s, t);
     decideParticle(s, t);
+    decideAdjectiveBeforeName(s, t);
+    decideNext(t);
   }
   void addContext;
 }

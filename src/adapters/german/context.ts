@@ -11,7 +11,7 @@ import { morphOfCells } from './types';
 
 export type C = AnalysisCandidate;
 
-export const DE_ANALYZER_VERSION = '7';
+export const DE_ANALYZER_VERSION = '8';
 export const DE_ANALYZER = `adapter-de@${DE_ANALYZER_VERSION}`;
 /** Where the adapter's own data comes from. All of it is machine-drafted: none has been checked by a native speaker. */
 export const DE_SOURCE_IDS = {
@@ -314,7 +314,13 @@ export function makeSent(lex: DeLexiconView, toks: Tok[]): Sent {
       const rest = cl.words.slice(w + 1);
       const left = cl.words.slice(startAt, w);
       if (!left.length) continue;
-      const isNew = trueFinite(toks[rest[0]]) || (subjectWord(toks[rest[0]]) && rest.slice(1).some((k) => trueFinite(toks[k])));
+      // rot und weiß: one last word that is also an adjective, right after a word that is only an adjective or adverb, is its partner
+      const lastLeft = toks[left[left.length - 1]];
+      const adjectivePair = rest.length === 1 && lastLeft.rs.length > 0 && lastLeft.rs.filter((r) => !r.down).every((r) => r.c.pos === 'ADJ' || r.c.pos === 'ADV')
+        && toks[rest[0]].rs.some((r) => !r.down && r.c.pos === 'ADJ' && !r.c.unconfirmed);
+      // gesehen und gehört: one last word that can be a participle, right after a participle, completes the perfect before it
+      const participlePair = rest.length === 1 && lastLeft.rs.some((r) => !r.down && isPart(r.c)) && toks[rest[0]].rs.some((r) => !r.down && isPart(r.c));
+      const isNew = !adjectivePair && !participlePair && (trueFinite(toks[rest[0]]) || (subjectWord(toks[rest[0]]) && rest.slice(1).some((k) => trueFinite(toks[k]))));
       if (!isNew || !finiteAfter(left[0], left[left.length - 1] + 1)) continue;
       out.push({ words: left, open: startAt === 0 ? cl.open : '', close: '', lead: startAt === 0 ? -1 : cl.words[startAt - 1], first: cl.first && startAt === 0 });
       startAt = w + 1;

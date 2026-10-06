@@ -7,7 +7,10 @@
  * base verb ("Er steht an der Tür" is stehen + the preposition an). Prefixes of the `dual` kind (um, über, durch …)
  * split only for a verb the lexicon lists as separable, because the engine only offers such readings.
  * A separable-kind particle stranded after a finite verb whose joined form the lexicon does not list is added as an
- * `unconfirmed` reading AFTER the ordinary ones.
+ * `unconfirmed` reading AFTER the ordinary ones. Not for zusammen (Wir essen zusammen: the adverb; only the listed zusammen-verbs
+ * join), and not when the clause has another word that can only be a finite verb (Meine Pause ist gleich vorbei: ist is the verb).
+ * A particle that stands before a coordinating und / oder and another verb (Sie wachen früh auf und waschen sich) is the end of its
+ * own stretch of the clause: each coordinated stretch is joined on its own.
  */
 import { DE_SOURCE_IDS, addContext, anyLive, cloneR, isFin, isInf, markDown, prefer, settle, verbFinalClause, finiteSlot, type Clause, type R, type Sent, type Tok } from './context';
 
@@ -76,6 +79,11 @@ function join(s: Sent, v: Tok, p: Tok): boolean {
 }
 
 /** An adverb of measure or degree in front of weg, hin, her …: "Er wohnt weit weg" is no weggehen-type unit. */
+/** Particles that are also ordinary adverbs of the clause end: a unit is never guessed from them (the listed zusammen-verbs still join). */
+const NEVER_GUESSED = new Set(['zusammen']);
+
+const COORDINATING = new Set(['und', 'oder', 'aber', 'sondern', 'denn']);
+
 const MEASURE = new Set(['weit', 'ganz', 'sehr', 'ziemlich', 'recht', 'so', 'zu', 'viel', 'wenig', 'nah', 'nahe', 'fern', 'kurz', 'lang', 'etwas']);
 
 /**
@@ -87,7 +95,7 @@ const MEASURE = new Set(['weit', 'ganz', 'sehr', 'ziemlich', 'recht', 'so', 'zu'
  */
 function guessUnit(s: Sent, cl: Clause, p: Tok): boolean {
   const pre = p.raw.normalized;
-  if (s.lex.prefixKind(pre) !== 'separable' || !p.own) return false;
+  if (s.lex.prefixKind(pre) !== 'separable' || !p.own || NEVER_GUESSED.has(pre)) return false;
   if (anyLive(p, (c) => c.pos === 'ADJ' || c.pos === 'NOUN' || c.pos === 'PROPN' || c.pos === 'VERB' || c.pos === 'AUX')) return false;
   const before = s.toks[p.i - 1];
   if (before?.word && MEASURE.has(before.raw.normalized)) return false;
@@ -95,6 +103,9 @@ function guessUnit(s: Sent, cl: Clause, p: Tok): boolean {
   if (slot < 0) return false;
   const v = s.toks[cl.words[slot]];
   if (!v.own || v.i >= p.i) return false;
+  // another word of the clause that can only be a finite verb (ist, hat, geht): the verb we took is a determiner or a noun (Meine Pause ist vorbei)
+  const onlyFinite = (t: Tok): boolean => { const live = t.rs.filter((r) => !r.down); return live.length > 0 && live.every((r) => isFin(r.c) && !r.c.unconfirmed); };
+  if (cl.words.some((k) => k !== v.i && k !== p.i && k > v.i && s.toks[k].own && onlyFinite(s.toks[k]))) return false;
   const base = v.rs.filter((r) => !r.down && r.c.pos === 'VERB' && isFin(r.c) && !r.c.unconfirmed && !r.prefix && r.c.lemma && !NOT_SEPARABLE_HEADS.has(r.c.lemma));
   if (!base.length) return false;
   // the finite verb is the clause's only verb: no modal or auxiliary stands beside a participle or infinitive of its own
@@ -135,6 +146,33 @@ function guessUnit(s: Sent, cl: Clause, p: Tok): boolean {
   return true;
 }
 
+/**
+ * The stretches of a main clause that each have their own verb and their own particle position: "Sie wachen früh auf und waschen
+ * sich" is two ("Sie wachen früh auf", "waschen sich"), because the word in front of the und is a particle one of the verbs before it
+ * can take and a verb follows the und. Any other clause is one stretch (itself).
+ */
+function stretches(s: Sent, cl: Clause, verbs: Tok[]): Clause[] {
+  const w = cl.words;
+  const cuts: number[] = [];
+  for (let k = 1; k < w.length - 1; k++) {
+    const c = s.toks[w[k]];
+    if (c.cap || !COORDINATING.has(c.raw.normalized)) continue;
+    const prev = s.toks[w[k - 1]];
+    const next = s.toks[w[k + 1]];
+    if (!prev.own || !next.own || !anyLive(next, (x) => isFin(x) || isInf(x))) continue;
+    if (!verbs.some((v) => v.i < prev.i && v.rs.some((r) => !r.down && detachedWith(r, prev.raw.normalized)))) continue;
+    cuts.push(k);
+  }
+  if (!cuts.length) return [cl];
+  const out: Clause[] = [];
+  let from = 0;
+  for (const k of [...cuts, w.length]) {
+    out.push({ ...cl, words: w.slice(from, k), open: from === 0 ? cl.open : '', close: k === w.length ? cl.close : '', lead: from === 0 ? cl.lead : w[from - 1], first: cl.first && from === 0 });
+    from = k + 1;
+  }
+  return out;
+}
+
 /** Put separated verbs together; drop the detached readings that found no prefix. */
 export function joinSeparableVerbs(s: Sent): void {
   for (const cl of s.clauses) {
@@ -144,13 +182,16 @@ export function joinSeparableVerbs(s: Sent): void {
     const verbs = cl.words.map((k) => s.toks[k]).filter((t) => t.own && t.rs.some((r) => detached(r)));
     let done = false;
     if (!final && verbs.length) {
-      const slot = finiteSlot(s, cl);
-      const slotTok = slot >= 0 ? s.toks[cl.words[slot]] : undefined;
-      for (const p of particleSlots(s, cl)) {
-        if (!p.own || done) continue;
-        const cands = verbs.filter((v) => v.i < p.i && v.rs.some((r) => !r.down && detachedWith(r, p.raw.normalized)));
-        const v = cands.find((x) => x === slotTok) ?? cands[0];
-        if (v && join(s, v, p)) done = true;
+      for (const stretch of stretches(s, cl, verbs)) {
+        const slot = finiteSlot(s, stretch);
+        const slotTok = slot >= 0 ? s.toks[stretch.words[slot]] : undefined;
+        let joined = false;
+        for (const p of particleSlots(s, stretch)) {
+          if (!p.own || joined) continue;
+          const cands = verbs.filter((v) => stretch.words.includes(v.i) && v.i < p.i && v.rs.some((r) => !r.down && detachedWith(r, p.raw.normalized)));
+          const v = cands.find((x) => x === slotTok) ?? cands[0];
+          if (v && join(s, v, p)) { joined = true; done = true; }
+        }
       }
     }
     // a verb whose prefix did not stand apart is its base verb: the detached readings go

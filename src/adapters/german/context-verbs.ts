@@ -51,6 +51,42 @@ function demoteStrayImperatives(s: Sent, cl: Clause): void {
   }
 }
 
+/** A dative that is no part of a prepositional phrase: the one a verb of belonging takes (Das Haus hat meinem Vater gehört). */
+const DATIVE_ONLY = new Set(['mir', 'dir', 'ihm', 'ihnen', 'dem', 'einem', 'meinem', 'deinem', 'seinem', 'ihrem', 'unserem', 'unserm', 'eurem', 'diesem', 'jenem', 'welchem', 'keinem', 'jedem', 'manchem', 'solchem']);
+
+/**
+ * gehört after a perfect auxiliary haben: the participle of hören (Ich habe das gehört), not of gehören, unless the clause has a
+ * dative of its own for gehören to take (Das hat meinem Vater gehört). Only order and confidence move.
+ */
+function decideHearing(s: Sent, cl: Clause, t: Tok, aux: Tok): void {
+  if (t.raw.normalized !== 'gehört') return;
+  const lemmas = new Set(t.rs.filter((r) => !r.down && isPart(r.c)).map((r) => r.c.lemma));
+  if (!lemmas.has('hören') || !lemmas.has('gehören')) return;
+  const dative = cl.words.some((k) => {
+    const x = s.toks[k];
+    if (x === t || x === aux || !DATIVE_ONLY.has(x.raw.normalized)) return false;
+    const before = s.toks[x.i - 1];
+    return !(before?.word && s.lex.preposition(before.raw.normalized));
+  });
+  if (!dative) prefer(t, (r) => r.c.lemma !== 'gehören', `the perfect with ${aux.raw.surface} and no dative object: the participle of hören (heard), not of gehören`);
+}
+
+/**
+ * A list of adjectives (Sie sind rot, blau, weiß und gelb): a short stretch after a comma, behind a word that is only an adjective,
+ * and made only of adjectives and und / oder is no clause of its own; a word that is also a finite verb (weiß) is the adjective.
+ */
+function decideAdjectiveList(s: Sent, ci: number): void {
+  const cl = s.clauses[ci];
+  const prev = s.clauses[ci - 1];
+  if (!prev || !/,/.test(cl.open) || cl.words.length > 3) return;
+  const last = s.toks[prev.words[prev.words.length - 1]];
+  const adjOnly = (t: Tok): boolean => t.rs.length > 0 && t.rs.filter((r) => !r.down).every((r) => r.c.pos === 'ADJ' || r.c.pos === 'ADV');
+  if (!adjOnly(last)) return;
+  const words = cl.words.map((k) => s.toks[k]).filter((t) => !COORDINATORS.has(t.raw.normalized));
+  if (!words.length || !words.every((t) => t.rs.some((r) => !r.down && r.c.pos === 'ADJ' && !r.c.unconfirmed))) return;
+  for (const t of words) if (t.rs.some((r) => !r.down && isFin(r.c))) prefer(t, (r) => !isFin(r.c), `in a list of adjectives after ${last.raw.surface}: an adjective, not a verb`);
+}
+
 function decideClause(s: Sent, cl: Clause): void {
   const w = cl.words;
   const final = verbFinalClause(s, cl);
@@ -84,7 +120,10 @@ function decideClause(s: Sent, cl: Clause): void {
     }
     if (!endish || k === slot) continue;
     if (modal && hasInf) prefer(t, (r) => isInf(r.c), `with the modal verb ${s.toks[w[slot]].raw.surface} at the end of the clause: the infinitive`);
-    else if (perfect && hasPart) prefer(t, (r) => isPart(r.c), `with ${s.toks[w[slot]].raw.surface} at the end of the clause: the past participle`);
+    else if (perfect && hasPart) {
+      prefer(t, (r) => isPart(r.c), `with ${s.toks[w[slot]].raw.surface} at the end of the clause: the past participle`);
+      if (aux.includes('haben')) decideHearing(s, cl, t, s.toks[w[slot]]);
+    }
     else if (werden && hasPart && !hasInf) prefer(t, (r) => isPart(r.c), `with ${s.toks[w[slot]].raw.surface}: the past participle`);
     else if (werden && hasInf && !hasPart) prefer(t, (r) => isInf(r.c), `with ${s.toks[w[slot]].raw.surface} at the end of the clause: the infinitive`);
   }
@@ -111,7 +150,15 @@ function decideClause(s: Sent, cl: Clause): void {
       const t = s.toks[w[k]];
       if (!t.word) continue;
       const prevTok = k > 0 ? s.toks[w[k - 1]] : undefined;
-      if (prevTok && COORDINATORS.has(prevTok.raw.normalized)) continue; // wir essen und trinken: a second finite verb
+      if (prevTok && COORDINATORS.has(prevTok.raw.normalized)) {
+        // das Hemd ist rot und weiß: the word that closes the clause after an adjective and und is the adjective's partner, not a second verb
+        const before = k >= 2 ? s.toks[w[k - 2]] : undefined;
+        if (before && k === w.length - 1 && before.rs.length > 0 && before.rs.filter((r) => !r.down).every((r) => r.c.pos === 'ADJ' || r.c.pos === 'ADV')
+          && t.rs.some((r) => !r.down && isFin(r.c)) && t.rs.some((r) => !r.down && r.c.pos === 'ADJ')) {
+          prefer(t, (r) => !isFin(r.c), `closes the clause after the adjective ${before.raw.surface} and ${prevTok.raw.surface}: an adjective, not a second verb`);
+        }
+        continue; // wir essen und trinken: a second finite verb
+      }
       if (cl.lead >= 0 && k === 0) continue;
       if (t.rs.some((r) => !r.down && isFin(r.c)) && t.rs.some((r) => !r.down && !isFin(r.c))) {
         // the word is the finite verb of the clause only in the finite position
@@ -295,6 +342,7 @@ export function decideVerbs(s: Sent): void {
   decideRelatives(s);
   if (decideDatives(s)) settlePhrases(s);
   decideSubjects(s);
+  s.clauses.forEach((_, ci) => decideAdjectiveList(s, ci));
   for (const cl of s.clauses) decideClause(s, cl);
   settlePhrases(s);
   labelAuxiliaries(s);

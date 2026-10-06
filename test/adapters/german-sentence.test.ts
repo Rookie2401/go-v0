@@ -517,8 +517,8 @@ describe('candidates carry their provenance', () => {
 });
 
 describe('the adapter', () => {
-  it('is wired: version 7, sources, varieties, honest support', () => {
-    expect(de.version).toBe('7');
+  it('is wired: version 8, sources, varieties, honest support', () => {
+    expect(de.version).toBe('8');
     expect(Object.keys(de.sources ?? {}).sort()).toEqual(Object.values(DE_SOURCE_IDS).sort());
     expect(de.varieties?.['de-1901']?.kind).toBe('historical');
     expect(de.support.lemmatization).toBe('seed-only');
@@ -1246,7 +1246,7 @@ describe('batch 3, rule 5: long sentences', () => {
 
 describe('batch 3, rule 6: a stranded prefix of a verb the list does not hold', () => {
   it('builds an unconfirmed unit first, with the ordinary readings behind it, for several verbs', () => {
-    for (const [text, verb, unit] of [['Er gleitet langsam zurück.', 'gleitet', 'zurückgleiten'], ['Der Mann lässt den Hund heute ab.', 'lässt', 'ablassen'], ['Wir bleiben heute zusammen.', 'bleiben', 'zusammenbleiben']] as const) {
+    for (const [text, verb, unit] of [['Er gleitet langsam zurück.', 'gleitet', 'zurückgleiten'], ['Der Mann lässt den Hund heute ab.', 'lässt', 'ablassen'], ['Der Hund rennt heute voran.', 'rennt', 'voranrennen']] as const) {
       const p = parse(text);
       expect(first(p, verb), text).toMatchObject({ lemma: unit, unconfirmed: true });
       expect(first(p, verb).unit?.display).toBe(unit);

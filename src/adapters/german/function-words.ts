@@ -134,6 +134,25 @@ for (const w of STRONG_WORDS) {
   out.push(...fromTable(map, w.lemma, 'DET', w.gloss, { PronType: w.pronType }, w.weak ? { governsDecl: 'wk' } : {}));
   if (w.both) out.push(...fromTable(map, w.lemma, 'PRON', w.gloss, { PronType: w.pronType }));
 }
+// derselbe, dieselbe, dasselbe …: one lemma (der + selb-), declined like dieser + the weak adjective endings
+{
+  const SELBE: Record<string, Array<[DeCase, G]>> = {
+    derselbe: [['N', 'm']],
+    dieselbe: [['N', 'f'], ['A', 'f']],
+    dasselbe: [['N', 'n'], ['A', 'n']],
+    dieselben: [['N', 'p'], ['A', 'p']],
+    denselben: [['A', 'm'], ['D', 'p']],
+    demselben: [['D', 'm'], ['D', 'n']],
+    desselben: [['G', 'm'], ['G', 'n']],
+    derselben: [['D', 'f'], ['G', 'f'], ['G', 'p']],
+  };
+  out.push(...explicit('derselbe', 'DET', 'the same', { PronType: 'Dem' }, SELBE, { governsDecl: 'wk' }));
+  out.push(...explicit('derselbe', 'PRON', 'the same (one)', { PronType: 'Dem' }, SELBE));
+}
+// the dative plural of the small cardinals after a plural article: von den dreien, mit den zweien
+for (const [form, lemma, gloss] of [['zweien', 'zwei', 'two'], ['dreien', 'drei', 'three'], ['vieren', 'vier', 'four']] as const) {
+  out.push({ form, lemma, pos: 'NUM', gloss, morph: { NumType: 'Card', Case: 'Dat', Number: 'Plur' }, cells: [{ c: 'D', g: 'p' }] });
+}
 // "dies" (this; uninflected pronoun), "viel", "wenig" (uninflected quantifiers before a noun without article)
 out.push(...explicit('dieser', 'PRON', 'this (uninflected)', { PronType: 'Dem' }, { dies: [['N', 'n'], ['A', 'n']] }));
 for (const [form, gloss] of [['viel', 'much; a lot of'], ['wenig', 'little; not much']] as const) {

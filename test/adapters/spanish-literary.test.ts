@@ -131,7 +131,7 @@ describe('se + an indirect object after the verb (se me, se le)', () => {
 
 describe('a word on no list, written with a capital inside the sentence', () => {
   it('is first guessed to be a name: a guess, without a gloss, below the line of "possibly"', () => {
-    for (const [text, word] of [['La Zurbela salió temprano.', 'Zurbela'], ['Vino de Aldeazurba ayer.', 'Aldeazurba'], ['Dijo Zelipín que no.', 'Zelipín']] as const) {
+    for (const [text, word] of [['La Zurbela salió temprano.', 'Zurbela'], ['Vino de Aldeazurba ayer.', 'Aldeazurba'], ['Dijo Zebelín que no.', 'Zebelín']] as const) {
       const c = first(text, word);
       expect(c, word).toMatchObject({ lemma: word, pos: 'PROPN', unconfirmed: true, confidence: 0.5, origin: 'rule' });
       expect(c.gloss, word).toBeUndefined();
